@@ -238,6 +238,15 @@
 	containername = "\improper shotgun flechette crate"
 	group = "Ammo"
 
+/datum/supply_packs/merc/ammo
+	name = "Black market ammo crate"
+	contains = list()
+	cost = RO_PRICE_VERY_CHEAP
+	contraband = 1
+	containertype = /obj/structure/largecrate/merc/ammo
+	containername = "\improper black market ammo crate"
+	group = "Ammo"
+
 //------------------------Misc ammo crates----------------
 
 /datum/supply_packs/ammo_hpr
@@ -351,38 +360,6 @@
 					/obj/item/ammo_magazine/flamer_tank/gellied)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
-	group = "Ammo"
-
-/datum/supply_packs/ammo_black_market
-	name = "Black market ammo crate"
-	randomised_num_contained = 6
-	contains = list(
-					/obj/item/ammo_magazine/revolver/upp,
-					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/revolver/mateba/highimpact,
-					/obj/item/ammo_magazine/revolver/cmb,
-					/obj/item/ammo_magazine/pistol/heavy,
-					/obj/item/ammo_magazine/pistol/c99,
-					/obj/item/ammo_magazine/pistol/automatic,
-					/obj/item/ammo_magazine/pistol/holdout,
-					/obj/item/ammo_magazine/pistol/highpower,
-					/obj/item/ammo_magazine/pistol/mod88,
-					/obj/item/ammo_magazine/pistol/vp78,
-					/obj/item/ammo_magazine/smg/mp7,
-					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/ammo_magazine/smg/ppsh/extended,
-					/obj/item/ammo_magazine/smg/uzi,
-					/obj/item/ammo_magazine/smg/fp9000,
-					/obj/item/ammo_magazine/sniper/svd,
-					/obj/item/ammo_magazine/rifle/m41aMK1,
-					/obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/ammo_magazine/rifle/mar40/extended,
-					)
-	cost = RO_PRICE_NORMAL
-	contraband = 1
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper black market ammo crate"
 	group = "Ammo"
 
 //This crate has a little bit of everything, mostly okay stuff, but it does have some really unique picks.

@@ -17,6 +17,7 @@
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
+	display_additional_stats = TRUE
 
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
@@ -223,7 +224,7 @@
 		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
-	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
+	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
 	P.generate_bullet(new ammo.default_ammo)
 	P.damage *= damage_mult
 	P.accuracy *= accuracy_mult
@@ -231,6 +232,7 @@
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
+	track_shot()
 	if(ammo.current_rounds == 0)
 		handle_empty()
 
@@ -371,7 +373,15 @@
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "sentry_on"
+	faction_group = FACTION_LIST_MARINE
 	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it."))
+
+/obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
+	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
 	return
@@ -410,6 +420,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
+	faction_group = FACTION_LIST_MARINE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -491,6 +502,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	name = "\improper UA 571-O sentry post"
 	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
+	faction_group = FACTION_LIST_MARINE
 	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE

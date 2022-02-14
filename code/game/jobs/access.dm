@@ -129,7 +129,9 @@
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_MARINE_CAPTAIN,
 		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT
+		ACCESS_MARINE_OT,
+		ACCESS_MARINE_PILOT,
+		ACCESS_MARINE_RO
 	)
 
 /proc/get_all_centcom_access()
@@ -214,7 +216,7 @@
 		if(ACCESS_MARINE_PREP) 			return "Marine Prep"
 		if(ACCESS_MARINE_ENGPREP) 		return "Marine Squad Engineering"
 		if(ACCESS_MARINE_MEDPREP) 		return "Marine Squad Medical"
-		if(ACCESS_MARINE_SPECPREP) 		return "Marine Specialist"
+		if(ACCESS_MARINE_SPECPREP) 		return "Marine Weapons Specialist"
 		if(ACCESS_MARINE_SMARTPREP)		return "Marine Smartgunner"
 		if(ACCESS_MARINE_LEADER) 		return "Marine Leader"
 		if(ACCESS_MARINE_ALPHA) 		return "Alpha Squad"

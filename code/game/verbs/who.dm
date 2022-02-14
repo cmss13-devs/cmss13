@@ -1,5 +1,4 @@
-
-/client/verb/who()
+/client/verb/who()//likely don't touch any... this is easy can die. (:troll_fale:)
 	set name = "Who"
 	set category = "OOC"
 
@@ -37,11 +36,13 @@
 
 	var/list/counted_xenos = list()
 
-	var/msg = "<b>Current Players:</b>\n"
+	var/players = length(GLOB.clients)
+
+	var/dat = "<html><body><B>Current Players:</B><BR>"
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
+			var/entry = "[C.key]"
 			if(C.mob)	//Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
@@ -58,13 +59,13 @@
 					if(O.started_as_observer)
 						entry += " - <font color='#777'>Observing</font>"
 					else
-						entry += " - <font color='#000'><b>DEAD</b></font>"
+						entry += " - <font color='#000'><b>DEAD</B></font>"
 				else
 					switch(C.mob.stat)
 						if(UNCONSCIOUS)
-							entry += " - <font color='#404040'><b>Unconscious</b></font>"
+							entry += " - <font color='#404040'><b>Unconscious</B></font>"
 						if(DEAD)
-							entry += " - <font color='#000'><b>DEAD</b></font>"
+							entry += " - <font color='#000'><b>DEAD</B></font>"
 
 					if(C.mob && C.mob.stat != DEAD)
 						if(ishuman(C.mob))
@@ -90,31 +91,30 @@
 							counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++
-							entry += " - <b><font color='red'>Xenomorph</font></b>"
-
-				entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
+							entry += " - <B><font color='red'>Xenomorph</font></B>"
+				entry += " (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))
-			msg += "[line]\n"
-		msg += "<b>Total Players: [length(Lines)]</b>"
-		msg += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
-		msg += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
-		msg += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
+			dat += "[line]<BR>"
+		dat += "<B>Total Players: [players]</B>"
+		dat += "<BR><B style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</B>"
+		dat += "<BR><B style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</B>"
+		dat += "<BR><B style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</B> <B style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</B>"
 		if(counted_humanoids[FACTION_MARINE])
-			msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
+			dat += "<BR><B style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</B> <B style='color:#688944'>(Marines: [counted_humanoids["USCM Marines"]])</B>"
 		if(counted_humanoids[FACTION_YAUTJA])
-			msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+			dat += "<BR><B style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</B> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
 
 		var/show_fact = TRUE
 		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)
 			if(counted_humanoids[counted_humanoids[i]])
 				if(show_fact)
-					msg += "<br><br>Other factions:"
+					dat += "<br><BR>Other factions:"
 					show_fact = FALSE
-				msg += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
+				dat += "<BR><B style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</B>"
 		if(counted_humanoids[FACTION_NEUTRAL])
-			msg += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
+			dat += "<BR><B style='color:#688944'>[FACTION_NEUTRAL] Humans: [counted_humanoids[FACTION_NEUTRAL]]</B>"
 
 		show_fact = TRUE
 		var/datum/hive_status/hive
@@ -123,16 +123,16 @@
 			if(hivenumber == FACTION_PREDALIEN)
 				continue
 			if(show_fact)
-				msg += "<br><br>Xenomorphs:"
+				dat += "<BR><BR>Xenomorphs:"
 				show_fact = FALSE
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive)
-				msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[hivenumber]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+				dat += "<BR><B style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[hivenumber]]</B> <B style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</B>"
 			else
-				msg += "<br><b style='color:#F00'>Error: no hive datum detected for [hivenumber].</b>"
+				dat += "<BR><B style='color:#F00'>Error: no hive datum detected for [hivenumber].</B>"
 			hive = null
 		if(counted_xenos[FACTION_PREDALIEN])
-			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[FACTION_PREDALIEN]]</b>"
+			dat += "<BR><B style='color:#7ABA19'>Predaliens: [counted_xenos[FACTION_PREDALIEN]]</B>"
 
 	else
 		for(var/client/C in GLOB.clients)
@@ -141,21 +141,24 @@
 
 			Lines += C.key
 		for(var/line in sortList(Lines))
-			msg += "[line]\n"
-		msg += "<b>Total Players: [length(Lines)]</b>"
+			dat += "[line]<br>"
+		dat += "<b>Total Players: [players]</b><br>"
 
-	to_chat(src, msg)
+	dat += "</body></html>"
+	show_browser(usr, dat, "Who", "who", "size=600x1000")
+
 
 /client/verb/staffwho()
 	set name = "Staffwho"
 	set category = "OOC"
 
+	var/dat = "<B>Administration:</B><br>"
 	var/list/mappings
-	LAZYSET(mappings, "Admins", R_ADMIN)
+	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
-		LAZYSET(mappings, "Moderators", R_MOD)
+		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD && R_BAN)
 	if(CONFIG_GET(flag/show_mentors))
-		LAZYSET(mappings, "Mentors", R_MENTOR)
+		LAZYSET(mappings, "<B style='color:green'>Mentors</B>", R_MENTOR)
 
 	var/list/listings
 	for(var/category in mappings)
@@ -169,21 +172,21 @@
 				LAZYADD(listings[category], C)
 				break
 
-	var/output = ""
 	for(var/category in listings)
-		output += "\n<b>Current [category] ([length(listings[category])]):</b>\n"
+		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
-			output += "\t[entry.key] is a [entry.admin_holder.rank]"
+			dat += "\t[entry.key] is a [entry.admin_holder.rank]"
 			if(CLIENT_IS_STAFF(src))
 				if(entry.admin_holder?.fakekey)
-					output += " <i>(HIDDEN)</i>"
-				if(istype(entry.mob, /mob/dead/observer))
-					output += " - Observing"
-				else if(istype(entry.mob, /mob/new_player))
-					output += " - Lobby"
-				else
-					output += " - Playing"
-				if(entry.is_afk())
-					output += " (AFK)"
-			output += "\n"
-	to_chat(src, output)
+					dat += " <i>(HIDDEN)</i>"
+			if(istype(entry.mob, /mob/dead/observer))
+				dat += "<B> - </B><B style='color:#777'>Observing</B>"
+			else if(istype(entry.mob, /mob/new_player))
+				dat += "<B> - </B><font color='#000'>Lobby</font></B>"
+			else
+				dat += "<B> - </B><B style='color:#688944'>Playing</B>"
+			if(entry.is_afk())
+				dat += "<B style='color:#4D0096'> (AFK)</B>"
+			dat += "<BR>"
+	dat += "</body></html>"
+	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x1000")

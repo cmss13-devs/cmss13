@@ -66,7 +66,7 @@
 
 /obj/item/device/binoculars/range/examine()
 	..()
-	to_chat(usr, SPAN_NOTICE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y]."))
+	to_chat(usr, SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y].")))
 
 /obj/item/device/binoculars/range/verb/toggle_rangefinder_popup()
 	set name = "Toggle Rangefinder Display"
@@ -143,7 +143,7 @@
 	if(rangefinder_popup)
 		interact(user)
 	else
-		to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y]."))
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	while(coord)
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -153,8 +153,8 @@
 /obj/item/device/binoculars/range/interact(mob/user as mob)
 	var/dat = "<html><head><title>[src]</title></head><body><TT>"
 
-	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
-	dat += "<h4>LONGITUDE [last_x]. LATITUDE [last_y].</h4></TT></body></html>"
+	dat += "<h1><big>SIMPLIFIED COORDINATES OF TARGET:</big></h1><BR>"
+	dat += "<h2><big>LONGITUDE [last_x]. LATITUDE [last_y].</big></h2></TT></body></html>"
 
 	show_browser(user, dat, "Coordinates successfully acquired", "rangebinos")
 	onclose(user, "rangebinos")
@@ -288,7 +288,7 @@
 		if(rangefinder_popup)
 			interact(user)
 		else
-			to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y]."))
+			to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))

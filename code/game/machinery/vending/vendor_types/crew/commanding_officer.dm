@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 	name = "\improper ColMarTech Commanding Officer Weapon Rack"
 	desc = "An automated weapons rack for the Commanding Officer. It features a robust selection of weaponry meant only for the USCM's top officers."
 	req_access = list(ACCESS_MARINE_COMMANDER)
-	vendor_role = list(JOB_CO)
+	vendor_role = list(JOB_CO, JOB_WO_CO)
 	icon_state = "guns"
 	use_snowflake_points = TRUE
 
@@ -78,13 +78,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Tactical Waistcoat", 0, /obj/item/clothing/accessory/storage/black_vest/waistcoat, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HUDS (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("BELTS (TAKE ALL)", 0, null, null, null),
-		list("G8-A General Utility Pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
@@ -104,7 +105,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 	name = "\improper ColMarTech Commanding Officer Equipment Rack"
 	desc = "An automated equipment vendor for the Commanding Officer. Contains a prime selection of equipment for only the USCM's top officers."
 	req_access = list(ACCESS_MARINE_COMMANDER)
-	vendor_role = list(JOB_CO)
+	vendor_role = list(JOB_CO, JOB_WO_CO)
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/Initialize(mapload, ...)
 	. = ..()

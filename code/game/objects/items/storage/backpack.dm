@@ -333,7 +333,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
 /obj/item/storage/backpack/marine/medic
-	name = "\improper USCM medic backpack"
+	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
@@ -362,7 +362,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 
 
 /obj/item/storage/backpack/marine/satchel/medic
-	name = "\improper USCM medic satchel"
+	name = "\improper USCM corpsman satchel"
 	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sewn to the top flap."
 	icon_state = "marinesatch_medic"
 
@@ -540,6 +540,29 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_w_class = SIZE_HUGE
 	storage_slots = 8
 	can_hold = list(/obj/item/mortar_shell)
+
+/// G-8-a general pouch belt
+/obj/item/storage/backpack/general_belt
+	name = "\improper G8-A general utility pouch"
+	desc = "A small, lightweight pouch that can be clipped onto Armat Systems M3 Pattern armor to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist."
+	max_storage_space = 10
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	flags_equip_slot = SLOT_WAIST
+	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon_state = "g8pouch"
+	item_state = "g8pouch"
+	has_gamemode_skin = TRUE
+
+/obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
+	switch(slot)
+		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
+			mouse_opacity = 2 //so it's easier to click when properly equipped.
+	..()
+
+/obj/item/storage/backpack/general_belt/dropped(mob/user)
+	mouse_opacity = initial(mouse_opacity)
+	..()
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

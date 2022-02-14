@@ -48,8 +48,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-
-		if(!H.species.melee_allowed)
+		if(!H.melee_allowed)
 			to_chat(H, SPAN_DANGER("You are currently unable to attack."))
 			return FALSE
 

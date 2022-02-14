@@ -203,12 +203,23 @@
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
+	if(!..())
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
-	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
-	..()
+	apply_cooldown()
+	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
+		if(SECRETE_RESIN_INTERRUPT)
+			if(xeno_cooldown)
+				apply_cooldown_override(xeno_cooldown * 2)
+			return FALSE
+		if(SECRETE_RESIN_FAIL)
+			if(xeno_cooldown)
+				apply_cooldown_override(1)
+			return FALSE
+	return TRUE
 
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
@@ -466,6 +477,10 @@
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
+	if(GLOB.interior_manager.interior_z == X.z) 
+		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
+		return FALSE
+
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
@@ -482,27 +497,13 @@
 	var/structure_type = X.hive.hive_structure_types[choice]
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
+	if(!spacecheck(X,T,structure_template))
+		return FALSE
+
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
-	if(structure_template.block_range)
-		for(var/turf/TA in range(T, structure_template.block_range))
-			if(!X.check_alien_construction(TA, FALSE, TRUE))
-				to_chat(X, SPAN_WARNING("You need more open space to build here."))
-				qdel(structure_template)
-				return FALSE
-		if(!X.check_alien_construction(T))
-			to_chat(X, SPAN_WARNING("You need more open space to build here."))
-			qdel(structure_template)
-			return FALSE
-		var/obj/effect/alien/weeds/alien_weeds = locate() in T
-		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
-			qdel(structure_template)
-			return FALSE
-
-	else if(T.density)
-		to_chat(X, SPAN_WARNING("You need an empty space to build this."))
+	if(!spacecheck(X,T,structure_template)) //doublechecking
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
@@ -533,6 +534,11 @@
 		qdel(structure_template)
 		return FALSE
 
+	if(GLOB.interior_manager.interior_z == X.z)
+		to_chat(X, SPAN_WARNING("It's too tight in here to build."))
+		qdel(structure_template)
+		return FALSE
+
 	if(!T.is_weedable())
 		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
 		qdel(structure_template)
@@ -540,6 +546,33 @@
 
 	X.use_plasma(400)
 	X.place_construction(T, structure_template)
+
+
+
+
+// XSS Spacecheck
+
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(var/mob/living/carbon/Xenomorph/X, var/turf/T, datum/construction_template/xenomorph/tem)
+	if(tem.block_range)
+		for(var/turf/TA in range(T, tem.block_range))
+			if(!X.check_alien_construction(TA, FALSE, TRUE))
+				to_chat(X, SPAN_WARNING("You need more open space to build here."))
+				qdel(tem)
+				return FALSE
+		if(!X.check_alien_construction(T))
+			to_chat(X, SPAN_WARNING("You need more open space to build here."))
+			qdel(tem)
+			return FALSE
+		var/obj/effect/alien/weeds/alien_weeds = locate() in T
+		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
+			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
+			qdel(tem)
+			return FALSE
+		if(T.density)
+			qdel(tem)
+			to_chat(X, SPAN_WARNING("You need an empty space to build this."))
+			return FALSE
+	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

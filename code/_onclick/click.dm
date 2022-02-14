@@ -32,11 +32,13 @@
 			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if (TU)
+				params += ";click_catcher=1"
 				do_click(TU, location, params)
 		return
 
 	if (world.time < next_click)
 		return
+
 
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
@@ -337,7 +339,7 @@
 		to_world(SPAN_DEBUG("Hadn't tested."))
 		return
 	var/test_time = (world.time - started_testing) * 0.1 //in seconds
-	
+
 	to_world(SPAN_DEBUG("We did <b>[clicks]</b> clicks over <b>[test_time]</b> seconds, for an average clicks-per-second of <b>[clicks / test_time]</b>."))
 	started_testing = 0
 	clicks = 0

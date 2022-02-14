@@ -156,10 +156,13 @@
 
 	var/list/pathed_survivor_types = list()
 	for(var/surv_type in survivor_types)
-		if(!ispath(surv_type))
-			log_world("[surv_type] isn't a proper typepath, removing from survivor_types list")
-			survivor_types -= surv_type
-		pathed_survivor_types += text2path(surv_type)
+		var/survivor_typepath = surv_type
+		if(!ispath(survivor_typepath))
+			survivor_typepath = text2path(surv_type)
+			if(!ispath(survivor_typepath))
+				log_world("[surv_type] isn't a proper typepath, removing from survivor_types list")
+				continue
+		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
 	if (islist(json["monkey_types"]))

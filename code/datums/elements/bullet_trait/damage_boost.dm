@@ -40,5 +40,10 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(/obj/effect/alien/resin/specia
 
 /datum/element/bullet_trait_damage_boost/proc/handle_bullet(var/obj/item/projectile/P, var/atom/A)
 	SIGNAL_HANDLER
-	if(damage_boosted_atoms[A.type])
+	var/reinforced = FALSE
+	if(istype(A, /obj/structure/machinery/door))
+		var/obj/structure/machinery/door/D = A
+		if(D.reinforced)
+			reinforced = TRUE
+	if(damage_boosted_atoms[A.type] && !reinforced)
 		P.damage = round(P.damage * damage_mult)

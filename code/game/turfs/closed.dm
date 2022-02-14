@@ -5,6 +5,9 @@
 	density = 1
 	opacity = 1
 
+/turf/closed/insert_self_into_baseturfs()
+	return
+
 /turf/closed/get_explosion_resistance()
 	return 1000000
 

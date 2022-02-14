@@ -1,6 +1,6 @@
 /datum/xeno_mutator/vanguard
 	name = "STRAIN: Praetorian - Vanguard"
-	description = "You forfeit some durability to gain an ability that pierces through the talls, a dash that flies over their heads, and an ability that can fling or immobilize at your choice. You gain a shield that blocks one attack; while the shield is active your cleave has a magnified effect. If used immediately after your dash, pierce hits all the targets around you instead of a line."
+	description = "You forfeit some durability to gain an ability that pierces through the talls, a dash that flies over their heads and can be followed up with a sweeping slash to the surrounding area by using it again, and an ability that can fling or immobilize at your choice. You gain a shield that blocks one attack; while the shield is active your cleave has a magnified effect."
 	flavor_description = "...They shall be the finest warriors among my children, my Vanguard against the tallhosts. And they shall know no fear."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

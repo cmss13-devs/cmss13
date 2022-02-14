@@ -92,12 +92,12 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			selected_ability.use_ability_wrapper(A)
+			selected_ability.use_ability_wrapper(A, mods)
 			return TRUE
 
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability_wrapper(A)
+			selected_ability.use_ability_wrapper(A, mods)
 			return TRUE
 
 	if(next_move >= world.time)

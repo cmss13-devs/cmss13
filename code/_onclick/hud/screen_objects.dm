@@ -515,9 +515,9 @@
 
 
 /obj/screen/squad_leader_locator
+	name = "beacon tracker"
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "trackoff"
-	name = "squad leader locator"
 	alpha = 0 //invisible
 	mouse_opacity = 0
 

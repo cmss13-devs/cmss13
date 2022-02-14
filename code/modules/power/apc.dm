@@ -587,6 +587,7 @@
 			SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
 			user.count_niche_stat(STATISTICS_NICHE_REPAIR_APC)
 			qdel(W)
+			beenhit = 0
 			stat &= ~BROKEN
 			if(opened == 2)
 				opened = APC_COVER_OPEN
@@ -900,6 +901,7 @@
 			return 0
 
 		if(isWireCut(wire))
+			beenhit = 0
 			mend(wire)
 		else
 			cut(wire, usr)

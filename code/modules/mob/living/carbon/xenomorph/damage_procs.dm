@@ -149,6 +149,8 @@
 	updatehealth()
 
 	last_hit_time = world.time
+	if(damagetype != HALLOSS && damage > 0)
+		life_damage_taken_total += damage
 
 	return 1
 

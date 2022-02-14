@@ -6,7 +6,7 @@
 	icon_state = "kit_case"
 	var/kit_overlay = null
 	w_class = SIZE_HUGE
-	storage_slots = 12
+	storage_slots = 14
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
@@ -55,6 +55,8 @@
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
 	new /obj/item/ammo_magazine/sniper(src)
 	new /obj/item/ammo_magazine/sniper/incendiary(src)
+	new /obj/item/ammo_magazine/sniper/incendiary(src)
+	new /obj/item/ammo_magazine/sniper/flak(src)
 	new /obj/item/ammo_magazine/sniper/flak(src)
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
@@ -66,7 +68,7 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
-	desc = "A large case containing M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "scout"
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
@@ -86,6 +88,7 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
+	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/device/encryptionkey/jtac(src)
@@ -163,7 +166,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		qdel(src)
 
 /obj/item/spec_kit/asrs
-	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
+	desc = "A paper box. Open it and get a specialist kit. Works only for squad riflemen."
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	..()
@@ -172,7 +175,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if(select_and_spawn(user))
 			qdel(src)
 	else
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
+		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad rifleman!"))
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -436,6 +439,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	pro_case_overlay = "honor_guard"
 
 /obj/item/storage/box/kit/honorguard/fill_preset_inventory()
+	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
 	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/bicardine(src)

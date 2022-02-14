@@ -1,15 +1,17 @@
-#define SURVIVOR_TO_MARINES_SPAWN_RATIO 1/10
+#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/20
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
+	// For the roundstart precount, then gets further limited by set_spawn_positions.
+	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 	var/intro_text
 	var/story_text
 
 /datum/job/civilian/survivor/set_spawn_positions(var/count)
-	spawn_positions = Clamp((round(count * SURVIVOR_TO_MARINES_SPAWN_RATIO)), 2, 8)
+	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/M)

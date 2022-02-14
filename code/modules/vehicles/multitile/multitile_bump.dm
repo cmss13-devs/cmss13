@@ -302,10 +302,12 @@
 			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]'s was too damaged already and didn't handle well being rammed."))
 			destroyed_action()
 	else
-		var/obj/item/defenses/handheld/H = new handheld_type(loc)
-		H.name = "handheld [name]"
-		H.obj_health = health
-		qdel(src)
+		HD.forceMove(get_turf(src))
+		HD.dropped = 1
+		HD.update_icon()
+		power_off()
+		placed = 0
+		forceMove(HD)
 	return TRUE
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/handle_vehicle_bump(var/obj/vehicle/multitile/V)

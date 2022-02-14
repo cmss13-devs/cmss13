@@ -23,7 +23,9 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define MED_PRIORITY 	2
 #define LOW_PRIORITY	3
 
-var/global/marines_assigned = 0
+#define SHIPSIDE_ROLE_WEIGHT 0.5
+
+var/global/players_preassigned = 0
 
 
 /proc/guest_jobbans(var/job)
@@ -213,48 +215,55 @@ var/global/marines_assigned = 0
 	//===============================================================\\
 	//PART III: Here we're doing the main body of the loop and assigning everyone.
 
-	var/temp_roles_for_mode = roles_for_mode
+	var/list/temp_roles_for_mode = roles_for_mode
 	if(length(overwritten_roles_for_mode))
 		temp_roles_for_mode = overwritten_roles_for_mode
 
-	marines_assigned = do_assignment_count(temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO), unassigned_players)
+	// Get balancing weight for the readied players.
+	// Squad marine roles have a weight of 1, and shipside roles have a lower weight of SHIPSIDE_ROLE_WEIGHT.
+	players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
 
+	// Even though we pass a copy of temp_roles_for_mode, job counters still change, so we reset them here.
+	for(var/title in temp_roles_for_mode)
+		var/datum/job/J = temp_roles_for_mode[title]
+		J.current_positions = 0
+
+    // Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
-	var/datum/job/XJ = temp_roles_for_mode[JOB_XENOMORPH]
+	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(marines_assigned)
+		XJ.set_spawn_positions(players_preassigned)
+
+	// Limit the number of SQUAD MARINE roles players can roll initially
+	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
+	if(istype(SMJ))
+		SMJ.set_spawn_positions(players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
-		SJ.set_spawn_positions(marines_assigned)
+		SJ.set_spawn_positions(players_preassigned)
 
 	if(prob(SSticker.mode.pred_round_chance))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(marines_assigned)
+			PJ.set_spawn_positions(players_preassigned)
 
-	var/list/roles_left = list()
-	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
-		// Assigning xenos first.
-		assign_initial_roles(priority, temp_roles_for_mode & ROLES_XENO)
-		// Assigning special roles second. (survivor, predator)
-		assign_initial_roles(priority, temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
-		// Assigning command third.
-		assign_initial_roles(priority, temp_roles_for_mode & ROLES_COMMAND)
-		// Assigning the rest
-		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND) - (temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
-		roles_left = assign_initial_roles(priority, rest_roles_for_mode)
+	// Assign the roles, this time for real, respecting limits we have established.
+	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
+	var/alternate_option_assigned = 0;
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
 				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
+				alternate_option_assigned++
 			if(BE_MARINE)
 				var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 				assign_role(M, marine_job) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+				alternate_option_assigned++
 			if(BE_XENOMORPH)
 				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY)
@@ -267,12 +276,37 @@ var/global/marines_assigned = 0
 
 	unassigned_players = null
 
-	// Now we take spare unfilled xeno slots and make them larva
+	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions))
+		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
+		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
 
 	/*===============================================================*/
+
+/**
+* Assign roles to the players. Return roles that are still avialable.
+* If count is true, return role balancing weight instead.
+*/
+/datum/authority/branch/role/proc/assign_roles(var/list/roles_for_mode, var/list/unassigned_players, count = FALSE)
+	var/list/roles_left = list()
+	var/assigned = 0
+	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
+		// Assigning xenos first.
+		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_XENO, unassigned_players)
+		// Assigning special roles second. (survivor, predator)
+		assigned += assign_initial_roles(priority, roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL), unassigned_players)
+		// Assigning command third.
+		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND, unassigned_players)
+		// Assigning the rest
+		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		if(count)
+			assigned += assign_initial_roles(priority, rest_roles_for_mode, unassigned_players)
+		else
+			roles_left= assign_initial_roles(priority, rest_roles_for_mode, unassigned_players, FALSE)
+	if(count)
+		return assigned
+	return roles_left
 
 /datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
 	var/datum/mind/P = M.mind
@@ -288,7 +322,8 @@ var/global/marines_assigned = 0
 
 	return
 
-/datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate)
+/datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
+	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
 		return
 
@@ -299,46 +334,41 @@ var/global/marines_assigned = 0
 			log_debug("Error setting up jobs, no job datum set for: [job].")
 			continue
 
+		var/role_weight = calculate_role_weight(J)
 		for(var/M in unassigned_players)
 			var/mob/new_player/NP = M
 			if(!(NP.client.prefs.get_job_priority(J.title) == priority))
 				continue //If they don't want the job. //TODO Change the name of the prefs proc?
 
 			if(assign_role(NP, J))
+				assigned += role_weight
 				unassigned_players -= NP
-				if(J.current_positions >= J.spawn_positions)
+				// -1 check is not strictly needed here, since standard marines are
+				// supposed to have an actual spawn_positions number at this point
+				if(J.spawn_positions != -1 && J.current_positions >= J.spawn_positions)
 					roles_to_iterate -= job //Remove the position, since we no longer need it.
 					break //Maximum position is reached?
 
 		if(!length(unassigned_players))
 			break //No players left to assign? Break.
+	if(count)
+		return assigned
+	return roles_to_iterate
 
-/datum/authority/branch/role/proc/do_assignment_count(var/list/roles_to_iterate)
-	var/list/fake_assigned_players = unassigned_players.Copy()
-	var/people_assigned = 0
-	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
-		for(var/job in roles_to_iterate)
-			var/datum/job/J = roles_to_iterate[job]
-			if(!istype(J))
-				continue
-
-			for(var/M in fake_assigned_players)
-				var/mob/new_player/NP = M
-				if(!(NP.client.prefs.get_job_priority(J.title) == priority))
-					continue
-
-				J.fake_positions++
-				people_assigned++
-				fake_assigned_players -= NP
-
-				if(J.fake_positions >= J.spawn_positions)
-					roles_to_iterate -= job //Remove the position, since we no longer need it.
-					break //Maximum position is reached?
-
-			if(!length(fake_assigned_players))
-				break //No players left to assign? Break.
-
-	return people_assigned
+/**
+* Calculate role balance weight for one person joining as that role. This weight is used
+* when calculating the number of xenos both roundstart and burrowed larva they get for
+* people late joining. This weight also controls the size of local wildlife population,
+* survivors and the number of roundstart Squad Rifleman slots.
+*/
+/datum/authority/branch/role/proc/calculate_role_weight(var/datum/job/J)
+	if(ROLES_MARINES.Find(J.title))
+		return 1
+	if(ROLES_XENO.Find(J.title))
+		return 1
+	if(J.title == JOB_SURVIVOR)
+		return 1
+	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
@@ -614,7 +644,7 @@ var/global/marines_assigned = 0
 		var/datum/squad/lowest
 
 		switch(H.job)
-			if("Squad Engineer")
+			if(JOB_SQUAD_ENGI)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
@@ -627,7 +657,7 @@ var/global/marines_assigned = 0
 						else if(S.num_engineers < lowest.num_engineers)
 							lowest = S
 
-			if("Squad Medic")
+			if(JOB_SQUAD_MEDIC)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_medics >= S.max_medics) continue
@@ -640,7 +670,7 @@ var/global/marines_assigned = 0
 						else if(S.num_medics < lowest.num_medics)
 							lowest = S
 
-			if("Squad Leader")
+			if(JOB_SQUAD_LEADER)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
@@ -653,7 +683,7 @@ var/global/marines_assigned = 0
 						else if(S.num_leaders < lowest.num_leaders)
 							lowest = S
 
-			if("Squad Specialist")
+			if(JOB_SQUAD_SPECIALIST)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
@@ -666,7 +696,7 @@ var/global/marines_assigned = 0
 						else if(S.num_specialists < lowest.num_specialists)
 							lowest = S
 
-			if("Squad RT Operator")
+			if(JOB_SQUAD_RTO)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_rto >= S.max_rto) continue
@@ -679,7 +709,7 @@ var/global/marines_assigned = 0
 						else if(S.num_rto < lowest.num_rto)
 							lowest = S
 
-			if("Squad Smartgunner")
+			if(JOB_SQUAD_SMARTGUN)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue

@@ -101,6 +101,7 @@
 	UI_NUTRITION_LOC 	= "EAST-2:33,14:15"
 	UI_TEMP_LOC 		= "EAST-1:26,15:-7"
 	UI_HEALTH_LOC 		= "EAST-1:27,15:-8"
+	UI_SL_LOCATOR_LOC	= "EAST-1:27,12:22"
 
 /datum/custom_hud/dark/get_status_loc(var/placement)
 	var/col = (placement-1)

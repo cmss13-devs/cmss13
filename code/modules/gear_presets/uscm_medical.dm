@@ -7,13 +7,14 @@
 		ACCESS_MARINE_CMO,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_COMMANDER,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_CHEMISTRY,
 		ACCESS_MARINE_MORGUE
 	)
 	assignment = JOB_CMO
 	rank = JOB_CMO
-	paygrade = "CCMO"
+	paygrade = "MO2"
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
@@ -56,13 +57,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
-	name = "USCM Doctor"
+	name = "USCM Surgeon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_DOCTOR
 	rank = JOB_DOCTOR
-	paygrade = "CD"
+	paygrade = "MO1"
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
@@ -90,6 +91,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
@@ -109,7 +111,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_NURSE
 	rank = JOB_NURSE
-	paygrade = "CN"
+	paygrade = "ME5"
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
@@ -155,7 +157,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	rank = JOB_RESEARCHER
-	paygrade = "CD"
+	paygrade = "MO1"
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 

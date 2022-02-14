@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	12
+#define SAVEFILE_VERSION_MAX	13
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -21,10 +21,14 @@
 		return 0
 
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
-//		if(S["toggles"])
-//			qdel(S["toggles"])
-		S["toggles_chat"] << TOGGLES_SOUND_DEFAULT
+		S["toggles_sound"] << TOGGLES_SOUND_DEFAULT
 		S["toggles_chat"] << TOGGLES_CHAT_DEFAULT
+
+	if(savefile_version < 13)
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= SOUND_INTERNET
+		S["toggles_sound"] << sound_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

@@ -267,6 +267,34 @@
 	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
+////NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
+
+/obj/item/ammo_magazine/rifle/nsg23
+	name = "\improper NSG 23 magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine."
+	caliber = "10x24mm"
+	icon_state = "nsg23"
+	item_state = "nsg23"
+	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/nsg23
+
+/obj/item/ammo_magazine/rifle/nsg23/extended
+	name = "\improper NSG 23 extended magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine. This one contains 45 bullets."
+	icon_state = "nsg23_ext"
+	item_state = "nsg23_ext"
+	bonus_overlay = "nsg23_ext_overlay"
+	max_rounds = 45
+
+/obj/item/ammo_magazine/rifle/nsg23/ap
+	name = "\improper NSG 23 armor-piercing magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine. This one is armor piercing."
+	icon_state = "nsg23_ap"
+	item_state = "nsg23_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+
+//-------------------------------------------------------
 //Basira-Armstrong rifle
 
 /obj/item/ammo_magazine/rifle/hunting

@@ -24,8 +24,7 @@
 "aC" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
-	unacidable = 0
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -79,13 +78,13 @@
 /area/lv624/lazarus/crashed_ship)
 "bP" = (
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/crashed_ship)
 "bQ" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1
+	dir = 1;
+	faction_group = list("CLF")
 	},
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
@@ -477,7 +476,8 @@
 /area/lv624/lazarus/crashed_ship)
 "mH" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4
+	dir = 4;
+	faction_group = list("CLF")
 	},
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
@@ -731,8 +731,7 @@
 "vf" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
-	unacidable = 0
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -848,8 +847,7 @@
 "xG" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
-	unacidable = 0
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1063,15 +1061,13 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
-	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/crashed_ship)
 "CO" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
-	unacidable = 0
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
@@ -1410,7 +1406,7 @@
 /area/lv624/lazarus/crashed_ship)
 "KZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 3
 	},
 /turf/open/floor/plating{
@@ -1563,10 +1559,10 @@
 /area/lv624/lazarus/crashed_ship)
 "Op" = (
 /obj/structure/surface/rack,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 7
 	},
-/obj/item/storage/sparepouch,
+/obj/item/storage/backpack/general_belt,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
@@ -1784,7 +1780,8 @@
 "TK" = (
 /obj/item/stack/rods,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1
+	dir = 1;
+	faction_group = list("CLF")
 	},
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"

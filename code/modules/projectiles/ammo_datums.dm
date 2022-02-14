@@ -375,9 +375,9 @@
 	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
 		return
 
-	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return TRUE
+		return
 
 	if(L.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
@@ -669,10 +669,9 @@
 	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
 		return
 
-	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		return
 
 	if(L.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
@@ -1791,11 +1790,11 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.KnockDown(2)
-	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	M.SetKnockeddown(2)
+	M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1810,8 +1809,6 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(4)
-		M.KnockOut(4)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1824,6 +1821,9 @@
 		T.ex_act(150, P.dir, P.weapon_cause_data, 200)
 
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	for(var/mob/M in T)
+		M.SetKnockeddown(4)
+		M.SetKnockedout(4)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1832,8 +1832,6 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(2)
-		M.KnockOut(2)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1845,6 +1843,9 @@
 	if(!hit_something)
 		T.ex_act(250, P.dir, P.weapon_cause_data)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	for(var/mob/M in T)
+		M.SetKnockeddown(2)
+		M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -2199,8 +2200,8 @@
 	var/effect_power = XENO_NEURO_TIER_4
 	var/datum/callback/neuro_callback
 
-	shell_speed = AMMO_SPEED_TIER_2
-	max_range = 6
+	shell_speed = AMMO_SPEED_TIER_3
+	max_range = 7
 
 /datum/ammo/xeno/toxin/New()
 	..()
@@ -2208,8 +2209,7 @@
 	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_neuro)
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
-	var/pass_down_the_line = FALSE
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR) && !insta_neuro)
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
@@ -2218,20 +2218,15 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 
-	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
-		pass_down_the_line = TRUE
-
 	if(!isXeno(M))
 		if(insta_neuro)
 			if(M.knocked_down < 3)
 				M.AdjustKnockeddown(1 * power)
 			return
 
-		if(M.knocked_down > 4 || pass_down_the_line)
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
-			M.KnockOut(30) //KO them. They already got rekt too much
-			pass_down_the_line = TRUE
+		if(ishuman(M))
+			M.Superslow(2.5)
+			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
 
@@ -2240,76 +2235,24 @@
 			if(!H.wear_suit || H.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
-		if(M.dazed || pass_down_the_line || no_clothes_neuro)
+		if(no_clothes_neuro)
 			if(M.knocked_down < 5)
 				M.AdjustKnockeddown(1 * power) // KD them a bit more
-				if(!pass_down_the_line)
-					M.visible_message(SPAN_DANGER("[M] falls prone."))
-			pass_down_the_line = TRUE
+				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
-		if(M.superslowed || pass_down_the_line)
-			if(M.dazed < 6)
-				M.AdjustDazed(3 * power) // Daze them a bit more
-				if(!pass_down_the_line)
-					M.visible_message(SPAN_DANGER("[M] is visibly confused."))
-			pass_down_the_line = TRUE
-
-	if(M.superslowed < 10)
-		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
-		if(!pass_down_the_line)
-			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
-
-/proc/apply_scatter_neuro(mob/M, power)
-	var/pass_down_the_line = FALSE
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
-		return //endurance 5 makes you immune to weak neuro
+/proc/apply_scatter_neuro(mob/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+			return //endurance 5 makes you immune to weak neuro
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
-		pass_down_the_line = TRUE
-
-	if(!isXeno(M))
-		var/no_clothes_neuro = FALSE
-
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
-				no_clothes_neuro = TRUE
-
-		if(M.superslowed >= 5 || pass_down_the_line || no_clothes_neuro)
-			if(M.knocked_down < 3)
-				M.AdjustKnockeddown(1 * power) // KD them a bit more
-				if(!pass_down_the_line)
-					M.visible_message(SPAN_DANGER("[M] falls prone."))
-			pass_down_the_line = TRUE
-
-	if(M.superslowed < 10)
-		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
-		if(!pass_down_the_line)
-			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
-
-/proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
-	if(!T) return FALSE
-	var/firer = P.firer
-	var/hit_someone = FALSE
-	for(var/mob/living/carbon/M in orange(radius,T))
-		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
-			continue
-
-		if(HAS_TRAIT(M, TRAIT_NESTED))
-			continue
-
-		hit_someone = TRUE
-		CB.Invoke(M, power, insta_neuro)
-
-		P.play_damage_effect(M)
-
-	return hit_someone
+		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
+			M.KnockDown(0.7)
+			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(ishuman(M))
@@ -2338,18 +2281,9 @@
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
 	neuro_callback.Invoke(M, effect_power, TRUE)
 
-/datum/ammo/xeno/toxin/burst //sentinel burst
-	name = "neurotoxic air splash"
-	effect_power = XENO_NEURO_TIER_1
-	spit_cost = 50
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
-
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
-	spit_cost = 30
-	added_spit_delay = 15
-	effect_power = XENO_NEURO_TIER_3
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -2357,7 +2291,7 @@
 	accurate_range = 5
 	max_range = 5
 	scatter = SCATTER_AMOUNT_NEURO
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_4
 
 /datum/ammo/xeno/toxin/shotgun/New()
 	..()
@@ -2366,9 +2300,32 @@
 
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
-	effect_power = XENO_NEURO_TIER_3
 
 	bonus_projectiles_amount = 0
+
+/*proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
+	if(!T) return FALSE
+	var/firer = P.firer
+	var/hit_someone = FALSE
+	for(var/mob/living/carbon/M in orange(radius,T))
+		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
+			continue
+
+		if(HAS_TRAIT(M, TRAIT_NESTED))
+			continue
+
+		hit_someone = TRUE
+		CB.Invoke(M, power, insta_neuro)
+
+		P.play_damage_effect(M)
+
+	return hit_someone
+
+/datum/ammo/xeno/toxin/burst //sentinel burst
+	name = "neurotoxic air splash"
+	effect_power = XENO_NEURO_TIER_1
+	spit_cost = 50
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
@@ -2379,7 +2336,7 @@
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
 	return neuro_flak(T, P, neuro_callback, effect_power, FALSE, 1)
 
-/*datum/ammo/xeno/sticky
+/datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
 	ping = null
@@ -2868,7 +2825,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/R = new()
+	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 

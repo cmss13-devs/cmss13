@@ -23,7 +23,7 @@
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
-	det_time = rand(det_time - 5, det_time + 5)
+	det_time = max(0, rand(det_time - 5, det_time + 5))
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
@@ -100,7 +100,7 @@
 	else
 		active = TRUE
 		w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
-		addtimer(CALLBACK(src, .proc/prime), det_time)
+		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
 	update_icon()
 
 /obj/item/explosive/grenade/update_icon()

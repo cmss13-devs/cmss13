@@ -269,7 +269,7 @@
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "Admin Player Panel", "players", "size=600x480")
+	show_browser(usr, dat, "User Panel", "players", "size=600x480")
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
@@ -408,7 +408,7 @@
 				if(NUKE_EXPLOSION_INACTIVE) dat += 		"INACTIVE"
 				if(NUKE_EXPLOSION_ACTIVE) dat += 		"ACTIVE"
 				if(NUKE_EXPLOSION_IN_PROGRESS) dat += 	"IN PROGRESS"
-				if(NUKE_EXPLOSION_FINISHED || NUKE_EXPLOSION_GROUND_FINISHED) dat += 		"FINISHED"
+				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += 		"FINISHED"
 			dat += "<br>"
 
 			dat += "<a href='?src=\ref[src];evac_authority=init_dest'>Unlock Self Destruct control panel for humans</a><br>"

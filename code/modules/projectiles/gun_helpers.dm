@@ -723,6 +723,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
 		return
 
+	if(flags_gun_features & GUN_BURST_ONLY)
+		if(!(flags_gun_features & GUN_BURST_ON))
+			stack_trace("[src] has GUN_BUST_ONLY flag but not GUN_BURST_ON.")
+			flags_gun_features |= GUN_BURST_ON
+			return
+
+		to_chat(usr, SPAN_NOTICE("[src] can only be fired in bursts!"))
+		return
+
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
@@ -749,14 +758,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to single fire mode."))
 			return
 
-	if(!(flags_gun_features & GUN_BURST_ON))
-		flags_gun_features |= GUN_BURST_ON
 
-		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to burst fire mode."))
-	else
-		flags_gun_features ^= GUN_BURST_ON
-
-		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+	flags_gun_features ^= GUN_BURST_ON
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
 
 /obj/item/weapon/gun/verb/empty_mag()

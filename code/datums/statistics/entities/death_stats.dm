@@ -16,6 +16,7 @@
 	var/total_kills = 0
 	var/time_of_death
 	var/total_time_alive
+	var/total_damage_taken
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -47,6 +48,7 @@
         "total_kills" = DB_FIELDTYPE_INT,
         "time_of_death" = DB_FIELDTYPE_BIGINT,
         "total_time_alive" = DB_FIELDTYPE_BIGINT,
+        "total_damage_taken" = DB_FIELDTYPE_INT,
 
         "total_brute" = DB_FIELDTYPE_INT,
         "total_burn" = DB_FIELDTYPE_INT,
@@ -105,6 +107,7 @@
 	new_death.total_steps = life_steps_total
 	new_death.total_kills = life_kills_total
 	new_death.total_time_alive = life_time_total
+	new_death.total_damage_taken = life_damage_taken_total
 
 	var/observer_message = "<b>[real_name]</b> has died"
 	if(cause_data && cause_data.cause_name)

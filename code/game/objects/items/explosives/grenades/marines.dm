@@ -152,20 +152,16 @@
 /obj/item/explosive/grenade/HE/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	var/turf/hit_turf = null
 	if(isobj(hit_atom) && !rebounding)
 		detonate = FALSE
-	if(isturf(hit_atom))
-		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
-			detonate = FALSE
+	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
-		if(hit_turf)
-			for(var/mob/living/M in hit_turf)
-				create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
-				M.Superslow(3.0)
-				shrapnel_count -= direct_hit_shrapnel
-				break
+		if(ismob(hit_atom))
+			var/mob/M = hit_atom
+			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
+			M.Superslow(3.0)
+			shrapnel_count -= direct_hit_shrapnel
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
@@ -311,6 +307,7 @@
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
 	harmful = FALSE
+	has_iff = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
 
 /obj/item/explosive/grenade/smokebomb/New()

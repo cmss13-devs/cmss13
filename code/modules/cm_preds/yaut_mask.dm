@@ -47,21 +47,22 @@
 	if(mask_number > 12)
 		mask_number = 1
 	icon_state = "pred_mask[mask_number]_[armor_material]"
-	item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]_[armor_material]")
+
+	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)
 			if(1341)
 				name = "\improper 'Mask of the Dragon'"
 				icon_state = "pred_mask_elder_tr"
-				item_state_slots = list(WEAR_FACE = "pred_mask_elder_tr")
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
 			if(7128)
 				name = "\improper 'Mask of the Swamp Horror'"
 				icon_state = "pred_mask_elder_joshuu"
-				item_state_slots = list(WEAR_FACE = "pred_mask_elder_joshuu")
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
 			if(4879)
 				name = "\improper 'Mask of the Ambivalent Collector'"
 				icon_state = "pred_mask_elder_n"
-				item_state_slots = list(WEAR_FACE = "pred_mask_elder_n")
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
 	if(isYautja(user))
@@ -269,7 +270,7 @@
 	var/mask_number = rand(1,11)
 	if(mask_number in possible_masks)
 		icon_state = "pred_mask[mask_number]_ebony"
-		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]_ebony")
+		LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_ebony")
 
 /obj/item/clothing/mask/yautja_flavor/map_random
 	map_random = TRUE

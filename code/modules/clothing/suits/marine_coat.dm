@@ -81,7 +81,7 @@
 	icon_state = "coat_officer"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
-	name = "mess sergeant jacket"
+	name = "mess technician jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "chef_jacket"
 	armor_melee = CLOTHING_ARMOR_LOW

@@ -360,12 +360,17 @@
 	},
 /area/fiorina/tumor/servers)
 "ajp" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/station/medbay)
 "ajr" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -556,9 +561,6 @@
 /area/fiorina/station/park)
 "anG" = (
 /obj/structure/largecrate/supply,
-/obj/structure/platform_decoration{
-	dir = 8
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/medbay)
 "anJ" = (
@@ -575,9 +577,12 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "aoa" = (
-/obj/structure/largecrate/supply/supplies/metal,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
+/obj/structure/largecrate/random/mini/med,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/station/medbay)
 "apf" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
@@ -778,13 +783,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/station/research_cells)
-"avw" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "avI" = (
 /obj/structure/closet/bodybag,
 /turf/open/floor/prison{
@@ -1087,6 +1085,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
+"aCO" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
 "aCT" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/prison{
@@ -1193,7 +1205,9 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "aFp" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("CLF")
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
 "aFJ" = (
@@ -1240,9 +1254,12 @@
 	},
 /area/fiorina/station/chapel)
 "aGS" = (
-/obj/item/frame/rack,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/disco)
+/obj/structure/lattice,
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aGV" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison,
@@ -1501,12 +1518,14 @@
 	},
 /area/fiorina/station/park)
 "aNw" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/lattice,
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
 	},
-/obj/structure/platform/stair_cut/alt,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/turf/open/space,
+/area/fiorina/oob)
 "aNP" = (
 /obj/structure/inflatable,
 /obj/structure/barricade/handrail/type_b,
@@ -1718,12 +1737,12 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "aTN" = (
-/obj/structure/platform,
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
 	},
-/area/fiorina/station/medbay)
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "aUa" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/prison{
@@ -2234,11 +2253,12 @@
 	},
 /area/fiorina/station/park)
 "biJ" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/utensil/fork,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells)
 "bjk" = (
 /obj/structure/sink{
@@ -2443,13 +2463,6 @@
 	},
 /area/fiorina/station/security)
 "bqy" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 10
-	},
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/prison{
 	dir = 10;
@@ -2601,11 +2614,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "bxa" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
-/area/fiorina/station/medbay)
+/obj/structure/platform_decoration/kutjevo,
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "bxl" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -2627,9 +2639,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/maintenance)
-"bxS" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
 "bxV" = (
 /obj/item/clothing/head/cmcap,
 /turf/open/floor/wood,
@@ -2647,12 +2656,12 @@
 	},
 /area/fiorina/tumor/ship)
 "byl" = (
-/obj/item/reagent_container/food/drinks/cans/souto/cherry,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "bym" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan20"
@@ -2722,9 +2731,17 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "bAB" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "bAS" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -3109,6 +3126,10 @@
 /obj/item/tool/pen,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
+"bMl" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/lowsec)
 "bMr" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -3188,11 +3209,6 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"bOB" = (
-/turf/open/floor/prison{
-	icon_state = "yellowfull"
-	},
-/area/fiorina/station/central_ring)
 "bOK" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/corsat{
@@ -3251,11 +3267,12 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "bQp" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "bQy" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/spray/pepper,
@@ -3316,6 +3333,13 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/tumor/aux_engi)
+"bTe" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "bTo" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/space,
@@ -3641,9 +3665,20 @@
 	},
 /area/fiorina/station/research_cells)
 "chA" = (
-/obj/structure/inflatable/popped/door,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "chJ" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -3749,13 +3784,20 @@
 	},
 /area/fiorina/station/botany)
 "cjA" = (
-/obj/structure/window/reinforced{
+/obj/structure/barricade/handrail{
 	dir = 1;
-	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "cjF" = (
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -3960,14 +4002,11 @@
 	},
 /area/fiorina/station/park)
 "cpW" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "ywflowers_3"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
+/turf/open/space/basic,
+/area/fiorina/oob)
 "cqc" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
@@ -4066,10 +4105,6 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "csT" = (
-/mob/living/simple_animal/cat/George{
-	desc = "A fierce caracal with floppy ears. Quite the murderer in disguise.";
-	name = "Hannibal"
-	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -4908,30 +4943,21 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "cYa" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
 	},
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecalbottomright"
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/station/medbay)
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/fiorina/oob)
 "cYg" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
+/obj/item/ammo_magazine/m56d,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/medbay)
 "cYP" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/storage/pill_bottle/dexalin/skillless,
@@ -5221,9 +5247,14 @@
 	},
 /area/fiorina/station/chapel)
 "dhe" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "cell_stripe";
+	tag = "icon-cell_stripe"
+	},
+/area/fiorina/station/disco)
 "dhi" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/space/basic,
@@ -5360,14 +5391,20 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "dkg" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "lavendergrass_2"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "dkj" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -5732,11 +5769,13 @@
 	},
 /area/fiorina/station/power_ring)
 "dvY" = (
-/turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/fiorina/oob)
 "dwg" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -6302,7 +6341,7 @@
 	},
 /area/fiorina/station/research_cells)
 "dMa" = (
-/obj/structure/stairs/perspective,
+/obj/structure/largecrate/random,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "dMc" = (
@@ -6357,19 +6396,23 @@
 	},
 /area/fiorina/station/park)
 "dMU" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "blue"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "dNh" = (
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/lz/near_lzI)
-"dNn" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/window/framed/prison,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/security)
 "dNF" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -6487,9 +6530,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
-"dTv" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/central_ring)
 "dTx" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/plating/prison,
@@ -6983,13 +7023,6 @@
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "eli" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 6
-	},
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison{
 	dir = 10;
@@ -7530,14 +7563,10 @@
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "eDn" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "ywflowers_2"
-	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "eDs" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/prison{
@@ -7625,10 +7654,10 @@
 	},
 /area/fiorina/station/lowsec)
 "eHa" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/yautja_teleport,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/fiorina/oob)
 "eHC" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy25"
@@ -7704,18 +7733,11 @@
 /area/fiorina/station/disco)
 "eJQ" = (
 /obj/structure/platform/kutjevo/smooth{
-	dir = 1
+	dir = 8
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/smooth,
-/turf/open/space,
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "eKu" = (
 /obj/structure/stairs/perspective{
@@ -8183,20 +8205,32 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "eZq" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
 /obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"eZA" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/area/fiorina/station/central_ring)
-"eZA" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "blue"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "eZD" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
@@ -8314,14 +8348,20 @@
 	},
 /area/fiorina/station/chapel)
 "fcZ" = (
-/obj/item/ammo_casing{
-	icon_state = "cartridge_2"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "fde" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -8360,11 +8400,11 @@
 	},
 /area/fiorina/station/security/wardens)
 "fdV" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+/obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/turf/open/space/basic,
+/area/fiorina/oob)
 "feO" = (
 /obj/structure/largecrate/supply/medicine/iv,
 /turf/open/floor/prison{
@@ -8445,11 +8485,19 @@
 	},
 /area/fiorina/maintenance)
 "fhz" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
 	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
 "fhC" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison{
@@ -8805,11 +8853,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "fsn" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "yellow"
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "ftq" = (
 /obj/item/stack/cable_coil/orange,
 /turf/open/floor/prison{
@@ -9123,7 +9173,7 @@
 /obj/structure/inflatable/popped/door,
 /obj/item/ammo_magazine/m56d,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "fBp" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/prison{
@@ -9737,10 +9787,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
-"fUM" = (
-/obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "fUX" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/plating/prison,
@@ -9971,10 +10017,8 @@
 	},
 /area/fiorina/tumor/civres)
 "gcy" = (
-/obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth,
-/turf/open/space,
-/area/fiorina/oob)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/lowsec)
 "gdn" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/prison{
@@ -10046,15 +10090,20 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/maintenance)
 "gfp" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "gfw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box{
@@ -10105,12 +10154,15 @@
 	},
 /area/fiorina/station/lowsec)
 "ggu" = (
-/obj/item/device/pinpointer/advpinpointer,
+/obj/item/ammo_casing{
+	icon_state = "casing_6_1"
+	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/lowsec)
 "ggB" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -10129,12 +10181,13 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "ggQ" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "ghg" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -10606,9 +10659,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"gxf" = (
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "gxj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
@@ -10638,13 +10688,6 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
-"gya" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "gyi" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -10809,13 +10852,6 @@
 	tag = "icon-cell_stripe"
 	},
 /area/fiorina/station/flight_deck)
-"gDe" = (
-/obj/structure/barricade/handrail,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "gDx" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/newspaper{
@@ -10881,10 +10917,10 @@
 /turf/open/space,
 /area/fiorina/oob)
 "gEW" = (
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/lowsec)
 "gFc" = (
@@ -11097,10 +11133,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/research_cells)
-"gLW" = (
-/obj/structure/extinguisher_cabinet,
-/turf/closed/wall/prison,
-/area/fiorina/station/central_ring)
 "gMw" = (
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/prison{
@@ -11298,20 +11330,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
-"gRY" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/station/central_ring)
 "gSD" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -11368,12 +11386,10 @@
 	},
 /area/fiorina/station/park)
 "gTw" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "gUf" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -11760,7 +11776,7 @@
 "hgJ" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "hgS" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan5"
@@ -12740,13 +12756,6 @@
 "hLz" = (
 /turf/closed/wall/prison,
 /area/fiorina/lz/near_lzII)
-"hLJ" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
-	},
-/area/fiorina/maintenance)
 "hLK" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
@@ -12893,16 +12902,6 @@
 	icon_state = "plate"
 	},
 /area/fiorina/tumor/aux_engi)
-"hRN" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
-/area/fiorina/station/central_ring)
 "hRV" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /obj/structure/window/reinforced{
@@ -13077,14 +13076,10 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "hVS" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "lavendergrass_4"
-	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform_decoration/kutjevo,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "hWB" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
@@ -13185,9 +13180,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
-"hZY" = (
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "iah" = (
 /obj/item/ammo_casing{
 	dir = 8;
@@ -13514,14 +13506,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/chapel)
-"imp" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = -3
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "imt" = (
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
@@ -13598,14 +13582,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"ipV" = (
-/obj/item/device/flashlight/lamp/tripod,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "iqt" = (
 /obj/item/fuelCell,
 /turf/open/floor/prison,
@@ -13749,15 +13725,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/station/park)
-"itG" = (
-/obj/structure/prop/almayer/computers/mission_planning_system{
-	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
-	pixel_y = 21
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "itN" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
@@ -13845,11 +13812,12 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "iwK" = (
-/obj/structure/stairs/perspective{
-	dir = 5;
-	icon_state = "p_stair_full"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/mre_pack/meal1,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells)
 "iwT" = (
 /obj/structure/ice/thin/indestructible{
@@ -13936,14 +13904,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"izT" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "izZ" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/disco)
@@ -13980,13 +13940,6 @@
 	icon_state = "stan25"
 	},
 /area/fiorina/oob)
-"iBS" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "iCo" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
@@ -14109,19 +14062,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
-"iGF" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "iGL" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -14202,6 +14142,9 @@
 	dir = 1
 	},
 /obj/structure/inflatable/popped,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -14298,10 +14241,6 @@
 /obj/item/stack/cable_coil/blue,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
-"iLU" = (
-/obj/structure/grille,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "iMm" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -14422,15 +14361,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/civres)
-"iQc" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "iQu" = (
 /obj/structure/coatrack,
 /obj/item/clothing/head/bowlerhat{
@@ -14446,14 +14376,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/tumor/civres)
-"iQG" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "iQK" = (
 /obj/structure/disposalpipe/broken{
 	dir = 1
@@ -14908,11 +14830,20 @@
 	},
 /area/fiorina/station/park)
 "jfm" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
 "jfp" = (
 /obj/structure/barricade/handrail,
 /obj/structure/barricade/handrail{
@@ -14967,13 +14898,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/lz/near_lzI)
-"jhb" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/chapel)
 "jhi" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -15299,14 +15223,6 @@
 	icon_state = "bluecorner"
 	},
 /area/fiorina/station/power_ring)
-"joW" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "jpb" = (
 /obj/structure/window/framed/prison,
 /turf/closed/wall/prison,
@@ -15317,13 +15233,6 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
-"jpd" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "jpl" = (
 /obj/item/clothing/under/CM_uniform,
 /turf/open/floor/prison,
@@ -15410,9 +15319,6 @@
 	},
 /area/fiorina/station/power_ring)
 "jqR" = (
-/obj/structure/platform{
-	dir = 8
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	tag = "icon-pottedplant_10"
@@ -15641,17 +15547,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/research_cells)
-"jyD" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 6
-	},
-/obj/item/reagent_container/food/drinks/cans/beer{
-	pixel_x = -13;
-	pixel_y = 13
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "jyK" = (
 /turf/open/floor/prison{
 	dir = 5;
@@ -16220,16 +16115,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"jPE" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "jPK" = (
 /turf/closed/shuttle/elevator{
 	dir = 6
@@ -16405,14 +16290,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"jVV" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/stair_cut,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "jVW" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison{
@@ -16520,6 +16397,13 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
+"jZb" = (
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
 "jZc" = (
 /obj/structure/disposalpipe/segment{
 	icon_state = "delivery_outlet";
@@ -16742,10 +16626,6 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzI)
-"kew" = (
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
 "keF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flash,
@@ -17048,13 +16928,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
-"koe" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
-	},
-/area/fiorina/station/disco)
 "kov" = (
 /obj/item/stack/rods,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -17106,15 +16979,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
-"kpG" = (
-/obj/structure/machinery/floodlight{
-	name = "Yard Floodlight"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "kpN" = (
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Low security prisoners would smuggle in arcade tickets after visitations. The tickets act as a stand in for paper currency in the prison economy, they're backed by the cigarette standard, since one ticket nets one cigarette at the prize booth. The cigarettes also get smuggled back in.";
@@ -17786,12 +17650,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/fiberbush)
-"kJe" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "kJf" = (
 /obj/item/tool/wrench,
 /turf/open/floor/plating/prison,
@@ -17925,10 +17783,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/research_cells)
-"kNo" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "kNs" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/chapel_carpet{
@@ -18143,15 +17997,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"kUw" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/lowsec)
 "kUI" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -18480,12 +18325,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"lfc" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "lfo" = (
 /obj/structure/pipes/standard/manifold/visible,
 /turf/open/floor/plating/prison,
@@ -18993,12 +18832,6 @@
 	icon_state = "stan_rightengine"
 	},
 /area/fiorina/tumor/aux_engi)
-"lvA" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "lvN" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
@@ -19020,7 +18853,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/medbay)
 "lwB" = (
-/obj/structure/platform,
 /obj/structure/bed/chair{
 	dir = 1;
 	layer = 2.7
@@ -19045,13 +18877,6 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"lwX" = (
-/obj/item/tool/wirecutters,
-/obj/structure/platform/shiva{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "lxe" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/heavy,
@@ -19124,7 +18949,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "lzm" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced/tinted,
@@ -19218,10 +19043,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/shuttle/drop2/prison_v3)
-"lCk" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "lCm" = (
 /obj/item/ammo_casing{
 	icon_state = "cartridge_1"
@@ -19290,8 +19111,12 @@
 	},
 /area/fiorina/station/civres_blue)
 "lDC" = (
-/turf/closed/wall/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
 "lEa" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
@@ -19440,7 +19265,6 @@
 	},
 /area/fiorina/station/park)
 "lJv" = (
-/obj/structure/platform,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
 /obj/structure/machinery/light/double/blue{
@@ -19925,13 +19749,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
-"mby" = (
-/obj/structure/barricade/wooden{
-	dir = 4;
-	pixel_y = 4
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "mbC" = (
 /obj/item/clipboard,
 /turf/open/floor/plating/prison,
@@ -20126,13 +19943,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/transit_hub)
-"mfL" = (
-/obj/item/clothing/gloves/boxing/blue,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "mfR" = (
 /obj/structure/bed{
 	icon_state = "psychbed"
@@ -20162,6 +19972,15 @@
 	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/fiorina/station/flight_deck)
+"mgU" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "birthday"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/power_ring)
 "mhb" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -20191,11 +20010,12 @@
 	},
 /area/fiorina/station/flight_deck)
 "mhv" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "mhM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -20480,15 +20300,6 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
-"mrM" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "lavendergrass_3"
-	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "mrO" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -20546,15 +20357,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"msD" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "ppflowers_2"
-	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "mtj" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -20594,15 +20396,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/tumor/civres)
-"muN" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "muO" = (
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
@@ -20866,9 +20659,6 @@
 	},
 /area/fiorina/station/lowsec)
 "mDi" = (
-/obj/structure/platform{
-	dir = 8
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	tag = "icon-pottedplant_10"
@@ -20878,10 +20668,7 @@
 	pixel_x = -10;
 	pixel_y = -3
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/open/floor/prison,
 /area/fiorina/station/disco)
 "mDs" = (
 /obj/item/stack/sandbags_empty/half,
@@ -20907,11 +20694,12 @@
 	},
 /area/fiorina/station/park)
 "mEv" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/mre_pack/meal5,
+/turf/open/floor/prison{
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/research_cells)
 "mEL" = (
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -20952,31 +20740,25 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"mGt" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "ywflowers_4"
+"mGe" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 3
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
+/obj/effect/decal/cleanable/blood,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -11;
+	pixel_y = -6
 	},
-/area/fiorina/station/central_ring)
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
 "mGx" = (
 /obj/item/reagent_container/food/drinks/sillycup,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
-"mGD" = (
-/obj/structure/platform_decoration/kutjevo,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/open/space,
-/area/fiorina/oob)
 "mHN" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/prison{
@@ -21122,13 +20904,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
-"mLQ" = (
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "mLS" = (
 /obj/structure/platform{
 	dir = 1
@@ -21196,13 +20971,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/civres_blue)
-"mMO" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno,
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "mNg" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/spacecash/c10,
@@ -21258,13 +21026,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
-"mNT" = (
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "mOn" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -21414,13 +21175,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/medbay)
-"mSi" = (
-/obj/item/weapon/gun/pistol/vp78,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "mSM" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 3;
@@ -21773,15 +21527,6 @@
 	tag = "icon-darkpurple2"
 	},
 /area/fiorina/tumor/servers)
-"naA" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "lavendergrass_1"
-	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
 "naN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -21818,13 +21563,10 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "ncP" = (
-/obj/structure/platform{
-	dir = 4
-	},
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
-	pixel_y = 13
+	pixel_y = -1
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -22095,12 +21837,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
-"njP" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "blue"
-	},
-/area/fiorina/station/central_ring)
 "njT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/taperecorder{
@@ -22182,15 +21918,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/park)
-"nof" = (
-/obj/item/ammo_magazine/m56d,
-/obj/item/ammo_magazine/m56d,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
-	},
-/area/fiorina/station/central_ring)
 "noY" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -22569,12 +22296,6 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/civres_blue)
-"nAz" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "nBp" = (
 /obj/item/weapon/gun/smg/nailgun,
 /obj/structure/surface/rack,
@@ -22708,10 +22429,6 @@
 	icon_state = "greencorner"
 	},
 /area/fiorina/tumor/civres)
-"nEx" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
 "nEy" = (
 /obj/item/explosive/grenade/HE/frag,
 /obj/structure/machinery/light/double/blue{
@@ -22727,10 +22444,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/research_cells)
-"nFb" = (
-/obj/structure/platform/shiva,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "nFB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/gift,
@@ -22747,12 +22460,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/medbay)
-"nGn" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
 "nGq" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/prison,
@@ -22794,9 +22501,6 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "nHb" = (
-/obj/structure/platform{
-	dir = 4
-	},
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -22917,10 +22621,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"nJH" = (
-/obj/structure/closet/boxinggloves,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "nJQ" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/nailgun,
@@ -23112,12 +22812,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/aux_engi)
-"nSh" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/fiorina/station/central_ring)
 "nSi" = (
 /obj/structure/machinery/door/window/eastright{
 	dir = 2
@@ -23395,10 +23089,6 @@
 	icon_state = "whitepurple"
 	},
 /area/fiorina/station/research_cells)
-"ocP" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "ocS" = (
 /obj/structure/disposalpipe/segment{
 	color = "#c4c4c4";
@@ -23414,12 +23104,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"ocX" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "odg" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/prison{
@@ -23427,21 +23111,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"odq" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/obj/item/tool/crowbar/red,
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/stair_cut/alt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
-	},
-/area/fiorina/station/medbay)
 "odH" = (
 /obj/item/trash/candle,
 /turf/open/floor/prison{
@@ -24415,14 +24084,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "oFW" = (
-/obj/structure/platform,
 /obj/structure/bed/chair{
 	dir = 1;
 	layer = 2.7
 	},
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
-	icon_state = "whitegreen"
+	icon_state = "whitegreencorner"
 	},
 /area/fiorina/station/medbay)
 "oGm" = (
@@ -24608,13 +24276,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"oLR" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "oMy" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -24646,14 +24307,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/research_cells)
-"oOc" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "oOi" = (
 /obj/effect/decal/hefa_cult_decals/d32,
 /turf/open/floor/prison/chapel_carpet{
@@ -25015,15 +24668,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"pbh" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/lowsec)
 "pbp" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight,
 /turf/open/floor/corsat{
@@ -25222,14 +24866,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"piE" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
-	},
-/area/fiorina/station/central_ring)
 "piL" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -26184,13 +25820,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
-"pNR" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "pNV" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -26331,10 +25960,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"pSq" = (
-/obj/structure/largecrate/random/mini/ammo,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "pSJ" = (
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor/wood,
@@ -26347,13 +25972,6 @@
 "pTj" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
-"pTz" = (
-/obj/item/clothing/gloves/boxing/green,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "pTA" = (
 /obj/structure/toilet{
 	dir = 4
@@ -26723,10 +26341,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/fiorina/lz/near_lzII)
-"qfg" = (
-/obj/item/tool/wrench,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "qfu" = (
 /obj/structure/sink{
 	dir = 4;
@@ -26755,13 +26369,6 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
-"qfZ" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "qgd" = (
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = 8;
@@ -27124,12 +26731,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/botany)
-"qqk" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "qqu" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -27429,17 +27030,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"qAn" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1";
-	tag = "icon-bright_clean (SOUTHWEST)"
-	},
-/area/fiorina/station/central_ring)
-"qAu" = (
-/obj/structure/extinguisher_cabinet,
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/central_ring)
 "qBh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/toy/handcard/aceofspades,
@@ -27632,12 +27222,6 @@
 	icon_state = "whitepurple"
 	},
 /area/fiorina/station/research_cells)
-"qEz" = (
-/obj/structure/platform,
-/turf/open/floor/prison{
-	icon_state = "whitegreen"
-	},
-/area/fiorina/station/medbay)
 "qFg" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison{
@@ -27748,13 +27332,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"qIK" = (
-/obj/item/reagent_container/food/drinks/cans/sodawater,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "qIO" = (
 /obj/item/stock_parts/manipulator/pico,
 /turf/open/floor/prison{
@@ -28093,15 +27670,6 @@
 	tag = "icon-cell_stripe (WEST)"
 	},
 /area/fiorina/station/security)
-"qTg" = (
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "qTp" = (
 /obj/structure/sink{
 	pixel_y = 23
@@ -28460,15 +28028,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"rcF" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "rdS" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -28492,16 +28051,6 @@
 	icon_state = "blue"
 	},
 /area/fiorina/station/power_ring)
-"reI" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
-/area/fiorina/station/central_ring)
 "reO" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -28677,12 +28226,9 @@
 	},
 /area/fiorina/station/botany)
 "rkB" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
 /obj/item/device/flashlight,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "rkH" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -28894,10 +28440,6 @@
 	icon_state = "green"
 	},
 /area/fiorina/station/chapel)
-"rrX" = (
-/obj/structure/inflatable/popped,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
 "rsh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/cigarette/weed{
@@ -29094,7 +28636,7 @@
 "rym" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "ryt" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/prison,
@@ -29132,13 +28674,10 @@
 	},
 /area/fiorina/station/medbay)
 "rAe" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/shiva,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "rAk" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -29168,9 +28707,6 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "rAQ" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -29272,14 +28808,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"rDS" = (
-/obj/item/clothing/shoes/cult,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "rEe" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -29318,7 +28846,7 @@
 /turf/open/floor/prison{
 	icon_state = "damaged3"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "rFu" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/chapel_carpet{
@@ -29451,10 +28979,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
-"rJp" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "rJu" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -29522,14 +29046,6 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/fiorina/tumor/servers)
-"rLD" = (
-/obj/item/clothing/under/shorts/green,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
-	},
-/area/fiorina/station/central_ring)
 "rLJ" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -29577,6 +29093,11 @@
 /area/fiorina/lz/near_lzI)
 "rMS" = (
 /obj/structure/largecrate/random/secure,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 1
+	},
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "whitegreen"
@@ -29616,13 +29137,6 @@
 	icon_state = "green"
 	},
 /area/fiorina/tumor/civres)
-"rNN" = (
-/obj/item/clothing/under/shorts/black,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "rOa" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -29816,13 +29330,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
-"rSO" = (
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "rTb" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -29844,12 +29351,6 @@
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
-"rTR" = (
-/turf/open/floor/prison{
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "rUc" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -30158,15 +29659,6 @@
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
-"set" = (
-/obj/item/ammo_magazine/pistol/vp78{
-	current_rounds = 2
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "seW" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_r_w"
@@ -30208,13 +29700,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
-"sfX" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
-	},
-/area/fiorina/station/central_ring)
 "sgb" = (
 /obj/item/ammo_box/magazine/misc/flares/empty,
 /turf/open/floor/prison{
@@ -30335,6 +29820,12 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/park)
+"skM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "repairpanels"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "skO" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison{
@@ -30582,13 +30073,6 @@
 /obj/item/ashtray/glass,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
-"ssV" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "sta" = (
 /obj/structure/machinery/door/airlock/almayer/marine{
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
@@ -30662,15 +30146,6 @@
 /obj/structure/machinery/portable_atmospherics/powered/pump,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
-"svH" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/chapel)
 "swg" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/space,
@@ -30686,15 +30161,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/lz/near_lzI)
-"sxs" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/chapel)
 "syf" = (
 /obj/structure/inflatable,
 /obj/structure/barricade/handrail/type_b{
@@ -31099,12 +30565,9 @@
 	},
 /area/fiorina/station/civres_blue)
 "sMj" = (
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "sMo" = (
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/weapon/gun/rifle/m16,
@@ -31113,12 +30576,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/security)
-"sMt" = (
-/obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/central_ring)
 "sNb" = (
 /obj/item/device/radio,
 /turf/open/organic/grass{
@@ -31137,14 +30594,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
-"sNk" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
-	},
-/area/fiorina/station/central_ring)
 "sNu" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -31474,10 +30923,12 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "sYv" = (
-/turf/open/floor/prison{
-	icon_state = "damaged2"
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "sYM" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
@@ -31564,9 +31015,8 @@
 "tcl" = (
 /obj/structure/largecrate/random/mini/med,
 /turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	dir = 5;
+	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
 "tcJ" = (
@@ -31596,14 +31046,6 @@
 	tag = "icon-darkpurple2"
 	},
 /area/fiorina/tumor/servers)
-"tdn" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
-	},
-/area/fiorina/station/central_ring)
 "tdo" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/prison{
@@ -31681,14 +31123,13 @@
 	},
 /area/fiorina/tumor/servers)
 "tgn" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "brflowers_1"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "tgv" = (
 /obj/structure/machinery/computer/emails{
 	pixel_y = 6
@@ -31705,13 +31146,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
-"tgJ" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
 "the" = (
 /turf/open/floor/prison{
 	icon_state = "floorscorched1"
@@ -31724,24 +31158,12 @@
 	tag = "icon-cell_stripe (EAST)"
 	},
 /area/fiorina/tumor/aux_engi)
-"thu" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "thU" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/lz/near_lzI)
-"tia" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "blue"
-	},
-/area/fiorina/station/central_ring)
 "tih" = (
 /obj/item/tool/warning_cone,
 /obj/structure/machinery/light/double/blue{
@@ -31932,18 +31354,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"tnz" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 3;
-	tag = "icon-rwindow (NORTH)"
-	},
-/obj/structure/largecrate/random/mini/med{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "tnA" = (
 /obj/structure/platform,
 /obj/structure/machinery/light/double/blue{
@@ -31977,7 +31387,7 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "tov" = (
 /obj/item/weapon/gun/smg/mp5,
 /turf/open/floor/prison{
@@ -32043,19 +31453,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
-"tpV" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "tpY" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/prison,
@@ -32253,11 +31650,12 @@
 	},
 /area/fiorina/station/power_ring)
 "tvI" = (
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "tvM" = (
 /obj/structure/platform{
 	dir = 1
@@ -32373,12 +31771,20 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
+"tzF" = (
+/obj/item/storage/pill_bottle/tramadol/skillless,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/station/medbay)
 "tAb" = (
 /obj/structure/surface/rack,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 7
 	},
-/obj/item/storage/sparepouch,
+/obj/item/storage/backpack/general_belt,
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "tAf" = (
@@ -33891,13 +33297,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"uvY" = (
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "uwg" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
@@ -33959,12 +33358,6 @@
 	name = "pool"
 	},
 /area/fiorina/station/park)
-"uxQ" = (
-/turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
-	},
-/area/fiorina/station/research_cells)
 "uxY" = (
 /turf/open/floor/prison{
 	dir = 6;
@@ -34025,7 +33418,7 @@
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "uzX" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -34510,7 +33903,7 @@
 	icon_state = "damaged1";
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "uSo" = (
 /obj/item/poster,
 /turf/open/floor/prison{
@@ -34805,15 +34198,14 @@
 	},
 /area/fiorina/station/lowsec)
 "vbe" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/medbay)
 "vbl" = (
 /obj/structure/closet/bombcloset,
 /turf/open/floor/prison{
@@ -34854,12 +34246,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
-"vbX" = (
-/obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
-	},
-/turf/closed/wall/prison,
-/area/fiorina/station/central_ring)
 "vbY" = (
 /obj/item/ammo_casing{
 	dir = 6;
@@ -35219,12 +34605,10 @@
 	},
 /area/fiorina/station/research_cells)
 "vnr" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
-	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "voa" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
@@ -35296,9 +34680,6 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "vqi" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -35454,15 +34835,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"vtO" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/disco)
 "vub" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -35479,12 +34851,20 @@
 	},
 /area/fiorina/station/civres_blue)
 "vuc" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "vuE" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	tag = "icon-landingstripe"
@@ -35866,9 +35246,8 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/structure/largecrate/random,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "vGO" = (
 /obj/structure/platform{
 	dir = 4
@@ -36140,11 +35519,12 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "vPM" = (
-/obj/item/clothing/under/shorts/red,
-/turf/open/floor/prison{
-	icon_state = "yellowfull"
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "vPR" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
@@ -36178,16 +35558,6 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/fiorina/station/research_cells)
-"vRn" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
-/area/fiorina/station/central_ring)
 "vRA" = (
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
@@ -36484,16 +35854,9 @@
 "wby" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/open/space,
 /area/fiorina/oob)
 "wbB" = (
@@ -36521,12 +35884,6 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
-"wco" = (
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "wcP" = (
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/plating/prison,
@@ -36555,11 +35912,6 @@
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"wdC" = (
-/turf/open/floor/prison{
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "wdX" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/prison{
@@ -36687,13 +36039,6 @@
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
-"wgF" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/closed/wall/prison,
-/area/fiorina/station/central_ring)
 "wgH" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
@@ -36782,7 +36127,7 @@
 "wkD" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "wlp" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/prison{
@@ -36857,12 +36202,17 @@
 	},
 /area/fiorina/station/lowsec)
 "wnB" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/area/fiorina/station/central_ring)
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "wnW" = (
 /obj/structure/toilet{
 	pixel_y = 4
@@ -37022,14 +36372,13 @@
 	},
 /area/fiorina/station/botany)
 "wuT" = (
-/obj/structure/platform_decoration{
-	dir = 1
+/obj/structure/lattice,
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
+/turf/open/space/basic,
+/area/fiorina/oob)
 "wvf" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/flora/pottedplant{
@@ -37434,15 +36783,6 @@
 	tag = "icon-kitchen (SOUTHWEST)"
 	},
 /area/fiorina/tumor/civres)
-"wIn" = (
-/obj/item/ammo_casing{
-	icon_state = "casing_1"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "wII" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -37937,20 +37277,6 @@
 	tag = "icon-darkpurple2"
 	},
 /area/fiorina/tumor/servers)
-"wXQ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/station/central_ring)
 "wYx" = (
 /obj/item/storage/box/flashbangs,
 /obj/structure/surface/table/reinforced/prison,
@@ -38194,12 +37520,6 @@
 	icon_state = "blue_plate"
 	},
 /area/fiorina/station/botany)
-"xfX" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "blue"
-	},
-/area/fiorina/station/central_ring)
 "xgl" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/plating/prison,
@@ -38218,7 +37538,9 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "xgx" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("USCM")
+	},
 /turf/open/organic/grass{
 	name = "astroturf"
 	},
@@ -38233,14 +37555,6 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/transit_hub)
-"xho" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "xiF" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light/double/blue{
@@ -38294,7 +37608,7 @@
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe (NORTH)"
 	},
-/area/fiorina/station/central_ring)
+/area/fiorina/station/disco)
 "xkG" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -38661,13 +37975,6 @@
 	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/fiorina/station/flight_deck)
-"xuu" = (
-/obj/item/card/id/pmc/ds,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "xuw" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -38878,10 +38185,6 @@
 	icon_state = "yellowfull"
 	},
 /area/fiorina/station/lowsec)
-"xAe" = (
-/obj/item/device/flashlight,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/central_ring)
 "xAi" = (
 /obj/structure/machinery/vending/sovietsoda,
 /turf/open/floor/prison{
@@ -39209,10 +38512,6 @@
 "xJw" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/civres_blue)
-"xJC" = (
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "xKf" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -39412,20 +38711,14 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
-"xQn" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 2
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/central_ring)
 "xQC" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "xQE" = (
 /obj/structure/closet/bodybag,
 /obj/effect/decal/cleanable/blood/gibs/up,
@@ -39814,15 +39107,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/maintenance)
-"yfs" = (
-/obj/item/reagent_container/food/drinks/coffee{
-	name = "\improper paper cup"
-	},
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/central_ring)
 "yft" = (
 /obj/item/clothing/under/color/orange,
 /turf/open/floor/prison,
@@ -65436,7 +64720,7 @@ cME
 cME
 cME
 cME
-dNn
+gIB
 sTa
 sTa
 dCM
@@ -65648,7 +64932,7 @@ cME
 cME
 cME
 cME
-dNn
+gIB
 tHs
 tHs
 dCM
@@ -67280,17 +66564,17 @@ hVI
 hVI
 hVI
 hVI
-sxs
+bEO
 ncP
-svH
-tvX
-muO
-rJK
-jhb
+bEO
+wjk
+bJF
+dgF
+bEO
 nHb
-sxs
-sxs
-svH
+bEO
+bEO
+bEO
 hmj
 muO
 muO
@@ -67493,15 +66777,15 @@ euG
 sct
 aFZ
 cvn
-dTv
-aNw
-gya
-gya
-gya
-joW
-dTv
+bFr
+bFr
+cvn
+cvn
 cvn
 bFr
+bFr
+cvn
+cvn
 bFr
 twb
 eLu
@@ -67704,17 +66988,17 @@ lbu
 mEO
 gbS
 aFZ
-bQM
-dTv
-jfm
-hZY
-hZY
-hZY
-jfm
-dTv
-bQM
+dhi
+lDC
+qOk
+mKS
+mhv
 cAW
-bQM
+hVS
+lDC
+qOk
+mKS
+mhv
 tPN
 ecL
 cME
@@ -67916,17 +67200,17 @@ lyJ
 ndh
 kwT
 tQB
-bQM
-xQC
-sfX
-bxS
-hZY
-bxS
+daD
+afk
+afk
+afk
+chA
+qFE
 dvY
-xQC
-bQM
-bQM
-bQM
+afk
+afk
+afk
+dkg
 tPN
 ecL
 cME
@@ -68128,17 +67412,17 @@ mEO
 lLE
 xoi
 tQB
-bQM
-xQC
-sfX
-bxS
-hZY
-bxS
-dvY
-xQC
-bQM
-bQM
-bQM
+urJ
+afk
+hkh
+afk
+tCZ
+pcu
+urJ
+afk
+hkh
+afk
+tCZ
 tPN
 slM
 cME
@@ -68340,17 +67624,17 @@ dQp
 idE
 fUX
 tQB
-bQM
-xQC
-sfX
-bxS
-hZY
-bxS
-dvY
-xQC
-bQM
-bQM
-bQM
+mdJ
+afk
+afk
+afk
+cjA
+cpW
+cYa
+afk
+afk
+afk
+dMU
 twb
 twb
 twb
@@ -68552,19 +67836,19 @@ hVI
 anG
 wyl
 aFZ
+bTe
+vNq
+vNq
+tvI
+sYv
 bQM
-dTv
-iQc
-hZY
-hZY
-hZY
 ggQ
-dTv
-bQM
-cAW
-bQM
-bQM
-bQM
+vNq
+vNq
+tvI
+sYv
+rOa
+eHa
 twb
 aLT
 cME
@@ -68758,25 +68042,25 @@ avX
 cwO
 fPZ
 cqH
-hVI
-hVI
-hVI
-odq
-lDC
-dTv
-xQC
-dTv
-aNw
-gya
-gya
-gya
-joW
-dTv
-xQC
-xQC
-dTv
+aFZ
+aFZ
+aFZ
+aFZ
+aFZ
+aFZ
+cAW
+cAW
 bQM
 bQM
+bQM
+bQM
+cAW
+cAW
+cAW
+cAW
+cAW
+rOa
+bTo
 twb
 twb
 twb
@@ -68970,28 +68254,28 @@ jEb
 tur
 fPZ
 goA
-hVI
+aFZ
+dhi
 lDC
-lDC
-kNo
-lDC
+qOk
+mKS
 mhv
-bxS
-oOc
-jfm
-bxS
-bxS
-bxS
-jfm
-izT
-bxS
-bxS
-dTv
-dTv
-dTv
 bQM
 bQM
 bQM
+bQM
+bQM
+bQM
+cAW
+cAW
+cAW
+cAW
+cAW
+hVS
+lDC
+qOk
+mKS
+mhv
 twb
 ivB
 uzw
@@ -69182,28 +68466,28 @@ vWe
 ruB
 ruB
 dID
-vWe
-pSq
-hZY
-gTw
-hZY
-jfm
-jfm
-jfm
-jfm
-eZA
-dMU
-xfX
-jfm
-jfm
-jfm
-jfm
-hZY
-hZY
-sMt
-dTv
-bQM
-bQM
+aSS
+daD
+afk
+afk
+afk
+bAB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+eDn
+afk
+afk
+afk
+dkg
 twb
 nSU
 cME
@@ -69394,28 +68678,28 @@ pQD
 rME
 fPZ
 fPZ
-tnz
-hZY
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-eZA
-dMU
-xfX
-tvI
-tvI
-tvI
-tvI
-jfm
-jfm
-hZY
-qAu
-dTv
-bQM
+tQB
+urJ
+afk
+hkh
+afk
+bQp
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+eDn
+afk
+hkh
+afk
+tCZ
 twb
 uts
 cME
@@ -69606,31 +68890,31 @@ qpw
 fPZ
 fPZ
 fPZ
-cjA
-hZY
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-njP
-nSh
-tia
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-hZY
-dTv
-dTv
-dTv
-eLu
-eLu
+tQB
+mdJ
+afk
+afk
+afk
+bAB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+rAe
+afk
+afk
+afk
+dMU
+twb
+dTf
+cME
 eLu
 srI
 dTf
@@ -69817,33 +69101,33 @@ hVI
 hVI
 fPZ
 fPZ
-cYa
-lDC
-avw
+hBX
+tQB
+bTe
+vNq
+vNq
 tvI
+sYv
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+bTe
+eJQ
+vNq
 tvI
-tvI
-tvI
-eDn
-tvI
-tvI
-jfm
-jfm
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-hZY
-dvY
-fdV
-hLJ
+sYv
+twb
+wQT
 dMa
-gfo
+eLu
 cME
 wQT
 eLu
@@ -70026,39 +69310,39 @@ bqy
 hVI
 kSp
 pEe
+aoa
+aja
 mFh
 aja
-fPZ
-uxi
-hRN
-rrX
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-bxS
-jfm
-tvI
-tvI
-msD
-tvI
-tvI
-eDn
-tvI
-jfm
-hZY
-lDC
-dTv
+aFZ
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+twb
+twb
+twb
 twb
 tPN
-tPN
-tPN
 twb
-eLu
+twb
 kqC
 pHu
 mcc
@@ -70233,39 +69517,39 @@ tST
 kqz
 kqz
 kqz
-bxa
+cwO
 eli
 hVI
 myO
 cwO
 mJy
 cwO
-fPZ
-uxi
-gfp
-chA
-tvI
-naA
-tvI
-tvI
-tvI
-tvI
-dkg
-jfm
-bxS
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-bxS
-xQC
-bQM
+mJy
+cwO
+tQB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
 bQM
 bQM
 bQM
@@ -70445,7 +69729,7 @@ kqz
 kqz
 sZr
 kkg
-qEz
+cwO
 hVI
 hVI
 mAz
@@ -70453,31 +69737,31 @@ tur
 quk
 rMS
 tcl
-uxi
-reI
-rrX
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-hZY
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-bxS
-xQC
-bQM
+tur
+tQB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
 bQM
 bQM
 bQM
@@ -70657,44 +69941,44 @@ vro
 kqz
 sWu
 kqz
-aTN
-lDC
-lDC
-lDC
-lDC
-lDC
-lDC
-lDC
-wgF
-lDC
-avw
-tvI
-cpW
-tvI
-tvI
-tvI
-kpG
-tvI
-jfm
-bxS
-jfm
-tvI
-kpG
-tvI
-tvI
-tvI
-tgn
-tvI
-tvI
-jfm
-xJC
-dTv
-dTv
-xQC
-xQC
-xQC
-dTv
-dTv
+tkk
+hVI
+hVI
+aFZ
+tQB
+tQB
+aFZ
+tQB
+tQB
+aFZ
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+wzE
+hZR
+hZR
+wzE
+wzE
 vqi
 pHu
 mcc
@@ -70870,44 +70154,44 @@ kqz
 kqz
 hkW
 iJj
-gRY
-jfm
-piE
-gTw
+fPZ
+aFZ
+aFZ
+bce
 gTw
 wuT
-iGF
+qOk
 jfm
-jfm
-hZY
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-cpW
-ggu
-bxS
-fcZ
-tvI
-tvI
-tgn
-tvI
-mMO
-tvI
-tvI
-tvI
-jfm
-jfm
-rcF
-muN
-gTw
-gTw
-gTw
-jfm
-rcF
-kUw
+vPM
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+wzE
+mcc
+mcc
+mcc
+sHH
+mcc
 cMg
 mcc
 vei
@@ -71083,42 +70367,42 @@ kqz
 kqz
 lcu
 vbe
-hZY
-xAe
-bxS
-bxS
-hZY
-qfZ
-bxS
-rDS
-iBS
-oLR
-jfm
-jfm
-jfm
-jfm
-jfm
-jfm
-jfm
-hZY
-mSi
-jfm
-jfm
-jfm
-jfm
-jfm
-jfm
-lfc
-lvA
-lvA
-bxS
-fhz
-hZY
-bxS
-bxS
-bxS
-hZY
-fhz
+aja
+tQB
+cAW
+ajx
+afk
+afk
+afk
+wnB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+hZR
+mGe
+gcy
+gcy
+sHH
 sHH
 pHu
 mcc
@@ -71292,45 +70576,45 @@ hVI
 fcO
 sZr
 kqz
-kqz
+ajp
 pIX
 cYg
-hZY
-hZY
-hZY
-mby
-hZY
-qfZ
-bxS
-tdn
-ssV
-rTR
-jfm
-bxS
-bxS
-ocP
-bxS
-bxS
-hZY
-eHa
-hZY
-bxS
-bAB
-hZY
-bxS
-bxS
-jfm
-fsn
-wdC
-wdC
-bxS
-fhz
-hZY
-hZY
-hZY
-hZY
-hZY
-fhz
+cwO
+tQB
+cAW
+ajx
+afk
+hkh
+afk
+wnB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+hZR
+mcc
+sHH
+sHH
+sHH
 sHH
 pHu
 mcc
@@ -71506,43 +70790,43 @@ kqz
 kqz
 kqz
 aSw
-vRn
-hZY
-kew
-nEx
-bxS
-hZY
-qfZ
-bxS
+kqz
+cwO
+tQB
+cAW
+ajx
+afk
+afk
+afk
 wnB
-wnB
-ajp
-xuu
-pNR
-jfm
-jfm
-jfm
-jfm
-pNR
-hZY
-jfm
-wIn
-jfm
-jfm
-jfm
-jfm
-jfm
-yfs
-qqk
-qqk
-bxS
-fhz
-hZY
-bxS
-bxS
-bxS
-hZY
-fhz
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+hZR
+aCO
+bMl
+gcy
+sHH
 sHH
 pHu
 mcc
@@ -71718,44 +71002,44 @@ kqz
 kqz
 xzb
 kdo
-wXQ
-jfm
-nof
-sNk
-vnr
-ggQ
-tpV
-jfm
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-bxS
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-jfm
-jPE
-iQc
-vnr
-vnr
-vnr
-jfm
-jPE
-pbh
+tzF
+cwO
+tQB
+cAW
+ajx
+afk
+afk
+afk
+wnB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+wzE
+mcc
+jZb
+mcc
+sHH
+mcc
 pHu
 mcc
 vei
@@ -71930,43 +71214,43 @@ xzb
 kqz
 kqz
 oFW
-dTv
-qAu
-xQC
-xQC
-xQC
-dTv
-dTv
-ipV
-jfm
-tvI
-mrM
-tvI
-tvI
-tvI
-tvI
-kpG
-tvI
-jfm
-bxS
-set
-tvI
-kpG
-tvI
-naA
-tvI
-mNT
-hVS
-tvI
-jfm
-xJC
-dTv
-dTv
-xQC
-xQC
-xQC
-dTv
-dTv
+jEb
+tur
+tQB
+cAW
+ajx
+afk
+hkh
+afk
+wnB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+wzE
+hZR
+hZR
+wzE
+wzE
 vqi
 pHu
 mcc
@@ -72142,42 +71426,42 @@ kqz
 kqz
 kqz
 lwB
-jmG
-jmG
-bQM
-bQM
-bQM
-bQM
-xQC
-bxS
-jfm
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-mrM
-jfm
-hZY
-jfm
-tvI
-tvI
-mrM
-tvI
-cpW
-tvI
-hVS
-tvI
-jfm
-bxS
-xQC
-mGD
-fyC
+aSS
+aFZ
+aFZ
+cAW
+ajx
+afk
+afk
+afk
+wnB
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+dhi
+fsn
 qOk
-mKS
-erT
+gfp
+mhv
 wzE
 wzE
 pHu
@@ -72354,38 +71638,38 @@ eTd
 jEb
 jEb
 lJv
-jmG
-jmG
-bQM
-bQM
-bQM
-bQM
-xQC
+aFZ
+aFZ
+aFZ
+rOa
+aGS
+aNw
+llQ
 vuc
-jfm
-tvI
-tvI
-tvI
-mLQ
-mGt
-tvI
-tvI
-tvI
-jfm
-bxS
-jfm
-tvI
-mrM
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-jfm
-bxS
-xQC
-eJQ
+aTN
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+ajx
 afk
 afk
 afk
@@ -72570,34 +71854,34 @@ jmG
 jmG
 jmG
 jmG
+uwk
+uwk
 jmG
 jmG
 jmG
-cKa
-cKa
-itG
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-naA
-jfm
-bxS
-jfm
-jfm
-jfm
-jfm
-qTg
-qTg
-qTg
-jfm
-jfm
-nJH
-dTv
-dTv
-urJ
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+ajx
 afk
 hkh
 afk
@@ -72784,32 +72068,32 @@ rsE
 cKa
 imL
 ggB
-uxQ
+ggB
 mEv
-jYs
-sfX
-tvI
-tvI
-tvI
+uwk
+cAW
+cAW
+cAW
+cAW
 hVS
-tvI
-tvI
-tvI
-jfm
-uvY
-jfm
+vBP
+vBP
+vBP
+vBP
+vBP
+vBP
 tgn
-tvI
-gDe
-mfL
+vBP
+vBP
+vBP
 vPM
-lvA
-xQn
-jfm
-nJH
-dTv
-jKI
-mdJ
+cAW
+cAW
+cAW
+cAW
+cAW
+bQM
+ajx
 afk
 afk
 afk
@@ -72996,37 +72280,37 @@ mYp
 cKa
 qZW
 ggB
-uxQ
+ggB
 biJ
-jYs
-sfX
-byl
-tvI
-tvI
-tvI
-tvI
-tvI
-tvI
-lfc
-thu
-lvA
-tvI
-tvI
-gDe
-bOB
-jfm
-bOB
-xQn
-hZY
-gLW
-dTv
-eph
-eph
+uwk
+cAW
+cAW
+cAW
+cAW
+rAe
+afk
+afk
+afk
+hkh
+afk
+afk
+hkh
+afk
+afk
+afk
+eZq
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+fdV
 wby
 llQ
-jKI
-bUB
-bQM
+eZA
+sYv
+rOa
 wzE
 pHu
 mcc
@@ -73208,34 +72492,34 @@ tOp
 cKa
 rfJ
 ggB
-uxQ
+ggB
 iwK
-cKa
-sfX
-hZY
-jfm
-jfm
-tvI
-tvI
-tvI
-tvI
-ocX
-kJe
-qqk
-tvI
-cpW
-gDe
-ocX
-bOB
-pTz
-xQn
-hZY
-vbX
-dhe
-aoa
-twb
-tPN
-twb
+uwk
+cAW
+cAW
+cAW
+cAW
+rAe
+afk
+afk
+afk
+pcu
+afk
+afk
+pcu
+afk
+afk
+afk
+eZq
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+ajx
+wzE
 wzE
 wzE
 wzE
@@ -73423,35 +72707,35 @@ kNz
 vJD
 vJD
 jmG
-qAu
-dTv
-hZY
-hZY
-jfm
-jfm
-jfm
-qAn
-ocX
-kJe
-qqk
-jfm
-uvY
-jfm
+cAW
+cAW
+bQM
+bQM
+rAe
+afk
+afk
+afk
+hkh
+afk
+afk
+hkh
+afk
+afk
+afk
 eZq
-eZq
-eZq
-jfm
-dvY
-fdV
-hLJ
-gfo
-nGn
-gfo
-liA
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+ajx
+hZR
 gEW
 mcc
 fLR
-kqC
+usz
 pHu
 mcc
 vei
@@ -73635,33 +72919,33 @@ dyM
 vJD
 vJD
 jmG
-bQM
-dTv
-xQC
-dTv
-bxS
-bxS
-xho
-qIK
-bxS
-bxS
-bxS
+cAW
+cAW
+cAW
+cAW
+bTe
+jlH
+jlH
+tWI
+llQ
+jKI
+tWI
+llQ
+jKI
+jlH
+jlH
 sYv
-imp
-rNN
-jfm
-sYv
-jfm
-jfm
-dvY
-fdV
-hLJ
-gfo
-tgJ
-gfo
-liA
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+cAW
+bTo
+hZR
 gEW
-mcc
+ggu
 mcc
 usz
 pHu
@@ -73847,31 +73131,31 @@ cKa
 aaK
 kNz
 jmG
-rOa
-gcy
-pcu
-dTv
-xQC
-xQC
-dTv
-jVV
-jpd
-jpd
-jpd
-iQG
-lDC
-gxf
-rLD
+bQM
+bQM
+cAW
+cAW
+bce
+cAW
+ecM
+ecM
+mlC
+mlC
+mlC
+ecM
+ecM
+cAW
+cAW
+bce
+cAW
 vnr
-gxf
-vnr
-vnr
-dTv
-twb
-tPN
-tPN
-tPN
-twb
+hVS
+vBP
+byl
+byl
+mhv
+rAe
+wzE
 dYr
 mcc
 mcc
@@ -74059,30 +73343,30 @@ cKa
 xMR
 iZV
 uwk
-swg
-fyC
-qOk
-sHO
-erT
+bxa
+byl
+vBP
+byl
+mhv
 rOa
-dTv
+ecM
 rkB
 rFr
-rJp
+miU
 uSb
-wuT
-lDC
-lDC
-kNo
-kNo
-lDC
-kNo
-kNo
-dTv
+lzb
+ecM
+bQM
+bQM
+rOa
+cAW
+rOa
+ajx
+afk
 afk
 afk
 ghg
-fyC
+fsn
 wzE
 kqC
 usz
@@ -74277,20 +73561,20 @@ afk
 afk
 ghg
 gef
-xQC
+mlC
 wkD
 sMj
-rSO
-wco
+miU
+xKX
 hgJ
-fUM
-lCk
-gxf
-qfg
-iLU
-gxf
-gxf
-xQC
+mlC
+bQM
+cAW
+rOa
+bQM
+rOa
+bTo
+afk
 hkh
 afk
 tCZ
@@ -74489,24 +73773,24 @@ hkh
 afk
 tCZ
 pcu
-xQC
+mlC
 rym
 fBi
-gxf
+xKX
 rym
 rym
-fUM
-lCk
-jVV
+mlC
+rOa
+rOa
+rOa
+rOa
+rOa
 rAe
-iLU
-jVV
-rAe
-xQC
 afk
 afk
-xMW
-jlH
+afk
+fhz
+tvI
 wzE
 pHu
 dui
@@ -74701,24 +73985,24 @@ afk
 afk
 xMW
 ssJ
-xQC
+mlC
 xkC
 tom
 vGv
 uzO
-dvY
-fUM
-jyD
-bQp
-nFb
-iLU
-lwX
-nFb
+dhe
+mlC
+bQM
+rOa
+cAW
+cAW
+bce
+aKA
 xQC
 llQ
-jKI
-bUB
-bQM
+eZA
+sYv
+rOa
 wzE
 lll
 mcc
@@ -74913,22 +74197,22 @@ llQ
 eOF
 bUB
 rOa
-dTv
-jfm
-rJp
-nAz
-hZY
+ecM
+cjF
+miU
+xKX
+gqe
 lzb
-lDC
-lDC
-kNo
-kNo
-lDC
-kNo
-kNo
-dTv
+ecM
+ecM
+mlC
+mlC
+mlC
+mlC
+ecM
+ecM
 pcu
-pbV
+fcZ
 erT
 bQM
 wzE
@@ -75125,19 +74409,19 @@ mlC
 mlC
 mlC
 ecM
-dTv
-jVV
-jpd
-jpd
-jpd
-iQG
-lDC
+ecM
 xKX
-koe
-koe
-aGS
-koe
-koe
+xKX
+rWX
+xKX
+xKX
+ecM
+cjF
+cjF
+cjF
+cjF
+cjF
+cjF
 ecM
 mlC
 wzE
@@ -75338,18 +74622,18 @@ cjF
 qyX
 cjF
 jqR
-vtO
+cjF
 qnu
 xKX
 sWF
-oEI
+cjF
 mDi
-cjF
-cjF
-cjF
-cjF
-cjF
-cjF
+gqe
+gqe
+gqe
+gqe
+gqe
+gqe
 aFO
 cbH
 wzE
@@ -76175,7 +75459,7 @@ uwk
 bQM
 rOa
 bQM
-uwk
+jmG
 hul
 cKa
 cKa
@@ -76811,7 +76095,7 @@ jmG
 bQM
 rOa
 bQM
-jmG
+uwk
 vbt
 fyi
 mIE
@@ -79409,7 +78693,7 @@ rev
 oYM
 oYM
 oYM
-oYM
+mgU
 oYM
 lAS
 mxQ
@@ -86161,7 +85445,7 @@ sVv
 bTo
 pcu
 sVv
-bQM
+skM
 dzl
 dzl
 bVk

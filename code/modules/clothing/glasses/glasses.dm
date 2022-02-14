@@ -27,8 +27,9 @@
 		AddElement(/datum/element/poor_eyesight_correction)
 
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
-	if(item_state_slots && item_state_slots[slot])
-		return item_state_slots[slot]
+	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
+	if(item_state_slot_state)
+		return item_state_slot_state
 	else
 		return icon_state
 

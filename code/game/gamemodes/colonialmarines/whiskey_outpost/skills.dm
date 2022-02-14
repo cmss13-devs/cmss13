@@ -20,7 +20,7 @@
 	)
 
 /datum/skills/honor_guard/spec
-	name = "Honor Guard Specialist" //Tank crew
+	name = "Honor Guard Weapons Specialist" //Tank crew
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

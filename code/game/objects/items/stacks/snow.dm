@@ -1,4 +1,7 @@
-
+GLOBAL_LIST_INIT(snow_recipes, list(
+	new /datum/stack_recipe("snow barricade", /obj/structure/barricade/snow, 3, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = TRUE, flags = RESULT_REQUIRES_SNOW),
+	new /datum/stack_recipe("snowball", /obj/item/snowball, 1)
+	))
 
 
 /obj/item/stack/snow
@@ -15,6 +18,9 @@
 	max_amount = 25
 	stack_id = "snow pile"
 
+/obj/item/stack/snow/Initialize(mapload, amount)
+	recipes = GLOB.snow_recipes
+	return ..()
 
 /obj/item/stack/snow/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/shovel))
@@ -74,45 +80,32 @@
 				T.update_icon(TRUE, FALSE)
 			use(1)
 
-/obj/item/stack/snow/attack_self(mob/user)
-	..()
+/obj/item/snowball
+	name = "snowball"
+	desc = "A weapon of mass destruction, this perfectly crafted item can be used to decimate the enemy forces, provided there isn't a shoebill to block your shot..."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "snowball"
+	item_state = "lgloves"
+	flags_atom = ITEM_UNCATCHABLE
+	force = 0
+	w_class = SIZE_SMALL
+	throwforce = 0
+	throw_speed = SPEED_AVERAGE
+	throw_range = 7
+	attack_verb = list("smashed", "smacked", "slugged")
+	flags_equip_slot = SLOT_STORE // tactical snowball
 
-	var/turf/T = get_turf(user)
-	if(!(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow)))
-		to_chat(user, SPAN_WARNING("You can't build a snow barricade at this location!"))
-		return
+/obj/item/snowball/attack(mob/living/M, mob/living/user)
+	. = ..()
+	M.Slow(2)
+	M.Daze(2)
+	qdel(src)
 
-	if(user.action_busy)
-		return
+/obj/item/snowball/launch_impact(atom/hit_atom)
+	. = ..()
+	qdel(src)
 
-	if(amount < 3)
-		to_chat(user, SPAN_WARNING("You need 3 layers of snow to build a barricade."))
-		return
-
-	//Using same safeties as other constructions
-	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
-		if(O.density)
-			if(O.flags_atom & ON_BORDER)
-				if(O.dir == user.dir)
-					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
-					return
-			else
-				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
-				return
-
-	user.visible_message(SPAN_NOTICE("[user] starts assembling a snow barricade."), \
-		SPAN_NOTICE("You start assembling a snow barricade."))
-	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(user, "You stop assembling a snow barricade.")
-		return
-	if(amount < 3)
-		return
-	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
-		if(O.density)
-			if(!(O.flags_atom & ON_BORDER) || O.dir == user.dir)
-				return
-	var/obj/structure/barricade/snow/SB = new(user.loc, user, user.dir)
-	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
-	SPAN_NOTICE("You assemble a sandbag barricade."))
-	SB.add_fingerprint(user)
-	use(3)
+/obj/item/snowball/mob_launch_collision(mob/living/L)
+	. = ..()
+	L.Slow(2)
+	L.Daze(2)

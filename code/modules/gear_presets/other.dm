@@ -631,7 +631,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = JOB_CREWMAN
 	rank = JOB_CREWMAN
-	paygrade = "E7"
+	paygrade = "E4"
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -674,7 +674,7 @@
 	idtype = /obj/item/card/id/dogtag
 	assignment = "Crewman Trainee"
 	rank = "Crewman Trainee"
-	paygrade = "E5"
+	paygrade = "E3"
 	role_comm_title = "CRTR"
 	minimum_age = 25
 	skills = /datum/skills/tank_crew

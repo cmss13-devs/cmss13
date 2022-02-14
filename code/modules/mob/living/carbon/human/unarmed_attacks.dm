@@ -9,7 +9,7 @@
 	var/edge = FALSE
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user)
-	if(!user.species.melee_allowed)
+	if(!user.melee_allowed)
 		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
 		return FALSE
 
@@ -24,7 +24,7 @@
 	edge = TRUE
 
 /datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user)
-	if(!user.species.melee_allowed)
+	if(!user.melee_allowed)
 		return FALSE
 
 	if (user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/muzzle))

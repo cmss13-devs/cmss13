@@ -1,4 +1,3 @@
-
 // All reagents related to medicine
 
 /datum/reagent/medical
@@ -259,6 +258,17 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_NEOGENETIC = 2)
+
+/datum/reagent/medical/meralyne
+	name = "Meralyne"
+	id = "meralyne"
+	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on Meralyne can cause severe corrosion to cell membranes."
+	reagent_state = LIQUID
+	color = "#b40000"
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NEOGENETIC = 3)
 
 /datum/reagent/medical/quickclot
 	name = "Quick Clot"

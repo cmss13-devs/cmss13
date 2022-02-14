@@ -1971,7 +1971,6 @@
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "gp" = (
-/mob/living/simple_animal/cat/George,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"

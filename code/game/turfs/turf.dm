@@ -678,14 +678,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return newT
 		if(!length(baseturfs))
 			baseturfs = list(baseturfs)
-		if(!istype(src, /turf/closed))
-			baseturfs += type
+		insert_self_into_baseturfs()
 		baseturfs += new_baseturfs
 		return ChangeTurf(fake_turf_type, null, flags)
 	if(!length(baseturfs))
 		baseturfs = list(baseturfs)
-	if(!istype(src, /turf/closed))
-		baseturfs += type
+	insert_self_into_baseturfs()
 	var/turf/change_type
 	if(length(new_baseturfs))
 		change_type = new_baseturfs[new_baseturfs.len]
@@ -695,6 +693,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else
 		change_type = new_baseturfs
 	return ChangeTurf(change_type, null, flags)
+
+/turf/proc/insert_self_into_baseturfs()
+	baseturfs += type
 
 /// Remove all atoms except observers, landmarks, docking ports - clearing up the turf contents
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)

@@ -2,7 +2,7 @@
 
 
 /obj/structure/machinery/bodyscanner
-	name = "Body Scanner"
+	name = "body scanner"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
@@ -99,6 +99,15 @@
 /obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
 	go_out()
 
+//clickdrag code - "resist to get out" code is in living_verbs.dm
+/obj/structure/machinery/bodyscanner/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	var/mob/living/H = user
+	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+		return
+
+	go_in_bodyscanner(target)
+
 /obj/structure/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
 	var/mob/M
 	if (istype(I, /obj/item/grab))
@@ -159,7 +168,7 @@
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/machinery/body_scanconsole
-	name = "Body Scanner Console"
+	name = "body scanner console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
 	density = 0
@@ -311,6 +320,7 @@
 		"dexalin_amount" = H.reagents.get_reagent_amount("dexalin"),
 		"bicaridine_amount" = H.reagents.get_reagent_amount("bicaridine"),
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
+		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
@@ -372,6 +382,9 @@
 
 	s_class = occ["dermaline_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
 	dat += "[SET_CLASS("Dermaline:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["dermaline_amount"]] units:", s_class)]<BR>"
+
+	s_class = occ["meralyne_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Meralyne:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["meralyne_amount"]] units:", s_class)]<BR>"
 
 	s_class = occ["bicaridine_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
 	dat += "[SET_CLASS("Bicaridine:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["bicaridine_amount"]] units", s_class)]<BR>"

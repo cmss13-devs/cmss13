@@ -1,7 +1,7 @@
 /datum/tech/droppod/item/engi_czsp
-	name = "Squad Engineer Combat Zone Support Package"
+	name = "Combat Technician Combat Zone Support Package"
 	desc = {"Gives upgraded composite (deployable) cades to regulars. \
-			Gives squad engineers a mod kit for their deployable."}
+			Gives ComTechs a mod kit for their deployable."}
 	icon_state = "engi_kit"
 	droppod_name = "Engi CZSP"
 

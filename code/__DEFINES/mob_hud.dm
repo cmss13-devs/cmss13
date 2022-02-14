@@ -47,9 +47,11 @@
 #define MOB_HUD_HUNTER				16
 
 //for SL/FTL/LZ targeting on locator huds
-#define TRACKER_SL					1
-#define TRACKER_FTL					2
-#define TRACKER_LZ					3
+#define TRACKER_SL					"track_sl"
+#define TRACKER_FTL					"track_ftl"
+#define TRACKER_LZ					"track_lz"
+#define TRACKER_CO					"track_co"
+#define TRACKER_XO					"track_xo"
 
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN "Queen"

@@ -10,7 +10,7 @@
 	use_power = 0
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
-	var/faction_group = FACTION_LIST_MARINE
+	var/list/faction_group
 	var/health_max = 200
 	var/turned_on = FALSE
 	var/mob/owner_mob = null
@@ -21,19 +21,33 @@
 	var/static = FALSE
 	var/locked = FALSE
 	var/composite_icon = TRUE
+	var/display_additional_stats = FALSE
 
 	var/defense_check_range = 2
 	var/can_be_near_defense = FALSE
 
+	var/shots = 0
+	var/kills = 0
 
-/obj/structure/machinery/defenses/Initialize(var/mapload, var/faction)
+	var/hack_time = 150
+	var/placed = 0
+	var/obj/item/defenses/handheld/HD
+
+
+/obj/structure/machinery/defenses/Initialize()
 	. = ..()
 	update_icon()
-	if(!isnull(faction))
-		if(islist(faction))
-			faction_group = faction
-		else
-			faction_group = list(faction)
+	connect()
+
+/obj/structure/machinery/defenses/proc/connect()
+	sleep(0.5 SECONDS)
+	if(placed && !HD)
+		HD = new handheld_type
+		if(!HD.TR)
+			HD.TR = src
+			return TRUE
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/defenses/update_icon()
 	if(!composite_icon)
@@ -47,17 +61,20 @@
 /obj/structure/machinery/defenses/examine(mob/user)
 	. = ..()
 
+	var/message = ""
 	if(ishuman(user))
-		var/message = ""
 		message += SPAN_INFO("Multitool is used to disassemble it.")
 		message += "\n"
 		message += SPAN_INFO("The turret is currently [locked? "locked" : "unlocked"] to non-engineers.")
 		message += "\n"
 		message += SPAN_INFO("It has [SPAN_HELPFUL("[health]/[health_max]")] health.")
-		to_chat(user, message)
+	message += "\n"
+	if(display_additional_stats)
+		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
+	to_chat(user, message)
 
 /obj/structure/machinery/defenses/proc/power_on()
-	if(stat == DEFENSE_DAMAGED)
+	if(stat == DEFENSE_DAMAGED || !placed)
 		return FALSE
 
 	turned_on = TRUE
@@ -79,17 +96,55 @@
 		machine_processing = FALSE
 		fast_machines -= src
 
+/obj/structure/machinery/defenses/proc/earn_kill()
+	kills++
+
+/obj/structure/machinery/defenses/proc/track_shot()
+	shots++
+	if(owner_mob && owner_mob != src)
+		owner_mob.track_shot(initial(name))
+
+/obj/structure/machinery/defenses/proc/friendly_faction(var/factions)
+	if(factions in faction_group)
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(QDELETED(O))
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
+		if(!friendly_faction(user.faction))
+			to_chat(user, SPAN_WARNING("This doesn't seem safe..."))
+			var/additional_shock = 1
+			if(!do_after(user, hack_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+				additional_shock++
+			if(prob(50))
+				var/mob/living/carbon/human/H = user
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+					if(turned_on)
+						additional_shock++
+					H.electrocute_act(40, src, additional_shock)//god damn Hans...
+					setDir(get_dir(src, H))//Make sure he died
+					power_off()
+					power_on()
+					return
+				else
+					H.electrocute_act(20, src)//god bless him for stupid move
+					return
+			if(additional_shock >= 2)
+				return
+			LAZYCLEARLIST(faction_group)
+			for(var/i in user.faction_group)
+				LAZYADD(faction_group, i)
+			to_chat(user, SPAN_WARNING("You've hacked \the [src], it's now ours!"))
+			return
+
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
-		if(health < health_max * 0.5)
+		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("[src] is too damaged to pick up!"))
 			return
 
@@ -104,11 +159,18 @@
 
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
 
-		var/obj/item/defenses/handheld/H = new handheld_type(loc)
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
-		H.name = "handheld [src.name]" //fixed
-		H.obj_health = health
-		qdel(src)
+		var/turf/T = get_turf(src)
+		if(!faction_group) //Littly trolling for stealing marines turrets, bad boys!
+			for(var/i in user.faction_group)
+				LAZYADD(faction_group, i)
+		power_off()
+		HD.forceMove(T)
+		HD.dropped = 1
+		HD.update_icon()
+		placed = 0
+		forceMove(HD)
+
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
@@ -169,6 +231,9 @@
 		return
 
 	add_fingerprint(user)
+
+	if(!friendly_faction(user.faction))
+		return
 
 	if(!anchored)
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
@@ -285,6 +350,8 @@
 	if(static)
 		return
 	if(!ishuman(usr))
+		return
+	if(!friendly_faction(usr.faction))
 		return
 	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))

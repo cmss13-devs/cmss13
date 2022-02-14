@@ -120,7 +120,7 @@
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
-	paygrade = "NO4"
+	paygrade = "MO2"
 	role_comm_title = "CE"
 	minimum_age = 27
 	skills = /datum/skills/CE
@@ -153,7 +153,7 @@
 	)
 	assignment = JOB_MAINT_TECH
 	rank = JOB_MAINT_TECH
-	paygrade = "ME5"
+	paygrade = "ME2"
 	role_comm_title = "MT"
 	skills = /datum/skills/OT
 
@@ -190,7 +190,7 @@
 	)
 	assignment = JOB_ORDNANCE_TECH
 	rank = JOB_ORDNANCE_TECH
-	paygrade = "ME5"
+	paygrade = "ME2"
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
@@ -232,7 +232,7 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrade = "NO4"
+	paygrade = "MO2"
 	role_comm_title = "RO"
 	minimum_age = 27
 	skills = /datum/skills/RO
@@ -263,7 +263,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
 	assignment = JOB_CARGO_TECH
 	rank = JOB_CARGO_TECH
-	paygrade = "ME5"
+	paygrade = "ME2"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
@@ -286,13 +286,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander
-	name = "USCM Captain (CO)"
+	name = "USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
 	rank = JOB_CO
-	paygrade = "NO6"
+	paygrade = "MO4"
 	role_comm_title = "CO"
 	minimum_age = 40
 	skills = /datum/skills/commander
@@ -357,12 +357,12 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander/commodore
-	name = "USCM Commodore (CO+)"
+	name = "USCM Commanding Officer (CO+)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold/commodore
 	rank = JOB_CO
-	paygrade = "NO6E"
+	paygrade = "MO5"
 	role_comm_title = "CDRE"
 	minimum_age = 45
 
@@ -372,9 +372,9 @@
 	. = ..()
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
-	name = "USCM Commodore (CO++)"
+	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/admiral
-	paygrade = "NO6E"
+	paygrade = "MO5"
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdrechief(H), WEAR_HEAD)
@@ -389,7 +389,7 @@
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
 	rank = JOB_XO
-	paygrade = "NO5"
+	paygrade = "MO3"
 	role_comm_title = "XO"
 	minimum_age = 35
 	skills = /datum/skills/XO
@@ -427,7 +427,7 @@
 	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_SO
 	rank = JOB_SO
-	paygrade = "NO3"
+	paygrade = "MO1"
 	role_comm_title = "SO"
 	minimum_age = 25
 	skills = /datum/skills/SO
@@ -445,7 +445,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 
 	H.hud_set_squad()
 
@@ -491,14 +491,14 @@
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
-		var/grade8 = "ME8"
-		var/grade9 = "ME9"
+		var/grade8 = "ME8E"
+		var/grade9 = "ME9E"
 
 		if(H.client && H.client.prefs)
 			var/path = H.client.prefs.sea_path
 			if(path == "Technical")
-				grade8 = "ME8E"
-				grade9 = "ME9E"
+				grade8 = "ME8"
+				grade9 = "ME9"
 
 		if(!H.client.prefs.playtime_perks)
 			return paygrade
@@ -511,15 +511,15 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po
-	name = "USCM Pilot Officer (PO) (Cryo)"
+	name = "USCM Pilot (DP) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_PILOT
 	rank = JOB_PILOT
-	paygrade = "NO1" //Technically Second Lieutenant equivalent, but 2ndLT doesn't exist in Marine pay grade, so Ensign
-	role_comm_title = "PO"
+	paygrade = "MO1"
+	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
 /datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
@@ -568,7 +568,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_DROPSHIP_CREW_CHIEF
 	rank = JOB_DROPSHIP_CREW_CHIEF
-	paygrade = "ME6"
+	paygrade = "ME5"
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
 
@@ -618,7 +618,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"
-	paygrade = "NO6"
+	paygrade = "MO3"
 	role_comm_title = "Cpt"
 	minimum_age = 40
 	skills = /datum/skills/commander
@@ -652,14 +652,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chef
-	name = "USCM Mess Sergeant (MS)"
+	name = "USCM Mess Technician (MST)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	rank = JOB_MESS_SERGEANT
-	paygrade = "ME5"
-	role_comm_title = "MS"
+	paygrade = "ME2"
+	role_comm_title = "MST"
 	skills = /datum/skills/OT
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)

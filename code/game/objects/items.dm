@@ -202,9 +202,6 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
-			if(MAP_NEW_VARADERO)
-				icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
-				item_state = new_item_state ? new_item_state : "u_" + item_state
 		if(new_protection)
 			min_cold_protection_temperature = new_protection
 	else return

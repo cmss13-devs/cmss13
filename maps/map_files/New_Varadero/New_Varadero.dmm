@@ -3631,7 +3631,10 @@
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "duZ" = (
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd,
+/obj/item/weapon/gun/revolver/m44/custom/pkd_special{
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9494,6 +9497,12 @@
 	icon_state = "wredfull"
 	},
 /area/varadero/interior/medical)
+"iWv" = (
+/obj/item/ammo_magazine/revolver/pkd,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/oob)
 "iWK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -15393,7 +15402,7 @@
 /area/varadero/interior/toilets)
 "oAS" = (
 /mob/living/simple_animal/hostile/retaliate/clown{
-	desc = "They lacked critical information when they asked for this. But ask and you shall receive. Gonzo does not want to be here.";
+	desc = "They lacked critical information when they asked for this. But ask and you shall receive. Gonzo is here hunting an escaped Nexus 7 who is hiding amongst UA service members.";
 	health = 10000;
 	move_to_delay = 2;
 	name = "Gonzo the Magnificent";
@@ -44520,7 +44529,7 @@ wUU
 bOZ
 jRC
 duZ
-jRC
+iWv
 nSZ
 cBu
 cBu

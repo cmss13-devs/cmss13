@@ -7457,6 +7457,12 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/exterior/lz1_console)
+"hjD" = (
+/obj/item/ammo_magazine/revolver/pkd,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/oob)
 "hkc" = (
 /obj/structure/surface/table,
 /obj/item/device/binoculars,
@@ -9497,12 +9503,6 @@
 	icon_state = "wredfull"
 	},
 /area/varadero/interior/medical)
-"iWv" = (
-/obj/item/ammo_magazine/revolver/pkd,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/oob)
 "iWK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -44529,7 +44529,7 @@ wUU
 bOZ
 jRC
 duZ
-iWv
+hjD
 nSZ
 cBu
 cBu

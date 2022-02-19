@@ -230,14 +230,13 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 
-		var/found = FALSE
-		for (var/datum/effects/prae_acid_stacks/PAS in H.effects_list)
-			PAS.increment_stack_count()
-			found = TRUE
-			break
+		var/datum/effects/prae_acid_stacks/PAS = locate() in H.effects_list
 
-		if (!found)
-			new /datum/effects/prae_acid_stacks(H)
+		if(!PAS)
+			PAS = new /datum/effects/prae_acid_stacks(H)
+			PAS.increment_stack_count()
+		else
+			PAS.increment_stack_count(2)
 
 		if(!H.lying)
 			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))

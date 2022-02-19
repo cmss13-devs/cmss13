@@ -83,6 +83,13 @@
 		to_chat(user, SPAN_WARNING("This operation is more complex than you're trained for!"))
 		return FALSE
 
+	if(target.pulledby.grab_level == GRAB_CARRY)
+		if(target.pulledby == user)
+			to_chat(user, SPAN_WARNING("You need to set [target] down before you can operate on \him!"))
+		else
+			to_chat(user, SPAN_WARNING("You can't operate on [target], \he is being carried by [target.pulledby]!"))
+		return FALSE
+
 	if(lying_required && !target.lying)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE

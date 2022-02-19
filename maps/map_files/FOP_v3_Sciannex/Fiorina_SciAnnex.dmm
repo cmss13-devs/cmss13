@@ -4104,11 +4104,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"csT" = (
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
-/area/fiorina/oob)
 "ctc" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "sheater0"
@@ -77570,12 +77565,12 @@ pVq
 wef
 pVq
 aSz
-aSz
-aSz
+jmG
+jmG
 uwk
 uwk
-aSz
-aSz
+jmG
+jmG
 ozh
 kxV
 cjF
@@ -78418,12 +78413,12 @@ cKa
 hul
 cKa
 cKa
-aSz
-hfT
+jmG
+rBF
 dzl
 dzl
-hfT
-hfT
+rBF
+rBF
 ozh
 cjF
 cjF
@@ -87095,7 +87090,7 @@ sYM
 mam
 xdy
 pcu
-csT
+xdy
 eza
 sYM
 cAW

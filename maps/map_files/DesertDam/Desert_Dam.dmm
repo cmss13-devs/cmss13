@@ -7563,6 +7563,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "avn" = (
 /obj/structure/closet/secure_closet/security,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "red"
@@ -24168,6 +24169,7 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "btf" = (
 /obj/structure/closet/secure_closet/security_empty,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -24495,6 +24497,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bug" = (
 /obj/structure/closet/secure_closet/security,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -25935,6 +25938,7 @@
 "byR" = (
 /obj/structure/closet/secure_closet/marshal,
 /obj/item/clothing/suit/storage/CMB,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -48628,6 +48632,7 @@
 /area/desert_dam/building/warehouse/warehouse)
 "cQl" = (
 /obj/structure/closet/secure_closet/security,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"

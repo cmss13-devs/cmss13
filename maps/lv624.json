@@ -7,9 +7,10 @@
         "/datum/equipment_preset/survivor/doctor/lv",
         "/datum/equipment_preset/survivor/chaplain/lv",
         "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/corporate",
         "/datum/equipment_preset/survivor/trucker/lv",
         "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv"
+        "/datum/equipment_preset/survivor/pmc"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",

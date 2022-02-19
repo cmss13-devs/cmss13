@@ -721,34 +721,20 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
+	allows_movement = TRUE
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini/New()
 	..()
 	damage_falloff_scoped_buff = -0.2 //has to be negative
 
-/obj/item/attachable/scope/mini/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(istype(G, /obj/item/weapon/gun/launcher/rocket) || istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
-		zoom_offset = 3
-		allows_movement	= 0
-		if(do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			. = ..()
-	else
-		zoom_offset = initial(zoom_offset)
-		allows_movement	= 1
-		. = ..()
-
 /obj/item/attachable/scope/mini/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
 	. = ..()
 	if(G.zoom)
 		G.slowdown += dynamic_aim_slowdown
-		if(istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
-			G.fire_delay += FIRE_DELAY_TIER_4
 
 /obj/item/attachable/scope/mini/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	G.slowdown -= dynamic_aim_slowdown
-	if(istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
-		G.fire_delay -= FIRE_DELAY_TIER_4
 	..()
 
 /obj/item/attachable/scope/mini/flaregun
@@ -772,6 +758,13 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "huntingscope"
 	desc = "While the Basira-Armstrong rifle is compatible with most telescopic devices, its accompanying scope is usable only with the Basira-Armstrong. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
+/obj/item/attachable/scope/mini/nsg23
+	name = "W-Y S4 2x advanced telescopic mini-scope"
+	desc = "An ARMAT S4 telescoping eye piece, custom-tuned by W-Y scientists to be as ergonomic as possible."
+	icon_state = "miniscope_nsg23"
+	attach_icon = "miniscope_nsg23_a"
+	zoom_offset = 7
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
 /obj/item/attachable/scope/mini_iff
 	name = "B8 Smart-Scope"
@@ -1338,6 +1331,17 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		R.flags_equip_slot |= SLOT_WAIST
 
+/obj/item/attachable/stock/nsg23
+	name = "NSG 23 stock"
+	desc = "If you can read this, someone screwed up. Go Gitlab this and bug a coder."
+	icon_state = "nsg23_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	melee_mod = 5
+	size_mod = 2
+	pixel_shift_x = 21
+	pixel_shift_y = 20
+	hud_offset_mod = 2
 
 ////////////// Underbarrel Attachments ////////////////////////////////////
 

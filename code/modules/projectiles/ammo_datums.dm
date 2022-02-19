@@ -1682,14 +1682,14 @@
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
 
-	accurate_range = 8
+	accurate_range = 10
 	damage =  50
 	penetration = ARMOR_PENETRATION_TIER_6
-	accuracy = HIT_ACCURACY_TIER_8
+	accuracy = HIT_ACCURACY_TIER_9 + HIT_ACCURACY_TIER_5 // 75 accuracy
 	shell_speed = AMMO_SPEED_TIER_2
-	max_range = 14
+	max_range = 15
 	effective_range_max = 7
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()
 	return

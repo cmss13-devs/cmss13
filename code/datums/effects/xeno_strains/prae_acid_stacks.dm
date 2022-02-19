@@ -20,14 +20,14 @@
 
 /datum/effects/prae_acid_stacks/validate_atom(mob/living/carbon/human/H)
 	if (H.stat == DEAD)
-		return FALSE 
+		return FALSE
 
 	return ..()
 
 /datum/effects/prae_acid_stacks/process_mob()
 	. = ..()
 	if (!istype(affected_atom, /mob/living/carbon/human))
-		return 
+		return
 
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--
@@ -50,8 +50,8 @@
 
 	return ..()
 
-/datum/effects/prae_acid_stacks/proc/increment_stack_count()
-	stack_count = min(max_stacks, stack_count + 1)
+/datum/effects/prae_acid_stacks/proc/increment_stack_count(var/increment_number = 1)
+	stack_count = min(max_stacks, stack_count + increment_number)
 
 	if (!istype(affected_atom, /mob/living/carbon/human))
 		return

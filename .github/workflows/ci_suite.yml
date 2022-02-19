@@ -1,0 +1,58 @@
+name: CI Suite
+on:
+  push:
+    branches:
+    - dev
+  pull_request:
+    branches:
+    - dev
+jobs:
+  run_linters:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Run Linters
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: $HOME/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm
+      - name: Install Tools
+        run: |
+          pip3 install setuptools
+          bash tools/ci/install_node.sh
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          tools/bootstrap/python -c ''
+      - name: Run Linters
+        run: |
+          bash tools/ci/check_filedirs.sh ColonialMarinesALPHA.dme
+          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+          find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
+          tgui/bin/tgui --lint
+          tgui/bin/tgui --test
+          bash tools/ci/check_grep.sh
+          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+      - name: Annotate Lints
+        uses: yogstation13/DreamAnnotate@v1
+        if: always()
+        with:
+          outputFile: output-annotations.txt
+
+  compile_all_maps:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Compile Maps
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: $HOME/BYOND
+          key: ${{ runner.os }}-byond
+      - name: Compile All Maps
+        run: |
+          bash tools/ci/install_byond.sh
+          source $HOME/BYOND/byond/bin/byondsetup
+          python3 tools/ci/template_dm_generator.py
+          bash tools/ci/dm.sh -DTESTING -DDEBUG ColonialMarinesALPHA.dme

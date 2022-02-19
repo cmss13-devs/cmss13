@@ -466,6 +466,14 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
+/obj/item/storage/pouch/magazine/large/nsg_ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
+
+/obj/item/storage/pouch/magazine/large/nsg_ext/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
+
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
@@ -635,10 +643,10 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/splint(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
@@ -926,7 +934,8 @@
 		/obj/item/stock_parts/console_screen,
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/micro_laser,
-		/obj/item/stock_parts/scanning_module
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/capacitor
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()

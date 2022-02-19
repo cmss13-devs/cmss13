@@ -630,12 +630,8 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "acV" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid{
-	pixel_x = 8
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_y = -3
-	},
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -9263,6 +9259,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9694,6 +9691,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9893,6 +9891,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -11075,6 +11074,7 @@
 "aST" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/under/CM_uniform,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "red"
 	},
@@ -12493,6 +12493,7 @@
 /area/lv624/lazarus/engineering)
 "aXL" = (
 /obj/structure/closet/secure_closet/security,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "red"
@@ -12703,6 +12704,7 @@
 /area/lv624/lazarus/hop)
 "aYH" = (
 /obj/structure/closet/lawcloset,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "red"
@@ -16354,7 +16356,8 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "iKp" = (
 /obj/structure/surface/rack,
-/obj/item/storage/belt/shotgun/full,
+/obj/item/clothing/mask/gas/PMC/leader,
+/obj/item/clothing/under/marine/veteran/PMC,
 /obj/item/clothing/gloves/marine/veteran/PMC,
 /turf/open/shuttle{
 	icon_state = "floor4"
@@ -17185,7 +17188,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "kRr" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas/PMC/leader,
+/obj/item/storage/belt/shotgun/full,
 /obj/item/weapon/gun/shotgun/double,
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = -6
@@ -20947,6 +20950,12 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "tlQ" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid{
+	pixel_x = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_y = -3
+	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "tmn" = (

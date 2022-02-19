@@ -30,14 +30,16 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
+
 
 /obj/item/clothing/suit/armor/vest/pilot
 	name = "\improper M70 flak jacket"
@@ -102,15 +104,16 @@
 	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
 	icon_state = "armorsec"
 	item_state = "armor"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	slowdown = SLOWDOWN_ARMOR_NONE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
@@ -147,12 +150,10 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	siemens_coefficient = 0.7
-	time_to_unequip = 5
-	time_to_equip = 10
+
 
 /obj/item/clothing/suit/armor/bulletproof/badge
 	icon_state = "bulletproofbadge"
@@ -245,9 +246,8 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
-	slowdown = SLOWDOWN_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 

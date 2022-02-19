@@ -1625,7 +1625,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A green jacket worn by crew on the Colonial Marshals."
 	icon_state = "CMB_jacket"
 	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,

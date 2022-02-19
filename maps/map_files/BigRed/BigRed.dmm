@@ -1493,6 +1493,7 @@
 "adT" = (
 /obj/structure/closet/secure_closet/marshal,
 /obj/item/clothing/suit/storage/CMB,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
@@ -2279,6 +2280,7 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /obj/item/clothing/suit/storage/CMB,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
@@ -3306,6 +3308,7 @@
 /area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "dark"
 	},

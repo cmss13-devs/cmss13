@@ -9259,6 +9259,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9690,6 +9691,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -9889,6 +9891,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -11071,6 +11074,7 @@
 "aST" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/under/CM_uniform,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	icon_state = "red"
 	},
@@ -12489,6 +12493,7 @@
 /area/lv624/lazarus/engineering)
 "aXL" = (
 /obj/structure/closet/secure_closet/security,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "red"
@@ -12699,6 +12704,7 @@
 /area/lv624/lazarus/hop)
 "aYH" = (
 /obj/structure/closet/lawcloset,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "red"

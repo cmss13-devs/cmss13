@@ -30,6 +30,10 @@
 		to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved."))
 		return
 
+	if(T.banished)
+		to_chat(X, SPAN_XENOWARNING("[T] is banished and can't be deevolved."))
+		return
+
 	var/newcaste = T.caste.deevolves_to
 	if(newcaste == "Larva")
 		to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
@@ -307,6 +311,7 @@
 
 		T.banished = TRUE
 		T.hud_update_banished()
+		T.lock_evolve = TRUE
 
 		message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
 
@@ -337,6 +342,7 @@
 		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has readmitted you into the hive.")))
 		T.banished = FALSE
 		T.hud_update_banished()
+		T.lock_evolve = FALSE
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))
 

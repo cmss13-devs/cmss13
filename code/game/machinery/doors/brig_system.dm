@@ -6,6 +6,9 @@
 	req_access = list(ACCESS_MARINE_BRIG)
 	anchored = TRUE    		// can't pick it up
 	density = FALSE       		// can walk through it.
+	unacidable = TRUE
+	indestructible = TRUE
+
 	var/id = null     		// id of door it controls.
 	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list()

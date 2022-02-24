@@ -140,7 +140,7 @@ datum/chemical_reaction/adrenaline
 	name = "Paracetamol"
 	id = "paracetamol"
 	result = "paracetamol"
-	required_reagents = list("tramadol" = 1, "sugar" = 1, "water" = 1)
+	required_reagents = list("tramadol" = 1, "nitrogen" = 1, "water" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/oxycodone

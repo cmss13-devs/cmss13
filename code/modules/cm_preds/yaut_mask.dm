@@ -34,6 +34,7 @@
 	unacidable = TRUE
 	time_to_unequip = 20
 	anti_hug = 5
+	fire_intensity_resistance = 10
 
 	var/thrall = FALSE//Used to affect icon generation.
 

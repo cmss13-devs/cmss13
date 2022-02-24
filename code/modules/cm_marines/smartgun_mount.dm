@@ -289,6 +289,22 @@
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		var/turf/T = get_turf(src)
+		var/fail = FALSE
+		if(T.density)
+			fail = TRUE
+		else
+			for(var/obj/X in T.contents - src)
+				if(X.density && !(X.flags_atom & ON_BORDER))
+					fail = TRUE
+					break
+				if(istype(X, /obj/structure/machinery/defenses))
+					fail = TRUE
+					break
+		if(fail)
+			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+			return
+
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
 
@@ -307,19 +323,6 @@
 				G.update_icon()
 				qdel(src)
 		else
-			if(!anchored)
-				var/turf/T = get_turf(src)
-				var/fail = 0
-				if(T.density)
-					fail = 1
-				else
-					for(var/obj/X in T)
-						if(X.density  && X != src && !(X.flags_atom & ON_BORDER))
-							fail = 1
-							break
-				if(fail)
-					to_chat(user, SPAN_WARNING("Can't install [src] here, something is in the way."))
-					return
 			if(anchored)
 				to_chat(user, "You begin unscrewing [src] from the ground...")
 			else
@@ -676,6 +679,9 @@
 	if(user.get_active_hand())
 		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
 		return HANDLE_CLICK_UNHANDLED
+	if(!user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+		return HANDLE_CLICK_UNHANDLED
 
 	target = A
 	if(!istype(target))
@@ -772,6 +778,11 @@
 				return
 			if(user.get_active_hand() != null)
 				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
+
+			if(!user.allow_gun_usage)
+				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+				return
+
 			else
 				user.set_interaction(src)
 
@@ -1223,7 +1234,7 @@
 	SIGNAL_HANDLER
 	if(!(source.mob == operator) || !A)
 		return
-	var/mob/user = operator
+	var/mob/living/carbon/human/user = operator
 	target = A
 
 	if(params["shift"] || params["ctrl"] || params["alt"])
@@ -1267,7 +1278,7 @@
 
 	handle_rotating_gun(user)
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/living/carbon/human/user, var/atom/A)
 	if(!target)
 		return
 	if(operator != user)
@@ -1276,6 +1287,9 @@
 		return
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need both your hands free to shoot [src]."))
+		return
+	if(!user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 		return
 
 	var/angle = get_dir(src,target)

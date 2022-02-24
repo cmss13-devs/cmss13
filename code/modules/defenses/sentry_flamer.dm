@@ -44,7 +44,7 @@
 	health = 150
 	health_max = 150
 	density = FALSE
-	fire_delay = 10
+	fire_delay = 1.25 SECONDS
 	disassemble_time = 0.75 SECONDS
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/mini
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/mini

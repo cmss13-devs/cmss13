@@ -1,5 +1,5 @@
-#define PLANTED_FLAG_BUFF 3 // CO level aura
-#define PLANTED_FLAG_RANGE 5
+#define PLANTED_FLAG_BUFF 4 // CO level aura plus one
+#define PLANTED_FLAG_RANGE 7
 
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
@@ -104,7 +104,7 @@
 	worn_accessible = TRUE
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	var/area_range = PLANTED_FLAG_RANGE
+	var/area_range = PLANTED_FLAG_RANGE-2
 	var/buff_intensity = PLANTED_FLAG_BUFF/2
 
 /obj/item/storage/backpack/equipped(mob/user, slot)

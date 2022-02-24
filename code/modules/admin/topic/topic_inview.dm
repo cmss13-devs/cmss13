@@ -10,3 +10,5 @@
 			owner.rejuvenate_all_xenos_in_view()
 		if("sleepall")
 			sleepall()
+		if("wakeall")
+			wakeall()

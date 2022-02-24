@@ -708,6 +708,13 @@
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 5
 
+/datum/reagent/ethanol/spikedeggnog
+	name = "Spiked Eggnog"
+	id = "spikedeggnog"
+	description = "A rich and sweet alcoholic beverage traditionally consumed around Christmastime."
+	color = "#DFD7AF" // rgb: 223, 215, 175
+	boozepwr = 1
+
 /datum/reagent/ethanol/erikasurprise
 	name = "Erika Surprise"
 	id = "erikasurprise"

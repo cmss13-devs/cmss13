@@ -163,8 +163,13 @@ var/list/admin_mob_event_verbs_hideable = list(
 )
 
 //verbs which can be hidden - needs work
-var/list/admin_mob_verbs_hideable = list(
-	/client/proc/hide_admin_mob_verbs,
+var/list/admin_verbs_hideable = list(
+	/proc/release,
+	/proc/possess,
+	/client/proc/proccall_atom,
+	/client/proc/jump_to_object,
+	/client/proc/jumptomob,
+	/client/proc/hide_admin_verbs,
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
@@ -246,7 +251,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
 	/datum/admins/proc/remove_marine_techtree_leader,
-	/client/proc/hide_admin_mob_verbs,
+	/client/proc/hide_admin_verbs,
 	/client/proc/clear_mutineers,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
@@ -312,7 +317,7 @@ var/list/admin_verbs_mod = list(
 		admin_verbs_spawn,
 		admin_verbs_teleport,
 		admin_mob_event_verbs_hideable,
-		admin_mob_verbs_hideable,
+		admin_verbs_hideable,
 		debug_verbs,
 	))
 

@@ -1,5 +1,5 @@
-#define BELL_TOWER_RANGE 2
-#define BELL_TOWER_EFFECT 4
+#define BELL_TOWER_RANGE 4
+#define BELL_TOWER_EFFECT 8
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
@@ -106,7 +106,7 @@
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
-	to_chat(M, SPAN_DANGER("The frequence of the noise slows you down!"))
+	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
 
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
@@ -117,7 +117,7 @@
 	var/mob/living/to_apply = target
 
 	if(istype(to_apply))
-		to_apply.SetSuperslowed(1)
+		to_apply.SetSuperslowed(3)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
 
 /obj/structure/machinery/defenses/bell_tower/md

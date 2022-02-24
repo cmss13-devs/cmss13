@@ -298,7 +298,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
 					if(Q.hive)
-						Q.hive.abandon_on_hijack()
+						addtimer(CALLBACK(Q.hive, /datum/hive_status.proc/abandon_on_hijack), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 						Q.hive.hijack_pooled_surge = TRUE
 
 					if(bomb_set)

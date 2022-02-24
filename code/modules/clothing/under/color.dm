@@ -1,6 +1,6 @@
 
 /obj/item/clothing/under/color
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"

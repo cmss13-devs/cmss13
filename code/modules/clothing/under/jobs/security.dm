@@ -37,6 +37,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	siemens_coefficient = 0.9
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/dispatch
 	name = "dispatcher's uniform"

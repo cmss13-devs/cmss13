@@ -33,6 +33,7 @@ log transactions
 	var/editing_security_level = 0
 	var/view_screen = NO_SCREEN
 	var/datum/effect_system/spark_spread/spark_system
+	var/withdrawal_timer = 0
 
 /obj/structure/machinery/atm/New()
 	..()
@@ -267,10 +268,14 @@ log transactions
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
+				if(withdrawal_timer > world.time)
+					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
 					alert("That is not a valid amount.")
+					withdrawal_timer = world.time + 20
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
 						playsound(src, 'sound/machines/chime.ogg', 25, 1)
@@ -290,13 +295,19 @@ log transactions
 						T.date = current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
+						withdrawal_timer = world.time + 20
 					else
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("You don't have enough funds to do that!")]")
+						withdrawal_timer = world.time + 20
 			if("withdrawal")
+				if(withdrawal_timer > world.time)
+					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
 					alert("That is not a valid amount.")
+					withdrawal_timer = world.time + 20
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
 						playsound(src, 'sound/machines/chime.ogg', 25, 1)
@@ -315,8 +326,10 @@ log transactions
 						T.date = current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
+						withdrawal_timer = world.time + 20
 					else
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("You don't have enough funds to do that!")]")
+						withdrawal_timer = world.time + 20
 			if("balance_statement")
 				if(authenticated_account)
 					var/obj/item/paper/R = new(src.loc)

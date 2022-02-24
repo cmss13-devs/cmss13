@@ -179,6 +179,12 @@
 	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
+/datum/reagent/drink/milk/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	description = "A rich, sweet, non-alcoholic beverage traditionally consumed around Christmastime."
+	color = "#DFD7AF" // rgb: 223, 215, 175
+
 /datum/reagent/drink/cold/milkshake
 	name = "Milkshake"
 	description = "Glorious brainfreezing mixture."
@@ -198,8 +204,6 @@
 		holder.remove_reagent("capsaicin", 5)
 		holder.remove_reagent("hotsauce", 5)
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
-
-
 
 //SOUTO//
 

@@ -474,6 +474,7 @@
 		<A href='?src=\ref[src];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
 		<A href='?src=\ref[src];inviews=sleepall'>Sleep All In View</A><BR>
+		<A href='?src=\ref[src];inviews=wakeall'>Wake All In View</A><BR>
 		<BR>
 		"}
 

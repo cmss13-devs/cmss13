@@ -209,6 +209,7 @@
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
+	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone

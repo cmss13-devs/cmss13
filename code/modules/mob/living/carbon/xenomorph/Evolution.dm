@@ -179,6 +179,10 @@
 		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
 
+	if(lock_evolve)
+		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		return FALSE
+
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
 		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
 		return FALSE
@@ -241,6 +245,10 @@
 	if(!caste.deevolves_to)
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve any further."))
 		return
+		
+	if(lock_evolve)
+		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		return FALSE
 
 	var/newcaste = caste.deevolves_to
 
@@ -259,6 +267,10 @@
 
 	if(health <= 0)
 		return
+
+	if(lock_evolve)
+		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		return FALSE
 
 	var/xeno_type
 

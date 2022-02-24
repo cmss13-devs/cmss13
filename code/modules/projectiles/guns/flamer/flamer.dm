@@ -227,6 +227,13 @@
 /obj/item/weapon/gun/flamer/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 
+/obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
+	name = "\improper M240A3 incinerator unit"
+	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextreous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
+	flags_equip_slot = SLOT_BACK | SLOT_WAIST
+	current_mag = /obj/item/ammo_magazine/flamer_tank/EX
+
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."

@@ -131,7 +131,7 @@
 		/obj/item/device/defibrillator,
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/device/reagent_scanner,
-		/obj/item/device/analyzer/plant_analyzer, 
+		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/roller
 	)
 
@@ -1156,9 +1156,29 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new_gun.on_enter_storage(src)
 
+/obj/item/storage/belt/gun/smartgunner/pmc
+	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
+	icon_state = "sgbelt"
+	icon_x = 5
+	icon_y = -2
+	mixed_pistols = TRUE
+	can_hold = list(
+		/obj/item/device/flashlight/flare,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/smartgun
+	)
+	has_gamemode_skin = TRUE
+
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)

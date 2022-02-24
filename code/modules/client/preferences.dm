@@ -32,6 +32,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/last_ip
 	var/fps = 20
 	var/last_id
+	var/save_cooldown = 0	//5s cooldown between saving slots
+	var/reload_cooldown = 0	//5s cooldown between loading slots
 
 	//game-preferences
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
@@ -766,13 +768,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("general")
 					var/msg = input(usr,"Give a physical description of your character. This will be shown regardless of clothing.","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 					if(msg != null)
-						msg = copytext(msg, 1, 256)
+						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 						msg = html_encode(msg)
 					flavor_texts[href_list["task"]] = msg
 				else
 					var/msg = input(usr,"Set the flavor text for your [href_list["task"]].","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 					if(msg != null)
-						msg = copytext(msg, 1, 256)
+						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 						msg = html_encode(msg)
 					flavor_texts[href_list["task"]] = msg
 			SetFlavorText(user)
@@ -1417,15 +1419,23 @@ var/const/MAX_SAVE_SLOTS = 10
 						toggle_prefs ^= flag_undo
 
 				if("save")
+					if(save_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You need to wait [round((save_cooldown-world.time)/10)] seconds before you can do that again."))
+						return
 					save_preferences()
 					save_character()
+					save_cooldown = world.time + 50
 					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
 
 				if("reload")
+					if(reload_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You need to wait [round((reload_cooldown-world.time)/10)] seconds before you can do that again."))
+						return
 					load_preferences()
 					load_character()
+					reload_cooldown = world.time + 50
 
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))

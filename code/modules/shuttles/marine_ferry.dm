@@ -651,12 +651,13 @@
 /datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
 	if(!iselevator)
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-			M.KnockDown(4)
-			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
-				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
-					M.forceMove(T)
-					break
+			if(isliving(M))
+				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+				M.KnockDown(4)
+				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
+					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+						M.forceMove(T)
+						break
 	return ..() // Sleeps
 
 /datum/shuttle/ferry/marine/open_doors(var/list/L)

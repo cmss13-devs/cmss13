@@ -828,7 +828,7 @@
 		var/datum/mob_hud/hud = huds[hud_to_add]
 		hud.add_hud_to(H)
 
-	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
+	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult/xeno)
 
 	if(istype(H.wear_suit, /obj/item/clothing/suit/cultist_hoodie) || istype(H.head, /obj/item/clothing/head/cultist_hood))
 		actions_to_add -= /datum/action/human_action/activable/cult/obtain_equipment
@@ -858,7 +858,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 	hive.leading_cult_sl = H
 
-	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader)
+	var/list/types = subtypesof(/datum/action/human_action/activable/cult/xeno_leader)
 	for(var/type in types)
 		give_action(H, type)
 
@@ -971,3 +971,71 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
 
 //*****************************************************************************************************/
+
+
+
+
+
+/datum/equipment_preset/other/weave_cultist
+	name = "Cultist - Weave Cultist"
+	faction = FACTION_XENOMORPH
+	flags = EQUIPMENT_PRESET_EXTRA
+	idtype = /obj/item/card/id/lanyard
+	skills = /datum/skills/civilian/survivor
+
+	assignment = "Cultist"
+	rank = "Cultist"
+
+/datum/equipment_preset/other/weave_cultist/New()
+	. = ..()
+	access = get_all_civilian_accesses()
+
+/datum/equipment_preset/other/weave_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_WEAVE)
+	. = ..()
+	H.hivenumber = hivenumber
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	if(hive)
+		H.faction = hive.internal_faction
+
+/datum/equipment_preset/other/weave_cultist/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cultist_hoodie(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cultist_hood(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+
+//*****************************************************************************************************/
+/datum/equipment_preset/other/weave_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_WEAVE)
+	if(SSticker.mode && H.mind)
+		SSticker.mode.xenomorphs += H.mind
+
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
+
+	if(hive.leading_cult_sl == H)
+		hive.leading_cult_sl = null
+
+	GLOB.weave_cultists += H
+
+	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS)
+
+	for(var/hud_to_add in huds_to_add)
+		var/datum/mob_hud/hud = huds[hud_to_add]
+		hud.add_hud_to(H)
+
+	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult/weave)
+
+	for(var/datum/action/human_action/activable/O in H.actions)
+		O.remove_from(H)
+
+	for(var/action_to_add in actions_to_add)
+		give_action(H, action_to_add)

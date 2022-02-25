@@ -281,11 +281,11 @@ CULT
 /datum/action/human_action/activable/cult
 	name = "Activable Cult Ability"
 
-/datum/action/human_action/activable/cult/speak_hivemind
+/datum/action/human_action/activable/cult/xeno/speak_hivemind
 	name = "Speak in Hivemind"
 	action_icon_state = "cultist_channel_hivemind"
 
-/datum/action/human_action/activable/cult/speak_hivemind/action_activate()
+/datum/action/human_action/activable/cult/xeno/speak_hivemind/action_activate()
 	if(!can_use_action())
 		return
 
@@ -310,12 +310,12 @@ CULT
 
 	H.hivemind_broadcast(message, hive)
 
-/datum/action/human_action/activable/cult/obtain_equipment
+/datum/action/human_action/activable/cult/xeno/obtain_equipment
 	name = "Obtain Equipment"
 	action_icon_state = "cultist_channel_equipment"
 	var/list/items_to_spawn = list(/obj/item/clothing/suit/cultist_hoodie/, /obj/item/clothing/head/cultist_hood/)
 
-/datum/action/human_action/activable/cult/obtain_equipment/action_activate()
+/datum/action/human_action/activable/cult/xeno/obtain_equipment/action_activate()
 	if(!can_use_action())
 		return
 
@@ -350,13 +350,13 @@ CULT
 	playsound(H.loc, 'sound/voice/scream_horror1.ogg', 25)
 
 	H.visible_message(SPAN_HIGHDANGER("[H] puts on their robes."), SPAN_WARNING("You put on your robes."))
-	for(var/datum/action/human_action/activable/cult/obtain_equipment/O in H.actions)
+	for(var/datum/action/human_action/activable/cult/xeno/obtain_equipment/O in H.actions)
 		O.remove_from(H)
 
-/datum/action/human_action/activable/cult_leader
+/datum/action/human_action/activable/cult/xeno_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult/xeno_leader/proc/can_target(var/mob/living/carbon/human/H)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner
@@ -371,7 +371,7 @@ CULT
 
 	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
 
-/datum/action/human_action/activable/cult_leader/proc/get_hive()
+/datum/action/human_action/activable/cult/xeno_leader/proc/get_hive()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
@@ -384,11 +384,11 @@ CULT
 
 	return hive
 
-/datum/action/human_action/activable/cult_leader/convert
+/datum/action/human_action/activable/cult/xeno_leader/convert
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
-/datum/action/human_action/activable/cult_leader/convert/use_ability(mob/M)
+/datum/action/human_action/activable/cult/xeno_leader/convert/use_ability(var/mob/M)
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
@@ -428,13 +428,13 @@ CULT
 	if(chosen.client)
 		playsound_client(chosen.client, 'sound/effects/xeno_newlarva.ogg', null, 25)
 
-/datum/action/human_action/activable/cult_leader/stun
+/datum/action/human_action/activable/cult/xeno_leader/stun
 	name = "Psychic Stun"
 	action_icon_state = "cultist_channel_stun"
 
 	cooldown = 1 MINUTES
 
-/datum/action/human_action/activable/cult_leader/stun/use_ability(mob/M)
+/datum/action/human_action/activable/cult/xeno_leader/stun/use_ability(var/mob/M)
 	if(!action_cooldown_check())
 		return
 
@@ -607,3 +607,29 @@ CULT
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
+
+
+
+//Weave
+/datum/action/human_action/activable/cult/weave/speak_hivemind
+	name = "Commune with The Weave"
+	action_icon_state = "cultist_channel_hivemind"
+
+/datum/action/human_action/activable/cult/weave/speak_hivemind/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+
+	var/input = input(H, "Weave Communion", "Weave Chat")
+
+	if(!input)
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+
+	if(!istype(hive))
+		return
+
+	H.hivemind_broadcast(input, hive)

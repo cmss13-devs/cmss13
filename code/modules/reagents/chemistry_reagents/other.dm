@@ -77,6 +77,13 @@
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
 
+/datum/reagent/blood/xeno_blood/weave
+	name = "Concentrated Weave Essence"
+	id = "xenobloodweave"
+	color = "#5adfe4"
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_ADDICTIVE = 4, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_NEUROINHIBITING = 4, PROPERTY_TRANSFORMATIVE = 5)
+
 /datum/reagent/vaccine
 	//data must contain virus type
 	name = "Vaccine"
@@ -1000,6 +1007,26 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+
+/datum/reagent/plasma/weave
+	name = "Weave Essence"
+	id = PLASMA_WEAVE
+	description = "A fey liquid of complete uncertainty..."
+	color = "#5adfe4"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_ADDICTIVE = 2, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_NEUROINHIBITING = 2, PROPERTY_TRANSFORMATIVE = 2)
+
+/datum/reagent/plasma/weave/pure
+	name = "Exalted Weave Essence"
+	id = PLASMA_WEAVE_EXALTED
+	description = "The Weave calls..."
+	color = "#5adfe4"
+	overdose = 2
+	overdose_critical = 3
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_WEAVING = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_TRANSFORMATIVE = 4)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

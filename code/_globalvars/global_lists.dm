@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
+	XENO_HIVE_WEAVE = new /datum/hive_status/mutated/weave()
 ))
 
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())

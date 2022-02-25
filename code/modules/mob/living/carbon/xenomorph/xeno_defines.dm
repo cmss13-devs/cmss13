@@ -1132,6 +1132,12 @@
 
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 
+/datum/hive_status/mutated/weave
+	name = "The Weave"
+	hivenumber = XENO_HIVE_WEAVE
+	prefix = "Weave "
+
+
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
 	hivenumber = XENO_HIVE_TAMED

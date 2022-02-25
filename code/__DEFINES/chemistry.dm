@@ -93,6 +93,8 @@
 #define PLASMA_EGG "eggplasma"
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"
+#define PLASMA_WEAVE			"weaveplasma"
+#define PLASMA_WEAVE_EXALTED	"weaveplasmaex"
 
 // Flags for Reagent
 
@@ -205,6 +207,7 @@
 #define PROPERTY_RADIUS "radius" // Fire related admin property
 #define PROPERTY_INTENSITY "intensity" // Fire related admin property
 #define PROPERTY_DURATION "duration" // Fire related admin property
+#define PROPERTY_WEAVING			"weaving" //Enslaves to The Weave
 //Reaction Properties
 #define PROPERTY_FUELING "fueling"
 #define PROPERTY_OXIDIZING "oxidizing"

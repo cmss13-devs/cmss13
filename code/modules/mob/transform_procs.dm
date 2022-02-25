@@ -291,3 +291,39 @@
 
 	//Not in here? Must be untested!
 	return 0
+
+
+
+
+/mob/living/carbon/human/proc/WeaveClaim(var/cause = 1)
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+
+	var/truecause = "Godly Intervention"
+	switch(cause)
+		if(1)
+			truecause = "Godly Intervention"
+		if(2)
+			truecause = "Essence Exposure"
+		if(3)
+			truecause = "The Prime Weaver"
+
+	if(!istype(hive))
+		message_staff("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
+		return
+
+	var/datum/equipment_preset/other/weave_cultist/WC = new()
+
+	WC.load_race(src, H.hivenumber)
+	WC.load_status(src)
+
+	to_chat(src, SPAN_XENODANGER("You have been enlightened by [truecause]!"))
+	to_chat(src, SPAN_XENOHIGHDANGER("<hr>You are now a Weave Devotee!"))
+	to_chat(src, SPAN_XENODANGER("Worship The Weave and listen to the Prime Weaver for orders. You are bound to peace and fanatic neutrality, however, you may defend yourself and The Weave if there is no alternative.<hr>"))
+
+	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
+
+	KnockOut(5)
+	make_jittery(105)
+
+	if(client)
+		playsound_client(client, 'sound/effects/xeno_newlarva.ogg', null, 25)

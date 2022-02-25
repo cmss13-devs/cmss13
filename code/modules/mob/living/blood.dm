@@ -274,6 +274,13 @@
 /mob/living/carbon/xenomorph/praetorian/get_blood_id()
 	return "xenobloodroyal"
 
+/mob/living/carbon/Xenomorph/Weaveling/get_blood_id()
+	return "xenobloodweave"
+/mob/living/carbon/Xenomorph/Weaver/get_blood_id()
+	return "xenobloodweave"
+/mob/living/carbon/Xenomorph/PrimeWeaver/get_blood_id()
+	return "xenobloodweave"
+
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))
 		return

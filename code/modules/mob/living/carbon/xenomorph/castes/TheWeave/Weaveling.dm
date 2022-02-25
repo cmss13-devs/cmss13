@@ -31,10 +31,11 @@
 	tremor_cooldown = 450
 
 /mob/living/carbon/Xenomorph/Weaveling
+	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVELING
 	name = WEAVE_CASTE_WEAVELING
 	desc = "Born to the Weave!"
-	icon = 'icons/mob/xenonids/burrower_w.dmi'
+	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
 	icon_state = "Weaveling Walking"
 	layer = MOB_LAYER
@@ -48,9 +49,9 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/activable/tremor //fourth macro
@@ -61,41 +62,44 @@
 		)
 	mutation_type = WEAVE_NORMAL
 
-	icon_xeno = 'icons/mob/xenonids/burrower_w.dmi'
-	icon_xenonid = 'icons/mob/xenonids/burrower_w.dmi'
+	icon_xeno = 'icons/mob/xenonids/weave.dmi'
+	icon_xenonid = 'icons/mob/xenonids/weave.dmi'
 
-/mob/living/carbon/Xenomorph/weaveling/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	max_placeable = 3
+	available_placeable = list("Weave Node", "Unstable Resin Fruit", "Spore Resin Fruit")
+
+/mob/living/carbon/Xenomorph/Weaveling/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
 
-/mob/living/carbon/Xenomorph/weaveling/update_canmove()
+/mob/living/carbon/Xenomorph/Weaveling/update_canmove()
 	. = ..()
 	if(burrow)
 		density = FALSE
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/weaveling/ex_act(severity)
+/mob/living/carbon/Xenomorph/Weaveling/ex_act(severity)
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/weaveling/attack_hand()
+/mob/living/carbon/Xenomorph/Weaveling/attack_hand()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/weaveling/attackby()
+/mob/living/carbon/Xenomorph/Weaveling/attackby()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/weaveling/get_projectile_hit_chance()
+/mob/living/carbon/Xenomorph/Weaveling/get_projectile_hit_chance()
 	. = ..()
 	if(burrow)
 		return 0
 
-/mob/living/carbon/Xenomorph/weaveling/update_icons()
+/mob/living/carbon/Xenomorph/Weaveling/update_icons()
 	if (stat == DEAD)
 		icon_state = "[mutation_type] Weaveling Dead"
 	else if (lying)

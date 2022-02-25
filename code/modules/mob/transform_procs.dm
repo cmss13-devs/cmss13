@@ -313,7 +313,7 @@
 
 	var/datum/equipment_preset/other/weave_cultist/WC = new()
 
-	WC.load_race(src, H.hivenumber)
+	WC.load_race(src, hive.hivenumber)
 	WC.load_status(src)
 
 	to_chat(src, SPAN_XENODANGER("You have been enlightened by [truecause]!"))

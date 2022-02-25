@@ -1136,6 +1136,7 @@
 	name = "The Weave"
 	hivenumber = XENO_HIVE_WEAVE
 	prefix = "Weave "
+	allow_no_queen_actions = TRUE
 
 
 /datum/hive_status/corrupted/tamed

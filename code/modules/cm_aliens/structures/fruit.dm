@@ -1,4 +1,5 @@
 #define CAN_CONSUME_AT_FULL_HEALTH 1<<0
+#define FRUIT_TYPE_WEAVE 5
 
 /obj/effect/alien/resin/fruit
 	name = XENO_FRUIT_LESSER
@@ -330,6 +331,29 @@
 		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
 	if(do_consume)
 		finish_consume(recipient)
+
+//Weave
+/obj/effect/alien/resin/fruit/weave
+	desc = "A fluctuating node of fey energies. It pulses with an aura of uncertainty..."
+	name = "flux node"
+	time_to_mature = 60 SECONDS
+	heal_amount = 150
+	regeneration_amount_total = 200
+	regeneration_ticks = 9
+	icon_state = "fruit_weave_immature"
+	mature_icon_state = "fruit_weave"
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/greater
+
+
+/obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/Xenomorph/recipient)
+	if(!mature)
+		return
+	if(recipient && !QDELETED(recipient))
+		recipient.gain_health(heal_amount)
+		to_chat(recipient, SPAN_XENONOTICE("The Weave floods your body with energy and your wounds begin to close."))
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+	finish_consume(recipient)
+
 
 #undef CAN_CONSUME_AT_FULL_HEALTH
 

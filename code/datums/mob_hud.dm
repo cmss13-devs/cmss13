@@ -386,7 +386,7 @@ var/list/datum/mob_hud/huds = list(
 							holder2.icon_state = "huddeadalmost"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
-					if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
+					else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
 						holder.icon_state = "huddeadclose"
 						if(!holder2_set)
 							holder2.icon_state = "huddeadclose"

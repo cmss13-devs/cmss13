@@ -14,7 +14,7 @@
 
 	evolves_to = list(WEAVE_CASTE_WEAVER)
 	deevolves_to = null
-	caste_desc = "An infant, but not to be ignored."
+	caste_desc = "Born to the Weave!"
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = TRUE
@@ -34,7 +34,7 @@
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVELING
 	name = WEAVE_CASTE_WEAVELING
-	desc = "Born to the Weave!"
+	desc = "An infant, but not to be ignored."
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
 	icon_state = "Weaveling Walking"
@@ -65,8 +65,8 @@
 	icon_xeno = 'icons/mob/xenonids/weave.dmi'
 	icon_xenonid = 'icons/mob/xenonids/weave.dmi'
 
-	max_placeable = 3
-	available_placeable = list("Weave Node", "Unstable Resin Fruit", "Spore Resin Fruit")
+	max_placeable = 1
+	available_placeable = list("Flux Node")
 
 /mob/living/carbon/Xenomorph/Weaveling/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

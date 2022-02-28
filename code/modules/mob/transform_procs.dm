@@ -298,10 +298,10 @@
 /mob/living/carbon/human/proc/WeaveClaim(var/cause = 1)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
-	var/truecause = "Godly Intervention"
+	var/truecause = "Divine Intervention"
 	switch(cause)
 		if(1)
-			truecause = "Godly Intervention"
+			truecause = "Divine Intervention"
 		if(2)
 			truecause = "Essence Exposure"
 		if(3)
@@ -312,7 +312,11 @@
 		return
 
 	var/datum/equipment_preset/other/weave_cultist/WC = new()
-
+	var/eyecolor = "#5adfe4"
+	r_eyes = hex2num(copytext(eyecolor, 2, 4))
+	g_eyes = hex2num(copytext(eyecolor, 4, 6))
+	b_eyes = hex2num(copytext(eyecolor, 6, 8))
+	update_body()
 	WC.load_race(src, hive.hivenumber)
 	WC.load_status(src)
 
@@ -322,6 +326,8 @@
 
 	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
 
+	allow_gun_usage = FALSE
+	adjustBrainLoss(-100)
 	KnockOut(5)
 	make_jittery(105)
 

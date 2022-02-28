@@ -40,7 +40,7 @@
 	icon_state = "Weaveling Walking"
 	layer = MOB_LAYER
 	plasma_stored = 100
-	plasma_types = list(PLASMA_WEAVE)
+	plasma_types = list(PLASMA_WEAVE, PLASMA_WEAVE)//Deliberate doubling, to affect ratio of extracted blood and plasma.
 	pixel_x = -12
 	old_x = -12
 	tier = 2

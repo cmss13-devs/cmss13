@@ -618,18 +618,43 @@ CULT
 /datum/action/human_action/activable/cult/weave/speak_hivemind/action_activate()
 	if(!can_use_action())
 		return
-
 	var/mob/living/carbon/human/H = owner
-
-
 	var/input = input(H, "Weave Communion", "Weave Chat")
-
 	if(!input)
 		return
-
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
-
 	if(!istype(hive))
 		return
-
 	H.hivemind_broadcast(input, hive)
+
+/datum/action/human_action/activable/cult/weave/speak_hivemind/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated(TRUE) && !H.dazed)
+		return TRUE
+
+/datum/action/human_action/activable/cult/weave/weave_sense
+	name = "Read The Weave"
+	action_icon_state = "cultist_channel_equipment"
+	cooldown = 15 MINUTES
+
+/datum/action/human_action/activable/cult/weave/weave_sense/action_activate()
+	if(!can_use_action())
+		return
+	if(!action_cooldown_check())
+		return
+	var/list/nums = SSticker.mode.count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/marines = nums[1]
+	var/xenos = nums[2]
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	xenos = xenos - (hive.totalXenos.len)
+
+
+	owner.visible_message(SPAN_DANGER("[owner] gets onto their knees, their eyes glazed, and begins muttering incomprehensible nonsense."), \
+	SPAN_XENOWARNING("You get onto your knees and your eyes glaze over as you stare into The Weave."))
+
+	if(!do_after(owner, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(owner, SPAN_XENOWARNING("You decide not to read The Weave."))
+		enter_cooldown(15 SECONDS)
+		return
+	enter_cooldown()
+	to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans alive and [xenos] other living biosigns."))

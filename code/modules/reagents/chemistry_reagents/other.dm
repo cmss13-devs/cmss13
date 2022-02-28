@@ -1022,7 +1022,7 @@
 	name = "Exalted Weave Essence"
 	id = PLASMA_WEAVE_EXALTED
 	description = "The Weave calls..."
-	color = "#5adfe4"
+	color = "#135f72"
 	overdose = 2
 	overdose_critical = 3
 	chemclass = CHEM_CLASS_SPECIAL

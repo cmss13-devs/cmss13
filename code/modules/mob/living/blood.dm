@@ -256,6 +256,12 @@
 
 /mob/living/carbon/xenomorph/get_blood_color()
 	return "#dffc00"
+/mob/living/carbon/Xenomorph/Weaveling/get_blood_color()
+	return "#5adfe4"
+/mob/living/carbon/Xenomorph/Weaver/get_blood_color()
+	return "#5adfe4"
+/mob/living/carbon/Xenomorph/PrimeWeaver/get_blood_color()
+	return "#135f72"
 
 /mob/living/carbon/human/get_blood_color()
 	return species.blood_color

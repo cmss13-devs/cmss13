@@ -342,7 +342,7 @@
 	regeneration_ticks = 9
 	icon_state = "fruit_weave_immature"
 	mature_icon_state = "fruit_weave"
-	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/greater
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/weave
 
 
 /obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/Xenomorph/recipient)
@@ -352,6 +352,7 @@
 		recipient.gain_health(heal_amount)
 		to_chat(recipient, SPAN_XENONOTICE("The Weave floods your body with energy and your wounds begin to close."))
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		recipient.evolution_stored = max((recipient.evolution_threshold/2), (recipient.evolution_stored + 200))
 	finish_consume(recipient)
 
 

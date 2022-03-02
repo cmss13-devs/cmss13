@@ -55,10 +55,13 @@
 	. = ..()
 	for(var/i = 0, i < 5, i++)
 		new /obj/item/reagent_container/food/drinks/milk(src)
-	for(var/i = 0, i < 3, i++)
+	for(var/i = 0, i < 4, i++)
 		new /obj/item/reagent_container/food/drinks/soymilk(src)
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/storage/fancy/egg_box(src)
+
+/obj/structure/closet/secure_closet/freezer/fridge/ex_act(severity) // positively devious
+	return
 
 /obj/structure/closet/secure_closet/freezer/fridge/groceries
 	name = "Groceries"

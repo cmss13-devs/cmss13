@@ -267,6 +267,8 @@
 	C.access += (src.access + extra_access)	//Add their squad access to their ID
 	C.assignment = "[name] [assignment]"
 
+	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
+
 	if(paygrade)
 		C.paygrade = paygrade
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"

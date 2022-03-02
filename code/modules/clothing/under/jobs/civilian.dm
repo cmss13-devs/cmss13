@@ -14,6 +14,7 @@
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
 	icon_state = "qm"
 	item_state = "lb_suit"
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargotech
 	name = "cargo technician's jumpsuit"

@@ -2,11 +2,10 @@
  * Contains:
  *		First Aid Kits
  * 		Pill Bottles
+ *		Pill Packets
  */
 
-/*
- * First Aid Kits
- */
+//---------FIRST AID KITS---------
 /obj/item/storage/firstaid
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos."
@@ -173,10 +172,8 @@
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
 	return
 
-	/*
- * Syringe Case
- */
 
+//---------SYRINGE CASE---------
 
 /obj/item/storage/syringe_case
 	name = "syringe case"
@@ -223,10 +220,8 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
-/*
- * Pill Bottles
- */
 
+//---------PILL BOTTLES---------
 
 /obj/item/storage/pill_bottle
 	name = "pill bottle"
@@ -248,47 +243,15 @@
 	var/skilllock = SKILL_MEDICAL_DEFAULT
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
+	var/display_maptext = TRUE
+	var/maptext_label
+	maptext_x = 18
+	maptext_y = 3
 
-obj/item/storage/pill_bottle/packet
-	name = "\improper pill packet"
-	desc = "Contains pills. Once you take them out, they don't go back in."
-	icon_state = "pill_packet"
-	bottle_lid = FALSE
-	storage_slots = 4
-	max_w_class = 0
-	max_storage_space = 4
-	skilllock = SKILL_MEDICAL_DEFAULT
-	storage_flags = STORAGE_FLAGS_BOX
-
-/obj/item/storage/pill_bottle/packet/tricordrazine
-	name = "Tricordazine pill packet"
-	icon_state = "tricordrazine_packet"
-	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
-
-/obj/item/storage/pill_bottle/packet/tramadol
-	name = "Tramadol pill packet"
-	icon_state = "tramadol_packet"
-	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
-
-/obj/item/storage/pill_bottle/packet/bicardine
-    name = "Bicardine pill packet"
-    icon_state = "bicardine_packet"
-    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
-
-/obj/item/storage/pill_bottle/packet/kelotane
-    name = "kelotane pill packet"
-    icon_state = "kelotane_packet"
-    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
-
-/obj/item/storage/pill_bottle/packet/oxycodone
-    name = "oxycodone pill packet"
-    icon_state = "oxycodone_packet"
-    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+/obj/item/storage/pill_bottle/Initialize()
+	. = ..()
+	if(display_maptext == FALSE)
+		verbs -= /obj/item/storage/pill_bottle/verb/set_maptext
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)
@@ -303,6 +266,11 @@ obj/item/storage/pill_bottle/packet
 		overlays += "pills_open"
 	else
 		overlays += "pills_closed"
+
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
+		maptext = "<span class='langchat'>[maptext_label]</span>"
+	else
+		maptext = ""
 
 /obj/item/storage/pill_bottle/examine(mob/user)
 	..()
@@ -403,14 +371,43 @@ obj/item/storage/pill_bottle/packet
 		return
 	..()
 
+/obj/item/storage/pill_bottle/equipped()
+	..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/on_exit_storage()
+	..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/dropped()
+	..()
+	update_icon()
+
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
+
+/obj/item/storage/pill_bottle/verb/set_maptext()
+	set category = "Object"
+	set name = "Set Short Label (on-sprite)"
+	set src in usr
+	if(src && ishuman(usr))
+		var/str = copytext(reject_bad_text(input(usr,"Label text? (2 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 3)
+		if(!str || !length(str))
+			to_chat(usr, SPAN_NOTICE("You clear the label off \the [src]."))
+			maptext_label = null
+			update_icon()
+			return
+		maptext_label = str
+		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
+		update_icon()
+		return
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Kl"
 
 /obj/item/storage/pill_bottle/kelotane/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -420,6 +417,8 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Dy"
+
 
 /obj/item/storage/pill_bottle/antitox/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -429,6 +428,7 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "In"
 
 /obj/item/storage/pill_bottle/inaprovaline/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -438,6 +438,7 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Tr"
 
 /obj/item/storage/pill_bottle/tramadol/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -447,6 +448,7 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Sp"
 
 /obj/item/storage/pill_bottle/spaceacillin/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -456,6 +458,7 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Bi"
 
 /obj/item/storage/pill_bottle/bicaridine/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -465,6 +468,7 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
 	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "Dx"
 
 /obj/item/storage/pill_bottle/dexalin/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -474,6 +478,7 @@ obj/item/storage/pill_bottle/packet
 	name = "\improper Alkysine pill bottle"
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
+	maptext_label = "Al"
 
 
 //imidazoline
@@ -481,12 +486,14 @@ obj/item/storage/pill_bottle/packet
 	name = "\improper Imidazoline pill bottle"
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
+	maptext_label = "Im"
 
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
+	maptext_label = "Pr"
 
 /obj/item/storage/pill_bottle/peridaxon/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -496,12 +503,14 @@ obj/item/storage/pill_bottle/packet
 	name = "\improper Russian Red pill bottle"
 	icon_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
+	maptext_label = "Rr"
 
 
 /obj/item/storage/pill_bottle/quickclot
 	name = "\improper Quickclot pill bottle"
 	icon_state = "pill_canister8"
 	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
+	maptext_label = "Qc"
 
 
 //Ultrazine
@@ -512,6 +521,7 @@ obj/item/storage/pill_bottle/packet
 	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
 	var/idlock = 1
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine/unmarked
+	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = "Corporate Liaison"
@@ -556,3 +566,48 @@ obj/item/storage/pill_bottle/packet
 /obj/item/storage/pill_bottle/ultrazine/skillless
 	name = "\improper Ultrazine pill bottle"
 	idlock = 0
+	display_maptext = TRUE
+	maptext_label = "Uz"
+
+//---------PILL PACKETS---------
+obj/item/storage/pill_bottle/packet
+	name = "\improper pill packet"
+	desc = "Contains pills. Once you take them out, they don't go back in."
+	icon_state = "pill_packet"
+	bottle_lid = FALSE
+	storage_slots = 4
+	max_w_class = 0
+	max_storage_space = 4
+	skilllock = SKILL_MEDICAL_DEFAULT
+	storage_flags = STORAGE_FLAGS_BOX
+	display_maptext = FALSE
+
+/obj/item/storage/pill_bottle/packet/tricordrazine
+	name = "Tricordazine pill packet"
+	icon_state = "tricordrazine_packet"
+	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
+
+/obj/item/storage/pill_bottle/packet/tramadol
+	name = "Tramadol pill packet"
+	icon_state = "tramadol_packet"
+	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
+
+/obj/item/storage/pill_bottle/packet/bicardine
+    name = "Bicardine pill packet"
+    icon_state = "bicardine_packet"
+    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
+
+/obj/item/storage/pill_bottle/packet/kelotane
+    name = "kelotane pill packet"
+    icon_state = "kelotane_packet"
+    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
+
+/obj/item/storage/pill_bottle/packet/oxycodone
+    name = "oxycodone pill packet"
+    icon_state = "oxycodone_packet"
+    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

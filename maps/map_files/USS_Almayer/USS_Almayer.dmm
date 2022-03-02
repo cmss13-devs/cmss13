@@ -22917,7 +22917,7 @@
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod16)
 "bwR" = (
-/obj/structure/closet/secure_closet/medical_doctor,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
@@ -25275,10 +25275,7 @@
 	},
 /area/almayer/hallways/hangar)
 "bEP" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
-	},
+/obj/structure/machinery/cm_vending/clothing/medical_crew,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -25290,14 +25287,17 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lockerroom)
 "bET" = (
-/obj/structure/closet/secure_closet/medical3,
+/obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -42152,9 +42152,6 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "ftG" = (
-/obj/structure/closet/secure_closet/medical3{
-	name = "medical researcher's locker"
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -62406,13 +62403,8 @@
 	},
 /area/almayer/command/lifeboat)
 "oNb" = (
-/obj/structure/closet/secure_closet/engineering_chief,
-/obj/item/clothing/glasses/welding,
+/obj/structure/surface/table/almayer,
 /obj/item/clothing/ears/earmuffs,
-/obj/item/stack/sheet/mineral/phoron/medium_stack{
-	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
-	},
-/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
@@ -63419,7 +63411,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "pqi" = (
-/obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -68184,8 +68175,8 @@
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/tool/stamp{
-	name = "Requisition Officer's spare stamp";
+/obj/item/tool/stamp/ro{
+	name = "spare requisitions officer's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},
@@ -72102,6 +72093,14 @@
 	pixel_y = -26;
 	req_one_access_txt = "3;22;2;19;7"
 	},
+/obj/structure/surface/rack,
+/obj/item/rappel_harness{
+	pixel_y = 8
+	},
+/obj/item/rappel_harness,
+/obj/item/rappel_harness{
+	pixel_y = -6
+	},
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 15;
 	pixel_y = -32
@@ -72562,7 +72561,6 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "tzx" = (
 /obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/medical_doctor,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -78142,6 +78140,12 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
+	},
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -79970,10 +79974,7 @@
 /turf/closed/shuttle/escapepod,
 /area/almayer/evacuation/pod3)
 "wIr" = (
-/obj/structure/closet/secure_closet/req_officer,
-/obj/item/clothing/suit/storage/marine/MP/SO,
-/obj/item/clothing/head/helmet/marine/MP/SO,
-/obj/item/clothing/suit/storage/RO,
+/obj/structure/machinery/cm_vending/clothing/senior_officer,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

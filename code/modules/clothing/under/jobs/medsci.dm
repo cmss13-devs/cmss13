@@ -14,6 +14,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
@@ -92,6 +93,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/nursesuit
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."

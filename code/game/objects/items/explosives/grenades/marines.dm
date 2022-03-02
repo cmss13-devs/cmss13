@@ -417,7 +417,7 @@
 	icon_state = "baton_slug"
 	item_state = "baton_slug"
 	inactive_icon = "baton_slug"
-	has_iff = TRUE
+	has_iff = FALSE
 	impact_damage = 45
 	slowdown_time = 1.6
 	knockout_time = 0.4

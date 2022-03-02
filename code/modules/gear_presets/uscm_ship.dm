@@ -106,6 +106,7 @@
 /datum/equipment_preset/uscm_ship/chief_engineer
 	name = "USCM Chief Engineer (CE)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -215,6 +216,7 @@
 /datum/equipment_preset/uscm_ship/ro
 	name = "USCM Requisitions Officer (RO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -248,7 +250,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/ro_suit(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
@@ -288,6 +289,7 @@
 /datum/equipment_preset/uscm_ship/commander
 	name = "USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //All languages.
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
@@ -385,6 +387,7 @@
 /datum/equipment_preset/uscm_ship/xo
 	name = "USCM Executive Officer (XO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //All languages.
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
@@ -409,7 +412,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)

@@ -1538,6 +1538,12 @@ Defined in conflicts.dm of the #defines folder.
 			var/transfered_rounds = min(max_rounds - current_rounds, FT.current_rounds)
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
+			
+			var/amount_of_reagents = FT.reagents.reagent_list.len
+			var/amount_removed_per_reagent = transfered_rounds / amount_of_reagents
+			for(var/datum/reagent/R in FT.reagents.reagent_list)
+				R.volume -= amount_removed_per_reagent
+			FT.update_icon()
 	else
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 

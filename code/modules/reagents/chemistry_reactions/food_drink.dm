@@ -793,3 +793,17 @@
 	result = "suidream"
 	required_reagents = list("space_up" = 2, "bluecuracao" = 1, "melonliquor" = 1)
 	result_amount = 4
+
+/datum/chemical_reaction/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	result = "eggnog"
+	required_reagents = list("sugar" = 1, "cream" = 1, "milk" = 2)
+	result_amount = 3
+
+/datum/chemical_reaction/spikedeggnog
+	name = "Spiked Eggnog"
+	id = "spikedeggnog"
+	result = "spikedeggnog"
+	required_reagents = list("eggnog" = 2, "rum" = 1)
+	result_amount = 3

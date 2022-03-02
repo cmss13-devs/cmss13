@@ -492,7 +492,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	fire_delay = 0.15 SECONDS
 	health = 150
 	health_max = 150
-	damage_mult = 0.6
+	damage_mult = 0.4
 	density = FALSE
 	disassemble_time = 0.75 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/mini

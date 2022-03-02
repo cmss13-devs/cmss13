@@ -603,6 +603,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,

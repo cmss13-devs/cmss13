@@ -163,7 +163,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			advance = TRUE
 
 	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
-		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE|INTERRUPT_DIFF_INTENT,
+		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
 				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly. 
 		to_chat(user, SPAN_DANGER("[target] moved during the surgery! Use anesthetics or painkillers!"))
 		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
@@ -172,7 +172,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 		target.emote("pain")
 
 	else //Help intent.
-		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
+		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
 			advance = TRUE
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))

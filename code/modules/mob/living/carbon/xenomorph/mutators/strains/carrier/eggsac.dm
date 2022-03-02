@@ -23,7 +23,7 @@
 	C.mutation_type = CARRIER_EGGSAC
 	C.plasma_types = list(PLASMA_EGG)
 	C.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	C.plasmapool_modifier = 1.25
+	C.plasmapool_modifier = 1.5
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	C.recalculate_pheromones()
@@ -34,13 +34,13 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/generate_egg
-	name = "Generate Egg (400)"
+	name = "Generate Egg (200)"
 	action_icon_state = "lay_egg"
 	ability_name = "generate egg"
 	xeno_cooldown = 30 SECONDS
 	cooldown_message = "You aren't ready to form another egg yet."
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = XENO_PLASMA_TIER_4
+	plasma_cost = XENO_PLASMA_TIER_2
 
 /datum/action/xeno_action/activable/generate_egg/can_use_action()
 	if(!owner)
@@ -58,6 +58,6 @@
 		return FALSE
 	to_chat(X, SPAN_NOTICE("You form a new egg inside your sac."))
 	X.eggs_cur++
-	X.use_plasma(XENO_PLASMA_TIER_4)
+	X.use_plasma(plasma_cost)
 	apply_cooldown()
 	return TRUE

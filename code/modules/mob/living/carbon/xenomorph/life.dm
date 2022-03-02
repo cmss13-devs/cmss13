@@ -47,7 +47,7 @@
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
-			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
+			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has

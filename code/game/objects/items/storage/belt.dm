@@ -75,8 +75,15 @@
 		/obj/item/device/analyzer,
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/tool/shovel/etool,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/cell,
+		/obj/item/device/lightreplacer
+
 	)
-	bypass_w_limit = list(/obj/item/tool/shovel/etool)
+	bypass_w_limit = list(
+	/obj/item/tool/shovel/etool,
+	/obj/item/device/lightreplacer
+	)
 
 
 /obj/item/storage/belt/utility/full/fill_preset_inventory()

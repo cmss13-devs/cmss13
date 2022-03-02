@@ -99,7 +99,7 @@
 
 	if(amount_grown >= max_grown)	// to avoid spam
 		if(age < 0)
-			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will."))
+			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
 			src << sound('sound/effects/xeno_evolveready.ogg')
 			age++
 

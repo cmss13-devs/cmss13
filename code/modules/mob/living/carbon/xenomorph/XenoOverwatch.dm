@@ -160,6 +160,8 @@
 				oldXeno.hud_set_queen_overwatch()
 			if (xenoTarget && !QDELETED(xenoTarget))
 				xenoTarget.hud_set_queen_overwatch()
+	if(href_list["evolve"])
+		Evolve()
 
 	..()
 

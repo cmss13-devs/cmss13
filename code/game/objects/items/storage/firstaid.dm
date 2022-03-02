@@ -245,6 +245,8 @@
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 	var/display_maptext = TRUE
 	var/maptext_label
+	maptext_height = 16
+	maptext_width = 16
 	maptext_x = 18
 	maptext_y = 3
 

@@ -16,6 +16,8 @@
 	var/mixed_chem = FALSE
 	var/display_maptext = FALSE
 	var/maptext_label
+	maptext_height = 16
+	maptext_width = 16
 	maptext_x = 18
 	maptext_y = 3
 

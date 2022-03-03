@@ -146,7 +146,11 @@
 						/obj/item/prop/helmetgarb/helmet_nvg/functional = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
-						/obj/item/clothing/head/headband/red = "hat_headbandred")
+						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
+						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
+						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
+						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

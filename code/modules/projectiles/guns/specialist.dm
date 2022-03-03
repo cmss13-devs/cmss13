@@ -41,6 +41,7 @@
 	var/obj/item/attachable/scope/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -85,6 +86,7 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -184,8 +186,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/S = new /obj/item/attachable/scope/slavic(src)
+	var/obj/item/attachable/scope/slavic/S = new /obj/item/attachable/scope/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 	S = new /obj/item/attachable/slavicbarrel(src)

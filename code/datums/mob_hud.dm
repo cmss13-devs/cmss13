@@ -98,7 +98,7 @@ var/list/datum/mob_hud/huds = list(
 	if(!istype(U))
 		return FALSE
 
-	if(U.sensor_mode <= 2 || U.has_sensor == 0)
+	if(U.sensor_mode <= SENSOR_MODE_DAMAGE || U.has_sensor == UNIFORM_NO_SENSORS)
 		return FALSE
 
 	return TRUE

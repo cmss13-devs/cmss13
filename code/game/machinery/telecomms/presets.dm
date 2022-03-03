@@ -44,6 +44,7 @@
 	unacidable = TRUE
 	health = 450
 	tcomms_machine = TRUE
+	freq_listening = DEPT_FREQS
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -142,6 +143,38 @@
 		return
 	toggle_state(user) // just flip dat switch
 
+/obj/structure/machinery/telecomms/relay/preset/tower/all
+	freq_listening = list()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/faction
+	name = "UPP telecommunications relay"
+	desc = "A mighty piece of hardware used to send massive amounts of data far away. This one is intercepting and rebroadcasting UPP frequencies."
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon_state = "relay"
+	id = "UPP Relay"
+	hide = TRUE
+	freq_listening = list(RUS_FREQ, CCT_FREQ)
+	var/faction_shorthand = "UPP"
+
+/obj/structure/machinery/telecomms/relay/preset/tower/faction/Initialize(mapload, ...)
+	if(faction_shorthand)
+		name = replacetext(name, "UPP", faction_shorthand)
+		desc = replacetext(desc, "UPP", faction_shorthand)
+		id = replacetext(id, "UPP", faction_shorthand)
+	return ..()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/faction/clf
+	freq_listening = list(CLF_FREQ, CCT_FREQ)
+	faction_shorthand = "CLF"
+
+/obj/structure/machinery/telecomms/relay/preset/tower/faction/pmc
+	freq_listening = list(PMC_FREQ, CCT_FREQ)
+	faction_shorthand = "PMC"
+
+/obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
+	freq_listening = list(CIV_GEN_FREQ, CIV_COMM_FREQ)
+	faction_shorthand = "colony"
+
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"
 	autolinkers = list("relay")
@@ -149,12 +182,6 @@
 /obj/structure/machinery/telecomms/relay/preset/mining
 	id = "Mining Relay"
 	autolinkers = list("m_relay")
-
-/obj/structure/machinery/telecomms/relay/preset/ruskie
-	id = "Ruskie Relay"
-	hide = 1
-	toggled = 0
-	autolinkers = list("r_relay")
 
 /obj/structure/machinery/telecomms/relay/preset/centcom
 	id = "Centcom Relay"

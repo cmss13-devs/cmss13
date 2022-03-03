@@ -23,6 +23,29 @@
 	var/state = STATE_DEFAULT
 	var/cooldown_message = 0
 
+	var/tablet_name = "Commanding Officer's Tablet"
+
+	var/announcement_title = COMMAND_ANNOUNCE
+	var/announcement_faction = FACTION_MARINE
+	var/add_pmcs = TRUE
+
+	var/tacmap_type = TACMAP_DEFAULT
+	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
+	var/tacmap_additional_parameter = null
+	var/minimap_name = "Marine Minimap"
+
+/obj/item/device/cotablet/Initialize()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		add_pmcs = FALSE
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/disable_pmc)
+	return ..()
+
+/obj/item/device/cotablet/proc/disable_pmc()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		add_pmcs = FALSE
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
+
 /obj/item/device/cotablet/attack_self(mob/user as mob)
 	..()
 
@@ -38,27 +61,30 @@
 
 	user.set_interaction(src)
 	var/dat = "<body>"
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
+	if(announcement_faction != FACTION_MARINE && EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
 		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
 
-	switch(state)
-		if(STATE_DEFAULT)
-			dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=mapview'>Tactical Map</A>"
-			dat += "<BR><hr>"
-			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY)
-					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate Emergency Evacuation</A>"
+	if(announcement_faction == FACTION_MARINE)
+		switch(state)
+			if(STATE_DEFAULT)
+				dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=mapview'>Tactical Map</A>"
+				dat += "<BR><hr>"
+				switch(EvacuationAuthority.evac_status)
+					if(EVACUATION_STATUS_STANDING_BY)
+						dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate Emergency Evacuation</A>"
 
-		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? This cannot be undone from the tablet. <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+			if(STATE_EVACUATION)
+				dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? This cannot be undone from the tablet. <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+	else
+		dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
+		dat += "<BR><A HREF='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> "
-	show_browser(user, dat, "Commanding Officer's Tablet", "communications", "size=400x500")
+	show_browser(user, dat, tablet_name, "communications", "size=400x500")
 	onclose(user, "communications")
 	updateDialog()
-	return
 
 /obj/item/device/cotablet/proc/update_mapview(var/close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
@@ -66,11 +92,10 @@
 		current_mapviewer = null
 		return
 
-	if(!populated_mapview_type_updated[TACMAP_DEFAULT])
-		overlay_tacmap(TACMAP_DEFAULT)
-
-	current_mapviewer << browse_rsc(populated_mapview_types[TACMAP_DEFAULT], "marine_minimap.png")
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
+	if(O)
+		current_mapviewer << browse_rsc(O, "marine_minimap.png")
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/item/device/cotablet/Topic(href, href_list)
 	if(..())
@@ -104,12 +129,14 @@
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 
-			marine_announcement(input, signature = signed)
-			message_staff("[key_name(usr)] has made a command annoucement.")
+			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
+			message_staff("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 			cooldown_message = world.time
 
 		if("award")
+			if(announcement_faction != FACTION_MARINE)
+				return
 			if(usr.job != "Commanding Officer")
 				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
 				return
@@ -125,6 +152,8 @@
 			return
 
 		if("evacuation_start")
+			if(announcement_faction != FACTION_MARINE)
+				return
 			if(state == STATE_EVACUATION)
 				if(security_level < SEC_LEVEL_RED)
 					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
@@ -144,3 +173,16 @@
 			state = STATE_EVACUATION
 
 	updateUsrDialog()
+
+/obj/item/device/cotablet/pmc
+	desc = "A special device used by corporate PMC directors."
+
+	tablet_name = "Site Director's Tablet"
+
+	announcement_title = PMC_COMMAND_ANNOUNCE
+	announcement_faction = FACTION_PMC
+
+	tacmap_type = TACMAP_FACTION
+	tacmap_base_type = TACMAP_BASE_OPEN
+	tacmap_additional_parameter = FACTION_PMC
+	minimap_name = "PMC Minimap"

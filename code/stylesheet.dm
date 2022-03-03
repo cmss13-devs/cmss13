@@ -48,6 +48,9 @@ em						{font-style: normal;	font-weight: bold;}
 .jtacradio				{color: #702963;}
 .intelradio				{color: #027D02;}
 .wyradio				{color: #FE9B24;}
+.cctradio				{color: #A13852;}
+
+.clfradio				{color: #6f679c}
 
 .alpharadio				{color: #EA0000;}
 .bravoradio				{color: #C68610;}

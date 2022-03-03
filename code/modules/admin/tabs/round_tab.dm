@@ -92,7 +92,7 @@
 	J = RoleAuthority.roles_by_name[role]
 	var/tpos = J.spawn_positions
 	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos) as num|null
-	if(!num)
+	if(isnull(num))
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))

@@ -24,6 +24,18 @@
 	var/tacmap_additional_parameter = null
 	var/minimap_name = "Marine Minimap"
 
+/obj/structure/machinery/computer/groundside_operations/Initialize()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		add_pmcs = FALSE
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/disable_pmc)
+	return ..()
+
+/obj/structure/machinery/computer/groundside_operations/proc/disable_pmc()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		add_pmcs = FALSE
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
+
 /obj/structure/machinery/computer/groundside_operations/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 

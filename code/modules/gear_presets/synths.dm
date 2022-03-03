@@ -130,6 +130,14 @@
 
 	add_random_survivor_equipment(H)
 
+/datum/equipment_preset/synth/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
+	var/obj/item/clothing/under/uniform = H.w_uniform
+	if(istype(uniform))
+		uniform.has_sensor = UNIFORM_HAS_SENSORS
+		uniform.sensor_faction = FACTION_COLONIST
+	return ..()
+
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe

@@ -25,6 +25,14 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 
+/obj/structure/machinery/computer/overwatch/Initialize()
+	. = ..()
+	SSmapview.map_machines += src
+
+/obj/structure/machinery/computer/overwatch/Destroy()
+	SSmapview.map_machines -= src
+	return ..()
+
 /obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 

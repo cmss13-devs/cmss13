@@ -40,6 +40,8 @@
 	connect()
 
 /obj/structure/machinery/defenses/proc/connect()
+	if(static)
+		return FALSE
 	sleep(0.5 SECONDS)
 	if(placed && !HD)
 		HD = new handheld_type
@@ -74,7 +76,9 @@
 	to_chat(user, message)
 
 /obj/structure/machinery/defenses/proc/power_on()
-	if(stat == DEFENSE_DAMAGED || !placed)
+	if(stat == DEFENSE_DAMAGED)
+		return FALSE
+	if(!(placed||static))
 		return FALSE
 
 	turned_on = TRUE

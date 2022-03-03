@@ -232,6 +232,8 @@ SUBSYSTEM_DEF(vote)
 		carryover[i] += vote.total_votes
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
+	var/vote_sound = 'sound/ambience/alarm4.ogg'
+	var/vote_sound_vol = 5
 	if(!mode)
 		var/admin = FALSE
 		var/ckey = ckey(initiator_key)
@@ -270,6 +272,8 @@ SUBSYSTEM_DEF(vote)
 				choices.Add(config.votable_modes)
 			if("groundmap")
 				question = "Ground map vote"
+				vote_sound = 'sound/voice/start_your_voting.ogg'
+				vote_sound_vol = 15
 				var/list/maps = list()
 				for(var/i in config.maplist[GROUND_MAP])
 					var/datum/map_config/VM = config.maplist[GROUND_MAP][i]
@@ -335,7 +339,7 @@ SUBSYSTEM_DEF(vote)
 			text += "<br>[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', channel = SOUND_CHANNEL_VOX, volume = 5))
+		SEND_SOUND(world, sound(vote_sound, channel = SOUND_CHANNEL_VOX, volume = vote_sound_vol))
 		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'<b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)

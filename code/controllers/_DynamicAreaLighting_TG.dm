@@ -395,10 +395,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
 
-GLOBAL_DATUM_INIT(rain_effect, /obj/effect/weather_vfx_holder/rain, new)
-
 /area/proc/add_thunder()
 	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
 		for(var/turf/T in contents)
-			T.vis_contents += GLOB.rain_effect
+			new /obj/effect/weather_vfx_holder/rain(T)
 			T.update_lumcount(exterior_light)

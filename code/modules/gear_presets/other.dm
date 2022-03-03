@@ -400,9 +400,14 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
-/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H, client/mob_client)
+	var/obj/item/clothing/under/uniform = H.w_uniform
+	if(istype(uniform))
+		uniform.has_sensor = UNIFORM_HAS_SENSORS
+		uniform.sensor_faction = FACTION_COLONIST
 	H.job = "Zombie"
 	H.faction = faction
+	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
 	H.set_species("Human") // Set back, so that we can get our claws again

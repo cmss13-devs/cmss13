@@ -671,6 +671,15 @@
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl)
 
+/obj/item/device/radio/headset/distress/PMC/hvh
+	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public."
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+
+/obj/item/device/radio/headset/distress/PMC/hvh/cct
+	name = "PMC-CCT headset"
+	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public, :x - combat controller."
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
+
 /obj/item/device/radio/headset/distress/UPP
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the civillian common channel, use :h."
@@ -680,6 +689,23 @@
 /obj/item/device/radio/headset/distress/UPP/recalculateChannels()
 	..()
 	syndie = 1
+
+/obj/item/device/radio/headset/distress/UPP/cct
+	name = "UPP-CCT headset"
+	desc = "A special headset used by UPP military. Channels are as follows: :h - public, :x - combat controller."
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
+
+/obj/item/device/radio/headset/distress/CLF
+	name = "CLF headset"
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the civillian common channel, use :h."
+	frequency = CLF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+
+/obj/item/device/radio/headset/distress/CLF/cct
+	name = "CLF-CCT headset"
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, :x - combat controller."
+	frequency = CLF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/commando
 	name = "Commando headset"

@@ -175,6 +175,7 @@
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
 	desc = "A crate containing a basic set of a mortar and some shells, to get an engineer started."
+	var/jtac_key_type = /obj/item/device/encryptionkey/jtac
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/Initialize()
 	. = ..()
@@ -193,7 +194,10 @@
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
-	new /obj/item/device/encryptionkey/jtac(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new jtac_key_type(src)
+	new jtac_key_type(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range(src)
+
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/cct
+	jtac_key_type = /obj/item/device/encryptionkey/cct

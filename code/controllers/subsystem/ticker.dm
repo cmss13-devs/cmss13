@@ -133,6 +133,11 @@ SUBSYSTEM_DEF(ticker)
 		setup_nightmare()
 	else
 		INVOKE_ASYNC(src, .proc/setup_start)
+
+	for(var/client/C in GLOB.admins)
+		remove_verb(C, roundstart_mod_verbs)
+	admin_verbs_mod -= roundstart_mod_verbs
+
 	return TRUE
 
 /// Request to start nightmare setup before moving on to regular setup

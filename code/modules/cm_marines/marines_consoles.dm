@@ -809,9 +809,8 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
-			var/job_position = jobs[id_card.assignment]
-			if(job_position)
-				entry["ijob"] = job_position
+			if(id_card.assignment in jobs)
+				entry["ijob"] = jobs[id_card.assignment]
 
 		// Binary living/dead status
 		if (C.sensor_mode >= SENSOR_LIVING)

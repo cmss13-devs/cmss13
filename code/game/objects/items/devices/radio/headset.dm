@@ -677,7 +677,7 @@
 
 /obj/item/device/radio/headset/distress/PMC/hvh/cct
 	name = "PMC-CCT headset"
-	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public, :x - combat controller."
+	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public, :o - combat controller."
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/UPP
@@ -692,7 +692,7 @@
 
 /obj/item/device/radio/headset/distress/UPP/cct
 	name = "UPP-CCT headset"
-	desc = "A special headset used by UPP military. Channels are as follows: :h - public, :x - combat controller."
+	desc = "A special headset used by UPP military. Channels are as follows: :h - public, :o - combat controller."
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/CLF
@@ -703,7 +703,7 @@
 
 /obj/item/device/radio/headset/distress/CLF/cct
 	name = "CLF-CCT headset"
-	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, :x - combat controller."
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, :o - combat controller."
 	frequency = CLF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
 

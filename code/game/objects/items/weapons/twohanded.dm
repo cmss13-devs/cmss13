@@ -296,8 +296,8 @@
 
 
 /obj/item/weapon/melee/twohanded/breacher
-	name = "B5 Breaching Hammer"
-	desc = "An extremely heavy tool, used to smash things. The top piece is specially designed to take down walls, but looks way too heavy for a human to use."
+	name = "\improper B5 Breaching Hammer"
+	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "breacher"
 	item_state = "breacher"
@@ -307,13 +307,27 @@
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
 
-	attack_verb = list("pulverised", "smashed", "thwacked", "crushed")
+	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
+
+/obj/item/weapon/melee/twohanded/breacher/pickup(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
+		return
+	..()
+
+/obj/item/weapon/melee/twohanded/breacher/attack(target as mob, mob/living/user as mob)
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
+		return
+	..()
 
 /obj/item/weapon/melee/twohanded/breacher/afterattack(var/atom/A, var/mob/user, var/proximity)
 	if(!(flags_item & WIELDED))
 		return ..()
 
-	if(!isSynth(user))
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		if(!istype(A, /mob/living))
+			to_chat(user, SPAN_WARNING("You can't use \the [src] properly!"))
 		return ..()
 
 	if(istype(A, /turf/closed/wall))

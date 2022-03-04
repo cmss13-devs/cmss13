@@ -56,6 +56,8 @@
 /obj/structure/bed/chair/attack_hand(mob/user)
 	. = ..()
 	if(stacked_size)
+		if(!CAN_PICKUP(user, src))
+			return
 		var/obj/item/weapon/melee/twohanded/folded_metal_chair/F = locate() in contents
 		user.put_in_active_hand(F)
 		stacked_size--

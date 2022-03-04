@@ -753,6 +753,7 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			qdel(embryo)
 		potential_host.death(create_cause_data("larva suicide"))
+	hijack_pooled_surge = TRUE
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++

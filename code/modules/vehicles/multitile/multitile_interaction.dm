@@ -252,6 +252,15 @@
 	if(ammo_flags & AMMO_XENO_ACID)
 		dam_type = "acid"
 
+	// trust me bro
+	var/pixel_x_offset = 64 + ((P.x - x) * 32)
+	if(pixel_x_offset > 0 && (dir == NORTH || dir == SOUTH))
+		pixel_x_offset -= 32
+	var/pixel_y_offset = 64 + ((P.y - y) * 32)
+	if(pixel_y_offset > 0 && (dir == EAST || dir == WEST))
+		pixel_y_offset -= 32
+	bullet_ping(P, pixel_x_offset, pixel_y_offset)
+
 	take_damage_type(damage * (0.33 + penetration/100), dam_type, firer)
 
 	healthcheck()

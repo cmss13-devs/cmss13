@@ -345,6 +345,20 @@
 				blocked = TRUE
 				break
 
+		if(!omni_directional)
+			var/turf/F = get_step(src, src.dir)
+			if(F.density || F.opacity)
+				blocked = TRUE
+
+			for(var/obj/structure/S in F)
+				if(F.opacity)
+					blocked = TRUE
+					break
+
+			for(var/obj/vehicle/multitile/V in F)
+				blocked = TRUE
+				break
+
 		if(blocked)
 			if(A == target)
 				target = null

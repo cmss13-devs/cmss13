@@ -543,6 +543,7 @@ IN_USE						used for vending/denying
 					if(ID.registered_ref != WEAKREF(H))
 						to_chat(H, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
 						return
+					var/squad = H.assigned_squad.name
 					var/specialist_assignment
 					switch(p_name)
 						if("Scout Set")
@@ -564,7 +565,7 @@ IN_USE						used for vending/denying
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-					ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					ID.set_assignment("[squad] " + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 

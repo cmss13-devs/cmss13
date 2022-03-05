@@ -49,9 +49,14 @@
 	var/stat_msg2
 	processing = TRUE
 
-/obj/structure/machinery/computer/communications/New()
-	..()
+/obj/structure/machinery/computer/communications/Initialize()
+	. = ..()
 	start_processing()
+	SSmapview.map_machines += src
+
+/obj/structure/machinery/computer/communications/Destroy()
+	SSmapview.map_machines -= src
+	return ..()
 
 /obj/structure/machinery/computer/communications/process()
 	if(..() && state != STATE_STATUSDISPLAY)

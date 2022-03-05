@@ -133,6 +133,11 @@ SUBSYSTEM_DEF(ticker)
 		setup_nightmare()
 	else
 		INVOKE_ASYNC(src, .proc/setup_start)
+
+	for(var/client/C in GLOB.admins)
+		remove_verb(C, roundstart_mod_verbs)
+	admin_verbs_mod -= roundstart_mod_verbs
+
 	return TRUE
 
 /// Request to start nightmare setup before moving on to regular setup
@@ -410,7 +415,8 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-
+				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) <= 5)
+					msg_sea("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] has less than 5 hours on the server.")
 	QDEL_IN(player, 5)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()

@@ -41,6 +41,7 @@
 	var/obj/item/attachable/scope/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -85,6 +86,7 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -184,8 +186,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/S = new /obj/item/attachable/scope/slavic(src)
+	var/obj/item/attachable/scope/slavic/S = new /obj/item/attachable/scope/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 	S = new /obj/item/attachable/slavicbarrel(src)
@@ -806,7 +809,7 @@
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien)
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov, /obj/item/explosive/grenade/flashbang)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 

@@ -42,9 +42,9 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 /datum/surgery_step/tend_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to suture and tend the wounds on [target]'s [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to suture and tend the wounds on your [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to suture and tend the wounds on [target]'s [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("You begin to suture and tend the wounds on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[user] begins to suture and tend the wounds on your [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[user] begins to suture and tend the wounds on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("It feels like your [surgery.affected_limb.display_name] is being stabbed with needles - because it is!")
 	log_interact(user, target, "[key_name(user)] began tending wounds in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
@@ -54,17 +54,17 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 	if(surgery.affected_limb.brute_dam <= 0 && surgery.affected_limb.burn_dam <= 0)
 		user.affected_message(target,
-			SPAN_NOTICE("You finish treating the wounds on [target]'s [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] finishes treating the wounds on your [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] finishes treating the wounds on [target]'s [parse_zone(target_zone)]."))
+			SPAN_NOTICE("You finish treating the wounds on [target]'s [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] finishes treating the wounds on your [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] finishes treating the wounds on [target]'s [surgery.affected_limb.display_name]."))
 
 		surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 		log_interact(user, target, "[key_name(user)] finished tending wounds in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You treat some of the injuries on [target]'s [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] treats some of the injuries on your [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] treats some of the injuries on [target]'s [parse_zone(target_zone)]."))
+			SPAN_NOTICE("You treat some of the injuries on [target]'s [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] treats some of the injuries on your [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] treats some of the injuries on [target]'s [surgery.affected_limb.display_name]."))
 
 		log_interact(user, target, "[key_name(user)] tended some wounds in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 

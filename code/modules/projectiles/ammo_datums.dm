@@ -198,7 +198,7 @@
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_cause_data)
+		var/obj/item/projectile/P = new /obj/item/projectile(curloc, original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
@@ -1703,7 +1703,18 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
 	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/minigun/New()
+	..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		damage = 15
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/setup_hvh_damage)
+
+/datum/ammo/bullet/minigun/proc/setup_hvh_damage()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		damage = 15
 
 /datum/ammo/bullet/minigun/tank
 	accuracy = -HIT_ACCURACY_TIER_1

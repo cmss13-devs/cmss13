@@ -185,6 +185,12 @@
 	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/teargas/Initialize()
+	if(type == /obj/item/explosive/grenade/custom/teargas) // ugly but we only want to change base level teargas
+		if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+			new /obj/item/explosive/grenade/flashbang/noskill(loc)
+			return INITIALIZE_HINT_QDEL
+		else if(SSticker.current_state < GAME_STATE_PLAYING)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_teargas)
 	. = ..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -200,6 +206,12 @@
 	containers += B2
 
 	update_icon()
+
+/obj/item/explosive/grenade/custom/teargas/proc/replace_teargas()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		new /obj/item/explosive/grenade/flashbang/noskill(loc)
+		qdel(src)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
 
 /obj/item/explosive/grenade/custom/teargas/attack_self(mob/user)

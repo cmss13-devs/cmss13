@@ -603,6 +603,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -819,6 +820,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		shoulder.fracture(100)
 		if(!(shoulder.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (shoulder.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
 			shoulder.status &= ~LIMB_SPLINTED
+			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
 			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()

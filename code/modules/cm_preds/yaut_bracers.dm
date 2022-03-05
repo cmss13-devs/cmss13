@@ -958,6 +958,7 @@
 
 	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
+	var/list/heard = get_mobs_in_view(7, usr)
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
@@ -968,6 +969,8 @@
 		msg = replacetext(msg, "o", "0")
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
+
+	usr.langchat_speech(msg, heard, GLOB.all_languages, "#ff0505")
 
 	for(var/mob/Q as anything in hearers(usr))
 		if(Q.stat && !isobserver(Q))

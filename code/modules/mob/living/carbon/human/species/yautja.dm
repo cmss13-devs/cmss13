@@ -79,6 +79,8 @@
 		WEAR_IN_BACK\
 	)
 
+	ignores_stripdrag_flag = TRUE
+
 /datum/species/yautja/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)

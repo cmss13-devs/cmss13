@@ -231,3 +231,16 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 	animate(transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = 0, pixel_y = 0, time = 0)//ease it back
 
+/mob/living/carbon/human/proc/animation_rappel()
+	var/pre_rappel_alpha = alpha
+	alpha = 20
+	dir = WEST
+	canmove = FALSE
+	var/matrix/initial_matrix = matrix()
+	initial_matrix.Turn(45)
+	apply_transform(initial_matrix)
+	pixel_y = 8
+	var/matrix/reset_matrix = matrix()
+	animate(src, 3, transform = reset_matrix, pixel_y = 0, alpha = pre_rappel_alpha, flags = ANIMATION_PARALLEL)
+	sleep(3)
+	canmove = TRUE

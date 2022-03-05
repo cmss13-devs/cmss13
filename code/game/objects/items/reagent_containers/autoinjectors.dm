@@ -14,12 +14,20 @@
 	starting_vial = null
 	var/uses_left = 3
 	var/mixed_chem = FALSE
+	var/display_maptext = FALSE
+	var/maptext_label
+	maptext_height = 16
+	maptext_width = 16
+	maptext_x = 18
+	maptext_y = 3
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
 	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)
+	if(display_maptext == TRUE)
+		verbs += /obj/item/storage/pill_bottle/verb/set_maptext
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
@@ -35,6 +43,10 @@
 	overlays.Cut()
 	if(uses_left)
 		overlays += "[chemname]_[uses_left]"
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
+		maptext = "<span class='langchat'>[maptext_label]</span>"
+	else
+		maptext = ""
 
 /obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
 	..()
@@ -43,6 +55,18 @@
 	else
 		to_chat(user, SPAN_NOTICE("It is empty."))
 
+/obj/item/reagent_container/hypospray/autoinjector/equipped()
+	..()
+	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/on_exit_storage()
+	..()
+	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/dropped()
+	..()
+	update_icon()
+
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord
 	name = "tricordrazine autoinjector"
@@ -50,6 +74,8 @@
 	desc = "An autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Tc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -60,6 +86,8 @@
 	desc = "An autoinjector loaded with 3 uses of Quick Clot, a chemical designed to pause all bleeding. Renew doses as needed."
 	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Qc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
@@ -67,6 +95,8 @@
 	desc = "An autoinjector loaded with 3 uses of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart."
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Ep"
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
@@ -74,6 +104,8 @@
 	desc = "An autoinjector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
 	amount_per_transfer_from_this = 1
 	volume = 3
+	display_maptext = TRUE
+	maptext_label = "D+"
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
@@ -82,6 +114,7 @@
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
+	display_maptext = TRUE //if you want to give it a label you can, but it won't come with one by default.
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -95,6 +128,8 @@
 	desc = "An auto-injector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -105,6 +140,8 @@
 	desc = "An auto-injector loaded with 3 uses of Oxycodone, a powerful pankiller intended for life-threatening situations."
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Ox"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane
 	name = "kelotane autoinjector"
@@ -112,6 +149,8 @@
 	desc = "An auto-injector loaded with 3 uses of Kelotane, a common burn medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Kl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -122,6 +161,8 @@
 	desc = "An auto-injector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Bi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -132,6 +173,8 @@
 	desc = "An auto-injector loaded with 3 uses of Inaprovaline, an emergency stabilization medicine for patients in critical condition."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "In"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
@@ -143,6 +186,7 @@
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
+	display_maptext = TRUE //see anaesthetic injector
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -179,6 +223,7 @@
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
+	display_maptext = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
 	. = ..()
@@ -217,6 +262,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 15
 	uses_left = 0
+	display_maptext = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/examine(mob/user)
 	..()

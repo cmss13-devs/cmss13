@@ -98,7 +98,7 @@ var/list/datum/mob_hud/huds = list(
 	if(!istype(U))
 		return FALSE
 
-	if(U.sensor_mode <= 2 || U.has_sensor == 0)
+	if(U.sensor_mode <= SENSOR_MODE_DAMAGE || U.has_sensor == UNIFORM_NO_SENSORS)
 		return FALSE
 
 	return TRUE
@@ -384,6 +384,12 @@ var/list/datum/mob_hud/huds = list(
 						holder.icon_state = "huddeadalmost"
 						if(!holder2_set)
 							holder2.icon_state = "huddeadalmost"
+							holder3.icon_state = "huddead"
+							holder2_set = 1
+					else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
+						holder.icon_state = "huddeadclose"
+						if(!holder2_set)
+							holder2.icon_state = "huddeadclose"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
 					else

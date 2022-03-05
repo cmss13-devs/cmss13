@@ -281,7 +281,7 @@
 	if(subspace_transmission)
 		filter_type = RADIO_FILTER_TYPE_ALL
 		if(!src.ignore_z)
-			target_zs = get_target_zs()
+			target_zs = get_target_zs(connection.frequency)
 			if (isnull(target_zs))
 				//We don't have a radio connection on our Z-level, abort!
 				return
@@ -296,7 +296,7 @@
 					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
 
 
-/obj/item/device/radio/proc/get_target_zs()
+/obj/item/device/radio/proc/get_target_zs(var/frequency)
 	var/turf/position = get_turf(src)
 	if(QDELETED(position))
 		return
@@ -315,7 +315,7 @@
 
 	if(subspace_transmission)
 		if(!src.ignore_z)
-			target_zs = SSradio.get_available_tcomm_zs()
+			target_zs = SSradio.get_available_tcomm_zs(frequency)
 			if(!(transmit_z in target_zs))
 				//We don't have a connection ourselves!
 				return null

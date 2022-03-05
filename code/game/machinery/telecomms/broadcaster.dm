@@ -177,14 +177,6 @@
 			heard_gibberish += R
 			continue
 
-		//This is hacky as fuck, but I'm not going to dig into telecomms to do it all properly.
-		//We can't do this via the broadcasters since Sulaco is multi-Z.
-		if(display_freq == PUB_FREQ && M.loc && R.loc) //We actually have z levels to check.
-			var/atom/Am = get_turf(M) //Getting turfs, just to be safe.
-			var/atom/Ar = get_turf(R)
-			if(!Am || !Ar || !is_mainship_level(Am.z) || !is_mainship_level(Ar.z))
-				continue //If listener and receiver are on different zs, and one of those zs is 1.
-
 		// --- Can understand the speech ---
 		if (!M || R.say_understands(M))
 			// - Not human or wearing a voice mask -
@@ -209,7 +201,7 @@
 	if (length(heard_masked) || length(heard_normal) || length(heard_voice) || length(heard_garbled) || length(heard_gibberish))
 
 		/* --- Some miscellaneous variables to format the string output --- */
-		var/part_a = "<span class='radio'><span class='name'>" // goes in the actual output
+		var/part_a = "<span class='[SSradio.get_frequency_span(display_freq)]'><span class='name'>" // goes in the actual output
 		var/freq_text
 		if(comm_title != "" && comm_title)
 			freq_text = "[get_frequency_name(display_freq)] ([comm_title])"
@@ -221,53 +213,6 @@
 		if(data == 3) // intercepted radio message
 			part_b_extra = " <i>(Intercepted)</i>"
 		var/part_b = "</span><b> [icon2html(radio, (heard_masked + heard_normal + heard_voice + heard_garbled + heard_gibberish))]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
-
-		// Antags!
-		if (display_freq in ANTAG_FREQS)
-			part_a = "<span class='syndradio'><span class='name'>"
-		// centcomm channels (deathsquid and ert)
-		else if (display_freq in CENT_FREQS)
-			part_a = "<span class='centradio'><span class='name'>"
-		// command channel
-		else if (display_freq == COMM_FREQ)
-			part_a = "<span class='comradio'><span class='name'>"
-		// AI private channel
-		else if (display_freq == AI_FREQ)
-			part_a = "<span class='airadio'><span class='name'>"
-
-		// department radio formatting (poorly optimized, ugh)
-		else if (display_freq == SEC_FREQ)
-			part_a = "<span class='secradio'><span class='name'>"
-		else if (display_freq == ENG_FREQ)
-			part_a = "<span class='engradio'><span class='name'>"
-		else if (display_freq == MED_FREQ)
-			part_a = "<span class='medradio'><span class='name'>"
-		else if (display_freq == SUP_FREQ) // cargo
-			part_a = "<span class='supradio'><span class='name'>"
-		else if (display_freq == JTAC_FREQ)
-			part_a = "<span class='jtacradio'><span class='name'>"
-		else if (display_freq == TACTICS_FREQ)
-			part_a = "<span class='intelradio'><span class='name'>"
-		else if (display_freq == WY_FREQ)
-			part_a = "<span class='wyradio'><span class='name'>"
-		else if (display_freq == RUS_FREQ)
-			part_a = "<span class='syndradio'><span class='name'>"
-
-
-		else if (display_freq == ALPHA_FREQ)
-			part_a = "<span class='alpharadio'><span class='name'>"
-		else if (display_freq == BRAVO_FREQ)
-			part_a = "<span class='bravoradio'><span class='name'>"
-		else if (display_freq == CHARLIE_FREQ)
-			part_a = "<span class='charlieradio'><span class='name'>"
-		else if (display_freq == DELTA_FREQ)
-			part_a = "<span class='deltaradio'><span class='name'>"
-		else if (display_freq == ECHO_FREQ)
-			part_a = "<span class='echoradio'><span class='name'>"
-
-		// If all else fails and it's a dept_freq, color me purple!
-		else if (display_freq in DEPT_FREQS)
-			part_a = "<span class='deptradio'><span class='name'>"
 
 		if(display_freq in M.important_radio_channels)
 			volume = RADIO_VOLUME_IMPORTANT

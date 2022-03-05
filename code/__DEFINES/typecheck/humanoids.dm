@@ -11,6 +11,7 @@
 #define ismonkey(A) (ishuman(A) && istype(A?:species, /datum/species/monkey))
 #define isYautja(A) (ishuman(A) && istype(A?:species, /datum/species/yautja))
 #define isResearcher(A) (ishuman(A) && A.job == "Researcher")
+#define isSEA(A) (ishuman(A) && A.job == "Senior Enlisted Advisor")
 #define isSynth(A)  (ishuman(A) && istype(A?:species, /datum/species/synthetic))
 #define isColonySynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial))
 #define hasorgans(A) ishuman(A)

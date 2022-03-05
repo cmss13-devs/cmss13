@@ -667,6 +667,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/accuracy_scoped_buff
 	var/delay_scoped_nerf
 	var/damage_falloff_scoped_buff
+	var/ignore_clash_fog = FALSE
 
 /obj/item/attachable/scope/New()
 	..()
@@ -704,7 +705,7 @@ Defined in conflicts.dm of the #defines folder.
 			if(user)
 				to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
 			return FALSE
-		if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		if(MODE_HAS_FLAG(MODE_FACTION_CLASH) && !ignore_clash_fog)
 			if(user)
 				to_chat(user, SPAN_DANGER("You peer into [src], but it seems to have fogged up. You can't use this!"))
 			return FALSE
@@ -1539,6 +1540,12 @@ Defined in conflicts.dm of the #defines folder.
 			var/transfered_rounds = min(max_rounds - current_rounds, FT.current_rounds)
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
+
+			var/amount_of_reagents = FT.reagents.reagent_list.len
+			var/amount_removed_per_reagent = transfered_rounds / amount_of_reagents
+			for(var/datum/reagent/R in FT.reagents.reagent_list)
+				R.volume -= amount_removed_per_reagent
+			FT.update_icon()
 	else
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 

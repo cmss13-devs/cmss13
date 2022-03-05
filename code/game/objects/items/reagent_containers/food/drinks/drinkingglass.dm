@@ -600,6 +600,16 @@
 					name = "Glass of ???"
 					desc = "A black ichor with an oily purple sheer on top. Are you sure you should drink this?"
 					center_of_mass = "x=16;y=5"
+				if("eggnog")
+					icon_state = "glass_white"
+					name = "Glass of Eggnog"
+					desc = "A rich, non-alcoholic dairy-based beverage traditionally consumed around Christmastime."
+					center_of_mass = "x=16;y=10"
+				if("spikedeggnog")
+					icon_state = "goldschlagerglass"
+					name = "Glass of Spiked Eggnog"
+					desc = "Just looking at this brings back memories of hugs, family, and present unwrappings."
+					center_of_mass = "x=16;y=5"
 				else
 					//a common drinking reagent that makes more than half of the total volume
 					if(istype(R, /datum/reagent/drink) && R.volume >= 0.5*reagents.total_volume)

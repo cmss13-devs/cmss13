@@ -31,8 +31,6 @@
 	var/firing = FALSE
 	/// If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/fixed = FALSE
-	/// Prevents mortar from creating endless piles of glass shards
-	var/has_created_ceiling_debris = 0
 
 	var/obj/structure/machinery/computer/security/mortar/internal_camera
 
@@ -215,10 +213,8 @@
 			mortar_shell.source_mob = user
 			mortar_shell.forceMove(src)
 
-			if(!has_created_ceiling_debris)
-				var/turf/G = get_turf(src)
-				G.ceiling_debris_check(2)
-				has_created_ceiling_debris = 1
+			var/turf/G = get_turf(src)
+			G.ceiling_debris_check(2)
 
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)

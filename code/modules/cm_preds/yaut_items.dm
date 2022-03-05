@@ -19,6 +19,7 @@
 
 //======================================\\
 //=================\\//=================\\
+
 /obj/item/clothing/suit/armor/yautja
 	name = "ancient alien armor"
 	desc = "Ancient armor made from a strange alloy. It feels cold with an alien weight."
@@ -55,6 +56,7 @@
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	var/thrall = FALSE//Used to affect icon generation.
+	fire_intensity_resistance = 10
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
@@ -142,6 +144,7 @@
 			/obj/item/weapon/melee/yautja,
 			/obj/item/storage/backpack/yautja,
 			/obj/item/weapon/melee/twohanded/yautja)
+	fire_intensity_resistance = 20
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)
@@ -261,6 +264,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	var/thrall = FALSE//Used to affect icon generation.
+	fire_intensity_resistance = 10
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
@@ -317,7 +321,8 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
-	has_sensor = 0
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 

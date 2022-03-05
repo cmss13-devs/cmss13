@@ -447,3 +447,5 @@
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"
 
+/// from /datum/squad/proc/put_marine_in_squad
+#define COMSIG_SET_SQUAD "set_squad"

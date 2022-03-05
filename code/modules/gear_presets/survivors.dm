@@ -24,6 +24,14 @@
 	add_survivor_weapon(H)
 	add_survivor_weapon_pistol(H)
 
+/datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
+	var/obj/item/clothing/under/uniform = H.w_uniform
+	if(istype(uniform))
+		uniform.has_sensor = UNIFORM_HAS_SENSORS
+		uniform.sensor_faction = FACTION_COLONIST
+	return ..()
+
+
 // ----- Scientist Survivor
 
 /datum/equipment_preset/survivor/scientist

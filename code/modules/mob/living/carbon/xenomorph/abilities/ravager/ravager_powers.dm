@@ -534,6 +534,9 @@
 
 	if (!action_cooldown_check())
 		return
+		
+	if (!X.check_state())
+		return
 
 	if (X.mutation_type == RAVAGER_HEDGEHOG)
 		var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate

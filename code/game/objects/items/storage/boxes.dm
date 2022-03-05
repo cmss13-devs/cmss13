@@ -145,6 +145,20 @@
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		handle_delete_clash_contents()
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+
+/obj/item/storage/box/flashbangs/proc/handle_delete_clash_contents()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		var/grenade_count = 0
+		var/grenades_desired = 4
+		for(var/grenade in contents)
+			if(grenade_count > grenades_desired)
+				qdel(grenade)
+			grenade_count++
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
@@ -619,6 +633,24 @@
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
 	has_gamemode_skin = FALSE
+
+/obj/item/storage/box/nade_box/tear_gas/fill_preset_inventory()
+	..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		handle_delete_clash_contents()
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+
+/obj/item/storage/box/nade_box/tear_gas/proc/handle_delete_clash_contents()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		var/grenade_count = 0
+		var/grenades_desired = 6
+		for(var/grenade in contents)
+			if(grenade_count > grenades_desired)
+				qdel(grenade)
+			grenade_count++
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
+
 
 //ITEMS-----------------------------------//
 /obj/item/storage/box/lightstick

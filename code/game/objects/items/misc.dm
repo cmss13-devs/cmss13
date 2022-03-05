@@ -164,7 +164,7 @@
 	var/yy = I.pixel_y
 	I.pixel_x = 0		//then remove it so it'll stay within the evidence bag
 	I.pixel_y = 0
-	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER)	//take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots ~Carn
+	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER)	//take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots) ~Carn
 	I.pixel_x = xx		//and then return it
 	I.pixel_y = yy
 	overlays += img
@@ -213,3 +213,12 @@
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
+
+/obj/item/rappel_harness
+	name = "rappel harness"
+	desc = "A simple, uncomfortable rappel harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition."
+	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon_state = "rappel_harness"
+	item_state = "rappel_harness"
+	w_class = SIZE_MASSIVE
+	flags_equip_slot = SLOT_WAIST

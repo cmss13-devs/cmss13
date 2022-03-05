@@ -38,7 +38,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
 	flags_atom = FPRINT|CONDUCT
-	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
 	force = 5.0
 	w_class = SIZE_TINY
 	throwforce = 5.0

@@ -15,7 +15,7 @@
 
 	interior_map = "tank"
 
-	//tank always has 1 crewmen slot reserved and 1 general slot for other roles.
+	//tank always has 2 crewmen slot reserved and 1 general slot for other roles.
 	passengers_slots = 1
 	//this is done in case VCs die inside the tank, so that someone else can come in and take them out.
 	revivable_dead_slots = 2
@@ -90,8 +90,8 @@
 /obj/vehicle/multitile/tank/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
-	RRS.total = 1
+	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.total = 2
 	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/tank/load_hardpoints()

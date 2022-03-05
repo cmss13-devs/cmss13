@@ -423,7 +423,7 @@
 	SIGNAL_HANDLER
 
 	if(check_zone(X.zone_selected) == "head" && user == attached_mob)
-		nvg_health -= slashdata["n_damage  nvg will receive only 65% of the actual slash this is because a runner could break your goog* 0.65"] //les with mere 2 hits
+		nvg_health -= slashdata["n_damage"] // damage can be adjusted here
 	if(nvg_health <= 0)
 		nvg_health = 0
 		user.visible_message(SPAN_WARNING("\The [src] on [user]'s head break with a crinkling noise."),

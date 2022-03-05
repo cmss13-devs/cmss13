@@ -572,7 +572,7 @@
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	w_class = SIZE_LARGE
 	storage_slots = 12
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
@@ -679,6 +679,7 @@
 	storage_slots = 5
 	max_storage_space = 11
 	max_w_class = SIZE_MEDIUM
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_ALLOW_QUICKDRAW
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'

@@ -210,7 +210,7 @@
 	else
 		..()
 
-/obj/items/prop/helmetgarb/helmet_nvg/examine(mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
 	. = ..()
 
 	if(shape == NVG_SHAPE_BROKEN)

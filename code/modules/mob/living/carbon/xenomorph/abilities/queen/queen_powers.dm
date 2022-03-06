@@ -396,13 +396,22 @@
 		return
 
 	for(var/obj/structure/barricade/B in T)
-	//	var/list/blocked_dirs = list(B.dir)
-		for(var/stepdir in cardinal - B.dir)
+		var/list/blocked_dirs = list(B.dir)
+		var/blocked
+		for(var/stepdir in cardinal - blocked_dirs)
 			var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
-			if(!existing_weeds)
-				if(B.health >= (B.maxhealth/4))
-					to_chat(X, SPAN_WARNING("The [B] here is too strong to expand weeds onto!"))
-					break
+			if(existing_weeds)
+				blocked = FALSE
+				message_admins("weed plant not blocked on [stepdir]")
+				break
+			else
+				blocked = TRUE
+				message_admins("weed plant blocked on [stepdir]")
+				break
+		if(blocked)
+			if(B.health >= (B.maxhealth/4))
+				to_chat(X, SPAN_WARNING("The [B] here is too strong to expand weeds onto!"))
+				return
 
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)

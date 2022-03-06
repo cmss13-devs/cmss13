@@ -2,8 +2,8 @@
 	name = "metal barricade"
 	desc = "A sturdy and easily assembled barricade made of metal plates, often used for quick fortifications. Use a blowtorch to repair."
 	icon_state = "metal_0"
-	health = 500
-	maxhealth = 500
+	health = 450
+	maxhealth = 450
 	burn_multiplier = 1.15
 	brute_multiplier = 1
 	crusher_resistant = TRUE

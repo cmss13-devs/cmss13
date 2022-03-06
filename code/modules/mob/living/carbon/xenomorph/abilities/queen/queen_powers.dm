@@ -396,8 +396,8 @@
 		return
 
 	for(var/obj/structure/barricade/B in T)
-		var/list/blocked_dirs = list(B.dir)
-		for(var/stepdir in cardinal - blocked_dirs)
+	//	var/list/blocked_dirs = list(B.dir)
+		for(var/stepdir in cardinal - B.dir)
 			var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
 			if(!existing_weeds)
 				if(B.health >= (B.maxhealth/4))

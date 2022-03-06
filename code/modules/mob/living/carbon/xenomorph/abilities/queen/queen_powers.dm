@@ -395,6 +395,15 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 
+	for(var/obj/structure/barricade/B in T)
+		var/list/blocked_dirs = list(B.dir)
+		for(var/stepdir in cardinal - blocked_dirs)
+			var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
+			if(!existing_weeds)
+				if(B.health >= (B.maxhealth/4))
+					to_chat(X, SPAN_WARNING("The [B] here is too strong to expand weeds onto!"))
+					break
+
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))

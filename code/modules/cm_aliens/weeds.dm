@@ -167,6 +167,14 @@
 		if(!istype(T) || !T.is_weedable())
 			continue
 
+		for(var/obj/structure/barricade/B in T)
+			var/list/blocked_dirs = list(B.dir)
+			for(var/stepdir in cardinal - blocked_dirs)
+				var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
+				if(!existing_weeds)
+					if(B.health >= (B.maxhealth/4))
+						break
+
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
 			if(W.indestructible)

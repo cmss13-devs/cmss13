@@ -121,6 +121,7 @@
 	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
+	SetLuminosity(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()

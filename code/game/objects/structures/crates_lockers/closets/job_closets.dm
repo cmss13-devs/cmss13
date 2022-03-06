@@ -36,7 +36,7 @@
 	desc = "It's a storage unit for janitorial clothes and gear."
 	icon_state = "purple"
 	icon_closed = "purple"
-	icon_opened = "purpled_open"
+	icon_opened = "purple_open"
 
 /obj/structure/closet/jcloset/Initialize()
 	. = ..()

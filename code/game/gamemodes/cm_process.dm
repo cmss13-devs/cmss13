@@ -202,16 +202,17 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 
 	for (var/i in GLOB.alive_human_list)
-		var/mob/M = i
-		var/atom/where = M
-		if (where == 0 && M.loc)
-			where = M.loc
-		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
-			numHostsPlanet++
-			hostsPlanetLocations += where
-		else if(is_mainship_level(where.z))
-			numHostsShip++
-			hostsShipLocations += where
+		var/mob/living/carbon/human/H = i
+		var/atom/where = H
+		if(isSpeciesHuman(H))
+			if (where == 0 && H.loc)
+				where = H.loc
+			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
+				numHostsPlanet++
+				hostsPlanetLocations += where
+			else if(is_mainship_level(where.z))
+				numHostsShip++
+				hostsShipLocations += where
 
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight

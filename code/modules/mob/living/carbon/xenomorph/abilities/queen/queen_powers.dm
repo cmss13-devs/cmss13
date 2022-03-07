@@ -394,24 +394,28 @@
 	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
-
 	for(var/obj/structure/barricade/B in T)
-		var/list/blocked_dirs = list(B.dir)
-		var/blocked
+		var/list/blocked_dirs
+		var/blocked = FALSE
+		blocked_dirs += list(B.dir)
+
 		for(var/stepdir in cardinal - blocked_dirs)
 			var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
-			if(existing_weeds)
-				blocked = FALSE
-				message_admins("weed plant not blocked on [stepdir]")
-				break
-			else
+			if(!existing_weeds)
 				blocked = TRUE
 				message_admins("weed plant blocked on [stepdir]")
+				continue
+			else
+				blocked = FALSE
+				message_admins("weed plant not blocked on [stepdir]")
 				break
 		if(blocked)
 			if(B.health >= (B.maxhealth/4))
 				to_chat(X, SPAN_WARNING("The [B] here is too strong to expand weeds onto!"))
+				message_admins("conclusion, planting blocked.")
 				return
+		else
+			continue
 
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)

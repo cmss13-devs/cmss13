@@ -10562,7 +10562,7 @@
 /area/shiva/interior/warehouse)
 "fbI" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/clothing/under/marine/veteran/mercenary/engineer,
+/obj/item/clothing/under/marine/veteran/mercenary/support,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/shiva{
 	icon_state = "floor3"

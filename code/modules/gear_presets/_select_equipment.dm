@@ -452,6 +452,66 @@
 
 	return 1
 
+/datum/equipment_preset/proc/spawn_merc_shotgun(var/atom/M, var/ammo_amount = 24)
+	if(!M) return
+
+	var/list/merc_shotguns = list(
+		/obj/item/weapon/gun/shotgun/merc = pick(shotgun_shells_12g),
+		/obj/item/weapon/gun/shotgun/combat = pick(shotgun_shells_12g),
+		/obj/item/weapon/gun/shotgun/double = pick(shotgun_shells_12g),
+		/obj/item/weapon/gun/shotgun/pump/cmb = pick(shotgun_shells_12g))
+
+	var/gunpath = pick(merc_shotguns)
+	var/ammopath = merc_shotguns[gunpath]
+
+	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+
+/datum/equipment_preset/proc/spawn_merc_rifle(var/atom/M, var/ammo_amount = 12)
+	if(!M) return
+
+	var/list/merc_rifles = list(
+		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
+		/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000,
+		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16)
+
+	var/gunpath = pick(merc_rifles)
+	var/ammopath = merc_rifles[gunpath]
+
+	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+
+/datum/equipment_preset/proc/spawn_merc_elite_weapon(var/atom/M, var/ammo_amount = 12, var/shotgun_chance = 50, var/spawn_belt = 1)
+	if(!M) return
+
+	var/list/elite_merc_rifles = list(
+	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
+	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
+	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
+
+	var/list/elite_merc_shotguns = list(
+	/obj/item/weapon/gun/shotgun/merc = pick(shotgun_shells_12g),
+	/obj/item/weapon/gun/shotgun/combat = pick(shotgun_shells_12g),
+	/obj/item/weapon/gun/shotgun/type23 = pick(shotgun_shells_8g))
+
+	if(prob(shotgun_chance))
+		var/gunpath = pick(elite_merc_shotguns)
+		var/ammopath = elite_merc_shotguns[gunpath]
+		if(spawn_belt)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
+			ammo_amount = 24
+		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+	else
+		var/gunpath = pick(elite_merc_rifles)
+		var/ammopath = elite_merc_rifles[gunpath]
+		if(spawn_belt)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+		spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
+
 
 /datum/equipment_preset/proc/spawn_weapon(var/gunpath, var/ammopath, var/atom/M, var/sidearm = 0, var/ammo_amount = 12)
 

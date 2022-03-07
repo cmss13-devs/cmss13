@@ -773,6 +773,12 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
 	update_icon()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("oxycodone", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
+	update_icon()
+
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
 	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)

@@ -570,7 +570,7 @@
 	icon_state = "mercenary_miner_uniform"
 	worn_state = "mercenary_miner_uniform"
 
-/obj/item/clothing/under/marine/veteran/mercenary/engineer
+/obj/item/clothing/under/marine/veteran/mercenary/support
 	name = "\improper Mercenary engineer fatigues"
 	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is emblazed on the suit."
 	icon_state = "mercenary_engineer_uniform"

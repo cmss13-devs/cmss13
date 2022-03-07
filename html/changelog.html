@@ -61,6 +61,38 @@
 	</tr>
 </table>
 
+			<h2 class="date">07 March 2022</h2>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">QM will no longer spam ping xenos if someone not on the ship dies, or if the round has already ended.</li>
+			</ul>
+			<h3 class="author">Kaga updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">The XM42B Experimental Anti-Tank Rifle has been reworked into the XM42B Experimental Anti-Materiel Rifle. This weapon is not currently available through normal gameplay, but may be randomly playtested.</li>
+				<li class="rscdel">The XM42B no longer requires a minimum targeting distance of 8 tiles.</li>
+				<li class="tweak">The XM42B's ammo and related references have been changed from 'anti-tank' to 'anti-materiel' in most cases to reflect the updated identity of the weapon.</li>
+				<li class="tweak">Increased the XM42B's damage from 95 to 125. This was previously updated as part of the M42C's preliminary update.</li>
+				<li class="tweak">Reduced the XM42B's fire delay from a whopping 5.6 seconds down to 3. This is still the highest in the family, higher than both the M42A and M42C.</li>
+				<li class="tweak">Increased the XM42B's magazine size from 5 rounds to 8.</li>
+				<li class="rscadd">The XM42B's ammo now has the Wall-Penetrating trait, as the M42C was previously given. It can now hit multiple mobs, objects, and turfs, with each hit reducing the maximum range. At point-blank, this comes out to a maximum of eight hits.</li>
+				<li class="rscadd">The XM42B's ammo now deals increased damage to walls and pylons, similar to the U7 Underbarrel Shotgun. This allows it to break most resin walls and doors in one shot, reinforced walls in eight (a full magazine), and Pylons in three shots.</li>
+				<li class="tweak">Increased the M42C's damage from 125 to 150. This serves to further close the gap between its damage per magazine and the M42A's Marksman magazines (750 vs 1050 to 900 vs 1050), reflect its increased muzzle velocity relative to the XM42B despite being the same caliber, and to keep it distinct from the XM42B's new identity.</li>
+				<li class="rscadd">Adjusted the Ghillie Suit's Aimed Shot ability to now work with all Sniper Rifles. By default, this deals 300% damage, but the XM42B and M42C both have special damage calculations with it.</li>
+				<li class="rscadd">The XM42B's Aimed Shot deals 300% damage against large Xenos (375), and 180% to everything else (225).</li>
+				<li class="rscadd">The M42C's Aimed Shot deals 300% damage against large Xenos (450), 150% to smaller Xenos (225), and 200% to everything else (300). As the ability currently requires the Sniper Spec's Ghillie Suit, beware of the recoil.</li>
+				<li class="tweak">Cleaned up some outdated code in the M42A's ammo variants.</li>
+			</ul>
+			<h3 class="author">Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">when deploying a claymore its IFF group will change to that of your inherent faction.</li>
+				<li class="rscadd">attempting to disarm a claymore not of your faction is likely to end badly.</li>
+			</ul>
+			<h3 class="author">Tisx updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">HIRR slug damage reduced from 45 to 15</li>
+				<li class="tweak">HIRR slugs now daze for 1.5 seconds on small mobs, 2.3 on large mobs</li>
+			</ul>
+
 			<h2 class="date">06 March 2022</h2>
 			<h3 class="author">Geeves updated:</h3>
 			<ul class="changes bgimages16">
@@ -883,24 +915,6 @@
 				<li class="tweak">Renamed Squad Specialist to Squad Weapons Specialist to better differentiate it from the Army rank.</li>
 				<li class="tweak">Renamed rank pins and boards as we no longer need to differentiate between Marine and Navy Ranks.</li>
 				<li class="tweak">Renamed misc rooms, uniforms, crates, and gear to reflect new job titles.</li>
-			</ul>
-
-			<h2 class="date">03 January 2022</h2>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the ability to look at a flare/laze's camera via the CAS weapon control menu.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Hive leaders once again properly broadcast queen's pheromones.</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The SL indicator in the \"dark\" mode HUD has been moved down so it will no longer overlap with status effect icons</li>
-				<li class="tweak">The M4RA sight now has an integrated sensorhud.</li>
-				<li class="rscadd">Added a new item for scout specialists - the V3 reactive thermal tarp. Works like a normal v2 thermal tarp (as seen on kutjevo), but cloaks to the same level as a scout cloak and does so in 5 seconds rather than 12. Is also a small sized item. It can only be closed (i.e. turning on the cloak) by people with scout-level specialist skills. Has a 1 second stun upon exiting.</li>
-				<li class="maptweak">added disposal units to the shared prep rooms on the Almayer. Remember, cleanliness is next to Godliness!</li>
-				<li class="bugfix">fixed a misplaced camera north of the morgue on the Almayer</li>
 			</ul>
 </div>
 </body>

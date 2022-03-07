@@ -378,6 +378,7 @@
 	var/impact_sound = 'sound/weapons/baton_slug_impact.ogg'
 	var/slowdown_time = 2
 	var/knockout_time = 0.1
+	var/dazed_time = 0.5
 	var/inactive_icon = "chemg"
 	has_arm_sound = FALSE
 	throwforce = 10
@@ -402,13 +403,16 @@
 
 	if(isYautja(M)|| isSynth(M))
 		M.Slow(slowdown_time * 0.5)
+		M.Daze(dazed_time * 0.5)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
 		M.Slow(slowdown_time * 1.5)//They are slowed more :trol:
+		M.Daze(dazed_time * 1.5)
 		return
 
 	M.KnockDown(knockout_time)//but little xenos and humans are
 	M.Slow(slowdown_time)
+	M.Daze(dazed_time)
 	return
 
 /obj/item/explosive/grenade/slug/baton
@@ -417,10 +421,11 @@
 	icon_state = "baton_slug"
 	item_state = "baton_slug"
 	inactive_icon = "baton_slug"
-	has_iff = FALSE
-	impact_damage = 45
+	has_iff = TRUE
+	impact_damage = 15
 	slowdown_time = 1.6
 	knockout_time = 0.4
+	dazed_time = 1.5
 
 /obj/item/explosive/grenade/slug/baton/Initialize()
 	. = ..()

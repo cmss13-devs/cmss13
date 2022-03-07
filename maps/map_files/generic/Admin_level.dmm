@@ -87,7 +87,7 @@
 	},
 /area/tdome)
 "aB" = (
-/obj/structure/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t2";
 	name = "\improper Team 2 Shutters"
@@ -4564,7 +4564,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "Sb" = (
-/obj/structure/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t1";
 	name = "\improper Team 1 Shutters"

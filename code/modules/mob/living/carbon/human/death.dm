@@ -59,16 +59,15 @@
 		playsound(loc, species.death_sound, 50, 1)
 
 	// Finding the last guy for anti-delay.
-	if(SSticker.mode && SSticker.mode.is_in_endgame)
+	if(SSticker.mode && SSticker.mode.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && is_mainship_level(z))
 		var/mob/last_living_human
-		for(var/i in GLOB.alive_human_list)
-			var/mob/M = i
-			if(!is_mainship_level(M.z))
+		for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
+			if(!is_mainship_level(H.z))
 				continue
 			if(last_living_human)
 				last_living_human = null
 				break
-			last_living_human = M
+			last_living_human = H
 		if(last_living_human)
 			// Tell the xenos where the human is.
 			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))

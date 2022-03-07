@@ -24,6 +24,7 @@
 	use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
+	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
 
 
@@ -79,6 +80,9 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 		SPAN_NOTICE("You finish deploying [src]."))
 
+	if(!hard_iff_lock)
+		iff_signal = user.faction
+
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -94,12 +98,24 @@
 		if(active)
 			if(user.action_busy)
 				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
-			SPAN_NOTICE("You start disarming [src]."))
+			if(user.faction == iff_signal)
+				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+				SPAN_NOTICE("You start disarming [src]."))
+			else
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
+				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
 					SPAN_WARNING("You stop disarming [src]."))
 				return
+			if(user.faction != iff_signal) //ow!
+				if(prob(75))
+					triggered = TRUE
+					if(tripwire)
+						var/direction = reverse_dir[src.dir]
+						var/step_direction = get_step(src, direction)
+						tripwire.forceMove(step_direction)
+					prime()
 			if(!active)//someone beat us to it
 				return
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
@@ -261,6 +277,7 @@
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."
 	icon_state = "m20p"
 	iff_signal = FACTION_PMC
+	hard_iff_lock = TRUE
 
 /obj/item/explosive/mine/custom
 	name = "Custom mine"

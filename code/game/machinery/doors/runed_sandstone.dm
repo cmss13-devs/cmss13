@@ -10,7 +10,7 @@
 	icon_state = "door_locked"
 	stat = 0
 	heavy = TRUE
-	reinforced = TRUE
+	masterkey_resist = TRUE
 	openspeed = 4 SECONDS
 	unacidable = TRUE//Walls can still be melted or blown up.
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters so no abuse from marines.

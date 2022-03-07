@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
 	else if(dam > 0)
 		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
-	if(reinforced)
+	if(masterkey_resist)
 		to_chat(user, SPAN_INFO("It has been reinforced against breaching attempts."))
 
 /obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)

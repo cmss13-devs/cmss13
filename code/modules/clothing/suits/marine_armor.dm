@@ -1074,7 +1074,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!check_can_use(M, TRUE))
 		return
 
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) ? H.l_hand : H.r_hand
+	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
 	var/obj/item/projectile/P = G.in_chamber
 	P.homing_target = M
 	P.projectile_override_flags |= AMMO_HOMING
@@ -1099,7 +1099,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		to_chat(H, SPAN_WARNING("How do you expect to do this without your Sniper Rifle?"))
 		return FALSE
 
-	if(!istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) && !istype(H.r_hand, /obj/item/weapon/gun/rifle/sniper/M42A))
+	if(!istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) && !istype(H.r_hand, /obj/item/weapon/gun/rifle/sniper))
 		to_chat(H, SPAN_WARNING("Your weapon isn't accurate enough for this. Use the M42A Sniper Rifle!"))
 		return FALSE
 
@@ -1107,7 +1107,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
 		return FALSE
 
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) ? H.l_hand : H.r_hand
+	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
 	if(!G.in_chamber)
 		to_chat(H, SPAN_WARNING("[G] is unloaded!"))
 		return FALSE
@@ -1117,6 +1117,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return FALSE
 
 	var/obj/item/projectile/P = G.in_chamber
+	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
 	if(check_shot_is_blocked(H, M, P))
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
 		if(cover_lose_focus)

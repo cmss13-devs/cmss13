@@ -27,12 +27,12 @@
 	var/flags_ammo_behavior 		= NO_FLAGS
 
 	var/accuracy 			= HIT_ACCURACY_TIER_1 	// This is added to the bullet's base accuracy.
-	var/accuracy_var_low	= PROJECTILE_VARIANCE_TIER_9 	// How much the accuracy varies when fired.
-	var/accuracy_var_high	= PROJECTILE_VARIANCE_TIER_9
+	var/accuracy_var_low	= PROJECTILE_VARIANCE_TIER_9 	// How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.
+	var/accuracy_var_high	= PROJECTILE_VARIANCE_TIER_9	// This INCREASES the upper bound of accuracy variance by 2%, to 107%.
 	var/accurate_range 		= 6 	// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
 	var/max_range 			= 22 	// This will de-increment a counter on the bullet.
 	var/damage_var_low		= PROJECTILE_VARIANCE_TIER_9 	// Same as with accuracy variance.
-	var/damage_var_high		= PROJECTILE_VARIANCE_TIER_9
+	var/damage_var_high		= PROJECTILE_VARIANCE_TIER_9	// This INCREASES the upper bound of damage variance by 2%, to 107%.
 	var/damage_falloff 		= DAMAGE_FALLOFF_TIER_10 // How much damage the bullet loses per turf traveled after the effective range
 	var/damage_buildup 		= DAMAGE_BUILDUP_TIER_1 // How much damage the bullet loses per turf away before the effective range
 	var/effective_range_min	= EFFECTIVE_RANGE_OFF	//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
@@ -1438,12 +1438,11 @@
 
 /datum/ammo/bullet/sniper/incendiary
 	name = "incendiary sniper bullet"
-	accuracy = 0
-	damage_type = BURN
+	damage_type = BRUTE
+	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	scatter = 0
+	//Removed accuracy = 0, accuracy_var_high = Variance Tier 6, and scatter = 0. -Kaga
 	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_4
 
@@ -1473,7 +1472,7 @@
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage = 55
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8 //Documenting old code: This converts to a variance of 96-109% damage. -Kaga
 	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1568,19 +1567,31 @@
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
 
-/datum/ammo/bullet/sniper/anti_tank
-	name = "anti-tank sniper bullet"
+/datum/ammo/bullet/sniper/anti_materiel
+	name = "anti-materiel sniper bullet"
 
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_BIG)
+				L.apply_armoured_damage(damage*1.2, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armoured_damage(damage*0.8, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 300% against Big xenos (375). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 125
+	damage = 150
 	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
 
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
@@ -1588,6 +1599,19 @@
 	LAZYADD(traits_to_give, list(
 	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_BIG)
+				L.apply_armoured_damage(damage*1.5, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+		else
+			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		// 150% damage to non-Big xenos (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
 //======

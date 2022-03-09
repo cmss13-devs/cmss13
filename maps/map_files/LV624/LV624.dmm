@@ -1194,22 +1194,19 @@
 /area/lv624/ground/barrens/central_barrens)
 "afl" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
+	icon_state = "ferret_l"
 	},
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afn" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
+	icon_state = "ferret_m"
 	},
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afo" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
+	icon_state = "ferret_r"
 	},
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
@@ -4371,8 +4368,7 @@
 /area/lv624/lazarus/fitness)
 "ava" = (
 /obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
+	icon_state = "seegson_l"
 	},
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -4380,8 +4376,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "avb" = (
 /obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
+	icon_state = "seegson_m"
 	},
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -4389,8 +4384,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "avc" = (
 /obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
+	icon_state = "seegson_r"
 	},
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -15953,6 +15947,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
+"hJa" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_l"
+	},
+/turf/open/floor,
+/area/lv624/ground/barrens/containers)
 "hJd" = (
 /obj/structure/surface/rack,
 /obj/item/moneybag,
@@ -16597,6 +16597,12 @@
 	icon_state = "desert1"
 	},
 /area/lv624/ground/river/east_river)
+"jvl" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_m"
+	},
+/turf/open/floor,
+/area/lv624/ground/barrens/containers)
 "jwW" = (
 /turf/open/floor/plating{
 	dir = 6;
@@ -17082,6 +17088,12 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
+"kzE" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_r"
+	},
+/turf/open/floor,
+/area/lv624/ground/barrens/containers)
 "kAg" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
@@ -48675,7 +48687,7 @@ aeX
 qjf
 qjf
 qjf
-afl
+hJa
 qjf
 afZ
 qjf
@@ -48903,7 +48915,7 @@ aeY
 qjf
 qjf
 qjf
-afn
+jvl
 qjf
 aga
 qjf
@@ -49131,7 +49143,7 @@ afb
 qjf
 qjf
 qjf
-afo
+kzE
 qjf
 agb
 qjf

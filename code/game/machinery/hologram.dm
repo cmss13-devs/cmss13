@@ -76,6 +76,10 @@ var/const/HOLOPAD_MODE = 0
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
 
+/obj/structure/machinery/hologram/holopad/Initialize()
+	. = ..()
+	flags_atom |= USES_HEARING
+
 /obj/structure/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return

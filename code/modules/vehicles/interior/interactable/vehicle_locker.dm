@@ -36,6 +36,7 @@
 									/obj/item/ammo_magazine/hardpoint,
 									/obj/item/tool/weldpack
 									)
+	flags_atom |= USES_HEARING
 
 /obj/structure/vehicle_locker/verb/empty_storage()
 	set name = "Empty"

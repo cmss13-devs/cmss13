@@ -15,6 +15,7 @@
 /obj/structure/machinery/sleep_console/Initialize()
 	. = ..()
 	connect_sleeper()
+	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/sleep_console/proc/connect_sleeper()
 	if(connected)

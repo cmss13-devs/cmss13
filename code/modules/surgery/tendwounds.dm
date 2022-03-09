@@ -26,6 +26,9 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		/datum/surgery_step/tend_wounds
 		)
 
+/datum/surgery/tend_wounds/open/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+	return TRUE
+
 //------------------------------------
 
 /datum/surgery_step/tend_wounds

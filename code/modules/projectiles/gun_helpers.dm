@@ -476,80 +476,61 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 					//				   \\
 					//				   \\
 //----------------------------------------------------------
+/mob/living/carbon/human/
+	var/static/list/holster_default = list(
+		"s_store",
+		"belt",
+		"back",
+		"l_store",
+		"r_store",
+		"w_uniform",
+		"shoes",
+		)
 
-/mob/living/carbon/human/proc/holster_unholster_from_suit_storage()
-	if(isstorage(s_store)) //check storages(?)
-		var/obj/item/storage/S = s_store
-		for(var/obj/item/wep in S.return_inv())
-			if(isweapon(wep))
-				s_store.attack_hand(src)
-				return TRUE
-	else if(isweapon(s_store)) //then check for weapons
-		s_store.attack_hand(src)
-		return TRUE
+	var/static/list/holster_shift = list(
+		"back",
+		"belt",
+		"l_store",
+		"r_store",
+		"w_uniform",
+		"shoes",
+		"s_store",
+		)
 
-/mob/living/carbon/human/proc/holster_unholster_from_belt()
-	if(belt)
-		if(istype(belt, /obj/item/storage))
-			var/obj/item/storage/storage = belt
-			for(var/obj/item/wep in storage.return_inv())
-				if(isweapon(wep))
-					belt.attack_hand(src)
-					return TRUE
-		if(isweapon(belt)) //then check for weapons
-			belt.attack_hand(src)
+	var/static/list/holster_ctrl =  list(
+		"w_uniform",
+		"belt",
+		"l_store",
+		"r_store",
+		"shoes",
+		"s_store",
+		"back",
+		)
+
+/mob/living/carbon/human/proc/holster_unholster_from_storage_slot(var/obj/item/storage/slot)
+	if(isnull(slot)) return
+	if(slot == shoes)//Snowflakey check for shoes and uniform
+		if(shoes.stored_item && isweapon(shoes.stored_item))
+			shoes.attack_hand(src)
 			return TRUE
-
-/mob/living/carbon/human/proc/holster_unholster_from_back()
-	if(back)
-		if(istype(back, /obj/item/storage/large_holster)) //check holsters
-			var/obj/item/storage/large_holster/B = back
-			if(B.return_inv().len)
-				back.attack_hand(src)
-				return TRUE
-		if(isweapon(back)) //then check for weapons
-			back.attack_hand(src)
-			return TRUE
-
-/mob/living/carbon/human/proc/holster_unholster_from_left_pocket()
-	if(l_store)
-		if(istype(l_store, /obj/item/storage/pouch))  //check pouches
-			var/obj/item/storage/pouch/P = l_store
-			for(var/obj/item/wep in P.return_inv())
-				if(isweapon(wep))
-					l_store.attack_hand(src)
-					return TRUE
-		if(isweapon(l_store)) //then check for weapons
-			l_store.attack_hand(src)
-			return TRUE
-
-/mob/living/carbon/human/proc/holster_unholster_from_right_pocket()
-	if(r_store)
-		if(istype(r_store, /obj/item/storage/pouch))  //check pouches
-			var/obj/item/storage/pouch/P = r_store
-			for(var/obj/item/wep in P.return_inv())
-				if(isweapon(wep))
-					r_store.attack_hand(src)
-					return TRUE
-		if(isweapon(r_store)) //then check for weapons
-			r_store.attack_hand(src)
-			return TRUE
-
-/mob/living/carbon/human/proc/holster_unholster_from_uniform()
-	if(!w_uniform)
 		return
-	for(var/obj/item/clothing/accessory/holster/T in w_uniform.accessories)
-		if(T.holstered)
-			w_uniform.attack_hand(src)
-			return TRUE
 
-/mob/living/carbon/human/proc/holster_unholster_from_shoes()
-	if(shoes)
-		if(istype(shoes, /obj/item/clothing/shoes))
-			var/obj/item/clothing/shoes/S = shoes
-			if(S.stored_item && isweapon(S.stored_item))
-				shoes.attack_hand(src)
+	if(slot == w_uniform)
+		for(var/obj/item/clothing/accessory/holster/T in w_uniform.accessories)
+			if(T.holstered)
+				w_uniform.attack_hand(src)
 				return TRUE
+		return
+
+	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
+		for(var/obj/wep in slot.return_inv())
+			if(isweapon(wep))
+				slot.attack_hand(src)
+				return TRUE
+
+	if(isweapon(slot)) //then check for weapons
+		slot.attack_hand(src)
+		return TRUE
 
 //For the holster hotkey
 /mob/living/silicon/robot/verb/holster_verb(var/keymod = "none" as text)
@@ -577,72 +558,20 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			quick_equip()
 	else //empty hand, start checking slots and holsters
+		var/list/slot_order
 		switch(keymod)
-			if("none") //default order: suit, belt, back, pockets, uniform, shoes
-				if(holster_unholster_from_suit_storage())
-					return
+			if("none") 		
+				slot_order = holster_default	//default order: suit, belt, back, pockets, uniform, shoes
+							
+			if("shift")			//shift keymod, do common secondary weapon locations first.
+				slot_order = holster_shift		//order: back, belt, pockets, uniform, shoes, suit.
+							
+			if("ctrl", "alt")	//control and alt keymods, do common tertiary weapon locations first. In case ctrl is awkward for some people but alt is not.
+				slot_order = holster_ctrl		//order: uniform, belt, pockets, shoes, back, suit.
 
-				if(holster_unholster_from_belt()) //if you think this code is bad see how it was beforehand
-					return
-
-				if(holster_unholster_from_back())
-					return
-
-				if(holster_unholster_from_left_pocket())
-					return
-
-				if(holster_unholster_from_right_pocket())
-					return
-
-				if(holster_unholster_from_uniform())
-					return
-
-				if(holster_unholster_from_shoes())
-					return
-
-			if("shift") //shift keymod, do common secondary weapon locations first. order: back, belt, pockets, uniform, shoes, suit.
-				if(holster_unholster_from_back())
-					return
-
-				if(holster_unholster_from_belt())
-					return
-
-				if(holster_unholster_from_left_pocket())
-					return
-
-				if(holster_unholster_from_right_pocket())
-					return
-
-				if(holster_unholster_from_uniform())
-					return
-
-				if(holster_unholster_from_shoes())
-					return
-
-				if(holster_unholster_from_suit_storage())
-					return
-
-			if("ctrl", "alt") //control and alt keymods, do common tertiary weapon locations first. order: uniform, belt, pockets, shoes, back, suit.
-				if(holster_unholster_from_uniform()) //in case ctrl is awkward for some people but alt is not.
-					return
-
-				if(holster_unholster_from_belt())
-					return
-
-				if(holster_unholster_from_left_pocket())
-					return
-
-				if(holster_unholster_from_right_pocket())
-					return
-
-				if(holster_unholster_from_shoes())
-					return
-
-				if(holster_unholster_from_suit_storage())
-					return
-
-				if(holster_unholster_from_back())
-					return
+		for(var/slot in slot_order)
+			if(holster_unholster_from_storage_slot(vars[slot]))
+				return			
 
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"

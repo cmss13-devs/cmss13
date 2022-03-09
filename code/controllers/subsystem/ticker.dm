@@ -133,6 +133,11 @@ SUBSYSTEM_DEF(ticker)
 		setup_nightmare()
 	else
 		INVOKE_ASYNC(src, .proc/setup_start)
+
+	for(var/client/C in GLOB.admins)
+		remove_verb(C, roundstart_mod_verbs)
+	admin_verbs_mod -= roundstart_mod_verbs
+
 	return TRUE
 
 /// Request to start nightmare setup before moving on to regular setup
@@ -215,6 +220,9 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 	CHECK_TICK
 
+	// We need stats to track roundstart role distribution.
+	mode.setup_round_stats()
+
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
 		var/roles_to_roll = null
@@ -254,7 +262,6 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.initialize_emergency_calls()
 	mode.post_setup()
-	mode.setup_round_stats()
 
 	begin_game_recording()
 

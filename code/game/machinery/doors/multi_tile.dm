@@ -52,7 +52,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced
 	name = "Reinforced Research Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/secure
 	name = "Secure Airlock"
@@ -129,7 +129,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research
 	name = "\improper Research Airlock"
 	req_one_access = list(ACCESS_MARINE_RESEARCH)
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
@@ -140,7 +140,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced
 	name = "\improper Reinforced Command Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid
 	icon = 'icons/obj/structures/doors/2x1comdoor_solid.dmi'
@@ -149,7 +149,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced
 	name = "\improper Reinforced Command Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()

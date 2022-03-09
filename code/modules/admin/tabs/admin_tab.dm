@@ -584,3 +584,17 @@
 	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
 		message_staff("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
+
+/client/proc/toggle_strong_defibs()
+	set name = "Toggle Strong Defibs"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")

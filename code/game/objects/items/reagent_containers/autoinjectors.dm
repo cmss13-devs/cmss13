@@ -300,6 +300,11 @@
 	amount_per_transfer_from_this = 15
 	uses_left = 0
 
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+	name = "Autoinjector (E-VS)"
+	volume = 30
+	amount_per_transfer_from_this = 10
+
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 	name = "Autoinjector (E-S)"
 	volume = 45

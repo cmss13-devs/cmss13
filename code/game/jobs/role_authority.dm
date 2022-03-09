@@ -484,7 +484,7 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))
 		return 0
-	if(amount <= J.current_positions) //we should be able to slot everyone
+	if(amount < J.current_positions) //we should be able to slot everyone
 		return 0
 	J.total_positions = amount
 	J.total_positions_so_far = amount

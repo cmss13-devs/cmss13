@@ -65,3 +65,18 @@
 	paygrade = "PMC-ETL"
 	name = "Elite Team Leader"
 	prefix = "ETML."
+
+/datum/paygrade/pmc/doctor
+	paygrade = "PMC-DOC"
+	name = "Trauma Surgeon"
+	prefix = "TRI."
+
+/datum/paygrade/pmc/engineer
+	paygrade = "PMC-TECH"
+	name = "Corporate Technician"
+	prefix = "TEC."
+
+/datum/paygrade/pmc/director
+	paygrade = "PMC-DIR"
+	name = "Site Director"
+	prefix = "DIR."

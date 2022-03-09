@@ -18,6 +18,13 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
+/datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
+	var/obj/item/clothing/under/uniform = H.w_uniform
+	if(istype(uniform))
+		uniform.has_sensor = UNIFORM_HAS_SENSORS
+		uniform.sensor_faction = FACTION_COLONIST
+	return ..()
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/engineer

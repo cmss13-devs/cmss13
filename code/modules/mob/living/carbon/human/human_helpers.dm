@@ -398,7 +398,11 @@
 	return (item == wear_l_ear) || (item == wear_r_ear)
 
 /mob/living/carbon/human/can_be_pulled_by(var/mob/M)
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
+	var/ignores_stripdrag_flag = FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
 		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

@@ -16,8 +16,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	w_class = SIZE_MEDIUM
 	blood_overlay_type = "uniform"
-	var/has_sensor = 1//For the crew computer 2 = unable to change mode
-	var/sensor_mode = 3
+	var/sensor_faction = FACTION_MARINE
+	var/has_sensor = UNIFORM_HAS_SENSORS // For the crew computer
+	var/sensor_mode = SENSOR_MODE_LOCATION
 		/*
 		1 = Report living/dead
 		2 = Report detailed damages
@@ -113,22 +114,22 @@
 	..()
 	if(has_sensor)
 		switch(sensor_mode)
-			if(0)
+			if(SENSOR_MODE_OFF)
 				to_chat(user, "Its sensors appear to be disabled.")
-			if(1)
+			if(SENSOR_MODE_BINARY)
 				to_chat(user, "Its binary life sensors appear to be enabled.")
-			if(2)
+			if(SENSOR_MODE_DAMAGE)
 				to_chat(user, "Its vital tracker appears to be enabled.")
-			if(3)
+			if(SENSOR_MODE_LOCATION)
 				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	if (istype(user, /mob/dead/)) return
 	if (user.stat || user.is_mob_restrained()) return
-	if(has_sensor >= 2)
+	if(has_sensor >= UNIFORM_FORCED_SENSORS)
 		to_chat(user, "The controls are locked.")
 		return 0
-	if(has_sensor <= 0)
+	if(has_sensor <= UNIFORM_NO_SENSORS)
 		to_chat(user, "This suit does not have any sensors.")
 		return 0
 

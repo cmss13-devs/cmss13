@@ -658,20 +658,65 @@
 #define UNKNOWN_JOB_ID			998
 
 /obj/structure/machinery/computer/crew
-	name = "Crew monitoring computer"
-	desc = "Used to monitor active health sensors built into marine jumpsuits.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
+	name = "crew monitoring computer"
+	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	density = TRUE
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
-//	circuit = "/obj/item/circuitboard/computer/crew"
+	var/faction = FACTION_MARINE
+
+/obj/structure/machinery/computer/crew/Initialize()
+	. = ..()
+	if(!GLOB.crewmonitor[faction])
+		GLOB.crewmonitor[faction] = new /datum/crewmonitor(faction)
+
+/obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
+	attack_hand(user)
+
+/obj/structure/machinery/computer/crew/attack_hand(mob/living/user)
+	if(!isRemoteControlling(user))
+		add_fingerprint(user)
+	if(inoperable())
+		return
+	user.set_interaction(src)
+	GLOB.crewmonitor[faction].show(user, src)
+
+/obj/structure/machinery/computer/crew/update_icon()
+	if(stat & BROKEN)
+		icon_state = "crewb"
+	else
+		if(stat & NOPOWER)
+			icon_state = "crew0"
+			stat |= NOPOWER
+		else
+			icon_state = initial(icon_state)
+			stat &= ~NOPOWER
+
+/obj/structure/machinery/computer/crew/interact(mob/living/user)
+	GLOB.crewmonitor[faction].show(user, src)
 
 /obj/structure/machinery/computer/crew/alt
 	icon_state = "cmonitor"
 	density = FALSE
 
-GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
+/obj/structure/machinery/computer/crew/upp
+	faction = FACTION_UPP
+
+/obj/structure/machinery/computer/crew/clf
+	faction = FACTION_CLF
+
+/obj/structure/machinery/computer/crew/pmc
+	faction = FACTION_PMC
+
+/obj/structure/machinery/computer/crew/colony
+	faction = FACTION_COLONIST
+
+/obj/structure/machinery/computer/crew/yautja
+	faction = FACTION_YAUTJA
+
+GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 #define SENSOR_LIVING 1
 #define SENSOR_VITALS 2
@@ -686,167 +731,12 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/last_update
 	/// Map of job to ID for sorting purposes
 	var/list/jobs
+	var/faction = FACTION_MARINE
 
-/datum/crewmonitor/New()
-	// Cause "[SQUAD_NAME_1] [JOB_SQUAD_LEADER]" calls "expected a constant expression" error
-	jobs = list(
-		// Note that jobs divisible by 10 are considered heads of staff, and bolded
-		// 00-10: Command
-		JOB_CO = 00,
-		JOB_XO = 01,
-		JOB_SO = 02,
-		JOB_SEA = 03,
-		// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
-		JOB_SYNTH = 10,
-		JOB_PILOT = 11,
-		JOB_DROPSHIP_CREW_CHIEF = 12,
-		JOB_CREWMAN = 13,
-		JOB_INTEL = 14,
-		// 20-29: Security
-		JOB_CHIEF_POLICE = 20,
-		JOB_WARDEN = 21,
-		JOB_POLICE = 22,
-		JOB_POLICE_CADET = 23,
-		// 30-39: MedSci
-		JOB_CMO = 30,
-		JOB_RESEARCHER = 31,
-		JOB_DOCTOR = 32,
-		JOB_NURSE = 33,
-		// 40-49: Engineering
-		JOB_CHIEF_ENGINEER = 40,
-		JOB_ORDNANCE_TECH = 41,
-		JOB_MAINT_TECH = 42,
-		// 50-59: Cargo
-		JOB_CHIEF_REQUISITION = 50,
-		JOB_CARGO_TECH = 51,
-		// SQUADS
-		// 60-79: Alpha
-		"[SQUAD_NAME_1] [JOB_SQUAD_LEADER]" = 60,
-		"[SQUAD_NAME_1] [JOB_SQUAD_RTO]" = 61,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST]" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST] (Scout)" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST] (Sniper)" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST] (Demo)" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST] (Grenadier)" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST] (Pyro)" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SMARTGUN]" = 63,
-		"[SQUAD_NAME_1] [JOB_SQUAD_ENGI]" = 64,
-		"[SQUAD_NAME_1] [JOB_SQUAD_MEDIC]" = 65,
-		"[SQUAD_NAME_1] [JOB_SQUAD_MARINE]" = 66,
-		// 70-79: Bravo
-		"[SQUAD_NAME_2] [JOB_SQUAD_LEADER]" = 70,
-		"[SQUAD_NAME_2] [JOB_SQUAD_RTO]" = 71,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST]" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST] (Scout)" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST] (Sniper)" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST] (Demo)" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST] (Grenadier)" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST] (Pyro)" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SMARTGUN]" = 73,
-		"[SQUAD_NAME_2] [JOB_SQUAD_ENGI]" = 74,
-		"[SQUAD_NAME_2] [JOB_SQUAD_MEDIC]" = 75,
-		"[SQUAD_NAME_2] [JOB_SQUAD_MARINE]" = 76,
-		// 80-89: Charlie
-		"[SQUAD_NAME_3] [JOB_SQUAD_LEADER]" = 80,
-		"[SQUAD_NAME_3] [JOB_SQUAD_RTO]" = 81,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST]" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST] (Scout)" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST] (Sniper)" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST] (Demo)" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST] (Grenadier)" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST] (Pyro)" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SMARTGUN]" = 83,
-		"[SQUAD_NAME_3] [JOB_SQUAD_ENGI]" = 84,
-		"[SQUAD_NAME_3] [JOB_SQUAD_MEDIC]" = 85,
-		"[SQUAD_NAME_3] [JOB_SQUAD_MARINE]" = 86,
-		// 90-99: Delta
-		"[SQUAD_NAME_4] [JOB_SQUAD_LEADER]" = 90,
-		"[SQUAD_NAME_4] [JOB_SQUAD_RTO]" = 91,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST]" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST] (Scout)" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST] (Sniper)" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST] (Demo)" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST] (Grenadier)" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST] (Pyro)" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SMARTGUN]" = 93,
-		"[SQUAD_NAME_4] [JOB_SQUAD_ENGI]" = 94,
-		"[SQUAD_NAME_4] [JOB_SQUAD_MEDIC]" = 95,
-		"[SQUAD_NAME_4] [JOB_SQUAD_MARINE]" = 96,
-		// 100-109: Echo
-		"[SQUAD_NAME_5] [JOB_SQUAD_LEADER]" = 100,
-		"[SQUAD_NAME_5] [JOB_SQUAD_RTO]" = 101,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST]" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST] (Scout)" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST] (Sniper)" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST] (Demo)" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST] (Grenadier)" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST] (Pyro)" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SMARTGUN]" = 103,
-		"[SQUAD_NAME_5] [JOB_SQUAD_ENGI]" = 104,
-		"[SQUAD_NAME_5] [JOB_SQUAD_MEDIC]" = 105,
-		"[SQUAD_NAME_5] [JOB_SQUAD_MARINE]" = 106,
-		// 110+: Civilian/other
-		JOB_CORPORATE_LIAISON = 110,
-		JOB_MESS_SERGEANT = 111,
-		JOB_PASSENGER = 112,
-		// Unknown squad IDs
-		JOB_SQUAD_LEADER = 120,
-		JOB_SQUAD_RTO = 121,
-		JOB_SQUAD_SPECIALIST = 122,
-		"[JOB_SQUAD_SPECIALIST] (Scout)" = 122,
-		"[JOB_SQUAD_SPECIALIST] (Sniper)" = 122,
-		"[JOB_SQUAD_SPECIALIST] (Demo)" = 122,
-		"[JOB_SQUAD_SPECIALIST] (Grenadier)" = 122,
-		"[JOB_SQUAD_SPECIALIST] (Pyro)" = 122,
-		JOB_SQUAD_SMARTGUN = 123,
-		JOB_SQUAD_ENGI = 124,
-		JOB_SQUAD_MEDIC = 125,
-		JOB_SQUAD_MARINE = 126,
-		// Non Almayer jobs lower then registered
-		JOB_SYNTH_SURVIVOR = 130,
-		JOB_SURVIVOR = 131,
-		JOB_COLONIST = 132,
-		JOB_WORKING_JOE = 133,
-
-		// WO jobs
-		// 00-10: Command
-		JOB_WO_CO = 00,
-		JOB_WO_XO = 01,
-		// 10-19: Aux Command
-		JOB_WO_CHIEF_POLICE = 10,
-		JOB_WO_SO = 11,
-		// 20-29: Security
-		JOB_WO_CREWMAN = 20,
-		JOB_WO_POLICE = 21,
-		JOB_WO_PILOT = 22,
-		// 30-39: MedSci
-		JOB_WO_CMO = 30,
-		JOB_WO_RESEARCHER = 31,
-		JOB_WO_DOCTOR = 32,
-		// 40-49: Engineering
-		JOB_WO_CHIEF_ENGINEER = 40,
-		JOB_WO_ORDNANCE_TECH = 41,
-		// 50-59: Cargo
-		JOB_WO_CHIEF_REQUISITION = 50,
-		JOB_WO_REQUISITION = 51,
-		// 60-109: SQUADS (look above)
-		// 110+: Civilian/other
-		JOB_WO_CORPORATE_LIAISON = 110,
-		JOB_WO_SYNTH = 120,
-
-		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
-		JOB_STOWAWAY = 999,
-
-		// 200-229: Centcom
-		JOB_ADMIRAL = 200,
-		JOB_MARSOC = 201,
-		JOB_PMC_LEADER = 210,
-		JOB_PMC_ELITE = 211,
-		JOB_PMC_GUNNER = 212,
-		JOB_PMC_SNIPER = 213,
-		JOB_PMC = 214,
-	)
-	. = ..()
+/datum/crewmonitor/New(var/set_faction = FACTION_MARINE)
+	..()
+	faction = set_faction
+	setup_for_faction(faction)
 
 /datum/crewmonitor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -897,7 +787,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || !H.mind)
+		if(!C.has_sensor || !C.sensor_mode || faction != C.sensor_faction)
 			continue
 
 		// Check if z-level is correct
@@ -905,9 +795,6 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if(!pos)
 			continue
 		if(is_admin_level(pos.z))
-			continue
-		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
-		if(H.faction == FACTION_SURVIVOR && is_ground_level(pos.z))
 			continue
 
 		// The entry for this human
@@ -922,7 +809,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
-			entry["ijob"] = jobs[id_card.assignment]
+			if(id_card.assignment in jobs)
+				entry["ijob"] = jobs[id_card.assignment]
 
 		// Binary living/dead status
 		if (C.sensor_mode >= SENSOR_LIVING)
@@ -976,30 +864,108 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 				// We do not care is there camera or no - we just know his location
 				AI.ai_actual_track(H)
 
-/obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
-	attack_hand(user)
+/datum/crewmonitor/proc/setup_for_faction(var/set_faction = FACTION_MARINE)
+	switch(set_faction)
+		if(FACTION_MARINE)
+			jobs = list(
+				// Note that jobs divisible by 10 are considered heads of staff, and bolded
+				// 00-10: Command
+				JOB_CO = 00,
+				JOB_XO = 01,
+				JOB_SO = 02,
+				JOB_SEA = 03,
+				// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
+				JOB_SYNTH = 10,
+				JOB_PILOT = 11,
+				JOB_DROPSHIP_CREW_CHIEF = 12,
+				JOB_CREWMAN = 13,
+				JOB_INTEL = 14,
+				// 20-29: Security
+				JOB_CHIEF_POLICE = 20,
+				JOB_WARDEN = 21,
+				JOB_POLICE = 22,
+				JOB_POLICE_CADET = 23,
+				// 30-39: MedSci
+				JOB_CMO = 30,
+				JOB_RESEARCHER = 31,
+				JOB_DOCTOR = 32,
+				JOB_NURSE = 33,
+				// 40-49: Engineering
+				JOB_CHIEF_ENGINEER = 40,
+				JOB_ORDNANCE_TECH = 41,
+				JOB_MAINT_TECH = 42,
+				// 50-59: Cargo
+				JOB_CHIEF_REQUISITION = 50,
+				JOB_CARGO_TECH = 51,
+				// 110+: Civilian/other
+				JOB_CORPORATE_LIAISON = 110,
+				JOB_MESS_SERGEANT = 111,
+				JOB_PASSENGER = 112,
+				// Non Almayer jobs lower then registered
+				JOB_SYNTH_SURVIVOR = 130,
+				JOB_SURVIVOR = 131,
+				JOB_COLONIST = 132,
+				JOB_WORKING_JOE = 133,
 
-/obj/structure/machinery/computer/crew/attack_hand(mob/living/user)
-	if(!isRemoteControlling(user))
-		add_fingerprint(user)
-	if(inoperable())
-		return
-	user.set_interaction(src)
-	GLOB.crewmonitor.show(user, src)
+				// WO jobs
+				// 00-10: Command
+				JOB_WO_CO = 00,
+				JOB_WO_XO = 01,
+				// 10-19: Aux Command
+				JOB_WO_CHIEF_POLICE = 10,
+				JOB_WO_SO = 11,
+				// 20-29: Security
+				JOB_WO_CREWMAN = 20,
+				JOB_WO_POLICE = 21,
+				JOB_WO_PILOT = 22,
+				// 30-39: MedSci
+				JOB_WO_CMO = 30,
+				JOB_WO_RESEARCHER = 31,
+				JOB_WO_DOCTOR = 32,
+				// 40-49: Engineering
+				JOB_WO_CHIEF_ENGINEER = 40,
+				JOB_WO_ORDNANCE_TECH = 41,
+				// 50-59: Cargo
+				JOB_WO_CHIEF_REQUISITION = 50,
+				JOB_WO_REQUISITION = 51,
+				// 60-109: SQUADS (look above)
+				// 110+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 110,
+				JOB_WO_SYNTH = 120,
 
-/obj/structure/machinery/computer/crew/update_icon()
-	if(stat & BROKEN)
-		icon_state = "crewb"
-	else
-		if(stat & NOPOWER)
-			icon_state = "crew0"
-			stat |= NOPOWER
+				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
+				JOB_STOWAWAY = 999,
+
+				// 200-229: Centcom
+				JOB_ADMIRAL = 200,
+				JOB_MARSOC = 201,
+				JOB_PMC_LEADER = 210,
+				JOB_PMC_ELITE = 211,
+				JOB_PMC_GUNNER = 212,
+				JOB_PMC_SNIPER = 213,
+				JOB_PMC = 214,
+			)
+			var/squad_number = 60
+			for(var/squad_name in ROLES_SQUAD_ALL + "")
+				if(!squad_name) squad_number = 12
+				else squad_name += " "
+				jobs += list(
+					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
+					"[squad_name][JOB_SQUAD_RTO]" = (squad_number + 1),
+					"[squad_name][JOB_SQUAD_SPECIALIST]" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Scout)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Sniper)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Demo)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Grenadier)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Pyro)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SMARTGUN]" = (squad_number + 3),
+					"[squad_name][JOB_SQUAD_ENGI]" = (squad_number + 4),
+					"[squad_name][JOB_SQUAD_MEDIC]" = (squad_number + 5),
+					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 6),
+				)
+				squad_number += 10
 		else
-			icon_state = initial(icon_state)
-			stat &= ~NOPOWER
-
-/obj/structure/machinery/computer/crew/interact(mob/living/user)
-	GLOB.crewmonitor.show(user, src)
+			jobs = list()
 
 #undef SENSOR_LIVING
 #undef SENSOR_VITALS

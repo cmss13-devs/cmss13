@@ -103,6 +103,8 @@
 	 /// Status traits to give to the mob.
 	var/list/mob_inherent_traits
 
+	var/ignores_stripdrag_flag = FALSE
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()

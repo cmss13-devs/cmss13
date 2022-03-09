@@ -349,12 +349,12 @@
 		new /obj/item/clothing/gloves/marine/veteran(src)
 		new /obj/item/clothing/mask/gas/PMC(src)
 	else if(prob(25))
-		new /obj/item/clothing/under/marine/veteran/mercenary/engineer(src)
-		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer(src)
-		new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer(src)
+		new /obj/item/clothing/under/marine/veteran/mercenary/support(src)
+		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/support(src)
+		new /obj/item/clothing/suit/storage/marine/veteran/mercenary/support(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
 		new /obj/item/clothing/mask/gas/PMC(src)
-	else 
+	else
 		new /obj/item/clothing/under/marine/veteran/freelancer(src)
 		new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 		new /obj/item/clothing/head/cmbandana(src)

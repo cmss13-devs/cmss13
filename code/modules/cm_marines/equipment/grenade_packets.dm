@@ -63,6 +63,11 @@
 	icon_state = "hpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
 
+/obj/item/storage/box/packet/phosphorus/upp
+	name = "Type 8 WP grenade packet"
+	desc = "It contains three type 8 white phosphorus grenades."
+	content_type = /obj/item/explosive/grenade/phosphorus/upp
+
 /obj/item/storage/box/packet/hefa
 	name = "HEFA grenade packet"
 	desc = "It contains three HEFA grenades. Don't tell the HEFA order."

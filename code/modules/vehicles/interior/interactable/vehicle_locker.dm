@@ -15,7 +15,7 @@
 	unslashable = TRUE
 	indestructible = TRUE
 
-	var/list/role_restriction = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	var/list/role_restriction = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 
 	var/obj/item/storage/internal/container
 
@@ -36,6 +36,7 @@
 									/obj/item/ammo_magazine/hardpoint,
 									/obj/item/tool/weldpack
 									)
+	flags_atom |= USES_HEARING
 
 /obj/structure/vehicle_locker/verb/empty_storage()
 	set name = "Empty"

@@ -18,6 +18,17 @@
 		return TRUE //For the pistol pouch to know it's empty.
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
+
+	if(isnull(storage_slots))//uses weight instead of slots
+		var/fullness = 0
+		for(var/obj/item/C as anything in contents)
+			fullness += C.w_class
+		if(fullness <= max_storage_space * 0.5)
+			overlays += "+[icon_state]_half"
+		else
+			overlays += "+[icon_state]_full"
+		return
+
 	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
@@ -39,20 +50,18 @@
 	..()
 
 
-
-
 /obj/item/storage/pouch/general
 	name = "light general pouch"
-	desc = "A general-purpose pouch used to carry small items and ammo magazines."
+	desc = "A general-purpose pouch used to carry a small item, or two tiny ones."
 	icon_state = "small_drop"
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/sniper,
+	storage_flags = STORAGE_FLAGS_DEFAULT
+	max_w_class = SIZE_MEDIUM
+	cant_hold = list(	//Prevent inventory bloat
+		/obj/item/storage/firstaid,
+		/obj/item/storage/bible
 	)
+	storage_slots = null
+	max_storage_space = 2
 
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -61,23 +70,31 @@
 	else if(istype(W, /obj/item/storage/box/nade_box))
 		var/obj/item/storage/box/nade_box/M = W
 		dump_into(M,user)
-	else if(istype(W, /obj/item/storage/box/m94))
-		var/obj/item/storage/box/m94/M = W
-		dump_into(M,user)
 	else
 		return ..()
 
+/obj/item/storage/pouch/general/can_be_inserted(obj/item/W, stop_messages)
+	. = ..()
+	if(. && W.w_class == SIZE_MEDIUM)
+		for(var/obj/item/I in return_inv())
+			if(I.w_class >= SIZE_MEDIUM)
+				if(!stop_messages)
+					to_chat(usr, SPAN_NOTICE("[src] is already too bulky with [I]."))
+				return FALSE
+
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
-	storage_slots = 2
+	desc = "A general-purpose pouch used to carry a variety of differently sized items."
 	icon_state = "medium_drop"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_slots = null
+	max_storage_space = 4
 
 /obj/item/storage/pouch/general/large
 	name = "large general pouch"
-	storage_slots = 3
+	desc = "A general-purpose pouch used to carry more differently sized items."
 	icon_state = "large_drop"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_slots = null
+	max_storage_space = 6
 
 /obj/item/storage/pouch/flamertank
 	name = "fuel tank strap pouch"
@@ -108,7 +125,7 @@
 	cant_hold = list()
 	icon_state = "bayonet"
 	storage_slots = 5
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
 	var/default_knife_type = /obj/item/weapon/melee/throwing_knife
@@ -221,8 +238,8 @@
 	icon_state = "pistol"
 	use_sound = null
 	max_w_class = SIZE_MEDIUM
-	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver, /obj/item/weapon/gun/flare)
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver,/obj/item/weapon/gun/flare)
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	flap = FALSE
 
 	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
@@ -754,6 +771,12 @@
 	. = ..()
 	inner.reagents.add_reagent("kelotane", inner.volume)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("oxycodone", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()

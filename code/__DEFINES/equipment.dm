@@ -22,6 +22,7 @@
 #define CAN_BE_DISPENSED_INTO     (1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
 #define INITIALIZED               (1<<15) // Initialized by SSatoms.
 #define ATOM_DECORATED            (1<<16) // Has run Decorate() as part of subsystem init
+#define USES_HEARING		      (1<<17) // Whether or not the object uses hearing
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -375,8 +376,9 @@ var/global/list/uniform_categories = list(
 #define STORAGE_CLICK_GATHER				(1<<7)	// Whether it is possible to use this storage object in an inverse way,
 										   			// so you can have the item in your hand and click items on the floor to pick them up
 #define STORAGE_SHOW_FULLNESS				(1<<8)	// Whether our storage object on hud changes color when full
-#define STORAGE_CONTENT_NUM_DISPLAY			(1<<9)		// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
-#define STORAGE_GATHER_SIMULTAENOUSLY		(1<<10)		// Whether the storage object can pick up all the items in a tile
+#define STORAGE_CONTENT_NUM_DISPLAY			(1<<9)	// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
+#define STORAGE_GATHER_SIMULTAENOUSLY		(1<<10)	// Whether the storage object can pick up all the items in a tile
+#define STORAGE_ALLOW_QUICKDRAW				(1<<11)	// Whether the storage can be drawn with E or Holster verb
 
 #define STORAGE_FLAGS_DEFAULT				(STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX					(STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)

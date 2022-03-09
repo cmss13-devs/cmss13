@@ -6440,6 +6440,9 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/oob)
+"dOX" = (
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/lz/near_lzI)
 "dPC" = (
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/prison{
@@ -30452,6 +30455,10 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
+"sIJ" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/lz/near_lzI)
 "sIQ" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/prison{
@@ -70303,8 +70310,8 @@ azZ
 azZ
 azZ
 azZ
-lAh
-lAh
+lJa
+lJa
 lJa
 lJa
 lJa
@@ -70515,13 +70522,13 @@ azZ
 azZ
 azZ
 azZ
-lAh
+lJa
 ijs
 lJa
-lAh
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
+lJa
 lzO
 xjK
 dNF
@@ -70727,7 +70734,7 @@ fnn
 phz
 guf
 guf
-lAh
+lJa
 ijs
 lJa
 lJa
@@ -70939,7 +70946,7 @@ phz
 fRo
 gwM
 gCn
-lAh
+lJa
 inA
 lJa
 lJa
@@ -71151,8 +71158,8 @@ phz
 fRo
 gxj
 gDx
-lAh
-lAh
+lJa
+lJa
 lJa
 ruy
 csp
@@ -71287,7 +71294,7 @@ tHs
 fnB
 tHs
 uGY
-nqN
+ceC
 uGY
 uGY
 nqN
@@ -71363,8 +71370,8 @@ azZ
 phz
 phz
 phz
-lAh
-lAh
+lJa
+lJa
 lJa
 phz
 ruy
@@ -71499,7 +71506,7 @@ fnB
 fnB
 tHs
 rfa
-nqN
+ceC
 hLz
 gHl
 hLz
@@ -71711,7 +71718,7 @@ sRV
 tHs
 mni
 gZE
-nqN
+ceC
 tvU
 wMR
 hxy
@@ -71785,9 +71792,9 @@ ezV
 phz
 fwr
 fTz
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
 lJa
 aOd
 phz
@@ -71923,7 +71930,7 @@ vaj
 uGY
 nWK
 jdh
-nqN
+ceC
 xOQ
 hxy
 hxy
@@ -71997,9 +72004,9 @@ phz
 phz
 fwr
 fUm
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
 lJa
 nvZ
 phz
@@ -72135,7 +72142,7 @@ hxy
 uGY
 gIB
 gIB
-nqN
+ceC
 xnN
 hxy
 hxy
@@ -72209,9 +72216,9 @@ azZ
 eVq
 fFE
 azZ
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
 lJa
 iQP
 ruy
@@ -72421,11 +72428,11 @@ azZ
 azZ
 azZ
 azZ
-lAh
-lAh
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
+lJa
+lJa
 phz
 lJa
 ruy
@@ -72634,9 +72641,9 @@ ePv
 aDh
 azZ
 lAh
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
 azZ
 phz
 phz
@@ -74893,7 +74900,7 @@ mxQ
 iyf
 iyf
 mxQ
-bzO
+vMK
 hxy
 hxy
 hLK
@@ -75198,9 +75205,9 @@ azZ
 azZ
 lAh
 lAh
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
 ruy
 csp
 xjK
@@ -84998,7 +85005,7 @@ lRT
 aIh
 hsA
 hsA
-lRT
+dOX
 iJf
 qHC
 doB
@@ -85210,7 +85217,7 @@ xDw
 tRa
 fLa
 ltV
-lRT
+dOX
 qqu
 rZa
 ljZ
@@ -85422,7 +85429,7 @@ lRT
 hTG
 qHC
 kjo
-eBs
+sIJ
 iJf
 qWa
 aQE
@@ -85634,7 +85641,7 @@ hsA
 iJf
 jOW
 hlK
-lRT
+dOX
 jdc
 vbn
 iJf
@@ -85846,7 +85853,7 @@ hsA
 iJf
 qHC
 hlK
-lRT
+dOX
 pkc
 bGr
 aCn
@@ -86058,7 +86065,7 @@ own
 wew
 rXT
 uxY
-lRT
+dOX
 aKc
 ybR
 iJf
@@ -86270,7 +86277,7 @@ lRT
 hir
 hir
 hir
-lRT
+dOX
 fye
 fsf
 iJf
@@ -86931,7 +86938,7 @@ iRa
 iRa
 iRa
 iRa
-lRT
+dOX
 aIh
 hsA
 hsA
@@ -87118,7 +87125,7 @@ lRT
 hir
 hir
 hir
-lRT
+dOX
 xfd
 rTb
 rTb
@@ -88430,7 +88437,7 @@ bzO
 dUZ
 tUs
 pJo
-bzO
+vMK
 kPC
 xnp
 xnp
@@ -90534,7 +90541,7 @@ mYZ
 hKI
 hKI
 hKI
-lRT
+dOX
 hsA
 qVt
 hsA
@@ -90550,12 +90557,12 @@ lRT
 mli
 qVt
 atm
-lRT
+dOX
 jeh
 bnK
 bnK
 qjC
-lRT
+dOX
 gDP
 hKI
 voa
@@ -91594,7 +91601,7 @@ lmM
 hKI
 hKI
 qDD
-lRT
+dOX
 iVb
 dIK
 iJM
@@ -91610,12 +91617,12 @@ lRT
 hsA
 hsA
 hsA
-lRT
+dOX
 qHC
 qHC
 qHC
 qHC
-lRT
+dOX
 gDP
 hKI
 voa

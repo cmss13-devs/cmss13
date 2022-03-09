@@ -20,6 +20,10 @@
 	QDEL_NULL(special_assembly)
 	. = ..()
 
+/obj/item/device/assembly_holder/Initialize()
+	. = ..()
+	flags_atom |= USES_HEARING
+
 /obj/item/device/assembly_holder/proc/attach_special(var/obj/O, var/mob/user)
 	return
 

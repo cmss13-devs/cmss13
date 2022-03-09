@@ -20,6 +20,7 @@
 /obj/item/clothing/accessory/Initialize()
 	. = ..()
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
+	flags_atom |= USES_HEARING
 
 /obj/item/clothing/accessory/Destroy()
 	if(has_suit)

@@ -34,7 +34,7 @@
 	if(gutted)
 		desc = initial_desc + "\n\nIt has already been gutted!"
 	if(!guttable)
-		desc = initial_desc = "\n\nIt cannot be gutted."
+		desc = initial_desc + "\n\nIt cannot be gutted."
 	gut_desc = desc
 
 	desc = gut_desc + "\n\nIt is [total_length]in."
@@ -57,7 +57,7 @@
 		user.visible_message("[user] starts to cut [W] open and clean it.", "You start to gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		if(do_after(user, gut_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-			var/gut_loot = roll(total_length - min_length)
+			var/gut_loot = roll(total_length/2 - min_length)
 			if(gut_loot <= 0)
 				gut_loot = 1
 
@@ -79,12 +79,38 @@
 	bitesize = 6
 	trash = null//todo, crab shell
 
+//----------------//
+//SQUIDS
 /obj/item/reagent_container/food/snacks/fishable/squid
 	name = "generic squid"
 	desc = "They have beaks."
 	icon_state = "squid"
 	bitesize = 8
 
+/obj/item/reagent_container/food/snacks/fishable/squid/whorl
+	name = "whorl squid"
+	desc = "A squat little fella in a whorl shaped shell, hence the name."
+	icon_state = 'squid_whorl'
+	gut_icon = 'squid_whorl_gutted'
+	guttable = TRUE
+	min_length = 4
+	max_length = 14
+	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid
+	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid)
+
+/obj/item/reagent_container/food/snacks/fishable/squid/sock
+	name = "sock squid"
+	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
+	icon_state = 'squid_sock'
+	gut_icon = 'squid_sock_gutted'
+	guttable = TRUE
+	min_length = 1
+	max_length = 5
+	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid/sock
+	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid/sock)
+
+//----------------//
+//WORMS
 /obj/item/reagent_container/food/snacks/fishable/worm
 	name = "generic sea worm"
 	desc = "Could be useful as bait?"

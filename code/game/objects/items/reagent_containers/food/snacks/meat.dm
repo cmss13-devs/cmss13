@@ -17,7 +17,7 @@
 		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
 		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
 		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
-		to_chat(user, "You cut the meat in thin strips.")
+		to_chat(user, "You cut the meat in thin strips.")//this needs to be rewritten to support other types of not cutlet meat.
 		qdel(src)
 	else
 		..()
@@ -47,3 +47,23 @@
 	. = ..()
 	reagents.add_reagent("xenoblood", 3)
 	src.bitesize = 6
+
+//fishable atoms meat
+/obj/item/reagent_container/food/snacks/meat/fish
+	name = "fish meat"
+	desc = "Meat from a fish."
+	icon_state = "fishmeat"
+	icon = 'icons/obj/items/fishing_atoms.dmi'
+
+/obj/item/reagent_container/food/snack/meat/fish/squid
+	name = "squid meat"
+	desc = "Mmm, calimari."
+	icon_state = "squid_meat"
+	bitesize = 3
+
+/obj/item/reagent_container/food/snack/meat/squid/sock
+	name = "sock squid meat"
+	desc = "These small shelled squids aren't really technically squids. However, their meat is delicious if prepared properly."
+	icon_state = "squid_sock_meat"
+	bitesize = 2
+

@@ -19123,14 +19123,14 @@
 /area/almayer/command/corporateliason)
 "bhT" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 1,0";
+	icon_state = "lockmart_m";
 	tag = "icon-blue 1,0"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bhU" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 2,0";
+	icon_state = "lockmart_r";
 	tag = "icon-blue 2,0"
 	},
 /turf/open/floor/almayer,
@@ -26196,7 +26196,7 @@
 /area/almayer/shipboard/navigation)
 "bIo" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 0,0";
+	icon_state = "lockmart_l";
 	tag = "icon-blue 0,0"
 	},
 /turf/open/floor/almayer{
@@ -26773,7 +26773,7 @@
 /area/almayer/shipboard/navigation)
 "bKt" = (
 /obj/structure/cargo_container{
-	icon_state = "green 0,0";
+	icon_state = "green_l";
 	tag = "icon-green 0,0"
 	},
 /turf/open/floor/almayer{
@@ -26783,7 +26783,7 @@
 /area/almayer/hallways/hangar)
 "bKu" = (
 /obj/structure/cargo_container{
-	icon_state = "green 1,0";
+	icon_state = "arious_m";
 	tag = "icon-green 1,0"
 	},
 /turf/open/floor/plating/plating_catwalk,

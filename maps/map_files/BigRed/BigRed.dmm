@@ -554,14 +554,14 @@
 /area/bigredv2/outside/space_port)
 "abu" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 0,0";
+	icon_state = "blue_l";
 	tag = "icon-blue 0,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abv" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 1,0";
+	icon_state = "watatsumi_m";
 	tag = "icon-blue 1,0"
 	},
 /turf/open/floor/plating,
@@ -824,18 +824,9 @@
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/BigRed)
-"ace" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
 "acf" = (
 /obj/structure/cargo_container{
-	icon_state = "green 1,0";
+	icon_state = "arious_m";
 	tag = "icon-green 1,0"
 	},
 /turf/open/floor/plating{
@@ -29613,6 +29604,13 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"dJZ" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_m";
+	tag = "icon-green 1,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "dKR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -30303,6 +30301,13 @@
 	tag = "icon-mars_dirt_13"
 	},
 /area/bigredv2/outside/space_port_lz2)
+"hpW" = (
+/obj/structure/cargo_container{
+	icon_state = "HD_blue 0,2";
+	tag = "icon-blue 2,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "hqD" = (
 /turf/open/floor{
 	dir = 10;
@@ -30573,6 +30578,13 @@
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_research)
+"iRf" = (
+/obj/structure/cargo_container{
+	icon_state = "HD_blue 0,1";
+	tag = "icon-blue 1,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "iRG" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/mars_cave{
@@ -30598,6 +30610,13 @@
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigredv2/caves_east)
+"iXT" = (
+/obj/structure/cargo_container{
+	icon_state = "ferret_r";
+	tag = "icon-red 2,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "iYR" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -6
@@ -30663,6 +30682,13 @@
 	tag = "icon-mars_cave_10"
 	},
 /area/bigredv2/caves_lambda)
+"jjR" = (
+/obj/structure/cargo_container{
+	icon_state = "HD_blue 0,0";
+	tag = "icon-blue 0,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "jmK" = (
 /turf/open/floor{
 	dir = 5;
@@ -31121,6 +31147,13 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/virology)
+"lSL" = (
+/obj/structure/cargo_container{
+	icon_state = "ferret_m";
+	tag = "icon-red 1,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "lSS" = (
 /obj/item/tool/warning_cone,
 /obj/structure/blocker/forcefield/vehicles,
@@ -31486,6 +31519,13 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/lambda/breakroom)
+"ofX" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_r";
+	tag = "icon-green 2,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "ohD" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -32017,6 +32057,13 @@
 	tag = "icon-darkredcorners2 (WEST)"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"rfh" = (
+/obj/structure/cargo_container{
+	icon_state = "ferret_l";
+	tag = "icon-red 0,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "rjw" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -32377,6 +32424,14 @@
 	tag = "icon-mars_cave_10"
 	},
 /area/bigredv2/caves_east)
+"sXQ" = (
+/obj/structure/cargo_container{
+	icon_state = "green_l"
+	},
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/space_port)
 "taf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33311,6 +33366,13 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_se)
+"xAX" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_l";
+	tag = "icon-green 0,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "xFZ" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_lambda)
@@ -33329,6 +33391,13 @@
 /obj/item/ore,
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
+"xPg" = (
+/obj/structure/cargo_container{
+	icon_state = "grant_l";
+	tag = "icon-red 0,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "xUo" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -41012,16 +41081,16 @@ aah
 aah
 aah
 aah
-aaH
-aaH
+rfh
+xPg
 aah
-abk
+xAX
 abu
 abk
 aah
-abu
+jjR
 aaH
-ace
+sXQ
 aah
 aah
 aah
@@ -41229,14 +41298,14 @@ aah
 aah
 aah
 aah
-aaI
+lSL
 aaI
 aah
-abl
+dJZ
 abv
 abl
 aah
-abv
+iRf
 aaI
 acf
 aah
@@ -41446,14 +41515,14 @@ aah
 aah
 aah
 aah
-aaJ
+iXT
 aaJ
 aah
-abm
+ofX
 abw
 abm
 aah
-abw
+hpW
 aaJ
 acg
 aah

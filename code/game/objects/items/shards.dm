@@ -72,6 +72,45 @@
 // on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
 // on_embedded_movement is called from human.dm, handle_embedded_objects().
 
+/obj/item/large_shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+	return
+
+/obj/item/large_shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+	return
+
+/obj/item/large_shrapnel/atrpg_dud
+	name = "anti-tank rpg"
+	icon_state = "warhead"
+	desc = "An undetonated anti-tank rpg. Probably hit something softer than armor."
+	matter = list("metal" = 11250) //same as custom warhead
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	var/damage_on_move = 2
+
+/obj/item/large_shrapnel/atrpg_dud/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	if(istype(target_organ))
+		target_organ.embed(src)
+
+/obj/item/large_shrapnel/atrpg_dud/on_embedded_movement(var/mob/living/embedded_mob)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	var/obj/limb/organ = embedded_organ
+	if(istype(organ))
+		organ.take_damage(damage_on_move, 0, 0, no_limb_loss = TRUE)
+		embedded_mob.pain.apply_pain(damage_on_move)
+		if(prob(5))
+			to_chat(embedded_mob, SPAN_DANGER("The warhead sticking out of you jostles roughly against your innards! Oh no."))
+			embedded_mob.visible_message(SPAN_DANGER("The warhead sticking out of [embedded_mob] suddenly explodes!"))
+			cell_explosion(get_turf(embedded_mob), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("UXO detonation", embedded_mob))
+
 /obj/item/shard/shrapnel
 	name = "shrapnel"
 	icon_state = "shrapnel"

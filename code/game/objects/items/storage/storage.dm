@@ -509,6 +509,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
 		return //Robots can't interact with storage items.
 
+	return attempt_item_insertion(W, user)
+
+/obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, mob/user as mob)
 	if(!can_be_inserted(W))
 		return
 

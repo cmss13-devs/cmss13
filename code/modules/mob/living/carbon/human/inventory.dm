@@ -350,24 +350,26 @@
 			W.equipped(src, slot)
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
-			back.attackby(W,src)
+			var/obj/item/storage/S = back
+			S.attempt_item_insertion(W, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
 			shoes.attackby(W,src)
 			shoes.update_icon()
 		if(WEAR_IN_SCABBARD)
-			back.attackby(W,src)
+			var/obj/item/storage/S = back
+			S.attempt_item_insertion(W, src)
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)
-				wear_suit.attackby(W, src)
+				S.pockets.attempt_item_insertion(W, src)
 				wear_suit.update_icon()
 
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
 			if(istype(HM) && HM.pockets.storage_slots)
-				HM.pockets.attackby(W, src)
+				HM.pockets.attempt_item_insertion(W, src)
 				HM.update_icon()
 
 		if(WEAR_IN_ACCESSORY)
@@ -382,16 +384,20 @@
 			update_inv_w_uniform()
 
 		if(WEAR_IN_BELT)
-			belt.attackby(W,src)
+			var/obj/item/storage/S = belt
+			S.attempt_item_insertion(W, src)
 			belt.update_icon()
 		if(WEAR_IN_J_STORE)
-			s_store.attackby(W,src)
+			var/obj/item/storage/S = s_store
+			S.attempt_item_insertion(W, src)
 			s_store.update_icon()
 		if(WEAR_IN_L_STORE)
-			l_store.attackby(W,src)
+			var/obj/item/storage/S = l_store
+			S.attempt_item_insertion(W, src)
 			l_store.update_icon()
 		if(WEAR_IN_R_STORE)
-			r_store.attackby(W,src)
+			var/obj/item/storage/S = r_store
+			S.attempt_item_insertion(W, src)
 			r_store.update_icon()
 
 		else

@@ -57445,7 +57445,6 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/item/ammo_magazine/shotgun/beanbag,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "mAT" = (

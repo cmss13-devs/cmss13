@@ -295,7 +295,7 @@
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/autoname
 	autoname = TRUE
@@ -312,7 +312,7 @@
 	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname
 	autoname = TRUE

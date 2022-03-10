@@ -354,6 +354,12 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/engineering/glass
+	name = "\improper Engineering Airlock"
+	icon = 'icons/obj/structures/doors/engidoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/engineering/reinforced
 	name = "\improper Reinforced Engineering Airlock"
 	reinforced = TRUE
@@ -361,8 +367,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/reinforced/OT
 	name = "\improper Ordnance Workshop"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
-	opacity = 0
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_OT)
 
@@ -419,6 +425,12 @@
 
 /obj/structure/machinery/door/airlock/almayer/generic/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"

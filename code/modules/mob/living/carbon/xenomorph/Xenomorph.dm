@@ -717,6 +717,10 @@
 	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
 		update_living_queens()
 
+	lock_evolve = FALSE
+	banished = FALSE
+	hud_update_banished()
+
 	recalculate_everything()
 
 	// Update the hive status UI

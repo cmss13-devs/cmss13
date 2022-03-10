@@ -736,11 +736,15 @@
 				continue
 			hive_structures[name_ref] -= S
 			qdel(S)
-	for(var/i in totalXenos)
-		var/mob/living/carbon/Xenomorph/xeno = i
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-			qdel(xeno)
+			if(xeno.hunter_data.hunted)
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
+			else
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				qdel(xeno)
+			stored_larva++
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
 		if(!(potential_host.status_flags & XENO_HOST))
@@ -751,8 +755,9 @@
 		if(A && A.hivenumber != hivenumber)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
-			qdel(embryo)
-		potential_host.death(create_cause_data("larva suicide"))
+			if(embryo.hivenumber != hivenumber)
+				embryo.hivenumber = XENO_HIVE_FORSAKEN
+		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
 
 /datum/hive_status/proc/free_respawn(var/client/C)
@@ -844,6 +849,18 @@
 	ui_color = "#828296"
 
 	construction_allowed = XENO_QUEEN
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+
+/datum/hive_status/forsaken
+	name = "Forsaken Hive"
+	hivenumber = XENO_HIVE_FORSAKEN
+	prefix = "Forsaken "
+	color = "#cc8ec4"
+	ui_color = "#cc8ec4"
+
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE

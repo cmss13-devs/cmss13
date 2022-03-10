@@ -288,3 +288,103 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/freight
 	name = "\improper Freight Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor
+	name = "\improper Security Airlock"
+	icon = 'icons/obj/structures/doors/2x1secdoor.dmi'
+	req_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced
+	reinforced = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass
+	icon = 'icons/obj/structures/doors/2x1secdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced
+	reinforced = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor
+	name = "\improper Engineering Airlock"
+	icon = 'icons/obj/structures/doors/2x1engidoor.dmi'
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass
+	icon = 'icons/obj/structures/doors/2x1engidoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha
+	name = "\improper Alpha Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_alpha.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo
+	name = "\improper Bravo Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie
+	name = "\improper Charlie Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta
+	name = "\improper Delta Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_delta.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1personaldoor.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass
+	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+

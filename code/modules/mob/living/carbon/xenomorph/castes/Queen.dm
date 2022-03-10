@@ -336,6 +336,13 @@
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
+/mob/living/carbon/Xenomorph/Queen/Forsaken
+	hivenumber = XENO_HIVE_FORSAKEN
+
+/mob/living/carbon/Xenomorph/Queen/Forsaken/combat_ready
+	hivenumber = XENO_HIVE_FORSAKEN
+	queen_aged = TRUE
+
 /mob/living/carbon/Xenomorph/Queen/Alpha
 	hivenumber = XENO_HIVE_ALPHA
 

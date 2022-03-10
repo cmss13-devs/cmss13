@@ -653,6 +653,7 @@
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
 /obj/item/storage/internal/accessory/drop_pouch
+	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
@@ -661,6 +662,7 @@
 		/obj/item/storage/bible,
 		)
 	storage_flags = NONE	//no verb, no quick draw, no tile gathering
+
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized
 	Security agent - the user details can be imprinted on the badge with a Security-access ID card,

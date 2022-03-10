@@ -420,10 +420,6 @@
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
-/obj/item/storage/pouch/magazine/large/with_beanbags/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
-
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
 	desc = "It can carry pistol magazines and revolver speedloaders."
@@ -555,6 +551,10 @@
 	desc = "It can contain more handfuls of shells, or bullets if you choose to for some reason."
 	icon_state = "large_shotshells"
 	storage_slots = 7
+
+/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"

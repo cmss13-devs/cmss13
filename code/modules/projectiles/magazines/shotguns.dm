@@ -185,6 +185,10 @@ var/list/shotgun_shells_12g = list(
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
+/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
+	name = "handful of beanbag slugs (20g)"
+	caliber = "20g"
+
 //updates on init
 /obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
 	overlays.Cut()

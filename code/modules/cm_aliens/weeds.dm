@@ -199,6 +199,9 @@
 	for(var/obj/structure/platform/P in src.loc)
 		if(P.dir == reverse_direction(direction))
 			return FALSE
+	for(var/obj/structure/barricade/B in loc)
+		if(B.dir == direction && B.health >= (B.maxhealth / 4))
+			return FALSE
 
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))

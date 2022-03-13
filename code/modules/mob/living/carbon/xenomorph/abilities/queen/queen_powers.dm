@@ -421,15 +421,8 @@
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in cardinal)
 		var/turf/weed_turf = get_step(T, direction)
-		var/blocked = FALSE
-		for(var/obj/structure/barricade/B in weed_turf)
-			if(B.dir == reverse_dir[direction] && B.health >= (B.maxhealth / 4))
-				blocked = TRUE
-				break
-		if(blocked)
-			continue
 		var/obj/effect/alien/weeds/W = locate() in weed_turf
-		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, get_turf(W), T))
+		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
 			node = W.parent
 			break
 

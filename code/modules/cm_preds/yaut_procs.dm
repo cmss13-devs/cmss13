@@ -278,7 +278,7 @@
 	if(sure == "Begin the Hunt")
 		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick", "The Fearsome Scimitars")
 		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor", "The Steadfast Shield")//, "The Clever Hologram")
-		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor") //Can only select them once each.
+		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor", "The Steadfast Shield") //Can only select them once each.
 
 		var/msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", melee)
 		if(!msel) return //We don't want them to cancel out then get nothing.

@@ -167,25 +167,6 @@
 		if(!istype(T) || !T.is_weedable())
 			continue
 
-		for(var/obj/structure/barricade/B in T)
-			var/list/blocked_dirs
-			blocked_dirs += list(B.dir)
-			var/blocked = FALSE
-			for(var/stepdir in cardinal - blocked_dirs)
-				var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
-				if(existing_weeds)
-					blocked = FALSE
-					message_admins("weed plant not blocked on [stepdir]")
-					break
-				else
-					blocked = TRUE
-					message_admins("weed plant blocked on [stepdir]")
-					continue
-			if(blocked)
-				if(B.health >= (B.maxhealth/4))
-					message_admins("conclusion, planting blocked.")
-					return weeds
-
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
 			if(W.indestructible)
@@ -232,7 +213,24 @@
 			return FALSE
 		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
 			return FALSE
-
+		else if(istype(O, /obj/structure/barricade))
+			var/obj/structure/barricade/B = O
+			var/list/blocked_dirs
+			blocked_dirs += list(B.dir)
+			var/blocked = FALSE
+			for(var/stepdir in cardinal - blocked_dirs)
+				var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
+				if(existing_weeds)
+					blocked = FALSE
+					break
+				else
+					blocked = TRUE
+					continue
+			if(blocked)
+				if(B.health >= (B.maxhealth/4))
+					return FALSE
+			else
+				return TRUE
 	return TRUE
 
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)

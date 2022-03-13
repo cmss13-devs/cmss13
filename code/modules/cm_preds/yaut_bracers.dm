@@ -949,7 +949,9 @@
 			. = activate_random_verb()
 			return
 
-	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.","Translator","") as text)
+	usr.set_typing_indicator(TRUE, "translator")
+	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
+	usr.set_typing_indicator(FALSE, "translator")
 	if(!msg || !usr.client)
 		return
 
@@ -972,10 +974,14 @@
 
 	usr.langchat_speech(msg, heard, GLOB.all_languages, "#ff0505")
 
+	var/mob/M = usr
+	var/voice_name = "A strange voice"
+	if(M.name == M.real_name)
+		voice_name = "<b>[M.name]</b>"
 	for(var/mob/Q as anything in hearers(usr))
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("A strange voice says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

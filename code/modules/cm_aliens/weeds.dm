@@ -205,6 +205,11 @@
 			if(O.dir == direction)
 				return FALSE
 
+		if(istype(O, /obj/structure/barricade))
+			var/obj/structure/barricade/B = O
+			if(B.dir == reverse_dir[direction] && B.health >= (B.maxhealth / 4))
+				return FALSE
+
 		if(istype(O, /obj/structure/window/framed))
 			new /obj/effect/alien/weeds/weedwall/window(T, parent)
 			return FALSE
@@ -213,24 +218,6 @@
 			return FALSE
 		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
 			return FALSE
-		else if(istype(O, /obj/structure/barricade))
-			var/obj/structure/barricade/B = O
-			var/list/blocked_dirs
-			blocked_dirs += list(B.dir)
-			var/blocked = FALSE
-			for(var/stepdir in cardinal - blocked_dirs)
-				var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
-				if(existing_weeds)
-					blocked = FALSE
-					break
-				else
-					blocked = TRUE
-					continue
-			if(blocked)
-				if(B.health >= (B.maxhealth/4))
-					return FALSE
-			else
-				return TRUE
 	return TRUE
 
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)

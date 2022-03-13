@@ -394,27 +394,6 @@
 	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
-	for(var/obj/structure/barricade/B in T)
-		var/list/blocked_dirs
-		var/blocked = TRUE
-		blocked_dirs += list(B.dir)
-
-		for(var/stepdir in cardinal - blocked_dirs)
-			if(!blocked)
-				return
-			var/obj/effect/alien/weeds/existing_weeds = locate(/obj/effect/alien/weeds, get_step(B, stepdir))
-			if(!existing_weeds)
-				blocked = TRUE
-				continue
-			else
-				blocked = FALSE
-				break
-		if(blocked)
-			if(B.health >= (B.maxhealth/4))
-				to_chat(X, SPAN_WARNING("The [B] here is too strong to expand weeds onto!"))
-				return
-		else
-			continue
 
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)
@@ -441,7 +420,15 @@
 
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in cardinal)
-		var/obj/effect/alien/weeds/W = locate() in get_step(T, direction)
+		var/turf/weed_turf = get_step(T, direction)
+		var/blocked = FALSE
+		for(var/obj/structure/barricade/B in weed_turf)
+			if(B.dir == reverse_dir[direction] && B.health >= (B.maxhealth / 4))
+				blocked = TRUE
+				break
+		if(blocked)
+			continue
+		var/obj/effect/alien/weeds/W = locate() in weed_turf
 		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, get_turf(W), T))
 			node = W.parent
 			break

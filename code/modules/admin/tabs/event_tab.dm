@@ -29,6 +29,8 @@
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
 
 	var/input = input(usr, "Enter the custom event message for \"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
+	if(isnull(input))
+		return
 
 	if(input == "" || !input)
 		CEI.msg = ""

@@ -94,7 +94,7 @@
 		return
 
 	var/humans_to_spawn = dd_range(1, 100, text2num(href_list["object_count"]))
-	var/range_to_spawn_on = dd_range(1, 10, text2num(href_list["object_range"]))
+	var/range_to_spawn_on = dd_range(0, 10, text2num(href_list["object_range"]))
 
 	var/free_the_humans = FALSE
 	var/offer_as_ert = FALSE
@@ -106,13 +106,16 @@
 
 	if(humans_to_spawn)
 		var/list/turfs = list()
-		if(!range_to_spawn_on)
-			range_to_spawn_on = 1
+		if(isnull(range_to_spawn_on))
+			range_to_spawn_on = 0
 
-		for(var/turf/T in range(initial_turf, range_to_spawn_on))
-			if(!T || istype(T, /turf/closed))
-				continue
-			turfs += T
+		if(range_to_spawn_on)
+			for(var/turf/T in range(initial_turf, range_to_spawn_on))
+				if(!T || istype(T, /turf/closed))
+					continue
+				turfs += T
+		else
+			turfs = list(initial_turf)
 
 		if(!length(turfs))
 			return
@@ -144,4 +147,3 @@
 			em_call.activate(announce = FALSE)
 
 		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
-	return

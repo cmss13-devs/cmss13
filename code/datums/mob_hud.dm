@@ -98,6 +98,9 @@ var/list/datum/mob_hud/huds = list(
 	if(!istype(U))
 		return FALSE
 
+	if(H.species && HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+		return FALSE
+
 	if(U.sensor_mode <= SENSOR_MODE_DAMAGE || U.has_sensor == UNIFORM_NO_SENSORS)
 		return FALSE
 

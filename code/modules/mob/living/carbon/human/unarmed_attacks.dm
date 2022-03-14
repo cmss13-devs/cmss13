@@ -16,7 +16,7 @@
 	return TRUE
 
 /datum/unarmed_attack/bite
-	attack_verb = list("bite") // 'x has biteed y', needs work.
+	attack_verb = list("gnash", "chew", "munch", "crunch")
 	attack_sound = 'sound/weapons/bite.ogg'
 	shredding = FALSE
 	damage = 5

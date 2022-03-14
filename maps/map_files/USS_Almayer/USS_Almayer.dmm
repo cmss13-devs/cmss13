@@ -16048,7 +16048,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Conference and Office Area"
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "aWF" = (
@@ -21491,8 +21493,9 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Canteen"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -22711,7 +22714,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Canteen"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -22735,7 +22740,9 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Canteen"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -24105,7 +24112,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Cryogenics Bay"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -24468,7 +24477,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Briefing Room"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -32154,7 +32165,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Canteen"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -32177,7 +32190,9 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Canteen"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -32665,8 +32680,8 @@
 /area/almayer/hallways/repair_bay)
 "cgl" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -32890,8 +32905,9 @@
 /area/almayer/squads/charlie)
 "chp" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Canteen"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -37267,7 +37283,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Conference and Office Area"
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "dqH" = (
@@ -55921,8 +55939,8 @@
 /area/almayer/engineering/laundry)
 "lKb" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -58371,8 +58389,8 @@
 /area/almayer/hallways/port_hallway)
 "mWy" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -62321,7 +62339,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "Brig";
-	dir = 2
+	dir = 2;
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -68573,8 +68592,8 @@
 /area/almayer/living/briefing)
 "rJx" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -83108,17 +83127,6 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/living/port_emb)
-"xUi" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/almayer/shipboard/brig/armory)
 "xUA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/pouch/tools/tank,
@@ -83769,7 +83777,9 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Rest and Relaxation Area"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -96470,7 +96480,7 @@ pCi
 rPC
 aou
 lrq
-xUi
+mAr
 uqo
 fsT
 tfO

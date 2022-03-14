@@ -5,3 +5,9 @@
 	if(!table_type || !(table_type in GLOB.fishing_loot_tables))
 		return GLOB.fishing_loot_tables[/datum/fish_loot_table] // return generic datum
 	return GLOB.fishing_loot_tables[table_type]
+
+/proc/get_fishing_loot(var/turf/T, var/area/A, var/common_weight, var/uncommon_weight, var/rare_weight, var/ultra_rare_weight)
+	var/datum/fish_loot_table/area_loot_table = get_fishing_loot_datum(A.fishing_loot)
+	var/type_to_spawn = area_loot_table.return_caught_fish(common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
+	var/obj/item/caught_item = new type_to_spawn(T)
+	return caught_item

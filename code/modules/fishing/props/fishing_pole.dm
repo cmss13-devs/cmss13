@@ -94,10 +94,7 @@
 	var/turf/T = get_step(get_step(src, dir), dir)//at least 2 tiles away, also add a temp_visual water splash when those are merged into the codebase
 	var/area/A = get_area(T)
 
-	var/datum/fish_loot_table/area_loot_table = get_fishing_loot_datum(A.fishing_loot)
-	var/type_to_spawn = area_loot_table.return_caught_fish(get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
-	var/obj/item/caught_item = new type_to_spawn(T)
-
+	var/obj/item/caught_item = get_fishing_loot(T, A, get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
 	caught_item.throw_atom(M.loc, 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
 	playsound(src, fishing_success, 50, 1)
 	M.visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))

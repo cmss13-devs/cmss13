@@ -938,6 +938,8 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 				// 200-229: Centcom
 				JOB_ADMIRAL = 200,
+				JOB_B_GENERAL = 200,
+				JOB_GENERAL = 200,
 				JOB_MARSOC = 201,
 				JOB_PMC_LEADER = 210,
 				JOB_PMC_ELITE = 211,

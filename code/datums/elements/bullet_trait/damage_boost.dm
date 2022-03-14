@@ -31,6 +31,9 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 	var/active_damage_mult
 	var/atom_type
 
+	//var for dealing with bonus projectiles
+	var/bonus_projectile_check
+
 /**
  * vars:
  * * damage_mult - the damage multiplier to be applied if the bullet hits an atom whose type is in `breaching_objs`
@@ -47,6 +50,7 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 	src.last_damage_mult = 1
 	src.active_damage_mult = 1
 	src.atom_type = 0
+	src.bonus_projectile_check = 0
 
 	RegisterSignal(target, list(
 		COMSIG_BULLET_PRE_HANDLE_OBJ,
@@ -79,9 +83,11 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 			active_damage_mult = damage_mult
 
 	if(boosted_hits > 0)
-		P.damage = P.damage / last_damage_mult
-		boosted_hits = boosted_hits - 1
+		if(bonus_projectile_check == P.damage)
+			P.damage = P.damage / last_damage_mult
+		boosted_hits--
 	if(damage_boosted_atoms[A.type])
 		P.damage = round(P.damage * active_damage_mult)
 		last_damage_mult = active_damage_mult
 		boosted_hits++
+		bonus_projectile_check = P.damage

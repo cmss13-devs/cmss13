@@ -698,7 +698,7 @@
 		if(isYautja(comrade) && comrade.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = comrade.gloves
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this Yautja into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || alert("Are you sure you want to send this [comrade.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
@@ -710,7 +710,7 @@
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
 						message_all_yautja("[M] has triggered [comrade]'s bracer's self-destruction sequence.")
 			else
-				to_chat(M, SPAN_WARNING("Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b>"))
+				to_chat(M, SPAN_WARNING("<b>This [comrade.species] does not have a bracer attached.</b>"))
 			return
 
 	if(M.gloves != src && !forced)

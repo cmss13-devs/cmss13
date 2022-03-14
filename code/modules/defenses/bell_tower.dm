@@ -164,7 +164,7 @@
 
 #undef BELL_TOWER_CLOAKER_ALPHA
 
-#define IMP_SLOWDOWN_TIME 1
+#define IMP_SLOWDOWN_TIME 3
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -174,7 +174,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	var/slowdown_amount = IMP_SLOWDOWN_TIME
-	var/area_range = 3
+	var/area_range = 7 //stretches 3 tiles away in all directions
 
 
 /obj/item/storage/backpack/imp/equipped(mob/user, slot)
@@ -202,7 +202,8 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/X in targets)
-		X.SetSuperslowed(BELL_TOWER_EFFECT)
+		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
+		X.SetSuperslowed(slowdown_amount)
 		playsound(X, 'sound/misc/bell.ogg', 50, 0, 50)
 
 #undef IMP_SLOWDOWN_TIME

@@ -29,3 +29,5 @@ var/list/first_names_female_gladiator = list("Aelia", "Aquila", "Caecilia", "Cam
 
 var/list/first_names_male_dutch = list("Raymond", "Jesse", "Jack", "John", "Sam", "Aaron", "Charlie", "Ellis", "Nick", "Francis", "Louis")
 var/list/first_names_female_dutch = list("Chelsea", "Mira", "Jessica", "Catherine", "Eliza", "Emma", "Ashley", "Annie", "Alicia", "Miranda", "Ellen")
+
+var/list/monkey_names = list("Abu", "Aldo", "Bear", "Bingo", "Clyde", "Crystal", "Gordo", "George", "Koko", "Marcel", "Nim", "Geeves", "Nanu", "Rafiki", "Spike", "Banana", "Boots", "Bubbles", "Smiley", "Winston")

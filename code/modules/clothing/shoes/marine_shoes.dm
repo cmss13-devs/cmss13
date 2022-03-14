@@ -42,6 +42,18 @@
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
+/obj/item/clothing/shoes/marine/monkey
+	name = "monkey combat boots"
+	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
+	icon_state = "monkey_shoes"
+	item_state = "monkey_shoes"
+
+// a monkey knife for a good monkey life
+/obj/item/clothing/shoes/marine/monkey/Initialize(mapload, ...)
+	. = ..()
+	stored_item = new /obj/item/attachable/bayonet(src)
+	update_icon()
+
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

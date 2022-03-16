@@ -156,6 +156,7 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //2.66
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
@@ -629,8 +630,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/synthetic
-	assignment = "UPP Combat Synthetic"
-	rank = "UPP Combat Synthetic"
+	assignment = JOB_UPP_COMBAT_SYNTH
+	rank = JOB_UPP_COMBAT_SYNTH
 	paygrade = "SYN"
 	idtype = /obj/item/card/id/gold
 
@@ -903,10 +904,9 @@
 	skills = /datum/skills/tank_crew
 
 /datum/equipment_preset/upp/tank/load_gear(mob/living/carbon/human/H)
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(H), WEAR_WAIST)
@@ -939,6 +939,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)

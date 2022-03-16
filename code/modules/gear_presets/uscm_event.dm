@@ -54,8 +54,6 @@
 
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
-	H.hud_set_squad()
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/upp_spy

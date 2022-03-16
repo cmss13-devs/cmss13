@@ -354,7 +354,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
 	if(kit)
 		H.equip_to_slot_or_del(new kit(H), WEAR_IN_BACK)
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -417,8 +416,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-	H.hud_set_squad()
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/so
@@ -448,8 +445,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
-
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -488,8 +483,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/device/whistle(H), WEAR_R_HAND)
-
-	H.hud_set_squad()
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -558,8 +551,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
-	H.hud_set_squad()
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc
@@ -607,8 +598,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
-
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 

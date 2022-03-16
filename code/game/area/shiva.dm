@@ -66,11 +66,13 @@
 	name = "Shiva's Snowball - Landing Valley"
 	icon_state = "landing_valley"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/shiva/exterior/lz2_fortress
 	name = "Shiva's Snowball - Landing Bulwark"
 	icon_state = "lz2_fortress"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/shiva/exterior/valley
 	name = "Shiva's Snowball - Storage Bunker Valley"

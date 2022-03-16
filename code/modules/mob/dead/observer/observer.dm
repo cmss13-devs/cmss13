@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					H = huds[MOB_HUD_SECURITY_ADVANCED]
 					H.add_hud_to(src)
 				if("Squad HUD")
-					H = huds[MOB_HUD_SQUAD_OBSERVER]
+					H = huds[MOB_HUD_FACTION_OBSERVER]
 					H.add_hud_to(src)
 				if("Xeno Status HUD")
 					H = huds[MOB_HUD_XENO_STATUS]

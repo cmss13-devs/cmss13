@@ -24,6 +24,7 @@
 	var/max_inaccuracy = 6 //what's the max deviation allowed when the ammo is no longer guided by a laser.
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/source_mob //who fired it
+	var/combat_equipment = TRUE
 
 
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)

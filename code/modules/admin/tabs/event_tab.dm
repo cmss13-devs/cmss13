@@ -714,8 +714,8 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H && H.faction == FACTION_MUTINEER)
-			H.faction = FACTION_MARINE
+		if(H.mob_flags & MUTINEER)
+			H.mob_flags &= ~MUTINEER
 			H.hud_set_squad()
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)

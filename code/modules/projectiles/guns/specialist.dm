@@ -468,11 +468,11 @@
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
-		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
-			click_empty(H)
-			return 0
+			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
+		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
@@ -519,9 +519,9 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!powerpack)
+	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
-			click_empty(user)
+			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
 			unlink_powerpack()
 			return
 	if(powerpack)
@@ -745,6 +745,15 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 
+// CLF SMARTGUN
+
+/obj/item/weapon/gun/smartgun/clf
+	name = "\improper M56B 'Freedom' smartgun"
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufactoring stamp.\nYou may toggle firing restrictions by using a special action."
+
+/obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_CLF
 
 //-------------------------------------------------------
 //HEAVY WEAPONS

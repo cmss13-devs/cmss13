@@ -1324,7 +1324,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/flare
 	name = "\improper M82-F flare gun"
 	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
-	icon_state = "m82f_e"
+	icon_state = "m82f"
 	item_state = "m82f"
 	current_mag = /obj/item/ammo_magazine/internal/flare
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
@@ -1335,8 +1335,12 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
-	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
+
+/obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(spawn_empty)
+		update_icon()
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
@@ -1364,10 +1368,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
+/obj/item/weapon/gun/flare/reload_into_chamber(mob/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
-	icon_state = popped_state
+	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/flashlight/flare))
@@ -1384,6 +1388,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++
 			qdel(I)
-			icon_state = "m82f"
+			update_icon()
 		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
 	else to_chat(user, SPAN_WARNING("That's not a flare!"))

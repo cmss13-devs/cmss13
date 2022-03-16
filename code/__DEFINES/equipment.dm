@@ -91,6 +91,7 @@
 #define BLOCKSHARPOBJ 	(1<<8)  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
 #define NOPRESSUREDMAGE (1<<9) //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
 #define BLOCK_KNOCKDOWN (1<<10) //Suits only. Wearing this will stop you from being pushed over.
+#define SMARTGUN_HARNESS (1<<11) // Whether wearing this suit grants you the ability to fire a smartgun
 //SUITS AND HELMETS====================================================================================
 
 

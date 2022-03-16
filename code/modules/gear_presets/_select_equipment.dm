@@ -152,6 +152,9 @@
 	H.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
 	H.marine_buy_flags = MARINE_CAN_BUY_ALL
 
+	H.hud_set_squad()
+	H.add_to_all_mob_huds()
+
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H, var/client/mob_client)
 	if(!H.client || !H.client.prefs || !H.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.

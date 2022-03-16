@@ -18,6 +18,7 @@
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
+	var/combat_equipment = TRUE
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
@@ -158,6 +159,7 @@
 	point_cost = 500
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
+	combat_equipment = FALSE
 
 /obj/structure/dropship_equipment/sentry_holder/Initialize()
 	. = ..()
@@ -276,6 +278,7 @@
 	point_cost = 300
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
+	combat_equipment = FALSE
 
 /obj/structure/dropship_equipment/mg_holder/Initialize()
 	. = ..()
@@ -773,6 +776,7 @@
 	var/obj/structure/bed/medevac_stretcher/linked_stretcher
 	var/medevac_cooldown
 	var/busy_winch
+	combat_equipment = FALSE
 
 /obj/structure/dropship_equipment/medevac_system/Destroy()
 	if(linked_stretcher)
@@ -1005,6 +1009,7 @@
 	is_interactable = TRUE
 	var/fulton_cooldown
 	var/busy_winch
+	combat_equipment = FALSE
 
 /obj/structure/dropship_equipment/fulton_system/update_equipment()
 	if(ship_base)
@@ -1117,6 +1122,7 @@
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 500
+	combat_equipment = FALSE
 
 	var/harness = /obj/item/rappel_harness
 

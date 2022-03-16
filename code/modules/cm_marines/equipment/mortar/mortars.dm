@@ -186,8 +186,14 @@
 			to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
 			return
 		var/area/A = get_area(T)
-		if((istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2)) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+		if(!istype(A))
+			to_chat(user, SPAN_WARNING("This area is out of bounds!"))
+			return
+		if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
 			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
+			return
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && A.is_landing_zone)
+			to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 			return
 
 		//Small amount of spread so that consecutive mortar shells don't all land on the same tile

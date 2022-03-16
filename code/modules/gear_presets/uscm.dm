@@ -208,8 +208,6 @@
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
 
-	H.hud_set_squad()
-
 /*****************************************************************************************************/
 /datum/equipment_preset/uscm/spec
 	name = "USCM (Cryo) Squad Weapons Specialist"

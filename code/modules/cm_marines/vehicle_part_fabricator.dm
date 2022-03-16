@@ -134,6 +134,8 @@
 	static_data["Equipment"] = list()
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/DE = build_type
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(DE.combat_equipment))
+			continue
 		var/build_name = initial(DE.name)
 		var/build_description = initial(DE.desc)
 		var/build_cost = initial(DE.point_cost)
@@ -148,6 +150,8 @@
 	static_data["Ammo"] = list()
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/SA = build_type
+		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && initial(SA.combat_equipment))
+			continue
 		var/build_name = initial(SA.name)
 		var/build_description = initial(SA.desc)
 		var/build_cost = initial(SA.point_cost)

@@ -466,12 +466,14 @@
 	icon_state = "green"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/bigredv2/outside/space_port_lz2
 	name = "\improper Cargo Landing Pad"
 	icon_state = "green"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 
 /area/bigredv2/outside/telecomm

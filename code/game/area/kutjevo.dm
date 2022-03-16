@@ -62,6 +62,7 @@
 	weather_enabled = FALSE
 	unlimited_power = 1//ds computer
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
@@ -69,6 +70,7 @@
 	is_resin_allowed = FALSE
 	weather_enabled =  FALSE
 	unlimited_power = 1//DS Computer
+	is_landing_zone = TRUE
 
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"

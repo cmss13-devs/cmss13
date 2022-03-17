@@ -74,7 +74,7 @@
 		if("Security HUD")
 			H = huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_SQUAD_OBSERVER]
+			H = huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
 			H = huds[MOB_HUD_XENO_STATUS]
 		else return

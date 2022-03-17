@@ -7,7 +7,6 @@
 #define ID_HUD				"3" // the job asigned to your ID
 #define WANTED_HUD			"4" // wanted, released, parroled, security status
 #define FACTION_HUD 		"8" // Any faction related HUD on humans
-#define SQUAD_HUD			"9" // squad hud showing who's leader, medic, etc for each squad.
 #define STATUS_HUD_OOC		"10" // STATUS_HUD without virus db check for someone being ill.
 #define STATUS_HUD_XENO_INFECTION		"11" // STATUS_HUD without virus db check for someone being ill.
 #define XENO_HOSTILE_ACID	"12" // acid 'stacks' index
@@ -36,15 +35,16 @@
 #define MOB_HUD_MEDICAL_OBSERVER	5
 #define MOB_HUD_XENO_INFECTION		6
 #define MOB_HUD_XENO_STATUS			7
-#define MOB_HUD_SQUAD				8
-#define MOB_HUD_XENO_HOSTILE		9
-#define MOB_HUD_HUNTER_CLAN			10
-#define MOB_HUD_SQUAD_OBSERVER      11
-#define MOB_HUD_FACTION_UPP			12
-#define MOB_HUD_FACTION_WY			13
-#define MOB_HUD_FACTION_RESS		14
-#define MOB_HUD_FACTION_CLF			15
+#define MOB_HUD_XENO_HOSTILE		8
+#define MOB_HUD_FACTION_USCM		9
+#define MOB_HUD_FACTION_OBSERVER	10
+#define MOB_HUD_FACTION_UPP			11
+#define MOB_HUD_FACTION_WY			12
+#define MOB_HUD_FACTION_RESS		13
+#define MOB_HUD_FACTION_CLF			14
+#define MOB_HUD_FACTION_PMC			15
 #define MOB_HUD_HUNTER				16
+#define MOB_HUD_HUNTER_CLAN			17
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL					"track_sl"

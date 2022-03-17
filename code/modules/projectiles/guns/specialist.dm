@@ -468,11 +468,11 @@
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
-		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
-			click_empty(H)
-			return 0
+			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
+		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
@@ -519,9 +519,9 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!powerpack)
+	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
-			click_empty(user)
+			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
 			unlink_powerpack()
 			return
 	if(powerpack)
@@ -745,6 +745,15 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 
+// CLF SMARTGUN
+
+/obj/item/weapon/gun/smartgun/clf
+	name = "\improper M56B 'Freedom' smartgun"
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufactoring stamp.\nYou may toggle firing restrictions by using a special action."
+
+/obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_CLF
 
 //-------------------------------------------------------
 //HEAVY WEAPONS
@@ -1324,7 +1333,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/flare
 	name = "\improper M82-F flare gun"
 	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
-	icon_state = "m82f_e"
+	icon_state = "m82f"
 	item_state = "m82f"
 	current_mag = /obj/item/ammo_magazine/internal/flare
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
@@ -1335,8 +1344,12 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
-	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
+
+/obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(spawn_empty)
+		update_icon()
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
@@ -1364,10 +1377,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
+/obj/item/weapon/gun/flare/reload_into_chamber(mob/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
-	icon_state = popped_state
+	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/flashlight/flare))
@@ -1384,6 +1397,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++
 			qdel(I)
-			icon_state = "m82f"
+			update_icon()
 		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
 	else to_chat(user, SPAN_WARNING("That's not a flare!"))

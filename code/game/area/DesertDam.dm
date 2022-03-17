@@ -677,6 +677,8 @@
 	name = "Airstrip Landing Pad"
 	icon_state = "landing_pad"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
+
 /area/desert_dam/exterior/landing_pad_one_external
 	name = "Airstrip Landing Valley"
 	icon_state = "landing_pad_ext"
@@ -688,6 +690,8 @@
 	name = "Aerodrome Landing Pad"
 	icon_state = "landing_pad"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
+
 /area/desert_dam/exterior/landing_pad_two_external
 	name = "Aerodrome Landing Valley"
 	icon_state = "landing_pad_ext"

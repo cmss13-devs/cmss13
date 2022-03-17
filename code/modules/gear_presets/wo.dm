@@ -86,8 +86,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	//hud
-	H.hud_set_squad()
 
 
 //*****************************************************************************************************/
@@ -128,8 +126,6 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-
-	H.hud_set_squad()
 
 
 //*****************************************************************************************************/
@@ -173,8 +169,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
-	H.hud_set_squad()
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/vhg
@@ -213,8 +207,6 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
-
-	H.hud_set_squad()
 
 
 //*****************************************************************************************************/

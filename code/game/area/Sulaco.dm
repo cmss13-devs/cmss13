@@ -13,6 +13,7 @@
 	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
 
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -72,6 +73,7 @@
 	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"

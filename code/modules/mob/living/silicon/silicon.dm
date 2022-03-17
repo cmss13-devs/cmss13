@@ -153,7 +153,7 @@
 			H = huds[MOB_HUD_SECURITY_ADVANCED]
 			HUD_nbr = 2
 		if("Squad HUD")
-			H = huds[MOB_HUD_SQUAD]
+			H = huds[MOB_HUD_FACTION_USCM]
 			HUD_nbr = 3
 		else
 			return

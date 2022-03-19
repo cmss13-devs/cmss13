@@ -91,7 +91,6 @@
 	name = "whorl squid"
 	desc = "A squat little fella in a whorl shaped shell, hence the name."
 	icon_state = 'squid_whorl'
-	gut_icon = 'squid_whorl_gutted'
 	guttable = TRUE
 	min_length = 4
 	max_length = 14
@@ -102,7 +101,6 @@
 	name = "sock squid"
 	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
 	icon_state = 'squid_sock'
-	gut_icon = 'squid_sock_gutted'
 	guttable = TRUE
 	min_length = 1
 	max_length = 5

@@ -385,7 +385,7 @@
 		return
 
 	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC)
-		to_chat(user, SPAN_WARNING("You cannot use \the [src] when using optics."))
+		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
 		return
 
 	activated = !activated

@@ -1166,6 +1166,8 @@
 		/obj/item/storage/firstaid/adv,
 		/obj/item/device/healthanalyzer,
 		/obj/item/roller,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/effect/essentials_set/upp_heavy

@@ -43,7 +43,10 @@
 	if((flags_item & NOBLUDGEON) || (MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && M.stat == DEAD && !user.get_target_lock(M.faction_group)))
 		return FALSE
 
-	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
+	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK) //Sent by target mob.
+		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, user, M) & COMPONENT_CANCEL_ATTACK) //Sent by source item.
 		return FALSE
 
 	if(ishuman(user))

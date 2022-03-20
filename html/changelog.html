@@ -61,6 +61,23 @@
 	</tr>
 </table>
 
+			<h2 class="date">20 March 2022</h2>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Surgical line is now in doctor and ERT medic starting loadouts, Wey-Med Plus, synth, and antag vendors, and surgical kits. Ditto for new Synth-Graft mentioned below.</li>
+				<li class="tweak">Surgical line/synth graft now fits in medical pouch, first-responder pouch, and medic rig belt. Think of it like a hypospray, storagewise - a touch too bulky to cram in the clown car lifesaver belt.</li>
+				<li class="tweak">Tweaked some ERT loadouts a bit. Mostly moving defibs, health scanners, and suture line from backpacks into lifesaver and medic rigs where possible.</li>
+				<li class="tweak">Fixovein/surgical line are now less effective when used to substitute for each other in surgery, since surgical line is no longer unobtainium. Cable coil and headbands were also pushed down a tier.</li>
+				<li class="tweak">Standard wound suturing is no longer a surgery and works like kitting, done on any intent but Harm and not requiring surgery mode. Patient pain can cause it to fail. Suturing surgical incisions closed is still a surgery.</li>
+				<li class="tweak">Fixovein/cable coil/headbands no longer work for suturing wounds; they can still be used for stitching amputation stumps & closing surgical incisions.</li>
+				<li class="tweak">Suture line split into two items - current one to heal brute, new Synthgraft to heal burns.</li>
+				<li class="tweak">Can only suture up to half of a wound's damage, the rest needs to be healed normally.</li>
+				<li class="tweak">Suturing time now scales based on damage healed: 5 damage = half the time.</li>
+				<li class="tweak">Kits and sutures partly stack, kit effectiveness varying to a minimum of 50% healing on a fully-sutured limb. Same final heal amount no matter the order of mixed suture and kits.</li>
+				<li class="bugfix">Can no longer bandage burns or salve IB, preventing kits being wasted on the wrong wounds. Ditto for ointment/gauze on already treated/sutured wounds: they won't do anything new, so they aren't used.</li>
+				<li class="tweak">Tweaked bandage/ointment/kit messaging a bit for a clearer distinction between \"you can't bandage because it's already bandaged\" vs \"you can't bandage because there's nothing wrong\".</li>
+			</ul>
+
 			<h2 class="date">16 March 2022</h2>
 			<h3 class="author">Geeves, Triiodine updated:</h3>
 			<ul class="changes bgimages16">
@@ -899,74 +916,6 @@
 				<li class="tweak">Russian weapons crate is now known as Hyperdine weapons crate</li>
 				<li class="tweak">Tweaked USMC and Hyperdine Weapon crate to include ammo for weapons</li>
 				<li class="bugfix">Fixed black market ammo crate so it now properly appears in arsr</li>
-			</ul>
-
-			<h2 class="date">16 January 2022</h2>
-			<h3 class="author">GoldenDarkness55 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Tail lash cast time reduced from 0.4 to 0.2</li>
-				<li class="bugfix">Oppressor Abduct tuned back to its intended cast time (0.4 to 0.8)</li>
-			</ul>
-			<h3 class="author">Mercadier updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added admin-spawnable pamphlets for standard languages as well as monkey, xenomorph and yautja for use in events.</li>
-				<li class="rscadd">Added admin-spawnable pamphlets for more skills for use in events.</li>
-				<li class="tweak">You can now only pick one extra language on the traits screen. No more pentalingual marines - most of them have enough trouble with English.</li>
-				<li class="maptweak">Fixed a misplaced piece of carpet in the ERT station.</li>
-			</ul>
-			<h3 class="author">Nanu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Survivors endurance level has been lowered to two.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Two new keybinds for cycling your targeted zone forward and backward through all of them.</li>
-			</ul>
-			<h3 class="author">Shad0vvs updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Removes stacked duplicate doors for the Almayer's Evidence Room.</li>
-			</ul>
-			<h3 class="author">Solidfury7 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced Fulton Recovery System and Medevac system cost</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Whiskey Outpost : Added a second line to the cargo bay.</li>
-				<li class="maptweak">Whiskey Outpost : Added bunk rooms for SLs and the reporter.</li>
-				<li class="maptweak">Whiskey Outpost : Added a synthetic gear room and CO gear room.</li>
-				<li class="maptweak">Whiskey Outpost : Remapped the chemistry room to make it easier to work in.</li>
-				<li class="maptweak">Whiskey Outpost : Changed all the surgical trays on the map to surgical tray wall lockers, added two cryotubes and a pillgun to triage, added two surgical roller beds to medbay.</li>
-				<li class="maptweak">Whiskey Outpost : Moved some spawn landmarks around and added some new ones to make spawning more random and varied.</li>
-				<li class="maptweak">Whiskey Outpost : CIC : added colour coding to overwatch consoles, added ID and squad control computers.</li>
-				<li class="tweak">toggling the paddles on a defib will no longer incur a 1 second click delay for shocking. The cooldowns for paddle toggling and shocking are now completely separate.</li>
-				<li class="bugfix">Fiorina Science Annex : patched a way to get into space (the three normal walls near the southeast entrance of medbay)</li>
-				<li class="maptweak">Sorokyne Strata : merged a lot of smaller, unimportant areas into larger ones. This should help reduce lag.</li>
-			</ul>
-			<h3 class="author">Tisx updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">LOOC is now a much more visible pink.</li>
-			</ul>
-
-			<h2 class="date">15 January 2022</h2>
-			<h3 class="author">ChainsawMullet updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changed the two incendiary buckshot spawns to incendiary slug spawns</li>
-				<li class="tweak">Changed the MK1 with toxin near LZ1 to a MK2 with toxin</li>
-				<li class="tweak">Changed 2 of the MK1s in armoury (with 3 mags each) to MK2s with 1 ext and 2 regular mags</li>
-			</ul>
-			<h3 class="author">Chiwi updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes padless MP armors not displaying the correct mob sprites.</li>
-				<li class="rscadd">Adds padless CMP and Warden armor to their respective vendors.</li>
-			</ul>
-			<h3 class="author">Shad0vvs updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changes the Annex Cryogenic labs indestructible wall choke into destructible walls.</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">added a phone to the SEA's office</li>
 			</ul>
 </div>
 </body>

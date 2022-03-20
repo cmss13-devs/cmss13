@@ -78,9 +78,9 @@
 /datum/chem_property/neutral/ketogenic/process(mob/living/M, var/potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH * potency, 0)
 	M.overeatduration = 0
-	if(M.reagents.remove_all_type(/datum/reagent/ethanol, 0.5 * potency * delta_time, 0, 1)) //Ketosis causes rapid metabolization of alcohols
-		M.confused = min(M.confused + 0.5 * potency * delta_time, 10 * potency)
-		M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
+	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
+		M.confused = min(M.confused + potency,10*potency)
+		M.drowsyness = min(M.drowsyness + potency,15*potency)
 
 /datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - 5 * potency * delta_time, 0)

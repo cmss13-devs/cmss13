@@ -163,8 +163,8 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR * delta_time)
-	if(prob(5 * delta_time))
+	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/musclestimulating/process_overdose(mob/living/M, var/potency = 1, delta_time)
@@ -890,7 +890,7 @@
 	if(potency >= POTENCY_MAX_TIER_1)
 		M.apply_damage(-M.getOxyLoss(), OXY)
 	else
-		M.apply_damage(-0.5 * potency * delta_time, OXY)
+		M.apply_damage(-1 * potency, OXY)
 
 
 /datum/chem_property/positive/oxygenating/process_overdose(mob/living/M, var/potency = 1)

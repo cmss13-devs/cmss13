@@ -218,7 +218,7 @@
 	else
 
 		if(shape == NVG_SHAPE_PATCHED)
-			to_chat(user, "Covered in scratches and have traces of a recent repair.")
+			to_chat(user, "They are covered in scratches and have traces of a recent repair.")
 
 		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
 		if(nvg_health_procent > 70)

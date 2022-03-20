@@ -144,7 +144,7 @@
 			to_chat(user, SPAN_WARNING("You need to repair \the [src] first."))
 			return
 		if(nvg_charge == nvg_maxcharge)
-			to_chat(user, SPAN_WARNING("\the [src] are already fully charged."))
+			to_chat(user, SPAN_WARNING("\The [src] are already fully charged."))
 			return
 
 		var/obj/item/cell/C = A

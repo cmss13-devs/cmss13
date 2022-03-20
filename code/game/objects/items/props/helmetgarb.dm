@@ -404,7 +404,7 @@
 			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, .proc/change_view) // will flip non-cosmetic nvgs back up when zoomed
 
 	else
-		to_chat(user, SPAN_NOTICE("You push the goggles back up onto your helmet."))
+		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
 
 		icon_state = inactive_icon_state
 		attached_item.update_icon()

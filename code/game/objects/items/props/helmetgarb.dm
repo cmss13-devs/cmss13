@@ -158,7 +158,7 @@
 				to_transfer = min(150, C.charge, (nvg_maxcharge - nvg_charge))
 				C.charge -= to_transfer
 				nvg_charge += to_transfer
-				to_chat(user, "You transfer some power between [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+				to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
 			else
 				to_chat(user, SPAN_WARNING("You were interrupted."))
 				break

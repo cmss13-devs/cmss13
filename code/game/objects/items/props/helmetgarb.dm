@@ -81,7 +81,7 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg
 	name = "\improper M2 night vision goggles"
-	desc = "USCM standard M2 Night vision goggles for military operations .Requires a battery in order to work"
+	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work"
 	icon_state = "nvg"
 	gender = PLURAL
 	garbage = FALSE

@@ -214,7 +214,7 @@
 	. = ..()
 
 	if(shape == NVG_SHAPE_BROKEN)
-		to_chat(user, "Appear to be broken. Maybe someone competent can fix them.")
+		to_chat(user, "They appear to be broken. Maybe someone competent can fix them.")
 	else
 
 		if(shape == NVG_SHAPE_PATCHED)

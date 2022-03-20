@@ -88,6 +88,7 @@
 	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil/white, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)

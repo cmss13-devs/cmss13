@@ -575,9 +575,11 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/medic_equipped/echo
 	name = "USCM Echo Hospital Corpsman (Equipped)"

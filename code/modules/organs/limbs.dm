@@ -218,6 +218,9 @@
 	if(status & LIMB_DESTROYED)
 		return 0
 
+	var/previous_brute = brute_dam
+	var/previous_burn = burn_dam
+
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
 		is_ff = TRUE
@@ -285,15 +288,12 @@
 				var/obj/limb/target = pick(possible_points)
 				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
 
-	// Check what the damage was before
-	var/old_brute_dam = brute_dam
-
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 
 	//If limb was damaged before and took enough damage, try to cut or tear it off
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
-	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
+	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
@@ -304,6 +304,7 @@
 				droplimb(0, 0, damage_source)
 				return
 
+	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()
 	update_icon()
 	start_processing()
@@ -350,6 +351,9 @@ This function completely restores a damaged organ to perfect condition.
 
 	// reset surgeries. Some duplication with general mob rejuvenate() but this also allows individual limbs to be rejuvenated, in theory.
 	reset_limb_surgeries()
+
+	// remove suture datum.
+	SEND_SIGNAL(src, COMSIG_LIMB_REMOVE_SUTURES)
 
 	// heal internal organs
 	for(var/datum/internal_organ/current_organ in internal_organs)
@@ -767,6 +771,9 @@ This function completely restores a damaged organ to perfect condition.
 			parent.update_damages()
 		update_damages()
 
+		//Remove suture datum.
+		SEND_SIGNAL(src, COMSIG_LIMB_REMOVE_SUTURES)
+
 		//we reset the surgery related variables unless this was done as part of a surgery.
 		if(!surgery_in_progress)
 			reset_limb_surgeries()
@@ -894,36 +901,73 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
 
-/obj/limb/proc/bandage()
-	var/rval = 0
+/**bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
+if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
+treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.**/
+/obj/limb/proc/bandage(treat_sutured)
 	remove_all_bleeding(TRUE)
-	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
-		rval |= !W.bandaged
-		W.bandaged = 1
-	owner.update_med_icon()
-	return rval
-
-/obj/limb/proc/is_bandaged()
-	var/not_bandaged = FALSE
-	for (var/datum/wound/W in wounds)
-		if (W.internal)
+	var/wounds_exist = FALSE
+	var/applied_bandage = FALSE
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type == BURN)
 			continue
-		not_bandaged |= !W.bandaged
-	return !not_bandaged
+		wounds_exist = TRUE
+		switch(W.bandaged & (WOUND_BANDAGED|WOUND_SUTURED))
+			if(WOUND_BANDAGED, (WOUND_BANDAGED|WOUND_SUTURED))
+				continue
+			if(WOUND_SUTURED)
+				if(!treat_sutured)
+					continue
+		applied_bandage = TRUE
+		W.bandaged |= WOUND_BANDAGED
+	owner.update_med_icon()
+	if(applied_bandage)
+		return WOUNDS_BANDAGED
+	else if(wounds_exist)
+		return WOUNDS_ALREADY_TREATED
 
-/obj/limb/proc/salve()
-	var/rval = 0
-	for(var/datum/wound/W in wounds)
-		rval |= !W.salved
-		W.salved = 1
-	return rval
+///Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.
+/obj/limb/proc/is_bandaged()
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type == BURN)
+			continue
+		if(W.bandaged)
+			. = TRUE
+		else
+			return FALSE
 
+/**salves burn wounds. Returns WOUNDS_BANDAGED if at least one wound was salved. Returns WOUNDS_ALREADY_TREATED if a relevant wound exists but none were treated.
+Skips wounds that are already salved.
+treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kits that heal damage directly.**/
+/obj/limb/proc/salve(treat_grafted)
+	var/burns_exist = FALSE
+	var/applied_salve = FALSE
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type != BURN)
+			continue
+		burns_exist = TRUE
+		switch(W.salved & (WOUND_BANDAGED|WOUND_SUTURED))
+			if(WOUND_BANDAGED, (WOUND_BANDAGED|WOUND_SUTURED))
+				continue
+			if(WOUND_SUTURED)
+				if(!treat_grafted)
+					continue
+		applied_salve = TRUE
+		W.salved |= WOUND_BANDAGED
+	if(applied_salve)
+		return WOUNDS_BANDAGED
+	else if(burns_exist)
+		return WOUNDS_ALREADY_TREATED
+
+///Checks for salveable wounds (type = BURN). Returns TRUE if all are salved, FALSE if not.
 /obj/limb/proc/is_salved()
-	var/not_salved = FALSE
-	for (var/datum/wound/W in wounds)
-		not_salved |= !W.salved
-	return !not_salved
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type != BURN)
+			continue
+		if(W.salved)
+			. = TRUE
+		else
+			return FALSE
 
 /obj/limb/proc/fracture(var/bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT))
@@ -1063,12 +1107,12 @@ This function completely restores a damaged organ to perfect condition.
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			var/possessive = "[user == target ? "your" : "[target]'s"]"
-			var/possessive_their = "[user == target ? "their" : "[target]'s"]"
+			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
+			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
 				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
 				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-				SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
+				SPAN_NOTICE("[user] finishes applying [S] to [possessive_their] [display_name]."))
 			status |= LIMB_SPLINTED
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE

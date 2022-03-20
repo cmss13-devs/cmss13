@@ -139,7 +139,8 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
-		/obj/item/roller
+		/obj/item/roller,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -163,12 +164,15 @@
 		mode = !mode
 		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
-/obj/item/storage/belt/medical/full/with_defib_and_analyzer
-
 /obj/item/storage/belt/medical/full/with_defib_and_analyzer/fill_preset_inventory()
 	. = ..()
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/belt/medical/full/with_suture_and_graft/fill_preset_inventory()
+	. = ..()
+	new	/obj/item/tool/surgery/surgical_line(src)
+	new	/obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"

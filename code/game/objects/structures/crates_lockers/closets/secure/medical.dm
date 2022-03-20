@@ -170,4 +170,3 @@
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)
 	new /obj/item/roller/surgical(src)
-	new	/obj/item/tool/surgery/surgical_line(src)

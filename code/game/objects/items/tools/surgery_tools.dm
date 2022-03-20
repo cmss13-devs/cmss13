@@ -142,7 +142,7 @@
  */
 
 /obj/item/tool/surgery/scalpel/pict_system
-	name = "PICT system"
+	name = "\improper PICT system"
 	desc = "The Precision Incision and Cauterization Tool uses a high-frequency vibrating blade, laser cautery, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying pricetag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	w_class = SIZE_SMALL
@@ -208,6 +208,8 @@
 /obj/item/tool/surgery/FixOVein
 	name = "FixOVein"
 	icon_state = "fixovein"
+	desc = "Used for fixing torn blood vessels. Could also be used to reconnect other tissues, in a pinch."
+
 	force = 0
 	throwforce = 1.0
 
@@ -219,17 +221,40 @@
 	icon_state = "predator_fixovein"
 
 /*
- * Surgical line.
- * Usual substitutes: fixovein, cable coil, headbands.
+ * Surgical line. Used for suturing wounds, and for some surgeries.
+ * Surgical substitutes: fixovein, cable coil.
  */
 
 /obj/item/tool/surgery/surgical_line
-	name = "surgical line"
-	desc = "A roll of military-grade surgical line, able to seamlessly seal and tend any wound. Also works as a robust fishing line for maritime deployments."
+	name = "\proper surgical line"
+	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
+
+/obj/item/tool/surgery/surgical_line/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/suturing, TRUE, FALSE, 2.5, "suture", "suturing", "being stabbed with needles", "wounds")
+
+/*
+ * Synth-graft.
+ * No substitutes. Not, strictly speaking, a surgical tool at all, but here for consistency with surgical line.
+ */
+
+/obj/item/tool/surgery/synthgraft
+	name = "Synth-Graft®"
+	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the colour is \
+		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
+	icon_state = "line" //Placeholder.
+	color = "yellow" //Placeholder, to distinguish from surgical line.
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+
+/obj/item/tool/surgery/synthgraft/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/suturing, FALSE, TRUE, 2.5, "graft", "grafting", "being burnt away all over again", "burns")
 
 /*
  * Bonesetter.
@@ -279,7 +304,7 @@ t. optimisticdude
 //XENO AUTOPSY TOOL
 
 /obj/item/tool/surgery/WYautopsy
-	name = "Weyland Brand Automatic Autopsy System(TM)"
+	name = "\improper Weyland Brand Automatic Autopsy System(TM)"
 	desc = "Putting the FUN back in Autopsy.  This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"

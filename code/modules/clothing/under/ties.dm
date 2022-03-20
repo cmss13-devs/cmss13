@@ -606,6 +606,7 @@
 	new /obj/item/tool/surgery/bonesetter(src)
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
+	new /obj/item/tool/surgery/surgical_line(src)
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"

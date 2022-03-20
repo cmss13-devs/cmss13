@@ -229,14 +229,13 @@ There are several things that need to be remembered:
 	// blend the individual damage states with our icons
 	for(var/obj/limb/L in limbs)
 		for(var/datum/wound/W in L.wounds)
-			if(!W.bandaged)
-				continue
-			if(!W.bandaged_icon)
-				var/bandaged_icon_name = "gauze_[L.icon_name]"
-				if(L.bandage_icon_amount > 1)
-					bandaged_icon_name += "_[rand(1, L.bandage_icon_amount)]"
-				W.bandaged_icon = new /icon('icons/mob/humans/onmob/med_human.dmi', "[bandaged_icon_name]")
-			standing_image.overlays += W.bandaged_icon
+			if(W.bandaged & WOUND_BANDAGED)
+				if(!W.bandaged_icon)
+					var/bandaged_icon_name = "gauze_[L.icon_name]"
+					if(L.bandage_icon_amount > 1)
+						bandaged_icon_name += "_[rand(1, L.bandage_icon_amount)]"
+					W.bandaged_icon = new /icon('icons/mob/humans/onmob/med_human.dmi', "[bandaged_icon_name]")
+				standing_image.overlays += W.bandaged_icon
 		if(L.status & LIMB_SPLINTED)
 			if(!L.splinted_icon)
 				var/splinted_icon_name = "splint_[L.icon_name]"

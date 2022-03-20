@@ -74,7 +74,7 @@
 
 /datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start tightening the [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his body."),
+		SPAN_NOTICE("You start tightening [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his body."),
 		SPAN_NOTICE("[user] starts to tighten your new prosthetic [parse_zone(target_zone)]'s connection to your body."),
 		SPAN_NOTICE("[user] starts to tighten [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his body."))
 

@@ -222,7 +222,7 @@
 
 		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
 		if(nvg_health_procent > 70)
-			to_chat(user, "Appear to be in good shape.")
+			to_chat(user, "They appear to be in good shape.")
 		else if(nvg_health_procent > 50)
 			to_chat(user, "They are visibly damaged.")
 		else if(nvg_health_procent > 30)

@@ -141,9 +141,13 @@
 	src.is_shrapnel = is_shrapnel
 	if(!loc)
 		if (!is_shrapnel)
-			forceMove(get_turf(F))
+			var/move_turf = get_turf(F)
+			if(move_turf)
+				forceMove(move_turf)
 		else
-			forceMove(get_turf(S))
+			var/move_turf = get_turf(S)
+			if(move_turf)
+				forceMove(move_turf)
 	starting = get_turf(src)
 	if(starting != loc)
 		forceMove(starting) //Put us on the turf, if we're not.

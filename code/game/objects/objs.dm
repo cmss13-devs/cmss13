@@ -298,7 +298,7 @@
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE
 		mob_icon = sprite_sheets[bodytype]
-	else if(item_icons && item_icons[slot])
+	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else
 		mob_icon = default_onmob_icons[slot]
@@ -308,13 +308,13 @@
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
 /obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
-	if(!sprite_sheets || !sprite_sheets[bodytype])
-		return 0
+	if(!LAZYISIN(sprite_sheets, bodytype))
+		return FALSE
 	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
-		return 0
+		return FALSE
 
 	if(icon_state in icon_states(sprite_sheets[bodytype]))
-		return 1
+		return TRUE
 
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)
 

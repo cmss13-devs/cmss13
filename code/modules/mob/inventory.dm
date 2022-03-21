@@ -147,7 +147,7 @@
 			I.forceMove(newloc)
 	I.unequipped(src, slot)
 	I.dropped(src)
-	if(I.unequip_sounds.len)
+	if(LAZYLEN(I.unequip_sounds))
 		playsound_client(client, pick(I.unequip_sounds), null, ITEM_EQUIP_VOLUME)
 
 	return TRUE

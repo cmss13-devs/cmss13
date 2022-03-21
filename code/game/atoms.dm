@@ -588,3 +588,16 @@ Parameters are passed from New.
 	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
 	pixel_x = initialpixelx
 	pixel_y = initialpixely
+
+/**
+ * Show a message to all mobs in sight of this atom
+ * message is output to anyone who can see, e.g. "The [src] does something!"
+ * blind_message (optional) is what blind people will hear e.g. "You hear something!"
+ * blacklist allows to specify mobs not to deliver the message to
+ */
+/atom/proc/visible_message(message, blind_message, max_distance = 7, message_type = CHAT_TYPE_OTHER, list/mob/blacklist)
+	var/list/mob/targets = viewers(max_distance, src)
+	if(blacklist)
+		targets -= blacklist
+	for(var/mob/M as anything in targets)
+		M.show_message(message, 1, blind_message, 2, message_type)

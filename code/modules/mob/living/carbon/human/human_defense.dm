@@ -190,9 +190,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 
 	if(I.attack_verb && I.attack_verb.len)
-		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 	else
-		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 

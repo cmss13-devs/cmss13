@@ -539,6 +539,35 @@
 		return
 	user.assigned_squad.ui_interact(user)
 
+/obj/screen/mark_locator
+	name = "mark locator"
+	icon = 'icons/mob/hud/alien_standard.dmi'
+	icon_state = "marker"
+
+/obj/screen/mark_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
+	if(!istype(user))
+		return FALSE
+	if(mods["shift"] && user.tracked_marker)
+		if(user.observed_xeno == user.tracked_marker)
+			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
+		else
+			to_chat(user, SPAN_XENONOTICE("You psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
+		return
+	if(mods["alt"] && user.tracked_marker)
+		user.stop_tracking_resin_mark()
+		return
+	if(!user.hive)
+		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		return FALSE
+	if(!user.hive.living_xeno_queen)
+		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+		return FALSE
+	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+		return FALSE
+	user.hive.mark_ui.update_all_data()
+	user.hive.mark_ui.open_mark_menu(user)
+
 /obj/screen/queen_locator
 	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'

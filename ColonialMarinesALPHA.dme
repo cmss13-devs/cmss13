@@ -1585,6 +1585,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\hive_status.dm"
 #include "code\modules\mob\living\carbon\xenomorph\life.dm"
 #include "code\modules\mob\living\carbon\xenomorph\login.dm"
+#include "code\modules\mob\living\carbon\xenomorph\mark_menu.dm"
 #include "code\modules\mob\living\carbon\xenomorph\Powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\resin_constructions.dm"
 #include "code\modules\mob\living\carbon\xenomorph\say.dm"

@@ -245,15 +245,19 @@
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
 	var/datum/hive_status_ui/hive_ui
+	var/datum/mark_menu_ui/mark_ui
 	var/datum/hive_faction_ui/faction_ui
 
 	var/list/tunnels = list()
 
 	var/list/allies = list()
 
+	var/list/resin_marks = list()
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
+	mark_ui = new(src)
 	faction_ui = new(src)
 	internal_faction = name
 
@@ -382,6 +386,8 @@
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
+	give_action(xeno, /datum/action/xeno_action/activable/info_marker)
+
 	hive_ui.update_xeno_keys()
 	return TRUE
 
@@ -406,6 +412,12 @@
 
 	if(!light_mode)
 		hive_ui.update_xeno_keys()
+
+	for(var/obj/effect/alien/resin/marker/leaderless_mark in resin_marks) //no resin_mark limit abuse
+		if(leaderless_mark.createdby == xeno.nicknumber)
+			qdel(leaderless_mark)
+
+	remove_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
 	return TRUE
 
@@ -936,3 +948,69 @@
 			return TRUE
 
 	return ..()
+
+//Xeno Resin Mark Shit, the very best place for it too :0)
+/datum/xeno_mark_define
+	var/name = "xeno_declare"
+	var/icon_state = "empty"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+
+/datum/xeno_mark_define/attack
+	name = "Attack"
+	desc = "Attack the enemy here!"
+	icon_state = "attack"
+
+/datum/xeno_mark_define/defend
+	name = "Defend"
+	desc = "Defend the hive here!"
+	icon_state = "defend"
+
+/datum/xeno_mark_define/flank
+	name = "Flank"
+	desc = "Flank the enemy here!"
+	icon_state = "flank"
+
+/datum/xeno_mark_define/hold
+	name = "Hold"
+	desc = "Hold this area!"
+	icon_state = "hold"
+
+/datum/xeno_mark_define/nest
+	name = "Nest"
+	desc = "Nest enemies here!"
+	icon_state = "nest"
+
+/datum/xeno_mark_define/rally
+	name = "Rally"
+	desc = "Group up here!"
+	icon_state = "rally"
+
+/datum/xeno_mark_define/help
+	name = "Help"
+	desc = "Need help here!"
+	icon_state = "help"
+
+/datum/xeno_mark_define/missing
+	name = "Missing Enemy"
+	desc = "The enemy is missing!"
+	icon_state = "enemy_missing"
+
+/datum/xeno_mark_define/danger
+	name = "Danger Warning"
+	desc = "Caution, danger here!"
+	icon_state = "danger"
+
+/datum/xeno_mark_define/fire
+	name = "Fire Warning"
+	desc = "Caution, fire here!"
+	icon_state = "warn_fire"
+
+/datum/xeno_mark_define/explosive
+	name = "Explosives Warning"
+	desc = "Caution, explosives here!"
+	icon_state = "warn_explosive"
+
+/datum/xeno_mark_define/structure
+	name = "Structures Warning"
+	desc = "Caution, structures here!"
+	icon_state = "warn_structure"

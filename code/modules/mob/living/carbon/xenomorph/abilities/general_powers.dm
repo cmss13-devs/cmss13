@@ -206,6 +206,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
@@ -220,6 +221,57 @@
 				apply_cooldown_override(1)
 			return FALSE
 	return TRUE
+
+// leader Marker
+
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+	if(!..())
+		return FALSE
+
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state())
+		return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	var/turf/target_turf = get_turf(A)
+
+	if(target_turf.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return
+	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("You have no queen, the psychic link is gone!"))
+		return
+
+	var/tally = 0
+
+	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
+		if(MRK.createdby == X.nicknumber)
+			tally++
+	if(tally >= max_markers)
+		to_chat(X, SPAN_XENOWARNING("You have reached the maximum number of resin marks."))
+		var/list/promptlist = list("Yes", "No")
+		var/obj/effect/alien/resin/marker/Goober = null
+		var/promptuser = null
+		for(var/i=1, i<=length(X.hive.resin_marks))
+			Goober = X.hive.resin_marks[i]
+			if(Goober.createdby == X.nicknumber)
+				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist)
+				break
+			i++
+		if(promptuser == "No")
+			return
+		else if(promptuser == "Yes")
+			qdel(Goober)
+			if(X.make_marker(target_turf))
+				apply_cooldown()
+				return TRUE
+	else if(X.make_marker(target_turf))
+		apply_cooldown()
+		return TRUE
+
+
 
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
@@ -471,6 +523,8 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return FALSE
+
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)

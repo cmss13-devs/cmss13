@@ -92,6 +92,27 @@
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
+//resin marker
+/datum/action/xeno_action/activable/info_marker
+	name = "Mark Resin"
+	action_icon_state = "mark"
+	ability_name = "mark resin"
+	macro_path = /datum/action/xeno_action/verb/verb_mark_resin
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	xeno_cooldown = 10 SECONDS
+	var/max_markers = 3
+
+/datum/action/xeno_action/activable/info_marker/update_button_icon(var/datum/xeno_mark_define/x)
+	. = ..()
+	if(!x)
+		return
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', "mark_[x.icon_state]")
+
+/datum/action/xeno_action/activable/info_marker/queen
+	max_markers = 5
+
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
 	name = "Corrosive Acid (100)"

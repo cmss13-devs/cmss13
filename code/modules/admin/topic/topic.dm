@@ -1174,6 +1174,13 @@
 		message_staff("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
+	else if(href_list["adminalert"])
+		if(!check_rights(R_MOD))
+			return
+
+		var/mob/M = locate(href_list["adminalert"])
+		usr.client.cmd_admin_alert_message(M)
+
 	else if(href_list["CentcommReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 

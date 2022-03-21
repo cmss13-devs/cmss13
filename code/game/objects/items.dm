@@ -526,6 +526,8 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_J_STORE)
 				if(H.s_store)
 					return FALSE
+				if(flags_equip_slot & SLOT_SUIT_STORE)
+					return TRUE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))
@@ -534,7 +536,7 @@ cases. Override_icon_state should be a list.*/
 					if(!disable_warning)
 						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
 					return FALSE
-				if(istype(src, /obj/item/tool/pen) ||(H.wear_suit && is_type_in_list(src, H.wear_suit.allowed)))
+				if(H.wear_suit && is_type_in_list(src, H.wear_suit.allowed))
 					return TRUE
 				return FALSE
 			if(WEAR_HANDCUFFS)

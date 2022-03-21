@@ -162,6 +162,7 @@
 #define SLOT_NO_STORE		(1<<12)	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
 #define SLOT_LEGS 			(1<<13)
 #define SLOT_ACCESSORY		(1<<14)
+#define SLOT_SUIT_STORE		(1<<15)	//this allows items to be stored in the suit slot regardless of suit
 //=================================================
 
 //slots

@@ -107,7 +107,7 @@
 		return FALSE
 
 	if(I == wear_suit)
-		if(s_store)
+		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)
 		wear_suit = null
 		if(I.flags_inv_hide & HIDESHOES)

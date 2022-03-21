@@ -106,9 +106,9 @@
 	//suit/armour
 	if(wear_suit)
 		msg += "[t_He] [t_is] wearing [wear_suit.get_examine_line()].\n"
-		//suit/armour storage
-		if(s_store && !skipsuitstorage)
-			msg += "[t_He] [t_is] carrying [s_store.get_examine_line()] on [t_his] [wear_suit.name].\n"
+	//suit/armour storage
+	if(s_store && !skipsuitstorage)
+		msg += "[t_He] [t_is] carrying [s_store.get_examine_line()] [wear_suit ? "on [t_his] [wear_suit.name]" : "around [t_his] back"].\n"
 
 	//back
 	if(back)

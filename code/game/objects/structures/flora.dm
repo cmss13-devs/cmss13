@@ -38,6 +38,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	var/cut_hits = 3
 	var/fire_flag = FLORA_NO_BURN
 	var/center = TRUE //Determine if we want less or more ash when burned
+	var/burning = FALSE
 
 /obj/structure/flora/Initialize()
 	. = ..()
@@ -178,26 +179,29 @@ ICE GRASS
 	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
 
 /obj/structure/flora/fire_act()
-	if(!QDELETED(src))
-		if(fire_flag != FLORA_NO_BURN)
-			if(fire_flag != FLORA_BURN_NO_SPREAD)
-				spawn(rand(75,150))
-					for(var/D in cardinal) //Spread fire
-						var/turf/T = get_step(src.loc, D)
-						if(T && T.contents)
-							for(var/obj/structure/flora/grass/tallgrass/G in T.contents)
-								if(istype(G,/obj/structure/flora/grass/tallgrass))
-									var/datum/reagent/napalm/ut/R = new()
-									new /obj/flamer_fire(T, create_cause_data("wildfire"), R)
-									if(fire_flag ==FLORA_BURN_SPREAD_ONCE)
-										G.fire_flag = FLORA_BURN_NO_SPREAD
-									G.fire_act()
+	if(QDELETED(src) || (fire_flag & FLORA_NO_BURN) || burning)
+		return
+	burning = TRUE
+	var/spread_time = rand(75, 150)
+	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
+		addtimer(CALLBACK(src, .proc/spread_fire), spread_time)
+	addtimer(CALLBACK(src, .proc/burn_up), spread_time + 5 SECONDS)
 
-			spawn(rand(125,225))
-				new /obj/effect/decal/cleanable/dirt(src.loc)
-				if(center)
-					new /obj/effect/decal/cleanable/dirt(src.loc) //Produces more ash at the center
-				qdel(src)
+/obj/structure/flora/proc/spread_fire()
+	for(var/D in cardinal) //Spread fire
+		var/turf/T = get_step(src.loc, D)
+		if(T)
+			for(var/obj/structure/flora/F in T)
+				if(fire_flag & FLORA_BURN_SPREAD_ONCE)
+					F.fire_flag |= FLORA_BURN_NO_SPREAD
+				if(!(locate(/obj/flamer_fire) in T))
+					new /obj/flamer_fire(T, create_cause_data("wildfire"))
+
+/obj/structure/flora/proc/burn_up()
+	new /obj/effect/decal/cleanable/dirt(loc)
+	if(center)
+		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
+	qdel(src)
 
 /obj/structure/flora/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)

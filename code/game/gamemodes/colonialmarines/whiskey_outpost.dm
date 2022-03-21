@@ -74,7 +74,9 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
-	votable = FALSE // not fun
+
+	votable = TRUE
+	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return ROLES_WO

@@ -154,3 +154,7 @@
 /obj/item/xeno_egg/alpha
 	color = "#ff4040"
 	hivenumber = XENO_HIVE_ALPHA
+
+/obj/item/xeno_egg/forsaken
+	color = "#cc8ec4"
+	hivenumber = XENO_HIVE_FORSAKEN

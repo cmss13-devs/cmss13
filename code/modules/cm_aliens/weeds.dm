@@ -486,6 +486,9 @@
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL
 
+/obj/effect/alien/weeds/node/forsaken
+	hivenumber = XENO_HIVE_FORSAKEN
+
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE
 	weed_strength = WEED_LEVEL_HIVE

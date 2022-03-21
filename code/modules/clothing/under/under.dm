@@ -177,16 +177,17 @@
 	set_sensors(usr)
 
 /obj/item/clothing/under/proc/update_rollsuit_status()
-	var/mob/living/carbon/human/H
-	if(ishuman(loc))
-		H = loc
+	var/human_bodytype
+	if(sprite_sheets && ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		human_bodytype = H.species.get_bodytype(H)
 
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[WEAR_BODY])
+	else if(human_bodytype && LAZYISIN(sprite_sheets, human_bodytype))
+		under_icon = sprite_sheets[human_bodytype]
+	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
 		under_icon = default_onmob_icons[WEAR_BODY]
@@ -218,16 +219,17 @@
 		to_chat(usr, SPAN_WARNING("You cannot roll your sleeves!"))
 
 /obj/item/clothing/under/proc/update_removejacket_status()
-	var/mob/living/carbon/human/H
-	if(ishuman(loc))
-		H = loc
+	var/human_bodytype
+	if(sprite_sheets && ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		human_bodytype = H.species.get_bodytype(H)
 
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[WEAR_BODY])
+	else if(human_bodytype && LAZYISIN(sprite_sheets, human_bodytype))
+		under_icon = sprite_sheets[human_bodytype]
+	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
 		under_icon = default_onmob_icons[WEAR_BODY]

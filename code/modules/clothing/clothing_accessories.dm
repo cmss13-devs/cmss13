@@ -26,8 +26,9 @@
 	var/bodytype = "Default"
 	if(ishuman(user_mob))
 		var/mob/living/carbon/human/user_human = user_mob
-		if(user_human.species.get_bodytype(user_human) in sprite_sheets)
-			bodytype = user_human.species.get_bodytype(user_human)
+		var/user_bodytype = user_human.species.get_bodytype(user_human)
+		if(LAZYISIN(sprite_sheets, user_bodytype))
+			bodytype = user_bodytype
 
 		var/tmp_icon_state = overlay_state? overlay_state : icon_state
 
@@ -37,8 +38,9 @@
 				return
 
 		var/use_sprite_sheet = accessory_icons[slot]
-		if(sprite_sheets[bodytype])
-			use_sprite_sheet = sprite_sheets[bodytype]
+		var/sprite_sheet_bodytype = LAZYACCESS(sprite_sheets, bodytype)
+		if(sprite_sheet_bodytype)
+			use_sprite_sheet = sprite_sheet_bodytype
 
 		if(icon_override && ("[tmp_icon_state]_mob" in icon_states(icon_override)))
 			return overlay_image(icon_override, "[tmp_icon_state]_mob", color, RESET_COLOR)

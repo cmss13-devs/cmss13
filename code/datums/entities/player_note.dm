@@ -7,6 +7,8 @@
 	var/ban_time
 	var/is_confidential = FALSE
 	var/admin_rank
+	///The category the note is. Admin/Merit/Commander/Synthetic/Yautja
+	var/note_category = NOTE_ADMIN
 
 	var/datum/entity/player/player
 	var/datum/entity/player/admin
@@ -23,7 +25,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 			"is_ban"=DB_FIELDTYPE_INT,
 			"ban_time"=DB_FIELDTYPE_BIGINT,
 			"is_confidential"=DB_FIELDTYPE_INT,
-			"admin_rank"=DB_FIELDTYPE_STRING_MEDIUM
+			"admin_rank"=DB_FIELDTYPE_STRING_MEDIUM,
+			"note_category" =DB_FIELDTYPE_INT
 		)
 
 /datum/entity_meta/player_note/on_read(var/datum/entity/player_note/note)
@@ -63,6 +66,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 	var/ban_time
 	var/is_confidential
 	var/admin_rank
+	var/note_category
 
 /datum/entity_view_meta/note_view
 	root_record_type = /datum/entity/player_note
@@ -76,5 +80,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 		"date",
 		"ban_time",
 		"is_confidential",
-		"admin_rank"
+		"admin_rank",
+		"note_category"
 	)

@@ -102,7 +102,7 @@ obj/structure/bed/Destroy()
 	if(buckled_bodybag)
 		return
 	..()
-	if(M.loc == src.loc && buckling_sound)
+	if(M.loc == src.loc && buckling_sound && M.buckled)
 		playsound(src, buckling_sound, 20)
 
 /obj/structure/bed/Move(NewLoc, direct)

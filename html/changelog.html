@@ -62,6 +62,11 @@
 </table>
 
 			<h2 class="date">21 March 2022</h2>
+			<h3 class="author">Chiwi updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">RO, POs and DCCs can now roll their sleeves.</li>
+				<li class="tweak">CO Service Uniform's shape now matches other service uniforms.</li>
+			</ul>
 			<h3 class="author">Frans_Feiffer updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Brigadier Generals now spawn with a mateba case in their satchel.</li>
@@ -71,11 +76,42 @@
 			<h3 class="author">Geeves updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Added a new admin staff tool, 'Create Xenos', which lets them spawn in xenos. This works much like 'Create Humans'.</li>
+				<li class="rscadd">Folding barricades and also a pen can now be worn in the suit slot, regardless of whether you're wearing a suit or not.</li>
+				<li class="experiment">Converted a bunch of hardcoded lists on items and turfs into generate-on-demand lists, which clear themselves after being used. Generally, this should mean the server will have more memory for shenanigans. Bugs to look out for include, cellular automata from explosions not functioning properly, clothes appearing weird on monkeys, and equip and unequip sounds not playing for whatever reason.</li>
+				<li class="bugfix">Refactored how flora burns, it should no longer turn into a blazing hellfire.</li>
+				<li class="rscadd">Whiskey Outpost is now a gamemode vote rather than a map vote. It now shows up once every 25 rounds instead of once every 5 rounds. There is no longer a minimum player limit.</li>
+				<li class="rscadd">The Force Predator Round admin ability is now Toggle Predator Round. Same functionality, but it can disable the Hunt, now.</li>
+				<li class="bugfix">Whiteout Terminators can now fire their smartguns again.</li>
+			</ul>
+			<h3 class="author">Nanu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Predators, Synths and anyone who has the trait TRAIT_SUPER_STRONG no longer get stunned by crushing doors.</li>
+			</ul>
+			<h3 class="author">Shad0vvs updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Thralls can now set their own mask visors.</li>
+				<li class="tweak">Minor grammar fix on the error message when interacting with Yajuta masks.</li>
+				<li class="rscadd">Adds a new admin verb on the player panel that allows admins to place a default or custom onscreen alert to get a players attention.</li>
+				<li class="tweak">Changes the briefcase and rolling pin to be more in line with a bottle head hit if you have no helmet rather than a stun.</li>
 			</ul>
 			<h3 class="author">Stan_Albatross updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">synth gear rack now works again.</li>
 				<li class="tweak">synth-graft no longer has an R mark in its name. This doesn't display properly in the status bar.</li>
+				<li class="rscadd">QOL: added radial menus for gun stripping.</li>
+				<li class="tweak">the NSG can now attach the underbarrel flamer that it starts with.</li>
+				<li class="rscadd">added fire, toxin, o2, and radiation medkits to medic, synth, and HvH vendors. They are 6 points each.</li>
+				<li class="tweak">reduced the price of the base medkit in said vendors from 6 to 5 points.</li>
+			</ul>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Staff can now fire customised OBs with event verbs.</li>
+				<li class="rscadd">Using the same verb, staff can spawn their custom OBs as warheads without firing.</li>
+				<li class="tweak">Incendiary OBs now have a set-able dynamic fire colour variable (overrides fire_type).</li>
+				<li class="rscadd">You can now view your own notes in the OOC tab.</li>
+				<li class="rscadd">Whitelist Councils can now update player records ingame.</li>
+				<li class="rscadd">Added flags for legacy council members. These don't have access to whitelist notes.</li>
+				<li class="rscadd">Added a whitelist file tag for SEA.</li>
 			</ul>
 			<h3 class="author">naut updated:</h3>
 			<ul class="changes bgimages16">

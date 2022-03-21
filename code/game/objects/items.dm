@@ -90,10 +90,15 @@
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 	var/global/list/blood_overlay_cache = list() //taken from blood.dm
 
+	var/list/inherent_traits
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
 	GLOB.item_list += src
+	if(inherent_traits)
+		for(var/trait in inherent_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_INHERENT)
 	for(var/path in actions_types)
 		new path(src)
 	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much

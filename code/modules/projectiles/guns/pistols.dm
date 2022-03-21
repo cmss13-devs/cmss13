@@ -217,9 +217,10 @@
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."
 	icon_state = "pk9"
 	item_state = "pk9"
+	inherent_traits = list(TRAIT_GUN_SILENCED)
 	fire_sound = 'sound/weapons/gun_c99.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/c99
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_INTERNAL_SILENCED
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -231,14 +232,6 @@
 /obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
-/obj/item/weapon/gun/pistol/c99/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/suppressor/S = new(src)
-	S.hidden = TRUE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
 /obj/item/weapon/gun/pistol/c99/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
@@ -247,8 +240,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6 //5
-	//damage mult reduced by 1 tier due to suppressor
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
 /obj/item/weapon/gun/pistol/c99/upp
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. This version has been refitted for military usage by the UPP."
@@ -265,7 +257,7 @@
 
 
 /obj/item/weapon/gun/pistol/c99/upp/tranq/handle_starting_attachment()
-	..() //handles the suppressor
+	..()
 	var/obj/item/attachable/lasersight/LS = new(src)
 	LS.flags_attach_features &= ~ATTACH_REMOVABLE
 	LS.Attach(src)

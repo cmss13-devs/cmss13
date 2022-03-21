@@ -124,6 +124,7 @@
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/stock/nsg23,
+						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/scope/mini/nsg23)
 

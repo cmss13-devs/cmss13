@@ -1575,6 +1575,12 @@
 
 		create_humans_list(href_list)
 
+	else if(href_list["create_xenos_list"])
+		if(!check_rights(R_SPAWN))
+			return
+
+		create_xenos_list(href_list)
+
 	else if(href_list["events"])
 		if(!check_rights(R_FUN))
 			return

@@ -740,6 +740,8 @@ var/global/players_preassigned = 0
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva
+		if(XENO_CASTE_PREDALIEN_LARVA)
+			M = /mob/living/carbon/Xenomorph/Larva/predalien
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)

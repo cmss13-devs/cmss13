@@ -697,7 +697,23 @@
 	set category = "Admin.Events"
 	if(admin_holder)
 		admin_holder.create_humans(usr)
-	return
+
+/datum/admins/var/create_xenos_html = null
+/datum/admins/proc/create_xenos(var/mob/user)
+	if(!create_xenos_html)
+		var/hive_types = jointext(ALL_XENO_HIVES, ";")
+		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
+		create_xenos_html = file2text('html/create_xenos.html')
+		create_xenos_html = replacetext(create_xenos_html, "null /* hive paths */", "\"[hive_types]\"")
+		create_xenos_html = replacetext(create_xenos_html, "null /* xeno paths */", "\"[xeno_types]\"")
+
+	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", "size=450x630")
+
+/client/proc/create_xenos()
+	set name = "Create Xenos"
+	set category = "Admin.Events"
+	if(admin_holder)
+		admin_holder.create_xenos(usr)
 
 /client/proc/clear_mutineers()
 	set name = "Clear All Mutineers"

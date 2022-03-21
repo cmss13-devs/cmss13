@@ -127,6 +127,50 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
+	//NOTES OVERHAUL
+	if(href_list["add_merit_info"])
+		var/key = href_list["add_merit_info"]
+		var/add = input("Add Merit Note") as null|message
+		if(!add)
+			return
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, FALSE, NOTE_MERIT)
+
+	if(href_list["add_wl_info_1"])
+		var/key = href_list["add_wl_info_1"]
+		var/add = input("Add Commander Note") as null|message
+		if(!add)
+			return
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, FALSE, NOTE_COMMANDER)
+
+	if(href_list["add_wl_info_2"])
+		var/key = href_list["add_wl_info_2"]
+		var/add = input("Add Synthetic Note") as null|message
+		if(!add)
+			return
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, FALSE, NOTE_SYNTHETIC)
+
+	if(href_list["add_wl_info_3"])
+		var/key = href_list["add_wl_info_3"]
+		var/add = input("Add Yautja Note") as null|message
+		if(!add)
+			return
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, FALSE, NOTE_YAUTJA)
+
+	if(href_list["remove_wl_info"])
+		var/key = href_list["remove_wl_info"]
+		var/index = text2num(href_list["remove_index"])
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.remove_note(index)
+
 	//Logs all hrefs
 	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"

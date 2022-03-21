@@ -1129,6 +1129,7 @@
 #include "code\game\verbs\atom_verbs.dm"
 #include "code\game\verbs\ooc.dm"
 #include "code\game\verbs\preferences.dm"
+#include "code\game\verbs\records.dm"
 #include "code\game\verbs\who.dm"
 #include "code\js\byjax.dm"
 #include "code\js\menus.dm"

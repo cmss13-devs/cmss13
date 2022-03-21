@@ -1658,9 +1658,9 @@
 				player_notes_show(ckey)
 		return
 
-	if(href_list["player_notes_copy"])
-		var/key = href_list["player_notes_copy"]
-		player_notes_copy(key)
+	if(href_list["player_notes_all"])
+		var/key = href_list["player_notes_all"]
+		player_notes_all(key)
 		return
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.

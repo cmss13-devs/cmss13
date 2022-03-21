@@ -431,6 +431,39 @@ updatehealth()
 		else
 			QL.icon_state = "trackondirect"
 
+/mob/living/carbon/Xenomorph/proc/mark_locator()
+	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
+		return
+
+	var/tracked_marker_z_level = tracked_marker.loc.z 		 //I was getting errors if the mark was deleted while this was operating,
+	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
+	var/area/A = get_area(loc)
+	var/area/MA = get_area(tracked_marker_turf)
+	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	ML.desc = client
+
+	ML.overlays.Cut()
+
+	if(tracked_marker_z_level != loc.z) //different z levels
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")
+		return
+	else if(tracked_marker_turf == get_turf(src)) //right on top of the marker
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "all_direction")
+		return
+	else if(A.fake_zlevel == MA.fake_zlevel) //normal tracking
+		ML.setDir(get_dir(src, tracked_marker_turf))
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
+	else //same z level, different fake z levels (decks of almayer)
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "no_direction")
+
 /mob/living/carbon/Xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth

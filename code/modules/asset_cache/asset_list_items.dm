@@ -213,3 +213,38 @@
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
 	return ..()
+
+
+/datum/asset/spritesheet/choose_mark
+	name = "choosemark"
+
+/datum/asset/spritesheet/choose_mark/register()
+	for (var/k in GLOB.resin_mark_meanings)
+		var/datum/xeno_mark_define/RC = k
+
+		var/icon_file = 'icons/mob/hud/xeno_markers.dmi'
+		var/icon_state = initial(RC.icon_state)
+		var/icon_name = icon_state
+
+		if (sprites[icon_name])
+			continue
+
+		var/icon_states_list = icon_states(icon_file)
+		if(!(icon_state in icon_states_list))
+			var/icon_states_string
+			for (var/an_icon_state in icon_states_list)
+				if (!icon_states_string)
+					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
+				else
+					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
+			stack_trace("[RC] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
+			icon_file = 'icons/turf/floors/floors.dmi'
+			icon_state = ""
+
+		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
+		Insert(icon_name, iconNormal)
+
+		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
+		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
+		Insert("[icon_name]_big", iconBig)
+	return ..()

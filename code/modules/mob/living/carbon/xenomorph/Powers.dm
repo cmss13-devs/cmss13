@@ -153,3 +153,41 @@
 
 	if(hive.living_xeno_queen)
 		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize(current_area_name)]!", 3, hivenumber)
+
+/mob/living/carbon/Xenomorph/proc/make_marker(turf/target_turf)
+	if(!target_turf)
+		return FALSE
+	var/found_weeds = FALSE
+	if(!selected_mark)
+		to_chat(src, SPAN_NOTICE("You must have a meaning for the mark before you can make it."))
+		hive.mark_ui.open_mark_menu(src)
+		return FALSE
+	if(target_turf.z != src.z)
+		to_chat(src, SPAN_NOTICE("You have no psychic presence on that world."))
+		return FALSE
+	if(!(istype(target_turf)) || target_turf.density)
+		return FALSE
+	for(var/atom/movable/AM  in target_turf.contents)
+		if(istype(AM, /obj/effect/alien/weeds))
+			found_weeds = TRUE
+		if(AM.density || istype(AM, /obj/effect/alien/resin))
+			to_chat(src, SPAN_XENONOTICE("Theres not enough space there for a resin mark."))
+			return FALSE
+
+	var/obj/effect/alien/resin/marker/NM = new /obj/effect/alien/resin/marker(target_turf, src)
+	playsound(target_turf, "alien_resin_build", 25)
+
+	if(!found_weeds)
+		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
+
+	if(isXenoQueen(src))
+		NM.color = "#7a21c4"
+	else
+		NM.color = "#db6af1"
+	if(hive.living_xeno_queen)
+		var/current_area_name = get_area_name(target_turf)
+
+		for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
+			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
+			//this is killing the tgui chat and I dont know why
+	return TRUE

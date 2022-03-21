@@ -560,18 +560,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else //empty hand, start checking slots and holsters
 		var/list/slot_order
 		switch(keymod)
-			if("none") 		
+			if("none")
 				slot_order = holster_default	//default order: suit, belt, back, pockets, uniform, shoes
-							
+
 			if("shift")			//shift keymod, do common secondary weapon locations first.
 				slot_order = holster_shift		//order: back, belt, pockets, uniform, shoes, suit.
-							
+
 			if("ctrl", "alt")	//control and alt keymods, do common tertiary weapon locations first. In case ctrl is awkward for some people but alt is not.
 				slot_order = holster_ctrl		//order: uniform, belt, pockets, shoes, back, suit.
 
 		for(var/slot in slot_order)
 			if(holster_unholster_from_storage_slot(vars[slot]))
-				return			
+				return
 
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"
@@ -599,6 +599,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(R && (R.flags_attach_features & ATTACH_REMOVABLE))
 			possible_attachments += R
 
+
+	var/static/list/slots
+	if(!slots)
+		slots = list(
+			"rail",
+			"muzzle",
+			"stock",
+			"under",
+		)
+
+	var/list/choices = list()
+
+
+	for(var/attachment_key in slots)
+		var/obj/item/attachable/attachment = attachments[attachment_key]
+		if(attachment && (attachment.flags_attach_features & ATTACH_REMOVABLE))
+			choices[attachment_key] = attachment
+
 	if(!possible_attachments.len)
 		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
 		return
@@ -607,7 +625,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(possible_attachments.len == 1)
 		A = possible_attachments[1]
 	else
-		A = tgui_input_list(usr, "Which attachment to remove?", "Remove attachment", possible_attachments)
+		if(usr.client.prefs?.no_radials_preference)
+			A = tgui_input_list(usr, "Which attachment to remove?", "Remove attachment", possible_attachments)
+		else
+			var/middleman = show_radial_menu(usr, src, choices, require_near = TRUE)
+			A = attachments[middleman]
+
 
 	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return

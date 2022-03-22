@@ -75,17 +75,11 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(predators.len)
+	if(length(predators))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		var/mob/M
-		for(var/datum/mind/P in predators)
-			if(istype(P))
-				M = P.current
-				if(!M || !M.loc) M = P.original
-				if(M && M.loc) 	dat += "<br>[P.key] was [M.real_name] [SPAN_BOLDNOTICE("([M.stat == DEAD? "DIED":"SURVIVED"])")]"
-				else 			dat += "<br>[P.key]'s body was destroyed... [SPAN_BOLDNOTICE("(DIED)")]"
-
+		for(var/entry in predators)
+			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
 		to_world("[dat]")
 
 

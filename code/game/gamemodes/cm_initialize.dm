@@ -43,10 +43,9 @@ Additional game mode variables.
 	var/list/datum/mind/picked_queens = list()
 	var/datum/mind/survivors[] = list()
 	var/datum/mind/synth_survivor = null
-	var/datum/mind/predators[] = list()
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
-	var/pred_keys[] = list() //People who are playing predators, we can later reference who was a predator during the round.
+	var/predators = list()
 
 	var/xeno_required_num 	= 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num 	= 0 //To clamp starting xenos.
@@ -128,9 +127,7 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, var/ignore_pred_num = FALSE)
-	predators += new_predator.mind //Add them to the proper list.
-	pred_keys += new_predator.ckey //Add their key.
-
+	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
 
@@ -193,8 +190,9 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return
 
-	if(pred_candidate.ckey in pred_keys)
-		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
+	if(pred_candidate.ckey in predators)
+		if(show_warning)
+			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
 	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)

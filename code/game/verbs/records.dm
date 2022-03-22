@@ -72,7 +72,6 @@
 /client/verb/other_records()
 	set name = "View Target Records"
 	set category = "OOC.Records"
-	var/client/C = usr.client
 
 	///Management Access
 	var/MA
@@ -83,79 +82,68 @@
 
 	///Note category options
 	var/list/options = list()
-	var/list/staff = list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja")
 
-	if(!isCouncil(C))
-		if(CLIENT_IS_STAFF(C))
-			options = staff
-			if(C.admin_holder.rights & R_PERMISSIONS)
-				MA = TRUE
-		else
-			to_chat(C, SPAN_WARNING("Error: you are not authorised to view the records of another player!"))
+	if(CLIENT_IS_STAFF(src))
+		options = note_categories
+		if(admin_holder.rights & R_PERMISSIONS)
+			MA = TRUE
+	else if(!isCouncil(src))
+		to_chat(usr, SPAN_WARNING("Error: you are not authorised to view the records of another player!"))
 		return
-	else
-		to_chat(C, SPAN_NOTICE("Records View Access Granted"))
 
-	var/target = input(C, "What CKey do you wish to check?", "Target")
+	var/target = input(usr, "What CKey do you wish to check?", "Target")
 	if(!target)
-		to_chat(C, SPAN_WARNING("Invalid Target"))
+		to_chat(src, SPAN_WARNING("Invalid Target"))
 		return
+	target = ckey(target)
 
-	else
-		if(RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_COMMANDER_COUNCIL)
-			options += "Commanding Officer"
-			edit_C = TRUE
-		if(RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
-			options += "Synthetic"
-			edit_S = TRUE
-		if(RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_YAUTJA_COUNCIL)
-			options += "Yautja"
-			edit_Y = TRUE
+	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
+		options += "Commanding Officer"
+		edit_C = TRUE
+	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+		options += "Synthetic"
+		edit_S = TRUE
+	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
+		options += "Yautja"
+		edit_Y = TRUE
 
-	var/choice = tgui_input_list(C, "What record do you wish to view?", "Record Choice", options)
+	var/choice = tgui_input_list(usr, "What record do you wish to view?", "Record Choice", options)
+	if(!choice)
+		return
 	switch(choice)
 		if("Admin")
 			show_other_record(NOTE_ADMIN, choice, target, TRUE)
 		if("Merit")
 			show_other_record(NOTE_MERIT, choice, target, TRUE)
 		if("Commanding Officer")
-			if(MA || (RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_COMMANDER_LEADER))
+			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
 				show_other_record(NOTE_COMMANDER, choice, target, TRUE, TRUE)
-			else if(edit_C)
-				show_other_record(NOTE_COMMANDER, choice, target, TRUE)
 			else
-				show_other_record(NOTE_COMMANDER, choice, target)
+				show_other_record(NOTE_COMMANDER, choice, target, edit_C)
 		if("Synthetic")
-			if(MA || (RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_SYNTHETIC_LEADER))
+			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
 				show_other_record(NOTE_SYNTHETIC, choice, target, TRUE, TRUE)
-			else if(edit_S)
-				show_other_record(NOTE_SYNTHETIC, choice, target, TRUE)
 			else
-				show_other_record(NOTE_SYNTHETIC, choice, target)
+				show_other_record(NOTE_SYNTHETIC, choice, target, edit_S)
 		if("Yautja")
-			if(MA || (RoleAuthority.roles_whitelist[C.ckey] & WHITELIST_YAUTJA_LEADER))
+			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
 				show_other_record(NOTE_YAUTJA, choice, target, TRUE, TRUE)
-			else if(edit_Y)
-				show_other_record(NOTE_YAUTJA, choice, target, TRUE)
 			else
-				show_other_record(NOTE_YAUTJA, choice, target)
-		if("Cancel")
-			return
+				show_other_record(NOTE_YAUTJA, choice, target, edit_Y)
 	to_chat(usr, SPAN_NOTICE("Displaying [target]'s [choice] notes."))
 
 
 /client/proc/show_other_record(var/note_category, var/category_text, var/target, var/can_edit = FALSE, var/can_del = FALSE)
 	var/datum/entity/player/P = get_player_from_key(target)
-	var/client/C = usr.client
 	if(!P?.migrated_notes)
-		to_chat(C, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
+		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
 	var/dat = "<html>"
 	dat += "<body>"
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[src];add_player_info=[key]'>ERROR</A><br>"
+	var/add_dat = "<A href='?src=\ref[admin_holder];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"
@@ -187,8 +175,8 @@
 		dat += "<br><br>"
 
 	dat += "<br>"
-	if(can_edit || ishost(C))
+	if(can_edit || ishost(src))
 		dat += add_dat
 
 	dat += "</body></html>"
-	show_browser(C, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")
+	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")

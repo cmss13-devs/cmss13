@@ -85,7 +85,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")
+		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
 
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)

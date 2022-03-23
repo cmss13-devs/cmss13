@@ -397,6 +397,6 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /area/proc/add_thunder()
 	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
+		underlays += GLOB.weather_rain_effect
 		for(var/turf/T in contents)
-			new /obj/effect/weather_vfx_holder/rain(T)
 			T.update_lumcount(exterior_light)

@@ -27,7 +27,8 @@
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
-	var/reinforced = FALSE
+	var/masterkey_resist = FALSE
+	var/masterkey_mod = 0.1
 
 
 	//Multi-tile doors

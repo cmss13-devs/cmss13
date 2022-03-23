@@ -20,6 +20,7 @@
 /obj/structure/machinery/bodyscanner/Initialize()
 	. = ..()
 	connect_body_scanconsole()
+	flags_atom |= USES_HEARING
 
 
 /obj/structure/machinery/bodyscanner/proc/connect_body_scanconsole()

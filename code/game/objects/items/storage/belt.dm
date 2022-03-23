@@ -139,7 +139,8 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
-		/obj/item/roller
+		/obj/item/roller,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -163,12 +164,15 @@
 		mode = !mode
 		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
-/obj/item/storage/belt/medical/full/with_defib_and_analyzer
-
 /obj/item/storage/belt/medical/full/with_defib_and_analyzer/fill_preset_inventory()
 	. = ..()
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/belt/medical/full/with_suture_and_graft/fill_preset_inventory()
+	. = ..()
+	new	/obj/item/tool/surgery/surgical_line(src)
+	new	/obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
@@ -572,7 +576,7 @@
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	w_class = SIZE_LARGE
 	storage_slots = 12
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
@@ -679,6 +683,7 @@
 	storage_slots = 5
 	max_storage_space = 11
 	max_w_class = SIZE_MEDIUM
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_ALLOW_QUICKDRAW
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
@@ -1215,6 +1220,34 @@
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/smartgunner/clf
+	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufactoring stamp."
+	icon_state = "sgbelt"
+	icon_x = 5
+	icon_y = -2
+	mixed_pistols = TRUE
+	can_hold = list(
+		/obj/item/device/flashlight/flare,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/smartgun
+	)
+	has_gamemode_skin = TRUE
+
+/obj/item/storage/belt/gun/smartgunner/clf/full/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mortarbelt

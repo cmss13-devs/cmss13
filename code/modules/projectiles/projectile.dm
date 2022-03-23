@@ -141,9 +141,13 @@
 	src.is_shrapnel = is_shrapnel
 	if(!loc)
 		if (!is_shrapnel)
-			forceMove(get_turf(F))
+			var/move_turf = get_turf(F)
+			if(move_turf)
+				forceMove(move_turf)
 		else
-			forceMove(get_turf(S))
+			var/move_turf = get_turf(S)
+			if(move_turf)
+				forceMove(move_turf)
 	starting = get_turf(src)
 	if(starting != loc)
 		forceMove(starting) //Put us on the turf, if we're not.
@@ -1104,12 +1108,12 @@
 
 
 //This is where the bullet bounces off.
-/atom/proc/bullet_ping(obj/item/projectile/P)
+/atom/proc/bullet_ping(obj/item/projectile/P, var/pixel_x_offset, var/pixel_y_offset)
 	if(!P || !P.ammo.ping)
 		return
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,P.ammo.ping,10)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,P.ammo.ping,10, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset)
 	var/angle = (P.firer && prob(60)) ? round(Get_Angle(P.firer,src)) : round(rand(1,359))
 	I.pixel_x += rand(-6,6)
 	I.pixel_y += rand(-6,6)

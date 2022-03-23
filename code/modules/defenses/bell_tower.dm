@@ -1,5 +1,5 @@
 #define BELL_TOWER_RANGE 4
-#define BELL_TOWER_EFFECT 8
+#define BELL_TOWER_EFFECT 6
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
@@ -117,7 +117,7 @@
 	var/mob/living/to_apply = target
 
 	if(istype(to_apply))
-		to_apply.SetSuperslowed(3)
+		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
 
 /obj/structure/machinery/defenses/bell_tower/md
@@ -164,7 +164,7 @@
 
 #undef BELL_TOWER_CLOAKER_ALPHA
 
-#define IMP_SLOWDOWN_TIME 1
+#define IMP_SLOWDOWN_TIME 3
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -174,7 +174,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	var/slowdown_amount = IMP_SLOWDOWN_TIME
-	var/area_range = BELL_TOWER_RANGE
+	var/area_range = 7 //stretches 3 tiles away in all directions
 
 
 /obj/item/storage/backpack/imp/equipped(mob/user, slot)
@@ -194,6 +194,7 @@
 		return
 
 	if(M.stat == DEAD || (!M.x && !M.y && !M.z))
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
@@ -201,7 +202,8 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/X in targets)
-		X.SetSuperslowed(BELL_TOWER_EFFECT)
+		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
+		X.SetSuperslowed(slowdown_amount)
 		playsound(X, 'sound/misc/bell.ogg', 50, 0, 50)
 
 #undef IMP_SLOWDOWN_TIME

@@ -52,6 +52,8 @@ SUBSYSTEM_DEF(tracking)
 			else if(isXeno(current_mob))
 				var/mob/living/carbon/Xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
+				if(xeno_mob.tracked_marker)
+					xeno_mob.mark_locator()
 			if (MC_TICK_CHECK)
 				return
 		currentrun -= tracked_group

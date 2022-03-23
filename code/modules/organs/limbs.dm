@@ -470,6 +470,9 @@ This function completely restores a damaged organ to perfect condition.
 	// reset surgeries. Some duplication with general mob rejuvenate() but this also allows individual limbs to be rejuvenated, in theory.
 	reset_limb_surgeries()
 
+	// remove suture datum.
+	SEND_SIGNAL(src, COMSIG_LIMB_REMOVE_SUTURES)
+
 	// heal internal organs
 	for(var/datum/internal_organ/current_organ in internal_organs)
 		current_organ.rejuvenate()
@@ -856,13 +859,18 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
 
-/obj/limb/proc/bandage()
-	var/rval = 0
+/**bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
+if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
+treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.**/
+/obj/limb/proc/bandage(treat_sutured)
 	remove_all_bleeding(TRUE)
-
 	owner.update_med_icon()
-	return rval
+	if(applied_bandage)
+		return WOUNDS_BANDAGED
+	else if(wounds_exist)
+		return WOUNDS_ALREADY_TREATED
 
+///Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.
 /obj/limb/proc/is_bandaged()
 	var/not_bandaged = FALSE
 

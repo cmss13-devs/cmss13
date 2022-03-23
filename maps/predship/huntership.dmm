@@ -1724,7 +1724,7 @@
 	},
 /area/yautja)
 "dj" = (
-/obj/effect/alien/egg/alpha,
+/obj/effect/alien/egg/forsaken,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -1963,6 +1963,24 @@
 	},
 /turf/open/gm/dirtgrassborder/weedable{
 	icon_state = "grass1"
+	},
+/area/yautja)
+"hg" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "hI" = (
@@ -2481,9 +2499,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/xeno_egg/alpha,
-/obj/item/xeno_egg/alpha,
-/obj/item/xeno_egg/alpha,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
+/obj/item/xeno_egg/forsaken,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2870,6 +2888,26 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"HN" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/obj/item/tool/surgery/surgical_line,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "If" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/blood,
@@ -3103,7 +3141,7 @@
 	},
 /area/yautja)
 "Pp" = (
-/obj/effect/alien/weeds/node/alpha,
+/obj/effect/alien/weeds/node/forsaken,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -5289,11 +5327,11 @@ bj
 bj
 bj
 bj
-aU
+hg
 cP
 cP
 bz
-bz
+HN
 nh
 ZM
 au
@@ -5361,7 +5399,7 @@ av
 ZM
 bO
 bj
-aU
+hg
 cP
 cP
 bz

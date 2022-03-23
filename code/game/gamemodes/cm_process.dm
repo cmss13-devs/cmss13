@@ -75,17 +75,11 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(predators.len)
+	if(length(predators))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		var/mob/M
-		for(var/datum/mind/P in predators)
-			if(istype(P))
-				M = P.current
-				if(!M || !M.loc) M = P.original
-				if(M && M.loc) 	dat += "<br>[P.key] was [M.real_name] [SPAN_BOLDNOTICE("([M.stat == DEAD? "DIED":"SURVIVED"])")]"
-				else 			dat += "<br>[P.key]'s body was destroyed... [SPAN_BOLDNOTICE("(DIED)")]"
-
+		for(var/entry in predators)
+			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
 		to_world("[dat]")
 
 
@@ -202,16 +196,17 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 
 	for (var/i in GLOB.alive_human_list)
-		var/mob/M = i
-		var/atom/where = M
-		if (where == 0 && M.loc)
-			where = M.loc
-		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
-			numHostsPlanet++
-			hostsPlanetLocations += where
-		else if(is_mainship_level(where.z))
-			numHostsShip++
-			hostsShipLocations += where
+		var/mob/living/carbon/human/H = i
+		var/atom/where = H
+		if(isSpeciesHuman(H))
+			if (where == 0 && H.loc)
+				where = H.loc
+			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
+				numHostsPlanet++
+				hostsPlanetLocations += where
+			else if(is_mainship_level(where.z))
+				numHostsShip++
+				hostsShipLocations += where
 
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight

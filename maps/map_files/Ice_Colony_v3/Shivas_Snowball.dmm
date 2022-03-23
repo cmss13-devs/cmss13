@@ -10562,7 +10562,7 @@
 /area/shiva/interior/warehouse)
 "fbI" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/clothing/under/marine/veteran/mercenary/engineer,
+/obj/item/clothing/under/marine/veteran/mercenary/support,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -16289,7 +16289,7 @@
 /area/shiva/exterior/cp_s_research)
 "lok" = (
 /obj/structure/cargo_container{
-	icon_state = "red 0,0";
+	icon_state = "ferret_l";
 	tag = "icon-red 0,0"
 	},
 /turf/open/auto_turf/snow/layer3,
@@ -16339,14 +16339,14 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "lpK" = (
 /obj/structure/cargo_container{
-	icon_state = "red 1,0";
+	icon_state = "ferret_m";
 	tag = "icon-red 1,0"
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "lpR" = (
 /obj/structure/cargo_container{
-	icon_state = "red 2,0";
+	icon_state = "ferret_r";
 	tag = "icon-red 2,0"
 	},
 /turf/open/auto_turf/snow/layer3,

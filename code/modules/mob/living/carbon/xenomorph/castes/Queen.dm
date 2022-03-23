@@ -284,7 +284,8 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit
+		/datum/action/xeno_action/onclick/readmit,
+		/datum/action/xeno_action/activable/info_marker/queen,
 	)
 
 	inherent_verbs = list(
@@ -294,7 +295,7 @@
 		/mob/living/carbon/Xenomorph/proc/toggle_unnesting,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 	)
 
 	var/list/mobile_abilities = list(
@@ -316,6 +317,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
+		/datum/action/xeno_action/activable/info_marker/queen,
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -335,6 +337,13 @@
 
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
+
+/mob/living/carbon/Xenomorph/Queen/Forsaken
+	hivenumber = XENO_HIVE_FORSAKEN
+
+/mob/living/carbon/Xenomorph/Queen/Forsaken/combat_ready
+	hivenumber = XENO_HIVE_FORSAKEN
+	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Alpha
 	hivenumber = XENO_HIVE_ALPHA
@@ -734,7 +743,8 @@
 		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/eye
+		/datum/action/xeno_action/onclick/eye,
+		/datum/action/xeno_action/activable/info_marker/queen
 	)
 
 

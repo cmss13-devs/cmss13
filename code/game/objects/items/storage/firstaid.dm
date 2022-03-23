@@ -83,7 +83,7 @@
 	return
 
 /obj/item/storage/firstaid/toxin
-	name = "toxin first aid"
+	name = "toxin first-aid kit"
 	desc = "Used to treat when you have a high amount of toxins in your body."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
@@ -100,7 +100,7 @@
 	return
 
 /obj/item/storage/firstaid/o2
-	name = "oxygen deprivation first aid"
+	name = "oxygen deprivation first-aid kit"
 	desc = "A box full of reoxygenating goodies."
 	icon_state = "o2"
 	item_state = "firstaid-o2"

@@ -176,7 +176,7 @@
 				/obj/item/stack/medical/healing/traumakit,
 				/obj/item/tool/extinguisher/mini,
 				/obj/item/tool/shovel/etool,
-				/obj/item/tool/screwdriver,)
+				/obj/item/tool/screwdriver)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"
@@ -349,12 +349,12 @@
 		new /obj/item/clothing/gloves/marine/veteran(src)
 		new /obj/item/clothing/mask/gas/PMC(src)
 	else if(prob(25))
-		new /obj/item/clothing/under/marine/veteran/mercenary/engineer(src)
-		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer(src)
-		new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer(src)
+		new /obj/item/clothing/under/marine/veteran/mercenary/support(src)
+		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/support(src)
+		new /obj/item/clothing/suit/storage/marine/veteran/mercenary/support(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
 		new /obj/item/clothing/mask/gas/PMC(src)
-	else 
+	else
 		new /obj/item/clothing/under/marine/veteran/freelancer(src)
 		new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 		new /obj/item/clothing/head/cmbandana(src)
@@ -437,7 +437,6 @@
 	new /obj/item/storage/pouch/firstaid/full(src)
 	new /obj/item/storage/box/quickclot(src)
 
-
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"
 
@@ -454,6 +453,7 @@
 	new /obj/item/tool/surgery/retractor(src)
 	new /obj/item/tool/surgery/bonesetter(src)
 	new /obj/item/tool/surgery/circular_saw(src)
+	new /obj/item/tool/surgery/surgical_line(src)
 	new /obj/item/tool/surgery/scalpel/manager(src)
 
 

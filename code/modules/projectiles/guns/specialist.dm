@@ -63,16 +63,16 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/sniper/M42B
-	name = "\improper XM42B experimental anti-tank rifle"
-	desc = "An experimental anti-tank rifle produced by Armat Systems, currently undergoing field testing. Chambered in 10x99mm Caseless."
+/obj/item/weapon/gun/rifle/sniper/XM42B
+	name = "\improper XM42B experimental anti-materiel rifle"
+	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
 	icon_state = "xm42b"
 	item_state = "xm42b"
 	unacidable = TRUE
 	indestructible = 1
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
-	current_mag = /obj/item/ammo_magazine/sniper/anti_tank
+	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
 	force = 12
 	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
@@ -80,7 +80,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 
-/obj/item/weapon/gun/rifle/sniper/M42B/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/sniper/XM42B/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
@@ -91,35 +91,43 @@
 	update_attachable(S.slot)
 
 
-/obj/item/weapon/gun/rifle/sniper/M42B/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/sniper/XM42B/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 
 
-/obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
+/obj/item/weapon/gun/rifle/sniper/XM42B/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 8 //Big boy damage, but it takes a lot of time to fire a shot.
+	fire_delay = FIRE_DELAY_TIER_6 * 6 //Big boy damage, but it takes a lot of time to fire a shot.
+	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
 	burst_amount = BURST_AMOUNT_TIER_1
-	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 
-/obj/item/weapon/gun/rifle/sniper/M42B/set_bullet_traits()
+/obj/item/weapon/gun/rifle/sniper/XM42B/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 11, GLOB.damage_boost_breaching),
+		//At 1375 per shot it'll take 1 shot to break resin turfs, and a full mag of 8 to break reinforced walls.
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons),
+		//At 750 per shot it'll take 3 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
 	))
 
+/*
+//Disabled until an identity is better defined. -Kaga
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
 			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
 			return
 		else ..()
-
+*/
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
-	desc = "A high end mag-rail heavy sniper rifle from Weyland-Armat chambered in the heaviest ammo available, 10x99mm Caseless."
+	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
 
@@ -136,6 +144,7 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -151,8 +160,8 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_6*5
 	burst_amount = BURST_AMOUNT_TIER_1
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
-	scatter = SCATTER_AMOUNT_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT * 3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
+	scatter = SCATTER_AMOUNT_TIER_10 //Was previously 8, changed to be consistent with the XM42B.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 
@@ -459,11 +468,11 @@
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
-		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
-			click_empty(H)
-			return 0
+			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
+		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
@@ -510,9 +519,9 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!powerpack)
+	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
-			click_empty(user)
+			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
 			unlink_powerpack()
 			return
 	if(powerpack)
@@ -736,6 +745,15 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 
+// CLF SMARTGUN
+
+/obj/item/weapon/gun/smartgun/clf
+	name = "\improper M56B 'Freedom' smartgun"
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufactoring stamp.\nYou may toggle firing restrictions by using a special action."
+
+/obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_CLF
 
 //-------------------------------------------------------
 //HEAVY WEAPONS
@@ -1314,7 +1332,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/flare
 	name = "\improper M82-F flare gun"
-	desc = "A flare gun issued to JTAC operators to use with standard flares. Cannot be used with signal flares. Comes with a miniscope. One shot, one... life saved?"
+	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
 	icon_state = "m82f"
 	item_state = "m82f"
 	current_mag = /obj/item/ammo_magazine/internal/flare
@@ -1326,8 +1344,12 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
-	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
+
+/obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(spawn_empty)
+		update_icon()
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
@@ -1355,10 +1377,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
+/obj/item/weapon/gun/flare/reload_into_chamber(mob/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
-	icon_state = popped_state
+	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/flashlight/flare))
@@ -1375,6 +1397,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++
 			qdel(I)
-			icon_state = "m82f"
+			update_icon()
 		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
 	else to_chat(user, SPAN_WARNING("That's not a flare!"))

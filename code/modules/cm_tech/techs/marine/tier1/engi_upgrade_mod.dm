@@ -46,7 +46,7 @@
 		desc = "A kit used to upgrade the defenses of an engineer's sentry. Do you... enjoy violence? Of course you do. It's a part of you."
 	. = ..()
 
-/obj/item/engi_upgrade_kit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/engi_upgrade_kit/afterattack(atom/target, mob/user, proximity_flag, click_parameters, proximity)
 	if(!ishuman(user))
 		return ..()
 
@@ -60,8 +60,12 @@
 	if(!length(upgrade_list))
 		return
 
-	var/chosen_upgrade = tgui_input_list(user, "Please select a valid upgrade to apply to this kit", "W-Y Sponsored Kit", upgrade_list)
+	var/chosen_upgrade = show_radial_menu(user, target, upgrade_list, require_near = TRUE)
 	if(QDELETED(D) || !upgrade_list[chosen_upgrade])
+		return
+
+	if((user.get_active_hand()) != src)
+		to_chat(user, SPAN_WARNING("You must be holding the [src] to upgrade \the [D]!"))
 		return
 
 	var/type_to_change_to = upgrade_list[chosen_upgrade]

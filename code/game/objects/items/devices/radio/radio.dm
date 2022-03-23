@@ -69,6 +69,8 @@
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
+	flags_atom |= USES_HEARING
+
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	..()

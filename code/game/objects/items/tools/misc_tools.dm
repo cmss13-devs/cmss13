@@ -144,7 +144,7 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	flags_equip_slot = SLOT_WAIST|SLOT_EAR
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_VERY_FAST

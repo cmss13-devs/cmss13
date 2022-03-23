@@ -129,7 +129,8 @@ var/list/department_radio_keys = list(
 				else if(istype(I, /obj/))
 					var/obj/O = I
 					hearturfs += O.locs[1]
-					listening_obj |= O
+					if(O.flags_atom & USES_HEARING)
+						listening_obj |= O
 
 
 			for(var/mob/M in GLOB.player_list)

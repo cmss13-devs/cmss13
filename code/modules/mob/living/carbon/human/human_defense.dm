@@ -139,8 +139,10 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
-		visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
-		return TRUE
+		var/obj/item/weapon/shield/riot/shield = back
+		if(shield.blocks_on_back)
+			visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+			return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)

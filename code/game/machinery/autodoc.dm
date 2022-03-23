@@ -31,6 +31,7 @@
 /obj/structure/machinery/autodoc/Initialize()
 	. = ..()
 	connect_autodoc_console()
+	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/autodoc/proc/connect_autodoc_console()
 	if(connected)

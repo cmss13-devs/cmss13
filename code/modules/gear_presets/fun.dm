@@ -211,9 +211,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact_adv(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/dutch(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16/ap(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_R_STORE)
@@ -605,3 +606,66 @@
 	H.status_flags &= ~NO_PERMANENT_DAMAGE
 	H.status_flags |= STATUS_FLAGS_DEBILITATE
 	ADD_TRAIT(H, TRAIT_TWOBORE_TRAINING, TRAIT_SOURCE_ADMIN) //Means he can handle his gun and speak its hit lines.
+
+
+/datum/equipment_preset/fun/monkey
+	name = "Fun - Monkey"
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_MONKEY
+
+	uses_special_name = TRUE
+
+	skills = /datum/skills/pfc/crafty // about equivalent to a marine
+
+	assignment = "Monkey"
+	rank = "Monkey"
+	idtype = /obj/item/card/id/dogtag
+
+/datum/equipment_preset/fun/monkey/load_race(mob/living/carbon/human/H, client/mob_client)
+	H.set_species(SPECIES_MONKEY)
+
+/datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/H, var/randomise, var/client/mob_client)
+	H.gender = pick(60;MALE,40;FEMALE)
+	var/random_name = get_random_name(H)
+	H.change_real_name(H, random_name)
+	H.age = rand(1, 40)
+
+/datum/equipment_preset/fun/monkey/proc/get_random_name(var/mob/living/carbon/human/H)
+	return pick(monkey_names)
+
+/datum/equipment_preset/fun/monkey/marine
+	name = "Fun - Monkey Marine"
+
+	assignment = "Monkey Marine"
+	rank = "Monkey Marine"
+	paygrade = "ME2"
+
+/datum/equipment_preset/fun/monkey/marine/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/monkey(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H), WEAR_IN_JACKET)
+
+/datum/equipment_preset/fun/monkey/soldier
+	name = "Fun - Monkey Soldier"
+
+	assignment = "Monkey Soldier"
+	rank = "Monkey Soldier"
+	paygrade = "UE1"
+
+/datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/H)
+	return H.gender == MALE ? pick(first_names_male_upp) : pick(first_names_female_upp)
+
+/datum/equipment_preset/fun/monkey/soldier/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/monkey(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/rifleman(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H), WEAR_IN_JACKET)

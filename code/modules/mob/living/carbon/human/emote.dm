@@ -230,11 +230,14 @@
 
 					show_speech_bubble("hmedic")
 
-					if(src.gender == "male")
-						var/medic_sound = pick('sound/voice/human_male_medic.ogg', 5;'sound/voice/human_male_medic_rare_1.ogg', 5;'sound/voice/human_male_medic_rare_2.ogg')
-						playsound(src.loc, medic_sound, 25, 0)
-					else
-						playsound(src.loc, 'sound/voice/human_female_medic.ogg', 25, 0)
+					if(ismonkey(src))
+						playsound(loc, 'sound/voice/monkey_whimper.ogg', 50)
+					else if(ishuman(src))
+						if(src.gender == "male")
+							var/medic_sound = pick('sound/voice/human_male_medic.ogg', 5;'sound/voice/human_male_medic_rare_1.ogg', 5;'sound/voice/human_male_medic_rare_2.ogg')
+							playsound(src.loc, medic_sound, 25, 0)
+						else
+							playsound(src.loc, 'sound/voice/human_female_medic.ogg', 25, 0)
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else
@@ -442,6 +445,8 @@
 					playsound(loc, "male_warcry", 50)
 				else
 					playsound(loc, "female_warcry", 50)
+			else if(ismonkey(src))
+				playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 			start_audio_emote_cooldown()
 
 		if ("help")

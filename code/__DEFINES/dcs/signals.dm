@@ -449,3 +449,15 @@
 
 /// from /datum/squad/proc/put_marine_in_squad
 #define COMSIG_SET_SQUAD "set_squad"
+
+// From obj/limb/proc/take_damage()
+// Sent after the limb has taken damage
+#define COMSIG_LIMB_TAKEN_DAMAGE "limb_taken_damage"
+
+// From /datum/surgery_step/tend_wounds/success()
+// Sent to command the limb's suture datum to add sutures, NOT when sutures are added.
+#define COMSIG_LIMB_ADD_SUTURES "limb_add_sutures"
+// Sent to check if the limb can be sutured.
+#define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
+// Sent to remove all sutures.
+#define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"

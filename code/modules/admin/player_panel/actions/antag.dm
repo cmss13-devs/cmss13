@@ -9,11 +9,6 @@
 		return
 
 	var/mob/living/carbon/human/H = target
-
-	if(H.faction != FACTION_MARINE)
-		to_chat(user, SPAN_WARNING("This player's faction must equal '[FACTION_MARINE]' to make them a mutineer."))
-		return
-
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer]
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer/leader]

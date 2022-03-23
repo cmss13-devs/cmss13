@@ -71,7 +71,8 @@ var/list/admin_verbs_fun = list(
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
-	/client/proc/create_humans
+	/client/proc/create_humans,
+	/client/proc/create_xenos
 )
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
@@ -219,6 +220,9 @@ var/list/admin_verbs_mod = list(
 	/client/proc/toggle_strip_drag,
 	/client/proc/toggle_uniform_strip,
 	/client/proc/toggle_strong_defibs,
+	/client/proc/toggle_blood_optimization,
+	/client/proc/toggle_combat_cas,
+	/client/proc/toggle_lz_protection,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,

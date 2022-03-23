@@ -7,17 +7,18 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(),
 	MOB_HUD_MEDICAL_ADVANCED = new /datum/mob_hud/medical/advanced(),
 	MOB_HUD_MEDICAL_OBSERVER = new /datum/mob_hud/medical/observer(),
-	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(), \
+	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
-	MOB_HUD_SQUAD = new /datum/mob_hud/squad(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
-	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
-	MOB_HUD_SQUAD_OBSERVER	= new /datum/mob_hud/squad/observer(),
-	MOB_HUD_FACTION_UPP	= new /datum/mob_hud/faction/upp(),
+	MOB_HUD_FACTION_USCM = new /datum/mob_hud/faction(),
+	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
+	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_RESS = new /datum/mob_hud/faction/ress(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
+	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
+	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan()
 	)
 
 /datum/mob_hud
@@ -98,6 +99,9 @@ var/list/datum/mob_hud/huds = list(
 	if(!istype(U))
 		return FALSE
 
+	if(H.species && HAS_TRAIT(H, TRAIT_FOREIGN_BIO))
+		return FALSE
+
 	if(U.sensor_mode <= SENSOR_MODE_DAMAGE || U.has_sensor == UNIFORM_NO_SENSORS)
 		return FALSE
 
@@ -157,24 +161,14 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/security/advanced
 	hud_icons = list(ID_HUD, WANTED_HUD)
 
-
-/datum/mob_hud/squad
-	hud_icons = list(SQUAD_HUD, ORDER_HUD)
-
-/datum/mob_hud/squad/observer
-	hud_icons = list(SQUAD_HUD, ORDER_HUD, HUNTER_CLAN)
-
 //Factions
 /datum/mob_hud/faction
-	hud_icons = list(FACTION_HUD)
-	var/faction_to_check = FACTION_UPP
+	hud_icons = list(FACTION_HUD, ORDER_HUD)
+	var/faction_to_check = FACTION_MARINE
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
-	if(isobserver(target))
-		faction = faction_to_check
-
-	if(faction == faction_to_check)
+	if(faction == faction_to_check || isobserver(user) || isYautja(user))
 		..()
 
 /datum/mob_hud/faction/upp
@@ -188,6 +182,12 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF
+
+/datum/mob_hud/faction/pmc
+	faction_to_check = FACTION_PMC
+
+/datum/mob_hud/faction/observer
+	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN)
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -435,6 +435,12 @@ var/list/datum/mob_hud/huds = list(
 
 //xeno status HUD
 
+/mob/living/carbon/Xenomorph/proc/hud_set_marks()
+	if(!client)
+		return
+	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
+		client.images |= i.seenMeaning
+
 /mob/living/carbon/Xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
 	if(stat == DEAD || plasma_max == 0)
@@ -583,144 +589,16 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/living/carbon/human/hud_set_squad()
-	var/image/holder = hud_list[SQUAD_HUD]
-
+	var/datum/faction/F = get_faction(faction)
+	var/image/holder = hud_list[F.hud_type]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 
-	if(faction == FACTION_MUTINEER)
+	if(mob_flags & MUTINEER)
 		holder.icon_state = "hudmutineer"
-		hud_list[SQUAD_HUD] = holder
 		return
 
-	if(assigned_squad)
-		var/squad_clr = squad_colors[assigned_squad.color]
-		var/marine_rk
-		var/obj/item/card/id/I = get_idcard()
-		var/_role
-		if(job)
-			_role = job
-		else if(I)
-			_role = I.rank
-		switch(GET_DEFAULT_ROLE(_role))
-			if(JOB_SQUAD_ENGI) marine_rk = "engi"
-			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
-			if(JOB_SQUAD_RTO) marine_rk = "rto"
-			if(JOB_SQUAD_MEDIC) marine_rk = "med"
-			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
-			if(JOB_XO) marine_rk = "xo"
-			if(JOB_CO) marine_rk = "co"
-			if(JOB_ADMIRAL) marine_rk = "admiral"
-			if(JOB_PILOT) marine_rk = "po"
-			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
-			if(JOB_CREWMAN) marine_rk = "tc"
-		if(assigned_squad.squad_leader == src)
-			marine_rk = "leader"
-			langchat_styles = "langchat_bolded" // bold text for bold leaders
-		else
-			langchat_styles = initial(langchat_styles)
-
-		langchat_color = squad_colors_chat[assigned_squad.color]
-
-		if(marine_rk)
-			var/image/IMG = image('icons/mob/hud/hud.dmi',src, "hudsquad")
-			if(squad_clr)
-				IMG.color = squad_clr
-			else
-				IMG.color = "#5A934A"
-			holder.overlays += IMG
-			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudsquad_[marine_rk]")
-		if(assigned_squad && assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudsquad_[assigned_fireteam]")
-			IMG2.color = squad_clr
-			holder.overlays += IMG2
-			if(assigned_squad.fireteam_leaders[assigned_fireteam] == src)
-				var/image/IMG3 = image('icons/mob/hud/hud.dmi',src, "hudsquad_ftl")
-				IMG3.color = squad_clr
-				holder.overlays += IMG3
-	else
-		var/marine_rk
-		var/border_rk
-		var/obj/item/card/id/ID = get_idcard()
-		var/_role
-		if(mind)
-			_role = job
-		else if(ID)
-			_role = ID.rank
-		switch(GET_DEFAULT_ROLE(_role))
-			if(JOB_XO)
-				marine_rk = "xo"
-				border_rk = "command"
-			if(JOB_CO)
-				marine_rk = "co"
-				border_rk = "command"
-			if(JOB_SO)
-				marine_rk = "so"
-				border_rk = "command"
-			if(JOB_ADMIRAL)
-				marine_rk = "admiral"
-				border_rk = "command"
-			if(JOB_PILOT)
-				marine_rk = "po"
-			if(JOB_DROPSHIP_CREW_CHIEF)
-				marine_rk = "dcc"
-			if(JOB_CREWMAN)
-				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
-				marine_rk = "pvo"
-			if(JOB_PROVOST_TML)
-				marine_rk = "pvtml"
-			if(JOB_PROVOST_INSPECTOR)
-				marine_rk = "pvi"
-				border_rk = "command"
-			if(JOB_PROVOST_ADVISOR)
-				marine_rk = "pva"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
-				marine_rk = "pvm"
-				border_rk = "command"
-			if(JOB_CHIEF_POLICE)
-				marine_rk = "cmp"
-				border_rk = "command"
-			if(JOB_POLICE)
-				marine_rk = "mp"
-			if(JOB_POLICE_CADET)
-				marine_rk = "mpcadet"
-			if(JOB_WARDEN)
-				marine_rk = "warden"
-				border_rk = "command"
-			if(JOB_CHIEF_REQUISITION)
-				marine_rk = "ro"
-			if(JOB_CARGO_TECH)
-				marine_rk = "ct"
-			if(JOB_CHIEF_ENGINEER)
-				marine_rk = "ce"
-				border_rk = "command"
-			if(JOB_MAINT_TECH)
-				marine_rk = "mt"
-			if(JOB_ORDNANCE_TECH)
-				marine_rk = "ot"
-			if(JOB_CMO)
-				marine_rk = "cmo"
-				border_rk = "command"
-			if(JOB_DOCTOR)
-				marine_rk = "doctor"
-				border_rk = "command"
-			if(JOB_RESEARCHER)
-				marine_rk = "researcher"
-				border_rk = "command"
-			if(JOB_NURSE)
-				marine_rk = "nurse"
-			if(JOB_SEA)
-				marine_rk = "sea"
-		if(marine_rk)
-			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudsquad")
-			I.color = "#5A934A"
-			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudsquad_[marine_rk]")
-			if(border_rk)
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
-	hud_list[SQUAD_HUD] = holder
+	F.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE

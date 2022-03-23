@@ -57,7 +57,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/recoil_mod 		= 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
-	var/suppress_firesound 	= FALSE //Adds silenced to weapon
 	var/light_mod 		= 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
 	var/delay_mod 		= 0 //Changes firing delay. Cannot go below 0.
 	var/burst_mod 		= 0 //Changes burst rate. 1 == 0.
@@ -83,6 +82,8 @@ Defined in conflicts.dm of the #defines folder.
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
+	/// List of traits to be given to the gun itself.
+	var/list/gun_traits
 
 /obj/item/attachable/Initialize(mapload, ...)
 	. = ..()
@@ -136,12 +137,6 @@ Defined in conflicts.dm of the #defines folder.
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
 	G.update_force_list() //This updates the gun to use proper force verbs.
 
-	if(suppress_firesound)
-		G.flags_gun_features |= GUN_SILENCED
-		G.muzzle_flash = null
-		if(!(G.flags_gun_features & GUN_INTERNAL_SILENCED))
-			G.fire_sound = "gun_silenced"
-
 	var/mob/living/living
 	if(isliving(G.loc))
 		living = G.loc
@@ -158,6 +153,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = sharp
 
+	for(var/trait in gun_traits)
+		ADD_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
 		if(!G.in_chamber)
 			break
@@ -191,6 +188,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = 0
 
+	for(var/trait in gun_traits)
+		REMOVE_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
 		if(!G.in_chamber)
 			break
@@ -228,10 +227,10 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
 	icon_state = "suppressor"
 	slot = "muzzle"
-	suppress_firesound = TRUE
 	pixel_shift_y = 16
 	attach_icon = "suppressor_a"
 	hud_offset_mod = -3
+	gun_traits = list(TRAIT_GUN_SILENCED)
 
 /obj/item/attachable/suppressor/New()
 	..()

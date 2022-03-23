@@ -64,6 +64,9 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_obj/resin_spike
 ))
 
+//Xeno Leader Mark Meanings
+GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin_mark_meanings())
+
 /// Xeno caste datums
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
@@ -134,7 +137,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
-	XENO_HIVE_MUTATED = new /datum/hive_status/mutated()
+	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
+	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken()
 ))
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
@@ -214,6 +218,13 @@ var/global/list/paramslist_cache = list()
 		var/datum/resin_construction/RC = new T
 		resin_constructions_list[T] = RC
 	return sortAssoc(resin_constructions_list)
+
+/proc/setup_resin_mark_meanings()
+	var/list/resin_meanings_list = list()
+	for (var/T in subtypesof(/datum/xeno_mark_define))
+		var/datum/xeno_mark_define/XMD = new T
+		resin_meanings_list[T] = XMD
+	return sortAssoc(resin_meanings_list)
 
 /proc/setup_gear_path_presets()
 	var/list/gear_path_presets_list = list()

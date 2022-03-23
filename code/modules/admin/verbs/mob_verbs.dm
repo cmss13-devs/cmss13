@@ -74,7 +74,7 @@
 		if("Security HUD")
 			H = huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_SQUAD_OBSERVER]
+			H = huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
 			H = huds[MOB_HUD_XENO_STATUS]
 		else return
@@ -159,6 +159,39 @@
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
 	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+
+/client/proc/cmd_admin_alert_message(var/mob/M)
+	set name = "Alert Message"
+	set category = "Admin.Game"
+
+	if(!ismob(M))
+		return
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	var/res = alert(src, "Do you wish to send an admin alert to this user?",,"Yes","No","Custom")
+	switch(res)
+		if("Yes")
+			var/message = "An admin is trying to talk to you!<br>Check your chat window and click their name to respond or you may be banned!"
+
+			show_blurb(M, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+			log_admin("[key_name(src)] sent a default admin alert to [key_name(M)].")
+			message_staff("[key_name(src)] sent a default admin alert to [key_name(M)].")
+		if("Custom")
+			var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
+			if(!message)
+				return
+
+			var/new_color = input(src, "Input your message color:", "Color Selector") as color|null
+			if(!new_color)
+				return
+
+			show_blurb(M, 15, message, null, "center", "center", new_color, null, null, 1)
+			log_admin("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
+			message_staff("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
+		else
+			return
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"

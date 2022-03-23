@@ -126,19 +126,22 @@
 	spawn_rebel_shoes(H)
 	spawn_rebel_gloves(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BELT)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H), WEAR_IN_R_STORE)
 
 	spawn_rebel_weapon(H)
 
@@ -237,8 +240,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/colonial_synthetic
-	assignment = "CLF Multipurpose Synthetic"
-	rank = "CLF Multipurpose Synthetic"
+	assignment = JOB_CLF_SYNTH
+	rank = JOB_CLF_SYNTH
 	role_comm_title = "SYN"
 
 
@@ -270,8 +273,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia, WEAR_JACKET)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/heavy, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_BACK)
@@ -295,3 +299,29 @@
 
 /datum/equipment_preset/clf/leader/cryo/load_gear(mob/living/carbon/human/H)
 	return
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/clf/commander
+	name = "CLF Cell Commander"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CLF_COMMANDER
+	rank = JOB_CLF_COMMANDER
+	role_comm_title = "CMDR"
+	skills = /datum/skills/clf/commander
+
+/datum/equipment_preset/clf/commander/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/smartgun(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/clf(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/clf/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_R_STORE)

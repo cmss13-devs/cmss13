@@ -158,27 +158,30 @@
 	dat += "<body>"
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
-	for(var/datum/view_record/note_view/N in NL)
+	for(var/datum/view_record/note_view/N as anything in NL)
 		var/admin_ckey = N.admin_ckey
 		var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+		var/color = "#008800"
+		if(N.note_category && (N.note_category != NOTE_ADMIN))
+			continue
 		if(N.is_ban)
-			var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
-			var/color = N.is_confidential ? "#880000" : "#5555AA"
-			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
+			color = "#880000"
+			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
 		else
-			var/color = N.is_confidential ? "#AA0055" : "#008800"
+			if(N.is_confidential)
+				color = "#AA0055"
+
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
-		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
-			dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 		dat += "<br><br>"
 
 	dat += "<br>"
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Note</A><br>"
 	dat += "<A href='?src=\ref[src];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
-	dat += "<A href='?src=\ref[src];player_notes_copy=[key]'>Copy Player Notes</A><br>"
+	dat += "<A href='?src=\ref[src];player_notes_all=[key]'>Show Complete Record</A><br>"
 
 	dat += "</body></html>"
-	show_browser(usr, dat, "Info on [key]", "adminplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
@@ -598,3 +601,45 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
 	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
+
+/client/proc/toggle_blood_optimization()
+	set name = "Toggle Blood Optimization"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_BLOOD_OPTIMIZATION
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
+
+/client/proc/toggle_combat_cas()
+	set name = "Toggle Combat CAS Equipment"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_NO_COMBAT_CAS
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
+
+/client/proc/toggle_lz_protection()
+	set name = "Toggle LZ Mortar Protection"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")

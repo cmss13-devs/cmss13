@@ -145,12 +145,21 @@ export const PlayerPanel = (props, context) => {
           {client_rank && (
             <Stack mt={1}>
               <Stack.Item width="80px" color="label">Rank:</Stack.Item>
-              <Stack.Item>
+              <Stack.Item grow={1} align="left">
                 <Button
                   icon="window-restore"
                   content={client_rank}
                   disabled={!hasPermission(data, "access_admin_datum")}
                   onClick={() => act("access_admin_datum")}
+                />
+              </Stack.Item>
+              <Stack.Item align="right">
+                <Button
+                  ml={1}
+                  icon="exclamation-triangle"
+                  disabled={!hasPermission(data, "alert_message")}
+                  onClick={() => act("alert_message")}
+                  content="Alert Message"
                 />
               </Stack.Item>
             </Stack>

@@ -8,6 +8,7 @@
 	canhear_range = 0 // can't hear headsets from very far away
 
 	flags_equip_slot = SLOT_EAR
+	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_binary = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
@@ -17,16 +18,26 @@
 
 	var/list/volume_settings
 
+	var/has_hud = FALSE
+	var/headset_hud_on = FALSE
+	var/locate_setting = TRACKER_SL
+	var/misc_tracking = FALSE
+	var/hud_type = MOB_HUD_FACTION_USCM
+
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	keys = list()
 	for (var/key in initial_keys)
 		keys += new key(src)
 	recalculateChannels()
-	ADD_TRAIT(src, TRAIT_ITEM_EAR_EXCLUSIVE, TRAIT_SOURCE_GENERIC)
 
 	if(length(volume_settings))
 		verbs += /obj/item/device/radio/headset/proc/set_volume_setting
+
+	if(has_hud)
+		headset_hud_on = TRUE
+		verbs += /obj/item/device/radio/headset/proc/toggle_squadhud
+		verbs += /obj/item/device/radio/headset/proc/switch_tracker_target
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -170,17 +181,83 @@
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 		), .proc/turn_on)
+		if(headset_hud_on)
+			var/datum/mob_hud/H = huds[hud_type]
+			H.add_hud_to(user)
+			//squad leader locator is no longer invisible on our player HUD.
+			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
+				user.show_hud_tracker()
+			if(misc_tracking)
+				SStracking.start_misc_tracking(user)
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
 	))
+	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
+		var/datum/mob_hud/H = huds[hud_type]
+		H.remove_hud_from(user)
+		//squad leader locator is invisible again
+		if(user.hud_used && user.hud_used.locate_leader)
+			user.hide_hud_tracker()
+		if(misc_tracking)
+			SStracking.stop_misc_tracking(user)
 	..()
 
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER
 	on = TRUE
+
+/obj/item/device/radio/headset/proc/toggle_squadhud()
+	set name = "Toggle Headset HUD"
+	set category = "Object"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return 0
+	headset_hud_on = !headset_hud_on
+	if(ishuman(usr))
+		var/mob/living/carbon/human/user = usr
+		if(user.has_item_in_ears(src)) //worn
+			var/datum/mob_hud/H = huds[hud_type]
+			if(headset_hud_on)
+				H.add_hud_to(usr)
+				if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)
+					user.show_hud_tracker()
+				if(misc_tracking)
+					SStracking.start_misc_tracking(user)
+			else
+				H.remove_hud_from(usr)
+				if(user.hud_used && user.hud_used.locate_leader)
+					user.hide_hud_tracker()
+				if(misc_tracking)
+					SStracking.stop_misc_tracking(user)
+	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
+	playsound(src,'sound/machines/click.ogg', 20, 1)
+
+/obj/item/device/radio/headset/proc/switch_tracker_target()
+	set name = "Switch Tracker Target"
+	set category = "Object"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	handle_switching_tracker_target(usr)
+
+/obj/item/device/radio/headset/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
+	//Cycles through SL > LZ > FTL
+	if(locate_setting == TRACKER_SL)
+		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
+		locate_setting = TRACKER_LZ
+		return
+	if(locate_setting == TRACKER_LZ && user.assigned_fireteam) //Only set it to FTL if they have a fireteam
+		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
+		locate_setting = TRACKER_FTL
+		return
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
+	locate_setting = TRACKER_SL
 
 
 /obj/item/device/radio/headset/binary
@@ -223,94 +300,7 @@
 	icon_state = "generic_headset"
 	item_state = "headset"
 	frequency = PUB_FREQ
-	var/headset_hud_on = 1
-	var/locate_setting = TRACKER_SL
-	var/misc_tracking = FALSE
-
-/*
-/obj/item/device/radio/headset/almayer/verb/enter_tree()
-	set name = "Enter Techtree"
-	set desc = "Enter the Marine techtree"
-	set category = "Object.Techtree"
-	set src in usr
-
-	var/datum/techtree/T = GET_TREE(TREE_MARINE)
-	T.enter_mob(usr)
-*/
-
-/obj/item/device/radio/headset/almayer/equipped(mob/living/carbon/human/user, slot)
-	if(slot == WEAR_L_EAR || slot == WEAR_R_EAR)
-		if(headset_hud_on)
-			var/datum/mob_hud/H = huds[MOB_HUD_SQUAD]
-			H.add_hud_to(user)
-			//squad leader locator is no longer invisible on our player HUD.
-			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
-				user.show_hud_tracker()
-			if(misc_tracking)
-				SStracking.start_misc_tracking(user)
-	..()
-
-/obj/item/device/radio/headset/almayer/dropped(mob/living/carbon/human/user)
-	if(istype(user) && headset_hud_on)
-		if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
-			var/datum/mob_hud/H = huds[MOB_HUD_SQUAD]
-			H.remove_hud_from(user)
-			//squad leader locator is invisible again
-			if(user.hud_used && user.hud_used.locate_leader)
-				user.hide_hud_tracker()
-			if(misc_tracking)
-				SStracking.stop_misc_tracking(user)
-	..()
-
-/obj/item/device/radio/headset/almayer/verb/toggle_squadhud()
-	set name = "Toggle headset HUD"
-	set category = "Object"
-	set src in usr
-
-	if(usr.is_mob_incapacitated())
-		return 0
-	headset_hud_on = !headset_hud_on
-	if(ishuman(usr))
-		var/mob/living/carbon/human/user = usr
-		if(user.has_item_in_ears(src)) //worn
-			var/datum/mob_hud/H = huds[MOB_HUD_SQUAD]
-			if(headset_hud_on)
-				H.add_hud_to(usr)
-				if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)
-					user.show_hud_tracker()
-				if(misc_tracking)
-					SStracking.start_misc_tracking(user)
-			else
-				H.remove_hud_from(usr)
-				if(user.hud_used && user.hud_used.locate_leader)
-					user.hide_hud_tracker()
-				if(misc_tracking)
-					SStracking.stop_misc_tracking(user)
-	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
-	playsound(src,'sound/machines/click.ogg', 20, 1)
-
-/obj/item/device/radio/headset/almayer/verb/switch_tracker_target()
-	set name = "Switch Tracker Target"
-	set category = "Object"
-	set src in usr
-
-	if(usr.is_mob_incapacitated())
-		return
-
-	handle_switching_tracker_target(usr)
-
-/obj/item/device/radio/headset/almayer/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
-	//Cycles through SL > LZ > FTL
-	if(locate_setting == TRACKER_SL)
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
-		locate_setting = TRACKER_LZ
-		return
-	if(locate_setting == TRACKER_LZ && user.assigned_fireteam) //Only set it to FTL if they have a fireteam
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
-		locate_setting = TRACKER_FTL
-		return
-	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
-	locate_setting = TRACKER_SL
+	has_hud = TRUE
 
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"
@@ -670,6 +660,8 @@
 	frequency = PMC_FREQ
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_PMC
 
 /obj/item/device/radio/headset/distress/PMC/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public."
@@ -685,6 +677,8 @@
 	desc = "A special headset used by UPP military. To access the civillian common channel, use :h."
 	frequency = RUS_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_UPP
 
 /obj/item/device/radio/headset/distress/UPP/recalculateChannels()
 	..()
@@ -700,6 +694,8 @@
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the civillian common channel, use :h."
 	frequency = CLF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_CLF
 
 /obj/item/device/radio/headset/distress/CLF/cct
 	name = "CLF-CCT headset"

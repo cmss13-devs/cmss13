@@ -432,10 +432,12 @@
 	original.hive_pos = NORMAL_XENO
 	original.handle_xeno_leader_pheromones()
 	original.hud_update() // To remove leader star
+	remove_action(original, /datum/action/xeno_action/activable/info_marker)
 
 	replacement.hive_pos = XENO_LEADER_HIVE_POS(leader_num)
 	replacement.handle_xeno_leader_pheromones()
 	replacement.hud_update() // To add leader star
+	give_action(replacement, /datum/action/xeno_action/activable/info_marker)
 
 	hive_ui.update_xeno_keys()
 

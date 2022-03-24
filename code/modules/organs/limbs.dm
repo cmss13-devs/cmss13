@@ -189,6 +189,9 @@
 	if(status & LIMB_DESTROYED)
 		return 0
 
+	var/previous_brute = brute_dam
+	var/previous_burn = burn_dam
+
 	brute *= brute_multiplier
 	burn *= burn_multiplier
 
@@ -275,7 +278,7 @@
 				var/obj/limb/target = pick(possible_points)
 				target.take_damage(remain_brute, remain_burn, int_dmg_multiplier , used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
 
-	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff)
+	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 
 
 	/*
@@ -445,11 +448,15 @@
 	if(internal)
 		remove_all_bleeding(FALSE, TRUE)
 
-	brute_dam = max(0, brute_dam - brute)
-	burn_dam = max(0, burn_dam - burn)
+	if(brute && brute_dam)
+		var/brute_to_heal = min(brute_dam, brute)
+		brute_dam -= brute_to_heal
+		owner.pain.apply_pain(-brute_to_heal, BRUTE)
 
-	owner.pain.apply_pain(-brute)
-	owner.pain.apply_pain(-burn)
+	if(burn && burn_dam)
+		var/burn_to_heal = min(burn_dam, burn)
+		burn_dam -= burn_to_heal
+		owner.pain.apply_pain(-burn_to_heal, BURN)
 
 	owner.updatehealth()
 
@@ -859,28 +866,10 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
 
-/**bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
-if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
-treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.**/
+///bandages brute wounds and removes bleeding and updates med icon
 /obj/limb/proc/bandage(treat_sutured)
 	remove_all_bleeding(TRUE)
 	owner.update_med_icon()
-
-///Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.
-/obj/limb/proc/is_bandaged()
-	var/not_bandaged = FALSE
-
-	return !not_bandaged
-
-/obj/limb/proc/salve()
-	var/rval = 0
-
-	return rval
-
-/obj/limb/proc/is_salved()
-	var/not_salved = FALSE
-
-	return !not_salved
 
 /*
 /obj/limb/proc/handle_dislocated()

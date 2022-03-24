@@ -53,10 +53,10 @@ WILL USE MY SURGERY 1 SKILLS TO ENSURE YOUR BODIES ARE SUB-200 DAMAGE. THIS IS T
 SURGERY, EVEN MORE THAN LARVA REMOVAL, FOR THE FATE OF YOUR DEFIB IS A 5 MINUTE CONCERN.
 NOW COME, RETURN TO CORPSE, STRIKE DOWN THE OB DAMAGE THAT BEAT AGAINST YOU, ALLOW US TO TREAT
 YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF THE ROUND. */
-/datum/element/suturing/proc/begin_suture(obj/item/suturing_item, mob/living/carbon/user, mob/living/carbon/human/target)
+/datum/element/suturing/proc/begin_suture(obj/item/suturing_item, mob/living/carbon/human/target, mob/living/carbon/user)
 	SIGNAL_HANDLER
-	if(isnull(target)) //Attacking self/using item in hand.
-		target = user
+	if(isnull(user)) //Attacking self/using item in hand.
+		user = target
 	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -258,10 +258,6 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 		if(remaining_brute - sutured_brute <= 0)
 			target_limb.remove_all_bleeding(TRUE)
 			suture_brute = FALSE
-			for(var/datum/wound/W as anything in target_limb.wounds)
-				if(W.internal || W.damage_type == BURN) //Can't suture IB.
-					continue
-				W.bandaged |= WOUND_SUTURED
 
 	if(suture_burn)
 		burn_to_heal = min(maximum_heal, (remaining_burn - sutured_burn) * 0.5)
@@ -269,11 +265,6 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 		remaining_burn -= burn_to_heal
 		if(remaining_burn - sutured_burn <= 0)
 			suture_burn = FALSE
-			for(var/datum/wound/W as anything in target_limb.wounds)
-				if(W.internal)
-					continue
-				if(W.damage_type == BURN)
-					W.salved |= WOUND_SUTURED
 
 	target_limb.heal_damage(brute_to_heal, burn_to_heal)
 

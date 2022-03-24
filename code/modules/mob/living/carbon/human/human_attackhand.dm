@@ -136,7 +136,7 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message(SPAN_DANGER("[src]'s [W.name] goes off during the struggle!"), null, null, 5)
+						visible_message(SPAN_DANGER("[M] accidentally makes [src]'s [W.name] go off during the struggle!"), SPAN_DANGER("You accidentally make [src]'s [W.name] go off during the struggle!"), null, 5)
 						var/list/turfs = list()
 						for(var/turf/T in view())
 							turfs += T
@@ -144,8 +144,8 @@
 						count_niche_stat(STATISTICS_NICHE_DISCHARGE)
 
 						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[key_name(M)]</b>."
-						M:attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[key_name(M)]</b>."
-						msg_admin_attack("[key_name(src)] accidentally fired <b>[W.name]</b> in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+						M.attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[key_name(M)]</b>."
+						msg_admin_attack("[key_name(src)] accidentally fired <b>[W.name]</b> in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]) triggered by <b>[key_name(M)]</b>.", M.loc.x, M.loc.y, M.loc.z)
 
 						return W.afterattack(target,src)
 

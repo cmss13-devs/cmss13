@@ -865,10 +865,6 @@ treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma
 /obj/limb/proc/bandage(treat_sutured)
 	remove_all_bleeding(TRUE)
 	owner.update_med_icon()
-	if(applied_bandage)
-		return WOUNDS_BANDAGED
-	else if(wounds_exist)
-		return WOUNDS_ALREADY_TREATED
 
 ///Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.
 /obj/limb/proc/is_bandaged()

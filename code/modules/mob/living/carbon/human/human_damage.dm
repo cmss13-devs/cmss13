@@ -277,9 +277,9 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
-		apply_damage(brute, BRUTE, picked, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
+		apply_damage(brute, BRUTE, picked, int_dmg_multiplier = int_dmg_multiplier)
 	if(burn != 0)
-		apply_damage(burn, BURN, picked, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
+		apply_damage(burn, BURN, picked, int_dmg_multiplier = int_dmg_multiplier)
 	UpdateDamageIcon()
 	updatehealth()
 	speech_problem_flag = 1

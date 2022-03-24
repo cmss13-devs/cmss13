@@ -103,6 +103,8 @@
 	 /// Status traits to give to the mob.
 	var/list/mob_inherent_traits
 
+	var/ignores_stripdrag_flag = FALSE
+
 	//Assoc list of limb name -> list of lists of wounds types
 	//These are all wounds that can be added to a limb when integrity increases
 	//Basically your fractures, IBs and such

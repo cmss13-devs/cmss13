@@ -871,6 +871,10 @@
 			return
 		var/obj/limb/L = item.loc
 
+		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(user.faction_group))
+			to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+			return
+
 		var/action_time = HUMAN_LIMB_ITEM_REMOVAL_DELAY
 		var/self_removal = (user == src)
 		var/helper_item = user.get_active_hand()

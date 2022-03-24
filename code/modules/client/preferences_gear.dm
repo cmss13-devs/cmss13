@@ -114,18 +114,6 @@ var/global/list/gear_datums = list()
 	cost = 3
 	slot = WEAR_HEAD
 
-/datum/gear/durag
-	display_name = "Durag (Mission Specific)"
-	path = /obj/item/clothing/head/durag
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/duragblack
-	display_name = "Durag (Black)"
-	path = /obj/item/clothing/head/durag/black
-	cost = 3
-	slot = WEAR_HEAD
-
 /datum/gear/eyepatch
 	display_name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch

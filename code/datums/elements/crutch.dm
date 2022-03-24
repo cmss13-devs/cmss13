@@ -6,7 +6,7 @@
 	if(!isitem(target))
 		return ELEMENT_INCOMPATIBLE
 
-	ADD_TRAIT(target, TRAIT_CRUTCH, TRAIT_SOURCE_GENERIC)
+	ADD_TRAIT(target, TRAIT_CRUTCH, TRAIT_SOURCE_ITEM)
 	RegisterSignal(target, COMSIG_ITEM_PICKUP, .proc/picked_up)
 	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/dropped)
 

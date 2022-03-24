@@ -150,7 +150,7 @@
 /datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
 	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact_adv, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK) //2.33
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3
@@ -662,7 +662,7 @@
 	load_name(H)
 	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact_adv, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK) //2.33
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //2.66

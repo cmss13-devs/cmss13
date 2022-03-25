@@ -27,3 +27,5 @@
 #define NOTE_COMMANDER		3
 #define NOTE_SYNTHETIC		4
 #define NOTE_YAUTJA			5
+///Note categories in text form, in order of their numerical #defines.
+var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja")

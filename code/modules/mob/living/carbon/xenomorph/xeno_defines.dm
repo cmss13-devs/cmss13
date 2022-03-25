@@ -750,7 +750,7 @@
 			qdel(S)
 	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(xeno.hunter_data.hunted)
+			if(xeno.hunter_data.hunted && !isXenoQueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
@@ -767,8 +767,7 @@
 		if(A && A.hivenumber != hivenumber)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
-			if(embryo.hivenumber != hivenumber)
-				embryo.hivenumber = XENO_HIVE_FORSAKEN
+			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
 

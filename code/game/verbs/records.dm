@@ -84,7 +84,7 @@
 	var/list/options = list()
 
 	if(CLIENT_IS_STAFF(src))
-		options = note_categories
+		options = note_categories.Copy()
 		if(admin_holder.rights & R_PERMISSIONS)
 			MA = TRUE
 	else if(!isCouncil(src))
@@ -98,13 +98,13 @@
 	target = ckey(target)
 
 	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
-		options += "Commanding Officer"
+		options |= "Commanding Officer"
 		edit_C = TRUE
 	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
-		options += "Synthetic"
+		options |= "Synthetic"
 		edit_S = TRUE
 	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
-		options += "Yautja"
+		options |= "Yautja"
 		edit_Y = TRUE
 
 	var/choice = tgui_input_list(usr, "What record do you wish to view?", "Record Choice", options)

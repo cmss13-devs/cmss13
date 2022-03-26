@@ -405,6 +405,17 @@
 	potency = 30
 	plantname = "killertomato"
 
+/obj/item/reagent_container/food/snacks/grown/killertomato/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "I say to-mah-to, you say tom-mae-to... OH SCIENCE IT'S EATING MY LEGS!!"
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/reagent_container/food/snacks/grown/killertomato/attack_self(mob/user)
 	..()
 

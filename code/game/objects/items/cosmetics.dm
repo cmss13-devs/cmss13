@@ -40,6 +40,17 @@
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
 
+/obj/item/facepaint/skull/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a sciencedamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/facepaint/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()

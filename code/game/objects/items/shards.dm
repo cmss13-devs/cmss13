@@ -119,6 +119,17 @@
 	name = "human bone fragments"
 	desc = "Oh god, their bits are everywhere!"
 
+/obj/item/shard/shrapnel/bone_chips/human/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "Oh science, their bits are everywhere!"
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/shard/shrapnel/bone_chips/xeno
 	name = "alien bone fragments"
 	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."

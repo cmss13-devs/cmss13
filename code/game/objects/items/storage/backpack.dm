@@ -209,6 +209,18 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank god you're in the Marines now."
 	icon_state = "clownpack"
 
+/obj/item/storage/backpack/clown/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank science you're in the Marines now."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
+
 //==========================//COLONY/CIVILIAN PACKS\\================================\\
 
 /obj/item/storage/backpack/medic

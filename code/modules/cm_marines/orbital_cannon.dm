@@ -393,10 +393,23 @@ var/list/ob_type_fuel_requirements
 
 	for(var/mob/M in range(15, target))
 		relative_dir = get_dir(M, target)
-		M.show_message( \
-			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
-			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
-		)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.religion == "Atheism")
+				M.show_message( \
+				SPAN_HIGHDANGER("OH SCIENCE THE SKY WILL EXPLODE!!!"), 1, \
+				SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+				)
+			else
+				M.show_message( \
+				SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
+				SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+				)
+		else
+			M.show_message( \
+				SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
+				SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+			)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic

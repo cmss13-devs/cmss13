@@ -34,6 +34,17 @@
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/bullet/rifle/explosive
 
+/obj/item/ammo_magazine/rifle/grenadespawner/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "A 10mm assault rifle magazine. Oh science... just don't hit friendlies with it."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "A 10mm armor piercing magazine."

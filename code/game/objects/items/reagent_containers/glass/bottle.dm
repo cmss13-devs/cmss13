@@ -347,6 +347,17 @@
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "holyflask"
 
+/obj/item/reagent_container/glass/bottle/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "A small bottle. Contains the liquid essence of the sciences."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/reagent_container/glass/bottle/adminordrazine/Initialize()
 	. = ..()
 	reagents.add_reagent("adminordrazine", 60)

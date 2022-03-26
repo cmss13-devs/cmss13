@@ -27,7 +27,14 @@
 	if(liaison)
 		to_chat(usr, "Your corporate overlords at Weyland-Yutani have received your message.")
 	else
-		to_chat(usr, "Your prayers have been received by the gods.")
+		if(!ishuman(src))
+			to_chat(usr, "Your prayers have been received by the gods.")
+			return
+		var/mob/living/carbon/human/H = src
+		if(H.religion == "Atheism")
+			to_chat(usr, "Your prayers have been received by the science.")
+		else
+			to_chat(usr, "Your prayers have been received by the gods.")
 
 /proc/high_command_announce(var/text , var/mob/Sender , var/iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)

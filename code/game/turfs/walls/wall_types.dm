@@ -645,6 +645,17 @@
 	walltype = WALL_SHIVA_FAB_R
 	hull = TRUE
 
+/turf/closed/wall/shiva/prefabricated/reinforced/hull/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "It cannot be destroyed by any means you have available. Perhaps praying to the sciences may help."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /turf/closed/wall/shiva/prefabricated/orange
 	icon_state = "shiva_fab_oj"
 	walltype = WALL_SHIVA_FAB_ORANGE

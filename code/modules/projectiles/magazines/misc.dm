@@ -37,8 +37,30 @@
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/grenade_container/rifle
 
+/obj/item/ammo_magazine/rifle/grenadespawner/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "OH SCIENCE OH FUCK"
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/item/ammo_magazine/rifle/huggerspawner
 	name = "\improper HUGGER SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/hugger_container
+
+/obj/item/ammo_magazine/rifle/huggerspawner/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "OH SCIENCE OH FUCK"
+		..()
+		desc = initial(desc)
+	else
+		return ..()

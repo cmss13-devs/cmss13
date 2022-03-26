@@ -475,6 +475,17 @@
 	bound_width = 32
 	bound_height = 96
 
+/obj/structure/prop/turbine/examine(mob/user)
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if(H.religion == "Atheism")
+		desc = "A gigantic turbine that runs on science knows what. It could probably be turned on by someone with the correct know-how."
+		..()
+		desc = initial(desc)
+	else
+		return ..()
+
 /obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
 	. = ..()
 	if(isXeno(user))

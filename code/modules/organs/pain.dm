@@ -40,7 +40,14 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				msg = SPAN_DANGER("Your [partname] burns badly!")
 			if(91 to 10000)
 				flash_pain()
-				msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is on fire!")
+				if(ishuman(src))
+					var/mob/living/carbon/human/H = src
+					if(H.religion == "Atheism")
+						msg = SPAN_HIGHDANGER("OH SCIENCE! Your [partname] is on fire!")
+					else
+						msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is on fire!")
+				else
+					msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is on fire!")
 	else
 		switch(amount)
 			if(1 to 10)
@@ -50,7 +57,14 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				msg = SPAN_DANGER("Your [partname] hurts badly.")
 			if(91 to 10000)
 				flash_pain()
-				msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is hurting terribly!")
+				if(ishuman(src))
+					var/mob/living/carbon/human/H = src
+					if(H.religion == "Atheism")
+						msg = SPAN_HIGHDANGER("OH SCIENCE! Your [partname] is hurting terribly!")
+					else
+						msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is hurting terribly!")
+				else
+					msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is hurting terribly!")
 	if(msg && (msg != last_pain_message || prob(10)))
 		last_pain_message = msg
 		to_chat(src, msg)

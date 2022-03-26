@@ -163,11 +163,13 @@
 	var/name_active = TRUE
 	var/translator_type = "Modern"
 	var/obj/item/card/id/bracer_chip/embedded_id
+	var/obj/item/storage/medicomp/medicomp
 
 /obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type)
 	. = ..()
 	caster = new(src)
 	embedded_id = new(src)
+	medicomp = new /obj/item/storage/medicomp/full(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
 
@@ -204,6 +206,7 @@
 /obj/item/clothing/gloves/yautja/hunter/Destroy()
 	QDEL_NULL(caster)
 	QDEL_NULL(embedded_id)
+	QDEL_NULL(medicomp)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/process()
@@ -377,6 +380,66 @@
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
 	return 1
+
+//Medicomp
+/obj/item/clothing/gloves/yautja/hunter/verb/medicomp()
+	set name = "Use Medicomp"
+	set desc = "Eject your medicomp. It cannot be dropped, but can be retracted."
+	set category = "Yautja.Utility"
+	set src in usr
+	. = medicomp_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/medicomp_internal(var/forced = FALSE)
+	if(!usr.loc || usr.is_mob_incapacitated())
+		return
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user))
+		return
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
+	var/medicomp_active = TRUE
+	var/obj/item/storage/medicomp/R = usr.r_hand
+	var/obj/item/storage/medicomp/L = usr.l_hand
+	if(!istype(R) && !istype(L))
+		medicomp_active = FALSE
+	if(medicomp_active) //Turn it off.
+		var/found = FALSE
+		if(istype(R))
+			found = TRUE
+			usr.r_hand = null
+			if(R)
+				user.temp_drop_inv_item(R)
+				R.forceMove(src)
+			user.update_inv_r_hand()
+		if(L && istype(L))
+			found = TRUE
+			usr.l_hand = null
+			if(L)
+				user.temp_drop_inv_item(L)
+				L.forceMove(src)
+			user.update_inv_l_hand()
+		if(found)
+			to_chat(usr, SPAN_NOTICE("You retract your medicomp."))
+			playsound(src,'sound/items/air_release.ogg', 15, 1)
+			medicomp_active = FALSE
+		return
+	else //Turn it on!
+		if(usr.get_active_hand())
+			to_chat(usr, SPAN_WARNING("Your hand must be free to extend your medicomp!"))
+			return
+
+		var/obj/item/storage/medicomp/M = medicomp
+		usr.put_in_active_hand(M)
+		M.source = src
+		to_chat(usr, SPAN_NOTICE("You extend your medicomp."))
+		playsound(src,'sound/items/air_release.ogg', 15, 1)
+	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/track_gear()
 	set name = "Track Yautja Gear"
@@ -758,7 +821,7 @@
 
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
-	set name = "Create Self-Heal Crystal"
+	set name = "Create Stabilising Crystal"
 	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
@@ -783,7 +846,7 @@
 		return 0
 
 	if(inject_timer)
-		to_chat(usr, SPAN_WARNING("You recently activated the healing crystal. Be patient."))
+		to_chat(usr, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return
 
 	if(!drain_power(usr,1000)) return
@@ -799,7 +862,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/injectors_ready()
 	if(ismob(loc))
-		to_chat(loc, SPAN_NOTICE(" Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new stabilising crystal is ready to be created."))
 	inject_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disk()

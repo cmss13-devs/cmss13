@@ -12,6 +12,10 @@
 	recent_audio_emote = TRUE
 	addtimer(CALLBACK(src, .proc/clear_audio_emote_cooldown), 20 SECONDS)
 
+/mob/living/proc/start_big_audio_emote_cooldown()
+	recent_audio_emote = TRUE
+	addtimer(CALLBACK(src, .proc/clear_audio_emote_cooldown), 120 SECONDS)
+
 /mob/living/proc/clear_audio_emote_cooldown()
 	recent_audio_emote = FALSE
 

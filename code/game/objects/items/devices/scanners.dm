@@ -139,10 +139,10 @@ FORENSIC SCANNER
 
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"
+	desc = "A hand-held body scanner of alien design. It's able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "Tracker"
 	item_state = "analyzer"
-	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	alien = TRUE
 
 /obj/item/device/analyzer

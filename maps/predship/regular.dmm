@@ -243,21 +243,6 @@
 /area/yautja)
 "aY" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
-	name = "mending herbs"
-	},
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -282,21 +267,6 @@
 /area/yautja)
 "ba" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/ointment/predator{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/predator{
-	name = "soothing herbs"
-	},
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -642,8 +612,6 @@
 "ce" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/melee/yautja/knife,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1414,8 +1382,6 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"

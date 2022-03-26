@@ -205,3 +205,13 @@
 
 	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()
+
+/datum/species/yautja/handle_unique_behavior(mob/living/carbon/human/H)
+	var/healamt = 0.2
+	if((H.health < H.maxHealth) && H.health != 0)
+		if(H.health < (H.maxHealth / 5))
+			healamt = 1
+		else if(H.health < (H.maxHealth / 2))
+			healamt = 0.5
+		H.apply_damage(-healamt, BURN)
+		H.apply_damage(-healamt, BRUTE)

@@ -992,3 +992,56 @@
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
+
+
+/obj/item/storage/medicomp
+	name = "medicomp"
+	desc = "A complex kit of alien tools and medicines."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "medicomp"
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+	storage_slots = 14
+	storage_flags = STORAGE_SHOW_FULLNESS
+	can_hold = list(
+					/obj/item/tool/surgery/retractor/predatorretractor,
+					/obj/item/tool/surgery/hemostat/predatorhemostat,
+					/obj/item/tool/surgery/cautery/predatorcautery,
+					/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
+					/obj/item/tool/surgery/scalpel/predatorscalpel,
+					/obj/item/tool/surgery/circular_saw/predatorbonesaw,
+					/obj/item/tool/surgery/bonegel/predatorbonegel,
+					/obj/item/tool/surgery/FixOVein/predatorFixOVein,
+					/obj/item/tool/surgery/bonesetter/predatorbonesetter,
+					/obj/item/stack/medical/advanced/bruise_pack/predator,
+					/obj/item/reagent_container/hypospray/autoinjector/yautja,
+					/obj/item/device/healthanalyzer/alien
+					)
+	var/obj/item/clothing/gloves/yautja/source = null
+
+/obj/item/storage/medicomp/Destroy()
+	source = null
+	return ..()
+
+/obj/item/storage/medicomp/dropped(mob/living/carbon/human/M)
+	playsound(M,'sound/items/air_release.ogg', 15, 1)
+	if(source)
+		forceMove(source)
+		return
+	..()
+
+/obj/item/storage/medicomp/full/fill_preset_inventory()
+	new /obj/item/tool/surgery/retractor/predatorretractor(src)
+	new /obj/item/tool/surgery/hemostat/predatorhemostat(src)
+	new /obj/item/tool/surgery/cautery/predatorcautery(src)
+	new /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill(src)
+	new /obj/item/tool/surgery/scalpel/predatorscalpel(src)
+	new /obj/item/tool/surgery/circular_saw/predatorbonesaw(src)
+	new /obj/item/tool/surgery/bonegel/predatorbonegel(src)
+	new /obj/item/tool/surgery/FixOVein/predatorFixOVein(src)
+	new /obj/item/tool/surgery/bonesetter/predatorbonesetter(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/device/healthanalyzer/alien(src)

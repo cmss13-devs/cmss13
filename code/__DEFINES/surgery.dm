@@ -3,7 +3,7 @@
 ///checks if the item has a path that can be specifically used in a surgery step and is not flagged to not message on failed init - ex. cable coil, trauma kits etc.
 #define is_surgery_init_tool(W) (is_type_in_typecache(W, GLOB.surgical_init_tools))
 
-///Multiplier to surgery times when working on yourself. 
+///Multiplier to surgery times when working on yourself.
 #define SELF_SURGERY_SLOWDOWN 1.5
 
 ///No incision.
@@ -125,6 +125,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 ///Tools used to patch damaged bloodvessels. Same tools as SUTURE, but fixovein exists specifically for this work and is best at it.
 #define SURGERY_TOOLS_MEND_BLOODVESSEL list(\
 	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/storage/medicomp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
 	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_AWFUL\
@@ -133,9 +134,14 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 ///Tools used to suture damaged flesh. Same tools as BLOODVESSEL, but surgical line is ideal for this.
 #define SURGERY_TOOLS_SUTURE list(\
 	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/storage/medicomp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
 	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_AWFUL\
+	)
+
+#define SURGERY_TOOLS_MCOMP list(\
+	/obj/item/storage/medicomp = SURGERY_TOOL_MULT_IDEAL\
 	)
 
 /////////////////////////////

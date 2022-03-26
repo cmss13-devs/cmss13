@@ -21,12 +21,11 @@
 
 	gun.icon = c_icon
 
-	gun.item_icons = list()
-
-	gun.item_icons += list(WEAR_L_HAND = l_icon)
-	gun.item_icons += list(WEAR_R_HAND = r_icon)
-	gun.item_icons += list(WEAR_BACK = b_icon)
-	gun.item_icons += list(WEAR_J_STORE = j_icon)
+	LAZYINITLIST(gun.item_icons)
+	gun.item_icons[WEAR_L_HAND] = l_icon
+	gun.item_icons[WEAR_R_HAND] = r_icon
+	gun.item_icons[WEAR_BACK] = b_icon
+	gun.item_icons[WEAR_J_STORE] = j_icon
 
 /datum/decorator/weapon_map_decorator/classic
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'

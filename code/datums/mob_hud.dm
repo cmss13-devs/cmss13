@@ -435,6 +435,12 @@ var/list/datum/mob_hud/huds = list(
 
 //xeno status HUD
 
+/mob/living/carbon/Xenomorph/proc/hud_set_marks()
+	if(!client)
+		return
+	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
+		client.images |= i.seenMeaning
+
 /mob/living/carbon/Xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
 	if(stat == DEAD || plasma_max == 0)

@@ -147,3 +147,77 @@
 			em_call.activate(announce = FALSE)
 
 		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
+
+/datum/admins/proc/create_xenos_list(var/href_list)
+	var/atom/initial_spot = usr.loc
+	var/turf/initial_turf = get_turf(initial_spot)
+
+	var/xeno_hive
+	if (istext(href_list["create_hive_list"]))
+		xeno_hive = href_list["create_hive_list"]
+	else
+		alert("Select fewer hive paths, (max 1)")
+		return
+
+	var/xeno_caste
+	if (istext(href_list["create_xenos_list"]))
+		xeno_caste = href_list["create_xenos_list"]
+	else
+		alert("Select fewer xeno paths, (max 1)")
+		return
+
+	var/xenos_to_spawn = dd_range(1, 100, text2num(href_list["object_count"]))
+	var/range_to_spawn_on = dd_range(0, 10, text2num(href_list["object_range"]))
+
+	var/free_the_xenos = FALSE
+	var/offer_as_ert = FALSE
+	if(href_list["spawn_as"] == "freed")
+		free_the_xenos = TRUE
+
+	else if(href_list["spawn_as"] == "ert")
+		offer_as_ert = TRUE
+
+	if(xenos_to_spawn)
+		var/list/turfs = list()
+		if(isnull(range_to_spawn_on))
+			range_to_spawn_on = 0
+
+		if(range_to_spawn_on)
+			for(var/turf/T in range(initial_turf, range_to_spawn_on))
+				if(!T || istype(T, /turf/closed))
+					continue
+				turfs += T
+		else
+			turfs = list(initial_turf)
+
+		if(!length(turfs))
+			return
+
+		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
+
+		var/list/xenos = list()
+		var/mob/living/carbon/Xenomorph/X
+		for(var/i = 0 to xenos_to_spawn - 1)
+			var/turf/to_spawn_at = pick(turfs)
+			X = new caste_type(to_spawn_at, null, xeno_hive)
+
+			if(!X.hud_used)
+				X.create_hud()
+
+			if(free_the_xenos)
+				owner.free_for_ghosts(X)
+
+			xenos += X
+
+		if (offer_as_ert)
+			var/datum/emergency_call/custom/em_call = new()
+			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
+			em_call.name = name
+			em_call.mob_max = xenos.len
+			em_call.players_to_offer = xenos
+			em_call.owner = owner
+
+			em_call.activate(announce = FALSE)
+
+		message_staff("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")
+

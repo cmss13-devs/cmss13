@@ -17,18 +17,9 @@
 	throw_speed = SPEED_VERY_FAST
 
 	matter = list("metal" = 50,"glass" = 20)
-	var/list/tool_traits_init = list(TRAIT_TOOL_MULTITOOL)
+	inherent_traits = list(TRAIT_TOOL_MULTITOOL)
 	var/hack_speed = 10 SECONDS // Only used for vendors right now
 	var/next_scan
-
-/obj/item/device/multitool/Initialize(mapload, ...)
-	. = ..()
-	if(!tool_traits_init)
-		return
-	for(var/T in tool_traits_init)
-		ADD_TRAIT(src, T, TRAIT_SOURCE_TOOL)
-
-
 
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)
 	return FALSE

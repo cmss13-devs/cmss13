@@ -65,8 +65,11 @@
 				if (!length(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T), _T); \
+					if(_T in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[_T]); \
 					}; \
 				};\
+			};\
 			if (!length(_L)) { \
 				target.status_traits = null\
 			};\
@@ -88,8 +91,11 @@
 				if (!length(_L[_T])) { \
 					_L -= _T; \
 					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
+					if(_T in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[_T]); \
 					}; \
 				};\
+			};\
 			if (!length(_L)) { \
 				target.status_traits = null\
 			};\
@@ -148,6 +154,9 @@
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
 
+// GUN TRAITS
+#define TRAIT_GUN_SILENCED "t_gun_silenced"
+
 //If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
 #define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
 
@@ -167,7 +176,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 //trait SOURCES
 /// Example trait source
 // #define TRAIT_SOURCE_Y "t_s_y"
-#define TRAIT_SOURCE_GENERIC "t_s_generic"
+#define TRAIT_SOURCE_INHERENT "t_s_inherent"
 //-- mob traits --
  ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
@@ -175,11 +184,11 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_HIVE "t_s_hive"
  ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
- ///Status trait coming from tools
-#define TRAIT_SOURCE_TOOL "t_s_tool"
  ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
  ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
  ///Status trait coming from equipment
 #define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"
+///Status trait coming from attachment
+#define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"

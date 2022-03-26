@@ -107,7 +107,7 @@
 		return FALSE
 
 	if(I == wear_suit)
-		if(s_store)
+		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)
 		wear_suit = null
 		if(I.flags_inv_hide & HIDESHOES)
@@ -504,7 +504,7 @@
 	attack_log += "\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(M)]'s [I.name] ([slot_to_process])</font>"
 	log_interact(src, M, "[key_name(src)] tried to remove [key_name(M)]'s [I.name] ([slot_to_process]).")
 
-	M.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
+	src.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
 					SPAN_DANGER("You are trying to remove [M]'s [I.name]."), null, 5)
 	I.add_fingerprint(src)
 	if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))

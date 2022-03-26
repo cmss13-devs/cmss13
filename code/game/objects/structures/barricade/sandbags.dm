@@ -86,14 +86,14 @@
 
 		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."), \
 			SPAN_NOTICE("You start adding sandbags to [src]."))
-		if(!do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
-			return
-
+		for(var/i = build_stage to BARRICADE_SANDBAG_5)
+			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5)
+				break
+			SB.use(1)
+			increment_build_stage()
+			update_icon()
 		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."), \
 			SPAN_NOTICE("You stack [SB] onto [src]."))
-		SB.use(1)
-		increment_build_stage()
-		update_icon()
 		return
 	else
 		. = ..()

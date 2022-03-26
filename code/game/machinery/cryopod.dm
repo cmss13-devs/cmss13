@@ -225,6 +225,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 				dept_console = GLOB.frozen_items["Eng"]
 			if("Predator")
 				dept_console = GLOB.frozen_items["Yautja"]
+		H.species.handle_cryo(H)
 
 	var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 

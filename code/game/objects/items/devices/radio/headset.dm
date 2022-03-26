@@ -8,6 +8,7 @@
 	canhear_range = 0 // can't hear headsets from very far away
 
 	flags_equip_slot = SLOT_EAR
+	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_binary = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
@@ -29,7 +30,6 @@
 	for (var/key in initial_keys)
 		keys += new key(src)
 	recalculateChannels()
-	ADD_TRAIT(src, TRAIT_ITEM_EAR_EXCLUSIVE, TRAIT_SOURCE_GENERIC)
 
 	if(length(volume_settings))
 		verbs += /obj/item/device/radio/headset/proc/set_volume_setting

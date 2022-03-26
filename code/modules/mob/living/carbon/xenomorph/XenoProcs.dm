@@ -651,3 +651,22 @@
 			return "Strong"
 		if(4.0 to INFINITY)
 			return "Very Strong"
+
+/mob/living/carbon/Xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
+	if(!target)
+		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!."))
+		return
+	target.xenos_tracking |= src
+	tracked_marker = target
+	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
+	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
+
+/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	ML.overlays.Cut()
+	if(destroyed)
+		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+	else
+		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+	tracked_marker.xenos_tracking -= src
+	tracked_marker = null

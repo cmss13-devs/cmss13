@@ -67,7 +67,8 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 	/obj/item/clothing/mask/cigarette,\
 	/obj/item/tool/weldingtool,\
 	/obj/item/tool/pen,\
-	/obj/item/stack/rods\
+	/obj/item/stack/rods,\
+	/obj/item/tool/surgery/surgical_line\
 	)
 
 /////////////////////////////
@@ -124,17 +125,17 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 ///Tools used to patch damaged bloodvessels. Same tools as SUTURE, but fixovein exists specifically for this work and is best at it.
 #define SURGERY_TOOLS_MEND_BLOODVESSEL list(\
 	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE,\
-	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
+	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
+	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_AWFUL\
 	)
 
 ///Tools used to suture damaged flesh. Same tools as BLOODVESSEL, but surgical line is ideal for this.
 #define SURGERY_TOOLS_SUTURE list(\
 	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE,\
-	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
+	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
+	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_AWFUL\
 	)
 
 /////////////////////////////

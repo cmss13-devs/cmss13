@@ -384,6 +384,6 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && equip_sounds.len)
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && LAZYLEN(equip_sounds))
 		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 	..()

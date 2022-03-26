@@ -21,6 +21,7 @@
 	var/obj/screen/alien_plasma_display
 	var/obj/screen/alien_armor_display
 	var/obj/screen/locate_leader
+	var/obj/screen/locate_marker
 	var/obj/screen/locate_nuke
 	var/obj/screen/pred_power_icon
 
@@ -100,6 +101,7 @@
 	alien_plasma_display = null
 	alien_armor_display = null
 	locate_leader = null
+	locate_marker = null
 	pred_power_icon = null
 
 	module_store_icon = null

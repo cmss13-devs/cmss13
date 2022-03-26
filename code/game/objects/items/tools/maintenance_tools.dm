@@ -26,7 +26,7 @@
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
-	tool_traits_init = list(TRAIT_TOOL_WRENCH)
+	inherent_traits = list(TRAIT_TOOL_WRENCH)
 
 
 /*
@@ -46,7 +46,7 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
-	tool_traits_init = list(TRAIT_TOOL_SCREWDRIVER)
+	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 
 
 
@@ -126,7 +126,7 @@
 	attack_verb = list("pinched", "nipped")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
-	tool_traits_init = list(TRAIT_TOOL_WIRECUTTERS)
+	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
 
 /obj/item/tool/wirecutters/tactical
 	name = "tactical wirecutters"
@@ -452,7 +452,7 @@
 	matter = list("metal" = 50)
 
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
-	tool_traits_init = list(TRAIT_TOOL_CROWBAR)
+	inherent_traits = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
 
 /obj/item/tool/crowbar/red

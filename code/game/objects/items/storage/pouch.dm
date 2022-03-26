@@ -610,6 +610,8 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
@@ -635,6 +637,8 @@
 		/obj/item/device/healthanalyzer,
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()

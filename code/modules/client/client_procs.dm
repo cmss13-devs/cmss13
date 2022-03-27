@@ -338,10 +338,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
-		to_chat(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
-		to_chat(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
-		to_chat(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of byond. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
-		to_chat(src, SPAN_NOTICE(FONT_SIZE_LARGE("Have a CM day.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of byond. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
+		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("Have a CM day.")))
 		qdel(src)
 		return
 

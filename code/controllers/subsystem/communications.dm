@@ -111,6 +111,7 @@ var/const/CLF_FREQ		= 1339
 var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
 var/const/HC_FREQ		= 1240
+var/const/CCT_FREQ		= 1350
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -120,7 +121,6 @@ var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
 var/const/JTAC_FREQ 	= 1358
 var/const/TACTICS_FREQ	= 1356
-var/const/CCT_FREQ		= 1350
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -135,8 +135,7 @@ var/const/ECHO_FREQ 	= 1457
 var/const/PUB_FREQ 		= 1461
 
 //Civilian channels
-var/const/CIV_GEN_FREQ 	= 1469
-var/const/CIV_COMM_FREQ = 1471
+var/const/COLONY_FREQ	= 1469
 
 var/list/radiochannels = list(
 	"Response Team" = ERT_FREQ,
@@ -146,7 +145,7 @@ var/list/radiochannels = list(
 	"SpecOps" 		= DTH_FREQ,
 	"UPP" 			= RUS_FREQ,
 	"CLF"			= CLF_FREQ,
-	"Colonist"		= DUT_FREQ,
+	"DD"			= DUT_FREQ,
 	"HighCom"		= HC_FREQ,
 	"CCT"			= CCT_FREQ, // HvH JTAC Equiv
 
@@ -167,8 +166,7 @@ var/list/radiochannels = list(
 	"Alamo"			= DS1_FREQ,
 	"Normandy"		= DS2_FREQ,
 
-	"Common"		= CIV_GEN_FREQ,
-	"Civ Command"	= CIV_COMM_FREQ
+	"Colony"		= COLONY_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
@@ -178,7 +176,7 @@ var/list/radiochannels = list(
 #define ANTAG_FREQS list()
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -231,7 +229,8 @@ SUBSYSTEM_DEF(radio)
 		"[BRAVO_FREQ]" = "bravoradio",
 		"[CHARLIE_FREQ]" = "charlieradio",
 		"[DELTA_FREQ]" = "deltaradio",
-		"[ECHO_FREQ]" = "echoradio"
+		"[ECHO_FREQ]" = "echoradio",
+		"[COLONY_FREQ]" = "deptradio"
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)

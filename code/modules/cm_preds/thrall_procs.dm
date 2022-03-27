@@ -23,13 +23,20 @@
 	if(sure == "Begin the Hunt")
 		var/list/ymelee = list("The Lumbering Glaive", "The Nimble Spear", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick")
 		var/list/hmelee = list("The Swift Machete", "The Dancing Rapier", "The Broad Claymore", "The Purposeful Fireaxe")
+		var/list/radial_ymelee = list("The Lumbering Glaive" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), "The Rending Chain-Whip" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),"The Piercing Hunting Sword" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),"The Cleaving War-Scythe" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), "The Adaptive Combi-Stick" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), "The Nimble Spear" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spearhunter"))
+		var/list/radial_hmelee = list("The Swift Machete" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "machete"), "The Dancing Rapier" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "ceremonial"), "The Broad Claymore" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "mercsword"), "The Purposeful Fireaxe" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "fireaxe"))
 		var/msel
 		var/type = alert("Do you seek to bring honor to your race, or embrace an alien culture?", "Human or Alien?", "Semper Humanus!", "What's loyalty?")
 		if(type == "Semper Humanus!")
-			msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", hmelee)
+			if(usr.client.prefs && usr.client.prefs.no_radials_preference)
+				msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", hmelee)
+			else
+				msel = show_radial_menu(usr, src, radial_hmelee)
 		else if(type == "What's loyalty?")
-			msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", ymelee)
-
+			if(usr.client.prefs && usr.client.prefs.no_radials_preference)
+				msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", ymelee)
+			else
+				msel = show_radial_menu(usr, src, radial_ymelee)
 		if(!msel) return //We don't want them to cancel out then get nothing.
 
 

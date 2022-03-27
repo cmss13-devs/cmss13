@@ -172,7 +172,7 @@
 	faction_shorthand = "PMC"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
-	freq_listening = list(CIV_GEN_FREQ, CIV_COMM_FREQ)
+	freq_listening = list(COLONY_FREQ)
 	faction_shorthand = "colony"
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
@@ -221,7 +221,7 @@
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -259,7 +259,6 @@
 /obj/structure/machinery/telecomms/bus/preset_four
 	id = "Bus 4"
 	network = "tcommsat"
-	freq_listening = list(CIV_GEN_FREQ)
 	autolinkers = list("processor4", "common")
 
 /obj/structure/machinery/telecomms/bus/preset_four/Initialize(mapload, ...)

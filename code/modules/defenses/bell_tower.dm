@@ -7,6 +7,7 @@
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response."
 	var/list/tripwires_placed = list()
 	var/mob/last_mob_activated
+	var/bell_cooldown = 0 //cooldown between BING BONG BING BONGs
 	var/image/flick_image
 	handheld_type = /obj/item/defenses/handheld/bell_tower
 
@@ -100,6 +101,10 @@
 
 	if(linked_bell.last_mob_activated == M)
 		return
+
+	if(linked_bell.bell_cooldown > world.time)
+		return
+
 	linked_bell.last_mob_activated = M
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
@@ -107,9 +112,11 @@
 	linked_bell.mob_crossed(M)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
 	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
+	linked_bell.bell_cooldown = world.time + 15 //1.5s cooldown between RINGS
 
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
+	detector_range = 7 //yeah no offscreen bs with this
 
 	var/obj/structure/machinery/defenses/bell_tower/md/linked_tower
 
@@ -119,6 +126,7 @@
 	if(istype(to_apply))
 		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
+		sound_to(to_apply, 'sound/items/detector.ogg')
 
 /obj/structure/machinery/defenses/bell_tower/md
 	name = "R-1NG motion detector tower"

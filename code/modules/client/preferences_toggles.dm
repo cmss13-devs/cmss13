@@ -6,7 +6,7 @@
 	if(!admin_holder) return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers")
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
 
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
@@ -15,7 +15,7 @@
 	if(!admin_holder)	return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive.")
+	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -23,7 +23,7 @@
 	set desc = "Toggles seeing prayers"
 	prefs.toggles_chat ^= CHAT_PRAYER
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat.")
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
 
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"
@@ -32,11 +32,11 @@
 	prefs.toggles_sound ^= SOUND_LOBBY
 	prefs.save_preferences()
 	if(prefs.toggles_sound & SOUND_LOBBY)
-		to_chat(src, "You will now hear music in the game lobby.")
+		to_chat(src, SPAN_BOLDNOTICE("You will now hear music in the game lobby."))
 		if(istype(mob, /mob/new_player))
 			playtitlemusic()
 	else
-		to_chat(src, "You will no longer hear music in the game lobby.")
+		to_chat(src, SPAN_BOLDNOTICE("You will no longer hear music in the game lobby."))
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
 
 /client/verb/togglemidis()
@@ -46,7 +46,7 @@
 	// prefs.toggles_sound ^= SOUND_MIDI // Toggle on/off
 	// prefs.save_preferences() // We won't save the change - it'll be a temporary switch instead of permanent, but they can still make it permanent in character setup.
 	if(prefs.toggles_sound & SOUND_MIDI) // Not using && midi_playing here - since we can't tell how long an admin midi is, the user should always be able to turn it off at any time.
-		to_chat(src, "The currently playing midi has been silenced.")
+		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
 		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
 		break_sound.priority = 250
 		src << break_sound	//breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
@@ -58,7 +58,7 @@
 			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0
 	else
-		to_chat(src, "You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you.")
+		to_chat(src, SPAN_BOLDNOTICE("You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you."))
 
 /client/verb/togglechat()
 	set name = "Toggle Abovehead Chat"
@@ -67,7 +67,7 @@
 
 	prefs.lang_chat_disabled = ~prefs.lang_chat_disabled
 	prefs.save_preferences()
-	to_chat(src, "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head.")
+	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
 
 /client/verb/toggle_permission_errors()
 	set name = "Toggle Permission Errors"
@@ -76,7 +76,7 @@
 
 	prefs.show_permission_errors = !prefs.show_permission_errors
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages.")
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages."))
 
 /client/verb/listen_ooc()
 	set name = "Show/Hide OOC"
@@ -84,7 +84,7 @@
 	set desc = "Toggles seeing OutOfCharacter chat"
 	prefs.toggles_chat ^= CHAT_OOC
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel.")
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel."))
 
 /client/verb/listen_looc()
 	set name = "Show/Hide LOOC"
@@ -93,7 +93,7 @@
 	prefs.toggles_chat ^= CHAT_LOOC
 	prefs.save_preferences()
 
-	to_chat(src, "You will [(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel.")
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel."))
 
 /client/verb/Toggle_Soundscape() //All new ambience should be added here so it works with this verb until someone better at things comes up with a fix that isn't awful
 	set name = "Hear/Silence Ambience"
@@ -102,11 +102,11 @@
 	prefs.toggles_sound ^= SOUND_AMBIENCE
 	prefs.save_preferences()
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
-		to_chat(src, "You will now hear ambient sounds.")
+		to_chat(src,SPAN_BOLDNOTICE( "You will now hear ambient sounds."))
 		if(soundOutput)
 			soundOutput.update_ambience(null, TRUE)
 	else
-		to_chat(src, "You will no longer hear ambient sounds.")
+		to_chat(src,SPAN_BOLDNOTICE( "You will no longer hear ambient sounds."))
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
@@ -118,9 +118,9 @@
 	prefs.toggles_flashing ^= FLASH_ROUNDSTART
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDSTART)
-		to_chat(src, "The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round.")
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round."))
 	else
-		to_chat(src, "The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round.")
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round."))
 
 /client/verb/toggle_roundend_flash()
 	set name = "Toggle Roundend Flash"
@@ -130,9 +130,9 @@
 	prefs.toggles_flashing ^= FLASH_ROUNDEND
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDEND)
-		to_chat(src, "The icon on your taskbar will now flash when the round ends.")
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the round ends."))
 	else
-		to_chat(src, "The icon on your taskbar will no longer flash when the round ends.")
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when the round ends."))
 
 /client/verb/toggle_corpserevive_flash()
 	set name = "Toggle Revival Flash"
@@ -142,9 +142,9 @@
 	prefs.toggles_flashing ^= FLASH_CORPSEREVIVE
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_CORPSEREVIVE)
-		to_chat(src, "The icon on your taskbar will now flash when your corpse gets revived.")
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when your corpse gets revived."))
 	else
-		to_chat(src, "The icon on your taskbar will no longer flash when your corpse gets revived.")
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
@@ -154,9 +154,9 @@
 	prefs.toggles_flashing ^= FLASH_ADMINPM
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ADMINPM)
-		to_chat(src, "The icon on your taskbar will now flash when an admin messages you.")
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when an admin messages you."))
 	else
-		to_chat(src, "The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk.")
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk."))
 
 //be special
 /client/verb/toggle_be_special(role in be_special_flags)
@@ -168,7 +168,7 @@
 	if(!role_flag)	return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
 
 /client/verb/toggle_fullscreen_preference()
 	set name = "Toggle Fullscreen Preference"
@@ -186,7 +186,7 @@
 
 	prefs.toggle_prefs ^= MEMBER_PUBLIC
 	prefs.save_preferences()
-	to_chat(src, "Others can[(prefs.toggle_prefs & MEMBER_PUBLIC) ? "" : "'t"] see if you are a BYOND member.")
+	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & MEMBER_PUBLIC) ? "" : "'t"] see if you are a BYOND member."))
 
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"
@@ -216,17 +216,17 @@
 /client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
 	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
 	if(prefs.toggle_prefs & TOGGLE_IGNORE_SELF)
-		to_chat(src, "Clicking on yourself in non-help intent will no longer do anything.")
+		to_chat(src,SPAN_BOLDNOTICE( "Clicking on yourself in non-help intent will no longer do anything."))
 	else
-		to_chat(src, "Clicking on yourself in non-help intent can harm you again.")
+		to_chat(src, SPAN_BOLDNOTICE("Clicking on yourself in non-help intent can harm you again."))
 	prefs.save_preferences()
 
 /client/proc/toggle_help_intent_safety() // Toggle whether anything will happen when you click on someone with help intent
 	prefs.toggle_prefs ^= TOGGLE_HELP_INTENT_SAFETY
 	if(prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY)
-		to_chat(src, "Help intent will now be completely harmless.")
+		to_chat(src, SPAN_BOLDNOTICE("Help intent will now be completely harmless."))
 	else
-		to_chat(src, "Help intent can perform harmful actions again.")
+		to_chat(src, SPAN_BOLDNOTICE("Help intent can perform harmful actions again."))
 	prefs.save_preferences()
 
 /client/proc/toggle_auto_eject() // Toggle whether guns with auto-ejectors will automatically eject magazines
@@ -238,7 +238,7 @@
 			msg += " The preference for auto-ejecting magazines to your hand has been toggled off."
 		to_chat(src, msg)
 	else
-		to_chat(src, "Guns with auto-ejectors will automatically eject their magazines.")
+		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
 	prefs.save_preferences()
 
 /client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand
@@ -248,25 +248,25 @@
 		if (prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
 			prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
 			msg += " The preference for removing magazine auto-ejecting has been toggled off."
-		to_chat(src, msg)
+		to_chat(src, SPAN_BOLDNOTICE(msg))
 	else
-		to_chat(src, "Guns with auto-ejectors will no longer eject their magazines to your offhand.")
+		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will no longer eject their magazines to your offhand."))
 	prefs.save_preferences()
 
 /client/proc/toggle_eject_to_hand() // Toggle whether unloading a magazine with the 'Unload Weapon' verb will put the magazine in your offhand
 	prefs.toggle_prefs ^= TOGGLE_EJECT_MAGAZINE_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
-		to_chat(src, "The 'Unload Weapon' verb will put magazines in your offhand.")
+		to_chat(src, SPAN_BOLDNOTICE("The 'Unload Weapon' verb will put magazines in your offhand."))
 	else
-		to_chat(src, "The 'Unload Weapon' verb will no longer put magazines in your offhand.")
+		to_chat(src, SPAN_BOLDNOTICE("The 'Unload Weapon' verb will no longer put magazines in your offhand."))
 	prefs.save_preferences()
 
 /client/proc/toggle_automatic_punctuation() // Toggle whether your sentences are automatically punctuated
 	prefs.toggle_prefs ^= TOGGLE_AUTOMATIC_PUNCTUATION
 	if(prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
-		to_chat(src, "Your messages will automatically be punctuated if they are not punctuated already.")
+		to_chat(src, SPAN_BOLDNOTICE("Your messages will automatically be punctuated if they are not punctuated already."))
 	else
-		to_chat(src, "Your messages will no longer be automatically punctuated if they are not punctuated already.")
+		to_chat(src, SPAN_BOLDNOTICE("Your messages will no longer be automatically punctuated if they are not punctuated already."))
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_click() // Toggle whether abilities should use middle or shift clicking
@@ -280,17 +280,17 @@
 /client/proc/toggle_clickdrag_override() //Toggle whether mousedown clicks immediately when on disarm or harm intent to prevent click-dragging from 'eating' attacks.
 	prefs.toggle_prefs ^= TOGGLE_COMBAT_CLICKDRAG_OVERRIDE
 	if(prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE)
-		to_chat(src, "Depressing the mouse button on disarm or harm intent will now click the target immediately, even if you hold it down -- unless you're click-dragging yourself, an ally, or an object in your inventory.")
+		to_chat(src,SPAN_BOLDNOTICE( "Depressing the mouse button on disarm or harm intent will now click the target immediately, even if you hold it down -- unless you're click-dragging yourself, an ally, or an object in your inventory."))
 	else
-		to_chat(src, "Click-dragging now blocks clicks from going through.")
+		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
 	prefs.save_preferences()
 
 /client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
 	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
 	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-		to_chat(src, "Dual-wielding now switches between guns, as long as the other gun is loaded.")
+		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
 	else
-		to_chat(src, "Dual-wielding now fires both guns simultaneously.")
+		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
@@ -316,7 +316,7 @@
 	set category = "Preferences.Ghost"
 	set desc = "Toggle seeing all chatter from the Xenomorph Hivemind"
 	prefs.toggles_chat ^= CHAT_GHOSTHIVEMIND
-	to_chat(src, "As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"].")
+	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
 	prefs.save_preferences()
 
 /client/proc/deadchat() // Deadchat toggle is usable by anyone.
@@ -327,16 +327,16 @@
 	prefs.save_preferences()
 
 	if(src.admin_holder && (admin_holder.rights & R_MOD))
-		to_chat(src, "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
+		to_chat(src,SPAN_DANGER( "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
 	else
-		to_chat(src, "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
+		to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
 
 /client/proc/toggle_ghost_ears()
 	set name = "Toggle GhostEars"
 	set category = "Preferences.Ghost"
 	set desc = "Toggle Between seeing all mob speech, and only speech of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
-	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
+	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_sight()
@@ -344,7 +344,7 @@
 	set category = "Preferences.Ghost"
 	set desc = "Toggle Between seeing all mob emotes, and only emotes of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
-	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
+	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_radio()
@@ -352,7 +352,7 @@
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between hearing all radio chatter, or only from nearby speakers"
 	prefs.toggles_chat ^= CHAT_GHOSTRADIO
-	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"].")
+	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_hud()
@@ -366,7 +366,7 @@
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
 	prefs.save_preferences()
 
-	to_chat(src, "You toggled [hud_choice] to be [prefs.observer_huds[hud_choice] ? "ON" : "OFF"] by default when you are observer.")
+	to_chat(src, SPAN_BOLDNOTICE("You toggled [hud_choice] to be [prefs.observer_huds[hud_choice] ? "ON" : "OFF"] by default when you are observer."))
 
 	if(!isobserver(usr))
 		return
@@ -420,7 +420,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about weapon fire"
 	prefs.chat_display_preferences ^= CHAT_TYPE_WEAPON_USE
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_WEAPON_USE) ? "see all weapon fire messages" : "never see weapon fire messages"].")
+	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_WEAPON_USE) ? "see all weapon fire messages" : "never see weapon fire messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_xeno_attack()
@@ -428,7 +428,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about xeno attacks"
 	prefs.chat_display_preferences ^= CHAT_TYPE_XENO_COMBAT
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_XENO_COMBAT) ? "see all xeno attack messages" : "never see xeno attack messages"].")
+	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_XENO_COMBAT) ? "see all xeno attack messages" : "never see xeno attack messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_xeno_armor()
@@ -436,7 +436,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about xeno armor"
 	prefs.chat_display_preferences ^= CHAT_TYPE_ARMOR_DAMAGE
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_ARMOR_DAMAGE) ? "see all xeno armor messages" : "never see xeno armor messages"].")
+	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_ARMOR_DAMAGE) ? "see all xeno armor messages" : "never see xeno armor messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_someone_hit()
@@ -444,7 +444,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about someone being hit"
 	prefs.chat_display_preferences ^= CHAT_TYPE_TAKING_HIT
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_TAKING_HIT) ? "see all player hit messages" : "never see player hit messages"].")
+	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_TAKING_HIT) ? "see all player hit messages" : "never see player hit messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_you_hit()
@@ -452,7 +452,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about you being hit"
 	prefs.chat_display_preferences ^= CHAT_TYPE_BEING_HIT
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_BEING_HIT) ? "see you being hit messages" : "never see you being hit messages"].")
+	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_BEING_HIT) ? "see you being hit messages" : "never see you being hit messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_you_pain()
@@ -460,7 +460,7 @@
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about you being in pain"
 	prefs.chat_display_preferences ^= CHAT_TYPE_PAIN
-	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"].")
+	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"]."))
 	prefs.save_preferences()
 
 var/list/combat_chat_prefs_verbs = list(

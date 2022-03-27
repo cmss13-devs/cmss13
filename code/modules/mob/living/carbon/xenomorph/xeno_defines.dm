@@ -432,10 +432,12 @@
 	original.hive_pos = NORMAL_XENO
 	original.handle_xeno_leader_pheromones()
 	original.hud_update() // To remove leader star
+	remove_action(original, /datum/action/xeno_action/activable/info_marker)
 
 	replacement.hive_pos = XENO_LEADER_HIVE_POS(leader_num)
 	replacement.handle_xeno_leader_pheromones()
 	replacement.hud_update() // To add leader star
+	give_action(replacement, /datum/action/xeno_action/activable/info_marker)
 
 	hive_ui.update_xeno_keys()
 
@@ -750,7 +752,7 @@
 			qdel(S)
 	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(xeno.hunter_data.hunted)
+			if(xeno.hunter_data.hunted && !isXenoQueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
@@ -767,8 +769,7 @@
 		if(A && A.hivenumber != hivenumber)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
-			if(embryo.hivenumber != hivenumber)
-				embryo.hivenumber = XENO_HIVE_FORSAKEN
+			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
 

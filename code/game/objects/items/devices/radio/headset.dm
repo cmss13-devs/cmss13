@@ -644,15 +644,16 @@
 //Distress (ERT) headsets.
 
 /obj/item/device/radio/headset/distress
-	name = "operative headset"
-	desc = "A special headset used by small groups of trained operatives."
-	frequency = CIV_GEN_FREQ
+	name = "colony headset"
+	desc = "A standard headset used by colonists."
+	frequency = COLONY_FREQ
 
 /obj/item/device/radio/headset/distress/dutch
-	name = "Colonist headset"
-	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the civillian common channel, use :h."
+	name = "Dutch's Dozen headset"
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."
 	frequency = DUT_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	ignore_z = TRUE
 
 /obj/item/device/radio/headset/distress/PMC
 	name = "PMC headset"
@@ -665,18 +666,18 @@
 
 /obj/item/device/radio/headset/distress/PMC/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public."
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 
 /obj/item/device/radio/headset/distress/PMC/hvh/cct
 	name = "PMC-CCT headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public, :o - combat controller."
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/UPP
 	name = "UPP headset"
-	desc = "A special headset used by UPP military. To access the civillian common channel, use :h."
+	desc = "A special headset used by UPP military. To access the colony channel, use :h."
 	frequency = RUS_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
 
@@ -687,13 +688,13 @@
 /obj/item/device/radio/headset/distress/UPP/cct
 	name = "UPP-CCT headset"
 	desc = "A special headset used by UPP military. Channels are as follows: :h - public, :o - combat controller."
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/CLF
 	name = "CLF headset"
-	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the civillian common channel, use :h."
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."
 	frequency = CLF_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CLF
 
@@ -701,7 +702,7 @@
 	name = "CLF-CCT headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, :o - combat controller."
 	frequency = CLF_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/public_civ, /obj/item/device/encryptionkey/cct)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/cct)
 
 /obj/item/device/radio/headset/distress/commando
 	name = "Commando headset"

@@ -429,7 +429,7 @@
 
 	if(href_list["internal"])
 
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' internals</font>")
 			if(internal)
@@ -458,8 +458,17 @@
 				if(usr.interactee == src && Adjacent(usr))
 					show_inv(usr)
 
+	if(href_list["splints"])
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
+			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+				return
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(usr)]</font>")
+			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(src)]'s' splints </font>")
+			remove_splints(usr)
+
 	if(href_list["tie"])
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 				return
@@ -485,7 +494,7 @@
 							U.remove_accessory(usr, A)
 
 	if(href_list["sensor"])
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
 				return

@@ -38,7 +38,7 @@
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-		to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
+		to_chat(user, SPAN_WARNING("The sensors in \the [src] can't be modified."))
 		return
 	. = ..()
 

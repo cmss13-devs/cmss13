@@ -823,7 +823,7 @@
 			if(new_squad.num_smartgun == new_squad.max_smartgun)
 				no_place = TRUE
 		if(JOB_SQUAD_RTO)
-			if(new_squad.max_rto >= new_squad.max_rto)
+			if(new_squad.num_rto >= new_squad.max_rto)
 				no_place = TRUE
 
 	if(no_place)

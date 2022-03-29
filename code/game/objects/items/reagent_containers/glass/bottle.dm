@@ -7,7 +7,7 @@
 	icon_state = null
 	item_state = "atoxinbottle"
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
 	flags_atom = FPRINT|OPENCONTAINER
 	volume = 60
 	attack_speed = 4

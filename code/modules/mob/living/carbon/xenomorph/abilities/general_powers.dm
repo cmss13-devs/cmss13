@@ -489,7 +489,7 @@
 
 	var/area/AR = get_area(T)
 
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2))
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || GLOB.interior_manager.interior_z == X.z)
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for creating a resin hole."))
 		return
 

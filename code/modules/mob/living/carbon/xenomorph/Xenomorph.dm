@@ -940,3 +940,16 @@
 	resin_build_order = build_order
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
+
+/mob/living/carbon/Xenomorph/ghostize(can_reenter_corpse = TRUE)
+	. = ..()
+	if(. && stat != DEAD && !is_admin_level(z))
+		handle_ghost_message()
+
+/mob/living/carbon/Xenomorph/proc/handle_ghost_message()
+	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
+
+/mob/living/carbon/Xenomorph/Larva/handle_ghost_message()
+	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+		return
+	return ..()

@@ -928,3 +928,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN
+
+/proc/message_ghosts(var/message)
+	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
+		to_chat(O, message)

@@ -66,3 +66,19 @@
 
 	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
+
+/mob/living/carbon/Xenomorph/Hivelord/update_icons()
+	if (stat == DEAD)
+		icon_state = "[mutation_type] Hivelord Dead"
+	else if (lying)
+		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			icon_state = "[mutation_type] Hivelord Sleeping"
+		else
+			icon_state = "[mutation_type] Hivelord Knocked Down"
+	else if (agility)
+		icon_state = "[mutation_type] Hivelord Agility"
+	else
+		icon_state = "[mutation_type] Hivelord Running"
+
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()

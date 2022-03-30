@@ -413,6 +413,129 @@
 
 	qdel(src)
 
+/obj/effect/xenomorph/spore_puff
+	name = "???"
+	desc = ""
+	icon_state = "boiler_bombard"
+	mouse_opacity = 0
+
+	// Config-ish values
+	var/damage = 0
+	var/time_before_smoke = 0
+	var/time_before_damage = 0
+	var/smoke_duration = 9
+	var/smoke_type = /obj/effect/particle_effect/smoke/heal_smoke
+
+	var/mob/living/carbon/Xenomorph/source_xeno = null
+
+/obj/effect/xenomorph/spore_puff/New(loc, source_xeno = null)
+	// Hopefully we don't get insantiated in these places anyway..
+	if (isXeno(source_xeno))
+		src.source_xeno = source_xeno
+
+	if (isturf(loc))
+		var/turf/T = loc
+		if (!T.density)
+			..(loc)
+		else
+			qdel(src)
+	else
+		qdel(src)
+
+	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
+	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+
+/obj/effect/xenomorph/spore_puff/proc/damage_mobs()
+	if (!istype(src) || !isturf(loc))
+		qdel(src)
+		return
+	for (var/mob/living/carbon/H in loc)
+		if (isXeno(H))
+			if(!source_xeno)
+				continue
+
+			var/mob/living/carbon/Xenomorph/X = H
+			if (source_xeno.can_not_harm(X))
+				continue
+
+		if (!H.stat)
+			if(source_xeno.can_not_harm(H))
+				continue
+			H.apply_armoured_damage(damage)
+			animation_flash_color(H)
+			to_chat(H, SPAN_XENODANGER("Your vision is obstructed by the spore cloud!"))
+
+	icon_state = "boiler_bombard_heavy"
+
+/obj/effect/xenomorph/spore_puff/proc/make_smoke()
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno))
+	S.time_to_live = smoke_duration
+	S.spread_speed = smoke_duration + 5 // No spreading
+
+	qdel(src)
+
+
+/obj/effect/xenomorph/spore_puff_shield
+	name = "???"
+	desc = ""
+	icon_state = "boiler_bombard"
+	mouse_opacity = 0
+
+	// Config-ish values
+	var/damage = 0
+	var/time_before_smoke = 0
+	var/time_before_damage = 0
+	var/smoke_duration = 9
+	var/smoke_type = /obj/effect/particle_effect/smoke/shield_smoke
+
+	var/mob/living/carbon/Xenomorph/source_xeno = null
+
+/obj/effect/xenomorph/spore_puff_shield/New(loc, source_xeno = null)
+	// Hopefully we don't get insantiated in these places anyway..
+	if (isXeno(source_xeno))
+		src.source_xeno = source_xeno
+
+	if (isturf(loc))
+		var/turf/T = loc
+		if (!T.density)
+			..(loc)
+		else
+			qdel(src)
+	else
+		qdel(src)
+
+	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
+	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+
+/obj/effect/xenomorph/spore_puff_shield/proc/damage_mobs()
+	if (!istype(src) || !isturf(loc))
+		qdel(src)
+		return
+	for (var/mob/living/carbon/H in loc)
+		if (isXeno(H))
+			if(!source_xeno)
+				continue
+
+			var/mob/living/carbon/Xenomorph/X = H
+			if (source_xeno.can_not_harm(X))
+				continue
+
+		if (!H.stat)
+			if(source_xeno.can_not_harm(H))
+				continue
+			H.apply_armoured_damage(damage)
+			animation_flash_color(H)
+			to_chat(H, SPAN_XENODANGER("Your vision is obstructed by the spore cloud!"))
+
+	icon_state = "boiler_bombard_heavy"
+
+/obj/effect/xenomorph/spore_puff_shield/proc/make_smoke()
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, create_cause_data(initial(source_xeno?.caste_type), source_xeno))
+	S.time_to_live = smoke_duration
+	S.spread_speed = smoke_duration + 5 // No spreading
+
+	qdel(src)
+
 /obj/effect/xenomorph/xeno_telegraph
 	name = "???"
 	desc = ""

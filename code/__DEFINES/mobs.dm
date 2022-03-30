@@ -301,6 +301,7 @@
 // Hivelord strain flags
 #define HIVELORD_NORMAL		"Normal"
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_MENDER 	"Mender"
 
 // Carrier strain flags
 #define CARRIER_NORMAL 		"Normal"

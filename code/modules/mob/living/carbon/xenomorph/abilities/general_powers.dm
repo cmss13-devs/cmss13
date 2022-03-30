@@ -99,7 +99,6 @@
 	..()
 	return
 
-
 /datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())

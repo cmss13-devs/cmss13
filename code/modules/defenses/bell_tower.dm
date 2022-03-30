@@ -212,7 +212,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.SetSuperslowed(slowdown_amount)
-		playsound(X, 'sound/misc/bell.ogg', 50, 0, 50)
+		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)
 
 #undef IMP_SLOWDOWN_TIME
 #undef BELL_TOWER_RANGE

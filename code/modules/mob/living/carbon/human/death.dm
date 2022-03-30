@@ -74,5 +74,6 @@
 			// Tell the human he is the last guy.
 			if(last_living_human.client)
 				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
 
 	return ..(cause, gibbed, species.death_message)

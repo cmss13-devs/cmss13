@@ -71,3 +71,9 @@
 	if(html) message["html"] = html
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
 	SSchat.queue(target, message)
+
+/proc/announce_dchat(message, atom/target)
+	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+		if(target)
+			message += " (<a href='?src=\ref[observer];jumptocoord=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>)"
+		to_chat(observer, FONT_SIZE_LARGE(SPAN_DEADSAY("<b>ALERT:</b> [message]")))

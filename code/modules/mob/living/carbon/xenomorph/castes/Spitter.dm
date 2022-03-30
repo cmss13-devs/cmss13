@@ -91,3 +91,12 @@
 		dot_cooldown_atoms -= A
 		if (istype(bound_xeno))
 			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))
+
+
+//Marker abilities
+
+/datum/action/xeno_action/onclick/toggle_long_range/marker
+	movement_datum_type = /datum/event_handler/xeno_zoom_onmovement/buffer
+	should_delay = TRUE
+	delay = 20
+	ability_primacy = XENO_PRIMARY_ACTION_4

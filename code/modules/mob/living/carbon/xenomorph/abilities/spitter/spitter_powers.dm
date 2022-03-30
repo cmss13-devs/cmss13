@@ -35,3 +35,11 @@
 	X.recalculate_speed()
 	to_chat(X, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
 	buffs_active = FALSE
+
+// Marker abilities
+
+/datum/action/xeno_action/activable/xeno_spit/marker
+	name = "Marking spit"
+	action_icon_state = "Marking_spit"
+	ability_name = "Marking spit"
+	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit

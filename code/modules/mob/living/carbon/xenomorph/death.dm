@@ -105,6 +105,7 @@
 			// Tell the xeno she is the last one.
 			if(X.client)
 				to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
+			announce_dchat("There is only one Xenomorph left: [X.name].", X)
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)

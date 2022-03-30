@@ -945,8 +945,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("The [name] is empty."))
 			return FALSE
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
-		if(G.has_iff && user.faction == FACTION_MARINE && explosive_grief_check(G))
-			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
+			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
 
@@ -1182,7 +1182,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_grief_check(src))
-			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)

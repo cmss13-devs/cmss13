@@ -27,10 +27,8 @@
 		update_icons()
 		handle_luminosity()
 
-		if (behavior_delegate)
-			var/datum/behavior_delegate/MD = behavior_delegate
-			MD.on_life()
-
+		if(behavior_delegate)
+			behavior_delegate.on_life()
 
 		if(loc)
 			handle_environment()

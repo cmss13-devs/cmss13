@@ -172,8 +172,8 @@
 
 	//vehicle interior stuff checks
 	if(target.z == GLOB.interior_manager.interior_z)
-		if(istype(target, /obj/structure/interior_exit) || istype(target, /obj/structure/bed/chair/comfy/vehicle) || istype(target, /obj/structure/interior_viewport) || istype(target, /obj/structure/weapons_loader) || istype(target, /obj/structure/bed/chair/dropship/passenger/shuttle_chair))
-			return FALSE
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target

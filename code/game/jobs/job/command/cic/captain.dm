@@ -23,7 +23,7 @@
 
 	if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER_LEADER)
 		return get_desired_status(player.prefs.commander_status, WHITELIST_LEADER)
-	else if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER_COUNCIL)
+	else if(roles_whitelist[player.ckey] & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_COUNCIL)
 	else if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER)
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)

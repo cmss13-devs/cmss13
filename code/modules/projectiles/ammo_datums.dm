@@ -2651,6 +2651,82 @@
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+/datum/ammo/xeno/spore_cloud_green
+	name = "a cloud of spores"
+	icon_state = "boiler_gas2"
+	ping = "ping_x"
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF | AMMO_SKIPS_ALIENS
+	var/datum/effect_system/smoke_spread/smoke_system
+
+/datum/ammo/xeno/spore_cloud_green/New()
+	..()
+	set_xeno_smoke()
+
+/datum/ammo/xeno/spore_cloud_green/Destroy()
+	qdel(smoke_system)
+	smoke_system = null
+	. = ..()
+
+/datum/ammo/xeno/spore_cloud_green/do_at_max_range(obj/item/projectile/P)
+	drop_nade(get_turf(P), P)
+
+/datum/ammo/xeno/spore_cloud_green/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+	else
+		drop_nade(T, P)
+
+/datum/ammo/xeno/spore_cloud_green/proc/set_xeno_smoke(obj/item/projectile/P)
+	smoke_system = /datum/effect_system/smoke_spread/xeno_heal_smoke
+
+/datum/ammo/xeno/spore_cloud_green/proc/drop_nade(turf/T, obj/item/projectile/P)
+	var/amount = 4
+	var/lifetime_mult = 1.0
+	if(isXenoHivelord(P.firer))
+		smoke_system.cause_data = P.weapon_cause_data
+	smoke_system.set_up(amount, 0, T)
+	smoke_system.lifetime = 1 * lifetime_mult
+	smoke_system.start()
+	T.visible_message(SPAN_DANGER("A cloud of resin spores spew around!"))
+
+
+/datum/ammo/xeno/spore_cloud_yellow
+	name = "a cloud of spores"
+	icon_state = "boiler_gas2"
+	ping = "ping_x"
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF | AMMO_SKIPS_ALIENS
+	var/datum/effect_system/smoke_spread/smoke_system
+
+/datum/ammo/xeno/spore_cloud_yellow/New()
+	..()
+	set_xeno_smoke()
+
+/datum/ammo/xeno/spore_cloud_yellow/Destroy()
+	qdel(smoke_system)
+	smoke_system = null
+	. = ..()
+
+/datum/ammo/xeno/spore_cloud_yellow/do_at_max_range(obj/item/projectile/P)
+	drop_nade(get_turf(P), P)
+
+/datum/ammo/xeno/spore_cloud_yellow/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+	else
+		drop_nade(T, P)
+
+/datum/ammo/xeno/spore_cloud_yellow/proc/set_xeno_smoke(obj/item/projectile/P)
+	smoke_system = /datum/effect_system/smoke_spread/xeno_shield_smoke
+
+/datum/ammo/xeno/spore_cloud_yellow/proc/drop_nade(turf/T, obj/item/projectile/P)
+	var/amount = 4
+	var/lifetime_mult = 1.0
+	if(isXenoHivelord(P.firer))
+		smoke_system.cause_data = P.weapon_cause_data
+	smoke_system.set_up(amount, 0, T)
+	smoke_system.lifetime = 1 * lifetime_mult
+	smoke_system.start()
+	T.visible_message(SPAN_DANGER("A cloud of resin spores spew around!"))
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

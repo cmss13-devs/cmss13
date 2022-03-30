@@ -61,6 +61,31 @@
 	</tr>
 </table>
 
+			<h2 class="date">30 March 2022</h2>
+			<h3 class="author">Firartix updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">prevent map loader from deleting -ALL- multitiles when using delete option</li>
+				<li class="bugfix">Atom locations are now reset on initialization to circumvent BYOND Bug 2777527 (Multitile interactions, notably Kutjevo rocks and trucks lacking collision)</li>
+			</ul>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">ChemMasters now use the proper labeler system, meaning you can only add one label per item, and it works just like the hand labeler does. Additionally, labels of 2 characters or less will now be added to the onsprite text.</li>
+				<li class="rscadd">Added a 40 transfer rate option to chem bottles.</li>
+			</ul>
+			<h3 class="author">Jackie_Estegado updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Renamed the (explosive) IFF inhibitor both in-game (to \"safe-area accident inhibitor\") and in code (to \"antigrief_protection\") to reduce confusion.</li>
+				<li class="tweak">Baton slugs and some other items will once again no longer have inhibitors.</li>
+			</ul>
+			<h3 class="author">Nivrak updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Reduced the sound range of the bell backpack from 50 tiles to 13 tiles and reduced its volume.</li>
+			</ul>
+			<h3 class="author">Shad0vvs updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Whitelist legacy council members now properly get their ingame rights.</li>
+			</ul>
+
 			<h2 class="date">27 March 2022</h2>
 			<h3 class="author">Geeves updated:</h3>
 			<ul class="changes bgimages16">
@@ -937,91 +962,6 @@
 			<h3 class="author">Shad0vvs updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Fixes resin special construction being able to be built in the APC.</li>
-			</ul>
-
-			<h2 class="date">26 January 2022</h2>
-			<h3 class="author">Chiwi updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Scout Cloak's south-facing onmob sprite fixed. The scout's arms are visible now.</li>
-				<li class="bugfix">The female variation of underwear briefs no longer have an extra pixel that is visible over the uniform.</li>
-			</ul>
-			<h3 class="author">Patternseeker updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">You can click-drag yourself into entering cryopods now.</li>
-				<li class="tweak">Renames \"Admin Player Panel\" to \"User Panel\"</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Metal and plasteel sheet in-hand north-facing sprites are now properly on the side of the hand they are being held in.</li>
-			</ul>
-
-			<h2 class="date">25 January 2022</h2>
-			<h3 class="author">BlackCrystalic updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Added for telecom icon_state 9_0 and 9_1, no more invisible tcoms.</li>
-			</ul>
-			<h3 class="author">TotalEpicness updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">G8-A general pouch belt uses backpack-type storage now. It still holds 3 normal-sized items maximum, however now you can hold smaller items.</li>
-				<li class="tweak">G8-A general pouch belt uses a non-confusing name in code (sparepouch > general_belt)</li>
-			</ul>
-			<h3 class="author">TotalEpicness5 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">You can now FINALLY dig sandbags continuously by picking up empty sandbags and digging with a shovel in another hand. Thanks ihatethisengine2 for doing most of the work on this.</li>
-				<li class="spellcheck">Changed attack verbs \"bludgeoned\" > \"slapped\"</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Adds a TEMPORARY map sprite for reinforced walls. Improved version to come in a later MR.</li>
-				<li class="experiment">Almost entirely remapped Brig.</li>
-				<li class="maptweak">The Brig is now more consistent in use of reinforced walls.</li>
-				<li class="maptweak">Brig Surgery can now be independantly accessed by doctors without MP assistance. Corpsmen do not have access.</li>
-				<li class="maptweak">Brig Interrogation now has an observation room beside it, with shutters toggleable to... maintain privacy.</li>
-				<li class="maptweak">Added an independantly operated Armory door for the CMP to open.</li>
-				<li class="maptweak">Permanent Cells now attach to the Courtyard, however they do not have access beyond an ultra-reinforced window.</li>
-				<li class="maptweak">Execution has been moved adjacent to the new Perma Cells.</li>
-				<li class="maptweak">The Courtyard now has windows in the wall to allow prisoners to gaze into space. These are ultra-reinforced.</li>
-				<li class="maptweak">CMP Office has been moved to the old location of Execution. The Warden office now overlooks the courtyard.</li>
-				<li class="maptweak">The ladders connecting Astronav Maintenance with Brig Maintenance are now secured by Brig Doors.</li>
-				<li class="experiment">Almayer Tweaks and Fixes.</li>
-				<li class="maptweak">Astronavigation and Reactor Core rooms now have reinforced hull to reflect it being important areas of the ship.</li>
-				<li class="maptweak">TComms, Astronavigation and Reactor Core rooms all now have reinforced hull walls due to their importance.</li>
-				<li class="maptweak">The reinforced hull walls around the CIC area have been tidied up, as they were scattered about almost randomly.</li>
-				<li class="maptweak">Added the new Fax Machines into the Almayer.</li>
-				<li class="tweak">Added Reinforced Airlock Door Subtypes, they provide resistance to Masterkey shotguns and can be found in Brig, Astronav, CIC, OT Workshop, TComms and Research.</li>
-				<li class="tweak">Moved Crew Job Vendors to a subfolder.</li>
-				<li class="maptweak">Added nonfunctional vendors for CT, MT, OT, Department Heads, XO, Staff Officers and Medical to reduce any future mapping conflicts when implementing them.</li>
-				<li class="bugfix">Maintenance Hatches now use access properly. No more all access to secure areas. Massively reduced amount of instances for maintenance hatches.</li>
-				<li class="bugfix">Enabling Maintenance Security now actually works.</li>
-				<li class="bugfix">Research doors are now the correct subtypes.</li>
-				<li class="bugfix">CMO Locker no longer spawns a radio on colony Z levels.</li>
-				<li class="bugfix">The Almayer Flight Office is no longer in two places at once.</li>
-				<li class="bugfix">Toilets are no longer safe from unfriendly unbuckles.</li>
-			</ul>
-			<h3 class="author">monkeysfist updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Restored Marine food vendors to normal.</li>
-				<li class="maptweak">Complied with the HOA and took down the Christmas decorations.</li>
-			</ul>
-
-			<h2 class="date">24 January 2022</h2>
-			<h3 class="author">BlackCrystalic updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Weather layer updated, now weather have higher layer rather than have xenos</li>
-			</ul>
-			<h3 class="author">Insertusername updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Scalpels can dig out shrapnel when not in surgery mode</li>
-				<li class="tweak">Doctors spawn with labcoats equipped</li>
-				<li class="rscadd">Adds Meralyne and it's recipe to the game</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes security record computers' access requirements not working.</li>
-			</ul>
-			<h3 class="author">sg2002 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed some players getting counted twice at roundstart, resulting in more xeno slots than intended.</li>
 			</ul>
 </div>
 </body>

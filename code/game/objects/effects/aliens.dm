@@ -416,7 +416,8 @@
 /obj/effect/xenomorph/spore_puff
 	name = "???"
 	desc = ""
-	icon_state = "boiler_bombard"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "nothing"
 	mouse_opacity = 0
 
 	// Config-ish values
@@ -478,7 +479,8 @@
 /obj/effect/xenomorph/spore_puff_shield
 	name = "???"
 	desc = ""
-	icon_state = "boiler_bombard"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "nothing"
 	mouse_opacity = 0
 
 	// Config-ish values

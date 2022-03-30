@@ -10,7 +10,7 @@
 	var/skill_requirement = SKILL_POLICE_SKILLED
 
 	//ignores ship anti-grief system
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 	//doesn't deal damage to eyes and ears (for cluster)
 	var/no_damage = FALSE

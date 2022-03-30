@@ -781,7 +781,7 @@
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 	dangerous = TRUE
 	rebounds = FALSE

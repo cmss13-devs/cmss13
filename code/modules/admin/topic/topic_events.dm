@@ -83,6 +83,10 @@
 				chemical_data.update_credits(amount)
 
 /datum/admins/proc/create_humans_list(var/href_list)
+	if(SSticker?.current_state < GAME_STATE_PLAYING)
+		alert("Please wait until the game has started before spawning humans")
+		return
+
 	var/atom/initial_spot = usr.loc
 	var/turf/initial_turf = get_turf(initial_spot)
 
@@ -149,6 +153,10 @@
 		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
 /datum/admins/proc/create_xenos_list(var/href_list)
+	if(SSticker?.current_state < GAME_STATE_PLAYING)
+		alert("Please wait until the game has started before spawning xenos")
+		return
+
 	var/atom/initial_spot = usr.loc
 	var/turf/initial_turf = get_turf(initial_spot)
 

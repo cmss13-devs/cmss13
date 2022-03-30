@@ -190,7 +190,7 @@
 
 		var/pull_dir = get_dir(src, pulling)
 
-		if(grab_level >= GRAB_CARRY)
+		if(grab_level == GRAB_CARRY)
 			switch(grab_level)
 				if(GRAB_CARRY)
 					var/direction_to_face = EAST
@@ -241,7 +241,7 @@
 	if(!pulledby)
 		return
 	if(pulledby.grab_level)
-		if(prob(50))
+		if(prob(50/pulledby.grab_level))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()

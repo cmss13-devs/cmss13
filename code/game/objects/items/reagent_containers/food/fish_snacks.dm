@@ -74,10 +74,18 @@
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"
-	desc = "Delicious crab meat.... Have you seen my meridian vase?"
+	desc = "Delicious crab meat... Have you seen my meridian vase?"
 	icon_state = "crab"
+	gut_icon_state = "crab_gutted"
+	guttable = TRUE
+	min_length = 4
+	max_length = 8
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/crab
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/crab)
 	bitesize = 6
 	trash = null//todo, crab shell
+
+/obj/item/reagent_container/food/snacks/fishable/crab
 
 //----------------//
 //SQUIDS
@@ -90,7 +98,8 @@
 /obj/item/reagent_container/food/snacks/fishable/squid/whorl
 	name = "whorl squid"
 	desc = "A squat little fella in a whorl shaped shell, hence the name."
-	icon_state = 'squid_whorl'
+	icon_state = "squid_whorl"
+	gut_icon_state = "squid_whorl_gutted"
 	guttable = TRUE
 	min_length = 4
 	max_length = 14
@@ -100,7 +109,8 @@
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
 	name = "sock squid"
 	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
-	icon_state = 'squid_sock'
+	icon_state = "squid_sock"
+	gut_icon_state = "squid_sock_gutted"
 	guttable = TRUE
 	min_length = 1
 	max_length = 5

@@ -61,6 +61,9 @@
 	var/image/holder = X.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
+	if(X.stat == DEAD)
+		return
+
 	var/percentage_energy = round((internal_hitpoints / internal_hitpoints_max) * 100, 10)
 	if(percentage_energy)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")

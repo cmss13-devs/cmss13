@@ -219,12 +219,13 @@ Works together with spawning an observer, noted above.
 	if(!loc) return
 	if(!client) return 0
 
-	return 1
+	return TRUE
 
-/mob/proc/ghostize(var/can_reenter_corpse = TRUE)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
-
+	if(aghosted)
+		src.aghosted = TRUE
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT

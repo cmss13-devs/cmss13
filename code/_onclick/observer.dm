@@ -25,33 +25,32 @@
 		if(ismob(A) || isVehicle(A))
 			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
-				if(!X.client)
-					if(X.stat == DEAD || is_admin_level(X.z))
-						to_chat(src, SPAN_WARNING("You cannot join as [X]."))
-						return
-					if(!SSticker.mode.xeno_bypass_timer)
-						var/deathtime = world.time - timeofdeath
-						if(deathtime < 2.5 MINUTES)
-							var/message = "You have been dead for [DisplayTimeText(deathtime)]."
-							message = SPAN_WARNING("[message]")
-							to_chat(src, message)
-							to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
-							return 0
-						if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
-							var/to_wait = XENO_LEAVE_TIMER - X.away_timer
-							if(isXenoLarva(X))
-								to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
-							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-							return 0
-					if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") == "No")
-						return 0
-					if(X.client || X.stat == DEAD) // Do it again, just in case
-						to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
-						return 0
-					SSticker.mode.transfer_xeno(src, X)
-					return 1
+				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
+					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
+					return
+				if(!SSticker.mode.xeno_bypass_timer)
+					var/deathtime = world.time - timeofdeath
+					if(deathtime < 2.5 MINUTES)
+						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
+						message = SPAN_WARNING("[message]")
+						to_chat(src, message)
+						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						return FALSE
+					if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
+						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
+						if(isXenoLarva(X))
+							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
+						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+						return FALSE
+				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") == "No")
+					return FALSE
+				if(((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case
+					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
+					return FALSE
+				SSticker.mode.transfer_xeno(src, X)
+				return TRUE
 			ManualFollow(A)
-			return 1
+			return TRUE
 
 		following = null
 		forceMove(get_turf(A))

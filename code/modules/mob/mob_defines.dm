@@ -164,13 +164,14 @@
 	var/universal_understand = 0 // Set to 1 to enable the mob to understand everyone, not necessarily speak
 
 	var/immune_to_ssd = 0
+	var/aghosted = FALSE //If the mob owner is currently aghosted.
 
 	var/list/tile_contents = list()  //the contents of the turf being examined in the stat panel
 	var/tile_contents_change = 0
 
 	var/STUI_log = 1
 
-	var/away_timer = 0 //How long the player has been disconnected
+	var/away_timer = 0 //How long the player has not done an action.
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
 

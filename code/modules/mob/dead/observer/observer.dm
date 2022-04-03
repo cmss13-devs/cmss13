@@ -166,6 +166,8 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 			var/z = text2num(href_list["Z"])
 			if(x && y && z)
 				A.JumpToCoord(x, y, z)
+	if(href_list["joinresponseteam"])
+		JoinResponseTeam()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)

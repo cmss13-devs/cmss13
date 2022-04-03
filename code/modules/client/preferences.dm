@@ -959,7 +959,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -994,7 +994,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_YAUTJA_COUNCIL)
+					if(whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -1009,7 +1009,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("synth_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_SYNTHETIC_COUNCIL)
+					if(whitelist_flags & (WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_SYNTHETIC_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)

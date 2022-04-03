@@ -795,15 +795,21 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
+/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
 	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]
-		\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
+	var/template = {"\[center\]\[logo\]\[/center\]"}
+
+	var/i = 0
+	for(var/obj/effect/decal/prints/print_set in prints)
+		i++
+		template += {"\[center\]\[b\]\[i\]Fingerprint Sample #[i]\[/b\]\[/i\]\[hr\]
 		\[small\]
-		Name: [criminal_name]\[br\]
-		Rank: [criminal_rank]\[br\]
-		Squad: [criminal_squad]\[br\]
-		Description [description]\[br\]
+		Name: [print_set.criminal_name]\[br\]
+		Rank: [print_set.criminal_rank]\[br\]
+		Squad: [print_set.criminal_squad]\[br\]
+		Description: [print_set.description]\[br\]
 		\[/small\]
-		\[/center\]"}
+		\[/center\]
+		\[br\]"}
+
 	info = parsepencode(template, null, null, FALSE)

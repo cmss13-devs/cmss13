@@ -50,7 +50,7 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color)
+/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE)
 	langchat_drop_image()
 	langchat_make_image(override_color)
 
@@ -65,7 +65,7 @@
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
+		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
 			M.client.images += langchat_image
 
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)

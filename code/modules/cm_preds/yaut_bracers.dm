@@ -961,9 +961,15 @@
 	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
 	var/list/heard = get_mobs_in_view(7, usr)
+	for(var/mob/M in heard)
+		if(M.ear_deaf)
+			heard -= M
+
+	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
+			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")
@@ -972,13 +978,13 @@
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
 
-	usr.langchat_speech(msg, heard, GLOB.all_languages, "#ff0505")
+	usr.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/mob/M = usr
 	var/voice_name = "A strange voice"
 	if(M.name == M.real_name)
 		voice_name = "<b>[M.name]</b>"
-	for(var/mob/Q as anything in hearers(usr))
+	for(var/mob/Q as anything in heard)
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
 		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")

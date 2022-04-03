@@ -943,7 +943,7 @@
 
 /mob/living/carbon/Xenomorph/ghostize(can_reenter_corpse = TRUE)
 	. = ..()
-	if(. && stat != DEAD && !is_admin_level(z))
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
 		handle_ghost_message()
 
 /mob/living/carbon/Xenomorph/proc/handle_ghost_message()

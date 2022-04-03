@@ -1,16 +1,13 @@
-
-
-
 /mob/living/carbon/Xenomorph/can_ventcrawl()
-	if(stomach_contents.len)
-		for(var/atom/movable/AM in stomach_contents)
-			if(isHumanStrict(AM))
-				return 0
 	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/Xenomorph/ventcrawl_carry()
-	return 1
-
+	if(stomach_contents.len)
+		for(var/mob/living/carbon/human/H in stomach_contents)
+			if(!isSpeciesMonkey(H))
+				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
+				return FALSE
+	return TRUE
 
 /mob/living/carbon/Xenomorph/can_inject()
 	return FALSE

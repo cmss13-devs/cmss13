@@ -153,6 +153,10 @@
 	if(!istype(X))
 		return
 
+	if(!isturf(X.loc))
+		to_chat(X, SPAN_XENOWARNING("It is too cramped in here to activate this!"))
+		return
+
 	var/area/xeno_area = get_area(X)
 	if(xeno_area.flags_area & AREA_CONTAINMENT)
 		to_chat(X, SPAN_XENOWARNING("You can't activate this here!"))

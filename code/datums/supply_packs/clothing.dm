@@ -197,10 +197,10 @@
 /datum/supply_packs/webbing_holster
 	name = "Shoulder Holster Crate (x4)"
 	contains = list(
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster
 	)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/green

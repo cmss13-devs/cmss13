@@ -520,6 +520,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if(T.holstered)
 				w_uniform.attack_hand(src)
 				return TRUE
+		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
+			var/obj/item/storage/internal/accessory/holster/HS = H.hold
+			if(HS.current_gun)
+				HS.current_gun.attack_hand(src)
 		return
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))

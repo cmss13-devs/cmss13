@@ -9384,7 +9384,7 @@
 "aAi" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -12280,7 +12280,7 @@
 "aHt" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/storage/pouch/general/medium,
 /obj/item/storage/pouch/pistol,
 /turf/open/floor/corsat{
@@ -14200,7 +14200,7 @@
 "aMB" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -19624,7 +19624,7 @@
 "baf" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -19645,7 +19645,7 @@
 "bah" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -29686,7 +29686,7 @@
 	name = "Head of Security's Locker"
 	},
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/device/binoculars,
 /obj/item/device/flashlight,
 /turf/open/floor/corsat{
@@ -29829,7 +29829,7 @@
 /area/corsat/sigma/south/complex)
 "bDd" = (
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -29866,7 +29866,7 @@
 /area/corsat/omega/security)
 "bDk" = (
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -44752,7 +44752,7 @@
 "hIh" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -60365,7 +60365,7 @@
 "tlX" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,

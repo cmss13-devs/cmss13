@@ -434,6 +434,19 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/mar50barrel
+	name = "MAR-50 barrel"
+	icon_state = "mar50barrel"
+	desc = "A heavy barrel. CANNOT BE REMOVED."
+	slot = "muzzle"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = -6
+
+/obj/item/attachable/mar50barrel/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
 	icon_state = "m56_barrel"

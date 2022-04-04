@@ -134,7 +134,7 @@
 	if(istype(A,/obj/item/cell))
 		if(user.action_busy)
 			return
-		if(src != user.get_active_hand())
+		if(src != user.get_inactive_hand())
 			to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to recharge them."))
 			return
 		if(shape == NVG_SHAPE_COSMETIC)

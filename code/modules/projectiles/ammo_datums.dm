@@ -1884,6 +1884,26 @@
 	smoke.set_up(1, T)
 	smoke.start()
 
+/datum/ammo/rocket/ap/anti_tank
+	name = "anti-tank rocket"
+	damage = 100
+	var/vehicle_slowdown_time = 5 SECONDS
+
+/datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/M = O
+		M.next_move = world.time + vehicle_slowdown_time
+		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
+		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket"))
+		M.interior_crash_effect()
+		var/turf/T = get_turf(M.loc)
+		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
+		smoke.set_up(1, T)
+		smoke.start()
+		return
+	return ..()
+
+
 /datum/ammo/rocket/ltb
 	name = "cannon round"
 	icon_state = "ltb"

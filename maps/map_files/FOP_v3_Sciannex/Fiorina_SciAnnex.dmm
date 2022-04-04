@@ -19102,7 +19102,7 @@
 	},
 /area/fiorina/station/park)
 "lDm" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -33739,7 +33739,7 @@
 /turf/closed/shuttle/ert,
 /area/fiorina/lz/near_lzI)
 "uLd" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
 "uLr" = (
@@ -35023,7 +35023,7 @@
 	},
 /area/fiorina/station/lowsec)
 "vzh" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "vzk" = (

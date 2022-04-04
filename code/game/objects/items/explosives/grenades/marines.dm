@@ -497,3 +497,19 @@
 	unacidable = TRUE
 	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+
+/obj/item/explosive/grenade/metal_foam
+	name = "\improper M40 MFHS grenade"
+	desc = "A Metal-Foam Hull-Sealant grenade originally used for emergency repairs but have found other practical applications on the field. Based off the same platform as the M40 HEDP. Has a 2 second fuse."
+	icon_state = "grenade_metal_foam"
+	item_state = "grenade_metal_foam"
+	det_time = 20
+	underslug_launchable = TRUE
+	harmful = FALSE
+	var/foam_metal_type = FOAM_METAL_TYPE_ALUMINIUM
+
+/obj/item/explosive/grenade/metal_foam/prime()
+	var/datum/effect_system/foam_spread/s = new()
+	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
+	s.start()
+	qdel(src)

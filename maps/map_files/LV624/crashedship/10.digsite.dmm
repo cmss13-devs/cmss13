@@ -10,7 +10,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "bB" = (
 /obj/item/clothing/shoes/veteran/PMC,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 
 /turf/open/shuttle{
 	icon_state = "floor4"
@@ -56,7 +56,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/explosive/grenade/HE,
 /obj/item/explosive/grenade/HE,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -86,7 +86,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "kP" = (
 /obj/structure/girder/displaced,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "nt" = (
@@ -122,7 +122,7 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
@@ -186,7 +186,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "zH" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "AA" = (
@@ -224,7 +224,7 @@
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "DT" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -302,7 +302,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "OV" = (
 /obj/structure/girder,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "PE" = (
@@ -317,7 +317,7 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "RT" = (
 /obj/item/explosive/grenade/HE/PMC,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 
 /turf/open/shuttle{
 	icon_state = "floor4"

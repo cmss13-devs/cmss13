@@ -8761,7 +8761,7 @@
 	desc = "Carved into the knape of the skull is the following sequence: Da vjg rkrgu yg nkuvgp."
 	},
 /obj/item/clothing/under/schoolgirl,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
 "axa" = (
@@ -14743,7 +14743,7 @@
 	},
 /area/almayer/command/cic)
 "aRu" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "aRv" = (
@@ -25319,7 +25319,7 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bFb" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/almayer/medical/lower_medical_medbay)
 "bFc" = (
@@ -29439,7 +29439,7 @@
 	},
 /area/almayer/evacuation/pod12)
 "bUc" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_m_s)
 "bUd" = (
@@ -63527,7 +63527,7 @@
 /obj/item/clothing/under/rank/nursesuit{
 	desc = "Something that would never come to be on-board the USS Almayer due to budget cuts, how did it end up here?"
 	},
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/almayer/medical/lower_medical_medbay)
 "pth" = (

@@ -57,6 +57,7 @@
 		list("M74 AMG-Star Shell", round(scale * 2), /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AMG-Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", round(scale * 8), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
+		list("M40 MFHS Metal Foam Grenade", round(scale * 3), /obj/item/explosive/grenade/metal_foam, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosives", round(scale * 3), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
 
 		list("WEBBINGS", -1, null, null),

@@ -363,9 +363,9 @@
 		holder.clear_reagents()
 
 
-/datum/chemical_reaction/metalfoam
+/datum/chemical_reaction/metal_foam
 	name = "Metal Foam"
-	id = "metalfoam"
+	id = "metal_foam"
 	result = null
 	required_reagents = list("aluminum" = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
@@ -375,7 +375,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
+			to_chat(M, SPAN_WARNING("The solution spews out a metallic shiny foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 1)
@@ -394,7 +394,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
+			to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 2)

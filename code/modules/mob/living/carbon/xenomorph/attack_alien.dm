@@ -513,18 +513,6 @@
 		shatter()
 	return XENO_ATTACK_ACTION
 
-//Foamed metal
-/obj/structure/foamedmetal/attack_alien(mob/living/carbon/Xenomorph/M)
-	M.animation_attack_on(src)
-	if(prob(33))
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
-			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		qdel(src)
-	else
-		M.visible_message(SPAN_DANGER("[M] tears some shreds off [src]!"), \
-			SPAN_DANGER("You tear some shreds off [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	return XENO_ATTACK_ACTION
-
 //Prying open doors
 /obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc

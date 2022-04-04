@@ -3674,7 +3674,7 @@
 	},
 /area/corsat/sigma/south/complex/teleporter)
 "ajZ" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar)
 "aka" = (
@@ -6884,7 +6884,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "atP" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/sigma/hangar/id)
 "atQ" = (
@@ -22342,7 +22342,7 @@
 	},
 /area/corsat/omega/hallways)
 "bhl" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/corsat/sigma/biodome/testgrounds)
 "bhm" = (
@@ -24065,7 +24065,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/hangar/office)
 "blN" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar/cargo)
 "blO" = (
@@ -34904,7 +34904,7 @@
 /area/corsat/omega/complex)
 "bUr" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -58242,7 +58242,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "rMU" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/sigma/dorms)
 "rMX" = (

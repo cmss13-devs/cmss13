@@ -1992,11 +1992,11 @@
 /area/shiva/exterior/lz2_fortress)
 "aiL" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/grenade/custom/metalfoam{
+/obj/item/explosive/grenade/custom/metal_foam{
 	pixel_x = 11;
 	pixel_y = 5
 	},
-/obj/item/explosive/grenade/custom/metalfoam{
+/obj/item/explosive/grenade/custom/metal_foam{
 	pixel_x = 10
 	},
 /obj/item/book/manual/engineering_construction,
@@ -6728,7 +6728,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "aWb" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor/shiva{
 	dir = 1
@@ -8405,7 +8405,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
 "crk" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	dir = 4;
@@ -12417,7 +12417,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "hlO" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	dir = 1
@@ -12607,7 +12607,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "hum" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "multi_tiles"
@@ -14797,7 +14797,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "jMD" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -15561,7 +15561,7 @@
 /area/shiva/interior/colony/medseceng)
 "kAp" = (
 /obj/item/stack/sheet/metal/small_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -16734,8 +16734,8 @@
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metalfoam,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -17382,7 +17382,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "mBk" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
@@ -20718,7 +20718,7 @@
 /area/shiva/interior/bar)
 "qjZ" = (
 /obj/item/stack/sheet/metal/large_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -21410,7 +21410,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "qUw" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile"
@@ -22895,7 +22895,7 @@
 /area/shiva/exterior/junkyard)
 "sJs" = (
 /obj/item/stack/sheet/metal/medium_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -24495,7 +24495,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/junkyard/fortbiceps)
 "umj" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile"
@@ -27052,7 +27052,7 @@
 	},
 /area/shiva/interior/bar)
 "xru" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "xrC" = (

@@ -38375,7 +38375,7 @@
 /area/fiorina/station/security)
 "xEa" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/clothing/accessory/holster,
+/obj/item/clothing/accessory/storage/holster,
 /obj/structure/window/reinforced{
 	dir = 4
 	},

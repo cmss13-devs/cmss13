@@ -1691,7 +1691,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "aeu" = (
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor{
 	icon_state = "wood"
 	},

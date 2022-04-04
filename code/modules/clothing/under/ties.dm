@@ -669,6 +669,94 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 		)
 	storage_flags = NONE	//no verb, no quick draw, no tile gathering
 
+/obj/item/clothing/accessory/storage/holster
+	name = "shoulder holster"
+	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
+	icon_state = "holster"
+	slot = ACCESSORY_SLOT_UTILITY
+	high_visibility = TRUE
+	hold = /obj/item/storage/internal/accessory/holster
+
+/obj/item/storage/internal/accessory/holster
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	var/obj/item/weapon/gun/current_gun
+	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
+	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy/super,
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/ammo_magazine/revolver
+	)
+	cant_hold = list(
+		/obj/item/weapon/gun/pistol/smart,
+		/obj/item/ammo_magazine/pistol/smart
+	)
+
+/obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
+	if(AM == current_gun)
+		current_gun = null
+
+/obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
+	var/obj/item/storage/internal/accessory/holster/H = hold
+	if(H.current_gun && ishuman(user) && (loc == user || has_suit))
+		if(mods && mods["alt"] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/I = H.contents[length(H.contents)]
+			if(isgun(I))
+				I = H.contents[length(H.contents) - 1]
+			I.attack_hand(user)
+		else
+			H.current_gun.attack_hand(user)
+		return
+
+	..()
+
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
+		if(isgun(W))
+			if(current_gun)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+				return
+		else //Must be ammo.
+			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_stored = length(contents)
+			if(current_gun)
+				ammo_stored -= 1
+			if(ammo_stored >= ammo_slots)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+				return
+		return 1
+
+/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/W)
+	if(isgun(W))
+		current_gun = W //If there's no active gun, we want to make this our gun
+		playsound(src, sheatheSound, 15, TRUE)
+	. = ..()
+
+/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/W)
+	if(isgun(W))
+		current_gun = null
+		playsound(src, drawSound, 15, TRUE)
+	. = ..()
+
+/obj/item/clothing/accessory/storage/holster/armpit
+	name = "shoulder holster"
+	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	icon_state = "holster"
+
+/obj/item/clothing/accessory/storage/holster/waist
+	name = "shoulder holster"
+	desc = "A handgun holster. Made of expensive leather."
+	icon_state = "holster"
+	item_state = "holster_low"
+
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized
 	Security agent - the user details can be imprinted on the badge with a Security-access ID card,

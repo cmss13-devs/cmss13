@@ -148,11 +148,11 @@
 	H.equip_to_slot_or_del(new /obj/structure/bed/portable_surgery(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_R_STORE)
 
 	spawn_rebel_smg(H)
 
@@ -197,9 +197,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	//specialist backpack stuff
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
@@ -244,14 +242,14 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/multitool(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 
-	spawn_rebel_weapon(H)
+	spawn_rebel_rifle(H)
 	spawn_rebel_weapon(H,1)
 
 //*****************************************************************************************************/

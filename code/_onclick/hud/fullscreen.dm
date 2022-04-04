@@ -91,6 +91,9 @@
 	icon_state = "brutedamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
 
+/obj/screen/fullscreen/brute/nvg
+	color = COLOR_BLACK
+
 /obj/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
@@ -117,6 +120,9 @@
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "noise"
+
+/obj/screen/fullscreen/flash/noise/nvg
+	alpha = 27.5
 
 /obj/screen/fullscreen/high
 	icon = 'icons/mob/hud/screen1.dmi'

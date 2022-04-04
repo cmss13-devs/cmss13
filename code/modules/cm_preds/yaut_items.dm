@@ -1000,7 +1000,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "medicomp"
 	w_class = SIZE_SMALL
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|ITEM_ABSTRACT
 	storage_slots = 14
 	storage_flags = STORAGE_SHOW_FULLNESS
 	can_hold = list(

@@ -414,6 +414,8 @@
 			found = TRUE
 			usr.r_hand = null
 			if(R)
+				for(var/mob/M in R.content_watchers)
+					R.storage_close(M)
 				user.temp_drop_inv_item(R)
 				R.forceMove(src)
 			user.update_inv_r_hand()
@@ -421,6 +423,8 @@
 			found = TRUE
 			usr.l_hand = null
 			if(L)
+				for(var/mob/M in L.content_watchers)
+					L.storage_close(M)
 				user.temp_drop_inv_item(L)
 				L.forceMove(src)
 			user.update_inv_l_hand()

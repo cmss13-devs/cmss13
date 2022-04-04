@@ -89,6 +89,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
 	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ca" = (
@@ -818,6 +822,10 @@
 "xk" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1580,6 +1588,10 @@
 "OB" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_2_1"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"

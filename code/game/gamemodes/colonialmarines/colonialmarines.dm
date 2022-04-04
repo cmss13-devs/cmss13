@@ -12,7 +12,6 @@
 
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
-	var/research_allocation_amount = 5
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -169,7 +168,7 @@
 		next_passive_increase = world.time + passive_increase_interval
 
 	if(next_research_allocation < world.time)
-		chemical_data.update_credits(research_allocation_amount)
+		chemical_data.update_credits(chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)

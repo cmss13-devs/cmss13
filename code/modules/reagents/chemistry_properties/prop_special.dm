@@ -36,13 +36,13 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_MEDICINE
 
-/datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1, delta_time)
-	M.heal_limb_damage(0.1 * potency * delta_time)
+/datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1)
+	M.heal_limb_damage(potency)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
-		M.apply_internal_damage(-0.5 * potency * delta_time, O)
+		M.apply_internal_damage(-potency, O)
 
 /datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.adjustCloneLoss(potency * delta_time)
@@ -50,6 +50,16 @@
 /datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
+/datum/chem_property/special/hypergenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
+	if(!isXenoOrHuman(M))
+		return
+	M.AddComponent(/datum/component/healing_reduction, -potency * volume * POTENCY_MULTIPLIER_LOW) //reduces heal reduction if present
+	if(ishuman(M)) //heals on contact with humans/xenos
+		var/mob/living/carbon/human/H = M
+		H.heal_limb_damage(potency * volume * POTENCY_MULTIPLIER_LOW)
+	if(isXeno(M)) //more effective on xenos to account for higher HP
+		var/mob/living/carbon/Xenomorph/X = M
+		X.gain_health(potency * volume)
 
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING
@@ -65,11 +75,11 @@
 	for(var/datum/internal_organ/O in H.internal_organs)
 		M.apply_internal_damage(-0.5 * potency * delta_time, O)
 
-/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.adjustCloneLoss(potency * delta_time)
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
+	M.adjustCloneLoss(POTENCY_MULTIPLIER_MEDIUM * potency)
 
-/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
+	M.take_limb_damage(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING
@@ -79,8 +89,8 @@
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 
-/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1, delta_time)
-	M.adjustCloneLoss(5 * potency * delta_time)
+/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1)
+	M.adjustCloneLoss(POTENCY_MULTIPLIER_EXTREME * potency)
 	if(ishuman(M) && M.cloneloss >= 190)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
@@ -224,7 +234,7 @@
 	var/mob/living/carbon/human/H = M
 	if(H.viruses)
 		for(var/datum/disease/D in H.viruses)
-			if(potency >= 2)
+			if(potency >= CREATE_MAX_TIER_1)
 				D.cure()
 				zs.remove_from_revive(H)
 			else
@@ -246,8 +256,8 @@
 	M.reagents.remove_all_type(/datum/reagent/toxin, 2.5*REM * delta_time, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.heal_limb_damage(2.5 * potency * delta_time, 2.5 * potency * delta_time)
-	M.apply_damage(-2.5 * potency * delta_time, TOX)
+	M.heal_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_VHIGH * potency)
+	M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0
@@ -347,9 +357,10 @@
 	name = PROPERTY_FIRE_PENETRATING
 	code = "PTR"
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
-	rarity = PROPERTY_ADMIN
+	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
-	value = 666
+	value = 8
+	max_level = 1
 
 /datum/chem_property/special/firepenetrating/reset_reagent()
 	holder.fire_penetrating = initial(holder.fire_penetrating)

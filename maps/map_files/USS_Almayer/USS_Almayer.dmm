@@ -46645,6 +46645,7 @@
 	pixel_y = -3
 	},
 /obj/item/reagent_container/glass/bucket,
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
@@ -51154,6 +51155,8 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
+/obj/item/reagent_container/glass/watertank,
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";

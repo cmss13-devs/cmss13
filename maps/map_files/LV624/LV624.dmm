@@ -3085,6 +3085,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"

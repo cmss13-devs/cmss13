@@ -370,7 +370,7 @@
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use
+#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
 #define CHAT_SAY_DELAY      2

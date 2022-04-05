@@ -6605,6 +6605,11 @@
 	dir = 4
 	},
 /area/kutjevo/interior/colony_South/power2)
+"jkJ" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/item/reagent_container/glass/watertank,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
 "jkR" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -31900,10 +31905,10 @@ kDS
 kDS
 ekJ
 lHs
-kNn
+jkJ
 nAo
 qgW
-kNn
+jkJ
 lHs
 plf
 gyx

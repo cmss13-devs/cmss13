@@ -47,6 +47,9 @@
 	max_water = 500
 	power = PYRO_EXTINGUISHER_PWR
 
+/obj/item/tool/extinguisher/pyro/atmos_tank
+	max_water = 500000 //so it never runs out, theoretically
+
 /obj/item/tool/extinguisher/Initialize()
 	. = ..()
 	create_reagents(max_water)

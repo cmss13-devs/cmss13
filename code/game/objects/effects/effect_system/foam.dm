@@ -99,6 +99,9 @@
 		C.slip("foam", 5, 2)
 
 
+/obj/effect/particle_effect/foam/metal
+	name = "metal foam"
+	metal = 1
 
 //datum effect system
 

@@ -511,27 +511,26 @@
 				var/mob/living/carbon/Xenomorph/X = M
 				if(!X.armor_deflection_debuff)
 					addtimer(CALLBACK(src, .proc/return_xeno_armor, X), 20)
-					to_chat(X, SPAN_DANGER("RETURN XENO ARMOR PROC STARTED. Triggering in 20 ticks."))
 				greenfire_shred_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			if (ishuman(M))
 				var/mob/living/carbon/human/H = M
 				H.next_move_slowdown = H.next_move_slowdown + 3
-				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as your struggle through the flames!"))
+				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 			else if (isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
 				X.next_move_slowdown = X.next_move_slowdown + 3
-				to_chat(X, SPAN_DANGER("You feel pieces of your chitin fusing with the viscous fluid below you and breaking off as you struggle through the flames!"))
+				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below you and breaking off as you struggle to move through the flames!"))
 
 /obj/flamer_fire/proc/greenfire_shred_xeno_armor(var/mob/living/carbon/Xenomorph/X)
 	X.armor_deflection_debuff = X.armor_deflection * 0.5
-	to_chat(X, SPAN_DANGER("Your armor is shredded! Your armor is reduced by [X.armor_deflection_debuff]."))
+	if(X.armor_deflection_debuff)
+		to_chat(X, SPAN_DANGER("The flaming chemicals around you are damaging your exoskeleton!"))
 
 /obj/flamer_fire/proc/return_xeno_armor(var/mob/living/carbon/Xenomorph/X)
-	to_chat(X, SPAN_DANGER("ARMOR RETURN TIMER PROCCED."))
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
-		to_chat(X, SPAN_DANGER("Your armor is restored! Your armor debuff is now [X.armor_deflection_debuff]."))
+		to_chat(X, SPAN_DANGER("Your exoskeleton rapidly regenerates!"))
 
 /obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
@@ -560,7 +559,6 @@
 				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
-		to_chat(M, SPAN_DANGER("You've been ignited! You now have [M.fire_stacks] stacks of [M.fire_reagent]."))
 
 	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
 		burn_damage = 0
@@ -571,7 +569,7 @@
 
 	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
-	to_chat(M, SPAN_DANGER("You are burned! You took [burn_damage]."))
+	to_chat(M, SPAN_DANGER("You are burned!"))
 	M.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
@@ -620,7 +618,6 @@
 						var/mob/living/carbon/Xenomorph/X = i
 						if(!X.armor_deflection_debuff)
 							addtimer(CALLBACK(src, .proc/return_xeno_armor, i), delta_time*10)
-							to_chat(i, SPAN_DANGER("RETURN XENO ARMOR PROC STARTED. Triggering in [delta_time]."))
 						greenfire_shred_xeno_armor(i)
 			set_on_fire(i)
 		else if(isobj(i))

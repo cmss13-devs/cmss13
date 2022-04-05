@@ -183,8 +183,6 @@
 					FF.firelevel -= power
 					FF.update_flame()
 				else //See: aliens.dm acid extinguishing behavior for more variant cases if needed.
-					if(FF.fire_variant)
-						to_chat(world, SPAN_DANGER("SPECIAL EXTINGUISHING BEHAVIOR TRIGGERED. Fire was at [FF.firelevel] stacks. Deleting."))
 					qdel(atm)
 				continue
 			if(isliving(atm)) //For extinguishing mobs on fire

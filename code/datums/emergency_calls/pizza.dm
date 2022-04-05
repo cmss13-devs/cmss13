@@ -6,6 +6,8 @@
 	mob_min = 1
 	arrival_message = "Incoming Transmission: 'That'll be.. sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko.. hello? Is anyone on this ship? Your pizzas are getting cold.'"
 	objectives = "Make sure you get a tip!"
+	shuttle_id = "Distress_Small"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	probability = 5
 
 /datum/emergency_call/pizza/create_member(datum/mind/M)
@@ -31,3 +33,6 @@
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
+
+/obj/effect/landmark/ert_spawns/distress_pizza
+	name = "Distress_Pizza"

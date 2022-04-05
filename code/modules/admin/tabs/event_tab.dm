@@ -145,7 +145,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big"))
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
 	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
@@ -165,6 +165,8 @@
 			if("Aft") dock_id = /area/shuttle/distress/arrive_3
 			if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
 			if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
+			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
+			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
 			else return
 		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
 			if(F != shuttle)

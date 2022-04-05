@@ -284,41 +284,34 @@
 
 /datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+	if(!X.check_state(TRUE))
 		return
 
-	if(X.current_aura)
+	var/choice
+	if(X.client.prefs && X.client.prefs.no_radials_preference)
+		choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
+		if(choice == "cancel")
+			return
+	else
+		var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
+		choice = show_radial_menu(X, X, phero_selections)
+
+	if(choice == "help")
+		to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
+		return
+	if(!choice || !X.check_state(TRUE))
+		return
+	if (!check_and_use_plasma_owner())
+		return
+	if(X.current_aura == choice)
 		X.current_aura = null
 		X.visible_message(SPAN_XENOWARNING("\The [X] stops emitting pheromones."), \
 		SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
 	else
-		if(X.client.prefs && X.client.prefs.no_radials_preference)
-			var/choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
-			if(choice == "help")
-				to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
-				return
-			if(!choice || choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
-				return
-			if (!check_and_use_plasma_owner())
-				return
-			X.current_aura = choice
-			X.visible_message(SPAN_XENOWARNING("\The [X] begins to emit strange-smelling pheromones."), \
-			SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
-			playsound(X.loc, "alien_drool", 25)
-		else
-			var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-			var/choice = show_radial_menu(X, X, phero_selections)
-			if(choice == "help")
-				to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
-				return
-			if(!choice || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
-				return
-			if (!check_and_use_plasma_owner())
-				return
-			X.current_aura = choice
-			X.visible_message(SPAN_XENOWARNING("\The [X] begins to emit strange-smelling pheromones."), \
-			SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
-			playsound(X.loc, "alien_drool", 25)
+		X.current_aura = choice
+		X.visible_message(SPAN_XENOWARNING("\The [X] begins to emit strange-smelling pheromones."), \
+		SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
+		playsound(X.loc, "alien_drool", 25)
 
 	if(isXenoQueen(X) && X.hive && X.hive.xeno_leader_list.len && X.anchored)
 		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)

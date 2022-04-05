@@ -198,15 +198,15 @@
 
 /obj/item/explosive/grenade/incendiary
 	name = "\improper M40 HIDP incendiary grenade"
-	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade. It is set to detonate in 4 seconds."
+	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
 	icon_state = "grenade_fire"
 	det_time = 40
 	item_state = "grenade_fire"
 	flags_equip_slot = SLOT_WAIST
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/flame_level = 20
-	var/burn_level = 15
+	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
+	var/burn_level = BURN_LEVEL_TIER_2
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 2
 	var/fire_type = 1 //Armor Shredding Greenfire

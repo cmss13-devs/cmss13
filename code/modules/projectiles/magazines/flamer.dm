@@ -135,7 +135,7 @@
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
 	name = "incinerator tank (B-Gel)"
-	desc = "A fuel tank full of specialized Napalm-B-Gel fuel. Unlike its liquid contemporaries, this gellied variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to break them down. Handle with exceptional care."
+	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel. Unlike its liquid contemporaries, this gellied variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to break them down. Handle with exceptional care."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
 	max_rounds = 200

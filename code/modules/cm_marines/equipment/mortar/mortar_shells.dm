@@ -37,10 +37,10 @@
 
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
-	desc = "An 80mm mortar shell, loaded with a napalm charge."
+	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
 	icon_state = "mortar_ammo_inc"
 	var/radius = 5
-	var/flame_level = BURN_TIME_TIER_5
+	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
 	var/burn_level = BURN_LEVEL_TIER_2
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/fire_type = 1 //Armor Shredding Greenfire

@@ -231,7 +231,12 @@
 	if(announce == "No")
 		is_announcing = FALSE
 
-	chosen_ert.activate(is_announcing)
+	var/turf/override_spawn_loc
+	var/use_current_loc = alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location") == "Current Location" ? TRUE : FALSE
+	if(use_current_loc)
+		override_spawn_loc = get_turf(usr)
+
+	chosen_ert.activate(is_announcing, override_spawn_loc)
 
 	message_staff("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 

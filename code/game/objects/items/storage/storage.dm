@@ -60,7 +60,7 @@
 
 /obj/item/storage/clicked(var/mob/user, var/list/mods)
 	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
-		open(user)
+		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
@@ -70,6 +70,9 @@
 		return FALSE
 
 	return ..()
+
+/obj/item/storage/proc/handle_mmb_open(var/mob/user)
+	open(user)
 
 /obj/item/storage/proc/return_inv()
 	RETURN_TYPE(/list)

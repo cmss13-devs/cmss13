@@ -387,3 +387,17 @@
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && LAZYLEN(equip_sounds))
 		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 	..()
+
+/obj/item/clothing/proc/get_pockets()
+	var/obj/item/clothing/accessory/storage/S = locate() in accessories
+	if(S)
+		return S.hold
+	return null
+
+/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
+	return ..()

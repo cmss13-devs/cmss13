@@ -742,6 +742,13 @@
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
 
+/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+	var/obj/item/storage/firstaid/FA = locate() in contents
+	if(FA)
+		FA.open(user)
+		return
+	return ..()
+
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/storage/firstaid/regular(src)

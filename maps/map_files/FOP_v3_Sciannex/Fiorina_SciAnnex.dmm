@@ -6814,7 +6814,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "eev" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"

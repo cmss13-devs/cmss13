@@ -198,6 +198,7 @@
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
 
 	var/flameshape = R.flameshape
+	var/fire_type = R.fire_type
 
 	R.intensityfire = Clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
 	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
@@ -218,7 +219,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -357,7 +358,9 @@
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1)
+	var/fire_variant = 0
+
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = 0)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -368,6 +371,8 @@
 		tied_reagents.locked = TRUE
 
 	flameshape = new_flameshape
+
+	fire_variant = fire_type
 
 	//non-dynamic flame is already colored
 	if(R.burn_sprite == "dynamic")
@@ -465,8 +470,11 @@
 
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
-		if(!(sig_result & COMPONENT_NO_IGNITE))
-			M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+		switch(fire_variant)
+			if(1) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+			else
+				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
@@ -497,6 +505,33 @@
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	set_on_fire(M)
+	switch(fire_variant)
+		if(1) //Armor Shredding Greenfire
+			if(istype(M, /mob/living/carbon/Xenomorph)) //Applies the xeno armor shred
+				var/mob/living/carbon/Xenomorph/X = M
+				if(!X.armor_deflection_debuff)
+					addtimer(CALLBACK(src, .proc/return_xeno_armor, X), 20)
+					to_chat(X, SPAN_DANGER("RETURN XENO ARMOR PROC STARTED. Triggering in 20 ticks."))
+				greenfire_shred_xeno_armor(X)
+				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
+			if (ishuman(M))
+				var/mob/living/carbon/human/H = M
+				H.next_move_slowdown = H.next_move_slowdown + 3
+				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as your struggle through the flames!"))
+			else if (isXeno(M))
+				var/mob/living/carbon/Xenomorph/X = M
+				X.next_move_slowdown = X.next_move_slowdown + 3
+				to_chat(X, SPAN_DANGER("You feel pieces of your chitin fusing with the viscous fluid below you and breaking off as you struggle through the flames!"))
+
+/obj/flamer_fire/proc/greenfire_shred_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+	X.armor_deflection_debuff = X.armor_deflection * 0.5
+	to_chat(X, SPAN_DANGER("Your armor is shredded! Your armor is reduced by [X.armor_deflection_debuff]."))
+
+/obj/flamer_fire/proc/return_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+	to_chat(X, SPAN_DANGER("ARMOR RETURN TIMER PROCCED."))
+	if(X.armor_deflection_debuff)
+		X.armor_deflection_debuff = 0
+		to_chat(X, SPAN_DANGER("Your armor is restored! Your armor debuff is now [X.armor_deflection_debuff]."))
 
 /obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
@@ -504,6 +539,9 @@
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = round(burnlevel * 0.5)
+	switch(fire_variant)
+		if(1) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
+			burn_damage = burnlevel
 	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
 
 	if(!tied_reagent.fire_penetrating)
@@ -517,7 +555,12 @@
 		X.plasma_stored = X.plasma_max
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
-		M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+		switch(fire_variant)
+			if(1) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+			else
+				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+		to_chat(M, SPAN_DANGER("You've been ignited! You now have [M.fire_stacks] stacks of [M.fire_reagent]."))
 
 	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
 		burn_damage = 0
@@ -528,7 +571,7 @@
 
 	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
-	to_chat(M, SPAN_DANGER("You are burned!"))
+	to_chat(M, SPAN_DANGER("You are burned! You took [burn_damage]."))
 	M.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
@@ -571,6 +614,14 @@
 	for(var/i in loc)
 		if(++j >= 11) break
 		if(isliving(i))
+			switch(fire_variant)
+				if(1)
+					if(istype(i, /mob/living/carbon/Xenomorph))
+						var/mob/living/carbon/Xenomorph/X = i
+						if(!X.armor_deflection_debuff)
+							addtimer(CALLBACK(src, .proc/return_xeno_armor, i), delta_time*10)
+							to_chat(i, SPAN_DANGER("RETURN XENO ARMOR PROC STARTED. Triggering in [delta_time]."))
+						greenfire_shred_xeno_armor(i)
 			set_on_fire(i)
 		else if(isobj(i))
 			var/obj/O = i

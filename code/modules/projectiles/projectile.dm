@@ -975,7 +975,7 @@
 	flash_weak_pain()
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
-		var/armor = armor_deflection + armor_deflection_buff
+		var/armor = armor_deflection + armor_deflection_buff - armor_deflection_debuff
 
 		var/list/damagedata = list(
 			"damage" = damage,

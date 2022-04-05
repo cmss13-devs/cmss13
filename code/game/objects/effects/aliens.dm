@@ -77,11 +77,20 @@
 		// Flamer fire?
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
-			if(FF.firelevel > fire_level_to_extinguish)
+			if((FF.firelevel > fire_level_to_extinguish) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 				FF.firelevel -= fire_level_to_extinguish
 				FF.update_flame()
 			else
-				qdel(atm)
+				switch(FF.fire_variant)
+					if(1) //Armor Shredding Greenfire, extinguishes faster.
+						if(FF.firelevel > 2*fire_level_to_extinguish)
+							to_chat(world, SPAN_DANGER("SPECIAL ACID EXTINGUISHING BEHAVIOR TRIGGERED. Fire starting at [FF.firelevel] stacks."))
+							FF.firelevel -= 2*fire_level_to_extinguish
+							FF.update_flame()
+							to_chat(world, SPAN_DANGER("SPECIAL ACID EXTINGUISHING BEHAVIOR COMPLETED. Fire is now at [FF.firelevel] stacks."))
+						else qdel(atm)
+					else
+						qdel(atm)
 			continue
 
 		if (istype(atm, /obj/structure/barricade))

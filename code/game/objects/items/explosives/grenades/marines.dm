@@ -209,13 +209,17 @@
 	var/burn_level = 15
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 2
+	var/fire_type = 1 //Armor Shredding Greenfire
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
+/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 20, var/burn_level = 30, var/flameshape = FLAMESHAPE_DEFAULT, var/target, var/fire_type = 0)
+	//This proc is used to generate automatically-colored fires from manually adjusted item variables.
+	//It parses them as parameters and sets color automatically based on Intensity, then sends an edited reagent to the standard flame code.
+	//By default, this generates a napalm fire with a radius of 1, flame_level of 30 per UT (prev 14 as greenfire), burn_level of 20 per UT (prev 15 as greenfire), in a diamond shape.
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
@@ -228,7 +232,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target)
+	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target, , , fire_type)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"

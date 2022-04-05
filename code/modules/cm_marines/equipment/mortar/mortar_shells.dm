@@ -39,11 +39,16 @@
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a napalm charge."
 	icon_state = "mortar_ammo_inc"
+	var/radius = 5
+	var/flame_level = BURN_TIME_TIER_5
+	var/burn_level = BURN_LEVEL_TIER_2
+	var/flameshape = FLAMESHAPE_DEFAULT
+	var/fire_type = 1 //Armor Shredding Greenfire
 
 /obj/item/mortar_shell/incendiary/detonate(var/turf/T)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	explosion(T, 0, 2, 4, 7, , , , cause_data)
-	flame_radius(cause_data, 5, T)
+	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare

@@ -36,9 +36,16 @@
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
+/obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
+	set name = "Toggle Scope Zoom Level"
+	set category = "Weapons"
+	set src in usr
+	var/obj/item/attachable/scope/variable_zoom/S = attachments["rail"]
+	S.toggle_zoom_level()
+
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/S = new(src)
+	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.ignore_clash_fog = TRUE
@@ -82,7 +89,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/S = new(src)
+	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
@@ -188,14 +195,14 @@
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/bipod,
-						/obj/item/attachable/scope/slavic)
+						/obj/item/attachable/scope/variable_zoom/slavic)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
 
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/slavic/S = new /obj/item/attachable/scope/slavic(src)
+	var/obj/item/attachable/scope/S = new /obj/item/attachable/scope/variable_zoom/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.ignore_clash_fog = TRUE
 	S.Attach(src)

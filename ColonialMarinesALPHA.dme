@@ -823,6 +823,7 @@
 #include "code\game\objects\items\cards_ids.dm"
 #include "code\game\objects\items\contraband.dm"
 #include "code\game\objects\items\cosmetics.dm"
+#include "code\game\objects\items\cpr_dummy.dm"
 #include "code\game\objects\items\disks.dm"
 #include "code\game\objects\items\fulton.dm"
 #include "code\game\objects\items\gift_wrappaper.dm"

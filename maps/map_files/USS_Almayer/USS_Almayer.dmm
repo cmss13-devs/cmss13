@@ -24056,7 +24056,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/living/cafeteria_starboard)
+/area/almayer/hull/lower_hull/l_a_s)
 "bBa" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -24522,15 +24522,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "bCG" = (
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
-	density = 0;
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/living/cafeteria_starboard)
+/obj/effect/landmark/start/marine,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "bCH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -24570,19 +24565,9 @@
 	},
 /area/almayer/living/cryo_cells)
 "bCO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start{
-	name = "Squad Radio Telephone Operator"
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "blue";
-	tag = "icon-blue (WEST)"
-	},
+/obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bCP" = (
 /obj/structure/machinery/cryopod/right,
@@ -25598,7 +25583,7 @@
 "bGn" = (
 /obj/effect/landmark/start/marine/smartgunner,
 /obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bGo" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -25918,7 +25903,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bHs" = (
-/obj/effect/landmark/start/marine,
+/obj/effect/landmark/start/marine/smartgunner,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
@@ -26338,7 +26323,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bJe" = (
-/obj/effect/landmark/start/marine/medic,
+/obj/effect/landmark/start/marine/rto,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -35227,14 +35212,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"cxv" = (
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/obj/effect/landmark/start/marine/medic,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
 "cxA" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -37387,6 +37364,22 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
+"dtB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark{
+	name = "JoinLateCryo"
+	},
+/obj/effect/landmark/start/marine/rto,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
+	},
+/area/almayer/living/cryo_cells)
 "dtH" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -39617,15 +39610,19 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "enQ" = (
-/obj/structure/machinery/cm_vending/clothing/pilot_officer{
-	pixel_x = -32;
-	density = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/marine/leader,
+/obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
 	},
-/area/almayer/living/cafeteria_starboard)
+/area/almayer/living/cryo_cells)
 "eoz" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -39943,9 +39940,7 @@
 	tag = "icon-SE-out"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start{
-	name = "Squad Radio Telephone Operator"
-	},
+/obj/effect/landmark/start/marine/rto,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
@@ -43225,9 +43220,7 @@
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
-/obj/effect/landmark/start{
-	name = "Squad Radio Telephone Operator"
-	},
+/obj/effect/landmark/start/marine/rto,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -44271,7 +44264,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/effect/landmark/start/marine,
+/obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
@@ -51791,19 +51784,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
-"jTF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/effect/landmark/start/marine/leader,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red";
-	tag = "icon-red (WEST)"
-	},
-/area/almayer/living/cryo_cells)
 "jTI" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -52003,6 +51983,16 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
+"jZv" = (
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/hull/lower_hull/l_a_s)
 "jZO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer{
@@ -54224,6 +54214,19 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
+"laU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E"
+	},
+/obj/effect/landmark/start/marine/leader,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red";
+	tag = "icon-red (WEST)"
+	},
+/area/almayer/living/cryo_cells)
 "laV" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -56012,7 +56015,7 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "lNb" = (
-/obj/effect/landmark/start/marine/smartgunner,
+/obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -56814,6 +56817,21 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
+"mlm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
+	},
+/obj/effect/landmark{
+	name = "JoinLateCryo"
+	},
+/obj/effect/landmark/start/marine/rto,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red";
+	tag = "icon-red (WEST)"
+	},
+/area/almayer/living/cryo_cells)
 "mlp" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
@@ -58309,10 +58327,15 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cafeteria_port)
 "mUW" = (
-/obj/effect/landmark/start/marine/rto,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
+/obj/structure/machinery/cm_vending/clothing/pilot_officer{
+	pixel_x = -32;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/hull/lower_hull/l_a_s)
 "mUZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -59336,22 +59359,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"nqQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "orange";
-	tag = "icon-orange"
-	},
-/area/almayer/squads/bravo)
 "nqU" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -60609,18 +60616,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
-"nUz" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice13";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/engineering/engine_core)
 "nUF" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 8
@@ -68834,6 +68829,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_south)
+"rPO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	req_one_access = "19;27;22";
+	name = "\improper Auxiliary Combat Support Secondary Preparations"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_s)
 "rQb" = (
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
@@ -69130,7 +69135,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "rWL" = (
-/obj/effect/landmark/start/marine,
+/obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -70319,6 +70324,20 @@
 	tag = "icon-emerald (SOUTHEAST)"
 	},
 /area/almayer/squads/charlie)
+"sAc" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (WEST)"
+	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer{
+	density = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/hull/lower_hull/l_a_s)
 "sAm" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -73376,7 +73395,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/living/cafeteria_starboard)
+/area/almayer/hull/lower_hull/l_a_s)
 "tSw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -79313,19 +79332,13 @@
 	},
 /area/almayer/medical/upper_medical)
 "wqY" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	tag = "icon-bulb1 (WEST)"
-	},
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer{
-	density = 0;
+/obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/living/cafeteria_starboard)
+/obj/effect/landmark/start/marine,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "wrC" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
@@ -83111,20 +83124,6 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/living/port_emb)
-"xUi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start/marine/leader,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "blue";
-	tag = "icon-blue (WEST)"
-	},
-/area/almayer/living/cryo_cells)
 "xUA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/pouch/tools/tank,
@@ -125399,7 +125398,7 @@ aPN
 aLT
 aQS
 aRT
-nqQ
+bnu
 aQL
 brr
 aRT
@@ -129064,8 +129063,8 @@ aZi
 aLG
 bbr
 bCM
-gsm
-rWL
+wqY
+lNb
 bGD
 bCM
 bzJ
@@ -129079,8 +129078,8 @@ vub
 bPL
 bCM
 xSM
-rWL
-cxv
+lNb
+gsm
 bCM
 bbr
 buH
@@ -129268,10 +129267,10 @@ aLG
 bbr
 bCN
 bHr
-rWL
+lNb
 bHr
 bCN
-bJe
+rWL
 qlz
 xYf
 skn
@@ -129281,9 +129280,9 @@ cLl
 qlz
 rbF
 bCN
-bHs
-rWL
-bHs
+bCG
+lNb
+bCG
 bCN
 bWv
 buH
@@ -129470,11 +129469,11 @@ aZi
 aLG
 bbr
 bpV
-bHs
-rWL
-bHs
+bCG
+lNb
+bCG
 bpV
-rWL
+lNb
 qlz
 gYe
 skn
@@ -129482,11 +129481,11 @@ bTx
 bKQ
 tXM
 qlz
-rWL
+lNb
 bpV
-bHs
-rWL
-bHs
+bCG
+lNb
+bCG
 bpV
 bbr
 buH
@@ -129674,8 +129673,8 @@ aLG
 bbr
 bCM
 bvE
-rWL
-bHs
+lNb
+bCG
 bCM
 rbF
 qlz
@@ -129685,10 +129684,10 @@ bTx
 bTx
 dFF
 qlz
-rWL
+lNb
 bCM
 bHr
-rWL
+lNb
 bvE
 bCM
 bbr
@@ -129877,10 +129876,10 @@ beB
 kFY
 bCP
 bDL
-rWL
+lNb
 bvE
 bCN
-rWL
+lNb
 vub
 odN
 odN
@@ -129888,10 +129887,10 @@ gcN
 odN
 odN
 vub
-bJe
-bCN
-bHs
 rWL
+bCN
+bCG
+lNb
 bDL
 bCN
 kFY
@@ -130894,8 +130893,8 @@ bdx
 bfp
 bhj
 fRN
-jTF
-xdP
+laU
+mlm
 biZ
 bkV
 bPP
@@ -130904,8 +130903,8 @@ bSh
 bvH
 bxn
 evs
-xUi
-bCO
+enQ
+dtB
 byx
 bEe
 bFt
@@ -131084,34 +131083,34 @@ rdK
 rdK
 rdK
 rdK
-aQY
-aQY
-aQY
-aQY
-aQY
+rdK
+rdK
+rdK
+rdK
+rdK
 bxD
 aYT
 beB
 kFY
 bsG
 bCM
-lNb
 bGn
+bHs
 bCM
-rWL
+lNb
 bHr
 bCM
-bHs
+bCG
 mUK
-bHs
-bCM
-rWL
-bvE
+bCG
 bCM
 lNb
-bGn
+bvE
 bCM
+bGn
 bHs
+bCM
+bCG
 kFY
 bJz
 cbS
@@ -131287,34 +131286,34 @@ rdK
 nAP
 jeU
 hlz
-aQY
-wqY
-enQ
-enQ
-ljD
+rdK
+sAc
+mUW
+mUW
+rPO
 aLG
 aYO
 aLG
 bbr
-bHs
+bCG
 bCN
-szi
-mUW
+bJe
+bCO
 bKC
-szi
-mUW
+bJe
+bCO
 bOV
-bHs
+bCG
 mUK
-bHs
+bCG
 bOV
-szi
-mUW
+bJe
+bCO
 bCN
-szi
-mUW
+bJe
+bCO
 bCN
-bHs
+bCG
 bbr
 buH
 bHc
@@ -131490,34 +131489,34 @@ rdK
 oTA
 jeU
 hlz
-aQY
+rdK
 tSr
 bAZ
-bCG
-bjG
+jZv
+hlz
 aLG
 aYO
 aLG
 bbr
-bHs
+bCG
 bpV
-rWL
-bHs
+lNb
+bCG
 bpV
-rWL
-bHs
+lNb
+bCG
 wLm
-bHs
+bCG
 mUK
-bHs
+bCG
 wLm
-rWL
-bHs
+lNb
+bCG
 bpV
-rWL
-bHs
+lNb
+bCG
 bpV
-bHs
+bCG
 bbr
 buH
 bHc
@@ -131693,34 +131692,34 @@ hlz
 eFH
 eFH
 hlz
-aQY
-aQY
-aQY
-aQY
-aQY
+rdK
+rdK
+rdK
+rdK
+rdK
 aLG
 aYO
 aLG
 bbr
-bHs
+bCG
 bCM
-bJe
+rWL
 bvE
 bCM
-bJe
-bHs
+rWL
+bCG
 bCM
-bHs
+bCG
 mUK
-bHs
+bCG
 bCM
-rWL
+lNb
 bHr
 bCM
-rWL
+lNb
 bHr
 bCM
-bHs
+bCG
 bbr
 buH
 bHc
@@ -131905,25 +131904,25 @@ aLG
 aYO
 aLG
 bbr
-bHs
+bCG
 bCN
-rWL
-bHs
+lNb
+bCG
 bKD
-rWL
+lNb
 bHr
 bCN
-bHs
+bCG
 dyt
-bHs
+bCG
 bCN
-rWL
-bHs
+lNb
+bCG
 bKD
-rWL
+lNb
 bvE
 bCN
-bHs
+bCG
 bbr
 buH
 bHc
@@ -135560,7 +135559,7 @@ byQ
 aVl
 eFH
 rdK
-nUz
+bhB
 bhB
 uEc
 bKU

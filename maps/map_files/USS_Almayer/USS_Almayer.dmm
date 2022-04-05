@@ -2027,8 +2027,7 @@
 "afx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Workshop Vendors";
-	req_one_access = null
+	name = "\improper Workshop Vendors"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -2236,9 +2235,7 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "age" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/hull/upper_hull/u_f_s)
 "agf" = (
 /turf/open/floor/almayer{
@@ -2276,9 +2273,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "agj" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/commandbunks)
 "agk" = (
 /turf/closed/shuttle/escapepod{
@@ -3815,9 +3810,7 @@
 	},
 /area/almayer/medical/upper_medical)
 "akC" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/starboard_missiles)
 "akD" = (
 /obj/effect/attach_point/electronics/dropship1{
@@ -3831,8 +3824,7 @@
 /obj/structure/machinery/door_control{
 	id = "or2privacyshutter";
 	name = "Privacy Shutters";
-	pixel_y = 25;
-	req_access = null
+	pixel_y = 25
 	},
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -5002,7 +4994,6 @@
 	dir = 2;
 	name = "\improper Dropship Control Bubble";
 	req_access = null;
-	req_one_access = null;
 	req_one_access_txt = "3;22;2;19"
 	},
 /turf/open/floor/almayer,
@@ -5461,9 +5452,7 @@
 /area/almayer/engineering/upper_engineering)
 "aoZ" = (
 /obj/structure/sign/prop1,
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/commandbunks)
 "apa" = (
 /obj/structure/surface/rack,
@@ -6845,9 +6834,7 @@
 	},
 /area/almayer/command/airoom)
 "asE" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/engineering/engineering_workshop/hangar)
 "asF" = (
 /obj/structure/machinery/door_control{
@@ -7965,9 +7952,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "auW" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/port_point_defense)
 "auX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -8424,9 +8409,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "awd" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/pilotbunks)
 "awe" = (
 /obj/structure/surface/table/almayer,
@@ -8595,9 +8578,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "awz" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
@@ -8638,9 +8619,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/command/corporateliason)
 "awF" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/numbertwobunks)
 "awG" = (
 /obj/structure/machinery/light{
@@ -8687,9 +8666,7 @@
 /area/almayer/medical/upper_medical)
 "awN" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cic)
 "awO" = (
 /turf/open/shuttle/escapepod{
@@ -10405,9 +10382,7 @@
 /obj/item/tool/pen,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft{
-	req_one_access = null
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/window/westright,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -10986,9 +10961,7 @@
 /area/almayer/engineering/upper_engineering)
 "aDi" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft{
-	req_one_access = null
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -17620,8 +17593,7 @@
 /obj/structure/machinery/door_control{
 	id = "or1privacyshutter";
 	name = "Privacy Shutters";
-	pixel_y = 25;
-	req_access = null
+	pixel_y = 25
 	},
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -19724,7 +19696,6 @@
 	name = "Dropship Lockdown";
 	normaldoorcontrol = 3;
 	pixel_y = -19;
-	req_access = null;
 	req_one_access_txt = "3;22";
 	throw_range = 15
 	},
@@ -23240,8 +23211,7 @@
 	dir = 1;
 	id = "or4privacyshutter";
 	name = "Privacy Shutters";
-	pixel_y = -25;
-	req_access = null
+	pixel_y = -25
 	},
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -26402,7 +26372,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Tanker Quarters";
-	req_access = null;
 	req_one_access_txt = "19;27"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -28203,8 +28172,7 @@
 "bPu" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
-	name = "ship-grade camera";
-	tag = null
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -34600,8 +34568,7 @@
 "cnH" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Computer Lab";
-	req_access = null;
-	req_one_access_txt = null
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8;
@@ -36167,7 +36134,7 @@
 	},
 /area/almayer/hull/lower_hull/l_a_s)
 "cTC" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "green";
@@ -36798,8 +36765,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 1;
 	name = "\improper High Security Storage";
-	req_access = null;
-	req_one_access_txt = null
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -38417,7 +38383,6 @@
 	dir = 2;
 	name = "\improper Dropship Control Bubble";
 	req_access = null;
-	req_one_access = null;
 	req_one_access_txt = "3;22;2;19"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -38954,9 +38919,7 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "ecr" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/captain_mess)
 "ect" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -42013,8 +41976,7 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
 	name = "ship-grade camera";
-	pixel_y = 6;
-	tag = null
+	pixel_y = 6
 	},
 /obj/structure/sign/safety/outpatient{
 	pixel_x = -17;
@@ -44196,9 +44158,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "gpY" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/lifeboat_pumps/north1)
 "gqK" = (
 /obj/structure/machinery/light/small{
@@ -45476,8 +45436,7 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
 	name = "ship-grade camera";
-	pixel_y = 6;
-	tag = null
+	pixel_y = 6
 	},
 /obj/structure/sign/safety/biolab{
 	pixel_x = -17;
@@ -46082,8 +46041,7 @@
 	dir = 1;
 	id = "or3privacyshutter";
 	name = "Privacy Shutters";
-	pixel_y = -25;
-	req_access = null
+	pixel_y = -25
 	},
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -49525,8 +49483,7 @@
 "iMI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	tag = null
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -50881,8 +50838,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 1;
 	name = "\improper High Security Storage";
-	req_access = null;
-	req_one_access_txt = null
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -51045,9 +51001,7 @@
 	},
 /area/almayer/command/cic)
 "jvY" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/telecomms)
 "jwK" = (
 /obj/structure/disposalpipe/segment,
@@ -51117,7 +51071,6 @@
 /area/almayer/command/computerlab)
 "jyR" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
-	req_access_txt = null;
 	req_one_access_txt = "7;23;27"
 	},
 /turf/open/floor/almayer{
@@ -53102,7 +53055,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_umbilical)
 "kzb" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "kzu" = (
@@ -53226,9 +53179,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "kCi" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/port_missiles)
 "kCm" = (
 /obj/structure/sign/safety/fire_haz{
@@ -54568,11 +54519,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/gym)
-"ljD" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
-/area/almayer/shipboard/brig/processing)
 "ljG" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/almayer{
@@ -54887,9 +54833,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
 "lrq" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/armory)
 "lrs" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -57821,9 +57765,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/port_emb)
 "mKq" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/bridgebunks)
 "mKx" = (
 /obj/structure/machinery/status_display{
@@ -58166,9 +58108,7 @@
 /area/almayer/hallways/aft_hallway)
 "mRm" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/captain_mess)
 "mRW" = (
 /turf/open/floor/almayer/research/containment/corner1,
@@ -66183,9 +66123,7 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "qFl" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/hull/upper_hull/u_f_p)
 "qFu" = (
 /obj/structure/window/framed/almayer,
@@ -70273,11 +70211,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"szi" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
-/area/almayer/shipboard/brig/general_equipment)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -73578,9 +73511,7 @@
 	},
 /area/almayer/squads/req)
 "tXs" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/cic_hallway)
 "tXG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -77237,9 +77168,7 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "vxM" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/cryo)
 "vxX" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -77428,9 +77357,7 @@
 	},
 /area/almayer/medical/containment)
 "vBm" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/main_office)
 "vBp" = (
 /obj/structure/bed/chair/comfy{
@@ -77490,8 +77417,7 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
 	name = "ship-grade camera";
-	pixel_y = 6;
-	tag = null
+	pixel_y = 6
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -79413,7 +79339,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Brig Medbay";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null;
 	req_one_access_txt = "20;3"
 	},
@@ -80015,9 +79940,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_north)
 "wIC" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/chief_mp_office)
 "wIG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -80671,9 +80594,7 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "wVW" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cic)
 "wVY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -81006,11 +80927,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"xdP" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
-/area/almayer/shipboard/brig/perma)
 "xet" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10";
@@ -81360,9 +81276,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
 "xkd" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/cells)
 "xkw" = (
 /obj/structure/disposalpipe/segment{
@@ -82191,9 +82105,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "xBe" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/briefing)
 "xBQ" = (
 /obj/structure/disposalpipe/segment{
@@ -83615,8 +83527,6 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "yeR" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
-	desc = "An automated equipment vendor for Senior Officers.";
-	name = "\improper ColMarTech Senior Officer Equipment Rack";
 	req_access = null;
 	req_access_txt = 19;
 	req_one_access = null
@@ -96300,15 +96210,15 @@ xkd
 nlH
 uuq
 xkd
-xdP
-xdP
+naB
+naB
 pFg
-xdP
-xdP
-xdP
+naB
+naB
+naB
 ydU
-xdP
-xdP
+naB
+naB
 kIV
 mnm
 xEF
@@ -96503,15 +96413,15 @@ xkd
 xkd
 xkd
 xkd
-xdP
+naB
 eoP
 qyd
 xEe
-xdP
+naB
 xEe
 qyd
 deb
-xdP
+naB
 lmk
 kIV
 xEF
@@ -96702,19 +96612,19 @@ emp
 dGD
 wSm
 lfW
-ljD
+emp
 vli
 rSH
 xYj
-xdP
+naB
 aSS
 qyd
 poZ
-xdP
+naB
 jkV
 qyd
 kOi
-xdP
+naB
 xCj
 kIV
 xEF
@@ -96885,7 +96795,7 @@ pCi
 msV
 rPC
 naf
-szi
+cQv
 vcG
 lYZ
 olv
@@ -96909,15 +96819,15 @@ vsJ
 kjN
 rvo
 oIc
-xdP
+naB
 xro
 qyd
 wvI
-xdP
+naB
 wvI
 qyd
 qmX
-xdP
+naB
 lTK
 mnm
 kIV
@@ -97087,8 +96997,8 @@ aad
 pCi
 dSA
 rPC
-szi
-szi
+cQv
+cQv
 geX
 tFv
 pGT
@@ -97108,20 +97018,20 @@ wqu
 oBg
 cMl
 fHS
-xdP
-xdP
-xdP
-xdP
-xdP
-xdP
+naB
+naB
+naB
+naB
+naB
+naB
 rkh
 lvZ
-xdP
+naB
 fuX
 rra
-xdP
-xdP
-xdP
+naB
+naB
+naB
 mnm
 kIV
 xEF
@@ -97290,7 +97200,7 @@ aad
 pCi
 wcn
 rPC
-szi
+cQv
 eaf
 bEv
 tWg
@@ -97324,7 +97234,7 @@ uDp
 qyd
 icX
 xQD
-xdP
+naB
 kIV
 lre
 xEF
@@ -97493,7 +97403,7 @@ aag
 pCi
 mNR
 wcn
-szi
+cQv
 bOU
 bEv
 fLn
@@ -97527,7 +97437,7 @@ qyd
 qyd
 bND
 jaP
-xdP
+naB
 kIV
 rQU
 xEF
@@ -97696,7 +97606,7 @@ aag
 pCi
 tCb
 aou
-szi
+cQv
 avq
 bEv
 fLn
@@ -97730,7 +97640,7 @@ uUs
 nqZ
 ekg
 usr
-xdP
+naB
 inC
 mKf
 xEF
@@ -97899,7 +97809,7 @@ aag
 pCi
 oCL
 wcn
-szi
+cQv
 bOU
 bEv
 qRo
@@ -97930,10 +97840,10 @@ qyd
 qyd
 uQm
 pIH
-xdP
+naB
 nOe
 nOe
-xdP
+naB
 bIi
 fQk
 xEF
@@ -98102,7 +98012,7 @@ aag
 pCi
 wcn
 rPC
-szi
+cQv
 bOU
 vez
 mWe
@@ -98305,11 +98215,11 @@ aag
 pCi
 nfI
 rPC
-szi
-szi
-szi
-szi
-szi
+cQv
+cQv
+cQv
+cQv
+cQv
 dvT
 blb
 vxC
@@ -98337,9 +98247,9 @@ hwQ
 okM
 mtl
 mtl
-xdP
-xdP
-xdP
+naB
+naB
+naB
 mnm
 hPT
 xEF

@@ -219,6 +219,18 @@
 	containername = "M39 Belt Holster Crate"
 	group = "Clothing"
 
+/datum/supply_packs/gunslinger_holster
+	contains = list(
+					/obj/item/storage/belt/gun/m44/gunslinger,
+					/obj/item/storage/belt/gun/m44/gunslinger
+					)
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	cost = RO_PRICE_VERY_CHEAP
+	contraband = 1
+	containertype = /obj/structure/closet/crate
+	containername = "Cowboy Costume Crate"
+	group = "Clothing"
+
 /datum/supply_packs/gun_holster/m44
 	name = "M44 Belt Holster Crate (x2)"
 	containername = "M44 Belt Holster Crate"

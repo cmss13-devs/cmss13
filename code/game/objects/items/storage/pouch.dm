@@ -285,12 +285,8 @@
 	if(current_gun)
 		playsound(src, drawSound, 15, TRUE)
 		gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
-		if(!istype(current_gun,/obj/item/weapon/gun/pistol))
-			gun_underlay.pixel_x = icon_x + 1
-			gun_underlay.pixel_y = icon_y + 3
-		else
-			gun_underlay.pixel_x = icon_x
-			gun_underlay.pixel_y = icon_y
+		gun_underlay.pixel_x = icon_x
+		gun_underlay.pixel_y = icon_y
 		gun_underlay.color = current_gun.color
 		underlays += gun_underlay
 	else
@@ -315,7 +311,7 @@
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet
 	icon_x = -6
-	icon_y = -0
+	icon_y = 0
 
 /obj/item/storage/pouch/pistol/command/Destroy()
 	binos = null

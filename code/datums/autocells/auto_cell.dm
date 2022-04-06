@@ -35,7 +35,7 @@
 		return
 
 	in_turf = T
-	in_turf.autocells += src
+	LAZYADD(in_turf.autocells, src)
 
 	cellauto_cells += src
 
@@ -45,7 +45,7 @@
 	. = ..()
 
 	if(!QDELETED(in_turf))
-		in_turf.autocells -= src
+		LAZYREMOVE(in_turf.autocells, src)
 		in_turf = null
 
 	cellauto_cells -= src
@@ -66,11 +66,11 @@
 		return
 
 	if(!QDELETED(in_turf))
-		in_turf.autocells -= src
+		LAZYREMOVE(in_turf.autocells, src)
 		in_turf = null
 
 	in_turf = new_turf
-	in_turf.autocells += src
+	LAZYADD(in_turf.autocells, src)
 
 // Use this proc to merge this cell with another one if the other cell enters the same turf
 // Return TRUE if this cell should survive the merge (the other one will die/be qdeleted)

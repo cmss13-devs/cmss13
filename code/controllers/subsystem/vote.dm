@@ -269,7 +269,12 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round", "Continue Playing")
 			if("gamemode")
 				question = "Gamemode vote"
-				choices.Add(config.votable_modes)
+				for(var/mode_type in config.gamemode_cache)
+					var/datum/game_mode/M = initial(mode_type)
+					if(initial(M.config_tag))
+						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
+						if(initial(M.votable) && vote_cycle_met)
+							choices += initial(M.config_tag)
 			if("groundmap")
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
@@ -280,6 +285,8 @@ SUBSYSTEM_DEF(vote)
 					if(VM.map_file == SSmapping.configs[GROUND_MAP].map_file)
 						continue
 					if(!VM.voteweight)
+						continue
+					if(!(GLOB.master_mode in VM.gamemodes))
 						continue
 					if(text2num(SSperf_logging?.round?.id) % VM.vote_cycle != 0)
 						continue
@@ -292,7 +299,7 @@ SUBSYSTEM_DEF(vote)
 					maps += i
 
 				choices.Add(maps)
-				if(length(choices) < 2)
+				if(!length(choices))
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
 

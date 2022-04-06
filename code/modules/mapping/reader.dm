@@ -360,7 +360,7 @@
 	if(crds)
 		if(ispath(path, /turf))
 			if(delete)
-				for(var/A in crds.GetAllContents())
+				for(var/atom/A as anything in crds.GetAllTurfStrictContents())
 					qdel(A, force=TRUE)
 
 			if(placeOnTop)

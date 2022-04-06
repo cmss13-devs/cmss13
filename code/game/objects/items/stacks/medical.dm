@@ -73,18 +73,22 @@
 			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
 			return TRUE
 
-		if(!affecting.bandage())
-			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been bandaged."))
-			return 1
-		else
-			var/possessive = "[user == M ? "your" : "[M]'s"]"
-			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
-				SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
-				SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
-			use(1)
-			playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
+		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		switch(affecting.bandage())
+			if(WOUNDS_BANDAGED)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
+					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
+				use(1)
+				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
+			if(WOUNDS_ALREADY_TREATED)
+				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
+				return TRUE
+			else
+				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
+				return TRUE
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
@@ -114,18 +118,22 @@
 			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
 			return TRUE
 
-		if(!affecting.salve())
-			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
-			return 1
-		else
-			var/possessive = "[user == M ? "your" : "[M]'s"]"
-			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
-				SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
-				SPAN_NOTICE("[user] salves the wounds on [possessive_their] [affecting.display_name]."))
-			use(1)
-			playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
+		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		switch(affecting.salve())
+			if(WOUNDS_BANDAGED)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
+					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+				use(1)
+				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
+			if(WOUNDS_ALREADY_TREATED)
+				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
+				return TRUE
+			else
+				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
+				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"
@@ -154,23 +162,27 @@
 
 		if(affecting.get_incision_depth())
 			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
-			return
+			return TRUE
 
-		var/bandaged = affecting.bandage()
-
-		if(!bandaged)
-			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
-			return 1
-		else
-			var/possessive = "[user == M ? "your" : "[M]'s"]"
-			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
-				SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
-				SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
-		if(bandaged)
-			affecting.heal_damage(brute = heal_amt)
-			use(1)
+		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		switch(affecting.bandage(TRUE))
+			if(WOUNDS_BANDAGED)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
+					SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
+					SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
+				//If a suture datum exists, apply half the damage as sutures. This ensures consistency in healing amounts.
+				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, TRUE, FALSE, heal_amt * 0.5))
+					heal_amt *= 0.5
+				affecting.heal_damage(brute = heal_amt)
+				use(1)
+			if(WOUNDS_ALREADY_TREATED)
+				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
+				return TRUE
+			else
+				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
+				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
@@ -217,21 +229,27 @@
 
 		if(affecting.get_incision_depth())
 			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
-			return
+			return TRUE
 
-		if(!affecting.salve())
-			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
-			return 1
-		else
-			var/possessive = "[user == M ? "your" : "[M]'s"]"
-			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>cover the wounds</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
-				SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
-				SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
-
-			affecting.heal_damage(burn = heal_amt)
-			use(1)
+		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		switch(affecting.salve(TRUE))
+			if(WOUNDS_BANDAGED)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>cover the burns</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
+					SPAN_HELPFUL("[user] <b>covers the burns</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
+					SPAN_NOTICE("[user] covers the burns on [possessive_their] [affecting.display_name] with regenerative membrane."))
+				//If a suture datum exists, apply half the damage as grafts. This ensures consistency in healing amounts.
+				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, FALSE, TRUE, heal_amt * 0.5))
+					heal_amt *= 0.5
+				affecting.heal_damage(burn = heal_amt)
+				use(1)
+			if(WOUNDS_ALREADY_TREATED)
+				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
+				return TRUE
+			else
+				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
+				return TRUE
 
 /obj/item/stack/medical/splint
 	name = "medical splints"
@@ -270,8 +288,8 @@
 			return
 
 		if(M != user)
-			var/possessive = "[user == M ? "your" : "[M]'s"]"
-			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			var/possessive = "[user == M ? "your" : "\the [M]'s"]"
+			var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
 				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
@@ -285,7 +303,7 @@
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> your <b>[affecting.display_name]</b>."),
 				,
-				SPAN_NOTICE("[user] starts splinting their [affecting.display_name]."))
+				SPAN_NOTICE("[user] starts splinting \his [affecting.display_name]."))
 
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)

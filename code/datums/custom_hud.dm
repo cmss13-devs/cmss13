@@ -142,6 +142,7 @@
 	var/ui_queen_locator 		= "EAST-1:28,8:13"
 	var/ui_alienplasmadisplay 	= "EAST-1:28,6:13"
 	var/ui_alienarmordisplay 	= "EAST-1:28,5:13"
+	var/ui_mark_locator 		= "EAST-1:28,10:13"
 
 /datum/custom_hud/robot
 	ui_style_icon = 'icons/mob/hud/screen1_robot.dmi'

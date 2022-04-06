@@ -1,4 +1,4 @@
-#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/20
+#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/11
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
@@ -118,5 +118,7 @@
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 
 AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 3 HOURS
+	JOB_SQUAD_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
+	JOB_MEDIC_ROLES = 5 HOURS
 ))

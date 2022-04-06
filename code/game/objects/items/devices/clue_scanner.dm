@@ -8,8 +8,13 @@
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
 
-	var/obj/effect/decal/prints/found_prints = null
+	var/list/print_list
 	var/scanning = FALSE
+	var/newlyfound
+
+/obj/item/device/clue_scanner/examine(mob/user)
+	..()
+	to_chat(user, SPAN_INFO("Print sets stored: [length(print_list)]"))
 
 /obj/item/device/clue_scanner/update_icon()
 	overlays.Cut()
@@ -17,7 +22,7 @@
 	if(scanning)
 		overlays += "+scanning"
 
-	if(found_prints)
+	if(print_list)
 		overlays += "+prints"
 
 /obj/item/device/clue_scanner/attack_self(mob/user)
@@ -36,16 +41,15 @@
 		return
 	scanning = FALSE
 
-	var/obj/effect/decal/prints/print_set
+	newlyfound = 0
 	for(var/obj/effect/decal/prints/P in range(2))
-		P = print_set
-		break
+		newlyfound++
+		LAZYADD(print_list, P)
+		P.moveToNullspace()
 
-	if(!print_set)
-		to_chat(user, SPAN_WARNING("No prints located in the area..."))
-		return
-
-	print_set.moveToNullspace()
-	found_prints = print_set
 	update_icon()
-	to_chat(user, SPAN_INFO("Print set found: [found_prints.generate_clue()]"))
+
+	if(!newlyfound)
+		to_chat(user, SPAN_INFO("No new print sets found!"))
+	else
+		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [print_list.len]"))

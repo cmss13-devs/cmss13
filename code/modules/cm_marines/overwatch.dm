@@ -823,7 +823,7 @@
 			if(new_squad.num_smartgun == new_squad.max_smartgun)
 				no_place = TRUE
 		if(JOB_SQUAD_RTO)
-			if(new_squad.max_rto >= new_squad.max_rto)
+			if(new_squad.num_rto >= new_squad.max_rto)
 				no_place = TRUE
 
 	if(no_place)
@@ -900,8 +900,7 @@
 		return
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
-	for(var/mob/dead/observer/g as anything in GLOB.observer_list)
-		to_chat(g, FONT_SIZE_LARGE(SPAN_DEADSAY("\A [ob_name] targeting [A.name] has been fired! (<a href='?src=\ref[g];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")))
+	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
 	message_staff(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 

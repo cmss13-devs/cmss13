@@ -135,8 +135,13 @@
 		if(!Adjacent(usr))
 			return
 
-		// Input the text and apply it
-		add_label(loaded_pill_bottle, user)
+		var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
+		if(label)
+			loaded_pill_bottle.set_name_label(label)
+			if(length(label) < 3)
+				loaded_pill_bottle.maptext_label = label
+				loaded_pill_bottle.update_icon()
+
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")

@@ -90,3 +90,6 @@
 
 /datum/behavior_delegate/proc/handle_slash(mob/M)
 	return
+
+/datum/behavior_delegate/proc/handle_death(mob/M)
+	return

@@ -57,7 +57,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/recoil_mod 		= 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
-	var/suppress_firesound 	= FALSE //Adds silenced to weapon
 	var/light_mod 		= 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
 	var/delay_mod 		= 0 //Changes firing delay. Cannot go below 0.
 	var/burst_mod 		= 0 //Changes burst rate. 1 == 0.
@@ -83,6 +82,8 @@ Defined in conflicts.dm of the #defines folder.
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
+	/// List of traits to be given to the gun itself.
+	var/list/gun_traits
 
 /obj/item/attachable/Initialize(mapload, ...)
 	. = ..()
@@ -136,12 +137,6 @@ Defined in conflicts.dm of the #defines folder.
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
 	G.update_force_list() //This updates the gun to use proper force verbs.
 
-	if(suppress_firesound)
-		G.flags_gun_features |= GUN_SILENCED
-		G.muzzle_flash = null
-		if(!(G.flags_gun_features & GUN_INTERNAL_SILENCED))
-			G.fire_sound = "gun_silenced"
-
 	var/mob/living/living
 	if(isliving(G.loc))
 		living = G.loc
@@ -158,6 +153,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = sharp
 
+	for(var/trait in gun_traits)
+		ADD_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
 		if(!G.in_chamber)
 			break
@@ -191,6 +188,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = 0
 
+	for(var/trait in gun_traits)
+		REMOVE_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
 		if(!G.in_chamber)
 			break
@@ -228,10 +227,10 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
 	icon_state = "suppressor"
 	slot = "muzzle"
-	suppress_firesound = TRUE
 	pixel_shift_y = 16
 	attach_icon = "suppressor_a"
 	hud_offset_mod = -3
+	gun_traits = list(TRAIT_GUN_SILENCED)
 
 /obj/item/attachable/suppressor/New()
 	..()
@@ -435,6 +434,19 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/mar50barrel
+	name = "MAR-50 barrel"
+	icon_state = "mar50barrel"
+	desc = "A heavy barrel. CANNOT BE REMOVED."
+	slot = "muzzle"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = -6
+
+/obj/item/attachable/mar50barrel/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
 	icon_state = "m56_barrel"
@@ -553,7 +565,73 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
+	var/activated = FALSE
+	var/helm_mounted_light_mod = 5
+
+	var/datum/action/item_action/activation
+	var/obj/item/attached_item
+
+/obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
+	..()
+
+	if(!istype(S, /obj/item/storage/internal))
+		return
+
+	if(!istype(S.master_object, /obj/item/clothing/head/helmet/marine))
+		return
+
+	remove_attached_item()
+
+	attached_item = S.master_object
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	activation = new /datum/action/item_action/toggle(src, S.master_object)
+
+	if(ismob(S.master_object.loc))
+		activation.give_to(S.master_object.loc)
+
+/obj/item/attachable/flashlight/on_exit_storage(obj/item/storage/S)
+	remove_attached_item()
+	return ..()
+
+/obj/item/attachable/flashlight/proc/remove_attached_item()
+	SIGNAL_HANDLER
+	if(!attached_item)
+		return
+	if(activated)
+		icon_state = original_state
+		attach_icon = original_attach
+		activate_attachment(attached_item, attached_item.loc, TRUE)
+	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	qdel(activation)
+	attached_item.update_icon()
+	attached_item = null
+
+/obj/item/attachable/flashlight/ui_action_click(var/mob/owner, var/obj/item/holder)
+	if(!attached_item)
+		. = ..()
+	else
+		activate_attachment(attached_item, owner)
+
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
+	if(istype(G, /obj/item/clothing/head/helmet/marine))
+		var/atom/movable/light_source = user
+		. = (turn_off && activated)
+		if(turn_off || activated)
+			if(activated)
+				playsound(user, deactivation_sound, 15, 1)
+			icon_state = original_state
+			attach_icon = original_attach
+			activated = FALSE
+		else
+			playsound(user, activation_sound, 15, 1)
+			icon_state += "-on"
+			attach_icon += "-on"
+			activated = TRUE
+		attached_item.update_icon()
+		light_source.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
+		attached_item.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
+		activation.update_button_icon()
+		return
 	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
 	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
@@ -667,6 +745,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/delay_scoped_nerf
 	var/damage_falloff_scoped_buff
 	var/ignore_clash_fog = FALSE
+	var/using_scope
 
 /obj/item/attachable/scope/New()
 	..()
@@ -684,11 +763,13 @@ Defined in conflicts.dm of the #defines folder.
 		G.accuracy_mult += accuracy_scoped_buff
 		G.fire_delay += delay_scoped_nerf
 		G.damage_falloff_mult += damage_falloff_scoped_buff
+		using_scope = TRUE
 		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_scoped_buff)
 
 /obj/item/attachable/scope/proc/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+	using_scope = FALSE
 	G.accuracy_mult -= accuracy_scoped_buff
 	G.fire_delay -= delay_scoped_nerf
 	G.damage_falloff_mult -= damage_falloff_scoped_buff
@@ -713,6 +794,79 @@ Defined in conflicts.dm of the #defines folder.
 			apply_scoped_buff(G,user)
 	return TRUE
 
+//variable zoom scopes, they go between 2x and 4x zoom.
+
+#define ZOOM_LEVEL_2X	0
+#define ZOOM_LEVEL_4X	1
+
+/obj/item/attachable/scope/variable_zoom
+	name = "S10 variable zoom telescopic scope"
+	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	attachment_action_type = /datum/action/item_action/toggle
+	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
+	var/zoom_level = ZOOM_LEVEL_4X
+
+/obj/item/attachable/scope/variable_zoom/Attach(obj/item/weapon/gun/G)
+	. = ..()
+	var/mob/living/living
+	var/given_zoom_action = FALSE
+	if(living && (G == living.l_hand || G == living.r_hand))
+		give_action(living, /datum/action/item_action/toggle_zoom_level, src, G)
+		given_zoom_action = TRUE
+	if(!given_zoom_action)
+		new /datum/action/item_action/toggle_zoom_level(src, G)
+
+/obj/item/attachable/scope/variable_zoom/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+	. = ..()
+	if(G.zoom)
+		G.slowdown += dynamic_aim_slowdown
+
+/obj/item/attachable/scope/variable_zoom/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
+	G.slowdown -= dynamic_aim_slowdown
+	..()
+
+/obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
+	if(using_scope)
+		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))
+		return
+	if(zoom_level == ZOOM_LEVEL_2X)
+		zoom_level = ZOOM_LEVEL_4X
+		zoom_offset = 11
+		zoom_viewsize = 12
+		allows_movement = 0
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x"))
+		return
+	else
+		zoom_level = ZOOM_LEVEL_2X
+		zoom_offset = 6
+		zoom_viewsize = 7
+		allows_movement = 1
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x"))
+		return
+
+/datum/action/item_action/toggle_zoom_level
+
+/datum/action/item_action/toggle_zoom_level/New()
+	..()
+	name = "Toggle Zoom Level"
+	button.name = name
+
+/datum/action/item_action/toggle_zoom_level/action_activate()
+	var/obj/item/weapon/gun/G = holder_item
+	var/obj/item/attachable/scope/variable_zoom/S = G.attachments["rail"]
+	S.toggle_zoom_level()
+
+//other variable zoom scopes
+
+/obj/item/attachable/scope/variable_zoom/slavic
+	icon_state = "slavicscope"
+	attach_icon = "slavicscope"
+	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
+
+#undef ZOOM_LEVEL_2X
+#undef ZOOM_LEVEL_4X
+
+
 /obj/item/attachable/scope/mini
 	name = "S4 2x telescopic mini-scope"
 	icon_state = "miniscope"
@@ -722,10 +876,13 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 6
 	zoom_viewsize = 7
 	allows_movement = TRUE
+	aim_speed_mod = 0
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini/New()
 	..()
+	delay_mod = 0
+	delay_scoped_nerf = FIRE_DELAY_TIER_SMG
 	damage_falloff_scoped_buff = -0.2 //has to be negative
 
 /obj/item/attachable/scope/mini/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -738,7 +895,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 
 /obj/item/attachable/scope/mini/flaregun
-	aim_speed_mod = 0
 	wield_delay_mod = 0
 	dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
@@ -1467,8 +1623,8 @@ Defined in conflicts.dm of the #defines folder.
 	set waitfor = 0
 	var/obj/item/explosive/grenade/G = loaded_grenades[1]
 
-	if(G.has_iff && user.faction == FACTION_MARINE && explosive_grief_check(G))
-		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+	if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
 

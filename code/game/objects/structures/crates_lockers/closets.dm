@@ -34,6 +34,7 @@
 				continue
 			I.forceMove(src)
 	GLOB.closet_list += src
+	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
 	dump_contents()

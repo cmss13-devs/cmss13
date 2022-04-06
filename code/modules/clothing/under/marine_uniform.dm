@@ -38,7 +38,7 @@
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-		to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
+		to_chat(user, SPAN_WARNING("The sensors in \the [src] can't be modified."))
 		return
 	. = ..()
 
@@ -154,6 +154,7 @@
 	icon_state = "pilot_flightsuit"
 	item_state = "pilot_flightsuit"
 	worn_state = "pilot_flightsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_min_cold_protection_temperature
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc)
@@ -164,6 +165,7 @@
 	icon_state = "crewchief_flightsuit"
 	item_state = "crewchief_flightsuit"
 	worn_state = "crewchief_flightsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/officer/tanker
@@ -570,7 +572,7 @@
 	icon_state = "mercenary_miner_uniform"
 	worn_state = "mercenary_miner_uniform"
 
-/obj/item/clothing/under/marine/veteran/mercenary/engineer
+/obj/item/clothing/under/marine/veteran/mercenary/support
 	name = "\improper Mercenary engineer fatigues"
 	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is emblazed on the suit."
 	icon_state = "mercenary_engineer_uniform"
@@ -719,7 +721,7 @@
 	desc = "A nicely-fitting military suit for a requisition officer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"
-	flags_jumpsuit = FALSE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/rank/synthetic
 	name = "\improper USCM Support Uniform"

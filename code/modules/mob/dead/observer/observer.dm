@@ -166,6 +166,8 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 			var/z = text2num(href_list["Z"])
 			if(x && y && z)
 				A.JumpToCoord(x, y, z)
+	if(href_list["joinresponseteam"])
+		JoinResponseTeam()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -183,7 +185,7 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					H = huds[MOB_HUD_SECURITY_ADVANCED]
 					H.add_hud_to(src)
 				if("Squad HUD")
-					H = huds[MOB_HUD_SQUAD_OBSERVER]
+					H = huds[MOB_HUD_FACTION_OBSERVER]
 					H.add_hud_to(src)
 				if("Xeno Status HUD")
 					H = huds[MOB_HUD_XENO_STATUS]
@@ -219,12 +221,13 @@ Works together with spawning an observer, noted above.
 	if(!loc) return
 	if(!client) return 0
 
-	return 1
+	return TRUE
 
-/mob/proc/ghostize(var/can_reenter_corpse = TRUE)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
-
+	if(aghosted)
+		src.aghosted = TRUE
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
@@ -928,3 +931,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN
+
+/proc/message_ghosts(var/message)
+	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
+		to_chat(O, message)

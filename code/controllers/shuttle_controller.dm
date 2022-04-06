@@ -203,7 +203,29 @@
 	shuttles["Distress_Big"] = ES
 	process_shuttles += ES
 
+	//Small VIP Shuttle
 
+	ES = new()
+	ES.location = 1
+	ES.use_small_docks = TRUE
+
+	for(var/area/A in all_areas)
+		if(A.type == /area/shuttle/distress/start_small)
+			ES.area_offsite = A
+			break
+
+	for(var/area/A in all_areas)
+		if(A.type == /area/shuttle/distress/arrive_n_engi)
+			ES.area_station = A
+			break
+
+	for(var/area/A in all_areas)
+		if(A.type == /area/shuttle/distress/transit_small)
+			ES.area_transition = A
+			break
+
+	shuttles["Distress_Small"] = ES
+	process_shuttles += ES
 
 
 

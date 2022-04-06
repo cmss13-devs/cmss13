@@ -19,7 +19,7 @@
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
 	harmful = TRUE	//Is it harmful? Are they banned for synths?
-	has_iff = TRUE	//Should it be checked by antigrief?
+	antigrief_protection = TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
@@ -58,8 +58,8 @@
 	if(!. || isnull(loc))
 		return
 
-	if(has_iff && user.faction == FACTION_MARINE && explosive_grief_check(src))
-		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
@@ -77,9 +77,14 @@
 	SPAN_WARNING("You prime \a [name]!"))
 	msg_admin_attack("[key_name(user)] primed \a grenade ([name]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'> [key_name(user)] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
-	if(initial(dangerous) && has_species(user, "Human"))
-		var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
-		playsound(user, nade_sound, 35)
+	if(initial(dangerous))
+		var/nade_sound
+		if(has_species(user, "Human"))
+			nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
+		else if(ismonkey(user))
+			nade_sound = sound('sound/voice/monkey_scream.ogg')
+		if(nade_sound)
+			playsound(user, nade_sound, 35)
 
 	var/mob/living/carbon/C = user
 	if(istype(C) && !C.throw_mode)

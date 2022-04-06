@@ -176,6 +176,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/hide_statusbar
 
+	var/no_radials_preference = FALSE
+
 	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
 	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
 
@@ -445,6 +447,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br><br>"
 	dat += "<b>Stylesheet</b>: <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 	dat += "<b>Hide Statusbar</b>: <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
+	dat += "<b>Prefer input drop down menus to radial menus, where possible</b>: <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
 	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 	dat += "</div>"
@@ -956,7 +959,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -991,7 +994,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_YAUTJA_COUNCIL)
+					if(whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -1006,7 +1009,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("synth_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_SYNTHETIC_COUNCIL)
+					if(whitelist_flags & (WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_SYNTHETIC_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -1362,6 +1365,9 @@ var/const/MAX_SAVE_SLOTS = 10
 					hide_statusbar = !hide_statusbar
 					if(hide_statusbar)
 						winset(owner, "atom_name", "text=\"\"")
+
+				if("no_radials_preference")
+					no_radials_preference = !no_radials_preference
 
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)

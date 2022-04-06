@@ -229,15 +229,12 @@
 	. = ..()
 	if(.)
 		if(!uses_left) //Prevents autoinjectors to be refilled.
+			icon_state += "0"
+			name += " expended"
 			flags_atom &= ~OPENCONTAINER
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
 	return
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/update_icon()
-	if(!uses_left)
-		icon_state += "0"
-		name += " expended" //So people can see what have been expended since we have smexy new sprites people aren't used too...
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/examine(mob/user)
 	..()
@@ -299,6 +296,11 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = 15
 	uses_left = 0
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+	name = "Autoinjector (E-VS)"
+	volume = 30
+	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 	name = "Autoinjector (E-S)"

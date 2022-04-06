@@ -31,6 +31,10 @@
 		basecolor = b_color
 	update_icon()
 
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+		amount = 0
+		return
+
 	if(drying_time)
 		if(mapload) // Don't use timer at all in mapload - as deleting long running timers during MC init causes issues (see /tg/ issue #56292)
 			dry()
@@ -43,6 +47,9 @@
 	// Check if the blood is dry and only humans
 	// can make footprints
 	if(!amount || !ishuman(AM))
+		return
+
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
 		return
 
 	var/mob/living/carbon/human/H = AM

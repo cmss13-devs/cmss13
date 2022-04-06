@@ -135,6 +135,17 @@
 	user.cmd_admin_pm(target.client)
 	return TRUE
 
+/datum/player_action/alert_message
+	action_tag = "alert_message"
+	name = "Alert Message"
+
+/datum/player_action/alert_message/act(var/client/user, var/mob/target, var/list/params)
+	if(!target.client)
+		return
+
+	user.cmd_admin_alert_message(target)
+	return TRUE
+
 // SET NAME/CKEY
 /datum/player_action/set_name
 	action_tag = "set_name"

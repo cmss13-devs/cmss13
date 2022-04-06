@@ -12,8 +12,8 @@
 	. = ..()
 	arrival_message = "Incoming Transmission: 'Heard your distress call, [MAIN_SHIP_NAME]. It had best be something which will look good on my wall, eh? Tally ho!'"
 
-/datum/emergency_call/van_bandolier/create_member(datum/mind/M)
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/van_bandolier/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.

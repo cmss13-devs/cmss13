@@ -13,8 +13,10 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
-	passive_block = 30
-	readied_block = 50
+	passive_block = 15
+	readied_block = 30
+
+	blocks_on_back = FALSE
 
 	var/last_attack = 0
 	var/cooldown_time = 25 SECONDS

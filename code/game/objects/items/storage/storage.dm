@@ -9,16 +9,17 @@
 	name = "storage"
 	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
-	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
-	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
-	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
-	var/list/click_border_start = new/list() //In slotless storage, stores areas where clicking will refer to the associated item
+	var/list/can_hold = new/list() 					//List of objects which this item can store (if set, it can't store anything else)
+	var/list/cant_hold = new/list() 				//List of objects which this item can't store (in effect only if can_hold isn't set)
+	var/list/bypass_w_limit = new/list() 			//a list of objects which this item can store despite not passing the w_class limit
+	var/list/click_border_start = new/list() 		//In slotless storage, stores areas where clicking will refer to the associated item
 	var/list/click_border_end = new/list()
-	var/max_w_class = SIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
-	var/max_storage_space = 14 //The sum of the storage costs of all the items in this storage item.
-	var/storage_slots = 7 //The number of storage slots in this container.
+	var/list/hearing_items							//A list of items that use hearing for the purpose of performance
+	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store (in effect only if can_hold isn't set)
+	var/max_storage_space = 14 						//The sum of the storage costs of all the items in this storage item.
+	var/storage_slots = 7 							//The number of storage slots in this container.
 	var/obj/screen/storage/boxes = null
-	var/obj/screen/storage/storage_start = null //storage UI
+	var/obj/screen/storage/storage_start = null 	//storage UI
 	var/obj/screen/storage/storage_continue = null
 	var/obj/screen/storage/storage_end = null
 	var/obj/screen/storage/stored_start = null
@@ -26,12 +27,11 @@
 	var/obj/screen/storage/stored_end = null
 	var/obj/screen/close/closer = null
 	var/foldable = null
-	var/use_sound = "rustle"	//sound played when used. null for no sound.
-	var/opened = FALSE //Has it been opened before?
-	var/list/content_watchers //list of mobs currently seeing the storage's contents
+	var/use_sound = "rustle"						//sound played when used. null for no sound.
+	var/opened = FALSE 								//Has it been opened before?
+	var/list/content_watchers 						//list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
-	///Whether to use map-variant skins.
-	var/has_gamemode_skin = FALSE
+	var/has_gamemode_skin = FALSE					///Whether to use map-variant skins.
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -509,6 +509,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
 		return //Robots can't interact with storage items.
 
+	return attempt_item_insertion(W, user)
+
+/obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, mob/user as mob)
 	if(!can_be_inserted(W))
 		return
 
@@ -758,10 +761,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		empty(user, target)
 
 /obj/item/storage/hear_talk(mob/M as mob, text)
-	for (var/atom/A in src)
-		if(istype(A,/obj/))
-			var/obj/O = A
-			O.hear_talk(M, text)
+	// Whatever is stored in /storage/ substypes should ALWAYS be an item
+	for (var/obj/item/I as anything in hearing_items)
+		I.hear_talk(M, text)
 
 /obj/item/proc/get_storage_cost() //framework for adjusting storage costs
 	if (storage_cost)

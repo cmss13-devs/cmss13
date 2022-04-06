@@ -291,7 +291,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/security/reinforced
 	name = "\improper Reinforced Security Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/security/glass
 	name = "\improper Security Airlock"
@@ -304,7 +304,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced
 	name = "\improper Reinforced Security Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/command
 	name = "\improper Command Airlock"
@@ -316,7 +316,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/command/reinforced
 	name = "\improper Reinforced Command Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
@@ -328,7 +328,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced
 	name = "\improper Reinforced Secure Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/maint
 	name = "\improper Maintenance Hatch"
@@ -341,7 +341,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced
 	name = "\improper Reinforced Maintenance Hatch"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
@@ -354,15 +354,21 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/engineering/glass
+	name = "\improper Engineering Airlock"
+	icon = 'icons/obj/structures/doors/engidoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/engineering/reinforced
 	name = "\improper Reinforced Engineering Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/engineering/reinforced/OT
 	name = "\improper Ordnance Workshop"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
-	opacity = 0
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_OT)
 
@@ -397,7 +403,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/reinforced
 	name = "\improper Reinforced Research Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
@@ -411,7 +417,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced
 	name = "\improper Reinforced Research Airlock"
-	reinforced = TRUE
+	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/generic
 	name = "\improper Airlock"
@@ -419,6 +425,12 @@
 
 /obj/structure/machinery/door/airlock/almayer/generic/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"

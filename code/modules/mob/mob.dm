@@ -201,6 +201,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
+	if(client == null || (client.inactivity > 1 && world.time > 20 MINUTES)) //Do not start away_timer on connected clients until 20 minutes has passed.
+		away_timer++
 	else
 		away_timer = 0
 	return

@@ -30,5 +30,12 @@
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 70
-    }
+    },
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
 }

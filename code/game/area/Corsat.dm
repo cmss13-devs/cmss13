@@ -36,6 +36,7 @@
 	name = "\improper Landing Bay Sigma"
 	icon_state = "sigma_hangar"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/corsat/sigma/hangar/monorail
 	name = "\improper Sigma Monorail Station"
@@ -216,6 +217,7 @@
 	name = "\improper Landing Bay Gamma"
 	icon_state = "gamma_hangar"
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/corsat/gamma/hangar/monorail
 	name = "\improper Gamma Monorail Station"
@@ -521,6 +523,7 @@
 /area/corsat/omega/hangar
 	name = "\improper Landing Bay Omega"
 	icon_state = "omega_hangar"
+	is_landing_zone = TRUE
 
 /area/corsat/omega/hangar/office
 	name = "\improper Omega Hangar Office"

@@ -20,6 +20,7 @@
 /obj/item/clothing/accessory/Initialize()
 	. = ..()
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
+	flags_atom |= USES_HEARING
 
 /obj/item/clothing/accessory/Destroy()
 	if(has_suit)
@@ -605,6 +606,7 @@
 	new /obj/item/tool/surgery/bonesetter(src)
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
+	new /obj/item/tool/surgery/surgical_line(src)
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
@@ -617,7 +619,7 @@
 
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
-	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 4 knives. It is made of synthcotton."
+	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."
 	icon_state = "vest_knives"
 	hold = /obj/item/storage/internal/accessory/knifeharness
 
@@ -625,7 +627,6 @@
 	storage_slots = 5
 	max_storage_space = 5
 	can_hold = list(
-		/obj/item/weapon/melee/unathiknife,
 		/obj/item/tool/kitchen/utensil/knife,
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
@@ -633,16 +634,22 @@
 		/obj/item/weapon/melee/throwing_knife,
 	)
 
-/obj/item/storage/internal/accessory/knifeharness/Initialize(mapload, obj/item/MI)
-	. = ..()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
-
-/obj/item/clothing/accessory/storage/knifeharness
+/obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"
 	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
 	icon_state = "unathiharness2"
-	hold = /obj/item/storage/internal/accessory/knifeharness
+	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
+
+obj/item/storage/internal/accessory/knifeharness/duelling
+	storage_slots = 2
+	max_storage_space = 2
+	can_hold = list(
+		/obj/item/weapon/melee/unathiknife,
+	)
+
+/obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
+	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/melee/unathiknife(src)
 
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"
@@ -652,6 +659,7 @@
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
 /obj/item/storage/internal/accessory/drop_pouch
+	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
@@ -660,6 +668,95 @@
 		/obj/item/storage/bible,
 		)
 	storage_flags = NONE	//no verb, no quick draw, no tile gathering
+
+/obj/item/clothing/accessory/storage/holster
+	name = "shoulder holster"
+	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
+	icon_state = "holster"
+	slot = ACCESSORY_SLOT_UTILITY
+	high_visibility = TRUE
+	hold = /obj/item/storage/internal/accessory/holster
+
+/obj/item/storage/internal/accessory/holster
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	var/obj/item/weapon/gun/current_gun
+	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
+	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy/super,
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/ammo_magazine/revolver
+	)
+	cant_hold = list(
+		/obj/item/weapon/gun/pistol/smart,
+		/obj/item/ammo_magazine/pistol/smart
+	)
+
+/obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
+	if(AM == current_gun)
+		current_gun = null
+
+/obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
+	var/obj/item/storage/internal/accessory/holster/H = hold
+	if(H.current_gun && ishuman(user) && (loc == user || has_suit))
+		if(mods && mods["alt"] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/I = H.contents[length(H.contents)]
+			if(isgun(I))
+				I = H.contents[length(H.contents) - 1]
+			I.attack_hand(user)
+		else
+			H.current_gun.attack_hand(user)
+		return
+
+	..()
+
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
+		if(isgun(W))
+			if(current_gun)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+				return
+		else //Must be ammo.
+			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_stored = length(contents)
+			if(current_gun)
+				ammo_stored -= 1
+			if(ammo_stored >= ammo_slots)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+				return
+		return 1
+
+/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/W)
+	if(isgun(W))
+		current_gun = W //If there's no active gun, we want to make this our gun
+		playsound(src, sheatheSound, 15, TRUE)
+	. = ..()
+
+/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/W)
+	if(isgun(W))
+		current_gun = null
+		playsound(src, drawSound, 15, TRUE)
+	. = ..()
+
+/obj/item/clothing/accessory/storage/holster/armpit
+	name = "shoulder holster"
+	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	icon_state = "holster"
+
+/obj/item/clothing/accessory/storage/holster/waist
+	name = "shoulder holster"
+	desc = "A handgun holster. Made of expensive leather."
+	icon_state = "holster"
+	item_state = "holster_low"
+
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized
 	Security agent - the user details can be imprinted on the badge with a Security-access ID card,

@@ -22,6 +22,19 @@
 #define LIMB_SPLINTED_INDESTRUCTIBLE (1<<7) // Splint is indestructible
 #define LIMB_UNCALIBRATED_PROSTHETIC (1<<8) //A prosthetic that's been attached to the body but not connected to the brain.
 
+///////////////////WOUND DEFINES///////////////////
+//wound flags. Different examine text + bandage overlays + whether various medical items can be used.
+#define WOUND_BANDAGED (1<<0)
+#define WOUND_SUTURED (1<<1)
+
+//return values for suturing.
+#define SUTURED (1<<0)
+#define SUTURED_FULLY (1<<1)
+
+//return values for bandaging/salving.
+#define WOUNDS_BANDAGED (1<<0) //Relevant wounds exist, bandaged them.
+#define WOUNDS_ALREADY_TREATED (1<<1) //Relevant wounds exist, but they're already bandaged.
+
 ///////////////OLD SURGERY DEFINES, USED BY AUTODOC///////////////
 #define HEMOSTAT_MIN_DURATION 20
 #define HEMOSTAT_MAX_DURATION 40

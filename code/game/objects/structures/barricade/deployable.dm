@@ -120,11 +120,12 @@
 	var/singular_type = /obj/item/stack/folding_barricade
 
 	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	icon_state = "folding-1"
 	item_state = "folding"
 	item_state_slots = list(
-		WEAR_BACK = "folding"
+		WEAR_BACK = "folding",
+		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
 
@@ -136,9 +137,12 @@
 /obj/item/stack/folding_barricade/attack_self(mob/user)
 	. = ..()
 
-	for(var/obj/structure/barricade/B in loc)
-		if(B != src && B.dir == dir)
-			to_chat(user, SPAN_WARNING("There's already a barricade here."))
+	if(usr.action_busy)
+		return
+
+	for(var/obj/structure/barricade/B in usr.loc)
+		if(B.dir == user.dir)
+			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
 			return
 
 	var/turf/open/OT = usr.loc
@@ -157,7 +161,13 @@
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("You were interrupted."))
 		return
+
+	for(var/obj/structure/barricade/B in usr.loc) //second check so no memery
+		if(B.dir == user.dir)
+			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
+			return
 
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src.singular_name]."),
 			SPAN_NOTICE("You finish deploying [src.singular_name]."))

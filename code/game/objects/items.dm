@@ -69,15 +69,15 @@
 
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
 
-	var/list/sprite_sheets = list()
-	var/list/item_icons = list()
+	var/list/sprite_sheets
+	var/list/item_icons
 
 	var/list/item_state_slots //overrides the default
 
 	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
-	var/list/equip_sounds = list() //Sounds played when this item is equipped
-	var/list/unequip_sounds = list() //Same but when unequipped
+	var/list/equip_sounds//Sounds played when this item is equipped
+	var/list/unequip_sounds //Same but when unequipped
 
 	 ///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
@@ -88,12 +88,16 @@
 	var/map_specific_decoration = FALSE
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
-	var/global/list/blood_overlay_cache = list() //taken from blood.dm
+
+	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
 	GLOB.item_list += src
+	if(inherent_traits)
+		for(var/trait in inherent_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_INHERENT)
 	for(var/path in actions_types)
 		new path(src)
 	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much
@@ -307,11 +311,16 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
+	if(src in S.hearing_items)
+		LAZYREMOVE(S.hearing_items, src)
+
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
+	if(src.flags_atom & USES_HEARING)
+		LAZYADD(S.hearing_items, src)
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)
@@ -521,6 +530,8 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_J_STORE)
 				if(H.s_store)
 					return FALSE
+				if(flags_equip_slot & SLOT_SUIT_STORE)
+					return TRUE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))
@@ -529,7 +540,7 @@ cases. Override_icon_state should be a list.*/
 					if(!disable_warning)
 						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
 					return FALSE
-				if(istype(src, /obj/item/tool/pen) ||(H.wear_suit && is_type_in_list(src, H.wear_suit.allowed)))
+				if(H.wear_suit && is_type_in_list(src, H.wear_suit.allowed))
 					return TRUE
 				return FALSE
 			if(WEAR_HANDCUFFS)

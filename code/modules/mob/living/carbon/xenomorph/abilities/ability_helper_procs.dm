@@ -226,6 +226,7 @@
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0
+	src.event_movement.clean()
 
 /datum/event_handler/xeno_zoom_onmovement
 	flags_handler = NO_FLAGS
@@ -268,9 +269,9 @@
 // Movement with a 'buffer'
 // only if our counter is zero do we return
 /datum/event_handler/xeno_zoom_onmovement/buffer
-	var/buffer = 14 // for some reason this gets decremented twice per move, so we set 14 to allow 7 moves
+	var/buffer = 7
 
-/datum/event_handler/xeno_zoom_onmovement/buffer/New(mob/living/carbon/Xenomorph/X, buffer = 14)
+/datum/event_handler/xeno_zoom_onmovement/buffer/New(mob/living/carbon/Xenomorph/X, buffer = 7)
 	if (!isXeno(X))
 		qdel(src)
 		return

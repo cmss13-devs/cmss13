@@ -114,6 +114,7 @@
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
 	S["hide_statusbar"] >> hide_statusbar
+	S["no_radials_preference"] >> no_radials_preference
 	S["hotkeys"] >> hotkeys
 
 	//Sanitize
@@ -134,6 +135,7 @@
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
+	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -235,6 +237,7 @@
 	S["hear_vox"] << hear_vox
 
 	S["hide_statusbar"] << hide_statusbar
+	S["no_radials_preference"] << no_radials_preference
 
 	return TRUE
 
@@ -366,7 +369,7 @@
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	//b_type			= sanitize_text(b_type, initial(b_type))
 
-	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
+	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
 	if(!job_preference_list)
 		ResetJobs()
 	else

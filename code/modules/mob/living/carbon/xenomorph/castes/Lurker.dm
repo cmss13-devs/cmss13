@@ -38,7 +38,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
-		/datum/action/xeno_action/onclick/lurker_assassinate
+		/datum/action/xeno_action/onclick/lurker_assassinate,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

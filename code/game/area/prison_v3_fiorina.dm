@@ -65,6 +65,7 @@
 	icon_state = "lz"
 	ceiling = CEILING_GLASS
 	name = "Fiorina - LZ"
+	is_landing_zone = TRUE
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"

@@ -14,10 +14,10 @@
 	// amount of damage the current wound type requires(less means we need to apply the next healing stage)
 	var/min_damage = 0
 
-	// is the wound bandaged?
-	var/bandaged = 0
-	// is the wound salved?
-	var/salved = 0
+	// is the wound bandaged/sutured?
+	var/bandaged = NONE
+	// is the wound salved/grafted?
+	var/salved = NONE
 	var/created = 0
 	// number of wounds of this type
 	var/amount = 1
@@ -119,8 +119,8 @@
 	// opens the wound again
 	proc/open_wound(damage)
 		src.damage += damage
-		bandaged = FALSE
-		salved = FALSE
+		bandaged = NONE
+		salved = NONE
 
 		while(src.current_stage > 1 && src.damage_list[current_stage-1] <= src.damage / src.amount)
 			src.current_stage--

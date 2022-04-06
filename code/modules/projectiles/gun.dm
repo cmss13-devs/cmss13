@@ -328,11 +328,6 @@
 			in_chamber._RemoveElement(L)
 
 /obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
-	//Reset silencer mod
-	flags_gun_features &= ~GUN_SILENCED
-	muzzle_flash = initial(muzzle_flash)
-	fire_sound = initial(fire_sound)
-
 	//reset weight and force mods
 	force = initial(force)
 	w_class = initial(w_class)
@@ -340,6 +335,10 @@
 	//reset HUD and pixel offsets
 	hud_offset = initial(hud_offset)
 	pixel_x = initial(hud_offset)
+
+	//reset traits from attachments
+	for(var/slot in attachments)
+		REMOVE_TRAITS_IN(src, TRAIT_SOURCE_ATTACHMENT(slot))
 
 	//Get default gun config values
 	set_gun_config_values()
@@ -372,11 +371,8 @@
 			hud_offset += R.hud_offset_mod
 			pixel_x += R.hud_offset_mod
 
-		if(R.suppress_firesound)
-			flags_gun_features |= GUN_SILENCED
-			muzzle_flash = null
-			if(!(flags_gun_features & GUN_INTERNAL_SILENCED))
-				fire_sound = "gun_silenced"
+		for(var/trait in R.gun_traits)
+			ADD_TRAIT(src, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 
 	//Refresh location in HUD.
 	if(ishuman(loc))
@@ -1162,6 +1158,7 @@ and you're good to go.
 			else
 				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			. = TRUE
 			flags_gun_features |= GUN_FIRED_BY_USER
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)

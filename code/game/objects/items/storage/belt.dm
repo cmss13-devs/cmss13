@@ -851,7 +851,7 @@
 			holster_slots[slot]["gun"] = W
 			update_gun_icon(slot)
 			break
-	..()	
+	..()
 
 /obj/item/storage/belt/gun/_item_removal(obj/item/W, atom/new_location)
 	if(isgun(W))
@@ -1038,8 +1038,10 @@
 		/obj/item/ammo_magazine/revolver
 		)
 	flap = FALSE
-	icon_x = 10
-	icon_y = 3
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 10,
+			"icon_y" = 3))
 	//needs belt MR merged. WIP //I'm pretty sure this is fully functional now - stan_albatross, December 2021
 
 /obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)

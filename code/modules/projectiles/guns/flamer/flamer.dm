@@ -515,16 +515,16 @@
 				var/mob/living/carbon/Xenomorph/X = M
 				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred if it's not present.
 					X.reset_xeno_armor_debuff_after_time(X, 20)
-					type_b_shred_xeno_armor(X)
+					type_b_debuff_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 				X.next_move_slowdown = X.next_move_slowdown + 3
 				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
 
-/obj/flamer_fire/proc/type_b_shred_xeno_armor(var/mob/living/carbon/Xenomorph/X)
-	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_shred_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
+/obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
 
 /mob/living/carbon/Xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/Xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
-	spawn(wait_ticks) //TODO: Find a better way to time it, unless it's already equivalent to addtimer.
+	spawn(wait_ticks)
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
 
@@ -621,7 +621,7 @@
 						var/mob/living/carbon/Xenomorph/X = i
 						if(!X.armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
 							X.reset_xeno_armor_debuff_after_time(X, delta_time*10)
-						type_b_shred_xeno_armor(i) //Always reapplies debuff each time to minimize gap.
+						type_b_debuff_xeno_armor(i) //Always reapplies debuff each time to minimize gap.
 			set_on_fire(i)
 		else if(isobj(i))
 			var/obj/O = i

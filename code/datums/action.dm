@@ -174,11 +174,10 @@
 
 /datum/action/item_action/update_button_icon()
 	button.overlays.Cut()
-	var/obj/item/I = target
-	var/old = I.layer
-	I.layer = FLOAT_LAYER
-	button.overlays += I
-	I.layer = old
+	var/mutable_appearance/item_appearance = mutable_appearance(target.icon, target.icon_state, plane = ABOVE_HUD_PLANE)
+	for(var/overlay in target.overlays)
+		item_appearance.overlays += overlay
+	button.overlays += item_appearance
 
 /datum/action/item_action/toggle/New(Target)
 	..()

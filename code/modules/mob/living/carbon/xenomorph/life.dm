@@ -165,10 +165,7 @@
 				layer = MOB_LAYER
 
 	else						//alive and not in crit! Turn on their vision.
-		if(isXenoBoiler(src))
-			see_in_dark = 20
-		else
-			see_in_dark = 8
+		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0

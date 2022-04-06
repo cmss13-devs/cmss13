@@ -74,6 +74,9 @@
 
 	var/name_archive //For admin things like possession
 
+	// Determines what the alpha of the lighting is to this mob.
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+
 	/// List of active luminosity sources for handling of light stacking
 	var/list/atom/luminosity_sources
 

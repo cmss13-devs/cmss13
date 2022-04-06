@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /obj/screen/radial
 	icon = 'icons/mob/radial.dmi'
 	layer = ABOVE_HUD_LAYER
-	plane = FLOAT_PLANE
+	plane = ABOVE_HUD_PLANE
 	var/datum/radial_menu/parent
 
 /obj/screen/radial/slice
@@ -245,6 +245,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = ABOVE_HUD_LAYER
+		MA.plane = ABOVE_HUD_PLANE
 		MA.appearance_flags |= RESET_TRANSFORM
 	return MA
 
@@ -262,6 +263,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	current_user = M.client
 	//Blank
 	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = ABOVE_HUD_LAYER)
+	menu_holder.plane = ABOVE_HUD_PLANE
 	menu_holder.appearance_flags |= KEEP_APART
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder

@@ -12,6 +12,8 @@
  * you want to show on the map, which you usually attach to "vis_contents".
  */
 /obj/screen
+	plane = HUD_PLANE
+
 	/**
 	 * Map name assigned to this object.
 	 * Automatically set by /client/proc/add_obj_to_map.

@@ -7,6 +7,7 @@
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
 	layer = ABOVE_HUD_LAYER
+	plane = ABOVE_HUD_PLANE
 	item_state = "nothing"
 	w_class = SIZE_HUGE
 	var/atom/movable/grabbed_thing

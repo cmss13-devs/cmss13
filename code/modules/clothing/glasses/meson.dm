@@ -21,6 +21,8 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "visor_meson"
 	item_state = "securityhud"
+	darkness_view = 12
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
@@ -30,6 +32,8 @@
 	desc = "Used to shield the user's eyes from harmful electromagnetic emissions, also used as general safety goggles. A special version with upgraded optics."
 	icon_state = "refurb_meson"
 	item_state = "glasses"
+	darkness_view = 12
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = MOB_LOCK_ON_EQUIP

@@ -1244,28 +1244,21 @@
 
 
 /mob/proc/update_sight()
-	return
+	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
 
 	sight &= ~BLIND // Never have blind on by default
 
-	if(stat == DEAD)
-		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-	else
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = species.darksight
-		see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
-		if(glasses)
-			process_glasses(glasses)
-		else
-			see_invisible = SEE_INVISIBLE_LIVING
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	see_in_dark = species.darksight
+	if(glasses)
+		process_glasses(glasses)
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
-
+	sync_lighting_plane_alpha()
 
 
 /mob/proc/update_tint()

@@ -275,6 +275,12 @@
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot, permanent = 0)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 1, 0, permanent)
 
+///Set the lighting plane hud alpha to the mobs lighting_alpha var
+/mob/proc/sync_lighting_plane_alpha()
+	if(hud_used)
+		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
+		if (lighting)
+			lighting.alpha = lighting_alpha
 
 
 //puts the item "W" into an appropriate slot in a human's inventory

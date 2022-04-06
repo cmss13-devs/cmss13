@@ -9,6 +9,7 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector_blip"
 	layer = BELOW_FULLSCREEN_LAYER
+	plane = FULLSCREEN_PLANE
 
 /obj/item/device/motiondetector
 	name = "motion detector"

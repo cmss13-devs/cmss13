@@ -7,8 +7,6 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 
-		update_sight()
-
 		if(stat == UNCONSCIOUS)
 			var/severity = 0
 			switch(health)

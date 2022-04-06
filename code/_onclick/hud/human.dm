@@ -260,6 +260,7 @@
 	using.icon_state = "act_equip"
 	using.screen_loc = ui_datum.ui_equip
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	if(ui_color)
 		using.color = ui_color
 	if(ui_alpha)

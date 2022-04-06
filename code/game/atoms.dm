@@ -2,6 +2,7 @@
 /atom
 	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
 
+	plane = GAME_PLANE
 	layer = TURF_LAYER
 	var/level = 2
 	var/flags_atom = FPRINT

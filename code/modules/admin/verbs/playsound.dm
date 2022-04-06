@@ -53,8 +53,8 @@
 		to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>", confidential = TRUE)
 		return
 
-	var/list/targets
-	var/style = input(src, "Do you want to play this globally or to the xenos/marines?") as null|anything in list("Globally", "Xenos", "Marines", "Inview")
+	var/list/targets = list()
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
 	switch(style)
 		if("Globally")
 			targets = GLOB.mob_list
@@ -62,8 +62,13 @@
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
-		if("Inview")
+		if("All Inview")
 			targets = viewers(usr.client.view, src)
+		if("Single Inview")
+			var/mob/choice = tgui_input_list(src, "Select the mob to play to:","Select Mob", sortmobs())
+			if(QDELETED(choice))
+				return
+			targets.Add(choice)
 		else
 			return
 
@@ -114,21 +119,44 @@
 	admin_sound.status = SOUND_STREAM
 	admin_sound.volume = vol
 
+	var/showtitle = FALSE
 	var/res = alert(src, "Show the title of this song to the players?",, "Yes","No", "Cancel")
 	switch(res)
 		if("Yes")
-			to_chat(world, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+			showtitle = TRUE
 		if("Cancel")
 			return
 
-	log_admin("[key_name(src)] played midi sound [S]")
-	message_admins("[key_name_admin(src)] played midi sound [S]")
+	var/list/targets = list()
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
+	switch(style)
+		if("Globally")
+			targets = GLOB.mob_list
+		if("Xenos")
+			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
+		if("Marines")
+			targets = GLOB.human_mob_list + GLOB.dead_mob_list
+		if("All Inview")
+			targets = viewers(usr.client.view, src)
+		if("Single Inview")
+			var/mob/choice = tgui_input_list(src, "Select the mob to play to:","Select Mob", sortmobs())
+			if(QDELETED(choice))
+				return
+			targets.Add(choice)
+		else
+			return
 
-	for(var/mob/M in GLOB.player_list)
+	for(var/i in targets)
+		var/mob/M = i
 		if(M.client.prefs.toggles_sound & SOUND_MIDI)
 			admin_sound.volume = vol * M.client.admin_music_volume
 			SEND_SOUND(M, admin_sound)
 			admin_sound.volume = vol
+			if(showtitle)
+				to_chat(targets, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+
+	log_admin("[key_name(src)] played midi sound [S] - [style]")
+	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")
 
 /client/proc/stop_sound()
 	set category = "Admin.Fun"

@@ -1937,6 +1937,8 @@
 	name = "anti-tank rocket"
 	damage = 100
 	var/vehicle_slowdown_time = 5 SECONDS
+	shrapnel_chance = 5
+	shrapnel_type = /obj/item/large_shrapnel/at_rocket_dud
 
 /datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/vehicle/multitile))

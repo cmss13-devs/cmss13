@@ -696,6 +696,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					close(1)
 
 		return TRUE //no afterattack call
+
+	if(istype(C, /obj/item/large_shrapnel))
+		return FALSE //trigger afterattack call
 	else
 		return ..()
 

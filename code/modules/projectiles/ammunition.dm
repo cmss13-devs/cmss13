@@ -128,7 +128,7 @@ They're all essentially identical when it comes to getting the job done.
 	if (current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
-		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
+		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer)
 		current_rounds -= amount_to_transfer
 		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
 			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
@@ -186,7 +186,6 @@ bullets/shells. ~N
 	icon_state = "bullet"
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
-
 	w_class = SIZE_SMALL
 	current_rounds = 1 // So it doesn't get autofilled for no reason.
 	max_rounds = 5 // For shotguns, though this will be determined by the handful type when generated.
@@ -228,7 +227,6 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 /obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
 	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
 	var/ammo_name = A.name //Let's pull up the name.
-
 	var/multiple_handful_name = A.multiple_handful_name
 
 	name = "handful of [ammo_name + (multiple_handful_name ? " ":"s ") + "([new_caliber])"]"
@@ -328,6 +326,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/num_of_magazines = 10
 	var/handfuls = FALSE
 	var/icon_state_deployed = null
+	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
 
 /obj/item/ammo_box/magazine/Initialize()
 	. = ..()
@@ -659,6 +658,63 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/M16/ap/empty
 	empty = TRUE
 
+//-----------------------R4T Lever-action rifle handfuls box-----------------------
+
+/obj/item/ammo_box/magazine/lever_action
+	name = "45-70 bullets box (45-70 x 300)"
+	icon_state = "base_4570"
+	overlay_ammo_type = "_reg"
+	overlay_gun_type = "_4570"
+	overlay_content = "_4570"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action
+	num_of_magazines = 300
+	handfuls = TRUE
+	handful = "rounds"
+
+/obj/item/ammo_box/magazine/lever_action/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/lever_action/training
+	name = "45-70 blank box (45-70 x 300)"
+	icon_state = "base_4570"
+	overlay_ammo_type = "_45_training"
+	overlay_gun_type = "_4570"
+	overlay_content = "_training"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/training
+
+	/*if(overlay_gun_type)
+		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+	if(overlay_ammo_type)
+		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	adding base color stripes*/
+
+/obj/item/ammo_box/magazine/lever_action/training/empty
+	empty = TRUE
+
+//unused
+/obj/item/ammo_box/magazine/lever_action/tracker
+	name = "45-70 tracker bullets box (45-70 x 300)"
+	icon_state = "base_4570"
+	overlay_ammo_type = "_45_tracker"
+	overlay_gun_type = "_4570"
+	overlay_content = "_tracker"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/tracker
+
+/obj/item/ammo_box/magazine/lever_action/tracker/empty
+	empty = TRUE
+
+//unused
+/obj/item/ammo_box/magazine/lever_action/marksman
+	name = "45-70 marksman bullets box (45-70 x 300)"
+	icon_state = "base_4570"
+	overlay_ammo_type = "_45_marksman"
+	overlay_gun_type = "_4570"
+	overlay_content = "_marksman"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/marksman
+
+/obj/item/ammo_box/magazine/lever_action/marksman/empty
+	empty = TRUE
+
 //-----------------------M4A3 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/m4a3
@@ -838,14 +894,16 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]_1")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
+		if(item_box.overlay_ammo_type)
+			overlays += image(icon, icon_state = "base_type[item_box.overlay_ammo_type]")
 		if(AM.current_rounds == item_box.num_of_magazines)
-			overlays += image(icon, icon_state = "shells[item_box.overlay_content]")
+			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]")
 		else if(AM.current_rounds > (item_box.num_of_magazines/2))
-			overlays += image(icon, icon_state = "shells[item_box.overlay_content]_3")
+			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_3")
 		else if(AM.current_rounds > (item_box.num_of_magazines/4))
-			overlays += image(icon, icon_state = "shells[item_box.overlay_content]_2")
+			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_2")
 		else if(AM.current_rounds > 0)
-			overlays += image(icon, icon_state = "shells[item_box.overlay_content]_1")
+			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_1")
 
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
@@ -858,7 +916,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(AM)
-				AM.create_handful(user, 5, src)
+				AM.create_handful(user, AM.transfer_handful_amount, src)
 		update_icon()
 	else
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))

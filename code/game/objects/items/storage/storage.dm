@@ -597,45 +597,37 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 
-
-///Despite the name, this is called by the *recipient*. Meant for topping things up with known items -- doesn't run checks on a transferred item beyond whether there's room for it. This one is for ammo.
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
-		if(!can_hold_type(/obj/item/ammo_magazine/handful))
-			to_chat(user, SPAN_WARNING("[src] cannot hold loose handfuls."))
-			return
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
-		if(ammo_dumping.current_rounds <= 0)
+		if(ammo_dumping.current_rounds != 0)
+			if(contents.len < storage_slots)
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				for(var/i = 1 to handfuls)
+					if(contents.len < storage_slots)
+						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
+						//All this because shell types are instances and not their own objects :)
+
+						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						ammo_dumping.current_rounds -= transferred_handfuls
+						handle_item_insertion(new_handful, TRUE,user)
+						update_icon(-transferred_handfuls)
+					else
+						break
+				playsound(user.loc, "rustle", 15, TRUE, 6)
+				ammo_dumping.update_icon()
+			else
+				to_chat(user, SPAN_WARNING("[src] is full."))
+		else
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
-			return
-		if(!has_room(null, SIZE_SMALL)) //SIZE_SMALL = shell handful W_class.
-			to_chat(user, SPAN_WARNING("[src] is full."))
-			return
-
-		to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-		if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			return
-		for(var/i = 1 to handfuls)
-			if(!has_room(null, SIZE_SMALL))
-				break
-			//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
-			//All this because shell types are instances and not their own objects :)
-			var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
-			var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-			new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
-			ammo_dumping.current_rounds -= transferred_handfuls
-			handle_item_insertion(new_handful, TRUE, user)
-			ammo_dumping.update_icon(-transferred_handfuls)
-
-		playsound(user.loc, "rustle", 15, TRUE, 6)
-		ammo_dumping.update_icon()
 	return TRUE
 
-
-///Despite the name, this is called by the *recipient*. Meant for topping things up with known items -- doesn't run checks on a transferred item beyond whether there's room for it. This one is for storage items.
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
 	if(user.action_busy)
 		return
@@ -658,7 +650,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
-
 
 /obj/item/storage/Initialize()
 	. = ..()

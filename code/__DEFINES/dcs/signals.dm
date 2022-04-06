@@ -327,6 +327,8 @@
 #define COMSIG_MOB_SCREECH_ACT "mob_screech_act"
 	#define COMPONENT_SCREECH_ACT_CANCEL (1<<0)
 
+/// Called when a bullet hits a living mob on a sprite click (original target is final target)
+#define COMSIG_DIRECT_BULLET_HIT "direct_bullet_hit"
 // Bullet trait signals
 /// Called when a bullet hits a living mob
 #define COMSIG_BULLET_ACT_LIVING "bullet_act_living"

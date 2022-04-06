@@ -340,7 +340,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_napalm_gel
-	name = "M240 Napalm Gel (x4)"
+	name = "M240 Napalm B-Gel (x4)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/gellied,
 					/obj/item/ammo_magazine/flamer_tank/gellied,
@@ -353,7 +353,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_flamer_mixed
-	name = "M240 Fuel Crate (x2 normal, x2 gellied)"
+	name = "M240 Fuel Crate (x2 normal, x2 b-gel)"
 	contains = list(/obj/item/ammo_magazine/flamer_tank,
 					/obj/item/ammo_magazine/flamer_tank,
 					/obj/item/ammo_magazine/flamer_tank/gellied,

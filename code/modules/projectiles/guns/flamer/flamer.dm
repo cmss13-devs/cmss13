@@ -507,30 +507,26 @@
 	set_on_fire(M)
 	switch(fire_variant)
 		if(1) //Armor Shredding Greenfire
-			if(istype(M, /mob/living/carbon/Xenomorph)) //Applies the xeno armor shred
-				var/mob/living/carbon/Xenomorph/X = M
-				if(!X.armor_deflection_debuff)
-					addtimer(CALLBACK(src, .proc/return_xeno_armor, X), 20)
-				greenfire_shred_xeno_armor(X)
-				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			if (ishuman(M))
 				var/mob/living/carbon/human/H = M
 				H.next_move_slowdown = H.next_move_slowdown + 3
 				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 			else if (isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
+				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred if it's not present.
+					X.reset_xeno_armor_debuff_after_time(X, 20)
+					type_b_shred_xeno_armor(X)
+				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 				X.next_move_slowdown = X.next_move_slowdown + 3
-				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below you and breaking off as you struggle to move through the flames!"))
+				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
 
-/obj/flamer_fire/proc/greenfire_shred_xeno_armor(var/mob/living/carbon/Xenomorph/X)
-	X.armor_deflection_debuff = X.armor_deflection * 0.5
-	if(X.armor_deflection_debuff)
-		to_chat(X, SPAN_DANGER("The flaming chemicals around you are damaging your exoskeleton!"))
+/obj/flamer_fire/proc/type_b_shred_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_shred_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
 
-/obj/flamer_fire/proc/return_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+/mob/living/carbon/Xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/Xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
+	spawn(wait_ticks) //TODO: Find a better way to time it, unless it's already equivalent to addtimer.
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
-		to_chat(X, SPAN_DANGER("Your exoskeleton rapidly regenerates!"))
 
 /obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
@@ -569,7 +565,14 @@
 
 	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
-	to_chat(M, SPAN_DANGER("You are burned!"))
+
+	var/variant_burn_msg = null
+	switch(fire_variant) //Fire variant special message appends.
+		if(1)
+			if(isXeno(M))
+				var/mob/living/carbon/Xenomorph/X = M
+				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
@@ -616,9 +619,9 @@
 				if(1)
 					if(istype(i, /mob/living/carbon/Xenomorph))
 						var/mob/living/carbon/Xenomorph/X = i
-						if(!X.armor_deflection_debuff)
-							addtimer(CALLBACK(src, .proc/return_xeno_armor, i), delta_time*10)
-						greenfire_shred_xeno_armor(i)
+						if(!X.armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+							X.reset_xeno_armor_debuff_after_time(X, delta_time*10)
+						type_b_shred_xeno_armor(i) //Always reapplies debuff each time to minimize gap.
 			set_on_fire(i)
 		else if(isobj(i))
 			var/obj/O = i

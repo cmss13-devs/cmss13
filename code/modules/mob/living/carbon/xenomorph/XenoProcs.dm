@@ -34,7 +34,7 @@
 	. += ""
 
 	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]"
+	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
 	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 

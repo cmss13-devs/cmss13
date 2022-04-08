@@ -320,11 +320,20 @@
 			to_chat(X, SPAN_XENOWARNING("[T] is too weak to be deevolved."))
 			return
 
-		if(!T.caste.deevolves_to)
+		if(length(T.caste.deevolves_to) < 1)
 			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved."))
 			return
 
-		var/newcaste = T.caste.deevolves_to
+		var/newcaste
+
+		if(length(T.caste.deevolves_to) == 1)
+			newcaste = T.caste.deevolves_to[1]
+		else if(length(T.caste.deevolves_to) > 1)
+			newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to)
+
+		if(!newcaste)
+			return
+
 		if(newcaste == "Larva")
 			to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
 			return

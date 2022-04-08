@@ -1283,8 +1283,7 @@
 "aHA" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -11794,8 +11793,7 @@
 /area/fiorina/station/park)
 "hhh" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -14015,8 +14013,7 @@
 /area/fiorina/tumor/aux_engi)
 "iEi" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /obj/structure/platform{
 	dir = 1
@@ -14785,8 +14782,7 @@
 /area/fiorina/station/civres_blue)
 "jeh" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /obj/structure/platform{
 	dir = 1
@@ -23588,8 +23584,7 @@
 "oqu" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)

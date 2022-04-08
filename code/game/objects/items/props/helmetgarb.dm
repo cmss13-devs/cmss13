@@ -106,8 +106,7 @@
 	var/datum/action/item_action/activation
 	var/obj/item/clothing/head/attached_item
 	var/mob/living/attached_mob
-	var/invisibility_level = SEE_INVISIBLE_MINIMUM
-
+	var/lighting_alpha = 100
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -155,7 +154,7 @@
 				break
 			var/to_transfer
 			if(do_after(user, 30, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
-				to_transfer = min(150, C.charge, (nvg_maxcharge - nvg_charge))
+				to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
 				C.charge -= to_transfer
 				nvg_charge += to_transfer
 				to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
@@ -311,7 +310,10 @@
 /obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(var/mob/M)
 	SIGNAL_HANDLER
 
-	M.see_invisible = invisibility_level
+	if(lighting_alpha < 255)
+		M.see_in_dark = 12
+	M.lighting_alpha = lighting_alpha
+	M.sync_lighting_plane_alpha()
 
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/remove_nvg()

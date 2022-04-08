@@ -57,6 +57,10 @@
 	var/obj/screen/gun_move_icon
 	var/obj/screen/gun_run_icon
 
+	var/list/obj/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
+	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
+	var/list/obj/plane_master_controller/plane_master_controllers = list()
+
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
 	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
@@ -71,6 +75,16 @@
 /datum/hud/New(mob/owner)
 	mymob = owner
 	hide_actions_toggle = new
+
+	for(var/mytype in subtypesof(/obj/screen/plane_master)- /obj/screen/plane_master/rendering_plate)
+		var/obj/screen/plane_master/instance = new mytype()
+		plane_masters["[instance.plane]"] = instance
+		if(owner.client)
+			instance.backdrop(mymob)
+
+	for(var/mytype in subtypesof(/obj/plane_master_controller))
+		var/obj/plane_master_controller/controller_instance = new mytype(null,src)
+		plane_master_controllers[controller_instance.name] = controller_instance
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
@@ -136,7 +150,10 @@
 	gun_move_icon = null
 	gun_run_icon = null
 
-	. = ..()
+	QDEL_LIST_ASSOC_VAL(plane_masters)
+	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
+
+	return ..()
 
 
 /mob/proc/create_hud()
@@ -207,7 +224,14 @@
 	mymob.update_action_buttons(TRUE)
 	mymob.reload_fullscreens()
 
+	plane_masters_update()
 
+/datum/hud/proc/plane_masters_update()
+	// Plane masters are always shown to OUR mob, never to observers
+	for(var/thing in plane_masters)
+		var/obj/screen/plane_master/PM = plane_masters[thing]
+		PM.backdrop(mymob)
+		mymob.client.screen += PM
 
 /datum/hud/human/show_hud(version = 0)
 	..()

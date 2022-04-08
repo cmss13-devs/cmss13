@@ -239,6 +239,7 @@
 		W.pickup(src)
 	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
+	W.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)

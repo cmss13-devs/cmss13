@@ -1552,9 +1552,10 @@
 	color = "#6b675e"
 	},
 /obj/item/clothing/shoes/combat,
-/obj/item/clothing/under/gladiator,
+/obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

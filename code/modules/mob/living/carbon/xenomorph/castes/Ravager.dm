@@ -20,7 +20,7 @@
 	tacklestrength_max = 5
 
 	evolution_allowed = FALSE
-	deevolves_to = XENO_CASTE_LURKER
+	deevolves_to = list(XENO_CASTE_LURKER)
 	caste_desc = "A brutal, devastating front-line attacker."
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1

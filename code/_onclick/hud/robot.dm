@@ -15,6 +15,7 @@
 	using.icon_state = "radio"
 	using.screen_loc = ui_robot_datum.ui_movi
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	static_inventory += using
 
 //Module select
@@ -26,6 +27,7 @@
 	using.icon_state = "inv1"
 	using.screen_loc = ui_robot_datum.ui_inv1
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	owner.inv1 = using
 	static_inventory += using
 
@@ -36,6 +38,7 @@
 	using.icon_state = "inv2"
 	using.screen_loc = ui_robot_datum.ui_inv2
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	owner.inv2 = using
 	static_inventory += using
 
@@ -46,6 +49,7 @@
 	using.icon_state = "inv3"
 	using.screen_loc = ui_robot_datum.ui_inv3
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	owner.inv3 = using
 	static_inventory += using
 

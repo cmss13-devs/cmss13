@@ -248,7 +248,7 @@
 
 		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
 		SPAN_NOTICE("You remove the shielding from [src]."))
-		new /obj/item/stack/sheet/metal(loc, STACK_5)
+		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 
 		reinforced = FALSE
 		update_icon()

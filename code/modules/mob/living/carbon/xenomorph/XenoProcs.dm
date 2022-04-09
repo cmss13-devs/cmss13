@@ -357,14 +357,15 @@
 			A.forceMove(get_true_turf(src))
 
 /mob/living/carbon/Xenomorph/proc/toggle_nightvision()
-	if(see_invisible == SEE_INVISIBLE_MINIMUM)
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO //Turn it off.
-		see_in_dark = 4
-		sight |= SEE_MOBS
+	see_in_dark = 12
+	sight |= SEE_MOBS
+	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	else
-		see_invisible = SEE_INVISIBLE_MINIMUM
-		see_in_dark = 8
-		sight |= SEE_MOBS
+		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	update_sight()
 
 /mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
 	if(stomach_contents.len)

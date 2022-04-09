@@ -7,7 +7,8 @@
 	item_state = "glasses"
 	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
-	darkness_view = 7
+	darkness_view = 12
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 
 /obj/item/clothing/glasses/night/helmet //for the integrated NVGs that are in helmetgarb code

@@ -152,7 +152,9 @@
 
 /obj/item/device/internal_implant/nvg/proc/give_nvg(var/mob/living/M)
 	SIGNAL_HANDLER
-	M.see_invisible = SEE_INVISIBLE_MINIMUM
+	M.see_in_dark = 12
+	M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	M.sync_lighting_plane_alpha()
 
 /obj/item/device/implanter/rejuv
 	name = "rejuvenation implant"

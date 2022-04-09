@@ -5837,7 +5837,7 @@
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
 "sF" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/interior/wood,
@@ -5928,7 +5928,7 @@
 	},
 /area/event/metal/dynamic)
 "sU" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	dir = 8;
@@ -11737,7 +11737,7 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ki" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"

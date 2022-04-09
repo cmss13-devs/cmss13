@@ -197,10 +197,10 @@
 /datum/supply_packs/webbing_holster
 	name = "Shoulder Holster Crate (x4)"
 	contains = list(
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster
 	)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/green
@@ -217,6 +217,18 @@
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "M39 Belt Holster Crate"
+	group = "Clothing"
+
+/datum/supply_packs/gunslinger_holster
+	contains = list(
+					/obj/item/storage/belt/gun/m44/gunslinger,
+					/obj/item/storage/belt/gun/m44/gunslinger
+					)
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	cost = RO_PRICE_VERY_CHEAP
+	contraband = 1
+	containertype = /obj/structure/closet/crate
+	containername = "Cowboy Costume Crate"
 	group = "Clothing"
 
 /datum/supply_packs/gun_holster/m44

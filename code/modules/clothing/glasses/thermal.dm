@@ -8,6 +8,8 @@
 	item_state = "glasses"
 	toggleable = TRUE
 	vision_flags = SEE_MOBS
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	darkness_view = 12
 	invisa_view = 2
 	eye_protection = -1
 	deactive_state = "goggles_off"

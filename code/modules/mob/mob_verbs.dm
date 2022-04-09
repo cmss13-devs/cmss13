@@ -53,7 +53,7 @@
 	//set name = "Point To"
 	//set category = "Object"
 
-	if(!isturf(src.loc) || !(A in view(src.loc)))//target is no longer visible to us
+	if(!isturf(src.loc) || !(A in view(src)))//target is no longer visible to us
 		return 0
 
 	if(!A.mouse_opacity)//can't click it? can't point at it.

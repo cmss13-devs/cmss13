@@ -15,6 +15,8 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 	/obj/effect/alien/resin/special/cluster,
 )))
 
+GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
+
 /datum/element/bullet_trait_damage_boost
 	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE
 	id_arg_index = 2

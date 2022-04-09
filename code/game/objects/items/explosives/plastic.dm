@@ -18,7 +18,7 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
-	has_iff=TRUE	//Should it be checked by antigrief?
+	antigrief_protection = TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()
@@ -58,8 +58,8 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
-	if(has_iff && user.faction == FACTION_MARINE && explosive_grief_check(src))
-		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from planting it!"))
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting it!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
 
@@ -172,8 +172,8 @@
 
 	//vehicle interior stuff checks
 	if(target.z == GLOB.interior_manager.interior_z)
-		if(istype(target, /obj/structure/interior_exit) || istype(target, /obj/structure/bed/chair/comfy/vehicle) || istype(target, /obj/structure/interior_viewport) || istype(target, /obj/structure/weapons_loader) || istype(target, /obj/structure/bed/chair/dropship/passenger/shuttle_chair))
-			return FALSE
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target

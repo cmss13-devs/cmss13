@@ -110,6 +110,11 @@
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 
+/area/adminlevel/ert_station/shuttle_dispatch
+	name = "Shuttle Dispatch Station"
+	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
+	icon_state = "yellow"
+
 //Simulation area
 /area/adminlevel/simulation
 	name = "Simulated Reality"

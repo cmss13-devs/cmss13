@@ -458,6 +458,7 @@
 				if(usr.interactee == src && Adjacent(usr))
 					show_inv(usr)
 
+	/* 
 	if(href_list["splints"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
@@ -465,7 +466,7 @@
 				return
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(src)]'s' splints </font>")
-			remove_splints(usr)
+			remove_splints(usr)*/
 
 	if(href_list["tie"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
@@ -1277,29 +1278,22 @@
 
 
 /mob/proc/update_sight()
-	return
+	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
 
 	sight &= ~BLIND // Never have blind on by default
 
-	if(stat == DEAD)
-		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-	else
-		if(!(SEND_SIGNAL(src, COMSIG_MOB_PRE_GLASSES_SIGHT_BONUS) & COMPONENT_BLOCK_GLASSES_SIGHT_BONUS))
-			sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
-			if(glasses)
-				process_glasses(glasses)
-			else
-				see_invisible = SEE_INVISIBLE_LIVING
+	if(!(SEND_SIGNAL(src, COMSIG_MOB_PRE_GLASSES_SIGHT_BONUS) & COMPONENT_BLOCK_GLASSES_SIGHT_BONUS))
+		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		see_in_dark = species.darksight
+		if(glasses)
+			process_glasses(glasses)
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
-
+	sync_lighting_plane_alpha()
 
 
 /mob/proc/update_tint()

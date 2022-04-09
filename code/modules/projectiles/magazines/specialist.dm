@@ -311,3 +311,17 @@
 		name = "\improper 84mm spent rocket array"
 		desc = "A spent rocket tube assembly for the M57-A4 quad launcher. Activate in hand to disassemble for metal."
 		icon_state = "quad_rocket_e"
+
+//-------------------------------------------------------
+//Anti tank rocket
+
+/obj/item/ammo_magazine/rocket/anti_tank
+	name = "\improper 84mm Anti-Tank Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "rocket"
+	icon_state = "at_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
+	reload_delay = 100

@@ -16,6 +16,7 @@
 		return
 	if (M.client)
 		M.ghostize(FALSE)
+	M.aghosted = FALSE //Incase you ckey into an aghosted body.
 	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey

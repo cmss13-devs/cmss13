@@ -834,14 +834,22 @@
 		flick(flick_anim, animation)
 
 //Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
-
-	for(var/atom/part in contents)
+/atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
+	for(var/atom/part as anything in contents)
 		toReturn += part
 		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
+			part.GetAllContents(searchDepth - 1, toReturn)
+	return toReturn
 
+/// Returns list of contents of a turf recursively, much like GetAllContents
+/// We only get containing atoms in the turf, excluding multitiles bordering on it
+/turf/proc/GetAllTurfStrictContents(searchDepth = 5, list/toReturn = list())
+	for(var/atom/part as anything in contents)
+		if(part.loc != src) // That's a multitile atom, and it's not actually here stricto sensu
+			continue
+		toReturn += part
+		if(part.contents.len && searchDepth)
+			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()

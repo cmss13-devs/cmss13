@@ -716,7 +716,9 @@
 	},
 /area/yautja)
 "bA" = (
-/obj/structure/machinery/chem_dispenser,
+/obj/structure/machinery/chem_dispenser{
+	req_skill_level = 2
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -871,8 +873,7 @@
 	id = "Cell Lockdown 1";
 	name = "Cell Lockdown 1";
 	pixel_x = -25;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -883,8 +884,7 @@
 	id = "Cell Lockdown 4";
 	name = "Cell Lockdown 4";
 	pixel_x = -7;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -942,8 +942,7 @@
 	id = "Cell Lockdown 2";
 	name = "Cell Lockdown 2";
 	pixel_x = -25;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -1006,8 +1005,7 @@
 	id = "Cell Lockdown 3";
 	name = "Cell Lockdown 3";
 	pixel_x = -25;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -1018,8 +1016,7 @@
 	id = "Cell Lockdown 6";
 	name = "Cell Lockdown 6";
 	pixel_x = -7;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1544,9 +1541,10 @@
 	color = "#6b675e"
 	},
 /obj/item/clothing/shoes/combat,
-/obj/item/clothing/under/gladiator,
+/obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1757,8 +1755,7 @@
 	id = "Cell Lockdown 5";
 	name = "Cell Lockdown 5";
 	pixel_x = -7;
-	pixel_y = 9;
-	req_access_txt = null
+	pixel_y = 9
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -3185,7 +3182,9 @@
 	},
 /area/yautja)
 "Qs" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	req_skill_level = 2
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

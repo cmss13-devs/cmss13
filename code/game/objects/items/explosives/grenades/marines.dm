@@ -307,7 +307,7 @@
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
 	harmful = FALSE
-	has_iff = FALSE
+	antigrief_protection = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
 
 /obj/item/explosive/grenade/smokebomb/New()
@@ -382,6 +382,7 @@
 	var/inactive_icon = "chemg"
 	has_arm_sound = FALSE
 	throwforce = 10
+	antigrief_protection = FALSE
 
 /obj/item/explosive/grenade/slug/prime()
 	active = 0
@@ -421,7 +422,7 @@
 	icon_state = "baton_slug"
 	item_state = "baton_slug"
 	inactive_icon = "baton_slug"
-	has_iff = TRUE
+	antigrief_protection = FALSE
 	impact_damage = 15
 	slowdown_time = 1.6
 	knockout_time = 0.4
@@ -445,7 +446,7 @@
 	item_state = "grenade_training"
 	dangerous = 0
 	harmful = FALSE
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 /obj/item/explosive/grenade/HE/training/prime()
 	spawn(0)
@@ -468,6 +469,7 @@
 	item_state = "rubber_grenade"
 	explosion_power = 0
 	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
+	antigrief_protection = FALSE
 
 /// Baton slugs
 /obj/item/explosive/grenade/baton
@@ -476,7 +478,7 @@
 	icon_state = "baton_slug"
 	item_state = "rubber_grenade"
 	hand_throwable = FALSE
-
+	antigrief_protection = FALSE
 
 
 /obj/item/explosive/grenade/baton/flamer_fire_act()
@@ -495,3 +497,19 @@
 	unacidable = TRUE
 	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+
+/obj/item/explosive/grenade/metal_foam
+	name = "\improper M40 MFHS grenade"
+	desc = "A Metal-Foam Hull-Sealant grenade originally used for emergency repairs but have found other practical applications on the field. Based off the same platform as the M40 HEDP. Has a 2 second fuse."
+	icon_state = "grenade_metal_foam"
+	item_state = "grenade_metal_foam"
+	det_time = 20
+	underslug_launchable = TRUE
+	harmful = FALSE
+	var/foam_metal_type = FOAM_METAL_TYPE_ALUMINIUM
+
+/obj/item/explosive/grenade/metal_foam/prime()
+	var/datum/effect_system/foam_spread/s = new()
+	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
+	s.start()
+	qdel(src)

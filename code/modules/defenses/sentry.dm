@@ -387,7 +387,7 @@
 	name = "UA-577 Gauss Turret"
 	immobile = TRUE
 	turned_on = TRUE
-	icon_state = "sentry_on"
+	icon_state = "premade" //for the map editor only
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 

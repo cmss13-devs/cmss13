@@ -41,9 +41,10 @@
 	universal_speak = 0
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
-	see_in_dark = 8
-	recovery_constant_mult = 0.6
-	see_invisible = SEE_INVISIBLE_MINIMUM
+	see_in_dark = 12
+	recovery_constant_mult = 1.5
+	see_invisible = SEE_INVISIBLE_LIVING
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
@@ -366,8 +367,8 @@
 	recalculate_actions()
 
 	sight |= SEE_MOBS
-	see_invisible = SEE_INVISIBLE_MINIMUM
-	see_in_dark = 8
+	see_invisible = SEE_INVISIBLE_LIVING
+	see_in_dark = 12
 
 	if(caste && caste.spit_types && caste.spit_types.len)
 		ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -940,3 +941,16 @@
 	resin_build_order = build_order
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
+
+/mob/living/carbon/Xenomorph/ghostize(can_reenter_corpse = TRUE)
+	. = ..()
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
+		handle_ghost_message()
+
+/mob/living/carbon/Xenomorph/proc/handle_ghost_message()
+	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
+
+/mob/living/carbon/Xenomorph/Larva/handle_ghost_message()
+	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+		return
+	return ..()

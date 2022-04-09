@@ -13,7 +13,7 @@
 	speed = XENO_SPEED_RUNNER
 	attack_delay = -4
 	evolves_to = list(XENO_CASTE_LURKER)
-	deevolves_to = "Larva"
+	deevolves_to = list("Larva")
 
 	tackle_min = 4
 	tackle_max = 5

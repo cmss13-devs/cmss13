@@ -262,6 +262,7 @@
 	createdby = X.nicknumber
 	mark_meaning = new X.selected_mark
 	seenMeaning =  image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
+	seenMeaning.plane = ABOVE_HUD_PLANE
 	hivenumber = X.hivenumber
 	X.hive.resin_marks += src
 
@@ -781,7 +782,7 @@
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 	dangerous = TRUE
 	rebounds = FALSE

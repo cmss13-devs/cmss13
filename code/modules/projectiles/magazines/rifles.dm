@@ -136,7 +136,13 @@
 	bonus_overlay = "mar40_ex"
 	icon_state = "mar40_extended"
 
-
+/obj/item/ammo_magazine/rifle/mar40/lmg
+	name = "\improper MAR drum magazine (7.62x39mm)"
+	desc = "A 7.62x39mm drum magazine for the MAR-50 LMG."
+	caliber = "7.62x39mm"
+	icon_state = "mar50"
+	max_rounds = 100
+	gun_type = /obj/item/weapon/gun/rifle/mar40/lmg
 
 //-------------------------------------------------------
 //M16 RIFLE

@@ -4,6 +4,8 @@
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
 	var/darkness_view = 0 //Base human is 2
+	/// The amount of nightvision these glasses have. This should be a number between 0 and 1.
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/invisa_view = FALSE
 	var/prescription = FALSE
 	var/toggleable = FALSE
@@ -85,15 +87,17 @@
 		else if(hud_type && slot == WEAR_EYES)
 			var/datum/mob_hud/MH = huds[hud_type]
 			MH.add_hud_to(user)
-
+	user.update_sight()
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
+	user.glasses = null
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
 			var/datum/mob_hud/H = huds[hud_type]
 			H.remove_hud_from(user)
-	..()
+	user.update_sight()
+	return ..()
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	..()

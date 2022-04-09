@@ -138,9 +138,6 @@
 
 
 /mob/living/brain/proc/handle_regular_hud_updates()
-
-	update_sight()
-
 	if (hud_used && hud_used.healths)
 		if (stat != DEAD)
 			switch(health)

@@ -392,6 +392,7 @@
 	set category = "Object"
 	set name = "Set Short Label (on-sprite)"
 	set src in usr
+
 	if(src && ishuman(usr))
 		var/str = copytext(reject_bad_text(input(usr,"Label text? (2 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 3)
 		if(!str || !length(str))
@@ -402,7 +403,6 @@
 		maptext_label = str
 		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
 		update_icon()
-		return
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"

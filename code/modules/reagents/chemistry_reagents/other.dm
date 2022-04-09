@@ -731,7 +731,7 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
-	fire_type = 1 //Armor Shredding Greenfire
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/gel/New()
 	properties = list(
@@ -769,7 +769,7 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
-	fire_type = 1 //Armor Shredding Greenfire
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/green/New()
 	properties = list(

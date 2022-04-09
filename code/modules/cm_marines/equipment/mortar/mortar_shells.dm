@@ -43,7 +43,7 @@
 	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
 	var/burn_level = BURN_LEVEL_TIER_2
 	var/flameshape = FLAMESHAPE_DEFAULT
-	var/fire_type = 1 //Armor Shredding Greenfire
+	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/mortar_shell/incendiary/detonate(var/turf/T)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)

@@ -358,9 +358,9 @@
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-	var/fire_variant = 0
+	var/fire_variant = FIRE_VARIANT_DEFAULT
 
-/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = 0)
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -471,7 +471,7 @@
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
 		switch(fire_variant)
-			if(1) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
 				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
@@ -506,7 +506,7 @@
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	set_on_fire(M)
 	switch(fire_variant)
-		if(1) //Armor Shredding Greenfire
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
 			if (ishuman(M))
 				var/mob/living/carbon/human/H = M
 				H.next_move_slowdown = H.next_move_slowdown + 3
@@ -535,7 +535,7 @@
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = round(burnlevel * 0.5)
 	switch(fire_variant)
-		if(1) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
 	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
 
@@ -551,7 +551,7 @@
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
-			if(1) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
 				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
@@ -568,7 +568,7 @@
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
-		if(1)
+		if(FIRE_VARIANT_TYPE_B)
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
 				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
@@ -616,7 +616,7 @@
 		if(++j >= 11) break
 		if(isliving(i))
 			switch(fire_variant)
-				if(1)
+				if(FIRE_VARIANT_TYPE_B)
 					if(istype(i, /mob/living/carbon/Xenomorph))
 						var/mob/living/carbon/Xenomorph/X = i
 						if(!X.armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.

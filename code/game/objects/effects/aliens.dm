@@ -82,7 +82,7 @@
 				FF.update_flame()
 			else
 				switch(FF.fire_variant)
-					if(1) //Armor Shredding Greenfire, extinguishes faster.
+					if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
 						if(FF.firelevel > 2*fire_level_to_extinguish)
 							FF.firelevel -= 2*fire_level_to_extinguish
 							FF.update_flame()

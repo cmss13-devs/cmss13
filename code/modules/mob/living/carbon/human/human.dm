@@ -458,7 +458,7 @@
 				if(usr.interactee == src && Adjacent(usr))
 					show_inv(usr)
 
-	/* 
+	/*
 	if(href_list["splints"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))

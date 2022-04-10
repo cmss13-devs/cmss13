@@ -151,6 +151,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 ////RANGE RELATED////
 */
 
+#define DAMAGE_FALLOFF_BLANK 	30
 #define DAMAGE_FALLOFF_TIER_1 	10
 #define DAMAGE_FALLOFF_TIER_2 	9
 #define DAMAGE_FALLOFF_TIER_3 	8

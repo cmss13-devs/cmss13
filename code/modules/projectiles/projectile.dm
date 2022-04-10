@@ -151,6 +151,7 @@
 	starting = get_turf(src)
 	if(starting != loc)
 		forceMove(starting) //Put us on the turf, if we're not.
+
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
@@ -456,6 +457,8 @@
 
 		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
 			def_zone = rand_zone()
+		else
+			SEND_SIGNAL(firer, COMSIG_DIRECT_BULLET_HIT, L)
 		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
 		#if DEBUG_HIT_CHANCE
@@ -477,7 +480,7 @@
 				ammo.on_hit_turf(get_turf(src),src)
 				T.bullet_act(src)
 			else if(L && L.loc && (L.bullet_act(src) != -1))
-				ammo.on_hit_mob(L,src)
+				ammo.on_hit_mob(L,src, firer)
 
 				// If we are a xeno shooting something
 				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)

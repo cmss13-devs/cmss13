@@ -66,10 +66,9 @@
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user)
+	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
+		dump_into(W, user)
 	else
 		return ..()
 

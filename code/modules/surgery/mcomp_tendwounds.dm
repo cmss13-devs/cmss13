@@ -28,7 +28,7 @@
 	name = "Tend Wounds"
 	desc = "tend the wounds"
 	tools = SURGERY_TOOLS_MCOMP
-	time = 10 SECONDS //Heals 5 brute & 5 burn per second.
+	time = 10 SECONDS //Heals 3 brute & 3 burn per second.
 	repeat_step = TRUE
 
 /datum/surgery_step/mcomp_wounds/repeat_step_criteria(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -46,7 +46,7 @@
 	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with \the [tool], starting [surgery].")
 
 /datum/surgery_step/mcomp_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(50,50)
+	target.heal_overall_damage(30,30)
 	if(isSpeciesYautja(target))
 		target.emote("click")
 	else

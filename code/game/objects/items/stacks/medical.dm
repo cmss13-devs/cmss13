@@ -28,7 +28,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
-	if(isSpeciesYautja(H) && !alien)
+	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO) && !alien)
 		to_chat(user, SPAN_WARNING("The [src] is incompatible with the biology of [H]!"))
 		return TRUE
 

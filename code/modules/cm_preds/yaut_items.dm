@@ -1024,7 +1024,10 @@
 	return ..()
 
 /obj/item/storage/medicomp/dropped(mob/living/carbon/human/M)
+	to_chat(usr, SPAN_NOTICE("You retract your medicomp."))
 	playsound(M,'sound/items/air_release.ogg', 15, 1)
+	for(var/mob/N in content_watchers)
+		storage_close(N)
 	if(source)
 		forceMove(source)
 		return

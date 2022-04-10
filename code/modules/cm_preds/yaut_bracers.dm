@@ -412,7 +412,6 @@
 		var/found = FALSE
 		if(istype(R))
 			found = TRUE
-			usr.r_hand = null
 			if(R)
 				for(var/mob/M in R.content_watchers)
 					R.storage_close(M)
@@ -421,7 +420,6 @@
 			user.update_inv_r_hand()
 		if(L && istype(L))
 			found = TRUE
-			usr.l_hand = null
 			if(L)
 				for(var/mob/M in L.content_watchers)
 					L.storage_close(M)

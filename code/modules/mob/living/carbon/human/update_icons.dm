@@ -148,11 +148,11 @@ There are several things that need to be remembered:
 		//Underwear
 		remove_overlay(UNDERSHIRT_LAYER)
 		remove_overlay(UNDERWEAR_LAYER)
-		if(underwear >0 && underwear < 3)
-			var/image/underwear_icon = new /image('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
-			underwear_icon.layer = -UNDERWEAR_LAYER
-			overlays_standing[UNDERWEAR_LAYER] = underwear_icon
-			apply_overlay(UNDERWEAR_LAYER)
+
+		var/image/underwear_icon = new /image('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
+		underwear_icon.layer = -UNDERWEAR_LAYER
+		overlays_standing[UNDERWEAR_LAYER] = underwear_icon
+		apply_overlay(UNDERWEAR_LAYER)
 
 		if(undershirt>0 && undershirt < 5)
 			var/image/undershirt_icon = new /image('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s")

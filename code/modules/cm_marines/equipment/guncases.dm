@@ -110,7 +110,6 @@
 	new /obj/item/ammo_magazine/lever_action(src)
 	new /obj/item/storage/belt/shotgun/lever_action(src)
 	new /obj/item/storage/belt/gun/m44/lever_action/attach_holster(src)
-//	new /obj/item/device/motiondetector/m717(src)
 
 //------------
 /obj/item/storage/box/guncase/flamer

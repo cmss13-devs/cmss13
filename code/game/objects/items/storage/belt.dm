@@ -1031,7 +1031,6 @@
 	w_class = SIZE_LARGE
 	storage_slots = 11
 	max_storage_space = 28
-//	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	can_hold = list(
 		/obj/item/ammo_magazine/handful,
 		/obj/item/weapon/gun/revolver,
@@ -1042,7 +1041,6 @@
 		"1" = list(
 			"icon_x" = 10,
 			"icon_y" = 3))
-	//needs belt MR merged. WIP //I'm pretty sure this is fully functional now - stan_albatross, December 2021
 
 /obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/lever_action))

@@ -57,19 +57,17 @@ their unique feature is that a direct hit will buff your damage and firerate
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/lever_action/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
 
 /obj/item/weapon/gun/lever_action/wield(var/mob/M)
 	. = ..()
 	if(. && uses_streaks)
 		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, .proc/direct_hit_buff)
-		message_admins("you messed up at line 66")
 
 /obj/item/weapon/gun/lever_action/unwield(var/mob/M)
 	. = ..()
 	if(. && uses_streaks)
 		UnregisterSignal(M, COMSIG_DIRECT_BULLET_HIT)
-		message_admins("you messed up at line 72")
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
@@ -123,7 +121,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/proc/reset_hit_buff(var/one_hand_lever) //why does this need a user arg when it doesn't use user at all?
 	if(!uses_streaks)
 		return
-	message_admins("you messed up at line 122")
 	SIGNAL_HANDLER
 	streak = 0
 	lever_sound = initial(lever_sound)
@@ -267,7 +264,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		else
 			twohand_lever(user)
 
-		playsound(user, lever_sound, 25, TRUE) //should be TRUE not 1
+		playsound(user, lever_sound, 25, TRUE)
 		levered = TRUE
 
 /obj/item/weapon/gun/lever_action/proc/twohand_lever(mob/living/carbon/human/user)
@@ -289,7 +286,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE //It was fired, so let's unlock the lever.
 		in_chamber = null
 		if(!current_mag.current_rounds && !in_chamber)
-			update_icon()//No rounds, nothing chambered.
+			update_icon() //No rounds, nothing chambered.
 
 	return TRUE
 

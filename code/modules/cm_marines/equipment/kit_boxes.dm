@@ -277,7 +277,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/ammo_magazine/lever_action(src)
 	new /obj/item/storage/belt/shotgun/lever_action(src)
 	new /obj/item/storage/belt/gun/m44/lever_action/attach_holster(src)
-//	new /obj/item/device/motiondetector/m717(src) //not right now.
 	new /obj/item/ammo_magazine/lever_action/training(src)
 
 /obj/item/storage/box/kit/machinegunner

@@ -1429,7 +1429,6 @@
 /datum/ammo/bullet/lever_action/tracker
 	name = "tracking lever-action bullet"
 	icon_state = "redbullet"
-
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
@@ -1442,7 +1441,6 @@
 /datum/ammo/bullet/lever_action/training
 	name = "lever-action blank"
 	icon_state = "blank"
-
 	damage = 70  //blanks CAN hurt you if shot very close
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
@@ -1453,7 +1451,6 @@
 //unused, and unobtainable... for now
 /datum/ammo/bullet/lever_action/marksman
 	name = "marksman lever-action bullet"
-
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12

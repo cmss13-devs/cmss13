@@ -1598,9 +1598,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "aeW" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	use_power = 0
-	},
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue"

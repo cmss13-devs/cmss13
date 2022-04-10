@@ -46,6 +46,11 @@
 #define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
 #define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
 
+#define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"
+#define COMSIG_KB_HUMAN_ISSUE_ORDER_MOVE "keybinding_human_issue_order_move"
+#define COMSIG_KB_HUMAN_ISSUE_ORDER_HOLD "keybinding_human_issue_order_hold"
+#define COMSIG_KB_HUMAN_ISSUE_ORDER_FOCUS "keybinding_human_issue_order_focus"
+
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
 #define COMSIG_KB_HUMAN_WEAPON_BURSTFIRE "keybinding_human_weapon_burstfire"
@@ -114,6 +119,11 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+
+#define COMSIG_KB_XENO_EMIT_PHEROMONES "keybiding_xeno_emit_pheromones"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybiding_xeno_emit_pheromones_frenzy"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING "keybiding_xeno_emit_pheromones_warding"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY "keybiding_xeno_emit_pheromones_recovery"
 
 #define COMSIG_KB_XENO_CORROSIVE_ACID "keybinding_xeno_corrosive_acid"
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"

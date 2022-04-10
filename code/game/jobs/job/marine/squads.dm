@@ -344,33 +344,19 @@
 	switch(GET_DEFAULT_ROLE(old_lead.job))
 		if(JOB_SQUAD_SPECIALIST)
 			old_lead.comm_title = "Spc"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_ENGI)
 			old_lead.comm_title = "ComTech"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_RTO)
 			old_lead.comm_title = "RTO"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_LEADER)
 			if(!leader_killed)
-				if(old_lead.skills)
-					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 				old_lead.comm_title = "RFN"
 		else
 			old_lead.comm_title = "RFN"
-			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
 	if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
 		var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
@@ -382,6 +368,7 @@
 		if(istype(old_lead.wear_id, /obj/item/card/id))
 			var/obj/item/card/id/ID = old_lead.wear_id
 			ID.access -= ACCESS_MARINE_LEADER
+	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head()	//updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()

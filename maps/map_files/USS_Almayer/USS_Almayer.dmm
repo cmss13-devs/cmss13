@@ -38751,7 +38751,7 @@
 /area/almayer/evacuation/pod15)
 "dYR" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder/industrial{
+/obj/structure/machinery/reagentgrinder{
 	pixel_y = 10
 	},
 /turf/open/floor/plating/plating_catwalk,

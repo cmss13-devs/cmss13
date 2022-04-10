@@ -516,14 +516,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
 		return //Robots can't interact with storage items.
 
-	return attempt_item_insertion(W, user)
+	return attempt_item_insertion(W, FALSE, user)
 
-/obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
 	if(!can_be_inserted(W))
 		return
 
 	W.add_fingerprint(user)
-	return handle_item_insertion(W, FALSE, user)
+	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
 	if (loc == user)

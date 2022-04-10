@@ -284,40 +284,56 @@
 
 /datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(TRUE))
+	if(!istype(X))
 		return
+	X.emit_pheromones(emit_cost = plasma_cost)
 
-	var/choice
-	if(X.client.prefs && X.client.prefs.no_radials_preference)
-		choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
-		if(choice == "cancel")
+/mob/living/carbon/Xenomorph/proc/emit_pheromones(var/pheromone, var/emit_cost = 30)
+	if(!check_state(TRUE))
+		return
+	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
+		to_chat(src, SPAN_XENOWARNING("You are incapable of emitting pheromones!"))
+		return
+	if(!pheromone)
+		if(current_aura)
+			current_aura = null
+			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."), \
+			SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
+		else
+			if(!check_plasma(emit_cost))
+				to_chat(src, SPAN_XENOWARNING("You do not have enough plasma!"))
+				return
+			if(client.prefs && client.prefs.no_radials_preference)
+				pheromone = tgui_input_list(src, "Choose a pheromone", "Pheromone Menu", caste.aura_allowed + "help" + "cancel")
+				if(pheromone == "help")
+					to_chat(src, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
+					return
+				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+			else
+				var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
+				pheromone = show_radial_menu(src, src, phero_selections)
+				if(pheromone == "help")
+					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
+					return
+				if(!pheromone || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+	if(pheromone)
+		if(pheromone == current_aura)
+			to_chat(src, SPAN_XENOWARNING("You are already emitting [pheromone] pheromones!"))
 			return
-	else
-		var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-		choice = show_radial_menu(X, X, phero_selections)
+		if(!check_plasma(emit_cost))
+			to_chat(src, SPAN_XENOWARNING("You do not have enough plasma!"))
+			return
+		use_plasma(emit_cost)
+		current_aura = pheromone
+		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
+		SPAN_XENOWARNING("You begin to emit '[pheromone]' pheromones."), null, 5)
+		playsound(loc, "alien_drool", 25)
 
-	if(choice == "help")
-		to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
-		return
-	if(!choice || !X.check_state(TRUE))
-		return
-	if (!check_and_use_plasma_owner())
-		return
-	if(X.current_aura == choice)
-		X.current_aura = null
-		X.visible_message(SPAN_XENOWARNING("\The [X] stops emitting pheromones."), \
-		SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
-	else
-		X.current_aura = choice
-		X.visible_message(SPAN_XENOWARNING("\The [X] begins to emit strange-smelling pheromones."), \
-		SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
-		playsound(X.loc, "alien_drool", 25)
-
-	if(isXenoQueen(X) && X.hive && X.hive.xeno_leader_list.len && X.anchored)
-		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)
+	if(isXenoQueen(src) && hive && hive.xeno_leader_list.len && anchored)
+		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
-
-
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

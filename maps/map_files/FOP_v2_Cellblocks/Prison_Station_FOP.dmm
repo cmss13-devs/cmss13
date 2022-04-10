@@ -6823,8 +6823,8 @@
 /area/prison/research/RD)
 "aqF" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/structure/platform,
+/obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -30256,9 +30256,7 @@
 /area/prison/hallway/east)
 "bCT" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	use_power = 0
-	},
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2";

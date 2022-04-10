@@ -9841,12 +9841,11 @@
 /area/almayer/lifeboat_pumps/north2)
 "azV" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	dir = 4;
-	pixel_y = -2
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8
+	},
+/obj/structure/machinery/computer/shuttle_control/dropship2{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -9861,12 +9860,11 @@
 /area/almayer/command/cic)
 "azX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	dir = 8;
-	pixel_y = -2
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4
+	},
+/obj/structure/machinery/computer/shuttle_control/dropship1{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -17899,8 +17897,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bdR" = (
-/obj/structure/machinery/computer/shuttle_control/dropship2/onboard,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle_control/dropship2/onboard,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -17982,8 +17980,8 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bed" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -43688,12 +43686,11 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/laundry)
 "geg" = (
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/shuttle_control/dropship2{
 	dir = 4;
-	layer = 3.2;
 	pixel_y = -5
 	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -55018,8 +55015,8 @@
 "luw" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "Brig";
-	dir = 2
+	dir = 2;
+	name = "Brig"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -62285,8 +62282,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "Brig";
 	dir = 2;
+	name = "Brig";
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -63283,8 +63280,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "Brig";
-	dir = 2
+	dir = 2;
+	name = "Brig"
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -69571,12 +69568,11 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "siz" = (
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/shuttle_control/dropship1{
 	dir = 8;
-	layer = 3.2;
 	pixel_y = -5
 	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -78200,14 +78196,14 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/hangar{
-	dir = 4;
-	pixel_y = -24
-	},
 /obj/item/device/radio/intercom{
 	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom"
+	},
+/obj/structure/machinery/computer/security/hangar{
+	dir = 4;
+	pixel_y = -24
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";

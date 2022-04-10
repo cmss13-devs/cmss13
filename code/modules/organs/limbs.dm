@@ -208,10 +208,58 @@
 
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		fracture()
-/*
-	Describes how limbs (body parts) of human mobs get damage applied.
-*/
-/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/damage_source = "dismemberment", var/mob/attack_source = null)
+/**
+ * Describes how limbs (body parts) of human mobs get damage applied.
+ *
+ * Any damage past the limb maximum health is transfered onto the next limb up the line, by
+ * calling this proc recursively. When a hand is too damaged it is passed to the arm,
+ * then to the chest and so on.
+ *
+ * Since parent limbs usually have more armor than their children, just passing the damage
+ * directly would allow the attacker to effectively bypass all of that armor. A lurker
+ * with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
+ * (20 armor) would do 20 damage to the hand, then would start doing the same 20 to
+ * the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+ * do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.
+ *
+ * Thus we have to apply armor damage reduction on each limb to which the damage is
+ * transfered. When this proc is called recursively for the first damage transfer to the
+ * parent, we set reduced_by variables to be the armor of the original limb hit. Then we
+ * compare the parent limb armor with the applicable reduced_by and if it's higher we reduce
+ * the damage by the difference between the two. Then we set reduced_by to
+ * the current(parent) limb armor value.
+ *
+ * This generally works ok because our armor calculations are mostly distributive in
+ * practice: reducing the damage by 20 and then by 10 would generally give the same result
+ * as reducing by 30. But this is not strictly true, the lower the damage is, the more it
+ * gets reduced. As an extreme example, a lurker doing his first 35 damage slash on a combat
+ * gloves covered marine hand would do 30 damage to the hand, transfer 5 to the arm and
+ * those 5 would get mitigated to 0 by the marine medium armor.
+ *
+ * One problem that still exists here, is that we currently don't have any code
+ * that allows us to increase the damage when the parent limb armor is lower than the
+ * initial child limb armor.
+ * One practical example where this would happen is when a human is wearing a set of armor
+ * that does not protect legs, like the UPP officer. If a xeno keeps slashing his foot,
+ * the damage would eventually get transfered to the leg, which has 0 armor. But this damage
+ * has been already reduced by the boot armor even before this proc got first called.
+ * So, assuming 35 damage slash, the leg would only be damaged by 21 even though it has
+ * 0 armor. Fixing this would require a new proc that would be able to unapply armor
+ * from the damage.
+ *
+ * Organ damage and bone break have their own armor damage reduction calculations. Since
+ * armor is already applied at least once outside of this proc, this means that damage is always
+ * reduced twice, hence the formulas for those looks so weird.
+ *
+ * Currently all brute damage is reduced by ARMOR_MELEE and GLOB.marine_melee,
+ * while burn damage is reduced by ARMOR_BIO and GLOB.marine_fire, which may not be correct
+ * for all cases.
+ */
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
+							list/forbidden_limbs = list(),
+							no_limb_loss, var/damage_source = "dismemberment",\
+							var/mob/attack_source = null,\
+							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -224,6 +272,17 @@
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
 		is_ff = TRUE
+
+	if((brute > 0) && (brute_reduced_by >= 0))
+		var/brute_armor = owner.getarmor_organ(src, ARMOR_MELEE)
+		if(brute_armor > brute_reduced_by)
+			brute = armor_damage_reduction(GLOB.marine_melee, brute, brute_armor - brute_reduced_by)
+			brute_reduced_by = brute_armor
+	if((burn > 0) && (burn_reduced_by >= 0))
+		var/burn_armor = owner.getarmor_organ(src, ARMOR_BIO)
+		if(burn_armor > burn_reduced_by)
+			burn = armor_damage_reduction(GLOB.marine_fire, brute, burn_armor - burn_reduced_by)
+			burn_reduced_by = burn_armor
 
 	//High brute damage or sharp objects may damage internal organs
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
@@ -286,7 +345,14 @@
 			if(possible_points.len)
 				//And pass the damage around, but not the chance to cut the limb off.
 				var/obj/limb/target = pick(possible_points)
-				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
+				if(brute_reduced_by == -1)
+					brute_reduced_by = owner.getarmor_organ(src, ARMOR_MELEE)
+				if(burn_reduced_by == -1)
+					burn_reduced_by = owner.getarmor_organ(src, ARMOR_BIO)
+				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon,\
+					forbidden_limbs + src, TRUE, attack_source = attack_source,\
+					brute_reduced_by = brute_reduced_by, burn_reduced_by = burn_reduced_by)
+
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
@@ -1284,7 +1350,10 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
 		overlays += lips
 
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/mob/attack_source = null)
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null,\
+							list/forbidden_limbs = list(), no_limb_loss,\
+							var/mob/attack_source = null,\
+							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))

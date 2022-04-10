@@ -4336,6 +4336,12 @@
 	dir = 1
 	},
 /area/kutjevo/exterior/runoff_river)
+"fNe" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "cleaningprog"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
 "fNo" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -7715,6 +7721,12 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
+"kPw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "trappedmonke"
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/oob)
 "kPA" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
@@ -9091,6 +9103,12 @@
 "mHJ" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/med)
+"mIg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "plinkingspot"
+	},
+/turf/closed/wall/kutjevo/rock/border,
+/area/kutjevo/exterior/scrubland)
 "mIq" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/kutjevo/colony,
@@ -27863,7 +27881,7 @@ sYd
 bXl
 sYd
 rfZ
-wei
+mIg
 mDN
 wei
 wei
@@ -28730,7 +28748,7 @@ sYd
 bXl
 uSG
 lrO
-naK
+kPw
 lrO
 uSG
 hqO
@@ -35417,7 +35435,7 @@ kDS
 kDS
 kDS
 kDS
-kDS
+fNe
 vDS
 pNi
 kDS

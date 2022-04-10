@@ -32252,6 +32252,12 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves_north)
+"sbz" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gruesome"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
 "sbQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -52200,7 +52206,7 @@ axC
 alu
 ayV
 ayV
-ayV
+sbz
 alu
 aBR
 aBR

@@ -60,6 +60,7 @@
 	var/mob/living/homing_target = null
 
 	var/list/bullet_traits
+	var/list/list/on_hit_mob_components
 
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
 	. = ..(mapload)
@@ -79,6 +80,7 @@
 	path = null
 	weapon_cause_data = null
 	firer = null
+	on_hit_mob_components = null
 	return ..()
 
 /obj/item/projectile/proc/apply_bullet_trait(list/entry)
@@ -481,6 +483,7 @@
 				T.bullet_act(src)
 			else if(L && L.loc && (L.bullet_act(src) != -1))
 				ammo.on_hit_mob(L,src, firer)
+				apply_on_hit_component(L)
 
 				// If we are a xeno shooting something
 				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
@@ -516,6 +519,10 @@
 
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
+
+/obj/item/projectile/proc/apply_on_hit_component(var/mob/M)
+	for(var/list/component_as_list as anything in on_hit_mob_components)
+		M._AddComponent(component_as_list.Copy())
 
 //----------------------------------------------------------
 				//				    	\\

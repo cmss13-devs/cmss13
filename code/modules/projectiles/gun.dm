@@ -202,6 +202,10 @@
 	 that will be given to a projectile with the current ammo datum**/
 	var/list/list/traits_to_give
 
+	/// This is a list of list which will be used as arguments through arglist, add text to call datum/ammo vars
+	/// This will apply components to on_hit_mob() such as cluster_stack
+	var/list/list/on_hit_mob_components
+
 	/**
 	 * The group or groups of the gun where a fire delay is applied and the delays applied to each group when the gun is dropped
 	 * after being fired
@@ -968,6 +972,10 @@ and you're good to go.
 				// Prepend the bullet trait to the list
 				L = list(entry) + AT.traits_to_give[entry]
 			P.apply_bullet_trait(L)
+
+	//gives on hit components like suppression stack to the projectile
+	if(on_hit_mob_components)
+		LAZYADD(P.on_hit_mob_components, on_hit_mob_components)
 
 /obj/item/weapon/gun/proc/ready_in_chamber()
 	if(current_mag && current_mag.current_rounds > 0)

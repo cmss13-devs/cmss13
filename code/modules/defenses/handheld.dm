@@ -99,10 +99,10 @@
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-		.["DMR Turret"] = /obj/item/defenses/handheld/sentry/dmr
+		.[image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld")] = /obj/item/defenses/handheld/sentry/dmr
 	. += list(
-		"Shotgun Turret" = /obj/item/defenses/handheld/sentry/shotgun,
-		"Mini Turret" = /obj/item/defenses/handheld/sentry/mini
+		image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld") = /obj/item/defenses/handheld/sentry/shotgun,
+		image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld") = /obj/item/defenses/handheld/sentry/mini
 	)
 
 /obj/item/defenses/handheld/sentry/dmr
@@ -134,9 +134,9 @@
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-		.["Plasma Glob Flamer"] = /obj/item/defenses/handheld/sentry/flamer/plasma
+		.[image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld")] = /obj/item/defenses/handheld/sentry/flamer/plasma
 	. += list(
-		"Mini Flamer" = /obj/item/defenses/handheld/sentry/flamer/mini
+		image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld") = /obj/item/defenses/handheld/sentry/flamer/mini
 	)
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -195,8 +195,8 @@
 
 /obj/item/defenses/handheld/tesla_coil/get_upgrade_list()
 	. = list(
-		"Increased Voltage" = /obj/item/defenses/handheld/tesla_coil/stun,
-		"Micro-tesla" = /obj/item/defenses/handheld/tesla_coil/micro
+		image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Stun tesla_coil_handheld") = /obj/item/defenses/handheld/tesla_coil/stun,
+		image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Micro tesla_coil_handheld") = /obj/item/defenses/handheld/tesla_coil/micro
 	)
 
 // BELL TOWER BASE AND UPGRADES
@@ -218,10 +218,12 @@
 
 /obj/item/defenses/handheld/bell_tower/get_upgrade_list()
 	. = list(
-		"Motion Detector" = /obj/item/defenses/handheld/bell_tower/md,
-		"Cloaker" = /obj/item/defenses/handheld/bell_tower/cloaker,
-		"IMP frame mount" = /obj/item/storage/backpack/imp
+		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "MD bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/md,
+		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/cloaker
 	)
+
+// image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "bell_backpack") = /obj/item/storage/backpack/imp
+// bell backpack - disabled for now.
 
 // JIMA TOWER BASE AND UPGRADES
 /obj/item/defenses/handheld/planted_flag
@@ -233,10 +235,12 @@
 
 /obj/item/defenses/handheld/planted_flag/get_upgrade_list()
 	. = list(
-		"Warbanner" = /obj/item/defenses/handheld/planted_flag/warbanner,
-		"Extended JIMA" = /obj/item/defenses/handheld/planted_flag/range,
-		"JIMA frame mount" = /obj/item/storage/backpack/jima
+		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Warbanner planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/warbanner,
+		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/range
 	)
+
+//	image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "flag_backpack") = /obj/item/storage/backpack/jima
+//	flag backpack - disabled for now.
 
 /obj/item/defenses/handheld/planted_flag/warbanner
 	name = "handheld JIMA planted warbanner"

@@ -75,7 +75,6 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
-	S["toggles_ghost"]		>> toggles_ghost
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
@@ -114,6 +113,7 @@
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
 	S["hide_statusbar"] >> hide_statusbar
+	S["no_radials_preference"] >> no_radials_preference
 	S["hotkeys"] >> hotkeys
 
 	//Sanitize
@@ -127,13 +127,13 @@
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
-	toggles_ghost	= sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
+	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -198,7 +198,6 @@
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing
-	S["toggles_ghost"]		<< toggles_ghost
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 
@@ -235,6 +234,7 @@
 	S["hear_vox"] << hear_vox
 
 	S["hide_statusbar"] << hide_statusbar
+	S["no_radials_preference"] << no_radials_preference
 
 	return TRUE
 
@@ -358,15 +358,12 @@
 	r_eyes			= sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes			= sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
-	if(gender == MALE)
-		underwear	= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
-	else
-		underwear	= sanitize_integer(underwear, 1, underwear_f.len, initial(underwear))
+	underwear	= sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear))
 	undershirt		= sanitize_integer(undershirt, 1, undershirt_t.len, initial(undershirt))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	//b_type			= sanitize_text(b_type, initial(b_type))
 
-	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
+	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
 	if(!job_preference_list)
 		ResetJobs()
 	else

@@ -56,6 +56,8 @@
 /obj/structure/bed/chair/attack_hand(mob/user)
 	. = ..()
 	if(stacked_size)
+		if(!CAN_PICKUP(user, src))
+			return
 		var/obj/item/weapon/melee/twohanded/folded_metal_chair/F = locate() in contents
 		user.put_in_active_hand(F)
 		stacked_size--
@@ -495,6 +497,8 @@
 
 /obj/item/weapon/melee/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
 	. = ..()
+	if(!.)
+		return
 	if(flags_item & WIELDED)
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)

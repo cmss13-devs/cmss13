@@ -1,6 +1,6 @@
 
 /obj/item/clothing/under/color
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"
@@ -32,8 +32,8 @@
 	icon_state = "orange"
 	item_state = "o_suit"
 	worn_state = "orange"
-	has_sensor = 2
-	sensor_mode = 3
+	has_sensor = UNIFORM_FORCED_SENSORS
+	sensor_mode = SENSOR_MODE_LOCATION
 
 /obj/item/clothing/under/color/white
 	name = "white jumpsuit"

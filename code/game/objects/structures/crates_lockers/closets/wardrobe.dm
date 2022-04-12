@@ -270,7 +270,7 @@
 	name = "genetics wardrobe"
 	icon_state = "green"
 	icon_closed = "green"
-	icon_opened = "green_opened"
+	icon_opened = "green_open"
 
 /obj/structure/closet/wardrobe/genetics_white/Initialize()
 	. = ..()
@@ -287,7 +287,7 @@
 	name = "virology wardrobe"
 	icon_state = "green"
 	icon_closed = "green"
-	icon_opened = "green_opened"
+	icon_opened = "green_open"
 
 /obj/structure/closet/wardrobe/virology_white/Initialize()
 	. = ..()

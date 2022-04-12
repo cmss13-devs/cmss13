@@ -32,7 +32,7 @@
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
-	var/list/datum/automata_cell/autocells = list()
+	var/list/datum/automata_cell/autocells
 	/**
 	 * Associative list of cleanable types (strings) mapped to
 	 * cleanable objects
@@ -48,6 +48,9 @@
 	var/chemexploded = FALSE // Prevents explosion stacking
 
 	var/flags_turf = NO_FLAGS
+
+	/// Whether we've broken through the ceiling yet
+	var/ceiling_debrised = FALSE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -428,8 +431,12 @@
 	return
 
 /turf/proc/ceiling_debris(var/size = 1) //debris falling in response to airstrikes, etc
+	if(ceiling_debrised)
+		return
+
 	var/area/A = get_area(src)
-	if(!A.ceiling) return
+	if(!A.ceiling)
+		return
 
 	var/amount = size
 	var/spread = round(sqrt(size)*1.5)
@@ -468,6 +475,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
+	ceiling_debrised = TRUE
 
 /turf/proc/ceiling_desc(mob/user)
 

@@ -26,7 +26,7 @@
 
 	if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC_LEADER)
 		return get_desired_status(player.prefs.synth_status, WHITELIST_LEADER)
-	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+	else if(roles_whitelist[player.ckey] & (WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
 		return get_desired_status(player.prefs.synth_status, WHITELIST_COUNCIL)
 	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC)
 		return get_desired_status(player.prefs.synth_status, WHITELIST_NORMAL)

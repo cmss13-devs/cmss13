@@ -83,6 +83,9 @@
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 
+	if(behavior_delegate)
+		behavior_delegate.handle_death(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
 		A.acid_damage = 0 //Reset the acid damage
@@ -105,6 +108,7 @@
 			// Tell the xeno she is the last one.
 			if(X.client)
 				to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
+			announce_dchat("There is only one Xenomorph left: [X.name].", X)
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)

@@ -18,6 +18,8 @@
 	var/Elevator_y
 	var/Elevator_z
 	var/elevator_loc
+	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
+	var/obj/effect/elevator/animation_overlay/elevator_animation
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
@@ -25,18 +27,25 @@
 
 /datum/shuttle/ferry/supply/New()
 	..()
+	elevator_animation = new()
+	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
+	elevator_animation.pixel_y = -80
 	if(pick_loc())
 		Elevator_x = pick_loc().x
 		Elevator_y = pick_loc().y
 		Elevator_z = pick_loc().z
 		SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+		SW.vis_contents += elevator_animation
 		SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 		SE.pixel_x = -128
+		SE.vis_contents += elevator_animation
 		NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 		NW.pixel_y = -128
+		NW.vis_contents += elevator_animation
 		NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
 		NE.pixel_x = -128
 		NE.pixel_y = -128
+		NE.vis_contents += elevator_animation
 
 /datum/shuttle/ferry/supply/short_jump(var/area/origin,var/area/destination)
 	if(moving_status != SHUTTLE_IDLE)
@@ -74,19 +83,28 @@
 		var/area/away_area = get_location_area(away_location)
 		moving_status = SHUTTLE_INTRANSIT
 
+		/*We attach the turfs in our starting area to the vis_contents overlay. The elevator effect procs will animate this. If we're going down, the stuff will instantly be
+		teleported and then cosmetically animated as lowering; otherwise, it will be animated as raising, then teleported afterwards. Either way, it's all on the admin level.*/
+		for(var/turf/T in away_area)
+			elevator_animation.vis_contents += T
+
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
 			move(origin, away_area)
-			lower_elevator_effect()
+			SW.forceMove(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+			SE.forceMove(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
+			NW.forceMove(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
+			NE.forceMove(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
 			start_gears(SOUTH)
 			sleep(91)
 		else
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_raising.ogg', 50, 0)
 			start_gears(NORTH)
 			sleep(70)
-			raise_elevator_effect()
-			sleep(21)
+			animate(elevator_animation, pixel_x = 0, pixel_y = 0, time = 2 SECONDS)
+			sleep(2 SECONDS)
 			SW.moveToNullspace()
 			SE.moveToNullspace()
 			NW.moveToNullspace()
@@ -95,6 +113,7 @@
 
 		moving_status = SHUTTLE_IDLE
 		stop_gears()
+		elevator_animation.vis_contents.Cut()
 
 		if (!at_station())	//at centcom
 			handle_sell()
@@ -139,30 +158,6 @@
 			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 	if(effective)
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
-
-/datum/shuttle/ferry/supply/proc/lower_elevator_effect()
-	SW.forceMove(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
-	SE.forceMove(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
-	NW.forceMove(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
-	NE.forceMove(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
-	flick("supply_elevator_lowering", SW)
-	flick("supply_elevator_lowering", SE)
-	flick("supply_elevator_lowering", NW)
-	flick("supply_elevator_lowering", NE)
-	SW.icon_state = "supply_elevator_lowered"
-	SE.icon_state = "supply_elevator_lowered"
-	NW.icon_state = "supply_elevator_lowered"
-	NE.icon_state = "supply_elevator_lowered"
-
-/datum/shuttle/ferry/supply/proc/raise_elevator_effect()
-	flick("supply_elevator_raising", SW)
-	flick("supply_elevator_raising", SE)
-	flick("supply_elevator_raising", NW)
-	flick("supply_elevator_raising", NE)
-	SW.icon_state = "supply_elevator_raised"
-	SE.icon_state = "supply_elevator_raised"
-	NW.icon_state = "supply_elevator_raised"
-	NE.icon_state = "supply_elevator_raised"
 
 /datum/shuttle/ferry/supply/proc/start_gears(var/direction = 1)
 	for(var/obj/structure/machinery/gear/M in machines)

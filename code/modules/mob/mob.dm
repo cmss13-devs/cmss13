@@ -201,6 +201,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
+	if(client == null || (client.inactivity > 1 && world.time > 20 MINUTES)) //Do not start away_timer on connected clients until 20 minutes has passed.
+		away_timer++
 	else
 		away_timer = 0
 	return
@@ -275,6 +277,12 @@
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot, permanent = 0)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 1, 0, permanent)
 
+///Set the lighting plane hud alpha to the mobs lighting_alpha var
+/mob/proc/sync_lighting_plane_alpha()
+	if(hud_used)
+		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
+		if (lighting)
+			lighting.alpha = lighting_alpha
 
 
 //puts the item "W" into an appropriate slot in a human's inventory

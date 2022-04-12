@@ -34,6 +34,7 @@
 	unacidable = TRUE
 	time_to_unequip = 20
 	anti_hug = 5
+	fire_intensity_resistance = 10
 
 	var/thrall = FALSE//Used to affect icon generation.
 
@@ -91,8 +92,8 @@
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M))
 		return
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
-		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
+	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
+		to_chat(M, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	current_goggles++
 	if(istype(src, /obj/item/clothing/mask/gas/yautja/hunter))
@@ -210,7 +211,7 @@
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
 	if(!isYautja(usr))
-		to_chat(usr, SPAN_WARNING("You have no idea how to work these things!"))
+		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	..()
 

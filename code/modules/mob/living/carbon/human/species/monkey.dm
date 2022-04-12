@@ -4,6 +4,8 @@
 	name_plural = "Monkeys"
 	icobase = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
+	eyes = "monkey_eyes_s"
+	blood_mask = 'icons/effects/monkey_blood.dmi'
 	brute_mod = 1.5
 	burn_mod = 1.5
 	pain_type = /datum/pain/monkey

@@ -19,31 +19,27 @@
 			message_staff("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
 
 /datum/admins/proc/force_predator_round()
-	set name = "Force Predator Round"
-	set desc = "Force a predator round for the round type. Only works on maps that support Predator spawns."
+	set name = "Toggle Predator Round"
+	set desc = "Force toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
 
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
-	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No")
-		return
-
 	var/datum/game_mode/predator_round = SSticker.mode
+	if(alert("Are you sure you want to force toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/PJ = RoleAuthority.roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
+		if(istype(PJ) && !PJ.spawn_positions)
 			PJ.set_spawn_positions(players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
-		to_chat(usr, "The Hunt is now enabled.")
 	else
-		to_chat(usr, "The Hunt is already in progress.")
-		return
+		predator_round.flags_round_type &= ~MODE_PREDATOR
 
-	message_staff("[key_name_admin(usr)] admin-forced a predator round.")
-	return
+	message_staff("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
 
 /client/proc/free_slot()
 	set name = "Free Job Slots"
@@ -92,7 +88,7 @@
 	J = RoleAuthority.roles_by_name[role]
 	var/tpos = J.spawn_positions
 	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos) as num|null
-	if(!num)
+	if(isnull(num))
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))

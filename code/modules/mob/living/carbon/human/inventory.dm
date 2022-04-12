@@ -107,7 +107,7 @@
 		return FALSE
 
 	if(I == wear_suit)
-		if(s_store)
+		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)
 		wear_suit = null
 		if(I.flags_inv_hide & HIDESHOES)
@@ -239,6 +239,7 @@
 		W.pickup(src)
 	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
+	W.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)
@@ -350,24 +351,26 @@
 			W.equipped(src, slot)
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
-			back.attackby(W,src)
+			var/obj/item/storage/S = back
+			S.attempt_item_insertion(W, FALSE, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
 			shoes.attackby(W,src)
 			shoes.update_icon()
 		if(WEAR_IN_SCABBARD)
-			back.attackby(W,src)
+			var/obj/item/storage/S = back
+			S.attempt_item_insertion(W, FALSE, src)
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)
-				wear_suit.attackby(W, src)
+				S.pockets.attempt_item_insertion(W, FALSE, src)
 				wear_suit.update_icon()
 
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
 			if(istype(HM) && HM.pockets.storage_slots)
-				HM.pockets.attackby(W, src)
+				HM.pockets.attempt_item_insertion(W, FALSE, src)
 				HM.update_icon()
 
 		if(WEAR_IN_ACCESSORY)
@@ -382,16 +385,20 @@
 			update_inv_w_uniform()
 
 		if(WEAR_IN_BELT)
-			belt.attackby(W,src)
+			var/obj/item/storage/S = belt
+			S.attempt_item_insertion(W, FALSE, src)
 			belt.update_icon()
 		if(WEAR_IN_J_STORE)
-			s_store.attackby(W,src)
+			var/obj/item/storage/S = s_store
+			S.attempt_item_insertion(W, FALSE, src)
 			s_store.update_icon()
 		if(WEAR_IN_L_STORE)
-			l_store.attackby(W,src)
+			var/obj/item/storage/S = l_store
+			S.attempt_item_insertion(W, FALSE, src)
 			l_store.update_icon()
 		if(WEAR_IN_R_STORE)
-			r_store.attackby(W,src)
+			var/obj/item/storage/S = r_store
+			S.attempt_item_insertion(W, FALSE, src)
 			r_store.update_icon()
 
 		else
@@ -498,7 +505,7 @@
 	attack_log += "\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(M)]'s [I.name] ([slot_to_process])</font>"
 	log_interact(src, M, "[key_name(src)] tried to remove [key_name(M)]'s [I.name] ([slot_to_process]).")
 
-	M.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
+	src.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
 					SPAN_DANGER("You are trying to remove [M]'s [I.name]."), null, 5)
 	I.add_fingerprint(src)
 	if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))

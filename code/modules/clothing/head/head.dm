@@ -74,6 +74,45 @@
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
 
+/obj/item/clothing/head/beret/cm/squadberet
+	name = "USCM Squad Beret"
+	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
+
+/obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
+	. = ..()
+	self_set()
+	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/self_set, TRUE)
+
+/obj/item/clothing/head/beret/cm/squadberet/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_SET_SQUAD)
+
+/obj/item/clothing/head/beret/cm/squadberet/proc/self_set()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H))
+		if(H.assigned_squad)
+			switch(H.assigned_squad.name)
+				if(SQUAD_NAME_1)
+					icon_state = "beret_alpha"
+					desc = "Often found atop heads, slightly less found on those still attached."
+				if(SQUAD_NAME_2)
+					icon_state = "beret_bravo"
+					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
+				if(SQUAD_NAME_3)
+					icon_state = "beret_charlie"
+					desc = "Still has some morning toast crumbs on it."
+				if(SQUAD_NAME_4)
+					icon_state = "beret_delta"
+					desc = "Hard to consider protection, but these types of people don't seek protection."
+				if(SQUAD_NAME_5)
+					icon_state = "beret_echo"
+					desc = "Tightly Woven, as it should be."
+		else
+			icon_state = "beret"
+			desc = initial(desc)
+		H.update_inv_head()
+
+
 /obj/item/clothing/head/headband
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
@@ -146,7 +185,11 @@
 						/obj/item/prop/helmetgarb/helmet_nvg/functional = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
-						/obj/item/clothing/head/headband/red = "hat_headbandred")
+						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
+						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
+						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
+						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

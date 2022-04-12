@@ -510,7 +510,7 @@
 	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
@@ -651,12 +651,13 @@
 /datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
 	if(!iselevator)
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-			M.KnockDown(4)
-			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
-				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
-					M.forceMove(T)
-					break
+			if(isliving(M))
+				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+				M.KnockDown(4)
+				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
+					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+						M.forceMove(T)
+						break
 	return ..() // Sleeps
 
 /datum/shuttle/ferry/marine/open_doors(var/list/L)

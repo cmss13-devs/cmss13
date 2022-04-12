@@ -1174,6 +1174,13 @@
 		message_staff("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
+	else if(href_list["adminalert"])
+		if(!check_rights(R_MOD))
+			return
+
+		var/mob/M = locate(href_list["adminalert"])
+		usr.client.cmd_admin_alert_message(M)
+
 	else if(href_list["CentcommReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
@@ -1575,6 +1582,12 @@
 
 		create_humans_list(href_list)
 
+	else if(href_list["create_xenos_list"])
+		if(!check_rights(R_SPAWN))
+			return
+
+		create_xenos_list(href_list)
+
 	else if(href_list["events"])
 		if(!check_rights(R_FUN))
 			return
@@ -1645,9 +1658,9 @@
 				player_notes_show(ckey)
 		return
 
-	if(href_list["player_notes_copy"])
-		var/key = href_list["player_notes_copy"]
-		player_notes_copy(key)
+	if(href_list["player_notes_all"])
+		var/key = href_list["player_notes_all"]
+		player_notes_all(key)
 		return
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.

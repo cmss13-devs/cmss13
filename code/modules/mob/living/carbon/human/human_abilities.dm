@@ -513,7 +513,7 @@ CULT
 	if(!istype(chosen))
 		return
 
-	if(chosen.faction != FACTION_MARINE || (chosen.skills && skillcheck(chosen, SKILL_POLICE, 2)) || (chosen in converted))
+	if(skillcheck(chosen, SKILL_POLICE, SKILL_POLICE_MAX) || (chosen in converted))
 		to_chat(H, SPAN_WARNING("You can't convert [chosen]!"))
 		return
 
@@ -544,15 +544,9 @@ CULT
 	var/datum/equipment_preset/other/mutineer/XC = new()
 
 	XC.load_status(H)
-	to_chat(H, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
-	to_chat(H, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
-
 	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in H.actions)
 		for(var/mob/living/carbon/human/chosen in converted.converted)
 			XC.load_status(chosen)
-			to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
-			to_chat(chosen, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
-
 		converted.remove_from(H)
 
 	message_staff("[key_name_admin(H)] has begun the mutiny.")

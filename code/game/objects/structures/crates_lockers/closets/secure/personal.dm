@@ -52,14 +52,8 @@
 
 /obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
 	if (src.opened)
-		if(istype(W, /obj/item/grab))
-			var/obj/item/grab/G = W
-			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
-			return
-		user.drop_held_item()
-		if (W) W.forceMove(src.loc)
-	else if(istype(W, /obj/item/card/id))
+		return ..()
+	if(istype(W, /obj/item/card/id))
 		if(src.broken)
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return

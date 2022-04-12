@@ -56,11 +56,10 @@
 #define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded accuracy and scatter penalties (not recoil)
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
-#define GUN_INTERNAL_SILENCED	(1<<19) //suppressor doesnt override sound
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
-#define GUN_FIRED_BY_USER		(1<<20)
-#define GUN_SUPPORT_PLATFORM	(1<<21) /// support weapon, bipod will grant IFF
-#define GUN_BURST_ONLY			(1<<22)
+#define GUN_FIRED_BY_USER		(1<<19)
+#define GUN_SUPPORT_PLATFORM	(1<<20) /// support weapon, bipod will grant IFF
+#define GUN_BURST_ONLY			(1<<21)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1
@@ -69,6 +68,7 @@
 #define ATTACH_RELOADABLE	8
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
 #define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
+
 //Ammo magazine defines, for flags_magazine
 
 #define AMMUNITION_REFILLABLE   (1<<0)
@@ -95,7 +95,7 @@
 #define SLOWDOWN_ADS_LMG				1.75
 #define SLOWDOWN_ADS_INCINERATOR		1.75
 #define SLOWDOWN_ADS_SPECIALIST			1.75
-#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	2
+#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	1.8
 #define SLOWDOWN_ADS_SUPERWEAPON		2.75
 
 //Wield delays, in milliseconds. 10 is 1 second
@@ -167,8 +167,19 @@
 #define CLOTHING_ARMOR_HIGH 30
 #define CLOTHING_ARMOR_HIGHPLUS 35
 #define CLOTHING_ARMOR_VERYHIGH 40
+#define CLOTHING_ARMOR_VERYHIGHPLUS 45
 #define CLOTHING_ARMOR_ULTRAHIGH 50
+#define CLOTHING_ARMOR_ULTRAHIGHPLUS 55
 #define CLOTHING_ARMOR_HARDCORE 100
+
+#define UNIFORM_NO_SENSORS 0
+#define UNIFORM_HAS_SENSORS 1
+#define UNIFORM_FORCED_SENSORS 2
+
+#define SENSOR_MODE_OFF 0
+#define SENSOR_MODE_BINARY 1
+#define SENSOR_MODE_DAMAGE 2
+#define SENSOR_MODE_LOCATION 3
 
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS

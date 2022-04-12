@@ -27,12 +27,12 @@
 	var/flags_ammo_behavior 		= NO_FLAGS
 
 	var/accuracy 			= HIT_ACCURACY_TIER_1 	// This is added to the bullet's base accuracy.
-	var/accuracy_var_low	= PROJECTILE_VARIANCE_TIER_9 	// How much the accuracy varies when fired.
-	var/accuracy_var_high	= PROJECTILE_VARIANCE_TIER_9
+	var/accuracy_var_low	= PROJECTILE_VARIANCE_TIER_9 	// How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.
+	var/accuracy_var_high	= PROJECTILE_VARIANCE_TIER_9	// This INCREASES the upper bound of accuracy variance by 2%, to 107%.
 	var/accurate_range 		= 6 	// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
 	var/max_range 			= 22 	// This will de-increment a counter on the bullet.
 	var/damage_var_low		= PROJECTILE_VARIANCE_TIER_9 	// Same as with accuracy variance.
-	var/damage_var_high		= PROJECTILE_VARIANCE_TIER_9
+	var/damage_var_high		= PROJECTILE_VARIANCE_TIER_9	// This INCREASES the upper bound of damage variance by 2%, to 107%.
 	var/damage_falloff 		= DAMAGE_FALLOFF_TIER_10 // How much damage the bullet loses per turf traveled after the effective range
 	var/damage_buildup 		= DAMAGE_BUILDUP_TIER_1 // How much damage the bullet loses per turf away before the effective range
 	var/effective_range_min	= EFFECTIVE_RANGE_OFF	//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
@@ -76,7 +76,7 @@
 /datum/ammo/proc/on_hit_turf(turf/T, obj/item/projectile/P) //Special effects when hitting dense turfs.
 	return
 
-/datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P) //Special effects when hitting mobs.
+/datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P, mob/user) //Special effects when hitting mobs.
 	return
 
 ///Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.
@@ -198,7 +198,7 @@
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_cause_data)
+		var/obj/item/projectile/P = new /obj/item/projectile(curloc, original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
@@ -1112,6 +1112,7 @@
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_armor_punch = 2
+	handful_state = "slug_shell"
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
 	heavy_knockback(M, P, 6)
@@ -1130,6 +1131,7 @@
 	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_3
+	handful_state = "beanbag_slug"
 
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
@@ -1148,6 +1150,7 @@
 	max_range = 12
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
+	handful_state = "incendiary_slug"
 
 /datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
 	. = ..()
@@ -1180,6 +1183,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
 
 /datum/ammo/bullet/shotgun/flechette_spread
@@ -1214,6 +1218,8 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
+	handful_state = "buckshot_shell"
+	multiple_handful_name = TRUE
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
@@ -1408,6 +1414,51 @@
 
 	step(M, get_dir(P.firer, M))
 
+/datum/ammo/bullet/lever_action
+	name = "lever-action bullet"
+
+	damage = 80
+	penetration = ARMOR_PENETRATION_TIER_1
+	accuracy = HIT_ACCURACY_TIER_1
+	shell_speed = AMMO_SPEED_TIER_6
+	accurate_range = 14
+	handful_state = "lever_action_bullet"
+
+//unused and not working. need to refactor MD code. Unobtainable.
+//intended mechanic is to have xenos hit with it show up very frequently on any MDs around
+/datum/ammo/bullet/lever_action/tracker
+	name = "tracking lever-action bullet"
+	icon_state = "redbullet"
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_3
+	accuracy = HIT_ACCURACY_TIER_1
+	handful_state = "tracking_lever_action_bullet"
+
+/datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
+	//SEND_SIGNAL(user, COMSIG_BULLET_TRACKING, user, M)
+	M.visible_message(SPAN_DANGER("You hear a faint beep under [M]'s [M.mob_size > MOB_SIZE_HUMAN ? "chitin" : "skin"]."))
+
+/datum/ammo/bullet/lever_action/training
+	name = "lever-action blank"
+	icon_state = "blank"
+	damage = 70  //blanks CAN hurt you if shot very close
+	penetration = 0
+	accuracy = HIT_ACCURACY_TIER_1
+	damage_falloff = DAMAGE_FALLOFF_BLANK //not much, though (comparatively)
+	shell_speed = AMMO_SPEED_TIER_5
+	handful_state = "training_lever_action_bullet"
+
+//unused, and unobtainable... for now
+/datum/ammo/bullet/lever_action/marksman
+	name = "marksman lever-action bullet"
+	shrapnel_chance = 0
+	damage_falloff = 0
+	accurate_range = 12
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_6
+	shell_speed = AMMO_SPEED_TIER_6
+	handful_state = "marksman_lever_action_bullet"
+
 /*
 //======
 					Sniper Ammo
@@ -1438,12 +1489,11 @@
 
 /datum/ammo/bullet/sniper/incendiary
 	name = "incendiary sniper bullet"
-	accuracy = 0
-	damage_type = BURN
+	damage_type = BRUTE
+	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	scatter = 0
+	//Removed accuracy = 0, accuracy_var_high = Variance Tier 6, and scatter = 0. -Kaga
 	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_4
 
@@ -1473,7 +1523,7 @@
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage = 55
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8 //Documenting old code: This converts to a variance of 96-109% damage. -Kaga
 	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1568,19 +1618,31 @@
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
 
-/datum/ammo/bullet/sniper/anti_tank
-	name = "anti-tank sniper bullet"
+/datum/ammo/bullet/sniper/anti_materiel
+	name = "anti-materiel sniper bullet"
 
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_BIG)
+				L.apply_armoured_damage(damage*1.2, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armoured_damage(damage*0.8, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 300% against Big xenos (375). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 125
+	damage = 150
 	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
 
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
@@ -1588,6 +1650,19 @@
 	LAZYADD(traits_to_give, list(
 	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_BIG)
+				L.apply_armoured_damage(damage*1.5, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+		else
+			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		// 150% damage to non-Big xenos (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
 //======
@@ -1703,7 +1778,18 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
 	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/minigun/New()
+	..()
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		damage = 15
+	else if(SSticker.current_state < GAME_STATE_PLAYING)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/setup_hvh_damage)
+
+/datum/ammo/bullet/minigun/proc/setup_hvh_damage()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		damage = 15
 
 /datum/ammo/bullet/minigun/tank
 	accuracy = -HIT_ACCURACY_TIER_1
@@ -1790,11 +1876,11 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
+	M.KnockDown(2)
+	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	M.SetKnockeddown(2)
-	M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1809,6 +1895,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
+		M.KnockDown(4)
+		M.KnockOut(4)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1821,9 +1909,6 @@
 		T.ex_act(150, P.dir, P.weapon_cause_data, 200)
 
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	for(var/mob/M in T)
-		M.SetKnockeddown(4)
-		M.SetKnockedout(4)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1832,6 +1917,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
+		M.KnockDown(2)
+		M.KnockOut(2)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1843,11 +1930,28 @@
 	if(!hit_something)
 		T.ex_act(250, P.dir, P.weapon_cause_data)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	for(var/mob/M in T)
-		M.SetKnockeddown(2)
-		M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
+
+/datum/ammo/rocket/ap/anti_tank
+	name = "anti-tank rocket"
+	damage = 100
+	var/vehicle_slowdown_time = 5 SECONDS
+
+/datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/M = O
+		M.next_move = world.time + vehicle_slowdown_time
+		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
+		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket"))
+		M.interior_crash_effect()
+		var/turf/T = get_turf(M.loc)
+		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
+		smoke.set_up(1, T)
+		smoke.start()
+		return
+	return ..()
+
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"
@@ -2547,6 +2651,82 @@
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+/datum/ammo/xeno/spore_cloud_green
+	name = "a cloud of spores"
+	icon_state = "boiler_gas2"
+	ping = "ping_x"
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF | AMMO_SKIPS_ALIENS
+	var/datum/effect_system/smoke_spread/smoke_system
+
+/datum/ammo/xeno/spore_cloud_green/New()
+	..()
+	set_xeno_smoke()
+
+/datum/ammo/xeno/spore_cloud_green/Destroy()
+	qdel(smoke_system)
+	smoke_system = null
+	. = ..()
+
+/datum/ammo/xeno/spore_cloud_green/do_at_max_range(obj/item/projectile/P)
+	drop_nade(get_turf(P), P)
+
+/datum/ammo/xeno/spore_cloud_green/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+	else
+		drop_nade(T, P)
+
+/datum/ammo/xeno/spore_cloud_green/proc/set_xeno_smoke(obj/item/projectile/P)
+	smoke_system = /datum/effect_system/smoke_spread/xeno_heal_smoke
+
+/datum/ammo/xeno/spore_cloud_green/proc/drop_nade(turf/T, obj/item/projectile/P)
+	var/amount = 4
+	var/lifetime_mult = 1.0
+	if(isXenoHivelord(P.firer))
+		smoke_system.cause_data = P.weapon_cause_data
+	smoke_system.set_up(amount, 0, T)
+	smoke_system.lifetime = 1 * lifetime_mult
+	smoke_system.start()
+	T.visible_message(SPAN_DANGER("A cloud of resin spores spew around!"))
+
+
+/datum/ammo/xeno/spore_cloud_yellow
+	name = "a cloud of spores"
+	icon_state = "boiler_gas2"
+	ping = "ping_x"
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF | AMMO_SKIPS_ALIENS
+	var/datum/effect_system/smoke_spread/smoke_system
+
+/datum/ammo/xeno/spore_cloud_yellow/New()
+	..()
+	set_xeno_smoke()
+
+/datum/ammo/xeno/spore_cloud_yellow/Destroy()
+	qdel(smoke_system)
+	smoke_system = null
+	. = ..()
+
+/datum/ammo/xeno/spore_cloud_yellow/do_at_max_range(obj/item/projectile/P)
+	drop_nade(get_turf(P), P)
+
+/datum/ammo/xeno/spore_cloud_yellow/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+	else
+		drop_nade(T, P)
+
+/datum/ammo/xeno/spore_cloud_yellow/proc/set_xeno_smoke(obj/item/projectile/P)
+	smoke_system = /datum/effect_system/smoke_spread/xeno_shield_smoke
+
+/datum/ammo/xeno/spore_cloud_yellow/proc/drop_nade(turf/T, obj/item/projectile/P)
+	var/amount = 4
+	var/lifetime_mult = 1.0
+	if(isXenoHivelord(P.firer))
+		smoke_system.cause_data = P.weapon_cause_data
+	smoke_system.set_up(amount, 0, T)
+	smoke_system.lifetime = 1 * lifetime_mult
+	smoke_system.start()
+	T.visible_message(SPAN_DANGER("A cloud of resin spores spew around!"))
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"
@@ -2825,7 +3005,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/ut/R = new()
+	var/datum/reagent/napalm/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 

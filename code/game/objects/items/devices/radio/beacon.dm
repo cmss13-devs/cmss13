@@ -8,6 +8,7 @@
 /obj/item/device/radio/beacon/Initialize()
 	. = ..()
 	GLOB.radio_beacon_list += src
+	flags_atom &= ~USES_HEARING // This subtype apparenlty does not want to hear stuff
 
 /obj/item/device/radio/beacon/Destroy()
 	GLOB.radio_beacon_list -= src

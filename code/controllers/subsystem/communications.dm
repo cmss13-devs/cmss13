@@ -107,9 +107,11 @@ var/const/WY_FREQ 		= 1236
 var/const/DUT_FREQ 		= 1340
 var/const/ERT_FREQ 		= 1342
 var/const/RUS_FREQ		= 1338
+var/const/CLF_FREQ		= 1339
 var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
 var/const/HC_FREQ		= 1240
+var/const/CCT_FREQ		= 1350
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -133,8 +135,7 @@ var/const/ECHO_FREQ 	= 1457
 var/const/PUB_FREQ 		= 1461
 
 //Civilian channels
-var/const/CIV_GEN_FREQ 	= 1469
-var/const/CIV_COMM_FREQ = 1471
+var/const/COLONY_FREQ	= 1469
 
 var/list/radiochannels = list(
 	"Response Team" = ERT_FREQ,
@@ -143,8 +144,10 @@ var/list/radiochannels = list(
 	"WY PMC" 		= PMC_FREQ,
 	"SpecOps" 		= DTH_FREQ,
 	"UPP" 			= RUS_FREQ,
-	"Colonist"		= DUT_FREQ,
+	"CLF"			= CLF_FREQ,
+	"DD"			= DUT_FREQ,
 	"HighCom"		= HC_FREQ,
+	"CCT"			= CCT_FREQ, // HvH JTAC Equiv
 
 	"Almayer"		= PUB_FREQ,
 	"Command"		= COMM_FREQ,
@@ -163,18 +166,17 @@ var/list/radiochannels = list(
 	"Alamo"			= DS1_FREQ,
 	"Normandy"		= DS2_FREQ,
 
-	"Common"		= CIV_GEN_FREQ,
-	"Civ Command"	= CIV_COMM_FREQ
+	"Colony"		= COLONY_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
-var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ)
 
 // Antag channels, i.e. Syndicate
-var/list/ANTAG_FREQS = list()
+#define ANTAG_FREQS list()
 
-//Depts - just used for colors in headset.dm
-var/list/DEPT_FREQS = list(MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ,CHARLIE_FREQ, DELTA_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
+//Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -209,6 +211,27 @@ SUBSYSTEM_DEF(radio)
 	//Keeping a list of tcomm machines to see which Z level has comms
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
+
+	var/static/list/freq_to_span = list(
+		"[COMM_FREQ]" = "comradio",
+		"[AI_FREQ]" = "airadio",
+		"[SEC_FREQ]" = "secradio",
+		"[ENG_FREQ]" = "engradio",
+		"[MED_FREQ]" = "medradio",
+		"[SUP_FREQ]" = "supradio",
+		"[JTAC_FREQ]" = "jtacradio",
+		"[TACTICS_FREQ]" = "intelradio",
+		"[WY_FREQ]" = "wyradio",
+		"[RUS_FREQ]" = "syndradio",
+		"[CLF_FREQ]" = "clfradio",
+		"[CCT_FREQ]" = "cctradio",
+		"[ALPHA_FREQ]" = "alpharadio",
+		"[BRAVO_FREQ]" = "bravoradio",
+		"[CHARLIE_FREQ]" = "charlieradio",
+		"[DELTA_FREQ]" = "deltaradio",
+		"[ECHO_FREQ]" = "echoradio",
+		"[COLONY_FREQ]" = "deptradio"
+	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
 	var/f_text = num2text(new_frequency)
@@ -246,18 +269,21 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
-/datum/controller/subsystem/radio/proc/get_available_tcomm_zs()
+/datum/controller/subsystem/radio/proc/get_available_tcomm_zs(var/frequency)
 	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
 		target_zs += extra_zs
-	if(tcomm_machines_ground.len > 0)
-		target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(tcomm_machines_almayer.len > 0)
-		target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-		target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
-
+	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_ground)
+		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
+			break
+	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
+		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
+			break
 	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs
 
@@ -270,6 +296,18 @@ SUBSYSTEM_DEF(radio)
 /datum/controller/subsystem/radio/proc/remove_tcomm_machine(var/obj/machine)
 	tcomm_machines_ground -= machine
 	tcomm_machines_almayer -= machine
+
+/datum/controller/subsystem/radio/proc/get_frequency_span(var/frequency)
+	if(frequency in ANTAG_FREQS)
+		return "syndradio"
+	if(frequency in CENT_FREQS)
+		return "centradio"
+	var/freq_span = freq_to_span["[frequency]"]
+	if(freq_span)
+		return freq_span
+	if(frequency in DEPT_FREQS)
+		return "deptradio"
+	return "radio"
 
 /datum/radio_frequency
 	var/frequency as num

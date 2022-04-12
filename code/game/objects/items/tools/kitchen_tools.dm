@@ -167,36 +167,30 @@
 	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_MEDIUM
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked") //I think the rollingpin attackby will end up ignoring this anyway.
+	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 
 /obj/item/tool/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
-	M.last_damage_data = create_cause_data(initial(name), user)
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [key_name(user)]</font>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [key_name(M)]</font>")
-	msg_admin_attack("[key_name(user)] used the [src.name] to attack [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	var/obj/limb/affecting = user.zone_selected
+	var/drowsy_threshold = 0
 
-	var/t = user:zone_selected
-	if (t == "head")
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			var/obj/item/head_protection = H.head
-			if (H.stat < 2 && H.health < 50 && prob(90))
-				// ******* Check
-				if (istype(head_protection) && head_protection.flags_inventory & BLOCKSHARPOBJ  && prob(80))
-					to_chat(H, SPAN_DANGER("The helmet protects you from being hit hard in the head!"))
-					return
-				var/time = rand(2, 6)
-				if (prob(75))
-					H.KnockOut(time)
-				else
-					H.Stun(time)
-				if(H.stat != 2)	H.stat = 1
-				user.visible_message(SPAN_DANGER("<B>[H] has been knocked unconscious!</B>"), SPAN_DANGER("<B>You knock [H] unconscious!</B>"))
-				return
-			else
-				H.visible_message(SPAN_DANGER("[user] tried to knock [H] unconscious!"), SPAN_DANGER("[user] tried to knock you unconscious!"))
-				H.eye_blurry += 3
-	return ..()
+	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - M.getarmor(affecting, ARMOR_MELEE)
+
+	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
+		for(var/mob/O in viewers(user, null))
+			if(M != user) O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), 1)
+			else O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), 1)
+		if(drowsy_threshold > 0)
+			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
+		
+		M.apply_damage(force, BRUTE, affecting, sharp=0) //log and damage the custom hit
+		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
+		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+
+	else //Regular attack text
+		. = ..()
+
+	return
 
 /*
  * Trays - Agouri

@@ -206,15 +206,20 @@
 	density = 0
 	wall_mounted = 1
 	store_mobs = FALSE
+	var/spawn_empty = FALSE
 
 /obj/structure/closet/hydrant/Initialize()
 	. = ..()
-	new /obj/item/clothing/suit/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/device/flashlight(src)
-	new /obj/item/reagent_container/glass/canister/oxygen(src)
-	new /obj/item/tool/extinguisher(src)
-	new /obj/item/clothing/head/hardhat/red(src)
+	if(!spawn_empty)
+		new /obj/item/clothing/suit/fire/firefighter(src)
+		new /obj/item/clothing/mask/gas(src)
+		new /obj/item/device/flashlight(src)
+		new /obj/item/reagent_container/glass/canister/oxygen(src)
+		new /obj/item/tool/extinguisher(src)
+		new /obj/item/clothing/head/hardhat/red(src)
+
+/obj/structure/closet/hydrant/empty
+	spawn_empty = TRUE
 
 /*
  * First Aid

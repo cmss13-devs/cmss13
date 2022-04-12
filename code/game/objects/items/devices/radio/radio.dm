@@ -1,6 +1,6 @@
 /obj/item/device/radio
 	icon = 'icons/obj/items/radio.dmi'
-	name = "station bounced radio"
+	name = "shortwave radio"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
@@ -20,7 +20,6 @@
 	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
 	var/volume = RADIO_VOLUME_QUIET
-//			"Example" = FREQ_LISTENING|FREQ_BROADCASTING
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throw_speed = SPEED_FAST
@@ -30,14 +29,13 @@
 	matter = list("glass" = 25,"metal" = 75)
 		//FREQ_BROADCASTING = 2
 
-/obj/item/device/radio
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
 
-	proc/set_frequency(new_frequency)
-		SSradio.remove_object(src, frequency)
-		frequency = new_frequency
-		radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
+/obj/item/device/radio/proc/set_frequency(new_frequency)
+	SSradio.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/radio/Destroy()
 	if(radio_connection)
@@ -51,7 +49,7 @@
 			RF.remove_listener(src)
 			secure_radio_connections -= RF
 
-	. = ..()
+	return ..()
 
 
 /obj/item/device/radio/proc/remove_all_freq()
@@ -64,10 +62,17 @@
 /obj/item/device/radio/Initialize()
 	. = ..()
 
+	if((type == /obj/item/device/radio || type == /obj/item/device/radio/off) && frequency == PUB_FREQ) // disgusting i know, but i'm not sure why a handheld radio is the parent of headsets
+		var/turf/T = get_turf(src)
+		if(T && is_ground_level(T.z))
+			frequency = COLONY_FREQ
+
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
+
+	flags_atom |= USES_HEARING
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)
@@ -276,17 +281,17 @@
 	if(ignore_z)
 		target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN) //this area always has comms
 
-	/* ###### Intercoms and station-bounced radios ###### */
+	/* ###### Intercoms and shortwave radios ###### */
 	var/filter_type = RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER
 	if(subspace_transmission)
 		filter_type = RADIO_FILTER_TYPE_ALL
 		if(!src.ignore_z)
-			target_zs = get_target_zs()
+			target_zs = get_target_zs(connection.frequency)
 			if (isnull(target_zs))
 				//We don't have a radio connection on our Z-level, abort!
 				return
 
-	/* --- Intercoms can only broadcast to other intercoms, but bounced radios can broadcast to bounced radios and intercoms --- */
+	/* --- Intercoms can only broadcast to other intercoms, but shortwave radios can broadcast to shortwave radios and intercoms --- */
 	if(istype(src, /obj/item/device/radio/intercom))
 		filter_type = RADIO_FILTER_TYPE_INTERCOM
 
@@ -296,7 +301,7 @@
 					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
 
 
-/obj/item/device/radio/proc/get_target_zs()
+/obj/item/device/radio/proc/get_target_zs(var/frequency)
 	var/turf/position = get_turf(src)
 	if(QDELETED(position))
 		return
@@ -315,7 +320,7 @@
 
 	if(subspace_transmission)
 		if(!src.ignore_z)
-			target_zs = SSradio.get_available_tcomm_zs()
+			target_zs = SSradio.get_available_tcomm_zs(frequency)
 			if(!(transmit_z in target_zs))
 				//We don't have a connection ourselves!
 				return null

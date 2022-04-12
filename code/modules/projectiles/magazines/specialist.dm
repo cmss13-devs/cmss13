@@ -25,18 +25,19 @@
 	icon_state = "m42c_flak"
 
 //M42B Magazine
-/obj/item/ammo_magazine/sniper/anti_tank
+/obj/item/ammo_magazine/sniper/anti_materiel
 	name = "\improper XM42B marksman magazine (10x99mm)"
-	desc = "A magazine of anti-tank sniper rifle ammunition."
-	max_rounds = 5
+	desc = "A magazine of caseless 10x99mm anti-materiel rounds."
+	max_rounds = 8
 	caliber = "10x99mm"
-	default_ammo = /datum/ammo/bullet/sniper/anti_tank
-	gun_type = /obj/item/weapon/gun/rifle/sniper/M42B
+	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
+	gun_type = /obj/item/weapon/gun/rifle/sniper/XM42B
 
 //M42C magazine
 
 /obj/item/ammo_magazine/sniper/elite
 	name = "\improper M42C marksman magazine (10x99mm)"
+	desc = "A magazine of specialized supersonic 10x99mm anti-tank rounds."
 	default_ammo = /datum/ammo/bullet/sniper/elite
 	gun_type = /obj/item/weapon/gun/rifle/sniper/elite
 	caliber = "10x99mm"
@@ -310,3 +311,17 @@
 		name = "\improper 84mm spent rocket array"
 		desc = "A spent rocket tube assembly for the M57-A4 quad launcher. Activate in hand to disassemble for metal."
 		icon_state = "quad_rocket_e"
+
+//-------------------------------------------------------
+//Anti tank rocket
+
+/obj/item/ammo_magazine/rocket/anti_tank
+	name = "\improper 84mm Anti-Tank Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "rocket"
+	icon_state = "at_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
+	reload_delay = 100

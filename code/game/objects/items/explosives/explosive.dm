@@ -9,7 +9,7 @@
 	//Is it harmful? Are they banned for synths?
 	var/harmful
 	//Should it be checked by antigrief?
-	var/has_iff
+	var/antigrief_protection
 	//Below is used for customization
 	var/obj/item/device/assembly_holder/detonator = null
 	var/list/containers = new/list()

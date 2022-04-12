@@ -49,7 +49,9 @@ var/list/admin_verbs_ban = list(
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_web_sound,
 	/client/proc/play_sound,
-	/client/proc/cmd_admin_vox_panel,
+	/client/proc/stop_web_sound,
+	/client/proc/stop_sound,
+	/client/proc/cmd_admin_vox_panel
 )
 var/list/admin_verbs_fun = list(
 	/client/proc/enable_event_mob_verbs,
@@ -71,7 +73,8 @@ var/list/admin_verbs_fun = list(
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
-	/client/proc/create_humans
+	/client/proc/create_humans,
+	/client/proc/create_xenos
 )
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
@@ -163,8 +166,13 @@ var/list/admin_mob_event_verbs_hideable = list(
 )
 
 //verbs which can be hidden - needs work
-var/list/admin_mob_verbs_hideable = list(
-	/client/proc/hide_admin_mob_verbs,
+var/list/admin_verbs_hideable = list(
+	/proc/release,
+	/proc/possess,
+	/client/proc/proccall_atom,
+	/client/proc/jump_to_object,
+	/client/proc/jumptomob,
+	/client/proc/hide_admin_verbs,
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
@@ -213,6 +221,10 @@ var/list/admin_verbs_mod = list(
 	/client/proc/toggle_attack_dead,
 	/client/proc/toggle_strip_drag,
 	/client/proc/toggle_uniform_strip,
+	/client/proc/toggle_strong_defibs,
+	/client/proc/toggle_blood_optimization,
+	/client/proc/toggle_combat_cas,
+	/client/proc/toggle_lz_protection,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
@@ -246,11 +258,15 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
 	/datum/admins/proc/remove_marine_techtree_leader,
-	/client/proc/hide_admin_mob_verbs,
+	/client/proc/hide_admin_verbs,
 	/client/proc/clear_mutineers,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_predator_report //Predator ship AI report
+)
+
+var/list/roundstart_mod_verbs = list(
+	/client/proc/toggle_ob_spawn
 )
 
 /client/proc/add_admin_verbs()
@@ -312,7 +328,7 @@ var/list/admin_verbs_mod = list(
 		admin_verbs_spawn,
 		admin_verbs_teleport,
 		admin_mob_event_verbs_hideable,
-		admin_mob_verbs_hideable,
+		admin_verbs_hideable,
 		debug_verbs,
 	))
 

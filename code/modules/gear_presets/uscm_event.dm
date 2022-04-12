@@ -8,16 +8,16 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_event/admiral
+/datum/equipment_preset/uscm_event/general
 	name = "USCM Brigadier General (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/admiral
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "USCM Brigadier General"
-	rank = "USCM Brigadier General"
+	assignment = JOB_B_GENERAL
+	rank = JOB_B_GENERAL
 	paygrade = "MO7"
-	role_comm_title = "RADM"
+	role_comm_title = "HC"
 	minimum_age = 50
 	skills = /datum/skills/admiral
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //Know your enemy.
@@ -27,11 +27,11 @@
 	service_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
 	service_hat = list(/obj/item/clothing/head/admiral, /obj/item/clothing/head/beret/marine/commander/black)
 
-/datum/equipment_preset/uscm_event/admiral/New()
+/datum/equipment_preset/uscm_event/general/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
 
-/datum/equipment_preset/uscm_event/admiral/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_event/general/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/admiral(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
@@ -48,13 +48,12 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/flashbang(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/admiral(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/cotablet(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/mateba_case/admiral(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
-
-	H.hud_set_squad()
 
 /*****************************************************************************************************/
 

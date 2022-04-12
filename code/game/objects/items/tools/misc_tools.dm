@@ -144,7 +144,7 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	flags_equip_slot = SLOT_WAIST|SLOT_EAR
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_VERY_FAST
@@ -263,7 +263,7 @@
 	name = "rubber stamp"
 	desc = "A rubber stamp for stamping important documents."
 	icon = 'icons/obj/items/paper.dmi'
-	icon_state = "stamp-qm"
+	icon_state = "stamp-def"
 	item_state = "stamp"
 	throwforce = 0
 	w_class = SIZE_TINY
@@ -311,3 +311,7 @@
 /obj/item/tool/stamp/centcomm
 	name = "centcomm rubber stamp"
 	icon_state = "stamp-cent"
+
+/obj/item/tool/stamp/ro
+	name = "requisitions officer's rubber stamp"
+	icon_state = "stamp-ro"

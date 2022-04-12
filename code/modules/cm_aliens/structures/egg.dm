@@ -238,6 +238,9 @@
 /obj/effect/alien/egg/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
+/obj/effect/alien/egg/forsaken
+	hivenumber = XENO_HIVE_FORSAKEN
+
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/egg_trigger
 	name = "egg trigger"

@@ -1,9 +1,6 @@
 #define MOVE_INTENT_WALK 1
 #define MOVE_INTENT_RUN 2
 
-GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
-
-
 /mob/dead
 	var/voted_this_drop = 0
 	can_block_movement = FALSE
@@ -19,6 +16,8 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 	blinded = 0
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	var/m_intent = MOVE_INTENT_WALK
 	stat = DEAD
@@ -39,32 +38,20 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 	var/atom/movable/following = null
 	alpha = 127
 
-
-/proc/updateallghostimages()
-	listclearnulls(GLOB.ghost_images_default)
-
-	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
-		O.updateghostimages()
-
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
 	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
 	set category = "Ghost.Settings"
-	ghostvision = !(ghostvision)
-	updateghostimages()
+	ghostvision = !ghostvision
+	if(hud_used)
+		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
+		if (lighting)
+			lighting.alpha = ghostvision? 255 : 0
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
-
-/mob/dead/observer/proc/updateghostimages()
-	if (!client)
-		return
-	client.images -= GLOB.ghost_images_default
-	if(!ghostvision)
-		return
-	client.images |= GLOB.ghost_images_default-ghostimage_default
 
 /mob/dead/observer/New(mob/body)
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-	see_invisible = INVISIBILITY_LEVEL_TWO
+	see_invisible = INVISIBILITY_OBSERVER
 	see_in_dark = 100
 	GLOB.observer_list += src
 
@@ -109,9 +96,6 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 	ghostimage_default = image(src.icon,src,src.icon_state)
 	ghostimage_default.override = TRUE
 	ghostimage_default.overlays = overlays
-	GLOB.ghost_images_default |= ghostimage_default
-
-	updateallghostimages()
 
 	if(!T)	T = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
 	forceMove(T)
@@ -166,6 +150,8 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 			var/z = text2num(href_list["Z"])
 			if(x && y && z)
 				A.JumpToCoord(x, y, z)
+	if(href_list["joinresponseteam"])
+		JoinResponseTeam()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -183,7 +169,7 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					H = huds[MOB_HUD_SECURITY_ADVANCED]
 					H.add_hud_to(src)
 				if("Squad HUD")
-					H = huds[MOB_HUD_SQUAD_OBSERVER]
+					H = huds[MOB_HUD_FACTION_OBSERVER]
 					H.add_hud_to(src)
 				if("Xeno Status HUD")
 					H = huds[MOB_HUD_XENO_STATUS]
@@ -201,10 +187,7 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					H = huds[MOB_HUD_FACTION_CLF]
 					H.add_hud_to(src)
 
-	if(client.prefs.toggles_ghost & GHOST_DARKNESS)
-		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
-	else
-		see_invisible = INVISIBILITY_LEVEL_TWO
+	see_invisible = INVISIBILITY_OBSERVER
 
 
 /mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -219,12 +202,13 @@ Works together with spawning an observer, noted above.
 	if(!loc) return
 	if(!client) return 0
 
-	return 1
+	return TRUE
 
-/mob/proc/ghostize(var/can_reenter_corpse = TRUE)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
-
+	if(aghosted)
+		src.aghosted = TRUE
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
@@ -576,14 +560,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Darkness"
 	set category = "Ghost.Settings"
 
-	client.prefs.toggles_ghost ^= GHOST_DARKNESS
-	client.prefs.save_preferences()
-	if(client.prefs.toggles_ghost & GHOST_DARKNESS)
-		to_chat(src, "You will now see in the dark as an observer.")
-		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
+
+	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	else
-		to_chat(src, "You will no longer see in the dark as an observer.")
-		see_invisible = INVISIBILITY_LEVEL_TWO
+		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	to_chat(src, SPAN_BOLDNOTICE("Switch lighting modes as an observer"))
+	sync_lighting_plane_alpha()
 
 /mob/dead/observer/verb/toggle_self_visibility()
 	set name = "Toggle Self Visibility"
@@ -928,3 +913,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN
+
+/proc/message_ghosts(var/message)
+	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
+		to_chat(O, message)

@@ -62,11 +62,16 @@
 	weather_enabled = FALSE
 	unlimited_power = 1//ds computer
 	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
 	icon_state = "lz_dunes"
 	is_resin_allowed = FALSE
+	weather_enabled =  FALSE
+	unlimited_power = 1//DS Computer
+	is_landing_zone = TRUE
+
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
@@ -78,6 +83,11 @@
 /area/kutjevo/exterior/stonyfields
 	name = "Kutjevo - Stony Fields"
 	icon_state = "stone_fields"
+
+/area/kutjevo/exterior/Northwest_Colony
+	name = "Kutjevo - Northwest Colony Grounds"
+	icon_state = "rf_dunes"
+	is_resin_allowed = FALSE
 
 /area/kutjevo/exterior/runoff_dunes
 	name = "Kutjevo - Runoff Dunes"
@@ -170,6 +180,24 @@
 /area/kutjevo/interior/complex/med/locks
 	name = "Kutjevo Complex - Medical Stormlocks"
 	icon_state = "med1"
+
+/area/kutjevo/interior/complex/Northwest_Dorms
+	name = "Kutjevo Complex - Northwest Colony Dorms"
+	icon_state = "Colony_int"
+	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
+
+/area/kutjevo/interior/complex/Northwest_Flight_Control
+	name =  "Kutjevo Complex - Northwest Flight Control Room"
+	icon_state = "Colony_int"
+	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
+
+/area/kutjevo/interior/complex/Northwest_Security_Checkpoint
+	name = "Kutjevo Complex - Northwest Security Checkpoint"
+	icon_state = "Colony_int"
+	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
 
 //Out buildings + foremans
 /area/kutjevo/interior/power

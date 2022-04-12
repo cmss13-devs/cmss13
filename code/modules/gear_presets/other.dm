@@ -10,12 +10,13 @@
 	name = "Mutineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	faction = FACTION_MUTINEER
-
 /datum/equipment_preset/other/mutineer/load_status(mob/living/carbon/human/H)
 	. = ..()
-	H.faction = FACTION_MUTINEER
+	H.mob_flags |= MUTINEER
 	H.hud_set_squad()
+
+	to_chat(H, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
+	to_chat(H, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
 
 /datum/equipment_preset/other/mutineer/leader
 	name = "Mutineer Leader"
@@ -26,11 +27,8 @@
 		A.remove_from(H)
 
 	var/list/abilities = subtypesof(/datum/action/human_action/activable/mutineer)
-
-
 	for(var/type in abilities)
 		give_action(H, type)
-
 
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
@@ -64,64 +62,147 @@
 
 /datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
+	paygrade = "Freelancer Standard"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/freelancer
 
 /datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/H)
-
+	//generic clothing
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
-
+	//storage and specific stuff, they all get an ERT medpouch.
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 
+	load_freelancer_soldier(H)
+
+/datum/equipment_preset/other/freelancer/standard/proc/load_freelancer_soldier(mob/living/carbon/human/H)
+	var/percentage = rand(1, 100)
+	switch(percentage)
+		//most freelancers are rifleman, most others are breachers, some have HPRs.
+		if(1 to 66)
+			load_freelancer_rifleman(H)
+		if(67 to 85)
+			load_freelancer_shotgunner(H)
+		else
+			load_freelancer_machinegunner(H)
+
+/datum/equipment_preset/other/freelancer/standard/proc/load_freelancer_machinegunner(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	spawn_merc_weapon(H,1,6)
+	spawn_weapon(/obj/item/weapon/gun/rifle/lmg, /obj/item/ammo_magazine/rifle/lmg, H, 0, 5) //HPR mini-spec
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/holo_target, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/holo_target, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+
+/datum/equipment_preset/other/freelancer/standard/proc/load_freelancer_shotgunner(mob/living/carbon/human/H)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(shotgun_shells_8g), H, 0, 14) //shotgunner mini-spec
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/smokebomb, WEAR_IN_BACK)
+
+
+/datum/equipment_preset/other/freelancer/standard/proc/load_freelancer_rifleman(mob/living/carbon/human/H)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_R_STORE)
 	spawn_merc_weapon(H)
+	//backpack stuff
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
+	paygrade = "Freelancer Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Medic"
-
 	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/H)
+	var/shotgunner = FALSE
+	if(prob(50))
+		shotgunner = TRUE
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	else
+		var/obj/item/clothing/under/marine/veteran/freelancer/FREELANCER = new()
+		var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
+		FREELANCER.attach_accessory(H, W)
+		H.equip_to_slot_or_del(FREELANCER, WEAR_BODY)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+
+	load_freelancer_medic(H, shotgunner)
+
+/datum/equipment_preset/other/freelancer/medic/proc/load_freelancer_medic(mob/living/carbon/human/H, shotgunner)
+	if(shotgunner)
+		load_shotgunner_medic(H)
+	else
+		load_standard_medic(H)
+
+/datum/equipment_preset/other/freelancer/medic/proc/load_shotgunner_medic(mob/living/carbon/human/H)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BELT)
+	//stuff in backpack
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	//gun
+	spawn_merc_shotgun(H)
+
+/datum/equipment_preset/other/freelancer/medic/proc/load_standard_medic(mob/living/carbon/human/H, /obj/item/clothing/under/marine/veteran/freelancer/FREELANCER)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//stuff in backpack
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-
-	spawn_merc_weapon(H)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK) //Line is in vest.
+	spawn_merc_rifle(H)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
+	paygrade = "Freelancer Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA)
@@ -135,107 +216,285 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
-	spawn_merc_weapon(H,0,7)
-	spawn_merc_weapon(H,1)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/other/mercenary_heavy
-	name = "Mercenary (Heavy)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	idtype = /obj/item/card/id/centcom
-	assignment = "Mercenary Enforcer"
-	rank = "Mercenary"
-	skills = /datum/skills/mercenary
-	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/mercenary_heavy/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
-/datum/equipment_preset/other/mercenary_heavy/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-
-	spawn_merc_weapon(H,0,7)
-	spawn_merc_weapon(H,1)
+	spawn_weapon(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1, H, 0, 9)
+	spawn_merc_weapon(H,1,2)
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/mercenary_miner
-	name = "Mercenary (Miner)"
+/datum/equipment_preset/other/elite_merc
+	name = "Elite Mercenary"
+
+	assignment = "Elite Mercenary"
+	rank = "Mercenary"
+	idtype = /obj/item/card/id/centcom
+	faction = FACTION_MERCENARY
+
+/datum/equipment_preset/other/elite_merc/New()
+	. = ..()
+	access = get_all_accesses()
+
+/datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(70;MALE,30;FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance(H)
+	var/random_name
+	if(H.gender == MALE)
+		random_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
+		H.f_style = "5 O'clock Shadow"
+	else
+		random_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
+	H.change_real_name(H, random_name)
+	H.age = rand(20,45)
+	H.r_hair = rand(15,35)
+	H.g_hair = rand(15,35)
+	H.b_hair = rand(25,45)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/other/elite_merc/standard
+	name = "Elite Mercenary (Standard Miner)"
+	paygrade = "Elite Freelancer Standard"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
-	assignment = "Mercenary Worker"
+	assignment = "Mercenary Miner"
 	rank = "Mercenary"
-	skills = /datum/skills/mercenary
+	skills = /datum/skills/mercenary/elite
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/mercenary_miner/New()
+/datum/equipment_preset/other/elite_merc/standard/New()
 	. = ..()
 	access = get_antagonist_pmc_access()
 
-/datum/equipment_preset/other/mercenary_miner/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+/datum/equipment_preset/other/elite_merc/standard/load_gear(mob/living/carbon/human/H)
+	//TODO: add unique backpacks and satchels
+	//clothes
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles, WEAR_EYES)
+	//storage items, belt spawning is handled in the spawn elite weapon proc.
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_R_STORE)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/hefa, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+
+	spawn_merc_elite_weapon(H, 12, 50, 1)
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/mercenary_engineer
-	name = "Mercenary (Engineer)"
+/datum/equipment_preset/other/elite_merc/heavy
+	name = "Elite Mercenary (Heavy)"
+	paygrade = "Elite Freelancer Heavy"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary Heavy"
+	rank = "Mercenary"
+	skills = /datum/skills/mercenary/elite/heavy
+	faction = FACTION_MERCENARY
+
+/datum/equipment_preset/other/elite_merc/heavy/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/other/elite_merc/heavy/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+	//clothes
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/heavy, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles, WEAR_EYES)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(H), WEAR_IN_BACK)
+	//gun
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun(H), WEAR_J_STORE)
+
+
+//*****************************************************************************************************/
+/datum/equipment_preset/other/elite_merc/engineer
+	name = "Elite Mercenary (Engineer)"
+	paygrade = "Elite Freelancer Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
 	assignment = "Mercenary Engineer"
 	rank = "Mercenary"
-	skills = /datum/skills/mercenary
+	skills = /datum/skills/mercenary/elite/engineer
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/mercenary_engineer/New()
+/datum/equipment_preset/other/elite_merc/engineer/New()
 	. = ..()
 	access = get_antagonist_pmc_access()
 
-/datum/equipment_preset/other/mercenary_engineer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/other/elite_merc/engineer/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
+	//snowflake webbing
+	var/obj/item/clothing/under/marine/veteran/mercenary/support/SUPPORT = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	SUPPORT.attach_accessory(H, W)
+	W.hold.storage_slots = 7
+	H.equip_to_slot_or_del(SUPPORT, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/bicaridine, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/bicaridine, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/kelotane, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/kelotane, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tramadol, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tramadol, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency, WEAR_IN_ACCESSORY)
+	//clothes
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/engineer, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/support, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles, WEAR_EYES)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/elite_merc, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+	//gun
+	spawn_merc_elite_weapon(H, 9, 100, 0) //only shotguns
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/other/elite_merc/medic
+	name = "Elite Mercenary (Medic)"
+	paygrade = "Elite Freelancer Medic"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary Medic"
+	rank = "Mercenary"
+	skills = /datum/skills/mercenary/elite/medic
+	faction = FACTION_MERCENARY
+
+/datum/equipment_preset/other/elite_merc/medic/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/other/elite_merc/medic/load_gear(mob/living/carbon/human/H)
+	//webbing
+	var/obj/item/clothing/under/marine/veteran/mercenary/support/SUPPORT = new()
+	var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
+	SUPPORT.attach_accessory(H, W)
+	H.equip_to_slot_or_del(SUPPORT, WEAR_BODY)
+	//clothing
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/support, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/support, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/support, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK) //Line in vest.
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+	//gun
+	spawn_merc_elite_weapon(H, 7, 0, 0) //no shotguns
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/other/elite_merc/leader
+	name = "Elite Mercenary (Leader)"
+	paygrade = "Elite Freelancer Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary Warlord"
+	rank = "Mercenary"
+	skills = /datum/skills/mercenary/elite/leader
+	faction = FACTION_MERCENARY
+
+/datum/equipment_preset/other/elite_merc/leader/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/other/elite_merc/leader/load_gear(mob/living/carbon/human/H)
+	//clothes
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud, WEAR_EYES)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/upp, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/elite_merc, WEAR_IN_BACK)
+	//gun
+	spawn_merc_elite_weapon(H, 7, 25, 1) //lower shotgun chance, but not zero
 
 //*****************************************************************************************************/
 
@@ -400,9 +659,14 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
-/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H, client/mob_client)
+	var/obj/item/clothing/under/uniform = H.w_uniform
+	if(istype(uniform))
+		uniform.has_sensor = UNIFORM_HAS_SENSORS
+		uniform.sensor_faction = FACTION_COLONIST
 	H.job = "Zombie"
 	H.faction = faction
+	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
 	H.set_species("Human") // Set back, so that we can get our claws again
@@ -439,7 +703,9 @@
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
@@ -448,7 +714,7 @@
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -463,9 +729,10 @@
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
@@ -473,7 +740,7 @@
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -488,17 +755,18 @@
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -656,8 +924,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
 
-	H.hud_set_squad()
-
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
 
 /datum/equipment_preset/other/tank/load_status()
@@ -700,7 +966,5 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
-
-	H.hud_set_squad()
 
 //*****************************************************************************************************/

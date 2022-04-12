@@ -133,6 +133,11 @@ SUBSYSTEM_DEF(ticker)
 		setup_nightmare()
 	else
 		INVOKE_ASYNC(src, .proc/setup_start)
+
+	for(var/client/C in GLOB.admins)
+		remove_verb(C, roundstart_mod_verbs)
+	admin_verbs_mod -= roundstart_mod_verbs
+
 	return TRUE
 
 /// Request to start nightmare setup before moving on to regular setup
@@ -215,6 +220,9 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 	CHECK_TICK
 
+	// We need stats to track roundstart role distribution.
+	mode.setup_round_stats()
+
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
 		var/roles_to_roll = null
@@ -254,7 +262,6 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.initialize_emergency_calls()
 	mode.post_setup()
-	mode.setup_round_stats()
 
 	begin_game_recording()
 
@@ -410,7 +417,6 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-
 	QDEL_IN(player, 5)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
@@ -440,6 +446,8 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = player.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)] has less than 5 hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))

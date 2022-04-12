@@ -71,21 +71,21 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
 // is_ban DOES NOT MEAN THAT NOTE IS _THE_ BAN, IT MEANS THAT NOTE WAS CREATED FOR A BAN
-/datum/entity/player/proc/add_note(note_text, is_confidential, is_ban = FALSE, duration = null)
+/datum/entity/player/proc/add_note(note_text, is_confidential, note_category = NOTE_ADMIN, is_ban = FALSE, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
 		return FALSE
-
-	if (!AHOLD_IS_MOD(admin.admin_holder))
-		return FALSE
+	if(note_category == NOTE_ADMIN || is_confidential)
+		if (!AHOLD_IS_MOD(admin.admin_holder))
+			return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(CONFIG_GET(flag/duplicate_notes_to_file))
 		notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")
+		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
 
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
@@ -94,6 +94,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.text = note_text
 	note.date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	note.is_confidential = is_confidential
+	note.note_category = note_category
 	note.is_ban = is_ban
 	note.ban_time = duration
 	note.admin_rank = admin.admin_holder.rank
@@ -149,7 +150,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	message_staff("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
 	ban_unban_log_save("[admin.ckey] has banned [ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]")
 
-	add_note(ban_text, FALSE, TRUE, duration)
+	add_note(ban_text, FALSE, NOTE_ADMIN, TRUE, duration)
 
 	// since this is a timed ban, we need to update the ban
 	time_ban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
@@ -223,7 +224,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			jobban_keylist[old_rank][ckey] = ban_text
 			jobban_savebanfile()
 
-	add_note("Banned from [total_rank] - [ban_text]", FALSE, TRUE, duration) // it is ban related note
+	add_note("Banned from [total_rank] - [ban_text]", FALSE, NOTE_ADMIN, TRUE, duration) // it is ban related note
 
 	ban_unban_log_save("[key_name_admin(admin)] [duration_text] [ckey] from [total_rank]. reason: [ban_text]")
 	log_admin("[key_name(admin)] [duration_text] [ckey] from [total_rank]")

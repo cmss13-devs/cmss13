@@ -10,7 +10,7 @@
 	reagent_state = SOLID
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	color = "#664330" // rgb: 102, 67, 48
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
@@ -18,21 +18,25 @@
 	name = "Egg"
 	id = "egg"
 	description = "The contents of an egg. Salmonella not included."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/tofu
 	name = "Tofu"
 	id = "tofu"
 	description = "Meat substitute."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/cheese
 	name = "Cheese"
 	id = "cheese"
 	description = "This used to be milk."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat
 	name = "Meat Protein"
 	id = "meatprotein"
 	description = "Proteins found in various types of meat."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat/fish
 	name = "Fish Meat"
@@ -63,11 +67,13 @@
 	name = "Dough"
 	id = "dough"
 	description = "Wet flour."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/dough/bread
 	name = "Bread"
 	id = "bread"
 	description = "Cooked bread."
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/dough/noodles
 	name = "Noodles"

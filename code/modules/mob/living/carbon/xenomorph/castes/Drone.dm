@@ -16,7 +16,7 @@
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here seperated by commas
-	deevolves_to = "Larva"
+	deevolves_to = list("Larva")
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
@@ -56,7 +56,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/activable/transfer_plasma //fourth macro
+		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

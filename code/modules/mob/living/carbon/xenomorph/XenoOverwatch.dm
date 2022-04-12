@@ -61,8 +61,7 @@
 // Third var is only for custom event handlers for OW hud indicators, currently only used for the Queen icon
 // If you use it, be sure to manually specify the second var, even if its the default value.
 /mob/living/carbon/Xenomorph/proc/overwatch(mob/living/carbon/Xenomorph/targetXeno, stop_overwatch = FALSE, movement_event_handler = /datum/event_handler/xeno_overwatch_onmovement)
-
-	if (stop_overwatch)
+	if(stop_overwatch)
 		var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 		observed_xeno = null
 
@@ -71,8 +70,6 @@
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
 			oldXeno.hud_set_queen_overwatch()
-
-
 	else
 		if(!hive)
 			return
@@ -81,7 +78,7 @@
 			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 			return
 
-		if (targetXeno == src)
+		if(targetXeno == src)
 			to_chat(src, SPAN_XENOWARNING("You can't watch yourself!"))
 			return
 
@@ -89,15 +86,15 @@
 			to_chat(src, SPAN_XENOWARNING("Your target's psychic connection is cut off!"))
 			return
 
-		if (observed_xeno && targetXeno && observed_xeno == targetXeno)
+		if(observed_xeno && targetXeno && observed_xeno == targetXeno)
+			if(istype(targetXeno, /obj/effect/alien/resin/marker))
+				to_chat(src, SPAN_XENOWARNING("You are already watching that mark!"))
+				return
 			to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
 			return
 
-		if (caste_type != XENO_CASTE_QUEEN && is_zoomed)
+		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
 			zoom_out()
-
-
-
 
 		if(observed_xeno)
 			var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
@@ -160,6 +157,26 @@
 				oldXeno.hud_set_queen_overwatch()
 			if (xenoTarget && !QDELETED(xenoTarget))
 				xenoTarget.hud_set_queen_overwatch()
+	if(href_list["overwatch"])
+		var/input = href_list["target"]
+		var/obj/effect/alien/resin/marker/target = locate(input)
+		if(!istype(target, /obj/effect/alien/resin/marker)|| !target.loc)
+			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			return
+		else
+			to_chat(src, SPAN_XENONOTICE("You psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			overwatch(target)
+	if(href_list["track"])
+		var/input2 = href_list["target"]
+		var/obj/effect/alien/resin/marker/target2 = locate(input2)
+		if(!istype(target2, /obj/effect/alien/resin/marker) || !target2.loc)
+			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			return
+		else
+			start_tracking_resin_mark(target2)
+	if(href_list["evolve"])
+		Evolve()
+
 
 	..()
 

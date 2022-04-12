@@ -24,6 +24,7 @@
 	var/max_inaccuracy = 6 //what's the max deviation allowed when the ammo is no longer guided by a laser.
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/source_mob //who fired it
+	var/combat_equipment = TRUE
 
 
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
@@ -256,6 +257,22 @@
 	impact.ceiling_debris_check(3)
 	spawn(5)
 		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //Insane fall off combined with insane damage makes the Keeper useful for single targets, but very bad against multiple.
+		qdel(src)
+
+/obj/structure/ship_ammo/rocket/harpoon
+	name = "\improper AGM-84 'Harpoon'"
+	desc = "The AGM-84 Harpoon is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals."
+	icon_state = "harpoon"
+	ammo_id = "s"
+	travelling_time = 50
+	point_cost = 300
+	fire_mission_delay = 4
+
+//Looks kinda OP but all it can actually do is just to blow windows and some of other things out, cant do much damage.
+/obj/structure/ship_ammo/rocket/harpoon/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	spawn(5)
+		cell_explosion(impact, 150, 16, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
 		qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm

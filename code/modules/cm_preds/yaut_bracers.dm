@@ -698,7 +698,7 @@
 		if(isYautja(comrade) && comrade.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = comrade.gloves
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this Yautja into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || alert("Are you sure you want to send this [comrade.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
@@ -710,7 +710,7 @@
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
 						message_all_yautja("[M] has triggered [comrade]'s bracer's self-destruction sequence.")
 			else
-				to_chat(M, SPAN_WARNING("Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b>"))
+				to_chat(M, SPAN_WARNING("<b>This [comrade.species] does not have a bracer attached.</b>"))
 			return
 
 	if(M.gloves != src && !forced)
@@ -949,7 +949,9 @@
 			. = activate_random_verb()
 			return
 
-	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.","Translator","") as text)
+	usr.set_typing_indicator(TRUE, "translator")
+	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
+	usr.set_typing_indicator(FALSE, "translator")
 	if(!msg || !usr.client)
 		return
 
@@ -958,9 +960,16 @@
 
 	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
+	var/list/heard = get_mobs_in_view(7, usr)
+	for(var/mob/M in heard)
+		if(M.ear_deaf)
+			heard -= M
+
+	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
+			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")
@@ -969,10 +978,16 @@
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
 
-	for(var/mob/Q as anything in hearers(usr))
+	usr.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
+
+	var/mob/M = usr
+	var/voice_name = "A strange voice"
+	if(M.name == M.real_name)
+		voice_name = "<b>[M.name]</b>"
+	for(var/mob/Q as anything in heard)
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("A strange voice says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

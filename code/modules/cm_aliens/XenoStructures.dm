@@ -234,6 +234,89 @@
 		return
 
 
+//xeno marker :0)
+/obj/effect/alien/resin/marker
+	name = "Resin Mark"
+	desc = "Something has made its mark on the world, and there it is..."
+	icon = 'icons/mob/hud/xeno_markers.dmi'
+	icon_state = "marker_nub"
+	health = HEALTH_RESIN_XENO_SPIKE
+	var/list/xenos_tracking = list()
+	var/datum/xeno_mark_define/mark_meaning = null
+	var/image/seenMeaning //this needs to be a static image because it needs to be dynamically added/removed from xenos' huds as resin marks are created/destroyed
+	var/datum/hivenumber = null
+	var/createdby = null
+
+	//scuffed variables so the overwatch code doesnt have a fit
+	var/interference = 0
+	var/stat = null
+
+/obj/effect/alien/resin/marker/Initialize(mapload, mob/builder)
+	. = ..()
+	if(!isXeno(builder))
+		return
+
+	var/mob/living/carbon/Xenomorph/X = builder
+
+	X.built_structures |= src
+	createdby = X.nicknumber
+	mark_meaning = new X.selected_mark
+	seenMeaning =  image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
+	seenMeaning.plane = ABOVE_HUD_PLANE
+	hivenumber = X.hivenumber
+	X.hive.resin_marks += src
+
+	X.hive.mark_ui.update_all_data()
+
+	for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
+		XX.hud_set_marks()		//this should be a hud thing, but that code is too confusing so I am doing it here
+
+	addtimer(CALLBACK(src, .proc/check_for_weeds), 30 SECONDS, TIMER_UNIQUE)
+
+/obj/effect/alien/resin/marker/Destroy()
+	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
+
+	builder_hive.resin_marks -= src
+
+	for(var/mob/living/carbon/Xenomorph/XX in builder_hive.totalXenos)
+		XX.built_structures -= src
+		if(!XX.client)
+			continue
+		XX.client.images -= seenMeaning		 //this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.hive.mark_ui.update_all_data()
+
+	for(var/mob/living/carbon/Xenomorph/X in xenos_tracking) //no floating references :0)
+		X.stop_tracking_resin_mark(TRUE)
+	. = ..()
+
+/obj/effect/alien/resin/marker/proc/check_for_weeds()
+	var/turf/T = get_turf(src)
+	for(var/i in T.contents)
+		if(istype(i, /obj/effect/alien/weeds))
+			addtimer(CALLBACK(src, .proc/check_for_weeds), 30 SECONDS, TIMER_UNIQUE)
+			return
+	qdel(src)
+
+/obj/effect/alien/resin/marker/examine(mob/user)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno_createdby
+	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
+	for(var/mob/living/carbon/Xenomorph/X in builder_hive.totalXenos)
+		if(X.nicknumber == createdby)
+			xeno_createdby = X
+	if(isXeno(user) || isobserver(user))
+		to_chat(user, "[mark_meaning.desc], ordered by [xeno_createdby.name]")
+
+/obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(M.hive_pos == 1 || M.nicknumber == createdby)
+		. = ..()
+	else
+		return
+
+/obj/effect/alien/resin/marker/proc/hud_set_queen_overwatch()
+	//the stupidest way around feeding effects in as mobs to overwatch() lmao
+	return
+
 //Resin Doors
 /obj/structure/mineral_door/resin
 	name = "resin door"
@@ -699,7 +782,7 @@
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 	dangerous = TRUE
 	rebounds = FALSE

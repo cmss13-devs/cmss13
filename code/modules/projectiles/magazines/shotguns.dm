@@ -121,9 +121,24 @@ also doesn't really matter. You can only reload them with handfuls.
 Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, etc
 */
 
+var/list/shotgun_shells_8g = list(
+	/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
+	)
+
+var/list/shotgun_shells_12g = list(
+	/obj/item/ammo_magazine/handful/shotgun/slug,
+	/obj/item/ammo_magazine/handful/shotgun/buckshot,
+	/obj/item/ammo_magazine/handful/shotgun/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/incendiary,
+	/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
+	)
+
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"
-	icon_state = "slug_shell_5"
+	icon_state = "slug_shell"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 5
@@ -136,13 +151,13 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
 	name = "handful of incendiary slugs (12g)"
-	icon_state = "incendiary_slug_5"
+	icon_state = "incendiary_slug"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
-	name = "handful of buckshot shells (12g)"
-	icon_state = "buckshot_shell_5"
+	name = "handful of shotgun buckshot shells (12g)"
+	icon_state = "buckshot_shell"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
@@ -159,16 +174,20 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 	handful_state = "shell_greyscale" //unneeded
 
 /obj/item/ammo_magazine/handful/shotgun/flechette
-	name = "handful of flechette shells (12g)"
-	icon_state = "flechette_shell_5"
+	name = "handful of shotgun flechette shells (12g)"
+	icon_state = "flechette_shell"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag
 	name = "handful of beanbag slugs (12g)"
-	icon_state = "beanbag_slug_5"
+	icon_state = "beanbag_slug"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
+	name = "handful of beanbag slugs (20g)"
+	caliber = "20g"
 
 //updates on init
 /obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()

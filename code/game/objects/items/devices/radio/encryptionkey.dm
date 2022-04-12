@@ -23,10 +23,10 @@
 	channels = list("Almayer" = 1)
 	abstract = TRUE
 
-/obj/item/device/encryptionkey/public_civ
-	name = "Civillian Radio Encryption Key"
+/obj/item/device/encryptionkey/colony
+	name = "Colony Radio Encryption Key"
 	icon_state = "stripped_key"
-	channels = list("Common" = 1)
+	channels = list("Colony" = 1)
 
 /obj/item/device/encryptionkey/ai_integrated
 	name = "AI Integrated Encryption Key"
@@ -133,6 +133,11 @@
 	icon_state = "jtac_key"
 	channels = list("Tactics" = 1)
 
+/obj/item/device/encryptionkey/cct
+	name = "\improper CCT Radio Encryption Key"
+	icon_state = "jtac_key"
+	channels = list("CCT" = 1)
+
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"
 	icon_state = "sl_key"
@@ -180,9 +185,9 @@
 	channels = list("Response Team" = 1, "Command" = 1, "MedSci" = 1, "Engi" = 1, "WY" = 1)
 
 /obj/item/device/encryptionkey/dutch
-	name = "\improper Colonist Radio Encryption Key"
+	name = "\improper Dutch's Dozen Radio Encryption Key"
 	icon_state = "stripped_key"
-	channels = list("Colonist" = 1)
+	channels = list("DD" = 1)
 
 /obj/item/device/encryptionkey/PMC
 	name = "\improper Weyland-Yutani PMC Radio Encryption Key"

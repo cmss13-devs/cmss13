@@ -17,6 +17,10 @@
 <b>Integrity:</b> Implant will be degraded by the body's immune system and thus occasionally malfunction."}
 	return dat
 
+/obj/item/implant/neurostim/Initialize()
+	. = ..()
+	flags_atom |= USES_HEARING
+
 /obj/item/implant/neurostim/hear_talk(mob/M as mob, msg)
 	hear(msg)
 	return

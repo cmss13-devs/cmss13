@@ -13,6 +13,7 @@
 	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
 
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -72,6 +73,7 @@
 	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"
@@ -184,3 +186,19 @@
 /area/shuttle/distress/arrive_s_hangar
 	name = "\improper Distress Shuttle"
 	icon_state = "away3"
+
+/area/shuttle/distress/start_small
+	name = "\improper VIP Shuttle"
+	icon_state = "away3"
+
+/area/shuttle/distress/transit_small
+	name = "\improper VIP Shuttle Transit"
+	icon_state = "away2"
+
+/area/shuttle/distress/arrive_n_engi
+	name = "\improper VIP Shuttle"
+	icon_state = "away"
+
+/area/shuttle/distress/arrive_s_engi
+	name = "\improper VIP Shuttle"
+	icon_state = "away2"

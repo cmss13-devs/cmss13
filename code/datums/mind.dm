@@ -58,6 +58,8 @@
 			player_entity = setup_player_entity(ckey)
 
 	new_character.refresh_huds(current)					//inherit the HUDs from the old body
+	new_character.aghosted = FALSE						//reset aghost and away timer
+	new_character.away_timer = 0
 
 
 /datum/mind/proc/store_memory(new_text)

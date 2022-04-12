@@ -87,7 +87,11 @@
 		return ret
 
 	if(blood_color && blood_overlay_type)
-		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
+		var/blood_icon = 'icons/effects/blood.dmi'
+		if(ishuman(user_mob))
+			var/mob/living/carbon/human/H = user_mob
+			blood_icon = H.species.blood_mask
+		var/image/bloodsies = overlay_image(blood_icon, "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
 		ret.overlays += bloodsies
 
 	if(LAZYLEN(accessories))
@@ -217,7 +221,7 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
-	var/hide_prints = FALSE 
+	var/hide_prints = FALSE
 
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
@@ -380,6 +384,20 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && equip_sounds.len)
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && LAZYLEN(equip_sounds))
 		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 	..()
+
+/obj/item/clothing/proc/get_pockets()
+	var/obj/item/clothing/accessory/storage/S = locate() in accessories
+	if(S)
+		return S.hold
+	return null
+
+/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
+	return ..()

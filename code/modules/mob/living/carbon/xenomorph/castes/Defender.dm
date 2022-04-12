@@ -14,7 +14,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolves_to = list(XENO_CASTE_WARRIOR)
-	deevolves_to = "Larva"
+	deevolves_to = list("Larva")
 	can_vent_crawl = 0
 
 	tackle_min = 2
@@ -38,7 +38,7 @@
 		/datum/action/xeno_action/onclick/toggle_crest,
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
-		/datum/action/xeno_action/activable/fortify
+		/datum/action/xeno_action/activable/fortify,
 	)
 	mutation_type = DEFENDER_NORMAL
 

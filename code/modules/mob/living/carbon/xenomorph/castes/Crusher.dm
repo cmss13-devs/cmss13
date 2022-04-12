@@ -20,7 +20,7 @@
 	tackle_chance = 25
 
 	evolution_allowed = FALSE
-	deevolves_to = XENO_CASTE_WARRIOR
+	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
 /mob/living/carbon/Xenomorph/Crusher
@@ -50,7 +50,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
-		/datum/action/xeno_action/onclick/crusher_shield
+		/datum/action/xeno_action/onclick/crusher_shield,
 	)
 
 	mutation_type = CRUSHER_NORMAL

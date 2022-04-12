@@ -74,6 +74,7 @@
 
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
+	var/blocks_on_back = TRUE
 
 /obj/item/weapon/shield/riot/IsShield()
 	return 1

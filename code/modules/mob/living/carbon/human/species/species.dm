@@ -103,6 +103,8 @@
 	 /// Status traits to give to the mob.
 	var/list/mob_inherent_traits
 
+	var/ignores_stripdrag_flag = FALSE
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()
@@ -308,6 +310,8 @@
 */
 
 /datum/species/proc/handle_dead_death(var/mob/living/carbon/human/H, var/gibbed)
+
+/datum/species/proc/handle_cryo(var/mob/living/carbon/human/H)
 
 /datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.

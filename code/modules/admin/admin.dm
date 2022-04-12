@@ -37,6 +37,15 @@
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
+/proc/msg_sea(var/msg, var/nosound = FALSE) //Only used for newplayer ticker message, hence no logging
+	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
+	for(var/client/C in GLOB.admins)
+		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
+			to_chat(C, msg)
+			if(C.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
+				sound_to(C, 'sound/effects/mhelp.ogg')
+
+
 /proc/msg_admin_ff(var/text, var/alive = TRUE)
 	var/rendered
 	if(alive)
@@ -66,26 +75,46 @@
 	if(!infos || !infos.len) return 0
 	else return 1
 
-/datum/admins/proc/player_notes_copy(var/key as text)
+/datum/admins/proc/player_notes_all(var/key as text)
 	set category = null
-	set name = "Player Notes Copy"
+	set name = "Player Record"
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
+
 	var/dat = "<html>"
 	dat += "<body>"
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
 	for(var/datum/view_record/note_view/N in NL)
-		if(N.is_confidential)
-			continue
-		var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
-		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"
+		var/admin_ckey = N.admin_ckey
+		var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+		var/color = "#008800"
+		if(N.is_ban)
+			var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
+			color = "#880000" //Removed confidential check because we can't make confidential bans
+			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+		else
+			if(N.is_confidential)
+				color = "#AA0055"
+			else if(N.note_category == NOTE_MERIT)
+				color = "#9e3dff"
+			else if(N.note_category == NOTE_COMMANDER)
+				color = "#324da5"
+			else if(N.note_category == NOTE_SYNTHETIC)
+				color = "#39e7a4"
+			else if(N.note_category == NOTE_YAUTJA)
+				color = "#114e11"
 
+			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
+			dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+
+		dat += "<br><br>"
 	dat += "</body></html>"
 
-	show_browser(usr, dat, "Copying notes for [key]", "notescopy", "size=480x480")
+	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
 
 
 /datum/admins/proc/Jobbans()

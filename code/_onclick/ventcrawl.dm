@@ -66,6 +66,9 @@
 		to_chat(src, SPAN_WARNING("This vent is closed off, you cannot climb through it."))
 		return
 
+	if(!ventcrawl_carry())
+		return
+
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in vent_found.loc
 	if(W)
 		var/mob/living/carbon/Xenomorph/X = src

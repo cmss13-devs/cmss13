@@ -25,6 +25,14 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 
+/obj/structure/machinery/computer/overwatch/Initialize()
+	. = ..()
+	SSmapview.map_machines += src
+
+/obj/structure/machinery/computer/overwatch/Destroy()
+	SSmapview.map_machines -= src
+	return ..()
+
 /obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
@@ -712,8 +720,7 @@
 		H.comm_title = "SL"
 	else //an acting SL
 		H.comm_title = "aSL"
-	if(H.skills)
-		H.skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.skills.get_skill_level(SKILL_LEADERSHIP)))
+	ADD_TRAIT(H, TRAIT_LEADERSHIP, TRAIT_SOURCE_SQUAD_LEADER)
 
 	var/obj/item/device/radio/headset/almayer/marine/R = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 	if(R)
@@ -815,7 +822,7 @@
 			if(new_squad.num_smartgun == new_squad.max_smartgun)
 				no_place = TRUE
 		if(JOB_SQUAD_RTO)
-			if(new_squad.max_rto >= new_squad.max_rto)
+			if(new_squad.num_rto >= new_squad.max_rto)
 				no_place = TRUE
 
 	if(no_place)
@@ -855,18 +862,20 @@
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 
-	var/area/A = get_area(T)
+	if(isnull(T) || istype(T, /turf/open/space))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
+
 	if(protected_by_pylon(TURF_PROTECTION_OB, T))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
 		return
+
+	var/area/A = get_area(T)
 
 	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
-	if(istype(T, /turf/open/space))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
-		return
 
 	//All set, let's do this.
 	busy = 1
@@ -890,8 +899,7 @@
 		return
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
-	for(var/mob/dead/observer/g as anything in GLOB.observer_list)
-		to_chat(g, FONT_SIZE_LARGE(SPAN_DEADSAY("\A [ob_name] targeting [A.name] has been fired! (<a href='?src=\ref[g];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")))
+	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
 	message_staff(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 

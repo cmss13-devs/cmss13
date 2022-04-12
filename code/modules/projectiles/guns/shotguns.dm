@@ -271,10 +271,12 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
+	name = "\improper MK221 riot shotgun"
 	icon_state = "mp220"
 	item_state = "mp220"
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a steel blue finish to signify use in riot control. It has been modified to only fire 20G beanbags."
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
+	gauge = "20g"
 
 /obj/item/weapon/gun/shotgun/combat/guard
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Gaurds"
@@ -603,6 +605,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -818,6 +821,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		shoulder.fracture(100)
 		if(!(shoulder.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (shoulder.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
 			shoulder.status &= ~LIMB_SPLINTED
+			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
 			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()

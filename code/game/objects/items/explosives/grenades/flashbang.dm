@@ -10,12 +10,26 @@
 	var/skill_requirement = SKILL_POLICE_SKILLED
 
 	//ignores ship anti-grief system
-	has_iff = FALSE
+	antigrief_protection = FALSE
 
 	//doesn't deal damage to eyes and ears (for cluster)
 	var/no_damage = FALSE
-
 	var/strength = 50
+
+/obj/item/explosive/grenade/flashbang/Initialize()
+	if(type == /obj/item/explosive/grenade/flashbang) // ugly but we only want to change base level flashbangs
+		if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+			new /obj/item/explosive/grenade/flashbang/noskill(loc)
+			return INITIALIZE_HINT_QDEL
+		else if(SSticker.current_state < GAME_STATE_PLAYING)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_flashbang)
+	return ..()
+
+/obj/item/explosive/grenade/flashbang/proc/replace_flashbang()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		new /obj/item/explosive/grenade/flashbang/noskill(loc)
+		qdel(src)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
 /obj/item/explosive/grenade/flashbang/attack_self(mob/user)
 	if(active)
@@ -259,7 +273,7 @@
 			bang_effect = 4
 
 	else
-		bang_effect = 3
+		bang_effect = 2
 
 	switch(bang_effect)
 		if(1)

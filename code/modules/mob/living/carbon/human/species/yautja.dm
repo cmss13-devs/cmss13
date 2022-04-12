@@ -79,6 +79,8 @@
 		WEAR_IN_BACK\
 	)
 
+	ignores_stripdrag_flag = TRUE
+
 /datum/species/yautja/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
@@ -126,6 +128,8 @@
 		M.hunter_data.hunter = null
 		M.hud_set_hunter()
 
+	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
+
 	// Notify all yautja so they start the gear recovery
 	message_all_yautja("[H.real_name] has died at \the [get_area_name(H)].")
 
@@ -134,6 +138,23 @@
 		message_all_yautja("[H.real_name]'s Thrall, [T.real_name] is now masterless.")
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
+
+/datum/species/yautja/handle_dead_death(var/mob/living/carbon/human/H, gibbed)
+	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
+
+/datum/species/yautja/handle_cryo(var/mob/living/carbon/human/H)
+	set_predator_status(H, "Cryo")
+
+/datum/species/yautja/proc/set_predator_status(var/mob/living/carbon/human/H, var/status = "Alive")
+	if(!H.persistent_ckey)
+		return
+	var/datum/game_mode/GM
+	if(SSticker?.mode)
+		GM = SSticker.mode
+		if(H.persistent_ckey in GM.predators)
+			GM.predators[H.persistent_ckey]["Status"] = status
+		else
+			GM.predators[H.persistent_ckey] = list("Name" = H.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()

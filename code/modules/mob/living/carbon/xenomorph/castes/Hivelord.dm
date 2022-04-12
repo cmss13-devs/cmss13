@@ -15,7 +15,7 @@
 
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
-	deevolves_to = XENO_CASTE_DRONE
+	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 2
@@ -60,9 +60,25 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
-		/datum/action/xeno_action/onclick/toggle_speed //fourth macro
+		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
 		)
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
+
+/mob/living/carbon/Xenomorph/Hivelord/update_icons()
+	if (stat == DEAD)
+		icon_state = "[mutation_type] Hivelord Dead"
+	else if (lying)
+		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			icon_state = "[mutation_type] Hivelord Sleeping"
+		else
+			icon_state = "[mutation_type] Hivelord Knocked Down"
+	else if (agility)
+		icon_state = "[mutation_type] Hivelord Agility"
+	else
+		icon_state = "[mutation_type] Hivelord Running"
+
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()

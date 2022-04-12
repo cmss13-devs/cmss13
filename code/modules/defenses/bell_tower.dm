@@ -1,5 +1,5 @@
-#define BELL_TOWER_RANGE 2
-#define BELL_TOWER_EFFECT 4
+#define BELL_TOWER_RANGE 4
+#define BELL_TOWER_EFFECT 6
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
@@ -7,6 +7,7 @@
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response."
 	var/list/tripwires_placed = list()
 	var/mob/last_mob_activated
+	var/bell_cooldown = 0 //cooldown between BING BONG BING BONGs
 	var/image/flick_image
 	handheld_type = /obj/item/defenses/handheld/bell_tower
 
@@ -100,16 +101,22 @@
 
 	if(linked_bell.last_mob_activated == M)
 		return
+
+	if(linked_bell.bell_cooldown > world.time)
+		return
+
 	linked_bell.last_mob_activated = M
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
-	to_chat(M, SPAN_DANGER("The frequence of the noise slows you down!"))
+	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
+	linked_bell.bell_cooldown = world.time + 15 //1.5s cooldown between RINGS
 
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
+	detector_range = 7 //yeah no offscreen bs with this
 
 	var/obj/structure/machinery/defenses/bell_tower/md/linked_tower
 
@@ -117,8 +124,9 @@
 	var/mob/living/to_apply = target
 
 	if(istype(to_apply))
-		to_apply.SetSuperslowed(1)
+		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
+		sound_to(to_apply, 'sound/items/detector.ogg')
 
 /obj/structure/machinery/defenses/bell_tower/md
 	name = "R-1NG motion detector tower"
@@ -164,7 +172,7 @@
 
 #undef BELL_TOWER_CLOAKER_ALPHA
 
-#define IMP_SLOWDOWN_TIME 1
+#define IMP_SLOWDOWN_TIME 3
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -174,7 +182,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	var/slowdown_amount = IMP_SLOWDOWN_TIME
-	var/area_range = BELL_TOWER_RANGE
+	var/area_range = 7 //stretches 3 tiles away in all directions
 
 
 /obj/item/storage/backpack/imp/equipped(mob/user, slot)
@@ -194,6 +202,7 @@
 		return
 
 	if(M.stat == DEAD || (!M.x && !M.y && !M.z))
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
@@ -201,8 +210,9 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/X in targets)
-		X.SetSuperslowed(BELL_TOWER_EFFECT)
-		playsound(X, 'sound/misc/bell.ogg', 50, 0, 50)
+		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
+		X.SetSuperslowed(slowdown_amount)
+		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)
 
 #undef IMP_SLOWDOWN_TIME
 #undef BELL_TOWER_RANGE

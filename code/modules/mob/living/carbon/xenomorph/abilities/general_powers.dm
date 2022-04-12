@@ -99,7 +99,6 @@
 	..()
 	return
 
-
 /datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
@@ -206,6 +205,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
@@ -221,6 +221,57 @@
 			return FALSE
 	return TRUE
 
+// leader Marker
+
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+	if(!..())
+		return FALSE
+
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state())
+		return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	var/turf/target_turf = get_turf(A)
+
+	if(target_turf.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return
+	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("You have no queen, the psychic link is gone!"))
+		return
+
+	var/tally = 0
+
+	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
+		if(MRK.createdby == X.nicknumber)
+			tally++
+	if(tally >= max_markers)
+		to_chat(X, SPAN_XENOWARNING("You have reached the maximum number of resin marks."))
+		var/list/promptlist = list("Yes", "No")
+		var/obj/effect/alien/resin/marker/Goober = null
+		var/promptuser = null
+		for(var/i=1, i<=length(X.hive.resin_marks))
+			Goober = X.hive.resin_marks[i]
+			if(Goober.createdby == X.nicknumber)
+				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist)
+				break
+			i++
+		if(promptuser == "No")
+			return
+		else if(promptuser == "Yes")
+			qdel(Goober)
+			if(X.make_marker(target_turf))
+				apply_cooldown()
+				return TRUE
+	else if(X.make_marker(target_turf))
+		apply_cooldown()
+		return TRUE
+
+
+
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -232,33 +283,56 @@
 
 /datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+	if(!istype(X))
 		return
+	X.emit_pheromones(emit_cost = plasma_cost)
 
-	if(X.current_aura)
-		X.current_aura = null
-		X.visible_message(SPAN_XENOWARNING("\The [X] stops emitting pheromones."), \
-		SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
-	else
+/mob/living/carbon/Xenomorph/proc/emit_pheromones(var/pheromone, var/emit_cost = 30)
+	if(!check_state(TRUE))
+		return
+	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
+		to_chat(src, SPAN_XENOWARNING("You are incapable of emitting pheromones!"))
+		return
+	if(!pheromone)
+		if(current_aura)
+			current_aura = null
+			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."), \
+			SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
+		else
+			if(!check_plasma(emit_cost))
+				to_chat(src, SPAN_XENOWARNING("You do not have enough plasma!"))
+				return
+			if(client.prefs && client.prefs.no_radials_preference)
+				pheromone = tgui_input_list(src, "Choose a pheromone", "Pheromone Menu", caste.aura_allowed + "help" + "cancel")
+				if(pheromone == "help")
+					to_chat(src, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
+					return
+				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+			else
+				var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
+				pheromone = show_radial_menu(src, src, phero_selections)
+				if(pheromone == "help")
+					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
+					return
+				if(!pheromone || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+	if(pheromone)
+		if(pheromone == current_aura)
+			to_chat(src, SPAN_XENOWARNING("You are already emitting [pheromone] pheromones!"))
+			return
+		if(!check_plasma(emit_cost))
+			to_chat(src, SPAN_XENOWARNING("You do not have enough plasma!"))
+			return
+		use_plasma(emit_cost)
+		current_aura = pheromone
+		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
+		SPAN_XENOWARNING("You begin to emit '[pheromone]' pheromones."), null, 5)
+		playsound(loc, "alien_drool", 25)
 
-		var/choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
-		if(choice == "help")
-			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
-			return
-		if(!choice || choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
-			return
-		if (!check_and_use_plasma_owner())
-			return
-		X.current_aura = choice
-		X.visible_message(SPAN_XENOWARNING("\The [X] begins to emit strange-smelling pheromones."), \
-		SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
-		playsound(X.loc, "alien_drool", 25)
-
-	if(isXenoQueen(X) && X.hive && X.hive.xeno_leader_list.len && X.anchored)
-		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)
+	if(isXenoQueen(src) && hive && hive.xeno_leader_list.len && anchored)
+		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
-
-
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -423,7 +497,7 @@
 
 	var/area/AR = get_area(T)
 
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2))
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || GLOB.interior_manager.interior_z == X.z)
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for creating a resin hole."))
 		return
 
@@ -458,6 +532,8 @@
 	if(!X.check_state())
 		return FALSE
 
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
@@ -477,7 +553,7 @@
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
-	if(GLOB.interior_manager.interior_z == X.z) 
+	if(GLOB.interior_manager.interior_z == X.z)
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 

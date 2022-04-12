@@ -1,6 +1,6 @@
 /client/proc/map_template_load()
 	set category = "Debug"
-	set name = "Map template - Place"
+	set name = "Map Template - Place"
 
 	var/datum/map_template/template
 
@@ -13,21 +13,23 @@
 	if(!T)
 		return
 
+	var/centered = alert(src, "Do you want this to be created from the center, or from the bottom left corner of your map?", "Spawn Position", "Center", "Bottom Left") == "Center" ? TRUE : FALSE
+	var/delete = alert(src, "Do you want to delete atoms in your load area?", "Atom Deletion", "Yes", "No") == "Yes" ? TRUE : FALSE
+
 	var/list/preview = list()
-	for(var/S in template.get_affected_turfs(T,centered = TRUE))
+	for(var/S in template.get_affected_turfs(T, centered))
 		var/image/item = image('icons/turf/overlays.dmi',S,"greenOverlay")
 		item.plane = ABOVE_LIGHTING_PLANE
 		preview += item
 	images += preview
 	if(alert(src,"Confirm location.","Template Confirm","Yes","No") == "Yes")
-		if(template.load(T, centered = TRUE))
+		if(template.load(T, centered, delete))
 			/*var/affected = template.get_affected_turfs(T, centered=TRUE)
 			for(var/AT in affected)
 				for(var/obj/docking_port/mobile/P in AT)
 					if(istype(P, /obj/docking_port/mobile))
 						template.post_load(P)
 						break*/
-
 			message_admins("<span class='adminnotice'>[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]</span>")
 		else
 			to_chat(src, "Failed to place map", confidential = TRUE)

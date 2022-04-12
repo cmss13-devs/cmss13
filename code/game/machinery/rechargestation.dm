@@ -19,6 +19,7 @@
 	. = ..()
 	build_icon()
 	update_icon()
+	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/recharge_station/Destroy()
 	if(occupant)

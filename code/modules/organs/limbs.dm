@@ -208,19 +208,81 @@
 
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		fracture()
-/*
-	Describes how limbs (body parts) of human mobs get damage applied.
-*/
-/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/damage_source = "dismemberment", var/mob/attack_source = null)
+/**
+ * Describes how limbs (body parts) of human mobs get damage applied.
+ *
+ * Any damage past the limb maximum health is transfered onto the next limb up the line, by
+ * calling this proc recursively. When a hand is too damaged it is passed to the arm,
+ * then to the chest and so on.
+ *
+ * Since parent limbs usually have more armor than their children, just passing the damage
+ * directly would allow the attacker to effectively bypass all of that armor. A lurker
+ * with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
+ * (20 armor) would do 20 damage to the hand, then would start doing the same 20 to
+ * the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+ * do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.
+ *
+ * Thus we have to apply armor damage reduction on each limb to which the damage is
+ * transfered. When this proc is called recursively for the first damage transfer to the
+ * parent, we set reduced_by variables to be the armor of the original limb hit. Then we
+ * compare the parent limb armor with the applicable reduced_by and if it's higher we reduce
+ * the damage by the difference between the two. Then we set reduced_by to
+ * the current(parent) limb armor value.
+ *
+ * This generally works ok because our armor calculations are mostly distributive in
+ * practice: reducing the damage by 20 and then by 10 would generally give the same result
+ * as reducing by 30. But this is not strictly true, the lower the damage is, the more it
+ * gets reduced. As an extreme example, a lurker doing his first 35 damage slash on a combat
+ * gloves covered marine hand would do 30 damage to the hand, transfer 5 to the arm and
+ * those 5 would get mitigated to 0 by the marine medium armor.
+ *
+ * One problem that still exists here, is that we currently don't have any code
+ * that allows us to increase the damage when the parent limb armor is lower than the
+ * initial child limb armor.
+ * One practical example where this would happen is when a human is wearing a set of armor
+ * that does not protect legs, like the UPP officer. If a xeno keeps slashing his foot,
+ * the damage would eventually get transfered to the leg, which has 0 armor. But this damage
+ * has been already reduced by the boot armor even before this proc got first called.
+ * So, assuming 35 damage slash, the leg would only be damaged by 21 even though it has
+ * 0 armor. Fixing this would require a new proc that would be able to unapply armor
+ * from the damage.
+ *
+ * Organ damage and bone break have their own armor damage reduction calculations. Since
+ * armor is already applied at least once outside of this proc, this means that damage is always
+ * reduced twice, hence the formulas for those looks so weird.
+ *
+ * Currently all brute damage is reduced by ARMOR_MELEE and GLOB.marine_melee,
+ * while burn damage is reduced by ARMOR_BIO and GLOB.marine_fire, which may not be correct
+ * for all cases.
+ */
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
+							list/forbidden_limbs = list(),
+							no_limb_loss, var/damage_source = "dismemberment",\
+							var/mob/attack_source = null,\
+							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
 	if(status & LIMB_DESTROYED)
 		return 0
 
+	var/previous_brute = brute_dam
+	var/previous_burn = burn_dam
+
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
 		is_ff = TRUE
+
+	if((brute > 0) && (brute_reduced_by >= 0))
+		var/brute_armor = owner.getarmor_organ(src, ARMOR_MELEE)
+		if(brute_armor > brute_reduced_by)
+			brute = armor_damage_reduction(GLOB.marine_melee, brute, brute_armor - brute_reduced_by)
+			brute_reduced_by = brute_armor
+	if((burn > 0) && (burn_reduced_by >= 0))
+		var/burn_armor = owner.getarmor_organ(src, ARMOR_BIO)
+		if(burn_armor > burn_reduced_by)
+			burn = armor_damage_reduction(GLOB.marine_fire, brute, burn_armor - burn_reduced_by)
+			burn_reduced_by = burn_armor
 
 	//High brute damage or sharp objects may damage internal organs
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
@@ -283,17 +345,21 @@
 			if(possible_points.len)
 				//And pass the damage around, but not the chance to cut the limb off.
 				var/obj/limb/target = pick(possible_points)
-				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
+				if(brute_reduced_by == -1)
+					brute_reduced_by = owner.getarmor_organ(src, ARMOR_MELEE)
+				if(burn_reduced_by == -1)
+					burn_reduced_by = owner.getarmor_organ(src, ARMOR_BIO)
+				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon,\
+					forbidden_limbs + src, TRUE, attack_source = attack_source,\
+					brute_reduced_by = brute_reduced_by, burn_reduced_by = burn_reduced_by)
 
-	// Check what the damage was before
-	var/old_brute_dam = brute_dam
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 
 	//If limb was damaged before and took enough damage, try to cut or tear it off
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
-	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
+	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
@@ -304,6 +370,7 @@
 				droplimb(0, 0, damage_source)
 				return
 
+	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()
 	update_icon()
 	start_processing()
@@ -351,6 +418,9 @@ This function completely restores a damaged organ to perfect condition.
 	// reset surgeries. Some duplication with general mob rejuvenate() but this also allows individual limbs to be rejuvenated, in theory.
 	reset_limb_surgeries()
 
+	// remove suture datum.
+	SEND_SIGNAL(src, COMSIG_LIMB_REMOVE_SUTURES)
+
 	// heal internal organs
 	for(var/datum/internal_organ/current_organ in internal_organs)
 		current_organ.rejuvenate()
@@ -395,6 +465,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
+		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
@@ -766,6 +837,9 @@ This function completely restores a damaged organ to perfect condition.
 			parent.update_damages()
 		update_damages()
 
+		//Remove suture datum.
+		SEND_SIGNAL(src, COMSIG_LIMB_REMOVE_SUTURES)
+
 		//we reset the surgery related variables unless this was done as part of a surgery.
 		if(!surgery_in_progress)
 			reset_limb_surgeries()
@@ -893,36 +967,73 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
 
-/obj/limb/proc/bandage()
-	var/rval = 0
+/**bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
+if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
+treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.**/
+/obj/limb/proc/bandage(treat_sutured)
 	remove_all_bleeding(TRUE)
-	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
-		rval |= !W.bandaged
-		W.bandaged = 1
-	owner.update_med_icon()
-	return rval
-
-/obj/limb/proc/is_bandaged()
-	var/not_bandaged = FALSE
-	for (var/datum/wound/W in wounds)
-		if (W.internal)
+	var/wounds_exist = FALSE
+	var/applied_bandage = FALSE
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type == BURN)
 			continue
-		not_bandaged |= !W.bandaged
-	return !not_bandaged
+		wounds_exist = TRUE
+		switch(W.bandaged & (WOUND_BANDAGED|WOUND_SUTURED))
+			if(WOUND_BANDAGED, (WOUND_BANDAGED|WOUND_SUTURED))
+				continue
+			if(WOUND_SUTURED)
+				if(!treat_sutured)
+					continue
+		applied_bandage = TRUE
+		W.bandaged |= WOUND_BANDAGED
+	owner.update_med_icon()
+	if(applied_bandage)
+		return WOUNDS_BANDAGED
+	else if(wounds_exist)
+		return WOUNDS_ALREADY_TREATED
 
-/obj/limb/proc/salve()
-	var/rval = 0
-	for(var/datum/wound/W in wounds)
-		rval |= !W.salved
-		W.salved = 1
-	return rval
+///Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.
+/obj/limb/proc/is_bandaged()
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type == BURN)
+			continue
+		if(W.bandaged)
+			. = TRUE
+		else
+			return FALSE
 
+/**salves burn wounds. Returns WOUNDS_BANDAGED if at least one wound was salved. Returns WOUNDS_ALREADY_TREATED if a relevant wound exists but none were treated.
+Skips wounds that are already salved.
+treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kits that heal damage directly.**/
+/obj/limb/proc/salve(treat_grafted)
+	var/burns_exist = FALSE
+	var/applied_salve = FALSE
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type != BURN)
+			continue
+		burns_exist = TRUE
+		switch(W.salved & (WOUND_BANDAGED|WOUND_SUTURED))
+			if(WOUND_BANDAGED, (WOUND_BANDAGED|WOUND_SUTURED))
+				continue
+			if(WOUND_SUTURED)
+				if(!treat_grafted)
+					continue
+		applied_salve = TRUE
+		W.salved |= WOUND_BANDAGED
+	if(applied_salve)
+		return WOUNDS_BANDAGED
+	else if(burns_exist)
+		return WOUNDS_ALREADY_TREATED
+
+///Checks for salveable wounds (type = BURN). Returns TRUE if all are salved, FALSE if not.
 /obj/limb/proc/is_salved()
-	var/not_salved = FALSE
-	for (var/datum/wound/W in wounds)
-		not_salved |= !W.salved
-	return !not_salved
+	for(var/datum/wound/W as anything in wounds)
+		if(W.internal || W.damage_type != BURN)
+			continue
+		if(W.salved)
+			. = TRUE
+		else
+			return FALSE
 
 /obj/limb/proc/fracture(var/bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT))
@@ -1062,12 +1173,12 @@ This function completely restores a damaged organ to perfect condition.
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			var/possessive = "[user == target ? "your" : "[target]'s"]"
-			var/possessive_their = "[user == target ? "their" : "[target]'s"]"
+			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
+			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
 				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
 				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-				SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
+				SPAN_NOTICE("[user] finishes applying [S] to [possessive_their] [display_name]."))
 			status |= LIMB_SPLINTED
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE
@@ -1239,7 +1350,10 @@ This function completely restores a damaged organ to perfect condition.
 		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
 		overlays += lips
 
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/mob/attack_source = null)
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null,\
+							list/forbidden_limbs = list(), no_limb_loss,\
+							var/mob/attack_source = null,\
+							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))

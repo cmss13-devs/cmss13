@@ -253,7 +253,7 @@
 	<BR><B>Head:</B> <A href='?src=\ref[src];item=[WEAR_HEAD]'>[(head ? head : "Nothing")]</A>
 	<BR><B>Shoes:</B> <A href='?src=\ref[src];item=[WEAR_FEET]'>[(shoes ? shoes : "Nothing")]</A>
 	<BR><B>Belt:</B> <A href='?src=\ref[src];item=[WEAR_WAIST]'>[(belt ? belt : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(belt, /obj/item/tank) && !internal) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR><B>Uniform:</B> <A href='?src=\ref[src];item=[WEAR_BODY]'>[(w_uniform ? w_uniform : "Nothing")]</A> [(suit) ? ((suit.has_sensor == 1) ? " <A href='?src=\ref[src];sensor=1'>Sensors</A>" : "") : null]
+	<BR><B>Uniform:</B> <A href='?src=\ref[src];item=[WEAR_BODY]'>[(w_uniform ? w_uniform : "Nothing")]</A> [(suit) ? ((suit.has_sensor == UNIFORM_HAS_SENSORS) ? " <A href='?src=\ref[src];sensor=1'>Sensors</A>" : "") : null]
 	<BR><B>(Exo)Suit:</B> <A href='?src=\ref[src];item=[WEAR_JACKET]'>[(wear_suit ? wear_suit : "Nothing")]</A>
 	<BR><B>Back:</B> <A href='?src=\ref[src];item=[WEAR_BACK]'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
 	<BR><B>ID:</B> <A href='?src=\ref[src];item=[WEAR_ID]'>[(wear_id ? wear_id : "Nothing")]</A>
@@ -420,7 +420,7 @@
 
 	if(href_list["internal"])
 
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' internals</font>")
 			if(internal)
@@ -451,13 +451,16 @@
 
 
 	if(href_list["splints"])
-		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
-			to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
-			return
-		remove_splints(usr)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
+			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+				return
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(usr)]</font>")
+			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(src)]'s' splints </font>")
+			remove_splints(usr)
 
 	if(href_list["tie"])
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 				return
@@ -483,7 +486,7 @@
 							U.remove_accessory(usr, A)
 
 	if(href_list["sensor"])
-		if(!usr.action_busy)
+		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
 				return
@@ -492,14 +495,14 @@
 			var/obj/item/clothing/under/U = w_uniform
 			if(QDELETED(U))
 				to_chat(usr, "You're not wearing a uniform!.")
-			else if(U.has_sensor >= 2)
+			else if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 				to_chat(usr, "The controls are locked.")
 			else
 				var/oldsens = U.has_sensor
 				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
 				if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
-						if(U.has_sensor >= 2)
+						if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 							to_chat(usr, "The controls are locked.")
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
@@ -1241,28 +1244,21 @@
 
 
 /mob/proc/update_sight()
-	return
+	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
 
 	sight &= ~BLIND // Never have blind on by default
 
-	if(stat == DEAD)
-		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-	else
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = species.darksight
-		see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
-		if(glasses)
-			process_glasses(glasses)
-		else
-			see_invisible = SEE_INVISIBLE_LIVING
+	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	see_in_dark = species.darksight
+	if(glasses)
+		process_glasses(glasses)
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
-
+	sync_lighting_plane_alpha()
 
 
 /mob/proc/update_tint()

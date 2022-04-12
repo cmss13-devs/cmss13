@@ -18,3 +18,14 @@
 #define MAX_KEYPRESS_AUTOKICK 75
 ///Length of held key buffer
 #define HELD_KEY_BUFFER_LENGTH 15
+
+///This note is used by staff for disciplinary record keeping.
+#define NOTE_ADMIN			1
+///This note is used by staff for positive record keeping.
+#define NOTE_MERIT			2
+///These notes are used by respective whitelist councils for record keeping.
+#define NOTE_COMMANDER		3
+#define NOTE_SYNTHETIC		4
+#define NOTE_YAUTJA			5
+///Note categories in text form, in order of their numerical #defines.
+var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja")

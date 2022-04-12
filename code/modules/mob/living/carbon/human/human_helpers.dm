@@ -261,6 +261,10 @@
 			var/obj/item/clothing/suit/storage/marine/S = wear_suit
 			if(S.turn_off_light(src))
 				light_off++
+		for(var/obj/item/clothing/head/helmet/marine/H in contents)
+			for(var/obj/item/attachable/flashlight/FL in H.pockets)
+				if(FL.activate_attachment(H, src, TRUE))
+					light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))
@@ -299,7 +303,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //1st gen synths change eye colour based on intent
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -398,7 +402,11 @@
 	return (item == wear_l_ear) || (item == wear_r_ear)
 
 /mob/living/carbon/human/can_be_pulled_by(var/mob/M)
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
+	var/ignores_stripdrag_flag = FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
 		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

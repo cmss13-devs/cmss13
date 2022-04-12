@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)
@@ -39,6 +39,18 @@
 
 /obj/item/clothing/shoes/marine/jungle/knife/New()
 	..()
+	stored_item = new /obj/item/attachable/bayonet(src)
+	update_icon()
+
+/obj/item/clothing/shoes/marine/monkey
+	name = "monkey combat boots"
+	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
+	icon_state = "monkey_shoes"
+	item_state = "monkey_shoes"
+
+// a monkey knife for a good monkey life
+/obj/item/clothing/shoes/marine/monkey/Initialize(mapload, ...)
+	. = ..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 

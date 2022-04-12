@@ -37,7 +37,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 100
-	
+
 	// Configurables
 	var/grab_range = 6
 	var/click_miss_cooldown = 15

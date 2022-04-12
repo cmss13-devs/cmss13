@@ -89,3 +89,4 @@ mv $dmepath.mdme.rsc $dmepath.rsc
 rm $dmepath.mdme
 
 exit $retval
+

@@ -137,16 +137,22 @@ var/global/players_preassigned = 0
 		while(++r <= P.len)
 			switch(ckey(P[r]))
 				if("yautja") 						role |= WHITELIST_YAUTJA
+				if("yautjalegacy") 					role |= WHITELIST_YAUTJA_LEGACY
 				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
+				if("yautjacouncillegacy")			role |= WHITELIST_YAUTJA_COUNCIL_LEGACY
 				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
 				if("commander") 					role |= WHITELIST_COMMANDER
 				if("commandercouncil")				role |= WHITELIST_COMMANDER_COUNCIL
+				if("commandercouncillegacy")		role |= WHITELIST_COMMANDER_COUNCIL_LEGACY
 				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
 				if("synthetic") 					role |= WHITELIST_SYNTHETIC
 				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
+				if("syntheticcouncillegacy")		role |= WHITELIST_SYNTHETIC_COUNCIL_LEGACY
 				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
+				if("advisor")						role |= WHITELIST_MENTOR
 				if("allgeneral")					role |= WHITELISTS_GENERAL
 				if("allcouncil")					role |= (WHITELISTS_COUNCIL|WHITELISTS_GENERAL)
+				if("alllegacycouncil")				role |= (WHITELISTS_LEGACY_COUNCIL|WHITELISTS_GENERAL)
 				if("everything", "allleader") 		role |= WHITELIST_EVERYTHING
 
 		W[ckey] = role
@@ -484,7 +490,7 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))
 		return 0
-	if(amount <= J.current_positions) //we should be able to slot everyone
+	if(amount < J.current_positions) //we should be able to slot everyone
 		return 0
 	J.total_positions = amount
 	J.total_positions_so_far = amount
@@ -740,6 +746,8 @@ var/global/players_preassigned = 0
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva
+		if(XENO_CASTE_PREDALIEN_LARVA)
+			M = /mob/living/carbon/Xenomorph/Larva/predalien
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)

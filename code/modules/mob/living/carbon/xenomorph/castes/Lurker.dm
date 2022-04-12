@@ -16,7 +16,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
-	deevolves_to = XENO_CASTE_RUNNER
+	deevolves_to = list(XENO_CASTE_RUNNER)
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list(XENO_CASTE_RAVAGER)
 
@@ -38,7 +38,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
-		/datum/action/xeno_action/onclick/lurker_assassinate
+		/datum/action/xeno_action/onclick/lurker_assassinate,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

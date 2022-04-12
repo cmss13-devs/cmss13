@@ -188,6 +188,10 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	brain_mob_type = /mob/living/brain/synth
 	braindeath_on_decap = 0
 
+/obj/item/limb/head/synth/Initialize()
+	. = ..()
+	flags_atom |= USES_HEARING
+
 //as ugly and painful as it is to write, the synth can still be revived, and mind needs to be updated if ghosted
 /obj/item/limb/head/synth/transfer_identity(var/mob/living/carbon/human/H)
 	..()

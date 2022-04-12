@@ -27,10 +27,8 @@
 		update_icons()
 		handle_luminosity()
 
-		if (behavior_delegate)
-			var/datum/behavior_delegate/MD = behavior_delegate
-			MD.on_life()
-
+		if(behavior_delegate)
+			behavior_delegate.on_life()
 
 		if(loc)
 			handle_environment()
@@ -47,7 +45,7 @@
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
-			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
+			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
@@ -167,10 +165,7 @@
 				layer = MOB_LAYER
 
 	else						//alive and not in crit! Turn on their vision.
-		if(isXenoBoiler(src))
-			see_in_dark = 20
-		else
-			see_in_dark = 8
+		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
@@ -430,6 +425,39 @@ updatehealth()
 			QL.icon_state = "trackon"
 		else
 			QL.icon_state = "trackondirect"
+
+/mob/living/carbon/Xenomorph/proc/mark_locator()
+	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
+		return
+
+	var/tracked_marker_z_level = tracked_marker.loc.z 		 //I was getting errors if the mark was deleted while this was operating,
+	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
+	var/area/A = get_area(loc)
+	var/area/MA = get_area(tracked_marker_turf)
+	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	ML.desc = client
+
+	ML.overlays.Cut()
+
+	if(tracked_marker_z_level != loc.z) //different z levels
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")
+		return
+	else if(tracked_marker_turf == get_turf(src)) //right on top of the marker
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "all_direction")
+		return
+	else if(A.fake_zlevel == MA.fake_zlevel) //normal tracking
+		ML.setDir(get_dir(src, tracked_marker_turf))
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
+	else //same z level, different fake z levels (decks of almayer)
+		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
+		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "no_direction")
 
 /mob/living/carbon/Xenomorph/updatehealth()
 	if(status_flags & GODMODE)

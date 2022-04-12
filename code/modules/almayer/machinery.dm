@@ -223,6 +223,11 @@
 
 	var/map_type = TACMAP_DEFAULT
 	var/map_base_type = TACMAP_BASE_OCCLUDED
+	var/map_additional_parameter = null
+
+/obj/structure/machinery/prop/almayer/CICmap/Initialize()
+	. = ..()
+	SSmapview.map_machines += src
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	for(var/mob/living/L in current_viewers)
@@ -230,6 +235,7 @@
 		close_browser(L,"marineminimap")
 		current_viewers -= L
 		continue
+	SSmapview.map_machines -= src
 	return ..()
 
 /obj/structure/machinery/prop/almayer/CICmap/examine(mob/living/user)
@@ -240,17 +246,15 @@
 			current_viewers -= user
 			return
 		current_viewers += user
-		if(!populated_mapview_type_updated[map_type])
-			overlay_tacmap(map_type, map_base_type)
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
-		user << browse_rsc(populated_mapview_types[map_type], "marine_minimap.png")
+		var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
+		user << browse_rsc(O, "marine_minimap.png")
 		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 		return
 	..()
 
 /obj/structure/machinery/prop/almayer/CICmap/proc/update_mapview()
-	if(!populated_mapview_type_updated[map_type])
-		overlay_tacmap(map_type, map_base_type)
+	var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
 	for(var/mob/living/L in current_viewers)
 		if(!powered() || get_dist(src,L) > 2)
 			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
@@ -258,7 +262,7 @@
 			current_viewers -= L
 			continue
 
-		L << browse_rsc(populated_mapview_types[map_type], "marine_minimap.png")
+		L << browse_rsc(O, "marine_minimap.png")
 		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 
@@ -270,6 +274,22 @@
 		to_chat(usr, SPAN_NOTICE("You stop looking at the map."))
 		close_browser(usr, "marineminimap")
 		current_viewers -= usr
+
+/obj/structure/machinery/prop/almayer/CICmap/upp
+	map_type = TACMAP_FACTION
+	map_base_type = TACMAP_BASE_OPEN
+	map_additional_parameter = FACTION_UPP
+
+/obj/structure/machinery/prop/almayer/CICmap/clf
+	map_type = TACMAP_FACTION
+	map_base_type = TACMAP_BASE_OPEN
+	map_additional_parameter = FACTION_CLF
+
+/obj/structure/machinery/prop/almayer/CICmap/pmc
+	map_type = TACMAP_FACTION
+	map_base_type = TACMAP_BASE_OPEN
+	map_additional_parameter = FACTION_PMC
+
 
 //Nonpower using props
 

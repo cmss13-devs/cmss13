@@ -14,6 +14,11 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 	animate(transform = matrix(240 * direction, MATRIX_ROTATE), time = 1)
 	animate(transform = null, time = 2, easing = SINE_EASING|EASE_OUT)
 
+/proc/animation_move_up_slightly(atom/A, loop_num = 0)
+	animate(A, transform = matrix(330, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
+	animate(transform = matrix(330, MATRIX_ROTATE), time = 1)
+	animate(transform = null, time = 2, easing = SINE_EASING|EASE_OUT)
+
 //Makes it look like the user threw something in the air (north) and then caught it.
 /proc/animation_toss_snatch(atom/A)
 	A.transform *= 0.75
@@ -231,3 +236,16 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 	animate(transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = 0, pixel_y = 0, time = 0)//ease it back
 
+/mob/living/carbon/human/proc/animation_rappel()
+	var/pre_rappel_alpha = alpha
+	alpha = 20
+	dir = WEST
+	canmove = FALSE
+	var/matrix/initial_matrix = matrix()
+	initial_matrix.Turn(45)
+	apply_transform(initial_matrix)
+	pixel_y = 8
+	var/matrix/reset_matrix = matrix()
+	animate(src, 3, transform = reset_matrix, pixel_y = 0, alpha = pre_rappel_alpha, flags = ANIMATION_PARALLEL)
+	sleep(3)
+	canmove = TRUE

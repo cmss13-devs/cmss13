@@ -278,15 +278,34 @@
 	if(sure == "Begin the Hunt")
 		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick", "The Fearsome Scimitars")
 		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor", "The Steadfast Shield")//, "The Clever Hologram")
-		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor") //Can only select them once each.
+		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor", "The Steadfast Shield") //Can only select them once each.
+	//the radial ones have to be in seperate lists in order for the images to not fuck with the no radials one
+		var/list/radial_melee = list("The Lumbering Glaive" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), "The Rending Chain-Whip" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),"The Piercing Hunting Sword" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),"The Cleaving War-Scythe" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), "The Adaptive Combi-Stick" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), "The Fearsome Scimitars" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
+		var/list/radial_other = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Purifying Smart-Disc" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"))
+		var/list/radial_restricted = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield")) //Can only select them once each.
 
-		var/msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", melee)
-		if(!msel) return //We don't want them to cancel out then get nothing.
-		var/mother_0 = tgui_input_list(usr, "Which secondary gear shall you take?","Item 1 (of 2)", other)
-		if(!mother_0) return
-		if(mother_0 in restricted) other -= mother_0
-		var/mother_1 = tgui_input_list(usr, "And the last piece of equipment?:","Item 2 (of 2)", other)
-		if(!mother_1) return
+		var/msel
+		var/mother_0
+		var/mother_1
+
+		if(src.client.prefs && src.client.prefs.no_radials_preference)
+			msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", melee)
+			if(!msel) return //We don't want them to cancel out then get nothing.
+			mother_0 = tgui_input_list(usr, "Which secondary gear shall you take?","Item 1 (of 2)", other)
+			if(!mother_0) return
+			if(mother_0 in restricted)
+				other -= mother_0
+			mother_1 = tgui_input_list(usr, "And the last piece of equipment?:","Item 2 (of 2)", other)
+			if(!mother_1) return
+		else
+			msel = show_radial_menu(src, src, radial_melee)
+			if(!msel) return //We don't want them to cancel out then get nothing.
+			mother_0 = show_radial_menu(src, src, radial_other)
+			if(!mother_0) return
+			if(mother_0 in radial_restricted)
+				radial_other -= mother_0
+			mother_1 = show_radial_menu(src, src, radial_other)
+			if(!mother_1) return
 
 		if(!istype(Y) || Y.upgrades) return //Tried to run it several times in the same loop. That's not happening.
 		Y.upgrades++ //Just means gear was purchased.

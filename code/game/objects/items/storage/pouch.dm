@@ -18,6 +18,17 @@
 		return TRUE //For the pistol pouch to know it's empty.
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
+
+	if(isnull(storage_slots))//uses weight instead of slots
+		var/fullness = 0
+		for(var/obj/item/C as anything in contents)
+			fullness += C.w_class
+		if(fullness <= max_storage_space * 0.5)
+			overlays += "+[icon_state]_half"
+		else
+			overlays += "+[icon_state]_full"
+		return
+
 	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
@@ -39,45 +50,50 @@
 	..()
 
 
-
-
 /obj/item/storage/pouch/general
 	name = "light general pouch"
-	desc = "A general-purpose pouch used to carry small items and ammo magazines."
+	desc = "A general-purpose pouch used to carry a small item, or two tiny ones."
 	icon_state = "small_drop"
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/sniper,
+	storage_flags = STORAGE_FLAGS_DEFAULT
+	max_w_class = SIZE_MEDIUM
+	cant_hold = list(	//Prevent inventory bloat
+		/obj/item/storage/firstaid,
+		/obj/item/storage/bible
 	)
+	storage_slots = null
+	max_storage_space = 2
 
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
-		dump_into(M,user)
-	else if(istype(W, /obj/item/storage/box/m94))
-		var/obj/item/storage/box/m94/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user)
+	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
+		dump_into(W, user)
 	else
 		return ..()
 
+/obj/item/storage/pouch/general/can_be_inserted(obj/item/W, stop_messages)
+	. = ..()
+	if(. && W.w_class == SIZE_MEDIUM)
+		for(var/obj/item/I in return_inv())
+			if(I.w_class >= SIZE_MEDIUM)
+				if(!stop_messages)
+					to_chat(usr, SPAN_NOTICE("[src] is already too bulky with [I]."))
+				return FALSE
+
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
-	storage_slots = 2
+	desc = "A general-purpose pouch used to carry a variety of differently sized items."
 	icon_state = "medium_drop"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_slots = null
+	max_storage_space = 4
 
 /obj/item/storage/pouch/general/large
 	name = "large general pouch"
-	storage_slots = 3
+	desc = "A general-purpose pouch used to carry more differently sized items."
 	icon_state = "large_drop"
-	storage_flags = STORAGE_FLAGS_POUCH
+	storage_slots = null
+	max_storage_space = 6
 
 /obj/item/storage/pouch/flamertank
 	name = "fuel tank strap pouch"
@@ -108,7 +124,7 @@
 	cant_hold = list()
 	icon_state = "bayonet"
 	storage_slots = 5
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
 	var/default_knife_type = /obj/item/weapon/melee/throwing_knife
@@ -157,6 +173,27 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/sheet/metal/large_stack(src)
+
+/obj/item/storage/pouch/survival/synth
+	name = "synth survival pouch"
+	desc = "An emergency pouch given to synthetics in the event of an emergency."
+	icon_state = "survival"
+	storage_slots = 5
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/device/flashlight,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/weldingtool,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/sheet/metal
+	)
+
+/obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
+	new /obj/item/device/flashlight(src)
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/sheet/metal/large_stack(src)
 
 /obj/item/storage/pouch/firstaid
@@ -221,8 +258,8 @@
 	icon_state = "pistol"
 	use_sound = null
 	max_w_class = SIZE_MEDIUM
-	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver, /obj/item/weapon/gun/flare)
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver,/obj/item/weapon/gun/flare)
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	flap = FALSE
 
 	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
@@ -268,12 +305,8 @@
 	if(current_gun)
 		playsound(src, drawSound, 15, TRUE)
 		gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
-		if(!istype(current_gun,/obj/item/weapon/gun/pistol))
-			gun_underlay.pixel_x = icon_x + 1
-			gun_underlay.pixel_y = icon_y + 3
-		else
-			gun_underlay.pixel_x = icon_x
-			gun_underlay.pixel_y = icon_y
+		gun_underlay.pixel_x = icon_x
+		gun_underlay.pixel_y = icon_y
 		gun_underlay.color = current_gun.color
 		underlays += gun_underlay
 	else
@@ -298,7 +331,7 @@
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet
 	icon_x = -6
-	icon_y = -0
+	icon_y = 0
 
 /obj/item/storage/pouch/pistol/command/Destroy()
 	binos = null
@@ -402,10 +435,6 @@
 	desc = "It can carry many magazines."
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
-
-/obj/item/storage/pouch/magazine/large/with_beanbags/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
 
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
@@ -539,6 +568,10 @@
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
+/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
 	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
@@ -593,6 +626,8 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
@@ -618,6 +653,8 @@
 		/obj/item/device/healthanalyzer,
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft
 	)
 
 /obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()
@@ -721,6 +758,13 @@
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
 
+/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+	var/obj/item/storage/firstaid/FA = locate() in contents
+	if(FA)
+		FA.open(user)
+		return
+	return ..()
+
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/storage/firstaid/regular(src)
@@ -754,6 +798,12 @@
 	. = ..()
 	inner.reagents.add_reagent("kelotane", inner.volume)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("oxycodone", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()

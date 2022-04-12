@@ -32,6 +32,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/last_ip
 	var/fps = 20
 	var/last_id
+	var/save_cooldown = 0	//5s cooldown between saving slots
+	var/reload_cooldown = 0	//5s cooldown between loading slots
 
 	//game-preferences
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
@@ -42,7 +44,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
-	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
@@ -84,7 +85,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 18						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
-	var/underwear = 1					//underwear type
+	var/underwear = "Briefs"			//underwear type
 	var/undershirt = 1					//undershirt type
 	var/backbag = 2						//backpack type
 	var/h_style = "Crewcut"				//Hair type
@@ -173,6 +174,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/hear_vox = TRUE
 
 	var/hide_statusbar
+
+	var/no_radials_preference = FALSE
 
 	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
 	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
@@ -358,11 +361,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<br><br>"
 
 	dat += "<h2><b><u>Marine Gear:</u></b></h2>"
-	if(gender == MALE)
-		dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</b></a><br>"
-	else
-		dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</b></a><br>"
-
+	dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear]</b></a><br>"
 	dat += "<b>Undershirt:</b> <a href='?_src_=prefs;preference=undershirt;task=input'><b>[undershirt_t[undershirt]]</b></a><br>"
 
 	dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
@@ -443,6 +442,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br><br>"
 	dat += "<b>Stylesheet</b>: <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 	dat += "<b>Hide Statusbar</b>: <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
+	dat += "<b>Prefer input drop down menus to radial menus, where possible</b>: <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
 	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 	dat += "</div>"
@@ -766,13 +766,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("general")
 					var/msg = input(usr,"Give a physical description of your character. This will be shown regardless of clothing.","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 					if(msg != null)
-						msg = copytext(msg, 1, 256)
+						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 						msg = html_encode(msg)
 					flavor_texts[href_list["task"]] = msg
 				else
 					var/msg = input(usr,"Set the flavor text for your [href_list["task"]].","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 					if(msg != null)
-						msg = copytext(msg, 1, 256)
+						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 						msg = html_encode(msg)
 					flavor_texts[href_list["task"]] = msg
 			SetFlavorText(user)
@@ -880,7 +880,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if ("f_style")
 					f_style = random_facial_hair_style(gender, species)
 				if ("underwear")
-					underwear = rand(1,underwear_m.len)
+					underwear = gender == MALE ? pick(underwear_m) : pick(underwear_f)
 					ShowChoices(user)
 				if ("undershirt")
 					undershirt = rand(1,undershirt_t.len)
@@ -954,7 +954,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -989,7 +989,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_YAUTJA_COUNCIL)
+					if(whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -1004,7 +1004,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("synth_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
-					if(whitelist_flags & WHITELIST_SYNTHETIC_COUNCIL)
+					if(whitelist_flags & (WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_SYNTHETIC_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
@@ -1173,21 +1173,18 @@ var/const/MAX_SAVE_SLOTS = 10
 						f_style = new_f_style
 
 				if("underwear")
-					var/list/underwear_options
-					if(gender == MALE)
-						underwear_options = underwear_m
-					else
-						underwear_options = underwear_f
-
+					var/list/underwear_options = gender == MALE ? underwear_m : underwear_f
+					var/old_gender = gender
 					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_options
+					if(old_gender != gender)
+						return
 					if(new_underwear)
-						underwear = underwear_options.Find(new_underwear)
+						underwear = new_underwear
 					ShowChoices(user)
 
 				if("undershirt")
 					var/list/undershirt_options
 					undershirt_options = undershirt_t
-
 					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt:", "Character Preference", undershirt_options)
 					if (new_undershirt)
 						undershirt = undershirt_options.Find(new_undershirt)
@@ -1320,7 +1317,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						gender = FEMALE
 					else
 						gender = MALE
-						underwear = 1
+					underwear = sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear))
 
 				if("disabilities")				//please note: current code only allows nearsightedness as a disability
 					disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
@@ -1360,6 +1357,9 @@ var/const/MAX_SAVE_SLOTS = 10
 					hide_statusbar = !hide_statusbar
 					if(hide_statusbar)
 						winset(owner, "atom_name", "text=\"\"")
+
+				if("no_radials_preference")
+					no_radials_preference = !no_radials_preference
 
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
@@ -1417,15 +1417,23 @@ var/const/MAX_SAVE_SLOTS = 10
 						toggle_prefs ^= flag_undo
 
 				if("save")
+					if(save_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You need to wait [round((save_cooldown-world.time)/10)] seconds before you can do that again."))
+						return
 					save_preferences()
 					save_character()
+					save_cooldown = world.time + 50
 					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
 
 				if("reload")
+					if(reload_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You need to wait [round((reload_cooldown-world.time)/10)] seconds before you can do that again."))
+						return
 					load_preferences()
 					load_character()
+					reload_cooldown = world.time + 50
 
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
@@ -1533,8 +1541,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				else if(status == "mechanical")
 					I.mechanize()
 
-	if(underwear > underwear_f.len || underwear < 1)
-		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+	sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	character.underwear = underwear
 
 	if(undershirt > undershirt_t.len || undershirt < 1)
@@ -1597,8 +1604,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				else if(status == "mechanical")
 					I.mechanize()
 
-	if(underwear > underwear_f.len || underwear < 1)
-		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+	sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	character.underwear = underwear
 
 	if(undershirt > undershirt_t.len || undershirt < 1)

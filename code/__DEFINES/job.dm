@@ -78,6 +78,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_STOWAWAY					"Stowaway"
 
 #define JOB_ADMIRAL						"USCM Admiral"
+#define JOB_GENERAL						"USCM General"
+#define JOB_B_GENERAL					"USCM Brigadier General"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
@@ -128,8 +130,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 //-------- PMC --------//
 #define JOB_PMC							"PMC Standard"
-#define JOB_PMC_ENGINEER				"PMC Mechanic"
-#define JOB_PMC_DOCTOR					"PMC Triage"
+#define JOB_PMC_ENGINEER				"PMC Corporate Technician"
+#define JOB_PMC_MEDIC					"PMC Corporate Medic"
+#define JOB_PMC_DOCTOR					"PMC Trauma Surgeon"
 #define JOB_PMC_INVESTIGATOR			"PMC Medical Investigator"
 #define JOB_PMC_ELITE					"PMC Elite"
 #define JOB_PMC_GUNNER					"PMC Support Weapons Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
@@ -140,6 +143,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_COMMANDO				"PMC Commando"
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
+#define JOB_PMC_DIRECTOR				"PMC Site Director"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
@@ -156,7 +160,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_MAY_OFFICER				"UPP Mayjor"
 #define JOB_UPP_KOL_OFFICER				"UPP Kolonel"
 
-#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER)
+#define JOB_UPP_COMBAT_SYNTH			"UPP Combat Synthetic"
+
+#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
 
 #define JOB_UPP_COMMANDO				"UPP Junior Kommando"
 #define JOB_UPP_COMMANDO_MEDIC			"UPP 2nd Kommando"
@@ -174,8 +180,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CLF_MEDIC					"CLF Field Medic"
 #define JOB_CLF_SPECIALIST				"CLF Field Specialist"
 #define JOB_CLF_LEADER					"CLF Cell Leader"
+#define JOB_CLF_COMMANDER				"CLF Cell Commander"
+#define JOB_CLF_SYNTH					"CLF Multipurpose Synthetic"
 
-#define CLF_JOB_LIST					list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
+#define CLF_JOB_LIST					list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH)
 
 //-------- RESS --------//
 #define JOB_RESS_REPRESENTATIVE			"RESS Representative"

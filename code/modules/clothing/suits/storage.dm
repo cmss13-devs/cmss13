@@ -8,6 +8,12 @@
 	pockets.storage_slots = storage_slots
 	pockets.max_w_class = SIZE_SMALL		//fit only small items
 	pockets.max_storage_space = 4
+	flags_atom |= USES_HEARING
+
+/obj/item/clothing/suit/storage/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
 
 /obj/item/clothing/suit/storage/attack_hand(mob/user, mods)
 	if(loc != user)

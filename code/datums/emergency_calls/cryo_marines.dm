@@ -13,16 +13,16 @@
 	shuttle_id = ""
 	var/leaders = 0
 
-/datum/emergency_call/cryo_squad/spawn_candidates(announce)
+/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc)
 	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
 	leaders = echo_squad.num_leaders
 	return ..()
 
-/datum/emergency_call/cryo_squad/create_member(datum/mind/M)
+/datum/emergency_call/cryo_squad/create_member(datum/mind/M, var/turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
-	var/turf/spawn_loc = get_spawn_point()
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 

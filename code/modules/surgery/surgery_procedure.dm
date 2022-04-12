@@ -83,7 +83,7 @@
 		to_chat(user, SPAN_WARNING("This operation is more complex than you're trained for!"))
 		return FALSE
 
-	if(target.pulledby.grab_level == GRAB_CARRY)
+	if(target.pulledby?.grab_level == GRAB_CARRY)
 		if(target.pulledby == user)
 			to_chat(user, SPAN_WARNING("You need to set [target] down before you can operate on \him!"))
 		else

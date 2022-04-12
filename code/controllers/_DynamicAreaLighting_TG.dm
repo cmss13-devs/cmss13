@@ -328,15 +328,17 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if(light <= 0)
 		light = 0
 		luminosity = 0
+	else
+		luminosity = 1
 	if(light > LIGHTING_STATES)
 		light = LIGHTING_STATES
-	luminosity = 1
 
 	if(lighting_overlay)
 		overlays -= lighting_overlay
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
+		lighting_overlay.plane = LIGHTING_PLANE
 	if (light < 6)
 		overlays.Add(lighting_overlay)
 
@@ -395,10 +397,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
 
-GLOBAL_DATUM_INIT(rain_effect, /obj/effect/weather_vfx_holder/rain, new)
-
 /area/proc/add_thunder()
 	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
+		underlays += GLOB.weather_rain_effect
 		for(var/turf/T in contents)
-			T.vis_contents += GLOB.rain_effect
 			T.update_lumcount(exterior_light)

@@ -286,15 +286,18 @@
 		if(user.drop_inv_item_to_loc(W, src))
 			coin = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			ui_interact(user)
 		return
 	else if(istype(W, /obj/item/card))
 		var/obj/item/card/I = W
 		scan_card(I)
+		ui_interact(user)
 		return
 	else if (istype(W, /obj/item/spacecash/ewallet))
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			ui_interact(user)
 		return
 
 	..()
@@ -508,14 +511,17 @@
 					else
 						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
 						src.currently_vending = R
+						ui_interact(usr)
 
 				else
 					src.currently_vending = R
+					ui_interact(usr)
 
 			return
 
 		else if (href_list["cancel_buying"])
 			src.currently_vending = null
+			ui_interact(usr)
 			return
 
 		else if ((href_list["cutwire"]) && (src.panel_open))
@@ -600,6 +606,8 @@
 /obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 
+	ui_interact(user)
+
 	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
 		if (icon_vend)
@@ -626,6 +634,7 @@
 	if(istype(A, /obj/item))
 		var/obj/item/I = A
 		stock(I, user)
+		ui_interact(user)
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
 	var/datum/data/vending_product/R //Let's try with a new datum.
@@ -646,6 +655,11 @@
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
 					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+					return
+			if(istype(item_to_stock,/obj/item/device/walkman))
+				var/obj/item/device/walkman/W = item_to_stock
+				if(W.tape)
+					to_chat(user,SPAN_WARNING("Remove the tape first!"))
 					return
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)

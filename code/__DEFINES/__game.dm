@@ -36,6 +36,7 @@
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
+#define MAP_RUNTIME "USS Runtime"
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -115,9 +116,6 @@
 #define FLASH_CORPSEREVIVE (1<<2)
 #define FLASH_ADMINPM      (1<<3)
 
-//toggles_ghost
-#define GHOST_DARKNESS     (1<<0)
-
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
@@ -125,8 +123,6 @@
 #define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM)
-
-#define TOGGLES_GHOST_DEFAULT (GHOST_DARKNESS)
 
 
 // Game Intents
@@ -369,7 +365,7 @@
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use
+#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
 #define CHAT_SAY_DELAY      2

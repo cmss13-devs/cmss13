@@ -18,8 +18,8 @@
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------
-/datum/emergency_call/death/create_member(datum/mind/M)
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/death/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
@@ -63,12 +63,12 @@
 	var/curr_operator_number = 1
 
 // DEATH SQUAD--------------------------------------------------------------------------------
-/datum/emergency_call/marsoc/create_member(datum/mind/M)
+/datum/emergency_call/marsoc/create_member(datum/mind/M, var/turf/override_spawn_loc)
 
 	if (!operator_team_designation)
 		operator_team_designation = pick(nato_phonetic_alphabet)
 
-	var/turf/spawn_loc = get_spawn_point()
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.

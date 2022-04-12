@@ -254,6 +254,110 @@
 /////////////////////////////////////////
 
 //Xeno acid smoke.
+
+/obj/effect/particle_effect/smoke/heal_smoke
+	name = "spore smoke"
+	time_to_live = 4
+	color = "#71ee96"
+	opacity = 0
+	anchored = 1
+	spread_speed = 7
+	smokeranking = SMOKE_RANK_HARMLESS
+
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/gas_damage = 0
+
+/obj/effect/particle_effect/smoke/heal_smoke/Initialize(mapload, amount, datum/cause_data/cause_data)
+	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
+	if (istype(X) && X.hivenumber)
+		hivenumber = X.hivenumber
+
+		set_hive_data(src, hivenumber)
+
+	. = ..()
+
+/obj/effect/particle_effect/smoke/heal_smoke/Crossed(mob/living/carbon/M as mob)
+	return
+
+/obj/effect/particle_effect/smoke/heal_smoke/affect(var/mob/living/carbon/M)
+	..()
+
+	if(isYautja(M))
+		return
+
+	if(M.stat == DEAD)
+		return
+
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
+		return
+
+	if(ishuman(M))
+		return
+
+	if(!M.ally_of_hivenumber(hivenumber))
+		return
+
+	if(isXeno(M))
+		var/mob/living/carbon/Xenomorph/X = M
+		to_chat(M, SPAN_DANGER("The spore cloud closes your wounds!"))
+		X.gain_health(100)
+
+
+/obj/effect/particle_effect/smoke/shield_smoke
+	name = "spore smoke"
+	time_to_live = 4
+	color = "#fcf700"
+	opacity = 1
+	anchored = 1
+	spread_speed = 7
+	smokeranking = SMOKE_RANK_HARMLESS
+
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/gas_damage = 0
+
+/obj/effect/particle_effect/smoke/shield_smoke/Initialize(mapload, amount, datum/cause_data/cause_data)
+	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
+	if (istype(X) && X.hivenumber)
+		hivenumber = X.hivenumber
+
+		set_hive_data(src, hivenumber)
+
+	. = ..()
+
+/obj/effect/particle_effect/smoke/shield_smoke/Crossed(mob/living/carbon/M as mob)
+	return
+
+/obj/effect/particle_effect/smoke/shield_smoke/affect(var/mob/living/carbon/M)
+	..()
+
+	if(isYautja(M))
+		return
+
+	if(M.stat == DEAD)
+		return
+
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
+		return
+
+	if(ishuman(M))
+		return
+
+	if(!M.ally_of_hivenumber(hivenumber))
+		return
+
+	if(isXeno(M))
+		var/mob/living/carbon/Xenomorph/X = M
+		var/overshield_amount = 50
+		var/shield_duration = 30 SECONDS
+		var/shield_decay = 10
+		to_chat(M, SPAN_DANGER("The spore cloud rejuveantes you!"))
+		X.SetKnockedout(0)
+		X.SetStunned(0)
+		X.SetKnockeddown(0)
+		X.SetDazed(0)
+		X.add_xeno_shield(overshield_amount*1, XENO_SHIELD_SOURCE_MENDER, duration = shield_duration, decay_amount_per_second = shield_decay)
+		X.ExtinguishMob()
+
 /obj/effect/particle_effect/smoke/xeno_burn
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
@@ -547,3 +651,9 @@
 		S.time_to_live = lifetime
 	if(S.amount)
 		S.spread_smoke(direction)
+
+/datum/effect_system/smoke_spread/xeno_heal_smoke
+	smoke_type = /obj/effect/particle_effect/smoke/heal_smoke
+
+/datum/effect_system/smoke_spread/xeno_shield_smoke
+	smoke_type = /obj/effect/particle_effect/smoke/shield_smoke

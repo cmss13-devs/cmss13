@@ -20,12 +20,10 @@
 		return
 	if(icon)
 		G.icon = icon
-	if(l_hand || r_hand)
-		G.item_icons = list()
-		if(l_hand)
-			G.item_icons += list("l_hand" = l_hand)
-		if(r_hand)
-			G.item_icons += list("r_hand" = r_hand)
+	if(l_hand)
+		LAZYSET(G.item_icons, WEAR_L_HAND, l_hand)
+	if(r_hand)
+		LAZYSET(G.item_icons, WEAR_R_HAND, r_hand)
 	if(icon_state)
 		G.icon_state = icon_state
 	if(base_gun_icon)

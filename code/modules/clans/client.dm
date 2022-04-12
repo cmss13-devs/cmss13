@@ -38,7 +38,7 @@
 
 /client/verb/view_clan_info()
 	set name = "View Clan Info"
-	set category = "OOC"
+	set category = "OOC.Records"
 
 	INVOKE_ASYNC(src, .proc/usr_view_clan_info)
 

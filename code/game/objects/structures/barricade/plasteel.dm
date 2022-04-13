@@ -12,7 +12,7 @@
 	debris = list(/obj/item/stack/sheet/plasteel)
 	stack_amount = 8
 	destroyed_stack_amount = 4
-	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "plasteel"
 	density = 0
 	closed = TRUE

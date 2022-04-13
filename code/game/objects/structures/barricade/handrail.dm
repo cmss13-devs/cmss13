@@ -13,7 +13,7 @@
 	destroyed_stack_amount = 1
 	crusher_resistant = FALSE
 	can_wire = FALSE
-	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE	//Reinforced to be a cade or not

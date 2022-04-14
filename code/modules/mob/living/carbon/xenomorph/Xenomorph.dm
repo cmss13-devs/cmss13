@@ -133,7 +133,7 @@
 
 	var/pslash_delay = 0
 
-	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
 
 	//Naming variables
 	var/caste_type = "Drone"

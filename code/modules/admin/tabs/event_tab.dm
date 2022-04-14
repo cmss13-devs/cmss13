@@ -836,3 +836,19 @@
 		QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
 		warhead.loc = target
+
+/client/proc/change_taskbar_icon()
+	set name = "Set Taskbar Icon"
+	set desc = "Change the taskbar icon to a preset list of selectable icons."
+	set category = "Admin.Events"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/taskbar_icon = tgui_input_list(usr, "Select an icon you want to appear on the player's taskbar.", "Taskbar Icon", GLOB.available_taskbar_icons)
+	if(!taskbar_icon)
+		return
+
+	SSticker.mode.taskbar_icon = taskbar_icon
+	SSticker.set_clients_taskbar_icon(taskbar_icon)
+	message_staff("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")

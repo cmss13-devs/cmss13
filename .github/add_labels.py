@@ -20,7 +20,7 @@ changelogToPrefix = {
 fileToPrefix = {
 	'wav': 'Sound',
 	'ogg': 'Sound',
-    'dmm': 'Mapping',
+	'dmm': 'Mapping',
 
 	'js': 'UI',
 	'tsx': 'UI',
@@ -33,9 +33,19 @@ fileToPrefix = {
 
 def get_labels(pr):
 	labels = {}
-	changelog_match = re.search(r"🆑(.*)🆑", pr.body, re.S | re.M)
+
+	files = pr.get_files()
+	for file in files:
+		prefix = file.filename.split(".")[-1]
+		if not prefix in fileToPrefix:
+			continue
+		labels[fileToPrefix[prefix]] = True
+
+	changelog_match = re.search(r"🆑(.*)/🆑", pr.body, re.S | re.M)
 	if changelog_match is None:
-		return
+		changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
+		if changelog_match is None:
+			return labels
 	lines = changelog_match.group(1).split('\n')
 	for line in lines:
 		line = line.strip()
@@ -55,12 +65,6 @@ def get_labels(pr):
 
 		labels[changelogToPrefix[key][0]] = True
 
-	files = pr.get_files()
-	for file in files:
-		prefix = file.filename.split(".")[-1]
-		if not prefix in fileToPrefix:
-			continue
-		labels[fileToPrefix[prefix]] = True
 	return list(labels)
 
 def main():

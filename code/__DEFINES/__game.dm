@@ -93,6 +93,7 @@
 #define SOUND_AMBIENCE	4
 #define SOUND_LOBBY		8
 #define SOUND_INTERNET	16
+#define SOUND_REBOOT	32
 
 //toggles_chat
 #define CHAT_OOC			1

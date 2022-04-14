@@ -3,6 +3,8 @@ var/world_view_size = 7
 var/lobby_view_size = 16
 
 var/internal_tick_usage = 0
+
+var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space/basic
@@ -183,6 +185,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		return dat
 
 /world/Reboot(var/reason)
+	var/reboot_sound = pick(reboot_sfx)
+	var/sound/reboot_sound_ref = sound(reboot_sound)
+	for (var/client/C as anything in GLOB.clients)
+		if(C?.prefs.toggles_sound & SOUND_REBOOT)
+			SEND_SOUND(C, reboot_sound_ref)
+
 	Master.Shutdown()
 
 	var/server = CONFIG_GET(string/server)

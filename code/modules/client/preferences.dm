@@ -974,7 +974,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("co_sidearm")
 					var/list/options = list("Mateba","Desert Eagle")
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Commodore's Mateba","Golden Desert Eagle")
 					else
 						options -= list("Commodore's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise

@@ -68,7 +68,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
-	/client/proc/enable_podlauncher
+	/client/proc/enable_podlauncher,
+	/client/proc/change_taskbar_icon
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,

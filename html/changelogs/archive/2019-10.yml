@@ -1,0 +1,216 @@
+2019-10-10:
+  Atebite:
+  - experiment: The explosions of the future are here! Yet another explosion system
+      has been created, and this one is virtually lag-free
+  - experiment: A neat side-effect of the new system is that the blast wave now travels
+      out from the epicenter in real time. This also means it is technically possible
+      to outrun explosions. Don't look at it while you're running away, cool guy
+  - tweak: Claymore explosions are now directed. The explosion will only occur in
+      a cone in front of the claymore
+  - bugfix: Window frames, chairs, racks, flora and more are now destroyed by explosions
+  - imageadd: New lobby art has been added. The development team would like to thank
+      all the artists for these amazing drawings, and for allowing us to use them.
+  - imageadd: A beautiful portrayal of a slow and uneventful day at the FOB. Made
+      by LightCrabPress
+  - imageadd: CLF soldiers trudging through the deep winter snow. Made by Redsting
+  - imageadd: A painting of PFC Checkers that somehow didn't make it in before now.
+      Made by NicBoone
+  - rscadd: The author of the lobby art on display will now be credited in chat when
+      you join
+  - tweak: The resolution of all lobby art has been increased from 480x480 to 1056x1056
+  Cakey:
+  - maptweak: The Gym has returned to the Almayer.
+  - maptweak: The Chapel has been moved to the upper deck.
+  - rscadd: Added the classic Weyland-Yutani playing card game, UNO, to the Marine
+      arsenal.
+  - tweak: Renamed the Walkman vendor to the Rec-Vend. It now additionally vends playing
+      cards.
+  Fourkhan:
+  - bugfix: Oppressor Prae's grenade no longer goes on permenant cooldown if the Prae
+      moves during cast.
+  - bugfix: Oppressor Prae's grenade no longer goes on cooldown - at all - if it's
+      cancelled during cast.
+  Jeser:
+  - bugfix: Fixed Nuke being spawned anchored to ground.
+  - bugfix: Fixed Nuke being vulnerable to area depowering bug.
+  - bugfix: Fixed Nuke 8 minute timer taking 22 real minutes.
+  - tweak: M42A Scoped Rifle, M42C Anti-Tank Sniper Rifle and M4RA Battle Rifle now
+      show amount of rounds left upon examining.
+  - tweak: M5 RPG now shows the type of rocket loaded into it.
+  - bugfix: M92 Grenade Launcher now starts full instead of missing one HEDP grenade.
+  RavingManiac:
+  - tweak: Explosion damage to resin walls and resin doors increased dramatically
+  - tweak: Resin structures made easier to destroy with melee weapons
+  - tweak: Explosions ignore resistance on the centre tile. This prevents stuff like
+      OBs on cavern walls being completely neutralized
+  - tweak: Open airlocks take half as much damage from explosions, up from taking
+      no damage
+  - bugfix: Fixed some structures like chairs being indestructible to explosions
+  Retrokinesis:
+  - experiment: Shooting targets are now structures instead of items to avoid overlay-related
+      crashes.
+  Slywater:
+  - experiment: Reworked Trijent Dam to remedy some major combat issues.
+  - tweak: Rebalanced LZ2's flanks and chokepoints.
+  - tweak: Made TComms more tank-friendly.
+  - tweak: Tightened up LZ1 chokepoints, and made LZ1 slightly more defensible.
+  - rscdel: Made Trijent 12% smaller, culled North labs and the Northern river course.
+  - tweak: Slightly decreased human water damage, greatly increased xeno water damage.
+  - tweak: Made all cave areas weedable.
+  - rscadd: Added static sentries to all checkpoints. The turrets will activate when
+      power is restored, and can be manually retracted after activation by clicking
+      the holder.
+  - tweak: Made northern crossing locations more marine-friendly.
+  - rscadd: Added transit shuttles. Shuttles can only be used after being linked.
+      To link a shuttle, find its destination terminal and activate it. The terminal
+      requires power to be activated.
+  - rscadd: Added a shuttle which travels from LZ1 hangar to Wilderness valley.
+  - rscadd: Added a shuttle which travels from LZ2 warehouse to Eastern medical wing.
+  TheDonkified:
+  - bugfix: Can't slash blastdoors/poddoors any more
+  Vampmare:
+  - tweak: Funds has been allocated to the Sniper Spec. They will now receive a Ghillie
+      suit and helmet in their kit.
+  - tweak: The PFC sniper kit, mini-engineer kit and veteran kit has had their cost
+      reduced to 30 points.
+  - bugfix: MOOC is now shown to synthetics.
+  - bugfix: You can no longer strip off the base attachments of the SVD.
+  - bugfix: 'Xenos no longer have access to View-Objective-Clues. /:cl:'
+  - experiment: Backend of bleeding and internal bleeding has been completely refactored.
+      Report any bugs or other weird things as fast as possible on the gitlab.
+  - tweak: This is nothing new, but Cryocells still slowly heal IB and in the worst
+      cases after two minutes completely heal it.
+  - tweak: Autoinjectors have been changed. They now have 3 uses each and will inject
+      exactly half the amount of the overdose limit. They have gotten a new sprite
+      to reflect this new mechanic. Injectors that didnt fit into the new system has
+      been removed.
+  - tweak: The skill required to open/use pill bottles have been upped a level. So
+      only Squad Medics and up can do it now.
+  - tweak: Pill bottles have become slightly more expensive in the Squad Medic vendor
+      to compete with autoinjectors.
+  - tweak: First Responder medical kit has been changed. It will now contain autoinjectors
+      and less medical supplies. A special injector is supplied to mini-medics, but
+      be careful when using it, its very easy to overdose. They gain a special MedHUD
+      called Sensor HUD. This should move it more to self-reliance than replacing
+      Squad Medics.
+  - imageadd: M56 Goggles now have their own sprite to differ them from UPP goggles.
+  - imageadd: Injector pouch has a new sprite and now has room for 7 injectors.
+  - imageadd: Some pouches may have gotten edgier, this is to create more consistency
+      between pouches.
+  - tweak: Old neuro is now applied on INFECTED humans. So if you're infected, you'll
+      get short knockdowns every time you're hit by neuro.
+  - tweak: You can now RESIST out of acid.
+  - tweak: The duration of acid has been doubled. The damage over the entire duration
+      is unchanged.
+  - tweak: Tank Crewman pop scaling is now set to 120 marines required.
+  - tweak: Synthetics now unlock an extra slot above 140 marines.
+2019-10-12:
+  Cakey:
+  - bugfix: Surviving player playtimes will now ACTUALLY be fixed and tracking.
+  Fourkhan:
+  - rscadd: Alt+Shift-Clicking on a Xenomorph now transfers your overwatch to them.
+  - tweak: Decreased the number of Xeno slots that burrowed larva count for.
+  - experimental: Removed click delay from Xeno abilities.
+  - experimental: Xeno abilities are no longer subject to click delay.
+  - tweak: Nerfed Ravager armor.
+  - tweak: Nerfed the damage of Lurker slightly so its total damage across a pounce
+      is the same.
+  - tweak: Decreased Defender's armor.
+  - tweak: Nerfed the hitpoints of thick resin walls.
+  - tweak: Slightly decreased Runner's hitpoint total.
+  - tweak: Increased the armor and hitpoint total of Warrior.
+  - tweak: Dancer Praetorian's tail stab now deals much less organ damage and distributes
+      its damage across the target's body.
+  - tweak: It is still possible for this to break bones/deal organ damage if your
+      brute is high enough.
+  - tweak: Decreased the activation time on Dancer Prae's abduct ability.
+  - tweak: Abduct now goes further if the abduct is empowered by dance.
+  - tweak: Increased the cooldown of Royal Guard Prae's tail sweep by 3 seconds.
+  - tweak: Increased the cooldown of Praetorian acid spray by 3 seconds.
+  - tweak: Decreased the health and armor of Royal Guard Prae.
+  - tweak: Acid spray now has a small windup.
+  - tweak: Decreased the stun duration on Royal Guard acid spray.
+  - tweak: Praetorian acid spray cooldown now decreases by 1 second for every age
+      level gained.
+  - tweak: Decreased the plasma cost and cooldown of Resin Whisperer Hivelord's remote
+      building ability.
+  Jeser:
+  - rscdel: Removed rookie trap choices from Smartgunner vendor.
+  - rscadd: Added Fuel Tank Strap Pouch to Squad Leader vendor.
+  - tweak: Flare belt in JTAC kit starts full with 16 flares now.
+  Slywater:
+  - bugfix: Made stairs unbreakable.
+  - bugfix: Made sentry holders unbreakable - prevents turrets being destroyed pre-drop.
+  - tweak: Made checkpoint podlocks acidable.
+  - tweak: Increased the accuracy and burst-rate of static sentries slightly.
+2019-10-13:
+  Fourkhan:
+  - rscadd: The Predator HPC now only stuns targets in an area instead of damaging
+      them. Xenos are slightly more affected than marines.
+  - tweak: Increased the damage of all Predator melee weapons against Xenomorphs only
+      by 10%.
+  - tweak: Chain damage increased by ~10%.
+  - tweak: Increased the damage of the combistick by ~10%.
+  - tweak: Predators are now immune to neurotoxin.
+  - tweak: Bone healing chems no longer require splints, but fail if the limb re-breaks
+      during their acting time.
+  - tweak: Predator limbs now heal in half the time.
+  - tweak: Thwei now heals internal bleeding.
+  TheDonkified:
+  - bugfix: Can't slash blastdoors/poddoors any more
+  Vampmare:
+  - tweak: Funds has been allocated to the Sniper Spec. They will now receive a Ghillie
+      suit and helmet in their kit.
+  - tweak: The PFC sniper kit, mini-engineer kit and veteran kit has had their cost
+      reduced to 30 points.
+  - bugfix: MOOC is now shown to synthetics.
+  - bugfix: You can no longer strip off the base attachments of the SVD.
+  - bugfix: Xenos no longer have access to View-Objective-Clues.
+  - bugfix: Synth Survivors now spawn with a boot knife. They also get slightly more
+      access.
+  - bugfix: Acid effects now show up on Yautja and Synthetics.
+2019-10-20:
+  Atebite:
+  - bugfix: Fixed all pipes that weren't properly connected on all maps.
+  - tweak: The cooldown on Resin Whisperer's build ability is now only applied if
+      the building succeeds.
+  - tweak: Smartguns are now unacidable and indestructible
+  Cakey:
+  - tweak: The in game year has been tweaked to progess along with real-time. Welcome
+      to 2189, folks.
+  Jeser:
+  - bugfix: Fixed nuke not being properly deactivated. Now both marines and aliens
+      should get proper announcements.
+  Neth:
+  - rscadd: you can now dedicate a discard pile so if someone is right near one, they
+      will discard to it instead of right in front of them
+  - rscadd: you can now draw more than 1 card from the deck by using separate verb
+  - rscadd: hands and piles of cards no longer freak out at 20 cards and stop rendering
+      the entire pile. the limit is now 80 cards
+  - rscadd: you can now sort your hand of cards
+  Vampmare:
+  - bugfix: IB now shows up properly on the Health Analyzer.
+  - tweak: Embedded objects will now show up on the Health Analyzer.
+  - bugfix: Increased shrapnel text so its noticeable now.
+  - tweak: Added kelotane, bicaridine and tramadol autoinjectors to WeylandMed Plus
+      vendors, planetside ones.
+  - tweak: 'Xenos can no longer drag DEAD and INFECTED bodies that won''t have time
+      to burst. So anyone infected just before they die become undraggable. '
+  - bugfix: Dexalin Plus autoinjectors are now actually dexalin plus and not discount
+      version.
+  - tweak: Bleeding has been tweaked to be more sane.
+  - tweak: Renamed the L42 to L42A battle rifle and changed its description.
+  - tweak: Changed the gel fuel description to be more clear about what it does.
+2019-10-24:
+  Jeser:
+  - rscadd: Reworked fire teams code. To manage fire teams you still need to be Squad
+      Leader or acting Squad Leader. After assigning marine to a fire team, you can
+      assign him to be a Team Leader.
+  - rscadd: Marine's fire team is shown in squad comms.
+  - rscadd: Team Leader has additional HUD icon and has his position shown in squad
+      comms.
+  - rscadd: If fire team has a Team Leader assigned, all fire team members' locators
+      will be showing direction to their Team Leader.
+  - rscadd: Squad Leaders and acting Squad Leaders can't be assigned to fire teams.
+      Instead, they have options to unassign Team Leaders remotely.
+  - imageadd: Changed sprites for SL/TL Locator.

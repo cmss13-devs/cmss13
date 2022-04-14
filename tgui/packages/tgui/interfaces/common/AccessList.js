@@ -1,7 +1,7 @@
 import { sortBy } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useLocalState } from '../../backend';
-import { Button, Flex, Grid, Section, Stack, Tabs } from '../../components';
+import { Button, Section, Stack, Tabs } from '../../components';
 
 const diffMap = {
   0: {

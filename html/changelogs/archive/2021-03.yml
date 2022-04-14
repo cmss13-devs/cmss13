@@ -1,0 +1,677 @@
+2021-03-01:
+  Waltermeldron:
+  - rscadd: Sets up the repository to work well with deployment with docker.
+2021-03-02:
+  Firartix:
+  - tweak: Areas now can actually have flags.
+  - bugfix: Fix up area flags handling that were causing issues eg. with Burrower.
+  - tweak: Exosuit fabricators now print robot heads that can't be used for cyborg
+      construction.
+  - tweak: Robugers created from malfunctioning robot heads will not contain nanites.
+  - bugfix: Fixed selection menu for Overwatch Insub and Squad Transfer
+2021-03-04:
+  Firartix:
+  - bugfix: Timers in mob status handling now actually delete properly instead of
+      erroring.
+2021-03-05:
+  Segrain:
+  - bugfix: Firesuits and spacesuits no longer grant unintended immunity to pounces.
+2021-03-09:
+  TheDonkified:
+  - bugfix: Full auto works on black tiles now.
+  - tweak: M2C will rotate upon click now instead of requiring you to fire first.
+  Waltermeldron:
+  - bugfix: Changes the bikehorn notification message to an actual sound file.
+  - rscadd: Adds the Xenomorph and Marine techtree. Xenomorphs can enter through the
+      verb in their alien tab called "Enter Tech Tree" and marines can enter through
+      the verb in their "Objects" tab.
+  - rscadd: Each techtree has 3 tiers. Marines get 3 different permanent techs per
+      tier and some repeatable techs that can be purchased multiple times (req points/OBs).
+      Xenos get 2 different permanent techs and 2 different powerups each tier. Powerups
+      can be purchased multiple times to provide different temporary/limited use abilities
+      and effects.
+  - rscadd: The tech tree controller for the marine side is chosen randomly between
+      the CO/XO. The controller can choose to hand this power to the other side if
+      they so choose using the tech management console in CIC. They cannot be forced
+      to give up this power and additionally cannot be forced to purchase any techs
+      if the controller is either the CO/XO. If someone else is in control of techwebs,
+      a person of a higher ranking may take over by going to this console and using
+      it. Leaving the almayer z-level will result in the person in control of techwebs
+      to lose their control - You must be on the Almayer z-level to control techwebs.
+  - rscadd: Adds a new role called RT Operator. This is a squad role and there is
+      2 per squad. The assistant RTO is the second RTO in a squad to spawn in. The
+      squad lead succession operates as so; SL -> RTO -> Assistant RTO
+  - rscadd: Added telephones. RTOs get a portable telephone on their backpack.
+  - rscadd: Added droppods. Drop pods are a way of distributing techs. More drop pods
+      (manned drop pod, etc) may be added in the future with this change. RTOs can
+      call down any tech drop pods. Drop pods will gib anything they land on.
+2021-03-10:
+  Carlarc:
+  - rscadd: Survivor starting number is now readied players divided by 10.
+  - rscadd: Slugs have been reworked slightly.
+  - tweak: Slug maximum range is now 8 from 16. Accurate and stun range is 6 from
+      12.
+  - tweak: Slugs no longer daze or debuff T3s at all, instead, they have gained almost
+      double damage and increased penetration.
+  - tweak: Removed miniscope from the HG, MOU53, and M39 as they are counter to the
+      weapon's design.
+  - tweak: The reasoning behind these changes is that slugs are an unfun weapon to
+      fight and they heavily shut down and can in fact stunlock T2s and T1s, primarily
+      warriors and spitters, in a 1v1 and lock down lanes at any range, which a single
+      marine should not be able to do with a common ammotype and weapon. This is a
+      problem because it is one of the things stacking power onto t3s and combat queen,
+      forcing lower tiers to sit in the back, either sidelining or waiting for evo.
+  - tweak: Slugs no longer daze, instead, they have gained almost double damage and
+      increased penetration.
+  - tweak: The reasoning behind these changes is that slugs are an unfun weapon, they
+      piss off xenos heavily. In addition, they heavily shut down T2s and T1s, primarily
+      warriors and spitters, in a 1v1 and lock down lanes at any range, which a single
+      marine should not be able to do with a common ammotype and weapon. This is a
+      problem because it is one of the things stacking power onto t3s and combat queen,
+      forcing lower tiers to sit in the back, either sidelining or waiting for evo,
+      and encourages holding chokes instead of pushing out.
+  Firartix:
+  - bugfix: Admin and Observer jump menus won't show duplicate lighting areas anymore.
+  - bugfix: remove absolutely random human creation in records code
+  Segrain:
+  - bugfix: Tank is once again available only for sufficiently high population.
+  - bugfix: Acider Runners successfully exploding for the hive once again get free
+      respawns.
+  TheDonkified:
+  - tweak: BC no longer has a decreased damage buff for M41.
+  Triiodine:
+  - bugfix: Re-added all icons that were overwritten with techwebs and reapplied techwebs
+      icons over the resets.
+  - maptweak: Removed disk readers from CORSAT and Science Annex.
+  - imageadd: New rolled poster sprite, xeno techweb ability icons, map vote icon.
+  forest2001:
+  - rscadd: Added logs to various overwatch features
+  spookydonut:
+  - rscadd: Converted vehicle elevator to use new shuttle code
+2021-03-11:
+  BIgboyyo:
+  - maptweak: Huntership now has shutters and buttons to operate them instead of consoles
+      that don't work.
+  Carlarc:
+  - rscadd: Survivor snowcoat can hold guns now.
+  - bugfix: Fixed acid spits and the like using laser resistance rather than bio resistance
+      on armor. (Usually was the same anyways)
+  Nivrak:
+  - tweak: Muscle stimulating chemical property now updates dragging speed.
+  Sigil:
+  - rscadd: Added toxic, incendiary and wall-piercing mags to the mk1, mod88, VP and
+      the m44.
+  - imageadd: Added sprites for the above mags. Except mod88. Those were already in.
+  Spartanbobby:
+  - rscadd: Added some detail to the USS almayer
+  - bugfix: Fixed some missing walls and pipe layer issues
+  - bugfix: Re-added telephones to the CIC (and overwatch consoles), the CL's office,
+      and the CMO's office.
+  - bugfix: Re-added the techwebs transfer computers to the CIC.
+  - bugfix: Fixed some table layering issues in the CIC.
+  - maptweak: Added a phone to the CE's and R&D office.
+  Triiodine:
+  - maptweak: Remodeled the entirety of the top deck of the Almayer in advance of
+      the lifeboats hijack system. More space, no purpose. Keep an eye out for goodies
+      in maintenance agents, MTs, MPs.
+  - imageadd: Finally made the subtypes of comfy chairs have different sprites instead
+      of color shifts.
+  - imageadd: Added some new Svestapol-styled reinforced tables to the Almayer.
+  - imagedel: Removed an unsightly pattern from the Almayer's area icons.
+  - maptweak: Redecorated large swathes of the Almayer and expanded maintenance on
+      the top deck.
+  - maptweak: Integrated the requisition vendors into the wall. New sprites included!
+  - maptweak: Replaced all the wood floors on the Almayer with faux-wooden flooring.
+      Got that fire hazard cleaned up.
+  - maptweak: Removed win-doors from the Almayer firing ranges. They just got in the
+      way of things really.
+  - maptweak: Deprecated the Intelligence Officer areas. The drydock at Io has sent
+      us notice that they'll be renovating the area soon.
+  - maptweak: All maintenance doors (Save for the CL, Engineering, and the OT workshop,
+      and PO hangar office), have had their access requirements removed.
+  - rscadd: Replaced all instances of ballistic vests on the Almayer with M3-VL pattern
+      ballistic rigs. Same stats, but now with a suit light and magnetic harness compatibility
+      (they still suck though).
+  - rscadd: Gave the Ordance Techs more buckets and 4 M3-VL armor sets in an emergency
+      locker in their office. The buckets are on the racks next to the locker.
+  - bugfix: Added a missing engine icon state.
+  - bugfix: Corner platform sprites will now appear above actual platforms. Mappers
+      rejoice.
+  - bugfix: Removed a dead pixel from dropship seat directions.
+  - rscdel: Removed the self destruct system from the Almayer.
+  - experiment: Converts medbay and DS access to strings instead of lists.
+  - maptweak: Medbay is no longer medical staff only. Rejoice marines.
+  Waltermeldron:
+  - rscadd: Adds cryo marines as a repeatable tech that increases by 10 points per
+      purchase. Starts at 10 points.
+  - rscadd: Adds a way for admins to call down droppods with items of their choosing.
+  - bugfix: Fixed marines being unable to purchase repeatables once they unlock 3
+      or more techs from their current tier.
+  forest2001:
+  - tweak: Removed roundstart mateba from COs.
+2021-03-12:
+  Carlarc:
+  - rscadd: Orange juice's description now states whether it has pulp or not.
+  - bugfix: Oppressors can no longer cancel their abduct free of cost by resting.
+  - bugfix: Fixed bug where Oppressor unbuffed punching someone dealt no damage.
+  - rscadd: Removed ability to pick tank roundstart. Tank will still be available
+      via T3 purchase.
+  - tweak: Ashtrays no longer randomize their starting position.
+  - rscadd: Punches of any kind no longer stun nor have damage variance. This is meant
+      to facilitate duels, and reduce randomness in combat.
+  - rscadd: Predator/Synthetic/Human Hero punches deal 10 damage, humans 5.
+  - rscadd: Melee can no longer miss, ever.
+  - rscadd: Seriously that code was so fucking bad. Ho-ly shit.
+  Firartix:
+  - bugfix: fix mistake in pathing for CI map rendering
+  Nanu:
+  - maptweak: Fixes Almayer Mapping Items that got removed with agents
+  Segrain:
+  - bugfix: Shooting walls once again does damage to them.
+  - spellcheck: Ghosts' Jump to Mob and Teleport verbs are renamed to Teleport to
+      Mob and Teleport to Area.
+  SpartanBobby:
+  - bugfix: Fixes unintended hugger protection on bear belt bedsheet and ushanka
+  - bugfix: removes colony cameras from TV set in R&R and delta bunks
+  - bugfix: fixes missing floortile
+  - bugfix: fixes wrong intercom in DS control bubble
+  - tweak: moves 30mm ammo crates to be less in the way of bravo briefing
+  - tweak: moved hangar briefing a little more south to give POs space to reload
+  - tweak: replaced prop GAU ammo with crates
+  - maptweak: floor lattice in hangar, R&R and alpha/bravo extended bunks should now
+      be wrenched
+  Triiodine:
+  - soundadd: Ceramic and metal plates now play a sound effect when they break. This
+      goes along with the existing chat message. Keep an ear out.
+  forest2001:
+  - tweak: Changed some staff logs to send to appropriate people.
+  - tweak: Changed the loyalty lockbox in CLs office to contain Mod88 AP and Rubber
+      ammo. This is because the loyalty implants are non-binding and are only relic
+      holdovers which cause confusion for players.
+  - wip: The above is a temporary fix due to mapfreeze. The lockbox will be repathed
+      to indicate it's contents, and I'll look at making a better "loyalty lockbox"
+  - tweak: Let mods spawn cookies for prayers
+  optimisticdude:
+  - tweak: 'Reduces M2C falloff from 6 tiles to 4. '
+  - tweak: Increases M2C range from 12 to 14 tiles.
+  - tweak: Reduces M2C effective range from 8 to 7 tiles.
+  - tweak: 'Increases M2C accuracy from 30 to 40. '
+  - tweak: 'M2C at a fixed state is now acidable when undeployed. '
+  spookydonut:
+  - rscdel: Removed agents
+2021-03-13:
+  Firartix:
+  - bugfix: fixed techwebs-induced typo in igniter assemblies rendering them unable
+      to be triggered
+  - bugfix: fixed a typo with chemical explosions damage source
+  - bugfix: fixed incorrect forceMove usage in C4 causing errors
+  Nanu:
+  - rscadd: Added another falloff type, Exponential half.
+  - tweak: Tweaked the damage and falloff type of the M12 Blast Grenade.
+  - tweak: Changed the PMC Leader to start with thge Mk2 Rifle instead of the FP9000
+  - tweak: Gave the PMC Leader an M12 Blast Grenade.
+  Segrain:
+  - bugfix: RTOs are now properly listed on overwatch's squad monitor.
+  - bugfix: M3-VL ballistic vests now can actually be worn by anybody regardless of
+      uniform.
+  - bugfix: CL's ability to raise research clearance now scales with techtree progress
+      as intended..
+  forest2001:
+  - tweak: Hunting Traps no longer stun when stepped on.
+  - tweak: Xenos now emote for help when they step on traps, to fit with Humans screaming.
+2021-03-14:
+  Carlarc:
+  - rscadd: Added sheet sprites for amount of sheets in a stack. Credits to Nauticall!
+  - rscadd: Removed the beyond-limit extra 10 metal sheets survivors spawn with. Instead,
+      they get a tricord pill packet and the gauze they start with has a full stack.
+  - rscadd: Added the Classic Cigar in custom loadout, which uses the classic sprite
+      and lasts twice as long.
+  Sigil:
+  - rscadd: JTAC is now a separate skill from leadership. All roles except RTO with
+      leadership have it set to the same level for now.
+  - rscadd: 'RTO changes below:'
+  - tweak: RTO construction and engineering is now 1 instead of 2.
+  - tweak: RTO leadership decreased to 1, same as all non-PFC squad roles, therefore
+      they can no longer give order buffs without being aSL.
+  - tweak: JTAC skill is at previous leadership level of 2.
+  - tweak: RTOs now get a laser designator in their vendor.
+  - tweak: RTOs now have their own headset. It has access to JTAC and req comms.
+  Waltermeldron:
+  - bugfix: Fixed wall-piercing ammo not going through walls.
+  - rscadd: Ports tgui 4.3
+2021-03-15:
+  BIgboyyo:
+  - maptweak: Added a bit more buckshot to LV around the engineering and LZ1 area.
+  - maptweak: Put some welding goggles in engineering on LV.
+  - maptweak: 'Removed weird cave walls in Central Caves that blocked a flank. '
+  Carlarc:
+  - rscadd: Predator hardcrit has been reintroduced. They have gained 50 health in
+      compensation. Unlike marines, they will not die from dragging, throwing, or
+      devouring.
+  - tweak: You can now target Predators and Synthetics with lunge.
+  ChainsawMullet:
+  - rscadd: Added a new spear subtype, the hunter spear
+  - rscadd: Hunter spears have a new sprite, and have less force than normal spears.
+  - maptweak: Changed the spears on the hunter ship to the new spear variant
+  - tweak: Combi-Stick sprite slightly changed to have 2 tips.
+  Firartix:
+  - tweak: Removed debug logs for Techwebs processing, Xeno ability cooldown, and
+      Database Vending stats - as the later two, while indicative of real issues,
+      are not actually informative and draw away attention from other ones
+  - tweak: Added debug logs for icon generation due to recurrent recent overtime issues
+  - bugfix: add some missing SIGNAL_HANDLER-s throughout codebase
+2021-03-16:
+  Firartix:
+  - bugfix: fix global ooc color toggle
+  Vanagandr:
+  - bugfix: Souto Man's belt now updates its sprite as he removes cans from it.
+  - bugfix: The legs of the Soutomobile's driver are now visible as intended.
+  - tweak: Soutomobile now slower - bit slower than a heavy armour marine. Nevertheless,
+      there is no escape.
+  - rscadd: 'new super Soutomobile: factionlocked to Souto Man alone. Indestructible,
+      for what is Souto may never die.'
+  Waltermeldron:
+  - tweak: Xenomorph powerups of previous tiers are no longer locked after unlocking
+      the next tier level.
+  - tweak: Increased RTO engineering and construction to level 2 again, to be more
+      in line with the SL.
+  - tweak: RTO now gets big text in their squad channel, however, the aRTO does not.
+      both RTO roles get big text in the JTAC channel. They do not get big text anywhere
+      else.
+  - tweak: aRTO will now appear as "aRTO" over comms.
+  - rscadd: Adds keybinds that people can configure in their character settings.
+  - rscadd: Adds passthrough for most tgui panels.
+  - tweak: Moved Edit Characters to the OOC tab, from the Ghost tab. You may now edit
+      characters at any time, thus allowing you to modify your keybinds at any time.
+2021-03-17:
+  Firartix:
+  - tweak: disabled usage of costly_icon2html in statpanel icons causing freezes,
+      notably when viewing mobs
+  naut:
+  - maptweak: Added in CO weapons vendor to the CO's office, changed location of locker.
+  - maptweak: CIC's glass double doors on the surrounding corridors have been changed
+      to require cic_exterior access and were given proper names.
+  - maptweak: Removed nonfunctional lights on the lifeboats.
+  - maptweak: Removed equipment in the CO's armory safe. Use it for storage now instead.
+  - maptweak: Replaced two small light fixtures in the Synth closet with two large
+      ones for better illumination and removed the stain on the floor. QOL stuff.
+  - maptweak: Particle cannon system rooms flanking the CIC each now feature a railgun
+      control center complete with a telephone, railgun computer (unlocked with railgun
+      tech), and map table.
+  - maptweak: Added a missing light in the CIC that led to a dark spot.
+  - maptweak: Adds a telephone to the CO's office and to the kitchen.
+2021-03-18:
+  Carlarc:
+  - tweak: Refactored handful code to be less agonizing to coexist in the same universe
+      with. This has no impact on the game but allows for the ability to make different
+      bullet amounts (Like shell items with maximum 4 rounds or even 10)
+  - rscadd: Marines on stimulants shake around as a visual indicator.
+  - rscadd: Agility implants now let you climb onto structures quickly.
+  - rscadd: Agility implants now let you quickly fireman carry. To do that, aggressive
+      grab, then drag their sprite onto yours.
+  - tweak: You get some cool flavor when implanting now, and you can click on the
+      implanter inhand to automatically implant.
+  - bugfix: Fixed the action button for attachments.
+2021-03-19:
+  Carlarc:
+  - bugfix: Fixed marines and xenos instantly vaulting over cades.
+  - bugfix: Fixed survivor pouch pill packet not being reinsertable.
+  - bugfix: Slightly increased amount of keypresses needed on a tick before being
+      kicked, should help with lagspikes.
+  SpartanBobby:
+  - bugfix: Fixes missing iconstate for pistol bullet prop in delta bunks
+2021-03-20:
+  Firartix:
+  - bugfix: remove a duplicated movement handler notably for holograms
+  Segrain:
+  - bugfix: Vendors failing to vend no longer get stuck on the icon for denial.
+  - bugfix: Overwatch consoles no longer can transfer marines into nonexistent squad.
+  Snakebittenn:
+  - rscadd: Armbrace now gives the accuracy and recoil of a two-handed, recoil-compensated
+      SMG in only one hand. Reduces your burst to two shots. Removed the fire delay
+      nerf. However, the armbrace only benefits when it's activated.
+  Triiodine:
+  - bugfix: Wall-blended cargo vendors will no longer change sprites to their default
+      after vending.
+  - bugfix: Wall-blended cargo vendors will no longer disappear while vending items.
+  Waltermeldron:
+  - bugfix: Fixed the hive status colour scheme.
+  - rscadd: Xenos no longer cycle through the structure they want to build. They can
+      now open up a menu to select which resin structure to build. There is a compact
+      mode to decrease the size it takes up.
+  - bugfix: Fixed CTRL R not working for the keybinds menu.
+  - bugfix: Fixed a critical href exploit.
+2021-03-21:
+  Carlarc:
+  - rscadd: (Re?) Added lipstick. You can't get it anywhere for now.
+  - tweak: RTO armor and uniform's IO references have been purged.
+  - bugfix: Fixed RTO gloves being unarmored. Fixed RTO uniform's inability to roll
+      up its sleeves.
+  - tweak: RTO armor now has a slightly increased light radius, from 6 to 7.
+  - tweak: Scouts no longer need their helmet to put on their cloak.
+  - rscadd: (Re?) Added lipstick. You can get it in the equipment loadout, comes in
+      red, purple, maroon, and jade.
+  Segrain:
+  - bugfix: Greater resin fruit can no longer be consumed several times at once.
+  Waltermeldron:
+  - bugfix: Fixed being unable to deploy flags and bell towers near other sentries.
+  - bugfix: Fixed hold order being ridiculously strong on warbanner flags.
+  - bugfix: Fixed warbanner flags stacking on themselves.
+  - bugfix: Fixed stacking sentries very close to each other
+  - bugfix: Fixed queens being unable to remotely build.
+  - bugfix: Fixed a href exploit.
+  naut:
+  - bugfix: M46C no longer locks itself when vended to a CO who latejoined.
+  - tweak: M46C now registers itself to the first person to pick up the weapon when
+      it is spawned. ID lock was maintained.
+  - tweak: M46C now accepts enhanced ammunition provided by techwebs.
+2021-03-22:
+  BIgboyyo:
+  - bugfix: Changed Synthvivor slowdown to be inbetween medium and light armor, as
+      was intended.
+  Firartix:
+  - bugfix: Fixed an issue with incremental changelog generation in CI
+  - bugfix: Rolled back and regenerated changelog due to a MR accidentally breaking
+      it
+  Nanu:
+  - maptweak: Fixes Vehicles being able to enter Caves on Big Red.
+  Segrain:
+  - bugfix: Mines once again can be triggered by nonhumans.
+  WalterMeldron:
+  - tweak: Changed queen age timer from 15 minutes to 10 minutes
+  - rscadd: Re-added back a 5 minute timer for another Queen to evolve.
+  Waltermeldron:
+  - bugfix: Fixed IMP mount working whilst dead.
+  - rscdel: Removed the pillgun from the medic CZSP.
+  - rscadd: Added an upgraded defibrillator to the medic CZSP which works through
+      armour, heals more damage and deals no heart damage.
+  - tweak: You will now get forced into your body when you get revived.
+  - tweak: You can now revive people who are DNR (no soul). They'll still be potatoes
+      but this allows you to cryo them.
+  - tweak: Changed the splint stack from 3 to 5. Indestructible splints can now be
+      recollected.
+  - tweak: You can now pull submissive xenos.
+  - tweak: Submissive xenos no longer require a handler to be allied to the marines.
+  - bugfix: Fixed corrupted and submissive xenos not understanding english.
+  - tweak: Increased upgraded burn/brute kit stacks from 6 to 10. Upgraded burn/brute
+      kits can now be purchased by requisitions for points once the tech is unlocked.
+  - tweak: Changed the ceramic plate to ignore slash damage and acid projectiles.
+      The ceramic plate has been changed to be very durable against regular marine
+      bullets and can last a lot longer than metal plates when it comes to resisting
+      bullets, making it a useful tool to prevent friendly fire. It does not last
+      forever.
+  - tweak: The NVG implant becomes ineffective after you die 2 times with it implanted.
+  - tweak: Buffed the self-revive implant significantly. It will now activate whenever
+      you are supposed to enter crit and completely heal all damages (not including
+      bonebreaks and organ damage). It has been renamed to Rejuvenation Implant.
+  - tweak: Endurance stimulant has been changed to a 1-use autoinjector that injects
+      5u into your body. It has been buffed to immediately heal all organ damage and
+      bone breaks, whilst making you immune to any further organ damage/bonebreaks
+      for an additional 5 minutes. It also still has muscle-stimulating and nerve-stimulating
+      (albeit nerfed), as well as immense painkilling. It has been renamed to redemption
+      stimulant. The OD threshold has been changed to 5u.
+  - tweak: Subdermal implant is no longer a 25% damage reduction boost. Instead, it
+      now reduces burn damage by 10% and brute damage by 15% and reduces the chances
+      of bone breaks by 75%
+2021-03-23:
+  Carlarc:
+  - rscadd: 'Added a new loadout: ''Santa'', he''s a VADM with lots of gifts and a
+      explosive-loaded mateba.'
+  - rscadd: 'Added a new loadout: ''Ivan'', he''s an UPP Armsmaster with 31 guns,
+      60 magazines, and the skill and permissions to use all of them.'
+  - tweak: Added a new adminspawn mateba speedloader that's explosive and gibs on
+      execution.
+  - tweak: M60 has full ROF and can shoot non-burst.
+  Firartix:
+  - bugfix: make injectors & health analyzer NOBLUDGEON, fixing some interactions
+      around them
+  Firatix:
+  - bugfix: fix tgui zombie window closing being disabled
+  Sigil:
+  - rscadd: Added a bunch of admin spawned versions of standard weapons that come
+      preloaded with rubber bullets. Also a vendor with them and some crates.
+  - rscadd: 'Added a new shrapnel subtype: rubber pellets. Doesn''t damage you or
+      give shrapnel, instead deals stamina damage like rubber bullets.'
+  - rscadd: Added a rubber pellet M15 grenade. Can be found in the aforementioned
+      vendor and crates.
+  Waltermeldron:
+  - rscadd: Added statistics to each tech, allowing you to view their stats/items.
+  - tweak: Switched positionings of the tgui list input confirm/cancel buttons.
+  - bugfix: Fixed observers being unable to see purchased techs.
+  optimisticdude:
+  - rscadd: Adds basic code for bolt action rifles, for whatever reason. This is for
+      an externally reloaded bolt action, so no stripper clips or feeding individual
+      bullets, go code a shotgun to do that!
+  - imageadd: Added four edited sprites of the CLF sniper for bolt action references.
+  - soundadd: Adds two sounds for bolt action-based effects, and a firing sound for
+      the bolt action.
+  - rscadd: Credit to Alardun for fixing and polishing the first draft of the code.
+2021-03-24:
+  Firartix:
+  - tweak: Refactored part of boiler code to improve on cleanup and deletions.
+  - bugfix: Boiler traps should not be able to freeze dead people forever anymore.
+  - bugfix: Boiler traps should not clear other sources of freezing anymore (as much
+      as our effects allow, at least)
+  - bugfix: add overlooked say wrapper for ssinput (typing indicator)
+  Nivrak:
+  - rscadd: Health analyzers now store their last scan.
+  Segrain:
+  - bugfix: Xenos once again can use Rest action button to stand up from resting.
+  - bugfix: Burrowers no longer can burrow into space. At all.
+  Waltermeldron:
+  - bugfix: Fixed the pain lingering around after rejuv implant being proc'd.
+  - bugfix: Fixed armour plates not properly unregistering their signals from the
+      wearer.
+2021-03-25:
+  Carlarc:
+  - rscadd: Extinguishers can now decloak. This causes a 10 second cooldown on marine
+      cloaks and 20 second cooldown on the predator cloak.
+  - tweak: Walking on water cloaked as a predator also causes cooldown.
+  - tweak: Increased underbarrel extinguisher capacity to 60.
+  - tweak: CHUNK bar force from 10 to 15, throwforce 10.
+  - rscdel: Extra construction skill no longer thirds welding time or building time.
+      Attempting to fix a barricade at less than engineer skill takes twice as long.
+  - rscdel: Extra construction skill no longer thirds welding time. Attempting to
+      fix a barricade at less than engineer skill takes twice as long.
+  Carnage0681:
+  - tweak: Acid Runner health increased to 330, from 230.
+  Firartix:
+  - rscadd: Added default classic keybindings based on previous CM13 keybinds
+  - tweak: 'Typing indicator was modified to allow for original faster client-side
+      handling - it will now display the typing bubble for 5 seconds regarldess of
+      prompt being open. '
+  - tweak: Removed skin Hotkey Toggle as it conflicts with new system's Hotkey Mode
+  - tweak: Added Quick Equip Keybind, renamed previous ones to Unholster
+  - tweak: Reworded several input related configuration entries for clarity
+  - tweak: Input preferences now have their own section in character setup
+  - bugfix: Hotkeys Mode setting should now save properly
+  - bugfix: Removed leftover handler for old Swap Hand macro
+  - bugfix: An empty list of keys in classic keys will not use hotkeys keys as default
+      anymore
+  - tweak: Optimized various aspects of the CI Pipeline
+  - tweak: Pinned linux rustg library dependency in repository to match Windows one
+  Segrain:
+  - bugfix: Admins' mass teleport no longer breaks future bioscans.
+  Vanagandr:
+  - tweak: Removed attack_speed delay when clicking one item with another when in
+      storage (backpacks pouches etc.). Delay varied based on attacking item.
+  - tweak: Reduced delay when putting items on tables/racks. Delay varied based on
+      item, is now 0.2 seconds.
+  - tweak: 'Removed extra delay when picking up an item not in first-layer inventory
+      (in backpack, on table, on floor etc.). Total delay was 0.6 seconds, is now
+      0.2. The pickup verb 0.8 second delay was not changed. '
+  - tweak: Removed extra delay when clicking things in inventory with an open hand.
+      If an item in pocket, clothing, opening a pouch etc. total delay was 0.05 seconds,
+      now 0; if drawing item from fast-draw toggled pouches etc. total delay was 0.25
+      seconds, is now 0.2.
+  - bugfix: Clicking the inventory spacers in slotless storage items (satchels, backpacks,
+      some boxes) now behaves exactly the same as clicking the item sprites directly.
+      With the item-removal click delays now 0.2s across the board, the main effect
+      of this is that you can't pull things (M15...) out of your satchel while resting
+      or in a xeno stomach.
+  - bugfix: Can't attempt to throw stuff at objects inside storage items anymore.
+  - bugfix: Updated mob/../carbon attackhand to add the attack delay to the *attacker*
+      rather than the victim. Originally they all had this code but humans and xenos
+      were updated to their current state while /carbon was left unchanged. Being
+      punched/disarmed should no longer add action delay to you. Note that this is
+      for human -> human or human -> xeno attacks with an open hand; this had nothing
+      to do with xeno -> human attacks.
+2021-03-26:
+  Carlarc:
+  - tweak: The event-only Human Hero subrace has been buffed. They can't break bones,
+      and have halved stuntime. For now this basically only affects the Dutch's Dozen.
+  Firartix:
+  - rscadd: Framework for Nightmare round variations has been reimplemented directly
+      ingame, and old NMC config ported over
+  - experiment: LV Xeno Structures in Distress Signal are now based off XvX ones pending
+      potential changes - this means significant additional spawned Xeno structures
+  - maptweak: LV-624 received a general lookover, with some changes to area zoning,
+      redesigns (notably Sand Temple), and new nightmare inserts (by Nanu)
+  - maptweak: Big Red Nightmare inserts were retouched across the board to fit recent
+      changes (by BigBoyyo)
+  - maptweak: LV, BR, Trijent, and CORSAT had their folders structures modified, and
+      nightmare landmarks and files added
+  - maptweak: Converted part of inserts to use template_noop, reducing chance of them
+      overlapping
+  - maptweak: Sigma Biodome Ice variation now has its own area and handling
+  - imageadd: Added Nightmare Landmark icon (by Triiodine)
+  - imageadd: Added an icon for xeno wall membrane spawners
+  - tweak: Hive structures should now correctly respect map turfs layering
+  - tweak: Refactored structure spawners to give them more flexibility, eg. per-mode,
+      and added membrane spawner
+  - bugfix: fixes to CI map reports task
+  GabeGnuwall:
+  - rscadd: Ghost messages now have a link to follow the person who said them
+  GoldenDarkness55:
+  - tweak: Removed incendiary shrapnel from RPG WP rocket
+  Segrain:
+  - bugfix: CORSAT Doctor survivors now properly get their gear and skills.
+  The_Flying_Flail:
+  - rscadd: 'Added new survivor types to various maps (details down below). '
+  - rscadd: 'Re-introduced old survivor type to CORSAT to accompany changes to CORSAT
+      corporation LIASON.  '
+  - rscadd: Added new load-outs to survivor types with the cosmetic overhaul
+  - tweak: Cosmetic overhaul to pre-existing survivors to suit the theme of map.
+  - tweak: Tweaked survivor melee skills to be slightly more proficient in melee combat
+  - tweak: Survivor loadouts for pre-existing survivors
+  - bugfix: Gave prisoner survivor and gang leader satchels.
+  - bugfix: Gave Gang Leader melee skills as the prisoner survivor had melee skills
+      while the prison leader did not
+  Vanagandr:
+  - rscadd: Being injured by a thrown object now has impact flash and sound effects.
+2021-03-27:
+  Firartix:
+  - bugfix: fix minor issue with synthesis simulator and relating improper chems
+  - tweak: added missing keybinds for Whisper and Cycling intent
+  Nanu:
+  - maptweak: Fixes LV NM Insert for CLF regarding Fog issue.
+  Waltermeldron:
+  - bugfix: Fixed a gc issue where human mobs would be retained in a tech's already_accessed
+      even if they were gibbed.
+  - rscadd: Added offensive structures tech which unlocking movable walls, shield
+      pillar and the acid grenade.
+  - rscadd: Added communications blackout tech, preventing radios on the queen's zlevel
+      from being used for a temporary amount of time.
+  - rscadd: Added evolution boost, which boosts the rate of evolution considerably
+      for a temporary amount of time.
+  - tweak: Changed weed damage reduction to have the power level configurable, which
+      scales the point loss per minute as well.
+  - tweak: You can no longer throw items/grenades/etc over cades unless you are behind
+      them.
+  - rscadd: Added in special glows that occur when a xeno/marine has toxins or is
+      fortified by the weed damage reduction tech.
+  - rscdel: Removed the gradual increase in evolution points that xenos get.
+  - rscdel: 'Removed the following techs: Overshield, Frenzy, Xeno acid blood'
+  - bugfix: Fixed movable walls pushing items and dead bodies.
+  - bugfix: Fixed resin acid grenades not carrying over the correct hive properly.
+  - bugfix: Fixed movable walls not visibly taking any damage.
+  - bugfix: Fixed lists possibly not getting cleaned up properly for movable walls.
+  - tweak: Buffed shield pillar to decay slower and to give more shield on proc.
+  - tweak: Tweaks the price of offensive structures to be less.
+  naut:
+  - imageadd: Added tech tree sprites for dropship budget increase, req budget increase,
+      and cryotroops.
+  - imageadd: Added implant box and ammo kit sprites.
+  - imageadd: Added an (unimplemented) 'ringing' telephone state for future implementation.
+  - tweak: Telephone side-view sprites are now centered. May need mapping updates
+      to make this look good.
+  - tweak: Modified the descriptions of a few techwebs related items.
+2021-03-28:
+  Waltermeldron:
+  - tweak: Moved fortifying weeds back to T2 and moved shielding slashes up to T3.
+  - tweak: Buffed shielding slashes to give a lot more shield and to acquire shield
+      faster.
+  - tweak: Nerfed wall-piercing ammo to be on the same level as AP, however, it does
+      slightly more damage.
+2021-03-29:
+  Carlarc:
+  - rscdel: Removed barricade bullet resistance and decreased acid resistance. This
+      means cades will be weaker against acid spits and bullets.
+  - tweak: Acid spraying a cade coats it in acid.
+  - soundadd: Slamming into a barricade or unpounceable human (shields, hunters) causes
+      a BONK sound effect. Reduced duration for all slamming stuns. Credits to Forest2001
+      for the .ogg.
+  - rscdel: You can no longer slam into barricades if you're a T3.
+  - rscadd: You can now multitool sentries if they're above 50% health.
+  - tweak: M39 burst scatter value doubled and burst firerate slightly decreased.
+  - tweak: M39 can no longer fit the vertical grip.
+  - tweak: Allowed UA armor to be worn with anything.
+  Carnage068:
+  - tweak: Vanguard's Shield decays over 1.4 seconds, up from 0.4.
+  Nanu:
+  - maptweak: For LV - Fixes chokepoint on West Caves, and Nightmare Insert Temple.
+  Segrain:
+  - tweak: Slashing shield now adds a shield immediately upon reaching maximum amount
+      stored.
+  Vanagandr:
+  - tweak: Made full darkness marginally darker. Only cheaters will notice any difference.
+  - tweak: You can no longer spam the backpack sound by repeatedly trying to insert
+      something that doesn't fit.
+  - tweak: You can no longer insert a burning item into storage. This means lit flares,
+      active welding tools, matches, cigarettes, lighters etc. Technically also the
+      plasma cutter, but those are just map flavour at this point as far as I can
+      tell.
+  - bugfix: Fixed the torii arch on some maps. While it could be message spammed with
+      a flame source, it could not actually be lit. It was also banged on during lighting
+      attempts or just with objects in general, which seems disrespectful.
+  - tweak: Adds enter to hotkey binds.
+  Waltermeldron:
+  - rscdel: Disabled the voting callback adjustment system.
+  - rscdel: Disables Sorokyne Strata, Prison Cellblocks and CORSAT from being voted
+      on.
+2021-03-30:
+  Carlarc:
+  - rscdel: Fatties have been removed.
+  Triiodine_Bongosz_Fourkhan_WalterMeldron:
+  - imageadd: Resprited squad glove objects.
+  - imageadd: Resprited helmet netting, adjusted the M10 rain cover.
+  - rscadd: Added trimmed barbed wire, integrated gasmasks, broken NVGS, a bullet
+      pipe, and squad colored lucky feathers to loadout.
+  - bugfix: Fixed the lucky feather not rotating properly.
+  - experiment: Added another ERT Te-[FURTHER DETAILS REDACTED BY ORDER OF UA HIGH
+      COMMAND].
+  - experiment: Made phosphorus grenades actually work against aliens and humans.
+      They are incredibly deadly to both sides.
+  Waltermeldron:
+  - tweak: Disabled the background option from human life subsystem.
+  - bugfix: Fixed ERT shuttles.
+  naut:
+  - rscadd: Added tactical tools (and a pouch for them to go in). Function identically
+      to their normal counterparts but come in matte black and deal more damage.
+  - rscadd: Added a tactical medical pouch. Contains techwebs-level upgraded medical
+      equipment, and a fire extinguisher just in case.
+  - rscadd: MARSOC now starts with one of each techweb stimulant in their backpack.
+  - imageadd: Added dedicated sprites for the MARSOC rucksack, matte black tools,
+      and MARSOC medical and tools pouches.
+  - tweak: Removed some buckshot and a phosphor grenade from the MARSOC backpack to
+      accomodate the stimulants, and added an extra C4.
+  - tweak: MARSOC now gets their own tactical medical and tools pouches.
+  - tweak: Changed (and fixed) descriptions of several MARSOC items.
+  - tweak: MARSOC balaclava is now a subitem of the PMC balaclava, and as a result
+      is now facehugger-resistant.
+2021-03-31:
+  Segrain:
+  - bugfix: MARSOC's backpack now has intended sprites.
+  - imageadd: M3-VL vests once again have their sprite when worn.
+  Waltermeldron:
+  - bugfix: Fixed RTOs being able to launch multiple droppods at once.

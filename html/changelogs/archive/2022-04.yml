@@ -1,0 +1,168 @@
+2022-04-03:
+  Geeves:
+  - bugfix: Warden praes no longer have an energy bar after dying.
+  Jackie_Estegado:
+  - rscadd: Forensic scanners can now store multiple fingerprints.
+  - bugfix: Fixed area scanning with forensic scanners.
+  KiVts:
+  - rscadd: Adds new munition for CAS AGM-84 'Harpoon' 150 power, 9 tiles wide, 300
+      points cost.
+  - rscadd: Adds new minirocket ammo - Flares for CAS, 150 points cost, similar to
+      mortar flare.
+  Kugamo:
+  - rscadd: Ghost distress beacon alert now has CLICKABLE link to join the response
+      team.
+  Segrain:
+  - bugfix: Hijacked dropship once again properly explodes walls around the crash
+      site.
+  - bugfix: Xenos ghosting no longer message ghosts if they are deleted or not actually
+      freed for taking.
+  - bugfix: Fixed exploits allowing acid runners to explode in vents.
+  Shad0vvs:
+  - tweak: Changed retro translator overhead color to white.
+  - bugfix: Now properly shows predator overhead text to all in the area.
+  - tweak: Renamed new human mob late joins as 'NEW JOIN' in niche admin logs.
+  - tweak: Adds the mentorsound to the SEA newplayer alert message.
+  - bugfix: Fixed the new player niche admin message to properly display late joining
+      new players as new players.
+  - bugfix: Fixed the SEA newplayer alert message to properly display both readied
+      and late joining new players.
+  - rscadd: Adds a verb to confirm if a mob is aghosted or not.
+  - tweak: Prevents aghosted mobs from showing on the available xenomorphs list.
+  - tweak: Only shows Xenomorphs that have 60 seconds left until triggered 'available'
+      so they aren't shown to clients beforehand.
+  - tweak: After 20 minutes, Starts the away_timer if your client is inactive (null
+      clients bypass this timer), this will kick those logged in but inactive for
+      10 minutes(Admins are immune to this kicking), along with allowing xenomorph
+      mobs to be taken if the client is inactive for 5 minutes (larva 1.3 minutes),
+      this includes the Queen.
+  Stan_Albatross:
+  - bugfix: attacking people with chairs while on surgery mode and help intent will
+      no longer silently stamina damage them.
+  forest2001:
+  - bugfix: Fixes me being stupid in whitelist tag settings.
+  ihatethisengine2:
+  - bugfix: heal_over_time effect (queen's heal, fruits) now also heals burn damage.
+2022-04-04:
+  Stan_Albatross:
+  - tweak: The shoulder holster can now hold two pistol magazines or speedloaders,
+      alongside a pistol or revolver.
+  - tweak: removing the reinforcement from a fueltank now gives you back the plasteel
+      you put in, instead of metal
+  - tweak: gave the premade sentries an icon in the map editor (this doesn't affect
+      in-game)
+  - maptweak: added two sentries to the south side of the ship in the LV CLF nightmare
+      insert
+  - rscadd: Added a specialised anti-vehicle single shot RPG for use in HvH events.
+      Its name is somewhat familiar. It can be folded up with unique-action and unfolded
+      with Z (attack_self)
+  - rscadd: Added anti-tank rockets for all rocket launchers, admin spawn only
+  - rscadd: Added the mar-50 LMG, an LMG version of the beloved MAR platform. Coming
+      soon to a CLF loadout near you.
+  - bugfix: fixed some broken icons for the knife harness
+  Vanagandr:
+  - tweak: 'Reworked req elevator animations: the contents of the elevator are now
+      visible in transit instead of teleporting.'
+  ghostsheet, Stan_Albatross:
+  - rscadd: Added a metal foam grenade - the M40 MFHS. Creates a metal foam blockade
+      with the same size as the HIDP grenade.
+  - rscadd: The M40 MFHS will available in REQ and also in engi, SL, and RTO vendors
+      for 5 points.
+  - tweak: Metal Foam damage is no longer RNG, it now has a fixed amount of health
+      - 45/85 depending on the type.
+  theflyingflail:
+  - rscadd: Added 5 hour engineering timelock for survivor
+  - rscadd: Added 5 hour medical role timelock for survivor
+  - tweak: raised squad role timelock on survivors to 5 hours
+2022-04-05:
+  Geeves:
+  - rscadd: Added an option to the Distress Beacon admin tool that lets them choose
+      whether to spawn the ERT team at their spawnpoints, or at the admin's current
+      location.
+  - tweak: Pheromone changing is now instant, you don't have to click the button twice
+      before the UI opens. To emit no pheros, just select the one you're currently
+      emitting.
+  - bugfix: Dutch's Dozen Flamethrower now properly spawns with its M60.
+  - bugfix: Dutch's Dozen now have their role on their IDs.
+  Geeves, monkeysfist:
+  - rscadd: Added CPR dummies to the SEA equipment rack. Use in-hand to deploy, drag
+      into hand slot to pick back up. Functions exactly as normal CPR otherwise.
+  Kugamo:
+  - rscadd: Added ability to attach rail flashlight to marine helmets.
+  - imageadd: Added sprites for when rail flashlight attached to marine helmets.
+  Stan_Albatross:
+  - rscadd: The walkman vendor now requires money for transactions. You didn't think
+      you were going to get away with getting them forever for free, did you?
+  - bugfix: vending subtype vendors will now properly update their UIs when you buy
+      stuff, swipe your card through them, etc.
+  - rscadd: added a new small shuttle for admin/event use. It docks on the top deck,
+      by engineering. The pizza ERT will also arrive via this shuttle.
+  - rscadd: added a separate small ert station for the small shuttle (known as the
+      VIP shuttle).
+  - bugfix: the shutters on the big shuttle will now only open on the side that they
+      need to, and will not open to space when docking.
+  - maptweak: moved around some shuttle transit locations on the admin level.
+  - maptweak: replaced the side by side single doors on the big ERT shuttle with proper
+      double doors
+  - rscadd: Added the S10 variable zoom scope - a scope that can switch between a
+      2x and 4x zoom level, but is otherwise identical to the S8 scope. You can move
+      while using the 2x zoom level. It spawns attached to sniper rifles but otherwise
+      cannot be acquired. You cannot switch zoom levels while scoped in.
+  - tweak: Reduced the slowdown from being scoped in with the s4 scope, removed the
+      inherent fire delay from it, and reduced its fire delay while scoped in a little.
+      You can always move while zoomed in with the s4 scope.
+  - tweak: Removed the slowdown when wielded and NOT aimed in with the s4 scope and
+      other miniscopes.
+  Stan_Albatross, Triiodine:
+  - rscadd: Added backpack sprayer reagent tanks, ported from TG. Research gets one
+      for their hydroponics, and some have been added to botany areas on the maps.
+      Sprites by Triiodine
+  - rscadd: Added a new synthtool - the backpack combined foam sprayer and extinguisher.
+      Works like a backpack sprayer, can act like an extinguisher or shoot targeted
+      globs of foam, or compacted foam ball projectiles. Foam globs cover 1 tile and
+      can only be fired adjacent to you, they cost 10 water to fire. Foam balls cover
+      3x3 and can be fired anywhere, they cost 100 water to fire. Extinguisher blasts
+      are as strong as pyro spec underbarrel flamer blasts, and they cost 10 water
+      to fire.
+  Vanagandr:
+  - rscadd: Added a two-pistol gunslinger belt, for Discount Ocelots. Not military
+      issue - getting them smuggled aboard will take some black-marketeering.
+  - tweak: Tweaks to gun belt code; revolver holster underlays no longer have snowflake
+      sprite offsets. Can now have multiple guns in a belt, horizontally-worn holsters
+      etc.
+  - tweak: Updated Beretta holster underlay to match its improved sprite.
+  - bugfix: 1911 now has an underlay when holstered.
+2022-04-06:
+  Shad0vvs:
+  - rscadd: Added choices to midis if they're to be played globally, to marines, xenos,
+      all inview, or a single mob inview. Added the single mob inview choice to internet
+      sounds as well.
+  Watermelon:
+  - tweak: Nightvision now has 3 modes instead of 2, allowing for an intermediate
+      mode which still gives you night vision but allows you to differentiate between
+      light spots and dark spots. Xenos and observers default to this intermediate
+      mode, marines NVG goggles are stuck on this intermediate mode.
+  - tweak: You can no longer see into pitch black areas if you don't have night vision
+      as a player anymore.
+  - rscdel: The toggle darkness preference has been removed. Observers now start,
+      by default, with night vision enabled.
+2022-04-08:
+  Solidfury7:
+  - tweak: Reduced damage from toxic water in trijent dam to larva.
+  Stan_Albatross:
+  - maptweak: Predators can now use the chemistry machines on the predator ship.
+  Vicacrov:
+  - bugfix: Fixed some stairs on Fiorina Science Annex hiding objects, such as barricades
+      or resin traps (#273) (#371).
+  ihatethisengine2:
+  - tweak: Spitter now can evolve into Praetorian.
+  - tweak: Praetorian now can choose whether to de-evolve into Spitter or into Warrior.
+  theflyingflail:
+  - rscadd: Added new gladiator armor item
+  - rscadd: Added new gladiator and hunter armor in pred ship cells
+  - tweak: Gladiator loadout to include first aid pouch
+  - tweak: Gladiator helmet now has increased protection
+  - tweak: Gladiator now has crowbar stored in the belt
+  - tweak: Gladiators now have hunter chain mail undersuit
+  - tweak: hunger games code due to gladiator armor and loadout changes
+  - tweak: Removed holy hand grenade from gladiator champion (nanu request)

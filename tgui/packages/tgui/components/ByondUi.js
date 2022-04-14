@@ -54,18 +54,19 @@ window.addEventListener('beforeunload', () => {
 });
 
 /**
- * Get the bounding box of the DOM element.
+ * Get the bounding box of the DOM element in display-pixels.
  */
 const getBoundingBox = element => {
+  const pixelRatio = window.devicePixelRatio ?? 1;
   const rect = element.getBoundingClientRect();
   return {
     pos: [
-      rect.left,
-      rect.top,
+      rect.left * pixelRatio,
+      rect.top * pixelRatio,
     ],
     size: [
-      rect.right - rect.left,
-      rect.bottom - rect.top,
+      (rect.right - rect.left) * pixelRatio,
+      (rect.bottom - rect.top) * pixelRatio,
     ],
   };
 };
@@ -132,11 +133,10 @@ export class ByondUi extends Component {
 
   render() {
     const { params, ...rest } = this.props;
-    const boxProps = computeBoxProps(rest);
     return (
       <div
         ref={this.containerRef}
-        {...boxProps}>
+        {...computeBoxProps(rest)}>
         {/* Filler */}
         <div style={{ 'min-height': '22px' }} />
       </div>

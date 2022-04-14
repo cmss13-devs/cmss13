@@ -1,0 +1,751 @@
+2020-12-02:
+  Nanu:
+  - maptweak: Made all stairs on Almayer 3x3 instead of 2x2
+  - maptweak: Moved North pods and South pods slightly on upper deck.
+  - maptweak: Moved maint. a few places to accomodate the size of new stairs.
+  - maptweak: Fixed an Area issue in brig.
+  - maptweak: Stairs have vehicle blockers. No APC or Tank allowed on upper deck!
+  Segrain:
+  - bugfix: Grinder now correctly names bottles it creates.
+  ghostsheet:
+  - bugfix: Fixed gun info to correctly display burst fire RPM. Re read those stats
+      and weep people.
+  spookydonut:
+  - bugfix: Ports two timer fixes from tg
+  - tweak: Port ztrait code (but not really)
+  - tweak: Ports config controller
+2020-12-03:
+  Firartix:
+  - bugfix: restore default config for limbs
+  Segrain:
+  - tweak: Being unassigned from a fireteam or from the position of fireteam's leader
+      is now accompanied by a highly visible message.
+  Triiodine:
+  - maptweak: Removed a misplaced mob type in the CIC bathroom wall.
+2020-12-04:
+  BIgboyyo:
+  - tweak: SVD is no longer locked to specialists
+  - maptweak: clfship_survivors has been reworked and enabled
+  Nanu:
+  - rscdel: Deleted the ghost of USS Almayer...
+  - maptweak: Added Kitchen Shutters again.
+  - maptweak: You can no longer build on stairs in the Almayer
+  - maptweak: Deleted a random button in brig not tied to anything.
+  - maptweak: Added a couple lights near the stairs on the upper deck.
+  - maptweak: Fixes Buttons, CMP Shutters, Armory Lockdown from CMP office, Hangar
+      Lockdown from CMP office, Added access requirements to said buttons.
+  SpartanBobby:
+  - tweak: Brought in Thar'n shipwrights to upgrade the interior design of the Huntership
+  TheDonkified:
+  - bugfix: Wall holes from xeno slashing will have proper directions now
+  Triiodine:
+  - maptweak: Removed timed shutters and hull walls that shunted players into the
+      chapel on Prison.
+  - maptweak: Did a quick and dirty QOL pass on Prison, replacing some stairs with
+      perspective stairs, widening chokes, removing some extra security checkpoints
+      and some other flank changes. The map should be generally more navigable.
+  - maptweak: Added food to the canteen on Prison Station, remapped the Research Armory
+      and its contents.
+  Waltermeldron:
+  - bugfix: Fixed a dangerous exploit.
+  - bugfix: Fixed explosions freezing in place.
+  - bugfix: Fixed predator sprites.
+  Watermelon914:
+  - bugfix: Fixed a warning when compiled.
+  optimisticdude:
+  - rscadd: Introduces M2C Heavy Gunner Kit to Main Req Vendors at a limited scale
+      (four per round, no more no less), this kit is built to act as a vanguard/flanking
+      fire support using its C4 to breach through walls and barriers, and automatic
+      machine gun to deal high damage in an immediate effect and area.
+  - rscadd: 'The M2C Heavy Gunner Kit comes with 2 sticks of C4, a tool pouch with
+      an industrial welder, a crowbar, a wrench and an fire extinguisher to help with
+      creating breaches in fences, cades or doors, a M10 Technician Helmet to shield
+      the user''s eyes, a pamphlet for engineering training and a M2C Heavy Machinegun
+      System along with 500 rounds of ammunition in 125-round ammo boxes with a holster
+      to stow this ammo. This kit is heavily designed for short and decisive attacks,
+      and creating new flanks for marines to take advantage of to pressure Xenos. '
+  - rscadd: 'Introduces M2C Heavy Machinegun, an upgraded and revised version of the
+      M56D; it comes with full automatic fire capability and higher damage and rate
+      of fire but less AP than the M56D, along with a more flexible and reactive tripod.
+      However, it also has a debilitating overheating mechanic which limits sustained
+      suppressing fire, or long-term engagements with its limited ammunition supply.
+      Furthermore, it cannot be built near cades (adjacent tiles) in a 3x3 bubble,
+      encouraging aggressive placement and positioning. '
+  - rscadd: 'Adds special sound effects for the M2C HMG, including a shooting, overheat-cooling,
+      rotating, reloading, ammo ejecting, and disassembling effect. '
+  - rscadd: 'Adds sprites for (dis)assembled and destroyed M2C HMG, ammo box sprites,
+      and sprites for the belt and other tools. (Credit to Triiodine for the gun,
+      ammo and belt sprites) '
+  - bugfix: 'M2C HMG should no longer "black screen" upon folding the gun. '
+  - spellcheck: 'Typos fixed in description, revision of overheat information. '
+  - tweak: 'Changes some numbers to make it more reactive to overheating overlaying. '
+  spookydonut:
+  - tweak: Remove unused/uncompiled code
+  - tweak: Press F5 in vscode to launch debugger https://github.com/SpaceManiac/SpacemanDMM/wiki/Setting-up-Debugging
+2020-12-05:
+  Waltermeldron:
+  - tweak: Tweaked the Prime icon for xenomorphs (Thanks to Triiodine for the sprites).
+  - bugfix: Fixed a runtime with qdel.
+  - rscadd: Reworked the truck. Renamed it to van.
+  - rscadd: The van is now a fast-moving vehicle, with the ability to entire overdrive
+      with shift + click.
+  - rscadd: The van now deals no ram damage and cannot ram over humans.
+  - rscadd: The van wheels can be repaired without having to take them off.
+  - bugfix: Fixed LV-624 CLF survivor insert.
+  alardun:
+  - bugfix: Fixed an exploit where the Sniper could make any marine cloak.
+  - bugfix: It is no longer possible to keep your bipod and/or sniper cloaking while
+      traveling via stretcher or office chair (including extinguisher).
+  - bugfix: Aimed shot no longer wrongfully tell you you can shot through tank or
+      some xeno structures.
+  - bugfix: Cloaking while interacting with an object (such as a M2C Heavy Machine
+      gun) will force you off the object.
+  - tweak: It is now possible to do nearly anything but moving while stealthing without
+      breaking the channel.
+2020-12-06:
+  BIgboyyo:
+  - maptweak: The conference room behind CIC has been reworked.
+  - maptweak: CO office has been changed a bit.
+  - maptweak: as a reward for being a good cat jones now has their own office!
+  - maptweak: CIC has been slightly changed to be less of a hassle to operate.
+  Kryth:
+  - tweak: Changed Pressurized Reagent Pouch revival mix from 5/5/5 Peridaxon/Epipharine/Inaprovaline
+      to 3/6/6 Peridaxon/Epipherine/Inaprovaline
+  Segrain:
+  - bugfix: Research skill is now properly included in the Check Skills window.
+  - tweak: Chemical investigation ERT is now provided with the research skill needed
+      to do their job.
+  - bugfix: Construction nodes on dropships can now be properly completed even if
+      the dropship has started or finished moving between the node's designation and
+      completion.
+  Snakebittenn:
+  - rscadd: Reflavors Tradeband to Japanese
+  TheDonkified:
+  - tweak: Hedgehog speed is slightly buffed.
+  - tweak: Scatter sentinel can no longer sleep or daze marines.
+  - tweak: Scatter sentinel got a slight speed buff.
+  - tweak: The max DEFCON points for LV and Kutjevo have been increased by about 13%.
+      The threshold levels have been changed to reflect this.
+  - tweak: Hardpoints can only be repaired one at a time by the same person.
+  - tweak: Runner min and max tackles have been changed. Min is now 3 tackles and
+      max is now 4 tackles.
+  - tweak: Carriers no longer drop huggers upon death.
+  - tweak: Facehuggers will now show up over tall grass.
+  - tweak: Hugger lifetime has been reduced to 10 seconds.
+  - tweak: Putting a hugger back in an egg will no longer bug out the egg permanently.
+      After 30 seconds it will properly trigger again.
+  - tweak: Filling hugger traps has a windup (acid traps do not have a windup).
+  - tweak: Egg morpher trigger radius is now 2 centered on the morpher (3x3).
+  - tweak: Xenos can devour people who have bursted.
+  - tweak: Cloaked scouts cannot prime grenades.
+  - tweak: Mortar and CAS have warning messages (with directions).
+  - tweak: There is a 0.5 second delay for CAS when a fire mission is executed.
+  - tweak: OB warning messages have underlines under their direction component.
+  Waltermeldron:
+  - bugfix: Fixed van stalling for a second after turning.
+  - tweak: Van can no longer bump immobile mobs (Queen and Crusher).
+  - rscadd: Added viewports to the interior of the van.
+  - bugfix: Fixed viewports in vehicles overriding the interaction of whoever was
+      driving.
+  ghostsheet:
+  - rscadd: Screenshake has been reworked and updated to hopefully be less laggy and
+      smoother.
+2020-12-07:
+  Waltermeldron:
+  - bugfix: Fixed a lot of runtimes.
+  spookydonut:
+  - tweak: Port tg game ticker
+2020-12-08:
+  ChainsawMullet:
+  - tweak: Oppressor Praetorian's Dislocate now reduces the cooldown of Abduct and
+      Tail Lash when landing an empowered Dislocate on a stunned/rooted/slowed target.
+  - tweak: Oppressor now has 700 Health, up from 640.
+  - tweak: Vanguard now has 600 Health, down from 700.
+  - tweak: Vanguard's shield now takes 20s to reform, up from 12s, and lingers for
+      1.5s after being broken, up from 0.7s.
+  - tweak: Base Praetorian's spit has been given an extra tile of range (should be
+      6 tiles).
+  - tweak: Base Praetorian now has 25 armour, up from 0.
+  TheDonkified:
+  - bugfix: Staff "Rejuvenate" verb works on dead xenos again.
+  - experiment: Reverted or tweaked some changes from the balance patch a few weeks
+      ago.
+  - tweak: Queen health and armor change reverted. Armor is 25 (from 35). Health is
+      1000 (from 850).
+  - tweak: Ravager health and armor change reverted (hedgehog and berserker still
+      have less health than base ravager from the old balance patch). Armor is 25
+      (from 30). Base ravager health is 600 (from 500). Hedgehog and berserker health
+      are 540 (from 440).
+  - tweak: Dancer has 20 armor (from 0).
+  - tweak: Praetorian slash damage variance reverted. Slash damage is a consistent
+      40.
+  - tweak: Reverted AP rifle ammo damage buff. Damage is 25 (from 30).
+  - tweak: Reverted additional flechette damage buff. Damage is 25 (from 30).
+  - tweak: Reverted additional buckshot armor penetration nerf. Armor penetration
+      is 5 (from 0).
+  Waltermeldron:
+  - bugfix: Fixed ERTs not properly initializing.
+  optimisticdude:
+  - rscadd: Readds Christmas MREs for food vendors near Cryosleep, happy holidays!
+  - rscdel: Temporarily removes """normal""" food from the food vendors, enjoy the
+      forced holiday spirit and not that scrub food!
+  - tweak: Reworked the names and the descriptions for Christmas meals, no longer
+      shall you suffer with legacy names!
+  - tweak: 'Buffs Christmas food. '
+2020-12-09:
+  BIgboyyo:
+  - maptweak: 'Changed the type of windows jones''s office uses. '
+  - bugfix: The soda machine in the conference room should no longer block people.
+  ChainsawMullet:
+  - tweak: Changed the Elder Cape to only spawn for Elders and Clan Leaders, rather
+      than Elites.
+  TheDonkified:
+  - experiment: Lowered lurker ability plasma costs.
+  - tweak: Pounce costs 1/20 of lurker's max plasma.
+  - tweak: Cloak costs 1/20 of lurker's max plasma.
+  - tweak: Crit slash costs 1/20 of lurker's max plasma.
+  - tweak: Buffed lurker health regen.
+  - tweak: Buffed runner health regen.
+  - tweak: Buffed warrior health regen.
+  Vanagandr:
+  - bugfix: Caps can now be taken out of storage items properly.
+  - bugfix: Items stored in caps (cigarettes, goggles, welding goggles, pens) will
+      no longer hover overhead when the cap is held in hand.
+  - bugfix: An M240-T stored in a Pyro spec's Broiler pack will no longer continue
+      to float behind his shoulder while he carries the pack in his hands.
+  - bugfix: Medical dummy tablet can now give it IB properly.
+  Waltermeldron:
+  - bugfix: Crushers can no longer ventcrawl.
+  - rscadd: Added more queen abilities.
+  - rscadd: Queen Heal and Plasma Transfer is now an activable that no longer requires
+      overwatching.
+  - rscadd: Queen can now build resin structures without having to overwatch a xenomorph.
+  - rscadd: Added weak weeds, which the Queen can place down. Placing down weak weeds
+      on weak weeds will turn it into a weak node, which'll expand like a regular
+      node. Weak weeds have no slowdown for marines and the nodes are 1-shot. However,
+      drones can plant over the weak nodes to instantly convert all connected weak
+      weeds into regular weeds.
+  - tweak: Reduced cooldown on transferring leaders.
+  ghostsheet:
+  - tweak: Ventcrawl has been slightly polished, you will no longer see double pipe
+      when exiting.
+  - bugfix: Bonus projectiles display has been corrected. Examine those shells and
+      do some math people.
+  optimisticdude:
+  - bugfix: 'Fixes M56D bug with the tarp. '
+  - bugfix: Fixed a critical bug where the M2C HMG couldn't be field recovered upon
+      being destroyed.
+  - bugfix: Fixes the blackscreen bug for the M2C once again.
+  - bugfix: Cloaked or cloaking on the M2C will automatically release the gun from
+      your hands.
+  - tweak: 'You can no longer auto mount the HMG if you have items in your inactive
+      hand, soft fix has been done to prevent shooting with either hand occupied with
+      an item; THIS IS NOT A FULL FIX. '
+  - tweak: 'M2C''s undeployed mode now has an internal health, it will only be healable
+      in field recovery (heals 110 from 0), and when deployed. M2C total health reduced
+      from 260 to 230. '
+  - tweak: 'The knockdown stun from being rammed while on the M2C by a Crusher has
+      increased. '
+  - tweak: M2C's assembly timer has been decreased from a base 0.8 to a flat 0.4,
+      falloff has been increased from 3 to 5 at 8 tiles, and M2C can no longer be
+      put against window frames. Rotating time has been nerfed from 0.3s to 0.5s,
+      its proper value.
+  - tweak: M2Cs now take boiler gas damage.
+  - experiment: 'Damage has been buffed from 45 to 50. Passive cooling has been nerfed
+      from 4 to 2.5 per 2 seconds. M2C also takes increased damage from overheating
+      (25 per instance to 35). Overheating limit has been changed from 45 to 30 while
+      its recovery time has been decreased from 2.2 seconds to 1.2 seconds. This is
+      to experiment with a new doctrine of gameplay surrounding the HMG based on observations
+      collected for the past 2 days after first launch. '
+  - bugfix: Synthetics can now speak the two new languages.
+  - bugfix: 'Fixes Tactical Sign Language, the new key is :t. '
+  spookydonut:
+  - tweak: Make compatible vendors use shared list references
+  - tweak: Local users now have full access to make life easier for devs
+2020-12-10:
+  Segrain:
+  - bugfix: Spanish pamphlet is actually usable now.
+  Triiodine:
+  - rscadd: Removed the hand teleporter from old prison
+2020-12-11:
+  Segrain:
+  - bugfix: Items once vended from the smartfridges' shared network no longer mysteriously
+      disappear from their new locations at later time.
+  forest2:
+  - tweak: Gave UPP and PMC ammo pouches the correct amount of ammo.
+  - tweak: Changed the PMC Sharpshooter to the PMC Specialist to reflect their skills.
+  - tweak: Changed the PMC Gunner's job from PMC Specialist to PMC Support Specialist
+      to reflect their skills.
+  - tweak: Changed PMC Gunner's paygrade to PMC2S to match the above.
+  - bugfix: PMC Medic paygrade changed to PMC2M to display correctly upon inspection.
+  - rscadd: Deathsquad now have comm titles to tell eachother apart. (CC for standard,
+      CCM medic, LCC lead, CCT terminator)
+  - tweak: Renamed the Fleet Admiral equipment preset to UPP Fleet Admiral to reflect
+      it's contents.
+  - tweak: Changed the USCM Admiral equipment preset to be Rear Admiral instead of
+      Vice Admiral to reflect it's usual usage.
+  - rscadd: Added a log to Hunters changing their self-destruct size.
+  - rscadd: Added a log to Hunters cloaking & decloaking
+  - rscadd: Added a log to Hunters cancelling their self-destruct.
+  - rscadd: Added a log to Hunters creating new teleport locations.
+  - rscadd: Added a Hunter AI Broadcast when a new teleport location is created.
+2020-12-12:
+  Memesky:
+  - tweak: CO joining now creates a big AI announcement, rather than a small one.
+  TheDonkified:
+  - tweak: AP rifle ammo (L42A and M41A) damage buffed from 25 to 30.
+  - tweak: Additional flechette damage buffed from 25 to 30.
+  - tweak: B8 incurs a damage debuff when equipped (damage mult lowered by 20%). In
+      wiki terms, it "Greatly decreases damage".
+  - tweak: BC for M41A nerfed from a 20% damage boost to a 15% damage boost.
+  - tweak: LV, CORSAT, and Sorokyne DEFCON thresholds lowered to be more reasonable.
+      Need 5150 points for DEFCON 1.
+  Unlucky_D:
+  - bugfix: Boiler will no longer glow like a Christmas tree after being on fire
+  Vanagandr:
+  - bugfix: Fixed typos in some grenade descriptions, as well as pill examine and
+      dissolve action text.
+  - bugfix: Fixed the hot drinks vending machine sprite jumping when vending.
+  Waltermeldron:
+  - tweak: Renamed "Show Xeno Age" to "Enable Playtime Perks".
+  - rscadd: Marine jobs will now get medals upon spawning depending on their playtime.
+      This can be disabled through the "Disable Playtime Perks"
+  - rscadd: The van is now slowed down on weeds.
+  - tweak: Runners can no longer slash vehicles.
+  - tweak: Increased universal damage taken by vehicles to a multiplier of 1.5x.
+  - tweak: Vans can now be driven by all survivors.
+  - tweak: Increased the amount of damage wheels take to be equivalent to tank treads.
+  - tweak: Added a permanent van spawn on big red, locked by poddoors. Can be opened
+      with a button at the marshal detective office. 4 vans spawn at this location
+      with 2 decrepit and 2 fixed. 2 extra van wheels also spawn at this location
+      which are unacidable to give marines a chance to use these vans (if survivors
+      don't take them all).
+  alardun:
+  - tweak: Electrogenetic properties is now consumed at a static 1 per revive attempt,
+      rather than a value equivalent to the level. In other words, Epinephrine now
+      is consumed at 1 per revive attempt rather than 4. Actual healing untouched.
+      This is the behaviour from before the property rework of June.
+  - tweak: The lock-on noise from Sniper Aimed Shot should now be quieter (and get
+      fainter by distance). No more super loud noise for the Boiler who's 2 screen
+      away from the target.
+  optimisticdude:
+  - soundadd: 'Changes the M2C firing noise to something similar to its original rendition,
+      added extra volume and bass. '
+2020-12-13:
+  ChainsawMullet:
+  - tweak: Hunter melee damage has been rebalanced and normalised across the board.
+  - tweak: Hunter melee armour reduced heavily, hunter bullet armour increased slightly.
+  - tweak: Hunter pouch given 2 extra storage slots.
+  - tweak: Scythe double hit chance has been reduced and no longer has bonus chance
+      vs Xenos.
+  - tweak: Scythe now only uses one sprite.
+  - tweak: 'Combi-stick is now catchable and has a 4 tile range. '
+  - tweak: Large Harpoons now have a 4 tile range and slightly reduced damage.
+  - tweak: Ceremonial Dagger damage reduced.
+  - tweak: Thwei now recovers blood, it is 3x stronger than Iron (don't use it on
+      humans, Hunters).
+  - maptweak: Brought in Nhon shipwrights to fix what the Thar'ns broke.
+  - bugfix: Hunter weapon sprites are now masked correctly.
+  Firartix:
+  - bugfix: audio heard from outside in vehicles is now properly spatialized
+  - tweak: audio sent inside vehicle now uses falloff for increased range reduction,
+      rather than flat volume decrease
+  - tweak: audio now not only leaks into vehicles, but also out of them
+  - tweak: audio propagation within interiors is now bound to chunk instead of ranged
+  spookydonut:
+  - tweak: Add missing tgui package jsons
+2020-12-14:
+  Waltermeldron:
+  - tweak: Changed default svg to Weston-Yamada.
+  optimisticdude:
+  - rscadd: 'Squad Engineers now get the lowest driving skill tied with SLs, enabling
+      them to drive colony vans. '
+  spookydonut:
+  - tweak: Update spacemandmm to 1.6
+2020-12-15:
+  ChainsawMullet:
+  - tweak: Increased Crusher's base slash damage from 35 to 40.
+  - tweak: Increased Crusher's health from 500 to 600.
+  - tweak: Reduced Crusher's armour from 35 to 30.
+  - tweak: Increased Crusher's plasma from 200 to 400.
+  - tweak: Reduced Cleave damage from 60% of base slash to 40%.
+  - tweak: Increased slash cooldown reduction from 1s to 1.5s. Cleave remains at 0.5s.
+  - tweak: Reduced damage of Crusher's Charge from 70 to 60.
+  - tweak: Increased Crusher's Shield from 150 to 200.
+  Nanu:
+  - maptweak: These map changes are specifically for the LV Nigthtmare insert of CLF-Ship.
+  - maptweak: Removed M60 from CLF spawn.
+  - maptweak: Removed space tiles.
+  - maptweak: Fixed corruption errors.
+  - maptweak: Changed M56D's from WO version to normal version.
+  - maptweak: Added another flank to the ship.
+  - maptweak: Slight Cavern changes.
+  - maptweak: Full rework of Nightmare insert soontm.
+  spookydonut:
+  - tweak: Shrink makedatumreflists and remove some unused globals
+2020-12-16:
+  Segrain:
+  - bugfix: Emergency walllockers no longer irretrievably consume items (such as intelligence
+      objectives).
+  TheDonkified:
+  - bugfix: Builder castes can build again.
+  - bugfix: Warriors can no longer double lunge.
+  naut:
+  - tweak: Synthetic prefix on inspection is now blank instead of '???'.
+  - tweak: Synthetics can now speak and understand Japanese and Spanish.
+  - bugfix: Synthetic snowflake vendor now properly displays proper vanity items again.
+  spookydonut:
+  - tweak: Updates helpers
+2020-12-17:
+  Firartix:
+  - bugfix: fix bug allowing to build from stacks without a cost
+  TheDonkified:
+  - tweak: Lowered the ranges of mortar and CAS warning messages. First message has
+      a 15 tile range from where the impact turf. Second message has a 10 tile range
+      from the impact turf.
+  - tweak: The first mortar warning message is no longer the size of the OB warning
+      message, however it is still red, bold, and contains the underline.
+  - bugfix: CAS, OB, and mortar messages should appear if you are standing on the
+      tile of impact now.
+  Vanagandr:
+  - rscadd: Hypospray reworked, autoinjectors tweaked.
+  - bugfix: Bug with attempting to remove unlocked hyposprays from inventory pulling
+      the vial out fixed. Bugs with hyposprays filling from any reagent container
+      fixed.
+  - tweak: Hyposprays and autoinjector sfx are a bit more audible now. Emergency autoinjectors
+      now have a very distinct sfx.
+  - rscdel: Hypospray unlocked state made default, vial lock removed. Autoinjectors
+      no longer have a vestigial vial lock verb.
+  - imageadd: Hyposprays now have in-hand sprites, an unloaded sprite, and a window
+      on the side displaying their contents.
+  - tweak: Hyposprays can have their dose changed between 5u (current), 10u, 15u,
+      and 30u. They can be alt-clicked to switch between these settings.
+  - tweak: Examining a hypospray now displays its vial and remaining reagent volume,
+      if any, and its current dose setting.
+  - rscadd: The hypo now handles much like a pistol; hold it and click it with an
+      empty hand to remove the chemical vial; hold an unloaded hypo and click it with
+      a vial to load it.
+  - rscadd: If you have medical skills, you can click a vial with an unloaded hypospray,
+      or click-drag a vial to an unloaded hypo, to perform a 'tactical reload'. This
+      will transfer the old vial into your other hand, or drop the old vial on the
+      ground if your hands are full.
+  - rscadd: The hypo can still be filled without removing the vial; it fills like
+      any other beaker or flask, including pill dissolving, reagent tanks, and transfers
+      from other vials. Of course, you can't transfer chemicals into a hypospray that
+      doesn't have a vial.
+  - rscadd: The top-up port has a one-way valve; if you want to remove reagents from
+      a hypospray, either syringe it or remove the vial.
+  - rscadd: For the most part, this is all *additional* functionality - you can still
+      use it in the same way you did before without any problems.
+  - rscadd: I've tested this repeatedly and it all works as expected, but if you notice
+      hypos or autoinjectors behaving strangely, @ me.
+  Waltermeldron:
+  - rscadd: All assemblies have been changed to use tgui.
+  - tweak: Fuel tanks can now be detonated whilst reinforced. They still cannot be
+      shot/flamed/exploded to detonate, they must be manually detonated or they must
+      react with an explosive chemical. Exceptions are for very large explosions (e.g.
+      OB).
+  - tweak: It now takes 10 plasteel to reinforce a fueltank.
+  - bugfix: Fixed timer and proximity sensor.
+  spookydonut:
+  - tweak: landmarks refactored to speed everything up
+2020-12-18:
+  Carlarc:
+  - rscadd: Buffed Defender.
+  - tweak: Reduced crest toggling cooldown to two seconds. Toggling crest now also
+      lowers speed twice as much and increases mob size, meaning lowered crest defenders
+      resist stuns the same way hivelords and carriers do. You can now headbutt with
+      lowered crest as both strains.
+  - tweak: Changed how headbutt works significantly. Headbutt deals 20 damage with
+      5 penetration to the chest, only works next to the target, and pushes the target
+      away 3 tiles. Lowered crest headbutt has a 3 tile homing range and deals 30
+      damage with 5 penetration to the chest, but pushes only one tile away.
+  - tweak: Tail whip ignores barricades and now does the *tail emote.
+  - tweak: Increased defender health and explosion resistance by two tiers, removed
+      slash damage variance.
+  - bugfix: Fixed tail whip costing plasma even when not actually activating.
+  - tweak: Steel crest reduces normal damage by 5, increases headbutt damage by 5,
+      pushback by 1. Buffed steelcrest fortify's resistance to mostly default fortify
+      levels, but at the cost of a slower movespeed.
+  - tweak: Default strain defenders in fortify resist stuns. Steelcrest defenders
+      resist non-explosive stuns and can slash, with a 50% damage reduction, to 10
+      total damage.
+  - rscadd: Slamming into a wall after being thrown or flung into one now gives a
+      message and sound indicating the hit.
+  - bugfix: Steelcrest defenders are no longer almost as fast fortified as they are
+      unfortified. They are now slightly slower than pre-buff, and have reduced armor.
+      However, they can still headbutt with a 1-tile push range, and can slash marines
+      to deal 10 damage.
+  Segrain:
+  - bugfix: Hijack no longer deletes spawn pool on the hijacked dropship.
+  - bugfix: Hijack no longer affects uninvolved hives.
+  - bugfix: Attempting to recharge a smartpack from nearly empty APC no longer breaks
+      its cell.
+  Sigil:
+  - rscadd: Added the M276 pattern mortar operator belt and the USCM mortar shell
+      backpack.
+  - rscadd: The belt and backpack can both be found in the requisitions armaments
+      vendor. The belt is also one of the options for squad engineers.
+  - rscadd: The M276 pattern mortar operator belt can hold 4 shells of any type in
+      addition to a sidearm, the backpack can hold 8 shells and cannot be accessed
+      while worn.
+  - imageadd: Added sprites for the mortar shell belt and backpack.
+  - tweak: The mortar crate ordered from requisitions now contains one USCM mortar
+      shell backpack in addition to the mortar itself.
+  Waltermeldron:
+  - tweak: Increased weak resin cooldown and plasma usage.
+  - tweak: Weak resin can only be built from the cardinal directions. No more diagonal
+      weeds.
+  - tweak: Weak resin can no longer be built on the same tile for 15 seconds after
+      it is placed down.
+  - bugfix: Weak resin can no longer be built over cades and over walls.
+  ghostsheet:
+  - tweak: Pyrotechnician G4-1 fueltank can now quick draw on click.
+  - tweak: Extinguisher no longers accidentally discharge when put into storage.
+  naut:
+  - imageadd: Heartbroken, DNR, Wanted, and critical revive (orange) icons now flash.
+  - imageadd: Admirals now have a unique HUD icon.
+  - imageadd: Added Military Warden icon to files; not yet implemented however.
+  spookydonut:
+  - bugfix: Fix ERT spawning
+2020-12-19:
+  Firartix:
+  - bugfix: fix race condition on game startup resulting in a runtime error with lobby
+      menu
+  alardun:
+  - bugfix: Reinserted the custom medic/EZ injectors sprite in the syringe sheet.
+  - bugfix: Reenabled quick-scooping injectors via vial boxes.
+  forest2001:
+  - rscadd: Originally based on an idea from FGR-Sentinel.
+  - tweak: Renamed "Office Area" (Pilots Office) to "Flight Office".
+  - tweak: Renamed "Vehicle Repair Bay" to "Deployment Workshop".
+  - maptweak: Removed roundstart dropship ammo.
+  - maptweak: Moved the Hangar Control Bubble northwards slightly.
+  - tweak: The security camera consoles in the Hangar Control Bubble now only view
+      the dropships.
+  - bugfix: Hangar Lockdown button has access requirements again. (Brig, CIC, Logisitcs
+      or Flight)
+  - maptweak: Moved the Flight Office north of the hangar. Access changed to Brig,
+      CIC, Logisitcs or Flight
+  - maptweak: Moved the Deployment Workshop north of the hangar. Shutters locked to
+      Brig, CIC, Logisitcs or Flight
+  - maptweak: Moved the OT Workshop to the original site of the Deployment Workshop
+      & Flight Office
+  - maptweak: Filled in the original space of moved and removed areas with metal foam
+      for potential future use.
+  - bugfix: The Normandy now has it's own intercom network again.
+  - maptweak: Gave the Agent Shuttle it's own area, it is no longer counted for round
+      end checks.
+  - maptweak: Made the Agent Shuttle doors unweldable, and unacidable (& no C4).
+  - maptweak: Fixed some area inconsistencies around CIC.
+  - maptweak: Replaced the walls around the key parts of CIC with reinforced hull.
+  - maptweak: Replaced a missing hull wall in the CO's office.
+  - rscadd: Ordnance Workshop now has it's own access ID.
+  - rscadd: Maintenance now has it's own access ID.
+  - rscadd: IDs for necessary jobs have been updated to retain access.
+  - rscadd: Stole the idea for an EOD locker in OT workshop from TheFlyingFlail
+  - bugfix: Agents and OTs will now spawn in the correct locations
+2020-12-20:
+  Firartix:
+  - bugfix: corrected tear gas grenade timers following assembly changes
+  - tweak: timer assemblies won't process anymore if they're secured but not active
+  Waltermeldron:
+  - rscadd: Changed the current admin panel to tgui.
+2020-12-21:
+  Carlarc:
+  - rscadd: Increased throwing knife belt and pouch capacity to 30 and 10 respectively.
+  - rscadd: Throwing knives deal roughly 100 damage and hit their target almost instantly.
+      Includes UPP knives.
+  - rscadd: Engineers and medics can buy G8 pouches in their clothing and equipment
+      vendor respectively.
+  - tweak: Non-PFC roles can no longer buy knife rig as their belt option, as it's
+      a noob trap.
+  - tweak: Tweaked holstering code so you can draw from knife rigs now. Will also
+      mean you open up things like G8 pouches if they have a gun inside.
+  - rscdel: Soporific and Chloral Hydrate now make you stumble around confusedly for
+      a few seconds until you drop unconscious on the ground. Both the total confusion
+      and sleeping are now capped at 20 seconds total.
+2020-12-27:
+  BIgboyyo:
+  - maptweak: 'Synth closet is now much more spacious. '
+  - maptweak: 'Synth closet now has a robot recharge station and spare robo-limbs
+      courtesy of Weston Yamada. '
+  - rscadd: Added Holiday Priest to synth vendor.
+  - tweak: The CHIMP70 gun and M57-4A no longer have ID locks on them.
+  - bugfix: 'Kutjevos landing zone can no longer be weeded before marines drop. '
+  - tweak: The XRF Scanner now scans much faster than before.
+  Bongosz:
+  - imageadd: Resprited Synth Councilor uniform.
+  Carlarc:
+  - tweak: Somewhat lowered Vanguard ability plasma costs.
+  - tweak: Defender lowering crest adds 10 armor, not 15.
+  - tweak: Steelcrest fortify's armor buff reduced from 25 to 15. Removed steelcrest
+      increased headbutt range, instead they gain 7.5 headbutt damage.
+  - tweak: Steelcrest fortified Defenders can no longer slash mobs, but they can slash
+      barricades and headbutt still.
+  - tweak: Thrown items are now affected by armor.
+  - tweak: Reduced throwing knife belt's capacity to 12, and the bayonet sheath's
+      to 5. Throwing knives and belts are no longer in vendors, but in the PFC belt
+      selection only.
+  - tweak: Added a cooldown to quick-drawing knives.
+  Nanu308:
+  - rscadd: Added some new ERT Shuttle Sprites.
+  - maptweak: Fully reworked the CLF Nightmare insert on LV.
+  - maptweak: Lowered start damage on the CLF Survivors greatly.
+  Segrain:
+  - bugfix: Fixed a rare issue preventing some generated chemical reactions from occuring.
+  TheDonkified:
+  - bugfix: Fixed issues with fire not igniting people.
+  - bugfix: Fixed death squad SG not having proper armor sprites.
+  - rscadd: Added a new napalm variant Napalm EX that can ignite queens and ravs.
+      It is admin-spawn only.
+  Waltermeldron:
+  - tweak: Fix NanoUI renamed to Fix Interfaces. This will now forcefully close tgui
+      interfaces as well.
+  - bugfix: Fixed player panel antag permissions.
+  - rscadd: Changed the current admin panel to tgui.
+  - bugfix: Fixed changelogs.
+  - bugfix: Fixed headers.
+  forest2001:
+  - rscadd: Added two variables to the Queen to allow her sprite to be changed during
+      the round.
+  - bugfix: Agents can now leave their shuttle again
+  ghostsheet:
+  - bugfix: Slavic scope will now have the correct icon while attached to guns.
+  naut:
+  - rscadd: Added a new black beret to the Commanding Officer's wardrobe. Can be found
+      in the clothing vendor.
+  - imageadd: Modified sprites of CO white beret and CMP beret. CMP beret now has
+      a red dot on it to distinguish from captain's berets.
+  - imageadd: Modified/added inventory sprites for CO white/black beret, Commodore
+      beret, and CMP beret.
+  - tweak: Changed description of the white, black, & commodore CO berets.
+  - tweak: Commanding Officers now spawn with a laser designator instead of the normal
+      binoculars.
+  spookydonut:
+  - tweak: Removed list()s from map files
+  - tweak: Precursor for tgui stat panel
+  - bugfix: Fixes a bug when changing tickrate
+  - tweak: Removes one of the event handler systems
+2020-12-28:
+  Archemagus:
+  - imageadd: Replaced old camera console input list with fancy TGui
+  alardun:
+  - tweak: The Sniper Aimed Shot now indicate to the target the cardinal direction
+      from which the shot originate. This compensates both the relative lack of insight
+      in dodging, and the lightning-speed at which the bullet goes preventing knowing
+      where the hit is coming from.
+  - bugfix: Aimed Shot extra damage no longer has 0 penetration, and appropriately
+      uses its ammo armor-penetration.
+  - tweak: Upon scoring an aimed shot, the sniper will be notified with a "Bullseye!"
+      message.
+  ghostsheet:
+  - tweak: Flamer's pilot light is now simplfied and merged into the gun's safety
+      feature.
+  - rscadd: M240-T (specialist flamer) can now switch fuel tank with unique action.
+  - bugfix: M240-T is now less likely to bug out when used with magnetic harness.
+  spookydonut:
+  - tweak: Make everything use forceMove()
+2020-12-29:
+  Nanu:
+  - rscadd: Added new bitflag for no shrapnel.
+  - tweak: Lowered burn damage to zombies.
+  - tweak: Zombies no longer get shrapnel.
+  Segrain:
+  - bugfix: Predators' translator once again works.
+  Unlucky_D:
+  - rscadd: Hive weeds can now be rebuild by feeding the pylon/core with plasma. Only
+      drones castes can do this.
+  - tweak: Hive weed nodes are now indestructible, and are only destroyed if their
+      connected pylon/core is destroyed.
+  Waltermeldron:
+  - bugfix: You're no longer able to attach medals that don't belong to you onto your
+      uniform. They also automatically unequip if need be.
+  alardun:
+  - bugfix: Fixed an issue with the simulator Amplify/Suppress/Relate checking duplicates
+      against itself, always adding an ingredient.
+  - spellcheck: E-S injector are properly named as such in the medilathe.
+  - bugfix: Fixed an exploit in the CMO medical terminal.
+  - bugfix: Fixed an exploit in the simulator.
+  - bugfix: Thanatometabolizing no longer prevents chemicals from being consumed while
+      dead.
+  - bugfix: Custom reagents in dead humans no longer consumes themselves extremely
+      fast.
+  - bugfix: Defibrillating / Neurocryogenic now triggers both their alive and dead
+      effect when combined with Thanatometabolizing.
+  - bugfix: Removed unintended 2x Effectiveness Multiplier on chemical with Thanatometabolizing.
+  ghostsheet:
+  - tweak: Mortar can now be operated by mini engineers.
+  spookydonut:
+  - tweak: Debugger now uses auxtools
+  - bugfix: Fixed unscope signal
+  - bugfix: Fix bread teleporting
+  - tweak: lobby art now uses configs
+2020-12-30:
+  BIgboyyo:
+  - tweak: LV caves can now be hit by OBs and CAS.
+  - maptweak: 'Added another nightmare Insert to Corsat. '
+  Firartix:
+  - bugfix: fix loc changes making CAS unable to acquire FM targets
+  Segrain:
+  - bugfix: Box of random attachments once again contains random attachments.
+  - bugfix: Platforms no longer stop targeting and spread of gas clouds.
+  Waltermeldron:
+  - tweak: 'Buffed weak weeds. They now deploy regular weeds. Reverted the cooldown
+      to 0.5 seconds from 1 second. Reverted the plasma usage to 50 from 100. Decreased
+      the time needed before weeds can be placed on a turf again. '
+  - bugfix: Queens can no longer spread weeds on the landing zone.
+  - rscadd: New Queens now start as young and will achieve maturity status after 15
+      minutes. This is to make Queen death more significant as it'll put a key role
+      out of combat for an additional 15 minutes.
+  - rscadd: Young Queens spawn without neuro and screech. They also have a 0.5x health
+      multiplier. Normal Queen remains unchanged. Young Queen retains all of her abilities
+      on ovipositor and is identical to a normal queen on ovipositor.
+  - rscdel: Oppressor Praetorians can no longer reel in stunned targets. This does
+      not apply to people who are resting.
+  - tweak: Throwing players in crit will now instantly kill them similar to devouring
+      (includes warrior fling).
+  - tweak: You can now devolve as many times as you want without consequence.
+  alardun:
+  - rscadd: Added the Gardener Strain for the drone. Ability details down below. Thanks
+      Triiodine for all of the sprites. It benefits from slightly (5%) increased health
+      regen.
+  - rscadd: 'Ability 1: Plant Fruit. (Macro 3). Plant an instance of the currently
+      selected fruit (up to 3 fruits total). Consumes 50 health and 100 plasma. These
+      fruits take some time to mature, and can be consumed by Xenomorph to gain an
+      effect depending on the fruit''s type. (See below)'
+  - rscadd: Added Greater Resin Fruit. This fruit heals 75 health instantly, and rapidly
+      heal another 100 over a few ticks. It takes 30s to mature.
+  - rscadd: 'Added Unstable Resin Fruit. This fruit heals 75 health over a longer
+      # of ticks, and also gives an overshield for 30% of max health, up to 200. This
+      shield begins to decay after 90 seconds, at a rate of 10 per second. Does not
+      stack with itself. It takes 45s to mature.'
+  - rscadd: Added Spore Resin Fruit. This fruit passively gives off Level 1 Recovery
+      pheromones in a range of one tile, and when consumed, makes each slashes increase
+      your cooldown reduction by 5%, up to 25%. This buff lasts for 60 seconds. This
+      mean any future cooldown will be reduced by that percentage. It takes 15s to
+      mature.
+  - rscadd: 'Ability 2: Change Fruit. (Macro 4) Cycle between Greater/Unstable/Spore.'
+  - rscadd: 'Ability 3: Resin Surge. (Macro 2) Depending on the tile targeted, has
+      a different effect. 10 seconds cooldown. 75 Plasma cost. See below:'
+  - rscadd: Resin surge on a Resin Door or Wall gives it a temporary 6000 shield bonus
+      for 3 seconds. Prevents Hivelord from thickening the structure for the duration.
+  - rscadd: Resin surge on a fruit reduce the time to maturation by 5s.
+  - rscadd: Resin surge on a weeded tile creates a 100 health wall for 5s. This wall
+      cannot be thickened.
+  - rscadd: Resin surge on a unweeded tile creates sticky resins (3x3) at a location
+      for 20s. These are weaker than regular sticky resin.
+  - rscadd: Added Lesser Resin Fruit. This fruit heals 75 health instantly when consumed.
+  - rscadd: Healer Drone also gain Plant Fruit, but may only plant Lesser Resin Fruit.
+  - tweak: Taking damage while shielded as a Xeno will do a different sound effect.
+      Thanks Triiodine for the sounds effect
+  - tweak: Losing your xeno shield to damages will do a shattering sound.
+  - tweak: Altered Vanguard shielding logic a little. There should be no difference
+      in actual gameplay, so ping me if you notice something amiss.
+  - tweak: 'Altered Shielding logic in general. '
+  spookydonut:
+  - bugfix: Fixed hardpoint issues
+  - bugfix: Fixed pulling when traversing ladders
+2020-12-31:
+  BIgboyyo:
+  - tweak: Nurses can now use the Autodoc, but still cannot do surgery.

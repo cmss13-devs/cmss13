@@ -358,9 +358,8 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
-	var/F = file("data/mode.txt")
-	fdel(F)
-	WRITE_FILE(F, the_mode)
+	fdel("data/mode.txt")
+	WRITE_FILE(file("data/mode.txt"), the_mode)
 
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, delay)

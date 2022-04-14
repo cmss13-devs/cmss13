@@ -1,0 +1,260 @@
+2021-07-01:
+  Foolosopher:
+  - rscadd: Dropships can now be set to automatically depart some time after recharging
+  monkeysfist:
+  - rscadd: Added Vietnam-style durags. (Mission colored and black)
+  - tweak: Specialist durags are now known as skullcaps.
+2021-07-02:
+  Pigeon352:
+  - maptweak: 'Added new map areas for Trijent Dam; Bar Valley and Hydro Valley along
+      with splitting Dam Valley into north and south.  '
+  - maptweak: Map fixes for areas and south river
+  - maptweak: Removed a survivor spawn in medical, added more across the west side
+      of the river
+  - maptweak: Added a hive spawn spot in East Caves
+  - tweak: Changed early weedable areas for Trijent Dam
+  Silencer_pl:
+  - tweak: All MP headwear now shares the statistics of the regular MP beret.
+  - tweak: The naming convention and description style for all MP headwear has been
+      unified.
+  - bugfix: The Character Profile should now properly save underwear choices for female
+      characters.
+  Unknownity:
+  - maptweak: Shiva Snowball is now compatible for Faction Clash
+2021-07-03:
+  Stobarico:
+  - tweak: Updated the ammo pouch sprites to reflect the change in capacity.
+2021-07-04:
+  Triiodine:
+  - bugfix: Fixes broken collisions on standalone Shiva prefabs and missing names
+      on various props.
+  Vanagandr:
+  - bugfix: If a boiler bombard no longer has a clear line of sight when the windup
+      finishes, it is cancelled.
+  monkeysfist:
+  - rscadd: Added hotsauce variants.
+2021-07-06:
+  Jeser:
+  - tweak: Pilot Officers and Vehicle Crewmen start with headsets equipped now.
+  - rscdel: Removed headsets from their equipment vendors.
+  monkeysfist:
+  - tweak: Fixed facehugger sprite.
+2021-07-07:
+  Molto:
+  - bugfix: Fixes incendiary buckshot shells having the wrong sprite when coming out
+      from a shotgun.
+  Vanagandr_and_Warfan1815:
+  - rscadd: Added a new event ERT - a wealthy big game hunter, here to hunt the ultimate
+      game. He's equipped with only the finest turn-of-the-century British hardware,
+      including an enormous double-barreled two-bore rifle. The recoil is apocalyptic
+      and if you fire it without stopping and bracing using either an action button
+      or a specialist activation, you'll have a bad time. If you try to fire it one-handed...
+      don't. Improved two-bore object sprite by Sionnach68.
+  - soundadd: Bouncing shotgun casing sfx pinched from TGMC.
+  monkeysfist:
+  - rscadd: Created hotsauce reagent.
+  - rscadd: Added capsaicin+pepper recipe to make hotsauce.
+  - tweak: Moved hotsauce bottles to condiment packets.
+  - tweak: Partially organized inhands.
+  - tweak: Changed most instances of capsaicin to hotsauce.
+  - imageadd: Added hotsauce inhands.
+  - bugfix: Fixed macho sauce infinite reaction.
+  - rscadd: Added unique PO helmet "Tex's Helmet" to the PO dorm.
+2021-07-09:
+  monkeysfist:
+  - rscadd: Created hotsauce reagent.
+  - rscadd: Added capsaicin+pepper recipe to make hotsauce.
+  - tweak: Moved hotsauce bottles to condiment packets.
+  - tweak: Partially organized inhands.
+  - tweak: Changed most instances of capsaicin to hotsauce.
+  - imageadd: Added hotsauce inhands.
+  - bugfix: Fixed macho sauce infinite reaction.
+2021-07-10:
+  Carlarc:
+  - bugfix: Fixed incendiary OB's flames going inside the radius of the hive core.
+  - imageadd: Added new flame sprites by Nauticall/Sammy.
+  Triiodine:
+  - bugfix: Fixed misnamed windows and window frames on Shivas Snowball. Fixed a botany
+      tray with the wrong type path by LZ1.
+  - bugfix: Resolves Issue#542 by adding a railgun camera position landmark to Shivas
+      Snowball.
+  - maptweak: Replaced three reinforced windows that were missed in the initial map
+      palette pass on Shivas Snowball.
+  - maptweak: Adjusted LZ1 on Shivas Snowball, clearing up sightlines and peek spots.
+      Moved the landing zone console to the east of the landing zone into its own
+      area. Made it over all, more vehicle friendly.
+  - maptweak: Removed a poorly placed indestructible wall in the south west research
+      hive spot on Shivas Snowball.
+  monkeysfist:
+  - rscadd: Added Vanilla Souto and Pineapple Souto.
+  - tweak: Recolored several vanilla inhands to match new sprites.
+  - tweak: Tweaked contrast on Souto cans and recolored several flavors.
+2021-07-11:
+  Firartix:
+  - bugfix: Replaced snowflake Almayer wooden floor with proper wooden floor.
+  GoldenDarkness55:
+  - rscdel: Removed BFA from VP.
+  Jeser:
+  - bugfix: Fixed vehicle doors offsets.
+  TeDGamer:
+  - tweak: Queen gains access to drone build list while off ovi
+  TheDonkified:
+  - bugfix: Footprints, oil splatters, and other cleanables should be cleanable again
+      with janitorial tools.
+  Vanagandr:
+  - tweak: External bleeding on limbs is now only healed when the wounds are bandaged
+      or fully healed, rather than being instantly removed by bicard/tricord.
+2021-07-12:
+  Monkeysfist:
+  - rscdel: 'Removed legacy clothes and goofy clothes from Snowflake Vendor. '
+  - imageadd: Added three T-shirt and jeans clothing options. Currently only available
+      to synthetics.
+  - imageadd: Added five windbreaker jackets.
+  - imageadd: Added three more utility jumpsuits including a reference to the Dark
+      Horse comics.
+  - imageadd: Added alt bomber jacket to the synth vendor.
+  Unknownity:
+  - maptweak: Significantly revamped the Trijent Dam hunter temple to fit the new
+      temple standards, one nightmare insert included.
+2021-07-13:
+  Carlarc:
+  - bugfix: M41a Mk1 can now fit all kinds of m41a magazines
+  TheDonkified:
+  - tweak: Hovering over a turf no longer shows anything on the statusbar.
+2021-07-14:
+  Carlarc:
+  - rscadd: Increased drone build distance to be the same as hivelord.
+  GoldenDarkness55:
+  - rscadd: Xenos can now slash filing cabinets and dispensers.
+  - rscadd: Xenos that could slash walls can now slash bolted and welded doors aswell
+      (10/15 hits)
+  Segrain:
+  - bugfix: Xenos can no longer waste healing abilities on already dead targets.
+  - bugfix: Deconstructing barricades once again works correctly.
+  - bugfix: Snow barricades are once again buildable on the snow.
+  Vanagandr:
+  - tweak: Examining yourself for wounds now displays bleeding limbs.
+  monkeysfist:
+  - tweak: Fixed honking brown synth utilities.
+2021-07-15:
+  Jeser:
+  - tweak: Improved admin's Vehicle Rejuvenate and Vehicle Remove Clamp verbs.
+  Stobarico:
+  - rscadd: Added a large variant of the shotgun shell pouch
+  - rscadd: Added shotgun shell pouches to all marines (certain jobs, those that can
+      buy large variants of magazine pouches, can buy the large shell pouches). Regular
+      pouches fit 5 handfuls, large ones fit 7.
+  - rscadd: Specialists can choose pill pouches or choose to pay for autoinjector
+      pouches.
+  - rscadd: Smartgunners can choose to take an electronics pouch.
+2021-07-18:
+  Jackie_Estegado:
+  - tweak: Added IFF inhibitor to plastic explosives.
+  - tweak: Added IFF inhibitor to SADAR.
+  - tweak: IFF inhibitor now only affects the marines.
+  - rscadd: Gibber can now process xenos.
+  - bugfix: Gibber now also makes human meat from human corpses, as intended.
+  - bugfix: Microwave no longer eats items when trying to insert them while its running.
+  Jeser:
+  - tweak: Simplified vehicle movement code further, removing some parts of it. Vehicles
+      still start slower and accelerate to top speed, but driving should feel much
+      better.
+  - bugfix: Fixed double movement on vehicles.
+  - tweak: Wheels and treads now can change 4 vehicle movement characteristics instead
+      of just top speed, allowing more flexible adjustment.
+  - tweak: APC is faster and more responsive now, has reduced momentum loss for turning.
+  - tweak: Regular tank treads were made to be slightly faster, require moving 3 tiles
+      to reach top speed. Reinforced treads now have same top speed as regular, but
+      take 5 tiles to accelerate to full speed.
+  - tweak: Overdrive Enhancer movement buff was reduced from 25% to 20%.
+  - rscadd: 'Multitile vehicles now belong to one of four possible vehicle classes:
+      weak (currently vans), light (currently APC), medium (currently tank) and heavy,
+      which affects ramming results and, in future, more stuff.'
+  - tweak: Changed vehicle bumping code to not use huge if else structure. This means
+      that absolutely anything can easily be assigned some unique behaviour when being
+      rammed by vehicle. Some stuff just gets outright deleted, some explodes, some
+      nicely collapses or dismantles instead of being broken and so on. If something
+      is not being rammed the way you think it should, you can tell me or add missing
+      behaviour yourself.
+  - rscadd: Ramming mobs is now logged, this includes FF logs for ramming allies.
+      Bad drivers will be much easier to spot.
+  - tweak: 'Changes in ramming humans: weak vehicle classes (vans) will apply micro
+      knockdown to humans instead of pushing them in front of themselves. Light vehicle
+      classes (APC) will do the same for allies and apply longer knockdown and some
+      damage to other factions. Heavier classes (tank) will apply longer knockdown
+      and damage to humans indiscriminately.'
+  - tweak: 'Changes in ramming xenos: heavy class vehicles cannot be blocked at all
+      and will drive over most xenos. Weak class vehicles (vans) will push xenos like
+      before, while heavier (APC, tank) classes will push them away from themselves,
+      making it harder to continuously ram xenos over long distances. APC ramming
+      damage multiplier was nerfed from 0.5 to 0.2. Momentum penalty for ramming was
+      reduced from 50% to 20%. Defenders now block only weak (vans) class vehicles,
+      slowdown light (APC) vehicles by 70% and won''t prevent heavier (tank) classes
+      from moving at all, but won''t receive any damage from being rammed.'
+  - tweak: Crushers ramming vehicles will produce crash effect inside.
+2021-07-19:
+  Benbot16:
+  - bugfix: Flamer tanks are now actually restricted to the armylathe
+  Frans_Feiffer:
+  - bugfix: Fixed a honked sprite that would occur when the player held a phone in
+      their right hand.
+  - imageadd: Adds inhands for the RTO backpack.
+  Nanu:
+  - bugfix: USCM Presets now have gloves with armor.
+2021-07-21:
+  naut:
+  - maptweak: The tops of the stairs on Fiorina Science Annex no longer obscure items
+      such as fire or barricades.
+  - rscadd: Added a new 'stair_cut' platform variant that has space for a stair cut
+      out of the sprite.
+2021-07-23:
+  Molto:
+  - bugfix: Fixes the opened hydroponic locker sprite
+  SuprisedBaby_:
+  - bugfix: PMC gloves no longer honked
+  monkeysfist:
+  - rscadd: Added a cat clock to upper medical.
+  - tweak: Moved catclock.dmi out of the ice_colony folder
+2021-07-24:
+  monkeysfist:
+  - tweak: Fixed almost every instance of Marshal/Marshall/Martial being misspelled
+      in the code.
+2021-07-25:
+  Segrain:
+  - bugfix: Fires from CAS are once again visible.
+2021-07-26:
+  BIgboyyo:
+  - rscadd: Created a subtype of pred shoes with the knife already in them like marines
+      boots.
+  - tweak: Predators now start with a knife in their shoes and a lantern where the
+      knife used to be in their pockets.
+  forest2001:
+  - rscadd: Added a trait to use xenonid sprites. Issued by the hive datum.
+2021-07-28:
+  Jeser:
+  - rscadd: Respawn verb now has a confirmation preventing staff accidently hitting
+      it and respawning.
+2021-07-29:
+  Nicboone:
+  - imageadd: 'Added a bunch of new props for mappers using old Nicboone sprites.
+      Including: Server racks (including a broken variant), Yutani-OS server boxes
+      (on, off, broken variants), personal laptops (on, off, closed), a power turbine
+      (Can be turned on with a crowbar thwack), a digital cash register (on, off,
+      broken), and a power transformer.'
+  - imageadd: 'Replaced some legacy bay12 and legacy CM13 sprites. Including: Alien
+      sample jars, and sample jar racks.'
+  - rscadd: Added Jungle boots (by Nicboone) to marine loadout. Added the M8 cartridge
+      bayonet to marine loadout (Cartridge by Nicboone, knife by Triiodine)
+2021-07-30:
+  Triiodine:
+  - maptweak: Compressed Science Annex, removing tons of maintenance padding primarily
+      to the north and north west.
+  - maptweak: Tweaked Science Annex LZ2, removing platforms, stairs, and adding in
+      reinforced walls to make it more defensible.
+  - maptweak: Tweaked Disco Room on Science Annex by LZ1, removing platforms and simplifying
+      the area.
+  - maptweak: Removed Bug-B-Gone and Eyepatch thermal goggles from Science Annex.
+  - maptweak: Clogged up the east yard entrance on Science Annex.
+  - maptweak: Changed up most of the routes in the research cell blocks on Science
+      Annex.
+  - maptweak: Removed a bunch of platforms on Science Annex.

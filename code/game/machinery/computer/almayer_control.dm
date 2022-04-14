@@ -310,11 +310,7 @@
 			message_staff("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 
 		if("award")
-			if(usr.job != "Commanding Officer")
-				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
-				return
-			if(give_medal_award(loc))
-				visible_message(SPAN_NOTICE("[src] prints a medal."))
+			print_medal(usr, src)
 
 	updateUsrDialog()
 

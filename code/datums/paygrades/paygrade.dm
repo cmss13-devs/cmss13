@@ -38,9 +38,10 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 	"NO6E",
 	"NO6C",
 	"NO5",
+	"NO4",
 	"MO6",
 	"MO6E",
 	"MO6C",
 	"MO5",
-
+	"MO4"
 ))

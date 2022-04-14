@@ -42,6 +42,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
+	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL

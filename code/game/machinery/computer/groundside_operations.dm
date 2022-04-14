@@ -239,12 +239,7 @@
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
-			if(usr.job != "Commanding Officer")
-				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
-				return
-
-			if(give_medal_award(loc))
-				visible_message(SPAN_NOTICE("[src] prints a medal."))
+			print_medal(usr, src)
 
 		if("selectlz")
 			if(SSticker.mode.active_lz)

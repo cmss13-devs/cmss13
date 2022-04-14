@@ -137,11 +137,7 @@
 		if("award")
 			if(announcement_faction != FACTION_MARINE)
 				return
-			if(usr.job != "Commanding Officer")
-				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
-				return
-			if(give_medal_award(usr.loc))
-				visible_message(SPAN_NOTICE("[src] prints a medal."))
+			print_medal(usr, src)
 
 		if("mapview")
 			if(current_mapviewer)

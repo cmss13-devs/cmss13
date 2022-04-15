@@ -1188,6 +1188,13 @@
 
 	hud_used.locate_leader.icon_state = "trackoff"
 
+	var/static/list/squad_leader_trackers = list(
+		TRACKER_ASL = /datum/squad/alpha,
+		TRACKER_BSL = /datum/squad/bravo,
+		TRACKER_CSL = /datum/squad/charlie,
+		TRACKER_DSL = /datum/squad/delta,
+		TRACKER_ESL = /datum/squad/echo
+	)
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1213,6 +1220,11 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		else
+			if(tracker_setting in squad_leader_trackers)
+				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
+				H = S.squad_leader
+				tracking_suffix = tracker_setting
 
 	if(!H)
 		return

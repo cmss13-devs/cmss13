@@ -348,10 +348,14 @@ Additional game mode variables.
 
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN))) continue //xenos on admin z level don't count
-		if(istype(X) && !X.client)
-			if(X.away_timer >= XENO_LEAVE_TIMER || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA) ) available_xenos_non_ssd += X
-			available_xenos += X
+		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
+			continue //xenos on admin z level and aghosted ones don't count
+		if(istype(X) && ((!isXenoLarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (isXenoLarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
+			if(!X.client)
+				available_xenos += X
+			else
+				available_xenos_non_ssd += X
+
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
@@ -407,10 +411,6 @@ Additional game mode variables.
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return FALSE
 
-		if(new_xeno.client)
-			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph has been occupied."))
-			return FALSE
-
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
@@ -429,7 +429,7 @@ Additional game mode variables.
 				return FALSE
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
-			if(new_xeno.client || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
+			if(((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 				return FALSE
 		else return FALSE
@@ -794,12 +794,7 @@ Additional game mode variables.
 
 //We do NOT want to initilialize the gear before everyone is properly spawned in
 /datum/game_mode/proc/initialize_post_marine_gear_list()
-
-	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
-	//This might count players who ready up but get kicked back to the lobby
-	var/marine_pop_size = length(GLOB.alive_human_list)
-
-	var/scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1) //This gives a decimal value representing a scaling multiplier. Cannot go below 1
+	var/scale = get_scaling_value()
 
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
@@ -808,6 +803,14 @@ Additional game mode variables.
 
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)
+
+/datum/game_mode/proc/get_scaling_value()
+	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
+	//This might count players who ready up but get kicked back to the lobby
+	var/marine_pop_size = length(GLOB.alive_human_list)
+
+	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
+	return max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()

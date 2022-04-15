@@ -11,9 +11,9 @@ import { Box, Button, ColorBox, Divider, Dropdown, Flex, Input, LabeledList, Num
 import { ChatPageSettings } from '../chat';
 import { rebuildChat, saveChatToDisk } from '../chat/actions';
 import { THEMES } from '../themes';
-import { changeSettingsTab, updateSettings, addHighlightSetting, removeHighlightSetting, updateHighlightSetting } from './actions';
-import { SETTINGS_TABS, FONTS, MAX_HIGHLIGHT_SETTINGS } from './constants';
-import { selectActiveTab, selectSettings, selectHighlightSettings, selectHighlightSettingById } from './selectors';
+import { changeSettingsTab, updateSettings } from './actions';
+import { FONTS, SETTINGS_TABS } from './constants';
+import { selectActiveTab, selectSettings } from './selectors';
 
 export const SettingsPanel = (props, context) => {
   const activeTab = useSelector(context, selectActiveTab);
@@ -40,9 +40,6 @@ export const SettingsPanel = (props, context) => {
         {activeTab === 'general' && (
           <SettingsGeneral />
         )}
-        {activeTab === 'textHighlight' && (
-          <TextHighlightSettings />
-        )}
         {activeTab === 'chatPage' && (
           <ChatPageSettings />
         )}
@@ -57,6 +54,10 @@ export const SettingsGeneral = (props, context) => {
     fontFamily,
     fontSize,
     lineHeight,
+    highlightText,
+    highlightColor,
+    matchWord,
+    matchCase,
   } = useSelector(context, selectSettings);
   const dispatch = useDispatch(context);
   const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
@@ -132,42 +133,47 @@ export const SettingsGeneral = (props, context) => {
         </LabeledList.Item>
       </LabeledList>
       <Divider />
-      <Button
-        icon="save"
-        onClick={() => dispatch(saveChatToDisk())}>
-        Save chat log
-      </Button>
-    </Section>
-  );
-};
-
-const TextHighlightSettings = (props, context) => {
-  const highlightSettings = useSelector(context, selectHighlightSettings);
-  const dispatch = useDispatch(context);
-  return (
-    <Section fill height="190px">
-      <Section fill scrollable maxHeight={"150px"}>
-        <Stack vertical>
-          {highlightSettings.map((id, i) => (
-            <TextHighlightSetting
-              key={i}
-              id={id}
-              mb={i+1 === highlightSettings.length ? 0 : "10px"}
-            />
-          ))}
-          {highlightSettings.length < MAX_HIGHLIGHT_SETTINGS && (
-            <Stack.Item>
-              <Button
-                color="transparent"
-                icon="plus"
-                content="Add Highlight Setting"
-                onClick={() => {
-                  dispatch(addHighlightSetting());
-                }} />
-            </Stack.Item>
-          )}
-        </Stack>
-      </Section>
+      <Box>
+        <Flex mb={1} color="label" align="baseline">
+          <Flex.Item grow={1}>
+            Highlight text (comma separated):
+          </Flex.Item>
+          <Flex.Item shrink={0}>
+            <ColorBox mr={1} color={highlightColor} />
+            <Input
+              width="5em"
+              monospace
+              placeholder="#ffffff"
+              value={highlightColor}
+              onInput={(e, value) => dispatch(updateSettings({
+                highlightColor: value,
+              }))} />
+          </Flex.Item>
+        </Flex>
+        <TextArea
+          height="3em"
+          value={highlightText}
+          onChange={(e, value) => dispatch(updateSettings({
+            highlightText: value,
+          }))} />
+        <Button.Checkbox
+          checked={matchWord}
+          tooltipPosition="bottom-start"
+          tooltip="Not compatible with punctuation."
+          onClick={() => dispatch(updateSettings({
+            matchWord: !matchWord,
+          }))}>
+          Match word
+        </Button.Checkbox>
+        <Button.Checkbox
+          checked={matchCase}
+          onClick={() => dispatch(updateSettings({
+            matchCase: !matchCase,
+          }))}>
+          Match case
+        </Button.Checkbox>
+      </Box>
+      <Divider />
       <Box>
         <Button
           icon="check"
@@ -178,62 +184,12 @@ const TextHighlightSettings = (props, context) => {
           Can freeze the chat for a while.
         </Box>
       </Box>
+      <Divider />
+      <Button
+        icon="save"
+        onClick={() => dispatch(saveChatToDisk())}>
+        Save chat log
+      </Button>
     </Section>
-  );
-};
-
-const TextHighlightSetting = (props, context) => {
-  const { id, ...rest } = props;
-  const highlightSettingById = useSelector(context, selectHighlightSettingById);
-  const dispatch = useDispatch(context);
-  const {
-    highlightColor,
-    highlightText,
-    highlightWholeMessage,
-  } = highlightSettingById[id];
-  return (
-    <Stack.Item {...rest}>
-      <Flex color="label" align="baseline">
-        <Flex.Item grow={1}>
-          <Button
-            content="Highlight words (comma separated):"
-            color="transparent"
-            icon="times"
-            onClick={() => dispatch(removeHighlightSetting({
-              id: id,
-            }))}
-          />
-        </Flex.Item>
-        <Flex.Item shrink={0}>
-          <Button.Checkbox
-            checked={highlightWholeMessage}
-            content="Highlight Whole Message"
-            mr="5px"
-            onClick={() => dispatch(updateHighlightSetting({
-              id: id,
-              highlightWholeMessage: !highlightWholeMessage,
-            }))} />
-        </Flex.Item>
-        <Flex.Item shrink={0}>
-          <ColorBox mr={1} color={highlightColor} />
-          <Input
-            width="5em"
-            monospace
-            placeholder="#ffffff"
-            value={highlightColor}
-            onInput={(e, value) => dispatch(updateHighlightSetting({
-              id: id,
-              highlightColor: value,
-            }))} />
-        </Flex.Item>
-      </Flex>
-      <TextArea
-        height="3em"
-        value={highlightText}
-        onChange={(e, value) => dispatch(updateHighlightSetting({
-          id: id,
-          highlightText: value,
-        }))} />
-    </Stack.Item>
   );
 };

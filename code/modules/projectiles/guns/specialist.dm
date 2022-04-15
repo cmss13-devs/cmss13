@@ -36,9 +36,16 @@
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
+/obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
+	set name = "Toggle Scope Zoom Level"
+	set category = "Weapons"
+	set src in usr
+	var/obj/item/attachable/scope/variable_zoom/S = attachments["rail"]
+	S.toggle_zoom_level()
+
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/S = new(src)
+	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.ignore_clash_fog = TRUE
@@ -82,7 +89,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/S = new(src)
+	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
@@ -188,14 +195,14 @@
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/bipod,
-						/obj/item/attachable/scope/slavic)
+						/obj/item/attachable/scope/variable_zoom/slavic)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
 
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/slavic/S = new /obj/item/attachable/scope/slavic(src)
+	var/obj/item/attachable/scope/S = new /obj/item/attachable/scope/variable_zoom/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.ignore_clash_fog = TRUE
 	S.Attach(src)
@@ -1142,6 +1149,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	var/datum/effect_system/smoke_spread/smoke
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	var/skill_locked = TRUE
 
 /obj/item/weapon/gun/launcher/rocket/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -1178,7 +1186,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			click_empty(user)
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
+		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_grief_check(src))
@@ -1326,6 +1334,104 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_3
+
+
+//-------------------------------------------------------
+//AT rocket launchers, can be used by non specs
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank //reloadable
+	name = "\improper QH-4 Shoulder-Mounted Anti-Tank RPG"
+	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armour."
+	icon_state = "m83a2"
+	item_state = "m83a2"
+	unacidable = FALSE
+	indestructible = FALSE
+	skill_locked = FALSE
+
+	current_mag = /obj/item/ammo_magazine/rocket/anti_tank
+
+	attachable_allowed = null
+
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+
+	flags_item = TWOHANDED
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("vehicles", /datum/element/bullet_trait_damage_boost, 20, GLOB.damage_boost_vehicles),
+	))
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
+	name = "\improper M83A2 SADAR"
+	desc = "The M83A2 SADAR is a lightweight one-shot anti-armour weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
+	var/fired = FALSE
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("You can fold it up with unique-action."))
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	if(.)
+		fired = TRUE
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/unique_action(mob/M)
+	if(fired)
+		to_chat(M, SPAN_WARNING("\The [src] has already been fired - you can't fold it back up again!"))
+		return
+
+	M.visible_message(SPAN_NOTICE("[M] begins to fold up \the [src]."), SPAN_NOTICE("You start to fold and collapse closed \the [src]."))
+
+	if(!do_after(M, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(M, SPAN_NOTICE("You stop folding up \the [src]"))
+		return
+
+	fold(M)
+	M.visible_message(SPAN_NOTICE("[M] finishes folding \the [src]."), SPAN_NOTICE("You finish folding \the [src]."))
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
+	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
+	F.set_name_label(name_label)
+	qdel(src)
+	user.put_in_active_hand(F)
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/reload()
+	to_chat(usr, SPAN_WARNING("You cannot reload \the [src]!"))
+	return
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/unload()
+	to_chat(usr, SPAN_WARNING("You cannot unload \the [src]!"))
+	return
+
+//folded version of the sadar
+/obj/item/prop/folded_anti_tank_sadar
+	name = "\improper M83 SADAR (folded)"
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
+	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon_state = "m83a2_folded"
+	w_class = SIZE_MEDIUM
+	garbage = FALSE
+
+/obj/item/prop/folded_anti_tank_sadar/attack_self(mob/user)
+	user.visible_message(SPAN_NOTICE("[user] begins to unfold \the [src]."), SPAN_NOTICE("You start to unfold and expand \the [src]."))
+	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)
+
+	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_NOTICE("You stop unfolding \the [src]"))
+		return
+
+	unfold(user)
+
+	user.visible_message(SPAN_NOTICE("[user] finishes unfolding \the [src]."), SPAN_NOTICE("You finish unfolding \the [src]."))
+	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)
+	. = ..()
+
+/obj/item/prop/folded_anti_tank_sadar/proc/unfold(mob/user)
+	var/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/F = new /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable(src.loc)
+	F.set_name_label(name_label)
+	qdel(src)
+	user.put_in_active_hand(F)
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?

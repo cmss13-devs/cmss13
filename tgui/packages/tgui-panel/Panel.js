@@ -50,7 +50,7 @@ export const Panel = (props, context) => {
                   selected={audio.visible}
                   icon="music"
                   tooltip="Music player"
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => audio.toggle()} />
               </Stack.Item>
               <Stack.Item>
@@ -60,7 +60,7 @@ export const Panel = (props, context) => {
                   tooltip={settings.visible
                     ? 'Close settings'
                     : 'Open settings'}
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => settings.toggle()} />
               </Stack.Item>
             </Stack>
@@ -84,7 +84,7 @@ export const Panel = (props, context) => {
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>
-              {game.connectionLostAt && !game.roundRestartedAt && (
+              {game.connectionLostAt && (
                 <Notifications.Item
                   rightSlot={(
                     <Button
@@ -98,16 +98,9 @@ export const Panel = (props, context) => {
                 </Notifications.Item>
               )}
               {game.roundRestartedAt && (
-                <Notifications.Item
-                  rightSlot={(
-                    <Button
-                      color="white"
-                      onClick={() => Byond.command('.reconnect')}>
-                      Reconnect
-                    </Button>
-                  )}>
+                <Notifications.Item>
                   The connection has been closed because the server is
-                  restarting. Please wait while you automatically reconnect!
+                  restarting. Please wait while you automatically reconnect.
                 </Notifications.Item>
               )}
             </Notifications>

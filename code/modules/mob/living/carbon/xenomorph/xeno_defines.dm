@@ -24,7 +24,7 @@
 	var/evolution_threshold = 0 //Threshold to next evolution
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
-	var/deevolves_to // what caste to de-evolve to.
+	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
 	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
 	var/caste_desc = null
 

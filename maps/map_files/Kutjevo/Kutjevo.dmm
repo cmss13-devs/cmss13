@@ -730,8 +730,8 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "bbc" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "bbW" = (
@@ -4336,6 +4336,12 @@
 	dir = 1
 	},
 /area/kutjevo/exterior/runoff_river)
+"fNe" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "cleaningprog"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
 "fNo" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -6605,6 +6611,11 @@
 	dir = 4
 	},
 /area/kutjevo/interior/colony_South/power2)
+"jkJ" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/item/reagent_container/glass/watertank,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
 "jkR" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -7715,6 +7726,12 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
+"kPw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "trappedmonke"
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/oob)
 "kPA" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
@@ -9091,6 +9108,12 @@
 "mHJ" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/med)
+"mIg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "plinkingspot"
+	},
+/turf/closed/wall/kutjevo/rock/border,
+/area/kutjevo/exterior/scrubland)
 "mIq" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/kutjevo/colony,
@@ -14818,8 +14841,8 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "uIF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	welded = 1;
-	dir = 1
+	dir = 1;
+	welded = 1
 	},
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
@@ -27863,7 +27886,7 @@ sYd
 bXl
 sYd
 rfZ
-wei
+mIg
 mDN
 wei
 wei
@@ -28730,7 +28753,7 @@ sYd
 bXl
 uSG
 lrO
-naK
+kPw
 lrO
 uSG
 hqO
@@ -31900,10 +31923,10 @@ kDS
 kDS
 ekJ
 lHs
-kNn
+jkJ
 nAo
 qgW
-kNn
+jkJ
 lHs
 plf
 gyx
@@ -35417,7 +35440,7 @@ kDS
 kDS
 kDS
 kDS
-kDS
+fNe
 vDS
 pNi
 kDS

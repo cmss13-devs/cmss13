@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Stack, Section, NoticeBox } from '../components';
+import { Button, Stack, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const SquadMod = (props, context) => {

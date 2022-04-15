@@ -155,17 +155,18 @@
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
-			if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
-				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				if(ismonkey(src))
-					KnockDown(8)
-			else
+			var/is_shover_queen = isXenoQueen(M)
+			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoQueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
+			if(can_mega_shove && !can_resist_shove)
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				src.KnockDown(1)
+			else
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
+				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
+				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)

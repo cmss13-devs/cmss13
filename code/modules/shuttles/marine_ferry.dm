@@ -510,7 +510,7 @@
 	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.

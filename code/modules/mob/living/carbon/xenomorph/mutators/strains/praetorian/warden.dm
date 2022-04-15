@@ -57,6 +57,22 @@
 /datum/behavior_delegate/praetorian_warden/on_life()
 	internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
+	var/mob/living/carbon/Xenomorph/Praetorian/X = bound_xeno
+	var/image/holder = X.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
+	if(X.stat == DEAD)
+		return
+
+	var/percentage_energy = round((internal_hitpoints / internal_hitpoints_max) * 100, 10)
+	if(percentage_energy)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
+
+/datum/behavior_delegate/praetorian_warden/handle_death(mob/M)
+	var/mob/living/carbon/Xenomorph/Praetorian/X = M
+	var/image/holder = X.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()
 	..()
 

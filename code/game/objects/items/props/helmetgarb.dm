@@ -140,7 +140,7 @@
 	name = "\improper M2 night vision goggles"
 	desc = "With a pack of triple As, nothing can stop you. Put them on your helmet and press the button and it's go-time."
 
-	var/invisibility_level = SEE_INVISIBLE_MINIMUM
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	var/mob/attached_mob
 
 /obj/item/prop/helmetgarb/helmet_nvg/functional/toggle_nods(mob/living/carbon/human/user)
@@ -172,11 +172,15 @@
 	remove_nvg()
 
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
+	update_sight(user)
 	attached_mob = user
 
 /obj/item/prop/helmetgarb/helmet_nvg/functional/proc/update_sight(var/mob/M)
 	SIGNAL_HANDLER
-	M.see_invisible = invisibility_level
+	if(lighting_alpha < 255)
+		M.see_in_dark = 12
+	M.lighting_alpha = lighting_alpha
+	M.sync_lighting_plane_alpha()
 
 /obj/item/prop/helmetgarb/helmet_nvg/functional/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
@@ -192,6 +196,7 @@
 		return
 
 	UnregisterSignal(attached_mob, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+	update_sight(attached_mob)
 	attached_mob = null
 
 /obj/item/prop/helmetgarb/flair_initech

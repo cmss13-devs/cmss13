@@ -58,4 +58,5 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_PMC_WHITE			184
 #define ACCESS_WY_CORPORATE 		200
 #define ACCESS_ILLEGAL_PIRATE 		201
+#define ACCESS_WY_CORPORATE_DS		202
 //=================================================

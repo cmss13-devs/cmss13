@@ -166,6 +166,14 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEALLHAIR
 	siemens_coefficient = 1
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -302,6 +310,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/patch/falcon = "falconspatch",
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
+	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 
 	///// MEDICAL
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
@@ -440,10 +449,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		camera.c_tag = mob.name
 	..()
 
+/obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
+	. = ..()
+	if(pockets)
+		for(var/obj/item/attachable/flashlight/F in pockets)
+			if(F.activated)
+				F.activate_attachment(src, user, TRUE)
+
 /obj/item/clothing/head/helmet/marine/dropped(var/mob/living/carbon/human/mob)
 	if(camera)
 		camera.c_tag = "Unknown"
+	if(pockets)
+		for(var/obj/item/attachable/flashlight/F in pockets)
+			if(F.activated)
+				F.activate_attachment(src, mob, TRUE)
 	..()
+
 
 
 /obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
@@ -453,7 +474,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		update_icon()
 		desc += "\n<b>This helmet seems to be scratched up and damaged, particularly around the face area...</b>"
 
-
+/obj/item/clothing/head/helmet/marine/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"

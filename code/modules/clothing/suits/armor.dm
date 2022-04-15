@@ -180,6 +180,29 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/gladiator
+	name = "gladiator armor"
+	desc = "Are you not entertained? Is that not why you are here?"
+	icon_state = "gladiator"
+	item_state = "gladiator"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEJUMPSUIT
+	siemens_coefficient = 0.5
+	time_to_unequip = 20
+	time_to_equip = 20
+	allowed = list(/obj/item/weapon/melee/claymore/mercsword,
+		/obj/item/weapon/shield/riot,
+		/obj/item/device/flashlight,
+	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+
 /obj/item/clothing/suit/armor/riot/marine
 	name = "\improper M5 riot control armor"
 	desc = "A heavily modified suit of M2 MP Armor used to supress riots from buckethead marines. Slows you down a lot."

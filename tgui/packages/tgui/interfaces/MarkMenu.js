@@ -1,6 +1,6 @@
 import { classes } from "common/react";
-import { useBackend, useLocalState } from '../backend';
-import { Tabs, Box, Section, Flex, Stack, Button, Divider, Collapsible, Table } from '../components';
+import { useBackend } from '../backend';
+import { Tabs, Box, Flex, Stack, Button, Divider, Collapsible, Table } from '../components';
 import { Window } from '../layouts';
 
 

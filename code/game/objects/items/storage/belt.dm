@@ -384,6 +384,13 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
 
+/obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+	else
+		return ..()
+
 /obj/item/storage/belt/marine/dutch
 	name = "ammo load rig"
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
@@ -499,8 +506,7 @@
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		var/obj/item/ammo_magazine/handful/H = new(src)
-		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -558,6 +564,35 @@
 /obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
 	for(var/i in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
+
+/obj/item/storage/belt/shotgun/lever_action
+	name = "\improper M276 pattern 45-70 loading rig"
+	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle."
+	icon_state = "r4t-ammobelt"
+	item_state = "marinebelt"
+	w_class = SIZE_LARGE
+	storage_slots = 14
+	max_w_class = SIZE_SMALL
+	max_storage_space = 28
+	can_hold = list(/obj/item/ammo_magazine/handful)
+
+/obj/item/storage/belt/shotgun/lever_action/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		var/obj/item/ammo_magazine/lever_action/M = W
+		dump_ammo_to(M, user, M.transfer_handful_amount)
+
+	if(istype(W, /obj/item/storage/belt/gun/m44/lever_action/attach_holster))
+		if(length(contents) || length(W.contents))
+			to_chat(user, SPAN_WARNING("Both holster and belt need to be empty to attach the holster!"))
+			return
+		to_chat(user, SPAN_NOTICE("You attach the holster to the belt, reducing total storage capacity but allowing it to fit the M44 revolver and its speedloaders."))
+		var/obj/item/storage/belt/gun/m44/lever_action/new_belt = new /obj/item/storage/belt/gun/m44/lever_action
+		qdel(W)
+		qdel(src)
+		user.put_in_hands(new_belt)
+		update_icon(user)
+	else
+		return ..()
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -684,14 +719,19 @@
 	max_storage_space = 11
 	max_w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_ALLOW_QUICKDRAW
-	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
-	var/image/gun_underlay //The underlay we will use.
+	///Array of holster slots and stats to use for them. First layer is "1", "2" etc. Guns are stored in both the slot and the holstered_guns list which keeps track of which was last inserted.
+	var/list/obj/item/weapon/gun/holster_slots = list(
+		"1" = list(
+			"gun" = null,
+			"underlay_sprite" = null,
+			"underlay_transform" = null,
+			"icon_x" = 0,
+			"icon_y" = 0))
+
+	var/list/holstered_guns = list()
+
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
-	var/icon_x = 0
-	var/icon_y = 0
-	///Some holsters can take both automatic pistols and the M44 revolver. The M44's sprite does not line up with automatics, and needs some massaging to fit.
-	var/mixed_pistols = FALSE
 	///Used to get flap overlay states as inserting a gun changes icon state.
 	var/base_icon
 	can_hold = list(
@@ -710,38 +750,43 @@
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
-	if(content_watchers)
+	if(content_watchers && flap)
 		return
-	var/magazines = current_gun ? length(contents) - 1 : length(contents)
+	var/magazines = length(contents) - length(holstered_guns)
 	if(!magazines)
 		return
-	if(magazines <= (storage_slots - 1) * 0.5) //Final slot is reserved for the gun.
+	if(magazines <= (storage_slots - length(holster_slots)) * 0.5) //Don't count slots reserved for guns, even if they're empty.
 		overlays += "+[base_icon]_half"
 	else
 		overlays += "+[base_icon]_full"
 
 /obj/item/storage/belt/gun/on_stored_atom_del(atom/movable/AM)
-	if(AM == current_gun)
-		current_gun = null
-		update_gun_icon()
+	if(!isgun(AM))
+		return
+	holstered_guns -= AM
+	for(var/slot in holster_slots)
+		if(AM == holster_slots[slot]["gun"])
+			holster_slots[slot]["gun"] = null
+			update_gun_icon(slot)
+			return
 
 /obj/item/storage/belt/gun/attack_hand(mob/user, mods)
-	if(current_gun && ishuman(user) && loc == user)
-		if(mods && mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted magazine, if possible.
-			var/obj/item/I = contents[length(contents)]
-			if(isgun(I))
-				I = contents[length(contents) - 1]
-			I.attack_hand(user)
-		else
-			current_gun.attack_hand(user)
+	if(length(holstered_guns) && ishuman(user) && loc == user)
+		var/obj/item/I
+		if(mods && mods["alt"] && length(contents) > length(holstered_guns)) //Withdraw the most recently inserted magazine, if possible.
+			var/list/magazines = contents - holstered_guns
+			I = magazines[length(magazines)]
+		else //Otherwise find and draw the last-inserted gun.
+			I = holstered_guns[length(holstered_guns)]
+		I.attack_hand(user)
 		return
 
 	..()
 
-
-/obj/item/storage/belt/gun/proc/update_gun_icon() //We do not want to use regular update_icon as it's called for every item inserted. Not worth the icon math.
+/obj/item/storage/belt/gun/proc/update_gun_icon(slot) //We do not want to use regular update_icon as it's called for every item inserted. Not worth the icon math.
 	var/mob/living/carbon/human/user = loc
-	if(current_gun) //So it has a gun, let's make an icon.
+	var/obj/item/weapon/gun/current_gun = holster_slots[slot]["gun"]
+	if(current_gun)
 		/*
 		Have to use a workaround here, otherwise images won't display properly at all times.
 		Reason being, transform is not displayed when right clicking/alt+clicking an object,
@@ -750,60 +795,100 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 15, TRUE)
-		gun_underlay = image(icon, src, current_gun.base_gun_icon)
-		if(mixed_pistols && !istype(current_gun,/obj/item/weapon/gun/pistol)) //The M44 doesn't line up with the sprites automatic pistols use. These numbers mostly work with the flare pistol, mateba, and smartpistol as well.
-			gun_underlay.pixel_x = icon_x + 1
-			gun_underlay.pixel_y = icon_y + 3
-		else
-			gun_underlay.pixel_x = icon_x
-			gun_underlay.pixel_y = icon_y
+		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
+		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
+		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
+		gun_underlay.transform = holster_slots[slot]["underlay_transform"]
+		holster_slots[slot]["underlay_sprite"] = gun_underlay
+		underlays += gun_underlay
+
 		icon_state += "_g"
 		item_state = icon_state
-		underlays += gun_underlay
 	else
 		playsound(src, sheatheSound, 15, TRUE)
-		underlays -= gun_underlay
+		underlays -= holster_slots[slot]["underlay_sprite"]
+		holster_slots[slot]["underlay_sprite"] = null
+
 		icon_state = copytext(icon_state,1,-2)
 		item_state = icon_state
-		gun_underlay = null
+
 	if(istype(user))
 		if(src == user.belt)
 			user.update_inv_belt()
 		else if(src == user.s_store)
 			user.update_inv_s_store()
 
-
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
 /obj/item/storage/belt/gun/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
-	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
-		if(isgun(W))
-			if(current_gun)
-				if(!stop_messages)
-					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
-				return
-		else //Must be ammo.
-			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
-			var/ammo_stored = length(contents)
-			if(current_gun)
-				ammo_stored -= 1
-			if(ammo_stored >= ammo_slots)
-				if(!stop_messages)
-					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
-				return
-		return 1
+	. = ..()
+	if(!.)
+		return
 
-/obj/item/weapon/gun/on_enter_storage(obj/item/storage/belt/gun/gun_belt)
-	..()
-	if(istype(gun_belt) && !gun_belt.current_gun)
-		gun_belt.current_gun = src //If there's no active gun, we want to make this our icon.
-		gun_belt.update_gun_icon()
+	if(isgun(W))
+		for(var/slot in holster_slots)
+			if(!holster_slots[slot]["gun"]) //Open holster.
+				return
 
-/obj/item/weapon/gun/on_exit_storage(obj/item/storage/belt/gun/gun_belt)
+		if(!stop_messages) //No open holsters.
+			if(length(holster_slots) == 1)
+				to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+			else
+				to_chat(usr, SPAN_WARNING("[src] doesn't have any empty holsters."))
+		return FALSE
+
+	else if(length(contents) - length(holstered_guns) >= storage_slots - length(holster_slots)) //Compare amount of nongun items in storage with usable ammo pockets.
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] can't hold any more ammo."))
+		return FALSE
+
+/obj/item/storage/belt/gun/_item_insertion(obj/item/W, prevent_warning = 0)
+	if(isgun(W))
+		holstered_guns += W
+		for(var/slot in holster_slots)
+			if(holster_slots[slot]["gun"])
+				continue
+			holster_slots[slot]["gun"] = W
+			update_gun_icon(slot)
+			break
 	..()
-	if(istype(gun_belt) && gun_belt.current_gun == src)
-		gun_belt.current_gun = null
-		gun_belt.update_gun_icon()
+
+/obj/item/storage/belt/gun/_item_removal(obj/item/W, atom/new_location)
+	if(isgun(W))
+		holstered_guns -= W
+		for(var/slot in holster_slots)
+			if(holster_slots[slot]["gun"] != W)
+				continue
+			holster_slots[slot]["gun"] = null
+			update_gun_icon(slot)
+			break
+	..()
+
+/obj/item/storage/belt/gun/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump)
+	if(user.action_busy)
+		return
+
+	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
+		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
+		if(ammo_dumping.current_rounds != 0)
+			if(contents.len < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				for(var/i = 1 to handfuls)
+					if(contents.len < storage_slots - 1)
+						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						ammo_dumping.current_rounds -= transferred_handfuls
+						handle_item_insertion(new_handful, TRUE,user)
+						update_icon(-transferred_handfuls)
+					else
+						break
+				playsound(user.loc, "rustle", 15, TRUE, 6)
+				ammo_dumping.update_icon()
+			else
+				to_chat(user, SPAN_WARNING("[src] is full."))
+
 
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern general pistol holster rig"
@@ -823,72 +908,64 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/commander/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3/custom(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/custom())
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/mod88(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/vp78/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/m1911/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m1911(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911())
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy/co(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co())
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/heavy/co_golden/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy/co/gold(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co/gold())
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
@@ -900,24 +977,108 @@
 		/obj/item/ammo_magazine/revolver
 	)
 	has_gamemode_skin = TRUE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
 
 /obj/item/storage/belt/gun/m44/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m44/custom/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/custom(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m44/mp/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/mp(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/mp())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
-	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/m44/gunslinger
+	name = "custom-tooled gunslinger's belt"
+	desc = "It's always high noon <i>somewhere</i>."
+	icon_state = "gunslinger_holster"
+	storage_slots = 6
+	can_hold = list(
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/revolver
+	)
+	has_gamemode_skin = FALSE
+	holster_slots = list(
+		"1" = list("icon_x" = -9, "icon_y" = -3),
+		"2" = list("icon_x" = 9, "icon_y" = -3))
+
+/obj/item/storage/belt/gun/m44/gunslinger/Initialize()
+	var/matrix/M = matrix()
+	M.Scale(-1, 1) //Flip the sprite of the second gun.
+	holster_slots["2"]["underlay_transform"] = M
+	. = ..()
+
+/obj/item/storage/belt/gun/m44/gunslinger/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
+	for(var/i = 1 to storage_slots - 2)
+		new /obj/item/ammo_magazine/revolver/marksman(src)
+
+/obj/item/storage/belt/gun/m44/lever_action
+	name = "\improper M276 pattern 45-70 revolver rig"
+	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle. This version has reduced capacity in exchange for a whole revolver holster."
+	icon_state = "r4t-cowboybelt"
+	item_state = "r4t-cowboybelt"
+	w_class = SIZE_LARGE
+	storage_slots = 11
+	max_storage_space = 28
+	can_hold = list(
+		/obj/item/ammo_magazine/handful,
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/revolver
+		)
+	flap = FALSE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 10,
+			"icon_y" = 3))
+
+/obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		var/obj/item/ammo_magazine/lever_action/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+	else
+		return ..()
+
+
+obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+	set category = "Object"
+	set name = "Detach Revolver Holster"
+	set src in usr
+	if(ishuman(usr))
+		if(contents.len)
+			to_chat(usr, SPAN_WARNING("The belt needs to be fully empty to remove the holster!"))
+			return
+		to_chat(usr, SPAN_NOTICE("You detach the holster from the belt."))
+		var/obj/item/storage/belt/shotgun/lever_action/new_belt = new /obj/item/storage/belt/shotgun/lever_action
+		var/obj/item/storage/belt/gun/m44/lever_action/attach_holster/new_holster = new /obj/item/storage/belt/gun/m44/lever_action/attach_holster
+		qdel(src)
+		usr.put_in_hands(new_belt)
+		usr.put_in_hands(new_holster)
+		update_icon(usr)
+	else
+		return
+
+/obj/item/storage/belt/gun/m44/lever_action/attach_holster
+	name = "\improper M276 revolver holster attachment"
+	desc = "This holster can be instantly attached to an empty M276 45-70 rig, giving up some storage space in exchange for holding a sidearm. You could also clip it to your belt standalone if you really wanted to."
+	icon_state = "r4t-attach-holster"
+	item_state = "r4t-attach-holster"
+	w_class = SIZE_LARGE
+	storage_slots = 1
+	max_storage_space = 1
+	can_hold = list(
+		/obj/item/weapon/gun/revolver
+	)
 
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"
@@ -931,15 +1092,18 @@
 		/obj/item/ammo_magazine/revolver/mateba/highimpact,
 		/obj/item/ammo_magazine/revolver/mateba
 	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
 
 /obj/item/storage/belt/gun/mateba/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/cmateba
 	name = "\improper M276 pattern Mateba holster rig"
@@ -949,13 +1113,12 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/cmateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/commodore
 	name = "commodore's M276 pattern Mateba holster rig"
@@ -967,13 +1130,12 @@
 	item_state = "s_marinebelt"
 
 /obj/item/storage/belt/gun/mateba/commodore/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/engraved(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/engraved())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/admiral
 	name = "admiral's M276 pattern Mateba holster rig"
@@ -985,31 +1147,28 @@
 	item_state = "s_marinebelt"
 
 /obj/item/storage/belt/gun/mateba/admiral/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/admiral/impact/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/admiral/santa/fill_preset_inventory()
-	var/obj/item/weapon/gun/revolver/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral/santa(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral/santa())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/pmc
 	name = "PMC M276 pattern Mateba holster rig"
@@ -1021,13 +1180,12 @@
 	item_state = "s_marinebelt"
 
 /obj/item/storage/belt/gun/mateba/pmc/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/type47
 	name = "\improper Type 47 pistol holster rig"
@@ -1043,30 +1201,27 @@
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp/shrapnel
 	)
+	holster_slots = list("1" = list("icon_x" = -1))
 
 /obj/item/storage/belt/gun/type47/PK9/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/c99/upp())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/c99(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/type47/PK9/tranq/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp/tranq(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/c99/upp/tranq())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/c99/tranq(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/type47/NY/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/nagant(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/nagant())
 	for(var/total_storage_slots in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/type47/NY/shrapnel/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/nagant/shrapnel(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/nagant/shrapnel())
 	for(var/total_storage_slots in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
-	new_gun.on_enter_storage(src)
 
 //Crazy Ivan's belt reskin
 /obj/item/storage/belt/gun/type47/ivan
@@ -1098,8 +1253,7 @@
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)
 	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - list(/obj/item/weapon/gun/pistol/m4a3/training, /obj/item/weapon/gun/pistol/mod88/training))
-	var/obj/item/weapon/gun/sidearm = new guntype(src)
-	sidearm.on_enter_storage(src)
+	handle_item_insertion(new guntype())
 	for(var/total_storage_slots in 2 to storage_slots) //minus templates
 		new random_mag(src)
 		random_mag = pick(picklist)
@@ -1109,8 +1263,10 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
 	storage_slots = 6
-	icon_x = -5
-	icon_y = -2
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -5,
+			"icon_y" = -2))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
@@ -1118,10 +1274,9 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/flaregun
 	name = "\improper M276 pattern M82F flare gun holster rig"
@@ -1134,12 +1289,15 @@
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare
 	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
 
 /obj/item/storage/belt/gun/flaregun/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/flare(src)
+	handle_item_insertion(new /obj/item/weapon/gun/flare())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/device/flashlight/flare(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/flaregun/full_nogun/fill_preset_inventory()
 	for(var/i = 1 to storage_slots - 1)
@@ -1162,20 +1320,24 @@
 		/obj/item/ammo_magazine/revolver
 	)
 	has_gamemode_skin = FALSE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
 
 /obj/item/storage/belt/gun/webley/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/custom/webley(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley())
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartgunner
 	name = "\improper M802 pattern smartgunner sidearm rig"
 	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
 	icon_state = "sgbelt"
-	icon_x = 5
-	icon_y = -2
-	mixed_pistols = TRUE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 5,
+			"icon_y" = -2))
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1188,19 +1350,14 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
-	icon_state = "sgbelt"
-	icon_x = 5
-	icon_y = -2
-	mixed_pistols = TRUE
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1215,20 +1372,15 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufactoring stamp."
-	icon_state = "sgbelt"
-	icon_x = 5
-	icon_y = -2
-	mixed_pistols = TRUE
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1243,20 +1395,17 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/clf/full/fill_preset_inventory()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
-	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mortarbelt
 	name="\improper M276 pattern mortar operator belt"
 	desc="An M276 load-bearing rig configured to carry ammunition for the M402 mortar, along with a sidearm."
 	icon_state="mortarbelt"
-	icon_x = 11
-	icon_y = 0
-	mixed_pistols = TRUE
+	holster_slots = list("1" = list("icon_x" = 11))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,

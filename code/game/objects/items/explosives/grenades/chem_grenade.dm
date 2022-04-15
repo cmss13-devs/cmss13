@@ -32,7 +32,7 @@
 	matter = list("metal" = 7000)
 
 
-/obj/item/explosive/grenade/custom/metalfoam
+/obj/item/explosive/grenade/custom/metal_foam
 	name = "Metal-Foam Grenade"
 	desc = "Used for emergency sealing of air breaches."
 	assembly_stage = ASSEMBLY_LOCKED
@@ -40,7 +40,7 @@
 	has_blast_wave_dampener = FALSE
 	antigrief_protection = FALSE
 
-/obj/item/explosive/grenade/custom/metalfoam/Initialize()
+/obj/item/explosive/grenade/custom/metal_foam/Initialize()
 	. = ..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)

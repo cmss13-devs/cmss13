@@ -3674,7 +3674,7 @@
 	},
 /area/corsat/sigma/south/complex/teleporter)
 "ajZ" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar)
 "aka" = (
@@ -6884,7 +6884,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "atP" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/sigma/hangar/id)
 "atQ" = (
@@ -9384,7 +9384,7 @@
 "aAi" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -11324,9 +11324,9 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aFh" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/gamma/biodome)
 "aFi" = (
 /obj/structure/toilet,
@@ -12280,7 +12280,7 @@
 "aHt" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/storage/pouch/general/medium,
 /obj/item/storage/pouch/pistol,
 /turf/open/floor/corsat{
@@ -14200,7 +14200,7 @@
 "aMB" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -14948,9 +14948,9 @@
 	},
 /area/corsat/sigma/south/security)
 "aOC" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/sigma/biodome)
 "aOD" = (
 /obj/structure/surface/table/almayer,
@@ -19624,7 +19624,7 @@
 "baf" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -19645,7 +19645,7 @@
 "bah" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -22342,7 +22342,7 @@
 	},
 /area/corsat/omega/hallways)
 "bhl" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/corsat/sigma/biodome/testgrounds)
 "bhm" = (
@@ -24065,7 +24065,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/hangar/office)
 "blN" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar/cargo)
 "blO" = (
@@ -24640,10 +24640,6 @@
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
-/area/corsat/gamma/medbay)
-"bnG" = (
-/obj/structure/sign/safety/medical,
-/turf/closed/wall/almayer/white,
 /area/corsat/gamma/medbay)
 "bnH" = (
 /obj/structure/sign/safety/biohazard,
@@ -29686,7 +29682,7 @@
 	name = "Head of Security's Locker"
 	},
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/device/binoculars,
 /obj/item/device/flashlight,
 /turf/open/floor/corsat{
@@ -29829,7 +29825,7 @@
 /area/corsat/sigma/south/complex)
 "bDd" = (
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -29866,7 +29862,7 @@
 /area/corsat/omega/security)
 "bDk" = (
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -34904,7 +34900,7 @@
 /area/corsat/omega/complex)
 "bUr" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -38648,9 +38644,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplecorner"
@@ -41217,9 +41213,9 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "fmR" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -44232,9 +44228,9 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "huu" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "huv" = (
@@ -44714,9 +44710,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "hHA" = (
@@ -44752,7 +44748,7 @@
 "hIh" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -47602,9 +47598,9 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "jWB" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -49800,9 +49796,9 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "lCv" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -51680,9 +51676,9 @@
 /area/corsat/gamma/foyer)
 "mRC" = (
 /obj/effect/alien/weeds/node,
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/omega/biodome)
 "mRI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -52098,9 +52094,9 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "njL" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "purplewhite"
@@ -52216,9 +52212,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "noy" = (
@@ -55240,9 +55236,9 @@
 /area/corsat/gamma/cargo)
 "pCh" = (
 /obj/structure/machinery/light,
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -58242,7 +58238,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "rMU" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/corsat,
 /area/corsat/sigma/dorms)
 "rMX" = (
@@ -59994,9 +59990,9 @@
 	},
 /area/corsat/sigma/southeast/generator)
 "sWP" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/omega/biodome)
 "sXf" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -60365,7 +60361,7 @@
 "tlX" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security/MP/full,
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -62976,9 +62972,9 @@
 /area/corsat/sigma/south/complex)
 "vfR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "vgl" = (
@@ -65285,9 +65281,9 @@
 	},
 /area/corsat/gamma/rnr)
 "wPz" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhitecorner"
@@ -66537,9 +66533,9 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/lounge)
 "xQF" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/omega/control)
 "xQH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -66915,9 +66911,9 @@
 	},
 /area/corsat/gamma/biodome/toxins)
 "ygx" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhitecorner"
@@ -88964,7 +88960,7 @@ iQi
 oOg
 aqN
 aqO
-bnG
+bnM
 aCI
 aqO
 arf
@@ -93116,7 +93112,7 @@ aRE
 aqH
 eaL
 aqM
-bnG
+bnM
 svD
 aqP
 lxS

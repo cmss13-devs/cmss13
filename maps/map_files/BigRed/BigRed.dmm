@@ -583,8 +583,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aby" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -1691,7 +1691,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "aeu" = (
-/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -2113,7 +2113,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afC" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whiteyellow";
@@ -2122,7 +2122,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "afD" = (
 /obj/item/device/mass_spectrometer/adv,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	icon_state = "whiteyellow";
 	tag = "icon-whiteyellow"
@@ -2340,7 +2340,7 @@
 	dir = 2;
 	tag = "icon-left"
 	},
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "chem_lock";
 	name = "\improper Chemistry Lockdown"
@@ -2670,7 +2670,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agV" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellow2";
@@ -2678,14 +2678,14 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agW" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agX" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkpurple2";
@@ -2954,14 +2954,14 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ahI" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor{
 	icon_state = "darkpurple2";
 	tag = "icon-darkpurple2"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ahJ" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "darkpurple2";
@@ -27259,8 +27259,8 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/smg/m39/elite,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -27290,7 +27290,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzM" = (
-/obj/structure/closet,
+/obj/structure/closet/secure_closet,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -32252,6 +32252,12 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves_north)
+"sbz" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gruesome"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
 "sbQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -52200,7 +52206,7 @@ axC
 alu
 ayV
 ayV
-ayV
+sbz
 alu
 aBR
 aBR

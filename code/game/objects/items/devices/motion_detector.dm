@@ -9,6 +9,10 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector_blip"
 	layer = BELOW_FULLSCREEN_LAYER
+	plane = FULLSCREEN_PLANE
+
+/obj/effect/detector_blip/m717
+	icon_state = "tracker_blip"
 
 /obj/item/device/motiondetector
 	name = "motion detector"
@@ -31,6 +35,8 @@
 	actions_types = list(/datum/action/item_action)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/range_bounds
+	var/long_range_locked = FALSE //only long-range MD
+	var/ping_overlay
 
 /obj/item/device/motiondetector/examine()
 	. = ..()
@@ -39,25 +45,40 @@
 
 /obj/item/device/motiondetector/New()
 	range_bounds = new //Just creating a rectangle datum
+	update_icon()
 	..()
 
 /obj/item/device/motiondetector/update_icon()
-	if(ping_count > 8)
-		icon_state = "detector_on_9_b"
-		spawn(10)
-			if(active)
-				icon_state = "detector_on_9"
+	//clear overlays
+	if(overlays)
+		overlays.Cut()
 	else
-		icon_state = "detector_on_[ping_count]_b"
-		spawn(10)
-			if(active)
-				icon_state = "detector_on_[ping_count]"
+		overlays = list()
+
+	if(blood_overlay)
+		overlays += blood_overlay
+	//add ping overlay
+	if(ping_count > 8)
+		ping_overlay = "+[initial(icon_state)]_on_9"
+	else
+		ping_overlay = "+[initial(icon_state)]_on_[ping_count]"
+	var/image/ping_overlay_image = ping_overlay
+	if(active)
+		overlays += ping_overlay_image
+	//add toggle switch overlay
+	if(detector_mode)
+		overlays += "+[initial(icon_state)]_long_switch"
+	else
+		overlays += "+[initial(icon_state)]_short_switch"
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"
 	set category = "Object"
 	set src in usr
-	toggle_mode(usr)
+	if(!long_range_locked)
+		toggle_mode(usr)
+	else
+		to_chat(usr, SPAN_WARNING("ERROR: 'SHORT-RANGE' MODE NOT LOCATED."))
 
 /obj/item/device/motiondetector/proc/toggle_mode(mob/user)
 	if(isobserver(user) || isXeno(user) || !Adjacent(user))
@@ -70,15 +91,18 @@
 	else
 		to_chat(user, SPAN_NOTICE("You switch [src] to long range mode."))
 		detector_range = 14
-	if(active)
-		update_icon()
+	update_icon()
+	playsound(usr,'sound/machines/click.ogg', 15, TRUE)
 
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
 	if (isobserver(user) || isXeno(user)) return
 
 	if (mods["alt"])
-		toggle_mode(user)
-		return 1
+		if(!long_range_locked)
+			toggle_mode(usr)
+		else
+			to_chat(usr, SPAN_WARNING("ERROR: 'SHORT-RANGE' MODE NOT LOCATED."))
+		return TRUE
 
 	return ..()
 
@@ -91,19 +115,25 @@
 // var/active is used to forcefully toggle it to a specific state
 /obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
 	active = !old_active
-	if(active)
-		update_icon()
-		if(user)
-			to_chat(user, SPAN_NOTICE("You activate [src]."))
-		playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
-		START_PROCESSING(SSobj, src)
+	if(!active)
+		turn_off(user)
 	else
-		scanning = FALSE // safety if MD runtimes in scan and stops scanning
-		icon_state = "[initial(icon_state)]"
-		if(user)
-			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
-		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
-		STOP_PROCESSING(SSobj, src)
+		turn_on(user)
+	update_icon()
+
+/obj/item/device/motiondetector/proc/turn_on(mob/user)
+	if(user)
+		to_chat(user, SPAN_NOTICE("You activate [src]."))
+	playsound(loc, 'sound/items/detector_turn_on.ogg', 30, FALSE, 5, 2)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/device/motiondetector/proc/turn_off(mob/user)
+	if(user)
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+	scanning = FALSE // safety if MD runtimes in scan and stops scanning
+	icon_state = "[initial(icon_state)]"
+	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/motiondetector/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -190,7 +220,7 @@
 		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
 		ping_count++
 		if(human_user)
-			show_blip(human_user, Q, "error")
+			show_blip(human_user, Q, "queen_eye")
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
@@ -236,9 +266,22 @@
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.screen += DB
-		sleep(12)
-		if(user.client)
-			user.client.screen -= DB
+		addtimer(CALLBACK(src, .proc/clear_pings, user, DB), 1 SECONDS)
+
+/obj/item/device/motiondetector/proc/clear_pings(mob/user, var/obj/effect/detector_blip/DB)
+	if(user.client)
+		user.client.screen -= DB
+
+/obj/item/device/motiondetector/m717
+	name = "M717 pocket motion detector"
+	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets."
+	icon_state = "pocket"
+	item_state = "motion_detector"
+	flags_atom = FPRINT| CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_SMALL
+	blip_type = "tracker"
+	long_range_locked = TRUE
 
 /obj/item/device/motiondetector/hacked
 	name = "hacked motion detector"

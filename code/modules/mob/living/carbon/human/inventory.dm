@@ -239,6 +239,7 @@
 		W.pickup(src)
 	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
+	W.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)
@@ -351,25 +352,25 @@
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
 			var/obj/item/storage/S = back
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
 			shoes.attackby(W,src)
 			shoes.update_icon()
 		if(WEAR_IN_SCABBARD)
 			var/obj/item/storage/S = back
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)
-				S.pockets.attempt_item_insertion(W, src)
+				S.pockets.attempt_item_insertion(W, FALSE, src)
 				wear_suit.update_icon()
 
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
 			if(istype(HM) && HM.pockets.storage_slots)
-				HM.pockets.attempt_item_insertion(W, src)
+				HM.pockets.attempt_item_insertion(W, FALSE, src)
 				HM.update_icon()
 
 		if(WEAR_IN_ACCESSORY)
@@ -385,19 +386,19 @@
 
 		if(WEAR_IN_BELT)
 			var/obj/item/storage/S = belt
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			belt.update_icon()
 		if(WEAR_IN_J_STORE)
 			var/obj/item/storage/S = s_store
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			s_store.update_icon()
 		if(WEAR_IN_L_STORE)
 			var/obj/item/storage/S = l_store
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			l_store.update_icon()
 		if(WEAR_IN_R_STORE)
 			var/obj/item/storage/S = r_store
-			S.attempt_item_insertion(W, src)
+			S.attempt_item_insertion(W, FALSE, src)
 			r_store.update_icon()
 
 		else

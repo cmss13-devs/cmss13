@@ -475,7 +475,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isYautja(H))
+	if(!isYautja(H) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 

@@ -4,7 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
-	max_health = XENO_HEALTH_TIER_6
+	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
@@ -15,7 +15,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
-	deevolves_to = XENO_CASTE_DEFENDER
+	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
@@ -120,8 +120,8 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/stored_shield_max = 160
-	var/stored_shield_per_slash = 40
+	var/stored_shield_max = 100
+	var/stored_shield_per_slash = 25
 	var/datum/component/shield_component
 
 /datum/behavior_delegate/warrior_base/New()

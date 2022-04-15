@@ -328,15 +328,17 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if(light <= 0)
 		light = 0
 		luminosity = 0
+	else
+		luminosity = 1
 	if(light > LIGHTING_STATES)
 		light = LIGHTING_STATES
-	luminosity = 1
 
 	if(lighting_overlay)
 		overlays -= lighting_overlay
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
+		lighting_overlay.plane = LIGHTING_PLANE
 	if (light < 6)
 		overlays.Add(lighting_overlay)
 

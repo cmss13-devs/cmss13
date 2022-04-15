@@ -21,10 +21,10 @@
 		//drop some weeds for xeno plasma regen.
 		new /obj/effect/alien/weeds/node/feral(drop_spawn)
 
-/datum/emergency_call/feral_xenos/create_member(datum/mind/M)
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/feral_xenos/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(spawn_loc)) 
+	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
 	var/mob/current_mob = M.current

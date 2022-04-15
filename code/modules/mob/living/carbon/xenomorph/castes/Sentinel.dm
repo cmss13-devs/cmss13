@@ -14,7 +14,7 @@
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)
-	deevolves_to = "Larva"
+	deevolves_to = list("Larva")
 	acid_level = 1
 
 	tackle_min = 4

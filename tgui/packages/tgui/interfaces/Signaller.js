@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Knob, NoticeBox, LabeledList } from '../components';
+import { Button, Section, Knob, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const Signaller = (props, context) => {
@@ -23,7 +23,7 @@ export const Signaller = (props, context) => {
         <Section>
           <LabeledList>
             <LabeledList.Item label="Frequency">
-              <Knob 
+              <Knob
                 inline
                 maxValue={max_freq}
                 minValue={min_freq}
@@ -46,4 +46,3 @@ export const Signaller = (props, context) => {
     </Window>
   );
 };
-  

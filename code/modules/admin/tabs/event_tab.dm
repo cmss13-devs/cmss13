@@ -145,7 +145,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big"))
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
 	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
@@ -165,6 +165,8 @@
 			if("Aft") dock_id = /area/shuttle/distress/arrive_3
 			if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
 			if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
+			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
+			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
 			else return
 		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
 			if(F != shuttle)
@@ -229,7 +231,12 @@
 	if(announce == "No")
 		is_announcing = FALSE
 
-	chosen_ert.activate(is_announcing)
+	var/turf/override_spawn_loc
+	var/use_current_loc = alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location") == "Current Location" ? TRUE : FALSE
+	if(use_current_loc)
+		override_spawn_loc = get_turf(usr)
+
+	chosen_ert.activate(is_announcing, override_spawn_loc)
 
 	message_staff("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
@@ -836,3 +843,19 @@
 		QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
 		warhead.loc = target
+
+/client/proc/change_taskbar_icon()
+	set name = "Set Taskbar Icon"
+	set desc = "Change the taskbar icon to a preset list of selectable icons."
+	set category = "Admin.Events"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/taskbar_icon = tgui_input_list(usr, "Select an icon you want to appear on the player's taskbar.", "Taskbar Icon", GLOB.available_taskbar_icons)
+	if(!taskbar_icon)
+		return
+
+	SSticker.mode.taskbar_icon = taskbar_icon
+	SSticker.set_clients_taskbar_icon(taskbar_icon)
+	message_staff("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")

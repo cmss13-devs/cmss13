@@ -337,3 +337,43 @@
 
 		i++;
 	return
+
+/obj/structure/machinery/vending/walkman
+	name = "\improper Rec-Vend"
+	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
+	icon_state = "walkman"
+	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
+	vend_delay = 5
+	idle_power_usage = 200
+
+	products = list(/obj/item/device/cassette_tape/pop1 = 10,
+		/obj/item/device/cassette_tape/hiphop = 10,
+		/obj/item/device/cassette_tape/nam = 10,
+		/obj/item/device/cassette_tape/ocean = 10,
+		/obj/item/device/cassette_tape/pop3 = 10,
+		/obj/item/device/cassette_tape/pop4 = 10,
+		/obj/item/device/cassette_tape/pop2 = 10,
+		/obj/item/device/cassette_tape/heavymetal = 10,
+		/obj/item/device/cassette_tape/hairmetal = 10,
+		/obj/item/device/cassette_tape/indie = 10,
+		/obj/item/device/walkman = 50,
+		/obj/item/storage/pouch/cassette = 15,
+		/obj/item/toy/deck = 5,
+		/obj/item/toy/deck/uno = 5)
+
+	contraband = list(/obj/item/toy/sword = 2)
+
+	prices = list(/obj/item/device/cassette_tape/pop1 = 3,
+		/obj/item/device/cassette_tape/hiphop = 3,
+		/obj/item/device/cassette_tape/nam = 3,
+		/obj/item/device/cassette_tape/ocean = 4,
+		/obj/item/device/cassette_tape/pop3 = 3,
+		/obj/item/device/cassette_tape/pop4 = 3,
+		/obj/item/device/cassette_tape/pop2 = 3,
+		/obj/item/device/cassette_tape/heavymetal = 3,
+		/obj/item/device/cassette_tape/hairmetal = 3,
+		/obj/item/device/cassette_tape/indie = 3,
+		/obj/item/device/walkman = 15,
+		/obj/item/storage/pouch/cassette = 10,
+		/obj/item/toy/deck = 20,
+		/obj/item/toy/deck/uno = 15)

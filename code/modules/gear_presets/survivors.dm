@@ -296,7 +296,8 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_CORPORATE,
+		ACCESS_CIVILIAN_COMMAND
 	)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
@@ -1252,9 +1253,13 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
+	faction = FACTION_PMC
+	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC
 	paygrade = "PMC-OP"
+	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -1278,6 +1283,10 @@
 
 	..()
 
+/datum/equipment_preset/survivor/wy/manager/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
+
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1286,8 +1295,9 @@
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
-	idtype = /obj/item/card/id/silver
+	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,

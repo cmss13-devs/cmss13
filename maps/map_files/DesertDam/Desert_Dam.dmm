@@ -1598,9 +1598,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "aeW" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	use_power = 0
-	},
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue"
@@ -25539,8 +25537,8 @@
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bxv" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metalfoam,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
 /turf/open/floor/prison{
 	dir = 9;

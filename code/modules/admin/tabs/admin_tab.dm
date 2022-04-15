@@ -93,7 +93,7 @@
 	log_admin("[key_name(usr)] admin ghosted.")
 
 	var/mob/body = mob
-	body.ghostize(TRUE)
+	body.ghostize(TRUE, TRUE)
 	if(body && !body.key)
 		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)

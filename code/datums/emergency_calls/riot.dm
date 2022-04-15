@@ -8,8 +8,8 @@
 	probability = 0
 
 
-/datum/emergency_call/riot/create_member(datum/mind/M)
-	var/turf/T = get_spawn_point()
+/datum/emergency_call/riot/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
 		return FALSE

@@ -14,7 +14,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolves_to = list(XENO_CASTE_WARRIOR)
-	deevolves_to = "Larva"
+	deevolves_to = list("Larva")
 	can_vent_crawl = 0
 
 	tackle_min = 2

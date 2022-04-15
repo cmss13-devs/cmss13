@@ -905,8 +905,8 @@
 /area/ice_colony/exterior/surface/cliff)
 "ade" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metalfoam,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
 /turf/open/floor{
 	dir = 9;
@@ -4721,8 +4721,8 @@
 /area/ice_colony/surface/substation)
 "amw" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/explosive/grenade/custom/metalfoam,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkyellow2";

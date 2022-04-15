@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 
 		list("COMBAT ARMOR (CHOOSE 1)", 0, null, null, null),
-        list("M3-VL Pattern Ballistics Vest", 0, /obj/item/clothing/suit/storage/marine/light/vest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("M3-VL Pattern Ballistics Vest", 0, /obj/item/clothing/suit/storage/marine/light/vest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 		list("M3 Pattern Padded Armor", 0, /obj/item/clothing/suit/storage/marine/padded, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Bulletproof Vest", 0, /obj/item/clothing/suit/armor/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
@@ -61,13 +61,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("M10 Helmet", 0, /obj/item/clothing/head/helmet/marine, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+
+		list("TOOLS OF THE TRADE", 0, null, null, null),
+		list("CPR Dummy", 5, /obj/item/cpr_dummy, null, VENDOR_ITEM_REGULAR)
 	))
 
 /obj/structure/machinery/cm_vending/clothing/sea

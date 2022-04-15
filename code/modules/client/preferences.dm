@@ -1327,14 +1327,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggles_sound ^= SOUND_ADMINHELP
 
 				if("ui")
-					var/list/custom_human_huds_list = list("midnight" = new /datum/custom_hud(), //sorry but we can't let them use alien or robot huds
-															"dark" = new /datum/custom_hud/dark(),
-															"old" = new /datum/custom_hud/old(),
-															"orange" = new /datum/custom_hud/orange(),
-															"white" = new /datum/custom_hud/white(),
-															"glass" = new /datum/custom_hud/glass(),
-															"red" = new /datum/custom_hud/red()
-															)
+					var/list/custom_human_huds_list = (custom_huds_list -= list("robot", "alien"))
 					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", custom_human_huds_list)
 					UI_style = ui_style_choice
 

@@ -1330,6 +1330,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/list/custom_human_huds_list = (custom_huds_list -= list("robot", "alien"))
 					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", custom_human_huds_list)
 					UI_style = ui_style_choice
+					if(!ui_style_choice)
+						UI_style = "midnight"
 
 				if("UIcolor")
 					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null

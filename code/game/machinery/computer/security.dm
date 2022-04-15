@@ -437,6 +437,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
 							if (!t1 || active1 != a1)
 								return
+							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("sex")
 						if (istype(active1, /datum/data/record))
@@ -462,13 +463,12 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Captain", "AI" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if ((istype(active1, /datum/data/record) && L.Find(rank)))
-							temp = "<h5>Rank:</h5>"
+						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
+								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
 							alert(usr, "You do not have the required rank to do this!")

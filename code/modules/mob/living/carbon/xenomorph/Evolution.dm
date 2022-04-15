@@ -242,17 +242,26 @@
 		to_chat(src, SPAN_XENOWARNING("You are too weak to deevolve, regain your health first."))
 		return
 
-	if(!caste.deevolves_to)
+	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve any further."))
 		return
-		
+
 	if(lock_evolve)
 		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
 		return FALSE
 
-	var/newcaste = caste.deevolves_to
 
-	var/confirm = alert(src, "Are you sure you want to deevolve from [caste.caste_type] to [newcaste]? You can only do this once.", , "Yes", "No")
+	var/newcaste
+
+	if(length(caste.deevolves_to) == 1)
+		newcaste = caste.deevolves_to[1]
+	else if(length(caste.deevolves_to) > 1)
+		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to)
+
+	if(!newcaste)
+		return
+
+	var/confirm = alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]?", , "Yes", "No")
 	if(confirm == "No")
 		return
 

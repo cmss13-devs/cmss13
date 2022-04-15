@@ -20,7 +20,7 @@
 	tackle_chance = 25
 
 	evolution_allowed = FALSE
-	deevolves_to = XENO_CASTE_WARRIOR
+	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
 /mob/living/carbon/Xenomorph/Crusher

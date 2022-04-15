@@ -51,7 +51,6 @@ var/href_logfile = null
 var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
-var/changelog_hash = ""
 var/game_year = "2182"
 
 var/going = 1.0

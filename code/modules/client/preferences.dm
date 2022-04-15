@@ -42,6 +42,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
+	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
@@ -85,7 +86,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 18						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
-	var/underwear = 1					//underwear type
+	var/underwear = "Briefs"			//underwear type
 	var/undershirt = 1					//undershirt type
 	var/backbag = 2						//backpack type
 	var/h_style = "Crewcut"				//Hair type
@@ -361,11 +362,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<br><br>"
 
 	dat += "<h2><b><u>Marine Gear:</u></b></h2>"
-	if(gender == MALE)
-		dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</b></a><br>"
-	else
-		dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</b></a><br>"
-
+	dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear]</b></a><br>"
 	dat += "<b>Undershirt:</b> <a href='?_src_=prefs;preference=undershirt;task=input'><b>[undershirt_t[undershirt]]</b></a><br>"
 
 	dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
@@ -884,7 +881,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if ("f_style")
 					f_style = random_facial_hair_style(gender, species)
 				if ("underwear")
-					underwear = rand(1,underwear_m.len)
+					underwear = gender == MALE ? pick(underwear_m) : pick(underwear_f)
 					ShowChoices(user)
 				if ("undershirt")
 					undershirt = rand(1,undershirt_t.len)
@@ -973,7 +970,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("co_sidearm")
 					var/list/options = list("Mateba","Desert Eagle")
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Commodore's Mateba","Golden Desert Eagle")
 					else
 						options -= list("Commodore's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise
@@ -1177,21 +1174,18 @@ var/const/MAX_SAVE_SLOTS = 10
 						f_style = new_f_style
 
 				if("underwear")
-					var/list/underwear_options
-					if(gender == MALE)
-						underwear_options = underwear_m
-					else
-						underwear_options = underwear_f
-
+					var/list/underwear_options = gender == MALE ? underwear_m : underwear_f
+					var/old_gender = gender
 					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_options
+					if(old_gender != gender)
+						return
 					if(new_underwear)
-						underwear = underwear_options.Find(new_underwear)
+						underwear = new_underwear
 					ShowChoices(user)
 
 				if("undershirt")
 					var/list/undershirt_options
 					undershirt_options = undershirt_t
-
 					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt:", "Character Preference", undershirt_options)
 					if (new_undershirt)
 						undershirt = undershirt_options.Find(new_undershirt)
@@ -1324,7 +1318,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						gender = FEMALE
 					else
 						gender = MALE
-						underwear = 1
+					underwear = sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear))
 
 				if("disabilities")				//please note: current code only allows nearsightedness as a disability
 					disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
@@ -1548,8 +1542,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				else if(status == "mechanical")
 					I.mechanize()
 
-	if(underwear > underwear_f.len || underwear < 1)
-		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+	sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	character.underwear = underwear
 
 	if(undershirt > undershirt_t.len || undershirt < 1)
@@ -1612,8 +1605,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				else if(status == "mechanical")
 					I.mechanize()
 
-	if(underwear > underwear_f.len || underwear < 1)
-		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+	sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear)) //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
 	character.underwear = underwear
 
 	if(undershirt > undershirt_t.len || undershirt < 1)

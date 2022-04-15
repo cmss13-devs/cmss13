@@ -14,6 +14,10 @@
 	var/next_research_allocation = 0
 	var/research_allocation_amount = 5
 
+	var/budget_increase_delay = 30 MINUTES
+	var/next_budget_increase = 30 MINUTES
+	var/budget_points_to_give = 200
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -225,6 +229,10 @@
 		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
 			set_lz_resin_allowed(TRUE)
 
+		if(world.time >= next_budget_increase)
+			shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+			supply_controller.points += budget_points_to_give * get_scaling_value()
+			next_budget_increase += budget_increase_delay
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT

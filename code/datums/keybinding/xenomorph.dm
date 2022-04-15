@@ -65,6 +65,44 @@
 	X.xeno_primary_action_four()
 	return TRUE
 
+/datum/keybinding/xenomorph/emit_pheromones
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "emit_pheromones"
+	full_name = "Emit Pheromones"
+	description = "Select a pheromone to emit or cease emitting pheromones."
+	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES
+	var/pheromone
+
+/datum/keybinding/xenomorph/emit_pheromones/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/X = user.mob
+	X.emit_pheromones(pheromone)
+	return TRUE
+
+/datum/keybinding/xenomorph/emit_pheromones/frenzy
+	name = "emit_pheromones_fernzy"
+	full_name = "Emit Frenzy pheromone"
+	description = "Increased run speed, damage and chance to knock off headhunter masks."
+	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY
+	pheromone = "frenzy"
+
+/datum/keybinding/xenomorph/emit_pheromones/warding
+	name = "emit_pheromones_warding"
+	full_name = "Emit Warding pheromone"
+	description = "Increased maximum negative health, and while in critical state, slower off weed bleedout."
+	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING
+	pheromone = "warding"
+
+/datum/keybinding/xenomorph/emit_pheromones/recovery
+	name = "emit_pheromones_recovery"
+	full_name = "Emit Recovery pheromone"
+	description = "Increased plasma and health regeneration."
+	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY
+	pheromone = "recovery"
+
 /datum/keybinding/xenomorph/corrosive_acid
 	hotkey_keys = list("Shift+C")
 	classic_keys = list()

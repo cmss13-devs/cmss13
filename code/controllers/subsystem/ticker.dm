@@ -205,6 +205,9 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	mode.announce()
+	if(mode.taskbar_icon)
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_mode_icon)
+		set_clients_taskbar_icon(mode.taskbar_icon)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)
 		apply_lazy_timings()
@@ -355,9 +358,8 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
-	var/F = file("data/mode.txt")
-	fdel(F)
-	WRITE_FILE(F, the_mode)
+	fdel("data/mode.txt")
+	WRITE_FILE(file("data/mode.txt"), the_mode)
 
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
@@ -484,3 +486,12 @@ SUBSYSTEM_DEF(ticker)
 	SStgui?.wait               = 1.2 SECONDS // From 0.9, UI refresh rate
 
 	log_debug("Switching to lazy Subsystem timings for performance")
+
+/datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(var/taskbar_icon)
+	for(var/client/C as anything in GLOB.clients)
+		winset(C, null, "mainwindow.icon=[taskbar_icon]")
+
+/datum/controller/subsystem/ticker/proc/handle_mode_icon(var/dcs, var/client/C)
+	SIGNAL_HANDLER
+
+	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")

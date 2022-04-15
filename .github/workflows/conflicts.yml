@@ -2,7 +2,7 @@ name: 'Check for merge conflicts'
 on:
   push:
     branches:
-      - dev
+      - master
 jobs:
   triage:
     runs-on: ubuntu-20.04
@@ -11,4 +11,4 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: 'Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WAIT_MS: 8000
+          WAIT_MS: 10000

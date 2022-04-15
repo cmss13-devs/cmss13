@@ -703,7 +703,9 @@
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
@@ -712,7 +714,7 @@
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -727,9 +729,10 @@
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
@@ -737,7 +740,7 @@
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -752,17 +755,18 @@
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 //*****************************************************************************************************/

@@ -1,23 +1,17 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui_common
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
-	)
-
 /datum/asset/simple/tgui
 	keep_local_name = TRUE
 	assets = list(
-		"tgui.bundle.js" = 'tgui/public/tgui.bundle.js',
-		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
+		"tgui.bundle.js" = file("tgui/public/tgui.bundle.js"),
+		"tgui.bundle.css" = file("tgui/public/tgui.bundle.css"),
 	)
 
 /datum/asset/simple/tgui_panel
 	keep_local_name = TRUE
 	assets = list(
-		"tgui-panel.bundle.js" = 'tgui/public/tgui-panel.bundle.js',
-		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
+		"tgui-panel.bundle.js" = file("tgui/public/tgui-panel.bundle.js"),
+		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
 	)
 
 /datum/asset/simple/fontawesome
@@ -27,27 +21,8 @@
 		"fa-regular-400.woff" = 'html/font-awesome/webfonts/fa-regular-400.woff',
 		"fa-solid-900.eot"    = 'html/font-awesome/webfonts/fa-solid-900.eot',
 		"fa-solid-900.woff"   = 'html/font-awesome/webfonts/fa-solid-900.woff',
-		"font-awesome.css" = 'html/font-awesome/css/all.min.css'
-	)
-
-/datum/asset/simple/changelog
-	keep_local_name = TRUE
-	assets = list(
-		"88x31.png" = 'html/88x31.png',
-		"bug-minus.png" = 'html/bug-minus.png',
-		"cross-circle.png" = 'html/cross-circle.png',
-		"hard-hat-exclamation.png" = 'html/hard-hat-exclamation.png',
-		"image-minus.png" = 'html/image-minus.png',
-		"image-plus.png" = 'html/image-plus.png',
-		"music-minus.png" = 'html/music-minus.png',
-		"music-plus.png" = 'html/music-plus.png',
-		"tick-circle.png" = 'html/tick-circle.png',
-		"wrench-screwdriver.png" = 'html/wrench-screwdriver.png',
-		"spell-check.png" = 'html/spell-check.png',
-		"burn-exclamation.png" = 'html/burn-exclamation.png',
-		"chevron.png" = 'html/chevron.png',
-		"chevron-expand.png" = 'html/chevron-expand.png',
-		"changelog.css" = 'html/changelog.css'
+		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
+		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
 	)
 
 /datum/asset/simple/common

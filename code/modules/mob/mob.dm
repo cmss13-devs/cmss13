@@ -375,22 +375,6 @@
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
 
-
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-
-	var/datum/asset/simple/changelog = get_asset_datum(/datum/asset/simple/changelog)
-	changelog.send(src)
-
-	var/changelog_html = file2text('html/changelog.html')
-
-	show_browser(src, changelog_html, null, "changes", "size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
-
 /mob/Topic(href, href_list)
 	. = ..()
 	if(.)

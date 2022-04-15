@@ -14,7 +14,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	deevolves_to = XENO_CASTE_DRONE
+	deevolves_to = list(XENO_CASTE_DRONE)
 	caste_desc = "A digger and trapper."
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD

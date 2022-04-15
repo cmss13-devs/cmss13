@@ -720,8 +720,7 @@
 		H.comm_title = "SL"
 	else //an acting SL
 		H.comm_title = "aSL"
-	if(H.skills)
-		H.skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.skills.get_skill_level(SKILL_LEADERSHIP)))
+	ADD_TRAIT(H, TRAIT_LEADERSHIP, TRAIT_SOURCE_SQUAD_LEADER)
 
 	var/obj/item/device/radio/headset/almayer/marine/R = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 	if(R)

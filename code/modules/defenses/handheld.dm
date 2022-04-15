@@ -219,9 +219,11 @@
 /obj/item/defenses/handheld/bell_tower/get_upgrade_list()
 	. = list(
 		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "MD bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/md,
-		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/cloaker,
-		image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "bell_backpack") = /obj/item/storage/backpack/imp
+		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/cloaker
 	)
+
+// image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "bell_backpack") = /obj/item/storage/backpack/imp
+// bell backpack - disabled for now.
 
 // JIMA TOWER BASE AND UPGRADES
 /obj/item/defenses/handheld/planted_flag
@@ -234,9 +236,11 @@
 /obj/item/defenses/handheld/planted_flag/get_upgrade_list()
 	. = list(
 		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Warbanner planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/warbanner,
-		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/range,
-		image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "flag_backpack") = /obj/item/storage/backpack/jima
+		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/range
 	)
+
+//	image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "flag_backpack") = /obj/item/storage/backpack/jima
+//	flag backpack - disabled for now.
 
 /obj/item/defenses/handheld/planted_flag/warbanner
 	name = "handheld JIMA planted warbanner"

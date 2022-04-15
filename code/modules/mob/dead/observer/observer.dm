@@ -189,6 +189,11 @@
 
 	see_invisible = INVISIBILITY_OBSERVER
 
+	if(client.prefs.toggles_ghost & GHOST_HEALTH_SCAN)
+		add_verb(src, /mob/dead/observer/proc/scan_health)
+	else
+		remove_verb(src, /mob/dead/observer/proc/scan_health)
+
 
 /mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
 	return NO_BLOCKED_MOVEMENT
@@ -377,6 +382,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	usr.loc = pick(L)
 	following = null
+
+/mob/dead/observer/proc/scan_health(var/mob/living/target in oview())
+	set name = "Scan Health"
+
+	if(!istype(target))
+		return
+	target.health_scan(src, do_checks = FALSE)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"

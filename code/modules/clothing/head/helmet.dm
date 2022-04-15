@@ -166,6 +166,14 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEALLHAIR
 	siemens_coefficient = 1
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -469,7 +477,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		update_icon()
 		desc += "\n<b>This helmet seems to be scratched up and damaged, particularly around the face area...</b>"
 
-
+/obj/item/clothing/head/helmet/marine/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"

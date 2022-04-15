@@ -146,13 +146,6 @@
 	icon_state = "kilt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_FEET
 
-/obj/item/clothing/under/gladiator
-	name = "gladiator uniform"
-	desc = "Are you not entertained? Is that not why you are here?"
-	icon_state = "gladiator"
-	flags_armor_protection = BODY_FLAG_CHEST
-
-
 //wedding stuff
 /obj/item/clothing/under/wedding
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS

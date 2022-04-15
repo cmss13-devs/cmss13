@@ -1,0 +1,363 @@
+2022-02-01:
+  ChainsawMullet:
+  - tweak: Updated outdated or missing info in the descriptions of several strains
+      after purchasing them (i.e. Boxer no longer tells you that you're giving up
+      Agility Mode and bonebreak on Punch).
+  Chiwi:
+  - bugfix: Mess Sergeant is now Mess Technician.
+  - tweak: Several jobs' spawn descriptions have been altered to be better descriptive
+      about the role's tasks.
+  FoxyStalin:
+  - bugfix: Armors and Helmets no longer block injectors
+  Patternseeker:
+  - tweak: MP M44 revolvers now start with Marksman ammo loaded
+  - tweak: WO Requisitions Officer now starts with their custom M44 instead of the
+      old MP M44 holster
+  - rscadd: Added ability to click-drag to enter cryocells, sleepers, bodyscanners
+      and Autodocs. These still check for skills and other things so only medically-trained
+      people can enter Autodocs.
+  - rscadd: Added ability to resist to exit hypersleep chambers, cryocells, sleepers,
+      bodyscanners and autodocs.
+  - rscadd: Added emergency ejection for Autodocs. You really arent meant to exit
+      these machines while they are working so this function is only available for
+      the patient, if they resist.
+  - tweak: Exiting a hypersleep pod messages admins and logs now, much like entering
+      one did.
+  - spellcheck: Un-capitalized \"Sleeper\" and \"Body Scanner\" into \"sleeper\" and
+      \"body scanner\" respectively
+  - spellcheck: Replaced all instances of \"Med-Pod\" with \"Auto-Doc\"
+  - tweak: Reduced cryocell ejection procedure duration from 2 entire minutes to thirty
+      seconds
+  - spellcheck: Capitalized the M in Meralyne
+  TeDGamer:
+  - bugfix: Xenos fire damage should be calculated correctly
+  ghostsheet, Stan_Albatross:
+  - rscadd: Added the drop pouch webbing, it works like a satchel but inside your
+      webbing!
+  - rscadd: Drop Pouches can hold 1 medium item and 1 small item.
+  - rscadd: Drop Pouches cannot hold medkits or bibles.
+  - rscadd: Drop pouch are available wherever brown webbing vests are in vendors.
+2022-02-04:
+  BlackCrystalic:
+  - rscadd: Defenses now track shots and kills.
+  - rscadd: Defenses have settable faction now (mappers warning, you need to insert
+      it in mapping stage if you need make claimed defenses), if the defense is not
+      your faction you are unable to interact with it. However, you can hack it with
+      a multitool to interact with it and make it recognise your faction's IFF
+  - bugfix: Disassembling reworked - the turret will go straight into your hand, and
+      the ammo will not be refilled.
+  - tweak: Health req to remove turret 50% => 25%.
+  - tweak: Welding to heal a sentry now heals an RNG value between 25 and 75 HP
+  FoxyStalin:
+  - tweak: Adds Command Console access back to CMO
+  'Nancok  ':
+  - bugfix: 'Ice Colony v3 (Shivas) no longer looks for sprinkles in Ice Colony v2''s
+      folder  '
+  - bugfix: Sprinkles where not being loaded for the maps that didn't use them before
+      this MR
+  - rscadd: Small inserts for Solaris Ridge, Fiorina Science Annex, Kutjevo Refinery
+      and Desert Dam
+  - maptweak: Added nightmare landmarks for the inserts to their respective maps
+  Stan_Albatross:
+  - maptweak: The warden's office, RO's office, and brig cells now all have phones.
+  - maptweak: The CMP's office now has a security records filing cabinet.
+  - bugfix: The CMP's phone now has a proper name and network designation.
+  - bugfix: There are no longer two cryopods on top of each other in the brig courtyard.
+  - tweak: Laser Designators and Rangefinders can now be found in req again, alongside
+      normal binoculars in req's main gear vendor. They spawn with half the frequency
+      of regular binoculars each.
+  - tweak: Added rangefinders to the mixed binoculars crate.
+  - tweak: Changed the description of the medical storage rig and lifesaver belts
+      a bit to better elucidate the \"toggle belt mode\" function.
+  - rscadd: Added some more tips to tip of the round.
+  - tweak: Increased the font size for the coordinate readout on rangefinders and
+      cas binos set to coordinate mode, to make it easier to highlight and more readable.
+  - tweak: Changed the name of Trijent Dam's planet to \"Raijin\" in the operation
+      start message as opposed to the previous \"Navarone\", as per lore.
+  - rscadd: Added a unique preset for Trijent dam trucker survivors, and added them
+      to Trijent, as it now has trucks.
+2022-02-05:
+  BlackCrystalic:
+  - bugfix: Defenses for DS have right faction and count shots
+  Chiwi:
+  - bugfix: RTO no longer keeps MOVE/HOLD/AIM orders once relieved of aSL, and only
+      has SL's Leadership skill while aSL.
+  - tweak: RTO's medical skill reduced to be the same as a PFC's.
+  - tweak: RTO's JTAC skill increased to be the same as an SO's.
+  - tweak: Full autoinjector pouch is no longer available in the RTO's equipment vendor.
+  Frans_Feiffer, Stan_Albatross:
+  - tweak: Resprited PMC armours, jumpsuits, and helmets. Sprites by Frans.
+  - tweak: PMC jumpsuits now have rollable sleeves, and the standard one has a removeable
+      jacket.
+  - tweak: there is now a 50% chance for PMC standards and detainers to spawn with
+      \"light\" PMC armour, with less armour but more speed.
+  - bugfix: fixed CO bomber jacket open sprite honking
+  Shad0vvs:
+  - tweak: Staff officers spawn with rangefinder binoculars instead of default binoculars.
+  Shikareth:
+  - bugfix: Rejected marine players do not increase initial larva count
+  Stan_Albatross:
+  - tweak: there is now a 1 second cooldown for closing bodybags after they have been
+      opened, to stop spam closing them in order to defend yourself from xenos.
+  - bugfix: thermal tarp opening animations no longer animate from min alpha every
+      single time. They will only do this when they are at min alpha.
+  - bugfix: tarps now display their proper names when deployed.
+  - rscadd: you can now construct glass airlocks by adding 5 glass sheets to an airlock
+      frame after you have anchored it down.
+  - tweak: Overhauled the Dutch's Dozen ERT with loadout changes to all classes. Thanks
+      to Riot Officer for the original idea.
+  - rscadd: Two new Dutch's Dozen presets - Flamethrower and medic.
+  - tweak: Added some new names to the UPP namelist.
+  - bugfix: Fixed a few instances where possessive pronouns would not switch based
+      on gender.
+  - tweak: Renamed a few instances where \"his\" was used instead of \"their\".
+  - bugfix: stops the server crashing from sentries firing with no owner mob attached
+  TotalEpicness:
+  - tweak: Buffs DS crash explosions so they clear walls better.
+  forest2001:
+  - wip: Updates to PMC Paygrades.
+  - tweak: Categorised PMC paygrades between Standard, Field Specialists, Elite and
+      Command.
+  - tweak: PMC Paygrades are no longer numerical, (PMC1, PMC2 etc.) and instead relate
+      to their actual role.
+  - tweak: Changed PMC Specialist rank from Elite Responder to Weapon Specialist.
+  - tweak: PMC names are no longer hardcoded to have \"PMC\" in them.
+  - rscadd: Added Factional Prefixes to paygrades, this is currently only used for
+      PMCs, providing a pre-prefix of \"PMC. \".
+  - rscadd: Added two new Elite PMC paygrades for a future PMC Commando Team (Non-whiteout).
+  - rscadd: PMC Detainer and Xeno Handlers now have their own ranks (Enforcer and
+      Xeno Specialist respectively).
+  - tweak: PMC Security Expert (SCE) renamed to Operator (OPR)
+  - tweak: Gave PMCs Japanese because many are Japanese and they work for a Japanese
+      speaking company.
+  sg2002:
+  - tweak: Only frontline marine roles now fully count(3 to 1 xeno) for the purposes
+      of giving xenos larva and other limits like that. Other roles only count half
+      as much(6 to 1 xeno).
+  - bugfix: Fixed \"Get random job if preferences unavilable\" alternative option.
+      There is a 65 percent chance that it gives you a Squad Rifleman role. It also
+      won't assign you to xeno, survivor or command, including PO and MP roles.
+2022-02-06:
+  Geeves, 50Rem:
+  - rscadd: Synth smartpack exoskeletons can now be enabled again by right clicking
+      on the smartpack while it's on your person, and clicking \"Toggle Exoskeleton\".
+      This effect is entirely cosmetic.
+  Nivrak:
+  - bugfix: Xenos can once more repair slash APCs after they get repaired
+  - tweak: The sentry post cannot be deployed within 2 tiles of other sentries.
+  Shad0vvs:
+  - tweak: Adds a ceiling to the Yautja hunting ship.
+  - tweak: Tricord skillless autoinjector is now refillable.
+  Sirhelgate:
+  - bugfix: Fixed the Heavy armor Icon for the Hunters.
+  Stan_Albatross:
+  - bugfix: You can no longer hack preplaced sentries such as omnisentries, dropship
+      sentries, etc.
+  - bugfix: Friendly teslas on annex will no longer shoot you if you are part of the
+      USCM
+  - bugfix: The CLF ship nightmare insert sentries now have the proper faction
+  - bugfix: Marines will no longer be killed by their own sentries on WO
+  - bugfix: Flamer sentries now track shots properly
+  - bugfix: The drop pouch can now actually hold normal sized items (3 weight).
+  naut:
+  - experiment: Various skills have been added to roles, shown below.
+  - tweak: Staff Officers and the Dropship Crew Chiefs can now load OBs.
+  - tweak: Staff Officers can now also operate powerloaders. They are now capable
+      of fully loading and chambering OBs without relying on others.
+  - tweak: The Commanding Officer and Executive Officer now have novice surgeon skills,
+      allowing them to use autodocs.
+  - tweak: Bumped up the CO and XO's CQC skills.
+  - rscadd: Relegated the CO's Battlefield Execution capability to a new 'Execution'
+      skill, unique to the CO, admirals/generals, and W-Y Directors.
+2022-02-08:
+  ChainsawMullet:
+  - maptweak: SciAnnex's central Yard has been completely removed, with small changes
+      to the immediate surrounding area.
+2022-02-09:
+  Stan_Albatross:
+  - bugfix: fixed the access of the morgue waiting room door, which was causing issues
+      with deconstruction.
+2022-02-10:
+  Nanu:
+  - experiment: Removed the ability to continuously dig sandbags temporary, to 1.
+      check for a server crashing bug and 2. Code improvements can be made.
+2022-02-11:
+  Carlarc, Stan_Albatross:
+  - rscadd: Added the NSG-23 Assault Rifle, as a gun for PMC standards. Can also be
+      found somewhere on LV. Thanks to XSlayer300 for the sounds, Triiodine for the
+      gun sprite, and TemperedZ for the magazine sprites.
+  ChainsawMullet:
+  - bugfix: Fixed some SciAnnex windows not being hull windows, and some windows for
+      some reason being hull windows, as well as some misaligned windows.
+  'Nancok  ':
+  - tweak: 'increased power per fuel for generators by about 80%  '
+  - tweak: 'circuit board vendor now has 1 PACMAN board and 2 makeshift PSU (battery
+      rack a.k.a \"gettho SMES\") boards  '
+  - tweak: 'makeshift PSU''s consequences for being overcharged are no longer dangerous
+      (at most it will burn you a tad if you let it overcharge to 150% and you''re
+      adjacent to it)    '
+  - tweak: 'component vendor now has capacitors  '
+  - tweak: 'electronics vendors now have 7 low capacity cells (up from 6)  '
+  - tweak: 'electronics pouch can now hold capacitors  '
+  - tweak: 'generators and battery racks can now be slashed by xenos  '
+  Stan_Albatross:
+  - rscdel: removed \"big floppa\" from the code and sprites entirely.
+  - bugfix: fixed a few backend bugs that made spacemandmm angry
+  the_flying_flail:
+  - rscadd: Added CL Survivor To LV-624
+  - rscadd: Added Colonial Marshall Survivor to Kutjevo and Shiva
+  - rscadd: Added United America Peacekeeper to Solaris and Shiva (Reskinned security
+      survivor)
+  - tweak: Removed Trucker and Chaplain Double Barrel Shotgun
+  - tweak: Adjusted CORSAT and LV-624 Security Guard outfit
+  - tweak: Renamed LV-624 and CORSAT Security Guard to \"Weyland-Yutani Corporate
+      Security Guard\"
+  - tweak: Removed Colonial Marshall Survivor from LV-624 and replaced with PMC survivor
+  - bugfix: Fixed colonial supervisor not spawning with satchel or shoes. Whoops.
+  - bugfix: Soro Survivors now spawn with robust survivor winter jacket as planned.
+2022-02-14:
+  Patternseeker:
+  - rscadd: Added craftable wooden crates. You can make them using 5 wooden planks.
+      Like coffins, these crates can not be sold on the ASRS.
+  - rscadd: Added wooden crate sprites.
+  Shad0vvs:
+  - tweak: Moving with shrapnel will no longer have a chance to remove limbs.
+2022-02-19:
+  ChainsawMullet:
+  - bugfix: Fixed another way out in to space on SciAnnex
+  Nanu:
+  - rscadd: CI for GitHub
+  Stan_Albatross:
+  - tweak: base prae floor acid now applies 2 stacks on hit rather than 1
+  Vanagandr:
+  - bugfix: You can't perform surgery on someone who's being fireman carried.
+  optimisticdude:
+  - tweak: Accuracy from 40 to 75, assemble delay from 1 second to 0.2 seconds, disassemble
+      delay from 2.4 seconds to 1.6 seconds, falloff from 4 to 3, range from 14 to
+      15, accurate range from 7 to 10 for the M2C. Overheat limit increased from 30
+      to 42. Intended to improve M2's reliability  at medium ranges to take advantage
+      of its screen bonuses, while improving its existing proficiency at close range.
+      As an important addendum to the assemble delay, the 1 second time was a product
+      of a previous bugfix and changes to the M56D.
+  - tweak: 'The M2C''s overheat threshold has been increased from 30 to 40 shots,
+      while the cooldown rate has been increased from 1.5 points per second to 2 points
+      per second. This has been intended to improve its staying power as an offensive/counter-offensive
+      weapon, which had been greatly strained due to initial balance philosophies
+      for the design. '
+  - rscadd: M2C can now be rotated and not fired at the same time, middle click in
+      a direction that the active gun is not facing. Common complaint from many user
+      experiences has been addressed with a patch; also who the hell uses middle click
+      to switch hands in 2022?
+  - rscadd: 'If back slot is empty, the M2C will automatically be equipped upon disassembly.
+      This serves a QOL to reduce failures to equip by a secondary weapon being blocked
+      in the back first by muscle memory. '
+  - tweak: 'Adds colour to the rotating prompts for the M2C. Nothing remarkable to
+      point out. '
+  the_flying_flail:
+  - tweak: Gave armored vest increased bio resistance
+  - tweak: armored vest now has medium-low melee protection
+  - tweak: Added armor equip time to armored vests
+  - tweak: 'standardized armor vests and snow suit (survivor variant) to have bio
+      protection '
+  - rscadd: Added more armor vest spawns on LV-624, Solaris Ridge, and Trijent Dam
+2022-02-24:
+  FloranOtten:
+  - bugfix: Fixes impossible to get food reagent requirements
+  FoxyStalin:
+  - tweak: Screwdrivers can now fit in Boot Slot
+  - tweak: Screwdrivers can now fit in Mask Slot
+  Jackie_Estegado:
+  - bugfix: OB now gives warning if targeted coords are completly off-map, not only
+      if is in space.
+  - bugfix: Standalone grenade launchers can no longer fire molotovs or flashbangs,
+      just like the underbarrel ones.
+  - bugfix: HIRR baton slug no longer triggers IFF (aka is usable onboard the Almayer).
+  - tweak: Removed duplicate entries from RTO gear vendor.
+  Mercadier:
+  - rscadd: Added eggnog, both alcoholic and non-alcoholic variants. Made by mixing
+      milk, cream, sugar, and rum.
+  Morrow:
+  - bugfix: Fixes non-removal of reagents from incinerator tanks when refilling mini
+      flamethrowers
+  Patternseeker:
+  - rscadd: Added the M240A3 Incinerator. Deathsquad-only flamethrower that fits in
+      waist slot and comes loaded with X fuel (blue)
+  - rscadd: Added the 'Dirty' smartgun rig belt. Accepts the Mateba and starts with
+      one + a HI speedloader
+  - rscadd: Added a M240A3 onmob sprite. Same as the M240A1 suit slot sprite.
+  - tweak: Only WO Leader and WO Smartgunner have Matebas now
+  - tweak: WO Operatives and WO Medics start with a M240A3 in their waist.
+  - tweak: CO and XO roles are now pentalingual. They start with all available human
+      languages. Picking languages in character preferences does nothing when you
+      spawn as CO/XO.
+  - tweak: CE, CMP, CMO and RO now start with English and Japanese. You can optionally
+      add a third one on top of these. Picking Japanese in character preferences for
+      a second time does nothing.
+  - tweak: Paracetamol is now made with 1:1:1 tramadol:nitrogen:water. This is done
+      so that the reaction can not possibly occur by accident inside a body.
+  Segrain:
+  - bugfix: Surgery once again works.
+  Shad0vvs:
+  - bugfix: Prevents Hedgehog Ravager's from using Spike Shed while dead.
+  - tweak: Prevented Xenomorphs from evolving/devolving when banished.
+  - tweak: Wake all added to In View admin panel.
+  - tweak: Renames Mob Admin Verbs - Show/Hide to Admin Verbs - Show/Hide.
+  - tweak: Adds 4 verbs to be hidden from right click menu when Admin Verbs - Hide
+      is active.
+  - tweak: Added a yellow defib icon for the MedHUD for 2.5 minutes left before unrevivable.
+  - tweak: Adds predator overhead text for their translator.
+  - bugfix: Ghosts no longer pushed out of dropship doors.
+  - tweak: Targeting with bandages/ointment/kits works on the limb targeted at the
+      start of the process rather than the end.
+  Stan_Albatross:
+  - tweak: nerfed standard minisentry damage, nerfed flamer minisentry fire rate
+  - tweak: buffed bell range and slowdown length
+  - tweak: buffed flag order strength and range
+  - tweak: You can now make your flavour text as long in your preferences as you can
+      with the verb in-game.
+  - tweak: There is now a short cooldown between saving and reloading character/preferences
+      slots
+  - tweak: There is now a short cooldown between withdrawing funds from the ATM
+  TeDGamer:
+  - bugfix: Shrapnel + bonus projectiles should have their kills tracked again
+  forest2001:
+  - bugfix: M56D can no longer be deployed on mini sentries to bypass the stack restriction.
+  - bugfix: M56D can no longer be used by cloaked people or Synths.
+  - tweak: Made the Senior Officer vendors and Medical Crew vendors functional.
+  - maptweak: Removed CE, RO, Researcher and Medical Doctor lockers.
+  - tweak: Added a stamp for the RO to use definitively. Changed default stamp stamp
+      overlay.
+  - tweak: RO and XO no longer spawn with sidearms.
+  - rscadd: Queen locking the dropship will now enable weeds around LZ if it isn't
+      already active.
+  - bugfix: Hijack now deletes xenos on take-off, rather than as soon as the dropship
+      is spooled up.
+  - tweak: Building walls on the Almayer now builds Almayer Hull.
+  - tweak: Brig Cell consoles are now indestructible.
+  - tweak: Fixed hunter armor to provide resistance to initial spray of fire from
+      flamers.
+  - tweak: Full Plate armor now provides improved resistance to the above.
+  - rscadd: Missed shots (X narrowly missed Y) are now logged if a correct source
+      can be identified.
+  - bugfix: Fixes the crew tracker mis-displaying specialists.
+  - tweak: Replaces legacy crew tracker assignments for centcom
+2022-02-25:
+  Stan_Albatross:
+  - rscadd: Pill bottles and Autoinjectors now come with a label on their sprite (2
+      letters) for increased clarity and quick recognition.
+  - rscadd: You can remove or change this label by right-clicking on the item and
+      selecting \"set short label\". Maximum length is 2 letters. You can do this
+      to any pill bottle or autoinjector, including blank/empty ones from medbay/research.
+2022-02-27:
+  Segrain:
+  - bugfix: Humans with medhuds now actually properly see the flashing icon for almost
+      expired bodies.
+2022-02-28:
+  Nivrak, Triiodine, Geeves:
+  - rscadd: Added the rappel deployment system, A dropship module that can be used
+      to deploy to a CAS flare or a laze.
+  - rscadd: Requisitions now have rappel harnesses which are required for the rappel
+      module.
+  - maptweak: Added a rack with a few rappel harnesses to the POs workshop.
+  Thwomper, Geeves:
+  - rscadd: Added an on-back sprite for the Type71 rifle series.

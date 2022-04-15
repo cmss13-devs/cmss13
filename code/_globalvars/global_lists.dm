@@ -28,6 +28,8 @@ var/global/list/ai_mob_list = list()				//List of all AIs
 
 GLOBAL_LIST_EMPTY(freed_mob_list) 	// List of mobs freed for ghosts
 
+GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
@@ -321,6 +323,14 @@ var/global/list/paramslist_cache = list()
 
 	return custom_event_info_list
 
+/proc/setup_taskbar_icons()
+	var/list/png_list = flist("icons/taskbar")
+	for(var/png in png_list)
+		if(!isfile(png))
+			png_list -= png
+	return sortList(png_list)
+
+
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
@@ -332,3 +342,4 @@ var/global/list/paramslist_cache = list()
 				. += "    has: [t]\n"
 	world << .
 */
+

@@ -1158,6 +1158,7 @@ and you're good to go.
 			else
 				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			. = TRUE
 			flags_gun_features |= GUN_FIRED_BY_USER
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
@@ -1349,8 +1350,8 @@ and you're good to go.
 						M.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(M)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 				else
+					BP.ammo.on_hit_mob(M, BP, user)
 					M.bullet_act(BP)
-					BP.ammo.on_hit_mob(M, BP)
 				qdel(BP)
 
 		if(bullets_fired > 1)
@@ -1361,8 +1362,8 @@ and you're good to go.
 				M.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(M)]!"),
 					SPAN_AVOIDHARM("[projectile_to_fire] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		else
+			projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire, user)
 			M.bullet_act(projectile_to_fire)
-			projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
 
 		if(check_for_attachment_fire)
 			active_attachable.last_fired = world.time

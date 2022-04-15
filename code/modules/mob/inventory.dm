@@ -25,6 +25,7 @@
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.plane = ABOVE_HUD_PLANE
 		W.pickup(src)
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
@@ -44,6 +45,7 @@
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.plane = ABOVE_HUD_PLANE
 		W.pickup(src)
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
@@ -140,6 +142,7 @@
 	if (client)
 		client.screen -= I
 	I.layer = initial(I.layer)
+	I.plane = initial(I.plane)
 	if(newloc)
 		if(!nomoveupdate)
 			I.forceMove(newloc)
@@ -335,6 +338,7 @@
 	if(equipped)
 		recalculate_move_delay = TRUE
 		W.layer = ABOVE_HUD_LAYER
+		W.plane = ABOVE_HUD_PLANE
 		if(src.back && W.loc != src.back)
 			W.forceMove(src)
 	else

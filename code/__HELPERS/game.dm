@@ -23,7 +23,7 @@
 
 	return heard
 
-// more efficient get_dist, doesn't sqrt
+// more efficient get_dist, doesn't sqrt test
 
 /proc/get_dist_sqrd(atom/Loc1 as turf|mob|obj, atom/Loc2 as turf|mob|obj)
 	var/dx = abs(Loc1.x - Loc2.x)

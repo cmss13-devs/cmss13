@@ -1,0 +1,216 @@
+2019-08-09:
+  Awan:
+  - rscadd: You can now toggle between smartgun ammo types with unique-action.
+  - bugfix: Fixed smartguns sometimes disabling motion detectors.
+  - bugfix: Fixed the smartgun ammo pack holding more than 500 ammo.
+  - bugfix: Fixed the smartgun drum getting stuck on the belt slot.
+  - rscdel: Removed the old reload mode from the smartgun.
+  Cakey:
+  - rscadd: Added the mateba customization kit to the commanding officer's closet.
+      This can be used to change the mateba between three types of barrels depending
+      on the commanding officer's preference.
+  - rscadd: Monkeys will now randomly try to equip items they pick up.
+  Jeser:
+  - tweak: Changed how Motion Detectors check for friendly contacts. Marines won't
+      trigger pings if they change or lose their headsets now.
+  - tweak: Big Ammo Boxes were renamed to Ammunition boxes and their description now
+      contains information which magazines can be refilled with them.
+  - tweak: You won't be able to deploy more than one magazine box per tile.
+  - rscadd: Added new magazine and ammunition boxes.
+  - imageadd: Magazine and ammunition boxes sprites by Triiodine and Jeser.
+  - tweak: Squad Req and Req vendors will allow you to browse their content now, instead
+      of completely blocking their UI if you don't have access to them.
+  - tweak: Rescaled goods in Ammunition and Attachments vendors.
+  - tweak: 'Requisition''s ASRS console changes:'
+  - tweak: Renamed Hardpoints Modules category into Vehicle Modules and Ammo to be
+      less confusing.
+  - tweak: Cupola ammo crate now contains 3 magazines instead of 2. Secondary flamer
+      ammo crate contains 2 fuel tanks instead of 5.
+  - rscadd: Added magazine boxes crates for pistols.
+  - rscadd: Added M44 Marksman and Heavy speedloaders crates.
+  - rscadd: Added SMG LE ammunition and magazines boxes.
+  - rscdel: Removed most of obsolete magazines crates to reduce clutter.
+  - tweak: 'Changed designated specialists ammo crates to be more equally available.
+      (#7278, #6071) '
+  - rscdel: Removed XM42B AT magazines crate.
+  - tweak: ASRS free crates will contain more ammunition boxes and less magazine boxes.
+  - tweak: Added M4A3 and 88 Mod 4 magazine boxes as well as M44 speedloader crate
+      to possible free ASRS crates.
+  - tweak: Added more magazine boxes to cardboard build list.
+  RavingManiac:
+  - rscadd: Large explosions are now processed over multiple ticks. You will see the
+      explosion effect rapidly spread from the center. Perhaps, you might outrun it.
+      Perhaps.
+  - rscadd: 'Hotkey mode: ALT-WASD fixes mob direction.'
+  - maptweak: Crashed ship on Fiorina Orbital Penitentiary made slightly more defensible.
+  - rscdel: Explosions now cause spalling just from walls, not from floors.
+  TobiNerd:
+  - bugfix: Fixed reagent containers showing reagent id instead of name on examine.
+  - bugfix: Fixed some runtimes regarding catalysts.
+  - bugfix: Fixed oxycodone being no stronger than tramadol. Damn those budget cuts...
+  - bugfix: CL Can no longer use the chem dispenser.
+  - tweak: Increased researcher slots from 1 to 2 during lowpop and 2 to 3 during
+      highpop.
+  - tweak: 'The surgery skill has been divided into 4 levels instead of 2. Surgery
+      speed of everyone is unaffected by this except for:'
+  - tweak: Researchers are now slightly slower at surgery than doctors to emphasize
+      the role getting more purpose.
+  - tweak: 1st generation synths are now slightly faster at surgery than doctors.
+      Other synth generations remain at CMO speed.
+  - tweak: Researchers, the CMO, synthetics and colony scientists now have a research
+      skill. This skill will allow the use of research machinery.
+  - tweak: You can now dump the contents from plant bags directly into chemistry grinders.
+      (#7008)
+  - tweak: Added a bog of empty spray bottles to research. (#7238)
+  - imageadd: Changed vialbox icons into the sprites left behind by NicBoone.
+  - maptweak: Added two more monkey cube boxes to Almayer research. One in the lab
+      and one in the closet.
+  - maptweak: Added boxes with empty vials to Almayer research.
+  - maptweak: Added a body scanner to Almayer research.
+  - imageadd: Added paper sprites with the company's and USCM's logo on it.
+  - tweak: Added a verb to paper bins for switching the secondary paper type. Paper
+      bins on the Almayer have USCM types. Research and the CL office has the company
+      type. You can still switch to carbon-copy by using the verb.
+  - tweak: In paperformatting, you can now use [uscm] to make a USCM logo or [wy]
+      for a company logo. [logo] still works so you don't have to redo all your templates.
+  - experiment: CHEMICAL RESEARCH UPDATE
+  - rscadd: Added a random chemical generator to CM. This can generate random chemicals
+      with millions of combinations for properties, recipes, names and other stats.
+  - rscadd: Every round, a specific amount of these chemicals will be generated. It
+      is up to the researchers to discover these chemicals and unlock their potential.
+  - rscadd: Generated chemicals can have between 1-4 properties of varying potency,
+      all of which can be any combination of good and bad. Discovering these will
+      require thorough testing.
+  - rscadd: The recipe for all generated chemicals require 3 different components,
+      and maybe an additional catalyst. The components can be anything from iron to
+      souto or even plasma from an alien...
+  - rscadd: Chemicals with a higher number of properties tend to require more rare
+      components. These may not be something you can get normally. You'll thus have
+      to either retrieve a sample of it from the colony or by using hydroponics.
+  - rscadd: Mutating plants in hydroponics now has a chance to make the plant contain
+      a new chemical. This can also be one of the randomly generated chemicals.
+  - rscadd: An XRF Scanner has been added to Almayer research. Those trained in research
+      can use this to analyze the composition of a chemical sample.
+  - rscadd: Chemicals scanned by the XRF might be something it can't identify. This
+      means you have to obtain a sample of this first and scan that.
+  - rscadd: 'Identifying a new chemical will give DEFCON, with more points from rare
+      ones. You know this when the XRF prints: Saved emission spectrum of...'
+  - rscadd: 'Note: The XRF does not analyze the properties of a chemical. But will
+      print any infomation it might have in its database.'
+  - tweak: Updated the description of most chemicals to fit better with the XRF. Not
+      like you could see the descriptions before anyway...
+  - rscadd: The medical computer can now print scan records onto paper.
+  - rscadd: Research notes describing the random chemicals can now be found around
+      research and administrative areas around maps.
+  - rscadd: Vial boxes with random chemicals can now be found in research areas around
+      maps.
+  - wip: The above two items have yet to be added to Trijent Dam, as the map is currently
+      undergoing some major changes. But will be added at a later date.
+  - tweak: Researchers now spawn with a random research note. However, this note will
+      only describe one of the simple chemicals. So it is just to get you started.
+  - tweak: Scientist survivors now spawn with a random vial and a research note. Unlike
+      the researcher's, this can be the good stuff too.
+  - rscdel: Removed plant mutations for spreading vines and temperature tolerances.
+  Vampmare:
+  - tweak: 'Pistol Rework Commenced. '
+  - rscadd: Pistols have the same accuracy when wielded and when one-handed. Akimbo
+      unaffected.
+  - rscdel: Dual-wielding pistols/akimbo has been nerfed. Bullet spread has been increased
+      and accuracy reduced in this mode.
+  - rscdel: Extended mags for M4A3 has been removed. AP and HP mags for M4A3 made
+      scarce.
+  - tweak: M4A3 remains a marine pistol. It offers accuracy and pure damage, in exchange
+      for capacity and armour penetration. Buffed overall.
+  - tweak: Mod 88 also known as 88M4 has become one of three main marine pistols.
+      It is the opposite of M4A3, so it has capacity, armour penetration and a three
+      round burst.
+  - tweak: M44 Revolver remains a main gun, but it has been reworked. Using a speedloader
+      magazine on a revolver will make it function as a normal reload. If there are
+      leftover bullets in when using the speedloader, they will be dumped on the ground.
+  - tweak: 'M44 Revolver ammo has changed. Normal: high damage, a little AP. Marksman:
+      medium damage, decent ap and no damage falloff. Heavy: medium damage, low AP
+      and a weaker version of slug effect.'
+  - tweak: VP78 has replaced Mod 88 in the Self-Defense kit, spec kits and XO belt.
+      The stats have been buffed to be in line with a primary weapon. More damage,
+      more AP.
+  - rscadd: M44, VP78, Mod 88, Smartpistol and the Mateba have all gotten a facelift,
+      courtesy of Triiodine.
+  - soundadd: M44, VP78 and Mod88 have gotten new sounds, mixed by Triiodine. Give
+      them some time before condemning them to the gates of hell.
+  - tweak: Buffed accuracy and damage of M4A3 Custom. SOs, POs and TCs spawn with
+      it.
+  - tweak: Buffed damage of the smartpistol slightly.
+  - rscadd: A new kit has been added "Experimental Trooper Kit". It is the new kit
+      to get smartpistols and everything you could need for it. It can be found in
+      main req or your squad req.
+  - tweak: Vendors have been changed to accommodate the above changes.
+  - rscadd: Increased the slots in the mateba belt and smartpistol belt by one.
+  - tweak: Some actions can now be performed one-handed, like building cades, wiring
+      cades, splinting, applying kits, placing claymores and repairing cades. The
+      intended use is to use a pistol in the other hand.
+  - tweak: M44 Revolver stock has been changed. It can now be folded to fit in a belt
+      holster or your belt slot, but it cannot fire folded. The stats are the same.
+  - bugfix: 'Holsters now care about stocks again. '
+  - tweak: New pain sound added, you may recognize the voice.
+  - tweak: Synthetic units can now take a bit more of a beating.
+  Vicacrov:
+  - tweak: Marine - The contents of the various types of first aid kits were updated,
+      save for the advanced one's.
+  - maptweak: Almayer - Added various types of first aid kits here and there.
+  - tweak: Admin Tools - Player Panel was updated, some obsolete buttons were removed,
+      new ones were added.
+  - tweak: Marine - Changed the colour of intel frequency to green.
+  - bugfix: Marine - Fixed the dropship weapons console not having an access requirement.
+  - bugfix: Marine - Fixed being able to take out pills from belts while being handcuffed.
+  - bugfix: Marine - Fixed some steps in surgery being too slow, cleaned up its timecode.
+  - bugfix: Marine - Fixed the harebell's description.
+  - bugfix: Predator - Fixed the predator bioscan's text.
+  - bugfix: Predator - Fixed the ceremonial dagger making yautja having red blood.
+  - rscadd: 'Synthetics - Added the following items to the snowflake vendor: sechud,
+      sunglasses, RPG glasses, snow suit.'
+  - tweak: Synthetics - Moved black webbing to gear vendor; glasses to snowflake vendor;
+      doubled the snowflake vendor points for your personal fashion shows.
+  - bugfix: Synthetics - Fixed a vendor typo, security uniform names, and a security
+      uniform dispensing something different.
+2019-08-14:
+  Aceluke:
+  - rscadd: Added additional items to the pred ship.
+  Cakey:
+  - tweak: Tail sweep and spin slash macros have been turned into toggle macros.
+  - rscadd: Added the TC-4T portable telecommunications kit to the Almayer, found
+      in the hangar south of the Alamo. Engineers can set this up colony-side in order
+      to enable communications between the ground team and the Almayer. Requires a
+      TC-4T circuit board, 2 cable coils, 2 power cells, 2 manipulators and 2 filters
+      to set up. Can be damaged by xenomorphs and humans alike, and must be repaired
+      using a welder.
+  - maptweak: Removed all functioning telecommunications from ground-side maps. Time
+      to set up some dynamic FOB spots, marines!
+  Frans_Feiffer:
+  - imageadd: Revised an old Cabinet sprite, and added wooden variants for Mappers
+      to use later.
+  TobiNerd:
+  - bugfix: Cigarettes now actually contain nicotine. This was definitely a bug.
+  - tweak: Cigarettes can now be added to the All-In-One Grinder.
+  Vampmare:
+  - bugfix: Fixed bug where you sometimes couldn't perform CPR on reviveable people.
+  - spellcheck: Gloves in the medic vendor was renamed to just gloves.
+  - tweak: Nerfed ERP slightly. Hug has been changed.
+  - tweak: Pistol Pouch and Smartgunner belt can now hold the M44 revolver.
+  - rscadd: The USCM Pyrotechnician kit now spawns with a Broiler-T back harness.
+      The M240-T cannot be used without it. However, it stores all three fuel types
+      at the same time. The Broiler-T can be refueled by placing incinerator unit
+      tanks into it. The current tank will be swapped out for the fresh one. The active
+      fuel tank/type is visible as a HUD button in upper left. Pressing it will cycle
+      M240-T munition type. The M240-T can also be stored inside the Broiler-T back
+      harness, but it won't work with the auto-equip.
+  - tweak: The M240 and M240-T now display the loaded tank's percentage of remaining
+      fuel after firing.
+  Vicacrov:
+  - bugfix: Fixed a floating fire alarm and the north-south hangar shutters not being
+      symmetrical.
+  - tweak: The View Objectives Clues verb was updated. Now it shows way more information
+      on the current DEFCON objectives. It also shows the current DEFCON percentage.
+  - tweak: The roundend list of queens, predators, and medals now display in a more
+      rapid succession.
+  - rscdel: The roundend In Flanders Fields section was removed, the DEFCON list was
+      moved to View Objectives Clues (in a simplified version).

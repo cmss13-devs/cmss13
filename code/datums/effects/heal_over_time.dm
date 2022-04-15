@@ -27,7 +27,7 @@
 	if(duration % ticks_between_heals)
 		return
 
-	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.apply_damage(-heal_each_process, BRUTE, def_zone)
+	var/mob/living/carbon/Xenomorph/affected_mob = affected_atom
+	affected_mob.gain_health(heal_each_process)
 
 	return TRUE

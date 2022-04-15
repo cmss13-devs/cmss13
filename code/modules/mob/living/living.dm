@@ -481,46 +481,46 @@
 /mob/living/proc/remove_movement_handler(datum/event_handler/handler)
 	event_movement.remove_handler(handler)
 
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE)
-	var/dat = ""
-	if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO) && !alien)
-		to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
-		return
-	if((user.getBrainLoss() >= 60) && prob(50))
-		to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
-		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_WARNING("[user] has analyzed the floor's vitals!"), 1)
-		user.show_message(SPAN_NOTICE("Health Analyzer results for The floor:\n\t Overall Status: Healthy"), 1)
-		user.show_message(SPAN_NOTICE("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
-		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
-		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
-		return
-	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
-		return
-	if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You start fumbling around with [src]..."))
-		var/fduration = 60
-		if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
-			fduration = 30
-		if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
+/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE)
+	if(do_checks)
+		if((user.getBrainLoss() >= 60) && prob(50))
+			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
+			for(var/mob/O in viewers(src, null))
+				O.show_message(SPAN_WARNING("[user] has analyzed the floor's vitals!"), 1)
+			user.show_message(SPAN_NOTICE("Health Analyzer results for The floor:\n\t Overall Status: Healthy"), 1)
+			user.show_message(SPAN_NOTICE("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
+			user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
+			user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 			return
-	if(isXeno(src))
-		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
-		return
-	to_chat(user, SPAN_NOTICE("[user] has analyzed [src]'s vitals."))
-	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
+		if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO) && !alien)
+			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
+			return
+		if(!(ishuman(user) || SSticker?.mode.name == "monkey"))
+			to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+			return
+		if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			to_chat(user, SPAN_WARNING("You start fumbling around with [src]..."))
+			var/fduration = 60
+			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
+				fduration = 30
+			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
+				return
+		if(isXeno(src))
+			to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
+			return
+		to_chat(user, SPAN_NOTICE("[user] has analyzed [src]'s vitals."))
+		playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
+		// Doesn't work on non-humans
+		if(!istype(src, /mob/living/carbon))
+			user.show_message("\nHealth Analyzer results for ERROR:\n\t Overall Status: ERROR")
+			user.show_message("\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
+			user.show_message("\tDamage: [SET_CLASS("?", INTERFACE_BLUE)] - [SET_CLASS("?", INTERFACE_GREEN)] - [SET_CLASS("?", INTERFACE_ORANGE)] - [SET_CLASS("?", INTERFACE_RED)]")
+			user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
+			user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.Type: ERROR"))
+			user.show_message(SPAN_NOTICE("Subject's pulse: [SET_CLASS("-- bpm", INTERFACE_RED)]"))
+			return
 
-	// Doesn't work on non-humans and synthetics
-	if(!istype(src, /mob/living/carbon))
-		user.show_message("\nHealth Analyzer results for ERROR:\n\t Overall Status: ERROR")
-		user.show_message("\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
-		user.show_message("\tDamage: [SET_CLASS("?", INTERFACE_BLUE)] - [SET_CLASS("?", INTERFACE_GREEN)] - [SET_CLASS("?", INTERFACE_ORANGE)] - [SET_CLASS("?", INTERFACE_RED)]")
-		user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
-		user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.Type: ERROR"))
-		user.show_message(SPAN_NOTICE("Subject's pulse: [SET_CLASS("-- bpm", INTERFACE_RED)]"))
-		return
-
+	var/dat = ""
 	// Calculate damage amounts
 	var/fake_oxy = max(rand(1,40), src.getOxyLoss(), (300 - (src.getToxLoss() + src.getFireLoss() + src.getBruteLoss())))
 	var/OX = src.getOxyLoss() > 50 	? 	"<b>[src.getOxyLoss()]</b>" 		: src.getOxyLoss()
@@ -584,7 +584,7 @@
 				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
 
 			var/org_advice = ""
-			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			if(do_checks && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				switch(org.name)
 					if("head")
 						fracture_info = ""

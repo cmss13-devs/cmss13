@@ -1283,8 +1283,7 @@
 "aHA" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -5532,8 +5531,8 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "doA" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/console_I)
 "doB" = (
@@ -6814,7 +6813,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "eev" = (
-/obj/structure/machinery/cm_vending/sorted/walkman,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -11794,8 +11793,7 @@
 /area/fiorina/station/park)
 "hhh" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -14015,8 +14013,7 @@
 /area/fiorina/tumor/aux_engi)
 "iEi" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /obj/structure/platform{
 	dir = 1
@@ -14717,8 +14714,8 @@
 	},
 /area/fiorina/station/security)
 "jbG" = (
-/obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/prison,
 /area/fiorina/lz/console_II)
 "jbU" = (
@@ -14785,8 +14782,7 @@
 /area/fiorina/station/civres_blue)
 "jeh" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /obj/structure/platform{
 	dir = 1
@@ -19102,7 +19098,7 @@
 	},
 /area/fiorina/station/park)
 "lDm" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -23588,8 +23584,7 @@
 "oqu" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -33739,7 +33734,7 @@
 /turf/closed/shuttle/ert,
 /area/fiorina/lz/near_lzI)
 "uLd" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
 "uLr" = (
@@ -35023,7 +35018,7 @@
 	},
 /area/fiorina/station/lowsec)
 "vzh" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "vzk" = (
@@ -38375,7 +38370,7 @@
 /area/fiorina/station/security)
 "xEa" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/clothing/accessory/holster,
+/obj/item/clothing/accessory/storage/holster,
 /obj/structure/window/reinforced{
 	dir = 4
 	},

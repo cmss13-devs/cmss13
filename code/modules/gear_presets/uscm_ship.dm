@@ -43,6 +43,7 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_CORPORATE_DS,
 		ACCESS_CIVILIAN_COMMAND,
 	)
 	assignment = JOB_CORPORATE_LIAISON
@@ -364,7 +365,7 @@
 	idtype = /obj/item/card/id/gold/commodore
 	rank = JOB_CO
 	paygrade = "MO5"
-	role_comm_title = "CDRE"
+	role_comm_title = "CO"
 	minimum_age = 45
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)

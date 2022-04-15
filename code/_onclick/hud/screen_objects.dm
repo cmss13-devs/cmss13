@@ -20,12 +20,14 @@
 	icon = null
 	icon_state = null
 	mouse_opacity = 0
+	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
 	maptext_height = 480
 	maptext_width = 480
 	appearance_flags = NO_CLIENT_COLOR|PIXEL_SCALE
 
 /obj/screen/cinematic
+	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
 	mouse_opacity = 0
 	screen_loc = "1,0"
@@ -617,7 +619,7 @@
 		return 1
 	var/mob/living/carbon/Xenomorph/X = user
 	X.toggle_nightvision()
-	if(icon_state == "nightvision1")
+	if(X.lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
 		icon_state = "nightvision0"
 	else
 		icon_state = "nightvision1"

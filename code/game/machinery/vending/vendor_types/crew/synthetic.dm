@@ -262,6 +262,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	listed_products = list(
+		list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
+
 		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
 
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),

@@ -68,6 +68,7 @@
 #define ATTACH_RELOADABLE	8
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
 #define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
+
 //Ammo magazine defines, for flags_magazine
 
 #define AMMUNITION_REFILLABLE   (1<<0)
@@ -94,7 +95,7 @@
 #define SLOWDOWN_ADS_LMG				1.75
 #define SLOWDOWN_ADS_INCINERATOR		1.75
 #define SLOWDOWN_ADS_SPECIALIST			1.75
-#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	2
+#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	1.8
 #define SLOWDOWN_ADS_SUPERWEAPON		2.75
 
 //Wield delays, in milliseconds. 10 is 1 second

@@ -6,7 +6,7 @@
 								50; list(/obj/item/clothing/under/marine/veteran/PMC/commando, /obj/item/clothing/suit/storage/marine/veteran/PMC/commando, /obj/item/clothing/gloves/marine/veteran/PMC/commando, /obj/item/clothing/shoes/veteran/PMC/commando, /obj/item/clothing/head/helmet/marine/veteran/PMC/commando), \
 								125; list(/obj/item/weapon/melee/yautja/chain, /obj/item/weapon/melee/yautja/knife, /obj/item/weapon/melee/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/admiral, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
-								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/gladiator, /obj/item/clothing/head/helmet/gladiator) \
+								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
 								)
 
 #define HUNTER_GOOD_ITEM  pick(\
@@ -105,7 +105,8 @@ var/waiting_for_drop_votes = 0
 	var/ticks_passed = 0
 	var/drops_disabled = 0
 
-	votable = FALSE // borked
+	votable = FALSE // borkeds
+	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/hellhound/H)
 	if(istype(H)) H.gib() //No mercy.

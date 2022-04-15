@@ -15,7 +15,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
-	deevolves_to = XENO_CASTE_SPITTER
+	deevolves_to = list(XENO_CASTE_SPITTER)
 	spit_delay = 35
 	caste_desc = "Gross!"
 	acid_level = 3

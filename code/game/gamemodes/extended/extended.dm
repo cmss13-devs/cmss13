@@ -4,6 +4,7 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
+	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")

@@ -94,8 +94,11 @@
 					if(ID.rank)
 						role = ID.rank
 
-				if(M_turf && (M_turf.z == user_turf.z))
-					dist = "[get_dist(H, user)] ([dir2text_short(get_dir(user, H))])"
+				if(M_turf)
+					var/area/mob_area = M_turf.loc
+					var/area/user_area = user_turf.loc
+					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
+						dist = "[get_dist(H, user)] ([dir2text_short(get_dir(user, H))])"
 
 				if(H.assigned_squad)
 					squad = H.assigned_squad.name
@@ -104,8 +107,11 @@
 					if(CONSCIOUS)
 						mob_state = "Conscious"
 					if(UNCONSCIOUS)
-						mob_state = "<b>Unconscious</b>"
-					else
+						if(H.health < 0)
+							mob_state = "<b>Critical</b>"
+						else
+							mob_state = "Unconscious"
+					if(DEAD)
 						mob_state = "<b>Dead</b>"
 
 			var/marine_infos = "<tr><td>[mob_name]</a></td><td>[squad]</td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"

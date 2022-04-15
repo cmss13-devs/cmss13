@@ -49,7 +49,9 @@ var/list/admin_verbs_ban = list(
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_web_sound,
 	/client/proc/play_sound,
-	/client/proc/cmd_admin_vox_panel,
+	/client/proc/stop_web_sound,
+	/client/proc/stop_sound,
+	/client/proc/cmd_admin_vox_panel
 )
 var/list/admin_verbs_fun = list(
 	/client/proc/enable_event_mob_verbs,
@@ -66,7 +68,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
-	/client/proc/enable_podlauncher
+	/client/proc/enable_podlauncher,
+	/client/proc/change_taskbar_icon
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,

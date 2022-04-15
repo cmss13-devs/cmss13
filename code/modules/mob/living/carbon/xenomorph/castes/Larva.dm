@@ -27,7 +27,6 @@
 	amount_grown = 0
 	max_grown = 60
 	see_in_dark = 8
-	away_timer = 300
 	tier = 0  //Larva's don't count towards Pop limits
 	age = XENO_NO_AGE
 	crit_health = -25

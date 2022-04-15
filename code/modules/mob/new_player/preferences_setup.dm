@@ -15,7 +15,7 @@ datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
 	randomize_hair_color("facial")
 	randomize_eyes_color()
 	randomize_skin_color()
-	underwear = rand(1,underwear_m.len)
+	underwear = gender == MALE ? pick(underwear_m) : pick(underwear_f)
 	undershirt = rand(1,undershirt_t.len)
 	backbag = 2
 	age = rand(AGE_MIN,AGE_MAX)
@@ -199,7 +199,7 @@ datum/preferences/proc/randomize_skin_color()
 
 	if(show_job_gear)
 		arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
-	
+
 	preview_front = new()
 	owner.screen |= preview_front
 	preview_front.icon_state = "blank"

@@ -78,6 +78,8 @@
 	votable = TRUE
 	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
 
+	taskbar_icon = 'icons/taskbar/gml_wo.png'
+
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return ROLES_WO
 

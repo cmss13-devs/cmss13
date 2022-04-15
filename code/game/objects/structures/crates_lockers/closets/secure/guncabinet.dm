@@ -129,3 +129,7 @@
 /obj/structure/closet/secure_closet/guncabinet/delta
 	name = "delta level gun cabinet"
 	req_level = SEC_LEVEL_DELTA
+
+/obj/structure/closet/secure_closet/guncabinet/wy
+	name = "weyland yutani gun cabinet"
+	req_access = ACCESS_WY_CORPORATE

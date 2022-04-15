@@ -249,10 +249,8 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
-	if(!length(contents))
+	if(!contents.len)
 		qdel(src)
-
-
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"
 	pro_case_overlay = "mou53"
@@ -264,6 +262,22 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/ammo_magazine/shotgun/flechette(src)
 	new /obj/item/storage/belt/shotgun(src)
 
+/obj/item/storage/box/kit/r4t_scout
+	name = "\improper R4T Environment Scouting Kit"
+
+/obj/item/storage/box/kit/r4t_scout/New()
+	..()
+	pro_case_overlay = "r4t"
+
+/obj/item/storage/box/kit/r4t_scout/fill_preset_inventory()
+	new /obj/item/weapon/gun/lever_action/r4t(src)
+	new /obj/item/attachable/stock/r4t(src)
+	new /obj/item/attachable/magnetic_harness/lever_sling(src)
+	new /obj/item/ammo_magazine/lever_action(src)
+	new /obj/item/ammo_magazine/lever_action(src)
+	new /obj/item/storage/belt/shotgun/lever_action(src)
+	new /obj/item/storage/belt/gun/m44/lever_action/attach_holster(src)
+	new /obj/item/ammo_magazine/lever_action/training(src)
 
 /obj/item/storage/box/kit/machinegunner
 	name = "\improper M2C Heavy Gunner Kit"

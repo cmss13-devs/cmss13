@@ -38,6 +38,7 @@
 	. = ..()
 
 	reset_view(loc)
+	update_sight()
 
 	//updating atom HUD
 	refresh_huds()

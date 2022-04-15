@@ -622,7 +622,7 @@
 	return 1
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/explodey(var/mob/living/carbon/victim)
+/obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
 	set waitfor = 0
 
 	if (exploding)
@@ -634,10 +634,12 @@
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
-	var/turf/T = get_turf(victim)
+	var/turf/T = get_turf(src) // The explosion orginates from the bracer, not the pred
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
-		if(victim) victim.gib() //Let's make sure they actually gib.
+		if(victim)
+			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
+			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
 		if(explosion_type == 0 && is_ground_level(z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
@@ -694,23 +696,23 @@
 
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
-		var/mob/living/carbon/human/comrade = G.grabbed_thing
-		if(isYautja(comrade) && comrade.stat == DEAD)
-			var/obj/item/clothing/gloves/yautja/hunter/bracer = comrade.gloves
+		var/mob/living/carbon/human/victim = G.grabbed_thing
+		if(isYautja(victim) && victim.stat == DEAD)
+			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this [comrade.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
-					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
+				if(forced || alert("Are you sure you want to send this [victim.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+					if(M.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)
-							message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
-							log_attack("[key_name(usr)] triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
+							message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							log_attack("[key_name(usr)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
-							bracer.explodey(comrade)
-						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
-						message_all_yautja("[M] has triggered [comrade]'s bracer's self-destruction sequence.")
+							bracer.explode(victim)
+						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
+						message_all_yautja("[M] has triggered [victim]'s bracer's self-destruction sequence.")
 			else
-				to_chat(M, SPAN_WARNING("<b>This [comrade.species] does not have a bracer attached.</b>"))
+				to_chat(M, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
 
 	if(M.gloves != src && !forced)
@@ -750,7 +752,7 @@
 		message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[key_name(usr)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 
-		explodey(M)
+		explode(M)
 	return 1
 
 
@@ -949,7 +951,9 @@
 			. = activate_random_verb()
 			return
 
-	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.","Translator","") as text)
+	usr.set_typing_indicator(TRUE, "translator")
+	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
+	usr.set_typing_indicator(FALSE, "translator")
 	if(!msg || !usr.client)
 		return
 
@@ -959,9 +963,15 @@
 	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
 	var/list/heard = get_mobs_in_view(7, usr)
+	for(var/mob/M in heard)
+		if(M.ear_deaf)
+			heard -= M
+
+	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
+			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")
@@ -970,12 +980,16 @@
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
 
-	usr.langchat_speech(msg, heard, GLOB.all_languages, "#ff0505")
+	usr.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
 
-	for(var/mob/Q as anything in hearers(usr))
+	var/mob/M = usr
+	var/voice_name = "A strange voice"
+	if(M.name == M.real_name)
+		voice_name = "<b>[M.name]</b>"
+	for(var/mob/Q as anything in heard)
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("A strange voice says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

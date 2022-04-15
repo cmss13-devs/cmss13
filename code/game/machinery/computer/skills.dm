@@ -202,7 +202,7 @@ What a mess.*/
 					active1 = null
 					if(check_access(scan))
 						authenticated = scan.registered_name
-						rank = scan.assignment
+						rank = scan.paygrade
 						screen = 1
 //RECORD FUNCTIONS
 			if("Search Records")
@@ -288,6 +288,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
 							if ((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
+							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("id")
 						if (istype(active1, /datum/data/record))
@@ -309,13 +310,12 @@ What a mess.*/
 								return
 							active1.fields["age"] = t1
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Captain", "AI" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if ((istype(active1, /datum/data/record) && L.Find(rank)))
-							temp = "<h5>Rank:</h5>"
+						if(istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
+								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
 							alert(usr, "You do not have the required rank to do this!")

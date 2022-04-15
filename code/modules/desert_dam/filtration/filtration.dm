@@ -175,12 +175,13 @@ var/global/east_riverstart = 0
 	if(mobs_present < 1)
 		STOP_PROCESSING(SSobj, src)
 
-
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
 	M.last_damage_data = create_cause_data("toxic water")
-	if(isXeno(M))
+	if(isXenoLarva(M))
+		M.apply_damage(2,BURN)
+	else if(isXeno(M) && !isXenoLarva(M))
 		M.apply_damage(34,BURN)
 	else if(isYautja(M))
 		M.apply_damage(0.5,BURN)

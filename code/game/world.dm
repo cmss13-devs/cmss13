@@ -3,6 +3,8 @@ var/world_view_size = 7
 var/lobby_view_size = 16
 
 var/internal_tick_usage = 0
+
+var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space/basic
@@ -31,7 +33,8 @@ var/internal_tick_usage = 0
 	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
 	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
 	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
 	initialize_marine_armor()
 
@@ -183,6 +186,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		return dat
 
 /world/Reboot(var/reason)
+	var/reboot_sound = pick(reboot_sfx)
+	var/sound/reboot_sound_ref = sound(reboot_sound)
+	for (var/client/C as anything in GLOB.clients)
+		if(C?.prefs.toggles_sound & SOUND_REBOOT)
+			SEND_SOUND(C, reboot_sound_ref)
+
 	Master.Shutdown()
 
 	var/server = CONFIG_GET(string/server)

@@ -91,8 +91,8 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"))
-			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n")
+			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. >>> <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a></span> <<<"))
+			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")
 
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
@@ -165,7 +165,7 @@
 	else
 		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE)
+/datum/emergency_call/proc/activate(announce = TRUE, var/turf/override_spawn_loc)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -178,9 +178,9 @@
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce), 30 SECONDS)
+	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce, override_spawn_loc), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE)
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -241,12 +241,12 @@
 				i++
 				if(i > mob_max)
 					break //Some logic. Hopefully this will never happen..
-				create_member(M)
+				create_member(M, override_spawn_loc)
 
 
 		if(spawn_max_amount && i < mob_max)
 			for(var/c in i to mob_max)
-				create_member()
+				create_member(null, override_spawn_loc)
 
 		candidates = list()
 
@@ -270,7 +270,7 @@
 		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
 	return landmark ? get_turf(landmark) : null
 
-/datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
+/datum/emergency_call/proc/create_member(datum/mind/M, var/turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
 	return
 
 //Spawn various items around the shuttle area thing.

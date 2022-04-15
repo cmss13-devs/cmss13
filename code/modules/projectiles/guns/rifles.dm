@@ -538,7 +538,7 @@
 
 /obj/item/weapon/gun/rifle/mar40
 	name = "\improper MAR-40 battle rifle"
-	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or Iron Bears."
+	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or CLF."
 	icon_state = "mar40"
 	item_state = "mar40"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
@@ -671,6 +671,53 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
+
+/obj/item/weapon/gun/rifle/mar40/lmg
+	name = "\improper MAR-50 light machine gun"
+	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals."
+	icon_state = "mar50"
+	item_state = "mar50"
+	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+
+	starting_attachment_types = list(/obj/item/attachable/mar50barrel)
+
+	current_mag = /obj/item/ammo_magazine/rifle/mar40/lmg
+	attachable_allowed = list(
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope/slavic
+						)
+	random_spawn_chance = 38
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/scope/slavic,
+							/obj/item/attachable/magnetic_harness
+							)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/rifle/mar40/lmg/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 16, "rail_y" = 20, "under_x" = 26, "under_y" = 16, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/mar40/lmg/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_5
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //M16 RIFLE

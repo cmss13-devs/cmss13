@@ -1,0 +1,584 @@
+2021-04-01:
+  Firartix:
+  - experiment: limited concurrent async rustg requests in flight from DBQM Controller
+  Lengord:
+  - rscadd: Added RTO ringing sprites
+  Segrain:
+  - bugfix: Deconstructing sandbag barricades once again yields correct quantity of
+      sandbags.
+  Vanagandr:
+  - rscadd: Numerous changes to storage items, mostly cosmetic.
+  - rscadd: Accessing a storage item now visibly opens it, if it has open/close sprites.
+      Closing the inventory window also closes the item. This applies to backpacks,
+      satchels, belts, pouches, G8s, first-aid kits, pill bottles, and the vehicle
+      internal storage locker. Looks pretty good generally; a bit weird on first aid
+      kits, but the consistency is worth it I think.
+  - rscdel: An item that can't be dumped out will no longer show an unusable Toggle
+      Tile Dumping verb.
+  - tweak: Attempting to empty an already empty item now fails. Didn't make sense
+      you could keep dumping it out over and over when there was nothing in it.
+  - tweak: Activating a storage item in hand will attempt to empty it automatically,
+      if that's possible. If it's empty and can be folded, activating it will attempt
+      to fold it.
+  - tweak: You can no longer spam storage opening sounds.
+  - tweak: Inventory storage now closes when you die, to prevent cute bugs with items
+      that suddenly pop closed when the owner finally gets around to ghosting or logging
+      out.
+  - tweak: Opening/closing vehicle storage lockers plays SFX.
+  - tweak: Renamed storage 'close()' proc to 'storage_close()' so that looking for
+      the damned thing in the code isn't like pulling teeth.
+  - rscadd: You can now dump pills from one pill bottle to another. Just click on
+      one while holding the one you want to dump out.
+  - imageadd: Adds open/closed overlays for pill bottles. Also shows when empty.
+  - rscadd: The pistol pouch now visually displays holstered guns.
+  - tweak: The UPP knife pouch spawned with 10 knives but could only hold 5. Modified
+      it to be loaded with 5 UPP bayonets instead of the usual throwing knives, in
+      line with what appeared to be the original intention.
+  - tweak: Gunbelts adjusted - ones that can take both automatic pistols and the M44
+      now use different sprite coords for each, vastly improving appearance. Tweaked
+      mortarbelt base coords.
+  - tweak: Extended when-equipped mouse opacity changes (letting a click anywhere
+      on its 32x32 area count as a direct click) on belts to include belts worn on
+      armour (gunbelt only, I believe) and the G8 pouch generally, which for whatever
+      reason is not actually a Belt-type item.
+  - rscadd: Lockable backpacks open when clicked like other packs, and when doing
+      so display an unlocked overlay whether locked or not.
+  - bugfix: Fixed the Smartpack not properly displaying contents overlays.
+  - bugfix: Fixed the delay in opening a worn backpack running twice.
+  - bugfix: Fixed dead people being able to spam attempts to empty inventory items.
+      It didn't dump out, but did send messages.
+  - bugfix: Emptying a magazine while holding it in your hand now updates its on-mob
+      sprite, if it has one.
+  - tweak: Floorbots and secure storage code tweaked and cleaned up a little.
+  - spellcheck: adjusted description text for many pouches, backpacks, belts, scabbards.
+      Particularly some belts where the M276 description had been copied but insufficiently
+      tweaked. Also fixes a couple typos elsewhere.
+  - bugfix: Pill packets no longer show lid overlays.
+  Waltermeldron:
+  - rscadd: Moved the phone UI to a separate TGUI panel.
+  - bugfix: Fixed phones hanging up on launch.
+  - bugfix: Fixed phones not correctly disabling headsets when raised to ear.
+  - bugfix: Fixed phones runtiming as soon as they spawn in.
+  naut:
+  - bugfix: Alcohol is no longer deadly in small doses.
+  - tweak: 'Alcohol no longer gives you effects past slurring: blurred vision, random
+      movement and passing out has been disabled.'
+  - tweak: Threshold for slurring from drinking alcohol increased to 300 from 180.
+  - tweak: Alcohol now metabolizes faster, at the rate of oxycodone (15u metabolized
+      every 5 minutes).
+2021-04-02:
+  Firartix:
+  - tweak: Debug messages are now tagged as such for filtering in chat.
+  Vanagandr:
+  - bugfix: quick_equip_inventory keybind now works.
+  Waltermeldron:
+  - tweak: Increased cost of communication disruption and evolution boost techs to
+      10.
+  - tweak: Moved shielding slashes back to T2, nerfed it back to its original state.
+  - tweak: Re-added back acidic blood tech and buffed it.
+  - tweak: Buffed acid grenade to have a longer range and also have different levels
+      of acid depending on the range. Also cannot be picked up via macro anymore.
+  forest2001:
+  - rscadd: Added a verb to allow predators to dye their capes. It has a single use
+      only and can only be accessede via right-click on the cape.
+2021-04-03:
+  Carlarc:
+  - tweak: Turns caste_name strings into defines.
+  Firartix:
+  - bugfix: Fixed missing argument during some movement triggered actions
+  - tweak: minor backend refactor around effects and hive structures processing
+  - tweak: Reimplemented perf logging controller
+  Jeser:
+  - tweak: Breaking vehicle hull with turn off vehicle lights. Fully fixing vehicle
+      hull will turn lights back on.
+  Segrain:
+  - bugfix: Lucky feathers are now available in loadout in all intended colours.
+  - bugfix: CORSAT Researcher survivors now properly get their gear and skills.
+2021-04-04:
+  Carlarc:
+  - bugfix: Fixed behaviour delegates not working on armor plates. (Shield slash,
+      rage, etc now works on metal plates)
+  - rscadd: Hitting a CC'd target as Oppressor plays the old crit sound.
+  - rscadd: Nodes show up above most objects.
+  - bugfix: '''armor softens/absorbs the blow!'' messages work again.'
+  - rscdel: Daze no longer stops you from shooting until your wield delay is done.
+  Firartix:
+  - rscadd: Add verb to change ship map - though there are currently no alternatives
+      to Almayer
+  - tweak: BYOND Pager information will now show both ship and ground maps
+  Segrain:
+  - bugfix: Status panel for xenomorphs once again works properly.
+  Waltermeldron:
+  - bugfix: Stims don't appear in recipes anymore.
+2021-04-05:
+  monkeysfist:
+  - imageadd: More Posters
+  - imageadd: Added radiator women from the radiator planet.
+  - imagedel: Removed unused space heater sprite.
+2021-04-06:
+  Nanu:
+  - maptweak: These are all Almayer changes.
+  - maptweak: The Brig has been moved to the upper deck west of CiC
+  - maptweak: Medbay has been expanded on lower deck.
+  - maptweak: Briefing now has a public canteen.
+  - maptweak: Extended Bunks are now west of the Squad Preps.
+  - maptweak: Maint has seen some upgrades and in general been made 2x wide.
+  - maptweak: There are now 4 Ladders in Maint, increasing the mobility you can make
+      between each deck, they are located Fore-Port/starboard side and Aft-Port/starboard
+      side.
+  - maptweak: RnR has seen some changes, with an expanded kitchen and hydroponics.
+      Includes a gibber as well!
+  - maptweak: Fixed countless map related bugs.
+  Sigil:
+  - rscadd: Marines now have taste buds.
+  - rscadd: Added a bunch of nutriment subtypes to make the above work.
+  - tweak: Moonshine can be made from nutriment and any of its subtypes originating
+      from plants/mushrooms.
+  - tweak: Xeno meat and products made from it now contain acidic blood. Make sure
+      you add something to counteract its effects to the food.
+  Solidfury7:
+  - tweak: Military Police and Riot ERTs now spawn with the correct gloves, which
+      have armour values.
+  Vanagandr:
+  - tweak: Vial boxes, bags, pill bottles no longer do any spam at all when picking
+      up multiple items off the floor.
+  - bugfix: Fixed six-year-old bug in which clicking a stack with a different item
+      ran through its process twice.
+  monkeysfist:
+  - rscadd: Overhauled our semiotic standard.
+  - tweak: Updated existing semiotic standard to new paths.
+2021-04-07:
+  Carlarc:
+  - tweak: Reverted M39's burst delay increase.
+  - tweak: Provost Marshalls no longer have explosive mateba speedloaders.
+  Firartix:
+  - bugfix: fix density issue with ghillie suit cloak
+  Jackie_Estegado:
+  - bugfix: Hivecores and pylons can no longer be built inside walls.
+  Nanu:
+  - maptweak: Fixed Lighting in Briefing.
+  - maptweak: Fixed Walltype used in the Brig.
+  - maptweak: Fixed ID on perma brig shutters.
+  - maptweak: Fixed random phone/iv in Delta Bunks.
+  - maptweak: Fixed APC layering in Brig.
+  - maptweak: Fixed camera directions.
+  Segrain:
+  - tweak: Predalien larvas no longer go into spawn pool when they have no player.
+  TheDonkified:
+  - bugfix: Huggers that go back in eggs naturally now properly deploy egg triggers.
+  - tweak: Changed code so egg triggers are only deleted when an egg is deleted.
+  Vanagandr:
+  - rscadd: Stack-type items now display the number of uses remaining when carried
+      or in storage items. This includes bandages, ointments, barbed wire, rods, floor
+      tiles, metal or glass sheets, planks, etc. The number should update any time
+      it changes.
+  - tweak: Plant bags, ore bags, sheet snatchers now visually condense stored items
+      again. This makes them tidier on the user end but does not have any mechanical
+      effect.
+  - rscdel: removed unused storage proc.
+  Waltermeldron:
+  - tweak: Dialysis no longer requires an empty beaker to function.
+2021-04-08:
+  Jeser:
+  - maptweak: Reworked and improved APC variants interiors.
+  - rscadd: Reworked passenger system for vehicles. In addition to common passenger
+      and xeno slots, vehicle now can contain passenger slots dedicated to specific
+      roles. For example, APC has 2 Crewmen slots, meaning only humans with Vehicle
+      Crewman job can occupy these passenger slots.
+  - spellcheck: Changed CIC Map Table name to Tactical Map Table.
+  - rscadd: CMD APC now has inbuilt sensor tower with limited range. Destroying vehicle's
+      hull breaks it.
+  - tweak: Vehicle's Get Status Info verb now shows passenger slots in details.
+  - rscadd: Added separate floors for vehicle interiors. Changed floor in tank, APC
+      and van interiors to new floor type.
+  - imageadd: Added edited dropship floor sprites for vehicle interiors.
+  - rscadd: Added new type of vehicle walls to replace current one due to problems
+      with them. Only for APC for now.
+  - imageadd: Added a lot of edited sprites for APC new walls.
+  - tweak: Armored vehicles (tank, APC) use tank's driver and gunner seats now. Unarmored
+      vehicles (vans and others) keep using comfy seats.
+  - rscadd: Added new APC passenger seats. Can be fixed with a welding tool.
+  - imageadd: Added new APC passenger seats sprites by Nauticall.
+  - tweak: Vehicle storage unit now can be accessed by UPP Crewmen (for events).
+  - rscadd: Added medical version of vehicle storage unit - wall-mounted surgery kit
+      storage. This locker can only be accessed by some medical roles who can perform
+      surgery, it comes pre-filled with surgical tools. Those with access can use
+      Remove Surgical Tray verb that will spawn surgical tray and all current instruments
+      in locker will be moved there. Locker cannot be used while it's missing surgical
+      tray. Clickon locker with surgical tray to install it back.
+  - rscadd: Standing at vehicle entrance and clicking on vehicle with pulled object
+      on HELP intent will attempt to fit pulled object into vehicle without user entering.
+      This action takes 1 second. Still requires doors to be unlocked or appropriate
+      access and enough passenger slots, in case it's alive mob.
+  - tweak: Changed entering/exiting time for vehicles. Default time is 1 second. Pulling
+      something increases it to 2 seconds. Xenos always wait 1 second. APC entering/exiting
+      time is 0.5 seconds.
+  - tweak: 'Door locks changes: 1. Xenos now require 3 seconds to bypass doorlocks.
+      2. Door locks stop working when hull is broken.'
+  - tweak: Vehicle's Get Status Info verb now shows vehicle lock's status.
+  - tweak: Clicking on driver/gunner seats as a xeno will unbuckle the mob now.
+  - bugfix: Fixed being able to deploy mines in vehicle interior.
+  - bugfix: Fixed being able to pull and deploy M56D and it's tripod into vehicle
+      interior.
+  - bugfix: Fixed being able to pull handheld defenses into vehicle interior.
+  Segrain:
+  - rscadd: Nurses can now practise surgery on Professor DUMMY mannequin.
+  monkeysfist:
+  - rscadd: 'Added two banners: Maximum Effort and Happy Birth ay Steve'
+  - imageadd: Added more Semiotic Standard. We now have 61 signs for mappers to play
+      with.
+  - rscadd: Added the Arcturian stop sign that Bravo stole on the last shore leave.
+  - imagedel: Removed deprecated and redundant decal icons.
+  - tweak: Converted more signage to Semiotic Standard.
+  naut:
+  - rscadd: Added a new template, Chinook 91 GSO, High Command's central station for
+      the sector. This station is meant to be used for USCM events.
+  - tweak: Fixed pen's sprite in the mapping editor.
+  - imageadd: Added black tables, blackened (duh) versions of the stock Almayer table.
+      Basically a legged version of the chunky Almayer reinforced table.
+  - imageadd: Added a nameplate for Chinook on its hull.
+2021-04-09:
+  Carlarc:
+  - experiment: Increased larva latejoin ratio from 1 per 4 to 1 per 3.
+  Firartix:
+  - bugfix: hotfix mishap with chinook and z level traits
+  Sigil:
+  - rscadd: Added skill traits. You **CANNOT** select them in character setup.
+  - tweak: Pamphlets now give traits. All current pamphlets changed to use the new
+      system.
+  - rscadd: JTAC pamphlet added to the utility section of PFC vendors. It costs 30
+      points and increases your JTAC skill to 1 (SG/spec/engie/medic level).
+  - tweak: VC pamphlet from the tank tech now gives 2 engineering instead of 3.
+  - bugfix: Restricting the amount of traits that can be picked from a specific group
+      now actually works.
+  - imageadd: Proper sprites added for the JTAC, VC and powerloader pamphlets.
+  - bugfix: Fixes pamphlets being unable to be read.
+2021-04-10:
+  Jeser:
+  - bugfix: Replaced MED APC triage space floor tiles (green and white ones) with
+      medical version which doesn't add huge surgery failure chance. Oops.
+  - bugfix: Fixed CMD APC's reserved roles slots not being used.
+2021-04-11:
+  BIgboyyo:
+  - maptweak: Trijent's bridges can be mostly navigated  by default now, meaning you
+      don't have to turn on filtration to walk across them.
+  - maptweak: 'Deleted the Nightmare Inserts that fixed the bridges since they''re
+      redundant with the above change. '
+  Nanu:
+  - maptweak: Changed the SE Jungle Barrens slightly.
+2021-04-12:
+  Jeser:
+  - bugfix: Fixed bug with some jobs slots being permanently locked under specific
+      conditions.
+  - rscadd: Clicking adjacent multitile vehicle with a motion detector will start
+      a short scanning process that will show a blip on vehicle if there are xenos
+      inside.
+  - tweak: Changed motion detector description to be more detailed.
+  - bugfix: Fixed entering vehicle despite vehicle rotating during timed action.
+  - maptweak: Swapped WY-med and blood bags vendors in MED APC to allow easier medical
+      supplies restocking without enterrupting surgeries. Per CynicalRose's request.
+  JohnTitor:
+  - bugfix: Carp fillet and the food made out of it now properly contain fish meat
+      in addition to carpotoxin.
+  Vanagandr:
+  - bugfix: Non-heart organ damage (toxin damage, blindness, suffocation etc - pain
+      was a different section and not bugged) is now functional again. Embrace suffering.
+  - bugfix: 'Pain checks no longer backwards: pain messages now appear when *not*
+      on painkillers, and tram or stronger painkillers now block them, as they used
+      to.'
+  - tweak: Adjusted some backend around pain message calculations. No effect on mechanical
+      pain, but some messages should now be working which previously would be almost
+      impossible to see.
+  - tweak: Pain messages for toxins and organ damage no longer require brute/burns/unsplinted
+      fractures to be checked for.
+  forest2001:
+  - rscadd: Added a HUD for predators to mark targets as honored, dishonorable, gear
+      carriers and thralls. Dishonorable overrides honored and thrall overrides gear
+      carrier.
+  - rscadd: Added a panel for marking the above. Each mark can also be macro'd. Marking
+      for hunt is in this panel however remains in it's original location too.
+  - rscadd: When predators examine a mob it will now show who is hunting the mob,
+      and details regarding any other statuses set by the Pred HUD.
+  - rscadd: Humans marked as thralls will no longer show their gear on the gear tracker
+      until they die, are unmarked as thralls or become dishonorable.
+  - rscadd: Abominations and their larva now permanently show up as dishonorable.
+  - tweak: Using the relay beacon to set a teleportation marker now transmits via
+      bracer instead of AI announcement.
+  - tweak: Only one predator can mark a target as prey.
+  - wip: Added the ground works for some improvements for thralls.
+2021-04-13:
+  50RemAndCounting:
+  - rscadd: Added the MT Uniform and the Whiskey Outpost RO Jacket to the Synthetic
+      snowflake
+  - rscadd: Added the Whiskey Outpost RO Jacket to the RO Locker in RO Office (by
+      Nanu308)
+  GoldenDarkness55:
+  - tweak: Increased attack speed of Machete, Katana and Bayonet from 11 to 9
+  - tweak: Moved marine stims to T3 tech.
+  - tweak: Moved railgun to T2 tech.
+  Segrain:
+  - bugfix: OTs can now open the windoor at their front desk.
+  - rscadd: Added an instantly mature subtype of queen. Admin usage only.
+2021-04-14:
+  Carlarc:
+  - tweak: Changed autoinjector cooldowm from being click-delay based to self-cooldown
+      (.75 seconds) based. Should be significantly smoother.
+2021-04-15:
+  Carlarc:
+  - rscadd: Added two hotkeys/verbs for Corrosive Acid and secreting resin from Build
+      Distribution tech. They are by default set to Shift+C and Ctrl+B
+  - tweak: Shuffled around default hotkeys to be more usable. This won't change anything
+      for players that have already had their hotkeys set. (aka have logged on since
+      the hotkey update) Unique-Action is now space, equip tertiary is Ctrl+E and
+      Alt+E, etcetera, it is recommended to change the hotkeys to these if you don't
+      have them customized already. Read MR !1240 for more details.
+  - rscadd: Added a new set of Predator armor, "Ravaged". Mask number 12, armor number
+      7, greaves number 4.
+  - rscadd: Added a predator plushie, admin only.
+  - rscadd: Added braziers, wall-mounted torches, predator coffins.
+  - rscadd: Predators can now flay corpses with the ceremonial dagger, and hang them
+      from the ceiling with rope found in the hunter ship.
+  - imageadd: Resprited mending/soothing herbs.
+  GoldenDarkness55:
+  - rscdel: Buckshot no longer slows T3s.
+  Nanu:
+  - maptweak: Gave medbay 1 extra cryocellsmixture, removed misplaced black market
+      crates, fixed camera dir, fixed hangar's crane bound height due to its offset.
+  - maptweak: Fixed Starboard cannon room's phones and tables.
+  Segrain:
+  - bugfix: Dumping boxes of shotgun ammo into belts and pouches now works as intended.
+  - bugfix: Railgun should now work properly on Fiorina Science Annex.
+  SuprisedBaby_:
+  - rscadd: Added animal cruelty to the JAS
+2021-04-16:
+  Backsea:
+  - rscadd: Added a kit for MPs to use for Honor Guard duty.
+2021-04-17:
+  Carlarc_Thwomper_Triiodine:
+  - rscadd: Significantly reworked the UPP ERT, with the intention to make it a marine
+      menace and middling against Xenomorphs.
+  - rscadd: 'Added a new gun: The Type 23 riot shotgun. It''s a semi-automatic 8 gauge
+      shotgun and packs a ridiculous punch.'
+  - rscadd: 'Significantly buffed or reworked the following guns: Type 71, Type 71-F,
+      PK-9, Nagant revolver, Skorpion (fullauto)'
+  - rscdel: Deleted the effectively-bloat HVH and cryo UPP loadouts.
+  - rscdel: Tranq bullets now deal 30 stamina damage instead of insta KOing.
+  - tweak: 'Significantly weakened ceramic plates against enemy factions. They will
+      absorb 100 damage then break. '
+  - tweak: Burst ammo display is accurate now.
+  - bugfix: Fixed PMC glove sprites.
+  Triiodine:
+  - imageadd: New Praetorian telegraph icons. No more orange boxes.
+  optimisticdude:
+  - tweak: Doubles the recharge time for ship railguns from 15 to 30 seconds.
+2021-04-18:
+  BIgboyyo:
+  - tweak: Removed DEFCON mentions from Event Panel since they do nothing now.
+  Carlarc:
+  - rscadd: Warden Praetorians have had their 25 armor readded.
+  - rscadd: Base Praetorians now gain 15 shield on acid spit hit, as a reward for
+      hitting spits. Maximum 45 shield.
+  - tweak: Increased acid spit range to fit the intended full screen.
+  - tweak: Reduced single prae acid spray hit damage from 20 to 12 and increased prae
+      acid spit damage.
+  - rscadd: Reduced defender slash damage from 30 to 27.
+  - rscadd: Changed how defender crest toggling works. Reduced crest armor and slowdown,
+      reduced cooldown by 0.5 seconds.
+  - rscadd: Inverted defender headbutt. You will home into a target when crest is
+      up, and fling them away if it's down.
+  - tweak: Increased minimum tackles of Runner from 3 to 4, slightly increased stuntime.
+  - tweak: Increased tackles needed for Burrower by 1, reduced chance from 50 to 40.
+  Segrain:
+  - tweak: Evolution progress on xeno status panel is somewhat cleaner now.
+  Triiodine:
+  - bugfix: (Hopefully) fixed the Oppressor Praetorian's invisible telegraph.
+  naut:
+  - rscadd: Fire alarms now change color and flash depending on the alert state.
+  - rscadd: Admins now have the ability to trigger (and cancel) evacuations through
+      the event panel.
+  - tweak: Status displays now have a blue alert state.
+  - tweak: Status displays now display an evacuation alarm when evacuation is called.
+  - imageadd: Red alert and blue alert status display sprites have been modified.
+      Evacuation status display sprite was added.
+2021-04-19:
+  50RemAndCounting:
+  - bugfix: Fixed Commanding Officers not having the Master level JTAC skill.
+  Carlarc:
+  - bugfix: Fixed predators being able to self-destruct after the critical threshold.
+  - tweak: Time needed to pry open resin doors with wristblades reduced from 3 seconds
+      to 1.5.
+  - wip: Hellhounds can no longer tackle (sleep).
+  - rscdel: The Quickfire Adapter has been removed and its benefits integrated into
+      the M44, the L42, the M41, and the Mod88.
+  Firartix:
+  - tweak: The marine ship will now use the marine ship map name as its name
+  - tweak: simplified BYOND pager status
+  - bugfix: BYOND pager status should now properly display round time
+  Jeser:
+  - bugfix: Fixed putting two vehicle modules to the same slot.
+2021-04-20:
+  Jackie_Estegado:
+  - bugfix: Fixed unheard ahelps getting removed when ahelper changes bodies.
+  alardun:
+  - bugfix: Temporarily falling back onto Praetorian old Telegraph until the server
+      dmi situation can be sorted out.
+2021-04-22:
+  BIgboyyo:
+  - maptweak: Added a few more boxes of buck along with HG shotguns and spent buckshot
+      to Kutjevo.
+  - maptweak: Added about 4 medvendors to Kutjveo, all in medbay.
+  - maptweak: 'Replaced a number of the cades near Fiorina''s LZ with metal since
+      they''re annoying to move. '
+  - bugfix: 'Fixed the door stack SW of Yard on Fiorina. '
+  - tweak: 'Removed the ghost of the Almayer. '
+  Spartanbobby_Carlarc:
+  - maptweak: Significantly revamped the main temple in LV along its nightmare inserts.
+2021-04-23:
+  Carlarc:
+  - rscadd: Added a new XRT, Feral Xenomorphs. Normal XRT but it's a feral queenless
+      hive hostile to everything. Can be called in hijack.
+  - tweak: Halved xeno and in general death timer.
+  ChainsawMullet:
+  - maptweak: Added four "duelling" weapon types to the Hunter ship arena room.
+  - maptweak: Added a Hellhound Quarters to the Hunter ship.
+  - maptweak: Elders now have windows in their quarters of the ship.
+  - maptweak: Added some Body Mesh to the Hunter ship storage room for Thralls.
+  - maptweak: Added some more flour to the Hunter ship.
+  - maptweak: Added spare stew to Cooler room on Hunter ship.
+  - maptweak: Moved the new Hunter coffins to the burial chamber.
+  - tweak: Examining a target as a Hunter will now list their honour as "the scent
+      of defeated prey" rather than as "honour".
+  GoldenDarkness55:
+  - rscadd: Vanguard and Oppressor strains can now break standard walls.
+  - rscdel: Removed corrosive acid from Oppressor and Vanguard strains.
+  - tweak: Dancer strain can no longer break reinforced walls.
+  - tweak: Reinforced window frames can now be broken by all caste capable of breaking
+      standard walls.
+  Jackie_Estegado:
+  - bugfix: Headless bodies can no longer be revived.
+  - bugfix: Revivable bodies can no longer be put into bodybags.
+  Segrain:
+  - bugfix: Gear presets now correctly equip and fill accessories.
+  TheDonkified:
+  - bugfix: Messages that involve resin structures and their areas will now properly
+      display the areas in chat.
+2021-04-24:
+  Firartix:
+  - bugfix: fix an issue with changelog parsing adding invalid entries + regenerate
+      it
+  Segrain:
+  - bugfix: Medical personnel now can use the windoors in medbay's lobby.
+  forest2001:
+  - rscadd: Added a variant of sandstone, sandstone walls and sandstone airlocks for
+      Hunters to use. Allows hunters to use their wristblades to open, close, lock
+      and unlock the door. It has no other method of interaction.
+2021-04-25:
+  Carlarc:
+  - bugfix: Refactored vision_impair.
+  Segrain:
+  - bugfix: Clusterbangs are no longer all cluster and no bang.
+  - rscadd: Added spawnable primed clusterbangs. Rulebreakers beware.
+  - bugfix: Queen's blockade should mess turfs after deletion somewhat less now.
+  Vanagandr:
+  - rscadd: Refactors xenomorph attack click delay behaviour. Xeno attacks now count
+      as a full-delay XENO_ATTACK_ACTION, 0.4 second XENO_NONCOMBAT_ACTION, zero delay
+      XENO_NO_DELAY_ACTION, or half-delay. Error messages have no delay. This does
+      mean 'You can't do that!'-type messages are spammable, but only the user can
+      see those.
+  - rscadd: A missed xeno melee attempt now has a half-delay and audio-visual feedback,
+      plus a message. Should make the true causes of 'eaten clicks' more apparent.
+  - rscdel: Xenos can no longer click tiles to attack mobs in them. The functionality
+      still exists but is now accessed indirectly through directional attacks and
+      the next change. Weeds & blood etc. often blocked this anyway.
+  - tweak: As a xeno, clicking your own sprite now attacks the tile underneath the
+      mouse pointer. This means that you will no longer miss otherwise-viable attacks
+      because your own dummy thicc sprite got in the way.
+  - tweak: If conducting a tile attack where you and a prone enemy are on the same
+      tile, it will now attempt to target the enemy rather than the standing mob (you).
+  - rscdel: 'Nibbling allied xenos removed: no attack delay for harm-intent clicking
+      them.'
+  - bugfix: Timed xeno actions (as distinguished from ability actions) such as tipping
+      vending machines etc. now apply delays when they *start*, rather than when they
+      finish.
+  - tweak: Attack delay for missing a directional attack is now 0.25 seconds, down
+      from (usually) 1 second.
+  - tweak: Directional attacks now calculate angles more precisely, so your mouse
+      doesn't need to be perfectly lined up to attack in a cardinal direction.
+  - tweak: The non-help intent self-harm preference toggle doesn't apply to xenomorphs
+      anymore, as they can't do anything to themselves unless someone someday gives
+      them weapon items. This prevents the toggle from messing you up when you click
+      your own sprite while trying to attack someone.
+  - tweak: Changed the layer of the residue left by an abandoned ovipositor so that
+      it's above weeds and weed nodes.
+  - rscadd: Added xeno attack animation to slashing resin, resin nests, dropship chairs,
+      claymores, broken powerloader wreckage, discarded ovipositor object, empty eggs,
+      resin fruits, tipping vending machines.
+  - tweak: Only attacks on mobs add to xeno slash stats. Previously all xeno clicks
+      did, making it a useless statistic.
+  - tweak: Xenos no longer need to be on harm intent to open lockers.
+  - tweak: Xeno snow clearing must be done on disarm or grab intents, as harm intent
+      counts as a missed slash and help intent does nothing.
+  - tweak: Clicking resin structures (spikes, sticky resin etc.) on help intent applies
+      no delays.
+2021-04-26:
+  Carlarc:
+  - rscadd: Added a parry mechanic to the Clan Sword. When activated the predator
+      will glow a bright white and deflect bullets/riposte melee for 3 seconds on
+      a 8 second cooldown. Marines can attempt to parry, but it won't be very reliable.
+  - rscadd: Combistick reworked. You must hit an enemy once before being able to throw
+      it, and then the charge will be spent. A hit + throw combo deals roughly 40
+      damage.
+  - rscdel: Removed combistick yanking cooldown.
+  - tweak: Increased aimed shot cancelled cooldown and delay slightly.
+  - tweak: Increased aimed shot delay from 1.25s to 1.5 + 0.1 seconds for every two
+      tile to the target.
+  - tweak: If a aimed-at target goes into cover, add half cooldown to your next shot.
+  - rscadd: Added an admin preset for spawning USCM snipers.
+  Firartix:
+  - tweak: Staff logging in will now give a notification, similar to logout
+  - tweak: Player and Staff access logging is now tied to client and not mob Login/Logout,
+      and won't trigger on mob changes constantly (eg. xeno evo)
+  - bugfix: new_player logins are not logged twice anymore
+  - bugfix: occupied stasis bags now are visually layered similarly to laying down
+      persons (avoiding misplacement of sad players eg. under medevac)
+  - tweak: Refactored dropship attach points and FM gimbals in preparation for CAS
+      Weapons rework
+  naut:
+  - tweak: All instances of 'Weston-Yamada' have been replaced with 'Weyland-Yutani'.
+  - tweak: In reference to above, similarly, all instances of 'W-Y' have been replaced
+      with 'Wey-Yu'.
+2021-04-28:
+  Firartix:
+  - bugfix: stopped decals from applying as overlays improperly
+  QuickLoad:
+  - rscadd: Added sensormate HUD purchasable by RTO in gear vendor.
+  - rscadd: Added two new ESSENTIAL sets to the RTO vendor, which include a sidearm
+      of choice, ammo, laser binoculars, and signal flares to help the RTO in their
+      JTAC role for CAS.
+  - rscadd: Added three relevant sidearm ammo choices for purchase from the gear vendor.
+  - tweak: Changed RTO insulated gloves to be marine insulated gloves.
+  - tweak: Streamlines the RTO vendor for better loadout experience, less button mashing,
+      more relevant options in relevant places.
+  - rscdel: Removed now redundant or irrelevant options such as helmet selection,
+      machete, sidearm selection, GLTD etc.
+2021-04-29:
+  Carlarc:
+  - bugfix: Pouches and belt can no longer hold throwing knives
+  - bugfix: Revolvers no longer say they have "+1 bullets" because their (active)
+      chamber is always full.
+  - bugfix: Fixed M44 Custom not receiving the same firerate buffs as the M44.
+  - rscadd: Any xenos can clear out hatched eggs, reduced click delay for doing so.
+  - tweak: BFA can no longer fit on the M41A.
+  - tweak: Ceramic plate nerfed against FF. Effective plate health from a thousand
+      to three hundred.
+  - bugfix: Fixed throwing knife belts not allowing you to put throwing knives back
+  Firartix:
+  - tweak: made legacy implanters use correct initializing backend
+  - tweak: MapView init is now deferred to game start to account for potential map
+      changes
+  - tweak: show_browser now has an option to specify the browser datum onclose reference
+  - bugfix: MapView controller subystem should now behave as such and properly pause
+  - bugfix: Tactical Maps should now refresh and detect closing properly
+  forest2001:
+  - tweak: Ancients can be in clans now
+  - tweak: Default Hunter rank is now Young Blood

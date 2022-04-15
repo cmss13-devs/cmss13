@@ -1,5 +1,4 @@
 import { toFixed } from 'common/math';
-import { classes } from 'common/react';
 import { storage } from 'common/storage';
 import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';

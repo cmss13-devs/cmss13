@@ -72,10 +72,10 @@
 	S["default_slot"]		>> default_slot
 	S["toggles_chat"]		>> toggles_chat
 	S["chat_display_preferences"] >> chat_display_preferences
+	S["toggles_ghost"]		>> toggles_ghost
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
-	S["toggles_ghost"]		>> toggles_ghost
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
@@ -125,10 +125,10 @@
 	default_slot	= sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat	= sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
 	chat_display_preferences	= sanitize_integer(chat_display_preferences, 0, 65535, initial(chat_display_preferences))
+	toggles_ghost	= sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
-	toggles_ghost	= sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
@@ -197,10 +197,10 @@
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat
 	S["chat_display_preferences"] << chat_display_preferences
+	S["toggles_ghost"]		<< toggles_ghost
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing
-	S["toggles_ghost"]		<< toggles_ghost
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 
@@ -361,10 +361,7 @@
 	r_eyes			= sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes			= sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
-	if(gender == MALE)
-		underwear	= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
-	else
-		underwear	= sanitize_integer(underwear, 1, underwear_f.len, initial(underwear))
+	underwear	= sanitize_inlist(underwear, gender == MALE ? underwear_m : underwear_f, initial(underwear))
 	undershirt		= sanitize_integer(undershirt, 1, undershirt_t.len, initial(undershirt))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	//b_type			= sanitize_text(b_type, initial(b_type))

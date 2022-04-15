@@ -16,7 +16,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
-	deevolves_to = XENO_CASTE_RUNNER
+	deevolves_to = list(XENO_CASTE_RUNNER)
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list(XENO_CASTE_RAVAGER)
 

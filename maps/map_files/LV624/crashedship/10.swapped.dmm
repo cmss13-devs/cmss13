@@ -45,7 +45,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "gQ" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "iF" = (
@@ -56,7 +56,7 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "jM" = (
@@ -65,7 +65,7 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "kS" = (
 /obj/structure/girder/displaced,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "mG" = (
@@ -80,7 +80,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -104,7 +104,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "px" = (
 /obj/structure/girder,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "qk" = (
@@ -156,7 +156,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "At" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -287,12 +287,12 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "SS" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "Ue" = (
 /obj/item/explosive/grenade/HE/PMC,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "Um" = (

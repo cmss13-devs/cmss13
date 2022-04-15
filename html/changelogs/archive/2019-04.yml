@@ -1,0 +1,478 @@
+2019-04-06:
+  Cakey:
+  - maptweak: All maps are slightly more tank-accessible.
+  - maptweak: Added a global lockdown shutter control button to Prison station, within
+      the marshals office.
+  - tweak: Buffed the tank flak cannon's AP.
+  - tweak: Increased Boiler railgun projectile speed.
+  - tweak: Boiler railgun projectiles now go over barricades and cover.
+  - tweak: You can still hit barricades if you target them specifically with the railgun
+      Boiler.
+  Deanthelis:
+  - bugfix: Fixes warriors being unable to passively grab xenos and monkeys.
+  - bugfix: Fixes warriors being able to neckgrab Synthetics.
+  MattAtlas:
+  - tweak: Lowered the damage you get by walking through a tile of WP blue flame.
+  - tweak: Slightly lowered WP direct hit damage so that it's no longer on par with
+      an actual antitank rocket.
+  - bugfix: Fixed the 'Change Their Name' verb not changing the registered name.
+  - bugfix: Fixed the tactical shotgun stock.
+  - tweak: Also brought the tactical shotgun stock up to par with other stocks.
+  - bugfix: Fixed duplicate 'killer' on Dutch's Dozen weaponry.
+  - tweak: Several global messages were tweaked to look cleaner.
+  - tweak: Round end announcements now show the gamemode.
+  - tweak: Survivors no longer spawn with random damage.
+  - tweak: The CE can now edit ID cards.
+  - rscadd: An UPP combat synth loadout has been added to Select Equipment.
+  - rscdel: The laser detector has been (temporarily) removed from the dropship fab.
+  - bugfix: Fixed an infinite order exploit.
+  - bugfix: Fixed tan boonie hats being borked on ice colony.
+  NGGJamie:
+  - rscadd: Added FPS setting under Preferences.
+  - rscadd: Added client render options and a Reconnect button under 'File'
+  Neth Iafin:
+  - tweak: Point-blank fire can now miss when gun is not settled in hands (on pulling
+      from the suit/back or switching from one-hand to two-hand).
+  - tweak: Slightly increased damage of buckshot.
+  - tweak: Barrel charger now works when pointblanking.
+  - tweak: Significantly reduced effect of Barrel Charger on shotguns.
+  - tweak: HEFA is now completely blocked by barricades.
+  - tweak: HEFA shrapnel deals minimal damage to barricade.
+  - tweak: Specialist's grenade launcher now fires thru mobs (humans and xenos).
+  Ranged66:
+  - bugfix: Fixed ancient 'throwing' code that didn't work properly diagonally. This
+      will affect anything from diagonal runner pounces to UGL shots.
+  - bugfix: Fixes displaced girders not being able to be secured on some locations.
+  - bugfix: Facehuggers die instead of leaping out if their resin hole is burnt.
+  - tweak: The mini scope now fits on the specialist's M92 Grenade Launcher.
+  - tweak: The M92 now spawns with only HEDP loaded, instead of a mix of various grenades.
+  - rscadd: 'New hotkey in hotkey-mode: Shift+E. Quick equip for sidearms and knife,
+      tries to get equipment in order: belt > back > shoes > uniform > suit.'
+  - bugfix: Quick equip hotkey now properly checks for weapons on your belt and in
+      pouches.
+  - bugfix: Fixes the oxygen loss warning not disappearing.
+  - bugfix: Humans will no longer drop their grab if the grabbed person dies.
+  - bugfix: Flames no longer prevent WP rockets from exploding.
+  - bugfix: Mech drill no longer does insane melee damage.
+  - tweak: Dylovene overdoses are way, way less punishing now.
+  - tweak: Whacking people with your helmet now does more damage. Less than a knife
+      though.
+  - tweak: '''Multiple pills'' in chemmaster now defaults to 16.'
+  - tweak: Activating a flare now activates throwmode.
+  - tweak: You may now toggle resting while stunned/incapacitated. You will stay on
+      the ground instead of immediatly getting up.
+  - bugfix: Fixed a bug where welding tools would leave you permanently blind.
+  - tweak: Buffed/fixed special M44 Revolver ammo. They were previously either broken
+      or simply worse than normal ammo.
+  Slywater:
+  - experiment: Xenos now spawn inside infected hosts - they will burst instantly.
+      Regular survivors will not be affected.
+  - rscadd: Extra nests will now spawn to house the aforementioned hosts.
+  - rscadd: Adds more survivor spawn-points to LV.
+  - bugfix: Fixed old synths being interpreted as ERT members.
+  - tweak: Survivors in the Central Ring of Prison can now escape via Laundry (south-west
+      of the ring). The blast doors have been blown open to create a way out.
+  - bugfix: Replaces broken solar panels on Big Red.
+  - bugfix: Fixes some cigarette butts being forbidden from ashtrays.
+  - bugfix: Corrects some odd grammar displayed when loading the M56, or when attacking
+      with claws.
+  - rscadd: Adds some ambient zombie groans.
+  Triiodine:
+  - bugfix: Added DRG-NF & AC3-E Ammunition orders to Requisitions. They can be found
+      in the Hardpoint section.
+  monkeysfist101:
+  - rscadd: There's now a differece between regular shuttle seats and dropship hotseats.
+  - imgageadd: Tweaked original shuttle seats and restored placement.
+  - imgadd: Added new adminspawn facepaint.
+2019-04-09:
+  Deanthelis:
+  - bugfix: Fixes warriors being unable to passively grab xenos and monkeys.
+  - bugfix: Fixes warriors being able to neckgrab Synthetics.
+  - rscadd: Added a proc for Admins to change the equipment of all humans in the game
+      world.
+  Ranged66:
+  - bugfix: Fixes the holster bug that some were getting. If it still isn't fixed,
+      please tell me.
+  - bugfix: Fixes humans not recovering oxygen damage properly.
+  Retrokinesis:
+  - maptweak: Fixed the lights not working in several areas on the Almayer.
+  - maptweak: The CO and other crew with bridge access can now open the tanker and
+      pilot quarters, instead of JUST the TCs and POs.
+  - maptweak: The Almayer telecomms podlock no longer opens into an indestructible
+      barrier.
+  Slywater, Cakey:
+  - experiment: Trijent has been added back into rotation. It has been shrunk and
+      changed slightly to better suit gameplay and stability.
+  - bugfix: Stairs and boulders are now unmeltable.
+  - bugfix: Larger xenos will no longer clip and overlap with water.
+  - bugfix: Stairs will now sit below flames and hidden Runners.
+  - tweak: Synths and Preds now take considerably less burn damage from toxic water.
+  - tweak: Xenos now take minor damage from toxic water.
+  - rscadd: Grass and vines will now catch fire and burn.
+  - rscadd: Fire can now spread across patches of grass.
+  Triiodine:
+  - rscadd: Added new IO equipment and armor. It protects just a bit more than the
+      average marine armor.
+  - rscadd: Added new IO backpacks. They work like satchels, and can hold less than
+      a backpack. Only IO's may get them.
+  - imageadd: Updated the B8 Smart-Scope visuals.
+  - bugfix: Adjusted the attachment offset on the L42 pulse carbine MK1.
+  - spellcheck: Adjusted the L42-MK1 Pulse Carbine to 'L42 pulse carbine MK1' to be
+      in line with other weapon names.
+  - experiment: M4A3 & M44 Pistol rigs now can hold 8 magazines instead of 5.
+  - experiment: The M44 service revolver can now use the B8 Smart-Scope.
+  - bugfix: Fixed tan boonies and tan bandanas having bad ice variants.
+  - wip: Reverted legacy dropship chairs, expect new sprites in the future.
+  - bugfix: Added the tan beret to loadout.
+  - rscadd: Added the marine RPG glasses to loadout.
+  - imageadd: Squared the edges of L42 pulse carbine MK1 magazines.
+  - soundadd: Remastered the M44 firing sound.
+  - soundadd: Remastered the L42 firing sound.
+  - soundadd: Remastered the M39 firing sound.
+  - soundadd: Remastered the M37 firing sound.
+  - soundadd: Remastered the UAC-Sentry firing sound.
+  - soundadd: Remastered the M4A3 firing sound.
+  - bugfix: Fixed some edge case Mateba icon issues.
+  - bugfix: Fixed some edge case M4A3 icon issues.
+2019-04-19:
+  Awan:
+  - rscadd: Co Tablet is in. They somehow forgot it on the toilet. It still needs
+      a new sprite.
+  - rscadd: Changed up the admin z-level a bit.
+  - rscadd: Fixed flamers sprites being wrong.
+  Cakey:
+  - bugfix: Fixes flamer icon updating.
+  - bugfix: Fixes using ; for hivemind.
+  - bugfix: Fixes Trijent dam dirt being draggable.
+  - bugfix: Fixes tank trampling messages.
+  - bugfix: Tanks will now consider shift/ctrl/middle/alt clicking before firing.
+  - rscadd: You can now fire secondary/support weapons in the tank using middle/ctrl
+      click. Middle clicking will get the next module in line, while ctrl clicking
+      will get the next-next module in line.
+  - bugfix: Fixed empty gun cabinets in certain Almayer armories.
+  Deanthelis:
+  - rscadd: Added an option for admins to play midis at individual mobs, rather than
+      only what they can see or the entire server.
+  Fourkhan:
+  - rscadd: Added two new fully equipped marine ERTs for the Almayer
+  - bugfix: Cryo reinforcements should now have full access to appropriate areas on
+      the Almayer
+  - bugfix: Cryo reinforcements should now have correct comms access
+  - bugfix: DEFCON now calls fully-equipped cryo reinforcements instead of Whiskey
+      Outpost reinforcements
+  - bugfix: Colors now directly display when checking yourself for injuries
+  - bugfix: Xenomorph hivemind no longer cuts off the first character of messages
+      sent using ;
+  - rscadd: Marine holocards will now be visible in the medevac UI
+  MattAtlas:
+  - rscadd: Admins and those with the Debug tab can now drag their ghost to a mob
+      to ckey into said mob.
+  - tweak: Removed damage penalty from IFF scopes.
+  - bugfix: Overwatch orders now show up in the stats panel once again.
+  - bugfix: Fixed predator scimitars not working.
+  - bugfix: Fixed a few wrong chat messages.
+  - bugfix: Freelancers now spawn with first aid pouches.
+  - bugfix: The flashgrip should now work properly.
+  - experimental: Cleanable decals will now autodelete after 35 minutes.
+  - experimental: The lighting controller should now cause less lag. Report any lighting
+      errors, etc.
+  - rscdel: All legacy mutators (faster weeds, off weeds regen, larva infusion, resilient
+      larva, etc) have been removed.
+  - remove: Opioid addiction has been reverted for the time being.
+  - rscadd: 'A flare gun has been added to the JTAC kit. This flare gun can only fire
+      normal flares for now. It also comes with a miniscope pre-attached: that''s
+      the only attachment it can take.'
+  - rscadd: A flare gun holster belt that can hold a flare gun and a whole bunch of
+      flares has also been added to the JTAC kit.
+  - tweak: The technician PFC kit now holds a welder pack and a deployable barricade.
+  - tweak: Tier 2s and above can now all slash displaced girders.
+  - tweak: The M37 no longer needs a scabbard to be holstered.
+  - tweak: The surplus uniform vendor now has light/heavy armour.
+  - bugfix: Fixed the combistick wielded sprite.
+  - bugfix: The chainwhip now has a sprite when you hold it.
+  - bugfix: SOs now spawn with the custom pistol.
+  - experimental: Huge backend chat refactor. Please submit a gitlab issue if any
+      text messages look weird, out of place, etc.
+  Ranged66:
+  - tweak: Smoke spreading onto tiles will now override the old smoke located there,
+      with some limitations. (No clearing boiler gas with smoke grenades.)
+  - tweak: New flames will now override old flames on a tile.
+  - rscadd: Added a new chemical, Epinephrine (AKA Adrenaline). Functions as a medium
+      short-term stimulant. Its main use is greatly increasing the effectiveness of
+      defibrillators.
+  - tweak: Potassium-water reaction in a chem grenade will no longer prevent other
+      chemical reactions.
+  - tweak: Made the potassium-water reaction considerably stronger.
+  - rscadd: Aluminum and Iron present in a potassium-water reaction creates shrapnel.
+  - rscadd: Adding sufficient phoron to that turns the shrapnel incendiary...
+  - rscadd: Napalm has been renamed to Chemical fire.
+  - rscadd: Added chemicals Methane (1 part Carbon, 4 parts Hydrogen) and Chlorine
+      Trifluoride (1 part Chlorine, 3 parts Fluoride).
+  - rscadd: Thermite recipe re-enabled, but it now takes more units to burn through
+      walls.
+  - rscadd: Methane, Chlorine Trifluoride, Thermite, Oxygen, Hydrogen, Phosphorus,
+      and welding fuel all affect the burn properties of chemical fire in various
+      different ways.
+  - rscadd: Added the large chem grenade recipe to the autolathe.
+  - rscadd: All autolathes now spawn half-full.
+  - rscadd: Added bipods as chance to WO attachment packages.
+  - rscadd: Added motion detectors to the smartgunner vendor.
+  - rscadd: Clicking on/pressing Z on a medkit in your active hand will swap hands
+      and open the inventory of the medkit.
+  - rscadd: Added a small delay between flipping of plasteel barricades.
+  - rscadd: The smartgun can now fit the rail flashlight attachment.
+  - rscadd: You can now examine defibs to see how many uses it has left.
+  - rscadd: Added a health HUD icon for when the patient's heart is too damaged and
+      preventing defib.
+  - bugfix: Fixes mortar smoke shells.
+  RavingManiac:
+  - rscadd: Airlocks and windows will now check for overlapping walls at roundstart,
+      and remove them while simultaneously reporting and logging their locations for
+      mappers to fix.
+  - rscadd: Muzzle flash overlays readded. Tank weapons will also have muzzle flash.
+  - tweak: M56D heavy machine gun description now contains instructions for usage
+      and toggling burst-fire.
+  - tweak: When targeting, guns will no longer stop targeting after reflex-firing.
+      The option to "toggle firerate" has been removed due to serving no practical
+      purpose.
+  - rscdel: Messages for projectiles hitting walls removed to reduce spam.
+  - bugfix: Windoors now have proper sound and bullet ping when being hit by bullets.
+  Retrokinesis:
+  - bugfix: Removed double turfs from under catwalks on Big Red
+  - bugfix: Removed a window from underneath a door on Trijent Dam
+  TheDonkified:
+  - bugfix: Barricade sprites will update after you apply barbed wire to them now.
+  - bugfix: Ultrazine addiction is fixed by aheal now.
+  - bugfix: Fixed dropped object being stored in xeno/tank instead of going on the
+      ground when devoured/TC.
+  - bugfix: Deployable cades will now be properly trampled by tank.
+  - rscadd: Moved tank verbs to a separate tab.
+  - rscadd: Admins have another verb to take control of mobs.
+  - bugfix: Almayer tables will be deconstructed to their appropriate table parts
+      now.
+  - tweak: Put S4 scope in spec closet.
+  - tweak: Put MD in PFC closet.
+  - tweak: Can now PB with M4RA.
+  - tweak: DS individual lockdown now closes all doors prior to bolting them.
+  - tweak: Predators will have a progress icon when they are SDing.
+  - tweak: You can climb up a ladder if you are moved as long as you are 1 tile away
+      from the ladder
+  - tweak: Can read paper intel while moving
+  - tweak: Resisting will now cancel any timed actions. This does not apply for timed
+      actions where you might spam resisting, such as breaking out of your handcuffs.
+  - tweak: An engineer can no longer be pushed while building. Other actions may have
+      this behavior implemented in the future.
+  - tweak: You still evolve while you're moving (hit resist instead).
+  - bugfix: DEFCON should recognize corpses again.
+  - tweak: Discord button replaces donation button. No longer blueballed :smiling_imp:.
+  - bugfix: Railgun Boilers will actually hit barricades now
+  - tweak: Railgun Boilers have the same view range as the sniper (does not apply
+      to vanilla boilers)
+  - tweak: Railgun Boilers deal more damage to walls
+  - tweak: Railgun Boilers deal more damage to the tank
+  - bugfix: Plasteel barricades will block boiler gas and bullets again
+  - rscadd: You can repair sandbag barricades using sandbags. Note repairing a sandbag
+      barricade will try to fully heal it, so there is potential for wasting sandbags.
+  - rscadd: ID tag 'stacks' will now display the amount and the information of each
+      marine whose ID tag is in the 'stack'.
+  - rscadd: You can now remove your own splints. For splints on arms/hands, you need
+      the other hand to be attached in order to remove splints.
+  - bugfix: You can no longer use other abilities while melting stuff as a xeno.
+  - bugfix: Barricades can no longer cover two directions simultaneously and can be
+      rotated properly again when diagonally moved.
+  - bugfix: Fixed bug with throwing not untoggling after clicking.
+  - bugfix: Fixed bug with actions being improperly interrupted.
+  - rscadd: There is now an option to completely randomize your appearance in edit
+      character.
+  - tweak: You can no longer splint your own hand with the currently used hand.
+  - tweak: Mods can use Change CKey and Take Over Mob. Admins can drag ghosts to mobs
+      to give the ghost control.
+  TobiNerd:
+  - tweak: Contained xenos and zombies will no longer count towards round end.
+  - tweak: ARES bioscan no longer counts contained xenos.
+  - maptweak: Added a photocopier to the security office (#6161).
+  - bugfix: Fixed various broken pipes on the almayer.
+  Triiodine:
+  - imageadd: The M41A MK1 has been redrawn and reshaded onto a universal palette.
+      It no longer shares a sprite with the Trijent/WO variant of the M41A MK2. The
+      back, suit, and hand states remain unchanged (for now).
+  - imageadd: The M41A MK1 magazine has been given a new lore accurate sprite. It
+      still shares 10x24mm despite the visual difference.
+  - imageadd: M39 and M4A3 incendiary, AP, and extended ammunition have had their
+      stripe standardized at the base of the magazine.
+  - imageadd: The M41A MK2 extended magazine stripes have been reshaded to better
+      reflect the magazine shape.
+  - tweak: The M39 burst delay has been increased to compensate the new burst speed.
+  - tweak: The M41A MK1 can, at long last, proudly attach a rail light.
+  - spellcheck: Renamed the S4 and S8 so they're more distinct.
+  - rscadd: Snowflakes rejoice! All loadout glasses types may now equip to the mask
+      slot.
+  - rscadd: Synthetic snowflakes rejoice! You may now requisite purple, olive, and
+      tan berets from your vendors.
+  - bugfix: Jones will now appear on your head when you put him there.
+  - spellcheck: Changed a bunch of glasses descriptions and names.
+  - bugfix: The M240 should now use all firing SFX properly.
+  - bugfix: Fixed the L42 stock offset issues.
+  - bugfix: Corrected dmi meta data for flamer ammunition. Overlays are now properly
+      named.
+  - spellcheck: Fixed some inconsistent grammar in pistol descriptions.
+  - spellcheck: Fixed some inconsistent grammar in revolver descriptions.
+  - spellcheck: Renamed the M4A3 .45 ACP to the M1911, as was intended ages ago.
+  - experiment: Restored the M39 burst fire and delay to its original values.
+  - imageadd: Redrew the M41AE2 sprites.
+  - soundadd: Gave the M41AE2 a unique firing sound.
+  - soundadd: Remastered the L42 firing sound (again).
+  - sounddel: Rolled back the M37 shotgun firing sound.
+  - bugfix: Fixed the Mateba belt on Trijent and WO.
+  - bugfix: Fixed the SU-6 belt on Trijent and WO.
+  - bugfix: Fixed M42A back states.
+  - bugfix: Fixed shuttle seat repair states.
+  - bugfix: Fixed the alignment test icon appearing where it shouldn't. (Curse ye'
+      ancient Bay12 sprite tree).
+  - spellcheck: Corrected the M1911 magazine name.
+  Vicacrov:
+  - rscadd: Added a second autodoc to the Almayer.
+  - tweak: The autodoc's interface has changed for better readability. Its functionality
+      is the same. Its lines in the chat are more visible.
+  - rscdel: Removed the autodoc's automatic mode.
+  - rscdel: Removed some medical beds.
+  - maptweak: Removed the east LZ1 flank on Big Red.
+  - bugfix: Fixed various Trijent Dam typos.
+  monkeysfist101:
+  - rscadd: Added Macho Sauce to the game. Carbonated Cuban cough-syrup now ferments
+      when exposed to capsaicin.
+2019-04-21:
+  Deanthelis:
+  - tweak: Timer and proximity sensor assemblies have a minimum arm time of 3 seconds.
+  - rscdel: Remote signalers, infrared sensors, and mousetraps can no longer be used
+      for chem grenades.
+  - rscadd: Improved admin logs for chem grenades in general.
+  - rscadd: Chem grenades have an arming sound when triggered, just like normal grenades.
+  Fourkhan:
+  - bugfix: Objects will no longer delete whatever's buckled to them if they are deleted
+      during the buckle step
+  Ranged66:
+  - tweak: Balance tweak on the chemical fire grenades. Your old recipes likely won't
+      be as powerful, but powerful ones will still exist. Experiment!
+  - tweak: Chemical fire can spread in different shapes depending on the recipe.
+  - tweak: Aluminum no longer creates shrapnel in potas-water explosions. Iron still
+      works.
+  - tweak: Changed stats and sprite of incendiary shrapnel. Added (small amount of)
+      incendiary shrapnel to WP rockets.
+  - tweak: WP rocket smoke now hurts and burns humans. WP smoke has been added to
+      chemical fire grenades.
+  - bugfix: Miniflamers can no longer fire through walls.
+  - bugfix: Potassium water inside your body will no longer prevent every chemical
+      ever from applying afterwards.
+  TheDonkified:
+  - tweak: Edit character does not make you go DNR.
+  - bugfix: Resin structures will properly display now as a xeno.
+  - rscadd: New 'Go DNR' with a prompt.
+  - bugfix: Fixed borked hivelord build time.
+  - tweak: Can now fill flamethrower with welding pack.
+  - bugfix: Cannot choose elevators for Ice LZ any more.
+  - tweak: Boiler Railgun strain can shoot at any distance
+  - tweak: Boiler Railgun strain has no delay before activating bombard (not before
+      firing).
+  - tweak: Boiler Railgun firing functions like a charged shot now. Firing instantly
+      will only perform ~30% of damage. Fully charged 100%.
+  - rscadd: Boiler Railgun sprites for projectile and impact thanks to Tarelius.
+  - tweak: Can cancel normal boiler shot by left click. Same procedure will force
+      railgun shot.
+  - bugfix: Can now fill incinerator tanks with the welding kits
+  - tweak: Sniper is more accurate at range now.
+  - bugfix: Resolved runtime error with projectiles.
+  Triiodine:
+  - soundadd: Moonwalkers back, have a slice buddy. It'll taste better if you, you
+      take your glove off bro.
+  Vicacrov:
+  - rscdel: The searching for helmet cam message will now only appear upon a failed
+      attempt, to reduce spam.
+  - mapfix: Fixed various overlapping turfs.
+  - mapfix: Fixed the brig having random hull walls and windows. Cells are not affected
+      by this.
+  monkeysfist101:
+  - bugfix: Swapped the colors of buckshot and slugs.
+2019-04-26:
+  Cakey:
+  - rscadd: Added preference option for directional attacks under the Xeno tab.
+  - tweak: Artillery Module and Overdrive Enhancer are now selectable on round-start
+      for the tank.
+  - bugfix: Fixed Tank Autocannon having extreme accuracy and damage falloff.
+  Deanthelis:
+  - rscadd: Unheard ahelps will now be re-shown and re-alert staff every five minutes
+      until they are heard, as well as a counter of how many consecutive times those
+      ahelps have been shown.
+  Fourkhan:
+  - rscadd: Completely reworked the backend of strains - expect many more strains
+      in the near future.
+  - rscadd: Added a new Ravager strain called Spin Slash.
+  - bugfix: Fixed some potential exploits related to vendors.
+  MattAtlas:
+  - bugfix: Fixed pipes disappearing.
+  Retrokinesis:
+  - bugfix: Added mising floor tiles to the Almayer morgue
+  - bugfix: The east lab containment locks on Trijent can now be melted
+  - maptweak: Moved the thunderdome so anyone on the predator ship won't hear mysterious
+      noises
+  Slywater:
+  - bugfix: Fixed burnstate overlays not showing up on humans. They will now appear
+      when a limb is blistered.
+  - tweak: Changed human brutestate overlays to grayscale.
+  - tweak: Made strangling effective for both lethal and non-lethal takedowns. However,
+      targets can break out of a hold.
+  - bugfix: Made shuttle corners solid again.
+  - rscdel: Removed space lube.
+  - rscadd: Added the Almayer's security level to the status tab.
+  - bugfix: Fixed escape pod passenger count.
+  - soundadd: 'Added distant sounds: Explosions and gunfire can now be heard in the
+      distance.'
+  - experiment: Xenos now spawn inside bursting hosts.
+  TobiNerd:
+  - bugfix: Fixes Trijent LZs being weedable on roundstart
+  - bugfix: Fixes offweed xeno spawns on Trijent
+  - bugfix: Fixed Brig Holding Cell not having buttons for shutters and flash
+  Triiodine:
+  - tweak: Flechette shells now have higher armor penetration.
+  - tweak: Flechette shells now behave more consistently across the board.
+  - tweak: Buckshot now does slightly less base damage (Damage applied before armor
+      penetration).
+  - tweak: Slug shells are now slightly more effective at greater ranges.
+  - bugfix: Fixed additional buckshot inheriting armor penetration from the wrong
+      parent entity. It now has 0 armor penetration like normal buckshot, instead
+      of maximum armor penetration from the backend parent object.
+  - rscadd: Added the M-OU53 Break Action shotgun to requisitions. It is found in
+      the M-OU53 Sapper Support Kit exclusively. The M-OU53 cannot fire Buckshot shells.
+  - rscadd: 'Added the M-OU53 Sapper Support Kit to requistions. It contains the following:
+      ''1x M-OU53, 1x M-OU53 stock, 1x M15 Hand Grenade, 2x HSDP Smoke Grenades, 1x
+      Explosives Pouch, 1x Shell Rig.'
+  - tweak: The Shell Loading Rig (should) be able to hold four extra handfuls of your
+      preferred ammunition.
+  - tweak: Increased base SMG armor penetration.
+  - tweak: Increased M39 delay between bursts.
+  - tweak: Nerfed the M39 brace. It now increases fire delay between each burst, and
+      does not compensate scatter as well as it used to.
+  - spellcheck: Added an -ing to the Shotgun Shell Load(ing) Rig.
+  - bugfix: Removed a stray pixel in the M92 wield states.
+  - bugfix: Added a desert variant of the M41A suit slot icon.
+  - bugfix: Added field intel kit icon.
+  Vicacrov:
+  - tweak: Resin doors open and close twice as fast as before.
+  - tweak: The resist time of legcuffs, including predator traps, was lowered to 10-15
+      seconds.
+  - rscadd: Queens can now tackle their own hive's xenomorphs. Tackling a sister floors
+      them for a second, allowing passage. This is added as an anti-bodyblock mechanism
+      - please be careful with it.
+  monkeysfist:
+  - rscadd: Goggles can be placed on marine caps.
+  - tweak: Tweaked goggle helmet sprite to play nice with hats.
+2019-04-27:
+  Fourkhan:
+  - bugfix: Queens will be correctly spawned at roundstart again.
+  John Titor:
+  - tweak: 'Nerfed common marine weapons: M1911, M37, MK221, M41A MK1, M41A MK2, HPR,
+      L42, M39.'
+  - tweak: The MOU is now much less accurate when bursting.
+  - tweak: Flechette shells have less AP now.
+  - tweak: Restored Buckshot damage modifier.
+  - tweak: The MOU now has a base damage penalty in exchange for its fire-rate.

@@ -947,7 +947,6 @@
 	dir = 1;
 	name = "\improper Omicron Custodial Storage";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -1256,7 +1255,6 @@
 	dir = 1;
 	name = "\improper Omicron Technical Storage";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -1992,11 +1990,11 @@
 /area/shiva/exterior/lz2_fortress)
 "aiL" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/grenade/custom/metalfoam{
+/obj/item/explosive/grenade/custom/metal_foam{
 	pixel_x = 11;
 	pixel_y = 5
 	},
-/obj/item/explosive/grenade/custom/metalfoam{
+/obj/item/explosive/grenade/custom/metal_foam{
 	pixel_x = 10
 	},
 /obj/item/book/manual/engineering_construction,
@@ -2138,7 +2136,6 @@
 	dir = 1;
 	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -3673,8 +3670,8 @@
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asU" = (
-/obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -4021,7 +4018,6 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Colony Disposals";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor{
@@ -4956,7 +4952,6 @@
 	name = "Storage Unit Lock";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
-	req_access_txt = null;
 	specialfunctions = 4
 	},
 /turf/open/floor/shiva{
@@ -4969,7 +4964,6 @@
 	name = "Storage Unit Lock";
 	normaldoorcontrol = 1;
 	pixel_x = -24;
-	req_access_txt = null;
 	specialfunctions = 4
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -5001,8 +4995,7 @@
 	id = "st_17";
 	locked = 1;
 	name = "Power Storage Unit";
-	req_access = null;
-	req_access_txt = null
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/no2)
@@ -5052,7 +5045,6 @@
 	name = "Storage Unit Lock";
 	normaldoorcontrol = 1;
 	pixel_y = -24;
-	req_access_txt = null;
 	specialfunctions = 4
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -5089,8 +5081,7 @@
 	id = "st_18";
 	locked = 1;
 	name = "Disposals Storage Unit";
-	req_access = null;
-	req_access_txt = null
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts)
@@ -5495,8 +5486,7 @@
 "aKJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Anti-Freeze Lounge";
-	req_access_txt = null
+	name = "\improper Anti-Freeze Lounge"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6314,8 +6304,7 @@
 /area/shiva/exterior/cp_lz2)
 "aSQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Anti-Freeze Lounge";
-	req_access_txt = null
+	name = "\improper Anti-Freeze Lounge"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -6466,8 +6455,7 @@
 "aUt" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Anti-Freeze Lounge";
-	req_access_txt = null
+	name = "\improper Anti-Freeze Lounge"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -6728,7 +6716,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "aWb" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor/shiva{
 	dir = 1
@@ -6930,8 +6918,7 @@
 "aXJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 8;
-	name = "\improper Anti-Freeze Lounge Freezer";
-	req_access_txt = null
+	name = "\improper Anti-Freeze Lounge Freezer"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -7998,7 +7985,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Hydroponics South Wing Dome";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -8405,7 +8391,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
 "crk" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	dir = 4;
@@ -8653,7 +8639,6 @@
 	dir = 1;
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -8912,15 +8897,6 @@
 	icon_state = "greencorners"
 	},
 /area/shiva/interior/colony/botany)
-"cVj" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	dir = 1;
-	name = "\improper Command Center";
-	req_access = null;
-	req_access_txt = null
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/n_admin)
 "cVy" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -9877,8 +9853,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -10720,7 +10695,6 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Colony Engineering";
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -11244,7 +11218,6 @@
 	dir = 8;
 	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -11865,8 +11838,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Custodial Closet";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
@@ -12292,7 +12264,6 @@
 	dir = 2;
 	name = "\improper Hydroponics South Wing Dome";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -12417,7 +12388,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "hlO" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	dir = 1
@@ -12607,7 +12578,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "hum" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "multi_tiles"
@@ -13918,8 +13889,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
@@ -14788,8 +14758,7 @@
 /area/shiva/interior/oob/dev_room)
 "jLX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Anti-Freeze Lounge";
-	req_access_txt = null
+	name = "\improper Anti-Freeze Lounge"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
@@ -14797,7 +14766,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "jMD" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -14880,7 +14849,6 @@
 	dir = 1;
 	name = "\improper Aurora Medical Clinic";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -15160,10 +15128,10 @@
 /area/shiva/exterior/junkyard)
 "kfl" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
 	},
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_console)
 "kfW" = (
@@ -15285,7 +15253,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -15561,7 +15528,7 @@
 /area/shiva/interior/colony/medseceng)
 "kAp" = (
 /obj/item/stack/sheet/metal/small_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -15719,6 +15686,7 @@
 /area/shiva/interior/colony/medseceng)
 "kJi" = (
 /obj/structure/closet/crate/hydroponics,
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/shiva{
 	icon_state = "greenfull"
 	},
@@ -16734,8 +16702,8 @@
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metalfoam,
-/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metal_foam,
+/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -17382,7 +17350,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "mBk" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
@@ -20718,7 +20686,7 @@
 /area/shiva/interior/bar)
 "qjZ" = (
 /obj/item/stack/sheet/metal/large_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -20878,8 +20846,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Dorms Security Checkpoint";
-	req_access = null;
-	req_access_txt = null
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -21410,7 +21377,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "qUw" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile"
@@ -22895,7 +22862,7 @@
 /area/shiva/exterior/junkyard)
 "sJs" = (
 /obj/item/stack/sheet/metal/medium_stack,
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -23716,8 +23683,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
@@ -24495,7 +24461,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/junkyard/fortbiceps)
 "umj" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile"
@@ -25397,7 +25363,6 @@
 	dir = 1;
 	name = "\improper Colony Engineering";
 	req_access = null;
-	req_access_txt = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating,
@@ -27052,7 +27017,7 @@
 	},
 /area/shiva/interior/bar)
 "xru" = (
-/obj/structure/foamedmetal,
+/obj/structure/foamed_metal,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/exterior/lz2_fortress)
 "xrC" = (
@@ -46718,7 +46683,7 @@ stN
 stN
 stN
 stN
-cVj
+aGC
 stN
 amO
 amO

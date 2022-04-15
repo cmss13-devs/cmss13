@@ -48,8 +48,8 @@
 
 	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
 		var/obj/item/device/clue_scanner/S = O
-		if(!S.found_prints)
-			to_chat(user, "No prints")
+		if(!S.print_list)
+			to_chat(user, SPAN_WARNING("There are no prints stored in \the [S]!"))
 			return
 
 		if(usr.drop_held_item())
@@ -267,18 +267,19 @@ What a mess.*/
 				screen = 5
 
 			if("print_report")
-				var/obj/effect/decal/prints/D = scanner.found_prints
-				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(src, D.criminal_name, D.criminal_rank, D.criminal_squad, D.description)
+				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(src, scanner.print_list)
 				P.forceMove(loc)
-				P.name = "fingerprint report ([D.generate_clue()])"
+				var/refkey = ""
+				for(var/obj/effect/decal/prints/print in scanner.print_list)
+					refkey += print.criminal_name
+				P.name = "fingerprint report ([md5(refkey)])"
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 
 			if("return_menu")
 				screen = 1
 
 			if("return_clear")
-				qdel(scanner.found_prints)
-				scanner.found_prints = null
+				QDEL_NULL_LIST(scanner.print_list)
 				scanner.update_icon()
 				scanner.forceMove(get_turf(src))
 				scanner = null
@@ -436,6 +437,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
 							if (!t1 || active1 != a1)
 								return
+							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("sex")
 						if (istype(active1, /datum/data/record))
@@ -461,13 +463,12 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Captain", "AI" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if ((istype(active1, /datum/data/record) && L.Find(rank)))
-							temp = "<h5>Rank:</h5>"
+						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
+								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
 							alert(usr, "You do not have the required rank to do this!")
@@ -515,14 +516,15 @@ What a mess.*/
 /obj/structure/machinery/computer/secure_data/proc/generate_fingerprint_menu()
 	var/dat = ""
 
-	dat += "<table><tr><td>"
-	dat += "Name: [scanner.found_prints.criminal_name]<BR>"
-	if(scanner.found_prints.criminal_squad)
-		dat += "Squad: [scanner.found_prints.criminal_squad]<BR>"
-	if(scanner.found_prints.criminal_rank)
-		dat += "Rank: [scanner.found_prints.criminal_rank]<BR>"
-	dat += "Description: [scanner.found_prints.description]<BR>"
-	dat += "</td></tr></table>"
+	for(var/obj/effect/decal/prints/prints in scanner.print_list)
+		dat += "<table><tr><td>"
+		dat += "Name: [prints.criminal_name]<BR>"
+		if(prints.criminal_squad)
+			dat += "Squad: [prints.criminal_squad]<BR>"
+		if(prints.criminal_rank)
+			dat += "Rank: [prints.criminal_rank]<BR>"
+		dat += "Description: [prints.description]<BR><hr><BR>"
+		dat += "</td></tr></table>"
 
 	dat += "<a href='?src=\ref[src];choice=print_report'>Print Evidence</a><BR>"
 	dat += "<a href='?src=\ref[src];choice=return_menu'>Return</a><BR>"

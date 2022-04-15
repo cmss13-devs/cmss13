@@ -255,6 +255,23 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else
 		unload(user) // We just unload it.
 
+//magnetic sling
+
+/obj/item/weapon/gun/proc/handle_sling(mob/living/carbon/human/user)
+	if (!ishuman(user))
+		return
+
+	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
+
+/obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
+	if (!loc || !user)
+		return
+	if (!isturf(loc))
+		return
+
+	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
+		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
+
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/I, mob/user)
@@ -520,6 +537,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if(T.holstered)
 				w_uniform.attack_hand(src)
 				return TRUE
+		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
+			var/obj/item/storage/internal/accessory/holster/HS = H.hold
+			if(HS.current_gun)
+				HS.current_gun.attack_hand(src)
 		return
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
@@ -731,7 +752,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 		drop_to_ground = FALSE
 		unwield(user)
-		user.swap_hand()
+		if(!G.flags_gun_features && GUN_INTERNAL_MAG)
+			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
 

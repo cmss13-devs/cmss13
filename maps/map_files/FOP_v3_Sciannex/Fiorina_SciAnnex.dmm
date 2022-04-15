@@ -16587,7 +16587,6 @@
 	},
 /area/fiorina/station/security)
 "kdo" = (
-/obj/structure/platform_decoration,
 /obj/structure/inflatable,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
@@ -24081,7 +24080,6 @@
 	dir = 1;
 	layer = 2.7
 	},
-/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
 	icon_state = "whitegreencorner"
 	},

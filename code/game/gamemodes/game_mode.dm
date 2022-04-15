@@ -14,7 +14,6 @@
 var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
 var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
-
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
@@ -28,6 +27,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
+	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
+	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -35,6 +36,11 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/list/roles_to_roll
 
 	var/hardcore = FALSE
+
+/datum/game_mode/New()
+	..()
+	if(taskbar_icon)
+		GLOB.available_taskbar_icons |= taskbar_icon
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")

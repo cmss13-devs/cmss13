@@ -1,0 +1,484 @@
+2019-06-03:
+  Fourkhan:
+  - tweak: Nerfed Sentinel speed.
+  Frans_Feiffer:
+  - imageadd: Redrew the LTAAs Magazine sprite, as well as touched up the Tanks Grenade
+      Launcher ammo sprite.
+  Ranged66:
+  - rscadd: Epinephrine injectors have been added in small amounts to medbay vendors,
+      and can now be purchased in the squad medic vendor.
+  - rscadd: Boxes of empty autoinjectors have been added to chemistry on the Almayer.
+  - rscadd: Syringes have been added to the Weylandchem Plus.
+  - rscadd: Windows, barricades, walls and various other objects now have a chance
+      to burst and spall into weak shrapnel when destroyed by an explosion.
+  - rscadd: This shrapnel is mostly for flavor, it will barely damage anyone.
+  - rscadd: Sufficiently powerful explosions send out bright chunks and stripes of
+      shrapnel now. Does about 1 damage, so mostly for visuals!
+  - tweak: Changed the welding fuel tank explosion somewhat.
+  - bugfix: Incendiary shrapnel is now properly blocked by barricades.
+  Retrokinesis:
+  - tweak: Door/shutter/lockdown control buttons can no longer be melted.
+  - bugfix: Fixed a window in civ residences on prison.
+  TheDonkified:
+  - bugfix: Fixed bug with timed actions on other people cancelling when they perform
+      actions that affect what they're holding.
+  TobiNerd:
+  - tweak: 'Divided Prison''s Central Ring into 4 sections by name (north, east, west,
+      south) #6297.'
+  - tweak: 'The vehicle repair bay workshop is now accessible by both TCs and MTs.
+      The engineering vendors inside are now accessible by both POs and TCs. #6580.'
+  - tweak: 'Oxycodone and Iron are now scanable by the HF2. #6695.'
+  - tweak: 'Added soap to the Almayer dorms #6472.'
+  - tweak: 'Added a few more items to the gear loadout options #6680.'
+  - tweak: Burrowers can no longer tunnel into LV Secure Storage.
+  - spellcheck: 'Fixed the name for Telecomms Valley on Trijent #6687.'
+  - bugfix: 'Fixed burrowers being able to tunnel to areas outside the map or areas
+      they shouldn''t be #5519.'
+  Vicacrov:
+  - bugfix: Melting containers now makes containers spit out the intel items (reports,
+      folders) in them, instead of having them deleted.
+  - bugfix: Fixes a supply crate being named M4A3 ammo, when it is, in fact, an M1911
+      one.
+  - bugfix: Increased the volume of the dropship's engines.
+  - bugfix: Fixed some of the plasteel barricade's building steps being instant, as
+      opposed to the metal barricade ones.
+  - bugfix: Removed the binoculars from the TC quarters.
+  - rscdel: Removed the incorrect the hive can support a new tier X spam, until a
+      better system is written for it.
+  - tweak: Flare pouches and M94 marking flare packs now contain 8 flares.
+  - tweak: The JTAC radio encryption key now has access to req frequency.
+  - bugfix: Xeno speed has skyrocketed since the armour update. With this update,
+      all xeno speed values were toned down AS THEY WERE A MONTH AGO. This is not
+      a nerf, it is a long pending bugfix.
+  - tweak: Some castes gained some extra speed than they had a month ago.
+  - bugfix: Sentinels no longer drag as quickly as runners, they drag just like drones,
+      lurkers, etc.
+2019-06-08:
+  Fourkhan:
+  - rscadd: Reworked the pain mechanic.
+  - tweak: Acid splash changes from the dev test are reverted, but expect a more thorough
+      change soon.
+  - tweak: Pain is now capped by the damage you've taken, so you will never have very
+      high pain with low damage.
+  - tweak: Splinted limbs are much less punishing.
+  - tweak: Movement should overall be faster for marines.
+  - tweak: Pain should go into effect quicker at very high damage levels so while
+      you will still have a "buffer", it will not be as large.
+  - tweak: The pain indicator should correctly correspond to the new change.
+  Neth Iafin:
+  - tweak: M-OU53's burstfire damage per pellet reduced.
+  - tweak: M-OU53's burstfire spread increased significantly.
+  Ranged66:
+  - rscadd: Added L42 incendiary mags. They are as rare as incendiary rifle mags.
+  - rscadd: Added M39 Light Explosive (LE) ammo. Does very little actual damage, but
+      shreds armor quickly (even when it deflects). Magazines can generally be found
+      alongside normal M39 AP ammo sources, but in smaller quantity.
+  - tweak: The laser sight attachment now decreases wielded scatter too, and can be
+      attached to the L42.
+  - tweak: Severely reduced the damage falloff debuff of the recoil compensator, making
+      it a more viable option.
+  - imageadd: Changed the miniscope sprite a little bit.
+  - tweak: Added the FP9000 as a PMC weapon. Removed the desert eagle from CLF, replaced
+      it with a beretta.
+  - tweak: --Whole bunch of rare/event/faction gun tweaks!--
+  - tweak: Increased FN FP9000 SMG fire rate, allowed the attachment of extended barrels,
+      compensators, barrel chargers and laser sights, gave it a built in miniscope,
+      and Triiodine changed the sprite.
+  - tweak: Slightly increased MAC-15 SMG fire rate to be more SMG-like, allowed attachment
+      of laser sights, suppressors and reflex sights.
+  - tweak: Increased the PPSh fire rate to be more SMG-like. It was slower than an
+      M41...
+  - tweak: The CZ-81 Skorpion can now fit the reflex sight, laser sight and supressor
+      attachments. The fire rate was increased and damage lowered, magazine size increased
+      slightly.
+  - tweak: Slightly increased MP27 fire rate, and additionally allowed attachment
+      of laser sights, reflex sights and mini scopes (was big scopes). Damage slightly
+      lowered.
+  - tweak: The MP5 can now additionally fit laser sights, extended barrels, angled
+      grips and miniscopes instead of normal scopes.
+  - tweak: The UPP Type 71 and 71c can now fit reflex sights, red dot sights, laser
+      sights, vertical & angled grips, supressors, extended barrels and bayonets.
+      The commando variant can fit grips and laser sights.
+  - tweak: The M16 can additionally fit a miniscope.
+  - rscadd: Many of the above mentioned guns will have a chance to spawn with some
+      random attachments. The M46C CO rifle will always spawn with some random kit.
+  - bugfix: Fixed the bug where the M46C had a weird stock. Fixed some attachment
+      locations on guns.
+  Retrokinesis:
+  - wip: The Almayer SMES have been temporarily removed and the engines hotwired into
+      the powergrid until the power issues are resolved.
+  Triiodine:
+  - imageadd: The M240 and M240T and associated components have been redrawn.
+  - spellcheck: The USCM Pyrotechnician fueltank (specialist variant) has been renamed
+      to USCM Pyrotechnician G6-2 fueltank.
+  - rscadd: The USCM Pyrotechnician G4-1 fueltank has been added. It can be found
+      in Requisitions or the Pyrotechnician Support Kit. It can hold 3 fuel tanks
+      of choice, and refills standard tanks with UT-Napthal standard fuel.
+  - tweak: The Pyrotechnician Support Kit has had its welderpack removed. Instead,
+      it now contains the USCM Pyrotechnician G4-1 fueltank
+  - tweak: The Pyrotechnician Support Kit no longer contains an attachable mini-flamer.
+  - tweak: The Pyrotechnician Support Kit no longer contains a large fire extinguisher.
+  - tweak: The Pyrotechnician Support Kit now has an extra fuel tank and a gellied
+      fuel tank.
+  - rscadd: Gellied Napthal has been added as a fuel type. It can be ordered in Requisitions.
+      Gellied Napthal reaches up to 7 tiles, but doesn't burn longer than 1-3 seconds.
+      It deals moderately low damage.
+  - rscadd: Gellied Napthal Type A has been added. It performs identically, just at
+      higher damage. Available to specialists only.
+  - rscadd: The USCM Pyrotechnician Specialist kit now contains a flame tank strap
+      pouch and a tank of Gellied Napalm A.
+  - tweak: Every fuel type and flame thrower has had their stats adjusted. Generally,
+      flames should be more dangerous to both sides.
+  - rscadd: Fuel tank strap pouchs have been added. They can be found in requisitions,
+      PFC vendors (15 points), and SL vendors. They can store 2 fuel tanks of choice.
+  - imageadd: The M39 SMG and associated components have been redrawn.
+  - tweak: The M39 SMG now deals slightly more damage.
+  - tweak: The M39 SMG has had its single shot firerate increased.
+  - tweak: The M39 SMG now fires at a greater muzzle velocity. Bullets fired will
+      move over tiles faster.
+  - tweak: The M39 SMG now has slightly less damage falloff.
+  - tweak: The M39 SMG now spawns with a folding stock.
+  - tweak: AP M39 Ammunition now has slightly higher armor penetration.
+  - tweak: The M39 SMG burst is reduced to 3 from 4.
+  - tweak: The M39 arm brace no longer has single shot delay.
+  - tweak: The M39 standard stock better improves accuracy, recoil reduction, and
+      scatter greatly. It is much rarer distributed now.
+  - tweak: The M39 can now attach the bayonet, and angled grip.
+  - spellcheck: 'The M-OU53 Sapper Support kit has been renamed to: M-OU53 Field Test
+      Kit'
+  - tweak: The M-OU53 Field Test Kit no longer contains an explosives pouch.
+  - tweak: The M-OU53 Field Test Kit no longer contains any grenades.
+  - tweak: The bayonet deals more damage now.
+  - bugfix: Adjusted some numbers so your weapon attachments don't Gandhi your weapon
+      stats.
+  - bugfix: Fixed the M39, M240, M240T, M92 suit slot states.
+  - bugfix: Fixed the SmartGun wield states.
+  - imageadd: The M41AE2 one hand states have been slightly adjusted.
+  - imageadd: The First Aid, Large Pistol Magazine, and auto-injector pouches have
+      been slightly adjusted.
+  - spellcheck: Cleaned up some grammar in the M37 stock description.
+2019-06-09:
+  Neth Iafins:
+  - rscdel: Removed a ton of Syndicate items. We are not affiliated with NanoTrasen
+      in any shape or form.
+  - tweak: Armor has now random range from hit to hit. It's not big but this is added
+      so no damage is the same from hit to hit
+  - tweak: Marine Armor values are completely changed.
+  - rscadd: Endurance is a useful skill now. Survivors have it super trained. Endurance
+      helps you in avoiding IB and Organ Damage. It will help with bone breaks in
+      future but not right now.
+  - rscadd: Some rarer armors protect you immensly from certain elements (like biohazzard
+      against xeno spit) but are terrible at everything else. Experiment but remember
+      that MPs can arrest you for bad uniform.
+  - rscadd: Light armor protects you against spit and gives you more speed "compensation"
+      for gun weight
+  - rscadd: Medium armor now has 3 pockets inside and has middle armor between Light
+      and Heavy
+  - rscadd: Heavy armor protects against explosions, melee and bullets. It also holds
+      your intestines together so you get IB and Organ Damage less often
+  - tweak: Masks defend your face against spit
+  - tweak: Damage to armor only works after 0.2 of a second pass, so if you shoot
+      flechette or something at xeno, armor only changes after all bullets connect
+  - tweak: There is a mechanic with armor that if person is dealt damage much less
+      than the armor, the armor has MORE effect on that attack. Now this mechanic
+      also takes into account current armor integrity
+  - rscadd: IB and Organ Damage uses new "armor-damage system". "Armor Integrity"
+      for IB and Organ Damage is your leftover health on the limb, which means that
+      the more limb is damaged the bigger chance you have to get IB or Organ Damage.
+  - rscadd: IO Suit now has 4 pockets
+  - tweak: Acid Spit armor penetration reduced. Acid Spit elder+ damage reduced.
+  - tweak: Tank now gets a bit more damage.
+  - tweak: Ranged attacks deal less damage vs Metal Barricades.
+  - tweak: Reduced damage required for bone break
+  - tweak: Bone break is no longer guaranteed but controlled by armor and endurance
+2019-06-11:
+  Fourkhan:
+  - tweak: Slightly rebalanced the new pain mechanic
+  - tweak: Marines move slightly slower now
+  - tweak: Tramadol heals slightly less pain
+  - tweak: Amputated limbs hurt more
+  ThePiachu:
+  - rscadd: Added two new tools to the Secrets panel. Admins can now give Marines
+      some DEFCON points, as well as outright decrease the DEFCON level.
+  - rscdel: Removed old, unused code around AI laws.
+  Triiodine:
+  - soundadd: ACK! New sounds!
+  - soundadd: The M240 and M240T have new handling sounds.
+  - soundadd: The M41 and variants have new handling sounds.
+  - soundadd: The M39 and variants have new handling sounds.
+  - soundadd: The M41AE2 has new handling sounds.
+  - soundadd: The suit light toggle has a new sound.
+  - soundadd: Airlocks have a new sound.
+  - soundadd: Welders have a new on and off sound.
+  - soundadd: There are new bullet to flesh impact sounds.
+  - soundadd: Attachments have new handling sounds.
+  - soundadd: Regular flares have new handling sounds. JTAC flares are unaffected.
+  - soundadd: Hyposprays and autoinjector injection sounds have been tweaked.
+  - soundadd: ASRS elevator sounds have been modified.
+  - soundadd: The Defib Release has a new crackle to it.
+  - soundadd: Almayer Ship Ambience has been toned down.
+  - soundadd: Firearm safety toggle has a new sound.
+  - soundadd: HUDs now have toggle sounds.
+  - bugfix: Fringe Napalm Gel issues affecting range should be fixed.
+  jeser:
+  - rscadd: Motion and Data Detectors support switching range modes with Alt+Click.
+  - soundadd: Added sounds for switching detectors on/off, pings for Motion Detector.
+  - imageadd: Motion Detectors now show the amount of unidentified movement detected
+      (up to 9). (#6578)
+  - spellcheck: Motion and Data Detectors description contains infromation regarding
+      these changes.
+2019-06-16:
+  Fourkhan:
+  - bugfix: PO text is large in JTAC again.
+  - rscadd: Buffed PO powerloader skill.
+  - bugfix: Fixed B18 empty sprite.
+  Neth Iafin:
+  - experiment: Grenades now send living beings flying into random direction even
+      if they are on the same tile.
+  Ranged66:
+  - tweak: Switching between resin structure types now gives no click delay.
+  - rscadd: Added hidden verbs for nearly every xeno ability. This means you can now
+      add them to a custom macro and bind them to a hotkey of your choosing.
+  - rscadd: 'List of verbs: https://pastebin.com/Gqi990ut also ''Toggle-Nightvision''
+      which I totally didn''t forget about and added later.'
+  - bugfix: Fixed FP9000 mags not having a sprite.
+  Retrokinesis:
+  - rscadd: Burrowers can now burrow on the Almayer. Mostly. The floors of the CIC,
+      AI core, telecoms, and self-destruct are made of sterner stuff.
+  - rscdel: Burrowers can no longer burrow onto the dropships.
+  Retrokinesis & TobiNerd:
+  - experiment: WARNING Atmospheric anomaly detected on Solaris Ridge. Unable to connect
+      to satellite. Map data may be out of date.
+  ThePiachu:
+  - bugfix: Adrenaline won't try to hurt monkey's heart on overdose. Monkeys have
+      no hearts after all...
+  - bugfix: Grape Souto now contains 100% less null exceptions and isn't made out
+      of Cherry Souto.
+  - bugfix: Marauder combat mech should cause less null errors trying to use non-existent
+      thrusters to move.
+  - bugfix: Roundstart bursting larva won't cause null errors trying to adjust their
+      non-developed eyes.
+  - bugfix: Users that don't exist can't use motion detectors and cause errors.
+  - bugfix: Not having a synth preference will load a synth properly with the default
+      model.
+  - bugfix: Fire missions shouldn't go to null places.
+  - bugfix: Airlocks shouldn't try to zap bums of non-existent users.
+  - rscdel: 'Removed admin-side unused code (mostly legacy events) - newscaster, money
+      spam, money lotto, alien infestation, blob, space ninja, meteor shower, prison
+      break, highlander, striketeam, traitor_all, boonie hat spawner verb, ion storm,
+      etc. '
+  - rscdel: Removed emags from the game, along with any vestigial functionality associated
+      with them. None of this was used in a long time anyway.
+  - rscdel: Removed the sun processor, solar panels and anything associated with them.
+      They haven't been used in our system.
+  - rscdel: Removed some old fluff news that got imported with our announcement functionality.
+  TobiNerd:
+  - bugfix: Fixed shutters on Big Red and Almayer research being the wrong orientation.
+  - bugfix: 'Fixed the M94 marking flare packs not containing 8 signal flares. #6797'
+  - spellcheck: 'Fixed the description of flare packs having the wrong count of flares.
+      #6816'
+  - bugfix: Fixed the seed vendor not showing the name of seed packets.
+  - experiment: Research now has a hydroponics laboratory. This will be the starting
+      point for a series of research updates.
+  - experiment: NOTE Much of the hydroponics system is due to change as the old system
+      is adapted into today's CM. It currently doesn't serve much purpose, but this
+      will let you practice for the future.
+  - rscadd: Added a Hydroponics Research Locker that contains the necessary items,
+      including three spray bottles of ammonia. (That you can empty and fill with
+      better mixes).
+  - rscadd: Added a disk and a seed cabinet to store disks and seed packets. Thank
+      Cakey for making the cabinets smarter to allow this.
+  - rscadd: Added Dinitroaniline, a herbicide and pesticide mixture for use in hydroponics.
+      Can be made by reacting ammonia, nitrogen and sulfuric acid.
+  - tweak: Flora disk boxes now contain 14 disks instead of 7.
+  - tweak: Harmful plants will no longer randomly appear in hydroponics trays.
+  - tweak: Hydroponics trays now have a flush function, you can use this to reset
+      the tray.
+  - tweak: Tweaked how reagents react with hydroponics.
+  - tweak: Different chemicals can be added to hydroponics trays. They can act as
+      nutrient, toxin, anti-toxin, weedkiller, pestkiller, mutator or as a yield modifier.
+  - tweak: Buffed nutrient values of ammonia and diethylamine.
+  - tweak: Sprays can now add reagents to glass containers and hydroponics trays.
+      Make your own custom weedkiller or plant nutrient spray!
+  - tweak: Plants now go through more stages of growth, meaning that it will take
+      longer time to grow plants than usual.
+  - tweak: Plants can no longer mutate into killer tomatoes, bluespace tomatoes, walking
+      mushrooms, glowshrooms and plasticshrooms.
+  - tweak: Added general intercomms at the escape pods and morgue.
+  - tweak: 'Made candy a small item. #6862'
+  - tweak: 'Put a watertank in hangar by the fire closets. #6824'
+  - tweak: Gave all evacuation pod airlocks unique names.
+  - tweak: 'Increased the M276 flare belt capacity to 16 flares. #6827'
+  - tweak: You can now fill appropriate pouches and belts directly with flare packs,
+      shotgun shell boxes and grenade boxes.
+  Vicacrov:
+  - rscadd: Requisition Officers now have access to squad requisitions.
+  - rscadd: Added the MOU53 kit to the squad requisition equipment vendor. It is very
+      rare.
+  - maptweak: Removed some barricades from squad requisitions to give more breathing
+      room.
+  - maptweak: Moved the next button in squad requisitions.
+  - rscdel: Removed some redundant stuff from squad requisitions that can be found
+      in squad preps, like M39s or buckshot shells.
+  - rscdel: Removed the grenade and ammo boxes from squad requisitions.
+  - bugfix: Fixed the surplus explosives crate not having M12 grenades.
+  - tweak: Critted synths cannot be moved by xenomorphs anymore to adhere to council
+      rulings.
+  jeser:
+  - bugfix: Fixed observers being able to rotate unwrenched barricades.
+  - bugfix: Fixed M42A sniper rifle ammo being unable to hit targets near screen border
+      when zoomed.
+  - imageadd: Added several stages for big ammo and magazines boxes.
+  - bugfix: Queen Mother has finally revealed the secret of healing burns to her children.
+      Both Queen ovipositor and drone healing will properly heal burn damage now.
+  - rscadd: It became much easier to notice a drone's attempt to heal you.
+  - tweak: Made message describing tunnel controls, that appears when you enter tunnel,
+      almost impossible to miss. (Did you know, that you can exit tunnel by Alt+Clicking
+      it and choose new destination with Ctrl+Clicking it?).
+  - spellcheck: Added missing channels to description of some headsets.
+  - rscadd: Tactical binoculars support Alt+Click to toggle modes now.
+  monkeysfist101:
+  - tweak: Fixed description typos.
+2019-06-22:
+  Fourkhan:
+  - tweak: Buffed Ravager spin slash to deal more damage.
+  Neth Iafin:
+  - tweak: 'Fixed armor being accounted two times during armor penetration calculation.
+      The effect is 2x damage to armor on Crushers, less for less armored xenos. Damage
+      to xeno armor will be bigger but... '
+  - tweak: Halved all damage to armor from armor piercing source. The armor reduction
+      due to blocking actual damage is unchanged.
+  - tweak: If you are below 30% armor, you will regen armor 2 times slower until you
+      reach 30%+
+  - tweak: Increased speed of regen of xeno armor in general.
+  - tweak: Reduced flak AOE damage by about 30%.
+  - tweak: Bipod on M42A nerfed a bit.
+  - imageadd: Smartgunners now have two modes of fire. One that fires high Armor Breaking
+      rounds with low damage and low accuracy, and second that fires no-AP high damage
+      rounds that have 100% accuracy (most of the time). This is bound to unique-action.
+  - tweak: Smartgunners can toggle IFF by rightclicking on gun and toggling IFF. So
+      please... don't shoot at others with IFF disabled. You literally can't do this
+      on accident anymore.
+  - tweak: Increased OB travel time.
+  - tweak: Increased OB inaccuracy per missed fuel.
+  - tweak: Increased HE OB damage in the area.
+  - tweak: Increased incendiary OB area. Increased fire strength.
+  - tweak: Increased amount of Cluster Rockets per Cluster OB. Cluster rockets cover
+      bigger area. Reduced their damage and increased delay between cluster rocket
+      landing.
+  - bugfix: Squad Leader's armor now has 3 internal slots AS IT SHOULD'VE BEEN FROM
+      THE START.
+  Retrokinesis:
+  - rscadd: Synthetics now have access to medical/security records and triage tags
+      at all times, making HUD glasses fully obsolete.
+  - tweak: Synth HUD verbs will now tell you which HUD is being enabled or disabled.
+  TobiNerd:
+  - bugfix: Fixed some mapping errors with the Big Red Inserts.
+  - spellcheck: Fixed two escape pods on Almayer not being labelled.
+  - tweak: Added another plant analyzer to the research hydroponics closet.
+  - tweak: The plant analyzer will no longer spam the chatbox with messages.
+  - tweak: Changed the recipe for space cleaner, so you don't fill hydroponics trays
+      with cleaner when using ammonia on the plants. New recipe is water+ammonia+sodiumchloride.
+  - rscdel: You can no longer farm grass tiles.
+  Vicacrov:
+  - rscdel: Weapons cannot be deconstructed anymore in the autolathe.
+  monkeysfist101:
+  - tweak: Tweaked aviators sprite.
+2019-06-25:
+  Fourkhan:
+  - tweak: Another change to make pain slow marines down more.
+  - tweak: Low levels of pain will tip marines over quicker.
+  Neth Iafin:
+  - tweak: Reduced size of Incendiary OB.
+  - tweak: Warning is displayed for everyone in radius 30 (so you won't be able to
+      determine if you are in direct danger) about incoming OB.
+  - tweak: Armor un-safe time increased to 0.5 of a second.
+  - tweak: Small armor increased for all xenos.
+  - tweak: Bones will break more often now.
+  - tweak: Organ damage and IB chance reduced.
+  - tweak: Basic neuro and basic acid spit got their accuracy increased.
+  RavingManiac:
+  - rscadd: Made light from humans directional. In front of you, light. Behind you,
+      darkness.
+  - rscadd: You can now lock your direction with alt-move. This is unset by pressing
+      alt-move in the same direction again, or facing another direction via clicking
+      or ctrl-move.
+  - tweak: Turning via clicking or ctrl-move will add movement delay, just like with
+      regular movement.
+  ThePiachu:
+  - rscdel: In efforts to improve game performance, vestigial atmos machinery functionality
+      has been gutted. This won't affect the gameplay as we haven't been using atmos
+      for a long while.
+  - rscadd: Added a new xeno structure - fast weeds. They boost xeno movement speed,
+      but they do not affect marine movement speed. This structure can be built by
+      all builder xenos.
+  - tweak: Xenos are slightly faster on regular weeds as well.
+  - rscadd: Admins can now use their secret panel to fix all ship's fusion generators
+      with one click.
+  Vicacrov:
+  - rscadd: Added three LV-624 nightmare inserts.
+  jeser:
+  - rscadd: The Company has stopped adding titanium alloys in their showcases. Showcases
+      now can be destroyed with bullets and acid spits.
+  - tweak: The mystery of digging tunnels recharge timer is revealed. Upon finishing
+      digging a tunnel, Burrower will receive a message telling them how much time
+      will pass before they can make another tunnel.
+  - bugfix: Fixed Boilers using plasma during Bombardment even if they cancel it.
+2019-06-26:
+  ThePiachu:
+  - bugfix: Marine role option select screen should be back to being slim again.
+  - rscdel: Removed vestigial, unused functions around setting character antagonist
+      and disability options.
+  TobiNerd:
+  - bugfix: 'Wrenching a filing cabinet will no longer reanchor for every allowed
+      object type. #6937'
+  - bugfix: Fixed contained xenos being counted towards round end and appearing on
+      ARES scanner.
+2019-06-27:
+  Fourkhan:
+  - rscadd: Trijent Dam and Ice Colony will now be unavailable for selection when
+      the server population is lower than 100.
+  - tweak: The maintenance airlock announcement is now visible to marines only.
+  - tweak: Replaced all references to mutators with strains.
+  ThePiachu, Retrokinesis:
+  - bugfix: Power networks have been fixed and reworked. Every area on a Z-level shares
+      the same powernet as if they were wired together. APCs are still required to
+      power the areas. SMESes have been returned to the maps.
+  - rscdel: We have removed over 4000 wires from the maps since xenos can't interact
+      with them. This also aligns with our effort to make the game run lighter by
+      removing unnecesary items / functionality.
+  - tweak: Power-related machines have been moved to their own controller thread.
+  Vicacrov:
+  - rscadd: Added logging for hive orders and announcements for the staff.
+2019-06-29:
+  Fourkhan:
+  - rscadd: Gives all Xenos the ability to overwatch other Xenos.
+  - rscadd: Overwatch is possible through a new ability added to Xenos, chat links,
+      and the hive status pane.
+  - rscadd: To cancel overwatch, click the overwatch ability again or move.
+  - bugfix: Hivemind will no longer fail to remove the prefix for messages using A
+      instead of a in the prefix.
+  Neth Iafin:
+  - tweak: MOU53 loses its burstfire mode, fire delay between shots increased, accuracy
+      increased, spray and recoil reduced, damage improved (it comes with internal
+      Barrel-Charger like component).
+2019-06-30:
+  Fourkhan:
+  - rscadd: Gives all Xenos the ability to overwatch other Xenos.
+  - rscadd: Overwatch is possible through a new ability added to Xenos, chat links,
+      and the hive status pane.
+  - rscadd: To cancel overwatch, click the overwatch ability again or move.
+  - bugfix: Hivemind will no longer fail to remove the prefix for messages using A
+      instead of a in the prefix.
+  John Titor:
+  - bugfix: You can no longer place any small or tiny object in your cap.
+  - rscadd: Due to popular demand, you can place cigarette packets under your cap.
+  Neth Iafin:
+  - tweak: MOU53 loses its burstfire mode, fire delay between shots increased, accuracy
+      increased, spray and recoil reduced, damage improved (it comes with internal
+      Barrel-Charger like component).
+  ThePiachu:
+  - rscadd: Added some light-hearted supply crates, have some reasonable fun!
+  monkeysfist101:
+  - sounddel: Removed Twinkle Twinkle Little Star.
+  - soundadd: The Boys Are Back In Town.

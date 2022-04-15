@@ -85,14 +85,14 @@
 	update_icon()
 	add_fingerprint(user)
 
-/mob/living/carbon/human/proc/get_ghost()
+/mob/living/carbon/human/proc/get_ghost(var/check_client = TRUE, var/check_can_reenter = TRUE)
 	if(client)
 		return FALSE
 
 	for(var/mob/dead/observer/G in GLOB.observer_list)
 		if(G.mind && G.mind.original == src)
 			var/mob/dead/observer/ghost = G
-			if(ghost && ghost.client && ghost.can_reenter_corpse)
+			if(ghost && (!check_client || ghost.client) && (!check_can_reenter || ghost.can_reenter_corpse))
 				return ghost
 
 /mob/living/carbon/human/proc/is_revivable()

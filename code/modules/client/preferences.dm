@@ -42,6 +42,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
+	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
@@ -969,7 +970,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("co_sidearm")
 					var/list/options = list("Mateba","Desert Eagle")
 
-					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Commodore's Mateba","Golden Desert Eagle")
 					else
 						options -= list("Commodore's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise

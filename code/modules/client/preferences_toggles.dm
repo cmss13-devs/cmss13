@@ -39,6 +39,14 @@
 		to_chat(src, SPAN_BOLDNOTICE("You will no longer hear music in the game lobby."))
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
 
+/client/verb/togglerebootsound()
+	set name = "Hear/Silence Reboot Sound"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the server reboot sound effect."
+	prefs.toggles_sound ^= SOUND_REBOOT
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
+
 /client/verb/togglemidis()
 	set name = "Silence Current Midi"
 	set category = "Preferences.Sound"
@@ -396,6 +404,19 @@
 	else
 		H.remove_hud_from(O)
 
+/client/proc/toggle_ghost_health_scan()
+	set name = "Toggle Health Scan"
+	set category = "Preferences.Ghost"
+
+	prefs.toggles_ghost ^= GHOST_HEALTH_SCAN
+	prefs.save_preferences()
+	to_chat(usr, "As a ghost, you will [prefs.toggles_ghost & GHOST_HEALTH_SCAN ? "now" : "no longer"] be able to scan health of living mobs via right click menu.")
+	if(isobserver(usr))
+		if(prefs.toggles_ghost & GHOST_HEALTH_SCAN)
+			add_verb(usr, /mob/dead/observer/proc/scan_health)
+		else
+			remove_verb(usr, /mob/dead/observer/proc/scan_health)
+
 //------------ COMBAT CHAT MESSAGES PREFERENCES ---------------------
 
 //Made all chat combat-related logs added by Neth and several others to be hidden by default and shown when clicked respected verb. Reason: too cluttered preferences.
@@ -479,4 +500,5 @@ var/list/ghost_prefs_verbs = list(
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,
+	/client/proc/toggle_ghost_health_scan,
 	/client/proc/hide_ghost_preferences)

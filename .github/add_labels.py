@@ -7,7 +7,7 @@ changelogToPrefix = {
 	'qol': ["Quality of Life", ["made something easier to use"]],
 	'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things"]],
 	'del': ["Removal", ["Removed old things"]],
-	'tweak': ["Tweak", ["Tweaks to existing mechanics or gameplay"]],
+    'expansion': ["Expansion", ["Expanded existing mechanics or gameplay"]],
 	'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
 	'balance': ["Balance", ["rebalanced something"]],
 	'code': ["Code Improvement", ["changed some code"]],

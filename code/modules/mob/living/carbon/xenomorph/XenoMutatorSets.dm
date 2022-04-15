@@ -239,7 +239,7 @@
 
 /mob/living/carbon/Xenomorph/proc/strain_checks()
 	if(!check_state())
-		return
+		return FALSE
 
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to take a strain."))

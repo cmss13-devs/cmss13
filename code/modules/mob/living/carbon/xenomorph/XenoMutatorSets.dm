@@ -28,7 +28,7 @@
 	var/list/mutators_for_purchase = available_mutators()
 	var/mob/living/carbon/Xenomorph/X = usr
 	if(mutators_for_purchase.len == 0)
-		to_chat(usr, "There are no avaliable strains.")
+		to_chat(usr, "There are no available strains.")
 	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase)
 	if(!pick)
 		return FALSE

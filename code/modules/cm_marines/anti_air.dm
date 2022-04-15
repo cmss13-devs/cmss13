@@ -1,8 +1,8 @@
 var/obj/structure/anti_air_cannon/almayer_aa_cannon
-
+GLOBAL_VAR_INIT(AAgunLocation,0)
 /obj/structure/anti_air_cannon
 	name = "\improper IX-50 MGAD Cannon"
-	desc = "The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats with rockets strapped onto them."
+	desc = "This is one of the IX-50 MGAD defense stations. The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
 	density = 1
@@ -18,10 +18,12 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	var/protecting_section = ""
 	var/is_disabled = FALSE
 
-/obj/structure/anti_air_cannon/New()
+/obj/structure/anti_air_cannon/Initialize()
 	. = ..()
+	//()
 	if(!almayer_aa_cannon)
 		almayer_aa_cannon = src
+		GLOB.AAgunLocation = loc
 
 /obj/structure/anti_air_cannon/ex_act()
 	return
@@ -70,7 +72,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 		dat += "No MGAD System Detected!<br/>"
 	else
 		var/tracking_desc = almayer_aa_cannon.protecting_section ? almayer_aa_cannon.protecting_section : "SYSTEM INACTIVE"
-		dat += "<h2>MGA defense system</h2>"
+		dat += "<h2>MGA Point Defense System</h2>"
 		dat += "<p>Currently tracking: [tracking_desc]</p>"
 		dat += "<hr/>"
 

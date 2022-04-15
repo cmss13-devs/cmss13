@@ -4,7 +4,7 @@
 	var/list/soundscape_playlist 	= list() //Updated on changing areas
 	var/ambience 					= null //The file currently being played as ambience
 	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-
+	var/list/echo
 /datum/soundOutput/New(client/C)
 	if(!C)
 		qdel(src)
@@ -22,6 +22,7 @@
 	S.frequency = T.frequency
 	S.falloff = T.falloff
 	S.status = T.status
+	S.echo = T.echo
 
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
@@ -39,6 +40,7 @@
 			S.x = T.x - owner_turf.x
 			S.y = 0
 			S.z = T.y - owner_turf.y
+	S.y += T.y_s_offset
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

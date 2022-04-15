@@ -38,6 +38,7 @@
 #define AMBIENCE_YAUTJA 'sound/ambience/yautja_ship.ogg'
 
 #define SOUND_MARINE_DRUMS 'sound/effects/drums.ogg'
+#define SOUND_DISTANT_AA_FIRE list('sound/effects/distant_aa.ogg','sound/effects/distant_aa2.ogg','sound/effects/distant_minigun.ogg','sound/effects/distant_minigun_short.ogg','sound/effects/distant_minigun2.ogg','sound/effects/distant_aa_cannon.ogg')
 
 #define AMBIENCE_ALMAYER 'sound/ambience/shipambience1.ogg'
 #define AMBIENCE_LV624 'sound/ambience/ambienceLV624.ogg'

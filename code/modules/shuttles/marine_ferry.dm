@@ -460,7 +460,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
+			INVOKE_ASYNC(src, .proc/AA_sequence, turfs_int)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -590,7 +590,76 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+//////
+////// Le funny immersive crash sequence
+////// independent of main crash proc so sleep()s don't matter here. Try keep it under 15s as we only have 45s before crash and we run on BYOND time. We wouldn't want
+////// the ds still getting hit during,and after the crash.
 
+////// No combat is really occuring during this point of the round so it should give us more performance overhead to give a nice fireworks display (:
+/datum/shuttle/ferry/marine/proc/AA_sequence(turfs_int)
+	set waitfor = 0
+	var/sound_to_play = pick(SOUND_DISTANT_AA_FIRE)
+	var/sound_to_play2 = pick(SOUND_DISTANT_AA_FIRE)
+	//init the funny spark system
+	var/datum/effect_system/spark_spread/s = new
+	var/datum/effect_system/spark_spread/s2 = new
+	var/datum/effect_system/spark_spread/s3 = new
+	var/turf/T
+	var/mob/M
+	var/cause = create_cause_data("IX-50 MGAD")
+	// Used to define shuttle area during crash
+	var/area/shuttle_area
+	var/ship_zlevels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	// define all shuttle turfs as shuttle_area. This includes some deadspace outside of DS, in which some effects may randomly spawn there. Consider that variety, if you will.
+	if(!shuttle_area)
+		for(T as anything in turfs_int)
+			if(T?.loc)
+				shuttle_area = T.loc
+				break
+	marine_announcement("A hostile aircraft has been detected on course for the [true_crash_target_section]. IX-50 MGAD & ASAT missiles are locked onto target trajectory. Firing for effect.", "ARES")
+	playsound_z(ship_zlevels, 'sound/effects/alert.ogg', 75, echo = list(-500, -2000, 1000, 500, 0, 0.8, 5, 5), y_s_offset = 10)
+	for(M in shuttle_area)
+		if(isXeno(M))
+			to_chat(M, SPAN_HIGHDANGER("Alarms blare throughout the bird! The fleshy hosts are definately trying something!"))
+		else
+			to_chat(M, SPAN_HIGHDANGER("Lock-on alarms and missile warnings blare from the cockpit! Oh crap!"))
+	playsound_area(shuttle_area,  'sound/effects/alert.ogg',75, echo = list(-500, -1500, 1000, 500, 0, 0.8, 5, 5), y_s_offset = 10)
+	sleep(5 SECONDS)
+	playsound(GLOB.AAgunLocation, sound_to_play, 100, sound_range = 300,  falloff = 250, echo = list(-1000, -3500, 1000, 0, 0, 1, -2000, 0.5, 6, 2), y_s_offset = 10)
+	playsound_area(shuttle_area,  sound_to_play, echo = list(-500, -2000, 1000, 500, 0, 0.8, 5, 5), y_s_offset = 10)
+	sleep(4 SECONDS) //bullet time lulz
+	for(M in shuttle_area)
+		to_chat(M, SPAN_HIGHDANGER("The ship jostles violently as explosions rock the ship!")) //xenos getting hit
+		to_chat(M, SPAN_HIGHDANGER("You feel the ship turning sharply as it adjusts its course!"))
+		shake_camera(M, 60, 2)
+	playsound_area(shuttle_area, 'sound/effects/antiair_explosions.ogg', echo = list(-500, -1500, 1000, 500, 0, 0.8, 5, 5))
+	// Shit hits the fan
+	// Everything here is and should be non lethal to even larva. Even if the RNG gods somehow smited one with all of these explosions they will still live.
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 1 SECONDS)
+	sleep(5)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 2 SECONDS)
+	sleep(5)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 3 SECONDS)
+	sleep(2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 2 SECONDS)
+	create_shrapnel(pick(turfs_int), rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/, cause)
+	s.set_up(10, 1, pick(turfs_int)) // Spark system funny
+	s2.set_up(10, 1, pick(turfs_int))
+	s3.set_up(10, 1, pick(turfs_int))
+	s.start()
+	sleep(1 SECONDS)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius,cause, 1, pick(turfs_int), 1, 16, FLAMESHAPE_DEFAULT, null)
+	create_shrapnel(pick(turfs_int), rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, cause)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 3 SECONDS)
+	new /obj/effect/spawner/gibspawner/robot(pick(turfs_int))
+	new /obj/effect/spawner/gibspawner/robot(pick(turfs_int)) // A few random ass gibs
+	s2.start()
+	playsound(GLOB.AAgunLocation, sound_to_play2, 100, sound_range = 300,  falloff = 250, echo = list(-1000, -3500, 1000, 0, 0, 1, -2000, 0.5, 6, 2), y_s_offset = 10) // making sure?
+	playsound_area(shuttle_area,  sound_to_play, echo = list(-500, -2000, 1000, 500, 0, 0.8, 5, 5), y_s_offset = 10)
+	sleep(1 SECONDS)
+	s3.start()
+	create_shrapnel(pick(turfs_int), rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, cause)
+	marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred. ASAT-21 Rapier IV missiles have misfired and failed to intercept target. Please check ASAT tubes number 2 and 9.", "IX-50 MGAD System")
 
 /datum/shuttle/ferry/marine/short_jump()
 

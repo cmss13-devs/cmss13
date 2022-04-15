@@ -85,7 +85,7 @@ Things you **CAN** do:
 * Close issues when appropriate
 
 Things you **CAN'T** do:
-* [Close PRs](https://imgur.com/w2RqpX8.png): Only maintainers are allowed to close PRs. Do not hit that button.
+* Close PRs: Only maintainers are allowed to close PRs. Do not hit that button.
 * Label PRs, leave that for maintainers to handle.
 
 </details>

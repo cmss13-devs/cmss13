@@ -14,7 +14,9 @@ var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 									"orange" = new /datum/custom_hud/orange(),
 									"white" = new /datum/custom_hud/white(),
 									"alien" = new /datum/custom_hud/alien(),
-									"robot" = new /datum/custom_hud/robot()
+									"robot" = new /datum/custom_hud/robot(),
+									"glass" = new /datum/custom_hud/glass(),
+									"red" = new /datum/custom_hud/red()
 									)
 
 //Since it didn't really belong in any other category, I'm putting this here

@@ -94,6 +94,12 @@
 /datum/custom_hud/orange
 	ui_style_icon	= 'icons/mob/hud/human_orange.dmi'
 
+/datum/custom_hud/glass
+	ui_style_icon	= 'icons/mob/hud/human_glass.dmi'
+
+/datum/custom_hud/red
+	ui_style_icon	= 'icons/mob/hud/human_red.dmi'
+
 /datum/custom_hud/dark
 	ui_style_icon	= 'icons/mob/hud/human_dark.dmi'
 

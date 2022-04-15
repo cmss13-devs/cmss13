@@ -1,0 +1,389 @@
+2019-07-02:
+  RavingManiac:
+  - tweak: Turning no longer results in a move delay.
+  - rscadd: 'Macros: "northface" to face north, "northfaceperm" to face north permenantly.
+      Same for the other directions.'
+2019-07-06:
+  Cakey:
+  - tweak: The minimum age for characters has been increased to 19.
+  Fourkhan:
+  - tweak: Overwatching a Xeno now cancels long-range sight for all Castes except
+      Queen.
+  - bugfix: Most Xeno abilities cannot be activated in overwatch (Sorry, Boilers).
+  - bugfix: Burrowers can no longer use Xeno overwatch to teleport across Z-levels.
+  Frans_Feiffer:
+  - imageadd: Redrew the Leather Satchel.
+  - imagedel: Removed an older version of the CO Tablet.
+  - tweak: Removed a stray pixel from the HPRs back sprite.
+  John Titor:
+  - tweak: You can now remove fences with wirecutters.
+  - tweak: Bayonets can now be used to pry open airlocks, but does so slower than
+      a crowbar and has a chance to break.
+  - tweak: Buffed the durability of airlocks slightly.
+  - tweak: Vendor machines can now both charge points and use up equipment slots correctly.
+  - tweak: Smartgunners' Barrel Chargers also consume their attachment slot when vended.
+  Retrokinesis:
+  - maptweak: The tables in the CIC command bubble are now reinforced and can't be
+      flipped.
+  - bugfix: Replaced the floor tiles that mysteriously disappeared from the CIC.
+  TobiNerd:
+  - rscadd: Added more nightmare fuel to Big Red.
+  Vicacrov:
+  - maptweak: Added more food vendors to the canteens, rearranged it a bit.
+  - rscadd: Xenos can now extinguish humans being on fire. Attack them with help intent
+      to do so.
+  - tweak: Stepping on a glass shard now only prompts a chat message if you step on
+      it barefoot.
+  - tweak: The metal sheet construction list's order has been changed, putting barricades
+      and APC frames on the top. Removed the air alarm frame recipe from it.
+  - tweak: One extra slot was added to electronics pouch. Removed the airlock circuit
+      from the squad engineer one.
+  - rscdel: Removed the QC injector from lifesaver belts.
+  monkeysfist101:
+  - rscadd: You can now store your welding goggles on your helmets and caps.
+2019-07-12:
+  MattAtlas:
+  - bugfix: Predator crystals now actually fix bones. They need to be splinted beforehand.
+  - tweak: Increased heavy clan armour protection values. Drastically increased its
+      bullet protection.
+  - tweak: Increased clan armour bullet protection values.
+  - rscdel: Removed clan bracer upgrades. You now start with a fully upgraded bracer.
+  - rscdel: Removed wrist scimitars.
+  - tweak: Slightly increased wrist blade damage.
+  - tweak: Halved re-cloak timer.
+  - rscadd: Added a zoom function to the predator clan mask.
+  - tweak: Predator primaries & the pred knife should no longer be able to miss.
+  - rscadd: Predator primary weapons now temporarily prevent queen healing, overwatch
+      and hivemind usage. Be careful...
+  - tweak: Predators now feel less pain.
+  - tweak: Wristblades now cut fences much faster.
+  - tweak: Changed some HPC values. It should be a bit stronger and more accurate
+      now.
+  - bugfix: Fixed the predator translator not working for xenos.
+  Neth Iafin:
+  - tweak: Made directional lighting work in 180 degree infront of you. Behind you,
+      even more darkness. Infront of you - more light than before.
+  - rscadd: 'Xeno Identification is here:'
+  - rscadd: Xeno players can set up prefix and postfix of their number that will be
+      constant between the rounds. Number is still random between respawns.
+  - rscadd: Xeno Id is displayed in game on mouseover (there is no easy way to hide
+      this info from marines, so beware), in hivechat, localchat, LOOC and Hive Status.
+  - rscadd: Xeno Prefix can be 1-2 letters long and has to use capital letters. If
+      no prefix is set, it will become 'XX' (like species name XX-121).
+  - rscadd: Xeno Postfix consist of a single letter and an optional digit at the end.
+      You can remove the Postfix, it's entirely optional.
+  - rscadd: When you posses a xeno body (by staff ckeying you in, or by Joining as
+      Xeno into an SSD xeno body) it will gain your prefix and postfix but will retain
+      old number.
+  - tweak: Xeno Queens lack any identification, their CKEY is shared at the end anyways
+      and it doesn't fit the naming convention to give them prefixes/postfixes.
+  - tweak: You are free to change Xeno Id at any time, there is no 'lock' mechanic
+      on any xeno-id.
+  ThePiachu:
+  - tweak: Moved Predator gear setup to gear presets.
+  - rscadd: Added special Elder Predator gear presets for admins to use in their events.
+  TobiNerd:
+  - maptweak: Old gunrange has been replaced by a larger chapel. Unga bless the USCM.
+  - maptweak: New gunranges has been added east of prep.
+  - maptweak: The north and south ERT hangars has been moved further west, next to
+      the hallways north and south of medbay.
+  - maptweak: Tweaked the lower starboard office area to compensate for space.
+  - maptweak: Fixed brig missing emergency shutters.
+  Vampmare:
+  - rscadd: Made racks climbable by dragging your sprite onto them.
+  - bugfix: Autodoc now repairs/heals robotic limbs.
+  Vicacrov:
+  - rscadd: An ERT station was added, accessible if you successfully return from the
+      Almayer.
+  - maptweak: The thunderdome was updated.
+  - maptweak: Replaced the Bunker's outdated cave wall tiles with the newer ones.
+  - maptweak: The admin z-level was reorganized, some superfluous parts were removed.
+  - rscadd: Chat cleanup part one. Any (hopefully) beneficial action taken by you
+      or against you now appears in green. The important parts are highlighted with
+      bold text. So far it concerns bandaging/using ointments, splinting, CPRing,
+      feeding food/drinks/pills, defibbing someone. Things not concerning you remain
+      in blue for now.
+  - rscdel: The spam caused by trauma/burn kits being repeatedly applied has been
+      removed.
+  - tweak: Brought the roundstart CMO, doctor, and researcher equipment presets up-to-date.
+      Now they start with lifesaver bags, but without penlights.
+  - rscadd: Added MOOC (marine OOC) and XOOC (xeno OOC). These OOC channels will be
+      visible thorough the game, but only staff members will be able to post to it.
+  - maptweak: Requisitions have been remapped.
+  jeser:
+  - rscadd: Ammunition, armaments, attachments and surplus uniform vendors have been
+      transferred to a better vending system. Enjoy.
+  - imageadd: One of Requisitions vendors received a new sprite. Guess which one?
+  - spellcheck: Fixed several item names.
+  monkeysfist101:
+  - bugfix: Added the S in monkeySfist in the lobby art description...damn it!
+  - rscadd: Added new posters:pinups, propaganda, and logos.
+  - tweak: Codewise, posters are no longer considered contraband.
+  - rscadd: You can put pens in hats and helmets.
+2019-07-13:
+  Awan:
+  - rscadd: The smartgun changes are in.
+  - rscadd: First the smartgun now uses ammo packs instead of the ammo coming out
+      of the powerpack.
+  - rscadd: Second the smartgun now has special firing modes that can be activated
+      in the new smartgun tab.
+  - rscadd: The easiest modes are the anti-recoil mode, the improved accuracy mode,
+      and the swap ammo mode.
+  - rscadd: The last two modes are the automatic firing mode and the built-in motion
+      sensor mode.
+  - rscadd: All modes use power. The automatic firing mode uses the most.
+  - rscadd: The smartgun now has 2 loading systems both having their own drawbacks.
+  - rscadd: The classic system stayed the same. 50 round size magazine.
+  - rscadd: The new (default) mode can only be used with an empty belt slot.
+  - rscadd: It has a 500 round magazine but when added to the gun goes into your belt
+      slot.
+  - rscadd: This mean you cannot use a sidearm or carry extra ammo while using this
+      system.
+  - rscadd: Lastly, a special ERT was added.
+  Cakey:
+  - rscadd: Mob rendering has been overhauled. If you see anything strange, please
+      report it on the gitlab.
+  - rscadd: Monkeys are now a subtype of human, which means they can now wear more
+      types of clothing. Time to pla dressup monkey!
+  - rscadd: Monkeys will now randomly pick up, drop, and throw items, as well as occasionally
+      shoot guns.
+  - rscadd: Overhauled the accessory system to allow for multiple accessories on clothing,
+      sorted by slot type. You can still only have 1 webbing equipped, but have multiple
+      decorative accessories as well as medals worn at the same time.
+  - rscadd: Added two uniform shoulder patches to the loadout selector, the USCM patch,
+      and the Falling Falcons patch.
+  - rscadd: Added rank pins and boards, spawned on your uniforms based on rank. Can
+      be removed with something sharp, if you want to impersonate someone else...
+  - rscadd: Added several new scream sounds, as well as sounds for monkey emotes.
+  - rscadd: Added monkey-shaped uniforms and armor, generated using an amazing transformation
+      tool written by F-TangSteve.
+  Fourkhan:
+  - tweak: Increased the damage of the M41, L42, and HPR.
+  - tweak: Increased HPR fire rate in single fire mode, especially without a bipod.
+  - tweak: Increased HPR fire rate within bursts.
+  - tweak: Removed QFA from HPR.
+  - bugfix: Fixed some Xeno overwatch-related runtimes.
+  - tweak: Xeno neurotoxic gas now has a chance to slip marines that stand in it.
+  - tweak: Pheromone readouts should more accurately represent the behind-the-scenes
+      pheromone value.
+  - rscadd: All Xenos can now purchase strains at all age levels.
+  - rscadd: Reworked Praetorian.
+  - tweak: Nerfed base Praetorian armor slightly.
+  - tweak: Nerfed base Praetorian pheromones.
+  - experiment: Added a toggle and boiler's acid line spray to Royal Guard only. This
+      may be reverted if it proves to be too strong.
+  - tweak: Royal Guard Praetorians now deal more melee damage than other Praetorian
+      variants.
+  - rscadd: Added 2 strains for Praetorian.
+  - rscadd: Dancer - movement and combo-focused.
+  - rscadd: 'Stats changes: Heavy speed increase in exchange for heavy armor and pheromone
+      decrease.'
+  - rscadd: 'Utility ability: Dance. (increase evasion and speed temporarily). Making
+      an attack in dance cancels the stat buffs but empowers the attack.'
+  - rscadd: 'Damage ability: Tail attack. Has two variants, both of which can be used
+      from one tile further away than a slash: impale and abduct. Impale does direct
+      damage and abduct applies a stun.'
+  - rscadd: Both variants of tail attack are empowered like a slash when used while
+      Dance is active. Impale deals double damage and abduct activates much faster.
+  - rscadd: Oppressor - Tank and AoE-oriented.
+  - rscadd: 'Stats changes: Heavy armor increase in exchange for heavy movespeed and
+      pheromone decrease.'
+  - rscadd: 'Damage ability: Punch. This is much like warrior''s punch except that
+      it deals significantly more damage.'
+  - rscadd: 'Utility ability: Gas Grenade. This launches a grenade like glob of acid
+      that explodes into Neurotoxin. It bypasses barricades but has extremely limited
+      range (5 tiles).'
+  - rscadd: 'All Praetorian strains/archetypes now have a unique screech ability that
+      fits their design: Base Praetorian heals nearby Xenos; Royal Guard buffs the
+      damage of nearby Xenos; Dancer debuffs the accuracy of nearby marines; Oppressor
+      buffs the armor of nearby Xenos.'
+  - rscadd: 'Macro list for the new abilities: https://pastebin.com/GHkQgKTX'
+  - imageadd: All screeches have unique colors to distinguish them for allied Xenos.
+      Base Prae = Green; Oppressor = Purple; Royal Guard = Red; Dancer = Blue.
+  - rscadd: 'Dev test-based changes:'
+  - imageadd: Courtesy of Triiodine, enjoy a new sprite for the Oppressor nade that
+      isn't the marine training nade.
+  - tweak: Nerfed activation time, cooldown, throw range, and spread distance of the
+      Oppressor Praetorian gas grenade as well as the explosives protection of its
+      screech.
+  - tweak: Nerfed movespeed of Dancer praetorians, increased the cooldown of Dance,
+      nerfed its duration.
+  - tweak: Nerfed the caste's pheromones further.
+  - tweak: Increased cooldown of Praetorian screeches accross the board.
+  - tweak: Eliminated screenshake for Xeno players from Praetorian screech and reduced
+      it for Marine players.
+  - bugfix: Fixed the issue where Praes would be spammed with messages after the effects
+      of their screech wore off.
+  Neth Iafin:
+  - tweak: Increased explosive damage to xenos.
+  - tweak: Massively reduced stun from grenades to xenos.
+  - tweak: Grenades now induce Shell Shock (can't pull and fire weapons fast, can't
+      speak properly) to humans, and Slow to Xenos.
+  - tweak: Slugs now sever connection with hivemind for small period of time along
+      with disabling abilities. For humans it induces Shell Shock.
+  - tweak: Buckshot stuns less, slowdowns for more time instead.
+  - tweak: Neurotoxin has perfect accuracy now.
+  - tweak: Neurotoxin slows on first hit, slows even more on second, shell shocks
+      on third and Knocks Down on 4th. Hits after that keep targets down as long as
+      they are shell shocked.
+  - tweak: If neurotoxin hits human enough times it will force sleep on them for half
+      a minute. Every time neurotoxin hits human after that, it resets sleep back
+      to half a minute.
+  - rscadd: Acid (except boiler) can hit xenos of a different hive. Neuro included,
+      however it can't Stun or KO.
+  - rscadd: Stun and Shell Shock time is affected by endurance skill. This should
+      help survivors get an upper hand.
+  RavingManiac:
+  - tweak: Prone mobs receive half the effect from an explosion.
+  - tweak: Directional lighting beam made wider.
+  - bugfix: Alt+direction to permanantly face a specific direction now works in hotkey
+      mode.
+  Retrokinesis:
+  - bugfix: Fixed some improper computer facing on the Almayer.
+  - bugfix: Predators can claim equipment again.
+  - bugfix: The predator translator works for real now.
+  - rscadd: The combistick now causes hivemind interference on melee hits.
+  Vampmare:
+  - tweak: You can now perform CPR through coifs and scarfs.
+  - tweak: Motion/intel detectors now turn off on death.
+  Vicacrov:
+  - rscadd: Updated the Almayer kitchen, giving wannabe-chefs more to work with.
+  - tweak: A MarineMed was swapped with a WeylandMed Plus in the Almayer medical treatment
+      center.
+  - bugfix: Added armoured gloves to CIC armoury, SO lockers.
+  - rscdel: Removed the access requirement on the medical cryogenics storage airlock.
+  - bugfix: 'Various small LV fixes: replaced a reinforced window in fitness, deleted
+      a stray fog patch in a medbay insert and a glitching girder from robotics.'
+  - bugfix: On LV, the crash site data terminal was removed.
+  - bugfix: On LV, the areas around the landing zones are not metal roofed anymore.
+  jeser:
+  - bugfix: Fixed Requisition vendors getting Squad Requisitions product lists and
+      product amounts. Oops.
+  - tweak: Clicking any sort of containers items with switched ON labeler will label
+      them instead of storing labeler in them. (#6948)
+  - imageadd: You can make empty magazine boxes out of cardboard now. (#7071)
+2019-07-19:
+  TobiNerd:
+  - tweak: Buffed the gunrange walls so they don't break as easily.
+  Vampmare:
+  - bugfix: Fixed cosmetic eye items not showing up in the mask slot.
+  - bugfix: Fixed xenos being unable to ventcrawl with a devoured monkey.
+  - bugfix: Fixed latex gloves being in the Squad Medic prep vendor.
+  - bugfix: Fixed being able to move in zoom. Sniping is sligtly worse until a more
+      suitable fix is found.
+  - bugfix: Yirens can now withstand the cold on Ice Colony.
+  Vicacrov:
+  - rscadd: Humans and ghosts can now see the current DEFCON level.
+  - tweak: Mortar crates are now secure crates, openable by squad engineer, MT, and
+      CT accesses.
+  - rscdel: Xenomorph corpses cannot be destroyed via the gibber anymore.
+  - bugfix: Readded the smooth marine armour to squad surplus uniform vendors.
+  - bugfix: Fixed the wrong description on the CMO's headset.
+  - bugfix: Fixed monkeys multibursting.
+  - bugfix: Fixed monkeys increasing each other's the burst speed.
+  - bugfix: Fixed moderators not having MOOC/XOOC.
+  - bugfix: Fixed Prison not compiling.
+  - tweak: 'Made the following objects acidable: display cases, compression gear,
+      arcade machines, girders in some cases.'
+  - tweak: Weeds no longer creep below catwalks.
+  - tweak: Runners and larvae can no longer hide below vents or pipes (small layering
+      tweak).
+  - maptweak: Prison is being reworked. For now, look for changes in Civilian Residentials
+      and its VIP entrance.
+  - maptweak: Prison now has non-reinforced windows. More reinforced ones will be
+      replaced with them, gradually.
+  - maptweak: On Prison, xenomorphs now only spawn in Civilian Residentials.
+  - bugfix: Prison's cell windows are now destroyable.
+  - rscdel: Removed the technical manuals from Prison Station, preparing for a smaller
+      DEFCON change.
+  - rscdel: Removed the Central Ring survivor spawnpoint.
+  jeser:
+  - rscadd: Added vehicle clamps for MPs to help dealing with law breaking TCs. They
+      can be found in MP Armory in red alarm gun cabinet in the corner.
+  - imageadd: Vehicle clamps item and on tank sprites by Triiodine.
+2019-07-20:
+  Fourkhan:
+  - tweak: Decreased the activation time on Oppressor's gas grenade and increased
+      the throw distance to 5 tiles.
+  - tweak: Increased the lifetime of Oppressor's gas.
+  - tweak: Reverted some of the pheromone nerfs to Praetorian.
+  - tweak: Oppressor now decreases pheromones less.
+  - tweak: Abduct now moves marines one more tile backwards and stuns them more consistently.
+  - tweak: Nerfed Dancer impale to deal less damage.
+  - tweak: Reverted the melee damage buff to Royal Guard.
+  - bugfix: Fixed Praetorian macros to work as described.
+  - bugfix: Fixed Praetorian Dancer's abduct ability to work properly (won't break
+      the tail attack anymore).
+  - bugfix: Dancer tail attack no longer works through wall.
+  - rscadd: Updated Xeno macros.
+  - rscadd: 'Xeno macros will now work more fully with macros: macro-ing an ability
+      that doesn''t require a target will use that ability.'
+  - rscadd: Added a bunch of backend support for a possible full quickcast system
+      later down the line.
+  Neth Iafin:
+  - tweak: Non-queen neuro requires 3 hits now (instead of 4) to knock down.
+  - tweak: Extended neuro knockdown time to 1 second, small slow to 6 seconds, big
+      slow to 4 seconds.
+  - bugfix: Fixed species knockdown resistances not being taken into account.
+  Vicacrov:
+  - rscadd: Mortar ammo now sometimes spawns via ASRS.
+  - tweak: The mortar is now more accurate in long range.
+  - tweak: The incendiary mortar ammo was slightly buffed.
+  - tweak: Mortar ammo is now 20 points per crate. One crate has 6 ammo (less than
+      before).
+  - rscdel: The smoke and flash mortar ammo were removed.
+  - tweak: The new player window was updated to show more information. Once the round
+      starts, it automatically refreshes as well.
+2019-07-25:
+  Cakey:
+  - tweak: Replaced all instances of the Commander with the Commanding Officer.
+  Neth Iafin:
+  - tweak: Sentinel Neurotoxin plasma cost 25 (from 50)
+  - tweak: Sentinel Neurotoxin is 1.75x stronger timewise than Spitter Neurotoxin.
+      Stuns for ~1.75 of a second against 0 Endurance marine.
+  - tweak: Non-Queen Neurotoxin again requires 4 shots to Knockdown.
+  - tweak: Sentinel has new type of ammo - Neurotoxic Air Splash. It costs 50 and
+      hits everyone in square 1. It also reacts and airbursts if enemy is nearby.
+      It stuns for less time, so it is useful to get marines to dazed state en-masse,
+      but less useful as pinning tool.
+  - tweak: Queen Neurotoxin Stuns for 2 seconds now (assuming 0 Endurance marine).
+  Vicacrov:
+  - rscadd: The intelligence officer equipment rack now also lets you choose your
+      belt and pouches.
+  - tweak: The fulton device can be now used 20 times instead of 10 times.
+  - tweak: The fulton device crate's cost was reduced from 60 points to 20 points.
+2019-07-27:
+  monkeysfist101:
+  - rscdel: Removes the last references to Officer Beepsky. Rest in Peace. Your service
+      is done.
+  - rscadd: New water cooler sprites.
+  - rscadd: Re-Adds WY lobby art due to popular demand.
+2019-07-29:
+  Cakey:
+  - bugfix: Fixed M60 and minigun reloading.
+  Deanthelis:
+  - bugfix: Predator weapons' interference properly disrupts xeno overwatch again.
+  - bugfix: The Requisitions weapon vendor now vends rifles, instead of vending an
+      SMG when pushing the rifle button.
+  - bugfix: Igniters can once again ignite thermite.
+  Retrokinesis:
+  - bugfix: Fixed burrowers being able to tunnel into some inaccessible areas on the
+      Almayer.
+  Vicacrov:
+  - bugfix: Yautja - Ceremonial daggers and chain whips are now trackable.
+  - rscadd: Added a new surgery chemical, suxamorycin. Details follow.
+  - rscadd: After 5 seconds, it applies a new status effect called paralyis.
+  - rscadd: Paralysis can be seen via examining a mob.
+  - rscadd: During paralysis the patient cannot move, see, talk, or feel pain. However,
+      they can hear everything around them and on the radio, to keep them in the loop
+      during surgery.
+  - rscadd: Paralysed patients can be operated on with a 100% success (minus the surface
+      penalties, of course). Use this to your advantage with lung ruptures.
+  - rscadd: Suxamorycin, being an experimental W-Y chemical, may have some... unintended
+      side effects. Nothing permament, however.
+  - rscadd: Suxamorycin can be made by mixing chloral hydrate, oxygen, and nitrogen.
+  - tweak: The Soporific bottles and autoinjectors in medical vendors were replaced
+      with suxamorycin ones.
+  - bugfix: Xeno - Fixed burrowers being able to tunnel from pipes.
+  - bugfix: Xeno - Fixed burrowers being able to place traps over tunnels.
+  - bugfix: Xeno - Fixed burrowers being able to use corrosive acid while being burrowed.

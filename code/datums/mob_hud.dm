@@ -329,7 +329,9 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]
+	holder.overlays.Cut()
 	var/image/holder2 = hud_list[STATUS_HUD_OOC]
+	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
 
@@ -378,30 +380,34 @@ var/list/datum/mob_hud/huds = list(
 
 		if(stat == DEAD)
 			if(revive_enabled)
-				var/mob/dead/observer/G = get_ghost()
-				if(client || istype(G))
-					if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
-						holder.icon_state = "huddeadalmost"
+				if(!client)
+					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+					if(!G)
+						holder.icon_state = "huddeaddnr"
 						if(!holder2_set)
-							holder2.icon_state = "huddeadalmost"
+							holder2.icon_state = "huddeaddnr"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
-					else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
-						holder.icon_state = "huddeadclose"
-						if(!holder2_set)
-							holder2.icon_state = "huddeadclose"
-							holder3.icon_state = "huddead"
-							holder2_set = 1
-					else
-						holder.icon_state = "huddeaddefib"
-						if(!holder2_set)
-							holder2.icon_state = "huddeaddefib"
-							holder3.icon_state = "huddead"
-							holder2_set = 1
-				else
-					holder.icon_state = "huddeaddnr"
+						return
+					else if(!G.client)
+						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
+					holder.icon_state = "huddeadalmost"
 					if(!holder2_set)
-						holder2.icon_state = "huddeaddnr"
+						holder2.icon_state = "huddeadalmost"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+				else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
+					holder.icon_state = "huddeadclose"
+					if(!holder2_set)
+						holder2.icon_state = "huddeadclose"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+				else
+					holder.icon_state = "huddeaddefib"
+					if(!holder2_set)
+						holder2.icon_state = "huddeaddefib"
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else

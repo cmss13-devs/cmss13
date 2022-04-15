@@ -66,10 +66,9 @@
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user)
+	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
+		dump_into(W, user)
 	else
 		return ..()
 
@@ -174,6 +173,27 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/sheet/metal/large_stack(src)
+
+/obj/item/storage/pouch/survival/synth
+	name = "synth survival pouch"
+	desc = "An emergency pouch given to synthetics in the event of an emergency."
+	icon_state = "survival"
+	storage_slots = 5
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/device/flashlight,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/weldingtool,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/sheet/metal
+	)
+
+/obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
+	new /obj/item/device/flashlight(src)
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/sheet/metal/large_stack(src)
 
 /obj/item/storage/pouch/firstaid
@@ -737,6 +757,13 @@
 	icon_state = "medkit"
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
+
+/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+	var/obj/item/storage/firstaid/FA = locate() in contents
+	if(FA)
+		FA.open(user)
+		return
+	return ..()
 
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()

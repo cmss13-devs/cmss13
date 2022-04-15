@@ -1,3 +1,6 @@
 [
-	{ "type": "map_sprinkle", "path": "map_files/Sorokyne_Strate/sprinkles/" },
+    {
+        "type": "map_sprinkle",
+        "path": "map_files/Sorokyne_Strate/sprinkles/"
+    }
 ]

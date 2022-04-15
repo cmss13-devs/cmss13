@@ -622,7 +622,7 @@
 	return 1
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/explodey(var/mob/living/carbon/victim)
+/obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
 	set waitfor = 0
 
 	if (exploding)
@@ -634,10 +634,12 @@
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
-	var/turf/T = get_turf(victim)
+	var/turf/T = get_turf(src) // The explosion orginates from the bracer, not the pred
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
-		if(victim) victim.gib() //Let's make sure they actually gib.
+		if(victim)
+			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
+			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
 		if(explosion_type == 0 && is_ground_level(z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
@@ -694,23 +696,23 @@
 
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
-		var/mob/living/carbon/human/comrade = G.grabbed_thing
-		if(isYautja(comrade) && comrade.stat == DEAD)
-			var/obj/item/clothing/gloves/yautja/hunter/bracer = comrade.gloves
+		var/mob/living/carbon/human/victim = G.grabbed_thing
+		if(isYautja(victim) && victim.stat == DEAD)
+			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this [comrade.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
-					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
+				if(forced || alert("Are you sure you want to send this [victim.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+					if(M.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)
-							message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
-							log_attack("[key_name(usr)] triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
+							message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							log_attack("[key_name(usr)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
-							bracer.explodey(comrade)
-						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
-						message_all_yautja("[M] has triggered [comrade]'s bracer's self-destruction sequence.")
+							bracer.explode(victim)
+						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
+						message_all_yautja("[M] has triggered [victim]'s bracer's self-destruction sequence.")
 			else
-				to_chat(M, SPAN_WARNING("<b>This [comrade.species] does not have a bracer attached.</b>"))
+				to_chat(M, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
 
 	if(M.gloves != src && !forced)
@@ -750,7 +752,7 @@
 		message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[key_name(usr)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 
-		explodey(M)
+		explode(M)
 	return 1
 
 

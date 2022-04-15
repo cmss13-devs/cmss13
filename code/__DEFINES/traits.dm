@@ -151,6 +151,8 @@
 #define TRAIT_MOB_WEAK_HANDS "t_mob_weak_hands"
  /// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
+ /// If the mob has leadership abilities (giving orders).
+#define TRAIT_LEADERSHIP "t_leadership"
 
 //-- item traits --
 
@@ -193,6 +195,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_MOB_WEAK_HANDS,
 	TRAIT_EXTREME_BODY_BALANCE,
 	TRAIT_DEXTROUS
+	TRAIT_DEXTROUS,
+	TRAIT_LEADERSHIP
 ))
 
 //trait SOURCES
@@ -212,6 +216,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ITEM "t_s_item"
  ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
+ ///Status trait coming from being assigned as [acting] squad leader.
+#define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
  ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
  ///Status trait coming from worn clothing
@@ -226,5 +232,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_HELP_ACTION "t_s_help_action"
  ///Status trait coming from equipment
 #define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"
+ ///Status trait coming from skill
+#define TRAIT_SOURCE_SKILL(skill) "t_s_skill_[skill]"
 ///Status trait coming from attachment
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"

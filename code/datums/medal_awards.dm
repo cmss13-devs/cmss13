@@ -1,6 +1,4 @@
-
-var/global/list/medal_awards = list()
-
+GLOBAL_LIST_EMPTY(medal_awards)
 
 /datum/recipient_awards
 	var/list/medal_names
@@ -26,7 +24,7 @@ var/global/list/medal_awards = list()
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
 	if(!chosen_recipient || chosen_recipient == "Cancel") return
 	var/recipient_rank = listed_rcpt_ranks[chosen_recipient]
-	var/posthumous = 1
+	var/posthumous = TRUE
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism"))
 	if(!medal_type) return
 	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null) as text|null, MAX_PAPER_MESSAGE_LEN)
@@ -38,13 +36,13 @@ var/global/list/medal_awards = list()
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 		if(M.real_name == chosen_recipient)
 			if(isliving(M) && M.stat != DEAD)
-				posthumous = 0
+				posthumous = FALSE
 			recipient_ckey = M.ckey
 			recipient_mob = M
 			break
-	if(!medal_awards[chosen_recipient])
-		medal_awards[chosen_recipient] = new /datum/recipient_awards()
-	var/datum/recipient_awards/RA = medal_awards[chosen_recipient]
+	if(!GLOB.medal_awards[chosen_recipient])
+		GLOB.medal_awards[chosen_recipient] = new /datum/recipient_awards()
+	var/datum/recipient_awards/RA = GLOB.medal_awards[chosen_recipient]
 	RA.recipient_rank = recipient_rank
 	RA.medal_names += medal_type
 	RA.medal_citations += citation
@@ -69,3 +67,14 @@ var/global/list/medal_awards = list()
 	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
+
+/proc/print_medal(mob/living/carbon/human/user, var/obj/printer)
+	var/obj/item/card/id/card = user.wear_id
+	if(!card)
+		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
+		return
+	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades)))
+		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
+		return
+	if(give_medal_award(get_turf(printer)))
+		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))

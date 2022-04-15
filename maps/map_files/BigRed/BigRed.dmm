@@ -583,8 +583,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aby" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -27259,8 +27259,8 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/smg/m39/elite,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -27290,7 +27290,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzM" = (
-/obj/structure/closet,
+/obj/structure/closet/secure_closet,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -32252,6 +32252,12 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves_north)
+"sbz" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gruesome"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
 "sbQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -52200,7 +52206,7 @@ axC
 alu
 ayV
 ayV
-ayV
+sbz
 alu
 aBR
 aBR

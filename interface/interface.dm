@@ -35,6 +35,18 @@
 		to_chat(src, SPAN_DANGER("The rules URL is not set in the server configuration."))
 	return
 
+/client/verb/changelog()
+	set name = "Changelog"
+	set category = "OOC"
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.tgui_interact(mob)
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
+		prefs.save_preferences()
+		winset(src, "infowindow.changelog", "font-style=;")
+
 /client/verb/discord()
 	set name = "Discord"
 	set desc = "Join our Discord! Meet and talk with other players in the server."

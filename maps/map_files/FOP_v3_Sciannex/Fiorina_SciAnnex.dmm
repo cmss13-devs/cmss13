@@ -5531,8 +5531,8 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "doA" = (
-/obj/structure/machinery/computer/shuttle_control/dropship1,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/console_I)
 "doB" = (
@@ -14714,8 +14714,8 @@
 	},
 /area/fiorina/station/security)
 "jbG" = (
-/obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/prison,
 /area/fiorina/lz/console_II)
 "jbU" = (

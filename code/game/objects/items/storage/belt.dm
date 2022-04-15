@@ -384,6 +384,13 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
 
+/obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+	else
+		return ..()
+
 /obj/item/storage/belt/marine/dutch
 	name = "ammo load rig"
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
@@ -499,8 +506,7 @@
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		var/obj/item/ammo_magazine/handful/H = new(src)
-		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -558,6 +564,35 @@
 /obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
 	for(var/i in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
+
+/obj/item/storage/belt/shotgun/lever_action
+	name = "\improper M276 pattern 45-70 loading rig"
+	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle."
+	icon_state = "r4t-ammobelt"
+	item_state = "marinebelt"
+	w_class = SIZE_LARGE
+	storage_slots = 14
+	max_w_class = SIZE_SMALL
+	max_storage_space = 28
+	can_hold = list(/obj/item/ammo_magazine/handful)
+
+/obj/item/storage/belt/shotgun/lever_action/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		var/obj/item/ammo_magazine/lever_action/M = W
+		dump_ammo_to(M, user, M.transfer_handful_amount)
+
+	if(istype(W, /obj/item/storage/belt/gun/m44/lever_action/attach_holster))
+		if(length(contents) || length(W.contents))
+			to_chat(user, SPAN_WARNING("Both holster and belt need to be empty to attach the holster!"))
+			return
+		to_chat(user, SPAN_NOTICE("You attach the holster to the belt, reducing total storage capacity but allowing it to fit the M44 revolver and its speedloaders."))
+		var/obj/item/storage/belt/gun/m44/lever_action/new_belt = new /obj/item/storage/belt/gun/m44/lever_action
+		qdel(W)
+		qdel(src)
+		user.put_in_hands(new_belt)
+		update_icon(user)
+	else
+		return ..()
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -715,7 +750,7 @@
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
-	if(content_watchers)
+	if(content_watchers && flap)
 		return
 	var/magazines = length(contents) - length(holstered_guns)
 	if(!magazines)
@@ -816,7 +851,7 @@
 			holster_slots[slot]["gun"] = W
 			update_gun_icon(slot)
 			break
-	..()	
+	..()
 
 /obj/item/storage/belt/gun/_item_removal(obj/item/W, atom/new_location)
 	if(isgun(W))
@@ -828,6 +863,32 @@
 			update_gun_icon(slot)
 			break
 	..()
+
+/obj/item/storage/belt/gun/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump)
+	if(user.action_busy)
+		return
+
+	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
+		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
+		if(ammo_dumping.current_rounds != 0)
+			if(contents.len < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				for(var/i = 1 to handfuls)
+					if(contents.len < storage_slots - 1)
+						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						ammo_dumping.current_rounds -= transferred_handfuls
+						handle_item_insertion(new_handful, TRUE,user)
+						update_icon(-transferred_handfuls)
+					else
+						break
+				playsound(user.loc, "rustle", 15, TRUE, 6)
+				ammo_dumping.update_icon()
+			else
+				to_chat(user, SPAN_WARNING("[src] is full."))
+
 
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern general pistol holster rig"
@@ -961,6 +1022,63 @@
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
+
+/obj/item/storage/belt/gun/m44/lever_action
+	name = "\improper M276 pattern 45-70 revolver rig"
+	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle. This version has reduced capacity in exchange for a whole revolver holster."
+	icon_state = "r4t-cowboybelt"
+	item_state = "r4t-cowboybelt"
+	w_class = SIZE_LARGE
+	storage_slots = 11
+	max_storage_space = 28
+	can_hold = list(
+		/obj/item/ammo_magazine/handful,
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/revolver
+		)
+	flap = FALSE
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 10,
+			"icon_y" = 3))
+
+/obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action))
+		var/obj/item/ammo_magazine/lever_action/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+	else
+		return ..()
+
+
+obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+	set category = "Object"
+	set name = "Detach Revolver Holster"
+	set src in usr
+	if(ishuman(usr))
+		if(contents.len)
+			to_chat(usr, SPAN_WARNING("The belt needs to be fully empty to remove the holster!"))
+			return
+		to_chat(usr, SPAN_NOTICE("You detach the holster from the belt."))
+		var/obj/item/storage/belt/shotgun/lever_action/new_belt = new /obj/item/storage/belt/shotgun/lever_action
+		var/obj/item/storage/belt/gun/m44/lever_action/attach_holster/new_holster = new /obj/item/storage/belt/gun/m44/lever_action/attach_holster
+		qdel(src)
+		usr.put_in_hands(new_belt)
+		usr.put_in_hands(new_holster)
+		update_icon(usr)
+	else
+		return
+
+/obj/item/storage/belt/gun/m44/lever_action/attach_holster
+	name = "\improper M276 revolver holster attachment"
+	desc = "This holster can be instantly attached to an empty M276 45-70 rig, giving up some storage space in exchange for holding a sidearm. You could also clip it to your belt standalone if you really wanted to."
+	icon_state = "r4t-attach-holster"
+	item_state = "r4t-attach-holster"
+	w_class = SIZE_LARGE
+	storage_slots = 1
+	max_storage_space = 1
+	can_hold = list(
+		/obj/item/weapon/gun/revolver
+	)
 
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"

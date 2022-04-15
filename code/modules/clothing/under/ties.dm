@@ -593,6 +593,25 @@
 		/obj/item/stack/nanopaste
 	)
 
+/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/surgical_tray))
+		var/obj/item/storage/surgical_tray/ST = W
+		if(!length(ST.contents))
+			return
+		if(length(contents) >= storage_slots)
+			to_chat(user, SPAN_WARNING("The surgical webbing vest is already full."))
+			return
+		if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
+		for(var/obj/item/I in ST)
+			if(length(contents) >= storage_slots)
+				break
+			ST.remove_from_storage(I)
+			attempt_item_insertion(I, TRUE, user)
+		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
+		return
+	return ..()
+
 /obj/item/storage/internal/accessory/surg_vest/equipped/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/pict_system(src)
 	new /obj/item/tool/surgery/scalpel(src)

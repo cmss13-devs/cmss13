@@ -161,7 +161,7 @@
 	icon_state = "ranks_nco"
 
 /obj/item/clothing/accessory/ranks/navy/e7
-	rank_short = "NE6"
+	rank_short = "NE7"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/navy/e7/pvst
@@ -265,6 +265,7 @@
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o10c/pvst
+	rank_short = "PvCM"
 	icon_state = "ranks_pvstofficer"
 
 /*################################################

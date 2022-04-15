@@ -1327,17 +1327,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggles_sound ^= SOUND_ADMINHELP
 
 				if("ui")
-					switch(UI_style)
-						if("dark")
-							UI_style = "midnight"
-						if("midnight")
-							UI_style = "orange"
-						if("orange")
-							UI_style = "old"
-						if("old")
-							UI_style = "white"
-						else
-							UI_style = "dark"
+					var/list/custom_human_huds_list = list("midnight" = new /datum/custom_hud(), //sorry but we can't let them use alien or robot huds
+															"dark" = new /datum/custom_hud/dark(),
+															"old" = new /datum/custom_hud/old(),
+															"orange" = new /datum/custom_hud/orange(),
+															"white" = new /datum/custom_hud/white(),
+															"glass" = new /datum/custom_hud/glass(),
+															"red" = new /datum/custom_hud/red()
+															)
+					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", custom_human_huds_list)
+					UI_style = ui_style_choice
 
 				if("UIcolor")
 					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null

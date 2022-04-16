@@ -1,3 +1,16 @@
+/mob/living/carbon/Xenomorph/attackby(obj/item/I, mob/user)
+	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL) && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(!iff_tag)
+			return ..()
+		user.visible_message(SPAN_NOTICE("[user] starts reprogramming \the [src]'s IFF tag..."), SPAN_NOTICE("You start reprogramming \the [src]'s IFF tag..."), max_distance = 3)
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
+			return
+		user.visible_message(SPAN_NOTICE("[user] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
+		iff_tag.faction_groups = H.get_id_faction_group()
+		return
+	return ..()
+
 /mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data, pierce=0)
 
 	if(lying)
@@ -244,3 +257,16 @@
 				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
+
+/mob/living/carbon/Xenomorph/get_target_lock(var/access_to_check)
+	if(isnull(access_to_check))
+		return
+
+	if(!iff_tag)
+		return ..()
+
+	if(!islist(access_to_check))
+		return access_to_check in iff_tag.faction_groups
+
+	var/list/overlap = iff_tag.faction_groups & access_to_check
+	return length(overlap)

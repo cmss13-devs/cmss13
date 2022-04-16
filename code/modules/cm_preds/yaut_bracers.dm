@@ -629,19 +629,21 @@
 		return
 
 	exploding = 1
+	var/turf/T = get_turf(src)
+	if(explosion_type == 0 && victim.stat == CONSCIOUS && is_ground_level(T.z))
+		message_admins("df")
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
-	var/turf/T = get_turf(src) // The explosion orginates from the bracer, not the pred
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)
 			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
-		if(explosion_type == 0 && is_ground_level(z))
+		if(explosion_type == 0 && is_ground_level(T.z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)

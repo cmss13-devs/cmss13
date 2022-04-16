@@ -54,7 +54,7 @@
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	pixel_x = 0
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -78,7 +78,7 @@
 "kN" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -155,7 +155,7 @@
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -210,7 +210,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -224,7 +224,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -291,19 +291,13 @@
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
-"LV" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/south_west_jungle)
 "LW" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "Mi" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -329,7 +323,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	icon_pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -369,12 +363,6 @@
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
-"TE" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2"
-	},
-/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "Wc" = (
 /obj/structure/flora/jungle/vines,
@@ -424,13 +412,13 @@ DF
 oO
 DF
 LW
-TE
+MY
 NE
 oA
 DF
 oO
 LW
-TE
+MY
 ub
 ar
 Rj
@@ -438,7 +426,7 @@ Rj
 (3,1,1) = {"
 dh
 vt
-LV
+Am
 LW
 lf
 oD
@@ -454,8 +442,8 @@ aq
 (4,1,1) = {"
 Wc
 vt
-LV
-LV
+Am
+Am
 Mi
 oD
 oD
@@ -471,7 +459,7 @@ kN
 LW
 kN
 lf
-LV
+Am
 vT
 eV
 oD
@@ -580,7 +568,7 @@ LW
 LW
 "}
 (12,1,1) = {"
-LV
+Am
 oD
 oD
 oD
@@ -612,7 +600,7 @@ pB
 LW
 "}
 (14,1,1) = {"
-LV
+Am
 qZ
 LW
 kN

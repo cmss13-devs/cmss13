@@ -960,7 +960,7 @@
 	if(!drain_power(usr, 50))
 		return
 
-	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
+	log_say("[usr.name != "Unknown" ? usr.name : "([usr.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [usr.key]) (JOB: [usr.job])")
 
 	var/list/heard = get_mobs_in_view(7, usr)
 	for(var/mob/M in heard)

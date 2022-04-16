@@ -38,6 +38,24 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
+	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		if(user.action_busy)
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+
+		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
+		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
+			return
+		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
+
+		playsound(src, 'sound/effects/meteorimpact.ogg', 40, 1)
+		playsound(src, 'sound/effects/ceramic_shatter.ogg', 40, 1)
+
+		take_damage(damage_cap)
+		return
 
 	//DECONSTRUCTION
 	switch(d_state)

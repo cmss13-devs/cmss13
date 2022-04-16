@@ -115,7 +115,7 @@
 /area/desert_dam/building/substation/northwest)
 "aav" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -144,7 +144,7 @@
 /area/desert_dam/interior/caves/east_caves)
 "aaA" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -582,7 +582,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -598,7 +598,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "abS" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -837,7 +837,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "acI" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
@@ -845,7 +845,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "acJ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
@@ -5222,15 +5222,6 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
-"apv" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "apw" = (
 /turf/open/floor/plating{
 	dir = 10;
@@ -7453,12 +7444,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/desert_dam/building/water_treatment_two/floodgate_control)
-"avw" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "avx" = (
 /obj/structure/machinery/r_n_d/protolathe,
 /obj/structure/machinery/light,
@@ -12588,7 +12573,7 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLa" = (
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -12799,7 +12784,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached9"
@@ -15043,12 +15028,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/garage)
-"aRY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
 "aRZ" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
@@ -17853,14 +17832,6 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"baY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/asphalt{
-	icon_state = "tile"
-	},
-/area/desert_dam/exterior/valley/valley_mining)
 "baZ" = (
 /turf/open/desert/rock/deep/transition{
 	dir = 1
@@ -20443,15 +20414,6 @@
 	icon_state = "red"
 	},
 /area/desert_dam/building/water_treatment_two/lobby)
-"bjx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/desert_dam/interior/dam_interior/hanger)
 "bjy" = (
 /turf/closed/shuttle{
 	icon_state = "swall7"
@@ -21004,16 +20966,6 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
-"blw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/item/tool/warning_cone,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/desert_dam/interior/dam_interior/hanger)
 "blx" = (
 /turf/closed/shuttle{
 	icon_state = "swall1"
@@ -40250,15 +40202,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/building/medical/lobby)
-"cvR" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
-/area/desert_dam/building/medical/west_wing_hallway)
 "cvS" = (
 /obj/structure/cargo_container{
 	icon_state = "ch_green 0,1"
@@ -40982,15 +40925,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/building/medical/lobby)
-"cya" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
-/area/desert_dam/building/medical/west_wing_hallway)
 "cyb" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -42651,7 +42585,7 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "cCY" = (
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -42662,7 +42596,7 @@
 /area/desert_dam/exterior/landing_pad_two)
 "cCZ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -42673,7 +42607,7 @@
 /area/desert_dam/exterior/landing_pad_two)
 "cDb" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -42907,7 +42841,7 @@
 /area/desert_dam/building/medical/east_wing_hallway)
 "cDK" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -42921,7 +42855,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -42932,7 +42866,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
@@ -49307,7 +49241,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "daL" = (
@@ -49332,7 +49266,7 @@
 /obj/structure/machinery/gibber,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "daQ" = (
@@ -49407,7 +49341,7 @@
 "dbh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -49431,7 +49365,7 @@
 "dbk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -49500,14 +49434,14 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbz" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbA" = (
@@ -49515,7 +49449,7 @@
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbB" = (
@@ -49526,7 +49460,7 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbC" = (
@@ -49545,14 +49479,14 @@
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbE" = (
 /obj/structure/machinery/chem_master/condimaster,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbF" = (
@@ -49565,7 +49499,7 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbG" = (
@@ -49573,7 +49507,7 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbH" = (
@@ -49584,7 +49518,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbI" = (
@@ -49600,7 +49534,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbK" = (
@@ -49630,15 +49564,15 @@
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/structure/machinery/light/small{
 	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "dbP" = (
@@ -49668,14 +49602,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dbY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/loading)
@@ -49685,7 +49619,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
@@ -49693,7 +49627,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dcb" = (
@@ -49765,7 +49699,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dco" = (
@@ -49778,7 +49712,7 @@
 "dcp" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
@@ -49798,7 +49732,7 @@
 "dcw" = (
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dcx" = (
@@ -49818,7 +49752,7 @@
 "dcz" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -49846,14 +49780,14 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dcN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -49865,14 +49799,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dcR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -49919,13 +49853,13 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "ddd" = (
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dde" = (
@@ -49939,7 +49873,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddi" = (
@@ -49948,7 +49882,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddl" = (
@@ -49960,7 +49894,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddm" = (
@@ -50064,11 +49998,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
@@ -50081,11 +50015,11 @@
 /obj/structure/largecrate/random,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/warehouse)
@@ -50096,11 +50030,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/warehouse)
@@ -50111,11 +50045,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
@@ -50128,14 +50062,14 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "ddP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "ddQ" = (
@@ -50161,7 +50095,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 4;
 	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
@@ -50169,7 +50103,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 4;
 	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	
 	},
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
@@ -50178,7 +50112,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 4;
 	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -50186,21 +50120,21 @@
 /obj/structure/machinery/conveyor{
 	dir = 4;
 	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	
 	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "ddY" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "ddZ" = (
@@ -50237,14 +50171,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deh" = (
@@ -50261,7 +50195,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "del" = (
@@ -50274,7 +50208,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -50292,11 +50226,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/loading)
@@ -50305,7 +50239,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "deq" = (
@@ -50314,13 +50248,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "der" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50351,7 +50285,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dex" = (
@@ -50377,7 +50311,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "deB" = (
@@ -50388,35 +50322,35 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deC" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deD" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deE" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deF" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deG" = (
@@ -50424,14 +50358,14 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deH" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deI" = (
@@ -50462,7 +50396,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "deQ" = (
@@ -50471,7 +50405,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "deR" = (
@@ -50490,31 +50424,31 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "deU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "deV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "deW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -50523,11 +50457,11 @@
 "deX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -50551,11 +50485,11 @@
 "dfa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -50564,7 +50498,7 @@
 "dfb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/loading)
@@ -50586,7 +50520,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dfi" = (
@@ -50594,14 +50528,14 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dfj" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dfk" = (
@@ -50609,7 +50543,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dfm" = (
@@ -50623,17 +50557,17 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dfo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/loading)
@@ -50642,7 +50576,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfq" = (
@@ -50652,7 +50586,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dfr" = (
@@ -50668,7 +50602,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dft" = (
@@ -50709,7 +50643,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfz" = (
@@ -50737,7 +50671,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfD" = (
@@ -50745,7 +50679,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfE" = (
@@ -50772,7 +50706,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfK" = (
@@ -50781,7 +50715,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfL" = (
@@ -50790,19 +50724,19 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfN" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfS" = (
@@ -50815,7 +50749,7 @@
 /obj/item/tool/shovel/spade,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -50833,7 +50767,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dgb" = (
@@ -50843,7 +50777,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dgc" = (
@@ -50851,7 +50785,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dgd" = (
@@ -50860,24 +50794,24 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dge" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
 "dgf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
@@ -50895,25 +50829,25 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dgm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "dgn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -50925,7 +50859,7 @@
 "dgp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -50934,11 +50868,11 @@
 "dgq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
@@ -50948,7 +50882,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgs" = (
@@ -50956,7 +50890,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgt" = (
@@ -50964,7 +50898,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgu" = (
@@ -50978,14 +50912,14 @@
 "dgv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "dgw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -50993,7 +50927,7 @@
 "dgy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
@@ -51017,13 +50951,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
@@ -51040,13 +50974,6 @@
 /obj/structure/prop/dam/large_boulder/boulder2,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
-"dgH" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_hydro)
 "dgI" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -51080,7 +51007,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dgM" = (
@@ -51109,7 +51036,7 @@
 "dgT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -51140,7 +51067,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dhc" = (
@@ -51150,7 +51077,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dhd" = (
@@ -51160,7 +51087,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dhe" = (
@@ -51168,20 +51095,20 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dhf" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dhg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
@@ -51191,11 +51118,11 @@
 "dhj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
@@ -51212,7 +51139,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "dhU" = (
@@ -51222,7 +51149,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "dhX" = (
@@ -51232,7 +51159,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dhZ" = (
@@ -51341,7 +51268,7 @@
 "diN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
@@ -51366,7 +51293,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -51430,7 +51357,7 @@
 "djy" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/desert/desert_shore/desert_shore1{
@@ -51477,7 +51404,7 @@
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "djZ" = (
@@ -51494,7 +51421,7 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dkb" = (
@@ -51525,7 +51452,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dke" = (
@@ -51599,7 +51526,7 @@
 "dko" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -51614,7 +51541,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dkH" = (
@@ -51624,7 +51551,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dkI" = (
@@ -51653,7 +51580,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dkM" = (
@@ -51669,11 +51596,11 @@
 "dkY" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dkZ" = (
@@ -51702,7 +51629,7 @@
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dle" = (
@@ -51712,7 +51639,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlu" = (
@@ -51750,7 +51677,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dlB" = (
@@ -51763,7 +51690,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlD" = (
@@ -51773,21 +51700,21 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlE" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlF" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlJ" = (
@@ -51808,7 +51735,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dlP" = (
@@ -51830,30 +51757,30 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlR" = (
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlS" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dlT" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dme" = (
@@ -51863,7 +51790,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmf" = (
@@ -51872,7 +51799,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmg" = (
@@ -51882,7 +51809,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmz" = (
@@ -51898,7 +51825,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
@@ -51909,7 +51836,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -51919,7 +51846,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dmO" = (
@@ -51928,14 +51855,14 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmP" = (
 /obj/structure/surface/table,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmQ" = (
@@ -51944,7 +51871,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmR" = (
@@ -51954,7 +51881,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dny" = (
@@ -51977,7 +51904,7 @@
 "dnC" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/desert/desert_shore/desert_shore1,
@@ -52078,7 +52005,7 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -52128,7 +52055,7 @@
 "dpD" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow,
@@ -52145,7 +52072,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dpG" = (
@@ -52153,13 +52080,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dpH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -52185,7 +52112,7 @@
 "dpK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
@@ -52241,7 +52168,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "dqs" = (
@@ -52249,14 +52176,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dqt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dqu" = (
@@ -52268,7 +52195,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dqJ" = (
@@ -52320,7 +52247,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "drg" = (
@@ -52342,7 +52269,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "drL" = (
@@ -52397,7 +52324,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "drZ" = (
@@ -52417,7 +52344,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsa" = (
@@ -52459,7 +52386,7 @@
 "dsi" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	tag = "icon-platform_deco (EAST)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge{
@@ -52519,7 +52446,7 @@
 "dsU" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /turf/open/desert/dirt{
 	icon_state = "dirt2"
@@ -52569,7 +52496,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dtw" = (
@@ -52582,21 +52509,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dtx" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dty" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dtz" = (
@@ -52672,7 +52599,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
-	tag = "icon-carpet15-15 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/office)
 "duo" = (
@@ -52681,7 +52608,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
-	tag = "icon-carpet11-12 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/office)
 "duq" = (
@@ -52701,7 +52628,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "duu" = (
@@ -52715,7 +52642,7 @@
 "duw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -52734,7 +52661,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "duy" = (
@@ -52792,7 +52719,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "duR" = (
@@ -52826,7 +52753,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
-	tag = "icon-carpet7-3 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/overseer_office)
 "duZ" = (
@@ -52835,7 +52762,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
-	tag = "icon-carpet15-15 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/overseer_office)
 "dvf" = (
@@ -52846,14 +52773,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dvg" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dvj" = (
@@ -52879,7 +52806,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dvo" = (
@@ -52900,7 +52827,7 @@
 "dvy" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow_edge,
@@ -52932,7 +52859,7 @@
 /obj/structure/bed,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -52963,7 +52890,7 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /turf/open/floor/prison{
 	dir = 9;
@@ -52994,7 +52921,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
@@ -53017,7 +52944,7 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dwm" = (
@@ -53028,7 +52955,7 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dws" = (
@@ -53099,7 +53026,7 @@
 "dxb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -53195,7 +53122,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dxM" = (
@@ -53206,7 +53133,7 @@
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxN" = (
@@ -53214,7 +53141,7 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxO" = (
@@ -53229,19 +53156,19 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxT" = (
@@ -53250,7 +53177,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxW" = (
@@ -53264,7 +53191,7 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
@@ -53279,7 +53206,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dyb" = (
@@ -53362,7 +53289,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dyT" = (
@@ -53375,17 +53302,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dyU" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dyW" = (
@@ -53402,12 +53329,12 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	
 	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (NORTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dyY" = (
@@ -53417,14 +53344,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dzb" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dzc" = (
@@ -53432,7 +53359,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteredcorner (NORTH)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dzd" = (
@@ -53444,7 +53371,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteredcorner (NORTH)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dzf" = (
@@ -53456,7 +53383,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/equipment)
 "dzh" = (
@@ -53499,7 +53426,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dzo" = (
@@ -53576,7 +53503,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzC" = (
@@ -53586,7 +53513,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzD" = (
@@ -53597,7 +53524,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzE" = (
@@ -53628,7 +53555,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAf" = (
@@ -53639,7 +53566,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAg" = (
@@ -53649,7 +53576,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAk" = (
@@ -53658,7 +53585,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAl" = (
@@ -53670,7 +53597,7 @@
 "dAn" = (
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dAo" = (
@@ -53728,7 +53655,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAH" = (
@@ -53762,7 +53689,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBb" = (
@@ -53771,7 +53698,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBc" = (
@@ -53785,7 +53712,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBd" = (
@@ -53797,7 +53724,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBe" = (
@@ -53807,7 +53734,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBf" = (
@@ -53817,7 +53744,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBh" = (
@@ -53830,7 +53757,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBj" = (
@@ -53842,7 +53769,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBo" = (
@@ -53923,7 +53850,7 @@
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -53936,7 +53863,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dBF" = (
@@ -53969,7 +53896,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dBN" = (
@@ -53998,13 +53925,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dBT" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (EAST)"
+	
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -54027,7 +53954,7 @@
 "dBW" = (
 /turf/open/floor{
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBY" = (
@@ -54035,7 +53962,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dCb" = (
@@ -54057,12 +53984,12 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dCf" = (
@@ -54079,7 +54006,7 @@
 	},
 /obj/structure/machinery/light/small{
 	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -54116,7 +54043,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dCz" = (
@@ -54136,7 +54063,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dCE" = (
@@ -54156,24 +54083,24 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCG" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCH" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (EAST)"
+	
 	},
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCI" = (
@@ -54192,14 +54119,14 @@
 	},
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCK" = (
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (SOUTHEAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCL" = (
@@ -54274,7 +54201,7 @@
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dCY" = (
@@ -54282,14 +54209,14 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dDa" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dDb" = (
@@ -54338,7 +54265,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "dDz" = (
@@ -54363,7 +54290,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "dDG" = (
@@ -54396,13 +54323,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dDL" = (
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dDM" = (
@@ -54411,7 +54338,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dDQ" = (
@@ -54431,7 +54358,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dEb" = (
@@ -54439,7 +54366,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dEe" = (
@@ -54531,7 +54458,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dEx" = (
@@ -54564,7 +54491,7 @@
 "dEX" = (
 /obj/structure/platform_decoration{
 	dir = 4;
-	tag = "icon-platform_deco (EAST)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge{
@@ -54589,7 +54516,7 @@
 "dFc" = (
 /obj/structure/platform_decoration{
 	dir = 4;
-	tag = "icon-platform_deco (EAST)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow_corner,
@@ -54624,7 +54551,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dFi" = (
@@ -54649,7 +54576,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dFn" = (
@@ -54680,7 +54607,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkbrowncorners3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dFL" = (
@@ -54690,7 +54617,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dFM" = (
@@ -54722,7 +54649,7 @@
 "dFR" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	tag = "icon-platform_deco (EAST)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
@@ -54749,23 +54676,23 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dFW" = (
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dFX" = (
 /obj/structure/machinery/shower{
 	dir = 8;
-	tag = "icon-shower (NORTH)"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dFZ" = (
@@ -54786,7 +54713,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dGr" = (
@@ -54840,7 +54767,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "dGy" = (
@@ -54890,7 +54817,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dGE" = (
@@ -54910,7 +54837,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dGI" = (
@@ -55013,7 +54940,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHj" = (
@@ -55023,7 +54950,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHk" = (
@@ -55040,7 +54967,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHm" = (
@@ -55055,7 +54982,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHp" = (
@@ -55065,7 +54992,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHr" = (
@@ -55078,7 +55005,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dHs" = (
@@ -55088,7 +55015,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dHt" = (
@@ -55159,7 +55086,7 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dHG" = (
@@ -55178,7 +55105,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHK" = (
@@ -55205,7 +55132,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dHS" = (
@@ -55214,7 +55141,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHT" = (
@@ -55297,19 +55224,19 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dIn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dIo" = (
@@ -55319,7 +55246,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dIp" = (
@@ -55331,7 +55258,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dIq" = (
@@ -55339,18 +55266,18 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dIr" = (
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dIs" = (
@@ -55363,7 +55290,7 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dIw" = (
@@ -55521,7 +55448,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dIT" = (
@@ -55572,7 +55499,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJj" = (
@@ -55581,7 +55508,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dJm" = (
@@ -55638,7 +55565,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dJK" = (
@@ -55649,7 +55576,7 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/administration/hallway)
 "dJL" = (
@@ -55669,7 +55596,7 @@
 "dJP" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -55682,7 +55609,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/lobby)
 "dJR" = (
@@ -55708,7 +55635,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dJV" = (
@@ -55717,7 +55644,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJW" = (
@@ -55728,7 +55655,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJX" = (
@@ -55752,7 +55679,7 @@
 "dJZ" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -55781,7 +55708,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
-	tag = "icon-carpet11-12 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/overseer_office)
 "dKd" = (
@@ -55789,7 +55716,7 @@
 /turf/open/floor/carpet{
 	dir = 6;
 	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "dKe" = (
@@ -55814,7 +55741,7 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -55825,7 +55752,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKl" = (
@@ -55835,7 +55762,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKm" = (
@@ -55869,7 +55796,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKt" = (
@@ -55887,7 +55814,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dKx" = (
@@ -55903,7 +55830,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "dKA" = (
@@ -55948,7 +55875,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKJ" = (
@@ -56020,7 +55947,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKU" = (
@@ -56034,7 +55961,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKV" = (
@@ -56045,7 +55972,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKW" = (
@@ -56056,7 +55983,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKY" = (
@@ -56104,7 +56031,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dLe" = (
@@ -56117,7 +56044,7 @@
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dLf" = (
@@ -56274,7 +56201,7 @@
 "dLN" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
+	
 	},
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/desert_shore1,
@@ -56362,7 +56289,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dMo" = (
@@ -56376,7 +56303,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dMq" = (
@@ -56397,7 +56324,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dMC" = (
@@ -56408,7 +56335,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dMN" = (
@@ -56461,7 +56388,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dNi" = (
@@ -56479,7 +56406,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dNl" = (
@@ -56499,7 +56426,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dNo" = (
@@ -56565,7 +56492,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dNC" = (
@@ -56583,7 +56510,7 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dNG" = (
@@ -56593,7 +56520,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dNI" = (
@@ -56605,7 +56532,7 @@
 "dNR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
@@ -56645,7 +56572,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dOa" = (
@@ -56653,7 +56580,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dOc" = (
@@ -56669,7 +56596,7 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -56678,7 +56605,7 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -56705,7 +56632,7 @@
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -56715,7 +56642,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOm" = (
@@ -56724,19 +56651,19 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOn" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dOo" = (
@@ -56744,7 +56671,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/break_room)
 "dOp" = (
@@ -56780,7 +56707,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOv" = (
@@ -56807,18 +56734,18 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dOy" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dOA" = (
@@ -56869,7 +56796,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dOJ" = (
@@ -56921,19 +56848,19 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/chemistry)
 "dOT" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dOV" = (
@@ -56980,7 +56907,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "whitepurple";
-	tag = "icon-whitepurple"
+	
 	},
 /area/desert_dam/building/medical/chemistry)
 "dPb" = (
@@ -56988,14 +56915,14 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "dPd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "whitepurplecorner";
-	tag = "icon-whitepurplecorner"
+	
 	},
 /area/desert_dam/building/medical/chemistry)
 "dPe" = (
@@ -57053,7 +56980,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPr" = (
@@ -57131,7 +57058,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPG" = (
@@ -57139,14 +57066,14 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dPH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -57194,7 +57121,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPN" = (
@@ -57209,7 +57136,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPR" = (
@@ -57230,7 +57157,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dPU" = (
@@ -57280,7 +57207,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dQb" = (
@@ -57384,7 +57311,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dQq" = (
@@ -57402,12 +57329,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -57417,13 +57344,13 @@
 "dQs" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dQt" = (
@@ -57432,14 +57359,14 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/primary_storage)
 "dQu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -57458,7 +57385,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -57489,13 +57416,13 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dQz" = (
@@ -57523,7 +57450,7 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -57550,7 +57477,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "dQF" = (
@@ -57578,7 +57505,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "dQJ" = (
@@ -57619,7 +57546,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "dQP" = (
@@ -57638,12 +57565,12 @@
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "dQR" = (
@@ -57654,7 +57581,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dQX" = (
@@ -57662,7 +57589,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dQY" = (
@@ -57743,19 +57670,19 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRl" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRm" = (
@@ -57763,13 +57690,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRn" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "cryocell1decal";
-	tag = "icon-cryocell1decal"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -57780,7 +57707,7 @@
 "dRo" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "cryocell2deval";
-	tag = "icon-cryocell2deval"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -57795,7 +57722,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRq" = (
@@ -57817,7 +57744,7 @@
 "dRs" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft";
-	tag = "icon-triagedecalleft"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -57831,7 +57758,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRu" = (
@@ -57841,7 +57768,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRv" = (
@@ -57864,7 +57791,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRA" = (
@@ -57873,7 +57800,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRC" = (
@@ -57897,7 +57824,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRF" = (
@@ -57918,7 +57845,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRH" = (
@@ -57940,7 +57867,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRJ" = (
@@ -57980,20 +57907,20 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRN" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	tag = "icon-pipe-j1 (WEST)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRO" = (
@@ -58002,7 +57929,7 @@
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	tag = "icon-pipe-j1 (WEST)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -58041,7 +57968,7 @@
 "dRR" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft";
-	tag = "icon-triagedecalleft"
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -58115,7 +58042,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRZ" = (
@@ -58130,7 +58057,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dSa" = (
@@ -58257,13 +58184,13 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dSr" = (
@@ -58273,7 +58200,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dSs" = (
@@ -58282,7 +58209,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dSt" = (
@@ -58291,7 +58218,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dSu" = (
@@ -58359,7 +58286,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dSH" = (
@@ -58422,7 +58349,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dSY" = (
@@ -58443,7 +58370,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTa" = (
@@ -58455,7 +58382,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTb" = (
@@ -58464,7 +58391,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dTc" = (
@@ -58520,7 +58447,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTk" = (
@@ -58530,7 +58457,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTl" = (
@@ -58550,7 +58477,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTo" = (
@@ -58625,7 +58552,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dTQ" = (
@@ -58640,7 +58567,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dTY" = (
@@ -58653,7 +58580,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUa" = (
@@ -58665,7 +58592,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUb" = (
@@ -58674,7 +58601,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUc" = (
@@ -58684,7 +58611,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUd" = (
@@ -58699,7 +58626,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUf" = (
@@ -58711,7 +58638,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUg" = (
@@ -58758,7 +58685,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUo" = (
@@ -58782,7 +58709,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dUr" = (
@@ -58791,14 +58718,14 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dUt" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUu" = (
@@ -58806,7 +58733,7 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUv" = (
@@ -58832,7 +58759,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUy" = (
@@ -58858,7 +58785,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUB" = (
@@ -58870,7 +58797,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUC" = (
@@ -58883,7 +58810,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUD" = (
@@ -58895,7 +58822,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUF" = (
@@ -58904,20 +58831,20 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUH" = (
@@ -58938,7 +58865,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUJ" = (
@@ -58947,7 +58874,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dUK" = (
@@ -58956,7 +58883,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUL" = (
@@ -58987,7 +58914,7 @@
 "dVb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -58995,7 +58922,7 @@
 "dVc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59022,7 +58949,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dVm" = (
@@ -59048,7 +58975,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dVp" = (
@@ -59063,7 +58990,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dVs" = (
@@ -59085,7 +59012,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dVv" = (
@@ -59098,7 +59025,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVx" = (
@@ -59108,20 +59035,20 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dVy" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVz" = (
@@ -59141,11 +59068,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59157,7 +59084,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59169,11 +59096,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59186,7 +59113,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVE" = (
@@ -59196,7 +59123,7 @@
 "dVF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59213,7 +59140,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dVI" = (
@@ -59221,7 +59148,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVJ" = (
@@ -59232,13 +59159,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs/robot,
@@ -59249,7 +59176,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dVM" = (
@@ -59261,7 +59188,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dVN" = (
@@ -59279,7 +59206,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVP" = (
@@ -59292,7 +59219,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dVS" = (
@@ -59303,7 +59230,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dVT" = (
@@ -59314,7 +59241,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dVU" = (
@@ -59323,7 +59250,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dVY" = (
@@ -59335,7 +59262,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dVZ" = (
@@ -59349,7 +59276,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dWa" = (
@@ -59358,7 +59285,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dWd" = (
@@ -59367,7 +59294,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWe" = (
@@ -59375,22 +59302,22 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4";
-	tag = "icon-xgib4"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/blood/gibs/robot,
 /turf/open/asphalt,
@@ -59398,7 +59325,7 @@
 "dWg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59406,11 +59333,11 @@
 "dWh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59430,7 +59357,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dWk" = (
@@ -59445,7 +59372,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dWl" = (
@@ -59458,7 +59385,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dWm" = (
@@ -59471,7 +59398,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dWn" = (
@@ -59488,7 +59415,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWo" = (
@@ -59502,7 +59429,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWp" = (
@@ -59512,7 +59439,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWq" = (
@@ -59523,7 +59450,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWr" = (
@@ -59540,7 +59467,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWu" = (
@@ -59564,7 +59491,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWz" = (
@@ -59584,7 +59511,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWB" = (
@@ -59592,7 +59519,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
-	tag = "icon-kitchen (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWC" = (
@@ -59614,7 +59541,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWG" = (
@@ -59626,7 +59553,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWJ" = (
@@ -59648,7 +59575,7 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWN" = (
@@ -59667,7 +59594,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWP" = (
@@ -59675,7 +59602,7 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWQ" = (
@@ -59685,7 +59612,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWT" = (
@@ -59727,7 +59654,7 @@
 "dXb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
@@ -59744,7 +59671,7 @@
 "dXe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -59759,7 +59686,7 @@
 "dXg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -60044,14 +59971,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dYy" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "dYz" = (
@@ -60187,14 +60114,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dZG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dZH" = (
@@ -60202,7 +60129,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dZI" = (
@@ -60213,7 +60140,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "dZL" = (
@@ -60291,7 +60218,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "eag" = (
@@ -60301,7 +60228,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "eak" = (
@@ -60318,7 +60245,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "eav" = (
@@ -60332,7 +60259,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaz" = (
@@ -60392,7 +60319,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaP" = (
@@ -60422,7 +60349,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "eaU" = (
@@ -60506,7 +60433,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "ebo" = (
@@ -60580,7 +60507,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ebA" = (
@@ -60614,7 +60541,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteredcorner (NORTH)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ebF" = (
@@ -60640,7 +60567,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ebK" = (
@@ -60651,7 +60578,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ebL" = (
@@ -60660,7 +60587,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ebM" = (
@@ -60679,7 +60606,7 @@
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "whiteyellowcorner";
-	tag = "icon-whiteyellowcorner (EAST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ebP" = (
@@ -60707,7 +60634,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/substation/southwest)
 "ebW" = (
@@ -60721,7 +60648,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ebZ" = (
@@ -60737,7 +60664,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "ecf" = (
@@ -60748,7 +60675,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "ecg" = (
@@ -60762,7 +60689,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ech" = (
@@ -60773,7 +60700,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eci" = (
@@ -60781,7 +60708,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecj" = (
@@ -60796,7 +60723,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eck" = (
@@ -60809,7 +60736,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecl" = (
@@ -60822,7 +60749,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecm" = (
@@ -60836,7 +60763,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecn" = (
@@ -60851,7 +60778,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eco" = (
@@ -60864,7 +60791,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecp" = (
@@ -60878,7 +60805,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecq" = (
@@ -60893,7 +60820,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecr" = (
@@ -60906,7 +60833,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ect" = (
@@ -60919,7 +60846,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "ecu" = (
@@ -60934,7 +60861,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "ecv" = (
@@ -60944,7 +60871,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "ecw" = (
@@ -60953,7 +60880,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "ecx" = (
@@ -60962,7 +60889,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecy" = (
@@ -60986,7 +60913,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecD" = (
@@ -61005,7 +60932,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/equipment)
 "ecH" = (
@@ -61013,7 +60940,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecI" = (
@@ -61039,7 +60966,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/equipment)
 "ecM" = (
@@ -61049,7 +60976,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecN" = (
@@ -61058,7 +60985,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecO" = (
@@ -61068,13 +60995,13 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "edo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
@@ -61093,7 +61020,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "edK" = (
@@ -61105,7 +61032,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "edL" = (
@@ -61118,7 +61045,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "edM" = (
@@ -61141,7 +61068,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "edQ" = (
@@ -61152,7 +61079,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "edR" = (
@@ -61169,7 +61096,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "edT" = (
@@ -61180,7 +61107,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "edU" = (
@@ -61190,7 +61117,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "edY" = (
@@ -61206,7 +61133,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eee" = (
@@ -61236,13 +61163,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "ees" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -61256,7 +61183,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eev" = (
@@ -61267,7 +61194,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/equipment)
 "eez" = (
@@ -61285,7 +61212,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eeD" = (
@@ -61296,7 +61223,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "eeE" = (
@@ -61306,7 +61233,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "eeK" = (
@@ -61316,11 +61243,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -61344,13 +61271,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "eeR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -61370,7 +61297,7 @@
 "eeT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -61382,7 +61309,7 @@
 "eeU" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
+	
 	},
 /turf/open/asphalt{
 	icon_state = "tile"
@@ -61395,7 +61322,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -61406,11 +61333,11 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -61428,7 +61355,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eft" = (
@@ -61473,7 +61400,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehE" = (
@@ -61483,7 +61410,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehF" = (
@@ -61493,7 +61420,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehG" = (
@@ -61503,7 +61430,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehH" = (
@@ -61513,7 +61440,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehI" = (
@@ -61523,7 +61450,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehJ" = (
@@ -61533,7 +61460,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehK" = (
@@ -61543,7 +61470,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehL" = (
@@ -61553,7 +61480,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehM" = (
@@ -61563,7 +61490,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "ehN" = (
@@ -61649,7 +61576,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "eic" = (
@@ -61657,7 +61584,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "eid" = (
@@ -61667,7 +61594,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/water_treatment_one/purification)
 "eiq" = (
@@ -61731,7 +61658,7 @@
 "esG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -61752,7 +61679,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/treatment_room)
 "eCk" = (
@@ -61789,7 +61716,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "eNU" = (
@@ -61807,7 +61734,7 @@
 "eVk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -61841,7 +61768,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "eYP" = (
@@ -61946,7 +61873,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "fsK" = (
@@ -62039,7 +61966,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/warehouse/loading)
 "fNw" = (
@@ -62084,7 +62011,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "fUO" = (
@@ -62101,7 +62028,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "fZd" = (
@@ -62110,7 +62037,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "gab" = (
@@ -62143,12 +62070,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "ghz" = (
@@ -62156,12 +62083,12 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "gls" = (
@@ -62169,13 +62096,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/restroom)
 "glx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -62208,7 +62135,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -62285,7 +62212,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "gBV" = (
@@ -62356,7 +62283,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "gLl" = (
@@ -62408,14 +62335,14 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "gUz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/substation/northwest)
 "gVm" = (
@@ -62499,7 +62426,7 @@
 "hjm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -62513,7 +62440,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "hnJ" = (
@@ -62606,7 +62533,7 @@
 "hAB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -62657,7 +62584,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "hOK" = (
@@ -62682,7 +62609,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop)
 "hTg" = (
@@ -62715,7 +62642,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "ibE" = (
@@ -62733,7 +62660,7 @@
 "ick" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -62755,7 +62682,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "igf" = (
@@ -62771,7 +62698,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "ilq" = (
@@ -62807,12 +62734,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "isZ" = (
@@ -62878,13 +62805,13 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "iAf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -62910,7 +62837,7 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "iNF" = (
@@ -62945,7 +62872,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "iTX" = (
@@ -62972,7 +62899,7 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "iYy" = (
@@ -62985,7 +62912,7 @@
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown3";
-	tag = "icon-cell_stripe"
+	
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "iYI" = (
@@ -63044,7 +62971,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop)
 "jvZ" = (
@@ -63101,7 +63028,7 @@
 "jMT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -63129,7 +63056,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "jVa" = (
@@ -63145,7 +63072,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/morgue)
 "jVv" = (
@@ -63222,7 +63149,7 @@
 "kry" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -63272,7 +63199,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "kIl" = (
@@ -63329,7 +63256,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitegreen";
-	tag = "icon-whitegreen (WEST)"
+	
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "kTX" = (
@@ -63344,7 +63271,7 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (SOUTHEAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "kVU" = (
@@ -63372,7 +63299,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "leZ" = (
@@ -63396,7 +63323,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/lobby)
 "liN" = (
@@ -63423,7 +63350,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "lmq" = (
@@ -63432,7 +63359,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "lnG" = (
@@ -63489,7 +63416,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "lDT" = (
@@ -63501,7 +63428,7 @@
 "lFc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -63542,7 +63469,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "lMc" = (
@@ -63581,7 +63508,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
-	tag = "icon-carpet15-15 (WEST)"
+	
 	},
 /area/desert_dam/building/administration/office)
 "lUU" = (
@@ -63663,18 +63590,18 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "mkd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "mkJ" = (
@@ -63788,7 +63715,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "mGo" = (
@@ -63814,7 +63741,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "mMm" = (
@@ -63831,7 +63758,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "mRU" = (
@@ -63845,7 +63772,7 @@
 "mTf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -63917,7 +63844,7 @@
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "njF" = (
@@ -63957,7 +63884,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop)
 "nsf" = (
@@ -64017,7 +63944,7 @@
 "nJZ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
@@ -64032,13 +63959,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "nRV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -64057,7 +63984,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkyellowcorners2";
-	tag = "icon-darkyellowcorners2 (NORTH)"
+	
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "nTp" = (
@@ -64186,7 +64113,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "otn" = (
@@ -64242,7 +64169,7 @@
 "oCD" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached2"
@@ -64293,7 +64220,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "oQx" = (
@@ -64337,7 +64264,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "pal" = (
@@ -64351,11 +64278,11 @@
 "pbC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -64478,7 +64405,7 @@
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (EAST)"
+	
 	},
 /area/desert_dam/building/substation/northwest)
 "pDW" = (
@@ -64522,7 +64449,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop)
 "pIe" = (
@@ -64538,7 +64465,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white (WEST)"
+	
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "pJW" = (
@@ -64690,7 +64617,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/medical/surgury_observation)
 "qxv" = (
@@ -64707,7 +64634,7 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "qyX" = (
@@ -64716,7 +64643,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "qzo" = (
@@ -64761,7 +64688,7 @@
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
+	
 	},
 /area/desert_dam/building/administration/archives)
 "qHF" = (
@@ -64831,7 +64758,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "qQz" = (
@@ -65003,7 +64930,7 @@
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "rFz" = (
@@ -65016,7 +64943,7 @@
 "rFU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -65082,7 +65009,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "rVo" = (
@@ -65128,7 +65055,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "sdu" = (
@@ -65136,7 +65063,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ser" = (
@@ -65152,7 +65079,7 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "sfK" = (
@@ -65176,7 +65103,7 @@
 "slN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -65193,7 +65120,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -65203,7 +65130,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop)
 "snD" = (
@@ -65235,7 +65162,7 @@
 "ssy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -65251,7 +65178,7 @@
 "svy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -65274,7 +65201,7 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "sEL" = (
@@ -65288,7 +65215,7 @@
 "sFe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -65300,7 +65227,7 @@
 "sLx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -65435,7 +65362,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "thp" = (
@@ -65482,12 +65409,12 @@
 "tuC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "tyc" = (
@@ -65504,7 +65431,7 @@
 "tAt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -65517,7 +65444,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "tBD" = (
@@ -65576,7 +65503,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/dorms/pool)
 "tLo" = (
@@ -65681,13 +65608,13 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "uml" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -65774,7 +65701,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "uMr" = (
@@ -65797,7 +65724,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "uNF" = (
@@ -65845,7 +65772,7 @@
 "uWT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -65859,7 +65786,7 @@
 "uYD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -65875,7 +65802,7 @@
 "vgm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -65884,13 +65811,13 @@
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteredcorner (NORTH)"
+	
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "vir" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/landmark/nightmare{
 	insert_tag = "shipgone"
@@ -65898,7 +65825,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "viV" = (
@@ -65908,7 +65835,7 @@
 "vnf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -65935,7 +65862,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "vte" = (
@@ -65963,7 +65890,7 @@
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "vzj" = (
@@ -65974,7 +65901,7 @@
 "vzp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -66030,7 +65957,7 @@
 "vHj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -66039,7 +65966,7 @@
 "vIx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -66057,11 +65984,11 @@
 "vMp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -66076,7 +66003,7 @@
 "vRc" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
@@ -66137,7 +66064,7 @@
 "wcc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -66177,7 +66104,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "woy" = (
@@ -66206,7 +66133,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "wrl" = (
@@ -66228,7 +66155,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellow";
-	tag = "icon-whiteyellow (WEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "wuC" = (
@@ -66238,7 +66165,7 @@
 "wya" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -66250,7 +66177,7 @@
 "wyR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -66362,7 +66289,7 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "wYO" = (
@@ -66385,7 +66312,7 @@
 "xaB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -66437,13 +66364,13 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
-	tag = "icon-floor_marked (SOUTHWEST)"
+	
 	},
 /area/desert_dam/building/cafeteria/loading)
 "xjY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -66497,7 +66424,7 @@
 "xoL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt,
@@ -66614,7 +66541,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "xJG" = (
@@ -66631,7 +66558,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "xLS" = (
@@ -66650,7 +66577,7 @@
 "xNB" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	
 	},
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached9"
@@ -66769,7 +66696,7 @@
 "ylS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
@@ -71524,20 +71451,20 @@ bil
 bil
 bil
 bil
-bjx
-bjx
-bjx
-bjx
-blw
-bjx
-bjx
-bjx
-bjx
-bjx
-bjx
-bjx
-bjx
-blw
+bil
+bil
+bil
+bil
+bhO
+bil
+bil
+bil
+bil
+bil
+bil
+bil
+bil
+bhO
 bss
 bsr
 afh
@@ -71946,43 +71873,43 @@ aPB
 aQg
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
-aRY
-aRY
+aQW
+aQW
 aQV
 aQV
 aQV
@@ -75034,20 +74961,20 @@ bil
 bil
 bil
 bil
-bjx
-bjx
-bjx
-bjx
-blw
-bjx
-bjx
-bjx
+bil
+bil
+bil
+bil
+bhO
+bil
+bil
+bil
 bnh
 bnJ
-bjx
-bjx
-bjx
-blw
+bil
+bil
+bil
+bhO
 bsw
 bhT
 buC
@@ -77595,11 +77522,11 @@ aNp
 aNp
 apO
 bfn
-aRY
-aRY
-aRY
-aRY
-aRY
+aQW
+aQW
+aQW
+aQW
+aQW
 bgN
 aSa
 bhu
@@ -83937,7 +83864,7 @@ bkU
 bUQ
 bkU
 bkU
-avw
+avs
 bmf
 brQ
 bpJ
@@ -87562,7 +87489,7 @@ oBR
 oBR
 xoL
 oBR
-dgH
+aSp
 vzp
 oBR
 oBR
@@ -102021,10 +101948,10 @@ dOj
 dPW
 dQf
 dQg
-cvR
+cnK
 cjX
 cmx
-cya
+cqt
 dOj
 dQG
 dQf
@@ -108226,7 +108153,7 @@ akO
 akO
 aph
 pvy
-apv
+aps
 ajP
 alE
 aot
@@ -117001,12 +116928,12 @@ bnA
 aPq
 aPx
 aTx
-baY
+ajW
 bnA
 awo
 aCo
 bnA
-baY
+ajW
 bnA
 bCI
 bCI

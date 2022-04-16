@@ -6,7 +6,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	
 	},
 /area/bigredv2/outside/c)
 "c" = (
@@ -18,7 +18,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "d" = (
@@ -26,7 +26,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "e" = (
@@ -34,7 +34,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "f" = (
@@ -45,14 +45,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "g" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	
 	},
 /area/bigredv2/outside/c)
 "h" = (
@@ -60,7 +60,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "i" = (
@@ -69,14 +69,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "l" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "m" = (
@@ -85,7 +85,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/outside/c)
 "R" = (

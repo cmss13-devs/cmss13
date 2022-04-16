@@ -4198,16 +4198,6 @@
 	icon_state = "cyan1"
 	},
 /area/strata/ag/interior/dorms/canteen)
-"alJ" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
-/area/strata/ag/interior/dorms/canteen)
 "alK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/omelette,
@@ -5378,7 +5368,7 @@
 /area/strata/ag/interior/landingzone_1)
 "apd" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement{
@@ -5396,7 +5386,7 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "apf" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -5404,7 +5394,7 @@
 /area/strata/ag/interior/landingzone_1)
 "aph" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -5412,7 +5402,7 @@
 /area/strata/ag/interior/landingzone_1)
 "api" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
@@ -5421,7 +5411,7 @@
 /area/strata/ag/interior/landingzone_1)
 "apj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -5429,7 +5419,7 @@
 /area/strata/ag/interior/landingzone_1)
 "apk" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -5437,7 +5427,7 @@
 /area/strata/ag/interior/landingzone_1)
 "apl" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement{
@@ -7104,14 +7094,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
-"atJ" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/strata{
-	icon_state = "fake_wood"
-	},
-/area/strata/ag/interior/outpost/security)
 "atL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/survivor_spawn,
@@ -15715,14 +15697,6 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/strata/ag/interior/outpost/engi)
-"aSg" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior/outpost/admin)
 "aSj" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -26429,7 +26403,7 @@
 "bCv" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_	name = "\improper Operating Room 1";
+	name = "\improper Operating Room 1";
 	req_access = null;
 	req_one_access = null
 	},
@@ -26690,7 +26664,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 0,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -26698,7 +26672,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 1,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -26709,7 +26683,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 2,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -30369,7 +30343,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_	name = "\improper Operating Room 1";
+	name = "\improper Operating Room 1";
 	req_access = null;
 	req_one_access = null
 	},
@@ -30457,15 +30431,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-"cfC" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "cfD" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light/small{
@@ -33126,7 +33091,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "WY 0,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
@@ -34055,7 +34020,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "green 2,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -34282,7 +34247,7 @@
 /area/strata/ug/interior/jungle/deep/tearlake_east)
 "eBo" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -36990,7 +36955,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "WY 1,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
@@ -37420,7 +37385,7 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "jPQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -38285,7 +38250,7 @@
 /area/strata/ug/interior/jungle/deep/south_engi)
 "loP" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement{
@@ -38482,7 +38447,7 @@
 /area/strata/ug/interior/jungle/deep/tearlake_north)
 "lEo" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -38705,14 +38670,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/gen/bball)
-"lVJ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/strata{
-	icon_state = "floor2"
-	},
-/area/strata/ug/interior/jungle/deep/structures/engi)
 "lXd" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -39073,7 +39030,7 @@
 /area/strata/ug/interior/jungle/deep/tearlake_south)
 "mvh" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/structure/machinery/floodlight/landing,
 /turf/open/asphalt/cement{
@@ -39328,15 +39285,6 @@
 /obj/structure/inflatable/popped,
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)
-"mRN" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/strata{
-	dir = 10;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ug/interior/jungle/deep/structures/engi)
 "mSK" = (
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/disposalpipe/segment,
@@ -39768,7 +39716,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "green 1,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -40594,7 +40542,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "WY 2,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
@@ -42356,7 +42304,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "green 0,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -42520,7 +42468,7 @@
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "sBg" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -42597,13 +42545,6 @@
 	icon_state = "cement1"
 	},
 /area/strata/ag/exterior/landingzone_2)
-"sGJ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/greengrid,
-/area/strata/ug/interior/jungle/deep/structures/engi)
 "sGR" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/largecrate/random/case/small,
@@ -45566,7 +45507,7 @@
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
@@ -53312,7 +53253,7 @@ ajo
 pDJ
 akv
 akZ
-alJ
+akZ
 ams
 bUt
 bAt
@@ -68779,7 +68720,7 @@ blN
 aOm
 blN
 blN
-aSg
+aOu
 blN
 aUY
 aWR
@@ -69545,7 +69486,7 @@ aFk
 aGB
 cik
 aJo
-aSg
+aOu
 blN
 aTU
 blN
@@ -69725,7 +69666,7 @@ aHh
 cea
 arx
 asB
-atJ
+aoG
 cdZ
 awa
 aHv
@@ -70301,7 +70242,7 @@ ijo
 ijo
 ijo
 bVS
-atJ
+aoG
 ary
 bXv
 gAm
@@ -70494,8 +70435,8 @@ bVV
 anC
 bVn
 apA
-atJ
-atJ
+aoG
+aoG
 bXv
 gAm
 bWM
@@ -70687,8 +70628,8 @@ cea
 cdZ
 aoC
 apA
-atJ
-atJ
+aoG
+aoG
 bXv
 gAm
 bWM
@@ -75139,12 +75080,12 @@ ccr
 aDm
 ccr
 ckM
-cfC
+aDm
 aEj
 ccr
 ccp
 ccr
-cfC
+aDm
 ccr
 ckM
 cdh
@@ -85428,7 +85369,7 @@ gih
 lZd
 gih
 vsy
-lVJ
+eEO
 ixD
 ixD
 ixD
@@ -85804,7 +85745,7 @@ gih
 khT
 lZd
 gih
-mRN
+dZm
 gih
 lZd
 jPc
@@ -87552,11 +87493,11 @@ ixD
 ixD
 ixD
 pqG
-sGJ
+bVO
 gih
 gih
 gih
-sGJ
+bVO
 gih
 vsy
 ekJ

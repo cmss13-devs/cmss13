@@ -42,7 +42,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "dz" = (
@@ -51,7 +51,7 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "el" = (
@@ -80,7 +80,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_east)
 "kG" = (
@@ -88,7 +88,7 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "kL" = (
@@ -99,7 +99,7 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "kX" = (
@@ -110,7 +110,7 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "oT" = (
@@ -121,7 +121,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "pJ" = (
@@ -129,7 +129,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/se)
 "pV" = (
@@ -143,7 +143,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	
 	},
 /area/bigredv2/caves_east)
 "qy" = (
@@ -174,7 +174,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "uk" = (
@@ -216,7 +216,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	
 	},
 /area/bigredv2/caves_east)
 "xa" = (
@@ -226,7 +226,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4;
 	icon_state = "officechair_white";
-	tag = ""
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -248,7 +248,7 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "Aq" = (
@@ -256,7 +256,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "AY" = (
@@ -268,7 +268,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "EV" = (
@@ -276,7 +276,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	
 	},
 /area/bigredv2/outside/se)
 "Ge" = (
@@ -284,7 +284,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHEAST)"
+	
 	},
 /area/bigredv2/caves_east)
 "Gm" = (
@@ -294,7 +294,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "GJ" = (
@@ -303,20 +303,20 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	
 	},
 /area/bigredv2/caves_east)
 "HH" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	
 	},
 /area/bigredv2/caves_east)
 "Ih" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "IS" = (
@@ -362,7 +362,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	
 	},
 /area/bigredv2/outside/se)
 "OM" = (
@@ -370,7 +370,7 @@
 /turf/open/floor{
 	dir = 10;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (SOUTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "Pf" = (
@@ -393,7 +393,7 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "Qo" = (
@@ -419,14 +419,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	
 	},
 /area/bigredv2/caves_east)
 "Vg" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "Vn" = (
@@ -445,14 +445,14 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	
 	},
 /area/bigredv2/outside/se)
 "XU" = (
 /turf/open/floor{
 	dir = 10;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (SOUTHWEST)"
+	
 	},
 /area/bigredv2/caves_east)
 "Yo" = (
@@ -475,7 +475,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHEAST)"
+	
 	},
 /area/bigredv2/caves_east)
 "ZK" = (

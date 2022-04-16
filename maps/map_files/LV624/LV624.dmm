@@ -6949,25 +6949,25 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDJ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDK" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDL" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -11105,7 +11105,7 @@
 /area/lv624/lazarus/engineering)
 "aTt" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -11119,7 +11119,7 @@
 /area/lv624/lazarus/engineering)
 "aTv" = (
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -22413,12 +22413,6 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
-"wYp" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/south_east_jungle)
 "wZc" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
@@ -53419,7 +53413,7 @@ aNo
 aNo
 aNo
 apu
-wYp
+sFt
 meP
 wpw
 fyA
@@ -53876,7 +53870,7 @@ phU
 apu
 apu
 apu
-wYp
+sFt
 meP
 jzZ
 fEn
@@ -54332,12 +54326,12 @@ muv
 phU
 apu
 apu
-wYp
-wYp
+sFt
+sFt
 aJi
 jzZ
 jzZ
-wYp
+sFt
 lBw
 wpw
 wpw
@@ -54564,7 +54558,7 @@ apu
 meP
 lBw
 meP
-wYp
+sFt
 bbj
 wpw
 wpw
@@ -55249,7 +55243,7 @@ apu
 apu
 meP
 meP
-wYp
+sFt
 meP
 fEn
 wpw
@@ -56160,7 +56154,7 @@ taa
 apN
 wNB
 meP
-wYp
+sFt
 cJA
 wpw
 wpw
@@ -56615,13 +56609,13 @@ aky
 cqE
 aqf
 sCJ
-wYp
-wYp
+sFt
+sFt
 meP
 wpw
 wpw
 wpw
-wYp
+sFt
 fEn
 lBw
 lBw
@@ -57072,7 +57066,7 @@ rzT
 apN
 gXy
 meP
-wYp
+sFt
 jzZ
 wpw
 wpw
@@ -58440,7 +58434,7 @@ apu
 apu
 apu
 meP
-wYp
+sFt
 cMj
 lBw
 wpw
@@ -58897,7 +58891,7 @@ meP
 meP
 meP
 lBw
-wYp
+sFt
 wpw
 wpw
 wpw
@@ -59352,13 +59346,13 @@ apu
 jzZ
 sYY
 wpw
-wYp
+sFt
 wpw
 wpw
 wpw
 wpw
 jzZ
-wYp
+sFt
 lBw
 lBw
 aac
@@ -59577,7 +59571,7 @@ phU
 apu
 apu
 apu
-wYp
+sFt
 lBw
 eeW
 wpw
@@ -59806,13 +59800,13 @@ apu
 pNr
 jzZ
 meP
-wYp
+sFt
 wpw
 wpw
 wpw
 wpw
 sPy
-wYp
+sFt
 meP
 meP
 lBw
@@ -60033,7 +60027,7 @@ apu
 meP
 meP
 gWI
-wYp
+sFt
 wpw
 lBw
 fyA
@@ -60486,7 +60480,7 @@ apQ
 apN
 apu
 jzZ
-wYp
+sFt
 meP
 wpw
 wpw
@@ -60934,11 +60928,11 @@ dZY
 djI
 rtD
 vfR
-wYp
+sFt
 fEn
 bte
-wYp
-wYp
+sFt
+sFt
 meP
 fEn
 wpw

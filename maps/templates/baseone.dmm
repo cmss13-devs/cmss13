@@ -2913,7 +2913,7 @@
 "gJ" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_	name = "\improper Operating Room 1";
+	name = "\improper Operating Room 1";
 	req_access_txt = "201";
 	req_one_access = null
 	},
@@ -2951,7 +2951,7 @@
 "gM" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_	name = "\improper Operating Room 2";
+	name = "\improper Operating Room 2";
 	req_access_txt = "201";
 	req_one_access = null
 	},

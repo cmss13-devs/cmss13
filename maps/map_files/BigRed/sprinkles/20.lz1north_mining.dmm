@@ -7,7 +7,7 @@
 /obj/item/tool/shovel,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "c" = (
@@ -16,7 +16,7 @@
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "d" = (
@@ -25,13 +25,13 @@
 /obj/item/clothing/mask/gas,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "e" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "f" = (
@@ -39,7 +39,7 @@
 /obj/item/storage/toolbox,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "g" = (
@@ -47,7 +47,7 @@
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "h" = (
@@ -55,21 +55,21 @@
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "i" = (
 /obj/item/ore,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "j" = (
 /obj/effect/decal/remains/human,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "k" = (
@@ -80,7 +80,7 @@
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "l" = (
@@ -93,14 +93,14 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "m" = (
 /obj/item/tool/shovel,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "n" = (
@@ -110,14 +110,14 @@
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "p" = (
 /obj/item/tool/warning_cone,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "q" = (
@@ -126,7 +126,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "r" = (
@@ -135,7 +135,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "s" = (
@@ -144,7 +144,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "t" = (
@@ -152,7 +152,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "u" = (
@@ -171,7 +171,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 "P" = (
@@ -179,7 +179,7 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_north)
 

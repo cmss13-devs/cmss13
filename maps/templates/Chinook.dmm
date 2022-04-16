@@ -915,10 +915,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
-"de" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/sec)
 "df" = (
 /turf/closed/wall/almayer/outer,
 /area/space)
@@ -1373,15 +1369,6 @@
 	icon_state = "blue"
 	},
 /area/adminlevel/chinook/offices)
-"eL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/adminlevel/chinook/offices)
 "eN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -1527,12 +1514,6 @@
 	icon_state = "rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
-"fx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/offices)
 "fy" = (
 /obj/structure/sink{
 	dir = 4;
@@ -2482,15 +2463,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook/engineering)
-"iA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "iC" = (
 /obj/structure/target{
 	name = "punching bag"
@@ -4501,12 +4473,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
-"pw" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/cargo)
 "px" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/defibrillator,
@@ -4632,12 +4598,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook/engineering)
-"pO" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "pP" = (
 /obj/structure/platform{
 	dir = 1
@@ -4918,12 +4878,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook)
-"qJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "qK" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Provost Offices"
@@ -6572,15 +6526,6 @@
 	icon_state = "wood"
 	},
 /area/adminlevel/chinook/offices)
-"wr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "wt" = (
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 31;
@@ -6751,15 +6696,6 @@
 	icon_state = "kitchen"
 	},
 /area/space)
-"xa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/adminlevel/chinook/offices)
 "xd" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -6806,12 +6742,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
-"xk" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook)
 "xn" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/structure/extinguisher_cabinet{
@@ -6921,15 +6851,6 @@
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/offices)
-"xQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped"
-	},
-/area/adminlevel/chinook/engineering)
 "xR" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -7295,12 +7216,6 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook/sec)
-"zH" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "zI" = (
 /obj/structure/prop/almayer/name_stencil{
 	icon_state = "chinook2";
@@ -8405,12 +8320,6 @@
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/sec)
-"Ea" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "Ed" = (
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer{
@@ -8673,15 +8582,6 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook/sec)
-"Ft" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "Fu" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
@@ -8876,15 +8776,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
-"Gg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "Gi" = (
 /obj/structure/platform{
 	dir = 1
@@ -9403,12 +9294,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/adminlevel/chinook/engineering)
-"HW" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
 	},
 /area/adminlevel/chinook/engineering)
 "HX" = (
@@ -10027,15 +9912,6 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/chinook/cargo)
-"KL" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "KM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -10618,14 +10494,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/medical)
-"MR" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/adminlevel/chinook/engineering)
 "MS" = (
 /obj/structure/janitorialcart,
 /obj/item/tool/mop,
@@ -10900,12 +10768,6 @@
 	icon_state = "sterile_green"
 	},
 /area/adminlevel/chinook/medical)
-"NU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
 "NW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/security/almayer_network{
@@ -10947,12 +10809,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/medical)
-"Oe" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook)
 "Of" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -11442,15 +11298,6 @@
 	icon_state = "green"
 	},
 /area/adminlevel/chinook)
-"PO" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "PP" = (
 /turf/open/floor/almayer{
 	icon_state = "green"
@@ -11805,15 +11652,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
-"Rg" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
-/area/adminlevel/chinook/engineering)
 "Ri" = (
 /obj/structure/surface/table/almayer,
 /obj/item/fuelCell,
@@ -11891,20 +11729,11 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/chinook/engineering)
-"Ru" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "Rw" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	id = "medcryobeds";
-	id_	name = "Medical Hypersleep Access";
+	name = "Medical Hypersleep Access";
 	req_access = null;
 	req_one_access = null
 	},
@@ -12902,12 +12731,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
-"Vj" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "Vk" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -13008,12 +12831,6 @@
 	icon_state = "wood"
 	},
 /area/adminlevel/chinook/offices)
-"VI" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "VJ" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -13235,15 +13052,6 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/chinook/cryo)
-"WC" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/adminlevel/chinook)
 "WD" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
@@ -13530,27 +13338,12 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook/sec)
-"Xr" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "Xs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/light,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
-"Xt" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 26
-	},
-/turf/open/floor/almayer{
-	dir = 4;
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/sec)
@@ -13724,15 +13517,6 @@
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/sec)
-"XT" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "XU" = (
 /obj/structure/machinery/door_control{
 	id = "provostinterrog";
@@ -13744,18 +13528,6 @@
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/sec)
-"XV" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
-"XY" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook)
 "XZ" = (
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/almayer{
@@ -13878,12 +13650,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
-"Yp" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "Yq" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -14101,12 +13867,6 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/chinook)
-"YW" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silvercorner"
-	},
-/area/adminlevel/chinook)
 "YX" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -14150,7 +13910,7 @@
 "Zc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	id = "medcryobeds";
-	id_	name = "Medical Hypersleep Access";
+	name = "Medical Hypersleep Access";
 	req_access = null;
 	req_one_access = null
 	},
@@ -14158,15 +13918,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/adminlevel/chinook/medical)
-"Ze" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/adminlevel/chinook/sec)
 "Zf" = (
 /obj/structure/sign/poster{
 	pixel_y = -32
@@ -16423,7 +16174,7 @@ SP
 tO
 ag
 wp
-xk
+ag
 ag
 ag
 ag
@@ -18181,7 +17932,7 @@ vl
 Zi
 Xx
 jF
-fx
+bZ
 vl
 Yc
 Yc
@@ -18835,7 +18586,7 @@ sr
 Xx
 Xm
 vb
-wr
+nW
 Vz
 Vz
 Vz
@@ -19091,13 +18842,13 @@ Xm
 Wq
 qZ
 jY
-zH
-zH
-zH
-Ft
-zH
-zH
-zH
+lz
+lz
+lz
+tY
+lz
+lz
+lz
 HO
 KY
 WF
@@ -19354,7 +19105,7 @@ GS
 Hb
 UK
 Lc
-MR
+Mf
 Lc
 PZ
 UK
@@ -19456,7 +19207,7 @@ RU
 RU
 RU
 RU
-xa
+uN
 RU
 rD
 Xx
@@ -19718,7 +19469,7 @@ vl
 RU
 RU
 RU
-xa
+uN
 RU
 RU
 sE
@@ -19987,9 +19738,9 @@ FR
 GM
 UK
 Hl
-HW
-HW
-HW
+qL
+qL
+qL
 GP
 Qn
 UK
@@ -20254,14 +20005,14 @@ UK
 Yi
 bz
 zC
-Rg
+GS
 eU
 cM
 cM
 cM
 cM
 uM
-Rg
+GS
 Ky
 Hm
 Hm
@@ -20271,7 +20022,7 @@ Nq
 yf
 sT
 NA
-HW
+qL
 sl
 XH
 al
@@ -20855,7 +20606,7 @@ cN
 Ns
 Xx
 jF
-eL
+eu
 Xx
 jm
 YC
@@ -21007,13 +20758,13 @@ IR
 WF
 bz
 Pq
-HW
-Rg
-HW
-HW
+qL
+GS
+qL
+qL
 Xd
 XJ
-HW
+qL
 ZB
 Il
 Rl
@@ -21530,7 +21281,7 @@ eG
 pT
 eG
 eG
-PO
+MD
 OZ
 cv
 zC
@@ -21760,11 +21511,11 @@ lO
 ZI
 WF
 KT
-Vj
+lz
 ZZ
-Vj
+lz
 ZZ
-Vj
+lz
 jZ
 WF
 WB
@@ -21780,10 +21531,10 @@ bz
 zC
 Ig
 Ig
-HW
-HW
-HW
-HW
+qL
+qL
+qL
+qL
 zC
 zC
 zC
@@ -22126,7 +21877,7 @@ XI
 RU
 vl
 jT
-xa
+uN
 RU
 RU
 RU
@@ -22622,7 +22373,7 @@ Xm
 Xm
 Yc
 Yc
-eL
+eu
 Zi
 fk
 fr
@@ -22666,7 +22417,7 @@ Yj
 TD
 UA
 ZT
-xQ
+mA
 UK
 Iv
 Jy
@@ -23422,7 +23173,7 @@ Cj
 ZZ
 ZZ
 Vz
-wr
+nW
 ZZ
 ZZ
 Cj
@@ -23650,34 +23401,34 @@ Ys
 Wq
 qZ
 jY
-Vj
 lz
-Vj
-Vj
-Vj
+lz
+lz
+lz
+lz
 tY
-Vj
-Vj
-Vj
-Vj
-Vj
+lz
+lz
+lz
+lz
+lz
 rf
 vg
-Vj
-Vj
-WC
+lz
+lz
+tY
 ZZ
-Vj
+lz
 ZZ
-Vj
-Vj
-Vj
+lz
+lz
+lz
 UC
-Vj
-Vj
+lz
+lz
 wt
 vg
-Vj
+lz
 Xw
 ZZ
 ZZ
@@ -23774,7 +23525,7 @@ Ys
 Ys
 Ys
 Ys
-iA
+it
 qZ
 ZI
 Tm
@@ -23905,7 +23656,7 @@ KT
 ZZ
 jZ
 Tm
-NU
+BE
 TQ
 TQ
 og
@@ -23920,7 +23671,7 @@ NJ
 JK
 CE
 Tm
-Oe
+yR
 qZ
 ZZ
 WF
@@ -24036,7 +23787,7 @@ TQ
 TQ
 TQ
 oh
-pO
+ld
 wj
 wj
 wj
@@ -24436,9 +24187,9 @@ dJ
 YH
 ZZ
 ZZ
-Vj
-Vj
-Vj
+lz
+lz
+lz
 WF
 Wq
 qZ
@@ -24732,12 +24483,12 @@ As
 XK
 WV
 HG
-pw
+cx
 Gz
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
 bC
 al
 af
@@ -24847,24 +24598,24 @@ Vq
 dn
 qS
 Nt
-pw
+cx
 te
 tv
-pw
+cx
 rA
 Qc
-pw
+cx
 dg
 As
 MB
 Vq
 HG
-pw
-pw
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
+cx
+cx
 bC
 al
 af
@@ -24974,23 +24725,23 @@ Nw
 BU
 uC
 Vq
-pw
+cx
 Vq
-pw
-pw
+cx
+cx
 uS
-pw
-pw
+cx
+cx
 Nc
 As
 UY
 WV
 Kd
 JB
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
 dW
 bC
 al
@@ -25048,12 +24799,12 @@ iC
 lO
 QR
 Tm
-NU
+BE
 TQ
 TQ
 oH
 SL
-qJ
+kI
 SL
 SL
 SL
@@ -25063,7 +24814,7 @@ IA
 JK
 CE
 Tm
-Gg
+it
 qZ
 ZI
 WF
@@ -25099,25 +24850,25 @@ zR
 Iv
 cs
 hi
-pw
+cx
 hS
-pw
+cx
 AX
-pw
-pw
+cx
+cx
 Gu
 ST
-pw
+cx
 op
 Ke
 fi
 os
 ik
 qS
-pw
-pw
+cx
+cx
 TA
-pw
+cx
 kv
 bC
 al
@@ -25228,23 +24979,23 @@ cQ
 jb
 JB
 hS
-pw
+cx
 me
-pw
-pw
+cx
+cx
 QB
-pw
-pw
-pw
+cx
+cx
+cx
 zL
 Yk
 Yk
 Yk
 uC
-pw
-pw
+cx
+cx
 vZ
-pw
+cx
 Ao
 bC
 al
@@ -25331,7 +25082,7 @@ WF
 WF
 Wq
 qZ
-YW
+tU
 nW
 Vz
 ZZ
@@ -25361,17 +25112,17 @@ Rp
 ls
 JB
 VN
-pw
-pw
+cx
+cx
 zL
-pw
-pw
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
+cx
+cx
 Np
-pw
+cx
 Sc
 Ke
 al
@@ -25488,18 +25239,18 @@ Vq
 Vq
 pl
 lb
-pw
-pw
+cx
+cx
 lG
-pw
-pw
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
+cx
+cx
 cg
-pw
-pw
+cx
+cx
 Ke
 al
 af
@@ -25584,18 +25335,18 @@ NN
 TY
 WF
 Xk
-XY
-XY
-Vj
-Vj
-Vj
-Vj
-Vj
-WC
-Ea
-XY
-XY
-Vj
+NN
+NN
+lz
+lz
+lz
+lz
+lz
+tY
+lz
+NN
+NN
+lz
 Xw
 qZ
 Xv
@@ -25616,17 +25367,17 @@ Vq
 Vq
 jb
 JB
-pw
+cx
 Ke
-pw
 cx
 cx
-pw
-pw
-pw
-pw
-pw
-pw
+cx
+cx
+cx
+cx
+cx
+cx
+cx
 Ke
 al
 al
@@ -25746,9 +25497,9 @@ qS
 Cn
 As
 vU
-pw
+cx
 Jl
-pw
+cx
 Wd
 Rf
 Rf
@@ -25873,7 +25624,7 @@ Oj
 Sc
 As
 BC
-pw
+cx
 FB
 HR
 iT
@@ -26106,7 +25857,7 @@ YL
 Br
 Wq
 qZ
-YW
+tU
 Vz
 Vz
 Vz
@@ -26119,13 +25870,13 @@ ZZ
 ZZ
 ZZ
 ZZ
-wr
+nW
 Vz
 Vz
 ZZ
 Vz
 Vz
-wr
+nW
 Vz
 Vz
 Vz
@@ -26228,7 +25979,7 @@ FE
 RI
 oJ
 gc
-XT
+Vw
 YL
 Br
 Wq
@@ -26339,11 +26090,11 @@ ZI
 WF
 Br
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZJ
 ZQ
 YL
@@ -26359,27 +26110,27 @@ Yb
 YL
 Br
 KT
-Vj
+lz
 tY
-Vj
-Vj
-Vj
-Vj
-Vj
-Vj
-Vj
-Vj
-Vj
+lz
+lz
+lz
+lz
+lz
+lz
+lz
+lz
+lz
 tY
 Ks
-Vj
+lz
 OU
 ZZ
 ZZ
-Vj
-Vj
-Vj
-Vj
+lz
+lz
+lz
+lz
 ZZ
 ZZ
 OU
@@ -26593,12 +26344,12 @@ ZI
 WF
 Br
 ZQ
-XV
-XV
+Mh
+Mh
 ZQ
-XV
-Ze
-XV
+Mh
+zS
+Mh
 VA
 XS
 gc
@@ -26621,11 +26372,11 @@ ok
 RK
 gc
 gN
-Yp
-Yp
-KL
-Yp
-Yp
+Cf
+Cf
+bb
+Cf
+Cf
 Br
 EM
 Li
@@ -26730,10 +26481,10 @@ Yb
 GA
 YY
 Ej
-Yp
-Yp
-KL
-Yp
+Cf
+Cf
+bb
+Cf
 ZQ
 Ub
 Yb
@@ -26857,10 +26608,10 @@ Yb
 GA
 YY
 GA
-XV
-XV
+Mh
+Mh
 pY
-XV
+Mh
 ZQ
 Ub
 Yb
@@ -27125,15 +26876,15 @@ Le
 DO
 cS
 HM
-Ze
+zS
 ZQ
 gc
 YQ
-Ze
+zS
 ZQ
-XV
-XV
-XV
+Mh
+Mh
+Mh
 Br
 uV
 nx
@@ -27354,11 +27105,11 @@ ZZ
 Ff
 HJ
 Jr
-KL
-Yp
-Yp
-Yp
-Yp
+bb
+Cf
+Cf
+Cf
+Cf
 ZQ
 Vh
 ZQ
@@ -27374,20 +27125,20 @@ zD
 Yb
 ZQ
 CW
-Yp
-KL
-Yp
-Yp
-Yp
+Cf
+bb
+Cf
+Cf
+Cf
 Cf
 ZQ
-Yp
-KL
+Cf
+bb
 ng
 GA
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 Br
 Xl
 Xl
@@ -27481,11 +27232,11 @@ ZZ
 Ff
 HJ
 ZQ
-XV
-XV
-XV
-XV
-Ze
+Mh
+Mh
+Mh
+Mh
+zS
 ZQ
 Vh
 ZQ
@@ -27627,21 +27378,21 @@ gc
 is
 Yb
 qX
-XV
-XV
-XV
-XV
-XV
-XV
-XV
+Mh
+Mh
+Mh
+Mh
+Mh
+Mh
+Mh
 vE
 pY
-XV
-XV
-XV
-XV
-XV
-XV
+Mh
+Mh
+Mh
+Mh
+Mh
+Mh
 Br
 Xl
 Xl
@@ -27746,12 +27497,12 @@ Yb
 YL
 SK
 hw
-Yp
+Cf
 LB
 gc
 Pb
 dM
-Yp
+Cf
 ZJ
 YL
 gc
@@ -28000,7 +27751,7 @@ Yb
 YL
 SK
 GA
-XV
+Mh
 be
 gc
 ZP
@@ -28247,7 +27998,7 @@ Mh
 Og
 Pv
 QL
-Ru
+zS
 TZ
 RN
 Yb
@@ -28259,7 +28010,7 @@ ZQ
 HX
 ZQ
 gc
-XT
+Vw
 lh
 ZQ
 Ub
@@ -29016,8 +28767,8 @@ lh
 ZQ
 Ub
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
 Ub
 ZQ
@@ -29143,8 +28894,8 @@ lh
 ZQ
 Ub
 ZQ
-XV
-XV
+Mh
+Mh
 ZQ
 Ub
 mO
@@ -29405,10 +29156,10 @@ Br
 Br
 lh
 Gb
-Yp
-KL
-Yp
-Yp
+Cf
+bb
+Cf
+Cf
 ZJ
 Bp
 DO
@@ -29786,10 +29537,10 @@ Xs
 Br
 uG
 qX
-XV
-XV
-XV
-XV
+Mh
+Mh
+Mh
+Mh
 BW
 gc
 DO
@@ -30021,22 +29772,22 @@ al
 al
 Bc
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 ZJ
 lh
 Gb
-Yp
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 gc
 Bu
 YL
@@ -30046,8 +29797,8 @@ gc
 gc
 gc
 xL
-KL
-Yp
+bb
+Cf
 Qz
 Qz
 Fr
@@ -30165,7 +29916,7 @@ lh
 lh
 FP
 gc
-XT
+Vw
 ZQ
 gW
 ZQ
@@ -30275,22 +30026,22 @@ al
 al
 Bc
 ZQ
-XV
-XV
+Mh
+Mh
 ZQ
-XV
-XV
-XV
+Mh
+Mh
+Mh
 VA
 lh
 qX
-XV
+Mh
 ZQ
-XV
-XV
+Mh
+Mh
 ZQ
-XV
-XV
+Mh
+Mh
 gc
 Yb
 ZQ
@@ -31046,14 +30797,14 @@ bb
 ZJ
 GA
 Gb
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 XL
-Yp
-KL
-Yp
-Yp
+Cf
+bb
+Cf
+Cf
 ZJ
 YL
 Tx
@@ -31169,18 +30920,18 @@ lh
 GA
 QQ
 RJ
-XV
+Mh
 VB
 Xq
 Ya
-XV
+Mh
 ZQ
-XV
+Mh
 po
 pY
 VA
 qX
-XV
+Mh
 zS
 Ib
 Vv
@@ -31424,13 +31175,13 @@ PK
 Bc
 RR
 Oi
-VI
-Xr
+dM
+Cf
 HX
 gc
 Tb
 ZQ
-de
+ad
 gc
 Yb
 lh
@@ -31559,7 +31310,7 @@ YS
 lh
 HY
 gc
-XT
+Vw
 aR
 Br
 Br
@@ -31933,7 +31684,7 @@ Bc
 Sy
 Oi
 VJ
-Xt
+pY
 ZQ
 gc
 uH

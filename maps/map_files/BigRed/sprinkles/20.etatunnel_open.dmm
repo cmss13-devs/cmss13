@@ -5,13 +5,13 @@
 "b" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
+	
 	},
 /area/bigredv2/caves_sw)
 "e" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
-	tag = "icon-mars_cave_11"
+	
 	},
 /area/bigredv2/caves_sw)
 "g" = (
@@ -24,20 +24,20 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_sw)
 "i" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	
 	},
 /area/bigredv2/caves_sw)
 "k" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	
 	},
 /area/bigredv2/caves_sw)
 "l" = (
@@ -46,26 +46,26 @@
 "m" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	
 	},
 /area/bigredv2/caves_sw)
 "n" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_sw)
 "o" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
-	tag = "icon-mars_cave_5"
+	
 	},
 /area/bigredv2/caves_sw)
 "p" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_research)
 "q" = (
@@ -73,33 +73,33 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_sw)
 "r" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_research)
 "s" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_10";
-	tag = "icon-mars_cave_10"
+	
 	},
 /area/bigredv2/caves_research)
 "t" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	
 	},
 /area/bigredv2/caves_research)
 "u" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	
 	},
 /area/bigredv2/caves_research)
 "v" = (
@@ -108,20 +108,20 @@
 "w" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
-	tag = "icon-mars_cave_11"
+	
 	},
 /area/bigredv2/caves_research)
 "H" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_sw)
 "O" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	
 	},
 /area/bigredv2/caves_sw)
 

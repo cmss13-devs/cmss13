@@ -152,7 +152,7 @@
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear;
 	pixel_x = -32;
-	tag = "rear center"
+	
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_3_3"
@@ -186,7 +186,7 @@
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	pixel_y = 32;
-	tag = "left"
+	
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
@@ -264,7 +264,7 @@
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear/right;
 	pixel_x = -32;
-	tag = "rear right"
+	
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 8;
@@ -393,7 +393,7 @@
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear/left;
 	pixel_x = -32;
-	tag = "rear left"
+	
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 8;
@@ -433,7 +433,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	tag = "right"
+	
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"

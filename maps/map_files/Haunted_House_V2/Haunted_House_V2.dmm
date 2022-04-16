@@ -3163,7 +3163,7 @@
 /area/event/metal/dynamic)
 "lr" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -3525,15 +3525,6 @@
 	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
-"mt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/gm/river{
-	color = "#995555";
-	name = "pool"
-	},
-/area/event/dynamic)
 "mu" = (
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 1
@@ -4399,7 +4390,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 2,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -5279,7 +5270,7 @@
 /area/event/deep_underground/dynamic)
 "rQ" = (
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -6787,7 +6778,7 @@
 /area/event/deep_underground/dynamic)
 "wx" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7626,11 +7617,6 @@
 /obj/structure/xenoautopsy/tank/alien,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whiteblue"
-	},
-/area/event/metal/dynamic)
-"zm" = (
-/turf/open/floor{
 	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
@@ -9741,18 +9727,6 @@
 	},
 /turf/open/gm/grass,
 /area/event/underground_no_CAS/dynamic)
-"FL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/gm/river{
-	color = "#995555";
-	name = "pool"
-	},
-/area/event/deep_underground/dynamic)
 "FM" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
@@ -10256,14 +10230,6 @@
 	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
-"HB" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "floor"
-	},
-/area/event/underground_no_CAS/dynamic)
 "HC" = (
 /obj/structure/largecrate/supply/medicine/medkits,
 /obj/effect/decal/warning_stripes{
@@ -12005,15 +11971,6 @@
 	},
 /turf/open/floor/vault,
 /area/event/deep_underground/dynamic)
-"Nv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/gm/river{
-	color = "#995555";
-	name = "pool"
-	},
-/area/event/deep_underground/dynamic)
 "Nx" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -12700,11 +12657,6 @@
 	},
 /turf/closed/wall/almayer/outer,
 /area/event/underground_no_CAS/dynamic)
-"PL" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/event/metal/dynamic)
 "PM" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /obj/effect/decal/cleanable/cobweb,
@@ -14413,7 +14365,7 @@
 /area/event/deep_underground/dynamic)
 "VH" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -15074,18 +15026,6 @@
 	icon_state = "stan_rightengine"
 	},
 /area/event/underground_no_CAS/dynamic)
-"XP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/gm/river{
-	color = "#995555";
-	name = "pool"
-	},
-/area/event/dynamic)
 "XQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -15102,7 +15042,7 @@
 /area/event/underground_no_CAS/dynamic)
 "XR" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -15478,7 +15418,7 @@
 /area/event/metal/dynamic)
 "Zg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -27378,8 +27318,8 @@ YZ
 RG
 Qp
 Qp
-HB
-HB
+yd
+yd
 xl
 RG
 YZ
@@ -28591,8 +28531,8 @@ RG
 Qp
 Qp
 Qp
-HB
-HB
+yd
+yd
 RG
 YZ
 YZ
@@ -29804,7 +29744,7 @@ Nd
 Qp
 Qp
 Qp
-HB
+yd
 Ft
 RG
 YZ
@@ -31623,7 +31563,7 @@ Qp
 Qp
 Qp
 Qp
-HB
+yd
 RG
 YZ
 YZ
@@ -33239,7 +33179,7 @@ Qp
 Qp
 Qp
 Qp
-HB
+yd
 RG
 YZ
 YZ
@@ -36240,16 +36180,16 @@ Hw
 Hw
 SP
 vz
-mt
-mt
-mt
-mt
-mt
-mt
-mt
-mt
-mt
-XP
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+EE
 SP
 Hw
 wF
@@ -41668,7 +41608,7 @@ YZ
 BF
 vG
 As
-zm
+gp
 tS
 Ls
 As
@@ -42072,7 +42012,7 @@ YZ
 BF
 vG
 Ek
-zm
+gp
 LZ
 Ls
 DB
@@ -42274,7 +42214,7 @@ YZ
 BF
 vG
 py
-zm
+gp
 gl
 Ls
 Li
@@ -42476,7 +42416,7 @@ YZ
 BF
 vG
 Qr
-zm
+gp
 tS
 Ls
 Pd
@@ -42678,7 +42618,7 @@ YZ
 BF
 vG
 Wm
-zm
+gp
 tS
 kG
 Hq
@@ -42897,9 +42837,9 @@ Ne
 Ne
 BF
 Ls
-PL
-PL
-zm
+cu
+cu
+gp
 BF
 en
 YH
@@ -43099,9 +43039,9 @@ nh
 Ne
 BF
 Ls
-PL
-PL
-zm
+cu
+cu
+gp
 BF
 YX
 aX
@@ -54114,15 +54054,15 @@ Bn
 dV
 pT
 Pk
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
+gm
+gm
+gm
+gm
+gm
+gm
+gm
+gm
+gm
 dE
 pT
 dV
@@ -57557,7 +57497,7 @@ ip
 gm
 gm
 gm
-FL
+dE
 pT
 dV
 JQ

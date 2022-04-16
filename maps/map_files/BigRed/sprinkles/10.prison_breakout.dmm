@@ -4,14 +4,14 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ab" = (
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ac" = (
@@ -19,7 +19,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ad" = (
@@ -30,7 +30,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ae" = (
@@ -41,7 +41,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "af" = (
@@ -50,7 +50,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ag" = (
@@ -60,7 +60,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitegreen";
-	tag = "icon-whitegreen (EAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ah" = (
@@ -77,7 +77,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "al" = (
@@ -85,7 +85,7 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitegreen";
-	tag = "icon-whitegreen (EAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "am" = (
@@ -94,7 +94,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "an" = (
@@ -105,7 +105,7 @@
 /obj/item/tool/soap/deluxe,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ao" = (
@@ -114,7 +114,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ap" = (
@@ -122,13 +122,13 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aq" = (
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ar" = (
@@ -137,7 +137,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "as" = (
@@ -149,7 +149,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "at" = (
@@ -165,7 +165,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "av" = (
@@ -175,7 +175,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aw" = (
@@ -183,7 +183,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ax" = (
@@ -195,7 +195,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ay" = (
@@ -204,7 +204,7 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "az" = (
@@ -215,7 +215,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "white";
-	tag = "icon-white"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aA" = (
@@ -225,7 +225,7 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aB" = (
@@ -240,7 +240,7 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /turf/open/floor{
 	dir = 8;
@@ -282,7 +282,7 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
@@ -301,7 +301,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aJ" = (
@@ -316,7 +316,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aK" = (
@@ -330,7 +330,7 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (NORTHEAST)"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "aL" = (
@@ -604,7 +604,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bA" = (
@@ -613,7 +613,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bB" = (
@@ -623,7 +623,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bD" = (
@@ -631,7 +631,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bE" = (
@@ -656,7 +656,7 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /obj/item/ammo_casing/shell,
 /turf/open/floor{
@@ -692,7 +692,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bN" = (
@@ -701,7 +701,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bO" = (
@@ -709,7 +709,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bP" = (
@@ -788,7 +788,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bY" = (
@@ -799,7 +799,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "bZ" = (
@@ -808,14 +808,14 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ca" = (
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "cb" = (
@@ -827,7 +827,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "cc" = (
@@ -878,7 +878,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "ck" = (
@@ -888,7 +888,7 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkish";
-	tag = "icon-darkish"
+	
 	},
 /area/bigredv2/outside/marshal_office)
 "cl" = (
@@ -1090,7 +1090,7 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	
 	},
 /turf/open/floor{
 	dir = 2;
@@ -1129,7 +1129,7 @@
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -30;
-	tag = "icon-alarm0 (NORTH)"
+	
 	},
 /turf/open/floor{
 	dir = 2;

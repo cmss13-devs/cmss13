@@ -1359,7 +1359,7 @@
 "aeC" = (
 /obj/structure/machinery/door/airlock{
 	icon_state = "door_locked";
-	id_	locked = 1;
+	locked = 1;
 	name = "Storage Unit";
 	req_one_access_txt = "100;101;102;103"
 	},
@@ -3657,13 +3657,6 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
-"akF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/north)
 "akG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4661,13 +4654,6 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/auto_turf/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/north)
-"anu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "anv" = (
 /obj/structure/disposalpipe/segment{
@@ -22682,15 +22668,6 @@
 	icon_state = "darkgreen2"
 	},
 /area/ice_colony/underground/hallway/north_west)
-"boZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkgreen2"
-	},
-/area/ice_colony/underground/hallway/north_west)
 "bpa" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -28463,15 +28440,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/hallway/south_east)
-"bFC" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
-	},
-/area/ice_colony/underground/hallway/south_east)
 "bFD" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security/interrogation)
@@ -29447,15 +29415,6 @@
 /area/ice_colony/underground/research)
 "bID" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkpurple2"
-	},
-/area/ice_colony/underground/research)
-"bIE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkpurple2"
@@ -33307,15 +33266,6 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
-"bSO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/east)
 "bSP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33603,15 +33553,6 @@
 	icon_state = "darkgreencorners2"
 	},
 /area/ice_colony/underground/hallway/south_east)
-"bTK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
-/area/ice_colony/underground/hallway/south_east)
 "bTL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -33663,15 +33604,6 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2"
-	},
-/area/ice_colony/underground/hallway/south_east)
-"bTU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkgreen2"
 	},
 /area/ice_colony/underground/hallway/south_east)
 "bTV" = (
@@ -34369,12 +34301,6 @@
 	dir = 8
 	},
 /area/ice_colony/exterior/underground/caves)
-"bVS" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
 "bVT" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -35266,15 +35192,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
-"ecS" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkbrown2"
-	},
-/area/ice_colony/surface/hangar/beta)
 "elU" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -46194,7 +46111,7 @@ boR
 bmk
 bmh
 bBf
-bIE
+bBI
 bBE
 bBE
 bKK
@@ -53774,7 +53691,7 @@ bna
 bnx
 boe
 bkE
-boZ
+boW
 bkr
 bpD
 bqq
@@ -65083,11 +65000,11 @@ bzc
 byJ
 bDV
 bEN
-bFC
+bzc
 byJ
 byJ
 byJ
-bFC
+bzc
 byJ
 byJ
 byJ
@@ -66524,7 +66441,7 @@ bTh
 bTs
 bTA
 bTF
-bTK
+bFA
 bMh
 bFA
 bqx
@@ -67371,7 +67288,7 @@ bTu
 bTu
 bRu
 bTM
-bTU
+brY
 bqD
 bSX
 bTc
@@ -68227,7 +68144,7 @@ bpu
 bpu
 bVE
 boJ
-bVS
+bSo
 bRN
 bRR
 bWu
@@ -68239,7 +68156,7 @@ bQu
 bQu
 bPg
 bPg
-bVS
+bSo
 bQu
 bPg
 bPg
@@ -73004,7 +72921,7 @@ aZF
 aZF
 aZF
 bCg
-bSO
+bEf
 bCJ
 bCJ
 bCJ
@@ -78472,7 +78389,7 @@ ajM
 ajV
 aka
 ajq
-akF
+akA
 aax
 aax
 ajf
@@ -78481,7 +78398,7 @@ abL
 abL
 abL
 amO
-anu
+amP
 abL
 azD
 aAb
@@ -82193,7 +82110,7 @@ aTb
 aTb
 aTb
 aTb
-ecS
+aTG
 mog
 aTb
 aTb

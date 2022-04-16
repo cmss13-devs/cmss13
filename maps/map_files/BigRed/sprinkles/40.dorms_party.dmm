@@ -9,7 +9,7 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -34,7 +34,7 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -138,7 +138,7 @@
 "aA" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4";
-	tag = "icon-xgib4"
+	
 	},
 /turf/open/floor{
 	icon_state = "grimy"
@@ -158,10 +158,6 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
-"aD" = (
-
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aE" = (
@@ -407,7 +403,7 @@
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -30;
-	tag = "icon-alarm0 (NORTH)"
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -458,7 +454,7 @@ bc
 ac
 ai
 ad
-aD
+ad
 ad
 aX
 bd

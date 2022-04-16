@@ -2463,7 +2463,7 @@
 	health = 5000;
 	icon_state = "red 2,0";
 	layer = 4;
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -16094,15 +16094,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/park)
-"kkg" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
-/area/fiorina/station/medbay)
 "kkk" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -23177,15 +23168,6 @@
 	icon_state = "bluecorner"
 	},
 /area/fiorina/station/chapel)
-"oJl" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
-/area/fiorina/station/medbay)
 "oJs" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/prison{
@@ -25577,14 +25559,6 @@
 	icon_state = "plate"
 	},
 /area/fiorina/station/flight_deck)
-"qos" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "qoG" = (
 /obj/item/toy/crayon/rainbow,
 /turf/open/floor/plating/prison,
@@ -28804,7 +28778,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -29248,7 +29222,7 @@
 /area/fiorina/station/chapel)
 "sJI" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -30250,7 +30224,7 @@
 /area/fiorina/station/park)
 "tts" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -30258,7 +30232,7 @@
 /area/fiorina/lz/near_lzII)
 "ttK" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -32150,7 +32124,7 @@
 /area/fiorina/station/security)
 "uEN" = (
 /obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -33422,7 +33396,7 @@
 /area/fiorina/oob)
 "vuE" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
@@ -34048,7 +34022,7 @@
 /area/fiorina/station/botany)
 "vPA" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
+	
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
@@ -35303,7 +35277,7 @@
 /area/fiorina/station/research_cells)
 "wJt" = (
 /obj/structure/bed/chair/comfy{
-	tag = "icon-comfychair (NORTH)"
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -36107,7 +36081,7 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 2,0";
-		unacidable = 1
+	unacidable = 1
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
@@ -61062,7 +61036,7 @@ azZ
 azZ
 azZ
 azZ
-oJl
+jlg
 vmr
 hVI
 vmr
@@ -68087,7 +68061,7 @@ icj
 kqz
 kqz
 sZr
-kkg
+ffm
 cwO
 hVI
 hVI
@@ -73028,7 +73002,7 @@ mcc
 vei
 goG
 fHu
-qos
+kaE
 jxa
 hXc
 goG

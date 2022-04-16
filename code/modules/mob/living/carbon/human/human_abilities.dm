@@ -151,7 +151,7 @@ CULT
 	if(H.selected_ability == src)
 		H.selected_ability = null
 
-/datum/action/human_action/activable/proc/use_ability(mob/M)
+/datum/action/human_action/activable/proc/use_ability(mob/target)
 	return
 
 /datum/action/human_action/activable/update_button_icon()

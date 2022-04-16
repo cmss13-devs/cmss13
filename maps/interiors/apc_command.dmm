@@ -220,8 +220,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	pixel_y = 32;
-	tag = "left"
+	pixel_y = 32
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
@@ -259,8 +258,7 @@
 "G" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
-	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	tag = "right"
+	exit_type = /obj/structure/interior_exit/vehicle/apc
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"

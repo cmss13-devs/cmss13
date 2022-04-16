@@ -47,8 +47,7 @@
 /area/template_noop)
 "r" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 8;
-	tag = null
+	dir = 8
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -119,8 +118,7 @@
 "U" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
-	pixel_x = -10;
-	tag = null
+	pixel_x = -10
 	},
 /turf/template_noop,
 /area/template_noop)

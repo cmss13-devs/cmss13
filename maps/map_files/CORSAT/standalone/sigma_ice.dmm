@@ -2853,8 +2853,7 @@
 "VJ" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
-	id_tag = "mix_sigma_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)

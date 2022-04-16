@@ -235,10 +235,10 @@
 		IMG = image('icons/mob/hud/actions.dmi', button, "hoverpack_charged")
 	button.overlays += IMG
 
-/datum/action/item_action/hover/proc/use_ability(atom/A)
+/datum/action/item_action/hover/proc/use_ability(atom/target)
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/hoverpack/HP = holder_item
-	HP.hover(H, A)
+	HP.hover(H, target)
 	update_button_icon()
 	addtimer(CALLBACK(src, .proc/update_button_icon), HP.hover_cooldown)
 

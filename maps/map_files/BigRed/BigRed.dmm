@@ -11417,8 +11417,7 @@
 /area/bigredv2/outside/nw)
 "aDB" = (
 /obj/structure/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "viro_controller";
-	pixel_y = 28;
+	id_	pixel_y = 28;
 	tag_exterior_door = "viro_ext";
 	tag_interior_door = "viro_int"
 	},
@@ -12265,8 +12264,7 @@
 /area/bigredv2/outside/medical)
 "aFK" = (
 /obj/structure/machinery/door/airlock/glass_medical{
-	id_tag = "mbayexit";
-	name = "Medbay Reception";
+	id_	name = "Medbay Reception";
 	req_access = null;
 	req_one_access_txt = "2;8;19"
 	},
@@ -13144,8 +13142,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/access_button/airlock_interior{
-	master_tag = "viro_controller";
-	pixel_y = 28
+	master_	pixel_y = 28
 	},
 /turf/open/floor{
 	dir = 9;
@@ -14018,8 +14015,7 @@
 /area/bigredv2/caves/lambda/research)
 "aJR" = (
 /obj/structure/machinery/access_button/airlock_exterior{
-	master_tag = "viro_controller";
-	pixel_y = -28
+	master_	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;

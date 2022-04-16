@@ -22,8 +22,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "emerald";
-	tag = "icon-emerald (NORTHWEST)"
+	icon_state = "emerald"
 	},
 /area/adminlevel/bunker01/caves)
 "ag" = (
@@ -35,8 +34,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "emeraldcorner";
-	tag = "icon-emerald (NORTH)"
+	icon_state = "emeraldcorner"
 	},
 /area/adminlevel/bunker01/command)
 "ah" = (
@@ -50,24 +48,21 @@
 /obj/structure/machinery/cm_vending/gear/antag_guns,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/command)
 "ak" = (
 /obj/structure/machinery/cm_vending/clothing/antag,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/command)
 "al" = (
 /obj/structure/safe,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/bathroom)
 "am" = (
@@ -83,8 +78,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "ao" = (
@@ -94,15 +88,13 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "ap" = (
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aq" = (
@@ -110,16 +102,14 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "ar" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "as" = (
@@ -129,8 +119,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "at" = (
@@ -140,8 +129,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "au" = (
@@ -162,8 +150,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
+	icon_state = "emerald"
 	},
 /area/adminlevel/bunker01/caves)
 "av" = (
@@ -172,16 +159,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/command)
 "aw" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -197,8 +182,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -209,23 +193,20 @@
 "ay" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/command)
 "az" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -235,8 +216,7 @@
 "aA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -244,8 +224,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aB" = (
@@ -254,8 +233,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aC" = (
@@ -265,8 +243,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aD" = (
@@ -275,8 +252,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aE" = (
@@ -286,16 +262,14 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aF" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/caves)
 "aG" = (
@@ -309,8 +283,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/caves)
 "aH" = (
@@ -322,8 +295,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "emerald";
-	tag = "icon-emerald (NORTHWEST)"
+	icon_state = "emerald"
 	},
 /area/adminlevel/bunker01/caves)
 "aI" = (
@@ -333,8 +305,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "emeraldcorner";
-	tag = "icon-emeraldcorner (EAST)"
+	icon_state = "emeraldcorner"
 	},
 /area/adminlevel/bunker01/command)
 "aJ" = (
@@ -352,8 +323,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/command)
 "aL" = (
@@ -370,8 +340,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aN" = (
@@ -380,21 +349,18 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aP" = (
@@ -403,8 +369,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aQ" = (
@@ -422,8 +387,7 @@
 /obj/item/ashtray/glass,
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/command)
 "aT" = (
@@ -438,8 +402,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aV" = (
@@ -453,8 +416,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aW" = (
@@ -468,8 +430,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aX" = (
@@ -477,8 +438,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
 "aY" = (
@@ -534,8 +494,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
 "bh" = (
@@ -619,8 +578,7 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "by" = (
@@ -630,8 +588,7 @@
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bz" = (
@@ -641,8 +598,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bA" = (
@@ -650,16 +606,14 @@
 /obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bB" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "blue";
-	tag = "icon-blue (NORTHWEST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "bC" = (
@@ -669,16 +623,14 @@
 /obj/item/reagent_container/glass/bucket,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "bD" = (
 /obj/structure/machinery/hydro_floodlight,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "blue";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "bE" = (
@@ -711,8 +663,7 @@
 "bJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (WEST)"
+	icon_state = "map-supply"
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 2;
@@ -728,23 +679,20 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
 "bL" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -752,15 +700,13 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bM" = (
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bN" = (
@@ -772,8 +718,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "bO" = (
@@ -783,8 +728,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "blue";
-	tag = "icon-blue (WEST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "bP" = (
@@ -794,8 +738,7 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "blue";
-	tag = "icon-blue (EAST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "bR" = (
@@ -807,8 +750,7 @@
 "bS" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -817,8 +759,7 @@
 "bT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
@@ -841,8 +782,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/plating/plating_catwalk,
@@ -850,13 +790,11 @@
 "bW" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	icon_state = "pipe-j1";
-	tag = "icon-pipe-j1 (WEST)"
+	icon_state = "pipe-j1"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
@@ -874,8 +812,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
@@ -887,16 +824,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "ca" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -907,8 +842,7 @@
 /obj/structure/disposalpipe/junction,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (EAST)"
+	icon_state = "map-supply"
 	},
 /obj/structure/sign/safety/galley{
 	pixel_x = 32
@@ -918,51 +852,43 @@
 "cc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTHEAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cd" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "ce" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cf" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cg" = (
@@ -975,8 +901,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "blue";
-	tag = "icon-blue (WEST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "ch" = (
@@ -992,8 +917,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "blue";
-	tag = "icon-blue (EAST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "cj" = (
@@ -1049,8 +973,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
 "cu" = (
@@ -1060,8 +983,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cv" = (
@@ -1071,8 +993,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cw" = (
@@ -1082,8 +1003,7 @@
 "cx" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "blue";
-	tag = "icon-blue (WEST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "cy" = (
@@ -1097,8 +1017,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "blue";
-	tag = "icon-blue (EAST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "cA" = (
@@ -1125,15 +1044,13 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
 "cG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/sink{
 	dir = 1;
@@ -1141,8 +1058,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 2;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white"
+	icon_state = "sterile_white"
 	},
 /area/adminlevel/bunker01/kitchen)
 "cH" = (
@@ -1152,8 +1068,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
@@ -1161,31 +1076,27 @@
 "cI" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "cJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/power/apc/antag{
 	pixel_y = -24
 	},
 /turf/open/floor/almayer{
-	icon_state = "blue";
-	tag = "icon-blue"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "cK" = (
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "blue";
-	tag = "icon-blue (SOUTHEAST)"
+	icon_state = "blue"
 	},
 /area/adminlevel/bunker01/hydroponics)
 "cL" = (
@@ -1198,8 +1109,7 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "green";
-	tag = "icon-green (NORTHWEST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/caves)
 "cM" = (
@@ -1218,8 +1128,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cN" = (
@@ -1231,24 +1140,21 @@
 /obj/item/tool/shovel/etool/folded,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cP" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cQ" = (
@@ -1258,15 +1164,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cR" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/storage)
 "cS" = (
@@ -1297,28 +1201,24 @@
 	},
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "green";
-	tag = "icon-green (SOUTHWEST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/caves)
 "cV" = (
 /turf/open/floor/almayer{
-	icon_state = "green";
-	tag = "icon-green"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cW" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "greencorner";
-	tag = "icon-greencorner (WEST)"
+	icon_state = "greencorner"
 	},
 /area/adminlevel/bunker01/storage)
 "cX" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "greencorner";
-	tag = "icon-greencorner (EAST)"
+	icon_state = "greencorner"
 	},
 /area/adminlevel/bunker01/storage)
 "cY" = (
@@ -1328,8 +1228,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "cZ" = (
@@ -1374,8 +1273,7 @@
 /obj/structure/largecrate/supply/supplies/metal,
 /obj/structure/largecrate/supply/supplies/metal,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/caves)
 "dg" = (
@@ -1383,23 +1281,20 @@
 /obj/structure/largecrate/supply/supplies/plasteel,
 /obj/structure/largecrate/supply/supplies/plasteel,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/storage)
 "dh" = (
 /obj/structure/largecrate/supply/supplies/sandbags,
 /obj/structure/largecrate/supply/supplies/sandbags,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/storage)
 "di" = (
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "green";
-	tag = "icon-green (SOUTHWEST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "dj" = (
@@ -1408,23 +1303,20 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "greencorner";
-	tag = "icon-greencorner (WEST)"
+	icon_state = "greencorner"
 	},
 /area/adminlevel/bunker01/storage)
 "dk" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "dl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -1435,8 +1327,7 @@
 "dm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1454,16 +1345,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "do" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -1477,8 +1366,7 @@
 "dp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -1494,8 +1382,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "dr" = (
@@ -1509,8 +1396,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "dt" = (
@@ -1524,8 +1410,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "du" = (
@@ -1537,15 +1422,13 @@
 "dw" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/storage)
 "dx" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "dy" = (
@@ -1559,8 +1442,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "green";
-	tag = "icon-green (EAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "dA" = (
@@ -1578,13 +1460,11 @@
 /area/adminlevel/bunker01/mainroom)
 "dC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5;
-	tag = "icon-intact-supply (EAST)"
+	dir = 5
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	icon_state = "pipe-j1";
-	tag = "icon-pipe-j1 (WEST)"
+	icon_state = "pipe-j1"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -1603,8 +1483,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -1612,8 +1491,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	icon_state = "pipe-j1";
-	tag = "icon-pipe-j1 (WEST)"
+	icon_state = "pipe-j1"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -1624,8 +1502,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -1650,8 +1527,7 @@
 	charging = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
+	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "dL" = (
@@ -1665,24 +1541,21 @@
 	pixel_y = 20
 	},
 /turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
+	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "dM" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "green";
-	tag = "icon-green (SOUTHWEST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "dN" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/storage)
 "dO" = (
@@ -1691,8 +1564,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "dP" = (
@@ -1701,8 +1573,7 @@
 /area/adminlevel/bunker01/mainroom)
 "dQ" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -1730,8 +1601,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "orange";
-	tag = "icon-orange (WEST)"
+	icon_state = "orange"
 	},
 /area/adminlevel/bunker01/engineering)
 "dU" = (
@@ -1741,8 +1611,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "orange";
-	tag = "icon-orange (EAST)"
+	icon_state = "orange"
 	},
 /area/adminlevel/bunker01/engineering)
 "dV" = (
@@ -1778,8 +1647,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (WEST)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -1791,39 +1659,34 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "eb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "ec" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTHWEST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "ed" = (
 /obj/structure/largecrate/supply/weapons/m56d,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "ee" = (
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "ef" = (
@@ -1836,22 +1699,19 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "orange";
-	tag = "icon-orange (NORTHWEST)"
+	icon_state = "orange"
 	},
 /area/adminlevel/bunker01/engineering)
 "eh" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "orangecorner";
-	tag = "icon-orangecorner (NORTH)"
+	icon_state = "orangecorner"
 	},
 /area/adminlevel/bunker01/engineering)
 "ei" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "orangecorner";
-	tag = "icon-orangecorner (EAST)"
+	icon_state = "orangecorner"
 	},
 /area/adminlevel/bunker01/engineering)
 "ej" = (
@@ -1860,8 +1720,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "orange";
-	tag = "icon-sterile"
+	icon_state = "orange"
 	},
 /area/adminlevel/bunker01/engineering)
 "ek" = (
@@ -1876,15 +1735,13 @@
 "el" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/engineering)
 "em" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (WEST)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
@@ -1895,13 +1752,11 @@
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/engineering)
 "eo" = (
@@ -1932,8 +1787,7 @@
 	pixel_x = -24
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "er" = (
@@ -1943,8 +1797,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "es" = (
@@ -1952,8 +1805,7 @@
 	name = "\improper M402 mortar ammo crate"
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "cargo"
 	},
 /area/adminlevel/bunker01/mainroom)
 "et" = (
@@ -1972,15 +1824,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "orange";
-	tag = "icon-orange (WEST)"
+	icon_state = "orange"
 	},
 /area/adminlevel/bunker01/engineering)
 "eu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1995,8 +1845,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2007,8 +1856,7 @@
 "ew" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (EAST)"
+	icon_state = "map-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -2021,8 +1869,7 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/engineering)
 "ey" = (
@@ -2047,8 +1894,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
+	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "eB" = (
@@ -2058,8 +1904,7 @@
 	is_on = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
+	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "eC" = (
@@ -2072,8 +1917,7 @@
 	is_on = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
+	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "eD" = (
@@ -2111,8 +1955,7 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "eJ" = (
@@ -2125,8 +1968,7 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "red";
-	tag = "icon-red (NORTHEAST)"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "eL" = (
@@ -2139,8 +1981,7 @@
 "eM" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (WEST)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -2183,22 +2024,19 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "eT" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "redcorner";
-	tag = "icon-redcorner (NORTH)"
+	icon_state = "redcorner"
 	},
 /area/adminlevel/bunker01/security)
 "eU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (WEST)"
+	icon_state = "map-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -2209,21 +2047,18 @@
 "eV" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	icon_state = "pipe-j1";
-	tag = "icon-pipe-j1 (WEST)"
+	icon_state = "pipe-j1"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "eW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2236,8 +2071,7 @@
 "eX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2251,8 +2085,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2266,8 +2099,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -2288,16 +2120,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "fc" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	icon_state = "pipe-j1";
-	tag = "icon-pipe-j1 (WEST)"
+	icon_state = "pipe-j1"
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -2305,8 +2135,7 @@
 "fd" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2320,8 +2149,7 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -2329,8 +2157,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -2342,8 +2169,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -2353,8 +2179,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -2380,8 +2205,7 @@
 "fk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
@@ -2392,16 +2216,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "fm" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (EAST)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
@@ -2410,21 +2232,18 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "redcorner";
-	tag = "icon-redcorner"
+	icon_state = "redcorner"
 	},
 /area/adminlevel/bunker01/security)
 "fo" = (
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "fp" = (
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "red";
-	tag = "icon-red (SOUTHEAST)"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "fq" = (
@@ -2442,8 +2261,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fs" = (
@@ -2457,8 +2275,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "ft" = (
@@ -2472,8 +2289,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fu" = (
@@ -2488,8 +2304,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fv" = (
@@ -2503,8 +2318,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fw" = (
@@ -2520,8 +2334,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/bunker01/medbay)
 "fy" = (
@@ -2536,16 +2349,14 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTH)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "fz" = (
@@ -2557,8 +2368,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/bunker01/medbay)
 "fA" = (
@@ -2586,28 +2396,24 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fE" = (
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fF" = (
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "fG" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fH" = (
@@ -2616,44 +2422,38 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/bunker01/medbay)
 "fI" = (
 /obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fJ" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fK" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTH)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "fL" = (
 /obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fM" = (
@@ -2663,8 +2463,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fN" = (
@@ -2674,23 +2473,20 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fO" = (
 /obj/structure/machinery/autodoc,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fP" = (
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fQ" = (
@@ -2700,8 +2496,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
@@ -2716,36 +2511,30 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "redcorner";
-	tag = "icon-redcorner (EAST)"
+	icon_state = "redcorner"
 	},
 /area/adminlevel/bunker01/security)
 "fT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "fU" = (
 /obj/structure/bed,
 /obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "redfull";
-	tag = "icon-redfull"
+	icon_state = "redfull"
 	},
 /area/adminlevel/bunker01/security)
 "fV" = (
@@ -2760,15 +2549,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "fW" = (
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "fX" = (
@@ -2783,30 +2570,25 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "fY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
-	icon_state = "map-supply";
-	tag = "icon-map-supply (NORTH)"
+	icon_state = "map-supply"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "fZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "ga" = (
@@ -2817,28 +2599,24 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gb" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -2847,15 +2625,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gd" = (
 /obj/structure/toilet{
 	dir = 1;
-	icon_state = "toilet00";
-	tag = "icon-toilet00 (NORTH)"
+	icon_state = "toilet00"
 	},
 /obj/structure/machinery/light/small{
 	pixel_y = 0
@@ -2871,8 +2647,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "gg" = (
@@ -2880,37 +2655,32 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "gh" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "gi" = (
 /obj/structure/toilet{
 	dir = 1;
-	icon_state = "toilet00";
-	tag = "icon-toilet00 (NORTH)"
+	icon_state = "toilet00"
 	},
 /obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "red"
 	},
 /area/adminlevel/bunker01/security)
 "gj" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gk" = (
@@ -2923,8 +2693,7 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gl" = (
@@ -2945,41 +2714,35 @@
 	amount = 25
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTH)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gn" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "go" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gp" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gq" = (
@@ -2987,8 +2750,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gr" = (
@@ -2999,8 +2761,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gs" = (
@@ -3028,15 +2789,13 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTH)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gw" = (
@@ -3044,8 +2803,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gx" = (
@@ -3056,8 +2814,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gy" = (
@@ -3066,8 +2823,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gz" = (
@@ -3079,22 +2835,19 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gA" = (
 /obj/structure/bed,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gB" = (
 /obj/structure/machinery/autodoc,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gC" = (
@@ -3104,8 +2857,7 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gD" = (
@@ -3113,8 +2865,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gE" = (
@@ -3135,16 +2886,14 @@
 /obj/item/storage/box/gloves,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gH" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gI" = (
@@ -3158,22 +2907,19 @@
 	},
 /turf/open/floor/almayer{
 	dir = 2;
-	icon_state = "green";
-	tag = "icon-green"
+	icon_state = "green"
 	},
 /area/adminlevel/bunker01/medbay)
 "gJ" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_tag = "bunker_or1";
-	name = "\improper Operating Room 1";
+	id_	name = "\improper Operating Room 1";
 	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gK" = (
@@ -3186,8 +2932,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/bunker01/medbay)
 "gL" = (
@@ -3200,22 +2945,19 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/adminlevel/bunker01/medbay)
 "gM" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	id_tag = "bunker_or2";
-	name = "\improper Operating Room 2";
+	id_	name = "\improper Operating Room 2";
 	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gN" = (
@@ -3230,8 +2972,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gO" = (
@@ -3243,8 +2984,7 @@
 "gP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -3258,8 +2998,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
@@ -3267,24 +3006,20 @@
 "gR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gS" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (SOUTHWEST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "gT" = (
@@ -3293,8 +3028,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "gU" = (
@@ -3305,8 +3039,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gV" = (
@@ -3314,8 +3047,7 @@
 	stored_metal = 1000
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gW" = (
@@ -3326,8 +3058,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "gX" = (
@@ -3393,21 +3124,18 @@
 /obj/item/storage/belt/medical/lifesaver/upp/full,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hb" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "hc" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+	dir = 8
 	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -3416,8 +3144,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hd" = (
@@ -3430,19 +3157,16 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "he" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (NORTHWEST)"
+	icon_state = "intact-supply"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "hf" = (
@@ -3454,8 +3178,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hg" = (
@@ -3491,15 +3214,13 @@
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "hj" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hk" = (
@@ -3509,30 +3230,26 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hl" = (
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hm" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "hn" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "ho" = (
@@ -3544,8 +3261,7 @@
 	},
 /obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 "hp" = (
@@ -3557,8 +3273,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/bunker01/medbay)
 "hq" = (
@@ -3570,8 +3285,7 @@
 	},
 /obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/bunker01/medbay)
 

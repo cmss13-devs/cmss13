@@ -21,8 +21,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "aj" = (
@@ -33,8 +32,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "al" = (
@@ -48,8 +46,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "ao" = (
@@ -117,8 +114,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "aw" = (
@@ -159,8 +155,7 @@
 /obj/item/facepaint/black,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "aF" = (
@@ -207,8 +202,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "aP" = (
@@ -220,14 +214,12 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "aQ" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -241,14 +233,12 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "aV" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
+	icon_state = "rasputin6"
 	},
 /area/event/underground_no_CAS/dynamic)
 "aW" = (
@@ -289,8 +279,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "ba" = (
@@ -302,8 +291,7 @@
 "bc" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "be" = (
@@ -334,15 +322,13 @@
 /mob/living/simple_animal/mouse/white,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "bf" = (
 /obj/structure/machinery/door/airlock/strata/mining,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "bg" = (
@@ -362,8 +348,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "bh" = (
@@ -383,8 +368,7 @@
 /obj/structure/surface/table,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "bk" = (
@@ -394,16 +378,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "bl" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "bn" = (
@@ -415,23 +397,20 @@
 /obj/item/storage/donut_box,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "bp" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/deep_underground/dynamic)
 "bq" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -439,16 +418,14 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "bt" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/diamond,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "bz" = (
@@ -457,8 +434,7 @@
 /area/event/metal/dynamic)
 "bA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -468,8 +444,7 @@
 "bB" = (
 /obj/structure/closet/crate/weapon/training/mod88,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -481,8 +456,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "bF" = (
@@ -533,8 +507,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "bO" = (
@@ -573,19 +546,16 @@
 /area/event/metal/dynamic)
 "bW" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
+	icon_state = "blue 1,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "bX" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -621,23 +591,20 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "cj" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "cl" = (
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "cm" = (
@@ -653,12 +620,10 @@
 /area/event/deep_underground/dynamic)
 "cr" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -671,14 +636,12 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "cu" = (
 /turf/open/floor{
-	icon_state = "white";
-	tag = "icon-white"
+	icon_state = "white"
 	},
 /area/event/metal/dynamic)
 "cv" = (
@@ -718,8 +681,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "cA" = (
@@ -732,8 +694,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "cC" = (
@@ -759,14 +720,12 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "cK" = (
 /obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-HD_blue 0,2"
+	icon_state = "HD_blue 0,2"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -779,8 +738,7 @@
 "cM" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "cN" = (
@@ -798,8 +756,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "cP" = (
@@ -827,8 +784,7 @@
 /area/event/metal/dynamic)
 "cT" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -840,8 +796,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "cW" = (
@@ -874,8 +829,7 @@
 "da" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -892,8 +846,7 @@
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "dd" = (
@@ -943,8 +896,7 @@
 /obj/item/reagent_container/food/snacks/mre_pack/meal1,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "dj" = (
@@ -958,8 +910,7 @@
 /obj/structure/curtain/medical,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "do" = (
@@ -975,8 +926,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "dr" = (
@@ -992,8 +942,7 @@
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "du" = (
@@ -1023,8 +972,7 @@
 /area/event/metal/dynamic)
 "dB" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -1033,12 +981,10 @@
 /area/event/dynamic)
 "dE" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -1051,8 +997,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "dG" = (
@@ -1084,8 +1029,7 @@
 /area/event/metal/dynamic)
 "dN" = (
 /obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
+	icon_state = "green 1,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -1093,8 +1037,7 @@
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "dP" = (
@@ -1137,15 +1080,13 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "dR" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "dS" = (
@@ -1173,8 +1114,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "dZ" = (
@@ -1233,8 +1173,7 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "eg" = (
@@ -1259,16 +1198,14 @@
 /area/event/metal/dynamic)
 "ek" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-north";
-	tag = "icon-W"
+	icon_state = "NS-north"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "el" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -1295,8 +1232,7 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "es" = (
@@ -1314,15 +1250,13 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "ew" = (
 /obj/structure/largecrate/supply/explosives/mortar_he,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -1352,8 +1286,7 @@
 /obj/item/ashtray/glass,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "eB" = (
@@ -1366,8 +1299,7 @@
 	pixel_x = -29
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eD" = (
@@ -1377,16 +1309,14 @@
 	pixel_x = -11
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eF" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "eH" = (
@@ -1397,15 +1327,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eJ" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eK" = (
@@ -1415,8 +1343,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "eL" = (
@@ -1430,14 +1357,12 @@
 "eM" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/deep_underground/dynamic)
 "eN" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -1448,15 +1373,13 @@
 /area/event/underground_no_CAS/dynamic)
 "eP" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin7"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eS" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -1480,8 +1403,7 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "eW" = (
@@ -1502,8 +1424,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "eY" = (
@@ -1513,8 +1434,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fa" = (
@@ -1558,8 +1478,7 @@
 "fi" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin4"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fl" = (
@@ -1571,8 +1490,7 @@
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fn" = (
@@ -1600,8 +1518,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "fs" = (
@@ -1634,15 +1551,13 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fu" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -1653,8 +1568,7 @@
 /area/event/deep_underground/dynamic)
 "fw" = (
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "fx" = (
@@ -1673,8 +1587,7 @@
 "fA" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fB" = (
@@ -1699,8 +1612,7 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "fE" = (
@@ -1708,8 +1620,7 @@
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fH" = (
@@ -1737,8 +1648,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fM" = (
@@ -1766,8 +1676,7 @@
 /area/event/metal/dynamic)
 "fR" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -1798,8 +1707,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "fU" = (
@@ -1850,8 +1758,7 @@
 "gc" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -1871,8 +1778,7 @@
 /area/event/underground_no_CAS/dynamic)
 "ge" = (
 /obj/structure/cargo_container{
-	icon_state = "HD 2,0";
-	tag = "icon-WY 2,0"
+	icon_state = "HD 2,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -1889,8 +1795,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "gg" = (
@@ -1905,8 +1810,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "gi" = (
@@ -1914,8 +1818,7 @@
 /obj/item/device/flashlight/lamp/on,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "gk" = (
@@ -1930,8 +1833,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "gl" = (
@@ -1941,14 +1843,12 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "gm" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -1958,30 +1858,26 @@
 "gn" = (
 /obj/structure/morgue,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "go" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-in";
-	tag = "icon-SW-in"
+	icon_state = "SW-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "gp" = (
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "gt" = (
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "gu" = (
@@ -1993,8 +1889,7 @@
 	name = "Sulico's Recording"
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "gv" = (
@@ -2004,8 +1899,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "gx" = (
@@ -2024,8 +1918,7 @@
 /area/event/metal/dynamic)
 "gF" = (
 /obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
+	icon_state = "red 1,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2044,8 +1937,7 @@
 /obj/structure/machinery/chem_master,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "gI" = (
@@ -2061,15 +1953,13 @@
 "gL" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "gP" = (
 /obj/item/tool/extinguisher,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "gR" = (
@@ -2101,14 +1991,12 @@
 /obj/item/storage/box/bodybags,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "plate"
 	},
 /area/event/metal/dynamic)
 "ha" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/decal/cleanable/cobweb{
 	dir = 1
@@ -2134,8 +2022,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "hf" = (
@@ -2147,14 +2034,12 @@
 /obj/item/ashtray/glass,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "hi" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2163,14 +2048,12 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "hl" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -2182,8 +2065,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "hp" = (
@@ -2239,8 +2121,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ht" = (
@@ -2305,8 +2186,7 @@
 /area/event/metal/dynamic)
 "hA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -2322,22 +2202,19 @@
 	},
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "hE" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "hF" = (
 /obj/structure/largecrate/supply/medicine/blood,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -2363,8 +2240,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "hL" = (
@@ -2390,8 +2266,7 @@
 /area/event/metal/dynamic)
 "hR" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2404,8 +2279,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "hT" = (
@@ -2469,8 +2343,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "ic" = (
@@ -2502,16 +2375,14 @@
 "ig" = (
 /obj/structure/largecrate/supply/ammo/pistol/half,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "ik" = (
 /obj/structure/curtain/open,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "il" = (
@@ -2533,8 +2404,7 @@
 /area/event/dynamic)
 "ip" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -2556,14 +2426,12 @@
 	poison_per_bite = 20
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "iu" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "iv" = (
@@ -2573,8 +2441,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "iw" = (
@@ -2583,23 +2450,20 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ix" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "iy" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "iD" = (
@@ -2621,13 +2485,11 @@
 /area/event/metal/dynamic)
 "iH" = (
 /obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	dir = 8
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "iK" = (
@@ -2636,8 +2498,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "iO" = (
@@ -2646,8 +2507,7 @@
 /area/event/underground_no_CAS/dynamic)
 "iP" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
+	icon_state = "blue 0,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2660,8 +2520,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "iW" = (
@@ -2670,8 +2529,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "iY" = (
@@ -2683,8 +2541,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "iZ" = (
@@ -2695,8 +2552,7 @@
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "jb" = (
@@ -2708,15 +2564,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "jd" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "je" = (
@@ -2740,8 +2594,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "ji" = (
@@ -2759,28 +2612,24 @@
 /area/event/deep_underground/dynamic)
 "jl" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "jm" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "jn" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "jo" = (
@@ -2841,31 +2690,27 @@
 /area/event/deep_underground/dynamic)
 "jA" = (
 /turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
+	dir = 9
 	},
 /area/event/dynamic)
 "jB" = (
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "jD" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /obj/effect/decal/remains/human,
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
 "jF" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -2880,8 +2725,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "jI" = (
@@ -2892,8 +2736,7 @@
 /mob/living/simple_animal/hostile/UPP,
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "jL" = (
@@ -2916,8 +2759,7 @@
 "jN" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
-	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	icon_state = "conveyor-1"
 	},
 /turf/open/floor/plating,
 /area/event/deep_underground/dynamic)
@@ -2952,8 +2794,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "jW" = (
@@ -3002,8 +2843,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "ke" = (
@@ -3015,16 +2855,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "ki" = (
 /obj/item/stool,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "kk" = (
@@ -3058,8 +2896,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "kp" = (
@@ -3101,8 +2938,7 @@
 "kt" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -3127,8 +2963,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "kz" = (
@@ -3141,8 +2976,7 @@
 /area/event/metal/dynamic)
 "kA" = (
 /obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
+	icon_state = "green 0,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -3160,15 +2994,13 @@
 /obj/item/tool/pen,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "kG" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "kH" = (
@@ -3177,8 +3009,7 @@
 /obj/item/storage/belt/medical/lifesaver/upp/full,
 /obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "kI" = (
@@ -3187,8 +3018,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "kJ" = (
@@ -3196,8 +3026,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "kL" = (
@@ -3210,8 +3039,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "kQ" = (
@@ -3222,8 +3050,7 @@
 /obj/item/clothing/head/surgery/orange,
 /obj/item/clothing/head/surgery/purple,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "kT" = (
@@ -3234,8 +3061,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "kX" = (
@@ -3259,8 +3085,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ld" = (
@@ -3271,8 +3096,7 @@
 "le" = (
 /obj/structure/machinery/chem_master/condimaster,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "lf" = (
@@ -3303,15 +3127,13 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ll" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/deep_underground/dynamic)
 "lm" = (
@@ -3330,15 +3152,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "lp" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "lr" = (
@@ -3364,14 +3184,12 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "lw" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-north";
-	tag = "icon-W"
+	icon_state = "NS-north"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -3382,8 +3200,7 @@
 "ly" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "lz" = (
@@ -3431,14 +3248,12 @@
 	icon_state = "p_stair_full"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/item/tool/wet_sign,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "lH" = (
@@ -3479,8 +3294,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "lK" = (
@@ -3501,8 +3315,7 @@
 "lO" = (
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "lQ" = (
@@ -3510,8 +3323,7 @@
 /obj/structure/machinery/computer/security/wooden_tv,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "lR" = (
@@ -3529,8 +3341,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "lT" = (
@@ -3557,8 +3368,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "lV" = (
@@ -3600,8 +3410,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "mc" = (
@@ -3615,8 +3424,7 @@
 "me" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "mh" = (
@@ -3632,8 +3440,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "mk" = (
@@ -3642,8 +3449,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "ml" = (
@@ -3668,8 +3474,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "mm" = (
@@ -3685,8 +3490,7 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "mq" = (
@@ -3700,8 +3504,7 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "mr" = (
@@ -3712,22 +3515,19 @@
 	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "ms" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "mt" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -3753,8 +3553,7 @@
 /area/event/underground_no_CAS/dynamic)
 "mw" = (
 /obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
+	icon_state = "red 0,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -3769,8 +3568,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "my" = (
@@ -3787,8 +3585,7 @@
 /obj/item/ammo_magazine/shotgun/beanbag,
 /obj/item/ammo_magazine/shotgun/beanbag,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "mC" = (
@@ -3802,8 +3599,7 @@
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "mE" = (
@@ -3828,8 +3624,7 @@
 "mF" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/dynamic)
 "mG" = (
@@ -3856,8 +3651,7 @@
 "mI" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/carpet{
 	icon_state = "bcarpet05"
@@ -3902,8 +3696,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "mU" = (
@@ -3916,8 +3709,7 @@
 "mV" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "mY" = (
@@ -3926,8 +3718,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "mZ" = (
@@ -3954,8 +3745,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ne" = (
@@ -3963,8 +3753,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "ng" = (
@@ -3972,8 +3761,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "nh" = (
@@ -4007,15 +3795,13 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "nl" = (
 /turf/open/floor/almayer_hull{
 	dir = 1;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nm" = (
@@ -4031,8 +3817,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "np" = (
@@ -4092,8 +3877,7 @@
 "nx" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/vault,
@@ -4101,14 +3885,12 @@
 "nA" = (
 /obj/structure/closet/crate/secure/phoron,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "nD" = (
@@ -4138,8 +3920,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "nK" = (
@@ -4147,8 +3928,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nL" = (
@@ -4160,8 +3940,7 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/deep_underground/dynamic)
 "nN" = (
@@ -4170,8 +3949,7 @@
 /obj/item/clothing/suit/storage/labcoat/researcher,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "nP" = (
@@ -4191,8 +3969,7 @@
 /obj/item/storage/toolbox/syndicate,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nS" = (
@@ -4204,8 +3981,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nT" = (
@@ -4213,8 +3989,7 @@
 /area/event/metal/dynamic)
 "nU" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -4236,8 +4011,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nY" = (
@@ -4256,8 +4030,7 @@
 "od" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "oe" = (
@@ -4278,8 +4051,7 @@
 /obj/structure/morgue,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "oh" = (
@@ -4297,8 +4069,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ol" = (
@@ -4307,8 +4078,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "om" = (
@@ -4335,8 +4105,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "or" = (
@@ -4379,8 +4148,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ov" = (
@@ -4424,8 +4192,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "oB" = (
@@ -4442,8 +4209,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "oF" = (
@@ -4473,8 +4239,7 @@
 /area/event/metal/dynamic)
 "oJ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#990000";
@@ -4497,8 +4262,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "oS" = (
@@ -4512,8 +4276,7 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "oU" = (
@@ -4529,8 +4292,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "oY" = (
@@ -4547,21 +4309,18 @@
 	icon_state = "p_stair_full"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "pb" = (
 /obj/structure/largecrate/supply/supplies,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -4614,8 +4373,7 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "ph" = (
@@ -4634,16 +4392,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "pj" = (
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0";
-	unacidable = 1
+		unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -4664,8 +4420,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "pm" = (
@@ -4712,8 +4467,7 @@
 /mob/living/simple_animal/mouse/gray,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "pq" = (
@@ -4724,8 +4478,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "pr" = (
@@ -4735,8 +4488,7 @@
 /area/event/dynamic)
 "pt" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -4762,8 +4514,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "pw" = (
@@ -4778,8 +4529,7 @@
 /obj/item/facepaint/black,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "px" = (
@@ -4847,8 +4597,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "pC" = (
@@ -4861,8 +4610,7 @@
 	poison_per_bite = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "pD" = (
@@ -4874,8 +4622,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "pE" = (
@@ -4897,8 +4644,7 @@
 /obj/item/tool/surgery/surgical_line,
 /obj/item/tool/surgery/surgicaldrill,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "pH" = (
@@ -4919,15 +4665,13 @@
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "pR" = (
 /obj/structure/largecrate/chick,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-north";
-	tag = "icon-W"
+	icon_state = "NS-north"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -4947,8 +4691,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "pX" = (
@@ -4959,14 +4702,12 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "pZ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/item/clothing/head/pumpkinhead,
 /obj/item/clothing/head/pumpkinhead,
@@ -4982,13 +4723,11 @@
 /area/event/metal/dynamic)
 "qa" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "qc" = (
@@ -5006,8 +4745,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "qf" = (
@@ -5015,8 +4753,7 @@
 /obj/structure/machinery/computer/security/almayer,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "qg" = (
@@ -5029,14 +4766,12 @@
 "qh" = (
 /obj/structure/largecrate/supply/medicine/iv,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "qi" = (
@@ -5045,8 +4780,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "qj" = (
@@ -5057,23 +4791,20 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "ql" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "qm" = (
 /obj/structure/mineral_door/wood,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "qn" = (
@@ -5102,8 +4833,7 @@
 /obj/item/device/healthanalyzer,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "qs" = (
@@ -5150,8 +4880,7 @@
 /area/event/metal/dynamic)
 "qz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -5178,12 +4907,10 @@
 /area/event/deep_underground/dynamic)
 "qE" = (
 /obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "qF" = (
@@ -5192,8 +4919,7 @@
 	},
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "qG" = (
@@ -5203,15 +4929,13 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "qI" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-in";
-	tag = "icon-SW-in"
+	icon_state = "SW-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -5246,8 +4970,7 @@
 	id = "commsroomlink"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "qP" = (
@@ -5290,22 +5013,19 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "qY" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "qZ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -5341,8 +5061,7 @@
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "rg" = (
@@ -5351,8 +5070,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "rh" = (
@@ -5362,8 +5080,7 @@
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "rk" = (
@@ -5372,27 +5089,23 @@
 /area/event/deep_underground/dynamic)
 "rl" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "rm" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "rn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	layer = 2.5;
-	tag = "icon-W"
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -5450,8 +5163,7 @@
 "rx" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ry" = (
@@ -5466,18 +5178,15 @@
 "rz" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "rA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -5501,15 +5210,13 @@
 /obj/item/tool/pen,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "rF" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "rG" = (
@@ -5520,8 +5227,7 @@
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "rK" = (
@@ -5554,8 +5260,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "rN" = (
@@ -5594,22 +5299,19 @@
 /area/event/underground_no_CAS/dynamic)
 "rV" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "rW" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/curtain/medical,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "rX" = (
@@ -5618,8 +5320,7 @@
 /area/event/metal/dynamic)
 "rZ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -5637,8 +5338,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
@@ -5671,8 +5371,7 @@
 /area/event/underground_no_CAS/dynamic)
 "sg" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /mob/living/simple_animal/hostile/giant_spider{
 	health = 750;
@@ -5684,8 +5383,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "si" = (
@@ -5714,15 +5412,13 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/deep_underground/dynamic)
 "sm" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/dynamic)
 "sn" = (
@@ -5744,8 +5440,7 @@
 /area/event/metal/dynamic)
 "so" = (
 /obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-HD_blue 0,0"
+	icon_state = "HD_blue 0,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -5760,8 +5455,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "ss" = (
@@ -5771,14 +5465,12 @@
 	},
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "st" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "sv" = (
@@ -5850,8 +5542,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "sH" = (
@@ -5872,8 +5563,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/deep_underground/dynamic)
 "sK" = (
@@ -5882,8 +5572,7 @@
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "sL" = (
@@ -5904,8 +5593,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "sQ" = (
@@ -5914,8 +5602,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "sR" = (
@@ -5932,8 +5619,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "sV" = (
@@ -5958,8 +5644,7 @@
 	move_to_delay = 3
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "sX" = (
@@ -5972,14 +5657,12 @@
 	pixel_y = 32
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
+	icon_state = "pottedplant_21"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "ta" = (
@@ -6000,16 +5683,14 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "tb" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "tc" = (
@@ -6031,16 +5712,14 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "tf" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "tg" = (
@@ -6049,8 +5728,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "th" = (
@@ -6069,8 +5747,7 @@
 /obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "tj" = (
@@ -6079,8 +5756,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/event/metal/dynamic)
 "tk" = (
@@ -6088,8 +5764,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "tl" = (
@@ -6102,8 +5777,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "tm" = (
@@ -6118,8 +5792,7 @@
 	move_to_delay = 3
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "tp" = (
@@ -6129,8 +5802,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "tr" = (
@@ -6146,8 +5818,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "tt" = (
@@ -6160,8 +5831,7 @@
 "tu" = (
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/event/metal/dynamic)
 "tv" = (
@@ -6184,8 +5854,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "tz" = (
@@ -6210,16 +5879,14 @@
 "tD" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "tF" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -6227,8 +5894,7 @@
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "tH" = (
@@ -6242,8 +5908,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "tJ" = (
@@ -6260,8 +5925,7 @@
 /obj/structure/machinery/prop/almayer/computer,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "tK" = (
@@ -6291,8 +5955,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "tO" = (
@@ -6304,8 +5967,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "tP" = (
@@ -6339,8 +6001,7 @@
 "tS" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "tT" = (
@@ -6353,8 +6014,7 @@
 "tU" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "tW" = (
@@ -6393,15 +6053,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "tZ" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ua" = (
@@ -6410,8 +6068,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "uc" = (
@@ -6422,8 +6079,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "ue" = (
@@ -6433,8 +6089,7 @@
 "uf" = (
 /obj/structure/largecrate/supply/supplies/sandbags,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -6442,8 +6097,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/sake,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "uh" = (
@@ -6478,8 +6132,7 @@
 /obj/structure/bed/chair,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "um" = (
@@ -6487,8 +6140,7 @@
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -6500,14 +6152,12 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "uo" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	dir = 4
 	},
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/carpet,
@@ -6522,8 +6172,7 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ur" = (
@@ -6565,8 +6214,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ux" = (
@@ -6578,8 +6226,7 @@
 "uy" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "uA" = (
@@ -6601,8 +6248,7 @@
 /obj/item/facepaint/green,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "uD" = (
@@ -6629,8 +6275,7 @@
 	poison_per_bite = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "uJ" = (
@@ -6665,8 +6310,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "uO" = (
@@ -6692,8 +6336,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "uV" = (
@@ -6724,8 +6367,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "vc" = (
@@ -6735,8 +6377,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ve" = (
@@ -6762,8 +6403,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "vi" = (
@@ -6798,8 +6438,7 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "vn" = (
@@ -6809,8 +6448,7 @@
 "vo" = (
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "vp" = (
@@ -6853,25 +6491,21 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "vt" = (
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "vu" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -6890,12 +6524,10 @@
 /area/event/metal/dynamic)
 "vz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -6916,14 +6548,12 @@
 "vH" = (
 /obj/structure/largecrate/goat,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-in";
-	tag = "icon-SW-in"
+	icon_state = "SW-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "vI" = (
@@ -6973,16 +6603,14 @@
 /obj/structure/curtain/medical,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "vQ" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "vR" = (
@@ -7011,8 +6639,7 @@
 /obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "vX" = (
@@ -7024,8 +6651,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "vY" = (
@@ -7052,8 +6678,7 @@
 /area/event/underground_no_CAS/dynamic)
 "wb" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 8;
-	tag = "icon-wooden_chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/carpet,
 /area/event/metal/dynamic)
@@ -7063,8 +6688,7 @@
 /area/event/metal/dynamic)
 "wd" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-in";
-	tag = "icon-NW-in"
+	icon_state = "NW-in"
 	},
 /obj/effect/decal/cleanable/cobweb,
 /mob/living/simple_animal/hostile/giant_spider{
@@ -7120,8 +6744,7 @@
 "wo" = (
 /obj/structure/closet/crate/radiation,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -7147,16 +6770,14 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "wv" = (
 /obj/structure/closet/secure_closet,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "ww" = (
@@ -7173,8 +6794,7 @@
 "wy" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "wz" = (
@@ -7184,8 +6804,7 @@
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "wB" = (
@@ -7198,8 +6817,7 @@
 "wC" = (
 /obj/structure/closet/crate/secure/phoron,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -7230,14 +6848,12 @@
 /area/event/dynamic)
 "wJ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-in";
-	tag = "icon-SW-in"
+	icon_state = "SW-in"
 	},
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "wK" = (
@@ -7255,8 +6871,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "wM" = (
@@ -7271,8 +6886,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "wS" = (
@@ -7293,8 +6907,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "wU" = (
@@ -7321,8 +6934,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "xc" = (
@@ -7339,22 +6951,19 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "xe" = (
 /obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/event/metal/dynamic)
 "xg" = (
 /obj/structure/curtain/open,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "xh" = (
@@ -7388,8 +6997,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xm" = (
@@ -7431,8 +7039,7 @@
 /area/event/dynamic)
 "xu" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -7452,8 +7059,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "xC" = (
@@ -7463,8 +7069,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xE" = (
@@ -7486,8 +7091,7 @@
 /area/event/metal/dynamic)
 "xI" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -7515,8 +7119,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "xN" = (
@@ -7525,16 +7128,14 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xO" = (
 /mob/living/simple_animal/mouse/gray,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "xP" = (
@@ -7550,14 +7151,12 @@
 	pixel_x = 27
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xR" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -7565,8 +7164,7 @@
 /mob/living/simple_animal/bat,
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "xT" = (
@@ -7582,28 +7180,24 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xV" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "xX" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -7640,12 +7234,10 @@
 /area/event/metal/dynamic)
 "yd" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ye" = (
@@ -7657,8 +7249,7 @@
 "yf" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -7670,8 +7261,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "yh" = (
@@ -7680,8 +7270,7 @@
 /area/event/metal/dynamic)
 "yi" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /obj/effect/spider/stickyweb,
 /mob/living/simple_animal/hostile/giant_spider{
@@ -7710,8 +7299,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "yk" = (
@@ -7720,8 +7308,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "yl" = (
@@ -7770,26 +7357,22 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "ys" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "yv" = (
 /obj/structure/largecrate/supply/supplies/water,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -7798,8 +7381,7 @@
 /obj/structure/machinery/chem_dispenser/beer,
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "yy" = (
@@ -7831,8 +7413,7 @@
 /area/event/deep_underground/dynamic)
 "yD" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/gm/river{
 	color = "#990000";
@@ -7845,8 +7426,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "yH" = (
@@ -7869,8 +7449,7 @@
 /obj/item/tool/lighter/zippo/gold,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "yL" = (
@@ -7879,15 +7458,13 @@
 /obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "yM" = (
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "yN" = (
@@ -7917,8 +7494,7 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "yS" = (
@@ -7952,8 +7528,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "yV" = (
@@ -7963,8 +7538,7 @@
 "yW" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-in";
-	tag = "icon-NW-in"
+	icon_state = "NW-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -7999,8 +7573,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "zb" = (
@@ -8011,8 +7584,7 @@
 /obj/structure/xenoautopsy/tank,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "ze" = (
@@ -8021,8 +7593,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "zf" = (
@@ -8042,8 +7613,7 @@
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/gold,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "zi" = (
@@ -8056,14 +7626,12 @@
 /obj/structure/xenoautopsy/tank/alien,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "zm" = (
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "zp" = (
@@ -8088,8 +7656,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "zs" = (
@@ -8101,8 +7668,7 @@
 /mob/living/simple_animal/hostile/UPP,
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "zw" = (
@@ -8115,8 +7681,7 @@
 /area/event/underground_no_CAS/dynamic)
 "zy" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
+	icon_state = "0,1"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -8166,8 +7731,7 @@
 /area/event/deep_underground/dynamic)
 "zI" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -8187,14 +7751,12 @@
 	icon_state = "book-5"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "zL" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /obj/effect/spider/stickyweb,
 /mob/living/simple_animal/hostile/giant_spider{
@@ -8207,8 +7769,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "zN" = (
@@ -8218,8 +7779,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "zO" = (
@@ -8234,8 +7794,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 1;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "zP" = (
@@ -8288,15 +7847,13 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "zW" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
+	icon_state = "sterile_green"
 	},
 /area/event/metal/dynamic)
 "zX" = (
@@ -8313,23 +7870,20 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "zY" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-in";
-	tag = "icon-SW-in"
+	icon_state = "SW-in"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "zZ" = (
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Aa" = (
@@ -8349,8 +7903,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 9;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTHWEST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ad" = (
@@ -8372,8 +7925,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ai" = (
@@ -8385,8 +7937,7 @@
 "Aj" = (
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Ak" = (
@@ -8407,8 +7958,7 @@
 	move_to_delay = 3
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Ao" = (
@@ -8420,8 +7970,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/metal/dynamic)
 "As" = (
@@ -8451,14 +8000,12 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "Av" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -8477,8 +8024,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "AB" = (
@@ -8520,8 +8066,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "AH" = (
@@ -8550,8 +8095,7 @@
 /area/event/metal/dynamic)
 "AM" = (
 /obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
+	icon_state = "green 2,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -8562,8 +8106,7 @@
 /obj/item/ore/diamond,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "AP" = (
@@ -8572,8 +8115,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "AQ" = (
@@ -8590,8 +8132,7 @@
 	poison_per_bite = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "AR" = (
@@ -8613,8 +8154,7 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "AZ" = (
@@ -8626,8 +8166,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Bb" = (
@@ -8642,8 +8181,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Bc" = (
@@ -8655,8 +8193,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Bd" = (
@@ -8669,14 +8206,12 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Bh" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -8687,14 +8222,12 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Bj" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#990000";
@@ -8752,8 +8285,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Br" = (
@@ -8767,8 +8299,7 @@
 "Bu" = (
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/event/metal/dynamic)
 "Bv" = (
@@ -8789,22 +8320,19 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Bx" = (
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Bz" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "BA" = (
@@ -8822,8 +8350,7 @@
 /area/event/deep_underground/dynamic)
 "BB" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/structure/barricade/plasteel/wired{
 	dir = 4
@@ -8850,8 +8377,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "BI" = (
@@ -8865,8 +8391,7 @@
 	unacidable = 1
 	},
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "BK" = (
@@ -8884,16 +8409,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "BM" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "BN" = (
@@ -8904,8 +8427,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "BO" = (
@@ -8913,16 +8435,14 @@
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "BP" = (
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "BQ" = (
@@ -8937,8 +8457,7 @@
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "BS" = (
@@ -8997,8 +8516,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Cd" = (
@@ -9020,8 +8538,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Cj" = (
@@ -9038,15 +8555,13 @@
 /area/event/metal/dynamic)
 "Cl" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /obj/item/clothing/head/pumpkinhead,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Cm" = (
@@ -9084,8 +8599,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Cq" = (
@@ -9094,8 +8608,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Cs" = (
@@ -9132,8 +8645,7 @@
 "Cw" = (
 /obj/structure/largecrate/supply/medicine/medivend,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -9195,8 +8707,7 @@
 /obj/structure/machinery/prop/almayer/computer,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "CE" = (
@@ -9211,8 +8722,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "CF" = (
@@ -9241,8 +8751,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "CI" = (
@@ -9254,8 +8763,7 @@
 "CJ" = (
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "CN" = (
@@ -9266,8 +8774,7 @@
 /obj/item/storage/fancy/cigar/tarbacktube,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "CO" = (
@@ -9288,8 +8795,7 @@
 /area/event/metal/dynamic)
 "CQ" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
+	icon_state = "0,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -9312,8 +8818,7 @@
 /area/event/underground_no_CAS/dynamic)
 "CV" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-in";
-	tag = "icon-NW-in"
+	icon_state = "NW-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -9331,14 +8836,12 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "CY" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -9361,8 +8864,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Dc" = (
@@ -9399,8 +8901,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Dd" = (
@@ -9415,8 +8916,7 @@
 "Df" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-in";
-	tag = "icon-NE-in"
+	icon_state = "NE-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -9427,8 +8927,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "Dk" = (
@@ -9473,8 +8972,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Dq" = (
@@ -9500,8 +8998,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Du" = (
@@ -9510,8 +9007,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Dv" = (
@@ -9561,22 +9057,19 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "DE" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/underground_no_CAS/dynamic)
 "DF" = (
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "DH" = (
@@ -9594,8 +9087,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "DK" = (
@@ -9636,8 +9128,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "DV" = (
@@ -9646,8 +9137,7 @@
 /area/event/metal/dynamic)
 "DW" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
+	icon_state = "blue 2,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -9663,14 +9153,12 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "DY" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -9687,14 +9175,12 @@
 "Ec" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "Ed" = (
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Ef" = (
@@ -9711,8 +9197,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Eh" = (
@@ -9748,8 +9233,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ei" = (
@@ -9763,8 +9247,7 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ek" = (
@@ -9820,8 +9303,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Eq" = (
@@ -9839,8 +9321,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Es" = (
@@ -9865,18 +9346,15 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Eu" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gibarm_flesh";
-	tag = "icon-gibarm_flesh"
+	icon_state = "gibarm_flesh"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ew" = (
@@ -9890,8 +9368,7 @@
 /area/event/metal/dynamic)
 "Ex" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -9901,8 +9378,7 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "EA" = (
@@ -9913,8 +9389,7 @@
 /mob/living/simple_animal/mouse/gray,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "EC" = (
@@ -9929,12 +9404,10 @@
 /area/event/metal/dynamic)
 "EE" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -9955,8 +9428,7 @@
 "EH" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "EJ" = (
@@ -10004,8 +9476,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ER" = (
@@ -10024,8 +9495,7 @@
 /obj/item/reagent_container/food/snacks/mre_pack/meal3,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "EU" = (
@@ -10035,8 +9505,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "EV" = (
@@ -10049,8 +9518,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "EZ" = (
@@ -10076,8 +9544,7 @@
 "Fg" = (
 /obj/structure/largecrate/supply/weapons/flamers,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -10096,8 +9563,7 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Fj" = (
@@ -10109,8 +9575,7 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Fk" = (
@@ -10121,22 +9586,19 @@
 	},
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Fl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/packaged_burrito,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Fn" = (
 /obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-HD_blue 0,1"
+	icon_state = "HD_blue 0,1"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -10147,8 +9609,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 1;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Fr" = (
@@ -10163,8 +9624,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ft" = (
@@ -10172,8 +9632,7 @@
 /obj/item/paper_bin/wy,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Fu" = (
@@ -10196,16 +9655,14 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "Fy" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send";
-	tag = "icon-broadcaster_send"
+	icon_state = "broadcaster_send"
 	},
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
 "FA" = (
 /turf/open/floor/almayer_hull{
 	dir = 8;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (WEST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "FC" = (
@@ -10241,8 +9698,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "FG" = (
@@ -10269,8 +9725,7 @@
 "FJ" = (
 /obj/structure/largecrate/supply/ammo/m41a_box,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -10288,12 +9743,10 @@
 /area/event/underground_no_CAS/dynamic)
 "FL" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -10315,8 +9768,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "FN" = (
@@ -10342,16 +9794,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "FQ" = (
 /obj/item/tool/pickaxe,
 /obj/structure/machinery/defenses/sentry/premade/dumb,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "FT" = (
@@ -10375,8 +9825,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "FX" = (
@@ -10393,15 +9842,13 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Gd" = (
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ge" = (
@@ -10420,8 +9867,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Gh" = (
@@ -10441,36 +9887,31 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Gl" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
 "Gm" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Go" = (
 /obj/structure/closet/crate/explosives,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Gp" = (
@@ -10524,8 +9965,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "Gy" = (
@@ -10538,18 +9978,15 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "GA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -10566,16 +10003,14 @@
 /obj/item/weapon/gun/pistol/heavy,
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "GG" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "GH" = (
@@ -10588,8 +10023,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "GJ" = (
@@ -10607,8 +10041,7 @@
 /area/event/metal/dynamic)
 "GL" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /mob/living/simple_animal/hostile/giant_spider{
 	health = 750;
@@ -10620,8 +10053,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "GO" = (
@@ -10637,8 +10069,7 @@
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "GQ" = (
@@ -10652,8 +10083,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "GR" = (
@@ -10670,16 +10100,14 @@
 /area/event/metal/dynamic)
 "GU" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-rasputin7"
+	icon_state = "floor8"
 	},
 /area/event/underground_no_CAS/dynamic)
 "GV" = (
 /obj/item/tool/pickaxe,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "GX" = (
@@ -10687,8 +10115,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "GZ" = (
@@ -10699,8 +10126,7 @@
 "Ha" = (
 /turf/open/floor/almayer_hull{
 	dir = 10;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (SOUTHWEST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Hb" = (
@@ -10724,8 +10150,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Hg" = (
@@ -10733,8 +10158,7 @@
 /area/event/deep_underground/dynamic)
 "Hh" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
+	icon_state = "0,2"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -10746,8 +10170,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Hk" = (
@@ -10755,8 +10178,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Hm" = (
@@ -10781,8 +10203,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Hr" = (
@@ -10795,8 +10216,7 @@
 /obj/structure/holohoop,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Hv" = (
@@ -10817,12 +10237,10 @@
 "Hy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	layer = 2.5;
-	tag = "icon-W"
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -10835,8 +10253,7 @@
 /mob/living/simple_animal/hostile/retaliate/clown,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "HB" = (
@@ -10844,15 +10261,13 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "HC" = (
 /obj/structure/largecrate/supply/medicine/medkits,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -10865,14 +10280,12 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "HF" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -10896,8 +10309,7 @@
 	},
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "HL" = (
@@ -10906,8 +10318,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "HM" = (
@@ -10939,8 +10350,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "HQ" = (
@@ -10968,8 +10378,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "HS" = (
@@ -10998,8 +10407,7 @@
 "HV" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "HW" = (
@@ -11041,14 +10449,12 @@
 	},
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ib" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/gm/river{
 	color = "#990000";
@@ -11061,35 +10467,30 @@
 /obj/item/clothing/mask/muzzle,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Ie" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "If" = (
 /obj/item/stool,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Ig" = (
 /turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+	icon_state = "cell_stripe"
 	},
 /area/event/dynamic)
 "Ih" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
@@ -11124,8 +10525,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Ip" = (
@@ -11156,8 +10556,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Iw" = (
@@ -11213,8 +10612,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "IG" = (
@@ -11254,15 +10652,13 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "IR" = (
 /obj/structure/largecrate/supply/ammo/m39/half,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -11283,8 +10679,7 @@
 /obj/structure/closet,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "IW" = (
@@ -11296,8 +10691,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Ja" = (
@@ -11320,8 +10714,7 @@
 /area/event/metal/dynamic)
 "Jd" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin8"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Jf" = (
@@ -11338,15 +10731,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Jj" = (
 /obj/item/weapon/gun/revolver/m44/custom,
 /turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "Jk" = (
@@ -11365,8 +10756,7 @@
 /obj/structure/curtain/shower,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Jn" = (
@@ -11387,8 +10777,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Jq" = (
@@ -11403,14 +10792,12 @@
 /obj/item/device/assembly/mousetrap/armed,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Jt" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /obj/effect/spider/stickyweb,
 /mob/living/simple_animal/hostile/giant_spider/hunter{
@@ -11421,16 +10808,14 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Ju" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/deep_underground/dynamic)
 "Jz" = (
@@ -11449,8 +10834,7 @@
 /obj/item/trash/plate,
 /obj/item/reagent_container/food/snacks/packaged_burrito,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "JC" = (
@@ -11499,8 +10883,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "JF" = (
@@ -11575,8 +10958,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "JL" = (
@@ -11615,8 +10997,7 @@
 /obj/item/tool/pen,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "JP" = (
@@ -11634,8 +11015,7 @@
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "JS" = (
@@ -11645,8 +11025,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "JV" = (
@@ -11664,8 +11043,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 1;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "JW" = (
@@ -11683,16 +11061,14 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "Ke" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Kf" = (
@@ -11732,29 +11108,25 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ki" = (
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Kj" = (
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Kk" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /obj/effect/decal/cleanable/cobweb{
 	dir = 8
@@ -11765,8 +11137,7 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Km" = (
@@ -11777,8 +11148,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Ko" = (
@@ -11793,8 +11163,7 @@
 /obj/item/tool/surgery/drapes,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "Kq" = (
@@ -11808,8 +11177,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Ks" = (
@@ -11876,8 +11244,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "KE" = (
@@ -11889,14 +11256,12 @@
 /obj/item/tool/surgery/WYautopsy,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "KN" = (
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "KP" = (
@@ -11906,15 +11271,13 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "KQ" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/interior/wood,
 /area/event/metal/dynamic)
@@ -11929,8 +11292,7 @@
 /area/event/underground_no_CAS/dynamic)
 "KU" = (
 /turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+	dir = 5
 	},
 /area/event/dynamic)
 "KY" = (
@@ -11942,8 +11304,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "KZ" = (
@@ -11989,8 +11350,7 @@
 /area/event/metal/dynamic)
 "Ll" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -11998,8 +11358,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Lm" = (
@@ -12013,16 +11372,14 @@
 "Ln" = (
 /mob/living/simple_animal/hostile/giant_spider/hunter,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Lo" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Lp" = (
@@ -12046,8 +11403,7 @@
 "Ls" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Lt" = (
@@ -12057,13 +11413,11 @@
 /area/event/metal/dynamic)
 "Lu" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Lv" = (
@@ -12084,8 +11438,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "LB" = (
@@ -12122,8 +11475,7 @@
 "LJ" = (
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "LM" = (
@@ -12150,8 +11502,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "LS" = (
@@ -12168,14 +11519,12 @@
 /area/event/dynamic)
 "LV" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "LW" = (
@@ -12184,8 +11533,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 8;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (WEST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "LX" = (
@@ -12196,8 +11544,7 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "Mb" = (
@@ -12253,8 +11600,7 @@
 /obj/item/bedsheet/red,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Mh" = (
@@ -12281,16 +11627,14 @@
 /area/event/deep_underground/dynamic)
 "Ml" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "Mn" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Mo" = (
@@ -12304,8 +11648,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Mp" = (
@@ -12345,8 +11688,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "MB" = (
@@ -12367,8 +11709,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "MD" = (
@@ -12384,8 +11725,7 @@
 	pixel_x = 30
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "MG" = (
@@ -12422,8 +11762,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "MO" = (
@@ -12443,8 +11782,7 @@
 "MQ" = (
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "MR" = (
@@ -12453,8 +11791,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "MS" = (
@@ -12469,14 +11806,12 @@
 /area/event/metal/dynamic)
 "MT" = (
 /obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	dir = 8
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "MV" = (
@@ -12493,8 +11828,7 @@
 "MW" = (
 /obj/structure/largecrate/supply/explosives,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -12510,8 +11844,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "MY" = (
@@ -12520,8 +11853,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Na" = (
@@ -12566,16 +11898,14 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Nd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/packaged_burger,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ne" = (
@@ -12601,8 +11931,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ng" = (
@@ -12627,8 +11956,7 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Nk" = (
@@ -12667,8 +11995,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Ns" = (
@@ -12680,8 +12007,7 @@
 /area/event/deep_underground/dynamic)
 "Nv" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -12718,8 +12044,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Nz" = (
@@ -12728,8 +12053,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "NB" = (
@@ -12749,16 +12073,14 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ND" = (
 /obj/structure/closet/secure_closet,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "NF" = (
@@ -12800,8 +12122,7 @@
 	move_to_delay = 3
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "NN" = (
@@ -12809,24 +12130,21 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "NP" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "NQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "NR" = (
@@ -12863,8 +12181,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "NV" = (
@@ -12891,15 +12208,13 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "NZ" = (
 /obj/structure/closet,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Oa" = (
@@ -12930,13 +12245,11 @@
 /area/event/metal/dynamic)
 "Od" = (
 /obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	dir = 8
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Oe" = (
@@ -12961,8 +12274,7 @@
 "Og" = (
 /obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Oi" = (
@@ -12979,14 +12291,12 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ol" = (
 /obj/structure/cargo_container{
-	icon_state = "HD 3,0";
-	tag = "icon-WY 2,0"
+	icon_state = "HD 3,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -13039,8 +12349,7 @@
 	poison_per_bite = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Oz" = (
@@ -13051,8 +12360,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "OA" = (
@@ -13095,8 +12403,7 @@
 	poison_per_bite = 0
 	},
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "OH" = (
@@ -13120,8 +12427,7 @@
 "OL" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ON" = (
@@ -13150,8 +12456,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "OV" = (
@@ -13188,8 +12493,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "OY" = (
@@ -13199,8 +12503,7 @@
 "OZ" = (
 /obj/structure/largecrate/supply/weapons/shotgun,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -13218,8 +12521,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "Pc" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 8;
-	tag = "icon-wooden_chair (WEST)"
+	dir = 8
 	},
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/carpet,
@@ -13236,8 +12538,7 @@
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "Ph" = (
@@ -13247,12 +12548,10 @@
 /area/event/metal/dynamic)
 "Pk" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -13264,8 +12563,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Pm" = (
@@ -13279,13 +12577,11 @@
 /area/event/deep_underground/dynamic)
 "Pr" = (
 /obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Pt" = (
@@ -13367,8 +12663,7 @@
 "PE" = (
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "PF" = (
@@ -13426,8 +12721,7 @@
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/platinum,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "PR" = (
@@ -13436,8 +12730,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/event/metal/dynamic)
 "PS" = (
@@ -13455,15 +12748,13 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 5;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTHEAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "PU" = (
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "PW" = (
@@ -13472,19 +12763,16 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "PX" = (
 /obj/item/tool/extinguisher,
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "PY" = (
@@ -13504,8 +12792,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 6;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (SOUTHEAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "PZ" = (
@@ -13525,8 +12812,7 @@
 "Qd" = (
 /obj/structure/bookcase,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Qf" = (
@@ -13546,8 +12832,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Qh" = (
@@ -13560,8 +12845,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Qi" = (
@@ -13571,8 +12855,7 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Qj" = (
@@ -13597,8 +12880,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Qn" = (
@@ -13606,14 +12888,12 @@
 	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Qp" = (
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Qr" = (
@@ -13625,8 +12905,7 @@
 "Qs" = (
 /obj/effect/decal/cleanable/blood{
 	desc = "Watch your step.";
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/carpet{
 	icon_state = "bcarpet05"
@@ -13636,8 +12915,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Qv" = (
@@ -13653,16 +12931,14 @@
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Qz" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "QB" = (
@@ -13674,8 +12950,7 @@
 /obj/item/trash/plate,
 /obj/item/reagent_container/food/snacks/packaged_hdogs,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "QD" = (
@@ -13745,8 +13020,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "QQ" = (
@@ -13769,8 +13043,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "QT" = (
@@ -13783,8 +13056,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "QW" = (
@@ -13796,8 +13068,7 @@
 /obj/structure/stairs/perspective,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "QY" = (
@@ -13839,8 +13110,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Rg" = (
@@ -13921,16 +13191,14 @@
 "Ro" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Rs" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Rt" = (
@@ -13946,8 +13214,7 @@
 /obj/item/facepaint/green,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Rv" = (
@@ -13975,8 +13242,7 @@
 /obj/structure/morgue,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "RG" = (
@@ -13988,8 +13254,7 @@
 "RM" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "RN" = (
@@ -14016,8 +13281,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "RR" = (
@@ -14034,8 +13298,7 @@
 /obj/structure/bed/chair,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "RU" = (
@@ -14043,8 +13306,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "RV" = (
@@ -14082,15 +13344,13 @@
 "Sd" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Se" = (
 /obj/structure/closet/crate/radiation,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -14129,8 +13389,7 @@
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Sj" = (
@@ -14155,8 +13414,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/event/metal/dynamic)
 "Sn" = (
@@ -14190,8 +13448,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Sq" = (
@@ -14209,8 +13466,7 @@
 "Ss" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Su" = (
@@ -14235,12 +13491,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Sz" = (
@@ -14282,8 +13536,7 @@
 /obj/structure/machinery/door/airlock/strata/mining,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "SF" = (
@@ -14295,8 +13548,7 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "SL" = (
@@ -14326,8 +13578,7 @@
 "SQ" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "SS" = (
@@ -14362,8 +13613,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Tb" = (
@@ -14378,8 +13628,7 @@
 /area/event/metal/dynamic)
 "Te" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-in";
-	tag = "icon-NE-in"
+	icon_state = "NE-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -14387,8 +13636,7 @@
 "Tf" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Th" = (
@@ -14406,8 +13654,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Tj" = (
@@ -14440,8 +13687,7 @@
 "Tm" = (
 /turf/open/floor/prison{
 	dir = 1;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (NORTH)"
+	icon_state = "cell_stripe"
 	},
 /area/event/dynamic)
 "Tn" = (
@@ -14478,15 +13724,13 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Tq" = (
 /obj/structure/largecrate/cow,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-in";
-	tag = "icon-NE-in"
+	icon_state = "NE-in"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -14498,8 +13742,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ts" = (
@@ -14512,8 +13755,7 @@
 /area/event/metal/dynamic)
 "Tt" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/carpet,
 /area/event/metal/dynamic)
@@ -14535,24 +13777,21 @@
 /obj/structure/bed/chair,
 /turf/open/floor/carpet{
 	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Tz" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/iron,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "TB" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "TC" = (
@@ -14590,14 +13829,12 @@
 /area/event/deep_underground/dynamic)
 "TL" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "TM" = (
@@ -14611,15 +13848,13 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "TO" = (
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "TQ" = (
@@ -14656,8 +13891,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "TV" = (
@@ -14674,8 +13908,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "TZ" = (
@@ -14696,8 +13929,7 @@
 "Ub" = (
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Uc" = (
@@ -14727,8 +13959,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Uh" = (
@@ -14736,8 +13967,7 @@
 /obj/item/trash/plate,
 /obj/item/reagent_container/food/snacks/packaged_burger,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ui" = (
@@ -14749,8 +13979,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Uj" = (
@@ -14761,8 +13990,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Uk" = (
@@ -14772,8 +14000,7 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Ul" = (
@@ -14806,8 +14033,7 @@
 /obj/item/tool/surgery/hemostat,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Uo" = (
@@ -14822,8 +14048,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Uq" = (
@@ -14841,8 +14066,7 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Ur" = (
@@ -14855,8 +14079,7 @@
 "Us" = (
 /obj/structure/largecrate/cow,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-north";
-	tag = "icon-W"
+	icon_state = "NS-north"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -14929,8 +14152,7 @@
 	rapid = 1
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/event/underground_no_CAS/dynamic)
 "UK" = (
@@ -14964,8 +14186,7 @@
 "UQ" = (
 /obj/structure/largecrate/chick,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -14985,8 +14206,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "UT" = (
@@ -15001,8 +14221,7 @@
 /obj/structure/bed/chair,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "UV" = (
@@ -15012,8 +14231,7 @@
 "UW" = (
 /obj/structure/largecrate/supply/explosives/mortar_flare,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -15038,8 +14256,7 @@
 /obj/item/device/aicard,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Vb" = (
@@ -15049,15 +14266,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Vc" = (
 /obj/structure/largecrate/goat,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-in";
-	tag = "icon-SE-in"
+	icon_state = "SE-in"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -15083,8 +14298,7 @@
 /obj/item/device/autopsy_scanner,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Vh" = (
@@ -15092,15 +14306,13 @@
 	pixel_y = -33
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Vj" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "warningcorner";
-	tag = "icon-warningcorner (WEST)"
+	icon_state = "warningcorner"
 	},
 /area/event/dynamic)
 "Vm" = (
@@ -15113,15 +14325,13 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Vq" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -15132,8 +14342,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Vt" = (
@@ -15147,8 +14356,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Vy" = (
@@ -15156,8 +14364,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Vz" = (
@@ -15177,8 +14384,7 @@
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "VF" = (
@@ -15202,8 +14408,7 @@
 "VG" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "VH" = (
@@ -15246,8 +14451,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "VM" = (
@@ -15278,8 +14482,7 @@
 /mob/living/simple_animal/mouse/white,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "VO" = (
@@ -15287,8 +14490,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "VP" = (
@@ -15304,8 +14506,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "VV" = (
@@ -15333,8 +14534,7 @@
 "VY" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "VZ" = (
@@ -15357,15 +14557,13 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "Wb" = (
 /obj/structure/largecrate/cow,
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-in";
-	tag = "icon-NW-in"
+	icon_state = "NW-in"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -15382,8 +14580,7 @@
 "Wf" = (
 /turf/open/floor/prison{
 	dir = 4;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
+	icon_state = "cell_stripe"
 	},
 /area/event/dynamic)
 "Wh" = (
@@ -15396,8 +14593,7 @@
 /obj/structure/largecrate/lisa,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Wj" = (
@@ -15409,8 +14605,7 @@
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Wm" = (
@@ -15437,8 +14632,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTH)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Wt" = (
@@ -15463,24 +14657,21 @@
 	},
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (SOUTHWEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "WC" = (
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "WD" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "WE" = (
@@ -15506,8 +14697,7 @@
 	poison_type = "psilocybin"
 	},
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/event/metal/dynamic)
 "WF" = (
@@ -15519,8 +14709,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "WH" = (
@@ -15536,8 +14725,7 @@
 /area/event/metal/dynamic)
 "WL" = (
 /turf/open/floor/prison{
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "WM" = (
@@ -15551,8 +14739,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "WQ" = (
@@ -15562,8 +14749,7 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "WS" = (
@@ -15576,8 +14762,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "WT" = (
@@ -15590,8 +14775,7 @@
 "WV" = (
 /obj/structure/largecrate/supply/ammo,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -15602,8 +14786,7 @@
 "WX" = (
 /obj/structure/closet/crate/medical,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -15615,8 +14798,7 @@
 /area/event/metal/dynamic)
 "Xa" = (
 /obj/structure/cargo_container{
-	icon_state = "HD 1,0";
-	tag = "icon-WY 2,0"
+	icon_state = "HD 1,0"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -15624,8 +14806,7 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/event/dynamic)
 "Xd" = (
@@ -15643,8 +14824,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Xe" = (
@@ -15662,8 +14842,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/deep_underground/dynamic)
 "Xg" = (
@@ -15698,8 +14877,7 @@
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Xj" = (
@@ -15739,8 +14917,7 @@
 /area/event/metal/dynamic)
 "Xp" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -15767,12 +14944,10 @@
 /area/event/metal/dynamic)
 "Xt" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -15789,13 +14964,11 @@
 /area/event/metal/dynamic)
 "Xv" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Xx" = (
@@ -15812,8 +14985,7 @@
 	},
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "Xy" = (
@@ -15834,16 +15006,14 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "XD" = (
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "XE" = (
@@ -15852,8 +15022,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 1;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "XH" = (
@@ -15865,15 +15034,13 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "XJ" = (
 /obj/structure/largecrate/supply/supplies/metal,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -15895,8 +15062,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "XM" = (
@@ -15910,12 +15076,10 @@
 /area/event/underground_no_CAS/dynamic)
 "XP" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /turf/open/gm/river{
 	color = "#995555";
@@ -15924,8 +15088,7 @@
 /area/event/dynamic)
 "XQ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -15934,8 +15097,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "XR" = (
@@ -15975,8 +15137,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "XW" = (
@@ -16000,8 +15161,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Ya" = (
@@ -16017,8 +15177,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Yc" = (
@@ -16026,14 +15185,12 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "dark_sterile"
 	},
 /area/event/metal/dynamic)
 "Yd" = (
 /turf/open/floor{
-	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2"
+	icon_state = "darkredcorners2"
 	},
 /area/event/metal/dynamic)
 "Yf" = (
@@ -16045,8 +15202,7 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 8;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (WEST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Yi" = (
@@ -16057,15 +15213,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
 "Ym" = (
 /obj/structure/largecrate/supply/supplies/water,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/vault,
 /area/event/metal/dynamic)
@@ -16082,8 +15236,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Yr" = (
@@ -16098,13 +15251,11 @@
 	icon_state = "p_stair_full"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Yt" = (
@@ -16131,8 +15282,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "Yw" = (
@@ -16161,8 +15311,7 @@
 /obj/item/weapon/shield/riot,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "YB" = (
@@ -16175,8 +15324,7 @@
 /obj/item/reagent_container/food/drinks/drinkingglass,
 /obj/item/clothing/head/pumpkinhead,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "YD" = (
@@ -16189,8 +15337,7 @@
 	density = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/underground_no_CAS/dynamic)
 "YF" = (
@@ -16226,8 +15373,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "YL" = (
@@ -16241,15 +15387,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
+	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
 "YQ" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W-corner";
-	tag = "icon-W-corner"
+	icon_state = "W-corner"
 	},
 /obj/effect/spider/stickyweb,
 /turf/open/floor/vault,
@@ -16258,8 +15402,7 @@
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium,
 /turf/open/floor{
-	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
+	icon_state = "asteroidplating"
 	},
 /area/event/deep_underground/dynamic)
 "YT" = (
@@ -16300,8 +15443,7 @@
 "Zb" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
-	icon_state = "darkred2";
-	tag = "icon-darkred2"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Zc" = (
@@ -16309,8 +15451,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/carpet{
 	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "Zd" = (
@@ -16320,8 +15461,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+	icon_state = "platingdmg2"
 	},
 /area/event/metal/dynamic)
 "Ze" = (
@@ -16329,8 +15469,7 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkred2";
-	tag = "icon-darkred2 (NORTHEAST)"
+	icon_state = "darkred2"
 	},
 /area/event/metal/dynamic)
 "Zf" = (
@@ -16354,8 +15493,7 @@
 /obj/item/device/assembly/mousetrap/armed,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Zj" = (
@@ -16373,8 +15511,7 @@
 /obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/prison{
 	dir = 8;
-	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
+	icon_state = "cell_stripe"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "Zn" = (
@@ -16383,8 +15520,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/almayer_hull,
 /area/event/underground_no_CAS/dynamic)
@@ -16417,8 +15553,7 @@
 "Zy" = (
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plating"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Zz" = (
@@ -16434,8 +15569,7 @@
 "ZA" = (
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ZB" = (
@@ -16447,15 +15581,13 @@
 /obj/effect/spider/stickyweb,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	icon_state = "platingdmg3"
 	},
 /area/event/metal/dynamic)
 "ZD" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
+	icon_state = "floor"
 	},
 /area/event/metal/dynamic)
 "ZF" = (
@@ -16480,15 +15612,13 @@
 /obj/structure/bed/chair,
 /turf/open/floor/carpet{
 	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ZL" = (
 /turf/open/floor/carpet{
 	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ZN" = (
@@ -16519,8 +15649,7 @@
 	},
 /turf/open/floor/carpet{
 	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+	icon_state = "carpetside"
 	},
 /area/event/metal/dynamic)
 "ZT" = (
@@ -16538,14 +15667,12 @@
 	},
 /turf/open/floor/almayer_hull{
 	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
+	icon_state = "outerhull_dir"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ZY" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)

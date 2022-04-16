@@ -22,24 +22,21 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "ag" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
 "ai" = (
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
@@ -53,8 +50,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	tag = "icon-carpet14-10 (WEST)";
-	icon_state = "carpet14-10";
+		icon_state = "carpet14-10";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -63,8 +59,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	tag = "icon-carpet10-8 (WEST)";
-	icon_state = "carpet10-8";
+		icon_state = "carpet10-8";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -81,8 +76,7 @@
 "an" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -108,35 +102,30 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood{
-	tag = "icon-gib6";
-	icon_state = "gib6"
+		icon_state = "gib6"
 	},
 /turf/open/floor{
-	tag = "icon-carpet7-3 (WEST)";
-	icon_state = "carpet7-3";
+		icon_state = "carpet7-3";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "as" = (
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "at" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "au" = (
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
-	tag = "icon-carpet11-12 (WEST)";
-	icon_state = "carpet11-12";
+		icon_state = "carpet11-12";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -150,23 +139,20 @@
 "aw" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
 "ay" = (
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
 "aA" = (
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
-	tag = "icon-carpet7-3 (WEST)";
-	icon_state = "carpet7-3";
+		icon_state = "carpet7-3";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -174,8 +160,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -184,16 +169,14 @@
 	dir = 8
 	},
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aD" = (
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor{
-	tag = "icon-carpet6-2 (WEST)";
-	icon_state = "carpet6-2";
+		icon_state = "carpet6-2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -203,8 +186,7 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	tag = "icon-darkredcorners2";
-	icon_state = "darkredcorners2"
+		icon_state = "darkredcorners2"
 	},
 /area/bigredv2/outside/admin_building)
 "aH" = (
@@ -214,14 +196,12 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
-	tag = "icon-darkred2";
-	icon_state = "darkred2"
+		icon_state = "darkred2"
 	},
 /area/bigredv2/outside/admin_building)
 "aI" = (
 /turf/open/floor{
-	tag = "icon-carpet7-3 (WEST)";
-	icon_state = "carpet7-3";
+		icon_state = "carpet7-3";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -230,8 +210,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -239,16 +218,14 @@
 /obj/structure/surface/table,
 /obj/item/device/radio/marine,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
-	tag = "icon-carpet11-12 (WEST)";
-	icon_state = "carpet11-12";
+		icon_state = "carpet11-12";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -256,39 +233,34 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aN" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
-	tag = "icon-darkred2 (EAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 4
 	},
 /area/bigredv2/outside/admin_building)
 "aO" = (
 /obj/item/storage/secure/briefcase,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aP" = (
 /obj/structure/surface/table,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aQ" = (
 /turf/open/floor{
-	tag = "icon-carpet11-12 (WEST)";
-	icon_state = "carpet11-12";
+		icon_state = "carpet11-12";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -299,16 +271,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aT" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
@@ -318,8 +288,7 @@
 	},
 /obj/item/storage/toolbox/syndicate,
 /turf/open/floor{
-	tag = "icon-darkred2 (EAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 4
 	},
 /area/bigredv2/outside/admin_building)
@@ -327,8 +296,7 @@
 /obj/structure/surface/table,
 
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -336,8 +304,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor{
-	tag = "icon-carpet11-12 (WEST)";
-	icon_state = "carpet11-12";
+		icon_state = "carpet11-12";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -345,15 +312,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aY" = (
 /turf/open/floor{
-	tag = "icon-darkred2 (EAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 4
 	},
 /area/bigredv2/outside/admin_building)
@@ -363,8 +328,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	tag = "icon-carpet7-3 (WEST)";
-	icon_state = "carpet7-3";
+		icon_state = "carpet7-3";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -375,8 +339,7 @@
 	},
 /obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -390,8 +353,7 @@
 	},
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
+		icon_state = "carpet15-15";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -402,8 +364,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	tag = "icon-carpet11-12 (WEST)";
-	icon_state = "carpet11-12";
+		icon_state = "carpet11-12";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -418,8 +379,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -429,8 +389,7 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
+		icon_state = "dark";
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
@@ -440,8 +399,7 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	tag = "icon-darkred2 (EAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 4
 	},
 /area/bigredv2/outside/admin_building)
@@ -461,22 +419,19 @@
 "bi" = (
 /obj/item/ammo_box/magazine/m39/ap,
 /turf/open/floor{
-	tag = "icon-carpet5-1 (WEST)";
-	icon_state = "carpet5-1";
+		icon_state = "carpet5-1";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "bj" = (
 /turf/open/floor{
-	tag = "icon-carpet13-5 (WEST)";
-	icon_state = "carpet13-5";
+		icon_state = "carpet13-5";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "bk" = (
 /turf/open/floor{
-	tag = "icon-carpet9-4 (WEST)";
-	icon_state = "carpet9-4";
+		icon_state = "carpet9-4";
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
@@ -515,8 +470,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor{
-	tag = "icon-darkred2 (EAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 4
 	},
 /area/bigredv2/outside/admin_building)
@@ -526,21 +480,18 @@
 /area/bigredv2/outside/admin_building)
 "bq" = (
 /turf/open/floor{
-	tag = "icon-darkred2 (SOUTHWEST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 10
 	},
 /area/bigredv2/outside/admin_building)
 "br" = (
 /turf/open/floor{
-	tag = "icon-darkred2";
-	icon_state = "darkred2"
+		icon_state = "darkred2"
 	},
 /area/bigredv2/outside/admin_building)
 "bs" = (
 /turf/open/floor{
-	tag = "icon-darkred2 (SOUTHEAST)";
-	icon_state = "darkred2";
+		icon_state = "darkred2";
 	dir = 6
 	},
 /area/bigredv2/outside/admin_building)

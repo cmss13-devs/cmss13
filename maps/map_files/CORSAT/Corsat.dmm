@@ -16627,8 +16627,7 @@
 "aSV" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "waste_corsat_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -16821,8 +16820,7 @@
 "aTv" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "mixed_corsat_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -17378,8 +17376,7 @@
 "aUN" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "nit_corsat_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -25394,8 +25391,7 @@
 "bqo" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "oxy_corsat_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -30025,8 +30021,7 @@
 "bDM" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
-	id_tag = "mix_sigma_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -34967,8 +34962,7 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty/phoron,
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
-	id_tag = "mix_sigma_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -36144,8 +36138,7 @@
 "bYw" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "mix_gamma_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -36315,16 +36308,14 @@
 "bYS" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "car_theta_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYT" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 1;
-	id_tag = "mix_theta_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -61847,8 +61838,7 @@
 "urN" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "oxy_corsat_out";
-	tag = "icon-map_vent_in (EAST)"
+	id_	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

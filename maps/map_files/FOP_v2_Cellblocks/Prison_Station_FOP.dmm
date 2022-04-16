@@ -34799,8 +34799,7 @@
 "bPW" = (
 /obj/structure/pipes/standard/tank/oxygen{
 	dir = 8;
-	tag = "icon-o2_map (WEST)";
-	unacidable = 1;
+		unacidable = 1;
 	unslashable = 1
 	},
 /turf/open/floor/prison,
@@ -35446,8 +35445,7 @@
 "bRx" = (
 /obj/structure/pipes/standard/tank/oxygen{
 	dir = 8;
-	tag = "icon-o2_map (WEST)";
-	unacidable = 1;
+		unacidable = 1;
 	unslashable = 1
 	},
 /obj/structure/window/reinforced,
@@ -45849,8 +45847,7 @@
 "cwY" = (
 /obj/structure/pipes/standard/tank/oxygen{
 	dir = 1;
-	tag = "icon-o2_map (WEST)";
-	unacidable = 1;
+		unacidable = 1;
 	unslashable = 1
 	},
 /turf/open/floor/plating{

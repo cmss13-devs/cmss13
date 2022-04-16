@@ -1,13 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "al" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
+	icon_state = "light_2"
 	},
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0
+	icon_	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -32,8 +30,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "gO" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
+	icon_state = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -107,8 +104,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "ur" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_state = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -134,8 +130,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "zg" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
+	icon_state = "light_3"
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -186,8 +181,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "UA" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
+	icon_state = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -207,8 +201,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "Wr" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
+	icon_state = "light_2"
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -240,8 +233,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "XN" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
+	icon_state = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -276,8 +268,7 @@
 "YD" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0
+	icon_	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)

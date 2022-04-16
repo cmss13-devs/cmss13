@@ -128,8 +128,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_state = "light_2"
 	},
 /turf/open/gm/grass{
 	icon_state = "grass2"

@@ -70241,10 +70241,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
 "szi" = (
-/turf/closed/wall/almayer/reinforced{
-	color = null
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 2
 	},
-/area/almayer/shipboard/brig/general_equipment)
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"

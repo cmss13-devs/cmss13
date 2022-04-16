@@ -199,8 +199,8 @@
 	for(var/obj/structure/platform/P in src.loc)
 		if(P.dir == reverse_direction(direction))
 			return FALSE
-	for(var/obj/structure/barricade/B in loc)
-		if(B.density && B.dir == direction && B.health >= (B.maxhealth / 4))
+	for(var/obj/structure/barricade/from_blocking_cade in loc) //cades on tile we're coming from
+		if(from_blocking_cade.density && from_blocking_cade.dir == direction && from_blocking_cade.health >= (from_blocking_cade.maxhealth / 4))
 			return FALSE
 
 	for(var/obj/O in T)
@@ -208,9 +208,9 @@
 			if(O.dir == direction)
 				return FALSE
 
-		if(istype(O, /obj/structure/barricade))
-			var/obj/structure/barricade/B = O
-			if(B.density && B.dir == reverse_dir[direction] && B.health >= (B.maxhealth / 4))
+		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
+			var/obj/structure/barricade/to_blocking_cade = O
+			if(to_blocking_cade.density && to_blocking_cade.dir == reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))

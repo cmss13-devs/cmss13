@@ -5,7 +5,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
-	icon_	pixel_x = 0
+	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -231,12 +231,6 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
-"XN" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/south_east_jungle)
 "XR" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -264,13 +258,6 @@
 	pixel_y = 24
 	},
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"YD" = (
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	icon_	pixel_x = 0
-	},
-/turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ze" = (
 /turf/open/gm/dirtgrassborder{
@@ -343,8 +330,8 @@ aK
 cC
 LW
 Wr
-XN
-YD
+ur
+jc
 Wl
 CW
 Xl
@@ -357,8 +344,8 @@ aK
 "}
 (5,1,1) = {"
 LW
-YD
-YD
+jc
+jc
 qo
 UA
 xk
@@ -374,7 +361,7 @@ aK
 (6,1,1) = {"
 LW
 LW
-XN
+ur
 qo
 qo
 Wl
@@ -390,7 +377,7 @@ aK
 (7,1,1) = {"
 qo
 UA
-YD
+jc
 qo
 qo
 Wt

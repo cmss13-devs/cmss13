@@ -208,6 +208,13 @@
 	item_state = "lfpacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
+/obj/item/storage/fancy/cigarettes/lucky_strikes_4
+	name = "\improper Lucky Strikes Mini Packet"
+	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
+	icon_state = "ls4packet"
+	item_state = "lspacket"
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+	storage_slots = 4
 
 /////////////
 //CIGAR BOX//

@@ -52488,6 +52488,9 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -7
 	},
+/obj/item/storage/xeno_tag_case/full{
+	pixel_y = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -58214,6 +58217,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/paper,
+/obj/item/storage/xeno_tag_case/full,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"

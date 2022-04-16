@@ -148,8 +148,9 @@
 
 	for(var/i in targets)
 		var/mob/M = i
-		if(M.client?.prefs.toggles_sound & SOUND_MIDI)
-			admin_sound.volume = vol * M.client.admin_music_volume
+		var/client/C = M?.client
+		if(C?.prefs.toggles_sound & SOUND_MIDI)
+			admin_sound.volume = vol * C?.admin_music_volume
 			SEND_SOUND(M, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)

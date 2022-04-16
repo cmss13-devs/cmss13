@@ -1,6 +1,8 @@
 import glob
 import re
 
+defineName = "GLOBAL_LIST_INIT_TYPED"
+
 var_array = []
 for file in glob.glob("./**/*.dm", recursive=True):
     # I want to record all variable instances into an array called var_array
@@ -15,7 +17,7 @@ for file in glob.glob("./**/*.dm", recursive=True):
             if(search.group(2) == "global"):
                 info.append(line)
                 continue
-            info.append("GLOBAL_LIST_INIT_TYPED({}, /{}, {})".format(search.group(3), search.group(2), search.group(4)))
+            info.append(defineName+"({}, /{}, {})".format(search.group(3), search.group(2), search.group(4)))
 
         with open(file, "w", encoding="utf-8") as f:
             f.write("".join(info))
@@ -26,5 +28,6 @@ for file in glob.glob("./**/*.dm", recursive=True):
         info = f.read()
         for data in var_array:
             info = re.sub(r"\b"+re.escape(data)+r"\b", "GLOB."+data, info)
+            info = info.replace(defineName+"(GLOB."+data, defineName+"("+data)
         with open(file, "w", encoding="utf-8") as f:
             f.write(info)

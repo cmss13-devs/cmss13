@@ -154,7 +154,7 @@
 			SEND_SOUND(M, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)
-				to_chat(targets, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+				to_chat(C, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
 
 	log_admin("[key_name(src)] played midi sound [S] - [style]")
 	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")

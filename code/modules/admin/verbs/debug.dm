@@ -161,7 +161,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		. += named_args
 
 
-/client/proc/callproc(var/datum/target_datum=null)
+/client/proc/callproc(datum/target_datum=null)
 	set waitfor = 0
 
 	if(!check_rights(R_DEBUG) || (CONFIG_GET(flag/debugparanoid) && !check_rights(R_ADMIN)))
@@ -317,7 +317,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	usr.show_message(t, 1)
 
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Robot"
 
@@ -332,7 +332,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"
 
@@ -352,7 +352,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	spawn(10)
 		M.Animalize()
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Alien"
 
@@ -433,7 +433,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Grant Full Access"
 
@@ -464,7 +464,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
 
-/client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Give Null Skills"
 
@@ -481,7 +481,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"
 	set category = null

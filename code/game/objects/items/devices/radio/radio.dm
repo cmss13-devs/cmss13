@@ -119,7 +119,7 @@
 			"}
 
 
-/obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
+/obj/item/device/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	var/channel_key
 	for(var/key in department_radio_keys)
@@ -301,7 +301,7 @@
 					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
 
 
-/obj/item/device/radio/proc/get_target_zs(var/frequency)
+/obj/item/device/radio/proc/get_target_zs(frequency)
 	var/turf/position = get_turf(src)
 	if(QDELETED(position))
 		return

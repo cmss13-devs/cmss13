@@ -13,7 +13,7 @@ var/list/weighted_mundaneevent_locations = list()
 	var/list/temp_price_change[BIOMEDICAL]
 	var/list/viable_mundane_events = list()
 
-/datum/trade_destination/proc/get_custom_eventstring(var/event_type)
+/datum/trade_destination/proc/get_custom_eventstring(event_type)
 	return null
 
 //distance is measured in AU and co-relates to travel time

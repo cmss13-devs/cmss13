@@ -84,7 +84,7 @@
 		R.damage_cap = max(initial(R.damage_cap), R.damage + 1)
 
 
-/datum/techtree/xenomorph/proc/remove_heal_overlay(var/mob/living/carbon/Xenomorph/X, var/image/I)
+/datum/techtree/xenomorph/proc/remove_heal_overlay(mob/living/carbon/Xenomorph/X, image/I)
 	X.overlays -= I
 
 /datum/techtree/xenomorph/on_process(var/obj/structure/resource_node/RN, delta_time)

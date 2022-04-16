@@ -633,7 +633,7 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(1, 40)
 
-/datum/equipment_preset/fun/monkey/proc/get_random_name(var/mob/living/carbon/human/H)
+/datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/H)
 	return pick(monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine

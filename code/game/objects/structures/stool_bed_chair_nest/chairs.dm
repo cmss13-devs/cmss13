@@ -121,7 +121,7 @@
 	if(stacked_size)
 		stack_collapse()
 
-/obj/structure/bed/chair/proc/stack_collapse(var/mob/user)
+/obj/structure/bed/chair/proc/stack_collapse(mob/user)
 	user.visible_message(SPAN_HIGHDANGER("The stack of chairs collapses!!!"))
 	var/turf/starting_turf = get_turf(src)
 	playsound(starting_turf, 'sound/weapons/metal_chair_crash.ogg', 30, 1, 30)
@@ -352,7 +352,7 @@
 		return
 	..()
 
-/obj/structure/bed/chair/dropship/passenger/proc/fold_down(var/break_it = 0)
+/obj/structure/bed/chair/dropship/passenger/proc/fold_down(break_it = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		is_animating = 1
 		flick("hotseat_new_folding", src)

@@ -25,7 +25,7 @@
 	else
 		actual_empower(X)
 
-/datum/action/xeno_action/activable/empower/proc/actual_empower(var/mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/empower/proc/actual_empower(mob/living/carbon/Xenomorph/X)
 	var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
 
 	activated_once = FALSE
@@ -60,7 +60,7 @@
 	if(empower_targets >= BD.super_empower_threshold) //you go in deep you reap the rewards
 		super_empower(X, empower_targets, BD)
 
-/datum/action/xeno_action/activable/empower/proc/super_empower(var/mob/living/carbon/Xenomorph/X, var/empower_targets, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/activable/empower/proc/super_empower(mob/living/carbon/Xenomorph/X, empower_targets, datum/behavior_delegate/ravager_base/BD)
 	X.visible_message(SPAN_DANGER("[X] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
 	X.emote("roar")
 
@@ -74,7 +74,7 @@
 
 	addtimer(CALLBACK(src, .proc/weaken_superbuff, X, BD), 3.5 SECONDS)
 
-/datum/action/xeno_action/activable/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/activable/empower/proc/weaken_superbuff(mob/living/carbon/Xenomorph/X, datum/behavior_delegate/ravager_base/BD)
 
 	X.remove_filter("empower_rage")
 	var/color = "#FF0000"
@@ -84,7 +84,7 @@
 
 	addtimer(CALLBACK(src, .proc/remove_superbuff, X, BD), 1.5 SECONDS)
 
-/datum/action/xeno_action/activable/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/activable/empower/proc/remove_superbuff(mob/living/carbon/Xenomorph/X, datum/behavior_delegate/ravager_base/BD)
 	BD.empower_targets = 0
 
 	X.visible_message(SPAN_DANGER("[X]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Your glow fades away, the power leaving your body!"))
@@ -534,7 +534,7 @@
 
 	if (!action_cooldown_check())
 		return
-		
+
 	if (!X.check_state())
 		return
 

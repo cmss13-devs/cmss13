@@ -49,7 +49,7 @@
 		return
 	..()
 
-/obj/structure/machinery/computer/sentencing/proc/import(var/obj/item/paper/incident/I)
+/obj/structure/machinery/computer/sentencing/proc/import(obj/item/paper/incident/I)
 	incident = null
 
 	if(istype(I) && I.incident)
@@ -148,7 +148,7 @@
 	dat += "<a href='?src=\ref[src];button=change_menu;choice=main_menu'>Cancel</a></center>"
 	return dat
 
-/obj/structure/machinery/computer/sentencing/proc/list_charges(var/buttons = FALSE)
+/obj/structure/machinery/computer/sentencing/proc/list_charges(buttons = FALSE)
 	var/dat = ""
 	dat += "<table class='border'>"
 	dat += "<tr>"
@@ -320,7 +320,7 @@
 	dat += "</center>"
 	return dat
 
-/obj/structure/machinery/computer/sentencing/proc/create_crimes_layout(var/title, var/list/laws)
+/obj/structure/machinery/computer/sentencing/proc/create_crimes_layout(title, list/laws)
 	var/dat = ""
 	dat += "<table class='border'>"
 	dat += "<tr>"
@@ -350,7 +350,7 @@
 	dat += "</table>"
 	return dat
 
-/obj/structure/machinery/computer/sentencing/proc/print_incident_report(var/imported = FALSE)
+/obj/structure/machinery/computer/sentencing/proc/print_incident_report(imported = FALSE)
 	if(!incident || !incident.criminal_name || !incident.brig_sentence)
 		return "Report is lacking information."
 

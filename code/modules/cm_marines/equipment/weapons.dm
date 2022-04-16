@@ -70,7 +70,7 @@
 		if(pcell)
 			to_chat(user, "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge].")
 
-/obj/item/smartgun_powerpack/proc/drain_powerpack(var/drain = 0, var/obj/item/cell/c)
+/obj/item/smartgun_powerpack/proc/drain_powerpack(drain = 0, var/obj/item/cell/c)
 	var/actual_drain = (rand(drain/2,drain)/25)
 	if(c && c.charge > 0)
 		if(c.charge > actual_drain)

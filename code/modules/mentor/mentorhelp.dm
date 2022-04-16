@@ -148,7 +148,7 @@
 		else if(mentor != sender)
 			to_chat(sender, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 			return
-	
+
 	var/target = mentor
 	if(sender == mentor)
 		target = author
@@ -288,7 +288,7 @@
  */
 
 // responder is the guy responding to the thread, i.e. the mentor triggering the autoresponse
-/datum/mentorhelp/proc/autoresponse(var/client/responder)
+/datum/mentorhelp/proc/autoresponse(client/responder)
 	if(!check_author())
 		return
 

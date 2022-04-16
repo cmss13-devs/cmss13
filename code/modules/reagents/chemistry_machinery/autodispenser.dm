@@ -300,7 +300,7 @@
 			stage_missing = 0
 			next_stage()
 
-/obj/structure/machinery/autodispenser/proc/get_program(var/save_to = PROGRAM_BOX)
+/obj/structure/machinery/autodispenser/proc/get_program(save_to = PROGRAM_BOX)
 	for(var/obj/item/reagent_container/glass/beaker/vial/V in input_container.contents)
 		if(!V.reagents.get_reagents()) //Ignore empty vials
 			continue
@@ -347,7 +347,7 @@
 			flush_buffer()
 
 
-/obj/structure/machinery/autodispenser/proc/stop_program(var/set_status = 0)
+/obj/structure/machinery/autodispenser/proc/stop_program(set_status = 0)
 	stage = 1
 	cycle = 0
 	stage_missing = 0

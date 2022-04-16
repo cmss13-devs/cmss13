@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_vehicles(var/href)
+/datum/admins/proc/topic_vehicles(href)
 	switch(href)
 		if("remove_clamp")
 			owner.cmd_admin_remove_clamp()

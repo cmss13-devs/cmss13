@@ -287,7 +287,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", var/if_no_job = "No job")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.assignment
@@ -299,7 +299,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.registered_name
@@ -343,7 +343,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
@@ -1061,7 +1061,7 @@
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1179,7 +1179,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
+/mob/living/carbon/human/proc/locate_squad_leader(tracker_setting = TRACKER_SL)
 	if(!hud_used)
 		return
 

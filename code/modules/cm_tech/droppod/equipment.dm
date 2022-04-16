@@ -8,7 +8,7 @@
 	spawn_equipment(equipment, M)
 	return ..()
 
-/obj/structure/droppod/equipment/proc/spawn_equipment(var/equipment, var/mob/M)
+/obj/structure/droppod/equipment/proc/spawn_equipment(equipment, mob/M)
 	equipment_to_spawn = new equipment(src)
 	return equipment_to_spawn
 

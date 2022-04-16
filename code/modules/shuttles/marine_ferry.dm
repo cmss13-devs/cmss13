@@ -97,7 +97,7 @@
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
 
-/datum/shuttle/ferry/marine/proc/launch_crash(var/user)
+/datum/shuttle/ferry/marine/proc/launch_crash(user)
 	if(!can_launch()) return //There's another computer trying to launch something
 
 	in_use = user
@@ -692,7 +692,7 @@
 
 
 
-/datum/shuttle/ferry/marine/proc/open_doors_crashed(var/list/L)
+/datum/shuttle/ferry/marine/proc/open_doors_crashed(list/L)
 
 	var/i //iterator
 	var/turf/T
@@ -726,7 +726,7 @@
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 			qdel(D)
 
-/datum/shuttle/ferry/marine/proc/shake_cameras(var/list/L)
+/datum/shuttle/ferry/marine/proc/shake_cameras(list/L)
 
 	var/i //iterator
 	var/j

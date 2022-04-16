@@ -383,7 +383,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.loc = pick(L)
 	following = null
 
-/mob/dead/observer/proc/scan_health(var/mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in oview())
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -466,7 +466,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return
 
 // This is the ghost's follow verb with an argument
-/mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
+/mob/dead/observer/proc/ManualFollow(atom/movable/target)
 	if(target)
 		if(target == src)
 			to_chat(src, SPAN_WARNING("You can't follow yourself"))
@@ -485,7 +485,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					forceMove(T)
 				sleep(15)
 
-/mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
+/mob/dead/observer/proc/JumpToCoord(tx, ty, tz)
 	if(!tx || !ty || !tz)
 		return
 	following = null
@@ -926,6 +926,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN
 
-/proc/message_ghosts(var/message)
+/proc/message_ghosts(message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)

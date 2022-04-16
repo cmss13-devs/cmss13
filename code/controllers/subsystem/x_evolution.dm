@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(xevolution)
 		//Update displayed Evilution, which is under larva apparently
 		HS.hive_ui.update_pooled_larva()
 
-/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(var/hivenumber)
+/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(hivenumber)
 	return boost_power[hivenumber]
 
 #undef EVOLUTION_INCREMENT_TIME

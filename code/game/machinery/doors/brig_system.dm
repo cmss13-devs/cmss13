@@ -105,7 +105,7 @@
 
 	to_chat(user, SPAN_NOTICE("You insert [I] into [name]."))
 
-/obj/structure/machinery/brig_cell/proc/remove_report(var/mob/living/user)
+/obj/structure/machinery/brig_cell/proc/remove_report(mob/living/user)
 	if(!current_report)
 		return
 
@@ -124,7 +124,7 @@
 	current_report = null
 	current_menu = "main_menu"
 
-/obj/structure/machinery/brig_cell/proc/timer_start(var/mob/living/user)
+/obj/structure/machinery/brig_cell/proc/timer_start(mob/living/user)
 	if(inoperable()  || !current_report)
 		return FALSE
 
@@ -149,7 +149,7 @@
 	if(!resuming)
 		ai_silent_announcement("BRIG REPORT: [C.criminal_name] has been jailed for [C.charges_to_string()].")
 
-/obj/structure/machinery/brig_cell/proc/timer_end(var/obj/item/paper/incident/I)
+/obj/structure/machinery/brig_cell/proc/timer_end(obj/item/paper/incident/I)
 	if(inoperable() || (!I && !current_report))
 		return FALSE
 
@@ -166,7 +166,7 @@
 	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - REALTIMEOFDAY)
 	C.time_to_release = 0
 
-/obj/structure/machinery/brig_cell/proc/timer_pause(var/mob/living/user)
+/obj/structure/machinery/brig_cell/proc/timer_pause(mob/living/user)
 	if(!current_report)
 		return
 
@@ -177,7 +177,7 @@
 
 	log_admin("[key_name(user)] has paused the jail timer of [C.criminal_name], [C.charges_to_string()].")
 
-/obj/structure/machinery/brig_cell/proc/get_time_left(var/obj/item/paper/incident/I)
+/obj/structure/machinery/brig_cell/proc/get_time_left(obj/item/paper/incident/I)
 	if(!istype(I))
 		return 0
 	var/datum/crime_incident/C = I.incident
@@ -187,7 +187,7 @@
 		time = ((C.brig_sentence * 600) - C.time_served)/10
 	return max(0, time)
 
-/obj/structure/machinery/brig_cell/proc/do_pardon(var/mob/user)
+/obj/structure/machinery/brig_cell/proc/do_pardon(mob/user)
 	current_report.incident.pardoned = TRUE
 	current_report.name += " (PARDONED)"
 
@@ -233,7 +233,7 @@
 
 	return dat
 
-/obj/structure/machinery/brig_cell/proc/create_incident(var/mob/user)
+/obj/structure/machinery/brig_cell/proc/create_incident(mob/user)
 	var/second = round(get_time_left(current_report) % 60)
 	var/minute = round((get_time_left(current_report) - second) / 60)
 
@@ -342,17 +342,17 @@
 	update_icon()
 
 
-/obj/structure/machinery/brig_cell/proc/set_picture(var/state)
+/obj/structure/machinery/brig_cell/proc/set_picture(state)
 	picture_state = state
 	overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
-/obj/structure/machinery/brig_cell/proc/update_display(var/line1, var/line2)
+/obj/structure/machinery/brig_cell/proc/update_display(line1, var/line2)
 	var/new_text = {"<div style="font-size:'5pt'; color:'#09f'; font:'Arial Black';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
 
-/obj/structure/machinery/brig_cell/proc/texticon(var/tn, var/px = 0, var/py = 0)
+/obj/structure/machinery/brig_cell/proc/texticon(tn, px = 0, var/py = 0)
 	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = length(tn)
 

@@ -360,7 +360,7 @@ var/list/ai_verbs_default = list(
 		else				A.SetLuminosity(0)
 
 
-/mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
+/mob/living/silicon/ai/proc/switchCamera(obj/structure/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
 		return 0
 
@@ -606,7 +606,7 @@ var/list/ai_verbs_default = list(
 	set desc = "Augment visual feed with internal sensor overlays"
 	toggle_sensor_mode()
 
-/mob/living/silicon/ai/proc/check_unable(var/flags = 0)
+/mob/living/silicon/ai/proc/check_unable(flags = 0)
 	if(stat == DEAD)
 		to_chat(usr, SPAN_DANGER("You are dead!"))
 		return 1

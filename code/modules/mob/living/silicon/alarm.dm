@@ -7,7 +7,7 @@
 	area = A
 	sources = sourcelist
 	cameras = cameralist
-	
+
 /mob/living/silicon
 	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list())	//each sublist stores alarms keyed by the area name
 	var/list/alarms_to_show = list()
@@ -15,9 +15,9 @@
 	var/list/alarm_types_show = list("Motion" = 0, "Fire" = 0, "Atmosphere" = 0, "Power" = 0, "Camera" = 0)
 	var/list/alarm_types_clear = list("Motion" = 0, "Fire" = 0, "Atmosphere" = 0, "Power" = 0, "Camera" = 0)
 
-/mob/living/silicon/proc/triggerAlarm(var/class, area/A, list/cameralist, var/source)
+/mob/living/silicon/proc/triggerAlarm(class, area/A, list/cameralist, source)
 	var/list/alarmlist = alarms[class]
-	
+
 	//see if there is already an alarm of this class for this area
 	if (A.name in alarmlist)
 		var/datum/alarm/existing = alarmlist[A.name]
@@ -26,21 +26,21 @@
 	else
 		alarmlist[A.name] = new /datum/alarm(A, list(source), cameralist)
 
-/mob/living/silicon/proc/cancelAlarm(var/class, area/A as area, var/source)
+/mob/living/silicon/proc/cancelAlarm(class, area/A as area, var/source)
 	var/cleared = 0
 	var/list/alarmlist = alarms[class]
-	
+
 	if (A.name in alarmlist)
 		var/datum/alarm/alarm = alarmlist[A.name]
 		alarm.sources -= source
-		
+
 		if (!(alarm.sources.len))
 			cleared = 1
 			alarmlist -= A.name
 
 	return !cleared
 
-/mob/living/silicon/proc/queueAlarm(var/message, var/type, var/incoming = 1)
+/mob/living/silicon/proc/queueAlarm(message, type, incoming = 1)
 	var/in_cooldown = (alarms_to_show.len > 0 || alarms_to_clear.len > 0)
 	if(incoming)
 		alarms_to_show += message

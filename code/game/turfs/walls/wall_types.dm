@@ -688,7 +688,7 @@
 	name = "resin pillar segment"
 	hull = TRUE
 
-/turf/closed/wall/resin/proc/set_resin_builder(var/mob/M)
+/turf/closed/wall/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
 		construction_data = create_cause_data(initial(name), M)
 
@@ -748,7 +748,7 @@
 		for(var/wall in MWG.walls)
 			add_structure(wall)
 
-/datum/movable_wall_group/proc/add_structure(var/obj/structure/alien/movable_wall/MW)
+/datum/movable_wall_group/proc/add_structure(obj/structure/alien/movable_wall/MW)
 	if(MW.group)
 		MW.group.remove_structure(MW, TRUE)
 	LAZYOR(walls, MW)
@@ -760,7 +760,7 @@
 	QDEL_NULL_LIST(walls)
 	return ..()
 
-/datum/movable_wall_group/proc/remove_structure(var/obj/structure/alien/movable_wall/MW, var/merge)
+/datum/movable_wall_group/proc/remove_structure(obj/structure/alien/movable_wall/MW, merge)
 	LAZYREMOVE(walls, MW)
 	MW.group = null
 	if(!walls)
@@ -787,7 +787,7 @@
 			qdel(src)
 
 
-/datum/movable_wall_group/proc/try_move_in_direction(var/dir, var/list/forget)
+/datum/movable_wall_group/proc/try_move_in_direction(dir, list/forget)
 	var/turf/T
 	var/obj/structure/alien/movable_wall/MW
 	var/failed = FALSE
@@ -884,11 +884,11 @@
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
 
-/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
+/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, mob/living/L)
 	if(isXeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
-/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/Xenomorph/X)
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, mob/living/carbon/Xenomorph/X)
 	return COMPONENT_ALLOW_PULL
 
 /obj/structure/alien/movable_wall/update_icon()
@@ -922,7 +922,7 @@
 
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/obj/structure/alien/movable_wall/proc/take_damage(var/damage)
+/obj/structure/alien/movable_wall/proc/take_damage(damage)
 	health -= damage
 	if(health <= 0)
 		qdel(src)
@@ -988,7 +988,7 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf(var/turf/T)
+/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
 	SIGNAL_HANDLER
 
 	if(!T)
@@ -1003,7 +1003,7 @@
 	. = ..()
 	update_tied_turf(loc)
 
-/obj/structure/alien/movable_wall/proc/check_for_move(var/turf/T, atom/movable/mover)
+/obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)
 		return
 
@@ -1100,7 +1100,7 @@
 	else
 		return ..()
 
-/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, var/turf/T)
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, turf/T)
 	SIGNAL_HANDLER
 	if(T == src)
 		return COMPONENT_BULLET_PASS_THROUGH

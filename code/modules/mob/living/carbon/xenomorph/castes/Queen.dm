@@ -116,7 +116,7 @@
 	return ..()
 
 
-/mob/hologram/queen/proc/start_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
+/mob/hologram/queen/proc/start_watching(mob/living/carbon/Xenomorph/X, mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
 	forceMove(target)
 	is_watching = target
@@ -125,11 +125,11 @@
 	return
 
 // able to stop watching here before the loc is set to null
-/mob/hologram/queen/proc/target_watching_qdeleted(var/mob/living/carbon/Xenomorph/target)
+/mob/hologram/queen/proc/target_watching_qdeleted(mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
 	stop_watching(linked_mob, target)
 
-/mob/hologram/queen/proc/stop_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
+/mob/hologram/queen/proc/stop_watching(mob/living/carbon/Xenomorph/X, mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
 	if(target)
 		if(loc == target)
@@ -146,7 +146,7 @@
 	X.reset_view()
 	return
 
-/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+/mob/hologram/queen/proc/turf_weed_only(mob/self, turf/T)
 	SIGNAL_HANDLER
 
 	if(!T)
@@ -163,7 +163,7 @@
 
 	return COMPONENT_TURF_DENY_MOVEMENT
 
-/mob/hologram/queen/proc/handle_overwatch(var/mob/living/carbon/Xenomorph/Queen/Q, var/atom/A, var/mods)
+/mob/hologram/queen/proc/handle_overwatch(mob/living/carbon/Xenomorph/Queen/Q, atom/A, mods)
 	SIGNAL_HANDLER
 
 	var/turf/T = get_turf(A)
@@ -848,7 +848,7 @@
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
 
-/mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
+/mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(turf/T)
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range

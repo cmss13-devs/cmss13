@@ -113,7 +113,7 @@
 		toggle_active(user, active)
 
 // var/active is used to forcefully toggle it to a specific state
-/obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
+/obj/item/device/motiondetector/proc/toggle_active(mob/user, old_active)
 	active = !old_active
 	if(!active)
 		turn_off(user)
@@ -178,7 +178,7 @@
 	if(ishuman(A.loc))
 		return A.loc
 
-/obj/item/device/motiondetector/proc/apply_debuff(var/mob/M)
+/obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 
 /obj/item/device/motiondetector/proc/scan()
@@ -232,7 +232,7 @@
 
 	return ping_count
 
-/obj/item/device/motiondetector/proc/show_blip(var/mob/user, var/atom/target, var/blip_icon)
+/obj/item/device/motiondetector/proc/show_blip(mob/user, atom/target, blip_icon)
 	set waitfor = 0
 	if(user && user.client)
 
@@ -268,7 +268,7 @@
 		user.client.screen += DB
 		addtimer(CALLBACK(src, .proc/clear_pings, user, DB), 1 SECONDS)
 
-/obj/item/device/motiondetector/proc/clear_pings(mob/user, var/obj/effect/detector_blip/DB)
+/obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
 		user.client.screen -= DB
 

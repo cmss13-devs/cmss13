@@ -86,7 +86,7 @@
 		if (istype(SFA) && !SFA.action_cooldown_check())
 			SFA.end_cooldown()
 
-/datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
+/datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(atom/A)
 	if (A != null && !QDELETED(src))
 		dot_cooldown_atoms -= A
 		if (istype(bound_xeno))

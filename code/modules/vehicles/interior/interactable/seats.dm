@@ -33,7 +33,7 @@
 	..()
 	handle_afterbuckle(M)
 
-/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return

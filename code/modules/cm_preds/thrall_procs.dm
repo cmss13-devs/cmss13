@@ -172,7 +172,7 @@
 
 	. = ..()
 
-/obj/item/clothing/gloves/yautja/proc/bracer_message_int(var/mob/living/carbon/human/O, var/obj/item/clothing/gloves/yautja/OG, var/mob/living/carbon/human/T, var/obj/item/clothing/gloves/yautja/TG, var/TM, var/OM, var/msg)
+/obj/item/clothing/gloves/yautja/proc/bracer_message_int(mob/living/carbon/human/O, obj/item/clothing/gloves/yautja/OG, mob/living/carbon/human/T, obj/item/clothing/gloves/yautja/TG, TM, OM, msg)
 
 	if(!msg)
 		msg = input("Enter a message to send to your [TM].")

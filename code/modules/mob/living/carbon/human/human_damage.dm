@@ -114,7 +114,7 @@
 		heal_overall_damage(0, -amount)
 
 
-/mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
+/mob/living/carbon/human/proc/adjustBruteLossByPart(amount, organ_name, obj/damage_source = null)
 	if(amount > 0)
 		var/brute_mod = get_brute_mod()
 		if(brute_mod)
@@ -132,7 +132,7 @@
 
 
 
-/mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
+/mob/living/carbon/human/proc/adjustFireLossByPart(amount, organ_name, obj/damage_source = null)
 	if(amount > 0)
 		var/burn_mod = get_burn_mod()
 		if(burn_mod)
@@ -234,7 +234,7 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged limbs
-/mob/living/carbon/human/proc/get_damaged_limbs(var/brute, var/burn)
+/mob/living/carbon/human/proc/get_damaged_limbs(brute, burn)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))

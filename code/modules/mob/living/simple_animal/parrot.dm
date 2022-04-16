@@ -638,7 +638,7 @@
 
 	return
 
-/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(var/drop_gently = 1)
+/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(drop_gently = 1)
 	set name = "Drop held item"
 	set category = "Parrot"
 	set desc = "Drop the item you're holding."
@@ -743,7 +743,7 @@
 	..(message,verb,language,part_a,part_b,speaker,hard_to_hear)
 
 
-/mob/living/simple_animal/parrot/proc/parrot_hear(var/message="")
+/mob/living/simple_animal/parrot/proc/parrot_hear(message="")
 	if(!message || stat)
 		return
 	speech_buffer.Add(message)

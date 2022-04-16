@@ -123,7 +123,7 @@
 		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 
-/obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
+/obj/effect/alien/resin/special/pool/proc/melt_body(iterations = 3)
 	if(!melting_body)
 		return
 
@@ -142,7 +142,7 @@
 
 	return linked_hive.stored_larva
 
-/obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)
+/obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(mob/xeno_candidate)
 	if(can_spawn_larva() && xeno_candidate)
 		var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))

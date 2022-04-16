@@ -39,7 +39,7 @@ var/global/datum/controller/defcon/defcon_controller
 		var/percentage = last_objectives_scored_points / defcon_level_triggers[current_defcon_level -1] * 100
 		return percentage
 
-/datum/controller/defcon/proc/add_rewards_points(var/amount)
+/datum/controller/defcon/proc/add_rewards_points(amount)
 	remaining_reward_points += amount
 
 /datum/controller/defcon/proc/decrease_defcon_level()
@@ -95,7 +95,7 @@ var/global/datum/controller/defcon/defcon_controller
 
 	return can_purchase
 
-/datum/controller/defcon/proc/can_purchase_reward(var/datum/defcon_reward/dr)
+/datum/controller/defcon/proc/can_purchase_reward(datum/defcon_reward/dr)
 	if(current_defcon_level > dr.minimum_defcon_level)
 		return FALSE //required DEFCON level not reached
 	if(remaining_reward_points < dr.cost)
@@ -127,7 +127,7 @@ var/global/datum/controller/defcon/defcon_controller
 	. = ..()
 	name = "($[cost * DEFCON_TO_MONEY_MULTIPLIER]) [name]"
 
-/datum/defcon_reward/proc/apply_reward(var/datum/controller/defcon/d)
+/datum/defcon_reward/proc/apply_reward(datum/controller/defcon/d)
 	if(d.remaining_reward_points < cost)
 		return 0
 	d.remaining_reward_points -= cost

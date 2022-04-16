@@ -10,7 +10,7 @@
     max_tackles = max
     tackle_chance = chance
 
-/datum/tackle_counter/proc/attempt_tackle(var/tackle_bonus = 0)
+/datum/tackle_counter/proc/attempt_tackle(tackle_bonus = 0)
     tackle_count++
 
     if (tackle_count >= max_tackles)
@@ -19,5 +19,5 @@
         return FALSE
     else if (prob(tackle_chance + tackle_bonus))
         return TRUE
-    
+
     return FALSE

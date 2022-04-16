@@ -827,7 +827,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 	else
@@ -911,7 +911,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 

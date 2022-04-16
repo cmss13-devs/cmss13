@@ -50,7 +50,7 @@
 		HP.owner = V
 	return
 
-/obj/item/hardpoint/holder/proc/can_install(var/obj/item/hardpoint/H)
+/obj/item/hardpoint/holder/proc/can_install(obj/item/hardpoint/H)
 	// Can only have 1 hardpoint of each slot type
 	if(LAZYLEN(hardpoints))
 		for(var/obj/item/hardpoint/HP in hardpoints)
@@ -59,7 +59,7 @@
 	// Must be accepted by the holder
 	return LAZYISIN(accepted_hardpoints, H.type)
 
-/obj/item/hardpoint/holder/proc/install(var/obj/item/hardpoint/H, var/mob/user)
+/obj/item/hardpoint/holder/proc/install(obj/item/hardpoint/H, mob/user)
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("All the mounting points on \the [src] are broken!"))
 		return
@@ -75,7 +75,7 @@
 
 	update_icon()
 
-/obj/item/hardpoint/holder/proc/uninstall(var/obj/item/hardpoint/H, var/mob/user)
+/obj/item/hardpoint/holder/proc/uninstall(obj/item/hardpoint/H, mob/user)
 	if(!LAZYISIN(hardpoints, H))
 		return
 
@@ -118,14 +118,14 @@
 
 	..()
 
-/obj/item/hardpoint/holder/proc/add_hardpoint(var/obj/item/hardpoint/H)
+/obj/item/hardpoint/holder/proc/add_hardpoint(obj/item/hardpoint/H)
 	H.owner = owner
 	H.forceMove(src)
 	LAZYADD(hardpoints, H)
 
 	H.rotate(turning_angle(H.dir, dir))
 
-/obj/item/hardpoint/holder/proc/remove_hardpoint(var/obj/item/hardpoint/H, var/turf/uninstall_to)
+/obj/item/hardpoint/holder/proc/remove_hardpoint(obj/item/hardpoint/H, turf/uninstall_to)
 	if(!hardpoints)
 		return
 	hardpoints -= H
@@ -139,7 +139,7 @@
 		qdel(H)
 
 //Returns all activatable hardpoints
-/obj/item/hardpoint/holder/proc/get_activatable_hardpoints(var/seat)
+/obj/item/hardpoint/holder/proc/get_activatable_hardpoints(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(!H.is_activatable() || seat && seat != H.allowed_seat)
@@ -148,7 +148,7 @@
 	return hps
 
 //Returns hardpoints that use ammunition
-/obj/item/hardpoint/holder/proc/get_hardpoints_with_ammo(var/seat)
+/obj/item/hardpoint/holder/proc/get_hardpoints_with_ammo(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(!H.ammo || seat && seat != H.allowed_seat)
@@ -156,7 +156,7 @@
 		hps += H
 	return hps
 
-/obj/item/hardpoint/holder/proc/find_hardpoint(var/name)
+/obj/item/hardpoint/holder/proc/find_hardpoint(name)
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(H.name == name)
 			return H

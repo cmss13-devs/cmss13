@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 		new_luminosity = highest_luminosity
 	return ..()
 
-/mob/proc/remove_luminosity_source(var/atom/source)
+/mob/proc/remove_luminosity_source(atom/source)
 	SetLuminosity(0, FALSE, source)
 
 /area/SetLuminosity(new_luminosity)			//we don't want dynamic lighting for areas

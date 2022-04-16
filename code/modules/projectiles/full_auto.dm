@@ -65,7 +65,7 @@
 	fa_target = hovered
 	fa_params = params
 
-/obj/item/weapon/gun/proc/repeat_fire(var/mob/user)
+/obj/item/weapon/gun/proc/repeat_fire(mob/user)
 	if(!fa_target)
 		return
 

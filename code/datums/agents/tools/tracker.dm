@@ -45,7 +45,7 @@
 
 	return ..()
 
-/obj/item/device/tracker/proc/select_object(var/mob/user)
+/obj/item/device/tracker/proc/select_object(mob/user)
 	if(!LAZYLEN(objects_of_interest))
 		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
 		return

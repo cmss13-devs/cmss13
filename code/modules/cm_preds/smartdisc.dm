@@ -67,7 +67,7 @@
 				break
 	return T
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(dist = 3)
 	var/list/L = hearers(src, dist)
 	return L
 

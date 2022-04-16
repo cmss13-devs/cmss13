@@ -89,14 +89,14 @@
 
 
 //General proc for hivemind. Lame, but effective.
-/mob/living/carbon/Xenomorph/proc/hivemind_talk(var/message)
+/mob/living/carbon/Xenomorph/proc/hivemind_talk(message)
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
 	hivemind_broadcast(message, hive)
 
-/mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
+/mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
 	if(!message || stat || !hive)
 		return
 

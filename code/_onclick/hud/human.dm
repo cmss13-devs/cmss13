@@ -221,7 +221,7 @@
 		if(H.l_hand)
 			H.l_hand.screen_loc = null
 
-/datum/hud/human/proc/draw_inventory_slots(var/gear, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/human/proc/draw_inventory_slots(gear, datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	for(var/gear_slot in gear)
 		var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
 		inv_box.icon = ui_datum.ui_style_icon
@@ -243,7 +243,7 @@
 		else
 			static_inventory += inv_box
 
-/datum/hud/human/proc/draw_toggle_inv(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/human/proc/draw_toggle_inv(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/obj/screen/using = new /obj/screen/toggle_inv()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_inventory
@@ -253,7 +253,7 @@
 		using.alpha = ui_alpha
 	static_inventory += using
 
-/datum/hud/human/proc/draw_hand_equip(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/human/proc/draw_hand_equip(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/obj/screen/using = new /obj/screen()
 	using.name = "equip"
 	using.icon = ui_datum.ui_style_icon
@@ -267,19 +267,19 @@
 		using.alpha = ui_alpha
 	static_inventory += using
 
-/datum/hud/human/proc/draw_oxygen(var/datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_oxygen(datum/custom_hud/ui_datum)
 	oxygen_icon = new /obj/screen/oxygen()
 	oxygen_icon.icon = ui_datum.ui_style_icon
 	oxygen_icon.screen_loc = ui_datum.UI_OXYGEN_LOC
 	infodisplay += oxygen_icon
 
-/datum/hud/human/proc/draw_bodytemp(var/datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_bodytemp(datum/custom_hud/ui_datum)
 	bodytemp_icon = new /obj/screen/bodytemp()
 	bodytemp_icon.icon = ui_datum.ui_style_icon
 	bodytemp_icon.screen_loc = ui_datum.UI_TEMP_LOC
 	infodisplay += bodytemp_icon
 
-/datum/hud/human/proc/draw_nutrition(var/datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_nutrition(datum/custom_hud/ui_datum)
 	nutrition_icon = new /obj/screen()
 	nutrition_icon.icon = ui_datum.ui_style_icon
 	nutrition_icon.icon_state = "nutrition0"
@@ -287,13 +287,13 @@
 	nutrition_icon.screen_loc = ui_datum.UI_NUTRITION_LOC
 	infodisplay += nutrition_icon
 
-/datum/hud/human/proc/draw_locator_spot(var/datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_locator_spot(datum/custom_hud/ui_datum)
 	locate_leader = new /obj/screen/squad_leader_locator()
 	locate_leader.icon = ui_datum.ui_style_icon
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC
 	infodisplay += locate_leader
 
-/datum/hud/human/proc/draw_gun_related(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/human/proc/draw_gun_related(datum/custom_hud/ui_datum, ui_alpha)
 	use_attachment = new /obj/screen()
 	use_attachment.icon = ui_datum.ui_style_icon
 	use_attachment.icon_state = "gun_attach"
@@ -354,7 +354,7 @@
 	gun_run_icon.update_icon(mymob)
 	static_inventory += gun_run_icon
 
-/datum/hud/human/proc/draw_status_effects(var/datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_status_effects(datum/custom_hud/ui_datum)
 	slowed_icon = new /obj/screen()
 	slowed_icon.icon = ui_datum.ui_style_icon
 	slowed_icon.icon_state = "status_0"

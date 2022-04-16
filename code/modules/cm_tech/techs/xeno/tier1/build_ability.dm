@@ -34,7 +34,7 @@
 	for(var/m in hive.totalXenos)
 		give_build_ability(src, m)
 
-/datum/tech/xeno/build_distribution/proc/give_build_ability(datum/source, var/mob/living/carbon/Xenomorph/X)
+/datum/tech/xeno/build_distribution/proc/give_build_ability(datum/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 
 	if(X.stat == DEAD)

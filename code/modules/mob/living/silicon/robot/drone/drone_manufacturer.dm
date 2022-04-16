@@ -56,7 +56,7 @@
 			drones++
 	return drones
 
-/obj/structure/machinery/drone_fabricator/proc/create_drone(var/client/player)
+/obj/structure/machinery/drone_fabricator/proc/create_drone(client/player)
 
 	if(stat & NOPOWER)
 		return

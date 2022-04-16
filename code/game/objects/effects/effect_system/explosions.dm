@@ -46,7 +46,7 @@
 			if(light > 0)
 				return TRUE
 
-	proc/holder_damage(var/atom/holder)
+	proc/holder_damage(atom/holder)
 		if(holder)
 			var/dmglevel = 4
 

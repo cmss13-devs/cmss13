@@ -29,18 +29,18 @@
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
 // Sets the amount of resources this node has
-/obj/structure/resource_node/proc/activate(var/amount)
+/obj/structure/resource_node/proc/activate(amount)
 	amount_left = amount
 
 
-/obj/structure/resource_node/proc/gather_resource(var/amount)
+/obj/structure/resource_node/proc/gather_resource(amount)
 	var/amount_to_give = min(amount_left, collect_amount)
 	// amount_left -= amount_to_give
 	update_icon()
 	resource_check()
 	return amount_to_give
 
-/obj/structure/resource_node/proc/resource_check(var/amount)
+/obj/structure/resource_node/proc/resource_check(amount)
 	if(!amount_left)
 		qdel(src)
 		return FALSE

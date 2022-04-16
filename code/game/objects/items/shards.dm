@@ -80,7 +80,7 @@
 	source_sheet_type = null
 	var/damage_on_move = 0.5
 
-/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -89,7 +89,7 @@
 	if(istype(target_organ))
 		target_organ.embed(src)
 
-/obj/item/shard/shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/shard/shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob

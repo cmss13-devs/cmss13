@@ -149,7 +149,7 @@
 	return FALSE
 
 // If no user, it means that the embedded_human is removing it themselves
-/obj/item/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
+/obj/item/proc/dig_out_shrapnel(mob/living/carbon/human/embedded_human, mob/living/carbon/human/user = null)
 	if(!user)
 		user = embedded_human
 

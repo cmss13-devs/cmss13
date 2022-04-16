@@ -225,7 +225,7 @@
 			if(istype(src, /obj/structure/barricade/plasteel))
 				recentlyflipped = FALSE
 
-/obj/structure/barricade/plasteel/proc/open(var/obj/structure/barricade/plasteel/origin)
+/obj/structure/barricade/plasteel/proc/open(obj/structure/barricade/plasteel/origin)
 	if(!closed)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -238,7 +238,7 @@
 					cade.open(src)
 	update_icon()
 
-/obj/structure/barricade/plasteel/proc/close(var/obj/structure/barricade/plasteel/origin)
+/obj/structure/barricade/plasteel/proc/close(obj/structure/barricade/plasteel/origin)
 	if(closed)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

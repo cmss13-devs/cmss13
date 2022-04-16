@@ -114,7 +114,7 @@
 		return FALSE
 	return failed
 
-/datum/cm_objective/proc/activate(var/force = 0)
+/datum/cm_objective/proc/activate(force = 0)
 	if(force)
 		prerequisites_required = PREREQUISITES_NONE // somehow we got the terminal password etc force us active
 	if(can_be_activated())

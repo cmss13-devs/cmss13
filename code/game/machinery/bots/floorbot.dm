@@ -230,7 +230,7 @@
 	src.oldloc = src.loc
 
 
-/obj/structure/machinery/bot/floorbot/proc/repair(var/turf/target)
+/obj/structure/machinery/bot/floorbot/proc/repair(turf/target)
 	if(istype(target, /turf/open/space/))
 		if(target.loc.name == "Space")
 			return
@@ -262,7 +262,7 @@
 			src.anchored = 0
 			src.target = null
 
-/obj/structure/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)
+/obj/structure/machinery/bot/floorbot/proc/eattile(obj/item/stack/tile/plasteel/T)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		return
 	visible_message(SPAN_DANGER("[src] begins to collect tiles."))
@@ -283,7 +283,7 @@
 		src.target = null
 		src.repairing = 0
 
-/obj/structure/machinery/bot/floorbot/proc/maketile(var/obj/item/stack/sheet/metal/M)
+/obj/structure/machinery/bot/floorbot/proc/maketile(obj/item/stack/sheet/metal/M)
 	if(!istype(M, /obj/item/stack/sheet/metal))
 		return
 	if(M.get_amount() > 1)

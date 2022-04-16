@@ -283,7 +283,7 @@
 	if(src)
 		return ..()
 
-/obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
+/obj/structure/reagent_dispensers/fueltank/proc/explode(force)
 	reagents.source_mob = source_mob
 	if(reagents.handle_volatiles() || force)
 		qdel(src)

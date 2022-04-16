@@ -14,7 +14,7 @@
  */
 
 //Simply removes < and > and limits the length of the message
-/proc/strip_html_simple(var/t,var/limit=MAX_MESSAGE_LEN)
+/proc/strip_html_simple(t, limit=MAX_MESSAGE_LEN)
 	var/list/strip_chars = list("<",">")
 	t = copytext(t,1,limit)
 	for(var/char in strip_chars)
@@ -28,40 +28,40 @@
 #define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+/proc/sanitize_simple(t, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
 		t = replacetext(t, char, repl_chars[char])
 	return t
 
-/proc/readd_quotes(var/t)
+/proc/readd_quotes(t)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
 		t = replacetext(t, char, repl_chars[char])
 	return t
 
 //Runs byond's sanitization proc along-side sanitize_simple
-/proc/sanitize(var/t,var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+/proc/sanitize(t, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	var/msg = html_encode(sanitize_simple(t, repl_chars))
 	return readd_quotes(msg)
 
 //Removes control chars like "\n"
-/proc/sanitize_control_chars(var/stuff)
+/proc/sanitize_control_chars(stuff)
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"}, "g")
 	return whitelistedWords.Replace(stuff, "")
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
-/proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
+/proc/strip_html(t, limit=MAX_MESSAGE_LEN)
 	return copytext((sanitize(strip_html_simple(t))),1,limit)
 
 //Runs byond's sanitization proc along-side strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
-/proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
+/proc/adminscrub(t, limit=MAX_MESSAGE_LEN)
 	return copytext((html_encode(strip_html_simple(t))),1,limit)
 
 
 //Returns null if there is any bad text in the string
-/proc/reject_bad_text(var/text, var/max_length=512)
+/proc/reject_bad_text(text, max_length=512)
 	if(length(text) > max_length)	return			//message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
@@ -74,17 +74,17 @@
 	if(non_whitespace)		return text		//only accepts the text if it has some non-spaces
 
 // Used to get a sanitized input.
-/proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+/proc/stripped_input(mob/user, message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
 	var/name = input(user, message, title, default) as text|null
 	return html_encode(trim(name, max_length))
 
 // Used to get a properly sanitized multiline input, of max_length
-/proc/stripped_multiline_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+/proc/stripped_multiline_input(mob/user, message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
 	var/name = input(user, message, title, default) as message|null
 	return html_encode(trim(name, max_length))
 
 //Filters out undesirable characters from names
-/proc/reject_bad_name(var/t_in, var/allow_numbers = 0, var/max_length = MAX_NAME_LEN, var/allow_signs = TRUE)
+/proc/reject_bad_name(t_in, allow_numbers = 0, var/max_length = MAX_NAME_LEN, var/allow_signs = TRUE)
 	if(!t_in || length(t_in) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -195,10 +195,10 @@
 	return trim_left(trim_right(text))
 
 //Returns a string with the first element of the string capitalized.
-/proc/capitalize(var/t as text)
+/proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
-/proc/stringpercent(var/text,character = "*")
+/proc/stringpercent(text,character = "*")
 //This proc returns the number of chars of the string that is the character
 //This is used for detective work to determine fingerprint completion.
 	if(!text || !character)
@@ -210,7 +210,7 @@
 			count++
 	return count
 
-/proc/reverse_text(var/text = "")
+/proc/reverse_text(text = "")
 	var/new_text = ""
 	for(var/i = length(text); i > 0; i--)
 		new_text += copytext(text, i, i+1)
@@ -218,7 +218,7 @@
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
-proc/TextPreview(var/string,var/len=40)
+proc/TextPreview(string, len=40)
 	if(length(string) <= len)
 		if(!length(string))
 			return "\[...\]"
@@ -234,7 +234,7 @@ proc/strip_improper(input_text)
 /proc/sanitize_filename(t)
 	return sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
 
-/proc/deep_string_equals(var/A, var/B)
+/proc/deep_string_equals(A, B)
 	if(length(A) != length(B))
 		return FALSE
 	for(var/i = 1 to length(A))
@@ -315,7 +315,7 @@ proc/strip_improper(input_text)
 	return jointext(chars_to_add, char) + text
 
 /// Finds the first letter of each word in the provided string and capitalize them
-/proc/capitalize_first_letters(var/string)
+/proc/capitalize_first_letters(string)
 	var/list/text = splittext_char(string, " ")
 	var/list/finalized_text = list()
 	for(var/word in text)
@@ -325,7 +325,7 @@ proc/strip_improper(input_text)
 // Aurorastation Markup System
 // For processing simple markup, similar to what Skype and Discord use.
 // Enabled from a config setting.
-/proc/process_chat_markup(var/message, var/list/ignore_tags = list())
+/proc/process_chat_markup(message, list/ignore_tags = list())
 	if (!message)
 		return ""
 

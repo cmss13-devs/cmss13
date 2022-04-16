@@ -7,7 +7,7 @@
 //config.alert_desc_blue_downto
 
 
-/proc/set_security_level(var/level, no_sound=0, announce=1)
+/proc/set_security_level(level, no_sound=0, announce=1)
 	if(level != security_level)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_SECURITY_LEVEL_CHANGED, level)
 

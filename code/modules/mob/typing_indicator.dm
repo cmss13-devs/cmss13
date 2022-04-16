@@ -8,7 +8,7 @@ mob/var/last_typed_time
 var/global/image/typing_indicator
 var/global/list/image/typed_typing_indicators
 
-/mob/proc/set_typing_indicator(var/state, var/type)
+/mob/proc/set_typing_indicator(state, type)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(!typing_indicator)

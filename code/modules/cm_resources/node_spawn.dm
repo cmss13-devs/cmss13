@@ -88,7 +88,7 @@
 	// Used to override the growth delay of the spawned crystal
 	var/growth_override
 
-/obj/effect/landmark/resource_node/proc/trigger(var/amount)
+/obj/effect/landmark/resource_node/proc/trigger(amount)
 	if(node_type)
 		var/obj/structure/resource_node/new_node = new node_type(loc)
 		new_node.node_group = node_group

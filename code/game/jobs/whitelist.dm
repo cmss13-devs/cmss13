@@ -7,7 +7,7 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 		return 0
 	return ("[M.ckey]" in GLOB.whitelist)
 
-/proc/can_play_special_job(var/client/client, var/job)
+/proc/can_play_special_job(client/client, job)
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		return TRUE
 	if(job == XENO_CASTE_QUEEN)
@@ -21,7 +21,7 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 
 //todo: admin aliens
-/proc/is_alien_whitelisted(mob/M, var/species)
+/proc/is_alien_whitelisted(mob/M, species)
 	if(!CONFIG_GET(flag/usealienwhitelist)) //If there's not config to use the whitelist.
 		return 1
 	if(species == "human" || species == "Human")

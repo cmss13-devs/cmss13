@@ -51,7 +51,7 @@
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
 
-/obj/structure/tunnel/proc/isfriendly(var/mob/target)
+/obj/structure/tunnel/proc/isfriendly(mob/target)
 	var/mob/living/carbon/C = target
 	if(istype(C) && C.ally_of_hivenumber(hivenumber))
 		return TRUE

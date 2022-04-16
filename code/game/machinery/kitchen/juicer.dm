@@ -130,12 +130,12 @@
 	beaker = null
 	update_icon()
 
-/obj/structure/machinery/juicer/proc/get_juice_id(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_id(obj/item/reagent_container/food/snacks/grown/O)
 	for (var/i in allowed_items)
 		if (istype(O, i))
 			return allowed_items[i]
 
-/obj/structure/machinery/juicer/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
 	if (!istype(O))
 		return 5
 	else if (O.potency == -1)

@@ -528,7 +528,7 @@ currently only humans get dizzy
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
-/mob/proc/make_dizzy(var/amount)
+/mob/proc/make_dizzy(amount)
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
@@ -560,7 +560,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // jitteriness - copy+paste of dizziness
 
-/mob/proc/make_jittery(var/amount)
+/mob/proc/make_jittery(amount)
 	return
 
 /mob/proc/remove_jittery()
@@ -597,7 +597,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 //handles up-down floaty effect in space
-/mob/proc/make_floating(var/n)
+/mob/proc/make_floating(n)
 
 	floatiness = n
 
@@ -683,7 +683,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir)
+/mob/proc/facedir(ndir)
 	if(!canface())	return 0
 	var/newdir = FALSE
 	if(dir != ndir)
@@ -704,7 +704,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return 1
 
 
-/mob/proc/set_face_dir(var/newdir)
+/mob/proc/set_face_dir(newdir)
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
 	else if ( facedir(newdir) )
@@ -738,7 +738,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
@@ -899,7 +899,7 @@ mob/proc/yank_out_object()
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
 /mob/on_stored_atom_del(atom/movable/AM)

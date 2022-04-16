@@ -105,7 +105,7 @@
 			scrubber.on = text2num(href_list["toggle"])
 			scrubber.update_icon()
 
-	proc/validscrubber( var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
+	proc/validscrubber(obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
 		if(!isobj(scrubber) || get_dist(scrubber.loc, src.loc) > src.range || scrubber.loc.z != src.loc.z)
 			return 0
 

@@ -142,7 +142,7 @@
 
 // shock the user with probability prb
 
-/obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
+/obj/structure/cable/proc/shock(mob/user, prb, siemens_coeff = 1.0)
 	if(!prob(prb))
 		return 0
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
@@ -178,7 +178,7 @@
 			qdel(src)
 	return
 
-obj/structure/cable/proc/cableColor(var/colorC)
+obj/structure/cable/proc/cableColor(colorC)
 	if(colorC)
 		color = colorC
 	else

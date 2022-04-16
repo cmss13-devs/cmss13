@@ -106,7 +106,7 @@
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 
 // Frame repairs on the vehicle itself
-/obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/proc/handle_repairs(obj/item/O, mob/user)
 	var/max_hp = initial(health)
 	if(health == max_hp)
 		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
@@ -266,7 +266,7 @@
 	healthcheck()
 
 //to handle IFF bullets
-/obj/vehicle/multitile/proc/get_target_lock(var/access_to_check)
+/obj/vehicle/multitile/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check) || !vehicle_faction)
 		return FALSE
 
@@ -356,7 +356,7 @@
 
 		HP.activate(user, A)
 
-/obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
+/obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null) return
 
 	var/mob_x = M.x - src.x
@@ -432,7 +432,7 @@
 		if(!success)
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(mob/M, atom/dragged_atom)
 	if(!ishuman(M))
 		return
 

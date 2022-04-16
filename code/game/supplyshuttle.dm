@@ -271,7 +271,7 @@ var/datum/controller/supply/supply_controller = new()
 
 
 //Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
+/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(txt = "", var/plus_name = 0, var/only_leader = 0)
 	if(txt == "" || !current_squad) return //Logic
 
 	var/text = strip_html(txt)
@@ -407,7 +407,7 @@ var/datum/controller/supply/supply_controller = new()
 //Here we pick the exact crate from the crate types to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
-/datum/controller/supply/proc/pickcrate(var/T = "Everything")
+/datum/controller/supply/proc/pickcrate(T = "Everything")
 	var/list/pickfrom = list()
 	for(var/supply_name in supply_controller.random_supply_packs)
 		var/datum/supply_packs/N = supply_controller.random_supply_packs[supply_name]
@@ -985,7 +985,7 @@ var/datum/controller/supply/supply_controller = new()
 	updateUsrDialog()
 	return
 
-/obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
+/obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
@@ -1019,7 +1019,7 @@ var/datum/controller/supply/supply_controller = new()
 /datum/vehicle_order/proc/has_vehicle_lock()
 	return FALSE
 
-/datum/vehicle_order/proc/on_created(var/obj/vehicle/V)
+/datum/vehicle_order/proc/on_created(obj/vehicle/V)
 	return
 
 /datum/vehicle_order/tank

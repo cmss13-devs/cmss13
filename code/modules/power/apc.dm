@@ -786,7 +786,7 @@
 		APC_WIRE_IDSCAN       = "ID scanner"
 	)
 
-/obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
+/obj/structure/machinery/power/apc/proc/isWireCut(wire)
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
@@ -807,7 +807,7 @@
 	if(isXeno(usr)) //So aliens don't see this when they cut all of the wires.
 		return
 
-/obj/structure/machinery/power/apc/proc/mend(var/wire)
+/obj/structure/machinery/power/apc/proc/mend(wire)
 	apcwires |= getWireFlag(wire)
 
 	switch(wire)
@@ -1167,7 +1167,7 @@
 //val 0 = off, 1 = off(auto) 2 = on, 3 = on(auto)
 //on 0 = off, 1 = auto-on, 2 = auto-off
 
-/proc/autoset(var/val, var/on)
+/proc/autoset(val, on)
 
 	if(on == 0) //Turn things off
 		if(val == 2) //If on, return off

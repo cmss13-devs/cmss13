@@ -563,7 +563,7 @@
 	return TRUE
 
  //Used by machines and structures to calculate shooting past cover
-/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
+/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, distance = 0, var/cade_direction_correct = FALSE)
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
@@ -1111,7 +1111,7 @@
 
 
 //This is where the bullet bounces off.
-/atom/proc/bullet_ping(obj/item/projectile/P, var/pixel_x_offset, var/pixel_y_offset)
+/atom/proc/bullet_ping(obj/item/projectile/P, pixel_x_offset, pixel_y_offset)
 	if(!P || !P.ammo.ping)
 		return
 

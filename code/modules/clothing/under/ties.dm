@@ -28,7 +28,7 @@
 	inv_overlay = null
 	. = ..()
 
-/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
 //when user attached an accessory to S
@@ -140,7 +140,7 @@
 	if(.)
 		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
 	SIGNAL_HANDLER
 	if(user.real_name != recipient_name)
 		C.remove_accessory(user, src)

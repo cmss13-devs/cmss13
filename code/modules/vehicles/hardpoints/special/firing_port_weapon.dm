@@ -100,7 +100,7 @@
 	if(user && owner.get_mob_seat(user))
 		to_chat(user, SPAN_WARNING("\The [name]'s automated reload is finished. Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b>"))
 
-/obj/item/hardpoint/special/firing_port_weapon/proc/start_auto_reload(var/mob/user)
+/obj/item/hardpoint/special/firing_port_weapon/proc/start_auto_reload(mob/user)
 	if(reloading)
 		to_chat(user, SPAN_WARNING("\The [name] is already being reloaded. Wait [SPAN_HELPFUL("[((reload_time_started + reload_time - world.time) / 10)]")] seconds."))
 		return

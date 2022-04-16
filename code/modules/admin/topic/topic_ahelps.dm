@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_ahelps(var/href_list)
+/datum/admins/proc/topic_ahelps(href_list)
 	switch(href_list["ahelp"])
 		if("mark")
 			var/mob/ref_person = locate(href_list["extra"])

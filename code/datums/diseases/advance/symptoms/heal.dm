@@ -33,7 +33,7 @@ Bonus
 				Heal(M)
 	return
 
-/datum/symptom/heal/proc/Heal(var/mob/living/M)
+/datum/symptom/heal/proc/Heal(mob/living/M)
 
 	var/get_damage = rand(1, 2)
 	M.apply_damage(-get_damage, TOX)

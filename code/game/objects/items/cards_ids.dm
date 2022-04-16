@@ -94,7 +94,7 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(var/mob/living/carbon/human/H)
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -103,7 +103,7 @@
 	registered_gid = H.gid
 	blood_type = H.blood_type
 
-/obj/item/card/id/proc/set_assignment(var/new_assignment)
+/obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
 	name = "[registered_name]'s ID Card ([assignment])"
 

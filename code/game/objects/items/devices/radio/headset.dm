@@ -246,7 +246,7 @@
 
 	handle_switching_tracker_target(usr)
 
-/obj/item/device/radio/headset/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
+/obj/item/device/radio/headset/proc/handle_switching_tracker_target(mob/living/carbon/human/user)
 	//Cycles through SL > LZ > FTL
 	if(locate_setting == TRACKER_SL)
 		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))

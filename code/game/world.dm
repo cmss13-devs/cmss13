@@ -225,7 +225,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			master_mode = Lines[1]
 			log_misc("Saved mode is '[master_mode]'")
 
-/world/proc/save_mode(var/the_mode)
+/world/proc/save_mode(the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
@@ -276,7 +276,7 @@ proc/setup_database_connection()
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
-/proc/give_image_to_client(var/obj/O, icon_text)
+/proc/give_image_to_client(obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)

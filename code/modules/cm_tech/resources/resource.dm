@@ -102,7 +102,7 @@
 	set_tree(TREE_NONE)
 	update_icon()
 
-/obj/structure/resource_node/proc/take_damage(var/damage)
+/obj/structure/resource_node/proc/take_damage(damage)
 	if(!tree)
 		return
 	playsound(loc, tree.resource_break_sound, 50, TRUE)
@@ -150,7 +150,7 @@
 /obj/structure/resource_node/get_projectile_hit_boolean()
 	return !isnull(tree)
 
-/obj/structure/resource_node/proc/set_tree(var/treeid)
+/obj/structure/resource_node/proc/set_tree(treeid)
 	if(treeid == TREE_NONE || !treeid)
 		if(tree)
 			tree.on_node_lost(src)

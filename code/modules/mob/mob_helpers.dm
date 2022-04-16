@@ -229,7 +229,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 #define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+/proc/shake_camera(mob/M, steps = 1, var/strength = 1, var/time_per_step = 1)
 	if(!M?.client || (M.shakecamera > world.time))
 		return
 
@@ -254,7 +254,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return FALSE
 
 
-/mob/proc/abiotic(var/full_body = 0)
+/mob/proc/abiotic(full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 
@@ -366,7 +366,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			zone.selecting = prev_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
 	zone.update_icon(usr)
 
-/mob/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+/mob/proc/clear_chat_spam_mute(warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
 	if(talked > warn_level)
 		return
 	talked = 0
@@ -378,7 +378,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25
-/mob/proc/get_skill_duration_multiplier(var/skill)
+/mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
 	. = 1.0
 	if(!skills)
@@ -421,8 +421,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
 
-/mob/proc/check_view_change(var/new_size, var/atom/source)
+/mob/proc/check_view_change(new_size, atom/source)
 	return new_size
 
-/mob/proc/can_be_pulled_by(var/mob/M)
+/mob/proc/can_be_pulled_by(mob/M)
 	return TRUE

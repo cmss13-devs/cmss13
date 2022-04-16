@@ -16,7 +16,7 @@
 */
 
 ///////////////////////////////RECIPE GENERATOR///////////////////////////////
-/datum/chemical_reaction/proc/generate_recipe(var/list/complexity)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -55,7 +55,7 @@
 
 	return TRUE
 
-/datum/chemical_reaction/proc/add_component(var/my_chemid, var/my_modifier, var/is_catalyst, var/tier, var/class)
+/datum/chemical_reaction/proc/add_component(my_chemid, my_modifier, is_catalyst, tier, class)
 	var/chem_id		//The id of the picked chemical
 	var/modifier	//The number of required reagents
 
@@ -170,7 +170,7 @@
 	return name
 
 //////////////////////////////REAGENT GENERATOR//////////////////////////////
-/datum/reagent/proc/generate_stats(var/no_properties)
+/datum/reagent/proc/generate_stats(no_properties)
 	//Properties
 	if(!no_properties)
 		var/gen_value
@@ -205,7 +205,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, var/make_rare = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -293,7 +293,7 @@
 
 /////////////////////////GENERATOR HELPER PROCS/////////////////////////
 
-/datum/reagent/proc/insert_property(var/property, var/level)
+/datum/reagent/proc/insert_property(property, level)
 	//The list below defines what properties should override each other.
 	var/list/conflicting_properties = list(	PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,		PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
 											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,	PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,		PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
@@ -392,7 +392,7 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(var/list/complexity)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id

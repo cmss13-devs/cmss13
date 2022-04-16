@@ -110,7 +110,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	..()
 
 //Returns true if the user's id matches the lock's
-obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
@@ -644,7 +644,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	sparks.start()
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE, var/forced)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, var/forced)
 	if(!istype(H))
 		return FALSE
 
@@ -681,7 +681,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	return COMPONENT_GRENADE_PRIME_CANCEL
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage)
 		return
 	H.allow_gun_usage = TRUE

@@ -542,7 +542,7 @@
 				..()
 
 
-/obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
+/obj/item/weapon/gun/smartgun/proc/link_powerpack(mob/user)
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			powerpack = user.back
@@ -608,7 +608,7 @@
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
 
-/obj/item/weapon/gun/smartgun/proc/auto_prefire(var/warned) //To allow the autofire delay to properly check targets after waiting.
+/obj/item/weapon/gun/smartgun/proc/auto_prefire(warned) //To allow the autofire delay to properly check targets after waiting.
 	if(ishuman(loc) && (flags_item & WIELDED))
 		var/human_user = loc
 		target = get_target(human_user)
@@ -617,7 +617,7 @@
 		auto_fire = FALSE
 		auto_fire()
 
-/obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
+/obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user)
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
 	var/list/turf/path = list()
@@ -684,7 +684,7 @@
 	else if(unconscious_targets.len)
 		. = pick(unconscious_targets)
 
-/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user, var/warned)
+/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
 	set waitfor = 0
 
 

@@ -102,7 +102,7 @@
  *  user is the user doing the attaching. Can be null, such as when attaching
  *  items on spawn
  */
-/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, var/silent)
+/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, silent)
 	if(!A.can_attach_to(user, src))
 		return
 

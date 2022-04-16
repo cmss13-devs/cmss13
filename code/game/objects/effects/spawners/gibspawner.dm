@@ -1,14 +1,14 @@
 
-/proc/gibs(atom/location, var/list/viruses, var/mob/living/ml)		//CARN MARKER
+/proc/gibs(atom/location, list/viruses, mob/living/ml)		//CARN MARKER
 	new /obj/effect/spawner/gibspawner/generic(get_turf(location),viruses,ml)
 
-/proc/hgibs(atom/location, var/list/viruses, var/mob/living/ml, var/fleshcolor, var/bloodcolor)
+/proc/hgibs(atom/location, list/viruses, mob/living/ml, fleshcolor, bloodcolor)
 	new /obj/effect/spawner/gibspawner/human(get_turf(location),viruses,ml,fleshcolor,bloodcolor)
 
-/proc/xgibs(atom/location, var/list/viruses)
+/proc/xgibs(atom/location, list/viruses)
 	new /obj/effect/spawner/gibspawner/xeno(get_turf(location),viruses)
 
-/proc/robogibs(atom/location, var/list/viruses)
+/proc/robogibs(atom/location, list/viruses)
 	new /obj/effect/spawner/gibspawner/robot(get_turf(location),viruses)
 
 /obj/effect/spawner/gibspawner
@@ -42,7 +42,7 @@
 	Gib(viruses,ml)
 	qdel(src)
 
-/obj/effect/spawner/gibspawner/proc/Gib(var/list/viruses = list(), var/mob/living/ml = null)
+/obj/effect/spawner/gibspawner/proc/Gib(list/viruses = list(), var/mob/living/ml = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
 		to_world(SPAN_DANGER("Gib list length mismatch!"))
 		return

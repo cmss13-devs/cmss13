@@ -54,7 +54,7 @@
 			to_chat(H, SPAN_WARNING("You feel a psychic disturbance! All you can hear is static from your headset."))
 
 
-/datum/tech/xeno/powerup/disruption/proc/override_available_zlevel(var/datum/source, var/list/target_zs)
+/datum/tech/xeno/powerup/disruption/proc/override_available_zlevel(datum/source, list/target_zs)
 	SIGNAL_HANDLER
 	if(!hive.living_xeno_queen)
 		return

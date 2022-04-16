@@ -1,5 +1,5 @@
 // All mobs should have custom emote, really..
-/mob/proc/custom_emote(var/m_type=1,var/message = null, player_caused, var/nolog = 0)
+/mob/proc/custom_emote(m_type=1,var/message = null, player_caused, var/nolog = 0)
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
@@ -72,7 +72,7 @@
 
 				O.show_message(message, m_type)
 
-/mob/proc/emote_dead(var/message)
+/mob/proc/emote_dead(message)
 	if(client.prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
 		return

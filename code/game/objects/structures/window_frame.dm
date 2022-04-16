@@ -154,7 +154,7 @@
 	take_damage(P.damage)
 	return TRUE
 
-/obj/structure/window_frame/proc/take_damage(var/damage)
+/obj/structure/window_frame/proc/take_damage(damage)
 	health = max(0, (health - damage))
 	health = min(health, max_health)
 

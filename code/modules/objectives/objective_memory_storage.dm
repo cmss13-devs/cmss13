@@ -10,11 +10,11 @@
 
 //this is an objective that the player has just completed
 //and we want to store the objective clues generated based on it -spookydonut
-/datum/objective_memory_storage/proc/store_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/store_objective(datum/cm_objective/O)
 	for(var/datum/cm_objective/R in O.enables_objectives)
 		store_single_objective(R)
 
-/datum/objective_memory_storage/proc/store_single_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/store_single_objective(datum/cm_objective/O)
 	if(!istype(O))
 		return
 	if (O.is_finalised())
@@ -36,7 +36,7 @@
 		addToListNoDupe(other, O)
 
 //returns TRUE if we have the objective already
-/datum/objective_memory_storage/proc/has_objective(var/datum/cm_objective/O)
+/datum/objective_memory_storage/proc/has_objective(datum/cm_objective/O)
 	if(O in folders)
 		return TRUE
 	if(O in progress_reports)
@@ -53,7 +53,7 @@
 		return TRUE
 	return FALSE
 
-/datum/objective_memory_storage/proc/view_objective_memories(mob/recipient, var/real_name)
+/datum/objective_memory_storage/proc/view_objective_memories(mob/recipient, real_name)
 	synchronize_objectives()
 	var/output
 
@@ -80,7 +80,7 @@
 
 	show_browser(recipient, output, window_name, "objectivesmemory")
 
-/datum/objective_memory_storage/proc/format_objective_list(var/list/datum/cm_objective/os, var/category)
+/datum/objective_memory_storage/proc/format_objective_list(list/datum/cm_objective/os, category)
 	var/output = ""
 	if (!os || !os.len)
 		return output
@@ -151,10 +151,10 @@ var/global/datum/intel_system/intel_system = new()
 /datum/intel_system
 	var/datum/objective_memory_storage/oms = new()
 
-/datum/intel_system/proc/store_objective(var/datum/cm_objective/O)
+/datum/intel_system/proc/store_objective(datum/cm_objective/O)
 	oms.store_objective(O)
 
-/datum/intel_system/proc/store_single_objective(var/datum/cm_objective/O)
+/datum/intel_system/proc/store_single_objective(datum/cm_objective/O)
 	oms.store_single_objective(O)
 
 
@@ -244,7 +244,7 @@ var/global/datum/intel_system/intel_system = new()
 
 	return TRUE
 
-/obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, var/datum/cm_objective/O)
+/obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, datum/cm_objective/O)
 	if(!intel_system || !intel_system.oms)
 		return 0
 	if(intel_system.oms.has_objective(O))

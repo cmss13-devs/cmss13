@@ -145,7 +145,7 @@
 /datum/species/yautja/handle_cryo(var/mob/living/carbon/human/H)
 	set_predator_status(H, "Cryo")
 
-/datum/species/yautja/proc/set_predator_status(var/mob/living/carbon/human/H, var/status = "Alive")
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
 	if(!H.persistent_ckey)
 		return
 	var/datum/game_mode/GM

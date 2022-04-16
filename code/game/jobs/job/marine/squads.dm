@@ -197,7 +197,7 @@
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
-/datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/put_marine_in_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 
 	if(!istype(M))
 		return 0	//Logic
@@ -282,7 +282,7 @@
 	return 1
 
 //proc used by the overwatch console to transfer marine to another squad
-/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 	if(M.assigned_squad != src)
 		return		//not assigned to the correct squad
 	var/obj/item/card/id/C = ID
@@ -376,7 +376,7 @@
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
-/proc/get_squad_by_name(var/text)
+/proc/get_squad_by_name(text)
 	if(!RoleAuthority || RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S

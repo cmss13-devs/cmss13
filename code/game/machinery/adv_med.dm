@@ -333,7 +333,7 @@
 	return occupant_data
 
 
-/obj/structure/machinery/body_scanconsole/proc/format_occupant_data(var/list/occ)
+/obj/structure/machinery/body_scanconsole/proc/format_occupant_data(list/occ)
 	var/dat = "<html><head><style>"
 	dat += "table {border: 2px solid; border-collapse: collapse;}"
 	dat += "td, th {border: 1px solid; padding-left: 5 px; padding-right: 5px;}"

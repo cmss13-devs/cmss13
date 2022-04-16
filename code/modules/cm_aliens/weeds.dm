@@ -55,7 +55,7 @@
 		COMSIG_MOVABLE_TURF_ENTERED
 	), .proc/set_turf_weeded)
 
-/obj/effect/alien/weeds/proc/set_turf_weeded(var/datum/source, var/turf/T)
+/obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER
 	if(weeded_turf)
 		weeded_turf.weeds = null
@@ -67,7 +67,7 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_WEEDS
 
-/obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+/obj/effect/alien/weeds/proc/on_weed_expand(obj/effect/alien/weeds/spread_from, list/new_weeds)
 	if(!length(new_weeds) && parent)
 		SEND_SIGNAL(parent, COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER)
 
@@ -195,7 +195,7 @@
 
 	return weeds
 
-/obj/effect/alien/weeds/proc/weed_expand_objects(var/turf/T, var/direction)
+/obj/effect/alien/weeds/proc/weed_expand_objects(turf/T, direction)
 	for(var/obj/structure/platform/P in src.loc)
 		if(P.dir == reverse_direction(direction))
 			return FALSE
@@ -316,7 +316,7 @@
 	take_damage(damage)
 	return TRUE //don't call afterattack
 
-/obj/effect/alien/weeds/proc/take_damage(var/damage)
+/obj/effect/alien/weeds/proc/take_damage(damage)
 	if(indestructible)
 		return
 
@@ -386,19 +386,19 @@
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
 
-/obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
+/obj/effect/alien/weeds/node/proc/add_child(obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed))
 		return
 	weed.parent = src
 	children += weed
 
-/obj/effect/alien/weeds/node/proc/remove_child(var/obj/effect/alien/weeds/weed)
+/obj/effect/alien/weeds/node/proc/remove_child(obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed) || !(weed in children))
 		return
 	weed.parent = null
 	children -= weed
 
-/obj/effect/alien/weeds/node/proc/replace_child(var/turf/T, var/weed_type)
+/obj/effect/alien/weeds/node/proc/replace_child(turf/T, weed_type)
 	if(!T || !istype(T) || QDELETED(src))
 		return
 	var/obj/effect/alien/weeds/replacement_child = new weed_type(T, src)

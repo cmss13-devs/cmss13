@@ -94,7 +94,7 @@
 	if(!holder.check_and_use_points(point_drain_per_second*delta_time))
 		disable()
 
-/datum/tech/xeno/weed_damage_reduction/proc/register_component(datum/source, var/mob/living/carbon/Xenomorph/X)
+/datum/tech/xeno/weed_damage_reduction/proc/register_component(datum/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 	if(X.hivenumber == hivenumber)
 		X.AddComponent(/datum/component/weed_damage_mult, hivenumber, damage_mult)

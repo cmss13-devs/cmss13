@@ -310,7 +310,7 @@
 		return
 	..()
 
-/obj/structure/surface/table/proc/straight_table_check(var/direction)
+/obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/T
 	for(var/angle in list(-90, 90))
 		T = locate() in get_step(loc, turn(direction, angle))
@@ -350,7 +350,7 @@
 
 	flip_cooldown = world.time + 50
 
-/obj/structure/surface/table/proc/unflipping_check(var/direction)
+/obj/structure/surface/table/proc/unflipping_check(direction)
 	if(world.time < flip_cooldown)
 		return 0
 
@@ -390,7 +390,7 @@
 
 	flip_cooldown = world.time + 50
 
-/obj/structure/surface/table/proc/flip(var/direction)
+/obj/structure/surface/table/proc/flip(direction)
 	if(world.time < flip_cooldown)
 		return 0
 

@@ -76,13 +76,13 @@
 	else
 		return
 
-/datum/action/human_action/smartpack/proc/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
+/datum/action/human_action/smartpack/proc/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
 	return
 
-/datum/action/human_action/smartpack/proc/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/proc/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
 	return
 
-/datum/action/human_action/smartpack/proc/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/proc/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
 	return S.activated_form
 
 
@@ -151,7 +151,7 @@ CULT
 	if(H.selected_ability == src)
 		H.selected_ability = null
 
-/datum/action/human_action/activable/proc/use_ability(var/mob/M)
+/datum/action/human_action/activable/proc/use_ability(mob/M)
 	return
 
 /datum/action/human_action/activable/update_button_icon()
@@ -165,7 +165,7 @@ CULT
 /datum/action/human_action/activable/action_cooldown_check()
 	return ability_used_time <= world.time
 
-/datum/action/human_action/activable/proc/enter_cooldown(var/amount = cooldown)
+/datum/action/human_action/activable/proc/enter_cooldown(amount = cooldown)
 	ability_used_time = world.time + amount
 
 	update_button_icon()
@@ -178,7 +178,7 @@ CULT
 
 	var/obj/structure/droppod/tech/assigned_droppod
 
-/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(var/turf/T)
+/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(turf/T)
 	var/mob/living/carbon/human/H = owner
 	if(assigned_droppod)
 		return
@@ -274,7 +274,7 @@ CULT
 
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
 
-/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
+/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER
 	if(T != assigned_droppod)
 		return
@@ -370,7 +370,7 @@ CULT
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(var/mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner

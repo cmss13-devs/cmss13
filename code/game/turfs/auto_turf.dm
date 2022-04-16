@@ -48,7 +48,7 @@
 
 	..()
 
-/turf/open/auto_turf/proc/changing_layer(var/new_layer)
+/turf/open/auto_turf/proc/changing_layer(new_layer)
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 

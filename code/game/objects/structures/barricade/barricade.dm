@@ -324,14 +324,14 @@
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	take_damage(I.force * 0.5 * brute_multiplier)
 
-/obj/structure/barricade/proc/take_damage(var/damage)
+/obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(B.dir == reverse_direction(dir))
 			B.update_health(damage)
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(var/damage)
+/obj/structure/barricade/proc/take_acid_damage(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)
@@ -391,7 +391,7 @@
 
 	rotate(usr,-1)
 
-/obj/structure/barricade/proc/rotate(var/mob/user, var/rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
+/obj/structure/barricade/proc/rotate(mob/user, rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
 	if(world.time <= user.next_move || !ishuman(user) || !Adjacent(user) || user.is_mob_incapacitated())
 		return
 

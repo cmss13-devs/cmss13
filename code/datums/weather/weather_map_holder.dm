@@ -17,12 +17,12 @@
     potential_weather_events = list()
 
 // Should the weather for this map include the passed area?
-/datum/weather_ss_map_holder/proc/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/proc/should_affect_area(area/A)
     log_debug("Weather subsystem map holder [src] is improperly configured. Code: WSSMH01")
     return FALSE
 
 // Use our current area to decide whether or not we should affect a given atom
-/datum/weather_ss_map_holder/proc/should_affect_atom(var/atom/A)
+/datum/weather_ss_map_holder/proc/should_affect_atom(atom/A)
     if (!istype(A))
         return FALSE
 
@@ -49,5 +49,5 @@
 // warn_time deciseconds before it actually starts
 // (think weather sirens on sorokyne)
 // This can do nothing safely, so you don't have to override it
-/datum/weather_ss_map_holder/proc/weather_warning(var/event_type)
+/datum/weather_ss_map_holder/proc/weather_warning(event_type)
     return

@@ -23,7 +23,7 @@
 	..()
 	unwield(user)
 
-/obj/item/proc/wield(var/mob/user)
+/obj/item/proc/wield(mob/user)
 	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
 
 	var/obj/item/I = user.get_inactive_hand()
@@ -54,7 +54,7 @@
 	remove_offhand(user)
 	return TRUE
 
-/obj/item/proc/place_offhand(var/mob/user,item_name)
+/obj/item/proc/place_offhand(mob/user,item_name)
 	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/melee/twohanded/offhand/offhand = new /obj/item/weapon/melee/twohanded/offhand(user)
@@ -65,7 +65,7 @@
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
 
-/obj/item/proc/remove_offhand(var/mob/user)
+/obj/item/proc/remove_offhand(mob/user)
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/melee/twohanded/offhand/offhand = user.get_inactive_hand()
@@ -353,7 +353,7 @@
 
 	..()
 
-/obj/item/weapon/melee/twohanded/breacher/proc/breach_action(var/atom/A, var/mob/user, var/time_to_destroy)
+/obj/item/weapon/melee/twohanded/breacher/proc/breach_action(atom/A, mob/user, time_to_destroy)
 	if(user.action_busy || !user.Adjacent(A))
 		return
 

@@ -444,7 +444,7 @@
 
 
 // called to load a crate
-/obj/structure/machinery/bot/mulebot/proc/load(var/atom/movable/C)
+/obj/structure/machinery/bot/mulebot/proc/load(atom/movable/C)
 	if((wires & WIRE_LOADCHECK) && !istype(C,/obj/structure/closet/crate))
 		src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
@@ -495,7 +495,7 @@
 // called to unload the bot
 // argument is optional direction to unload
 // if zero, unload at bot's location
-/obj/structure/machinery/bot/mulebot/proc/unload(var/dirn = 0)
+/obj/structure/machinery/bot/mulebot/proc/unload(dirn = 0)
 	if(!load)
 		return
 
@@ -680,7 +680,7 @@
 
 // calculates a path to the current destination
 // given an optional turf to avoid
-/obj/structure/machinery/bot/mulebot/proc/calc_path(var/turf/avoid = null)
+/obj/structure/machinery/bot/mulebot/proc/calc_path(turf/avoid = null)
 	src.path = AStar(src.loc, src.target, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 250, id=botcard, exclude=avoid)
 	if(!src.path)
 		src.path = list()
@@ -689,7 +689,7 @@
 // sets the current destination
 // signals all beacons matching the delivery code
 // beacons will return a signal giving their locations
-/obj/structure/machinery/bot/mulebot/proc/set_destination(var/new_dest)
+/obj/structure/machinery/bot/mulebot/proc/set_destination(new_dest)
 	spawn(0)
 		new_destination = new_dest
 		post_signal(beacon_freq, "findbeacon", "delivery")
@@ -767,7 +767,7 @@
 
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
-/obj/structure/machinery/bot/mulebot/proc/RunOver(var/mob/living/carbon/human/H)
+/obj/structure/machinery/bot/mulebot/proc/RunOver(mob/living/carbon/human/H)
 	src.visible_message(SPAN_DANGER("[src] drives over [H]!"))
 	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
 
@@ -864,11 +864,11 @@
 			updateDialog()
 
 // send a radio signal with a single data key/value pair
-/obj/structure/machinery/bot/mulebot/proc/post_signal(var/freq, var/key, var/value)
+/obj/structure/machinery/bot/mulebot/proc/post_signal(freq, key, value)
 	post_signal_multiple(freq, list("[key]" = value) )
 
 // send a radio signal with multiple data key/values
-/obj/structure/machinery/bot/mulebot/proc/post_signal_multiple(var/freq, var/list/keyval)
+/obj/structure/machinery/bot/mulebot/proc/post_signal_multiple(freq, list/keyval)
 
 	if(freq == beacon_freq && !(wires & WIRE_BEACON_TX))
 		return

@@ -121,7 +121,7 @@
 	density = 1
 	return 1
 
-/obj/structure/closet/proc/store_items(var/stored_units)
+/obj/structure/closet/proc/store_items(stored_units)
 	for(var/obj/item/I in src.loc)
 		var/item_size = Ceiling(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
@@ -131,7 +131,7 @@
 			stored_units += item_size
 	return stored_units
 
-/obj/structure/closet/proc/store_mobs(var/stored_units)
+/obj/structure/closet/proc/store_mobs(stored_units)
 	for(var/mob/M in src.loc)
 		if(stored_units + mob_size > storage_capacity)
 			break
@@ -171,7 +171,7 @@
 				A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 			qdel(src)
 
-/obj/structure/closet/proc/flashbang(var/datum/source, var/obj/item/explosive/grenade/flashbang/FB)
+/obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
 	for(var/mob/living/C in contents)
 		FB.bang(get_turf(FB), C)

@@ -43,13 +43,13 @@
 		attach_item(O, FALSE)
 	draw_item_overlays()
 
-/obj/structure/surface/proc/in_blacklist(var/obj/item/O)
+/obj/structure/surface/proc/in_blacklist(obj/item/O)
 	for(var/allowed_type in blacklisted_item_types)
 		if(istype(O, allowed_type))
 			return TRUE
 	return FALSE
 
-/obj/structure/surface/proc/attach_item(var/obj/item/O, var/update = TRUE)
+/obj/structure/surface/proc/attach_item(obj/item/O, update = TRUE)
 	if(!O)
 		return
 	if(O.luminosity) //it can't make light as an overlay
@@ -59,7 +59,7 @@
 	if(update)
 		draw_item_overlays()
 
-/obj/structure/surface/proc/detach_item(var/obj/item/O)
+/obj/structure/surface/proc/detach_item(obj/item/O)
 	O.pixel_x = initial(O.pixel_x)
 	O.pixel_y = initial(O.pixel_y)
 	UnregisterSignal(O, COMSIG_ATOM_DECORATED)
@@ -76,7 +76,7 @@
 		UnregisterSignal(O, COMSIG_ATOM_DECORATED)
 		O.forceMove(loc)
 
-/obj/structure/surface/proc/get_item(var/list/click_data)
+/obj/structure/surface/proc/get_item(list/click_data)
 	var/i = LAZYLEN(contents)
 	if(!click_data)
 		return
@@ -113,7 +113,7 @@
 		return TRUE
 	..()
 
-/obj/structure/surface/proc/try_to_open_container(var/mob/user, mods)
+/obj/structure/surface/proc/try_to_open_container(mob/user, mods)
 	if(!Adjacent(user))
 		return
 

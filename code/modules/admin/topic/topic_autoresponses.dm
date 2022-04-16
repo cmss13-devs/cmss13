@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_autoresponses(var/href_list)
+/datum/admins/proc/topic_autoresponses(href_list)
 	var/mob/ref_person = locate(href_list["extra"])
 	if(!istype(ref_person))
 		to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))

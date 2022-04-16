@@ -425,7 +425,7 @@
 	return
 
 
-/obj/structure/machinery/bot/medbot/proc/speak(var/message)
+/obj/structure/machinery/bot/medbot/proc/speak(message)
 	if((!src.on) || (!message))
 		return
 	visible_message("[src] beeps, \"[message]\"")

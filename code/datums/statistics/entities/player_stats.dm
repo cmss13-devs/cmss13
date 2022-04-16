@@ -16,13 +16,13 @@
 /datum/entity/player_stats/proc/get_playtime()
 	return total_playtime
 
-/datum/entity/player_stats/proc/count_personal_human_kill(var/job_name, var/cause, var/job)
+/datum/entity/player_stats/proc/count_personal_human_kill(job_name, cause, job)
 	return
 
-/datum/entity/player_stats/proc/count_personal_xeno_kill(var/job_name, var/cause, var/job)
+/datum/entity/player_stats/proc/count_personal_xeno_kill(job_name, cause, job)
 	return
 
-/datum/entity/player_stats/proc/count_human_kill(var/job_name, var/cause, var/job)
+/datum/entity/player_stats/proc/count_human_kill(job_name, cause, job)
 	if(!job_name)
 		return
 	if(!humans_killed["[job_name]"])
@@ -35,7 +35,7 @@
 		count_personal_human_kill(job_name, cause, job)
 	total_kills += 1
 
-/datum/entity/player_stats/proc/count_xeno_kill(var/caste, var/cause, var/job)
+/datum/entity/player_stats/proc/count_xeno_kill(caste, cause, job)
 	if(!caste)
 		return
 	if(!xenos_killed["[caste]"])
@@ -67,7 +67,7 @@
 			nemesis.name = stat_entity.cause_name
 			nemesis.value = causes["[stat_entity.cause_name]"]
 
-/datum/entity/player_stats/proc/count_personal_death(var/job)
+/datum/entity/player_stats/proc/count_personal_death(job)
 	return
 
 /mob/proc/track_death_calculations()
@@ -83,13 +83,13 @@
 //Mob Procs - kills
 //*****************
 
-/mob/proc/count_human_kill(var/job_name, var/cause)
+/mob/proc/count_human_kill(job_name, cause)
 	return
 
-/mob/proc/count_xeno_kill(var/killed_caste, var/cause)
+/mob/proc/count_xeno_kill(killed_caste, cause)
 	return
 
-/mob/proc/count_niche_stat(var/niche_name, var/amount = 1)
+/mob/proc/count_niche_stat(niche_name, amount = 1)
 	return
 
 //Human
@@ -143,10 +143,10 @@
 //Mob Procs - minor
 //*****************
 
-/datum/entity/player_stats/proc/count_personal_niche_stat(var/niche_name, var/amount = 1, var/job)
+/datum/entity/player_stats/proc/count_personal_niche_stat(niche_name, amount = 1, var/job)
 	return
 
-/datum/entity/player_stats/proc/count_niche_stat(var/niche_name, var/amount = 1, var/job)
+/datum/entity/player_stats/proc/count_niche_stat(niche_name, amount = 1, var/job)
 	if(!niche_name)
 		return
 	if(!niche_stats["[niche_name]"])
@@ -158,7 +158,7 @@
 	if(job)
 		count_personal_niche_stat(niche_name, amount, job)
 
-/datum/entity/player_stats/proc/count_personal_steps_walked(var/job)
+/datum/entity/player_stats/proc/count_personal_steps_walked(job)
 	return
 
 /mob/proc/track_steps_walked()

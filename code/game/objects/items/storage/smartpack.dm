@@ -202,7 +202,7 @@
 
 	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
 
-/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(mob/living/carbon/human/H)
 	activated_form = FALSE
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP

@@ -76,7 +76,7 @@
 	return ..()
 
 // Use this proc to load the template back in
-/datum/interior/proc/create_interior(var/interior_map)
+/datum/interior/proc/create_interior(interior_map)
 	if(!isnull(interior_data))
 		return
 
@@ -181,7 +181,7 @@
 
 
 // Moves the atom to the interior
-/datum/interior/proc/enter(var/atom/movable/A, var/entrance_used)
+/datum/interior/proc/enter(atom/movable/A, entrance_used)
 	if(!ready)
 		return
 
@@ -269,7 +269,7 @@
 	return FALSE
 
 // Moves the atom to the exterior
-/datum/interior/proc/exit(var/atom/movable/A, var/turf/exit_turf)
+/datum/interior/proc/exit(atom/movable/A, turf/exit_turf)
 	if(!exit_turf)
 		exit_turf = get_turf(exterior)
 	if(!exit_turf)

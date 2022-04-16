@@ -92,7 +92,7 @@
 
 
 /*
-/obj/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon)
+/obj/limb/proc/get_icon(icon/race_icon, icon/deform_icon)
 	return icon('icons/mob/human.dmi',"blank")
 */
 
@@ -148,7 +148,7 @@
 		O.trace_chemicals[A.name] = 100
 
 //Adds autopsy data for used_weapon.
-/obj/limb/proc/add_autopsy_data(var/used_weapon, var/damage)
+/obj/limb/proc/add_autopsy_data(used_weapon, damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -454,7 +454,7 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/obj/limb/proc/createwound(var/type = CUT, var/damage, var/is_ff = FALSE)
+/obj/limb/proc/createwound(type = CUT, var/damage, var/is_ff = FALSE)
 	if(!damage)
 		return
 
@@ -511,7 +511,7 @@ This function completely restores a damaged organ to perfect condition.
 			wounds += W
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
-/obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE, damage_amount)
+/obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
 	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
@@ -536,7 +536,7 @@ This function completely restores a damaged organ to perfect condition.
 	bleeding_effects_list += bleeding_status
 
 
-/obj/limb/proc/remove_all_bleeding(var/external = FALSE, var/internal = FALSE)
+/obj/limb/proc/remove_all_bleeding(external = FALSE, var/internal = FALSE)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
@@ -773,7 +773,7 @@ This function completely restores a damaged organ to perfect condition.
 	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
-/mob/living/carbon/human/proc/remove_random_limb(var/delete_limb = 0)
+/mob/living/carbon/human/proc/remove_random_limb(delete_limb = 0)
 	var/list/limbs_to_remove = list()
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest) || istype(E, /obj/limb/groin) || istype(E, /obj/limb/head))
@@ -794,7 +794,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress)
+/obj/limb/proc/droplimb(amputation, delete_limb = 0, var/cause, surgery_in_progress)
 	if(!owner)
 		return
 	if(status & LIMB_DESTROYED)
@@ -1035,7 +1035,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		else
 			return FALSE
 
-/obj/limb/proc/fracture(var/bonebreak_probability)
+/obj/limb/proc/fracture(bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT))
 		if (knitting_time != -1)
 			knitting_time = -1
@@ -1125,7 +1125,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	return ((status & LIMB_ROBOT) && prob(brute_dam + burn_dam))
 
 //for arms and hands
-/obj/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)
+/obj/limb/proc/process_grasp(obj/item/c_hand, hand_name)
 	if (!c_hand)
 		return
 
@@ -1144,7 +1144,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			spark_system.start()
 			QDEL_IN(spark_system, 1 SECONDS)
 
-/obj/limb/proc/embed(var/obj/item/W, var/silent = 0)
+/obj/limb/proc/embed(obj/item/W, silent = 0)
 	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
@@ -1165,7 +1165,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, var/indestructible_splints = FALSE)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
@@ -1361,7 +1361,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		if (burn_dam > 40)
 			disfigure("burn")
 
-/obj/limb/head/proc/disfigure(var/type = "brute")
+/obj/limb/head/proc/disfigure(type = "brute")
 	if (disfigured)
 		return
 	if(type == "brute")

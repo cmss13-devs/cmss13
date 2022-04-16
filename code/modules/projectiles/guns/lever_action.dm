@@ -74,7 +74,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	reset_hit_buff()
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, var/one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/human_user = user
 	if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
@@ -118,7 +118,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	wield_delay = 0 //for one-handed levering
 	addtimer(CALLBACK(src, .proc/reset_hit_buff, one_hand_lever), 1 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(var/one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
 	if(!uses_streaks)
 		return
 	SIGNAL_HANDLER

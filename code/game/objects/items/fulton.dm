@@ -155,7 +155,7 @@ var/global/list/deployed_fultons = list()
 
 	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
 
-/obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
+/obj/item/stack/fulton/proc/return_fulton(turf/return_turf)
 	if(!istype(get_area(attached_atom), /area/space/highalt))
 		return
 	if(return_turf)

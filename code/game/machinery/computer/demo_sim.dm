@@ -76,7 +76,7 @@
 	user.reset_view(null)
 	user.cameraFollow = null
 
-/obj/structure/machinery/computer/demo_sim/proc/check_response(var/response, mob/living/user)
+/obj/structure/machinery/computer/demo_sim/proc/check_response(response, mob/living/user)
 	switch(response)
 		if("Detonate")
 			if(cooling)
@@ -127,7 +127,7 @@
 
 	addtimer(CALLBACK(src, .proc/stop_cooling), 2 MINUTES, TIMER_UNIQUE)
 
-/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)
+/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type(simulation.loc)
 	E.make_copy_of(O)
 	E.prime(TRUE)

@@ -89,7 +89,7 @@
 		..(severity)
 	return
 
-/obj/structure/machinery/camera/proc/setViewRange(var/num = 7)
+/obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
 	cameranet.updateVisibility(src, 0)
 
@@ -231,13 +231,13 @@
 
 //Return a working camera that can see a given mob
 //or null if none
-/proc/seen_by_camera(var/mob/M)
+/proc/seen_by_camera(mob/M)
 	for(var/obj/structure/machinery/camera/C in oview(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
 	return null
 
-/proc/near_range_camera(var/mob/M)
+/proc/near_range_camera(mob/M)
 
 	for(var/obj/structure/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
@@ -245,7 +245,7 @@
 
 	return null
 
-/obj/structure/machinery/camera/proc/weld(var/obj/item/tool/weldingtool/WT, var/mob/user)
+/obj/structure/machinery/camera/proc/weld(obj/item/tool/weldingtool/WT, mob/user)
 
 	if(user.action_busy)
 		return 0
@@ -304,14 +304,14 @@
 		M.reset_view()
 	return ..()
 
-/obj/structure/machinery/camera/cas/proc/view_directly(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
 	give_action(user, /datum/action/human_action/cancel_view)
 	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
 
-/obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/remove_from_view(mob/living/carbon/human/user)
 	viewing_users -= user
 	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
 

@@ -35,12 +35,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time_log)
 
 /datum/entity/player/var/playtime_start = 0
 
-/proc/record_playtime(var/datum/entity/player/P, var/role_id, var/mob_type)
+/proc/record_playtime(datum/entity/player/P, role_id, mob_type)
     if(!P || !role_id || !P.playtime_start || !SSperf_logging.round)
         return
 
     var/datum/entity/player_time_log/PLog = DB_ENTITY(/datum/entity/player_time_log)
-    
+
     PLog.round_id = SSperf_logging.round.id // get the round id
     PLog.player_id = P.id
 

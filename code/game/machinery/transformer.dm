@@ -23,7 +23,7 @@
 			AM.forceMove(loc)
 			transform(AM)
 
-/obj/structure/machinery/transformer/proc/transform(var/mob/living/carbon/human/H)
+/obj/structure/machinery/transformer/proc/transform(mob/living/carbon/human/H)
 	if(inoperable())
 		return
 	if(!transform_dead && H.stat == DEAD)

@@ -173,7 +173,7 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 
 
-/mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
+/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
@@ -228,7 +228,7 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 /atom/proc/animation_cancel()
 	animate(src)
 
-/atom/proc/sway_jitter(var/times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
+/atom/proc/sway_jitter(times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
 	var/sway_dir = 1 //left to right
 	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
 	for(var/i in 1 to steps)

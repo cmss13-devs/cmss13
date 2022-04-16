@@ -31,7 +31,7 @@ var/datum/test_manager/test_executor = new
 // @return success - TEST_PASS if the test succeeded
 //                   TEST_FAIL if the test failed
 //                   TEST_ERROR if the test threw an error
-/datum/test_manager/proc/run_individual_test(var/datum/test_case/case, var/verbose=FALSE)
+/datum/test_manager/proc/run_individual_test(datum/test_case/case, verbose=FALSE)
 	if(!case)
 		return TEST_FAIL
 
@@ -75,7 +75,7 @@ var/datum/test_manager/test_executor = new
 // @param test_set - The test set to run
 // @param verbose - Whether or not to log the result of each individual test
 // @return stats - A list of how many tests passed, failed and errored
-/datum/test_manager/proc/run_test_set(var/test_set, var/verbose=FALSE)
+/datum/test_manager/proc/run_test_set(test_set, verbose=FALSE)
 	if(!test_sets[test_set])
 		return null
 
@@ -94,7 +94,7 @@ var/datum/test_manager/test_executor = new
 
 // Run all sets of test cases. Regardless of the verbose argument, exceptions will be logged!
 // @param verbose - Whether or not to log additional information related to the tests
-/datum/test_manager/proc/run_all_tests(var/verbose=FALSE)
+/datum/test_manager/proc/run_all_tests(verbose=FALSE)
 	LOG_TEST("Running tests...")
 
 	var/start = world.time

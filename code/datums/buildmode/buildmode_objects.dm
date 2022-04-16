@@ -144,6 +144,6 @@
 
 	return TRUE
 
-/proc/build_click(var/mob/user, var/datum/buildmode/buildmode, var/list/mods, var/obj/object)
+/proc/build_click(mob/user, datum/buildmode/buildmode, list/mods, obj/object)
 	buildmode.object_click(user, mods, object)
 

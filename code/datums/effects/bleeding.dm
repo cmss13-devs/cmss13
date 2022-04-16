@@ -43,7 +43,7 @@
 
 	return TRUE
 
-/datum/effects/bleeding/proc/add_on(var/damage)
+/datum/effects/bleeding/proc/add_on(damage)
 	if(damage)
 		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
 		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
@@ -77,7 +77,7 @@
 
 	return TRUE
 
-			
+
 /datum/effects/bleeding/internal
 	effect_name = "internal bleeding"
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE

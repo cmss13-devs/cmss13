@@ -91,7 +91,7 @@
 		neighbors_list |= neighbor
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/turf/closed/wall/proc/can_join_with(var/turf/closed/wall/W)
+/turf/closed/wall/proc/can_join_with(turf/closed/wall/W)
 	if(W.type == src.type)
 		return 1
 	for(var/wb_type in blend_turfs)

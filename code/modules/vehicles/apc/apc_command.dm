@@ -119,7 +119,7 @@
 			access_techpod(user)
 
 //taken from gear_access_point.dm
-/obj/vehicle/multitile/apc/command/proc/access_techpod(var/mob/user)
+/obj/vehicle/multitile/apc/command/proc/access_techpod(mob/user)
 	if(!ishuman(user) || !get_access_permission(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return

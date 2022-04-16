@@ -2,10 +2,10 @@
 	var/name = ""
 	var/id = FLAMESHAPE_NONE
 
-/datum/flameshape/proc/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
+/datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE, var/fuel_pressure = 1)
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE, var/fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return

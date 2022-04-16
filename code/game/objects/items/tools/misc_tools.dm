@@ -5,7 +5,7 @@
 
 /////////////////////// Hand Labeler ////////////////////////////////
 
-/atom/proc/set_name_label(var/new_label)
+/atom/proc/set_name_label(new_label)
 	name_label = new_label
 	name = initial(name)
 	if(name_label)
@@ -96,7 +96,7 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(var/atom/A, var/mob/user)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	if(A.name == initial(A.name))
 		to_chat(user, SPAN_NOTICE("There is no label to remove."))
 		return

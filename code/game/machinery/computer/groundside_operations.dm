@@ -182,7 +182,7 @@
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
-/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -293,7 +293,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 

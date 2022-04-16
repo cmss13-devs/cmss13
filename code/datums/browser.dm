@@ -108,7 +108,7 @@
 	[get_footer()]
 	"}
 
-/datum/browser/proc/open(var/use_onclose = TRUE)
+/datum/browser/proc/open(use_onclose = TRUE)
 	if(isnull(window_id))	//null check because this can potentially nuke goonchat
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
 		return
@@ -171,7 +171,7 @@
 // Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
 //
-/proc/onclose(user, windowid, var/atom/ref, var/list/params)
+/proc/onclose(user, windowid, atom/ref, list/params)
 	var/client/C = user
 
 	if (ismob(user))
@@ -226,7 +226,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref)
+/proc/show_browser(target, browser_content, browser_name, id = null, var/window_options = null, closeref)
 	var/client/C = target
 
 	if (ismob(target))

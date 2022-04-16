@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/parse_say_modes(var/message)
+/mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
 		.["message_and_language"] = copytext(message, 2)
@@ -30,7 +30,7 @@
 	.["modes"] += MESSAGE_MODE_LOCAL
 	return
 
-/mob/living/carbon/human/proc/parse_say(var/message)
+/mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
 	.["modes"] = ml_and_modes["modes"]
@@ -160,7 +160,7 @@
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)
 
-/mob/living/carbon/human/proc/forcesay(var/forcesay_type = SUDDEN)
+/mob/living/carbon/human/proc/forcesay(forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)
 		return
 
@@ -207,7 +207,7 @@
 /mob/living/carbon/human/GetVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)
+/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
 	if(new_voice)
 		special_voice = new_voice
 	return
@@ -243,7 +243,7 @@
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(var/message)
+/mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
 	var/verb = "says"
 	var/handled = 0

@@ -190,7 +190,7 @@
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[msg]\" to [M]"))
 	return
 
-/mob/living/carbon/human/proc/issue_order(var/order)
+/mob/living/carbon/human/proc/issue_order(order)
 	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP))
 		to_chat(src, SPAN_WARNING("You are not qualified to issue orders!"))
 		return
@@ -257,7 +257,7 @@
 	issue_order()
 
 
-/mob/living/carbon/human/proc/activate_order_buff(var/order, var/strength, var/duration)
+/mob/living/carbon/human/proc/activate_order_buff(order, strength, duration)
 	if(!order || !strength)
 		return
 
@@ -279,7 +279,7 @@
 		addtimer(CALLBACK(src, .proc/deactivate_order_buff, order), duration)
 
 
-/mob/living/carbon/human/proc/deactivate_order_buff(var/order)
+/mob/living/carbon/human/proc/deactivate_order_buff(order)
 	switch(order)
 		if(COMMAND_ORDER_MOVE)
 			if(mobility_aura_count > 1)

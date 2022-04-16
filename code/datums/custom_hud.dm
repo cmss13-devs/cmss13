@@ -66,7 +66,7 @@
 	var/ui_wear_r_ear 	= "WEST+2:10,4:11"
 	var/ui_head 		= "WEST+1:8,4:11"
 
-/datum/custom_hud/proc/get_status_loc(var/placement)
+/datum/custom_hud/proc/get_status_loc(placement)
 	var/col = ((placement - 1)%(13)) + 1
 	var/coord_col = "-[col-1]"
 	var/coord_col_offset = "-[4+2*col]"
@@ -82,7 +82,7 @@
 	var/coords_x = splittext(coords[1], ":")
 	return "[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
 
-/datum/custom_hud/proc/special_behaviour(var/datum/hud/element, var/ui_alpha = 255, var/ui_color = "#ffffff")
+/datum/custom_hud/proc/special_behaviour(datum/hud/element, ui_alpha = 255, var/ui_color = "#ffffff")
 	return
 
 /datum/custom_hud/old

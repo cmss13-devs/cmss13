@@ -170,7 +170,7 @@ Class Procs:
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/structure/machinery/proc/update_use_power(var/new_use_power)
+/obj/structure/machinery/proc/update_use_power(new_use_power)
 	if (new_use_power == use_power)
 		return	//don't need to do anything
 
@@ -190,10 +190,10 @@ Class Procs:
 			return idle_power_usage + active_power_usage
 	return 0
 
-/obj/structure/machinery/proc/operable(var/additional_flags = 0)
+/obj/structure/machinery/proc/operable(additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/structure/machinery/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
@@ -250,7 +250,7 @@ Class Procs:
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 
-/obj/structure/machinery/proc/state(var/msg)
+/obj/structure/machinery/proc/state(msg)
   for(var/mob/O in hearers(src, null))
     O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", 2)
 
@@ -286,5 +286,5 @@ Class Procs:
 	qdel(src)
 	return 1
 
-/obj/structure/machinery/proc/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/proc/get_repair_move_text(include_name = TRUE)
 	return

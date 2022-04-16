@@ -198,7 +198,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	dat = replacetext(dat, "\t", "")
 	return dat
 
-/obj/effect/datacore/proc/manifest(var/nosleep = 0)
+/obj/effect/datacore/proc/manifest(nosleep = 0)
 	spawn()
 		if(!nosleep)
 			sleep(40)
@@ -234,7 +234,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		return TRUE
 	return FALSE
 
-/obj/effect/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
+/obj/effect/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	var/assignment
 	if(H.job)
 		assignment = H.job
@@ -328,7 +328,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	locked += L
 
 
-proc/get_id_photo(var/mob/living/carbon/human/H)
+proc/get_id_photo(mob/living/carbon/human/H)
 	var/icon/preview_icon = null
 
 	//var/g = "m"

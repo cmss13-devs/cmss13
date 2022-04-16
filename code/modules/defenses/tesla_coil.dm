@@ -73,7 +73,7 @@
 		if(D.turned_on)
 			targets += D
 
-/obj/structure/machinery/defenses/tesla_coil/proc/fire(var/atoms)
+/obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)
 		return
 
@@ -104,11 +104,11 @@
 
 	targets = null
 
-/obj/structure/machinery/defenses/tesla_coil/proc/apply_debuff(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/proc/apply_debuff(mob/living/M)
 	M.Daze(TESLA_COIL_DAZE_EFFECT)
 	M.Superslow(TESLA_COIL_SLOW_EFFECT)
 
-/obj/structure/machinery/defenses/tesla_coil/proc/check_path(var/mob/living/M)
+/obj/structure/machinery/defenses/tesla_coil/proc/check_path(mob/living/M)
 	if(!istype(M))
 		return FALSE
 

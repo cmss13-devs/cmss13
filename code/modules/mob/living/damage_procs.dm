@@ -2,7 +2,7 @@
 	Apply damage to a mob with their armour considered.
 	If no def_zone is supplied, one will be picked at random.
 */
-/mob/living/proc/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+/mob/living/proc/apply_armoured_damage(damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	apply_damage(damage, damage_type, def_zone)
 	return damage
 
@@ -15,7 +15,7 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/used_weapon = null, var/sharp = 0, var/edge = 0, var/force = FALSE)
+/mob/living/proc/apply_damage(damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/used_weapon = null, var/sharp = 0, var/edge = 0, var/force = FALSE)
 	if(!damage)
 		return FALSE
 
@@ -45,7 +45,7 @@
 	updatehealth()
 	return 1
 
-/mob/living/proc/apply_damages(var/brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/brain = 0, var/def_zone = null)
+/mob/living/proc/apply_damages(brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/brain = 0, var/def_zone = null)
 	if(brute)	apply_damage(brute, BRUTE, def_zone)
 	if(burn)	apply_damage(burn, BURN, def_zone)
 	if(tox)		apply_damage(tox, TOX, def_zone)
@@ -55,11 +55,11 @@
 	if(brain)	apply_damage(brain, BRAIN, def_zone)
 	return 1
 
-/mob/living/proc/apply_internal_damage(var/damage = 0, var/organ)
+/mob/living/proc/apply_internal_damage(damage = 0, var/organ)
 	return
 
 
-/mob/living/proc/apply_effect(var/effect = 0,var/effecttype = STUN)
+/mob/living/proc/apply_effect(effect = 0,var/effecttype = STUN)
 	if(!effect)
 		return FALSE
 	switch(effecttype)
@@ -88,7 +88,7 @@
 	return 1
 
 
-/mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0)
+/mob/living/proc/apply_effects(stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0)
 	if(stun)		apply_effect(stun, STUN)
 	if(weaken)		apply_effect(weaken, WEAKEN)
 	if(paralyze)	apply_effect(paralyze, PARALYZE)

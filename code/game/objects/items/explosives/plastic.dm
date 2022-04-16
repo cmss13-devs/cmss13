@@ -162,7 +162,7 @@
 	active = FALSE
 	update_icon()
 
-/obj/item/explosive/plastic/proc/can_place(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
@@ -202,7 +202,7 @@
 
 	return TRUE
 
-/obj/item/explosive/plastic/proc/calculate_pixel_offset(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))
 		if(NORTH)
 			pixel_y = 24
@@ -280,7 +280,7 @@
 
 	qdel(src)
 
-/obj/item/explosive/plastic/proc/delayed_prime(var/turf/target_turf)
+/obj/item/explosive/plastic/proc/delayed_prime(turf/target_turf)
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom

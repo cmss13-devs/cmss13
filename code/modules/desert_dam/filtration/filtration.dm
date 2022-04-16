@@ -204,7 +204,7 @@ var/global/east_riverstart = 0
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/toxic_water/proc/disperse_spread(var/from_dir = 0)
+/obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
 	if(dispersing || !toxic)
 		return
 

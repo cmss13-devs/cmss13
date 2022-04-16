@@ -1,4 +1,4 @@
-/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/statistic/round/viewing_round = round_statistics, var/update_data = FALSE)
+/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = round_statistics, var/update_data = FALSE)
 	if(update_data)
 		update_panel_data(round_statistics)
 	ui_interact(user)
@@ -51,7 +51,7 @@
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/statistic/round/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)

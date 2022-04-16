@@ -151,7 +151,7 @@
 			if(PASSED_POOR_THRESHOLD)
 				return priority / 4
 
-/datum/cm_objective/minimise_losses/proc/announce_losses(var/threshold_crossed, var/failed = 0)
+/datum/cm_objective/minimise_losses/proc/announce_losses(threshold_crossed, failed = 0)
 	var/message = "Warning, casulties have exceeded [threshold_crossed]%"
 	if(failed)
 		message += "\nThe operation has failed, begin strategic withdrawl."
@@ -228,7 +228,7 @@
 	var/points_per_corpse_tier_3 = 75
 	var/points_per_corpse_tier_4 = 100
 
-/datum/cm_objective/recover_corpses/proc/get_points_per_corpse(var/mob/H)
+/datum/cm_objective/recover_corpses/proc/get_points_per_corpse(mob/H)
 	if(isXeno(H))
 		var/mob/living/carbon/Xenomorph/X = H
 		switch(X.tier)
@@ -298,11 +298,11 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_MARINE_DEATH, .proc/handle_marine_deaths)
 
-/datum/cm_objective/recover_corpses/marines/proc/add_marine(var/mob/living/carbon/human/H)
+/datum/cm_objective/recover_corpses/marines/proc/add_marine(mob/living/carbon/human/H)
 	if(!(H in corpses))
 		corpses += H
 
-/datum/cm_objective/recover_corpses/marines/proc/remove_marine(var/mob/living/carbon/human/H)
+/datum/cm_objective/recover_corpses/marines/proc/remove_marine(mob/living/carbon/human/H)
 	corpses -= H
 
 /datum/cm_objective/recover_corpses/marines/proc/handle_marine_deaths(datum/source, mob/living/carbon/human/H, gibbed)
@@ -318,7 +318,7 @@
 	), .proc/handle_marine_revival)
 	return TRUE
 
-/datum/cm_objective/recover_corpses/marines/proc/handle_marine_revival(var/mob/living/carbon/human/H)
+/datum/cm_objective/recover_corpses/marines/proc/handle_marine_revival(mob/living/carbon/human/H)
 	UnregisterSignal(H, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
@@ -335,11 +335,11 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_DEATH, .proc/handle_xeno_deaths)
 
-/datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/X)
+/datum/cm_objective/recover_corpses/xenos/proc/add_xeno(mob/living/X)
 	if(!(X in corpses))
 		corpses += X
 
-/datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(var/mob/living/X)
+/datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(mob/living/X)
 	corpses -= X
 
 /datum/cm_objective/recover_corpses/xenos/get_completion_status()

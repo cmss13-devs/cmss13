@@ -83,7 +83,7 @@
 //This is the main proc for checking AND draining the bracer energy. It must have M passed as an argument.
 //It can take a negative value in amount to restore energy.
 //Also instantly updates the yautja power HUD display.
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/M, var/amount)
+/obj/item/clothing/gloves/yautja/proc/drain_power(mob/living/carbon/human/M, amount)
 	if(!M) return 0
 	if(charge < amount)
 		to_chat(M, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
@@ -98,7 +98,7 @@
 			shock_user(M)
 	return 1
 
-/obj/item/clothing/gloves/yautja/proc/shock_user(var/mob/living/carbon/human/M)
+/obj/item/clothing/gloves/yautja/proc/shock_user(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
 		//Spark
 		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
@@ -318,7 +318,7 @@
 	. = wristblades_internal(FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(forced = FALSE)
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user)) return
@@ -386,7 +386,7 @@
 	. = track_gear_internal(FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(forced = FALSE)
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
 	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
@@ -466,7 +466,7 @@
 	set src in usr
 	. = cloaker_internal(FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(forced = FALSE)
 	if(!usr || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
@@ -533,7 +533,7 @@
 	sparks.start()
 	decloak(wearer, TRUE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/proc/decloak(mob/user, forced)
 	if(!user) return
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
@@ -568,7 +568,7 @@
 	. = caster_internal(FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(forced = FALSE)
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
@@ -622,7 +622,7 @@
 	return 1
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
+/obj/item/clothing/gloves/yautja/hunter/proc/explode(mob/living/carbon/victim)
 	set waitfor = 0
 
 	if (exploding)
@@ -666,7 +666,7 @@
 		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(forced = FALSE)
 	if(!usr) return
 	var/mob/living/carbon/human/M = usr
 	if(cloaked)
@@ -765,7 +765,7 @@
 	. = injectors_internal(FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(forced = FALSE)
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return 0
 
@@ -810,7 +810,7 @@
 	. = call_disk_internal(FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(forced = FALSE)
 	if(usr.is_mob_incapacitated())
 		return 0
 
@@ -852,7 +852,7 @@
 	set src in usr
 	. = remove_tracked_item_internal(FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(forced = FALSE)
 	if(usr.is_mob_incapacitated())
 		return 0
 
@@ -879,7 +879,7 @@
 	set src in usr
 	. = add_tracked_item_internal(FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(forced = FALSE)
 	if(usr.is_mob_incapacitated())
 		return 0
 
@@ -905,7 +905,7 @@
 	set src in usr
 	. = call_combi_internal(FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(forced = FALSE)
 	if(usr.is_mob_incapacitated())
 		return 0
 
@@ -939,7 +939,7 @@
 	set src in usr
 	. = translate_internal(FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(forced = FALSE)
 	if(!usr || usr.stat) return
 
 	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))

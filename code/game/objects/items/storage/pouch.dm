@@ -1131,7 +1131,7 @@
 	slung.RemoveElement(/datum/element/drop_retrieval/pouch_sling, src)
 	slung = null
 
-/obj/item/storage/pouch/sling/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/sling_return(mob/living/carbon/human/user)
 	if(!slung || !slung.loc)
 		return FALSE
 	if(slung.loc == user)
@@ -1145,7 +1145,7 @@
 			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
 		return TRUE
 
-/obj/item/storage/pouch/sling/proc/attempt_retrieval(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/attempt_retrieval(mob/living/carbon/human/user)
 	if(sling_return(user))
 		return
 	unsling()

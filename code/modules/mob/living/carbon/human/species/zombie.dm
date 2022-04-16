@@ -90,7 +90,7 @@
 	if(gibbed)
 		remove_from_revive(H)
 
-/datum/species/zombie/proc/revive_from_death(var/mob/living/carbon/human/H)
+/datum/species/zombie/proc/revive_from_death(mob/living/carbon/human/H)
 	if(H && H.loc && H.stat == DEAD)
 		H.revive(TRUE)
 		H.stunned = 4
@@ -101,7 +101,7 @@
 
 		addtimer(CALLBACK(H, /mob/.proc/remove_jittery), 3 SECONDS)
 
-/datum/species/zombie/proc/remove_from_revive(var/mob/living/carbon/human/H)
+/datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/H)
 	if(H in to_revive)
 		deltimer(to_revive[H])
 		to_revive -= H

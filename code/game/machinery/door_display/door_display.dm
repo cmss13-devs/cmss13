@@ -87,7 +87,7 @@
 	show_browser(user, display_contents(user), name, "computer", "size=400x500")
 	return
 
-/obj/structure/machinery/door_display/proc/display_contents(var/mob/user as mob)
+/obj/structure/machinery/door_display/proc/display_contents(mob/user as mob)
 	var/data = "<HTML><BODY><TT>"
 
 	data += "<HR>Linked Door:</hr>"
@@ -155,7 +155,7 @@
 
 
 // Adds an icon in case the screen is broken/off, stolen from status_display.dm
-/obj/structure/machinery/door_display/proc/set_picture(var/state)
+/obj/structure/machinery/door_display/proc/set_picture(state)
 	picture_state = state
 	overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state = picture_state)
@@ -163,7 +163,7 @@
 
 //Checks to see if there's 1 line or 2, adds text-icons-numbers/letters over display
 // Stolen from status_display
-/obj/structure/machinery/door_display/proc/update_display(var/text)
+/obj/structure/machinery/door_display/proc/update_display(text)
 	var/new_text = {"<div style="font-size:'5pt'; color:'#09f'; font:'Arial Black'; text-align:center;" valign="top">[text]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
@@ -171,7 +171,7 @@
 
 //Actual string input to icon display for loop, with 5 pixel x offsets for each letter.
 //Stolen from status_display
-/obj/structure/machinery/door_display/proc/texticon(var/tn, var/px = 0, var/py = 0)
+/obj/structure/machinery/door_display/proc/texticon(tn, px = 0, var/py = 0)
 	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = length(tn)
 
@@ -319,7 +319,7 @@
 	return 1
 
 // Opens and locks doors, power check
-/obj/structure/machinery/door_display/research_cell/proc/open_shutter(var/force = FALSE)
+/obj/structure/machinery/door_display/research_cell/proc/open_shutter(force = FALSE)
 	if(inoperable() && !force)	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)

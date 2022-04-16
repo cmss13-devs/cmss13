@@ -367,7 +367,7 @@
 	dat += "<A href='?src=\ref[src];operation=back'>Back</a></body>"
 	return dat
 
-/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/overwatch/proc/update_mapview(close = 0)
 	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -626,7 +626,7 @@
 			return helm.camera
 
 //Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/text = "", var/plus_name = 0, var/only_leader = 0)
+/obj/structure/machinery/computer/overwatch/proc/send_to_squad(text = "", var/plus_name = 0, var/only_leader = 0)
 	if(text == "" || !current_squad || !operator)
 		return //Logic
 
@@ -649,7 +649,7 @@
 					return
 
 // Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return

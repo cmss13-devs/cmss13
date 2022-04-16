@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return ..()	//redirect to hsrc.Topic()
 
-/client/proc/handle_spam_prevention(var/message, var/mute_type)
+/client/proc/handle_spam_prevention(message, mute_type)
 	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
 
-/proc/setup_player_entity(var/ckey)
+/proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
 	if(player_entities["[ckey]"])
@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_staff("STATISTICS: Statistics saving complete.")
 
-/client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+/client/proc/clear_chat_spam_mute(warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
 	if(talked > warn_level)
 		return
 	talked = 0
@@ -510,7 +510,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
-/client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
+/client/proc/runtime_macro_insert(macro_button, parent, command)
 	if (!macro_button || !parent || !command)
 		return
 
@@ -524,7 +524,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
 
-/client/proc/runtime_macro_remove(var/macro_button, var/parent)
+/client/proc/runtime_macro_remove(macro_button, parent)
 	if (!macro_button || !parent)
 		return
 

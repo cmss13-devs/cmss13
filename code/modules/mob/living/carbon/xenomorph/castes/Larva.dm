@@ -148,7 +148,7 @@
 /mob/living/carbon/Xenomorph/Larva/pull_response(mob/puller)
 	return TRUE
 
-/proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
+/proc/spawn_hivenumber_larva(atom/A, hivenumber)
 	if(!GLOB.hive_datum[hivenumber] || isnull(A))
 		return
 

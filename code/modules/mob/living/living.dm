@@ -38,7 +38,7 @@
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(var/pressure)
+/mob/living/proc/calculate_affecting_pressure(pressure)
 	return
 
 /mob/living/proc/initialize_pain()
@@ -51,7 +51,7 @@
 	for(var/location in incision_depths)
 		incision_depths[location] = SURGERY_DEPTH_SURFACE
 
-/mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
+/mob/living/proc/apply_stamina_damage(damage, def_zone, armor_type)
 	if(!stamina)
 		return
 
@@ -481,7 +481,7 @@
 /mob/living/proc/remove_movement_handler(datum/event_handler/handler)
 	event_movement.remove_handler(handler)
 
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE)
+/mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE)
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
 			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))

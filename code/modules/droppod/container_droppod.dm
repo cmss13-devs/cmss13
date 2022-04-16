@@ -128,7 +128,7 @@
 		collect_objects(loc.contents)
 	density = TRUE
 
-/obj/structure/droppod/container/proc/collect_objects(var/list/L)
+/obj/structure/droppod/container/proc/collect_objects(list/L)
 	for(var/atom/movable/A in L)
 		if(A == src)
 			continue

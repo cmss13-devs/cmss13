@@ -360,7 +360,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/telecomms/proc/canAccess(var/mob/user)
+/obj/structure/machinery/telecomms/proc/canAccess(mob/user)
 	if(isRemoteControlling(user) || in_range(user, src))
 		return 1
 	return 0

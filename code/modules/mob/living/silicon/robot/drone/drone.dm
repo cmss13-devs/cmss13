@@ -162,7 +162,7 @@
 		if(jobban_isbanned(O, "Cyborg"))
 			continue
 
-/mob/living/silicon/robot/drone/proc/question(var/client/C)
+/mob/living/silicon/robot/drone/proc/question(client/C)
 	spawn(0)
 		if(!C || jobban_isbanned(C,"Cyborg"))	return
 		var/response = alert(C, "Someone is attempting to reboot a maintenance drone. Would you like to play as one?", "Maintenance drone reboot", "Yes", "No", "Never for this round.")
@@ -171,7 +171,7 @@
 		else if(response == "Yes")
 			transfer_personality(C)
 
-/mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
+/mob/living/silicon/robot/drone/proc/transfer_personality(client/player)
 
 	if(!player) return
 	player.change_view(world_view_size)

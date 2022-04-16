@@ -108,7 +108,7 @@
 	if(owner_mob && owner_mob != src)
 		owner_mob.track_shot(initial(name))
 
-/obj/structure/machinery/defenses/proc/friendly_faction(var/factions)
+/obj/structure/machinery/defenses/proc/friendly_faction(factions)
 	if(factions in faction_group)
 		return TRUE
 	return FALSE
@@ -263,10 +263,10 @@
 		power_off()
 
 
-/obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_on_action(mob/user)
 	return
 
-/obj/structure/machinery/defenses/proc/power_off_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_off_action(mob/user)
 	return
 
 // DAMAGE HANDLING
@@ -301,7 +301,7 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-/obj/structure/machinery/defenses/proc/damaged_action(var/damage)
+/obj/structure/machinery/defenses/proc/damaged_action(damage)
 	if(health < health_max * 0.15)
 		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED

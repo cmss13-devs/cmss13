@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(objectives)
 	objective_spawn_far_documents = null
 	objective_spawn_science_documents = null
 
-/datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
+/datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(dest, obj/item/it)
 	var/picked_locaton
 	switch(dest)
 		if("close")
@@ -371,7 +371,7 @@ SUBSYSTEM_DEF(objectives)
 			A.required_objectives += req
 			req.enables_objectives += A
 
-/datum/controller/subsystem/objectives/proc/add_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/add_objective(datum/cm_objective/O)
 	if(!(O in objectives))
 		objectives += O
 	if((O.objective_flags & OBJ_PROCESS_ON_DEMAND) && !(O in non_processing_objectives))
@@ -380,7 +380,7 @@ SUBSYSTEM_DEF(objectives)
 		inactive_objectives += O
 		O.activate()
 
-/datum/controller/subsystem/objectives/proc/remove_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/remove_objective(datum/cm_objective/O)
 	objectives -= O
 	non_processing_objectives -= O
 	inactive_objectives -= O

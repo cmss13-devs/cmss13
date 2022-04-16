@@ -101,7 +101,7 @@
 	if(istype(M) && M.client && M.interactee == src)
 		attack_self(M)
 
-/obj/proc/update_health(var/damage = 0)
+/obj/proc/update_health(damage = 0)
 	if(damage)
 		health -= damage
 	if(health <= 0)
@@ -307,7 +307,7 @@
 		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
-/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+/obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))
 		return FALSE
 	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
@@ -319,7 +319,7 @@
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)
 
 // Adding a text string at the end of the object
-/obj/proc/add_label(var/obj/O, user)
+/obj/proc/add_label(obj/O, user)
 	var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 
 	// Checks for valid labelling/name length

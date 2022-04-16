@@ -73,7 +73,7 @@
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()
 
-/datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
+/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0
 	var/datum/reagent/self = src
 	src = null										  //of the reagent to the mob on TOUCHING it.
@@ -106,20 +106,20 @@
 						M.reagents.add_reagent(self.id,self.volume/2)
 	return 1
 
-/datum/reagent/proc/reaction_obj(var/obj/O, var/volume) //By default we transfer a small part of the reagent to the object
+/datum/reagent/proc/reaction_obj(obj/O, volume) //By default we transfer a small part of the reagent to the object
 	src = null						//if it can hold reagents. nope!
 	//if(O.reagents)
 	//	O.reagents.add_reagent(id,volume/3)
 	return
 
-/datum/reagent/proc/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/proc/reaction_turf(turf/T, volume)
 	src = null
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)
+/datum/reagent/proc/on_mob_life(mob/living/M, alien, delta_time)
 	if(alien == IS_HORROR || !holder)
 		return
-	
+
 	var/list/mods = handle_pre_processing(M)
 
 	if(mods[REAGENT_CANCEL])
@@ -151,7 +151,7 @@
 	return mods
 
 //Main Processing
-/datum/reagent/proc/handle_processing(mob/living/M, var/list/mods, var/delta_time)
+/datum/reagent/proc/handle_processing(mob/living/M, list/mods, delta_time)
 	for(var/datum/chem_property/P in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
@@ -172,7 +172,7 @@
 		holder.remove_all_type(/datum/reagent,mods[REAGENT_PURGE] * delta_time)
 
 //Dead Processing, see /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
-/datum/reagent/proc/handle_dead_processing(mob/living/M, var/list/mods, var/delta_time)
+/datum/reagent/proc/handle_dead_processing(mob/living/M, list/mods, delta_time)
 	var/processing_in_dead = FALSE
 	for(var/datum/chem_property/P in properties)
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
@@ -195,7 +195,7 @@
 
 	return
 
-/datum/reagent/proc/make_alike(var/datum/reagent/C)
+/datum/reagent/proc/make_alike(datum/reagent/C)
 	name = C.name
 	id = C.id
 	color = C.color
@@ -231,7 +231,7 @@
 	falloff_modifier =  C.falloff_modifier
 	flags = C.flags
 
-/datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
+/datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)
 		return
 	id = C.id
@@ -302,7 +302,7 @@
 		new_properties += property_level
 	return new_properties
 
-/datum/reagent/proc/get_property(var/property_name)
+/datum/reagent/proc/get_property(property_name)
 	var/i = 1
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property_name)
@@ -310,7 +310,7 @@
 		i++
 	return FALSE
 
-/datum/reagent/proc/relevel_property(var/property_name, var/new_level = 1)
+/datum/reagent/proc/relevel_property(property_name, new_level = 1)
 	var/i = 1
 	var/datum/chem_property/R
 	for(var/datum/chem_property/P in properties)
@@ -327,7 +327,7 @@
 	recalculate_variables()
 	return TRUE
 
-/datum/reagent/proc/remove_property(var/property)
+/datum/reagent/proc/remove_property(property)
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property)
 			P.reset_reagent()

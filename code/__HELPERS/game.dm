@@ -12,7 +12,7 @@
 
 // Like view but bypasses luminosity check
 
-/proc/hear(var/range, var/atom/source)
+/proc/hear(range, atom/source)
 	if(!source)
 		return FALSE
 	var/lum = source.luminosity
@@ -59,7 +59,7 @@
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
 
-/proc/recursive_mob_check(var/atom/O,  var/list/L = list(), var/recursion_limit = 3, var/client_check = 1, var/sight_check = 1, var/include_radio = 1)
+/proc/recursive_mob_check(atom/O, list/L = list(), var/recursion_limit = 3, var/client_check = 1, var/sight_check = 1, var/include_radio = 1)
 
 	//debug_mob += O.contents.len
 	if(!recursion_limit)
@@ -88,7 +88,7 @@
 // The old system would loop through lists for a total of 5000 per function call, in an empty server.
 // This new system will loop at around 1000 in an empty server.
 // Returns a list of mobs in range of R from source. Used in radio and say code.
-/proc/get_mobs_in_view(var/R, var/atom/source)
+/proc/get_mobs_in_view(R, atom/source)
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -122,7 +122,7 @@
 	return hear
 
 
-/proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
+/proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
 
 	set background = 1
 
@@ -193,7 +193,7 @@ proc
 		return 1
 #undef SIGN
 
-proc/isInSight(var/atom/A, var/atom/B)
+proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
@@ -256,7 +256,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 /proc/convert_c2k(var/temp)
 	return ((temp + T0C))
 
-/proc/getWireFlag(var/wire)
+/proc/getWireFlag(wire)
 	return 2**(wire-1)
 
 /**

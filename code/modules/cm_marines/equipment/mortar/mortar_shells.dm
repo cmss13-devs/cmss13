@@ -7,10 +7,10 @@
 	flags_atom = FPRINT|CONDUCT
 	var/source_mob
 
-/obj/item/mortar_shell/proc/detonate(var/turf/T)
+/obj/item/mortar_shell/proc/detonate(turf/T)
 	forceMove(T)
 
-/obj/item/mortar_shell/proc/deploy_camera(var/turf/T)
+/obj/item/mortar_shell/proc/deploy_camera(turf/T)
 	var/obj/structure/machinery/camera/mortar/old_cam = locate() in T
 	if(old_cam)
 		qdel(old_cam)

@@ -54,7 +54,7 @@
 	empty(get_turf(H), H)
 
 //regular storage's empty() proc doesn't work due to checks, so imitate it
-/obj/structure/vehicle_locker/proc/empty(var/turf/T, var/mob/living/carbon/human/H)
+/obj/structure/vehicle_locker/proc/empty(turf/T, mob/living/carbon/human/H)
 	if(!container)
 		to_chat(H, SPAN_WARNING("No internal storage found."))
 		return
@@ -268,7 +268,7 @@
 
 	remove_tray(H)
 
-/obj/structure/vehicle_locker/med/proc/remove_tray(var/mob/living/carbon/human/H)
+/obj/structure/vehicle_locker/med/proc/remove_tray(mob/living/carbon/human/H)
 	if(!has_tray)
 		to_chat(H, SPAN_WARNING("The surgical tray was already removed!"))
 		return
@@ -290,7 +290,7 @@
 	container.storage_close(H)
 	H.visible_message(SPAN_NOTICE("[H] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
 
-/obj/structure/vehicle_locker/med/proc/add_tray(var/mob/living/carbon/human/H, var/obj/item/storage/surgical_tray/tray)
+/obj/structure/vehicle_locker/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
 	if(has_tray)
 		to_chat(H, SPAN_WARNING("\The [src] already has a surgical tray installed!"))
 		return

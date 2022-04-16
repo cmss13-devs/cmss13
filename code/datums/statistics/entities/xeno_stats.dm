@@ -15,7 +15,7 @@
 //Stat Procs - setup
 //******************
 
-/datum/entity/player_stats/xeno/proc/setup_caste_stats(var/caste, var/noteworthy = TRUE)
+/datum/entity/player_stats/xeno/proc/setup_caste_stats(caste, noteworthy = TRUE)
 	if(!caste)
 		return
 	var/caste_key = strip_improper(caste)
@@ -65,7 +65,7 @@
 		if(stat_entity.total_kills > top_caste.total_kills)
 			top_caste = stat_entity
 
-/datum/entity/player_stats/xeno/proc/track_caste_playtime(var/caste, var/time = 0)
+/datum/entity/player_stats/xeno/proc/track_caste_playtime(caste, time = 0)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	if(!S.round_played)
 		S.total_rounds_played += 1
@@ -113,14 +113,14 @@
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.count_niche_stat(niche_name, amount)
 
-/datum/entity/player_stats/xeno/proc/track_personal_abilities_used(var/caste, var/ability, var/amount = 1)
+/datum/entity/player_stats/xeno/proc/track_personal_abilities_used(caste, ability, amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.track_personal_abilities_used(ability, amount)
 	if(round_statistics)
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.track_personal_abilities_used(ability, amount)
 
-/mob/living/carbon/Xenomorph/proc/track_ability_usage(var/ability, var/caste, var/amount = 1)
+/mob/living/carbon/Xenomorph/proc/track_ability_usage(ability, caste, amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
@@ -144,14 +144,14 @@
 	if(caste_type)
 		xeno_stats.count_personal_steps_walked(caste_type, amount)
 
-/datum/entity/player_stats/xeno/proc/count_personal_slashes(var/caste, var/amount = 1)
+/datum/entity/player_stats/xeno/proc/count_personal_slashes(caste, amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.total_hits += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.total_hits += amount
 
-/mob/living/carbon/Xenomorph/proc/track_slashes(var/caste, var/amount = 1)
+/mob/living/carbon/Xenomorph/proc/track_slashes(caste, amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()

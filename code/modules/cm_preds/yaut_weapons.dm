@@ -291,7 +291,7 @@
 	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
 	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
 
-/obj/item/weapon/melee/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, var/x, var/y, obj/item/projectile/P)
+/obj/item/weapon/melee/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, x, y, obj/item/projectile/P)
 	SIGNAL_HANDLER
 	var/parry_chance = 100
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
@@ -317,7 +317,7 @@
 		new_proj.fire_at(P.firer, user, src, 10, speed = P.ammo.shell_speed)
 	return COMPONENT_CANCEL_BULLET_ACT
 
-/obj/item/weapon/melee/yautja/sword/proc/riposte_slash(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/X)
+/obj/item/weapon/melee/yautja/sword/proc/riposte_slash(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 	if(user.is_mob_incapacitated())
 		return
@@ -334,7 +334,7 @@
 	slashdata["n_damage"] = 0
 	attack(X, user, riposte = TRUE)
 
-/obj/item/weapon/melee/yautja/sword/proc/riposte_melee(mob/living/carbon/human/user, var/mob/living/carbon/human/target)
+/obj/item/weapon/melee/yautja/sword/proc/riposte_melee(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	SIGNAL_HANDLER
 	if(user.is_mob_incapacitated())
 		return
@@ -367,7 +367,7 @@
 /obj/item/projectile/proc/jank_wrapper()
 	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
 
-/obj/item/projectile/proc/bullet_ignore_mob(var/mob/M)
+/obj/item/projectile/proc/bullet_ignore_mob(mob/M)
 	SIGNAL_HANDLER
 	if(M == firer)
 		return COMPONENT_BULLET_PASS_THROUGH
@@ -655,14 +655,14 @@
 					victim.status_flags |= PERMANENTLY_DEAD
 					victim.add_flay_overlay(stage = 3)
 
-/mob/living/carbon/human/proc/add_flay_overlay(var/stage = 1)
+/mob/living/carbon/human/proc/add_flay_overlay(stage = 1)
 	remove_overlay(FLAY_LAYER)
 	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
 	flay_icon.layer = -FLAY_LAYER
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, var/has_meat, var/skin_amount)
+/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
 	if(has_meat)
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 		meat.name = "raw [victim.name] steak"

@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(wy_ranks, list(
 	)
 ))
 
-/mob/living/carbon/human/proc/apply_wy_rank_code(var/code, var/assignment, var/c_title)
+/mob/living/carbon/human/proc/apply_wy_rank_code(code, assignment, c_title)
 
 	if(c_title)
 		comm_title = c_title
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(wy_ranks, list(
 
 		I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 
-/proc/get_named_wy_ranks(var/code)
+/proc/get_named_wy_ranks(code)
 	if(!GLOB.wy_ranks[code])
 		return
 	var/named_ranks = list()

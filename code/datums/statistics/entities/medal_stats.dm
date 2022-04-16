@@ -26,7 +26,7 @@
 		"giver_player_id" = DB_FIELDTYPE_BIGINT
     )
 
-/datum/entity/player_entity/proc/track_medal_earned(var/new_medal_type, var/mob/new_recipient, var/new_recipient_role, var/new_citation, var/mob/giver)
+/datum/entity/player_entity/proc/track_medal_earned(new_medal_type, mob/new_recipient, new_recipient_role, new_citation, mob/giver)
 	if(!new_medal_type || !new_recipient || new_recipient.statistic_exempt || !new_recipient_role || !new_citation || !giver)
 		return
 

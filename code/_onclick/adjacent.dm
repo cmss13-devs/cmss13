@@ -10,7 +10,7 @@
 	Note that in all cases the neighbor is handled simply; this is usually the user's mob, in which case it is up to you
 	to check that the mob is not inside of something
 */
-/atom/proc/Adjacent(var/atom/neighbor) // basic inheritance, unused
+/atom/proc/Adjacent(atom/neighbor) // basic inheritance, unused
 	return FALSE
 
 // Not a sane use of the function and (for now) indicative of an error elsewhere
@@ -60,7 +60,7 @@ Quick adjacency (to turf):
 * If you are in the same turf, always true
 * If you are not adjacent, then false
 */
-/turf/proc/AdjacentQuick(var/atom/neighbor, var/atom/target = null)
+/turf/proc/AdjacentQuick(atom/neighbor, atom/target = null)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE
@@ -123,7 +123,7 @@ Quick adjacency (to turf):
 	This is defined as any dense ON_BORDER object, or any dense object without throwpass.
 	The border_only flag allows you to not objects (for source and destination squares)
 */
-/turf/proc/ClickCross(var/target_dir, var/border_only, var/target_atom = null)
+/turf/proc/ClickCross(target_dir, border_only, target_atom = null)
 	for(var/obj/O in src)
 		if(!O.density || O == target_atom || O.throwpass)
 			continue // throwpass is used for anything you can click through
@@ -148,7 +148,7 @@ Quick adjacency (to turf):
  *	for performance impact.
  *	Assumes dist <= 1
  */
-/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), pass_flags)
+/atom/proc/handle_barriers(atom/A, list/atom/ignore = list(), pass_flags)
 	ignore |= src // Make sure that you ignore your target
 	A.add_temp_pass_flags(pass_flags)
 
@@ -280,7 +280,7 @@ Quick adjacency (to turf):
 	return src // This should happen if the two barricades checked do not block the slash
 
 
-/atom/proc/clear_path(var/atom/A, var/list/atom/ignore = list())
+/atom/proc/clear_path(atom/A, list/atom/ignore = list())
 	if(get_dist(src, A) <= 1)
 		return handle_barriers(A, ignore)
 

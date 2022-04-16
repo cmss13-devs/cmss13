@@ -159,7 +159,7 @@
 			to_chat(user, SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods."))
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam, var/mob/M)
+/turf/closed/wall/proc/take_damage(dam, mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)

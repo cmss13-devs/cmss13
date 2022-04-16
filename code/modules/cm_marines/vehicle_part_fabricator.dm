@@ -20,10 +20,10 @@
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
 	return 0
 
-/obj/structure/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/add_to_point_store(number = 1)
 	return
 
-/obj/structure/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/spend_point_store(number = 1)
 	return
 
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)

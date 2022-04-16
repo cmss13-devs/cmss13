@@ -213,7 +213,7 @@
 		bound_xeno.client.images -= ko_icon
 	ko_icon = null
 
-/datum/behavior_delegate/boxer/proc/display_ko_message(var/mob/H)
+/datum/behavior_delegate/boxer/proc/display_ko_message(mob/H)
 	if(!bound_xeno.client)
 		return
 	if(!bound_xeno.client.prefs || bound_xeno.client.prefs.lang_chat_disabled)

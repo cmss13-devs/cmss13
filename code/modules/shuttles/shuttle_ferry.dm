@@ -22,7 +22,7 @@
 	var/last_locked = 0 //world.time value to determine if it can be contested
 	var/door_override = 0 //similar to queen_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
-	
+
 	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
@@ -123,7 +123,7 @@
 	return dock_target
 
 
-/datum/shuttle/ferry/proc/launch(var/user)
+/datum/shuttle/ferry/proc/launch(user)
 	if (!can_launch()) return
 
 	in_use = user	//obtain an exclusive lock on the shuttle
@@ -132,14 +132,14 @@
 	process_state = WAIT_LAUNCH
 	undock()
 
-/datum/shuttle/ferry/proc/force_launch(var/user)
+/datum/shuttle/ferry/proc/force_launch(user)
 	if (!can_force()) return
 
 	in_use = user	//obtain an exclusive lock on the shuttle
 
 	process_state = FORCE_LAUNCH
 
-/datum/shuttle/ferry/proc/cancel_launch(var/user)
+/datum/shuttle/ferry/proc/cancel_launch(user)
 	if (!can_cancel()) return
 
 	moving_status = SHUTTLE_IDLE
@@ -154,7 +154,7 @@
 	return
 
 /datum/shuttle/ferry/proc/can_launch()
-	if(moving_status != SHUTTLE_IDLE || locked || in_use) 
+	if(moving_status != SHUTTLE_IDLE || locked || in_use)
 		return FALSE
 	return TRUE
 

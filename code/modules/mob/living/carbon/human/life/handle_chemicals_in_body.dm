@@ -35,7 +35,7 @@
 
 	return //TODO: DEFERRED
 
-/mob/living/carbon/human/proc/handle_necro_chemicals_in_body(var/delta_time)
+/mob/living/carbon/human/proc/handle_necro_chemicals_in_body(delta_time)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!reagents || undefibbable)
 		return // Double checking due to Life() funny background=1

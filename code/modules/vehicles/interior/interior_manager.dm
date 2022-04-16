@@ -50,7 +50,7 @@ GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 	chunk_availability = null
 	return ..()
 
-/datum/interior_manager/proc/get_chunk_coords(var/chunk_id)
+/datum/interior_manager/proc/get_chunk_coords(chunk_id)
 	var/base_load_pos = (chunk_id-1) * chunk_size
 	var/start_x = (base_load_pos % world.maxx)
 	var/start_y = (Floor(base_load_pos / world.maxx) * chunk_size)
@@ -58,7 +58,7 @@ GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 	// +1 because the above calculations assume origin at (0, 0). BYOND uses (1, 1)
 	return list(start_x+1, start_y+1)
 
-/datum/interior_manager/proc/load_interior(var/datum/interior/interior)
+/datum/interior_manager/proc/load_interior(datum/interior/interior)
 	// Find a suitable chunk
 	var/chunk_id = 0
 	for(var/id = 1 to length(chunk_availability))
@@ -86,7 +86,7 @@ GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 	return list(M, chunk_id)
 
 // Deletes the interior and frees the interior chunk
-/datum/interior_manager/proc/unload_chunk(var/chunk_id)
+/datum/interior_manager/proc/unload_chunk(chunk_id)
 	set background = 1
 
 	var/list/chunk_coords = get_chunk_coords(chunk_id)
@@ -109,7 +109,7 @@ GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 	interiors[chunk_id] = null
 
 // Finds which interior is at (x,y) and returns its interior datum
-/datum/interior_manager/proc/get_interior_by_coords(var/x, var/y)
+/datum/interior_manager/proc/get_interior_by_coords(x, y)
 	for(var/datum/interior/I in interiors)
 		var/list/turf/bounds = I.get_bound_turfs()
 		if(!bounds)

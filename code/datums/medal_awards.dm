@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY(medal_awards)
 
 	return TRUE
 
-/proc/print_medal(mob/living/carbon/human/user, var/obj/printer)
+/proc/print_medal(mob/living/carbon/human/user, obj/printer)
 	var/obj/item/card/id/card = user.wear_id
 	if(!card)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))

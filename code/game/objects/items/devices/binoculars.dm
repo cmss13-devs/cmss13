@@ -392,7 +392,7 @@
 			return
 	return
 
-/obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
+/obj/item/device/binoculars/designator/proc/lasering(mob/living/carbon/human/user, atom/A, params)
 	if(istype(A,/obj/screen))
 		return FALSE
 	if(user.stat)

@@ -44,7 +44,7 @@
 
 // We have a "cache" to avoid getting ID card iff every shot,
 // The cache is reset when the user drops their ID
-/datum/element/bullet_trait_iff/proc/get_user_iff_group(var/mob/living/carbon/human/user)
+/datum/element/bullet_trait_iff/proc/get_user_iff_group(mob/living/carbon/human/user)
 	if(!ishuman(user))
 		return user.faction_group
 

@@ -159,7 +159,7 @@
 	if(effective)
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
-/datum/shuttle/ferry/supply/proc/start_gears(var/direction = 1)
+/datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
 	for(var/obj/structure/machinery/gear/M in machines)
 		if(M.id == gear_id)
 			spawn()

@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_debug(var/href)
+/datum/admins/proc/topic_debug(href)
 	switch(href)
 		if("bulkfetchdisks")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")

@@ -167,14 +167,14 @@ RCD
 			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")
 			return 0
 
-/obj/item/device/rcd/proc/useResource(var/amount, var/mob/user)
+/obj/item/device/rcd/proc/useResource(amount, mob/user)
 	if(stored_matter < amount)
 		return 0
 	stored_matter -= amount
 	desc = "A RCD. It currently holds [stored_matter]/30 matter-units."
 	return 1
 
-/obj/item/device/rcd/proc/checkResource(var/amount, var/mob/user)
+/obj/item/device/rcd/proc/checkResource(amount, mob/user)
 	return stored_matter >= amount
 /obj/item/device/rcd/borg/useResource(var/amount, var/mob/user)
 	if(!isrobot(user))

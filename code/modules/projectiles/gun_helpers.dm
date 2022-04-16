@@ -202,14 +202,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
-/obj/item/weapon/gun/proc/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_J_STORE)
 		var/obj/item/I = user.wear_suit
 		if(!istype(I, /obj/item/clothing/suit/storage/marine))
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
 	if (!loc || !user)
 		return FALSE
 	if (!isturf(loc))
@@ -233,7 +233,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_NOTICE(message))
 	return TRUE
 
-/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
 		return
 	if (!retrieval_check(user, retrieval_slot))
@@ -263,7 +263,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/sling_return(mob/living/carbon/human/user)
 	if (!loc || !user)
 		return
 	if (!isturf(loc))
@@ -524,7 +524,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		"back",
 		)
 
-/mob/living/carbon/human/proc/holster_unholster_from_storage_slot(var/obj/item/storage/slot)
+/mob/living/carbon/human/proc/holster_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot)) return
 	if(slot == shoes)//Snowflakey check for shoes and uniform
 		if(shoes.stored_item && isweapon(shoes.stored_item))
@@ -797,7 +797,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	gun_safety_message(usr)
 
 
-/obj/item/weapon/gun/proc/gun_safety_message(var/mob/user)
+/obj/item/weapon/gun/proc/gun_safety_message(mob/user)
 	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
 	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 

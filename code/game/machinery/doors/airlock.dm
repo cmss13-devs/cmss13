@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(masterkey_resist)
 		to_chat(user, SPAN_INFO("It has been reinforced against breaching attempts."))
 
-/obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
 	if(!dam || unacidable)
 		return FALSE
 
@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/pulse(var/wire)
+/obj/structure/machinery/door/airlock/proc/pulse(wire)
 	switch(wire)
 		if(AIRLOCK_WIRE_IDSCAN)
 			//Sending a pulse through this flashes the red light on the door (if the door has power).
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = !lights
 
-/obj/structure/machinery/door/airlock/proc/cut(var/wire)
+/obj/structure/machinery/door/airlock/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = 0
 
-/obj/structure/machinery/door/airlock/proc/mend(var/wire)
+/obj/structure/machinery/door/airlock/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
@@ -297,10 +297,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/isWireCut(var/wire)
+/obj/structure/machinery/door/airlock/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/door/airlock/proc/getAssembly(var/wire)
+/obj/structure/machinery/door/airlock/proc/getAssembly(wire)
 	for(var/signaller in attached_signallers)
 		if(wire == attached_signallers[signaller])
 			return signaller
@@ -759,7 +759,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..()
 	return
 
-/obj/structure/machinery/door/airlock/proc/lock(var/forced=0)
+/obj/structure/machinery/door/airlock/proc/lock(forced=0)
 	if(operating || locked) return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
@@ -767,7 +767,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
-/obj/structure/machinery/door/airlock/proc/unlock(var/forced=0)
+/obj/structure/machinery/door/airlock/proc/unlock(forced=0)
 	if(operating || !locked) return
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on

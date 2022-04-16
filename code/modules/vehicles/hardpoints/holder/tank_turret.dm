@@ -118,7 +118,7 @@
 	return dat
 
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
-/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(mob/user)
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("\The [src]'s stabilization systems are busted!"))
 		return
@@ -126,7 +126,7 @@
 	gyro = !gyro
 	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
 
-/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(var/mob/user, var/deg)
+/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(mob/user, deg)
 	// no rotating a broken turret
 	if(health <= 0)
 		return

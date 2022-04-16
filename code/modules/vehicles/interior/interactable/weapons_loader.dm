@@ -77,7 +77,7 @@ obj/structure/weapons_loader/proc/reload_ammo()
 
 	handle_reload(H)
 
-/obj/structure/weapons_loader/proc/handle_reload(var/mob/living/carbon/human/user)
+/obj/structure/weapons_loader/proc/handle_reload(mob/living/carbon/human/user)
 
 	//something went bad, try to reconnect to vehicle if user is currently buckled in and connected to vehicle
 	if(!vehicle)

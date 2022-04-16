@@ -27,10 +27,10 @@
     else
         qdel(src)
 
-/datum/stamina/proc/apply_rest_period(var/amount)
+/datum/stamina/proc/apply_rest_period(amount)
     stamina_rest_period = max(world.time + amount, stamina_rest_period)
 
-/datum/stamina/proc/apply_damage(var/amount = 0)
+/datum/stamina/proc/apply_damage(amount = 0)
     if(!has_stamina)
         return
 
@@ -39,7 +39,7 @@
     if(current_stamina < max_stamina)
         if(!(src in active_staminas))
             active_staminas.Add(src)
-        
+
         if(amount > 0)
             apply_rest_period(STAMINA_REST_PERIOD)
     else
@@ -65,10 +65,10 @@
             if(current_level != level)
                 activate_stamina_debuff(level)
                 current_level = level
-            
+
             break
 
-/datum/stamina/proc/activate_stamina_debuff(var/tier)
+/datum/stamina/proc/activate_stamina_debuff(tier)
     for(var/datum/effects/stamina/prev_S in source_mob.effects_list)
         qdel(prev_S)
 
@@ -77,5 +77,5 @@
 
 /datum/stamina/Destroy()
     . = ..()
-    
+
     source_mob = null

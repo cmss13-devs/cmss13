@@ -136,7 +136,7 @@
 	return ..(message,speaking,verb)
 
 //For holopads only. Usable by AI.
-/mob/living/silicon/ai/proc/holopad_talk(var/message)
+/mob/living/silicon/ai/proc/holopad_talk(message)
 
 	log_say("[key_name(src)] : [message]")
 

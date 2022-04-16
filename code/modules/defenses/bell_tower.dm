@@ -54,7 +54,7 @@
 		FE.linked_bell = src
 		tripwires_placed += FE
 
-/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(var/mob/M)
+/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(mob/M)
 	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 
 /obj/structure/machinery/defenses/bell_tower/Destroy()

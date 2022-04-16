@@ -177,7 +177,7 @@
 	name = "foamed iron"
 	desc = "A slightly stronger lightweight foamed iron wall."
 
-/obj/structure/foamed_metal/proc/take_damage(var/damage)
+/obj/structure/foamed_metal/proc/take_damage(damage)
 	health -= damage
 
 	if(health <= 0)

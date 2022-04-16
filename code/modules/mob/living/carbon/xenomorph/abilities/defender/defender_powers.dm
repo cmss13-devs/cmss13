@@ -180,7 +180,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/Xenomorph/X, fortify_state)
 	if(X.fortify == fortify_state)
 		return
 

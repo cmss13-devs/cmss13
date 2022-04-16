@@ -139,7 +139,7 @@
 
 
 //See proc/get_flags_heat_protection_flags(temperature) for the description of this proc.
-/mob/living/carbon/human/proc/get_flags_cold_protection_flags(temperature, var/deficit = 0)
+/mob/living/carbon/human/proc/get_flags_cold_protection_flags(temperature, deficit = 0)
 
 	var/thermal_protection_flags = 0
 
@@ -203,7 +203,7 @@
 	return min(1, thermal_protection)
 
 
-/mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+/mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
 	if(!G || !G.active)
 		return
 	see_in_dark += G.darkness_view

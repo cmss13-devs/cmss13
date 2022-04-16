@@ -49,7 +49,7 @@
 	def_zone = zone
 	cause_data = create_cause_data(last_dmg_source, from)
 
-/datum/effects/proc/validate_atom(var/atom/A)
+/datum/effects/proc/validate_atom(atom/A)
 	if(iscarbon(A) || isobj(A))
 		return TRUE
 

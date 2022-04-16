@@ -107,7 +107,7 @@ IN_USE						used for vending/denying
 		to_chat(user, SPAN_NOTICE("You believe you can hack this one to remove access requirements."))
 		return FALSE
 
-/obj/structure/machinery/cm_vending/proc/hack_access(var/mob/user)
+/obj/structure/machinery/cm_vending/proc/hack_access(mob/user)
 	if(!hackable)
 		to_chat(user, SPAN_WARNING("[src] cannot be hacked."))
 		return
@@ -369,7 +369,7 @@ IN_USE						used for vending/denying
 
 	..()
 
-/obj/structure/machinery/cm_vending/proc/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
 
 /obj/structure/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
@@ -578,7 +578,7 @@ IN_USE						used for vending/denying
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
 
-/obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
+/obj/structure/machinery/cm_vending/gear/proc/handle_points(mob/living/carbon/human/H, list/L)
 	. = TRUE
 	var/cost = L[2]
 	if(use_points)
@@ -802,7 +802,7 @@ IN_USE						used for vending/denying
 	populate_product_list(1.2)
 
 //this proc, well, populates product list based on roundstart amount of players
-/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
@@ -1107,10 +1107,10 @@ IN_USE						used for vending/denying
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 
-/obj/structure/machinery/vending/proc/isWireCut(var/wire)
+/obj/structure/machinery/vending/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/vending/proc/cut(var/wire)
+/obj/structure/machinery/vending/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -1125,7 +1125,7 @@ IN_USE						used for vending/denying
 				src.shoot_inventory = 1
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
-/obj/structure/machinery/vending/proc/mend(var/wire)
+/obj/structure/machinery/vending/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
@@ -1138,7 +1138,7 @@ IN_USE						used for vending/denying
 			src.shoot_inventory = 0
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
-/obj/structure/machinery/vending/proc/pulse(var/wire)
+/obj/structure/machinery/vending/proc/pulse(wire)
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = !src.extended_inventory

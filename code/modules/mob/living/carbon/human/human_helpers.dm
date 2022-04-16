@@ -9,7 +9,7 @@
 		g = "f"
 	return g
 
-/proc/get_limb_icon_name(var/datum/species/S, var/body_type, var/gender, var/limb_name, var/ethnicity)
+/proc/get_limb_icon_name(datum/species/S, body_type, gender, limb_name, ethnicity)
 	if(S.uses_ethnicity)
 		switch(limb_name)
 			if ("torso")
@@ -253,7 +253,7 @@
 	for(var/obj/item/device/radio/headset/h in cont)
 		h.on = FALSE
 
-/mob/living/carbon/human/proc/disable_lights(var/armor = 1, var/guns = 1, var/flares = 1, var/misc = 1)
+/mob/living/carbon/human/proc/disable_lights(armor = 1, var/guns = 1, var/flares = 1, var/misc = 1)
 	var/light_off = 0
 	var/goes_out = 0
 	if(armor)

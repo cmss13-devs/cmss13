@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY_TYPED(unlocked_droppod_techs, /datum/tech/droppod)
 	return
 
 // Called as to whether on_pod_access should be called
-/datum/tech/droppod/proc/can_access(var/mob/living/carbon/human/H, var/obj/structure/droppod/D)
+/datum/tech/droppod/proc/can_access(mob/living/carbon/human/H, obj/structure/droppod/D)
 	if(H in already_accessed)
 		to_chat(H, SPAN_WARNING("You've already accessed this tech!"))
 		return FALSE
@@ -36,14 +36,14 @@ GLOBAL_LIST_EMPTY_TYPED(unlocked_droppod_techs, /datum/tech/droppod)
 	return TRUE
 
 // Called when attack_hand() on a pod, and can_access check has passed
-/datum/tech/droppod/proc/on_pod_access(var/mob/living/carbon/human/H, var/obj/structure/droppod/D)
+/datum/tech/droppod/proc/on_pod_access(mob/living/carbon/human/H, obj/structure/droppod/D)
 	already_accessed += H
 	RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/cleanup_mob)
 	return
 
-/datum/tech/droppod/proc/cleanup_mob(var/mob/living/carbon/human/H)
+/datum/tech/droppod/proc/cleanup_mob(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	already_accessed -= H
 
-/datum/tech/droppod/proc/on_pod_created(var/obj/structure/droppod/D)
+/datum/tech/droppod/proc/on_pod_created(obj/structure/droppod/D)
 	return

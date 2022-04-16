@@ -282,7 +282,7 @@
 			cooked.forceMove(src.loc)
 		return
 
-/obj/structure/machinery/microwave/proc/wzhzhzh(var/seconds as num)
+/obj/structure/machinery/microwave/proc/wzhzhzh(seconds as num)
 	for (var/i=1 to seconds)
 		if (inoperable())
 			return 0

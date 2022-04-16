@@ -267,7 +267,7 @@
 	return
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/structure/machinery/light/proc/update(var/trigger = 1)
+/obj/structure/machinery/light/proc/update(trigger = 1)
 	SSlighting.lights_current.Add(light)
 	update_icon()
 	if(on)
@@ -298,7 +298,7 @@
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/structure/machinery/light/proc/seton(var/s)
+/obj/structure/machinery/light/proc/seton(s)
 	on = (s && status == LIGHT_OK)
 	update()
 
@@ -415,7 +415,7 @@
 	var/area/A = src.loc.loc
 	return A.master.lightswitch && A.master.power_light
 
-/obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
+/obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
@@ -511,7 +511,7 @@
 
 // break the light and make sparks if was on
 
-/obj/structure/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
+/obj/structure/machinery/light/proc/broken(skip_sound_and_sparks = 0)
 	if(status == LIGHT_EMPTY)
 		return
 

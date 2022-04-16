@@ -211,7 +211,7 @@
 	if (!docking_enabled|| override_enabled)	//only allow the port to be used as an airlock if nothing is docked here or the override is enabled
 		..(target)
 
-/datum/computer/file/embedded_program/airlock/multi_docking/proc/send_signal_to_master(var/command)
+/datum/computer/file/embedded_program/airlock/multi_docking/proc/send_signal_to_master(command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = id_tag
 	signal.data["command"] = command

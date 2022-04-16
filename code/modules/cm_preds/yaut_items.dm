@@ -2,11 +2,11 @@
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
-/proc/add_to_missing_pred_gear(var/obj/item/W)
+/proc/add_to_missing_pred_gear(obj/item/W)
 	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !is_admin_level(W.z))
 		yautja_gear += W
 
-/proc/remove_from_missing_pred_gear(var/obj/item/W)
+/proc/remove_from_missing_pred_gear(obj/item/W)
 	if(W in yautja_gear)
 		yautja_gear -= W
 
@@ -745,7 +745,7 @@
 		user.unset_interaction()
 
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(var/mob/user as mob)
+/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(mob/user as mob)
 	var/list/L = list()
 	for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
 		L += H.real_name
@@ -841,7 +841,7 @@
 		return
 	. = ..()
 
-/obj/item/hunting_trap/proc/trapMob(var/mob/living/carbon/C)
+/obj/item/hunting_trap/proc/trapMob(mob/living/carbon/C)
 	if(!armed)
 		return
 
@@ -900,7 +900,7 @@
 		qdel(tether_effect)
 		tether_effect = null
 
-/obj/item/hunting_trap/proc/disarm(var/mob/user)
+/obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE

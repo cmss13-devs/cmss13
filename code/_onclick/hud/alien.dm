@@ -22,14 +22,14 @@
 	draw_locate_queen(ui_alien_datum)
 	draw_locate_mark(ui_alien_datum)
 
-/datum/hud/alien/proc/draw_nightvision(var/datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/alien/proc/draw_nightvision(datum/custom_hud/alien/ui_alien_datum)
 	var/obj/screen/using = new /obj/screen/xenonightvision()
 	using.icon = ui_alien_datum.ui_style_icon
 	using.screen_loc = ui_alien_datum.ui_alien_nightvision
 	infodisplay += using
 	add_verb(mymob, /datum/action/xeno_action/verb/verb_night_vision)
 
-/datum/hud/alien/proc/draw_plasma_display(var/datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/alien/proc/draw_plasma_display(datum/custom_hud/alien/ui_alien_datum)
 	alien_plasma_display = new /obj/screen()
 	alien_plasma_display.icon = ui_alien_datum.ui_style_icon
 	alien_plasma_display.icon_state = "power_display2"
@@ -37,7 +37,7 @@
 	alien_plasma_display.screen_loc = ui_alien_datum.ui_alienplasmadisplay
 	infodisplay += alien_plasma_display
 
-/datum/hud/alien/proc/draw_armor_display(var/datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/alien/proc/draw_armor_display(datum/custom_hud/alien/ui_alien_datum)
 	alien_armor_display = new /obj/screen()
 	alien_armor_display.icon = ui_alien_datum.ui_style_icon
 	alien_armor_display.icon_state = "armor_100"
@@ -45,13 +45,13 @@
 	alien_armor_display.screen_loc = ui_alien_datum.ui_alienarmordisplay
 	infodisplay += alien_armor_display
 
-/datum/hud/alien/proc/draw_locate_queen(var/datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/alien/proc/draw_locate_queen(datum/custom_hud/alien/ui_alien_datum)
 	locate_leader = new /obj/screen/queen_locator()
 	locate_leader.icon = ui_alien_datum.ui_style_icon
 	locate_leader.screen_loc = ui_alien_datum.ui_queen_locator
 	infodisplay += locate_leader
 
-/datum/hud/alien/proc/draw_locate_mark(var/datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/alien/proc/draw_locate_mark(datum/custom_hud/alien/ui_alien_datum)
 	locate_marker = new /obj/screen/mark_locator()
 	locate_marker.icon = ui_alien_datum.ui_style_icon
 	locate_marker.screen_loc = ui_alien_datum.ui_mark_locator

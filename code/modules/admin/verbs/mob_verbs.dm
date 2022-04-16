@@ -33,7 +33,7 @@
 		return
 	change_ckey(O)
 
-/client/proc/cmd_admin_ghostchange(var/mob/living/M, var/mob/dead/observer/O)
+/client/proc/cmd_admin_ghostchange(mob/living/M, mob/dead/observer/O)
 	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
@@ -161,7 +161,7 @@
 
 	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
-/client/proc/cmd_admin_alert_message(var/mob/M)
+/client/proc/cmd_admin_alert_message(mob/M)
 	set name = "Alert Message"
 	set category = "Admin.Game"
 
@@ -194,7 +194,7 @@
 		else
 			return
 
-/client/proc/cmd_admin_direct_narrate(var/mob/M)
+/client/proc/cmd_admin_direct_narrate(mob/M)
 	set name = "Narrate"
 	set category = null
 
@@ -278,7 +278,7 @@
 
 	message_staff("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/H)
+/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H)
 	set name = "Change Hivenumber"
 	set category = null
 
@@ -318,7 +318,7 @@
 	message_staff("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
-/client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
+/client/proc/cmd_admin_change_their_name(mob/living/carbon/X)
 	set name = "Change Name"
 	set category = null
 
@@ -342,7 +342,7 @@
 
 	message_staff("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/admins/proc/togglesleep(var/mob/living/M as mob in GLOB.mob_list)
+/datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 

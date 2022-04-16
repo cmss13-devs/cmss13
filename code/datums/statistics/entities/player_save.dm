@@ -1,5 +1,5 @@
 
-/datum/entity/player_entity/proc/setup_save(var/key)
+/datum/entity/player_entity/proc/setup_save(key)
 	if(key && !IsGuestKey(key))
 		load_path(lowertext(key))
 		load_statistics()

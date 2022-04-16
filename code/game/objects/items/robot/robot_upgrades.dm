@@ -10,7 +10,7 @@
 	var/require_module = 0
 	var/installed = 0
 
-/obj/item/robot/upgrade/proc/action(var/mob/living/silicon/robot/R)
+/obj/item/robot/upgrade/proc/action(mob/living/silicon/robot/R)
 	if(R.stat == DEAD)
 		to_chat(usr, SPAN_DANGER("The [src] will not function on a deceased robot."))
 		return 1

@@ -14,29 +14,29 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
 
-/datum/chemical_data/proc/update_credits(var/change)
+/datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
 
-/datum/chemical_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/save_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_documents["[document_type]"])
 		research_documents["[document_type]"] = list()
 	var/list/new_document[0]
 	new_document["[title]"] = R
 	research_documents["[document_type]"] += new_document
 
-/datum/chemical_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/publish_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
 	var/list/new_document[0]
 	new_document["[title]"] = R
 	research_publications["[document_type]"] += new_document
 
-/datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
+/datum/chemical_data/proc/unpublish_document(document_type, title)
 	if(research_publications["[document_type]"]["[title]"])
 		research_publications["[document_type]"] -= title
 		return TRUE
 
-/datum/chemical_data/proc/save_new_properties(var/list/properties)
+/datum/chemical_data/proc/save_new_properties(list/properties)
 	var/list/property_names = list()
 	for(var/datum/chem_property/P in properties) //just save the names
 		if(P.category & PROPERTY_TYPE_UNADJUSTABLE || P.category & PROPERTY_TYPE_ANOMALOUS)
@@ -53,13 +53,13 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 			research_property_data += P
 
 //Chem storage for various chem dispensers
-/datum/chemical_data/proc/add_chem_storage(var/obj/structure/machinery/chem_storage/C)
+/datum/chemical_data/proc/add_chem_storage(obj/structure/machinery/chem_storage/C)
 	if(chemical_networks.Find(C.network))
 		return FALSE
 	else
 		chemical_networks[C.network] = C
 
-/datum/chemical_data/proc/connect_chem_storage(var/network)
+/datum/chemical_data/proc/connect_chem_storage(network)
 	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
 	if(!C)
 		return FALSE

@@ -293,7 +293,7 @@
 	for(var/material in storage_capacity)
 		storage_capacity[material] = tot_rating  * 30000
 
-/obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
+/obj/structure/machinery/autolathe/proc/try_queue(mob/living/carbon/human/user, datum/autolathe/recipe/making, turf/make_loc, multiplier = 1)
 	if (queue.len >= queue_max)
 		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
@@ -335,7 +335,7 @@
 
 	busy = FALSE
 
-/obj/structure/machinery/autolathe/proc/print_item(var/datum/autolathe/recipe/making, var/multiplier, var/turf/make_loc)
+/obj/structure/machinery/autolathe/proc/print_item(datum/autolathe/recipe/making, multiplier, turf/make_loc)
 	// Make sure autolathe can print the item
 	for(var/material in making.resources)
 		if(isnull(stored_material[material]) || stored_material[material] < (making.resources[material]*multiplier))
@@ -373,10 +373,10 @@
 		AUTOLATHE_WIRE_SHOCK	= "Ground safety"
 	)
 
-/obj/structure/machinery/autolathe/proc/isWireCut(var/wire)
+/obj/structure/machinery/autolathe/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/autolathe/proc/cut(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/cut(wire, mob/user)
 	wires ^= getWireFlag(wire)
 
 	switch (wire)
@@ -390,7 +390,7 @@
 			visible_message(SPAN_DANGER("A green light turns on in the panel of \the [src] \
 				as electric arcs continuously shoot off from it!"))
 
-/obj/structure/machinery/autolathe/proc/mend(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/mend(wire, mob/user)
 	wires |= getWireFlag(wire)
 
 	switch (wire)
@@ -403,7 +403,7 @@
 			seconds_electrified = 0
 			visible_message(SPAN_DANGER("A green light turns off in the panel of \the [src]."))
 
-/obj/structure/machinery/autolathe/proc/pulse(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/pulse(wire, mob/user)
 	switch (wire)
 		if (AUTOLATHE_WIRE_HACK)
 			hacked = !hacked

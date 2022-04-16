@@ -163,7 +163,7 @@ If adding stuff to this, don't forget that an AI need to cancel_camera() wheneve
 That prevents a few funky behaviors.
 */
 //What operation to perform based on target, what ineraction to perform based on object used, target itself, user. The object used is src and calls this proc.
-/obj/item/proc/transfer_ai(var/choice as text, var/interaction as text, var/target, var/mob/U as mob)
+/obj/item/proc/transfer_ai(choice as text, var/interaction as text, var/target, var/mob/U as mob)
 	if(!src:flush)
 		switch(choice)
 			if("AICORE")//AI mob.

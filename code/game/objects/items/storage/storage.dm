@@ -71,7 +71,7 @@
 
 	return ..()
 
-/obj/item/storage/proc/handle_mmb_open(var/mob/user)
+/obj/item/storage/proc/handle_mmb_open(mob/user)
 	open(user)
 
 /obj/item/storage/proc/return_inv()
@@ -168,7 +168,7 @@
 	update_icon()
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
-/obj/item/storage/proc/slot_orient_objs(var/rows, var/cols, var/list/obj/item/display_contents)
+/obj/item/storage/proc/slot_orient_objs(rows, cols, list/obj/item/display_contents)
 	var/cx = 4
 	var/cy = 2+rows
 	boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"
@@ -213,7 +213,7 @@ var/list/global/item_storage_box_cache = list()
 	end = new()
 	end.icon_state = "stored_end"
 
-/obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
+/obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
@@ -577,7 +577,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	var/mob/living/carbon/human/H = usr
 	empty(H, get_turf(H))
 
-/obj/item/storage/proc/empty(var/mob/user, var/turf/T)
+/obj/item/storage/proc/empty(mob/user, turf/T)
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src) || user.is_mob_incapacitated())
 		return
 
@@ -604,7 +604,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 
-/obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
+/obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
 		return
 

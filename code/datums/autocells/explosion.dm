@@ -115,7 +115,7 @@
 	return is_stronger
 
 // Get a list of all directions the explosion should propagate to before dying
-/datum/automata_cell/explosion/proc/get_propagation_dirs(var/reflected)
+/datum/automata_cell/explosion/proc/get_propagation_dirs(reflected)
 	var/list/propagation_dirs = list()
 
 	// If the cell is the epicenter, propagate in all directions
@@ -132,7 +132,7 @@
 	return propagation_dirs
 
 // If you need to set vars on the new cell other than the basic ones
-/datum/automata_cell/explosion/proc/setup_new_cell(var/datum/automata_cell/explosion/E)
+/datum/automata_cell/explosion/proc/setup_new_cell(datum/automata_cell/explosion/E)
 	if(E.shockwave)
 		E.shockwave.alpha = E.power
 	return
@@ -228,7 +228,7 @@
   When the cell processes, we simply don't blow up atoms that were tracked
   as having entered the turf.
 */
-/datum/automata_cell/explosion/proc/on_turf_entered(var/atom/movable/A)
+/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
 	// Once is enough
 	if(A in exploded_atoms)
 		return
@@ -246,7 +246,7 @@
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(var/turf/epicenter, var/power, var/falloff, var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, var/direction, var/datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, var/direction, var/datum/cause_data/explosion_cause_data)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -278,7 +278,7 @@
 		sleep(1)
 		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
 
-/proc/log_explosion(var/atom/A, var/datum/automata_cell/explosion/E)
+/proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))
 		var/mob/living/M = A
 		var/turf/T = get_turf(A)

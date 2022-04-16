@@ -14,7 +14,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/build_path
 	var/max_per_xeno = RESIN_CONSTRUCTION_NO_MAX
 
-/datum/resin_construction/proc/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
+/datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/Xenomorph/X)
 	var/mob/living/carbon/Xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
@@ -58,7 +58,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	return TRUE
 
-/datum/resin_construction/proc/build(var/turf/T, var/hivenumber, var/builder)
+/datum/resin_construction/proc/build(turf/T, hivenumber, builder)
 	return
 
 

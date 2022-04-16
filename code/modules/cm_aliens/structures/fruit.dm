@@ -388,7 +388,7 @@
 		user.pickup_fruit(src)
 
 // Handles xenos picking up fruit
-/mob/living/carbon/Xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
+/mob/living/carbon/Xenomorph/proc/pickup_fruit(obj/effect/alien/resin/fruit/F)
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
 		to_chat(src, SPAN_XENODANGER("You crush [F]."))
 		qdel(F)

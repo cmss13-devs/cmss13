@@ -125,7 +125,7 @@
 		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/mob/hostiles/Effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
-/mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
+/mob/living/carbon/Xenomorph/proc/create_shriekwave(color = null)
 	var/image/screech_image
 
 	var/offset_x = 0
@@ -165,7 +165,7 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
-/mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
+/mob/living/carbon/Xenomorph/proc/create_shield(duration = 10)
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shield2")

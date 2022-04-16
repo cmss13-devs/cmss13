@@ -101,7 +101,7 @@
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/C)
 	if(!C)
 		return
 

@@ -25,7 +25,7 @@
 /datum/db/native_function/proc/get_columns()
 	return null
 
-/datum/db/native_function/proc/default_to_string(var/list/alias, var/list/params)
+/datum/db/native_function/proc/default_to_string(list/alias, list/params)
 	return null
 
 /datum/db/native_function/count
@@ -37,7 +37,7 @@
 
 /datum/db/native_function/count/get_columns()
 	return list(count_column)
-		
+
 /datum/db/native_function/count/default_to_string(var/list/alias, var/list/params)
 	var/field_cast = "[count_column]"
 	if(alias && alias[field_cast])
@@ -53,7 +53,7 @@
 
 /datum/db/native_function/sum/get_columns()
 	return list(sum_column)
-		
+
 /datum/db/native_function/sum/default_to_string(var/list/alias, var/list/params)
 	var/field_cast = "[sum_column]"
 	if(alias && alias[field_cast])
@@ -96,7 +96,7 @@
 		else
 			result += "[native_false]"
 	return result
-		
+
 /datum/db/native_function/case/default_to_string(var/list/alias, var/list/params)
 	return null // has to be redone in each service
 

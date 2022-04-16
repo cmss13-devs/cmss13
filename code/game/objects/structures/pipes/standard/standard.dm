@@ -14,7 +14,7 @@
 	if(level == 1 && istype(loc, /turf))
 		invisibility = invis ? 101 : 0
 
-/obj/structure/pipes/standard/proc/change_color(var/new_color)
+/obj/structure/pipes/standard/proc/change_color(new_color)
 	if(!pipe_color_check(new_color))
 		return
 

@@ -61,7 +61,7 @@ var/list/department_radio_keys = list(
 	return FALSE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(var/bubble_name)
+/mob/living/proc/show_speech_bubble(bubble_name)
 	var/list/hear = hearers()
 
 	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
@@ -77,7 +77,7 @@ var/list/department_radio_keys = list(
 	addtimer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, hear), 30)
 
 
-/mob/living/proc/remove_speech_bubble(var/image/speech_bubble, var/list_of_mobs)
+/mob/living/proc/remove_speech_bubble(image/speech_bubble, list_of_mobs)
 	if(client)
 		client.images -= speech_bubble
 
@@ -175,7 +175,7 @@ var/list/department_radio_keys = list(
 
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", var/datum/language/language)
 	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 

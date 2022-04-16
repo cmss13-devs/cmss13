@@ -58,7 +58,7 @@
 	// Integrity of tether is compromised (cannot maintain range), so delete it
 	qdel(src)
 
-/datum/effects/tethering/proc/set_tethered(var/datum/effects/tethered/T)
+/datum/effects/tethering/proc/set_tethered(datum/effects/tethered/T)
 	tethered = T
 	T.tether = src
 	beam_id = affected_atom.Beam(T.affected_atom, tether_icon, 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, range+1, always_face)
@@ -86,7 +86,7 @@
 		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, .proc/resist_callback)
 
 // affected is always going to be the same as affected_atom
-/datum/effects/tethered/proc/check_move(var/dummy, var/turf/target)
+/datum/effects/tethered/proc/check_move(dummy, turf/target)
 	SIGNAL_HANDLER
 
 	if (isnull(tether))
@@ -127,7 +127,7 @@
 
 // Tethers the tethered atom to the tetherer
 // If you want both atoms to be tethered to each other, pass in TRUE to the two_way arg
-/proc/apply_tether(var/atom/tetherer, var/atom/tethered, var/two_way = FALSE, var/range = 1, var/resistable = FALSE, var/icon = "chain", var/always_face = TRUE)
+/proc/apply_tether(atom/tetherer, atom/tethered, two_way = FALSE, var/range = 1, var/resistable = FALSE, var/icon = "chain", var/always_face = TRUE)
 	var/list/ret_list = list()
 
 	var/datum/effects/tethering/TR = new /datum/effects/tethering(tetherer, range, icon, always_face)

@@ -1,7 +1,7 @@
 /obj/effect/landmark/interior
 	name = "interior marker"
 
-/obj/effect/landmark/interior/proc/on_load(var/datum/interior/I)
+/obj/effect/landmark/interior/proc/on_load(datum/interior/I)
 	return
 
 /*

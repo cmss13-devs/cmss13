@@ -94,7 +94,7 @@
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
 
-/mob/living/carbon/Xenomorph/proc/emote_audio_helper(var/message, var/sound_to_play, var/volume = 15, var/player_caused)
+/mob/living/carbon/Xenomorph/proc/emote_audio_helper(message, sound_to_play, volume = 15, var/player_caused)
 	if(recent_audio_emote && player_caused)
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return

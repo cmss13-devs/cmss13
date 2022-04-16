@@ -199,7 +199,7 @@
 	..()
 
 
-/obj/structure/machinery/defenses/sentry/proc/fire(var/atom/A)
+/obj/structure/machinery/defenses/sentry/proc/fire(atom/A)
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
@@ -224,7 +224,7 @@
 	if(targets.len)
 		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
 
-/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
+/obj/structure/machinery/defenses/sentry/proc/actual_fire(atom/A)
 	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
 	P.generate_bullet(new ammo.default_ammo)
 	P.damage *= damage_mult
@@ -243,7 +243,7 @@
 	update_icon()
 
 //Mostly taken from gun code.
-/obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)
+/obj/structure/machinery/defenses/sentry/proc/muzzle_flash(angle)
 	if(isnull(angle))
 		return
 
@@ -260,7 +260,7 @@
 	I.transform = rotate
 	I.flick_overlay(src, 3)
 
-/obj/structure/machinery/defenses/sentry/proc/get_target(var/atom/movable/new_target)
+/obj/structure/machinery/defenses/sentry/proc/get_target(atom/movable/new_target)
 	if(!islist(targets))
 		return
 	if(!targets.Find(new_target))

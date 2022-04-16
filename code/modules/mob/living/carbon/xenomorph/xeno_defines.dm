@@ -126,7 +126,7 @@
 
 /client/var/cached_xeno_playtime
 
-/client/proc/get_total_xeno_playtime(var/skip_cache = FALSE)
+/client/proc/get_total_xeno_playtime(skip_cache = FALSE)
 	if(cached_xeno_playtime && !skip_cache)
 		return cached_xeno_playtime
 
@@ -147,7 +147,7 @@
 
 	return total_xeno_playtime
 
-/datum/caste_datum/proc/can_play_caste(var/client/client)
+/datum/caste_datum/proc/can_play_caste(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
@@ -158,7 +158,7 @@
 
 	return TRUE
 
-/datum/caste_datum/proc/get_caste_requirement(var/client/client)
+/datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
 /datum/hive_status
@@ -262,7 +262,7 @@
 	internal_faction = name
 
 // Adds a xeno to this hive
-/datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
+/datum/hive_status/proc/add_xeno(mob/living/carbon/Xenomorph/X)
 	if(!X || !istype(X))
 		return
 
@@ -299,7 +299,7 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE, light_mode = FALSE)
+/datum/hive_status/proc/remove_xeno(mob/living/carbon/Xenomorph/X, hard=FALSE, light_mode = FALSE)
 	if(!X || !istype(X))
 		return
 
@@ -333,7 +333,7 @@
 		hive_ui.update_xeno_counts()
 		hive_ui.xeno_removed(X)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
+/datum/hive_status/proc/set_living_xeno_queen(mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
@@ -372,7 +372,7 @@
 
 	hive_ui.update_all_data()
 
-/datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
+/datum/hive_status/proc/add_hive_leader(mob/living/carbon/Xenomorph/xeno)
 	if(!xeno)
 		return FALSE //How did this even happen?
 	if(!open_xeno_leader_positions.len)
@@ -391,7 +391,7 @@
 	hive_ui.update_xeno_keys()
 	return TRUE
 
-/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno, light_mode = FALSE)
+/datum/hive_status/proc/remove_hive_leader(mob/living/carbon/Xenomorph/xeno, light_mode = FALSE)
 	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
 
@@ -421,7 +421,7 @@
 
 	return TRUE
 
-/datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/Xenomorph/original, var/mob/living/carbon/Xenomorph/replacement)
+/datum/hive_status/proc/replace_hive_leader(mob/living/carbon/Xenomorph/original, mob/living/carbon/Xenomorph/replacement)
 	if(!replacement || replacement.hive_pos != NORMAL_XENO)
 		return remove_hive_leader(original)
 
@@ -511,7 +511,7 @@
 // 2. Leaders
 // 3. Tier
 // It uses a slightly modified insertion sort to accomplish this
-/datum/hive_status/proc/sort_xeno_keys(var/list/xenos)
+/datum/hive_status/proc/sort_xeno_keys(list/xenos)
 	if(!length(xenos))
 		return
 
@@ -582,7 +582,7 @@
 
 	return xenos
 
-/datum/hive_status/proc/set_hive_location(var/obj/effect/alien/resin/special/pylon/core/C)
+/datum/hive_status/proc/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
 	if(!C || C == hive_location)
 		return
 	var/area/A = get_area(C)
@@ -673,7 +673,7 @@
 #undef GUARANTEED_SLOTS
 
 // returns if that location can be used to plant eggs
-/datum/hive_status/proc/in_egg_plant_range(var/turf/T)
+/datum/hive_status/proc/in_egg_plant_range(turf/T)
 	if(!istype(living_xeno_queen))
 		return TRUE // xenos already dicked without queen. Let them plant whereever
 
@@ -682,7 +682,7 @@
 
 	return get_dist(living_xeno_queen, T) <= egg_planting_range
 
-/datum/hive_status/proc/can_build_structure(var/structure_name)
+/datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
 	var/total_count = 0
@@ -694,14 +694,14 @@
 		return FALSE
 	return TRUE
 
-/datum/hive_status/proc/has_structure(var/structure_name)
+/datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
 		return FALSE
 	if(hive_structures[structure_name] && hive_structures[structure_name].len)
 		return TRUE
 	return FALSE
 
-/datum/hive_status/proc/add_construction(var/obj/effect/alien/resin/construction/S)
+/datum/hive_status/proc/add_construction(obj/effect/alien/resin/construction/S)
 	if(!S || !S.template)
 		return FALSE
 	var/name_ref = initial(S.template.name)
@@ -712,14 +712,14 @@
 	hive_constructions[name_ref] += src
 	return TRUE
 
-/datum/hive_status/proc/remove_construction(var/obj/effect/alien/resin/construction/S)
+/datum/hive_status/proc/remove_construction(obj/effect/alien/resin/construction/S)
 	if(!S || !S.template)
 		return FALSE
 	var/name_ref = initial(S.template.name)
 	hive_constructions[name_ref] -= src
 	return TRUE
 
-/datum/hive_status/proc/add_special_structure(var/obj/effect/alien/resin/special/S)
+/datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/S)
 	if(!S)
 		return FALSE
 	var/name_ref = initial(S.name)
@@ -730,14 +730,14 @@
 	hive_structures[name_ref] += S
 	return TRUE
 
-/datum/hive_status/proc/remove_special_structure(var/obj/effect/alien/resin/special/S)
+/datum/hive_status/proc/remove_special_structure(obj/effect/alien/resin/special/S)
 	if(!S)
 		return FALSE
 	var/name_ref = initial(S.name)
 	hive_structures[name_ref] -= S
 	return TRUE
 
-/datum/hive_status/proc/has_special_structure(var/name_ref)
+/datum/hive_status/proc/has_special_structure(name_ref)
 	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
 		return 0
 	return hive_structures[name_ref].len
@@ -773,21 +773,21 @@
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
 
-/datum/hive_status/proc/free_respawn(var/client/C)
+/datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!spawn_pool || !spawn_pool.spawn_pooled_larva(C.mob))
 		stored_larva--
 	else
 		hive_ui.update_pooled_larva()
 
-/mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
+/mob/living/carbon/proc/ally_of_hivenumber(hivenumber)
 	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
 	if(!H)
 		return FALSE
 
 	return H.is_ally(src)
 
-/datum/hive_status/proc/is_ally(var/mob/living/carbon/C)
+/datum/hive_status/proc/is_ally(mob/living/carbon/C)
 	if(isXeno(C) && C.hivenumber == hivenumber)
 		var/mob/living/carbon/Xenomorph/X = C
 		return !X.banished
@@ -797,7 +797,7 @@
 
 	return faction_is_ally(C.faction)
 
-/datum/hive_status/proc/faction_is_ally(var/faction)
+/datum/hive_status/proc/faction_is_ally(faction)
 	if(!living_xeno_queen)
 		return FALSE
 
@@ -907,7 +907,7 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 
-/datum/hive_status/corrupted/tamed/proc/make_leader(var/mob/living/carbon/human/H)
+/datum/hive_status/corrupted/tamed/proc/make_leader(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -917,7 +917,7 @@
 	leader = H
 	RegisterSignal(leader, COMSIG_PARENT_QDELETING, .proc/handle_qdelete)
 
-/datum/hive_status/corrupted/tamed/proc/handle_qdelete(var/mob/living/carbon/human/H)
+/datum/hive_status/corrupted/tamed/proc/handle_qdelete(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 
 	if(H == leader)

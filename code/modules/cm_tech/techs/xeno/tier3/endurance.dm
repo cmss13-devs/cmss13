@@ -47,11 +47,11 @@
 		if(!T.weeds)
 			X.apply_damage(-(heal_amt_per_second*delta_time), BRUTE)
 
-/datum/tech/xeno/endurance/proc/apply_tech(var/datum/source, var/mob/living/carbon/Xenomorph/X)
+/datum/tech/xeno/endurance/proc/apply_tech(datum/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 	RegisterSignal(X, COMSIG_XENO_MOVEMENT_DELAY, .proc/handle_speed)
 
-/datum/tech/xeno/endurance/proc/handle_speed(var/mob/living/carbon/Xenomorph/X, var/list/speeds)
+/datum/tech/xeno/endurance/proc/handle_speed(mob/living/carbon/Xenomorph/X, list/speeds)
 	SIGNAL_HANDLER
 	var/turf/T = get_turf(X)
 

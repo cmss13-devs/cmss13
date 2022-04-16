@@ -29,7 +29,7 @@
 		new_player_panel_proc()
 
 
-/mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
+/mob/new_player/proc/new_player_panel_proc(refresh = FALSE)
 	if(!client)
 		return
 

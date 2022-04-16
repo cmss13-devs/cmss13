@@ -46,7 +46,7 @@
 	W.time_inflicted = time_inflicted
 	return W
 
-/obj/item/device/autopsy_scanner/proc/add_data(var/obj/limb/O)
+/obj/item/device/autopsy_scanner/proc/add_data(obj/limb/O)
 	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
 
 	for(var/V in O.autopsy_data)
@@ -183,7 +183,7 @@
 		if(surface.surgery_duration_multiplier <= SURGERY_SURFACE_MULT_ADEQUATE)
 			table = TRUE
 			break
-	
+
 	if(!table)
 		to_chat(usr, "<b>You can't work here, you need to put [M] on a proper surgical bed.</b>")
 		return

@@ -165,7 +165,7 @@ SUBSYSTEM_DEF(weather)
 
 
 // Enqueue areas
-/datum/controller/subsystem/weather/proc/add_as_weather_area(var/area/A, var/list/weather_areas)
+/datum/controller/subsystem/weather/proc/add_as_weather_area(area/A, list/weather_areas)
 	if (istype(A, /area/space) || !A.weather_enabled)
 		return
 
@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(weather)
 // Check whether or not a given atom should be affected by weather.
 // Uses a switch statement on map_tag to hand the execution off to
 // map-dependent logic.
-/datum/controller/subsystem/weather/proc/weather_affects_check(var/atom/A)
+/datum/controller/subsystem/weather/proc/weather_affects_check(atom/A)
 	return map_holder.should_affect_atom(A)
 
 

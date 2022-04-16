@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return
 
-/obj/vehicle/multitile/proc/toggle_cameras_status(var/on)
+/obj/vehicle/multitile/proc/toggle_cameras_status(on)
 	if(camera)
 		camera.toggle_cam_status(on)
 	if(camera_int)
@@ -275,14 +275,14 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	return list("width" = (bound_width / world.icon_size), "height" = (bound_height / world.icon_size))
 
 //Returns the ratio of damage to take, just a housekeeping thing
-/obj/vehicle/multitile/proc/get_dmg_multi(var/type)
+/obj/vehicle/multitile/proc/get_dmg_multi(type)
 	if(!dmg_multipliers || !dmg_multipliers.Find(type))
 		return 1
 	return dmg_multipliers[type] * dmg_multipliers["all"]
 
 //Generic proc for taking damage
 //ALWAYS USE THIS WHEN INFLICTING DAMAGE TO THE VEHICLES
-/obj/vehicle/multitile/proc/take_damage_type(var/damage, var/type, var/atom/attacker)
+/obj/vehicle/multitile/proc/take_damage_type(damage, type, atom/attacker)
 	var/all_broken = TRUE
 	for(var/obj/item/hardpoint/H in hardpoints)
 		// Health check is done before the hardpoint takes damage
@@ -309,10 +309,10 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	return ..()
 
 // Add/remove verbs that should be given when a mob sits down or unbuckles here
-/obj/vehicle/multitile/proc/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/proc/add_seated_verbs(mob/living/M, seat)
 	return
 
-/obj/vehicle/multitile/proc/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/proc/remove_seated_verbs(mob/living/M, seat)
 	return
 
 /obj/vehicle/multitile/set_seated_mob(var/seat, var/mob/living/M)
@@ -333,10 +333,10 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/cancel_view)
 
-/obj/vehicle/multitile/proc/get_seat_mob(var/seat)
+/obj/vehicle/multitile/proc/get_seat_mob(seat)
 	return seats[seat]
 
-/obj/vehicle/multitile/proc/get_mob_seat(var/mob/M)
+/obj/vehicle/multitile/proc/get_mob_seat(mob/M)
 	for(var/seat in seats)
 		if(seats[seat] == M)
 			return seat

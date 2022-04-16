@@ -1,4 +1,4 @@
-/* 
+/*
     Teleporter datums
 */
 
@@ -23,10 +23,10 @@
 	. = ..()
 
 // Teleport (NO SAFETY CHECKS)
-/datum/teleporter/proc/teleport(var/location_source, var/location_dest)
+/datum/teleporter/proc/teleport(location_source, location_dest)
     var/list/turf/source_turfs = locations[location_source]
     var/list/turf/dest_turfs = locations[location_dest]
-    
+
     if(!source_turfs || source_turfs.len == 0)
         log_debug("Invalid source location ID [location_source] handed to teleporter [id]. Error code: TELEPORTER_3")
         log_admin("Invalid source location ID [location_source] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_3")
@@ -49,7 +49,7 @@
 
 // Checks every turf in the location to make sure it contains no dense things (safe to teleport to)
 // Returns: 1 = safe, 0 = unsafe
-/datum/teleporter/proc/safety_check_destination(var/location_id)
+/datum/teleporter/proc/safety_check_destination(location_id)
     var/list/turf/turfs_to_check = locations[location_id]
 
     if(!turfs_to_check)
@@ -63,7 +63,7 @@
 
         if(T.density)
             return 0
-        
+
         for(var/atom/A in T)
 
             if(A.density)
@@ -71,8 +71,8 @@
 
     return 1
 
-// Checks every turf in the Location to make sure it contains no objects banned from teleporting 
-/datum/teleporter/proc/safety_check_source(var/location_id)
+// Checks every turf in the Location to make sure it contains no objects banned from teleporting
+/datum/teleporter/proc/safety_check_source(location_id)
     var/list/turf/turfs_to_check = locations[location_id]
 
     if(!turfs_to_check)
@@ -87,7 +87,7 @@
         var/turf/T = turfs_to_check[turf_key]
         for(var/atom/A in T)
 
-            // Make sure - IF there's a vehicle in the source area - that ALL of its turfs are inside. 
+            // Make sure - IF there's a vehicle in the source area - that ALL of its turfs are inside.
             // Use a bool to make sure we don't scan our area once for every component of the vehicle - we only need to do it once.
             if(istype(A, /obj/vehicle/multitile) && !vehicle_checked)
                 if(!check_vehicle_safety(A, location_id))
@@ -105,7 +105,7 @@
 
     if(!time_last_used)
         return 1
-    
+
     return (world.time > cooldown + time_last_used)
 
 // Checks that the *entire* tank is inside the teleporter
@@ -113,7 +113,7 @@
 // no current list of its linked objects
 // As always, 1 = safe, 0 = unsafe
 
-/datum/teleporter/proc/check_vehicle_safety(var/obj/vehicle/multitile/vehicle, var/location_id)
+/datum/teleporter/proc/check_vehicle_safety(obj/vehicle/multitile/vehicle, location_id)
     var/list/turf/location_turfs = locations[location_id]
 
     var/parts_count = (vehicle.bound_width / world.icon_size) * (vehicle.bound_height / world.icon_size)
@@ -137,16 +137,16 @@
     return 0
 
 // Unsafe proc to get the list of turfs from a location
-/datum/teleporter/proc/get_turfs_by_location(var/location_id)
+/datum/teleporter/proc/get_turfs_by_location(location_id)
     return locations[location_id]
 
 #define ANIMATION_DURATION 18
 // Handler proc for VFX. mostly some easy timing maths
-/datum/teleporter/proc/apply_vfx(var/location_id, var/time_to_fire = 30)
+/datum/teleporter/proc/apply_vfx(location_id, time_to_fire = 30)
     if(!(location_id in locations))
         log_debug("Invalid location ID [location_id] handed to teleporter [id]. Error code: TELEPORTER_6")
         log_admin("Invalid location ID [location_id] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_6")
-        return 
+        return
 
     var/time_to_effects = time_to_fire - ANIMATION_DURATION
     sleep(time_to_effects)
@@ -154,7 +154,7 @@
     return
 
 // Backend proc that actually applies the animation
-/datum/teleporter/proc/apply_animation(var/location_id)
+/datum/teleporter/proc/apply_animation(location_id)
     var/list/turfs_to_do = locations[location_id]
 
     if(!turfs_to_do)

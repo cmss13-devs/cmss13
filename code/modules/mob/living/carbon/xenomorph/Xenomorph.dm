@@ -434,7 +434,7 @@
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
-/mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+/mob/living/carbon/Xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/Xenomorph/Queen/queen)
 	SIGNAL_HANDLER
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
@@ -702,11 +702,11 @@
 /mob/living/carbon/Xenomorph/get_pull_miltiplier()
 	return pull_multiplier
 
-/mob/living/carbon/Xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
+/mob/living/carbon/Xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
 	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/Xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
@@ -937,7 +937,7 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
-/mob/living/carbon/Xenomorph/proc/set_resin_build_order(var/list/build_order)
+/mob/living/carbon/Xenomorph/proc/set_resin_build_order(list/build_order)
 	resin_build_order = build_order
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]

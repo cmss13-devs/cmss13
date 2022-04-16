@@ -32,7 +32,7 @@
 		DB_COMP("round_id", DB_EQUALS, round_id)), // on this round
 		CALLBACK(GLOBAL_PROC, .proc/vending_stat_callback, item_name, source_name, bump_by, round_id)) // call the thing when filter is done filtering
 
-/proc/vending_stat_callback(item_name, source_name, bump_by, round_id, var/list/datum/entity/vending_stat/stats)
+/proc/vending_stat_callback(item_name, source_name, bump_by, round_id, list/datum/entity/vending_stat/stats)
 	var/result_length = length(stats)
 	if(result_length  == 0) // haven't found an item
 		var/datum/entity/vending_stat/WS = DB_ENTITY(/datum/entity/vending_stat) // this creates a new record
@@ -43,11 +43,11 @@
 		WS.save() // save it
 		return // we are done here
 
-	/* 
+	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.
 		This is stil an issue and occurs regularly on live game... including before people use vendors.
-	
+
 	if(result_length > 1) // oh shit oh fuck our DB is bad, what the fuck
 		log_debug("DATABASE: vending_stat result_length was larger than 1")
 		return

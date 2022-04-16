@@ -58,10 +58,10 @@
 	var/atom/A = parent
 	A.remove_filter("toxic_buildup")
 
-/datum/component/toxic_buildup/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/toxic_buildup/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Toxin Buildup: [toxic_buildup]/[max_buildup]"
 
-/datum/component/toxic_buildup/proc/apply_toxic_buildup(var/mob/living/carbon/Xenomorph/X, var/list/damagedata)
+/datum/component/toxic_buildup/proc/apply_toxic_buildup(mob/living/carbon/Xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER
 	damagedata["armor"] = max(damagedata["armor"] - toxic_buildup, 0)

@@ -34,7 +34,7 @@
 	langchat_listeners = null
 
 ///Creates the image if one does not exist, resets settings that are modified by speech procs.
-/mob/proc/langchat_make_image(var/override_color = null)
+/mob/proc/langchat_make_image(override_color = null)
 	if(!langchat_image)
 		langchat_image = image(null, src)
 		langchat_image.layer = 20
@@ -51,7 +51,7 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE)
+/mob/proc/langchat_speech(message, list/listeners, language, override_color, skip_language_check = FALSE)
 	langchat_drop_image()
 	langchat_make_image(override_color)
 
@@ -72,7 +72,7 @@
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/mob/proc/langchat_long_speech(message, var/list/listeners, language)
+/mob/proc/langchat_long_speech(message, list/listeners, language)
 	langchat_drop_image()
 	langchat_make_image()
 
@@ -103,7 +103,7 @@
 
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
-/mob/proc/langchat_display_image(var/mob/M)
+/mob/proc/langchat_display_image(mob/M)
 	if(langchat_image)
 		if(!langchat_client_enabled(M))
 			return

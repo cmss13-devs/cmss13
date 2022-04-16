@@ -56,7 +56,7 @@
 	to_chat(src, "<span style='color: red;'>Hellhounds are fiercely protective of their masters and will never leave their side if under attack.</span>")
 	to_chat(src, "<span style='color: red;'>Note that ANY Predator can give you orders. If they conflict, follow the latest one. If they dislike your performance they can ask for another ghost and everyone will mock you. So do a good job!</span>")
 
-/mob/living/carbon/hellhound/proc/bite_human(var/mob/living/carbon/human/H)
+/mob/living/carbon/hellhound/proc/bite_human(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -82,7 +82,7 @@
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 	return
 
-/mob/living/carbon/hellhound/proc/bite_xeno(var/mob/living/carbon/Xenomorph/X)
+/mob/living/carbon/hellhound/proc/bite_xeno(mob/living/carbon/Xenomorph/X)
 	if(!istype(X))
 		return
 
@@ -100,7 +100,7 @@
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 	return
 
-/mob/living/carbon/hellhound/proc/bite_animal(var/mob/living/H)
+/mob/living/carbon/hellhound/proc/bite_animal(mob/living/H)
 	if(!istype(H))
 		return
 

@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 /datum/techtree/marine/can_attack(var/mob/living/carbon/H)
 	return !ishuman(H)
 
-/datum/techtree/marine/proc/apply_barricade_health(var/obj/structure/barricade/B)
+/datum/techtree/marine/proc/apply_barricade_health(obj/structure/barricade/B)
 	B.maxhealth += barricade_bonus_health
 	B.update_health(-barricade_bonus_health)
 
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 	last_pain_reduction = world.time + 1 SECONDS // Every second
 
-/datum/techtree/marine/proc/transfer_leader_to(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/transfer_leader_to(mob/living/carbon/human/H)
 	if(!H)
 		return
 	remove_leader()
@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	))
 	leader = null
 
-/datum/techtree/marine/proc/handle_death(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/handle_death(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.check_tod()))
 		RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/cleanup_dead_leader)
@@ -142,12 +142,12 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 		dead_leader = H
 	remove_leader()
 
-/datum/techtree/marine/proc/cleanup_dead_leader(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/cleanup_dead_leader(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(dead_leader == H)
 		dead_leader = null
 
-/datum/techtree/marine/proc/readd_leader(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/readd_leader(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(H != dead_leader)
 		stack_trace("Non-leader attempted to be re-added back to command.")
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	remove_dead_leader()
 	transfer_leader_to(H)
 
-/datum/techtree/marine/proc/handle_zlevel_check(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/handle_zlevel_check(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(!is_mainship_level(H.z))
 		remove_leader()

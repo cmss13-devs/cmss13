@@ -206,7 +206,7 @@
 	return
 
 
-/obj/structure/machinery/door/proc/open(var/forced=0)
+/obj/structure/machinery/door/proc/open(forced=0)
 	if(!density)		return 1
 	if(operating > 0 || !loc)	return
 	if(!operating)		operating = 1
@@ -253,7 +253,7 @@
 	return 1
 
 
-/obj/structure/machinery/door/proc/update_flags_heat_protection(var/turf/source)
+/obj/structure/machinery/door/proc/update_flags_heat_protection(turf/source)
 
 
 /obj/structure/machinery/door/proc/autoclose()

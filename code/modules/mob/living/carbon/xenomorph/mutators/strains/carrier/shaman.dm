@@ -121,7 +121,7 @@
 		return
 	X.egg_sacr_shield(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_shield(var/datum/action/xeno_action/activable/sacrifice_egg/radius_shield/action_def)
+/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_shield(datum/action/xeno_action/activable/sacrifice_egg/radius_shield/action_def)
 	if(!check_state())
 		return
 
@@ -225,7 +225,7 @@
 
 /mob/living/var/scream_stun_timeout
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_scream(var/datum/action/xeno_action/activable/sacrifice_egg/radius_scream/action_def)
+/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_scream(datum/action/xeno_action/activable/sacrifice_egg/radius_scream/action_def)
 	if(!check_state())
 		return
 
@@ -338,7 +338,7 @@
 		return
 	X.egg_sacr_pheromones(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_pheromones(var/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/action_def)
+/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_pheromones(datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/action_def)
 	if(!check_state())
 		return
 
@@ -431,7 +431,7 @@
 		return
 	X.egg_sacr_remember_pain(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_remember_pain(var/datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
+/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_remember_pain(datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
 	if(!check_state())
 		return
 

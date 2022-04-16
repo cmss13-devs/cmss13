@@ -11,14 +11,14 @@
 	var/starter = FALSE //whether or not this is a starter property and should be added to the property database on startup
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	/// Should reagent with this property explode/start fire when mixed more than overdose threshold at once?
-	var/volatile = FALSE 
+	var/volatile = FALSE
 
 /datum/chem_property/Destroy()
 	holder = null
 	. = ..()
 	return QDEL_HINT_IWILLGC
 
-/datum/chem_property/proc/reagent_added(atom/A, datum/reagent/R, var/amount)
+/datum/chem_property/proc/reagent_added(atom/A, datum/reagent/R, amount)
 	return
 
 /datum/chem_property/proc/pre_process(mob/living/M) //used for properties that need special checks before processing starts, such as cryometabolization
@@ -34,22 +34,22 @@
 
 	return TRUE
 
-/datum/chem_property/proc/process_overdose(mob/living/M, var/potency = 1, var/delta_time)
+/datum/chem_property/proc/process_overdose(mob/living/M, potency = 1, var/delta_time)
 	if(QDELETED(src))
 		CRASH("Attempted to process_overdose a deleted chemical property: [name], type=[type]")
 
 	return TRUE
 
-/datum/chem_property/proc/process_critical(mob/living/M, var/potency = 1, var/delta_time)
+/datum/chem_property/proc/process_critical(mob/living/M, potency = 1, var/delta_time)
 	if(QDELETED(src))
 		CRASH("Attempted to process_critical a deleted chemical property: [name], type=[type]")
 
 	return TRUE
 
-/datum/chem_property/proc/process_dead(mob/living/M, var/potency = 1, var/delta_time)
+/datum/chem_property/proc/process_dead(mob/living/M, potency = 1, var/delta_time)
 	return FALSE // By default, chemicals don't process in dead personnel.
 
-/datum/chem_property/proc/trigger(var/A) //used for properties that needs something to trigger outside of where process is usually called
+/datum/chem_property/proc/trigger(A) //used for properties that needs something to trigger outside of where process is usually called
 	return
 
 /datum/chem_property/proc/reset_reagent()

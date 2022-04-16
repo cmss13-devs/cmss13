@@ -314,7 +314,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/almayer_control/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/almayer_control/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 

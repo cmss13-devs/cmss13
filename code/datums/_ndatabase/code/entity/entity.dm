@@ -54,7 +54,7 @@
 
 /datum/entity/proc/detach()
 	metadata.to_read -= src
-	metadata.to_delete -= src	
+	metadata.to_delete -= src
 	metadata.to_update -= src
 	metadata.managed -= src.id
 	if(metadata.key_field)
@@ -76,14 +76,14 @@
 	while(status > DB_ENTITY_STATE_SYNCED)
 		stoplag()
 
-/datum/entity/proc/sync_then(var/datum/callback/CB)
+/datum/entity/proc/sync_then(datum/callback/CB)
 	set waitfor = 0
 	while(status > DB_ENTITY_STATE_SYNCED)
 		stoplag()
 	if(CB)
 		CB.Invoke(src)
 
-/datum/entity/proc/assign_values(var/list/values, var/list/ignore = list())
+/datum/entity/proc/assign_values(list/values, list/ignore = list())
 	for(var/F in metadata.field_types)
 		if(!(ignore.Find(F)))
 			vars[F] = values[F]

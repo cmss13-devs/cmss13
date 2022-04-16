@@ -60,7 +60,7 @@
         "z" = DB_FIELDTYPE_INT
     )
 
-/mob/proc/track_mob_death(var/datum/cause_data/cause_data, var/turf/death_loc)
+/mob/proc/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
 	if(!mind || statistic_exempt)
 		return
 
@@ -134,7 +134,7 @@
 	if(xeno_stats && xeno_stats.death_list)
 		xeno_stats.death_list.Insert(1, .)
 
-/mob/proc/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
+/mob/proc/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	var/observer_message = "<b>[real_name]</b> has died"
 	if(cause_data && cause_data.cause_name)
 		observer_message += " to <b>[cause_data.cause_name]</b>"

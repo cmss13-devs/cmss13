@@ -1,5 +1,5 @@
 
-/proc/generate_templated_fax(var/show_wy_logo,var/fax_header,var/fax_subject,var/addressed_to,var/message_body,var/sent_by,var/sent_title,var/sent_department)
+/proc/generate_templated_fax(show_wy_logo, fax_header, fax_subject, addressed_to, message_body, sent_by, sent_title, sent_department)
 	var/dat = ""
 	dat += "<style>"
 	dat += "body {"

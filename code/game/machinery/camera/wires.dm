@@ -26,11 +26,11 @@
 		flagIndex+=1
 	return wires
 
-/obj/structure/machinery/camera/proc/isWireColorCut(var/wireColor)
+/obj/structure/machinery/camera/proc/isWireColorCut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	return ((src.wires & wireFlag) == 0)
 
-/obj/structure/machinery/camera/proc/isWireCut(var/wireIndex)
+/obj/structure/machinery/camera/proc/isWireCut(wireIndex)
 	var/wireFlag = IndexToFlag[wireIndex]
 	return ((src.wires & wireFlag) == 0)
 
@@ -40,7 +40,7 @@
 	else
 		return 0
 
-/obj/structure/machinery/camera/proc/cut(var/wireColor)
+/obj/structure/machinery/camera/proc/cut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires &= ~wireFlag
@@ -60,7 +60,7 @@
 
 	src.interact(usr)
 
-/obj/structure/machinery/camera/proc/mend(var/wireColor)
+/obj/structure/machinery/camera/proc/mend(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires |= wireFlag
@@ -81,7 +81,7 @@
 	src.interact(usr)
 
 
-/obj/structure/machinery/camera/proc/pulse(var/wireColor)
+/obj/structure/machinery/camera/proc/pulse(wireColor)
 	var/wireIndex = WireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(CAMERA_WIRE_FOCUS)

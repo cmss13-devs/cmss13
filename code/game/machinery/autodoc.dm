@@ -65,7 +65,7 @@
 		go_out()
 		return
 
-/obj/structure/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
+/obj/structure/machinery/autodoc/proc/heal_limb(mob/living/carbon/human/human, brute, burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
@@ -492,7 +492,7 @@
 	go_out()
 
 
-/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SURFACE)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -501,7 +501,7 @@
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -510,14 +510,14 @@
 		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep((CIRCULAR_SAW_MAX_DURATION*surgery_mod) + (RETRACTOR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
 		target.incision_depths[L.name] = SURGERY_DEPTH_DEEP
 
-/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_DEEP)
 		sleep((RETRACTOR_MAX_DURATION*surgery_mod) + (BONEGEL_REPAIR_MAX_DURATION*surgery_mod))
 		if(!surgery)

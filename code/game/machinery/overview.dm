@@ -11,7 +11,7 @@
 
 	src.drawmap(usr)
 
-/obj/structure/machinery/computer/security/proc/drawmap(var/mob/user as mob)
+/obj/structure/machinery/computer/security/proc/drawmap(mob/user as mob)
 
 	var/icx = round(world.maxx/16) + 1
 	var/icy = round(world.maxy/16) + 1

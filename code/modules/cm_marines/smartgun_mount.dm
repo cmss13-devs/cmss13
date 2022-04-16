@@ -581,7 +581,7 @@
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/structure/machinery/m56d_hmg/proc/process_shot(var/mob/user)
+/obj/structure/machinery/m56d_hmg/proc/process_shot(mob/user)
 	set waitfor = FALSE
 
 	if(isnull(target))
@@ -717,10 +717,10 @@
 /obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
 	return FALSE
 
-/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, var/list/mods)
+/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, list/mods)
 	return HANDLE_CLICK_PASS_THRU
 
-/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
+/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(angle) // Might as well keep this too.
 	if(isnull(angle))
 		return
 
@@ -817,7 +817,7 @@
 	if(operator == user)
 		operator = null
 
-/obj/structure/machinery/m56d_hmg/proc/update_pixels(var/mob/user, var/mounting = TRUE)
+/obj/structure/machinery/m56d_hmg/proc/update_pixels(mob/user, mounting = TRUE)
 	if(mounting)
 		var/diff_x = 0
 		var/diff_y = 0
@@ -1278,7 +1278,7 @@
 
 	handle_rotating_gun(user)
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/living/carbon/human/user, var/atom/A)
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(mob/living/carbon/human/user, atom/A)
 	if(!target)
 		return
 	if(operator != user)
@@ -1327,7 +1327,7 @@
 
 // ACTIVE COOLING
 
-/obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(var/mob/user)
+/obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(mob/user)
 	user = operator
 
 	overheat_value = round((rand(M2C_LOW_COOLDOWN_ROLL,M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))

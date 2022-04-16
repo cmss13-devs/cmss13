@@ -119,7 +119,7 @@
 	activation.update_button_icon()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(mob/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -168,21 +168,21 @@
 	attached_mob = null
 	return ..()
 
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/enable_nvg(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/enable_nvg(mob/living/carbon/human/user)
 	remove_nvg()
 
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
 	update_sight(user)
 	attached_mob = user
 
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/update_sight(var/mob/M)
+/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/update_sight(mob/M)
 	SIGNAL_HANDLER
 	if(lighting_alpha < 255)
 		M.see_in_dark = 12
 	M.lighting_alpha = lighting_alpha
 	M.sync_lighting_plane_alpha()
 
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/toggle_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(slot == WEAR_HEAD)

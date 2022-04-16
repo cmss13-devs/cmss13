@@ -54,7 +54,7 @@
 		template.add_crystal(M) //This proc handles attack delay itself.
 	return XENO_NO_DELAY_ACTION
 
-/obj/effect/alien/resin/construction/proc/set_template(var/datum/construction_template/xenomorph/new_template)
+/obj/effect/alien/resin/construction/proc/set_template(datum/construction_template/xenomorph/new_template)
 	if(!istype(new_template) || !linked_hive)
 		return
 	template = new_template

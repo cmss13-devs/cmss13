@@ -30,7 +30,7 @@
 	var/networked = FALSE
 	var/transfer_mode = FALSE
 
-/obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -128,7 +128,7 @@
 
 	ui_interact(user)
 
-/obj/structure/machinery/smartfridge/proc/add_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_item(obj/item/O)
 	O.forceMove(src)
 
 	if(item_quants[O.name])
@@ -136,7 +136,7 @@
 	else
 		item_quants[O.name] = 1
 
-/obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_network_item(obj/item/O)
 	if(is_in_network())
 		chemical_data.shared_item_storage.Add(O)
 
@@ -321,7 +321,7 @@
 		FRIDGE_WIRE_IDSCAN     = "ID scanner"
 	)
 
-/obj/structure/machinery/smartfridge/proc/cut(var/wire)
+/obj/structure/machinery/smartfridge/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -336,7 +336,7 @@
 			locked = 1
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/structure/machinery/smartfridge/proc/mend(var/wire)
+/obj/structure/machinery/smartfridge/proc/mend(wire)
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
@@ -348,7 +348,7 @@
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/pulse(var/wire)
+/obj/structure/machinery/smartfridge/proc/pulse(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			seconds_electrified = 30
@@ -363,7 +363,7 @@
 			locked = -1
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)
+/obj/structure/machinery/smartfridge/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
 /obj/structure/machinery/smartfridge/proc/throw_item()

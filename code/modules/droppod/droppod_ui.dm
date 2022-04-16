@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
 
-/datum/admin_podlauncher/proc/set_target_mode(var/mode)
+/datum/admin_podlauncher/proc/set_target_mode(mode)
 	if(mode == target_mode)
 		return
 
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	holder.mob.reset_view()
 	target_mode = mode
 
-/datum/admin_podlauncher/proc/select_launch_target(var/client/C, var/atom/target, var/list/mods)
+/datum/admin_podlauncher/proc/select_launch_target(client/C, atom/target, list/mods)
 	SIGNAL_HANDLER
 
 	var/left_click = mods["left"]
@@ -208,11 +208,11 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	message_staff("[key_name_admin(C)] launched a droppod", target.x, target.y, target.z)
 	return COMPONENT_INTERRUPT_CLICK
 
-/datum/admin_podlauncher/proc/mouse_launch(var/client/C)
+/datum/admin_podlauncher/proc/mouse_launch(client/C)
 	SIGNAL_HANDLER
 	C.mouse_pointer_icon = 'icons/effects/mouse_pointer/supplypod_target.dmi' //Icon for when mouse is released
 
-/datum/admin_podlauncher/proc/select_dropoff_target(var/client/C, var/atom/target, var/list/mods)
+/datum/admin_podlauncher/proc/select_dropoff_target(client/C, atom/target, list/mods)
 	SIGNAL_HANDLER
 	var/left_click = mods["left"]
 
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	SStgui.update_uis(src)
 	return COMPONENT_INTERRUPT_CLICK
 
-/datum/admin_podlauncher/proc/mouse_dropoff(var/client/C)
+/datum/admin_podlauncher/proc/mouse_dropoff(client/C)
 	SIGNAL_HANDLER
 	C.mouse_pointer_icon = 'icons/effects/mouse_pointer/supplypod_pickturf.dmi' //Icon for when mouse is released
 

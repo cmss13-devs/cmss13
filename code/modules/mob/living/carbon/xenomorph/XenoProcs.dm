@@ -2,7 +2,7 @@
 //LAST EDIT: APOPHIS 22MAY16
 
 //Send a message to all xenos. Mostly used in the deathgasp display
-/proc/xeno_message(var/message = null, var/size = 3, var/hivenumber = XENO_HIVE_NORMAL)
+/proc/xeno_message(message = null, var/size = 3, var/hivenumber = XENO_HIVE_NORMAL)
 	if(!message)
 		return
 
@@ -21,7 +21,7 @@
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
-/proc/xeno_message_all(var/message = null, var/size = 3)
+/proc/xeno_message_all(message = null, var/size = 3)
 	xeno_message(message, size)
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
@@ -131,7 +131,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
+/mob/living/carbon/Xenomorph/proc/check_state(permissive = 0)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -244,7 +244,7 @@
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return
 
-/mob/living/carbon/Xenomorph/proc/pounced_mob(var/mob/living/L)
+/mob/living/carbon/Xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
@@ -308,10 +308,10 @@
 
 	throwing = FALSE //Reset throwing since something was hit.
 
-/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper(var/mob/living/L)
+/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper(mob/living/L)
 	pounced_mob(L)
 
-/mob/living/carbon/Xenomorph/proc/pounced_obj(var/obj/O)
+/mob/living/carbon/Xenomorph/proc/pounced_obj(obj/O)
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
@@ -330,10 +330,10 @@
 		if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
 			O.hitby(src) //This resets throwing.
 
-/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper(var/obj/O)
+/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper(obj/O)
 	pounced_obj(O)
 
-/mob/living/carbon/Xenomorph/proc/pounced_turf(var/turf/T)
+/mob/living/carbon/Xenomorph/proc/pounced_turf(turf/T)
 	if(!T.density)
 		for(var/mob/M in T)
 			pounced_mob(M)
@@ -341,7 +341,7 @@
 	else
 		turf_launch_collision(T)
 
-/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper(var/turf/T)
+/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper(turf/T)
 	pounced_turf(T)
 
 //Bleuugh
@@ -383,7 +383,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, var/silent = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -450,7 +450,7 @@
 
 
 //Welp
-/mob/living/carbon/Xenomorph/proc/xeno_jitter(var/jitter_time = 25)
+/mob/living/carbon/Xenomorph/proc/xeno_jitter(jitter_time = 25)
 	set waitfor = 0
 
 	pixel_x = old_x + rand(-3, 3)
@@ -479,7 +479,7 @@
 		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
 	hud_set_pheromone()
 
-/mob/living/carbon/Xenomorph/proc/nocrit(var/wowave)
+/mob/living/carbon/Xenomorph/proc/nocrit(wowave)
 	if(SSticker?.mode?.hardcore)
 		nocrit = TRUE
 		if(wowave < 15)
@@ -505,7 +505,7 @@
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 
 // Called when pulling something and attacking yourself with the pull
-/mob/living/carbon/Xenomorph/proc/pull_power(var/mob/M)
+/mob/living/carbon/Xenomorph/proc/pull_power(mob/M)
 	if(isXenoWarrior(src) && !ripping_limb && M.stat != DEAD)
 		if(M.status_flags & XENO_HOST)
 			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
@@ -517,7 +517,7 @@
 
 
 // Warrior Rip Limb - called by pull_power()
-/mob/living/carbon/Xenomorph/proc/rip_limb(var/mob/M)
+/mob/living/carbon/Xenomorph/proc/rip_limb(mob/M)
 	if(!istype(M, /mob/living/carbon/human))
 		return FALSE
 
@@ -591,7 +591,7 @@
 	if(pipe)
 		handle_ventcrawl(pipe)
 
-/mob/living/carbon/Xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_min_offset = 0, var/tackle_max_offset = 0, var/tackle_bonus = 0)
+/mob/living/carbon/Xenomorph/proc/attempt_tackle(mob/M, tackle_mult = 1, var/tackle_min_offset = 0, var/tackle_max_offset = 0, var/tackle_bonus = 0)
 	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
 	if(!TC)
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
@@ -617,7 +617,7 @@
 
 	reset_tackle(M)
 
-/mob/living/carbon/Xenomorph/proc/reset_tackle(var/mob/M)
+/mob/living/carbon/Xenomorph/proc/reset_tackle(mob/M)
 	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
 	if (TC)
 		qdel(TC)
@@ -640,7 +640,7 @@
 /mob/living/carbon/Xenomorph/get_role_name()
 	return caste_type
 
-/proc/get_pheromone_aura_strength(var/aura)
+/proc/get_pheromone_aura_strength(aura)
 	switch(aura)
 		if(-INFINITY to 0.9)
 			return "Very Weak"

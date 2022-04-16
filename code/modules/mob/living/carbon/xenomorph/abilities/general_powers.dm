@@ -288,7 +288,7 @@
 		return
 	X.emit_pheromones(emit_cost = plasma_cost)
 
-/mob/living/carbon/Xenomorph/proc/emit_pheromones(var/pheromone, var/emit_cost = 30)
+/mob/living/carbon/Xenomorph/proc/emit_pheromones(pheromone, emit_cost = 30)
 	if(!check_state(TRUE))
 		return
 	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
@@ -629,7 +629,7 @@
 
 // XSS Spacecheck
 
-/datum/action/xeno_action/activable/place_construction/proc/spacecheck(var/mob/living/carbon/Xenomorph/X, var/turf/T, datum/construction_template/xenomorph/tem)
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/Xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
 		for(var/turf/TA in range(T, tem.block_range))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
@@ -764,7 +764,7 @@
 /datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
 	return owner
 
-/turf/proc/can_bombard(var/mob/bombarder)
+/turf/proc/can_bombard(mob/bombarder)
 	if(!can_be_dissolved() && density) return FALSE
 	for(var/atom/A in src)
 		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
@@ -774,7 +774,7 @@
 
 	return TRUE
 
-/mob/living/carbon/Xenomorph/proc/can_bombard_turf(var/atom/target, var/range = 5, var/atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/mob/living/carbon/Xenomorph/proc/can_bombard_turf(atom/target, range = 5, var/atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
 		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
 		return FALSE

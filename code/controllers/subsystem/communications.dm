@@ -38,7 +38,7 @@
         filter - described above.
         range - radius of regular byond's square circle on that z-level. null means everywhere, on all z-levels.
 
-  obj/proc/receive_signal(datum/signal/signal, var/receive_method as num, var/receive_param)
+  obj/proc/receive_signal(datum/signal/signal, receive_method as num, var/receive_param)
     Handler from received signals. By default does nothing. Define your own for your object.
     Avoid of sending signals directly from this proc, use spawn(-1). DO NOT use sleep() here or call procs that sleep please. If you must, use spawn()
       parameters:
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(radio)
 
 	return 1
 
-/datum/controller/subsystem/radio/proc/return_frequency(var/new_frequency as num)
+/datum/controller/subsystem/radio/proc/return_frequency(new_frequency as num)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
-/datum/controller/subsystem/radio/proc/get_available_tcomm_zs(var/frequency)
+/datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
 	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
@@ -287,17 +287,17 @@ SUBSYSTEM_DEF(radio)
 	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs
 
-/datum/controller/subsystem/radio/proc/add_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))
 		addToListNoDupe(tcomm_machines_ground, machine)
 	if(is_mainship_level(machine.z))
 		addToListNoDupe(tcomm_machines_almayer, machine)
 
-/datum/controller/subsystem/radio/proc/remove_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/remove_tcomm_machine(obj/machine)
 	tcomm_machines_ground -= machine
 	tcomm_machines_almayer -= machine
 
-/datum/controller/subsystem/radio/proc/get_frequency_span(var/frequency)
+/datum/controller/subsystem/radio/proc/get_frequency_span(frequency)
 	if(frequency in ANTAG_FREQS)
 		return "syndradio"
 	if(frequency in CENT_FREQS)
@@ -329,7 +329,7 @@ SUBSYSTEM_DEF(radio)
 			send_to_filter(source, signal, next_filter, start_point, range)
 
 //Sends a signal to all machines belonging to a given filter. Should be called by post_signal()
-/datum/radio_frequency/proc/send_to_filter(obj/source, datum/signal/signal, var/filter, var/turf/start_point = null, var/range = null)
+/datum/radio_frequency/proc/send_to_filter(obj/source, datum/signal/signal, filter, turf/start_point = null, var/range = null)
 	if (range && !start_point)
 		return
 

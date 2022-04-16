@@ -6,7 +6,7 @@ To define a test set:
 2.  Make a new file for your test set definition, e.g. `test/mob_death/test_set_mob_death.dm`
 4.  Define the test set:
 ```
-/datum/test_case/mob_death  
+/datum/test_case/mob_death
     test_set = "Mob death"
 ```
 **NOTE**: You should not set the `name` variable for the datum defining a test set.
@@ -15,7 +15,7 @@ To define a test set:
 Define test cases like this, preferably in their own files, e.g. `test/TESTSETNAME/TESTCASENAME.dm`:
 ```
 /datum/test_case/TESTSETNAME/TESTCASENAME
-    name = "description of what the test case is testing"  
+    name = "description of what the test case is testing"
 
 // Run the test in here
 // A *falsy return* from this is interpreted as the test *passing*
@@ -26,43 +26,43 @@ Define test cases like this, preferably in their own files, e.g. `test/TESTSETNA
 // This is run before test()
 // Set up stuff you need in the test here
 // This could be spawning mobs, items, etc.
-/datum/test_case/TESTSETNAME/TESTCASENAME/setUp()  
-    ...  
+/datum/test_case/TESTSETNAME/TESTCASENAME/setUp()
+    ...
 ```
 
 `test()` should be a short proc that checks if the program behaved correctly, which can be done by using one or more of the following assertions:
 
 ```
 // Assert that a statement evaluates to true
-/datum/test_case/proc/assertTrue(var/statement, var/fail_msg)
+/datum/test_case/proc/assertTrue(statement, fail_msg)
 
 // Assert that a statement evaluates to false
-/datum/test_case/proc/assertFalse(var/statement, var/fail_msg)  
+/datum/test_case/proc/assertFalse(statement, fail_msg)
 
 // Assert that a equals b
-/datum/test_case/proc/assertEquals(var/a, var/b, var/fail_msg)  
+/datum/test_case/proc/assertEquals(a, b, fail_msg)
 
 // Assert that a > b
-/datum/test_case/proc/assertGt(var/a, var/b, var/fail_msg)  
+/datum/test_case/proc/assertGt(a, b, fail_msg)
 
 // Assert that a >= b
-/datum/test_case/proc/assertGtEq(var/a, var/b, var/fail_msg)  
+/datum/test_case/proc/assertGtEq(a, b, fail_msg)
 
 // Assert that a < b
-/datum/test_case/proc/assertLt(var/a, var/b, var/fail_msg)  
+/datum/test_case/proc/assertLt(a, b, fail_msg)
 
 // Assert that a <= b
-/datum/test_case/proc/assertLtEq(var/a, var/b, var/fail_msg)  
+/datum/test_case/proc/assertLtEq(a, b, fail_msg)
 
 // Assert that a is in the list L
-/datum/test_case/proc/assertInList(var/a, var/list/L, var/fail_msg)
+/datum/test_case/proc/assertInList(a, list/L, fail_msg)
 ```
 The `fail_msg` variable is *technically* optional, but should *always* be used. If the test fails on any assertion, `fail_msg` is output by the test framework as an explanation for why the test failed.
 
 If you want finer control over when the test should fail, you can use the `fail()` proc to manually fail the test at any time.
 ```
 // Fails the test with the given message
-/datum/test_case/proc/fail(var/fail_msg)
+/datum/test_case/proc/fail(fail_msg)
 ```
 
  If the test case requires setup before it runs, for example building a room, spawning a mob, etc. you can do it in the `setUp()` proc of your test case.
@@ -106,14 +106,14 @@ Output from a test set looks something like this (`verbose` = true):
 
 ```
 Test case: Undefibbables should not process - pass
-Test case Dead mobs process reagents failed with the following message:  
+Test case Dead mobs process reagents failed with the following message:
 expected 0 >= 1
 Test case: Dead mobs process reagents - fail
 ...
 
-Finished test set: Mob death  
-Pass: 4  
-Fail: 1  
+Finished test set: Mob death
+Pass: 4
+Fail: 1
 Error: 1
 ```
 
@@ -121,25 +121,25 @@ Running all tests will run every test set, sum the results from each test set, t
 
 Output from running all tests looks something like this (`verbose` = true):
 ```
-Running test set: Mob death  
-Test case: Undefibbables should not process - pass  
-Test case Dead mobs process reagents failed with the following message:  
-expected 0 >= 1  
-Test case: Dead mobs process reagents - fail  
+Running test set: Mob death
+Test case: Undefibbables should not process - pass
+Test case Dead mobs process reagents failed with the following message:
+expected 0 >= 1
+Test case: Dead mobs process reagents - fail
 ...
-  
+
 Finished test set: Mob death
-Pass: 4  
-Fail: 1  
-Error: 1  
-  
+Pass: 4
+Fail: 1
+Error: 1
+
 Running test set: Something else
-...  
-  
-Finished 23 test(s) in 381.8 seconds  
-----------------------------------------  
-Pass: 16  
-Fail: 6  
-Error: 1  
+...
+
+Finished 23 test(s) in 381.8 seconds
+----------------------------------------
+Pass: 16
+Fail: 6
+Error: 1
 ----------------------------------------
 ```

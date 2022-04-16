@@ -28,7 +28,7 @@
 	show_browser(user, dat, name, "crew_monitor", "size=600x700")
 	onclose(user, "crew_monitor")
 
-/obj/item/tool/crew_monitor/proc/get_crew_info(var/mob/user)
+/obj/item/tool/crew_monitor/proc/get_crew_info(mob/user)
 	var/dat = ""
 	dat += {"
 	<script type="text/javascript">

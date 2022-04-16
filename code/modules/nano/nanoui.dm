@@ -158,7 +158,7 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/update_status(var/push_update = 0)
+/datum/nanoui/proc/update_status(push_update = 0)
 	set waitfor = 0
 	if (isnewplayer(user) && check_rights(R_ADMIN|R_MOD))
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
@@ -239,7 +239,7 @@ nanoui is used to open and update nano browser uis
   *
   * @return /list data to send to the ui
   */
-/datum/nanoui/proc/get_send_data(var/list/data)
+/datum/nanoui/proc/get_send_data(list/data)
 	if(QDELETED(src))
 		// Don't send any data if the UI is being qdeleted
 		return list("config" = list())
@@ -541,6 +541,6 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/update(var/force_open = 0)
+/datum/nanoui/proc/update(force_open = 0)
 	set waitfor = 0
 	src_object.ui_interact(user, ui_key, src, force_open)

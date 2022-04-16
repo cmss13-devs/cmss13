@@ -71,11 +71,11 @@
 	var/atom/A = parent
 	A.remove_filter("cluster_stacks")
 
-/datum/component/cluster_stack/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/cluster_stack/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Cluster Stack: [cluster_stacks]/[MAX_CLUSTER_STACKS]"
 
-/datum/component/cluster_stack/proc/apply_cluster_stacks(var/mob/living/L, damage_result, ammo_flags, obj/item/projectile/P)
+/datum/component/cluster_stack/proc/apply_cluster_stacks(mob/living/L, damage_result, ammo_flags, obj/item/projectile/P)
 	SIGNAL_HANDLER
 	if(cluster_stacks >= MAX_CLUSTER_STACKS)
 		var/old_dmg_cont = damage_counter

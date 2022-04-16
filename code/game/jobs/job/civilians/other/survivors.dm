@@ -57,7 +57,7 @@
 	else
 		tell_survivor_story(H)
 
-/datum/job/civilian/survivor/proc/tell_survivor_story(var/mob/living/carbon/human/H)
+/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
 	var/list/survivor_story = list(
 								"You watched as a larva burst from the chest of your friend, {name}. You tried to capture the alien thing, but it escaped through the ventilation.",
 								"{name} was attacked by a facehugging alien, which impregnated them with an alien lifeform. {name}'s chest exploded in gore as some creature escaped.",
@@ -95,7 +95,7 @@
 
 	return TRUE
 
-/datum/job/civilian/survivor/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
+/datum/job/civilian/survivor/proc/survivor_old_equipment(mob/living/carbon/human/H)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 

@@ -129,7 +129,7 @@
 		else
 			qdel(object)
 
-/datum/buildmode/build/proc/filter_vars(var/atom/A)
+/datum/buildmode/build/proc/filter_vars(atom/A)
 	var/list/filtered_vars = list()
 
 	for(var/variable in A.vars)
@@ -144,7 +144,7 @@
 
 	return filtered_vars
 
-/datum/buildmode/build/proc/apply_copied_vars_shallow(var/atom/A)
+/datum/buildmode/build/proc/apply_copied_vars_shallow(atom/A)
 	if(ismob(A)) // Mobs shouldn't be shallow copied for obvious reasons
 		return
 
@@ -161,7 +161,7 @@
 
 
 /*
-/datum/buildmode/build/proc/recursive_list_copy(var/list/L, var/list/already_copied = list())
+/datum/buildmode/build/proc/recursive_list_copy(list/L, list/already_copied = list())
 	if(!istype(L))
 		return
 

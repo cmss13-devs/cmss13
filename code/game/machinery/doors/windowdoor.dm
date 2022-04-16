@@ -91,7 +91,7 @@
 	src.operating = 0
 	return 1
 
-/obj/structure/machinery/door/window/proc/take_damage(var/damage)
+/obj/structure/machinery/door/window/proc/take_damage(damage)
 	src.health = max(0, src.health - damage)
 	if (src.health <= 0)
 		new /obj/item/shard(src.loc)

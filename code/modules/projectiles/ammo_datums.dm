@@ -64,7 +64,7 @@
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
 	return
 
-/datum/ammo/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
@@ -89,7 +89,7 @@
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/living/L, obj/item/projectile/P, var/max_range = 2)
+/datum/ammo/proc/knockback(mob/living/L, obj/item/projectile/P, max_range = 2)
 	if(!L || L == P.firer)
 		return
 	if(P.distance_travelled > max_range || L.lying)
@@ -120,7 +120,7 @@
 			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		L.apply_damage(MELEE_FORCE_TIER_2)
 
-/datum/ammo/proc/heavy_knockback(mob/living/L, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
+/datum/ammo/proc/heavy_knockback(mob/living/L, obj/item/projectile/P, max_range = 6) //crazier version of knockback
 	if(!L || L == P.firer)
 		return
 	if(P.distance_travelled > max_range || L.lying)
@@ -153,7 +153,7 @@
 			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		L.apply_damage(MELEE_FORCE_TIER_2)
 
-/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
+/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, max_range = 2)
 	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
 		return
 
@@ -2579,7 +2579,7 @@
 /datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/item/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
-/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(var/turf/T)
+/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(turf/T)
 
 	if (!istype(T))
 		return
@@ -2968,7 +2968,7 @@
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
 	drop_flare(get_turf(P), P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+/datum/ammo/flare/proc/drop_flare(turf/T, mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
@@ -3045,7 +3045,7 @@
 /datum/ammo/souto/on_shield_block(mob/M, obj/item/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/proc/drop_can(var/loc, obj/item/projectile/P)
+/datum/ammo/souto/proc/drop_can(loc, obj/item/projectile/P)
 	if(P.contents.len)
 		for(var/obj/item/I in P.contents)
 			I.forceMove(loc)
@@ -3078,7 +3078,7 @@
 /datum/ammo/grenade_container/do_at_max_range(obj/item/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/proc/drop_nade(var/obj/item/projectile/P)
+/datum/ammo/grenade_container/proc/drop_nade(obj/item/projectile/P)
 	var/turf/T = get_turf(P)
 	var/obj/item/explosive/grenade/G = new nade_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
@@ -3117,7 +3117,7 @@
 /datum/ammo/hugger_container/do_at_max_range(obj/item/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/proc/spawn_hugger(var/turf/T)
+/datum/ammo/hugger_container/proc/spawn_hugger(turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	child.leap_at_nearest_target()

@@ -7,7 +7,7 @@
 
 //-----------------MAIN BUMP HANDLING PROC-------------------
 
-/atom/proc/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/atom/proc/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
 //-----------------------------------------------------------

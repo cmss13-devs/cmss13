@@ -295,7 +295,7 @@
 		qdel(src)
 
 
-/mob/living/carbon/Xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/Xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)
@@ -401,7 +401,7 @@
 	if(target.stat == DEAD)
 		to_chat(src, SPAN_WARNING("[target] is dead!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
@@ -421,7 +421,7 @@
 	if(target.stat == DEAD)
 		to_chat(src, SPAN_WARNING("[target] is dead!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return

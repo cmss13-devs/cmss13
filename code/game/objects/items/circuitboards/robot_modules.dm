@@ -28,7 +28,7 @@
 //		src.jetpack.name = "Placeholder Upgrade Item"
 
 
-/obj/item/circuitboard/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 
 	if(!stacktypes || !stacktypes.len) return
 
@@ -52,7 +52,7 @@
 		if(O)
 			modules += O
 
-/obj/item/circuitboard/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/proc/add_languages(mob/living/silicon/robot/R)
 	//full set of languages
 	R.add_language(LANGUAGE_RUSSIAN, 1)
 	R.add_language(LANGUAGE_JAPANESE, 1)

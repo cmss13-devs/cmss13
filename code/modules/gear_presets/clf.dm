@@ -38,29 +38,27 @@
 	skills = /datum/skills/clf
 
 /datum/equipment_preset/clf/soldier/load_gear(mob/living/carbon/human/H)
-	var/obj/item/clothing/under/colonist/clf/M = new()
-	var/obj/item/clothing/accessory/storage/black_vest/W = new()
-	M.attach_accessory(H, W)
-	H.equip_to_slot_or_del(M, WEAR_BODY)
-	spawn_rebel_shotgun(H)
+	var/obj/item/clothing/under/colonist/clf/jumpsuit = new()
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	jumpsuit.attach_accessory(H, W)
+	H.equip_to_slot_or_del(jumpsuit, WEAR_BODY)
 	spawn_rebel_suit(H)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_JACKET)
 	spawn_rebel_helmet(H)
 	spawn_rebel_shoes(H)
 	spawn_rebel_gloves(H)
-	if(prob(75))
-		H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	else
-		spawn_rebel_belt(H)
-
-	if(prob(50))
-		spawn_rebel_rifle(H)
-	else
-		spawn_rebel_smg(H)
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_BACK)
+	if(prob(50))
+		spawn_rebel_smg(H)
+	else
+		spawn_rebel_rifle(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
+
 
 //*****************************************************************************************************/
 
@@ -198,15 +196,20 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	//specialist backpack stuff
 	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
+
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	//storage items
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 
-	spawn_rebel_specialist_weapon(H, 10)
-
+	if(prob(75))
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
+		spawn_rebel_specialist_weapon(H, 10)
+	else
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_JACKET)
+		spawn_weapon(/obj/item/weapon/gun/lever_action/r4t, /obj/item/ammo_magazine/handful/lever_action, H)
 	return
 
 //*****************************************************************************************************/

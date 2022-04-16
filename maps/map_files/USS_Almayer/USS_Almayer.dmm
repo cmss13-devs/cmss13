@@ -4655,7 +4655,6 @@
 	},
 /area/shuttle/drop1/sulaco)
 "ana" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
 /obj/structure/sign/safety/hazard{
 	pixel_x = -17;
 	pixel_y = -8
@@ -4664,6 +4663,7 @@
 	pixel_x = -17;
 	pixel_y = 7
 	},
+/obj/structure/machinery/cm_vending/clothing/pilot_officer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -11954,7 +11954,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30)
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -50676,8 +50678,14 @@
 	},
 /area/almayer/living/captain_mess)
 "jmR" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/cassette_tape,
+/obj/structure/ladder/fragile_almayer{
+	id = "kitchen";
+	height = 2
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -58164,7 +58172,7 @@
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_access_txt = "19"
+	req_one_access_txt = "19;30"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -63937,7 +63945,14 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/reagent_dispensers/beerkeg,
+/obj/structure/ladder/fragile_almayer{
+	id = "kitchen";
+	height = 1
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
@@ -70225,6 +70240,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"szi" = (
+/turf/closed/wall/almayer/reinforced{
+	color = null
+	},
+/area/almayer/shipboard/brig/general_equipment)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -70261,6 +70281,13 @@
 	tag = "icon-emerald (SOUTHEAST)"
 	},
 /area/almayer/squads/charlie)
+"szO" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/pilotbunks)
 "sAc" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
@@ -75132,7 +75159,6 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "uGz" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
 	},
@@ -106564,7 +106590,7 @@ aws
 amh
 aiX
 ana
-aqw
+szO
 aqw
 aiX
 amh
@@ -110045,9 +110071,9 @@ baw
 mnA
 rKs
 aJU
-xCX
+szi
 csz
-xCX
+szi
 aJU
 baw
 aJU

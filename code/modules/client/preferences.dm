@@ -970,11 +970,12 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_greave_material = new_pred_greave_mat
 				if("pred_flavor_text")
-					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as text|null
+					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
 					if(pred_flv_raw)
-						var/predator_flv_txt = reject_bad_text(pred_flv_raw, 40)
-						if (predator_flv_txt) predator_flavor_text = predator_flv_txt
-						else to_chat(user, "<font color='red'>Invalid flavortext. Your flavortext should be at most 40 characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+						var/predator_flv_txt = strip_html(pred_flv_raw, MAX_EMOTE_LEN)
+						if (predator_flv_txt) 
+							predator_flavor_text = predator_flv_txt
+							predator_flavor_text = html_encode(predator_flavor_text)
 					else
 						predator_flavor_text = ""
 

@@ -26,14 +26,14 @@
 
 /datum/mutator_set/proc/list_and_purchase_mutators()
 	var/list/mutators_for_purchase = available_mutators()
-	var/mob/living/carbon/Xenomorph/X = usr
+	var/mob/living/carbon/Xenomorph/Xeno = usr
 	if(mutators_for_purchase.len == 0)
 		to_chat(usr, "There are no available strains.")
 	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase)
 	if(!pick)
 		return FALSE
 	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return
-	if(!X.strain_checks())
+	if(!Xeno.strain_checks())
 		return
 	if(GLOB.xeno_mutator_list[pick].apply_mutator(src))
 		to_chat(usr, "Mutation complete!")

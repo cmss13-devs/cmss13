@@ -12,11 +12,11 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin,		/*toggles whether people can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
-	/datum/admins/proc/view_txt_log,	/*shows the server log (diary) for today*/
+	/datum/admins/proc/view_txt_log,	/*shows the server log (GLOB.diary) for today*/
 	/client/proc/cmd_stickyban,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/giveruntimelog,		/*allows us to give access to runtime logs to somebody*/
-	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
+	/client/proc/getserverlog,			/*allows us to fetch server logs (GLOB.diary) for other days*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command.
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/

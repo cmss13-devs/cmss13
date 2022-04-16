@@ -1782,14 +1782,6 @@
 	icon_state = "desert"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"UP" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple{
-	color = "#b29082"
-	})
 "UU" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/shuttle{
@@ -2747,7 +2739,7 @@ mv
 mv
 kO
 PA
-UP
+Xb
 mv
 mv
 mv

@@ -129,7 +129,7 @@
 	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy."
 	icon_state = "purple"
 	item_state = "glasses"
-	deactive_state = "degoggles_type2"
+	deactive_state = "purple_off"
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	flags_inventory = COVEREYES

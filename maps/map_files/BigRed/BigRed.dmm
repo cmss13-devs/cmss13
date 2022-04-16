@@ -13142,7 +13142,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/access_button/airlock_interior{
-	master_pixel_y = 28
+	pixel_y = 28
 	},
 /turf/open/floor{
 	dir = 9;
@@ -14015,7 +14015,7 @@
 /area/bigredv2/caves/lambda/research)
 "aJR" = (
 /obj/structure/machinery/access_button/airlock_exterior{
-	master_pixel_y = -28
+	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;

@@ -17,11 +17,8 @@ for file in glob.glob("./**/*.dm", recursive=True):
                 continue
             info.append("GLOBAL_LIST_INIT_TYPED({}, /{}, {})".format(search.group(3), search.group(2), search.group(4)))
 
-        print(info)
         with open(file, "w", encoding="utf-8") as f:
-            f.write(line.replace(search.group(3), "var_" + search.group(3)))
-
-
+            f.write("\n".join(info))
 
 for file in glob.glob("./**/*.dm", recursive=True):
     # I want to record all variable instances into an array called var_array
@@ -31,3 +28,5 @@ for file in glob.glob("./**/*.dm", recursive=True):
         for data in var_array:
             info = re.sub(r"^"+re.escape(data)+r"$", "GLOB."+data, info)
 
+        with open(file, "w", encoding="utf-8") as f:
+            f.write(info)

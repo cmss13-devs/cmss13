@@ -631,7 +631,7 @@
 	exploding = 1
 	var/turf/T = get_turf(src)
 	if(explosion_type == 0 && victim.stat == CONSCIOUS && is_ground_level(T.z))
-		playsound(src, 'sound/voice/pred_lastlaugh.ogg', 100, 0, 17, status = 0)
+		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))

@@ -36,9 +36,14 @@
 
 		//items that ask to be called every cycle
 
+//////////////
+var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
+	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
+	"table","td","th","tr")
+
 ///////////////
 
-GLOBAL_VAR(diary)
+var/diary = null
 var/round_stats = null
 var/round_scheduler_stats = null
 var/mutator_logs = null
@@ -65,6 +70,9 @@ var/shuttle_left = 0
 var/midi_playing = 0
 var/heard_midi = 0
 var/total_silenced = 0
+
+var/list/admin_log = list()
+var/list/asset_log = list()
 
 var/CELLRATE = 0.002	// multiplier for watts per tick <> cell storage (eg: 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
 						//It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided

@@ -432,7 +432,6 @@
 	if(istype(W) && !W.heat_source && !W.burnt)
 		W.light_match()
 
-
 /obj/item/storage/box/quickclot
 	name = "box of quickclot injectors"
 	desc = "Contains quickclot autoinjectors."

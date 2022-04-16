@@ -272,6 +272,59 @@
 	storage_slots = 1
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
 
+/obj/item/storage/fancy/cigar/matchbook
+	name = "\improper Lucky Strikes matchbook"
+	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
+	icon_state = "mpacket"
+	item_state = "zippo"
+	storage_slots = 6
+	can_hold = list()
+	icon_type = "match"
+	default_cigar_type = /obj/item/tool/match/paper
+	var/light_chance = 70 //how likely you are to light the match on the book
+	var/burn_chance = 20 //how likely you are to burn yourself once you light it
+
+/obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
+	if(!istype(user))
+		return
+	if(prob(light_chance))
+		if(istype(W) && !W.heat_source && !W.burnt)
+			if(prob(burn_chance))
+				to_chat(user, SPAN_WARNING("\The [W] lights, but you burn your hand in the process! Ouch!"))
+				user.apply_damage(3, BRUTE, pick("r_hand", "l_hand"))
+				if((user.pain.feels_pain) && prob(25))
+					user.emote("scream")
+				W.light_match()
+			else
+				W.light_match()
+				to_chat(user, SPAN_NOTICE("You light \the [W] on \the [src]."))
+	else
+		to_chat(user, SPAN_NOTICE("\The [W] fails to light."))
+
+/obj/item/storage/fancy/cigar/matchbook/brown
+	name = "brown matchbook"
+	desc = "A small book of cheap paper matches. Good luck getting them to light. Made with generic brown paper."
+	icon_state = "mpacket_br"
+
+/obj/item/storage/fancy/cigar/matchbook/koorlander
+	name = "\improper Koorlander matchbook"
+	desc = "A small book of cheap paper matches. Good luck getting them to light."
+	icon_state = "mpacket_kl"
+
+/obj/item/storage/fancy/cigar/matchbook/exec_select
+	name = "\improper Executive Select matchbook"
+	desc = "A small book of expensive paper matches. These ones light almost every time!"
+	icon_state = "mpacket_es"
+	light_chance = 90
+	burn_chance = 0
+
+/obj/item/storage/fancy/cigar/matchbook/wy_gold
+	name = "\improper Weyland-Yutani Gold matchbook"
+	desc = "A small book of expensive paper matches. These ones light almost every time, or so the packaging claims."
+	icon_state = "mpacket_wy"
+	light_chance = 60
+	burn_chance = 40
+
 /*
  * Vial Box
  */

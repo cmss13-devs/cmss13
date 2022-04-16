@@ -307,6 +307,7 @@
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/katana/full,
 		/obj/item/storage/large_holster/machete/full,
+		/obj/item/storage/belt/marine
 		)
 	H.equip_to_slot_or_del(new beltpath, WEAR_WAIST)
 
@@ -338,7 +339,6 @@
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
 		)
 
 	//no guns in sidearms list, we don't want players spawning with a gun in hand.

@@ -235,7 +235,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	spawn_rebel_belt(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(H), WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
@@ -245,12 +246,14 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/multitool(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 
-	spawn_rebel_rifle(H)
-	spawn_rebel_weapon(H,1)
+	spawn_weapon(/obj/item/weapon/gun/rifle/mar40, /obj/item/ammo_magazine/rifle/mar40, H)
 
 //*****************************************************************************************************/
 

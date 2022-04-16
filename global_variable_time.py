@@ -25,6 +25,6 @@ for file in glob.glob("./**/*.dm", recursive=True):
     with open(file, "r", encoding="utf-8") as f:
         info = f.read()
         for data in var_array:
-            info = re.sub(r"([\. \[\]])("+re.escape(data)+r")([\.\[\] ])", "$1GLOB.$2$3", info)
+            info = re.sub(r"\b"+re.escape(data)+r"\b", "GLOB."+data, info)
         with open(file, "w", encoding="utf-8") as f:
             f.write(info)

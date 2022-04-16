@@ -365,7 +365,7 @@ var/list/roundstart_mod_verbs = list(
 	if(!check_rights(R_ADMIN))	return
 
 	if(!warned_ckey || !istext(warned_ckey))	return
-	if(warned_ckey in admin_datums)
+	if(warned_ckey in GLOB.admin_datums)
 		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
 		return
 

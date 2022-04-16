@@ -12,7 +12,7 @@
 	desc = ""
 	severity = "Medium"
 	agent = "Unknown Biological Organism X-65"
-	hidden = list(1,0) //Hidden from med-huds, but not pandemic scanners.  BLOOD TESTS FOR THE WIN
+	hidden = list(1,0) //Hidden from med-GLOB.huds, but not pandemic scanners.  BLOOD TESTS FOR THE WIN
 	permeability_mod = 2
 	stage_prob = 4
 	stage_minimum_age = 150

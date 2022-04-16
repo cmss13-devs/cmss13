@@ -163,28 +163,28 @@
 		if(HUD_toggled[i])
 			switch(i)
 				if("Medical HUD")
-					H = huds[MOB_HUD_MEDICAL_OBSERVER]
+					H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 					H.add_hud_to(src)
 				if("Security HUD")
-					H = huds[MOB_HUD_SECURITY_ADVANCED]
+					H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 					H.add_hud_to(src)
 				if("Squad HUD")
-					H = huds[MOB_HUD_FACTION_OBSERVER]
+					H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 					H.add_hud_to(src)
 				if("Xeno Status HUD")
-					H = huds[MOB_HUD_XENO_STATUS]
+					H = GLOB.huds[MOB_HUD_XENO_STATUS]
 					H.add_hud_to(src)
 				if("Faction UPP HUD")
-					H = huds[MOB_HUD_FACTION_UPP]
+					H = GLOB.huds[MOB_HUD_FACTION_UPP]
 					H.add_hud_to(src)
 				if("Faction Wey-Yu HUD")
-					H = huds[MOB_HUD_FACTION_WY]
+					H = GLOB.huds[MOB_HUD_FACTION_WY]
 					H.add_hud_to(src)
 				if("Faction RESS HUD")
-					H = huds[MOB_HUD_FACTION_RESS]
+					H = GLOB.huds[MOB_HUD_FACTION_RESS]
 					H.add_hud_to(src)
 				if("Faction CLF HUD")
-					H = huds[MOB_HUD_FACTION_CLF]
+					H = GLOB.huds[MOB_HUD_FACTION_CLF]
 					H.add_hud_to(src)
 
 	see_invisible = INVISIBILITY_OBSERVER

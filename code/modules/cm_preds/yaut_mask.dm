@@ -134,7 +134,7 @@
 
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
-		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		H.remove_hud_from(user)
 
 		var/obj/item/G = user.glasses
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
-		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		H.add_hud_to(user)
 		add_vision(user)
 	..()
@@ -170,18 +170,18 @@
 
 /obj/item/clothing/mask/gas/yautja/thrall/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
-		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		H.add_hud_to(user)
-		H = huds[MOB_HUD_HUNTER]
+		H = GLOB.huds[MOB_HUD_HUNTER]
 		H.add_hud_to(user)
 		add_vision(user)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/thrall/dropped(mob/living/carbon/human/user)
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
-		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(user)
-		H = huds[MOB_HUD_HUNTER]
+		H = GLOB.huds[MOB_HUD_HUNTER]
 		H.remove_hud_from(user)
 	..()
 
@@ -217,21 +217,21 @@
 
 /obj/item/clothing/mask/gas/yautja/hunter/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
-		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		H.add_hud_to(user)
-		H = huds[MOB_HUD_HUNTER_CLAN]
+		H = GLOB.huds[MOB_HUD_HUNTER_CLAN]
 		H.add_hud_to(user)
-		H = huds[MOB_HUD_HUNTER]
+		H = GLOB.huds[MOB_HUD_HUNTER]
 		H.add_hud_to(user)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/hunter/dropped(mob/living/carbon/human/user)
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
-		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(user)
-		H = huds[MOB_HUD_HUNTER_CLAN]
+		H = GLOB.huds[MOB_HUD_HUNTER_CLAN]
 		H.remove_hud_from(user)
-		H = huds[MOB_HUD_HUNTER]
+		H = GLOB.huds[MOB_HUD_HUNTER]
 		H.remove_hud_from(user)
 	..()
 

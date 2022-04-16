@@ -66,8 +66,7 @@ var/global/current_date_string
 
 var/global/datum/money_account/vendor_account
 var/global/datum/money_account/station_account
-var/global/list/datum/money_account/department_accounts = list()
-var/global/num_financial_terminals = 1
+GLOBAL_LIST_INIT_TYPED(department_accounts, /datum/money_account, list())var/global/num_financial_terminals = 1
 var/global/next_account_number = 0
 var/global/list/all_money_accounts = list()
 var/global/economy_init = 0
@@ -105,7 +104,7 @@ var/global/economy_init = 0
 	create_station_account()
 
 	create_department_account("Vendor")
-	vendor_account = department_accounts["Vendor"]
+	vendor_account = GLOB.department_accounts["Vendor"]
 
 	current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
 
@@ -157,4 +156,4 @@ var/global/economy_init = 0
 	department_account.transaction_log.Add(T)
 	all_money_accounts.Add(department_account)
 
-	department_accounts[department] = department_account
+	GLOB.department_accounts[department] = department_account

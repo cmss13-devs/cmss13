@@ -1,7 +1,7 @@
 /* HUD DATUMS */
 
 //GLOBAL HUD LIST
-var/list/datum/mob_hud/huds = list(
+GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),
 	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(),
@@ -19,7 +19,7 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan()
-	)
+))
 
 /datum/mob_hud
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
@@ -196,17 +196,17 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/hologram/queen/add_to_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
 /mob/living/carbon/human/add_to_all_mob_huds()
-	for(var/datum/mob_hud/hud in huds)
+	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(istype(hud, /datum/mob_hud/xeno)) //this one is xeno only
 			continue
 		hud.add_to_hud(src)
 
 /mob/living/carbon/Xenomorph/add_to_all_mob_huds()
-	for(var/datum/mob_hud/hud in huds)
+	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(!istype(hud, /datum/mob_hud/xeno))
 			continue
 		hud.add_to_hud(src)
@@ -216,17 +216,17 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/hologram/queen/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()
-	for(var/datum/mob_hud/hud in huds)
+	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(istype(hud, /datum/mob_hud/xeno))
 			continue
 		hud.remove_from_hud(src)
 
 /mob/living/carbon/Xenomorph/remove_from_all_mob_huds()
-	for(var/datum/mob_hud/hud in huds)
+	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src)
@@ -238,7 +238,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/proc/refresh_huds(mob/source_mob)
 	var/mob/M = source_mob ? source_mob : src
-	for(var/datum/mob_hud/hud in huds)
+	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(M in hud.hudusers)
 			readd_hud(hud)
 
@@ -252,7 +252,7 @@ var/list/datum/mob_hud/huds = list(
 
 //called when a human changes suit sensors
 /mob/living/carbon/human/proc/update_suit_sensors()
-	var/datum/mob_hud/medical/basic/B = huds[MOB_HUD_MEDICAL_BASIC]
+	var/datum/mob_hud/medical/basic/B = GLOB.huds[MOB_HUD_MEDICAL_BASIC]
 	B.update_suit_sensors(src)
 
 //called when a human changes health

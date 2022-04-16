@@ -1,5 +1,4 @@
-var/list/datum/admins/admin_datums = list()
-
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/admins, list())
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -23,7 +22,7 @@ var/list/datum/admins/admin_datums = list()
 	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
@@ -99,8 +98,8 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 1
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
 	return 1
 
 /proc/IsAdminAdvancedProcCall()

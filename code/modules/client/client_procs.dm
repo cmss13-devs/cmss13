@@ -287,7 +287,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			admin.associate(src)
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
 	notify_login()
@@ -480,18 +480,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
-		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
+	for(var/key_ref in GLOB.player_entities)
+		// var/datum/entity/player_entity/P = GLOB.player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_staff("STATISTICS: Statistics saving complete.")

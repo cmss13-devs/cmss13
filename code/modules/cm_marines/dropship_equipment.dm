@@ -1137,7 +1137,7 @@
 	color = "#17d17a"
 
 /obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-	var/datum/cas_iff_group/cas_group = cas_groups[FACTION_MARINE]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
 	var/list/targets = cas_group.cas_signals
 
 	if(!LAZYLEN(targets))

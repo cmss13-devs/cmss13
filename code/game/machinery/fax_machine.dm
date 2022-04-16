@@ -1,5 +1,4 @@
-var/list/obj/structure/machinery/faxmachine/allfaxes = list()
-var/list/alldepartments = list()
+GLOBAL_LIST_INIT_TYPED(allfaxes, /obj/structure/machinery/faxmachine, list())var/list/alldepartments = list()
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -30,7 +29,7 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	allfaxes += src
+	GLOB.allfaxes += src
 
 	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
 		alldepartments += department
@@ -42,7 +41,7 @@ var/list/alldepartments = list()
 		alldepartments += "USCM Provost Office"
 
 /obj/structure/machinery/faxmachine/Destroy()
-	allfaxes -= src
+	GLOB.allfaxes -= src
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -299,7 +298,7 @@ var/list/alldepartments = list()
 	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
 /proc/SendFax(sent, sentname, mob/Sender, dpt, network, obj/structure/machinery/faxmachine/origin)
-	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
+	for(var/obj/structure/machinery/faxmachine/F in GLOB.allfaxes)
 		if(F != origin && F.department == dpt)
 			if(! (F.inoperable() ) )
 

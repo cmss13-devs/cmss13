@@ -71,56 +71,56 @@
 		if(my_chemid) //Do we want a specific chem?
 			chem_id = my_chemid
 		else if(class) //do we want a specific class?
-			chem_id = pick(chemical_gen_classes_list["C[class]"])
+			chem_id = pick(GLOB.chemical_gen_classes_list["C[class]"])
 		else
 			var/roll = rand(0,100)
 			switch(tier)
 				if(0)
-					chem_id = pick(chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
+					chem_id = pick(GLOB.chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
 					if(roll<=35)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=65)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=85)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(2)
 					if(roll<=30)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=55)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=70)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(3)
 					if(roll<=10)
-						chem_id = pick(chemical_gen_classes_list["C1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=30)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=50)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=70)
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 					else
-						chem_id = pick(chemical_gen_classes_list["C5"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						if (prob(50))
-							chem_id = pick(chemical_gen_classes_list["C5"])
+							chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 						else
-							chem_id = pick(chemical_gen_classes_list["C4"])
+							chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 					else if(roll<=15)
-						chem_id = pick(chemical_gen_classes_list["C2"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
 					else if(roll<=40)
-						chem_id = pick(chemical_gen_classes_list["C3"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=65)
-						chem_id = pick(chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 
 					else
-						chem_id = pick(chemical_gen_classes_list["C5"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 
 		//if we are already using this reagent, try again
 		if(required_reagents && required_reagents.Find(chem_id))

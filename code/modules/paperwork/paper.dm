@@ -584,16 +584,16 @@
 	if(!C)
 		var/random_chem
 		if(tier)
-			random_chem = pick(chemical_gen_classes_list[tier])
+			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 		else
 			if(note_type == "test")
-				random_chem = pick(chemical_gen_classes_list["T4"])
+				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
-									prob(30);pick(chemical_gen_classes_list["T3"]),
-									prob(15);pick(chemical_gen_classes_list["T4"]))
+				random_chem = pick(	prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
+									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
+									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
 		if(!random_chem)
-			random_chem = pick(chemical_gen_classes_list["T1"])
+			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
 	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
@@ -683,7 +683,7 @@
 /obj/item/paper/research_notes/unique/Initialize()
 	//Each one of these get a new unique chem
 	var/datum/reagent/generated/C = new /datum/reagent/generated
-	C.id = "tau-[length(chemical_gen_classes_list["tau"])]"
+	C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	C.generate_name()
 	C.chemclass = CHEM_CLASS_RARE
 	if(gen_tier)
@@ -691,7 +691,7 @@
 	else
 		C.gen_tier = chemical_data.clearance_level
 	C.generate_stats()
-	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+	GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
 	chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
@@ -757,7 +757,7 @@
 					else
 						var/U = C.required_catalysts[I]
 						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-	else if(chemical_gen_classes_list["C1"].Find(S.id))
+	else if(GLOB.chemical_gen_classes_list["C1"].Find(S.id))
 		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse

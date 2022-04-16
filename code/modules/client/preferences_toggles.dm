@@ -382,21 +382,21 @@
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			H = huds[MOB_HUD_FACTION_UPP]
+			H = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			H = huds[MOB_HUD_FACTION_WY]
+			H = GLOB.huds[MOB_HUD_FACTION_WY]
 		if("Faction RESS HUD")
-			H = huds[MOB_HUD_FACTION_RESS]
+			H = GLOB.huds[MOB_HUD_FACTION_RESS]
 		if("Faction CLF HUD")
-			H = huds[MOB_HUD_FACTION_CLF]
+			H = GLOB.huds[MOB_HUD_FACTION_CLF]
 
 	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(O.HUD_toggled[hud_choice])

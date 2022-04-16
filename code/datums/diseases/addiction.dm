@@ -12,7 +12,7 @@
 	desc = "Use of addictive stimulants results in physiological and psychological dependency."
 	severity = "Medium"
 	longevity = 1000
-	hidden = list(1, 1) //hidden from med-huds and pandemic scanners
+	hidden = list(1, 1) //hidden from med-GLOB.huds and pandemic scanners
 	contagious_period = 900001 //additional safeguard to prevent spreading
 	stage_minimum_age = 900001 // advanced only by chemical
 	var/addiction_progression = 1

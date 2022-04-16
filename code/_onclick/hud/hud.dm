@@ -1,7 +1,7 @@
 
 /*
 	The hud datum
-	Used to show and hide huds for all the different mob types,
+	Used to show and hide GLOB.huds for all the different mob types,
 	including inventories and item quick actions.
 */
 

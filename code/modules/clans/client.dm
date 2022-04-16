@@ -157,7 +157,7 @@
 		var/list/player = list(
 			player_id = CP.player_id,
 			name = CP.ckey,
-			rank = clan_ranks[CP.clan_rank], // rank_to_give not used here, because we need to get their visual rank, not their position
+			rank = GLOB.clan_ranks[CP.clan_rank], // rank_to_give not used here, because we need to get their visual rank, not their position
 			rank_pos = rank_to_give,
 			honor = (CP.honor? CP.honor : 0)
 		)
@@ -295,7 +295,7 @@
 					pl.sync()
 
 					pl.clan_id = null
-					pl.permissions = clan_ranks[CLAN_RANK_UNBLOODED].permissions
+					pl.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
 					pl.clan_rank = clan_ranks_ordered[CLAN_RANK_UNBLOODED]
 
 					pl.save()
@@ -382,7 +382,7 @@
 					log_and_message_staff("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
 					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
-					target.permissions = clan_ranks[CLAN_RANK_YOUNG].permissions
+					target.permissions = GLOB.clan_ranks[CLAN_RANK_YOUNG].permissions
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
 					log_and_message_staff("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
@@ -397,7 +397,7 @@
 					target.clan_id = clans[input]
 
 					if(!(target.permissions & CLAN_PERMISSION_ADMIN_ANCIENT))
-						target.permissions = clan_ranks[CLAN_RANK_BLOODED].permissions
+						target.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
 						target.clan_rank = clan_ranks_ordered[CLAN_RANK_BLOODED]
 
 			if(CLAN_ACTION_PLAYER_MODIFYRANK)
@@ -405,7 +405,7 @@
 					to_chat(src, SPAN_WARNING("This player doesn't belong to a clan!"))
 					return
 
-				var/list/datum/rank/ranks = clan_ranks.Copy()
+				var/list/datum/rank/ranks = GLOB.clan_ranks.Copy()
 				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
 				var/datum/rank/chosen_rank

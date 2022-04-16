@@ -56,7 +56,7 @@
 
 	D.stage = 5
 
-	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.add_hud_to(H)
 
 	return ..()
@@ -65,7 +65,7 @@
 /datum/species/zombie/post_species_loss(mob/living/carbon/human/H)
 	..()
 	remove_from_revive(H)
-	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.remove_hud_from(H)
 
 

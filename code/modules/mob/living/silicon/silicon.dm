@@ -148,12 +148,12 @@
 	var/HUD_nbr = 1
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 			HUD_nbr = 2
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_USCM]
+			H = GLOB.huds[MOB_HUD_FACTION_USCM]
 			HUD_nbr = 3
 		else
 			return

@@ -71,13 +71,13 @@
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		else return
 
 	H.add_hud_to(M)

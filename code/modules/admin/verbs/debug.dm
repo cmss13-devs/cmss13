@@ -430,7 +430,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set name = "Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
-	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
+	message_staff("[key_name_admin(src)] has remade the GLOB.powernets. makepowernets() called.", 0)
 
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
@@ -520,13 +520,13 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		individual_counts["[M.type]"]++
 	for(var/obj/structure/machinery/M in processing_machines)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
 	for(var/mob/M in SSmob.living_misc_mobs)
 		individual_counts["[M.type]"]++
 	for(var/datum/nanoui/M in nanomanager.processing_uis)
 		individual_counts["[M.type]"]++
-	for(var/datum/powernet/M in powernets)
+	for(var/datum/powernet/M in GLOB.powernets)
 		individual_counts["[M.type]"]++
 	for(var/datum/M in power_machines)
 		individual_counts["[M.type]"]++

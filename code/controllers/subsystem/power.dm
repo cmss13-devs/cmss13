@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(power)
 	var/list/currentrun_areas = list()
 
 /datum/controller/subsystem/power/stat_entry(msg)
-	msg = "PN:[powernets.len]|PM:[power_machines.len]|A:[active_areas.len]"
+	msg = "PN:[GLOB.powernets.len]|PM:[power_machines.len]|A:[active_areas.len]"
 	return ..()
 
 
@@ -24,11 +24,11 @@ SUBSYSTEM_DEF(power)
 
 /datum/controller/subsystem/power/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun_powerents      = global.powernets.Copy()
+		currentrun_powerents      = global.GLOB.powernets.Copy()
 		currentrun_areas = active_areas.Copy()
 		currentrun_power_machines = global.power_machines.Copy()
 
-	// First we reset the powernets.
+	// First we reset the GLOB.powernets.
 	// This is done first because we want the power machinery to have acted last on the powernet between intervals.
 	while(currentrun_powerents.len)
 		var/datum/powernet/Powernet = currentrun_powerents[currentrun_powerents.len]

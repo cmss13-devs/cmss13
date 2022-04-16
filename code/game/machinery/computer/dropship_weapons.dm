@@ -64,7 +64,7 @@
 	if(!faction)
 		return //no faction, no weapons
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 	if(!cas_group)
 		return //broken group. No fighting
@@ -249,7 +249,7 @@
 		if(!faction)
 			return //no faction, no weapons
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 		if(!cas_group)
 			return //broken group. No fighting
@@ -448,7 +448,7 @@
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		var/datum/cas_signal/cas_sig
 		for(var/X in cas_group.cas_signals)
 			var/datum/cas_signal/LT = X
@@ -546,7 +546,7 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, this console doesn't have a faction set, report this to a coder!"))
 			return
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		if(!cas_group)
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return

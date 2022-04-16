@@ -10,7 +10,7 @@
 	unacidable = TRUE      //NOPE.jpg
 	var/power_gen_percent = 0 //100,000W at full capacity
 	var/power_generation_max = 100000 //Full capacity
-	var/powernet_connection_failed = 0 //Logic checking for powernets
+	var/powernet_connection_failed = 0 //Logic checking for GLOB.powernets
 	var/buildstate = 1 //What state of building it are we on, 0-3, 1 is "broken", the default
 	var/is_on = 0  //Is this damn thing on or what?
 	var/fail_rate = 10 //% chance of failure each fail_tick check
@@ -56,7 +56,7 @@
 	if(!is_on || buildstate || !anchored) //Default logic checking
 		return 0
 
-	if(!powernet && !powernet_connection_failed) //Powernet checking, make sure there's valid cables & powernets
+	if(!powernet && !powernet_connection_failed) //Powernet checking, make sure there's valid cables & GLOB.powernets
 		if(!connect_to_network())
 			powernet_connection_failed = 1 //God damn it, where'd our network go
 			is_on = 0

@@ -1,9 +1,8 @@
 var/list/machines = list()
 var/list/processing_machines = list()
 
-var/list/datum/powernet/powernets = list() //Holds all powernet datums in use or pooled
-var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums in use or pooled
-
+GLOBAL_LIST_INIT_TYPED(powernets, /datum/powernet, list()) //Holds all powernet datums in use or pooled)
+GLOBAL_LIST_INIT_TYPED(powernets_by_name, /datum/powernet, list()) //Holds all powernet datums in use or pooled)
 
 SUBSYSTEM_DEF(machinery)
 	name          = "Machinery"

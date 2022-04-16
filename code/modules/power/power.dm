@@ -95,17 +95,17 @@
 
 // rebuild all power networks from scratch
 /proc/makepowernets()
-	for(var/datum/powernet/PN in powernets)
+	for(var/datum/powernet/PN in GLOB.powernets)
 		del(PN) //not qdel on purpose, powernet is still using del.
-	powernets.Cut()
+	GLOB.powernets.Cut()
 
 	for(var/area/A in all_areas)
-		if(powernets_by_name[A.powernet_name])
+		if(GLOB.powernets_by_name[A.powernet_name])
 			continue
 		var/datum/powernet/PN = new()
 		PN.powernet_name = A.powernet_name
-		powernets += PN
-		powernets_by_name[A.powernet_name] = PN
+		GLOB.powernets += PN
+		GLOB.powernets_by_name[A.powernet_name] = PN
 
 	for(var/obj/structure/machinery/power/M in machines)
 		M.connect_to_network()
@@ -248,7 +248,7 @@
 	var/area/A = get_area(src)
 	if(!A)
 		return 0
-	var/datum/powernet/PN = powernets_by_name[A.powernet_name]
+	var/datum/powernet/PN = GLOB.powernets_by_name[A.powernet_name]
 	if(!PN)
 		return 0
 	powernet = PN

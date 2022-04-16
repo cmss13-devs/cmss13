@@ -45,13 +45,13 @@
 #define MOB_HUD_HUNTER				16
 #define MOB_HUD_HUNTER_CLAN			17
 
-//for SL/FTL/LZ targeting on locator huds
+//for SL/FTL/LZ targeting on locator GLOB.huds
 #define TRACKER_SL					"track_sl"
 #define TRACKER_FTL					"track_ftl"
 #define TRACKER_LZ					"track_lz"
 #define TRACKER_CO					"track_co"
 #define TRACKER_XO					"track_xo"
 
-//for tracking the queen/hivecore on xeno locator huds
+//for tracking the queen/hivecore on xeno locator GLOB.huds
 #define TRACKER_QUEEN	"Queen"
 #define TRACKER_HIVE	"Hive Core"

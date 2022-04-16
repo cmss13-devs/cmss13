@@ -379,12 +379,12 @@ proc/populate_seed_list()
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick(	prob(10);pick(chemical_gen_classes_list["C1"]),\
-											prob(15);pick(chemical_gen_classes_list["C2"]),\
-											prob(25);pick(chemical_gen_classes_list["C3"]),\
-											prob(30);pick(chemical_gen_classes_list["C4"]),\
-											prob(15);pick(chemical_gen_classes_list["T1"]),\
-											prob(5);pick(chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
+				var/new_chem = list(pick(	prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
+											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
+											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
+											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
+											prob(15);pick(GLOB.chemical_gen_classes_list["T1"]),\
+											prob(5);pick(GLOB.chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
 				chems += new_chem
 
 

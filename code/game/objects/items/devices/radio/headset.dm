@@ -182,7 +182,7 @@
 			COMSIG_HUMAN_REVIVED,
 		), .proc/turn_on)
 		if(headset_hud_on)
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.add_hud_to(user)
 			//squad leader locator is no longer invisible on our player HUD.
 			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
@@ -196,7 +196,7 @@
 		COMSIG_HUMAN_REVIVED,
 	))
 	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
-		var/datum/mob_hud/H = huds[hud_type]
+		var/datum/mob_hud/H = GLOB.huds[hud_type]
 		H.remove_hud_from(user)
 		//squad leader locator is invisible again
 		if(user.hud_used && user.hud_used.locate_leader)
@@ -220,7 +220,7 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		if(user.has_item_in_ears(src)) //worn
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			if(headset_hud_on)
 				H.add_hud_to(usr)
 				if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)

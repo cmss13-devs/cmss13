@@ -16,7 +16,8 @@ ARG BUILD_TYPE=deploy
 FROM ${BYOND_BASE_IMAGE} AS byond
 SHELL ["/bin/bash", "-c"]
 RUN dpkg --add-architecture i386
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man curl unzip libssl-dev libssl-dev:i386 libz-dev:i386 lib32stdc++6
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man curl unzip libssl-dev libssl-dev:i386 libz-dev:i386 lib32stdc++6 python3-minimal
+RUN update-alternatives --install /usr/local/bin/python python /usr/bin/python3 20
 ARG BYOND_MAJOR
 ARG BYOND_MINOR
 ARG BYOND_DOWNLOAD_URL=https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip
@@ -78,8 +79,9 @@ ARG PROJECT_NAME
 ARG BYOND_UID
 ENV DREAMDAEMON_PORT=1400
 RUN mkdir -p /cm/data
+RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /cm/ytdl
 COPY tools/docker/runner-entrypoint.sh /entrypoint.sh
-RUN chmod u+x /entrypoint.sh
+RUN chmod a+x /entrypoint.sh /cm/ytdl
 RUN useradd -u ${BYOND_UID} -ms /bin/bash byond
 WORKDIR /cm
 COPY librust_g.so .

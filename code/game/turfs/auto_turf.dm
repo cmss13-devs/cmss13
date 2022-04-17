@@ -251,13 +251,13 @@
 /turf/open/auto_turf/soro_grass/layer0_mud
 	icon_state = "grass_0_mud"
 	bleed_layer = 0
-	variant = "_mud"
+	variant = "mud"
 	variant_prefix_name = "muddy"
 
 /turf/open/auto_turf/soro_grass/layer0_mud_alt
 	icon_state = "grass_0_mud_alt"
 	bleed_layer = 0
-	variant = "_mud_alt"
+	variant = "mud_alt"
 	variant_prefix_name = "muddy"
 
 /turf/open/auto_turf/soro_grass/layer1

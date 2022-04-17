@@ -952,20 +952,17 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
-					var/list/options = PRED_MATERIALS
-					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", options)
+					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
 					if(!new_pred_mask_mat)
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/list/options = PRED_MATERIALS
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", options)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
 				if("pred_greave_mat")
-					var/list/options = PRED_MATERIALS
-					var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", options)
+					var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", PRED_MATERIALS)
 					if(!new_pred_greave_mat)
 						return
 					predator_greave_material = new_pred_greave_mat

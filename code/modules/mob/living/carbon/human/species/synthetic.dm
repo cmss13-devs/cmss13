@@ -90,7 +90,9 @@
 	knock_down_reduction = 3.5
 	stun_reduction = 3.5
 
-	inherent_verbs = null
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison
+	)
 
 /datum/species/synthetic/colonial/working_joe
 	name = SYNTH_WORKING_JOE
@@ -108,3 +110,5 @@
 
 	knock_down_reduction = 5.0
 	stun_reduction = 5.0
+
+	inherent_verbs = null

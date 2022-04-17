@@ -314,6 +314,19 @@
 
 	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting." : "getting up."]"))
 
+/mob/living/carbon/human/proc/toggle_inherent_nightvison()
+	set category = "Synthetic"
+	set name = "Toggle Nightvision"
+	set desc = "Toggles inherent nightvision."
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
+	update_sight()
+
+	to_chat(src, SPAN_NOTICE("Your vision is now set to <b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))
+
 // Used for synthetics
 /mob/living/carbon/human/synthetic/proc/toggle_HUD()
 	set category = "Synthetic"

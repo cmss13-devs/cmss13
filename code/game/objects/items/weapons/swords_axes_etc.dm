@@ -45,7 +45,13 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
+	var/stun_time = 1 SECOND
 
+/obj/item/weapon/melee/telebaton/attack(mob/living/target, mob/living/user)
+	if(!on || user.a_intent == INTENT_HARM)
+		return ..()
+	else if(ishuman(target))
+		stun(target, user)
 
 /obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
 	..()
@@ -82,6 +88,20 @@
 		overlays.Cut()
 		add_blood(blood_color)
 	return
+
+/obj/item/weapon/melee/telebaton/proc/stun(mob/living/target, mob/living/user)
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.check_shields(src, 0, "[user]'s [name]"))
+			return FALSE
+	user.visible_message("<span class='danger'>[user] knocks down [target] with [src]!</span>",\
+							"<span class='danger'>You knock down [target] with [src]!</span>")
+	// Visuals and sound
+	playsound(target, 'sound/weapons/Genhit.ogg', 75, TRUE, 7)
+	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with [src]")
+	// Hit 'em
+	target.KnockDown(stun_time)
+	return TRUE
 
 
 /*

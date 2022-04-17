@@ -391,6 +391,7 @@
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_IN_BACK)
 
 	if(shoes_success)
 		var/obj/item/clothing/shoes/marine/knife/shoes = H.shoes

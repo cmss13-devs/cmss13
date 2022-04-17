@@ -10,8 +10,12 @@ GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if s
 // Global lists of the HUDs
 var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 									"dark" = new /datum/custom_hud/dark(),
+									"bronze" = new /datum/custom_hud/bronze(),
+									"glass" = new /datum/custom_hud/glass(),
+									"green" = new /datum/custom_hud/green(),
 									"old" = new /datum/custom_hud/old(),
 									"orange" = new /datum/custom_hud/orange(),
+									"red" = new /datum/custom_hud/red(),
 									"white" = new /datum/custom_hud/white(),
 									"alien" = new /datum/custom_hud/alien(),
 									"robot" = new /datum/custom_hud/robot()

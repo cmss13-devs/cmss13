@@ -15,6 +15,8 @@
 	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
 	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
+	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
+	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
 /obj/item/clothing/get_examine_line()
 	. = ..()
@@ -384,9 +386,18 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && LAZYLEN(equip_sounds))
-		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+		if(LAZYLEN(equip_sounds))
+			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
+		if(clothing_traits_active)
+			for(var/trait in clothing_traits)
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
 	..()
+
+/obj/item/clothing/unequipped(mob/user, slot)
+	for(var/trait in clothing_traits)
+		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+	. = ..()
 
 /obj/item/clothing/proc/get_pockets()
 	var/obj/item/clothing/accessory/storage/S = locate() in accessories

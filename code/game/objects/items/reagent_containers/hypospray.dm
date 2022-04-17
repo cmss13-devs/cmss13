@@ -15,6 +15,7 @@
 	flags_equip_slot = SLOT_WAIST
 	flags_item = NOBLUDGEON
 	matter = list("plastic" = 1250, "glass" = 250)
+	transparent = TRUE
 	var/skilllock = SKILL_MEDICAL_TRAINED
 	var/magfed = TRUE
 	var/obj/item/reagent_container/glass/beaker/vial/mag
@@ -171,7 +172,7 @@
 		return
 	if(!M.can_inject(user, TRUE))
 		return
-		
+
 	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

@@ -10,7 +10,7 @@
 	force_level_absorption = 10
 	stack_type = /obj/item/stack/sheet/metal
 	debris = list(/obj/item/stack/sheet/metal)
-	stack_amount = 5
+	stack_amount = 4
 	destroyed_stack_amount = 2
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"

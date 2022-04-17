@@ -90,7 +90,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		// notes_add already sends a message
 		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
 		if(!is_confidential && note_category == NOTE_ADMIN)
-			to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob)].")))
+			to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin].")))
 			to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
 			to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_BIG("If you think this was filed in error or wish to contest the note, make a staff report at <a href='https://cm-ss13.com/forums/forms.php?do=form&fid=12;'><b>The CM Forums</b></a>")))
 	// create new instance of player_note entity

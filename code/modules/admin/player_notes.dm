@@ -41,7 +41,7 @@
 	info << infos
 
 	message_staff("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
-	to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin].")))
+	to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(usr, FALSE)].")))
 	to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note)]")))
 	to_chat_immediate(usr, SPAN_WARNING(FONT_SIZE_BIG("If you think this was filed in error or wish to contest the note, make a staff report at <a href='https://cm-ss13.com/forums/forms.php?do=form&fid=12;'><b>The CM Forums</b></a>")))
 	qdel(info)

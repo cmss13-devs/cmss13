@@ -1,7 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
 #define SAVEFILE_VERSION_MAX	13
-#define PRED_MATERIALS list("ebony", "silver", "bronze")
-#define PRED_TRANSLATORS list("Modern", "Retro", "Combo")
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!

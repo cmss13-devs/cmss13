@@ -1,7 +1,7 @@
 #define SAVEFILE_VERSION_MIN	8
 #define SAVEFILE_VERSION_MAX	13
-var/pred_materials = list("ebony", "silver", "bronze")
-var/pred_translators = list("Modern", "Retro", "Combo")
+#define PRED_MATERIALS list("ebony", "silver", "bronze")
+#define PRED_TRANSLATORS list("Modern", "Retro", "Combo")
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -147,13 +147,13 @@ var/pred_translators = list("Modern", "Retro", "Combo")
 	predator_name 		= predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender 	= sanitize_text(predator_gender, initial(predator_gender))
 	predator_age 		= sanitize_integer(predator_age, 100, 10000, initial(predator_age))
-	predator_translator_type = sanitize_inlist(predator_translator_type, pred_translators, initial(predator_translator_type))
+	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
-	predator_mask_material = sanitize_inlist(predator_mask_material, pred_materials, initial(predator_mask_material))
-	predator_armor_material = sanitize_inlist(predator_armor_material, pred_materials, initial(predator_armor_material))
-	predator_greave_material = sanitize_inlist(predator_greave_material, pred_materials, initial(predator_greave_material))
+	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
+	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
+	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))

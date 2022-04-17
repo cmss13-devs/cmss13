@@ -203,7 +203,7 @@
 	if(!selected_squad)
 		return
 
-	transfer_marine_to_squad(target, squads[selected_squad], target.assigned_squad, target.get_idcard())
+	var/success = transfer_marine_to_squad(target, squads[selected_squad], target.assigned_squad, target.get_idcard())
 
-	message_staff("[key_name_admin(user)] set [target]'s squad to [selected_squad].")
+	message_staff("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
 	return TRUE

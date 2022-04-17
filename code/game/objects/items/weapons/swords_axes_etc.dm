@@ -45,7 +45,7 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
-	var/stun_time = 1 SECOND
+	var/stun_time = 1 SECONDS
 
 /obj/item/weapon/melee/telebaton/attack(mob/living/target, mob/living/user)
 	if(!on || user.a_intent == INTENT_HARM)

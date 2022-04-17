@@ -75,7 +75,7 @@
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I) || !check_access(I))
+		if(!istype(I) || !check_access(I) && status)
 			var/datum/effect_system/spark_spread/s = new
 			s.set_up(5, 1, src.loc)
 			H.visible_message(SPAN_NOTICE("[src] beeps as [H] picks it up"), SPAN_DANGER("WARNING: Unauthorized user detected. Denying access..."))

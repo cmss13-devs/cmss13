@@ -22,6 +22,8 @@
 	var/boot_number = 1
 	var/mask_number = 1
 	var/armor_material = "ebony"
+	var/greave_material = "ebony"
+	var/mask_material = "ebony"
 	var/translator_type = "Modern"
 
 	if(!mob_client)
@@ -32,6 +34,8 @@
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type
 		armor_material = mob_client.prefs.predator_armor_material
+		greave_material = mob_client.prefs.predator_greave_material
+		mask_material = mob_client.prefs.predator_mask_material
 		translator_type = mob_client.prefs.predator_translator_type
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), WEAR_BODY)
@@ -41,19 +45,23 @@
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(H, boot_number, armor_material), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(H, boot_number, greave_material), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, armor_material), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material), WEAR_FACE)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "Le'pro"
 	H.gender = MALE
 	H.age = 100
+	H.flavor_text = ""
+	H.flavor_texts["general"] = H.flavor_text
 
 	if(H.client && H.client.prefs)
 		H.gender = H.client.prefs.predator_gender
 		H.age = H.client.prefs.predator_age
 		final_name = H.client.prefs.predator_name
+		H.flavor_text = H.client.prefs.predator_flavor_text
+		H.flavor_texts["general"] = H.flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
 			final_name = "Le'pro"
 	H.change_real_name(H, final_name)

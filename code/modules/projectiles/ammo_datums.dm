@@ -767,7 +767,7 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = 24
+	damage = 26 //Set to 26, Nanu gave the okay to test it around 26-28 previously. Ordered to be 26 from 24 for now.
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 

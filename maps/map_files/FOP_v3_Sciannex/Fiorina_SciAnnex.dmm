@@ -3314,7 +3314,6 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
 	health = null;
-	icon_state = "hydrotray5";
 	indestructible = 1;
 	unacidable = 1
 	},

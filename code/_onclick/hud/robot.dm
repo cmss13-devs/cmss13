@@ -5,7 +5,7 @@
 	..()
 	var/obj/screen/using
 
-	ui_robot_datum = custom_huds_list["robot"]
+	ui_robot_datum = GLOB.custom_huds_list[HUD_ROBOT]
 
 //Radio
 	using = new /obj/screen()

@@ -7,19 +7,8 @@ GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes)		//Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if source paper is deleted
 
-// Global lists of the HUDs
-var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
-									"dark" = new /datum/custom_hud/dark(),
-									"bronze" = new /datum/custom_hud/bronze(),
-									"glass" = new /datum/custom_hud/glass(),
-									"green" = new /datum/custom_hud/green(),
-									"old" = new /datum/custom_hud/old(),
-									"orange" = new /datum/custom_hud/orange(),
-									"red" = new /datum/custom_hud/red(),
-									"white" = new /datum/custom_hud/white(),
-									"alien" = new /datum/custom_hud/alien(),
-									"robot" = new /datum/custom_hud/robot()
-									)
+GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
+GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
@@ -333,6 +322,27 @@ var/global/list/paramslist_cache = list()
 		if(!isfile(png))
 			png_list -= png
 	return sortList(png_list)
+
+/proc/setup_all_huds()
+	return list(
+		HUD_MIDNIGHT = new /datum/custom_hud(),
+		HUD_DARK = new /datum/custom_hud/dark(),
+		HUD_BRONZE = new /datum/custom_hud/bronze(),
+		HUD_GLASS = new /datum/custom_hud/glass(),
+		HUD_GREEN = new /datum/custom_hud/green(),
+		HUD_OLD = new /datum/custom_hud/old(),
+		HUD_ORANGE = new /datum/custom_hud/orange(),
+		HUD_RED = new /datum/custom_hud/red(),
+		HUD_WHITE = new /datum/custom_hud/white(),
+		HUD_ALIEN = new /datum/custom_hud/alien(),
+		HUD_ROBOT = new /datum/custom_hud/robot()
+	)
+
+/proc/setup_human_huds()
+	var/list/human_huds = list()
+	for(var/type in GLOB.custom_huds_list - list(HUD_ALIEN, HUD_ROBOT))
+		human_huds += type
+	return human_huds
 
 
 /* // Uncomment to debug chemical reaction list.

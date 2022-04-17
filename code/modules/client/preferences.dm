@@ -1348,8 +1348,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggles_sound ^= SOUND_ADMINHELP
 
 				if("ui")
-					var/list/custom_human_huds_list = custom_huds_list - list("robot", "alien")
-					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", custom_human_huds_list)
+					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", GLOB.custom_human_huds)
 					UI_style = ui_style_choice
 					if(!ui_style_choice)
 						UI_style = "midnight"

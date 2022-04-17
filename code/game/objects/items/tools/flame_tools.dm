@@ -115,9 +115,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon = 'icons/obj/items/cigarettes.dmi'
-	icon_state = "match_unlit"
+	icon_state = "match"
 	var/burnt = 0
 	var/smoketime = 10 SECONDS
+	var/burnt_name = "burnt match"
 	w_class = SIZE_TINY
 
 	attack_verb = list("burnt", "singed")
@@ -127,8 +128,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(smoketime < 1)
 		burn_out()
 		return
-
-
 
 /obj/item/tool/match/Destroy()
 	if(heat_source)
@@ -145,7 +144,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	heat_source = 1000
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
-	icon_state = "match_lit"
+	icon_state = "[initial(icon_state)]_lit"
 	if(ismob(loc))
 		loc.SetLuminosity(2, FALSE, src)
 	else
@@ -157,14 +156,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	heat_source = 0
 	burnt = 1
 	damtype = "brute"
-	icon_state = "match_burnt"
+	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
 	if(user && loc != user)
 		user.SetLuminosity(0, FALSE, src)
 	SetLuminosity(0)
-	name = "burnt match"
+	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
+
+/obj/item/tool/match/paper
+	name = "paper match"
+	desc = "A simple match stick, used for lighting fine smokables."
+	icon_state = "papermatch"
+	burnt_name = "burnt paper match"
 
 /obj/item/tool/lighter/dropped(mob/user)
 	if(heat_source && src.loc != user)

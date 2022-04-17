@@ -9,10 +9,10 @@
 	access = get_all_accesses()
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
-	if(!H.client || !H.client.prefs || !H.client.prefs.synthetic_type)
-		H.set_species("Synthetic")
-	else
+	if(H.client?.prefs?.synthetic_type)
 		H.set_species(H.client.prefs.synthetic_type)
+		return
+	H.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "David"
@@ -148,7 +148,7 @@
 	access = get_all_accesses()
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_WORKING_JOE)
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)

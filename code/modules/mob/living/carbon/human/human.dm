@@ -1117,6 +1117,9 @@
 	if(!(species.flags & HAS_UNDERWEAR))
 		INVOKE_ASYNC(src, .proc/remove_underwear)
 
+	default_lighting_alpha = species.default_lighting_alpha
+	update_sight()
+
 	if(species)
 		return TRUE
 	else
@@ -1251,7 +1254,7 @@
 
 	sight &= ~BLIND // Never have blind on by default
 
-	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	lighting_alpha = default_lighting_alpha
 	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_in_dark = species.darksight
 	if(glasses)
@@ -1426,7 +1429,7 @@
 	. = ..(mapload, new_species = "Yiren")
 
 /mob/living/carbon/human/synthetic/Initialize(mapload)
-	. = ..(mapload, "Synthetic")
+	. = ..(mapload, SYNTH_GEN_THREE)
 
 /mob/living/carbon/human/synthetic/old/Initialize(mapload)
 	. = ..(mapload, SYNTH_COLONY)
@@ -1439,9 +1442,6 @@
 
 /mob/living/carbon/human/synthetic/second/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_TWO)
-
-/mob/living/carbon/human/synthetic/third/Initialize(mapload)
-	. = ..(mapload, SYNTH_GEN_THREE)
 
 
 /mob/living/carbon/human/resist_fire()

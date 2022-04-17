@@ -938,7 +938,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_predator_age = input(user, "Choose your Predator's age(20 to 10000):", "Character Preference") as num|null
 					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
 				if("pred_trans_type")
-					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", list("Modern", "Retro", "Combo"))
+					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
@@ -952,19 +952,19 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
-					var/list/options = list("ebony", "silver", "bronze")
+					var/list/options = PRED_MATERIALS
 					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", options)
 					if(!new_pred_mask_mat)
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/list/options = list("ebony", "silver", "bronze")
+					var/list/options = PRED_MATERIALS
 					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", options)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
 				if("pred_greave_mat")
-					var/list/options = list("ebony", "silver", "bronze")
+					var/list/options = PRED_MATERIALS
 					var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", options)
 					if(!new_pred_greave_mat)
 						return

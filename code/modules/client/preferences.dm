@@ -971,13 +971,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					predator_greave_material = new_pred_greave_mat
 				if("pred_flavor_text")
 					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
-					if(pred_flv_raw)
-						var/predator_flv_txt = strip_html(pred_flv_raw, MAX_EMOTE_LEN)
-						if (predator_flv_txt) 
-							predator_flavor_text = predator_flv_txt
-							predator_flavor_text = html_encode(predator_flavor_text)
-					else
+					if(!pred_flv_raw)
 						predator_flavor_text = ""
+						return
+					predator_flavor_text = strip_html(html_encode(pred_flv_raw), MAX_EMOTE_LEN)
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

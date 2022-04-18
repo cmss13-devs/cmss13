@@ -90,7 +90,7 @@
 	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't fire this at anyone you want to stay alive."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 	icon_state = "matebaE"
-	
+
 /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"
 	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. There's an impact charge built into the bullet tip. Firing this at anything will result in a powerful explosion. Use with EXTREME caution."
@@ -115,6 +115,7 @@
 	name = "revolver cylinder"
 	default_ammo = /datum/ammo/bullet/revolver
 	max_rounds = 6
+	gun_type = /obj/item/weapon/gun/revolver
 
 //-------------------------------------------------------
 //M44 MAGNUM REVOLVER //Not actually cannon, but close enough.

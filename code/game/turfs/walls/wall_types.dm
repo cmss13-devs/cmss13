@@ -503,6 +503,11 @@
 /turf/closed/wall/strata_ice/ex_act(severity)
 	return
 
+/turf/closed/wall/strata_ice/dirty
+	icon_state = "strata_ice_dirty"
+	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
+	walltype = WALL_STRATA_ICE_DIRTY
+
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
 	icon = 'icons/turf/walls/jungle_veg.dmi'

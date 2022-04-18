@@ -311,6 +311,7 @@
 #define WALL_CULT "cult"
 #define WALL_STONE "stone"
 #define WALL_STRATA_ICE "strata_ice"
+#define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"

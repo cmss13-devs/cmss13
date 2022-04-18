@@ -10607,13 +10607,14 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "aBP" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	dir = 1
+	dir = 1;
+	req_one_access = list(36)
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "aBR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ashtray/glass,
@@ -37009,6 +37010,9 @@
 	tag = "icon-blue (WEST)"
 	},
 /area/almayer/command/cichallway)
+"dmA" = (
+/turf/open/floor/almayer,
+/area/almayer/living/synthcloset)
 "dmE" = (
 /obj/structure/surface/rack,
 /obj/item/mortar_shell/incendiary,
@@ -39673,6 +39677,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/testlab)
+"eqN" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "eqP" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -41275,7 +41282,7 @@
 	},
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "eYW" = (
 /obj/structure/filingcabinet/security,
 /turf/open/floor/wood/ship,
@@ -46673,6 +46680,9 @@
 	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/almayer/medical/containment/cell)
+"hyQ" = (
+/turf/closed/wall/almayer,
+/area/almayer/living/synthcloset)
 "hzc" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -52112,6 +52122,9 @@
 "kcc" = (
 /turf/closed/shuttle/escapepod,
 /area/almayer/evacuation/pod18)
+"kcH" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/living/synthcloset)
 "kcN" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /obj/structure/machinery/light,
@@ -55744,7 +55757,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "lIh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -60409,7 +60422,7 @@
 	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "nPB" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -62122,7 +62135,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "oGy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -67495,7 +67508,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "rlh" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/power/apc/almayer{
@@ -68127,7 +68140,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "rBb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -68527,7 +68540,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "rJb" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -68574,7 +68587,7 @@
 	},
 /obj/structure/machinery/cm_vending/own_points/experimental_tools,
 /turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "rJK" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -69788,7 +69801,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "sos" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -77473,7 +77486,7 @@
 	},
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "vEx" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -79472,7 +79485,7 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "wwD" = (
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor/almayer{
@@ -82526,8 +82539,11 @@
 /area/almayer/hallways/hangar)
 "xKT" = (
 /obj/effect/decal/cleanable/cobweb,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 8
+	},
 /turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "xKW" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure{
@@ -83680,7 +83696,7 @@
 	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/synthcloset)
 "yjb" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -101484,10 +101500,10 @@ tGf
 wex
 avl
 puK
-age
-age
-age
-age
+kcH
+kcH
+kcH
+kcH
 kWq
 urS
 aVG
@@ -101684,12 +101700,12 @@ pCi
 pCi
 lFb
 avl
-age
-age
-age
-age
+kcH
+kcH
+kcH
+kcH
 xKT
-wcn
+eqN
 aBP
 aKa
 qnh
@@ -101887,13 +101903,13 @@ kTM
 puK
 lFb
 avl
-age
+kcH
 rlf
 soq
 eYQ
-wcn
-avl
-tRX
+eqN
+dmA
+hyQ
 iur
 lTt
 haB
@@ -102090,13 +102106,13 @@ unJ
 iJf
 mBk
 nUy
-age
+kcH
 rBa
 nPs
 vEj
 nPs
 rJD
-tRX
+hyQ
 vYM
 tPb
 wVW
@@ -102293,13 +102309,13 @@ tGf
 avl
 avl
 qtS
-age
+kcH
 rIW
 oGx
 wvU
 yiX
 lIa
-tRX
+hyQ
 aic
 aov
 wVW

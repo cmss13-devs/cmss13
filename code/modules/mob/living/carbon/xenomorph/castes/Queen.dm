@@ -640,6 +640,36 @@
 		var/datum/action/A = Z
 		A.update_button_icon()
 
+/mob/living/carbon/Xenomorph/Queen/proc/can_gib(mob/living/carbon/victim)
+	if(isSynth(victim))
+		var/obj/limb/head/synthhead = victim.get_limb("head")
+		if(synthhead.status & LIMB_DESTROYED)
+			return FALSE
+
+	if(isXeno(victim))
+		var/mob/living/carbon/Xenomorph/xeno = victim
+		if(hivenumber == xeno.hivenumber)
+			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
+			return FALSE
+
+	var/mob/living/carbon/human/H = victim
+	if(istype(H))
+		if(istype(H.wear_mask, /obj/item/clothing/mask/facehugger))
+			to_chat(src, SPAN_XENOWARNING("The host will soon bare a child of the hive!"))
+			return FALSE
+
+		if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
+			if(H.status_flags & XENO_HOST)
+				if(victim.stat != DEAD) //Not dead yet.
+					to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
+					return FALSE
+				else if(( world.time <= H.timeofdeath + H.revive_grace_period )) //Dead, but the host can still hatch, possibly.
+					to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
+					return FALSE
+	return TRUE
+
+
+
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 
 	if(!iscarbon(A))
@@ -656,26 +686,8 @@
 	if(last_special > world.time)
 		return
 
-	if(isSynth(victim))
-		var/obj/limb/head/synthhead = victim.get_limb("head")
-		if(synthhead.status & LIMB_DESTROYED)
-			return
-
-	if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-		var/mob/living/carbon/human/H = victim
-		if(H.status_flags & XENO_HOST)
-			if(victim.stat != DEAD) //Not dead yet.
-				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-				return
-			else if(istype(H) && ( world.time <= H.timeofdeath + H.revive_grace_period )) //Dead, but the host can still hatch, possibly.
-				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return
-
-	if(isXeno(victim))
-		var/mob/living/carbon/Xenomorph/xeno = victim
-		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
-			return
+	if(!can_gib(victim))
+		return
 
 	var/turf/cur_loc = victim.loc
 	if(!istype(cur_loc))
@@ -696,9 +708,8 @@
 			return
 		if(!check_plasma(200))
 			return
-
-		if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-			return//Checks for infection after gib starts, as hugger-stuns can be used for gib otherwise.
+		if(!can_gib(victim))
+			return
 
 		use_plasma(200)
 		last_special = world.time + 15 MINUTES

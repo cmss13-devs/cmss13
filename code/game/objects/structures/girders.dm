@@ -230,6 +230,9 @@
 			else
 				T.PlaceOnTop(/turf/closed/wall)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
 			qdel(src)
 		return TRUE
 	return FALSE
@@ -271,6 +274,9 @@
 				T.PlaceOnTop(/turf/closed/wall/almayer/reinforced)
 			else
 				T.PlaceOnTop(/turf/closed/wall/r_wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
 			qdel(src)
 		return TRUE
 

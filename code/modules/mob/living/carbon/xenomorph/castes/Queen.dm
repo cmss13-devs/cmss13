@@ -697,6 +697,9 @@
 		if(!check_plasma(200))
 			return
 
+		if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
+			return//Checks for infection after gib starts, as hugger-stuns can be used for gib otherwise.
+
 		use_plasma(200)
 		last_special = world.time + 15 MINUTES
 

@@ -47,10 +47,10 @@
 	var/on = 0
 	var/stun_time = 1 SECONDS
 
-/obj/item/weapon/melee/telebaton/attack(mob/living/target, mob/living/user)
-	if(!on || user.a_intent == INTENT_HARM || isyautja(target))
+/obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
+	if(!on || user.a_intent == INTENT_HARM || isSpeciesYautja(target))
 		return ..()
-	else if(ishuman(target))
+	else
 		stun(target, user)
 
 /obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
@@ -89,20 +89,17 @@
 		add_blood(blood_color)
 	return
 
-/obj/item/weapon/melee/telebaton/proc/stun(mob/living/target, mob/living/user)
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.check_shields(src, 0, "[user]'s [name]"))
-			return FALSE
-	user.visible_message("<span class='danger'>[user] knocks down [target] with [src]!</span>",\
-							"<span class='danger'>You knock down [target] with [src]!</span>")
+/obj/item/weapon/melee/telebaton/proc/stun(mob/living/carbon/human/H, mob/living/user)
+	if(H.check_shields(src, 0, "[user]'s [name]"))
+		return FALSE
+	user.visible_message(SPAN_DANGER("[user] knocks down [H] with \the [src]!"),\
+							SPAN_WARNING("You knock down [H] with \the [src]!"))
 	// Visuals and sound
-	playsound(target, 'sound/weapons/Genhit.ogg', 75, TRUE, 7)
-	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with [src]")
+	playsound(H, 'sound/weapons/Genhit.ogg', 75, TRUE, 7)
+	log_interact(user, H, "[key_name(user)] stunned [key_name(H)] with \the [src]")
 	// Hit 'em
-	target.KnockDown(stun_time)
+	H.KnockDown(stun_time)
 	return TRUE
-
 
 /*
  * Energy Shield

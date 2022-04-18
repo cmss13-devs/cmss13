@@ -592,12 +592,12 @@
 	icon_state = "waistcoat"
 
 /obj/item/clothing/accessory/storage/black_vest/tool_webbing
-	hold = /obj/item/storage/internal/accessory/black_vest/seven_slots
+	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
 
-/obj/item/storage/internal/accessory/black_vest/seven_slots
+/obj/item/storage/internal/accessory/black_vest/tool_webbing
 	storage_slots = 7
 
-/obj/item/clothing/accessory/storage/black_vest/tool_webbing/fill_preset_inventory()
+/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)

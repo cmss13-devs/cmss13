@@ -293,7 +293,6 @@
 	H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
-
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	CLF.attach_accessory(H, W)

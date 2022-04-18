@@ -397,7 +397,6 @@
 	if(!M) return
 
 	var/list/rebel_gunner_firearms = list(
-	//	/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/slug, //no. This gun is poo poo.
 		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd
@@ -451,7 +450,6 @@ var/list/rebel_rifles = list(
 
 	return 1
 
-
 /datum/equipment_preset/proc/spawn_rebel_shotgun(var/atom/M, var/ammo_amount = 12)
 	if(!M) return
 
@@ -464,8 +462,6 @@ var/list/rebel_rifles = list(
 
 /datum/equipment_preset/proc/spawn_rebel_rifle(var/atom/M, var/ammo_amount = 12)
 	if(!M) return
-
-
 
 	var/gunpath = pick(rebel_rifles)
 	var/ammopath = rebel_rifles[gunpath]

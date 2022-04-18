@@ -48,7 +48,7 @@
 	var/stun_time = 1 SECONDS
 
 /obj/item/weapon/melee/telebaton/attack(mob/living/target, mob/living/user)
-	if(!on || user.a_intent == INTENT_HARM)
+	if(!on || user.a_intent == INTENT_HARM || isyautja(target))
 		return ..()
 	else if(ishuman(target))
 		stun(target, user)

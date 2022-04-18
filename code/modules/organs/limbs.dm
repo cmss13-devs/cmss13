@@ -798,7 +798,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress, parent_delimbing)
+/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress)
 	if(!owner)
 		return
 	if(status & LIMB_DESTROYED)
@@ -828,7 +828,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		// If any organs are attached to this, destroy them
 		for(var/obj/limb/O in children)
-			O.droplimb(amputation, delete_limb, cause, parent_delimbing = TRUE)
+			O.droplimb(amputation, delete_limb, cause)
 
 		//Replace all wounds on that arm with one wound on parent organ.
 		wounds.Cut()
@@ -919,10 +919,9 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
-			if(!parent_delimbing) //Ideally the parent limb would take the hand with it, still attached, but in the meantime just limit message spam.
-				owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
-				SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
-				SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
+			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
+			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
+			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			if(organ)
 				//Throw organs around

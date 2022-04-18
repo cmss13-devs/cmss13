@@ -655,7 +655,7 @@
 	var/mob/living/carbon/human/H = victim
 	if(istype(H))
 		if(istype(H.wear_mask, /obj/item/clothing/mask/facehugger))
-			to_chat(src, SPAN_XENOWARNING("The host will soon bare a child of the hive!"))
+			to_chat(src, SPAN_XENOWARNING("The host will soon bear a child of the hive!"))
 			return FALSE
 
 		if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??

@@ -738,7 +738,8 @@
 	},
 /obj/item/weapon/melee/claymore/mercsword/machete/arnold{
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
-	name = "\improper Dutch's Machete"
+	name = "\improper Dutch's Machete";
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;

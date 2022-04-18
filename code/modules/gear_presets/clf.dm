@@ -176,9 +176,8 @@
 
 	//jumpsuit and their webbing
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	var/obj/item/clothing/accessory/storage/webbing/five_slots/W = new()
 	CLF.attach_accessory(H, W)
-	W.hold.storage_slots = 5
 	H.equip_to_slot_or_del(CLF, WEAR_BODY)
 	//clothing
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)

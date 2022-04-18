@@ -757,7 +757,7 @@
 	effective_range_max = 4
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_5 // Makes the M39 AP + HV Viable in mostly close range. Previous falloff problem was a bandaid on a bleeding artery.
+	damage_falloff = DAMAGE_FALLOFF_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_6
 	accuracy = HIT_ACCURACY_TIER_3
 
@@ -767,7 +767,7 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = 26 //Set to 26, Nanu gave the okay to test it around 26-28 previously. Ordered to be 26 from 24 for now.
+	damage = 26
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 

@@ -74,7 +74,7 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
 	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3 //Triiodine said 5 was lore inaccurate, has a burst of three. Set to 3 to be lore accurate.
+	burst_amount = BURST_AMOUNT_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4

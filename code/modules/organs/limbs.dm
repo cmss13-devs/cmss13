@@ -675,6 +675,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/update_icon(forced = FALSE)
 	if(parent && parent.status & LIMB_DESTROYED)
+		overlays.Cut()
 		icon_state = ""
 		return
 
@@ -694,6 +695,7 @@ This function completely restores a damaged organ to perfect condition.
 	var/race_icon = owner.species.icobase
 
 	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
+		overlays.Cut()
 		icon = 'icons/mob/robotic.dmi'
 		icon_state = "[icon_name]"
 		return
@@ -796,7 +798,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress)
+/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress, parent_delimbing)
 	if(!owner)
 		return
 	if(status & LIMB_DESTROYED)
@@ -826,7 +828,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		// If any organs are attached to this, destroy them
 		for(var/obj/limb/O in children)
-			O.droplimb(amputation, delete_limb, cause)
+			O.droplimb(amputation, delete_limb, cause, parent_delimbing = TRUE)
 
 		//Replace all wounds on that arm with one wound on parent organ.
 		wounds.Cut()
@@ -917,16 +919,17 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
-			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
-			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
-			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
+			if(!parent_delimbing) //Ideally the parent limb would take the hand with it, still attached, but in the meantime just limit message spam.
+				owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
+				SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
+				SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			if(organ)
 				//Throw organs around
 				var/lol = pick(cardinal)
 				step(organ,lol)
 
-		owner.update_body() //Among other things, this calls update_icon(TRUE) and updates our visuals.
+		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!

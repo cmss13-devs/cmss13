@@ -161,7 +161,7 @@
 
 	var/max_stacks = min(fire_reagent.durationfire, MAX_FIRE_STACKS) // Fire stacks should not exceed MAX_FIRE_STACKS for reasonable resist amounts
 	switch(fire_reagent.fire_type)
-		if(1)
+		if(FIRE_VARIANT_TYPE_B)
 			max_stacks = 10 //Armor Shredding Greenfire caps at 1 resist/pat
 	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 

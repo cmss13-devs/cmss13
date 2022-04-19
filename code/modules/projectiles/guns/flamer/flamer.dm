@@ -618,7 +618,7 @@
 		if(isliving(i))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B)
-					if(istype(i, /mob/living/carbon/Xenomorph))
+					if(isXeno(i))
 						var/mob/living/carbon/Xenomorph/X = i
 						if(!X.armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
 							X.reset_xeno_armor_debuff_after_time(X, delta_time*10)

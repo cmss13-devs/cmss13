@@ -470,11 +470,12 @@
 
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
-		switch(fire_variant)
-			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
-			else
-				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+		if(!(sig_result & COMPONENT_NO_IGNITE))
+			switch(fire_variant)
+				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+					M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+				else
+					M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue

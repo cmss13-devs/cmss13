@@ -27238,11 +27238,12 @@
 "bQu" = (
 /obj/structure/prop/structure_lattice{
 	density = 0;
-	desc = "This jukebox only takes quarters, and you seem to be out of them at the moment.";
+	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
 	icon = 'icons/obj/structures/props/misc.dmi';
 	icon_state = "jukebox";
-	name = "Rockin' Robin 2300 Jukebox";
-	pixel_y = 21
+	name = "Rockin Robin 2300 Jukebox";
+	pixel_x = -5;
+	pixel_y = 16
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"

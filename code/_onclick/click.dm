@@ -281,7 +281,8 @@
 
 
 /client/proc/change_view(new_size, var/atom/source)
-	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW) return TRUE
+	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW) 
+		return TRUE
 	view = mob.check_view_change(new_size, source)
 	apply_clickcatcher()
 	mob.reload_fullscreens()

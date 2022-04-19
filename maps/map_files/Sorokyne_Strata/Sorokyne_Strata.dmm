@@ -17476,10 +17476,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
-"aZT" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/east_engi)
 "aZU" = (
 /obj/structure/platform/strata,
 /obj/structure/platform/strata/metal{
@@ -34923,10 +34919,6 @@
 	icon_state = "purp2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
-"idx" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/east_engi)
 "idW" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
@@ -35818,10 +35810,6 @@
 	icon_state = "cyan1"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
-"jGJ" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/south_engi)
 "jIz" = (
 /obj/structure/machinery/weather_siren{
 	dir = 1;
@@ -38894,8 +38882,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "pfz" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "pfQ" = (
 /obj/structure/platform/strata/metal{
@@ -40343,12 +40330,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/tcomms)
-"rnB" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 4
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/south_engi)
 "roh" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
@@ -42980,12 +42961,6 @@
 	opacity = 0
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
-"vEm" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 4
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/east_engi)
 "vEp" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
@@ -43094,12 +43069,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
-"vSB" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/deep/east_engi)
 "vSV" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -87385,10 +87354,10 @@ ekJ
 fst
 ekJ
 ekJ
-ekJ
-ekJ
-rnB
-ekJ
+wFG
+wFG
+wFG
+wFG
 diZ
 wFG
 dqo
@@ -87578,10 +87547,10 @@ ekJ
 ekJ
 ekJ
 ekJ
-ekJ
-ekJ
-jGJ
-ekJ
+wFG
+wFG
+wFG
+wFG
 wFG
 wFG
 dqo
@@ -87770,12 +87739,12 @@ mLn
 mLn
 ekJ
 ekJ
-ekJ
-ekJ
-jGJ
-jGJ
-ekJ
-ekJ
+wFG
+wFG
+wFG
+wFG
+wFG
+wFG
 wFG
 wFG
 wFG
@@ -87963,11 +87932,11 @@ mLn
 mLn
 mLn
 ekJ
-ekJ
-ekJ
-jGJ
-jGJ
-ekJ
+wFG
+wFG
+wFG
+wFG
+wFG
 ekJ
 ekJ
 wFG
@@ -88154,13 +88123,13 @@ mLn
 mLn
 mLn
 mLn
-mLn
-mLn
-ekJ
-ekJ
-jGJ
-jGJ
-ekJ
+tgC
+tgC
+wFG
+wFG
+pfz
+wFG
+wFG
 ekJ
 ekJ
 fst
@@ -88346,14 +88315,14 @@ mLn
 mLn
 mLn
 tgC
-mLn
-mLn
 tgC
-vGW
+tgC
+tgC
+xDD
 pfz
-jGJ
-jGJ
-ekJ
+wFG
+wFG
+wFG
 ekJ
 ekJ
 wFG
@@ -88535,17 +88504,17 @@ tgC
 mLn
 mLn
 mLn
-mLn
-mLn
-vSB
+tgC
+tgC
+tgC
 sWr
 tgC
 tgC
 wHW
-tgC
-mLn
-ekJ
-ekJ
+wHW
+wHW
+wFG
+wFG
 ekJ
 ekJ
 ekJ
@@ -88727,17 +88696,17 @@ tgC
 tgC
 mLn
 mLn
-mLn
-mLn
-mLn
-vSB
+tgC
+tgC
+wHW
+tgC
 tgC
 wHW
 xDD
 tgC
 tgC
-mLn
-mLn
+tgC
+tgC
 ekJ
 ekJ
 ekJ
@@ -88919,12 +88888,12 @@ vuJ
 rRl
 tgC
 mLn
-mLn
-mLn
-mLn
-mLn
-vSB
 tgC
+tgC
+tgC
+wHW
+tgC
+wHW
 wHW
 hyu
 wHW
@@ -89112,13 +89081,13 @@ tgC
 tgC
 tgC
 mLn
-mLn
-mLn
-mLn
-mLn
-mLn
-vEm
-fFy
+tgC
+tgC
+tgC
+tgC
+wHW
+wHW
+wHW
 tgC
 wHW
 xDD
@@ -89305,15 +89274,15 @@ tgC
 tgC
 tgC
 qoD
-mLn
-mLn
-mLn
-mLn
-mLn
-mLn
-aZT
-vEm
-fFy
+tgC
+tgC
+tgC
+tgC
+wHW
+wHW
+wHW
+tgC
+tgC
 wHW
 tgC
 mLn
@@ -89501,12 +89470,12 @@ tgC
 vGW
 vGW
 vGW
-idx
-aZT
-aZT
-aZT
-aZT
-vSB
+tgC
+tgC
+tgC
+wHW
+tgC
+tgC
 vvl
 kIW
 mLn
@@ -89694,11 +89663,11 @@ tgC
 tgC
 tgC
 vGW
-mLn
-mLn
-mLn
-mLn
-mLn
+tgC
+tgC
+tgC
+tgC
+tgC
 mLn
 mLn
 mLn
@@ -89888,9 +89857,9 @@ tgC
 tgC
 tgC
 qoD
-mLn
-mLn
-mLn
+tgC
+tgC
+tgC
 tgC
 tgC
 mLn
@@ -90081,8 +90050,8 @@ tNK
 tgC
 tgC
 tgC
-mLn
-mLn
+tgC
+tgC
 tgC
 tgC
 tgC
@@ -90274,7 +90243,7 @@ pPi
 vuJ
 tgC
 tgC
-mLn
+tgC
 tgC
 tgC
 tgC
@@ -90467,7 +90436,7 @@ vuJ
 vuJ
 tgC
 tgC
-mLn
+tgC
 tgC
 tgC
 tgC

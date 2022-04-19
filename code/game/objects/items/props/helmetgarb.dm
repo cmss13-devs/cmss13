@@ -131,71 +131,82 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
-		if(user.action_busy)
-			return
-		if(src != user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to recharge them."))
-			return
-		if(shape == NVG_SHAPE_COSMETIC)
-			to_chat(user, SPAN_WARNING("There is no connector for the power cell inside \the [src]."))
-			return
-		if(shape == NVG_SHAPE_BROKEN)
-			to_chat(user, SPAN_WARNING("You need to repair \the [src] first."))
-			return
-		if(nvg_charge == nvg_maxcharge)
-			to_chat(user, SPAN_WARNING("\The [src] are already fully charged."))
+		recharge()
+
+	if(HAS_TRAIT(A, TRAIT_TOOL_SCREWDRIVER))
+		repair()
+
+	else
+		..()
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(var/obj/item/A as obj, mob/user as mob)
+	if(user.action_busy)
+		return
+	if(src != user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to recharge them."))
+		return
+	if(shape == NVG_SHAPE_COSMETIC)
+		to_chat(user, SPAN_WARNING("There is no connector for the power cell inside \the [src]."))
+		return
+	if(shape == NVG_SHAPE_BROKEN)
+		to_chat(user, SPAN_WARNING("You need to repair \the [src] first."))
+		return
+	if(nvg_charge == nvg_maxcharge)
+		to_chat(user, SPAN_WARNING("\The [src] are already fully charged."))
+		return
+
+	var/obj/item/cell/C = A
+
+	while(nvg_charge < nvg_maxcharge)
+		if(C.charge <= 0)
+			to_chat(user, SPAN_WARNING("\The [C] is completely dry."))
+			break
+		var/to_transfer
+		if(do_after(user, 30, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
+			to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
+			C.charge -= to_transfer
+			nvg_charge += to_transfer
+			to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+		else
+			to_chat(user, SPAN_WARNING("You were interrupted."))
+			break
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/repair(var/obj/item/A as obj, mob/user as mob)
+	if(user.action_busy)
+
+		return
+	if(src != user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
+		return
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
+		return
+
+	if(shape == NVG_SHAPE_BROKEN)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
 			return
 
-		var/obj/item/cell/C = A
+		to_chat(user, "You begin to repair \the [src].")
+		if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			src.color = "#bebebe"
+			shape = NVG_SHAPE_PATCHED
+			to_chat(user, "You successfully patch \the [src].")
+			nvg_maxhealth = 65
+			nvg_health = 65
+			nvg_drain = initial(nvg_drain) * 2
+		else
+			to_chat(user, SPAN_WARNING("You were interrupted."))
 
-		while(nvg_charge < nvg_maxcharge)
-			if(C.charge <= 0)
-				to_chat(user, SPAN_WARNING("\The [C] is completely dry."))
-				break
-			var/to_transfer
-			if(do_after(user, 30, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
-				to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
-				C.charge -= to_transfer
-				nvg_charge += to_transfer
-				to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
-			else
-				to_chat(user, SPAN_WARNING("You were interrupted."))
-				break
+	else if(nvg_health == nvg_maxhealth)
+		if(shape == NVG_SHAPE_PATCHED)
+			to_chat(user, SPAN_WARNING("Already repaired, nothing more you can do."))
+		else if(shape == NVG_SHAPE_FINE)
+			to_chat(user, SPAN_WARNING("Nothing to fix."))
+		else if(shape == NVG_SHAPE_COSMETIC)
 
-	else if(HAS_TRAIT(A, TRAIT_TOOL_SCREWDRIVER))
-		if(user.action_busy)
-			return
-		if(src != user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
-			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
-			to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
-			return
-
-		if(shape == NVG_SHAPE_BROKEN)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
-				to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
-				return
-
-			to_chat(user, "You begin to repair \the [src].")
-			if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				src.color = "#bebebe"
-				shape = NVG_SHAPE_PATCHED
-				to_chat(user, "You successfully patch \the [src].")
-				nvg_maxhealth = 65
-				nvg_health = 65
-				nvg_drain = initial(nvg_drain) * 2
-			else
-				to_chat(user, SPAN_WARNING("You were interrupted."))
-
-		else if(nvg_health == nvg_maxhealth)
-			if(shape == NVG_SHAPE_PATCHED)
-				to_chat(user, SPAN_WARNING("Already repaired, nothing more you can do."))
-			else if(shape == NVG_SHAPE_FINE)
-				to_chat(user, SPAN_WARNING("Nothing to fix."))
-			else if(shape == NVG_SHAPE_COSMETIC)
-				to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
+			to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
 
 		else
 			to_chat(user, "You begin to repair \the [src].")
@@ -206,8 +217,6 @@
 			else
 				to_chat(user, SPAN_WARNING("You were interrupted."))
 
-	else
-		..()
 
 /obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
 	. = ..()
@@ -237,8 +246,8 @@
 	return ..()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/A)
-	attached_mob = A
+/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/User)
+	attached_mob = User
 	activation = new /datum/action/item_action/toggle(src, attached_item)
 	activation.give_to(attached_mob)
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
@@ -421,10 +430,10 @@
 	if(new_size > 7) // cannot use binos with NVG
 		toggle_nods(M)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/X) //xenos can break NVG if aim head
+/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/Xeno) //xenos can break NVG if aim head
 	SIGNAL_HANDLER
 
-	if(check_zone(X.zone_selected) == "head" && user == attached_mob)
+	if(check_zone(Xeno.zone_selected) == "head" && user == attached_mob)
 		nvg_health -= slashdata["n_damage"] // damage can be adjusted here
 	if(nvg_health <= 0)
 		nvg_health = 0

@@ -100,6 +100,11 @@
 	icon_state = "cap_key"
 	channels = list("Command" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
+/obj/item/device/encryptionkey/vc
+	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list("Command" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
+
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"

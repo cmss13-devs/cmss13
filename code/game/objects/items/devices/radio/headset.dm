@@ -385,6 +385,13 @@
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 	volume = RADIO_VOLUME_CRITICAL
 
+/obj/item/device/radio/headset/almayer/vc 
+	name = "marine vehicle crewman headset"
+	desc = "Used by USCM vehicle crewman to hear the screams of the marines after running them over. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."
+	icon_state = "mcom_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/vc)
+	volume = RADIO_VOLUME_RAISED
+
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
 	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."

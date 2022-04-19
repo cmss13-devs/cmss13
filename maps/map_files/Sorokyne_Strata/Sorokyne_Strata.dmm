@@ -4063,7 +4063,9 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "alp" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Chunkeez Diner door"
+	name = "\improper Chunkeez Diner door";
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -27238,8 +27240,8 @@
 	density = 0;
 	desc = "This jukebox only takes quarters, and you seem to be out of them at the moment.";
 	icon = 'icons/obj/structures/props/misc.dmi';
-	icon_state = 'jukebox';
-	name = "\improper Rockin' Robin 2300 Jukebox";
+	icon_state = "jukebox";
+	name = "Rockin' Robin 2300 Jukebox";
 	pixel_y = 21
 	},
 /turf/open/floor/strata{

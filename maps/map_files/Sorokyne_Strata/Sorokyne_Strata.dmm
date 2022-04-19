@@ -36896,9 +36896,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
-"lCB" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/strata/ug/interior/jungle/deep/tearlake_north)
 "lDz" = (
 /obj/structure/cryofeed,
 /obj/structure/platform/strata/metal,
@@ -80603,7 +80600,7 @@ tPN
 uvw
 uvw
 vit
-lCB
+tPN
 dKj
 yiI
 smd

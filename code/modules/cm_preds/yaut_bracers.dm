@@ -637,6 +637,7 @@
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
+	T = get_turf(src)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)

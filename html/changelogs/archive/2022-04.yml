@@ -273,3 +273,7 @@
       on their rank pins.
   - rscadd: Changing data records, such as a name in the manifest, is now logged.
   - bugfix: Pardon button is actually fixed.
+2022-04-20:
+  Firartix:
+  - server: Containers now properly includes youtube-dl, fixing usage of 'Play Internet
+      Sound'

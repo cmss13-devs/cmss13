@@ -19106,7 +19106,7 @@
 /area/bigredv2/outside/w)
 "aWm" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "dnd_solaris"
+	insert_tag = "dndsolaris"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/library)

@@ -26,14 +26,14 @@ def parse_pr_changelog(pr):
 	entries = []
 	for index, line in enumerate(lines):
 		line = line.strip()
-		if not line:
-			continue
 		if index == 0:
 			author = line.strip()
 			if not author or author == "John Titor":
 				author = pr.user.name
 				print("Author not set, substituting", author)
 			yaml_object["author"] = author
+			continue
+		if not line:
 			continue
 
 		splitData = line.split(":")

@@ -32732,7 +32732,7 @@
 /area/bigredv2/caves_lambda)
 "uuw" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = bigredbarls
+	insert_tag = "bigredbarls"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
@@ -33356,7 +33356,7 @@
 /area/bigredv2/caves/eta/living)
 "xhC" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = clfmarshalls
+	insert_tag = "clfmarshalls"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)

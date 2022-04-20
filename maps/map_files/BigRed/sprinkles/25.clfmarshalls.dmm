@@ -7,14 +7,14 @@
 "bX" = (/obj/structure/bed/chair{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "ca" = (/obj/structure/surface/table,/obj/item/weapon/gun/smg/nailgun,/obj/item/weapon/gun/smg/nailgun,/obj/item/ammo_box/magazine/smg/nailgun,/obj/item/ammo_box/magazine/smg/nailgun,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "cd" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade/metal/wired{icon_state = "metal_2"},/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
-"cg" = (/obj/structure/barricade/metal/wired,/obj/effect/decal/cleanable/blood,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
+"cg" = (/obj/structure/barricade/metal/wired,/obj/effect/decal/cleanable/blood,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "ch" = (/obj/effect/decal/cleanable/dirt,/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "co" = (/obj/structure/barricade/plasteel/wired{icon_state = "plasteel_2"},/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "cA" = (/obj/structure/machinery/light{dir = 8},/turf/open/floor{dir = 9; icon_state = "redfull"},/area/bigredv2/outside/marshal_office)
 "di" = (/obj/effect/landmark/corpsespawner/security,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 4; icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "dm" = (/obj/structure/surface/table/woodentable/fancy,/obj/structure/machinery/recharger,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "dO" = (/obj/structure/machinery/cm_vending/sorted/medical/no_access,/turf/open/floor{icon_state = "floor4"; tag = "icon-floor4"},/area/bigredv2/outside/marshal_office)
-"ec" = (/obj/effect/decal/cleanable/dirt,/obj/item/ammo_casing/bullet,/obj/effect/landmark/corpsespawner/doctor,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"ec" = (/obj/effect/decal/cleanable/dirt,/obj/item/ammo_casing/bullet,/obj/effect/landmark/corpsespawner/doctor,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "eh" = (/obj/structure/machinery/light{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "et" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/effect/decal/cleanable/blood/oil,/obj/item/stack/rods,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "eF" = (/turf/closed/wall/solaris/reinforced,/area/bigredv2/outside/medical)
@@ -50,14 +50,14 @@
 "mt" = (/obj/structure/surface/table,/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "mC" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade/plasteel/wired{icon_state = "plasteel_2"},/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "mL" = (/obj/effect/decal/cleanable/dirt,/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"mY" = (/obj/structure/pipes/standard/manifold/hidden/green,/obj/effect/decal/cleanable/dirt,/obj/item/ammo_casing/bullet,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"mY" = (/obj/structure/pipes/standard/manifold/hidden/green,/obj/effect/decal/cleanable/dirt,/obj/item/ammo_casing/bullet,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "mZ" = (/obj/effect/decal/cleanable/blood/oil,/obj/item/stack/rods,/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"nd" = (/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
+"nd" = (/obj/item/ammo_casing/bullet,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "ne" = (/obj/structure/pipes/vents/pump{dir = 1},/turf/open/floor{icon_state = "grimy"},/area/bigredv2/outside/marshal_office)
 "ng" = (/obj/structure/closet/l3closet/security,/turf/open/floor{dir = 8; icon_state = "vault"},/area/bigredv2/outside/marshal_office)
 "ns" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/fire,/obj/item/storage/firstaid/fire,/turf/open/floor{icon_state = "floor4"; tag = "icon-floor4"},/area/bigredv2/outside/marshal_office)
 "nL" = (/turf/open/mars,/area/bigredv2/outside/n)
-"nP" = (/obj/structure/barricade/metal/wired{dir = 1; icon_state = "metal_2"},/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"nP" = (/obj/structure/barricade/metal/wired{dir = 1; icon_state = "metal_2"},/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "nQ" = (/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "grimy"},/area/bigredv2/outside/marshal_office)
 "nS" = (/obj/structure/surface/table/reinforced/prison,/obj/item/storage/firstaid/adv,/obj/item/storage/firstaid/adv,/turf/open/floor{icon_state = "floor4"; tag = "icon-floor4"},/area/bigredv2/outside/marshal_office)
 "nT" = (/obj/structure/machinery/light{dir = 4; tag = "icon-tube1 (EAST)"},/obj/structure/surface/rack,/obj/item/storage/firstaid/o2,/obj/item/storage/firstaid/o2,/turf/open/floor{icon_state = "floor4"; tag = "icon-floor4"},/area/bigredv2/outside/marshal_office)
@@ -66,12 +66,12 @@
 "ph" = (/obj/structure/machinery/light{dir = 1},/turf/open/floor{dir = 4; icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "pl" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/effect/decal/cleanable/blood/oil,/obj/item/stack/rods,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "pI" = (/obj/structure/surface/rack,/obj/item/weapon/gun/shotgun/pump/cmb,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
-"pJ" = (/obj/structure/surface/table,/obj/item/stack/sheet/plasteel/large_stack,/obj/item/stack/sheet/plasteel/large_stack,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"pJ" = (/obj/structure/surface/table,/obj/item/stack/sheet/plasteel/large_stack,/obj/item/stack/sheet/plasteel/large_stack,/obj/item/stack/sheet/plasteel/large_stack,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "qa" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/toxin,/obj/item/storage/firstaid/toxin,/turf/open/floor{icon_state = "floor4"; tag = "icon-floor4"},/area/bigredv2/outside/marshal_office)
 "qg" = (/obj/structure/surface/table,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "qm" = (/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "qs" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
-"qJ" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/blood,/obj/structure/barricade/metal/wired,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"qJ" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/blood,/obj/structure/barricade/metal/wired,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "rh" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade/metal/wired{icon_state = "metal_2"},/obj/structure/barricade/metal/wired{dir = 4},/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "rk" = (/obj/structure/machinery/door_control{id = "Marshal Offices"; name = "Storm Shutters"; pixel_x = -32},/turf/open/floor{dir = 9; icon_state = "redfull"},/area/bigredv2/outside/marshal_office)
 "ro" = (/obj/item/ammo_casing/bullet,/obj/structure/surface/table,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
@@ -85,9 +85,8 @@
 "sp" = (/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "st" = (/obj/effect/decal/cleanable/blood,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "sv" = (/obj/structure/machinery/deployable/barrier,/turf/open/floor{dir = 8; icon_state = "vault"},/area/bigredv2/outside/marshal_office)
-"sW" = (/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "sY" = (/obj/structure/surface/rack,/obj/item/explosive/grenade/incendiary/molotov,/obj/item/explosive/grenade/incendiary/molotov,/obj/item/explosive/grenade/incendiary/molotov,/obj/item/explosive/grenade/incendiary/molotov,/obj/item/explosive/grenade/incendiary/molotov,/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"te" = (/obj/item/device/radio/intercom{freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = 30},/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 5; icon_state = "red"},/area/bigredv2/outside/marshal_office)
+"te" = (/obj/item/device/radio/intercom{freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = 30},/obj/item/ammo_casing/bullet,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{dir = 5; icon_state = "red"},/area/bigredv2/outside/marshal_office)
 "tC" = (/obj/structure/barricade/metal/wired{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "tH" = (/obj/structure/surface/table/woodentable/fancy,/obj/item/device/camera_film,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "tN" = (/obj/effect/decal/cleanable/dirt,/obj/effect/landmark/corpsespawner/security,/turf/open/floor,/area/bigredv2/outside/marshal_office)
@@ -98,19 +97,18 @@
 "uJ" = (/obj/structure/window_frame/solaris,/turf/open/floor/plating,/area/bigredv2/outside/marshal_office)
 "vg" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "vi" = (/obj/structure/surface/rack,/obj/structure/machinery/light{dir = 1; tag = "icon-tube1 (NORTH)"},/obj/item/ammo_magazine/revolver/cmb,/turf/open/floor{dir = 8; icon_state = "vault"},/area/bigredv2/outside/marshal_office)
-"vJ" = (/obj/effect/landmark/lv624/xeno_tunnel,/turf/open/mars,/area/bigredv2/outside/n)
 "vY" = (/obj/structure/machinery/camera/autoname{dir = 4},/obj/structure/bed/chair{dir = 4},/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "wo" = (/obj/structure/reagent_dispensers/peppertank{pixel_x = -32},/obj/structure/machinery/bodyscanner,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "wv" = (/turf/open/floor{dir = 4; icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
-"wS" = (/obj/effect/decal/cleanable/dirt,/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"wS" = (/obj/item/ammo_casing/bullet,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "xe" = (/obj/effect/decal/cleanable/blood/gibs/body,/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"xy" = (/obj/structure/barricade/metal/wired{dir = 1; icon_state = "metal_2"},/obj/structure/barricade/metal/wired{dir = 4; icon_state = "metal_2"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
+"xy" = (/obj/structure/barricade/metal/wired{dir = 1; icon_state = "metal_2"},/obj/structure/barricade/metal/wired{dir = 4; icon_state = "metal_2"},/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "xC" = (/obj/structure/closet/secure_closet/brig,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "xE" = (/obj/effect/decal/cleanable/blood,/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "xF" = (/obj/structure/reagent_dispensers/water_cooler,/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"xH" = (/obj/structure/surface/rack,/obj/item/storage/sparepouch,/obj/item/storage/sparepouch{pixel_y = 7},/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"xH" = (/obj/structure/surface/rack,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "xV" = (/obj/structure/machinery/light{dir = 4; tag = "icon-tube1 (EAST)"},/turf/open/floor,/area/bigredv2/outside/marshal_office)
-"yg" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"yg" = (/obj/structure/bed/chair{dir = 1},/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "yu" = (/obj/structure/surface/table,/obj/item/weapon/gun/rifle/m16,/obj/item/weapon/gun/rifle/m16{pixel_y = 9},/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "yz" = (/obj/structure/surface/table/woodentable,/obj/effect/decal/cleanable/dirt,/turf/open/floor{icon_state = "cult"},/area/bigredv2/outside/marshal_office)
 "yJ" = (/obj/structure/sign/poster/clf,/turf/closed/wall/solaris,/area/bigredv2/outside/marshal_office)
@@ -124,9 +122,9 @@
 "AV" = (/obj/structure/machinery/camera/autoname,/obj/structure/surface/table,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "Bl" = (/obj/structure/surface/table/woodentable,/turf/open/floor{icon_state = "cult"},/area/bigredv2/outside/marshal_office)
 "Bz" = (/obj/effect/decal/cleanable/dirt,/obj/effect/landmark/corpsespawner/security,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
-"Ck" = (/obj/structure/machinery/camera/autoname{dir = 8},/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"Ck" = (/obj/structure/machinery/camera/autoname{dir = 8},/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "Cw" = (/obj/structure/machinery/camera/autoname{dir = 1},/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
-"CB" = (/obj/structure/surface/table,/obj/item/stack/sheet/metal/large_stack,/obj/item/stack/sheet/metal/large_stack,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"CB" = (/obj/structure/surface/table,/obj/item/stack/sheet/metal/large_stack,/obj/item/stack/sheet/metal/large_stack,/obj/item/stack/sheet/metal/large_stack,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "Dc" = (/obj/structure/barricade/metal/wired{dir = 4; icon_state = "metal_2"},/turf/open/floor{dir = 9; icon_state = "redfull"},/area/bigredv2/outside/marshal_office)
 "Dk" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "Dq" = (/turf/open/floor,/area/bigredv2/outside/marshal_office)
@@ -134,7 +132,7 @@
 "DN" = (/obj/structure/machinery/door_control{id = "Marshal Offices"; name = "Storm Shutters"; pixel_x = -32},/obj/structure/machinery/deployable/barrier,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "DV" = (/obj/structure/machinery/vending/coffee,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "Fd" = (/obj/structure/surface/table/woodentable,/obj/structure/pipes/vents/pump{dir = 8},/turf/open/floor{icon_state = "cult"},/area/bigredv2/outside/marshal_office)
-"Fz" = (/obj/structure/bed/chair,/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"Fz" = (/obj/structure/bed/chair,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "FL" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "FO" = (/turf/open/floor{dir = 1; icon_state = "rampbottom"; tag = "icon-rampbottom"},/area/bigredv2/outside/marshal_office)
 "FQ" = (/obj/structure/barricade/metal/wired,/turf/open/floor{dir = 8; icon_state = "damaged3"},/area/bigredv2/outside/marshal_office)
@@ -162,6 +160,7 @@
 "Kz" = (/obj/effect/decal/cleanable/blood,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "KC" = (/turf/open/floor{icon_state = "rampbottom"; tag = "icon-rampbottom"},/area/bigredv2/outside/marshal_office)
 "KK" = (/obj/structure/reagent_dispensers/peppertank{pixel_x = -32},/obj/effect/decal/cleanable/blood,/obj/structure/bed/chair{dir = 4},/turf/open/floor,/area/bigredv2/outside/marshal_office)
+"Lk" = (/obj/structure/barricade/metal/wired{icon_state = "metal_2"},/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "Lu" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/open/floor{icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "Ly" = (/obj/structure/bed/chair{dir = 4},/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "LE" = (/obj/structure/bed/chair{dir = 4},/obj/structure/machinery/door_control{id = "Office Complex 2"; name = "Storm Shutters"; pixel_x = -32},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
@@ -176,6 +175,7 @@
 "NF" = (/obj/structure/bed/chair/comfy,/obj/effect/decal/cleanable/blood,/obj/effect/landmark/corpsespawner/security/lawyer,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "NG" = (/obj/effect/landmark/corpsespawner/security,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
 "NY" = (/obj/structure/bed/chair{dir = 4},/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
+"Ou" = (/obj/structure/barricade/metal/wired,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "OD" = (/obj/structure/barricade/metal/wired{dir = 4},/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "OL" = (/obj/structure/pipes/standard/manifold/hidden/green,/obj/structure/surface/table,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/obj/item/ammo_magazine/rifle/mar40/extended,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "ON" = (/obj/structure/bed,/turf/open/floor{icon_state = "dark"},/area/bigredv2/outside/marshal_office)
@@ -216,7 +216,7 @@
 "XX" = (/obj/structure/closet/hydrant{pixel_y = 32},/turf/open/floor{dir = 4; icon_state = "redcorner"},/area/bigredv2/outside/marshal_office)
 "XZ" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor,/area/bigredv2/outside/marshal_office)
 "Yq" = (/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
-"Yt" = (/obj/structure/barricade/metal/wired,/obj/item/ammo_casing/bullet,/turf/open/floor{icon_state = "platingdmg1"},/area/bigredv2/outside/marshal_office)
+"Yt" = (/obj/structure/barricade/metal/wired,/obj/item/ammo_casing/bullet,/obj/effect/landmark/survivor_spawner/bigred_clf,/turf/open/floor{icon_state = "platingdmg1"},/area/bigredv2/outside/marshal_office)
 "YA" = (/obj/structure/machinery/cm_vending/sorted/medical/wall_med{name = "Emergency NanoMed"; pixel_x = 30; req_access = null},/turf/open/floor{dir = 6; icon_state = "red"},/area/bigredv2/outside/marshal_office)
 "YN" = (/obj/structure/machinery/door_control{id = "garage"; name = "Garage Shutters"; pixel_x = 26; range = 500},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/marshal_office)
 "YZ" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor,/area/bigredv2/outside/marshal_office)
@@ -228,23 +228,23 @@
 (1,1,1) = {"
 RCrBrBrBnLnLnLnLnLRCRCRCRCRCRCRCTaTaTaRCRCnLnLnLnLrBrBrBrBrBrB
 RCnLnLnLnLnLnLnLnLRCwofqxHrvHegLkLkqzoOURCnLnLnLnLrBrBrBrBrBrB
-RCvJnLnLnLnLnLnLnLRCLZecDqnSoileYqNFgkYNRCnLnLnLnLnLrBrBrBrBrB
+RCnLnLnLnLnLnLnLnLRCLZecDqnSoileYqNFgkYNRCnLnLnLnLnLrBrBrBrBrB
 RCRCRCRCRCRCRCRCRCRCKKDqPadOoidmmiGWUKYqRCnLnLnLnLnLnLrBrBrBrB
 RCgpLHngngNopgNoviRCvYkEkEnsoiYqFLYqFLYqRCnLnLnLnLnLnLnLnLrBrB
 RCsvspGiBzumDkJYspRCAIDqtNnTRCDNjTYqjTjTRCnLnLnLnLnLnLnLnLnLnL
 RCsvXJSmpIrZiaJlaRsfDqSJMVqaRCuJJxfeJxuJRCHeHeHenLnLnLnLnLnLnL
-RCsvGjstspORVbXMNGRCtOcoPTGFRCxFDqDqDqDqDVTlTlHenLnLnLnLnLnLnL
-RCRCRCRCRCRCRCplRCRCuJmZuJuJJxsWsWwSwSsWsWsWsWHenLnLnLnLnLnLnL
-RCSRqgroAVqghrTAJHRCDqDqpJCBcawSwSsWFzFzFzFzCkHeHeHeyJmZmZyJHe
+RCsvGjstwSORVbXMNGRCtOcoPTGFRCxFDqDqDqDqDVTlTlHenLnLnLnLnLnLnL
+RCRCRCRCRCRCRCplRCRCuJmZuJuJJxDqDqkEkEDqDqDqDqHenLnLnLnLnLnLnL
+RCSRqgroAVqghrTAJHRCDqDqpJCBcakEkEFzFzFzFzFzCkHeHeHeyJmZmZyJHe
 uJfPXJstBzJYvgqsVsuJDqDqDqDqDqkEkEHjUcHQyuToDqDqDqDqDqnPGYxVHe
 aWscNGchumchJJfFaMbBPoYZYZPoPoPoPoOLQslTzSHUPoPoPoPqmLkEkEkEHe
-uJgPYtNuFQNucgKgrhuJDqcosYZXZXTVDqDqygygygygxVHeuJyJZDyJuJuJHe
+uJgPYtNuFQNucgKgrhuJDqcosYZXZXTVDqygygygygygxVHeuJyJZDyJuJuJHe
 RCuJuJrSuJuJuJplRCJxHemZHeHeHeHeHeHeyJHeHeHeHeHeXLYqjCYqjQxyGT
 XXRLdiRLRLLFwvZAwvphwvwvJAteHePagsZBNYmtDqkEMVHeYqnQlPkNAcODGT
 PobDbDYZYZPoYZmYgXmjbDxEYZRketPoLyNiSrlzXgFdFOHebXkNfKkikNVQGT
 PuuvLuutXjmCcdutGamCQSqmndYAHekEXZZBDqDqDqbnklHeLEnQlPkNnQtCGT
 RCuJUJuJRCyPuJJxAHmZJxuJKquJRCehtNDqxePakEBlIYHeDAnQlPAckNVQGT
 RCGiGiGiRCrkDcuJSbDqRCGiGiGiRCgsgsZBNYmtkEyzKCHehVkinekNyNtCGT
-RCxCVbONRCcADcuJSbkERCxCVbONRCgsqJZBNumtPTkEDqHetHKzICCwYqsoGT
+RCxCVbONRCcADcuJSbkERCxCVbONRCgsqJZBLkmtOukEDqHetHKzICCwYqsoGT
 eFeFeFeFeFeFeFeFZDmZRCRCRCRCRCHeMUHeQyHeMUHeHeHeHeHeHeHeHeHeHe
 "}

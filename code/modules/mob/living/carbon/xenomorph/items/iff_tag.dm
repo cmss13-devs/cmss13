@@ -30,10 +30,10 @@
 	if(xeno)
 		if(!xeno.iff_tag)
 			to_chat(programmer, SPAN_WARNING("\The [src]'s tag got removed while you were reprogramming it!"))
-			return
+			return FALSE
 		if(!programmer.Adjacent(xeno))
 			to_chat(programmer, SPAN_WARNING("You need to stay close to the xenomorph to reprogram the tag!"))
-			return
+			return FALSE
 	switch(option)
 		if("Overwrite")
 			faction_groups = id_faction_groups

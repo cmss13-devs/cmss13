@@ -277,3 +277,5 @@
   Firartix:
   - server: Containers now properly includes youtube-dl, fixing usage of 'Play Internet
       Sound'
+  Geeves:
+  - bugfix: Fixed job roles being overriden by their equipped versions on some occasions.

@@ -51,7 +51,7 @@
 "tK" = (/obj/structure/machinery/light{dir = 1; tag = "icon-tube1 (NORTH)"},/turf/open/floor/plating,/area/bigredv2/outside/bar)
 "tR" = (/obj/structure/barricade/wooden{desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it..."; dir = 1; health = 25000},/turf/open/floor{dir = 8; icon_state = "carpet15-15"; tag = "icon-carpet15-15 (WEST)"},/area/bigredv2/outside/bar)
 "ul" = (/obj/item/paper_bin,/obj/structure/barricade/wooden{desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it..."; dir = 4; health = 25000},/obj/structure/barricade/wooden,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/bar)
-"uu" = (/obj/structure/machinery/power/apc{dir = 1; name = "Bar APC"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/bar)
+"uu" = (/obj/structure/machinery/power/apc,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/bar)
 "uZ" = (/obj/structure/pipes/standard/manifold/hidden/green,/turf/open/floor,/area/bigredv2/outside/dorms)
 "vc" = (/obj/structure/machinery/door_control{id = "Dormitories"; name = "Storm Shutters"; pixel_y = -32},/obj/structure/machinery/camera/autoname{dir = 1},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/dorms)
 "vv" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/barricade/plasteel/wired{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/bar)

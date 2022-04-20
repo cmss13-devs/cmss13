@@ -282,3 +282,11 @@
   - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
       meaning CO leaders will show the beret type and Synth will show the uniform
       drip.
+  Stanley:
+  - balance: Provost enforcers now have mk221s instead of SMGs, and get some tear
+      gas grenades and both beanbag and slug rounds.
+  - balance: Hefa knight armour buffed in melee, explosive, and bullet values. HEFA
+      knights given a medical pouch, replacing one of their explosive pouches. Melee
+      hefa knights given an extra sword.
+  - balance: The pizza delivery guy now spawns with a crowbar. Also, they can finally
+      work for pizza galaxy.

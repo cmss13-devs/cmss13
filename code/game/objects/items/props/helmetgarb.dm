@@ -162,7 +162,7 @@
 			to_chat(user, SPAN_WARNING("\The [C] is completely dry."))
 			break
 		var/to_transfer
-		if(do_after(user, 30, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
+		if(do_after(user, 1 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
 			to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
 			C.charge -= to_transfer
 			nvg_charge += to_transfer
@@ -188,7 +188,7 @@
 			return
 
 		to_chat(user, "You begin to repair \the [src].")
-		if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.color = "#bebebe"
 			shape = NVG_SHAPE_PATCHED
@@ -210,7 +210,7 @@
 
 		else
 			to_chat(user, "You begin to repair \the [src].")
-			if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 				to_chat(user, "You successfully repair \the [src].")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				nvg_health = nvg_maxhealth

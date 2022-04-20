@@ -1,0 +1,93 @@
+"ab" = (/obj/structure/barricade/metal/wired{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"au" = (/turf/open/floor{dir = 8; icon_state = "carpet13-5"; tag = "icon-carpet13-5 (WEST)"},/area/bigredv2/outside/library)
+"cv" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/machinery/door/airlock/almayer/medical/glass{name = "\improper Greenhouse Storage"},/obj/structure/machinery/door/poddoor/shutters/almayer{dir = 4; id = "Library"; name = "\improper Library Shutters"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"dL" = (/obj/structure/machinery/light{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"eh" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 5},/turf/open/floor{dir = 8; icon_state = "carpet13-5"; tag = "icon-carpet13-5 (WEST)"},/area/bigredv2/outside/library)
+"ei" = (/obj/structure/bookcase/manuals/research_and_development,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"fe" = (/obj/structure/barricade/metal/wired,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"fo" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/bookcase/manuals/engineering,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ho" = (/turf/closed/wall/solaris/reinforced/hull,/area/bigredv2/outside/library)
+"hL" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/chicken,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"hT" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/barricade/plasteel/wired,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"iQ" = (/turf/closed/wall/solaris,/area/bigredv2/outside/library)
+"kv" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/elpresidente,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"lH" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/plaguedoctor,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"mn" = (/obj/structure/machinery/alarm{dir = 4; pixel_x = -30},/obj/structure/surface/table/woodentable,/obj/item/pizzabox/vegetable,/obj/item/pizzabox/vegetable,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"nn" = (/obj/structure/bed/chair/wood/normal,/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"nI" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/scratch,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"nR" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 9},/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/pirate,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"oh" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 6},/obj/structure/bookcase/manuals/engineering,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"pk" = (/obj/structure/surface/table/woodentable,/obj/item/pizzabox/margherita,/obj/item/pizzabox/margherita,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"pr" = (/turf/open/floor{dir = 8; icon_state = "carpet5-1"; tag = "icon-carpet5-1 (WEST)"},/area/bigredv2/outside/library)
+"pJ" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor{dir = 8; icon_state = "carpet11-12"; tag = "icon-carpet11-12 (WEST)"},/area/bigredv2/outside/library)
+"qF" = (/obj/structure/machinery/door/poddoor/shutters/almayer{id = "Library"; name = "\improper Library Shutters"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"qK" = (/obj/structure/machinery/door_control{id = "Library"; name = "Storm Shutters"; pixel_x = 32},/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/highlander,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ue" = (/obj/structure/machinery/light{dir = 4; tag = "icon-tube1 (EAST)"},/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/obj/structure/machinery/power/apc,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ww" = (/turf/open/floor{dir = 8; icon_state = "carpet7-3"; tag = "icon-carpet7-3 (WEST)"},/area/bigredv2/outside/library)
+"xd" = (/turf/open/floor{dir = 8; icon_state = "carpet10-8"; tag = "icon-carpet10-8 (WEST)"},/area/bigredv2/outside/library)
+"xx" = (/obj/structure/machinery/light{dir = 4},/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/commie,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"xz" = (/obj/structure/bed/chair/wood/normal{dir = 1},/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"yw" = (/obj/structure/window/framed/solaris,/obj/structure/machinery/door/poddoor/shutters/almayer{id = "Library"; name = "\improper Library Shutters"},/turf/open/floor/plating,/area/bigredv2/outside/library)
+"yT" = (/obj/structure/machinery/light{dir = 8},/obj/structure/surface/table/woodentable,/obj/item/pizzabox/meat,/obj/item/pizzabox/meat,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"zc" = (/obj/structure/surface/table/woodentable,/obj/item/paper,/obj/item/tool/pen/clicky,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Bl" = (/obj/structure/machinery/cm_vending/sorted/medical,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Bp" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/random,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Cg" = (/obj/structure/surface/table/woodentable,/obj/item/pizzabox/mushroom,/obj/item/pizzabox/mushroom,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"EX" = (/obj/structure/bed/chair/wood/normal{dir = 8; tag = ""},/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/obj/effect/landmark/survivor_spawner,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Fm" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/turf/open/floor{dir = 8; icon_state = "carpet11-12"; tag = "icon-carpet11-12 (WEST)"},/area/bigredv2/outside/library)
+"Gt" = (/obj/structure/machinery/light,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"GW" = (/obj/structure/surface/table/woodentable,/obj/structure/largecrate/merc/clothing,/obj/structure/largecrate/merc/clothing,/obj/structure/largecrate/merc/clothing,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Hu" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 9},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"HT" = (/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"HY" = (/obj/structure/pipes/standard/manifold/hidden/green{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Jb" = (/obj/structure/surface/table/woodentable,/obj/structure/largecrate/merc,/obj/structure/largecrate/merc,/obj/structure/largecrate/merc,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"JM" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/machinery/door/airlock/almayer/generic{name = "\improper Library Backroom"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"JU" = (/obj/structure/surface/table/woodentable,/obj/item/storage/beer_pack,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Kj" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor{dir = 8; icon_state = "carpet7-3"; tag = "icon-carpet7-3 (WEST)"},/area/bigredv2/outside/library)
+"Kz" = (/obj/structure/machinery/camera/autoname,/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/butler,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Lx" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 5},/turf/open/floor{dir = 8; icon_state = "carpet7-3"; tag = "icon-carpet7-3 (WEST)"},/area/bigredv2/outside/library)
+"Mh" = (/obj/structure/surface/table/woodentable,/obj/item/ammo_box/magazine/shotgun/buckshot,/obj/item/ammo_box/magazine/shotgun/flechette,/obj/item/ammo_magazine/shotgun/slugs,/obj/item/ammo_magazine/shotgun/slugs,/obj/item/ammo_magazine/shotgun/slugs,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"MF" = (/obj/structure/window/framed/solaris,/obj/structure/machinery/door/poddoor/shutters/almayer{dir = 4; id = "Library"; name = "\improper Library Shutters"},/turf/open/floor/plating,/area/bigredv2/outside/library)
+"Nm" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor{dir = 8; icon_state = "carpet15-15"; tag = "icon-carpet15-15 (WEST)"},/area/bigredv2/outside/library)
+"NE" = (/obj/structure/barricade/plasteel/wired,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"NI" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Oe" = (/turf/open/floor{dir = 8; icon_state = "carpet11-12"; tag = "icon-carpet11-12 (WEST)"},/area/bigredv2/outside/library)
+"OZ" = (/obj/structure/machinery/cm_vending/sorted/walkman,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Pp" = (/obj/structure/bookcase/manuals/engineering,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Rh" = (/obj/structure/surface/table/woodentable,/obj/structure/pipes/vents/pump{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Rj" = (/obj/structure/surface/table/woodentable,/obj/item/toy/dice/d20,/obj/item/paper,/obj/item/tool/pen/clicky,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Ro" = (/obj/structure/surface/table/woodentable,/obj/item/clothing/suit/imperium_monk,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"RD" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 6},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Ss" = (/obj/structure/pipes/standard/simple/hidden/green,/turf/open/floor{dir = 8; icon_state = "carpet6-2"; tag = "icon-carpet6-2 (WEST)"},/area/bigredv2/outside/library)
+"SW" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/barricade/plasteel/wired{dir = 8},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Tq" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{name = "\improper Library"},/obj/structure/machinery/door/poddoor/shutters/almayer{id = "Library"; name = "\improper Library Shutters"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Tz" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/gladiator,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Uh" = (/turf/open/floor{dir = 8; icon_state = "carpet14-10"; tag = "icon-carpet14-10 (WEST)"},/area/bigredv2/outside/library)
+"Vc" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 10},/turf/open/floor{dir = 8; icon_state = "carpet13-5"; tag = "icon-carpet13-5 (WEST)"},/area/bigredv2/outside/library)
+"Wf" = (/obj/structure/machinery/camera/autoname{dir = 4},/obj/structure/surface/table/woodentable,/obj/item/stack/sheet/metal/large_stack,/obj/item/stack/sheet/metal/large_stack,/obj/item/stack/sheet/metal/large_stack,/obj/item/weapon/gun/smg/nailgun,/obj/item/ammo_box/magazine/smg/nailgun,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"Wz" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/prig,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"WR" = (/obj/structure/machinery/light{dir = 4},/obj/structure/surface/table/woodentable,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"YF" = (/obj/structure/machinery/light{dir = 1},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ZD" = (/obj/structure/bookcase,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ZJ" = (/turf/open/floor{dir = 8; icon_state = "carpet9-4"; tag = "icon-carpet9-4 (WEST)"},/area/bigredv2/outside/library)
+"ZV" = (/obj/structure/bookcase/manuals/medical,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+
+(1,1,1) = {"
+hohohohohohohohohohoho
+hoPpnIBpWzYFRDJMSWueho
+hoPpHTHTHTHTlHiQRhHuho
+hoPpHTohfoNInRiQRoEXho
+cvSWNIHYHTHTqKiQiQiQho
+hoJUHTSsxdHTTzhLKzxxho
+hopkHTKjOeHTnnnnHTkvho
+hoCgHTKjOeHTzczcHTabMF
+homnHTKjOeHTRjzcHTabMF
+hoyTHTLxFmHTxzxzHTWRho
+hoOZHTwwpJHTHTHTHTabMF
+hoMhHTwwpJPpHTZVeiabMF
+hoJbHTwwpJZDHTZDZDdLho
+hoGWHTwwNmUhUhUhxdabMF
+hoBlHTprehVcauauZJabMF
+hoWffefeGthTNEGtfefeho
+hohoywywhoTqqFhoywywho
+"}

@@ -215,7 +215,7 @@ datum/preferences/proc/randomize_skin_color()
 	owner.screen |= rotate_right
 	rotate_right.screen_loc = "preview:1:-16,0"
 
-datum/preferences/proc/job_pref_to_gear_preset()
+/datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
@@ -237,6 +237,9 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(JOB_SQUAD_RTO)
 			return /datum/equipment_preset/uscm/rto_equipped
 		if(JOB_CO)
+			if(length(RoleAuthority.roles_whitelist))
+				var/datum/job/J = RoleAuthority.roles_by_name[JOB_CO]
+				return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_SO)
 			return /datum/equipment_preset/uscm_ship/so
@@ -249,6 +252,9 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
 		if(JOB_SYNTH)
+			if(length(RoleAuthority.roles_whitelist))
+				var/datum/job/J = RoleAuthority.roles_by_name[JOB_SYNTH]
+				return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/synth/uscm
 		if(JOB_POLICE_CADET)
 			return /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
@@ -286,12 +292,13 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			if(length(SSmapping.configs[GROUND_MAP].survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].survivor_types)
 			return /datum/equipment_preset/survivor
+		if(JOB_SYNTH_SURVIVOR)
+			return /datum/equipment_preset/synth/survivor
 		if(JOB_PREDATOR)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-				return J.gear_preset_whitelist[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
-			else
-				return /datum/equipment_preset/yautja/blooded
+				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
+			return /datum/equipment_preset/yautja/blooded
 
 	return /datum/equipment_preset/uscm/private_equipped
 

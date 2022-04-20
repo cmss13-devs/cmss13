@@ -1042,3 +1042,52 @@
 		M.u_equip(embedded_id, src, FALSE, TRUE)
 	else
 		embedded_id.forceMove(src)
+
+/obj/item/clothing/gloves/yautja/hunter/verb/activate_falcon_drone()
+	set name = "Activate Falcon Drone"
+	set desc = "Activates your falcon drone."
+	set category = "Yautja.Misc"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	var/mob/living/carbon/human/H = usr
+	if(!istype(H) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
+		return
+
+	new /mob/hologram/falcon(usr.loc, usr)
+
+/mob/hologram/falcon
+	name = "Falcon Drone"
+	hud_possible = list(HUNTER_HUD)
+
+/mob/hologram/falcon/Initialize(mapload, mob/M)
+	. = ..()
+	med_hud_set_status()
+	add_to_all_mob_huds()
+
+/mob/hologram/falcon/add_to_all_mob_huds()
+	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	hud.add_to_hud(src)
+
+/mob/hologram/falcon/remove_from_all_mob_huds()
+	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	hud.remove_from_hud(src)
+
+/mob/hologram/falcon/med_hud_set_status()
+	var/image/holder = hud_list[HUNTER_HUD]
+	holder.icon_state = "hudeye"
+
+/mob/hologram/falcon/Destroy()
+	remove_from_all_mob_huds()
+	return ..()
+
+/mob/hologram/falcon/ex_act()
+	new /obj/item/trash/burger(loc)
+	qdel(src)
+
+/mob/hologram/falcon/emp_act()
+	new /obj/item/trash/burger(loc)
+	qdel(src)

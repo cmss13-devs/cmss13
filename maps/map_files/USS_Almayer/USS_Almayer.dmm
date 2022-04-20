@@ -12629,13 +12629,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/numbertwobunks)
-"aLs" = (
-/turf/open/floor/almayer_hull{
-	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
-	},
-/area/space/almayer/lifeboat_dock)
 "aLt" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -17781,13 +17774,6 @@
 	icon_state = "redcorner";
 	tag = "icon-redcorner (NORTH)"
 	},
-/area/almayer/squads/alpha)
-"bfH" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "bfI" = (
 /obj/structure/disposalpipe/junction,
@@ -31953,13 +31939,6 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/almayer/squads/charlie)
-"cib" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie)
 "cic" = (
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/almayer{
@@ -33690,14 +33669,6 @@
 	tag = "icon-orange (EAST)"
 	},
 /area/almayer/hallways/stern_hallway)
-"ctT" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig/processing)
 "cus" = (
 /obj/docking_port/stationary/lifeboat_dock/almayer/starboard,
 /turf/open/floor/almayer_hull{
@@ -33719,16 +33690,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"cuY" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard{
-	pixel_x = 1;
-	pixel_y = 4
-	},
-/obj/item/device/taperecorder,
-/obj/item/device/taperecorder,
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/secondary_office)
 "cvb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -36080,13 +36041,6 @@
 	tag = "icon-silvercorner (EAST)"
 	},
 /area/almayer/command/cichallway)
-"dvF" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/ot{
-	pixel_y = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "dvT" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/general_equipment)
@@ -36272,16 +36226,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"dAq" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/bravo)
 "dAX" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -39131,18 +39075,6 @@
 	tag = "icon-bluefull"
 	},
 /area/almayer/command/cichallway)
-"eHy" = (
-/obj/structure/machinery/door_control{
-	id = "courtyard_cells_n";
-	name = "\improper Courtyard Lockdown Shutters";
-	pixel_y = -28;
-	req_access_txt = "3"
-	},
-/turf/open/floor/almayer{
-	icon_state = "redcorner";
-	tag = "icon-redcorner"
-	},
-/area/almayer/shipboard/brig/main_office_perma)
 "eHY" = (
 /obj/structure/surface/rack,
 /obj/item/folder,
@@ -39476,16 +39408,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"eRs" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
-	},
-/area/almayer/shipboard/brig/chief_mp_office)
 "eRu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -40188,17 +40110,6 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/squads/req)
-"fgv" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_y = 7
-	},
-/obj/item/tool/pen,
-/obj/structure/machinery/light,
-/obj/item/device/whistle,
-/obj/item/device/megaphone,
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/chief_mp_office)
 "fgx" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -41899,9 +41810,6 @@
 	icon_state = "poster14";
 	name = "propaganda poster";
 	pixel_y = 32
-	},
-/obj/structure/sign/safety/escapepod{
-	pixel_x = -17
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -45141,12 +45049,6 @@
 	allow_construction = 0
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
-"hxe" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha_bravo_shared)
 "hxm" = (
 /obj/item/paper_bin/uscm{
 	pixel_y = 4
@@ -47294,12 +47196,6 @@
 	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/hallways/hangar)
-"ivs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie_delta_shared)
 "ivz" = (
 /obj/structure/closet,
 /turf/open/floor/almayer{
@@ -47484,20 +47380,6 @@
 	tag = "icon-blue (WEST)"
 	},
 /area/almayer/hallways/port_hallway)
-"iBf" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1;
-	name = "\improper Security Isolation"
-	},
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "isolationchamber 2";
-	name = "\improper Isolation Chamber One"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/shipboard/brig/main_office_perma)
 "iBE" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer{
@@ -49862,13 +49744,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/firing_range_south)
-"jIY" = (
-/obj/docking_port/stationary/escape_pod_dock/almayer/port,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/lower_hull/l_m_p)
 "jJe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50440,9 +50315,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/hallways/vehiclehangar)
-"jYZ" = (
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/main_office_perma)
 "jZd" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -51428,19 +51300,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
-"kvY" = (
-/obj/structure/bed/sofa/south/grey/right,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/shipboard/brig/lobby)
 "kwd" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -53744,13 +53603,6 @@
 	tag = "icon-blue (NORTH)"
 	},
 /area/almayer/hallways/aft_hallway)
-"lzq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie_delta_shared)
 "lzx" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -54038,13 +53890,6 @@
 	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/almayer/living/port_emb)
-"lEO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha_bravo_shared)
 "lFb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -55677,14 +55522,6 @@
 	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"mwl" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8;
-	tag = "icon-map-supply (WEST)"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/lobby)
 "mwA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -56298,13 +56135,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/port_emb)
-"mKQ" = (
-/obj/docking_port/stationary/escape_pod_dock/almayer/starboard,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
 "mKX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -56417,21 +56247,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"mNw" = (
-/turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/shipboard/brig/chief_mp_office)
-"mNC" = (
-/obj/structure/machinery/bolt_control/target{
-	id = "lifeboat1"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/command/lifeboat)
 "mNI" = (
 /obj/structure/machinery/door/window/westleft{
 	dir = 2
@@ -61575,17 +61390,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"phG" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
-/obj/effect/landmark/start/warrant,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
-	},
-/area/almayer/shipboard/brig/chief_mp_office)
 "piO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool,
@@ -63368,11 +63172,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
-"pZp" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/lobby)
 "pZK" = (
 /obj/effect/landmark/start/maint,
 /turf/open/floor/plating/plating_catwalk,
@@ -67543,16 +67342,6 @@
 	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"rXS" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/delta)
 "rYi" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/power/apc/almayer{
@@ -74738,18 +74527,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_hallway)
-"vgD" = (
-/obj/structure/machinery/status_display/lifeboat{
-	id = "lifeboat2";
-	lifeboat_dir = "left";
-	pixel_y = 30
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
-	},
-/area/almayer/command/lifeboat)
 "vgF" = (
 /obj/structure/stairs{
 	dir = 4
@@ -77669,14 +77446,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
 "wsY" = (
-/obj/structure/machinery/bolt_control/panel{
-	id = "lifeboat1"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/command/lifeboat)
+)
 "wta" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -81470,13 +81240,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
-"xWd" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	icon_state = "orange";
-	tag = "icon-orange"
-	},
-/area/almayer/squads/alpha_bravo_shared)
 "xWp" = (
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
@@ -92286,7 +92049,7 @@ sgi
 wVV
 oRk
 ovB
-cuk
+wsY
 eeN
 wdF
 sdF
@@ -92485,7 +92248,7 @@ uPR
 lzx
 mLJ
 run
-cuk
+wsY
 mMH
 vpI
 pDP
@@ -92688,7 +92451,7 @@ vUL
 vUL
 mLJ
 run
-cuk
+wsY
 mMH
 vpI
 bju
@@ -99786,10 +99549,10 @@ tGf
 wex
 avl
 puK
-kcH
-kcH
-kcH
-kcH
+wsY
+wsY
+wsY
+wsY
 kWq
 urS
 aVG
@@ -99986,10 +99749,10 @@ pCi
 pCi
 lFb
 avl
-kcH
-kcH
-kcH
-kcH
+wsY
+wsY
+wsY
+wsY
 xKT
 eqN
 aBP
@@ -100189,7 +99952,7 @@ kTM
 puK
 lFb
 avl
-kcH
+wsY
 rlf
 soq
 eYQ
@@ -100392,7 +100155,7 @@ unJ
 iJf
 mBk
 nUy
-kcH
+wsY
 rBa
 nPs
 vEj
@@ -100595,7 +100358,7 @@ tGf
 avl
 avl
 qtS
-kcH
+wsY
 rIW
 oGx
 wvU
@@ -112511,7 +112274,6 @@ bJt
 fiq
 oed
 oed
-cmT
 oed
 oed
 cmX
@@ -112520,6 +112282,7 @@ oDf
 oDf
 yhQ
 ajZ
+bdH
 bdH
 aaa
 aaa
@@ -112535,9 +112298,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
-aaa
+bdH
 aaa
 "}
 (151,1,1) = {"
@@ -113012,7 +112774,7 @@ avm
 qVM
 csz
 csz
-cbp
+csz
 csz
 csz
 awE
@@ -113212,7 +112974,6 @@ ajo
 ybf
 aii
 avj
-qVM
 awE
 awE
 kIa
@@ -113340,7 +113101,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -113350,7 +113111,7 @@ aaa
 aaa
 aaa
 aab
-aaa
+bdH
 aaa
 "}
 (155,1,1) = {"
@@ -119357,7 +119118,7 @@ hhw
 aSm
 aSm
 aSm
-mKQ
+aSm
 jUx
 aLG
 aNO
@@ -119425,7 +119186,7 @@ jJe
 bHa
 buH
 vfo
-jIY
+oed
 oed
 oed
 oed
@@ -120575,7 +120336,7 @@ hhw
 aSm
 aSm
 aSm
-mKQ
+aSm
 cmC
 aLG
 aNO
@@ -120643,7 +120404,7 @@ mqc
 ybV
 buH
 cnd
-jIY
+oed
 oed
 oed
 oed
@@ -134298,12 +134059,12 @@ aaa
 aaa
 aae
 aah
-aLs
-aLs
-aLs
-aLs
-aLs
-aLs
+qjM
+qjM
+qjM
+qjM
+qjM
+qjM
 cus
 aPw
 aPw
@@ -134320,12 +134081,12 @@ ams
 atK
 aPw
 aPw
-aLs
-aLs
-aLs
-aLs
-aLs
-aLs
+qjM
+qjM
+qjM
+qjM
+qjM
+qjM
 qOk
 aah
 afm
@@ -134919,7 +134680,7 @@ aPw
 caI
 caI
 caI
-vgD
+awO
 eky
 aMS
 eky

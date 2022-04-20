@@ -44,7 +44,7 @@
 		return FALSE
 
 /obj/docking_port/mobile/escape_pod/proc/can_launch()
-	if(EvacuationAuthority.evac_status >= EVACUATION_STATUS_INITIATING)
+	if(EvacuationAuthority.evac_status >= EVACUATION_STATUS_INITIATING || evacuation_program.armed)
 		switch(evacuation_program.dock_state)
 			if(ESCAPE_STATE_READY)
 				return TRUE
@@ -133,6 +133,7 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 		close_all_doors()
 	sleep(31)
 	if(!check_passengers())
+		evacuation_program.override = FALSE
 		evacuation_program.dock_state = ESCAPE_STATE_BROKEN
 		explosion(evacuation_program.master, -1, -1, 3, 4, , , , create_cause_data("escape pod malfunction"))
 		sleep(25)
@@ -183,10 +184,18 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 	preferred_direction = WEST
 	port_direction = WEST
 
+/// Corporate potato pod
+/obj/docking_port/mobile/escape_pod/right/corporate
+	id = "escape_pod_berth"
+	dir = WEST
+	preferred_direction = WEST
+	port_direction = WEST
+
 /obj/docking_port/mobile/escape_pod/proc/send_to_infinite_transit()
 	evacuation_program.dock_state = ESCAPE_STATE_LAUNCHED
 	destination = null
 	check_for_survivors()
+	set_mode(SHUTTLE_IGNITING)
 	on_ignition()
 	setTimer(ignitionTime)
 
@@ -214,6 +223,10 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 /obj/docking_port/stationary/escape_pod_dock/almayer/right
 	dir = WEST
 	roundstart_template = /datum/map_template/shuttle/escape_pod_right
+
+/obj/docking_port/stationary/escape_pod_dock/almayer/right/berth
+	dir = WEST
+	roundstart_template = /datum/map_template/shuttle/escape_pod_berth
 
 /obj/docking_port/stationary/escape_pod_dock/almayer/Initialize(mapload)
 	. = ..()
@@ -246,86 +259,11 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 	name = "escape pod right"
 	shuttle_id = "escape_pod_right"
 
+/// Corporate
+/datum/map_template/shuttle/escape_pod_berth
+	name = "escape pod berth"
+	shuttle_id = "escape_pod_berth"
 
-
-//=========================================================================================
-//==================================Console Object=========================================
-//=========================================================================================
-
-//This controller goes on the escape pod itself.
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
-	name = "escape pod controller"
-	unslashable = TRUE
-	unacidable = TRUE
-	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program
-	var/linked_to_shuttle = FALSE
-
-	ex_act(severity)
-		return FALSE
-
-	ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
-		var/launch_status[] = evacuation_program.check_launch_status()
-		var/data[] = list(
-			"docking_status"	= evacuation_program.dock_state,
-			"door_state"		= evacuation_program.memory["door_status"]["state"],
-			"door_lock"			= evacuation_program.memory["door_status"]["lock"],
-			"can_lock"			= evacuation_program.dock_state == (ESCAPE_STATE_READY || ESCAPE_STATE_DELAYED) ? 1:0,
-			"can_force"			= evacuation_program.dock_state == (ESCAPE_STATE_READY || ESCAPE_STATE_DELAYED) ? 1:0,
-			"can_delay"			= launch_status[2]
-		)
-
-		ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-		if (!ui)
-			ui = new(user, src, ui_key, "escape_pod_console.tmpl", id_tag, 470, 290)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(0)
-
-	Topic(href, href_list)
-		if(..())
-			return TRUE	//Has to return true to fail. For some reason.
-
-		var/obj/docking_port/mobile/escape_pod/P = SSshuttle.getShuttle("[id_tag]")
-		switch(href_list["command"])
-			if("force_launch")
-				P.prepare_for_launch()
-			if("delay_launch")
-				evacuation_program.dock_state = evacuation_program.dock_state == ESCAPE_STATE_DELAYED ? ESCAPE_STATE_READY : ESCAPE_STATE_DELAYED
-			if("lock_door")
-				var/obj/structure/machinery/door/airlock/evacuation/D = pick(P.doors)
-				if(D.density) //Closed
-					spawn()
-						P.open_all_doors()
-				else //Open
-					spawn()
-						P.close_all_doors()
-
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	if(linked_to_shuttle)
-		return
-	. = ..()
-
-	if(istype(port, /obj/docking_port/mobile/escape_pod))
-		var/obj/docking_port/mobile/escape_pod/M = port
-		id_tag = M.id
-		tag_door = M.id
-		evacuation_program = new(src)
-		M.evacuation_program = evacuation_program
-		linked_to_shuttle = TRUE
-
-//=========================================================================================
-//================================Controller Program=======================================
-//=========================================================================================
-
-//A docking controller program for a simple door based docking port
-/datum/computer/file/embedded_program/docking/simple/escape_pod
-	dock_state = ESCAPE_STATE_IDLE
-
-/datum/computer/file/embedded_program/docking/simple/escape_pod/proc/check_launch_status()
-	var/obj/docking_port/mobile/escape_pod/P = SSshuttle.getShuttle("[id_tag]")
-	. = list(P.can_launch(), P.can_cancel())
 
 //=========================================================================================
 //================================Evacuation Sleeper=======================================
@@ -514,28 +452,94 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 		linked_to_shuttle = TRUE
 
 
-/*
+//=========================================================================================
+//==================================Console Object=========================================
+//=========================================================================================
+
+//This controller goes on the escape pod itself.
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
+	name = "escape pod controller"
+	unslashable = TRUE
+	unacidable = TRUE
+	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program
+	var/linked_to_shuttle = FALSE
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/Initialize()
+	. = ..()
+	GLOB.escape_pod_controllers += src
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ex_act(severity)
+		return FALSE
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+	var/launch_status[] = evacuation_program.check_launch_status()
+	var/data[] = list(
+		"docking_status"	= evacuation_program.dock_state,
+		"door_state"		= evacuation_program.memory["door_status"]["state"],
+		"door_lock"			= evacuation_program.memory["door_status"]["lock"],
+		"can_lock"			= evacuation_program.dock_state == (ESCAPE_STATE_READY || ESCAPE_STATE_DELAYED) ? 1:0,
+		"can_force"			= evacuation_program.dock_state == (ESCAPE_STATE_READY || ESCAPE_STATE_DELAYED) ? 1:0,
+		"can_delay"			= launch_status[2]
+	)
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "escape_pod_console.tmpl", id_tag, 470, 290)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(0)
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/Topic(href, href_list)
+	if(..())
+		return TRUE	//Has to return true to fail. For some reason.
+
+	var/obj/docking_port/mobile/escape_pod/P = SSshuttle.getShuttle("[id_tag]")
+	switch(href_list["command"])
+		if("force_launch")
+			P.prepare_for_launch()
+		if("delay_launch")
+			evacuation_program.dock_state = evacuation_program.dock_state == ESCAPE_STATE_DELAYED ? ESCAPE_STATE_READY : ESCAPE_STATE_DELAYED
+		if("lock_door")
+			var/obj/structure/machinery/door/airlock/evacuation/D = pick(P.doors)
+			if(D.density) //Closed
+				spawn()
+					P.open_all_doors()
+			else //Open
+				spawn()
+					P.close_all_doors()
+
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
+	if(linked_to_shuttle)
+		return
+	. = ..()
+
+	if(istype(port, /obj/docking_port/mobile/escape_pod))
+		var/obj/docking_port/mobile/escape_pod/M = port
+		id_tag = M.id
+		tag_door = M.id
+		evacuation_program = new(src)
+		M.evacuation_program = evacuation_program
+		linked_to_shuttle = TRUE
+		if(id_tag == "escape_pod_berth")
+			for(var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/berth/EPB in GLOB.escape_pod_controllers)
+				if(id_tag == "escape_pod_berth" && !EPB.evacuation_program)
+					EPB.evacuation_program = evacuation_program
+
+
 //Leaving this commented out for the CL pod, which should have a way to open from the outside.
 
 //This controller is for the escape pod berth (station side)
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/berth
 	name = "escape pod berth controller"
+	id_tag = "escape_pod_berth"
 
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/Initialize()
-	. = ..()
-	docking_program = new/datum/computer/file/embedded_program/docking/simple/escape_pod(src)
-	program = docking_program
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/armed = null
-	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
-		var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program
-		armed = P.armed
-
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[] = list(
-		"docking_status" = docking_program.get_docking_status(),
-		"override_enabled" = docking_program.override_enabled,
-		"armed" = armed,
+		"docking_status"	= evacuation_program.dock_state,
+		"override_enabled"	= evacuation_program.override,
+		"armed" = evacuation_program.armed,
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -545,4 +549,36 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
-*/
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/berth/Topic(href, href_list)
+	if(..())
+		return TRUE	//Has to return true to fail. For some reason.
+
+	var/obj/docking_port/mobile/escape_pod/P = SSshuttle.getShuttle("[id_tag]")
+	switch(href_list["command"])
+		if("toggle_override")
+			evacuation_program.armed = !evacuation_program.armed
+			P.toggle_ready()
+		if("force_door")
+			var/obj/structure/machinery/door/airlock/evacuation/D = pick(P.doors)
+			if(D.density) //Closed
+				spawn()
+					P.open_all_doors()
+			else //Open
+				spawn()
+					P.close_all_doors()
+
+
+//=========================================================================================
+//================================Controller Program=======================================
+//=========================================================================================
+
+//A docking controller program for a simple door based docking port
+/datum/computer/file/embedded_program/docking/simple/escape_pod
+	dock_state = ESCAPE_STATE_IDLE
+	var/armed = FALSE
+	var/override = TRUE
+
+/datum/computer/file/embedded_program/docking/simple/escape_pod/proc/check_launch_status()
+	var/obj/docking_port/mobile/escape_pod/P = SSshuttle.getShuttle("[id_tag]")
+	. = list(P.can_launch(), P.can_cancel())

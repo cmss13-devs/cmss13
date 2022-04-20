@@ -4,18 +4,22 @@
 			Escape Pod Status:
 		</div>
 		<div class="itemContent">
-			{{if data.docking_status == "docked"}}
+			{{if data.docking_status == 4}}
 				{{if data.armed}}
 					<span class="average">ARMED</span>
 				{{else}}
-					<span class="good">SYSTEMS OK</span>
+					<span class="idle">SYSTEMS OK</span>
 				{{/if}}
-			{{else data.docking_status == "undocking"}}
-				<span class="average">EJECTING-STAND CLEAR!</span>
-			{{else data.docking_status == "undocked"}}
-				<span class="idle">POD EJECTED</span>
-			{{else data.docking_status == "docking"}}
-				<span class="good">INITIALIZING...</span>
+			{{else data.docking_status == 5}}
+				<span class="bad">SYSTEMS DOWN</span>				
+			{{else data.docking_status == 6}}
+				<span class="average">STANDING BY</span>
+			{{else data.docking_status == 7}}
+				<span class="idle">DELAYED</span>			
+			{{else data.docking_status == 8}}
+				<span class="average">LAUNCHING</span>	
+			{{else data.docking_status == 9}}
+				<span class="average">TRAVELING</span>		
 			{{else}}
 				<span class="bad">ERROR</span>
 			{{/if}}
@@ -25,14 +29,9 @@
 <div class="item" style="padding-top: 10px">
 	<div class="item">
 		<div class="itemContent" style="padding-top: 2px; width: 100%">
-		{{if data.armed}}
-			{{if data.docking_status == "docked"}}
-				{{:helper.link('Force exterior door', 'alert', {'command' : 'force_door'}, data.override_enabled ? null : 'disabled', null)}}
-				{{:helper.link('Override', 'alert', {'command' : 'toggle_override'}, null, data.override_enabled ? 'redButton' : null)}}
-			{{else}}
-				{{:helper.link('Force exterior door', 'alert', {'command' : 'force_door'}, data.override_enabled ? null : 'disabled', data.override_enabled ? 'redButton' : null)}}
-				{{:helper.link('Override', 'alert', {'command' : 'toggle_override'}, null, data.override_enabled ? 'redButton' : 'yellowButton')}}
-			{{/if}}
+		{{if data.docking_status != 9}}
+			{{:helper.link('Force exterior door', 'alert', {'command' : 'force_door'}, data.armed ? null : 'disabled', data.armed ? 'redButton' : null)}}
+			{{:helper.link('Override', 'alert', {'command' : 'toggle_override'}, data.override_enabled ? null : 'disabled', data.override_enabled ? 'yellowButton' : null)}}
 		{{else}}
 			{{:helper.link('Force exterior door', 'alert', {'command' : 'force_door'}, 'disabled', null)}}
 			{{:helper.link('Override', 'alert', {'command' : 'toggle_override'}, 'disabled', null)}}

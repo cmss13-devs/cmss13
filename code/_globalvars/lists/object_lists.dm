@@ -34,3 +34,4 @@ GLOBAL_LIST_EMPTY_TYPED(lifeboat_almayer_docks, /obj/docking_port/stationary/lif
 
 GLOBAL_LIST_EMPTY_TYPED(escape_almayer_docks, /obj/docking_port/stationary/escape_pod_dock)
 GLOBAL_LIST_EMPTY_TYPED(escape_pod_controllers, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod)
+

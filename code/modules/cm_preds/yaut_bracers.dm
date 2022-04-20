@@ -713,7 +713,7 @@
 						if (!bracer.exploding)
 							bracer.explode(victim)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
-						message_all_yautja("[M] has triggered [victim]'s bracer's self-destruction sequence.")
+						message_all_yautja("[M.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")
 			else
 				to_chat(M, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
@@ -754,7 +754,7 @@
 		var/turf/T = get_turf(M)
 		message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[key_name(usr)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-
+		message_all_yautja("[M.real_name] has triggered their bracer's self-destruction sequence.")
 		explode(M)
 	return 1
 

@@ -6,7 +6,7 @@
 "ei" = (/obj/structure/bookcase/manuals/research_and_development,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
 "fe" = (/obj/structure/barricade/metal/wired,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
 "fo" = (/obj/structure/pipes/standard/simple/hidden/green{dir = 4},/obj/structure/bookcase/manuals/engineering,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
-"ho" = (/turf/closed/wall/solaris/reinforced/hull,/area/bigredv2/outside/library)
+"ho" = (/turf/closed/wall/solaris/reinforced,/area/bigredv2/outside/library)
 "hL" = (/obj/structure/surface/table/woodentable,/obj/effect/landmark/costume/chicken,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
 "hT" = (/obj/structure/pipes/standard/simple/hidden/green,/obj/structure/barricade/plasteel/wired,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
 "iQ" = (/turf/closed/wall/solaris,/area/bigredv2/outside/library)

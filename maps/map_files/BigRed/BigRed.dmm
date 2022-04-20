@@ -19102,6 +19102,12 @@
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/w)
+"aWm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = dnd
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/library)
 "aWs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -32718,6 +32724,12 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_lambda)
+"uuw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = bigredbarls
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
 "uvl" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -33332,6 +33344,12 @@
 	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/caves/eta/living)
+"xhC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = clfmarshalls
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/marshal_office)
 "xpb" = (
 /turf/open/floor{
 	dir = 5;
@@ -51105,7 +51123,7 @@ acp
 als
 ajL
 anc
-acp
+xhC
 acp
 acp
 alX
@@ -57652,7 +57670,7 @@ aoz
 anJ
 aoz
 anJ
-anJ
+uuw
 aHD
 aBR
 aVo
@@ -65680,7 +65698,7 @@ anW
 anW
 anW
 anW
-anW
+aWm
 anW
 aTq
 aUp

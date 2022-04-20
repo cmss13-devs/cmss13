@@ -51,10 +51,6 @@
 		//new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
 		//I.name_after_co(H, I)
 
-/datum/job/command/commander/nightmare
-	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	entry_message_body = "What the hell did you do to get assigned on this mission? Maybe someone is looking to bump you off for a promotion. Regardless... The marines need a leader to inspire them and lead them to victory. You'll settle for telling them which side of the gun the bullets come from. You are a vet, a real badass in your day, but now you're in the thick of it with the grunts. You're plenty sure they are going to die in droves. Come hell or high water, you are going to be there for them."
-
 /obj/effect/landmark/start/captain
 	name = JOB_CO
 	job = /datum/job/command/commander

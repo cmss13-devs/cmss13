@@ -282,6 +282,7 @@
   - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
       meaning CO leaders will show the beret type and Synth will show the uniform
       drip.
+  - rscadd: Added a new Pred emote for luring in worthy prey.
   Stanley:
   - balance: Provost enforcers now have mk221s instead of SMGs, and get some tear
       gas grenades and both beanbag and slug rounds.

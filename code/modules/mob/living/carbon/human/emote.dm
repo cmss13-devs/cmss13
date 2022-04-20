@@ -587,7 +587,7 @@
 		if ("queenstomp")
 			if(Pred && src.loc)
 				m_type = 1
-				playsound(src.loc, pick('sound/effects/alien_footstep_large1.ogg', 'sound/effects/alien_footstep_large2.ogg', 'sound/effects/alien_footstep_large3.ogg'), 35, rand(20000, 25000), 11, falloff = 4)
+				playsound(src.loc, "alien_footstep_large", 35, rand(20000, 25000), 11, falloff = 4)
 		if ("roar")
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"

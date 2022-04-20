@@ -279,3 +279,6 @@
       Sound'
   Geeves:
   - bugfix: Fixed job roles being overriden by their equipped versions on some occasions.
+  - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
+      meaning CO leaders will show the beret type and Synth will show the uniform
+      drip.

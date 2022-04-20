@@ -13,7 +13,21 @@
 
 	resisting = TRUE
 
-	next_move = world.time + 20
+	var/resist_skill = skills.get_skill_level(SKILL_CQC)
+
+	switch(resist_skill)
+		if(SKILL_CQC_DEFAULT)
+			next_move = world.time + 20
+		if(SKILL_CQC_TRAINED)
+			next_move = world.time + 18
+		if(SKILL_CQC_SKILLED)
+			next_move = world.time + 10
+		if(SKILL_CQC_EXPERT)
+			next_move = world.time + 5
+		if(SKILL_CQC_MASTER)
+			next_move = world.time
+		if(SKILL_CQC_MAX)
+			next_move = world.time
 
 	//Getting out of someone's inventory.
 	if(istype(loc, /obj/item/holder))

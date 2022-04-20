@@ -17,9 +17,11 @@ prefixToActual = {
 
 def parse_pr_changelog(pr):
 	yaml_object = {}
-	changelog_match = re.search(r"🆑(.*)🆑", pr.body, re.S | re.M)
+	changelog_match = re.search(r"🆑(.*)/🆑", pr.body, re.S | re.M)
 	if changelog_match is None:
-		return
+		changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
+		if changelog_match is None:
+			return
 	lines = changelog_match.group(1).split('\n')
 	entries = []
 	for index, line in enumerate(lines):

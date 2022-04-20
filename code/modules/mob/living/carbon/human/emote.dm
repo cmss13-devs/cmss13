@@ -515,6 +515,7 @@
 				<span style='color: green;'>femalescream</span>, \
 				<span style='color: green;'>overhere</span>, \
 				<span style='color: green;'>turnaround</span>, \
+				<span style='color: green;'>queenstomp</span>, \
 				<span style='color: green;'>roar</span></b><br>")
 			if (Primate)
 				to_chat(src, "<br><b>As a Primate, you have the following additional emotes.<br><br>\
@@ -583,6 +584,10 @@
 			if(Pred && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/pred_overhere.ogg', 25, 0)
+		if ("queenstomp")
+			if(Pred && src.loc)
+				m_type = 1
+				playsound(src.loc, "alien_footstep_large", 35, rand(20000, 25000), 11, falloff = 4)
 		if ("roar")
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"

@@ -300,3 +300,5 @@
   Kirie Saito:
   - balance: The XO now has the ability to get a ceremonial sword from their vendor,
       in place of a sidearm.
+  Geeves:
+  - bugfix: Fixes Pred typing indicators getting stuck to them.

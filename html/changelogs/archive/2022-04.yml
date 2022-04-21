@@ -302,3 +302,8 @@
       in place of a sidearm.
   Geeves:
   - bugfix: Fixes Pred typing indicators getting stuck to them.
+  Stanley:
+  - bugfix: predators themselves will now blow up when SDing, not the tile that they
+      SDed on.
+  - expansion: when a predator triggers their SD, all yautja will be informed.
+  - bugfix: all yautja messages for SDing other people now use real names.

@@ -296,3 +296,6 @@
   - imageadd: 'Resprited the following weapons: M41A, L42A, M92, M39, M42A, MOU, R4T'
   null:
   - rscdel: Removed Disposals pipe dispensers from the USS Almayer.
+  Kirie Saito:
+  - balance: The XO now has the ability to get a ceremonial sword from their vendor,
+      in place of a sidearm.

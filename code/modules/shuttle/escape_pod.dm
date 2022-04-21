@@ -408,7 +408,7 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 	generate_name()
 
 /obj/structure/machinery/door/airlock/evacuation/proc/generate_name()
-	name = "[name]_[pick(alphabet_uppercase)][pick(alphabet_uppercase)][rand(1,9)]"
+	name = "[name]-[pick(alphabet_uppercase)][pick(alphabet_uppercase)][rand(1,9)]"
 
 /obj/structure/machinery/door/airlock/evacuation/proc/force_open()
 	if(!density)

@@ -40,6 +40,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/evacuation_pod)
 "g" = (
+/obj/docking_port/mobile/escape_pod/right/corporate,
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall6";
 	tag = "icon-wall6"

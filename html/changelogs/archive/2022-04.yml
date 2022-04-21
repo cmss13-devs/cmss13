@@ -294,3 +294,5 @@
 2022-04-21:
   Triiodine, Nauticall, Thwomper:
   - imageadd: 'Resprited the following weapons: M41A, L42A, M92, M39, M42A, MOU, R4T'
+  null:
+  - rscdel: Removed Disposals pipe dispensers from the USS Almayer.

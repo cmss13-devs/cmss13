@@ -307,3 +307,4 @@
       SDed on.
   - expansion: when a predator triggers their SD, all yautja will be informed.
   - bugfix: all yautja messages for SDing other people now use real names.
+  - bugfix: building walls on weeds will no longer make them invisible

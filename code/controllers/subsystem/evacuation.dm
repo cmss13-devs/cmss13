@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(evacuation)
 		enter_allowed = 1
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
-		deactivate_lifeboats()
+		ai_announcement("Evacuation canceled.", 'sound/AI/evacuate_cancelled.ogg')
 		if(get_security_level() == "red")
 			for(var/obj/structure/machinery/status_display/SD in machines)
 				if(is_mainship_level(SD.z))
@@ -102,6 +102,8 @@ SUBSYSTEM_DEF(evacuation)
 			L2.try_launch()
 
 			lifesigns += L1.survivors + L2.survivors
+
+			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
 
 			evac_status = EVACUATION_STATUS_COMPLETE
 
@@ -207,11 +209,6 @@ SUBSYSTEM_DEF(evacuation)
 			I = i
 			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
 				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Please arm all control rods."))
-				return FALSE
-			var/obj/docking_port/mobile/lifeboat/L1 = SSshuttle.getShuttle("lifeboat1")
-			var/obj/docking_port/mobile/lifeboat/L2 = SSshuttle.getShuttle("lifeboat2")
-			if(L1.available || L2.available)
-				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Not all lifeboat escaped."))
 				return FALSE
 		dest_master.in_progress = !dest_master.in_progress
 		for(i in EvacuationAuthority.dest_rods)

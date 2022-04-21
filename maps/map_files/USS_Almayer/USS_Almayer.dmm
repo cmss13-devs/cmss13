@@ -3126,13 +3126,6 @@
 "aiC" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/stern_hallway)
-"aiD" = (
-/obj/structure/machinery/pipedispenser/disposal,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "aiE" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -129313,7 +129306,7 @@ xlX
 dmQ
 qWT
 lWh
-aiD
+dmQ
 psm
 alG
 aDZ

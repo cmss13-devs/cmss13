@@ -311,6 +311,9 @@
   Monkeysfist101:
   - rscadd: Added more names to the randomized name list.
 2022-04-22:
+  Nanu:
+  - balance: Lowered the amount of Money req gets significantly. From 80k to 34k on
+      120 Humans.
   Stan_Albatross:
   - balance: The drop pouch can now hold 6 tiny items / 3 small items / 2 normal items
       (space was increased from 5 to 6)

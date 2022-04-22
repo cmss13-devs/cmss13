@@ -317,3 +317,10 @@
   Stan_Albatross:
   - balance: The drop pouch can now hold 6 tiny items / 3 small items / 2 normal items
       (space was increased from 5 to 6)
+  Vanagandr:
+  - bugfix: Readds headshot effects accidentally removed by the synth damage overlay
+      MR.
+  - bugfix: Fixes limb stumps for feet & hands being swapped when facing left-right
+      -- left hand stump showing when facing right, etc.
+  - expansion: Headshot effects and severed limb gore now reflect the victim's blood
+      colour.

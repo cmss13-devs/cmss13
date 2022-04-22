@@ -426,3 +426,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/can_be_pulled_by(var/mob/M)
 	return TRUE
+
+/mob/proc/can_see_reagents()
+	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents

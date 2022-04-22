@@ -17,7 +17,6 @@
 	icon_state = "stub" //our actual icon is a part of our helmet.
 	item_state = null
 	vision_flags = SEE_TURFS
-	darkness_view = 12
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
 	flags_inventory = CANTSTRIP
 
@@ -29,7 +28,6 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_BASIC
-	darkness_view = 12
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
@@ -43,7 +41,6 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	darkness_view = 12
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
@@ -55,7 +52,6 @@
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
-	darkness_view = 12
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
@@ -75,7 +71,6 @@
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
-	darkness_view = 5
 	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 	vision_flags = SEE_TURFS
@@ -179,7 +174,6 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "visor_nvg"
 	item_state = "securityhud"
-	darkness_view = 5 //Not quite as good as regular NVG.
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 	fullscreen_vision = null
@@ -191,7 +185,6 @@
 	item_state = "glasses"
 	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
-	darkness_view = 7
 	fullscreen_vision = null
 
 /obj/item/clothing/glasses/night/cultist/mob_can_equip(mob/user, slot)
@@ -210,7 +203,6 @@
 	icon_state = "refurb_meson"
 	deactive_state = "degoggles"
 	vision_flags = SEE_TURFS
-	darkness_view = 12
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)

@@ -989,7 +989,7 @@
 /area/fiorina/lz/near_lzI)
 "aAM" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
-	layer = 2.5
+	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -2180,7 +2180,7 @@
 /area/fiorina/maintenance)
 "bgG" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -3314,7 +3314,6 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
 	health = null;
-	icon_state = "hydrotray5";
 	indestructible = 1;
 	unacidable = 1
 	},
@@ -4169,7 +4168,7 @@
 "cvr" = (
 /obj/structure/platform,
 /obj/structure/reagent_dispensers/oxygentank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
@@ -9529,7 +9528,7 @@
 /area/fiorina/station/security)
 "fMY" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -12104,6 +12103,7 @@
 /area/fiorina/station/medbay)
 "hpN" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
+	density = 0;
 	desc = "Its a telephone, and a computer. Woah.";
 	name = "\improper funny telephone booth";
 	pixel_x = 2;
@@ -16587,7 +16587,6 @@
 	},
 /area/fiorina/station/security)
 "kdo" = (
-/obj/structure/platform_decoration,
 /obj/structure/inflatable,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
@@ -20206,7 +20205,7 @@
 /area/fiorina/tumor/servers)
 "mpf" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
@@ -24081,7 +24080,6 @@
 	dir = 1;
 	layer = 2.7
 	},
-/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
 	icon_state = "whitegreencorner"
 	},
@@ -33913,7 +33911,7 @@
 /area/fiorina/station/transit_hub)
 "uSQ" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
@@ -77195,7 +77193,7 @@ dHp
 dHp
 uFh
 usz
-hZR
+duF
 koy
 gsL
 mcc

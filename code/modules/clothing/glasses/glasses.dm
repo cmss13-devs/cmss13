@@ -55,6 +55,7 @@
 
 /obj/item/clothing/glasses/proc/toggle_glasses_effect()
 	active = !active
+	clothing_traits_active = !clothing_traits_active
 	update_icon()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -73,18 +74,24 @@
 				else
 					MH.remove_hud_from(H)
 					playsound(H, 'sound/handling/hud_off.ogg', 25, 1)
+			if(active) //turning it on? then add the traits
+				for(var/trait in clothing_traits)
+					ADD_TRAIT(H, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+			else //turning it off - take away its traits
+				for(var/trait in clothing_traits)
+					REMOVE_TRAIT(H, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
 
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
-	if(active)
+	if(active && slot == WEAR_EYES)
 		if(!can_use_active_effect(user))
 			toggle_glasses_effect()
 			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 
-		else if(hud_type && slot == WEAR_EYES)
+		else if(hud_type)
 			var/datum/mob_hud/MH = huds[hud_type]
 			MH.add_hud_to(user)
 	user.update_sight()
@@ -118,10 +125,21 @@
 	toggle_glasses_effect()
 
 /obj/item/clothing/glasses/science
-	name = "weird science goggles"
+	name = "reagent scanner HUD goggles" //science goggles
 	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy."
 	icon_state = "purple"
 	item_state = "glasses"
+	deactive_state = "purple_off"
+	actions_types = list(/datum/action/item_action/toggle)
+	toggleable = TRUE
+	flags_inventory = COVEREYES
+	req_skill = SKILL_RESEARCH
+	req_skill_level = SKILL_RESEARCH_TRAINED
+	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/science/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_INFO("While wearing them, you can examine items to see their reagent contents."))
 
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"

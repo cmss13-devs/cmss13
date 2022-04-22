@@ -572,6 +572,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 
+/obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
+
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
 	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."

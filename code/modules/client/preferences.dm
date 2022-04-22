@@ -69,6 +69,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
 	var/predator_armor_material = "ebony"
+	var/predator_mask_material = "ebony"
+	var/predator_greave_material = "ebony"
+	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
@@ -465,7 +468,10 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Mask style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'>([predator_mask_type])</a><br>"
 		dat += "<b>Armor style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'>([predator_armor_type])</a><br>"
 		dat += "<b>Greave style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'>([predator_boot_type])</a><br><br>"
-		dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'>[predator_armor_material]</a><br><br>"
+		dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'>[predator_mask_material]</a><br>"
+		dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'>[predator_armor_material]</a><br>"
+		dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'>[predator_greave_material]</a><br>"
+		dat += "<a href='?_src_=prefs;preference=pred_flavor_text;task=input'><b>Predator flavor text</b> </a><br><br>"
 		dat += "<b>Yautja whitelist status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'>[yautja_status]</a><br>"
 		dat += "</div>"
 
@@ -932,7 +938,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_predator_age = input(user, "Choose your Predator's age(20 to 10000):", "Character Preference") as num|null
 					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
 				if("pred_trans_type")
-					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", list("Modern", "Retro", "Combo"))
+					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
@@ -945,12 +951,27 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_boot_type")
 					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
+				if("pred_mask_mat")
+					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
+					if(!new_pred_mask_mat)
+						return
+					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/list/options = list("ebony", "silver", "bronze")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", options)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
+				if("pred_greave_mat")
+					var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", PRED_MATERIALS)
+					if(!new_pred_greave_mat)
+						return
+					predator_greave_material = new_pred_greave_mat
+				if("pred_flavor_text")
+					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
+					if(!pred_flv_raw)
+						predator_flavor_text = ""
+						return
+					predator_flavor_text = strip_html(html_encode(pred_flv_raw), MAX_EMOTE_LEN)
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
@@ -1327,17 +1348,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggles_sound ^= SOUND_ADMINHELP
 
 				if("ui")
-					switch(UI_style)
-						if("dark")
-							UI_style = "midnight"
-						if("midnight")
-							UI_style = "orange"
-						if("orange")
-							UI_style = "old"
-						if("old")
-							UI_style = "white"
-						else
-							UI_style = "dark"
+					var/list/custom_human_huds_list = custom_huds_list - list("robot", "alien")
+					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", custom_human_huds_list)
+					UI_style = ui_style_choice
+					if(!ui_style_choice)
+						UI_style = "midnight"
 
 				if("UIcolor")
 					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null

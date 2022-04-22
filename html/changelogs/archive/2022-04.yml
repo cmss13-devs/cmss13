@@ -273,3 +273,57 @@
       on their rank pins.
   - rscadd: Changing data records, such as a name in the manifest, is now logged.
   - bugfix: Pardon button is actually fixed.
+2022-04-20:
+  Firartix:
+  - server: Containers now properly includes youtube-dl, fixing usage of 'Play Internet
+      Sound'
+  Geeves:
+  - bugfix: Fixed job roles being overriden by their equipped versions on some occasions.
+  - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
+      meaning CO leaders will show the beret type and Synth will show the uniform
+      drip.
+  - rscadd: Added a new Pred emote for luring in worthy prey.
+  Stanley:
+  - balance: Provost enforcers now have mk221s instead of SMGs, and get some tear
+      gas grenades and both beanbag and slug rounds.
+  - balance: Hefa knight armour buffed in melee, explosive, and bullet values. HEFA
+      knights given a medical pouch, replacing one of their explosive pouches. Melee
+      hefa knights given an extra sword.
+  - balance: The pizza delivery guy now spawns with a crowbar. Also, they can finally
+      work for pizza galaxy.
+2022-04-21:
+  Triiodine, Nauticall, Thwomper:
+  - imageadd: 'Resprited the following weapons: M41A, L42A, M92, M39, M42A, MOU, R4T'
+  null:
+  - rscdel: Removed Disposals pipe dispensers from the USS Almayer.
+  - bugfix: Fixed MK1 underslung grenade launcher having high toss when it shouldn't
+  Kirie Saito:
+  - balance: The XO now has the ability to get a ceremonial sword from their vendor,
+      in place of a sidearm.
+  Geeves:
+  - bugfix: Fixes Pred typing indicators getting stuck to them.
+  Stanley:
+  - bugfix: predators themselves will now blow up when SDing, not the tile that they
+      SDed on.
+  - expansion: when a predator triggers their SD, all yautja will be informed.
+  - bugfix: all yautja messages for SDing other people now use real names.
+  - bugfix: building walls on weeds will no longer make them invisible
+  Monkeysfist101:
+  - rscadd: Added more names to the randomized name list.
+2022-04-22:
+  Nanu:
+  - balance: Lowered the amount of Money req gets significantly. From 80k to 34k on
+      120 Humans.
+  Spircen:
+  - bugfix: Fixes an oversight letting anyone set a shuttle to flyby. Now only players
+      with the pilot skill can set the shuttle to flyby.
+  Stan_Albatross:
+  - balance: The drop pouch can now hold 6 tiny items / 3 small items / 2 normal items
+      (space was increased from 5 to 6)
+  Vanagandr:
+  - bugfix: Readds headshot effects accidentally removed by the synth damage overlay
+      MR.
+  - bugfix: Fixes limb stumps for feet & hands being swapped when facing left-right
+      -- left hand stump showing when facing right, etc.
+  - expansion: Headshot effects and severed limb gore now reflect the victim's blood
+      colour.

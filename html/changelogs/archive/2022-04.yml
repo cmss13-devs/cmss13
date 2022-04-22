@@ -310,3 +310,7 @@
   - bugfix: building walls on weeds will no longer make them invisible
   Monkeysfist101:
   - rscadd: Added more names to the randomized name list.
+2022-04-22:
+  Stan_Albatross:
+  - balance: The drop pouch can now hold 6 tiny items / 3 small items / 2 normal items
+      (space was increased from 5 to 6)

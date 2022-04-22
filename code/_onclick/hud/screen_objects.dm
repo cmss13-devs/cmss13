@@ -652,6 +652,12 @@
 		user.hud_used.hidden_inventory_update()
 	return 1
 
+/obj/screen/preview
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "blank"
+	plane = -100
+	layer = TURF_LAYER
+
 /obj/screen/rotate
 	icon_state = "centred_arrow"
 	dir = EAST

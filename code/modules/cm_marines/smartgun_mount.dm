@@ -974,17 +974,17 @@
 	var/turf/rotate_check = get_step(user.loc, turn(user.dir, 180))
 	var/turf/open/OT = usr.loc
 	var/list/ACR = range(anti_cadehugger_range, user.loc)
-	if(OT.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] here."))
+	if(OT.density || !isturf(OT)) //(istype(OT, /obj/structure/closet))
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return
 	if(rotate_check.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return
 	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
 		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
 		return
 	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))
+		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
 		return
 	if(!(user.alpha > 60))
 		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))

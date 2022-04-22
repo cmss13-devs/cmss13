@@ -100,7 +100,7 @@
 		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", round(scale * 5), /obj/item/storage/pouch/shotgun, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/large_holster/macheteB/full, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/pouch/machete, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),

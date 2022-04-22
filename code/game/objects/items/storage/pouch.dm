@@ -1202,3 +1202,22 @@
 				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
 			if(0)
 				icon_state = base_icon_state
+
+/obj/item/storage/pouch/machete
+	name = "\improper H6B pattern M2132 machete scabbard"
+	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "macheteB_holster"
+	item_state = "machete_holster"
+	max_w_class = SIZE_LARGE
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
+
+/obj/item/storage/pouch/machete/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
+
+/obj/item/storage/pouch/machete/update_icon()
+	if(length(contents))
+		icon_state = "[initial(icon_state)]_full"
+	else
+		icon_state = initial(icon_state)

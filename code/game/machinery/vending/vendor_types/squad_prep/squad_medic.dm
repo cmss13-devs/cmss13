@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Fuel Tank Strap Pouch", 4, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 6, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 6, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", 8, /obj/item/storage/large_holster/macheteB/full, null, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 8, /obj/item/storage/pouch/machete, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 8, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),

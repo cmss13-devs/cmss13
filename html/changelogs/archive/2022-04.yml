@@ -311,6 +311,8 @@
   Monkeysfist101:
   - rscadd: Added more names to the randomized name list.
 2022-04-22:
+  Geeves:
+  - ui: Re-did the character creation screen for ease of use and visual clarity.
   Nanu:
   - balance: Lowered the amount of Money req gets significantly. From 80k to 34k on
       120 Humans.

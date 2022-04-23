@@ -333,5 +333,7 @@
   50RemAndCounting:
   - bugfix: the Oxycodone bottle from medical and chemistry vendors now has the default
       60 unit transfer rate as all the other medicine bottles do.
+  Geeves:
+  - rscadd: Survivor Synths and Working Joes now have partial nightvision.
   ghostsheet:
   - bugfix: Shoulder holster should work like they used to.

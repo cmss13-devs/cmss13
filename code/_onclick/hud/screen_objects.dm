@@ -526,8 +526,9 @@
 /obj/screen/squad_leader_locator/clicked(mob/living/carbon/human/user, mods)
 	if(!istype(user))
 		return
-	var/obj/item/device/radio/headset/almayer/marine/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-	if(!user.assigned_squad || !istype(earpiece) || user.assigned_squad.radio_freq != earpiece.frequency)
+	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
+	var/has_access = earpiece.misc_tracking || (user.assigned_squad && user.assigned_squad.radio_freq == earpiece.frequency)
+	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
 	if(mods["shift"])
@@ -539,7 +540,8 @@
 		return
 	if(user.get_active_hand())
 		return
-	user.assigned_squad.ui_interact(user)
+	if(user.assigned_squad)
+		user.assigned_squad.ui_interact(user)
 
 /obj/screen/mark_locator
 	name = "mark locator"

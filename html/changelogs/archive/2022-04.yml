@@ -339,6 +339,8 @@
       gear vendors as an alternative backpack option.
   Geeves:
   - rscadd: Survivor Synths and Working Joes now have partial nightvision.
+  - rscadd: Synth headsets can now track COs, XOs, LZs, and each type of SL.
+  - rscadd: Synth headsets now have unique sprites.
   Stan_Albatross:
   - qol: made req and jtac channels in dark mode easier to read by lightening their
       colours

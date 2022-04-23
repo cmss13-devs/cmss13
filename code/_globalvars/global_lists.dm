@@ -128,7 +128,6 @@ var/global/list/untracked_yautja_gear = list() // List of untracked loose pred g
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
-var/global/list/synth_types = list(SYNTH_GEN_ONE,SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)

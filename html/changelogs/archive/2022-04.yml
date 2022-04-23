@@ -330,5 +330,8 @@
   - expansion: Headshot effects and severed limb gore now reflect the victim's blood
       colour.
 2022-04-23:
+  50RemAndCounting:
+  - bugfix: the Oxycodone bottle from medical and chemistry vendors now has the default
+      60 unit transfer rate as all the other medicine bottles do.
   ghostsheet:
   - bugfix: Shoulder holster should work like they used to.

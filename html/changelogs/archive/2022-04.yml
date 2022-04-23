@@ -333,6 +333,10 @@
   50RemAndCounting:
   - bugfix: the Oxycodone bottle from medical and chemistry vendors now has the default
       60 unit transfer rate as all the other medicine bottles do.
+  - balance: Added Rangefinder and Laser designator as purchasable options in the
+      Synthetic auxiliary gear rack, priced at 8 and 12 points respectively.
+  - balance: Added Logistics IMP backpacks to Commanding Officer and Synthetic primary
+      gear vendors as an alternative backpack option.
   Geeves:
   - rscadd: Survivor Synths and Working Joes now have partial nightvision.
   Stan_Albatross:

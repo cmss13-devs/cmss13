@@ -335,5 +335,8 @@
       60 unit transfer rate as all the other medicine bottles do.
   Geeves:
   - rscadd: Survivor Synths and Working Joes now have partial nightvision.
+  Stan_Albatross:
+  - qol: made req and jtac channels in dark mode easier to read by lightening their
+      colours
   ghostsheet:
   - bugfix: Shoulder holster should work like they used to.

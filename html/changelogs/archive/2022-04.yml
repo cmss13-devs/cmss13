@@ -329,3 +329,6 @@
       -- left hand stump showing when facing right, etc.
   - expansion: Headshot effects and severed limb gore now reflect the victim's blood
       colour.
+2022-04-23:
+  ghostsheet:
+  - bugfix: Shoulder holster should work like they used to.

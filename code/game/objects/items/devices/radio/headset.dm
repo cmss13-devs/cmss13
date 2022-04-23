@@ -181,6 +181,7 @@
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 		), .proc/turn_on)
+		RegisterSignal(user, COMSIG_MOB_LOGIN, .proc/add_hud_tracker)
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)
@@ -194,6 +195,7 @@
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
+		COMSIG_MOB_LOGIN
 	))
 	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
@@ -204,6 +206,12 @@
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
 	..()
+
+/obj/item/device/radio/headset/proc/add_hud_tracker(var/mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	if(headset_hud_on && user.mind && (user.assigned_squad || misc_tracking) && user.hud_used?.locate_leader)
+		user.show_hud_tracker()
 
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER

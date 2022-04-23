@@ -307,8 +307,7 @@
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/katana/full,
 		/obj/item/storage/large_holster/machete/full,
-		/obj/item/storage/belt/marine
-		)
+		/obj/item/storage/belt/marine)
 	H.equip_to_slot_or_del(new beltpath, WEAR_WAIST)
 
 

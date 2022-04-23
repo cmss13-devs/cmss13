@@ -101,10 +101,15 @@ log transactions
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(src.loc)
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
-		spawn_money(100,src.loc)
+		var/turf/atm_turf = get_turf(src)
+		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
 
 	else
 		..()
+
+/obj/structure/machinery/atm/proc/drop_money(var/turf)
+		playsound(turf, "sound/machines/ping.ogg", 15)
+		new /obj/item/spacecash/c100(turf)
 
 /obj/structure/machinery/atm/attack_hand(mob/user as mob)
 	if(isRemoteControlling(user))

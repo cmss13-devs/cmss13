@@ -85,6 +85,7 @@ log transactions
 		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		playsound(src, 'sound/effects/splat.ogg', 25, 1)
 		playsound(src, "sound/effects/bone_break1.ogg", 20)
+		playsound(src, "sound/voice/meow.ogg", 15)
 
 		for(var/mob/M in I.contents)
 

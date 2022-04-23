@@ -342,5 +342,9 @@
   Stan_Albatross:
   - qol: made req and jtac channels in dark mode easier to read by lightening their
       colours
+  - balance: overhauled the CLF loadouts, giving more/better weapons, removing the
+      mod 88 from the rifle pool, and giving the spec a chance to spawn with an r4t!
+      The spec also gets an anti-tank rocket launcher and maybe an LMG. Other loadouts
+      all get some other tweaks.
   ghostsheet:
   - bugfix: Shoulder holster should work like they used to.

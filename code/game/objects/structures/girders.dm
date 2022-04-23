@@ -81,6 +81,23 @@
 	if(user.action_busy)
 		return TRUE //no afterattack
 
+	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		if(user.action_busy)
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+
+		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
+			return
+		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
+
+		playsound(loc, 'sound/effects/metal_shatter.ogg', 40, 1)
+		dismantle()
+		return
+
 	if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
 		return TRUE
@@ -230,6 +247,9 @@
 			else
 				T.PlaceOnTop(/turf/closed/wall)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
 			qdel(src)
 		return TRUE
 	return FALSE
@@ -271,6 +291,9 @@
 				T.PlaceOnTop(/turf/closed/wall/almayer/reinforced)
 			else
 				T.PlaceOnTop(/turf/closed/wall/r_wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
 			qdel(src)
 		return TRUE
 

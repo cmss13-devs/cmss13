@@ -158,6 +158,8 @@
 		var/dock_list = list("Port", "Starboard", "Aft")
 		if(shuttle.use_umbilical)
 			dock_list = list("Port Hangar", "Starboard Hangar")
+		if(shuttle.use_small_docks)
+			dock_list = list("Port Engineering", "Starboard Engineering")
 		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
 		switch(dock_name)
 			if("Port") dock_id = /area/shuttle/distress/arrive_2

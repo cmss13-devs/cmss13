@@ -69,6 +69,7 @@
 #include "code\__DEFINES\nightmare.dm"
 #include "code\__DEFINES\objects.dm"
 #include "code\__DEFINES\pain.dm"
+#include "code\__DEFINES\pred.dm"
 #include "code\__DEFINES\procpath.dm"
 #include "code\__DEFINES\qdel.dm"
 #include "code\__DEFINES\radio.dm"

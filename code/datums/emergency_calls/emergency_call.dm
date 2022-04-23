@@ -91,8 +91,8 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. >>> <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a></span> <<<"))
-			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()

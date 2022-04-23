@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 
 
-//------------ CHIEF MP ---------------
+//------------ EXECUTIVE OFFFICER ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -211,11 +211,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
+		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
 		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
+		list("Ceremonial Sword", 0, /obj/item/storage/large_holster/ceremonial_sword/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),

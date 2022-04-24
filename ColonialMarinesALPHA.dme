@@ -1016,6 +1016,7 @@
 #include "code\game\objects\items\tools\synth_bracer\abilities\reflex_overclock.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\repair_form.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\rescue_hook.dm"
+#include "code\game\objects\items\tools\synth_bracer\abilities\tactical_map.dm"
 #include "code\game\objects\items\toys\cards.dm"
 #include "code\game\objects\items\toys\crayons.dm"
 #include "code\game\objects\items\toys\toy_weapons.dm"

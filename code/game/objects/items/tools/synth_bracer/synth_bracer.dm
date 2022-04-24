@@ -31,7 +31,8 @@
 		/datum/action/human_action/activable/synth_bracer/rescue_hook,
 		/datum/action/human_action/synth_bracer/reflex_overclock,
 		/datum/action/human_action/synth_bracer/deploy_ocular_designator,
-		/datum/action/human_action/synth_bracer/repair_form
+		/datum/action/human_action/synth_bracer/repair_form,
+		/datum/action/human_action/synth_bracer/tactical_map
 	)
 
 /obj/item/clothing/gloves/synth/examine(mob/user)

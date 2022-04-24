@@ -405,7 +405,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 //Or give it its own sprite. It's more for the future.
 /obj/item/clothing/suit/storage/marine/MP/CO
 	name = "\improper M3 pattern captain armor"
-	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner, with specially fitted straps to operate a smartgun should the wearer wish to do so. Show those Marines who's really in charge."
+	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co_officer"
 	item_state = "co_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)

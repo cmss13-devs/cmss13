@@ -122,7 +122,14 @@
 		SetLuminosity(0)
 	..()
 
+/obj/item/storage/backpack/marine/smartpack/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_BACK)
+		RegisterSignal(user, COMSIG_MOB_APC_ATTACK_HAND, .proc/handle_apc_charge)
+
 /obj/item/storage/backpack/marine/smartpack/dropped(var/mob/living/M)
+	UnregisterSignal(M, COMSIG_MOB_APC_ATTACK_HAND)
+
 	for(var/datum/action/human_action/smartpack/S in M.actions)
 		S.remove_from(M)
 
@@ -134,7 +141,49 @@
 		M.status_flags |= CANPUSH
 		M.anchored = FALSE
 		M.unfreeze()
-	..()
+
+	return ..()
+
+/obj/item/storage/backpack/marine/smartpack/proc/handle_apc_charge(var/mob/living/carbon/human/user, var/obj/structure/machinery/power/apc/apc)
+	SIGNAL_HANDLER
+
+	if(!istype(user))
+		return FALSE
+
+	if(!(user.species.flags & IS_SYNTHETIC) || user.a_intent != INTENT_GRAB)
+		return FALSE
+
+	if(user.action_busy)
+		return FALSE
+
+	INVOKE_ASYNC(src, .proc/complete_apc_charge, user, apc)
+
+	return COMPONENT_APC_HANDLED_HAND
+
+/obj/item/storage/backpack/marine/smartpack/proc/complete_apc_charge(var/mob/living/carbon/human/user, var/obj/structure/machinery/power/apc/apc)
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+
+	playsound(apc.loc, 'sound/effects/sparks2.ogg', 25, 1)
+
+	if(apc.stat & BROKEN)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, apc)
+		s.start()
+		to_chat(user, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
+		user.apply_damage(10, 0, BURN)
+	else if(apc.cell?.charge > 0)
+		if(battery_charge < initial(battery_charge))
+			var/charge_to_use = min(apc.cell.charge, initial(battery_charge) - battery_charge)
+			if(!(apc.cell.use(charge_to_use)))
+				return
+			battery_charge += charge_to_use
+			to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. \The [src] now has <b>[battery_charge]/[initial(battery_charge)]</b>."))
+			apc.charging = 1
+		else
+			to_chat(user, SPAN_WARNING("\The [src] is already fully charged."))
+	else
+		to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 
 /obj/item/storage/backpack/marine/smartpack/Destroy()
 	if(ismob(loc))

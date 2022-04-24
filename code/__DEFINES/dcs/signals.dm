@@ -106,6 +106,8 @@
 #define COMSIG_MOB_APC_REMOVE_BOARD "mob_apc_remove_board"
 /// From /obj/structure/machinery/power/apc/attack_hand
 #define COMSIG_MOB_APC_REMOVE_CELL "mob_apc_remove_cell"
+#define COMSIG_MOB_APC_ATTACK_HAND "mob_apc_attack_hand"
+	#define COMPONENT_APC_HANDLED_HAND (1<<0)
 /// From /obj/structure/machinery/power/apc/proc/cut
 #define COMSIG_MOB_APC_CUT_WIRE "mob_apc_cut_wire"
 /// From /obj/structure/machinery/power/apc/proc/pulse

@@ -614,43 +614,13 @@
 
 	add_fingerprint(user)
 
+	if(SEND_SIGNAL(user, COMSIG_MOB_APC_ATTACK_HAND, src) & COMPONENT_APC_HANDLED_HAND)
+		return FALSE
+
 	//Human mob special interaction goes here.
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-
-		if(H.species.flags & IS_SYNTHETIC && H.a_intent == INTENT_GRAB)
-			if(H.action_busy)
-				return
-
-			if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				return
-
-			playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-
-			if(stat & BROKEN)
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(3, 1, src)
-				s.start()
-				to_chat(H, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-				H.apply_damage(10,0, BURN)
-			else if(cell && cell.charge > 0)
-				if(!istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-					return
-
-				var/obj/item/storage/backpack/marine/smartpack/S = H.back
-				if(S.battery_charge < SMARTPACK_MAX_POWER_STORED)
-					var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - S.battery_charge)
-					if(!(cell.use(charge_to_use)))
-						return
-					S.battery_charge += charge_to_use
-					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [S.name] now has [S.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-					charging = 1
-				else
-					to_chat(user, SPAN_WARNING("[S.name] is already fully charged."))
-			else
-				to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
-			return
-		else if(H.species.can_shred(H))
+		if(H.species.can_shred(H))
 			var/allcut = TRUE
 			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 				if(!isWireCut(wire))
@@ -674,7 +644,6 @@
 			else
 				beenhit += 1
 			return
-
 
 	if(usr == user && opened && (!isRemoteControlling(user)))
 		if(cell)

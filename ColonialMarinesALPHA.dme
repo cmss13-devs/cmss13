@@ -1011,6 +1011,7 @@
 #include "code\game\objects\items\tools\surgery_tools.dm"
 #include "code\game\objects\items\tools\synth_bracer\synth_bracer.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\framework.dm"
+#include "code\game\objects\items\tools\synth_bracer\abilities\reflex_overclock.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\repair_form.dm"
 #include "code\game\objects\items\tools\synth_bracer\abilities\rescue_hook.dm"
 #include "code\game\objects\items\toys\cards.dm"

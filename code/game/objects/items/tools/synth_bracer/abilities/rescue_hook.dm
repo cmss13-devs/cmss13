@@ -2,14 +2,20 @@
 	name = "Rescue Hook"
 	action_icon_state = "stomp"
 	cooldown = 5 SECONDS
+	charge_cost = 60
 
-	charge_cost = 10
+	handles_cooldown = TRUE
+	handles_charge_cost = TRUE
 
 	// Config
 	var/max_distance = 7
 	var/windup = 8
 
 /datum/action/human_action/activable/synth_bracer/rescue_hook/use_ability(atom/A)
+	. = ..()
+	if(!.)
+		return
+
 	if(!A || A.layer >= FLY_LAYER || !isturf(synth.loc))
 		return
 
@@ -72,8 +78,8 @@
 
 		return
 
-	synth_bracer.drain_charge(synth, charge_cost)
 	enter_cooldown()
+	synth_bracer.drain_charge(synth, charge_cost)
 
 	synth.frozen = FALSE
 	synth.update_canmove()

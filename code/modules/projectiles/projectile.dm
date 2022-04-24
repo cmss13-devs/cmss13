@@ -498,17 +498,7 @@
 
 			. = TRUE
 		else if(!L.lying)
-			animatation_displace_reset(L)
-			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
-			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
-				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-			log_attack("[src] narrowly missed [key_name(L)]")
-
-			var/mob/living/carbon/shotby = firer
-			if(istype(shotby))
-				L.attack_log += "[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
-				shotby.attack_log += "[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(L)]"
-
+			handle_miss(L)
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([L]) Missed."))
@@ -516,6 +506,18 @@
 
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
+
+/obj/item/projectile/proc/handle_miss(var/mob/living/target)
+	animatation_displace_reset(target)
+	if(ammo.sound_miss)
+		playsound_client(target.client, ammo.sound_miss, get_turf(target), 75, TRUE)
+	target.visible_message(SPAN_AVOIDHARM("[src] misses [target]!"), SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	log_attack("[src] narrowly missed [key_name(target)]")
+
+	var/mob/living/carbon/shotby = firer
+	if(istype(shotby))
+		target.attack_log += "[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(target)]"
+		shotby.attack_log += "[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(target)]"
 
 //----------------------------------------------------------
 				//				    	\\

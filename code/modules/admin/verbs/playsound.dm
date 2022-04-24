@@ -146,14 +146,15 @@
 		else
 			return
 
-	for(var/i in targets)
-		var/mob/M = i
-		if(M.client.prefs.toggles_sound & SOUND_MIDI)
-			admin_sound.volume = vol * M.client.admin_music_volume
-			SEND_SOUND(M, admin_sound)
+	for(var/items in targets)
+		var/mob/Mob = items
+		var/client/Client = Mob?.client
+		if(Client?.prefs.toggles_sound & SOUND_MIDI)
+			admin_sound.volume = vol * Client?.admin_music_volume
+			SEND_SOUND(Mob, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)
-				to_chat(targets, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+				to_chat(Client, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
 
 	log_admin("[key_name(src)] played midi sound [S] - [style]")
 	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")

@@ -12,6 +12,7 @@
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	magfed = FALSE
 	starting_vial = null
+	transparent = FALSE
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 	var/display_maptext = FALSE
@@ -187,6 +188,7 @@
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 	display_maptext = TRUE //see anaesthetic injector
+	maptext_label = "!!"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT

@@ -58,14 +58,6 @@
 	M.Attach(src)
 	update_attachable(M.slot)
 
-// Minigun UPP HvH
-/obj/item/weapon/gun/minigun/upp/hvh
-
-/obj/item/weapon/gun/minigun/upp/hvh/set_gun_config_values()
-	..()
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	recoil_buildup_limit = RECOIL_AMOUNT_TIER_4 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
-
 //M60
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"

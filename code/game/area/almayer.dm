@@ -502,6 +502,11 @@
 	icon_state = "livingspace"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/living/synthcloset
+	name = "\improper Synthetic Storage Closet"
+	icon_state = "livingspace"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/living/numbertwobunks
 	name = "\improper Executive Officer's Bunk"
 	icon_state = "livingspace"

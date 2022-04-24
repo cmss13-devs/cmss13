@@ -13,24 +13,15 @@
 	if (!evolve_checks())
 		return
 
-	//Debugging that should've been done
-
 	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
 	if(!castepick) //Changed my mind
 		return
 
-	if(!isturf(loc)) //qdel'd or inside something
-		return
-
-	if (!evolve_checks())
+	if(!evolve_checks())
 		return
 
 	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !isXenoLarva(src) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
-		return
-
-	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
@@ -163,8 +154,7 @@
 	SSround_recording.recorder.track_player(new_xeno)
 
 /mob/living/carbon/Xenomorph/proc/evolve_checks()
-	if(evolving)
-		to_chat(src, SPAN_WARNING("You are already evolving!"))
+	if(!check_state())
 		return FALSE
 
 	if(is_ventcrawling)
@@ -187,10 +177,6 @@
 		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
 		return FALSE
 
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
-		return FALSE
-
 	if(handcuffed || legcuffed)
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return FALSE
@@ -208,15 +194,8 @@
 		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
 		return FALSE
 
-	if (agility || fortify || crest_defense)
+	if(agility || fortify || crest_defense)
 		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
-		return FALSE
-
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
-		return FALSE
-
-	if(!isturf(loc)) //qdel'd or inside something
 		return FALSE
 
 	return TRUE

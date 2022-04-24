@@ -1117,6 +1117,9 @@
 	if(!(species.flags & HAS_UNDERWEAR))
 		INVOKE_ASYNC(src, .proc/remove_underwear)
 
+	default_lighting_alpha = species.default_lighting_alpha
+	update_sight()
+
 	if(species)
 		return TRUE
 	else
@@ -1188,6 +1191,13 @@
 
 	hud_used.locate_leader.icon_state = "trackoff"
 
+	var/static/list/squad_leader_trackers = list(
+		TRACKER_ASL = /datum/squad/alpha,
+		TRACKER_BSL = /datum/squad/bravo,
+		TRACKER_CSL = /datum/squad/charlie,
+		TRACKER_DSL = /datum/squad/delta,
+		TRACKER_ESL = /datum/squad/echo
+	)
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1213,6 +1223,11 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		else
+			if(tracker_setting in squad_leader_trackers)
+				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
+				H = S.squad_leader
+				tracking_suffix = tracker_setting
 
 	if(!H)
 		return
@@ -1251,7 +1266,7 @@
 
 	sight &= ~BLIND // Never have blind on by default
 
-	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	lighting_alpha = default_lighting_alpha
 	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_in_dark = species.darksight
 	if(glasses)
@@ -1426,7 +1441,7 @@
 	. = ..(mapload, new_species = "Yiren")
 
 /mob/living/carbon/human/synthetic/Initialize(mapload)
-	. = ..(mapload, "Synthetic")
+	. = ..(mapload, SYNTH_GEN_THREE)
 
 /mob/living/carbon/human/synthetic/old/Initialize(mapload)
 	. = ..(mapload, SYNTH_COLONY)
@@ -1439,9 +1454,6 @@
 
 /mob/living/carbon/human/synthetic/second/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_TWO)
-
-/mob/living/carbon/human/synthetic/third/Initialize(mapload)
-	. = ..(mapload, SYNTH_GEN_THREE)
 
 
 /mob/living/carbon/human/resist_fire()

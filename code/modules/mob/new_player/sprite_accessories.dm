@@ -32,13 +32,11 @@
 		"Human",
 		"Machine",
 		"Human Hero",
-		"Synthetic",
 		SYNTH_COLONY,
 		SYNTH_COMBAT,
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,
-		SYNTH_GEN_THREE,
-		"Event Synthetic"
+		SYNTH_GEN_THREE
 		)
 
 	// Whether or not the accessory can be affected by colouration

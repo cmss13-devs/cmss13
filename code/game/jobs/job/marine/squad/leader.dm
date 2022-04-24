@@ -7,11 +7,7 @@
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "You are responsible for the men and women of your squad. Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
-/datum/job/marine/leader/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/leader_equipped
-
-/datum/job/marine/leader/equipped/whiskey
+/datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/sl

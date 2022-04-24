@@ -249,7 +249,7 @@
 		for(var/obj/I in contents)
 			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/structure/machinery/camera) || istype(I,/obj/item/device/mmi)))
 				client.screen += I
-	var/datum/custom_hud/robot/ui_datum = custom_huds_list["robot"]
+	var/datum/custom_hud/robot/ui_datum = GLOB.custom_huds_list[HUD_ROBOT]
 	if(module_state_1)
 		module_state_1.screen_loc = ui_datum.ui_inv1
 	if(module_state_2)

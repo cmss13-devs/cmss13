@@ -2195,13 +2195,12 @@
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/M = O
-		M.next_move = world.time + vehicle_slowdown_time
-		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
-		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Plasma Eradicator", P.firer))
-		M.interior_crash_effect()
-		var/turf/T = get_turf(M.loc)
-		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
+		var/obj/vehicle/multitile/multitile_vehicle = O
+		multitile_vehicle.next_move = world.time + vehicle_slowdown_time
+		playsound(multitile_vehicle, 'sound/effects/meteorimpact.ogg', 35)
+		multitile_vehicle.at_munition_interior_explosion_effect(cause_data = create_cause_data("Plasma Eradicator", P.firer))
+		multitile_vehicle.interior_crash_effect()
+		multitile_vehicle.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)

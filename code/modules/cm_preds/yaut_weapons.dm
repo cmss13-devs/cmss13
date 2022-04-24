@@ -586,7 +586,7 @@
 	unacidable = TRUE
 
 /obj/item/weapon/melee/yautja/knife/attack(mob/living/M, mob/living/carbon/human/user)
-	if(M.stat != DEAD)
+	if(M.stat != DEAD || user.action_busy)
 		return ..()
 
 	if(!ishuman(M))
@@ -717,7 +717,7 @@
 			victim.status_flags |= PERMANENTLY_DEAD
 			victim.add_flay_overlay(stage = 3)
 			
-			//End the loop, but keep the datum so nobody tries to skin him twice.
+			//End the loop and remove all references to the datum.
 			current_flayer = null
 			UnregisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT)
 			victim = null

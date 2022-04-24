@@ -350,3 +350,6 @@
       all get some other tweaks.
   ghostsheet:
   - bugfix: Shoulder holster should work like they used to.
+2022-04-24:
+  Stan_Albatross:
+  - bugfix: fixed being able to set up the m2c inside tarps, among other things.

@@ -608,7 +608,6 @@
 		return TRUE
 
 	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
-		playsound(loc, 'sound/weapons/pierce.ogg', 25)
 		return TRUE
 
 	if(victim.overlays_standing[FLAY_LAYER]) //Already fully flayed. Possibly the user wants to cut them down?
@@ -621,6 +620,8 @@
 		SPAN_DANGER("<B>You start flaying [victim] with your [src.name]...</B>"))
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+		if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK) //In case two preds try to flay the same person at once.
+			return TRUE
 		user.visible_message(SPAN_DANGER("<B>[user] makes a series of cuts in [victim]'s skin.</B>"),
 			SPAN_DANGER("<B>You prepare the skin, cutting the flesh off in vital places.</B>"))
 		playsound(loc, 'sound/weapons/slash.ogg', 25)
@@ -656,6 +657,7 @@
 	else
 		current_flayer = user
 		if(!ongoing_attempt)
+			playsound(user.loc, 'sound/weapons/pierce.ogg', 25)
 			user.visible_message(SPAN_DANGER("<B>[user] resumes the flaying of [victim] with \a [tool]...</B>"),
 				SPAN_DANGER("<B>You resume the flaying of [victim] with your [tool.name]...</B>"))
 		INVOKE_ASYNC(src, .proc/flay, target, user, tool) //do_after sleeps.
@@ -700,6 +702,7 @@
 			for(var/L in victim.limbs)
 				victim.apply_damage(18, BRUTE, L, sharp = TRUE)
 			victim.remove_overlay(UNDERWEAR_LAYER)
+			victim.drop_inv_item_on_ground(victim.get_item_by_slot(WEAR_BODY)) //Drop uniform, belt etc as well.
 			victim.f_style = "Shaved"
 			victim.update_hair() //then rip the beard off along the skin
 			victim.add_flay_overlay(stage = 2)

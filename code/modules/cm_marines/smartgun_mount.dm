@@ -452,7 +452,7 @@
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("[user] rotates the [src].","You rotate the [src].")
+			user.visible_message("[user] rotates \the [src].","You rotate \the [src].")
 			setDir(turn(dir, -90))
 			if(operator)
 				update_pixels(operator)
@@ -554,7 +554,7 @@
 
 /obj/structure/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
+	visible_message(SPAN_WARNING("[src] is hit by \the [P.name]!"))
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
@@ -677,7 +677,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
+		to_chat(usr, SPAN_WARNING("You need a free hand to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -777,7 +777,7 @@
 				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
+				to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
 
 			if(!user.allow_gun_usage)
 				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -1218,7 +1218,7 @@
 
 		if(WT.remove_fuel(2, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on [src]."), \
-				SPAN_NOTICE("You begin repairing the damage on the [src]."))
+				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				return

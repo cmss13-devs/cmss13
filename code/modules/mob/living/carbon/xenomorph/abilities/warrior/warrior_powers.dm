@@ -154,8 +154,8 @@
 
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
-	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in \the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [H] in \the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 

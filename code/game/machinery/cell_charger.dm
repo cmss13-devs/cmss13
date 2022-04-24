@@ -46,7 +46,7 @@
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the cell!"))
+				to_chat(user, SPAN_DANGER("\The [name] blinks red as you try to insert the cell!"))
 				return
 
 			if(user.drop_inv_item_to_loc(W, src))

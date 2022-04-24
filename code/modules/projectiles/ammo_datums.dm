@@ -510,7 +510,7 @@
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
-		P.visible_message(SPAN_DANGER("The [src] chimpers furiously!"))
+		P.visible_message(SPAN_DANGER("\The [src] chimpers furiously!"))
 		new /mob/living/carbon/human/monkey(P.loc)
 
 /datum/ammo/bullet/pistol/smart
@@ -3031,7 +3031,7 @@
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(world_view_size, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches the [S]!"), 1) //Tell them the can was caught.
+						O.show_message(SPAN_DANGER("[M] catches \the [S]!"), 1) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

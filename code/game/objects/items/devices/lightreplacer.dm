@@ -59,7 +59,7 @@
 /obj/item/device/lightreplacer/Initialize()
 	. = ..()
 	uses = max_uses
-	failmsg = "The [name]'s refill light blinks red."
+	failmsg = "\The [name]'s refill light blinks red."
 
 /obj/item/device/lightreplacer/examine(mob/user)
 	..()
@@ -73,7 +73,7 @@
 			return
 		else if(G.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src.name]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into \the [src.name]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
@@ -83,7 +83,7 @@
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, "You insert the [L.name] into the [src.name]. You have [uses] lights remaining.")
+				to_chat(user, "You insert \the [L.name] into \the [src.name]. You have [uses] lights remaining.")
 				user.drop_held_item()
 				qdel(L)
 				return
@@ -121,7 +121,7 @@
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
 			if(!Use(U)) return
-			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with the [src]."))
+			to_chat(U, SPAN_NOTICE("You replace \the [target.fitting] with \the [src]."))
 
 			if(target.status != LIGHT_EMPTY)
 

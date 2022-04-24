@@ -133,11 +133,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
+		to_chat(user, SPAN_NOTICE("\The [src] was bitten by someone!"))
 	else if (bitecount<=3)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
+		to_chat(user, SPAN_NOTICE("\The [src] was bitten [bitecount] times!"))
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
+		to_chat(user, SPAN_NOTICE("\The [src] was bitten multiple times!"))
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -215,10 +215,10 @@
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
-				M.emote("nibbles away at the [src]")
+				M.emote("nibbles away at \the [src]")
 			bitecount++
 			if(bitecount >= 5)
-				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where the [src] was")
+				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where \the [src] was")
 				if(sattisfaction_text)
 					M.emote("[sattisfaction_text]")
 				qdel(src)
@@ -227,7 +227,7 @@
 			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
 				N.visible_message("[N] nibbles away at [src].", "")
-			//N.emote("nibbles away at the [src]")
+			//N.emote("nibbles away at \the [src]")
 			N.health = min(N.health + 1, N.maxHealth)
 
 
@@ -2787,12 +2787,12 @@
 
 	icon_state = "pizzabox[boxes.len+1]"
 
-/obj/item/pizzabox/attack_hand( mob/user as mob )
+/obj/item/pizzabox/attack_hand(mob/user as mob)
 
-	if( open && pizza )
-		user.put_in_hands( pizza )
+	if(open && pizza)
+		user.put_in_hands(pizza)
 
-		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of the [src]."))
+		to_chat(user, SPAN_DANGER("You take \the [src.pizza] out of \the [src]."))
 		src.pizza = null
 		update_icon()
 		return
@@ -2825,7 +2825,7 @@
 	update_icon()
 
 /obj/item/pizzabox/attackby( obj/item/I as obj, mob/user as mob )
-	if( istype(I, /obj/item/pizzabox/) )
+	if(istype(I, /obj/item/pizzabox/))
 		var/obj/item/pizzabox/box = I
 
 		if( !box.open && !src.open )
@@ -2843,11 +2843,11 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, SPAN_DANGER("You put the [box] ontop of the [src]!"))
+				to_chat(user, SPAN_DANGER("You put \the [box] ontop of \the [src]!"))
 			else
 				to_chat(user, SPAN_DANGER("The stack is too high!"))
 		else
-			to_chat(user, SPAN_DANGER("Close the [box] first!"))
+			to_chat(user, SPAN_DANGER("Close \the [box] first!"))
 
 		return
 
@@ -2859,9 +2859,9 @@
 
 			update_icon()
 
-			to_chat(user, SPAN_DANGER("You put the [I] in the [src]!"))
+			to_chat(user, SPAN_DANGER("You put \the [I] in \the [src]!"))
 		else
-			to_chat(user, SPAN_DANGER("You try to push the [I] through the lid but it doesn't work!"))
+			to_chat(user, SPAN_DANGER("You try to push \the [I] through the lid but it doesn't work!"))
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )

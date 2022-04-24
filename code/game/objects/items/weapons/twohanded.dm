@@ -59,7 +59,7 @@
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/melee/twohanded/offhand/offhand = new /obj/item/weapon/melee/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
-	offhand.desc = "Your second grip on the [item_name]."
+	offhand.desc = "Your second grip on \the [item_name]."
 	offhand.flags_item |= WIELDED
 	user.put_in_inactive_hand(offhand)
 	user.update_inv_l_hand(0)

@@ -150,7 +150,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-			visible_message(SPAN_DANGER("<B>[user] smashes against the [src.name].</B>"), 1)
+			visible_message(SPAN_DANGER("<B>[user] smashes against \the [src.name].</B>"), 1)
 			take_damage(25)
 			return
 	return try_to_activate_door(user)

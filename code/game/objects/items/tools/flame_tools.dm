@@ -210,7 +210,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())//Badasses dont get blinded while lighting their cig with a blowtorch
-			light(SPAN_NOTICE("[user] casually lights the [name] with [W]."))
+			light(SPAN_NOTICE("[user] casually lights \the [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
@@ -241,12 +241,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name]."))
 
 	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W]."))
+		light(SPAN_NOTICE("[user] lights their [src] with \the [W]."))
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
 		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F]."))
+			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of \the [F]."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
@@ -258,16 +258,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W]."))
+		light(SPAN_NOTICE("[user] lights their [src] with \the [W]."))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
 		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [src] with the [C] after a few attempts."))
+			light(SPAN_NOTICE("[user] lights their [src] with \the [C] after a few attempts."))
 
 	else if(istype(W, /obj/item/tool/candle))
 		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [src] with the [W] after a few attempts."))
+			light(SPAN_NOTICE("[user] lights their [src] with \the [W] after a few attempts."))
 
 	return
 
@@ -488,12 +488,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
 
 	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W], bet that would have looked cooler if it was attached to something first!"))
+		light(SPAN_NOTICE("[user] lights their [src] with \the [W], bet that would have looked cooler if it was attached to something first!"))
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
 		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F], the glint of pyromania in their eye."))
+			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of \the [F], the glint of pyromania in their eye."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
@@ -505,16 +505,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!."))
+		light(SPAN_NOTICE("[user] lights their [src] with \the [W], that can't be sterile!."))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
 		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [src] with the [C] after a few attempts."))
+			light(SPAN_NOTICE("[user] lights their [src] with \the [C] after a few attempts."))
 
 	else if(istype(W, /obj/item/tool/candle))
 		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [src] with the [W] after a few attempts."))
+			light(SPAN_NOTICE("[user] lights their [src] with \the [W] after a few attempts."))
 
 /////////////////
 //SMOKING PIPES//
@@ -660,7 +660,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				playsound(src.loc,"lighter",10, 1, 3)
 				if(prob(95))
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src]."))
+					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light \the [src]."))
 
 				else
 					to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
@@ -668,7 +668,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 						user.apply_damage(2,BURN,"l_hand")
 					else
 						user.apply_damage(2,BURN,"r_hand")
-					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src], they however burn their finger in the process."))
+					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light \the [src], they however burn their finger in the process."))
 
 			user.SetLuminosity(2, FALSE, src)
 			START_PROCESSING(SSobj, src)
@@ -688,7 +688,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				bearer.visible_message("<span class='rose'>You hear a quiet click, as [bearer] shuts off [src] without even looking at what they're doing.")
 				playsound(src.loc,"zippo_close",10, 1, 3)
 			else
-				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off the [src]."))
+				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off \the [src]."))
 
 		bearer.SetLuminosity(0, FALSE, src)
 		STOP_PROCESSING(SSobj, src)
@@ -708,9 +708,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/tool/lighter/zippo))
-				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
+				cig.light("<span class='rose'>[user] whips \the [name] out and holds it for [M].</span>")
 			else
-				cig.light(SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
+				cig.light(SPAN_NOTICE("[user] holds \the [name] out for [M], and lights \the [cig.name]."))
 	else
 		..()
 

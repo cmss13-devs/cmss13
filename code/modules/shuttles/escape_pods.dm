@@ -57,7 +57,7 @@ with the original.*/
 		. = ..()
 		evacuation_program.dock_state = STATE_LAUNCHED
 		spawn(10)
-			check_passengers("<br><br>[SPAN_CENTERBOLD("<big>You have successfully left the [MAIN_SHIP_NAME]. You may now ghost and observe the rest of the round.</big>")]<br>")
+			check_passengers("<br><br>[SPAN_CENTERBOLD("<big>You have successfully left \the [MAIN_SHIP_NAME]. You may now ghost and observe the rest of the round.</big>")]<br>")
 
 /*
 This processes tags and connections dynamically, so you do not need to modify or pregenerate linked objects.

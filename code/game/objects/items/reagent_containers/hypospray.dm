@@ -212,7 +212,7 @@
 			R.last_source_mob = WEAKREF(user)
 		var/contained = english_list(injected)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
 		msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		var/trans = reagents.trans_to(M, amount_per_transfer_from_this)

@@ -96,7 +96,7 @@
 				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
 				return
 		if(AC)
-			to_chat(usr, SPAN_WARNING("The [O.name] cannot be built here!"))
+			to_chat(usr, SPAN_WARNING("\The [O.name] cannot be built here!"))
 			return
 
 	if(user.action_busy)

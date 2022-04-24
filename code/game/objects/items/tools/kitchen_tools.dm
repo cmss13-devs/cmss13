@@ -181,7 +181,7 @@
 			else O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), 1)
 		if(drowsy_threshold > 0)
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
-		
+
 		M.apply_damage(force, BRUTE, affecting, sharp=0) //log and damage the custom hit
 		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
 		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
@@ -210,7 +210,7 @@
 	var/cooldown = 0	//shield bash cooldown. based on world.time
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
-	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
+	to_chat(user, SPAN_WARNING("You accidentally slam yourself with \the [src]!"))
 	user.KnockDown(1)
 	user.take_limb_damage(2)
 

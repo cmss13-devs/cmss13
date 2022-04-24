@@ -105,7 +105,7 @@
 
 /obj/item/device/assembly/prox_sensor/interact(mob/user)
 	if(!secured)
-		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
+		to_chat(user, SPAN_WARNING("\The [name] is unsecured!"))
 		return FALSE
 
 	tgui_interact(user)

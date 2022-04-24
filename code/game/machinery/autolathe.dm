@@ -139,7 +139,7 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, SPAN_DANGER("\The [src] is full. Please remove material from the [name] in order to insert more."))
+		to_chat(user, SPAN_DANGER("\The [src] is full. Please remove material from \the [name] in order to insert more."))
 		return
 	else if(filltype == 1)
 		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
@@ -295,7 +295,7 @@
 
 /obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
 	if (queue.len >= queue_max)
-		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
+		to_chat(usr, SPAN_DANGER("\The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
 	//This needs some work.
@@ -305,7 +305,7 @@
 	for(var/material in making.resources)
 		if(projected_stored_material[material] && projected_stored_material[material] >= (making.resources[material]*multiplier))
 			continue
-		to_chat(user, SPAN_DANGER("The [name] does not have the materials to create \the [making.name]."))
+		to_chat(user, SPAN_DANGER("\The [name] does not have the materials to create \the [making.name]."))
 		return AUTOLATHE_FAILED
 
 	for (var/material in making.resources)
@@ -339,7 +339,7 @@
 	// Make sure autolathe can print the item
 	for(var/material in making.resources)
 		if(isnull(stored_material[material]) || stored_material[material] < (making.resources[material]*multiplier))
-			visible_message("The [name] beeps rapidly, unable to print the current item \"[making.name]\".")
+			visible_message("\The [name] beeps rapidly, unable to print the current item \"[making.name]\".")
 			return
 
 	//Consume materials.
@@ -548,7 +548,7 @@
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(var/mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate \the [name]."))
 		return FALSE
 	. = ..()
 
@@ -573,7 +573,7 @@
 
 /obj/structure/machinery/autolathe/medilathe/attack_hand(var/mob/user)
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate \the [name]."))
 		return FALSE
 	. = ..()
 

@@ -853,7 +853,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
 	if(using_scope)
-		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))
+		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on \the [src] while you're looking through it!"))
 		return
 	if(zoom_level == ZOOM_LEVEL_2X)
 		zoom_level = ZOOM_LEVEL_4X

@@ -25,7 +25,7 @@
 		return
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")
 
-	log_admin("[key_name(src)] ran the [set_to_run] test set. verbose=[verbose]")
+	log_admin("[key_name(src)] ran \the [set_to_run] test set. verbose=[verbose]")
 	var/list/results = test_executor.run_test_set(set_to_run, verbose)
 
 	to_chat(src, "Test results:")
@@ -51,7 +51,7 @@
 		return
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")
 
-	log_admin("[key_name(src)] ran the [test_name] test case.")
+	log_admin("[key_name(src)] ran \the [test_name] test case.")
 
 	var/datum/test_case/case = all_tests[test_name]
 	var/result = test_executor.run_individual_test(case, verbose)

@@ -26,11 +26,11 @@
 				src.locked = !( src.locked )
 				if(src.locked)
 					src.icon_state = src.icon_locked
-					to_chat(user, SPAN_DANGER("You lock the [src.name]!"))
+					to_chat(user, SPAN_DANGER("You lock \the [src.name]!"))
 					return
 				else
 					src.icon_state = src.icon_closed
-					to_chat(user, SPAN_DANGER("You unlock the [src.name]!"))
+					to_chat(user, SPAN_DANGER("You unlock \the [src.name]!"))
 					return
 			else
 				to_chat(user, SPAN_DANGER("Access Denied"))

@@ -30,8 +30,8 @@
 	if(!ishuman(M)) return
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [key_name(M)]</font>")
-	msg_admin_attack("[key_name(user)] used the [src.name] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] to flash [key_name(M)]</font>")
+	msg_admin_attack("[key_name(user)] used \the [src.name] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
@@ -112,7 +112,7 @@
 		return
 
 	if(broken)
-		user.show_message(SPAN_WARNING("The [src.name] is broken"), 2)
+		user.show_message(SPAN_WARNING("\The [src.name] is broken"), 2)
 		return
 
 	flash_recharge()
@@ -144,8 +144,8 @@
 			qdel(animation)
 
 	// Adds logging if you use it as an AoE flash
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around him in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
-	msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around him in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] in hand to flash everyone around him in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
+	msg_admin_attack("[key_name(user)] used \the [src.name] to flash everyone around him in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	for(var/mob/living/carbon/human/M in oviewers(3, null))
 		if(prob(50))

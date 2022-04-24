@@ -36,11 +36,11 @@
 		..()
 
 /obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
-	to_chat(user, SPAN_WARNING("The [src] feed system cannot be reloaded manually."))
+	to_chat(user, SPAN_WARNING("\The [src] feed system cannot be reloaded manually."))
 	return
 
 /obj/item/weapon/gun/souto/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	to_chat(user, SPAN_WARNING("You cannot unload the [src]."))
+	to_chat(user, SPAN_WARNING("You cannot unload \the [src]."))
 	return
 
 /obj/item/weapon/gun/souto/able_to_fire(mob/user)

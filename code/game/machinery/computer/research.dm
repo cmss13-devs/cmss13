@@ -25,7 +25,7 @@
 			if(!N.grant)
 				return
 			chemical_data.update_credits(N.grant)
-			visible_message(SPAN_NOTICE("[user] scans the [N.name] on the [src], collecting the [N.grant] research credits."))
+			visible_message(SPAN_NOTICE("[user] scans \the [N.name] on \the [src], collecting \the [N.grant] research credits."))
 			N.grant = 0
 			return
 	//Saving to database
@@ -56,7 +56,7 @@
 		visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], but it is refused."))
 		return
 	if(card.clearance_access <= chemical_data.clearance_level || (card.clearance_access == 6 && chemical_data.clearance_level >= 5 && chemical_data.clearance_x_access))
-		visible_message(SPAN_NOTICE("[user] swipes the clearance card on the [src], but nothing happens."))
+		visible_message(SPAN_NOTICE("[user] swipes the clearance card on \the [src], but nothing happens."))
 		return
 	if(user.real_name != card.registered_name)
 		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. CARD DATA HAS BEEN WIPED."))

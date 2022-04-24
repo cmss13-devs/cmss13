@@ -115,7 +115,7 @@
 			automated_launch_timer = TIMER_ID_NULL
 
 /datum/shuttle/ferry/marine/proc/prepare_automated_launch()
-	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	ai_silent_announcement("\The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
 	automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
@@ -460,7 +460,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
+			marine_announcement("A hostile aircraft on course for \the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)

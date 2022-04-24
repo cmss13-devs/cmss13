@@ -212,7 +212,7 @@
 	if(!living_hives)
 		round_finished = "No one has won."
 	else if (living_hives == 1)
-		round_finished = "The [last_living_hive] has won."
+		round_finished = "\The [last_living_hive] has won."
 
 
 ///////////////////////////////

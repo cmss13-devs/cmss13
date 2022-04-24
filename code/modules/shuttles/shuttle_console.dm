@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(!isXeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
+				user.visible_message(SPAN_NOTICE("[user] starts to type on \the [src]."),
 				SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
 				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(user.lying)
@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle.queen_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
-					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
+					user.visible_message(SPAN_NOTICE("\The [src] blinks with blue lights."),
 					SPAN_NOTICE("You have successfully taken back the control over the dropship."))
 					ui_interact(user)
 				return
@@ -94,12 +94,12 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				shuttle.door_override = 0
 
 	if(link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
+		user.visible_message(SPAN_NOTICE("\The [src] blinks with blue lights."),
 		SPAN_NOTICE("Transport link activated."))
 		shuttle.linked = TRUE
 
 	if(shuttle.require_link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("The [src] blinks with red lights."),
+		user.visible_message(SPAN_NOTICE("\The [src] blinks with red lights."),
 		SPAN_WARNING("Transport terminal unlinked. Manual activation required."))
 		return
 	ui_interact(user)
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		if(shuttle.recharging && shuttle.moving_status == SHUTTLE_IDLE)
 			shuttle_status_message += "<br>No custom flight subroutines have been submitted for the upcoming flight" //FYI: Flight plans are reset once recharging ends
 		else
-			shuttle_status_message += "<br>Custom flight subroutines have been submitted for the [shuttle.moving_status == SHUTTLE_INTRANSIT ? "ongoing":"upcoming"] flight."
+			shuttle_status_message += "<br>Custom flight subroutines have been submitted for \the [shuttle.moving_status == SHUTTLE_INTRANSIT ? "ongoing":"upcoming"] flight."
 	else
 		if(shuttle.moving_status == SHUTTLE_INTRANSIT)
 			shuttle_status_message += "<br>Default failsafe flight subroutines are being used for the current flight."

@@ -520,7 +520,7 @@
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!terminal)
-				to_chat(user, SPAN_WARNING("The [src] lacks a terminal to be removed."))
+				to_chat(user, SPAN_WARNING("\The [src] lacks a terminal to be removed."))
 				return
 			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread

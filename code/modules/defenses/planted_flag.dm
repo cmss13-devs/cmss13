@@ -42,11 +42,11 @@
 /obj/structure/machinery/defenses/planted_flag/power_on_action()
 	apply_area_effect()
 	start_processing()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/planted_flag/power_off_action()
 	stop_processing()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] gives a beep and powers down.")]")
 
 /obj/structure/machinery/defenses/planted_flag/process()
 	if(!turned_on)

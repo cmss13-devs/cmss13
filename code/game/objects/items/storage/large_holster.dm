@@ -337,11 +337,11 @@
 		to_chat(user, "It is storing \a M240-T incinerator unit.")
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			to_chat(user, "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
+			to_chat(user, "\The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
 		if(fuelB)
-			to_chat(user, "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel.")
+			to_chat(user, "\The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel.")
 		if(fuelX)
-			to_chat(user, "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
+			to_chat(user, "\The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

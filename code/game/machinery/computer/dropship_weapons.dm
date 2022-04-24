@@ -505,7 +505,7 @@
 		var/list/gimb = record.get_offsets()
 		var/min = gimb["min"]
 		var/max = gimb["max"]
-		var/offset_value = stripped_input(usr, "Enter offset for the [record.weapon.name]. It has to be between [min] and [max]. Enter '-' to remove fire order on this time stamp.", "Firing offset", "[record.offsets[offset_ref]]", 2)
+		var/offset_value = stripped_input(usr, "Enter offset for \the [record.weapon.name]. It has to be between [min] and [max]. Enter '-' to remove fire order on this time stamp.", "Firing offset", "[record.offsets[offset_ref]]", 2)
 		if(offset_value == null)
 			return
 		if(offset_value == "-")

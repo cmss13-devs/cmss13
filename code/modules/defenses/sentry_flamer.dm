@@ -24,7 +24,7 @@
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 
 /obj/structure/machinery/defenses/sentry/flamer/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [name] starts spitting out sparks and smoke!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 	for(var/i = 1 to 6)
 		setDir(pick(NORTH, EAST, SOUTH, WEST))
@@ -52,7 +52,7 @@
 
 
 /obj/structure/machinery/defenses/sentry/flamer/mini/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [name] starts spitting out sparks and smoke!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 
 	cell_explosion(loc, 10, 10, null, create_cause_data("sentry explosion", owner_mob))

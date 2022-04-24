@@ -374,7 +374,7 @@
 			B.name = P.name
 		user.drop_inv_item_on_ground(P)
 		user.drop_inv_item_on_ground(src)
-		to_chat(user, SPAN_NOTICE("You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name]."))
+		to_chat(user, SPAN_NOTICE("You clip \the [P.name] to [(src.name == "paper") ? "the paper" : src.name]."))
 		B.attach_doc(src, user, TRUE)
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
@@ -396,7 +396,7 @@
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
 
-		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with \the [P.name].</i>"
 
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x

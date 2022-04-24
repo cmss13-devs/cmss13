@@ -602,7 +602,7 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "You activate \the [src]. Now toss it, the supplies will arrive in a moment!")
 
 	var/mob/living/carbon/C = user
 	if(istype(C) && !C.throw_mode)

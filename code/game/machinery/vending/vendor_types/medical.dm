@@ -55,7 +55,7 @@
 	. = ..()
 
 	if(healthscan)
-		to_chat(user, SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
+		to_chat(user, SPAN_NOTICE("\The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -97,11 +97,11 @@
 
 		var/obj/item/reagent_container/C = I
 		if(!(C.type in chem_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot refill the [C.name]."))
+			to_chat(user, SPAN_WARNING("[src] cannot refill \the [C.name]."))
 			return
 
 		if(C.reagents.total_volume == C.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. \The [C.name] is currently full."))
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
@@ -121,11 +121,11 @@
 
 		var/obj/item/stack/S = I
 		if(!(S.type in stack_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot restock the [S.name]."))
+			to_chat(user, SPAN_WARNING("[src] cannot restock \the [S.name]."))
 			return
 
 		if(S.amount == S.max_amount)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. \The [S.name] is currently fully stacked."))
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
@@ -142,7 +142,7 @@
 			return
 
 		if(!healthscan)
-			to_chat(user, SPAN_WARNING("The [src] does not have health scanning function."))
+			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
 		user.health_scan(user, TRUE)

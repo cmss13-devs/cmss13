@@ -73,7 +73,7 @@
 /obj/structure/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	/*if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		panel = !panel
-		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
+		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] \the [src]'s maintenance panel"*/
 	if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/tool/stamp))
 		if( state in list(	1, 3, 6 ) )
 			if(!crayon)
@@ -160,7 +160,7 @@
 			crayon = null
 			state = 1
 		if(5)
-			to_chat(user, SPAN_DANGER("The [src] is busy."))
+			to_chat(user, SPAN_DANGER("\The [src] is busy."))
 		if(6)
 			state = 7
 		if(7)

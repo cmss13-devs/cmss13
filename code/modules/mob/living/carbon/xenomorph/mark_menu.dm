@@ -125,7 +125,7 @@
 			var/obj/effect/alien/resin/marker/mark_to_watch = locate(params["type"])
 			if(!mark_to_watch)
 				return
-			to_chat(X, SPAN_XENONOTICE("You psychically observe the [mark_to_watch.mark_meaning.name] resin mark in [get_area_name(mark_to_watch)]."))
+			to_chat(X, SPAN_XENONOTICE("You psychically observe \the [mark_to_watch.mark_meaning.name] resin mark in [get_area_name(mark_to_watch)]."))
 			X.overwatch(mark_to_watch) //this is so scuffed, sorry if this causes errors
 			update_all_data()
 			. = TRUE
@@ -142,14 +142,14 @@
 			if(!mark_to_destroy)
 				return
 			if(mark_to_destroy.createdby == X.nicknumber)
-				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
+				to_chat(X, SPAN_XENONOTICE("You psychically command \the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
 				qdel(mark_to_destroy)
 				update_all_data()
 				. = TRUE
 				return
 			else if(isXenoQueen(X))
 				var/mob/living/carbon/Xenomorph/mark_to_destroy_owner
-				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
+				to_chat(X, SPAN_XENONOTICE("You psychically command \the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
 				for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
 					if(XX.nicknumber == mark_to_destroy.createdby)
 						mark_to_destroy_owner = XX

@@ -20,7 +20,7 @@
 	var/fillevel = gulp_size
 
 	if(!R.total_volume || !R)
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("\The [src.name] is empty!"))
 		return FALSE
 
 	if(M == user)
@@ -136,15 +136,15 @@
 	..()
 	if (get_dist(user, src) > 1 && user != loc) return
 	if(!reagents || reagents.total_volume==0)
-		to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
+		to_chat(user, SPAN_NOTICE("\The [src] is empty!"))
 	else if (reagents.total_volume<=src.volume/4)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
+		to_chat(user, SPAN_NOTICE("\The [src] is almost empty!"))
 	else if (reagents.total_volume<=src.volume*0.66)
-		to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
+		to_chat(user, SPAN_NOTICE("\The [src] is half full!"))
 	else if (reagents.total_volume<=src.volume*0.90)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
+		to_chat(user, SPAN_NOTICE("\The [src] is almost full!"))
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
+		to_chat(user, SPAN_NOTICE("\The [src] is full!"))
 
 
 ////////////////////////////////////////////////////////////////////////////////

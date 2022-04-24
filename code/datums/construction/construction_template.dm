@@ -40,7 +40,7 @@
     if(crystals_stored >= crystals_required)
         to_chat(M, SPAN_WARNING("\The [name] does not require plasma."))
         return
-    to_chat(M, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
+    to_chat(M, SPAN_NOTICE("You begin adding the plasma to \the [name]."))
     xeno_attack_delay(M)
     if(!do_after(M, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
         return

@@ -52,4 +52,4 @@
 	if(istype(L))
 		if(prob(15))
 			L.KnockDown(3)
-			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
+			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))

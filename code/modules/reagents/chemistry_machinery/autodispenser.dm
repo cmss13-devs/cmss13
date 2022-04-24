@@ -60,10 +60,10 @@
 		return
 	if(istype(B, /obj/item/storage/fancy/vials))
 		if(input_container)
-			to_chat(user, SPAN_WARNING("A vial box is already loaded into the [src]."))
+			to_chat(user, SPAN_WARNING("A vial box is already loaded into \the [src]."))
 			return
 		else if(status == 2)
-			to_chat(user, SPAN_WARNING("You can't insert a box while the [src] is running."))
+			to_chat(user, SPAN_WARNING("You can't insert a box while \the [src] is running."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			input_container = B
@@ -75,7 +75,7 @@
 		get_program()
 	else if(B.is_open_container() || B.flags_atom & CAN_BE_DISPENSED_INTO)
 		if(output_container)
-			to_chat(user, SPAN_WARNING("A container is already loaded into the [src]."))
+			to_chat(user, SPAN_WARNING("A container is already loaded into \the [src]."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			output_container = B
@@ -85,9 +85,9 @@
 			else
 				icon_state = "autodispenser_full_open"
 	else
-		to_chat(user, SPAN_WARNING("[B] doesn't fit in the [src]."))
+		to_chat(user, SPAN_WARNING("[B] doesn't fit in \the [src]."))
 		return
-	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+	to_chat(user, SPAN_NOTICE("You insert [B] into \the [src]."))
 	if(input_container && output_container && outputmode == OUTPUT_TO_CONTAINER)
 		if(automode)
 			run_program()

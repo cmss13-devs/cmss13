@@ -161,7 +161,7 @@
 	if(!WT.isOn())
 		return 0
 
-	to_chat(user, SPAN_NOTICE("You start to weld the [src].."))
+	to_chat(user, SPAN_NOTICE("You start to weld \the [src].."))
 	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

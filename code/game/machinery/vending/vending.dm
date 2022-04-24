@@ -285,7 +285,7 @@
 	else if(istype(W, /obj/item/coin))
 		if(user.drop_inv_item_to_loc(W, src))
 			coin = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			to_chat(user, SPAN_NOTICE(" You insert \the [W] into \the [src]"))
 			ui_interact(user)
 		return
 	else if(istype(W, /obj/item/card))
@@ -296,7 +296,7 @@
 	else if (istype(W, /obj/item/spacecash/ewallet))
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			to_chat(user, SPAN_NOTICE(" You insert \the [W] into \the [src]"))
 			ui_interact(user)
 		return
 
@@ -395,7 +395,7 @@
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place.."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -472,7 +472,7 @@
 		coin.forceMove(src.loc)
 		if(!usr.get_active_hand())
 			usr.put_in_hands(coin)
-		to_chat(usr, SPAN_NOTICE(" You remove the [coin] from the [src]"))
+		to_chat(usr, SPAN_NOTICE(" You remove \the [coin] from \the [src]"))
 		coin = null
 
 	if(href_list["remove_ewallet"] && !istype(usr,/mob/living/silicon))
@@ -482,7 +482,7 @@
 		ewallet.forceMove(src.loc)
 		if(!usr.get_active_hand())
 			usr.put_in_hands(ewallet)
-		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
+		to_chat(usr, SPAN_NOTICE(" You remove \the [ewallet] from \the [src]"))
 		ewallet = null
 
 	if (isRemoteControlling(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
@@ -584,7 +584,7 @@
 			return
 		if(coin.string_attached)
 			if(prob(50))
-				to_chat(user, SPAN_NOTICE(" You successfully pull the coin out before the [src] could swallow it."))
+				to_chat(user, SPAN_NOTICE(" You successfully pull the coin out before \the [src] could swallow it."))
 			else
 				to_chat(user, SPAN_NOTICE(" You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
 				QDEL_NULL(coin)

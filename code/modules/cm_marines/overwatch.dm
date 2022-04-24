@@ -843,7 +843,7 @@
 		return
 
 	if(busy)
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
 		return
 
 	if(!current_squad)
@@ -916,7 +916,7 @@
 		return
 
 	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
 		return
 
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.

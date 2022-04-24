@@ -180,8 +180,8 @@
 
 /obj/structure/barricade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/zombie_claws))
-		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
-		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
+		user.visible_message(SPAN_DANGER("The zombie smashed at \the [src.barricade_type] barricade!"),
+		SPAN_DANGER("You smack \the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 25, 1)
 		hit_barricade(W)

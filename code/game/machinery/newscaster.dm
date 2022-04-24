@@ -705,18 +705,18 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		if(!(I.flags_item & NOBLUDGEON) && I.force)
 			if(I.force <15)
 				for (var/mob/O in hearers(5, src.loc))
-					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect." )
+					O.show_message("[user.name] hits \the [src.name] with \the [I.name] with no visible effect." )
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 			else
 				src.hitstaken++
 				if(src.hitstaken==3)
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] smashes the [src.name]!" )
+						O.show_message("[user.name] smashes \the [src.name]!" )
 					src.isbroken=1
 					playsound(src.loc, 'sound/effects/Glassbr3.ogg', 50, 1)
 				else
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
+						O.show_message("[user.name] forcefully slams \the [src.name] with \the [I.name]!" )
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		else
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")

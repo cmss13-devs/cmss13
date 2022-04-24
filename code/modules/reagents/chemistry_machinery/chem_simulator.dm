@@ -84,10 +84,10 @@
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
 			return
 	else
-		to_chat(user, SPAN_WARNING("The [src] refuses the [B]."))
+		to_chat(user, SPAN_WARNING("\The [src] refuses \the [B]."))
 		return
 	user.drop_inv_item_to_loc(B, src)
-	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+	to_chat(user, SPAN_NOTICE("You insert [B] into \the [src]."))
 	flick("[icon_state]_reading",src)
 	update_costs()
 	nanomanager.update_uis(src) // update all UIs attached to src

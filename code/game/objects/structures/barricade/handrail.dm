@@ -43,14 +43,14 @@
 	..()
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, SPAN_INFO("The [barricade_type] is safely secured to the ground."))
+			to_chat(user, SPAN_INFO("\The [barricade_type] is safely secured to the ground."))
 		if(BARRICADE_BSTATE_UNSECURED)
 			to_chat(user, SPAN_INFO("The bolts nailing it to the ground has been unsecured."))
 		if(BARRICADE_BSTATE_FORTIFIED)
 			if(reinforced)
-				to_chat(user, SPAN_INFO("The [barricade_type] has been reinforced with metal."))
+				to_chat(user, SPAN_INFO("\The [barricade_type] has been reinforced with metal."))
 			else
-				to_chat(user, SPAN_INFO("Metal has been laid across the [barricade_type]. Weld it to secure it."))
+				to_chat(user, SPAN_INFO("Metal has been laid across \the [barricade_type]. Weld it to secure it."))
 
 /obj/structure/barricade/handrail/proc/reinforce()
 	if(reinforced)

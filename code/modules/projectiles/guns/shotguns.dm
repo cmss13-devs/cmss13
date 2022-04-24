@@ -636,7 +636,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
-		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
+		to_chat(user, SPAN_WARNING("\The [src] cannot safely fire this type of shell!"))
 		return
 	..()
 
@@ -677,8 +677,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!do_after(H, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) //Takes a moment to brace to fire.
 		to_chat(H, SPAN_WARNING("You were interrupted!"))
 		return
-	H.visible_message(SPAN_WARNING("[H] braces himself to fire the [initial(G.name)]."),\
-			SPAN_WARNING("You brace yourself to fire the [initial(G.name)]."))
+	H.visible_message(SPAN_WARNING("[H] braces himself to fire \the [initial(G.name)]."),\
+			SPAN_WARNING("You brace yourself to fire \the [initial(G.name)]."))
 	G.brace(H)
 	update_button_icon()
 
@@ -756,9 +756,9 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	var/turf/floor = get_turf(src)
 	if(fired_shots == 1)
-		to_chat(user, SPAN_NOTICE("An empty shell falls to [floor] as you open the [initial(name)]."))
+		to_chat(user, SPAN_NOTICE("An empty shell falls to [floor] as you open \the [initial(name)]."))
 	else
-		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open the [initial(name)]."))
+		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open \the [initial(name)]."))
 
 	playsound(user, "gun_casing_shotgun", 25, TRUE)
 
@@ -804,8 +804,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(flags_item & WIELDED)
 		if(braced && !suicide) //Recoil and brief stun but nothing more. Gun is huge and you can't brace properly when shooting at extreme (same tile) close range.
-			user.visible_message(SPAN_WARNING("[user] rocks back under the heavy recoil of the [initial(name)]."),\
-				SPAN_DANGER("The [initial(name)] kicks like an elephant!"))
+			user.visible_message(SPAN_WARNING("[user] rocks back under the heavy recoil of \the [initial(name)]."),\
+				SPAN_DANGER("\The [initial(name)] kicks like an elephant!"))
 			unbrace(user)
 			user.apply_effect(1, STUN) //Van Bandolier is a human/hero and stuns last half as long for him.
 			shake_camera(user, RECOIL_AMOUNT_TIER_2 * 0.5, RECOIL_AMOUNT_TIER_2)
@@ -884,10 +884,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		var/blocker = LinkBlocked(user, start_turf, behind_turf) //returns any objects blocking the user from moving back.
 		if(blocker)
 			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),\
-				SPAN_DANGER("The [initial(name)]'s recoil hammers you against [blocker]!"))
+				SPAN_DANGER("\The [initial(name)]'s recoil hammers you against [blocker]!"))
 		else
 			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),\
-				SPAN_DANGER("The [initial(name)]'s recoil hammers you against an obstacle!"))
+				SPAN_DANGER("\The [initial(name)]'s recoil hammers you against an obstacle!"))
 		user.apply_damage(5, BRUTE)
 
 

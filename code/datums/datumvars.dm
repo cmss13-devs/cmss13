@@ -720,7 +720,7 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/new_skill_level = input("Select a new level for the [selected_skill] skill ","New Skill Level") as null|num
+		var/new_skill_level = input("Select a new level for \the [selected_skill] skill ","New Skill Level") as null|num
 		if(isnull(new_skill_level))
 			return
 

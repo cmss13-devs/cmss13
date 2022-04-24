@@ -76,7 +76,7 @@
 						dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate Emergency Evacuation</A>"
 
 			if(STATE_EVACUATION)
-				dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? This cannot be undone from the tablet. <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+				dat += "Are you sure you want to evacuate \the [MAIN_SHIP_NAME]? This cannot be undone from the tablet. <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
 	else
 		dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
 		dat += "<BR><A HREF='?src=\ref[src];operation=mapview'>Tactical Map</A>"

@@ -50,7 +50,7 @@
 		W.forceMove(src)
 		if(istype(W, /obj/item/paper))
 			toppaper = W
-		to_chat(user, SPAN_NOTICE("You clip the [W] onto \the [src]."))
+		to_chat(user, SPAN_NOTICE("You clip \the [W] onto \the [src]."))
 		update_icon()
 
 	else if(istype(toppaper) && istype(W, /obj/item/tool/pen))

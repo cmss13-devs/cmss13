@@ -883,7 +883,7 @@
 	O.reagents.trans_to(inner, amt_to_remove)
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
-	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	to_chat(user, SPAN_NOTICE("You refill \the [src]."))
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/examine(mob/user)
@@ -943,7 +943,7 @@
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			to_chat(usr, SPAN_NOTICE("You flush \the [src]."))
 			inner.reagents.clear_reagents()
 
 /obj/item/storage/pouch/flare
@@ -1110,13 +1110,13 @@
 /obj/item/storage/pouch/sling/examine(mob/user)
 	..()
 	if(slung && slung.loc != src)
-		to_chat(user, "\the [slung] is attached to the sling.")
+		to_chat(user, "\The [slung] is attached to the sling.")
 
 /obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
 	if(slung)
 		if(slung != I)
 			if(!stop_messages)
-				to_chat(usr, SPAN_WARNING("\the [slung] is already attached to the sling."))
+				to_chat(usr, SPAN_WARNING("\The [slung] is already attached to the sling."))
 			return FALSE
 	else if(SEND_SIGNAL(I, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
 		if(!stop_messages)

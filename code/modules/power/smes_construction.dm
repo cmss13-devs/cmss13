@@ -85,7 +85,7 @@
 			if (user_protected && prob(80))
 				to_chat(h_user, "Small electrical arc almost burns your hand. Luckily you had your gloves on!")
 			else
-				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch the [src]!")
+				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch \the [src]!")
 				h_user.apply_damage(rand(5,10), BURN)
 				h_user.KnockOut(2)
 			charge = 0
@@ -98,7 +98,7 @@
 			if (user_protected && prob(25))
 				to_chat(h_user, "Medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
 			else
-				to_chat(h_user, "Medium electrical sparks as you touch the [src], severely burning your hand!")
+				to_chat(h_user, "Medium electrical sparks as you touch \the [src], severely burning your hand!")
 				h_user.apply_damage(rand(10,25), BURN)
 				h_user.KnockOut(5)
 			spawn(0)
@@ -182,7 +182,7 @@
 /obj/structure/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
-		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
+		to_chat(user, SPAN_WARNING("\The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
 		return
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
@@ -195,7 +195,7 @@
 			return
 
 		if (online || chargemode)
-			to_chat(user, SPAN_WARNING("Turn off the [src] first!"))
+			to_chat(user, SPAN_WARNING("Turn off \the [src] first!"))
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
@@ -212,7 +212,7 @@
 				return
 
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-			to_chat(user, SPAN_WARNING("You begin to disassemble the [src]!"))
+			to_chat(user, SPAN_WARNING("You begin to disassemble \the [src]!"))
 			if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
 
 				if (failure_probability && prob(failure_probability))

@@ -559,9 +559,9 @@
 		L.take_damage(rand(15,25), 0, 0)
 		L.fracture(100)
 	M.last_damage_data = create_cause_data(initial(caste_type), src)
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped \the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
+	log_attack("[src.name] ([src.ckey]) ripped \the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || M.stat == DEAD || iszombie(M))
 		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
@@ -572,9 +572,9 @@
 
 	visible_message(SPAN_XENOWARNING("[src] rips [M]'s [L.display_name] away from \his body!"), \
 	SPAN_XENOWARNING("[M]'s [L.display_name] rips away from \his body!"))
-	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress</font>")
+	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped \the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
-	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress")
+	log_attack("[src.name] ([src.ckey]) ripped \the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress")
 
 	L.droplimb(0, 0, initial(name))
 
@@ -659,15 +659,15 @@
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target
-	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
+	to_chat(src, SPAN_XENONOTICE("You start tracking \the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/obj/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
 	if(destroyed)
-		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+		to_chat(src, SPAN_XENONOTICE("\The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
 	else
-		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+		to_chat(src, SPAN_XENONOTICE("You stop tracking \the [tracked_marker.mark_meaning.name] resin mark."))
 	tracked_marker.xenos_tracking -= src
 	tracked_marker = null

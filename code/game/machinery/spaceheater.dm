@@ -62,7 +62,7 @@
 			return
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
-		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on the [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on \the [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on \the [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
 			close_browser(user, "spaceheater")
@@ -103,7 +103,7 @@
 			start_processing()
 		else
 			stop_processing()
-		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] the [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] \the [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] \the [src]."))
 		update_icon()
 	return
 

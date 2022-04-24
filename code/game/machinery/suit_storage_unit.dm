@@ -246,7 +246,7 @@
 					to_chat(user, SPAN_WARNING("The unit already contains a suit."))
 					return
 				if(user.drop_inv_item_to_loc(S, src))
-					to_chat(user, SPAN_NOTICE("You load the [S.name] into the storage compartment."))
+					to_chat(user, SPAN_NOTICE("You load \the [S.name] into the storage compartment."))
 					inserted_suit = S
 					update_icon()
 					updateUsrDialog()
@@ -257,7 +257,7 @@
 				if(inserted_helmet)
 					to_chat(user, SPAN_WARNING("The unit already contains a helmet."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [H.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("You load \the [H.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(H, src))
 					inserted_helmet = H
 					update_icon()
@@ -269,7 +269,7 @@
 				if(inserted_mask)
 					to_chat(user, SPAN_WARNING("The unit already contains a mask."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [M.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("You load \the [M.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(M, src))
 					inserted_mask = M
 					update_icon()
@@ -281,7 +281,7 @@
 				if(inserted_tank)
 					to_chat(user, SPAN_WARNING("The unit already contains a tank."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [T.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("You load \the [T.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(T, src))
 					inserted_tank = T
 					update_icon()

@@ -75,7 +75,7 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 			if(!length(valid_steps))
 				var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
 				if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
-					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
+					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in \the [target.incision_depths[target_zone]] incision on [limbname]."))
 				else
 					to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
 				return FALSE

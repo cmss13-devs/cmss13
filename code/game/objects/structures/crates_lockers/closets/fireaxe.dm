@@ -59,7 +59,7 @@
 				fireaxe = O
 				user.drop_held_item()
 				src.contents += O
-				to_chat(user, SPAN_NOTICE(" You place the fire axe back in the [src.name]."))
+				to_chat(user, SPAN_NOTICE(" You place the fire axe back in \the [src.name]."))
 				update_icon()
 			else
 				if(src.smashed)
@@ -116,7 +116,7 @@
 			if(fireaxe)
 				user.put_in_hands(fireaxe)
 				fireaxe = null
-				to_chat(user, SPAN_NOTICE(" You take the fire axe from the [name]."))
+				to_chat(user, SPAN_NOTICE(" You take the fire axe from \the [name]."))
 				src.add_fingerprint(user)
 				update_icon()
 			else
@@ -168,11 +168,11 @@
 			if(fireaxe)
 				usr.put_in_hands(fireaxe)
 				fireaxe = null
-				to_chat(usr, SPAN_NOTICE(" You take the Fire axe from the [name]."))
+				to_chat(usr, SPAN_NOTICE(" You take the Fire axe from \the [name]."))
 			else
-				to_chat(usr, SPAN_NOTICE(" The [src.name] is empty."))
+				to_chat(usr, SPAN_NOTICE("\The [src.name] is empty."))
 		else
-			to_chat(usr, SPAN_NOTICE(" The [src.name] is closed."))
+			to_chat(usr, SPAN_NOTICE("\The [src.name] is closed."))
 		update_icon()
 
 	attack_remote(mob/user as mob)

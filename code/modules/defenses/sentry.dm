@@ -116,14 +116,14 @@
 	target = null
 	SetLuminosity(7)
 
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] hums to life and emits several beeps.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
 	start_processing()
 	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
 	SetLuminosity(0)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()
 
@@ -184,7 +184,7 @@
 	return ..()
 
 /obj/structure/machinery/defenses/sentry/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [name] starts spitting out sparks and smoke!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 	for(var/i = 1 to 6)
 		setDir(pick(NORTH, EAST, SOUTH, WEST))

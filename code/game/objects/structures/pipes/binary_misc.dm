@@ -74,7 +74,7 @@ obj/structure/pipes/binary/passive_gate
 
 /obj/structure/pipes/binary/circulator/New()
 	..()
-	desc = initial(desc) + "  Its outlet port is to the [dir2text(dir)]."
+	desc = initial(desc) + "  Its outlet port is to \the [dir2text(dir)]."
 
 /obj/structure/pipes/binary/circulator/update_icon()
 	if(!anchored)
@@ -104,7 +104,7 @@ obj/structure/pipes/binary/passive_gate
 		return
 
 	src.setDir(turn(src.dir, 90))
-	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
+	desc = initial(desc) + " Its outlet port is to \the [dir2text(dir)]."
 
 /obj/structure/pipes/binary/circulator/verb/rotate_anticlockwise()
 	set category = "Object"
@@ -115,4 +115,4 @@ obj/structure/pipes/binary/passive_gate
 		return
 
 	src.setDir(turn(src.dir, -90))
-	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
+	desc = initial(desc) + " Its outlet port is to \the [dir2text(dir)]."

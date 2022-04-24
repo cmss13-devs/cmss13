@@ -15,9 +15,9 @@
 	On a person with just 20 brute, it would heal 10 brute after 2 seconds.**/
 	var/suture_brute = FALSE
 	var/suture_burn = FALSE
-	///ex. 'suture', "you begin to [] the [wounds]". ALso has 's' put on the end sometimes, '[suture]s'.
+	///ex. 'suture', "you begin to [] \the [wounds]". ALso has 's' put on the end sometimes, '[suture]s'.
 	var/description_verb
-	///ex 'suturing', "[user] finishes [] the [wounds]"
+	///ex 'suturing', "[user] finishes [] \the [wounds]"
 	var/description_verbing
 	///"it feels like your [left arm] is []!"
 	var/description_pain
@@ -88,7 +88,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name]."))
 			return
 		if(FULLY_SUTURED) //Datum exist, all suturable damage types have been fully sutured.
-			to_chat(user, SPAN_WARNING("The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated."))
+			to_chat(user, SPAN_WARNING("\The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated."))
 			return
 		if(0) //No datum.
 			//Stitch in 10 damage increments. Balance between flexibility, spam, performance, and opportunities for people to mess about during do_afters.
@@ -121,23 +121,23 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		possessive_their = user.gender == MALE ? "his" : "her"
 		if(!looping) //start message.
 			skill_msg = pick("awkwardly", "slowly and carefully")
-			user.visible_message(SPAN_NOTICE("[user] begins to [skill_msg] [description_verb] the [description_wounds] on \his [target_limb.display_name]."),
-				SPAN_HELPFUL("You <b>begin to [skill_msg] [description_verb]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."))
+			user.visible_message(SPAN_NOTICE("[user] begins to [skill_msg] [description_verb] \the [description_wounds] on \his [target_limb.display_name]."),
+				SPAN_HELPFUL("You <b>begin to [skill_msg] [description_verb]</b> \the [description_wounds] on your <b>[target_limb.display_name]</b>."))
 			target.custom_pain("It feels like your [target_limb.display_name] is [description_pain]!")
 	else
 		possessive = "\the [target]'s"
 		possessive_their = "\the [target]'s"
 		if(!looping)
 			user.affected_message(target,
-				SPAN_HELPFUL("You <b>begin to [description_verb]</b> the [description_wounds] on [possessive_their] <b>[target_limb.display_name]</b>[skill_msg]."),
-				SPAN_HELPFUL("[user] <b>begins to [description_verb]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>[skill_msg]."),
-				SPAN_NOTICE("[user] begins to [description_verb] the [description_wounds] on [possessive_their] [target_limb.display_name][skill_msg]."))
+				SPAN_HELPFUL("You <b>begin to [description_verb]</b> \the [description_wounds] on [possessive_their] <b>[target_limb.display_name]</b>[skill_msg]."),
+				SPAN_HELPFUL("[user] <b>begins to [description_verb]</b> \the [description_wounds] on your <b>[target_limb.display_name]</b>[skill_msg]."),
+				SPAN_NOTICE("[user] begins to [description_verb] \the [description_wounds] on [possessive_their] [target_limb.display_name][skill_msg]."))
 			target.custom_pain("It feels like your [target_limb.display_name] is [description_pain]!")
 
 	if(target.pain?.feels_pain && target.stat == CONSCIOUS && target.pain.reduction_pain < PAIN_REDUCTION_HEAVY && prob(max(0, PAIN_REDUCTION_HEAVY - target.pain.reduction_pain))) //This is based on surgery pain failure code but more lenient.
 		do_after(user, max(rand(suture_time * 0.1, suture_time * 0.5), 0.5), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)
 		if(user != target)
-			to_chat(user, SPAN_DANGER("[target] couldn't hold still through the pain of the [description_verbing]!"))
+			to_chat(user, SPAN_DANGER("[target] couldn't hold still through the pain of \the [description_verbing]!"))
 		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
 		INVOKE_ASYNC(target, /mob.proc/emote, "pain")
 		return
@@ -160,14 +160,14 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
-			SPAN_HELPFUL("You <b>finish [description_verbing]</b> the [description_wounds] on [possessive] <b>[target_limb.display_name]</b>."),
-			SPAN_HELPFUL("[user] <b>finishes [description_verbing]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."),
-			SPAN_NOTICE("[user] finishes [description_verbing] the [description_wounds] on [possessive_their] [target_limb.display_name]."))
+			SPAN_HELPFUL("You <b>finish [description_verbing]</b> \the [description_wounds] on [possessive] <b>[target_limb.display_name]</b>."),
+			SPAN_HELPFUL("[user] <b>finishes [description_verbing]</b> \the [description_wounds] on your <b>[target_limb.display_name]</b>."),
+			SPAN_NOTICE("[user] finishes [description_verbing] \the [description_wounds] on [possessive_their] [target_limb.display_name]."))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You [description_verb] some of the [description_wounds] on [possessive] [target_limb.display_name]."),
-			SPAN_HELPFUL("[user] [description_verb]s some of the [description_wounds] on your [target_limb.display_name]."),
-			SPAN_NOTICE("[user] [description_verb]s some of the [description_wounds] on [possessive_their] [target_limb.display_name]."))
+			SPAN_HELPFUL("You [description_verb] some of \the [description_wounds] on [possessive] [target_limb.display_name]."),
+			SPAN_HELPFUL("[user] [description_verb]s some of \the [description_wounds] on your [target_limb.display_name]."),
+			SPAN_NOTICE("[user] [description_verb]s some of \the [description_wounds] on [possessive_their] [target_limb.display_name]."))
 
 		suture(suturing_item, user, target, target_limb, TRUE) //Loop - untreated wounds remain.
 

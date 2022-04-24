@@ -309,11 +309,11 @@
 		if(LIGHT_OK)
 			to_chat(user, "It is turned [on? "on" : "off"].")
 		if(LIGHT_EMPTY)
-			to_chat(user, "The [fitting] has been removed.")
+			to_chat(user, "\The [fitting] has been removed.")
 		if(LIGHT_BURNED)
-			to_chat(user, "The [fitting] is burnt out.")
+			to_chat(user, "\The [fitting] is burnt out.")
 		if(LIGHT_BROKEN)
-			to_chat(user, "The [fitting] has been smashed.")
+			to_chat(user, "\The [fitting] has been smashed.")
 
 
 
@@ -339,7 +339,7 @@
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
 				status = L.status
-				to_chat(user, "You insert the [L.name].")
+				to_chat(user, "You insert \the [L.name].")
 				switchcount = L.switchcount
 				rigged = L.rigged
 				brightness = L.brightness

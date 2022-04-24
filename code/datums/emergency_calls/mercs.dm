@@ -13,9 +13,9 @@
 	hostility = pick(75;FALSE,25;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
-		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 	else
-		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Help the crew of \the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/friendly //if admins want to specifically call in friendly ones
 	name = "Friendly Freelancers (Squad)"
@@ -26,7 +26,7 @@
 	. = ..()
 	hostility = FALSE
 	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+	objectives = "Help the crew of \the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/hostile //ditto
 	name = "Hostile Freelancers (Squad)"
@@ -37,7 +37,7 @@
 	. = ..()
 	hostility = TRUE
 	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+	objectives = "Ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in Tychon's Rift system as a colonist seeking work at one of the established colonies."))
@@ -45,10 +45,10 @@
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in Tychon's Rift."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
+		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been tasked to ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
 	else
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
+		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist \the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)
@@ -99,9 +99,9 @@
 	hostility = pick(75;FALSE,25;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	if(hostility)
-		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 	else
-		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+		objectives = "Help the crew of \the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/hostile
 	name = "Elite Mercenaries (HOSTILE to USCM)"
@@ -110,7 +110,7 @@
 	. = ..()
 	hostility = TRUE
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+	objectives = "Ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/friendly
 	name = "Elite Mercenaries (Friendly)"
@@ -119,7 +119,7 @@
 	. = ..()
 	hostility = FALSE
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
+	objectives = "Help the crew of \the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in Tychon's Rift system as an experienced miner seeking work at one of the established colonies."))
@@ -127,10 +127,10 @@
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in Tychon's Rift."))
 	if(hostility)
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
+		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been specially tasked to ransack \the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
 	else
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
+		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist \the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
 /datum/emergency_call/heavy_mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)

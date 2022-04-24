@@ -78,10 +78,10 @@
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
 
 		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+			dat += "Are you sure you want to evacuate \the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
 
 		if(STATE_EVACUATION_CANCEL)
-			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
+			dat += "Are you sure you want to cancel the evacuation of \the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
 
 		if(STATE_DISTRESS)
 			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A HREF='?src=\ref[src];operation=distress'>Confirm</A>"
@@ -242,7 +242,7 @@
 					return FALSE
 
 				if(get_security_level() == "delta")
-					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
+					to_chat(usr, SPAN_WARNING("\The [MAIN_SHIP_NAME]'s self destruct is already activated."))
 					return FALSE
 
 				for(var/client/C in GLOB.admins)

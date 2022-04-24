@@ -88,7 +88,7 @@
 			if(!new_permission)	return
 			D.rights ^= permissionlist[new_permission]
 
-			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
+			message_admins("[key_name_admin(usr)] toggled \the [new_permission] permission of [adm_ckey]")
 
 //======================================================
 //Everything that has to do with evac and self destruct.
@@ -135,7 +135,7 @@
 				var/confirm = alert("Are you sure you want to self-destruct the Almayer?", "Self-Destruct", "Yes", "Cancel")
 				if(confirm != "Yes")
 					return
-				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
+				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying \the [MAIN_SHIP_NAME].")
 				EvacuationAuthority.trigger_self_destruct()
 
 			if("toggle_dest")

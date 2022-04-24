@@ -93,8 +93,8 @@
 		to_chat(user, SPAN_WARNING("You don't know what to do with [HP] on \the [src]."))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."),
-		SPAN_NOTICE("You begin installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user] begins installing \the [HP] on \the [HP.slot] hardpoint slot of \the [src]."),
+		SPAN_NOTICE("You begin installing \the [HP] on \the [HP.slot] hardpoint slot of \the [src]."))
 
 	var/num_delays = 1
 
@@ -164,8 +164,8 @@
 				update_icon()
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] begins removing [old] on the [old.slot] hardpoint slot on \the [src]."),
-		SPAN_NOTICE("You begin removing [old] on the [old.slot] hardpoint slot on \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user] begins removing [old] on \the [old.slot] hardpoint slot on \the [src]."),
+		SPAN_NOTICE("You begin removing [old] on \the [old.slot] hardpoint slot on \the [src]."))
 
 	var/num_delays = 1
 

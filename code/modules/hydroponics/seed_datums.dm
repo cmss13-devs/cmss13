@@ -577,7 +577,7 @@ proc/populate_seed_list()
 	if(!got_product && !harvest_sample)
 		to_chat(user, SPAN_DANGER("You fail to harvest anything useful."))
 	else
-		to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
+		to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from \the [display_name].")
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in seed_types))

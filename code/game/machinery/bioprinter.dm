@@ -38,7 +38,7 @@
 			return
 		stored_matter -= products[choice][2] //Matter
 		stored_metal -= products[choice][3] //Metal
-		to_chat(user, SPAN_NOTICE(" \The [src] is now printing the selected organ. Please hold."))
+		to_chat(user, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))
 		working = 1
 		spawn(products[choice][4]) //Time
 			var/new_organ = products[choice][1]
@@ -52,7 +52,7 @@
 /obj/structure/machinery/bioprinter/attackby(obj/item/W, mob/user)
 //Matter
 	if(istype(W, /obj/item/reagent_container/food/snacks/meat))
-		to_chat(user, SPAN_NOTICE(" \The [src] processes \the [W]."))
+		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
 		stored_matter += 50
 		user.drop_held_item()
 		qdel(W)
@@ -60,7 +60,7 @@
 //Metal
 	else if(istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = W
-		to_chat(user, SPAN_NOTICE(" \The [src] processes \the [W]."))
+		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
 		stored_metal += M.amount * 100
 		user.drop_held_item()
 		qdel(W)

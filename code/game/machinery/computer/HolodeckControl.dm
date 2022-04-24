@@ -150,7 +150,7 @@
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
+			visible_message(SPAN_DANGER("[user] dunks [M] into \the [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
@@ -158,7 +158,7 @@
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
+		visible_message(SPAN_NOTICE("[user] dunks [W] into \the [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -174,7 +174,7 @@
 					// no break, to update multiple scoreboards
 			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
 		else
-			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
+			visible_message(SPAN_DANGER("\The [I] bounces off of \the [src]'s rim!"), null, null, 3)
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()

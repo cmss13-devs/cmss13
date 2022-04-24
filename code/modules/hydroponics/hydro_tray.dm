@@ -378,7 +378,7 @@
 	yield_mod = 0
 	mutation_mod = 0
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	to_chat(user, "You remove the dead plant from \the [src].")
 	check_level_sanity()
 	update_icon()
 	return
@@ -571,7 +571,7 @@
 				qdel(O)
 				return
 
-			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
+			to_chat(user, "You plant \the [S.seed.seed_name] [S.seed.seed_noun].")
 
 			if(S.seed.spread == 1)
 				msg_admin_attack("[key_name(user)] has planted a creeper packet in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
@@ -603,7 +603,7 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from \the [src]."))
 			weedlevel = 0
 			update_icon()
 		else

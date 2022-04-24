@@ -318,7 +318,7 @@
 
 		// Let everyone know they were banished
 		xeno_announcement("By [X]'s will, [T] has been banished from the hive!\n\n[reason]", X.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
-		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
+		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("\The [X] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
 		T.banished = TRUE
 		T.hud_update_banished()
@@ -350,7 +350,7 @@
 		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T)
 			return
 
-		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has readmitted you into the hive.")))
+		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("\The [X] has readmitted you into the hive.")))
 		T.banished = FALSE
 		T.hud_update_banished()
 		T.lock_evolve = FALSE

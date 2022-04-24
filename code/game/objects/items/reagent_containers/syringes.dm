@@ -181,7 +181,7 @@
 						R.last_source_mob = WEAKREF(user)
 					var/contained = english_list(injected)
 					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
+					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
 					msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 				reagents.reaction(target, INGEST)
@@ -252,7 +252,7 @@
 			return
 		var/hit_area = affecting.display_name
 
-		if((user != target) && H.check_shields(7, "the [src.name]"))
+		if((user != target) && H.check_shields(7, "\The [src.name]"))
 			return
 
 		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))

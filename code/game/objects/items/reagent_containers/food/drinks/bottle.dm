@@ -66,7 +66,7 @@
 
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text(SPAN_NOTICE("<B>The contents of the [src] splashes all over [target]!</B>")), 1)
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
 		reagents.reaction(target, TOUCH)
 
 	smash(target, user)

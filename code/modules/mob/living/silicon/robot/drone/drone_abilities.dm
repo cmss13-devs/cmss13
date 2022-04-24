@@ -16,7 +16,7 @@
 	//Auto flush if we use this verb inside a disposal chute.
 	var/obj/structure/machinery/disposal/D = src.loc
 	if(istype(D))
-		to_chat(src, SPAN_NOTICE(" \The [D] acknowledges your signal."))
+		to_chat(src, SPAN_NOTICE("\The [D] acknowledges your signal."))
 		D.flush_count = D.flush_after_ticks
 
 	return

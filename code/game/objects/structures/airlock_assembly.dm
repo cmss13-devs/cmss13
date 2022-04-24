@@ -70,11 +70,11 @@
 		if(G.use(5))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			glass = 1
-			to_chat(user, SPAN_NOTICE("You insert some glass into the [src], adding windows to it."))
+			to_chat(user, SPAN_NOTICE("You insert some glass into \the [src], adding windows to it."))
 			update_icon()
 			return
 		else
-			to_chat(user, SPAN_WARNING("You need five sheets of glass to add windows to the [src]"))
+			to_chat(user, SPAN_WARNING("You need five sheets of glass to add windows to \the [src]"))
 			return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))

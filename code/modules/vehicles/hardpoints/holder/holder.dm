@@ -64,8 +64,8 @@
 		to_chat(user, SPAN_WARNING("All the mounting points on \the [src] are broken!"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins installing \the [H] on the [H.slot] hardpoint slot of \the [src]."),
-		SPAN_NOTICE("You begin installing \the [H] on the [H.slot] hardpoint slot of \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user] begins installing \the [H] on \the [H.slot] hardpoint slot of \the [src]."),
+		SPAN_NOTICE("You begin installing \the [H] on \the [H.slot] hardpoint slot of \the [src]."))
 	if(!do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [H] on \the [src]."), SPAN_WARNING("You stop installing \the [H] on \the [src]."))
 		return
@@ -79,8 +79,8 @@
 	if(!LAZYISIN(hardpoints, H))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins removing \the [H] from the [H.slot] hardpoint slot of \the [src]."),
-		SPAN_NOTICE("You begin removing \the [H] from the [H.slot] hardpoint slot of \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user] begins removing \the [H] from \the [H.slot] hardpoint slot of \the [src]."),
+		SPAN_NOTICE("You begin removing \the [H] from \the [H.slot] hardpoint slot of \the [src]."))
 	if(!do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [H] from \the [src]."), SPAN_WARNING("You stop removing \the [H] from \the [src]."))
 		return

@@ -30,7 +30,7 @@
 	if(!isXeno(user) && (onboard || is_ground_level(z)))
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
+				user.visible_message(SPAN_NOTICE("[user] starts to type on \the [src]."),
 				SPAN_NOTICE("You try to take back the control over the monorail. It will take around 1 minute."))
 				if(do_after(user, 1 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(user.lying)
@@ -39,7 +39,7 @@
 					shuttle.queen_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
-					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
+					user.visible_message(SPAN_NOTICE("\The [src] blinks with blue lights."),
 					SPAN_NOTICE("You have successfully taken back the control over the monorail."))
 					ui_interact(user)
 				return

@@ -127,7 +127,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
-			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
+			to_chat(user, SPAN_WARNING("\The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
 			return
 		else ..()
 */
@@ -177,7 +177,7 @@
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
 		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
-			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
+			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of \the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.KnockDown(5)
 
@@ -497,10 +497,10 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
-		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src.name]'s fire restriction is disabled.")
+		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when \the [src.name]'s fire restriction is disabled.")
 		return
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	to_chat(user, "[icon2html(src, usr)] You changed \the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
@@ -509,7 +509,7 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src.name]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
@@ -553,7 +553,7 @@
 	powerpack = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s recoil compensation.")
+	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src.name]'s recoil compensation.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
 	if(recoil_compensation)
@@ -563,7 +563,7 @@
 	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s accuracy improvement.")
+	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] \the [src.name]'s accuracy improvement.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
 	if(accuracy_improvement)
@@ -574,9 +574,9 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield the [src.name] to enable autofire.")
+		to_chat(user, "[icon2html(src, usr)] You need to wield \the [src.name] to enable autofire.")
 		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s auto fire mode.")
+	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src.name]'s auto fire mode.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
 	auto_fire()
@@ -705,7 +705,7 @@
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s motion detector.")
+	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src.name]'s motion detector.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	motion_detector()
@@ -949,7 +949,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	. = ..()
 	if(.)
 		if(!length(cylinder.contents))
-			to_chat(user, SPAN_WARNING("The [name] is empty."))
+			to_chat(user, SPAN_WARNING("\The [name] is empty."))
 			return FALSE
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
@@ -970,7 +970,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	set waitfor = 0
 	last_fired = world.time
 
-	var/to_firer = "You fire the [name]!"
+	var/to_firer = "You fire \the [name]!"
 	if(internal_slots > 1)
 		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
 	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),

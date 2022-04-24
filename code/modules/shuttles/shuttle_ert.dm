@@ -183,7 +183,7 @@
 				dock_list = list("Port Hangar", "Starboard Hangar")
 			if(MS.use_small_docks)
 				dock_list = list("Port Engineering", "Starboard Engineering")
-			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
+			var/dock_name = tgui_input_list(usr, "Where on \the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
 			if(MS.moving_status != SHUTTLE_IDLE || !is_admin_level(z))
 				return
 			switch(dock_name)
@@ -201,7 +201,7 @@
 					//other ERT shuttles already docked on almayer or about to be
 					if(!F.location || F.moving_status != SHUTTLE_IDLE)
 						if(F.area_station.type == dock_id)
-							to_chat(usr, SPAN_DANGER("The [dock_name] dock area is unavailable."))
+							to_chat(usr, SPAN_DANGER("\The [dock_name] dock area is unavailable."))
 							return
 
 			for(var/area/A in all_areas)

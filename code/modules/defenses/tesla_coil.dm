@@ -41,12 +41,12 @@
 /obj/structure/machinery/defenses/tesla_coil/power_on_action()
 	SetLuminosity(7)
 	start_processing()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short zap, as it awakens.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] gives a short zap, as it awakens.")]")
 
 /obj/structure/machinery/defenses/tesla_coil/power_off_action()
 	SetLuminosity(0)
 	stop_processing()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] dies out with a last spark.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [name] dies out with a last spark.")]")
 
 /obj/structure/machinery/defenses/tesla_coil/process()
 	if(!anchored || !turned_on || stat)

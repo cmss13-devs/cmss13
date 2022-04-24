@@ -79,7 +79,7 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							INVOKE_ASYNC(src, .proc/emote, "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, .proc/emote, "stares at \the [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
 			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases its tail"))

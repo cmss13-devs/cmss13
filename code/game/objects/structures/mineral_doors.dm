@@ -45,7 +45,7 @@
 			return NO_BLOCKED_MOVEMENT
 		else
 			return BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
@@ -99,14 +99,14 @@
 /obj/structure/mineral_door/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/pickaxe))
 		var/obj/item/tool/pickaxe/digTool = W
-		to_chat(user, "You start digging the [name].")
+		to_chat(user, "You start digging \the [name].")
 		if(do_after(user,digTool.digspeed*hardness, INTERRUPT_ALL, BUSY_ICON_GENERIC) && src)
 			to_chat(user, "You finished digging.")
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
 		hardness -= W.force/100
-		to_chat(user, "You hit the [name] with your [W.name]!")
+		to_chat(user, "You hit \the [name] with your [W.name]!")
 		CheckHardness()
 	else
 		attack_hand(user)

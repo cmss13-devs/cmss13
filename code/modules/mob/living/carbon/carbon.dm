@@ -55,7 +55,7 @@
 				src.take_limb_damage(d)
 			for(var/mob/M in viewers(user, null))
 				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
+					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with \the [I.name]!")), 2)
 			user.track_hit(initial(I.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
@@ -187,7 +187,7 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by the [source]!"), \
+			SPAN_DANGER("[src] was shocked by \the [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
@@ -202,7 +202,7 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by the [source]."), \
+			SPAN_DANGER("[src] was mildly shocked by \the [source]."), \
 			SPAN_DANGER("You feel a mild shock course through your body."), \
 			SPAN_DANGER("You hear a light zapping.") \
 		)

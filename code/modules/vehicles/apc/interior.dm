@@ -48,7 +48,7 @@
 /obj/structure/prop/vehicle/firing_port_weapon/examine(var/mob/user)
 	. = ..()
 	if(ishuman(user))
-		to_chat(SPAN_HELPFUL("Clicking on the [name] while standing on top of support gunner seat will buckle you in and give you the control of the M56 FPW."))
+		to_chat(SPAN_HELPFUL("Clicking on \the [name] while standing on top of support gunner seat will buckle you in and give you the control of the M56 FPW."))
 
 /obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
 	if(!istype(H))

@@ -131,7 +131,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if (istype(W, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] \the [src] behaviour controls."))
 		else
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
@@ -276,7 +276,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 /obj/structure/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
 	anchored = 1
 	icon_state = "cleanbot-c"
-	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
+	visible_message(SPAN_DANGER("[src] begins to clean up \the [target]"))
 	cleaning = 1
 	var/cleantime = 50
 	if(istype(target,/obj/effect/decal/cleanable/dirt))		// Clean Dirt much faster

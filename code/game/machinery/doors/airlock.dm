@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//one wire for electrifying the door. Sending a pulse through this electrifies the door for 30 seconds.
 			if(secondsElectrified==0)
 				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
-				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
+				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified \the [name] at [x] [y] [z]</font>")
 				secondsElectrified = 30
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 				spawn(10)
@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//Cutting this wire electrifies the door, so that the next person to touch the door without insulated gloves gets electrocuted.
 			if(secondsElectrified != -1)
 				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
-				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
+				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified \the [name] at [x] [y] [z]</font>")
 				secondsElectrified = -1
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 
@@ -542,7 +542,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = C
-			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
+			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from \the [src]"))
 			return
 
 	if(!isRemoteControlling(user))
@@ -553,7 +553,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(C, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on \the [src]!"), \
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
 			SPAN_NOTICE("You hear tearing noises!"))
 

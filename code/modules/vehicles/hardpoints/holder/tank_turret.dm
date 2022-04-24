@@ -135,7 +135,7 @@
 		return
 
 	rotating = TRUE
-	to_chat(user, SPAN_NOTICE("You begin rotating the turret towards the [dir2text(turn(dir,deg))]."))
+	to_chat(user, SPAN_NOTICE("You begin rotating the turret towards \the [dir2text(turn(dir,deg))]."))
 
 	if(!do_after(user, rotation_windup, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		rotating = FALSE

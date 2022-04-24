@@ -36,17 +36,17 @@
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
 	if(machine_processing)
-		to_chat(user, SPAN_WARNING("The [src] is still running!"))
+		to_chat(user, SPAN_WARNING("\The [src] is still running!"))
 		return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(B.is_open_container() || istype(B, /obj/item/reagent_container/blood))
 		if(input_container)
-			to_chat(user, SPAN_WARNING("A container is already loaded into the [src]."))
+			to_chat(user, SPAN_WARNING("A container is already loaded into \the [src]."))
 			return
 		if(input_source == INPUT_TURING)
-			to_chat(user, SPAN_WARNING("The [src] is expecting its input from the Turing. Toggle input back to container if you want to centrifuge this."))
+			to_chat(user, SPAN_WARNING("\The [src] is expecting its input from the Turing. Toggle input back to container if you want to centrifuge this."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			input_container = B
@@ -56,7 +56,7 @@
 				icon_state = "centrifuge_on_open"
 	else if(istype(B, /obj/item/storage/fancy/vials))
 		if(output_container)
-			to_chat(user, SPAN_WARNING("A vial box is already loaded into the [src]."))
+			to_chat(user, SPAN_WARNING("A vial box is already loaded into \the [src]."))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			output_container = B
@@ -65,22 +65,22 @@
 			else
 				icon_state = "centrifuge_empty_closed"
 	else
-		to_chat(user, SPAN_WARNING("[B] doesn't fit in the [src]."))
+		to_chat(user, SPAN_WARNING("[B] doesn't fit in \the [src]."))
 		return
 	if(((input_container && input_source == INPUT_CONTAINER) || turing_ready()) && output_container)
-		to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
+		to_chat(user, SPAN_NOTICE("You insert [B] and start configuring \the [src]."))
 		updateUsrDialog()
 		icon_state = "centrifuge_spinning"
 		start_processing()
 	else
-		to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+		to_chat(user, SPAN_NOTICE("You insert [B] into \the [src]."))
 
 /obj/structure/machinery/centrifuge/attack_hand(mob/user as mob)
 	if(machine_processing)
 		if(input_source == INPUT_TURING && status == 0)
 			stop_processing()
 		else
-			to_chat(user, SPAN_WARNING("The [src] is still running!"))
+			to_chat(user, SPAN_WARNING("\The [src] is still running!"))
 			return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
@@ -89,7 +89,7 @@
 		ui_interact(user)
 		return
 	if(output_container)
-		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove \the [output_container] from \the [src]."))
 		user.put_in_active_hand(output_container)
 		output_container = null
 		if(input_container)
@@ -97,7 +97,7 @@
 		else
 			icon_state = "centrifuge_empty_open"
 	else if(input_container)
-		to_chat(user, SPAN_NOTICE("You remove the [input_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove \the [input_container] from \the [src]."))
 		user.put_in_active_hand(input_container)
 		input_container = null
 		icon_state = "centrifuge_empty_open"

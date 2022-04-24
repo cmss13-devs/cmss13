@@ -373,7 +373,7 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
+		to_chat(user, SPAN_NOTICE("You join \the [fallen_names.len>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
 			fallen_names += D.fallen_names

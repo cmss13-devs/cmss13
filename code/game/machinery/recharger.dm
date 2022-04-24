@@ -29,7 +29,7 @@ obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		var/area/a = get_area(src)
 		if(!isarea(a) || (a.power_equip == 0 && !a.unlimited_power))
-			to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the item!"))
+			to_chat(user, SPAN_DANGER("\The [name] blinks red as you try to insert the item!"))
 			return
 		if(istype(G, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = G

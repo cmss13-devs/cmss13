@@ -212,9 +212,9 @@ display round(lastgen) and phorontank amount
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			to_chat(user, SPAN_NOTICE(" The [src.name] is full!"))
+			to_chat(user, SPAN_NOTICE("\The [src.name] is full!"))
 			return
-		to_chat(user, SPAN_NOTICE(" You add [amount] sheets to the [src.name]."))
+		to_chat(user, SPAN_NOTICE(" You add [amount] sheets to \the [src.name]."))
 		sheets += amount
 		addstack.use(amount)
 		updateUsrDialog()

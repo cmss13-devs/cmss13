@@ -228,10 +228,10 @@
 
 	else if(F && F.hivenumber == X.hivenumber)
 		if(F.mature)
-			to_chat(X, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
+			to_chat(X, SPAN_XENONOTICE("\The [F] is already mature. \The [src.name] does nothing."))
 			xeno_cooldown = xeno_cooldown * 0.5
 		else
-			to_chat(X, SPAN_XENONOTICE("You surge the resin around the [F], speeding its growth somewhat!"))
+			to_chat(X, SPAN_XENONOTICE("You surge the resin around \the [F], speeding its growth somewhat!"))
 			F.reduce_timer(5 SECONDS)
 
 	else if(W && istype(T, /turf/open) && W.hivenumber == X.hivenumber)

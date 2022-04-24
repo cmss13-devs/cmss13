@@ -120,7 +120,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of \the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)
@@ -242,33 +242,33 @@ proc/display_roundstart_logout_report()
 					found = 1
 					break
 			if(!found)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
+				msg += "<b>[key_name(L)]</b>, \the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
 
 
 		if(L.ckey && L.client)
 			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5))	//Connected, but inactive (alt+tabbed or something)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
+				msg += "<b>[key_name(L)]</b>, \the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)
 				if(L.stat == UNCONSCIOUS)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dying)\n"
+					msg += "<b>[key_name(L)]</b>, \the [L.job] (Dying)\n"
 					continue //Unconscious
 				if(L.stat == DEAD)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dead)\n"
+					msg += "<b>[key_name(L)]</b>, \the [L.job] (Dead)\n"
 					continue //Dead
 
 			continue //Happy connected client
 		for(var/mob/dead/observer/D in GLOB.observer_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
-					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), \the [L.job] (Dead)\n"
 					continue //Dead mob, ghost abandoned
 				else
 					if(D.can_reenter_corpse)
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), \the [L.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
 						continue //Lolwhat
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), \the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
 	for(var/mob/M in GLOB.player_list)

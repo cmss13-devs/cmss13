@@ -123,12 +123,12 @@
 			apply_damage(damage, BRUTE)
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))
+					M.show_message(SPAN_DANGER("\b [src] has been attacked with \the [O] by [user]. "))
 		else
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with the [O]. "))
+					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]. "))
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
 

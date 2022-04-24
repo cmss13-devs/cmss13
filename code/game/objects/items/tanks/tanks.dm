@@ -44,7 +44,7 @@
 			else
 				descriptive = "furiously hot"
 
-		to_chat(user, SPAN_NOTICE(" \The [icon2html(src, user)][src] feels [descriptive]"))
+		to_chat(user, SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive]"))
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)

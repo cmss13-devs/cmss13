@@ -203,9 +203,9 @@
 				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
 				return
 			user.affected_message(H,
-			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+			SPAN_DANGER("You slam \the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
+			SPAN_DANGER("[user] slams \the [src.name]'s pin through your [U.name] and into your chest!"),
+			SPAN_DANGER("[user] slams \the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
 
 			/*Some duplication from punch code due to attack message and damage stats.
 			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
@@ -396,14 +396,14 @@
 		return
 
 	if(user.get_active_hand() && user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need an empty hand to draw the [holstered]!"))
+		to_chat(user, SPAN_WARNING("You need an empty hand to draw \the [holstered]!"))
 	else
 		if(user.a_intent == INTENT_HARM)
-			usr.visible_message(SPAN_DANGER("[user] draws the [holstered], ready to shoot!"), \
+			usr.visible_message(SPAN_DANGER("[user] draws \the [holstered], ready to shoot!"), \
 			SPAN_DANGER("You draw [holstered], ready to shoot!"))
 		else
-			user.visible_message(SPAN_NOTICE("[user] draws the [holstered], pointing it at the ground."), \
-			SPAN_NOTICE("You draw the [holstered], pointing it at the ground."))
+			user.visible_message(SPAN_NOTICE("[user] draws \the [holstered], pointing it at the ground."), \
+			SPAN_NOTICE("You draw \the [holstered], pointing it at the ground."))
 		user.put_in_hands(holstered)
 		holstered.add_fingerprint(user)
 		holstered = null

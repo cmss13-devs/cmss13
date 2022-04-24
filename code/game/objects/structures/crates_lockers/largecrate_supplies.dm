@@ -340,7 +340,7 @@
 /obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(turf_blocked_check())
-			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
+			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to \the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
 			return
 		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") == "No")
 			return

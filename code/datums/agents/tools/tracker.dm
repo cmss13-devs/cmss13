@@ -22,7 +22,7 @@
 		select_object(user)
 		return
 
-	to_chat(user, SPAN_NOTICE("You start tracking the [tracked_object.name]."))
+	to_chat(user, SPAN_NOTICE("You start tracking \the [tracked_object.name]."))
 	if(!do_after(user, ping_speed, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 

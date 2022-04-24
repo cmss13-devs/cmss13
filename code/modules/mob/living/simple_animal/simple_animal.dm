@@ -287,7 +287,7 @@
 					MED.use(1)
 					for(var/mob/M in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
+							M.show_message(SPAN_NOTICE("[user] applies \the [MED] on [src]"))
 					return
 		else
 			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))

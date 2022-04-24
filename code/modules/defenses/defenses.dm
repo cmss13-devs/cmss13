@@ -250,7 +250,7 @@
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins switching the [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching the [src] [turned_on? "off" : "on"]."))
+		user.visible_message(SPAN_NOTICE("[user] begins switching \the [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching \the [src] [turned_on? "off" : "on"]."))
 		if(!(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src)))
 			return
 
@@ -298,7 +298,7 @@
 	update_icon()
 
 /obj/structure/machinery/defenses/proc/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts to blink rapidly!")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [name] starts to blink rapidly!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 
 	sleep(5)
@@ -309,7 +309,7 @@
 
 /obj/structure/machinery/defenses/proc/damaged_action(var/damage)
 	if(health < health_max * 0.15)
-		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
+		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] \The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED
 		turned_on = FALSE
 
@@ -333,7 +333,7 @@
 
 /obj/structure/machinery/defenses/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
+	visible_message(SPAN_WARNING("[src] is hit by \the [P.name]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
 		update_health(round(P.damage/3))

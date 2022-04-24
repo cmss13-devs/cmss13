@@ -151,7 +151,7 @@
 		return
 	var/obj/item/weapon/melee/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
@@ -160,7 +160,7 @@
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
 		return
 	if(in_hand.current_mag.current_rounds > 0)
-		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
+		to_chat(user, SPAN_WARNING("\The [in_hand] is already loaded!"))
 		return
 	if(user.action_busy)
 		return
@@ -169,7 +169,7 @@
 		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 		return
 	if(off_hand != M.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\The [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
 	if(M.dir != user.dir)
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
@@ -266,7 +266,7 @@
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
 		if(fuel)
-			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
+			to_chat(user, SPAN_DANGER("\The [name] already has a fuel container!"))
 			return
 		else
 			user.temp_drop_inv_item(W)
@@ -277,11 +277,11 @@
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/rocket) && !locked)
 		if(warhead)
-			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
+			to_chat(user, SPAN_DANGER("\The [name] already has a warhead!"))
 			return
 		var/obj/item/explosive/warhead/rocket/det = W
 		if(det.assembly_stage < ASSEMBLY_LOCKED)
-			to_chat(user, SPAN_DANGER("The [W] is not secured!"))
+			to_chat(user, SPAN_DANGER("\The [W] is not secured!"))
 			return
 		user.temp_drop_inv_item(W)
 		W.forceMove(src)

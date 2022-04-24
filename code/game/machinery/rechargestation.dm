@@ -252,7 +252,7 @@
 			return
 
 		if(occupant)
-			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
+			to_chat(user, SPAN_NOTICE("\The [name] is already occupied!"))
 			return
 
 		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)

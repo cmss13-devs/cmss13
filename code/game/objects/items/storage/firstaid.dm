@@ -281,17 +281,17 @@
 		var/percentage_filled = round(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
-				to_chat(user, SPAN_INFO("The [name] seems fairly full."))
+				to_chat(user, SPAN_INFO("\The [name] seems fairly full."))
 			if(60 to 79)
-				to_chat(user, SPAN_INFO("The [name] feels more than half full."))
+				to_chat(user, SPAN_INFO("\The [name] feels more than half full."))
 			if(40 to 59)
-				to_chat(user, SPAN_INFO("The [name] seems to be around half full."))
+				to_chat(user, SPAN_INFO("\The [name] seems to be around half full."))
 			if(20 to 39)
-				to_chat(user, SPAN_INFO("The [name] feels less than half full."))
+				to_chat(user, SPAN_INFO("\The [name] feels less than half full."))
 			if(0 to 19)
-				to_chat(user, SPAN_INFO("The [name] feels like it's nearly empty!"))
+				to_chat(user, SPAN_INFO("\The [name] feels like it's nearly empty!"))
 	else
-		to_chat(user, SPAN_INFO("The [name] is empty."))
+		to_chat(user, SPAN_INFO("\The [name] is empty."))
 
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
@@ -308,13 +308,13 @@
 		if(user.put_in_inactive_hand(I))
 			playsound(loc, use_sound, 10, TRUE, 3)
 			remove_from_storage(I,user)
-			to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
+			to_chat(user, SPAN_NOTICE("You take a pill out of \the [name]."))
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.swap_hand()
 			return
 	else
-		to_chat(user, SPAN_WARNING("The [name] is empty."))
+		to_chat(user, SPAN_WARNING("\The [name] is empty."))
 		return
 
 
@@ -359,12 +359,12 @@
 		to_chat(user, SPAN_WARNING("You are restrained!"))
 		return FALSE
 	if(!contents.len)
-		to_chat(user, SPAN_WARNING("The [name] is empty."))
+		to_chat(user, SPAN_WARNING("\The [name] is empty."))
 		return FALSE
 	var/obj/item/I = contents[1]
 	if(user.put_in_active_hand(I))
 		remove_from_storage(I,user)
-		to_chat(user, SPAN_NOTICE("You take [I] out of the [name]."))
+		to_chat(user, SPAN_NOTICE("You take [I] out of \the [name]."))
 		return TRUE
 
 /obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)

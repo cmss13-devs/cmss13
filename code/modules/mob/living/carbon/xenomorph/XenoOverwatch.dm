@@ -164,7 +164,7 @@
 			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
 			return
 		else
-			to_chat(src, SPAN_XENONOTICE("You psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			to_chat(src, SPAN_XENONOTICE("You psychically observe \the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
 			overwatch(target)
 	if(href_list["track"])
 		var/input2 = href_list["target"]

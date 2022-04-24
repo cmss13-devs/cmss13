@@ -299,7 +299,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
-	X.visible_message(SPAN_XENOWARNING("The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))

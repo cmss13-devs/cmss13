@@ -157,7 +157,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), 1)
+		O.show_message(SPAN_DANGER("\The [src] rattles and prints out a sheet of paper."), 1)
 
 	sleep(10)
 
@@ -183,7 +183,7 @@
 		if(surface.surgery_duration_multiplier <= SURGERY_SURFACE_MULT_ADEQUATE)
 			table = TRUE
 			break
-	
+
 	if(!table)
 		to_chat(usr, "<b>You can't work here, you need to put [M] on a proper surgical bed.</b>")
 		return

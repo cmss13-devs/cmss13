@@ -98,7 +98,7 @@ update_flag
 
 /obj/structure/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
-		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
+		visible_message(SPAN_DANGER("[user] hits \the [src] with a [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)
 	..()

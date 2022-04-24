@@ -131,7 +131,7 @@
 	objective.check_completion()
 	display_read_message(user)
 	if(objective.important && objective.is_complete())
-		to_chat(user, SPAN_NOTICE("You feel this document is important and should be returned to the [MAIN_SHIP_NAME]."))
+		to_chat(user, SPAN_NOTICE("You feel this document is important and should be returned to \the [MAIN_SHIP_NAME]."))
 	return TRUE
 
 /obj/item/document_objective/paper

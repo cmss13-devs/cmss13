@@ -263,7 +263,7 @@ cases. Override_icon_state should be a list.*/
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put \the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
 					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
 				else if(success)

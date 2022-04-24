@@ -92,8 +92,8 @@
 		if(E)
 			var/safety = H.get_eye_protection()
 			if(!safety)
-				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
-				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
+				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with \the [src]!"))
+				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with \the [src]!"))
 				E.damage += rand(8,20)
 	return ..()
 /obj/item/tool/screwdriver/tactical

@@ -176,7 +176,7 @@
 	message_staff("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
+		marine_announcement("A distress beacon has been launched from \the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
 	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce, override_spawn_loc), 30 SECONDS)
 

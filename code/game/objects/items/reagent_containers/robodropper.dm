@@ -68,7 +68,7 @@
 					injected += R.name
 				var/contained = english_list(injected)
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been squirted with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
-				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to squirt [M.name] ([M.key]). Reagents: [contained]</font>")
+				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] to squirt [M.name] ([M.key]). Reagents: [contained]</font>")
 				msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 
@@ -89,7 +89,7 @@
 				return
 
 			var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-			
+
 			if(!trans)
 				to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 				return

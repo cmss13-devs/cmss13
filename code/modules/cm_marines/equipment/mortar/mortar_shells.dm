@@ -120,7 +120,7 @@
 		return
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
 		if(fuel)
-			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
+			to_chat(user, SPAN_DANGER("\The [name] already has a fuel container!"))
 			return
 		else
 			user.temp_drop_inv_item(W)
@@ -130,11 +130,11 @@
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/mortar) && !locked)
 		if(warhead)
-			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
+			to_chat(user, SPAN_DANGER("\The [name] already has a warhead!"))
 			return
 		var/obj/item/explosive/warhead/mortar/det = W
 		if(det.assembly_stage < ASSEMBLY_LOCKED)
-			to_chat(user, SPAN_DANGER("The [W] is not secured!"))
+			to_chat(user, SPAN_DANGER("\The [W] is not secured!"))
 			return
 		user.temp_drop_inv_item(W)
 		W.forceMove(src)

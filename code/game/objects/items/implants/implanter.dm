@@ -34,7 +34,7 @@
 					M.visible_message(SPAN_WARNING("[M] has been implanted by [user]."))
 
 					M.attack_log += text("\[[time_stamp()]\] <font color='orange'> Implanted with [src.name] ([src.imp.name]) by [key_name(user)]</font>")
-					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] ([src.imp.name]) to implant [key_name(M)]</font>")
+					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [src.name] ([src.imp.name]) to implant [key_name(M)]</font>")
 					msg_admin_attack("[key_name(user)] implanted [key_name(M)] with [src.name] (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x], [user.loc.y], [user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 					src.imp.forceMove(M)

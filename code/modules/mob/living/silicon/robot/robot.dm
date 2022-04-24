@@ -445,7 +445,7 @@ var/list/robot_verbs_default = list(
 						C.brute_damage = WC.brute
 						C.electronics_damage = WC.burn
 
-					to_chat(usr, SPAN_NOTICE(" You install the [W.name]."))
+					to_chat(usr, SPAN_NOTICE(" You install \the [W.name]."))
 
 				return
 

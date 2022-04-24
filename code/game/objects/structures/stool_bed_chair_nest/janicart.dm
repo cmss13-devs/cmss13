@@ -25,21 +25,21 @@
 /obj/structure/bed/chair/janicart/examine(mob/user)
 	to_chat(user, "[icon2html(src, usr)] This [callme] contains [reagents.total_volume] unit\s of water!")
 	if(mybag)
-		to_chat(user, "\A [mybag] is hanging on the [callme].")
+		to_chat(user, "\A [mybag] is hanging on \the [callme].")
 
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
 		if(reagents.total_volume > 1)
 			reagents.trans_to(I, 2)
-			to_chat(user, SPAN_NOTICE("You wet [I] in the [callme]."))
+			to_chat(user, SPAN_NOTICE("You wet [I] in \the [callme]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_NOTICE("This [callme] is out of water!"))
 	else if(istype(I, /obj/item/key))
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
 	else if(istype(I, /obj/item/storage/bag/trash))
-		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
+		to_chat(user, SPAN_NOTICE("You hook the trashbag onto \the [callme]."))
 		user.drop_held_item()
 		I.forceMove(src)
 		mybag = I
@@ -69,8 +69,8 @@
 
 /obj/structure/bed/chair/janicart/send_buckling_message(mob/M, mob/user)
 	M.visible_message(\
-		SPAN_NOTICE("[M] climbs onto the [callme]!"),\
-		SPAN_NOTICE("You climb onto the [callme]!"))
+		SPAN_NOTICE("[M] climbs onto \the [callme]!"),\
+		SPAN_NOTICE("You climb onto \the [callme]!"))
 
 
 /obj/structure/bed/chair/janicart/handle_rotation()
@@ -104,7 +104,7 @@
 	if(buckled_mob)
 		if(prob(85))
 			return buckled_mob.bullet_act(Proj)
-	visible_message(SPAN_WARNING("[Proj] ricochets off the [callme]!"))
+	visible_message(SPAN_WARNING("[Proj] ricochets off \the [callme]!"))
 	return 1
 
 /obj/item/key

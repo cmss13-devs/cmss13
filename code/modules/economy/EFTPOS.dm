@@ -123,7 +123,7 @@
 				if(transaction_locked && !transaction_paid)
 					if(transaction_amount <= E.worth)
 						playsound(src, 'sound/machines/chime.ogg', 25, 1)
-						src.visible_message("[icon2html(src, viewers(src))] The [src] chimes.")
+						src.visible_message("[icon2html(src, viewers(src))] \The [src] chimes.")
 						transaction_paid = 1
 
 						//transfer the money
@@ -241,7 +241,7 @@
 						if(!D.suspended)
 							if(transaction_amount <= D.money)
 								playsound(src, 'sound/machines/chime.ogg', 25, 1)
-								src.visible_message("[icon2html(src, viewers(src))] The [src] chimes.")
+								src.visible_message("[icon2html(src, viewers(src))] \The [src] chimes.")
 								transaction_paid = 1
 
 								//transfer the money

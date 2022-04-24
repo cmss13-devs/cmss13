@@ -18,7 +18,7 @@
 	var/fillevel = gulp_size
 
 	if(!R.total_volume || !R)
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("\The [src.name] is empty!"))
 		return 0
 
 	if(M == user)

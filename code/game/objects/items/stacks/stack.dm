@@ -175,15 +175,15 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
 			if(!OT.allow_construction)
-				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
+				to_chat(usr, SPAN_WARNING("\The [R.title] must be constructed on a proper surface!"))
 				return
 
 			if(AC)
-				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+				to_chat(usr, SPAN_WARNING("\The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 				return
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
-			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
+			to_chat(usr, SPAN_WARNING("\The [R.title] must be built on snow!"))
 			return
 
 		if(R.time)

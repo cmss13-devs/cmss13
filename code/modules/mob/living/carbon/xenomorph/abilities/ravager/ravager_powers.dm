@@ -61,7 +61,7 @@
 		super_empower(X, empower_targets, BD)
 
 /datum/action/xeno_action/activable/empower/proc/super_empower(var/mob/living/carbon/Xenomorph/X, var/empower_targets, var/datum/behavior_delegate/ravager_base/BD)
-	X.visible_message(SPAN_DANGER("[X] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
+	X.visible_message(SPAN_DANGER("[X] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by \the [empower_targets] enemies!"))
 	X.emote("roar")
 
 
@@ -124,7 +124,7 @@
 	var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
 	if(BD.empower_targets < BD.super_empower_threshold)
 		return
-	X.visible_message(SPAN_XENODANGER("The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
+	X.visible_message(SPAN_XENODANGER("\The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
 	H.KnockDown(BD.knockdown_amount)
 	H.attack_alien(X, rand(X.melee_damage_lower, X.melee_damage_upper))
 
@@ -502,7 +502,7 @@
 			return
 		BD.use_shards(shard_cost)
 
-	X.visible_message(SPAN_XENOWARNING("The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
@@ -534,7 +534,7 @@
 
 	if (!action_cooldown_check())
 		return
-		
+
 	if (!X.check_state())
 		return
 
@@ -546,7 +546,7 @@
 		BD.use_shards(shard_cost)
 		BD.lock_shards()
 
-	X.visible_message(SPAN_XENOWARNING("The [X] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("You shed your spikes, firing them in all directions!!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("You shed your spikes, firing them in all directions!!"))
 	X.spin_circle()
 	create_shrapnel(get_turf(X), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(X.caste_type), owner), TRUE)
 	playsound(X, 'sound/effects/spike_spray.ogg', 25, 1)

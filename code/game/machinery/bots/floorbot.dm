@@ -87,7 +87,7 @@
 	else if(istype(W, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] \the [src] behaviour controls."))
 		else
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))

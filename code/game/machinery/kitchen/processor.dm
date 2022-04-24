@@ -85,7 +85,7 @@
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
-		"You put the [what] into [src].")
+		"You put \the [what] into [src].")
 	user.drop_held_item()
 	what.forceMove(src)
 
@@ -112,6 +112,6 @@
 		sleep(P.time)
 		P.process(src.loc, O)
 		src.processing = 0
-	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
+	src.visible_message(SPAN_NOTICE("\The [src] finished processing."), \
 		"You hear the food processor stopping/")
 

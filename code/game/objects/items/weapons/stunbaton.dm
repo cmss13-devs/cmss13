@@ -106,7 +106,7 @@
 			bcell.updateicon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
-			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
+			to_chat(user, SPAN_NOTICE("You remove the cell from \the [src]."))
 			status = 0
 			update_icon()
 			return
@@ -164,10 +164,10 @@
 			var/obj/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
-					L.visible_message(SPAN_WARNING("[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
+					L.visible_message(SPAN_WARNING("[L] has been prodded in \the [affecting.display_name] with [src] by [user]. Luckily it was off."))
 					return TRUE
 				else
-					H.visible_message(SPAN_DANGER("[L] has been prodded in the [affecting.display_name] with [src] by [user]!"))
+					H.visible_message(SPAN_DANGER("[L] has been prodded in \the [affecting.display_name] with [src] by [user]!"))
 		else
 			if(!status)
 				L.visible_message(SPAN_WARNING("[L] has been prodded with [src] by [user]. Luckily it was off."))
@@ -183,10 +183,10 @@
 
 		// Logging
 		if(user == L)
-			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with the [src] in [get_area(user)]"
+			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with \the [src] in [get_area(user)]"
 		else
-			msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			var/logentry = "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned <b>[key_name(L)]</b> with the [src] in [get_area(user)]"
+			msg_admin_attack("[key_name(user)] stunned [key_name(L)] with \the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			var/logentry = "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned <b>[key_name(L)]</b> with \the [src] in [get_area(user)]"
 			L.attack_log += logentry
 			user.attack_log += logentry
 

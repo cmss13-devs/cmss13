@@ -50,7 +50,7 @@
 
 /obj/item/device/assembly/signaller/interact(mob/user, flag1)
 	if(!secured)
-		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
+		to_chat(user, SPAN_WARNING("\The [name] is unsecured!"))
 		return
 
 	tgui_interact(user)

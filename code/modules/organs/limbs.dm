@@ -1176,8 +1176,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
-			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
+			var/possessive = "[user == target ? "your" : "\The [target]'s"]"
+			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\The [target]'s"]"
 			user.affected_message(target,
 				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
 				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),

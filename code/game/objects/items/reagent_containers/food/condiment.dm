@@ -19,11 +19,11 @@
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("\The [src.name] is empty!"))
 		return FALSE
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE(" You swallow some of contents of the [src]."))
+		to_chat(M, SPAN_NOTICE(" You swallow some of contents of \the [src]."))
 
 	else if(istype(M, /mob/living/carbon/human))
 		user.affected_message(M,

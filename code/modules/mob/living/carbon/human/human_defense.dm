@@ -105,13 +105,13 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_l = TRUE
 
 			if(shield_blocked_l)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with \the [l_hand.name]!</B>"), null, null, 5)
 				return TRUE
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
 		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with \the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
@@ -130,12 +130,12 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_r = TRUE
 
 			if(shield_blocked_r)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with \the [r_hand.name]!</B>"), null, null, 5)
 				return TRUE
 
 		var/obj/item/weapon/I = r_hand
 		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with \the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
 	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
@@ -190,9 +190,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 
 	if(I.attack_verb && I.attack_verb.len)
-		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in \the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
 	else
-		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been attacked in \the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
@@ -300,7 +300,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/obj/limb/affecting = get_limb(zone)
 	var/hit_area = affecting.display_name
 
-	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)
+	src.visible_message(SPAN_DANGER("[src] has been hit in \the [hit_area] by [O]."), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 

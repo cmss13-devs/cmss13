@@ -68,7 +68,7 @@
 	examine(mob/user)
 		..()
 		if(pressure < 50 && loc==user)
-			to_chat(user, SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!"))
+			to_chat(user, SPAN_DANGER("The meter on \the [src.name] indicates you are almost out of air!"))
 			user << sound('sound/effects/alert.ogg')
 
 /obj/item/tank/emergency_oxygen/engi
@@ -105,7 +105,7 @@
 
 /obj/item/tank/phoron/update_icon()
 	. = ..()
-	
+
 	if(volume <= 0)
 		icon_state = "phoron_empty"
 	else

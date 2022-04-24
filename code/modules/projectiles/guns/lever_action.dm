@@ -275,7 +275,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(flags_item & WIELDED)
 		twohand_lever(user)
 		return
-	to_chat(user, SPAN_WARNING("<i>You spin the [src] one-handed! Fuck yeah!<i>"))
+	to_chat(user, SPAN_WARNING("<i>You spin \the [src] one-handed! Fuck yeah!<i>"))
 	animation_wrist_flick(src)
 	direct_hit_buff(user, ,TRUE)
 

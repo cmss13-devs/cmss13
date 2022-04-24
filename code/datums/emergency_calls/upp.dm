@@ -17,7 +17,7 @@
 /datum/emergency_call/upp/New()
 		..()
 		arrival_message = "T*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns )0r c|*$e @u*r*r$ c0m&*t."
-		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over \the [MAIN_SHIP_NAME] at all costs."
 
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
@@ -35,7 +35,7 @@
 	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Tychon's Rift sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
+	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, \the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
 	to_chat(M, SPAN_BOLD("In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard."))
 	to_chat(M, "")
 	to_chat(M, "")

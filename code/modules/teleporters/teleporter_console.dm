@@ -136,7 +136,7 @@
             return
 
         if(!linked_teleporter.check_teleport_cooldown())
-            visible_message("<b>[src]</b> beeps, \"The [linked_teleporter.name] is on cooldown. Please wait.\"")
+            visible_message("<b>[src]</b> beeps, \"\The [linked_teleporter.name] is on cooldown. Please wait.\"")
             return
 
         var/list/turf_keys = linked_teleporter.get_turfs_by_location(selected_source)

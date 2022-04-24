@@ -49,7 +49,7 @@
 	add_fingerprint(user)
 
 	if(dirt_amt)
-		to_chat(user, SPAN_NOTICE("You dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
+		to_chat(user, SPAN_NOTICE("You dump \the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/turf/T = get_turf(user.loc)
 			var/obj/item/stack/snow/S = locate() in T
@@ -123,7 +123,7 @@
 
 /obj/item/tool/shovel/proc/dump_shovel(var/atom/target, var/mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("you dump \the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T

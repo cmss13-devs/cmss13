@@ -207,7 +207,7 @@
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
+		to_chat(user, SPAN_WARNING("\The [src] cannot be [anchored ? "un" : ""]anchored."))
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering

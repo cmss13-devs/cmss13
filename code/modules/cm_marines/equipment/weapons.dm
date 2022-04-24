@@ -55,7 +55,7 @@
 /obj/item/smartgun_powerpack/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
 		var/obj/item/cell/C = A
-		visible_message("[user.name] swaps out the power cell in the [src.name].","You swap out the power cell in the [src] and drop the old one.")
+		visible_message("[user.name] swaps out the power cell in \the [src.name].","You swap out the power cell in \the [src] and drop the old one.")
 		to_chat(user, "The new cell contains: [C.charge] power.")
 		pcell.forceMove(get_turf(user))
 		pcell = C

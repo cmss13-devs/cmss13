@@ -113,7 +113,7 @@
 		if(!det.secured)
 			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
 			return
-		to_chat(user, SPAN_NOTICE("You add [W] to the [name]."))
+		to_chat(user, SPAN_NOTICE("You add [W] to \the [name]."))
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 		user.temp_drop_inv_item(det)
 		det.forceMove(src)
@@ -139,12 +139,12 @@
 		update_icon()
 	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		if(current_container_volume >= max_container_volume)
-			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+			to_chat(user, SPAN_DANGER("\The [name] can not hold more containers."))
 			return
 		else
 			if(W.reagents.total_volume)
 				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
+					to_chat(user, SPAN_DANGER("\The [W] is too large for [name]."))
 					return
 				if(user.temp_drop_inv_item(W))
 					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
@@ -154,7 +154,7 @@
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 			else
-				to_chat(user, SPAN_DANGER("\the [W] is empty."))
+				to_chat(user, SPAN_DANGER("\The [W] is empty."))
 
 /obj/item/explosive/proc/activate_sensors()
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)
@@ -255,8 +255,8 @@
 
 	if(falloff_mode == EXPLOSION_FALLOFF_SHAPE_LINEAR)
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
-		to_chat(usr, SPAN_NOTICE("You enable the [src]'s blast wave dampener, limiting the blast radius."))
+		to_chat(usr, SPAN_NOTICE("You enable \the [src]'s blast wave dampener, limiting the blast radius."))
 	else
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
-		to_chat(usr, SPAN_NOTICE("You disable the [src]'s blast wave dampener, restoring the blast radius to full."))
+		to_chat(usr, SPAN_NOTICE("You disable \the [src]'s blast wave dampener, restoring the blast radius to full."))
 	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)

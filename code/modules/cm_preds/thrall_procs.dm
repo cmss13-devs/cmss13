@@ -118,7 +118,7 @@
 		if(G.notification_sound)
 			playsound(G.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-		to_chat(T, SPAN_WARNING("The [TG] locks around your wrist with a sharp click."))
+		to_chat(T, SPAN_WARNING("\The [TG] locks around your wrist with a sharp click."))
 		to_chat(T, SPAN_YAUTJABOLD("[icon2html(TG)] \The <b>[TG]</b> beep: Your master has linked their bracer to yours."))
 		if(TG.notification_sound)
 			playsound(TG.loc, 'sound/items/pred_bracer.ogg', 75, 1)

@@ -140,7 +140,7 @@
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))
-				src.visible_message(SPAN_NOTICE("\the [src] skitters[pick(" away"," around","")]."))
+				src.visible_message(SPAN_NOTICE("\The [src] skitters[pick(" away"," around","")]."))
 	else if(prob(5))
 		//vent crawl!
 		for(var/obj/structure/pipes/vents/pump/v in view(7,src))
@@ -150,7 +150,7 @@
 				break
 
 	if(prob(1))
-		src.visible_message(SPAN_NOTICE("\the [src] chitters."))
+		src.visible_message(SPAN_NOTICE("\The [src] chitters."))
 	if(isturf(loc) && amount_grown > 0)
 		amount_grown += rand(0,2)
 		if(amount_grown >= 100)

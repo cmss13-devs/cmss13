@@ -14,7 +14,7 @@
 	Crossed(var/mob/living/O)
 		if(anchored && prob(trample_chance) && can_trample)
 			if(!istype(O,/mob/living/carbon/Xenomorph/Larva))
-				visible_message(SPAN_DANGER("[O] tramples the [src]!"))
+				visible_message(SPAN_DANGER("[O] tramples \the [src]!"))
 				playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 				if(istype(O,/mob/living/carbon/Xenomorph))
 					if(prob(40))
@@ -43,7 +43,7 @@
 			return
 
 		anchored = 0
-		user.visible_message("[user.name] removes \the [src] from the ground.","You remove the [src] from the ground.")
+		user.visible_message("[user.name] removes \the [src] from the ground.","You remove \the [src] from the ground.")
 		icon_state = "lightstick_[s_color][anchored]"
 		SetLuminosity(0)
 		pixel_x = 0

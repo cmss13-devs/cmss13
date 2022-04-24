@@ -141,8 +141,8 @@
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
-			SPAN_DANGER("You force [D] open with the [name]."))
+			user.visible_message(SPAN_DANGER("[user] forces [D] open with \the [name]."),
+			SPAN_DANGER("You force [D] open with \the [name]."))
 			D.open(TRUE)
 
 	else if(istype(A, /obj/structure/mineral_door/resin))
@@ -153,7 +153,7 @@
 			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
+				user.visible_message(SPAN_DANGER("[user] forces [D] open using \the [name]."),
 				SPAN_DANGER("You force [D] open with your [name]."))
 				D.Open()
 		else
@@ -161,7 +161,7 @@
 			SPAN_DANGER("You push [D] with your [name] to force it closed."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]."),
+				user.visible_message(SPAN_DANGER("[user] forces [D] closed using \the [name]."),
 				SPAN_DANGER("You force [D] closed with your [name]."))
 				D.Close()
 

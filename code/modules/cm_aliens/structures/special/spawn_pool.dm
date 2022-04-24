@@ -148,8 +148,8 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
-		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
+		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from \the [src]!"),
+		SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)

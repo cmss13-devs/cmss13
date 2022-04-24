@@ -51,7 +51,7 @@
 			CC.use(5)
 			new /obj/item/stack/light_w(user.loc, 1)
 			use(1)
-			to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
+			to_chat(user, SPAN_NOTICE("You attach wire to \the [name]."))
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/item/stack/rods/V  = W
 			if (V.get_amount() < 1 || get_amount() < 1)

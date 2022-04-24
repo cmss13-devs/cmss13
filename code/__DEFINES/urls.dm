@@ -25,6 +25,6 @@
 
 // Forum links
 #define URL_FORUM					"https://cm-ss13.com/forums"
-#define URL_FORUM_APPEAL			"https://cm-ss13.com/forums/forms.php?do=form&fid=6"
+#define URL_FORUM_APPEALS			"https://cm-ss13.com/forums/forms.php?do=form&fid=6"
 #define URL_FORUM_PLAYER_REPORT		"https://cm-ss13.com/forums/forms.php?do=form&fid=10"
 #define URL_FORUM_STAFF_REPORT		"https://cm-ss13.com/forums/forms.php?do=form&fid=12"

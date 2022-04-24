@@ -99,3 +99,18 @@
 /obj/item/clothing/gloves/synth/proc/drain_charge(var/mob/user, var/cost)
 	battery_charge -= cost
 	to_chat(user, SPAN_WARNING("\The [src]'s charge now reads: <b>[battery_charge]/[initial(battery_charge)]</b>."))
+
+/obj/item/clothing/gloves/synth/MouseDrop(obj/over_object as obj)
+	if(CAN_PICKUP(usr, src))
+		if(!istype(over_object, /obj/screen))
+			return ..()
+
+		if(!usr.is_mob_restrained() && !usr.stat)
+			switch(over_object.name)
+				if("r_hand")
+					if(usr.drop_inv_item_on_ground(src))
+						usr.put_in_r_hand(src)
+				if("l_hand")
+					if(usr.drop_inv_item_on_ground(src))
+						usr.put_in_l_hand(src)
+			add_fingerprint(usr)

@@ -213,10 +213,7 @@
 
 	var/datum/action/xeno_action/activable/jab/JA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/jab)
 	if (istype(JA) && !JA.action_cooldown_check())
-		if(isXeno(H))
-			JA.reduce_cooldown(JA.xeno_cooldown / 2)
-		else
-			JA.end_cooldown()
+		JA.end_cooldown()
 
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -263,10 +260,7 @@
 		break
 
 	if (punch_action && !punch_action.action_cooldown_check())
-		if(isXeno(H))
-			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
-		else
-			punch_action.end_cooldown()
+		punch_action.end_cooldown()
 
 	H.Daze(3)
 	H.Slow(5)

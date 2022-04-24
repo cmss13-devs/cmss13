@@ -22,11 +22,13 @@
 	var/obj/item/limb/head/synth/patient_head
 	var/no_revive = FALSE
 	var/list/species_allowed = list(
+		"Synthetic",
 		SYNTH_COLONY,
 		SYNTH_COMBAT,
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,
-		SYNTH_GEN_THREE
+		SYNTH_GEN_THREE,
+		"Event Synthetic"
 		)
 
 /datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
@@ -38,7 +40,7 @@
 
 /datum/surgery_step/peel_skin
 	name = "Peel Back Skin"
-	desc = "peel the skin back"
+	desc = "peel the skin back"	
 	//Tools used to pry things open without orthopedic dramatics.
 	tools = list(
 		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
@@ -114,7 +116,7 @@
 
 /datum/surgery_step/mend_connections
 	name = "Reconstruct Throat"
-	desc = "reconstruct the throat"
+	desc = "reconstruct the throat"	
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
@@ -153,7 +155,7 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),	\
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
-
+	
 	if(!surgery.no_revive) //Unset this flag if they didn't have it before the surgery started.
 		target.status_flags &= ~PERMANENTLY_DEAD
 

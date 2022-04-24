@@ -6,7 +6,6 @@
 	volume = 200
 	matter = list("plastic" = 500)
 	flags_atom = CAN_BE_SYRINGED
-	transparent = TRUE
 
 	var/blood_type = null
 

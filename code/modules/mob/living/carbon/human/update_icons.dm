@@ -265,11 +265,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!head_organ || (head_organ.status & LIMB_DESTROYED))
 		return
 
-	var/image/headshot = new('icons/mob/humans/dam_human.dmi', headshot_state + "_bone")
-	var/image/headshot_blood = new('icons/mob/humans/dam_human.dmi', headshot_state + "_blood")
-	headshot_blood.color = species.blood_color
-	headshot.overlays += headshot_blood
-	
+	var/image/headshot = new('icons/mob/humans/dam_human.dmi', headshot_state)
 	headshot.appearance_flags = RESET_COLOR
 	headshot.blend_mode = BLEND_INSET_OVERLAY
 	headshot.layer = -HEADSHOT_LAYER

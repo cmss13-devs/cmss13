@@ -245,7 +245,6 @@
 /obj/item/clothing/accessory/medal/bronze/conduct
 	name = "distinguished conduct medal"
 	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the USCM"
-	icon_state = "bronze_b"
 
 /obj/item/clothing/accessory/medal/bronze/heart
 	name = "bronze heart medal"
@@ -259,7 +258,7 @@
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
 	desc = "A silver medal."
-	icon_state = "silver_b"
+	icon_state = "silver"
 
 /obj/item/clothing/accessory/medal/silver/valor
 	name = "medal of valor"
@@ -272,7 +271,7 @@
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
 	desc = "A prestigious golden medal."
-	icon_state = "gold_b"
+	icon_state = "gold"
 
 /obj/item/clothing/accessory/medal/gold/captain
 	name = "medal of captaincy"
@@ -285,25 +284,24 @@
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
 	desc = "A very prestigious platinum medal, only able to be handed out by admirals due to special circumstances."
-	icon_state = "platinum_b"
+	icon_state = "platinum"
 
 /obj/item/clothing/accessory/medal/bronze/service
 	name = "bronze service medal"
 	desc = "A bronze medal awarded for a marine's service within the USCM. It is a very common medal, and is typically the first medal a marine would receive."
-	icon_state = "bronze"
 
 /obj/item/clothing/accessory/medal/silver/service
 	name = "silver service medal"
 	desc = "A shiny silver medal awarded for a marine's service within the USCM. It is a somewhat common medal which signifies the amount of time a marine has spent in the line of duty."
-	icon_state = "silver"
+
 /obj/item/clothing/accessory/medal/gold/service
 	name = "gold service medal"
 	desc = "A prestigious gold medal awarded for a marine's service within the USCM. It is a rare medal which signifies the amount of time a marine has spent in the line of duty."
-	icon_state = "gold"
+
 /obj/item/clothing/accessory/medal/platinum/service
 	name = "platinum service medal"
 	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Admirals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
-	icon_state = "platinum"
+
 //Armbands
 /obj/item/clothing/accessory/armband
 	name = "red armband"
@@ -535,12 +533,6 @@
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
 
-/obj/item/clothing/accessory/storage/webbing/five_slots
-	hold = /obj/item/storage/internal/accessory/webbing/five_slots
-
-/obj/item/storage/internal/accessory/webbing/five_slots
-	storage_slots = 5
-
 /obj/item/storage/internal/accessory/black_vest
 	storage_slots = 5
 
@@ -592,21 +584,6 @@
 	name = "tactical waistcoat"
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
-
-/obj/item/clothing/accessory/storage/black_vest/tool_webbing
-	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
-
-/obj/item/storage/internal/accessory/black_vest/tool_webbing
-	storage_slots = 7
-
-/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
-	new /obj/item/tool/screwdriver(src)
-	new /obj/item/tool/wrench(src)
-	new /obj/item/tool/weldingtool(src)
-	new /obj/item/tool/crowbar(src)
-	new /obj/item/tool/wirecutters(src)
-	new /obj/item/stack/cable_coil(src)
-	new /obj/item/device/multitool(src)
 
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 13
@@ -704,8 +681,8 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 6	//weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
-	cant_hold = list(	//Prevent inventory powergame
+	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
+	cant_hold = list(	//Prevent inventory bloat
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
 		)

@@ -26,15 +26,12 @@
 
 /datum/mutator_set/proc/list_and_purchase_mutators()
 	var/list/mutators_for_purchase = available_mutators()
-	var/mob/living/carbon/Xenomorph/Xeno = usr
 	if(mutators_for_purchase.len == 0)
-		to_chat(usr, "There are no available strains.")
+		to_chat(usr, "You can't take another strain.")
 	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase)
 	if(!pick)
 		return FALSE
 	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return
-	if(!Xeno.strain_checks())
-		return
 	if(GLOB.xeno_mutator_list[pick].apply_mutator(src))
 		to_chat(usr, "Mutation complete!")
 		return TRUE
@@ -231,34 +228,20 @@
 	set desc = "Purchase Strains for yourself."
 	set category = "Alien"
 
-	if(!strain_checks())
-		return
+	if(is_dead())
+		return //Dead xenos can't mutate!
 	if(!src.mutators)
 		return //For some reason we don't have mutators
 	src.mutators.list_and_purchase_mutators()
 
-/mob/living/carbon/Xenomorph/proc/strain_checks()
-	if(!check_state())
-		return FALSE
+/mob/living/carbon/Xenomorph/verb/list_mutators()
+	set name = "List Strains"
+	set desc = "List your current Strain, if any."
+	set category = "Alien"
 
-	if(is_ventcrawling)
-		to_chat(src, SPAN_WARNING("This place is too constraining to take a strain."))
-		return FALSE
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't take a strain here."))
-		return FALSE
-
-	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to take a strain."))
-		return FALSE
-
-	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("You must be at full health to take a strain."))
-		return FALSE
-
-	if(agility || fortify || crest_defense)
-		to_chat(src, SPAN_WARNING("You cannot take a strain while in this stance."))
-		return FALSE
-
-	return TRUE
+	to_chat(src, SPAN_XENOANNOUNCE("Strain:"))
+	if(isnull(src.mutators) || isnull(src.mutators.purchased_mutators) || !src.mutators.purchased_mutators.len)
+		to_chat(src, "-")
+	else
+		for(var/m in src.mutators.purchased_mutators)
+			to_chat(src, m)

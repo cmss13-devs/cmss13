@@ -237,11 +237,11 @@
 
 /obj/effect/landmark/start/whiskey/marine
 	icon_state = "marine_spawn"
-	job = /datum/job/marine/standard/whiskey
+	job = /datum/job/marine/standard/equipped/whiskey
 
 /obj/effect/landmark/start/whiskey/leader
 	icon_state = "leader_spawn"
-	job = /datum/job/marine/leader/whiskey
+	job = /datum/job/marine/leader/equipped/whiskey
 
 /obj/effect/landmark/start/whiskey/rto
 	icon_state = "rto_spawn"
@@ -249,19 +249,19 @@
 
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"
-	job = /datum/job/marine/specialist/whiskey
+	job = /datum/job/marine/specialist/equipped/whiskey
 
 /obj/effect/landmark/start/whiskey/smartgunner
 	icon_state = "smartgunner_spawn"
-	job = /datum/job/marine/smartgunner/whiskey
+	job = /datum/job/marine/smartgunner/equipped/whiskey
 
 /obj/effect/landmark/start/whiskey/medic
 	icon_state = "medic_spawn"
-	job = /datum/job/marine/medic/whiskey
+	job = /datum/job/marine/medic/equipped/whiskey
 
 /obj/effect/landmark/start/whiskey/engineer
 	icon_state = "engi_spawn"
-	job = /datum/job/marine/engineer/whiskey
+	job = /datum/job/marine/engineer/equipped/whiskey
 
 //****************************************** LOGISTICAL ROLES ************************************************/
 

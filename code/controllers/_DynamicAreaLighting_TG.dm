@@ -327,7 +327,9 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if(!src) return
 	if(light <= 0)
 		light = 0
-	luminosity = 1
+		luminosity = 0
+	else
+		luminosity = 1
 	if(light > LIGHTING_STATES)
 		light = LIGHTING_STATES
 

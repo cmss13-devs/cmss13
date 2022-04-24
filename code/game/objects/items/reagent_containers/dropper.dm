@@ -11,7 +11,6 @@
 	w_class = SIZE_TINY
 	volume = 5
 	matter = list("plastic" = 150)
-	transparent = TRUE
 	var/filled = 0
 
 	afterattack(obj/target, mob/user , flag)

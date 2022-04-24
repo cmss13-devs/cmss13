@@ -145,8 +145,6 @@
 #define TRAIT_DEXTROUS "t_dextrous"
  /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
- /// If the mob can see the reagents contents of stuff
-#define TRAIT_REAGENT_SCANNER "reagent_scanner"
 
 
 
@@ -174,9 +172,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_CRAWLER,
 	TRAIT_SIMPLE_DESC,
 	TRAIT_TWOBORE_TRAINING,
-	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
-	TRAIT_REAGENT_SCANNER
+	TRAIT_LEADERSHIP
 ))
 
 //trait SOURCES

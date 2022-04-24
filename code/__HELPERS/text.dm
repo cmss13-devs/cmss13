@@ -219,13 +219,13 @@
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
 proc/TextPreview(var/string,var/len=40)
-	var/string_length = length(string)
-	if(!string_length)
-		return "\[...\]"
-	else if(string_length <= len)
-		return string
+	if(length(string) <= len)
+		if(!length(string))
+			return "\[...\]"
+		else
+			return string
 	else
-		return "[copytext(string, 1, len - 3)]..."
+		return "[copytext(string, 1, 37)]..."
 
 proc/strip_improper(input_text)
 	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")

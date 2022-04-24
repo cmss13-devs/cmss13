@@ -1694,7 +1694,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/mk1/Initialize()
 	. = ..()
-	grenade_pass_flags = NO_FLAGS
+	grenade_pass_flags = PASS_HIGH_OVER
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

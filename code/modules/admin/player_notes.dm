@@ -41,6 +41,7 @@
 	info << infos
 
 	message_staff("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+
 	qdel(info)
 
 	//Updating list of keys with notes on them

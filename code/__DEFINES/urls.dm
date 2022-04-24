@@ -21,7 +21,7 @@
 #define URL_WIKI_HACKING			"https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking"
 #define URL_WIKI_APC				"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance"
 #define URL_WIKI_SURGERY			"https://cm-ss13.com/wiki/Surgery"
-#define URL_WIKI_MEDICA				"https://cm-ss13.com/wiki/Guide_to_Medicine"
+#define URL_WIKI_MEDICAL				"https://cm-ss13.com/wiki/Guide_to_Medicine"
 
 // Forum links
 #define URL_FORUM					"https://cm-ss13.com/forums"

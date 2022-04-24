@@ -77,7 +77,6 @@ log transactions
 			src.attack_hand(user)
 			qdel(I)
 	else if(istype(I, /obj/item/holder))
-
 		user.visible_message(SPAN_DANGER("[user] begins stuffing [I] into the ATM!"))
 		playsound(src, "sound/machines/fax.ogg", 5)
 		if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_BUILD))
@@ -85,7 +84,8 @@ log transactions
 		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		playsound(src, 'sound/effects/splat.ogg', 25, 1)
 		playsound(src, "sound/effects/bone_break1.ogg", 20)
-		playsound(src, "sound/voice/meow.ogg", 15)
+		if(istype(I, /obj/item/holder/cat) || istype(I, /obj/item/holder/Jones))
+			playsound(src, "sound/voice/meow.ogg", 15)
 
 		for(var/mob/M in I.contents)
 

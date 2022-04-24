@@ -27,6 +27,8 @@
 
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED
 
+	var/list/bracer_actions = list(/datum/action/human_action/activable/synth_bracer/rescue_hook)
+
 /obj/item/clothing/gloves/synth/examine(mob/user)
 	..()
 	to_chat(user, SPAN_INFO("The current charge reads <b>[battery_charge]/[initial(battery_charge)]</b>."))
@@ -37,8 +39,12 @@
 	. = ..()
 	if(slot == WEAR_HANDS)
 		RegisterSignal(user, COMSIG_MOB_APC_ATTACK_HAND, .proc/handle_apc_charge)
+		for(var/action in bracer_actions)
+			give_action(user, action)
 
 /obj/item/clothing/gloves/synth/dropped(mob/user)
+	for(var/action in bracer_actions)
+		remove_action(user, action)
 	UnregisterSignal(user, COMSIG_MOB_APC_ATTACK_HAND)
 	return ..()
 
@@ -84,3 +90,7 @@
 		to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 
 /* -- +++++ +++++ -- */
+
+/obj/item/clothing/gloves/synth/proc/drain_charge(var/mob/user, var/cost)
+	battery_charge -= cost
+	to_chat(user, SPAN_WARNING("\The [src] now has <b>[battery_charge]/[initial(battery_charge)]</b>."))

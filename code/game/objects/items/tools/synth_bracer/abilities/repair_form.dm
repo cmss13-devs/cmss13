@@ -1,52 +1,29 @@
-#define REPAIR_COST 50
+/datum/action/human_action/synth_bracer/repair_form
+	name = "Repair Form"
+	action_icon_state = "smartpack_repair"
+	cooldown = 15 SECONDS
+	charge_cost = 50
 
-/obj/item/clothing/gloves/synth
-	var/repairing = FALSE
-	var/repair_form_cooldown = 15 SECONDS
+	handles_charge_cost = TRUE
+	handles_cooldown = TRUE
 
-/obj/item/clothing/gloves/synth/verb/repair_form_verb()
-	set name = "Repair Form (50)"
-	set desc = "Repair yourself at the cost of 50u of charge."
-	set category = "Synthetic.SIMI"
-	set src in usr
+/datum/action/human_action/synth_bracer/repair_form/action_activate()
+	..()
 
-	if(!isSynth(usr))
+	if(synth.getBruteLoss() <= 0 && synth.getFireLoss() <= 0)
+		to_chat(synth, SPAN_WARNING("[synth_bracer.name] beeps, \"No noticeable damage. Procedure cancelled.\""))
 		return
 
-	repair_form(usr)
-
-/obj/item/clothing/gloves/synth/proc/repair_form(mob/living/carbon/human/user)
-	if(!ishuman(user) || repairing)
+	synth.visible_message(SPAN_WARNING("[synth_bracer.name] beeps, \"Engaging the repairing process.\""), SPAN_WARNING("[synth_bracer.name] beeps, \"Beginning to carefully examine your sustained damage.\""))
+	playsound(synth.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
+	if(!do_after(synth, 5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY))
+		to_chat(synth, SPAN_DANGER("[synth_bracer.name] beeps, \"Repair process was cancelled.\""))
 		return
 
-	if(battery_charge < REPAIR_COST)
-		to_chat(user, SPAN_WARNING("There is a lack of charge for that action. Charge: <b>[battery_charge]/[REPAIR_COST]</b>"))
-		return
+	enter_cooldown()
+	synth_bracer.drain_charge(synth, charge_cost)
 
-	if(user.getBruteLoss() <= 0 && user.getFireLoss() <= 0)
-		to_chat(user, SPAN_WARNING("[name] beeps, \"No noticeable damage. Procedure cancelled.\""))
-		return
-
-	repairing = TRUE
-	update_icon(user)
-
-	user.visible_message(SPAN_WARNING("[name] beeps, \"Engaging the repairing process.\""), SPAN_WARNING("[name] beeps, \"Beginning to carefully examine your sustained damage.\""))
-	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	if(!do_after(user, 5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY))
-		repairing = FALSE
-		update_icon(user)
-		to_chat(user, SPAN_DANGER("[name] beeps, \"Repair process was cancelled.\""))
-		return
-
-	playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
-	battery_charge -= REPAIR_COST
-	user.heal_overall_damage(25, 25, TRUE)
-	user.pain.recalculate_pain()
-	user.visible_message(SPAN_NOTICE("[name] beeps, \"Completed the repairing process. Charge now reads [battery_charge]/[initial(battery_charge)].\""))
-
-	addtimer(CALLBACK(src, .proc/repair_form_cooldown, user), repair_form_cooldown)
-
-/obj/item/clothing/gloves/synth/proc/repair_form_cooldown(mob/user)
-	repairing = FALSE
-
-#undef REPAIR_COST
+	playsound(synth.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+	synth.heal_overall_damage(25, 25, TRUE)
+	synth.pain.recalculate_pain()
+	synth.visible_message(SPAN_NOTICE("[synth_bracer.name] beeps, \"Completed the repairing process.\""))

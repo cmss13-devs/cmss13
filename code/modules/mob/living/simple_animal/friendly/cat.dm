@@ -25,6 +25,7 @@
 	sight = SEE_MOBS
 	see_in_dark = 8
 	see_invisible = 15
+	var/miaow_counter = 0
 
 /mob/living/simple_animal/cat/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -34,6 +35,10 @@
 /mob/living/simple_animal/cat/Life(delta_time)
 	//MICE!
 	if((src.loc) && isturf(src.loc))
+		if(stat != DEAD)
+			if(++miaow_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
+				playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
+				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
 			for(var/mob/living/simple_animal/mouse/M in view(1,src))
 				if(!M.stat)

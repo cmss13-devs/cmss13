@@ -47,6 +47,7 @@ var/global/players_preassigned = 0
 
 	var/list/unassigned_players
 	var/list/squads
+	var/list/squads_by_type
 
 //Whenever the controller is created, we want to set up the basic role lists.
 /datum/authority/branch/role/New()
@@ -105,9 +106,11 @@ var/global/players_preassigned = 0
 		roles_by_name[J.title] = J
 
 	squads = list()
+	squads_by_type = list()
 	for(var/squad in squads_all) //Setting up our squads.
 		var/datum/squad/S = new squad()
 		squads += S
+		squads_by_type[S.type] = S
 
 	load_whitelist()
 

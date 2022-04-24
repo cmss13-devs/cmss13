@@ -82,11 +82,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(CONFIG_GET(flag/duplicate_notes_to_file))
-		notes_add(ckey, note_text, admin.mob)
+		if(!is_confidential && note_category == NOTE_ADMIN)
+			notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
 		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
-
+	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("If you think this was filed in error or wish to contest the note, make a staff report at <a href='https://cm-ss13.com/forums/forms.php?do=form&fid=12;'><b>The CM Forums</b></a>")))
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("You can also click the name of the staff member noting you to PM them.")))
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
 	// set its related data

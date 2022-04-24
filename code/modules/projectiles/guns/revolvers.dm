@@ -132,7 +132,7 @@
 					if(!current_mag.chamber_closed) // If the chamber is open, we close it
 						unload(user)
 			else
-				to_chat(user, SPAN_WARNING("That [magazine] doesn't fit!"))
+				to_chat(user, SPAN_WARNING("\The [magazine] doesn't fit!"))
 
 /obj/item/weapon/gun/revolver/unload(mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING) return

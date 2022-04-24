@@ -430,8 +430,9 @@
 
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in cardinal)
-		var/obj/effect/alien/weeds/W = locate() in get_step(T, direction)
-		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, get_turf(W), T))
+		var/turf/weed_turf = get_step(T, direction)
+		var/obj/effect/alien/weeds/W = locate() in weed_turf
+		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
 			node = W.parent
 			break
 

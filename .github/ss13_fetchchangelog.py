@@ -17,21 +17,23 @@ prefixToActual = {
 
 def parse_pr_changelog(pr):
 	yaml_object = {}
-	changelog_match = re.search(r"🆑(.*)🆑", pr.body, re.S | re.M)
+	changelog_match = re.search(r"🆑(.*)/🆑", pr.body, re.S | re.M)
 	if changelog_match is None:
-		return
+		changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
+		if changelog_match is None:
+			return
 	lines = changelog_match.group(1).split('\n')
 	entries = []
 	for index, line in enumerate(lines):
 		line = line.strip()
-		if not line:
-			continue
 		if index == 0:
 			author = line.strip()
 			if not author or author == "John Titor":
 				author = pr.user.name
 				print("Author not set, substituting", author)
 			yaml_object["author"] = author
+			continue
+		if not line:
 			continue
 
 		splitData = line.split(":")

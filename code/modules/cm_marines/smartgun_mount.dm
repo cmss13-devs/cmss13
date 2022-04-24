@@ -962,34 +962,43 @@
 
 	icon_state = icon_name
 
-/obj/item/device/m2c_gun/attack_self(mob/user)
-	..()
-
+/obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
 	if(!ishuman(user))
-		return
+		return FALSE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
-		return
+		return FALSE
+	if(OT.density || !isturf(OT))
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+		return FALSE
+	if(rotate_check.density)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
+		return FALSE
+	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
+		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
+		return FALSE
+	if(broken_gun)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+		return FALSE
+	if(!(user.alpha > 60))
+		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
+		return FALSE
+	return TRUE
 
+
+/obj/item/device/m2c_gun/attack_self(mob/user)
+	..()
 	var/turf/rotate_check = get_step(user.loc, turn(user.dir, 180))
 	var/turf/open/OT = usr.loc
 	var/list/ACR = range(anti_cadehugger_range, user.loc)
-	if(OT.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] here."))
+
+	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
-	if(rotate_check.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
-		return
-	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
-		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
-		return
-	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))
-		return
-	if(!(user.alpha > 60))
-		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
-		return
+
 	if(!do_after(user, M2C_SETUP_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return
+
+	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
 
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
@@ -1014,25 +1023,25 @@
 		return
 
 	if(!broken_gun)
-		to_chat(user, SPAN_WARNING("[src] isn't critically broken, no need for field recovery operations."))
+		to_chat(user, SPAN_WARNING("\The [src] isn't critically broken, no need for field recovery operations."))
 		return
 
 	var/obj/item/tool/weldingtool/WT = O
 
 	if(WT.remove_fuel(2, user))
-		user.visible_message(SPAN_NOTICE("[user] begins field recovering [src]."), \
-			SPAN_NOTICE("You begin repairing the severe damages on the [src] in an effort to restore its functions."))
+		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."), \
+			SPAN_NOTICE("You begin repairing the severe damages on \the [src] in an effort to restore its functions."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] field recovers [src], restoring it back to its original state."), \
-			SPAN_NOTICE("You repair [src] back to a functional state."))
+		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."), \
+			SPAN_NOTICE("You repair \the [src] back to a functional state."))
 		broken_gun = FALSE
 		health = 110
 		update_icon()
 		return
 	else
-		to_chat(user, SPAN_WARNING("You need more fuel in [WT] to start field recovery on [src]."))
+		to_chat(user, SPAN_WARNING("You need more fuel in \the [WT] to start field recovery on [src]."))
 
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto

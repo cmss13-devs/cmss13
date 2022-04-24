@@ -736,10 +736,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/claymore/mercsword/machete{
-	anchored = 1;
+/obj/item/weapon/melee/claymore/mercsword/machete/arnold{
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
-	name = "\improper Dutch's Machete"
+	name = "\improper Dutch's Machete";
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -971,10 +971,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/toy/prize/ripley{
-	anchored = 1;
-	pixel_y = 9
-	},
+/obj/effect/spawner/random/toy,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

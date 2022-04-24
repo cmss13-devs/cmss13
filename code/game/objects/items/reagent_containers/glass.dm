@@ -13,6 +13,7 @@
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
+	transparent = TRUE
 
 	var/label_text = ""
 
@@ -51,10 +52,6 @@
 /obj/item/reagent_container/glass/examine(mob/user)
 	..()
 	if(get_dist(user, src) > 2 && user != loc) return
-	if(reagents && reagents.reagent_list.len)
-		to_chat(user, SPAN_INFO("It contains [reagents.total_volume] units of liquid."))
-	else
-		to_chat(user, SPAN_INFO("It is empty."))
 	if(!is_open_container())
 		to_chat(user, SPAN_INFO("An airtight lid seals it completely."))
 

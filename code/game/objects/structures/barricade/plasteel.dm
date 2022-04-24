@@ -10,8 +10,8 @@
 	force_level_absorption = 20
 	stack_type = /obj/item/stack/sheet/plasteel
 	debris = list(/obj/item/stack/sheet/plasteel)
-	stack_amount = 10
-	destroyed_stack_amount = 5
+	stack_amount = 8
+	destroyed_stack_amount = 4
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "plasteel"
 	density = 0
@@ -25,6 +25,7 @@
 	var/linked = 0
 	var/recentlyflipped = FALSE
 	var/hasconnectionoverlay = TRUE
+	var/linkable = TRUE
 
 /obj/structure/barricade/plasteel/update_icon()
 	..()
@@ -117,9 +118,12 @@
 				if(linked)
 					user.visible_message(SPAN_NOTICE("[user] removes the linking on [src]."),
 					SPAN_NOTICE("You remove the linking on [src]."))
-				else
+				else if(linkable)
 					user.visible_message(SPAN_NOTICE("[user] sets up [src] for linking."),
 					SPAN_NOTICE("You set up [src] for linking."))
+				else
+					to_chat(user, SPAN_WARNING("The [src] has no linking points..."))
+					return
 				linked = !linked
 				for(var/direction in cardinal)
 					for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
@@ -263,3 +267,20 @@
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
+
+/obj/structure/barricade/plasteel/metal
+	name = "folding metal barricade"
+	desc = "A folding barricade made out of metal, making it slightly weaker than a normal metal barricade. Use a blowtorch to repair. Can be flipped down to create a path."
+	icon_state = "folding_metal_closed_0"
+	health = 400
+	maxhealth = 400
+	force_level_absorption = 10
+	stack_type = /obj/item/stack/sheet/metal
+	debris = list(/obj/item/stack/sheet/metal)
+	stack_amount = 6
+	destroyed_stack_amount = 3
+	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_type = "folding_metal"
+	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
+
+	linkable = FALSE

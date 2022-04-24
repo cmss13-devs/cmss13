@@ -29,12 +29,12 @@
 					/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
 					/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
 					/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
-					/datum/job/marine/leader/equipped/whiskey = JOB_SQUAD_LEADER,
-					/datum/job/marine/specialist/equipped/whiskey = JOB_SQUAD_SPECIALIST,
-					/datum/job/marine/smartgunner/equipped/whiskey = JOB_SQUAD_SMARTGUN,
-					/datum/job/marine/medic/equipped/whiskey = JOB_SQUAD_MEDIC,
-					/datum/job/marine/engineer/equipped/whiskey = JOB_SQUAD_ENGI,
-					/datum/job/marine/standard/equipped/whiskey = JOB_SQUAD_MARINE
+					/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
+					/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
+					/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
+					/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
+					/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
+					/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE
 	)
 
 

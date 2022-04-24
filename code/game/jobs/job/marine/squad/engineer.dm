@@ -27,11 +27,7 @@
 
 	return (slots*4)
 
-/datum/job/marine/engineer/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/engineer_equipped
-
-/datum/job/marine/engineer/equipped/whiskey
+/datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/engineer

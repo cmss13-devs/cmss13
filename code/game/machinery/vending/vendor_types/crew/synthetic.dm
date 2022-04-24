@@ -1,10 +1,10 @@
 //------------GEAR VENDOR---------------
 
 /obj/structure/machinery/cm_vending/gear/synth
-	name = "\improper ColMarTech Auxiliary Gear Rack"
+	name = "\improper ColMarTech Synthetic Auxiliary Gear Rack"
 	desc = "An automated gear rack hooked up to a colossal storage of various medical and engineering supplies. Can be accessed only by synthetic units."
 	icon_state = "gear"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
 
 	listed_products = list(
@@ -61,7 +61,9 @@
 		list("Synth-Graft", 4, /obj/item/tool/surgery/synthgraft, null, VENDOR_ITEM_REGULAR),
 
 		list("OTHER SUPPLIES", 0, null, null, null),
-		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_RECOMMENDED),
+		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
+		list("Rangefinder", 8, /obj/item/device/binoculars/range, null,  VENDOR_ITEM_REGULAR),
+		list("Laser Designator", 12, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_RECOMMENDED),
 		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_RECOMMENDED),
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
@@ -118,6 +120,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Smartpack, Tan", 0, /obj/item/storage/backpack/marine/smartpack/tan, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Smartpack, White", 0, /obj/item/storage/backpack/marine/smartpack/white, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Smartpack, Black", 0, /obj/item/storage/backpack/marine/smartpack/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Logistics IMP Backpack", 0, /obj/item/storage/backpack/marine/satchel/big, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -146,7 +149,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /obj/structure/machinery/cm_vending/clothing/synth
 	name = "\improper ColMarTech Synthetic Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
 
 /obj/structure/machinery/cm_vending/clothing/synth/Initialize(mapload, ...)
@@ -156,14 +159,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 //------------SNOWFLAKE VENDOR---------------
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake
-	name = "\improper Snowflake Vendor"
+	name = "\improper W-Y Synthetic Conformity Unit"
 	desc = "A vendor with a large snowflake on it. Provided by Wey-Yu Fashion Division(TM)."
 	icon_state = "snowflake"
 	use_points = TRUE
 	show_points = TRUE
 	use_snowflake_points = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
 
 	vend_delay = 10
@@ -243,13 +246,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
-	name = "\improper Experimental Tools Vendor"
-	desc = "A smaller vendor hooked up to a cache of specially provisioned, experimental tools and equipment. Handle with care."
+	name = "\improper W-Y Experimental Tools Vendor"
+	desc = "A smaller vendor hooked up to a cache of specially provisioned, experimental tools and equipment provided by the Wey-Yu Research and Development Division(TM). Handle with care."
 	icon_state = "robotics"
 	available_points = 0
 	available_points_to_display = 0
 	vendor_theme = VENDOR_THEME_COMPANY
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH)
 
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/attackby(obj/item/W, mob/user)
@@ -257,30 +260,25 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		if(user.drop_inv_item_to_loc(W, src))
 			available_points = available_points + 45
 			available_points_to_display = available_points
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
+			return
 	return ..()
 
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	listed_products = list(
 		list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
-
 		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
-
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
-
-      	list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
-
+		list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
 		list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
-
 		list("Experimental Meson Goggles", 15, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),
-
 		list("Telescopic Baton", 15, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
 	)
 
 //------------EXPERIMENTAL TOOL KITS---------------
 /obj/effect/essentials_set/cnailgun
-    spawned_gear_list = list(
-        /obj/item/weapon/gun/smg/nailgun/compact,
-        /obj/item/ammo_magazine/smg/nailgun,
-        /obj/item/ammo_magazine/smg/nailgun,
-    )
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/ammo_magazine/smg/nailgun,
+		/obj/item/ammo_magazine/smg/nailgun,
+	)

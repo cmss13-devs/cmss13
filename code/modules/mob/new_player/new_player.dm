@@ -218,9 +218,7 @@
 			return
 
 		else
-			if(!ready && href_list["preference"])
-				if(client) client.prefs.process_link(src, href_list)
-			else new_player_panel()
+			new_player_panel()
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	if (src != usr)

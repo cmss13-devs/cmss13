@@ -357,6 +357,8 @@
   Geeves:
   - expansion: CO armor now works as a smartgun harness.
   - expansion: Yautja HPCs now have anti-vehicle effects.
+  Stan_Albatross:
+  - spellcheck: fixed an inaccuracy in the message when you get noted.
   TotalEpicness:
   - balance: Removed the stun baton denied access stun,  added a new spark effect
       for when you pick up a baton that you do not have access to.

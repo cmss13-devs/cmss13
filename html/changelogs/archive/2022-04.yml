@@ -353,3 +353,7 @@
 2022-04-24:
   Stan_Albatross:
   - bugfix: fixed being able to set up the m2c inside tarps, among other things.
+2022-04-25:
+  TotalEpicness:
+  - balance: Removed the stun baton denied access stun,  added a new spark effect
+      for when you pick up a baton that you do not have access to.

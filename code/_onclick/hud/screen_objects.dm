@@ -614,18 +614,25 @@
 /obj/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	name = "toggle night vision"
-	icon_state = "nightvision1"
+	icon_state = "nightvision_full"
 
 /obj/screen/xenonightvision/clicked(var/mob/user)
 	if (..())
 		return 1
 	var/mob/living/carbon/Xenomorph/X = user
 	X.toggle_nightvision()
-	if(X.lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
-		icon_state = "nightvision0"
-	else
-		icon_state = "nightvision1"
+	update_icon(X)
 	return 1
+
+/obj/screen/xenonightvision/update_icon(var/mob/living/carbon/Xenomorph/owner)
+	. = ..()
+	if(!owner.lighting_alpha)
+		icon_state = "nightvision_full"
+	if(owner.lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		icon_state = "nightvision_half"
+	else
+		icon_state = "nightvision_off"
+
 
 /obj/screen/bodytemp
 	name = "body temperature"

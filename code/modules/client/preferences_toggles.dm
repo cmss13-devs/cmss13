@@ -210,7 +210,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_inhand_activation_compensation'>Toggle Inhand Item Activation Compensation</a><br>"
 	)
 
 	var/dat = ""
@@ -299,6 +300,14 @@
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+	prefs.save_preferences()
+
+/client/proc/toggle_inhand_activation_compensation()
+	prefs.toggle_prefs ^= TOGGLE_INHAND_ACTIVATION
+	if(prefs.toggle_prefs & TOGGLE_INHAND_ACTIVATION)
+		to_chat(src, SPAN_BOLDNOTICE("Inhand item activation will now occur on the release of the hotkey."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Inhand item activation will now occur on the press of the hotkey."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

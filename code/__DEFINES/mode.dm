@@ -88,6 +88,8 @@
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 
 #define MEMBER_PUBLIC						(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
+
+#define TOGGLE_INHAND_ACTIVATION			(1<<12) // Determines whether in hand item activation will be on relase or press of the hotkey
 //=================================================
 
 var/list/be_special_flags = list(

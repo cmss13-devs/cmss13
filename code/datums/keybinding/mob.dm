@@ -46,12 +46,25 @@
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
 /datum/keybinding/mob/activate_inhand/down(client/user)
+	if(user.prefs.toggle_prefs & TOGGLE_INHAND_ACTIVATION)
+		return
+
 	. = ..()
 	if(.)
 		return
 	var/mob/M = user.mob
 	M.mode()
 	return TRUE
+
+/datum/keybinding/mob/activate_inhand/up(client/user)
+	if(user.prefs.toggle_prefs & TOGGLE_INHAND_ACTIVATION)
+		. = ..()
+		if(.)
+			return
+		var/mob/M = user.mob
+		M.mode()
+		return TRUE
+	return
 
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")

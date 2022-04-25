@@ -534,6 +534,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Alternate-Fire Dual Wielding: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Inhand Activation Compensation: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_INHAND_ACTIVATION]'><b>[toggle_prefs & TOGGLE_INHAND_ACTIVATION ? "On" : "Off"]</b></a><br>"
 			dat += "</div>"
 
 	dat += "</div></body>"

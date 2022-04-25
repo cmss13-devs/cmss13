@@ -402,7 +402,8 @@
 
 		//Regenerate the new mob's name now that our player is inside
 		new_xeno.generate_name()
-
+		if(new_xeno.client)
+			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
 		// If the player has self-deevolved before, don't allow them to do it again
 		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
 			remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)

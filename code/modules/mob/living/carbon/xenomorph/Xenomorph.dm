@@ -538,9 +538,9 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-	if(lighting_alpha != (LIGHTING_PLANE_ALPHA_VISIBLE || LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE || LIGHTING_PLANE_ALPHA_INVISIBLE))
-		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	update_sight()
+	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()

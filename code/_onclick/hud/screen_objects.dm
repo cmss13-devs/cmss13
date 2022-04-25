@@ -626,13 +626,18 @@
 
 /obj/screen/xenonightvision/update_icon(var/mob/living/carbon/Xenomorph/owner)
 	. = ..()
-	if(!owner.lighting_alpha)
-		icon_state = "nightvision_full"
-	if(owner.lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
-		icon_state = "nightvision_half"
-	else
-		icon_state = "nightvision_off"
-
+	var/vision_define
+	switch(owner.lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			icon_state = "nightvision_full"
+			vision_define = XENO_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			icon_state = "nightvision_half"
+			vision_define = XENO_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			icon_state = "nightvision_off"
+			vision_define = XENO_VISION_LEVEL_NO_NVG
+	to_chat(owner, SPAN_NOTICE("Night vision mode switched to [vision_define]"))
 
 /obj/screen/bodytemp
 	name = "body temperature"

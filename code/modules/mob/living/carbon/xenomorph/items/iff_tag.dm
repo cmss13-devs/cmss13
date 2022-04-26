@@ -7,6 +7,12 @@
 
 /obj/item/iff_tag/attack(mob/living/carbon/Xenomorph/xeno, mob/living/carbon/human/injector)
 	if(isXeno(xeno))
+		if(xeno.stat == DEAD)
+			to_chat(injector, SPAN_WARNING("\The [xeno] is dead..."))
+			return
+		if(xeno.iff_tag)
+			to_chat(injector, SPAN_WARNING("\The [xeno] already has a tag inside it."))
+			return
 		injector.visible_message(SPAN_NOTICE("[injector] starts forcing \the [src] into [xeno]'s carapace..."), SPAN_NOTICE("You start forcing \the [src] into [xeno]'s carapace..."))
 		if(!do_after(injector, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
 			return

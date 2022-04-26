@@ -535,6 +535,12 @@
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
 
+/obj/item/clothing/accessory/storage/webbing/five_slots
+	hold = /obj/item/storage/internal/accessory/webbing/five_slots
+
+/obj/item/storage/internal/accessory/webbing/five_slots
+	storage_slots = 5
+
 /obj/item/storage/internal/accessory/black_vest
 	storage_slots = 5
 
@@ -586,6 +592,21 @@
 	name = "tactical waistcoat"
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
+
+/obj/item/clothing/accessory/storage/black_vest/tool_webbing
+	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
+
+/obj/item/storage/internal/accessory/black_vest/tool_webbing
+	storage_slots = 7
+
+/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/multitool(src)
 
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 13
@@ -683,8 +704,8 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
-	cant_hold = list(	//Prevent inventory bloat
+	max_storage_space = 6	//weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	cant_hold = list(	//Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
 		)

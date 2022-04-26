@@ -8,11 +8,7 @@
 	gear_preset = /datum/equipment_preset/uscm/pfc
 	entry_message_body = "You are a rank-and-file Marine of the USCM, and that is your strength. What you lack alone, you gain standing shoulder to shoulder with the men and women of the corps. Ooh-rah!"
 
-/datum/job/marine/standard/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/pfc/full_plasma_rifle
-
-/datum/job/marine/standard/equipped/whiskey
+/datum/job/marine/standard/whiskey
 	title = JOB_WO_SQUAD_MARINE
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/pfc

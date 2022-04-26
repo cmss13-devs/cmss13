@@ -116,7 +116,7 @@
 		ACCESS_MARINE_OT,
 		ACCESS_WY_CORPORATE
 	)
-	skills = /datum/skills/MP
+	skills = /datum/skills/provost
 
 /datum/equipment_preset/uscm_event/provost/New()
 	. = ..()
@@ -168,18 +168,25 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/enforcer(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/enforcer(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/slug(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_L_HAND)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/taser(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(H), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/tml
 	name = "Provost Team Leader (PvE9)"
@@ -205,13 +212,21 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/slug(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/nade_box/tear_gas(H), WEAR_R_HAND)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/taser(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(H), WEAR_J_STORE)
 
 
 /datum/equipment_preset/uscm_event/provost/advisor

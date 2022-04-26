@@ -90,7 +90,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
-		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("If you think this was filed in error or wish to contest the note, make a staff report at <a href='https://cm-ss13.com/forums/forms.php?do=form&fid=12;'><b>The CM Forums</b></a>")))
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("If you believe this was filed in error or misplaced, make a staff report at <a href='[URL_FORUM_STAFF_REPORT]'><b>The CM Forums</b></a>")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("You can also click the name of the staff member noting you to PM them.")))
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)

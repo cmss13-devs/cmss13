@@ -540,6 +540,27 @@
 	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 	screenobj.update_icon(src)
 
+/mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
+	switch(level)
+		if(XENO_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(XENO_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
+	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	screenobj.update_icon(src)
+
+/mob/living/carbon/Xenomorph/proc/get_vision_level()
+	switch(lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			return XENO_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			return XENO_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			return XENO_VISION_LEVEL_NO_NVG
+
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))

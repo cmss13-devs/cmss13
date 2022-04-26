@@ -36539,7 +36539,10 @@
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "dcW" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "ddj" = (
@@ -45243,12 +45246,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "gMA" = (
-/obj/effect/decal/cleanable/cobweb{
-	dir = 4;
-	pixel_x = 9;
-	pixel_y = 19
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/upper_hull/u_m_p)
 "gMU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -83216,6 +83221,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"xWF" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "xWO" = (
 /obj/item/stack/catwalk,
 /obj/structure/cable/heavyduty{
@@ -109874,7 +109889,7 @@ avZ
 iYr
 cxk
 qVM
-jmR
+csz
 qVM
 eRR
 vce
@@ -113124,7 +113139,7 @@ adc
 pOZ
 wKn
 qVM
-xeG
+gMA
 qVM
 qVM
 crh
@@ -113935,7 +113950,7 @@ eHU
 qVM
 qVM
 qVM
-xeG
+gMA
 qVM
 qVM
 qVM
@@ -118199,7 +118214,7 @@ awE
 awE
 awE
 csz
-xCX
+xWF
 csz
 csz
 qVM
@@ -118405,7 +118420,7 @@ ieH
 qVM
 dYK
 csz
-xCX
+xWF
 csz
 qVM
 czu
@@ -118606,7 +118621,7 @@ eKK
 awE
 oLw
 qVM
-gMA
+jmR
 vGk
 qVM
 hoX

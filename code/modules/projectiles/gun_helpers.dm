@@ -583,7 +583,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 						S.handle_item_insertion(W, user = src)
 						return
 
-			quick_equip()
+		quick_equip()
 	else //empty hand, start checking slots and holsters
 		var/list/slot_order
 		switch(keymod)

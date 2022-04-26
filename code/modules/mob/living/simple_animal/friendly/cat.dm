@@ -37,7 +37,7 @@
 	if((src.loc) && isturf(src.loc))
 		if(stat != DEAD)
 			if(++miaow_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
-				playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
+				playsound(loc, "cat_meow", 15, 1, 4)
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
 			for(var/mob/living/simple_animal/mouse/M in view(1,src))

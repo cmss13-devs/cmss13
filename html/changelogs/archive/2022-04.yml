@@ -362,3 +362,6 @@
   TotalEpicness:
   - balance: Removed the stun baton denied access stun,  added a new spark effect
       for when you pick up a baton that you do not have access to.
+2022-04-26:
+  ghostsheet:
+  - bugfix: Quick equip works when not wearing a uniform.

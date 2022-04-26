@@ -163,7 +163,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
-	//More xeno stuff
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/playtime_perks = TRUE
 

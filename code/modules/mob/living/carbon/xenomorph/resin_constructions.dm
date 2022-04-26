@@ -212,7 +212,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Resin that harms any tallhosts when they walk over it."
 	construction_name = "resin spike"
 	cost = XENO_RESIN_SPIKE_COST
-	max_per_xeno = 15
+	max_per_xeno = 25
 
 	build_path = /obj/effect/alien/resin/spike
 

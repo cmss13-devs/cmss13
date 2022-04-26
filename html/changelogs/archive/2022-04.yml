@@ -363,5 +363,13 @@
   - balance: Removed the stun baton denied access stun,  added a new spark effect
       for when you pick up a baton that you do not have access to.
 2022-04-26:
+  Stan_Albatross:
+  - expansion: Added a ladder between the chef's hydroponics garden and a maint tunnel
+      near the officers' mess for easier travel
+  - expansion: Added a new type of ladder that breaks on hijack. The above ladder
+      is one of them.
+  - bugfix: fixed yet more poorly offset almayer cameras
+  - expansion: swapped the PO guns and PO gear vendor positions around to let two
+      people gear up properly at once
   ghostsheet:
   - bugfix: Quick equip works when not wearing a uniform.

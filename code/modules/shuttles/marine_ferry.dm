@@ -519,6 +519,10 @@
 		var/obj/structure/window/H = i
 		H.shatter_window(1)
 
+	for(var/k in GLOB.hijack_bustable_ladders)
+		var/obj/structure/ladder/fragile_almayer/L = k
+		L.break_and_replace()
+
 	// Delete the briefing door(s).
 	for(var/D in GLOB.hijack_deletable_windows)
 		qdel(D)

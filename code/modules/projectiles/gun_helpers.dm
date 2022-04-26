@@ -575,7 +575,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				if(istype(H) && !H.holstered && H.can_holster(W))
 					H.holster(W, src)
 					return
-				
+
 				var/obj/item/clothing/accessory/storage/holster/HS = A
 				if(istype(HS))
 					var/obj/item/storage/internal/accessory/holster/S = HS.hold
@@ -755,10 +755,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	src = G
 
 	var/drop_to_ground = TRUE
-	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+	if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 		drop_to_ground = FALSE
 		unwield(user)
-		if(!G.flags_gun_features && GUN_INTERNAL_MAG)
+		if(!(G.flags_gun_features & GUN_INTERNAL_MAG))
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.

@@ -615,3 +615,9 @@
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
+
+//preferences-related defines
+
+#define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"
+#define XENO_VISION_LEVEL_MID_NVG		"Half Night Vision"
+#define XENO_VISION_LEVEL_FULL_NVG		"Full Night Vision"

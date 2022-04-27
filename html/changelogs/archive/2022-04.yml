@@ -402,3 +402,6 @@
   - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
       spawn as
   - bugfix: Burger in hand item no longer dissapears after you remove the package.
+  50RemAndCounting:
+  - qol: Rearranged the Strip clickdrag menu items so that (Exo)suit, Suit storage
+      and Back item slot buttons are always on the top of the body parts list.

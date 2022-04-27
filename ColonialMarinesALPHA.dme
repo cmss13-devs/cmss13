@@ -1371,6 +1371,7 @@
 #include "code\modules\cm_tech\implements\implants.dm"
 #include "code\modules\cm_tech\implements\medical_czsp.dm"
 #include "code\modules\cm_tech\implements\railgun.dm"
+#include "code\modules\cm_tech\implements\rev_jelly.dm"
 #include "code\modules\cm_tech\implements\stims.dm"
 #include "code\modules\cm_tech\implements\tank.dm"
 #include "code\modules\cm_tech\implements\xeno_handler.dm"

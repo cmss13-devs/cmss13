@@ -374,6 +374,9 @@
   ghostsheet:
   - bugfix: Quick equip works when not wearing a uniform.
 2022-04-27:
+  Geeves:
+  - bugfix: Fixes one of the phones on the ERT station appearing on the phone list
+      as an null entry by making it uncallable.
   Geeves, Nauticall:
   - rscadd: Added xeno IFF tags that prevent smart weapons from shooting the implanted
       xeno. Use an access tuner to reprogram these, it uses the IFF group on your

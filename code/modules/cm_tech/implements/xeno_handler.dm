@@ -1,19 +1,3 @@
-/datum/tech/xeno_handler
-	name = "Advanced Exobiology"
-	desc = "Give the Marines a Xeno ERT"
-	icon_state = "friendly_xeno"
-
-	flags = TREE_FLAG_MARINE
-
-	required_points = 20
-	tier = /datum/tier/three
-
-/datum/tech/xeno_handler/on_unlock()
-	. = ..()
-
-	var/datum/emergency_call/xeno_handler/X = new()
-	X.activate()
-
 //Xenomorphs, hostile to everyone.
 /datum/emergency_call/xeno_handler
 	name = "Xenomorph Handler"

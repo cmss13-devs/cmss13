@@ -1,48 +1,4 @@
-GLOBAL_LIST_EMPTY_TYPED(railgun_computer_turf_position, /datum/railgun_computer_location)
 GLOBAL_DATUM(railgun_eye_location, /datum/coords)
-
-/datum/tech/railgun
-	name = "Enable Stellar Vessel Armements"
-	desc = "Enables the two railguns attached to CIC, allowing for bombardment of enemy positions."
-	icon_state = "railgun"
-
-	flags = TREE_FLAG_MARINE
-
-	required_points = 20
-	tier = /datum/tier/two
-	var/obj/structure/machinery/computer/railgun/railgun_type = /obj/structure/machinery/computer/railgun
-
-/datum/tech/railgun/ui_static_data(mob/user)
-	. = ..()
-	.["stats"] += list(
-		list(
-			"content" = "Maximum Ammo: [initial(railgun_type.max_ammo)]",
-			"color" = "green",
-			"icon" = "warehouse"
-		),
-		list(
-			"content" = "Ammo Recharge Time: [DisplayTimeText(initial(railgun_type.ammo_recharge_time), 1)]",
-			"color" = "green",
-			"icon" = "battery-three-quarters"
-		),
-		list(
-			"content" = "Devastation Range: [initial(railgun_type.range)]",
-			"color" = "red",
-			"icon" = "bomb"
-		)
-	)
-
-/datum/tech/railgun/on_unlock()
-	. = ..()
-
-	for(var/a in GLOB.railgun_computer_turf_position)
-		var/datum/railgun_computer_location/RCL = a
-		var/turf/T = RCL.coords.get_turf_from_coord()
-		if(!T)
-			continue
-
-		var/obj/structure/machinery/computer/railgun/RG = new railgun_type(T)
-		RG.dir = RCL.direction
 
 /datum/railgun_computer_location
 	var/datum/coords/coords
@@ -53,12 +9,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
-	var/datum/railgun_computer_location/RCL = new()
-	RCL.coords = new(loc)
-	RCL.direction = dir
-
-	GLOB.railgun_computer_turf_position.Add(RCL)
-
+	var/obj/structure/machinery/computer/railgun/RG = new(loc)
+	RG.dir = dir
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/railgun_camera_pos
@@ -91,12 +43,14 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	var/power = 900
 	var/range = 2
 
+	/// Computer and Railgun can only be used if this variable is cleared
+	var/locked = TRUE
+
 /obj/structure/machinery/computer/railgun/Initialize()
 	. = ..()
 	if(!GLOB.railgun_eye_location)
 		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
 		return INITIALIZE_HINT_QDEL
-
 	target_z = GLOB.railgun_eye_location.z_pos
 
 /obj/structure/machinery/computer/railgun/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
@@ -138,6 +92,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/proc/can_fire(var/mob/living/carbon/human/H, var/turf/T)
 	if(T.z != target_z)
+		return FALSE
+
+	if(locked)
+		to_chat(H, SPAN_WARNING("Railgun Safeties are on, unable to fire!"))
 		return FALSE
 
 	if(istype(T, /turf/open/space)) // No firing into space
@@ -233,6 +191,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	if(!istype(H))
 		return
+
+	if(locked)
+		to_chat(H, SPAN_WARNING("Railgun Safeties prevent using the firing system."))
+		return FALSE
 
 	if(operator && operator.stat == CONSCIOUS)
 		to_chat(H, SPAN_WARNING("Someone is already using this computer!"))

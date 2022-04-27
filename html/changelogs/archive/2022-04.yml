@@ -387,3 +387,7 @@
   - rscadd: The PMC Xeno Handler now spawns with an access tuner.
   - bugfix: Fixed a bug where smart weapons cached your IFF and didn't bother to set
       the new IFF if you picked up an ID with a different IFF group.
+  Stan_Albatross:
+  - bugfix: fixed some issues with misalignement of the north facing open and closed
+      sprites for the folding metal cade, and misalignment of the barbed wire on the
+      north facing closed plasteel cade sprite.

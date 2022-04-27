@@ -7,8 +7,10 @@
 	can_hold = list(/obj/item/device/implanter)
 	w_class = SIZE_SMALL
 
+
 /obj/item/storage/box/implant/picker
 	desc = "A sterile metal lockbox housing a printer for making hypodermic implant injectors."
+	foldable = FALSE
 	var/picks_left = 2
 	var/list/pickable = list(
 		"Nightvision Implant" = /obj/item/device/implanter/nvg,
@@ -18,14 +20,14 @@
 	)
 
 /obj/item/storage/box/implant/picker/open(mob/user)
-	if(!select_implants(user))
-		return ..()
+	select_implants(user)
+	return ..()
 
 /obj/item/storage/box/implant/picker/attack_self(mob/user)
 	select_implants(user)
+	return ..()
 
-/obj/item/storage/box/implant/picker/open(mob/user)
-	. = FALSE
+/obj/item/storage/box/implant/picker/proc/select_implants(mob/user)
 	while(picks_left)
 		if(!length(pickable))
 			picks_left = 0
@@ -35,13 +37,12 @@
 			options += name
 		var/choice = tgui_input_list(usr, "Pick your implants", "Implants Select", options)
 		if(!choice || !(choice in pickable))
-			return FALSE
+			return
 		picks_left--
 		var/path = pickable[choice]
 		pickable -= choice
 		new path(src)
 		stoplag()
-	return TRUE
 
 /obj/item/device/implanter
 	name = "implanter"

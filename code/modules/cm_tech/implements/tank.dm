@@ -20,16 +20,16 @@
 
 /obj/item/tank_coupon
 	name = "tank coupon"
-	desc = "A coupon to be used on ASRS Vehicle Consoles to grant the wearer a TANK! One use."
+	desc = "A coupon to be used for ASRS Vehicle Consoles to grant the wearer a TANK! One use only."
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
 	item_state = "pamphlet_written"
 
-/obj/item/tank_coupon/attack_hand(mob/user)
+/obj/item/tank_coupon/attack_self(mob/user)
 	if(QDELETED(src))
 		return
 	if(redeem_tank())
-		visible_message("[src] catches fire as it is read, resetting ASRS Vehicle system!")
+		to_chat(user, SPAN_WARNING("[src] catches fire as it is read, resetting the ASRS Vehicle system!"))
 		qdel(src)
 	return ..()
 

@@ -399,6 +399,7 @@
   - server: added proper gpanel integration for game-end notifications and fixed some
       rough edges with it
   - balance: Prevented Wardens from using the heal ability on other Wardens.
+  - bugfix: Fixed barricade hit sounds being improperly loaded under docker setup
   Spircen:
   - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
       spawn as

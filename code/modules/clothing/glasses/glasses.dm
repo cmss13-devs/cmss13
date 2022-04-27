@@ -98,11 +98,11 @@
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
-	user.glasses = null
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
 			var/datum/mob_hud/H = huds[hud_type]
 			H.remove_hud_from(user)
+			user.glasses = null
 	user.update_sight()
 	return ..()
 

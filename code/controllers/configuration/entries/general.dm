@@ -33,6 +33,9 @@ Basics, the most important.
 /datum/config_entry/flag/no_restarts
 	config_entry_value = TRUE
 
+/// Server to notify of game events
+/datum/config_entry/string/manager_url
+
 /// URL for the CentCom Galactic Ban DB API
 /datum/config_entry/string/centcom_ban_db
 

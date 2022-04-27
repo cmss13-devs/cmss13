@@ -330,36 +330,30 @@
 
 /obj/structure/largecrate/merc/clothing/New()
 	..()
-	if(prob(25))
+	if(prob(25)) //pmc
 		new /obj/item/clothing/under/marine/veteran/PMC(src)
 		new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
 		new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
 		new /obj/item/clothing/mask/gas/PMC(src)
-	else if(prob(25))
-		new /obj/item/clothing/under/marine/veteran/mercenary/miner(src)
-		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(src)
-		new /obj/item/clothing/suit/storage/militia/brace(src)
+	else if(prob(25)) //dutch's
+		new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
+		new /obj/item/clothing/under/marine/veteran/dutch(src)
+		new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
-		new /obj/item/clothing/mask/gas/PMC(src)
-	else if(prob(25))
-		new /obj/item/clothing/under/marine/veteran/mercenary/miner(src)
-		new /obj/item/clothing/head/helmet/marine/veteran/mercenary(src)
-		new /obj/item/clothing/suit/storage/militia/vest(src)
-		new /obj/item/clothing/gloves/marine/veteran(src)
-		new /obj/item/clothing/mask/gas/PMC(src)
-	else if(prob(25))
-		new /obj/item/clothing/under/marine/veteran/mercenary/support(src)
-		new /obj/item/clothing/head/helmet/marine/veteran/mercenary/support(src)
+	else if(prob(25)) //pizza
+		new /obj/item/clothing/under/pizza(src)
+		new /obj/item/clothing/head/soft/red(src)
+	else if(prob(25)) //clf
+		new /obj/item/clothing/under/colonist/clf(src)
 		new /obj/item/clothing/suit/storage/militia(src)
+		new /obj/item/clothing/head/militia(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
-		new /obj/item/clothing/mask/gas/PMC(src)
-	else
+	else //freelancer
 		new /obj/item/clothing/under/marine/veteran/freelancer(src)
 		new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 		new /obj/item/clothing/head/cmbandana(src)
 		new /obj/item/clothing/gloves/marine/veteran(src)
-		new /obj/item/clothing/mask/gas/PMC(src)
 
 /obj/structure/largecrate/merc/ammo
 	name = "\improper Black market ammo crate"

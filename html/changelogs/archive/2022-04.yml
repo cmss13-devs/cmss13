@@ -395,3 +395,6 @@
       and the hud will deactivate.
   - bugfix: deactivated mesons now use the degoggles sprite instead of remaining the
       same.
+  null:
+  - server: added proper gpanel integration for game-end notifications and fixed some
+      rough edges with it

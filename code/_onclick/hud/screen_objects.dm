@@ -637,7 +637,7 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			icon_state = "nightvision_off"
 			vision_define = XENO_VISION_LEVEL_NO_NVG
-	to_chat(owner, SPAN_NOTICE("Night vision mode switched to [vision_define]"))
+	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
 
 /obj/screen/bodytemp
 	name = "body temperature"

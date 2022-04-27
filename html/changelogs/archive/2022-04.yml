@@ -405,3 +405,7 @@
   50RemAndCounting:
   - qol: Rearranged the Strip clickdrag menu items so that (Exo)suit, Suit storage
       and Back item slot buttons are always on the top of the body parts list.
+  - soundadd: ports the boatswain sound effect from Baystation 12 to be used by ARES
+      when announcing a CO/SEA on deck.
+  - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
+      a bit quieter.

@@ -391,3 +391,7 @@
   - bugfix: fixed some issues with misalignement of the north facing open and closed
       sprites for the folding metal cade, and misalignment of the barbed wire on the
       north facing closed plasteel cade sprite.
+  - bugfix: when you take off glasses, they will now properly go away from your onmob
+      and the hud will deactivate.
+  - bugfix: deactivated mesons now use the degoggles sprite instead of remaining the
+      same.

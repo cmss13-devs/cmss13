@@ -1680,6 +1680,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\castes\Sentinel.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Spitter.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Warrior.dm"
+#include "code\modules\mob\living\carbon\xenomorph\items\iff_tag.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\behavior_delegate.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\mutator.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\trapper.dm"

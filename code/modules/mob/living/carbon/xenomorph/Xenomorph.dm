@@ -56,6 +56,8 @@
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 
+	var/obj/item/iff_tag/iff_tag = null
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -302,6 +304,10 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+		if(oldXeno.iff_tag)
+			iff_tag = oldXeno.iff_tag
+			iff_tag.forceMove(src)
+			oldXeno.iff_tag = null
 	else if (h_number)
 		hivenumber = h_number
 
@@ -564,6 +570,9 @@
 		if(mutation_type != "Normal")
 			to_chat(user, "It has specialized into a [mutation_type].")
 
+	if(iff_tag)
+		to_chat(user, SPAN_NOTICE("It has an IFF tag sticking out of its carapace."))
+
 	return
 
 /mob/living/carbon/Xenomorph/Destroy()
@@ -608,6 +617,8 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+
+	QDEL_NULL(iff_tag)
 
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete

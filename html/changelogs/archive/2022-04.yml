@@ -401,3 +401,4 @@
   Spircen:
   - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
       spawn as
+  - bugfix: Burger in hand item no longer dissapears after you remove the package.

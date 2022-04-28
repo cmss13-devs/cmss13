@@ -415,6 +415,8 @@
   50RemAndCounting:
   - qol: Recoloured the Chief Engineer security and squad headset HUD icons to be
       more visually distinct from the Maintenance Technician HUD icons.
+  Geeves:
+  - balance: The XvX Slash Damage modifier has been lowered to x1.5 from x2.25.
   Spircen:
   - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
       it.

@@ -62,6 +62,11 @@
 	path = /obj/item/tool/wrench
 	category = "Tools"
 
+/datum/autolathe/recipe/mop
+	name = "mop"
+	path = /obj/item/tool/mop
+	category = "Tools"
+
 /datum/autolathe/recipe/radio_headset
 	name = "radio headset"
 	path = /obj/item/device/radio/headset

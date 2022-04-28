@@ -418,3 +418,7 @@
   Stan_Albatross:
   - bugfix: fixes unload-weapon not swapping hands
   - bugfix: fixes the shoulder holster not fitting the smartpistol
+  - balance: buffed yautja plasma pistol damage a bit
+  - balance: the yautja plasma pistol now sets people on fire
+  - balance: the yautja spike launcher now has a damage multiplier on walls, like
+      a masterkey, and will do EXTREME amounts of damage to them.

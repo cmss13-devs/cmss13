@@ -427,3 +427,6 @@
   - balance: the yautja plasma pistol now sets people on fire
   - balance: the yautja spike launcher now has a damage multiplier on walls, like
       a masterkey, and will do EXTREME amounts of damage to them.
+  null:
+  - qol: Replaced outdated "OOC.Hotkeys Help" verb by "Preferences.Edit Hotkeys" to
+      open keybinds editor

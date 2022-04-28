@@ -412,6 +412,9 @@
   - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
       a bit quieter.
 2022-04-28:
+  50RemAndCounting:
+  - qol: Recoloured the Chief Engineer security and squad headset HUD icons to be
+      more visually distinct from the Maintenance Technician HUD icons.
   Spircen:
   - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
       it.

@@ -113,7 +113,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 180
+	xeno_cooldown = 150
 	plasma_cost = 180
 
 	// Config

@@ -293,6 +293,28 @@
 	containername = "\improper smartgun drums crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m56d
+	name = "M56D drum magazine crate (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/m56d,
+					/obj/item/ammo_magazine/m56d
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper m56d drums crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_m2c
+	name = "M2C box magazine crate (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/m2c,
+					/obj/item/ammo_magazine/m2c
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper m2c box crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_sentry
 	name = "UA 571-C sentry ammunition (x2)"
 	contains = list(

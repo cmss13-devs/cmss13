@@ -733,9 +733,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 		/obj/item/ammo_magazine/pistol/heavy/super,
 		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
 		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver
-	)
-	cant_hold = list(
+		/obj/item/ammo_magazine/revolver,
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
 	)

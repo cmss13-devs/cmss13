@@ -412,6 +412,9 @@
   - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
       a bit quieter.
 2022-04-28:
+  Spircen:
+  - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
+      it.
   Stan_Albatross:
   - bugfix: fixes unload-weapon not swapping hands
   - bugfix: fixes the shoulder holster not fitting the smartpistol

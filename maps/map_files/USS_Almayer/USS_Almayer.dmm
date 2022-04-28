@@ -41620,9 +41620,7 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/machinery/vending/cigarette{
-	layer = 3.1
-	},
+/obj/structure/machinery/vending/cigarette,
 /obj/item/ashtray/plastic{
 	layer = 3.4;
 	pixel_x = 7;

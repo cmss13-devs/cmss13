@@ -29,7 +29,7 @@
 	if(QDELETED(src))
 		return
 	if(redeem_tank())
-		to_chat(user, SPAN_WARNING("[src] catches fire as it is read, resetting the ASRS Vehicle system!"))
+		to_chat(user, SPAN_WARNING("\The [src] catches fire as it is read, resetting the ASRS Vehicle system!"))
 		qdel(src)
 	return ..()
 

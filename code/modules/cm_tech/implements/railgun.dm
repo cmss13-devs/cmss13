@@ -193,7 +193,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return
 
 	if(locked)
-		to_chat(H, SPAN_WARNING("Railgun Safeties prevent using the firing system."))
+		to_chat(H, SPAN_WARNING("The railgun safeties prevent you from using the firing system!"))
 		return FALSE
 
 	if(operator && operator.stat == CONSCIOUS)

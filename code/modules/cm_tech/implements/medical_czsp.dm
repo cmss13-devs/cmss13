@@ -1,79 +1,38 @@
-/datum/tech/droppod/item/medic_czsp
-	name = "Hospital Corpsman Combat Zone Support Package"
-	desc = "Gives corpsmen powerful tools to heal marines."
-	icon_state = "medic_qol"
-	droppod_name = "Medic CZSP"
 
-	flags = TREE_FLAG_MARINE
+/obj/item/storage/box/czsp/first_aid
+	name = "first-aid combat support kit"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon_state = "medicbox"
+	storage_slots = 3
 
-	required_points = 15
-	tier = /datum/tier/one
-
-/datum/tech/droppod/item/medic_czsp/pre_item_stats(mob/user)
+/obj/item/storage/box/czsp/first_aid/Initialize()
 	. = ..()
-	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	if(prob(5))
+		new /obj/item/device/healthanalyzer(src)
 
-	. += list(
-		list(
-			"content" = "Restricted usecase",
-			"color" = "orange",
-			"icon" = "exclamation-triangle",
-			"tooltip" = "Only usable by medics."
-		),
-		list(
-			"content" = "Requisition Unlock",
-			"color" = "orange",
-			"icon" = "unlock",
-			"tooltip" = "Unlocks the option to purchase [initial(SP.name)]"
-		)
-	)
-
-/datum/tech/droppod/item/medic_czsp/on_unlock()
-	. = ..()
-	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
-	SP = supply_controller.supply_packs[initial(SP.name)]
-	SP.buyable = TRUE
-	SP.cost = RO_PRICE_PRICY
-
-/datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
-	. = ..()
-
-	if(!H || skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		.["Medical CZSP"] = /obj/item/storage/box/combat_zone_support_package
-	else
-		var/type_to_add = /obj/item/stack/medical/bruise_pack
-		if(prob(50))
-			type_to_add = /obj/item/stack/medical/ointment
-
-		if(prob(5))
-			type_to_add = /obj/item/device/healthanalyzer
-
-		.["Random Medical Item"] = type_to_add
-
-/obj/item/storage/box/combat_zone_support_package
+/obj/item/storage/box/czsp/medical
 	name = "medical combat support kit"
-	use_sound = "toolbox"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
 	icon_state = "medicbox"
 	storage_slots = 4
 
-/obj/item/storage/box/combat_zone_support_package/Initialize()
+/obj/item/storage/box/czsp/medical/Initialize()
 	. = ..()
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/device/defibrillator/upgraded(src)
 
-
-/obj/item/storage/box/medic_upgraded_kits
+/obj/item/storage/box/czsp/medic_upgraded_kits
 	name = "medical upgrade kit"
 	icon_state = "upgradedkitbox"
 	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
 	max_w_class = SIZE_MEDIUM
-
 	storage_slots = 2
 
-/obj/item/storage/box/medic_upgraded_kits/Initialize()
+/obj/item/storage/box/czsp/medic_upgraded_kits/Initialize()
 	. = ..()
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)

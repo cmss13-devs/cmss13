@@ -54,8 +54,7 @@
 	see_invisible = INVISIBILITY_OBSERVER
 	see_in_dark = 100
 	GLOB.observer_list += src
-
-
+	set_lighting_alpha_from_pref(src.client)
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)				//Where is the body located?
@@ -107,6 +106,17 @@
 	..()
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+
+/mob/dead/observer/proc/set_lighting_alpha_from_pref(var/client/ghost_client)
+	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
+	switch(vision_level)
+		if(GHOST_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(GHOST_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(GHOST_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
 
 /mob/dead/observer/Login()
 	..()
@@ -572,14 +582,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Darkness"
 	set category = "Ghost.Settings"
 
-
-	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
-		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
-		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-	else
-		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
-	to_chat(src, SPAN_BOLDNOTICE("Switch lighting modes as an observer"))
+	var/level_message
+	switch(lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			level_message = "half night vision"
+			src?.client?.prefs?.ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+			level_message = "full night vision"
+			src?.client?.prefs?.ghost_vision_pref = GHOST_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+			level_message = "no night vision"
+			src?.client?.prefs?.ghost_vision_pref = GHOST_VISION_LEVEL_NO_NVG
+	src.client.prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("Night Vision mode switched and saved to [level_message]."))
 	sync_lighting_plane_alpha()
 
 /mob/dead/observer/verb/toggle_self_visibility()

@@ -54,7 +54,7 @@
 	see_invisible = INVISIBILITY_OBSERVER
 	see_in_dark = 100
 	GLOB.observer_list += src
-	set_lighting_alpha_from_pref(src.client)
+
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)				//Where is the body located?
@@ -255,6 +255,7 @@ Works together with spawning an observer, noted above.
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
+		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
 			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob

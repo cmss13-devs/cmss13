@@ -892,12 +892,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	m_intent ^= MOVE_INTENT_RUN | MOVE_INTENT_WALK //The one already active is turned off, the other is turned on
 	to_chat(src, SPAN_NOTICE("Observer movement changed"))
 
-/mob/dead/observer/Topic(href, href_list)
-	..()
-	if(href_list["preference"])
-		if(client)
-			client.prefs.process_link(src, href_list)
-
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
 	. += ""

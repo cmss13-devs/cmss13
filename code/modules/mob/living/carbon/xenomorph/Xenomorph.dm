@@ -44,7 +44,6 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
@@ -55,6 +54,8 @@
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
+
+	var/obj/item/iff_tag/iff_tag = null
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -302,6 +303,10 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+		if(oldXeno.iff_tag)
+			iff_tag = oldXeno.iff_tag
+			iff_tag.forceMove(src)
+			oldXeno.iff_tag = null
 	else if (h_number)
 		hivenumber = h_number
 
@@ -369,6 +374,10 @@
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
+	if(client)
+		set_lighting_alpha_from_prefs(client)
+	else
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	if(caste && caste.spit_types && caste.spit_types.len)
 		ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -524,6 +533,40 @@
 	// Since we updated our name we should update the info in the UI
 	in_hive.hive_ui.update_xeno_info()
 
+/mob/living/carbon/Xenomorph/proc/set_lighting_alpha_from_prefs(var/client/xeno_client)
+	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref
+	switch(vision_level)
+		if(XENO_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(XENO_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
+	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	screenobj.update_icon(src)
+
+/mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
+	switch(level)
+		if(XENO_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(XENO_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
+	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	screenobj.update_icon(src)
+
+/mob/living/carbon/Xenomorph/proc/get_vision_level()
+	switch(lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			return XENO_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			return XENO_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			return XENO_VISION_LEVEL_NO_NVG
+
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
@@ -563,6 +606,9 @@
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
 			to_chat(user, "It has specialized into a [mutation_type].")
+
+	if(iff_tag)
+		to_chat(user, SPAN_NOTICE("It has an IFF tag sticking out of its carapace."))
 
 	return
 
@@ -608,6 +654,8 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+
+	QDEL_NULL(iff_tag)
 
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete

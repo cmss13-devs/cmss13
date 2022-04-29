@@ -412,6 +412,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle2"
 	volume = 60
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/oxycodone/Initialize()
 	. = ..()

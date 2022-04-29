@@ -181,6 +181,7 @@
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 		), .proc/turn_on)
+		RegisterSignal(user, COMSIG_MOB_LOGIN, .proc/add_hud_tracker)
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)
@@ -194,6 +195,7 @@
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
+		COMSIG_MOB_LOGIN
 	))
 	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
@@ -204,6 +206,12 @@
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
 	..()
+
+/obj/item/device/radio/headset/proc/add_hud_tracker(var/mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	if(headset_hud_on && user.mind && (user.assigned_squad || misc_tracking) && user.hud_used?.locate_leader)
+		user.show_hud_tracker()
 
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER
@@ -223,13 +231,13 @@
 			var/datum/mob_hud/H = huds[hud_type]
 			if(headset_hud_on)
 				H.add_hud_to(usr)
-				if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)
+				if(user.mind && (misc_tracking || user.assigned_squad) && user.hud_used?.locate_leader)
 					user.show_hud_tracker()
 				if(misc_tracking)
 					SStracking.start_misc_tracking(user)
 			else
 				H.remove_hud_from(usr)
-				if(user.hud_used && user.hud_used.locate_leader)
+				if(user.hud_used?.locate_leader)
 					user.hide_hud_tracker()
 				if(misc_tracking)
 					SStracking.stop_misc_tracking(user)
@@ -420,6 +428,32 @@
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/mcom/synth
+	name = "marine synth headset"
+	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - tactics"
+	icon_state = "ms_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth)
+	volume = RADIO_VOLUME_CRITICAL
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CO
+
+/obj/item/device/radio/headset/almayer/mcom/synth/handle_switching_tracker_target(mob/living/carbon/human/user)
+	var/list/tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Landing Zone" = TRACKER_LZ,
+		"Alpha SL" = TRACKER_ASL,
+		"Bravo SL" = TRACKER_BSL,
+		"Charlie SL" = TRACKER_CSL,
+		"Delta SL" = TRACKER_DSL,
+		"Echo SL" = TRACKER_ESL
+	)
+	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", tracking_options)
+	if(!new_track)
+		return
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
+	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)

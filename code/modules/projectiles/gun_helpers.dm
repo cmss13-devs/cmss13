@@ -541,6 +541,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			var/obj/item/storage/internal/accessory/holster/HS = H.hold
 			if(HS.current_gun)
 				HS.current_gun.attack_hand(src)
+				return TRUE
 		return
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
@@ -567,17 +568,22 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	var/obj/item/W = get_active_hand()
-	var/obj/item/clothing/under/U = w_uniform
-	var/obj/item/clothing/accessory/holster/T
-	if(istype(U))
-		for(var/obj/item/clothing/accessory/holster/HS in U.accessories)
-			T = HS
-			break
 	if(W)
-		if(T && istype(W) && !T.holstered && T.can_holster(W))
-			T.holster(W, src)
-		else
-			quick_equip()
+		if(w_uniform)
+			for(var/obj/A in w_uniform.accessories)
+				var/obj/item/clothing/accessory/holster/H = A
+				if(istype(H) && !H.holstered && H.can_holster(W))
+					H.holster(W, src)
+					return
+
+				var/obj/item/clothing/accessory/storage/holster/HS = A
+				if(istype(HS))
+					var/obj/item/storage/internal/accessory/holster/S = HS.hold
+					if(S.can_be_inserted(W, TRUE))
+						S.handle_item_insertion(W, user = src)
+						return
+
+		quick_equip()
 	else //empty hand, start checking slots and holsters
 		var/list/slot_order
 		switch(keymod)
@@ -749,10 +755,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	src = G
 
 	var/drop_to_ground = TRUE
-	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+	if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 		drop_to_ground = FALSE
 		unwield(user)
-		if(!G.flags_gun_features && GUN_INTERNAL_MAG)
+		if(!(G.flags_gun_features & GUN_INTERNAL_MAG))
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.

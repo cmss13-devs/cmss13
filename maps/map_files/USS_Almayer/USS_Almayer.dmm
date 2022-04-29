@@ -3126,13 +3126,6 @@
 "aiC" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/stern_hallway)
-"aiD" = (
-/obj/structure/machinery/pipedispenser/disposal,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "aiE" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -4655,7 +4648,6 @@
 	},
 /area/shuttle/drop1/sulaco)
 "ana" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
 /obj/structure/sign/safety/hazard{
 	pixel_x = -17;
 	pixel_y = -8
@@ -4664,6 +4656,7 @@
 	pixel_x = -17;
 	pixel_y = 7
 	},
+/obj/structure/machinery/cm_vending/clothing/pilot_officer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -11955,7 +11948,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30)
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -36538,7 +36533,10 @@
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "dcW" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "ddj" = (
@@ -41622,9 +41620,7 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/machinery/vending/cigarette{
-	layer = 3.1
-	},
+/obj/structure/machinery/vending/cigarette,
 /obj/item/ashtray/plastic{
 	layer = 3.4;
 	pixel_x = 7;
@@ -45248,12 +45244,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "gMA" = (
-/obj/effect/decal/cleanable/cobweb{
-	dir = 4;
-	pixel_x = 9;
-	pixel_y = 19
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/upper_hull/u_m_p)
 "gMU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -50686,8 +50684,14 @@
 	},
 /area/almayer/living/captain_mess)
 "jmR" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/cassette_tape,
+/obj/structure/ladder/fragile_almayer{
+	id = "kitchen";
+	height = 2
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -52507,6 +52511,9 @@
 	},
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -7
+	},
+/obj/item/storage/xeno_tag_case/full{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -58177,7 +58184,7 @@
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_access_txt = "19"
+	req_one_access_txt = "19;30"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -58234,6 +58241,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/paper,
+/obj/item/storage/xeno_tag_case/full,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -63950,7 +63958,14 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/reagent_dispensers/beerkeg,
+/obj/structure/ladder/fragile_almayer{
+	id = "kitchen";
+	height = 1
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 8;
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
@@ -70238,6 +70253,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"szi" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -70274,6 +70299,13 @@
 	tag = "icon-emerald (SOUTHEAST)"
 	},
 /area/almayer/squads/charlie)
+"szO" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/pilotbunks)
 "sAc" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
@@ -75145,7 +75177,6 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "uGz" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
 	},
@@ -83201,6 +83232,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"xWF" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(2,34,30);
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "xWO" = (
 /obj/item/stack/catwalk,
 /obj/structure/cable/heavyduty{
@@ -106580,7 +106621,7 @@ aws
 amh
 aiX
 ana
-aqw
+szO
 aqw
 aiX
 amh
@@ -109859,7 +109900,7 @@ avZ
 iYr
 cxk
 qVM
-jmR
+csz
 qVM
 eRR
 vce
@@ -110061,9 +110102,9 @@ baw
 mnA
 rKs
 aJU
-xCX
+szi
 csz
-xCX
+szi
 aJU
 baw
 aJU
@@ -113109,7 +113150,7 @@ adc
 pOZ
 wKn
 qVM
-xeG
+gMA
 qVM
 qVM
 crh
@@ -113920,7 +113961,7 @@ eHU
 qVM
 qVM
 qVM
-xeG
+gMA
 qVM
 qVM
 qVM
@@ -118184,7 +118225,7 @@ awE
 awE
 awE
 csz
-xCX
+xWF
 csz
 csz
 qVM
@@ -118390,7 +118431,7 @@ ieH
 qVM
 dYK
 csz
-xCX
+xWF
 csz
 qVM
 czu
@@ -118591,7 +118632,7 @@ eKK
 awE
 oLw
 qVM
-gMA
+jmR
 vGk
 qVM
 hoX
@@ -129313,7 +129354,7 @@ xlX
 dmQ
 qWT
 lWh
-aiD
+dmQ
 psm
 alG
 aDZ

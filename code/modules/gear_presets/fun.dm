@@ -309,14 +309,14 @@
 	M.attach_accessory(H, W)
 
 	H.equip_to_slot_or_del(M, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist/hefa(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
 	var/jacket_success = H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3G/hefa(H), WEAR_JACKET)
 	var/satchel_success = H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
-	var/pouch_l_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_L_STORE)
 	var/gun_success = H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/grenade/m92(H), WEAR_J_STORE)
 
 	// Now pump /everything/ full of HEFAs
@@ -361,17 +361,12 @@
 		for(var/i in 1 to armor.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
 
-	// Pouches
+	// Pouch
 	if(pouch_r_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.r_store
 		pouch.name = "HEFA pouch"
 		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
-	if(pouch_l_success)
-		var/obj/item/storage/pouch/explosive/pouch = H.l_store
-		pouch.name = "HEFA pouch"
-		for(var/i in 1 to pouch.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.l_store), WEAR_IN_L_STORE)
 
 	// Webbing
 	for(var/i in 1 to W.hold.storage_slots)
@@ -387,18 +382,19 @@
 	M.attach_accessory(H, W)
 
 	H.equip_to_slot_or_del(M, WEAR_BODY)
-	var/shoes_success = H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	var/shoes_success = H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist/hefa(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
 	var/jacket_success = H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3G/hefa(H), WEAR_JACKET)
 	var/satchel_success = H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
-	var/pouch_l_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_IN_BACK)
 
 	if(shoes_success)
-		var/obj/item/clothing/shoes/marine/shoes = H.shoes
+		var/obj/item/clothing/shoes/marine/knife/shoes = H.shoes
 		shoes.name = "HEFA Knight combat boots"
 
 	// Now pump /everything/ full of HEFAs
@@ -430,11 +426,6 @@
 		pouch.name = "HEFA pouch"
 		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
-	if(pouch_l_success)
-		var/obj/item/storage/pouch/explosive/pouch = H.l_store
-		pouch.name = "HEFA pouch"
-		for(var/i in 1 to pouch.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.l_store), WEAR_IN_L_STORE)
 
 	// Webbing
 	for(var/i in 1 to W.hold.storage_slots)

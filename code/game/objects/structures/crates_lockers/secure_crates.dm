@@ -159,10 +159,10 @@
 	icon_locked = "secure_locked_weapons"
 	icon_unlocked = "secure_unlocked_weapons"
 
-/obj/structure/closet/crate/secure/Weyland
-	name = "secure Weyland-Armat crate"
-	desc = "A secure crate with a Weyland-Armat insignia on it."
-	icon_state = "secure_locked_Weston"
-	icon_opened = "secure_open_Weston"
-	icon_locked = "secure_locked_Weston"
-	icon_unlocked = "secure_unlocked_Weston"
+/obj/structure/closet/crate/secure/weyland
+	name = "secure W-Y crate"
+	desc = "A secure crate with a W-Y insignia on it."
+	icon_state = "secure_locked_weyland"
+	icon_opened = "secure_open_weyland"
+	icon_locked = "secure_locked_weyland"
+	icon_unlocked = "secure_unlocked_weyland"

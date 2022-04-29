@@ -114,9 +114,9 @@
 
 #define XVX_UNIVERSAL_DAMAGEMULT 1.5 // Use to unilaterally buff every caste's DAMAGE against other xenos.
 
-#define XVX_SLASH_DAMAGEMULT 1.5 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that uses brute damage or slash damage
-#define XVX_ACID_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that apply acid damage (not including projectiles)
-#define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that use projectiles
+#define XVX_SLASH_DAMAGEMULT 1 * XVX_UNIVERSAL_DAMAGEMULT // 1.5 | Applies to any abilities that uses brute damage or slash damage
+#define XVX_ACID_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // 2.625 | Applies to any abilities that apply acid damage (not including projectiles)
+#define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // 2.625 | Applies to any abilities that use projectiles
 
 #define XVX_STUN_LENGTHMULT 1.25
 
@@ -615,3 +615,9 @@
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
+
+//preferences-related defines
+
+#define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"
+#define XENO_VISION_LEVEL_MID_NVG		"Half Night Vision"
+#define XENO_VISION_LEVEL_FULL_NVG		"Full Night Vision"

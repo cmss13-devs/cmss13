@@ -1033,3 +1033,12 @@ mob/proc/yank_out_object()
 	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
 
 	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+
+/mob/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["preference"])
+		if(client)
+			client.prefs.process_link(src, href_list)
+		return TRUE

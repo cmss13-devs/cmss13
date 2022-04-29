@@ -3391,10 +3391,9 @@
 	},
 /area/shuttle/distress/start_small)
 "qu" = (
-/obj/structure/transmitter{
+/obj/structure/transmitter/hidden{
 	dir = 8;
 	name = "Station Telephone";
-	phone_category = null;
 	phone_id = "Unknown Signal";
 	pixel_x = 14
 	},
@@ -4755,9 +4754,9 @@
 /area/adminlevel/ert_station)
 "Nt" = (
 /obj/structure/noticeboard{
-	pixel_y = 34;
+	desc = "It seems very, very empty.";
 	name = "departures board";
-	desc = "It seems very, very empty."
+	pixel_y = 34
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -5216,8 +5215,8 @@
 "TX" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/ashtray/plastic{
-	pixel_y = -2;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -2
 	},
 /obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt{

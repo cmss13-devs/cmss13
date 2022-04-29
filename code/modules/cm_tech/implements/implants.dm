@@ -11,6 +11,7 @@
 /obj/item/storage/box/implant/picker
 	desc = "A sterile metal lockbox housing a printer for making hypodermic implant injectors."
 	foldable = FALSE
+	storage_slots = 2
 	var/picks_left = 2
 	var/list/pickable = list(
 		"Nightvision Implant" = /obj/item/device/implanter/nvg,

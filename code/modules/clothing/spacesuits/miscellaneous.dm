@@ -87,13 +87,13 @@
 	name = "\improper MK.50 compression helmet"
 	desc = "A heavy space helmet, designed to be coupled with the MK.50 compression suit, it bears USCM styling. Feels like you could hotbox in here."
 	item_state = "compression"
-	icon_state = "compression_uscm"
+	icon_state = "compression"
 
 /obj/item/clothing/suit/space/compression/uscm
 	name = "\improper MK.50 compression suit"
 	desc = "A heavy, bulky civilian space suit, fitted with armored plates. This specific suit has found its way into the ragtag inventory of the USCM's patrol boat requisitions system."
 	item_state = "compression"
-	icon_state = "compression_uscm"
+	icon_state = "compression"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/handcuffs,/obj/item/tank)
 
 // Souto man

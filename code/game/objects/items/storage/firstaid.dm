@@ -495,6 +495,7 @@
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Pr"
 
 /obj/item/storage/pill_bottle/peridaxon/skillless

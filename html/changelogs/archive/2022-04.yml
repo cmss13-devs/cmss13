@@ -440,3 +440,6 @@
   - rscadd: Added an standalone implant printer box, for 2 out of 4 special implants.
   - rscdel: Removed RTO Backpack "Call Droppod" action, since there were none to call
       anyway.
+2022-04-30:
+  Triiodine:
+  - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

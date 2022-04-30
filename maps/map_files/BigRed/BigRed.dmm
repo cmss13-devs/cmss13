@@ -32249,12 +32249,6 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves_north)
-"sad" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor,
-/area/bigred/ground/garage_workshop)
 "sbz" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "gruesome"
@@ -32788,6 +32782,12 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
+/area/bigred/ground/garage_workshop)
+"uJF" = (
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "uPm" = (
 /turf/open/mars_cave{
@@ -38090,7 +38090,7 @@ upE
 vLd
 vLd
 upE
-sad
+uJF
 qsE
 aao
 aao

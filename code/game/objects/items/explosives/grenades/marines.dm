@@ -181,7 +181,7 @@
 	dispersion_angle = 15//tight cone
 
 /obj/item/explosive/grenade/HE/airburst/starshell
-	name = "\improper M74 AMG-S Star Shell"
+	name = "\improper M74 AGM-S Star Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
 	item_state = "grenade_starshell_active"

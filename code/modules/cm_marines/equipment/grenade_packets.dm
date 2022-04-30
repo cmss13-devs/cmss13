@@ -34,7 +34,7 @@
 	content_type = /obj/item/explosive/grenade/slug/baton
 
 /obj/item/storage/box/packet/flare
-	name = "M74 AMG-S star shell packet"
+	name = "M74 AGM-S star shell packet"
 	desc = "It contains three M40-F Star Shell Grenades. 40mm grenades that explode into burning ash. Great for temporarily lighting an area."
 	icon_state = "starshell_packet"
 	content_type = /obj/item/explosive/grenade/HE/airburst/starshell

@@ -374,7 +374,7 @@
 
 /datum/sprite_accessory/hair/balding
 	name = "Balding Hair"
-	icon_state = "hair_e"
+	icon_state = "hair_baldinghair"
 	gender = MALE // turnoff!
 
 

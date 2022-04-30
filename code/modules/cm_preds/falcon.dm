@@ -20,6 +20,9 @@
 			return "on [t_his] shoulder"
 	return ..()
 
+/obj/item/falcon_drone/attack_self(mob/user)
+	control_falcon_drone()
+
 /obj/item/falcon_drone/verb/control_falcon_drone()
 	set name = "Control Falcon Drone"
 	set desc = "Activates your falcon drone."

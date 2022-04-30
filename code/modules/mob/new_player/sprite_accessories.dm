@@ -132,6 +132,11 @@
 	icon_state = "hair_ponytail4"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/ponytail_rough
+	name = "Ponytail, Rough"
+	icon_state = "hair_ponytail_rough"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/sideponytail
 	name = "Side Ponytail"
 	icon_state = "hair_stail"
@@ -598,6 +603,14 @@
 	icon_state = "hair_shavedbun"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/bun_topknot
+	name = "Bun, Topknot"
+	icon_state = "hair_bun_topknot"
+
+/datum/sprite_accessory/hair/bun_man
+	name = "Man Bun"
+	icon_state = "hair_bun_manbun"
+
 /datum/sprite_accessory/hair/halfshaved
 	name = "Half Shaved"
 	icon_state = "hair_halfshaved"
@@ -642,6 +655,10 @@
 /datum/sprite_accessory/hair/undercut
 	name = "Undercut"
 	icon_state = "hair_undercut"
+
+/datum/sprite_accessory/hair/undercut_top
+	name = "Undercut, Top"
+	icon_state = "hair_undercuttop"
 
 /datum/sprite_accessory/hair/highlight
 	name = "Hightight"
@@ -700,6 +717,14 @@
 	name = "Side Undercut"
 	icon_state = "hair_sideundercut"
 
+/datum/sprite_accessory/hair/sideundercut
+	name = "Side Hang Undercut"
+	icon_state = "hair_sidehangundercut"
+
+/datum/sprite_accessory/hair/sideundercut_reverse
+	name = "Side Hang Undercut (Reverse)"
+	icon_state = "hair_reversesidehangundercut"
+
 /datum/sprite_accessory/hair/gentle2
 	name = "Gentle 2"
 	icon_state = "hair_gentle2"
@@ -709,6 +734,38 @@
 	name = "Flaired Hair 2"
 	icon_state = "hair_flair2"
 	gender = FEMALE
+
+/datum/sprite_accessory/hair/chelsea
+	name = "Punk Shave, Chelsea"
+	icon_state = "hair_punk_chelsea"
+
+/datum/sprite_accessory/hair/chelsea_small_hawk
+	name = "Punk Shave, Chelsea Small Hawk"
+	icon_state = "hair_punk_chelsea_smallhawk"
+
+/datum/sprite_accessory/hair/chelsea_ponytail
+	name = "Punk Shave, Chelsea Ponytail"
+	icon_state = "hair_punk_chelsea_ponytail"
+
+/datum/sprite_accessory/hair/chelsea_fringe
+	name = "Punk Shave, Chelsea (Fringe)"
+	icon_state = "hair_punk_chelseafringe"
+
+/datum/sprite_accessory/hair/chelsea_small_hawk_fringe
+	name = "Punk Shave, Chelsea Small Hawk (Fringe)"
+	icon_state = "hair_punk_chelseafringe_smallhawk"
+
+/datum/sprite_accessory/hair/chelsea_big_hawk_fringe
+	name = "Punk Shave, Chelsea Big Hawk (Fringe)"
+	icon_state = "hair_punk_chelseafringe_bighawk"
+
+/datum/sprite_accessory/hair/chelsea_ponytail_fringe
+	name = "Punk Shave, Chelsea Ponytail (Fringe)"
+	icon_state = "hair_punk_chelseafringe_ponytail"
+
+/datum/sprite_accessory/hair/oxton
+	name = "Oxton"
+	icon_state = "hair_oxton"
 
 /*
 ///////////////////////////////////

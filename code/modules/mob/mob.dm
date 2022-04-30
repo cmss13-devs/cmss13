@@ -643,13 +643,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(laid_down)
 		lying = TRUE
-		flags_atom &= ~DIRLOCK
+		if(flags_atom & DIRLOCK)
+			flags_atom &= ~DIRLOCK
+			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED
+			recalculate_move_delay = TRUE
 	else
 		lying = FALSE
 	if(buckled)
 		if(buckled.buckle_lying)
 			lying = TRUE
-			flags_atom &= ~DIRLOCK
+			if(flags_atom & DIRLOCK)
+				flags_atom &= ~DIRLOCK
+				move_delay += MOVE_REDUCTION_DIRECTION_LOCKED
+				recalculate_move_delay = TRUE
 		else
 			lying = FALSE
 
@@ -687,7 +693,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!canface())	return 0
 	var/newdir = FALSE
 	if(dir != ndir)
-		flags_atom &= ~DIRLOCK
+		if(flags_atom & DIRLOCK)
+			flags_atom &= ~DIRLOCK
+			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED
+			recalculate_move_delay = TRUE
 		setDir(ndir)
 		newdir = TRUE
 	if(buckled && !buckled.anchored)
@@ -707,8 +716,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
+		move_delay += MOVE_REDUCTION_DIRECTION_LOCKED
+		recalculate_move_delay = TRUE
 	else if ( facedir(newdir) )
-		flags_atom |= DIRLOCK
+		if(!(flags_atom & DIRLOCK))
+			flags_atom |= DIRLOCK
+			move_delay -= MOVE_REDUCTION_DIRECTION_LOCKED
+			recalculate_move_delay = TRUE
 
 
 /mob/proc/IsAdvancedToolUser()//This might need a rename but it should replace the can this mob use things check

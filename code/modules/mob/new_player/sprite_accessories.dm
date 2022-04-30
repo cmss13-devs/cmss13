@@ -67,11 +67,11 @@
 
 /datum/sprite_accessory/hair/short
 	name = "Short Hair"	  // try to capatilize the names please~
-	icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
+	icon_state = "hair_shorthair" // you do not need to define _s or _l sub-states, game automatically does this for you
 
 /datum/sprite_accessory/hair/cut
 	name = "Cut Hair"
-	icon_state = "hair_c"
+	icon_state = "hair_cuthair"
 
 /datum/sprite_accessory/hair/flair
 	name = "Flaired Hair"
@@ -79,7 +79,7 @@
 
 /datum/sprite_accessory/hair/long
 	name = "Shoulder-length Hair"
-	icon_state = "hair_b"
+	icon_state = "hair_long_shoulder"
 
 /datum/sprite_accessory/hair/longalt
 	name = "Shoulder-length Hair Alt"
@@ -120,7 +120,7 @@
 
 /datum/sprite_accessory/hair/ponytail2
 	name = "Ponytail 2"
-	icon_state = "hair_pa"
+	icon_state = "hair_ponytail2"
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/ponytail3
@@ -163,12 +163,12 @@
 
 /datum/sprite_accessory/hair/bedhead2
 	name = "Bedhead 2"
-	icon_state = "hair_bedheadv2"
+	icon_state = "hair_bedhead2"
 	selectable = 0
 
 /datum/sprite_accessory/hair/bedhead3
 	name = "Bedhead 3"
-	icon_state = "hair_bedheadv3"
+	icon_state = "hair_bedhead3"
 
 /datum/sprite_accessory/hair/beehive
 	name = "Beehive"
@@ -200,6 +200,10 @@
 	name = "Buzzcut"
 	icon_state = "hair_buzzcut"
 	gender = MALE
+
+/datum/sprite_accessory/hair/buzz/tall
+	name = "Buzzcut Tall"
+	icon_state = "hair_buzzcut_tall"
 
 /datum/sprite_accessory/hair/combover
 	name = "Combover"
@@ -274,9 +278,9 @@
 	name = "Overeye Long"
 	icon_state = "hair_longovereye"
 
-/datum/sprite_accessory/hair/fag
+/datum/sprite_accessory/hair/fair
 	name = "Flow Hair"
-	icon_state = "hair_f"
+	icon_state = "hair_flow"
 
 /datum/sprite_accessory/hair/feather
 	name = "Feather"
@@ -289,7 +293,7 @@
 
 /datum/sprite_accessory/hair/mohawk
 	name = "Mohawk"
-	icon_state = "hair_d"
+	icon_state = "hair_mohawk"
 
 /datum/sprite_accessory/hair/jensen
 	name = "Adam Jensen Hair"

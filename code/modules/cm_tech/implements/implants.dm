@@ -1,39 +1,3 @@
-/datum/tech/droppod/item/combat_implants
-	name = "Combat Implants"
-	desc = "Marines get access to combat implants to improve their ability to function."
-	icon_state = "implants"
-
-	droppod_name = "Implants"
-
-	flags = TREE_FLAG_MARINE
-
-	required_points = 25
-	tier = /datum/tier/two
-
-	droppod_input_message = "Choose a combat implant to retrieve from the droppod."
-	options_to_give = 2
-
-/datum/tech/droppod/item/combat_implants/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
-	. = ..()
-
-	.["Nightvision Implant"] = /obj/item/device/implanter/nvg
-	.["Rejuvenation Implant"] = /obj/item/device/implanter/rejuv
-	.["Agility Implant"] = /obj/item/device/implanter/agility
-	.["Subdermal Armor"] = /obj/item/device/implanter/subdermal_armor
-
-/datum/tech/droppod/item/combat_implants/get_items_to_give(mob/living/carbon/human/H, obj/structure/droppod/D)
-	var/list/chosen_options = ..()
-
-	if(!chosen_options)
-		return
-
-	var/obj/item/storage/box/implant/B = new()
-	B.storage_slots = options_to_give
-	for(var/i in chosen_options)
-		new i(B)
-
-	return list(B)
-
 /obj/item/storage/box/implant
 	name = "implant box"
 	desc = "A sterile metal lockbox housing hypodermic implant injectors."
@@ -42,6 +6,44 @@
 	storage_slots = 5
 	can_hold = list(/obj/item/device/implanter)
 	w_class = SIZE_SMALL
+
+
+/obj/item/storage/box/implant/picker
+	desc = "A sterile metal lockbox housing a printer for making hypodermic implant injectors."
+	foldable = FALSE
+	storage_slots = 2
+	var/picks_left = 2
+	var/list/pickable = list(
+		"Nightvision Implant" = /obj/item/device/implanter/nvg,
+		"Rejuvenation Implant" = /obj/item/device/implanter/rejuv,
+		"Agility Implant" = /obj/item/device/implanter/agility,
+		"Subdermal Armor" = /obj/item/device/implanter/subdermal_armor
+	)
+
+/obj/item/storage/box/implant/picker/open(mob/user)
+	select_implants(user)
+	return ..()
+
+/obj/item/storage/box/implant/picker/attack_self(mob/user)
+	select_implants(user)
+	return ..()
+
+/obj/item/storage/box/implant/picker/proc/select_implants(mob/user)
+	while(picks_left)
+		if(!length(pickable))
+			picks_left = 0
+			break
+		var/list/options = list()
+		for(var/name in pickable)
+			options += name
+		var/choice = tgui_input_list(usr, "Pick your implants", "Implants Select", options)
+		if(!choice || !(choice in pickable))
+			return
+		picks_left--
+		var/path = pickable[choice]
+		pickable -= choice
+		new path(src)
+		stoplag()
 
 /obj/item/device/implanter
 	name = "implanter"

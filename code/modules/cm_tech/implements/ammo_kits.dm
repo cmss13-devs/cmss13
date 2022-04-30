@@ -1,23 +1,3 @@
-/datum/tech/droppod/item/enhanced_antibiologicals
-	name = "Enhanced Antibiologicals"
-	desc = "Marines get access to limited-use kits that can convert ammo magazines into the specified ammo."
-	icon_state = "ammo"
-	droppod_name = "Ammo Kits"
-	flags = TREE_FLAG_MARINE
-
-	required_points = 25
-	tier = /datum/tier/two
-
-	droppod_input_message = "Choose an ammo kit to retrieve from the droppod."
-
-/datum/tech/droppod/item/enhanced_antibiologicals/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
-	. = ..()
-
-	.["Incendiary Buckshot Kit"] = /obj/item/storage/box/shotgun/buckshot
-	.["Incendiary Slug Kit"] = /obj/item/storage/box/shotgun/slug
-	.["Incendiary Ammo Kit"] = /obj/item/ammo_kit/incendiary
-	.["Cluster Ammo Kit"] = /obj/item/ammo_kit/cluster
-	.["Toxin Ammo Kit"] = /obj/item/ammo_kit/toxin
 
 /obj/item/ammo_kit
 	name = "ammo kit"

@@ -430,3 +430,19 @@
   null:
   - qol: Replaced outdated "OOC.Hotkeys Help" verb by "Preferences.Edit Hotkeys" to
       open keybinds editor
+2022-04-29:
+  null:
+  - rscdel: Removed Techs and Tech Tree system. We've done our best to find orphaned
+      gadgets a new home in AdminLand...
+  - rscadd: Railgun Computers are back on the Almayer, but HC added safeties to prevent
+      their unauthorized use.
+  - rscadd: Forget Spec Tokens. Added a 'Tank Coupon' for use in events. Use sparingly...
+  - rscadd: Added an standalone implant printer box, for 2 out of 4 special implants.
+  - rscdel: Removed RTO Backpack "Call Droppod" action, since there were none to call
+      anyway.
+2022-04-30:
+  Spircen:
+  - bugfix: Peridaxon, Alkysine, Imidazoline, RussianRed and Quickclot Pill Bottle
+      now has skilllock to open.
+  Triiodine:
+  - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

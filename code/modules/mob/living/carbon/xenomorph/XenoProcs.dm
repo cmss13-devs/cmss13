@@ -140,7 +140,7 @@
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 	else
-		if(is_mob_incapacitated() || buckled)
+		if(is_mob_incapacitated() || buckled || evolving)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 

@@ -155,7 +155,7 @@
 	SSround_recording.recorder.track_player(new_xeno)
 
 /mob/living/carbon/Xenomorph/proc/evolve_checks()
-	if(!check_state())
+	if(!check_state(TRUE))
 		return FALSE
 
 	if(is_ventcrawling)

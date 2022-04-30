@@ -232,7 +232,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state())
+	if(!X.check_state(TRUE))
 		return FALSE
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)

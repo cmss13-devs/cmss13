@@ -1921,6 +1921,8 @@
 #include "code\modules\test\maps\test_no_space_inside.dm"
 #include "code\modules\test\maps\test_pipes_connected.dm"
 #include "code\modules\test\maps\test_set_maps.dm"
+#include "code\modules\test\sprites\test_hair_sprites.dm"
+#include "code\modules\test\sprites\test_set_sprites.dm"
 #include "code\modules\test\testenv\test_area.dm"
 #include "code\modules\test\testenv\test_environment.dm"
 #include "code\modules\test\testenv\environments\tank_gallery.dm"

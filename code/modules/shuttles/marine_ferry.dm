@@ -602,8 +602,6 @@
 	var/sound_to_play2 = pick(SOUND_DISTANT_AA_FIRE)
 	//init the funny spark system
 	var/datum/effect_system/spark_spread/s = new
-	var/datum/effect_system/spark_spread/s2 = new
-	var/datum/effect_system/spark_spread/s3 = new
 	var/turf/T
 	var/mob/M
 	var/cause = create_cause_data("IX-50 MGAD")
@@ -644,8 +642,6 @@
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 2 SECONDS)
 	create_shrapnel(pick(turfs_int), rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/, cause)
 	s.set_up(10, 1, pick(turfs_int)) // Spark system funny
-	s2.set_up(10, 1, pick(turfs_int))
-	s3.set_up(10, 1, pick(turfs_int))
 	s.start()
 	sleep(1 SECONDS)
 	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius,cause, 1, pick(turfs_int), 1, 16, FLAMESHAPE_DEFAULT, null)
@@ -653,11 +649,13 @@
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion,pick(turfs_int),5,1,EXPLOSION_FALLOFF_SHAPE_LINEAR,null,cause), 3 SECONDS)
 	new /obj/effect/spawner/gibspawner/robot(pick(turfs_int))
 	new /obj/effect/spawner/gibspawner/robot(pick(turfs_int)) // A few random ass gibs
-	s2.start()
+	s.set_up(10, 1, pick(turfs_int))
+	s.start()
 	playsound(GLOB.AAgunLocation, sound_to_play2, 100, sound_range = 300,  falloff = 250, echo = list(-1000, -3500, 1000, 0, 0, 1, -2000, 0.5, 6, 2), y_s_offset = 10) // making sure?
 	playsound_area(shuttle_area,  sound_to_play, echo = list(-500, -2000, 1000, 500, 0, 0.8, 5, 5), y_s_offset = 10)
 	sleep(1 SECONDS)
-	s3.start()
+	s.set_up(10, 1, pick(turfs_int))
+	s.start()
 	create_shrapnel(pick(turfs_int), rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, cause)
 	marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred. ASAT-21 Rapier IV missiles have misfired and failed to intercept target. Please check ASAT tubes number 2 and 9.", "IX-50 MGAD System")
 

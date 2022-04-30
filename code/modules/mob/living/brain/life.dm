@@ -161,19 +161,19 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen(OVERLAY_BLIND, /obj/screen/fullscreen/blind)
 		else
-			clear_fullscreen("blind")
+			clear_fullscreen(OVERLAY_BLIND)
 
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				overlay_fullscreen(OVERLAY_EYE_BLURRY, /obj/screen/fullscreen/impaired, 5)
 			else
-				clear_fullscreen("eye_blurry")
+				clear_fullscreen(OVERLAY_EYE_BLURRY)
 
 			if(druggy)
-				overlay_fullscreen("high", /obj/screen/fullscreen/high)
+				overlay_fullscreen(OVERLAY_HIGH, /obj/screen/fullscreen/high)
 			else
-				clear_fullscreen("high")
+				clear_fullscreen(OVERLAY_HIGH)
 
 
 		if (interactee)

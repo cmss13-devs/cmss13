@@ -78,17 +78,17 @@
 			if (src:aiRestorePowerRoutine==2)
 				to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
 				src:aiRestorePowerRoutine = 0
-				clear_fullscreen("blind")
+				clear_fullscreen(OVERLAY_BLIND)
 				return
 			else if (src:aiRestorePowerRoutine==3)
 				to_chat(src, "Alert cancelled. Power has been restored.")
 				src:aiRestorePowerRoutine = 0
-				clear_fullscreen("blind")
+				clear_fullscreen(OVERLAY_BLIND)
 				return
 		else
 
 			//stage = 6
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen(OVERLAY_BLIND, /obj/screen/fullscreen/blind)
 			src.sight = src.sight&~SEE_TURFS
 			src.sight = src.sight&~SEE_MOBS
 			src.sight = src.sight&~SEE_OBJS
@@ -110,7 +110,7 @@
 							if (!istype(T, /turf/open/space))
 								to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
 								src:aiRestorePowerRoutine = 0
-								clear_fullscreen("blind")
+								clear_fullscreen(OVERLAY_BLIND)
 								return
 						to_chat(src, "Fault confirmed: missing external power. Shutting down main control system to save power.")
 						sleep(20)
@@ -148,7 +148,7 @@
 								if (!istype(T, /turf/open/space))
 									to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
 									src:aiRestorePowerRoutine = 0
-									clear_fullscreen("blind")
+									clear_fullscreen(OVERLAY_BLIND)
 									return
 							switch(PRP)
 								if (1) to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")

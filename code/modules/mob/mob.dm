@@ -735,8 +735,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/flash_weak_pain()
-	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 1)
-	clear_fullscreen("pain")
+	overlay_fullscreen(OVERLAY_PAIN, /obj/screen/fullscreen/pain, 1)
+	clear_fullscreen(OVERLAY_PAIN)
 
 /mob/proc/get_visible_implants(var/class = 0)
 	var/list/visible_implants = list()

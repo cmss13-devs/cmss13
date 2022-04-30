@@ -1294,10 +1294,10 @@
 		tint_level = VISION_IMPAIR_STRONG
 
 	if(tint_level)
-		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)
+		overlay_fullscreen(OVERLAY_TINT, /obj/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
-		clear_fullscreen("tint", 0)
+		clear_fullscreen(OVERLAY_TINT, 0)
 		return FALSE
 
 
@@ -1307,10 +1307,10 @@
 /mob/living/carbon/human/update_glass_vision(obj/item/clothing/glasses/G)
 	if(G.fullscreen_vision)
 		if(G == glasses && G.active) //equipped and activated
-			overlay_fullscreen("glasses_vision", G.fullscreen_vision)
+			overlay_fullscreen(OVERLAY_GLASSES_VISION, G.fullscreen_vision)
 			return TRUE
 		else //unequipped or deactivated
-			clear_fullscreen("glasses_vision", 0)
+			clear_fullscreen(OVERLAY_GLASSES_VISION, 0)
 
 /mob/living/carbon/human/verb/checkSkills()
 	set name = "Check Skills"

@@ -188,6 +188,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/hide_statusbar
 
 	var/no_radials_preference = FALSE
+	var/no_pain_overlays = FALSE
 
 	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
 	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
@@ -509,6 +510,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 			dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
+			dat += "<b>Disable Pain Overlays:</b> <a href='?_src_=prefs;preference=no_pain_overlays'><b>[no_pain_overlays ? "TRUE" : "FALSE"]</b></a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a>"
 			dat += "</div>"
@@ -1435,6 +1437,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("no_radials_preference")
 					no_radials_preference = !no_radials_preference
+
+				if("no_pain_overlays")
+					no_pain_overlays = !no_pain_overlays
 
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)

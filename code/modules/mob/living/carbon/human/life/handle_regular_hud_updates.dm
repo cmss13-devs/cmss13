@@ -20,9 +20,9 @@
 				if(-90 to -80) severity = 8
 				if(-95 to -90) severity = 9
 				if(-INFINITY to -95) severity = 10
-			overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
+			overlay_fullscreen(OVERLAY_CRIT, /obj/screen/fullscreen/crit, severity)
 		else
-			clear_fullscreen("crit")
+			clear_fullscreen(OVERLAY_CRIT)
 			if(oxyloss)
 				var/severity = 0
 				switch(oxyloss)
@@ -33,9 +33,9 @@
 					if(35 to 40) severity = 5
 					if(40 to 45) severity = 6
 					if(45 to INFINITY) severity = 7
-				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
+				overlay_fullscreen(OVERLAY_OXY, /obj/screen/fullscreen/oxy, severity)
 			else
-				clear_fullscreen("oxy")
+				clear_fullscreen(OVERLAY_OXY)
 
 
 			//Fire and Brute damage overlay (BSSR)
@@ -50,27 +50,27 @@
 					if(45 to 70) severity = 4
 					if(70 to 85) severity = 5
 					if(85 to INFINITY) severity = 6
-				overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
+				overlay_fullscreen(OVERLAY_BRUTE, /obj/screen/fullscreen/brute, severity)
 			else
-				clear_fullscreen("brute")
+				clear_fullscreen(OVERLAY_BRUTE)
 
 
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen(OVERLAY_BLIND, /obj/screen/fullscreen/blind)
 		else
-			clear_fullscreen("blind")
+			clear_fullscreen(OVERLAY_BLIND)
 
 		if(eye_blurry || dazed)
-			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+			overlay_fullscreen(OVERLAY_EYE_BLURRY, /obj/screen/fullscreen/impaired, 5)
 		else if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT))
-			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 2)
+			overlay_fullscreen(OVERLAY_EYE_BLURRY, /obj/screen/fullscreen/impaired, 2)
 		else
-			clear_fullscreen("eye_blurry")
+			clear_fullscreen(OVERLAY_EYE_BLURRY)
 
 		if(druggy)
-			overlay_fullscreen("high", /obj/screen/fullscreen/high)
+			overlay_fullscreen(OVERLAY_HIGH, /obj/screen/fullscreen/high)
 		else
-			clear_fullscreen("high")
+			clear_fullscreen(OVERLAY_HIGH)
 
 
 		if(hud_used)

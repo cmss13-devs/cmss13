@@ -383,3 +383,19 @@ var/list/default_onmob_icons = list(
 #define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
 #define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define CORE_LIMBS list("chest","head","groin")
+
+#define OVERLAY_PAIN "pain"
+#define OVERLAY_XENO_PAIN "xeno_pain"
+#define OVERLAY_WEATHER "weather"
+#define OVERLAY_FLASH "flash"
+#define OVERLAY_BLIND "blind"
+#define OVERLAY_EYE_BLURRY "eye_blurry"
+#define OVERLAY_HIGH "high"
+#define OVERLAY_TINT "tint"
+#define OVERLAY_GLASSES_VISION "glasses_vision"
+#define OVERLAY_CRIT "crit"
+#define OVERLAY_OXY "oxy"
+#define OVERLAY_BRUTE "brute"
+#define OVERLAY_DAZED "dazed"
+
+#define PAIN_OVERLAYS list(OVERLAY_PAIN, OVERLAY_XENO_PAIN, OVERLAY_BRUTE)

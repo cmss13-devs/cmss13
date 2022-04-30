@@ -195,11 +195,11 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				overlay_fullscreen(OVERLAY_EYE_BLURRY, /obj/screen/fullscreen/impaired, 5)
 				src.eye_blurry--
 				src.eye_blurry = max(0, src.eye_blurry)
 			else
-				clear_fullscreen("eye_blurry")
+				clear_fullscreen(OVERLAY_EYE_BLURRY)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
@@ -229,7 +229,7 @@
 		return TRUE
 
 	if(stat == DEAD)
-		clear_fullscreen("xeno_pain")
+		clear_fullscreen(OVERLAY_XENO_PAIN)
 		if(hud_used)
 			if(hud_used.healths)
 				hud_used.healths.icon_state = "health_dead"
@@ -241,14 +241,14 @@
 
 	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
-		overlay_fullscreen("xeno_pain", /obj/screen/fullscreen/xeno_pain, severity)
+		overlay_fullscreen(OVERLAY_XENO_PAIN, /obj/screen/fullscreen/xeno_pain, severity)
 	else
-		clear_fullscreen("xeno_pain")
+		clear_fullscreen(OVERLAY_XENO_PAIN)
 
 	if(blinded)
-		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+		overlay_fullscreen(OVERLAY_BLIND, /obj/screen/fullscreen/blind)
 	else
-		clear_fullscreen("blind")
+		clear_fullscreen(OVERLAY_BLIND)
 
 	if(interactee)
 		interactee.check_eye(src)
@@ -256,9 +256,9 @@
 		reset_view(null)
 
 	if(dazed)
-		overlay_fullscreen("dazed", /obj/screen/fullscreen/impaired, 5)
+		overlay_fullscreen(OVERLAY_DAZED, /obj/screen/fullscreen/impaired, 5)
 	else
-		clear_fullscreen("dazed")
+		clear_fullscreen(OVERLAY_DAZED)
 
 	if(!hud_used)
 		return TRUE

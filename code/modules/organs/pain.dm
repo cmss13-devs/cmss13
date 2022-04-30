@@ -1,6 +1,6 @@
 /mob/proc/flash_pain()
-	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 2)
-	clear_fullscreen("pain")
+	overlay_fullscreen(OVERLAY_PAIN, /obj/screen/fullscreen/pain, 2)
+	clear_fullscreen(OVERLAY_PAIN)
 
 mob/var/list/pain_stored = list()
 mob/var/last_pain_message = ""

@@ -195,7 +195,7 @@
 		return
 
 	// Do this always
-	clear_fullscreen("weather")
+	clear_fullscreen(OVERLAY_WEATHER)
 	remove_weather_effects()
 
 	// Check if we're supposed to be something affected by weather
@@ -204,9 +204,7 @@
 
 		// Fullscreens
 		if(SSweather.weather_event_instance.fullscreen_type)
-			overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
-		else
-			clear_fullscreen("weather")
+			overlay_fullscreen(OVERLAY_WEATHER, SSweather.weather_event_instance.fullscreen_type)
 
 		// Effects
 		if(SSweather.weather_event_instance.effect_type)

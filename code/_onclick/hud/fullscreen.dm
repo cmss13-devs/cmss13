@@ -4,6 +4,8 @@
 	var/list/fullscreens = list()
 
 /mob/proc/overlay_fullscreen(category, type, severity)
+	if(client?.prefs.no_pain_overlays && (category in PAIN_OVERLAYS))
+		return
 	var/obj/screen/fullscreen/screen = fullscreens[category]
 	if (!screen || screen.type != type)
 		// needs to be recreated

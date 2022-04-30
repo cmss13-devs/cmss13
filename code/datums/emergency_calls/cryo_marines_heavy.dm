@@ -17,7 +17,7 @@
 	var/leaders = 0
 
 /datum/emergency_call/cryo_squad_equipped/spawn_candidates(announce, override_spawn_loc)
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
+	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
 	leaders = echo_squad.num_leaders
 	return ..()
 
@@ -33,7 +33,7 @@
 	M.transfer_to(H, TRUE)
 
 	sleep(5)
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
+	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
 	if(leaders < echo_squad.max_leaders)
 		leader = H
 		leaders++

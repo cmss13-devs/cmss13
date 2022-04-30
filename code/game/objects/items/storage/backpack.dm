@@ -396,11 +396,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = "RTO"
 	internal_transmitter.enabled = FALSE
-
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
-
-	LAZYADD(actions, new /datum/action/human_action/activable/droppod())
-
 	GLOB.radio_packs += src
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()
@@ -478,12 +474,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
-/obj/item/storage/backpack/marine/satchel/rto/proc/new_droppod_tech_unlocked(datum/tech/N)
+/obj/item/storage/backpack/marine/satchel/rto/proc/new_droppod_tech_unlocked(name)
 	playsound(get_turf(loc), 'sound/machines/techpod/techpod_rto_notif.ogg', 100, FALSE, 1, 4)
 
 	if(ismob(loc))
 		var/mob/M = loc
-		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([N.name])."))
+		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([name])."))
 
 /obj/item/storage/backpack/marine/satchel/rto/small
 	name = "\improper USCM Small Radio Telephone Pack"

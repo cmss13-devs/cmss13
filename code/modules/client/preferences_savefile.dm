@@ -85,7 +85,8 @@
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
 	S["xeno_name_ban"]		>> xeno_name_ban
-	S["playtime_perks"] 		>> playtime_perks
+	S["playtime_perks"]		>> playtime_perks
+	S["xeno_vision_level_pref"]		>> xeno_vision_level_pref
 	S["view_controller"]	>> View_MC
 	S["observer_huds"]		>> observer_huds
 
@@ -136,12 +137,13 @@
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
+	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
-	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
+	synthetic_type		= sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
 	predator_name 		= predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender 	= sanitize_text(predator_gender, initial(predator_gender))
 	predator_age 		= sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -213,6 +215,7 @@
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix
 	S["xeno_name_ban"]		<< xeno_name_ban
+	S["xeno_vision_level_pref"]		<< xeno_vision_level_pref
 	S["playtime_perks"] 		<< playtime_perks
 
 	S["view_controller"]	<< View_MC

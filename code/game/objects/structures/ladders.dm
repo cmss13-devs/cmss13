@@ -255,3 +255,29 @@
 			step_away(F,src,rand(1, 5))
 	else
 		return attack_hand(user)
+
+/obj/structure/ladder/fragile_almayer //goes away on hijack
+	name = "rickety ladder"
+	desc = "A slightly less stable-looking ladder, installed out of dry dock by some enterprising maintenance tech. Looks like it could collapse at any moment."
+
+/obj/structure/ladder/fragile_almayer/Initialize()
+	. = ..()
+	GLOB.hijack_bustable_ladders += src
+
+/obj/structure/ladder/fragile_almayer/Destroy()
+	GLOB.hijack_bustable_windows -= src
+	return ..()
+
+/obj/structure/ladder/fragile_almayer/proc/break_and_replace()
+	new /obj/structure/prop/broken_ladder(loc)
+	qdel(src)
+
+/obj/structure/prop/broken_ladder
+	name = "rickety ladder"
+	desc = "Well, it was only a matter of time."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "ladder00"
+	anchored = 1
+	unslashable = TRUE
+	unacidable = TRUE
+	layer = LADDER_LAYER

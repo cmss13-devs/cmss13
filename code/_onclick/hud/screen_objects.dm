@@ -526,8 +526,9 @@
 /obj/screen/squad_leader_locator/clicked(mob/living/carbon/human/user, mods)
 	if(!istype(user))
 		return
-	var/obj/item/device/radio/headset/almayer/marine/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-	if(!user.assigned_squad || !istype(earpiece) || user.assigned_squad.radio_freq != earpiece.frequency)
+	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
+	var/has_access = earpiece.misc_tracking || (user.assigned_squad && user.assigned_squad.radio_freq == earpiece.frequency)
+	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
 	if(mods["shift"])
@@ -539,7 +540,8 @@
 		return
 	if(user.get_active_hand())
 		return
-	user.assigned_squad.ui_interact(user)
+	if(user.assigned_squad)
+		user.assigned_squad.ui_interact(user)
 
 /obj/screen/mark_locator
 	name = "mark locator"
@@ -612,18 +614,30 @@
 /obj/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	name = "toggle night vision"
-	icon_state = "nightvision1"
+	icon_state = "nightvision_full"
 
 /obj/screen/xenonightvision/clicked(var/mob/user)
 	if (..())
 		return 1
 	var/mob/living/carbon/Xenomorph/X = user
 	X.toggle_nightvision()
-	if(X.lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
-		icon_state = "nightvision0"
-	else
-		icon_state = "nightvision1"
+	update_icon(X)
 	return 1
+
+/obj/screen/xenonightvision/update_icon(var/mob/living/carbon/Xenomorph/owner)
+	. = ..()
+	var/vision_define
+	switch(owner.lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			icon_state = "nightvision_full"
+			vision_define = XENO_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			icon_state = "nightvision_half"
+			vision_define = XENO_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			icon_state = "nightvision_off"
+			vision_define = XENO_VISION_LEVEL_NO_NVG
+	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
 
 /obj/screen/bodytemp
 	name = "body temperature"
@@ -651,6 +665,12 @@
 
 		user.hud_used.hidden_inventory_update()
 	return 1
+
+/obj/screen/preview
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "blank"
+	plane = -100
+	layer = TURF_LAYER
 
 /obj/screen/rotate
 	icon_state = "centred_arrow"

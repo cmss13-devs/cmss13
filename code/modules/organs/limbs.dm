@@ -675,23 +675,27 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/update_icon(forced = FALSE)
 	if(parent && parent.status & LIMB_DESTROYED)
+		overlays.Cut()
 		icon_state = ""
 		return
 
 	if(status & LIMB_DESTROYED)
-		if(has_stump_icon && !(status & LIMB_AMPUTATED))
-			icon = 'icons/mob/humans/dam_human.dmi'
-			if(owner.species?.flags & IS_SYNTHETIC)
-				icon_state = "synth_stump_[icon_name]"
+		if(forced)
+			overlays.Cut()
+			if(has_stump_icon && !(status & LIMB_AMPUTATED))
+				icon = 'icons/mob/humans/dam_human.dmi'
+				icon_state = "stump_[icon_name]_bone"
+				var/image/blood_overlay = new('icons/mob/humans/dam_human.dmi', "stump_[icon_name]_blood")
+				blood_overlay.color = owner.species.blood_color
+				overlays += blood_overlay
 			else
-				icon_state = "stump_[icon_name]"
-		else
-			icon_state = ""
+				icon_state = ""
 		return
 
 	var/race_icon = owner.species.icobase
 
 	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
+		overlays.Cut()
 		icon = 'icons/mob/robotic.dmi'
 		icon_state = "[icon_name]"
 		return
@@ -769,7 +773,7 @@ This function completely restores a damaged organ to perfect condition.
 //Recursive setting of self and all child organs to amputated
 /obj/limb/proc/setAmputatedTree()
 	status |= LIMB_AMPUTATED
-	update_icon()
+	update_icon(TRUE)
 	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
@@ -924,8 +928,7 @@ This function completely restores a damaged organ to perfect condition.
 				var/lol = pick(cardinal)
 				step(organ,lol)
 
-		overlays.Cut() //Severed limbs shouldn't have damage overlays. This prevents issues with permanently bloody robot replacement limbs and excessively bloody stumps.
-		owner.update_body(1)
+		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
@@ -1095,7 +1098,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	for(var/obj/limb/T as anything in children)
 		T.robotize(uncalibrated = uncalibrated)
 
-	update_icon()
+	update_icon(TRUE)
 
 /obj/limb/proc/calibrate_prosthesis()
 	status &= ~LIMB_UNCALIBRATED_PROSTHETIC
@@ -1339,6 +1342,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	bandage_icon_amount = 4
 	var/disfigured = 0 //whether the head is disfigured.
 
+///Specifically, damage overlays. Severed limb gore effects are applied elsewhere.
 /obj/limb/head/update_overlays()
 	..()
 

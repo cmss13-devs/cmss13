@@ -86,7 +86,7 @@
 	max_medics = 3
 
 /datum/emergency_call/heavy_mercs
-	name = "Elite Mercenaries"
+	name = "Elite Mercenaries (Random Alignment)"
 	mob_min = 4
 	mob_max = 8
 	probability = 0
@@ -103,11 +103,17 @@
 	else
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
+/datum/emergency_call/heavy_mercs/hostile
+	name = "Elite Mercenaries (HOSTILE to USCM)"
+
 /datum/emergency_call/heavy_mercs/hostile/New()
 	. = ..()
 	hostility = TRUE
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+
+/datum/emergency_call/heavy_mercs/friendly
+	name = "Elite Mercenaries (Friendly)"
 
 /datum/emergency_call/heavy_mercs/friendly/New()
 	. = ..()

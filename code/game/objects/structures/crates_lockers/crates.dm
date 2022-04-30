@@ -321,13 +321,6 @@
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
 
-/obj/structure/closet/crate/wayland
-	name = "Weyland Yutani crate"
-	desc = "A crate with a Weyland Yutani insignia on it."
-	icon_state = "closed_wayland"
-	icon_opened = "open_wayland"
-	icon_closed = "closed_wayland"
-
 /obj/structure/closet/crate/weapon
 	name = "weapons crate"
 	desc = "A weapons crate."

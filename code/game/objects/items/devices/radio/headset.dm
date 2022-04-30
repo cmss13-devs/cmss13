@@ -751,3 +751,10 @@
 	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/mcom/vc
+	name = "marine vehicle crew radio headset"
+	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."
+	icon_state = "mcom_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/mcom)
+	volume = RADIO_VOLUME_RAISED

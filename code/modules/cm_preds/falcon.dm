@@ -21,6 +21,7 @@
 	return ..()
 
 /obj/item/falcon_drone/attack_self(mob/user)
+	..()
 	control_falcon_drone()
 
 /obj/item/falcon_drone/verb/control_falcon_drone()

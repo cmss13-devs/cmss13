@@ -441,5 +441,8 @@
   - rscdel: Removed RTO Backpack "Call Droppod" action, since there were none to call
       anyway.
 2022-04-30:
+  Spircen:
+  - bugfix: Peridaxon, Alkysine, Imidazoline, RussianRed and Quickclot Pill Bottle
+      now has skilllock to open.
   Triiodine:
   - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

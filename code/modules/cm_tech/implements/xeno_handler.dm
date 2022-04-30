@@ -1,19 +1,3 @@
-/datum/tech/xeno_handler
-	name = "Advanced Exobiology"
-	desc = "Give the Marines a Xeno ERT"
-	icon_state = "friendly_xeno"
-
-	flags = TREE_FLAG_MARINE
-
-	required_points = 20
-	tier = /datum/tier/three
-
-/datum/tech/xeno_handler/on_unlock()
-	. = ..()
-
-	var/datum/emergency_call/xeno_handler/X = new()
-	X.activate()
-
 //Xenomorphs, hostile to everyone.
 /datum/emergency_call/xeno_handler
 	name = "Xenomorph Handler"
@@ -55,7 +39,8 @@
 	else
 		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
 		new_mob = new picked(spawn_loc, null, XENO_HIVE_TAMED)
-
+		var/mob/living/carbon/Xenomorph/X = new_mob
+		X.iff_tag = new /obj/item/iff_tag/pmc_handler(X)
 	if(M)
 		M.transfer_to(new_mob, TRUE)
 	else

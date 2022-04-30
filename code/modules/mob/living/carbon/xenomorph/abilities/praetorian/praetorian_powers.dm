@@ -808,6 +808,9 @@
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
 			return
+		if (targetXeno.mutation_type == PRAETORIAN_WARDEN)
+			to_chat(X, SPAN_XENODANGER("You cannot heal a sister of the same strain!"))
+			return
 		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal this xeno!"))
 			return

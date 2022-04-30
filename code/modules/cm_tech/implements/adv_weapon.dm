@@ -1,24 +1,3 @@
-/datum/tech/droppod/item/advanced_weapons
-	name = "Advanced Weapons"
-	desc = {"Grants marines a choice of upgraded, advanced weaponry."}
-	icon_state = "weapon"
-
-	flags = TREE_FLAG_MARINE
-
-	required_points = 0
-	tier = /datum/tier/two
-
-	options = list()
-
-/datum/tech/droppod/item/advanced_weapons/on_pod_access(mob/living/carbon/human/H, obj/structure/droppod/D)
-	// We can change the options depending on who's accessing this
-	var/list/newOptions
-
-	LAZYSET(newOptions, "Gun One", /obj/item/techtree_advanced_weapon_kit)
-	LAZYSET(newOptions, "Gun Two", /obj/item/techtree_advanced_weapon_kit)
-
-	. = ..(H, D, newOptions)
-	return
 
 /obj/item/techtree_advanced_weapon_kit
 	name = "advanced weapon kit"

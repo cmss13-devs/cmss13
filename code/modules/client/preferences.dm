@@ -163,7 +163,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
-
+	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/playtime_perks = TRUE
 
 	var/stylesheet = "Modern"
@@ -383,6 +383,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
 
 			dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Default Night Vision Level:</b> <a href='?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
 
 			var/tempnumber = rand(1, 999)
 			var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
@@ -968,6 +969,13 @@ var/const/MAX_SAVE_SLOTS = 10
 							real_name = new_name
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+
+				if("xeno_vision_level_pref")
+					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG)
+					var/choice = tgui_input_list(user, "Choose your default vision level", "Vision level", vision_level_choices)
+					if(!choice)
+						return
+					xeno_vision_level_pref = choice
 
 				if("synth_name")
 					var/raw_name = input(user, "Choose your Synthetic's name:", "Character Preference")  as text|null

@@ -278,7 +278,7 @@
 	name = "Overeye Long"
 	icon_state = "hair_longovereye"
 
-/datum/sprite_accessory/hair/fair
+/datum/sprite_accessory/hair/flowing_hair
 	name = "Flow Hair"
 	icon_state = "hair_flow"
 

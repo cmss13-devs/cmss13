@@ -363,5 +363,86 @@
   - balance: Removed the stun baton denied access stun,  added a new spark effect
       for when you pick up a baton that you do not have access to.
 2022-04-26:
+  Stan_Albatross:
+  - expansion: Added a ladder between the chef's hydroponics garden and a maint tunnel
+      near the officers' mess for easier travel
+  - expansion: Added a new type of ladder that breaks on hijack. The above ladder
+      is one of them.
+  - bugfix: fixed yet more poorly offset almayer cameras
+  - expansion: swapped the PO guns and PO gear vendor positions around to let two
+      people gear up properly at once
   ghostsheet:
   - bugfix: Quick equip works when not wearing a uniform.
+2022-04-27:
+  Geeves:
+  - bugfix: Fixes one of the phones on the ERT station appearing on the phone list
+      as an null entry by making it uncallable.
+  Geeves, Nauticall:
+  - rscadd: Added xeno IFF tags that prevent smart weapons from shooting the implanted
+      xeno. Use an access tuner to reprogram these, it uses the IFF group on your
+      ID. You can remove it with any surgical tool that has the pinch quality, but
+      remember to be on help intent if you work on xenos.
+  - rscadd: Added the xeno IFF tags to ASRS. Mapped them into Research and the CLs
+      backroom.
+  - rscadd: The PMC Xeno Handler now spawns with an access tuner.
+  - bugfix: Fixed a bug where smart weapons cached your IFF and didn't bother to set
+      the new IFF if you picked up an ID with a different IFF group.
+  Stan_Albatross:
+  - bugfix: fixed some issues with misalignement of the north facing open and closed
+      sprites for the folding metal cade, and misalignment of the barbed wire on the
+      north facing closed plasteel cade sprite.
+  - bugfix: when you take off glasses, they will now properly go away from your onmob
+      and the hud will deactivate.
+  - bugfix: deactivated mesons now use the degoggles sprite instead of remaining the
+      same.
+  null:
+  - server: added proper gpanel integration for game-end notifications and fixed some
+      rough edges with it
+  - balance: Prevented Wardens from using the heal ability on other Wardens.
+  - bugfix: Fixed barricade hit sounds being improperly loaded under docker setup
+  Spircen:
+  - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
+      spawn as
+  - bugfix: Burger in hand item no longer dissapears after you remove the package.
+  50RemAndCounting:
+  - qol: Rearranged the Strip clickdrag menu items so that (Exo)suit, Suit storage
+      and Back item slot buttons are always on the top of the body parts list.
+  - soundadd: ports the boatswain sound effect from Baystation 12 to be used by ARES
+      when announcing a CO/SEA on deck.
+  - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
+      a bit quieter.
+2022-04-28:
+  50RemAndCounting:
+  - qol: Recoloured the Chief Engineer security and squad headset HUD icons to be
+      more visually distinct from the Maintenance Technician HUD icons.
+  Geeves:
+  - balance: The XvX Slash Damage modifier has been lowered to x1.5 from x2.25.
+  Spircen:
+  - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
+      it.
+  Stan_Albatross:
+  - bugfix: fixes unload-weapon not swapping hands
+  - bugfix: fixes the shoulder holster not fitting the smartpistol
+  - balance: buffed yautja plasma pistol damage a bit
+  - balance: the yautja plasma pistol now sets people on fire
+  - balance: the yautja spike launcher now has a damage multiplier on walls, like
+      a masterkey, and will do EXTREME amounts of damage to them.
+  null:
+  - qol: Replaced outdated "OOC.Hotkeys Help" verb by "Preferences.Edit Hotkeys" to
+      open keybinds editor
+2022-04-29:
+  null:
+  - rscdel: Removed Techs and Tech Tree system. We've done our best to find orphaned
+      gadgets a new home in AdminLand...
+  - rscadd: Railgun Computers are back on the Almayer, but HC added safeties to prevent
+      their unauthorized use.
+  - rscadd: Forget Spec Tokens. Added a 'Tank Coupon' for use in events. Use sparingly...
+  - rscadd: Added an standalone implant printer box, for 2 out of 4 special implants.
+  - rscdel: Removed RTO Backpack "Call Droppod" action, since there were none to call
+      anyway.
+2022-04-30:
+  Spircen:
+  - bugfix: Peridaxon, Alkysine, Imidazoline, RussianRed and Quickclot Pill Bottle
+      now has skilllock to open.
+  Triiodine:
+  - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

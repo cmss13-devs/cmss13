@@ -443,44 +443,47 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/xeno_handler
-    name = "Weyland-Yutani PMC (Xeno Handler)"
-    flags = EQUIPMENT_PRESET_EXTRA
+	name = "Weyland-Yutani PMC (Xeno Handler)"
+	flags = EQUIPMENT_PRESET_EXTRA
 
-    faction_group = FACTION_LIST_MARINE_WY
+	faction_group = FACTION_LIST_MARINE_WY
 
-    assignment = JOB_PMC_XENO_HANDLER
-    rank = JOB_PMC_XENO_HANDLER
-    paygrade = "PMC-XS"
-    role_comm_title = "XH"
-    skills = /datum/skills/pmc/xeno_handler
-    languages = list("English", "Japanese", "Xenomorph")
+	assignment = JOB_PMC_XENO_HANDLER
+	rank = JOB_PMC_XENO_HANDLER
+	paygrade = "PMC-XS"
+	role_comm_title = "XH"
+	skills = /datum/skills/pmc/xeno_handler
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
 
 /datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
-    H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-    H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-    H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-    H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-    H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-    H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-    H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
-    H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-    H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
-    H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 
-    H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite, WEAR_J_STORE)
-    H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_L_STORE)
-    H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_R_STORE)
-    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
-    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 
 /datum/equipment_preset/pmc/xeno_handler/hvh
 	name = "Weyland-Yutani PMC (Xeno Handler) | HvH"
+	faction_group = FACTION_LIST_WY
 	human_versus_human = TRUE
 	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
 

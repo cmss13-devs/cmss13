@@ -12,7 +12,7 @@
 	debris = list(/obj/item/stack/sheet/metal)
 	stack_amount = 4
 	destroyed_stack_amount = 2
-	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "metal"
 	can_wire = TRUE
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)

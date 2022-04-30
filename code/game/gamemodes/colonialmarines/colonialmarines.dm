@@ -7,9 +7,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	var/round_status_flags
 
-	var/passive_increase_interval = 20 MINUTES
-	var/next_passive_increase = 0
-
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
 	var/research_allocation_amount = 5
@@ -164,14 +161,6 @@
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
-	if((flags_round_type & MODE_BASIC_RT) && next_passive_increase < world.time)
-		for(var/T in SStechtree.trees)
-			var/datum/techtree/tree = SStechtree.trees[T]
-
-			tree.passive_node.resources_per_second += PASSIVE_INCREASE_AMOUNT
-
-		next_passive_increase = world.time + passive_increase_interval
-
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
@@ -241,10 +230,6 @@
 
 /datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/show_blurb_uscm), DROPSHIP_DROP_MSG_DELAY)
-
-/datum/game_mode/colonialmarines/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
-	SStechtree.activate_passive_nodes()
-	addtimer(CALLBACK(SStechtree, /datum/controller/subsystem/techtree/proc/activate_all_nodes), 20 SECONDS)
 
 ///////////////////////////
 //Checks to see who won///

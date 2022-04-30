@@ -232,6 +232,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";

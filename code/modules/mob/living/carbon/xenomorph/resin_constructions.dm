@@ -67,7 +67,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 // Subtype encompassing all resin constructions that are of type /obj
 /datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber, var/builder)
-		var/path = build_path
+	var/path = build_path
 	if(thick_hiveweed)
 		var/on_hive_weed = FALSE
 		var/obj/effect/alien/weeds/W = locate() in T

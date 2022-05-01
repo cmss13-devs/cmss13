@@ -401,7 +401,7 @@
 	if(target.stat == DEAD)
 		to_chat(src, SPAN_WARNING("[target] is dead!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
@@ -409,6 +409,12 @@
 	if(get_dist(src, target) > max_range)
 		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
+
+	if(isXenoQueen(target))
+		var/mob/living/carbon/Xenomorph/Queen/Q = target
+		if(Q.ovipositor)
+			to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
+			return
 
 	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
 	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their plasma to you."))
@@ -421,7 +427,7 @@
 	if(target.stat == DEAD)
 		to_chat(src, SPAN_WARNING("[target] is dead!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
@@ -429,6 +435,12 @@
 	if(get_dist(src, target) > max_range)
 		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
+
+	if(isXenoQueen(target))
+		var/mob/living/carbon/Xenomorph/Queen/Q = target
+		if(Q.ovipositor)
+			to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
+			return
 
 	if(plasma_stored < amount)
 		amount = plasma_stored //Just use all of it

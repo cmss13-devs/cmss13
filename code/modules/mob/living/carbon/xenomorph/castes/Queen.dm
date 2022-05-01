@@ -369,7 +369,7 @@
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
-	resin_build_order = GLOB.resin_build_order_drone
+	set_resin_build_order(GLOB.resin_build_order_drone)
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -753,7 +753,7 @@
 
 	add_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
 
-	resin_build_order = GLOB.resin_build_order_hivelord
+	set_resin_build_order(GLOB.resin_build_order_ovipositor)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
 	resting = FALSE

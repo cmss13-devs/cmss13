@@ -9,7 +9,7 @@
 	brute_multiplier = 1
 	stack_type = /obj/item/stack/sandbags
 	debris = list(/obj/item/stack/sandbags)
-	barricade_hitsound = "sound/weapons/Genhit.ogg"
+	barricade_hitsound = 'sound/weapons/Genhit.ogg'
 	barricade_type = "sandbag"
 	can_wire = TRUE
 	stack_amount = 1

@@ -1,0 +1,9 @@
+2022-05-01:
+  stanalbatross:
+  - rscadd: 'Almayer: added a secondary prep room for latejoin POs and TCs north of
+      cryo, next to the alpha-bravo canteen.'
+  - tweak: 'Almayer: removed a duplicate officer vendor from the RO''s bedroom. They
+      already had one in their main office.'
+  - tweak: 'Almayer: shuffled around the spawn landmarks in cryo, generally adding
+      more variation and adding more spots for latejoins'
+  - bugfix: added back latejoin landmarks to cryo

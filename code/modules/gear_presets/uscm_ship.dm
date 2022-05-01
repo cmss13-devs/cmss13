@@ -55,7 +55,7 @@
 	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
 	utility_hat = list()
 	utility_gloves = list()
-	utility_shoes = list(/obj/item/clothing/shoes)
+	utility_shoes = list(/obj/item/clothing/shoes/laceup)
 	utility_extra = list(/obj/item/clothing/under/liaison_suit/suspenders)
 
 	service_under = list(/obj/item/clothing/under/liaison_suit)

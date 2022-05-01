@@ -2126,8 +2126,14 @@
 	name = "plasma pistol bolt"
 	icon_state = "ion"
 
-	damage = 30
+	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
+
+/datum/ammo/energy/yautja/pistol/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"
@@ -2185,21 +2191,26 @@
 	accurate_range = 8
 	max_range = 8
 
+	var/vehicle_slowdown_time = 5 SECONDS
+
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/item/projectile/P)
 	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/item/projectile/P)
 	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/multitile_vehicle = O
+		multitile_vehicle.next_move = world.time + vehicle_slowdown_time
+		playsound(multitile_vehicle, 'sound/effects/meteorimpact.ogg', 35)
+		multitile_vehicle.at_munition_interior_explosion_effect(cause_data = create_cause_data("Plasma Eradicator", P.firer))
+		multitile_vehicle.interior_crash_effect()
+		multitile_vehicle.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
 	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
 
 
 /datum/ammo/energy/yautja/caster/sphere/stun

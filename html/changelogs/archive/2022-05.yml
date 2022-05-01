@@ -1,4 +1,6 @@
 2022-05-01:
+  Shad0vvs:
+  - bugfix: Allows those with 1 engineering skill to examine vehicles for damage.
   stanalbatross:
   - rscadd: 'Almayer: added a secondary prep room for latejoin POs and TCs north of
       cryo, next to the alpha-bravo canteen.'

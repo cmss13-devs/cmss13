@@ -1113,7 +1113,6 @@
 	INVOKE_ASYNC(src, .proc/regenerate_icons)
 	INVOKE_ASYNC(src, .proc/restore_blood)
 	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
-	INVOKE_ASYNC(src, .proc/update_hair)
 	if(!(species.flags & HAS_UNDERWEAR))
 		INVOKE_ASYNC(src, .proc/remove_underwear)
 

@@ -193,8 +193,7 @@ datum/preferences/proc/randomize_skin_color()
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 
-	if(show_job_gear)
-		arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
+	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	if(isnull(preview_front))
 		preview_front = new()

@@ -381,3 +381,6 @@
 			return 1
 
 	return 0
+
+/datum/species/proc/get_hairstyle(var/style)
+	return GLOB.hair_styles_list[style]

@@ -7,8 +7,12 @@
 	uses_special_name = TRUE
 	skills = /datum/skills/yautja/warrior
 
-/datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H)
-	H.set_species("Yautja")
+/datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H, var/client/mob_client)
+	H.set_species(SPECIES_YAUTJA)
+	if(!mob_client)
+		mob_client = H.client
+	if(mob_client?.prefs)
+		H.h_style = mob_client.prefs.predator_h_style
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	H.job = rank
@@ -28,7 +32,6 @@
 
 	if(!mob_client)
 		mob_client = H.client
-
 	if(mob_client?.prefs)
 		armor_number = mob_client.prefs.predator_armor_type
 		boot_number = mob_client.prefs.predator_boot_type

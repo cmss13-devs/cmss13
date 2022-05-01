@@ -7,6 +7,8 @@
 	uses_special_name = TRUE
 	skills = /datum/skills/yautja/warrior
 
+	var/default_cape_type = "None"
+
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H, var/client/mob_client)
 	H.set_species(SPECIES_YAUTJA)
 	if(!mob_client)
@@ -30,6 +32,8 @@
 	var/caster_material = "ebony"
 	var/mask_material = "ebony"
 	var/translator_type = "Modern"
+	var/cape_type = default_cape_type
+	var/cape_color = "#654321"
 
 	if(!mob_client)
 		mob_client = H.client
@@ -42,6 +46,8 @@
 		mask_material = mob_client.prefs.predator_mask_material
 		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
+		cape_type = mob_client.prefs.predator_cape_type
+		cape_color = mob_client.prefs.predator_cape_color
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type, caster_material), WEAR_HANDS)
@@ -53,6 +59,11 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(H, boot_number, greave_material), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material), WEAR_FACE)
+
+	if(cape_type != "None")
+		if(istext(cape_type))
+			cape_type = text2path(cape_type)
+		H.equip_to_slot_or_del(new cape_type(H, cape_color), WEAR_BACK)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "Le'pro"
@@ -90,6 +101,7 @@
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = /obj/item/clothing/yautja_cape/half
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -100,6 +112,7 @@
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = /obj/item/clothing/yautja_cape/third
 
 /datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -107,14 +120,14 @@
 	H.change_real_name(H, new_name)
 
 /datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
-	. = ..()
+	return ..()
 
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = /obj/item/clothing/yautja_cape
 
 /datum/equipment_preset/yautja/leader/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -122,14 +135,14 @@
 	H.change_real_name(H, new_name)
 
 /datum/equipment_preset/yautja/leader/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
-	. = ..()
+	return ..()
 
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
 	name = "Yautja Ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = /obj/item/clothing/yautja_cape/poncho
 
 /datum/equipment_preset/yautja/ancient/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -137,6 +150,5 @@
 	H.change_real_name(H, new_name)
 
 /datum/equipment_preset/yautja/ancient/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
-	. = ..()
+	return ..()

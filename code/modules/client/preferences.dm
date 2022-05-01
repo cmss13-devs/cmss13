@@ -72,6 +72,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
 	var/predator_age = 100
+	var/predator_h_style = "Standard"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -80,6 +81,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
+	var/predator_cape_type = "None"
+	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
@@ -109,8 +112,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
-
-	var/predator_h_style = "Standard"
 
 	var/r_skin = 0						//Skin color
 	var/g_skin = 0						//Skin color
@@ -472,6 +473,20 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
 				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
 				dat += "<b>Caster Material:</b> <a href='?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
+				dat += "</div>"
+
+				dat += "<div id='column3'>"
+				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
+				var/cape_type = predator_cape_type
+				if(ispath(text2path(predator_cape_type)))
+					var/obj/item/clothing/yautja_cape/cape_path = text2path(predator_cape_type)
+					cape_type = capitalize_first_letters(initial(cape_path.name))
+				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[cape_type]</b></a><br>"
+				dat += "<b>Cape Color:</b> "
+				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
+				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
+				dat += "</a><br><br>"
+				dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -1036,6 +1051,52 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
+				if("pred_cape_type")
+					var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+					var/whitelist_status = J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)
+
+					var/list/options = list("None" = "None")
+					switch(whitelist_status)
+						if(CLAN_RANK_BLOODED)
+							options += list(
+								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter
+							)
+						if(CLAN_RANK_ELITE)
+							options += list(
+								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
+								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half
+							)
+						if(CLAN_RANK_ELDER)
+							options += list(
+								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
+								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
+								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third
+							)
+						if(CLAN_RANK_LEADER)
+							options += list(
+								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
+								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
+								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third,
+								"Yautja Cape" = /obj/item/clothing/yautja_cape
+							)
+						if(CLAN_RANK_ADMIN)
+							options += list(
+								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
+								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
+								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third,
+								"Yautja Cape" = /obj/item/clothing/yautja_cape,
+								"Yautja Poncho" = /obj/item/clothing/yautja_cape/poncho
+							)
+
+					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
+					if(!new_cape)
+						return
+					predator_cape_type = "[options[new_cape]]"
+				if("pred_cape_color")
+					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as color|null
+					if(!new_cape_color)
+						return
+					predator_cape_color = new_cape_color
 				if("pred_hair")
 					var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
 					if(!new_h_style)

@@ -36,7 +36,7 @@
 	//MICE!
 	if((src.loc) && isturf(src.loc))
 		if(stat != DEAD)
-			if(++miaow_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
+			if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
 				playsound(loc, "cat_meow", 15, 1, 4)
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)

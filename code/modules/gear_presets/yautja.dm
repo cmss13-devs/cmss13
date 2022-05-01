@@ -27,6 +27,7 @@
 	var/mask_number = 1
 	var/armor_material = "ebony"
 	var/greave_material = "ebony"
+	var/caster_material = "ebony"
 	var/mask_material = "ebony"
 	var/translator_type = "Modern"
 
@@ -39,13 +40,14 @@
 		armor_material = mob_client.prefs.predator_armor_material
 		greave_material = mob_client.prefs.predator_greave_material
 		mask_material = mob_client.prefs.predator_mask_material
+		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type, caster_material), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(H, boot_number, greave_material), WEAR_FEET)

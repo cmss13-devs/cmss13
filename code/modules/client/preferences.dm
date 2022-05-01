@@ -79,6 +79,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_armor_material = "ebony"
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
+	var/predator_caster_material = "ebony"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
@@ -469,7 +470,8 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Greave Style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
 				dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
 				dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
-				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a>"
+				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
+				dat += "<b>Caster Material:</b> <a href='?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -1029,6 +1031,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_pred_greave_mat)
 						return
 					predator_greave_material = new_pred_greave_mat
+				if("pred_caster_mat")
+					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+					if(!new_pred_caster_mat)
+						return
+					predator_caster_material = new_pred_caster_mat
 				if("pred_hair")
 					var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
 					if(!new_h_style)

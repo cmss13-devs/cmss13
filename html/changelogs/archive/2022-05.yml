@@ -4,6 +4,8 @@
       the hunting grounds.
   - expansion: You can now examine when your vision is detached from your body (queen
       eye, falcon drone, etc.)
+  Joooks:
+  - spellcheck: fixed typos in req vend AMG=AGM
   Shad0vvs:
   - bugfix: Allows those with 1 engineering skill to examine vehicles for damage.
   - qol: Allowed evolving, strain purchasing, and the xeno mark system to be used

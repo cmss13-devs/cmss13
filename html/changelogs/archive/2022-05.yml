@@ -11,3 +11,5 @@
   - tweak: 'Almayer: shuffled around the spawn landmarks in cryo, generally adding
       more variation and adding more spots for latejoins'
   - bugfix: added back latejoin landmarks to cryo
+  - expansion: Cats will now meow at random intervals while not dead.
+  - qol: reduced the frequency of the queen ASMR breathing

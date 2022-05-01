@@ -97,12 +97,8 @@
 	else
 		overlays += "[defense_type] uac_[sentry_type]"
 
-/obj/structure/machinery/defenses/sentry/attack_hand(mob/user as mob)
-	if(!attack_hand_checks(user))
-		return
-	..()
 
-/obj/structure/machinery/defenses/sentry/proc/attack_hand_checks(var/mob/user)
+/obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
 	if(immobile)
 		to_chat(user, SPAN_WARNING("[src]'s panel is completely locked, you can't do anything."))
 		return FALSE

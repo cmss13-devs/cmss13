@@ -141,7 +141,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	turn_off_light(user)
 
-	var/delay_left = (last_fired + fire_delay) - world.time
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		for(var/group in fire_delay_group)
 			LAZYSET(user.fire_delay_next_fire, group, delay_left)

@@ -212,6 +212,7 @@
 	 * matched with the corresponding fire delays applied
 	 */
 	var/list/fire_delay_group
+	var/additional_fire_group_delay = 0 // adds onto the fire delay of the above
 
 /**
  * An assoc list where the keys are fire delay group string defines

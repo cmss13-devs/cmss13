@@ -6,3 +6,4 @@
       already had one in their main office.'
   - tweak: 'Almayer: shuffled around the spawn landmarks in cryo, generally adding
       more variation and adding more spots for latejoins'
+  - bugfix: added back latejoin landmarks to cryo

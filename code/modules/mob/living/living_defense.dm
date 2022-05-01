@@ -186,28 +186,29 @@
 
 //Mobs on Fire end
 
-/mob/living/proc/update_weather()
+/mob/living/proc/update_weather(check_area = TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	// Only player mobs are affected by weather.
-	if(!src.client)
-		return
-
-	if(!SSweather)
+	if(!client)
 		return
 
 	// Do this always
 	clear_fullscreen("weather")
 	remove_weather_effects()
 
+	var/area/area = get_area(src)
 	// Check if we're supposed to be something affected by weather
-	if(SSweather.is_weather_event && SSweather.weather_event_instance && SSweather.weather_affects_check(src))
-		// Ok, we're affected by weather.
+	if(!SSweather.is_weather_event || !SSweather.weather_event_instance)
+		return
+	if(check_area && !SSweather.map_holder.should_affect_area(area))
+		return
 
-		// Fullscreens
-		if(SSweather.weather_event_instance.fullscreen_type)
-			overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
-		else
-			clear_fullscreen("weather")
+	// Fullscreens
+	if(SSweather.weather_event_instance.fullscreen_type)
+		overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
+	else
+		clear_fullscreen("weather")
 
-		// Effects
-		if(SSweather.weather_event_instance.effect_type)
-			new SSweather.weather_event_instance.effect_type(src)
+	// Effects
+	if(SSweather.weather_event_instance.effect_type)
+		new SSweather.weather_event_instance.effect_type(src)

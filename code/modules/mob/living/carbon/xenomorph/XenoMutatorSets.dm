@@ -238,7 +238,7 @@
 	src.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/proc/strain_checks()
-	if(!check_state())
+	if(!check_state(TRUE))
 		return FALSE
 
 	if(is_ventcrawling)

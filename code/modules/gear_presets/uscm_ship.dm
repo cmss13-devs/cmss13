@@ -158,7 +158,7 @@
 	rank = JOB_MAINT_TECH
 	paygrade = "ME2"
 	role_comm_title = "MT"
-	skills = /datum/skills/OT
+	skills = /datum/skills/MT
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 

@@ -420,6 +420,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
+		if(SKILL_CLEANING)
+			if(skillcheck(src, SKILL_CLEANING, SKILL_CLEANING_MASTER))
+				return 0.5
+			if(skillcheck(src, SKILL_CLEANING, SKILL_CLEANING_TRAINED))
+				return 1
+			else
+				return 2
 
 /mob/proc/check_view_change(var/new_size, var/atom/source)
 	return new_size

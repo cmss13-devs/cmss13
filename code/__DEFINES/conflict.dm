@@ -57,9 +57,8 @@
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
-#define GUN_FIRED_BY_USER		(1<<19)
-#define GUN_SUPPORT_PLATFORM	(1<<20) /// support weapon, bipod will grant IFF
-#define GUN_BURST_ONLY			(1<<21)
+#define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
+#define GUN_BURST_ONLY			(1<<20)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

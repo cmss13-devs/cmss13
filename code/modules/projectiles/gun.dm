@@ -206,10 +206,7 @@
 	 * The group or groups of the gun where a fire delay is applied and the delays applied to each group when the gun is dropped
 	 * after being fired
 	 *
-	 * Guns with this var set will apply the specified delays for firing any other guns
-	 * in a specific group
-	 * e.g. FIRE_DELAY_GROUP_X = 1 SECONDS means any gun with the fire delay group FIRE_DELAY_GROUP_X will have to wait 1
-	 * second after the gun has been dropped (the user has to have fired the gun beforehand otherwise no delay is applied)
+	 * Guns with this var set will apply the gun's remaining fire delay to any other guns in the same group
 	 *
 	 * Set as null (does not apply any fire delays to any other gun group) or a list of fire delay groups (string defines)
 	 * matched with the corresponding fire delays applied
@@ -1159,7 +1156,6 @@ and you're good to go.
 				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 			. = TRUE
-			flags_gun_features |= GUN_FIRED_BY_USER
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				fa_shots++
@@ -1371,7 +1367,6 @@ and you're good to go.
 			last_fired = world.time
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
-		flags_gun_features |= GUN_FIRED_BY_USER
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)

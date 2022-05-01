@@ -66,6 +66,7 @@
 
 	synth.frozen = TRUE
 	synth.update_canmove()
+	synth_bracer.icon_state = "bracer_fortify"
 	if(!do_after(synth, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
 		to_chat(synth, SPAN_WARNING("You cancel your launch."))
 
@@ -75,6 +76,7 @@
 
 		synth.frozen = FALSE
 		synth.update_canmove()
+		synth_bracer.update_icon()
 
 		return
 

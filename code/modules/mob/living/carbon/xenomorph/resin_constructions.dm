@@ -156,7 +156,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_MEMBRANE_QUEEN_COST
 
 	build_path = /turf/closed/wall/resin/membrane
-	build_path = /turf/closed/wall/resin/membrane/thick
+	build_path_thick = /turf/closed/wall/resin/membrane/thick
 	thick_hiveweed = TRUE
 
 /datum/resin_construction/resin_turf/membrane/thick

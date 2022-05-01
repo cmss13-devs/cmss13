@@ -18287,6 +18287,7 @@
 	},
 /obj/effect/landmark/start/marine/spec,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
@@ -18324,6 +18325,7 @@
 	},
 /obj/effect/landmark/start/marine/leader,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -19853,6 +19855,7 @@
 	},
 /obj/effect/landmark/start/marine/rto,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -19866,6 +19869,7 @@
 	},
 /obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -21780,6 +21784,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bsI" = (
@@ -22537,6 +22542,7 @@
 "bvE" = (
 /obj/effect/landmark/start/marine/engineer,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bvF" = (
@@ -22561,6 +22567,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/engineer,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
@@ -23655,6 +23662,7 @@
 	},
 /obj/effect/landmark/start/marine/rto,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "emerald";
@@ -23669,6 +23677,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bzK" = (
@@ -24524,6 +24533,7 @@
 "bCG" = (
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bCH" = (
@@ -24567,6 +24577,7 @@
 "bCO" = (
 /obj/effect/landmark/start/marine/rto,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bCP" = (
@@ -24768,6 +24779,7 @@
 "bDL" = (
 /obj/effect/landmark/start/marine/spec,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bDO" = (
@@ -24897,6 +24909,7 @@
 	},
 /obj/effect/landmark/start/marine/spec,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "emerald";
@@ -24936,6 +24949,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/leader,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
@@ -25583,6 +25597,7 @@
 "bGn" = (
 /obj/effect/landmark/start/marine/smartgunner,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bGo" = (
@@ -25653,6 +25668,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bGE" = (
@@ -25900,11 +25916,13 @@
 "bHr" = (
 /obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bHs" = (
 /obj/effect/landmark/start/marine/smartgunner,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "bHt" = (
@@ -26325,6 +26343,7 @@
 "bJe" = (
 /obj/effect/landmark/start/marine/rto,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bJf" = (
@@ -28281,6 +28300,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bPM" = (
@@ -37376,6 +37396,7 @@
 	name = "JoinLateCryo"
 	},
 /obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
@@ -39619,6 +39640,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/leader,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
@@ -39946,6 +39968,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
@@ -43228,6 +43251,7 @@
 	tag = "icon-SE-out"
 	},
 /obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -44272,6 +44296,7 @@
 	},
 /obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "gsH" = (
@@ -54252,6 +54277,7 @@
 	},
 /obj/effect/landmark/start/marine/leader,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -56048,6 +56074,7 @@
 "lNb" = (
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "lNl" = (
@@ -56857,6 +56884,7 @@
 	name = "JoinLateCryo"
 	},
 /obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -67194,6 +67222,7 @@
 "rbF" = (
 /obj/effect/landmark/start/marine/engineer,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "rbX" = (
@@ -69179,6 +69208,7 @@
 "rWL" = (
 /obj/effect/landmark/start/marine/medic,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "rWT" = (
@@ -79399,6 +79429,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "wrC" = (
@@ -83113,6 +83144,7 @@
 	},
 /obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "xSW" = (
@@ -83623,6 +83655,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
+"ydM" = (
+/obj/effect/landmark/start/marine,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/living/cryo_cells)
 "ydU" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -129543,11 +129584,11 @@ aLG
 aZi
 aLG
 bbr
-bpV
+ydM
 bCG
 lNb
 bCG
-bpV
+ydM
 lNb
 qlz
 gYe
@@ -129561,7 +129602,7 @@ bpV
 bCG
 lNb
 bCG
-bpV
+ydM
 bbr
 buH
 bHc
@@ -131574,7 +131615,7 @@ aYO
 aLG
 bbr
 bCG
-bpV
+ydM
 lNb
 bCG
 bpV

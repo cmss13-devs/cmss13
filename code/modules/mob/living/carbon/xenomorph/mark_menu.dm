@@ -7,7 +7,7 @@
 	if(!X.client)
 		return
 
-	if(!X.check_state())
+	if(!X.check_state(TRUE))
 		return
 
 	if(!data_initialized)

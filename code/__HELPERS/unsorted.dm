@@ -1705,7 +1705,7 @@ var/list/WALLITEMS = list(
 
 //used to check if a mob can examine an object
 /atom/proc/can_examine(var/mob/user)
-	if(!user.client || user.client.eye != user)
+	if(!user.client)
 		return FALSE
 	if(isRemoteControlling(user))
 		return TRUE
@@ -1719,7 +1719,8 @@ var/list/WALLITEMS = list(
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	user.face_atom(src)
+	if(user.client.eye == user)
+		user.face_atom(src)
 	return TRUE
 
 //datum may be null, but it does need to be a typed var

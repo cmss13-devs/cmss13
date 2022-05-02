@@ -21,6 +21,8 @@
   - expansion: Cats will now meow at random intervals while not dead.
   - qol: reduced the frequency of the queen ASMR breathing
 2022-05-02:
+  Git-Nivrak:
+  - bugfix: Fixed omni-sentries being un-activatable after being repaired
   Shad0vvs:
   - expansion: Adds a new ATM ability.
   - soundadd: Added a cat meow sound.

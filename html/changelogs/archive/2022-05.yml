@@ -31,3 +31,6 @@
   - bugfix: fixed the garage on BR not having an APC, fixed the north storage dome
       on LV not having an APC, fixed the hangar deployment workshop on the Almayer
       not having an APC
+  - bugfix: making a blank mhelp will no longer qdel your client
+  - qol: mhelps can now be made from a big window rather than a small one
+  - qol: you can now cancel the making of mhelps

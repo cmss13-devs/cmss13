@@ -359,7 +359,8 @@
 		/obj/item/device/walkman = 50,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
-		/obj/item/toy/deck/uno = 5)
+		/obj/item/toy/deck/uno = 5,
+		/obj/item/device/camera = 5)
 
 	contraband = list(/obj/item/toy/sword = 2)
 
@@ -376,4 +377,5 @@
 		/obj/item/device/walkman = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
-		/obj/item/toy/deck/uno = 15)
+		/obj/item/toy/deck/uno = 15,
+		/obj/item/device/camera = 30)

@@ -39,3 +39,11 @@
   - bugfix: making a blank mhelp will no longer qdel your client
   - qol: mhelps can now be made from a big window rather than a small one
   - qol: you can now cancel the making of mhelps
+  - qol: added a ghost darkness level preference, can be configured in the settings
+      tab of the character menu.
+  - qol: your ghost darkness level preference will now save when you change it as
+      a ghost.
+  - qol: your ghost darkness level preference will load automatically when you ghost
+      or observe.
+  - qol: when switching darkness level as a ghost, you are told what mode you're switching
+      to.

@@ -504,25 +504,35 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
-/obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
+/obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliably do it when you walk into it.
+	var/resist_modifier = 1
 	set_on_fire(M)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
-			if (ishuman(M))
+			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
-				H.next_move_slowdown = H.next_move_slowdown + 3
+				if (HAS_TRAIT(M, TRAIT_SUPER_STRONG))
+					resist_modifier = 0.25
+				H.next_move_slowdown = H.next_move_slowdown + (3 * resist_modifier)
 				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
-			else if (isXeno(M))
+			else if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
 				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred if it's not present.
 					X.reset_xeno_armor_debuff_after_time(X, 20)
 					type_b_debuff_xeno_armor(X)
+				resist_modifier = type_b_debuff_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
-				X.next_move_slowdown = X.next_move_slowdown + 3
+				X.next_move_slowdown = X.next_move_slowdown + (3 * resist_modifier)
 				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
-	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
+	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	. = 1
+	if(sig_result & COMPONENT_XENO_FRENZY)
+		. = 0.8
+	if(sig_result & COMPONENT_NO_IGNITE)
+		. = 0.6
+	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 * . //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
 
 /mob/living/carbon/Xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/Xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
 	spawn(wait_ticks)

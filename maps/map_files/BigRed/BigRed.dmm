@@ -12267,7 +12267,6 @@
 /obj/structure/machinery/door/airlock/glass_medical{
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
-	req_access = null;
 	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor{
@@ -18848,8 +18847,7 @@
 /obj/structure/machinery/door_control{
 	id = "viro";
 	name = "Virology Lockdown";
-	pixel_x = -25;
-	req_one_access = null
+	pixel_x = -25
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -29796,7 +29794,6 @@
 	id = "filtration";
 	name = "Filtration Lockdown";
 	pixel_x = 30;
-	req_one_access = null;
 	throw_range = 15
 	},
 /turf/open/floor,
@@ -32786,6 +32783,12 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigred/ground/garage_workshop)
+"uJF" = (
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "uPm" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32932,7 +32935,6 @@
 	id = "eta";
 	name = "Eta Lockdown";
 	pixel_x = 30;
-	req_one_access = null;
 	throw_range = 15
 	},
 /turf/open/floor{
@@ -38088,7 +38090,7 @@ upE
 vLd
 vLd
 upE
-vLd
+uJF
 qsE
 aao
 aao

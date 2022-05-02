@@ -21737,6 +21737,17 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
+"vbj" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	name = "Storage Containers APC";
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "vcY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -53764,7 +53775,7 @@ avc
 atc
 atc
 ask
-ask
+vbj
 arK
 axY
 abY

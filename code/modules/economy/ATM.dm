@@ -76,14 +76,15 @@ log transactions
 			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
 			src.attack_hand(user)
 			qdel(I)
-	else if(istype(I, /obj/item/holder/cat) || istype(I, /obj/item/holder/Jones))
+	else if(istype(I, /obj/item/holder))
+
 		user.visible_message(SPAN_DANGER("[user] begins stuffing [I] into the ATM!"))
 		playsound(src, "sound/machines/fax.ogg", 5)
 		if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		playsound(src, 'sound/effects/splat.ogg', 25, 1)
-		playsound(src, "sound/voice/cat_meow_7.ogg", 15)
+		playsound(src, "sound/effects/bone_break1.ogg", 20)
 
 		for(var/mob/M in I.contents)
 
@@ -99,15 +100,10 @@ log transactions
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(src.loc)
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
-		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
+		spawn_money(100,src.loc)
 
 	else
 		..()
-
-/obj/structure/machinery/atm/proc/drop_money(var/turf)
-		playsound(turf, "sound/machines/ping.ogg", 15)
-		new /obj/item/spacecash/c100(turf)
 
 /obj/structure/machinery/atm/attack_hand(mob/user as mob)
 	if(isRemoteControlling(user))

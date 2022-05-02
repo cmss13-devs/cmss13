@@ -221,3 +221,8 @@
 
 //Automatic punctuation
 #define ENDING_PUNCT list(".", "-", "?", "!")
+
+//ghost vision mode pref settings
+#define GHOST_VISION_LEVEL_NO_NVG		"No Night Vision"
+#define GHOST_VISION_LEVEL_MID_NVG		"Half Night Vision"
+#define GHOST_VISION_LEVEL_FULL_NVG		"Full Night Vision"

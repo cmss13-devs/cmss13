@@ -21,6 +21,9 @@
   - expansion: Cats will now meow at random intervals while not dead.
   - qol: reduced the frequency of the queen ASMR breathing
 2022-05-02:
+  50RemAndCounting:
+  - qol: You can now examine medical storage rigs and lifesaver belts to check which
+      belt mode they're currently toggled to.
   Git-Nivrak:
   - bugfix: Fixed omni-sentries being un-activatable after being repaired
   Shad0vvs:

@@ -8357,14 +8357,17 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/gloves{
 	pixel_x = 5;
-	pixel_y = 5
+	pixel_y = 12
 	},
 /obj/item/storage/box/masks{
-	pixel_x = -5;
-	pixel_y = 5
+	pixel_x = 5
 	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_y = 30
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = -7;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";

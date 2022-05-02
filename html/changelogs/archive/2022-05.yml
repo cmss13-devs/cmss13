@@ -24,6 +24,9 @@
   Shad0vvs:
   - expansion: Adds a new ATM ability.
   - soundadd: Added a cat meow sound.
+  VarenRoth:
+  - qol: CPR can only be performed by one person at a time, avoiding multiple people
+      causing CPR to fail.
   stanalbatross:
   - bugfix: fixed the garage on BR not having an APC, fixed the north storage dome
       on LV not having an APC, fixed the hangar deployment workshop on the Almayer

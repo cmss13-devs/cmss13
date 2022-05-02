@@ -47,6 +47,12 @@ GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_obj/resin_spike
 ))
 
+GLOBAL_LIST_INIT(resin_build_order_gardener, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door
+))
+
 GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/thick,
 	/datum/resin_construction/resin_turf/wall/reflective,

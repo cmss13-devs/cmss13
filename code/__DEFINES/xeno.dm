@@ -621,3 +621,11 @@
 #define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"
 #define XENO_VISION_LEVEL_MID_NVG		"Half Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG		"Full Night Vision"
+
+
+// drone fruits
+
+#define XENO_FRUIT_LESSER "Lesser Resin Fruit"
+#define XENO_FRUIT_GREATER "Greater Resin Fruit"
+#define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
+#define XENO_FRUIT_SPORE "Spore Resin Fruit"

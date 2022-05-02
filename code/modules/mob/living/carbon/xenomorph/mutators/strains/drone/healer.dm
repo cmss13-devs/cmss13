@@ -36,7 +36,7 @@
 	D.recalculate_damage()
 	D.recalculate_pheromones()
 	D.recalculate_tackle()
-	D.available_placeable = list("Lesser Resin Fruit")
+	D.available_placeable = list(XENO_FRUIT_LESSER)
 
 /*
 	TRANSFER HEALTH

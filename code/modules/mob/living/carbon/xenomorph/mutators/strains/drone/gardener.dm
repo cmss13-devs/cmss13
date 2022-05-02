@@ -5,11 +5,8 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
 	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/activable/secrete_resin,
-		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/activable/transfer_plasma,
-		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/activable/transfer_plasma
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/resin_surge, //second macro
@@ -25,11 +22,12 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.mutation_type = DRONE_GARDENER
-	D.max_placeable = 3
+	D.max_placeable = 4
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
-	D.available_placeable = list("Greater Resin Fruit", "Unstable Resin Fruit", "Spore Resin Fruit")
+	D.available_placeable = list(XENO_FRUIT_GREATER, XENO_FRUIT_UNSTABLE, XENO_FRUIT_SPORE)
+	D.set_resin_build_order(GLOB.resin_build_order_gardener)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
@@ -100,13 +98,13 @@
 		var/to_place_text = X.available_placeable[X.selected_placeable_index]
 		var/placed = null
 		switch(to_place_text)
-			if("Lesser Resin Fruit")
+			if(XENO_FRUIT_LESSER)
 				placed = new /obj/effect/alien/resin/fruit(W.loc, W, X)
-			if("Greater Resin Fruit")
+			if(XENO_FRUIT_GREATER)
 				placed = new /obj/effect/alien/resin/fruit/greater(W.loc,W, X)
-			if("Unstable Resin Fruit")
+			if(XENO_FRUIT_UNSTABLE)
 				placed = new /obj/effect/alien/resin/fruit/unstable(W.loc, W, X)
-			if("Spore Resin Fruit")
+			if(XENO_FRUIT_SPORE)
 				placed = new /obj/effect/alien/resin/fruit/spore(W.loc, W, X)
 		if(!placed)
 			to_chat(X, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
@@ -152,13 +150,13 @@
 	button.overlays.Cut()
 	var/fruit_icon = "fruit_lesser"
 	switch(X.available_placeable[X.selected_placeable_index])
-		if("Lesser Resin Fruit")
+		if(XENO_FRUIT_LESSER)
 			fruit_icon = "fruit_lesser"
-		if("Greater Resin Fruit")
+		if(XENO_FRUIT_GREATER)
 			fruit_icon = "fruit_greater"
-		if("Unstable Resin Fruit")
+		if(XENO_FRUIT_UNSTABLE)
 			fruit_icon = "fruit_unstable"
-		if("Spore Resin Fruit")
+		if(XENO_FRUIT_SPORE)
 			fruit_icon = "fruit_spore"
 	button.overlays += image('icons/mob/hostiles/fruits.dmi', fruit_icon)
 
@@ -219,7 +217,7 @@
 				break
 
 		if(!buff_already_present)
-			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, X, ttl = 3 SECONDS)
+			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, X, ttl = 15 SECONDS)
 			X.visible_message(SPAN_XENODANGER("\The [X] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), \
 			SPAN_XENONOTICE("You surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
 		else

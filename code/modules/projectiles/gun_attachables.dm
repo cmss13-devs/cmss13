@@ -94,10 +94,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attackby(obj/item/I, mob/user)
 	if(flags_attach_features & ATTACH_RELOADABLE)
-		if(user.get_inactive_hand() != src)
-			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
-		else
-			reload_attachment(I, user)
+		reload_attachment(I, user)
 		return TRUE
 	else
 		. = ..()
@@ -202,11 +199,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.in_chamber._RemoveElement(L)
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
-	if(G == user.get_active_hand())
-		if(activate_attachment(G, user)) //success
-			return
-	else
-		to_chat(user, SPAN_WARNING("[G] must be in our active hand to do this."))
+	activate_attachment(G, user)
+	return //success
 
 /obj/item/attachable/proc/activate_attachment(atom/target, mob/user) //This is for activating stuff like flamethrowers, or switching weapon modes.
 	return

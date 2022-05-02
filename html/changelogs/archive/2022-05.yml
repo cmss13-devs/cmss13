@@ -20,3 +20,8 @@
   - bugfix: added back latejoin landmarks to cryo
   - expansion: Cats will now meow at random intervals while not dead.
   - qol: reduced the frequency of the queen ASMR breathing
+2022-05-02:
+  stanalbatross:
+  - bugfix: fixed the garage on BR not having an APC, fixed the north storage dome
+      on LV not having an APC, fixed the hangar deployment workshop on the Almayer
+      not having an APC

@@ -17,6 +17,8 @@
 	suffix = "\[3\]"
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
+	unacidable = TRUE
+	indestructible = TRUE
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	var/on = 1 // 0 for off
 	var/mob/living/carbon/human/current_mapviewer

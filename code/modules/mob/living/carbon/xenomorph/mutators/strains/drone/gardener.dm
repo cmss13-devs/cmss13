@@ -22,11 +22,12 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.mutation_type = DRONE_GARDENER
+	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore)
+	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	D.max_placeable = 4
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
-	D.available_placeable = list(XENO_FRUIT_GREATER, XENO_FRUIT_UNSTABLE, XENO_FRUIT_SPORE)
 	D.set_resin_build_order(GLOB.resin_build_order_gardener)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
@@ -86,40 +87,27 @@
 		return
 
 	if (check_and_use_plasma_owner())
-		if(length(X.current_placeable) >= X.max_placeable)
+		if(length(X.current_fruits) >= X.max_placeable)
 			to_chat(X, SPAN_XENOWARNING("You cannot sustain another fruit, one will wither away to allow this one to live!"))
-			var/obj/effect/alien/resin/fruit/old_fruit = X.current_placeable[1]
-			X.current_placeable.Remove(old_fruit)
+			var/obj/effect/alien/resin/fruit/old_fruit = X.current_fruits[1]
+			X.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
 		X.visible_message(SPAN_XENONOTICE("\The [X] secretes fluids and shape it into a fruit!"), \
 		SPAN_XENONOTICE("You secrete a portion of your vital fluids and shape it into a fruit!"), null, 5)
 
-		var/to_place_text = X.available_placeable[X.selected_placeable_index]
-		var/placed = null
-		switch(to_place_text)
-			if(XENO_FRUIT_LESSER)
-				placed = new /obj/effect/alien/resin/fruit(W.loc, W, X)
-			if(XENO_FRUIT_GREATER)
-				placed = new /obj/effect/alien/resin/fruit/greater(W.loc,W, X)
-			if(XENO_FRUIT_UNSTABLE)
-				placed = new /obj/effect/alien/resin/fruit/unstable(W.loc, W, X)
-			if(XENO_FRUIT_SPORE)
-				placed = new /obj/effect/alien/resin/fruit/spore(W.loc, W, X)
-		if(!placed)
+		var/obj/effect/alien/resin/fruit/fruit = new X.selected_fruit(W.loc, W, X)
+		if(!fruit)
 			to_chat(X, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
 			return
 		X.adjustBruteLoss(health_cost)
 		X.updatehealth()
 		playsound(X.loc, "alien_resin_build", 25)
-		X.current_placeable.Add(placed)
+		X.current_fruits.Add(fruit)
 
-		var/number_of_fruit = length(X.current_placeable)
+		var/number_of_fruit = length(X.current_fruits)
+		button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		update_button_icon()
-		if(number_of_fruit > 1)
-			button.overlays -= "+stack_[number_of_fruit-1]"
-
-		button.overlays += "+stack_[number_of_fruit]"
 
 	apply_cooldown()
 	..()
@@ -136,29 +124,89 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-/datum/action/xeno_action/onclick/change_fruit/New()
-	..()
+/datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
+	. = ..()
+
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hostiles/fruits.dmi', action_icon_state)
+	button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
 
 /datum/action/xeno_action/onclick/change_fruit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.selected_placeable_index++
-	if(X.selected_placeable_index > length(X.available_placeable))
-		X.selected_placeable_index = 1
-	to_chat(X, SPAN_XENO("You will plant [X.available_placeable[X.selected_placeable_index]]"))
-	button.overlays.Cut()
-	var/fruit_icon = "fruit_lesser"
-	switch(X.available_placeable[X.selected_placeable_index])
-		if(XENO_FRUIT_LESSER)
-			fruit_icon = "fruit_lesser"
-		if(XENO_FRUIT_GREATER)
-			fruit_icon = "fruit_greater"
-		if(XENO_FRUIT_UNSTABLE)
-			fruit_icon = "fruit_unstable"
-		if(XENO_FRUIT_SPORE)
-			fruit_icon = "fruit_spore"
-	button.overlays += image('icons/mob/hostiles/fruits.dmi', fruit_icon)
+	if(!X.check_state())
+		return
+
+	tgui_interact(X)
+	return ..()
+
+/datum/action/xeno_action/onclick/change_fruit/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/choose_fruit))
+
+/datum/action/xeno_action/onclick/change_fruit/ui_static_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+
+	var/list/fruits = list()
+	for(var/obj/effect/alien/resin/fruit/fruit as anything in X.available_fruits)
+		var/list/entry = list()
+
+		entry["name"] = initial(fruit.name)
+		entry["desc"] = initial(fruit.desc)
+		entry["image"] = replacetext(initial(fruit.mature_icon_state), " ", "-")
+		entry["id"] = "[fruit]"
+		fruits += list(entry)
+
+	.["fruits"] = fruits
+
+/datum/action/xeno_action/onclick/change_fruit/ui_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+	.["selected_fruit"] = X.selected_fruit
+
+
+/datum/action/xeno_action/onclick/change_fruit/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChooseFruit", "Choose Fruit")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/action/xeno_action/onclick/change_fruit/Destroy()
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/action/xeno_action/onclick/change_fruit/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/xeno_action/onclick/change_fruit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/Xenomorph/X = usr
+	if(!istype(X))
+		return
+
+	switch(action)
+		if("choose_fruit")
+			var/selected_type = text2path(params["type"])
+			if(!(selected_type in X.available_fruits))
+				return
+
+			var/obj/effect/alien/resin/fruit/fruit = selected_type
+			to_chat(X, SPAN_NOTICE("You will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
+			//update the button's overlay with new choice
+			button.overlays.Cut()
+			button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(fruit.mature_icon_state))
+			X.selected_fruit = selected_type
+			. = TRUE
+		if("refresh_ui")
+			. = TRUE
 
 /*
 	Resin Surge

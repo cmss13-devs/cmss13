@@ -84,17 +84,15 @@
 	if(!QDELETED(bound_xeno))
 		if(!picked)
 			to_chat(bound_xeno, SPAN_XENOWARNING("You sense one of your fruit has been destroyed."))
-		bound_xeno.current_placeable.Remove(src)
+		bound_xeno.current_fruits.Remove(src)
 		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		prf.update_button_icon()
 
 		if(picked) // No need to update the number, since the fruit still exists (just as a different item)
 			return
-		var/number_of_fruit = length(bound_xeno.current_placeable)
+		var/number_of_fruit = length(bound_xeno.current_fruits)
+		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		prf.update_button_icon()
-		prf.button.overlays -= "+stack_[number_of_fruit+1]"
-		if(number_of_fruit > 0)
-			prf.button.overlays += "+stack_[number_of_fruit]"
 		bound_xeno = null
 
 /obj/effect/alien/resin/fruit/proc/reduce_timer(maturity_increase)
@@ -276,7 +274,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/Xenomorph/X)
 	to_chat(X, SPAN_XENOWARNING("One of your resin fruits has been picked."))
-	X.current_placeable.Add(src)
+	X.current_fruits.Add(src)
 	bound_xeno = X
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, .proc/handle_xeno_qdel)
 
@@ -291,12 +289,10 @@
 // Removes the fruit from the xeno and updates their icons.
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/delete_fruit()
 	if(bound_xeno)
-		bound_xeno.current_placeable.Remove(src)
+		bound_xeno.current_fruits.Remove(src)
 		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		var/number_of_fruit = length(bound_xeno.current_placeable)
-		prf.button.overlays -= "+stack_[number_of_fruit+1]"
-		if(number_of_fruit > 0)
-			prf.button.overlays += "+stack_[number_of_fruit]"
+		var/number_of_fruit = length(bound_xeno.current_fruits)
+		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		prf.update_button_icon()
 		bound_xeno = null
 

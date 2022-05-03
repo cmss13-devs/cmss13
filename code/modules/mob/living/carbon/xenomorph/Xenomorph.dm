@@ -253,10 +253,10 @@
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
-	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
-	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
+	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
+	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
-	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
+	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
 	var/list/built_structures = list()
 
 	var/icon_xeno

@@ -12,7 +12,6 @@ reset_label = "GBP: Reset"
 "Hard Deletes" = 12
 "Logging" = 1
 "Feature" = -5
-"Tweak" = -3
 "Performance" = 12
 "Priority: CRITICAL" = 20
 "Priority: High" = 15

@@ -729,18 +729,10 @@
 	MH.add_hud_to(src)
 
 
-/mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
-	//xeno leader get a bit arrow and less cooldown
+/mob/living/carbon/Xenomorph/check_improved_pointing()
+	//xeno leaders get a big arrow and less cooldown
 	if(hive_pos != NORMAL_XENO)
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
-	else
-		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
-	visible_message("<b>[src]</b> points to [A]")
-	return 1
-
-
+		return TRUE
 
 ///get_eye_protection()
 ///Returns a number between -1 to 2

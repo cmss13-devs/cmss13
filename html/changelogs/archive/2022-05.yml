@@ -47,3 +47,7 @@
       or observe.
   - qol: when switching darkness level as a ghost, you are told what mode you're switching
       to.
+2022-05-03:
+  stanalbatross:
+  - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
+      shot by their own sentries)

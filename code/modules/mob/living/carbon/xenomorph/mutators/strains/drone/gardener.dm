@@ -22,7 +22,7 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.mutation_type = DRONE_GARDENER
-	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore)
+	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed)
 	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	D.max_placeable = 4
 	mutator_update_actions(D)

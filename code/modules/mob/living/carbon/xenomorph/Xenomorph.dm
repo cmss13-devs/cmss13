@@ -183,6 +183,8 @@
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
 
+	var/list/modifier_sources
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Intrinsic State - well-ish modularized

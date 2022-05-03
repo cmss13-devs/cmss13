@@ -629,3 +629,4 @@
 #define XENO_FRUIT_GREATER "Greater Resin Fruit"
 #define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
 #define XENO_FRUIT_SPORE "Spore Resin Fruit"
+#define XENO_FRUIT_SPEED "Alacrit Resin Fruit"

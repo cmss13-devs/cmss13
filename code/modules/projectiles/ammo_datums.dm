@@ -2151,7 +2151,7 @@
 	icon_state = "pulse1"
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 	shell_speed = AMMO_SPEED_TIER_6
-	damage = 35
+	damage = 50
 
 /datum/ammo/energy/yautja/caster/bolt/stun
 	name = "high power stun bolt"

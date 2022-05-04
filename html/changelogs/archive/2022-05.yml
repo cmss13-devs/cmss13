@@ -54,6 +54,11 @@
   - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
       shot by their own sentries)
 2022-05-04:
+  ChainsawMullet:
+  - balance: Hunter Chainwhip attack speed increased by 20% (from 1.0 to .8)
+  - balance: Hunter Clansword attack speed reduced by 10% (from .9 to 1.0), parry
+      duration reduced by 50% (from 3 seconds to 1.5 seconds)
+  - balance: Hunter Glaive throw damage reduced by 50% (from 30 to 15)
   Triiodine, Monkeysfist101:
   - rscadd: Re-added Sorokyne Strata to rotation. Applied a bunch of much needed fixes
       and also new unique turfs.

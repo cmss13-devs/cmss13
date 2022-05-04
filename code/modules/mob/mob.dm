@@ -718,7 +718,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		flags_atom &= ~DIRLOCK
 		move_delay += MOVE_REDUCTION_DIRECTION_LOCKED
 		recalculate_move_delay = TRUE
-	else if ( facedir(newdir) )
+	else if(facedir(newdir))
 		if(!(flags_atom & DIRLOCK))
 			flags_atom |= DIRLOCK
 			move_delay -= MOVE_REDUCTION_DIRECTION_LOCKED

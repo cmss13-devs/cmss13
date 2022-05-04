@@ -1445,6 +1445,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	aim_slowdown = 0
+	flags_equip_slot = SLOT_WAIST
 	wield_delay = WIELD_DELAY_VERY_FAST
 	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK

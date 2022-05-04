@@ -54,5 +54,8 @@
   - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
       shot by their own sentries)
 2022-05-04:
+  Triiodine, Monkeysfist101:
+  - rscadd: Re-added Sorokyne Strata to rotation. Applied a bunch of much needed fixes
+      and also new unique turfs.
   monkeysfist:
   - imageadd: Tweaked ballcap sprites

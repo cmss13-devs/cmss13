@@ -527,7 +527,7 @@
 /obj/structure/prop/power_transformer
 	name = "power transformer"
 	icon = 'icons/obj/structures/props/power_transformer.dmi'
-	icon_state = "power_transformer"
+	icon_state = "transformer"
 	bound_width = 64
 	bound_height = 64
 	desc = "A passive electrical component that controls where and which circuits power flows into."

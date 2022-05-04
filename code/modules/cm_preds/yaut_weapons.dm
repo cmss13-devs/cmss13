@@ -217,6 +217,7 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
+	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
 
@@ -241,11 +242,11 @@
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 0.9 SECONDS
+	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
 	var/parrying
-	var/parrying_duration = 3 SECONDS
+	var/parrying_duration = 1.5 SECONDS
 	var/cur_parrying_cooldown
 	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
 
@@ -712,7 +713,7 @@
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT

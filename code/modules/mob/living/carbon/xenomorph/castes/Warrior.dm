@@ -95,7 +95,6 @@
 	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
-		return // Warrior should not-regrab the victim to reset the knockdown
 
 	. = ..(L, lunge, should_neckgrab)
 

@@ -24,9 +24,7 @@
 			next_move = world.time + 10
 		if(SKILL_CQC_EXPERT)
 			next_move = world.time + 5
-		if(SKILL_CQC_MASTER)
-			next_move = world.time
-		if(SKILL_CQC_MAX)
+		if(SKILL_CQC_MASTER, SKILL_CQC_MAX)
 			next_move = world.time
 
 	//Getting out of someone's inventory.

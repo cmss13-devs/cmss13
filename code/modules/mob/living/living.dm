@@ -192,7 +192,6 @@
 
 		if(grab_level == GRAB_CARRY)
 			switch(grab_level)
-				if(GRAB_CARRY)
 					var/direction_to_face = EAST
 
 					if(direct & WEST)

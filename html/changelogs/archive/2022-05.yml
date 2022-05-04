@@ -53,3 +53,6 @@
   stanalbatross:
   - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
       shot by their own sentries)
+2022-05-04:
+  monkeysfist:
+  - imageadd: Tweaked ballcap sprites

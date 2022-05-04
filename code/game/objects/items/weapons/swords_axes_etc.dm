@@ -45,10 +45,12 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
-	var/stun_time = 1 SECONDS
+	var/stun_time = 2
 
 /obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
-	if(!on || user.a_intent == INTENT_HARM || isSpeciesYautja(target))
+	if(!istype(target) || !on)
+		return ..()
+	if(user.a_intent == INTENT_HARM || isSpeciesYautja(target) || user == target)
 		return ..()
 	else
 		stun(target, user)
@@ -89,16 +91,18 @@
 		add_blood(blood_color)
 	return
 
-/obj/item/weapon/melee/telebaton/proc/stun(mob/living/carbon/human/H, mob/living/user)
-	if(H.check_shields(src, 0, "[user]'s [name]"))
+/obj/item/weapon/melee/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
+	if(target.check_shields(src, 0, "[user]'s [name]"))
 		return FALSE
-	user.visible_message(SPAN_DANGER("[user] knocks down [H] with \the [src]!"),\
-							SPAN_WARNING("You knock down [H] with \the [src]!"))
+	user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),\
+							SPAN_WARNING("You knock down [target] with \the [src]!"))
 	// Visuals and sound
-	playsound(H, 'sound/weapons/Genhit.ogg', 75, TRUE, 7)
-	log_interact(user, H, "[key_name(user)] stunned [key_name(H)] with \the [src]")
+	playsound(target, 'sound/weapons/baton.ogg', 75, TRUE, 7)
+	user.animation_attack_on(target)
+	user.flick_attack_overlay(target, "punch")
+	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
 	// Hit 'em
-	H.KnockDown(stun_time)
+	target.KnockDown(stun_time)
 	return TRUE
 
 /*

@@ -179,7 +179,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
 	name = "bicaridine EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine and doesn't require any training, a common brute and circulatory damage medicine."
+	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
 	icon_state = "emptyskill"
 	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT

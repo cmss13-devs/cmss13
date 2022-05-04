@@ -88,7 +88,7 @@
 		KnockOut(knock_value)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib(var/cause = "gibbing")
+/mob/living/carbon/gib(var/cause = "unknown means")
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -105,8 +105,8 @@
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
 				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
-
-	. = ..(cause)
+	var/cause_data = create_cause_data("Gibbing by [cause]")
+	. = ..(cause_data)
 
 
 /mob/living/carbon/revive()

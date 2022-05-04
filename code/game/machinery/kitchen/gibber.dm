@@ -48,7 +48,7 @@
 		if(M.loc == input_plate
 		)
 			M.forceMove(src)
-			M.gib()
+			M.gib("Gibber")
 
 
 /obj/structure/machinery/gibber/New()

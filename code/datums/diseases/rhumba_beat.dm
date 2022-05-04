@@ -46,6 +46,6 @@
 				src.cure()
 			to_chat(affected_mob, SPAN_DANGER("Your body is unable to contain the Rhumba Beat..."))
 			if(prob(50))
-				affected_mob.gib()
+				affected_mob.gib("Rhumba")
 		else
 			return

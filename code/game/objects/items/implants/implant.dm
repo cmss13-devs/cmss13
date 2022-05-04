@@ -128,7 +128,7 @@ Implant Specifics:<BR>"}
 		if((!cause) || (!src.imp_in))	return 0
 		explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 		if(src.imp_in)
-			src.imp_in.gib()
+			src.imp_in.gib("Death Implant")
 
 	islegal()
 		return 0
@@ -195,16 +195,16 @@ Implant Specifics:<BR>"}
 							qdel(src)
 				if (elevel == "Destroy Body")
 					explosion(get_turf(T), -1, 0, 1, 6)
-					T.gib()
+					T.gib("Explosive Implant")
 				if (elevel == "Full Explosion")
 					explosion(get_turf(T), 0, 1, 3, 6)
-					T.gib()
+					T.gib("Explosive Implant")
 
 			else
 				explosion(get_turf(imp_in), 0, 1, 3, 6)
 
 		if(need_gib)
-			imp_in.gib()
+			imp_in.gib("Explosive Implant")
 
 
 	implanted(mob/source as mob)

@@ -168,7 +168,7 @@
 				gibs_ready = 0
 				if(locate(/mob,contents))
 					var/mob/M = locate(/mob,contents)
-					M.gib()
+					M.gib("Washing Machine")
 			for(var/atom/movable/O in contents)
 				O.forceMove(loc)
 			crayon = null

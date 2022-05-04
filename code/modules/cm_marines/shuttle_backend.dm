@@ -561,7 +561,7 @@ qdel(src)
 			if (isliving(A))
 				var/mob/living/L = A
 				L.last_damage_data = create_cause_data("dropship flattening")
-				L.gib()
+				L.gib("dropship")
 
 		target = target.ChangeTurf(/turf/open/gm/empty)
 

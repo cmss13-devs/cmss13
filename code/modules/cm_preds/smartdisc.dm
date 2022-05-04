@@ -196,7 +196,7 @@
 	spawn(1)
 		if(src) qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
+/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "smartdisc")
 	visible_message("\The [src] explodes!")
 	..(cause, icon_gib,1)
 	spawn(1)

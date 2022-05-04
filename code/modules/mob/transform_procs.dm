@@ -22,7 +22,7 @@
 	//animation = null
 
 	if(!species.primitive) //If the creature in question has no primitive set, this is going to be messy.
-		gib()
+		gib("Monkification")
 		return
 
 	var/mob/living/carbon/human/monkey/O = null

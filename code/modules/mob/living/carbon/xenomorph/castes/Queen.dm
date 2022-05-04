@@ -652,18 +652,18 @@
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
 			return FALSE
 
-	var/mob/living/carbon/human/H = victim
-	if(istype(H))
-		if(istype(H.wear_mask, /obj/item/clothing/mask/facehugger))
+	var/mob/living/carbon/human/Host = victim
+	if(istype(Host))
+		if(istype(Host.wear_mask, /obj/item/clothing/mask/facehugger))
 			to_chat(src, SPAN_XENOWARNING("The host will soon bear a child of the hive!"))
 			return FALSE
 
 		if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-			if(H.status_flags & XENO_HOST)
+			if(Host.status_flags & XENO_HOST)
 				if(victim.stat != DEAD) //Not dead yet.
 					to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
 					return FALSE
-				else if(( world.time <= H.timeofdeath + H.revive_grace_period )) //Dead, but the host can still hatch, possibly.
+				else if(( world.time <= Host.timeofdeath + Host.revive_grace_period )) //Dead, but the host can still hatch, possibly.
 					to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
 					return FALSE
 	return TRUE

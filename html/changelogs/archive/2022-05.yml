@@ -54,6 +54,10 @@
   - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
       shot by their own sentries)
 2022-05-04:
+  50RemAndCounting:
+  - balance: Rebalanced the USCM Service Jacket and some of the Commanding Officer-exclusive
+      jackets to not have the exact same protection stats as the M3 light armour.
+      These jackets can now hold a machete scabbard in their exosuit slot as well.
   ChainsawMullet:
   - balance: Hunter Chainwhip attack speed increased by 20% (from 1.0 to .8)
   - balance: Hunter Clansword attack speed reduced by 10% (from .9 to 1.0), parry

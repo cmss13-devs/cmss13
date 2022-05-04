@@ -207,7 +207,7 @@
 	maptext_label = "!!"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
-	name = "emergency autoinjector EZ (CAUTION)"
+	name = "EZ emergency autoinjector (CAUTION)"
 	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in a life-threatening situations and doesn't require any training."
 	icon_state = "emptyskill"
 	item_state = "emptyskill"

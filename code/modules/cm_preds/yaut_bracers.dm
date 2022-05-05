@@ -840,7 +840,8 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		D.boomerang(usr)
+		if(isturf(D.loc))
+			D.boomerang(usr)
 	return 1
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_tracked_item()

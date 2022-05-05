@@ -22,7 +22,7 @@
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
-	var/hud_type = MOB_HUD_FACTION_USCM_LIMITED
+	var/hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()

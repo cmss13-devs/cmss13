@@ -49,7 +49,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_DROPSHIP_CREW_CHIEF			"Dropship Crew Chief"
 #define JOB_CREWMAN						"Vehicle Crewman"
-#define JOB_AUX_COMBAT_SUPPORT_LIST     list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN)
+#define JOB_AUX_COMBAT_SUPPORT_LIST		list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN)
 
 #define JOB_POLICE_CADET				"MP Cadet"
 #define JOB_POLICE						"Military Police"

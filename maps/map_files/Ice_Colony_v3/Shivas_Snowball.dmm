@@ -121,6 +121,7 @@
 	opacity = 1;
 	unacidable = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "aau" = (
@@ -9460,6 +9461,14 @@
 	icon_state = "stan2"
 	},
 /area/shiva/interior/aerodrome)
+"dCY" = (
+/obj/structure/ice/thin/single{
+	opacity = 1;
+	unacidable = 0
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/left_spiders)
 "dDo" = (
 /obj/structure/machinery/landinglight/ds1/spoke,
 /turf/open/floor/shiva{
@@ -29851,7 +29860,7 @@ aav
 aaP
 aav
 clK
-rpE
+dCY
 asz
 asz
 asz
@@ -30013,7 +30022,7 @@ aav
 clK
 aav
 clK
-rpE
+dCY
 asz
 wFB
 eSt
@@ -30175,7 +30184,7 @@ dRb
 dRb
 aaL
 abL
-rpE
+dCY
 asz
 gha
 uuN

@@ -27,23 +27,24 @@
 #define HUNTER_HUD			"26" //Displays various statuses on mobs for Hunters to identify targets
 
 //data HUD (medhud, sechud) defines
-#define MOB_HUD_SECURITY_BASIC		1
-#define MOB_HUD_SECURITY_ADVANCED	2
-#define MOB_HUD_MEDICAL_BASIC		3
-#define MOB_HUD_MEDICAL_ADVANCED	4
-#define MOB_HUD_MEDICAL_OBSERVER	5
-#define MOB_HUD_XENO_INFECTION		6
-#define MOB_HUD_XENO_STATUS			7
-#define MOB_HUD_XENO_HOSTILE		8
-#define MOB_HUD_FACTION_USCM		9
-#define MOB_HUD_FACTION_OBSERVER	10
-#define MOB_HUD_FACTION_UPP			11
-#define MOB_HUD_FACTION_WY			12
-#define MOB_HUD_FACTION_RESS		13
-#define MOB_HUD_FACTION_CLF			14
-#define MOB_HUD_FACTION_PMC			15
-#define MOB_HUD_HUNTER				16
-#define MOB_HUD_HUNTER_CLAN			17
+#define MOB_HUD_SECURITY_BASIC				1
+#define MOB_HUD_SECURITY_ADVANCED			2
+#define MOB_HUD_MEDICAL_BASIC				3
+#define MOB_HUD_MEDICAL_ADVANCED			4
+#define MOB_HUD_MEDICAL_OBSERVER			5
+#define MOB_HUD_XENO_INFECTION				6
+#define MOB_HUD_XENO_STATUS					7
+#define MOB_HUD_XENO_HOSTILE				8
+#define MOB_HUD_FACTION_USCM_LIMITED		9
+#define MOB_HUD_FACTION_USCM_FULL			10
+#define MOB_HUD_FACTION_OBSERVER			11
+#define MOB_HUD_FACTION_UPP					12
+#define MOB_HUD_FACTION_WY					13
+#define MOB_HUD_FACTION_RESS				14
+#define MOB_HUD_FACTION_CLF					15
+#define MOB_HUD_FACTION_PMC					16
+#define MOB_HUD_HUNTER						17
+#define MOB_HUD_HUNTER_CLAN					18
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL					"track_sl"

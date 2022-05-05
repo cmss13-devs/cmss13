@@ -10,7 +10,8 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
-	MOB_HUD_FACTION_USCM = new /datum/mob_hud/faction(),
+	MOB_HUD_FACTION_USCM_FULL = new /datum/mob_hud/faction(),
+	MOB_HUD_FACTION_USCM_LIMITED = new /datum/mob_hud/faction/uscm_limited(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
@@ -165,11 +166,19 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/faction
 	hud_icons = list(FACTION_HUD, ORDER_HUD)
 	var/faction_to_check = FACTION_MARINE
+	var/jobs_to_check
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
+	var/job = target.job
+	if(jobs_to_check)
+		if(!locate(job) in jobs_to_check)
+			return
 	if(faction == faction_to_check || isobserver(user) || isYautja(user))
 		..()
+
+/datum/mob_hud/faction/uscm_limited
+	jobs_to_check = list(JOB_SQUAD_ROLES_LIST, JOB_COMMAND_ROLES_LIST, JOB_AUX_COMBAT_SUPPORT_LIST)
 
 /datum/mob_hud/faction/upp
 	faction_to_check = FACTION_UPP

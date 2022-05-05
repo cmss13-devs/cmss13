@@ -68,3 +68,7 @@
       and also new unique turfs.
   monkeysfist:
   - imageadd: Tweaked ballcap sprites
+2022-05-05:
+  PhantomEpicness:
+  - bugfix: Fixed flare gun storage. They should now be able to be put in shoulder
+      holsters and other weapon storage.

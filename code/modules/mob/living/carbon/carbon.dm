@@ -105,7 +105,9 @@
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
 				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
-	var/cause_data = create_cause_data("Gibbing by [cause]")
+	var/datum/cause_data = cause
+	if(!istype(cause_data))
+		cause_data = create_cause_data("Gibbing by [cause]")
 	. = ..(cause_data)
 
 

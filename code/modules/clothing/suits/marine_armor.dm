@@ -974,10 +974,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /datum/event_handler/ghillie_movement
 	var/obj/item/clothing/suit/storage/marine/ghillie/gs
-	handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
-		if(gs.camo_active && ev_args.moving)
-			gs.deactivate_camouflage(sender)
-			ev_args.continue_movement = TRUE
+
+/datum/event_handler/ghillie_movement/handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
+	if(gs.camo_active && ev_args.moving)
+		gs.deactivate_camouflage(sender)
+		ev_args.continue_movement = TRUE
 
 /datum/action/item_action/specialist/prepare_position
 	ability_primacy = SPEC_PRIMARY_ACTION_1

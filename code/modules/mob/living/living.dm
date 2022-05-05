@@ -463,12 +463,19 @@
 		return 1
 
 /datum/event_args/mob_movement
-	var/continue_movement = 1
-	var/moving = 0
+	var/continue_movement = TRUE
+	var/moving = FALSE
+	var/mob_dir = null
+	var/specific_dir = null
 
-/mob/living/on_movement(moving = 1)
-	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
-	ev_args.moving = moving
+/datum/event_args/mob_movement/New(var/set_moving = TRUE, var/set_mob_dir, var/set_specific_dir)
+	..()
+	moving = set_moving
+	mob_dir = set_mob_dir
+	specific_dir = set_specific_dir
+
+/mob/living/on_movement(moving = TRUE, var/specific_dir)
+	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement(moving, dir, specific_dir)
 	if(event_movement)
 		event_movement.fire_event(src, ev_args)
 	return ev_args.continue_movement

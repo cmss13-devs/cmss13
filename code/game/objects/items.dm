@@ -728,11 +728,13 @@ cases. Override_icon_state should be a list.*/
 /datum/event_handler/event_gun_zoom
 	var/obj/item/zooming_item
 	var/mob/living/calee
+	var/initial_mob_dir = null
 	flags_handler = HNDLR_FLAG_SINGLE_FIRE
 
 /datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
 	zooming_item = _zooming_item
 	calee = _calee
+	initial_mob_dir = calee.dir
 
 /datum/event_handler/event_gun_zoom/Destroy()
 	if(zooming_item)
@@ -742,8 +744,10 @@ cases. Override_icon_state should be a list.*/
 	. = ..()
 
 /datum/event_handler/event_gun_zoom/handle(sender, datum/event_args/event_args)
-	if(calee && calee.client) //Dropped when disconnected, whoops
-		if(zooming_item && zooming_item.zoom && calee) //sanity check
+	if(!calee)
+		return
+	if(calee.dir != initial_mob_dir && calee.client) //Dropped when disconnected, whoops
+		if(zooming_item?.zoom) //sanity check
 			zooming_item.zoom(calee)
 
 /*

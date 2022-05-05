@@ -1984,8 +1984,17 @@ Defined in conflicts.dm of the #defines folder.
 /datum/event_handler/bipod_movement
 	var/obj/item/attachable/bipod/attachment
 	var/obj/item/weapon/gun/G
+	var/initial_mob_dir
+
+/datum/event_handler/bipod_movement/New(var/set_attachment, var/set_gun, var/set_dir)
+	..()
+	attachment = set_attachment
+	G = set_gun
+	initial_mob_dir = set_dir
 
 /datum/event_handler/bipod_movement/handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
+	if(ev_args.specific_dir & initial_mob_dir) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
+		return
 	if(attachment.bipod_deployed)
 		attachment.activate_attachment(G, sender)
 	sender.apply_effect(1, SUPERSLOW)
@@ -2046,7 +2055,7 @@ Defined in conflicts.dm of the #defines folder.
 		bipod_deployed = !bipod_deployed
 		if(user)
 			if(bipod_deployed)
-				to_chat(user, SPAN_NOTICE("You deploy [src][support ? " on [support]" : "on the ground"]."))
+				to_chat(user, SPAN_NOTICE("You deploy [src] [support ? "on [support]" : "on the ground"]."))
 				playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 				accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 				scatter_mod = -SCATTER_AMOUNT_TIER_10
@@ -2059,9 +2068,7 @@ Defined in conflicts.dm of the #defines folder.
 				G.recalculate_attachment_bonuses()
 
 				if(!bipod_movement)
-					bipod_movement = new /datum/event_handler/bipod_movement()
-					bipod_movement.attachment = src
-					bipod_movement.G = G
+					bipod_movement = new /datum/event_handler/bipod_movement(src, G, user.dir)
 					user.add_movement_handler(bipod_movement)
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)

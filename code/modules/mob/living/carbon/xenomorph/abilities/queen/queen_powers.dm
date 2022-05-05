@@ -68,6 +68,8 @@
 
 	var/xeno_type
 	var/level_to_switch_to = T.get_vision_level()
+	var/life_kills = T.get_life_kills()
+	var/life_damage = T.get_life_damage_taken()
 	switch(newcaste)
 		if(XENO_CASTE_RUNNER)
 			xeno_type = /mob/living/carbon/Xenomorph/Runner
@@ -109,6 +111,10 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
+	if(life_kills)
+		new_xeno.life_kills_total = life_kills
+	if(life_damage)
+		new_xeno.life_damage_taken_total = life_damage
 	// If the player has self-deevolved before, don't allow them to do it again
 	if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
 		remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)

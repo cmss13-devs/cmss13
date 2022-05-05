@@ -78,6 +78,8 @@
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
+	var/life_kills = get_life_kills()
+	var/life_damage = get_life_damage_taken()
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
 		evolving = FALSE
@@ -128,6 +130,10 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
+	if(life_kills)
+		new_xeno.life_kills_total = life_kills
+	if(life_damage)
+		new_xeno.life_damage_taken_total = life_damage
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
 		new_xeno.fireloss = src.fireloss //Transfers the damage over.
@@ -263,6 +269,8 @@
 
 	var/xeno_type
 	var/level_to_switch_to = get_vision_level()
+	var/life_kills = get_life_kills()
+	var/life_damage = get_life_damage_taken()
 	switch(newcaste)
 		if("Larva")
 			xeno_type = /mob/living/carbon/Xenomorph/Larva
@@ -305,6 +313,10 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
+	if(life_kills)
+		new_xeno.life_kills_total = life_kills
+	if(life_damage)
+		new_xeno.life_damage_taken_total = life_damage
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 

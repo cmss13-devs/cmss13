@@ -567,6 +567,12 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
 
+/mob/living/carbon/Xenomorph/proc/get_life_kills()
+	return life_kills_total
+
+/mob/living/carbon/Xenomorph/proc/get_life_damage_taken()
+	return life_damage_taken_total
+
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))

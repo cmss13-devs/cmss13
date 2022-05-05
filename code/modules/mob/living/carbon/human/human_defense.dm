@@ -326,9 +326,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/client/assailant = M.client
 		if (damage > 5)
 			last_damage_mob = M
-			M.track_hit(initial(name))
+			M.track_hit(initial(O.name))
 			if (M.faction == faction)
-				M.track_friendly_fire(initial(name))
+				M.track_friendly_fire(initial(O.name))
 		if (assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")

@@ -338,16 +338,19 @@
 
 /mob/proc/point_to_atom(atom/A, turf/T)
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
-	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
-		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
-
-	else
+	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
 		new /obj/effect/overlay/temp/point/big(T, src)
+	else
+		recently_pointed_to = world.time + 50
+		new /obj/effect/overlay/temp/point(T, src)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
-	return 1
+	return TRUE
 
+///Is this mob important enough to point with big arrows?
+/mob/proc/check_improved_pointing()
+	if(HAS_TRAIT(src, TRAIT_LEADERSHIP))
+		return TRUE
 
 /mob/proc/update_flavor_text()
 	set src in usr

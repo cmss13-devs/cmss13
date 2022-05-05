@@ -72,3 +72,6 @@
   PhantomEpicness:
   - bugfix: Fixed flare gun storage. They should now be able to be put in shoulder
       holsters and other weapon storage.
+  Segrain:
+  - bugfix: Acting squad leaders once again get loud radio voice and advanced pointing
+      skills.

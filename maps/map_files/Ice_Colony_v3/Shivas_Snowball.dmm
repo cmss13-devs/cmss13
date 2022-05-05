@@ -1072,6 +1072,7 @@
 /area/shiva/interior/colony/medseceng)
 "aeg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "aeh" = (
@@ -7563,6 +7564,10 @@
 	icon_state = "red"
 	},
 /area/shiva/interior/colony/central)
+"buJ" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/interior/colony/medseceng)
 "bvb" = (
 /obj/structure/platform_decoration/strata,
 /obj/structure/flora/bush/snow,
@@ -11553,6 +11558,7 @@
 	name = "\improper Colony Engineering Material Storage";
 	req_access_txt = "100"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "gjg" = (
@@ -19303,6 +19309,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/bar)
+"oGg" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/colony/medseceng)
 "oHf" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/snow/layer2,
@@ -25043,6 +25053,7 @@
 	name = "\improper Colony Engineering Locker Room";
 	req_access_txt = "100"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "uOc" = (
@@ -25258,6 +25269,14 @@
 "uYC" = (
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/fort_biceps)
+"uYR" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Underground Security";
+	req_access_txt = "100"
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "uZf" = (
 /turf/open/floor/shiva{
 	icon_state = "wredcorners"
@@ -26010,6 +26029,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/research_hab)
+"vQZ" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/exterior/cp_colony_grounds)
 "vRM" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -26181,6 +26204,7 @@
 	name = "\improper Underground Security Evidence Storage";
 	req_access_txt = "100"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "wfP" = (
@@ -26917,6 +26941,17 @@
 	},
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/caves/cp_camp)
+"xbz" = (
+/obj/structure/window/framed/shiva,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
+"xbP" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/medseceng)
 "xbZ" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -27635,6 +27670,7 @@
 	name = "\improper Underground Security Showers";
 	req_access_txt = "100"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "yfE" = (
@@ -27735,6 +27771,11 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
+/area/shiva/interior/colony/medseceng)
+"ylz" = (
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
 "ylO" = (
 /obj/structure/machinery/colony_floodlight_switch{
@@ -51735,14 +51776,14 @@ puZ
 "}
 (149,1,1) = {"
 acH
-aDn
-aDn
+buJ
+buJ
 aeg
-aDn
-acT
-acT
-acT
-acT
+buJ
+oGg
+oGg
+oGg
+oGg
 tTd
 qrz
 qrz
@@ -51904,12 +51945,12 @@ acT
 aoK
 akL
 aoK
-acT
-acT
-arA
-aek
-arA
-acT
+oGg
+ylz
+uYR
+xbz
+uYR
+oGg
 acT
 vXh
 vXh
@@ -52071,7 +52112,7 @@ acT
 iJY
 uSn
 uSn
-acT
+oGg
 uSn
 uSn
 uSn
@@ -52233,7 +52274,7 @@ acT
 iJY
 uSn
 uSn
-acT
+oGg
 uSn
 uSn
 uSn
@@ -52395,13 +52436,13 @@ api
 iJY
 uSn
 uSn
-acT
-acT
-acT
+oGg
+oGg
+oGg
 wfL
-acT
-acT
-acT
+oGg
+oGg
+oGg
 aef
 aef
 fkq
@@ -52563,7 +52604,7 @@ yeu
 axG
 axG
 axG
-acT
+oGg
 acT
 acT
 acT
@@ -52725,7 +52766,7 @@ aoK
 hUM
 aoK
 axG
-aek
+xbz
 fMe
 yeu
 aAM
@@ -52887,7 +52928,7 @@ onl
 aNn
 aTZ
 rgu
-aek
+xbz
 pId
 uSn
 uSn
@@ -53049,7 +53090,7 @@ aoK
 aVR
 aoK
 axG
-aek
+xbz
 fMe
 axG
 nIB
@@ -53211,7 +53252,7 @@ axG
 axG
 axG
 axG
-acT
+oGg
 acT
 acT
 acT
@@ -53372,8 +53413,8 @@ acT
 acT
 acN
 acT
-acT
-acT
+oGg
+oGg
 axG
 axG
 yeu
@@ -53534,7 +53575,7 @@ uSn
 uSn
 uSn
 uSn
-uSn
+xbP
 agr
 axG
 uSn
@@ -53696,7 +53737,7 @@ uSn
 kbJ
 uSn
 uSn
-uSn
+xbP
 ajO
 axG
 uSn
@@ -53858,7 +53899,7 @@ acT
 acT
 aSz
 acT
-aDn
+buJ
 aDn
 axG
 axG
@@ -54020,7 +54061,7 @@ acT
 gvT
 lNV
 lGq
-aDn
+buJ
 aDn
 aek
 aek
@@ -54182,7 +54223,7 @@ aek
 lGq
 fGG
 lNV
-aDn
+buJ
 aDn
 fSm
 aes
@@ -54344,7 +54385,7 @@ aek
 oYw
 oYw
 lGq
-aek
+xbz
 uSn
 uSn
 uSn
@@ -54506,7 +54547,7 @@ aek
 oYw
 oYw
 goS
-aek
+xbz
 uSn
 uSn
 uSn
@@ -54668,7 +54709,7 @@ aek
 oYw
 oYw
 npi
-aek
+xbz
 syV
 uSn
 uSn
@@ -54829,31 +54870,31 @@ acT
 acT
 lGq
 oYw
-acT
-aDn
-acT
-acT
+oGg
+buJ
+oGg
+oGg
 giU
-acT
-acT
-acT
+oGg
+oGg
+oGg
 uNe
-acT
-acT
-acT
-acT
-acT
-acT
-acT
-acT
+oGg
+oGg
+oGg
+oGg
+oGg
+oGg
+oGg
+oGg
 yez
-aDn
-aDn
-aDn
-aDn
-aDn
-aDn
-aDn
+buJ
+buJ
+buJ
+buJ
+buJ
+buJ
+buJ
 eOM
 eOM
 sYu
@@ -55015,7 +55056,7 @@ qep
 qep
 xRY
 xRY
-xRY
+vQZ
 eOM
 eOM
 sYu
@@ -55177,7 +55218,7 @@ sYu
 qNj
 xRY
 xRY
-xRY
+vQZ
 bSC
 sYu
 sYu

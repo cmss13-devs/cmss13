@@ -75,3 +75,4 @@
   Segrain:
   - bugfix: Acting squad leaders once again get loud radio voice and advanced pointing
       skills.
+  - bugfix: Thrown items now properly attribute their damage in tracking statistics.

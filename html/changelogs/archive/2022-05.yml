@@ -77,6 +77,8 @@
       skills.
   - bugfix: Thrown items now properly attribute their damage in tracking statistics.
 2022-05-06:
+  Diegoflores31:
+  - bugfix: Fixed MedHUD to match its On_mob state
   Git-Nivrak:
   - bugfix: Fixed a few bugs with warrior lunge and grab
   forest2001:

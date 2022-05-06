@@ -76,3 +76,9 @@
   - bugfix: Acting squad leaders once again get loud radio voice and advanced pointing
       skills.
   - bugfix: Thrown items now properly attribute their damage in tracking statistics.
+2022-05-06:
+  forest2001:
+  - rscadd: Falcon Drone can now fly over most dense objects provided they are not
+      walls. Also changed Falcon's hologram description.
+  - code_imp: Yautja and Thrall gear selects now mostly use defines so there is less
+      duplication of long name strings.

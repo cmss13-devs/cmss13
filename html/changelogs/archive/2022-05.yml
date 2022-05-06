@@ -77,6 +77,8 @@
       skills.
   - bugfix: Thrown items now properly attribute their damage in tracking statistics.
 2022-05-06:
+  Git-Nivrak:
+  - bugfix: Fixed a few bugs with warrior lunge and grab
   forest2001:
   - rscadd: Falcon Drone can now fly over most dense objects provided they are not
       walls. Also changed Falcon's hologram description.

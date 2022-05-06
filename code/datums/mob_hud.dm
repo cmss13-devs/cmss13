@@ -172,13 +172,13 @@ var/list/datum/mob_hud/huds = list(
 	var/faction = target.faction
 	var/job = target.job
 	if(jobs_to_check)
-		if(!locate(job) in jobs_to_check)
+		if(!(job in jobs_to_check))
 			return
 	if(faction == faction_to_check || isobserver(user) || isYautja(user))
 		..()
 
 /datum/mob_hud/faction/uscm_limited
-	jobs_to_check = list(JOB_SQUAD_ROLES_LIST, JOB_COMMAND_ROLES_LIST, JOB_AUX_COMBAT_SUPPORT_LIST)
+	jobs_to_check = JOB_LIMITED_HUD_LIST
 
 /datum/mob_hud/faction/upp
 	faction_to_check = FACTION_UPP

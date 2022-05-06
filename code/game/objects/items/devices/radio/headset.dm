@@ -22,7 +22,7 @@
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
-	var/hud_type = MOB_HUD_FACTION_USCM_FULL
+	var/hud_type = MOB_HUD_FACTION_USCM_LIMITED
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
@@ -316,6 +316,7 @@
 	icon_state = "ce_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
@@ -323,6 +324,7 @@
 	icon_state = "cmo_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmo)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
@@ -354,6 +356,7 @@
 	icon_state = "ro_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ro)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -385,6 +388,7 @@
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
@@ -392,6 +396,7 @@
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
@@ -427,7 +432,7 @@
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - tactics"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
-	volume = RADIO_VOLUME_CRITICAL
+	volume = RADIO_VOLUME_CRITICA
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
@@ -744,6 +749,7 @@
 	frequency = DTH_FREQ
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
@@ -751,6 +757,7 @@
 	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL
+	hud_type = MOB_HUD_FACTION_USCM_FULL
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

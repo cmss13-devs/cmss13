@@ -25,7 +25,7 @@
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
 	var/hit_bed_sound = 'sound/effects/metalhit.ogg' //sound player when attacked by a xeno
 	/// Sound when buckled to a bed/chair/stool
-	var/buckling_sound = 'sound/effects/buckle.ogg' 
+	var/buckling_sound = 'sound/effects/buckle.ogg'
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -285,6 +285,7 @@ obj/structure/bed/Destroy()
 	desc = "A collapsed surgical bed that can be carried around."
 	icon_state = "surgical_folded"
 	rollertype = /obj/structure/bed/portable_surgery
+	matter = list("plastic" = 6000)
 
 ////////////////////////////////////////////
 			//MEDEVAC STRETCHER

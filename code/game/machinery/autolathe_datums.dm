@@ -391,6 +391,14 @@ datum/autolathe/recipe/medilathe/autoinjector/s30x6
 	name = "bonesetter"
 	path = /obj/item/tool/surgery/bonesetter
 
+/datum/autolathe/recipe/medilathe/bonegel
+	name = "bone gel"
+	path = /obj/item/tool/surgery/bonegel
+
+/datum/autolathe/recipe/medilathe/fixovein
+	name = "FixOVein"
+	path = /obj/item/tool/surgery/FixOVein
+
 /datum/autolathe/recipe/medilathe/cryobag
 	name = "stasis bag"
 	path = /obj/item/bodybag/cryobag
@@ -398,6 +406,10 @@ datum/autolathe/recipe/medilathe/autoinjector/s30x6
 /datum/autolathe/recipe/medilathe/rollerbed
 	name = "rollerbed"
 	path = /obj/item/roller
+
+/datum/autolathe/recipe/medilathe/surgerybed
+	name = "portable surgical bed"
+	path = /obj/item/roller/surgical
 
 /datum/autolathe/recipe/medilathe/pill_bottle
 	name = "pill bottle"

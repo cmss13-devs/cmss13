@@ -81,6 +81,7 @@
 	S["stylesheet"] 		>> stylesheet
 	S["window_skin"]		>> window_skin
 	S["fps"]				>> fps
+	S["ghost_vision_pref"]	>> ghost_vision_pref
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
@@ -136,6 +137,7 @@
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
+	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -211,6 +213,7 @@
 	S["toggles_flashing"]	<< toggles_flashing
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
+	S["ghost_vision_pref"]	<< ghost_vision_pref
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix

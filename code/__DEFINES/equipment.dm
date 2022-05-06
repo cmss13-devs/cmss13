@@ -172,7 +172,6 @@
 #define WEAR_L_EAR			"wear_l_ear"
 #define WEAR_R_EAR			"wear_r_ear"
 #define WEAR_BODY			"w_uniform"
-#define WEAR_LEGS			"legs"
 #define WEAR_FEET			"shoes"
 #define WEAR_HANDS			"gloves"
 #define WEAR_WAIST			"belt"

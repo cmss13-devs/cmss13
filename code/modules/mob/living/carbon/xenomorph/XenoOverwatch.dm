@@ -15,7 +15,7 @@
 
 /datum/action/xeno_action/watch_xeno/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!X.check_state(1))
+	if (!X.check_state(TRUE))
 		return FALSE
 
 	var/isQueen = FALSE
@@ -44,7 +44,7 @@
 
 	var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
 
-	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
+	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(TRUE))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
@@ -134,7 +134,7 @@
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/Xenomorph/Topic(href, href_list)
 	if(href_list[XENO_OVERWATCH_TARGET_HREF])
-		if(!check_state(1))
+		if(!check_state(TRUE))
 			return
 
 		var/isQueen = (src.caste_type == XENO_CASTE_QUEEN)

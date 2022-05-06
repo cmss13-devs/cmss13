@@ -11,14 +11,14 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_NONE
 	allowed = list(
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
@@ -38,6 +38,7 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
@@ -76,7 +77,7 @@
 //Marine service jacket
 /obj/item/clothing/suit/storage/jacket/marine/service
 	name = "marine service jacket"
-	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 

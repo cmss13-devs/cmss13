@@ -444,5 +444,6 @@
   Spircen:
   - bugfix: Peridaxon, Alkysine, Imidazoline, RussianRed and Quickclot Pill Bottle
       now has skilllock to open.
+  - bugfix: Sprites for the MK50 armor
   Triiodine:
   - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

@@ -329,7 +329,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		..()
 	if(health <= 0)
 		to_chat(user, "It's busted!")
-	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
+	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
 		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader

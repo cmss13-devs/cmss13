@@ -1,0 +1,78 @@
+2022-05-01:
+  Geeves, monkeysfist101:
+  - rscadd: Yautja now have a falcon drone, a surveillance gadget that lets them scout
+      the hunting grounds.
+  - expansion: You can now examine when your vision is detached from your body (queen
+      eye, falcon drone, etc.)
+  Joooks:
+  - spellcheck: fixed typos in req vend AMG=AGM
+  Shad0vvs:
+  - bugfix: Allows those with 1 engineering skill to examine vehicles for damage.
+  - qol: Allowed evolving, strain purchasing, and the xeno mark system to be used
+      while resting.
+  stanalbatross:
+  - rscadd: 'Almayer: added a secondary prep room for latejoin POs and TCs north of
+      cryo, next to the alpha-bravo canteen.'
+  - tweak: 'Almayer: removed a duplicate officer vendor from the RO''s bedroom. They
+      already had one in their main office.'
+  - tweak: 'Almayer: shuffled around the spawn landmarks in cryo, generally adding
+      more variation and adding more spots for latejoins'
+  - bugfix: added back latejoin landmarks to cryo
+  - expansion: Cats will now meow at random intervals while not dead.
+  - qol: reduced the frequency of the queen ASMR breathing
+2022-05-02:
+  50RemAndCounting:
+  - qol: You can now examine medical storage rigs and lifesaver belts to check which
+      belt mode they're currently toggled to.
+  Git-Nivrak:
+  - bugfix: Fixed omni-sentries being un-activatable after being repaired
+  Shad0vvs:
+  - expansion: Adds a new ATM ability.
+  - soundadd: Added a cat meow sound.
+  VarenRoth:
+  - qol: CPR can only be performed by one person at a time, avoiding multiple people
+      causing CPR to fail.
+  stanalbatross:
+  - bugfix: fixed the garage on BR not having an APC, fixed the north storage dome
+      on LV not having an APC, fixed the hangar deployment workshop on the Almayer
+      not having an APC
+  - bugfix: making a blank mhelp will no longer qdel your client
+  - qol: mhelps can now be made from a big window rather than a small one
+  - qol: you can now cancel the making of mhelps
+  - qol: added a ghost darkness level preference, can be configured in the settings
+      tab of the character menu.
+  - qol: your ghost darkness level preference will now save when you change it as
+      a ghost.
+  - qol: your ghost darkness level preference will load automatically when you ghost
+      or observe.
+  - qol: when switching darkness level as a ghost, you are told what mode you're switching
+      to.
+2022-05-03:
+  Spircen:
+  - rscdel: VC no longer has the same size of voice to CIC personal.
+  stanalbatross:
+  - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
+      shot by their own sentries)
+2022-05-04:
+  50RemAndCounting:
+  - balance: Rebalanced the USCM Service Jacket and some of the Commanding Officer-exclusive
+      jackets to not have the exact same protection stats as the M3 light armour.
+      These jackets can now hold a machete scabbard in their exosuit slot as well.
+  ChainsawMullet:
+  - balance: Hunter Chainwhip attack speed increased by 20% (from 1.0 to .8)
+  - balance: Hunter Clansword attack speed reduced by 10% (from .9 to 1.0), parry
+      duration reduced by 50% (from 3 seconds to 1.5 seconds)
+  - balance: Hunter Glaive throw damage reduced by 50% (from 30 to 15)
+  Triiodine, Monkeysfist101:
+  - rscadd: Re-added Sorokyne Strata to rotation. Applied a bunch of much needed fixes
+      and also new unique turfs.
+  monkeysfist:
+  - imageadd: Tweaked ballcap sprites
+2022-05-05:
+  PhantomEpicness:
+  - bugfix: Fixed flare gun storage. They should now be able to be put in shoulder
+      holsters and other weapon storage.
+  Segrain:
+  - bugfix: Acting squad leaders once again get loud radio voice and advanced pointing
+      skills.
+  - bugfix: Thrown items now properly attribute their damage in tracking statistics.

@@ -281,8 +281,8 @@
 		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor", "The Steadfast Shield") //Can only select them once each.
 	//the radial ones have to be in seperate lists in order for the images to not fuck with the no radials one
 		var/list/radial_melee = list("The Lumbering Glaive" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), "The Rending Chain-Whip" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),"The Piercing Hunting Sword" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),"The Cleaving War-Scythe" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), "The Adaptive Combi-Stick" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), "The Fearsome Scimitars" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
-		var/list/radial_other = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Purifying Smart-Disc" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"))
-		var/list/radial_restricted = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield")) //Can only select them once each.
+		var/list/radial_other = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Purifying Smart-Disc" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), "The Agile Drone" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
+		var/list/radial_restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor", "The Steadfast Shield", "The Agile Drone") //Can only select them once each.
 
 		var/msel
 		var/mother_0
@@ -339,6 +339,8 @@
 					new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0,  src.client.prefs.predator_armor_material)
 				if("The Steadfast Shield")
 					new /obj/item/weapon/shield/riot/yautja(src.loc)
+				if("The Agile Drone")
+					new /obj/item/falcon_drone(src.loc)
 			choice = mother_1
 
 		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)

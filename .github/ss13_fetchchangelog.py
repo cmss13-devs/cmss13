@@ -29,7 +29,7 @@ def parse_pr_changelog(pr):
 		if index == 0:
 			author = line.strip()
 			if not author or author == "John Titor":
-				author = pr.user.name
+				author = pr.user.login
 				print("Author not set, substituting", author)
 			yaml_object["author"] = author
 			continue

@@ -191,22 +191,16 @@
 		var/pull_dir = get_dir(src, pulling)
 
 		if(grab_level == GRAB_CARRY)
-			switch(grab_level)
-					var/direction_to_face = EAST
+			var/direction_to_face = EAST
 
-					if(direct & WEST)
-						direction_to_face = WEST
+			if(direct & WEST)
+				direction_to_face = WEST
 
-					pulling.Move(NewLoc, direction_to_face)
-					var/mob/living/pmob = pulling
-					if(istype(pmob))
-						pmob.on_movement()
-				else
-					pulling.Move(NewLoc, direct)
-
+			pulling.Move(NewLoc, direction_to_face)
 			var/mob/living/pmob = pulling
 			if(istype(pmob))
 				pmob.on_movement()
+
 		else if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
 			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up

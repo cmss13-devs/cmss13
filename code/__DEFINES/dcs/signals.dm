@@ -283,6 +283,9 @@
 #define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
 
+#define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
+	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
+
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)

@@ -1981,25 +1981,6 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
 
-/datum/event_handler/bipod_movement
-	var/obj/item/attachable/bipod/attachment
-	var/obj/item/weapon/gun/G
-	var/initial_mob_dir
-
-/datum/event_handler/bipod_movement/New(var/set_attachment, var/set_gun, var/set_dir)
-	..()
-	attachment = set_attachment
-	G = set_gun
-	initial_mob_dir = set_dir
-
-/datum/event_handler/bipod_movement/handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
-	if(ev_args.specific_dir & initial_mob_dir) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
-		return
-	if(attachment.bipod_deployed)
-		attachment.activate_attachment(G, sender)
-	sender.apply_effect(1, SUPERSLOW)
-	sender.apply_effect(2, SLOW)
-
 /obj/item/attachable/bipod
 	name = "bipod"
 	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing. \nGreatly increases accuracy and reduces recoil when properly placed, but also increases weapon size and slows firing speed."
@@ -2010,7 +1991,7 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = -10
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	var/datum/event_handler/bipod_movement/bipod_movement
+	var/initial_mob_dir = NORTH // the dir the mob faces the moment it deploys the bipod
 	var/bipod_deployed = FALSE
 
 /obj/item/attachable/bipod/New()
@@ -2027,7 +2008,21 @@ Defined in conflicts.dm of the #defines folder.
 		undeploy_bipod(G)
 	..()
 
-/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
+/obj/item/attachable/bipod/update_icon()
+	if(bipod_deployed)
+		icon_state = "[icon_state]-on"
+		attach_icon = "[attach_icon]-on"
+	else
+		icon_state = initial(icon_state)
+		attach_icon = initial(attach_icon)
+
+	if(istype(loc, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/gun = loc
+		gun.update_attachable(slot)
+		for(var/datum/action/A as anything in gun.actions)
+			A.update_button_icon()
+
+/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G, mob/living/user)
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
@@ -2035,16 +2030,16 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_10
 	G.recalculate_attachment_bonuses()
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_bullet_trait("iff")
+	update_icon()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
 		if(bipod_deployed)
 			undeploy_bipod(G)
-			if(bipod_movement)
-				user.remove_movement_handler(bipod_movement)
-				bipod_movement = null
 	else
 		var/obj/support = check_bipod_support(G, user)
 		if(!support&&!bipod_deployed)
@@ -2067,9 +2062,8 @@ Defined in conflicts.dm of the #defines folder.
 					delay_mod = -FIRE_DELAY_TIER_10
 				G.recalculate_attachment_bonuses()
 
-				if(!bipod_movement)
-					bipod_movement = new /datum/event_handler/bipod_movement(src, G, user.dir)
-					user.add_movement_handler(bipod_movement)
+				initial_mob_dir = user.dir
+				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
@@ -2077,25 +2071,19 @@ Defined in conflicts.dm of the #defines folder.
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
 				undeploy_bipod(G,user)
-				playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
-				if(bipod_movement)
-					user.remove_movement_handler(bipod_movement)
-					bipod_movement = null
 
-	if(bipod_deployed)
-		icon_state = "[icon_state]-on"
-		attach_icon = "[attach_icon]-on"
-	else
-		icon_state = initial(icon_state)
-		attach_icon = initial(attach_icon)
+	update_icon()
 
-	G.update_attachable(slot)
-
-	for(var/X in G.actions)
-		var/datum/action/A = X
-		A.update_button_icon()
 	return 1
 
+/obj/item/attachable/bipod/proc/handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
+
+	if(!actually_moving && (specific_direction & initial_mob_dir)) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
+		return
+	undeploy_bipod(loc, mover)
+	mover.apply_effect(1, SUPERSLOW)
+	mover.apply_effect(2, SLOW)
 
 
 //when user fires the gun, we check if they have something to support the gun's bipod.

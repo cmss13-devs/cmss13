@@ -77,7 +77,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
 				if (caste && istype(caste, /datum/caste_datum/queen))
 					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
-					overwatch(X, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
+					overwatch(X, FALSE)
 
 					if (oldXeno)
 						oldXeno.hud_set_queen_overwatch()

@@ -14,8 +14,6 @@
 
 	fire_reagent = new /datum/reagent/napalm/ut()
 
-	event_movement = new /datum/event()
-
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
 	initialize_incision_depths()
@@ -31,7 +29,6 @@
 
 	attack_icon = null
 	QDEL_NULL(fire_reagent)
-	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
@@ -201,21 +198,18 @@
 					pulling.Move(NewLoc, direction_to_face)
 					var/mob/living/pmob = pulling
 					if(istype(pmob))
-						pmob.on_movement()
+						SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direction_to_face, direction_to_face)
 				else
 					pulling.Move(NewLoc, direct)
-
-			var/mob/living/pmob = pulling
-			if(istype(pmob))
-				pmob.on_movement()
 		else if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
-			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
+			var/pulling_dir = get_dir(pulling, T)
+			pulling.Move(T, pulling_dir) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 				stop_pulling()
 			else
-				var/mob/living/pmob =  pulling
+				var/mob/living/pmob = pulling
 				if(istype(pmob))
-					pmob.on_movement()
+					SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, pulling_dir, pulling_dir)
 				if(!(flags_atom & DIRLOCK))
 					setDir(turn(direct, 180)) //face the pullee
 
@@ -311,7 +305,7 @@
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()
-	on_movement()
+	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 
 	if(.)
 		reset_view(destination)
@@ -404,10 +398,8 @@
 	..()
 
 /mob/living/launch_towards(var/datum/launch_metadata/LM)
-	if(src && event_movement)
-		var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
-		ev_args.moving = TRUE
-		event_movement.fire_event(src, ev_args)
+	if(src)
+		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 	if(!istype(LM) || !LM.target || !src || buckled)
 		return
 	if(pulling)
@@ -461,32 +453,6 @@
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return 1
-
-/datum/event_args/mob_movement
-	var/continue_movement = TRUE
-	var/moving = FALSE
-	var/mob_dir = null
-	var/specific_dir = null
-
-/datum/event_args/mob_movement/New(var/set_moving = TRUE, var/set_mob_dir, var/set_specific_dir)
-	..()
-	moving = set_moving
-	mob_dir = set_mob_dir
-	specific_dir = set_specific_dir
-
-/mob/living/on_movement(moving = TRUE, var/specific_dir)
-	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement(moving, dir, specific_dir)
-	if(event_movement)
-		event_movement.fire_event(src, ev_args)
-	return ev_args.continue_movement
-
-/mob/living/proc/add_movement_handler(datum/event_handler/handler)
-	if(isnull(event_movement))
-		event_movement = new /datum/event()
-	event_movement.add_handler(handler)
-
-/mob/living/proc/remove_movement_handler(datum/event_handler/handler)
-	event_movement.remove_handler(handler)
 
 /mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE)
 	if(do_checks)

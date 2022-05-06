@@ -61,6 +61,7 @@
 	var/list/allowed = null //suit storage stuff.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
+	var/zoom_initial_mob_dir = null // the initial dir the mob faces when it zooms in
 
 	var/list/uniform_restricted //Need to wear this uniform to equip this
 
@@ -725,39 +726,6 @@ cases. Override_icon_state should be a list.*/
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		I.showoff(src)
 
-/datum/event_handler/event_gun_zoom
-	var/obj/item/zooming_item
-	var/mob/living/calee
-	var/initial_mob_dir = null
-	flags_handler = HNDLR_FLAG_SINGLE_FIRE
-
-/datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
-	zooming_item = _zooming_item
-	calee = _calee
-	initial_mob_dir = calee.dir
-
-/datum/event_handler/event_gun_zoom/Destroy()
-	if(zooming_item)
-		zooming_item.zoom_event_handler = null
-		zooming_item = null
-	calee = null
-	. = ..()
-
-/datum/event_handler/event_gun_zoom/handle(sender, datum/event_args/event_args)
-	if(!calee)
-		return
-	if(calee.dir != initial_mob_dir && calee.client) //Dropped when disconnected, whoops
-		if(zooming_item?.zoom) //sanity check
-			zooming_item.zoom(calee)
-
-/*
-For zooming with scope or binoculars. This is called from
-modules/mob/mob_movement.dm if you move you will be zoomed out
-modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
-keep_zoom - do we keep zoom during movement. be careful with setting this to 1
-*/
-
-/obj/item/var/zoom_event_handler
 
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
@@ -789,18 +757,22 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	zoom = !zoom
 	user.zoom_cooldown = world.time + 20
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
-	if(zoom_event_handler)
-		user.remove_movement_handler(zoom_event_handler)
-		UnregisterSignal(src, list(
-			COMSIG_ITEM_DROPPED,
-			COMSIG_ITEM_UNWIELD,
-		))
-		qdel(zoom_event_handler)
+	UnregisterSignal(src, list(
+		COMSIG_ITEM_DROPPED,
+		COMSIG_ITEM_UNWIELD,
+	))
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
+
+/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
+
+	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
+		unzoom(mover)
 
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -814,15 +786,13 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	if(user.client)
 		user.client.change_view(viewsize, src)
 
-		if(zoom_event_handler)
-			qdel(zoom_event_handler)
-		zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
-		if(!keep_zoom)
-			user.add_movement_handler(zoom_event_handler)
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
 		), .proc/unzoom_dropped_callback)
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+
+		zoom_initial_mob_dir = user.dir
 
 		var/tilesize = 32
 		var/viewoffset = tilesize * tileoffset
@@ -849,6 +819,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		user.unset_interaction()
 	else
 		user.set_interaction(src)
+
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

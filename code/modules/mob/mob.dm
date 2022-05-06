@@ -695,12 +695,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, FALSE, dir, specific_dir)
+
 	return TRUE
-
-/mob/living/facedir(ndir, specific_dir)
-	. = ..()
-	on_movement(FALSE, specific_dir)
-
 
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == dir && flags_atom & DIRLOCK)

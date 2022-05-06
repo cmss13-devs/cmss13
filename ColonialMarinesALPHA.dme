@@ -1345,6 +1345,7 @@
 #include "code\modules\cm_marines\equipment\mortar\mortars.dm"
 #include "code\modules\cm_phone\internal_phone.dm"
 #include "code\modules\cm_phone\phone.dm"
+#include "code\modules\cm_preds\_yaut_defines.dm"
 #include "code\modules\cm_preds\falcon.dm"
 #include "code\modules\cm_preds\huntdata.dm"
 #include "code\modules\cm_preds\smartdisc.dm"

@@ -49,6 +49,7 @@
 	name = "falcon drone"
 	hud_possible = list(HUNTER_HUD)
 	var/obj/item/falcon_drone/parent_drone
+	desc = "An agile drone used by Yautja to survey the hunting grounds."
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
@@ -60,7 +61,7 @@
 /mob/hologram/falcon/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if(PF)
-		PF.flags_pass = PASS_MOB_THRU|PASS_MOB_IS
+		PF.flags_pass = PASS_MOB_THRU|PASS_MOB_IS|PASS_BUILDING
 		PF.flags_can_pass_all = PASS_ALL
 
 /mob/hologram/falcon/add_to_all_mob_huds()

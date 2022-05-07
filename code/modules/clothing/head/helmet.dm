@@ -209,6 +209,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/fancy/cigarettes/lady_finger = "helmet_cig_lf",
 	/obj/item/storage/fancy/cigarettes/blackpack = "helmet_cig_blackpack",
 	/obj/item/storage/fancy/cigarettes/arcturian_ace = "helmet_cig_aapack",
+	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = "hat_cig_ls_mre",
+	/obj/item/storage/fancy/cigar/matchbook = "helmet_matches_mre",
 
 	///// CARDS
 	/obj/item/toy/deck = "helmet_card_card",

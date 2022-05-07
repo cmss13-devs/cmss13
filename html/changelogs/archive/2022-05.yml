@@ -86,3 +86,8 @@
       walls. Also changed Falcon's hologram description.
   - code_imp: Yautja and Thrall gear selects now mostly use defines so there is less
       duplication of long name strings.
+2022-05-07:
+  50RemAndCounting:
+  - qol: Helmetless marines on Squad Overwatch Consoles now have a special status
+      message indicating they're not wearing a helmet. Players no longer have to manually
+      click on every marine's name to check if they're wearing a helmet or not.

@@ -198,7 +198,6 @@
 				if(A)
 					area_name = sanitize(A.name)
 
-
 				switch(z_hidden)
 					if(HIDE_ALMAYER)
 						if(is_mainship_level(M_turf.z))

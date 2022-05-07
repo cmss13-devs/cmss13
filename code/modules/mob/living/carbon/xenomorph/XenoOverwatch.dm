@@ -66,6 +66,7 @@
 		observed_xeno = null
 
 		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, oldXeno)
+		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))

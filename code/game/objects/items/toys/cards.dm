@@ -217,7 +217,7 @@
 		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	if(M in viewers(3))
+	if(get_dist(usr, M) < 4)
 		deal_at(usr, M)
 
 /obj/item/toy/deck/proc/deal_at(mob/user, mob/target)
@@ -247,7 +247,7 @@
 	if(!usr || !over)
 		return
 
-	if(!ishuman(over) || !(over in viewers(3)))
+	if(!ishuman(over) || get_dist(usr, over) > 3)
 		return
 
 	if(!length(cards))

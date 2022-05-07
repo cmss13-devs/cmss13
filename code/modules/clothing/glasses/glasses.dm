@@ -103,6 +103,7 @@
 			var/datum/mob_hud/H = huds[hud_type]
 			H.remove_hud_from(user)
 			user.glasses = null
+			user.update_inv_glasses()
 	user.update_sight()
 	return ..()
 

@@ -840,12 +840,8 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		var/datum/launch_metadata/LM = new()
-		LM.target = usr
-		LM.range = 10
-		LM.speed = SPEED_FAST
-		LM.thrower = usr
-		D.launch_towards(LM)
+		if(isturf(D.loc))
+			D.boomerang(usr)
 	return 1
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_tracked_item()
@@ -922,7 +918,7 @@
 			return
 
 	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
-		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
+		if(C.loc == usr) //We are already wearing/holding it.
 			continue
 		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
 			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.

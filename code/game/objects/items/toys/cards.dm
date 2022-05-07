@@ -178,14 +178,8 @@
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	var/obj/item/toy/handcard/H
-	if(user.l_hand && istype(user.l_hand, /obj/item/toy/handcard))
-		H = user.l_hand
-	else if(user.r_hand && istype(user.r_hand, /obj/item/toy/handcard))
-		H = user.r_hand
-	else
-		H = new(get_turf(src))
-		user.put_in_hands(H)
+	var/obj/item/toy/handcard/H = new(get_turf(src))
+	user.put_in_hands(H)
 
 	H.concealed = TRUE
 	H.pile_state = TRUE

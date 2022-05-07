@@ -155,20 +155,6 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/obj/item/verb/move_to_top()
-	set name = "Move To Top"
-	set category = "Object"
-	set src in oview(1)
-
-	if(!istype(src.loc, /turf) || usr.stat || usr.is_mob_restrained() )
-		return
-
-	var/turf/T = src.loc
-
-	moveToNullspace()
-
-	src.forceMove(T)
-
 /*Global item proc for all of your unique item skin needs. Works with any
 item, and will change the skin to whatever you specify here. You can also
 manually override the icon with a unique skin if wanted, for the outlier
@@ -660,40 +646,6 @@ cases. Override_icon_state should be a list.*/
 			return TRUE
 		else
 			return !ignore_non_flags
-
-/obj/item/verb/verb_pickup()
-	set src in oview(1)
-	set category = "Object"
-	set name = "Pick up"
-
-	if(!(usr)) //BS12 EDIT
-		return
-	if(ismob(src))
-		return
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
-		return
-	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/brain)))//Is humanoid, and is not a brain
-		to_chat(usr, SPAN_DANGER("You can't pick things up!"))
-		return
-	if(src.anchored) //Object isn't anchored
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	if(!usr.hand && usr.r_hand) //Right hand is not full
-		to_chat(usr, SPAN_DANGER("Your right hand is full."))
-		return
-	if(usr.hand && usr.l_hand) //Left hand is not full
-		to_chat(usr, SPAN_DANGER("Your left hand is full."))
-		return
-	if(!istype(src.loc, /turf)) //Object is on a turf
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	//All checks are done, time to pick it up!
-	if (world.time <= usr.next_move)
-		return
-	usr.next_move += 6 // stop insane pickup speed
-	usr.UnarmedAttack(src)
-	return
-
 
 //This proc is executed when someone clicks the on-screen UI button. To make the UI button show, set the 'icon_action_button' to the icon_state of the image of the button in actions.dmi
 //The default action is attack_self().

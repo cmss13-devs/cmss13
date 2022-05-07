@@ -9,7 +9,6 @@
 		CRASH("Internal storage was created without a valid master object! ([loc], [usr])")
 	master_object = loc
 	name = master_object.name
-	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
 
 /obj/item/storage/internal/attack_hand()
 	return		//make sure this is never picked up
@@ -41,7 +40,7 @@
 
 		if(!isitem(master_object)) //Everything after this point is for doffing worn items with internal storage pockets.
 			return FALSE //If we are not in an item, do nothing more.
-		
+
 		var/obj/item/master_item = master_object
 		if(master_item.flags_item & NODROP) return
 

@@ -2535,6 +2535,29 @@
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
+/datum/ammo/xeno/acid/acidsplash
+	name = "acid splash"
+	damage = 25
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	accuracy = HIT_ACCURACY_TIER_4
+	accurate_range = 4
+	max_range = 5
+	damage = 30
+	shell_speed = AMMO_SPEED_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_6
+	apply_delegate = FALSE
+
+/datum/ammo/xeno/acid/acidsplash/on_hit_mob(atom/A)
+	//if (ishuman(A))
+	//	var/mob/living/carbon/human/H = A
+	//	return
+	//	if (H.stat == DEAD)
+	//		return
+	//new /datum/effects/acid/siege(A)
+
+
+
+
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid spatter"
 

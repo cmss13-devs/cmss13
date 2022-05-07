@@ -341,3 +341,79 @@
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
 	max_range = 4
+
+/// acid splasher powers
+
+
+/datum/action/xeno_action/activable/splasher_acid_glob/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	to_chat(X, SPAN_XENODANGER("You prepare to lob a massive acid glob!"))
+	if (!X.check_state() || X.action_busy)
+		return
+
+	if (!action_cooldown_check() && check_and_use_plasma_owner())
+		return
+
+	var/turf/current_turf = get_turf(X)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(X, SPAN_XENODANGER("You cancel your acid glob."))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	apply_cooldown()
+
+	to_chat(X, SPAN_XENOWARNING("You lob a massive ball of acid into the air!"))
+// throw_atom(target, range, speed, ? , ?)
+	var/obj/item/explosive/grenade/grenade = new globtype
+	grenade.cause_data = create_cause_data(initial(X.caste_type), X)
+	grenade.forceMove(get_turf(X))
+	// 2nd var is range
+	// TODO: PLEASE MAKE THIS A FUCKING VARIABLE THAT YOU CAN CHANGE IN THE ACID SPLASH DELEGATES!!!1
+	grenade.throw_atom(A, throw_range, SPEED_SLOW, X, TRUE)
+
+	addtimer(CALLBACK(grenade, /obj/item/explosive.proc/prime), prime_delay)
+
+	..()
+	return
+
+
+/datum/action/xeno_action/activable/splasher_acid_glob/slime/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	to_chat(X, SPAN_XENODANGER("You prepare to lob a massive slime glob!"))
+	if (!X.check_state() || X.action_busy)
+		return
+
+	if (!action_cooldown_check() && check_and_use_plasma_owner())
+		return
+
+	var/turf/current_turf = get_turf(X)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(X, SPAN_XENODANGER("You cancel your slime glob."))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	apply_cooldown()
+
+	to_chat(X, SPAN_XENOWARNING("You lob a massive ball of slime into the air!"))
+// throw_atom(target, range, speed, ? , ?)
+	var/obj/item/explosive/grenade/grenade = new globtype
+	grenade.cause_data = create_cause_data(initial(X.caste_type), X)
+	grenade.forceMove(get_turf(X))
+	grenade.throw_atom(A, throw_range, SPEED_SLOW, X, TRUE)
+
+	addtimer(CALLBACK(grenade, /obj/item/explosive.proc/prime), prime_delay)
+
+	..()
+	return

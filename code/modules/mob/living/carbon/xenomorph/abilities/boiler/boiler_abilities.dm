@@ -98,3 +98,38 @@
 	movement_datum_type = XENOZOOM_NO_MOVEMENT_HANDLER
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+
+//////////////////////////// acid globber abilities
+
+/datum/action/xeno_action/activable/splasher_acid_glob
+	name = "Acid Glob"
+	action_icon_state = "prae_acid_ball"
+	ability_name = "acid glob"
+	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 20 SECONDS
+	plasma_cost = 120
+	// activation delay is warmup
+	var/activation_delay = 5 SECONDS
+	var/prime_delay = 1 SECONDS
+	// throw range in tiles
+	var/throw_range = 10
+	var/globtype = /obj/item/explosive/grenade/splasher_acid_glob
+
+/datum/action/xeno_action/activable/splasher_acid_glob/slime
+	name = "Slime Glob"
+	action_icon_state = "prae_acid_ball"
+	ability_name = "acid glob"
+	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 20 SECONDS
+	plasma_cost = 200
+	// activation delay is warmup
+	activation_delay = 5 SECONDS
+	prime_delay = 1 SECONDS
+	throw_range = 5
+	globtype = /obj/item/explosive/grenade/splasher_slime_glob
+

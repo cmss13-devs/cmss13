@@ -424,6 +424,10 @@
 // Hive Pylon protection range
 #define XENO_HIVE_PYLON_PROTECTION_RANGE 8
 
+// Xeno acid spray loiterer TTL ( Time to live)
+// Used in acid splasher as area denial
+#define XENO_ACID_SPRAY_LOITERER_TTL = (12 SECONDS)
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 //	Default scaling values

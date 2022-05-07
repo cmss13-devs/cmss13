@@ -867,17 +867,27 @@
 /datum/automata_cell/acid
 	neighbor_type = NEIGHBORS_NONE
 
-	var/obj/effect/xenomorph/spray/acid_type = /obj/effect/xenomorph/spray/strong/no_stun
-
+	var/acid_type = /obj/effect/xenomorph/spray/strong/loiterer
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/source
 	var/direction = null
 	var/range = 0
-
+	// These are the types of acid that can be used. The lower the number, the more closer the acid will be placed next to the start loc
+	var/acid_type1 = /obj/effect/xenomorph/spray/strong/loiterer
+	var/acid_type2 = /obj/effect/xenomorph/spray/loiterer
+	var/acid_type3 = /obj/effect/xenomorph/spray/weak
 	var/delay = 2
 
+/datum/automata_cell/acid/boiler
+	delay = 5
+/datum/automata_cell/acid/slime
+	delay = 4
+	acid_type = /obj/effect/xenomorph/spray/slime
+	acid_type1 = /obj/effect/xenomorph/spray/slime
+	acid_type2 = /obj/effect/xenomorph/spray/slime
+	acid_type3 = /obj/effect/xenomorph/spray/slime
 
 /datum/automata_cell/acid/proc/get_propagation_dirs()
 	. = list()
@@ -925,11 +935,11 @@
 
 			switch(E.range)
 				if(-INFINITY to 0)
-					E.acid_type = /obj/effect/xenomorph/spray/weak
+					E.acid_type = acid_type3
 				if(1)
-					E.acid_type = /obj/effect/xenomorph/spray/no_stun
+					E.acid_type = acid_type2
 				if(2 to INFINITY)
-					E.acid_type = /obj/effect/xenomorph/spray/strong/no_stun
+					E.acid_type = acid_type1
 
 			E.hivenumber = hivenumber
 			E.source = source

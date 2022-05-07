@@ -407,10 +407,6 @@ datum/autolathe/recipe/medilathe/autoinjector/s30x6
 	name = "rollerbed"
 	path = /obj/item/roller
 
-/datum/autolathe/recipe/medilathe/surgerybed
-	name = "portable surgical bed"
-	path = /obj/item/roller/surgical
-
 /datum/autolathe/recipe/medilathe/pill_bottle
 	name = "pill bottle"
 	path = /obj/item/storage/pill_bottle

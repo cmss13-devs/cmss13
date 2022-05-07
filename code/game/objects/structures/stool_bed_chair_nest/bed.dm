@@ -379,3 +379,4 @@ var/global/list/activated_medevac_stretchers = list()
 	desc = "A collapsed medevac stretcher that can be carried around."
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
+	matter = list("plastic" = 5000, "metal" = 5000)

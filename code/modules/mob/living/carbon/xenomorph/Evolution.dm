@@ -78,8 +78,8 @@
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
-	var/life_kills = get_life_kills()
-	var/life_damage = get_life_damage_taken()
+	var/life_kills = life_kills_total
+	var/life_damage = life_damage_taken_total
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
 		evolving = FALSE
@@ -269,8 +269,8 @@
 
 	var/xeno_type
 	var/level_to_switch_to = get_vision_level()
-	var/life_kills = get_life_kills()
-	var/life_damage = get_life_damage_taken()
+	var/life_kills = life_kills_total
+	var/life_damage = life_damage_taken_total
 	switch(newcaste)
 		if("Larva")
 			xeno_type = /mob/living/carbon/Xenomorph/Larva

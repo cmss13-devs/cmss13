@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	13
+#define SAVEFILE_VERSION_MAX	14
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -29,6 +29,12 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= SOUND_INTERNET
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 14) //toggle unnest flashing on by default
+		var/flash_toggles
+		S["toggles_flashing"] >> flash_toggles
+		flash_toggles |= FLASH_UNNEST
+		S["toggles_flashing"] << flash_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

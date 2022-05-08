@@ -967,6 +967,8 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
+		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()

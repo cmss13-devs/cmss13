@@ -354,6 +354,12 @@
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+/obj/item/clothing/accessory/patch/frost
+	name = "\improper Frost patch"
+	desc = "A fire resistant shoulder patch, worn by private frost."
+	icon_state = "frostpatch"
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
+
 //holsters
 /obj/item/clothing/accessory/holster
 	name = "shoulder holster"

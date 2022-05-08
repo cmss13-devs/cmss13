@@ -189,7 +189,10 @@
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
-						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
+						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
+						/obj/item/clothing/accessory/patch = "hat_uscmpatch",
+						/obj/item/clothing/accessory/patch/falcon = "hat_falconpatch",
+						/obj/item/clothing/accessory/patch/frost = "hat_frostpatch")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

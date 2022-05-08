@@ -104,3 +104,5 @@
   - spellcheck: Fixed several typos. Immersion restored.
   stanalbatross:
   - balance: the medilathe can now print medevac stretchers, fixovein, and bone gel.
+  - bugfix: onmob sprites for glasses with huds will no longer "stick" on your eyes
+      when you take them off.

@@ -1053,40 +1053,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					predator_caster_material = new_pred_caster_mat
 				if("pred_cape_type")
 					var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)
+					var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
 
 					var/list/options = list("None" = "None")
-					switch(whitelist_status)
-						if(CLAN_RANK_BLOODED)
-							options += list(
-								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter
-							)
-						if(CLAN_RANK_ELITE)
-							options += list(
-								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
-								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half
-							)
-						if(CLAN_RANK_ELDER)
-							options += list(
-								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
-								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
-								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third
-							)
-						if(CLAN_RANK_LEADER)
-							options += list(
-								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
-								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
-								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third,
-								"Yautja Cape" = /obj/item/clothing/yautja_cape
-							)
-						if(CLAN_RANK_ADMIN)
-							options += list(
-								"Yautja Quarter-Cape" = /obj/item/clothing/yautja_cape/quarter,
-								"Yautja Half-Cape" = /obj/item/clothing/yautja_cape/half,
-								"Yautja Third-Cape" = /obj/item/clothing/yautja_cape/third,
-								"Yautja Cape" = /obj/item/clothing/yautja_cape,
-								"Yautja Poncho" = /obj/item/clothing/yautja_cape/poncho
-							)
+					for(var/obj/item/clothing/yautja_cape/cape as anything in typesof(/obj/item/clothing/yautja_cape))
+						if(whitelist_status < initial(cape.clan_rank_required))
+							continue
+						options += list(capitalize_first_letters(initial(cape.name)) = cape)
+
+					if((whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY)) && !("Yautja Poncho" in options))
+						options += list("Yautja Poncho" = /obj/item/clothing/yautja_cape/poncho)
 
 					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
 					if(!new_cape)

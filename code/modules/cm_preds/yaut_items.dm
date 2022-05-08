@@ -163,6 +163,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
+	var/clan_rank_required = CLAN_RANK_LEADER_INT
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
 	. = ..()
@@ -184,18 +185,22 @@
 /obj/item/clothing/yautja_cape/third
 	name = "yautja third-cape"
 	icon_state = "thirdcape"
+	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/half
 	name = "yautja half-cape"
 	icon_state = "halfcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/yautja_cape/quarter
 	name = "yautja quarter-cape"
 	icon_state = "quartercape"
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/poncho
 	name = "yautja poncho"
 	icon_state = "councilor_poncho"
+	clan_rank_required = CLAN_RANK_ADMIN_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"

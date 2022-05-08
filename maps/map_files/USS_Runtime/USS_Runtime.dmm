@@ -139,6 +139,12 @@
 	icon_state = "plating"
 	},
 /area/event)
+"K" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
 "L" = (
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
@@ -241,7 +247,7 @@ a
 J
 t
 n
-g
+K
 g
 g
 g

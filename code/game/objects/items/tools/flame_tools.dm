@@ -306,6 +306,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
+	SIGNAL_HANDLER
+
 	if(!heat_source)
 		heat_source = 1000
 		damtype = "fire"
@@ -381,7 +383,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/extinguish()
 	. = ..()
-	die()
+	if(heat_source)
+		die()
 
 /obj/item/clothing/mask/cigarette/proc/handle_extinguish()
 	SIGNAL_HANDLER

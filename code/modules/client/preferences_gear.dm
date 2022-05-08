@@ -368,6 +368,12 @@ var/global/list/gear_datums = list()
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
 
+/datum/gear/frostpatch
+	display_name = "Frost shoulder patch"
+	path = /obj/item/clothing/accessory/patch/frost
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
+
 /datum/gear/gas_mask
 	display_name = "Gas Mask"
 	path = /obj/item/clothing/mask/gas

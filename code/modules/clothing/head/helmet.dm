@@ -310,6 +310,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headset = "headset",
 	/obj/item/clothing/accessory/patch = "uscmpatch",
 	/obj/item/clothing/accessory/patch/falcon = "falconspatch",
+	/obj/item/clothing/accessory/patch/frost = "frostpatch",
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,

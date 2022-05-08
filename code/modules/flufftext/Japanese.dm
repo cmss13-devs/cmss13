@@ -1,17 +1,17 @@
 ///How likely the nucleus (vowel) is to geminate ie a -> aa
-#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS		15
+#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS		10
 ///How likely the initial (consonant) is to geminate ie k -> kk
-#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		7.5
+#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		5
 ///How likely the consonant is to palatalise ie r -> ry
 #define JAPANESE_SOUND_PALATALISATION_CHANCE			10
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high for convincing diphthongs
 #define JAPANESE_SOUND_NULL_INITIAL_CHANCE				20
 ///How likely the syllable is to end in an N
-#define JAPANESE_SOUND_NULL_FINAL_CHANCE				45
+#define JAPANESE_SOUND_N_FINAL_CHANCE					20
 ///How likely it is to insert an apostrophe between two syllables (this can happen anywhere, mainly used for morpheme boundaries.)
 #define JAPANESE_SOUND_APOSTROPHE_CHANCE				30
 ///how likely voiced sounds are to geminate, these mainly occur in foreign loans so quite unlikely
-#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED			10
+#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED			20
 
 /*
 Hello and welcome to the Japanese language. Or rather, a random generator for it.
@@ -56,7 +56,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	else
 		null_initial = TRUE
 	syllable += "[nucleus.sound]"
-	if(!(prob(JAPANESE_SOUND_NULL_FINAL_CHANCE)))
+	if(prob(JAPANESE_SOUND_N_FINAL_CHANCE))
 		syllable += "[final.sound]"
 		null_final = FALSE
 	else
@@ -112,12 +112,23 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/forced_to_palatalise = FALSE //if it HAS to palatalise before an I. Applies to t, d, s and z. This lets it bypass anti-palatalise rules on I but not e.
 
 /datum/japanese_sound/initial/proc/palatalise(var/datum/japanese_sound/nucleus/nucleus)
-	if(nucleus.anti_palatalise && !forced_to_palatalise)
+	if(forced_to_palatalise && nucleus.forces_palatalisation) //is the sound forced to palatalise and is the nucleus i? then palatalise
+		if(sound == geminated_form)
+			sound = palatalised_geminated_form
+			return
+		else
+			sound = palatalised_form
+			return
+
+	else if(nucleus.anti_palatalise) //if the nucleus is e or i and the sound is NOT forced to palatalise, return a nope
 		return
-	if(sound == geminated_form && !palatalised_forbidden)
+
+	if(sound == geminated_form && !palatalised_forbidden) //now actually palatalise
 		sound = palatalised_geminated_form
+		return
 	else if(!palatalised_forbidden)
 		sound = palatalised_form
+		return
 
 /datum/japanese_sound/initial/proc/affricate(var/datum/japanese_sound/nucleus/nucleus)
 	if(affricated_form && nucleus.causes_affrication)
@@ -248,6 +259,6 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 #undef JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS
 #undef JAPANESE_SOUND_PALATALISATION_CHANCE
 #undef JAPANESE_SOUND_NULL_INITIAL_CHANCE
-#undef JAPANESE_SOUND_NULL_FINAL_CHANCE
+#undef JAPANESE_SOUND_N_FINAL_CHANCE
 #undef JAPANESE_SOUND_APOSTROPHE_CHANCE
 #undef JAPANESE_SOUND_GEMINATION_CHANCE_VOICED

@@ -86,3 +86,21 @@
       walls. Also changed Falcon's hologram description.
   - code_imp: Yautja and Thrall gear selects now mostly use defines so there is less
       duplication of long name strings.
+2022-05-07:
+  50RemAndCounting:
+  - qol: Helmetless marines on Squad Overwatch Consoles now have a special status
+      message indicating they're not wearing a helmet. Players no longer have to manually
+      click on every marine's name to check if they're wearing a helmet or not.
+  Segrain:
+  - bugfix: Predators recalling combisticks and smartdiscs no longer get phantom duplicates.
+  Spircen:
+  - bugfix: MRE Matchbook and Cigarrete now can be store on helmets
+  - bugfix: MRE Matchbook weight its now tiny
+2022-05-08:
+  Git-Nivrak:
+  - rscadd: Adds missing vehicle blockers in shivas around research and Med-Sec-Sci
+      megastructure
+  TotalEpicness:
+  - spellcheck: Fixed several typos. Immersion restored.
+  stanalbatross:
+  - balance: the medilathe can now print medevac stretchers, fixovein, and bone gel.

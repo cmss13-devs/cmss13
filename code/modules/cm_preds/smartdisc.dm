@@ -123,6 +123,7 @@
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
+			throwing = FALSE
 		return
 	..()
 

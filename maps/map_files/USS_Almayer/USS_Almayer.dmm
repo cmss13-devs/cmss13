@@ -14598,7 +14598,8 @@
 /area/almayer/squads/bravo)
 "aQW" = (
 /obj/structure/machinery/vending/cola{
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -36565,8 +36566,8 @@
 /area/almayer/hull/lower_hull/l_a_p)
 "dcW" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(2,34,30);
-	dir = 8
+	dir = 8;
+	req_one_access = list(2,34,30)
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -44837,7 +44838,9 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "gAz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/reagent_dispensers/water_cooler/stacks{
+/obj/item/reagent_container/food/drinks/golden_cup{
+	desc = "A golden cup, won in the championship final against the USS Sulaco ca. 2172";
+	pixel_x = -4;
 	pixel_y = 7
 	},
 /turf/open/floor/almayer{
@@ -45300,8 +45303,8 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "gMA" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(2,34,30);
-	dir = 8
+	dir = 8;
+	req_one_access = list(2,34,30)
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -47298,9 +47301,6 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "hLC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/golden_cup{
-	desc = "A golden cup, won in the championship final against the USS Sulaco ca. 2172"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -50740,8 +50740,8 @@
 /area/almayer/living/captain_mess)
 "jmR" = (
 /obj/structure/ladder/fragile_almayer{
-	id = "kitchen";
-	height = 2
+	height = 2;
+	id = "kitchen"
 	},
 /obj/structure/sign/safety/ladder{
 	pixel_x = 8;
@@ -58391,8 +58391,8 @@
 /area/almayer/living/cafeteria_port)
 "mUW" = (
 /obj/structure/machinery/cm_vending/clothing/pilot_officer{
-	pixel_x = -32;
-	density = 0
+	density = 0;
+	pixel_x = -32
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -63764,10 +63764,12 @@
 /area/almayer/medical/upper_medical)
 "pxD" = (
 /obj/structure/machinery/vending/coffee{
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /obj/structure/machinery/vending/snack{
-	pixel_x = -18
+	pixel_x = -18;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -64056,8 +64058,8 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/ladder/fragile_almayer{
-	id = "kitchen";
-	height = 1
+	height = 1;
+	id = "kitchen"
 	},
 /obj/structure/sign/safety/ladder{
 	pixel_x = 8;
@@ -64505,8 +64507,11 @@
 	},
 /area/almayer/command/cic)
 "pOY" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/microwave,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/microwave{
+	density = 0;
+	pixel_y = 9
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -65609,8 +65614,12 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "qom" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/chem_dispenser/soda,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_x = 1;
+	pixel_y = 14
+	},
 /obj/structure/sign/safety/coffee{
 	pixel_y = 32
 	},
@@ -66455,6 +66464,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/vehiclehangar)
+"qJS" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -11;
+	pixel_y = -1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "qJY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/orangejuice{
@@ -68905,8 +68924,8 @@
 /area/almayer/shipboard/firing_range_south)
 "rPO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	req_one_access = "19;27;22";
-	name = "\improper Auxiliary Combat Support Secondary Preparations"
+	name = "\improper Auxiliary Combat Support Secondary Preparations";
+	req_one_access = "19;27;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -70365,8 +70384,8 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "szi" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(2,34,30);
-	dir = 2
+	dir = 2;
+	req_one_access = list(2,34,30)
 	},
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
@@ -80274,9 +80293,11 @@
 /area/almayer/living/port_emb)
 "wLK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/tray,
 /obj/item/tool/kitchen/tray{
-	pixel_y = 6
+	pixel_y = 9
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 12
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -83354,8 +83375,8 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "xWF" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(2,34,30);
-	dir = 2
+	dir = 2;
+	req_one_access = list(2,34,30)
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -115000,7 +115021,7 @@ bDs
 bIJ
 wbO
 bDs
-bDs
+qJS
 fiq
 cmO
 cmS

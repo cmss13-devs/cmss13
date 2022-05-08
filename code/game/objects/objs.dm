@@ -365,3 +365,6 @@
 		return
 
 	O.name += " ([label])"
+
+/obj/proc/extinguish()
+	return

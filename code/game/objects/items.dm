@@ -857,3 +857,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		mob_state = icon_state
 	return mob_state
 
+/obj/item/proc/drop_to_floor(mob/wearer)
+	SIGNAL_HANDLER
+
+	wearer.drop_inv_item_on_ground(src)

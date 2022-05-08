@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(damage_boost_turfs, typecacheof(/turf))
+
 GLOBAL_LIST_INIT(damage_boost_breaching, typecacheof(list(
 	/obj/structure/machinery/door,
 	/obj/structure/mineral_door,

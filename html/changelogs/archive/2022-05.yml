@@ -97,6 +97,8 @@
   - bugfix: MRE Matchbook and Cigarrete now can be store on helmets
   - bugfix: MRE Matchbook weight its now tiny
 2022-05-08:
+  Geevies:
+  - rscdel: Yautja no longer have a Queen Stomp emote.
   Git-Nivrak:
   - rscadd: Adds missing vehicle blockers in shivas around research and Med-Sec-Sci
       megastructure

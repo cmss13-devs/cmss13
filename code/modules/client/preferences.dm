@@ -1057,12 +1057,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 					var/list/options = list("None" = "None")
 					for(var/obj/item/clothing/yautja_cape/cape as anything in typesof(/obj/item/clothing/yautja_cape))
-						if(whitelist_status < initial(cape.clan_rank_required))
-							continue
-						options += list(capitalize_first_letters(initial(cape.name)) = cape)
-
-					if((whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY)) && !("Yautja Poncho" in options))
-						options += list("Yautja Poncho" = /obj/item/clothing/yautja_cape/poncho)
+						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
+							options += list(capitalize_first_letters(initial(cape.name)) = cape)
 
 					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
 					if(!new_cape)

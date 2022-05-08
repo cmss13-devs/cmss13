@@ -164,6 +164,7 @@
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
 	. = ..()
@@ -181,6 +182,11 @@
 /obj/item/clothing/yautja_cape/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
+
+/obj/item/clothing/yautja_cape/ceremonial
+	name = "yautja ceremonial cape"
+	icon_state = "ceremonialcape"
+	councillor_override = TRUE
 
 /obj/item/clothing/yautja_cape/third
 	name = "yautja third-cape"
@@ -201,6 +207,7 @@
 	name = "yautja poncho"
 	icon_state = "councilor_poncho"
 	clan_rank_required = CLAN_RANK_ADMIN_INT
+	councillor_override = TRUE
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"

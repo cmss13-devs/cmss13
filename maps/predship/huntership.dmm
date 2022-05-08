@@ -129,7 +129,7 @@
 	},
 /area/yautja)
 "ao" = (
-/obj/item/clothing/yautja_cape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
 	pixel_x = 2;
@@ -167,7 +167,7 @@
 	},
 /area/yautja)
 "aq" = (
-/obj/item/clothing/yautja_cape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
 	pixel_x = 2;

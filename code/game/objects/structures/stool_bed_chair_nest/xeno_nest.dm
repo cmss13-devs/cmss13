@@ -201,6 +201,9 @@
 	if(!istype(H) || !istype(G) || !istype(M) || H.undefibbable || H.mind || M.original != H)
 		return // Zealous checking as most is handled by ghost code
 	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
+	sound_to(G, 'sound/effects/attackblob.ogg')
+	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(H.client)
 	G.can_reenter_corpse = TRUE
 	return
 

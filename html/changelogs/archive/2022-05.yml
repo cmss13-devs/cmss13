@@ -106,3 +106,5 @@
   - balance: the medilathe can now print medevac stretchers, fixovein, and bone gel.
   - bugfix: onmob sprites for glasses with huds will no longer "stick" on your eyes
       when you take them off.
+  - qol: when you are un-nested and can return to your body, a loud sound will play
+      and your taskbar icon will flash (can be toggled off in preferences)

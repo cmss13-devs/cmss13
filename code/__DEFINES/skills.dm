@@ -18,7 +18,7 @@
 #define SKILL_VEHICLE "vehicles"
 #define SKILL_JTAC "jtac"
 #define SKILL_EXECUTION "execution"
-#define SKILL_CLEANING "cleaning"
+#define SKILL_DOMESTIC "domestics"
 
 /*
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -164,11 +164,11 @@
 #define SKILL_ENDURANCE_SURVIVOR 2
 #define SKILL_ENDURANCE_MAX 5
 
-//cleaning skill, how well you work cleaning equipment
-#define SKILL_CLEANING_NONE 0
-#define SKILL_CLEANING_TRAINED 1
-#define SKILL_CLEANING_MASTER 2
-#define SKILL_CLEANING_MAX 2
+//domestic skill, how well you work cleaning equipment and cooking stuff
+#define SKILL_DOMESTIC_NONE 0
+#define SKILL_DOMESTIC_TRAINED 1
+#define SKILL_DOMESTIC_MASTER 2
+#define SKILL_DOMESTIC_MAX 2
 
 //multitile vehicle skills
 //Can't drive

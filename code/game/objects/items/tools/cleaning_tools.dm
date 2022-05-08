@@ -56,7 +56,7 @@
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
 			return
 
-		var/cleaning_duration = 1.5 SECONDS * user.get_skill_duration_multiplier(SKILL_CLEANING)
+		var/cleaning_duration = 1.5 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC)
 
 		var/turf/cleaning_turf = get_turf(A)
 		user.visible_message(SPAN_WARNING("[user] begins to clean \the [cleaning_turf]."))

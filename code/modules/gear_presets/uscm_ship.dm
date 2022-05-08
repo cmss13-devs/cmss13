@@ -653,7 +653,7 @@
 	rank = JOB_MESS_SERGEANT
 	paygrade = "ME2"
 	role_comm_title = "MST"
-	skills = /datum/skills/OT
+	skills = /datum/skills/mess_technician
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 

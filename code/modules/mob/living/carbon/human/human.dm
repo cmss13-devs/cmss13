@@ -1337,7 +1337,7 @@
 		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
 		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
 		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"
-		dat += "Cleaning: [usr.skills.get_skill_level(SKILL_CLEANING)]<br/>"
+		dat += "Domestics: [usr.skills.get_skill_level(SKILL_DOMESTIC)]<br/>"
 
 	show_browser(src, dat, "Skills", "checkskills")
 

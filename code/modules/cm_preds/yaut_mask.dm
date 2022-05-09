@@ -109,7 +109,7 @@
 		return
 	var/obj/item/G = user.glasses
 	if(G)
-		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
+		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/normal/yautja))
 			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
 			return
 		user.temp_drop_inv_item(G) //Get rid of ye existinge gogglors
@@ -120,7 +120,7 @@
 			to_chat(user, SPAN_NOTICE("Low-light vision module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(2)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), WEAR_EYES)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/normal/yautja(user), WEAR_EYES)
 			to_chat(user, SPAN_NOTICE("Thermal vision module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(3)

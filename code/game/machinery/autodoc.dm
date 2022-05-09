@@ -139,8 +139,8 @@
 				if(occupant.getToxLoss() > 0)
 					occupant.apply_damage(-3, TOX)
 					if(prob(10))
-						visible_message("\The [src] whirrs and gurgles as it kelates the occupant.")
-						to_chat(occupant, SPAN_INFO("You feel slighly less ill."))
+						visible_message("\The [src] whirrs and gurgles as it chelates the occupant.")
+						to_chat(occupant, SPAN_INFO("You feel slightly less ill."))
 				else
 					heal_toxin = 0
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Chelation complete.")

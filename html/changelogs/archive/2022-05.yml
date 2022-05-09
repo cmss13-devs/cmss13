@@ -127,6 +127,16 @@
   Shad0vvs:
   - bugfix: Fixed the semiotics signs at engineering on LV.
   - bugfix: Fixed the Normandy landing lights on LV to properly sync.
+  TotalEpicness:
+  - rscadd: Added the ES-11 small pressure tank! A robust little pressurized canister
+      that is small enough to fit in most bags and made for use with welding fuel.
+      Thanks to Triiodine for the sprite for this one.
+  - expansion: Backpack Welding tanks are no longer bulletproof. They will explode
+      upon enough penetrating force
+  - rscadd: Added the MS-11, just like the ES-11 but for medical usage. The MS-11
+      is able to refill most, if not all standard autoinjectors (no emergency/custom)
+      and can fill multiple different types as long as it has enough reagents to fill
+      them completely. Cannot partially refill autoinjectors.
   harryob:
   - spellcheck: You are now properly chelated in an autodoc
   joookschad:

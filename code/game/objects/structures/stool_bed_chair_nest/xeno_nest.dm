@@ -78,14 +78,16 @@
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
 				return
-
+			if(!user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+				return
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
-		H.attack_log += "\[[time_stamp()]\]<font color='orange'>Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+		user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+		H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 	unbuckle()
 	return
 

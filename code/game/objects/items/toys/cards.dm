@@ -138,7 +138,7 @@
 	if(!cards_length)
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
-	if(!num_cards)
+	if(!num_cards || num_cards <= 0)
 		return
 	num_cards = min(num_cards, cards_length)
 
@@ -342,7 +342,6 @@
 		else
 			if(loc != user)
 				user.put_in_hands(src)
-			concealed = H.concealed
 		update_icon()
 		return
 	..()

@@ -1906,6 +1906,7 @@
 #include "code\modules\surgery\internal_bleeding.dm"
 #include "code\modules\surgery\organs_internal.dm"
 #include "code\modules\surgery\robolimbs.dm"
+#include "code\modules\surgery\robotic_organs_internal.dm"
 #include "code\modules\surgery\surgery_initiator.dm"
 #include "code\modules\surgery\surgery_procedure.dm"
 #include "code\modules\surgery\surgery_steps.dm"

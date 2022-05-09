@@ -569,6 +569,8 @@
 					show_limb = TRUE
 				else
 					org_name += " (Cybernetic)"
+			else if(org.status & LIMB_SYNTHSKIN)
+				org_name += " (Synthskin)"
 
 			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
 			burn_info += "[burn_treated ? "" : "{B}"]"

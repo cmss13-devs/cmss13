@@ -111,6 +111,14 @@
   - qol: when you are un-nested and can return to your body, a loud sound will play
       and your taskbar icon will flash (can be toggled off in preferences)
 2022-05-09:
+  Geeves, Frans_Feiffer, Triiodine:
+  - rscadd: Added pred hairstyles, sprited by Frans.
+  - rscadd: Added colorable pred capes, sprited by Frans.
+  - rscadd: Added plasma caster materials (retro still available), sprited by Frans.
+  - imageadd: Fixed various pred weapons not being aligned correctly, body mesh on-mob
+      and inventory state being mixed up, ceremonial dagger not having in-hand state,
+      sprites by Geeves.
+  - imageadd: Resprited the yautja ceremonial cape, sprites by Triiodine.
   Geevies:
   - admin: Admin PMs will now probably always go to the right person.
   - rscadd: When you're on fire, you will now scream in pain every now and then.

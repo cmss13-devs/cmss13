@@ -109,6 +109,9 @@
 	S["pred_mask_mat"]		>> predator_mask_material
 	S["pred_armor_mat"]		>> predator_armor_material
 	S["pred_greave_mat"]	>> predator_greave_material
+	S["pred_caster_mat"]	>> predator_caster_material
+	S["pred_cape_type"]		>> predator_cape_type
+	S["pred_cape_color"]	>> predator_cape_color
 	S["pred_flavor_text"]	>> predator_flavor_text
 
 	S["commander_status"]	>> commander_status
@@ -162,6 +165,9 @@
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
+	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
+	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
+	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
@@ -242,6 +248,9 @@
 	S["pred_mask_mat"]		<< predator_mask_material
 	S["pred_armor_mat"]		<< predator_armor_material
 	S["pred_greave_mat"]	<< predator_greave_material
+	S["pred_caster_mat"]	<< predator_caster_material
+	S["pred_cape_type"]		<< predator_cape_type
+	S["pred_cape_color"]	<< predator_cape_color
 	S["pred_flavor_text"]	<< predator_flavor_text
 
 	S["commander_status"] 	<< commander_status

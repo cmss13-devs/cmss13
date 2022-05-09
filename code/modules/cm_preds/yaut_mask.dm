@@ -139,7 +139,7 @@
 
 		var/obj/item/G = user.glasses
 		if(G)
-			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
+			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/normal/yautja))
 				user.temp_drop_inv_item(G)
 				qdel(G)
 				user.update_inv_glasses()

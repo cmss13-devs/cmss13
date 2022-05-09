@@ -113,6 +113,8 @@ GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 var/global/list/yautja_gear = list() // list of loose pred gear
 var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
 
+GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_yautja_capes())
+
 //Languages/species/whitelist.
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
@@ -343,6 +345,12 @@ var/global/list/paramslist_cache = list()
 	for(var/type in GLOB.custom_huds_list - list(HUD_ALIEN, HUD_ROBOT))
 		human_huds += type
 	return human_huds
+
+/proc/setup_yautja_capes()
+	var/list/cape_list = list()
+	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
+		cape_list[initial(cape_type.name)] = cape_type
+	return cape_list
 
 
 /* // Uncomment to debug chemical reaction list.

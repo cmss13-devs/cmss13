@@ -153,7 +153,7 @@
 
 
 /obj/item/clothing/yautja_cape
-	name = "yautja cape"
+	name = PRED_YAUTJA_CAPE
 	desc = "A battle-worn cape passed down by elder Yautja."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "fullcape"
@@ -184,27 +184,27 @@
 	return ..()
 
 /obj/item/clothing/yautja_cape/ceremonial
-	name = "yautja ceremonial cape"
+	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
 	councillor_override = TRUE
 
 /obj/item/clothing/yautja_cape/third
-	name = "yautja third-cape"
+	name = PRED_YAUTJA_THIRD_CAPE
 	icon_state = "thirdcape"
 	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/half
-	name = "yautja half-cape"
+	name = PRED_YAUTJA_HALF_CAPE
 	icon_state = "halfcape"
 	clan_rank_required = CLAN_RANK_ELITE_INT
 
 /obj/item/clothing/yautja_cape/quarter
-	name = "yautja quarter-cape"
+	name = PRED_YAUTJA_QUARTER_CAPE
 	icon_state = "quartercape"
 	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/poncho
-	name = "yautja poncho"
+	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
 	clan_rank_required = CLAN_RANK_ADMIN_INT
 	councillor_override = TRUE

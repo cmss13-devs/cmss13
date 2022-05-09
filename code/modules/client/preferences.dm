@@ -477,11 +477,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				dat += "<div id='column3'>"
 				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
-				var/cape_type = predator_cape_type
-				if(ispath(text2path(predator_cape_type)))
-					var/obj/item/clothing/yautja_cape/cape_path = text2path(predator_cape_type)
-					cape_type = capitalize_first_letters(initial(cape_path.name))
-				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[cape_type]</b></a><br>"
+				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[capitalize_first_letters(predator_cape_type)]</b></a><br>"
 				dat += "<b>Cape Color:</b> "
 				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
 				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
@@ -1056,14 +1052,15 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
 
 					var/list/options = list("None" = "None")
-					for(var/obj/item/clothing/yautja_cape/cape as anything in typesof(/obj/item/clothing/yautja_cape))
+					for(var/cape_name in GLOB.all_yautja_capes)
+						var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
 						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
-							options += list(capitalize_first_letters(initial(cape.name)) = cape)
+							options += list(capitalize_first_letters(cape_name) = cape_name)
 
 					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
 					if(!new_cape)
 						return
-					predator_cape_type = "[options[new_cape]]"
+					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as color|null
 					if(!new_cape_color)

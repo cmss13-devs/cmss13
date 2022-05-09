@@ -60,10 +60,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, mask_material), WEAR_FACE)
 
-	if(cape_type != "None")
-		if(istext(cape_type))
-			cape_type = text2path(cape_type)
-		H.equip_to_slot_or_del(new cape_type(H, cape_color), WEAR_BACK)
+	var/cape_path = GLOB.all_yautja_capes[cape_type]
+	if(ispath(cape_path))
+		H.equip_to_slot_or_del(new cape_path(H, cape_color), WEAR_BACK)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "Le'pro"
@@ -96,12 +95,13 @@
 /datum/equipment_preset/yautja/blooded
 	name = "Yautja Blooded"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	default_cape_type = /obj/item/clothing/yautja_cape/half
+	default_cape_type = PRED_YAUTJA_HALF_CAPE
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -112,7 +112,7 @@
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	default_cape_type = /obj/item/clothing/yautja_cape/third
+	default_cape_type = PRED_YAUTJA_THIRD_CAPE
 
 /datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -127,7 +127,7 @@
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	default_cape_type = /obj/item/clothing/yautja_cape
+	default_cape_type = PRED_YAUTJA_CAPE
 
 /datum/equipment_preset/yautja/leader/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
@@ -142,7 +142,7 @@
 /datum/equipment_preset/yautja/ancient
 	name = "Yautja Ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	default_cape_type = /obj/item/clothing/yautja_cape/poncho
+	default_cape_type = PRED_YAUTJA_PONCHO
 
 /datum/equipment_preset/yautja/ancient/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()

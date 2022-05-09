@@ -114,6 +114,8 @@
   Geevies:
   - admin: Admin PMs will now probably always go to the right person.
   - rscadd: When you're on fire, you will now scream in pain every now and then.
+  - refactor: 'Re-did a lot of card-handling code, check Github PR #233 for more info.
+      In general, it should be a lot easier to play now.'
   Shad0vvs:
   - bugfix: Fixed the semiotics signs at engineering on LV.
   - bugfix: Fixed the Normandy landing lights on LV to properly sync.

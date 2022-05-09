@@ -110,3 +110,7 @@
       when you take them off.
   - qol: when you are un-nested and can return to your body, a loud sound will play
       and your taskbar icon will flash (can be toggled off in preferences)
+2022-05-09:
+  Shad0vvs:
+  - bugfix: Fixed the semiotics signs at engineering on LV.
+  - bugfix: Fixed the Normandy landing lights on LV to properly sync.

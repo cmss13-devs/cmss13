@@ -1,7 +1,7 @@
 ///How likely the nucleus (vowel) is to geminate ie a -> aa
 #define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS		10
 ///How likely the initial (consonant) is to geminate ie k -> kk
-#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		5
+#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		7.5
 ///How likely the consonant is to palatalise ie r -> ry
 #define JAPANESE_SOUND_PALATALISATION_CHANCE			10
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high for convincing diphthongs
@@ -30,11 +30,10 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/NU = (pick(subtypesof(/datum/japanese_sound/nucleus/)))
 	var/datum/japanese_sound/initial/initial = new IN
 	var/datum/japanese_sound/nucleus/nucleus = new NU
-	var/datum/japanese_sound/final/final = new /datum/japanese_sound/final/n //because we only have -n
 	//time to do compatibilty checks, nucleus comes first as it determines what we can and can't palatalise
 	if(prob(JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS) && nucleus_geminable)
 		if(nucleus.geminate())
-			initial_geminable = FALSE
+			initial_geminable = FALSE //we do not allow this in order to reduce clutter
 	//now for checks on the initial
 	if(initial.forbidden_nuclei) //check if the nucleus is a W or a Y and then if it's trying to make yi/wi/wu/we/ye
 		if(NU in initial.forbidden_nuclei)
@@ -57,14 +56,15 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 		null_initial = TRUE
 	syllable += "[nucleus.sound]"
 	if(prob(JAPANESE_SOUND_N_FINAL_CHANCE))
+		var/datum/japanese_sound/final/final = new /datum/japanese_sound/final/n //because we only have -n
 		syllable += "[final.sound]"
 		null_final = FALSE
+		QDEL_NULL(final)
 	else
 		null_final = TRUE
 	syllable_sound = syllable
 	QDEL_NULL(initial)
 	QDEL_NULL(nucleus)
-	QDEL_NULL(final)
 
 /proc/randomly_generate_japanese_word(var/syllables = pick(30;1, 35;2, 20;3, 10;4, 5;5)) //default has args which don't make obnoxiously massive words
 	var/datum/japanese_syllable/J = new /datum/japanese_syllable
@@ -90,6 +90,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/gemination_forbidden = FALSE //if it can geminate or not
 	var/geminated_form = "soundsound" //sound when geminated
 	var/low_chance_geminate = FALSE //just some basic phonetic information
+	var/geminated = FALSE //has the sound been geminated or not?
 
 ///handle gemination, and make sure that if the sound is voiced the chance is lower
 /datum/japanese_sound/proc/geminate()
@@ -99,6 +100,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 		if(!(prob(JAPANESE_SOUND_GEMINATION_CHANCE_VOICED)))
 			return FALSE
 	sound = geminated_form
+	geminated = TRUE
 	return TRUE
 
 ///an initial sound aka a consonant, contains a lot of data about stuff that only consonants can be
@@ -109,30 +111,46 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	var/palatalised_geminated_form = "ininyitial" //sound when geminated AND palatalised
 	var/list/forbidden_nuclei //vowels it can't go before
 	var/affricated_form //special form it takes on before a u. Applies to t, d, and h.
+	var/geminated_affricated_form //self explanatory
 	var/forced_to_palatalise = FALSE //if it HAS to palatalise before an I. Applies to t, d, s and z. This lets it bypass anti-palatalise rules on I but not e.
 
 /datum/japanese_sound/initial/proc/palatalise(var/datum/japanese_sound/nucleus/nucleus)
 	if(forced_to_palatalise && nucleus.forces_palatalisation) //is the sound forced to palatalise and is the nucleus i? then palatalise
-		if(sound == geminated_form)
+		if(geminated) //we have to have the check above so that we get "chi" but not "che"
 			sound = palatalised_geminated_form
 			return
 		else
 			sound = palatalised_form
 			return
 
-	else if(nucleus.anti_palatalise) //if the nucleus is e or i and the sound is NOT forced to palatalise, return a nope
-		return
+	else if(nucleus.anti_palatalise || palatalised_forbidden) //if the nucleus is e or i and the sound is NOT forced to palatalise, return a nope
+		return //or if the sound is forbidden from palatalising then return
 
-	if(sound == geminated_form && !palatalised_forbidden) //now actually palatalise
+	if(geminated) //now actually palatalise
 		sound = palatalised_geminated_form
 		return
-	else if(!palatalised_forbidden)
+	else
 		sound = palatalised_form
 		return
 
 /datum/japanese_sound/initial/proc/affricate(var/datum/japanese_sound/nucleus/nucleus)
 	if(affricated_form && nucleus.causes_affrication)
-		sound = affricated_form
+		if(geminated)
+			sound = geminated_affricated_form
+		else
+			sound = affricated_form
+
+/datum/japanese_sound/initial/n
+	sound = "n"
+	palatalised_form = "ny"
+	geminated_form = "nn"
+	palatalised_geminated_form = "nny"
+
+/datum/japanese_sound/initial/m
+	sound = "m"
+	palatalised_form = "my"
+	geminated_form = "mm"
+	palatalised_geminated_form = "mmy"
 
 /datum/japanese_sound/initial/b
 	sound = "b"
@@ -153,6 +171,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	geminated_form = "tt"
 	palatalised_geminated_form = "tch" //nihon-shiki sucks, hepburn for life
 	affricated_form = "ts"
+	geminated_affricated_form = "tts"
 	forced_to_palatalise = TRUE
 
 /datum/japanese_sound/initial/d
@@ -161,6 +180,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	geminated_form = "dd"
 	palatalised_geminated_form = "jj"
 	affricated_form = "z" //no dialectal dz weirdness
+	geminated_affricated_form =  "zz"
 	forced_to_palatalise = TRUE
 	low_chance_geminate = TRUE
 
@@ -195,7 +215,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 /datum/japanese_sound/initial/h
 	sound = "h"
 	palatalised_form = "hy"
-	affricated_form = "f"
+	affricated_form = "f" //no need for geminated forms as h cannot geminate
 	gemination_forbidden = TRUE
 
 /datum/japanese_sound/initial/r

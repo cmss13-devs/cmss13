@@ -592,6 +592,20 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
 
+/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+	density = TRUE
+
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
+		. &= ~MOVE_TURF
+
+/obj/structure/prop/invuln/dropship_parts/lifeboat
+	name = "Lifeboat"
+	icon = 'icons/turf/lifeboat.dmi'
+
+
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."

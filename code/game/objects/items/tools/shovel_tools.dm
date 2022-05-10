@@ -68,6 +68,7 @@
 
 	if(user.action_busy)
 		return
+
 	if(!dirt_amt)
 		var/turf/T = target
 		var/turfdirt = T.get_dirt_type()
@@ -93,30 +94,35 @@
 			dirt_amt = transfer_amount
 			dirt_type = turfdirt
 			update_icon()
-			/*
-			var/digmore = FALSE
-			while(dirt_amt > 0)
 
+			var/digmore = FALSE
+			to_chat(user, SPAN_NOTICE("You begin filling the sandbags."))
+			if(!do_after(user, shovelspeed / 2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // Sandbag filling speed faster than normal, no skillchecks required since filling bags is almost instant
+				to_chat(user, SPAN_NOTICE("You stop filling the sandbags."))
+				return
+
+			while(dirt_amt > 0)
 				var/obj/item/stack/sandbags_empty/SB = user.get_inactive_hand()
-				if(istype(SB))
-				else
+				if(!istype(SB, /obj/item/stack/sandbags_empty)) // If no sandbag in off hand, checks around the user
 					for(var/obj/item/stack/sandbags_empty/sandbags in range(1, user))
 						SB = sandbags
 						break
-				if(!SB)
+
+				if(!istype(SB, /obj/item/stack/sandbags_empty)) // Checks sandbag a second time to confirm, if none are found, cancels everything
+					to_chat(user, SPAN_NOTICE("There are no sandbags nearby to fill up."))
 					break
-				to_chat(user, SPAN_NOTICE("You begin filling \a [SB.name]."))
-				if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					to_chat(user, SPAN_NOTICE("You stop filling \a [SB.name]."))
-					return
-				while(dirt_amt > 0 && SB.amount > 0 && get_dist(user, SB) <= 1) // We can't be too sure that they aren't pulling something funny
+
+				if(get_dist(user, SB) > 1)
+					break
+
+				while(SB.amount > 0)
 					SB.attackby(src, user)
-				if(dirt_amt == 0)
-					digmore = TRUE
+					if(dirt_amt == 0)
+						digmore = TRUE
+						break
 			if(digmore)
 				afterattack(target, user, proximity)
 // auto repeat ends
-*/
 
 	else
 		dump_shovel(target, user)

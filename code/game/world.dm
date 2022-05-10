@@ -211,9 +211,9 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/reboot_sound = SAFEPICK(reboot_sfx)
 	if(reboot_sound)
 		var/sound/reboot_sound_ref = sound(reboot_sound)
-		for(var/client/C as anything in GLOB.clients)
-			if(C?.prefs.toggles_sound & SOUND_REBOOT)
-				SEND_SOUND(C, reboot_sound_ref)
+		for(var/client/client as anything in GLOB.clients)
+			if(client?.prefs.toggles_sound & SOUND_REBOOT)
+				SEND_SOUND(client, reboot_sound_ref)
 
 /world/proc/notify_manager(restarting = FALSE)
 	. = FALSE

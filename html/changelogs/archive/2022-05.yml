@@ -145,3 +145,6 @@
   Waseemq1235:
   - balance: Dutch's Dozen leader thermals are now EMP proof. They will no longer
       blind themselves with their own grenades.
+  stanalbatross:
+  - bugfix: your xeno night vision level will now switch according to preference when
+      spawning in via chestbursting and via the spawn pool.

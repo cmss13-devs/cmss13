@@ -192,7 +192,7 @@
 				if(A == LM.target)
 					hit_atom = A
 					break
-		launch_impact(hit_atom)
+//		launch_impact(hit_atom) causing duplication of smart discs
 	if (loc)
 		throwing = FALSE
 		rebounding = FALSE

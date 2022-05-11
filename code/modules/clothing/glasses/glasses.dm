@@ -236,11 +236,11 @@
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
-	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
+	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
-	vision_flags = SEE_TURFS
+	vision_flags = SEE_TURFS|SEE_MOBS
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
 

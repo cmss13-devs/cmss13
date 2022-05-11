@@ -69,6 +69,11 @@
 	item_state = "marine_rto"
 	specialty = "marine Radio Telephone Operator"
 
+/obj/item/clothing/under/marine/rto/unequipped(mob/user, slot)
+	. = ..()
+	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
+		user.drop_inv_item_on_ground(user.back)
+
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"
 	flags_jumpsuit = FALSE

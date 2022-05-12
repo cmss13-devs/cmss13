@@ -158,3 +158,5 @@
   - refactor: Changed the movement handler code to use signals rather than a looping
       proc with a lot of datums. Some stuff may be broken, so make a Github Issue
       if you see one.
+  Triiodine:
+  - bugfix: bad offsets in the kitchen.

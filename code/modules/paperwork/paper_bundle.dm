@@ -79,7 +79,7 @@
 
 /obj/item/paper_bundle/examine(mob/user)
 	to_chat(usr, desc)
-	if(in_range(user, src))
+	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		src.attack_self(user)
 	else
 		to_chat(user, SPAN_NOTICE("It is too far away."))
@@ -171,7 +171,10 @@
 		src.attack_self(src.loc)
 		updateUsrDialog()
 	else
-		to_chat(usr, SPAN_NOTICE("You need to hold it in hands!"))
+		if(istype(usr, /mob/dead/observer))
+			to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
+		else
+		    to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"

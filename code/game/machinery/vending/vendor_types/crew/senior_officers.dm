@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("HUDS (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-		list("Medical HUD Sunglasses", 0, /obj/item/clothing/glasses/hud/health/sunmedhud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Medical HUD Sunglasses", 0, /obj/item/clothing/glasses/hud/health/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),

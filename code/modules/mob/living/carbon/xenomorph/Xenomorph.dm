@@ -303,6 +303,8 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+		life_kills = oldXeno.life_kills_total
+		life_damage = oldXeno.life_damage_taken_total
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)

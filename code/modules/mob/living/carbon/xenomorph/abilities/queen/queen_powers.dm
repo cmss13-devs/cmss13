@@ -68,8 +68,6 @@
 
 	var/xeno_type
 	var/level_to_switch_to = T.get_vision_level()
-	var/life_kills = T.life_kills_total
-	var/life_damage = T.life_damage_taken_total
 	switch(newcaste)
 		if(XENO_CASTE_RUNNER)
 			xeno_type = /mob/living/carbon/Xenomorph/Runner

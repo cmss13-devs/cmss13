@@ -152,3 +152,9 @@
   50RemAndCounting:
   - balance: The M46C pulse rifle is now able to be melted by xenomorphs again. The
       Command Tablet is now unmeltable.
+  Geevies:
+  - balance: Bipods can now fire in a near-180 degree arc rather than a 90 degree
+      one.
+  - refactor: Changed the movement handler code to use signals rather than a looping
+      proc with a lot of datums. Some stuff may be broken, so make a Github Issue
+      if you see one.

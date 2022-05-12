@@ -749,6 +749,7 @@
 #include "code\game\machinery\vending\vendor_types\general.dm"
 #include "code\game\machinery\vending\vendor_types\medical.dm"
 #include "code\game\machinery\vending\vendor_types\requisitions.dm"
+#include "code\game\machinery\vending\vendor_types\supplies.dm"
 #include "code\game\machinery\vending\vendor_types\wo_vendors.dm"
 #include "code\game\machinery\vending\vendor_types\antag\antag_clothing.dm"
 #include "code\game\machinery\vending\vendor_types\antag\antag_gear.dm"

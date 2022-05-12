@@ -22,8 +22,7 @@
 	speech_verb = "vocalizes"
 	colour = "japanese"
 	key = "2"
-
-	syllables = list("ka", "ki", "ku", "ke", "ko", "ta", "chi", "tsu", "te", "to", "sa", "shi", "su", "se", "so", "na", "ni", "nu", "ne", "no", "n", "ha", "hi", "fu", "he", "ho", "ma", "mi", "mu", "me", "mo", "ya", "yu", "yo", "ra", "ri", "ru", "re", "ro", "wa", "wo")
+	space_chance = 100 //uses a unique system
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
@@ -185,7 +184,7 @@
 
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH
-	desc = "An event only language that provides a hivemind for it's users."
+	desc = "An event only language that provides a hivemind for its users."
 	speech_verb = "resonates"
 	ask_verb = "resonates"
 	exclaim_verb = "resonates"

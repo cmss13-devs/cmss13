@@ -1412,6 +1412,7 @@
 #include "code\modules\events\comms_blackout.dm"
 #include "code\modules\flufftext\Dreaming.dm"
 #include "code\modules\flufftext\Hallucination.dm"
+#include "code\modules\flufftext\Japanese.dm"
 #include "code\modules\flufftext\TextFilters.dm"
 #include "code\modules\gear_presets\_select_equipment.dm"
 #include "code\modules\gear_presets\agents.dm"

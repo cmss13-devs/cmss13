@@ -820,7 +820,7 @@ mob/proc/yank_out_object()
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 		H.pain.apply_pain(selection.w_class * 3)
 
-		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT))
+		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT|LIMB_SYNTHSKIN))
 			var/datum/wound/internal_bleeding/I = new (0)
 			affected.add_bleeding(I, TRUE)
 			affected.wounds += I

@@ -242,7 +242,7 @@
 		var/burndamage = org.burn_dam
 		if(org.status & LIMB_DESTROYED)
 			status += "MISSING!"
-		else if(org.status & LIMB_ROBOT)
+		else if(org.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
 			switch(brutedamage)
 				if(1 to 20)
 					status += "dented"

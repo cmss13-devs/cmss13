@@ -27,16 +27,6 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
 
-GLOBAL_LIST_INIT(resin_build_order_default, list(
-	/datum/resin_construction/resin_turf/wall,
-	/datum/resin_construction/resin_turf/membrane,
-	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/nest,
-	/datum/resin_construction/resin_obj/sticky_resin,
-	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/resin_spike
-))
-
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
@@ -52,6 +42,18 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
+	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/acid_pillar,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
+	/datum/resin_construction/resin_turf/wall/queen,
+	/datum/resin_construction/resin_turf/wall/reflective,
+	/datum/resin_construction/resin_turf/membrane/queen,
+	/datum/resin_construction/resin_obj/door/queen,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,

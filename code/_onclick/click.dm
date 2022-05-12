@@ -236,14 +236,31 @@
 	if(!dx && !dy) return
 
 	var/direction
+	var/specific_direction
 	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
+		if(dy > 0)
+			direction = NORTH
+		else
+			direction = SOUTH
+		if(dx)
+			if(dx > 0)
+				specific_direction = direction|EAST
+			else
+				specific_direction = direction|WEST
 	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
+		if(dx > 0)
+			direction = EAST
+		else
+			direction = WEST
+		if(dy)
+			if(dy > 0)
+				specific_direction = direction|NORTH
+			else
+				specific_direction = direction|SOUTH
+	if(!specific_direction)
+		specific_direction = direction
 
-	facedir(direction)
+	facedir(direction, specific_direction)
 
 
 

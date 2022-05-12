@@ -131,7 +131,7 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
-	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
+	if(!mob.canmove || mob.is_mob_incapacitated(TRUE))
 		return
 
 	//Check if you are being grabbed and if so attemps to break it
@@ -142,6 +142,10 @@
 			return
 		else if(!mob.resist_grab(TRUE))
 			return
+
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct) & COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK)
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		return
 
 	if(mob.buckled)
 		return mob.buckled.relaymove(mob, direct)
@@ -264,6 +268,3 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
-
-/mob/proc/on_movement()
-	return TRUE

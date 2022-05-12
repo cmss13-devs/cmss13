@@ -119,15 +119,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		//del(usr)
 		return
 
-	//Admin PM //Why is this not in /datums/admin/Topic()
 	if(href_list["priv_msg"])
-		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
-			var/mob/M = C
-			C = M.client
-		if(!C) return //Outdated links to logged players generate runtimes
-		if(unansweredAhelps[C.computer_id]) unansweredAhelps.Remove(C.computer_id)
-		cmd_admin_pm(C,null)
+		var/client/receiver_client
+		for(var/client/C as anything in GLOB.clients)
+			if(C.ckey == ckey(href_list["priv_msg"]))
+				receiver_client = C
+				break
+		if(!receiver_client)
+			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
+			return
+		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
+		cmd_admin_pm(receiver_client, null)
 		return
 
 	else if(href_list["FaxView"])
@@ -455,10 +457,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(M)]</A>.")]", 1)
+						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 

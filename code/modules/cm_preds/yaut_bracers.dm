@@ -162,14 +162,17 @@
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
 	var/translator_type = "Modern"
+	var/caster_material = "ebony"
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type, var/new_caster_material)
 	. = ..()
-	caster = new(src)
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
+	if(new_caster_material)
+		caster_material = new_caster_material
+	caster = new(src, FALSE, caster_material)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	charge -= (severity * 500)
@@ -613,7 +616,7 @@
 
 		var/obj/item/weapon/gun/energy/yautja/plasma_caster/W = caster
 		if(!istype(W))
-			W = new(usr)
+			W = new(usr, FALSE, caster_material)
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1

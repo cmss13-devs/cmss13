@@ -64,45 +64,37 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 /datum/resin_construction/proc/build(var/turf/T, var/hivenumber, var/builder)
 	return
 
+/datum/resin_construction/proc/check_thick_build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+	var/can_build_thick = TRUE
+	if(thick_hiveweed)
+		var/obj/effect/alien/weeds/weeds = locate() in build_turf
+		if(!weeds || weeds.hivenumber != hivenumber || weeds.weed_strength < WEED_LEVEL_HIVE)
+			can_build_thick = FALSE
+
+	if(build_path_thick && (can_build_thick || (SEND_SIGNAL(builder, COMSIG_XENO_THICK_RESIN_BYPASS) & COMPONENT_THICK_BYPASS)))
+		return TRUE
+	return FALSE
 
 // Subtype encompassing all resin constructions that are of type /obj
-/datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
-	var/path = build_path
-	var/can_build_thick = TRUE
-	if(thick_hiveweed)
-		var/obj/effect/alien/weeds/W = locate() in T
-		if(!W || W.hivenumber != hivenumber || W.weed_strength < WEED_LEVEL_HIVE)
-			can_build_thick = FALSE
-
-	if(build_path_thick && (can_build_thick || builder.override_secrete_thick_resin()))
-		path = build_path_thick
-
+/datum/resin_construction/resin_obj/build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
 	if(pass_hivenumber)
-		return new path(T, hivenumber, builder)
-	return new path(T)
-
+		return new path(build_turf, hivenumber, builder)
+	return new path(build_turf)
 
 // Subtype encompassing all resin constructions that are of type /turf
-/datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
-	var/path = build_path
-	var/can_build_thick = TRUE
-	if(thick_hiveweed)
-		var/obj/effect/alien/weeds/W = locate() in T
-		if(!W || W.hivenumber != hivenumber || W.weed_strength < WEED_LEVEL_HIVE)
-			can_build_thick = FALSE
+/datum/resin_construction/resin_turf/build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
 
-	if(build_path_thick && (can_build_thick || builder.override_secrete_thick_resin()))
-		path = build_path_thick
+	build_turf.PlaceOnTop(path)
 
-	T.PlaceOnTop(path)
+	var/turf/closed/wall/resin/resin_wall = build_turf
+	if (istype(resin_wall) && pass_hivenumber)
+		resin_wall.hivenumber = hivenumber
+		resin_wall.set_resin_builder(builder)
+		set_hive_data(resin_wall, hivenumber)
 
-	var/turf/closed/wall/resin/W = T
-	if (istype(W) && pass_hivenumber)
-		W.hivenumber = hivenumber
-		W.set_resin_builder(builder)
-		set_hive_data(W, hivenumber)
-
-	return T
+	return build_turf
 
 
 // Resin Walls

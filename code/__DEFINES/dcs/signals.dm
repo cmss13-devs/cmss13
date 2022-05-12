@@ -422,3 +422,9 @@
 #define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
+
+
+// Used in resin_constructions.dm
+// Checks whether the xeno can build a thick structure regardless of hive weeds
+#define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
+	#define COMPONENT_THICK_BYPASS (1<<0)

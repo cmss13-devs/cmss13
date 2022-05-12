@@ -753,6 +753,9 @@
 
 	add_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
 
+	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
+	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
+
 	set_resin_build_order(GLOB.resin_build_order_ovipositor)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
@@ -793,6 +796,9 @@
 	give_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
+
+	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
+	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	recalculate_actions()
 
@@ -855,9 +861,3 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1)
-
-/mob/living/carbon/Xenomorph/Queen/override_secrete_thick_resin()
-	var/datum/action/xeno_action/activable/secrete_resin/remote/queen/resin_ability = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/secrete_resin/remote/queen)
-	if(resin_ability?.boosted)
-		return TRUE
-	return FALSE

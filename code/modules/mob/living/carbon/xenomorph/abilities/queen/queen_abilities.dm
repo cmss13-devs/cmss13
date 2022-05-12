@@ -69,11 +69,8 @@
 
 	var/boosted = FALSE
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/New(Target, override_icon_state)
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
-	RegisterSignal(src, COMSIG_ACTION_GIVEN, .proc/on_give)
-
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/on_give(datum/source, mob/living/L)
 	SSticker.OnRoundstart(CALLBACK(src, .proc/apply_queen_build_boost))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
@@ -85,15 +82,20 @@
 		boosted = TRUE
 		xeno_cooldown = 0
 		plasma_cost = 0
+		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, .proc/override_secrete_thick_resin)
 		addtimer(CALLBACK(src, .proc/disable_boost), boost_duration)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
 	xeno_cooldown = 2 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
+	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
 		to_chat(owner, SPAN_XENODANGER("Your boosted building has been disabled!"))
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
+	return COMPONENT_THICK_BYPASS
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"

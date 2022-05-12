@@ -395,52 +395,16 @@
 		return
 	var/mob/living/carbon/Xenomorph/target = A
 
-	if(!check_state())
+	if(!check_can_transfer_plasma(target, max_range))
 		return
-
-	if(target.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target] is dead!"))
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
-		return
-
-	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
-		return
-
-	if(isXenoQueen(target))
-		var/mob/living/carbon/Xenomorph/Queen/Q = target
-		if(Q.ovipositor)
-			to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
-			return
 
 	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
 	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their plasma to you."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
-	if(!check_state())
+	if(!check_can_transfer_plasma(target, max_range))
 		return
-
-	if(target.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target] is dead!"))
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
-		return
-
-	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
-		return
-
-	if(isXenoQueen(target))
-		var/mob/living/carbon/Xenomorph/Queen/Q = target
-		if(Q.ovipositor)
-			to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
-			return
 
 	if(plasma_stored < amount)
 		amount = plasma_stored //Just use all of it
@@ -449,3 +413,29 @@
 	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to you. You now have [target.plasma_stored]."))
 	to_chat(src, SPAN_XENOWARNING("You have transferred [amount] plasma to [target]. You now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
+
+/mob/living/carbon/Xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/Xenomorph/target, max_range)
+	if(!check_state())
+		return FALSE
+
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is dead!"))
+		return FALSE
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
+		return FALSE
+
+	if(get_dist(src, target) > max_range)
+		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
+		return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_ABILITY_OVIPOSITOR))
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
+		return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_ABILITY_NO_PLASMA_TRANSFER))
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to \the [target]."))
+		return FALSE
+
+	return TRUE

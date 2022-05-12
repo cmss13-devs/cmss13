@@ -671,7 +671,3 @@
 		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 	tracked_marker.xenos_tracking -= src
 	tracked_marker = null
-
-/// This checks whether the xeno can build thick versions of resin structures despite them not being on weeds
-/mob/living/carbon/Xenomorph/proc/override_secrete_thick_resin()
-	return FALSE

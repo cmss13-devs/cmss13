@@ -186,14 +186,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		return dat
 
 /world/Reboot(var/reason)
-	var/reboot_sound = pick(reboot_sfx)
-	var/sound/reboot_sound_ref = sound(reboot_sound)
-	for (var/client/C as anything in GLOB.clients)
-		if(C?.prefs.toggles_sound & SOUND_REBOOT)
-			SEND_SOUND(C, reboot_sound_ref)
-
 	Master.Shutdown()
-
+	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)
@@ -203,6 +197,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
+
 	if(!notify_manager(restarting = TRUE))
 		log_debug("Failed to notify manager daemon of restart")
 
@@ -211,6 +206,14 @@ var/world_topic_spam_protect_time = world.timeofday
 		return
 
 	..(reason)
+
+/world/proc/send_reboot_sound()
+	var/reboot_sound = SAFEPICK(reboot_sfx)
+	if(reboot_sound)
+		var/sound/reboot_sound_ref = sound(reboot_sound)
+		for(var/client/client as anything in GLOB.clients)
+			if(client?.prefs.toggles_sound & SOUND_REBOOT)
+				SEND_SOUND(client, reboot_sound_ref)
 
 /world/proc/notify_manager(restarting = FALSE)
 	. = FALSE

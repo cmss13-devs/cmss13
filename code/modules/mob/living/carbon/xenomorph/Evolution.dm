@@ -129,10 +129,6 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(life_kills)
-		new_xeno.life_kills_total = life_kills
-	if(life_damage)
-		new_xeno.life_damage_taken_total = life_damage
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
 		new_xeno.fireloss = src.fireloss //Transfers the damage over.
@@ -310,10 +306,6 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(life_kills)
-		new_xeno.life_kills_total = life_kills
-	if(life_damage)
-		new_xeno.life_damage_taken_total = life_damage
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 

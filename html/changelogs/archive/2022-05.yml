@@ -166,6 +166,8 @@
   - rscadd: You can now do surgery on synths. You can repair their robotic organs
       with nanopaste or cable coil. You don't have to clamp their bleeders, either.
   - balance: Increased xeno acid blood damage from 12 to 25.
+  - balance: Increased Heavy armor bio resistance from CLOTHING_ARMOR_MEDIUMLOW (15)
+      to CLOTHING_ARMOR_HIGH (30).
   Shad0vvs:
   - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
       hosts inside.

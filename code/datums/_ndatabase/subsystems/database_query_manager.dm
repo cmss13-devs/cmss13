@@ -56,9 +56,9 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	NEW_SS_GLOBAL(SSdatabase)
 
 /datum/controller/subsystem/database_query_manager/Initialize()
-	set waitfor=0
 	connection = settings.create_connection()
 	connection.keep()
+	return ..()
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")

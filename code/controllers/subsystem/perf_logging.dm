@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(perf_logging)
 	round.save()
 	var/datum/entity/mc_controller/C
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
-		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
+		C = DB_EKEY(/datum/entity/mc_controller, "[SS.type]")
 		if(!C) continue
 		C.wait_time = SS.wait
 		C.save()

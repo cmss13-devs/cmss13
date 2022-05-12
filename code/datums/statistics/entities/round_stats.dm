@@ -90,7 +90,7 @@
 		round_statistics = round_stats
 
 		// Map stats
-		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name)
+		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name, TRUE)
 		new_map.total_rounds += 1
 		new_map.save()
 

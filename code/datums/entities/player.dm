@@ -375,9 +375,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_bans)
 
 	if(permaban_admin_id)
-		permaban_admin = DB_ENTITY(/datum/entity/player, permaban_admin_id)
+		permaban_admin = DB_ENTITY(/datum/entity/player, TRUE)
 	if(time_ban_admin_id)
-		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
+		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id, TRUE)
 
 
 
@@ -411,9 +411,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/safe_key = ckey(key)
 	if(!safe_key)
 		return null
-	var/datum/entity/player/P = DB_EKEY(/datum/entity/player, safe_key)
+	var/datum/entity/player/P = DB_EKEY(/datum/entity/player, safe_key, TRUE)
 	P.save()
-	P.sync()
 	return P
 
 /client/var/datum/entity/player/player_data
@@ -433,7 +432,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	player_data.last_known_cid = computer_id
 	player_data.save()
 	record_login_triplet(player.ckey, address, computer_id)
-	player_data.sync()
 
 /datum/entity/player/proc/check_ban(var/computer_id, var/address)
 	. = list()
@@ -479,7 +477,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(CONFIG_GET(string/banappeals))
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 	if(is_permabanned)
-		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
 		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
 		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
@@ -489,7 +486,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		var/time_left = time_ban_expiration - MINUTES_STAMP
 		if(time_left < 0)
 			return FALSE
-		time_ban_admin.sync()
 		var/timeleftstring
 		if (time_left >= 1440) //1440 = 1 day in minutes
 			timeleftstring = "[round(time_left / 1440, 0.1)] Days"
@@ -540,11 +536,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 		var/admin_ckey = "[ckey(I.author)]"
 		var/datum/entity/player/admin = get_player_from_key(admin_ckey)
-		admin.sync()
 
 		if(admin)
-			note.admin_id = admin.id
 			note.admin = admin
+			note.admin_id = admin.id
 
 		note.save()
 		CHECK_TICK
@@ -589,11 +584,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	var/admin_ckey = "[ckey(banned_by)]"
 	var/datum/entity/player/admin = get_player_from_key(admin_ckey)
-	admin.sync()
 
 	is_time_banned = TRUE
-	time_ban_reason = reason
 	time_ban_admin_id = admin.id
+	time_ban_reason = reason
 	time_ban_expiration = expiration
 	time_ban_admin = admin
 

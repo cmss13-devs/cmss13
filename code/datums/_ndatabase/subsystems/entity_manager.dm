@@ -66,9 +66,9 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 /datum/controller/subsystem/entity_manager/Initialize()
 	set waitfor=0
 	UNTIL(SSdatabase.connection.connection_ready())
-	adapter = SSdatabase.connection.get_adapter()	
+	adapter = SSdatabase.connection.get_adapter()
 	prepare_tables()
-	
+
 	var/list/all_views = typesof(/datum/entity_view_meta) - list(/datum/entity_view_meta)
 	for(var/view_meta in all_views)
 		var/datum/entity_view_meta/view = new view_meta()
@@ -79,6 +79,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			adapter.prepare_view(view)
 
 	ready = TRUE
+	return ..()
 
 /datum/controller/subsystem/entity_manager/proc/prepare_tables()
 	adapter.sync_table_meta()
@@ -90,7 +91,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 				adapter.sync_index(I.name, EM.table_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
 		if(EM.key_field)
 			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, list(EM.key_field), TRUE, TRUE)
-		
+
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
 	if (!resumed)
@@ -100,11 +101,11 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	while (currentrun.len)
 		var/datum/entity_meta/Q = currentrun[currentrun.len]
 		do_select(Q)
-		do_insert(Q)		
+		do_insert(Q)
 		do_update(Q)
 		do_delete(Q)
 		currentrun.len--
-		if (MC_TICK_CHECK)			
+		if (MC_TICK_CHECK)
 			return
 
 
@@ -116,7 +117,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	meta.inserting = to_insert
 	var/list/unmap = list()
 	for(var/datum/entity/item in to_insert)
-		var/list/value = meta.unmap(item, FALSE)		
+		var/list/value = meta.unmap(item, FALSE)
 		unmap.Add(list(value))
 
 	adapter.insert_table(meta.table_name, unmap, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_insert, meta, to_insert))
@@ -125,7 +126,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	var/currid = text2num("[first_id]")
 	meta.inserting = list()
 	// order between those two has to be same
-	for(var/datum/entity/IE in inserted_entities)		
+	for(var/datum/entity/IE in inserted_entities)
 		IE.id = "[currid]"
 		meta.on_insert(IE)
 		meta.on_action(IE)
@@ -134,7 +135,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			qdel(IE)
 			continue
 		IE.status = DB_ENTITY_STATE_SYNCED
-		meta.managed["[IE.id]"] = IE				
+		meta.managed["[IE.id]"] = IE
 
 /datum/controller/subsystem/entity_manager/proc/do_update(var/datum/entity_meta/meta)
 	var/list/datum/entity/to_update = meta.to_update
@@ -143,7 +144,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	meta.to_update = list() // release the list early
 	var/list/unmap = list()
 	for(var/datum/entity/item in to_update)
-		var/list/value = meta.unmap(item)		
+		var/list/value = meta.unmap(item)
 		unmap.Add(list(value))
 
 	adapter.update_table(meta.table_name, unmap, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_update, meta, to_update))
@@ -170,7 +171,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		IE.status = DB_ENTITY_STATE_BROKEN
 		meta.on_delete(IE)
 
-/datum/controller/subsystem/entity_manager/proc/do_select(var/datum/entity_meta/meta)
+/datum/controller/subsystem/entity_manager/proc/do_select(var/datum/entity_meta/meta, sync = FALSE)
 	var/list/datum/entity/to_select = meta.to_read
 	if(!length(to_select))
 		return
@@ -179,7 +180,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	for(var/datum/entity/item in to_select)
 		ids += item.id
 
-	adapter.read_table(meta.table_name, ids, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_select, meta, to_select))
+	adapter.read_table(meta.table_name, ids, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_select, meta, to_select), sync)
 
 /datum/controller/subsystem/entity_manager/proc/after_select(var/datum/entity_meta/meta, var/list/datum/entity/selected_entities, uqid, var/list/results)
 	for(var/list/IE in results)
@@ -191,11 +192,13 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			meta.on_read(ET)
 			meta.on_action(ET)
 
-/datum/controller/subsystem/entity_manager/proc/select(entity_type, id = null)
+/datum/controller/subsystem/entity_manager/proc/select(entity_type, id = null, sync = FALSE)
 	var/datum/entity_meta/meta = tables[entity_type]
 	if(!meta)
 		return null
 	var/datum/entity/ET = meta.make_new(id)
+	if(sync)
+		do_select(meta, TRUE)
 	return ET
 
 /datum/controller/subsystem/entity_manager/proc/filter_then(entity_type, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
@@ -230,14 +233,14 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			if(ET.status != DB_ENTITY_STATE_DETACHED)
 				resultset.Add(ET)
 				continue //already synced
-			
+
 			ET.status = DB_ENTITY_STATE_SYNCED
 			meta.to_read -= ET // just for safety sake
 			meta.map(ET, IE)
 			meta.on_read(ET)
 			meta.on_action(ET)
 			resultset.Add(ET)
-	
+
 
 	if(length(meta.to_insert))
 		resultset.Add(meta.filter_list(meta.to_insert, filter))
@@ -246,14 +249,14 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	if(CB)
 		CB.Invoke(resultset)
 
-/datum/controller/subsystem/entity_manager/proc/select_by_key(entity_type, key)
+/datum/controller/subsystem/entity_manager/proc/select_by_key(entity_type, key, sync = FALSE)
 	var/datum/entity_meta/meta = tables[entity_type]
 	if(!meta || !meta.key_field || !key)
 		return null
 	var/datum/entity/ET = meta.make_new_by_key(key)
 	if(!ET.__key_synced)
 		ET.__key_synced = TRUE
-		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_select_by_key, ET, meta))
+		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, .proc/after_select_by_key, ET, meta), sync)
 	return ET
 
 /datum/controller/subsystem/entity_manager/proc/after_select_by_key(var/datum/entity/ET, var/datum/entity_meta/meta, quid, var/list/results)
@@ -261,10 +264,10 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	if(!r_len) // safe to insert
 		meta.to_insert |= ET
 		return
-	
+
 	if(r_len > 1)
 		CRASH("Secondary Key constraint violation on [ET.type], key: [ET.vars[meta.key_field]]")
-	
+
 	// safe to select
 	var/list/IE = results[1]
 	ET.id = "[IE[DB_DEFAULT_ID_FIELD]]"

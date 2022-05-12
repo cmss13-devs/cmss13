@@ -218,7 +218,7 @@
         return TRUE
 
     if(href_list["row_href"])
-        var/datum/entity/player_sticky_ban/PSB = DB_ENTITY(/datum/entity/player_sticky_ban, href_list["row_href"])
+        var/datum/entity/player_sticky_ban/PSB = DB_ENTITY(/datum/entity/player_sticky_ban, href_list["row_href"], TRUE)
         PSB.sync()
 
         if(href_list["remove_stickyban"])
@@ -230,8 +230,7 @@
             if(input("You are about to remove [length(SBLW)+1] sticky ban entries. Please input \"confirm\" to proceed with this action.") != "confirm")
                 return TRUE
 
-            var/datum/entity/player/P = DB_ENTITY(/datum/entity/player, PSB.player_id)
-            P.sync()
+            var/datum/entity/player/P = DB_ENTITY(/datum/entity/player, PSB.player_id, TRUE)
 
             message_staff("[key_name_admin(usr)] has deleted [length(SBLW)+1] sticky ban entries linked to [P.ckey]")
             for(var/entry in SBLW)
@@ -248,8 +247,7 @@
         if(href_list["whitelist_ckey"])
             var/should_whitelist = href_list["should_whitelist_ckey"]
 
-            var/datum/entity/player/to_whitelist = DB_ENTITY(/datum/entity/player, PSB.player_id)
-            to_whitelist.sync()
+            var/datum/entity/player/to_whitelist = DB_ENTITY(/datum/entity/player, PSB.player_id, TRUE)
 
             if((input("You are about to [should_whitelist? "whitelist" : "dewhitelist"] [to_whitelist.ckey] from stickybans. Please input \"[to_whitelist.ckey]\" to proceed with this action.") as null|text) != to_whitelist.ckey)
                 return TRUE
@@ -285,8 +283,6 @@
         if(!P)
             to_chat(usr, SPAN_WARNING("Bad ckey. Please input a valid ckey"))
             return
-
-        P.sync()
 
         if(alert(usr, "You are about to add an entry. Please confirm details:\nCKEY - [P.ckey]\nIP ADDRESS - [address]\nCOMPUTER ID - [cid]\nREASON - [reason]", "Confirm", "Add Entry", "Cancel") == "Cancel")
             return

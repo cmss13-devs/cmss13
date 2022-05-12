@@ -291,8 +291,7 @@
 				var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
 
 				for(var/datum/view_record/clan_playerbase_view/CP in CPV)
-					var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id)
-					pl.sync()
+					var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id, TRUE)
 
 					pl.clan_id = null
 					pl.permissions = clan_ranks[CLAN_RANK_UNBLOODED].permissions

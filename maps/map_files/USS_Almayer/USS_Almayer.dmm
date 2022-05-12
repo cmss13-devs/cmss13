@@ -35108,7 +35108,11 @@
 /area/almayer/shipboard/brig/processing)
 "cus" = (
 /obj/docking_port/stationary/lifeboat_dock/starboard,
-/turf/open/space,
+/turf/open/floor/almayer_hull{
+	dir = 4;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (EAST)"
+	},
 /area/space/almayer/lifeboat_dock)
 "cuy" = (
 /obj/item/tool/warning_cone{
@@ -58092,6 +58096,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"mNX" = (
+/turf/open/floor/almayer_hull{
+	dir = 4;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (EAST)"
+	},
+/area/space/almayer/lifeboat_dock)
 "mNZ" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -66727,7 +66738,11 @@
 /area/almayer/medical/lower_medical_lobby)
 "qOk" = (
 /obj/docking_port/stationary/lifeboat_dock/port,
-/turf/open/space,
+/turf/open/floor/almayer_hull{
+	dir = 4;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (EAST)"
+	},
 /area/space/almayer/lifeboat_dock)
 "qOp" = (
 /obj/structure/disposalpipe/junction,
@@ -136204,12 +136219,12 @@ aaa
 aaa
 aae
 aah
-xVk
-xVk
-xVk
-xVk
-xVk
-xVk
+mNX
+mNX
+mNX
+mNX
+mNX
+mNX
 cus
 aPw
 aPw
@@ -136226,12 +136241,12 @@ ams
 atK
 aPw
 aPw
-xVk
-xVk
-xVk
-xVk
-xVk
-xVk
+mNX
+mNX
+mNX
+mNX
+mNX
+mNX
 qOk
 aah
 afm

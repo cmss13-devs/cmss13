@@ -166,6 +166,9 @@
   - rscadd: You can now do surgery on synths. You can repair their robotic organs
       with nanopaste or cable coil. You don't have to clamp their bleeders, either.
   - balance: Increased xeno acid blood damage from 12 to 25.
+  Shad0vvs:
+  - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
+      hosts inside.
   Triiodine:
   - bugfix: bad offsets in the kitchen.
   Waseemq1235:

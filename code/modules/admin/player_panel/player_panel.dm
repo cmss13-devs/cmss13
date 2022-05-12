@@ -65,7 +65,7 @@
 					body += "<a href='?src=\ref[src];notes=show;mob="+ref+"'>N</a> - "
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
 					body += "<a href='?src=\ref[src];traitor="+ref+"'>TP</a> - "
-					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
+					body += "<a href='?src=\ref[usr];priv_msg="+key+"'>PM</a> - "
 					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
 					body += "<a href='?src=\ref[src];adminplayerobservejump="+ref+"'>JMP</a><br>"
 					body += "<a href='?src=\ref[src];adminalert="+ref+"'>ALERT</a>"
@@ -287,7 +287,7 @@
 		if(!M.ckey) continue
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
-		dat += "<td><a href='?src=\ref[usr];priv_msg=\ref[M]'>[M.name]</a></td>"
+		dat += "<td><a href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
 		if(isAI(M))
 			dat += "<td>AI</td>"
 		else if(isrobot(M))
@@ -334,7 +334,7 @@
 			var/mob/living/carbon/human/H = i
 			var/location = get_area(H.loc)
 			if(H)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[H]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[H.ckey]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td>[H.faction]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[H]'>F</a></td>"
@@ -347,7 +347,7 @@
 			var/mob/M = L.current
 			var/location = get_area(M.loc)
 			if(M)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
 				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
@@ -359,7 +359,7 @@
 			var/mob/M = L.current
 			if(M)
 				var/location = get_area(M.loc)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
 				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
@@ -371,7 +371,7 @@
 			var/mob/M = L.current
 			var/location = get_area(M.loc)
 			if(M)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
 				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
@@ -442,7 +442,7 @@
 				[M.is_dead() ? " <b><font color='red'>(DEAD)</font></b>" : ""]
 			</td>
 			<td>
-				<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>
+				<a href='?src=\ref[usr];priv_msg=[M.ckey]'>PM</a>
 			</td>
 	"}
 

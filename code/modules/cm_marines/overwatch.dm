@@ -240,6 +240,8 @@
 						mob_state = SET_CLASS("DEAD", INTERFACE_RED)
 						dead_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
+				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+					mob_state += SET_CLASS(" <b>(NO HELMET)</b>", INTERFACE_ORANGE)
 
 				if(!H.key || !H.client)
 					if(H.stat != DEAD)

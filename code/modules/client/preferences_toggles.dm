@@ -154,6 +154,18 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
+/client/verb/toggle_unnest_flash()
+	set name = "Toggle Unnest Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get unnested and can reenter your body."
+
+	prefs.toggles_flashing ^= FLASH_UNNEST
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_UNNEST)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
+
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
 	set category = "Preferences.TaskbarFlashing"

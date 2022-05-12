@@ -162,14 +162,17 @@
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
 	var/translator_type = "Modern"
+	var/caster_material = "ebony"
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type, var/new_caster_material)
 	. = ..()
-	caster = new(src)
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
+	if(new_caster_material)
+		caster_material = new_caster_material
+	caster = new(src, FALSE, caster_material)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	charge -= (severity * 500)
@@ -613,7 +616,7 @@
 
 		var/obj/item/weapon/gun/energy/yautja/plasma_caster/W = caster
 		if(!istype(W))
-			W = new(usr)
+			W = new(usr, FALSE, caster_material)
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
@@ -840,12 +843,8 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		var/datum/launch_metadata/LM = new()
-		LM.target = usr
-		LM.range = 10
-		LM.speed = SPEED_FAST
-		LM.thrower = usr
-		D.launch_towards(LM)
+		if(isturf(D.loc))
+			D.boomerang(usr)
 	return 1
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_tracked_item()
@@ -922,7 +921,7 @@
 			return
 
 	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
-		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
+		if(C.loc == usr) //We are already wearing/holding it.
 			continue
 		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
 			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.

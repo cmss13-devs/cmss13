@@ -118,6 +118,7 @@
 				if(!client)
 					return TRUE
 				var/mob/dead/observer/observer = new()
+				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE
 

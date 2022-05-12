@@ -230,6 +230,9 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
+	if(!attack_hand_checks(user))
+		return
+
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
@@ -262,6 +265,9 @@
 	else
 		power_off()
 
+
+/obj/structure/machinery/defenses/proc/attack_hand_checks(var/mob/user)
+	return TRUE
 
 /obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
 	return

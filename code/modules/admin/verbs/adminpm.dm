@@ -22,10 +22,17 @@
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
+		var/client_ckey = C.ckey
 		msg = input(src,"Message:", "Private message to [key_name(C, 0, admin_holder ? 1 : 0)]") as message|null
 
-		if(!msg)	return
-		if(!C)
+		if(!msg)
+			return
+		var/found_client = FALSE
+		for(var/client/check_client as anything in GLOB.clients)
+			if(check_client.ckey == ckey(client_ckey))
+				found_client = TRUE
+				break
+		if(!C || !found_client)
 			if(admin_holder && (admin_holder.rights & R_MOD))	to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
 			else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
 			return

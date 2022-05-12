@@ -232,27 +232,27 @@
 				is_destroyed["[temp.display_name]"] = 1
 				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("<b>[t_He] is missing [t_his] [temp.display_name].</b>\n")
 				continue
-			if(temp.status & LIMB_ROBOT)
+			if(temp.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
 				if(!(temp.brute_dam + temp.burn_dam))
-					if(!(species && species.flags & IS_SYNTHETIC))
+					if(!(temp.status & LIMB_SYNTHSKIN) && !(species && species.flags & IS_SYNTHETIC))
 						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")
 						continue
 				else
-					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]. It has")
+					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] [temp.status & LIMB_SYNTHSKIN ? "synthskin" : "robot"] [temp.display_name]. It has")
 				if(temp.brute_dam) switch(temp.brute_dam)
 					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += " some dents"
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
 					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += pick(" a lot of dents"," severe denting")
+						wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
 				if(temp.brute_dam && temp.burn_dam)
-					wound_flavor_text["[temp.display_name]"] += " and"
+					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" and")
 				if(temp.burn_dam) switch(temp.burn_dam)
 					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += " some burns"
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
 					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += pick(" a lot of burns"," severe melting")
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
 				if(wound_flavor_text["[temp.display_name]"])
-					wound_flavor_text["[temp.display_name]"] += "!\n"
+					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
 			else if(temp.wounds.len > 0)
 				var/list/wound_descriptors = list()
 				for(var/datum/wound/W as anything in temp.wounds)

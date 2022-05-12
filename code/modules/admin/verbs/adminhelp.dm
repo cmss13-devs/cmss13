@@ -20,17 +20,17 @@ var/global/list/ahelp_msgs = list()
 	adminhelped = 1 //Determines if they get the message to reply by clicking the name.
 
 	var/msg
-	var/list/type = list ("Gitlab (Bug Reports)", "AdminHelp", "MentorHelp")
-	var/selected_type = input("- Gitlab is an external site where you can post your bug reports. If you want to implement a suggestion, make a Merge Request.\
+	var/list/type = list ("Github (Bug Reports)", "AdminHelp", "MentorHelp")
+	var/selected_type = input("- Github is an external site where you can post your bug reports. If you want to implement a suggestion, make a Merge Request.\
 	\n\n- AdminHelp is used to contact staff members online for reporting griefers, rule clarification and asking assistance in dealing with crucial bugs.\
 	\n\n- MentorHelp is used to ask questions about gameplay mechanics and for tips and advices.\
 	\n\nSelect an option:", "AdminHelp", null, null) as null|anything in type
 	if(selected_type == "AdminHelp")
 		msg = input("Please enter your message:", "AdminHelp", null, null) as message|null
 
-	if(selected_type == "Gitlab (Bug Reports)")
-		switch(alert("CM Gitlab Issues page will be opened in your default browser.",,"Go to Gitlab","Cancel"))
-			if("Go to Gitlab")
+	if(selected_type == "Github (Bug Reports)")
+		switch(alert("CM Github Issues page will be opened in your default browser.",,"Go to Github","Cancel"))
+			if("Go to Github")
 				src << link(URL_ISSUE_TRACKER)
 			else
 				return
@@ -43,7 +43,7 @@ var/global/list/ahelp_msgs = list()
 			return
 		current_mhelp = new(src)
 		if(!current_mhelp.broadcast_request(src))
-			QDEL_NULL(src)
+			QDEL_NULL(current_mhelp)
 		return
 
 	var/selected_upper = uppertext(selected_type)

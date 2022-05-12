@@ -13,14 +13,15 @@
 ///////////////////LIMB DEFINES///////////////////
 
 #define LIMB_ORGANIC 	(1<<0)
-#define LIMB_BROKEN 	(1<<1)
-#define LIMB_DESTROYED	(1<<2) //limb is missing
-#define LIMB_ROBOT 		(1<<3)
-#define LIMB_SPLINTED 	(1<<4)
-#define LIMB_MUTATED 	(1<<5) //limb is deformed by mutations
-#define LIMB_AMPUTATED 	(1<<6) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<7) // Splint is indestructible
-#define LIMB_UNCALIBRATED_PROSTHETIC (1<<8) //A prosthetic that's been attached to the body but not connected to the brain.
+#define LIMB_ROBOT 		(1<<1)
+#define LIMB_SYNTHSKIN	(1<<2) // not completely robot, but pseudohuman
+#define LIMB_BROKEN 	(1<<3)
+#define LIMB_DESTROYED	(1<<4) //limb is missing
+#define LIMB_SPLINTED 	(1<<5)
+#define LIMB_MUTATED 	(1<<6) //limb is deformed by mutations
+#define LIMB_AMPUTATED 	(1<<7) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<8) // Splint is indestructible
+#define LIMB_UNCALIBRATED_PROSTHETIC (1<<9) //A prosthetic that's been attached to the body but not connected to the brain.
 
 ///////////////////WOUND DEFINES///////////////////
 //wound flags. Different examine text + bandage overlays + whether various medical items can be used.

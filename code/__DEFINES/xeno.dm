@@ -56,8 +56,6 @@
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
 
-#define XENOZOOM_NO_MOVEMENT_HANDLER 69420
-
 #define WARDEN_HEAL_SHIELD 0
 #define WARDEN_HEAL_HP 1
 #define WARDEN_HEAL_DEBUFFS 2
@@ -624,3 +622,12 @@
 #define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"
 #define XENO_VISION_LEVEL_MID_NVG		"Half Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG		"Full Night Vision"
+
+
+// drone fruits
+
+#define XENO_FRUIT_LESSER "Lesser Resin Fruit"
+#define XENO_FRUIT_GREATER "Greater Resin Fruit"
+#define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
+#define XENO_FRUIT_SPORE "Spore Resin Fruit"
+#define XENO_FRUIT_SPEED "Alacrit Resin Fruit"

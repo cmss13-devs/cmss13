@@ -93,7 +93,7 @@
 		if(istype(M, /mob/new_player))
 			continue
 		if(M.client && (M.stat == DEAD || isobserver(M)) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD))
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name](<a href='byond://?src=\ref[M];track=\ref[src]'>follow</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 			continue
 
 		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on

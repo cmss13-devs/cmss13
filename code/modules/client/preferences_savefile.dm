@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	13
+#define SAVEFILE_VERSION_MAX	14
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -29,6 +29,12 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= SOUND_INTERNET
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 14) //toggle unnest flashing on by default
+		var/flash_toggles
+		S["toggles_flashing"] >> flash_toggles
+		flash_toggles |= FLASH_UNNEST
+		S["toggles_flashing"] << flash_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -81,6 +87,7 @@
 	S["stylesheet"] 		>> stylesheet
 	S["window_skin"]		>> window_skin
 	S["fps"]				>> fps
+	S["ghost_vision_pref"]	>> ghost_vision_pref
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
@@ -102,6 +109,9 @@
 	S["pred_mask_mat"]		>> predator_mask_material
 	S["pred_armor_mat"]		>> predator_armor_material
 	S["pred_greave_mat"]	>> predator_greave_material
+	S["pred_caster_mat"]	>> predator_caster_material
+	S["pred_cape_type"]		>> predator_cape_type
+	S["pred_cape_color"]	>> predator_cape_color
 	S["pred_flavor_text"]	>> predator_flavor_text
 
 	S["commander_status"]	>> commander_status
@@ -136,6 +146,7 @@
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
+	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -154,6 +165,9 @@
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
+	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
+	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
+	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
@@ -211,6 +225,7 @@
 	S["toggles_flashing"]	<< toggles_flashing
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
+	S["ghost_vision_pref"]	<< ghost_vision_pref
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix
@@ -233,6 +248,9 @@
 	S["pred_mask_mat"]		<< predator_mask_material
 	S["pred_armor_mat"]		<< predator_armor_material
 	S["pred_greave_mat"]	<< predator_greave_material
+	S["pred_caster_mat"]	<< predator_caster_material
+	S["pred_cape_type"]		<< predator_cape_type
+	S["pred_cape_color"]	<< predator_cape_color
 	S["pred_flavor_text"]	<< predator_flavor_text
 
 	S["commander_status"] 	<< commander_status

@@ -188,7 +188,7 @@
 	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
 	shake_camera(H, 10, 1)
 
-/mob/living/carbon/Xenomorph/proc/zoom_in(movement_handler_type = /datum/event_handler/xeno_zoom_onmovement)
+/mob/living/carbon/Xenomorph/proc/zoom_in()
 	if(stat || resting)
 		if(is_zoomed)
 			is_zoomed = 0
@@ -200,9 +200,6 @@
 	if(!client)
 		return
 	is_zoomed = 1
-	// Clients can opt-out of cancelling zoom on movement by handing in NULL
-	if (movement_handler_type != XENOZOOM_NO_MOVEMENT_HANDLER)
-		add_movement_handler(new movement_handler_type(src))
 	client.change_view(viewsize)
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
@@ -226,74 +223,6 @@
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0
-	src.event_movement.clean()
-
-/datum/event_handler/xeno_zoom_onmovement
-	flags_handler = NO_FLAGS
-	var/mob/living/carbon/Xenomorph/X = null
-
-/datum/event_handler/xeno_zoom_onmovement/New(mob/living/carbon/Xenomorph/X)
-	if (!isXeno(X))
-		qdel(src)
-		return
-	src.X = X
-
-/datum/event_handler/xeno_zoom_onmovement/Destroy()
-	X = null
-	. = ..()
-	return
-
-/datum/event_handler/xeno_zoom_onmovement/handle(sender, datum/event_args/ev_args)
-	var/datum/event_args/mob_movement/event_args = ev_args
-	var/isMoving = event_args.moving
-
-	if (!isMoving)
-		return
-
-	if (X && !QDELETED(X))
-		cancel_zoom()
-		return 0
-	else
-		qdel(src)
-
-/datum/event_handler/xeno_zoom_onmovement/proc/cancel_zoom()
-	if (!istype(X) || QDELETED(X) || !X.is_zoomed)
-		qdel(src)
-		return
-
-
-	X.zoom_out()
-	X.event_movement.remove_handler(src)
-	qdel(src)
-
-// Movement with a 'buffer'
-// only if our counter is zero do we return
-/datum/event_handler/xeno_zoom_onmovement/buffer
-	var/buffer = 7
-
-/datum/event_handler/xeno_zoom_onmovement/buffer/New(mob/living/carbon/Xenomorph/X, buffer = 7)
-	if (!isXeno(X))
-		qdel(src)
-		return
-	src.buffer = buffer
-	src.X = X
-
-/datum/event_handler/xeno_zoom_onmovement/buffer/handle(sender, datum/event_args/ev_args)
-	var/datum/event_args/mob_movement/event_args = ev_args
-	var/isMoving = event_args.moving
-
-	if (!isMoving)
-		return
-
-	if (X && !QDELETED(X))
-		if (buffer > 0)
-			buffer--
-		else
-			cancel_zoom()
-	else
-		X = null
-		qdel(src)
-
 
 /mob/living/carbon/Xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE

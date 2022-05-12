@@ -222,6 +222,8 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+		if(L.client)
+			L.set_lighting_alpha_from_prefs(L.client)
 
 		if(burstcount)
 			step(L, pick(cardinal))

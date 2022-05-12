@@ -97,12 +97,13 @@
 	else
 		overlays += "[defense_type] uac_[sentry_type]"
 
-/obj/structure/machinery/defenses/sentry/attack_hand(mob/user as mob)
+
+/obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
 	if(immobile)
 		to_chat(user, SPAN_WARNING("[src]'s panel is completely locked, you can't do anything."))
-		return
+		return FALSE
 
-	..()
+	return TRUE
 
 /obj/structure/machinery/defenses/sentry/examine(mob/user)
 	. = ..()
@@ -522,6 +523,9 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	omni_directional = TRUE
 	immobile = TRUE
 	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
+	return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")

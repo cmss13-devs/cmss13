@@ -45,6 +45,7 @@
 #define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
 #define CAN_DIG_SHRAPNEL		(1<<11) // whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
 #define ANIMATED_SURGICAL_TOOL	(1<<12) // whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
+#define NOTABLEMERGE			(1<<13) // The item goes on top of tables, instead of into them with the overlay system
 
 //==========================================================================================
 

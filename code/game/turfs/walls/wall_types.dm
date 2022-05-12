@@ -503,6 +503,11 @@
 /turf/closed/wall/strata_ice/ex_act(severity)
 	return
 
+/turf/closed/wall/strata_ice/dirty
+	icon_state = "strata_ice_dirty"
+	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
+	walltype = WALL_STRATA_ICE_DIRTY
+
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
 	icon = 'icons/turf/walls/jungle_veg.dmi'
@@ -520,12 +525,25 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
-/turf/closed/wall/strata_outpost_bare
+/turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_bare_outpost_"
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
 	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+	max_temperature = 28000
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 //SOLARIS RIDGE TILESET//
 

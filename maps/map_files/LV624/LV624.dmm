@@ -12128,7 +12128,10 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWE" = (
-/obj/structure/sign/safety/high_voltage,
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 7;
+	pixel_y = -32
+	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/extinguisher,
 /obj/effect/spawner/random/powercell,
@@ -12648,7 +12651,10 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
 "aYw" = (
-/obj/structure/sign/safety/high_voltage,
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 7;
+	pixel_y = 32
+	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_central_jungle)
 "aYx" = (
@@ -13401,6 +13407,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/river/east_river)
+"byK" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "byL" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -17039,6 +17051,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/east_central_jungle)
+"kvE" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "kwG" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -17250,6 +17266,13 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/corporate_dome)
+"kWJ" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4;
+	tag = "icon-landingstripe (WEST)"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "kWX" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -18749,6 +18772,12 @@
 	icon_state = "beachcorner"
 	},
 /area/lv624/ground/river/east_river)
+"odw" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "oek" = (
 /turf/open/gm/coast,
 /area/lv624/ground/jungle/west_jungle)
@@ -19023,6 +19052,10 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
+/area/lv624/lazarus/landing_zones/lz2)
+"oOB" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "oOV" = (
 /obj/structure/flora/jungle/vines,
@@ -19941,6 +19974,13 @@
 	},
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
+"qNQ" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4;
+	tag = "icon-landingstripe (WEST)"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
 "qPx" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -21737,6 +21777,17 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
+"vbj" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	name = "Storage Containers APC";
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "vcY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -29831,26 +29882,26 @@ nmO
 aZP
 aOB
 aRg
-azZ
-azZ
-azZ
-azZ
-azZ
-azZ
-azZ
-azZ
-azZ
-azZ
-aRg
-azZ
 aCh
+kWJ
+azZ
+qNQ
 aCh
+kWJ
+azZ
+qNQ
 aCh
+kWJ
+azZ
+qNQ
 aCh
+kWJ
+azZ
+qNQ
 aCh
-aCh
-aCh
-aCh
+kWJ
+azZ
+qNQ
 aCh
 aRg
 aRg
@@ -30058,7 +30109,7 @@ aAp
 aXX
 aZP
 aOB
-aTv
+oOB
 aRg
 aRg
 aRg
@@ -30080,7 +30131,7 @@ aBo
 aRg
 aRg
 aLz
-aEw
+odw
 aRg
 wLz
 tZD
@@ -30308,7 +30359,7 @@ aBo
 aCi
 aKO
 aBo
-aZT
+aEw
 aRg
 wLz
 tZD
@@ -30514,7 +30565,7 @@ cIL
 nmO
 aZP
 aOB
-aTv
+kvE
 aRg
 aRg
 aRg
@@ -30536,7 +30587,7 @@ aBo
 aBo
 aRg
 aBo
-aZT
+byK
 aRg
 wLz
 tZD
@@ -30742,7 +30793,7 @@ aAp
 nmO
 aZP
 aOB
-aTv
+aTt
 aRg
 aBo
 aBo
@@ -30970,7 +31021,7 @@ aAp
 aXX
 aZP
 aOB
-aTv
+oOB
 aRg
 aBo
 aBo
@@ -30992,7 +31043,7 @@ aBo
 aBo
 aRg
 aRg
-aZT
+odw
 aRg
 wLz
 mRh
@@ -31198,7 +31249,7 @@ nmO
 aXX
 aZP
 aOB
-aTt
+aTv
 aRg
 aBo
 aBo
@@ -31220,7 +31271,7 @@ aBo
 aBo
 aRg
 aRg
-aZT
+aEw
 aRg
 wLz
 gef
@@ -31426,7 +31477,7 @@ cIL
 nmO
 aZP
 aOB
-aTt
+kvE
 aRg
 aBo
 aBo
@@ -31448,7 +31499,7 @@ aBo
 aBo
 aRg
 aRg
-aZT
+byK
 aRg
 wLz
 qDg
@@ -31882,7 +31933,7 @@ nmO
 aXX
 aZP
 aOB
-aTt
+oOB
 aRg
 aRg
 aRg
@@ -31904,7 +31955,7 @@ aBo
 aBo
 aRg
 aBo
-aZT
+odw
 aRg
 wLz
 tZD
@@ -32110,7 +32161,7 @@ aXX
 aXX
 aZP
 aOB
-aTt
+aTv
 aRg
 aRg
 aRg
@@ -32338,7 +32389,7 @@ nmO
 aXX
 aZP
 aOB
-aTt
+kvE
 aRg
 aRg
 aRg
@@ -32360,7 +32411,7 @@ aBo
 aRg
 aRg
 aRg
-aEw
+byK
 aRg
 wLz
 tZD
@@ -32567,27 +32618,27 @@ nmO
 aZP
 aOB
 aRg
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
 aAJ
-aAJ
-aAJ
-aAJ
-aRg
+aGX
+aRu
 aDO
 aAJ
 aGX
 aRu
+aDO
+aAJ
+aGX
 aRu
+aDO
+aAJ
+aGX
 aRu
+aDO
+aAJ
+aGX
 aRu
-aRu
-aRu
-aRu
+aDO
+aAJ
 aRg
 aRg
 wLz
@@ -53764,7 +53815,7 @@ avc
 atc
 atc
 ask
-ask
+vbj
 arK
 axY
 abY

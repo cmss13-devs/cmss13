@@ -5,6 +5,8 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
 	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/transfer_plasma
 	)
@@ -28,7 +30,6 @@
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
-	D.set_resin_build_order(GLOB.resin_build_order_gardener)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"

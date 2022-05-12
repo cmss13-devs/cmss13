@@ -170,11 +170,10 @@
 
 		src.attack_self(src.loc)
 		updateUsrDialog()
+	else if(istype(usr, /mob/dead/observer))
+		to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
 	else
-		if(istype(usr, /mob/dead/observer))
-			to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
-		else
-		    to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
+		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"

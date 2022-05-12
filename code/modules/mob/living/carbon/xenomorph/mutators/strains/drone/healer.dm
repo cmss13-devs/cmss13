@@ -29,6 +29,8 @@
 	D.health_modifier += XENO_HEALTH_MOD_VERYLARGE // 500HP -> 600HP
 	D.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	D.max_placeable = 3
+	D.available_fruits = list(/obj/effect/alien/resin/fruit)
+	D.selected_fruit = /obj/effect/alien/resin/fruit
 	D.tackle_chance_modifier -= 10
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
@@ -36,7 +38,6 @@
 	D.recalculate_damage()
 	D.recalculate_pheromones()
 	D.recalculate_tackle()
-	D.available_placeable = list("Lesser Resin Fruit")
 
 /*
 	TRANSFER HEALTH

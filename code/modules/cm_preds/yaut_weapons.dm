@@ -821,6 +821,7 @@
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
 		spikes--
 		return in_chamber
 

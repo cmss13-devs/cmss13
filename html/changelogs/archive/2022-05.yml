@@ -158,6 +158,10 @@
   - refactor: Changed the movement handler code to use signals rather than a looping
       proc with a lot of datums. Some stuff may be broken, so make a Github Issue
       if you see one.
+  - rscadd: Synths now have synthskin limbs, have white blood splatters when struck,
+      and have unique damage descriptors.
+  - rscadd: You can now do surgery on synths. You can repair their robotic organs
+      with nanopaste or cable coil. You don't have to clamp their bleeders, either.
   Triiodine:
   - bugfix: bad offsets in the kitchen.
   Waseemq1235:

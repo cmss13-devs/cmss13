@@ -165,6 +165,7 @@
       and have unique damage descriptors.
   - rscadd: You can now do surgery on synths. You can repair their robotic organs
       with nanopaste or cable coil. You don't have to clamp their bleeders, either.
+  - balance: Increased xeno acid blood damage from 12 to 25.
   Triiodine:
   - bugfix: bad offsets in the kitchen.
   Waseemq1235:

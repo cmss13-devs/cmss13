@@ -169,3 +169,8 @@
   fira:
   - bugfix: Resolved issues with Reboot SFX hanging up reboot, and failing to play
       in docker container
+  stanalbatross:
+  - rscadd: Japanese-language text will now sound much more Japanese, as the entire
+      system of generating it was reworked to make it consistent 100% with real Japanese.
+  - rscadd: added a 50% chance for CLF characters to get a randomly generated Japanese
+      name.

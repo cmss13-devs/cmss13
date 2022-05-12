@@ -104,7 +104,7 @@
 	toggleable = FALSE
 	actions_types = list()
 
-/obj/item/clothing/glasses/hud/health/sunmedhud
+/obj/item/clothing/glasses/hud/health/sunglasses
 	name = "\improper HealthMate HUD Shades"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one comes in a more stylish package."
 	icon_state = "sunmedhud"

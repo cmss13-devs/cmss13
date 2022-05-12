@@ -78,7 +78,7 @@
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
 				return
-			if(!user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
 				return
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\

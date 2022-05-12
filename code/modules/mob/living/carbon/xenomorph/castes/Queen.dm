@@ -855,3 +855,9 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1)
+
+/mob/living/carbon/Xenomorph/Queen/override_secrete_thick_resin()
+	var/datum/action/xeno_action/activable/secrete_resin/remote/queen/resin_ability = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/secrete_resin/remote/queen)
+	if(resin_ability?.boosted)
+		return TRUE
+	return FALSE

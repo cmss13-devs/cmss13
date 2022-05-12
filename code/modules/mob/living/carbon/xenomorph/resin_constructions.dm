@@ -66,30 +66,33 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 
 // Subtype encompassing all resin constructions that are of type /obj
-/datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber, var/builder)
+/datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
 	var/path = build_path
+	var/can_build_thick = TRUE
 	if(thick_hiveweed)
-		var/on_hive_weed = FALSE
 		var/obj/effect/alien/weeds/W = locate() in T
-		if(W.hivenumber == hivenumber && W.weed_strength >= WEED_LEVEL_HIVE)
-			on_hive_weed = TRUE
-		if(on_hive_weed)
-			path = build_path_thick
+		if(!W || W.hivenumber != hivenumber || W.weed_strength < WEED_LEVEL_HIVE)
+			can_build_thick = FALSE
+
+	if(build_path_thick && (can_build_thick || builder.override_secrete_thick_resin()))
+		path = build_path_thick
+
 	if(pass_hivenumber)
 		return new path(T, hivenumber, builder)
 	return new path(T)
 
 
 // Subtype encompassing all resin constructions that are of type /turf
-/datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber, var/builder)
+/datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
 	var/path = build_path
+	var/can_build_thick = TRUE
 	if(thick_hiveweed)
-		var/on_hive_weed = FALSE
 		var/obj/effect/alien/weeds/W = locate() in T
-		if(W.hivenumber == hivenumber && W.weed_strength >= WEED_LEVEL_HIVE)
-			on_hive_weed = TRUE
-		if(on_hive_weed)
-			path = build_path_thick
+		if(!W || W.hivenumber != hivenumber || W.weed_strength < WEED_LEVEL_HIVE)
+			can_build_thick = FALSE
+
+	if(build_path_thick && (can_build_thick || builder.override_secrete_thick_resin()))
+		path = build_path_thick
 
 	T.PlaceOnTop(path)
 

@@ -87,7 +87,7 @@
 /obj/item/paper_bundle/attack_self(mob/user)
 	..()
 
-	if(!ishuman(user))
+	if(!(ishuman(user) || istype(user, /mob/dead/observer)))
 		return
 
 	var/mob/living/carbon/human/human_user = user

@@ -155,6 +155,9 @@
   CocaColaTastesGood:
   - bugfix: Fixes an exploit that allowed players to arbitrarily spawn items using
       the dress vendor.
+  GabeGnuwall:
+  - spellcheck: Updated the follow link from "follow" to "F" on dchat messages to
+      be consistent with others.
   Geevies:
   - balance: Bipods can now fire in a near-180 degree arc rather than a 90 degree
       one.

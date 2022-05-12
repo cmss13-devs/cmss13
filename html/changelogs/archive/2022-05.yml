@@ -168,6 +168,12 @@
   - balance: Increased xeno acid blood damage from 12 to 25.
   - balance: Increased Heavy armor bio resistance from CLOTHING_ARMOR_MEDIUMLOW (15)
       to CLOTHING_ARMOR_HIGH (30).
+  - rscadd: Gardener drones can now designate and build special structures like hive
+      clusters and evo pods.
+  - rscadd: Added an Alacrit fruit to Gardener drones that slightly speeds up the
+      xeno that eats it for 15 seconds.
+  - balance: Resin surge now strengthens structures for 15 seconds rather than 3.
+  - balance: Gardener drones can now plant 4 fruits rather than 3.
   Shad0vvs:
   - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
       hosts inside.

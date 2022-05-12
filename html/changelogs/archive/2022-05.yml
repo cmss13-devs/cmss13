@@ -148,3 +148,7 @@
   stanalbatross:
   - bugfix: your xeno night vision level will now switch according to preference when
       spawning in via chestbursting and via the spawn pool.
+2022-05-12:
+  50RemAndCounting:
+  - balance: The M46C pulse rifle is now able to be melted by xenomorphs again. The
+      Command Tablet is now unmeltable.

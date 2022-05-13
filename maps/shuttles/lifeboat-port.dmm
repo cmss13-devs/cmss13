@@ -81,7 +81,7 @@
 /area/shuttle/lifeboat)
 "jX" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 11;
+	pixel_x = 8;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -157,6 +157,13 @@
 	icon_state = "7,0"
 	},
 /area/shuttle/lifeboat)
+"vd" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 15;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
 "vx" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,3"
@@ -184,6 +191,13 @@
 	icon_state = "0,0"
 	},
 /turf/template_noop,
+/area/shuttle/lifeboat)
+"yf" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "yE" = (
 /turf/closed/shuttle/lifeboat{
@@ -252,7 +266,11 @@
 /area/shuttle/lifeboat)
 "FZ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -9;
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -507,7 +525,7 @@ vZ
 (8,1,1) = {"
 mB
 PU
-Ro
+yf
 nn
 Ro
 OX
@@ -588,7 +606,7 @@ fr
 (17,1,1) = {"
 Rs
 Id
-jX
+vd
 nn
 Ro
 iR

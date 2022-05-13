@@ -56,7 +56,11 @@
 /area/shuttle/lifeboat)
 "hD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -9;
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -69,7 +73,7 @@
 /area/shuttle/lifeboat)
 "ix" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 11;
+	pixel_x = 8;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -268,6 +272,13 @@
 	icon_state = "3,1"
 	},
 /area/shuttle/lifeboat)
+"GQ" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
 "HW" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,1"
@@ -313,6 +324,13 @@
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,4"
 	},
+/area/shuttle/lifeboat)
+"NO" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 15;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Od" = (
 /turf/closed/shuttle/lifeboat{
@@ -494,7 +512,7 @@ Ow
 (8,1,1) = {"
 GA
 Td
-OO
+GQ
 XV
 OO
 GD
@@ -575,7 +593,7 @@ OO
 (17,1,1) = {"
 em
 kC
-ix
+NO
 XV
 OO
 zK

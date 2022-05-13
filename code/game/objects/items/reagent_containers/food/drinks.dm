@@ -26,9 +26,6 @@
 	if(M == user)
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
-				return FALSE
 
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)
@@ -39,9 +36,6 @@
 		return TRUE
 	else if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(H.species.flags & IS_SYNTHETIC)
-			to_chat(user, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
-			return FALSE
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),

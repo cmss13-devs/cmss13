@@ -58,10 +58,8 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				fullness = 200 //Synths never get full
+		if(isSynth(C))
+			fullness = 200 //Synths never get full
 
 		if(fullness > 540)
 			C.overeat_cooldown = world.time + OVEREAT_TIME

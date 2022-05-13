@@ -199,3 +199,6 @@
       system of generating it was reworked to make it consistent 100% with real Japanese.
   - rscadd: added a 50% chance for CLF characters to get a randomly generated Japanese
       name.
+2022-05-13:
+  ghostsheet:
+  - rscadd: Added a survival cabinet to the Lifeboats.

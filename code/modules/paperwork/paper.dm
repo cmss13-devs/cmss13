@@ -9,6 +9,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	pickupsound = 'sound/handling/paper_pickup.ogg'
+	dropsound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST

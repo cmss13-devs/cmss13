@@ -9,6 +9,8 @@
 	desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
 	icon_state = "multitool"
 	item_state = "multitool"
+	pickupsound = 'sound/handling/multitool_pickup.ogg'
+	dropsound = 'sound/handling/multitool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	w_class = SIZE_SMALL

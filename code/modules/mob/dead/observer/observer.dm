@@ -355,41 +355,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-/*/mob/dead/observer/Move(NewLoc, direct)
-	following = null
-	setDir(direct)
-	var/area/last_area = get_area(loc)
-	if(NewLoc)
-		for(var/obj/effect/step_trigger/S in NewLoc)
-			S.Crossed(src)
-
-	var/turf/T = get_turf(src)
-	if(T) // Get out of closets and such as a ghost
-		forceMove(T)
-
-	if((direct & NORTH) && y < world.maxy)
-		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
-	else if((direct & SOUTH) && y > 1)
-		y -= m_intent
-	if((direct & EAST) && x < world.maxx)
-		x += m_intent
-	else if((direct & WEST) && x > 1)
-		x -= m_intent
-
-	var/turf/new_turf = locate(x, y, z)
-	if(!new_turf)
-		return
-
-	var/area/new_area = new_turf.loc
-
-	if((new_area != last_area) && new_area)
-		new_area.Entered(src)
-		if(last_area)
-			last_area.Exited(src)
-
-	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
-		S.Crossed(src) */ orbitshit
-
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null
 	var/area/last_area = get_area(loc)
@@ -495,69 +460,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		orbit_menu = new(src)
 	orbit_menu.ui_interact(src)
 
-	/*var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
-	var/input = tgui_input_list(usr, "Please, select a category:", "Follow", choices)
-	if(!input)
-		return
-	var/atom/movable/target
-	var/list/targets = list()
-	switch(input)
-		if("Humans")
-			targets = gethumans()
-		if("Xenomorphs")
-			targets = getxenos()
-		if("Predators")
-			targets = getpreds()
-		if("Synthetics")
-			targets = getsynths()
-		if("ERT Members")
-			targets = getertmembers()
-		if("Survivors")
-			targets = getsurvivors()
-		if("Any Mobs")
-			targets = getmobs()
-		if("Vehicles")
-			targets = get_multi_vehicles()
-
-		if("Holograms")
-			targets = get_holograms()
-
-		if("Mobs by Faction")
-			choices = FACTION_LIST_HUMANOID
-			input = tgui_input_list(usr, "Please, select a Faction:", "Follow", choices)
-
-			targets = gethumans()
-			for(var/name in targets)
-				var/mob/living/carbon/human/M = targets[name]
-				if(!istype(M) || M.faction != input)
-					targets.Remove(name)
-
-		if("Xenos by Hive")
-			var/hives = list()
-			var/datum/hive_status/hive
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				hives += list("[hive.name]" = hive.hivenumber)
-
-			input = tgui_input_list(usr, "Please, select a Hive:", "Follow", hives)
-			if(!input)
-				return
-
-			targets = getxenos()
-			for(var/name in targets)
-				var/mob/living/carbon/Xenomorph/X = targets[name]
-				if(!istype(X) || X.hivenumber != hives[input])
-					targets.Remove(name)
-
-	if(!LAZYLEN(targets))
-		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
-		return
-	input = tgui_input_list(usr, "Please select a target among [input] to follow", "Follow", targets)
-	target = targets[input]
-
-	ManualFollow(target)
-	return */ //TO DELETE LATER - STANALBATROSS ORBITSHIT
-
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
 	if(!istype(target))
@@ -588,26 +490,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	orbit(target, orbitsize, FALSE, 20, rot_seg)
 
-	/*if(target)
-		if(target == src)
-			to_chat(src, SPAN_WARNING("You can't follow yourself"))
-			return
-		if(following && following == target)
-			return
-		following = target
-		to_chat(src, SPAN_NOTICE(" Now following [target]"))
-		spawn(0)
-			while(target && following == target && client)
-				var/turf/T = get_turf(target)
-				if(!T)
-					break
-				// To stop the ghost flickering.
-				if(loc != T)
-					forceMove(T)
-				sleep(15)*/ //delete this stuff later orbitshit
-
 /mob/dead/observer/orbit()
-	setDir(SOUTH)//reset dir so the right directional sprites show up
+	setDir(SOUTH)//reset dir so the right directional sprites show up //might tweak this for xenos, stan_albatross orbitshit
 	return ..()
 
 

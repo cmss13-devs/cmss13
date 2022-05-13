@@ -697,7 +697,7 @@
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		playsound(src.loc, "glassbreak", 25, 1)
 		update()
 
 /obj/structure/machinery/landinglight

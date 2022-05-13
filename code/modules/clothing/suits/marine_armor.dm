@@ -226,7 +226,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
-	playsound(src,'sound/handling/light_on_1.ogg', 50, 1)
+	playsound(src,'sound/handling/suitlight_on.ogg', 50, 1)
 	update_icon(user)
 
 	for(var/X in actions)

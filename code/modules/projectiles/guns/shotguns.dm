@@ -8,7 +8,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun
 	w_class = SIZE_LARGE
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
+	reload_sound = "shell_load"
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
 	var/break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
 	var/seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'
@@ -220,7 +220,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mk221"
 	item_state = "mk221"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
+	fire_sound = "gun_shotgun_tactical"
+	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -292,7 +293,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mk210"
 	item_state = "mk210"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
@@ -902,7 +902,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "m37"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
-	fire_sound = 'sound/weapons/gun_shotgun.ogg'
+	fire_sound = 'sound/weapons/gun_m37_fire.ogg'
+	firesound_volume = 40
 	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.

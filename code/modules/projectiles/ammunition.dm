@@ -315,6 +315,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
+	pickupsound = "gunrustle"
+	dropsound = "gunrustle"
 
 /obj/item/ammo_box/magazine
 	name = "magazine box (M41A x 10)"

@@ -7,6 +7,10 @@
 	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
+	pickupsound = "gunequip"
+	dropsound = "gunrustle"
+	pickupvol = 25
+	dropvol = 25
 	matter = null
 						//Guns generally have their own unique levels.
 	w_class 	= SIZE_MEDIUM
@@ -30,6 +34,7 @@
 	var/muzzle_flash_lum = 3
 
 	var/fire_sound 		= 'sound/weapons/Gunshot.ogg'
+	var/firesound_volume = 60 //Volume of gunshot, adjust depending on volume of shot
 	 ///Does our gun have a unique empty mag sound? If so use instead of pitch shifting.
 	var/fire_rattle		= null
 	var/unload_sound 	= 'sound/weapons/flipblade.ogg'
@@ -1569,9 +1574,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
 				if (firing_sndfreq && fire_rattle)
-					playsound(user, fire_rattle, 60, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
+					playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 				else
-					playsound(user, actual_sound, 60, firing_sndfreq)
+					playsound(user, actual_sound, firesound_volume, firing_sndfreq)
 			else
 				playsound(user, actual_sound, 25, firing_sndfreq)
 

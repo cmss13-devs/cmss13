@@ -91,7 +91,7 @@
 	vis_contents += melting_body
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
-	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
+	playsound(src, 'sound/effects/acidpool.ogg', 25, 1)
 
 	linked_hive.stored_larva += larva_amount
 

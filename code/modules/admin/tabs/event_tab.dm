@@ -293,6 +293,8 @@
 		supply_controller.points += points_to_add
 
 		message_staff("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
+		if(points_to_add >= 0)
+			shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self Destruct"

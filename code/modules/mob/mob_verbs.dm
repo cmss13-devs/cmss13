@@ -158,8 +158,7 @@
 //	M.Login()	//wat
 	return
 
-
-/mob/verb/observe()
+/*/mob/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
 	var/is_admin = 0
@@ -233,7 +232,19 @@
 		if (is_admin)
 			client.adminobs = 1
 			if(mob_eye == client.mob || client.eye == client.mob)
-				client.adminobs = 0
+				client.adminobs = 0*/ //orbitshit
+
+/mob/dead/observer/verb/observe()
+	set name = "Observe"
+	set category = "Ghost"
+
+	reset_perspective(null)
+
+	var/mob/target = tgui_input_list(usr, "Please select a human mob:", "Observe", GLOB.human_mob_list)
+	if(!target)
+		return
+
+	do_observe(target)
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"

@@ -339,6 +339,27 @@
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
 	prefs.save_preferences()
 
+GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GHOST_ORBIT_SQUARE, GHOST_ORBIT_HEXAGON, GHOST_ORBIT_PENTAGON))
+
+/client/proc/pick_ghost_orbit()
+	set name = "Toggle Ghost Orbit Shape"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle in what manner you orbit mobs while a ghost"
+	var/new_orbit = tgui_input_list(src, "Choose your ghostly orbit:", "Ghost Customization", GLOB.ghost_orbits)
+	if(!new_orbit)
+		return
+
+	prefs.ghost_orbit = new_orbit
+	prefs.save_preferences()
+
+	to_chat(src, SPAN_NOTICE("You will use the [new_orbit] as a ghost."))
+
+	if(!isobserver(mob))
+		return
+
+	var/mob/dead/observer/O = mob
+	O.ghost_orbit = new_orbit
+
 /client/proc/deadchat() // Deadchat toggle is usable by anyone.
 	set name = "Toggle Deadchat"
 	set category = "Preferences.Ghost"

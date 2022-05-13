@@ -150,7 +150,7 @@
 
 
 
-/datum/hud/robot/persistant_inventory_update()
+/datum/hud/robot/persistent_inventory_update()
 	if(!mymob || !ui_robot_datum)
 		return
 	var/mob/living/silicon/robot/R = mymob

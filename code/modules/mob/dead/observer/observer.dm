@@ -35,7 +35,11 @@
 							"Xeno Status HUD" = FALSE
 							)
 	universal_speak = 1
+	var/updatedir = TRUE	//Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
+	var/datum/orbit_menu/orbit_menu
+	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -118,11 +122,66 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 
+/mob/dead/observer/proc/clean_observetarget()
+	SIGNAL_HANDLER
+	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
+	if(observetarget?.observers)
+		observetarget.observers -= src
+		UNSETEMPTY(observetarget.observers)
+	observetarget = null
+	client.eye = src
+	hud_used.show_hud(hud_used.hud_version, src)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+
+/mob/dead/observer/proc/observer_move_react()
+	SIGNAL_HANDLER
+	if(src.loc == get_turf(observetarget))
+		return
+	clean_observetarget()
+
+///makes the ghost see the target hud and sets the eye at the target.
+/mob/dead/observer/proc/do_observe(mob/target)
+	if(!client || !target || !istype(target))
+		return
+
+	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
+	if(!ishuman(target))
+		ManualFollow(target)
+		return
+
+	client.eye = target
+
+	if(!target.hud_used)
+		return
+
+	client.screen = list()
+	LAZYINITLIST(target.observers)
+	target.observers |= src
+	target.hud_used.show_hud(target.hud_used.hud_version, src)
+	observetarget = target
+	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, .proc/clean_observetarget)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/observer_move_react)
+
+/mob/dead/observer/reset_perspective(atom/A)
+	if(observetarget)
+		clean_observetarget()
+	. = ..()
+
+	if(!.)
+		return
+
+	if(!hud_used)
+		return
+
+	client.screen = list()
+	hud_used.show_hud(hud_used.hud_version)
+
 /mob/dead/observer/Login()
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Destroy()
+	QDEL_NULL(orbit_menu)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -219,6 +278,10 @@ Works together with spawning an observer, noted above.
 
 	return TRUE
 
+/mob/dead/observer/create_hud()
+	if(!hud_used)
+		hud_used = new /datum/hud/ghost(src)
+
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
@@ -292,7 +355,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-/mob/dead/observer/Move(NewLoc, direct)
+/*/mob/dead/observer/Move(NewLoc, direct)
 	following = null
 	setDir(direct)
 	var/area/last_area = get_area(loc)
@@ -312,6 +375,39 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		x += m_intent
 	else if((direct & WEST) && x > 1)
 		x -= m_intent
+
+	var/turf/new_turf = locate(x, y, z)
+	if(!new_turf)
+		return
+
+	var/area/new_area = new_turf.loc
+
+	if((new_area != last_area) && new_area)
+		new_area.Entered(src)
+		if(last_area)
+			last_area.Exited(src)
+
+	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
+		S.Crossed(src) */ orbitshit
+
+/mob/dead/observer/Move(atom/newloc, direct)
+	following = null
+	var/area/last_area = get_area(loc)
+	if(updatedir)
+		setDir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
+
+	if(newloc)
+		abstract_move(newloc)
+	else
+		abstract_move(get_turf(src))  //Get out of closets and such as a ghost
+		if((direct & NORTH) && y < world.maxy)
+			y++
+		else if((direct & SOUTH) && y > 1)
+			y--
+		if((direct & EAST) && x < world.maxx)
+			x++
+		else if((direct & WEST) && x > 1)
+			x--
 
 	var/turf/new_turf = locate(x, y, z)
 	if(!new_turf)
@@ -395,7 +491,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Follow"
 	set name = "Follow"
 
-	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
+	if(!orbit_menu)
+		orbit_menu = new(src)
+	orbit_menu.ui_interact(src)
+
+	/*var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
 	var/input = tgui_input_list(usr, "Please, select a category:", "Follow", choices)
 	if(!input)
 		return
@@ -456,11 +556,39 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target = targets[input]
 
 	ManualFollow(target)
-	return
+	return */ //TO DELETE LATER - STANALBATROSS ORBITSHIT
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
-	if(target)
+	if(!istype(target))
+		return
+
+	var/orbitsize
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		orbitsize = human_target.langchat_height
+	else
+		var/icon/I = icon(target.icon, target.icon_state, target.dir)
+		orbitsize = (I.Width() + I.Height()) * 0.5
+	orbitsize -= (orbitsize / world.icon_size) * (world.icon_size * 0.25)
+
+	var/rot_seg
+
+	switch(ghost_orbit)
+		if(GHOST_ORBIT_TRIANGLE)
+			rot_seg = 3
+		if(GHOST_ORBIT_SQUARE)
+			rot_seg = 4
+		if(GHOST_ORBIT_PENTAGON)
+			rot_seg = 5
+		if(GHOST_ORBIT_HEXAGON)
+			rot_seg = 6
+		else //Circular
+			rot_seg = 36
+
+	orbit(target, orbitsize, FALSE, 20, rot_seg)
+
+	/*if(target)
 		if(target == src)
 			to_chat(src, SPAN_WARNING("You can't follow yourself"))
 			return
@@ -476,7 +604,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				// To stop the ghost flickering.
 				if(loc != T)
 					forceMove(T)
-				sleep(15)
+				sleep(15)*/ //delete this stuff later orbitshit
+
+/mob/dead/observer/orbit()
+	setDir(SOUTH)//reset dir so the right directional sprites show up
+	return ..()
+
+
+/mob/dead/observer/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	pixel_y = -2
+	animate(src, pixel_y = 0, time = 10, loop = -1)
 
 /mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
 	if(!tx || !ty || !tz)

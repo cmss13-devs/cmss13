@@ -57,7 +57,7 @@
 	locate_marker.screen_loc = ui_alien_datum.ui_mark_locator
 	infodisplay += locate_marker
 
-/datum/hud/alien/persistant_inventory_update()
+/datum/hud/alien/persistent_inventory_update()
 	if(!mymob || !ui_alien_datum)
 		return
 	var/mob/living/carbon/Xenomorph/H = mymob

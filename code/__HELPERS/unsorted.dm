@@ -1868,3 +1868,39 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	json_file = file2text(json_file)
 	json_file = json_decode(json_file)
 	return json_file
+
+///Returns a list of all items of interest with their name
+/proc/getpois(mobs_only = FALSE, skip_mindless = FALSE, specify_dead_role = TRUE)
+	var/list/mobs = sortmobs()
+	var/list/namecounts = list()
+	var/list/pois = list()
+	for(var/mob/M as anything in mobs)
+		if(skip_mindless && (!M.mind && !M.ckey))
+			continue
+		if(M.client?.admin_holder)
+			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+				continue
+		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+
+		if(M.real_name && M.real_name != M.name)
+			name += " \[[M.real_name]\]"
+		if(M.stat == DEAD && specify_dead_role)
+			if(isobserver(M))
+				name += " \[ghost\]"
+			else
+				name += " \[dead\]"
+		pois[name] = M
+
+	return pois
+
+//takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
+//use this for lists of things that might have the same name, like mobs or objects, that you plan on giving to a player as input
+/proc/avoid_assoc_duplicate_keys(input_key, list/used_key_list)
+	if(!input_key || !istype(used_key_list))
+		return
+	if(used_key_list[input_key])
+		used_key_list[input_key]++
+		input_key = "[input_key] ([used_key_list[input_key]])"
+	else
+		used_key_list[input_key] = 1
+	return input_key

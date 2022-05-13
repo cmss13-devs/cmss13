@@ -53,7 +53,7 @@
 			return TRUE
 
 		following = null
-		forceMove(get_turf(A))
+		abstract_move(get_turf(A))
 		return 1
 
 	if(world.time <= next_move)

@@ -56,7 +56,7 @@
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
-	remove_verb(src, /mob/verb/observe)
+//	remove_verb(src, /mob/verb/observe) //orbitshit
 
 /mob/living/simple_animal/Destroy()
 	SSmob.living_misc_mobs -= src

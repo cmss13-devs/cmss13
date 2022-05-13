@@ -295,7 +295,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	notify_login()
 
 	add_pref_verbs()
-	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
+	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)

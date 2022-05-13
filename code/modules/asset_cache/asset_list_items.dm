@@ -255,3 +255,8 @@
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
 	return ..()
+
+/datum/asset/simple/orbit
+	assets = list(
+		"ghost.png" = 'html/images/ghost.png'
+	)

@@ -53,6 +53,11 @@
 	var/list/beams // An assoc list where the keys are ids and their values are TRUE (indicating beam should persist)
 	var/beam_id = 0
 
+	var/datum/component/orbiter/orbiters
+
+	///Reference to atom being orbited
+	var/atom/orbit_target
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -69,6 +74,7 @@ directive is properly returned.
 */
 //===========================================================================
 /atom/Destroy()
+	orbiters = null // The component is attached to us normally and will be deleted elsewhere
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)
 	fingerprintshidden = null
@@ -588,3 +594,21 @@ Parameters are passed from New.
 	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
 	pixel_x = initialpixelx
 	pixel_y = initialpixely
+
+/**
+ * Recursive getter method to return a list of all ghosts orbitting this atom
+ *
+ * This will work fine without manually passing arguments.
+ */
+/atom/proc/get_all_orbiters(list/processed, source = TRUE)
+	var/list/output = list()
+	if (!processed)
+		processed = list()
+	if (src in processed)
+		return output
+	if (!source)
+		output += src
+	processed += src
+	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
+		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
+	return output

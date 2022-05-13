@@ -1040,3 +1040,35 @@ mob/proc/yank_out_object()
 		if(client)
 			client.prefs.process_link(src, href_list)
 		return TRUE
+
+/mob/proc/reset_perspective(atom/A)
+	if(!client)
+		return
+
+	if(A)
+		if(ismovableatom(A))
+			//Set the the thing unless it's us
+			if(A != src)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = A
+			else
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+		else if(isturf(A))
+			//Set to the turf unless it's our current turf
+			if(A != loc)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = A
+			else
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+	else
+		//Reset to common defaults: mob if on turf, otherwise current loc
+		if(isturf(loc))
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
+		else
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = loc
+
+	return TRUE

@@ -2,10 +2,10 @@
 	var/ui_style_icon	= 'icons/mob/hud/human_midnight.dmi'
 	var/ui_frame_icon 	= 'icons/mob/hud/human_dark_frame.dmi'
 
-	//Lower left, persistant menu
+	//Lower left, persistent menu
 	var/ui_inventory 	= "WEST:6,1:5"
 
-	//Lower center, persistant menu
+	//Lower center, persistent menu
 	var/ui_sstore1 		= "WEST+2:10,1:5"
 	var/ui_id 			= "WEST+3:12,1:5"
 	var/ui_belt 		= "WEST+4:14,1:5"
@@ -18,7 +18,7 @@
 	var/ui_storage1 	= "WEST+8:18,1:5"
 	var/ui_storage2 	= "WEST+9:20,1:5"
 
-	//Lower right, persistant menu
+	//Lower right, persistent menu
 	var/ui_dropbutton 	= "EAST-4:22,1:5"
 	var/ui_drop_throw 	= "EAST-1:28,2:7"
 	var/ui_pull 		= "EAST-2:26,2:7"

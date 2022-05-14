@@ -2114,6 +2114,15 @@
 	name = "precise taser bolt"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
+/datum/ammo/energy/rxfm_eva
+	name = "focused energy bolt"
+	icon_state = "cm_laser"
+	flags_ammo_behavior = AMMO_ENERGY
+	accurate_range = 7
+	max_range = 14
+	damage = 25
+	shell_speed = AMMO_SPEED_TIER_2
+
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM

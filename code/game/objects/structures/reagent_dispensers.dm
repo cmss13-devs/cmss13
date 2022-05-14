@@ -418,6 +418,12 @@
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
 
+/obj/structure/reagent_dispensers/beerkeg/alt
+	icon_state = "beertank_alt"
+
+/obj/structure/reagent_dispensers/beerkeg/alt_dark
+	icon_state = "beertank_alt2"
+
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of virus food."

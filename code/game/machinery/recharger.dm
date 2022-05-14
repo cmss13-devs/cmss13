@@ -10,7 +10,7 @@ obj/structure/machinery/recharger
 	active_power_usage = 15000	//15 kW
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
+	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator)
 
 	var/charge_amount = 1000
 

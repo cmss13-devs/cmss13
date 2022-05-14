@@ -96,12 +96,8 @@
 			update_icon()
 
 			var/digmore = FALSE
-			to_chat(user, SPAN_NOTICE("You begin filling the sandbags."))
-			if(!do_after(user, shovelspeed / 2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // Sandbag filling speed faster than normal, no skillchecks required since filling bags is almost instant
-				to_chat(user, SPAN_NOTICE("You stop filling the sandbags."))
-				return
-
-			while(dirt_amt > 0)
+			var/sandbagcheck = FALSE
+			while(dirt_amt > 0) // loop to check for leftover dirt and use it on nearby sandbags
 				var/obj/item/stack/sandbags_empty/SB = user.get_inactive_hand()
 				if(!istype(SB, /obj/item/stack/sandbags_empty)) // If no sandbag in off hand, checks around the user
 					for(var/obj/item/stack/sandbags_empty/sandbags in range(1, user))
@@ -112,14 +108,32 @@
 					to_chat(user, SPAN_NOTICE("There are no sandbags nearby to fill up."))
 					break
 
-				if(get_dist(user, SB) > 1)
+				if(sandbagcheck == FALSE)
+					sandbagcheck = TRUE
+					to_chat(user, SPAN_NOTICE("You begin filling the sandbags with [dirt_type_to_name(turfdirt)]."))
+					if(!do_after(user, shovelspeed / 2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // Sandbag filling speed faster than normal, no skillchecks required since filling bags is almost instant
+						to_chat(user, SPAN_NOTICE("You stop filling the sandbags with [dirt_type_to_name(turfdirt)]."))
+						return
+
+				if(get_dist(user, SB) > 1) // check if sandbag still beside them
 					break
 
-				while(SB.amount > 0)
-					SB.attackby(src, user)
-					if(dirt_amt == 0)
-						digmore = TRUE
-						break
+				var/dirttransfer_amount = min(SB.amount, dirt_amt)
+				dirt_amt -= dirttransfer_amount
+				update_icon()
+				var/obj/item/stack/sandbags/new_bags = new(user.loc)
+				new_bags.amount = dirttransfer_amount
+				new_bags.add_to_stacks(user)
+				var/obj/item/stack/sandbags_empty/E = SB
+				var/replace = (user.get_inactive_hand() == E)
+				playsound(user.loc, "rustle", 30, 1, 6)
+				E.use(dirttransfer_amount)
+				if(!E && replace)
+					user.put_in_hands(new_bags)
+
+				if(dirt_amt <= 0) // Ends the loop when no dirt is left
+					digmore = TRUE
+					break
 			if(digmore)
 				afterattack(target, user, proximity)
 // auto repeat ends

@@ -94,7 +94,10 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attackby(obj/item/I, mob/user)
 	if(flags_attach_features & ATTACH_RELOADABLE)
-		reload_attachment(I, user)
+		if(user.get_inactive_hand() != src)
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
+		else
+			reload_attachment(I, user)
 		return TRUE
 	else
 		. = ..()

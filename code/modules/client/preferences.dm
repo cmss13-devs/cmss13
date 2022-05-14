@@ -508,10 +508,11 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Stylesheet:</b> <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 			dat += "<b>Hide Statusbar:</b> <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
+			dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
 			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 				dat += "<b>View Master Controller Tab:</b> <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 			if(unlock_content)
-				dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
+				dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -1445,7 +1446,10 @@ var/const/MAX_SAVE_SLOTS = 10
 			switch(href_list["preference"])
 				if("publicity")
 					if(unlock_content)
-						toggle_prefs ^= MEMBER_PUBLIC
+						toggle_prefs ^= TOGGLE_MEMBER_PUBLIC
+
+				if("ooc_flag")
+					toggle_prefs ^= TOGGLE_OOC_FLAG
 
 				if("gender")
 					if(gender == MALE)

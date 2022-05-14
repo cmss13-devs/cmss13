@@ -7,11 +7,11 @@
 	soundscape_interval = 50
 
 /area/bigred/ground
-	name = "Ground"
+	name = "ground"
 	icon_state = "blue"
 
 /area/bigred/uground
-	name = "Uground"
+	name = "uground"
 	icon_state = "blue"
 
 /area/bigred/ground/garage_workshop

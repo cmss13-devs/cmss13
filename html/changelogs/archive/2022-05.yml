@@ -202,3 +202,7 @@
 2022-05-13:
   ghostsheet:
   - rscadd: Added a survival cabinet to the Lifeboats.
+2022-05-14:
+  stanalbatross:
+  - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
+      now carry over between bodies

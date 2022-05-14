@@ -73,7 +73,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(!target_limb || target_limb.status & LIMB_DESTROYED)
 		to_chat(user, SPAN_WARNING("[user == target ? "You have" : "\The [target] has"] no [target_limb.display_name]!"))
 		return
-	if(target_limb.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
+	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		to_chat(user, SPAN_WARNING("You can't repair a robotic limb with \the [suturing_item]!"))
 		return
 	if(target_limb.get_incision_depth())

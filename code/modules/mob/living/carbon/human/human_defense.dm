@@ -22,7 +22,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 				drop_inv_item_on_ground(c_hand)
-				if (affected.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
+				if (affected.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					emote("me", 1, "drops what they were holding, their [affected.display_name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and", "lets out a sharp cry and", "cries out and")

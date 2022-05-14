@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	14
+#define SAVEFILE_VERSION_MAX	15
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -35,6 +35,12 @@
 		S["toggles_flashing"] >> flash_toggles
 		flash_toggles |= FLASH_UNNEST
 		S["toggles_flashing"] << flash_toggles
+
+if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		toggles |= TOGGLE_MEMBER_PUBLIC
+		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

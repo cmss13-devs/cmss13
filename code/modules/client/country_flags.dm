@@ -12,8 +12,8 @@
 
 var/list/countries = icon_states('icons/flags.dmi')
 
-/proc/country2chaticon(country_code)
+/proc/country2chaticon(country_code, var/targets)
 	if(countries.Find(country_code))
-		return "[icon2html('icons/flags.dmi', world, country_code)]"
+		return "[icon2html('icons/flags.dmi', targets, country_code)]"
 	else
-		return "[icon2html('icons/flags.dmi', world, "unknown")]"
+		return "[icon2html('icons/flags.dmi', targets, "unknown")]"

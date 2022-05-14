@@ -203,6 +203,9 @@
   ghostsheet:
   - rscadd: Added a survival cabinet to the Lifeboats.
 2022-05-14:
+  nanu308, stan_albatross:
+  - balance: being direction locked and not moving in the direction your character
+      is facing will now slow you down a bit.
   stanalbatross:
   - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
       now carry over between bodies

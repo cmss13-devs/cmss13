@@ -705,7 +705,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if ( facedir(newdir) )
+	else if(facedir(newdir))
 		flags_atom |= DIRLOCK
 
 

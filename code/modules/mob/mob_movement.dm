@@ -162,6 +162,8 @@
 		if(mob.next_move_slowdown)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
+		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
+			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
 		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)

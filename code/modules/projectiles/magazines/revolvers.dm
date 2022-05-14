@@ -47,10 +47,9 @@
 	icon_state = "m44_cluster"
 
 /obj/item/ammo_magazine/revolver/pkd
-	name = "\improper PKD speed loader (.44)"
-	desc = "A chunky 14 round speed loader. Excessive AND silly."
+	name = "\improper Plfager Katsuma stripper clip (.44)"
+	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
 	icon_state = "pkd_44"
-	max_rounds = 14
 	caliber = ".44 sabot"
 
 /obj/item/ammo_magazine/revolver/upp

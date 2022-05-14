@@ -232,7 +232,7 @@
 				is_destroyed["[temp.display_name]"] = 1
 				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("<b>[t_He] is missing [t_his] [temp.display_name].</b>\n")
 				continue
-			if(temp.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
+			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
 					if(!(temp.status & LIMB_SYNTHSKIN) && !(species && species.flags & IS_SYNTHETIC))
 						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")

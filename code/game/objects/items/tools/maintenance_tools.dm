@@ -210,7 +210,7 @@
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (!S) return
-		if(!(S.status & LIMB_ROBOT|LIMB_SYNTHSKIN) || user.a_intent != INTENT_HELP)
+		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)

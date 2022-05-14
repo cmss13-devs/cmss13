@@ -182,7 +182,7 @@
 			H.Slow(3)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
-		else if(L.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
+		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
@@ -199,7 +199,7 @@
 	if(ishuman(H))
 		if(isYautja(H))
 			damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
-		else if(L.status & LIMB_ROBOT|LIMB_SYNTHSKIN)
+		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")

@@ -170,7 +170,7 @@
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-								 SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
 	else

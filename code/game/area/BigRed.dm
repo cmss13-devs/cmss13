@@ -216,7 +216,7 @@
 	icon_state = "chem"
 
 /area/bigred/uground/disection
-	name = "\improper Disection Lab"
+	name = "\improper Dissection Lab"
 	icon_state = "observatory"
 
 /area/bigred/uground/misc_lab

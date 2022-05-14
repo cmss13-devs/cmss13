@@ -203,6 +203,8 @@
   ghostsheet:
   - rscadd: Added a survival cabinet to the Lifeboats.
 2022-05-14:
+  Segrain:
+  - bugfix: Human limbs are robotic no longer.
   nanu308, stan_albatross:
   - balance: being direction locked and not moving in the direction your character
       is facing will now slow you down a bit.

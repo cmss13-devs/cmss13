@@ -640,7 +640,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		engraved = TRUE
 		to_chat(user, SPAN_NOTICE("You engrave \the [src] with '[str]'."))
 		
-		log_admin("[user] has engraved [name] with engraving \"[str]\". (CKEY: ([user.ckey]))")
+		log_admin("[user] has engraved \the [src] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"

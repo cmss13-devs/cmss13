@@ -225,5 +225,8 @@
       while holding an unlit cigarette will now light it.
   - bugfix: You will no longer spam scream when you get lit on fire while already
       lit on fire.
+  Hatterhat:
+  - rscadd: Marines can now style their hair in the fashion historically designated
+      "Short Hair 3".
   nauticall:
   - admin: Admins can now modify requisitions points via a button in the Event Panel.

@@ -1,7 +1,8 @@
 /client/New()
 	. = ..()
-	spawn if(src)
-		src.country = ip2country(address)
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			src.country = ip2country(address)
 
 /proc/ip2country(ipaddr)
 	var/list/http_response[] = world.Export("http://ip-api.com/json/[ipaddr]")

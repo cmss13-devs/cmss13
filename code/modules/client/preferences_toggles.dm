@@ -213,6 +213,10 @@
 	set category = "Preferences"
 	set desc = "Toggles if your country flag (based on what country your IP is connecting from) is displayed in OOC chat."
 
+	if(!(CONFIG_GET(flag/ooc_country_flags)))
+		to_chat(src, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
+		return
+
 	prefs.toggle_prefs ^= TOGGLE_OOC_FLAG
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("Your country flag [(prefs.toggle_prefs & TOGGLE_OOC_FLAG) ? "will now" : "will now not"] appear before your name in OOC chat."))

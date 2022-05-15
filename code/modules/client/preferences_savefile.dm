@@ -36,10 +36,10 @@
 		flash_toggles |= FLASH_UNNEST
 		S["toggles_flashing"] << flash_toggles
 
-if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
+	if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
 		var/pref_toggles
 		S["toggle_prefs"] >> pref_toggles
-		toggles |= TOGGLE_MEMBER_PUBLIC
+		pref_toggles |= TOGGLE_MEMBER_PUBLIC
 		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX

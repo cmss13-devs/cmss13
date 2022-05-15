@@ -508,7 +508,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Stylesheet:</b> <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 			dat += "<b>Hide Statusbar:</b> <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
-			dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
+			if(CONFIG_GET(flag/ooc_country_flags))
+				dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
 			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 				dat += "<b>View Master Controller Tab:</b> <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 			if(unlock_content)
@@ -1449,7 +1450,10 @@ var/const/MAX_SAVE_SLOTS = 10
 						toggle_prefs ^= TOGGLE_MEMBER_PUBLIC
 
 				if("ooc_flag")
-					toggle_prefs ^= TOGGLE_OOC_FLAG
+					if(CONFIG_GET(flag/ooc_country_flags))
+						toggle_prefs ^= TOGGLE_OOC_FLAG
+					else
+						to_chat(user, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
 
 				if("gender")
 					if(gender == MALE)

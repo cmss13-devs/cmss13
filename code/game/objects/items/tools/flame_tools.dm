@@ -633,12 +633,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			return
 		
 		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)
-		if(!str || length(str) <= 0 || length(str) > 32)
+		if(length(str) == 0 || length(str) > 32)
 			to_chat(user, SPAN_NOTICE("Your hand trembles confusedly."))
 			return
 		desc += "\nEngraved with \"[str]\""
 		engraved = TRUE
-		to_chat(user, SPAN_NOTICE("You engrave \the [src] with '[str]'."))
+		to_chat(user, SPAN_NOTICE("You engrave \the [src] with \"[str]\"."))
 		
 		log_admin("[user] has engraved \the [src] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 

@@ -636,7 +636,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!str || length(str) <= 0 || length(str) > 32)
 			to_chat(user, SPAN_NOTICE("Your hand trembles confusedly."))
 			return
-		desc += "\nEngraved with [str]"
+		desc += "\nEngraved with \"[str]\""
 		engraved = TRUE
 		to_chat(user, SPAN_NOTICE("You engrave \the [src] with '[str]'."))
 		

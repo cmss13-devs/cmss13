@@ -638,7 +638,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			return
 		desc += "\nEngraved with [str]"
 		engraved = TRUE
-		to_chat(user, SPAN_NOTICE("You engrave the zippo with '[str]'."))
+		to_chat(user, SPAN_NOTICE("You engrave \the [src] with '[str]'."))
 		
 		log_admin("[user] has engraved [name] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 

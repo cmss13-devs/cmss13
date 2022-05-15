@@ -217,5 +217,13 @@
   - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
       now carry over between bodies
 2022-05-15:
+  Geevies:
+  - rscadd: Items held in the mouth like knives or cigarettes now fall out when you
+      get knocked over.
+  - rscadd: You can now light and extinguish cigarettes on the ground, as well as
+      cigarettes held on someone's person by extinguishing them. Getting lit on fire
+      while holding an unlit cigarette will now light it.
+  - bugfix: You will no longer spam scream when you get lit on fire while already
+      lit on fire.
   nauticall:
   - admin: Admins can now modify requisitions points via a button in the Event Panel.

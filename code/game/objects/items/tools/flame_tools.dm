@@ -204,6 +204,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)
+	AddElement(/datum/element/mouth_drop_item)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
@@ -305,6 +306,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
+	SIGNAL_HANDLER
+
 	if(!heat_source)
 		heat_source = 1000
 		damtype = "fire"
@@ -372,6 +375,32 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_wear_mask()
 	STOP_PROCESSING(SSobj, src)
 	qdel(src)
+
+/obj/item/clothing/mask/cigarette/flamer_fire_act()
+	. = ..()
+	if(!heat_source)
+		light()
+
+/obj/item/clothing/mask/cigarette/extinguish()
+	. = ..()
+	if(heat_source)
+		die()
+
+/obj/item/clothing/mask/cigarette/proc/handle_extinguish()
+	SIGNAL_HANDLER
+
+	if(heat_source)
+		die()
+
+/obj/item/clothing/mask/cigarette/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_LIVING_PREIGNITION, .proc/light)
+	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
+
+/obj/item/clothing/mask/cigarette/dropped(mob/user)
+	. = ..()
+	if(loc != user)
+		UnregisterSignal(user, list(COMSIG_LIVING_PREIGNITION, COMSIG_HUMAN_EXTINGUISH))
 
 /obj/item/clothing/mask/cigarette/ucigarette
 	icon_on = "ucigon"

@@ -285,6 +285,11 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = -4
 	var/pry_delay = 3 SECONDS
 
+/obj/item/attachable/bayonet/Initialize(mapload, ...)
+	. = ..()
+	if(flags_equip_slot & SLOT_FACE)
+		AddElement(/datum/element/mouth_drop_item)
+
 /obj/item/attachable/bayonet/New()
 	..()
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1

@@ -1584,6 +1584,10 @@
 		new monkey_type(T)
 	qdel(src)
 
+/obj/item/reagent_container/food/snacks/monkeycube/extinguish()
+	. = ..()
+	if(!package)
+		Expand()
 
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped
 	desc = "Still wrapped in some paper."

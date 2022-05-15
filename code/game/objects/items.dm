@@ -355,8 +355,8 @@ cases. Override_icon_state should be a list.*/
 		add_verb(user, verbs)
 		for(var/v in verbs)
 			LAZYDISTINCTADD(user.item_verbs[v], src)
-		for(var/datum/action/A in actions)
-			A.give_to(user) //some items only give their actions buttons when in a specific slot.
+		for(var/datum/action/item_action in actions)
+			item_action.give_to(user) //some items only give their actions buttons when in a specific slot.
 	else
 		remove_item_verbs(user)
 
@@ -421,8 +421,7 @@ cases. Override_icon_state should be a list.*/
 		if(uniform_restricted)
 			var/list/required_clothing = list()
 			var/restriction_satisfied = FALSE
-			for(var/t in uniform_restricted)
-				var/obj/item/restriction_type = t
+			for(var/obj/item/restriction_type as anything in uniform_restricted)
 				var/valid_equip_slots = initial(restriction_type.flags_equip_slot)
 				required_clothing += initial(restriction_type.name)
 				// You can't replace this with a switch(), flags_equip_slot is a bitfield

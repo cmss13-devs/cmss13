@@ -201,7 +201,7 @@
 #define WEAR_IN_SHOES		"in_shoes"
 
 /proc/slotdefine2slotbit(slotdefine)
-	. = 0
+	. = NO_FLAGS
 	switch(slotdefine)
 		if(WEAR_ID)
 			. = SLOT_ID

@@ -634,7 +634,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		
 		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)
 		if(!str || length(str) <= 0 || length(str) > 32)
-			to_chat(user, SPAN_NOTICE("Your hand trembles confused."))
+			to_chat(user, SPAN_NOTICE("Your hand trembles confusedly."))
 			return
 		desc += "\nEngraved with [str]"
 		engraved = TRUE

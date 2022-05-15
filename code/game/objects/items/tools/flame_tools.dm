@@ -623,6 +623,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "zippo"
 	icon_on = "zippoon"
 	icon_off = "zippo"
+	var/engraved = FALSE
+	
+/obj/item/tool/lighter/zippo/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if(istype(W, /obj/item/attachable/bayonet))
+		if(engraved)
+			to_chat(user, SPAN_NOTICE("Your lighter is already engraved."))
+			return
+		
+		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)
+		if(!str || length(str) <= 0 || length(str) > 32)
+			to_chat(user, SPAN_NOTICE("Your hand trembles confused."))
+			return
+		desc += "\nEngraved with [str]"
+		engraved = TRUE
+		to_chat(user, SPAN_NOTICE("You engrave the zippo with '[str]'."))
+		
+		log_admin("[user] has engraved [name] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"

@@ -286,7 +286,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var points_to_add = input(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0) as num
+	var/points_to_add = input(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0) as num
 	if(points_to_add == 0)
 		return
 	else

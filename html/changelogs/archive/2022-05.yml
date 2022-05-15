@@ -216,3 +216,6 @@
   stanalbatross:
   - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
       now carry over between bodies
+2022-05-15:
+  nauticall:
+  - admin: Admins can now modify requisitions points via a button in the Event Panel.

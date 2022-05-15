@@ -629,7 +629,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(istype(W, /obj/item/attachable/bayonet))
 		if(engraved)
-			to_chat(user, SPAN_NOTICE("Your lighter is already engraved."))
+			to_chat(user, SPAN_NOTICE("\The [src] is already engraved."))
 			return
 		
 		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)

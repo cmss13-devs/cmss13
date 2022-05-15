@@ -127,6 +127,9 @@
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
+/// From /obj/item/proc/unequipped()
+#define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
+
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)

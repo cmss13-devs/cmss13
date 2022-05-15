@@ -289,12 +289,17 @@
 	var/points_to_add = input(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0) as num
 	if(points_to_add == 0)
 		return
+	else if((supply_controller.points + points_to_add) < 0)
+		supply_controller.points = 0
+	else if((supply_controller.points + points_to_add) > 99999)
+		supply_controller.points = 99999
 	else
 		supply_controller.points += points_to_add
 
-		message_staff("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
-		if(points_to_add >= 0)
-			shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+
+	message_staff("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
+	if(points_to_add >= 0)
+		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self Destruct"

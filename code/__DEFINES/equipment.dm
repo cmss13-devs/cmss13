@@ -200,6 +200,37 @@
 #define WEAR_IN_R_STORE     "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
 
+/proc/slotdefine2slotbit(slotdefine)
+	. = NO_FLAGS
+	switch(slotdefine)
+		if(WEAR_ID)
+			. = SLOT_ID
+		if(WEAR_L_EAR, WEAR_R_EAR)
+			. = SLOT_EAR
+		if(WEAR_BODY)
+			. = SLOT_ICLOTHING
+		if(WEAR_FEET)
+			. = SLOT_FEET
+		if(WEAR_HANDS)
+			. = SLOT_HANDS
+		if(WEAR_WAIST)
+			. = SLOT_WAIST
+		if(WEAR_JACKET)
+			. = SLOT_OCLOTHING
+		if(WEAR_EYES)
+			. = SLOT_EYES
+		if(WEAR_FACE)
+			. = SLOT_FACE
+		if(WEAR_HEAD)
+			. = SLOT_HEAD
+		if(WEAR_BACK)
+			. = SLOT_BACK
+		if(WEAR_L_STORE, WEAR_R_STORE)
+			. = SLOT_STORE
+		if(WEAR_ACCESSORY)
+			. = SLOT_ACCESSORY
+		if(WEAR_J_STORE)
+			. = SLOT_SUIT_STORE
 
 //=================================================
 

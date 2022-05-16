@@ -101,26 +101,6 @@
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
 
-
-
-//BS12: Species-restricted clothing check.
-//CM Update : Restricting armor to specific uniform
-/obj/item/clothing/mob_can_equip(M as mob, slot)
-	//if we can't equip the item anyway, don't bother with further checks (cuts down on spam)
-	if (!..())
-		return 0
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/clothing/under/U = H.w_uniform
-
-		if(uniform_restricted && (!is_type_in_list(U, uniform_restricted) || !U))
-			to_chat(H, SPAN_WARNING("Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name]."))
-			return 0
-
-	return 1
-
-
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects
 /obj/item/clothing/ears

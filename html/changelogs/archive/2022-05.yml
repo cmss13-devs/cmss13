@@ -237,3 +237,6 @@
   - rscadd: You can now engrave your zippo lighter with a bayonet.
   TotalEpicness:
   - bugfix: MS-11 can now be named with the hand labler
+  ghostsheet:
+  - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
+      of Broiler-T flexible refueling system.

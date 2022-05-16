@@ -235,3 +235,5 @@
 2022-05-16:
   Morrow:
   - rscadd: You can now engrave your zippo lighter with a bayonet.
+  TotalEpicness:
+  - bugfix: MS-11 can now be named with the hand labler

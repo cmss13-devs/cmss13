@@ -232,3 +232,6 @@
   - rscadd: Slight change to CAS deployed turrets description.
   nauticall:
   - admin: Admins can now modify requisitions points via a button in the Event Panel.
+2022-05-16:
+  Morrow:
+  - rscadd: You can now engrave your zippo lighter with a bayonet.

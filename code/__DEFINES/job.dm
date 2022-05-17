@@ -221,6 +221,15 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //antag jobs supported by adaptive antag vendors
 #define VENDOR_ANTAG_JOBS				list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER, JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
 
+//-------- DUTCH'S DOZEN --------//
+#define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
+#define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"
+#define JOB_DUTCH_MINIGUNNER "Dutch's Dozen - Minigunner"
+#define JOB_DUTCH_FLAMETHROWER "Dutch's Dozen - Flamethrower"
+#define JOB_DUTCH_MEDIC "Dutch's Dozen - Medic"
+
+#define DUTCH_JOB_LIST					list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
+
 #define JOB_PREDATOR                    "Predator"
 #define JOB_XENOMORPH                   "Xenomorph"
 #define JOB_XENOMORPH_QUEEN             "Queen"

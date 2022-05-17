@@ -61,8 +61,9 @@
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
-	to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 	..()
+	if(!isYautja(user))
+		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/process()
 	if(!ishuman(loc))

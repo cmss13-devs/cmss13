@@ -547,7 +547,9 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 //-------------------------------------------------------
 //Smartpistol. An IFF pistol, pretty much.
-
+#define NOT_LOCKING	0
+#define LOCKING_ON	1
+#define LOCKED_ON	2
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
 	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts. It can also lock onto targets via integrated circuitry and tracking systems."
@@ -560,10 +562,9 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	actions_types = list(/datum/action/item_action/smartpistol_lock_mode)
-	var/auto_aim = FALSE //is the gun currently locked onto something?
+	var/locking_state = NOT_LOCKING
 	var/mob/living/auto_aim_target //the ref to the mob we're locking onto
 	var/lock_duration = 15 SECONDS //how long it lasts
-	var/locking_on = FALSE //is the gun currently in the process of locking onto something?
 	var/lockonattempt_cooldown = 0
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()
@@ -589,30 +590,34 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	))
 
 /obj/item/weapon/gun/pistol/smart/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
-	if(auto_aim && auto_aim_target)
+	if(locking_state == LOCKED_ON && auto_aim_target)
 		target = auto_aim_target
 	. = ..()
 
 /obj/item/weapon/gun/pistol/smart/unwield(mob/user)
 	. = ..()
-	if(auto_aim)
-		break_iff_lock()
-	if(locking_on)
-		stop_aim()
+	switch(locking_state)
+		if(LOCKED_ON)
+			break_iff_lock()
+		if(LOCKING_ON)
+			stop_aim()
 
 /obj/item/weapon/gun/pistol/smart/Destroy()
-	QDEL_NULL(auto_aim_target)
-	STOP_PROCESSING(SSobj, src)
+	switch(locking_state)
+		if(LOCKED_ON)
+			break_iff_lock()
+		if(LOCKING_ON)
+			stop_aim()
 	. = ..()
 
 /obj/item/weapon/gun/pistol/smart/proc/break_iff_lock()
-	if(!auto_aim)
+	if(!locking_state)
 		return
 	var/image/locked = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locked-spistol")
 	LAZYREMOVE(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_homing)
 	))
-	auto_aim = FALSE
+	locking_state = NOT_LOCKING
 	if(auto_aim_target)
 		auto_aim_target.overlays &= ~locked
 		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM(src))
@@ -622,6 +627,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	lockonattempt_cooldown = world.time + 50
 
 /obj/item/weapon/gun/pistol/smart/proc/stop_aiming() //proc we use if interrupted during the aiming process
+	if(!locking_state)
+		return
 	var/image/locking = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spistol")
 	auto_aim_target.overlays &= ~locking
 	if(auto_aim_target)
@@ -629,7 +636,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	auto_aim_target = null
 	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
 	lockonattempt_cooldown = world.time + 50
-	locking_on = FALSE
+	locking_state = NOT_LOCKING
 
 /obj/item/weapon/gun/pistol/smart/process()
 	. = ..()
@@ -769,9 +776,12 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 	if(M.stat == DEAD || M == H)
 		return
+	switch(SP.locking_state)
+		if(LOCKED_ON)
+			SP.break_iff_lock()
+		if(LOCKING_ON)
+			SP.stop_aiming()
 
-	if(SP.auto_aim)
-		SP.break_iff_lock()
 
 	if(SP.lockonattempt_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(H, SPAN_WARNING("\The [SP]'s internal circuitry is still recharging!"))
@@ -792,7 +802,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	//we now begin the locking sequence. To return after this, you must use the "stop_aiming" proc
 	SP.auto_aim_target = M //assign here to help with the cancel procs
 	ADD_TRAIT(SP.auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM(SP))
-	SP.locking_on = TRUE
+	SP.locking_state = LOCKING_ON
 	M.overlays |= locking
 	if(H.client)
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
@@ -805,11 +815,10 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 		return SP.stop_aiming()
 
 	//we now lock on. To return after this, use the "break_iff_lock" proc
-	SP.locking_on = FALSE
 	M.overlays &= ~locking
 	P.homing_target = M
 	P.projectile_override_flags |= AMMO_HOMING
-	SP.auto_aim = TRUE
+	SP.locking_state = LOCKED_ON
 	M.overlays |= locked
 	LAZYADD(SP.traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_homing)
@@ -819,6 +828,10 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 		to_chat(H, SPAN_WARNING("[M] is too far away for \the [SP]'s circuitry to get a lock!"))
 		return SP.break_iff_lock()
 	START_PROCESSING(SSobj, SP)
+
+#undef NOT_LOCKING
+#undef LOCKING_ON
+#undef LOCKED_ON
 
 //-------------------------------------------------------
 //SKORPION //Based on the same thing.

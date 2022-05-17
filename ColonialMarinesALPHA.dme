@@ -364,6 +364,7 @@
 #include "code\datums\elements\poor_eyesight_correction.dm"
 #include "code\datums\elements\suturing.dm"
 #include "code\datums\elements\bullet_trait\damage_boost.dm"
+#include "code\datums\elements\bullet_trait\homing.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"
 #include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"

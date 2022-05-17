@@ -1029,7 +1029,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/aimed_shot/can_use_action()
 	var/mob/living/carbon/human/H = owner
 	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
-
 		return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)

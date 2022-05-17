@@ -240,3 +240,6 @@
   ghostsheet:
   - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
       of Broiler-T flexible refueling system.
+2022-05-17:
+  Morrow:
+  - bugfix: Portable comms should now update its description correctly while building.

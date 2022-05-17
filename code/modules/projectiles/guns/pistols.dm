@@ -550,6 +550,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 #define NOT_LOCKING	0
 #define LOCKING_ON	1
 #define LOCKED_ON	2
+#define LOCK_ON_COOLDOWN 10
+
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
 	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts. It can also lock onto targets via integrated circuitry and tracking systems."
@@ -620,11 +622,11 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	locking_state = NOT_LOCKING
 	if(auto_aim_target)
 		auto_aim_target.overlays &= ~locked
-		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM(src))
+		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 	auto_aim_target = null
 	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
 	STOP_PROCESSING(SSobj, src)
-	lockonattempt_cooldown = world.time + 50
+	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
 
 /obj/item/weapon/gun/pistol/smart/proc/stop_aiming() //proc we use if interrupted during the aiming process
 	if(!locking_state)
@@ -632,10 +634,10 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	var/image/locking = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spistol")
 	auto_aim_target.overlays &= ~locking
 	if(auto_aim_target)
-		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM(src))
+		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 	auto_aim_target = null
 	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
-	lockonattempt_cooldown = world.time + 50
+	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
 	locking_state = NOT_LOCKING
 
 /obj/item/weapon/gun/pistol/smart/process()
@@ -789,7 +791,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 	if(HAS_TRAIT(M, TRAIT_LOCKED_ON_BY_SMARTPISTOL))
 		to_chat(H, SPAN_WARNING("Something is already locking on to \the [M]! Your gun's circuitry jams up!"))
-		SP.lockonattempt_cooldown = world.time + 50
+		SP.lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
 		return
 
 	if(!check_can_use(M))
@@ -801,7 +803,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 	//we now begin the locking sequence. To return after this, you must use the "stop_aiming" proc
 	SP.auto_aim_target = M //assign here to help with the cancel procs
-	ADD_TRAIT(SP.auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM(SP))
+	ADD_TRAIT(SP.auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 	SP.locking_state = LOCKING_ON
 	M.overlays |= locking
 	if(H.client)
@@ -832,6 +834,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 #undef NOT_LOCKING
 #undef LOCKING_ON
 #undef LOCKED_ON
+#undef LOCK_ON_COOLDOWN
 
 //-------------------------------------------------------
 //SKORPION //Based on the same thing.

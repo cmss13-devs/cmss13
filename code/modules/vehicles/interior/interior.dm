@@ -298,7 +298,7 @@
 			return FALSE
 
 	A.forceMove(get_turf(exit_turf))
-
+	update_passenger_count()
 	return TRUE
 
 // Returns min and max turfs for the interior

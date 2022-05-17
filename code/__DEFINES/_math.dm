@@ -19,6 +19,7 @@
 #define COLOR_ORANGE 	"#FF9900"
 #define COLOR_WHITE 	"#FFFFFF"
 #define COLOR_BLACK 	"#000000"
+#define COLOR_OIL		"#030303"
 
 //Grass Colors
 #define COLOR_G_ICE     "#C7EDDE" //faded cyan

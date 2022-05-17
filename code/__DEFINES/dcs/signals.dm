@@ -127,6 +127,9 @@
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
+/// From /obj/item/proc/unequipped()
+#define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
+
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
@@ -283,6 +286,9 @@
 #define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
 
+#define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
+	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
+
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
@@ -422,3 +428,9 @@
 #define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
+
+
+// Used in resin_constructions.dm
+// Checks whether the xeno can build a thick structure regardless of hive weeds
+#define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
+	#define COMPONENT_THICK_BYPASS (1<<0)

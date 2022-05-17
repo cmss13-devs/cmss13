@@ -73,7 +73,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(!target_limb || target_limb.status & LIMB_DESTROYED)
 		to_chat(user, SPAN_WARNING("[user == target ? "You have" : "\The [target] has"] no [target_limb.display_name]!"))
 		return
-	if(target_limb.status & LIMB_ROBOT)
+	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		to_chat(user, SPAN_WARNING("You can't repair a robotic limb with \the [suturing_item]!"))
 		return
 	if(target_limb.get_incision_depth())
@@ -148,7 +148,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 	//Timer and redo checks in case something funny happened during the do_after().
 	if(!do_after(user, suture_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)\
-		|| target_limb.status & (LIMB_DESTROYED|LIMB_ROBOT) || target_limb.get_incision_depth())
+		|| target_limb.status & (LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN) || target_limb.get_incision_depth())
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish!"))
 		return
 

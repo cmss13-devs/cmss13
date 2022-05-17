@@ -138,70 +138,62 @@
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
 
-/obj/item/clothing/cape
-
-/obj/item/clothing/cape/eldercape
-	name = "\improper Yautja Cape"
-	desc = "A battle-worn cape passed down by elder Yautja. Councillors who've proven themselves worthy may also be rewarded with one of these capes."
-
+/obj/item/clothing/yautja_cape
+	name = PRED_YAUTJA_CAPE
+	desc = "A battle-worn cape passed down by elder Yautja."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "cape_elder"
+	icon_state = "fullcape"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
-
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
+	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/councillor_override = FALSE
 
-/obj/item/clothing/cape/eldercape/New(location, cape_number)
-	..()
-	switch(cape_number)
-		if(1341)
-			name = "\improper 'Mantle of the Dragon'"
-			icon_state = "cape_elder_tr"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_tr")
-		if(7128)
-			name = "\improper 'Mantle of the Swamp Horror'"
-			icon_state = "cape_elder_joshuu"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_joshuu")
-		if(9867)
-			name = "\improper 'Mantle of the Enforcer'"
-			icon_state = "cape_elder_feweh"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_feweh")
-		if(4879)
-			name = "\improper 'Mantle of the Ambivalent Collector'"
-			icon_state = "cape_elder_n"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_n")
-
-/obj/item/clothing/cape/eldercape/verb/recolor()
-	set name = "Dye Cape"
-	set desc = "Allows you to add a custom color to your cape. Single use."
-	set src in usr
-
-	if(color)
-		to_chat(usr, "Your cape is already dyed!")
-		return
-
-	var/new_color = input(usr, "Choose your cape's colour. \nMeme colours may result in action taken by the council. \nSINGLE USE ONLY.", "Dye your cape") as color|null
-	if(!new_color)
-		return
-
+/obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
+	. = ..()
 	color = new_color
-	log_game("[key_name(usr)] has changed their cape color to '[color]'")
-	icon_state = "cape_elder_n"
-	to_chat(usr, "Your cape has been dyed!")
 
+/obj/item/clothing/yautja_cape/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUM
-	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+/obj/item/clothing/yautja_cape/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
+/obj/item/clothing/yautja_cape/Destroy()
+	remove_from_missing_pred_gear(src)
+	return ..()
+
+/obj/item/clothing/yautja_cape/ceremonial
+	name = PRED_YAUTJA_CEREMONIAL_CAPE
+	icon_state = "ceremonialcape"
+	councillor_override = TRUE
+
+/obj/item/clothing/yautja_cape/third
+	name = PRED_YAUTJA_THIRD_CAPE
+	icon_state = "thirdcape"
+	clan_rank_required = CLAN_RANK_ELDER_INT
+
+/obj/item/clothing/yautja_cape/half
+	name = PRED_YAUTJA_HALF_CAPE
+	icon_state = "halfcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
+
+/obj/item/clothing/yautja_cape/quarter
+	name = PRED_YAUTJA_QUARTER_CAPE
+	icon_state = "quartercape"
+	clan_rank_required = CLAN_RANK_BLOODED_INT
+
+/obj/item/clothing/yautja_cape/poncho
+	name = PRED_YAUTJA_PONCHO
+	icon_state = "councilor_poncho"
+	clan_rank_required = CLAN_RANK_ADMIN_INT
+	councillor_override = TRUE
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"

@@ -57,6 +57,7 @@
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "template"
 	var/datum/action/source_action
+	var/image/maptext_overlay
 
 /obj/screen/action_button/clicked(var/mob/user)
 	if(!user || !source_action)
@@ -68,7 +69,8 @@
 
 /obj/screen/action_button/Destroy()
 	source_action = null
-	. = ..()
+	QDEL_NULL(maptext_overlay)
+	return ..()
 
 /obj/screen/action_button/proc/get_button_screen_loc(button_number)
 	var/row = round((button_number-1)/13) //13 is max amount of buttons per row
@@ -79,7 +81,15 @@
 	var/coord_row_offset = 26
 	return "WEST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-
+/obj/screen/action_button/proc/set_maptext(var/new_maptext, var/new_maptext_x, var/new_maptext_y)
+	overlays -= maptext_overlay
+	maptext_overlay = image(null, null, null, layer + 0.1)
+	maptext_overlay.maptext = new_maptext
+	if(new_maptext_x)
+		maptext_overlay.maptext_x = new_maptext_x
+	if(new_maptext_y)
+		maptext_overlay.maptext_y = new_maptext_y
+	overlays += maptext_overlay
 
 /obj/screen/action_button/hide_toggle
 	name = "Hide Buttons"

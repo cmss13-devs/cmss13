@@ -66,6 +66,7 @@
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
+		INVOKE_ASYNC(src, /mob.proc/emote, pick("roar", "needhelp"))
 
 #undef PASSIVE_BURN_DAM_CALC
 

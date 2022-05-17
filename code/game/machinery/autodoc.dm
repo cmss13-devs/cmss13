@@ -69,7 +69,7 @@
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
-	if(picked.status & LIMB_ROBOT)
+	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
 		human.pain.apply_pain(-brute, BRUTE)
 		human.pain.apply_pain(-burn, BURN)
@@ -139,8 +139,8 @@
 				if(occupant.getToxLoss() > 0)
 					occupant.apply_damage(-3, TOX)
 					if(prob(10))
-						visible_message("\The [src] whirrs and gurgles as it kelates the occupant.")
-						to_chat(occupant, SPAN_INFO("You feel slighly less ill."))
+						visible_message("\The [src] whirrs and gurgles as it chelates the occupant.")
+						to_chat(occupant, SPAN_INFO("You feel slightly less ill."))
 				else
 					heal_toxin = 0
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Chelation complete.")

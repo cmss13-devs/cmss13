@@ -13,10 +13,14 @@
 /datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE, 40;FEMALE)
 	var/random_name
-	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
+	if(prob(50))
+		if(H.gender == MALE)
+			if(prob(50))
+				random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
+		else
+			random_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
 	else
-		random_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
+		random_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))] [capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 	H.r_hair = 25

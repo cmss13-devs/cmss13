@@ -773,6 +773,7 @@
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
 		spikes--
 		return in_chamber
 
@@ -978,13 +979,22 @@
 	desc = "A powerful, shoulder-mounted energy weapon."
 	icon_state = "plasma"
 	item_state = "plasma_wear"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_BACK = "plasma_wear_off",
+		WEAR_J_STORE = "plasma_wear_off"
+	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	actions_types = list(/datum/action/item_action/toggle)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
@@ -995,7 +1005,11 @@
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, var/caster_material = "ebony")
+	icon_state += "_[caster_material]"
+	item_state += "_[caster_material]"
+	item_state_slots[WEAR_BACK] += "_[caster_material]"
+	item_state_slots[WEAR_J_STORE] += "_[caster_material]"
 	. = ..()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst

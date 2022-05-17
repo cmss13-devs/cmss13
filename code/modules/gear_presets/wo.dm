@@ -22,21 +22,20 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
-	utility_under = /obj/item/clothing/under/marine
-	utility_hat = /obj/item/clothing/head/cmcap
-	utility_gloves = /obj/item/clothing/gloves/marine
-	utility_shoes = /obj/item/clothing/shoes/marine
-	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
+	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 
-	service_under = /obj/item/clothing/under/marine/officer/bridge
-	service_over = /obj/item/clothing/suit/storage/jacket/marine/service
-	service_hat = /obj/item/clothing/head/cmcap
-	service_shoes = /obj/item/clothing/shoes/dress
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
 
-	dress_under = /obj/item/clothing/under/marine/dress
-	dress_over = /obj/item/clothing/suit/storage/jacket/marine/dress
-	dress_gloves = /obj/item/clothing/gloves/marine/dress
-	dress_shoes = /obj/item/clothing/shoes/dress
+	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
+	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
@@ -86,6 +85,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(H), WEAR_L_STORE)
 
 
 //*****************************************************************************************************/

@@ -356,9 +356,8 @@
 		for (var/i in items_allowed)
 			if(istype(I, i))
 				if(stored_item)	return
-				M.drop_held_item()
 				stored_item = I
-				I.forceMove(src)
+				M.drop_inv_item_to_loc(I, src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()

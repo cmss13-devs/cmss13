@@ -3,12 +3,11 @@
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(var/obj/item/W)
-	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !is_admin_level(W.z))
-		yautja_gear += W
+	if(!is_admin_level(W.z))
+		GLOB.loose_yautja_gear |= W
 
 /proc/remove_from_missing_pred_gear(var/obj/item/W)
-	if(W in yautja_gear)
-		yautja_gear -= W
+	GLOB.loose_yautja_gear -= W
 
 //=================//\\=================\\
 //======================================\\
@@ -93,19 +92,6 @@
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
-
-/obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
 
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
@@ -269,20 +255,6 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-
-/obj/item/clothing/shoes/yautja/hunter/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/shoes/yautja/hunter/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/shoes/yautja/hunter/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
 /obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
 	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
@@ -313,19 +285,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-
-/obj/item/clothing/under/chainshirt/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/clothing/under/chainshirt/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/under/chainshirt/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/under/chainshirt/hunter
 	name = "body mesh"
@@ -401,19 +360,6 @@
 	storage_slots = 12
 	max_storage_space = 30
 
-/obj/item/storage/backpack/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/storage/backpack/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/storage/backpack/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
@@ -429,19 +375,6 @@
 	throwforce = 1
 	unacidable = TRUE
 	var/timer = 0
-
-/obj/item/device/yautja_teleporter/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/device/yautja_teleporter/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/device/yautja_teleporter/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
 	set waitfor = FALSE

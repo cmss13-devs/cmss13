@@ -112,8 +112,8 @@ GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 	//non currently
 ))
 
-var/global/list/yautja_gear = list() // list of loose pred gear
-var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
+GLOBAL_LIST_EMPTY(loose_yautja_gear)
+GLOBAL_LIST_EMPTY(tracked_yautja_gear) // list of pred gear with a tracking element attached
 
 GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_yautja_capes())
 

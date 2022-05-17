@@ -246,6 +246,8 @@
       still work as expected. You can add or remove any item from the tracking system
       by holding it in your active hand and using the Add Item or Remove Item in the
       tracker tab.
+  - bugfix: Fixed up the jobs for Dutch's Dozen, they should appear correctly in-game
+      now.
   Morrow:
   - bugfix: Portable comms should now update its description correctly while building.
   silencer_pl:

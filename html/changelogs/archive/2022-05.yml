@@ -241,6 +241,11 @@
   - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
       of Broiler-T flexible refueling system.
 2022-05-17:
+  Geevies:
+  - refactor: Refactored Yautja item tracking code to be more robust, everything should
+      still work as expected. You can add or remove any item from the tracking system
+      by holding it in your active hand and using the Add Item or Remove Item in the
+      tracker tab.
   Morrow:
   - bugfix: Portable comms should now update its description correctly while building.
   silencer_pl:

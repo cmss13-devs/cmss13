@@ -295,6 +295,24 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 
+/datum/action/xeno_action/onclick/queen_word
+	name = "Word of the Queen (50)"
+	action_icon_state = "queen_word"
+	plasma_cost = 50
+
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	X.hive_message()
+
+/datum/action/xeno_action/onclick/queen_tacmap
+	name = "View Xeno Tacmap"
+	action_icon_state = "toggle_queen_zoom"
+	plasma_cost = 0
+
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	X.xeno_tacmap()
+
 /datum/action/xeno_action/deevolve
 	name = "De-Evolve a Xenomorph"
 	action_icon_state = "xeno_deevolve"

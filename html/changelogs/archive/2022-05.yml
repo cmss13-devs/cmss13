@@ -256,6 +256,9 @@
   - rscadd: Whiskey Outpost CO's now have access to the same cosmetic gear options
       as their regular counterparts.
 2022-05-18:
+  Git-Nivrak:
+  - bugfix: Fixed a bug with warrior which would make you reset the stun timer on
+      mobs you stop pulling that weren't lunged.
   Youtubeboy139:
   - imageadd: New Coffee/Tea sprites
   - imageadd: New water cup sprites

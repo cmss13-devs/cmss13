@@ -74,15 +74,6 @@
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-
-/mob/living/carbon/Xenomorph/Warrior/stop_pulling()
-	if(isliving(pulling))
-		var/mob/living/L = pulling
-		L.SetStunned(0)
-		L.SetKnockeddown(0)
-	..()
-
-
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
 		return FALSE

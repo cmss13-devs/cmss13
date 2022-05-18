@@ -153,14 +153,16 @@
 
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
 		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(new_xeno.client)
 			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
+			if(new_xeno.client?.prefs.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_xeno.client)
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_pooled_larva()

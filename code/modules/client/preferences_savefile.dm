@@ -42,6 +42,12 @@
 		pref_toggles |= TOGGLE_MEMBER_PUBLIC
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 15) //toggle unpool flashing on by default
+		var/flash_toggles_two
+		S["toggles_flashing"] >> flash_toggles_two
+		flash_toggles_two |= FLASH_POOLSPAWN
+		S["toggles_flashing"] << flash_toggles_two
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

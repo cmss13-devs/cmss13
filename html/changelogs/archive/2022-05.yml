@@ -276,3 +276,5 @@
   - rscadd: Changed name of Beer bottle and Ale Bottle as both are now a canned beverage
   - code_imp: Organized the Canned Drink code to better separate it by type
   - imageadd: New colored jumpsuit sprites
+  stanalbatross:
+  - balance: removed the surgical webbing vest from doctor and CMO vendors.

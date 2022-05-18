@@ -88,7 +88,7 @@
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			for(var/category in uniform_categories)
+			for(var/category in uniform_categories) // Very Hacky fix
 				if(!exploiting)
 					break
 				for(var/specific_category in uniform_categories[category])
@@ -103,7 +103,7 @@
 
 
 			if(exploiting)
-				message_staff("[usr] has attempted to spawn an item using a dress vendor.")
+				message_staff("[key_name(usr)] has entered an invalid path into the dress vendor. Possibly an attempted exploit.")
 				return
 
 			var/obj/item/IT = new item_path(get_appropriate_vend_turf())

@@ -255,3 +255,18 @@
       their regular counterparts.
   - rscadd: Whiskey Outpost CO's now have access to the same cosmetic gear options
       as their regular counterparts.
+2022-05-18:
+  Youtubeboy139:
+  - imageadd: New Coffee/Tea sprites
+  - imageadd: New water cup sprites
+  - imageadd: New canned soda sprites
+  - rscadd: New BODA can
+  - imageadd: New Changeling Sting sprite
+  - imageadd: New OG flask sprites (bar flask and detective flask)
+  - imageadd: New coffee mug sprites
+  - imageadd: New reagent carton sprites (cream, lime juice, etc.)
+  - rscadd: New WY flask
+  - rscadd: New Classic Cola drink (for future map development and admin use)
+  - rscadd: Fruit Beer reagent (better separate Classic Cola and WY Fruit Beer)
+  - rscadd: Changed name of Beer bottle and Ale Bottle as both are now a canned beverage
+  - code_imp: Organized the Canned Drink code to better separate it by type

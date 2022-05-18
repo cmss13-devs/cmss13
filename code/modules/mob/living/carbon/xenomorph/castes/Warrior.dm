@@ -54,6 +54,8 @@
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
+	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
+
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
@@ -74,14 +76,13 @@
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
-	if(isliving(pulling))
+	if(isliving(pulling) && lunging)
+		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/L = pulling
 		L.SetStunned(0)
 		L.SetKnockeddown(0)
 	..()
-
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
@@ -110,6 +111,11 @@
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
+			lunging = TRUE
+			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + SShuman.next_fire - world.time)
+
+/mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
+	lunging = FALSE
 
 /mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))

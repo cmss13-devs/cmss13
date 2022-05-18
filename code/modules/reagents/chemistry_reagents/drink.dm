@@ -288,6 +288,13 @@
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy 	= 	-3
 
+/datum/reagent/drink/cold/wy_cola
+	name = "Fruit Beer"
+	id = "fruit_beer"
+	description = "An insulting Mango flavored beverage. Tastes like rotten fruit."
+	color = "#100800" // rgb: 16, 8, 0
+	adj_drowsy = -3
+
 /datum/reagent/drink/cold/nuka_cola
 	name = "Nuka Cola"
 	id = "nuka_cola"

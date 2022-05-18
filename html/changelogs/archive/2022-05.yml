@@ -256,6 +256,8 @@
   - rscadd: Whiskey Outpost CO's now have access to the same cosmetic gear options
       as their regular counterparts.
 2022-05-18:
+  Geevies:
+  - rscadd: Gave synths dead, DNR, dead but disconnected MedHUD states.
   Git-Nivrak:
   - bugfix: Fixed a bug with warrior which would make you reset the stun timer on
       mobs you stop pulling that weren't lunged.

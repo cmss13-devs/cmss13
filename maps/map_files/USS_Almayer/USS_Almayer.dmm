@@ -55487,8 +55487,6 @@
 /obj/structure/closet{
 	name = "backpack storage"
 	},
-/obj/item/storage/backpack/marine/rocketpack,
-/obj/item/storage/backpack/marine/rocketpack,
 /obj/item/storage/backpack/marine/grenadepack,
 /obj/item/storage/backpack/marine/grenadepack,
 /obj/item/storage/backpack/marine/mortarpack,

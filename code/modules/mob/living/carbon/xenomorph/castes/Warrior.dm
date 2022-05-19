@@ -4,11 +4,11 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
-	max_health = XENO_HEALTH_TIER_5
+	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
-	armor_deflection = XENO_ARMOR_TIER_1
+	armor_deflection = XENO_ARMOR_MOD_MED
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_7
 
@@ -110,31 +110,29 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/stored_shield_max = 100
-	var/stored_shield_per_slash = 25
-	var/datum/component/shield_component
+	var/lifesteal_percent = 7
+	var/max_lifesteal = 10
+	var/lifesteal_range =  4
 
-/datum/behavior_delegate/warrior_base/New()
-	. = ..()
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+	..()
 
-/datum/behavior_delegate/warrior_base/add_to_xeno()
-	. = ..()
-	if(!shield_component)
-		shield_component = bound_xeno.AddComponent(\
-			/datum/component/shield_slash,\
-			stored_shield_max,\
-			stored_shield_per_slash,\
-			"Warrior Shield")
-	else
-		bound_xeno.TakeComponent(shield_component)
+	var/final_lifesteal = lifesteal_percent
+	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 
-/datum/behavior_delegate/warrior_base/remove_from_xeno()
-	shield_component.RemoveComponent()
-	return ..()
+	for(var/mob/M as anything in mobs_in_range)
+		if(final_lifesteal >= max_lifesteal)
+			break
 
-/datum/behavior_delegate/warrior_base/Destroy(force, ...)
-	qdel(shield_component)
-	return ..()
+		if(M.stat == DEAD || HAS_TRAIT(M, TRAIT_NESTED))
+			continue
+
+		if(bound_xeno.can_not_harm(M))
+			continue
+
+		final_lifesteal++
+
+	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 15, 40))
 
 /datum/behavior_delegate/boxer
 	name = "Boxer Warrior Behavior Delegate"

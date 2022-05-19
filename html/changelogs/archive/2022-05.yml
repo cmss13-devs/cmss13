@@ -279,6 +279,8 @@
   stanalbatross:
   - balance: removed the surgical webbing vest from doctor and CMO vendors.
 2022-05-19:
+  Segrain:
+  - bugfix: Some edge case attack messages are now displayed under proper chat filters.
   stanalbatross:
   - rscadd: added a preference to show your country flag by your name in ooc chat,
       turned off by default. If turned on it will show a flag based on where your

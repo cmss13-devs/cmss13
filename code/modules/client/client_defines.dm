@@ -30,6 +30,8 @@
 
 	var/obj/screen/click_catcher/void
 
+	var/country
+
 		///////////////
 		//SOUND STUFF//
 		///////////////

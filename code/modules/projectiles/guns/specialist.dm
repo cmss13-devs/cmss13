@@ -974,7 +974,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	if(internal_slots > 1)
 		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
 	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),
-	SPAN_WARNING("[to_firer]"), null, null, null, CHAT_TYPE_WEAPON_USE)
+	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 
 	var/angle = round(Get_Angle(user,target))

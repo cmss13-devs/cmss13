@@ -278,3 +278,9 @@
   - imageadd: New colored jumpsuit sprites
   stanalbatross:
   - balance: removed the surgical webbing vest from doctor and CMO vendors.
+2022-05-19:
+  stanalbatross:
+  - rscadd: added a preference to show your country flag by your name in ooc chat,
+      turned off by default. If turned on it will show a flag based on where your
+      IP is connecting from in OOC chat before your name.
+  - config: added a config option to disable the above, turned on by default.

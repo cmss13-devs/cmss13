@@ -27,9 +27,6 @@
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
-
-
-
 /*
 /obj/item/game_kit
 	name = "Gaming Kit"

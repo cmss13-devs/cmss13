@@ -281,6 +281,37 @@
 	else
 		icon_state = "water_cup_e"
 
+/obj/item/reagent_container/food/drinks/cup
+	name = "Plastic Cup"
+	desc = "A generic red cup. Beer pong, anyone?"
+	icon = 'icons/obj/items/cup.dmi'
+	icon_state = "solocup"
+	throwforce = 0
+	w_class = SIZE_TINY
+	matter = list("plastic" = 5)
+	attack_verb = list("bludgeoned", "whacked","slapped")
+
+/obj/item/reagent_container/food/drinks/cup/attack_self(mob/user)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		to_chat(user,SPAN_WARNING("You crush \the [src]!"))
+		visible_message(SPAN_WARNING("[user] crushes the cup!"))
+		if(reagents.total_volume > 0)
+			reagents.clear_reagents()
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			to_chat(user,SPAN_WARNING("\The contents of \the [src] spill!"))
+		new /obj/item/crushed_cup(user.loc)
+		qdel(src)
+
+/obj/item/crushed_cup
+	name = "Crushed cup"
+	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
+	icon = 'icons/obj/items/cup.dmi'
+	icon_state = "crushed_solocup"
+	throwforce = 0
+	w_class = SIZE_TINY
+	matter = list("plastic" = 5)
+	attack_verb = list("bludgeoned", "whacked","slaped")
 
 //////////////////////////drinkingglass and shaker//
 //Note by Darem: This code handles the mixing of drinks. New drinks go in three places: In Chemistry-Reagents.dm (for the drink
@@ -358,3 +389,4 @@
 	name = "Weyland-Yutani coffee mug"
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
+

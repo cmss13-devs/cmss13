@@ -112,7 +112,7 @@
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
 			lunging = TRUE
-			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + SShuman.next_fire - world.time)
+			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
 	lunging = FALSE

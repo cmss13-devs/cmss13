@@ -118,6 +118,10 @@
 				if(get_dist(user, SB) > 1) // check if sandbag still beside them
 					break
 
+				if(SB.amount < 0) // check if sandbag is used by someone else
+					SB = null
+					continue
+
 				var/dirttransfer_amount = min(SB.amount, dirt_amt)
 				dirt_amt -= dirttransfer_amount
 				update_icon()

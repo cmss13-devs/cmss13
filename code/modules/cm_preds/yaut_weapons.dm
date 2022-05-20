@@ -2,62 +2,14 @@
 ########### Weapon Reused Procs ###########
 #########################################*/
 //Onehanded Weapons
-/obj/item/weapon/melee/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Twohanded Weapons
-/obj/item/weapon/melee/twohanded/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/twohanded/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/twohanded/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Ranged Weapons
-/obj/item/weapon/gun/energy/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/gun/energy/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	. = ..()
 	STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/gun/energy/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Spike Launcher
-/obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/gun/launcher/spike/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/gun/launcher/spike/Destroy()
-	. = ..()
-	remove_from_missing_pred_gear(src)
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /*#########################################
 ############## Misc Weapons ###############
@@ -821,6 +773,7 @@
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
 		spikes--
 		return in_chamber
 

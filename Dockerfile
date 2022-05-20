@@ -91,6 +91,8 @@ COPY strings strings
 COPY nano nano
 COPY maps maps
 COPY html html
+COPY sound sound
+COPY icons icons
 COPY --from=build-results /build/tgui/public tgui/public/
 COPY --from=build-results /build/${PROJECT_NAME}.dmb application.dmb
 COPY --from=build-results /build/${PROJECT_NAME}.rsc application.rsc

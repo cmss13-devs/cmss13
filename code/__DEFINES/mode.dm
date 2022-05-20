@@ -80,14 +80,11 @@
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND		(1<<6) // This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
                                                    // and put the empty magazine in your hand
 #define TOGGLE_AUTOMATIC_PUNCTUATION		(1<<7) // Whether your sentences will automatically be punctuated with a period
-
 #define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE	(1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
-
 #define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
-
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
-
-#define MEMBER_PUBLIC						(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
+#define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
+#define TOGGLE_OOC_FLAG						(1<12) // determines if your country flag appears by your name in ooc chat
 //=================================================
 
 var/list/be_special_flags = list(

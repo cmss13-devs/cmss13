@@ -101,26 +101,6 @@
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
 
-
-
-//BS12: Species-restricted clothing check.
-//CM Update : Restricting armor to specific uniform
-/obj/item/clothing/mob_can_equip(M as mob, slot)
-	//if we can't equip the item anyway, don't bother with further checks (cuts down on spam)
-	if (!..())
-		return 0
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/clothing/under/U = H.w_uniform
-
-		if(uniform_restricted && (!is_type_in_list(U, uniform_restricted) || !U))
-			to_chat(H, SPAN_WARNING("Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name]."))
-			return 0
-
-	return 1
-
-
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects
 /obj/item/clothing/ears
@@ -376,9 +356,8 @@
 		for (var/i in items_allowed)
 			if(istype(I, i))
 				if(stored_item)	return
-				M.drop_held_item()
 				stored_item = I
-				I.forceMove(src)
+				M.drop_inv_item_to_loc(I, src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()

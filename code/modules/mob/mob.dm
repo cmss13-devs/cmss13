@@ -220,7 +220,7 @@
 		return 1
 	return 0
 
-//This is a SAFE proc. Use this instead of equip_to_splot()!
+//This is a SAFE proc. Use this instead of equip_to_slot()!
 //set del_on_fail to have it delete W if it fails to equip
 //set disable_warning to disable the 'you are unable to equip that' warning.
 //unset redraw_mob to prevent the mob from being redrawn at the end.
@@ -686,31 +686,26 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir)
+/mob/proc/facedir(var/ndir, var/specific_dir)
 	if(!canface())	return 0
-	var/newdir = FALSE
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
-		newdir = TRUE
 	if(buckled && !buckled.anchored)
 		buckled.setDir(ndir)
 		buckled.handle_rotation()
-	var/mob/living/mliv = src
-	if(istype(mliv))
-		if(newdir)
-			mliv.on_movement(0)
 
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
-	return 1
+	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, FALSE, dir, specific_dir)
 
+	return TRUE
 
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if ( facedir(newdir) )
+	else if(facedir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -825,7 +820,7 @@ mob/proc/yank_out_object()
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 		H.pain.apply_pain(selection.w_class * 3)
 
-		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT))
+		if(prob(selection.w_class * 5) && !(affected.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			var/datum/wound/internal_bleeding/I = new (0)
 			affected.add_bleeding(I, TRUE)
 			affected.wounds += I

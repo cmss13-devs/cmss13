@@ -549,7 +549,7 @@
 	if(L.status & LIMB_DESTROYED)
 		return FALSE
 
-	if(L.status & LIMB_ROBOT)
+	if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		L.take_damage(rand(30,40), 0, 0) // just do more damage
 		visible_message(SPAN_XENOWARNING("You hear [M]'s [L.display_name] being pulled beyond its load limits!"), \
 		SPAN_XENOWARNING("[M]'s [L.display_name] begins to tear apart!"))

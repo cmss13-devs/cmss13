@@ -40,7 +40,7 @@
 	if(isliving(A))
 		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
-	if(istype(A, /obj/item/reagent_container/glass))
+	if((istype(A, /obj/item/reagent_container/glass)) && (!(istype(A, /obj/item/reagent_container/glass/minitank))))
 		to_chat(user, SPAN_NOTICE("The label will not stick to [A]. Use a pen instead."))
 		return
 	if(istype(A, /obj/item/tool/surgery) || istype(A, /obj/item/reagent_container/pill))
@@ -60,7 +60,7 @@
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
-						 SPAN_NOTICE("You label [A] as \"[label]\"."))
+	SPAN_NOTICE("You label [A] as \"[label]\"."))
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
 

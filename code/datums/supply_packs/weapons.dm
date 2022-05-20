@@ -39,8 +39,8 @@
 	contains = list(
 					/obj/item/storage/box/guncase/flamer,
 					/obj/item/storage/box/guncase/flamer,
-					/obj/item/storage/large_holster/fuelpack,
-					/obj/item/storage/large_holster/fuelpack
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo/alt/flame

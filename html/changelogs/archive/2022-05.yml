@@ -148,3 +148,143 @@
   stanalbatross:
   - bugfix: your xeno night vision level will now switch according to preference when
       spawning in via chestbursting and via the spawn pool.
+2022-05-12:
+  50RemAndCounting:
+  - balance: The M46C pulse rifle is now able to be melted by xenomorphs again. The
+      Command Tablet is now unmeltable.
+  CocaColaTastesGood:
+  - bugfix: Fixes an exploit that allowed players to arbitrarily spawn items using
+      the dress vendor.
+  GabeGnuwall:
+  - spellcheck: Updated the follow link from "follow" to "F" on dchat messages to
+      be consistent with others.
+  Geevies:
+  - balance: Bipods can now fire in a near-180 degree arc rather than a 90 degree
+      one.
+  - refactor: Changed the movement handler code to use signals rather than a looping
+      proc with a lot of datums. Some stuff may be broken, so make a Github Issue
+      if you see one.
+  - rscadd: Synths now have synthskin limbs, have white blood splatters when struck,
+      and have unique damage descriptors.
+  - rscadd: You can now do surgery on synths. You can repair their robotic organs
+      with nanopaste or cable coil. You don't have to clamp their bleeders, either.
+  - balance: Increased xeno acid blood damage from 12 to 25.
+  - balance: Increased Heavy armor bio resistance from CLOTHING_ARMOR_MEDIUMLOW (15)
+      to CLOTHING_ARMOR_HIGH (30).
+  - rscadd: Gardener drones can now designate and build special structures like hive
+      clusters and evo pods.
+  - rscadd: Added an Alacrit fruit to Gardener drones that slightly speeds up the
+      xeno that eats it for 15 seconds.
+  - balance: Resin surge now strengthens structures for 15 seconds rather than 3.
+  - balance: Gardener drones can now plant 4 fruits rather than 3.
+  - balance: Ovi'd queens can now only build thick walls/doors/membrane on hiveweeds,
+      otherwise it'll just be normal. Building them costs an amount of plasma roughly
+      in the middle of the two. The queen can build thick structures on normal weeds
+      while her building is boosted (first 30 minutes of the round).
+  - balance: Ovi'd queens can no longer be fed plasma by drones.
+  Shad0vvs:
+  - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
+      hosts inside.
+  - bugfix: Properly fixes an unnesting bug and now also logs the unnest on the unnesting
+      mob as well.
+  Triiodine:
+  - bugfix: bad offsets in the kitchen.
+  Waseemq1235:
+  - bugfix: Shoulder holsters can fit tasers now.
+  fira:
+  - bugfix: Resolved issues with Reboot SFX hanging up reboot, and failing to play
+      in docker container
+  stanalbatross:
+  - rscadd: Japanese-language text will now sound much more Japanese, as the entire
+      system of generating it was reworked to make it consistent 100% with real Japanese.
+  - rscadd: added a 50% chance for CLF characters to get a randomly generated Japanese
+      name.
+2022-05-13:
+  ghostsheet:
+  - rscadd: Added a survival cabinet to the Lifeboats.
+2022-05-14:
+  Segrain:
+  - bugfix: Human limbs are robotic no longer.
+  Spircen:
+  - bugfix: Added Caps on some areas to keep consistency on the format for the Sensor
+      Computer
+  nanu308, stan_albatross:
+  - balance: being direction locked and not moving in the direction your character
+      is facing will now slow you down a bit.
+  silencer_pl:
+  - bugfix: M56 head mounted sights now properly spawn for Whiskey Outpost Smartgunners.
+  stanalbatross:
+  - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
+      now carry over between bodies
+2022-05-15:
+  Geevies:
+  - rscadd: Items held in the mouth like knives or cigarettes now fall out when you
+      get knocked over.
+  - rscadd: You can now light and extinguish cigarettes on the ground, as well as
+      cigarettes held on someone's person by extinguishing them. Getting lit on fire
+      while holding an unlit cigarette will now light it.
+  - bugfix: You will no longer spam scream when you get lit on fire while already
+      lit on fire.
+  Hatterhat:
+  - rscadd: Marines can now style their hair in the fashion historically designated
+      "Short Hair 3".
+  Morrow:
+  - rscadd: Slight change to CAS deployed turrets description.
+  nauticall:
+  - admin: Admins can now modify requisitions points via a button in the Event Panel.
+2022-05-16:
+  Morrow:
+  - rscadd: You can now engrave your zippo lighter with a bayonet.
+  TotalEpicness:
+  - bugfix: MS-11 can now be named with the hand labler
+  ghostsheet:
+  - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
+      of Broiler-T flexible refueling system.
+2022-05-17:
+  Geevies:
+  - refactor: Refactored Yautja item tracking code to be more robust, everything should
+      still work as expected. You can add or remove any item from the tracking system
+      by holding it in your active hand and using the Add Item or Remove Item in the
+      tracker tab.
+  - bugfix: Fixed up the jobs for Dutch's Dozen, they should appear correctly in-game
+      now.
+  Morrow:
+  - bugfix: Portable comms should now update its description correctly while building.
+  silencer_pl:
+  - rscadd: Whiskey Outpost CO's now spawn in with their unique command pouch like
+      their regular counterparts.
+  - rscadd: Whiskey Outpost CO's now have access to the same cosmetic gear options
+      as their regular counterparts.
+2022-05-18:
+  Geevies:
+  - rscadd: Gave synths dead, DNR, dead but disconnected MedHUD states.
+  Git-Nivrak:
+  - bugfix: Fixed a bug with warrior which would make you reset the stun timer on
+      mobs you stop pulling that weren't lunged.
+  Youtubeboy139:
+  - imageadd: New Coffee/Tea sprites
+  - imageadd: New water cup sprites
+  - imageadd: New canned soda sprites
+  - rscadd: New BODA can
+  - imageadd: New Changeling Sting sprite
+  - imageadd: New OG flask sprites (bar flask and detective flask)
+  - imageadd: New coffee mug sprites
+  - imageadd: New reagent carton sprites (cream, lime juice, etc.)
+  - rscadd: New WY flask
+  - rscadd: New Classic Cola drink (for future map development and admin use)
+  - rscadd: Fruit Beer reagent (better separate Classic Cola and WY Fruit Beer)
+  - rscadd: Changed name of Beer bottle and Ale Bottle as both are now a canned beverage
+  - code_imp: Organized the Canned Drink code to better separate it by type
+  - imageadd: New colored jumpsuit sprites
+  stanalbatross:
+  - balance: removed the surgical webbing vest from doctor and CMO vendors.
+2022-05-19:
+  Segrain:
+  - bugfix: Some edge case attack messages are now displayed under proper chat filters.
+  harryob:
+  - qol: Observers can now look at the current page of a paper bundle.
+  stanalbatross:
+  - rscadd: added a preference to show your country flag by your name in ooc chat,
+      turned off by default. If turned on it will show a flag based on where your
+      IP is connecting from in OOC chat before your name.
+  - config: added a config option to disable the above, turned on by default.

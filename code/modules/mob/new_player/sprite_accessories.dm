@@ -583,7 +583,6 @@
 /datum/sprite_accessory/hair/shorthair3
 	name = "Short Hair 3"
 	icon_state = "hair_shorthair3"
-	selectable = 0
 
 /datum/sprite_accessory/hair/bun
 	name = "Bun"

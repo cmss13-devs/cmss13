@@ -251,9 +251,10 @@
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE
-	var/movement_datum_type = /datum/event_handler/xeno_zoom_onmovement
 	var/should_delay = FALSE
 	var/delay = 20
+	var/handles_movement = TRUE
+	var/movement_buffer = 0
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -272,7 +273,21 @@
 		if (should_delay)
 			if(!do_after(X, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(X.is_zoomed) return
-		X.zoom_in(movement_datum_type)
+		if(handles_movement)
+			RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+		X.zoom_in()
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
+
+	if(!actually_moving)
+		return
+
+	movement_buffer--
+	if(movement_buffer <= 0)
+		movement_buffer = initial(movement_buffer)
+		mover.zoom_out()
+		UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 
 // General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values

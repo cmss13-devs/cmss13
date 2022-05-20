@@ -157,3 +157,28 @@
 	new /obj/item/ammo_magazine/m2c(src)
 	new /obj/item/storage/belt/marine/m2c(src)
 
+//------------
+/obj/item/storage/box/guncase/m41a
+	name = "\improper M41A pulse rifle MK2 case"
+	desc = "A gun case containing the M41A pulse rifle MK2."
+	storage_slots = 5
+	can_hold = list(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1)
+
+/obj/item/storage/box/guncase/m41a/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/ammo_magazine/rifle(src)
+	new /obj/item/ammo_magazine/rifle(src)
+	new /obj/item/ammo_magazine/rifle(src)
+	new /obj/item/ammo_magazine/rifle(src)
+	
+//------------
+/obj/item/storage/box/guncase/pumpshotgun
+	name = "\improper M37A2 Pump Shotgun case"
+	desc = "A gun case containing the M37A2 Pump Shotgun."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot)
+
+/obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/pump(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)

@@ -720,15 +720,7 @@ IN_USE						used for vending/denying
 						H.marine_points -= cost
 
 			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-						if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-						else
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-					else
-						H.marine_buy_flags &= ~L[4]
-				else
+				if(!handle_vend(L, H))
 					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 					vend_fail()
 					return
@@ -737,7 +729,28 @@ IN_USE						used for vending/denying
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
-
+		
+/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/L, var/mob/living/carbon/human/H)
+	if(!(H.marine_buy_flags & L[4]))
+		return FALSE
+	
+	if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+		else
+			H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+		return TRUE
+	if(L[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(H.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			H.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+		else
+			H.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+		return TRUE
+		
+	H.marine_buy_flags &= ~L[4]
+	return TRUE
+			
+			
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
 		return

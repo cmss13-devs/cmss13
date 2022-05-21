@@ -293,5 +293,12 @@
   - refactor: Tweaked how the Examine, Pickup, and Pull verbs work, they should still
       function as normal however.
   - rscdel: Removed the move to top object verb.
+  Youtubeboy139:
+  - imageadd: New static siphon sprites
+  - imageadd: New static scrubber sprites
+  - imageadd: New `-open` and `-connector` sprites for portable scrubber and portable
+      siphon
+  - imageadd: New `-open` and `-connector` sprites for cans
+  - imageadd: New `sheater` default sprite (no more perpetually glowing space heater)
   stanalbatross:
   - rscdel: removed and replaced all visible references to bluespace.

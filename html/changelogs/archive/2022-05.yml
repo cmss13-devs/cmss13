@@ -293,3 +293,5 @@
   - refactor: Tweaked how the Examine, Pickup, and Pull verbs work, they should still
       function as normal however.
   - rscdel: Removed the move to top object verb.
+  stanalbatross:
+  - rscdel: removed and replaced all visible references to bluespace.

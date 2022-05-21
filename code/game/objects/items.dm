@@ -384,9 +384,12 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item)
 	SIGNAL_HANDLER
-	if(is_type_in_list(item, uniform_restricted))
-		user.drop_inv_item_on_ground(src)
-		to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]"))
+	if(!istype(user, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/human_user = user
+	if(is_type_in_list(item, uniform_restricted) && item == human_user.w_uniform)
+		human_user.drop_inv_item_on_ground(src)
+		to_chat(human_user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]"))
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)

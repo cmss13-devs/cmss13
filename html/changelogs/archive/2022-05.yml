@@ -288,3 +288,8 @@
       turned off by default. If turned on it will show a flag based on where your
       IP is connecting from in OOC chat before your name.
   - config: added a config option to disable the above, turned on by default.
+2022-05-21:
+  Geevies:
+  - refactor: Tweaked how the Examine, Pickup, and Pull verbs work, they should still
+      function as normal however.
+  - rscdel: Removed the move to top object verb.

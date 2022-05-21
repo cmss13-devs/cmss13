@@ -89,6 +89,9 @@
 /obj/item/defenses/handheld/proc/get_upgrade_list()
 	return null
 
+/obj/item/defenses/handheld/proc/upgrade_string_to_type()
+	return null
+
 // SENTRY BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry
 	name = "handheld UA 571-C sentry gun"
@@ -99,11 +102,20 @@
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-		.[image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld")] = /obj/item/defenses/handheld/sentry/dmr
+		. += list("DMR Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld"))
 	. += list(
-		image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld") = /obj/item/defenses/handheld/sentry/shotgun,
-		image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld") = /obj/item/defenses/handheld/sentry/mini
+		"Shotgun Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld"),
+		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld")
 	)
+
+/obj/item/defenses/handheld/sentry/upgrade_string_to_type(var/upgrade_string)
+	switch(upgrade_string)
+		if("DMR Upgrade")
+			return /obj/item/defenses/handheld/sentry/dmr
+		if("Shotgun Upgrade")
+			return /obj/item/defenses/handheld/sentry/shotgun
+		if("Mini-Sentry Upgrade")
+			return /obj/item/defenses/handheld/sentry/mini
 
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
@@ -134,10 +146,17 @@
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-		.[image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld")] = /obj/item/defenses/handheld/sentry/flamer/plasma
+		. += list("Long-Range Plasma Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld"))
 	. += list(
-		image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld") = /obj/item/defenses/handheld/sentry/flamer/mini
+		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")
 	)
+
+/obj/item/defenses/handheld/sentry/flamer/upgrade_string_to_type(var/upgrade_string)
+	switch(upgrade_string)
+		if("Long-Range Plasma Upgrade")
+			return /obj/item/defenses/handheld/sentry/flamer/plasma
+		if("Mini-Flamer Upgrade")
+			return /obj/item/defenses/handheld/sentry/flamer/mini
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -182,6 +201,19 @@
 	icon_state = "Normal tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
 
+/obj/item/defenses/handheld/tesla_coil/get_upgrade_list()
+	. = list(
+		"Overclocked Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Stun tesla_coil_handheld"),
+		"Micro-Tesla Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Micro tesla_coil_handheld")
+	)
+
+/obj/item/defenses/handheld/tesla_coil/upgrade_string_to_type(var/upgrade_string)
+	switch(upgrade_string)
+		if("Overclocked Upgrade")
+			return /obj/item/defenses/handheld/tesla_coil/stun
+		if("Micro-Tesla Upgrade")
+			return /obj/item/defenses/handheld/tesla_coil/micro
+
 /obj/item/defenses/handheld/tesla_coil/stun
 	name = "handheld 21S overclocked tesla coil"
 	icon_state = "Stun tesla_coil_handheld"
@@ -193,18 +225,25 @@
 	defense_type = /obj/structure/machinery/defenses/tesla_coil/micro
 	deployment_time = 0.75 SECONDS
 
-/obj/item/defenses/handheld/tesla_coil/get_upgrade_list()
-	. = list(
-		image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Stun tesla_coil_handheld") = /obj/item/defenses/handheld/tesla_coil/stun,
-		image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Micro tesla_coil_handheld") = /obj/item/defenses/handheld/tesla_coil/micro
-	)
-
 // BELL TOWER BASE AND UPGRADES
 /obj/item/defenses/handheld/bell_tower
 	name = "handheld R-1NG bell tower"
 	icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi'
 	icon_state = "Normal bell_tower_handheld"
 	defense_type = /obj/structure/machinery/defenses/bell_tower
+
+/obj/item/defenses/handheld/bell_tower/get_upgrade_list()
+	. = list(
+		"Motion-Detection Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "MD bell_tower_handheld"),
+		"Cloaking Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld")
+	)
+
+/obj/item/defenses/handheld/bell_tower/upgrade_string_to_type(var/upgrade_string)
+	switch(upgrade_string)
+		if("Motion-Detection Upgrade" )
+			return /obj/item/defenses/handheld/bell_tower/md
+		if("Cloaking Upgrade")
+			return /obj/item/defenses/handheld/bell_tower/cloaker
 
 /obj/item/defenses/handheld/bell_tower/md
 	name = "handheld R-1NG motion detector tower"
@@ -215,12 +254,6 @@
 	name = "handheld camouflaged R-1NG bell tower"
 	icon_state = "Cloaker bell_tower_handheld"
 	defense_type = /obj/structure/machinery/defenses/bell_tower/cloaker
-
-/obj/item/defenses/handheld/bell_tower/get_upgrade_list()
-	. = list(
-		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "MD bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/md,
-		image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld") = /obj/item/defenses/handheld/bell_tower/cloaker
-	)
 
 // image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "bell_backpack") = /obj/item/storage/backpack/imp
 // bell backpack - disabled for now.
@@ -235,12 +268,16 @@
 
 /obj/item/defenses/handheld/planted_flag/get_upgrade_list()
 	. = list(
-		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Warbanner planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/warbanner,
-		image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld") = /obj/item/defenses/handheld/planted_flag/range
+		"Warbanner Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Warbanner planted_flag_handheld"),
+		"Extended Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld")
 	)
 
-//	image(icon = 'icons/obj/items/clothing/backpacks.dmi', icon_state = "flag_backpack") = /obj/item/storage/backpack/jima
-//	flag backpack - disabled for now.
+/obj/item/defenses/handheld/planted_flag/upgrade_string_to_type(var/upgrade_string)
+	switch(upgrade_string)
+		if("Warbanner Upgrade")
+			return /obj/item/defenses/handheld/planted_flag/warbanner
+		if("Extended Upgrade")
+			return /obj/item/defenses/handheld/planted_flag/range
 
 /obj/item/defenses/handheld/planted_flag/warbanner
 	name = "handheld JIMA planted warbanner"

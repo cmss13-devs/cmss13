@@ -79,10 +79,10 @@
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
-		var/mob/living/L = pulling
-		L.SetStunned(0)
-		L.SetKnockeddown(0)
-	..()
+		var/mob/living/lunged = pulling
+		lunged.SetStunned(0)
+		lunged.SetKnockeddown(0)
+	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)

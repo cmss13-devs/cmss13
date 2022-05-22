@@ -302,3 +302,6 @@
   - imageadd: New `sheater` default sprite (no more perpetually glowing space heater)
   stanalbatross:
   - rscdel: removed and replaced all visible references to bluespace.
+2022-05-22:
+  ghostsheet:
+  - bugfix: Canister Pouch's Pressuzied canister can now be filled from bottles again.

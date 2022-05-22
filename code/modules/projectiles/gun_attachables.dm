@@ -1023,10 +1023,10 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/stock/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
-	..()
+	. = ..()
 
 	if(!collapsible)
-		return
+		return .
 
 	if(turn_off && stock_activated)
 		stock_activated = FALSE

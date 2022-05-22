@@ -17,17 +17,7 @@
 		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
 			message = language.scramble(message)
 
-	if(!say_understands(speaker,language))
-		if(istype(speaker,/mob/living/simple_animal))
-			var/mob/living/simple_animal/S = speaker
-			if(S.speak.len)
-				message = pick(S.speak)
-			else
-				message = stars(message)
-		else if(language)
-			message = language.scramble(message)
-		else
-			message = stars(message)
+	message = handle_language_scramble(message, language, speaker)
 
 	if(language)
 		style = language.colour
@@ -79,14 +69,7 @@
 		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!say_understands(speaker,language))
-		if(istype(speaker,/mob/living/simple_animal))
-			var/mob/living/simple_animal/S = speaker
-			message = pick(S.speak)
-		else if(language)
-			message = language.scramble(message)
-		else
-			message = stars(message)
+	message = handle_language_scramble(message, language, speaker)
 
 	if(language)
 		style = language.colour
@@ -222,3 +205,29 @@
 		heard = SPAN_LOCALSAY("<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>")
 
 	to_chat(src, heard)
+
+/mob/proc/handle_language_scramble(var/message, var/datum/language/language, var/mob/speaker)
+	if(!say_understands(speaker, language))
+		if(istype(speaker,/mob/living/simple_animal))
+			var/mob/living/simple_animal/S = speaker
+			if(S.speak.len)
+				return pick(S.speak)
+			else
+				return stars(message)
+		else if(language)
+			return language.scramble(message)
+		else
+			return stars(message)
+	return message
+
+/mob/living/carbon/Xenomorph/handle_language_scramble(var/message, var/datum/language/language, var/mob/speaker)
+	if(!say_understands(speaker, language))
+		if(istype(speaker, /mob/living/simple_animal))
+			var/mob/living/simple_animal/S = speaker
+			if(S.speak.len)
+				return pick(S.speak)
+			else
+				return stars(message)
+		var/static/regex/illegal_letters = regex(@{"[prhwkqcomfd]+"}, "gi")
+		return illegal_letters.Replace(message, "")
+	return message

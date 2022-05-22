@@ -303,5 +303,7 @@
   stanalbatross:
   - rscdel: removed and replaced all visible references to bluespace.
 2022-05-22:
+  Morrow:
+  - bugfix: You will no longer be permanently slow if you field strip a deployed bipod.
   ghostsheet:
   - bugfix: Canister Pouch's Pressuzied canister can now be filled from bottles again.

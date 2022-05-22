@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.next_page = FALSE
 		if(choices_icons[choice_id])
 			var/image/I = choices_icons[choice_id]
-			I.layer = I.layer + (py / 10)
+			I.layer += max(((py + radius) / 10), 0)
 			E.overlays += (choices_icons[choice_id])
 
 /datum/radial_menu/New()
@@ -252,9 +252,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		if(use_labels)
 			MA.maptext_width = 64
 			MA.maptext_height = 64
-			MA.maptext_x = -round(MA.maptext_width/2) + 16
-			MA.maptext_y = -round(MA.maptext_height/2) + 16
-			MA.maptext = "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: 7px\">[label]</span></center>"
+			MA.maptext_x = -round(MA.maptext_width / 2) + 16
+			MA.maptext_y = -round(MA.maptext_height / 2) + 16
+			MA.maptext = SMALL_FONTS_CENTRED(7, label)
 	return MA
 
 

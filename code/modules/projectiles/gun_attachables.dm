@@ -2027,7 +2027,7 @@ Defined in conflicts.dm of the #defines folder.
 		for(var/datum/action/A as anything in gun.actions)
 			A.update_button_icon()
 
-/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G, mob/living/user)
+/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
@@ -2035,7 +2035,10 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_10
 	G.recalculate_attachment_bonuses()
-	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	var/mob/living/user
+	if(isliving(G.loc))
+		user = G.loc
+		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_bullet_trait("iff")
@@ -2075,7 +2078,7 @@ Defined in conflicts.dm of the #defines folder.
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
-				undeploy_bipod(G,user)
+				undeploy_bipod(G)
 
 	update_icon()
 

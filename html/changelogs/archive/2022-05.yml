@@ -306,6 +306,9 @@
   CocaColaTastesGood:
   - bugfix: Sanitizes the Anti-Air controller.
   - bugfix: Fixes an exploit that allowed items to be spawned in null space.
+  Git-Nivrak:
+  - bugfix: Fixes an unintended behavior removal as a side effect from the previous
+      MR regarding this
   Morrow:
   - bugfix: You will no longer be permanently slow if you field strip a deployed bipod.
   ghostsheet:

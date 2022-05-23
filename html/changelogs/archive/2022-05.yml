@@ -313,3 +313,7 @@
   - bugfix: You will no longer be permanently slow if you field strip a deployed bipod.
   ghostsheet:
   - bugfix: Canister Pouch's Pressuzied canister can now be filled from bottles again.
+2022-05-23:
+  Youtubeboy139:
+  - imageadd: New Shoulder Holster item sprite
+  - imageadd: New Shoulder Holster onmob sprite

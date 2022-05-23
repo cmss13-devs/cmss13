@@ -317,3 +317,6 @@
   Youtubeboy139:
   - imageadd: New Shoulder Holster item sprite
   - imageadd: New Shoulder Holster onmob sprite
+  stanalbatross:
+  - bugfix: fixed paper from photocopiers not looking like it was written on when
+      coming out.

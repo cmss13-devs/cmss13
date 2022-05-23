@@ -21359,7 +21359,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/prop/helmetgarb/helmet_nvg{
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
 	pixel_x = 5;
 	pixel_y = 7
 	},
@@ -59481,7 +59481,7 @@
 /area/almayer/hallways/vehiclehangar)
 "nrw" = (
 /obj/structure/machinery/vending/cigarette,
-/obj/item/prop/helmetgarb/helmet_nvg{
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
 	pixel_x = -5;
 	pixel_y = 13
 	},

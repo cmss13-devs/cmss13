@@ -279,7 +279,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
 	/obj/item/prop/helmetgarb/trimmed_wire = "trimmed_wire",
 	/obj/item/prop/helmetgarb/helmet_nvg = HELMET_GARB_RELAY_ICON_STATE,
-	/obj/item/prop/helmetgarb/helmet_nvg/functional = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/helmet_gasmask = "helmet_gasmask",
 	/obj/item/prop/helmetgarb/flair_initech = "flair_initech",
 	/obj/item/prop/helmetgarb/flair_io = "flair_io",
@@ -467,7 +468,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 				F.activate_attachment(src, mob, TRUE)
 	..()
 
-
+/obj/item/clothing/head/helmet/marine/has_garb_overlay()
+	return flags_marine_helmet & HELMET_GARB_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
 	if(flags_marine_helmet & HELMET_DAMAGE_OVERLAY && !(flags_marine_helmet & HELMET_IS_DAMAGED))

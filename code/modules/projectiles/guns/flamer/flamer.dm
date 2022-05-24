@@ -517,9 +517,9 @@
 				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 			else if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
-				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred if it's not present.
+				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
 					X.reset_xeno_armor_debuff_after_time(X, 20)
-					type_b_debuff_xeno_armor(X)
+					//type_b_debuff_xeno_armor(X)
 				resist_modifier = type_b_debuff_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 				X.next_move_slowdown = X.next_move_slowdown + (3 * resist_modifier)

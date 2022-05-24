@@ -219,7 +219,7 @@
 /proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 20, var/burn_level = 30, var/flameshape = FLAMESHAPE_DEFAULT, var/target, var/fire_type = FIRE_VARIANT_DEFAULT)
 	//This proc is used to generate automatically-colored fires from manually adjusted item variables.
 	//It parses them as parameters and sets color automatically based on Intensity, then sends an edited reagent to the standard flame code.
-	//By default, this generates a napalm fire with a radius of 1, flame_level of 30 per UT (prev 14 as greenfire), burn_level of 20 per UT (prev 15 as greenfire), in a diamond shape.
+	//By default, this generates a napalm fire with a radius of 1, flame_level of 20 per UT (prev 14 as greenfire), burn_level of 30 per UT (prev 15 as greenfire), in a diamond shape.
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()

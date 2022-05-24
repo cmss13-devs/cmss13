@@ -369,7 +369,6 @@
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -751,7 +750,23 @@
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
+/obj/item/weapon/gun/smartgun/m56c
+	name = "\improper M56C Smartgun"
+	desc = "The actual firearm in the 4-piece M56C Smartgun System. The M56C is the latest and greatest replacement for the M56, featuring many improvements such as better ergonomics, target acquisition, efficiency, rate of fire and coming standard with depleted uranium rounds. Backwards compatible with m56 magazines. \n Unfortunately they haven't fully replace the M56 in this sector due to shipping issues.\nYou may toggle firing restrictions by using a special action."
+	icon_state = "m56c"
+	item_state = "m56c"
+	current_mag = /obj/item/ammo_magazine/smartgun/dirty
+	ammo = /obj/item/ammo_magazine/smartgun/dirty
+	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
 
+/obj/item/weapon/gun/smartgun/m56c/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	fa_delay = FIRE_DELAY_TIER_SMG
+	if(!recoil_compensation)
+		scatter = SCATTER_AMOUNT_TIER_8
 // CLF SMARTGUN
 
 /obj/item/weapon/gun/smartgun/clf

@@ -1680,6 +1680,15 @@
 	damage = 30
 	penetration = 0
 
+/datum/ammo/bullet/smartgun/holo
+	name = "holo-targeting smartgun bullet"
+	icon_state = "bullet"
+	damage = 20
+
+/datum/ammo/bullet/smartgun/holo/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"
 	icon_state = "bullet"

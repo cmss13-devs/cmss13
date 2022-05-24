@@ -101,7 +101,13 @@
 /obj/item/ammo_magazine/smartgun/dirty
 	icon_state = "m56_drum_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
-	gun_type = /obj/item/weapon/gun/smartgun/dirty
+	gun_type = /obj/item/weapon/gun/smartgun
+
+
+/obj/item/ammo_magazine/smartgun/holo
+	icon_state = "m56_drum_holo"
+	default_ammo = /datum/ammo/bullet/smartgun/holo
+	gun_type = /obj/item/weapon/gun/smartgun
 
 //-------------------------------------------------------
 //Flare gun. Close enough?

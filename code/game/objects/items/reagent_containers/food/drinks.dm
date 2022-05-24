@@ -299,10 +299,10 @@
 			reagents.clear_reagents()
 			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 			to_chat(user,SPAN_WARNING("The contents of \the [src] spill!"))
-		new /obj/item/crushed_cup(user.loc)
+		new /obj/item/trash/crushed_cup(user.loc)
 		qdel(src)
 
-/obj/item/crushed_cup
+/obj/item/trash/crushed_cup
 	name = "Crushed cup"
 	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
 	icon = 'icons/obj/items/cup.dmi'

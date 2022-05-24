@@ -299,7 +299,7 @@
 		if(reagents.total_volume > 0)
 			reagents.clear_reagents()
 			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-			to_chat(user,SPAN_WARNING("\The contents of \the [src] spill!"))
+			to_chat(user,SPAN_WARNING("The contents of \the [src] spill!"))
 		new /obj/item/crushed_cup(user.loc)
 		qdel(src)
 

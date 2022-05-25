@@ -19,6 +19,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
+	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
 	var/gauge = "12g"
 
 /obj/item/weapon/gun/shotgun/Initialize(mapload, spawn_empty)
@@ -597,6 +598,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	additional_fire_group_delay = 1.5 SECONDS
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -614,9 +616,6 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/stock/mou53)
 	map_specific_decoration = TRUE
-	fire_delay_group = list(
-		FIRE_DELAY_GROUP_MOU = 1.5 SECONDS
-	)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi

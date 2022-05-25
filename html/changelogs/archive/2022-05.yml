@@ -320,3 +320,11 @@
   stanalbatross:
   - bugfix: fixed paper from photocopiers not looking like it was written on when
       coming out.
+2022-05-25:
+  Geevies:
+  - rscadd: Added a general shotgun fire delay group, while rewriting fire delay code
+      to only factor in remaining fire delays. This'll prevent the infamous double
+      chung playstyle by making it useless to carry two of the same kind of shotgun
+      loaded with the same ammo.
+  stanalbatross:
+  - balance: widened BR viro entrances and made the external walls breachable

@@ -86,8 +86,6 @@
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
-	if(!istype(user.locs[1], /turf)) // Inside a xeno, tarp, tank etc..
-		return
 	if(!ishuman(usr))
 		return
 	if(mods["ctrl"])
@@ -123,8 +121,12 @@
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
 		return
 	if(A.z != user.z)
-		to_chat(user, SPAN_WARNING("You can't lase through that!"))
+		to_chat(user, SPAN_WARNING("You can't target through that!"))
 		return
+	if(!istype(user.locs[1], /turf)) // Inside a xeno, tarp, tank etc..
+		to_chat(user, SPAN_WARNING("You can't target from here!"))
+		return
+
 
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)

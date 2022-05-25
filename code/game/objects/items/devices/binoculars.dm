@@ -14,6 +14,10 @@
 
 	//matter = list("metal" = 50,"glass" = 50)
 
+/obj/item/device/bincoulars/dropped(/obj/item/item, mob/user)
+	. = ..()
+	on_unset_interaction(user)
+
 /obj/item/device/binoculars/Initialize()
 	. = ..()
 	select_gamemode_skin(type)
@@ -82,6 +86,8 @@
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
+	if(!istype(user.locs[1], /turf)) // Inside a xeno, tarp, tank etc..
+		return
 	if(!ishuman(usr))
 		return
 	if(mods["ctrl"])
@@ -91,6 +97,8 @@
 
 /obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
 	if(!istype(user))
+		return
+	if(user.stat == DEAD)
 		return
 	if(mods["ctrl"])
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
@@ -113,6 +121,9 @@
 		return
 	if(world.time < laser_cooldown)
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
+		return
+	if(A.z != user.z)
+		to_chat(user, SPAN_WARNING("You can't lase through that!"))
 		return
 
 	var/acquisition_time = target_acquisition_delay
@@ -190,6 +201,10 @@
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
+		return
+	if(user.stat == DEAD)
+		return
+	if(!get_dist(src.locs[1], user) <= 1)
 		return
 	if(mods["alt"])
 		toggle_bino_mode(user)

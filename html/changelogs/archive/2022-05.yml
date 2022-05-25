@@ -320,3 +320,6 @@
   stanalbatross:
   - bugfix: fixed paper from photocopiers not looking like it was written on when
       coming out.
+2022-05-25:
+  stanalbatross:
+  - balance: widened BR viro entrances and made the external walls breachable

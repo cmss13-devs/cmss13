@@ -331,6 +331,8 @@
 2022-05-26:
   Git-Nivrak:
   - bugfix: Fixed an exploit with CL briefcase
+  harryob:
+  - bugfix: autopsy scanners now give the correct date of death, and date of injury
   silencer_pl:
   - bugfix: Whiskey Outpost Smartgun using roles (HG Team Leader and Smartgunner)
       now properly spawn with M56 visors equipped (for real this time)

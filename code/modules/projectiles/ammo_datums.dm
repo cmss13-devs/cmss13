@@ -1683,7 +1683,7 @@
 /datum/ammo/bullet/smartgun/holo
 	name = "holo-targeting smartgun bullet"
 	icon_state = "bullet"
-	damage = 20
+	damage = 25 // bullet holo tip is 9 damage, body of the bullet is 10 damage, 9 + 10 = 21
 
 /datum/ammo/bullet/smartgun/holo/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()

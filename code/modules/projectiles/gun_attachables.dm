@@ -461,6 +461,12 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 14
 	hud_offset_mod = -4
 
+/obj/item/attachable/smartbarrel/m56c
+	icon_state = "m56c_barrel"
+	//pixel_shift_x = 14
+	//hud_offset_mod = -4
+
+
 // Mateba barrels
 
 /obj/item/attachable/mateba

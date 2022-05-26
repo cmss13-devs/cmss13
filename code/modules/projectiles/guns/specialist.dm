@@ -499,7 +499,7 @@
 		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src.name]'s fire restriction is disabled.")
 		return
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "[ammo_secondary.name]" : "[ammo_primary.name]"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
@@ -751,14 +751,17 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 /obj/item/weapon/gun/smartgun/m56c
-	name = "\improper M56C Smartgun"
-	desc = "The actual firearm in the 4-piece M56C Smartgun System. The M56C is the latest and greatest replacement for the M56, featuring many improvements such as better ergonomics, target acquisition, efficiency, rate of fire and coming standard with depleted uranium rounds. Backwards compatible with m56 magazines. \n Unfortunately they haven't fully replace the M56 in this sector due to shipping issues.\nYou may toggle firing restrictions by using a special action."
+	name = "\improper M56C Improved Smartgun"
+	desc = "The actual firearm in the 4-piece M56C Smartgun System. The M56C is the latest and greatest replacement for the M56, featuring many improvements such as better ergonomics, target acquisition, efficiency, rate of fire and \"Smarter Holo-Targetting Bullets\" selectable with a flip of a switch. Backwards compatible with m56 magazines. \n Unfortunately they haven't fully replace the M56 in this sector due to shipping issues.\nYou may toggle firing restrictions by using a special action."
 	icon_state = "m56c"
 	item_state = "m56c"
-	current_mag = /obj/item/ammo_magazine/smartgun/dirty
-	ammo = /obj/item/ammo_magazine/smartgun/dirty
-	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
+	current_mag = /obj/item/ammo_magazine/smartgun
+	ammo = /obj/item/ammo_magazine/smartgun/holo
+	ammo_primary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/holo ///Toggled ammo type
+	starting_attachment_types = list(/obj/item/attachable/smartbarrel/m56c)
+
+/////      			 TODO: UN HARDCODE SG AMMO TYPES, FIX FUNNY BARREL ISSUE
 
 /obj/item/weapon/gun/smartgun/m56c/set_gun_config_values()
 	..()

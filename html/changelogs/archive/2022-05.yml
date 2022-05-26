@@ -328,3 +328,6 @@
       loaded with the same ammo.
   stanalbatross:
   - balance: widened BR viro entrances and made the external walls breachable
+2022-05-26:
+  Git-Nivrak:
+  - bugfix: Fixed an exploit with CL briefcase

@@ -336,3 +336,6 @@
   silencer_pl:
   - bugfix: Whiskey Outpost Smartgun using roles (HG Team Leader and Smartgunner)
       now properly spawn with M56 visors equipped (for real this time)
+  stanalbatross:
+  - qol: added action buttons for the "word of the queen" and "view xeno tacmap" verbs
+      to the queen.

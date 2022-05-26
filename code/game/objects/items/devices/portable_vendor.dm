@@ -146,6 +146,7 @@
 
 			if(use_points && points < cost)
 				to_chat(H, SPAN_WARNING("Not enough points."))
+				return
 
 
 			var/turf/T = get_turf(loc)

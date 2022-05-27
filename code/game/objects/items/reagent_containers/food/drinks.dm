@@ -24,9 +24,6 @@
 		return FALSE
 
 	if(M == user)
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
@@ -34,8 +31,6 @@
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return TRUE
-	else if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),

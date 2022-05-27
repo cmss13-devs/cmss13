@@ -145,6 +145,8 @@
 
 /// Transfers to the reagents datum of an object
 /datum/reagents/proc/trans_to(atom/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)
+	if(isSynth(target))
+		return
 	var/datum/reagents/R = target?.reagents
 	if(R && !locked && !R.locked && total_volume > 0)
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
@@ -169,6 +171,7 @@
 
 /// Transfers to object as ingestion
 /datum/reagents/proc/trans_to_ingest(var/atom/movable/target, var/amount=1, var/multiplier=1, var/preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents
+
 	if(!target?.reagents || total_volume <= 0)
 		return
 

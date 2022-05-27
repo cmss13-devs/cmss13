@@ -342,6 +342,9 @@
 
 	message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
 
+/datum/action/xeno_action/onclick/banish/proc/remove_banish(var/datum/hive_status/hive, var/name)
+	hive.banished_ckeys.Remove(name)
+
 
 // Readmission = un-banish
 

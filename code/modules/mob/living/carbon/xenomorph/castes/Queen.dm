@@ -294,7 +294,7 @@
 		/mob/living/carbon/Xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/Xenomorph/proc/toggle_unnesting,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
-		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
+		/mob/living/carbon/Xenomorph/Queen/proc/hive_message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 	)
 
@@ -306,6 +306,7 @@
 		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
@@ -369,7 +370,7 @@
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
-	resin_build_order = GLOB.resin_build_order_drone
+	set_resin_build_order(GLOB.resin_build_order_drone)
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -511,7 +512,7 @@
 
 	last_special = world.time + 150
 
-/mob/living/carbon/Xenomorph/Queen/proc/hive_Message()
+/mob/living/carbon/Xenomorph/Queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
@@ -729,6 +730,7 @@
 		/datum/action/xeno_action/onclick/remove_eggsac,
 		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/watch_xeno,
@@ -744,6 +746,7 @@
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/eye,
+		/datum/action/xeno_action/onclick/queen_tacmap,
 		/datum/action/xeno_action/activable/info_marker/queen
 	)
 
@@ -753,7 +756,10 @@
 
 	add_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
 
-	resin_build_order = GLOB.resin_build_order_hivelord
+	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
+	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
+
+	set_resin_build_order(GLOB.resin_build_order_ovipositor)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
 	resting = FALSE
@@ -793,6 +799,9 @@
 	give_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
+
+	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
+	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	recalculate_actions()
 

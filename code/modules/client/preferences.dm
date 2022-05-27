@@ -47,7 +47,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -73,6 +73,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
 	var/predator_age = 100
+	var/predator_h_style = "Standard"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -80,6 +81,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_armor_material = "ebony"
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
+	var/predator_caster_material = "ebony"
+	var/predator_cape_type = "None"
+	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
@@ -455,6 +459,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Yautja Name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'><b>[predator_name]</b></a><br>"
 				dat += "<b>Yautja Gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'><b>[predator_gender == MALE ? "Male" : "Female"]</b></a><br>"
 				dat += "<b>Yautja Age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'><b>[predator_age]</b></a><br>"
+				dat += "<b>Yautja Quill Style:</b> <a href='?_src_=prefs;preference=pred_hair;task=input'><b>[predator_h_style]</b></a><br>"
 				dat += "<b>Yautja Flavor Text:</b> <a href='?_src_=prefs;preference=pred_flavor_text;task=input'><b>[TextPreview(predator_flavor_text, 15)]</b></a><br>"
 				dat += "<b>Yautja Whitelist Status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'><b>[yautja_status]</b></a>"
 				dat += "</div>"
@@ -467,7 +472,18 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Greave Style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
 				dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
 				dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
-				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a>"
+				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
+				dat += "<b>Caster Material:</b> <a href='?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
+				dat += "</div>"
+
+				dat += "<div id='column3'>"
+				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
+				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[capitalize_first_letters(predator_cape_type)]</b></a><br>"
+				dat += "<b>Cape Color:</b> "
+				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
+				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
+				dat += "</a><br><br>"
+				dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -492,10 +508,12 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Stylesheet:</b> <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 			dat += "<b>Hide Statusbar:</b> <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
+			if(CONFIG_GET(flag/ooc_country_flags))
+				dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
 			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 				dat += "<b>View Master Controller Tab:</b> <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 			if(unlock_content)
-				dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
+				dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -1034,6 +1052,35 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_pred_greave_mat)
 						return
 					predator_greave_material = new_pred_greave_mat
+				if("pred_caster_mat")
+					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+					if(!new_pred_caster_mat)
+						return
+					predator_caster_material = new_pred_caster_mat
+				if("pred_cape_type")
+					var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+					var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
+
+					var/list/options = list("None" = "None")
+					for(var/cape_name in GLOB.all_yautja_capes)
+						var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
+						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
+							options += list(capitalize_first_letters(cape_name) = cape_name)
+
+					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
+					if(!new_cape)
+						return
+					predator_cape_type = options[new_cape]
+				if("pred_cape_color")
+					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as color|null
+					if(!new_cape_color)
+						return
+					predator_cape_color = new_cape_color
+				if("pred_hair")
+					var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
+					if(!new_h_style)
+						return
+					predator_h_style = new_h_style
 				if("pred_flavor_text")
 					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
 					if(!pred_flv_raw)
@@ -1400,7 +1447,13 @@ var/const/MAX_SAVE_SLOTS = 10
 			switch(href_list["preference"])
 				if("publicity")
 					if(unlock_content)
-						toggle_prefs ^= MEMBER_PUBLIC
+						toggle_prefs ^= TOGGLE_MEMBER_PUBLIC
+
+				if("ooc_flag")
+					if(CONFIG_GET(flag/ooc_country_flags))
+						toggle_prefs ^= TOGGLE_OOC_FLAG
+					else
+						to_chat(user, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
 
 				if("gender")
 					if(gender == MALE)

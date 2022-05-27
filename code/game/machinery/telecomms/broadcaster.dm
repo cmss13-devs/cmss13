@@ -145,7 +145,7 @@
 			var/mob/living/carbon/human/H = M
 			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
-			else if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency

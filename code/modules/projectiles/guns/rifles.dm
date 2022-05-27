@@ -408,7 +408,6 @@
 							/obj/item/attachable/heavy_barrel,
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	unacidable = TRUE
 	indestructible = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 

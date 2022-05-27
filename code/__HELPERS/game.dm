@@ -85,6 +85,17 @@
 			L |= recursive_mob_check(A, L, recursion_limit - 1, client_check, sight_check, include_radio)
 	return L
 
+/// Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human
+/proc/recursive_holder_check(var/obj/item/held_item, var/recursion_limit = 3)
+	if(recursion_limit <= 0)
+		return held_item
+	if(isturf(held_item.loc))
+		return held_item
+	if(isturf(held_item.loc.loc))
+		return held_item.loc
+	recursion_limit--
+	return recursive_holder_check(held_item.loc, recursion_limit)
+
 // The old system would loop through lists for a total of 5000 per function call, in an empty server.
 // This new system will loop at around 1000 in an empty server.
 // Returns a list of mobs in range of R from source. Used in radio and say code.

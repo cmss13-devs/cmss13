@@ -68,7 +68,7 @@
 		return
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
-	if(L && L.status & LIMB_ROBOT)
+	if(L && (L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 		L.heal_damage(potency * delta_time, potency * delta_time, TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1, delta_time)
@@ -355,7 +355,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/L = pick(H.limbs)
 	if(L && prob(5 * potency * delta_time))
-		if(L.status & LIMB_ROBOT)
+		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, 2*potency)
 			return
 		if(L.implants && L.implants.len > 0)

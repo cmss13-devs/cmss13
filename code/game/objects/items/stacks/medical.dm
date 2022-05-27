@@ -40,7 +40,7 @@
 			to_chat(user, SPAN_WARNING("You can't apply [src] through [H.wear_suit]!"))
 			return 1
 
-	if(affecting.status & LIMB_ROBOT)
+	if(affecting.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
 		return 1
 

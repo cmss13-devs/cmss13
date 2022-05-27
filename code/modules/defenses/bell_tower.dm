@@ -1,5 +1,9 @@
 #define BELL_TOWER_RANGE 4
 #define BELL_TOWER_EFFECT 6
+#define BELL_TOWER_COOLDOWN 1.5 SECONDS
+#define BELL_TOWER_CLOAKER_ALPHA 10
+
+#define IMP_SLOWDOWN_TIME 3
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
@@ -54,17 +58,19 @@
 		FE.linked_bell = src
 		tripwires_placed += FE
 
+/obj/structure/machinery/defenses/bell_tower/proc/clear_last_mob_activated()
+	last_mob_activated = null
+
 /obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(var/mob/M)
 	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 
 /obj/structure/machinery/defenses/bell_tower/Destroy()
-	. = ..()
-
 	if(last_mob_activated)
 		last_mob_activated = null
 	if(flick_image)
 		flick_image = null
 	clear_tripwires()
+	return ..()
 
 
 /obj/effect/bell_tripwire
@@ -106,13 +112,17 @@
 		return
 
 	linked_bell.last_mob_activated = M
+
+	// Clear last mob after 4 times the length of the cooldown timer, about 6 seconds
+	addtimer(CALLBACK(linked_bell, /obj/structure/machinery/defenses/bell_tower.proc/clear_last_mob_activated), 4 * BELL_TOWER_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
 	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
-	linked_bell.bell_cooldown = world.time + 15 //1.5s cooldown between RINGS
+	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
 
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
@@ -150,7 +160,7 @@
 		QDEL_NULL(md)
 
 
-#define BELL_TOWER_CLOAKER_ALPHA 10
+
 /obj/structure/machinery/defenses/bell_tower/cloaker
 	name = "camouflaged R-1NG bell tower"
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged and reinforced."
@@ -170,9 +180,7 @@
 	return
 
 
-#undef BELL_TOWER_CLOAKER_ALPHA
 
-#define IMP_SLOWDOWN_TIME 3
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -189,6 +197,10 @@
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/imp/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/storage/backpack/imp/process()
 	if(!ismob(loc))
@@ -217,3 +229,5 @@
 #undef IMP_SLOWDOWN_TIME
 #undef BELL_TOWER_RANGE
 #undef BELL_TOWER_EFFECT
+#undef BELL_TOWER_COOLDOWN
+#undef BELL_TOWER_CLOAKER_ALPHA

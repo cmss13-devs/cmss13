@@ -195,6 +195,7 @@
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
+	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
@@ -212,6 +213,7 @@
 
 	force = 0
 	throwforce = 1.0
+	matter = list("plastic" = 5000)
 
 	w_class = SIZE_SMALL
 	var/usage_amount = 10

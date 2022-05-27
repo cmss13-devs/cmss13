@@ -342,9 +342,23 @@ var/list/datum/mob_hud/huds = list(
 	holder4.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
-		holder.icon_state = "hudsynth"
-		holder2.icon_state = "hudsynth"
-		holder3.icon_state = "hudsynth"
+		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
+		if(stat != DEAD)
+			holder.icon_state = "hudsynth"
+			holder2.icon_state = "hudsynth"
+		else
+			if(!client)
+				var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+				if(!G)
+					holder.icon_state = "hudsynthdnr"
+					holder2.icon_state = "hudsynthdnr"
+				else if(!G.client)
+					holder.overlays += image('icons/mob/hud/hud.dmi', "hudnosynthclient")
+					holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnosynthclient")
+			else
+				holder.icon_state = "hudsynthdead"
+				holder2.icon_state = "hudsynthdead"
+			return
 	else
 		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
 		if(stat == DEAD)

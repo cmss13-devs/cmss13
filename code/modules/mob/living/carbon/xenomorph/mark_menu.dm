@@ -109,6 +109,8 @@
 	switch(action)
 		if("choose_mark")
 			var/selected_type = text2path(params["type"])
+			if(!istype(selected_type, /datum/xeno_mark_define)) // Hacky fix
+				return
 			var/datum/xeno_mark_define/x = new selected_type
 			var/datum/action/xeno_action/activable/info_marker/Xenos_mark_info_action
 			to_chat(X, SPAN_NOTICE("You will now declare '<b>[x.name]</b>!' when marking resin."))

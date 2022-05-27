@@ -52,7 +52,9 @@
 	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
 	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
 
+	var/last_damage_source
 	if (damage_done > 5)
+		last_damage_source = initial(O.name)
 		animation_flash_color(src)
 		var/obj/item/I = O
 		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
@@ -62,14 +64,21 @@
 
 	O.throwing = 0		//it hit, so stop moving
 
+	var/mob/M
 	if(ismob(LM.thrower))
-		var/mob/M = LM.thrower
+		M = LM.thrower
+		if(damage_done > 5)
+			M.track_hit(initial(O.name))
+			if (M.faction == faction)
+				M.track_friendly_fire(initial(O.name))
 		var/client/assailant = M.client
 		if(assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	if(last_damage_source)
+		last_damage_data = create_cause_data(last_damage_source, M)
 
 /mob/living/mob_launch_collision(var/mob/living/L)
 	L.Move(get_step_away(L, src))
@@ -129,7 +138,7 @@
 
 /mob/living/carbon/human/IgniteMob()
 	. = ..()
-	if(. && !stat && pain.feels_pain)
+	if((. & IGNITE_IGNITED) && !stat && pain.feels_pain)
 		INVOKE_ASYNC(src, /mob.proc/emote, "scream")
 
 /mob/living/proc/ExtinguishMob()

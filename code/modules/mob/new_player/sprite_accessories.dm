@@ -67,11 +67,11 @@
 
 /datum/sprite_accessory/hair/short
 	name = "Short Hair"	  // try to capatilize the names please~
-	icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
+	icon_state = "hair_shorthair" // you do not need to define _s or _l sub-states, game automatically does this for you
 
 /datum/sprite_accessory/hair/cut
 	name = "Cut Hair"
-	icon_state = "hair_c"
+	icon_state = "hair_cuthair"
 
 /datum/sprite_accessory/hair/flair
 	name = "Flaired Hair"
@@ -79,7 +79,7 @@
 
 /datum/sprite_accessory/hair/long
 	name = "Shoulder-length Hair"
-	icon_state = "hair_b"
+	icon_state = "hair_long_shoulder"
 
 /datum/sprite_accessory/hair/longalt
 	name = "Shoulder-length Hair Alt"
@@ -120,7 +120,7 @@
 
 /datum/sprite_accessory/hair/ponytail2
 	name = "Ponytail 2"
-	icon_state = "hair_pa"
+	icon_state = "hair_ponytail2"
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/ponytail3
@@ -130,6 +130,11 @@
 /datum/sprite_accessory/hair/ponytail4
 	name = "Ponytail 4"
 	icon_state = "hair_ponytail4"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail_rough
+	name = "Ponytail, Rough"
+	icon_state = "hair_ponytail_rough"
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/sideponytail
@@ -163,12 +168,12 @@
 
 /datum/sprite_accessory/hair/bedhead2
 	name = "Bedhead 2"
-	icon_state = "hair_bedheadv2"
+	icon_state = "hair_bedhead2"
 	selectable = 0
 
 /datum/sprite_accessory/hair/bedhead3
 	name = "Bedhead 3"
-	icon_state = "hair_bedheadv3"
+	icon_state = "hair_bedhead3"
 
 /datum/sprite_accessory/hair/beehive
 	name = "Beehive"
@@ -200,6 +205,10 @@
 	name = "Buzzcut"
 	icon_state = "hair_buzzcut"
 	gender = MALE
+
+/datum/sprite_accessory/hair/buzz/tall
+	name = "Buzzcut Tall"
+	icon_state = "hair_buzzcut_tall"
 
 /datum/sprite_accessory/hair/combover
 	name = "Combover"
@@ -276,7 +285,7 @@
 
 /datum/sprite_accessory/hair/flowing_hair
 	name = "Flow Hair"
-	icon_state = "hair_f"
+	icon_state = "hair_flow"
 
 /datum/sprite_accessory/hair/feather
 	name = "Feather"
@@ -289,7 +298,7 @@
 
 /datum/sprite_accessory/hair/mohawk
 	name = "Mohawk"
-	icon_state = "hair_d"
+	icon_state = "hair_mohawk"
 
 /datum/sprite_accessory/hair/jensen
 	name = "Adam Jensen Hair"
@@ -365,7 +374,7 @@
 
 /datum/sprite_accessory/hair/balding
 	name = "Balding Hair"
-	icon_state = "hair_e"
+	icon_state = "hair_baldinghair"
 	gender = MALE // turnoff!
 
 
@@ -574,7 +583,6 @@
 /datum/sprite_accessory/hair/shorthair3
 	name = "Short Hair 3"
 	icon_state = "hair_shorthair3"
-	selectable = 0
 
 /datum/sprite_accessory/hair/bun
 	name = "Bun"
@@ -593,6 +601,14 @@
 	name = "Shaved Bun"
 	icon_state = "hair_shavedbun"
 	gender = FEMALE
+
+/datum/sprite_accessory/hair/bun_topknot
+	name = "Bun, Topknot"
+	icon_state = "hair_bun_topknot"
+
+/datum/sprite_accessory/hair/bun_man
+	name = "Man Bun"
+	icon_state = "hair_bun_manbun"
 
 /datum/sprite_accessory/hair/halfshaved
 	name = "Half Shaved"
@@ -638,6 +654,10 @@
 /datum/sprite_accessory/hair/undercut
 	name = "Undercut"
 	icon_state = "hair_undercut"
+
+/datum/sprite_accessory/hair/undercut_top
+	name = "Undercut, Top"
+	icon_state = "hair_undercuttop"
 
 /datum/sprite_accessory/hair/highlight
 	name = "Hightight"
@@ -696,6 +716,14 @@
 	name = "Side Undercut"
 	icon_state = "hair_sideundercut"
 
+/datum/sprite_accessory/hair/sideundercut
+	name = "Side Hang Undercut"
+	icon_state = "hair_sidehangundercut"
+
+/datum/sprite_accessory/hair/sideundercut_reverse
+	name = "Side Hang Undercut (Reverse)"
+	icon_state = "hair_reversesidehangundercut"
+
 /datum/sprite_accessory/hair/gentle2
 	name = "Gentle 2"
 	icon_state = "hair_gentle2"
@@ -705,6 +733,38 @@
 	name = "Flaired Hair 2"
 	icon_state = "hair_flair2"
 	gender = FEMALE
+
+/datum/sprite_accessory/hair/chelsea
+	name = "Punk Shave, Chelsea"
+	icon_state = "hair_punk_chelsea"
+
+/datum/sprite_accessory/hair/chelsea_small_hawk
+	name = "Punk Shave, Chelsea Small Hawk"
+	icon_state = "hair_punk_chelsea_smallhawk"
+
+/datum/sprite_accessory/hair/chelsea_ponytail
+	name = "Punk Shave, Chelsea Ponytail"
+	icon_state = "hair_punk_chelsea_ponytail"
+
+/datum/sprite_accessory/hair/chelsea_fringe
+	name = "Punk Shave, Chelsea (Fringe)"
+	icon_state = "hair_punk_chelseafringe"
+
+/datum/sprite_accessory/hair/chelsea_small_hawk_fringe
+	name = "Punk Shave, Chelsea Small Hawk (Fringe)"
+	icon_state = "hair_punk_chelseafringe_smallhawk"
+
+/datum/sprite_accessory/hair/chelsea_big_hawk_fringe
+	name = "Punk Shave, Chelsea Big Hawk (Fringe)"
+	icon_state = "hair_punk_chelseafringe_bighawk"
+
+/datum/sprite_accessory/hair/chelsea_ponytail_fringe
+	name = "Punk Shave, Chelsea Ponytail (Fringe)"
+	icon_state = "hair_punk_chelseafringe_ponytail"
+
+/datum/sprite_accessory/hair/oxton
+	name = "Oxton"
+	icon_state = "hair_oxton"
 
 /*
 ///////////////////////////////////
@@ -875,3 +935,45 @@
 /datum/sprite_accessory/skin/human_tatt01
 	name = "Tatt01 human skin"
 	icon_state = "tatt1"
+
+// Yautja hairstyles
+/datum/sprite_accessory/yautja_hair
+	icon = 'icons/mob/humans/yaut_hair.dmi'
+	species_allowed = list(SPECIES_YAUTJA)
+	do_colouration = FALSE
+
+/datum/sprite_accessory/yautja_hair/standard
+	name = "Standard"
+	icon_state = "standard"
+
+/datum/sprite_accessory/yautja_hair/short_thick
+	name = "Short Thick"
+	icon_state = "short_thick"
+
+/datum/sprite_accessory/yautja_hair/straight_thin
+	name = "Straight Thin"
+	icon_state = "straight_thin"
+
+/datum/sprite_accessory/yautja_hair/long_tied
+	name = "Long Tied"
+	icon_state = "long_tied"
+
+/datum/sprite_accessory/yautja_hair/short_thin
+	name = "Short Thin"
+	icon_state = "short_thin"
+
+/datum/sprite_accessory/yautja_hair/long_curved
+	name = "Long Curved"
+	icon_state = "long_curved"
+
+/datum/sprite_accessory/yautja_hair/long_straight
+	name = "Long Straight"
+	icon_state = "long_straight"
+
+/datum/sprite_accessory/yautja_hair/long_wide
+	name = "Long Wide"
+	icon_state = "long_wide"
+
+/datum/sprite_accessory/yautja_hair/short_wide
+	name = "Short Wide"
+	icon_state = "short_wide"

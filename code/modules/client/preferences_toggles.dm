@@ -154,6 +154,18 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
+/client/verb/toggle_unnest_flash()
+	set name = "Toggle Unnest Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get unnested and can reenter your body."
+
+	prefs.toggles_flashing ^= FLASH_UNNEST
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_UNNEST)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
+
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
 	set category = "Preferences.TaskbarFlashing"
@@ -192,9 +204,22 @@
 	set category = "Preferences"
 	set desc = "Toggles if other players can see that you are a BYOND member (OOC logo)."
 
-	prefs.toggle_prefs ^= MEMBER_PUBLIC
+	prefs.toggle_prefs ^= TOGGLE_MEMBER_PUBLIC
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & MEMBER_PUBLIC) ? "" : "'t"] see if you are a BYOND member."))
+	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "" : "'t"] now see if you are a BYOND member."))
+
+/client/verb/toggle_ooc_country_flag()
+	set name = "Toggle Country Flag"
+	set category = "Preferences"
+	set desc = "Toggles if your country flag (based on what country your IP is connecting from) is displayed in OOC chat."
+
+	if(!(CONFIG_GET(flag/ooc_country_flags)))
+		to_chat(src, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
+		return
+
+	prefs.toggle_prefs ^= TOGGLE_OOC_FLAG
+	prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("Your country flag [(prefs.toggle_prefs & TOGGLE_OOC_FLAG) ? "will now" : "will now not"] appear before your name in OOC chat."))
 
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"

@@ -13,8 +13,6 @@
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
-	if(anchored)
-		verbs -= /atom/movable/verb/pull
 	handle_rotation()
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)

@@ -223,7 +223,7 @@
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
-	icon_state = "teacup"
+	icon_state = "tea"
 	item_state = "coffee"
 	center_of_mass = "x=16;y=14"
 
@@ -234,7 +234,8 @@
 /obj/item/reagent_container/food/drinks/ice
 	name = "ice cup"
 	desc = "Careful, cold ice, do not chew."
-	icon_state = "coffee"
+	icon_state = "coffee_nolid"
+	item_state = "coffee"
 	center_of_mass = "x=15;y=10"
 
 /obj/item/reagent_container/food/drinks/ice/Initialize()
@@ -312,6 +313,13 @@
 	. = ..()
 	reagents.add_reagent("water", 59)
 	reagents.add_reagent("hooch", 1)
+
+/obj/item/reagent_container/food/drinks/flask/weylandyutani
+	name = "\improper Weyland-Yutani flask"
+	desc = "A metal flask embossed with Weyland-Yutani's signature logo. A nifty little corporate souvenir if you like the company."
+	icon_state = "flask_wy"
+	volume = 60
+	center_of_mass = "x=17;y=8"
 
 /obj/item/reagent_container/food/drinks/flask/detflask
 	name = "detective's flask"

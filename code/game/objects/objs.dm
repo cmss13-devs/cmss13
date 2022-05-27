@@ -294,7 +294,7 @@
 
 	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
 	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
-	buckled_mob.on_movement()
+	SEND_SIGNAL(buckled_mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
 	return TRUE
 
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -365,3 +365,6 @@
 		return
 
 	O.name += " ([label])"
+
+/obj/proc/extinguish()
+	return

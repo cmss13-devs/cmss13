@@ -12,7 +12,7 @@
 <div class="item" style="padding-top: 10px">
 	<div class="item">
 		<div class="itemLabel">
-			Bluespace Drive:
+			Engine status:
 		</div>
 		<div class="itemContent">
 			{{if data.shuttle_state == "idle"}}
@@ -36,25 +36,25 @@
 							{{:helper.displayBar(data.recharge_status, 0, data.recharge_time, 'bad')}}
 						{{/if}}
 						<div class="line">
-							The Bluespace Drive will be recharged in {{:data.recharging_seconds}} seconds.
+							The Shuttle Engines will be recharged in {{:data.recharging_seconds}} seconds.
 						</div>
 					{{else}}
 						{{:helper.displayBar(data.recharge_time, 0, data.recharge_time, 'good')}}
 						<div class="line">
-							The Bluespace Drive is ready to use.
+							The Shuttle Engines are ready to use.
 						</div>
 					{{/if}}
 				</div>
 			{{else}}
 				<div class="line">
-					The Bluespace Drive is currently under use.&nbsp;
+					The Shuttle Engines are currently under use.&nbsp;
 					{{if data.flight_seconds}}
-						Flight time left: {{:data.flight_seconds}}&nbsp;				
+						Flight time left: {{:data.flight_seconds}}&nbsp;
 					{{/if}}
 					{{if data.can_return_home}}
 						{{:helper.link('Abort Flyby', 'cancel', {'cancel_flyby' : '1'}, null , null)}}
 					{{/if}}
-				</div>	
+				</div>
 			{{/if}}
 		{{/if}}
 	</div>

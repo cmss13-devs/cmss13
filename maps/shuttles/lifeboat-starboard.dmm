@@ -10,9 +10,10 @@
 	},
 /area/shuttle/lifeboat)
 "ej" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,4"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "em" = (
 /turf/closed/shuttle/lifeboat{
@@ -25,9 +26,10 @@
 	},
 /area/shuttle/lifeboat)
 "ex" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,2"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "gp" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -35,9 +37,10 @@
 	},
 /area/shuttle/lifeboat)
 "gS" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "26,5"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "hb" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -53,19 +56,24 @@
 /area/shuttle/lifeboat)
 "hD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -9;
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "hQ" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,3"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "ix" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 11;
+	pixel_x = 8;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -114,9 +122,10 @@
 	},
 /area/shuttle/lifeboat)
 "qV" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "rM" = (
 /turf/closed/shuttle/lifeboat{
@@ -124,9 +133,10 @@
 	},
 /area/shuttle/lifeboat)
 "su" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,5"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "sO" = (
 /turf/closed/shuttle/lifeboat,
@@ -137,20 +147,23 @@
 	},
 /area/shuttle/lifeboat)
 "uJ" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "25,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "uN" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "26,1"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "vG" = (
 /obj/docking_port/mobile/lifeboat/starboard,
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "wA" = (
 /turf/template_noop,
@@ -244,9 +257,10 @@
 	},
 /area/shuttle/lifeboat)
 "FS" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "25,0"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "GA" = (
 /turf/closed/shuttle/lifeboat{
@@ -257,6 +271,13 @@
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,1"
 	},
+/area/shuttle/lifeboat)
+"GQ" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "HW" = (
 /turf/closed/shuttle/lifeboat{
@@ -294,14 +315,22 @@
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "NF" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,0"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "NK" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,4"
 	},
+/area/shuttle/lifeboat)
+"NO" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 15;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Od" = (
 /turf/closed/shuttle/lifeboat{
@@ -333,9 +362,10 @@
 	},
 /area/shuttle/lifeboat)
 "RH" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,1"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "RR" = (
 /turf/closed/shuttle/lifeboat{
@@ -364,9 +394,10 @@
 	},
 /area/shuttle/lifeboat)
 "Up" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "UG" = (
 /turf/closed/shuttle/lifeboat{
@@ -481,7 +512,7 @@ Ow
 (8,1,1) = {"
 GA
 Td
-OO
+GQ
 XV
 OO
 GD
@@ -562,7 +593,7 @@ OO
 (17,1,1) = {"
 em
 kC
-ix
+NO
 XV
 OO
 zK

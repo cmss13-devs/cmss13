@@ -284,7 +284,7 @@ This is bad:
 Prefer to either access the variable directly or use a macro/define.
 
 
-* Make usage of variables or traits, set up through condition setters, for a more maintainable alternative to compex and redefined getters.
+* Make usage of variables or traits, set up through condition setters, for a more maintainable alternative to complex and redefined getters.
 
 These are bad:
 ```DM

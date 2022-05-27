@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	13
+#define SAVEFILE_VERSION_MAX	15
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -29,6 +29,18 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= SOUND_INTERNET
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 14) //toggle unnest flashing on by default
+		var/flash_toggles
+		S["toggles_flashing"] >> flash_toggles
+		flash_toggles |= FLASH_UNNEST
+		S["toggles_flashing"] << flash_toggles
+
+	if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_MEMBER_PUBLIC
+		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -103,6 +115,9 @@
 	S["pred_mask_mat"]		>> predator_mask_material
 	S["pred_armor_mat"]		>> predator_armor_material
 	S["pred_greave_mat"]	>> predator_greave_material
+	S["pred_caster_mat"]	>> predator_caster_material
+	S["pred_cape_type"]		>> predator_cape_type
+	S["pred_cape_color"]	>> predator_cape_color
 	S["pred_flavor_text"]	>> predator_flavor_text
 
 	S["commander_status"]	>> commander_status
@@ -156,6 +171,9 @@
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
+	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
+	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
+	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
@@ -236,6 +254,9 @@
 	S["pred_mask_mat"]		<< predator_mask_material
 	S["pred_armor_mat"]		<< predator_armor_material
 	S["pred_greave_mat"]	<< predator_greave_material
+	S["pred_caster_mat"]	<< predator_caster_material
+	S["pred_cape_type"]		<< predator_cape_type
+	S["pred_cape_color"]	<< predator_cape_color
 	S["pred_flavor_text"]	<< predator_flavor_text
 
 	S["commander_status"] 	<< commander_status

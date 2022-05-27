@@ -27,16 +27,6 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
 
-GLOBAL_LIST_INIT(resin_build_order_default, list(
-	/datum/resin_construction/resin_turf/wall,
-	/datum/resin_construction/resin_turf/membrane,
-	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/nest,
-	/datum/resin_construction/resin_obj/sticky_resin,
-	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/resin_spike
-))
-
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
@@ -52,6 +42,18 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
+	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/acid_pillar,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
+	/datum/resin_construction/resin_turf/wall/queen,
+	/datum/resin_construction/resin_turf/wall/reflective,
+	/datum/resin_construction/resin_turf/membrane/queen,
+	/datum/resin_construction/resin_obj/door/queen,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
@@ -110,8 +112,10 @@ GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 	//non currently
 ))
 
-var/global/list/yautja_gear = list() // list of loose pred gear
-var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
+GLOBAL_LIST_EMPTY(loose_yautja_gear)
+GLOBAL_LIST_EMPTY(tracked_yautja_gear) // list of pred gear with a tracking element attached
+
+GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_yautja_capes())
 
 //Languages/species/whitelist.
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
@@ -148,6 +152,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name)			// Stor
 	//Hairstyles
 GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name)			//stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Underwear
 var/global/list/underwear_m = list("Briefs") //Curse whoever made male/female underwear diffrent colours
@@ -342,6 +347,12 @@ var/global/list/paramslist_cache = list()
 	for(var/type in GLOB.custom_huds_list - list(HUD_ALIEN, HUD_ROBOT))
 		human_huds += type
 	return human_huds
+
+/proc/setup_yautja_capes()
+	var/list/cape_list = list()
+	for(var/obj/item/clothing/yautja_cape/cape_type as anything in typesof(/obj/item/clothing/yautja_cape))
+		cape_list[initial(cape_type.name)] = cape_type
+	return cape_list
 
 
 /* // Uncomment to debug chemical reaction list.

@@ -53,21 +53,17 @@
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	remove_from_missing_pred_gear(src)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)
-	add_to_missing_pred_gear(src)
 	flags_item = initial(flags_item)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	else
-		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 	..()
+	if(!isYautja(user))
+		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/process()
 	if(!ishuman(loc))
@@ -162,14 +158,17 @@
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
 	var/translator_type = "Modern"
+	var/caster_material = "ebony"
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type, var/new_caster_material)
 	. = ..()
-	caster = new(src)
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
+	if(new_caster_material)
+		caster_material = new_caster_material
+	caster = new(src, FALSE, caster_material)
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	charge -= (severity * 500)
@@ -407,16 +406,10 @@
 	var/closest = 10000
 	var/direction = -1
 	var/atom/areaLoc = null
-	for(var/obj/item/I in yautja_gear)
+	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
-		if (isYautja(loc))
-			//it's actually yautja holding the item, ignore!
+		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
-		if (ishuman(loc))
-			var/mob/living/carbon/human/l = loc
-			if((l.hunter_data.honored || l.hunter_data.thralled) && !(l.hunter_data.dishonored || l.stat == DEAD))
-			//it's actually a thrall holding the item or a gift, ignore!
-				continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
 		else if(is_mainship_level(loc.z))
@@ -429,8 +422,9 @@
 				closest = dist
 				direction = get_dir(M,loc)
 				areaLoc = loc
-	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
-		if(Y.stat != DEAD) continue
+	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
+		if(Y.stat != DEAD)
+			continue
 		if(is_loworbit_level(Y.z))
 			dead_low_orbit++
 		else if(is_mainship_level(Y.z))
@@ -444,19 +438,22 @@
 				direction = get_dir(M,Y)
 				areaLoc = loc
 
-	var/output = 0
+	var/output = FALSE
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
-		output = 1
-		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit."))
+		output = TRUE
+		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures[dead_on_planet ? ", <b>[dead_on_planet]</b> in the hunting grounds" : ""][dead_on_almayer ? ", <b>[dead_on_almayer]</b> in orbit" : ""][dead_low_orbit ? ", <b>[dead_low_orbit]</b> in low orbit" : ""]."))
 	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
-		output = 1
-		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit."))
+		output = TRUE
+		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
 	if(closest < 900)
 		var/areaName = get_area_name(areaLoc)
-		to_chat(M, SPAN_NOTICE("The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName]."))
+		if(closest == 0)
+			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
+		else
+			to_chat(M, SPAN_NOTICE("The closest signature is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
-	return 1
+	return TRUE
 
 
 /obj/item/clothing/gloves/yautja/hunter/verb/cloaker()
@@ -613,7 +610,7 @@
 
 		var/obj/item/weapon/gun/energy/yautja/plasma_caster/W = caster
 		if(!istype(W))
-			W = new(usr)
+			W = new(usr, FALSE, caster_material)
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
@@ -840,18 +837,14 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		var/datum/launch_metadata/LM = new()
-		LM.target = usr
-		LM.range = 10
-		LM.speed = SPEED_FAST
-		LM.thrower = usr
-		D.launch_towards(LM)
+		if(isturf(D.loc))
+			D.boomerang(usr)
 	return 1
 
 /obj/item/clothing/gloves/yautja/hunter/verb/remove_tracked_item()
-	set name = "Remove item from tracker"
+	set name = "Remove Item from Tracker"
+	set desc = "Remove an item from the Yautja tracker."
 	set category = "Yautja.Tracker"
-	set desc = "Removes an item from all yautja tracking."
 	set src in usr
 	. = remove_tracked_item_internal(FALSE)
 
@@ -867,18 +860,22 @@
 		if (option == 1)
 			. = activate_random_verb()
 			return
-	if(!yautja_gear.len)
+
+	var/obj/item/tracked_item = usr.get_active_hand()
+	if(!tracked_item)
+		to_chat(usr, SPAN_WARNING("You need the item in your active hand to remove it from the tracker!"))
 		return
-	var/obj/item/pickeditem = tgui_input_list(usr, "item to remove", "Remove item", yautja_gear)
-	if(pickeditem && !(pickeditem in untracked_yautja_gear))
-		untracked_yautja_gear += pickeditem
-		remove_from_missing_pred_gear(pickeditem)
+	if(!(tracked_item in GLOB.tracked_yautja_gear))
+		to_chat(usr, SPAN_WARNING("\The [tracked_item] isn't on the tracking system."))
+		return
+	tracked_item.RemoveElement(/datum/element/yautja_tracked_item)
+	to_chat(usr, SPAN_NOTICE("You remove \the <b>[tracked_item]</b> from the tracking system."))
 
 
 /obj/item/clothing/gloves/yautja/hunter/verb/add_tracked_item()
-	set name = "Add item to tracker"
+	set name = "Add Item to Tracker"
+	set desc = "Add an item to the Yautja tracker."
 	set category = "Yautja.Tracker"
-	set desc = "Adds an item to all yautja tracking."
 	set src in usr
 	. = add_tracked_item_internal(FALSE)
 
@@ -894,12 +891,16 @@
 		if (option == 1)
 			. = activate_random_verb()
 			return
-	if(!untracked_yautja_gear.len)
+
+	var/obj/item/untracked_item = usr.get_active_hand()
+	if(!untracked_item)
+		to_chat(usr, SPAN_WARNING("You need the item in your active hand to remove it from the tracker!"))
 		return
-	var/obj/item/pickeditem = tgui_input_list(usr, "item to add", "Add item", untracked_yautja_gear)
-	if(pickeditem && !(pickeditem in yautja_gear))
-		untracked_yautja_gear -= pickeditem
-		add_to_missing_pred_gear(pickeditem)
+	if(untracked_item in GLOB.tracked_yautja_gear)
+		to_chat(usr, SPAN_WARNING("\The [untracked_item] is already being tracked."))
+		return
+	untracked_item.AddElement(/datum/element/yautja_tracked_item)
+	to_chat(usr, SPAN_NOTICE("You add \the <b>[untracked_item]</b> to the tracking system."))
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_combi()
 	set name = "Yank Combi-stick"
@@ -922,7 +923,7 @@
 			return
 
 	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
-		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
+		if(C.loc == usr) //We are already wearing/holding it.
 			continue
 		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
 			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.

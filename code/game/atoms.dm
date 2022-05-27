@@ -261,15 +261,6 @@ its easier to just keep the beam vertical.
 
 	return TRUE
 
-//All atoms
-/atom/verb/atom_examine()
-	set name = "Examine"
-	set category = "IC"
-	set src in view(usr.client) //If it can be seen, it can be examined.
-
-	if(!usr) return
-	examine(usr)
-
 /atom/proc/examine(mob/user)
 	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)

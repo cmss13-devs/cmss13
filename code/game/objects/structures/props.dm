@@ -527,7 +527,7 @@
 /obj/structure/prop/power_transformer
 	name = "power transformer"
 	icon = 'icons/obj/structures/props/power_transformer.dmi'
-	icon_state = "power_transformer"
+	icon_state = "transformer"
 	bound_width = 64
 	bound_height = 64
 	desc = "A passive electrical component that controls where and which circuits power flows into."
@@ -591,6 +591,20 @@
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+
+/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+	density = TRUE
+
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
+		. &= ~MOVE_TURF
+
+/obj/structure/prop/invuln/dropship_parts/lifeboat
+	name = "Lifeboat"
+	icon = 'icons/turf/lifeboat.dmi'
+
 
 /obj/structure/prop/brazier
 	name = "brazier"

@@ -338,7 +338,7 @@
 	T.hud_update_banished()
 	T.lock_evolve = TRUE
 	X.hive.banished_ckeys[T.name] = T.ckey
-	addtimer(CALLBACK(src, .proc/remove_banish, X.hive, T.name), 25 MINUTES)
+	addtimer(CALLBACK(src, .proc/remove_banish, X.hive, T.name), 30 MINUTES)
 
 	message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
 

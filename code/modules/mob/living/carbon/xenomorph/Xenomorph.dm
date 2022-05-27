@@ -183,6 +183,8 @@
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
 
+	var/list/modifier_sources
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Intrinsic State - well-ish modularized
@@ -218,7 +220,7 @@
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 12
+	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 
 
@@ -253,10 +255,10 @@
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
-	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
-	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
+	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
+	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
-	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
+	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
 	var/list/built_structures = list()
 
 	var/icon_xeno
@@ -303,6 +305,8 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+		life_kills_total = oldXeno.life_kills_total
+		life_damage_taken_total = oldXeno.life_damage_taken_total
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)
@@ -543,8 +547,9 @@
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
-	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
-	screenobj.update_icon(src)
+	if(hud_used)
+		var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+		screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
 	switch(level)
@@ -729,18 +734,10 @@
 	MH.add_hud_to(src)
 
 
-/mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
-	//xeno leader get a bit arrow and less cooldown
+/mob/living/carbon/Xenomorph/check_improved_pointing()
+	//xeno leaders get a big arrow and less cooldown
 	if(hive_pos != NORMAL_XENO)
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
-	else
-		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
-	visible_message("<b>[src]</b> points to [A]")
-	return 1
-
-
+		return TRUE
 
 ///get_eye_protection()
 ///Returns a number between -1 to 2
@@ -975,6 +972,8 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
+		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()

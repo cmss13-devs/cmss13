@@ -122,7 +122,7 @@
 				evolution_threshold = 500
 			//Other tiers (T3, Queen, etc.) can't evolve anyway
 
-	resin_build_order = GLOB.resin_build_order_default
+	resin_build_order = GLOB.resin_build_order_drone
 
 /client/var/cached_xeno_playtime
 

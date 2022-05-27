@@ -70,13 +70,17 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/fun/dutch
-	name = "Dutch's Dozen - Rifleman"
+	name = JOB_DUTCH_RIFLEMAN
 	paygrade = "DTC"
-	assignment = "Dutch's Dozen - Rifleman"
+	assignment = JOB_DUTCH_RIFLEMAN
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_DUTCH
 
 	skills = /datum/skills/dutchmerc
+
+/datum/equipment_preset/fun/dutch/New()
+	..()
+	rank = assignment
 
 /datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
@@ -126,9 +130,9 @@
 	to_chat(H, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask in your leader's backpack serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs. You have a very wide variety of skills, put them to use!"))
 
 /datum/equipment_preset/fun/dutch/minigun
-	name = "Dutch's Dozen - Minigunner"
+	name = JOB_DUTCH_MINIGUNNER
 	paygrade = "DTCMG"
-	assignment = "Dutch's Dozen - Minigunner"
+	assignment = JOB_DUTCH_MINIGUNNER
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/dutchmerc
@@ -156,9 +160,9 @@
 	to_chat(H, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail.  The Yautja mask in your leader's backpack serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures,  and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
 
 /datum/equipment_preset/fun/dutch/flamer
-	name = "Dutch's Dozen - Flamethrower"
+	name = JOB_DUTCH_FLAMETHROWER
 	paygrade = "DTCF"
-	assignment = "Dutch's Dozen - Flamethrower"
+	assignment = JOB_DUTCH_FLAMETHROWER
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/dutchmerc
@@ -191,9 +195,9 @@
 	to_chat(H, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail.  The Yautja mask in your leader's backpack serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures,  and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
 
 /datum/equipment_preset/fun/dutch/medic
-	name = "Dutch's Dozen - Medic"
+	name = JOB_DUTCH_MEDIC
 	paygrade = "DTCM"
-	assignment = "Dutch's Dozen - Medic"
+	assignment = JOB_DUTCH_MEDIC
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/dutchmedic
@@ -227,7 +231,7 @@
 /datum/equipment_preset/fun/dutch/arnie
 	name = "Dutch's Dozen - Arnold"
 	paygrade = "ARN"
-	assignment = "Dutch's Dozen - Dutch"
+	assignment = JOB_DUTCH_ARNOLD
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/dutch
@@ -251,7 +255,7 @@
 /datum/equipment_preset/fun/dutch/arnie/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch/cap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/empproof(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)

@@ -68,9 +68,12 @@
 			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
 
-		var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
-		incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
-		surgery.affected_limb.bleeding_effects_list += incision_bleed
+		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
+			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
+			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
+			surgery.affected_limb.bleeding_effects_list += incision_bleed
+		else
+			surgery.status++ // synth skin doesn't cause bleeders
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -119,7 +122,7 @@
 
 /datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
 	for(var/datum/effects/bleeding/external/B in L.bleeding_effects_list)
-		return TRUE	
+		return TRUE
 	return FALSE
 
 //------------------------------------

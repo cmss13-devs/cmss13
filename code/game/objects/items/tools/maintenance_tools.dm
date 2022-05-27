@@ -210,7 +210,7 @@
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (!S) return
-		if(!(S.status & LIMB_ROBOT) || user.a_intent != INTENT_HELP)
+		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
@@ -478,12 +478,15 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
-	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	health = 75		// More robust liner I guess
+	var/original_health = 1 //placeholder value to be replaced in init
+	var/max_fuel = 600 	//Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
 /obj/item/tool/weldpack/Initialize()
 	. = ..()
 	create_reagents(max_fuel) //Lotsa refills
 	reagents.add_reagent("fuel", max_fuel)
+	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))
@@ -497,6 +500,9 @@
 				qdel(src)
 			return
 		else
+			if(T.reagents.total_volume == T.max_fuel)
+				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
@@ -513,13 +519,43 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
+		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
+		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
 		return
-
 /obj/item/tool/weldpack/examine(mob/user)
 	..()
 	to_chat(user, "[reagents.total_volume] units of welding fuel left!")
+	if(original_health > health)
+		to_chat(user, "\The [src] appears to have been damaged, as the self sealing liner has been exposed.")
+	else
+		to_chat(user, "No punctures are seen on \the [src] upon closer inspection.")
+
+/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/item/tool/weldpack/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/item/tool/weldpack/proc/explode()
+	if(reagents.handle_volatiles())
+		qdel(src)
+	return
+
+
+
+/obj/item/tool/weldpack/minitank
+	name = "ES-11 fuel canister"
+	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
+	icon_state = "welderpackmini"
+	max_fuel = 120 //Just barely enough to be better than the satchel
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_MEDIUM
+	health = 50

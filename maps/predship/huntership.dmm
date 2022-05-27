@@ -129,10 +129,9 @@
 	},
 /area/yautja)
 "ao" = (
-/obj/item/clothing/cape/eldercape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
-	icon_state = "cape_elder_n";
 	pixel_x = 2;
 	pixel_y = 32
 	},
@@ -168,10 +167,9 @@
 	},
 /area/yautja)
 "aq" = (
-/obj/item/clothing/cape/eldercape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
-	icon_state = "cape_elder_n";
 	pixel_x = 2;
 	pixel_y = 32
 	},

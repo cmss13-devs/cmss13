@@ -17,20 +17,8 @@
 	unacidable = TRUE
 	embeddable = FALSE
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/New()
-	..()
 	force = 15
 	throwforce = 25
-	if(!isYautja(loc))
-		add_to_missing_pred_gear(src)
-
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/dropped(mob/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
 	..()
@@ -70,11 +58,6 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
 	var/list/L = hearers(src, dist)
 	return L
-
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/attack_self(mob/user)
 	..()
@@ -123,6 +106,7 @@
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
+			throwing = FALSE
 		return
 	..()
 

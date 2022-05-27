@@ -288,6 +288,7 @@
 	can_hold = list()
 	icon_type = "match"
 	default_cigar_type = /obj/item/tool/match/paper
+	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
 

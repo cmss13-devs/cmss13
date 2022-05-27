@@ -12,6 +12,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
+	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
 
@@ -57,13 +58,14 @@
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
-	if(is_open_container())
-		to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
-		flags_atom ^= OPENCONTAINER
-	else
-		to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
-		flags_atom |= OPENCONTAINER
-	update_icon()
+	if(splashable)
+		if(is_open_container())
+			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
+			flags_atom ^= OPENCONTAINER
+		else
+			to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
+			flags_atom |= OPENCONTAINER
+		update_icon()
 
 /obj/item/reagent_container/glass/afterattack(obj/target, mob/user , flag)
 
@@ -77,7 +79,7 @@
 		if(istype(target, type))
 			return
 
-	if(ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM)
+	if(ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
@@ -153,7 +155,7 @@
 	else if(istype(target, /obj/structure/machinery/smartfridge))
 		return
 
-	else if((reagents.total_volume) && (user.a_intent == INTENT_HARM))
+	else if((reagents.total_volume) && (user.a_intent == INTENT_HARM) && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
@@ -168,7 +170,7 @@
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-								 SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
 	else
@@ -227,6 +229,84 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		overlays += lid
 
+/obj/item/reagent_container/glass/minitank
+	name = "MS-11 Smart Refill Tank"
+	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
+	icon = 'icons/obj/items/tank.dmi'
+	icon_state = "mini_reagent_tank"
+	matter = list("metal" = 500)
+	attack_speed = 4
+	volume = 180
+	w_class = SIZE_MEDIUM
+	splashable = FALSE
+	can_be_placed_into = list(
+		/obj/structure/machinery/chem_master/,
+		/obj/structure/machinery/chem_dispenser/,
+		/obj/structure/machinery/reagentgrinder,
+		/obj/structure/surface/table,
+		/obj/structure/closet,
+		/obj/structure/sink,
+		/obj/item/storage,
+		/obj/item/clothing,
+		/obj/structure/machinery/bot/medbot,
+		/obj/structure/machinery/computer/pandemic,
+		/obj/item/storage/secure/safe,
+		/obj/structure/machinery/iv_drip,
+		/obj/structure/machinery/disposal,
+		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/smartfridge/,
+		/obj/structure/machinery/biogenerator,
+		/obj/structure/machinery/reagent_analyzer,
+		/obj/structure/machinery/centrifuge,
+		/obj/structure/machinery/autodispenser,
+		/obj/structure/machinery/constructable_frame)
+
+/obj/item/reagent_container/glass/minitank/on_reagent_change()
+	update_icon()
+
+
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/A = W
+		if(A.mixed_chem)
+			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into the [src]'s valve. It's probably not compatible."))
+			return
+		if(reagents.has_reagent(A.chemname, A.volume))
+			reagents.trans_id_to(A, A.chemname, A.volume)
+			A.uses_left = 3
+			A.update_icon()
+			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		else
+			to_chat(user, SPAN_WARNING("A small LED on \the [src] blinks. The tank can't refill \the [A] - it's either incompatible or out of chemicals to fill it with!"))
+			. = ..()
+			return
+		to_chat(user,SPAN_INFO("You successfully refill \the [W.name] with \the [src]!"))
+
+/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+	set category = "Object"
+	set name = "flush tank"
+	set src in usr
+	if(usr.is_mob_incapacitated())	return
+	if(src.reagents.total_volume == 0)
+		to_chat(user, SPAN_WARNING("It's already empty!"))
+		return
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush \the [src]'s contents!"))
+	reagents.clear_reagents()
+	update_icon() // just to be sure
+	return
+
+/obj/item/reagent_container/glass/minitank/update_icon()
+	overlays.Cut()
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
+		var/percent = round((reagents.total_volume / volume) * 100)
+		var/round_percent = 0
+		if(percent > 24) round_percent = round(percent, 25)
+		else round_percent = 10
+		filling.icon_state = "[icon_state][round_percent]"
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
@@ -257,7 +337,7 @@
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "bluespace beaker"
-	desc = "A bluespace beaker, powered by experimental bluespace technology. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure - affectionately nicknamed \"bluespace\". Can hold up to 300 units."
 	icon_state = "beakerbluespace"
 	matter = list("glass" = 10000)
 	volume = 300
@@ -397,6 +477,7 @@
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(50,100,200,300,400)
 	volume = 400
+	splashable = FALSE				// you can't spill a canister
 	var/reagent = "hydrogen"
 
 /obj/item/reagent_container/glass/canister/Initialize()
@@ -441,8 +522,9 @@
 	amount_per_transfer_from_this = 0
 	possible_transfer_amounts = list(0)
 	volume = 480
+	splashable = FALSE
 	w_class = SIZE_MASSIVE
-	flags_atom = CAN_BE_DISPENSED_INTO
+	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
 
 /obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
 	return

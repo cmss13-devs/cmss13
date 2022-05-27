@@ -61,8 +61,9 @@
 	var/list/allowed = null //suit storage stuff.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
+	var/zoom_initial_mob_dir = null // the initial dir the mob faces when it zooms in
 
-	var/list/uniform_restricted //Need to wear this uniform to equip this
+	var/list/obj/item/uniform_restricted //Need to wear this uniform to equip this
 
 	var/time_to_equip = 0 // set to ticks it takes to equip a worn suit.
 	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
@@ -104,6 +105,9 @@
 		drag_delay = 1
 	if(isstorage(loc))
 		appearance_flags |= NO_CLIENT_COLOR //It's spawned in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
+
+	if(flags_item & ITEM_PREDATOR)
+		AddElement(/datum/element/yautja_tracked_item)
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -154,20 +158,6 @@
 //Output a creative message and then return the damagetype done
 /obj/item/proc/suicide_act(mob/user)
 	return
-
-/obj/item/verb/move_to_top()
-	set name = "Move To Top"
-	set category = "Object"
-	set src in oview(1)
-
-	if(!istype(src.loc, /turf) || usr.stat || usr.is_mob_restrained() )
-		return
-
-	var/turf/T = src.loc
-
-	moveToNullspace()
-
-	src.forceMove(T)
 
 /*Global item proc for all of your unique item skin needs. Works with any
 item, and will change the skin to whatever you specify here. You can also
@@ -354,16 +344,19 @@ cases. Override_icon_state should be a list.*/
 		add_verb(user, verbs)
 		for(var/v in verbs)
 			LAZYDISTINCTADD(user.item_verbs[v], src)
+		for(var/datum/action/item_action in actions)
+			item_action.give_to(user) //some items only give their actions buttons when in a specific slot.
 	else
 		remove_item_verbs(user)
 
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	for(var/X in actions)
-		var/datum/action/A = X
-		if(item_action_slot_check(user, slot)) //some items only give their actions buttons when in a specific slot.
-			A.give_to(user)
+
 
 	appearance_flags |= NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit inventory.
+	if(LAZYLEN(uniform_restricted))
+		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		if(flags_equip_slot & slotdefine2slotbit(slot))
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -371,15 +364,25 @@ cases. Override_icon_state should be a list.*/
 
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot)
 
+	// Unregister first so as not to have to handle our own event
+	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src)
+
+/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item)
+	SIGNAL_HANDLER
+	if(is_type_in_list(item, uniform_restricted))
+		user.drop_inv_item_on_ground(src)
+		to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]"))
+
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)
 	return TRUE
 
 // The mob M is attempting to equip this item into the slot passed through as 'slot'. return TRUE if it can do this and 0 if it can't.
 // If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
-// Set disable_warning to 1 if you wish it to not give you outputs.
+// Set disable_warning to TRUE if you wish it to not give you outputs.
 // warning_text is used in the case that you want to provide a specific warning for why the item cannot be equipped.
-/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
+/obj/item/proc/mob_can_equip(mob/M, slot, disable_warning = FALSE)
 	if(!slot)
 		return FALSE
 	if(!M)
@@ -403,6 +406,26 @@ cases. Override_icon_state should be a list.*/
 
 		if(H.species && !(slot in mob_equip))
 			return FALSE
+
+		if(uniform_restricted)
+			var/list/required_clothing = list()
+			var/restriction_satisfied = FALSE
+			for(var/obj/item/restriction_type as anything in uniform_restricted)
+				var/valid_equip_slots = initial(restriction_type.flags_equip_slot)
+				required_clothing += initial(restriction_type.name)
+				// You can't replace this with a switch(), flags_equip_slot is a bitfield
+				if(valid_equip_slots & SLOT_ICLOTHING)
+					if(istype(H.w_uniform, restriction_type))
+						restriction_satisfied = TRUE
+						break
+				if(valid_equip_slots & SLOT_OCLOTHING)
+					if(istype(H.wear_suit, restriction_type))
+						restriction_satisfied = TRUE
+						break
+			if(!restriction_satisfied)
+				if(!disable_warning)
+					to_chat(H, SPAN_WARNING("You cannot wear this without wearing one of the following; [required_clothing.Join(", ")]."))
+				return FALSE
 
 		switch(slot)
 			if(WEAR_L_HAND)
@@ -661,40 +684,6 @@ cases. Override_icon_state should be a list.*/
 		else
 			return !ignore_non_flags
 
-/obj/item/verb/verb_pickup()
-	set src in oview(1)
-	set category = "Object"
-	set name = "Pick up"
-
-	if(!(usr)) //BS12 EDIT
-		return
-	if(ismob(src))
-		return
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
-		return
-	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/brain)))//Is humanoid, and is not a brain
-		to_chat(usr, SPAN_DANGER("You can't pick things up!"))
-		return
-	if(src.anchored) //Object isn't anchored
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	if(!usr.hand && usr.r_hand) //Right hand is not full
-		to_chat(usr, SPAN_DANGER("Your right hand is full."))
-		return
-	if(usr.hand && usr.l_hand) //Left hand is not full
-		to_chat(usr, SPAN_DANGER("Your left hand is full."))
-		return
-	if(!istype(src.loc, /turf)) //Object is on a turf
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	//All checks are done, time to pick it up!
-	if (world.time <= usr.next_move)
-		return
-	usr.next_move += 6 // stop insane pickup speed
-	usr.UnarmedAttack(src)
-	return
-
-
 //This proc is executed when someone clicks the on-screen UI button. To make the UI button show, set the 'icon_action_button' to the icon_state of the image of the button in actions.dmi
 //The default action is attack_self().
 //Checks before we get to here are: mob is alive, mob is not restrained, paralyzed, asleep, resting, laying, item is on the mob.
@@ -725,35 +714,6 @@ cases. Override_icon_state should be a list.*/
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		I.showoff(src)
 
-/datum/event_handler/event_gun_zoom
-	var/obj/item/zooming_item
-	var/mob/living/calee
-	flags_handler = HNDLR_FLAG_SINGLE_FIRE
-
-/datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
-	zooming_item = _zooming_item
-	calee = _calee
-
-/datum/event_handler/event_gun_zoom/Destroy()
-	if(zooming_item)
-		zooming_item.zoom_event_handler = null
-		zooming_item = null
-	calee = null
-	. = ..()
-
-/datum/event_handler/event_gun_zoom/handle(sender, datum/event_args/event_args)
-	if(calee && calee.client) //Dropped when disconnected, whoops
-		if(zooming_item && zooming_item.zoom && calee) //sanity check
-			zooming_item.zoom(calee)
-
-/*
-For zooming with scope or binoculars. This is called from
-modules/mob/mob_movement.dm if you move you will be zoomed out
-modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
-keep_zoom - do we keep zoom during movement. be careful with setting this to 1
-*/
-
-/obj/item/var/zoom_event_handler
 
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
@@ -785,18 +745,22 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	zoom = !zoom
 	user.zoom_cooldown = world.time + 20
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
-	if(zoom_event_handler)
-		user.remove_movement_handler(zoom_event_handler)
-		UnregisterSignal(src, list(
-			COMSIG_ITEM_DROPPED,
-			COMSIG_ITEM_UNWIELD,
-		))
-		qdel(zoom_event_handler)
+	UnregisterSignal(src, list(
+		COMSIG_ITEM_DROPPED,
+		COMSIG_ITEM_UNWIELD,
+	))
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
+
+/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
+
+	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
+		unzoom(mover)
 
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -810,15 +774,13 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	if(user.client)
 		user.client.change_view(viewsize, src)
 
-		if(zoom_event_handler)
-			qdel(zoom_event_handler)
-		zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
-		if(!keep_zoom)
-			user.add_movement_handler(zoom_event_handler)
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
 		), .proc/unzoom_dropped_callback)
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+
+		zoom_initial_mob_dir = user.dir
 
 		var/tilesize = 32
 		var/viewoffset = tilesize * tileoffset
@@ -846,6 +808,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	else
 		user.set_interaction(src)
 
+
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state
 	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
@@ -857,3 +820,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		mob_state = icon_state
 	return mob_state
 
+/obj/item/proc/drop_to_floor(mob/wearer)
+	SIGNAL_HANDLER
+
+	wearer.drop_inv_item_on_ground(src)

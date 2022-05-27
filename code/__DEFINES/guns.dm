@@ -1,1 +1,1 @@
-#define FIRE_DELAY_GROUP_MOU "fdg_mou"
+#define FIRE_DELAY_GROUP_SHOTGUN "fdg_shtgn"

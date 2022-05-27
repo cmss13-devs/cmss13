@@ -187,7 +187,7 @@ There are several things that need to be remembered:
 			apply_overlay(FACIAL_LAYER)
 
 	if(h_style && !(head && head.flags_inv_hide & HIDETOPHAIR))
-		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair_style = species.get_hairstyle(h_style)
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/image/hair_s = new/image("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			hair_s.layer = -HAIR_LAYER
@@ -269,7 +269,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/headshot_blood = new('icons/mob/humans/dam_human.dmi', headshot_state + "_blood")
 	headshot_blood.color = species.blood_color
 	headshot.overlays += headshot_blood
-	
+
 	headshot.appearance_flags = RESET_COLOR
 	headshot.blend_mode = BLEND_INSET_OVERLAY
 	headshot.layer = -HEADSHOT_LAYER

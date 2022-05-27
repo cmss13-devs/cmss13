@@ -38,7 +38,7 @@
 	action_icon_state = "lay_egg"
 	ability_name = "generate egg"
 	xeno_cooldown = 30 SECONDS
-	cooldown_message = "You aren't ready to form another egg yet."
+	cooldown_message = "You are ready to form another egg."
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = XENO_PLASMA_TIER_2
 

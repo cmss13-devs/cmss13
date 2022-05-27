@@ -2,62 +2,14 @@
 ########### Weapon Reused Procs ###########
 #########################################*/
 //Onehanded Weapons
-/obj/item/weapon/melee/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Twohanded Weapons
-/obj/item/weapon/melee/twohanded/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/twohanded/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/twohanded/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Ranged Weapons
-/obj/item/weapon/gun/energy/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/gun/energy/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	. = ..()
 	STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/gun/energy/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Spike Launcher
-/obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/gun/launcher/spike/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/gun/launcher/spike/Destroy()
-	. = ..()
-	remove_from_missing_pred_gear(src)
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /*#########################################
 ############## Misc Weapons ###############
@@ -217,6 +169,7 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
+	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
 
@@ -241,11 +194,11 @@
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 0.9 SECONDS
+	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
 	var/parrying
-	var/parrying_duration = 3 SECONDS
+	var/parrying_duration = 1.5 SECONDS
 	var/cur_parrying_cooldown
 	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
 
@@ -712,7 +665,7 @@
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT
@@ -820,6 +773,7 @@
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
 		spikes--
 		return in_chamber
 
@@ -1025,13 +979,22 @@
 	desc = "A powerful, shoulder-mounted energy weapon."
 	icon_state = "plasma"
 	item_state = "plasma_wear"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_BACK = "plasma_wear_off",
+		WEAR_J_STORE = "plasma_wear_off"
+	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	actions_types = list(/datum/action/item_action/toggle)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
@@ -1042,7 +1005,11 @@
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, var/caster_material = "ebony")
+	icon_state += "_[caster_material]"
+	item_state += "_[caster_material]"
+	item_state_slots[WEAR_BACK] += "_[caster_material]"
+	item_state_slots[WEAR_J_STORE] += "_[caster_material]"
 	. = ..()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst

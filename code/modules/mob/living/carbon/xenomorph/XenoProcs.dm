@@ -132,8 +132,6 @@
 
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
-	var/mob/living/carbon/Xenomorph/xeno = src
-	var/turf/T = xeno.loc
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !istype(T))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))

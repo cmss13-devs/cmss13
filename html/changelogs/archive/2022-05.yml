@@ -343,3 +343,12 @@
   Youtubeboy139:
   - imageadd: New goggle sprites
   - code_imp: Changes the legacy Night Vision goggles into CM style NVGs
+2022-05-28:
+  spartanbobby:
+  - bugfix: Almayer, Replaced hull windows in the execution room with reinforced windows
+      at nanus request
+  - rscadd: Almayer, Added reinforced glass to brig maint
+  - rscdel: Almayer, Removed a coffee sign that was in the glass and was two tiles
+      west of another coffee sign
+  - rscadd: Almayer, Did some tiling around the Almayer to make it look a little bit
+      more pretty

@@ -24458,7 +24458,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bCu" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/alpha{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -24796,9 +24796,8 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bDP" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/alpha{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -49469,7 +49468,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "iLh" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/bravo{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -49902,9 +49901,8 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "iXb" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -70536,7 +70534,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "sCA" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/delta{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -78343,7 +78341,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
 "vUe" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/charlie{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -82304,16 +82302,6 @@
 	tag = "icon-emeraldfull"
 	},
 /area/almayer/living/briefing)
-"xAu" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
 "xAB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -83127,16 +83115,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"xRJ" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -121751,10 +121729,10 @@ moQ
 hGO
 fvf
 uNM
-xAu
-xAu
-xAu
-xAu
+xAt
+xAt
+xAt
+xAt
 nNH
 bqZ
 bdg
@@ -122757,10 +122735,10 @@ bbh
 bdd
 bDT
 tHv
-xRJ
-xRJ
-xRJ
-xRJ
+cqr
+cqr
+cqr
+cqr
 tSB
 moQ
 caO

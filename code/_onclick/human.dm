@@ -90,10 +90,10 @@
 
 /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
 	if(user != src)
-		return . = ..()
+		return ..()
 
 	if(pulling != dropping || grab_level != GRAB_AGGRESSIVE || !ishuman(dropping) || !(a_intent & INTENT_GRAB))
-		return . = ..()
+		return ..()
 
 	var/carry_delay = 3 SECONDS
 	var/list/carrydata = list("carry_delay" = carry_delay)
@@ -102,7 +102,7 @@
 
 	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_SKILLED) && !(signal_flags & COMPONENT_CARRY_ALLOW))
 		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
-		return . = ..()
+		return ..()
 
 	var/mob/living/carbon/human/target = dropping
 
@@ -116,7 +116,7 @@
 	SPAN_WARNING("You load [target] onto your back."))
 
 	if(pulling != dropping || !dropping || QDELETED(dropping))
-		return . = ..()
+		return ..()
 
 	grab_level = GRAB_CARRY
 

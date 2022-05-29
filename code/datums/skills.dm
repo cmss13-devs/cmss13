@@ -134,6 +134,7 @@
 	// List of skill datums.
 	// Also, if this is populated when the datum is created, it will set the skill levels automagically
 	var/list/skills = list()
+	var/has_fireman_carrying = FALSE
 
 /datum/skills/New(var/mob/skillset_owner)
 	owner = skillset_owner
@@ -150,12 +151,18 @@
 		if(!isnull(predetermined_skill_level))
 			S.set_skill(predetermined_skill_level, owner)
 
+	if(has_fireman_carrying)
+		RegisterSignal(skillset_owner, COMSIG_HUMAN_CARRY, .proc/handle_fireman_carry)
+
 /datum/skills/Destroy()
 	owner = null
 
 	for(var/datum/skill/S in skills)
 		qdel(S)
 		skills -= S
+
+	if(has_fireman_carrying)
+		UnregisterSignal(owner, COMSIG_HUMAN_CARRY)
 
 	return ..()
 
@@ -209,6 +216,9 @@
 	for(var/skill in skill_levels)
 		set_skill(skill, skill_levels[skill])
 	qdel(skillset)
+
+/datum/skills/proc/handle_fireman_carry(mob/living/M, list/carrydata)
+	return COMPONENT_CARRY_ALLOW
 
 /*
 ---------------------
@@ -745,6 +755,7 @@ United States Colonial Marines
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/combat_medic/crafty
 	name = "Crafty Combat Medic"
@@ -801,17 +812,7 @@ United States Colonial Marines
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
-
-/datum/skills/SL/New(mob/skillset_owner)
-	..()
-	RegisterSignal(skillset_owner, COMSIG_HUMAN_CARRY, .proc/handle_fireman_carry)
-
-/datum/skills/SL/Destroy()
-	UnregisterSignal(owner, COMSIG_HUMAN_CARRY)
-	return ..()
-
-/datum/skills/SL/proc/handle_fireman_carry(mob/living/M, list/carrydata)
-	return COMPONENT_CARRY_ALLOW
+	has_fireman_carrying = TRUE
 
 /datum/skills/intel
 	name = "Intelligence Officer"
@@ -867,6 +868,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/clf/specialist
 	name = "CLF Specialist"
@@ -894,6 +896,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/clf/commander
 	name = "CLF Cell Commander"
@@ -937,6 +940,7 @@ FREELANCERS
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/freelancer/SL
 	name = "Freelancer Leader"
@@ -949,6 +953,7 @@ FREELANCERS
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
 		SKILL_JTAC = SKILL_JTAC_EXPERT
 	)
+	has_fireman_carrying = TRUE
 
 /*
 --------------------------
@@ -966,9 +971,9 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
 		SKILL_CQC = SKILL_CQC_EXPERT,
-		SKILL_POLICE = SKILL_POLICE_SKILLED, //mostly here for fireman carry
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/upp/combat_engineer
 	name = "UPP Sapper"
@@ -978,7 +983,6 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
 		SKILL_CQC = SKILL_CQC_EXPERT,
-		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
 	)
 
@@ -1060,6 +1064,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
+
 /datum/skills/upp/conscript
 	name = "UPP Conscript"
 	skills = list(
@@ -1237,6 +1242,7 @@ SPEC-OPS
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/commando/medic
 	name = "Commando Medic"
@@ -1320,6 +1326,7 @@ MISCELLANEOUS
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
+	has_fireman_carrying = TRUE
 
 /datum/skills/mercenary/elite
 	name = "Elite Mercenary"

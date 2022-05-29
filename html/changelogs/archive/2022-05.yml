@@ -355,5 +355,10 @@
   - rscadd: Almayer, Did some tiling around the Almayer to make it look a little bit
       more pretty
 2022-05-29:
+  Geevies:
+  - rscadd: Added a domestics skill, buffed mops. They now work faster, hold more
+      water, and have visual feedback to its operation.
+  - rscadd: Having a higher domestics skill now lets you operate microwaves and gibbers
+      faster.
   Shad0vvs:
   - bugfix: Prevents Xeno abilities in tunnels.

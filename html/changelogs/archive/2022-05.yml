@@ -354,3 +354,6 @@
       west of another coffee sign
   - rscadd: Almayer, Did some tiling around the Almayer to make it look a little bit
       more pretty
+2022-05-29:
+  Shad0vvs:
+  - bugfix: Prevents Xeno abilities in tunnels.

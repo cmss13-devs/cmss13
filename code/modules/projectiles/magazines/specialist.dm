@@ -89,6 +89,8 @@
 
 //-------------------------------------------------------
 //SMARTGUN
+//
+// IMPORTANT NOTE: SMARTGUNS HAVE HARDCODED AMMO
 /obj/item/ammo_magazine/smartgun
 	name = "smartgun drum"
 	caliber = "10x28mm"

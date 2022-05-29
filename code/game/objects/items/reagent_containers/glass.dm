@@ -553,17 +553,19 @@
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
 	if(isprox(I))
-		to_chat(user, "You add [I] to [src].")
+		to_chat(user, "You add \the [I] to \the [src].")
 		qdel(I)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
 		qdel(src)
 	else if(istype(I, /obj/item/tool/mop))
+		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_WARNING("[src] is out of water!"))
+			to_chat(user, SPAN_WARNING("\The [src] is out of water!"))
 		else
-			reagents.trans_to(I, 5)
-			to_chat(user, SPAN_NOTICE("You wet [I] in [src]."))
+			reagents.trans_to(mop, mop.max_reagent_volume)
+			mop.update_icon()
+			to_chat(user, SPAN_NOTICE("You wet \the [mop] in \the [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else

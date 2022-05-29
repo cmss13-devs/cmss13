@@ -1,6 +1,6 @@
 // Individual skill
 /datum/skill
-	var/skill_name = "Skill" // Name of the skill
+	var/skill_name = null // Name of the skill
 	var/skill_level = 0 // Level of skill in this... skill
 
 /datum/skill/proc/get_skill_level()
@@ -120,6 +120,10 @@
 /datum/skill/execution
 	skill_name = SKILL_EXECUTION
 	skill_level = SKILL_EXECUTION_DEFAULT
+
+/datum/skill/domestic
+	skill_name = SKILL_DOMESTIC
+	skill_level = SKILL_DOMESTIC_NONE
 
 // Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
 // This is to organize and provide a common interface to the huge heap of skills there are
@@ -645,6 +649,24 @@ MILITARY NONCOMBATANT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 	)
 
+/datum/skills/MT
+	name = "Maintenance Technician"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_MASTER,
+		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_TRAINED
+	)
+
+/datum/skills/mess_technician
+	name = "Mess Technician"
+	skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED, // need to hunt food somehow
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
+	)
+
 /datum/skills/CT
 	name = "Cargo Technician"
 	skills = list(
@@ -676,6 +698,7 @@ SYNTHETIC
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
 	)
 
 /datum/skills/colonial_synthetic
@@ -695,6 +718,7 @@ SYNTHETIC
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
 	)
 
 /*

@@ -6,6 +6,21 @@
 	set category = "IC"
 	return
 
+/mob
+	var/picksay_cooldown = 0
+
+/mob/verb/picksay_verb(message as text)
+	set name = "Pick-Say"
+	set category = "IC"
+
+	if(picksay_cooldown > world.time)
+		return
+
+	var/list/possible_phrases = splittext(message, ";")
+	if(length(possible_phrases))
+		say_verb(pick(possible_phrases))
+		picksay_cooldown = world.time + 1.5 SECONDS
+
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"

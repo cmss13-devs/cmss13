@@ -360,5 +360,7 @@
       water, and have visual feedback to its operation.
   - rscadd: Having a higher domestics skill now lets you operate microwaves and gibbers
       faster.
+  - rscadd: You can now strike matches against your boots. Matches are also easier
+      to click now.
   Shad0vvs:
   - bugfix: Prevents Xeno abilities in tunnels.

@@ -369,6 +369,7 @@
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -761,7 +762,6 @@
 	ammo_secondary = /datum/ammo/bullet/smartgun/holo ///Toggled ammo type
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel/m56c)
 
-/////      			 TODO: UN HARDCODE SG AMMO TYPES, FIX FUNNY BARREL ISSUE
 
 /obj/item/weapon/gun/smartgun/m56c/set_gun_config_values()
 	..()

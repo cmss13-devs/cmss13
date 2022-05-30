@@ -116,9 +116,9 @@
 /obj/item/device/binoculars/range/proc/acquire_target(atom/A, mob/living/carbon/human/user)
 	set waitfor = 0
 
-	if(src.locs[1] != user)
+	if(src.loc != user)
 		return
-	if(A:vis_locs?.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
+	if(get_dist(user, A) > user.client.view)
 		to_chat(user, SPAN_WARNING("You can't target through cameras."))
 		return
 	if(coord)
@@ -127,7 +127,7 @@
 	if(world.time < laser_cooldown)
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
 		return
-	if(A.z != user.z || !istype(user.locs[1], /turf))
+	if(A.z != user.z || !istype(user.loc, /turf))
 		to_chat(user, SPAN_WARNING("You can't target from here!"))
 		return
 
@@ -229,7 +229,8 @@
 	toggle_bino_mode(usr)
 
 /obj/item/device/binoculars/range/designator/proc/toggle_bino_mode(mob/user)
-	if(user.action_busy || laser || coord || user.z != src.locs[1]?.z || get_dist(src.locs[1], user) > 1)
+	var/atom/src_loc = src.loc
+	if(user.action_busy || laser || coord || user.z != src_loc.z|| get_dist(src.loc, user) > 1)
 		return
 
 	mode = !mode
@@ -249,10 +250,10 @@
 /obj/item/device/binoculars/range/designator/acquire_target(atom/A, mob/living/carbon/human/user)
 	set waitfor = 0
 
-	if(src.locs[1] != user)
+	if(src.loc != user)
 		return
 
-	if(A:vis_locs?.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
+	if(get_dist(user, A) > user.client.view)
 		to_chat(user, SPAN_WARNING("You can't target through cameras."))
 		return
 
@@ -264,7 +265,7 @@
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
 		return
 
-	if(A.z != user.z || !istype(user.locs[1], /turf))
+	if(A.z != user.z || !istype(user.loc, /turf))
 		to_chat(user, SPAN_WARNING("You can't target from here!"))
 		return
 

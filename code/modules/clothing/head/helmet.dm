@@ -1188,6 +1188,69 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 			var/datum/action/A = X
 			A.update_button_icon()
 
+//=========================//SPACE PIRATES\\=============================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/pirate
+	name = "tricorn hat"
+	desc = "Yarr."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "tricorn"
+	item_state = "tricorn"
+	flags_armor_protection = 0
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/pirate/bandana
+	name = "bandana"
+	desc = "A light head covering typically worn by sailors or workers. Keeps your head free of sweat."
+	icon_state = "red_bandana"
+	flags_inv_hide = HIDETOPHAIR
+
+/obj/item/clothing/head/pirate/bandana
+	icon_state = "green_bandana"
+
+/obj/item/clothing/head/pirate/bandana
+	icon_state = "blue_bandana"
+
+/obj/item/clothing/head/helmet/marine/veteran/steelpot
+	name = "steel pot helmet"
+	desc = "Surplus military grade helmet from some unnamed, unknown military supply base. It's better than nothing."
+	icon_state = "steelpot"
+	item_state = "steelpot"
+
+/obj/item/clothing/head/helmet/marine/veteran/pirate
+	name = "heavy makeshift helmet"
+	desc = "The unholy combination of a UA standard issue helmet and the parts of a industrial grade rebreather. Maximum head protection in a cheap package."
+	icon_state = "makeshift_heavy"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/helmet/marine/veteran/pirate_captain
+	name = "captain's headgear"
+	desc = "The soulful combination of a industrial grade rebreather and a traditional tricorn hat with golden decals."
+	icon_state = "captain_mask"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/helmet/marine/veteran/pirate_captain/alt
+	name = "captain's tricorn"
+	desc = "A traditional tricorn hat with golden decals to help you feel like a real swashbuckler."
+	icon_state = "captain_hat"
+
 //=============================//MEME\\==================================\\
 //=======================================================================\\
 

@@ -1879,3 +1879,95 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
 	flags_atom = NO_SNOW_TYPE
 
+//=========================//SPACE PIRATES\\=============================\\
+//=======================================================================\\
+
+/obj/item/clothing/suit/storage/marine/faction/pirate
+	name = "armored captain's tunic"
+	desc = "A makeshift set of armor crafted from a cheap leather tunic, repurposed epaulette decor from a formal naval uniform, and a reinforced set of bulletproof armor woven directly onto the tunic. It's a bitch to get on but the armor looks good, fit for a captain of status. Criminal status that is."
+	icon_state = "pirate_captain"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 2 SECONDS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 3 //Tunic has p o c k e t s
+	uniform_restricted = list()
+
+/obj/item/clothing/suit/storage/marine/faction/pirate/bildgerat
+	name = "light scrap armor"
+	desc = "A cobbled together set of armor made of random bits and pieces scrounged from the dead. Better than nothing."
+	icon_state = "pirate_light1"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 1
+	uniform_restricted = list()
+
+/obj/item/clothing/suit/storage/marine/faction/pirate/light
+	name = "makeshift light armor"
+	desc = "A makeshift armor set made from a robust kevlar jacket and some reinforced ballistic armor."
+	icon_state = "pirate_light2"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 1
+	uniform_restricted = list()
+
+/obj/item/clothing/suit/storage/marine/faction/pirate/medium
+	name = "makeshift armor"
+	desc = "A hand made set of armor created with some repurposed UA riot armor and a tough leather tunic."
+	icon_state = "pirate_armor"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1.5 SECONDS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 2
+	uniform_restricted = list()
+
+/obj/item/clothing/suit/storage/marine/faction/pirate/heavy
+	name = "makeshift heavy armor"
+	desc = "A set of makeshift armor created by fixing forged armor plates and ballistic armor to a robust leather duster."
+	icon_state = "pirate_heavy"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 2 SECONDS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 2
+	uniform_restricted = list()

@@ -133,13 +133,14 @@
 	icon_state = "flat_cap"
 	item_state = "detective"
 	siemens_coefficient = 0.9
-
+/*
 /obj/item/clothing/head/pirate
 	name = "pirate hat"
 	desc = "Yarr."
 	icon_state = "pirate"
 	item_state = "pirate"
 	flags_armor_protection = 0
+*/
 
 /obj/item/clothing/head/hgpiratecap
 	name = "pirate hat"

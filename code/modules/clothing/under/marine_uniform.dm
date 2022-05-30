@@ -578,6 +578,53 @@
 	icon_state = "mercenary_engineer_uniform"
 	worn_state = "mercenary_engineer_uniform"
 
+//=========================//SPACE PIRATES\\=============================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/veteran/pirate
+	name = "\improper Scaved UPP fatigues"
+	desc = "A scavenged set of UPP fatigues, sewn and modified by careful hands. The red mark on its should signifies desertion."
+	icon_state = "pirate_captain"
+	worn_state = "pirate_captain"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	suit_restricted = list()
+
+/obj/item/clothing/under/marine/veteran/pirate/worker_brown
+	name = "brown padded jumpsuit"
+	desc = "A padded workman's jumpsuit that's perfect for hazardous working conditions."
+	icon_state = "worker_brown"
+	worn_state = "worker_brown"
+
+/obj/item/clothing/under/marine/veteran/pirate/worker_green
+	name = "green padded jumpsuit"
+	desc = "A padded workman's jumpsuit that's perfect for hazardous working conditions."
+	icon_state = "worker_green"
+	worn_state = "worker_green"
+
+/obj/item/clothing/under/marine/veteran/pirate/prisoner_padded
+	name = "padded prisoner jumpsuit"
+	desc = "A modified prisoner's jumpsuit. Fitted with padding for some added protection."
+	icon_state = "prisoner_padded"
+	worn_state = "prisoner_padded"
+
+/obj/item/clothing/under/marine/veteran/pirate/prisoner_modded
+	name = "modified prisoner jumpsuit"
+	desc = "A modified prisoner's jumpsuit. Just the legs remain, held up by a sturdy leather belt."
+	icon_state = "prisoner_modded"
+	worn_state = "prisoner_modded"
+
+/obj/item/clothing/under/marine/veteran/pirate/prisoner_punk
+	name = "punk prisoner jumpsuit"
+	desc = "A modified prisoner's jumpsuit. A vest with some added punk flair. Rock on dude."
+	icon_state = "prisoner_punk"
+	worn_state = "prisoner_punk"
 
 ////// Civilians /////////
 

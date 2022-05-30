@@ -364,3 +364,6 @@
       to click now.
   Shad0vvs:
   - bugfix: Prevents Xeno abilities in tunnels.
+2022-05-30:
+  Git-Nivrak:
+  - refactor: refactored collapsible stock code to make it more modular

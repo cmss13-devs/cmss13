@@ -118,7 +118,7 @@ var/list/department_radio_keys = list(
 		if(T)
 			var/list/hearturfs = list()
 
-			for(var/I in hearers(message_range, T))
+			for(var/I in hear(message_range, T))
 				if(istype(I, /mob/))
 					var/mob/M = I
 					listening += M
@@ -131,7 +131,6 @@ var/list/department_radio_keys = list(
 					hearturfs += O.locs[1]
 					if(O.flags_atom & USES_HEARING)
 						listening_obj |= O
-
 
 			for(var/mob/M as anything in GLOB.player_list)
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))

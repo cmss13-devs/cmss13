@@ -1041,7 +1041,7 @@ Defined in conflicts.dm of the #defines folder.
 		return TRUE
 
 	if(!do_after(user, collapse_delay, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, gun, INTERRUPT_DIFF_LOC))
-		return 0
+		return FALSE
 
 	stock_activated = !stock_activated
 	apply_on_weapon(gun)

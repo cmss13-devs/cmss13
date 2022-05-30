@@ -138,8 +138,8 @@ var/list/debug_verbs = list(
 )
 
 var/list/admin_verbs_possess = list(
-	/proc/possess,
-	/proc/release
+	/client/proc/possess,
+	/client/proc/release
 )
 var/list/admin_verbs_permissions = list(
 	/client/proc/ToRban
@@ -158,16 +158,16 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/cmd_admin_change_their_hivenumber,
 	/client/proc/cmd_assume_direct_control,
 	/client/proc/free_mob_for_ghosts,
-	/proc/possess,
-	/proc/release,
+	/client/proc/possess,
+	/client/proc/release,
     /client/proc/cmd_admin_grantfullaccess,
     /client/proc/cmd_admin_grantallskills
 )
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
-	/proc/release,
-	/proc/possess,
+	/client/proc/release,
+	/client/proc/possess,
 	/client/proc/proccall_atom,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,

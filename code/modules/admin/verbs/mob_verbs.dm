@@ -221,7 +221,7 @@
 	set name = "Attack Log"
 	set category = null
 
-	if(!admin_holder)
+	if (!CLIENT_IS_STAFF(src))
 		to_chat(src, "Only administrators may use this command.")
 		return
 

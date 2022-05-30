@@ -118,7 +118,7 @@
 
 	if(src.locs[1] != user)
 		return
-	if(A:vis_locs.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
+	if(A:vis_locs?.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
 		to_chat(user, SPAN_WARNING("You can't target through cameras."))
 		return
 	if(coord)
@@ -229,7 +229,7 @@
 	toggle_bino_mode(usr)
 
 /obj/item/device/binoculars/range/designator/proc/toggle_bino_mode(mob/user)
-	if(user.action_busy || laser || coord || user.z != src.locs[1].z || get_dist(src.locs[1], user) > 1)
+	if(user.action_busy || laser || coord || user.z != src.locs[1]?.z || get_dist(src.locs[1], user) > 1)
 		return
 
 	mode = !mode
@@ -252,7 +252,7 @@
 	if(src.locs[1] != user)
 		return
 
-	if(A:vis_locs.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
+	if(A:vis_locs?.len > 0 && istype(A:vis_locs[1], /obj/screen/map_view)) // We have to use : here because vis_locs does not exist in areas, However the target will (hopefully) NEVER be an area.
 		to_chat(user, SPAN_WARNING("You can't target through cameras."))
 		return
 

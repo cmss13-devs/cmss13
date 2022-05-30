@@ -132,7 +132,6 @@ var/list/department_radio_keys = list(
 					if(O.flags_atom & USES_HEARING)
 						listening_obj |= O
 
-
 			for(var/mob/M as anything in GLOB.player_list)
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
 					listening |= M

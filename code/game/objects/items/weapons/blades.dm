@@ -18,12 +18,18 @@
 	name = "combat sword"
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
 	icon_state = "mercsword"
-	item_state = "machete"
+	item_state = "mercsword"
 
 /obj/item/weapon/melee/claymore/mercsword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
+	item_state = "katana"
+
+/obj/item/weapon/melee/claymore/mercsword/cutlass
+	name = "cutlass"
+	desc = "A a short, broad sabre that was a common naval weapon during the early Age of Sail on Earth. While not seen as often on the frontier, it still holds up as a fine weapon."
+	icon_state = "cutlass"
 	item_state = "machete"
 
 /obj/item/weapon/melee/claymore/mercsword/machete

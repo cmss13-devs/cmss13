@@ -3,8 +3,8 @@
 	flags_atom = FPRINT|NOBLOODY
 
 /obj/item/weapon/melee/energy/axe
-	name = "energy axe"
-	desc = "An energised battle axe."
+	name = "\improper Type-78 energized axe"
+	desc = "An industrial grade Type-78 energized axe commonly seen on snow covered colonies as a means of heavy duty ice cutting. It's energized head allows for sustained heating when hacking into large portions of ice."
 	icon_state = "axe0"
 	force = MELEE_FORCE_VERY_STRONG
 	throwforce = MELEE_FORCE_NORMAL
@@ -23,20 +23,18 @@
 
 	active = !active
 	if(active)
-		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
+		to_chat(user, SPAN_NOTICE(" The axe is now energized."))
 		force = 150
 		icon_state = "axe1"
 		w_class = SIZE_HUGE
 		heat_source = 3500
 	else
-		to_chat(user, SPAN_NOTICE(" The axe can now be concealed."))
+		to_chat(user, SPAN_NOTICE(" The axe is no longer energized."))
 		force = 40
 		icon_state = "axe0"
 		w_class = SIZE_HUGE
 		heat_source = 0
 	add_fingerprint(user)
-
-
 
 /obj/item/weapon/melee/energy/sword
 	name = "energy sword"
@@ -105,7 +103,6 @@
 
 /obj/item/weapon/melee/energy/sword/green
 	sword_color = "green"
-
 
 /obj/item/weapon/melee/energy/sword/green/attack_self()
 	..()

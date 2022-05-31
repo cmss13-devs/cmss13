@@ -2,6 +2,7 @@
  * Contains:
  *		Banhammer
  *		Classic Baton
+ *		Telescopic Baton
  *		Energy Shield
  */
 
@@ -34,7 +35,9 @@
 
 	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall"))
 
-//Telescopic baton
+/*
+ * Telescopic Baton
+ */
 /obj/item/weapon/melee/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."

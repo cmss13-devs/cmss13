@@ -116,14 +116,27 @@
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
-	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
-	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
+	desc = "A large, fine leather scabbard used to carry a ceremonial sword."
+	icon_state = "ceremonial_sword_holster"
 	force = 12
+	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/ceremonial)
 
 /obj/item/storage/large_holster/ceremonial_sword/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/ceremonial(src)
+
+/obj/item/storage/large_holster/cutlass
+	name = "cutlass scabbard"
+	desc = "A large, sturdy leather scabbard used to carry a cutlass."
+	icon_state = "cutlass_holster"
+	force = 12
+	attack_verb = list("bludgeoned", "struck", "cracked")
+	flags_equip_slot = SLOT_WAIST
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/cutlass)
+
+/obj/item/storage/large_holster/ceremonial_sword/full/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/cutlass(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"

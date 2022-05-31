@@ -368,6 +368,8 @@
   Git-Nivrak:
   - refactor: refactored collapsible stock code to make it more modular
 2022-05-31:
+  CocaColaTastesGood:
+  - bugfix: Fixes an exploit
   PurpleCIoud:
   - imageadd: Replaced sprites of stew and fish fingers to better ones
   Youtubeboy139:

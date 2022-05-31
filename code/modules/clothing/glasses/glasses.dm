@@ -148,6 +148,12 @@
 	icon_state = "kutjevo_goggles"
 	item_state = "kutjevo_goggles"
 
+/obj/item/clothing/glasses/biker
+	name = "biker goggles"
+	desc = "Cool looking goggles that shield your eyes from high intensity winds and debris."
+	icon_state = "biker_goggles"
+	item_state = "biker_goggles"
+
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
 	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."

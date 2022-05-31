@@ -128,11 +128,10 @@
 				var/obj/item/stack/sandbags/new_bags = new(user.loc)
 				new_bags.amount = dirttransfer_amount
 				new_bags.add_to_stacks(user)
-				var/obj/item/stack/sandbags_empty/E = SB
-				var/replace = (user.get_inactive_hand() == E)
+				var/replace = (user.get_inactive_hand() == SB)
 				playsound(user.loc, "rustle", 30, 1, 6)
-				E.use(dirttransfer_amount)
-				if(!E && replace)
+				SB.use(dirttransfer_amount)
+				if(!SB && replace)
 					user.put_in_hands(new_bags)
 
 				if(dirt_amt <= 0) // Ends the loop when no dirt is left

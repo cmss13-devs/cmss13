@@ -109,7 +109,7 @@
 
 	user.visible_message(SPAN_DANGER("[user] starts to put [M] into the gibber!"))
 	add_fingerprint(user)
-	if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && G && G.grabbed_thing && !occupant)
+	if(do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_HOSTILE) && G && G.grabbed_thing && !occupant)
 		user.visible_message(SPAN_DANGER("[user] stuffs [M] into the gibber!"))
 		M.forceMove(src)
 		occupant = M

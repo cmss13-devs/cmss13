@@ -4,19 +4,38 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
 	force = 3.0
+	attack_speed = 4
 	throwforce = 10.0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 110)
-	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	var/mopping = 0
-	var/mopcount = 0
+
+	var/max_reagent_volume = 15
+	var/mop_speed = 1.5 SECONDS
+	var/mop_count = 0
 
 
 /obj/item/tool/mop/Initialize()
 	. = ..()
-	create_reagents(5)
+	create_reagents(max_reagent_volume)
+
+/obj/item/tool/mop/attack(mob/living/M, mob/living/user)
+	. = ..()
+	if(.)
+		user.next_move = world.time + 1 SECONDS
+
+/obj/item/tool/mop/update_icon(var/cut_if_empty)
+	if(cut_if_empty)
+		if(!reagents.total_volume)
+			overlays.Cut()
+		return
+	overlays.Cut()
+	if(reagents.total_volume)
+		var/reagent_color = mix_color_from_reagents(reagents.reagent_list)
+		var/image/reagent_overlay = image(icon, null, "mop_overlay", layer + 0.01)
+		reagent_overlay.color = reagent_color
+		overlays += reagent_overlay
 
 /turf/proc/clean_cleanables()
 	for(var/i in cleanables)
@@ -30,19 +49,24 @@
 	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
 
 
-/obj/item/tool/mop/afterattack(atom/A, mob/user, proximity)
+/obj/item/tool/mop/afterattack(atom/A, mob/living/user, proximity)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] begins to clean \the [get_turf(A)]."))
+		var/cleaning_duration = 1.5 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC)
 
-		if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			var/turf/T = get_turf(A)
-			if(T)
-				T.clean(src)
+		var/turf/cleaning_turf = get_turf(A)
+		user.visible_message(SPAN_WARNING("[user] begins to clean \the [cleaning_turf]."))
+		user.animation_attack_on(cleaning_turf)
+		user.flick_attack_overlay(cleaning_turf, "cleaning_sparkles", cleaning_duration)
+
+		if(do_after(user, cleaning_duration, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(cleaning_turf)
+				cleaning_turf.clean(src)
+				update_icon(TRUE)
 			to_chat(user, SPAN_NOTICE("You have finished mopping!"))
 
 

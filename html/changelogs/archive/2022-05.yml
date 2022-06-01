@@ -320,3 +320,64 @@
   stanalbatross:
   - bugfix: fixed paper from photocopiers not looking like it was written on when
       coming out.
+2022-05-25:
+  Geevies:
+  - rscadd: Added a general shotgun fire delay group, while rewriting fire delay code
+      to only factor in remaining fire delays. This'll prevent the infamous double
+      chung playstyle by making it useless to carry two of the same kind of shotgun
+      loaded with the same ammo.
+  stanalbatross:
+  - balance: widened BR viro entrances and made the external walls breachable
+2022-05-26:
+  Git-Nivrak:
+  - bugfix: Fixed an exploit with CL briefcase
+  harryob:
+  - bugfix: autopsy scanners now give the correct date of death, and date of injury
+  silencer_pl:
+  - bugfix: Whiskey Outpost Smartgun using roles (HG Team Leader and Smartgunner)
+      now properly spawn with M56 visors equipped (for real this time)
+  stanalbatross:
+  - qol: added action buttons for the "word of the queen" and "view xeno tacmap" verbs
+      to the queen.
+2022-05-27:
+  Youtubeboy139:
+  - imageadd: New goggle sprites
+  - code_imp: Changes the legacy Night Vision goggles into CM style NVGs
+2022-05-28:
+  Shad0vvs:
+  - bugfix: Fixed OOC flag pref's modifying other prefs.
+  spartanbobby:
+  - bugfix: Almayer, Replaced hull windows in the execution room with reinforced windows
+      at nanus request
+  - rscadd: Almayer, Added reinforced glass to brig maint
+  - rscdel: Almayer, Removed a coffee sign that was in the glass and was two tiles
+      west of another coffee sign
+  - rscadd: Almayer, Did some tiling around the Almayer to make it look a little bit
+      more pretty
+2022-05-29:
+  Geevies:
+  - rscadd: Added a domestics skill, buffed mops. They now work faster, hold more
+      water, and have visual feedback to its operation.
+  - rscadd: Having a higher domestics skill now lets you operate microwaves and gibbers
+      faster.
+  - rscadd: You can now strike matches against your boots. Matches are also easier
+      to click now.
+  Shad0vvs:
+  - bugfix: Prevents Xeno abilities in tunnels.
+2022-05-30:
+  Git-Nivrak:
+  - refactor: refactored collapsible stock code to make it more modular
+2022-05-31:
+  CocaColaTastesGood:
+  - bugfix: Fixes an exploit
+  PurpleCIoud:
+  - imageadd: Replaced sprites of stew and fish fingers to better ones
+  Youtubeboy139:
+  - imageadd: New Powerloader clamp sprites
+  - imageadd: New pest spray sprite
+  - imageadd: New weed spray sprite
+  - imageadd: New plant-b-gone sprite
+  - imageadd: New chem sprayer sprite
+  - imageadd: New generic spray bottle
+  - imageadd: New cleaner bottle
+  - imageadd: New hydrospray bottle

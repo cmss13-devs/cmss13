@@ -5,5 +5,7 @@
   Geevies:
   - balance: Masterkeys now deal less damage against walls, in general, everything
       will now take one more shot.
+  - balance: Omni-sentries now detect xenos up to four tiles away (up from three).
+      The shooting stops when the xeno moves more than five tiles away.
   Git-Nivrak:
   - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet

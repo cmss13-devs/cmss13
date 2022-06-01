@@ -406,13 +406,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_PREIGNITION, .proc/light)
+	RegisterSignal(user, COMSIG_LIVING_IGNITION, .proc/light)
 	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user)
 	. = ..()
 	if(loc != user)
-		UnregisterSignal(user, list(COMSIG_LIVING_PREIGNITION, COMSIG_HUMAN_EXTINGUISH))
+		UnregisterSignal(user, list(COMSIG_LIVING_IGNITION, COMSIG_HUMAN_EXTINGUISH))
 
 /obj/item/clothing/mask/cigarette/ucigarette
 	icon_on = "ucigon"

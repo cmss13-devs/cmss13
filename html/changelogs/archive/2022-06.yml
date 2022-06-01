@@ -2,3 +2,5 @@
   Diegoflores31:
   - bugfix: CMO can now wear Officer armor as intended
   - bugfix: CMO now spawns with CMO uniform and hat  instead of green scrubs
+  Git-Nivrak:
+  - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet

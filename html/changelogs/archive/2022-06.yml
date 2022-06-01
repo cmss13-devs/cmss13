@@ -12,3 +12,4 @@
   Segrain:
   - bugfix: Operation name overlay at deployment once again properly displays above
       inventory items.
+  - bugfix: CLF males no longer have random chance of being named Unknown.

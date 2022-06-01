@@ -9,3 +9,6 @@
       The shooting stops when the xeno moves more than five tiles away.
   Git-Nivrak:
   - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet
+  Segrain:
+  - bugfix: Operation name overlay at deployment once again properly displays above
+      inventory items.

@@ -2,5 +2,8 @@
   Diegoflores31:
   - bugfix: CMO can now wear Officer armor as intended
   - bugfix: CMO now spawns with CMO uniform and hat  instead of green scrubs
+  Geevies:
+  - balance: Masterkeys now deal less damage against walls, in general, everything
+      will now take one more shot.
   Git-Nivrak:
   - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet

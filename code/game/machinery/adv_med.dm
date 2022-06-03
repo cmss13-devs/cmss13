@@ -75,14 +75,18 @@
 
 
 /obj/structure/machinery/bodyscanner/proc/go_in_bodyscanner(mob/M)
-	M.forceMove(src)
-	occupant = M
-	update_use_power(2)
-	icon_state = "body_scanner_1"
-	//prevents occupant's belonging from landing inside the machine
-	for(var/obj/O in src)
-		O.forceMove(loc)
-	playsound(src, 'sound/machines/scanning_pod1.ogg')
+	if(isXeno(M))
+		return
+	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
+		M.forceMove(src)
+		occupant = M
+		update_use_power(2)
+		icon_state = "body_scanner_1"
+		//prevents occupant's belonging from landing inside the machine
+		for(var/obj/O in src)
+			O.forceMove(loc)
+		playsound(src, 'sound/machines/scanning_pod1.ogg')
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
@@ -133,9 +137,11 @@
 	if (M.abiotic())
 		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
 		return
+	if (isXeno(M))
+		to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
+		return
 
 	go_in_bodyscanner(M)
-
 	add_fingerprint(user)
 	//G = null
 

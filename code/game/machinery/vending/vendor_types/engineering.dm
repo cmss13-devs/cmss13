@@ -52,19 +52,15 @@
 
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools
 	name = "\improper ColMarTech Squad ComTech Tools Vendor"
-	desc = "A vending machine that stores extra tools an engineer may need on the field."
+	desc = "A vending machine that stores various extra tools that are useful on the field."
 	icon_state = "tool"
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools/populate_product_list(var/scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
-		list("Combat Flashlight", round(scale * 4), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
-		list("M10 technician helmet", round(scale * 4), /obj/item/clothing/head/helmet/marine/tech, VENDOR_ITEM_REGULAR),
 		list("Cable Coil", round(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
-		list("High-Capacity Power Cell", round(scale * 1), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
 		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
@@ -72,8 +68,7 @@
 		list("Screwdriver", round(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
 		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
 		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
-		list("Multitool", round(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
-		list("Entrenching tool", round(scale * 4), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR)
+		list("Multitool", round(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR)
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/circuits

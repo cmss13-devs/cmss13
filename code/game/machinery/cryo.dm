@@ -237,7 +237,7 @@
 	if (inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if (!istype(M))
+	if (!istype(M) || isXeno(M))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if (occupant)

@@ -128,6 +128,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/busy = 0 //The computer is busy launching a drop, lock controls
 	var/drop_cooldown = 5000
 	var/can_pick_squad = TRUE
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
@@ -181,7 +182,7 @@ var/datum/controller/supply/supply_controller = new()
 			if(can_pick_squad)
 				var/list/squad_list = list()
 				for(var/datum/squad/S in RoleAuthority.squads)
-					if(S.usable)
+					if(S.active && S.faction == faction)
 						squad_list += S.name
 
 				var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Overwatch", squad_list)

@@ -93,19 +93,19 @@
 	if(istype(H))
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)
-				if(SQUAD_NAME_1)
+				if(SQUAD_MARINE_1)
 					icon_state = "beret_alpha"
 					desc = "Often found atop heads, slightly less found on those still attached."
-				if(SQUAD_NAME_2)
+				if(SQUAD_MARINE_2)
 					icon_state = "beret_bravo"
 					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
-				if(SQUAD_NAME_3)
+				if(SQUAD_MARINE_3)
 					icon_state = "beret_charlie"
 					desc = "Still has some morning toast crumbs on it."
-				if(SQUAD_NAME_4)
+				if(SQUAD_MARINE_4)
 					icon_state = "beret_delta"
 					desc = "Hard to consider protection, but these types of people don't seek protection."
-				if(SQUAD_NAME_5)
+				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
 					desc = "Tightly Woven, as it should be."
 		else

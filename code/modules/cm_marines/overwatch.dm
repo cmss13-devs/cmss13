@@ -24,6 +24,7 @@
 	var/z_hidden = 0 //which z level is ignored when showing marines.
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -215,7 +216,12 @@
 				if(current_squad.squad_leader)
 					if(H == current_squad.squad_leader)
 						dist = "<b>N/A</b>"
-						if(H.job != JOB_SQUAD_LEADER)
+						if(current_squad.name == SQUAD_MARSOC)
+							if(H.job == JOB_MARSOC_CMD)
+								act_sl = " (direct command)"
+							else if(H.job != JOB_MARSOC_SL)
+								act_sl = " (acting TL)"
+						else if(H.job != JOB_SQUAD_LEADER)
 							act_sl = " (acting SL)"
 					else if(M_turf && (M_turf.z == SL_z))
 						dist = "[get_dist(H, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, H))])"
@@ -449,7 +455,7 @@
 				else
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
-						if(S.usable && !S.overwatch_officer)
+						if((S.active && S.faction == faction) && !S.overwatch_officer)
 							squad_list += S.name
 
 					var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Claim Squad", squad_list)
@@ -788,7 +794,12 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
-	var/new_squad_name = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", ROLES_SQUAD_ALL)
+	var/list/available_squads = list()
+	for(var/datum/squad/Squad in ROLES_SQUAD_ALL)
+		if(!Squad.locked && Squad.faction == faction)
+			available_squads += Squad
+
+	var/new_squad_name = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)
 	if(!new_squad_name || S != current_squad)
 		return
 	var/datum/squad/new_squad = get_squad_by_name(new_squad_name)
@@ -980,6 +991,17 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 
+/obj/structure/machinery/computer/overwatch/clf
+	faction = FACTION_CLF
+/obj/structure/machinery/computer/overwatch/upp
+	faction = FACTION_UPP
+/obj/structure/machinery/computer/overwatch/pmc
+	faction = FACTION_PMC
+/obj/structure/machinery/computer/overwatch/twe
+	faction = FACTION_RESS
+/obj/structure/machinery/computer/overwatch/freelance
+	faction = FACTION_FREELANCER
+
 /obj/structure/supply_drop
 	name = "Supply Drop Pad"
 	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
@@ -989,7 +1011,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = 2.1 //It's the floor, man
-	var/squad = SQUAD_NAME_1
+	var/squad = SQUAD_MARINE_1
 	var/sending_package = 0
 
 /obj/structure/supply_drop/Initialize(mapload, ...)
@@ -1002,23 +1024,23 @@
 
 /obj/structure/supply_drop/alpha
 	icon_state = "alphadrop"
-	squad = SQUAD_NAME_1
+	squad = SQUAD_MARINE_1
 
 /obj/structure/supply_drop/bravo
 	icon_state = "bravodrop"
-	squad = SQUAD_NAME_2
+	squad = SQUAD_MARINE_2
 
 /obj/structure/supply_drop/charlie
 	icon_state = "charliedrop"
-	squad = SQUAD_NAME_3
+	squad = SQUAD_MARINE_3
 
 /obj/structure/supply_drop/delta
 	icon_state = "deltadrop"
-	squad = SQUAD_NAME_4
+	squad = SQUAD_MARINE_4
 
 /obj/structure/supply_drop/echo //extra supply drop pad
 	icon_state = "echodrop"
-	squad = SQUAD_NAME_5
+	squad = SQUAD_MARINE_5
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

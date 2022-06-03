@@ -3,11 +3,13 @@
 #define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
-#define SQUAD_NAME_1					"Alpha"
-#define SQUAD_NAME_2					"Bravo"
-#define SQUAD_NAME_3					"Charlie"
-#define SQUAD_NAME_4					"Delta"
-#define SQUAD_NAME_5					"Echo"
+#define SQUAD_MARINE_1					"Alpha"
+#define SQUAD_MARINE_2					"Bravo"
+#define SQUAD_MARINE_3					"Charlie"
+#define SQUAD_MARINE_4					"Delta"
+#define SQUAD_MARINE_5					"Echo"
+#define SQUAD_MARINE_CRYO				"Reserves"
+#define SQUAD_MARSOC					"MARSOC"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -71,6 +73,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
 #define JOB_MARSOC						"MARSOC Operator"
+#define JOB_MARSOC_SL					"MARSOC Team Leader"
+#define JOB_MARSOC_CMD					"SOC Officer"
+#define JOB_MARSOC_ROLES_LIST			list(JOB_MARSOC, JOB_MARSOC_SL, JOB_MARSOC_CMD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno

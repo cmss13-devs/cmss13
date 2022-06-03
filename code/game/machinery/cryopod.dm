@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
 
 //Main cryopod console.
 
@@ -34,16 +34,16 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	cryotype = "Eng"
 
 /obj/structure/machinery/computer/cryopod/alpha
-	cryotype = SQUAD_NAME_1
+	cryotype = SQUAD_MARINE_1
 
 /obj/structure/machinery/computer/cryopod/bravo
-	cryotype = SQUAD_NAME_2
+	cryotype = SQUAD_MARINE_2
 
 /obj/structure/machinery/computer/cryopod/charlie
-	cryotype = SQUAD_NAME_3
+	cryotype = SQUAD_MARINE_3
 
 /obj/structure/machinery/computer/cryopod/delta
-	cryotype = SQUAD_NAME_4
+	cryotype = SQUAD_MARINE_4
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"

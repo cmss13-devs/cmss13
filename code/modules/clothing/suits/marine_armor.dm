@@ -24,19 +24,21 @@
 #define CHARLIE		3
 #define DELTA		4
 #define ECHO		5
-#define NOSQUAD 	6
+#define CRYO		6
+#define MARSOC		7
+#define NOSQUAD 	8
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
 var/list/helmetmarkings = list()
 var/list/helmetmarkings_sql = list()
 var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146))
+var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
+var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<6, i++)
+	for(i=1, i<8, i++)
 		var/image/armor
 		var/image/helmet
 		var/image/glove

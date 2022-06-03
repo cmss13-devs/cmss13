@@ -1193,11 +1193,11 @@
 	hud_used.locate_leader.icon_state = "trackoff"
 
 	var/static/list/squad_leader_trackers = list(
-		TRACKER_ASL = /datum/squad/alpha,
-		TRACKER_BSL = /datum/squad/bravo,
-		TRACKER_CSL = /datum/squad/charlie,
-		TRACKER_DSL = /datum/squad/delta,
-		TRACKER_ESL = /datum/squad/echo
+		TRACKER_ASL = /datum/squad/marine/alpha,
+		TRACKER_BSL = /datum/squad/marine/bravo,
+		TRACKER_CSL = /datum/squad/marine/charlie,
+		TRACKER_DSL = /datum/squad/marine/delta,
+		TRACKER_ESL = /datum/squad/marine/echo
 	)
 	switch(tracker_setting)
 		if(TRACKER_SL)

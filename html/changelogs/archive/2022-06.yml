@@ -13,3 +13,7 @@
   - bugfix: Operation name overlay at deployment once again properly displays above
       inventory items.
   - bugfix: CLF males no longer have random chance of being named Unknown.
+2022-06-03:
+  Diegoflores31:
+  - bugfix: Xenos can no longer get inside bodyscanners, cryopods, or sleepers.
+  - bugfix: Humans cannot jump into body scanners instantly anymore.

@@ -705,12 +705,14 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "abS" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/alpha)
 "abT" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -821,6 +823,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "ack" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -864,6 +867,7 @@
 	},
 /area/almayer/living/chapel)
 "acp" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

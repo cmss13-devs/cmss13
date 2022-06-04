@@ -30,6 +30,8 @@
 
 /obj/item/explosive/Initialize()
 	. = ..()
+	if(!base_icon_state)
+		base_icon_state = initial(icon_state)
 	if(!customizable)
 		return
 	if(has_blast_wave_dampener)
@@ -37,8 +39,6 @@
 	create_reagents(1000)
 	for(var/limit in reaction_limits)
 		reagents.vars[limit] = reaction_limits[limit]
-	if(!base_icon_state)
-		base_icon_state = initial(icon_state)
 
 /obj/item/explosive/Destroy()
 	cause_data = null

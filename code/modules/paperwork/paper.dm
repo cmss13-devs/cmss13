@@ -542,7 +542,6 @@
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
 	info = "<b>there is cotten candy in the walls</b>"
-	color = "black"
 
 /obj/item/paper/bigred/union
 	name = "Shaft miners union"

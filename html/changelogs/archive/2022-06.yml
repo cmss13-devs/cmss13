@@ -18,6 +18,8 @@
   - bugfix: Xenos can no longer get inside bodyscanners, cryopods, or sleepers.
   - bugfix: Humans cannot jump into body scanners instantly anymore.
 2022-06-04:
+  Geevies:
+  - rscadd: Added a new nightmare insert to LV, brought back the corpsespawner system.
   Git-Nivrak:
   - code_imp: Optimized some say() related code
   Laser9:

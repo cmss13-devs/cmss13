@@ -1495,6 +1495,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/paper/bigred/crazy,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "adW" = (
@@ -29707,6 +29708,10 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/caves_lambda)
+"cIP" = (
+/obj/item/paper/bigred/smuggling,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "cJh" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -30037,8 +30042,8 @@
 /area/bigredv2/caves_se)
 "dFz" = (
 /obj/item/tool/pickaxe{
-	pixel_y = 4;
-	pixel_x = -18
+	pixel_x = -18;
+	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib1";
@@ -31046,9 +31051,9 @@
 	dir = 8;
 	icon_state = "gib6";
 	layer = 4;
+	pixel_x = 14;
 	pixel_y = 3;
-	tag = "icon-gib6";
-	pixel_x = 14
+	tag = "icon-gib6"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -31661,6 +31666,13 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"hzP" = (
+/obj/item/paper/bigred/final,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves/mining)
 "hAj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave,
@@ -32132,9 +32144,9 @@
 	dir = 8;
 	icon_state = "gib6";
 	layer = 4;
+	pixel_x = 12;
 	pixel_y = 3;
-	tag = "icon-gib6";
-	pixel_x = 12
+	tag = "icon-gib6"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/mars_cave{
@@ -32181,8 +32193,8 @@
 "iJF" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6";
-	pixel_y = 12
+	pixel_y = 12;
+	tag = "icon-gib6"
 	},
 /obj/item/stack/sheet/wood,
 /turf/open/mars_cave{
@@ -32366,6 +32378,15 @@
 	icon_state = "sovietsoda-broken";
 	stat = 1
 	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"jhM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/bigred/witness,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -32648,6 +32669,20 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"jPV" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "jPX" = (
 /obj/item/ore/diamond{
 	pixel_x = 8;
@@ -32777,8 +32812,8 @@
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6";
-	pixel_y = -8
+	pixel_y = -8;
+	tag = "icon-gib6"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -32861,6 +32896,14 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/research)
+"kgn" = (
+/obj/item/paper/bigred/crazy,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "kgw" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -33697,7 +33740,12 @@
 	},
 /area/bigredv2/outside/dorms)
 "mhG" = (
-/obj/structure/sign/safety/manualopenclose,
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = -3
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
 "miD" = (
@@ -34209,8 +34257,8 @@
 "nBb" = (
 /obj/item/ammo_magazine/pistol/b92fs,
 /obj/item/weapon/gun/pistol/b92fs{
-	pixel_y = -7;
-	pixel_x = 13
+	pixel_x = 13;
+	pixel_y = -7
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
@@ -34999,6 +35047,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"pcf" = (
+/obj/structure/sign/safety/manualopenclose{
+	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the the card reader being scraped up. Poor bastards.";
+	icon = 'icons/obj/structures/machinery/monitors.dmi';
+	icon_state = "auth_off";
+	name = "Access console";
+	pixel_y = -2
+	},
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves/mining)
 "pcA" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -35109,6 +35167,13 @@
 	},
 /turf/open/floor,
 /area/bigredv2/caves/eta/living)
+"puU" = (
+/obj/item/paper/bigred/witness,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
+	},
+/area/bigredv2/caves_sw)
 "pvg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -36502,6 +36567,14 @@
 	tag = "icon-mars_cave_10"
 	},
 /area/bigredv2/caves_research)
+"sqQ" = (
+/obj/item/paper/bigred/them,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "sso" = (
 /obj/structure/bed/chair,
 /turf/open/mars_cave{
@@ -36911,9 +36984,9 @@
 	dir = 8;
 	icon_state = "gib6";
 	layer = 4;
+	pixel_x = 12;
 	pixel_y = 3;
-	tag = "icon-gib6";
-	pixel_x = 12
+	tag = "icon-gib6"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
@@ -36960,8 +37033,8 @@
 "tiD" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6";
-	pixel_y = -15
+	pixel_y = -15;
+	tag = "icon-gib6"
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/highpower,
@@ -37746,9 +37819,9 @@
 	dir = 8;
 	icon_state = "gib6";
 	layer = 4;
+	pixel_x = 12;
 	pixel_y = 3;
-	tag = "icon-gib6";
-	pixel_x = 12
+	tag = "icon-gib6"
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
@@ -38193,7 +38266,7 @@
 	},
 /area/bigredv2/caves_research)
 "vRs" = (
-/obj/structure/sign/safety/waterhazard,
+/obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "vRK" = (
@@ -38398,8 +38471,8 @@
 "wmh" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6";
-	pixel_y = -8
+	pixel_y = -8;
+	tag = "icon-gib6"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -38454,15 +38527,15 @@
 "wtJ" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
-	tag = "icon-xgib4";
 	pixel_x = -9;
-	pixel_y = 11
+	pixel_y = 11;
+	tag = "icon-xgib4"
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib1";
-	tag = "icon-xgib4";
+	pixel_x = 12;
 	pixel_y = 16;
-	pixel_x = 12
+	tag = "icon-xgib4"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -38830,8 +38903,8 @@
 "xkR" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib3";
-	tag = "icon-xgib4";
-	pixel_x = 17
+	pixel_x = 17;
+	tag = "icon-xgib4"
 	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -9;
@@ -39042,6 +39115,13 @@
 /obj/item/ore,
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
+"xJP" = (
+/obj/effect/landmark/corpsespawner/miner,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves/mining)
 "xJT" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10
@@ -44358,14 +44438,14 @@ sXv
 kCe
 bgZ
 kCe
-kCe
+jhM
 rxh
 wBq
 oJd
 kMJ
 uHQ
 bTm
-pSa
+kgn
 rXy
 nEV
 hUh
@@ -45677,7 +45757,7 @@ ggC
 ymi
 tZU
 lvh
-pSa
+sqQ
 oKy
 uJI
 rxh
@@ -47604,9 +47684,9 @@ hFP
 lbZ
 maF
 sbA
-fYH
+pcf
 qzY
-fnO
+hzP
 fnO
 xkR
 tWS
@@ -47824,7 +47904,7 @@ yfs
 mhG
 fOo
 iDJ
-nrj
+jPV
 sln
 wtJ
 dFz
@@ -50876,7 +50956,7 @@ rxh
 jYD
 fnO
 fnO
-rxh
+xJP
 rxh
 rxh
 rxh
@@ -51011,7 +51091,7 @@ bcw
 aZu
 aZO
 bec
-aZu
+cIP
 aZu
 bfB
 bbe
@@ -51283,7 +51363,7 @@ dxV
 dxV
 dxV
 dxV
-qgY
+puU
 wog
 wog
 wog

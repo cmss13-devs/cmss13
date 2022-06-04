@@ -2856,6 +2856,27 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
 		M.Slow(0.4)
+
+/*
+//========
+					CAS 30mm impacters
+//========
+*/
+/datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
+	name = "30mm shell"
+
+	damage = 125 //big hurt 30mm bullet ouchy
+	penetration = ARMOR_PENETRATION_TIER_5
+	accuracy = HIT_ACCURACY_TIER_MAX
+	max_range = 0
+	shrapnel_chance = 100 //the least of your problems
+
+/datum/ammo/bullet/shrapnel/gau/hv
+	name = "30mm High-Velocity shell"
+
+	damage = 165
+	penetration = ARMOR_PENETRATION_TIER_8
+	accuracy = HIT_ACCURACY_TIER_MAX
 /*
 //======
 					Misc Ammo

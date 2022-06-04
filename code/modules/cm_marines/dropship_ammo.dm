@@ -87,6 +87,7 @@
 	point_cost = 150
 	fire_mission_delay = 2
 	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
 /obj/structure/ship_ammo/heavygun/examine(mob/user)
 	..()
@@ -109,12 +110,13 @@
 		var/turf/U = pick(turf_list)
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		U.ex_act(EXPLOSION_THRESHOLD_MLOW, pick(alldirs), cause_data)
+		U.ex_act(EXPLOSION_THRESHOLD_LOW, pick(alldirs), cause_data)
+		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100)
 		for(var/atom/movable/AM in U)
 			if(iscarbon(AM))
-				AM.ex_act(EXPLOSION_THRESHOLD_MLOW, null, cause_data)
+				AM.ex_act(EXPLOSION_THRESHOLD_LOW, null, cause_data)
 			else
-				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
+				AM.ex_act(EXPLOSION_THRESHOLD_LOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(U, get_sfx("explosion"), 40, 1, 20)
 			soundplaycooldown = 3
@@ -137,7 +139,7 @@
 	bullet_spread_range = 4
 	point_cost = 300
 	fire_mission_delay = 2
-
+	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/hv
 
 //laser battery
 

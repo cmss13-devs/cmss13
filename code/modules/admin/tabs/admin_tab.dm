@@ -327,8 +327,8 @@
 	if(!(admin_holder.rights & R_DEBUG))
 		remove_verb(src, /client/proc/proccall_atom)
 	if(!(admin_holder.rights & R_POSSESS))
-		remove_verb(src, /proc/release)
-		remove_verb(src, /proc/possess)
+		remove_verb(src, /client/proc/release)
+		remove_verb(src, /client/proc/possess)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"

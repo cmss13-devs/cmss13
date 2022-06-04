@@ -17,3 +17,7 @@
   Diegoflores31:
   - bugfix: Xenos can no longer get inside bodyscanners, cryopods, or sleepers.
   - bugfix: Humans cannot jump into body scanners instantly anymore.
+2022-06-04:
+  Shad0vvs:
+  - bugfix: Added the faction report and global narrate to mod's verb list.
+  - bugfix: Added proper checks to possessing/releasing objects and attack log verbs.

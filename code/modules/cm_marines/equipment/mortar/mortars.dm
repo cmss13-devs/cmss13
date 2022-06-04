@@ -49,9 +49,6 @@
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
-		return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
@@ -169,9 +166,6 @@
 /obj/structure/mortar/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = O
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
-			return
 		if(busy)
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
@@ -228,9 +222,6 @@
 			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
-			return
 		if(fixed)
 			to_chat(user, SPAN_WARNING("[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
 			return
@@ -335,9 +326,6 @@
 	..()
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
-		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
 	if(!is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))

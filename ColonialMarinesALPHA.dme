@@ -882,6 +882,7 @@
 #include "code\game\objects\items\devices\megaphone.dm"
 #include "code\game\objects\items\devices\motion_detector.dm"
 #include "code\game\objects\items\devices\multitool.dm"
+#include "code\game\objects\items\devices\personal_data_transmitter.dm"
 #include "code\game\objects\items\devices\pinpointer.dm"
 #include "code\game\objects\items\devices\pipe_painter.dm"
 #include "code\game\objects\items\devices\portable_vendor.dm"

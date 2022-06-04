@@ -1,6 +1,7 @@
 
 /atom
 	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
+	var/desc_lore = null
 
 	plane = GAME_PLANE
 	layer = TURF_LAYER
@@ -265,6 +266,8 @@ its easier to just keep the beam vertical.
 	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
 		to_chat(user, desc)
+	if(desc_lore)
+		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -479,6 +482,9 @@ Parameters are passed from New.
 		paramslist["ctrl"] = "1"
 	if(href_list["statpanel_item_altclick"])
 		paramslist["alt"] = "1"
+	if(href_list["desc_lore"])
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		onclose(usr, "[name]")
 	if(href_list["statpanel_item_click"])
 		// first of all make sure we valid
 		var/mouseparams = list2params(paramslist)

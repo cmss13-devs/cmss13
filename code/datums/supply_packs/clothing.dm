@@ -94,17 +94,6 @@
 	containername = "Lightweight IMP Backpack Crate"
 	group = "Clothing"
 
-/datum/supply_packs/backpack/logi
-	name = "Logistics IMP Backpack Crate (x4)"
-	contains = list(
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big
-	)
-	cost = RO_PRICE_NORMAL
-	containername = "Logistics IMP Backpack Crate"
-
 /datum/supply_packs/backpack/satchels
 	name = "Marine Satchel Crate (x4)"
 	contains = list(

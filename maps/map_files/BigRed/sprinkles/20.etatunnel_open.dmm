@@ -292,7 +292,7 @@
 	},
 /area/bigredv2/caves_sw)
 "yw" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "zB" = (
 /turf/open/mars_cave{
@@ -1530,10 +1530,10 @@ Le
 Le
 "}
 (42,1,1) = {"
-cR
-cR
-cR
-cR
+yw
+yw
+yw
+yw
 cR
 cR
 cR

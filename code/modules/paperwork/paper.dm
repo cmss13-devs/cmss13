@@ -539,6 +539,18 @@
 	name = "paper= 'Note on the contents of the armoury'"
 	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
 
+/obj/item/paper/bigred/walls
+	name = "crumpled note"
+	info = "<b>there is cotten candy in the walls</b>"
+
+/obj/item/paper/bigred/union
+	name = "Shaft miners union"
+	info = "Today we have had enough of being underpayed and treated like shit for not obtaining the higher up's unreasonable goals of ore. They say this place has a \"sea of valuable ores\" yet we have been mining for years and yet to find a single diamond. We have had it. Enough is enough. They think they can control everything we do, they thought wrong! We, the oppressed workers shall rise up against these capitolist dogs in a mutiny, and take back our pay by force.\n If they send their dogs here to bust us, we will kill each and every single one of them."
+
+/obj/item/paper/bigred/finance
+	name = "Important Finance Letter"
+	info = "TO: JOESEPH BARNES, HEAD OF COLONY FINANCE \n FROM: AIDEN MENG, HEAD OF COLONY MINING \n When will we get additional funds to fix the mining robot. That robot could do a months work in a matter of hours! Yet we still have the same quotas that we had before it was broken. Infact, when will we get anymore funding at all? Most of my people are now going on 10 months without a single dollar from this work and the few dollars we do have can barely keep this facility on its knees. \n When will research stop taking half of the colony's funds? Yes, I know they have some super secret W-Y corporate project, but in all honesty not a single word about that project has come out of the labs. Do you really want to trust a project you dont even know about? \n Let me know ASAP if and when we may be getting funding, I am afraid I cannot keep their hopes up much longer... \n - Meng"
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"

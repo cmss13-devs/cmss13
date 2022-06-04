@@ -30035,6 +30035,29 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_se)
+"dFz" = (
+/obj/item/tool/pickaxe{
+	pixel_y = 4;
+	pixel_x = -18
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
+"dFR" = (
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
+	},
+/area/bigredv2/caves/mining)
 "dHr" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
@@ -30209,6 +30232,14 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves/mining)
+"dUz" = (
+/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves/mining)
 "dWl" = (
@@ -30487,6 +30518,16 @@
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/eta)
+"eBn" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "eDQ" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor,
@@ -30978,6 +31019,16 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"fMT" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "fOc" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
@@ -30990,6 +31041,14 @@
 	},
 /obj/structure/machinery/light/double{
 	dir = 1
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3;
+	tag = "icon-gib6";
+	pixel_x = 14
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -31137,6 +31196,16 @@
 	tag = "icon-mars_dirt_5"
 	},
 /area/bigredv2/outside/s)
+"gki" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "glB" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/solaris/reinforced,
@@ -31640,6 +31709,15 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
+"hFP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "hHb" = (
 /obj/structure/sign/safety/ladder,
 /turf/closed/wall/solaris/reinforced/hull,
@@ -32048,6 +32126,22 @@
 	tag = "icon-mars_cave_11"
 	},
 /area/bigredv2/caves_sw)
+"iDJ" = (
+/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3;
+	tag = "icon-gib6";
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "iDL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32084,6 +32178,18 @@
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/chapel)
+"iJF" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6";
+	pixel_y = 12
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves/mining)
 "iLs" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -32591,6 +32697,19 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"jVW" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1";
+	tag = "icon-xgib4"
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "jWj" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars_cave{
@@ -32641,10 +32760,25 @@
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
+"jZy" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/barricade/wooden,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves/mining)
 "jZM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6";
+	pixel_y = -8
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -33078,7 +33212,6 @@
 "kVY" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold/small_stack,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -33284,6 +33417,15 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_sw)
+"lxQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/bigred/union,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "lyx" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -33371,6 +33513,14 @@
 "lIL" = (
 /obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/wood,
+/area/bigredv2/caves/mining)
+"lKw" = (
+/obj/item/paper/bigred/walls,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
 /area/bigredv2/caves/mining)
 "lLf" = (
 /obj/structure/largecrate/random/case,
@@ -34012,6 +34162,25 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/filtration_plant)
+"nub" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 7
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "nwS" = (
 /obj/item/ore{
 	pixel_x = -7;
@@ -34037,6 +34206,17 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_se)
+"nBb" = (
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs{
+	pixel_y = -7;
+	pixel_x = 13
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/caves/mining)
 "nCp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -34071,6 +34251,14 @@
 	dir = 8;
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"nFB" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves/mining)
 "nGt" = (
@@ -34247,6 +34435,18 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/se)
+"obB" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "ocp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -34334,6 +34534,17 @@
 	dir = 8;
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"omG" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/structure/barricade/wooden,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/bigredv2/caves/mining)
 "omX" = (
@@ -34445,8 +34656,9 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 15
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
@@ -34752,6 +34964,16 @@
 	dir = 8;
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"paz" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
 "pbr" = (
@@ -35115,7 +35337,9 @@
 /area/bigredv2/caves/mining)
 "pZu" = (
 /obj/structure/surface/rack,
-/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore{
+	pixel_y = 5
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -35254,6 +35478,19 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"qmG" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2";
+	tag = "icon-xgib4"
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -7
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "qmY" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
@@ -35296,6 +35533,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"quQ" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
 /area/bigredv2/caves/mining)
 "qvA" = (
 /obj/effect/landmark/xeno_spawn,
@@ -35342,6 +35589,16 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/caves_sw)
+"qzY" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves/mining)
 "qCK" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -35916,6 +36173,14 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
 	tag = "icon-mars_cave_16"
@@ -35989,6 +36254,16 @@
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
+"rVh" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib3";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
 "rWF" = (
@@ -36101,6 +36376,16 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"seO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves/mining)
 "sfI" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
@@ -36136,7 +36421,10 @@
 	},
 /area/bigredv2/outside/eta)
 "sln" = (
-/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib4";
+	tag = "icon-xgib4"
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
@@ -36311,6 +36599,16 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves/mining)
+"syu" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib3";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/bigredv2/caves/mining)
 "szg" = (
@@ -36563,6 +36861,16 @@
 	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves_research)
+"tdp" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib4";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
+	},
+/area/bigredv2/caves/mining)
 "tdB" = (
 /obj/structure/tunnel{
 	id = "hole1"
@@ -36578,6 +36886,9 @@
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/cheeseburger{
+	pixel_y = 22
+	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "teV" = (
@@ -36593,6 +36904,20 @@
 	dir = 8;
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"tff" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3;
+	tag = "icon-gib6";
+	pixel_x = 12
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/bigredv2/caves/mining)
 "tfp" = (
@@ -36632,6 +36957,19 @@
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_se)
+"tiD" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6";
+	pixel_y = -15
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/highpower,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "tkN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
@@ -36827,6 +37165,12 @@
 "tCh" = (
 /obj/structure/machinery/door/poddoor/almayer/closed,
 /obj/structure/prop/invuln/minecart_tracks,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"tDk" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "tDl" = (
@@ -37035,6 +37379,13 @@
 	tag = "icon-mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
+"tWS" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves/mining)
 "tZU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -37052,6 +37403,13 @@
 	tag = "icon-darkpurple2 (WEST)"
 	},
 /area/bigredv2/caves/lambda/research)
+"ubY" = (
+/obj/structure/barricade/wooden,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "ucH" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_virology)
@@ -37288,6 +37646,12 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
+"uFi" = (
+/obj/item/paper/bigred/finance{
+	pixel_x = -9
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
 "uFp" = (
 /obj/structure/machinery/mill,
 /turf/open/floor,
@@ -37375,6 +37739,22 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves/mining)
+"uNW" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3;
+	tag = "icon-gib6";
+	pixel_x = 12
+	},
+/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/bigredv2/caves/mining)
 "uPm" = (
@@ -37843,7 +38223,21 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Dormitories Toilet"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"vVF" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_5";
+	tag = "icon-mars_cave_5"
+	},
 /area/bigredv2/caves/mining)
 "vVZ" = (
 /turf/closed/wall/solaris,
@@ -38001,6 +38395,17 @@
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
+"wmh" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6";
+	pixel_y = -8
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "wni" = (
 /turf/open/floor{
 	icon_state = "darkredcorners2";
@@ -38046,6 +38451,24 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"wtJ" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2";
+	tag = "icon-xgib4";
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1";
+	tag = "icon-xgib4";
+	pixel_y = 16;
+	pixel_x = 12
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "wuz" = (
 /obj/structure/sink{
 	dir = 8;
@@ -38404,6 +38827,21 @@
 	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves_research)
+"xkR" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib3";
+	tag = "icon-xgib4";
+	pixel_x = 17
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves/mining)
 "xpb" = (
 /turf/open/floor{
 	dir = 5;
@@ -38643,16 +39081,13 @@
 "xMT" = (
 /obj/structure/closet,
 /obj/item/explosive/grenade/HE/frag,
-/obj/item/tool/pickaxe{
-	pixel_x = -3;
-	pixel_y = -9
-	},
 /obj/item/ore{
 	pixel_x = -4;
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/reagent_container/food/snacks/packaged_burger,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -38734,6 +39169,13 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
+"xWH" = (
+/obj/structure/barricade/wooden,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
+	},
+/area/bigredv2/caves/mining)
 "xWI" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
@@ -38750,6 +39192,16 @@
 	dir = 8;
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"xXg" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1";
+	tag = "icon-xgib4"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
 "xXP" = (
@@ -38828,6 +39280,9 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -43694,7 +44149,7 @@ kPu
 uHQ
 crv
 bJz
-kCe
+lxQ
 nXh
 oOr
 uHQ
@@ -44542,7 +44997,7 @@ pYt
 uHQ
 cyv
 jPm
-wtj
+uFi
 wtj
 jPX
 gps
@@ -45873,7 +46328,7 @@ xRl
 uHT
 pSa
 csB
-pSa
+lKw
 oKy
 tsc
 rxh
@@ -47145,19 +47600,19 @@ kvp
 aao
 aao
 xMr
-kCe
+hFP
 lbZ
 maF
 sbA
 fYH
+qzY
 fnO
 fnO
-fnO
-fnO
-fnO
-fnO
-fnO
-fnO
+xkR
+tWS
+uNW
+iJF
+omG
 pJX
 wCo
 yhc
@@ -47368,19 +47823,19 @@ cAN
 yfs
 mhG
 fOo
-wCo
-wCo
+iDJ
+nrj
 sln
+wtJ
+dFz
+jVW
+qmG
 wCo
-wCo
-wCo
-wCo
-wCo
-wCo
-wCo
+tiD
+wmh
 xfx
-nSP
-wCo
+seO
+igM
 wCo
 nSP
 vmI
@@ -47585,21 +48040,21 @@ lYC
 yfs
 uxx
 yda
-szw
-wCo
-wCo
-wCo
-nSP
-wCo
-wCo
-nSP
+nBb
+gki
+paz
+eBn
+rVh
+ubY
+ubY
+xXg
 wCo
 wCo
 jJH
 wCo
 sqc
-wCo
-wCo
+quQ
+fMT
 wCo
 nSP
 wCo
@@ -47807,8 +48262,8 @@ iPE
 iPE
 iPE
 jrA
-jrA
-iPE
+jZy
+obB
 iPE
 iPE
 jrA
@@ -48019,13 +48474,13 @@ kKx
 vlr
 uxx
 rMJ
+tff
+tdp
+syu
 owR
 owR
-owR
-owR
-owR
-owR
-owR
+dFR
+xWH
 eql
 wCo
 wCo
@@ -48236,8 +48691,8 @@ pbX
 yfs
 uxx
 jZM
-hEz
-buj
+dUz
+vVF
 vHw
 vHw
 uHQ
@@ -48453,7 +48908,7 @@ cVd
 jDy
 bvV
 ovZ
-rsv
+nFB
 vHw
 vHw
 vHw
@@ -48669,9 +49124,9 @@ qjA
 bJS
 iaN
 uHQ
-uHQ
-uHQ
-aao
+tDk
+nub
+gNH
 aao
 aao
 uHQ
@@ -48886,8 +49341,8 @@ uHQ
 uHQ
 uHQ
 uHQ
-aao
-aao
+gNH
+gNH
 aao
 aao
 aao

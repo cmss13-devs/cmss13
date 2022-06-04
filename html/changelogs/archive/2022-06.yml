@@ -25,6 +25,8 @@
   Shad0vvs:
   - bugfix: Added the faction report and global narrate to mod's verb list.
   - bugfix: Added proper checks to possessing/releasing objects and attack log verbs.
+  TotalEpicness:
+  - rscadd: Added back the engineering tool vendors to Comtech prep
   TotalEpicness5:
   - bugfix: Fixed flare guns not being able to be put in shoulder holster, again.
       Should work now.. I promise! :D

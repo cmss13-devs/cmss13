@@ -321,6 +321,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		menu.custom_check_callback = custom_check
 	menu.anchor = anchor
 	menu.check_screen_border(user) //Do what's needed to make it look good near borders or on hud
+	if(use_labels && user.client?.prefs?.no_radial_labels_preference)
+		use_labels = FALSE
 	menu.set_choices(choices, tooltips, use_labels)
 	menu.show_to(user)
 	menu.wait(user, anchor, require_near)

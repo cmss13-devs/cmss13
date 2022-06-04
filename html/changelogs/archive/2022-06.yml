@@ -33,3 +33,6 @@
   - bugfix: G8 belts should now be able to be consistently placed in armor.
   - imageadd: Added in sprites for thermal and meson pred visor because someone forgot
       to add them and it caused errors.
+  stanalbatross:
+  - balance: removed logi backpacks other than for synths
+  - balance: removed the two free rocket backpacks in the OT room

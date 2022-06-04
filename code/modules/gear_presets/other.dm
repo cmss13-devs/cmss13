@@ -650,6 +650,7 @@
 	load_status(H)
 	load_vanity(H)
 	load_race(H)//Race is loaded last, otherwise we wouldn't be able to equip gear!
+	H.assigned_equipment_preset = src
 	H.regenerate_icons()
 
 /datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, var/randomise)

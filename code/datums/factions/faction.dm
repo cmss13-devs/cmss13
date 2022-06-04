@@ -5,3 +5,9 @@
 
 /datum/faction/proc/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/H)
 	return
+
+/datum/faction/proc/get_antag_guns_snowflake_equipment()
+	return list()
+
+/datum/faction/proc/get_antag_guns_sorted_equipment()
+	return list()

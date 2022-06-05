@@ -38,3 +38,6 @@
   stanalbatross:
   - balance: removed logi backpacks other than for synths
   - balance: removed the two free rocket backpacks in the OT room
+2022-06-05:
+  TotalEpicness:
+  - rscadd: MS-11 Smart Autoinjector Refill Tanks can now be stored in medrigs.

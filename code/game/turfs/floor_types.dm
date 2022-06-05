@@ -10,6 +10,9 @@
 	intact_tile = FALSE
 	tool_flags = NO_FLAGS
 
+/turf/open/floor/plating/is_plating()
+	return TRUE
+
 /turf/open/floor/plating/is_plasteel_floor()
 	return FALSE
 

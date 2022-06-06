@@ -9,6 +9,10 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 	var/list/available_surgeries = list()
 	var/list/valid_steps = list() //Steps that could be performed, if we had the right tool.
 
+	if(user.z == GLOB.interior_manager.interior_z && !istype(target.loc, /turf/open/shuttle/vehicle/med))
+		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+		return FALSE
+
 	if(user.action_busy) //already doing an action
 		return FALSE
 

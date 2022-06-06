@@ -58,6 +58,10 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	if(!tool_type) //Can't perform the step.
 		return FALSE
 
+	if(user.z == GLOB.interior_manager.interior_z && !istype(target.loc, /turf/open/shuttle/vehicle/med))
+		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+		return FALSE
+
 	surgery.step_in_progress = TRUE
 
 	var/step_duration = time

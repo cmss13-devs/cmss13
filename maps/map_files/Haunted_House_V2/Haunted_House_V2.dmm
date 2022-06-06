@@ -12594,7 +12594,7 @@
 	},
 /area/event/metal/dynamic)
 "Nh" = (
-/obj/vehicle/multitile/van/decrepit{
+/obj/effect/vehicle_spawner/van/decrepit{
 	pixel_x = 0;
 	pixel_y = 0
 	},

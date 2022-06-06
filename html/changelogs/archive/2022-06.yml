@@ -41,3 +41,6 @@
 2022-06-05:
   TotalEpicness:
   - rscadd: MS-11 Smart Autoinjector Refill Tanks can now be stored in medrigs.
+2022-06-06:
+  Geevies:
+  - rscadd: Radial menus now have labels.

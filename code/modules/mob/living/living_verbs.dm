@@ -38,7 +38,7 @@
 		return
 
 	//resisting grabs (as if it helps anyone...)
-	if(!is_mob_restrained(0) && pulledby)
+	if(!is_mob_restrained(0) && pulledby && pulledby.can_be_resisted())
 		visible_message(SPAN_DANGER("[src] resists against [pulledby]'s grip!"))
 		resist_grab()
 		return

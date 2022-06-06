@@ -1040,3 +1040,6 @@ mob/proc/yank_out_object()
 		if(client)
 			client.prefs.process_link(src, href_list)
 		return TRUE
+
+/mob/proc/can_be_resisted()
+	return TRUE

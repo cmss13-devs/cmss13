@@ -76,6 +76,11 @@
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
+/mob/living/carbon/Xenomorph/Warrior/can_be_resisted()
+	if(lunging)
+		return FALSE
+	return TRUE
+
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
@@ -97,6 +102,7 @@
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
 
+	lunging = TRUE
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
@@ -111,8 +117,9 @@
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
-			lunging = TRUE
 			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+	else
+		lunging = FALSE
 
 /mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
 	lunging = FALSE

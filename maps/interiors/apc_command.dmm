@@ -47,9 +47,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "g" = (
 /obj/structure/bed/chair/vehicle{
@@ -67,9 +65,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "i" = (
 /obj/structure/interior_wall/apc{
@@ -338,9 +334,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "Q" = (
 /obj/structure/interior_wall/apc{
@@ -384,9 +378,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "W" = (
 /obj/structure/interior_wall/apc{

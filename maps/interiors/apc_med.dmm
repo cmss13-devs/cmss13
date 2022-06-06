@@ -6,33 +6,32 @@
 /turf/open/void/vehicle,
 /area/space)
 "b" = (
-/obj/structure/machinery/bodyscanner,
-/turf/open/shuttle/vehicle/med{
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/bodybags,
+/turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_11"
 	},
 /area/vehicle/apc)
 "c" = (
-/obj/structure/machinery/body_scanconsole,
-/obj/effect/decal/medical_decals/permanent{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
-/turf/open/shuttle/vehicle/med{
-	icon_state = "dark_sterile_green_1"
-	},
-/area/vehicle/apc)
-"d" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/structure/bed/roller,
 /obj/structure/machinery/iv_drip{
 	anchored = 1
 	},
 /obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecaldir"
+	icon_state = "docdecal2";
+	pixel_y = 16
 	},
-/turf/open/shuttle/vehicle/med,
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_5"
+	},
+/area/vehicle/apc)
+"d" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottom"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_5"
+	},
 /area/vehicle/apc)
 "e" = (
 /obj/structure/interior_wall/apc{
@@ -44,17 +43,13 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "g" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "h" = (
 /obj/effect/landmark/interior/spawn/interior_viewport{
@@ -92,10 +87,6 @@
 /turf/open/void/vehicle,
 /area/space)
 "m" = (
-/obj/effect/decal/medical_decals/permanent{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	density = 0;
 	indestructible = 1;
@@ -115,8 +106,9 @@
 	unslashable = 1;
 	wrenchable = 0
 	},
-/turf/open/shuttle/vehicle/med{
-	icon_state = "dark_sterile_green_2"
+/obj/structure/machinery/body_scanconsole,
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_7"
 	},
 /area/vehicle/apc)
 "n" = (
@@ -136,8 +128,11 @@
 	pixel_x = 15;
 	pixel_y = 38
 	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottomright"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
+	icon_state = "dark_sterile_green_13"
 	},
 /area/vehicle/apc)
 "p" = (
@@ -198,7 +193,9 @@
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
-/turf/open/shuttle/vehicle/med,
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile"
+	},
 /area/vehicle/apc)
 "x" = (
 /obj/structure/interior_wall/apc{
@@ -215,7 +212,7 @@
 	tag = "left"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_11"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "z" = (
@@ -241,13 +238,8 @@
 	},
 /area/vehicle/apc)
 "B" = (
-/obj/structure/vehicle_locker/med{
-	pixel_x = -6;
-	pixel_y = 28
-	},
-/obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
-/turf/open/shuttle/vehicle/med{
+/obj/structure/machinery/bodyscanner,
+/turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_12"
 	},
 /area/vehicle/apc)
@@ -255,16 +247,16 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "D" = (
 /obj/effect/decal/medical_decals/permanent{
-	dir = 4;
-	icon_state = "triagedecaldir"
+	icon_state = "docdecal1";
+	pixel_y = 16
 	},
-/turf/open/shuttle/vehicle/med,
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile"
+	},
 /area/vehicle/apc)
 "E" = (
 /obj/structure/vehicle_locker{
@@ -296,9 +288,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "I" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
@@ -312,7 +302,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/shuttle/vehicle/med{
+/turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_6"
 	},
 /area/vehicle/apc)
@@ -323,12 +313,12 @@
 	tag = "right"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_12"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "L" = (
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_14"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "M" = (
@@ -348,18 +338,12 @@
 /turf/open/void/vehicle,
 /area/space)
 "O" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/bed/roller,
-/obj/structure/machinery/iv_drip{
-	anchored = 1
-	},
 /obj/effect/decal/medical_decals/permanent{
-	dir = 1;
-	icon_state = "triagedecaldir"
+	icon_state = "triagedecaltop"
 	},
-/turf/open/shuttle/vehicle/med,
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_7"
+	},
 /area/vehicle/apc)
 "P" = (
 /obj/structure/interior_wall/apc{
@@ -371,8 +355,11 @@
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecalbottom"
 	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltopright"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
+	icon_state = "dark_sterile_green_14"
 	},
 /area/vehicle/apc)
 "R" = (
@@ -388,8 +375,12 @@
 /turf/open/void/vehicle,
 /area/space)
 "T" = (
+/obj/effect/decal/medical_decals/permanent{
+	dir = 4;
+	icon_state = "triagedecaldir"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_3_3"
+	icon_state = "dark_sterile_green_8"
 	},
 /area/vehicle/apc)
 "U" = (

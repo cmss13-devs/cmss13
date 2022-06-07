@@ -24070,9 +24070,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "bAZ" = (
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
-	pixel_x = 32
-	},
+/turf/open/space/basic,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

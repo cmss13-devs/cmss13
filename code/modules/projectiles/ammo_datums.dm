@@ -2532,6 +2532,16 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	added_spit_delay = 0
 
+/datum/ammo/xeno/acid/railgun
+	name = "heavy acid shot"
+
+	accuracy = HIT_ACCURACY_TIER_10
+	max_range = 24
+	damage = 50
+	shell_speed = AMMO_SPEED_TIER_3
+	added_spit_delay = 0
+
+
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 

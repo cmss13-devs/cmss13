@@ -40,7 +40,7 @@
 	var/fire_intensity_resistance = 0
 
 	var/spit_delay = 60 //Delay timer for spitting
-
+	var/spit_windup = FALSE // Windup for spits
 	var/aura_strength = 0 //The strength of our aura. Zero means we can't emit one
 	var/aura_allowed = list("frenzy", "warding", "recovery") //"Evolving" removed for the time being
 

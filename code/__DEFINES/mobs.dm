@@ -320,6 +320,7 @@
 // Boiler strain flags
 #define BOILER_NORMAL		"Normal"
 #define BOILER_GRENADIER		"Grenadier"
+#define BOILER_STRIKER		"Striker"
 
 // Runner strain flags
 #define RUNNER_NORMAL		"Normal"

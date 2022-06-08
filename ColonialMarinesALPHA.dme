@@ -1665,6 +1665,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\mutators\behavior_delegate.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\mutator.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\grenadier.dm"
+#include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\striker.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\trapper.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\carrier\eggsac.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\carrier\shaman.dm"

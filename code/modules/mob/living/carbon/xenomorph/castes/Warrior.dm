@@ -102,7 +102,8 @@
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
 
-	lunging = TRUE
+	if(should_neckgrab)
+		lunging = TRUE
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull

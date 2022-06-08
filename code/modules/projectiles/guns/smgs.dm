@@ -121,7 +121,7 @@
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
 //-------------------------------------------------------
-//M5, a classic SMG used in a lot of action movies.
+//MP5, a classic SMG used in a lot of action movies.
 
 /obj/item/weapon/gun/smg/mp5
 	name = "\improper MP5 submachinegun"
@@ -440,3 +440,37 @@
     if(.)
         click_empty(user)
     return FALSE
+
+//-------------------------------------------------------
+//M1921 //Based on the Model 1921.
+
+/obj/item/weapon/gun/smg/m1921
+	name = "\improper M1921 Thompson submachinegun"
+	desc = "A modern day copy of a classic design, the Model 1921 Thompson submachine gun was known for its use in WW2 and by mobsters during the period which earned its nickname 'the Chicago Typewriter'"
+	icon_state = "tommy"
+	item_state = "tommy"
+	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/m1921
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						)
+	starting_attachment_types = list(/obj/item/attachable/stock/m1921)
+
+/obj/item/weapon/gun/smg/m1921/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 6)
+
+/obj/item/weapon/gun/smg/m1921/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5

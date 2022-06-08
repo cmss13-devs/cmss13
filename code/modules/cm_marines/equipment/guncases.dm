@@ -157,3 +157,15 @@
 	new /obj/item/ammo_magazine/m2c(src)
 	new /obj/item/storage/belt/marine/m2c(src)
 
+//------------
+/obj/item/storage/box/guncase/m1921
+	name = "\improper M1921 Thompson SMG case"
+	desc = "A gun case containing the M1921 Thompson submachinegun."
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/rifle/lmg, /obj/item/ammo_magazine/rifle/lmg)
+
+/obj/item/storage/box/guncase/lmg/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)

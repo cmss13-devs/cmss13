@@ -152,3 +152,15 @@
 	w_class = SIZE_SMALL
 	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/smg/nailgun
+
+//-------------------------------------------------------
+//M1921 //Based on the Model 1921.
+
+/obj/item/ammo_magazine/smg/m1921
+	name = "\improper M1921 stick mag (.45)"
+	desc = "A .45 stick mag for the M1921."
+	default_ammo = /datum/ammo/bullet/smg
+	caliber = ".45"
+	icon_state = "tommy_stick"
+	gun_type = /obj/item/weapon/gun/smg/m1921
+	max_rounds = 30

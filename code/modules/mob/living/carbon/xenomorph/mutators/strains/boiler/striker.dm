@@ -26,12 +26,11 @@
 	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
 	if(B.is_zoomed)
 		B.zoom_out()
-
-	B.mutation_type = BOILER_STRIKER
-	B.plasma_types -= PLASMA_NEUROTOXIN
 	B.spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	B.spit_delay = 5 SECONDS
 	B.spit_windup = 3 SECONDS
+	B.mutation_type = BOILER_STRIKER
+	B.plasma_types -= PLASMA_NEUROTOXIN
 
 	//B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_1
 	B.recalculate_everything()
@@ -41,7 +40,8 @@
 	mutator_update_actions(B)
 	MS.recalculate_actions(description, flavor_description)
 
-
+// find out why its being dumb and making it neuro gas
+// save neuro gas for base globber
 /datum/behavior_delegate/boiler_striker
 	name = "Boiler striker Behavior Delegate"
 

@@ -213,6 +213,9 @@
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/ignores_pheromones = FALSE // title
 	var/is_zoomed = FALSE
+	var/list/spit_types
+	var/spit_windup = 0
+	var/spit_delay = 0
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
@@ -260,7 +263,7 @@
 	var/max_placeable = 0 // Limit to that amount
 	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
 	var/list/built_structures = list()
-
+	var
 	var/icon_xeno
 	var/icon_xenonid
 

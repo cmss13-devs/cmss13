@@ -312,10 +312,10 @@
 	bonus_projectiles_amount = 0
 	max_range = 4
 
-/// acid splasher powers
+/// acid grenadier powers
 
 
-/datum/action/xeno_action/activable/splasher_acid_glob/use_ability(atom/A)
+/datum/action/xeno_action/activable/grenadier_acid_glob/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	to_chat(X, SPAN_XENODANGER("You prepare to lob a massive acid glob!"))
 	if (!X.check_state() || X.action_busy)
@@ -353,7 +353,7 @@
 	return
 
 
-/datum/action/xeno_action/activable/splasher_acid_glob/slime/use_ability(atom/A)
+/datum/action/xeno_action/activable/grenadier_acid_glob/slime/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	to_chat(X, SPAN_XENODANGER("You prepare to lob a massive slime glob!"))
 	if (!X.check_state() || X.action_busy)

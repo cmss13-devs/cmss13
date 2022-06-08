@@ -1,5 +1,5 @@
 /*
-Acid splasher
+Acid grenadier
 
 Projectile based, use the prae acid ball grenade
 
@@ -8,7 +8,7 @@ todo:  [✓] = done [-] = in prog  [%] = todo
 	-
 	-TESTED[✓]
 
-- make new acid ball nade for splasher			[✓]
+- make new acid ball nade for grenadier			[✓]
 	-
 	-TESTED[✓]
 
@@ -48,7 +48,7 @@ BASICALLY
 //strain not appearing on purchas strain		[✓]
 
 */
-/datum/xeno_mutator/splasher
+/datum/xeno_mutator/grenadier
 	name = "STRAIN: Boiler - Acid Splasher"
 	description = "You trade your acid gas cloud, some speed and acid lance into a neuro gas cloud that immobilizes your opponents, gain a long range acid artillery glob and can support your fellow sisters with acid pools"
 	flavor_description = "I love the smell of meltin' tallhosts in the Mornin'."
@@ -61,16 +61,16 @@ BASICALLY
 		/datum/action/xeno_action/onclick/dump_acid,
 	) /////////////// todo: put the actions you want here
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/splasher_acid_glob,
-		/datum/action/xeno_action/activable/splasher_acid_glob/slime,
+		/datum/action/xeno_action/activable/grenadier_acid_glob,
+		/datum/action/xeno_action/activable/grenadier_acid_glob/slime,
 		///datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
 	)
 	keystone = TRUE
 
-	behavior_delegate_type = /datum/behavior_delegate/boiler_splasher
+	behavior_delegate_type = /datum/behavior_delegate/boiler_grenadier
 
-/datum/xeno_mutator/splasher/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/grenadier/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if(. == 0)
 		return
@@ -79,7 +79,7 @@ BASICALLY
 	if(B.is_zoomed)
 		B.zoom_out()
 
-	B.mutation_type = BOILER_SPLASHER
+	B.mutation_type = BOILER_GRENADIER
 	B.plasma_types -= PLASMA_NEUROTOXIN
 
 	//B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_1
@@ -91,7 +91,7 @@ BASICALLY
 	MS.recalculate_actions(description, flavor_description)
 
 
-/datum/behavior_delegate/boiler_splasher
+/datum/behavior_delegate/boiler_grenadier
 	name = "Boiler Splasher Behavior Delegate"
 
 	// Config
@@ -109,13 +109,13 @@ BASICALLY
 // the fuck does this do
 //were not using this shit
 /*
-/datum/behavior_delegate/boiler_splasher/on_hitby_projectile(ammo)
+/datum/behavior_delegate/boiler_grenadier/on_hitby_projectile(ammo)
 	if (temp_movespeed_usable)
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
 
-/datum/behavior_delegate/boiler_splasher/ranged_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/boiler_grenadier/ranged_attack_additional_effects_target(atom/A)
 	if (!ishuman(A))
 		return
 	if (!istype(bound_xeno))
@@ -144,7 +144,7 @@ BASICALLY
 	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 
-/datum/behavior_delegate/boiler_splasher/on_life() // use this for cooldowns
+/datum/behavior_delegate/boiler_grenadier/on_life() // use this for cooldowns
 	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
 		if (!temp_movespeed_messaged)
 			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))

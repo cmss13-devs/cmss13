@@ -17,7 +17,7 @@
 	..()
 // Splasher boiler glob
 // Splashes acid in a radius and melts cades in a radius aswell
-/obj/item/explosive/grenade/splasher_acid_glob
+/obj/item/explosive/grenade/grenadier_acid_glob
 	name = "acid ball"
 	desc = "A bulging, pulsating ball of gas."
 	icon_state = "neuro_nade"
@@ -34,7 +34,7 @@
 	var/range = 3
 	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/item/explosive/grenade/splasher_acid_glob/prime()
+/obj/item/explosive/grenade/grenadier_acid_glob/prime()
 	create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	//new spray_type(loc, cause_data, hivenumber)
 	var/datum/automata_cell/acid/boiler/E = new /datum/automata_cell/acid/boiler(get_turf(loc))
@@ -59,7 +59,7 @@
 
 
 
-/obj/item/explosive/grenade/splasher_slime_glob
+/obj/item/explosive/grenade/grenadier_slime_glob
 	name = "slime ball"
 	desc = "A bulging, pulsating ball of slime."
 	icon_state = "neuro_nade"
@@ -74,7 +74,7 @@
 	var/range = 1
 	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/item/explosive/grenade/splasher_slime_glob/prime()
+/obj/item/explosive/grenade/grenadier_slime_glob/prime()
 	create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	var/datum/automata_cell/acid/slime/E = new /datum/automata_cell/acid/slime(get_turf(loc))
 	E.source = initial(name)

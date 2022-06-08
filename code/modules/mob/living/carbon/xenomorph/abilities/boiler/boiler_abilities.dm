@@ -100,9 +100,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 
-//////////////////////////// acid globber abilities
+//////////////////////////// acid grenadier abilities
 
-/datum/action/xeno_action/activable/splasher_acid_glob
+/datum/action/xeno_action/activable/grenadier_acid_glob
 	name = "Acid Glob"
 	action_icon_state = "prae_acid_ball"
 	ability_name = "acid glob"
@@ -116,9 +116,9 @@
 	var/prime_delay = 1 SECONDS
 	// throw range in tiles
 	var/throw_range = 10
-	var/globtype = /obj/item/explosive/grenade/splasher_acid_glob
+	var/globtype = /obj/item/explosive/grenade/grenadier_acid_glob
 
-/datum/action/xeno_action/activable/splasher_acid_glob/slime
+/datum/action/xeno_action/activable/grenadier_acid_glob/slime
 	name = "Slime Glob"
 	action_icon_state = "prae_acid_ball"
 	ability_name = "acid glob"
@@ -131,5 +131,5 @@
 	activation_delay = 5 SECONDS
 	prime_delay = 1 SECONDS
 	throw_range = 5
-	globtype = /obj/item/explosive/grenade/splasher_slime_glob
+	globtype = /obj/item/explosive/grenade/grenadier_slime_glob
 

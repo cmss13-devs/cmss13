@@ -15,7 +15,7 @@
 	create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	qdel(src)
 	..()
-// Splasher boiler glob
+// Grenadier boiler glob
 // Splashes acid in a radius and melts cades in a radius aswell
 /obj/item/explosive/grenade/grenadier_acid_glob
 	name = "acid ball"

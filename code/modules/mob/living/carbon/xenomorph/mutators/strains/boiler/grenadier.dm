@@ -49,7 +49,7 @@ BASICALLY
 
 */
 /datum/xeno_mutator/grenadier
-	name = "STRAIN: Boiler - Acid Splasher"
+	name = "STRAIN: Boiler - Acid Grenadier"
 	description = "You trade your acid gas cloud, some speed and acid lance into a neuro gas cloud that immobilizes your opponents, gain a long range acid artillery glob and can support your fellow sisters with acid pools"
 	flavor_description = "I love the smell of meltin' tallhosts in the Mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
@@ -92,7 +92,7 @@ BASICALLY
 
 
 /datum/behavior_delegate/boiler_grenadier
-	name = "Boiler Splasher Behavior Delegate"
+	name = "Boiler Grenadier Behavior Delegate"
 
 	// Config
 	var/temp_movespeed_amount = 1.25

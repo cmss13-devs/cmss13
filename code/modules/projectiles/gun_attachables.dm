@@ -1180,6 +1180,32 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/stock/hg3712
+	name = "hg3712 stock"
+	desc = "The non-detachable stock of a HG 37-12 pump shotgun."
+	icon_state = "hg3712_stock"
+	pixel_shift_x = 41
+	pixel_shift_y = 10
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/hg3712/New()
+	..()
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/stock/hg3712/m3717
+	name = "hg3717 stock"
+	desc = "The non-detachable stock of a M37-17 pump shotgun."
+	icon_state = "hg3717_stock"
+
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A solid stock"
 	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."

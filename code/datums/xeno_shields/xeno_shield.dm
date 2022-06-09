@@ -88,3 +88,8 @@
 	overlay_shields()
 	return new_shield
 
+
+/mob/living/carbon/Xenomorph/proc/remove_xeno_shield()
+	for (var/datum/xeno_shield/curr_shield in xeno_shields)
+		curr_shield.amount = max(0)
+	return

@@ -44,3 +44,6 @@
 2022-06-06:
   Geevies:
   - rscadd: Radial menus now have labels.
+2022-06-09:
+  Rem1:
+  - bugfix: Removes an access to space on the Almayer.

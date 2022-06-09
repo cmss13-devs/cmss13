@@ -402,6 +402,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
 	var/input = tgui_input_list(usr, "Please, select a category:", "Follow", choices)
+	var/follow_input = input
 	if(!input)
 		return
 	var/atom/movable/target
@@ -461,6 +462,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target = targets[input]
 
 	ManualFollow(target)
+	if(world.time < 25 MINUTES && follow_input == "Survivors")
+		msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(target)].")
 	return
 
 // This is the ghost's follow verb with an argument
@@ -516,6 +519,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/turf/T = get_turf(M) //Turf of the destination mob
 
 			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
+				if(M.faction == FACTION_SURVIVOR && world.time < 25 MINUTES)
+					msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(M)].")
 				A.forceMove(T)
 				following = null
 			else

@@ -45,5 +45,8 @@
   Geevies:
   - rscadd: Radial menus now have labels.
 2022-06-09:
+  Geevies:
+  - rscadd: Added the pick-say macro, which can assign a lot of battlecries to one
+      button. Check the PR for instructions on how to use it.
   Rem1:
   - bugfix: Removes an access to space on the Almayer.

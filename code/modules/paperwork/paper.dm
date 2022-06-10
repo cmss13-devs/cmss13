@@ -539,6 +539,42 @@
 	name = "paper= 'Note on the contents of the armoury'"
 	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
 
+/obj/item/paper/bigred/walls
+	name = "crumpled note"
+	info = "<b>there is cotten candy in the walls</b>"
+
+/obj/item/paper/bigred/union
+	name = "Shaft miners union"
+	info = "Today we have had enough of being underpayed and treated like shit for not obtaining the higher up's unreasonable goals of ore. They say this place has a \"sea of valuable ores\" yet we have been mining for years and yet to find a single diamond. We have had it. Enough is enough. They think they can control everything we do, they thought wrong! We, the oppressed workers shall rise up against these capitolist dogs in a mutiny, and take back our pay by force.\n If they send their dogs here to bust us, we will kill each and every single one of them."
+
+/obj/item/paper/bigred/finance
+	name = "Important Finance Letter"
+	info = "TO: JOESEPH BARNES, HEAD OF COLONY FINANCE \n FROM: AIDEN MENG, HEAD OF COLONY MINING \n When will we get additional funds to fix the mining robot. That robot could do a months work in a matter of hours! Yet we still have the same quotas that we had before it was broken. Infact, when will we get anymore funding at all? Most of my people are now going on 10 months without a single dollar from this work and the few dollars we do have can barely keep this facility on its knees. \n When will research stop taking half of the colony's funds? Yes, I know they have some super secret W-Y corporate project, but in all honesty not a single word about that project has come out of the labs. Do you really want to trust a project you dont even know about? \n Let me know ASAP if and when we may be getting funding, I am afraid I cannot keep their hopes up much longer... \n - Meng"
+
+/obj/item/paper/bigred/smuggling
+	name = "Folded note"
+	info = "Alright, Jeff, I know you still owe me after standing up for you when you got caught with a whole pill bottle of mindbreaker. Remember? How I got you out of 15 years in the slammer? \n Anyway, I have a special task for you that you can do to repay me. \n <p> Whenever you unload a cargo container, simply look for any crate with a blue hexagon on it. </p>  <p>Upon finding one, you DO NOT OPEN it under ANY circumstances and keep it away from anyone else. You then bring it to viro, specifically the back of the lobby where there is a hole into the caves. </p> \n <p> Then leave it at the nearest crevice to the right, my men will then take it. Should there be any backup, simply stack it ontop.</p> \n<p> Easy, right? Just simple moving cargo. If anyone asks whats in it, they are simply power tools. </p> \n <p> Good luck, I'll slide you a few blunts of space weed that we have as tip if you work well. </p>"
+	color = "grey"
+
+/obj/item/paper/bigred/witness
+	name = "Journal of the witness"
+	info = " throughout history, humans have been fighting evils. whether that be communists, slackers, liberals, assholes and your boss, those evils are all eventually delt with by one way or another. <p> However, there is one that I have seen with my own eyes when I snuck into Lambda caves, an organism that reeks of so much evil that it immediately fills you with rage and terror. \n after I saw it, I realised the sheer insanity of this administration to even allow this monstrosity in our colony. \n into... my colony ... my HOME for fucks sakes, and I have to LIVE with these chucklefuck bastards who are too blind by their idiocy and corporate percentages to even realise the evil that they have brought here."
+	color = "green"
+/obj/item/paper/bigred/them
+	name = "THEM"
+	color = "green"
+	info = "<p>i can't fucking take it, i am fully convinced with ZERO doubts that the entire colony administration is controlled by THEM. those fucking THINGs that are so outrageously evil that calling them monsters would be an insult to monsters.</p> <p> i get why they are hiding them now, because they are their actual secret masters. controlling the will of the colony and threatening the entire human race.</p> \n <p> those... things are not the experiment, being expirimented by our scientists, but rather we are the expirments for THEM </p> \n And they dont want anyone not controlled by them to know about it, i bet if everyone knew about it, the lambda secret labs would be burned to the ground within hours... if only there was a way we could do that..."
+
+/obj/item/paper/bigred/crazy
+	name = "THEY ARE COMING FOR ME"
+	info = "fuck man, i have tried and tried to tell people, from my co-workers and friends to random people. each and every single time i have been called crazy. <p> then recently THEY took notice, and started sending their minions against me, almost everywhere i go outside of the caves, there is constantly a marshal on my ass, stalking me atlest 30 feet away, they KNOW and they want me silenced or dead. </p> \n then one day the head of security himself, Jim FUCKING Hamilton instructed me to stop \" spreading rumors \" or face consequences. <p> <b> No I will not follow what a mere puppet wants me to do, a pupped being controlled by THEM</b>  </p> \n \n There is some hope however, there is word going around of a mutiny at my workplace, the miners will rise up and forcibly take control of the administration, and their leader has agreed with me to investigate lambda and expose it once and for all!. <p> However, I have changed my mind on exposing them already, for they already are too dangerous to be left alive and contact my only friends, my coworkers. When the mutiny happens, i will shoot my way through the security to find the thermobaric explosives that were mistakenly sent here, then transport it admist the chaos to the secret lab, and save the colony and ALL of humanity by obliterating it.  </p>"
+	color = "green"
+
+/obj/item/paper/bigred/final
+	name = "Final entry"
+	color = "green"
+	info = "<p> i could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre emptively. we managed to get word of it and erected a few barricades to slow them down, but it is too late. our plan, my plan to save humanity has gone to dust. </p> as I lay and write this, they are gassing the entire area with gas, while gunshots echo around the caves. \n  they have gotten to my mind already, their voices are... laughing, saying thay \" its over \" and that \n we have risen\". their voices are mocking me as i could do nothing to prevent their rise \n just as I am about to finish my final entry, i overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" XRAYS OUT OF CONTAINMENT\". \n however, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> they have won.... they have PLANNED THIS all along.... </b> \n only god may save us now..."
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"

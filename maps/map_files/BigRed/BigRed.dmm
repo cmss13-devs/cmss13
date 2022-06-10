@@ -29371,6 +29371,9 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "bRd" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/oob)
 "bRK" = (
@@ -29390,7 +29393,12 @@
 	},
 /area/bigredv2/caves/mining)
 "bSw" = (
-/obj/structure/machinery/firealarm,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -30016,6 +30024,9 @@
 	pixel_x = -3;
 	pixel_y = -9
 	},
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -30163,6 +30174,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/firealarm{
+	dir = 1
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -30227,6 +30241,9 @@
 "dSg" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "dUj" = (
@@ -30697,6 +30714,9 @@
 	},
 /obj/item/ammo_magazine/pistol{
 	pixel_y = -4
+	},
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -31593,6 +31613,17 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
+"hoY" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
+/obj/structure/cable{
+	icon_state = "11-6"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "hpg" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_13";
@@ -31659,6 +31690,19 @@
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
 	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves/mining)
+"hzg" = (
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
 "hzy" = (
@@ -32454,6 +32498,22 @@
 	tag = "icon-darkblue2"
 	},
 /area/bigredv2/caves/eta/research)
+"jnV" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/obj/structure/cable{
+	icon_state = "2-9"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "joa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -32556,6 +32616,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
+	},
+/obj/structure/cable{
+	icon_state = "11-2"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
@@ -32712,6 +32775,23 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+"jUW" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/obj/structure/cable{
+	icon_state = "2-5"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "jUY" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
@@ -32916,6 +32996,9 @@
 	dir = 1
 	},
 /obj/structure/computer3frame/wallcomp,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -33171,6 +33254,29 @@
 	tag = "icon-darkred2"
 	},
 /area/bigredv2/caves/eta/research)
+"kMs" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-5"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "kMJ" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A heavy duty power cable for high voltage applications";
@@ -33225,6 +33331,16 @@
 /obj/item/explosive/grenade/HE/frag,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
+"kSt" = (
+/obj/structure/cable{
+	icon_state = "11-2"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -34354,6 +34470,15 @@
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigred/ground/garage_workshop)
+"nMZ" = (
+/obj/structure/machinery/door/poddoor/almayer/closed,
+/obj/structure/cable,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "nQl" = (
 /obj/item/ore{
 	pixel_x = -1;
@@ -34568,6 +34693,25 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/outside/sw)
+"okh" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "olT" = (
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/shuttle/escapepod{
@@ -34873,6 +35017,9 @@
 /area/bigredv2/caves_north)
 "oRK" = (
 /obj/structure/computer3frame/wallcomp,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -35007,6 +35154,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
 	name = "Oxygen Supply Console"
+	},
+/obj/structure/cable{
+	icon_state = "11-2"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -35317,6 +35467,13 @@
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
+/area/bigredv2/caves/mining)
+"pQE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "11-1"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "pSa" = (
 /turf/open/floor/plating{
@@ -35947,6 +36104,16 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
+"rkS" = (
+/obj/structure/cable{
+	icon_state = "5-6"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "rml" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor,
@@ -36312,6 +36479,17 @@
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/filtration_plant)
+"rUn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
 "rUZ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -36388,7 +36566,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/largecrate/supply/floodlights,
+/obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -36458,7 +36636,12 @@
 	},
 /area/bigredv2/caves_east)
 "sgF" = (
-/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/structure/cable{
+	icon_state = "6-8"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -36532,7 +36715,6 @@
 	},
 /area/bigredv2/caves_east)
 "sog" = (
-/obj/structure/cable,
 /obj/item/explosive/grenade/slug/baton{
 	dir = 1;
 	pixel_y = -8
@@ -36541,6 +36723,18 @@
 	dir = 4;
 	pixel_x = 9;
 	pixel_y = -8
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-5"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -36998,6 +37192,12 @@
 	desc = "An old W-Y systems control computer that manages the air enviorment for a large area. Commonly used in mining operations in order to control O2 levels, alert of any dangerous gases and make the heat slightly more bearable.";
 	name = "W-Y Enviorment Control System Control Panel"
 	},
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/obj/structure/cable{
+	icon_state = "11-10"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -37211,6 +37411,9 @@
 	pixel_y = 6
 	},
 /obj/item/reagent_container/food/snacks/tofu,
+/obj/structure/cable{
+	icon_state = "5-9"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -38420,6 +38623,19 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_se)
+"wfR" = (
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/obj/structure/cable{
+	icon_state = "5-6"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "whi" = (
 /turf/open/floor{
 	dir = 4;
@@ -38900,6 +39116,20 @@
 	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves_research)
+"xkH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/pipes/standard/tank/oxygen,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "xkR" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib3";
@@ -38991,6 +39221,9 @@
 /obj/structure/cable,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/general_air_control/large_tank_control,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -39264,9 +39497,11 @@
 	},
 /area/bigredv2/caves_north)
 "xWV" = (
-/obj/structure/cable,
 /obj/structure/machinery/power/apc{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -39470,7 +39705,19 @@
 	},
 /area/bigredv2/caves/mining)
 "yln" = (
-/obj/structure/largecrate/supply/floodlights,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/obj/structure/closet/crate,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -44659,7 +44906,7 @@ tUL
 rxh
 wBq
 ulk
-pSa
+kSt
 uHQ
 eWG
 jCg
@@ -47053,7 +47300,7 @@ uHQ
 wtj
 qSj
 pSa
-lBe
+uHQ
 dNr
 pSa
 uuO
@@ -47270,8 +47517,8 @@ uHQ
 wtj
 qmm
 lEw
-uHQ
-bSw
+lBe
+pSa
 pSa
 iLu
 xhB
@@ -48982,18 +49229,18 @@ wog
 wog
 vct
 bvV
-fOM
+rUn
 dSg
-cVd
+pQE
 jDy
-bvV
+nMZ
 ovZ
 nFB
 vHw
 vHw
 vHw
 uHQ
-eNN
+hoY
 mOW
 pvk
 tRd
@@ -49211,7 +49458,7 @@ aao
 aao
 uHQ
 khl
-sgF
+hzg
 pSa
 kmb
 qVi
@@ -49429,7 +49676,7 @@ aao
 uHQ
 eNN
 mOW
-pvk
+kMs
 uDI
 uHQ
 vHw
@@ -49645,9 +49892,9 @@ ers
 aao
 uHQ
 oRK
-sgF
-pSa
-kmb
+bSw
+wfR
+jUW
 uHQ
 vHw
 hLS
@@ -49862,9 +50109,9 @@ aao
 aao
 lBe
 eNN
-mOW
+xkH
 pvk
-uDI
+jnV
 uHQ
 aao
 jkT
@@ -50080,7 +50327,7 @@ aao
 uHQ
 xWV
 sgF
-pSa
+rkS
 oXH
 hiP
 iep
@@ -50296,7 +50543,7 @@ aao
 aao
 uHQ
 pao
-sgF
+bSw
 tBh
 eVo
 fZg
@@ -50730,7 +50977,7 @@ aao
 aao
 uHQ
 tfp
-sgF
+okh
 dCb
 pJS
 cPZ

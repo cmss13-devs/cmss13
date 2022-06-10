@@ -50,3 +50,6 @@
       button. Check the PR for instructions on how to use it.
   Rem1:
   - bugfix: Removes an access to space on the Almayer.
+2022-06-10:
+  nauticall:
+  - rscadd: Synthetics can now eat and drink.

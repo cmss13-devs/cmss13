@@ -310,10 +310,17 @@
 		dmg = round(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
+		take_damage(dmg)
 		bullet_ping(P)
 	if(health <= 0)
 		update_state()
 	return TRUE
+
+/obj/structure/girder/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health == 0)
+		update_state()
+
 
 /obj/structure/girder/proc/dismantle()
 	health = 0

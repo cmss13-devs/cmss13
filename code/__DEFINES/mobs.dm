@@ -343,7 +343,8 @@
 
 // Crusher strain flags
 #define CRUSHER_NORMAL		"Normal"
-
+//#define CRUSHER_CHARGER		"Charger"
+// keep strain for now
 // Praetorian strain flags
 #define PRAETORIAN_NORMAL	  "Normal"
 #define PRAETORIAN_VANGUARD	"Vanguard"

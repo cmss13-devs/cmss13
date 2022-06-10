@@ -1350,11 +1350,13 @@ var/global/image/action_purple_power_up
 
 
 //Returns the 2 dirs perpendicular to the arg
-proc/get_perpen_dir(var/dir)
-	if(dir & (dir-1)) return 0 //diagonals
-	if(dir in list(EAST, WEST))
+/proc/get_perpen_dir(var/dir)
+	if(dir & (dir-1))
+		return 0 //diagonals
+	if(dir & (EAST|WEST))
 		return list(SOUTH, NORTH)
-	else return list(EAST, WEST)
+	else
+		return list(EAST, WEST)
 
 
 /proc/parse_zone(zone)

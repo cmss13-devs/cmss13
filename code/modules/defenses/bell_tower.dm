@@ -107,6 +107,9 @@
 
 	if(linked_bell.last_mob_activated == M)
 		return
+	if(HAS_TRAIT(M, TRAIT_CHARGING))
+		to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
+		return
 
 	if(linked_bell.bell_cooldown > world.time)
 		return
@@ -132,7 +135,8 @@
 
 /obj/item/device/motiondetector/internal/apply_debuff(mob/target)
 	var/mob/living/to_apply = target
-
+	if(HAS_TRAIT(to_apply, TRAIT_CHARGING))
+		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
 	if(istype(to_apply))
 		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))

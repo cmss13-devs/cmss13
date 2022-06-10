@@ -1,45 +1,45 @@
-/datum/action/xeno_action/activable/pounce/crusher_charge
+/datum/action/xeno_action/activable/pounce/ram
 	name = "Charge"
-	action_icon_state = "ready_charge"
+	action_icon_state = "ram"
 	ability_name = "charge"
-	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
+	macro_path = /datum/action/xeno_action/verb/verb_crusher_ram
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 140
-	plasma_cost = 5
+	plasma_cost = 15
 
 	// Config options
-	distance = 9
+	distance = 2
 
 	knockdown = TRUE
 	knockdown_duration = 2
 	slash = FALSE
 	freeze_self = FALSE
 	windup = TRUE
-	windup_duration = 12
+	windup_duration = 5
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
 	tracks_target = FALSE
 
-	var/direct_hit_damage = 60
+	var/direct_hit_damage = 17.5
 	var/frontal_armor = 15
 
 	// Object types that dont reduce cooldown when hit
 	var/list/not_reducing_objects = list()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/New()
+/datum/action/xeno_action/activable/pounce/ram/New()
 	. = ..()
 	not_reducing_objects = typesof(/obj/structure/barricade) + typesof(/obj/structure/machinery/defenses)
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/initialize_pounce_pass_flags()
+/datum/action/xeno_action/activable/pounce/ram/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_CRUSHER_CHARGE
 
 /datum/action/xeno_action/onclick/crusher_stomp
 	name = "Stomp"
 	action_icon_state = "stomp"
 	ability_name = "stomp"
-	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
+	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 180
@@ -51,14 +51,194 @@
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
 	var/effect_duration = 10
 
-/datum/action/xeno_action/onclick/crusher_shield
-	name = "Defensive Shield"
-	action_icon_state = "empower"
-	ability_name = "defensive shield"
-	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
+/datum/action/xeno_action/onclick/crusher_stomp/charger
+	name = "Crush"
+	action_icon_state = "stomp"
+	macro_path = /datum/action/xeno_action/verb/verb_crusher_charger_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 260
-	plasma_cost = 20
+	plasma_cost = 25
+	damage = 75
+	distance = 3
+	xeno_cooldown = 12 SECONDS
+// remove
 
-	var/shield_amount = 200
+
+/datum/action/xeno_action/onclick/charger_charge
+	name = "Toggle Charging"
+	action_icon_state = "ready_charge"
+	plasma_cost = 0 // manually applied in the proc
+	macro_path = /datum/action/xeno_action/verb/verb_crusher_toggle_charging
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+	// Config vars
+	var/max_momentum = 8
+	var/steps_to_charge = 4
+	var/speed_per_momentum = XENO_SPEED_FASTMOD_TIER_5 + XENO_SPEED_FASTMOD_TIER_1//2
+	var/plasma_per_step = 3 // charger has 400 plasma atm, this gives a good 100 tiles of crooshing
+
+	// State vars
+	var/activated = FALSE
+	var/steps_taken = 0
+	var/charge_dir
+	var/noise_timer = 0
+
+	//ultimate vars
+	var/ultimate_momentum = 10
+	var/charged_mobs = 0
+	var/ultimate_activation = 10
+
+	/// The last time the crusher moved while charging
+	var/last_charge_move
+	/// Dictates speed and damage dealt via collision, increased with movement
+	var/momentum = 0
+
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/Xenomorph/Xeno, atom/oldloc, dir, forced)
+	SIGNAL_HANDLER
+	if(Xeno.pulling)
+		if(!momentum)
+			steps_taken = 0
+			return
+		else
+			Xeno.stop_pulling()
+
+	if(Xeno.is_mob_incapacitated())
+		var/lol = get_ranged_target_turf(charge_dir,momentum/2)
+		INVOKE_ASYNC(Xeno, /atom/movable.proc/throw_atom, lol, momentum/2, SPEED_FAST, null, TRUE)
+		stop_momentum()
+		return
+	if(!isturf(Xeno.loc))
+		stop_momentum()
+		return
+	// Don't build up charge if you move via getting propelled by something
+	if(Xeno.throwing)
+		stop_momentum()
+		return
+
+	var/do_stop_momentum = FALSE
+
+	// Need to be constantly moving in order to maintain charge
+	if(world.time > last_charge_move + 0.5 SECONDS)
+		do_stop_momentum = TRUE
+	if(dir != charge_dir)
+		charge_dir = dir
+		do_stop_momentum = TRUE
+
+	if(do_stop_momentum)
+		stop_momentum()
+	if(Xeno.plasma_stored <= plasma_per_step)
+		stop_momentum()
+		return
+	last_charge_move = world.time
+	steps_taken++
+	if(steps_taken < steps_to_charge)
+		return
+	if(momentum < max_momentum)
+		momentum++
+		// to_chat(world,momentum) use to debug momentum
+		ADD_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
+		Xeno.update_icons()
+		if(momentum == max_momentum)
+			Xeno.emote("roar")
+	//X.use_plasma(plasma_per_step) // take if you are in toggle charge mode
+	if(momentum > 0)
+		Xeno.use_plasma(plasma_per_step) // take plasma when you have momentum
+
+	noise_timer = noise_timer ? --noise_timer : 3
+	if(noise_timer == 3)
+		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
+
+	for(var/mob/living/carbon/human/Mob in Xeno.loc)
+		if(Mob.lying && Mob.stat != DEAD)
+			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
+				SPAN_DANGER("You run [Mob] over!")
+			)
+
+			Mob.apply_damage(momentum * 10)
+			animation_flash_color(Mob)
+
+	Xeno.recalculate_speed()
+
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_dir_change(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	if(new_dir != charge_dir)
+		charge_dir = new_dir
+		if(momentum)
+			stop_momentum()
+
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_river(datum/source, covered)
+	SIGNAL_HANDLER
+	if(!covered)
+		stop_momentum()
+
+/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/Xenomorph/Xeno)
+	SIGNAL_HANDLER
+	Xeno.speed += momentum * speed_per_momentum
+
+/datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum(datum/source)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/Xenomorph/Xeno = owner
+	if(momentum == max_momentum)
+		Xeno.visible_message(SPAN_DANGER("[Xeno] skids to a halt!"))
+
+	REMOVE_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
+	steps_taken = 0
+	momentum = 0
+	Xeno.recalculate_speed()
+	Xeno.update_icons()
+
+/datum/action/xeno_action/onclick/charger_charge/proc/lose_momentum(amount)
+	if(amount >= momentum)
+		stop_momentum()
+	else
+		momentum -= amount
+		var/mob/living/carbon/Xenomorph/Xeno = owner
+		Xeno.recalculate_speed()
+
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/Xenomorph/Xeno, atom/tar)
+	SIGNAL_HANDLER
+	if(!momentum)
+		stop_momentum()
+		return
+
+	var/result = tar.handle_charge_collision(Xeno, src)
+	switch(result)
+		if(XENO_CHARGE_TRY_MOVE)
+			if(step(Xeno, charge_dir))
+				return COMPONENT_LIVING_COLLIDE_HANDLED
+
+/datum/action/xeno_action/onclick/charger_charge/proc/start_charging(datum/source)
+	SIGNAL_HANDLER
+	steps_taken = steps_to_charge
+
+
+/datum/action/xeno_action/activable/tumble
+	name = "Tumble"
+	action_icon_state = "tumble"
+	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
+	plasma_cost = 25
+	xeno_cooldown = 10 SECONDS
+
+/datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/human/Human)
+	var/mob/living/carbon/Xenomorph/Xeno = owner
+
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Human]!"), SPAN_XENODANGER("You knock over [Human] as you sweep to the side!"))
+
+	var/turf/target_turf = get_turf(Human)
+	xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
+	Human.apply_damage(15,BRUTE)
+	Human.KnockDown(1)
+	playsound(Human,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
+		Xeno.forceMove(target_turf)
+
+/datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
+	var/mob/living/carbon/Xenomorph/Xeno = owner
+	Xeno.flags_atom &= ~DIRLOCK
+	if(start_charging)
+		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
+

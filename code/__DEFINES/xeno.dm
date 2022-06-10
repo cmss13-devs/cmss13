@@ -617,6 +617,8 @@
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
 
+#define XENO_CHARGE_TRY_MOVE 0
+
 //preferences-related defines
 
 #define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"

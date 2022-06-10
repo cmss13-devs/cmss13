@@ -23,10 +23,10 @@
 ///////////////////////////////////
 /datum/behavior_delegate
 
-	// Userfriendly name of the mutator
+	/// Userfriendly name of the mutator
 	var/name = "Set This"
 
-	// The Xeno we handle mutator state for
+	/// The Xeno we handle mutator state for
 	var/mob/living/carbon/Xenomorph/bound_xeno
 
 /datum/behavior_delegate/Destroy(force, ...)
@@ -34,13 +34,15 @@
 	bound_xeno = null
 	return ..()
 
-// Called during Xeno life
-// Handles anything that needs to be periodically ticked
-// for this mutator to function
+/**
+ * Called during Xeno life
+ * Handles anything that needs to be periodically ticked
+ * for this mutator to function
+ */
 /datum/behavior_delegate/proc/on_life()
 	return
 
-// Returns any extra information to display via stat.
+/// Returns any extra information to display via stat.
 /datum/behavior_delegate/proc/append_to_stat()
 	return list()
 
@@ -50,9 +52,11 @@
 /datum/behavior_delegate/proc/remove_from_xeno()
 	return
 
-// Modifies the damage of a slash based on the current mutator state.
-// Do not override this proc unless you need to affect the rolled damage
-// of an attack before it happens
+/**
+ * Modifies the damage of a slash based on the current mutator state.
+ * Do not override this proc unless you need to affect the rolled damage
+ * of an attack before it happens
+ */
 /datum/behavior_delegate/proc/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	return original_damage
 
@@ -63,11 +67,12 @@
 	SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
 
 // Identical to the above 3 procs but for ranged attacks.
-// Technically speaking, these are called whenever a xeno projectile impacts
-// a target (acid spit), NOT when gas damages them.
-// If you want to deal any more damage, just do it in the addl. effects proc
-// adding damage to a projectile in the actual proc is highly nontrivial
-
+/**
+ * Technically speaking, these are called whenever a xeno projectile impacts
+ * a target (acid spit), NOT when gas damages them.
+ * If you want to deal any more damage, just do it in the addl. effects proc
+ * adding damage to a projectile in the actual proc is highly nontrivial
+ */
 /datum/behavior_delegate/proc/ranged_attack_on_hit()
 	return
 
@@ -77,19 +82,21 @@
 /datum/behavior_delegate/proc/ranged_attack_additional_effects_self(atom/A)
 	return
 
-// Any special behaviors on reception of a projectile attack
+/// Any special behaviors on reception of a projectile attack
 /datum/behavior_delegate/proc/on_hitby_projectile(ammo)
 	return
 
-// Behaviour when killing people
-
+/// Behaviour when killing people
 /datum/behavior_delegate/proc/on_kill_mob(mob/M)
 	return
 
-// Handling specific behavior - if TRUE, the attack will not have an attack delay by default.
-
+/// Handling specific behavior - if TRUE, the attack will not have an attack delay by default.
 /datum/behavior_delegate/proc/handle_slash(mob/M)
 	return
 
 /datum/behavior_delegate/proc/handle_death(mob/M)
+	return
+
+/// Handling the xeno icon state or overlays, return TRUE if icon state should not be changed
+/datum/behavior_delegate/proc/on_update_icons()
 	return

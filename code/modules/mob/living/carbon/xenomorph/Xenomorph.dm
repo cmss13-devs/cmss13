@@ -396,6 +396,14 @@
 		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
 		apply_transform(M)
 
+	if(caste)
+		behavior_delegate = new caste.behavior_delegate_type()
+		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
+		resin_build_order = caste.resin_build_order
+	else
+		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
+
 	regenerate_icons()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 	toggle_xeno_hostilehud()
@@ -416,14 +424,6 @@
 
 		if(IS_XENO_LEADER(oldXeno))
 			hive.replace_hive_leader(oldXeno, src)
-
-	if (caste)
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-	else
-		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
@@ -849,6 +849,7 @@
 	speed = speed_modifier
 	if(caste)
 		speed += caste.speed
+	SEND_SIGNAL(src, COMSIG_XENO_RECALCULATE_SPEED)
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences

@@ -30,6 +30,8 @@
 	weed_level = WEED_LEVEL_STANDARD
 	can_be_revived = FALSE
 
+	behavior_delegate_type = /datum/behavior_delegate/queen
+
 	spit_delay = 25
 
 	tackle_min = 2
@@ -828,25 +830,6 @@
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Queen/update_icons()
-	icon = queen_standing_icon
-	if(stat == DEAD)
-		icon_state = "[mutation_type] Queen Dead"
-	else if(ovipositor)
-		icon = queen_ovipositor_icon
-		icon_state = "[mutation_type] Queen Ovipositor"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Queen Sleeping"
-		else
-			icon_state = "[mutation_type] Queen Knocked Down"
-	else
-		icon_state = "[mutation_type] Queen Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
-
 /mob/living/carbon/Xenomorph/Queen/handle_special_state()
 	if(ovipositor)
 		return TRUE
@@ -864,3 +847,19 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1)
+
+/datum/behavior_delegate/queen
+	name = "Queen Behavior Delegate"
+
+/datum/behavior_delegate/queen/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	var/mob/living/carbon/Xenomorph/Queen/Queen = bound_xeno
+	if(Queen.ovipositor)
+		Queen.icon = Queen.queen_ovipositor_icon
+		Queen.icon_state = "[Queen.mutation_type] Queen Ovipositor"
+		return TRUE
+
+	// Switch icon back and then let normal icon behavior happen
+	Queen.icon = Queen.queen_standing_icon

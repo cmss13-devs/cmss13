@@ -341,7 +341,8 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
@@ -397,10 +398,6 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name]s at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
 
-	// ok so basically the way this code works is godawful
-	// what happens next is if we hit anything
-	// a callback occurs to either the mob_launch_collision or obj_launch_collision procs.
-	// those procs poll our action to see if we are 'pouncing'
 	var/datum/launch_metadata/LM = new()
 	LM.target = A
 	LM.range = distance
@@ -410,7 +407,7 @@
 	LM.pass_flags = pounce_pass_flags
 	LM.collision_callbacks = pounce_callbacks
 
-	X.launch_towards(LM) //Victim, distance, speed
+	X.launch_towards(LM)
 
 	additional_effects_always()
 	..()

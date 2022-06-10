@@ -50,7 +50,6 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 

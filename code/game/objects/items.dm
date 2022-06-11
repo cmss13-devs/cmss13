@@ -301,9 +301,9 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(src in S.hearing_items)
+	if(LAZYISIN(src, S.hearing_items))
 		LAZYREMOVE(S.hearing_items, src)
-		if(!S.hearing_items.len)
+		if(!LAZYLEN(S.hearing_items))
 			S.flags_atom &= ~USES_HEARING
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.

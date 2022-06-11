@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 140
-	plasma_cost = 15
+	plasma_cost = 20
 
 	// Config options
 	distance = 2
@@ -23,7 +23,7 @@
 	tracks_target = FALSE
 
 	var/direct_hit_damage = 17.5
-	var/frontal_armor = 15
+	var/frontal_armor= 5
 
 	// Object types that dont reduce cooldown when hit
 	var/list/not_reducing_objects = list()

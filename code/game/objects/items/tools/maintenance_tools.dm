@@ -467,6 +467,14 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
+/obj/item/tool/crowbar/fubar
+	name = "\improper FUBAR"
+	desc = "The Functional Utility BAR is a multi-tool commonly seen on space stations and colonies. It mainly carried by Working Joes, and maint crews."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "fubar"
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_NORMAL
+
 /*
  Welding backpack
 */

@@ -44,3 +44,16 @@
 2022-06-06:
   Geevies:
   - rscadd: Radial menus now have labels.
+2022-06-09:
+  Geevies:
+  - rscadd: Added the pick-say macro, which can assign a lot of battlecries to one
+      button. Check the PR for instructions on how to use it.
+  Rem1:
+  - bugfix: Removes an access to space on the Almayer.
+2022-06-10:
+  Geevies:
+  - bugfix: Throwing a uniform will no longer rip your armor off.
+  Youtubeboy139:
+  - imageadd: New Welding and Advanced Welding goggle onmob sprites
+  nauticall:
+  - rscadd: Synthetics can now eat and drink.

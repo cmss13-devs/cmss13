@@ -22618,7 +22618,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "bvQ" = (
-/obj/structure/pipes/standard/simple/visible,
+/obj/structure/pipes/unary/outlet_injector,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -54620,10 +54620,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
-"liR" = (
-/obj/structure/pipes/standard/simple/visible,
-/turf/closed/wall/almayer/outer,
-/area/almayer/engineering/lower_engineering)
 "liZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
@@ -82796,10 +82792,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_point_defense)
-"xMg" = (
-/obj/structure/pipes/unary/outlet_injector,
-/turf/open/space/basic,
-/area/space)
 "xMh" = (
 /obj/structure/closet/crate{
 	desc = "One of those old special operations crates from back in the day. After a leaked report from a meeting of MARSOC leadership lambasted the crates as 'waste of operational funds' the crates were removed from service.";
@@ -135943,8 +135935,8 @@ aaa
 aaa
 aaa
 aaa
-xMg
-liR
+bdH
+aUx
 bvQ
 bwj
 byl

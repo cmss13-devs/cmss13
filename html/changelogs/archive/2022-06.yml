@@ -58,6 +58,19 @@
   nauticall:
   - rscadd: Synthetics can now eat and drink.
 2022-06-11:
+  FrogZeke:
+  - rscadd: 'Working Joe role added, currently whitelisted, name is ''Working Joe
+      #(random number)'''
+  - rscadd: Expanded WJ loadout update to include an engineering headset, construction
+      pouch, electronics pouch, mop, mop bucket, wet floor sign, 2 spacer cleaners,
+      trash bag
+  - rscadd: Start of round spawn for added to ARES
+  - rscadd: Synthvivor appearance can be selected based on players generation selection
+  - bugfix: 'Added suit sensors to the following items in the synthetic snowflake
+      vendors: ua_civvies, wy_davisone, wy_joliet_shopsteward, tshirt/w_br, tshirt/gray_blu,
+      tshirt/r_bla'
+  - code_imp: Changed Whiteout code to have 'Davis One' style appear with its parent
+      species changed
   Git-Nivrak:
   - bugfix: Fixed a runtime error with storages
   Laser9:

@@ -71,12 +71,9 @@
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
-	uses_ethnicity = FALSE
+	uses_ethnicity = TRUE
 	burn_mod = 0.80 // a little bit of resistance
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
-
-	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
-	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
@@ -85,8 +82,6 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
-	hair_color = "#000000"
-
 	knock_down_reduction = 3.5
 	stun_reduction = 3.5
 
@@ -94,17 +89,43 @@
 		/mob/living/carbon/human/proc/toggle_inherent_nightvison
 	)
 
+/datum/species/synthetic/colonial/colonial_gen_two
+	name = SYNTH_COLONY_GEN_TWO
+	uses_ethnicity = FALSE //2nd gen uses generic human look
+
+/datum/species/synthetic/colonial/colonial_gen_one
+	name = SYNTH_COLONY_GEN_ONE
+	uses_ethnicity = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	//sets colonial_gen_one synth's hair to black
+	hair_color = "#000000"
+	//sets colonial_gen_one synth's icon to WJ sprite
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
 /datum/species/synthetic/colonial/working_joe
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
+	uses_ethnicity = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 // Synth used for W-Y Deathsquads
 /datum/species/synthetic/colonial/combat
 	name = SYNTH_COMBAT
 	name_plural = "Combat Synthetics"
-	burn_mod = 0.6 // Made for combat
+	uses_ethnicity = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
+	burn_mod = 0.6 // Made for combat
 	total_health = 250 //Made for Combat
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 

@@ -6834,6 +6834,7 @@
 	pixel_x = -25;
 	req_one_access_txt = "19"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -8266,6 +8267,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -54738,6 +54740,7 @@
 	pixel_x = 25;
 	req_one_access_txt = "19"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -68861,6 +68864,7 @@
 	pixel_x = 32;
 	pixel_y = -8
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -83044,6 +83048,13 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/perma)
+"xQV" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer{
+	icon_state = "ai_floors";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/airoom)
 "xRc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -122049,7 +122060,7 @@ lin
 oJR
 aqU
 asD
-asG
+xQV
 avK
 cck
 aCZ
@@ -122252,7 +122263,7 @@ isC
 isC
 tFe
 lmz
-asG
+xQV
 rNF
 cck
 jVE

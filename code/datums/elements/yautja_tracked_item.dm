@@ -39,4 +39,6 @@
 		return TRUE
 	if(isHumanSynthStrict(carrier) && (carrier.hunter_data.honored || carrier.hunter_data.thralled) && !(carrier.hunter_data.dishonored || carrier.stat == DEAD))
 		return TRUE
+	if(istype(carrier, /mob/hologram/falcon))
+		return TRUE
 	return FALSE

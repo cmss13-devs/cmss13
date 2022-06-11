@@ -67,7 +67,7 @@
 
 	if(!isYautja(user))
 		if(prob(75))
-			to_chat(user, "You fiddle with the disc, but nothing happens. Try again maybe?")
+			to_chat(user, SPAN_WARNING("You fiddle with the disc, but nothing happens. Try again maybe?"))
 			return
 	to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
 	activate(user)

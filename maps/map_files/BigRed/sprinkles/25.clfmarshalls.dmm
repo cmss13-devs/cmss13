@@ -48,6 +48,14 @@
 	icon_state = "cult"
 	},
 /area/bigredv2/outside/marshal_office)
+"bv" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/bigredv2/outside/marshal_office)
 "bB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -869,6 +877,15 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
+"xb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/bigredv2/outside/marshal_office)
 "xe" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor,
@@ -991,6 +1008,10 @@
 	dir = 4
 	},
 /obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"zX" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Ac" = (
@@ -1153,21 +1174,11 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
-"Gi" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/marshal_office)
-"Gj" = (
-/obj/effect/landmark/corpsespawner/security,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/bigredv2/outside/marshal_office)
-"GF" = (
+"Gd" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
@@ -1643,6 +1654,14 @@
 	},
 /turf/open/floor{
 	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshal_office)
+"QU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "grimy"
 	},
 /area/bigredv2/outside/marshal_office)
 "Rk" = (

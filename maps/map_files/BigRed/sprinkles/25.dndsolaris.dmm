@@ -1,7 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/structure/barricade/metal/wired{
-	dir = 4
+	dir = 4;
+	icon_state = "metal_2"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -55,7 +56,9 @@
 	},
 /area/bigredv2/outside/library)
 "fe" = (
-/obj/structure/barricade/metal/wired,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -81,7 +84,9 @@
 /area/bigredv2/outside/library)
 "hT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/plasteel/wired,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -118,6 +123,8 @@
 /area/bigredv2/outside/library)
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -233,6 +240,8 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -290,6 +299,7 @@
 	dir = 8;
 	tag = ""
 	},
+/obj/effect/landmark/survivor_spawner/dnd,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -302,6 +312,13 @@
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/bigredv2/outside/library)
+"FH" = (
+/obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor{
+	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
 "Gt" = (
@@ -422,7 +439,9 @@
 	},
 /area/bigredv2/outside/library)
 "NE" = (
-/obj/structure/barricade/plasteel/wired,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -500,6 +519,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
 	dir = 8
 	},
 /turf/open/floor{
@@ -645,16 +665,16 @@ nI
 HT
 HT
 NI
+FH
 HT
 HT
+FH
 HT
+FH
 HT
+FH
 HT
-HT
-HT
-HT
-HT
-HT
+FH
 fe
 yw
 "}

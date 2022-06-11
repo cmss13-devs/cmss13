@@ -727,6 +727,8 @@
 /obj/item/stack/sandbags/large_stack,
 /obj/item/stack/sandbags/large_stack,
 /obj/item/tool/shovel/etool,
+/obj/item/stack/sandbags_empty/full,
+/obj/item/stack/sandbags_empty/full,
 /turf/open/floor{
 	icon_state = "wood"
 	},

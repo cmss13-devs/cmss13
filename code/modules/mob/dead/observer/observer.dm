@@ -463,8 +463,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	ManualFollow(target)
 	if(world.time < 25 MINUTES && follow_input == "Survivors")
-		msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(target)].")
-		log_misc("[key_name(usr)] has jumped to a survivor, [key_name(target)].")
+		msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(target)] at [get_area(target)]: [target.x], [target.y], [target.z].")
+		log_misc("[key_name(usr)] has jumped to a survivor, [key_name(target)] at [get_area(target)]: [target.x], [target.y], [target.z].")
 	return
 
 // This is the ghost's follow verb with an argument
@@ -521,8 +521,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
 				if(M.faction == FACTION_SURVIVOR && world.time < 25 MINUTES)
-					msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(M)].")
-					log_misc("[key_name(usr)] has jumped to a survivor, [key_name(M)].")
+					msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(M)] at [get_area(M)]: [M.x], [M.y], [M.z].")
+					log_misc("[key_name(usr)] has jumped to a survivor, [key_name(M)] at [get_area(M)]: [M.x], [M.y], [M.z].")
 				A.forceMove(T)
 				following = null
 			else

@@ -57,3 +57,7 @@
   - imageadd: New Welding and Advanced Welding goggle onmob sprites
   nauticall:
   - rscadd: Synthetics can now eat and drink.
+2022-06-11:
+  Laser9:
+  - bugfix: Clothing items with anti-hug capabilities now resist the correct number
+      of face-hugging attempts.

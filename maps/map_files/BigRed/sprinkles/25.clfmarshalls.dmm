@@ -32,14 +32,6 @@
 	icon_state = "cult"
 	},
 /area/bigredv2/outside/marshal_office)
-"bv" = (
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
-/area/bigredv2/outside/marshal_office)
 "bB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -162,6 +154,14 @@
 "eF" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/medical)
+"eU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/marshal_office)
 "fe" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/rods,
@@ -223,6 +223,11 @@
 /obj/structure/filingcabinet,
 /turf/open/floor{
 	icon_state = "wood"
+	},
+/area/bigredv2/outside/marshal_office)
+"gM" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
 "gP" = (
@@ -305,6 +310,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -313,6 +319,15 @@
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor{
 	icon_state = "wood"
+	},
+/area/bigredv2/outside/marshal_office)
+"kC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
 	},
 /area/bigredv2/outside/marshal_office)
 "kE" = (
@@ -529,6 +544,13 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
+"pF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "pI" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -540,7 +562,14 @@
 /obj/structure/surface/table,
 /obj/item/stack/sheet/plasteel/large_stack,
 /obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"pV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "qa" = (
@@ -578,6 +607,15 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"qP" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
 "rh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal/wired{
@@ -598,6 +636,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -794,18 +833,20 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
-"xb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
-/area/bigredv2/outside/marshal_office)
 "xe" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"xw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
 /area/bigredv2/outside/marshal_office)
 "xy" = (
 /obj/structure/barricade/metal/wired{
@@ -890,6 +931,14 @@
 	icon_state = "redfull"
 	},
 /area/bigredv2/outside/marshal_office)
+"za" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/marshal_office)
 "zo" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
@@ -907,10 +956,6 @@
 /obj/item/weapon/gun/smg/fp9000,
 /obj/item/weapon/gun/smg/fp9000,
 /obj/item/weapon/gun/smg/fp9000,
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
-"zX" = (
-/obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Ac" = (
@@ -938,6 +983,14 @@
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
+"Be" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
 	},
 /area/bigredv2/outside/marshal_office)
 "Bl" = (
@@ -970,7 +1023,6 @@
 /area/bigredv2/outside/marshal_office)
 "CB" = (
 /obj/structure/surface/table,
-/obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor,
@@ -1065,15 +1117,6 @@
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor{
 	icon_state = "redcorner"
-	},
-/area/bigredv2/outside/marshal_office)
-"Gd" = (
-/obj/structure/barricade/metal/wired{
-	icon_state = "metal_2"
-	},
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/turf/open/floor{
-	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
 "Gi" = (
@@ -1488,14 +1531,6 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
-"QU" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/obj/effect/landmark/survivor_spawner/bigred_clf,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
-/area/bigredv2/outside/marshal_office)
 "Rk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1506,8 +1541,7 @@
 	icon_state = "plasteel_2"
 	},
 /turf/open/floor{
-	dir = 4;
-	icon_state = "red"
+	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
 "RC" = (
@@ -1642,6 +1676,15 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"Uv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/marshal_office)
 "UJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -1699,6 +1742,10 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
+/area/bigredv2/outside/marshal_office)
+"Xv" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "XJ" = (
 /turf/open/floor{
@@ -1858,7 +1905,7 @@ fP
 sc
 gP
 uJ
-RL
+um
 bD
 uv
 uJ
@@ -1873,7 +1920,7 @@ nL
 RC
 LH
 sp
-bv
+Be
 Gj
 RC
 qg
@@ -1904,7 +1951,7 @@ st
 ch
 Nu
 rS
-RL
+um
 YZ
 ut
 uJ
@@ -1974,10 +2021,10 @@ JJ
 cg
 uJ
 wv
-YZ
+Uv
 cd
 uJ
-Dc
+xw
 Dc
 eF
 "}
@@ -1987,7 +2034,7 @@ nL
 nL
 RC
 No
-xb
+kC
 Jl
 XM
 pl
@@ -2024,7 +2071,7 @@ gX
 Ga
 AH
 Sb
-Sb
+pV
 ZD
 "}
 (10,1,1) = {"
@@ -2047,7 +2094,7 @@ mj
 mC
 mZ
 Dq
-kE
+pF
 mZ
 "}
 (11,1,1) = {"
@@ -2077,7 +2124,7 @@ RC
 RC
 fq
 ec
-zX
+Xv
 kE
 Dq
 SJ
@@ -2181,7 +2228,7 @@ Po
 TV
 He
 Pa
-Po
+za
 kE
 eh
 gs
@@ -2254,7 +2301,7 @@ Sr
 Dq
 xe
 NY
-Gd
+qP
 Qy
 "}
 (20,1,1) = {"
@@ -2274,7 +2321,7 @@ yg
 He
 mt
 lz
-Dq
+gM
 Pa
 mt
 mt
@@ -2433,7 +2480,7 @@ Dq
 mL
 ZD
 jC
-QU
+eU
 fK
 lP
 lP

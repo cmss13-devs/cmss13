@@ -464,6 +464,9 @@
 	var/mob/living/carbon/human/M = caller
 
 	if(cloaked) //Turn it off.
+		if(cloak_timer > world.time)
+			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			return FALSE
 		decloak(caller)
 	else //Turn it on!
 		if(exploding)
@@ -486,10 +489,12 @@
 		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
 
+		cloak_timer = world.time + 1.5 SECONDS
+
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		M.alpha = 25
+		animate(M, alpha = 10, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)

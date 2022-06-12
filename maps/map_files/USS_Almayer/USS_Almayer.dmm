@@ -705,12 +705,14 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "abS" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/alpha)
 "abT" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -821,6 +823,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "ack" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -864,6 +867,7 @@
 	},
 /area/almayer/living/chapel)
 "acp" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -15130,7 +15134,8 @@
 	pixel_y = 24
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "aSY" = (
@@ -22615,7 +22620,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "bvQ" = (
-/obj/structure/pipes/standard/simple/visible,
+/obj/structure/pipes/unary/outlet_injector,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -36628,7 +36633,8 @@
 	pixel_y = -24
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "deg" = (
@@ -39674,7 +39680,8 @@
 	pixel_y = 24
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "eoT" = (
@@ -41469,7 +41476,7 @@
 	},
 /area/almayer/medical/upper_medical)
 "fbY" = (
-/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
 	id = "Execution Shutters";
@@ -41647,12 +41654,11 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "fgl" = (
-/obj/structure/sign/safety/coffee{
-	pixel_x = 24;
-	pixel_y = -32
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/port_hallway)
+/area/almayer/shipboard/brig/perma)
 "fgm" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -47683,6 +47689,7 @@
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 3
 	},
+/obj/item/device/analyzer/plant_analyzer,
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -50687,7 +50694,8 @@
 	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "jlA" = (
@@ -53784,7 +53792,8 @@
 	pixel_y = -10
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "kOk" = (
@@ -54615,10 +54624,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
-"liR" = (
-/obj/structure/pipes/standard/simple/visible,
-/turf/closed/wall/almayer/outer,
-/area/almayer/engineering/lower_engineering)
 "liZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
@@ -55490,8 +55495,6 @@
 /obj/structure/closet{
 	name = "backpack storage"
 	},
-/obj/item/storage/backpack/marine/rocketpack,
-/obj/item/storage/backpack/marine/rocketpack,
 /obj/item/storage/backpack/marine/grenadepack,
 /obj/item/storage/backpack/marine/grenadepack,
 /obj/item/storage/backpack/marine/mortarpack,
@@ -63521,7 +63524,8 @@
 	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "ppe" = (
@@ -64261,6 +64265,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
+"pHp" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/perma)
 "pHA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -65557,7 +65564,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "qnh" = (
@@ -76889,6 +76897,10 @@
 /obj/structure/machinery/power/apc/almayer/hardened{
 	dir = 8
 	},
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/glass/reinforced{
+	amount = 50
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -79649,7 +79661,8 @@
 /obj/item/tool/pen,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "wvT" = (
@@ -81791,7 +81804,8 @@
 	pixel_y = 13
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "xrr" = (
@@ -82434,7 +82448,8 @@
 	pixel_x = -32
 	},
 /turf/open/floor/almayer{
-	allow_construction = 0
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
 "xEz" = (
@@ -82783,12 +82798,23 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_point_defense)
-"xMg" = (
-/obj/structure/pipes/unary/outlet_injector,
-/turf/open/space/basic,
-/area/space)
 "xMh" = (
-/obj/structure/closet/crate/trashcart,
+/obj/structure/closet/crate{
+	desc = "One of those old special operations crates from back in the day. After a leaked report from a meeting of MARSOC leadership lambasted the crates as 'waste of operational funds' the crates were removed from service.";
+	name = "special operations crate"
+	},
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/attachable/suppressor,
+/obj/item/attachable/suppressor,
+/obj/item/attachable/suppressor,
+/obj/item/attachable/suppressor,
+/obj/item/explosive/grenade/smokebomb,
+/obj/item/explosive/grenade/smokebomb,
+/obj/item/explosive/grenade/smokebomb,
+/obj/item/explosive/grenade/smokebomb,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -96669,11 +96695,11 @@ xkd
 xkd
 naB
 eoP
-qyd
+fgl
 xEe
 naB
 xEe
-qyd
+fgl
 deb
 naB
 lmk
@@ -96872,11 +96898,11 @@ rSH
 xYj
 naB
 aSS
-qyd
+pHp
 poZ
 naB
 jkV
-qyd
+pHp
 kOi
 naB
 xCj
@@ -97075,11 +97101,11 @@ rvo
 oIc
 naB
 xro
-qyd
+fgl
 wvI
 naB
 wvI
-qyd
+fgl
 qmX
 naB
 lTK
@@ -116058,7 +116084,7 @@ tQd
 nyw
 buH
 bHL
-fgl
+buH
 yfS
 sEi
 dck
@@ -120095,7 +120121,7 @@ nsY
 kfp
 aYT
 beB
-aLG
+beB
 bdd
 bqZ
 bgO
@@ -120115,7 +120141,7 @@ xAt
 bgO
 bqZ
 bdd
-buH
+bJz
 bJz
 bHT
 qhQ
@@ -120728,7 +120754,7 @@ buH
 bHa
 bHL
 buH
-bJz
+buH
 cbD
 iZH
 sDQ
@@ -135922,8 +135948,8 @@ aaa
 aaa
 aaa
 aaa
-xMg
-liR
+bdH
+aUx
 bvQ
 bwj
 byl

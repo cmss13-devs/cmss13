@@ -116,24 +116,23 @@ var/list/department_radio_keys = list(
 		var/list/listening_obj = list()
 
 		if(T)
-			var/list/hear = hear(message_range, T)
 			var/list/hearturfs = list()
 
-			for(var/I in hear)
+			for(var/I in hear(message_range, T))
 				if(istype(I, /mob/))
 					var/mob/M = I
 					listening += M
 					hearturfs += M.locs[1]
 					for(var/obj/O in M.contents)
-						listening_obj |= O
+						if(O.flags_atom & USES_HEARING)
+							listening_obj |= O
 				else if(istype(I, /obj/))
 					var/obj/O = I
 					hearturfs += O.locs[1]
 					if(O.flags_atom & USES_HEARING)
 						listening_obj |= O
 
-
-			for(var/mob/M in GLOB.player_list)
+			for(var/mob/M as anything in GLOB.player_list)
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
 					listening |= M
 					continue
@@ -147,14 +146,14 @@ var/list/department_radio_keys = list(
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
-		for(var/mob/M in listening)
+		for(var/mob/M as anything in listening)
 			if(not_dead_speaker)
 				M << speech_bubble
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
 		addtimer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, listening), 30)
 
-		for(var/obj/O in listening_obj)
+		for(var/obj/O as anything in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
 

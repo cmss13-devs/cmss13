@@ -30,8 +30,10 @@
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
+		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume > 1)
-			reagents.trans_to(I, 2)
+			reagents.trans_to(mop, mop.max_reagent_volume)
+			mop.update_icon()
 			to_chat(user, SPAN_NOTICE("You wet [I] in the [callme]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else

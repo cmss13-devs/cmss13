@@ -1014,6 +1014,41 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 30
 	pixel_shift_y = 14
 
+	var/collapsible = FALSE
+	var/stock_activated = TRUE
+	var/collapse_delay  = 0
+	var/list/deploy_message = list("collapse", "extend")
+
+/obj/item/attachable/stock/proc/apply_on_weapon(obj/item/weapon/gun/gun)
+	return TRUE
+
+/obj/item/attachable/stock/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
+	. = ..()
+
+	if(!collapsible)
+		return .
+
+	if(turn_off && stock_activated)
+		stock_activated = FALSE
+		apply_on_weapon(gun)
+		return TRUE
+
+	if(!user)
+		return TRUE
+
+	if(gun.flags_item & WIELDED)
+		to_chat(user, SPAN_NOTICE("You need a free hand to adjust [src]."))
+		return TRUE
+
+	if(!do_after(user, collapse_delay, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, gun, INTERRUPT_DIFF_LOC))
+		return FALSE
+
+	stock_activated = !stock_activated
+	apply_on_weapon(gun)
+	playsound(user, activation_sound, 15, 1)
+	var/message = deploy_message[1 + stock_activated]
+	to_chat(user, SPAN_NOTICE("You [message] [src]."))
+
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
 	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
@@ -1303,9 +1338,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 	hud_offset_mod = 5
-	var/activated = TRUE
-	var/collapse_delay = 0
-	var/list/deploy_message = list("collapse","extend")
+	collapsible = TRUE
 
 
 /obj/item/attachable/stock/smg/collapsible/New()
@@ -1325,8 +1358,8 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
-/obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
-	if(activated)
+/obj/item/attachable/stock/smg/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
@@ -1355,30 +1388,8 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod *= -1
 	scatter_mod *= -1
 
-	G.recalculate_attachment_bonuses()
-	G.update_overlays(src, "stock")
-
-/obj/item/attachable/stock/smg/collapsible/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(turn_off && activated)
-		activated = FALSE
-		apply_on_weapon(G)
-		return 1
-
-	if(!user)
-		return 1
-
-	if(G.flags_item & WIELDED)
-		to_chat(user, SPAN_NOTICE("You need a free hand to adjust [src]."))
-		return 0
-
-	if(!do_after(user, collapse_delay, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, G, INTERRUPT_DIFF_LOC))
-		return 0
-
-	activated = !activated
-	apply_on_weapon(G)
-	playsound(user, activation_sound, 15, 1)
-	var/message = deploy_message[1 + activated]
-	to_chat(user, SPAN_NOTICE("You [message] [src]."))
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/smg/collapsible/brace
 	name = "\improper submachinegun arm brace"
@@ -1389,7 +1400,7 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 43
 	pixel_shift_y = 11
 	collapse_delay = 2.5 SECONDS
-	activated = FALSE
+	stock_activated = FALSE
 	deploy_message = list("unlock","lock")
 	hud_offset_mod = 4
 
@@ -1405,7 +1416,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NORMAL//you shouldn't be wielding it anyways
 
 /obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
-	if(activated)
+	if(stock_activated)
 		G.flags_item |= NODROP
 		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 		scatter_mod = SCATTER_AMOUNT_TIER_8
@@ -1838,8 +1849,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
 	))
 
 /obj/item/attachable/attached_gun/shotgun/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)

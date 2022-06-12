@@ -236,11 +236,12 @@
 
 /obj/structure/machinery/sleeper/attackby(var/obj/item/W, var/mob/living/user)
 	if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
 		var/obj/item/grab/G = W
-		if(!ismob(G.grabbed_thing))
+		if(isXeno(G.grabbed_thing))
+			to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
 			return
-
+		if(!ismob(G.grabbed_thing) || (isXeno(user)))
+			return
 		if(occupant)
 			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
@@ -251,7 +252,8 @@
 			if(occupant)
 				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 				return
-			if(!G || !G.grabbed_thing) return
+			if(!G || !G.grabbed_thing)
+				return
 			var/mob/M = G.grabbed_thing
 			go_in_sleeper(M)
 			add_fingerprint(user)

@@ -1,0 +1,78 @@
+2022-06-01:
+  Diegoflores31:
+  - bugfix: CMO can now wear Officer armor as intended
+  - bugfix: CMO now spawns with CMO uniform and hat  instead of green scrubs
+  Geevies:
+  - balance: Masterkeys now deal less damage against walls, in general, everything
+      will now take one more shot.
+  - balance: Omni-sentries now detect xenos up to four tiles away (up from three).
+      The shooting stops when the xeno moves more than five tiles away.
+  Git-Nivrak:
+  - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet
+  Segrain:
+  - bugfix: Operation name overlay at deployment once again properly displays above
+      inventory items.
+  - bugfix: CLF males no longer have random chance of being named Unknown.
+2022-06-03:
+  Diegoflores31:
+  - bugfix: Xenos can no longer get inside bodyscanners, cryopods, or sleepers.
+  - bugfix: Humans cannot jump into body scanners instantly anymore.
+2022-06-04:
+  Geevies:
+  - rscadd: Added a new nightmare insert to LV, brought back the corpsespawner system.
+  Git-Nivrak:
+  - code_imp: Optimized some say() related code
+  Laser9:
+  - bugfix: Fixed throw speeds of plasteel rods, wired glass tiles, and sandbags.
+  Shad0vvs:
+  - bugfix: Added the faction report and global narrate to mod's verb list.
+  - bugfix: Added proper checks to possessing/releasing objects and attack log verbs.
+  TotalEpicness:
+  - rscadd: Added back the engineering tool vendors to Comtech prep
+  TotalEpicness5:
+  - bugfix: Fixed flare guns not being able to be put in shoulder holster, again.
+      Should work now.. I promise! :D
+  - bugfix: G8 belts should now be able to be consistently placed in armor.
+  - imageadd: Added in sprites for thermal and meson pred visor because someone forgot
+      to add them and it caused errors.
+  stanalbatross:
+  - balance: removed logi backpacks other than for synths
+  - balance: removed the two free rocket backpacks in the OT room
+2022-06-05:
+  TotalEpicness:
+  - rscadd: MS-11 Smart Autoinjector Refill Tanks can now be stored in medrigs.
+2022-06-06:
+  Geevies:
+  - rscadd: Radial menus now have labels.
+2022-06-09:
+  Geevies:
+  - rscadd: Added the pick-say macro, which can assign a lot of battlecries to one
+      button. Check the PR for instructions on how to use it.
+  Rem1:
+  - bugfix: Removes an access to space on the Almayer.
+2022-06-10:
+  Geevies:
+  - bugfix: Throwing a uniform will no longer rip your armor off.
+  Youtubeboy139:
+  - imageadd: New Welding and Advanced Welding goggle onmob sprites
+  nauticall:
+  - rscadd: Synthetics can now eat and drink.
+2022-06-11:
+  FrogZeke:
+  - rscadd: 'Working Joe role added, currently whitelisted, name is ''Working Joe
+      #(random number)'''
+  - rscadd: Expanded WJ loadout update to include an engineering headset, construction
+      pouch, electronics pouch, mop, mop bucket, wet floor sign, 2 spacer cleaners,
+      trash bag
+  - rscadd: Start of round spawn for added to ARES
+  - rscadd: Synthvivor appearance can be selected based on players generation selection
+  - bugfix: 'Added suit sensors to the following items in the synthetic snowflake
+      vendors: ua_civvies, wy_davisone, wy_joliet_shopsteward, tshirt/w_br, tshirt/gray_blu,
+      tshirt/r_bla'
+  - code_imp: Changed Whiteout code to have 'Davis One' style appear with its parent
+      species changed
+  Git-Nivrak:
+  - bugfix: Fixed a runtime error with storages
+  Laser9:
+  - bugfix: Clothing items with anti-hug capabilities now resist the correct number
+      of face-hugging attempts.

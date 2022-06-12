@@ -301,9 +301,10 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(src in S.hearing_items)
+	if(LAZYISIN(src, S.hearing_items))
 		LAZYREMOVE(S.hearing_items, src)
-
+		if(!LAZYLEN(S.hearing_items))
+			S.flags_atom &= ~USES_HEARING
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
@@ -311,6 +312,7 @@ cases. Override_icon_state should be a list.*/
 	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
 	if(src.flags_atom & USES_HEARING)
 		LAZYADD(S.hearing_items, src)
+		S.flags_atom |= USES_HEARING
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)
@@ -366,13 +368,15 @@ cases. Override_icon_state should be a list.*/
 
 	// Unregister first so as not to have to handle our own event
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot)
 
-/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item)
+/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, var/slot)
 	SIGNAL_HANDLER
-	if(is_type_in_list(item, uniform_restricted))
-		user.drop_inv_item_on_ground(src)
-		to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]"))
+
+	if(item.flags_equip_slot & slotdefine2slotbit(slot))
+		if(is_type_in_list(item, uniform_restricted))
+			user.drop_inv_item_on_ground(src)
+			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)

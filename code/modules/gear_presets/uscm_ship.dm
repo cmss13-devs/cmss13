@@ -158,7 +158,7 @@
 	rank = JOB_MAINT_TECH
 	paygrade = "ME2"
 	role_comm_title = "MT"
-	skills = /datum/skills/OT
+	skills = /datum/skills/MT
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
@@ -653,7 +653,7 @@
 	rank = JOB_MESS_SERGEANT
 	paygrade = "ME2"
 	role_comm_title = "MST"
-	skills = /datum/skills/OT
+	skills = /datum/skills/mess_technician
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 

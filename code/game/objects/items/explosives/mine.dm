@@ -27,6 +27,12 @@
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
 
+	var/map_deployed = FALSE
+
+/obj/item/explosive/mine/Initialize()
+	. = ..()
+	if(map_deployed)
+		deploy_mine(null)
 
 /obj/item/explosive/mine/Destroy()
 	QDEL_NULL(tripwire)
@@ -80,14 +86,18 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 		SPAN_NOTICE("You finish deploying [src]."))
 
-	if(!hard_iff_lock)
+	deploy_mine(user)
+
+/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
-	user.drop_inv_item_on_ground(src)
-	setDir(user.dir) //The direction it is planted in is the direction the user faces at that time
+	if(user)
+		user.drop_inv_item_on_ground(src)
+	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
 
@@ -271,6 +281,10 @@
 	if(linked_claymore)
 		linked_claymore.try_to_prime(AM)
 
+/obj/item/explosive/mine/active
+	icon_state = "m20_active"
+	base_icon_state = "m20"
+	map_deployed = TRUE
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
@@ -278,6 +292,11 @@
 	icon_state = "m20p"
 	iff_signal = FACTION_PMC
 	hard_iff_lock = TRUE
+
+/obj/item/explosive/mine/pmc/active
+	icon_state = "m20p_active"
+	base_icon_state = "m20p"
+	map_deployed = TRUE
 
 /obj/item/explosive/mine/custom
 	name = "Custom mine"

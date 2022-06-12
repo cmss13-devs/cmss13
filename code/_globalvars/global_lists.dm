@@ -367,3 +367,4 @@ var/global/list/paramslist_cache = list()
 	world << .
 */
 
+GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)

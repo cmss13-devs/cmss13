@@ -154,13 +154,20 @@
 	gun_type = /obj/item/weapon/gun/smg/nailgun
 
 //-------------------------------------------------------
-//M1921 //Based on the Model 1921.
+//Tommy Gun
 
 /obj/item/ammo_magazine/smg/m1921
-	name = "\improper M1921 stick mag (.45)"
-	desc = "A .45 stick mag for the M1921."
+	name = "\improper AOM stick mag (.45)"
+	desc = "An Auto Ordnance Magazine made stick for .45 rounds."
 	default_ammo = /datum/ammo/bullet/smg
 	caliber = ".45"
 	icon_state = "tommy_stick"
 	gun_type = /obj/item/weapon/gun/smg/m1921
 	max_rounds = 30
+
+/obj/item/ammo_magazine/smg/m1921/drum
+	name = "\improper AOM drum mag (.45)"
+	desc = "An Auto Ordnance Magazine drum made for .45 rounds."
+	max_rounds = 60
+	icon_state = "tommy_drum"
+	bonus_overlay = "tommy_drum_overlay"

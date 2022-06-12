@@ -447,8 +447,8 @@
 /obj/item/weapon/gun/smg/m1921
 	name = "\improper M1921 Thompson submachinegun"
 	desc = "A modern day copy of a classic design, the Model 1921 Thompson submachine gun was known for its use in WW2 and by mobsters during the period which earned its nickname 'the Chicago Typewriter'"
-	icon_state = "tommy"
-	item_state = "tommy"
+	icon_state = "m1921"
+	item_state = "m1921"
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/m1921
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -456,6 +456,7 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
+						/obj/item/attachable/stock/m1921
 						)
 	starting_attachment_types = list(/obj/item/attachable/stock/m1921)
 
@@ -464,7 +465,34 @@
 
 /obj/item/weapon/gun/smg/m1921/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	fire_delay = FIRE_DELAY_TIER_7
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/m1921/hg2131
+	name = "\improper HG 2131 submachinegun"
+	desc = "Based on the popular MG, the HG 2131 is a powerful and reliable weapon for a modern age. Chambered in .45 ACP it is known to pack a punch and is a favorite amoung PMCs and Colonial Marshals."
+	icon_state = "hg2131"
+	item_state = "hg2131"
+	flags_gun_features = GUN_CAN_POINTBLANK
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/stock/m1921/modern
+						)
+	starting_attachment_types = list(/obj/item/attachable/stock/m1921/modern)
+
+/obj/item/weapon/gun/smg/m1921/hg2131/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9 //Faster than m1921
 	burst_delay = FIRE_DELAY_TIER_SMG
 	burst_amount = BURST_AMOUNT_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1

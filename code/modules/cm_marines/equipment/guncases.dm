@@ -162,10 +162,23 @@
 	name = "\improper M1921 Thompson SMG case"
 	desc = "A gun case containing the M1921 Thompson submachinegun."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/rifle/lmg, /obj/item/ammo_magazine/rifle/lmg)
+	can_hold = list(/obj/item/weapon/gun/smg/m1921, /obj/item/ammo_magazine/smg/m1921)
 
 /obj/item/storage/box/guncase/lmg/fill_preset_inventory()
 	new /obj/item/weapon/gun/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)
+	new /obj/item/ammo_magazine/smg/m1921(src)
+
+//------------
+/obj/item/storage/box/guncase/hg2131
+	name = "\improper HG 2131 SMG case"
+	desc = "A gun case containing the HG 2131 submachinegun."
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/smg/m1921/hg2131, /obj/item/ammo_magazine/smg/m1921)
+
+/obj/item/storage/box/guncase/lmg/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/m1921/hg2131(src)
 	new /obj/item/ammo_magazine/smg/m1921(src)
 	new /obj/item/ammo_magazine/smg/m1921(src)
 	new /obj/item/ammo_magazine/smg/m1921(src)

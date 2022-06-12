@@ -336,6 +336,13 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
 
+/obj/item/storage/belt/security/MP/cadet/fill_preset_inventory()
+	new /obj/item/weapon/gun/energy/taser/safe(src)
+	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
 
 /obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
@@ -930,6 +937,15 @@
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
+
+/obj/item/storage/belt/gun/m4a3/b92fs/custom/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/b92fs/custom())
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
+	new /obj/item/ammo_magazine/pistol/b92fs(src)
 
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())

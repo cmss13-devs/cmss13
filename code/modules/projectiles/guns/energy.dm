@@ -15,7 +15,7 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	matter = list("metal" = 2000)
-	ammo = /datum/ammo/energy/taser/precise
+	ammo = /datum/ammo/energy/taser
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 625 // approx 16 shots shots.
 	var/precision = TRUE
@@ -109,3 +109,20 @@
 			precision = TRUE
 			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Precision mode."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]
+
+/obj/item/weapon/gun/energy/taser/safe/use_unique_action()
+	to_chat(usr, SPAN_NOTICE("\The [src] is locked into Precision mode."))
+	return
+
+/obj/item/weapon/gun/energy/taser/safe
+	name = "smart disabler gun"
+	desc = "An advanced stun device used for non lethal takedowns. this one is locked into precision mode for the use of cadets."
+	icon_state = "taser"
+	item_state = "taser"
+	muzzle_flash = null //TO DO.
+	fire_sound = 'sound/weapons/Taser.ogg'
+	matter = list("metal" = 2000)
+	ammo = /datum/ammo/energy/taser/precise
+	charge_cost = 625 // approx 16 shots shots.
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
+	gun_category = GUN_CATEGORY_HANDGUN

@@ -2100,8 +2100,7 @@
 	icon_state = "stun"
 	damage_type = OXY
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
-
-	stamina_damage = 45
+	stamina_damage = 40
 	accuracy = HIT_ACCURACY_TIER_8
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
 
@@ -2109,6 +2108,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
+		H.make_jittery(30)
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"

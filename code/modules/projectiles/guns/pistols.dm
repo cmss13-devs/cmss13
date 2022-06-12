@@ -148,6 +148,22 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/b92fs/custom
+	name = "\improper Beretta 92FS pistol"
+	desc = "A popular police firearm in the 20th century, often employed by hardboiled cops while confronting terrorists. A classic of its time, chambered in 9mm."
+	icon_state = "b92fs"
+	item_state = "b92fs"
+	current_mag = /obj/item/ammo_magazine/pistol/b92fs
+
+/obj/item/weapon/gun/pistol/b92fs/custom/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.

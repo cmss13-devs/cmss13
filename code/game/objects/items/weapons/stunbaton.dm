@@ -180,7 +180,7 @@
 	if(!isYautja(L) && !isXeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
 		L.emote("pain")
 		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
-
+		L.sway_jitter(times = 4, steps = 4)
 		// Logging
 		if(user == L)
 			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with the [src] in [get_area(user)]"

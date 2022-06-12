@@ -467,18 +467,22 @@
 	item_state = "sunglasses"
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_protection = 1
 
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
+	eye_protection = 2 // DUH ?
+	vision_impair = VISION_IMPAIR_MAX
 	//vision_flags = DISABILITY_BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"
 	prescription = 1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_protection = 0
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "big sunglasses"
@@ -493,12 +497,12 @@
 	icon_state = "aviator"
 	item_state = "aviator"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_protection = 0
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
-	eye_protection = 1
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
@@ -506,8 +510,6 @@
 	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
 	icon_state = "securityhud"
 	item_state = "securityhud"
-	eye_protection = 1
-
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical SWAT HUD"

@@ -318,7 +318,7 @@
 		to_chat(X, SPAN_XENOWARNING("What's the point? They're already about to die."))
 		return
 
-	var/confirm = alert(X, "Are you sure you want to banish [T] from the hive? This should only be done with good reason.", , "Yes", "No")
+	var/confirm = alert(X, "Are you sure you want to banish [T] from the hive? This should only be done with good reason. (Note this prevents them from rejoining the hive after dying for 30 minutes as well unless readmitted)", , "Yes", "No")
 	if(confirm == "No")
 		return
 

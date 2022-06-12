@@ -141,7 +141,6 @@
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/b92fs
 
-
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.
 

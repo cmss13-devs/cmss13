@@ -119,10 +119,6 @@
 	desc = "An advanced stun device used for non lethal takedowns. this one is locked into precision mode for the use of cadets."
 	icon_state = "taser"
 	item_state = "taser"
-	muzzle_flash = null //TO DO.
-	fire_sound = 'sound/weapons/Taser.ogg'
-	matter = list("metal" = 2000)
 	ammo = /datum/ammo/energy/taser/precise
-	charge_cost = 625 // approx 16 shots shots.
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
-	gun_category = GUN_CATEGORY_HANDGUN
+	charge_cost = 833 // 13 shots
+

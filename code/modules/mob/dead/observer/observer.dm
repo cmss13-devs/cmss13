@@ -461,7 +461,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target = targets[input]
 
 	ManualFollow(target)
-	if(world.time < 25 MINUTES && target.faction == FACTION_SURVIVOR)
+	var/mob/follow_target = target
+	if(world.time < 25 MINUTES && folllow_target.faction == FACTION_SURVIVOR)
 		msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(target)] at [get_area(target)]: [target.x], [target.y], [target.z].")
 		log_misc("[key_name(usr)] has jumped to a survivor, [key_name(target)] at [get_area(target)]: [target.x], [target.y], [target.z].")
 	return

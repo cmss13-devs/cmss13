@@ -18,7 +18,7 @@
 	ammo = /datum/ammo/energy/taser
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 625 // approx 16 shots shots.
-	var/precision = TRUE
+	var/precision = FALSE
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 

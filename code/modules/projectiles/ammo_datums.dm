@@ -2112,6 +2112,7 @@
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"
+	shell_speed = AMMO_SPEED_TIER_2 //faster than normal taser shots
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
 

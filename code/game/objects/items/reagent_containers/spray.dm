@@ -117,13 +117,13 @@
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
-	volume = 40
+	volume = 80
 	safety = TRUE
 
 
 /obj/item/reagent_container/spray/pepper/Initialize()
 	. = ..()
-	reagents.add_reagent("condensedcapsaicin", 40)
+	reagents.add_reagent("condensedcapsaicin", 80)
 
 /obj/item/reagent_container/spray/pepper/examine(mob/user)
 	..()

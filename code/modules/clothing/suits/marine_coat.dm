@@ -74,12 +74,30 @@
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
 
-//Marine service jacket
+//Marine service jacket and MP themed variants
 /obj/item/clothing/suit/storage/jacket/marine/service
 	name = "marine service jacket"
 	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	has_buttons = TRUE
 	icon_state = "coat_officer"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/mp
+	name = "military police service jacket"
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are wearing to bear the shame."
+	has_buttons = TRUE
+	icon_state = "coat_mp"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/warden
+	name = "military warden service jacket"
+	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
+	has_buttons = TRUE
+	icon_state = "coat_warden"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/cmp
+	name = "chief military police service jacket"
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
+	has_buttons = TRUE
+	icon_state = "coat_cmp"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess technician jacket"

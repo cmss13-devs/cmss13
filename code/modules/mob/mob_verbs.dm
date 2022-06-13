@@ -234,6 +234,9 @@
 			client.adminobs = 1
 			if(mob_eye == client.mob || client.eye == client.mob)
 				client.adminobs = 0
+		if(mob_eye.faction == FACTION_SURVIVOR && world.time < 25 MINUTES)
+			msg_admin_niche("[key_name(usr)] has jumped to a survivor, [key_name(mob_eye)] at [get_area(mob_eye)]: [mob_eye.x], [mob_eye.y], [mob_eye.z].")
+			log_misc("[key_name(usr)] has jumped to a survivor, [key_name(mob_eye)] at [get_area(mob_eye)]: [mob_eye.x], [mob_eye.y], [mob_eye.z].")
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"

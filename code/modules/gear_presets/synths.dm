@@ -26,6 +26,8 @@
 	. = ..()
 	if(isColonySynthetic(H))
 		H.set_skills(/datum/skills/colonial_synthetic)
+	if(isWorkingJoe(H))
+		H.set_skills(/datum/skills/working_joe)
 
 	H.allow_gun_usage = FALSE
 

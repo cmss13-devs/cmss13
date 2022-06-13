@@ -83,7 +83,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
-	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are wearing to bear the shame."
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
 	has_buttons = TRUE
 	icon_state = "coat_mp"
 

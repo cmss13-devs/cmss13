@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M2 Armor and Service Jacket", 0, /obj/item/clothing/suit/storage/marine/MP/jacket, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Military Police M2 Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -63,6 +64,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Military Warden M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Warden M3 Armor and Service Jacket", 0, /obj/item/clothing/suit/storage/marine/MP/warden/jacket, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Military Warden M3 Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),

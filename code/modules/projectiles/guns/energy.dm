@@ -58,6 +58,24 @@
 		else
 			overlays += "+charge_0"
 
+/obj/item/weapon/gun/energy/taser/safe/update_icon()
+
+	icon_state = "staser_e"
+
+	if(!cell)
+		return
+
+	switch(cell.percent())
+		if(75 to 100)
+			overlays += "scharge_100"
+		if(50 to 75)
+			overlays += "scharge_75"
+		if(25 to 50)
+			overlays += "scharge_50"
+		if(1 to 25)
+			overlays += "scharge_25"
+		else
+			overlays += "scharge_0"
 
 /obj/item/weapon/gun/energy/taser/emp_act(severity)
 	cell.use(round(cell.maxcharge / severity))
@@ -117,8 +135,8 @@
 /obj/item/weapon/gun/energy/taser/safe
 	name = "smart disabler gun"
 	desc = "An advanced stun device used for non lethal takedowns. this one is locked into precision mode for the use of cadets."
-	icon_state = "taser"
+	icon_state = "staser"
 	item_state = "taser"
 	ammo = /datum/ammo/energy/taser/precise
-	charge_cost = 833 // 13 shots
+	charge_cost = 1000 // 10 shots
 

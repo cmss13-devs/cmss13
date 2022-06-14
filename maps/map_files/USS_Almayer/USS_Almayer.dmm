@@ -28511,7 +28511,6 @@
 /turf/closed/wall/almayer,
 /area/almayer/squads/charlie)
 "bRa" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
 	tag = "icon-silvercorner"
@@ -56154,10 +56153,6 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/hallways/port_hallway)
-"lSS" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
 "lTt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
@@ -130255,7 +130250,7 @@ biX
 biX
 biX
 bRa
-lSS
+bRc
 bRh
 bvF
 bvF

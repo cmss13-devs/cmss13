@@ -15,15 +15,10 @@
 	var/list/timestamp = list()
 	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH)
 	var/canprint = 1
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|USES_HEARING
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
-	
-/obj/item/device/taperecorder/Initialize()
-	. = ..()
-	
-	flags_atom |= USES_HEARING
 
 /obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
 	if(recording)

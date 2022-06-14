@@ -132,14 +132,14 @@
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 		to_chat(T, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
-		to_chat(T, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your mentor has linked their bracer to yours."))
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
 		if(thrall_gloves.notification_sound)
 			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-// Message thrall or mentor
+// Message thrall or master
 /obj/item/clothing/gloves/yautja/verb/bracer_message()
 	set name = "Transmit Message"
-	set desc = "For direct communication between thrall and mentor."
+	set desc = "For direct communication between thrall and master."
 	set src in usr
 
 	var/mob/living/carbon/human/messenger = usr
@@ -148,12 +148,12 @@
 
 	var/mob/living/carbon/human/receiver
 	var/messenger_title = "thrall"
-	var/receiver_title = "mentor"
+	var/receiver_title = "master"
 	if(messenger.hunter_data.thralled)
 		receiver = messenger.hunter_data.thralled_set
 	else
 		receiver = messenger.hunter_data.thrall
-		messenger_title = "mentor"
+		messenger_title = "master"
 		receiver_title = "thrall"
 
 	if(!istype(receiver))

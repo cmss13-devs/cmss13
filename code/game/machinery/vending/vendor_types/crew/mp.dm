@@ -93,3 +93,64 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 /obj/structure/machinery/cm_vending/clothing/military_police_warden/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_clothing_military_police_warden
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp
+	name = "\improper ColMarTech Military Police Armory Rack"
+	desc = "A neatly organized rack that stores various lethal weapons and equipment for use in emergencies."
+	icon_state = "guns"
+	req_one_access = list( ACCESS_MARINE_ARMORY, ACCESS_MARINE_BRIG)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp/populate_product_list(var/scale)
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("L42A Battle Rifle", 1, /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("MK221 Tactical Shotgun", 3, /obj/item/weapon/gun/shotgun/combat, VENDOR_ITEM_REGULAR),
+		list("M39 Submachine Gun", 1, /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK2", 1, /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY AMMUNITION", -1, null, null),
+		list("Box of Flechette Shells (12g)", round(scale * 4), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Box of Buckshot Shells (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box of Shotgun Slugs (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
+		list("L42A Magazine (10x24mm)", round(scale * 5), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M39 HV Magazine (10x20mm)", round(scale * 5), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Magazine (10x24mm)", round(scale * 5), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+
+		list("ATTACHMENTS", -1, null, null),
+		list("M39 Folding Stock", round(scale * 2), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
+		list("L42 Synthetic Stock", round(scale * 2), /obj/item/attachable/stock/carbine, VENDOR_ITEM_REGULAR),
+		list("Rail Flashlight", round(scale * 5), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
+		list("Underbarrel Flashlight Grip", round(scale * 2), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
+		list("Underslung Grenade Launcher", round(scale * 2), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
+
+		list("UTILITIES", -1, null, null),
+		list("M5 Bayonet", round(scale * 5), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
+		list("M94 Marking Flare Pack", round(scale * 2), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED),
+	)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/riot
+	name = "\improper ColMarTech Military Police Riot Vendor"
+	desc = "A well-used rack that stores riot gear and non lethal weaponry."
+	icon_state = "req_ammo"
+	req_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp/populate_product_list(var/scale)
+	listed_products = list(
+		list("LESS THAN LETHAL", -1, null, null),
+		list("MK221 Riot Shotgun (20g)", 1, /obj/item/weapon/gun/shotgun/combat/riot, VENDOR_ITEM_REGULAR),
+		list("M81 Riot Grenade Launcher", 1, /obj/item/weapon/gun/launcher/grenade/m81/riot, VENDOR_ITEM_REGULAR),
+
+		list("LESS LETHAL AMMO", -1, null, null),
+		list("Box of Beanbag shells (20g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/beanbag/riot, VENDOR_ITEM_REGULAR),
+		list("HIRR Baton Slug Packet", 2, /obj/item/storage/box/packet/baton_slug, VENDOR_ITEM_REGULAR),
+
+		list("RIOT ARMOR", -1, null, null),
+		list("Riot armor", 1, /obj/item/clothing/suit/armor/riot/marine, VENDOR_ITEM_RECOMMENDED),
+		list("Riot helmet", 1, /obj/item/clothing/suit/armor/riot/marine, VENDOR_ITEM_RECOMMENDED),
+		list("Gas Mask", 2, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
+
+		list("RIOT EQUIPMENT", -1, null, null),
+		list("Riot Shield", 3, /obj/item/weapon/shield/riot, VENDOR_ITEM_RECOMMENDED),
+		list("Teargas canister box", 1, /obj/item/storage/box/nade_box/tear_gas, VENDOR_ITEM_MANDATORY),
+		list("Flashbang box", 1, /obj/item/storage/box/flashbangs, VENDOR_ITEM_REGULAR),
+	)

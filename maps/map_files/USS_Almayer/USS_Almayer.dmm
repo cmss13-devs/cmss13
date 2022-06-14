@@ -29856,19 +29856,18 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bVC" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	id = "cmp_armory";
-	name = "\improper Armory Shutters"
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	name = "\improper Armory"
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
-/turf/open/floor/almayer{
-	icon_state = "redfull";
-	tag = "icon-redfull"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "bVE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
@@ -42097,16 +42096,6 @@
 	},
 /area/almayer/shipboard/starboard_missiles)
 "frJ" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -42118,6 +42107,7 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "fsd" = (
@@ -43787,6 +43777,13 @@
 "gel" = (
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell/cl)
+"geo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/armory)
 "ger" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
@@ -43834,6 +43831,15 @@
 	pixel_y = 25
 	},
 /obj/structure/pipes/vents/scrubber,
+/obj/structure/surface/table/almayer,
+/obj/item/tool/hand_labeler{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -52915,29 +52921,11 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "ktn" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "S";
+	tag = "icon-S"
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
-	},
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/riot,
+/turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "ktB" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -53982,27 +53970,11 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kTc" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
-	},
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "kTq" = (
@@ -54489,13 +54461,13 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "leT" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	dir = 1;
-	name = "\improper Holding Cell"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
 	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	dir = 1;
+	name = "\improper Holding Cell"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -55371,6 +55343,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"lzr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/obj/structure/machinery/power/apc/almayer/hardened,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/brig/armory)
 "lzx" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -56102,14 +56086,11 @@
 /area/almayer/hallways/stern_hallway)
 "lNs" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 32;
-	pixel_y = 7
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "redcorner";
@@ -56406,10 +56387,10 @@
 /area/almayer/hull/upper_hull/u_m_s)
 "lYZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/mechanical/green{
-	pixel_y = 8
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 9
 	},
-/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -56925,6 +56906,20 @@
 	tag = "icon-red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"mmr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/obj/structure/machinery/door/window{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/brig/armory)
 "mmC" = (
 /obj/structure/closet/secure_closet/engineering_welding{
 	req_one_access_txt = "7;23;27"
@@ -57540,15 +57535,12 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "mAr" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/turf/open/floor/plating/almayer,
+/obj/structure/closet/medical_wall,
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/armory)
 "mAT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -57629,6 +57621,17 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"mBS" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	name = "\improper Holding Cell"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/brig/processing)
 "mCm" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -61281,25 +61284,19 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "olv" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/hand_labeler{
-	pixel_x = -8;
-	pixel_y = 3
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
-/obj/item/storage/box/evidence{
-	pixel_x = 7;
-	pixel_y = 6
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/obj/item/storage/box/evidence{
-	pixel_x = 1;
-	pixel_y = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/shipboard/brig/general_equipment)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/armory)
 "olO" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -61335,19 +61332,14 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "omu" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
+	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
@@ -71494,23 +71486,6 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/almayer/lifeboat_pumps/south2)
-"sYB" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/floor/plating/almayer,
-/area/almayer/shipboard/brig/armory)
 "sYC" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -76217,10 +76192,6 @@
 /turf/open/floor/almayer,
 /area/almayer/command/securestorage)
 "uZY" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -76229,6 +76200,7 @@
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/riot,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "uZZ" = (
@@ -79516,6 +79488,18 @@
 /obj/structure/girder,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
+"wsA" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 8;
+	id = "bot_armory";
+	name = "\improper Armory Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	name = "\improper Armory"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/brig/armory)
 "wsD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -80735,24 +80719,22 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_s)
 "wVw" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/structure/machinery/light/small{
+/obj/structure/surface/table/almayer,
+/obj/item/explosive/grenade/baton{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	pixel_x = -3;
+	pixel_y = 8
 	},
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/item/explosive/grenade/baton{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 10
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/floor/plating/almayer,
+/obj/item/vehicle_clamp{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "wVy" = (
 /obj/structure/window/reinforced{
@@ -81663,22 +81645,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = -30
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -94041,7 +94007,7 @@ mLJ
 fkn
 sgi
 vyp
-vyp
+mBS
 vyp
 tpn
 tpn
@@ -95250,7 +95216,7 @@ wcn
 wcn
 lrq
 lrq
-bVC
+lrq
 lrq
 lrq
 lut
@@ -95453,8 +95419,8 @@ rPC
 rwS
 lrq
 kTc
-uqo
-wVw
+bVC
+lzr
 cqn
 gTx
 vUL
@@ -95656,8 +95622,8 @@ rPC
 nfI
 lrq
 omu
-uqo
-sYB
+olv
+xoS
 cqn
 ldu
 vUL
@@ -95859,8 +95825,8 @@ rPC
 heV
 lrq
 frJ
-uqo
-ktn
+bVC
+xoS
 cqn
 vUL
 mdS
@@ -96062,7 +96028,7 @@ wcn
 nBc
 lrq
 mAr
-uqo
+wVw
 xoS
 lrq
 mAT
@@ -96264,9 +96230,9 @@ pCi
 wcn
 wcn
 lrq
-mAr
-uqo
-fsT
+ktn
+olv
+mmr
 fsT
 fDn
 lrq
@@ -96468,8 +96434,8 @@ oCL
 wcn
 lrq
 uZY
-uqo
-uqo
+bVC
+geo
 uqo
 iOh
 lrq
@@ -96670,9 +96636,9 @@ pCi
 rPC
 aou
 lrq
-mAr
-uqo
-fsT
+ktn
+bVC
+xoS
 tfO
 fsz
 lrq
@@ -96875,7 +96841,7 @@ tYB
 lrq
 noo
 noo
-noo
+wsA
 lrq
 lrq
 lrq
@@ -97078,7 +97044,7 @@ naf
 cQv
 vcG
 lYZ
-olv
+ajj
 dxm
 nMu
 uFp

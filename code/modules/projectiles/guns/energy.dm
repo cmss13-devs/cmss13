@@ -20,6 +20,7 @@
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 350
 
+	var/works_in_recharger = TRUE
 	var/has_charge_meter = FALSE//do we use the charging overlay system or just have an empty overlay
 	var/charge_icon = "+stunrevolver_empty"//define on a per gun basis, used for the meter and empty icon on non meter guns
 

@@ -497,6 +497,7 @@ var/global/players_preassigned = 0
 		return 0
 	J.total_positions = amount
 	J.total_positions_so_far = amount
+	J.spawn_positions = amount
 	return 1
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.

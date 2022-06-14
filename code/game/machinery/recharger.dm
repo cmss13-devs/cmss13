@@ -75,7 +75,7 @@
 	else
 		if(istype(charging, /obj/item/weapon/gun/energy))
 			var/obj/item/weapon/gun/energy/E = charging
-			if(!charging.works_in_recharger)
+			if(!E.works_in_recharger)
 				return;
 			if(!E.cell.fully_charged())
 				E.cell.give(charge_amount)

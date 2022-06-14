@@ -19,6 +19,11 @@
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
+	
+/obj/item/device/taperecorder/Initialize()
+	. = ..()
+	
+	flags_atom |= USES_HEARING
 
 /obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
 	if(recording)

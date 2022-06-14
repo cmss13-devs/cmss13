@@ -22,29 +22,7 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
-/obj/structure/machinery/computer/secure_data/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in oview(1)
-
-	if(!usr || usr.stat || usr.lying)	return
-
-	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.forceMove(get_turf(src))
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(scan)
-		scan = null
-	else
-		to_chat(usr, "There is nothing to remove from the console.")
-	return
-
 /obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
-	if(istype(O, /obj/item/card/id) && !scan)
-		if(usr.drop_held_item())
-			O.forceMove(src)
-			scan = O
-			to_chat(user, "You insert [O].")
 
 	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
 		var/obj/item/device/clue_scanner/S = O

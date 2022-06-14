@@ -5,20 +5,6 @@
 		.["modes"] += "headset"
 		return
 
-	if(length(message) >= 2 && message[1] == ",")
-		// Radio multibroadcast functionality.
-		// If a message starts with , we assume that up to MULTIBROADCAST_MAX_CHANNELS
-		// next symbols are channel names. If we run into a space we stop looking for more channels.
-		var/i
-		for(i in 2 to 1+MULTIBROADCAST_MAX_CHANNELS)
-			var/current_channel = message[i]
-			if(current_channel == " " || current_channel == ":" || current_channel == ".")
-				i--
-				break
-			.["modes"] += department_radio_keys[":[current_channel]"]
-		.["message_and_language"] = copytext(message, i+1)
-		return
-
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
 		var/channel_prefix = copytext(message, 1, 3)
 		if(channel_prefix in department_radio_keys)

@@ -52915,29 +52915,11 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "ktn" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "S";
+	tag = "icon-S"
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
-	},
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/riot,
+/turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "ktB" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -57540,10 +57522,6 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "mAr" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -71494,23 +71472,6 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/almayer/lifeboat_pumps/south2)
-"sYB" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/floor/plating/almayer,
-/area/almayer/shipboard/brig/armory)
 "sYC" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -76217,10 +76178,6 @@
 /turf/open/floor/almayer,
 /area/almayer/command/securestorage)
 "uZY" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -76229,6 +76186,7 @@
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/riot,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "uZZ" = (
@@ -80735,24 +80693,16 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_s)
 "wVw" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
-	},
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/floor/plating/almayer,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/mp,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
 /area/almayer/shipboard/brig/armory)
 "wVy" = (
 /obj/structure/window/reinforced{
@@ -81663,22 +81613,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = -30
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -95657,7 +95591,7 @@ nfI
 lrq
 omu
 uqo
-sYB
+wVw
 cqn
 ldu
 vUL
@@ -95860,7 +95794,7 @@ heV
 lrq
 frJ
 uqo
-ktn
+wVw
 cqn
 vUL
 mdS
@@ -96264,7 +96198,7 @@ pCi
 wcn
 wcn
 lrq
-mAr
+ktn
 uqo
 fsT
 fsT
@@ -96670,7 +96604,7 @@ pCi
 rPC
 aou
 lrq
-mAr
+ktn
 uqo
 fsT
 tfO

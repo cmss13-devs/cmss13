@@ -148,7 +148,7 @@
 	return
 
 
-/obj/proc/hear_talk(mob/M, text)
+/obj/proc/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
 	return
 
 /obj/attack_hand(mob/user)

@@ -2865,7 +2865,7 @@
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
 	name = "30mm shell"
 
-	damage = 125 //big hurt 30mm bullet ouchy
+	damage = 110 //big hurt 30mm bullet ouchy
 	penetration = ARMOR_PENETRATION_TIER_5
 	accuracy = HIT_ACCURACY_TIER_MAX
 	max_range = 0
@@ -2874,7 +2874,7 @@
 /datum/ammo/bullet/shrapnel/gau/hv
 	name = "30mm High-Velocity shell"
 
-	damage = 165
+	damage = 150
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
 /*

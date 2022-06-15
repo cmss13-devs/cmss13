@@ -110,15 +110,15 @@
 		var/turf/U = pick(turf_list)
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		U.ex_act(EXPLOSION_THRESHOLD_LOW, pick(alldirs), cause_data)
+		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
 		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100)
 		for(var/atom/movable/AM in U)
 			if(iscarbon(AM))
-				AM.ex_act(EXPLOSION_THRESHOLD_LOW, null, cause_data)
+				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
 			else
-				AM.ex_act(EXPLOSION_THRESHOLD_LOW)
+				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, get_sfx("explosion"), 40, 1, 20)
+			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3
 		soundplaycooldown--
 		if(!debriscooldown)
@@ -126,6 +126,8 @@
 			debriscooldown = 6
 		debriscooldown--
 		new /obj/effect/particle_effect/expl_particles(U)
+	sleep(11) //speed of sound simulation
+	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 
 /obj/structure/ship_ammo/heavygun/highvelocity

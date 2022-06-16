@@ -36,6 +36,8 @@
 	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
 	if(auto_squad)
 		transfer_marine_to_squad(H, auto_squad, H.assigned_squad, H.wear_id)
+	if(!auto_squad.active)
+		auto_squad.engage_squad(FALSE)
 
 	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
 	H.sec_hud_set_ID()
@@ -735,6 +737,7 @@
 	rank = JOB_MARSOC_SL
 	role_comm_title = "TL."
 	paygrade = "MO1"
+	skills = /datum/skills/commando/deathsquad/leader
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -759,6 +762,7 @@
 	rank = JOB_MARSOC_CMD
 	role_comm_title = "CMD."
 	paygrade = "MO3"
+	skills = /datum/skills/commando/deathsquad/officer
 
 /datum/equipment_preset/uscm/marsoc/cmd/load_rank(mob/living/carbon/human/H)
 	if(H.client)

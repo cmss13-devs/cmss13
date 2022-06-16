@@ -26,7 +26,6 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	H.set_skills(/datum/skills/commando/deathsquad)
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
@@ -69,7 +68,6 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	H.set_skills(/datum/skills/commando/deathsquad)
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
@@ -99,7 +97,6 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	H.set_skills(/datum/skills/commando/deathsquad)
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a MARSOC Team Leader, better than all the rest.")))

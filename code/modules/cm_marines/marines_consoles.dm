@@ -483,6 +483,7 @@
 	req_access = list(ACCESS_MARINE_LOGISTICS)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/squad_changer/verb/eject_id()
 	set category = "Object"
@@ -583,7 +584,7 @@
 	var/list/data = list()
 	var/list/squads = list()
 	for(var/datum/squad/S in RoleAuthority.squads)
-		if(!S.locked)
+		if(!(S.name == "Root") && !S.locked && S.active && (S.faction == faction))
 			var/list/squad = list(list(
 				"name" = S.name,
 				"color" = S.color-1

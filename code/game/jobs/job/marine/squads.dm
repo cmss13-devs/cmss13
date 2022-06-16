@@ -143,12 +143,13 @@
 /datum/squad/marine/marsoc
 	name = SQUAD_MARSOC
 	color = 7
-	usable = TRUE
-	roundstart = FALSE
 	radio_freq = MARSOC_FREQ
-	locked = TRUE
 	squad_type = "Team"
 	lead_icon = "soctl"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
 
 //############################### UPP Squads
 /datum/squad/upp

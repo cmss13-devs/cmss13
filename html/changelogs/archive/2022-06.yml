@@ -77,5 +77,10 @@
   - bugfix: Clothing items with anti-hug capabilities now resist the correct number
       of face-hugging attempts.
 2022-06-16:
+  Geevies:
+  - rscadd: Added antag vendor gear for UPP Mayjors, UPP conscripts, and UPP/CLF Synths.
+  - refactor: Refactored antag vendors to get their lists from the human jobs directly,
+      rather than being defined on top of the vendor. Everything should work as expected
+      still.
   Morrow:
   - bugfix: Tape Recorders should record again.  Even in storage containers.

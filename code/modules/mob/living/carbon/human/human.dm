@@ -65,6 +65,8 @@
 			qdel(L)
 		limbs = null
 
+	assigned_equipment_preset = null
+
 	remove_from_all_mob_huds()
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src

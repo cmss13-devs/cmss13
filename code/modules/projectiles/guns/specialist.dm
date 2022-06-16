@@ -756,7 +756,7 @@
 	set src in usr
 
 	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by \the [src]. Unauthorized user."))
 		return
 
 	is_locked = !is_locked

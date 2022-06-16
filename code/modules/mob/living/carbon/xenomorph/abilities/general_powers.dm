@@ -584,14 +584,12 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore)
-			to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
-			return
-
-		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
-			return
-		qdel(X.hive.hive_location)
+		to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
+		return FALSE
 	else if(!X.hive.can_build_structure(choice))
+		if(choice == XENO_STRUCTURE_CORE)
+			to_chat(X, SPAN_WARNING("A hivecore already exists or has been destroyed too recently!"))
+			return FALSE
 		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
 		return FALSE
 

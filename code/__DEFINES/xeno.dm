@@ -550,6 +550,9 @@
 #define RESIN_TRAP_ACID2 4
 #define RESIN_TRAP_ACID3 5
 
+// HIVECORE COOLDOWN TIME
+#define HIVECORE_COOLDOWN 5 MINUTES
+
 // Xeno shield HUD scale factor (1.5x so its easier to see, most times)
 #define XENO_SHIELD_HUD_SCALE_FACTOR 1.5
 

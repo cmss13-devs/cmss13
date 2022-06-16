@@ -747,7 +747,7 @@
 /obj/item/weapon/gun/smartgun/co/pickup(user)
 	if(!linked_human)
 		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up [src], registering yourself as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
 	..()
 
 /obj/item/weapon/gun/smartgun/co/verb/toggle_lock()
@@ -756,11 +756,11 @@
 	set src in usr
 
 	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by \the [src]. Unauthorized user."))
 		return
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [is_locked? "lock": "unlock"] [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [is_locked? "lock": "unlock"] \the [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/smartgun/co/I)
@@ -773,7 +773,7 @@
 		if(is_locked)
 			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
 		else
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
+			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human], but has its fire restrictions unlocked."))
 	else
 		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
 

@@ -3,7 +3,6 @@
 //UPP Strike Team
 /datum/emergency_call/upp
 	name = "UPP Naval Infantry (Squad)"
-	mob_min = 0
 	mob_max = 9
 	probability = 10
 	shuttle_id = "Distress_UPP"

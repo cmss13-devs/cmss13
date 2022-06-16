@@ -637,3 +637,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else
 		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
 	winset(src, "mainwindow", "is-maximized=true")
+
+
+
+/client/proc/check_timelock(var/list/roles, var/hours)
+	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
+	if(!GLOB.timelocks[timelock_name])
+		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
+	var/datum/timelock/timelock = GLOB.timelocks[timelock_name]
+	if(timelock.can_play(src))
+		return TRUE
+	return FALSE

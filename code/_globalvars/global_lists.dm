@@ -368,3 +368,7 @@ var/global/list/paramslist_cache = list()
 */
 
 GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
+
+
+// Timelock
+GLOBAL_LIST_EMPTY(timelocks)

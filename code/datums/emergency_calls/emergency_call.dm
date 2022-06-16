@@ -37,8 +37,6 @@
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
-	var/list/timelocks
-
 	var/ert_message = "An emergency beacon has been activated"
 
 /datum/game_mode/proc/initialize_emergency_calls()
@@ -106,12 +104,7 @@
 	return
 
 /datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
-	LAZYINITLIST(timelocks)
-	var/timelock_name = islist(roles) ? jointext(roles, "") : roles
-	if(!timelocks[timelock_name])
-		timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
-	var/datum/timelock/timelock = timelocks[timelock_name]
-	if(C && timelock.can_play(C))
+	if(C?.check_timelock(roles, hours))
 		return TRUE
 	return FALSE
 

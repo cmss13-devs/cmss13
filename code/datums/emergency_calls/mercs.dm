@@ -62,12 +62,11 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Freelancer leader!"))
-
-	else if(medics < max_medics)
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer medic!"))

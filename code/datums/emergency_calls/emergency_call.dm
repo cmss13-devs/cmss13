@@ -28,12 +28,16 @@
 	var/medics = 0
 	var/engineers = 0
 	var/heavies = 0
+	var/smartgunners = 0
 	var/max_medics = 1
 	var/max_engineers = 1
 	var/max_heavies = 1
+	var/max_smartgunners = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
+
+	var/list/timelocks
 
 	var/ert_message = "An emergency beacon has been activated"
 
@@ -100,6 +104,16 @@
 		return
 	random_call.activate()
 	return
+
+/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+	LAZYINITLIST(timelocks)
+	var/timelock_name = islist(roles) ? jointext(roles, "") : roles
+	if(!timelocks[timelock_name])
+		timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
+	var/datum/timelock/timelock = timelocks[timelock_name]
+	if(C && timelock.can_play(C))
+		return TRUE
+	return FALSE
 
 /mob/dead/observer/verb/JoinResponseTeam()
 	set name = "Join Response Team"

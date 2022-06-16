@@ -28,17 +28,17 @@
 	M.transfer_to(H, TRUE)
 	H.set_skills(/datum/skills/commando/deathsquad)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout/leader, TRUE, TRUE)
-	else if(medics < max_medics)
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout/medic, TRUE, TRUE)
-	else if(heavies < max_heavies)
+	else if(heavies < max_heavies && check_timelock(H.client, list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN), 15 HOURS))
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))

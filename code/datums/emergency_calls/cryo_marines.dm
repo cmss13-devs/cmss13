@@ -7,7 +7,7 @@
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_heavies = 4
+	max_engineers = 4
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
@@ -31,19 +31,19 @@
 
 	sleep(5)
 	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	if(leaders < echo_squad.max_leaders)
+	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (medics < max_medics)
+	else if (medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/uscm/medic/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (heavies < max_heavies)
-		heavies++
+	else if (engineers < max_engineers && check_timelock(H.client, JOB_SQUAD_ENGI, 15 HOURS))
+		engineers++
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
@@ -60,7 +60,7 @@
 	mob_min = 8
 	mob_max = 30
 	probability = 0
-	max_heavies = 8
+	max_engineers = 8
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"

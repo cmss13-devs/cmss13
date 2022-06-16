@@ -268,25 +268,63 @@
 	var/obj/item/device/internal_implant/subdermal_armor/implant = new()
 	implant.on_implanted(H)
 
-	load_specialist(H, UPP)
+	//body
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	UPP.attach_accessory(H, W)
+	for(var/i in 1 to W.hold.storage_slots)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dragon, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_JACKET)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY, WEAR_WAIST)
 
-/datum/equipment_preset/upp/specialist/proc/load_specialist(mob/living/carbon/human/H, obj/item/clothing/under/marine/veteran/UPP/UPP)
-	if(prob(50))
-		//body
-		H.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun/upp, WEAR_J_STORE)
-		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun, WEAR_IN_JACKET)
-		//waist
-		H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY/shrapnel, WEAR_WAIST)
-	else
-		//body
-		var/obj/item/clothing/accessory/storage/black_vest/W = new()
-		UPP.attach_accessory(H, W)
-		for(var/i in 1 to W.hold.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_ACCESSORY)
-		H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dragon, WEAR_J_STORE)
-		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_JACKET)
-		//waist
-		H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY, WEAR_WAIST)
+//*****************************************************************************************************/
+
+/datum/equipment_preset/upp/minigunner
+	name = "UPP Minigunner"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/specialist
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
+	role_comm_title = "Spc"
+	paygrade = "UE5"
+
+/datum/equipment_preset/upp/minigunner/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.33
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.66
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2.33
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2.66
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
+	var/obj/item/device/internal_implant/subdermal_armor/implant = new()
+	implant.on_implanted(H)
+
+	//body
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun/upp, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun, WEAR_IN_JACKET)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY/shrapnel, WEAR_WAIST)
 
 //*****************************************************************************************************/
 

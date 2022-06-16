@@ -28,11 +28,11 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
-	else if(medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if(medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_medic, TRUE, TRUE)

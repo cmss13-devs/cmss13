@@ -39,6 +39,8 @@
 
 	var/ert_message = "An emergency beacon has been activated"
 
+	var/time_required_for_job = 5 HOURS
+
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
 		return

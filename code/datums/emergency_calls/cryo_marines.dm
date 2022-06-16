@@ -31,18 +31,18 @@
 
 	sleep(5)
 	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if (medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/uscm/medic/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (engineers < max_engineers && check_timelock(H.client, JOB_SQUAD_ENGI, 15 HOURS))
+	else if (engineers < max_engineers && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))

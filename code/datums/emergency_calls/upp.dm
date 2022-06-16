@@ -47,23 +47,23 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/upp/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, /datum/equipment_preset/upp/medic, TRUE, TRUE)
-	else if(engineers < engineers && check_timelock(H.client, JOB_SQUAD_ENGI, 15 HOURS))
+	else if(engineers < engineers && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		to_chat(H, SPAN_ROLE_HEADER("You are a sapper of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, /datum/equipment_preset/upp/sapper, TRUE, TRUE)
-	else if(heavies < max_heavies && check_timelock(H.client, heavy_pick ? list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN) : JOB_SQUAD_SPECIALIST, 15 HOURS))
+	else if(heavies < max_heavies && check_timelock(H.client, heavy_pick ? list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN) : JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a sergeant of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, heavy_pick ? pick(/datum/equipment_preset/upp/specialist, /datum/equipment_preset/upp/minigunner) : /datum/equipment_preset/upp/specialist, TRUE, TRUE)
-	else if(smartgunners < max_smartgunners && check_timelock(H.client, JOB_SQUAD_SMARTGUN, 15 HOURS))
+	else if(smartgunners < max_smartgunners && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		to_chat(H, SPAN_ROLE_HEADER("You are a sergeant of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, /datum/equipment_preset/upp/minigunner, TRUE, TRUE)

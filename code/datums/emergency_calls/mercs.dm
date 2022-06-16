@@ -62,11 +62,11 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Freelancer leader!"))
-	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer medic!"))

@@ -34,7 +34,7 @@
 
 	sleep(5)
 	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/echo, TRUE, TRUE)

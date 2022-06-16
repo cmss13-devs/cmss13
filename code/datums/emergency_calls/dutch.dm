@@ -22,16 +22,16 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/arnie, TRUE, TRUE)
-	else if(heavies < max_heavies && check_timelock(H.client, JOB_SQUAD_SPECIALIST, 15 HOURS))
+	else if(heavies < max_heavies && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/flamer, TRUE, TRUE)
-	else if(smartgunners < max_smartgunners && check_timelock(H.client, JOB_SQUAD_SMARTGUN, 15 HOURS))
+	else if(smartgunners < max_smartgunners && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/minigun, TRUE, TRUE)
-	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/medic, TRUE, TRUE)
 	else

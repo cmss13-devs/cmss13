@@ -25,23 +25,23 @@
 	M.transfer_to(mob, TRUE)
 
 	sleep(5)
-	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, 15 HOURS))
+	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/leader, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (heavies < max_heavies && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, 15 HOURS))
+	else if (heavies < max_heavies && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if(smartgunners < max_smartgunners && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, 15 HOURS))
+	else if(smartgunners < max_smartgunners && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/smartgunner, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a smartgunner in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if(engineers < max_engineers && check_timelock(mob.client, JOB_SQUAD_ENGI, 15 HOURS))
+	else if(engineers < max_engineers && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, 15 HOURS))
+	else if (medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))

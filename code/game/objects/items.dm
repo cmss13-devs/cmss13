@@ -301,7 +301,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(LAZYISIN(src, S.hearing_items))
+	if(LAZYISIN(S.hearing_items, src))
 		LAZYREMOVE(S.hearing_items, src)
 		if(!LAZYLEN(S.hearing_items))
 			S.flags_atom &= ~USES_HEARING

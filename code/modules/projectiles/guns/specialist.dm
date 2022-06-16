@@ -773,7 +773,7 @@
 		if(is_locked)
 			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
 		else
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
+			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human], but has its fire restrictions unlocked."))
 	else
 		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
 

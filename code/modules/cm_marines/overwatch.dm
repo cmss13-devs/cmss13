@@ -795,9 +795,9 @@
 		return
 
 	var/list/available_squads = list()
-	for(var/datum/squad/Squad in ROLES_SQUAD_ALL)
-		if(!Squad.locked && Squad.faction == faction)
-			available_squads += Squad
+	for(var/datum/squad/squad as anything in ROLES_SQUAD_ALL)
+		if(!squad.locked && squad.faction == faction)
+			available_squads += squad
 
 	var/new_squad_name = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)
 	if(!new_squad_name || S != current_squad)

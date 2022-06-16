@@ -747,7 +747,7 @@
 /obj/item/weapon/gun/smartgun/co/pickup(user)
 	if(!linked_human)
 		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up [src], registering yourself as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
 	..()
 
 /obj/item/weapon/gun/smartgun/co/verb/toggle_lock()

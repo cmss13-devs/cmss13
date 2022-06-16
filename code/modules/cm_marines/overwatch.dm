@@ -455,7 +455,7 @@
 				else
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
-						if((S.active && S.faction == faction) && !S.overwatch_officer)
+						if((S.active && S.faction == faction) && !S.overwatch_officer && (S.name != "Root"))
 							squad_list += S.name
 
 					var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Claim Squad", squad_list)
@@ -796,7 +796,7 @@
 
 	var/list/available_squads = list()
 	for(var/datum/squad/squad as anything in RoleAuthority.squads)
-		if(squad.active && !squad.locked && (squad.faction == faction) && !squad.name == "Root")
+		if(squad.active && !squad.locked && (squad.faction == faction) && (squad.name != "Root"))
 			available_squads += squad
 
 	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)

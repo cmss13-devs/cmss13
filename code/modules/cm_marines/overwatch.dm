@@ -664,7 +664,7 @@
 	var/ob_type = almayer_orbital_cannon.tray.warhead ? almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
 
 	for(var/datum/squad/S in RoleAuthority.squads)
-		if(!S.usable)
+		if(!S.active)
 			continue
 		for(var/mob/living/carbon/human/M in S.marines_list)
 			if(!is_ground_level(M.z))
@@ -795,14 +795,13 @@
 		return
 
 	var/list/available_squads = list()
-	for(var/datum/squad/squad as anything in ROLES_SQUAD_ALL)
-		if(!squad.locked && squad.faction == faction)
+	for(var/datum/squad/squad as anything in RoleAuthority.squads)
+		if(!squad.name == "Root" && (!squad.locked && squad.faction == faction))
 			available_squads += squad
 
-	var/new_squad_name = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)
-	if(!new_squad_name || S != current_squad)
+	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)
+	if(!new_squad || S != current_squad)
 		return
-	var/datum/squad/new_squad = get_squad_by_name(new_squad_name)
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")

@@ -74,7 +74,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_MARSOC						"MARSOC Operator"
 #define JOB_MARSOC_SL					"MARSOC Team Leader"
-#define JOB_MARSOC_CMD					"SOC Officer"
+#define JOB_MARSOC_CMD					"MARSOC Officer"
 #define JOB_MARSOC_ROLES_LIST			list(JOB_MARSOC, JOB_MARSOC_SL, JOB_MARSOC_CMD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human

@@ -38,7 +38,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<8, i++)
+	for(i=1, i<(length(squad_colors) + 1), i++)
 		var/image/armor
 		var/image/helmet
 		var/image/glove

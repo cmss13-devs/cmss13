@@ -183,7 +183,7 @@
 /obj/item/device/encryptionkey/soc
 	name = "\improper MARSOC Radio Encryption Key"
 	icon_state = "binary_key"
-	channels = list(SQUAD_MARSOC = 1, "Req" = 1, "MedSci" = 1, "Engi" = 1, "Tactics" = 1, "JTAC" = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0)
+	channels = list("Command" = 1, "Req" = 1, "MedSci" = 1, "Engi" = 1, "Tactics" = 1, "JTAC" = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0)
 
 //For CL and their Marine goons
 /obj/item/device/encryptionkey/WY

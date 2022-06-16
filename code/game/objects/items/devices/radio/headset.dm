@@ -267,12 +267,8 @@
 	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
 	locate_setting = TRACKER_SL
 
-
 /obj/item/device/radio/headset/binary
-
 	initial_keys = list(/obj/item/device/encryptionkey/binary)
-
-
 
 /obj/item/device/radio/headset/ai_integrated //No need to care about icons, it should be hidden inside the AI anyway.
 	name = "AI Subspace Transceiver"
@@ -296,9 +292,6 @@
 	item_state = "headset"
 	freerange = 1
 	initial_keys = list(/obj/item/device/encryptionkey/ert)
-
-
-
 
 //MARINE HEADSETS
 
@@ -462,8 +455,6 @@
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)
 
-
-
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
 	name = "marine alpha radio headset"
@@ -492,7 +483,6 @@
 	name = "marine alpha corpsman radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
-
 
 //############################## BRAVO ###############################
 /obj/item/device/radio/headset/almayer/marine/bravo
@@ -523,8 +513,6 @@
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
-
-
 //############################## CHARLIE ###############################
 /obj/item/device/radio/headset/almayer/marine/charlie
 	name = "marine charlie radio headset"
@@ -554,7 +542,6 @@
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
-
 //############################## DELTA ###############################
 /obj/item/device/radio/headset/almayer/marine/delta
 	name = "marine delta radio headset"
@@ -583,7 +570,6 @@
 	name = "marine delta corpsman radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
-
 
 //############################## ECHO ###############################
 /obj/item/device/radio/headset/almayer/marine/echo
@@ -644,26 +630,12 @@
 	desc = "This is used by the marine Reserve combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
-
-
-
-
-
-
-
-
-
-
-
 /obj/item/device/radio/headset/almayer/marine/mortar
 	name = "mortar crew radio headset"
 	desc = "This is used by the dust raider's bunker mortar crew to get feedback on how good the hits of that 80mm rain turned out. Comes with access to the engineering channel with :e, JTAC for coordinating with :j, Tactics with :t, and request more shells supply with :u - this ain't Winchester Outpost!"
 	icon_state = "ce_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mortar)
 	volume = RADIO_VOLUME_RAISED
-
-
-
 
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
@@ -810,6 +782,7 @@
 	name = "USCM MARSOC headset"
 	desc = "Issued exclusively to members of the Marines Special Operations Command."
 	icon_state = "soc_headset"
+	frequency = MARSOC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
 

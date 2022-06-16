@@ -141,13 +141,13 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, COLONY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ, MARSOC_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -272,13 +272,13 @@ SUBSYSTEM_DEF(radio)
 	tcomm_machines_almayer -= machine
 
 /datum/controller/subsystem/radio/proc/get_frequency_span(var/frequency)
+	var/freq_span = freq_to_span["[frequency]"]
+	if(freq_span)
+		return freq_span
 	if(frequency in ANTAG_FREQS)
 		return "syndradio"
 	if(frequency in CENT_FREQS)
 		return "centradio"
-	var/freq_span = freq_to_span["[frequency]"]
-	if(freq_span)
-		return freq_span
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
 	return "radio"

@@ -31,7 +31,7 @@
 		if(squad.squad_leader == H)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"
-				if("Team") marine_rk = "socsl_a"
+				if("Team") marine_rk = "soctl_a"
 
 			H.langchat_styles = "langchat_bolded" // bold text for bold leaders
 		else

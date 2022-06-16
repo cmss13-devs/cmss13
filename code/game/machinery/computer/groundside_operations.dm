@@ -23,7 +23,6 @@
 	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
 	var/tacmap_additional_parameter = null
 	var/minimap_name = "Marine Minimap"
-	var/echo = FALSE//If echo squad is active or not
 	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
@@ -54,7 +53,8 @@
 	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
-	if(!echo)
+	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+	if(!echo_squad.active)
 		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
 
@@ -302,9 +302,7 @@
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
-			echo_squad.active = TRUE
-			echo_squad.locked = FALSE
-			echo = TRUE
+			echo_squad.engage_squad(TRUE)
 			message_staff("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")

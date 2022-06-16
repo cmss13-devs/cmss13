@@ -661,7 +661,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "MARSOC Operator"
 	rank = JOB_MARSOC
-	role_comm_title = "SOC. Op."
+	role_comm_title = "Op."
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_MARSOC
@@ -683,7 +683,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marsoc, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/marsoc, WEAR_FACE)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/marsoc, WEAR_HEAD)
@@ -733,7 +733,7 @@
 	name = "MARSOC Team Leader"
 	assignment = JOB_MARSOC_SL
 	rank = JOB_MARSOC_SL
-	role_comm_title = "SOC. TL."
+	role_comm_title = "TL."
 	paygrade = "MO1"
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
@@ -743,15 +743,21 @@
 	return paygrade
 
 //Codenamed Team Leader
-/datum/equipment_preset/uscm/marsoc/covert/sl
+/datum/equipment_preset/uscm/marsoc/sl/covert
 	name = "MARSOC Team Leader (Covert)"
-
+	uses_special_name = TRUE
+/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = MALE
+	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
+	H.age = rand(20,30)
+/datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/H)
+	return "O"
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
 	name = "MARSOC Officer"
 	assignment = JOB_MARSOC_CMD
 	rank = JOB_MARSOC_CMD
-	role_comm_title = "SOC. CMD."
+	role_comm_title = "CMD."
 	paygrade = "MO3"
 
 /datum/equipment_preset/uscm/marsoc/cmd/load_rank(mob/living/carbon/human/H)

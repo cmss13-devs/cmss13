@@ -25,7 +25,7 @@
 	sub_leader = "Strike Leader"
 
 /datum/squad
-	var/name = "Empty Squad"  //Name of the squad
+	var/name //Name of the squad
 	var/tracking_id = null	//Used for the tracking subsystem
 	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
 	var/color = 0 //Color for helmets, etc.
@@ -45,6 +45,8 @@
 	var/locked = FALSE	//Is it available for squad management?
 	var/active = FALSE	//Is it visible in overwatch?
 	var/faction = FACTION_MARINE	//What faction runs the squad?
+
+	///Squad Type Specifics
 	var/squad_type = "Squad"	//Referenced for aSL details. Squad/Team/Cell etc.
 	var/lead_icon	//Referenced for SL's 'L' icon. If nulled, won't override icon for aSLs.
 
@@ -85,6 +87,7 @@
 
 
 /datum/squad/marine
+	name = "Root"
 	usable = TRUE
 	active = TRUE
 	faction = FACTION_MARINE
@@ -129,10 +132,12 @@
 	name = SQUAD_MARINE_CRYO
 	color = 6
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	usable = TRUE
-	roundstart = FALSE
+
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
+
+	active = FALSE
+	roundstart = FALSE
 	locked = TRUE
 
 /datum/squad/marine/marsoc
@@ -147,7 +152,7 @@
 
 //############################### UPP Squads
 /datum/squad/upp
-	name = "UPP Root Squad"
+	name = "Root"
 	usable = TRUE
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
@@ -175,7 +180,7 @@
 	locked = TRUE
 //###############################
 /datum/squad/pmc
-	name = "PMC Root Squad"
+	name = "Root"
 	squad_type = "Team"
 	faction = FACTION_PMC
 	usable = TRUE
@@ -194,7 +199,7 @@
 	faction = FACTION_WY_DEATHSQUAD
 //###############################
 /datum/squad/clf
-	name = "CLF Root Squad"
+	name = "Root"
 	squad_type = "Cell"
 	faction = FACTION_CLF
 	usable = TRUE
@@ -208,10 +213,6 @@
 	name = "Cobra"
 /datum/squad/clf/four
 	name = "Boa"
-//###############################
-/datum/squad/freelance
-//###############################
-/datum/squad/twe
 //###############################
 /datum/squad/New()
 	. = ..()
@@ -527,6 +528,19 @@
 		if(S.name == text)
 			return S
 	return null
+
+/datum/squad/proc/engage_squad(var/toggle_lock = FALSE)
+	active = TRUE//Shows up in Overwatch
+	usable = TRUE//Shows up in most backend checks
+	if(toggle_lock)//Allows adding new marines
+		locked = FALSE
+
+/datum/squad/proc/lock_squad(var/toggle_lock = FALSE)
+	active = FALSE
+	usable = FALSE
+	if(toggle_lock)
+		locked = TRUE
+
 
 //below are procs used by acting SL to organize their squad
 /datum/squad/proc/assign_fireteam(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)

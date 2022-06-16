@@ -91,5 +91,5 @@
 
 /mob/living/carbon/Xenomorph/proc/remove_xeno_shield()
 	for (var/datum/xeno_shield/curr_shield in xeno_shields)
-		curr_shield.amount = max(0)
+		del(curr_shield)
 	return

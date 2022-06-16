@@ -86,3 +86,6 @@
   - soundadd: Changed two sounds, pred uncloaking and cloaking now have new sounds
   Morrow:
   - bugfix: Tape Recorders should record again.  Even in storage containers.
+  silencer_pl:
+  - bugfix: The admin supply pod launcher no longer crashes when it tries to display
+      some of its tooltips

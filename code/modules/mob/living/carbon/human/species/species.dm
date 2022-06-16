@@ -94,6 +94,8 @@
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
 
+	var/acid_blood_dodge_chance = 0
+
 	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY
 	var/list/equip_adjust = list()
 	var/list/equip_overlays = list()

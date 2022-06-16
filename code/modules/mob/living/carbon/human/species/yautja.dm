@@ -50,6 +50,8 @@
 	knock_down_reduction = 4
 	stun_reduction = 4
 
+	acid_blood_dodge_chance = 70
+
 		//Set their special slot priority
 
 	slot_equipment_priority= list( \

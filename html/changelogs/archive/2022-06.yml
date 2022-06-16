@@ -82,5 +82,7 @@
   - refactor: Refactored antag vendors to get their lists from the human jobs directly,
       rather than being defined on top of the vendor. Everything should work as expected
       still.
+  Joelampost:
+  - soundadd: Changed two sounds, pred uncloaking and cloaking now have new sounds
   Morrow:
   - bugfix: Tape Recorders should record again.  Even in storage containers.

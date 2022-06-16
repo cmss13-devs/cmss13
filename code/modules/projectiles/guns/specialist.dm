@@ -723,7 +723,7 @@
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
-	name = "\improper M56C 'Command' smartgun"
+	name = "\improper M56C 'Cavalier' smartgun"
 	desc = "The actual firearm in the 4-piece M56C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B."
 	icon_state = "m56c"
 	item_state = "m56c"

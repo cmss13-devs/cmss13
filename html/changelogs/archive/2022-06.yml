@@ -92,6 +92,15 @@
   - bugfix: The admin supply pod launcher no longer crashes when it tries to display
       some of its tooltips
 2022-06-17:
+  Diegoflores31:
+  - rscadd: Adds Nights Vision Goggles, This tool will grant you will the ability
+      to see in the dark at the expense of battery power but be wary since this item
+      is fragile and can break if you are slashed on the head in which case you will
+      need an engineer to repair it using a screwdriver. Can be purchased at SL/RTO
+      squad vendors.
+  - rscadd: Replaced MARSOC NVGs with an unlimited power variant the new standard
+      NVGs.
+  - rscadd: Added a NVG Crate (x3) to ASRS.
   Geevies:
   - rscadd: Added a xeno crit health indicator.
   Git-Nivrak:

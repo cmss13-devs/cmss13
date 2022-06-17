@@ -391,6 +391,11 @@ Additional game mode variables.
 						to_chat(xeno_candidate, message)
 						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
 						return FALSE
+
+				for(var/mob_name in SP.linked_hive.banished_ckeys)
+					if(SP.linked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+						return
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
 					N.close_spawn_windows()
@@ -438,6 +443,10 @@ Additional game mode variables.
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/N = xeno_candidate
 			N.close_spawn_windows()
+		for(var/mob_name in new_xeno.hive.banished_ckeys)
+			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				return
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return 1
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")

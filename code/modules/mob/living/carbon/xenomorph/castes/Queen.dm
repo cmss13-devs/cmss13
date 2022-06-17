@@ -714,6 +714,7 @@
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
+		hive.banished_ckeys   = list() // Reset the banished ckey list
 	return ..()
 
 

@@ -106,6 +106,15 @@
   Git-Nivrak:
   - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
       have passed, The xeno is readmitted or the Queen dies.
+  Jeser:
+  - rscadd: Added transport without Firing Ports Weapons interior.
+  - bugfix: Replaced floor with void in some parts of APC interiors to prevent weeds
+      spreading to non-walkable tiles.
+  - balance: Reduced reload time on Firing Ports Weapons to 10 seconds.
+  - balance: MED APC interior no longer supports surgery, operating table was removed.
+      Back half of interior was rearranged to improve triage capability.
+  - balance: MED APC's revivable bodies slots were increased from 4 to 8 in accordance
+      to the dedicated triage role.
   TotalEpicness:
   - bugfix: Fixed a typo.
   - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing

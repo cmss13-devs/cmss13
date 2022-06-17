@@ -310,7 +310,7 @@
 	throwforce = 0
 	w_class = SIZE_TINY
 	matter = list("plastic" = 5)
-	attack_verb = list("bludgeoned", "whacked","slaped")
+	attack_verb = list("bludgeoned", "whacked", "slapped")
 
 //////////////////////////drinkingglass and shaker//
 //Note by Darem: This code handles the mixing of drinks. New drinks go in three places: In Chemistry-Reagents.dm (for the drink

@@ -289,7 +289,7 @@
 	throwforce = 0
 	w_class = SIZE_TINY
 	matter = list("plastic" = 5)
-	attack_verb = list("bludgeoned", "whacked","slapped")
+	attack_verb = list("bludgeoned", "whacked", "slapped")
 
 /obj/item/reagent_container/food/drinks/cup/attack_self(mob/user)
 	. = ..()

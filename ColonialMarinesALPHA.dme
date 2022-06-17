@@ -377,6 +377,7 @@
 #include "code\datums\emergency_calls\clf.dm"
 #include "code\datums\emergency_calls\colonist.dm"
 #include "code\datums\emergency_calls\cryo_marines.dm"
+#include "code\datums\emergency_calls\cryo_marines_heavy.dm"
 #include "code\datums\emergency_calls\custom.dm"
 #include "code\datums\emergency_calls\deathsquad.dm"
 #include "code\datums\emergency_calls\deus_vult.dm"

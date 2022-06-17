@@ -502,7 +502,7 @@ var/global/list/gear_datums = list()
 
 /datum/gear/broken_nvgs
 	display_name = "Broken Night Vision Goggles"
-	path = /obj/item/prop/helmetgarb/helmet_nvg
+	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic
 	cost = 1
 	slot = WEAR_IN_BACK
 

@@ -169,3 +169,7 @@
   - rscadd: The briefing room now uses squad themed, stationary chairs.
   stanalbatross:
   - rscadd: added two new hud styles - holographic and grey.
+  - qol: when you spawn as a pooled larva, if you have the appropriate pref on, your
+      window will flash. Pref enabled by default.
+  - qol: increased the volume of the notification sound when being spawned as a pooled
+      larva.

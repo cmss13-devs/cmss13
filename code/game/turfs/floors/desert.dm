@@ -103,6 +103,7 @@
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore1"
 	var/toxic = 0
+	supports_surgery = FALSE
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -144,6 +145,8 @@
 /turf/open/desert/waterway
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
+	supports_surgery = FALSE
+
 /turf/open/desert/waterway/desert_waterway
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"

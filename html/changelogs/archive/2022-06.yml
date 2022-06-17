@@ -124,6 +124,8 @@
   - rscadd: Added SensorMate HUD to vehicle crewman vendor for 15 points as well as
       few more items.
   - rscdel: Removed welding protection category in vehicle crewman vendor.
+  - balance: Surgery in vehicle interiors is now only allowed if the patient is located
+      on interior medical tile. Surgery is impossible on water and shuttle tiles.
   Spircen:
   - qol: Skillless autoinjectors now have an different sprite, name and description.
   TotalEpicness:

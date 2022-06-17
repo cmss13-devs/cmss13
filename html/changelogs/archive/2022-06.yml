@@ -91,3 +91,6 @@
   silencer_pl:
   - bugfix: The admin supply pod launcher no longer crashes when it tries to display
       some of its tooltips
+2022-06-17:
+  Youtubeboy139:
+  - imageadd: New grab sprites

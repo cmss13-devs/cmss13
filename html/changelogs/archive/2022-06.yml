@@ -106,6 +106,10 @@
   - rscadd: Crushers now un-dirlock after their charge completes or gets interrupted.
   - bugfix: Praetorians now say dashes instead of dashs when they dash.
   - rscadd: Bumped the body spawn count from corpsespawners to 25, up from 15.
+  - balance: Synths now have a 35% increased acid blood dodge chance.
+  - rscadd: Yautja thralls now refer to the thrallee as a mentor, not a master.
+  - bugfix: Yautja thralls can now properly use their weaponry.
+  - refactor: Refactored a whole lot of Yautja code, some things may be wonky.
   Git-Nivrak:
   - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
       have passed, The xeno is readmitted or the Queen dies.
@@ -123,6 +127,8 @@
   - rscadd: Added SensorMate HUD to vehicle crewman vendor for 15 points as well as
       few more items.
   - rscdel: Removed welding protection category in vehicle crewman vendor.
+  - balance: Surgery in vehicle interiors is now only allowed if the patient is located
+      on interior medical tile. Surgery is impossible on water and shuttle tiles.
   Spircen:
   - qol: Skillless autoinjectors now have an different sprite, name and description.
   TotalEpicness:
@@ -137,6 +143,24 @@
   - qol: Removed the off-hand limitation on attachments
   Youtubeboy139:
   - imageadd: New grab sprites
+  realforest2001:
+  - qol: Renamed marine cryo equipment presets and ERTs to the same standards and
+      reduce confusion.
+  - expansion: Squads now have a number of config variables to determine if they can
+      be transferred into, overwatched, or used by your faction.
+  - rscadd: Echo Squad is now activated from the Groundside Operations console, rather
+      than being active from the start of the round.
+  - rscadd: Squad Leaders now have a HUD icon even when not active squad leader, being
+      assigned as (acting) Squad Leader uses same icon as present.
+  - rscadd: Cryorines are now automatically added to a Reserves squad.
+  - rscadd: MARSOC are now automatically added to a unique squad.
+  - rscadd: Added MARSOC Team Leader and MARSOC Officer roles.
+  - rscadd: Added the option to choose between covert MARSOC and standard ops. This
+      changes if they use codenames or not.
+  - rscadd: MARSOC now have HUD Icons.
+  - rscadd: Squads now have defined types; Squad, Team and Cell. These determine what
+      squad leaders are called in overwatch and the icons used for aSLs in that squad.
+  - code_imp: Working on 1-2 squads for PMCs and 4 for UPP.
   silencer_pl:
   - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.
   silencer_pl, ScarletReign:
@@ -145,3 +169,7 @@
   - rscadd: The briefing room now uses squad themed, stationary chairs.
   stanalbatross:
   - rscadd: added two new hud styles - holographic and grey.
+  - qol: when you spawn as a pooled larva, if you have the appropriate pref on, your
+      window will flash. Pref enabled by default.
+  - qol: increased the volume of the notification sound when being spawned as a pooled
+      larva.

@@ -716,15 +716,15 @@ var/global/image/hud_icon_hudfocus
 	holder.overlays.Cut()
 	if(mobility_aura)
 		if(!hud_icon_hudmove)
-			hud_icon_hudmove = image('icons/mob/hud/hud.dmi', src, "hudmove")
+			hud_icon_hudmove = image('icons/mob/hud/marine_hud.dmi', src, "hudmove")
 		holder.overlays += hud_icon_hudmove
 	if(protection_aura)
 		if(!hud_icon_hudhold)
-			hud_icon_hudhold = image('icons/mob/hud/hud.dmi', src, "hudhold")
+			hud_icon_hudhold = image('icons/mob/hud/marine_hud.dmi', src, "hudhold")
 		holder.overlays += hud_icon_hudhold
 	if(marksman_aura)
 		if(!hud_icon_hudfocus)
-			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
+			hud_icon_hudfocus = image('icons/mob/hud/marine_hud.dmi', src, "hudfocus")
 		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
 

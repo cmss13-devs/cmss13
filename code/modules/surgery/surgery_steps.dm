@@ -58,6 +58,14 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	if(!tool_type) //Can't perform the step.
 		return FALSE
 
+	var/turf/open/T = get_turf(target)
+	if(!istype(user.loc, /turf/open))
+		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
+		return FALSE
+	else if(!T.supports_surgery)
+		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+		return FALSE
+
 	surgery.step_in_progress = TRUE
 
 	var/step_duration = time

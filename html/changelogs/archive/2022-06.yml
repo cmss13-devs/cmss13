@@ -92,5 +92,13 @@
   - bugfix: The admin supply pod launcher no longer crashes when it tries to display
       some of its tooltips
 2022-06-17:
+  TotalEpicness:
+  - bugfix: Fixed a typo.
+  - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing
+      a strain by adding in a component to remove shield.
+  - bugfix: Syndi goggles ( instanced as Bug-B-Gone goggles) no longer display incorrect
+      sprites.
+  - bugfix: The maintenance just below the south upper medbay stairwell now has a
+      door.
   Youtubeboy139:
   - imageadd: New grab sprites

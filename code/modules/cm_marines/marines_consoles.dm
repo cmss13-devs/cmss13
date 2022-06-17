@@ -584,7 +584,7 @@
 	var/list/data = list()
 	var/list/squads = list()
 	for(var/datum/squad/S in RoleAuthority.squads)
-		if(!(S.name == "Root") && !S.locked && S.active && (S.faction == faction))
+		if(S.name != "Root" && !S.locked && S.active && S.faction == faction)
 			var/list/squad = list(list(
 				"name" = S.name,
 				"color" = S.color-1

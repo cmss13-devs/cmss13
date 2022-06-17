@@ -143,6 +143,24 @@
   - qol: Removed the off-hand limitation on attachments
   Youtubeboy139:
   - imageadd: New grab sprites
+  realforest2001:
+  - qol: Renamed marine cryo equipment presets and ERTs to the same standards and
+      reduce confusion.
+  - expansion: Squads now have a number of config variables to determine if they can
+      be transferred into, overwatched, or used by your faction.
+  - rscadd: Echo Squad is now activated from the Groundside Operations console, rather
+      than being active from the start of the round.
+  - rscadd: Squad Leaders now have a HUD icon even when not active squad leader, being
+      assigned as (acting) Squad Leader uses same icon as present.
+  - rscadd: Cryorines are now automatically added to a Reserves squad.
+  - rscadd: MARSOC are now automatically added to a unique squad.
+  - rscadd: Added MARSOC Team Leader and MARSOC Officer roles.
+  - rscadd: Added the option to choose between covert MARSOC and standard ops. This
+      changes if they use codenames or not.
+  - rscadd: MARSOC now have HUD Icons.
+  - rscadd: Squads now have defined types; Squad, Team and Cell. These determine what
+      squad leaders are called in overwatch and the icons used for aSLs in that squad.
+  - code_imp: Working on 1-2 squads for PMCs and 4 for UPP.
   silencer_pl:
   - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.
   silencer_pl, ScarletReign:

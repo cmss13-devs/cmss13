@@ -127,3 +127,5 @@
   - imageadd: New grab sprites
   silencer_pl:
   - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.
+  stanalbatross:
+  - rscadd: added two new hud styles - holographic and grey.

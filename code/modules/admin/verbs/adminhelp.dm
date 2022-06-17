@@ -758,6 +758,17 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	GLOB.admin_help_ui_handler.tgui_interact(mob)
 	to_chat(src, SPAN_BOLDNOTICE("Adminhelp failing to open or work? <a href='?src=[REF(src)];tguiless_adminhelp=1'>Click here</a>"))
 
+/client/verb/mentorhelp()
+	set category = "Admin"
+	set name = "Mentorhelp"
+	if(current_mhelp && current_mhelp.open)
+		if(alert("You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", "Yes", "No") == "Yes")
+			current_mhelp.close(src)
+		return
+	current_mhelp = new(src)
+	if(!current_mhelp.broadcast_request(src))
+		QDEL_NULL(current_mhelp)
+
 /client/verb/view_latest_ticket()
 	set category = "Admin"
 	set name = "View Latest Ticket"

@@ -77,7 +77,6 @@
 	. = ..()
 
 	new /obj/item/clothing/suit/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/reagent_container/glass/canister/oxygen(src)
 	new /obj/item/tool/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
@@ -87,7 +86,6 @@
 	contents = list()
 
 	new /obj/item/clothing/suit/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/device/flashlight(src)
 	new /obj/item/reagent_container/glass/canister/oxygen(src)
 	new /obj/item/tool/extinguisher(src)
@@ -212,7 +210,6 @@
 	. = ..()
 	if(!spawn_empty)
 		new /obj/item/clothing/suit/fire/firefighter(src)
-		new /obj/item/clothing/mask/gas(src)
 		new /obj/item/device/flashlight(src)
 		new /obj/item/reagent_container/glass/canister/oxygen(src)
 		new /obj/item/tool/extinguisher(src)

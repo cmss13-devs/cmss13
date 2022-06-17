@@ -150,7 +150,7 @@
 
 /client/verb/staffwho()
 	set name = "Staffwho"
-	set category = "OOC"
+	set category = "Admin"
 
 	var/dat = "<B>Administration:</B><br>"
 	var/list/mappings

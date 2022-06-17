@@ -559,6 +559,9 @@
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE
+	if(X.hive.hivecore_cooldown)
+		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hivecore, wait [round((HIVECORE_COOLDOWN-world.time)/10)] seconds before you can build it again!"))
+		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
 		if(!choice)
@@ -584,12 +587,13 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
-		return FALSE
+		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
+			return
+		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
+			return
+		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
-		if(choice == XENO_STRUCTURE_CORE)
-			to_chat(X, SPAN_WARNING("A hivecore already exists or has been destroyed too recently!"))
-			return FALSE
 		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
 		return FALSE
 

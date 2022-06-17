@@ -119,10 +119,14 @@
 	last_healed = world.time + heal_interval
 
 /obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(!warn)
-		(alert(M, "Are you sure that you want to destroy the hive core? (5 minute cooldown before you can build another one.)", , "Yes", "No") == "No")
+	if(!warn && world.time < HIVECORE_COOLDOWN_CUTOFF)
+		if((alert(M, "Are you sure that you want to destroy the hive core? (5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
+			return XENO_NO_DELAY_ACTION
 		xeno_message(SPAN_XENOANNOUNCE("[M] is destroying the Hive Core!"), 3, linked_hive.hivenumber)
-		warn = TRUE
+		addtimer(VARSET_CALLBACK(src,warn, FALSE), 15 SECONDS)
+		if(!do_after(M, 10 SECONDS , INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return XENO_NO_DELAY_ACTION
+		Destroy()
 	if(linked_hive)
 		var/current_health = health
 		if(hardcore && HIVE_ALLIED_TO_HIVE(M.hivenumber, linked_hive.hivenumber))
@@ -138,15 +142,20 @@
 		. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/Destroy()
+
 	if(linked_hive)
 		linked_hive.hive_location = null
-		linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
+		if(world.time < HIVECORE_COOLDOWN_CUTOFF && !hardcore)
+			. = ..()
+			return
+		linked_hive.hivecore_cooldown = TRUE
 		xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Hive Core has been destroyed! Vengeance!"), 3, linked_hive.hivenumber)
-		addtimer(CALLBACK(src, .proc/cooldown_done, linked_hive), HIVECORE_COOLDOWN)
+		addtimer(CALLBACK(src, .proc/cooldown_finish, linked_hive), HIVECORE_COOLDOWN)
 		if(hardcore)
 			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another Queen. Additionally, you are unable to heal if your Queen is dead"), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE
 			linked_hive.allow_queen_evolve = FALSE
+			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_POOL] = 0
 			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)
 
@@ -154,10 +163,8 @@
 				qdel(linked_hive.spawn_pool)
 	. = ..()
 
-
-
-/obj/effect/alien/resin/special/pylon/core/proc/cooldown_done(var/datum/hive_status/linked_hive)
-	linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 1
+/obj/effect/alien/resin/special/pylon/core/proc/cooldown_finish(var/datum/hive_status/linked_hive)
+	linked_hive.hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new hivecore can be built!"), 3, linked_hive.hivenumber)
 	return
 

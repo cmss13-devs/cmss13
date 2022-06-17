@@ -3,11 +3,13 @@
 #define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
-#define SQUAD_NAME_1					"Alpha"
-#define SQUAD_NAME_2					"Bravo"
-#define SQUAD_NAME_3					"Charlie"
-#define SQUAD_NAME_4					"Delta"
-#define SQUAD_NAME_5					"Echo"
+#define SQUAD_MARINE_1					"Alpha"
+#define SQUAD_MARINE_2					"Bravo"
+#define SQUAD_MARINE_3					"Charlie"
+#define SQUAD_MARINE_4					"Delta"
+#define SQUAD_MARINE_5					"Echo"
+#define SQUAD_MARINE_CRYO				"Reserves"
+#define SQUAD_MARSOC					"MARSOC"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -71,6 +73,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
 #define JOB_MARSOC						"MARSOC Operator"
+#define JOB_MARSOC_SL					"MARSOC Team Leader"
+#define JOB_MARSOC_CMD					"MARSOC Officer"
+#define JOB_MARSOC_ROLES_LIST			list(JOB_MARSOC, JOB_MARSOC_SL, JOB_MARSOC_CMD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
@@ -217,9 +222,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
 #define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
-
-//antag jobs supported by adaptive antag vendors
-#define VENDOR_ANTAG_JOBS				list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER, JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
 
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"

@@ -79,6 +79,10 @@
 	maptext_label = "Tc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
+	name = "tricordrazine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/quickclot
@@ -133,6 +137,10 @@
 	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+	name = "tramadol EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
@@ -154,6 +162,10 @@
 	maptext_label = "Kl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
+	name = "kelotane EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Kelotane, a common burn medicine. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
@@ -166,6 +178,10 @@
 	maptext_label = "Bi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
+	name = "bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
@@ -191,6 +207,10 @@
 	maptext_label = "!!"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
+	name = "EZ emergency autoinjector (CAUTION)"
+	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in a life-threatening situations. Doesn't require any training to use."
+	icon_state = "emptyskill"
+	item_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()

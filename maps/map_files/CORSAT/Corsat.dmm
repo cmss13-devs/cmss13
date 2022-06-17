@@ -6113,7 +6113,6 @@
 	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)
@@ -18414,7 +18413,6 @@
 	req_one_access_txt = "19;106;102"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)
@@ -18424,7 +18422,6 @@
 	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)
@@ -18435,7 +18432,6 @@
 	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)
@@ -18510,7 +18506,6 @@
 /area/corsat/sigma/south)
 "aXy" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)
@@ -37750,7 +37745,6 @@
 	req_one_access_txt = "19;106;102"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/corsat/sigma/southeast/telecomm)

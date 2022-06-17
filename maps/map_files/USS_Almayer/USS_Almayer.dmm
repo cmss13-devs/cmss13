@@ -722,7 +722,6 @@
 /obj/structure/machinery/computer/aa_console,
 /obj/structure/bed/chair/ob_chair,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
@@ -943,14 +942,12 @@
 "acz" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
 "acA" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -977,7 +974,6 @@
 "acE" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -1121,7 +1117,6 @@
 "acT" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -1154,7 +1149,6 @@
 "acX" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -1162,7 +1156,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -1216,7 +1209,6 @@
 /area/almayer/hallways/aft_hallway)
 "add" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1311,7 +1303,6 @@
 "adr" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1321,7 +1312,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1452,14 +1442,12 @@
 "adP" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
 "adQ" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1508,7 +1496,6 @@
 "adZ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1517,7 +1504,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1536,7 +1522,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1556,7 +1541,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1578,7 +1562,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -1665,13 +1648,11 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
 "aeC" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -1854,7 +1835,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -2027,7 +2007,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -2153,7 +2132,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/starboard_atmos)
@@ -2175,7 +2153,6 @@
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/starboard_atmos)
@@ -2741,7 +2718,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -2803,7 +2779,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -3090,7 +3065,6 @@
 "ait" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -3366,7 +3340,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -3491,7 +3464,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -4213,7 +4185,6 @@
 /obj/item/trash/pistachios,
 /obj/item/tool/screwdriver,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/repair_bay)
@@ -4245,7 +4216,6 @@
 "alP" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/stern_hallway)
@@ -4354,7 +4324,6 @@
 "amj" = (
 /obj/item/reagent_container/food/drinks/cans/souto,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/repair_bay)
@@ -5158,7 +5127,6 @@
 	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -5844,21 +5812,18 @@
 "apW" = (
 /obj/structure/machinery/telecomms/server/presets/common,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "apX" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/engineering,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -5872,20 +5837,17 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "aqa" = (
 /obj/structure/machinery/telecomms/receiver/preset,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "aqb" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -6196,7 +6158,6 @@
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -6834,6 +6795,7 @@
 	pixel_x = -25;
 	req_one_access_txt = "19"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -6865,28 +6827,24 @@
 "asH" = (
 /obj/structure/machinery/telecomms/bus/preset_three,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asI" = (
 /obj/structure/machinery/telecomms/bus/preset_two,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asJ" = (
 /obj/structure/machinery/telecomms/bus/preset_four,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asK" = (
 /obj/structure/machinery/telecomms/bus/preset_one,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -6895,7 +6853,6 @@
 	listening_level = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -6986,7 +6943,6 @@
 "asV" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -7206,7 +7162,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -7478,7 +7433,6 @@
 "aub" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -7550,7 +7504,6 @@
 "aui" = (
 /obj/structure/machinery/telecomms/hub/preset,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -7841,7 +7794,6 @@
 "auJ" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -8033,7 +7985,6 @@
 "avd" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -8178,7 +8129,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -8266,6 +8216,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -8293,28 +8244,24 @@
 "avN" = (
 /obj/structure/machinery/telecomms/processor/preset_two,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avO" = (
 /obj/structure/machinery/telecomms/processor/preset_three,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avP" = (
 /obj/structure/machinery/telecomms/processor/preset_four,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avQ" = (
 /obj/structure/machinery/telecomms/processor/preset_one,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -8323,7 +8270,6 @@
 	listening_level = 6
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -8549,7 +8495,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -8669,7 +8614,6 @@
 /area/almayer/hull/upper_hull/u_m_s)
 "awM" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -8884,7 +8828,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -9046,14 +8989,12 @@
 "axV" = (
 /obj/structure/machinery/telecomms/server/presets/command,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "axW" = (
 /obj/structure/machinery/telecomms/server/presets/security,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -9067,7 +9008,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -9081,7 +9021,6 @@
 "ayb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -9548,7 +9487,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -9844,7 +9782,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -11475,7 +11412,6 @@
 "aEQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -12356,7 +12292,6 @@
 /obj/item/tool/weldpack,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -12744,7 +12679,6 @@
 	pixel_y = 19
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -12756,7 +12690,6 @@
 /area/almayer/evacuation/pod4)
 "aJU" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -14171,7 +14104,6 @@
 "aPm" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -15375,7 +15307,6 @@
 "aTS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/stern_hallway)
@@ -15878,7 +15809,6 @@
 /area/almayer/engineering/port_atmos)
 "aWd" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/stern_hallway)
@@ -15926,7 +15856,6 @@
 "aWn" = (
 /obj/structure/bed/chair/comfy/teal,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -15959,7 +15888,6 @@
 	unslashable = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -15980,7 +15908,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -16170,7 +16097,6 @@
 "aXy" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/port_atmos)
@@ -16211,7 +16137,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/stern_hallway)
@@ -16286,7 +16211,6 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -16302,7 +16226,6 @@
 	unslashable = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -17085,7 +17008,6 @@
 "bbm" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/starboard_hallway)
@@ -17298,7 +17220,6 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -17306,7 +17227,6 @@
 /obj/structure/machinery/constructable_frame,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -17320,7 +17240,6 @@
 "bbZ" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -18894,7 +18813,6 @@
 /area/almayer/squads/alpha)
 "bgV" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
@@ -18904,7 +18822,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
@@ -18941,7 +18858,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -19800,7 +19716,6 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -20024,7 +19939,6 @@
 "blB" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/bravo)
@@ -20757,7 +20671,7 @@
 	},
 /area/almayer/living/briefing)
 "boq" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/comfy/alpha,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -20810,7 +20724,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/squads/req)
@@ -20828,7 +20741,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/req)
@@ -20841,7 +20753,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/squads/req)
@@ -21364,7 +21275,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/prop/helmetgarb/helmet_nvg{
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
 	pixel_x = 5;
 	pixel_y = 7
 	},
@@ -21812,7 +21723,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/req)
@@ -21828,7 +21738,6 @@
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/req)
@@ -22420,7 +22329,6 @@
 "bvd" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -22839,7 +22747,6 @@
 "bwA" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -22941,7 +22848,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/squads/req)
@@ -22956,7 +22862,6 @@
 	id = "supply_elevator_railing"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/req)
@@ -22969,7 +22874,6 @@
 	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/squads/req)
@@ -23612,7 +23516,6 @@
 "bzz" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -23627,7 +23530,6 @@
 	id = "tcomms"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -24463,7 +24365,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bCu" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/alpha{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -24796,14 +24698,12 @@
 /area/almayer/living/cryo_cells)
 "bDO" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
 "bDP" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/alpha{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -25602,7 +25502,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/port_hallway)
@@ -26675,7 +26574,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -27904,7 +27802,6 @@
 "bOq" = (
 /obj/structure/prop/almayer/cannon_cables,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
@@ -28174,14 +28071,12 @@
 /obj/structure/machinery/computer/orbital_cannon_console,
 /obj/structure/bed/chair/ob_chair,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
 "bPo" = (
 /obj/structure/prop/almayer/cannon_cable_connector,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
@@ -28256,7 +28151,6 @@
 /area/almayer/squads/req)
 "bPC" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/weapon_room)
@@ -28456,7 +28350,6 @@
 	pixel_y = 7
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/engine_core)
@@ -28819,7 +28712,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
@@ -29104,7 +28996,6 @@
 "bSG" = (
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/engine_core)
@@ -30540,7 +30431,6 @@
 /area/almayer/living/commandbunks)
 "bYe" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -31107,14 +30997,6 @@
 	tag = "icon-wall12"
 	},
 /area/almayer/evacuation/pod13)
-"caq" = (
-/obj/structure/bed/chair,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "car" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -32564,7 +32446,6 @@
 /area/almayer/hallways/repair_bay)
 "ceU" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/repair_bay)
@@ -33114,7 +32995,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -33190,7 +33070,6 @@
 /area/almayer/lifeboat_pumps/north2)
 "civ" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -33305,7 +33184,6 @@
 /area/almayer/squads/charlie)
 "cje" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
@@ -33315,7 +33193,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
@@ -33693,7 +33570,6 @@
 "ckR" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/delta)
@@ -34896,7 +34772,6 @@
 "cpw" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -34941,6 +34816,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
+"cqr" = (
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -36372,7 +36256,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
@@ -36454,7 +36337,6 @@
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -37279,11 +37161,8 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room/notunnel)
 "dqD" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo,
 /turf/open/floor/almayer{
 	icon_state = "orangefull";
 	tag = "icon-orangefull"
@@ -37557,7 +37436,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -38146,7 +38024,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -38294,7 +38171,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/backpack/satchel,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -38733,7 +38609,6 @@
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -39080,7 +38955,6 @@
 /area/almayer/hallways/vehiclehangar)
 "eed" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/command/computerlab)
@@ -39371,7 +39245,6 @@
 "ejp" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -39406,7 +39279,6 @@
 "ejY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -39793,7 +39665,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
@@ -40064,7 +39935,6 @@
 	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -40399,7 +40269,6 @@
 "eEo" = (
 /obj/item/frame/rack,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/command/computerlab)
@@ -40501,7 +40370,6 @@
 "eGs" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -40998,7 +40866,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -41218,13 +41085,6 @@
 	tag = "icon-wall6"
 	},
 /area/almayer/evacuation/pod13)
-"eWp" = (
-/obj/structure/platform_decoration{
-	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "eWF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -41763,7 +41623,6 @@
 "fhH" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -42191,7 +42050,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -42294,7 +42152,6 @@
 "fvu" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -42343,7 +42200,6 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -42689,7 +42545,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -43876,7 +43731,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -44836,6 +44690,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"gAj" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "gAl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -44898,7 +44761,6 @@
 "gCf" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -45003,7 +44865,6 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -45637,7 +45498,6 @@
 	req_access_txt = "5"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -45810,7 +45670,6 @@
 /obj/structure/machinery/constructable_frame,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -46242,7 +46101,6 @@
 "hki" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -46568,6 +46426,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"htI" = (
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "platform_deco"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "huf" = (
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
@@ -46629,7 +46494,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -47308,7 +47172,6 @@
 /area/almayer/shipboard/brig/main_office)
 "hKQ" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -47713,7 +47576,6 @@
 	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -48431,7 +48293,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -48654,7 +48515,6 @@
 /area/almayer/living/port_emb)
 "isC" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -49192,7 +49052,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/ce_room)
@@ -49476,7 +49335,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "iLh" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/bravo{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -49909,9 +49768,8 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "iXb" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -50137,7 +49995,6 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -51567,7 +51424,6 @@
 "jMm" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -51902,7 +51758,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -51998,7 +51853,6 @@
 	id = "vehicle_elevator_gears"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -52193,7 +52047,6 @@
 "kbH" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -52232,7 +52085,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -52431,6 +52283,16 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"kio" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "kiq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/almayer{
@@ -52523,7 +52385,6 @@
 "kkx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -53006,7 +52867,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/engine_core)
@@ -53154,7 +53014,6 @@
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -53246,7 +53105,6 @@
 "kAm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -53406,7 +53264,6 @@
 "kFe" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -53802,7 +53659,6 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "kOv" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/port_missiles)
@@ -54017,7 +53873,6 @@
 	},
 /obj/structure/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
@@ -54092,7 +53947,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -54130,7 +53984,6 @@
 "kWT" = (
 /obj/structure/machinery/power/apc/almayer/hardened,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -54393,7 +54246,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -54618,7 +54470,6 @@
 "lin" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -54738,6 +54589,7 @@
 	pixel_x = 25;
 	req_one_access_txt = "19"
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -54927,7 +54779,6 @@
 "lqZ" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -55224,7 +55075,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -56080,7 +55930,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -56884,7 +56733,6 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -57807,7 +57655,6 @@
 "mIA" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -58029,7 +57876,6 @@
 "mMu" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -58576,7 +58422,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -59071,7 +58916,6 @@
 "njd" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha)
@@ -59090,7 +58934,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/suit/storage/hazardvest,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -59137,7 +58980,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -59165,17 +59007,6 @@
 	tag = "icon-red (EAST)"
 	},
 /area/almayer/shipboard/brig/cells)
-"nlK" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
 "nlV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -59484,7 +59315,7 @@
 /area/almayer/hallways/vehiclehangar)
 "nrw" = (
 /obj/structure/machinery/vending/cigarette,
-/obj/item/prop/helmetgarb/helmet_nvg{
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
 	pixel_x = -5;
 	pixel_y = 13
 	},
@@ -59744,7 +59575,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -60301,7 +60131,6 @@
 "nJs" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -60312,7 +60141,6 @@
 "nJx" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -60592,7 +60420,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -60686,7 +60513,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -60888,7 +60714,6 @@
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -61077,7 +60902,6 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -61938,7 +61762,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tank/emergency_oxygen/double,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -62277,7 +62100,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -62354,7 +62176,6 @@
 	pixel_x = -24
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -62526,7 +62347,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/ears/earmuffs,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/ce_room)
@@ -63244,7 +63064,6 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -63805,7 +63624,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -63919,7 +63737,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -64019,7 +63836,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -64119,7 +63935,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -65027,7 +64842,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -65186,7 +65000,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -65335,7 +65148,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -65657,7 +65469,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -66156,7 +65967,6 @@
 "qAA" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/ce_room)
@@ -66401,7 +66211,6 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -66805,7 +66614,6 @@
 "qQp" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -67532,7 +67340,6 @@
 "riP" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -68098,7 +67905,6 @@
 "rvT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
@@ -68171,7 +67977,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -68341,7 +68146,6 @@
 "rBH" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -68386,7 +68190,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -68774,7 +68577,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -68861,6 +68663,7 @@
 	pixel_x = 32;
 	pixel_y = -8
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"
@@ -69495,7 +69298,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -69739,7 +69541,6 @@
 "sht" = (
 /obj/structure/machinery/power/apc/almayer/hardened,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -70246,7 +70047,6 @@
 "svp" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -70323,7 +70123,6 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -70414,7 +70213,6 @@
 	req_one_access = list(2,34,30)
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
@@ -70545,7 +70343,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "sCA" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/delta{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -70755,7 +70553,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/lightreplacer,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -70820,7 +70617,6 @@
 	req_access_txt = "19"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -71162,7 +70958,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -71194,14 +70989,12 @@
 "sSc" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
 "sSl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -71470,7 +71263,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -71776,7 +71568,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -71786,7 +71577,6 @@
 	tag = "icon-map-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -72021,7 +71811,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -72253,6 +72042,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"tqd" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "tqe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -72386,7 +72187,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -72581,7 +72381,6 @@
 	tag = "icon-map-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -72716,7 +72515,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/starboard_missiles)
@@ -72916,7 +72714,6 @@
 	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -73701,6 +73498,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"tXb" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "tXi" = (
 /obj/structure/machinery/conveyor_switch{
 	id = "gym_2";
@@ -73869,7 +73676,6 @@
 	},
 /obj/item/bedsheet/orange,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -73884,7 +73690,6 @@
 	pixel_y = 11
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -74344,7 +74149,6 @@
 "umC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -74612,7 +74416,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -74788,7 +74591,6 @@
 "uvk" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -75083,11 +74885,10 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "uAa" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
 	tag = "icon-emeraldfull"
@@ -75140,7 +74941,6 @@
 /area/almayer/lifeboat_pumps/north1)
 "uBn" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/vehiclehangar)
@@ -75307,7 +75107,6 @@
 "uGa" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -75342,7 +75141,6 @@
 	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -75358,7 +75156,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -75575,9 +75372,8 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/port_missiles)
 "uMk" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -75961,14 +75757,12 @@
 "uTY" = (
 /obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
 "uUe" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -76171,7 +75965,6 @@
 	},
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -76290,13 +76083,11 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
 "vcE" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -77746,7 +77537,6 @@
 	tag = "icon-intact-supply (SOUTHEAST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -77777,7 +77567,7 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "vGG" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/comfy/bravo,
 /turf/open/floor/almayer{
 	icon_state = "orangefull";
 	tag = "icon-orangefull"
@@ -78073,7 +77863,6 @@
 	pixel_y = -3
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -78336,7 +78125,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
 "vUe" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/charlie{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -78786,7 +78575,6 @@
 "wdf" = (
 /obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -78834,7 +78622,6 @@
 	pixel_y = 11
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -79084,7 +78871,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -79745,7 +79531,6 @@
 	},
 /obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -79865,6 +79650,18 @@
 	tag = "icon-green (EAST)"
 	},
 /area/almayer/hallways/port_hallway)
+"wBW" = (
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/almayer/living/briefing)
 "wBY" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -79919,14 +79716,12 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
 "wDl" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -80218,7 +80013,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -80934,7 +80728,6 @@
 	pixel_y = 17
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -81127,7 +80920,6 @@
 "xbN" = (
 /obj/structure/machinery/telecomms/processor/preset_four,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
@@ -81204,7 +80996,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/engine_core)
@@ -81361,7 +81152,6 @@
 "xhn" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -81461,7 +81251,6 @@
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
@@ -82192,7 +81981,6 @@
 "xxZ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -82279,19 +82067,8 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "xAt" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
-"xAu" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
@@ -83044,6 +82821,13 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/perma)
+"xQV" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer{
+	icon_state = "ai_floors";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/airoom)
 "xRc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -83068,7 +82852,6 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
@@ -83119,20 +82902,9 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"xRJ" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -83296,7 +83068,6 @@
 	pixel_x = -17
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -83510,7 +83281,6 @@
 "xYQ" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
@@ -83719,7 +83489,6 @@
 	tag = "icon-map-supply (NORTH)"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
@@ -83944,10 +83713,19 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/morgue)
+"yji" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull/u_m_p)
 "yjM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
@@ -84014,7 +83792,6 @@
 "ylu" = (
 /obj/item/tool/weldingtool,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/almayer/command/computerlab)
@@ -113342,7 +113119,7 @@ adc
 adc
 adc
 pOZ
-wKn
+yji
 qVM
 gMA
 qVM
@@ -119517,7 +119294,7 @@ kbV
 uMk
 uMk
 uMk
-uMk
+wBW
 bgO
 beH
 fGh
@@ -119712,7 +119489,7 @@ beH
 beH
 duv
 beH
-eWp
+htI
 cCD
 shp
 oAB
@@ -119914,16 +119691,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 xRw
 bPO
 whA
-xAu
-xAu
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 cab
 bdd
@@ -120117,16 +119894,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 viO
 gMU
 ksN
-xAu
-xAu
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 bqZ
 bdd
@@ -120317,19 +120094,19 @@ aLG
 bdg
 bqZ
 aXc
-caq
-caq
-dRT
-dqD
 dqD
 dqD
 dRT
-nlK
-nlK
-nlK
+kio
+kio
+kio
 dRT
 uAa
 uAa
+uAa
+dRT
+tXb
+tXb
 fOk
 bqZ
 bdg
@@ -120523,16 +120300,16 @@ beH
 vGG
 vGG
 beH
-xRJ
-xRJ
-xRJ
-beH
-xAu
-xAu
-xAu
+cqr
+cqr
+cqr
 beH
 xAt
 xAt
+xAt
+beH
+gAj
+tqd
 beH
 bqZ
 bdg
@@ -121747,10 +121524,10 @@ moQ
 hGO
 fvf
 uNM
-xAu
-xAu
-xAu
-xAu
+xAt
+xAt
+xAt
+xAt
 nNH
 bqZ
 bdg
@@ -122049,7 +121826,7 @@ lin
 oJR
 aqU
 asD
-asG
+xQV
 avK
 cck
 aCZ
@@ -122252,7 +122029,7 @@ isC
 isC
 tFe
 lmz
-asG
+xQV
 rNF
 cck
 jVE
@@ -122753,10 +122530,10 @@ bbh
 bdd
 bDT
 tHv
-xRJ
-xRJ
-xRJ
-xRJ
+cqr
+cqr
+cqr
+cqr
 tSB
 moQ
 caO

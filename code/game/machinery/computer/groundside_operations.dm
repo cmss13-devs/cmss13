@@ -23,6 +23,7 @@
 	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
 	var/tacmap_additional_parameter = null
 	var/minimap_name = "Marine Minimap"
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -52,6 +53,10 @@
 	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
+	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+	if(!echo_squad.active && faction == FACTION_MARINE)
+		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
+		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
 		dat += "<BR>Primary LZ <BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
@@ -255,7 +260,7 @@
 		if("pick_squad")
 			var/list/squad_list = list()
 			for(var/datum/squad/S in RoleAuthority.squads)
-				if(S.usable)
+				if(S.active && S.faction == faction)
 					squad_list += S.name
 
 			var/name_sel = tgui_input_list(usr, "Which squad would you like to look at?", "Pick Squad", squad_list)
@@ -287,6 +292,18 @@
 				else
 					cam = new_cam
 					usr.reset_view(cam)
+
+		if("activate_echo")
+			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
+			if(!reason)
+				return
+			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") == "No") return
+			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+			if(!echo_squad)
+				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
+				return
+			echo_squad.engage_squad(TRUE)
+			message_staff("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")
 			attack_hand(usr)

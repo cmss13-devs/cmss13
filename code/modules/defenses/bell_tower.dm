@@ -175,10 +175,6 @@
 	. = ..()
 	animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
 
-/obj/structure/machinery/defenses/bell_tower/cloaker/mob_crossed(var/turf/location)
-	/// PLACEHOLDER
-	return
-
 
 
 /obj/item/storage/backpack/imp

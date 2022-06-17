@@ -106,6 +106,12 @@
 /datum/custom_hud/bronze
 	ui_style_icon	= 'icons/mob/hud/human_bronze.dmi'
 
+/datum/custom_hud/holographic
+	ui_style_icon	= 'icons/mob/hud/human_holo.dmi'
+
+/datum/custom_hud/grey
+	ui_style_icon	= 'icons/mob/hud/human_grey.dmi'
+
 /datum/custom_hud/dark
 	ui_style_icon	= 'icons/mob/hud/human_dark.dmi'
 

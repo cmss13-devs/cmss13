@@ -37,6 +37,12 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("lime comfy chair", /obj/structure/bed/chair/comfy/lime, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		new/datum/stack_recipe("teal comfy chair", /obj/structure/bed/chair/comfy/teal, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		), 2), \
+	new/datum/stack_recipe_list("squad chairs", list( \
+		new/datum/stack_recipe("alpha squad chair", /obj/structure/bed/chair/comfy/alpha, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("bravo squad chair", /obj/structure/bed/chair/comfy/bravo, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("charlie squad chair", /obj/structure/bed/chair/comfy/charlie, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("delta squad chair", /obj/structure/bed/chair/comfy/delta, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		), 2), \
 	new/datum/stack_recipe_list("office chairs",list( \
 		new/datum/stack_recipe("dark office chair", /obj/structure/bed/chair/office/dark, 5, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		new/datum/stack_recipe("light office chair", /obj/structure/bed/chair/office/light, 5, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \

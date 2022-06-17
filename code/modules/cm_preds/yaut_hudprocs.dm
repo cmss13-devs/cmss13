@@ -79,7 +79,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	// List all possible preys
@@ -124,8 +124,9 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
+
 	if (alert(usr, "Are you sure you want to abandon this prey?", "Remove from Hunt:", "Yes", "No") != "Yes")
 		return
 	var/mob/living/carbon/prey = hunter_data.prey
@@ -139,13 +140,12 @@
 
 
 /mob/living/carbon/human/proc/mark_honored()
-
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -177,13 +177,12 @@
 
 
 /mob/living/carbon/human/proc/unmark_honored()
-
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -220,7 +219,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -260,7 +259,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -301,7 +300,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -332,7 +331,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
@@ -367,11 +366,11 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	if(hunter_data.thrall)
-		to_chat(src, "You already have a thrall!")
+		to_chat(src, SPAN_WARNING("You already have a thrall."))
 		return
 
 	// List all possible targets
@@ -410,7 +409,7 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	// List all possible targets

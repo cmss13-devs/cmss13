@@ -456,9 +456,11 @@
 	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
 	if(!input)
 		return
-	var/customname = input(usr, "Pick a title for the announcement. Cancel for \"USCM Update\" title.", "Title") as text|null
+	var/customname = input(usr, "Pick a title for the announcement. Confirm empty text for \"[faction] Update\" title.", "Title") as text|null
+	if(isnull(customname))
+		return
 	if(!customname)
-		customname = "USCM Update"
+		customname = "[faction] Update"
 	if(faction == FACTION_MARINE)
 		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 			if(!(C.inoperable()))

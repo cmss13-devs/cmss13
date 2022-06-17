@@ -660,7 +660,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tanker
 	name = "\improper M50 tanker helmet"
-	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle."
+	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."
 	icon_state = "tanker_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -673,6 +673,55 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
+
+	var/protection_on = FALSE
+	///To remember the helmet's map variant-adjusted icon state
+	var/base_icon_state
+
+	actions_types = list(/datum/action/item_action/toggle)
+	vision_impair = VISION_IMPAIR_NONE
+
+/obj/item/clothing/head/helmet/marine/tanker/Initialize()
+	. = ..()
+	base_icon_state = icon_state
+
+/obj/item/clothing/head/helmet/marine/tanker/attack_self(mob/user)
+	..()
+	toggle()
+
+/obj/item/clothing/head/helmet/marine/tanker/verb/toggle()
+	set category = "Object"
+	set name = "Toggle Tanker Helmet"
+	set src in usr
+
+	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+		if(protection_on)
+			vision_impair = VISION_IMPAIR_NONE
+			flags_inventory &= ~(COVEREYES|COVERMOUTH)
+			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
+			icon_state = base_icon_state
+			eye_protection = 0
+			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
+		else
+			vision_impair = VISION_IMPAIR_MAX
+			flags_inventory |= COVEREYES|COVERMOUTH
+			flags_inv_hide |= HIDEEYES|HIDEFACE
+			icon_state = "[base_icon_state]_on"
+			eye_protection = 2
+			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
+
+		protection_on = !protection_on
+
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			if(H.head == src)
+				H.update_tint()
+
+		update_clothing_icon()	//so our mob-overlays update
+
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"

@@ -282,7 +282,7 @@
 		icon_state = "water_cup_e"
 
 /obj/item/reagent_container/food/drinks/cup
-	name = "Plastic Cup"
+	name = "plastic cup"
 	desc = "A generic red cup. Beer pong, anyone?"
 	icon = 'icons/obj/items/cup.dmi'
 	icon_state = "solocup"

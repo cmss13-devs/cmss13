@@ -453,8 +453,8 @@
 	if(!WT.isOn())
 		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return
-	if(!(WT.remove_fuel(1, user)))
-		to_chat(user, SPAN_WARNING("You need more welding fuel!."))
+	if(!(WT.remove_fuel(0, user)))
+		to_chat(user, SPAN_WARNING("You need more welding fuel!"))
 		return
 
 	playsound(src, 'sound/items/Welder.ogg', 25, 1)

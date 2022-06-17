@@ -211,7 +211,7 @@
 			if(!WT.isOn())
 				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 				return
-			if(!WT.remove_fuel(1 ,user))
+			if(!WT.remove_fuel(0 ,user))
 				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 				return
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
@@ -233,7 +233,7 @@
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
-		if(!WT.remove_fuel(1, user))
+		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)

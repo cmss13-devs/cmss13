@@ -120,6 +120,8 @@
   - rscadd: Added SensorMate HUD to vehicle crewman vendor for 15 points as well as
       few more items.
   - rscdel: Removed welding protection category in vehicle crewman vendor.
+  Spircen:
+  - qol: Skillless autoinjectors now have an different sprite, name and description.
   TotalEpicness:
   - bugfix: Fixed a typo.
   - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing

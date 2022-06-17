@@ -134,5 +134,9 @@
   - imageadd: New grab sprites
   silencer_pl:
   - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.
+  silencer_pl, ScarletReign:
+  - imageadd: Added squad color themed comfy chair variants.
+  - rscadd: Squad themed chairs can now be constructed for 2 metal each.
+  - rscadd: The briefing room now uses squad themed, stationary chairs.
   stanalbatross:
   - rscadd: added two new hud styles - holographic and grey.

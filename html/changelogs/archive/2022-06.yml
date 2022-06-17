@@ -115,6 +115,11 @@
       Back half of interior was rearranged to improve triage capability.
   - balance: MED APC's revivable bodies slots were increased from 4 to 8 in accordance
       to the dedicated triage role.
+  - rscadd: Added toggleable inbuilt welding visor to M50 Tanker helmet. Works exactly
+      like one in the M10 technician helmet.
+  - rscadd: Added SensorMate HUD to vehicle crewman vendor for 15 points as well as
+      few more items.
+  - rscdel: Removed welding protection category in vehicle crewman vendor.
   TotalEpicness:
   - bugfix: Fixed a typo.
   - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing

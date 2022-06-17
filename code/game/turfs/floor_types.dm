@@ -4,16 +4,88 @@
 
 //Floors
 
-/turf/open/floor/almayer
-	icon = 'icons/turf/almayer.dmi'
-	icon_state = "default"
-
-
 /turf/open/floor/plating
 	name = "plating"
 	icon_state = "plating"
-	floor_tile = null
-	intact_tile = 0
+	intact_tile = FALSE
+	tool_flags = NO_FLAGS
+
+/turf/open/floor/plating/is_plating()
+	return TRUE
+
+/turf/open/floor/plating/is_plasteel_floor()
+	return FALSE
+
+/turf/open/floor/plating/is_light_floor()
+	return FALSE
+
+/turf/open/floor/plating/is_grass_floor()
+	return FALSE
+
+/turf/open/floor/plating/is_wood_floor()
+	return FALSE
+
+/turf/open/floor/plating/is_carpet_floor()
+	return FALSE
+
+
+/turf/open/floor/plating/attackby(obj/item/C, mob/user)
+	if(istype(C, /obj/item/stack/rods))
+		var/obj/item/stack/rods/R = C
+		if(R.get_amount() < 2)
+			to_chat(user, SPAN_WARNING("You need more rods."))
+			return
+		to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
+		var/current_type = type
+		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && current_type == type)
+			if(!R)
+				return
+			if(R.use(2))
+				ChangeTurf(/turf/open/floor/engine)
+				playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
+		return
+	if(istype(C, /obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/coil = C
+		coil.turf_place(src, user)
+		return
+	if(istype(C, /obj/item/tool/weldingtool))
+		var/obj/item/tool/weldingtool/welder = C
+		if(welder.isOn() && (broken || burnt))
+			if(welder.remove_fuel(0, user))
+				to_chat(user, SPAN_WARNING("You fix some dents on the broken plating."))
+				playsound(src, 'sound/items/Welder.ogg', 25, 1)
+				icon_state = "plating"
+				burnt = FALSE
+				broken = FALSE
+			else
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+		return
+	if(istype(C, /obj/item/stack/tile))
+		if(broken || burnt)
+			to_chat(user, SPAN_NOTICE("This section is too damaged to support a tile. Use a welder to fix the damage."))
+			return
+		var/obj/item/stack/tile/T = C
+		if(T.get_amount() < 1)
+			return
+		playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
+		T.use(1)
+		T.build(src)
+		return
+	if(istype(C, /obj/item/stack/catwalk))
+		if(broken || burnt)
+			to_chat(user, SPAN_NOTICE("This section is too damaged to support a catwalk. Use a welder to fix the damage."))
+			return
+		var/obj/item/stack/catwalk/T = C
+		if(T.get_amount() < 1)
+			return
+		playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
+		T.use(1)
+		T.build(src)
+		return
+	return ..()
+
+/turf/open/floor/plating/make_plating()
+	return
 
 /turf/open/floor/plating/prison
 	icon = 'icons/turf/floors/prison.dmi'
@@ -38,54 +110,55 @@
 	name = "plating"
 
 /turf/open/floor/plating/plating_catwalk
+	name = "catwalk"
+	desc = "Cats really don't like these things."
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
-	name = "catwalk"
-	desc = "Cats really don't like these things."
-	var/covered = 1 //1 for theres the cover, 0 if there isn't.
+	var/covered = TRUE
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
-		. = ..()
+	. = ..()
 
-		icon_state = base_state
-		update_turf_overlay()
+	icon_state = base_state
+	update_icon()
 
-/turf/open/floor/plating/plating_catwalk/proc/update_turf_overlay()
-	var/image/I = image(icon, src, "catwalk", CATWALK_LAYER)
-	switch(covered)
-		if(0)
-			overlays -= I
-		if(1) overlays += I
+/turf/open/floor/plating/plating_catwalk/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "catwalk", CATWALK_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
-	..()
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
-			var/obj/item/stack/catwalk/R = new(usr.loc)
+			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
-			covered = 0
-			update_turf_overlay()
+			covered = FALSE
+			to_chat(user, SPAN_WARNING("You remove the top of the catwalk."))
+			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
+			update_icon()
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
-			covered = 1
-			update_turf_overlay()
+			covered = TRUE
+			to_chat(user, SPAN_WARNING("You replace the top of the catwalk."))
+			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
+			update_icon()
 			return
-	..()
+	return ..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile()
 	if(covered)
 		covered = 0
-		update_turf_overlay()
+		update_icon()
 	..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile_to_plating()
 	if(covered)
 		covered = 0
-		update_turf_overlay()
+		update_icon()
 	..()
 
 /turf/open/floor/plating/plating_catwalk/prison
@@ -115,12 +188,10 @@
 	desc = "Cats really don't like these things."
 
 
-
-
-
-
-
-
+/turf/open/floor/almayer
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "default"
+	plating_type = /turf/open/floor/plating/almayer
 
 //Cargo elevator
 /turf/open/floor/almayer/empty
@@ -250,29 +321,20 @@
 /turf/open/floor/icefloor
 	icon_state = "floor"
 	name = "ice colony floor"
+	plating_type = /turf/open/floor/plating/icefloor
 
 /turf/open/floor/icefloor/Initialize(mapload, ...)
 	. = ..()
 	name = "floor"
 
-
-/turf/open/floor/light
-	name = "Light floor"
-	luminosity = 5
-	icon_state = "light_on"
-
-/turf/open/floor/light/Initialize(mapload, ...)
-	var/n = name //just in case commands rename it in the ..() call
-	. = ..()
-	floor_tile = new/obj/item/stack/tile/light
-	update_icon()
-	name = n
-
-
 /turf/open/floor/wood
 	name = "floor"
 	icon_state = "wood"
-	floor_tile = new/obj/item/stack/tile/wood
+	tile_type = /obj/item/stack/tile/wood
+	tool_flags = BREAK_CROWBAR|REMOVE_SCREWDRIVER
+
+/turf/open/floor/wood/is_wood_floor()
+	return TRUE
 
 /turf/open/floor/wood/ship
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
@@ -352,12 +414,12 @@
 
 
 /turf/open/floor/grass
-	name = "Grass patch"
+	name = "grass patch"
 	icon_state = "grass1"
+	tile_type = /obj/item/stack/tile/grass
 
 /turf/open/floor/grass/Initialize(mapload, ...)
 	. = ..()
-	floor_tile = new/obj/item/stack/tile/grass
 	icon_state = "grass[pick("1","2","3","4")]"
 	update_icon()
 	return INITIALIZE_HINT_LATELOAD
@@ -369,13 +431,26 @@
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
 
+/turf/open/floor/grass/is_grass_floor()
+	return TRUE
+
+/turf/open/floor/grass/update_icon()
+	. = ..()
+	if(!broken && !burnt)
+		if(!(icon_state in list("grass1", "grass2", "grass3", "grass4")))
+			icon_state = "grass[pick("1", "2", "3", "4")]"
+
+/turf/open/floor/grass/make_plating()
+	return
+
 /turf/open/floor/carpet
-	name = "Carpet"
+	name = "carpet"
 	icon_state = "carpet"
+	tile_type = /obj/item/stack/tile/carpet
+	tool_flags = REMOVE_SCREWDRIVER
 
 /turf/open/floor/carpet/Initialize(mapload, ...)
 	. = ..()
-	floor_tile = new/obj/item/stack/tile/carpet
 	if(!icon_state)
 		icon_state = "carpet"
 	return INITIALIZE_HINT_LATELOAD
@@ -388,11 +463,67 @@
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
 
+/turf/open/floor/carpet/is_carpet_floor()
+	return TRUE
+
+/turf/open/floor/carpet/update_icon()
+	. = ..()
+	if(!broken && !burnt)
+		if(icon_state != "carpetsymbol")
+			var/connectdir = 0
+			for(var/direction in cardinal)
+				if(istype(get_step(src, direction), /turf/open/floor))
+					var/turf/open/floor/FF = get_step(src, direction)
+					if(FF.is_carpet_floor())
+						connectdir |= direction
+
+			//Check the diagonal connections for corners, where you have, for example, connections both north and east
+			//In this case it checks for a north-east connection to determine whether to add a corner marker or not.
+			var/diagonalconnect = 0 //1 = NE; 2 = SE; 4 = NW; 8 = SW
+
+			//Northeast
+			if(connectdir & NORTH && connectdir & EAST)
+				if(istype(get_step(src,NORTHEAST),/turf/open/floor))
+					var/turf/open/floor/FF = get_step(src,NORTHEAST)
+					if(FF.is_carpet_floor())
+						diagonalconnect |= 1
+
+			//Southeast
+			if(connectdir & SOUTH && connectdir & EAST)
+				if(istype(get_step(src,SOUTHEAST),/turf/open/floor))
+					var/turf/open/floor/FF = get_step(src,SOUTHEAST)
+					if(FF.is_carpet_floor())
+						diagonalconnect |= 2
+
+			//Northwest
+			if(connectdir & NORTH && connectdir & WEST)
+				if(istype(get_step(src,NORTHWEST),/turf/open/floor))
+					var/turf/open/floor/FF = get_step(src,NORTHWEST)
+					if(FF.is_carpet_floor())
+						diagonalconnect |= 4
+
+			//Southwest
+			if(connectdir & SOUTH && connectdir & WEST)
+				if(istype(get_step(src,SOUTHWEST),/turf/open/floor))
+					var/turf/open/floor/FF = get_step(src,SOUTHWEST)
+					if(FF.is_carpet_floor())
+						diagonalconnect |= 8
+
+			icon_state = "carpet[connectdir]-[diagonalconnect]"
+
+/turf/open/floor/carpet/make_plating()
+	for(var/direction in alldirs)
+		if(istype(get_step(src, direction), /turf/open/floor))
+			var/turf/open/floor/FF = get_step(src,direction)
+			FF.update_icon() // So siding get updated properly
+	return ..()
+
 // Start Prison tiles
 
 /turf/open/floor/prison
 	icon = 'icons/turf/floors/prison.dmi'
 	icon_state = "floor"
+	plating_type = /turf/open/floor/plating/prison
 
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
@@ -407,14 +538,6 @@
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_floor"
 
-// temporary fix for broken icon until somebody gets around to make these player-buildable
-/turf/open/floor/mech_bay_recharge_floor/attackby(obj/item/C as obj, mob/user as mob)
-	..()
-	if(floor_tile)
-		icon_state = "recharge_floor"
-	else
-		icon_state = "support_lattice"
-
 /turf/open/floor/mech_bay_recharge_floor/break_tile()
 	if(broken)
 		return
@@ -428,6 +551,10 @@
 /turf/open/floor/interior/wood
 	name = "wooden floor"
 	icon_state = "oldwood1"
+	tile_type = /obj/item/stack/tile/wood
+
+/turf/open/floor/interior/wood/is_wood_floor()
+	return TRUE
 
 /turf/open/floor/interior/wood/alt
 	icon_state = "oldwood2"

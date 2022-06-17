@@ -618,6 +618,7 @@
 	icon_state = "floor"
 	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = FALSE
+	supports_surgery = FALSE
 
 /turf/open/shuttle/dropship
 	name = "floor"
@@ -657,7 +658,6 @@
 	name = "floor"
 	icon = 'icons/turf/vehicle_interior.dmi'
 	icon_state = "floor_0"
-	supports_surgery = FALSE
 
 //vehicle interior floors
 /turf/open/shuttle/vehicle/med

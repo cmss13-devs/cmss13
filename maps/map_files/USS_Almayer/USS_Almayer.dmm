@@ -20671,7 +20671,7 @@
 	},
 /area/almayer/living/briefing)
 "boq" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/comfy/alpha,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -24365,7 +24365,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bCu" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/alpha{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -24702,9 +24702,8 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bDP" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/alpha{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -30998,14 +30997,6 @@
 	tag = "icon-wall12"
 	},
 /area/almayer/evacuation/pod13)
-"caq" = (
-/obj/structure/bed/chair,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "car" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -34825,6 +34816,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
+"cqr" = (
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -37161,11 +37161,8 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room/notunnel)
 "dqD" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo,
 /turf/open/floor/almayer{
 	icon_state = "orangefull";
 	tag = "icon-orangefull"
@@ -41088,13 +41085,6 @@
 	tag = "icon-wall6"
 	},
 /area/almayer/evacuation/pod13)
-"eWp" = (
-/obj/structure/platform_decoration{
-	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "eWF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -44700,6 +44690,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"gAj" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "gAl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -46424,6 +46423,13 @@
 /obj/structure/machinery/door/window/ultra{
 	dir = 8;
 	req_access_txt = "19"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
+"htI" = (
+/obj/structure/platform{
+	dir = 1;
+	icon_state = "platform_deco"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
@@ -49329,7 +49335,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "iLh" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/bravo{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -49762,9 +49768,8 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "iXb" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -52278,6 +52283,16 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"kio" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "kiq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/almayer{
@@ -58992,17 +59007,6 @@
 	tag = "icon-red (EAST)"
 	},
 /area/almayer/shipboard/brig/cells)
-"nlK" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
 "nlV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -70339,7 +70343,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "sCA" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/delta{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -72038,6 +72042,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"tqd" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "tqe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -73482,6 +73498,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"tXb" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "tXi" = (
 /obj/structure/machinery/conveyor_switch{
 	id = "gym_2";
@@ -74859,11 +74885,10 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "uAa" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
 	tag = "icon-emeraldfull"
@@ -75347,9 +75372,8 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/port_missiles)
 "uMk" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -77543,7 +77567,7 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "vGG" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/comfy/bravo,
 /turf/open/floor/almayer{
 	icon_state = "orangefull";
 	tag = "icon-orangefull"
@@ -78101,7 +78125,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
 "vUe" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/charlie{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -79626,6 +79650,18 @@
 	tag = "icon-green (EAST)"
 	},
 /area/almayer/hallways/port_hallway)
+"wBW" = (
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy/delta{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/almayer/living/briefing)
 "wBY" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -82031,19 +82067,8 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "xAt" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
-"xAu" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
@@ -82880,16 +82905,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"xRJ" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -119279,7 +119294,7 @@ kbV
 uMk
 uMk
 uMk
-uMk
+wBW
 bgO
 beH
 fGh
@@ -119474,7 +119489,7 @@ beH
 beH
 duv
 beH
-eWp
+htI
 cCD
 shp
 oAB
@@ -119676,16 +119691,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 xRw
 bPO
 whA
-xAu
-xAu
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 cab
 bdd
@@ -119879,16 +119894,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 viO
 gMU
 ksN
-xAu
-xAu
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 bqZ
 bdd
@@ -120079,19 +120094,19 @@ aLG
 bdg
 bqZ
 aXc
-caq
-caq
-dRT
-dqD
 dqD
 dqD
 dRT
-nlK
-nlK
-nlK
+kio
+kio
+kio
 dRT
 uAa
 uAa
+uAa
+dRT
+tXb
+tXb
 fOk
 bqZ
 bdg
@@ -120285,16 +120300,16 @@ beH
 vGG
 vGG
 beH
-xRJ
-xRJ
-xRJ
-beH
-xAu
-xAu
-xAu
+cqr
+cqr
+cqr
 beH
 xAt
 xAt
+xAt
+beH
+gAj
+tqd
 beH
 bqZ
 bdg
@@ -121509,10 +121524,10 @@ moQ
 hGO
 fvf
 uNM
-xAu
-xAu
-xAu
-xAu
+xAt
+xAt
+xAt
+xAt
 nNH
 bqZ
 bdg
@@ -122515,10 +122530,10 @@ bbh
 bdd
 bDT
 tHv
-xRJ
-xRJ
-xRJ
-xRJ
+cqr
+cqr
+cqr
+cqr
 tSB
 moQ
 caO

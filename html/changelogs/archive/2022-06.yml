@@ -102,3 +102,5 @@
       door.
   Youtubeboy139:
   - imageadd: New grab sprites
+  silencer_pl:
+  - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.

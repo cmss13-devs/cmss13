@@ -103,6 +103,8 @@
   - rscadd: Added a NVG Crate (x3) to ASRS.
   Geevies:
   - rscadd: Added a xeno crit health indicator.
+  - rscadd: Crushers now un-dirlock after their charge completes or gets interrupted.
+  - bugfix: Praetorians now say dashes instead of dashs when they dash.
   Git-Nivrak:
   - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
       have passed, The xeno is readmitted or the Queen dies.

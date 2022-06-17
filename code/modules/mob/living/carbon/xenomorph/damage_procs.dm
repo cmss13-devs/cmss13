@@ -264,7 +264,6 @@
 			if(victim.loc == loc) splash_chance += 30 //Same tile? BURN
 			splash_chance += distance * -15
 			if(victim.species?.acid_blood_dodge_chance)
-				message_admins(victim.species.acid_blood_dodge_chance)
 				splash_chance -= victim.species.acid_blood_dodge_chance
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!

@@ -451,7 +451,7 @@
 
 /turf/closed/wall/proc/try_weldingtool_deconstruction(obj/item/tool/weldingtool/WT, mob/user)
 	if(!WT.isOn())
-		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!."))
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return
 	if(!(WT.remove_fuel(1, user)))
 		to_chat(user, SPAN_WARNING("You need more welding fuel!."))

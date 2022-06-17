@@ -209,7 +209,7 @@
 		if(istype(W, /obj/item/tool/weldingtool))
 			var/obj/item/tool/weldingtool/WT = W
 			if(!WT.isOn())
-				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!."))
+				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 				return
 			if(!WT.remove_fuel(1 ,user))
 				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
@@ -231,7 +231,7 @@
 	else if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!."))
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 		if(!WT.remove_fuel(1, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))

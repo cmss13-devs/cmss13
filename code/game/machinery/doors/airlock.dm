@@ -575,7 +575,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(not_weldable)
 			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than [W] to weld!"))
 			return
-
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+			return
 		if(W.remove_fuel(0,user))
 			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with [W]."), \
 			SPAN_NOTICE("You start working on \the [src] with [W]."), \

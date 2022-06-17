@@ -777,6 +777,7 @@
 	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL
+	ignore_z = TRUE
 
 /obj/item/device/radio/headset/almayer/marsoc
 	name = "USCM MARSOC headset"
@@ -785,6 +786,7 @@
 	frequency = MARSOC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
+	ignore_z = TRUE
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

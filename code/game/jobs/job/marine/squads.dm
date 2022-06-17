@@ -503,7 +503,13 @@
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)
 			if(!leader_killed)
-				old_lead.comm_title = "RFN"
+				old_lead.comm_title = "Sgt"
+		if(JOB_MARSOC)
+			old_lead.comm_title = "Op."
+		if(JOB_MARSOC_SL)
+			old_lead.comm_title = "TL."
+		if(JOB_MARSOC_CMD)
+			old_lead.comm_title = "CMD."
 		else
 			old_lead.comm_title = "RFN"
 

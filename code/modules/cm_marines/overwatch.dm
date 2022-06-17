@@ -455,7 +455,7 @@
 				else
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
-						if((S.active && S.faction == faction) && !S.overwatch_officer && (S.name != "Root"))
+						if(S.active && !S.overwatch_officer && S.faction == faction && S.name != "Root")
 							squad_list += S.name
 
 					var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Claim Squad", squad_list)

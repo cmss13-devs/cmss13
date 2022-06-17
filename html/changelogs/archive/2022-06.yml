@@ -130,6 +130,8 @@
       sprites.
   - bugfix: The maintenance just below the south upper medbay stairwell now has a
       door.
+  TotalEpicness5:
+  - qol: Removed the off-hand limitation on attachments
   Youtubeboy139:
   - imageadd: New grab sprites
   silencer_pl:

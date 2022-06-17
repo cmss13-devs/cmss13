@@ -54,7 +54,7 @@
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
-	if(!echo_squad.active)
+	if(!echo_squad.active && faction == FACTION_MARINE)
 		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
 

@@ -92,6 +92,9 @@
   - bugfix: The admin supply pod launcher no longer crashes when it tries to display
       some of its tooltips
 2022-06-17:
+  Git-Nivrak:
+  - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
+      have passed, The xeno is readmitted or the Queen dies.
   TotalEpicness:
   - bugfix: Fixed a typo.
   - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing

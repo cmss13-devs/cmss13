@@ -216,21 +216,6 @@
 
 	message_staff("[key_name(usr)] used Toggle Wake In View.")
 
-/datum/admins/proc/viewUnheardAhelps()
-	set name = "View Unheard Ahelps"
-	set desc = "View any Ahelps that went unanswered"
-	set category = "Admin"
-
-	var/body = "<body>"
-	body += "<br>"
-
-	for(var/CID in unansweredAhelps)
-		body += "[unansweredAhelps[CID]]" //If I have done these correctly, it should have the options bar as well a mark and noresponse
-
-	body += "<br><br></body>"
-
-	show_browser(src, body, "Unheard Ahelps", "ahelps", "size=800x300")
-
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
@@ -250,7 +235,7 @@
 		color = "headminsay"
 
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
+		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
@@ -271,6 +256,19 @@
 
 	if (!msg)
 		return
+
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.admin_holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
 
 	log_adminpm("MOD: [key_name(src)] : [msg]")
 

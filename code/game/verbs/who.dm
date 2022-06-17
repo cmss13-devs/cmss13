@@ -92,7 +92,7 @@
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++
 							entry += " - <B><font color='red'>Xenomorph</font></B>"
-				entry += " (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
+				entry += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))

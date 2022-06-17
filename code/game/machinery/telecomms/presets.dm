@@ -58,12 +58,12 @@
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(var/obj/item/projectile/P)
 	..()

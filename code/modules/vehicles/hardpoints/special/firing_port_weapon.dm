@@ -16,7 +16,7 @@
 	var/burst_amount = 3
 	//FPWs reload automatically
 	var/reloading = FALSE
-	var/reload_time = 20 SECONDS
+	var/reload_time = 10 SECONDS
 	var/reload_time_started = 0
 
 	allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE

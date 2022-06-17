@@ -244,7 +244,8 @@
 
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
 /datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	name = "Toggle Long Range Sight"

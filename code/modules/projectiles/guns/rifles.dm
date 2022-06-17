@@ -380,7 +380,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -405,7 +404,6 @@
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/extended_barrel,
-							/obj/item/attachable/heavy_barrel,
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	indestructible = TRUE
@@ -437,14 +435,14 @@
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = BURST_AMOUNT_TIER_5
+	burst_amount = BURST_AMOUNT_TIER_4
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
@@ -462,7 +460,7 @@
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
 	if(!linked_human)
 		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up [src], registering you as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
 	..()
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_lock()
@@ -501,7 +499,6 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		damage_mult -= BULLET_DAMAGE_MULT_TIER_1 //Loses a tier of damage
 		fire_delay += FIRE_DELAY_TIER_10
 		burst_amount -=  BURST_AMOUNT_TIER_6
 
@@ -520,7 +517,7 @@
 		else
 			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
 	else
-		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register you as its owner."))
+		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
 	if(!iff_enabled)
 		to_chat(usr, SPAN_WARNING("Its IFF restrictions are disabled."))
 

@@ -107,6 +107,9 @@
   - bugfix: Praetorians now say dashes instead of dashs when they dash.
   - rscadd: Bumped the body spawn count from corpsespawners to 25, up from 15.
   - balance: Synths now have a 35% increased acid blood dodge chance.
+  - rscadd: Yautja thralls now refer to the thrallee as a mentor, not a master.
+  - bugfix: Yautja thralls can now properly use their weaponry.
+  - refactor: Refactored a whole lot of Yautja code, some things may be wonky.
   Git-Nivrak:
   - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
       have passed, The xeno is readmitted or the Queen dies.

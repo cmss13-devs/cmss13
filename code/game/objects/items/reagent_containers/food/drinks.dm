@@ -303,7 +303,7 @@
 		qdel(src)
 
 /obj/item/trash/crushed_cup
-	name = "Crushed cup"
+	name = "crushed cup"
 	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
 	icon = 'icons/obj/items/cup.dmi'
 	icon_state = "crushed_solocup"

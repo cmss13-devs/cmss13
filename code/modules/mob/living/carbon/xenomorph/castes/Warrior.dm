@@ -144,6 +144,7 @@
 		bound_xeno.TakeComponent(shield_component)
 
 /datum/behavior_delegate/warrior_base/remove_from_xeno()
+	bound_xeno.remove_xeno_shield()
 	shield_component.RemoveComponent()
 	return ..()
 
@@ -171,7 +172,6 @@
 
 /datum/behavior_delegate/boxer/New()
 	. = ..()
-
 	if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
 		clear_head = 0
 		max_clear_head = 0

@@ -190,6 +190,7 @@
 /datum/squad/pmc/one
 	name = "Team Upsilon"
 	color = 3
+
 /datum/squad/pmc/two
 	name = "Team Gamma"
 	color = 6
@@ -208,10 +209,13 @@
 
 /datum/squad/clf/one
 	name = "Python"
+
 /datum/squad/clf/two
 	name = "Viper"
+
 /datum/squad/clf/three
 	name = "Cobra"
+
 /datum/squad/clf/four
 	name = "Boa"
 //###############################

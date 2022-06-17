@@ -58,7 +58,11 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	if(!tool_type) //Can't perform the step.
 		return FALSE
 
-	if(user.z == GLOB.interior_manager.interior_z && !istype(target.loc, /turf/open/shuttle/vehicle/med))
+	var/turf/open/T = get_turf(target)
+	if(!istype(user.loc, /turf/open))
+		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
+		return FALSE
+	else if(!T.supports_surgery)
 		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 		return FALSE
 

@@ -60,7 +60,7 @@
 					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b></font>"
 					body += "</td><td align='center'>";
 
-					body += "<a href='?src=\ref[src];[HrefToken()];ahelp=adminplayeropts;extra="+ref+"'>PP</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];playerpanelextended="+ref+"'>PPE</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];notes=show;mob="+ref+"'>N</a> - "
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "

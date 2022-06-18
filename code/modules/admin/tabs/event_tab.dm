@@ -638,34 +638,34 @@
 
 	var/dat = {"
 		<B>Ship</B><BR>
-		<A href='?src=\ref[src];events=securitylevel'>Set Security Level</A><BR>
-		<A href='?src=\ref[src];events=distress'>Send a Distress Beacon</A><BR>
-		<A href='?src=\ref[src];events=selfdestruct'>Activate Self-Destruct</A><BR>
-		<A href='?src=\ref[src];events=evacuation_start'>Trigger Evacuation</A><BR>
-		<A href='?src=\ref[src];events=evacuation_cancel'>Cancel Evacuation</A><BR>
-		<A href='?src=\ref[src];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
-		<A href='?src=\ref[src];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
 		<BR>
 		<B>Research</B><BR>
-		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>
-		<A href='?src=\ref[src];events=give_research_credits'>Give Research Credits</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
 		<BR>
 		<B>Power</B><BR>
-		<A href='?src=\ref[src];events=unpower'>Unpower ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];events=power'>Power ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];events=quickpower'>Power ship SMESs</A><BR>
-		<A href='?src=\ref[src];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
-		<A href='?src=\ref[src];events=blackout'>Break all lights</A><BR>
-		<A href='?src=\ref[src];events=whiteout'>Repair all lights</A><BR>
-		<A href='?src=\ref[src];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
 		<BR>
 		<B>Misc</B><BR>
-		<A href='?src=\ref[src];events=medal'>Award a medal</A><BR>
-		<A href='?src=\ref[src];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
-		<A href='?src=\ref[src];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>
 		"}
 

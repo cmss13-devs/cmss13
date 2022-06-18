@@ -329,7 +329,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/MP/jacket
 	name = "\improper MP service jacket over M2 pattern MP armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate with a MP service jacket worn on top. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Arresting Marines for breaking windows has never felt so stylish."
+	desc = "A standard Colonial Marines M2 Pattern Chestplate with an MP service jacket worn on top. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Arresting Marines for breaking windows has never felt so stylish."
 	icon_state = "mp_jacket"
 	specialty = "service jacket over M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp_jacket")

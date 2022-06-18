@@ -83,19 +83,19 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
-	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
 	has_buttons = TRUE
 	icon_state = "coat_mp"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/warden
 	name = "military warden service jacket"
-	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
+	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
 	has_buttons = TRUE
 	icon_state = "coat_warden"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/cmp
 	name = "chief military police service jacket"
-	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
 	has_buttons = TRUE
 	icon_state = "coat_cmp"
 

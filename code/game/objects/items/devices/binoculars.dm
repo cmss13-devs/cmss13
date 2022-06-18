@@ -97,12 +97,12 @@
 			return FALSE
 		if(mods["click_catcher"])
 			return FALSE
-		var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
-		for(var/turf/T in path)
-			if(T.opacity)
-				return FALSE
-			for(var/obj/effect/particle_effect/smoke/S in T)
-				return FALSE
+		if(user.sight & SEE_TURFS)
+			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
+			for(var/turf/T in path)
+				if(T.opacity)
+					to_chat(user, SPAN_WARNING("There is something in the way of the laser!."))
+					return FALSE
 		acquire_target(A, user)
 		return TRUE
 	return FALSE

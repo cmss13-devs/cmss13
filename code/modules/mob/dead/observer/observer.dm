@@ -875,6 +875,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(alert("Do you want to go DNR?", "Choose to go DNR", "Yes", "No") == "Yes")
 		can_reenter_corpse = FALSE
+		src.client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+		src.client.soundOutput.apply_status()
 		var/ref
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))

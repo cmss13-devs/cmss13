@@ -11,6 +11,8 @@
 			E.droplimb(0, 0, cause)
 
 	undefibbable = TRUE
+	client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+	client.soundOutput.apply_status()
 
 	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 

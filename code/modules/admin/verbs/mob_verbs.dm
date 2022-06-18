@@ -25,6 +25,8 @@
 		XNO.generate_name()
 		XNO.set_lighting_alpha_from_prefs(M.client)
 	M.client?.change_view(world_view_size)
+	M.client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+	M.client.soundOutput.apply_status()
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"

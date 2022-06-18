@@ -496,7 +496,7 @@
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
 			if(QDELETED(U))
-				to_chat(usr, "You're not wearing a uniform!.")
+				to_chat(usr, "You're not wearing a uniform!")
 			else if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 				to_chat(usr, "The controls are locked.")
 			else

@@ -2,7 +2,7 @@
 /client/proc/cmd_admin_pm_context(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Admin PM Mob"
-	if(!admin_holder)
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
 			html = SPAN_DANGER("Error: Admin-PM-Context: Only administrators may use this command."),
@@ -16,7 +16,7 @@
 /client/proc/cmd_admin_pm_panel()
 	set category = "Admin"
 	set name = "Admin PM"
-	if(!admin_holder)
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
 			html = SPAN_DANGER("Error: Admin-PM-Panel: Only administrators may use this command."),
@@ -49,7 +49,7 @@
 	else if(istype(whom, /client))
 		C = whom
 	if(!C)
-		if(admin_holder)
+		if(CLIENT_IS_STAFF(src))
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_DANGER("Error: Admin-PM: Client not found."),
@@ -100,7 +100,7 @@
 			confidential = TRUE)
 		return
 
-	if(!admin_holder && !current_ticket) //no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
+	if(!CLIENT_IS_STAFF(src) && !current_ticket) //no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
 			html = SPAN_DANGER("You can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be."),
@@ -141,7 +141,7 @@
 		if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover
 			recipient = GLOB.directory[recipient_ckey]
 		else
-			if(admin_holder)
+			if(CLIENT_IS_STAFF(src))
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = SPAN_DANGER("Error: Admin-PM: Client not found."),
@@ -176,14 +176,14 @@
 
 	var/rawmsg = msg
 
-	if(admin_holder)
+	if(CLIENT_IS_STAFF(src))
 		msg = emoji_parse(msg)
 
 	var/badmin = FALSE //Lets figure out if an admin is getting bwoinked.
-	if(admin_holder && recipient.admin_holder && !current_ticket) //Both are admins, and this is not a reply to our own ticket.
+	if(CLIENT_IS_STAFF(src) && CLIENT_IS_STAFF(recipient) && !current_ticket) //Both are admins, and this is not a reply to our own ticket.
 		badmin = TRUE
-	if(recipient.admin_holder && !badmin)
-		if(admin_holder)
+	if(CLIENT_IS_STAFF(recipient) && !badmin)
+		if(CLIENT_IS_STAFF(src))
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_DANGER("Admin PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[msg]</span>"),
@@ -217,7 +217,7 @@
 		if(recipient.prefs.toggles_sound & SOUND_ADMINHELP)
 			SEND_SOUND(recipient, sound('sound/effects/adminhelp_new.ogg'))
 	else
-		if(admin_holder) //sender is an admin but recipient is not. Do BIG RED TEXT
+		if(CLIENT_IS_STAFF(src)) //sender is an admin but recipient is not. Do BIG RED TEXT
 			var/already_logged = FALSE
 			if(!recipient.current_ticket)
 				new /datum/admin_help(msg, recipient, TRUE)

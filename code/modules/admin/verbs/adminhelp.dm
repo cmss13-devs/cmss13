@@ -148,7 +148,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	current_state = state
 
 /obj/effect/statclick/ticket_list/clicked()
-	if (!usr.client?.admin_holder)
+	if (!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		return
@@ -649,7 +649,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	return ..(ahelp_datum.name)
 
 /obj/effect/statclick/ahelp/clicked()
-	if (!usr.client?.admin_holder)
+	if (!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		return
@@ -839,6 +839,8 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 /proc/get_admin_counts(requiredflags = R_BAN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())
 	for(var/client/X in GLOB.admins)
+		if(!CLIENT_IS_STAFF(X))
+			continue
 		.["total"] += X
 		if(requiredflags != NONE && !check_rights_for(X, requiredflags))
 			.["noflags"] += X
@@ -879,7 +881,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 				// first we check if it's a ckey of an admin
 				var/client/client_check = GLOB.directory[stripped_word]
-				if(client_check?.admin_holder)
+				if(CLIENT_IS_STAFF(client_check))
 					msglist[i] = "<u>[word]</u>"
 					pinged_admins[stripped_word] = client_check
 					modified = TRUE

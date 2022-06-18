@@ -167,12 +167,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"mX" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/caves)
 "nx" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
@@ -1141,7 +1135,7 @@ kS
 Fp
 gQ
 UX
-mX
+UX
 cR
 cR
 cR
@@ -1184,7 +1178,7 @@ Zk
 Zk
 zB
 cR
-mX
+UX
 UX
 cR
 cR

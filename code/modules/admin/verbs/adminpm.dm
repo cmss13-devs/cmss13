@@ -70,10 +70,13 @@
 			LAZYADD(AH.opening_responders, src)
 
 	var/msg = input(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)].") as message|null
-	LAZYREMOVE(AH.opening_responders, src)
-	if (!msg)
-		message_admins("[key_name_admin(src)] has cancelled their reply to [key_name_admin(C, 0, 0)]'s admin help.")
-		return
+
+	if(AH)
+		LAZYREMOVE(AH.opening_responders, src)
+		if (!msg)
+			message_admins("[key_name_admin(src)] has cancelled their reply to [key_name_admin(C, 0, 0)]'s admin help.")
+			return
+
 	if(!C) //We lost the client during input, disconnected or relogged.
 		if(GLOB.directory[AH.initiator_ckey]) // Client has reconnected, lets try to recover
 			whom = GLOB.directory[AH.initiator_ckey]

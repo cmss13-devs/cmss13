@@ -67,9 +67,13 @@
 	icon_state = "hardhat0_red"
 	hardhat_color = "red"
 	name = "firefighter helmet"
-	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
-	flags_heat_protection = BODY_FLAG_HEAD
+	gas_transfer_coefficient = 0.01
+	permeability_coefficient = 0.01
+	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ|COVERMOUTH|ALLOWINTERNALS|COVEREYES|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
+	flags_heat_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	flags_cold_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	max_heat_protection_temperature = FIRE_HELMET_max_heat_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"

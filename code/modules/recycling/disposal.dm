@@ -682,9 +682,9 @@
 		return
 	if(istype(T, /turf/open/floor)) //intact floor, pop the tile
 		var/turf/open/floor/F = T
-		if(!F.is_plating())
+		if(!F.intact_tile)
 			if(!F.broken && !F.burnt)
-				new F.floor_tile.type(H)//Add to holder so it will be thrown with other stuff
+				new F.tile_type(H, 1, F.type)
 			F.make_plating()
 
 	if(direction) //Direction is specified

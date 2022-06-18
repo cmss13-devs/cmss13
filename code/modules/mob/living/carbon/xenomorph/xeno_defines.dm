@@ -254,6 +254,8 @@
 
 	var/list/resin_marks = list()
 
+	var/list/banished_ckeys = list()
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)

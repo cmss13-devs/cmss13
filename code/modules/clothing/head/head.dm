@@ -13,7 +13,8 @@
 		var/mob/M = src.loc
 		M.update_inv_head()
 
-
+/obj/item/clothing/head/proc/has_garb_overlay()
+	return FALSE
 
 /obj/item/clothing/head/cmbandana
 	name = "bandana"
@@ -92,19 +93,19 @@
 	if(istype(H))
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)
-				if(SQUAD_NAME_1)
+				if(SQUAD_MARINE_1)
 					icon_state = "beret_alpha"
 					desc = "Often found atop heads, slightly less found on those still attached."
-				if(SQUAD_NAME_2)
+				if(SQUAD_MARINE_2)
 					icon_state = "beret_bravo"
 					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
-				if(SQUAD_NAME_3)
+				if(SQUAD_MARINE_3)
 					icon_state = "beret_charlie"
 					desc = "Still has some morning toast crumbs on it."
-				if(SQUAD_NAME_4)
+				if(SQUAD_MARINE_4)
 					icon_state = "beret_delta"
 					desc = "Hard to consider protection, but these types of people don't seek protection."
-				if(SQUAD_NAME_5)
+				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
 					desc = "Tightly Woven, as it should be."
 		else
@@ -182,7 +183,8 @@
 						/obj/item/clothing/glasses/mgoggles = "goggles-c",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c",
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/prop/helmetgarb/helmet_nvg/functional = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
 						/obj/item/clothing/head/headband/red = "hat_headbandred",
@@ -245,6 +247,9 @@
 				ret.overlays += I
 
 	return ret
+
+/obj/item/clothing/head/cmcap/has_garb_overlay()
+	return flags_marine_hat & HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"

@@ -17,8 +17,8 @@
 	var/leaders = 0
 
 /datum/emergency_call/cryo_squad_equipped/spawn_candidates(announce, override_spawn_loc)
-	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	leaders = echo_squad.num_leaders
+	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
+	leaders = cryo_squad.num_leaders
 	return ..()
 
 /datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, var/turf/override_spawn_loc)
@@ -33,35 +33,35 @@
 	M.transfer_to(H, TRUE)
 
 	sleep(5)
-	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	if(leaders < echo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
+	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
+	if(leaders < cryo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
-		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if (heavies < max_heavies)
 		heavies++
-		arm_equipment(H, /datum/equipment_preset/uscm/specialist_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/specialist_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a weapons specialist in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if(smartgunners < max_smartgunners)
 		smartgunners++
-		arm_equipment(H, /datum/equipment_preset/uscm/smartgunner_equipped, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/smartgunner_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a smartgunner in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if(engineers < max_engineers)
 		engineers++
-		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if (medics < max_medics)
 		medics++
-		arm_equipment(H, /datum/equipment_preset/uscm/medic_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/medic_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a hospital corpsman in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm/private_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/private_equipped/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 

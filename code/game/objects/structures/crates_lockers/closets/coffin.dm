@@ -16,7 +16,7 @@
 	if(istype(item, /obj/item/tool/crowbar))
 		new /obj/item/stack/sheet/wood(src.loc)
 		for(var/mob/in_view in viewers(src))
-			in_view.show_message(SPAN_NOTICE("\The [src] has been wrenched apart by [user] with a [item]."), 3, "You hear wood breaking.", 2)
+			in_view.show_message(SPAN_NOTICE("\The [src] has been wrenched apart by [user] with [item]."), 3, "You hear wood breaking.", 2)
 		qdel(src)
 		return
 	if(isrobot(user))

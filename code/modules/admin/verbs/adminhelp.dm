@@ -395,6 +395,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	//send this msg to all admins
 	for(var/client/X in GLOB.admins)
+		if(!CLIENT_IS_STAFF(X))
+			continue
 		if(X.prefs.toggles_sound & SOUND_ADMINHELP)
 			SEND_SOUND(X, sound('sound/effects/adminhelp_new.ogg'))
 		window_flash(X)

@@ -266,6 +266,8 @@
 	log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
 	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/X in GLOB.admins)
+		if(!CLIENT_IS_STAFF(X))
+			continue
 		if(X.key!=key && X.key!=recipient.key) //check client/X is an admin and isn't the sender or recipient
 			to_chat(X,
 				type = MESSAGE_TYPE_ADMINPM,

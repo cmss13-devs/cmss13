@@ -583,7 +583,7 @@ var/global/players_preassigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -638,7 +638,7 @@ var/global/players_preassigned = 0
 	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	//Deal with non-standards first.

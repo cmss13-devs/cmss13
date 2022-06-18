@@ -173,3 +173,9 @@
       window will flash. Pref enabled by default.
   - qol: increased the volume of the notification sound when being spawned as a pooled
       larva.
+2022-06-18:
+  Diegoflores31:
+  - rscadd: Adds Breaching Charge . A fast planting explosive that keeps the operator
+      safe while emiting deadly shrapnel towards the target . This new explosive is
+      available at Squad Engineer , SL and REQ vendors.
+  - rscadd: Adds Breaching Charge crate to ASRS

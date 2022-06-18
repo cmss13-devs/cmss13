@@ -1,28 +1,31 @@
 <html>
 
 <head>
-  <title>Create Xenos</title>
-  <link rel="stylesheet" type="text/css" href="common.css">
+	<title>Create Xenos</title>
+	<link rel="stylesheet" type="text/css" href="common.css">
 </head>
 
 <body>
 	<form name="spawner" action="byond://?src=/* ref src */" method="get">
 		<input type="hidden" name="src" value="/* ref src */">
+		<input type="hidden" name="admin_token" value="/* href token */">
 		Amount of xenos: <input type="text" name="object_count" value="1" style="width:30px">
 		<br>
 		Range to spawn in: <input type="text" name="object_range" value="1" style="width:30px">
 		<br><br>
 		Spawn mobs as: <br>
-		<input type="radio" class ="radioButton" name="spawn_as" value="none" checked="checked"> Regular<br>
-		<input type="radio" class ="radioButton" name="spawn_as" value="freed"> Freed mob<br>
-		<input type="radio" class ="radioButton" name="spawn_as" value="ert"> ERT
+		<input type="radio" class="radioButton" name="spawn_as" value="none" checked="checked"> Regular<br>
+		<input type="radio" class="radioButton" name="spawn_as" value="freed"> Freed mob<br>
+		<input type="radio" class="radioButton" name="spawn_as" value="ert"> ERT
 		<br><br>
 		Search for hive: <br>
-		<input type="text" name="hiveFilter" value="" onkeypress="submitHiveFirst(event)" style="width:280px"> <input type = "button" class="button" value = "Search" onclick = "populateHiveList()" />
+		<input type="text" name="hiveFilter" value="" onkeypress="submitHiveFirst(event)" style="width:280px"> <input
+			type="button" class="button" value="Search" onclick="populateHiveList()" />
 		<br>
 		<select name="create_hive_list" size="10" multiple style="width:98%"></select><br>
 		Search for caste: <br>
-		<input type="text" name="xenoFilter" value="" onkeypress="submitXenoFirst(event)" style="width:280px"> <input type = "button" class="button" value = "Search" onclick = "populateXenoList()" />
+		<input type="text" name="xenoFilter" value="" onkeypress="submitXenoFirst(event)" style="width:280px"> <input
+			type="button" class="button" value="Search" onclick="populateXenoList()" />
 		<br>
 		<select name="create_xenos_list" size="18" multiple style="width:98%"></select><br>
 		<input type="submit" class="button" value="Spawn">
@@ -43,15 +46,13 @@
 		populateHiveList();
 		populateXenoList();
 
-		function populateHiveList()
-		{
+		function populateHiveList() {
 			var re = new RegExp(document.spawner.hiveFilter.value, "i")
 			create_hive_list.options.length = 0;
 
 			var i;
-			for (i in hives)
-			{
-				if(!re.test(hives[i])) continue;
+			for (i in hives) {
+				if (!re.test(hives[i])) continue;
 				var new_option = document.createElement("option");
 				new_option.value = hives[i];
 				new_option.text = hives[i];
@@ -59,28 +60,23 @@
 			}
 		}
 
-		function submitHiveFirst(event)
-		{
-			if (!create_hive_list.options.length)
-			{
+		function submitHiveFirst(event) {
+			if (!create_hive_list.options.length) {
 				return false;
 			}
 
-			if (event.keyCode == 13 || event.which == 13)
-			{
+			if (event.keyCode == 13 || event.which == 13) {
 				create_hive_list.options[0].selected = 'true';
 			}
 		}
 
-		function populateXenoList()
-		{
+		function populateXenoList() {
 			var re = new RegExp(document.spawner.xenoFilter.value, "i")
 			create_xenos_list.options.length = 0;
 
 			var i;
-			for (i in xenos)
-			{
-				if(!re.test(xenos[i])) continue;
+			for (i in xenos) {
+				if (!re.test(xenos[i])) continue;
 				var new_option = document.createElement("option");
 				new_option.value = xenos[i];
 				new_option.text = xenos[i];
@@ -88,15 +84,12 @@
 			}
 		}
 
-		function submitXenoFirst(event)
-		{
-			if (!create_xenos_list.options.length)
-			{
+		function submitXenoFirst(event) {
+			if (!create_xenos_list.options.length) {
 				return false;
 			}
 
-			if (event.keyCode == 13 || event.which == 13)
-			{
+			if (event.keyCode == 13 || event.which == 13) {
 				create_xenos_list.options[0].selected = 'true';
 			}
 		}

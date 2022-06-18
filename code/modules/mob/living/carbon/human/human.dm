@@ -19,6 +19,14 @@
 
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
+	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+
+/mob/living/carbon/human/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+	SIGNAL_HANDLER
+	if(queen.can_not_harm(src))
+		return COMPONENT_SCREECH_ACT_CANCEL
+	if(HAS_TRAIT(src, TRAIT_SCREECH_IMMUNE))
+		return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

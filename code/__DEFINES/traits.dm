@@ -147,6 +147,8 @@
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+ /// If the mob is immune to screech
+#define TRAIT_SCREECH_IMMUNE "screech_immune"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them

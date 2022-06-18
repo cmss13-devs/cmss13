@@ -23,7 +23,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/admiral, /obj/item/clothing/under/marine/officer/bridge)
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/admiral, /obj/item/clothing/suit/storage/jacket/marine/service)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/admiral, /obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	service_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
 	service_hat = list(/obj/item/clothing/head/admiral, /obj/item/clothing/head/beret/marine/commander/black)
 

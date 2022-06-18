@@ -179,3 +179,6 @@
       safe while emiting deadly shrapnel towards the target . This new explosive is
       available at Squad Engineer , SL and REQ vendors.
   - rscadd: Adds Breaching Charge crate to ASRS
+  Segrain:
+  - bugfix: Marines once again only get assigned to squads from Alpha to Delta and
+      not to nonexistent squads like "Echo" or "Whiteout".

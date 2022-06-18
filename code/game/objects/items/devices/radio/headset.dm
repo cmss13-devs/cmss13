@@ -18,6 +18,9 @@
 
 	var/list/volume_settings
 
+	var/last_multi_broadcast = -999
+	var/multibroadcast_cooldown = 3 MINUTES
+
 	var/has_hud = FALSE
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
@@ -316,6 +319,7 @@
 	icon_state = "ce_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
 	volume = RADIO_VOLUME_CRITICAL
+	multibroadcast_cooldown = 1 MINUTES
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
@@ -323,6 +327,7 @@
 	icon_state = "cmo_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmo)
 	volume = RADIO_VOLUME_CRITICAL
+	multibroadcast_cooldown = 1 MINUTES
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
@@ -354,6 +359,7 @@
 	icon_state = "ro_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ro)
 	volume = RADIO_VOLUME_CRITICAL
+	multibroadcast_cooldown = 1 MINUTES
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -392,6 +398,7 @@
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 	volume = RADIO_VOLUME_CRITICAL
+	multibroadcast_cooldown = 1 MINUTES
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
@@ -404,6 +411,7 @@
 	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :t - tactics."
 	initial_keys = list(/obj/item/device/encryptionkey/po)
 	volume = RADIO_VOLUME_CRITICAL
+	multibroadcast_cooldown = 1 MINUTES
 
 /obj/item/device/radio/headset/almayer/tactics
 	name = "marine tactics radio headset"
@@ -756,3 +764,4 @@
 	name = "marine vehicle crew radio headset"
 	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."
 	volume = RADIO_VOLUME_RAISED
+	multibroadcast_cooldown = 3 MINUTES

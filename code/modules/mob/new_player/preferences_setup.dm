@@ -253,6 +253,8 @@ datum/preferences/proc/randomize_skin_color()
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_SYNTH]
 				return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/synth/uscm
+		if(JOB_WORKING_JOE)
+			return /datum/equipment_preset/synth/working_joe
 		if(JOB_POLICE_CADET)
 			return /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
 		if(JOB_POLICE)

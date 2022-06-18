@@ -193,6 +193,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/hide_statusbar
 
 	var/no_radials_preference = FALSE
+	var/no_radial_labels_preference = FALSE
 
 	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
 	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
@@ -508,6 +509,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Stylesheet:</b> <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 			dat += "<b>Hide Statusbar:</b> <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
+			if(!no_radials_preference)
+				dat += "<b>Hide Radial Menu Labels:</b> <a href='?_src_=prefs;preference=no_radial_labels_preference'><b>[no_radial_labels_preference ? "TRUE" : "FALSE"]</b></a><br>"
 			if(CONFIG_GET(flag/ooc_country_flags))
 				dat += "<b>OOC Country Flag:</b> <a href='?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
 			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
@@ -1496,6 +1499,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("no_radials_preference")
 					no_radials_preference = !no_radials_preference
+
+				if("no_radial_labels_preference")
+					no_radial_labels_preference = !no_radial_labels_preference
 
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)

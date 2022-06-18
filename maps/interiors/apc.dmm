@@ -77,9 +77,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "i" = (
 /turf/open/shuttle/vehicle{
@@ -93,9 +91,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "l" = (
 /obj/structure/interior_wall/apc{
@@ -124,9 +120,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "p" = (
 /obj/structure/interior_wall/apc{
@@ -425,9 +419,7 @@
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_14"
-	},
+/turf/open/void/vehicle,
 /area/space)
 "Y" = (
 /obj/effect/landmark/interior/spawn/entrance{

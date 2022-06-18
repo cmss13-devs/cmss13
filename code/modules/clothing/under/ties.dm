@@ -736,7 +736,8 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/energy/taser
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/gun/flare
 	)
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)

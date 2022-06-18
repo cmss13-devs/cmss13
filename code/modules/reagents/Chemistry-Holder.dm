@@ -176,7 +176,8 @@
 	var/datum/reagents/R = target.reagents
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
 	trans_to_datum(V, amount, reaction = FALSE)
-
+	if(isSynth(target))
+		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
 
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.

@@ -221,13 +221,21 @@
 	set name = "Attack Log"
 	set category = null
 
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
 	to_chat(usr, SPAN_DANGER("<b>Attack Log for [mob]</b>"))
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 
-/proc/possess(obj/O as obj in GLOB.object_list)
+/client/proc/possess(obj/O as obj in GLOB.object_list)
 	set name = "Possess Obj"
 	set category = null
+
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
 
 	var/turf/T = get_turf(O)
 
@@ -245,9 +253,13 @@
 	usr.client.eye = O
 	usr.control_object = O
 
-/proc/release(obj/O as obj in GLOB.object_list)
+/client/proc/release(obj/O as obj in GLOB.object_list)
 	set name = "Release Obj"
 	set category = null
+
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object
 		usr.real_name = usr.name_archive

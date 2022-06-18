@@ -650,6 +650,7 @@
 	load_status(H)
 	load_vanity(H)
 	load_race(H)//Race is loaded last, otherwise we wouldn't be able to equip gear!
+	H.assigned_equipment_preset = src
 	H.regenerate_icons()
 
 /datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, var/randomise)
@@ -916,7 +917,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/vc(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)

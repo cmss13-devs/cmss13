@@ -18778,6 +18778,13 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
+"odE" = (
+/obj/structure/fence,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-hydro"
+	},
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/colony/south_medbay_road)
 "oek" = (
 /turf/open/gm/coast,
 /area/lv624/ground/jungle/west_jungle)
@@ -43544,7 +43551,7 @@ jHN
 jHN
 jHN
 ofv
-szy
+odE
 udP
 udP
 udP

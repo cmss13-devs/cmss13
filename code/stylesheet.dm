@@ -57,6 +57,8 @@ em						{font-style: normal;	font-weight: bold;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
 .echoradio				{color: #3EB489;}
+.cryoradio				{color: #4a4740;}
+.hcradio				{color: #318779;}
 
 .medium					{					font-size: 2}
 .big					{					font-size: 2}

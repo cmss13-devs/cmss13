@@ -595,7 +595,7 @@
 	if(isYautja(user) || isobserver(user))
 		to_chat(user, true_desc)
 	else
-		to_chat(user, "Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
+		to_chat(user, SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ."))
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
@@ -617,7 +617,7 @@
 	..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			to_chat(user, "What's this thing?")
+			to_chat(user, SPAN_WARNING("What's this thing?"))
 			return
 		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
 		activate(user)
@@ -748,7 +748,7 @@
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user) && armed)
-		to_chat(user, "You foolishly reach out for \the [src]...")
+		to_chat(user, SPAN_WARNING("You foolishly reach out for \the [src]..."))
 		trapMob(user)
 		return
 	. = ..()

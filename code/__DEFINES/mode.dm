@@ -84,7 +84,7 @@
 #define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
-#define TOGGLE_OOC_FLAG						(1<12) // determines if your country flag appears by your name in ooc chat
+#define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 //=================================================
 
 var/list/be_special_flags = list(
@@ -118,13 +118,13 @@ var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DR
 #define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_CIC			= list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
 var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
-var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
+var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_WORKING_JOE, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
 var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
 var/global/list/ROLES_REQUISITION 	= list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION)
 var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR)
 var/global/list/ROLES_MARINES	  	= list(JOB_SQUAD_LEADER, JOB_SQUAD_RTO, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
-var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4, SQUAD_NAME_5)
+var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_MARINE_1, SQUAD_MARINE_2, SQUAD_MARINE_3, SQUAD_MARINE_4, SQUAD_MARINE_5)
 
 var/global/list/ROLES_XENO	  		= list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH)
 var/global/list/ROLES_WHITELISTED	= list(JOB_SYNTH_SURVIVOR, JOB_PREDATOR)

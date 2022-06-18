@@ -6288,7 +6288,7 @@
 	desc = "Let's take the caveman back to the malt shop.";
 	dir = 4;
 	icon = 'icons/mob/humans/onmob/head_0.dmi';
-	icon_state = "killaninja12_u";
+	icon_state = "hopcap";
 	layer = 2.5;
 	name = "frozen hat";
 	pixel_x = -1;

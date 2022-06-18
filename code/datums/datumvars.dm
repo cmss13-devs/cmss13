@@ -712,7 +712,7 @@ body
 		if(!H.skills)
 			H.skills = new /datum/skills/pfc(H)
 
-		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader"))
+		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", GLOB.all_skills)
 		if(!selected_skill)
 			return
 

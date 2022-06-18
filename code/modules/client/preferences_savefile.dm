@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	15
+#define SAVEFILE_VERSION_MAX	16
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -41,6 +41,12 @@
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_MEMBER_PUBLIC
 		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 16) //toggle unpool flashing on by default
+		var/flash_toggles_two
+		S["toggles_flashing"] >> flash_toggles_two
+		flash_toggles_two |= FLASH_POOLSPAWN
+		S["toggles_flashing"] << flash_toggles_two
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -135,6 +141,7 @@
 	S["hear_vox"] >> hear_vox
 	S["hide_statusbar"] >> hide_statusbar
 	S["no_radials_preference"] >> no_radials_preference
+	S["no_radial_labels_preference"] >> no_radial_labels_preference
 	S["hotkeys"] >> hotkeys
 
 	//Sanitize
@@ -158,6 +165,7 @@
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
+	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -274,6 +282,7 @@
 
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
+	S["no_radial_labels_preference"] << no_radial_labels_preference
 
 	return TRUE
 

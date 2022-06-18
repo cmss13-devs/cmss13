@@ -1,15 +1,19 @@
 // nightvision goggles
 
 /obj/item/clothing/glasses/night
-	name = "night vision goggles"
-	desc = "You can totally see in the dark now!"
+	name = "\improper TV1 night vision goggles"
+	desc = "A neat looking pair of civilian grade night vision goggles."
 	icon_state = "night"
-	item_state = "glasses"
+	item_state = "night"
+	deactive_state = "night_off"
 	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
+	toggleable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
 	darkness_view = 12
+	vision_flags = SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	fullscreen_vision = /obj/screen/fullscreen/nvg
+	fullscreen_vision = null
 
 /obj/item/clothing/glasses/night/helmet //for the integrated NVGs that are in helmetgarb code
 	name = "\improper M2 night vision goggles"
@@ -24,8 +28,8 @@
 	name = "\improper M4RA Battle sight"
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
+	icon_state = "m4ra_goggles"
+	deactive_state = "m4ra_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	toggleable = TRUE
@@ -37,8 +41,8 @@
 	name = "\improper Mark 4 Battle Medic sight"
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the health statuses of others. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
+	icon_state = "m4_goggles"
+	deactive_state = "m4_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	toggleable = TRUE
@@ -49,8 +53,8 @@
 	name = "\improper M42 scout sight"
 	desc = "A headset and night vision goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
+	icon_state = "m42_goggles"
+	deactive_state = "m42_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = TRUE
 	fullscreen_vision = null
@@ -182,7 +186,7 @@
 	name = "\improper Unusual Thermal Imaging Goggles"
 	desc = "Seems to be thermal imaging goggles, except they have an unusual design. Looking at it makes you nauseous."
 	icon_state = "thermal"
-	item_state = "glasses"
+	item_state = "thermal"
 	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
 	fullscreen_vision = null

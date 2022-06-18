@@ -55,7 +55,6 @@
 /area/space)
 "am" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -1107,7 +1106,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/multitool,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -2116,7 +2114,6 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -2168,7 +2165,6 @@
 "gT" = (
 /obj/structure/machinery/telecomms/relay/preset/centcom,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -6961,7 +6957,6 @@
 	listening_level = 9
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -7708,7 +7703,6 @@
 	listening_level = 9
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -8746,7 +8740,6 @@
 "CN" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook)
@@ -8903,7 +8896,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -9476,7 +9468,6 @@
 "FQ" = (
 /obj/structure/machinery/telecomms/hub/preset_cent,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -11326,7 +11317,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/shuttle)
@@ -11594,7 +11584,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13092,7 +13081,6 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13145,7 +13133,6 @@
 	freq_listening = list(1353,1357,1359,1355,1469,1471,1354,1342,1344,1235,1340,1214,1358,1356,1236,1240,1449,1451,1453,1455)
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13288,7 +13275,6 @@
 "SQ" = (
 /obj/structure/machinery/telecomms/server/presets/centcomm,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -14139,7 +14125,6 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -14510,7 +14495,6 @@
 /area/adminlevel/chinook/event)
 "WV" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/cargo)
@@ -15076,7 +15060,6 @@
 "Yq" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/shuttle)
@@ -15300,7 +15283,6 @@
 	name = "Chinook Telecommunications Mainframe"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)

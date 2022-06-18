@@ -12,7 +12,7 @@
 	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)
 
@@ -158,7 +158,7 @@
 	rank = JOB_MAINT_TECH
 	paygrade = "ME2"
 	role_comm_title = "MT"
-	skills = /datum/skills/OT
+	skills = /datum/skills/MT
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
@@ -653,7 +653,7 @@
 	rank = JOB_MESS_SERGEANT
 	paygrade = "ME2"
 	role_comm_title = "MST"
-	skills = /datum/skills/OT
+	skills = /datum/skills/mess_technician
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 

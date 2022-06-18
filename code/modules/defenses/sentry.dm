@@ -66,7 +66,7 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 7, 7)
+		range_bounds = RECT(x, y, 8, 8)
 		return
 	switch(dir)
 		if(EAST)

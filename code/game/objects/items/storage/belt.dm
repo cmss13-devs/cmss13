@@ -140,7 +140,8 @@
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/roller,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/reagent_container/glass/minitank
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()

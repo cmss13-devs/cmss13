@@ -38,8 +38,7 @@
 		to_chat(user, SPAN_WARNING("You must be holding the [src] to upgrade \the [D]!"))
 		return
 
-	var/type_to_change_to = upgrade_list[chosen_upgrade]
-
+	var/type_to_change_to = D.upgrade_string_to_type(chosen_upgrade)
 	if(!type_to_change_to)
 		return
 

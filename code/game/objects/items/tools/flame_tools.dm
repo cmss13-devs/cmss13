@@ -123,6 +123,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	attack_verb = list("burnt", "singed")
 
+/obj/item/tool/match/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
+	if(istype(user) && istype(target, /obj/item/clothing/shoes/marine) && user.shoes == target && light_match())
+		if(prob(5))
+			user.visible_message(SPAN_NOTICE("<b>[user]</b> strikes \the [src] against their [target.name] and it splinters into pieces!"), SPAN_NOTICE("You strike \the [src] against your [target.name] and it splinters into pieces!"), max_distance = 3)
+			qdel(src)
+		else
+			user.visible_message(SPAN_NOTICE("<b>[user]</b> strikes \the [src] against their [target.name], igniting it!"), SPAN_NOTICE("You strike \the [src] against your [target.name], igniting it!"), max_distance = 3)
+		return
+	return ..()
+
 /obj/item/tool/match/process(delta_time)
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
@@ -140,7 +150,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	return ..()
 
 /obj/item/tool/match/proc/light_match()
-	if(heat_source) return
+	if(heat_source || burnt)
+		return
 	heat_source = 1000
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
@@ -151,6 +162,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		SetLuminosity(2)
 	START_PROCESSING(SSobj, src)
 	update_icon()
+	return TRUE
 
 /obj/item/tool/match/proc/burn_out(mob/user)
 	heat_source = 0

@@ -141,12 +141,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	turn_off_light(user)
 
-	if(fire_delay_group && flags_gun_features & GUN_FIRED_BY_USER)
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+	if(fire_delay_group && delay_left > 0)
 		for(var/group in fire_delay_group)
-			var/fire_delay = fire_delay_group[group]
-			LAZYSET(user.fire_delay_next_fire, group, world.time + fire_delay)
-
-	flags_gun_features &= ~GUN_FIRED_BY_USER
+			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
 	unwield(user)
 
@@ -479,8 +477,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/obj/item/weapon/gun/G = user.get_held_item()
 
 	if(!istype(G))
-		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
-		return
+		G = user.get_inactive_hand()
+		if(!istype(G))
+			to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
+			return
 
 	if(G.flags_gun_features & GUN_BURST_FIRING)
 		return
@@ -617,47 +617,29 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(zoom)
-		to_chat(usr, SPAN_WARNING("You cannot conceviably do that while looking down \the [src]'s scope!"))
+		to_chat(usr, SPAN_WARNING("You cannot conceivably do that while looking down \the [src]'s scope!"))
 		return
 
-	var/list/possible_attachments = list()
+	var/list/choices = list()
+	var/list/choice_to_attachment = list()
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(R && (R.flags_attach_features & ATTACH_REMOVABLE))
-			possible_attachments += R
+			var/capitalized_name = capitalize_first_letters(R.name)
+			choices[capitalized_name] = image(icon = R.icon, icon_state = R.icon_state)
+			choice_to_attachment[capitalized_name] = R
 
-
-	var/static/list/slots
-	if(!slots)
-		slots = list(
-			"rail",
-			"muzzle",
-			"stock",
-			"under",
-		)
-
-	var/list/choices = list()
-
-
-	for(var/attachment_key in slots)
-		var/obj/item/attachable/attachment = attachments[attachment_key]
-		if(attachment && (attachment.flags_attach_features & ATTACH_REMOVABLE))
-			choices[attachment_key] = attachment
-
-	if(!possible_attachments.len)
+	if(!length(choices))
 		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
 		return
 
 	var/obj/item/attachable/A
-	if(possible_attachments.len == 1)
-		A = possible_attachments[1]
+	if(length(choices) == 1)
+		A = choice_to_attachment[choices[1]]
 	else
-		if(usr.client.prefs?.no_radials_preference)
-			A = tgui_input_list(usr, "Which attachment to remove?", "Remove attachment", possible_attachments)
-		else
-			var/middleman = show_radial_menu(usr, src, choices, require_near = TRUE)
-			A = attachments[middleman]
-
+		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/choice = use_radials ? show_radial_menu(usr, usr, choices, require_near = TRUE) : tgui_input_list(usr, "Which attachment to remove?", "Remove Attachment", choices)
+		A = choice_to_attachment[choice]
 
 	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return

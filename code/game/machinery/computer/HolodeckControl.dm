@@ -11,28 +11,30 @@
 
 // Holographic Items!
 
-/turf/open/floor/holofloor
-
-
-/turf/open/floor/holofloor/grass
-	name = "Lush Grass"
-	icon_state = "grass1"
-	floor_tile = new/obj/item/stack/tile/grass
-
-	New()
-		floor_tile.New() //I guess New() isn't run on objects spawned without the definition of a turf to house them, ah well.
-		icon_state = "grass[pick("1","2","3","4")]"
-		..()
-		spawn(4)
-			update_icon()
-			for(var/direction in cardinal)
-				if(istype(get_step(src,direction),/turf/open/floor))
-					var/turf/open/floor/FF = get_step(src,direction)
-					FF.update_icon() //so siding get updated properly
-
 /turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
-	// HOLOFLOOR DOES NOT GIVE A FUCK
+
+/turf/open/floor/holofloor/grass
+	name = "lush grass"
+	icon_state = "grass1"
+
+/turf/open/floor/holofloor/grass/Initialize(mapload, ...)
+	. = ..()
+	icon_state = "grass[pick("1","2","3","4")]"
+	update_icon()
+	for(var/direction in cardinal)
+		if(istype(get_step(src, direction), /turf/open/floor))
+			var/turf/open/floor/FF = get_step(src,direction)
+			FF.update_icon() //so siding get updated properly
+
+/turf/open/floor/holofloor/grass/update_icon()
+	. = ..()
+	if(!broken && !burnt)
+		if(!(icon_state in list("grass1", "grass2", "grass3", "grass4")))
+			icon_state = "grass[pick("1", "2", "3", "4")]"
+
+/turf/open/floor/holofloor/grass/make_plating()
+	return
 
 
 

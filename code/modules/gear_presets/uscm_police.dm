@@ -35,6 +35,8 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
+
 /datum/equipment_preset/uscm_ship/uscm_police/mp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -83,6 +85,8 @@
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -138,6 +142,8 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/warden)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/warden)
+
 /datum/equipment_preset/uscm_ship/uscm_police/warden/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -191,6 +197,8 @@
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec

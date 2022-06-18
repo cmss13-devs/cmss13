@@ -1017,10 +1017,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dL" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/s)
 "dM" = (
 /turf/open/mars_cave{
@@ -1361,6 +1358,12 @@
 "eO" = (
 /turf/closed/wall/mineral/uranium/leaking,
 /area/bigredv2/outside/engineering)
+"iz" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves)
 "jr" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -1368,6 +1371,13 @@
 	tag = "icon-mars_dirt_5"
 	},
 /area/bigredv2/outside/sw)
+"ky" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves)
 "kN" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave,
@@ -1375,6 +1385,12 @@
 "mU" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/sw)
+"pi" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/outside/eta)
 "sU" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -1386,6 +1402,9 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars,
 /area/bigredv2/outside/sw)
+"Ha" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/outside/s)
 "IE" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -1393,6 +1412,18 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_sw)
+"IX" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves)
+"JF" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/outside/eta)
 "NX" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars{
@@ -1407,6 +1438,30 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/outside/sw)
+"QR" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/outside/eta)
+"TH" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves)
+"TS" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/outside/eta)
+"Xz" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves)
 
 (1,1,1) = {"
 aa
@@ -2294,15 +2349,15 @@ as
 as
 dC
 dA
-dH
+Ha
 dL
 dL
-dT
-dT
-dT
-dT
-dT
-dT
+TH
+TH
+TH
+TH
+TH
+TH
 "}
 (29,1,1) = {"
 as
@@ -2326,15 +2381,15 @@ as
 dt
 dA
 dF
-dA
+Ha
 dH
-dT
-dT
-dT
-dT
-dT
-dT
-dT
+iz
+iz
+IX
+ky
+Xz
+Xz
+Xz
 "}
 (30,1,1) = {"
 as
@@ -2359,12 +2414,12 @@ dA
 dA
 dA
 dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
+pi
+pi
+JF
+JF
+QR
+TS
+TS
+TS
 "}

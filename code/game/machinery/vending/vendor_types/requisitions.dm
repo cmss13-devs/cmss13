@@ -106,10 +106,11 @@
 		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
 		list("Sidearm Pouch", round(scale * 5), /obj/item/storage/pouch/pistol, VENDOR_ITEM_REGULAR),
 		list("Syringe Pouch", round(scale * 2), /obj/item/storage/pouch/syringe, VENDOR_ITEM_REGULAR),
-		list("Tools Pouch (Full)", round(scale * 2), /obj/item/storage/pouch/tools/full, VENDOR_ITEM_REGULAR),
+		list("Tool Pouch (Full)", round(scale * 2), /obj/item/storage/pouch/tools/full, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", round(scale * 2), /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
 		list("Large Magazine Pouch", round(scale * 2), /obj/item/storage/pouch/magazine/large, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", round(scale * 2), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
+		list("Large Tool Pouch", round(scale * 2), /obj/item/storage/pouch/tools/large, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),

@@ -1049,6 +1049,12 @@
 	)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
+/obj/item/storage/pouch/tools/large
+	name = "large tools pouch"
+	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool. This one is larger and holds more tools."
+	icon_state = "bigtools"
+	storage_slots = 6
+
 /obj/item/storage/pouch/tools/tactical
 	name = "tactical tools pouch"
 	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though."

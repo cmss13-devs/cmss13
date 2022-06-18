@@ -122,6 +122,7 @@
 	flags_equip_slot = SLOT_EAR
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	clothing_traits = list(TRAIT_SCREECH_IMMUNE)
+	time_to_equip = 40
 
 /obj/item/clothing/ears/earmuffs/equipped(mob/user, slot)
 	. = ..()

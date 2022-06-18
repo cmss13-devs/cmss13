@@ -23,7 +23,7 @@
 
 
 	if(href_list["ahelp"])
-		if(!check_rights(R_ADMIN, TRUE))
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
 			return
 
 		var/ahelp_ref = href_list["ahelp"]

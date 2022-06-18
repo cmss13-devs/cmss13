@@ -546,6 +546,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("USCM Satchel", 20, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
 		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),
 		list("USCM Service Jacket", 20, /obj/item/clothing/suit/storage/jacket/marine/service, VENDOR_ITEM_REGULAR),
+		list("USCM Patrol Cap", 20, /obj/item/clothing/head/cmcap, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),

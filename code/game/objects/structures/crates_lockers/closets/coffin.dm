@@ -12,17 +12,16 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/coffin/attackby(obj/item/Prybar, mob/living/user)
-	if(istype(Prybar, /obj/item/tool/crowbar))
-		var/obj/item/tool/crowbar/CrB = Prybar
+/obj/structure/closet/coffin/attackby(obj/item/item, mob/living/user)
+	if(istype(item, /obj/item/tool/crowbar))
 		new /obj/item/stack/sheet/wood(src.loc)
-		for(var/mob/Mob in viewers(src))
-			Mob.show_message(SPAN_NOTICE("\The [src] has been wrenched apart by [user] with [CrB]."), 3, "You hear wood breaking.", 2)
+		for(var/mob/in_view in viewers(src))
+			in_view.show_message(SPAN_NOTICE("\The [src] has been wrenched apart by [user] with a [item]."), 3, "You hear wood breaking.", 2)
 		qdel(src)
 		return
 	if(isrobot(user))
 		return
-	user.drop_inv_item_to_loc(Prybar,loc)
+	user.drop_inv_item_to_loc(item,loc)
 
 /obj/structure/closet/coffin/predator
 	name = "strange coffin"

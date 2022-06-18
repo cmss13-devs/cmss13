@@ -95,7 +95,14 @@
 	if(mods["ctrl"])
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
-
+		if(mods["click_catcher"])
+			return FALSE
+		var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
+		for(var/turf/T in path)
+			if(T.opacity)
+				return FALSE
+			for(var/obj/effect/particle_effect/smoke/S in T)
+				return FALSE
 		acquire_target(A, user)
 		return TRUE
 	return FALSE

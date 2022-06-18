@@ -14,10 +14,13 @@
 							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
 	)
 
-	var/timer = 10
+	var/deploying_time = 50
+	var/penetration = 1 // How much damage adjacent walls receive
+	var/timer = 10 // detonation time
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
+	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door)
 	antigrief_protection = TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/plastic/Destroy()
@@ -49,8 +52,8 @@
 			detonator.attack_self(user)
 		return
 	var/new_time = input(usr, "Please set the timer.", "Timer", 10) as num
-	if(new_time < 10)
-		new_time = 10
+	if(new_time < timer)
+		new_time = timer
 	else if(new_time > 60)
 		new_time = 60
 
@@ -58,6 +61,7 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
+	setDir(get_dir(user, target))
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting it!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
@@ -77,7 +81,7 @@
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] is trying to plant [name] on you!")))
 
-	if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if(!do_after(user, deploying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		if(!ismob(target))
 			disarm()
 		return
@@ -183,6 +187,7 @@
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.hull)
+			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
 			return FALSE
 
 	if(istype(target, /obj/structure/window))
@@ -199,6 +204,23 @@
 
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
+
+	return TRUE
+
+/obj/item/explosive/plastic/breaching_charge/can_place(var/mob/user, var/atom/target)
+	if(!is_type_in_list(target, breachable))//only items on the list are allowed
+		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
+		return FALSE
+
+	if(target.z == GLOB.interior_manager.interior_z)// vehicle checks again JUST IN CASE
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		return FALSE
+
+	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
+		var/obj/structure/window/W = target
+		if(W.not_damageable)
+			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+			return FALSE
 
 	return TRUE
 
@@ -260,24 +282,34 @@
 			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			qdel(src)
 		return
-	plant_target.ex_act(1000, , cause_data)
+
+	plant_target.ex_act(1000 * penetration, , cause_data)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
 			continue
-		W.ex_act(1000, , cause_data)
+		W.ex_act(1000 * penetration, , cause_data)
 
 	for(var/obj/structure/window/W in orange(1, target_turf))
 		if(W.not_damageable)
 			continue
 
-		W.ex_act(1000, , cause_data)
+		W.ex_act(1000 * penetration, , cause_data)
 
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
-		D.ex_act(1000, , cause_data)
+		D.ex_act(1000 * penetration, , cause_data)
 
+	handle_explosion(target_turf, dir, cause_data)
+
+/obj/item/explosive/plastic/proc/handle_explosion(turf/target_turf, dir, cause_data)
 	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	qdel(src)
 
+/obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
+	var/explosion_target = get_step(target_turf, dir)
+	create_shrapnel(explosion_target, 40, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
+	sleep(1)// prevents explosion from eating shrapnell
+	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
 
 /obj/item/explosive/plastic/proc/delayed_prime(var/turf/target_turf)
@@ -291,3 +323,14 @@
 	customizable = TRUE
 	matter = list("metal" = 7500, "plastic" = 2000) // 2 metal and 1 plastic sheet
 	has_blast_wave_dampener = TRUE
+
+/obj/item/explosive/plastic/breaching_charge
+	name = "breaching charge"
+	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
+	icon_state = "satchel-charge"
+	overlay_image = "satchel-active"
+	w_class = SIZE_SMALL
+	angle = 55
+	timer = 3
+	penetration = 0.45
+	deploying_time = 10

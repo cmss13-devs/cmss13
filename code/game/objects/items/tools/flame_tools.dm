@@ -351,7 +351,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.IgniteMob()
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
-		die()
+		smoketime = 0
+		go_out()
 		return
 
 	if(reagents && reagents.total_volume)	//	check if it has any reagents at all
@@ -372,21 +373,31 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/attack_self(mob/user)
 	if(heat_source)
-		user.visible_message(SPAN_NOTICE("[user] calmly drops and treads on the lit [src], putting it out instantly."))
-		die()
+		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/die()
-	var/turf/T = get_turf(src)
-	var/obj/item/butt = new type_butt(T)
-	transfer_fingerprints_to(butt)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user)
+	var/mob/living/M
 	if(ismob(loc))
-		var/mob/living/M = loc
-		to_chat(M, SPAN_NOTICE("Your [name] goes out."))
-		M.temp_drop_inv_item(src)	//un-equip it so the overlays can update
-		M.update_inv_wear_mask()
+		M = loc
+		if(user == M)
+			user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out [src]."))
+		else
+			to_chat(M, SPAN_NOTICE("Your [src] goes out."))
 	STOP_PROCESSING(SSobj, src)
-	qdel(src)
+	if(type_butt)
+		var/turf/T = get_turf(src)
+		var/obj/item/butt = new type_butt(T)
+		transfer_fingerprints_to(butt)
+		//if(M)
+			//M.temp_drop_inv_item(src)	//un-equip it so the overlays can updat
+		qdel(src)
+	else
+		heat_source = 0
+		icon_state = icon_off
+		item_state = icon_off
+	if(M)
+		M.update_inv_wear_mask()
 
 /obj/item/clothing/mask/cigarette/flamer_fire_act()
 	. = ..()
@@ -396,13 +407,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/extinguish()
 	. = ..()
 	if(heat_source)
-		die()
+		go_out()
 
 /obj/item/clothing/mask/cigarette/proc/handle_extinguish()
 	SIGNAL_HANDLER
 
 	if(heat_source)
-		die()
+		go_out()
 
 /obj/item/clothing/mask/cigarette/pickup(mob/user)
 	. = ..()
@@ -567,37 +578,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
+	type_butt = null
 	smoketime = 200 SECONDS
+	var/ash = FALSE
 
-/obj/item/clothing/mask/cigarette/pipe/process(delta_time)
-	var/turf/location = get_turf(src)
-	smoketime -= delta_time SECONDS
-	if(smoketime < 1)
-		new /obj/effect/decal/cleanable/ash(location)
-		if(ismob(loc))
-			var/mob/living/M = loc
-			to_chat(M, SPAN_NOTICE("Your [name] goes out, and you empty the ash."))
-			heat_source = 0
-			icon_state = icon_off
-			item_state = icon_off
-			M.update_inv_wear_mask(0)
-		STOP_PROCESSING(SSobj, src)
-		return
+/obj/item/clothing/mask/cigarette/pipe/go_out()
+	..()
+	if(smoketime <= 0)
+		ash = TRUE
 
 /// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user)
-	..()
-
-	if(heat_source)
-		user.visible_message(SPAN_NOTICE("[user] puts out [src]."))
-		heat_source = 0
-		icon_state = icon_off
-		item_state = icon_off
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(smoketime <= 0)
+	if(ash)
+		user.visible_message("[user] empties the ash out of [src].", "You empty the ash out of [src].")
+		new /obj/effect/decal/cleanable/ash(get_turf(user))
+		ash = FALSE
+	else if(smoketime <= 0)
 		to_chat(user, SPAN_NOTICE("You refill the pipe with tobacco."))
 		smoketime = initial(smoketime)
+	..()
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))

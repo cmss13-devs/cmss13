@@ -34,6 +34,11 @@
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
 		return
 
+	if(href_list["adminplayeropts"])
+		var/mob/M = locate(href_list["adminplayeropts"])
+		show_player_panel(M)
+		return
+
 	if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")

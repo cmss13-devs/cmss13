@@ -26,7 +26,7 @@
 	new /obj/item/storage/pouch/electronics(src)
 	new /obj/item/storage/pouch/general/medium(src)
 	new /obj/item/storage/pouch/construction(src)
-	new /obj/item/storage/pouch/tools(src)
+	new /obj/item/storage/pouch/tools/large(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"

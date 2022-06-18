@@ -174,6 +174,9 @@
   - qol: increased the volume of the notification sound when being spawned as a pooled
       larva.
 2022-06-18:
+  50RemAndCounting:
+  - bugfix: fixed the marine synth headset not having access to marine squad (alpha,
+      bravo, charlie, etc.) radio channels.
   Diegoflores31:
   - rscadd: Adds Breaching Charge . A fast planting explosive that keeps the operator
       safe while emiting deadly shrapnel towards the target . This new explosive is

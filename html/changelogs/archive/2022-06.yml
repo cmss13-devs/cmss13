@@ -182,3 +182,10 @@
   Segrain:
   - bugfix: Marines once again only get assigned to squads from Alpha to Delta and
       not to nonexistent squads like "Echo" or "Whiteout".
+  silencer_pl,Thwomper:
+  - rscadd: Adds a MP themed service jacket for all roles that can get the regular
+      version from general uniform vendors.
+  - rscadd: Adds a role-specific MP themed service jacket to all MPs as an option
+      from general uniform vendors. Not SOP compliant.
+  - rscadd: Adds role-specific "jacket-over-armor" MP armor variants to MP role uniform
+      vendors. SOP compliant.

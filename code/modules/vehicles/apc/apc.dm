@@ -220,16 +220,41 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
-/obj/vehicle/multitile/apc/plain_no_fpw
+//Transport version without FPWs
+
+/obj/vehicle/multitile/apc/unarmed
 	interior_map = "apc_no_fpw"
 
-//PRESET: no FPWs, no hardpoints
-/obj/effect/vehicle_spawner/apc/no_fpw/load_fpw(var/obj/vehicle/multitile/apc/V)
-	return
+//PRESET: no hardpoints
+/obj/effect/vehicle_spawner/apc/unarmed/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/unarmed/APC = new (loc)
+
+	load_hardpoints(APC)
+	handle_direction(APC)
+	APC.update_icon()
+
+//PRESET: default hardpoints, destroyed
+/obj/effect/vehicle_spawner/apc/unarmed/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/unarmed/APC = new (loc)
+
+	handle_direction(APC)
+	load_hardpoints(APC)
+	load_damage(APC)
+	APC.update_icon()
+
+/obj/effect/vehicle_spawner/apc/unarmed/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: no FPWs, wheels installed
-/obj/effect/vehicle_spawner/apc/no_fpw/load_fpw(var/obj/vehicle/multitile/apc/V)
-	return
+/obj/effect/vehicle_spawner/apc/unarmed/plain/load_hardpoints(var/obj/vehicle/multitile/apc/unarmed/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
-/obj/effect/vehicle_spawner/apc/no_fpw/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+//PRESET: default hardpoints
+/obj/effect/vehicle_spawner/apc/unarmed/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/unarmed/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

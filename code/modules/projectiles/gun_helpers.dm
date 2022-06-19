@@ -148,6 +148,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	unwield(user)
 
+/obj/item/weapon/gun/equipped(mob/user, slot)
+	. = ..()
+
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+	if(fire_delay_group && delay_left > 0)
+		for(var/group in fire_delay_group)
+			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
+
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE

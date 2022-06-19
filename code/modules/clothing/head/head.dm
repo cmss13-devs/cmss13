@@ -52,6 +52,17 @@
 /obj/item/clothing/head/beanie/tan
 	icon_state = "beanietan"
 
+/obj/item/clothing/head/beanie/twe_tan
+	name = "royal marine tan beanie"
+	desc = "TODO royal marine tan beanie"
+	icon_state = "rmc_beanie_tan"
+
+/obj/item/clothing/head/beanie/twe_black
+	name = "royal marine black beanie"
+	desc = "TODO royal marine black beanie"
+	icon_state = "rmc_beanie_black"
+
+
 /obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."

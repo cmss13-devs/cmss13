@@ -775,6 +775,19 @@
 	frequency = CLF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/cct)
 
+/obj/item/device/radio/headset/distress/TWE
+	name = "TWE headset"
+	desc = "A special headset used by the military forces of the Three World Empire. To access the colony channel, use :h."
+	frequency = TWE_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_TWE
+
+/obj/item/device/radio/headset/distress/TWE/cct
+	name = "TWE-CCT headset"
+	desc = "A special headset used by the military forces of the Three World Empire. Channels are as follows: :h - public, :o - combat controller."
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/cct)
+
 /obj/item/device/radio/headset/distress/commando
 	name = "Commando headset"
 	desc = "A special headset used by unidentified operatives. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."

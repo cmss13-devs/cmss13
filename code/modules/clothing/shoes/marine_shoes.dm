@@ -3,6 +3,7 @@
 /obj/item/clothing/shoes/marine
 	name = "marine combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time."
+	var/base_icon_state
 	icon_state = "marine"
 	item_state = "marine"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -18,41 +19,40 @@
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	siemens_coefficient = 0.7
-	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
+	var/armor_stage = 0
+	var/stored_knife
+
+/obj/item/clothing/shoes/marine/Initialize(mapload, ...)
+	. = ..()
+	if(stored_knife)
+		stored_item = new stored_knife(src)
+	base_icon_state = icon_state
+	update_icon()
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)
-		icon_state = "[initial(icon_state)]-1"
+		icon_state = "[base_icon_state]-1"
 	else
 		if(!armor_stage)
-			icon_state = initial(icon_state)
+			icon_state = base_icon_state
 
-/obj/item/clothing/shoes/marine/knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+/obj/item/clothing/shoes/marine/knife
+	stored_knife = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
 	desc = "Don't go walkin' slow, the devil's on the loose."
 
-/obj/item/clothing/shoes/marine/jungle/knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+/obj/item/clothing/shoes/marine/jungle/knife
+	stored_knife = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/monkey
 	name = "monkey combat boots"
 	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
 	icon_state = "monkey_shoes"
 	item_state = "monkey_shoes"
-
-// a monkey knife for a good monkey life
-/obj/item/clothing/shoes/marine/monkey/Initialize(mapload, ...)
-	. = ..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+	stored_knife = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
@@ -64,17 +64,28 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	stored_knife = /obj/item/attachable/bayonet/upp
 
-/obj/item/clothing/shoes/marine/upp/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet/upp(src)
-	update_icon()
+/obj/item/clothing/shoes/marine/twe
+	name = "royal marine combat boots"
+	icon_state = "rmc_boots"
+	item_state = "rmc_boots"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	stored_knife = /obj/item/attachable/bayonet
 
-/obj/item/clothing/shoes/marine/upp_knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet/upp(src)
-	update_icon()
-
+/obj/item/clothing/shoes/marine/twe/Initialize(mapload, ...)
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		base_icon_state = "s_" + icon_state
+		icon_state = base_icon_state
+		item_state = base_icon_state
+	return ..()
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -159,7 +170,7 @@
 	stored_item = knife
 	update_icon()
 
-/obj/item/clothing/shoes/marine/ress
+/obj/item/clothing/shoes/marine/sandals
 	name = "armoured sandals"
 	icon_state = "sandals"
 	item_state = "sandals"

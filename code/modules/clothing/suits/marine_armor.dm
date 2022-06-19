@@ -1543,6 +1543,75 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 2
 
+//===========================//THREE WORLD EMPIRE\\================================\\
+//=================================================================================\\
+
+/obj/item/clothing/suit/storage/marine/faction/twe
+	name = "TODO royal marine medium armor"
+	desc = "TODO royal marine medium armor"
+	icon_state = "rmc_medium"
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/faction/twe/Initialize()
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		icon_state = "s_" + icon_state
+		item_state = icon_state
+	uniform_restricted = typesof(/obj/item/clothing/under/marine/veteran/twe)
+	return ..()
+
+/obj/item/clothing/suit/storage/marine/faction/twe/light
+	name = "TODO royal marine light armor"
+	desc = "TODO royal marine light armor"
+	icon_state = "rmc_light"
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/faction/twe/light/padded
+	name = "TODO royal marine padded armor"
+	desc = "TODO royal marine padded armor"
+	icon_state = "rmc_light_padded"
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/faction/twe/pointman
+	name = "TODO royal marine pointman armor"
+	desc = "TODO royal marine pointman armor"
+	icon_state = "rmc_pointman"
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 1
 
 //===========================//FREELANCER\\================================\\
 //=====================================================================\\

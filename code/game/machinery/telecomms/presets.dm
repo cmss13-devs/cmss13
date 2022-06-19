@@ -167,6 +167,10 @@
 	freq_listening = list(CLF_FREQ, CCT_FREQ)
 	faction_shorthand = "CLF"
 
+/obj/structure/machinery/telecomms/relay/preset/tower/faction/twe
+	freq_listening = list(TWE_FREQ, CCT_FREQ)
+	faction_shorthand = "TWE"
+
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/pmc
 	freq_listening = list(PMC_FREQ, CCT_FREQ)
 	faction_shorthand = "PMC"

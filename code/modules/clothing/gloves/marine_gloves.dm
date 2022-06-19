@@ -136,6 +136,18 @@
 	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
 	unacidable = TRUE
 
+/obj/item/clothing/gloves/marine/veteran/twe
+	name = "royal marine armored gloves"
+	desc = "Kevlon fiber gloves worn by the military forces of the Three World Empire. They're insulated and heavily armored."
+	icon_state = "rmc_gloves"
+	item_state = "rmc_gloves"
+
+/obj/item/clothing/gloves/marine/veteran/twe/Initialize(mapload, ...)
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		icon_state = "s_" + icon_state
+		item_state = icon_state
+	return ..()
+
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."

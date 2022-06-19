@@ -510,6 +510,39 @@
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
 
+/obj/item/clothing/under/marine/veteran/twe
+	name = "TODO royal marine fatigues"
+	desc = "TODO royal marine fatigues"
+	icon_state = "rmc_uniform"
+	worn_state = "rmc_uniform"
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_TWE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/marine/veteran/twe/Initialize(mapload, list/new_protection, list/override_icon_state)
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		icon_state = "s_" + icon_state
+		item_state = icon_state
+		worn_state = icon_state
+		flags_jumpsuit = NO_FLAGS
+	suit_restricted = typesof(/obj/item/clothing/suit/storage/marine/faction/twe)
+	return ..()
+
+/obj/item/clothing/under/marine/veteran/twe/lead
+	name = "TODO royal marine lead fatigues"
+	desc = "TODO royal marine lead fatigues"
+	icon_state = "rmc_uniform_teaml"
+	worn_state = "rmc_uniform_teaml"
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/marine/veteran/twe/lt
+	name = "TODO royal marine lt fatigues"
+	desc = "TODO royal marine lt fatigues"
+	icon_state = "rmc_uniform_lt"
+	worn_state = "rmc_uniform_lt"
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
 //=========================//Freelancer\\================================\\
 
 /obj/item/clothing/under/marine/veteran/freelancer
@@ -711,9 +744,9 @@
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
-/obj/item/clothing/under/ress_suit
+/obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
-	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Royal Empire of the Rising Sun. Expertly crafted to make you look as important as possible."
+	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Three World Empire. Expertly crafted to make you look as important as possible."
 	icon_state = "ress_suit"
 	worn_state = "ress_suit"
 

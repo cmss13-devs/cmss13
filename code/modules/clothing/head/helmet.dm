@@ -1077,6 +1077,39 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	item_state = "s_helmet"
 	flags_marine_helmet = NO_FLAGS
 
+/obj/item/clothing/head/helmet/marine/veteran/twe
+	name = "TODO helmet 1"
+	desc = "TODO helmet 1"
+	icon_state = "rmc_helm1"
+	item_state = "rmc_helm1"
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/Initialize(mapload, ...)
+	handle_snow_variant()
+	return ..()
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/proc/handle_snow_variant()
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		icon_state = "s_" + icon_state
+		item_state = icon_state
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/alt
+	name = "TODO helmet 2"
+	desc = "TODO helmet 2"
+	icon_state = "rmc_helm2"
+	item_state = "rmc_helm2"
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/tl
+	name = "\improper royal marine beret"
+	desc = "TODO royal marine beret"
+	icon_state = "rmc_beret"
+	item_state = "rmc_beret"
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/tl/handle_snow_variant()
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		name = "royal marine lead helmet"
+		desc = "TODO royal marine lead helmet"
+		icon_state = "s_rmc_helm_tl"
+		item_state = icon_state
 
 //head rag
 

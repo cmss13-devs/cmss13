@@ -354,6 +354,8 @@
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+//Ties that can store stuff
+
 /obj/item/storage/internal/accessory
 	storage_slots = 3
 

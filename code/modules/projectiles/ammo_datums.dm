@@ -2303,6 +2303,7 @@
 	flags_ammo_behavior = AMMO_XENO_ACID
 	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
 	var/spit_cost
+	var/spit_windup = FALSE
 
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
@@ -2539,7 +2540,8 @@
 	max_range = 24
 	damage = 50
 	shell_speed = AMMO_SPEED_TIER_3
-	added_spit_delay = 0
+	added_spit_delay = 6 SECONDS
+	spit_windup = 5 SECONDS
 
 
 /datum/ammo/xeno/acid/dot

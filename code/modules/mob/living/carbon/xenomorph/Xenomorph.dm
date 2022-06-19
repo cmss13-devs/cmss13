@@ -263,7 +263,6 @@
 	var/max_placeable = 0 // Limit to that amount
 	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
 	var/list/built_structures = list()
-	var
 	var/icon_xeno
 	var/icon_xenonid
 

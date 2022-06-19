@@ -12,33 +12,34 @@
 	) /////////////// todo: put the actions you want here
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/xeno_spit,
-		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler
 	)
 	keystone = TRUE
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_striker
 
 /datum/xeno_mutator/striker/apply_mutator(datum/mutator_set/individual_mutators/MS)
-	. = ..()
-	if(. == 0)
-		return
+    . = ..()
+    if(. == 0)
+        return
 
-	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
-	if(B.is_zoomed)
-		B.zoom_out()
-	B.spit_types = list(/datum/ammo/xeno/acid/praetorian)
-	B.spit_delay = 5 SECONDS
-	B.spit_windup = 3 SECONDS
-	B.mutation_type = BOILER_STRIKER
-	B.plasma_types -= PLASMA_NEUROTOXIN
+    var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
+    if(B.is_zoomed)
+        B.zoom_out()
+    B.spit_types = list(/datum/ammo/xeno/acid/railgun)
+    B.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/railgun]
+    B.spit_delay = 5 SECONDS
+    B.spit_windup = 3 SECONDS
+    B.mutation_type = BOILER_STRIKER
+    B.plasma_types -= PLASMA_NEUROTOXIN
 
-	//B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_1
-	B.recalculate_everything()
+    //B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_1
+    B.recalculate_everything()
 
-	apply_behavior_holder(B)
+    apply_behavior_holder(B)
 
-	mutator_update_actions(B)
-	MS.recalculate_actions(description, flavor_description)
+    mutator_update_actions(B)
+    MS.recalculate_actions(description, flavor_description)
 
 // find out why its being dumb and making it neuro gas
 // save neuro gas for base globber

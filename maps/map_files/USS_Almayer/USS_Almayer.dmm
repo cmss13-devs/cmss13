@@ -38458,6 +38458,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"dUk" = (
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
+	density = 0
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull/l_a_s)
 "dUE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -43916,6 +43922,10 @@
 /area/almayer/shipboard/brig/processing)
 "gjN" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
+	density = 0;
+	pixel_x = 32
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -131653,7 +131663,7 @@ eFH
 hlz
 rdK
 rdK
-rdK
+dUk
 rdK
 rdK
 aLG

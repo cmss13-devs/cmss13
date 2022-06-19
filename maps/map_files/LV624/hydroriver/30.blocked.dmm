@@ -1,0 +1,389 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aO" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle/north_jungle)
+"bd" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/north_jungle)
+"bk" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_east_jungle)
+"ck" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"cQ" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle/north_jungle)
+"fX" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle/north_jungle)
+"ih" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"it" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"jg" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"jy" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"jY" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/north_jungle)
+"kg" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"kh" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"kD" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"lm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"np" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_east_jungle)
+"nJ" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_east_jungle)
+"ot" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"qe" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"tK" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"vm" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_east_jungle)
+"Cq" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"FJ" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"Km" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river/west_river)
+"Lu" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"Mm" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/west_river)
+"OI" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_jungle)
+"TL" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"YV" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"ZL" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/north_jungle)
+
+(1,1,1) = {"
+Km
+Mm
+OI
+"}
+(2,1,1) = {"
+aO
+cQ
+OI
+"}
+(3,1,1) = {"
+OI
+fX
+YV
+"}
+(4,1,1) = {"
+OI
+YV
+kh
+"}
+(5,1,1) = {"
+OI
+OI
+FJ
+"}
+(6,1,1) = {"
+OI
+Cq
+FJ
+"}
+(7,1,1) = {"
+OI
+YV
+FJ
+"}
+(8,1,1) = {"
+TL
+ZL
+FJ
+"}
+(9,1,1) = {"
+YV
+FJ
+ot
+"}
+(10,1,1) = {"
+YV
+FJ
+FJ
+"}
+(11,1,1) = {"
+OI
+YV
+FJ
+"}
+(12,1,1) = {"
+OI
+OI
+FJ
+"}
+(13,1,1) = {"
+OI
+YV
+FJ
+"}
+(14,1,1) = {"
+bd
+Lu
+FJ
+"}
+(15,1,1) = {"
+YV
+ih
+FJ
+"}
+(16,1,1) = {"
+YV
+it
+FJ
+"}
+(17,1,1) = {"
+OI
+YV
+FJ
+"}
+(18,1,1) = {"
+OI
+jg
+FJ
+"}
+(19,1,1) = {"
+OI
+OI
+FJ
+"}
+(20,1,1) = {"
+OI
+YV
+FJ
+"}
+(21,1,1) = {"
+OI
+jy
+FJ
+"}
+(22,1,1) = {"
+OI
+FJ
+FJ
+"}
+(23,1,1) = {"
+OI
+YV
+qe
+"}
+(24,1,1) = {"
+OI
+FJ
+FJ
+"}
+(25,1,1) = {"
+OI
+jY
+FJ
+"}
+(26,1,1) = {"
+YV
+Lu
+FJ
+"}
+(27,1,1) = {"
+OI
+YV
+FJ
+"}
+(28,1,1) = {"
+OI
+Lu
+FJ
+"}
+(29,1,1) = {"
+OI
+YV
+FJ
+"}
+(30,1,1) = {"
+OI
+OI
+FJ
+"}
+(31,1,1) = {"
+OI
+kg
+FJ
+"}
+(32,1,1) = {"
+OI
+FJ
+FJ
+"}
+(33,1,1) = {"
+OI
+kh
+FJ
+"}
+(34,1,1) = {"
+OI
+YV
+FJ
+"}
+(35,1,1) = {"
+OI
+kD
+FJ
+"}
+(36,1,1) = {"
+OI
+OI
+FJ
+"}
+(37,1,1) = {"
+OI
+YV
+FJ
+"}
+(38,1,1) = {"
+OI
+kh
+FJ
+"}
+(39,1,1) = {"
+OI
+lm
+FJ
+"}
+(40,1,1) = {"
+OI
+OI
+kh
+"}
+(41,1,1) = {"
+OI
+Cq
+YV
+"}
+(42,1,1) = {"
+YV
+YV
+tK
+"}
+(43,1,1) = {"
+bk
+np
+vm
+"}
+(44,1,1) = {"
+ck
+nJ
+np
+"}

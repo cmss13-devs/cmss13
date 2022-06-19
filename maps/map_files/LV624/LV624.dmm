@@ -21554,6 +21554,12 @@
 "uAp" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"uCX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-northnexus"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/sleep_male)
 "uDd" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -21905,6 +21911,15 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"voV" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-hydroriver"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle/north_jungle)
 "vpu" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -38293,7 +38308,7 @@ aul
 avK
 avK
 aBn
-asr
+voV
 xzD
 xzD
 cfN
@@ -49270,7 +49285,7 @@ ayP
 azp
 azP
 azP
-azP
+uCX
 aAU
 aBZ
 azP

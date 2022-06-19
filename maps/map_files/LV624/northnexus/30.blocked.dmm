@@ -1,0 +1,443 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"bd" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"bk" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"bw" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/handful/shotgun/buckshot{
+	pixel_y = -12
+	},
+/obj/item/explosive/grenade/custom/ied,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"bT" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"ck" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/colony/north_nexus_road)
+"cQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"fX" = (
+/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"gu" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/handful/shotgun/buckshot{
+	pixel_x = -12
+	},
+/obj/item/map/current_map{
+	layer = 2.99
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"ih" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/colony/north_nexus_road)
+"it" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"iX" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"jg" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"jy" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"jY" = (
+/turf/open/gm/grass,
+/area/lv624/lazarus/quartstorage/outdoors)
+"kg" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"kh" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"kD" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 3
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"lm" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"mp" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"mM" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"mZ" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"np" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"nE" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"nJ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"nO" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 12
+	},
+/obj/item/explosive/grenade/custom/ied,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"nP" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"pa" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless{
+	uses_left = 0
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"qe" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"rA" = (
+/obj/structure/bed/sofa/south/white/right,
+/obj/item/storage/firstaid/regular/empty,
+/obj/item/stack/medical/bruise_pack{
+	amount = 6
+	},
+/obj/item/stack/medical/ointment{
+	amount = 3
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"tK" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"vm" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"vB" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/sleep_male)
+"vO" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib5"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"wr" = (
+/obj/structure/bed/sofa/south/white/left,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/structure/sign/poster{
+	pixel_y = 32
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"zL" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 12
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"Cq" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"Lu" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"Mh" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/main_hall)
+"Mm" = (
+/turf/closed/wall,
+/area/lv624/lazarus/sleep_male)
+"OI" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"SD" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibmid1"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"TL" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+"YV" = (
+/turf/closed/wall,
+/area/lv624/lazarus/sleep_female)
+"Ze" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/sleep_female)
+"ZL" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib1"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
+
+(1,1,1) = {"
+bd
+jg
+bk
+jy
+jy
+jy
+Mh
+vB
+Mm
+Mm
+Mm
+"}
+(2,1,1) = {"
+bk
+jy
+jy
+jy
+jy
+jy
+Mh
+bT
+aO
+cQ
+vO
+"}
+(3,1,1) = {"
+ck
+jy
+jy
+np
+nJ
+vm
+Mh
+wr
+OI
+fX
+mM
+"}
+(4,1,1) = {"
+ih
+jy
+kg
+bd
+qe
+Lu
+Mh
+rA
+pa
+bw
+kh
+"}
+(5,1,1) = {"
+ih
+jy
+kD
+bd
+bd
+bk
+Mh
+nP
+SD
+zL
+gu
+"}
+(6,1,1) = {"
+ih
+jy
+lm
+jg
+tK
+jy
+Mh
+mp
+TL
+Cq
+nO
+"}
+(7,1,1) = {"
+ih
+jy
+jy
+jy
+jy
+jy
+Mh
+iX
+TL
+nE
+mZ
+"}
+(8,1,1) = {"
+it
+jY
+jY
+jY
+jy
+jy
+Mh
+bT
+TL
+ZL
+OI
+"}
+(9,1,1) = {"
+it
+jY
+jY
+jY
+jy
+jy
+Mh
+Ze
+YV
+YV
+YV
+"}

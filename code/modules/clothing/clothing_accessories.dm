@@ -124,7 +124,7 @@
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living))
+	if(!isliving(usr))
 		return
 	if(usr.stat)
 		return
@@ -139,7 +139,7 @@
 		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
 	else
 		A = LAZYACCESS(accessories, 1)
-	if(!(usr.Adjacent(src)))
+	if(!usr.Adjacent(src))
 		to_chat(usr, SPAN_WARNING("You're too far away!"))
 		return
 	src.remove_accessory(usr,A)

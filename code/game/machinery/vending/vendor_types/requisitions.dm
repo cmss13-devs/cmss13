@@ -76,6 +76,7 @@
 		list("Technician Welderpack", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack, VENDOR_ITEM_REGULAR),
 		list("Mortar Shell Backpack", round(scale * 1), /obj/item/storage/backpack/marine/mortarpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", round(scale * 5), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
+		list("Small Radio Telephone Pack", round(scale * 4), /obj/item/storage/backpack/marine/satchel/rto/small, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("G8-A General Utility Pouch", round(scale * 2), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
@@ -123,7 +124,6 @@
 		list("Binoculars", round(scale * 2), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("Rangefinder", round(scale * 1), /obj/item/device/binoculars/range, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", round(scale * 1), /obj/item/device/binoculars/range/designator, VENDOR_ITEM_REGULAR),
-		list("Small Radio Telephone Pack", round(scale * 4), /obj/item/storage/backpack/marine/satchel/rto/small, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 3), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", round(scale * 3), /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", round(scale * 1), /obj/item/stack/fulton, VENDOR_ITEM_REGULAR),
@@ -192,6 +192,7 @@
 		list("Shotgun Scabbard", round(scale * 5), /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
 		list("USCM Technician Welderpack", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", round(scale * 3), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
+		list("Small Radio Telephone Pack", round(scale * 1), /obj/item/storage/backpack/marine/satchel/rto/small, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("G8-A General Utility Pouch", round(scale * 2), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
@@ -223,7 +224,6 @@
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
-		list("Small Radio Telephone Pack", round(scale * 1), /obj/item/storage/backpack/marine/satchel/rto/small, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", round(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
 		)
 

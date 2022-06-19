@@ -185,7 +185,7 @@
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
 				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
-					emote("roar")
+					emote("roar2")
 					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 					hunter_data.prey = null
 				else
@@ -236,7 +236,7 @@
 			H.butchery_progress = 0
 			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
-				emote("roar")
+				emote("roar2")
 				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 				hunter_data.prey = null
 			else

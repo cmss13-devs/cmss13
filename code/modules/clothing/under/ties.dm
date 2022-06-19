@@ -665,7 +665,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 				if(!stop_messages)
 					to_chat(usr, SPAN_WARNING("[src] already holds \a [W]."))
 				return
-		else //Must be ammo.s
+		else //Must be ammo.
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
 			var/ammo_stored = length(contents)
 			if(current_gun)

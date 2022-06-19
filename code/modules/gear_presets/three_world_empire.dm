@@ -41,6 +41,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/twe, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/twe, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/twe, WEAR_IN_BACK)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/twe, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/twe, WEAR_HANDS)
@@ -59,11 +62,14 @@
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/TWE/cct, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/twe/tl, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/twe/beret/tl, WEAR_HEAD)
 	//body
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/twe/lead, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/twe/light/padded, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/twe, WEAR_IN_BACK)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/twe, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/twe, WEAR_HANDS)
@@ -82,11 +88,14 @@
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/TWE/cct, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/twe/tl, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/twe/beret, WEAR_HEAD)
 	//body
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/twe/lt, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/twe/light, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/twe, WEAR_IN_BACK)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/twe, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/twe, WEAR_HANDS)

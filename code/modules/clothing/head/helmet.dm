@@ -1098,18 +1098,24 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	icon_state = "rmc_helm2"
 	item_state = "rmc_helm2"
 
-/obj/item/clothing/head/helmet/marine/veteran/twe/tl
-	name = "\improper royal marine beret"
+/obj/item/clothing/head/helmet/marine/veteran/twe/beret
+	name = "royal marine beret"
 	desc = "TODO royal marine beret"
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 
-/obj/item/clothing/head/helmet/marine/veteran/twe/tl/handle_snow_variant()
+/obj/item/clothing/head/helmet/marine/veteran/twe/beret/handle_snow_variant()
 	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
-		name = "royal marine lead helmet"
-		desc = "TODO royal marine lead helmet"
+		name = "royal marine snow helmet"
+		desc = "TODO royal marine snow helmet"
 		icon_state = "s_rmc_helm_tl"
 		item_state = icon_state
+
+/obj/item/clothing/head/helmet/marine/veteran/twe/beret/tl
+	name = "TODO royal marine lead beret"
+	desc = "TODO royal marine lead beret"
+	icon_state = "rmc_beret_tl"
+	item_state = "rmc_beret_tl"
 
 //head rag
 

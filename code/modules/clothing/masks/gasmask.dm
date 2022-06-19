@@ -31,6 +31,20 @@
 	icon_state = "kutjevo_respirator"
 	item_state = "kutjevo_respirator"
 
+/obj/item/clothing/mask/gas/twe
+	name = "royal marine gas mask"
+	desc = "TODO royal marine gas mask"
+	icon_state = "rmc_gasmask"
+	item_state = "rmc_gasmask"
+
+/obj/item/clothing/mask/gas/twe/Initialize(mapload, ...)
+	if(SSmapping.configs[GROUND_MAP].map_name in list(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA))
+		name = "royal marine snow mask"
+		desc = "TODO royal marine snow mask"
+		icon_state = "s_rmc_mask"
+		item_state = icon_state
+	return ..()
+
 /obj/item/clothing/mask/gas/PMC
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter."

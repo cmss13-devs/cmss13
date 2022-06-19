@@ -522,7 +522,7 @@ var/global/players_preassigned = 0
 	if(!ishuman(M))
 		return
 
-	var/mob/living/carbon/H = M
+	var/mob/living/carbon/human/H = M
 
 	H.job = J.title //TODO Why is this a mob variable at all?
 
@@ -564,6 +564,17 @@ var/global/players_preassigned = 0
 	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(H)
+
+	if(locate(/obj/structure/machinery/cryopod) in range(1, H))
+		var/obj/item/storage/backpack/marine/spawn_backpack = H.back
+		if(!spawn_backpack)
+			spawn_backpack = new /obj/item/storage/backpack/marine(H.loc)
+			H.equip_to_slot_if_possible(spawn_backpack, WEAR_L_HAND)
+		for(var/obj/item/item in list(H.r_store, H.l_store, H.s_store, H.wear_suit, H.w_uniform, H.shoes, H.belt, H.gloves, H.glasses, H.wear_l_ear, H.wear_r_ear))
+			H.drop_inv_item_to_loc(item, spawn_backpack, force = TRUE)
+		to_chat(H, SPAN_WARNING("You wake up covered in cryo jelly, maybe you should go hit the showers after getting food."))
+		H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
+		H.fire_stacks = 10
 
 	H.sec_hud_set_ID()
 	H.hud_set_squad()

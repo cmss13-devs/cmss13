@@ -727,18 +727,15 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
 	can_hold = list(
-		/obj/item/weapon/gun/pistol,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/energy/taser,
-		/obj/item/weapon/gun/flare
-	)
+
+// Change flare gun to pistol preferably - + testing needed but that tomorrow now im going to sleep
+	/obj/item/weapon/gun/pistol,
+	/obj/item/weapon/gun/flare,
+	/obj/item/weapon/gun/energy/taser,
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver
+
+	 )
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)

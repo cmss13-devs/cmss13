@@ -33,10 +33,13 @@
 		"Machine",
 		"Human Hero",
 		SYNTH_COLONY,
+		SYNTH_COLONY_GEN_ONE,
+		SYNTH_COLONY_GEN_TWO,
 		SYNTH_COMBAT,
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,
-		SYNTH_GEN_THREE
+		SYNTH_GEN_THREE,
+		SYNTH_WORKING_JOE
 		)
 
 	// Whether or not the accessory can be affected by colouration

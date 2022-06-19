@@ -8930,7 +8930,6 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -8938,7 +8937,6 @@
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -8946,7 +8944,6 @@
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -8957,7 +8954,6 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -8968,7 +8964,6 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9289,7 +9284,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9299,7 +9293,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor{
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9310,7 +9303,6 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9340,7 +9332,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor{
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9355,7 +9346,6 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9377,7 +9367,6 @@
 	tag = "icon-wooden_chair (WEST)"
 	},
 /turf/open/floor{
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9713,7 +9702,6 @@
 "aya" = (
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -9721,7 +9709,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -10017,14 +10004,12 @@
 /area/prison/chapel)
 "ayW" = (
 /turf/open/floor{
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
 "ayX" = (
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -10035,7 +10020,6 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -11387,7 +11371,6 @@
 "aCK" = (
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12413,7 +12396,6 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12429,7 +12411,6 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12445,7 +12426,6 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12934,7 +12914,6 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12948,7 +12927,6 @@
 	network = list("PRISON")
 	},
 /turf/open/floor{
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -12959,7 +12937,6 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -32172,7 +32149,6 @@
 "bIb" = (
 /obj/structure/machinery/door/airlock/glass,
 /turf/open/floor{
-	icon_regular_floor = "delivery";
 	icon_state = "delivery"
 	},
 /area/prison/monorail/east)
@@ -41746,7 +41722,6 @@
 "ckj" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -41764,7 +41739,6 @@
 /area/prison/pirate)
 "ckn" = (
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -42409,14 +42383,12 @@
 	dir = 8
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
 "cmf" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -42425,7 +42397,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -42657,14 +42628,12 @@
 "cmS" = (
 /obj/item/ammo_casing,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
 "cmT" = (
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -43125,7 +43094,6 @@
 /obj/item/weapon/gun/rifle/mar40,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -43136,7 +43104,6 @@
 	flipped = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -43367,7 +43334,6 @@
 	flipped = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -43376,7 +43342,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -45273,7 +45238,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -45313,7 +45277,6 @@
 "cvq" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -45337,7 +45300,6 @@
 	dir = 8
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -45838,7 +45800,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -45854,7 +45815,6 @@
 	unslashable = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)
@@ -48240,7 +48200,6 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -49098,7 +49057,6 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -49688,7 +49646,6 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -52065,7 +52022,6 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_regular_floor = "chapel";
 	icon_state = "chapel"
 	},
 /area/prison/chapel)
@@ -52678,7 +52634,6 @@
 	flipped = 1
 	},
 /turf/open/floor/plating{
-	icon_plating = "platebot";
 	icon_state = "platebot"
 	},
 /area/prison/pirate)

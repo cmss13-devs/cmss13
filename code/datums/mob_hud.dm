@@ -268,8 +268,13 @@ var/list/datum/mob_hud/huds = list(
 	if(stat == DEAD)
 		holder.icon_state = "[health_hud_type]0"
 	else
-		var/amount = round(health*100/maxHealth, 10)
-		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
+		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
+		if(health < 0)
+			amount = round((health / (crit_health - warding_aura * 20)) * -100, 10)
+		else
+			amount = CEILING((health / maxHealth) * 100, 10)
+		if(!amount)
+			amount = -1 //don't want the 'zero health' icon when we are crit
 		holder.icon_state = "[health_hud_type][amount]"
 
 /mob/living/carbon/Xenomorph/proc/overlay_shields()
@@ -711,15 +716,15 @@ var/global/image/hud_icon_hudfocus
 	holder.overlays.Cut()
 	if(mobility_aura)
 		if(!hud_icon_hudmove)
-			hud_icon_hudmove = image('icons/mob/hud/hud.dmi', src, "hudmove")
+			hud_icon_hudmove = image('icons/mob/hud/marine_hud.dmi', src, "hudmove")
 		holder.overlays += hud_icon_hudmove
 	if(protection_aura)
 		if(!hud_icon_hudhold)
-			hud_icon_hudhold = image('icons/mob/hud/hud.dmi', src, "hudhold")
+			hud_icon_hudhold = image('icons/mob/hud/marine_hud.dmi', src, "hudhold")
 		holder.overlays += hud_icon_hudhold
 	if(marksman_aura)
 		if(!hud_icon_hudfocus)
-			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
+			hud_icon_hudfocus = image('icons/mob/hud/marine_hud.dmi', src, "hudfocus")
 		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
 

@@ -4,6 +4,7 @@
 #define YAUTJA_GEAR_SWORD		"The Piercing Hunting Sword"
 #define YAUTJA_GEAR_SCYTHE		"The Cleaving War-Scythe"
 #define YAUTJA_GEAR_STICK		"The Adaptive Combi-Stick"
+#define YAUTJA_GEAR_SPEAR		"The Nimble Spear"
 #define YAUTJA_GEAR_SCIMS		"The Fearsome Scimitars"
 #define YAUTJA_GEAR_LAUNCHER	"The Fleeting Spike Launcher"
 #define YAUTJA_GEAR_PISTOL		"The Swift Plasma Pistol"
@@ -11,3 +12,8 @@
 #define YAUTJA_GEAR_FULL_ARMOR	"The Formidable Plate Armor"
 #define YAUTJA_GEAR_SHIELD		"The Steadfast Shield"
 #define YAUTJA_GEAR_DRONE		"The Agile Drone"
+
+#define YAUTJA_THRALL_GEAR_MACHETE "The Swift Machete"
+#define YAUTJA_THRALL_GEAR_RAPIER "The Dancing Rapier"
+#define YAUTJA_THRALL_GEAR_CLAYMORE "The Broad Claymore"
+#define YAUTJA_THRALL_GEAR_FIREAXE "The Purposeful Fireaxe"

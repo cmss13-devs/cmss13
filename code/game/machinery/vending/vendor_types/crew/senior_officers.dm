@@ -39,6 +39,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Military Police Chief M3 Armor and Service Jacket", 0, /obj/item/clothing/suit/storage/marine/MP/WO/jacket, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Military Police Chief M3 Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),

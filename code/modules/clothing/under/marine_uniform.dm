@@ -102,7 +102,7 @@
 	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
@@ -115,7 +115,7 @@
 	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
@@ -136,7 +136,7 @@
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
@@ -625,18 +625,24 @@
 	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_davisone
 	name = "brown utilities"
 	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_joliet_shopsteward
 	name = "stewart utilities"
 	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewarts."
 	icon_state = "wy_joliet_shopsteward"
 	worn_state = "wy_joliet_shopsteward"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt
 	name = "T-shirt parent object"
@@ -647,18 +653,24 @@
 	desc = "A confortable white T-shirt and brown jeans."
 	icon_state = "tshirt_w_br"
 	worn_state = "tshirt_w_br"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
 	desc = "A confortable gray T-shirt and blue jeans."
 	icon_state = "tshirt_gray_blu"
 	worn_state = "tshirt_gray_blu"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/tshirt/r_bla
 	name = "red T-shirt and black pants"
 	desc = "A confortable red T-shirt and black jeans."
 	icon_state = "tshirt_r_bla"
 	worn_state = "tshirt_r_bla"
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/CM_uniform
 	name = "\improper Colonial Marshal uniform"
@@ -717,7 +729,7 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/ro_suit
-	name = "requisition officer suit."
+	name = "requisition officer suit"
 	desc = "A nicely-fitting military suit for a requisition officer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"

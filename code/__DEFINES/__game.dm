@@ -115,11 +115,12 @@
 #define GHOST_HEALTH_SCAN  (1<<0)
 
 //toggles_flashing
-#define FLASH_ROUNDSTART   (1<<0)
-#define FLASH_ROUNDEND     (1<<1)
-#define FLASH_CORPSEREVIVE (1<<2)
-#define FLASH_ADMINPM      (1<<3)
-#define FLASH_UNNEST       (1<<4)
+#define FLASH_ROUNDSTART		(1<<0)
+#define FLASH_ROUNDEND			(1<<1)
+#define FLASH_CORPSEREVIVE		(1<<2)
+#define FLASH_ADMINPM			(1<<3)
+#define FLASH_UNNEST			(1<<4)
+#define FLASH_POOLSPAWN			(1<<5)
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)

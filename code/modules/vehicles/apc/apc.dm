@@ -214,6 +214,9 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
+/obj/vehicle/multitile/apc/plain_no_fpw
+	interior_map = "apc_no_fpw"
+
 /obj/vehicle/multitile/apc/plain_no_fpw/load_hardpoints(var/obj/vehicle/multitile/R)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 

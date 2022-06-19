@@ -110,7 +110,19 @@
 	skills = /datum/skills/colonial_synthetic
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
+	var/generation_selection = SYNTH_COLONY_GEN_ONE
+	if(H.client?.prefs?.synthetic_type)
+		generation_selection = H.client.prefs.synthetic_type
+	switch(generation_selection)
+		if(SYNTH_GEN_THREE)
+			H.set_species(SYNTH_COLONY)
+		if(SYNTH_GEN_TWO)
+			H.set_species(SYNTH_COLONY_GEN_TWO)
+		if(SYNTH_GEN_ONE)
+			H.set_species(SYNTH_COLONY_GEN_ONE)
+		else
+			H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
@@ -136,12 +148,12 @@
 
 /datum/equipment_preset/synth/working_joe
 	name = "Working Joe"
-	flags = EQUIPMENT_PRESET_EXTRA
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
-	skills = /datum/skills/colonial_synthetic
+	skills = /datum/skills/working_joe
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
@@ -155,23 +167,37 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	//New equipment added as of 5-20-22
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/mop(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/wet_sign(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_R_HAND)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
 	. = ..()
-	H.r_eyes = 255
-	H.g_eyes = 255
-	H.b_eyes = 255
 	H.h_style = "Bald"
-	H.r_hair = 255
-	H.g_hair = 255
-	H.b_hair = 255
 	H.f_style = "Shaved"
+	if(prob(5))
+		H.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
+	H.r_eyes = 0
+	H.g_eyes = 0
+	H.b_eyes = 0
+	H.r_hair = 100
+	H.g_hair = 88
+	H.b_hair = 74
 	H.r_facial = 255
 	H.g_facial = 255
 	H.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
-	H.change_real_name(H, "Working Joe")
+	H.change_real_name(H, "Working Joe #[rand(100)][rand(100)]")
 
 //*****************************************************************************************************/
 

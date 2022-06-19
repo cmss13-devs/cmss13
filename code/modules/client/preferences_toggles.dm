@@ -166,6 +166,19 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
 
+/client/verb/toggle_newlarva_flash()
+	set name = "Toggle Larva Unpool Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get spawned in as a xeno larva from the spawn pool."
+
+	prefs.toggles_flashing ^= FLASH_POOLSPAWN
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a pooled larva."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a pooled larva."))
+
+
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
 	set category = "Preferences.TaskbarFlashing"

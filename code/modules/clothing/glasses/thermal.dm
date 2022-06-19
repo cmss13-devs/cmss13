@@ -29,12 +29,13 @@
 					spawn(100)
 						M.disabilities &= ~NEARSIGHTED
 	..()
-		
+
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "Optical Meson Scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
+	deactive_state = "degoggles"
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/thermal/monocle

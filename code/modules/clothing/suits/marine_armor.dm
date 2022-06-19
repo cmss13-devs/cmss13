@@ -24,19 +24,21 @@
 #define CHARLIE		3
 #define DELTA		4
 #define ECHO		5
-#define NOSQUAD 	6
+#define CRYO		6
+#define MARSOC		7
+#define NOSQUAD 	8
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
 var/list/helmetmarkings = list()
 var/list/helmetmarkings_sql = list()
 var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146))
+var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
+var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<6, i++)
+	for(i=1, i<(length(squad_colors) + 1), i++)
 		var/image/armor
 		var/image/helmet
 		var/image/glove
@@ -322,10 +324,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/padless
-	name = "M2 pattern padless MP armor"
+	name = "\improper M2 pattern padless MP armor"
 	icon_state = "mp_2"
 	specialty = "M2 pattern padless MP"
 	item_state_slots = list(WEAR_JACKET = "mp_2")
+
+/obj/item/clothing/suit/storage/marine/MP/jacket
+	name = "\improper MP service jacket over M2 pattern MP armor"
+	desc = "A standard Colonial Marines M2 Pattern Chestplate with an MP service jacket worn on top. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Arresting Marines for breaking windows has never felt so stylish."
+	icon_state = "mp_jacket"
+	specialty = "service jacket over M2 pattern MP"
+	item_state_slots = list(WEAR_JACKET = "mp_jacket")
 
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
@@ -345,10 +354,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/warden/padless
-	name = "M3 pattern padless warden MP armor"
+	name = "\improper M3 pattern padless warden MP armor"
 	icon_state = "warden_2"
 	specialty = "M3 pattern padless warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden_2")
+
+/obj/item/clothing/suit/storage/marine/MP/warden/jacket
+	name = "\improper warden service jacket over M3 pattern warden MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens, with a Warden service jacket worn on top. Look your best while you're escorting prisoners to their execution."
+	icon_state = "warden_jacket"
+	specialty = "warden service jacket over M3 pattern warden MP"
+	item_state_slots = list(WEAR_JACKET = "warden_jacket")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
@@ -368,10 +384,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 
 /obj/item/clothing/suit/storage/marine/MP/WO/padless
-	name = "M3 pattern padless chief MP armor"
+	name = "\improper M3 pattern padless chief MP armor"
 	icon_state = "warrant_officer_2"
 	specialty = "M3 pattern padless chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer_2")
+
+/obj/item/clothing/suit/storage/marine/MP/WO/jacket
+	name = "\improper CMP service jacket over M3 pattern chief MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs, with a CMP service jacket on top. Resonates with the strength of a thousand arguments with and arrests of superior officers."
+	icon_state = "warrant_officer_jacket"
+	specialty = "CMP service jacket over M3 pattern chief MP"
+	item_state_slots = list(WEAR_JACKET = "warrant_officer_jacket")
 
 /obj/item/clothing/suit/storage/marine/MP/admiral
 	icon_state = "admiral"

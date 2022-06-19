@@ -74,7 +74,11 @@
 /obj/item/clothing/accessory/pdt_bracelet
 	name = "\improper PDT bracelet"
 	desc = "A personal data transmitter bracelet, also known as a PDT, is a form of personal locator typically surgically implanted into the body of extrasolar colonists, among others. Its purpose is to allow rapid location of the associated personnel anywhere within a certain radius of the receiving equipment, sometimes up to 30km distance. This bracelet forms part of the PDT/L variant, which is a wearable version of the PDT technology."
-	icon_state = "pdt_bracelet"
+	icon_state = "pdt_watch"
+
+/obj/item/clothing/accessory/pdt_bracelet/Initialize()
+	. = ..()
+	icon_state = "[icon_state]_[rand(0, 2)]"
 
 /obj/item/storage/box/pdt_kit
 	name = "\improper Boots! PDT/L Battle Buddy kit"

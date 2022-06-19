@@ -432,6 +432,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 
+/obj/item/storage/box/kit/cryo_self_defense
+	name = "\improper Cryo Self Defense Kit"
+	pro_case_overlay = "defense"
+	storage_slots = 2
+
+/obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/holdout/flashlight(src)
+	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"

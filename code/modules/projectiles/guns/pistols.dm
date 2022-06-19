@@ -331,6 +331,12 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/S = new(src)
+	S.Attach(src)
+	update_attachable(S.slot)
+
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/m43pistol

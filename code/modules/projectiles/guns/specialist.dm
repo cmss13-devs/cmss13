@@ -390,7 +390,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Lethal Mode"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 
@@ -404,7 +404,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Ammo Type"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 
@@ -418,7 +418,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Recoil Compensation"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 
@@ -432,7 +432,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Accuracy Improvement"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 
@@ -446,7 +446,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Auto Fire"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 
@@ -460,7 +460,7 @@
 	set category = "Smartgun"
 	set name = "Toggle Motion Detector"
 	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
 	if(!istype(G))
 		return
 

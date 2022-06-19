@@ -533,8 +533,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(slot == w_uniform)
-		for(var/obj/item/clothing/accessory/holster/T in w_uniform.accessories)
-			if(T.holstered)
+		for(var/obj/item/storage/internal/accessory/holster/T in w_uniform.accessories)
+			if(T.current_gun)
 				w_uniform.attack_hand(src)
 				return TRUE
 		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
@@ -571,9 +571,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(W)
 		if(w_uniform)
 			for(var/obj/A in w_uniform.accessories)
-				var/obj/item/clothing/accessory/holster/H = A
-				if(istype(H) && !H.holstered && H.can_holster(W))
-					H.holster(W, src)
+				var/obj/item/storage/internal/accessory/holster/H = A
+				if(istype(H) && !H.current_gun && H.can_be_inserted(W))
+					H._item_insertion(W, src)
 					return
 
 				var/obj/item/clothing/accessory/storage/holster/HS = A

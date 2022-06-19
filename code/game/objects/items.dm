@@ -589,9 +589,9 @@ cases. Override_icon_state should be a list.*/
 							var/obj/item/clothing/accessory/storage/S = A
 							if(S.hold.can_be_inserted(src, TRUE))
 								return TRUE
-						else if(istype(A, /obj/item/clothing/accessory/holster))
-							var/obj/item/clothing/accessory/holster/AH = A
-							if(!(AH.holstered) && AH.can_holster(src))
+						else if(istype(A, /obj/item/storage/internal/accessory/holster))
+							var/obj/item/storage/internal/accessory/holster/AH = A
+							if(!(AH.current_gun) && AH.can_be_inserted(src))
 								return TRUE
 				return FALSE
 			if(WEAR_IN_JACKET)

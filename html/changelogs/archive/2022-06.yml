@@ -193,6 +193,9 @@
   - rscadd: Adds role-specific "jacket-over-armor" MP armor variants to MP role uniform
       vendors. SOP compliant.
 2022-06-19:
+  Geevies:
+  - rscdel: Command and PO headsets have a 1 minute cooldown on multibroadcasts, while
+      all other headsets have 3 minutes.
   TotalEpicness5:
   - rscadd: Expanded big red's southwestern section.
   - rscadd: Created 'Abandoned mining caves' an abandoned section of big red SW caves

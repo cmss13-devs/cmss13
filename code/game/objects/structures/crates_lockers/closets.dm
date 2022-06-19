@@ -232,6 +232,10 @@
 		for(var/mob/M in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
 	else
+		if(isXeno(user))
+			var/mob/living/carbon/Xenomorph/opener = user
+			src.attack_alien(opener)
+			return
 		src.attack_hand(user)
 	return
 

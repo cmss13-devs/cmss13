@@ -1014,11 +1014,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A nine-round pump action shotgun with internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
+	desc = "A eight-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -1028,6 +1028,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer)
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 
 
@@ -1037,7 +1038,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 15,"rail_x" = 7, "rail_y" = 18, "under_x" = 19, "under_y" = 13, "stock_x" = 19, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
@@ -1052,5 +1053,14 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717
+	name = "\improper M37-17 pump shotgun"
+	desc = "A ten-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim."
+	icon_state = "m3717"
+	item_state = "m3717"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
+	unacidable = TRUE
+	damage_mult = 1.1
 
 //-------------------------------------------------------

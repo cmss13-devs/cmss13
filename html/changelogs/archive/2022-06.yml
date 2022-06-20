@@ -211,6 +211,16 @@
       Requisitions vendor (under the Misc section). It's a watch / locator tube kit
       that allows you to track your battle buddy up to five times before needing a
       cell swap.
+  Maciekkub:
+  - rscadd: you can now hold flares in your holster to supplement your flare gun
+  - rscadd: Trying to manually insert a gun into a holster which already has a gun
+      in store will now display the name of the gun which is in the holster instead
+      of "a gun"
+  - rscdel: Removed old holster (not used anymore)
+  - bugfix: fixed the issue where some revolvers and ammo were not able to be inserted
+      into shoulder holsters
+  - code_imp: changed references to the new code and replaced methods to match the
+      commonly used holsters
   Silencer_pl:
   - bugfix: MP service jackets no longer get sprite errors on snow maps.
   Youtubeboy139:

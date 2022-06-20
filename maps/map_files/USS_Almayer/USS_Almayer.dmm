@@ -72042,18 +72042,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"tqd" = (
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
 "tqe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -79650,18 +79638,6 @@
 	tag = "icon-green (EAST)"
 	},
 /area/almayer/hallways/port_hallway)
-"wBW" = (
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy/delta{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
-/area/almayer/living/briefing)
 "wBY" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -119294,7 +119270,7 @@ kbV
 uMk
 uMk
 uMk
-wBW
+uMk
 bgO
 beH
 fGh
@@ -120309,7 +120285,7 @@ xAt
 xAt
 beH
 gAj
-tqd
+gAj
 beH
 bqZ
 bdg

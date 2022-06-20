@@ -211,6 +211,15 @@
       cell swap.
   Silencer_pl:
   - bugfix: MP service jackets no longer get sprite errors on snow maps.
+  Youtubeboy139:
+  - rscadd: New HG3712 and M3717 integrated stock items
+  - rscadd: New internal mags for the HG3712 and M3717 - both accurate to the lore
+      of each gun
+  - rscdel: Removed varedit editions of the M3717 from `Kutjevo` and `Fiorina_SciAnnex`
+  - rscadd: M3717 items to `Kutjevo` and `Fiorina_SciAnnex`
+  - imageadd: New HG3712 and HG3717 shotgun sprites
+  - imageadd: New MK221 variant sprites
+  - imageadd: New Merc Shotgun sprite
   stanalbatross:
   - rscadd: Added orbiting for ghosts, this replaces the prior janky follow system.
       Will make you fly around mobs you orbit perfectly.

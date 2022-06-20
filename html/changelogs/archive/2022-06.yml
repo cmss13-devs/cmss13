@@ -203,3 +203,12 @@
   - rscadd: Moved big red SW caves hive spawn point to Abandoned Mining.
   realforest2001:
   - code_imp: Autosquad no longer assigns spawned mobs into squads if on admin zlevel
+2022-06-20:
+  stanalbatross:
+  - rscadd: Added orbiting for ghosts, this replaces the prior janky follow system.
+      Will make you fly around mobs you orbit perfectly.
+  - rscadd: Added ghost HUD buttons, one to orbit and one to reenter your body. More
+      to come later.
+  - rscadd: Added backend support for doubleclicking.
+  - rscadd: Reworked observing, it will now show the mob's hud to you while you remain
+      orbiting. Only works with humans.

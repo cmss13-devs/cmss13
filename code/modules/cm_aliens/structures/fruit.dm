@@ -8,7 +8,7 @@
 	opacity = 0
 	anchored = TRUE
 	health = 25
-	layer = RESIN_STRUCTURE_LAYER
+	layer = BUSH_LAYER // technically a plant amiright
 	var/picked = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/consume_delay = 2 SECONDS
@@ -21,6 +21,8 @@
 	var/regeneration_ticks = 1
 	var/mature_icon_state = "fruit_lesser"
 	var/consumed_icon_state = "fruit_spent"
+
+	var/glow_color = "#17991b80"
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
@@ -118,6 +120,8 @@
 	mature = TRUE
 	icon_state = mature_icon_state
 	timer_id = TIMER_ID_NULL
+	if(glow_color)
+		add_filter("fruity_glow", 1, list("type" = "outline", "color" = glow_color, "size" = 1))
 	update_icon()
 
 /obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/Xenomorph/recipient)
@@ -208,6 +212,7 @@
 	var/shield_duration = 1 MINUTES
 	var/shield_decay = 10
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/unstable
+	glow_color = "#17997280"
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient)
 	if(mature && recipient && !QDELETED(recipient))
@@ -231,6 +236,7 @@
 	var/pheromone_range = 1
 	consumed_icon_state = "fruit_spent_2"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/spore
+	glow_color = "#99461780"
 
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient)
 	if(mature && recipient && !QDELETED(recipient))
@@ -267,6 +273,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/speed
+	glow_color = "#9559ca80"
 	var/speed_buff_amount = 0.4
 	var/speed_duration = 15 SECONDS
 

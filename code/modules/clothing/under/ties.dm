@@ -354,103 +354,6 @@
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
-//holsters
-/obj/item/clothing/accessory/holster
-	name = "shoulder holster"
-	desc = "A handgun holster."
-	icon_state = "holster"
-	var/obj/item/weapon/gun/holstered = null
-	slot = ACCESSORY_SLOT_UTILITY
-	high_visibility = TRUE
-
-/obj/item/clothing/accessory/holster/Destroy()
-	QDEL_NULL(holstered)
-	. = ..()
-
-//subtypes can override this to specify what can be holstered
-/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/I, mob/user)
-	if(!isgun(I) && !isbanana(I))
-		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
-		return FALSE
-	if(I.w_class > SIZE_MEDIUM)
-		to_chat(user, SPAN_DANGER("\The [I] won't fit in \the [src]!"))
-		return FALSE
-	return TRUE
-
-/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user)
-	if(holstered)
-		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
-		return
-
-	var/obj/item/weapon/gun/W = I
-	if(!can_holster(W, user))
-		return
-
-	holstered = W
-	user.drop_inv_item_to_loc(holstered, src)
-	holstered.add_fingerprint(user)
-	user.visible_message(SPAN_NOTICE("[user] holsters \the [holstered]."), "You holster \the [holstered].")
-
-/obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
-	if(!holstered)
-		return
-
-	if(user.get_active_hand() && user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need an empty hand to draw the [holstered]!"))
-	else
-		if(user.a_intent == INTENT_HARM)
-			usr.visible_message(SPAN_DANGER("[user] draws the [holstered], ready to shoot!"), \
-			SPAN_DANGER("You draw [holstered], ready to shoot!"))
-		else
-			user.visible_message(SPAN_NOTICE("[user] draws the [holstered], pointing it at the ground."), \
-			SPAN_NOTICE("You draw the [holstered], pointing it at the ground."))
-		user.put_in_hands(holstered)
-		holstered.add_fingerprint(user)
-		holstered = null
-
-/obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
-	if (has_suit)	//if we are part of a suit
-		if (holstered)
-			unholster(user)
-		return TRUE
-
-	..(user)
-
-/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
-	holster(W, user)
-
-/obj/item/clothing/accessory/holster/emp_act(severity)
-	if (holstered)
-		holstered.emp_act(severity)
-	..()
-
-/obj/item/clothing/accessory/holster/examine(mob/user)
-	..()
-	if (holstered)
-		to_chat(user, "A [holstered] is holstered here.")
-	else
-		to_chat(user, "It is empty.")
-
-/obj/item/clothing/accessory/holster/additional_examine_text()
-	if(holstered)
-		return ", carrying \a [holstered]."
-	. = ..()
-
-/obj/item/clothing/accessory/holster/armpit
-	name = "shoulder holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
-	icon_state = "holster"
-
-/obj/item/clothing/accessory/holster/waist
-	name = "shoulder holster"
-	desc = "A handgun holster. Made of expensive leather."
-	icon_state = "holster"
-	item_state = "holster_low"
-
-
-
-
-
 //Ties that can store stuff
 
 /obj/item/storage/internal/accessory
@@ -727,18 +630,17 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
 	can_hold = list(
-		/obj/item/weapon/gun/pistol,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
-		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/energy/taser,
-		/obj/item/weapon/gun/flare
-	)
+
+//Can hold variety of pistols and revolvers together with ammo for them. Can also hold the flare pistol and signal/illumination flares.
+	/obj/item/weapon/gun/pistol,
+	/obj/item/weapon/gun/energy/taser,
+	/obj/item/weapon/gun/revolver,
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver,
+	/obj/item/weapon/gun/flare,
+	/obj/item/device/flashlight/flare
+
+	 )
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
@@ -763,7 +665,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 		if(isgun(W))
 			if(current_gun)
 				if(!stop_messages)
-					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+					to_chat(usr, SPAN_WARNING("[src] already holds \a [W]."))
 				return
 		else //Must be ammo.
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun

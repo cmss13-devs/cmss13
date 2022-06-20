@@ -223,6 +223,10 @@
       into shoulder holsters
   - code_imp: changed references to the new code and replaced methods to match the
       commonly used holsters
+  PhantomEpicness:
+  - bugfix: Fixed being able to pump shotguns and do non-attachment stuff offhand.
+      Attachments, SG settings, and gun safety can still be toggled offhand.( I don't
+      know who has SG settings or gun safety macros but good for them I guess)
   Silencer_pl:
   - bugfix: MP service jackets no longer get sprite errors on snow maps.
   Youtubeboy139:

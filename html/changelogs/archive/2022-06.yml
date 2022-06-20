@@ -204,6 +204,11 @@
   realforest2001:
   - code_imp: Autosquad no longer assigns spawned mobs into squads if on admin zlevel
 2022-06-20:
+  Geeves, Youtubeboy139, Triiodine:
+  - rscadd: Added the Boots! PDT/L Battle Buddy kit to the custom gear loadout and
+      Requisitions vendor (under the Misc section). It's a watch / locator tube kit
+      that allows you to track your battle buddy up to five times before needing a
+      cell swap.
   Silencer_pl:
   - bugfix: MP service jackets no longer get sprite errors on snow maps.
   stanalbatross:

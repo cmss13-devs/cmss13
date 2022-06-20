@@ -8,3 +8,5 @@
 #define isclient(X)                 (istype(X, /client))
 #define isStack(X)                  (istype(X, /obj/item/stack))
 #define issurface(X)                (istype(X, /obj/structure/surface))
+#define ismovableatom(A) 			(ismovable(A))
+#define isatom(A) 					(isloc(A))

@@ -169,12 +169,18 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, 90)
+	add_hardpoint(FPW)
+	FPW.name = "Right "+ initial(FPW.name)
+	FPW.dir = turn(dir, 90)
 	FPW.origins = list(2, 0)
 
 	FPW = new
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, -90)
+	add_hardpoint(FPW)
+	FPW.name = "Left "+ initial(FPW.name)
+	FPW.dir = turn(dir, -90)
 	FPW.origins = list(-2, 0)
 
 /obj/effect/vehicle_spawner/apc/Initialize()
@@ -185,12 +191,25 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 //PRESET: FPWs, no hardpoints
 /obj/effect/vehicle_spawner/apc/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/APC = new (loc)
+/obj/vehicle/multitile/apc/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
+	var/obj/item/hardpoint/special/firing_port_weapon/FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
+	add_hardpoint(FPW)
+	FPW.name = "Right "+ initial(FPW.name)
+	FPW.dir = turn(dir, 90)
+	FPW.origins = list(2, 0)
 
 	load_misc(APC)
 	load_fpw(APC)
 	handle_direction(APC)
 	load_hardpoints(APC)
 	APC.update_icon()
+	FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
+	add_hardpoint(FPW)
+	FPW.name = "Left "+ initial(FPW.name)
+	FPW.dir = turn(dir, -90)
+	FPW.origins = list(-2, 0)
 
 //PRESET: FPWs, wheels installed
 /obj/effect/vehicle_spawner/apc/plain/load_hardpoints(var/obj/vehicle/multitile/apc/V)
@@ -206,12 +225,25 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	load_hardpoints(APC)
 	load_damage(APC)
 	APC.update_icon()
+/obj/vehicle/multitile/apc/plain/load_hardpoints(var/obj/vehicle/multitile/R)
+	var/obj/item/hardpoint/special/firing_port_weapon/FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
+	add_hardpoint(FPW)
+	FPW.name = "Right "+ initial(FPW.name)
+	FPW.dir = turn(dir, 90)
+	FPW.origins = list(2, 0)
 
 /obj/effect/vehicle_spawner/apc/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
+	add_hardpoint(FPW)
+	FPW.name = "Left "+ initial(FPW.name)
+	FPW.dir = turn(dir, -90)
+	FPW.origins = list(-2, 0)
 
 //PRESET: FPWs, default hardpoints
 /obj/effect/vehicle_spawner/apc/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
@@ -232,10 +264,23 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	load_hardpoints(APC)
 	handle_direction(APC)
 	APC.update_icon()
+/obj/vehicle/multitile/apc/plain_fpw_no_wheels/load_hardpoints(var/obj/vehicle/multitile/R)
+	var/obj/item/hardpoint/special/firing_port_weapon/FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
+	add_hardpoint(FPW)
+	FPW.name = "Right "+ initial(FPW.name)
+	FPW.dir = turn(dir, 90)
+	FPW.origins = list(2, 0)
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/apc/unarmed/decrepit/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/unarmed/APC = new (loc)
+	FPW = new
+	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
+	add_hardpoint(FPW)
+	FPW.name = "Left "+ initial(FPW.name)
+	FPW.dir = turn(dir, -90)
+	FPW.origins = list(-2, 0)
 
 	handle_direction(APC)
 	load_hardpoints(APC)

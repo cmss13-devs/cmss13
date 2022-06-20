@@ -181,13 +181,19 @@
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
-	name = "support gunner's seat"
+	name = "left support gunner's seat"
 	desc = "Military-grade seat for a support gunner with some controls, switches and indicators."
 	seat = VEHICLE_SUPPORT_GUNNER_ONE
 
 	required_skill = SKILL_VEHICLE_DEFAULT
 
 	var/image/over_image = null
+
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/Destroy()
+	var/obj/structure/prop/vehicle/firing_port_weapon/FPW = locate() in get_turf(src)
+	if(FPW)
+		FPW.SG_seat = null
+	. = ..()
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
 	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
@@ -257,6 +263,7 @@
 		to_chat(M, SPAN_WARNING("ERROR. NO FPW FOUND, TELL A DEV!"))
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/second
+	name = "right support gunner's seat"
 	seat = VEHICLE_SUPPORT_GUNNER_TWO
 
 //ARMORED VEHICLES PASSENGER SEATS

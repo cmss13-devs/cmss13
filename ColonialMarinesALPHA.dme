@@ -933,6 +933,7 @@
 #include "code\game\objects\items\implants\implantneurostim.dm"
 #include "code\game\objects\items\implants\implantpad.dm"
 #include "code\game\objects\items\props\helmetgarb.dm"
+#include "code\game\objects\items\props\rocks.dm"
 #include "code\game\objects\items\props\souto_land.dm"
 #include "code\game\objects\items\reagent_containers\autoinjectors.dm"
 #include "code\game\objects\items\reagent_containers\blood_pack.dm"

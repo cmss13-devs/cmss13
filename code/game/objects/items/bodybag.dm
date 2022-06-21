@@ -46,7 +46,7 @@
 	name = "body bags"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/bodybags/New()
 	..()

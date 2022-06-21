@@ -1,4 +1,4 @@
-//Areas for the Kutjevo Refinery
+//Areas for Shiva's Snowball, aka Ice LZ1, above ground revamp.
 
 /area/shiva
 	name = "Shiva's Snowball"

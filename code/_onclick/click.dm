@@ -67,6 +67,10 @@
 		client.buildmode.object_click(src, mods, A)
 		return
 
+	if(istype(A, /obj/effect/statclick))
+		A.clicked(src, mods)
+		return
+
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
 	if (click(A, mods) | A.clicked(src, mods, location, params))
 		return

@@ -47,6 +47,8 @@
 			continue
 		if(X.can_not_harm(M))
 			continue
+		if(ishologram(M))
+			continue
 
 		empower_targets++
 		accumulative_health += shield_per_human
@@ -534,7 +536,7 @@
 
 	if (!action_cooldown_check())
 		return
-		
+
 	if (!X.check_state())
 		return
 

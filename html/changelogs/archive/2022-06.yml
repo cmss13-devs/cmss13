@@ -247,6 +247,8 @@
   - rscadd: Reworked observing, it will now show the mob's hud to you while you remain
       orbiting. Only works with humans.
 2022-06-21:
+  Maciekkub:
+  - bugfix: Fixed M60, the minigun and the UPP minigun not having the PB flag.
   Triiodine, Monkeysfist101:
   - refactor: Rewrote some energy gun code so we can actually have energy guns now.
   - bugfix: Body bag boxes no longer fit into storage containers.

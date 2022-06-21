@@ -271,3 +271,8 @@
       flashbulb, EMP grenades, the voice component doodad, autopsy scanner, toner
       cartridge, paint buckets, robot analyzer, shield components, destination taggers,
       wrapping paper, game set, bike horn, mateba key, and another set of pews.'
+  Watermelon914:
+  - admin: Tickets are no longer horrendous to deal with as an admin.
+  - admin: Admins can now ping one another with @
+  - admin: 'You can link tickets by doing # ticket number'
+  - admin: Moves adminhelp and staffwho to the Admin tab. Adds mentorhelp verb

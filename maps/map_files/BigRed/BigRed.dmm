@@ -38238,7 +38238,7 @@
 	},
 /area/bigredv2/caves/mining)
 "uIB" = (
-/obj/vehicle/multitile/van/decrepit,
+/obj/effect/vehicle_spawner/van/decrepit,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;

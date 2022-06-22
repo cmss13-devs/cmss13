@@ -126,16 +126,16 @@
 
 /obj/item/clothing/ears/earmuffs/equipped(mob/user, slot)
 	. = ..()
-	if(slot == (WEAR_L_EAR||WEAR_R_EAR))
-		user.client.soundOutput.status_flags |= EAR_DEAF_MUTE
-		user.client.soundOutput.apply_status()
+	if(slot in list(WEAR_L_EAR, WEAR_R_EAR))
+		user?.client.soundOutput.status_flags |= EAR_DEAF_MUTE
+		user?.client.soundOutput.apply_status()
 		user.on_deafness_gain()
 
 /obj/item/clothing/ears/earmuffs/unequipped(mob/user, slot)
 	. = ..()
-	if(slot == (WEAR_L_EAR||WEAR_R_EAR))
-		user.client.soundOutput.status_flags ^= EAR_DEAF_MUTE
-		user.client.soundOutput.apply_status()
+	if(slot in list(WEAR_L_EAR, WEAR_R_EAR))
+		user?.client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+		user?.client.soundOutput.apply_status()
 		user.on_deafness_loss()
 
 /obj/item/clothing/ears/earmuffs/New()

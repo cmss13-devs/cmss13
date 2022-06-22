@@ -276,3 +276,6 @@
   - admin: Admins can now ping one another with @
   - admin: 'You can link tickets by doing # ticket number'
   - admin: Moves adminhelp and staffwho to the Admin tab. Adds mentorhelp verb
+2022-06-22:
+  Silencer_pl:
+  - bugfix: Fixed two instances of doubled chairs in the briefing room.

@@ -279,3 +279,6 @@
 2022-06-22:
   Silencer_pl:
   - bugfix: Fixed two instances of doubled chairs in the briefing room.
+  stanalbatross:
+  - bugfix: labels on sentries will now persist when they are deployed and picked
+      back up

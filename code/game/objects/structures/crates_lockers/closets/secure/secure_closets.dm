@@ -96,6 +96,10 @@
 	else if(istype(W,/obj/item/packageWrap) || istype(W,/obj/item/tool/weldingtool))
 		return ..(W,user)
 	else
+		if(isXeno(user))
+			var/mob/living/carbon/Xenomorph/opener = user
+			src.attack_alien(opener)
+			return
 		togglelock(user)
 
 /obj/structure/closet/secure_closet/attack_hand(mob/living/user)

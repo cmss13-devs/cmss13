@@ -5459,7 +5459,9 @@
 "ayJ" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
-/obj/structure/sign/safety/biohazard,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -18
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -16185,6 +16187,13 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/south_east_jungle)
+"ifX" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-gym"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
 "iiK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/queen_spawn,
@@ -42657,7 +42666,7 @@ uTe
 kAg
 kAg
 bZb
-qDQ
+ifX
 aJr
 bBk
 uTe

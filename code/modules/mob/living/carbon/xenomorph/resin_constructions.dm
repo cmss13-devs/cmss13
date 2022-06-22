@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	var/obj/vehicle/V = locate() in T
 	if(V)
-		to_chat(X, SPAN_WARNING("You cannot build under [V]!"))
+		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)

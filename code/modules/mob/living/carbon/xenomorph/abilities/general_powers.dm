@@ -560,7 +560,7 @@
 
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.hivecore_cooldown)
-		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hivecore, wait until the weeds have recovered!"))
+		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
 		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")

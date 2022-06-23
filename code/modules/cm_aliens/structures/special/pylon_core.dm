@@ -124,18 +124,18 @@
 	if(M.a_intent != INTENT_HARM || !M.can_destroy_special())
 		return
 	if(!hardcore && last_attempt + 6 SECONDS > world.time)
-		to_chat(M,SPAN_WARNING("You have attempted to destroy [src] too recently! Wait a bit!")) // no spammy
+		to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
 		return XENO_NO_DELAY_ACTION
 
 	else if(warn && world.time > HIVECORE_COOLDOWN_CUTOFF)
-		if((alert(M, "Are you sure that you want to destroy the hive core? 5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
+		if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
 			return XENO_NO_DELAY_ACTION
 
 		INVOKE_ASYNC(src, .proc/startDestroying,M)
 		return XENO_NO_DELAY_ACTION
 
 	else if(world.time < HIVECORE_COOLDOWN_CUTOFF)
-		if((alert(M, "Are you sure that you want to remove the hive core? Since its before 12:20, no cooldown will be applied", , "Yes", "No") == "No"))
+		if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") == "No"))
 			return XENO_NO_DELAY_ACTION
 
 		INVOKE_ASYNC(src, .proc/startDestroying,M)
@@ -157,7 +157,7 @@
 /obj/effect/alien/resin/special/pylon/core/Destroy()
 
 	if(linked_hive)
-		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as the [src] dies!"), max_distance = WEED_RANGE_CORE)
+		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null
 		if(world.time < HIVECORE_COOLDOWN_CUTOFF && !hardcore)
 			. = ..()
@@ -181,8 +181,8 @@
 	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
 	last_attempt = world.time 		//spamcheck
 	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(M,SPAN_WARNING("You stop destroying \the [src]"))
-		visible_message(SPAN_WARNING("[M] stops destroying \the [src]"))
+		to_chat(M,SPAN_WARNING("You stop destroying \the [src]."))
+		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
 	Destroy()
@@ -193,7 +193,7 @@
 	sleep(HIVECORE_COOLDOWN)
 	if(linked_hive.hivecore_cooldown) // check if its true so we don't double set it.
 		linked_hive.hivecore_cooldown = FALSE
-		xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new hivecore can be built!"), 3, linked_hive.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new hive core can be built!"), 3, linked_hive.hivenumber)
 	else
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow

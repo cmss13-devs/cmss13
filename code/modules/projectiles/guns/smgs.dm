@@ -478,7 +478,7 @@
 
 /obj/item/weapon/gun/smg/m1921/hg2131
 	name = "\improper HG 2131 submachinegun"
-	desc = "Based on the popular MG, the HG 2131 is a powerful and reliable weapon for a modern age. Chambered in .45 ACP it is known to pack a punch and is a favorite amoung PMCs and Colonial Marshals."
+	desc = "Based on a popular submachine gun, the HG 2131 is a powerful and reliable weapon for a modern age. Chambered in .45 ACP, it is known to pack a punch and is a favorite among various PMC groups and Colonial Marshals. Reverse compatible with reproduction Auto Ordnance magazines."
 	icon_state = "hg2131"
 	item_state = "hg2131"
 	flags_gun_features = GUN_CAN_POINTBLANK

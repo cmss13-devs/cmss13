@@ -1206,7 +1206,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 						/obj/item/attachable/magnetic_harness
 						)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
 	var/datum/effect_system/smoke_spread/smoke
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -1233,7 +1233,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
-	if(!current_mag)
+	if(current_mag.current_rounds <= 0)
+		to_chat(user, "It's not loaded.")
 		return
 	if(current_mag.current_rounds > 0)
 		to_chat(user, "It has an 84mm [ammo.name] loaded.")

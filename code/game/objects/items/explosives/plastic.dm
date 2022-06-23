@@ -113,7 +113,7 @@
 
 	if(customizable)
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
-		SPAN_WARNING("You plant [name] on [target]!."))
+		SPAN_WARNING("You plant [name] on [target]!"))
 		activate_sensors()
 		if(!istimer(detonator.a_right) && !istimer(detonator.a_left))
 			icon_state = overlay_image

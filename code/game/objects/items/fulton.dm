@@ -141,7 +141,7 @@ var/global/list/deployed_fultons = list()
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
 	var/turf/space_tile = pick(get_area_turfs(/area/space/highalt))
 	if(!space_tile)
-		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!."))
+		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return
 
 	icon_state = ""

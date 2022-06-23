@@ -655,7 +655,7 @@
 
 /mob/living/carbon/Xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)
-		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!."))
+		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!"))
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target

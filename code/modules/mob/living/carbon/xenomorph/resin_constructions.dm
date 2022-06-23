@@ -41,6 +41,11 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
 
+	var/obj/vehicle/V = locate() in T
+	if(V)
+		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
+		return FALSE
+
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE

@@ -286,3 +286,5 @@
   Geeves:
   - bugfix: Fixed double chung properly. It is now impossible to use two shotguns
       to fire faster than the fire + pump delay.
+  Jeser:
+  - bugfix: Fixed aliens being able to build structures under vehicles.

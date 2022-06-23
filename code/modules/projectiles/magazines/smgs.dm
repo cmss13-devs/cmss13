@@ -158,7 +158,7 @@
 
 /obj/item/ammo_magazine/smg/m1921
 	name = "\improper AOM stick mag (.45)"
-	desc = "An Auto Ordnance Magazine made stick for .45 rounds."
+	desc = "A reproduction Auto Ordnance stick magazine chambered for .45 ACP."
 	default_ammo = /datum/ammo/bullet/smg
 	caliber = ".45"
 	icon_state = "tommy_stick"

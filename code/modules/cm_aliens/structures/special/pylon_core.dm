@@ -177,7 +177,7 @@
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/Xenomorph/M)
-	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying the [src]!"), 3, linked_hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying \the [src]!"), 3, linked_hive.hivenumber)
 	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
 	last_attempt = world.time 		//spamcheck
 	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))

@@ -167,7 +167,7 @@
 
 /obj/item/ammo_magazine/smg/m1921/drum
 	name = "\improper AOM drum mag (.45)"
-	desc = "An Auto Ordnance Magazine drum made for .45 rounds."
+	desc = "A reproduction Auto Ordnance drum magazine chambered for .45 ACP."
 	max_rounds = 60
 	icon_state = "tommy_drum"
 	bonus_overlay = "tommy_drum_overlay"

@@ -346,8 +346,8 @@
 	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
 	MD = new(src)
-	update_icon()
 	. = ..()
+	update_icon()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -389,44 +389,44 @@
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
-		if(!(loc == user && ishuman(user)))
+		if(!ishuman(user))
+			return ..()
+		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
 		if(user.get_active_hand() && user.get_inactive_hand())
 			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
 			return TRUE
-		if(cover_open)
-			playsound(src.loc, "toolbox", 25, TRUE, 3)
+		if(!cover_open)
+			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
 			to_chat(user, SPAN_NOTICE("You open \the [src]'s dust cover, allowing the drum to be removed."))
-			cover_open = FALSE
-		else
-			playsound(src.loc, 'sound/effects/metal_close.ogg', 25, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close \the [src]'s dust cover."))
 			cover_open = TRUE
+		else
+			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You close \the [src]'s dust cover."))
+			cover_open = FALSE
 		update_icon()
 		return TRUE
 	else
 		return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
-	//if the cover is closed, don't do this
 	if(!cover_open)
 		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't put a new drum in!"))
+		return
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
-	//dont do if cover closed
 	if(!cover_open)
 		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum!"))
+		return
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/update_icon()
 	. = ..()
 	if(cover_open)
 		overlays += "+[base_gun_icon]_cover_open"
-		message_admins("adding +[base_gun_icon]_cover_open")
 	else
 		overlays += "+[base_gun_icon]_cover_closed"
-		message_admins("adding +[base_gun_icon]_cover_closed")
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
 	set category = "Smartgun"
@@ -522,6 +522,9 @@
 			return FALSE
 		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
 			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+			return FALSE
+		if(cover_open)
+			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the cover open!"))
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)

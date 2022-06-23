@@ -43,7 +43,7 @@
 	for(var/mob/M as anything in mobs_in_range)
 		if(empower_targets >= max_targets)
 			break
-		if(!istype(/mob/living))
+		if(!istype(M, /mob/living))
 			break
 		if(M.stat == DEAD || HAS_TRAIT(M, TRAIT_NESTED))
 			continue

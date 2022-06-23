@@ -446,7 +446,7 @@
 
 /obj/item/weapon/gun/smg/m1921
 	name = "\improper M1921 Thompson submachinegun"
-	desc = "A modern day copy of a classic design, the Model 1921 Thompson submachine gun was known for its use in WW2 and by mobsters during the period which earned its nickname 'the Chicago Typewriter'"
+	desc = "A modern day copy of an ancient design, the Model 1921 Thompson submachine gun was known for its use by Allied Forces in WW2 and by high-profile mobsters during the prohibition era which earned its nickname 'the Chicago Typewriter'."
 	icon_state = "m1921"
 	item_state = "m1921"
 	fire_sound = 'sound/weapons/smg_heavy.ogg'

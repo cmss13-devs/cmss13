@@ -288,3 +288,8 @@
       to fire faster than the fire + pump delay.
   Jeser:
   - bugfix: Fixed aliens being able to build structures under vehicles.
+  TotalEpicness:
+  - rscadd: Hivecore now has an 5 minute cooldown after being destroyed before another
+      one can be built. This cool down only takes affect after 20 minutes round time.
+  - qol: Hivecore now notifies if someone is destroying it and also has a confirmation
+      warning.

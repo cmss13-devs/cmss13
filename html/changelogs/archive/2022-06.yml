@@ -293,3 +293,6 @@
       one can be built. This cool down only takes affect after 20 minutes round time.
   - qol: Hivecore now notifies if someone is destroying it and also has a confirmation
       warning.
+  stanalbatross:
+  - bugfix: you can no longer lase through walls
+  - bugfix: fixed some instances of "!." ending sentences

@@ -1220,6 +1220,45 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "The non-detachable stock of a M37-17 pump shotgun."
 	icon_state = "hg3717_stock"
 
+/obj/item/attachable/stock/m1921
+	name = "\improper M1921 solid stock"
+	desc = "A solid stock made for the M1921 Thompson submachinegun."
+	icon_state = "m1921stock"
+	pixel_shift_x = 41
+	pixel_shift_y = 10
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/m1921/New()
+	..()
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/stock/m1921/modern
+	name = "\improper HG 2131 solid stock"
+	desc = "A solid stock made for the HG 2131 SMG."
+	icon_state = "hg2131stock"
+
+/obj/item/attachable/stock/rifle
+	name = "\improper M41A solid stock"
+	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "riflestock"
+	attach_icon = "riflestock_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 10
+	wield_delay_mod = WIELD_DELAY_FAST
+	hud_offset_mod = 3
+
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A solid stock"
 	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."

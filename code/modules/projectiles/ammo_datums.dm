@@ -2542,8 +2542,34 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	added_spit_delay = 6 SECONDS
 	spit_windup = 5 SECONDS
+	spit_cost = 75
+
+/datum/ammo/xeno/acid/railgun/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.KnockDown(5)
 
 
+/datum/ammo/xeno/acid/fragmenting_shot
+	name = "fragmentation acid glob"
+
+	accuracy = HIT_ACCURACY_TIER_10
+	max_range = 24
+	shell_speed = AMMO_SPEED_TIER_3
+	added_spit_delay = 6 SECONDS
+	spit_windup = 5 SECONDS
+	spit_cost = 100
+
+/datum/ammo/xeno/acid/fragmenting_shot/on_hit_mob(mob/M, obj/item/projectile/P)
+	create_shrapnel(M.loc, rand(8,12), , , /datum/ammo/xeno/acid/acidsplash)
+	M.KnockDown(1)
+	..()
+/datum/ammo/xeno/acid/fragmenting_shot/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	create_shrapnel(T.loc, rand(8,12), , , /datum/ammo/xeno/acid/acidsplash)
+
+/datum/ammo/xeno/acid/fragmenting_shot/on_hit_obj(obj/O, obj/item/projectile/P)
+	create_shrapnel(O.loc, rand(8,12), , , /datum/ammo/xeno/acid/acidsplash)
+	. = ..()
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
@@ -2559,7 +2585,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/acidsplash/on_hit_mob(atom/A)
+///datum/ammo/xeno/acid/acidsplash/on_hit_mob(atom/A)
 	//if (ishuman(A))
 	//	var/mob/living/carbon/human/H = A
 	//	return

@@ -12,6 +12,7 @@
 	) /////////////// todo: put the actions you want here
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler
 	)
 	keystone = TRUE
@@ -26,8 +27,8 @@
     var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
     if(B.is_zoomed)
         B.zoom_out()
-    B.spit_types = list(/datum/ammo/xeno/acid/railgun)
-    B.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/railgun]
+    B.spit_types = list(/datum/ammo/xeno/acid/railgun, /datum/ammo/xeno/acid/fragmenting_shot)
+   // B.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/railgun]
     B.spit_delay = 5 SECONDS
     B.spit_windup = 3 SECONDS
     B.mutation_type = BOILER_STRIKER

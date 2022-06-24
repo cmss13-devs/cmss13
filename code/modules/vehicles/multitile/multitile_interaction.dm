@@ -130,6 +130,7 @@
 
 		var/obj/item/tool/weldingtool/WT = O
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 
 		user.visible_message(SPAN_WARNING("[user] begins welding structural struts back in place on \the [src]."), SPAN_NOTICE("You begin welding structural struts back in place on \the [src]."))
@@ -140,6 +141,7 @@
 			return
 
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 
 		user.visible_message(SPAN_WARNING("[user] welds structural struts back in place on \the [src]."), SPAN_NOTICE("You weld structural struts back in place on \the [src]."))

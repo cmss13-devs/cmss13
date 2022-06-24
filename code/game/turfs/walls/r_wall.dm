@@ -62,16 +62,7 @@
 		if(WALL_STATE_WELD)
 			if(iswelder(W))
 				var/obj/item/tool/weldingtool/WT = W
-				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
-				SPAN_NOTICE("You begin slicing through the outer plating."))
-				if(!WT || !WT.isOn())
-					return
-				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				d_state = WALL_STATE_SCREW
-				user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
-				return
+				try_weldingtool_deconstruction(WT, user)
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

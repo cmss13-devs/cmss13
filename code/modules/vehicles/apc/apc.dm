@@ -169,12 +169,14 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, 90)
+	FPW.name = "Left "+ initial(FPW.name)
 	FPW.origins = list(2, 0)
 
 	FPW = new
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, -90)
+	FPW.name = "Right "+ initial(FPW.name)
 	FPW.origins = list(-2, 0)
 
 /obj/effect/vehicle_spawner/apc/Initialize()

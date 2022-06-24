@@ -296,3 +296,8 @@
   stanalbatross:
   - bugfix: you can no longer lase through walls
   - bugfix: fixed some instances of "!." ending sentences
+2022-06-24:
+  stanalbatross:
+  - bugfix: The PMC sniper's cap no longer obscures your face
+  - balance: added more sniper ammo to the PMC sniper's loadout alongside giving them
+      a first aid kit and a PMC SMG as their sidearm.

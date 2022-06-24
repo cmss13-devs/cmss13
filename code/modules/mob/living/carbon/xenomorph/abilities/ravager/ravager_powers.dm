@@ -40,10 +40,8 @@
 	var/list/telegraph_atom_list = list()
 
 	var/empower_targets
-	for(var/mob/M as anything in mobs_in_range)
+	for(var/mob/living/M in mobs_in_range)
 		if(empower_targets >= max_targets)
-			break
-		if(!istype(M, /mob/living))
 			break
 		if(M.stat == DEAD || HAS_TRAIT(M, TRAIT_NESTED))
 			continue

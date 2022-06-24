@@ -4,7 +4,6 @@
 #define isRemoteControllingOrAI(M)	((M && M.client && M.client.remote_control) || (istype(M, /mob/living/silicon/ai)))
 
 #define isbrain(A) (istype(A, /mob/living/brain))
-#define ishologram(A) (istype(A, /mob/hologram))
 #define isrobot(A) (istype(A, /mob/living/silicon/robot))
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
 #define iscorgi(A) (istype(A, /mob/living/simple_animal/corgi))

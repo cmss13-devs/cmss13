@@ -245,7 +245,7 @@
 	EquipCustomItems(character)
 
 	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
-		to_chat(character, SPAN_HIGHDANGER("As you stagger out of cryogenics, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
+		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)

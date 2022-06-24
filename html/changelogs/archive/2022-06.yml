@@ -305,3 +305,8 @@
   - bugfix: The PMC sniper's cap no longer obscures your face
   - balance: added more sniper ammo to the PMC sniper's loadout alongside giving them
       a first aid kit and a PMC SMG as their sidearm.
+  - bugfix: trying to weld walls while your welder is off will no longer let you weld
+      them.
+  - bugfix: trying to weld a closet while your welder is off will no longer tell you
+      you don't have enough fuel.
+  - rscadd: added a minor do_after to closet welding and breaking.

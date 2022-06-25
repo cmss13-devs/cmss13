@@ -87,6 +87,7 @@
 	has_buttons = TRUE
 	icon_state = "coat_mp"
 	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_mp"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/warden
 	name = "military warden service jacket"
@@ -94,6 +95,7 @@
 	has_buttons = TRUE
 	icon_state = "coat_warden"
 	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_warden"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/cmp
 	name = "chief military police service jacket"
@@ -101,6 +103,7 @@
 	has_buttons = TRUE
 	icon_state = "coat_cmp"
 	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_cmp"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess technician jacket"

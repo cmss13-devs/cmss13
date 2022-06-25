@@ -311,6 +311,9 @@
       you don't have enough fuel.
   - rscadd: added a minor do_after to closet welding and breaking.
 2022-06-25:
+  50RemAndCounting, Quickload:
+  - imageadd: added a dark blue variant of the surgical webbing vest, functionally
+      identical to the existing green version.
   Maciekkub:
   - bugfix: Fixes M5RPG text displaying "It's unloaded but has round chambered" and
       now correctly displays if it's empty upon examine

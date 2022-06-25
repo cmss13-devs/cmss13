@@ -460,7 +460,7 @@
 			new /obj/item/explosive/grenade/HE/upp(src)
 			new /obj/item/explosive/grenade/HE/upp(src)
 		if(6) // M60 set
-			new /obj/item/weapon/gun/m60(src) 
+			new /obj/item/weapon/gun/m60(src)
 			new /obj/item/ammo_magazine/m60(src)
 		if(7) // Sawn off + buckshit
 			new /obj/item/weapon/gun/shotgun/double/sawn(src)
@@ -510,7 +510,7 @@
 			new /obj/item/weapon/gun/rifle/l42a(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-			new /obj/item/ammo_magazine/rifle/l42a/incen(src)
+			new /obj/item/ammo_magazine/rifle/l42a/incendiary(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 			new /obj/item/ammo_magazine/rifle/l42a/extended(src)
 		if(6) //PMC FP9000 with 2 handheld mortar shell nades

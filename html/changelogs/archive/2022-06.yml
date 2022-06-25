@@ -320,3 +320,4 @@
   - bugfix: Sound and notification now only play when you reach max threshold or above.
   stanalbatross:
   - balance: bodybag boxes can now only hold bodybags
+  - qol: made the input box for writing medal citations larger.

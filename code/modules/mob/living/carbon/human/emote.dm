@@ -614,7 +614,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(rand(0,100) < 50)
+					if(prob(0,100) < 50)
 						playsound(src.loc, 'sound/voice/pred_click3.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/pred_click4.ogg', 50)
@@ -622,7 +622,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(rand(0,100) < 50)
+					if(prob(0,100) < 50)
 						playsound(src.loc, 'sound/voice/alien_growl1.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/alien_growl2.ogg', 50)
@@ -630,7 +630,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(rand(0,100) < 50)
+					if(prob(0,100) < 50)
 						playsound(src.loc, 'sound/voice/alien_help1.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/alien_help2.ogg', 50)

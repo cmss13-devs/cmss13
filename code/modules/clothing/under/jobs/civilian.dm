@@ -30,6 +30,9 @@
 	item_state = "chaplain"
 	flags_jumpsuit = FALSE
 
+/obj/item/clothing/under/rank/chaplain/cultist
+	name = "cultist jumpsuit"
+
 /obj/item/clothing/suit/priest_robe
 	name = "priest robes"
 	desc = "A long dress with a purple scarf, often worn by religious folk."

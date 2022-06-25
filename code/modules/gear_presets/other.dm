@@ -797,19 +797,21 @@
 		H.faction = hive.internal_faction
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
-
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cultist_hoodie(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cultist_hood(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+
+	var/obj/item/clothing/suit/cultist_hoodie/hoodie = new /obj/item/clothing/suit/cultist_hoodie(H)
+	hoodie.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hoodie, WEAR_JACKET)
+
+	var/obj/item/clothing/head/cultist_hood/hood = new /obj/item/clothing/head/cultist_hood(H)
+	hood.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hood, WEAR_HEAD)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
@@ -831,11 +833,14 @@
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
 
-	for(var/datum/action/human_action/activable/O in H.actions)
-		O.remove_from(H)
+	if(istype(H.wear_suit, /obj/item/clothing/suit/cultist_hoodie) || istype(H.head, /obj/item/clothing/head/cultist_hood))
+		actions_to_add -= /datum/action/human_action/activable/cult/obtain_equipment
 
 	for(var/action_to_add in actions_to_add)
 		give_action(H, action_to_add)
+
+	H.default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	H.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader
 	name = "Cultist - Xeno Cultist Leader"
@@ -856,10 +861,10 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 	hive.leading_cult_sl = H
 
-	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)
-
+	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader)
 	for(var/type in types)
 		give_action(H, type)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/professor_dummy

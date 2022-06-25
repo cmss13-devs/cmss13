@@ -183,7 +183,7 @@
 	fullscreen_vision = null
 
 /obj/item/clothing/glasses/night/cultist
-	name = "\improper Unusual Thermal Imaging Goggles"
+	name = "\improper unusual thermal imaging goggles"
 	desc = "Seems to be thermal imaging goggles, except they have an unusual design. Looking at it makes you nauseous."
 	icon_state = "thermal"
 	item_state = "thermal"

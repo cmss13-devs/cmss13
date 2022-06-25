@@ -285,53 +285,6 @@
 		while(++m <= num_mags)
 			new new_mag(src)
 
-/obj/structure/largecrate/mediocre
-	name = "\improper Weapons crate"
-	desc = "What is in here?"
-
-// really mediocre weapons.
-
-/obj/structure/largecrate/mediocre/New()
-	..()
-	var/i = pick(1,5)
-	switch(i)
-		if(1) //Type 71 set
-			new /obj/item/weapon/gun/rifle/type71(src)
-			new /obj/item/ammo_magazine/rifle/type71(src)
-			new /obj/item/ammo_magazine/rifle/type71(src)
-			new /obj/item/ammo_magazine/rifle/type71(src)
-			new /obj/item/clothing/mask/gas/PMC(src)
-		if(2) //MAR carabine set
-			new /obj/item/weapon/gun/rifle/mar40/carbine(src)
-			new /obj/item/ammo_magazine/rifle/mar40(src)
-			new /obj/item/ammo_magazine/rifle/mar40(src)
-			new /obj/item/ammo_magazine/rifle/mar40(src)
-		if(3) //Uzi set
-			new /obj/item/weapon/gun/smg/uzi(src)
-			new /obj/item/ammo_magazine/smg/uzi(src)
-			new /obj/item/ammo_magazine/smg/uzi(src)
-			new /obj/item/ammo_magazine/smg/uzi(src)
-		if(4) //PPSH set
-			new /obj/item/weapon/gun/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-		if(5) //MP5
-			new /obj/item/weapon/gun/smg/mp5(src)
-			new /obj/item/ammo_magazine/smg/mp5(src)
-			new /obj/item/ammo_magazine/smg/mp5(src)
-			new /obj/item/ammo_magazine/smg/mp5(src)
-		if(6) //HEFA nade set with m74
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/explosive/grenade/HE/frag(src)
-			new /obj/item/weapon/gun/launcher/grenade/m81/m79(src)
-
 
 /obj/structure/largecrate/crap
 	name = "\improper Weapons crate"
@@ -339,7 +292,7 @@
 
 // Low tier SMGs, pistols and good ole bolt actions
 
-/obj/structure/largecrate/guns/crap/New()
+/obj/structure/largecrate/crap/New()
 	..()
 	var/i = pick(1,5)
 	switch(i)
@@ -378,15 +331,62 @@
 			new /obj/item/ammo_magazine/rifle/hunting(src)
 			new /obj/item/ammo_magazine/rifle/hunting(src)
 
+/obj/structure/largecrate/mediocre
+	name = "\improper Weapons crate"
+	desc = "What is in here?"
+
+// really mediocre weapons.
+
+/obj/structure/largecrate/mediocre/New()
+	..()
+	var/i = pick(1,6)
+	switch(i)
+		if(1) //Type 71 set
+			new /obj/item/weapon/gun/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/clothing/mask/gas/PMC(src)
+		if(2) //MAR carabine set
+			new /obj/item/weapon/gun/rifle/mar40/carbine(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+		if(3) //Uzi set
+			new /obj/item/weapon/gun/smg/uzi(src)
+			new /obj/item/ammo_magazine/smg/uzi(src)
+			new /obj/item/ammo_magazine/smg/uzi(src)
+			new /obj/item/ammo_magazine/smg/uzi(src)
+		if(4) //PPSH set
+			new /obj/item/weapon/gun/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+		if(5) //MP5
+			new /obj/item/weapon/gun/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+		if(6) //MP27 with some assorted nades
+			new /obj/item/weapon/gun/smg/mp7(src)
+			new /obj/item/ammo_magazine/smg/mp7(src)
+			new /obj/item/ammo_magazine/smg/mp7(src)
+			new /obj/item/ammo_magazine/smg/mp7(src)
+			new /obj/item/explosive/grenade/HE(src)
+			new /obj/item/explosive/grenade/HE(src)
+			new /obj/item/explosive/grenade/HE/frag(src)
+			new /obj/item/explosive/grenade/HE/frag(src)
+
+
 /obj/structure/largecrate/decent
 	name = "\improper Weapons crate"
 	desc = "What is in here?"
 
 // Decent weapon sets that shouldn't be too crazy. Bog standard marine weapons with some variance in quality
 
-/obj/structure/largecrate/guns/decent/New()
+/obj/structure/largecrate/decent/New()
 	..()
-	var/i = pick(1,5)
+	var/i = pick(1,6)
 	switch(i)
 		if(1) //M41 MK2 set
 			new /obj/item/weapon/gun/rifle/m41a(src)
@@ -413,16 +413,23 @@
 			new /obj/item/ammo_magazine/pistol/skorpion(src)
 			new /obj/item/ammo_magazine/pistol/skorpion(src)
 			new /obj/item/ammo_magazine/pistol/skorpion(src)
+			new /obj/item/explosive/grenade/HE/upp(src)
+			new /obj/item/explosive/grenade/HE/upp(src)
+		if(6) // HG set
+			new /obj/item/weapon/gun/shotgun/pump/cmb(src)
+			new /obj/item/ammo_magazine/shotgun/buckshot(src)
+			new /obj/item/ammo_magazine/shotgun/slugs(src)
+			new /obj/item/ammo_magazine/shotgun/flechette(src)
 
 /obj/structure/largecrate/good
 	name = "\improper Weapons crate"
 	desc = "What is in here?"
 
-// Good weapons sets that shouldn't be too crazy. Rifles, usually coming with AP
+// Good weapons sets that shouldn't be too crazy. Rifles, usually come with AP
 
 /obj/structure/largecrate/guns/good/New()
 	..()
-	var/i = pick(1,5)
+	var/i = pick(1,7)
 	switch(i)
 		if(1) //L42 set
 			new /obj/item/weapon/gun/rifle/l42a(src)
@@ -452,8 +459,15 @@
 			new /obj/item/ammo_magazine/smg/fp9000(src)
 			new /obj/item/explosive/grenade/HE/upp(src)
 			new /obj/item/explosive/grenade/HE/upp(src)
+		if(6) // M60 set
+			new /obj/item/weapon/gun/m60(src) 
+			new /obj/item/ammo_magazine/m60(src)
+		if(7) // Sawn off + buckshit
+			new /obj/item/weapon/gun/shotgun/double/sawn(src)
+			new /obj/item/ammo_magazine/shotgun/buckshot(src)
+			new /obj/item/ammo_magazine/shotgun/buckshot(src)
 
-/obj/structure/largecrate/exotic// Funny shit, either som
+/obj/structure/largecrate/exotic
 	name = "\improper Exotic crate"
 	desc = "A deluxe weapons crate. Something good must be in here."
 	icon_state = "chest"
@@ -462,7 +476,7 @@
 
 /obj/structure/largecrate/exotic/New()
 	..()
-	var/i = pick(1,5)
+	var/i = pick(1,6)
 	switch(i)
 		if(1) // NSG 23 set + 2ap
 			new /obj/item/weapon/gun/rifle/nsg23(src)
@@ -492,11 +506,11 @@
 			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-		if(5) //L42  AP + extended
+		if(5) //L42  AP + incen
 			new /obj/item/weapon/gun/rifle/l42a(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+			new /obj/item/ammo_magazine/rifle/l42a/incen(src)
 			new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 			new /obj/item/ammo_magazine/rifle/l42a/extended(src)
 		if(6) //PMC FP9000 with 2 handheld mortar shell nades
@@ -518,7 +532,7 @@
 
 /obj/structure/largecrate/funny/New()
 	..()
-	var/i = pick(1,5)
+	var/i = pick(1,10)
 	switch(i)
 		if(1) // VERIFIED TOP QUALITY PRE USED AMMO
 			new /obj/item/ammo_magazine/rifle(src)
@@ -571,6 +585,8 @@
 			new /obj/item/ammo_magazine/rifle/hunting(src)
 			new /obj/item/explosive/grenade/HE/stick(src)
 			new /obj/item/clothing/head/ushanka(src)
+			new /obj/item/clothing/head/ushanka(src)
+			new /obj/item/clothing/head/ushanka(src)
 		if(7) // M. A. C. K. (munkie army creation kit)
 			new /obj/item/storage/box/monkeycubes(src)
 			new /obj/item/weapon/gun/smg/m39(src)
@@ -595,6 +611,7 @@
 		if(10) //The ultimate weapon
 			new /datum/gear/uno_reverse_red(src)
 			new /obj/item/paper/bigred/walls(src)
+
 /obj/structure/largecrate/guns/russian
 	num_guns = 3
 	num_mags = 3

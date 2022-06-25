@@ -30634,7 +30634,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "eGa" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/combat/riot,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
 	tag = "icon-mars_cave_17"
@@ -30759,16 +30759,16 @@
 /area/bigredv2/outside/virology)
 "eVo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/pistol/m4a3,
-/obj/item/ammo_magazine/pistol/hp{
-	pixel_y = -4
-	},
-/obj/item/ammo_magazine/pistol{
-	pixel_y = -4
-	},
 /obj/structure/cable{
 	icon_state = "9-10"
 	},
+/obj/item/weapon/gun/pistol/b92fs{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -31166,6 +31166,15 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
 	tag = "icon-mars_cave_17"
+	},
+/area/bigredv2/caves/mining)
+"fQy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
 "fRo" = (
@@ -31971,8 +31980,11 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "hWM" = (
-/obj/structure/machinery/filtration/console{
-	pixel_y = 15
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Control Module";
+	pixel_y = 15;
+	icon = 'icons/obj/structures/machinery/filtration.dmi';
+	icon_state = "console"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_15";
@@ -33529,6 +33541,12 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"lcp" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_3"
+	},
+/area/bigredv2/caves/mining)
 "lcu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/cigarette,
@@ -33648,7 +33666,6 @@
 	},
 /area/bigredv2/caves/mining)
 "lvh" = (
-/obj/item/weapon/gun/rifle/l42a,
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -33658,6 +33675,7 @@
 	pixel_y = 3;
 	tag = "icon-gib6"
 	},
+/obj/item/weapon/gun/rifle/m41a/training,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -33774,7 +33792,9 @@
 	pixel_y = 3;
 	pixel_x = -24
 	},
-/obj/structure/largecrate/funny,
+/obj/structure/largecrate/funny{
+	desc = "A deluxe weapons crate. Something good must be in here. A note on the side reads \" TOP S 100% QUALITY WEAPONS GARUNTEE \" "
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -33866,9 +33886,11 @@
 	},
 /area/bigredv2/caves/mining)
 "lSH" = (
-/obj/structure/largecrate/guns/merc{
-	icon_state = "case_double";
-	name = "supply crate"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/crap{
+	icon_state = "barrel_white";
+	name = "\improper white barrel";
+	desc = "What is in here? A note reads on the side: \" For you, Yuri \" "
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -36583,6 +36605,13 @@
 	icon_state = "warnplate"
 	},
 /area/bigredv2/oob)
+"rLQ" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves/mining)
 "rLR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -38077,6 +38106,15 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_east)
+"utk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/bigredv2/caves/mining)
 "uuo" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -38298,8 +38336,11 @@
 	},
 /area/bigredv2/caves_se)
 "uPF" = (
-/obj/structure/machinery/filtration/console{
-	pixel_y = 13
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Control Module";
+	pixel_y = 15;
+	icon = 'icons/obj/structures/machinery/filtration.dmi';
+	icon_state = "console"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -38634,6 +38675,13 @@
 	tag = "icon-mars_cave_9"
 	},
 /area/bigredv2/caves_north)
+"vAL" = (
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves_research)
 "vBy" = (
 /obj/item/ammo_magazine/shotgun/beanbag/riot,
 /turf/open/mars_cave{
@@ -39349,13 +39397,10 @@
 	},
 /area/bigredv2/caves/mining)
 "xhU" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 27
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+/obj/item/clothing/head/helmet/riot,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
 "xkq" = (
@@ -39722,6 +39767,7 @@
 /obj/item/ore/uranium{
 	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
 	},
+/obj/structure/largecrate/mediocre,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (
@@ -39971,8 +40017,6 @@
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -44523,7 +44567,7 @@ heG
 pZe
 pSa
 wLD
-kCe
+utk
 uHQ
 szw
 szw
@@ -45173,8 +45217,8 @@ rbD
 kCe
 ufu
 vdS
-rbD
-kCe
+pSa
+lSH
 uHQ
 aao
 aao
@@ -45607,7 +45651,7 @@ kCe
 kCe
 xWz
 pSa
-lSH
+rbD
 yln
 uHQ
 aao
@@ -46041,7 +46085,7 @@ oTv
 kCe
 xte
 uHQ
-sWS
+pSa
 pSa
 oKy
 wRH
@@ -46684,8 +46728,8 @@ wCo
 wCo
 wVQ
 oKy
-lSH
-xhU
+pSa
+pSa
 hRy
 hCT
 pSa
@@ -46905,7 +46949,7 @@ jhj
 kCe
 ekV
 pSa
-kCe
+fQy
 kCe
 uHT
 pSa
@@ -47338,7 +47382,7 @@ uHQ
 wtj
 ohY
 pSa
-lSH
+pSa
 pSa
 sWS
 pSa
@@ -50159,8 +50203,8 @@ nSP
 wCo
 wVQ
 rxh
-rxh
-aao
+sZh
+rLQ
 aao
 aao
 aao
@@ -50376,8 +50420,8 @@ wCo
 wCo
 wVQ
 rxh
-aao
-aao
+sZh
+wCo
 aao
 aao
 aao
@@ -51686,7 +51730,7 @@ cCu
 wlE
 dNd
 wVQ
-rsv
+lcp
 rsv
 nxa
 rsv
@@ -55796,7 +55840,7 @@ xkq
 xkq
 nXC
 guM
-nny
+vAL
 guM
 ybk
 aao
@@ -56250,7 +56294,7 @@ szw
 yhc
 sxs
 vPP
-sZh
+xhU
 wCo
 wVQ
 rxh

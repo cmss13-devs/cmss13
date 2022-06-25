@@ -601,7 +601,7 @@
 						playsound(src.loc, 'sound/voice/pred_roar1.ogg', 50,1)
 					else
 						playsound(src.loc, 'sound/voice/pred_roar2.ogg', 50,1)
-		if ("roar2")
+		if("roar2")
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"
 				m_type = 1

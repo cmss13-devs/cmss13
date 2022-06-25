@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(medal_awards)
 	var/posthumous = TRUE
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism"))
 	if(!medal_type) return
-	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null) as text|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
 	var/recipient_ckey
 	var/recipient_mob

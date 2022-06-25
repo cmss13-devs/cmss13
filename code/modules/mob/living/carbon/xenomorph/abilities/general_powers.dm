@@ -224,9 +224,12 @@
 
 // leader Marker
 
-/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
 	if(!..())
 		return FALSE
+
+	if(mods["click_catcher"])
+		return
 
 	if(!action_cooldown_check())
 		return

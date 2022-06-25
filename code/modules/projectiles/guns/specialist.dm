@@ -296,7 +296,7 @@
 //Come get some.
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action."
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action. \nAlt-click it to open the top cover and allow for reloading."
 	icon_state = "m56"
 	item_state = "m56"
 	fire_sound = "gun_smartgun"

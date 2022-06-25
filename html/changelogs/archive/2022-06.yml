@@ -310,3 +310,6 @@
   - bugfix: trying to weld a closet while your welder is off will no longer tell you
       you don't have enough fuel.
   - rscadd: added a minor do_after to closet welding and breaking.
+2022-06-25:
+  stanalbatross:
+  - balance: bodybag boxes can now only hold bodybags

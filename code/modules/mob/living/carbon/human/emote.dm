@@ -339,7 +339,11 @@
 				else if(has_species(src,"Monkey"))
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				else if(Pred)
-					playsound(loc, 'sound/voice/pred_scream1.ogg', 50, 1)
+<<<<<<< Updated upstream
+					playsound(loc, 'sound/voice/pred_scream1.ogg', 50,)
+=======
+					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
+>>>>>>> Stashed changes
 				if(player_caused)
 					start_audio_emote_cooldown()
 				track_scream(job)

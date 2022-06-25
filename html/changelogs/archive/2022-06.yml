@@ -314,5 +314,6 @@
   Maciekkub:
   - bugfix: Fixes M5RPG text displaying "It's unloaded but has round chambered" and
       now correctly displays if it's empty upon examine
+  - bugfix: Sound and notification now only play when you reach max threshold or above.
   stanalbatross:
   - balance: bodybag boxes can now only hold bodybags

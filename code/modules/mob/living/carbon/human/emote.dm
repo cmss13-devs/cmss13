@@ -336,11 +336,10 @@
 						playsound(loc, "male_scream", 50)
 					else
 						playsound(loc, "female_scream", 50)
+				else if(isYautja(src))
+					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
 				else if(has_species(src,"Monkey"))
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
-				else if(Pred)
-				 playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
-
 				if(player_caused)
 					start_audio_emote_cooldown()
 				track_scream(job)
@@ -615,7 +614,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(prob(0,100) < 50)
+					if(prob(50))
 						playsound(src.loc, 'sound/voice/pred_click3.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/pred_click4.ogg', 50)
@@ -623,7 +622,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(prob(0,100) < 50)
+					if(prob(50))
 						playsound(src.loc, 'sound/voice/alien_growl1.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/alien_growl2.ogg', 50)
@@ -631,7 +630,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
-					if(prob(0,100) < 50)
+					if(prob(50))
 						playsound(src.loc, 'sound/voice/alien_help1.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/alien_help2.ogg', 50)

@@ -1194,7 +1194,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	unacidable = TRUE
 	indestructible = 1
 	reload_sound = 'sound/weapons/handling/gun_rpg_reload.ogg'
-
+	unload_sound = 'sound/weapons/gun_mortar_unpack.ogg'
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/rocket
 	flags_equip_slot = NO_FLAGS

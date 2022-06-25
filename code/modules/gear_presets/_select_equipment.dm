@@ -222,10 +222,11 @@
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
 		var/obj/item/clothing/glasses/regular/P = new (H)
-		if(!H.equip_to_slot_or_del(P, WEAR_IN_BACK))
-			if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
-				if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
-					P.forceMove(H.loc)
+		if(!H.equip_to_slot_or_del(P, WEAR_EYES))
+			if(!H.equip_to_slot_or_del(P, WEAR_IN_BACK))
+				if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
+					if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
+						P.forceMove(H.loc)
 
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)
 	if(!H.client || !H.client.prefs || !H.client.prefs.traits)

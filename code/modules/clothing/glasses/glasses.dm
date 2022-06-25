@@ -223,7 +223,7 @@
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
 	icon_state = "mgoggles"
 	item_state = "mgoggles"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg
@@ -476,12 +476,13 @@
 	//vision_flags = DISABILITY_BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
 
 /obj/item/clothing/glasses/sunglasses/prescription
+	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
 	name = "prescription sunglasses"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
-	name = "big sunglasses"
+	name = "shades"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"

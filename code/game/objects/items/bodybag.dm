@@ -50,7 +50,7 @@
 	can_hold = list(/obj/item/bodybag)
 
 /obj/item/storage/box/bodybags/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i = 1 to 7)
 		new /obj/item/bodybag(src)
 
 /obj/structure/closet/bodybag

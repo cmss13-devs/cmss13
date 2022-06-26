@@ -288,8 +288,6 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
-
-
 //-------------------------------------------------------
 //SMARTGUN
 

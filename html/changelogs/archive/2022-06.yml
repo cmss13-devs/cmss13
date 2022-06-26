@@ -324,3 +324,10 @@
   stanalbatross:
   - balance: bodybag boxes can now only hold bodybags
   - qol: made the input box for writing medal citations larger.
+2022-06-26:
+  Stan_Albatross:
+  - rscadd: added a functioning top cover to the smartgun, can be opened and closed
+      with alt-click. You must open the cover to remove the drum or replace it. You
+      cannot fire the gun with the cover open. Thanks to Jooks for the sounds of opening/closing
+      the cover.
+  - bugfix: fixed being able to telepathically toggle the mode of laser designators.

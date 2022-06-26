@@ -256,7 +256,8 @@
 //This is an UNSAFE proc. It handles situations of timed equips.
 /mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc)
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(src, "You stop putting on \the [W]")
+		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
+		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP

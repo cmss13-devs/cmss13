@@ -363,6 +363,7 @@
 	name = "Pendleton's Triple Star Lager"
 	desc = "A brand of colonial lager prevalent in the Outer Rim but practically unknown in the inner systems, probably because of health concerns. It tastes like absolutely nothing familiar to you, but is oddly refreshing and has a fruity taste. The label on the back reads, 'Brewed with exotic hops in Costaguana.' You're almost certain that's a fake country."
 	icon_state = "pendleton"
+	center_of_mass = "x=16;y=13"
 
 /obj/item/reagent_container/food/drinks/bottle/beer/craft/Initialize()
 	. = ..()

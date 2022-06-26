@@ -379,7 +379,7 @@
 	icon_state = "ganucci"
 
 /obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt
-	name = "Blue Malt Lager"
+	name = "Blue Malt"
 	desc = "A malt beer with an alcohol content that toes the line of legality. So-called 'blue' because it's the color face you get when you down so many of these that your heart stops working. The surgeon general's warning is printed in huge letters on the back of the bottle. Do guns count as heavy machinery?"
 	icon_state = "bluemalt"
 

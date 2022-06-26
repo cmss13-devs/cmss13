@@ -1953,6 +1953,61 @@ Defined in conflicts.dm of the #defines folder.
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
+/obj/item/attachable/attached_gun/flamer_nozzle
+	name = "GEV-8 flamer nozzle"
+	desc = "A bungus special, this nozzle can be flipped over the output of a flamer to turn the jet into a focused projectile."
+	icon_state = "extinguisher"
+	attach_icon = "extinguisher_a"
+	w_class = SIZE_MEDIUM
+	slot = "under"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	max_range = 5
+
+	last_fired = 0
+	attachment_firing_delay = 3 SECONDS
+
+	var/projectile_type = /datum/ammo/flamethrower
+	var/fuel_per_projectile = 5
+
+	var/static/list/fire_sounds = list(
+		'sound/weapons/gun_flamethrower1.ogg',
+		'sound/weapons/gun_flamethrower2.ogg',
+		'sound/weapons/gun_flamethrower3.ogg'
+	)
+
+/obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+	. = ..()
+
+	if(!istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank))
+		to_chat(user, SPAN_WARNING("\The [src] needs a flamer tank installed!"))
+		return
+
+	if(!length(gun.current_mag.reagents.reagent_list))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have enough fuel to launch a fire projectile!"))
+		return
+
+	var/datum/reagent/flamer_reagent = gun.current_mag.reagents.reagent_list[1]
+	if(flamer_reagent.volume < FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have enough fuel to launch a fire projectile!"))
+		return
+
+	if(last_fired + attachment_firing_delay > world.time)
+		to_chat(user, SPAN_WARNING("\The [src] is still cooling down!"))
+		return
+	last_fired = world.time
+
+	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
+
+	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), user, src))
+	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
+	ammo_datum.flamer_reagent_type = flamer_reagent.type
+	P.generate_bullet(ammo_datum)
+	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
+	gun.muzzle_flash(Get_Angle(get_turf(user), target), user)
+	playsound(to_fire, pick(fire_sounds), 50, TRUE)
+
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remains!"))
+
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"
 	desc = "A vertical foregrip that offers better accuracy, less recoil, and less scatter, especially during burst fire. \nHowever, it also increases weapon size."

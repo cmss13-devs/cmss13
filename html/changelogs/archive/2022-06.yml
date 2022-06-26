@@ -333,3 +333,5 @@
   - bugfix: fixed being able to telepathically toggle the mode of laser designators.
   stanalbatross:
   - bugfix: bodybag boxes will no longer runtime on init
+  - bugfix: Ravagers will no longer count holograms such as the queen eye as enemies
+      for the purposes of empowering.

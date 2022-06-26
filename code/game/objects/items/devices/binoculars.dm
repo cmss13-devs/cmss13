@@ -198,9 +198,9 @@
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
 		return
-	if(mods["alt"])
+	if(mods["alt"] && loc == user)
 		toggle_bino_mode(user)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/item/device/binoculars/range/designator/stop_targeting(mob/living/carbon/human/user)

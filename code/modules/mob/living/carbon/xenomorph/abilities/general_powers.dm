@@ -224,9 +224,12 @@
 
 // leader Marker
 
-/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
 	if(!..())
 		return FALSE
+
+	if(mods["click_catcher"])
+		return
 
 	if(!action_cooldown_check())
 		return
@@ -234,6 +237,11 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state(TRUE))
 		return FALSE
+
+	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
+		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
+		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
+
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 

@@ -331,3 +331,5 @@
       cannot fire the gun with the cover open. Thanks to Jooks for the sounds of opening/closing
       the cover.
   - bugfix: fixed being able to telepathically toggle the mode of laser designators.
+  stanalbatross:
+  - bugfix: bodybag boxes will no longer runtime on init

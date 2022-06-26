@@ -4,10 +4,9 @@
 //Come get some.
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action."
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action. \nAlt-click it to open the top cover and allow for reloading."
 	icon_state = "m56"
 	item_state = "m56"
-
 	fire_sound = "gun_smartgun"
 	fire_rattle	= "gun_smartgun_rattle"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
@@ -18,7 +17,6 @@
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	actions_types = list(/datum/action/item_action/smartgun/toggle_accuracy_improvement, /datum/action/item_action/smartgun/toggle_ammo_type, /datum/action/item_action/smartgun/toggle_auto_fire, /datum/action/item_action/smartgun/toggle_lethal_mode, /datum/action/item_action/smartgun/toggle_motion_detector, /datum/action/item_action/smartgun/toggle_recoil_compensation)
 	var/powerpack = null
 	ammo = /datum/ammo/bullet/smartgun
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
@@ -36,6 +34,7 @@
 	var/obj/item/device/motiondetector/sg/MD
 	var/long_range_cooldown = 2
 	var/recycletime = 120
+	var/cover_open = FALSE
 
 	unacidable = 1
 	indestructible = 1
@@ -45,7 +44,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
@@ -56,6 +55,7 @@
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
 	MD = new(src)
 	. = ..()
+	update_icon()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -94,6 +94,47 @@
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	to_chat(user, message)
 	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
+
+/obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		if(!ishuman(user))
+			return ..()
+		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
+			return TRUE
+		if(user.get_active_hand() && user.get_inactive_hand())
+			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			return TRUE
+		if(!cover_open)
+			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You open \the [src]'s dust cover, allowing the drum to be removed."))
+			cover_open = TRUE
+		else
+			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You close \the [src]'s dust cover."))
+			cover_open = FALSE
+		update_icon()
+		return TRUE
+	else
+		return ..()
+
+/obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't put a new drum in!"))
+		return ..()
+	. = ..()
+
+/obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum!"))
+		return ..()
+	. = ..()
+
+/obj/item/weapon/gun/smartgun/update_icon()
+	. = ..()
+	if(cover_open)
+		overlays += "+[base_gun_icon]_cover_open"
+	else
+		overlays += "+[base_gun_icon]_cover_closed"
 
 //---ability actions--\\
 
@@ -225,6 +266,9 @@
 			return FALSE
 		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
 			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+			return FALSE
+		if(cover_open)
+			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the cover open!"))
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)

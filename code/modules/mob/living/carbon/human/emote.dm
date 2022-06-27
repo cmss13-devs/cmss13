@@ -605,7 +605,7 @@
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"
 				m_type = 1
-				playsound(src.loc, 'sound/voice/pred_roar3.ogg', 50.1)
+				playsound(src.loc, 'sound/voice/pred_roar3.ogg', 50,1)
 		if ("turnaround")
 			if(Pred && src.loc)
 				m_type = 1

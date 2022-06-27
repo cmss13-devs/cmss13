@@ -192,9 +192,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 28
-	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"

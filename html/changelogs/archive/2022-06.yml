@@ -335,3 +335,7 @@
   - bugfix: bodybag boxes will no longer runtime on init
   - bugfix: Ravagers will no longer count holograms such as the queen eye as enemies
       for the purposes of empowering.
+2022-06-27:
+  Geeves:
+  - bugfix: Ported a fix on /tg/ created by willox that might fix the sticky movement
+      keys bug.

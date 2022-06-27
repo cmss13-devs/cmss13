@@ -4,7 +4,7 @@
 //Come get some.
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action. \nAlt-click it to open the top cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action. \nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56"
 	item_state = "m56"
 	fire_sound = "gun_smartgun"
@@ -19,6 +19,14 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
 	ammo = /datum/ammo/bullet/smartgun
+	actions_types = list(
+						/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+						/datum/action/item_action/smartgun/toggle_ammo_type,
+						/datum/action/item_action/smartgun/toggle_auto_fire,
+						/datum/action/item_action/smartgun/toggle_lethal_mode,
+						/datum/action/item_action/smartgun/toggle_motion_detector,
+						/datum/action/item_action/smartgun/toggle_recoil_compensation
+						)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
@@ -106,11 +114,11 @@
 			return TRUE
 		if(!cover_open)
 			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open \the [src]'s dust cover, allowing the drum to be removed."))
+			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
 			cover_open = TRUE
 		else
 			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close \the [src]'s dust cover."))
+			to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
 			cover_open = FALSE
 		update_icon()
 		return TRUE
@@ -119,13 +127,13 @@
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't put a new drum in!"))
+		to_chat(user, SPAN_WARNING("The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
 		return ..()
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum!"))
+		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return ..()
 	. = ..()
 
@@ -247,6 +255,9 @@
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_ammo_type(usr)
+
+/datum/action/item_action/smartgun/toggle_ammo_type/proc/update_icon()
+	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.secondary_toggled)
 		action_icon_state = "ammo_swap_ap"
 	else
@@ -294,6 +305,8 @@
 	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
+	TAT.update_icon()
 
 /obj/item/weapon/gun/smartgun/replace_ammo()
 	..()

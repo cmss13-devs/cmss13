@@ -304,7 +304,10 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(H), WEAR_R_STORE)
 
@@ -578,7 +581,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(H), WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
@@ -758,7 +764,10 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
 /datum/equipment_preset/clf/synth/get_antag_clothing_equipment()
 	return list(

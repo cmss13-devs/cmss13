@@ -242,7 +242,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
 	//body
@@ -1699,7 +1702,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	var/hat = pick(/obj/item/clothing/head/uppcap, /obj/item/clothing/head/uppcap/beret, /obj/item/clothing/head/uppcap/ushanka)
 	H.equip_to_slot_or_del(new hat, WEAR_HEAD)
@@ -2108,7 +2114,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_IN_BACK)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_IN_BACK)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
 
@@ -2533,7 +2542,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka, WEAR_HEAD)
 	//body

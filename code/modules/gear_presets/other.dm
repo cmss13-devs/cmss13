@@ -157,7 +157,10 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 
 	load_freelancer_medic(H, shotgunner)
@@ -217,8 +220,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)

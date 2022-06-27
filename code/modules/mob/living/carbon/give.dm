@@ -10,6 +10,9 @@
 		return
 	if(src == giver)
 		return
+	if(giver.mob_flags & GIVING)
+		to_chat(giver, SPAN_WARNING("You are already giving an item to someone!"))
+		return
 	var/obj/item/I
 	if(!giver.hand && giver.r_hand == null)
 		to_chat(giver, SPAN_WARNING("You don't have anything in your right hand to give to [name]."))
@@ -26,8 +29,14 @@
 	if(!istype(I) || (I.flags_item & (DELONDROP|NODROP|ITEM_ABSTRACT)))
 		return
 	if(r_hand == null || l_hand == null)
-		switch(alert(src,"[giver] wants to give you \a [I]?",,"Yes","No"))
+		giver.mob_flags |= GIVING
+		var/choice = tgui_alert(src, "[giver] wants to give you \a [I]?", "Give Item", list("No", "Yes"), 10 SECONDS)
+		if(!choice)
+			giver.mob_flags &= ~GIVING
+			return
+		switch(choice)
 			if("Yes")
+				giver.mob_flags &= ~GIVING
 				if(!I || !giver || !istype(I))
 					return
 				if(!Adjacent(giver))
@@ -48,6 +57,7 @@
 							giver.visible_message(SPAN_NOTICE("[giver] hands [I] to [src]."),
 							SPAN_NOTICE("You hand [I] to [src]."), null, 4)
 			if("No")
+				giver.mob_flags &= ~GIVING
 				return
 	else
 		to_chat(giver, SPAN_WARNING("[src]'s hands are full."))

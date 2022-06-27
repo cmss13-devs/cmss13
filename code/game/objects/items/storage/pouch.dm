@@ -320,7 +320,6 @@
 	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	can_hold = list(
 					/obj/item/weapon/gun/revolver,
 					/obj/item/weapon/gun/pistol,

@@ -1274,7 +1274,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	accurate_range = 3
 	max_range = 3
-	damage = 90
+	damage = 75
 	penetration	= 0
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -1295,7 +1295,7 @@
 	handful_state = "heavy_dragonsbreath"
 	multiple_handful_name = TRUE
 	damage_type = BURN
-	damage = 75
+	damage = 60
 	accurate_range = 3
 	max_range = 4
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
@@ -1319,7 +1319,7 @@
 
 	accurate_range = 7
 	max_range = 8
-	damage = 100 //ouch.
+	damage = 90 //ouch.
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
 
@@ -1358,7 +1358,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
 	max_range = 12
-	damage = 50
+	damage = 45
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_10
@@ -1370,7 +1370,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = 50
+	damage = 45
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_10

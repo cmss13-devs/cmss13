@@ -610,7 +610,7 @@
 			if(Pred && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/pred_turnaround.ogg', 25, 0)
-		if ("click2")
+		if("click2")
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
@@ -618,7 +618,7 @@
 						playsound(src.loc, 'sound/voice/pred_click3.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/pred_click4.ogg', 50)
-		if ("aliengrowl")
+		if("aliengrowl")
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)
@@ -626,7 +626,7 @@
 						playsound(src.loc, 'sound/voice/alien_growl1.ogg', 50)
 					else
 						playsound(src.loc, 'sound/voice/alien_growl2.ogg', 50)
-		if ("alienhelp")
+		if("alienhelp")
 			if(Pred && src.loc)
 				m_type = 1
 				spawn(2)

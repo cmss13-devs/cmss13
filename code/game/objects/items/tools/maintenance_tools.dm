@@ -355,7 +355,7 @@
 //Note: This should probably be moved to mob
 /obj/item/tool/weldingtool/proc/eyecheck(mob/user)
 	if(has_welding_screen || !iscarbon(user))
-		return 1
+		return TRUE
 	var/safety = user.get_eye_protection()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

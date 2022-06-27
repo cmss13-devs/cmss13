@@ -259,7 +259,8 @@
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
 	if(.)
-		if(!ishuman(user)) return 0
+		if(!ishuman(user))
+			return FALSE
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
@@ -276,7 +277,7 @@
 		return
 	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isXeno(usr))

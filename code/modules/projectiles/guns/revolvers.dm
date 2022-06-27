@@ -184,7 +184,7 @@
 	qdel(projectile_to_fire)
 	if(refund && current_mag)
 		current_mag.current_rounds++
-	return 1
+	return TRUE
 
 // FLUFF
 /obj/item/weapon/gun/revolver/unique_action(mob/user)

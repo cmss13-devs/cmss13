@@ -345,3 +345,6 @@
   - soundadd: 'Yautja now have three new soulful emotes to use to create a sense of
       dread: *click2, *overthere and *comeonout'
   - soundadd: added a new sound for claiming trophies *roar2
+  stanalbatross:
+  - balance: removed the type 23 from the black market crate pool
+  - balance: tweaked down the damage of all type 23 ammo (8g shells)

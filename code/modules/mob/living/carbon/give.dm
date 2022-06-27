@@ -30,7 +30,7 @@
 		return
 	if(r_hand == null || l_hand == null)
 		giver.mob_flags |= GIVING
-		var/choice = tgui_alert(src, "[giver] wants to give you \a [I]?", "Give Item", list("No", "Yes"), 10 SECONDS)
+		var/choice = tgui_alert(src, "[giver] wants to give you \a [I]?", "You are being offered an item", list("No", "Yes"), 10 SECONDS)
 		if(!choice)
 			giver.mob_flags &= ~GIVING
 			return

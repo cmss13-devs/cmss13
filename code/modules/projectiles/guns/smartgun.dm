@@ -133,7 +133,7 @@
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum! (alt-click to open it)"))
+		to_chat(user, SPAN_WARNING("The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return ..()
 	. = ..()
 
@@ -280,7 +280,7 @@
 			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
 			return FALSE
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the cover open!"))
+			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)

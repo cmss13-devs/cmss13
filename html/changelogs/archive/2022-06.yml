@@ -352,6 +352,12 @@
   50RemAndCounting:
   - spellcheck: fixed a few typos and spelling inconsistencies in Captain Hans Naiche's
       announcements on Whiskey Outpost.
+  Diegoflores31:
+  - balance: Increased C4 damage to nearby walls to make its destructive power more
+      consistent.
+  - balance: increased wall damage to breaching charge to be able to break the reinforced
+      wall where it is planted.
+  - bugfix: fixed C4 and bcharge timers getting stuck on 60
   Maciekkub:
   - bugfix: You cannot crowbar grass tiles on Almayer preventing duplication.
   naut:

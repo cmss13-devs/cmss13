@@ -26,7 +26,7 @@
 	var/adj_sleepy = 0
 	var/slurr_adj = 3
 	var/confused_adj = 2
-	var/slur_start = 300 //(formerly 180) amount absorbed after which mob starts slurring
+	var/slur_start = 900 //(formerly 180) amount absorbed after which mob starts slurring
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
 	//This is all way too snowflake to accurately transition to the property system so it stays here

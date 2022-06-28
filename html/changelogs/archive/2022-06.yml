@@ -352,6 +352,8 @@
   50RemAndCounting:
   - spellcheck: fixed a few typos and spelling inconsistencies in Captain Hans Naiche's
       announcements on Whiskey Outpost.
+  naut:
+  - rscadd: Added some new craft beers that can be found in the Booze-o-Mat.
   stanalbatross:
   - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.
   - rscadd: Added two new nightmare inserts for the gym on LV.

@@ -30,6 +30,7 @@
 		return
 	if(r_hand == null || l_hand == null)
 		giver.mob_flags |= GIVING
+		addtimer(CALLBACK(giver, .proc/remove_giving_flag))
 		var/choice = tgui_alert(src, "[giver] wants to give you \a [I]?", "You are being offered an item", list("No", "Yes"), 10 SECONDS)
 		if(!choice)
 			giver.mob_flags &= ~GIVING
@@ -61,3 +62,8 @@
 				return
 	else
 		to_chat(giver, SPAN_WARNING("[src]'s hands are full."))
+
+/mob/living/carbon/proc/remove_giving_flag()
+	if(src.mob_flags & GIVING)
+		src.mob_flags &= ~GIVING
+		to_chat(src, SPAN_NOTICE("You can give an item to someone again."))

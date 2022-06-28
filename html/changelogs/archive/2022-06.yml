@@ -351,3 +351,4 @@
 2022-06-28:
   stanalbatross:
   - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.
+  - rscadd: Added two new nightmare inserts for the gym on LV.

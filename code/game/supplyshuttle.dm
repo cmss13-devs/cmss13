@@ -1025,25 +1025,22 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/vehicle_order/tank
 	name = "M34A2 Longstreet Light Tank"
-	ordered_vehicle = /obj/vehicle/multitile/tank/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/tank/decrepit
 
 /datum/vehicle_order/tank/has_vehicle_lock()
 	return
 
-/datum/vehicle_order/tank/on_created(var/obj/vehicle/multitile/tank/decrepit/tank)
-	tank.req_one_access = list()
-
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
-	ordered_vehicle = /obj/vehicle/multitile/apc/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
 
 /datum/vehicle_order/apc/med
 	name = "M577-MED Armored Personnel Carrier"
-	ordered_vehicle = /obj/vehicle/multitile/apc/medical/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc_med/decrepit
 
 /datum/vehicle_order/apc/cmd
 	name = "M577-CMD Armored Personnel Carrier"
-	ordered_vehicle = /obj/vehicle/multitile/apc/command/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()

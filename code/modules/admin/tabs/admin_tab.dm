@@ -123,6 +123,8 @@
 			mob.alpha = 0
 			mob.mouse_opacity = 0
 
+	admin_holder.invisimined = !admin_holder.invisimined
+
 	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
 	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
 
@@ -176,9 +178,9 @@
 		dat += "<br><br>"
 
 	dat += "<br>"
-	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Note</A><br>"
-	dat += "<A href='?src=\ref[src];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
-	dat += "<A href='?src=\ref[src];player_notes_all=[key]'>Show Complete Record</A><br>"
+	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
+	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
+	dat += "<A href='?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
@@ -216,21 +218,6 @@
 
 	message_staff("[key_name(usr)] used Toggle Wake In View.")
 
-/datum/admins/proc/viewUnheardAhelps()
-	set name = "View Unheard Ahelps"
-	set desc = "View any Ahelps that went unanswered"
-	set category = "Admin"
-
-	var/body = "<body>"
-	body += "<br>"
-
-	for(var/CID in unansweredAhelps)
-		body += "[unansweredAhelps[CID]]" //If I have done these correctly, it should have the options bar as well a mark and noresponse
-
-	body += "<br><br></body>"
-
-	show_browser(src, body, "Unheard Ahelps", "ahelps", "size=800x300")
-
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
@@ -250,7 +237,7 @@
 		color = "headminsay"
 
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
+		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
@@ -272,6 +259,19 @@
 	if (!msg)
 		return
 
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.admin_holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
+
 	log_adminpm("MOD: [key_name(src)] : [msg]")
 
 	var/color = "mod"
@@ -282,7 +282,7 @@
 	channel = "[admin_holder.rank]:"
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mod_say()
 	var/msg = input(src, null, "msay \"text\"") as text|null
@@ -423,18 +423,18 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];teleport=jump_to_area'>Jump to Area</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_turf'>Jump to Turf</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_mob'>Jump to Mob</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_obj'>Jump to Object</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_key'>Jump to Ckey</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
-		<A href='?src=\ref[src];teleport=get_mob'>Teleport Mob to You</A><BR>
-		<A href='?src=\ref[src];teleport=get_key'>Teleport Ckey to You</A><BR>
-		<A href='?src=\ref[src];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
-		<A href='?src=\ref[src];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
-		<A href='?src=\ref[src];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
 		<BR>
 		"}
 
@@ -455,9 +455,9 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
 		Forcibly removes vehicle clamp from vehicle selected from a list. Drops it under the vehicle.<BR>
-		<A href='?src=\ref[src];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
 		Fully restores vehicle modules and hull health.<BR>
 		"}
 
@@ -475,15 +475,15 @@
 
 /datum/admins/proc/in_view_panel()
 	var/dat = {"
-		<A href='?src=\ref[src];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-	 	<A href='?src=\ref[src];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
+	 	<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];inviews=sleepall'>Sleep All In View</A><BR>
-		<A href='?src=\ref[src];inviews=wakeall'>Wake All In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
 		<BR>
 		"}
 

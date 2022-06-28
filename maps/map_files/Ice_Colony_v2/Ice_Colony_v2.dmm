@@ -15439,7 +15439,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOC" = (
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
 	tag = "icon-gib6"

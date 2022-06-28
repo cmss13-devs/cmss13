@@ -28,7 +28,7 @@
 
 /datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/H, randomise, count_participant)
 	. = ..()
-	if(!auto_squad_name)
+	if(!auto_squad_name || is_admin_level(H.z))
 		return
 	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
 		GLOB.data_core.manifest_inject(H)

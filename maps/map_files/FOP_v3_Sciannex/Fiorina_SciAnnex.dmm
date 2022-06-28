@@ -3344,14 +3344,7 @@
 /area/fiorina/oob)
 "bTG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	item_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -12957,19 +12950,13 @@
 /area/fiorina/station/flight_deck)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
 /obj/item/clothing/under/marine{
 	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology.";
 	icon_state = "clown";
 	name = "\improper UCF uniform"
 	},
 /obj/item/clothing/mask/gas/clown_hat,
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -21384,22 +21371,6 @@
 	tag = "icon-kitchen"
 	},
 /area/fiorina/station/lowsec)
-"mXD" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	item_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/tumor/ice_lab)
 "mXI" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -63740,7 +63711,7 @@ azZ
 azZ
 azZ
 lJa
-mXD
+pBn
 lax
 nDJ
 dsT

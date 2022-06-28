@@ -215,6 +215,19 @@
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
 
+/obj/structure/closet/crate/freezer/cooler
+	icon = 'icons/obj/structures/souto_land.dmi'
+	desc = "A cozy cooler for your beer and other beverages."
+	icon_state = "cooler_closed"
+	icon_opened = "cooler_open"
+	icon_closed = "cooler_closed"
+	cooling_power = 10//not nearly as good as the actual freezer crate
+
+/obj/structure/closet/crate/freezer/cooler/oj
+	icon_state = "cooler-oj_closed"
+	icon_opened = "cooler-oj_open"
+	icon_closed = "cooler-oj_closed"
+
 
 /obj/structure/closet/crate/hydroponics
 	name = "hydroponics crate"

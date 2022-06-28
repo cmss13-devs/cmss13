@@ -5459,7 +5459,9 @@
 "ayJ" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
-/obj/structure/sign/safety/biohazard,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -18
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -8455,7 +8457,7 @@
 "aIH" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/mask/cigarette/cigar,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle)
@@ -15550,7 +15552,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
 "gAS" = (
-/obj/vehicle/multitile/van/decrepit,
+/obj/effect/vehicle_spawner/van/decrepit,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	icon_state = "dark"
@@ -16185,6 +16187,13 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/south_east_jungle)
+"ifX" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-gym"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
 "iiK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/queen_spawn,
@@ -17218,7 +17227,7 @@
 "kRr" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/shotgun/full,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = -6
 	},
@@ -42657,7 +42666,7 @@ uTe
 kAg
 kAg
 bZb
-qDQ
+ifX
 aJr
 bBk
 uTe

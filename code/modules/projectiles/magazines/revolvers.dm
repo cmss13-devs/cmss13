@@ -46,6 +46,12 @@
 	default_ammo = /datum/ammo/bullet/revolver/cluster
 	icon_state = "m44_cluster"
 
+/obj/item/ammo_magazine/revolver/pkd
+	name = "\improper Plfager Katsuma stripper clip (.44)"
+	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
+	icon_state = "pkd_44"
+	caliber = ".44 sabot"
+
 /obj/item/ammo_magazine/revolver/upp
 	name = "\improper N-Y speed loader (7.62x38mmR)"
 	default_ammo = /datum/ammo/bullet/revolver/nagant
@@ -124,6 +130,10 @@
 	caliber = ".44"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
+
+/obj/item/ammo_magazine/internal/revolver/m44/pkd
+	max_rounds = 8
+	caliber = ".44 sabot"
 
 /obj/item/ammo_magazine/internal/revolver/m44/marksman
 	default_ammo = /datum/ammo/bullet/revolver/marksman //because the starting m44 custom revolver belt is full of marksman ammo, but your gun would have normal ammo loaded

@@ -35,7 +35,11 @@
 							"Xeno Status HUD" = FALSE
 							)
 	universal_speak = 1
+	var/updatedir = TRUE	//Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
+	var/datum/orbit_menu/orbit_menu
+	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -123,11 +127,66 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 
+/mob/dead/observer/proc/clean_observetarget()
+	SIGNAL_HANDLER
+	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
+	if(observetarget?.observers)
+		observetarget.observers -= src
+		UNSETEMPTY(observetarget.observers)
+	observetarget = null
+	client.eye = src
+	hud_used.show_hud(hud_used.hud_version, src)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+
+/mob/dead/observer/proc/observer_move_react()
+	SIGNAL_HANDLER
+	if(src.loc == get_turf(observetarget))
+		return
+	clean_observetarget()
+
+///makes the ghost see the target hud and sets the eye at the target.
+/mob/dead/observer/proc/do_observe(mob/target)
+	if(!client || !target || !istype(target))
+		return
+
+	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
+	if(!ishuman(target))
+		ManualFollow(target)
+		return
+
+	client.eye = target
+
+	if(!target.hud_used)
+		return
+
+	client.screen = list()
+	LAZYINITLIST(target.observers)
+	target.observers |= src
+	target.hud_used.show_hud(target.hud_used.hud_version, src)
+	observetarget = target
+	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, .proc/clean_observetarget)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/observer_move_react)
+
+/mob/dead/observer/reset_perspective(atom/A)
+	if(observetarget)
+		clean_observetarget()
+	. = ..()
+
+	if(!.)
+		return
+
+	if(!hud_used)
+		return
+
+	client.screen = list()
+	hud_used.show_hud(hud_used.hud_version)
+
 /mob/dead/observer/Login()
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Destroy()
+	QDEL_NULL(orbit_menu)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -224,6 +283,10 @@ Works together with spawning an observer, noted above.
 
 	return TRUE
 
+/mob/dead/observer/create_hud()
+	if(!hud_used)
+		hud_used = new /datum/hud/ghost(src)
+
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
@@ -291,32 +354,30 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-/mob/dead/observer/Move(NewLoc, direct)
+/mob/dead/observer/Move(atom/newloc, direct)
 	following = null
-	setDir(direct)
 	var/area/last_area = get_area(loc)
-	if(NewLoc)
-		for(var/obj/effect/step_trigger/S in NewLoc)
-			S.Crossed(src)
+	if(updatedir)
+		setDir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
 
-	var/turf/T = get_turf(src)
-	if(T) // Get out of closets and such as a ghost
-		forceMove(T)
-
-	if((direct & NORTH) && y < world.maxy)
-		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
-	else if((direct & SOUTH) && y > 1)
-		y -= m_intent
-	if((direct & EAST) && x < world.maxx)
-		x += m_intent
-	else if((direct & WEST) && x > 1)
-		x -= m_intent
+	if(newloc)
+		abstract_move(newloc)
+	else
+		abstract_move(get_turf(src))  //Get out of closets and such as a ghost
+		if((direct & NORTH) && y < world.maxy)
+			y++
+		else if((direct & SOUTH) && y > 1)
+			y--
+		if((direct & EAST) && x < world.maxx)
+			x++
+		else if((direct & WEST) && x > 1)
+			x--
 
 	var/turf/new_turf = locate(x, y, z)
 	if(!new_turf)
@@ -400,88 +461,49 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Follow"
 	set name = "Follow"
 
-	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
-	var/input = tgui_input_list(usr, "Please, select a category:", "Follow", choices)
-	if(!input)
-		return
-	var/atom/movable/target
-	var/list/targets = list()
-	switch(input)
-		if("Humans")
-			targets = gethumans()
-		if("Xenomorphs")
-			targets = getxenos()
-		if("Predators")
-			targets = getpreds()
-		if("Synthetics")
-			targets = getsynths()
-		if("ERT Members")
-			targets = getertmembers()
-		if("Survivors")
-			targets = getsurvivors()
-		if("Any Mobs")
-			targets = getmobs()
-		if("Vehicles")
-			targets = get_multi_vehicles()
-
-		if("Holograms")
-			targets = get_holograms()
-
-		if("Mobs by Faction")
-			choices = FACTION_LIST_HUMANOID
-			input = tgui_input_list(usr, "Please, select a Faction:", "Follow", choices)
-
-			targets = gethumans()
-			for(var/name in targets)
-				var/mob/living/carbon/human/M = targets[name]
-				if(!istype(M) || M.faction != input)
-					targets.Remove(name)
-
-		if("Xenos by Hive")
-			var/hives = list()
-			var/datum/hive_status/hive
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				hives += list("[hive.name]" = hive.hivenumber)
-
-			input = tgui_input_list(usr, "Please, select a Hive:", "Follow", hives)
-			if(!input)
-				return
-
-			targets = getxenos()
-			for(var/name in targets)
-				var/mob/living/carbon/Xenomorph/X = targets[name]
-				if(!istype(X) || X.hivenumber != hives[input])
-					targets.Remove(name)
-
-	if(!LAZYLEN(targets))
-		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
-		return
-	input = tgui_input_list(usr, "Please select a target among [input] to follow", "Follow", targets)
-	target = targets[input]
-
-	ManualFollow(target)
-	return
+	if(!orbit_menu)
+		orbit_menu = new(src)
+	orbit_menu.ui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
-	if(target)
-		if(target == src)
-			to_chat(src, SPAN_WARNING("You can't follow yourself"))
-			return
-		if(following && following == target)
-			return
-		following = target
-		to_chat(src, SPAN_NOTICE(" Now following [target]"))
-		spawn(0)
-			while(target && following == target && client)
-				var/turf/T = get_turf(target)
-				if(!T)
-					break
-				// To stop the ghost flickering.
-				if(loc != T)
-					forceMove(T)
-				sleep(15)
+	if(!istype(target))
+		return
+
+	var/orbitsize
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		orbitsize = human_target.langchat_height
+	else
+		var/icon/I = icon(target.icon, target.icon_state, target.dir)
+		orbitsize = (I.Width() + I.Height()) * 0.5
+	orbitsize -= (orbitsize / world.icon_size) * (world.icon_size * 0.25)
+
+	var/rot_seg
+
+	switch(ghost_orbit)
+		if(GHOST_ORBIT_TRIANGLE)
+			rot_seg = 3
+		if(GHOST_ORBIT_SQUARE)
+			rot_seg = 4
+		if(GHOST_ORBIT_PENTAGON)
+			rot_seg = 5
+		if(GHOST_ORBIT_HEXAGON)
+			rot_seg = 6
+		else //Circular
+			rot_seg = 36
+
+	orbit(target, orbitsize, FALSE, 20, rot_seg)
+
+/mob/dead/observer/orbit()
+	setDir(SOUTH)//reset dir so the right directional sprites show up //might tweak this for xenos, stan_albatross orbitshit
+	return ..()
+
+
+/mob/dead/observer/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	pixel_y = -2
+	animate(src, pixel_y = 0, time = 10, loop = -1)
 
 /mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
 	if(!tx || !ty || !tz)

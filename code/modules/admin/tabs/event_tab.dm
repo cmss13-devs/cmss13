@@ -638,34 +638,34 @@
 
 	var/dat = {"
 		<B>Ship</B><BR>
-		<A href='?src=\ref[src];events=securitylevel'>Set Security Level</A><BR>
-		<A href='?src=\ref[src];events=distress'>Send a Distress Beacon</A><BR>
-		<A href='?src=\ref[src];events=selfdestruct'>Activate Self-Destruct</A><BR>
-		<A href='?src=\ref[src];events=evacuation_start'>Trigger Evacuation</A><BR>
-		<A href='?src=\ref[src];events=evacuation_cancel'>Cancel Evacuation</A><BR>
-		<A href='?src=\ref[src];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
-		<A href='?src=\ref[src];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
 		<BR>
 		<B>Research</B><BR>
-		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>
-		<A href='?src=\ref[src];events=give_research_credits'>Give Research Credits</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
 		<BR>
 		<B>Power</B><BR>
-		<A href='?src=\ref[src];events=unpower'>Unpower ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];events=power'>Power ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];events=quickpower'>Power ship SMESs</A><BR>
-		<A href='?src=\ref[src];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
-		<A href='?src=\ref[src];events=blackout'>Break all lights</A><BR>
-		<A href='?src=\ref[src];events=whiteout'>Repair all lights</A><BR>
-		<A href='?src=\ref[src];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
 		<BR>
 		<B>Misc</B><BR>
-		<A href='?src=\ref[src];events=medal'>Award a medal</A><BR>
-		<A href='?src=\ref[src];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
-		<A href='?src=\ref[src];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>
 		"}
 
@@ -685,21 +685,21 @@
 
 	var/dat
 	if(check_rights(R_MOD,0))
-		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
+		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
 	if(check_rights(R_VAREDIT,0))
-		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>"}
-		dat += {"<A href='?src=\ref[src];chem_panel=sync_filter'>Sync Reaction</A><br>
+		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reaction'>View Reaction</A><br>"}
+		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=sync_filter'>Sync Reaction</A><br>
 				<br>"}
 	if(check_rights(R_SPAWN,0))
-		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
-				<A href='?src=\ref[src];chem_panel=make_report'>Make Chem Report</A><br>
+		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
+				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
 	if(check_rights(R_FUN,0))
-		dat += {"<A href='?src=\ref[src];chem_panel=create_random_reagent'>Generate Reagent</A><br>
+		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
-				<A href='?src=\ref[src];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
-				<A href='?src=\ref[src];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
+				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
+				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
 	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
@@ -721,6 +721,7 @@
 		var/equipment_presets = jointext(GLOB.gear_name_presets_list, ";")
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
+		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
 	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
 
@@ -738,6 +739,7 @@
 		create_xenos_html = file2text('html/create_xenos.html')
 		create_xenos_html = replacetext(create_xenos_html, "null /* hive paths */", "\"[hive_types]\"")
 		create_xenos_html = replacetext(create_xenos_html, "null /* xeno paths */", "\"[xeno_types]\"")
+		create_xenos_html = replacetext(create_xenos_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
 	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", "size=450x630")
 

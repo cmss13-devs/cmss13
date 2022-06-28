@@ -737,6 +737,10 @@
 		last_locked = world.time
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
+			if(M.hive.hivecore_cooldown)
+				M.hive.hivecore_cooldown = FALSE
+				message = "The weeds have recovered! A new hive core can be built!"
+				xeno_message(SPAN_XENOBOLDNOTICE("[message]"),3,M.hivenumber)
 			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 		queen_locked = 1
 

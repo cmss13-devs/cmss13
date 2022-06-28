@@ -15,8 +15,9 @@
 	)
 
 	var/deploying_time = 50
-	var/penetration = 1 // How much damage adjacent walls receive
+	var/penetration = 1.5 // How much damage adjacent walls receive
 	var/timer = 10 // detonation time
+	var/min_timer = 10
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
@@ -51,12 +52,11 @@
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
 			detonator.attack_self(user)
 		return
-	var/new_time = input(usr, "Please set the timer.", "Timer", 10) as num
-	if(new_time < timer)
-		new_time = timer
+	var/new_time = input(usr, "Please set the timer.", "Timer", min_timer) as num
+	if(new_time < min_timer)
+		new_time = min_timer
 	else if(new_time > 60)
 		new_time = 60
-
 	timer = new_time
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
@@ -64,7 +64,7 @@
 	setDir(get_dir(user, target))
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting it!"))
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
 
 	if(user.action_busy || !flag)
@@ -105,15 +105,15 @@
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] plants [name] on you!")))
 		user.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(user)] successfully planted [name] on [key_name(target)]</font>"
-		msg_admin_niche("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [key_name(target)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[target]'>?</A>) with [timer] second fuse")
+		msg_admin_niche("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [key_name(target)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[target]'>?</A>) with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [key_name(target)] with [timer] second fuse")
 	else
-		msg_admin_niche("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse")
+		msg_admin_niche("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 	if(customizable)
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
-		SPAN_WARNING("You plant [name] on [target]!."))
+		SPAN_WARNING("You plant [name] on [target]!"))
 		activate_sensors()
 		if(!istimer(detonator.a_right) && !istimer(detonator.a_left))
 			icon_state = overlay_image
@@ -283,7 +283,7 @@
 			qdel(src)
 		return
 
-	plant_target.ex_act(1000 * penetration, , cause_data)
+	plant_target.ex_act(2000, dir, cause_data)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
@@ -308,7 +308,7 @@
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
 	create_shrapnel(explosion_target, 40, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
-	sleep(1)// prevents explosion from eating shrapnell
+	sleep(1)// prevents explosion from eating shrapnel
 	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
 
@@ -332,5 +332,6 @@
 	w_class = SIZE_SMALL
 	angle = 55
 	timer = 3
-	penetration = 0.45
+	min_timer = 3
+	penetration = 0.60
 	deploying_time = 10

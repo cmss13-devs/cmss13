@@ -16,19 +16,26 @@
 	var/random_name
 	if(H.gender == MALE)
 		random_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
-		H.f_style = "5 O'clock Shadow"
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		random_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
 
 	H.change_real_name(H, random_name)
 	H.age = rand(17,35)
-	H.h_style = "Shaved Head"
-	H.r_hair = 15
-	H.g_hair = 15
-	H.b_hair = 25
-	H.r_eyes = 139
-	H.g_eyes = 62
-	H.b_eyes = 19
+	H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Bun, Topknot")
+	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
+	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
+	var/hair_color = pick(hair_colors)
+	H.r_hair = hair_colors[hair_color][1]
+	H.g_hair = hair_colors[hair_color][2]
+	H.b_hair = hair_colors[hair_color][3]
+	H.r_facial = hair_colors[hair_color][1]
+	H.g_facial = hair_colors[hair_color][2]
+	H.b_facial = hair_colors[hair_color][3]
+	var/eye_color = pick(colors)
+	H.r_eyes = colors[eye_color][1]
+	H.g_eyes = colors[eye_color][2]
+	H.b_eyes = colors[eye_color][3]
 	idtype = /obj/item/card/id/dogtag
 
 //*****************************************************************************************************/
@@ -1657,16 +1664,24 @@
 	var/random_name
 	if(H.gender == MALE)
 		random_name = "[pick(first_names_male_upp)]"
-		H.f_style = "5 O'clock Shadow"
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		random_name = "[pick(first_names_female_upp)]"
 	H.change_real_name(H, random_name)
-	H.r_hair = 15
-	H.g_hair = 15
-	H.b_hair = 25
-	H.r_eyes = 139
-	H.g_eyes = 62
-	H.b_eyes = 19
+	H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
+	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
+	var/hair_color = pick(hair_colors)
+	H.r_hair = hair_colors[hair_color][1]
+	H.g_hair = hair_colors[hair_color][2]
+	H.b_hair = hair_colors[hair_color][3]
+	H.r_facial = hair_colors[hair_color][1]
+	H.g_facial = hair_colors[hair_color][2]
+	H.b_facial = hair_colors[hair_color][3]
+	var/eye_color = pick(colors)
+	H.r_eyes = colors[eye_color][1]
+	H.g_eyes = colors[eye_color][2]
+	H.b_eyes = colors[eye_color][3]
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth/load_race(mob/living/carbon/human/H)
@@ -1722,6 +1737,7 @@
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest", 0, /obj/item/clothing/accessory/storage/surg_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Surgical Webbing Vest (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),

@@ -65,6 +65,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							"Xeno Status HUD" = FALSE
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
+	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"

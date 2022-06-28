@@ -256,6 +256,8 @@
 
 	var/list/banished_ckeys = list()
 
+	var/hivecore_cooldown = FALSE
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)

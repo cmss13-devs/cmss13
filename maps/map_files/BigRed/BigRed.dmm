@@ -14272,7 +14272,7 @@
 /area/bigredv2/outside/c)
 "aKv" = (
 /obj/structure/bed/chair/wood/normal,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -38238,7 +38238,7 @@
 	},
 /area/bigredv2/caves/mining)
 "uIB" = (
-/obj/vehicle/multitile/van/decrepit,
+/obj/effect/vehicle_spawner/van/decrepit,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;

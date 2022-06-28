@@ -278,6 +278,7 @@ ICE GRASS
 	icon_state = "firstbush_1"
 	variations = 4
 	cut_level = PLANT_CUT_KNIFE
+	projectile_coverage = 0//CEASE EATING BULLETS, I BEG YOU
 
 /obj/structure/flora/bush/ausbushes/ausbush
 	icon_state = "firstbush_1"

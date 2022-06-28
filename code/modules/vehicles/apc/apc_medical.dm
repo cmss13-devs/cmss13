@@ -95,25 +95,52 @@
 			camera_int.c_tag = camera.c_tag + " interior"
 
 /*
-** PRESETS
+** PRESETS SPAWNERS
 */
+/obj/effect/vehicle_spawner/apc_med
+	name = "APC MED Spawner"
+	icon = 'icons/obj/vehicles/apc.dmi'
+	icon_state = "apc_base_med"
+	pixel_x = -48
+	pixel_y = -48
 
-/obj/vehicle/multitile/apc/medical/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+/obj/effect/vehicle_spawner/apc_med/Initialize()
+	. = ..()
+	spawn_vehicle()
+	qdel(src)
 
-/obj/vehicle/multitile/apc/medical/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract")
-	take_damage_type(1e8, "abstract")
-	healthcheck()
+//PRESET: no hardpoints
+/obj/effect/vehicle_spawner/apc_med/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
 
-/obj/vehicle/multitile/apc/medical/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	load_misc(APC)
+	handle_direction(APC)
+	load_hardpoints(APC)
+	APC.update_icon()
 
-/obj/vehicle/multitile/apc/medical/plain/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+//PRESET: only wheels installed
+/obj/effect/vehicle_spawner/apc_med/plain/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+//PRESET: default hardpoints, destroyed
+/obj/effect/vehicle_spawner/apc_med/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
+
+	load_misc(APC)
+	handle_direction(APC)
+	load_hardpoints(APC)
+	load_damage(APC)
+	APC.update_icon()
+
+/obj/effect/vehicle_spawner/apc_med/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+//PRESET: default hardpoints
+/obj/effect/vehicle_spawner/apc_med/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

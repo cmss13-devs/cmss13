@@ -124,8 +124,10 @@
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(!isliving(usr))
+		return
+	if(usr.stat)
+		return
 	if(!LAZYLEN(accessories))
 		return
 	var/obj/item/clothing/accessory/A
@@ -137,6 +139,9 @@
 		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
 	else
 		A = LAZYACCESS(accessories, 1)
+	if(!usr.Adjacent(src))
+		to_chat(usr, SPAN_WARNING("You're too far away!"))
+		return
 	src.remove_accessory(usr,A)
 	removables -= A
 	if(!removables.len)

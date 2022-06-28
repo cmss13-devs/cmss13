@@ -103,6 +103,22 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
+/turf/open/auto_turf/sand_white
+	layer_name = list("aged igneous", "wind swept dunes", "warn a coder", "warn a coder", "warn a coder")
+	icon_state = "varadero_1"
+	icon_prefix = "varadero"
+
+/turf/open/auto_turf/sand_white/get_dirt_type()
+	return DIRT_TYPE_SAND
+
+/turf/open/auto_turf/sand_white/layer0
+	icon_state = "varadero_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/sand_white/layer1
+	icon_state = "varadero_1"
+	bleed_layer = 1
+
 //Ice Colony perma frost
 /turf/open/auto_turf/ice
 	name = "auto-ice"

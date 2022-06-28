@@ -42,7 +42,7 @@
 #define GUN_UNUSUAL_DESIGN		(1<<2)
 #define GUN_SILENCED			(1<<3)
 #define GUN_AUTOMATIC			(1<<4)
-#define GUN_INTERNAL_MAG		(1<<5)
+#define GUN_INTERNAL_MAG		(1<<5)  // If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
 #define GUN_AUTO_EJECTOR		(1<<6)
 #define GUN_AMMO_COUNTER		(1<<7)
 #define GUN_BURST_ON			(1<<8)

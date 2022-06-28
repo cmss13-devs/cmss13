@@ -163,6 +163,14 @@
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
 
+#define COMSIG_DBLCLICK_SHIFT_MIDDLE "dblclick_shift_middle"
+#define COMSIG_DBLCLICK_CTRL_SHIFT "dblclick_ctrl_shift"
+#define COMSIG_DBLCLICK_CTRL_MIDDLE "dblclick_ctrl_middle"
+#define COMSIG_DBLCLICK_MIDDLE "dblclick_middle"
+#define COMSIG_DBLCLICK_SHIFT "dblclick_shift"
+#define COMSIG_DBLCLICK_ALT "dblclick_alt"
+#define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
+
 #define COMSIG_MOB_LOGIN "mob_login"
 
 /// From /mob/living/rejuvenate
@@ -194,6 +202,10 @@
 /// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
+///called when an atom starts orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+///called when an atom stops orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_STOP "atom_orbit_stop"
 /// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
@@ -397,6 +409,9 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+
+///from base of /atom/movable/proc/set_glide_size(): (target)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"

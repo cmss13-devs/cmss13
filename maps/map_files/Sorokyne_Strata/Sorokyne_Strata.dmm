@@ -11017,7 +11017,7 @@
 /area/strata/ag/interior/dorms)
 "aFR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},

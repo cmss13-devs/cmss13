@@ -417,6 +417,7 @@
 	name = "grass patch"
 	icon_state = "grass1"
 	tile_type = /obj/item/stack/tile/grass
+	tool_flags = null
 
 /turf/open/floor/grass/Initialize(mapload, ...)
 	. = ..()

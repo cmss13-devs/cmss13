@@ -1074,6 +1074,20 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
+/obj/item/attachable/stock/double
+	name = "\improper double barrel shotgun stock"
+	desc = "A chunky piece of wood coated in varnish and age."
+	slot = "stock"
+	icon_state = "db_stock"
+	wield_delay_mod = WIELD_DELAY_NONE//part of the gun's base stats
+	flags_attach_features = NO_FLAGS
+	pixel_shift_x = 32
+	pixel_shift_y = 15
+	hud_offset_mod = 2
+
+/obj/item/attachable/stock/double/New()
+	..()
+
 /obj/item/attachable/stock/mou53
 	name = "\improper MOU53 tactical stock"
 	desc = "A metal stock fitted specifically for the MOU53 break action shotgun."
@@ -1179,6 +1193,32 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/stock/hg3712
+	name = "hg3712 stock"
+	desc = "The non-detachable stock of a HG 37-12 pump shotgun."
+	icon_state = "hg3712_stock"
+	pixel_shift_x = 41
+	pixel_shift_y = 10
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/hg3712/New()
+	..()
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/stock/hg3712/m3717
+	name = "hg3717 stock"
+	desc = "The non-detachable stock of a M37-17 pump shotgun."
+	icon_state = "hg3717_stock"
 
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A solid stock"
@@ -1677,11 +1717,11 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
 
 	playsound(user.loc, fire_sound, 50, 1)
-	msg_admin_attack("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
+	msg_admin_attack("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>)")
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 
 	var/pass_flags = NO_FLAGS

@@ -250,6 +250,7 @@
 	if(user.action_busy)
 		return 0
 	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
 	//Do after stuff here
@@ -259,6 +260,7 @@
 	WT.eyecheck(user)
 	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return 0
 		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] welds [src]."),

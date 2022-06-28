@@ -546,7 +546,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!."))
+		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!"))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
@@ -665,14 +665,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "zippoon"
 	icon_off = "zippo"
 	var/engraved = FALSE
-	
+
 /obj/item/tool/lighter/zippo/attackby(obj/item/W as obj, mob/user as mob)
 	. = ..()
 	if(istype(W, /obj/item/attachable/bayonet))
 		if(engraved)
 			to_chat(user, SPAN_NOTICE("\The [src] is already engraved."))
 			return
-		
+
 		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)
 		if(length(str) == 0 || length(str) > 32)
 			to_chat(user, SPAN_NOTICE("You fumble [W], maybe try again?"))
@@ -680,7 +680,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		desc += "\nEngraved with \"[str]\""
 		engraved = TRUE
 		to_chat(user, SPAN_NOTICE("You engrave \the [src] with \"[str]\"."))
-		
+
 		log_admin("[user] has engraved \the [src] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 
 /obj/item/tool/lighter/zippo/gold

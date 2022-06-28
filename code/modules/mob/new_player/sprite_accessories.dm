@@ -866,7 +866,7 @@
 	icon_state = "facial_5oclock"
 
 /datum/sprite_accessory/facial_hair/fiveOclock_m
-	name = "5 Oclock Moustache"
+	name = "5 O'clock Moustache"
 	icon_state = "facial_5oclockmoustache"
 
 /datum/sprite_accessory/facial_hair/sevenOclock

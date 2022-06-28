@@ -511,3 +511,9 @@ var/global/list/gear_datums = list()
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
 	cost = 4
 	slot = WEAR_IN_BACK
+
+/datum/gear/pdt_kit
+	display_name = "PDT/L Kit"
+	path = /obj/item/storage/box/pdt_kit
+	cost = 3
+	slot = WEAR_IN_BACK

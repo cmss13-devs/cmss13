@@ -160,7 +160,9 @@
 				return
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
-	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	var/message = WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]).")
+	message_staff(message, M.x, M.y, M.z)
+	admin_ticket_log(M, message)
 
 /client/proc/cmd_admin_alert_message(var/mob/M)
 	set name = "Alert Message"

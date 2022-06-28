@@ -10,13 +10,23 @@
 		// If a message starts with , we assume that up to MULTIBROADCAST_MAX_CHANNELS
 		// next symbols are channel names. If we run into a space we stop looking for more channels.
 		var/i
-		for(i in 2 to 1+MULTIBROADCAST_MAX_CHANNELS)
+		for(i in 2 to 1 + MULTIBROADCAST_MAX_CHANNELS)
 			var/current_channel = message[i]
 			if(current_channel == " " || current_channel == ":" || current_channel == ".")
 				i--
 				break
 			.["modes"] += department_radio_keys[":[current_channel]"]
 		.["message_and_language"] = copytext(message, i+1)
+		var/multibroadcast_cooldown = 0
+		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
+			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
+				var/cooldown_remaining = (headset.last_multi_broadcast + headset.multibroadcast_cooldown) - world.time
+				if(cooldown_remaining > multibroadcast_cooldown)
+					multibroadcast_cooldown = cooldown_remaining
+			else
+				headset.last_multi_broadcast = world.time
+		if(multibroadcast_cooldown)
+			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
@@ -34,6 +44,7 @@
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
 	.["modes"] = ml_and_modes["modes"]
+	.["fail_with"] = ml_and_modes["fail_with"]
 	var/message_and_language = ml_and_modes["message_and_language"]
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
@@ -70,6 +81,10 @@
 		alt_name = "(as [get_id_name("Unknown")])"
 
 	var/list/parsed = parse_say(message)
+	var/fail_message = parsed["fail_with"]
+	if(fail_message)
+		to_chat(src, SPAN_WARNING(fail_message))
+		return
 	message = parsed["message"]
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)

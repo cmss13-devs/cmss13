@@ -63,26 +63,30 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && user.a_intent == INTENT_HELP && ishuman(user))
-		var/mob_x = user.x - src.x
-		var/mob_y = user.y - src.y
-		for(var/entrance in entrances)
-			var/entrance_coord = entrances[entrance]
-			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
-				var/obj/item/grab/G = O
-				var/atom/dragged_atom = G.grabbed_thing
-				if(istype(/obj/item/explosive/grenade, dragged_atom))
-					var/obj/item/explosive/grenade/nade = dragged_atom
-					if(!nade.active)		//very creative, but no.
-						break
-				handle_fitting_pulled_atom(user, dragged_atom)
-				return
-		to_chat(user, SPAN_INFO("In order to try fitting pulled object into vehicle without getting in, stand at the entrance and click on vehicle with pulled object on [SPAN_HELPFUL("HELP")] intent."))
+	if(istype(O, /obj/item/grab) && ishuman(user))
+		if(user.a_intent == INTENT_HELP)
+			var/mob_x = user.x - src.x
+			var/mob_y = user.y - src.y
+			for(var/entrance in entrances)
+				var/entrance_coord = entrances[entrance]
+				if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+					var/obj/item/grab/G = O
+					var/atom/dragged_atom = G.grabbed_thing
+					if(istype(/obj/item/explosive/grenade, dragged_atom))
+						var/obj/item/explosive/grenade/nade = dragged_atom
+						if(!nade.active)		//very creative, but no.
+							break
+
+					handle_fitting_pulled_atom(user, dragged_atom)
+					return
+		else
+			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to fit pulled object or creature into vehicle without getting inside yourself."))
+			return
 
 	if(istype(O, /obj/item/device/motiondetector))
 
 		user.visible_message(SPAN_WARNING("[user] fumbles with \the [O] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [O] to scan \the [src]'s interior for abnormal activity."))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [O]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
 			return
 		if(get_dist(src, user) > 2)
@@ -93,8 +97,9 @@
 
 		interior.update_passenger_count()
 		var/obj/item/device/motiondetector/MD = O
-		if(interior.xenos_taken_slots)
+		if(interior.xenos_taken_slots + interior.passengers_taken_slots)
 			MD.show_blip(user, src)
+			to_chat(user, SPAN_WARNING("\The [MD] shows that there are approximately [interior.xenos_taken_slots + interior.passengers_taken_slots] signatures inside. Affiliation unknown."))
 			playsound(user, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, FALSE, 7, 2)
 		else
 			playsound(user, 'sound/items/detector.ogg', 60, FALSE, 7, 2)
@@ -375,8 +380,8 @@
 	if(isXeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && !allowed(M) && health > 0)
-			to_chat(M, SPAN_DANGER("\The [src] is locked!"))
+		if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+			to_chat(M, SPAN_WARNING("\The [src] is locked!"))
 			return
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
@@ -437,9 +442,8 @@
 /obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
 	if(!ishuman(M))
 		return
-
-	if(health > 0 && door_locked && !allowed(M))
-		to_chat(M, SPAN_DANGER("\The [src] is locked!"))
+	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+		to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 		return
 
 	var/mob_x = M.x - src.x
@@ -474,7 +478,7 @@
 	if(success)
 		to_chat(M, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
 	else
-		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]."))
+		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it

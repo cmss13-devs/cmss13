@@ -183,10 +183,10 @@
 // Moves the atom to the interior
 /datum/interior/proc/enter(var/atom/movable/A, var/entrance_used)
 	if(!ready)
-		return
+		return FALSE
 
 	if(!A)
-		return
+		return FALSE
 
 	if(forbidden_atoms)
 		for(var/type in forbidden_atoms)

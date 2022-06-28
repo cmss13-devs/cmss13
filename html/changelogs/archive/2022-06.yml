@@ -348,3 +348,6 @@
   stanalbatross:
   - balance: removed the type 23 from the black market crate pool
   - balance: tweaked down the damage of all type 23 ammo (8g shells)
+2022-06-28:
+  stanalbatross:
+  - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.

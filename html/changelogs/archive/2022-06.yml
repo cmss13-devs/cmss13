@@ -349,6 +349,9 @@
   - balance: removed the type 23 from the black market crate pool
   - balance: tweaked down the damage of all type 23 ammo (8g shells)
 2022-06-28:
+  50RemAndCounting:
+  - spellcheck: fixed a few typos and spelling inconsistencies in Captain Hans Naiche's
+      announcements on Whiskey Outpost.
   stanalbatross:
   - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.
   - rscadd: Added two new nightmare inserts for the gym on LV.

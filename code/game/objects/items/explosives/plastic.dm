@@ -54,7 +54,7 @@
 		return
 	var/new_time = input(usr, "Please set the timer.", "Timer", min_timer) as num
 	if(new_time < min_timer)
-		new_time = timer
+		new_time = min_timer
 	else if(new_time > 60)
 		new_time = 60
 	timer = new_time

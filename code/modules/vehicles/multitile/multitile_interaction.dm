@@ -483,14 +483,14 @@
 //CLAMP procs, unsafe proc, checks are done before calling it
 /obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
 	user.temp_drop_inv_item(O, 0)
-	O.forceMove(src)
 	clamped = TRUE
 	move_delay = 50000
 	next_move = world.time + move_delay
+	qdel(O)
 	update_icon()
 	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
-/obj/vehicle/multitile/proc/detach_clamp(mob/user)
+/obj/vehicle/multitile/proc/detach_clamp(var/mob/user)
 	clamped = FALSE
 	move_delay = initial(move_delay)
 
@@ -499,10 +499,11 @@
 		Loco.on_install(src)	//we restore speed respective to wheels/treads if any installed
 
 	next_move = world.time + move_delay
-	for(var/obj/item/vehicle_clamp/TC in src)
-		if(user)
-			TC.forceMove(get_turf(user))
-			message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
-		else
-			TC.forceMove(get_turf(src))
+	var/obj/item/vehicle_clamp/O = new(get_turf(src))
+	if(user)
+		O.forceMove(get_turf(user))
+		message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
+	else
+		O.forceMove(get_turf(src))
+		message_staff("Vehicle clamp was detached from \the [src].")
 	update_icon()

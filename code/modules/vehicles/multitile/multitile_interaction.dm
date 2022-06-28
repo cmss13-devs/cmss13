@@ -29,18 +29,21 @@
 			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
 			return
 
-		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-			if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-				user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
-				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
-					return
-				user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to [src]."), SPAN_NOTICE("You attach the vehicle clamp to [src] and lock the mechanism with your ID."))
-				attach_clamp(O, user)
-			else
-				to_chat(user, SPAN_WARNING("You don't know how to use [O] with [src]."))
+		//only can clamp friendly vehicles
+		if(!get_target_lock(user.faction_group))
+			to_chat(user, SPAN_WARNING("You can attach clamp to vehicles of your faction only."))
 			return
-		to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
+
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_WARNING("You don't know how to use \the [O.name]."))
+			return
+
+		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to \the [src]."), SPAN_NOTICE("You attach the vehicle clamp to \the [src] and lock the mechanism."))
+			attach_clamp(O, user)
+			return
+
+		to_chat(user, SPAN_WARNING("There are no treads or wheels to attach \the [O.name] to."))
 		return
 
 	// Are we trying to remove a vehicle clamp?
@@ -50,12 +53,12 @@
 
 		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
-			user.visible_message(SPAN_WARNING("[user] skillfully removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and skillfully remove the vehicle clamp from [src]."))
+			user.visible_message(SPAN_WARNING("[user] swiftly removes the vehicle clamp from [src]."), SPAN_NOTICE("You skillfully unlock the mechanism and swiftly remove the vehicle clamp from [src]."))
 		else
-			if(!do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
 			user.visible_message(SPAN_WARNING("[user] clumsily removes the vehicle clamp from [src]."), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))

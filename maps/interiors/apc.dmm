@@ -184,6 +184,7 @@
 /area/vehicle/apc)
 "w" = (
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	name = "Left APC door";

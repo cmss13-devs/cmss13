@@ -14,6 +14,8 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < BLOOD_VOLUME_NORMAL)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+		if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 
 		var/b_volume = blood_volume
 
@@ -31,6 +33,15 @@
 				b_volume *= 0.6
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
+
+	// When blood volume is above max (above 107.1%)
+		if(b_volume > BLOOD_VOLUME_MAXIMUM)
+			if(prob(10))
+				to_chat(src, SPAN_DANGER("You feel dizzy"))
+			if(eye_blurry < 20)
+				eye_blurry += 2
+			if(oxyloss < 30)
+				oxyloss += 2
 
 	//Effects of bloodloss
 		switch(b_volume)

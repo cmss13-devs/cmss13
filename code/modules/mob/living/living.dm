@@ -657,13 +657,15 @@
 		if(!(H.species && H.species.flags & NO_BLOOD))
 			blood_volume = round(H.blood_volume)
 
-			var/blood_percent =  blood_volume / 560
+			var/blood_percent =  blood_volume / BLOOD_VOLUME_NORMAL
 			var/blood_type = H.blood_type
 			blood_percent *= 100
-			if(blood_volume <= 500 && blood_volume > 336)
+			if(blood_volume <= BLOOD_VOLUME_SAFE && blood_volume > BLOOD_VOLUME_OKAY)
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
-			else if(blood_volume <= 336)
+			else if(blood_volume <= BLOOD_VOLUME_OKAY)
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
+			else if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+				dat += "\t<span class='scanner'> <b>Warning: Blood Level HIGH: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
 		// Show pulse
@@ -672,8 +674,10 @@
 			unrevivable = 1
 		if(!unrevivable)
 			var/advice = ""
-			if(blood_volume <= 500 && !reagents_in_body["nutriment"])
+			if(blood_volume <= BLOOD_VOLUME_SAFE && !reagents_in_body["nutriment"])
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
+			if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+				advice += "<span class='scanner'>Transfuse blood from the patient's body.</span>\n"
 			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"
 			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)

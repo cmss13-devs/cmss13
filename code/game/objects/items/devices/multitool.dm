@@ -43,3 +43,8 @@
 		to_chat(user, SPAN_NOTICE("The local APC is located at <span class='bold'>[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]</span>."))
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
+
+/obj/item/device/multitool/chinese/attack_self(mob/user)
+	var/string = randomly_generate_chinese_syllable()
+	message_admins("[string]")
+	..()

@@ -14,3 +14,19 @@
 #define LANGUAGE_DRONE "Drone Talk"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"
+
+//Chinese language sound bitflags
+
+//initial flags
+
+#define FRONT_CLOSE_ONLY	(1<<0)
+#define SIMPLE_U_ONLY		(1<<1)
+#define HALF_U				(1<<2)
+#define FULL_U				(1<<3)
+#define NO_FRONT_CLOSE		(1<<4)
+
+//final flags
+
+#define U_GROUP_HALF		(1<<0)
+#define U_GROUP_FULL		(1<<1)
+

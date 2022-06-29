@@ -15,6 +15,7 @@
 	owner.move_max_momentum = initial(owner.move_max_momentum)
 	owner.move_momentum_build_factor = initial(owner.move_momentum_build_factor)
 	owner.move_turn_momentum_loss_factor = initial(owner.move_turn_momentum_loss_factor)
+	owner.next_move = world.time + move_delay
 
 /obj/item/hardpoint/locomotion/on_install(var/obj/vehicle/multitile/V)
 	if(move_delay)
@@ -25,6 +26,7 @@
 		V.move_momentum_build_factor = move_momentum_build_factor
 	if(move_turn_momentum_loss_factor)
 		V.move_turn_momentum_loss_factor = move_turn_momentum_loss_factor
+	owner.next_move = world.time + move_delay
 
 /obj/item/hardpoint/locomotion/on_uninstall(var/obj/vehicle/multitile/V)
 	deactivate()

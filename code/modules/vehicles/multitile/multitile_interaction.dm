@@ -63,7 +63,7 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && ishuman(user))
+	if(istype(O, /obj/item/grab) && ishuman(user))	//only humans are allowed to fit dragged stuff inside
 		if(user.a_intent == INTENT_HELP)
 			var/mob_x = user.x - src.x
 			var/mob_y = user.y - src.y
@@ -380,9 +380,16 @@
 	if(isXeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
-			to_chat(M, SPAN_WARNING("\The [src] is locked!"))
-			return
+		if(door_locked && health > 0)	//check if lock on and actually works
+			if(ishuman(M))
+				var/mob/living/carbon/human/user = M
+				if(!allowed(user) || !get_target_lock(user.faction_group))	//if we are human, we check access and faction
+					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+					return
+			else
+				to_chat(M, SPAN_WARNING("\The [src] is locked!"))	//animals are not allowed inside without supervision
+				return
+
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
@@ -439,15 +446,16 @@
 		if(!success)
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
-	if(!ishuman(M))
+//try to fit something into the vehicle
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/living/carbon/human/user, var/atom/dragged_atom)
+	if(!ishuman(user))
 		return
 	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
 		to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 		return
 
-	var/mob_x = M.x - src.x
-	var/mob_y = M.y - src.y
+	var/mob_x = user.x - x
+	var/mob_y = user.y - y
 	var/entrance_used = null
 	for(var/entrance in entrances)
 		var/entrance_coord = entrances[entrance]
@@ -455,30 +463,30 @@
 			entrance_used = entrance
 			break
 
-	to_chat(M, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
-	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	to_chat(user, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
-	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+	if(mob_x != user.x - x || mob_y != user.y - y)
 		return
 
 	var/atom/currently_dragged
 
-	if(istype(M.get_inactive_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_inactive_hand()
+	if(istype(user.get_inactive_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_inactive_hand()
 		currently_dragged = G.grabbed_thing
-	else if(istype(M.get_active_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_active_hand()
+	else if(istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_active_hand()
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(M, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(M, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
 	else
-		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
+		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it
@@ -486,7 +494,7 @@
 	user.temp_drop_inv_item(O, 0)
 	O.forceMove(src)
 	clamped = TRUE
-	move_delay = 50000
+	move_delay = VEHICLE_SPEED_STATIC
 	next_move = world.time + move_delay
 	update_icon()
 	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")

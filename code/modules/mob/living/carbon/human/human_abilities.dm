@@ -298,17 +298,23 @@ CULT
 	var/mob/living/carbon/human/H = owner
 
 
-	var/input = input(H, "Say in Hivemind", "Hivemind Chat")
-
-	if(!input)
+	var/message = input(H, "Say in Hivemind", "Hivemind Chat") as null|text
+	if(!message)
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
+	message = trim(strip_html(message))
 
+	message = capitalize(trim(message))
+	message = process_chat_markup(message, list("~", "_"))
+
+	if(!(copytext(message, -1) in ENDING_PUNCT))
+		message += "."
+
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 	if(!istype(hive))
 		return
 
-	H.hivemind_broadcast(input, hive)
+	H.hivemind_broadcast(message, hive)
 
 /datum/action/human_action/activable/cult/obtain_equipment
 	name = "Obtain Equipment"
@@ -413,13 +419,12 @@ CULT
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
 		return
 
-	var/datum/equipment_preset/other/xeno_cultist/XC = new()
+	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	preset.load_race(chosen, H.hivenumber)
+	preset.load_status(chosen)
 
-	XC.load_race(chosen, H.hivenumber)
-	XC.load_status(chosen)
-
-	to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Xeno Cultist!"))
-	to_chat(chosen, SPAN_DANGER("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself.<hr>"))
+	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
+	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
 
 	xeno_message("[chosen] has been converted into a cultist!", 2, hive.hivenumber)
 

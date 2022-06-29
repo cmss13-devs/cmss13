@@ -14,7 +14,7 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < BLOOD_VOLUME_NORMAL)
 			blood_volume += 0.1 // regenerate blood VERY slowly
-		if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+		if(blood_volume > BLOOD_VOLUME_HIGH)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 
 		var/b_volume = blood_volume
@@ -34,7 +34,7 @@
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
 
-	// When blood volume is above max (above 107.1%)
+	// When blood volume is above max
 		if(b_volume > BLOOD_VOLUME_MAXIMUM)
 			if(prob(10))
 				to_chat(src, SPAN_DANGER("You feel dizzy"))
@@ -119,7 +119,7 @@
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
-				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
+				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_HIGH)
 		else
 			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()

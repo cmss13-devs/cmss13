@@ -195,10 +195,6 @@
 	tag = "left"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_x = -21;
-	pixel_y = 24
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;
 	pixel_x = 5;
 	pixel_y = 8

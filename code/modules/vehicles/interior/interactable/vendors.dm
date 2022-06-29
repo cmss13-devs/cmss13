@@ -292,10 +292,10 @@
 
 		list("ARMOR AND CLOTHING", -1, null, null),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
-		list("M10 Pattern Marine Helmet", round(scale * 5), /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Carrier Marine Armor", round(scale * 3), /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", round(scale * 3), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
-		list("M3-L Pattern Light Armor", round(scale * 3), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
+		list("M10 Pattern Marine Helmet", round(scale * 3), /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
+		list("M3-H Pattern Heavy Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-L Pattern Light Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 		)
 
 //combined from req guns and ammo vendors
@@ -317,7 +317,7 @@
 				var/obj/item/stack/S = item_to_stock
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
 				if(S.amount != 10)
-					to_chat(user, SPAN_WARNING("[S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to have 10 of them in it before storing."))
+					to_chat(user, SPAN_WARNING("[S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to have 10 of them in it before restocking."))
 					return
 			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
 				var/obj/item/ammo_box/magazine/A = item_to_stock
@@ -337,6 +337,11 @@
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
 						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
+			if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+				if(AR.pockets && AR.pockets.contents.len)
+					to_chat(user, SPAN_WARNING("[AR] has something inside. Empty it before restocking."))
+					return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)

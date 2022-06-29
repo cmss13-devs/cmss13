@@ -372,3 +372,4 @@
   - bugfix: Equipping someone as a xeno cultist will no longer duplicate their robes/hood,
       and it'll be force-attached from the start.
   - balance: Xeno cultists can now partially see in the darkness.
+  - admin: Xeno cultists now get XOOC messages too.

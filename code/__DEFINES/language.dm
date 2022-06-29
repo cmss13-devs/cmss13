@@ -24,6 +24,9 @@
 #define HALF_U				(1<<2)
 #define NO_FRONT_CLOSE		(1<<3)
 #define SIMPLIFY_UO			(1<<4)
+#define NO_E_ONG			(1<<5)
+#define DENTAL_ALV			(1<<6)
+#define NONDENTAL_ALV		(1<<7)
 
 //final flags
 

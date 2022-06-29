@@ -365,3 +365,10 @@
   stanalbatross:
   - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.
   - rscadd: Added two new nightmare inserts for the gym on LV.
+2022-06-29:
+  Geevies:
+  - rscadd: Tweaked some xeno cultist equipment to be more generic.
+  - rscadd: Tweaked how human speech in the hivemind appears to look way better.
+  - bugfix: Equipping someone as a xeno cultist will no longer duplicate their robes/hood,
+      and it'll be force-attached from the start.
+  - balance: Xeno cultists can now partially see in the darkness.

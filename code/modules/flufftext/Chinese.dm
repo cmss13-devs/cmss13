@@ -11,43 +11,49 @@
 /proc/randomly_generate_chinese_syllable()
 	var/syllable
 	//select intial
-	var/IN = (pick(subtypesof(/datum/chinese_sound/initial/))) //assign a random consonant and vowel
+	var/IN = (pick(subtypesof(/datum/chinese_sound/initial/))) //assign a random consonant
 	var/list/possible_finals = subtypesof(/datum/chinese_sound/final)
 	var/datum/chinese_sound/initial/initial = new IN
 	//add intial to sound
 	syllable += "[initial.sound]"
+	message_admins("initial = [syllable]")
 	//narrow down final list
 
 	//remove complex/simple -u- glide finals
 	if(initial.initial_sound_flags & SIMPLE_U_ONLY)
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.vowel_class == VOWEL_CLASS_BACK_CLOSE)
-				message_admins("removing [final.sound]")
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE)
+				message_admins("removing [initial(final.sound)] - simple u check")
 				possible_finals -= final
 		possible_finals += /datum/chinese_sound/final/u
 	else if(initial.initial_sound_flags & HALF_U)
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.vowel_class == VOWEL_CLASS_BACK_CLOSE && final.final_sound_flags & U_GROUP_FULL)
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE && initial(final.final_sound_flags) & U_GROUP_FULL)
+				message_admins("removing [initial(final.sound)] - half u check")
 				possible_finals -= final
 
 	//check for if the sound is alveolo-palatal or sibilant/retroflex - then remove or keep front close vowels accordingly
 	if(initial.initial_sound_flags & NO_FRONT_CLOSE)
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.vowel_class == VOWEL_CLASS_FRONT_CLOSE)
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(final.vowel_class) == VOWEL_CLASS_FRONT_CLOSE)
+				message_admins("removing [initial(final.sound)] - zh sh ch check")
 				possible_finals -= final
 	else if(initial.initial_sound_flags & FRONT_CLOSE_ONLY)
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.vowel_class != VOWEL_CLASS_FRONT_CLOSE)
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(final.vowel_class) != VOWEL_CLASS_FRONT_CLOSE)
+				message_admins("removing [initial(final.sound)] - j x q check")
 				possible_finals -= final
 
 	//remove ü sounds if unneeded
 	if(!(initial.initial_sound_flags & FRONT_CLOSE_ONLY) || !(initial in list(/datum/chinese_sound/initial/n, /datum/chinese_sound/initial/l)))
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.final_sound_flags & U_UMLAUT|U_UMLAUT_RARE)
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(final.final_sound_flags) & (U_UMLAUT|U_UMLAUT_RARE))
+				message_admins("removing [initial(final.sound)] - ü check")
 				possible_finals -= final
 	else if(initial in list(/datum/chinese_sound/initial/n, /datum/chinese_sound/initial/l))
-		for(var/datum/chinese_sound/final/final in possible_finals)
-			if(final.final_sound_flags & U_UMLAUT_RARE)
+		for(var/datum/chinese_sound/final/final as anything in possible_finals)
+			if(initial(final.final_sound_flags) & U_UMLAUT_RARE)
+				message_admins("removing [initial(final.sound)] - ü check with n")
 				possible_finals -= final
 
 	//snowflake checks...
@@ -62,8 +68,8 @@
 
 	//select final
 	var/string
-	for(var/datum/chinese_sound/final/possible_final in possible_finals)
-		string += "[possible_final.sound], "
+	for(var/datum/chinese_sound/final/possible_final as anything in possible_finals)
+		string += "[initial(possible_final.sound)], "
 	message_admins("possible finals for [initial.sound] : [string]")
 	var/FN = pick(possible_finals)
 	var/datum/chinese_sound/final/final = new FN
@@ -317,7 +323,7 @@
 
 /datum/chinese_sound/final/yun
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
-	sound = "un"
+	sound = "ün"
 	zero_initial_sound = "yun"
 
 /datum/chinese_sound/final/yue
@@ -328,5 +334,5 @@
 
 /datum/chinese_sound/final/yuan
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
-	sound = "uan"
+	sound = "üan"
 	zero_initial_sound = "yuan"

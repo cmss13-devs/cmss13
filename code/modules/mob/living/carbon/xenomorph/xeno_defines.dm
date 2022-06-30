@@ -775,8 +775,10 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
-	hivecore_cooldown = FALSE
 	hijack_pooled_surge = TRUE
+	hivecore_cooldown = FALSE
+	message = "The weeds have recovered! A new hive core can be built!"
+	xeno_message(SPAN_XENOBOLDNOTICE("[message]"),3,M.hivenumber)
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++

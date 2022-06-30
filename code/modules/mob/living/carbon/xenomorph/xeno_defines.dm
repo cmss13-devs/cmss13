@@ -775,6 +775,7 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
+	hivecore_cooldown = FALSE
 	hijack_pooled_surge = TRUE
 
 /datum/hive_status/proc/free_respawn(var/client/C)

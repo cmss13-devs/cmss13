@@ -266,7 +266,7 @@
 
 /obj/structure/sign/safety/high_rad
 	name = "high radioactivity semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of a high radioactivity area."
+	desc = "Semiotic Standard denoting the nearby presence of a highly radioactive area."
 	icon_state = "highrad"
 
 /obj/structure/sign/safety/high_voltage

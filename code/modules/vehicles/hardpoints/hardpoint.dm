@@ -441,7 +441,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		if(!(world.time % 3))
 			playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. Integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+			user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 			being_repaired = FALSE
 			return
 

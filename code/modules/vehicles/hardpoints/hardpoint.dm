@@ -463,7 +463,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		to_chat(user, SPAN_NOTICE("Integrity of \the [src] is now at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 
 	being_repaired = FALSE
-	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. Integrity of \the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 	return
 
 //determines whether something is in firing arc of a hardpoint

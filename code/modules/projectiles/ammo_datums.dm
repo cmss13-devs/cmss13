@@ -2863,7 +2863,7 @@
 //========
 */
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
-	name = "30mm Onmi-Ball shell"
+	name = "30mm Multi-Purpose shell"
 
 	damage = 150 //More damaging, but 2x less shells and low AP
 	penetration = ARMOR_PENETRATION_TIER_2
@@ -2874,7 +2874,7 @@
 /datum/ammo/bullet/shrapnel/gau/hv
 	name = "30mm Anti-Tank shell"
 
-	damage = 90 //Standard AP vs standard. (more AP for less damage)
+	damage = 95 //Standard AP vs standard. (more AP for less damage)
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
 /*

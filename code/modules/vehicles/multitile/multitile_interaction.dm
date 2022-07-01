@@ -80,7 +80,7 @@
 					handle_fitting_pulled_atom(user, dragged_atom)
 					return
 		else
-			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to fit pulled object or creature into vehicle without getting inside yourself."))
+			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
 			return
 
 	if(istype(O, /obj/item/device/motiondetector))

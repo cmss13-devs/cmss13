@@ -776,6 +776,8 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
+	hivecore_cooldown = FALSE
+	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++

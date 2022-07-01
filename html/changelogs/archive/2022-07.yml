@@ -2,3 +2,6 @@
   Geevies:
   - code_imp: Xenos now check for death on updatehealth, meaning they die when you
       shoot them.
+  Morrow:
+  - bugfix: You can now quickdraw via holster/unholster key weapons held in the command
+      pouch.

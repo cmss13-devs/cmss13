@@ -5,3 +5,7 @@
   Morrow:
   - bugfix: You can now quickdraw via holster/unholster key weapons held in the command
       pouch.
+  Stan_Albatross, Nauticall.:
+  - qol: Converted the smartgun-specific verbs into action buttons. Sprites by Nauticall.
+  - qol: added helpful messages telling you how to open a smartgun's feed cover if
+      you try to do something that is blocked by it being closed.

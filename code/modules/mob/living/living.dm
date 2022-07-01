@@ -664,7 +664,7 @@
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else if(blood_volume <= BLOOD_VOLUME_OKAY)
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
-			else if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+			else if(blood_volume > BLOOD_VOLUME_HIGH)
 				dat += "\t<span class='scanner'> <b>Warning: Blood Level HIGH: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
@@ -676,7 +676,7 @@
 			var/advice = ""
 			if(blood_volume <= BLOOD_VOLUME_SAFE && !reagents_in_body["nutriment"])
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
-			if(blood_volume > BLOOD_VOLUME_MAXIMUM)
+			if(blood_volume > BLOOD_VOLUME_HIGH)
 				advice += "<span class='scanner'>Transfuse blood from the patient's body.</span>\n"
 			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"

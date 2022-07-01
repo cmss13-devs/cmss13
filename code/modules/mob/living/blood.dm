@@ -34,17 +34,20 @@
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
 
-	// When blood volume is above max
-		if(b_volume > BLOOD_VOLUME_MAXIMUM)
-			if(prob(10))
-				to_chat(src, SPAN_DANGER("You feel dizzy"))
-			if(eye_blurry < 20)
-				eye_blurry += 2
-			if(oxyloss < 30)
-				oxyloss += 2
-
-	//Effects of bloodloss
+	//Effects of bloodloss/too much blood
 		switch(b_volume)
+			if(BLOOD_VOLUME_MAXIMUM to 1000) // 1000cl of blood should not be attainable
+				if(prob(10))
+					to_chat(src, SPAN_DANGER("You feel dizzy."))
+				if(eye_blurry < 20)
+					eye_blurry += 2
+				if(oxyloss < 30)
+					oxyloss += 2
+			if((BLOOD_VOLUME_HIGH+20) to BLOOD_VOLUME_MAXIMUM) // +20 so that not everyone starts with 10 oxy damage due to post-cryo eating
+				if(prob(5))
+					to_chat(src, SPAN_DANGER("Your head aches."))
+				if(oxyloss < 10)
+					oxyloss += 1
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")

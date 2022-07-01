@@ -1,0 +1,4 @@
+2022-07-01:
+  Geevies:
+  - code_imp: Xenos now check for death on updatehealth, meaning they die when you
+      shoot them.

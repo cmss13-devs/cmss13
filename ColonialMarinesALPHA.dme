@@ -1832,6 +1832,7 @@
 #include "code\modules\projectiles\guns\revolvers.dm"
 #include "code\modules\projectiles\guns\rifles.dm"
 #include "code\modules\projectiles\guns\shotguns.dm"
+#include "code\modules\projectiles\guns\smartgun.dm"
 #include "code\modules\projectiles\guns\smgs.dm"
 #include "code\modules\projectiles\guns\souto.dm"
 #include "code\modules\projectiles\guns\specialist.dm"

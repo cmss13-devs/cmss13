@@ -9,3 +9,6 @@
   - qol: Converted the smartgun-specific verbs into action buttons. Sprites by Nauticall.
   - qol: added helpful messages telling you how to open a smartgun's feed cover if
       you try to do something that is blocked by it being closed.
+  TeDGamer:
+  - bugfix: Hive core cooldown is reset on launching the dropship after all special
+      structures are destroyed.

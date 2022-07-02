@@ -107,8 +107,11 @@
 
 // Frame repairs on the vehicle itself
 /obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
+	if(user.action_busy)
+		return
 	var/max_hp = initial(health)
-	if(health == max_hp)
+	if(health > max_hp)
+		health = max_hp
 		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
 			if(H.health > 0)
@@ -122,51 +125,60 @@
 				to_chat(user, SPAN_WARNING("[H] is beyond repairs!"))
 				return
 
-	// For health < 75%, the frame needs welderwork
+	var/repair_message = "welding structural struts back in place"
+	var/sound_file = 'sound/items/weldingtool_weld.ogg'
+	var/obj/item/tool/weldingtool/WT
+
+	// For health < 75%, the frame needs welderwork, otherwise wrench
 	if(health < max_hp * 0.75)
 		if(!iswelder(O))
-			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a welder."))
+			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a [SPAN_HELPFUL("welder")]."))
 			return
 
-		var/obj/item/tool/weldingtool/WT = O
+		WT = O
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] begins welding structural struts back in place on \the [src]."), SPAN_NOTICE("You begin welding structural struts back in place on \the [src]."))
-		playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
-
-		if(!do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops welding on \the [src]."), SPAN_NOTICE("You stop welding on \the [src]."))
-			return
-
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
-			return
-
-		user.visible_message(SPAN_WARNING("[user] welds structural struts back in place on \the [src]."), SPAN_NOTICE("You weld structural struts back in place on \the [src]."))
-
-		health = min(max_hp * 0.75, health + max_hp * 0.25)
-	// For health >= 75% tighten some fuckin' bolts or some shit i don't know i'm not a mechanic
 	else
 		if(!HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a wrench."))
+			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] begins tightening various nuts and bolts on \the [src]."), SPAN_NOTICE("You begin tightening various nuts and bolts on \the [src]."))
+		repair_message = "tightening various nuts and bolts on"
+		sound_file = 'sound/items/Ratchet.ogg'
 
-		if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You stop tightening nuts and bolts on \the [src]."))
+	var/amount_fixed_adjustment = user.get_skill_duration_multiplier(SKILL_ENGINEER)
+	user.visible_message(SPAN_WARNING("[user] [repair_message] on \the [src]."), SPAN_NOTICE("You begin [repair_message] on \the [src]."))
+	playsound(get_turf(user), sound_file, 25)
+
+	while(health < max_hp)
+		if(!(world.time % 3))
+			playsound(get_turf(user), sound_file, 25)
+
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] finishes tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You finish tightening nuts and bolts on \the [src]."))
+		health += max_hp/100 * (5 / amount_fixed_adjustment)
 
-		health = max_hp
-		if(!luminosity)
-			SetLuminosity(initial(luminosity))
-		toggle_cameras_status(TRUE)
+		if(WT)
+			WT.remove_fuel(1, user)
+			if(WT.get_fuel() < 1)
+				user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+				return
+			if(health >= max_hp * 0.75)
+				user.visible_message(SPAN_WARNING("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. The frame is structurally sound now, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
+				return
 
+		to_chat(user, SPAN_NOTICE("Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+
+	health = initial(health)
+	SetLuminosity(initial(luminosity))
+	toggle_cameras_status(TRUE)
 	update_icon()
+	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%. "))
+	return
 
 //Special case for entering the vehicle without using the verb
 /obj/vehicle/multitile/attack_hand(var/mob/user)

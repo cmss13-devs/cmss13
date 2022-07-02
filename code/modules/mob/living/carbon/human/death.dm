@@ -77,7 +77,15 @@
 				var/mob/living/carbon/human/delayer = last_living_human
 				if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
 					var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
-
+					if(delayer_cloak.camo_active)
+						delayer_cloak.deactivate_camouflage(delayer)
+						delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
+						to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
+				if(istype(delayer.suit, /obj/item/clothing/suit/storage/marine/ghillie))
+					var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.suit
+					if(delayer_armour.camo_active)
+						delayer_armour.deactivate_camouflage(delayer)
+						delayer_armour.can_camo = FALSE //fuck you
+						to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
-
 	return ..(cause, gibbed, species.death_message)

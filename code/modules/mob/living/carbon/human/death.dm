@@ -74,6 +74,10 @@
 			// Tell the human he is the last guy.
 			if(last_living_human.client)
 				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+				var/mob/living/carbon/human/delayer = last_living_human
+				if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
+					var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
+
 			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
 
 	return ..(cause, gibbed, species.death_message)

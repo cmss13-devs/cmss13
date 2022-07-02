@@ -1131,12 +1131,10 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	return ((status & LIMB_BROKEN) && !(status & LIMB_SPLINTED))
 
 /obj/limb/proc/is_malfunctioning()
-{
 	if(status & LIMB_ROBOT)
 		return ((status & LIMB_ROBOT) && prob(brute_dam + burn_dam))
 	else if(status & LIMB_SYNTHSKIN && (brute_dam + burn_dam) > 10)
 		return (status & LIMB_SYNTHSKIN) && (prob(brute_dam + burn_dam))
-}
 
 //for arms and hands
 /obj/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)

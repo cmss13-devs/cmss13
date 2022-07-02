@@ -1,5 +1,6 @@
 #define LANGUAGE_ENGLISH "English"
 #define LANGUAGE_JAPANESE "Japanese"
+#define LANGUAGE_CHINESE "Chinese"
 #define LANGUAGE_RUSSIAN "Russian"
 #define LANGUAGE_WELTRAUMDEUTSCH "Weltraumdeutsch"
 #define LANGUAGE_NEOSPANISH "Neospanish"

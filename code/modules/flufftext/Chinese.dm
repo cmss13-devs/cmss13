@@ -8,12 +8,37 @@
 #define FINAL_TYPE_DENTAL			2 //n
 #define FINAL_TYPE_VELAR			3 //ng
 
+#define INITIAL_TYPE_N				1
+#define INITIAL_TYPE_G				2
+
+/proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 30;2, 10;3))
+	var/datum/chinese_syllable/C = new /datum/chinese_syllable
+	if(syllables == 1) //only one syllable, no need for a loop
+		C.randomly_generate_chinese_syllable()
+		return C.syllable_sound //just return that as our word
+	else
+		var/word
+		C.randomly_generate_chinese_syllable()
+		word += C.syllable_sound //add this initial syllable to the word
+		for(var/i = 1, i < syllables, i++) //now, repeat for the rest of the syllables in the word
+			var/last_syllable_final_type = C.final_type //before we regenerate the syllable
+			C.randomly_generate_chinese_syllable()
+			if(C.zero_initial && !C.zero_initial_changing)
+				word += "'" //add our apostrophe to the word
+			if(last_syllable_final_type == FINAL_TYPE_DENTAL && C.initial_type == INITIAL_TYPE_G) //this isn't a strong rule but I'm doing it anyway
+				word += "'" //add our apostrophe to the word
+			word += C.syllable_sound //add our newly generated syllable to the word, *after* the apostrophe
+		QDEL_NULL(C)
+		return word //now we're done, return our word
+
 /datum/chinese_syllable
 	var/syllable_sound
-	var/zero_initial
+	var/zero_initial = FALSE
+	var/zero_initial_changing = FALSE
 	var/final_type
+	var/initial_type
 
-/proc/randomly_generate_chinese_syllable()
+/datum/chinese_syllable/proc/randomly_generate_chinese_syllable()
 	var/syllable
 	//select intial
 	var/IN = (pick(subtypesof(/datum/chinese_sound/initial/))) //assign a random consonant
@@ -106,19 +131,31 @@
 		possible_finals -= /datum/chinese_sound/final/ao
 		possible_finals -= /datum/chinese_sound/final/ai
 
+	else if(istype(initial, /datum/chinese_sound/initial/n))
+		initial_type = INITIAL_TYPE_N
+
+	else if(istype(initial, /datum/chinese_sound/initial/g))
+		initial_type = INITIAL_TYPE_G
+
 	//select final
 	var/FN = pick(possible_finals)
 	var/datum/chinese_sound/final/final = new FN
 	//mutate final sound
-	if(istype(initial, /datum/chinese_sound/initial/zero))
-		final.sound = final.zero_initial_sound
-
 	if(istype(final, /datum/chinese_sound/final/o))
 		if(initial.initial_sound_flags & SIMPLIFY_UO)
 			final.sound = "o"
+
+	if(istype(initial, /datum/chinese_sound/initial/zero))
+		if(final.zero_initial_sound)
+			final.sound = final.zero_initial_sound
+			zero_initial_changing = TRUE
+
 	//add final to sound
 	syllable += "[final.sound]"
-	return syllable
+	syllable_sound = syllable
+	final_type = final.final_class
+	QDEL_NULL(initial)
+	QDEL_NULL(final)
 
 /datum/chinese_sound
 	var/sound = "sound" // the sound it makes, duh

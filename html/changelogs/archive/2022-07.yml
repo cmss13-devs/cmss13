@@ -12,3 +12,8 @@
   TeDGamer:
   - bugfix: Hive core cooldown is reset on launching the dropship after all special
       structures are destroyed.
+2022-07-02:
+  Jeser:
+  - qol: Repairing vehicles and vehicle modules was reworked to be more convenient.
+  - rscadd: Wheels and tracks are being repaired twice slower now, because it was
+      way too fast before.

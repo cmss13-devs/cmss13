@@ -610,6 +610,9 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 //-------------------------------------------------------
 //M79 Grenade Launcher subtype of the M81
 
+#define FIRING_MODE_NO_PASS		0
+#define FIRING_MODE_HIGHTOSS	1
+
 /obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
 	name = "\improper M79 grenade launcher"
 	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
@@ -617,6 +620,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	item_state = "m79"
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
+	var/firing_mode =
 
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
@@ -647,6 +651,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
 
+#undef FIRING_MODE_NO_PASS
+#undef FIRING_MODE_HIGHTOSS
 
 //-------------------------------------------------------
 //M5 RPG

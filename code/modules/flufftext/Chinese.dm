@@ -38,7 +38,7 @@
 			if(initial(final.vowel_class) == VOWEL_CLASS_FRONT_CLOSE)
 				message_admins("removing [initial(final.sound)] - zh sh ch check")
 				possible_finals -= final
-				possible_finals -= /datum/chinese_sound/final/ia
+				possible_finals += /datum/chinese_sound/final/i //they keep syllabic z/r
 	else if(initial.initial_sound_flags & FRONT_CLOSE_ONLY)
 		for(var/datum/chinese_sound/final/final as anything in possible_finals)
 			if(initial(final.vowel_class) != VOWEL_CLASS_FRONT_CLOSE)
@@ -59,30 +59,31 @@
 				message_admins("removing [initial(final.sound)] - ü check with n")
 				possible_finals -= final
 
-	//snowflake checks...
+	//checks for predictable patterns
 	if(initial.initial_sound_flags & NO_E_ONG)
 		possible_finals -= /datum/chinese_sound/final/e
 		possible_finals -= /datum/chinese_sound/final/ong
 
-	if(initial.initial_sound_flags & DENTAL_ALV)
+//	if(initial.initial_sound_flags & DENTAL_ALV)
 
-	else if(initial.initial_sound_flags & NONDENTAL_ALV)
+//	else if(initial.initial_sound_flags & NONDENTAL_ALV)
 
+	//snowflake istype checks...
 	if(istype(initial, /datum/chinese_sound/initial/t))
 		possible_finals -= /datum/chinese_sound/final/iu
 
-	if(istype(initial, /datum/chinese_sound/initial/r))
+	else if(istype(initial, /datum/chinese_sound/initial/r))
 		possible_finals -= /datum/chinese_sound/final/a
 		possible_finals -= /datum/chinese_sound/final/ai
 		possible_finals -= /datum/chinese_sound/final/ei
 
-	if(istype(initial, /datum/chinese_sound/initial/sh))
+	else if(istype(initial, /datum/chinese_sound/initial/sh))
 		possible_finals -= /datum/chinese_sound/final/ong
 
-	if(istype(initial, /datum/chinese_sound/initial/ch))
+	else if(istype(initial, /datum/chinese_sound/initial/ch))
 		possible_finals -= /datum/chinese_sound/final/ei
 
-	if(istype(initial, /datum/chinese_sound/initial/f))
+	else if(istype(initial, /datum/chinese_sound/initial/f))
 		possible_finals -= /datum/chinese_sound/final/ao
 		possible_finals -= /datum/chinese_sound/final/ai
 
@@ -218,6 +219,11 @@
 /datum/chinese_sound/final/ao
 	vowel_class = VOWEL_CLASS_OPEN
 	sound = "ao"
+
+/datum/chinese_sound/final/ia
+	vowel_class = VOWEL_CLASS_FRONT_CLOSE
+	sound = "ia"
+	zero_initial_sound = "ya"
 
 /datum/chinese_sound/final/ua
 	vowel_class = VOWEL_CLASS_OPEN

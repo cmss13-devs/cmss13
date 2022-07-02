@@ -164,3 +164,9 @@
 	icon_state = "sandals"
 	item_state = "sandals"
 	items_allowed = null
+
+/obj/item/clothing/shoes/marine/stompers
+	name = "stomper sneakers"
+	desc = "A pair of sneakers designed to elicit a morale boosting response within anyone that witnesses them."
+	icon_state = "stompers"
+	item_state = "stompers"

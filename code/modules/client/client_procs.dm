@@ -651,3 +651,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)
+
+/client/proc/check_timelock(var/list/roles, var/hours)
+	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
+	if(!GLOB.timelocks[timelock_name])
+		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
+	var/datum/timelock/timelock = GLOB.timelocks[timelock_name]
+	if(timelock.can_play(src))
+		return TRUE
+	return FALSE
+

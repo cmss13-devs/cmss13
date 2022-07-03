@@ -37,14 +37,18 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a leader of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/leader, TRUE, TRUE)
-	else if(medics < max_medics)
+	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/medic, TRUE, TRUE)
+	else if(engineers < max_engineers && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		to_chat(H, SPAN_ROLE_HEADER("You are an engineer of the local resistance group, the Colonial Liberation Front!"))
+		arm_equipment(H, /datum/equipment_preset/clf/engineer, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/soldier, TRUE, TRUE)
@@ -58,4 +62,5 @@
 	mob_min = 8
 	mob_max = 35
 	probability = 0
+	max_engineers = 2
 	max_medics = 2

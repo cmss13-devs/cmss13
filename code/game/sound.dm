@@ -330,7 +330,7 @@
 			if("female_pain")
 				S = pick('sound/voice/human_female_pain_1.ogg','sound/voice/human_female_pain_2.ogg','sound/voice/human_female_pain_3.ogg')
 			if("female_fragout")
-				S = pick("sound/voice/human_female_grenadethrow_1.ogg", 'sound/voice/human_female_grenadethrow_2.ogg', 'sound/voice/human_female_grenadethrow_3.ogg', 'sound/voice/human_female_grenadethrow_4.ogg', 'sound/voice/human_female_grenadethrow_5.ogg')
+				S = pick("sound/voice/human_female_grenadethrow_1.ogg", 'sound/voice/human_female_grenadethrow_2.ogg', 'sound/voice/human_female_grenadethrow_3.ogg')
 			if("female_warcry")
 				S = pick('sound/voice/warcry/female_charge.ogg', 'sound/voice/warcry/female_yell1.ogg', 'sound/voice/warcry/warcry_female_1.ogg', 'sound/voice/warcry/warcry_female_2.ogg', 'sound/voice/warcry/warcry_female_3.ogg', 'sound/voice/warcry/warcry_female_4.ogg', 'sound/voice/warcry/warcry_female_5.ogg', 'sound/voice/warcry/warcry_female_6.ogg')
 			if("rtb_handset")

@@ -33,3 +33,13 @@
   Jeser:
   - rscadd: Applying vehicle clamp is no longer a timed action.
   - rscadd: Only vehicles of your faction can be clamped.
+  - bugfix: Having access level that circumvents door lock no longer works on vehicles
+      of other factions.
+  - bugfix: Fitting pulled mobs or objects into vehicle does actually check for access
+      now if doors are locked.
+  - bugfix: Fixed and improved vehicle scanning with Motion Detectors. MDs description
+      now mentions this feature. Takes 3 seconds, shows humanoid and xenos signatures
+      separately. It is by no means intended to be precise. Caution is advised.
+  - rscadd: Vehicles now spawn unlocked.
+  - code_imp: Added proper delay for vehicles with broken or without wheels or tracks
+      and delay should apply instantly upon meeting requirements now.

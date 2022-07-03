@@ -40,19 +40,9 @@
 	setup_tripwires()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
-	// For cloaker bell, cloaks them when turned on
-	var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = src
-	if(istype(cloakedbell, /obj/structure/machinery/defenses/bell_tower/cloaker))
-		animate(src, alpha = cloakedbell.cloak_alpha_max, time = cloakedbell.camouflage_break, easing = LINEAR_EASING, ANIMATION_END_NOW)
-
 /obj/structure/machinery/defenses/bell_tower/power_off_action()
 	clear_tripwires()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
-
-	// For cloaker bell, uncloaks them when turned off
-	var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = src
-	if(istype(cloakedbell, /obj/structure/machinery/defenses/bell_tower/cloaker))
-		animate(src, alpha = initial(src.alpha), flags = ANIMATION_END_NOW)
 
 /obj/structure/machinery/defenses/bell_tower/proc/clear_tripwires()
 	for(var/obj/effect/bell_tripwire/FE in tripwires_placed)
@@ -193,6 +183,21 @@
 	. = ..()
 	// Makes it so that the bell tower starts cloaked when deployed
 	// animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
+
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_on_action()
+	clear_tripwires()
+	setup_tripwires()
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
+
+	// For cloaker bell, cloaks them when turned on
+	animate(src, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, ANIMATION_END_NOW)
+
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_off_action()
+	clear_tripwires()
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
+
+	// For cloaker bell, uncloaks them when turned off
+	animate(src, alpha = initial(src.alpha), flags = ANIMATION_END_NOW)
 
 /obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_in()
 	// This is activated whenever the bell is rang, makes the cloaked tower visible a bit

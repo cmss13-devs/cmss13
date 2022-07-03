@@ -27,3 +27,6 @@
   - admin: Split the UPP Minigunner and UPP Shotgun Specialist into two different
       equipment roles.
   - bugfix: Fixed up some of the UPP backstory text.
+  Jeser:
+  - rscadd: Applying vehicle clamp is no longer a timed action.
+  - rscadd: Only vehicles of your faction can be clamped.

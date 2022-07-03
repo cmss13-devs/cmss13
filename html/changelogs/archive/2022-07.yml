@@ -18,6 +18,9 @@
   - rscadd: Wheels and tracks are being repaired twice slower now, because it was
       way too fast before.
 2022-07-03:
+  50RemAndCounting:
+  - balance: buffed the synth tools vendor compact defibrillator from storing 7 to
+      10 charges maximum.
   Geeves:
   - rscadd: Special ERT roles now have (5 hour) timelocks, the standard squaddie role
       for each ERT doesn't, so no one is prohibited from joining, just from getting

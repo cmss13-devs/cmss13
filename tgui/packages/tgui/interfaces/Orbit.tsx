@@ -1,5 +1,4 @@
-import { BooleanLike } from 'common/react';
-import { createSearch, multiline } from 'common/string';
+import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { resolveAsset } from '../assets';
 import { Box, Button, Divider, Flex, Icon, Input, Section } from '../components';
@@ -54,7 +53,6 @@ type OrbitData = {
   ghosts: OrbitList[],
   misc: OrbitList[],
   npcs: OrbitList[],
-  auto_observe: BooleanLike,
 }
 
 type BasicSectionProps = {
@@ -130,7 +128,6 @@ export const Orbit = (props: any, context: any) => {
     ghosts,
     misc,
     npcs,
-    auto_observe,
   } = data;
 
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
@@ -176,24 +173,6 @@ export const Orbit = (props: any, context: any) => {
             </Flex.Item>
             <Flex.Item>
               <Divider vertical />
-            </Flex.Item>
-            <Flex.Item>
-              <Button
-                inline
-                color="transparent"
-                tooltip={multiline`Toggle Auto-Observe. When active, you'll
-                see the UI / full inventory of any humans you orbit, Neat!`}
-                tooltipPosition="bottom-start"
-                selected={auto_observe}
-                icon={auto_observe ? "toggle-on" : "toggle-off"}
-                onClick={() => act("toggle_observe")} />
-              <Button
-                inline
-                color="transparent"
-                tooltip="Refresh"
-                tooltipPosition="bottom-start"
-                icon="sync-alt"
-                onClick={() => act("refresh")} />
             </Flex.Item>
           </Flex>
         </Section>

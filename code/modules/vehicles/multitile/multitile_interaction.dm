@@ -66,41 +66,65 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && user.a_intent == INTENT_HELP && ishuman(user))
-		var/mob_x = user.x - src.x
-		var/mob_y = user.y - src.y
-		for(var/entrance in entrances)
-			var/entrance_coord = entrances[entrance]
-			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
-				var/obj/item/grab/G = O
-				var/atom/dragged_atom = G.grabbed_thing
-				if(istype(/obj/item/explosive/grenade, dragged_atom))
-					var/obj/item/explosive/grenade/nade = dragged_atom
-					if(!nade.active)		//very creative, but no.
-						break
-				handle_fitting_pulled_atom(user, dragged_atom)
-				return
-		to_chat(user, SPAN_INFO("In order to try fitting pulled object into vehicle without getting in, stand at the entrance and click on vehicle with pulled object on [SPAN_HELPFUL("HELP")] intent."))
+	if(istype(O, /obj/item/grab) && ishuman(user))	//only humans are allowed to fit dragged stuff inside
+		if(user.a_intent == INTENT_HELP)
+			var/mob_x = user.x - src.x
+			var/mob_y = user.y - src.y
+			for(var/entrance in entrances)
+				var/entrance_coord = entrances[entrance]
+				if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+					var/obj/item/grab/G = O
+					var/atom/dragged_atom = G.grabbed_thing
+					if(istype(/obj/item/explosive/grenade, dragged_atom))
+						var/obj/item/explosive/grenade/nade = dragged_atom
+						if(!nade.active)		//very creative, but no.
+							break
+
+					handle_fitting_pulled_atom(user, dragged_atom)
+					return
+		else
+			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
+			return
 
 	if(istype(O, /obj/item/device/motiondetector))
+		if(!interior)
+			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
+			return
+		var/obj/item/device/motiondetector/MD = O
 
-		user.visible_message(SPAN_WARNING("[user] fumbles with \the [O] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [O] to scan \the [src]'s interior for abnormal activity."))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [O]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
+		if(!MD.active)
+			to_chat(user, SPAN_WARNING("\The [MD] must be activated in order to scan \the [src]'s interior."))
+			return
+
+		user.visible_message(SPAN_WARNING("[user] fumbles with \the [MD] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [MD] to scan \the [src]'s interior for signatures."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [MD]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
 			return
 		if(get_dist(src, user) > 2)
 			to_chat(user, SPAN_WARNING("You are too far from \the [src]."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [O]."), SPAN_NOTICE("You finish recalibrating \the [O] and scanning \the [src]'s interior for abnormal activity."))
+		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [MD]."), SPAN_NOTICE("You finish recalibrating \the [MD] and scanning \the [src]'s interior for signatures."))
 
 		interior.update_passenger_count()
-		var/obj/item/device/motiondetector/MD = O
-		if(interior.xenos_taken_slots)
+
+		var/humans_inside = 0
+		if(length(interior.role_reserved_slots))
+			for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+				humans_inside += RRS.taken
+		humans_inside += interior.passengers_taken_slots
+
+		var/msg = ""
+		if(humans_inside || interior.xenos_taken_slots)
+			msg += "\The [MD] shows [humans_inside ? ("approximately [SPAN_HELPFUL(humans_inside)] signatures") : "no signatures"] of unknown affiliation\
+			[interior.xenos_taken_slots ? (" and about [SPAN_HELPFUL(interior.xenos_taken_slots)] abnormal signatures") : ""] inside of \the [src]."
 			MD.show_blip(user, src)
 			playsound(user, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, FALSE, 7, 2)
+			to_chat(user, SPAN_NOTICE(msg))
 		else
 			playsound(user, 'sound/items/detector.ogg', 60, FALSE, 7, 2)
+			to_chat(user, SPAN_WARNING("\The [MD] can't pick up any signatures, so the vehicle should be empty. In theory."))
+		return
 
 	if(user.a_intent != INTENT_HARM)
 		handle_player_entrance(user)
@@ -390,9 +414,16 @@
 	if(isXeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && !allowed(M) && health > 0)
-			to_chat(M, SPAN_DANGER("\The [src] is locked!"))
-			return
+		if(door_locked && health > 0)	//check if lock on and actually works
+			if(ishuman(M))
+				var/mob/living/carbon/human/user = M
+				if(!allowed(user) || !get_target_lock(user.faction_group))	//if we are human, we check access and faction
+					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+					return
+			else
+				to_chat(M, SPAN_WARNING("\The [src] is locked!"))	//animals are not allowed inside without supervision
+				return
+
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
@@ -449,16 +480,16 @@
 		if(!success)
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
-	if(!ishuman(M))
+//try to fit something into the vehicle
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/living/carbon/human/user, var/atom/dragged_atom)
+	if(!ishuman(user))
+		return
+	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+		to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 		return
 
-	if(health > 0 && door_locked && !allowed(M))
-		to_chat(M, SPAN_DANGER("\The [src] is locked!"))
-		return
-
-	var/mob_x = M.x - src.x
-	var/mob_y = M.y - src.y
+	var/mob_x = user.x - x
+	var/mob_y = user.y - y
 	var/entrance_used = null
 	for(var/entrance in entrances)
 		var/entrance_coord = entrances[entrance]
@@ -466,37 +497,37 @@
 			entrance_used = entrance
 			break
 
-	to_chat(M, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
-	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	to_chat(user, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
-	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+	if(mob_x != user.x - x || mob_y != user.y - y)
 		return
 
 	var/atom/currently_dragged
 
-	if(istype(M.get_inactive_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_inactive_hand()
+	if(istype(user.get_inactive_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_inactive_hand()
 		currently_dragged = G.grabbed_thing
-	else if(istype(M.get_active_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_active_hand()
+	else if(istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_active_hand()
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(M, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(M, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
 	else
-		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it
 /obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
 	user.temp_drop_inv_item(O, 0)
 	clamped = TRUE
-	move_delay = 50000
+	move_delay = VEHICLE_SPEED_STATIC
 	next_move = world.time + move_delay
 	qdel(O)
 	update_icon()

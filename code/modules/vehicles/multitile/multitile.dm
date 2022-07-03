@@ -118,8 +118,9 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
 	var/entrance_speed = 1
 
-	// Whether or not entering the vehicle is ID restricted to crewmen only. Toggleable by the driver
-	var/door_locked = TRUE
+	//Whether or not entering the vehicle is ID restricted to those with crewman, command or MP access only. Toggleable by the driver.
+	//Having command/MP/Crewmen access won't matter if the faction of the vehicle is not yours, so you can't infiltrate the vehicle.
+	var/door_locked = FALSE
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access

@@ -16,7 +16,7 @@
 	var/random_name
 
 	if(prob(35))
-		random_name = "[capitalize(randomly_generate_chinese_word(1))] [capitalize(randomly_generate_chinese_word(pick(20;1, 80;2))]"
+		random_name = "[capitalize(randomly_generate_chinese_word(1))] [capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
 	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
 	else

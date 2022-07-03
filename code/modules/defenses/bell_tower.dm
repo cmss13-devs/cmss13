@@ -125,8 +125,8 @@
 	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
 
 	// checks if cloaked bell, if it is, then it reduces the cloaked bells alpha
-	var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = linked_bell
-	if(istype(cloakedbell, /obj/structure/machinery/defenses/bell_tower/cloaker))
+	if(istype(linked_bell, /obj/structure/machinery/defenses/bell_tower/cloaker))
+		var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = linked_bell
 		cloakedbell.cloaker_fade_in()
 
 /obj/item/device/motiondetector/internal
@@ -179,23 +179,13 @@
 	health_max = 250
 	defense_type = "Cloaker"
 
-/obj/structure/machinery/defenses/bell_tower/cloaker/Initialize()
-	. = ..()
-	// Makes it so that the bell tower starts cloaked when deployed
-	// animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
-
 /obj/structure/machinery/defenses/bell_tower/cloaker/power_on_action()
-	clear_tripwires()
-	setup_tripwires()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
-
+	. = ..()
 	// For cloaker bell, cloaks them when turned on
 	animate(src, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, ANIMATION_END_NOW)
 
 /obj/structure/machinery/defenses/bell_tower/cloaker/power_off_action()
-	clear_tripwires()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
-
+	. = ..()
 	// For cloaker bell, uncloaks them when turned off
 	animate(src, alpha = initial(src.alpha), flags = ANIMATION_END_NOW)
 

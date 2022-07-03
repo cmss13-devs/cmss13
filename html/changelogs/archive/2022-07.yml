@@ -17,3 +17,13 @@
   - qol: Repairing vehicles and vehicle modules was reworked to be more convenient.
   - rscadd: Wheels and tracks are being repaired twice slower now, because it was
       way too fast before.
+2022-07-03:
+  Geeves:
+  - rscadd: Special ERT roles now have (5 hour) timelocks, the standard squaddie role
+      for each ERT doesn't, so no one is prohibited from joining, just from getting
+      special roles.
+  - rscadd: Where ERTs previously had a probability to get either two SGs, one SG
+      one spec, two specs, they will now always get one SG, one spec.
+  - admin: Split the UPP Minigunner and UPP Shotgun Specialist into two different
+      equipment roles.
+  - bugfix: Fixed up some of the UPP backstory text.

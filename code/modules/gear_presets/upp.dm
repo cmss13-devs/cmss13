@@ -14,11 +14,16 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
-		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+
+	if(prob(35))
+		random_name = "[capitalize(randomly_generate_chinese_word(1))] [capitalize(randomly_generate_chinese_word(pick(20;1, 80;2))]"
+	else if(H.gender == MALE)
+		random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
 	else
-		random_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
+		random_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
+
+	if(H.gender == MALE)
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	H.change_real_name(H, random_name)
 	H.age = rand(17,35)

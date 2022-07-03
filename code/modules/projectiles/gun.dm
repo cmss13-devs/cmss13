@@ -9,7 +9,7 @@
 	item_state = "gun"
 	pickupsound = "gunequip"
 	dropsound = "gunrustle"
-	pickupvol = 15
+	pickupvol = 7
 	dropvol = 15
 	matter = null
 						//Guns generally have their own unique levels.

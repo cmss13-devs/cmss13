@@ -182,7 +182,7 @@
 	handheld_type = /obj/item/defenses/handheld/bell_tower/cloaker
 	var/cloak_alpha_max = BELL_TOWER_CLOAKER_ALPHA
 	var/cloak_alpha_current = BELL_TOWER_CLOAKER_ALPHA
-	var/incremental_ring_camo_penalty = 70
+	var/incremental_ring_camo_penalty = 40
 	var/camouflage_break = 5 SECONDS
 	density = FALSE
 	health = 250

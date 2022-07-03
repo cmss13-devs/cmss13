@@ -127,6 +127,9 @@
 	else if(istype(initial, /datum/chinese_sound/initial/l))
 		possible_finals -= /datum/chinese_sound/final/en
 
+	else if(istype(initial, /datum/chinese_sound/initial/b))
+		possible_finals -= /datum/chinese_sound/final/ou
+
 	else if(istype(initial, /datum/chinese_sound/initial/f))
 		possible_finals -= /datum/chinese_sound/final/ao
 		possible_finals -= /datum/chinese_sound/final/ai

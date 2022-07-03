@@ -1,7 +1,7 @@
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { resolveAsset } from '../assets';
-import { Box, Button, Divider, Flex, Icon, Input, Section } from '../components';
+import { Box, Button, Flex, Icon, Input, Section } from '../components';
 import { Window } from '../layouts';
 
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
@@ -170,9 +170,6 @@ export const Orbit = (props: any, context: any) => {
                 value={searchText}
                 onInput={(_: any, value: string) => setSearchText(value)}
                 onEnter={(_: any, value: string) => orbitMostRelevant(value)} />
-            </Flex.Item>
-            <Flex.Item>
-              <Divider vertical />
             </Flex.Item>
           </Flex>
         </Section>

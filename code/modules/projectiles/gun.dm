@@ -9,8 +9,8 @@
 	item_state = "gun"
 	pickupsound = "gunequip"
 	dropsound = "gunrustle"
-	pickupvol = 25
-	dropvol = 25
+	pickupvol = 15
+	dropvol = 15
 	matter = null
 						//Guns generally have their own unique levels.
 	w_class 	= SIZE_MEDIUM

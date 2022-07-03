@@ -38,6 +38,7 @@
 	icon_state = initial(icon_state)
 
 	if(ready)
+		w_class = SIZE_LARGE
 		icon_state += "_out"
 
 	if(dcell && dcell.charge)

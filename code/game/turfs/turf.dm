@@ -528,34 +528,34 @@
 //Check if you can plant weeds on that turf.
 //Does NOT return a message, just a 0 or 1.
 /turf/proc/is_weedable()
-	return !density
+	return density ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/space/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/gm/grass/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/gm/river/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/gm/coast/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/snow/is_weedable()
-	return !bleed_layer
+	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/mars/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/jungle/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/closed/wall/is_weedable()
-	return TRUE //so we can spawn weeds on the walls
+	return FULLY_WEEDABLE //so we can spawn weeds on the walls
 
 
 /turf/proc/can_dig_xeno_tunnel()

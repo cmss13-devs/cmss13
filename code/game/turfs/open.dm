@@ -48,7 +48,7 @@
 	density = TRUE
 
 /turf/open/void/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/river
 	can_bloody = FALSE
@@ -383,7 +383,7 @@
 	supports_surgery = FALSE
 
 /turf/open/gm/empty/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 
 
@@ -413,7 +413,7 @@
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 /turf/open/ice/noweed/is_weedable() //used for new prison ice block xenos
-	return FALSE
+	return NOT_WEEDABLE
 
 
 

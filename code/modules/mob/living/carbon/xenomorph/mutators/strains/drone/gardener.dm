@@ -13,8 +13,9 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/resin_surge, //second macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
-		/datum/action/xeno_action/onclick/change_fruit //fourth macro
-		)
+		/datum/action/xeno_action/onclick/change_fruit,
+		/datum/action/xeno_action/onclick/plant_weeds/gardener // fourth macro
+	)
 	keystone = TRUE
 
 /datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -26,7 +27,7 @@
 	D.mutation_type = DRONE_GARDENER
 	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed)
 	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
-	D.max_placeable = 4
+	D.max_placeable = 6
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
@@ -123,7 +124,6 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
 	. = ..()
@@ -225,7 +225,7 @@
 	var/channel_in_progress = FALSE
 	var/max_range = 7
 
-/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A)
+/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A, mods)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return
@@ -233,12 +233,20 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!X.check_state(TRUE))
 		return
 
-	if (!can_see(X, A, max_range))
-		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
+	if(mods["click_catcher"])
 		return
+
+	if(ismob(A)) // to prevent using thermal vision to bypass clickcatcher
+		if(!can_see(X, A, max_range))
+			to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
+			return
+	else
+		if(get_dist(X, A) > max_range)
+			to_chat(X, SPAN_WARNING("That's too far away!"))
+			return
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -318,4 +326,27 @@
 	set name = "Resin Surge"
 	set hidden = 1
 	var/action_name = "Resin Surge"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/onclick/plant_weeds/gardener
+	name = "Plant Gardening Weeds (125)"
+	ability_name = "Plant Gardening Weeds"
+	action_icon_state = "plant_weeds"
+	plasma_cost = 125
+	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
+	xeno_cooldown = 2 MINUTES
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+
+	plant_on_semiweedable = TRUE
+	node_type = /obj/effect/alien/weeds/node/gardener
+
+/obj/effect/alien/weeds/node/gardener
+	spread_on_semiweedable = TRUE
+
+/datum/action/xeno_action/verb/verb_plant_gardening_weeds()
+	set category = "Alien"
+	set name = "Plant Gardening Weeds"
+	set hidden = 1
+	var/action_name = "Plant Gardening Weeds (125)"
 	handle_xeno_macro(src, action_name)

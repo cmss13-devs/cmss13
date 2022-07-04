@@ -436,6 +436,11 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		return
 	return cylinder.attackby(I, user)
 
+/obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
+	if(isobserver(usr) || isXeno(usr))
+		return
+	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
+		toggle_firing_level(usr)
 
 /obj/item/weapon/gun/launcher/grenade/proc/allowed_ammo_type(obj/item/I)
 	for(var/G in disallowed_grenade_types) //Check for the bad stuff.
@@ -537,6 +542,40 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	return length(cylinder.contents)
 
 //-------------------------------------------------------
+//Toggle firing level special action for grenade launchers
+
+/datum/action/item_action/toggle_firing_level/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Firing Level"
+	button.name = name
+	update_icon()
+
+/datum/action/item_action/toggle_firing_level/action_activate()
+	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
+		return
+	G.toggle_firing_level(usr)
+
+/datum/action/item_action/toggle_firing_level/proc/update_icon()
+	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
+	if(G.is_lobbing)
+		action_icon_state = "hightoss_on"
+	else
+		action_icon_state = "hightoss_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/obj/item/weapon/gun/launcher/grenade/proc/toggle_firing_level(mob/user)
+	is_lobbing = !is_lobbing
+	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s firing level. You will now fire [is_lobbing ? "in an arcing path over obstacles" : "directly at your target"].")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	var/datum/action/item_action/toggle_firing_level/TFL = locate(/datum/action/item_action/toggle_firing_level) in actions
+	TFL.update_icon()
+
+//-------------------------------------------------------
 //M92 GRENADE LAUNCHER
 
 /obj/item/weapon/gun/launcher/grenade/m92
@@ -547,6 +586,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	unacidable = TRUE
 	indestructible = 1
 	matter = list("metal" = 6000)
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -617,6 +657,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	item_state = "m79"
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
@@ -646,7 +687,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
-
 
 //-------------------------------------------------------
 //M5 RPG

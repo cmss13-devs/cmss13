@@ -29499,7 +29499,7 @@
 /area/bigredv2/caves_lambda)
 "cks" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "dndsolaris"
+	insert_tag = dndsolaris
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/library)
@@ -33498,7 +33498,7 @@
 /area/bigredv2/outside/e)
 "kYA" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = bigredbarls
+	insert_tag = "bigredbarls"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
@@ -38263,7 +38263,7 @@
 /area/bigred/ground/garage_workshop)
 "uLP" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = clfmarshalls
+	insert_tag = "clfmarshalls"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)

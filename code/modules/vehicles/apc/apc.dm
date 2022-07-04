@@ -63,11 +63,11 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	dmg_multipliers = list(
 		"all" = 1,
-		"acid" = 1.5,
-		"slash" = 0.7,
+		"acid" = 1.7,
+		"slash" = 0.9,
 		"bullet" = 0.6,
-		"explosive" = 0.9,
-		"blunt" = 0.9,
+		"explosive" = 0.7,
+		"blunt" = 0.7,
 		"abstract" = 1.0
 	)
 

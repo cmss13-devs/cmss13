@@ -450,7 +450,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	examinify.examine(src)
 
-/mob/verb/pickup_item(obj/item/pickupify in view(1, usr))
+/mob/verb/pickup_item(obj/item/pickupify in oview(1, usr))
 	set name = "Pick Up"
 	set category = "Object"
 

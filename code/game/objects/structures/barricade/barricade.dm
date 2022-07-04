@@ -183,7 +183,7 @@
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
-			playsound(src, barricade_hitsound, 25, 1)
+			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(W)
 		return
 
@@ -241,7 +241,7 @@
 	if(W.force > force_level_absorption)
 		..()
 		if(barricade_hitsound)
-			playsound(src, barricade_hitsound, 25, 1)
+			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(W)
 
 /obj/structure/barricade/bullet_act(obj/item/projectile/P)

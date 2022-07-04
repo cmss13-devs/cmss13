@@ -43,3 +43,7 @@
   - rscadd: Vehicles now spawn unlocked.
   - code_imp: Added proper delay for vehicles with broken or without wheels or tracks
       and delay should apply instantly upon meeting requirements now.
+2022-07-04:
+  50RemAndCounting:
+  - balance: synthskin arms and hands will no longer malfunction and drop items if
+      the combined brute and burn damage on them does not exceed 10 points.

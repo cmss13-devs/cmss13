@@ -29629,6 +29629,8 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"cwk" = (
+)
 "cxi" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -45370,7 +45372,7 @@ qhk
 cVd
 jGQ
 gGO
-kZG
+cwk
 kCe
 uzB
 rxh
@@ -46259,7 +46261,7 @@ tZU
 pSa
 sqQ
 oKy
-uJI
+cwk
 rxh
 rxh
 jtL
@@ -48190,7 +48192,7 @@ hzP
 fnO
 xkR
 tWS
-uNW
+cwk
 iJF
 omG
 pJX
@@ -54493,7 +54495,7 @@ rsv
 rsv
 oIc
 vHw
-ciY
+cwk
 xRl
 sbk
 wVQ

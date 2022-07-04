@@ -927,6 +927,9 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
+			if(body_part != BODY_FLAG_HEAD)
+				owner.emote("Scream")
+
 			if(organ)
 				//Throw organs around
 				var/lol = pick(cardinal)

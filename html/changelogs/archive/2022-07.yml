@@ -47,6 +47,11 @@
   50RemAndCounting:
   - balance: synthskin arms and hands will no longer malfunction and drop items if
       the combined brute and burn damage on them does not exceed 10 points.
+  Stan_Albatross, Nauticall:
+  - rscadd: you can now toggle the firing level of the m79 and the m92 grenade launchers
+      between high toss and no high toss using a HUD button or unique-action. Sprites
+      by Nauticall.
+  - balance: added back high toss to the mk1 UGL.
   stanalbatross:
   - bugfix: deconstructing then reconstructing a Vehicle ASRS console will no longer
       replace it with a regular ASRS console

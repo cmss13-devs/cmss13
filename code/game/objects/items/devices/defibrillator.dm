@@ -46,8 +46,10 @@
 				icon_state += "_full"
 			if(34 to 66)
 				icon_state += "_half"
-			if(1 to 33)
+			if(3 to 33)
 				icon_state += "_low"
+			if(0 to 3)
+				icon_state += "_empty"
 	else
 		icon_state += "_empty"
 
@@ -77,13 +79,13 @@
 	ready = !ready
 	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"]."),
 	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
-	playsound(get_turf(src), "sparks", 25, 1, 0)
+	playsound(get_turf(src), "sparks", 15, 1, 0)
 	if(ready)
 		w_class = SIZE_LARGE
-		playsound(get_turf(src), 'sound/items/defib_ready.ogg', 25, 1, 0)
+		playsound(get_turf(src), 'sound/items/defib_safetyOn.ogg', 25, 0)
 	else
 		w_class = initial(w_class)
-		playsound(get_turf(src), 'sound/items/defib_safetyOff.ogg', 25, 1, 0)
+		playsound(get_turf(src), 'sound/items/defib_safetyOff.ogg', 25, 0)
 	update_icon()
 	add_fingerprint(user)
 
@@ -187,9 +189,9 @@
 		heart.damage += heart_damage_to_deal //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
 	if(!H.is_revivable())
+		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 		if(heart && heart.is_broken())
 			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
-			playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 1, 0)
 			return
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
 		return
@@ -218,7 +220,7 @@
 				break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
-		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 1, 0)
+		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
 		H.handle_revive()
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
@@ -226,7 +228,7 @@
 			window_flash(H.client)
 	else
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
-		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 1, 0)
+		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 
 /obj/item/device/defibrillator/compact_adv
 	name = "advanced compact defibrillator"

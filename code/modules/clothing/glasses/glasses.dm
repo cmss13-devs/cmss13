@@ -83,7 +83,9 @@
 
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.update_button_icon()
+		if(istype(A, /datum/action/item_action/toggle))
+			A.update_button_icon()
+			break
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
@@ -447,7 +449,9 @@
 
 		for(var/X in actions)
 			var/datum/action/A = X
-			A.update_button_icon()
+			if(istype(A, /datum/action/item_action/toggle))
+				A.update_button_icon()
+				break
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"

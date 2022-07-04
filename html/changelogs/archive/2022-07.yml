@@ -58,3 +58,5 @@
   - bugfix: attempting to give someone an item that is wielded will now properly unwield
       the item when trying to give it to them, rather than failing to do so and leaving
       an offhand object in your offhand.
+  - rscdel: removed the ability of ghosts to observe peoples' inventories, pending
+      refactor and fixing.

@@ -463,15 +463,23 @@ updatehealth()
 		else if(health <= 0) //in crit
 			if(hardcore)
 				INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-			else
-				stat = UNCONSCIOUS
-				blinded = 1
-				see_in_dark = 5
-				if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-					layer = MOB_LAYER
-		recalculate_move_delay = TRUE
-
+			else if(world.time > last_grace_time + crit_grace_time)
+				if(crit_grace_time && !(stat & UNCONSCIOUS))
+					addtimer(CALLBACK(src, .proc/handle_crit), crit_grace_time)
+				else
+					handle_crit()
+				last_grace_time = world.time
 	med_hud_set_health()
+
+/mob/living/carbon/Xenomorph/proc/handle_crit()
+	stat = UNCONSCIOUS
+	blinded = 1
+	see_in_dark = 5
+	if(isXenoRunner(src) && layer != initial(layer)) //Unhide
+		layer = MOB_LAYER
+	recalculate_move_delay = TRUE
+	if(!lying)
+		update_canmove()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

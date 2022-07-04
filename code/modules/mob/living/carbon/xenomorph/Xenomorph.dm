@@ -91,6 +91,9 @@
 
 	var/last_hit_time = 0
 
+	var/crit_grace_time = 1 SECONDS
+	var/last_grace_time = 0
+
 	//Amount of construction resources stored internally
 	var/crystal_stored = 0
 	var/crystal_max = 0

@@ -38,7 +38,6 @@
 	icon_state = initial(icon_state)
 
 	if(ready)
-		w_class = SIZE_LARGE
 		icon_state += "_out"
 
 	if(dcell && dcell.charge)
@@ -80,8 +79,10 @@
 	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
 	playsound(get_turf(src), "sparks", 25, 1, 0)
 	if(ready)
+		w_class = SIZE_LARGE
 		playsound(get_turf(src), 'sound/items/defib_ready.ogg', 25, 1, 0)
 	else
+		w_class = initial(w_class)
 		playsound(get_turf(src), 'sound/items/defib_safetyOff.ogg', 25, 1, 0)
 	update_icon()
 	add_fingerprint(user)

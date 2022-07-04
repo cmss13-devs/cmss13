@@ -170,6 +170,13 @@
 
 	if(!istype(M))
 		return
+
+	// Check if animal mob, would break the injector childs if used on animals
+	// Remove this if you want to make chems work on simple mobs like rats and crabs, they break injectors if allowed to
+	// Fix that first if you want to remove this tldr; if you want to make rats injectable for rp, implement feature first :)
+	if(isanimal(M))
+		return
+
 	if(!M.can_inject(user, TRUE))
 		return
 

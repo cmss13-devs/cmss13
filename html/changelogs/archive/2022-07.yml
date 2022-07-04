@@ -55,3 +55,6 @@
   stanalbatross:
   - bugfix: deconstructing then reconstructing a Vehicle ASRS console will no longer
       replace it with a regular ASRS console
+  - bugfix: attempting to give someone an item that is wielded will now properly unwield
+      the item when trying to give it to them, rather than failing to do so and leaving
+      an offhand object in your offhand.

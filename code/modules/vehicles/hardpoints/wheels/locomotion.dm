@@ -3,6 +3,7 @@
 	desc = "i help the vehicle move :)"
 
 	damage_multiplier = 0.15
+	var/acid_resistant = FALSE	//reduces damage dealt by acid spray
 
 	// these are used to change all vehicle's movement characteristics, 0 means no change
 	var/move_delay = VEHICLE_SPEED_FASTNORMAL
@@ -30,3 +31,18 @@
 
 /obj/item/hardpoint/locomotion/on_uninstall(var/obj/vehicle/multitile/V)
 	deactivate()
+
+//unique proc for locomotion modules, taking damage from acid spray on ground
+/obj/item/hardpoint/locomotion/proc/handle_acid_spray(var/obj/effect/xenomorph/spray/acid)
+	var/damage_dealt = acid.damage_amount
+	//First we check source of acid. Due to traps generating 3x3 acid spray field and triggering only when at least 4 tiles
+	//of vehicle enter the spray spawn area, it deals a huge amount of damage. But simply nerfing damage will also nerf it for
+	//acid spraying castes like spitters and praetorians, which is not ideal.
+	if(acid.cause_data.cause_name == "resin acid trap")
+		damage_dealt = round(damage_dealt / 3)
+	//then we check whether this locomotion module is acid-resistant
+	if(acid_resistant)
+		damage_dealt = damage_dealt / 2
+	health -= damage_dealt
+	if(owner)
+		owner.healthcheck()

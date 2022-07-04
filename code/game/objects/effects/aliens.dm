@@ -117,6 +117,13 @@
 
 			continue
 
+		if(isVehicleMultitile(atm))
+			var/obj/vehicle/multitile/V = atm
+			for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
+				Loco.handle_acid_spray(src)
+				break
+			continue
+
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
 	animate(src, time_to_live, alpha = 128)
@@ -146,6 +153,11 @@
 		var/mob/living/carbon/Xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
+	else if(isVehicleMultitile(AM))
+		var/obj/vehicle/multitile/V = AM
+		for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
+			Loco.handle_acid_spray(src)
+			break
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)

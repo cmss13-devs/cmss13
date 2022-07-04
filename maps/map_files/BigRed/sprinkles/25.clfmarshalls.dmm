@@ -200,12 +200,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
-"gk" = (
-/obj/item/clothing/accessory/holster/armpit,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/marshal_office)
 "gp" = (
 /obj/structure/machinery/flasher/portable,
 /turf/open/floor{
@@ -1187,6 +1181,15 @@
 /obj/item/ammo_magazine/m60{
 	pixel_x = 1
 	},
+/obj/item/ammo_magazine/m60{
+	pixel_x = 1
+	},
+/obj/item/ammo_magazine/m60{
+	pixel_x = 1
+	},
+/obj/item/ammo_magazine/m60{
+	pixel_x = 1
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "HU" = (
@@ -1670,6 +1673,10 @@
 /area/bigredv2/outside/marshal_office)
 "Uc" = (
 /obj/structure/surface/table,
+/obj/item/weapon/gun/m60{
+	pixel_x = 1;
+	pixel_y = 2
+	},
 /obj/item/weapon/gun/m60{
 	pixel_x = 1;
 	pixel_y = 2
@@ -2284,7 +2291,7 @@ He
 (19,1,1) = {"
 Ta
 zo
-gk
+Yq
 UK
 FL
 jT

@@ -29499,7 +29499,7 @@
 /area/bigredv2/caves_lambda)
 "cks" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = dndsolaris
+	insert_tag = "dndsolaris"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/library)

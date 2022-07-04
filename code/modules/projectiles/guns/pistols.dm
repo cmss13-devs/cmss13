@@ -617,38 +617,48 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 			stop_aiming()
 	. = ..()
 
-/obj/item/weapon/gun/pistol/smart/proc/break_iff_lock(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/pistol/smart/proc/break_iff_lock(var/mob/living/carbon/human/user, var/humancheck = FALSE)
 	if(!locking_state)
 		return
 	LAZYREMOVE(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_homing)
 	))
+	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
+	if(user)
+		user.next_move += 0.25 SECONDS
 	if(auto_aim_target)
-		auto_aim_target.overlays -= locked
-		message_admins("removing overlays in break iff lock proc")
+		if(humancheck)
+			if(!ishuman(auto_aim_target))
+				auto_aim_target.overlays -= locked
+				message_admins("removing overlays in break iff lock proc")
+		else
+			auto_aim_target.overlays -= locked
+			message_admins("removing overlays in break iff lock proc")
 		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 	auto_aim_target = null
 	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
 	STOP_PROCESSING(SSobj, src)
+	locking_state = NOT_LOCKING
+
+/obj/item/weapon/gun/pistol/smart/proc/stop_aiming(var/mob/living/carbon/human/user, var/humancheck = FALSE) //proc we use if interrupted during the aiming process
+	if(!locking_state)
+		return
 	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
 	if(user)
 		user.next_move += 0.25 SECONDS
-	locking_state = NOT_LOCKING
-
-/obj/item/weapon/gun/pistol/smart/proc/stop_aiming(var/mob/living/carbon/human/user) //proc we use if interrupted during the aiming process
-	if(!locking_state)
-		return
 	if(auto_aim_target)
 		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 		var/image/locking = locate(image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spistol", dir = get_cardinal_dir(auto_aim_target, user))) in auto_aim_target.overlays
 		if(locking)
-			auto_aim_target.overlays -= locking
-			message_admins("removing overlays in break stop aiming proc")
+			if(!humancheck)
+				if(!ishuman(auto_aim_target))
+					auto_aim_target.overlays -= locking
+					message_admins("removing overlays in break stop aiming proc")
+			else
+				auto_aim_target.overlays -= locking
+				message_admins("removing overlays in break stop aiming proc")
 	auto_aim_target = null
 	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
-	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
-	if(user)
-		user.next_move += 0.25 SECONDS
 	locking_state = NOT_LOCKING
 
 /obj/item/weapon/gun/pistol/smart/process()
@@ -797,9 +807,10 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 			SP.break_iff_lock(H)
 			return
 		if(LOCKING_ON)
-			M.overlays -= locking
-			message_admins("removing overlays due to sp already locking on")
-			SP.stop_aiming(H)
+			if(ishuman(M))
+				M.overlays -= locking
+			message_admins("should be removing overlays due to sp already locking on")
+			SP.stop_aiming(H, TRUE)
 			return
 
 	if(SP.lockonattempt_cooldown >= world.time) //cooldown only to prevent spam toggling
@@ -829,23 +840,26 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 	if(!do_after(H, f_aiming_time, INTERRUPT_ALL, NO_BUSY_ICON))
 		if(SP.auto_aim_target)
-			M.overlays -= locking
-			message_admins("removing overlays due to do_after fail")
-			SP.stop_aiming(H)
+			if(ishuman(M))
+				M.overlays -= locking
+			message_admins("should be removing overlays due to do_after fail")
+			SP.stop_aiming(H, TRUE)
 		return
 
 	if(!check_can_use(M))
 		if(SP.auto_aim_target)
-			M.overlays -= locking
-			message_admins("removing overlays due to check use fail")
-			SP.stop_aiming(H)
+			if(ishuman(M))
+				M.overlays -= locking
+			message_admins("should be removing overlays due to check use fail")
+			SP.stop_aiming(H, TRUE)
 		return
 
 	//we now lock on. To return after this, use the "break_iff_lock" proc
 	if(SP.locking_state == NOT_LOCKING)
-		M.overlays -= locking
-		message_admins("removing overlays due to not locking fail")
-		SP.stop_aiming(H)
+		if(ishuman(M))
+			M.overlays -= locking
+		message_admins("should be removing overlays due to not locking fail")
+		SP.stop_aiming(H, TRUE)
 		return
 	P.homing_target = M
 	P.projectile_override_flags |= AMMO_HOMING

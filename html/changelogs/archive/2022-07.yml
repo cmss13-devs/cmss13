@@ -61,5 +61,8 @@
   - rscdel: removed the ability of ghosts to observe peoples' inventories, pending
       refactor and fixing.
 2022-07-05:
+  Geeves, Nauticall:
+  - rscadd: Added a new underwear and undershirt system, with many new underwear and
+      undershirt variants being added, most of them being camo conforming if you choose.
   fira:
   - refactor: Optimized several aspects of Sound Ambiences, Areas, and Weather

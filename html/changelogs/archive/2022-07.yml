@@ -60,3 +60,6 @@
       an offhand object in your offhand.
   - rscdel: removed the ability of ghosts to observe peoples' inventories, pending
       refactor and fixing.
+2022-07-05:
+  fira:
+  - refactor: Optimized several aspects of Sound Ambiences, Areas, and Weather

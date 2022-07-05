@@ -370,6 +370,6 @@
 	..(message, null, verb, nolog = !ckey)	//if the animal has a ckey then it will log the message
 
 /mob/living/simple_animal/can_inject(var/mob/user, var/error_msg)
-	if(error_msg)
-		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal"))
+	if(user && error_msg)
+		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE

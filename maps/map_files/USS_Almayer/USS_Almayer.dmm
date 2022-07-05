@@ -46397,9 +46397,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "htI" = (
-/obj/structure/platform{
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)

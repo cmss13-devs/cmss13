@@ -375,10 +375,6 @@
 // Handles xenos picking up fruit
 /mob/living/carbon/Xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
 
-	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
-		to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
-		return
-
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
 		to_chat(src, SPAN_XENODANGER("You crush [F]."))
 		qdel(F)
@@ -405,6 +401,10 @@
 	if(!QDELETED(F.bound_xeno))
 		new_fruit.link_xeno(F.bound_xeno)
 	qdel(F)
+
+/mob/living/carbon/Xenomorph/Larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
+	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	return
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER

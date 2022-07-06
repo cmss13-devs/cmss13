@@ -954,7 +954,7 @@ IN_USE						used for vending/denying
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
 				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.cell)
+				if(!D.dcell)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
 					return
 				if(D.dcell.charge < D.dcell.maxcharge)

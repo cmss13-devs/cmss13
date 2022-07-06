@@ -1047,7 +1047,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/message = deploy_message[1 + stock_activated]
 	to_chat(user, SPAN_NOTICE("You [message] [src]."))
 
-	for(var/X in G.actions)
+	for(var/X in gun.actions)
 		var/datum/action/A = X
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()

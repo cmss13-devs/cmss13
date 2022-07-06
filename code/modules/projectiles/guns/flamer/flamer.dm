@@ -555,11 +555,11 @@
 
 /obj/flamer_fire/process(delta_time)
 	var/turf/T = loc
-	var/damage = burnlevel*delta_time
 	firelevel = max(0, firelevel)
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
 		qdel(src)
 		return PROCESS_KILL
+	var/damage = burnlevel*delta_time
 	T.flamer_fire_act(damage)
 
 	update_flame()

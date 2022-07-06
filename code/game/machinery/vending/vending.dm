@@ -664,6 +664,9 @@
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
 				var/obj/item/device/defibrillator/D = item_to_stock
+				if(!D.cell)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+					return
 				if(D.dcell.charge < D.dcell.maxcharge)
 					to_chat(user,SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return

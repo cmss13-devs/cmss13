@@ -58756,13 +58756,6 @@
 /area/almayer/squads/charlie_delta_shared)
 "nhG" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
 /obj/item/newspaper{
 	name = "character sheet"
 	},
@@ -80744,13 +80737,6 @@
 /area/almayer/squads/charlie_delta_shared)
 "xaM" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
 /obj/item/newspaper{
 	name = "character sheet";
 	pixel_x = -6

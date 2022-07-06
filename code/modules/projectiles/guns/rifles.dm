@@ -343,7 +343,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
+/obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun

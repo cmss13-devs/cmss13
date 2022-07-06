@@ -68,11 +68,6 @@
 /area/whiskey_outpost/inside/cic)
 "am" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = 4
@@ -225,11 +220,6 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "aJ" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
@@ -968,6 +958,25 @@
 "dl" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/inside/hospital)
+"dr" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/whiskey_outpost/inside/living)
 "ds" = (
 /obj/structure/machinery/door/window/westright{
 	dir = 4
@@ -1020,6 +1029,25 @@
 	dir = 8
 	},
 /turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"dE" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
 /area/whiskey_outpost/inside/living)
 "dF" = (
 /obj/structure/machinery/door/airlock/almayer/command{
@@ -1404,11 +1432,6 @@
 /area/whiskey_outpost/inside/hospital)
 "eT" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = 4
@@ -1760,6 +1783,25 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/lane/two_north)
+"fT" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
+/area/whiskey_outpost/inside/living)
 "fU" = (
 /obj/item/lightstick/red{
 	anchored = 1;
@@ -2491,22 +2533,17 @@
 /area/whiskey_outpost/inside/hospital/triage)
 "hY" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = 4
 	},
 /obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
 	buckling_y = 13;
 	layer = 3.5;
 	pixel_y = 13
+	},
+/obj/structure/bed{
+	can_buckle = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -5456,11 +5493,6 @@
 /area/whiskey_outpost/inside/living)
 "rD" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = 4
@@ -6219,11 +6251,6 @@
 /area/whiskey_outpost/outside/lane/three_south)
 "ub" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = 4
@@ -6245,11 +6272,6 @@
 	},
 /area/whiskey_outpost/inside/living)
 "ue" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
@@ -6306,11 +6328,6 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "ui" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
@@ -7483,6 +7500,25 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/whiskey_outpost/outside/north/platform)
+"xX" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/whiskey_outpost/inside/living)
 "xZ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -8035,6 +8071,25 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/supply)
+"zQ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/whiskey_outpost/inside/living)
 "zR" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
@@ -29601,8 +29656,8 @@ mT
 pq
 aH
 aH
-am
-am
+zQ
+zQ
 pq
 be
 be
@@ -30409,8 +30464,8 @@ mT
 pq
 ct
 ct
-aJ
-aJ
+xX
+xX
 pq
 zA
 zA
@@ -31217,8 +31272,8 @@ mT
 pq
 go
 go
-eT
-eT
+dr
+dr
 pq
 Ei
 Ei
@@ -31620,8 +31675,8 @@ mT
 mT
 pq
 hY
-hY
-hY
+fT
+fT
 ui
 pq
 QG
@@ -32025,8 +32080,8 @@ mT
 pq
 kq
 kq
-hY
-hY
+dE
+dE
 pq
 FM
 FM

@@ -85,7 +85,6 @@
 		var/datum/action/A = X
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()
-			break
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
@@ -451,7 +450,6 @@
 			var/datum/action/A = X
 			if(istype(A, /datum/action/item_action/toggle))
 				A.update_button_icon()
-				break
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"

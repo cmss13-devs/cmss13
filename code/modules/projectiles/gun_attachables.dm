@@ -653,9 +653,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	for(var/X in G.actions)
 		var/datum/action/A = X
-		if(istype(A, /datum/action/item_action/toggle))
+		if(A.name == "Toggle the rail flashlight")
 			A.update_button_icon()
-			break
 	return TRUE
 
 

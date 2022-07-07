@@ -66,3 +66,11 @@
       undershirt variants being added, most of them being camo conforming if you choose.
   fira:
   - refactor: Optimized several aspects of Sound Ambiences, Areas, and Weather
+2022-07-07:
+  stanalbatross:
+  - bugfix: you can no longer force other people to pick up animals
+  - bugfix: you can no longer force other xenos to pick up resin fruit
+  - bugfix: larvas can no longer pick up resin fruit
+  - qol: renamed gardener's fruit to "plant resin fruit" as greater resin fruit is
+      not the only type you can plant
+  - bugfix: xenos can no longer pick up simple animals

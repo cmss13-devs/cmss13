@@ -123,6 +123,10 @@
 
 /obj/structure/closet/proc/store_items(var/stored_units)
 	for(var/obj/item/I in src.loc)
+		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
+			var/obj/item/explosive/plastic/P = I
+			if(P.active)
+				continue
 		var/item_size = Ceiling(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
@@ -226,7 +230,7 @@
 			return
 		user.drop_inv_item_to_loc(W,loc)
 
-	else if(istype(W, /obj/item/packageWrap))
+	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
 	else if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W

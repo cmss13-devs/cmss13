@@ -173,7 +173,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/body_scanconsole,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "fF" = (
@@ -645,7 +644,7 @@
 /area/bigredv2/outside/marshal_office)
 "rv" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
+/obj/item/storage/firstaid/surgical,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
@@ -818,7 +817,7 @@
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
 	},
-/obj/structure/machinery/bodyscanner,
+/obj/structure/bed,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "wv" = (
@@ -1355,10 +1354,10 @@
 	pixel_x = -32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/optable,
 /obj/item/clothing/mask/breath/medical,
 /obj/item/tank/anesthetic,
 /obj/effect/landmark/corpsespawner/security,
+/obj/structure/bed,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "MU" = (

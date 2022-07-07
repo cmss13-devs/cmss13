@@ -40,6 +40,9 @@
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
 	if(!holder_type)
 		return
+	if(isXeno(grabber))
+		to_chat(SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
+		return
 	var/obj/item/holder/H = new holder_type(loc)
 	src.forceMove(H)
 	H.name = loc.name

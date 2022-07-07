@@ -43,7 +43,7 @@
 	var/health_cost = 50
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
-	name = "Plant Greater Resin Fruit (100)"
+	name = "Plant Resin Fruit (100)"
 	plasma_cost = 100
 	ability_primacy = XENO_PRIMARY_ACTION_3
 

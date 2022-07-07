@@ -610,7 +610,6 @@
 			new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 		if(10) //The ultimate weapon
 			new /datum/gear/uno_reverse_red(src)
-			new /obj/item/paper/bigred/walls(src)
 
 /obj/structure/largecrate/guns/russian
 	num_guns = 3

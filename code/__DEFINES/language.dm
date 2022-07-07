@@ -28,6 +28,8 @@
 #define NO_E_ONG			(1<<5)
 #define DENTAL_ALV			(1<<6)
 #define NONDENTAL_ALV		(1<<7)
+#define NO_SYLLABIC_I		(1<<8)
+#define ZERO_INITIAL		(1<<9)
 
 //final flags
 

@@ -11,7 +11,10 @@
 #define INITIAL_TYPE_N				1
 #define INITIAL_TYPE_G				2
 
-/proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 30;2, 10;3))
+///How likely the syllable is not to have a consonant at the start, needs to be kinda high
+#define CHINESE_SOUND_ZERO_INITIAL_CHANCE	15
+
+/proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 35;2, 5;3))
 	var/datum/chinese_syllable/C = new /datum/chinese_syllable
 	if(syllables == 1) //only one syllable, no need for a loop
 		C.randomly_generate_chinese_syllable()
@@ -39,106 +42,112 @@
 	var/initial_type
 
 /datum/chinese_syllable/proc/randomly_generate_chinese_syllable()
+	//set these two back to FALSE, this is because we are possibly regenerating shit off the same datum!
+	zero_initial = FALSE
+	zero_initial_changing = FALSE
+	//le funnyvar
 	var/syllable
 	//select intial
 	var/IN = (pick(subtypesof(/datum/chinese_sound/initial/))) //assign a random consonant
 	var/list/possible_finals = subtypesof(/datum/chinese_sound/final)
 	var/datum/chinese_sound/initial/initial = new IN
+	if(prob(CHINESE_SOUND_ZERO_INITIAL_CHANCE))
+		qdel(initial)
+		initial = new /datum/chinese_sound/initial/zero
 	//add intial to sound
-	syllable += "[initial.sound]"
-	//narrow down final list
+	else if(!(initial.initial_sound_flags & ZERO_INITIAL))
+		syllable += "[initial.sound]"
+		//narrow down final list (for NON zero initials)
 
-	//remove complex/simple -u- glide finals
-	if(initial.initial_sound_flags & SIMPLE_U_ONLY)
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE)
-				possible_finals -= final
-		possible_finals += /datum/chinese_sound/final/u
-	else if(initial.initial_sound_flags & HALF_U)
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE && initial(final.final_sound_flags) & U_GROUP_FULL)
-				possible_finals -= final
+		//remove complex/simple -u- glide finals
+		if(initial.initial_sound_flags & SIMPLE_U_ONLY)
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE)
+					possible_finals -= final
+			possible_finals += /datum/chinese_sound/final/u
+		else if(initial.initial_sound_flags & HALF_U)
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(initial(final.vowel_class)) == VOWEL_CLASS_BACK_CLOSE && initial(final.final_sound_flags) & U_GROUP_FULL)
+					possible_finals -= final
 
-	//check for if the sound is alveolo-palatal or sibilant/retroflex - then remove or keep front close vowels accordingly
-	if(initial.initial_sound_flags & NO_FRONT_CLOSE)
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(final.vowel_class) == VOWEL_CLASS_FRONT_CLOSE)
-				possible_finals -= final
-		//little bit of istype final snowflakery...
-		if(istype(initial, /datum/chinese_sound/initial/k))
+		//check for if the sound is alveolo-palatal or sibilant/retroflex - then remove or keep front close vowels accordingly
+		if(initial.initial_sound_flags & NO_FRONT_CLOSE)
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(final.vowel_class) == VOWEL_CLASS_FRONT_CLOSE)
+					possible_finals -= final
+			//little bit of istype final snowflakery...
+			if(istype(initial, /datum/chinese_sound/initial/k))
+				possible_finals -= /datum/chinese_sound/final/ei
+			else if(!(initial.initial_sound_flags & NO_SYLLABIC_I))
+				possible_finals += /datum/chinese_sound/final/i //they keep syllabic z/r
+
+		else if(initial.initial_sound_flags & FRONT_CLOSE_ONLY)
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(final.vowel_class) != VOWEL_CLASS_FRONT_CLOSE)
+					possible_finals -= final
+
+		else if(initial(initial.sound))
+			possible_finals -= /datum/chinese_sound/final/ia //nothing other than jqx has ia
+			possible_finals -= /datum/chinese_sound/final/iang
+			possible_finals -= /datum/chinese_sound/final/iong
+
+		//remove ü sounds if unneeded
+		if(!(initial.initial_sound_flags & FRONT_CLOSE_ONLY) && !(initial.initial_sound_flags & NONDENTAL_ALV))
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(final.jqx_sound)) //all ü sounds
+					possible_finals -= final
+					continue
+
+		else if(initial.initial_sound_flags & NONDENTAL_ALV)
+			for(var/datum/chinese_sound/final/final as anything in possible_finals)
+				if(initial(final.final_sound_flags) & U_UMLAUT_RARE)
+					possible_finals -= final
+
+		//checks for predictable patterns
+		if(initial.initial_sound_flags & NO_E_ONG)
+			possible_finals -= /datum/chinese_sound/final/e
+			possible_finals -= /datum/chinese_sound/final/ong
+
+		if(initial.initial_sound_flags & DENTAL_ALV) //d and t
+			possible_finals -= /datum/chinese_sound/final/en
+			possible_finals -= /datum/chinese_sound/final/uang
+			possible_finals -= /datum/chinese_sound/final/yin
+
+		else if(initial.initial_sound_flags & NONDENTAL_ALV) // n and l
+			possible_finals += /datum/chinese_sound/final/iang
+			possible_finals -= /datum/chinese_sound/final/ui
+
+
+		//snowflake istype checks...
+		if(istype(initial, /datum/chinese_sound/initial/t))
+			possible_finals -= /datum/chinese_sound/final/iu
+
+		else if(istype(initial, /datum/chinese_sound/initial/r))
+			possible_finals -= /datum/chinese_sound/final/a
+			possible_finals -= /datum/chinese_sound/final/ai
 			possible_finals -= /datum/chinese_sound/final/ei
-		else if(!istype(initial, /datum/chinese_sound/initial/k))
-			possible_finals += /datum/chinese_sound/final/i //they keep syllabic z/r
 
-	else if(initial.initial_sound_flags & FRONT_CLOSE_ONLY)
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(final.vowel_class) != VOWEL_CLASS_FRONT_CLOSE)
-				possible_finals -= final
+		else if(istype(initial, /datum/chinese_sound/initial/sh))
+			possible_finals -= /datum/chinese_sound/final/ong
 
-	else if(initial(initial.sound))
-		possible_finals -= /datum/chinese_sound/final/ia //nothing other than jqx has ia
-		possible_finals -= /datum/chinese_sound/final/iang
+		else if(istype(initial, /datum/chinese_sound/initial/ch))
+			possible_finals -= /datum/chinese_sound/final/ei
 
-	//remove ü sounds if unneeded
-	if(!(initial.initial_sound_flags & FRONT_CLOSE_ONLY) && !(initial.initial_sound_flags & NONDENTAL_ALV))
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(final.final_sound_flags) & U_UMLAUT)
-				possible_finals -= final
-				continue
-			if(initial(final.final_sound_flags) & U_UMLAUT_RARE)
-				possible_finals -= final
-				continue
+		else if(istype(initial, /datum/chinese_sound/initial/l))
+			possible_finals -= /datum/chinese_sound/final/en
 
-	else if(initial.initial_sound_flags & NONDENTAL_ALV)
-		for(var/datum/chinese_sound/final/final as anything in possible_finals)
-			if(initial(final.final_sound_flags) & U_UMLAUT_RARE)
-				possible_finals -= final
+		else if(istype(initial, /datum/chinese_sound/initial/b))
+			possible_finals -= /datum/chinese_sound/final/ou
 
-	//checks for predictable patterns
-	if(initial.initial_sound_flags & NO_E_ONG)
-		possible_finals -= /datum/chinese_sound/final/e
-		possible_finals -= /datum/chinese_sound/final/ong
+		else if(istype(initial, /datum/chinese_sound/initial/f))
+			possible_finals -= /datum/chinese_sound/final/ao
+			possible_finals -= /datum/chinese_sound/final/ai
 
-	if(initial.initial_sound_flags & DENTAL_ALV) //d and t
-		possible_finals -= /datum/chinese_sound/final/en
-		possible_finals -= /datum/chinese_sound/final/uang
-		possible_finals -= /datum/chinese_sound/final/yin
+		else if(istype(initial, /datum/chinese_sound/initial/n))
+			initial_type = INITIAL_TYPE_N
 
-	else if(initial.initial_sound_flags & NONDENTAL_ALV) // n and l
-		possible_finals += /datum/chinese_sound/final/iang
-		possible_finals -= /datum/chinese_sound/final/ui
-
-
-	//snowflake istype checks...
-	if(istype(initial, /datum/chinese_sound/initial/t))
-		possible_finals -= /datum/chinese_sound/final/iu
-
-	else if(istype(initial, /datum/chinese_sound/initial/r))
-		possible_finals -= /datum/chinese_sound/final/a
-		possible_finals -= /datum/chinese_sound/final/ai
-		possible_finals -= /datum/chinese_sound/final/ei
-
-	else if(istype(initial, /datum/chinese_sound/initial/sh))
-		possible_finals -= /datum/chinese_sound/final/ong
-
-	else if(istype(initial, /datum/chinese_sound/initial/ch))
-		possible_finals -= /datum/chinese_sound/final/ei
-
-	else if(istype(initial, /datum/chinese_sound/initial/l))
-		possible_finals -= /datum/chinese_sound/final/en
-
-	else if(istype(initial, /datum/chinese_sound/initial/b))
-		possible_finals -= /datum/chinese_sound/final/ou
-
-	else if(istype(initial, /datum/chinese_sound/initial/f))
-		possible_finals -= /datum/chinese_sound/final/ao
-		possible_finals -= /datum/chinese_sound/final/ai
-
-	else if(istype(initial, /datum/chinese_sound/initial/n))
-		initial_type = INITIAL_TYPE_N
-
-	else if(istype(initial, /datum/chinese_sound/initial/g))
-		initial_type = INITIAL_TYPE_G
+		else if(istype(initial, /datum/chinese_sound/initial/g))
+			initial_type = INITIAL_TYPE_G
 
 	//select final
 	var/FN = pick(possible_finals)
@@ -148,10 +157,15 @@
 		if(initial.initial_sound_flags & SIMPLIFY_UO)
 			final.sound = "o"
 
-	if(istype(initial, /datum/chinese_sound/initial/zero))
+	if(initial.initial_sound_flags & ZERO_INITIAL)
+		zero_initial = TRUE
 		if(final.zero_initial_sound)
 			final.sound = final.zero_initial_sound
 			zero_initial_changing = TRUE
+
+	if(initial(final.jqx_sound))
+		if(initial.initial_sound_flags & FRONT_CLOSE_ONLY)
+			final.sound = final.jqx_sound
 
 	//add final to sound
 	syllable += "[final.sound]"
@@ -168,6 +182,7 @@
 
 /datum/chinese_sound/initial/zero
 	sound = null
+	initial_sound_flags = ZERO_INITIAL
 
 /datum/chinese_sound/initial/p
 	sound = "p"
@@ -187,15 +202,15 @@
 
 /datum/chinese_sound/initial/k
 	sound = "k"
-	initial_sound_flags = NO_FRONT_CLOSE
+	initial_sound_flags = NO_FRONT_CLOSE|NO_SYLLABIC_I
 
 /datum/chinese_sound/initial/g
 	sound = "g"
-	initial_sound_flags = NO_FRONT_CLOSE
+	initial_sound_flags = NO_FRONT_CLOSE|NO_SYLLABIC_I
 
 /datum/chinese_sound/initial/f
 	sound = "f"
-	initial_sound_flags = SIMPLE_U_ONLY|NO_FRONT_CLOSE|NO_E_ONG
+	initial_sound_flags = SIMPLE_U_ONLY|NO_FRONT_CLOSE|NO_E_ONG|NO_SYLLABIC_I
 
 /datum/chinese_sound/initial/s
 	sound = "s"
@@ -211,7 +226,7 @@
 
 /datum/chinese_sound/initial/h
 	sound = "h"
-	initial_sound_flags = NO_FRONT_CLOSE
+	initial_sound_flags = NO_FRONT_CLOSE|NO_SYLLABIC_I
 
 /datum/chinese_sound/initial/sh
 	sound = "sh"
@@ -259,6 +274,7 @@
 	var/vowel_class
 	var/final_sound_flags
 	var/final_class
+	var/jqx_sound //for ü syllables
 
 /datum/chinese_sound/final/a
 	vowel_class = VOWEL_CLASS_OPEN
@@ -287,7 +303,7 @@
 	final_class = FINAL_TYPE_OPEN
 
 /datum/chinese_sound/final/ua
-	vowel_class = VOWEL_CLASS_OPEN
+	vowel_class = VOWEL_CLASS_BACK_CLOSE
 	sound = "ua"
 	zero_initial_sound = "wa"
 	final_sound_flags = U_GROUP_FULL
@@ -431,6 +447,7 @@
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
 	sound = "ü"
 	zero_initial_sound = "yu"
+	jqx_sound = "u"
 	final_sound_flags = U_UMLAUT
 	final_class = FINAL_TYPE_OPEN
 
@@ -438,6 +455,7 @@
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
 	sound = "ün"
 	zero_initial_sound = "yun"
+	jqx_sound = "un"
 	final_sound_flags = U_UMLAUT_RARE
 	final_class = FINAL_TYPE_DENTAL
 
@@ -445,6 +463,7 @@
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
 	sound = "üe"
 	zero_initial_sound = "yue"
+	jqx_sound = "ue"
 	final_sound_flags = U_UMLAUT
 	final_class = FINAL_TYPE_OPEN
 
@@ -452,6 +471,7 @@
 	vowel_class = VOWEL_CLASS_FRONT_CLOSE
 	sound = "üan"
 	zero_initial_sound = "yuan"
+	jqx_sound = "uan"
 	final_sound_flags = U_UMLAUT_RARE
 	final_class = FINAL_TYPE_DENTAL
 
@@ -463,3 +483,4 @@
 #undef FINAL_TYPE_OPEN
 #undef FINAL_TYPE_DENTAL
 #undef FINAL_TYPE_VELAR
+#undef CHINESE_SOUND_ZERO_INITIAL_CHANCE

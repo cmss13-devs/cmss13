@@ -731,11 +731,16 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(H.gender == MALE)
+	if(prob(20))
+		random_name = "[capitalize(randomly_generate_japanese_word(pick(1, 2)))]"
+	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_clf)]"
-		H.f_style = "5 O'clock Shadow"
 	else
 		random_name = "[pick(first_names_female_clf)]"
+
+	if(H.gender == MALE)
+		H.f_style = "5 O'clock Shadow"
+
 	H.change_real_name(H, random_name)
 	H.r_hair = 15
 	H.g_hair = 15

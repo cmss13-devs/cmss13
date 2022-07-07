@@ -85,7 +85,6 @@
 	//general preferences
 	S["ooccolor"]			>> ooccolor
 	S["lastchangelog"]		>> lastchangelog
-	S["UI_style"]			>> UI_style
 	S["be_special"]			>> be_special
 	S["default_slot"]		>> default_slot
 	S["toggles_chat"]		>> toggles_chat
@@ -94,6 +93,7 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
+	S["UI_style"]			>> UI_style
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
@@ -230,6 +230,8 @@
 	S["ooccolor"]			<< ooccolor
 	S["lastchangelog"]		<< lastchangelog
 	S["UI_style"]			<< UI_style
+	S["UI_style_color"]		<< UI_style_color
+	S["UI_style_alpha"]		<< UI_style_alpha
 	S["stylesheet"] 		<< stylesheet
 	S["be_special"]			<< be_special
 	S["default_slot"]		<< default_slot
@@ -370,9 +372,6 @@
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"]	>> exploit_record
 
-	S["UI_style_color"]		>> UI_style_color
-	S["UI_style_alpha"]		>> UI_style_alpha
-
 	//Sanitize
 	metadata		= sanitize_text(metadata, initial(metadata))
 	real_name		= reject_bad_name(real_name)
@@ -511,9 +510,6 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"]	<< exploit_record
-
-	S["UI_style_color"]		<< UI_style_color
-	S["UI_style_alpha"]		<< UI_style_alpha
 
 	return 1
 

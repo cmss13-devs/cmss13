@@ -62,6 +62,7 @@
 	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
 	var/paralyzed = 0		//Carbon
+	var/gibbing = FALSE
 	var/lying = FALSE
 	var/lying_prev = 0
 	var/canmove = 1
@@ -74,6 +75,9 @@
 	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
 
 	var/name_archive //For admin things like possession
+
+	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
+	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
 
 	// Determines what the alpha of the lighting is to this mob.
 	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE

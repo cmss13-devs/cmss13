@@ -453,18 +453,19 @@ updatehealth()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
-	if(stat != DEAD)
+	if(stat != DEAD && !gibbing)
 		if(health <= crit_health - warding_aura * 20) //dead
 			if(prob(gib_chance + 0.5*(crit_health - health)))
-				INVOKE_ASYNC(src, .proc/gib, last_damage_data)
+				async_gib(last_damage_data)
 			else
 				death(last_damage_data)
 			return
 		else if(health <= 0) //in crit
 			if(hardcore)
-				INVOKE_ASYNC(src, .proc/gib, last_damage_data)
+				async_gib(last_damage_data)
 			else if(world.time > last_grace_time + crit_grace_time)
 				if(crit_grace_time && !(stat & UNCONSCIOUS))
+					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 					addtimer(CALLBACK(src, .proc/handle_crit), crit_grace_time)
 				else
 					handle_crit()
@@ -472,6 +473,7 @@ updatehealth()
 	med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
+	sound_environment_override = SOUND_ENVIRONMENT_NONE
 	stat = UNCONSCIOUS
 	blinded = 1
 	see_in_dark = 5

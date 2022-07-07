@@ -54,7 +54,7 @@
 	/// Default sound to play as ambience for clients entering the area
 	VAR_PROTECTED/ambience_exterior
 	/// Default sound environment to use for the area, as list or int BYOND preset: http://www.byond.com/docs/ref/#/sound/var/environment
-	var/sound_environment = 2
+	var/sound_environment = SOUND_ENVIRONMENT_ROOM
 
 	//Power stuff
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets

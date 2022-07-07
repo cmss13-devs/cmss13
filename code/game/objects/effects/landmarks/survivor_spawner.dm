@@ -64,7 +64,7 @@
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are a soldier of Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. You take over the colonial marshalls office and send an all clear signal to the nearby PMC distress team however an unkown entity has responded to the call. You dont know who they are but they will identify you as a foe, but at least they will identify everything as a foe."
+	story_text = "You are a soldier of the Colonial Liberation Front. Your ship received a distress signal from a planet bordering CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded a small ship called the Marie Curie. You took over the Colonial Marshal's office and sent an all clear signal to the nearby PMC distress team, however an unknown entity has responded to the call. You dont know who they are but they will likely identify you as a foe."
 
 /obj/effect/landmark/survivor_spawner/dnd
 	equipment = /datum/equipment_preset/survivor/civilian

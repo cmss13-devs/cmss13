@@ -14,11 +14,27 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
+	var/first_name
+	var/last_name
+	//gender checks
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_male_upp)]"
 		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
-		random_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_female_upp)]"
+	//surname
+	if(prob(35))
+		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+	else
+		last_name = "[pick(last_names_upp)]"
+	//put them together
+	random_name = "[first_name] [last_name]"
 
 	H.change_real_name(H, random_name)
 	H.age = rand(17,35)
@@ -1777,11 +1793,17 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(H.gender == MALE)
+	if(prob(20))
+		random_name = "[capitalize(randomly_generate_chinese_word(1))]"
+	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_upp)]"
-		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		random_name = "[pick(first_names_female_upp)]"
+
+	if(H.gender == MALE)
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+
+
 	H.change_real_name(H, random_name)
 	H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))

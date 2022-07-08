@@ -102,7 +102,7 @@
 
 	return scrambled_text
 
-/datum/language/japanese/scramble(input)
+/datum/language/generated/scramble(input)
 	// If the input is cached already, move it to the end of the cache and return it
 	var/lookup = check_cache(input)
 	if(lookup)
@@ -113,7 +113,12 @@
 	var/capitalize = TRUE
 
 	while(length_char(scrambled_text) < input_size)
-		var/next = randomly_generate_japanese_word()
+		var/next
+		switch(name)
+			if(LANGUAGE_JAPANESE)
+				next = randomly_generate_japanese_word()
+			if(LANGUAGE_CHINESE)
+				next = randomly_generate_chinese_word()
 		if(capitalize)
 			next = capitalize(next)
 			capitalize = FALSE

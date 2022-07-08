@@ -30,6 +30,11 @@
 	applyable = TRUE
 	cost = 1
 
+/datum/character_trait/language/chinese
+	language_name = LANGUAGE_CHINESE
+	applyable = TRUE
+	cost = 1
+
 /datum/character_trait/language/german
 	language_name = LANGUAGE_WELTRAUMDEUTSCH
 	applyable = TRUE

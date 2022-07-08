@@ -13,12 +13,27 @@
 /datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE, 40;FEMALE)
 	var/random_name
-	if(prob(50))
-		random_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))] [capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
-	else if(H.gender == MALE)
-		random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
+	var/first_name
+	var/last_name
+	//gender checks
+	if(H.gender == MALE)
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
+		else
+			first_name = "[pick(first_names_male_clf)]"
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
-		random_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
+		else
+			first_name = "[pick(first_names_female_clf)]"
+	//surname
+	if(prob(35))
+		last_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
+	else
+		last_name = "[pick(last_names_clf)]"
+	//put them together
+	random_name = "[first_name] [last_name]"
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 	H.r_hair = 25
@@ -716,11 +731,16 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(H.gender == MALE)
+	if(prob(20))
+		random_name = "[capitalize(randomly_generate_japanese_word(pick(1, 2)))]"
+	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_clf)]"
-		H.f_style = "5 O'clock Shadow"
 	else
 		random_name = "[pick(first_names_female_clf)]"
+
+	if(H.gender == MALE)
+		H.f_style = "5 O'clock Shadow"
+
 	H.change_real_name(H, random_name)
 	H.r_hair = 15
 	H.g_hair = 15

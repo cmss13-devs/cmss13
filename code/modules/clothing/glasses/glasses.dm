@@ -505,7 +505,7 @@
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
-    prescription = TRUE
+	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"

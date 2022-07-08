@@ -74,3 +74,9 @@
   - qol: renamed gardener's fruit to "plant resin fruit" as greater resin fruit is
       not the only type you can plant
   - bugfix: xenos can no longer pick up simple animals
+2022-07-08:
+  stanalbatross:
+  - rscadd: Added the Chinese language, has rich syllable support. Will only generate
+      syllables that could be real Chinese ones. You may pick this from the setup
+      menu.
+  - rscadd: Added a chance for UPP characters to have random Chinese names.

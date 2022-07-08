@@ -83,3 +83,14 @@
       syllables that could be real Chinese ones. You may pick this from the setup
       menu.
   - rscadd: Added a chance for UPP characters to have random Chinese names.
+  - bugfix: fixed nearsighted characters' glasses just deleting if they couldn't equip
+      to your eyes. They will now try go in other spots in your inventory instead.
+  - spellcheck: renamed "big sunglasses" to "shades" to be consistent with the character
+      setup pref
+  - rscadd: added separate loadout options for prescription and non-prescription sunglasses,
+      previously it was just prescription ones, also added a unique desc to prescription
+      sunglasses.
+  - rscadd: added prescription healthhuds, sensorhuds, and sechuds, as well as sec
+      sunglasses.
+  - rscadd: if you are nearsighted, and you spawn with a healthhud, sensorhud, or
+      sechud, you will get prescription versions of said hud.

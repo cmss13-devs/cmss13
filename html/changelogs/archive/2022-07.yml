@@ -75,6 +75,9 @@
       not the only type you can plant
   - bugfix: xenos can no longer pick up simple animals
 2022-07-08:
+  SpartanBobby:
+  - rscdel: Removed roughly 600(ish) ledges from around Sorokyne Strata
+  - rscdel: Some small bodies of water were also removed from Sorokyne Strata
   stanalbatross:
   - rscadd: Added the Chinese language, has rich syllable support. Will only generate
       syllables that could be real Chinese ones. You may pick this from the setup

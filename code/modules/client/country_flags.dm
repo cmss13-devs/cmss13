@@ -3,13 +3,13 @@
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
 			src.country = ip2country(address)
-				if(src.country == "GB")
-					var/region = ip2region(address)
-					switch(region)
-						if("Scotland")
-							src.country = "SCT"
-						if("Wales")
-							src.country = "WLS"
+			if(src.country == "GB")
+				var/region = ip2region(address)
+				switch(region)
+					if("Scotland")
+						src.country = "SCT"
+					if("Wales")
+						src.country = "WLS"
 
 /proc/ip2country(ipaddr)
 	var/list/http_response[] = world.Export("http://ip-api.com/json/[ipaddr]")

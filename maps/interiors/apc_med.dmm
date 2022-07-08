@@ -346,7 +346,7 @@
 	icon_state = "triagedecalbottomright"
 	},
 /obj/effect/landmark/interior/spawn/interior_camera{
-	dir = 6;
+	dir = 10;
 	pixel_x = -14;
 	pixel_y = 38
 	},
@@ -402,20 +402,20 @@
 	},
 /area/vehicle/apc)
 "W" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
 /obj/effect/landmark/interior/spawn/telephone{
 	pixel_x = 5;
 	pixel_y = 30
 	},
 /obj/structure/extinguisher_cabinet/lifeboat{
 	icon = 'icons/obj/vehicles/interiors/general.dmi';
-	pixel_x = -5;
+	pixel_x = -8;
 	pixel_y = 28
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 9
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -7
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"

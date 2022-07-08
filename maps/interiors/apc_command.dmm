@@ -146,7 +146,10 @@
 	},
 /area/vehicle/apc)
 "s" = (
-/obj/structure/machinery/prop/almayer/CICmap,
+/obj/structure/machinery/prop/almayer/CICmap{
+	indestructible = 1;
+	unslashable = 1
+	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
@@ -303,7 +306,7 @@
 	pixel_x = -8
 	},
 /obj/effect/landmark/interior/spawn/interior_camera{
-	dir = 6;
+	dir = 10;
 	pixel_x = -14;
 	pixel_y = 38
 	},

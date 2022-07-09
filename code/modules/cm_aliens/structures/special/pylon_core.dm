@@ -121,7 +121,7 @@
 
 
 /obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == INTENT_HARM && M.can_destroy_special())
+	if(M.a_intent == INTENT_HARM && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
 		if(!hardcore && last_attempt + 6 SECONDS > world.time)
 			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
 			return XENO_NO_DELAY_ACTION

@@ -47,13 +47,14 @@
 /obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/M)
 	if(!istype(M))
 		return
-	if(!damaged && health >= maxhealth)
+	var/can_repair = damaged || health < maxhealth
+	if(!can_repair)
 		to_chat(M, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
 	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
 	xeno_attack_delay(M)
-	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !damaged)
+	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
 
 	var/amount_to_use = min(M.plasma_stored, (plasma_required_to_repair - plasma_stored))

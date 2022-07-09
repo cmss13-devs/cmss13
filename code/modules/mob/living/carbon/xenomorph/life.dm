@@ -148,7 +148,7 @@
 
 	updatehealth()
 
-	if(health > 0)	//alive and not in crit! Turn on their vision.
+	if(health > 0 && stat != DEAD)	//alive and not in crit! Turn on their vision.
 		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary

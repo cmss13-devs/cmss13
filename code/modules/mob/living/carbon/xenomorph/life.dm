@@ -473,6 +473,9 @@ updatehealth()
 	med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
+	if(stat == DEAD || gibbing)
+		return
+
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
 	stat = UNCONSCIOUS
 	blinded = 1

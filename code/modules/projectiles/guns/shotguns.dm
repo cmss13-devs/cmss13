@@ -910,9 +910,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "m37"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
-	fire_sound = 'sound/weapons/gun_m37_fire.ogg'
+	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	firesound_volume = 40
-	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
+	var/pump_sound = "shotgunpump"
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
 	var/pumped = FALSE //Used to see if the shotgun has already been pumped.

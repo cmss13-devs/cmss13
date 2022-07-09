@@ -348,7 +348,7 @@
 	M.animation_attack_on(src)
 	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)
-		playsound(src, barricade_hitsound, 35, 1)
+		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)

@@ -306,8 +306,6 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound)
-		playsound(src, dropsound, dropvol, drop_vary)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
@@ -849,5 +847,6 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/drop_to_floor(mob/wearer)
 	SIGNAL_HANDLER
-
+	if(dropsound)
+		playsound(src, dropsound, dropvol, drop_vary)
 	wearer.drop_inv_item_on_ground(src)

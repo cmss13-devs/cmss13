@@ -47,7 +47,7 @@
 /obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/M)
 	if(!istype(M))
 		return
-	if(!damaged)
+	if(!damaged && health >= maxhealth)
 		to_chat(M, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 

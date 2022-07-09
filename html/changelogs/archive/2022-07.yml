@@ -94,3 +94,7 @@
       sunglasses.
   - rscadd: if you are nearsighted, and you spawn with a healthhud, sensorhud, or
       sechud, you will get prescription versions of said hud.
+2022-07-09:
+  Geeves:
+  - rscadd: Re-adds Small RTO Packs, Req has them in the Misc section, and its also
+      in the squad req vendors, though in much smaller quantity.

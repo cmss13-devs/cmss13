@@ -22,16 +22,16 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/arnie, TRUE, TRUE)
-	else if(heavies < max_heavies && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/flamer, TRUE, TRUE)
-	else if(smartgunners < max_smartgunners && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/minigun, TRUE, TRUE)
-	else if(medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/fun/dutch/medic, TRUE, TRUE)
 	else

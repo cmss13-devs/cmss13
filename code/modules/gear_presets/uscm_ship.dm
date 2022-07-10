@@ -298,7 +298,7 @@
 	rank = JOB_CO
 	paygrade = "MO4"
 	role_comm_title = "CO"
-	minimum_age = 40
+	minimum_age = 30
 	skills = /datum/skills/commander
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
@@ -367,7 +367,7 @@
 	rank = JOB_CO
 	paygrade = "MO5"
 	role_comm_title = "CO"
-	minimum_age = 45
+	minimum_age = 35
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)

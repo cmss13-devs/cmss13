@@ -481,7 +481,7 @@
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, SPAN_NOTICE("You are now hiding."))
 	else
-		X.layer = MOB_LAYER
+		X.layer = initial(X.layer)
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 	X.update_wounds()
 

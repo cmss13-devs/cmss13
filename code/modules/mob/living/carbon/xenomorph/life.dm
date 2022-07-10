@@ -463,13 +463,14 @@ updatehealth()
 		else if(health <= 0) //in crit
 			if(hardcore)
 				async_gib(last_damage_data)
-			else if(world.time > last_grace_time + crit_grace_time)
-				if(crit_grace_time && !(stat & UNCONSCIOUS))
+			else if(world.time > next_grace_time && stat == CONSCIOUS)
+				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
+				if(grace_time)
 					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
-					addtimer(CALLBACK(src, .proc/handle_crit), crit_grace_time)
+					addtimer(CALLBACK(src, .proc/handle_crit), grace_time)
 				else
 					handle_crit()
-				last_grace_time = world.time
+				next_grace_time = world.time + grace_time
 	med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
@@ -480,8 +481,8 @@ updatehealth()
 	stat = UNCONSCIOUS
 	blinded = 1
 	see_in_dark = 5
-	if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-		layer = MOB_LAYER
+	if(layer != initial(layer)) //Unhide
+		layer = initial(layer)
 	recalculate_move_delay = TRUE
 	if(!lying)
 		update_canmove()

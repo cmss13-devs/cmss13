@@ -928,7 +928,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			if(body_part != BODY_FLAG_HEAD)
-				owner.emote("scream")
+				INVOKE_ASYNC(owner, /mob.proc/emote, pick("pain", "scream"))
 
 			if(organ)
 				//Throw organs around

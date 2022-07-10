@@ -911,7 +911,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	firesound_volume = 40
+	firesound_volume = 60
 	var/pump_sound = "shotgunpump"
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
@@ -996,7 +996,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	ready_shotgun_tube()
 
-	playsound(user, pump_sound, 25, 1)
+	playsound(user, pump_sound, 10, 1)
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE

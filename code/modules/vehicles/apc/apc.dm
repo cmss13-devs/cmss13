@@ -35,6 +35,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 7
+	var/gunner_view_offset = 2
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/primary/dualcannon,
@@ -152,6 +153,26 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		camera.c_tag = "#[rand(1,100)] M777 APC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
+
+/obj/vehicle/multitile/apc/try_rotate(var/deg)
+	. = ..()
+	var/mob/user = seats[VEHICLE_GUNNER]
+	if(ismob(user) && user.client)
+		user.client.change_view(8, src)
+
+		switch(dir)
+			if(NORTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = gunner_view_offset * 32
+			if(SOUTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = -1 * gunner_view_offset * 32
+			if(EAST)
+				user.client.pixel_x = gunner_view_offset * 32
+				user.client.pixel_y = 0
+			if(WEST)
+				user.client.pixel_x = -1 * gunner_view_offset * 32
+				user.client.pixel_y = 0
 
 /*
 ** PRESETS SPAWNERS

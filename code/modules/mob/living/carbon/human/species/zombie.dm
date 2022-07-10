@@ -90,6 +90,10 @@
 	if(gibbed)
 		remove_from_revive(H)
 
+/datum/species/zombie/handle_on_fire(humanoidmob)
+	. = ..()
+	// erm, you're a zombie u dont scream
+
 /datum/species/zombie/proc/revive_from_death(var/mob/living/carbon/human/H)
 	if(H && H.loc && H.stat == DEAD)
 		H.revive(TRUE)

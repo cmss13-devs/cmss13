@@ -48,8 +48,8 @@
 			if(!stat && getToxLoss() >= 45 && nutrition > 20)
 				vomit()
 
-			if(on_fire && !isSynth(src))
-				INVOKE_ASYNC(src, /mob.proc/emote, pick("pain", "scream"))
+			if(on_fire)
+				species.handle_on_fire(src)
 
 			//effects of being grabbed aggressively by another mob
 			if(pulledby && pulledby.grab_level)

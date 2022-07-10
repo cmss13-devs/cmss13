@@ -382,7 +382,7 @@
 		SPAN_NOTICE("[user] [user == X ? "ate" : "fed [X]"] <b>[src]</b>."))
 	var/obj/effect/alien/resin/fruit/F = new fruit_type(X)
 	F.mature = TRUE
-	if(isXenoQueen(X) && X.observed_xeno)
+	if(isXenoQueen(X) && X.observed_xeno && X.z == X.observed_xeno.z)
 		F.consume_effect(X.observed_xeno, FALSE)
 	F.consume_effect(X)
 	//Notify the fruit's bound xeno if they exist

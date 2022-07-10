@@ -291,6 +291,16 @@
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
 
+/area/bigredv2/oob
+	name = "Big Red Out of Bounds"
+	ceiling = CEILING_MAX
+	icon = 'icons/turf/area_kutjevo.dmi'
+	icon_state = "oob"
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	can_build_special = FALSE
+	soundscape_interval = 0
+
 /area/bigredv2/Initialize()
 	. = ..()
 	if(SSticker.current_state > GAME_STATE_SETTING_UP)
@@ -362,6 +372,19 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	base_muffle = MUFFLE_HIGH
+
+/area/bigredv2/caves/mining
+	name = "\improper Southwest Abandoned Mining Caves"
+	icon_state = "bluenew"
+	color = "purple"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	soundscape_interval = 25
+	base_muffle = MUFFLE_HIGH
+
 
 /area/bigredv2/caves/eta
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS

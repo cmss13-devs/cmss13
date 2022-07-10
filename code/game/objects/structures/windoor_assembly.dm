@@ -140,7 +140,7 @@ obj/structure/windoor_assembly/Destroy()
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src) return
 
-					to_chat(user, SPAN_NOTICE(" You cut the windoor wires.!"))
+					to_chat(user, SPAN_NOTICE(" You cut the windoor wires!"))
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					src.state = "01"
 					if(src.secure)

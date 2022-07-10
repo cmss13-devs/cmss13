@@ -2876,7 +2876,7 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "dST" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "dTn" = (
@@ -7717,13 +7717,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "kPa" = (
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "kPw" = (
@@ -11756,13 +11750,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "qtK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "qtN" = (

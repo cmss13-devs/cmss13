@@ -894,19 +894,6 @@
 
 
 //Crates, closets, other paraphernalia
-/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
-	M.animation_attack_on(src)
-	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
-	new /obj/item/stack/sheet/wood(src)
-	var/turf/T = get_turf(src)
-	for(var/obj/O in contents)
-		O.forceMove(T)
-	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-	SPAN_DANGER("You smash [src] apart!"), \
-	SPAN_DANGER("You hear splitting wood!"), 5, CHAT_TYPE_XENO_COMBAT)
-	qdel(src)
-	return XENO_ATTACK_ACTION
-
 /obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!unacidable)
 		M.animation_attack_on(src)

@@ -15,8 +15,8 @@
 
 	msg = process_chat_markup(msg, list("*"))
 
-	for(var/mob/M in GLOB.living_xeno_list)
-		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to xenos who are non-staff
+	for(var/mob/living/carbon/M in GLOB.alive_mob_list)
+		if(M.client && M.hivenumber && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to xenos who are non-staff
 			to_chat(M, SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)

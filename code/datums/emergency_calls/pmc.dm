@@ -7,6 +7,8 @@
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
+
+	max_smartgunners = 1
 	max_medics = 1
 	max_heavies = 2
 
@@ -26,19 +28,19 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
-	else if(medics < max_medics)
+	else if(medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_medic, TRUE, TRUE)
-	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
-		heavies++
+	else if(smartgunners < max_smartgunners && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
+		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
-	else if(heavies < max_heavies)
+	else if(heavies < max_heavies && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani sniper!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_sniper, TRUE, TRUE)
@@ -74,7 +76,8 @@
 	mob_max = 25
 	probability = 0
 	max_medics = 2
-	max_heavies = 4
+	max_heavies = 2
+	max_smartgunners = 2
 
 /datum/emergency_call/pmc/chem_retrieval
 	name = "Weyland-Yutani PMC (Chemical Investigation Squad)"
@@ -82,7 +85,7 @@
 	mob_min = 2
 	probability = 0
 	max_medics = 2
-	max_heavies = 1
+	max_smartgunners = 1
 	var/checked_objective = FALSE
 
 /datum/emergency_call/pmc/chem_retrieval/New()

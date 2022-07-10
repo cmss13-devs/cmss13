@@ -1,0 +1,108 @@
+2022-07-01:
+  Geevies:
+  - code_imp: Xenos now check for death on updatehealth, meaning they die when you
+      shoot them.
+  Morrow:
+  - bugfix: You can now quickdraw via holster/unholster key weapons held in the command
+      pouch.
+  Stan_Albatross, Nauticall.:
+  - qol: Converted the smartgun-specific verbs into action buttons. Sprites by Nauticall.
+  - qol: added helpful messages telling you how to open a smartgun's feed cover if
+      you try to do something that is blocked by it being closed.
+  TeDGamer:
+  - bugfix: Hive core cooldown is reset on launching the dropship after all special
+      structures are destroyed.
+2022-07-02:
+  Jeser:
+  - qol: Repairing vehicles and vehicle modules was reworked to be more convenient.
+  - rscadd: Wheels and tracks are being repaired twice slower now, because it was
+      way too fast before.
+2022-07-03:
+  50RemAndCounting:
+  - balance: buffed the synth tools vendor compact defibrillator from storing 7 to
+      10 charges maximum.
+  Geeves:
+  - rscadd: Special ERT roles now have (5 hour) timelocks, the standard squaddie role
+      for each ERT doesn't, so no one is prohibited from joining, just from getting
+      special roles.
+  - rscadd: Where ERTs previously had a probability to get either two SGs, one SG
+      one spec, two specs, they will now always get one SG, one spec.
+  - admin: Split the UPP Minigunner and UPP Shotgun Specialist into two different
+      equipment roles.
+  - bugfix: Fixed up some of the UPP backstory text.
+  Jeser:
+  - rscadd: Applying vehicle clamp is no longer a timed action.
+  - rscadd: Only vehicles of your faction can be clamped.
+  - bugfix: Having access level that circumvents door lock no longer works on vehicles
+      of other factions.
+  - bugfix: Fitting pulled mobs or objects into vehicle does actually check for access
+      now if doors are locked.
+  - bugfix: Fixed and improved vehicle scanning with Motion Detectors. MDs description
+      now mentions this feature. Takes 3 seconds, shows humanoid and xenos signatures
+      separately. It is by no means intended to be precise. Caution is advised.
+  - rscadd: Vehicles now spawn unlocked.
+  - code_imp: Added proper delay for vehicles with broken or without wheels or tracks
+      and delay should apply instantly upon meeting requirements now.
+2022-07-04:
+  50RemAndCounting:
+  - balance: synthskin arms and hands will no longer malfunction and drop items if
+      the combined brute and burn damage on them does not exceed 10 points.
+  Stan_Albatross, Nauticall:
+  - rscadd: you can now toggle the firing level of the m79 and the m92 grenade launchers
+      between high toss and no high toss using a HUD button or unique-action. Sprites
+      by Nauticall.
+  - balance: added back high toss to the mk1 UGL.
+  stanalbatross:
+  - bugfix: deconstructing then reconstructing a Vehicle ASRS console will no longer
+      replace it with a regular ASRS console
+  - bugfix: attempting to give someone an item that is wielded will now properly unwield
+      the item when trying to give it to them, rather than failing to do so and leaving
+      an offhand object in your offhand.
+  - rscdel: removed the ability of ghosts to observe peoples' inventories, pending
+      refactor and fixing.
+2022-07-05:
+  Geeves, Nauticall:
+  - rscadd: Added a new underwear and undershirt system, with many new underwear and
+      undershirt variants being added, most of them being camo conforming if you choose.
+  fira:
+  - refactor: Optimized several aspects of Sound Ambiences, Areas, and Weather
+2022-07-07:
+  stanalbatross:
+  - bugfix: you can no longer force other people to pick up animals
+  - bugfix: you can no longer force other xenos to pick up resin fruit
+  - bugfix: larvas can no longer pick up resin fruit
+  - qol: renamed gardener's fruit to "plant resin fruit" as greater resin fruit is
+      not the only type you can plant
+  - bugfix: xenos can no longer pick up simple animals
+2022-07-08:
+  SpartanBobby:
+  - rscdel: Removed roughly 600(ish) ledges from around Sorokyne Strata
+  - rscdel: Some small bodies of water were also removed from Sorokyne Strata
+  stanalbatross:
+  - rscadd: Added the Chinese language, has rich syllable support. Will only generate
+      syllables that could be real Chinese ones. You may pick this from the setup
+      menu.
+  - rscadd: Added a chance for UPP characters to have random Chinese names.
+  - bugfix: fixed nearsighted characters' glasses just deleting if they couldn't equip
+      to your eyes. They will now try go in other spots in your inventory instead.
+  - spellcheck: renamed "big sunglasses" to "shades" to be consistent with the character
+      setup pref
+  - rscadd: added separate loadout options for prescription and non-prescription sunglasses,
+      previously it was just prescription ones, also added a unique desc to prescription
+      sunglasses.
+  - rscadd: added prescription healthhuds, sensorhuds, and sechuds, as well as sec
+      sunglasses.
+  - rscadd: if you are nearsighted, and you spawn with a healthhud, sensorhud, or
+      sechud, you will get prescription versions of said hud.
+2022-07-09:
+  Geeves:
+  - rscadd: Re-adds Small RTO Packs, Req has them in the Misc section, and its also
+      in the squad req vendors, though in much smaller quantity.
+2022-07-10:
+  Geevies:
+  - rscadd: Cultists now have xenomorph as their default language.
+  - bugfix: Cultists now properly get the correct hive faction.
+  - bugfix: Crowbarable item crates now initialize their items correctly.
+  TeDGamer:
+  - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
+      barricades, thickbush ).

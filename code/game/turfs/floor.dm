@@ -21,13 +21,13 @@
 	if(!hull_floor)
 		var/tool_output = list()
 		if(tool_flags & REMOVE_CROWBAR)
-			tool_output += SPAN_GREEN("Crowbar")
+			tool_output += SPAN_GREEN("crowbar")
 		if(tool_flags & BREAK_CROWBAR)
-			tool_output += SPAN_RED("Crowbar")
+			tool_output += SPAN_RED("crowbar")
 		if(tool_flags & REMOVE_SCREWDRIVER)
-			tool_output += SPAN_GREEN("Screwdriver")
+			tool_output += SPAN_GREEN("screwdriver")
 		if(length(tool_output))
-			to_chat(user, SPAN_NOTICE("\The [src] can be removed with [english_list(tool_output)]."))
+			to_chat(user, SPAN_NOTICE("\The [src] can be removed with \a [english_list(tool_output)]."))
 
 
 /turf/open/floor/plating/is_plasteel_floor()

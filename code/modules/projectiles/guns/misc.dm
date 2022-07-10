@@ -12,7 +12,7 @@
 	current_mag = /obj/item/ammo_magazine/minigun
 	w_class = SIZE_HUGE
 	force = 20
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
 
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
@@ -35,7 +35,7 @@
 /obj/item/weapon/gun/minigun/upp
 	name = "\improper GSh-7.62 rotary machine gun"
 	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/minigun/upp/able_to_fire(mob/living/user)
 	. = ..()
@@ -70,7 +70,7 @@
 	current_mag = /obj/item/ammo_magazine/m60
 	w_class = SIZE_LARGE
 	force = 20
-	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(/obj/item/attachable/m60barrel,
 							/obj/item/attachable/bipod/m60)

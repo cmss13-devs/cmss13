@@ -154,11 +154,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, na
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
-	//Underwear
-var/global/list/underwear_m = list("Briefs") //Curse whoever made male/female underwear diffrent colours
-var/global/list/underwear_f = list("Briefs", "Panties")
-	//undershirt
-var/global/list/undershirt_t = list("None","Undershirt(Sleeveless)", "Undershirt(Sleeved)", "Rolled Undershirt(Sleeveless)", "Rolled Undershirt(Sleeved)")
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
@@ -370,3 +365,7 @@ var/global/list/paramslist_cache = list()
 */
 
 GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
+
+
+// Timelock
+GLOBAL_LIST_EMPTY(timelocks)

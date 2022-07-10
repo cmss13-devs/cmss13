@@ -77,11 +77,18 @@
 		// Flamer fire?
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
-			if(FF.firelevel > fire_level_to_extinguish)
+			if((FF.firelevel > fire_level_to_extinguish) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 				FF.firelevel -= fire_level_to_extinguish
 				FF.update_flame()
 			else
-				qdel(atm)
+				switch(FF.fire_variant)
+					if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
+						if(FF.firelevel > 2*fire_level_to_extinguish)
+							FF.firelevel -= 2*fire_level_to_extinguish
+							FF.update_flame()
+						else qdel(atm)
+					else
+						qdel(atm)
 			continue
 
 		if (istype(atm, /obj/structure/barricade))

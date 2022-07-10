@@ -787,19 +787,19 @@
 /area/bigredv2/outside/engineering)
 "cM" = (
 /turf/open/mars,
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "cN" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
 	tag = "icon-mars_dirt_11"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "cO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "cP" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
@@ -815,7 +815,7 @@
 	icon_state = "mars_dirt_13";
 	tag = "icon-mars_dirt_13"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "cX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
@@ -832,7 +832,7 @@
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "da" = (
 /turf/closed/wall/mineral/uranium,
 /area/bigredv2/outside/engineering)
@@ -842,21 +842,24 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dc" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside)
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves_sw)
 "dd" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "de" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_19";
 	tag = "icon-mars_cave_19"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "df" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
@@ -884,19 +887,13 @@
 /area/bigredv2/outside/engineering)
 "dl" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/outside/sw)
-"dm" = (
-/turf/open/mars_cave{
 	icon_state = "mars_cave_17";
 	tag = "icon-mars_cave_17"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "dn" = (
 /turf/open/mars_cave,
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "do" = (
 /obj/structure/machinery/compressor{
 	dir = 1
@@ -934,12 +931,6 @@
 	tag = "icon-mars_dirt_13"
 	},
 /area/bigredv2/outside/s)
-"du" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/sw)
 "dv" = (
 /obj/structure/machinery/power/turbine,
 /turf/open/floor/plating,
@@ -998,9 +989,6 @@
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
 	},
-/area/bigredv2/outside/s)
-"dI" = (
-/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/eta)
 "dJ" = (
 /obj/effect/landmark/hunter_primary,
@@ -1008,7 +996,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "dK" = (
 /obj/structure/machinery/compressor{
 	dir = 1
@@ -1016,24 +1004,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"dL" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
-/area/bigredv2/outside/s)
-"dM" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
-	},
-/area/bigredv2/outside/sw)
 "dO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "dR" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -1264,7 +1240,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave,
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "eC" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/molten_item,
@@ -1367,25 +1343,31 @@
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "kN" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave,
-/area/bigredv2/outside/sw)
-"mU" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
+"pi" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/outside/eta)
 "sU" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "Ah" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars,
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
+"Ha" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves)
 "IE" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -1393,20 +1375,43 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_sw)
+"JF" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/outside/eta)
 "NX" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
 	tag = "icon-mars_dirt_11"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "Ph" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
+"QR" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/outside/eta)
+"TH" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves)
+"TS" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/outside/eta)
 
 (1,1,1) = {"
 aa
@@ -1424,18 +1429,18 @@ cG
 Ah
 cT
 cM
+dT
 dc
-dc
-mU
-mU
-mU
-mU
-mU
-du
-dM
-du
-du
-du
+dl
+dT
+dT
+dT
+dT
+dR
+dW
+dR
+dR
+dR
 dR
 dT
 dT
@@ -1459,15 +1464,15 @@ cN
 cO
 dc
 dl
-du
-du
-du
-du
+dR
+dR
+dR
+dR
 dJ
-du
-dM
-du
-du
+dR
+dW
+dR
+dR
 dR
 dR
 dT
@@ -1490,16 +1495,16 @@ cO
 cO
 cY
 dd
-dm
-du
-du
-du
-du
-du
-du
-du
+dl
+dR
+dR
+dR
+dR
+dR
+dR
+dR
 dO
-du
+dR
 dR
 dR
 dR
@@ -1562,8 +1567,8 @@ dk
 dk
 aq
 aq
-dc
-dc
+dT
+dT
 dS
 dW
 dR
@@ -1595,7 +1600,7 @@ dK
 dv
 aq
 aq
-dc
+dT
 dS
 dV
 dR
@@ -1627,7 +1632,7 @@ ew
 ew
 aq
 aq
-dc
+dT
 dT
 dS
 dR
@@ -2294,15 +2299,15 @@ as
 as
 dC
 dA
-dH
-dL
-dL
-dT
-dT
-dT
-dT
-dT
-dT
+Ha
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+TH
 "}
 (29,1,1) = {"
 as
@@ -2326,15 +2331,15 @@ as
 dt
 dA
 dF
-dA
+Ha
 dH
-dT
-dT
-dT
-dT
-dT
-dT
-dT
+pi
+pi
+JF
+QR
+TS
+TS
+TS
 "}
 (30,1,1) = {"
 as
@@ -2358,13 +2363,13 @@ dt
 dA
 dA
 dA
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
-dI
+Ha
+pi
+pi
+JF
+JF
+QR
+TS
+TS
+TS
 "}

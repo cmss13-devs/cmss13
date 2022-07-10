@@ -76,10 +76,10 @@
 	//Handle temperature/pressure differences between body and environment
 	handle_environment() //Optimized a good bit.
 
+	updatehealth()
+
 	//Status updates, death etc.
 	handle_regular_status_updates() //Optimized a bit
-
-	updatehealth()
 
 	update_canmove()
 

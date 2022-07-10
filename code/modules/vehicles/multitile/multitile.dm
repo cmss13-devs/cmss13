@@ -118,8 +118,9 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
 	var/entrance_speed = 1
 
-	// Whether or not entering the vehicle is ID restricted to crewmen only. Toggleable by the driver
-	var/door_locked = TRUE
+	//Whether or not entering the vehicle is ID restricted to those with crewman, command or MP access only. Toggleable by the driver.
+	//Having command/MP/Crewmen access won't matter if the faction of the vehicle is not yours, so you can't infiltrate the vehicle.
+	var/door_locked = FALSE
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
@@ -177,17 +178,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
 
-	// Hardpoint rotation is handled by add_hardpoint
-	load_hardpoints()
-
-	load_damage()
-
 	healthcheck()
 	update_icon()
-
-	initialize_cameras()
-
-	load_role_reserved_slots()
 
 	GLOB.all_multi_vehicles += src
 
@@ -368,3 +360,50 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	if(health <= 0 && luminosity)
 		SetLuminosity(0)
 	update_icon()
+
+/*
+** PRESETS SPAWNERS
+*/
+//These help spawning vehicles that don't end up as subtypes, causing problems later with various checks
+//as well as allowing customizations, like properly turning on mapped in direction and so on.
+
+/obj/effect/vehicle_spawner
+	name = "Vehicle Spawner"
+
+//Main proc which handles spawning and adding hardpoints/damaging the vehicle
+/obj/effect/vehicle_spawner/proc/spawn_vehicle()
+	return
+
+//Installation of modules kit
+/obj/effect/vehicle_spawner/proc/load_hardpoints(var/obj/vehicle/multitile/V)
+	return
+
+//Miscellaneous additions
+/obj/effect/vehicle_spawner/proc/load_misc(var/obj/vehicle/multitile/V)
+
+	V.load_role_reserved_slots()
+	V.initialize_cameras()
+	//transfer mapped in edits
+	if(color)
+		V.color = color
+	if(name != initial(name))
+		V.name = name
+	if(desc)
+		V.desc = desc
+
+
+//Dealing enough damage to destroy the vehicle
+/obj/effect/vehicle_spawner/proc/load_damage(var/obj/vehicle/multitile/V)
+	V.take_damage_type(1e8, "abstract")
+	V.take_damage_type(1e8, "abstract")
+	V.healthcheck()
+
+/obj/effect/vehicle_spawner/proc/handle_direction(var/obj/vehicle/multitile/M)
+	switch(dir)
+		if(EAST)
+			M.try_rotate(90)
+		if(WEST)
+			M.try_rotate(-90)
+		if(NORTH)
+			M.try_rotate(90)
+			M.try_rotate(90)

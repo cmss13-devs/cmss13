@@ -53,7 +53,7 @@
 
 /obj/structure/curtain/open/shower
 	name = "shower curtain"
-	color = "#ACD1E9"
+	icon_state = "shower"
 	alpha = 200
 
 /obj/structure/curtain/open/black

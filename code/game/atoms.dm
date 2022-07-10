@@ -1,6 +1,7 @@
 
 /atom
 	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
+	var/desc_lore = null
 
 	plane = GAME_PLANE
 	layer = TURF_LAYER
@@ -53,6 +54,11 @@
 	var/list/beams // An assoc list where the keys are ids and their values are TRUE (indicating beam should persist)
 	var/beam_id = 0
 
+	var/datum/component/orbiter/orbiters
+
+	///Reference to atom being orbited
+	var/atom/orbit_target
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -69,6 +75,7 @@ directive is properly returned.
 */
 //===========================================================================
 /atom/Destroy()
+	orbiters = null // The component is attached to us normally and will be deleted elsewhere
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)
 	fingerprintshidden = null
@@ -265,6 +272,8 @@ its easier to just keep the beam vertical.
 	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
 		to_chat(user, desc)
+	if(desc_lore)
+		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -479,6 +488,9 @@ Parameters are passed from New.
 		paramslist["ctrl"] = "1"
 	if(href_list["statpanel_item_altclick"])
 		paramslist["alt"] = "1"
+	if(href_list["desc_lore"])
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		onclose(usr, "[name]")
 	if(href_list["statpanel_item_click"])
 		// first of all make sure we valid
 		var/mouseparams = list2params(paramslist)
@@ -579,3 +591,21 @@ Parameters are passed from New.
 	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
 	pixel_x = initialpixelx
 	pixel_y = initialpixely
+
+/**
+ * Recursive getter method to return a list of all ghosts orbitting this atom
+ *
+ * This will work fine without manually passing arguments.
+ */
+/atom/proc/get_all_orbiters(list/processed, source = TRUE)
+	var/list/output = list()
+	if (!processed)
+		processed = list()
+	if (src in processed)
+		return output
+	if (!source)
+		output += src
+	processed += src
+	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
+		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
+	return output

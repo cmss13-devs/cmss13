@@ -16,7 +16,7 @@
 	var/mob/living/carbon/human/H = new(T)
 	M.transfer_to(H, TRUE)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && check_timelock(H.client, list(JOB_WARDEN, JOB_CHIEF_POLICE), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/inspector, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of a Provost Inspection Team!"))

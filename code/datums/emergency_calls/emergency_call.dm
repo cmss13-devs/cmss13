@@ -28,14 +28,18 @@
 	var/medics = 0
 	var/engineers = 0
 	var/heavies = 0
+	var/smartgunners = 0
 	var/max_medics = 1
 	var/max_engineers = 1
 	var/max_heavies = 1
+	var/max_smartgunners = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
+
+	var/time_required_for_job = 5 HOURS
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -100,6 +104,11 @@
 		return
 	random_call.activate()
 	return
+
+/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+	if(C?.check_timelock(roles, hours))
+		return TRUE
+	return FALSE
 
 /mob/dead/observer/verb/JoinResponseTeam()
 	set name = "Join Response Team"

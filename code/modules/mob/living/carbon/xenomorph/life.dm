@@ -44,7 +44,7 @@
 	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
-		if(evolution_stored >= evolution_threshold - 1)
+		if(evolution_stored > evolution_threshold - 1)
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
@@ -148,24 +148,7 @@
 
 	updatehealth()
 
-	if(health <= crit_health - warding_aura * 20) //dead
-		if(prob(gib_chance + 0.5*(crit_health - health)))
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			death(last_damage_data)
-		return
-
-	else if(health <= 0) //in crit
-		if(hardcore)
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			stat = UNCONSCIOUS
-			blinded = 1
-			see_in_dark = 5
-			if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-				layer = MOB_LAYER
-
-	else						//alive and not in crit! Turn on their vision.
+	if(health > 0)	//alive and not in crit! Turn on their vision.
 		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
@@ -470,7 +453,23 @@ updatehealth()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
-	recalculate_move_delay = TRUE
+	if(stat != DEAD)
+		if(health <= crit_health - warding_aura * 20) //dead
+			if(prob(gib_chance + 0.5*(crit_health - health)))
+				INVOKE_ASYNC(src, .proc/gib, last_damage_data)
+			else
+				death(last_damage_data)
+			return
+		else if(health <= 0) //in crit
+			if(hardcore)
+				INVOKE_ASYNC(src, .proc/gib, last_damage_data)
+			else
+				stat = UNCONSCIOUS
+				blinded = 1
+				see_in_dark = 5
+				if(isXenoRunner(src) && layer != initial(layer)) //Unhide
+					layer = MOB_LAYER
+		recalculate_move_delay = TRUE
 
 	med_hud_set_health()
 

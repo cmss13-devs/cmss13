@@ -98,3 +98,7 @@
   Geeves:
   - rscadd: Re-adds Small RTO Packs, Req has them in the Misc section, and its also
       in the squad req vendors, though in much smaller quantity.
+2022-07-10:
+  TeDGamer:
+  - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
+      barricades, thickbush ).

@@ -221,13 +221,13 @@
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
-		var/obj/item/clothing/glasses/regular/P = new P(H)
+		var/obj/item/clothing/glasses/regular/P = new /obj/item/clothing/glasses/regular()
 		if(!H.equip_to_slot_or_del(P, WEAR_EYES))
 			if(istype(H.glasses, /obj/item/clothing/glasses))
 				var/obj/item/clothing/glasses/EYES = H.glasses
-				if(EYES.prescription)
+				if(EYES.prescription) //if they already have prescription glasses they don't need new ones
 					return
-			if(!H.equip_to_slot_or_del(P, WEAR_IN_BACK))
+			if(!H.equip_to_slot_if_possible(P, WEAR_IN_BACK))
 				if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
 					if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
 						P.forceMove(H.loc)

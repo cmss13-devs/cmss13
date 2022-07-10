@@ -132,7 +132,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
 		else
 			name += " armor"
 	if(armor_variation)
@@ -396,9 +396,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "CMP service jacket over M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer_jacket")
 
-/obj/item/clothing/suit/storage/marine/MP/admiral
-	icon_state = "admiral"
-	name = "\improper M3 pattern admiral armor"
+/obj/item/clothing/suit/storage/marine/MP/general
+	icon_state = "general"
+	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
 	w_class = SIZE_MEDIUM
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -410,9 +410,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
-	specialty = "M3 pattern admiral"
-	item_state_slots = list(WEAR_JACKET = "admiral")
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
+	specialty = "M3 pattern general"
+	item_state_slots = list(WEAR_JACKET = "general")
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	icon_state = "officer"

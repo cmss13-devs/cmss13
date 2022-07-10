@@ -600,11 +600,11 @@
 	name = "Souto Man"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE) //Just in case they are delivering to UPP or CLF...
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
 	assignment = FACTION_SOUTO
 	rank = "Souto Man"
-	skills = /datum/skills/mercenary
+	skills = /datum/skills/souto
 	faction = FACTION_SOUTO
 
 /datum/equipment_preset/other/souto/New()

@@ -804,6 +804,8 @@
 	return faction_is_ally(C.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction)
+	if(faction == internal_faction)
+		return TRUE
 	if(!living_xeno_queen)
 		return FALSE
 

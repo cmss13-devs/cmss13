@@ -222,7 +222,7 @@
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
 		var/obj/item/clothing/glasses/regular/P = new /obj/item/clothing/glasses/regular()
-		if(!H.equip_to_slot_or_del(P, WEAR_EYES))
+		if(!H.equip_to_slot_if_possible(P, WEAR_EYES))
 			if(istype(H.glasses, /obj/item/clothing/glasses))
 				var/obj/item/clothing/glasses/EYES = H.glasses
 				if(EYES.prescription) //if they already have prescription glasses they don't need new ones

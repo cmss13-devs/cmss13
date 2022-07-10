@@ -14,11 +14,27 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
+	var/first_name
+	var/last_name
+	//gender checks
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_male_upp)]"
 		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
-		random_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_female_upp)]"
+	//surname
+	if(prob(35))
+		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+	else
+		last_name = "[pick(last_names_upp)]"
+	//put them together
+	random_name = "[first_name] [last_name]"
 
 	H.change_real_name(H, random_name)
 	H.age = rand(17,35)
@@ -242,7 +258,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
 	//body
@@ -1777,11 +1796,17 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(H.gender == MALE)
+	if(prob(20))
+		random_name = "[capitalize(randomly_generate_chinese_word(1))]"
+	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_upp)]"
-		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		random_name = "[pick(first_names_female_upp)]"
+
+	if(H.gender == MALE)
+		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+
+
 	H.change_real_name(H, random_name)
 	H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
@@ -1814,7 +1839,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	var/hat = pick(/obj/item/clothing/head/uppcap, /obj/item/clothing/head/uppcap/beret, /obj/item/clothing/head/uppcap/ushanka)
 	H.equip_to_slot_or_del(new hat, WEAR_HEAD)
@@ -2223,7 +2251,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_IN_BACK)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_IN_BACK)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
 
@@ -2648,7 +2679,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka, WEAR_HEAD)
 	//body

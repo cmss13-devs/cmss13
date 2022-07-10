@@ -104,7 +104,7 @@
 
 	var/list/damagedata = list(
 		"damage" = damage,
-		"armor" = (armor_deflection + armor_deflection_buff) * effectiveness_mult,
+		"armor" = (armor_deflection + armor_deflection_buff - armor_deflection_debuff) * effectiveness_mult,
 		"penetration" = penetration,
 		"armour_break_pr_pen" = armour_break_pr_pen,
 		"armour_break_flat" = armour_break_flat,

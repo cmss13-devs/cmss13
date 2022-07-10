@@ -126,8 +126,14 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_EYES
 
-/datum/gear/prescription
+/datum/gear/sunglasses
 	display_name = "Sunglasses"
+	path = /obj/item/clothing/glasses/sunglasses
+	cost = 2
+	slot = WEAR_EYES
+
+/datum/gear/prescription_sunglasses
+	display_name = "Prescription Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses/prescription
 	cost = 2
 	slot = WEAR_EYES
@@ -181,7 +187,7 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/cmPgoggles
-	display_name = "Prescription Goggles"
+	display_name = "Prescription Ballistic Goggles"
 	path = /obj/item/clothing/glasses/mgoggles/prescription
 	cost = 2
 	slot = WEAR_EYES

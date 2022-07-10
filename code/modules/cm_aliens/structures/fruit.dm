@@ -376,14 +376,14 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/add_juice()
 	reagents.add_reagent("fruit_resin", 8)
 
-/obj/effect/alien/resin/fruit/MouseDrop(mob/living/carbon/Xenomorph/user)
-	if(!istype(user))
-		return
-	if(Adjacent(user) && !user.is_mob_incapacitated() && !user.lying)
-		user.pickup_fruit(src)
+/obj/effect/alien/resin/fruit/MouseDrop(atom/over_object)
+	var/mob/living/carbon/Xenomorph/X = over_object
+	if(!istype(X) || !Adjacent(X) || X != usr || X.is_mob_incapacitated() || X.lying) return ..()
+	X.pickup_fruit(src)
 
 // Handles xenos picking up fruit
 /mob/living/carbon/Xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
+
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
 		to_chat(src, SPAN_XENODANGER("You crush [F]."))
 		qdel(F)
@@ -410,6 +410,10 @@
 	if(!QDELETED(F.bound_xeno))
 		new_fruit.link_xeno(F.bound_xeno)
 	qdel(F)
+
+/mob/living/carbon/Xenomorph/Larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
+	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	return
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER

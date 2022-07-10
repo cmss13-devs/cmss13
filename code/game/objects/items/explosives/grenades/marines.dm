@@ -198,24 +198,28 @@
 
 /obj/item/explosive/grenade/incendiary
 	name = "\improper M40 HIDP incendiary grenade"
-	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade. It is set to detonate in 4 seconds."
+	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
 	icon_state = "grenade_fire"
 	det_time = 40
 	item_state = "grenade_fire"
 	flags_equip_slot = SLOT_WAIST
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/flame_level = 20
-	var/burn_level = 15
+	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
+	var/burn_level = BURN_LEVEL_TIER_2
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 2
+	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
+/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 20, var/burn_level = 30, var/flameshape = FLAMESHAPE_DEFAULT, var/target, var/fire_type = FIRE_VARIANT_DEFAULT)
+	//This proc is used to generate automatically-colored fires from manually adjusted item variables.
+	//It parses them as parameters and sets color automatically based on Intensity, then sends an edited reagent to the standard flame code.
+	//By default, this generates a napalm fire with a radius of 1, flame_level of 20 per UT (prev 14 as greenfire), burn_level of 30 per UT (prev 15 as greenfire), in a diamond shape.
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
@@ -228,7 +232,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target)
+	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target, , , fire_type)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"
@@ -237,6 +241,7 @@
 	item_state = "molotov"
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
+	fire_type = FIRE_VARIANT_DEFAULT
 
 /obj/item/explosive/grenade/incendiary/molotov/New(loc, custom_burn_level)
 	det_time = rand(10,40) //Adds some risk to using this thing.

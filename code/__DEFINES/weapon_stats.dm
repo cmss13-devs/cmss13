@@ -293,6 +293,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 ////FLAMER STUFF////
 Burn level = How much damage do we want to deal? Simple
 Burn time = How long do we want our flames to last?
+Fire Variant = Markers for special fire types that behave outside of chemfire constraints. Comment general notes.
 */
 
 #define BURN_LEVEL_TIER_1 10
@@ -311,3 +312,8 @@ Burn time = How long do we want our flames to last?
 #define BURN_TIME_TIER_3 30
 #define BURN_TIME_TIER_4 40
 #define BURN_TIME_TIER_5 50
+
+///Default fire behavior: No associated values.
+#define FIRE_VARIANT_DEFAULT 0
+///"Type B" Armor Shredding Greenfire: Burn Time T5, Burn Level T2, Slows on Tile, Increased Tile Damage, Easier Extinguishing.
+#define FIRE_VARIANT_TYPE_B 1

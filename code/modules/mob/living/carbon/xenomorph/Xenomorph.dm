@@ -100,6 +100,7 @@
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
 	var/armor_deflection_buff = 0 // temp buffs to armor
+	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
 	var/armor_integrity = 100     // Current health % of our armor
 	var/armor_integrity_max = 100

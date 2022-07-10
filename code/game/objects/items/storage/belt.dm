@@ -35,10 +35,12 @@
 
 /obj/item/storage/belt/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else
-		return ..()
+		if(/obj/item/ammo_magazine/handful in src.can_hold)
+			var/obj/item/ammo_magazine/shotgun/M = W
+			dump_ammo_to(M,user, M.transfer_handful_amount)
+			return
+	. = ..()
+
 
 /obj/item/storage/belt/champion
 	name = "championship belt"

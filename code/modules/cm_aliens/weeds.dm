@@ -14,7 +14,10 @@
 	var/secreting = FALSE
 
 	var/hibernate = FALSE
+
+	var/fruit_growth_multiplier = 1
 	var/spread_on_semiweedable = FALSE
+	var/block_special_structures = FALSE
 
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -38,6 +41,8 @@
 		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
+		block_special_structures = node.block_special_structures
+		fruit_growth_multiplier = node.fruit_growth_multiplier
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
 
@@ -50,7 +55,7 @@
 			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
 			color = rgb(RGB[1], RGB[2], RGB[3])
 		else
-			color = "#8f8f8f"
+			color = "#a1a1a1"
 
 	update_icon()
 	update_neighbours()

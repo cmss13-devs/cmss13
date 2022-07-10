@@ -631,7 +631,13 @@
 		return FALSE
 
 	if(T.is_weedable() < FULLY_WEEDABLE)
-		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+		to_chat(X, SPAN_WARNING("\The [T] can't support a [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/obj/effect/alien/weeds/weeds = locate() in T
+	if(weeds?.block_special_structures)
+		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE
 

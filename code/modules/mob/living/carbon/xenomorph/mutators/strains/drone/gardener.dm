@@ -11,10 +11,10 @@
 		/datum/action/xeno_action/activable/transfer_plasma
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/resin_surge, //second macro
-		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
-		/datum/action/xeno_action/onclick/change_fruit,
-		/datum/action/xeno_action/onclick/plant_weeds/gardener // fourth macro
+		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro
+		/datum/action/xeno_action/activable/resin_surge, // third macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
+		/datum/action/xeno_action/onclick/change_fruit
 	)
 	keystone = TRUE
 
@@ -25,7 +25,7 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.mutation_type = DRONE_GARDENER
-	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed)
+	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
 	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	D.max_placeable = 6
 	mutator_update_actions(D)
@@ -46,7 +46,7 @@
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
 	name = "Plant Resin Fruit (100)"
 	plasma_cost = 100
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/verb/plant_resin_fruit()
 	set category = "Alien"
@@ -221,7 +221,7 @@
 	xeno_cooldown = 10 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/channel_in_progress = FALSE
 	var/max_range = 7
 
@@ -329,24 +329,26 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
-	name = "Plant Gardening Weeds (125)"
-	ability_name = "Plant Gardening Weeds"
-	action_icon_state = "plant_weeds"
+	name = "Plant Hardy Weeds (125)"
+	ability_name = "Plant Hardy Weeds"
+	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125
 	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
 	xeno_cooldown = 2 MINUTES
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 	plant_on_semiweedable = TRUE
 	node_type = /obj/effect/alien/weeds/node/gardener
 
 /obj/effect/alien/weeds/node/gardener
 	spread_on_semiweedable = TRUE
+	block_special_structures = TRUE
+	fruit_growth_multiplier = 0.8
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"
-	set name = "Plant Gardening Weeds"
+	set name = "Plant Hardy Weeds"
 	set hidden = 1
-	var/action_name = "Plant Gardening Weeds (125)"
+	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)

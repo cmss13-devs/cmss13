@@ -53,7 +53,7 @@
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, .proc/handle_xeno_qdel)
 	set_hive_data(src, hivenumber)
 	//Keep timer value here
-	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature, TIMER_UNIQUE | TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/hostiles/fruits.dmi'
@@ -296,6 +296,28 @@
 	if(do_consume)
 		finish_consume(recipient)
 
+/obj/effect/alien/resin/fruit/plasma
+	name = XENO_FRUIT_PLASMA
+	desc = "A fruit that can be eaten to boost your plasma generation."
+	time_to_mature = 25 SECONDS
+	icon_state = "fruit_plasma_immature"
+	mature_icon_state = "fruit_plasma"
+	consumed_icon_state = "fruit_spent_2"
+	flags = CAN_CONSUME_AT_FULL_HEALTH
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/plasma
+	glow_color = "#287A90"
+	var/plasma_amount = 240
+	var/plasma_time = 15
+	var/time_between_plasmas = 3
+
+/obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
+	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
+		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts your plasma regeneration!"))
+		// with the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds
+		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
+	if(do_consume)
+		finish_consume(recipient)
+
 #undef CAN_CONSUME_AT_FULL_HEALTH
 
 /obj/item/reagent_container/food/snacks/resin_fruit
@@ -455,3 +477,12 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/speed/add_juice()
 	reagents.add_reagent("fruit_resin", 4)
 	reagents.add_reagent(PLASMA_PHEROMONE, 12)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma
+	name = XENO_FRUIT_PLASMA
+	icon_state = "fruit_plasma_item"
+	fruit_type = /obj/effect/alien/resin/fruit/plasma
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
+	reagents.add_reagent("fruit_resin", 4)
+	reagents.add_reagent(PLASMA_PURPLE, 12)

@@ -927,7 +927,9 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
-			if(body_part != BODY_FLAG_HEAD)
+			// Checks if the mob is not a Synth or if they have at least oxycodone level of painkiller
+			if(body_part != BODY_FLAG_HEAD && !isSynth(owner) && owner.pain.reduction_pain <= 80)
+				message_admins("Scream on delimb")
 				INVOKE_ASYNC(owner, /mob.proc/emote, pick("pain", "scream"))
 
 			if(organ)

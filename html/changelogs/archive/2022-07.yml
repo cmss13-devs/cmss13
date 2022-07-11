@@ -107,6 +107,8 @@
   - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
       barricades, thickbush ).
 2022-07-11:
+  Shad0vvs:
+  - bugfix: Fixed Souto Man's skills to allow him to use his drink cannon again.
   TotalEpicness:
   - bugfix: Fixed an invisible wall in VC prep
   stanalbatross:

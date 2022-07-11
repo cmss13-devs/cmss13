@@ -29,13 +29,14 @@
 		auto_turf_dirs["[direction]"] = T
 
 	var/list/handled_dirs = list()
-	var/list/unhandled_diagonals = list()
+	var/list/unhandled_dirs = list()
 	for(var/direction in diagonals)
 		var/x_dir = direction & (direction-1)
 		var/y_dir = direction - x_dir
 
 		if(!("[direction]" in auto_turf_dirs))
-			unhandled_diagonals += direction
+			unhandled_dirs |= x_dir
+			unhandled_dirs |= y_dir
 			continue
 
 		var/turf/open/auto_turf/xy_turf = auto_turf_dirs["[direction]"]
@@ -52,25 +53,16 @@
 		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
 		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 		overlays += I
+		unhandled_dirs |= x_dir
+		unhandled_dirs |= y_dir
 
-	for(var/direction in unhandled_diagonals)
-		var/x_dir = direction & (direction-1)
-		var/y_dir = direction - x_dir
-
-		if(("[x_dir]" in auto_turf_dirs) && !("[x_dir]" in handled_dirs))
-			var/turf/open/auto_turf/x_turf = auto_turf_dirs["[x_dir]"]
-			var/special_icon_state = "[x_turf.icon_prefix]_[pick("innercorner", "outercorner")]"
-			var/image/I = image(x_turf.icon, special_icon_state, dir = REVERSE_DIR(x_dir), layer = layer + 0.001 + x_turf.bleed_layer * 0.0001)
+	for(var/direction in unhandled_dirs)
+		if(("[direction]" in auto_turf_dirs) && !("[direction]" in handled_dirs))
+			var/turf/open/auto_turf/turf = auto_turf_dirs["[direction]"]
+			var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
+			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
-			handled_dirs += "[x_dir]"
-		if(("[y_dir]" in auto_turf_dirs) && !("[y_dir]" in handled_dirs))
-			var/turf/open/auto_turf/y_turf = auto_turf_dirs["[y_dir]"]
-			var/special_icon_state = "[y_turf.icon_prefix]_[pick("innercorner", "outercorner")]"
-			var/image/I = image(y_turf.icon, special_icon_state, dir = REVERSE_DIR(y_dir), layer = layer + 0.001 + y_turf.bleed_layer * 0.0001)
-			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
-			overlays += I
-			handled_dirs += "[y_dir]"
 
 
 /turf/open/examine(mob/user)

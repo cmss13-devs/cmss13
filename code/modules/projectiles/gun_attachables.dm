@@ -653,7 +653,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	for(var/X in G.actions)
 		var/datum/action/A = X
-		if(A.name == "Toggle the rail flashlight")
+		if(A.target == src)
 			A.update_button_icon()
 	return TRUE
 

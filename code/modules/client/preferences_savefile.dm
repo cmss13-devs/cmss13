@@ -432,7 +432,7 @@
 	//if(!skin_style) skin_style = "Default"
 
 	if(!home_system) home_system = "Unset"
-	if(!citizenship) citizenship = "None"
+	if(!citizenship) citizenship = "United Americas (United States)"
 	if(!faction)     faction =     "None"
 	if(!religion)    religion =    "None"
 	if(!preferred_squad)	preferred_squad = "None"

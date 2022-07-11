@@ -60,7 +60,6 @@
 	desc = "A more compact vehicle version of the widely known Wey-Med Plus Medical Pharmaceutical dispenser. Designed to be a field resupply station for medical personnel. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "med"
-	req_access = null
 
 	unacidable = TRUE
 	unslashable = TRUE
@@ -196,7 +195,7 @@
 		list("Plastic Explosives", 2, /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
 
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Box Of Buckshot Shells", 0, /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box Of Buckshot Shells", round(scale * 0.8), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", round(scale * 1), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", round(scale * 1.2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
 		list("L42A Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -293,7 +292,7 @@
 		list("ARMOR AND CLOTHING", -1, null, null),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Marine Helmet", round(scale * 3), /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Carrier Marine Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Marine Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine, VENDOR_ITEM_REGULAR),
 		list("M3-H Pattern Heavy Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 		)
@@ -359,25 +358,3 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-			if(istype(item_to_stock, /obj/item/ammo_box/rounds))
-				var/obj/item/ammo_box/rounds/A = item_to_stock
-				if(A.bullet_amount < A.max_bullet_amount)
-					to_chat(user, SPAN_WARNING("[A] is not full."))
-					return
-
-*/

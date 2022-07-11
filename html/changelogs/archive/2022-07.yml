@@ -107,6 +107,8 @@
   - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
       barricades, thickbush ).
 2022-07-11:
+  BKryth:
+  - bugfix: Synth type of mob no longer scream repeatedly when on fire
   Shad0vvs:
   - bugfix: Fixed Souto Man's skills to allow him to use his drink cannon again.
   TotalEpicness:

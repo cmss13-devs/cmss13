@@ -13003,6 +13003,11 @@
 /area/almayer/evacuation/pod6)
 "aKN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clothing/accessory/red,
+/obj/item/clothing/head/bowlerhat{
+	pixel_x = 3;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -54130,9 +54135,12 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "lbb" = (
 /obj/structure/surface/table/almayer,
+/obj/item/organ/heart/prosthetic{
+	pixel_x = -4
+	},
 /obj/item/circuitboard{
-	pixel_x = 13;
-	pixel_y = 4
+	pixel_x = 12;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -80744,6 +80752,7 @@
 /area/almayer/shipboard/port_point_defense)
 "xae" = (
 /obj/structure/surface/table/almayer,
+/obj/item/organ/lungs/prosthetic,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

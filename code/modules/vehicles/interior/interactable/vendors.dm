@@ -6,7 +6,7 @@
 	name = "Vehicle NanoMed"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "nanomed"
-	desc = "A wall-mounted vendor containing medical supplies vital to survival. It has bigger stock than regular NanoMed and can restock most common autoinjectors."
+	desc = "A wall-mounted vendor containing medical supplies vital to survival. It has bigger stock than a regular NanoMed and can restock most common autoinjectors."
 
 	unacidable = TRUE
 	unslashable = TRUE
@@ -57,7 +57,7 @@
 //MED APC version of WY Med, provides resupply for basic stuff. Provides a decent amount of cryobags for evacuating hugged marines.
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle
 	name = "\improper Wey-Med Resupply Station"
-	desc = "A more compact vehicle version of widely known Wey-Med Plus Medical Pharmaceutical dispenser. Designed to be a field resupply station for medical personnel. Provided by Wey-Yu Pharmaceuticals Division(TM)."
+	desc = "A more compact vehicle version of the widely known Wey-Med Plus Medical Pharmaceutical dispenser. Designed to be a field resupply station for medical personnel. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "med"
 	req_access = null
@@ -131,7 +131,7 @@
 //MED APC version of Blood Dispenser
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle
 	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack Dispensery for vehicles."
+	desc = "A Marine Med brand Blood Pack Dispenser for vehicles."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 
 	req_access = list()
@@ -141,7 +141,7 @@
 //Combined vehicle version of req guns and ammo vendors. Starts, basically, empty, but can become a resupply point if marines bother to stock it with ammo and weapons.
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply
 	name = "\improper ColMarTech Automated Supply Vendor"
-	desc = "An automated supply rack hooked up to a vehicle storage of various firearms, explosives and ammunition types. Used for storing and transporting supplies between FOB and frontline."
+	desc = "An automated supply rack hooked up to a vehicle storage of various firearms, explosives and ammunition types. Used for storing and transporting supplies between forward operating bases and the frontline."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "supply"
 	req_access = null
@@ -216,7 +216,7 @@
 		list("M39 Extended Magazine (10x20mm)", 0, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
-		list("SPECIALISTS AMMUNITION", -1, null, null),
+		list("SPECIALIST AMMUNITION", -1, null, null),
 		list("A19 High Velocity Impact Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra/impact, VENDOR_ITEM_REGULAR),
 		list("A19 High Velocity Incendiary Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra/incendiary, VENDOR_ITEM_REGULAR),
 		list("A19 High Velocity Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
@@ -307,40 +307,40 @@
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem == initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("[FT] contains wrong fuel."))
+						to_chat(user, SPAN_WARNING("\The [FT] contains the wrong fuel."))
 						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 					return
 			if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/S = item_to_stock
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
 				if(S.amount != 10)
-					to_chat(user, SPAN_WARNING("[S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to have 10 of them in it before restocking."))
+					to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to make it a stack of 10 before restocking."))
 					return
 			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
 				var/obj/item/ammo_box/magazine/A = item_to_stock
 				if(A.contents.len < A.num_of_magazines)
-					to_chat(user, SPAN_WARNING("[A] is not full."))
+					to_chat(user, SPAN_WARNING("\The [A] is not full."))
 					return
 				for(var/obj/item/ammo_magazine/M in A.contents)
 					if(M.current_rounds != M.max_rounds)
-						to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
+						to_chat(user, SPAN_WARNING("Not all the magazines in \the [A] are full."))
 						return
 			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
-					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+					to_chat(user, SPAN_WARNING("\The [G] is still loaded. Unload it before you can restock it."))
 					return
 				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
-						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+						to_chat(user, SPAN_WARNING("\The [G] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
 			if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
 				if(AR.pockets && AR.pockets.contents.len)
-					to_chat(user, SPAN_WARNING("[AR] has something inside. Empty it before restocking."))
+					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 					return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
@@ -353,8 +353,8 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
-			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
+			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 			R[2]++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.

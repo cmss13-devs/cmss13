@@ -106,3 +106,6 @@
   TeDGamer:
   - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
       barricades, thickbush ).
+2022-07-11:
+  TotalEpicness:
+  - bugfix: Fixed an invisible wall in VC prep

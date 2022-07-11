@@ -869,6 +869,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
 	var/aiming_time = 1.25 SECONDS
+	var/can_camo = TRUE
 
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
@@ -891,7 +892,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 
-	if(!ishuman(usr) || hide_in_progress)
+	if(!ishuman(usr) || hide_in_progress || !can_camo)
 		return
 	var/mob/living/carbon/human/H = usr
 	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)

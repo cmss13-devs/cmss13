@@ -311,9 +311,10 @@
 
 //big red sprites
 /turf/open/auto_turf/br_dirt
-	layer_name = list("red dirt", "dried slabs", "rocky slabs")
+	layer_name = list("red dirt", "dried slabs", "rocky slabs", "device ridden slabs")
 	icon = 'icons/turf/floors/auto_turfs/auto_br.dmi'
-	icon_state = "marsdirt_0"
+	icon_state = "marsdirt_editor"
+	icon_prefix = "marsdirt"
 
 /turf/open/auto_turf/br_dirt/get_dirt_type()
 	return DIRT_TYPE_MARS
@@ -335,10 +336,17 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
+/turf/open/auto_turf/br_dirt/layer3
+	icon_state = "marsdirt_1_2"
+	bleed_layer = 1
+	variant = 2
+	variant_prefix_name = "device ridden"
+
 /turf/open/auto_turf/br_caves
 	layer_name = list("rocky slabs","dried rock crust")
 	icon = 'icons/turf/floors/auto_turfs/auto_br.dmi'
-	icon_state = "marscave_1"
+	icon_state = "marscave_editor"
+	icon_prefix = "marscave"
 
 /turf/open/auto_tirf/br_caves/get_dirt_type()
 	return NO_DIRT
@@ -348,8 +356,8 @@
 
 /turf/open/auto_turf/br_caves/layer0
 	icon_state = "marscave_0"
-	bleed_layer = 0
+	bleed_layer = 1
 
 /turf/open/auto_turf/br_caves/layer1
 	icon_state = "marscave_1"
-	bleed_layer = 1
+	bleed_layer = 2

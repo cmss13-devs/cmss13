@@ -1,62 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/mars,
-/area/bigredv2/outside/c)
-"ab" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
-	},
-/area/bigredv2/outside/c)
-"ac" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/c)
 "ad" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/outside/c)
-"ae" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/c)
 "af" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars,
-/area/bigredv2/outside/c)
-"ag" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
-	},
-/area/bigredv2/outside/c)
-"ah" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
-	},
-/area/bigredv2/outside/c)
-"ai" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/c)
 "aj" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/c)
 "ak" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -135,15 +93,13 @@
 /area/bigredv2/outside/storage)
 "aB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	icon_state = "door_locked";
@@ -197,18 +153,16 @@
 /area/bigredv2/outside/storage)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
-/turf/open/floor{
+/turf/open/floor/layer2{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/s)
 "aN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -226,20 +180,8 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/s)
-"aP" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
-	},
-/area/bigredv2/outside/s)
-"aQ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/outside/s)
 "aR" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 8;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (WEST)"
@@ -247,56 +189,29 @@
 /area/bigredv2/outside/s)
 "aS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/s)
 "aT" = (
-/turf/open/mars,
-/area/bigredv2/outside/s)
-"aU" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
-	},
-/area/bigredv2/outside/s)
-"aV" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
-	},
-/area/bigredv2/outside/s)
-"aW" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
-	},
-/area/bigredv2/outside/s)
-"aX" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/s)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 8;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/s)
 "aZ" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/s)
 "ba" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/s)
 "zP" = (
 /obj/structure/surface/table,
@@ -317,9 +232,9 @@ al
 al
 al
 aM
-aP
+aZ
 aT
-aX
+aZ
 "}
 (2,1,1) = {"
 aa
@@ -333,14 +248,14 @@ aD
 aG
 al
 aM
-aP
+aZ
 aT
-aX
+aZ
 "}
 (3,1,1) = {"
 aa
 aa
-ah
+aj
 ak
 al
 an
@@ -349,14 +264,14 @@ aE
 aH
 al
 aM
-aP
+aZ
 aT
-aX
+aZ
 "}
 (4,1,1) = {"
 aa
 aa
-ai
+aj
 ak
 al
 ao
@@ -365,14 +280,14 @@ ao
 aI
 al
 aM
-aP
+aZ
 aT
-aX
+aZ
 "}
 (5,1,1) = {"
 aa
 aa
-ai
+aj
 ak
 al
 ao
@@ -381,14 +296,14 @@ ao
 aJ
 al
 aM
-aQ
-aU
-aQ
+aZ
+aZ
+aZ
 "}
 (6,1,1) = {"
 aa
 aa
-ai
+aj
 ak
 al
 zP
@@ -429,9 +344,9 @@ ao
 as
 al
 aM
-aQ
-aQ
-aQ
+aZ
+aZ
+aZ
 "}
 (9,1,1) = {"
 aa
@@ -445,9 +360,9 @@ aF
 aK
 al
 aM
-aQ
-aQ
-aQ
+aZ
+aZ
+aZ
 "}
 (10,1,1) = {"
 aa
@@ -461,12 +376,12 @@ ao
 au
 al
 aM
-aQ
-aQ
+aZ
+aZ
 aZ
 "}
 (11,1,1) = {"
-ab
+aj
 aa
 aa
 ak
@@ -477,13 +392,13 @@ ao
 as
 al
 aM
-aQ
-aQ
+aZ
+aZ
 aT
 "}
 (12,1,1) = {"
-ac
-ab
+aj
+aj
 aa
 ak
 al
@@ -493,13 +408,13 @@ ao
 aL
 al
 aM
-aQ
-aV
+aZ
+aZ
 aT
 "}
 (13,1,1) = {"
 ad
-ag
+aj
 aa
 ak
 al
@@ -509,12 +424,12 @@ ao
 at
 al
 aM
-aP
+aZ
 aT
 ba
 "}
 (14,1,1) = {"
-ae
+aj
 aa
 aa
 ak
@@ -525,7 +440,7 @@ al
 al
 al
 aM
-aQ
-aW
+aZ
+aZ
 aT
 "}

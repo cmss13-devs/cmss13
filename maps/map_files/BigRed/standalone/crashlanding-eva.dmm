@@ -4,7 +4,7 @@
 /area/bigredv2/caves)
 "an" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves_north)
 "at" = (
 /obj/structure/blocker/forcefield/vehicles,
@@ -14,14 +14,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars,
-/area/bigredv2/caves_north)
-"av" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves_north)
 "aw" = (
 /turf/closed/shuttle/ert{
@@ -108,7 +101,7 @@
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves_north)
 "aR" = (
 /turf/open/shuttle/dropship{
@@ -168,14 +161,12 @@
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/general_offices)
 "bb" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -184,7 +175,6 @@
 /obj/structure/surface/rack,
 /obj/item/device/mass_spectrometer/adv,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -249,19 +239,16 @@
 /area/bigredv2/outside/general_offices)
 "bm" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 4;
 	name = "\improper Dormitories EVA";
 	req_one_access = null
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/general_offices)
 "bo" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 4;
 	name = "\improper Dormitories Lavatory"
 	},
 /turf/open/floor{
@@ -334,7 +321,6 @@
 	amount = 25
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -345,18 +331,10 @@
 	amount = 50
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/general_offices)
-"bz" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/caves_north)
 "bA" = (
 /obj/structure/surface/table,
 /turf/open/floor,
@@ -395,7 +373,6 @@
 "bI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -445,7 +422,6 @@
 	amount = 50
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -453,7 +429,6 @@
 "bR" = (
 /obj/item/stack/sheet/plasteel,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -471,7 +446,6 @@
 	amount = 25
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -579,7 +553,6 @@
 	pixel_y = 4
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -589,7 +562,6 @@
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/clothing/under/redcoat,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -659,18 +631,14 @@
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/general_offices)
 "cx" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 2
-	},
+/obj/structure/machinery/camera/autoname,
 /obj/item/stack/sheet/plasteel,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -679,14 +647,12 @@
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/general_offices)
 "cA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 4;
 	name = "\improper Dormitories Tool Storage"
 	},
 /turf/open/floor,
@@ -733,7 +699,7 @@
 "cI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves_north)
 "cJ" = (
 /turf/closed/shuttle/ert{
@@ -784,13 +750,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"cU" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5";
-	tag = "icon-mars_dirt_5"
-	},
-/area/bigredv2/caves_north)
 "cV" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
@@ -865,7 +824,6 @@
 "di" = (
 /obj/structure/bed/chair{
 	dir = 8;
-	icon_state = "chair";
 	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor,
@@ -959,7 +917,6 @@
 "dy" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/plating{
@@ -975,7 +932,6 @@
 "dA" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/plating{
@@ -991,7 +947,6 @@
 "dC" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/plating{
@@ -1021,15 +976,14 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dG" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/ne)
 "dQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
@@ -1037,8 +991,7 @@
 /area/bigredv2/outside/ne)
 "dS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1047,8 +1000,7 @@
 /area/bigredv2/outside/ne)
 "dT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -1073,11 +1025,11 @@
 	dir = 1;
 	icon_state = "gib6"
 	},
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/ne)
 "dX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/ne)
 "ea" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1125,19 +1077,6 @@
 "eh" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/hydroponics)
-"ej" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/outside/ne)
-"el" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/outside/ne)
 "em" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
@@ -1153,7 +1092,6 @@
 "eo" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull"
 	},
@@ -1163,17 +1101,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
 "ey" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/ne)
 "ez" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/ne)
 "eA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1276,10 +1208,7 @@
 /area/bigredv2/outside/general_offices)
 "xT" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/caves_north)
 "EO" = (
 /turf/closed/shuttle/ert{
@@ -1670,7 +1599,7 @@ aB
 aB
 dQ
 ea
-ej
+ey
 ey
 "}
 (13,1,1) = {"
@@ -1701,7 +1630,7 @@ dC
 bU
 dS
 eN
-el
+ez
 ez
 "}
 (14,1,1) = {"
@@ -1896,7 +1825,7 @@ eF
 eF
 eF
 eF
-av
+xT
 an
 aH
 aV
@@ -1927,7 +1856,7 @@ eF
 eF
 eF
 eF
-bz
+xT
 an
 IB
 aW
@@ -1958,7 +1887,7 @@ eF
 eF
 eF
 eF
-cU
+xT
 ab
 aB
 aX

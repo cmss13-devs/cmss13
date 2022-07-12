@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ao" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
-	},
-/area/bigredv2/caves_sw)
 "au" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/shield/riot,
@@ -16,10 +10,7 @@
 /area/bigredv2/caves/mining)
 "az" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_research)
 "bu" = (
 /obj/structure/closet/secure_closet/marshal,
@@ -43,9 +34,6 @@
 "cR" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
-"dx" = (
-/turf/open/mars_cave,
-/area/bigredv2/caves_research)
 "fo" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves_sw)
@@ -53,36 +41,12 @@
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/caves_sw)
-"gQ" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_9";
-	tag = "icon-mars_cave_9"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "ie" = (
 /obj/item/prop/helmetgarb/spent_buckshot,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
-"ii" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15";
-	tag = "icon-mars_cave_15"
-	},
-/area/bigredv2/caves_sw)
-"io" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
-	},
-/area/bigredv2/caves_research)
 "iF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/decal/cleanable/blood{
@@ -145,19 +109,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"kS" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7";
-	tag = "icon-mars_dirt_7"
-	},
-/area/bigredv2/caves_sw)
-"lQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/caves_sw)
 "mT" = (
 /obj/item/clothing/head/helmet/riot,
 /turf/open/floor/plating{
@@ -169,29 +120,11 @@
 /area/bigredv2/caves/mining)
 "nx" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7";
-	tag = "icon-mars_dirt_7"
-	},
-/area/bigredv2/caves_sw)
-"pn" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
+/turf/open/auto_turf/br_dirt/layer2,
 /area/bigredv2/caves_sw)
 "qm" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves)
-"qW" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13";
-	tag = "icon-mars_cave_13"
-	},
-/area/bigredv2/caves_sw)
 "sJ" = (
 /obj/item/clothing/suit/storage/CMB,
 /obj/structure/closet/secure_closet/marshal,
@@ -202,12 +135,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"sV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/caves_sw)
 "uJ" = (
 /obj/item/shard{
 	pixel_x = 11;
@@ -219,18 +146,9 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"vX" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5";
-	tag = "icon-mars_dirt_5"
-	},
-/area/bigredv2/caves_sw)
 "wn" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13";
-	tag = "icon-mars_cave_13"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "wJ" = (
 /turf/open/floor{
@@ -280,20 +198,11 @@
 	pixel_x = 9;
 	pixel_y = -5
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "yw" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
-"zB" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_sw)
 "AD" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -318,12 +227,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"Bm" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_14";
-	tag = "icon-mars_cave_14"
-	},
-/area/bigredv2/caves_sw)
 "Bz" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
@@ -335,12 +238,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"BY" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11";
-	tag = "icon-mars_cave_11"
-	},
-/area/bigredv2/caves_research)
 "En" = (
 /obj/structure/window_frame/solaris/reinforced,
 /obj/item/shard{
@@ -358,18 +255,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"Et" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10";
-	tag = "icon-mars_cave_10"
-	},
-/area/bigredv2/caves_research)
-"Fp" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_19";
-	tag = "icon-mars_cave_19"
-	},
-/area/bigredv2/caves_sw)
 "FB" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
@@ -381,12 +266,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"FW" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11";
-	tag = "icon-mars_cave_11"
-	},
-/area/bigredv2/caves_sw)
 "Jy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/revolver/cmb,
@@ -407,10 +286,7 @@
 /area/bigredv2/caves_sw)
 "JW" = (
 /obj/structure/machinery/light/double,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5";
-	tag = "icon-mars_cave_5"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "KI" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
@@ -422,10 +298,7 @@
 	},
 /area/bigredv2/caves/mining)
 "Le" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_research)
 "MN" = (
 /obj/structure/reagent_dispensers/peppertank{
@@ -444,13 +317,6 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
-"Nu" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_sw)
 "OV" = (
 /obj/structure/surface/rack,
 /obj/item/handcuffs{
@@ -478,10 +344,7 @@
 /area/bigredv2/caves/mining)
 "QO" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_research)
 "QS" = (
 /obj/structure/machinery/door/poddoor/two_tile{
@@ -493,21 +356,12 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/caves_sw)
-"QV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20";
-	tag = "icon-mars_cave_20"
-	},
-/area/bigredv2/caves_sw)
 "Rm" = (
 /obj/item/shard{
 	icon_state = "small";
 	tag = "icon-small"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "Sy" = (
 /obj/item/weapon/melee/broken_bottle,
@@ -545,24 +399,21 @@
 /area/bigredv2/caves/mining)
 "Uh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_15";
-	tag = "icon-mars_cave_15"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "UG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "UX" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
+/area/bigredv2/caves_sw)
+"Vk" = (
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/caves_sw)
 "VR" = (
 /turf/closed/wall/solaris/reinforced,
@@ -572,10 +423,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "WV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
+/turf/open/auto_turf/br_dirt/layer2,
 /area/bigredv2/caves_sw)
 "Xm" = (
 /turf/open/floor/plating{
@@ -608,10 +456,7 @@
 	},
 /area/bigredv2/caves/mining)
 "Zk" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_16";
-	tag = "icon-mars_cave_16"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_sw)
 "Zz" = (
 /turf/open/floor/plating{
@@ -630,7 +475,7 @@ cR
 JV
 fK
 wn
-qW
+Zk
 JW
 VR
 Ue
@@ -650,9 +495,9 @@ cR
 cR
 cR
 qm
-ii
-UX
-UX
+Zk
+Vk
+Vk
 ie
 En
 iF
@@ -667,14 +512,14 @@ cR
 "}
 (3,1,1) = {"
 cR
-kS
-QV
+WV
+Zk
 cR
 yw
-zB
-ii
+Zk
+Zk
 WV
-kS
+WV
 xS
 Qn
 Jy
@@ -688,14 +533,14 @@ cR
 cR
 "}
 (4,1,1) = {"
-ao
-kS
-kS
+Zk
+WV
+WV
 yw
 yw
 yw
-Bm
-kS
+Zk
+WV
 nx
 Rm
 XV
@@ -710,16 +555,16 @@ cR
 cR
 "}
 (5,1,1) = {"
-ii
-UX
-UX
+Zk
+Vk
+Vk
 QS
 wJ
 QS
-UX
-WV
-kS
-pn
+Vk
+Vk
+Vk
+Zk
 Wy
 ki
 Zz
@@ -732,16 +577,16 @@ cR
 cR
 "}
 (6,1,1) = {"
-ii
-UX
-UX
+Zk
+Vk
+Vk
 wJ
 wJ
 wJ
-UX
-UX
-UX
-pn
+Vk
+Vk
+Vk
+Zk
 VR
 VR
 Be
@@ -754,19 +599,19 @@ cR
 cR
 "}
 (7,1,1) = {"
-zB
+Zk
 Zk
 Zk
 yw
 yw
 yw
 Zk
-gQ
-UX
-pn
-zB
-zB
-zB
+Zk
+Vk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -776,20 +621,20 @@ cR
 cR
 "}
 (8,1,1) = {"
-FW
-sV
-sV
+Zk
+Zk
+Zk
 cR
 yw
 cR
 cR
-zB
 Zk
-zB
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -798,21 +643,21 @@ cR
 cR
 "}
 (9,1,1) = {"
-pn
-zB
+Zk
+Zk
 fo
 cR
 cR
 cR
 cR
-zB
-zB
-Nu
-zB
-zB
-zB
-zB
-qW
+Zk
+Zk
+Uh
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -820,21 +665,21 @@ cR
 cR
 "}
 (10,1,1) = {"
-pn
-zB
-zB
+Zk
+Zk
+Zk
 cR
 cR
 cR
 cR
 cR
-zB
-sV
-sV
-sV
-sV
-ii
-UX
+Zk
+Zk
+Zk
+Zk
+Zk
+Zk
+Vk
 cR
 cR
 cR
@@ -842,66 +687,66 @@ cR
 cR
 "}
 (11,1,1) = {"
-pn
-zB
-zB
-sV
-sV
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
 cR
-sV
-sV
-sV
-sV
+Zk
+Zk
+Zk
+Zk
 Uh
-UX
-vX
+Vk
+WV
 cR
 cR
 cR
 cR
 "}
 (12,1,1) = {"
-zB
-qW
-qW
-zB
-sV
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
 cR
 cR
-sV
-sV
-ii
-vX
-vX
+Zk
+Zk
+Zk
+WV
+WV
 cR
 cR
 cR
 cR
 "}
 (13,1,1) = {"
-ii
-UX
-kS
-pn
-qW
-qW
+Zk
+Vk
+WV
+Zk
+Zk
+Zk
 cR
 cR
 cR
 cR
 cR
 cR
-zB
-ii
-vX
-vX
+Zk
+Zk
+WV
+WV
 cR
 cR
 cR
@@ -911,19 +756,19 @@ cR
 cR
 cR
 cR
-Bm
-UX
-UX
-pn
+Zk
+Vk
+Vk
+Zk
 cR
 cR
 cR
 cR
 cR
-zB
-ii
-UX
-vX
+Zk
+Zk
+WV
+WV
 cR
 cR
 cR
@@ -933,19 +778,19 @@ cR
 cR
 cR
 cR
-UX
-kS
-kS
-pn
+Vk
+WV
+WV
+Zk
 cR
 cR
 cR
 cR
-zB
-zB
-ii
-kS
-UX
+Zk
+Zk
+Zk
+WV
+WV
 cR
 cR
 cR
@@ -956,18 +801,18 @@ cR
 cR
 cR
 cR
-UX
-UX
-pn
-zB
+Vk
+Vk
+Zk
+Zk
 cR
 cR
 cR
-zB
-zB
+Zk
+Zk
 Uh
-UX
-kS
+Vk
+WV
 cR
 cR
 cR
@@ -978,17 +823,17 @@ cR
 cR
 cR
 cR
-UX
-Fp
-zB
-zB
-zB
+Vk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
-zB
-zB
-ii
-UX
+Zk
+Zk
+Zk
+Vk
 cR
 cR
 cR
@@ -996,20 +841,20 @@ cR
 cR
 "}
 (18,1,1) = {"
-zB
+Zk
 cR
 cR
 WV
-UX
-pn
-zB
-zB
+Vk
+Zk
+Zk
+Zk
 cR
 cR
 cR
-zB
-zB
-zB
+Zk
+Zk
+Zk
 Zk
 cR
 cR
@@ -1018,21 +863,21 @@ cR
 cR
 "}
 (19,1,1) = {"
-zB
+Zk
 cR
 cR
 cR
-Fp
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1040,21 +885,21 @@ cR
 cR
 "}
 (20,1,1) = {"
-zB
-zB
-zB
-zB
-zB
-qW
-qW
+Zk
+Zk
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
-zB
-zB
-Nu
-zB
-zB
+Zk
+Zk
+Uh
+Zk
+Zk
 cR
 cR
 cR
@@ -1062,21 +907,21 @@ cR
 cR
 "}
 (21,1,1) = {"
-pn
-zB
-zB
-qW
-Bm
-UX
-UX
+Zk
+Zk
+Zk
+Zk
+Zk
+Vk
+Vk
 cR
 cR
 cR
-zB
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1084,13 +929,13 @@ cR
 cR
 "}
 (22,1,1) = {"
-pn
-zB
-ii
-UX
-UX
-vX
-vX
+Zk
+Zk
+Zk
+Vk
+Vk
+WV
+WV
 cR
 cR
 cR
@@ -1106,21 +951,21 @@ cR
 cR
 "}
 (23,1,1) = {"
-QV
-qW
-Bm
+Zk
+Zk
+Zk
+Vk
+WV
 UX
-kS
-UX
-vX
+WV
 cR
 cR
 cR
 cR
-zB
-zB
-zB
-qW
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1128,21 +973,21 @@ cR
 cR
 "}
 (24,1,1) = {"
-UX
-UX
-UX
-kS
-Fp
-gQ
-UX
-UX
+Vk
+Vk
+Vk
+WV
+Zk
+Zk
+Vk
+Vk
 cR
 cR
 cR
-zB
-zB
-ii
-kS
+Zk
+Zk
+Zk
+WV
 cR
 cR
 cR
@@ -1150,54 +995,54 @@ cR
 cR
 "}
 (25,1,1) = {"
+Vk
+Vk
+WV
 UX
-UX
-kS
-UX
-pn
-ii
-kS
-UX
+Zk
+Zk
+WV
+Vk
 cR
 cR
 cR
-zB
-qW
-qW
-kS
-kS
+Zk
+Zk
+Zk
+WV
+WV
 cR
 cR
 cR
 cR
 "}
 (26,1,1) = {"
-Fp
 Zk
 Zk
 Zk
-zB
+Zk
+Zk
 cR
-UX
-UX
+Vk
+Vk
 cR
 cR
 cR
 cR
-UX
-lQ
-kS
-kS
+Vk
+nx
+WV
+WV
 cR
 cR
 cR
 cR
 "}
 (27,1,1) = {"
-pn
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1206,20 +1051,20 @@ cR
 cR
 cR
 cR
-UX
-kS
-kS
-UX
+Vk
+WV
+WV
+Vk
 cR
 cR
 cR
 cR
 "}
 (28,1,1) = {"
-pn
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1228,43 +1073,43 @@ cR
 cR
 cR
 cR
-gQ
-UX
-UX
-Fp
-zB
+Zk
+Vk
+Vk
+Zk
+Zk
 cR
 cR
 cR
 "}
 (29,1,1) = {"
-zB
-zB
-zB
-zB
-zB
-cR
-cR
-cR
-cR
-cR
-cR
-cR
-zB
 Zk
 Zk
-zB
-zB
+Zk
+Zk
+Zk
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
 "}
 (30,1,1) = {"
-zB
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1273,20 +1118,20 @@ cR
 cR
 cR
 cR
-zB
-Nu
-zB
-zB
+Zk
+Uh
+Zk
+Zk
 cR
 cR
 cR
 "}
 (31,1,1) = {"
 cR
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1295,18 +1140,18 @@ cR
 cR
 cR
 cR
-zB
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 "}
 (32,1,1) = {"
 cR
 cR
-zB
+Zk
 cR
 cR
 cR
@@ -1317,11 +1162,11 @@ cR
 cR
 cR
 cR
-zB
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 "}
@@ -1339,10 +1184,10 @@ cR
 cR
 cR
 cR
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1361,10 +1206,10 @@ cR
 cR
 cR
 cR
-zB
-zB
-zB
-zB
+Zk
+Zk
+Zk
+Zk
 cR
 cR
 cR
@@ -1497,9 +1342,9 @@ Le
 Le
 Le
 Le
-io
 Le
-dx
+Le
+Le
 "}
 (41,1,1) = {"
 cR
@@ -1537,11 +1382,11 @@ cR
 Le
 Le
 Le
-Et
+Le
 az
 Le
 Le
-dx
-BY
+Le
+Le
 cR
 "}

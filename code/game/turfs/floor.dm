@@ -33,6 +33,29 @@
 /turf/open/floor/plating/is_plasteel_floor()
 	return TRUE
 
+//these layers are used for putting certain turfs above auto turf bleeds.
+/turf/open/floor/layer0
+	bleed_layer = 0
+
+/turf/open/floor/layer1
+	bleed_layer = 1
+
+/turf/open/floor/layer2
+	bleed_layer = 2
+
+/turf/open/floor/layer3
+	bleed_layer = 3
+
+/turf/open/floor/layer4
+	bleed_layer = 4
+
+/turf/open/floor/layer5
+	bleed_layer = 5
+
+/turf/open/floor/layer6
+	bleed_layer = 6
+
+
 ////////////////////////////////////////////
 
 

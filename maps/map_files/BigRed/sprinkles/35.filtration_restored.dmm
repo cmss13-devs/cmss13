@@ -94,21 +94,21 @@
 /area/bigredv2/outside/filtration_plant)
 "av" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 9;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigredv2/outside/se)
 "aw" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 8;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/se)
 "ax" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -164,12 +164,6 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/chan,
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
-"aG" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
-	},
-/area/bigredv2/outside/se)
 "aH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -185,16 +179,13 @@
 	},
 /area/bigredv2/outside/se)
 "aJ" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/se)
 "aK" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/se)
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -474,25 +465,16 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bK" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "bN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"bO" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_east)
 "bP" = (
 /obj/item/tank/air,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "bQ" = (
 /obj/structure/surface/table,
@@ -582,32 +564,16 @@
 /area/bigredv2/outside/filtration_plant)
 "ch" = (
 /obj/structure/dispenser/oxygen,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "ci" = (
 /obj/item/tool/warning_cone,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "cj" = (
 /obj/item/tool/pickaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"ck" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_east)
 "cl" = (
 /turf/open/floor{
 	dir = 1;
@@ -642,18 +608,15 @@
 /obj/item/tank/air,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"to" = (
+/turf/open/auto_turf/br_dirt/layer2,
+/area/bigredv2/outside/se)
 "tB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "zu" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
@@ -691,10 +654,7 @@
 	icon_state = "E-corner";
 	tag = "icon-E-corner"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "US" = (
 /turf/open/floor{
@@ -715,10 +675,7 @@
 /area/bigredv2/outside/filtration_plant)
 "WD" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "XC" = (
 /obj/structure/cargo_container{
@@ -1137,14 +1094,14 @@ bF
 bF
 bw
 WD
-bO
+zu
 ci
-bO
-bO
+zu
+zu
 ci
-bO
-bO
-bO
+zu
+zu
+zu
 "}
 (16,1,1) = {"
 aa
@@ -1166,12 +1123,12 @@ bw
 WD
 ch
 bP
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (17,1,1) = {"
 bK
@@ -1192,13 +1149,13 @@ WD
 WD
 WD
 ci
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (18,1,1) = {"
 av
@@ -1215,17 +1172,17 @@ bu
 ad
 ad
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (19,1,1) = {"
 ax
@@ -1242,17 +1199,17 @@ by
 az
 az
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (20,1,1) = {"
 ax
@@ -1269,23 +1226,23 @@ az
 bT
 az
 WD
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
 tB
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
 "}
 (21,1,1) = {"
 ax
 am
 aJ
-aG
+aK
 bK
 aY
 bi
@@ -1296,23 +1253,23 @@ az
 jh
 bX
 WD
-bO
-bO
-bO
+zu
+zu
+zu
 ci
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (22,1,1) = {"
 am
 am
 aJ
-bK
+to
 bK
 aY
 aY
@@ -1323,17 +1280,17 @@ bA
 ah
 aY
 WD
-bO
-bO
-bO
-bO
-bO
-bO
-bO
 zu
-bO
-bO
-bO
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (23,1,1) = {"
 am
@@ -1350,17 +1307,17 @@ bv
 bv
 aY
 aj
-bO
-bO
-aj
-aj
-bO
-bO
-bO
 zu
-bO
-bO
-bO
+zu
+aj
+aj
+zu
+zu
+zu
+zu
+zu
+zu
+zu
 "}
 (24,1,1) = {"
 am
@@ -1382,10 +1339,10 @@ aj
 aj
 aj
 aj
-ck
-ck
 UH
-ck
-ck
-ck
+UH
+UH
+UH
+UH
+UH
 "}

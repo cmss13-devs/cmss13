@@ -1,53 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"b" = (
-/obj/structure/prop/dam/wide_boulder/boulder1,
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"c" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
-	},
-/area/bigredv2/outside/se)
-"d" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
-/area/bigredv2/outside/se)
-"e" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "f" = (
 /obj/item/stool,
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"g" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "h" = (
 /obj/structure/flora/bush/ausbushes{
 	cut_level = 1
 	},
-/turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
-	},
-/area/bigredv2/outside/se)
-"i" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/se)
 "j" = (
 /obj/item/trash/cigbutt{
@@ -55,7 +18,7 @@
 	pixel_y = 3
 	},
 /obj/item/trash/cigbutt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "k" = (
 /obj/item/reagent_container/food/drinks/bottle/rum{
@@ -65,51 +28,53 @@
 /obj/item/weapon/gun/revolver/small,
 /obj/item/reagent_container/food/drinks/bottle/rum,
 /obj/effect/landmark/corpsespawner/clown,
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"l" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
-	},
-/area/bigredv2/outside/se)
-"m" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
-	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "n" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/se)
 "o" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/se)
 "p" = (
-/obj/structure/prop/dam/large_boulder/boulder2,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer2,
 /area/bigredv2/outside/se)
 "q" = (
-/obj/structure/prop/dam/gravestone,
-/turf/open/mars,
+/obj/structure/prop/dam/gravestone{
+	icon_state = "gravestone4"
+	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "r" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "s" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "t" = (
 /obj/structure/fence,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
+/area/bigredv2/outside/se)
+"y" = (
+/obj/structure/prop/dam/gravestone{
+	icon_state = "gravestone2"
+	},
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "D" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
+"K" = (
+/obj/structure/prop/dam/gravestone{
+	icon_state = "gravestone3"
+	},
+/turf/open/auto_turf/br_dirt/layer0,
+/area/bigredv2/outside/se)
+"T" = (
+/obj/structure/prop/dam/gravestone,
+/turf/open/auto_turf/br_dirt/layer0,
+/area/bigredv2/outside/se)
 
 (1,1,1) = {"
 a
@@ -148,8 +113,8 @@ a
 a
 "}
 (4,1,1) = {"
-a
-a
+p
+p
 a
 a
 a
@@ -160,8 +125,8 @@ a
 a
 "}
 (5,1,1) = {"
-b
-a
+p
+p
 a
 o
 o
@@ -196,21 +161,21 @@ o
 o
 "}
 (8,1,1) = {"
-c
-g
-l
+n
+n
+n
 a
 a
 a
-q
+K
 a
 a
 t
 "}
 (9,1,1) = {"
-d
+n
 h
-m
+n
 a
 a
 a
@@ -220,14 +185,14 @@ a
 t
 "}
 (10,1,1) = {"
-e
-i
+n
+n
 n
 a
 a
 a
 a
-q
+y
 a
 t
 "}
@@ -249,7 +214,7 @@ a
 a
 a
 o
-q
+T
 a
 a
 a
@@ -261,7 +226,7 @@ a
 a
 o
 o
-q
+y
 a
 a
 r
@@ -284,7 +249,7 @@ a
 j
 o
 o
-q
+T
 a
 a
 a
@@ -307,10 +272,10 @@ s
 a
 a
 p
+p
 a
 a
-a
-q
+T
 a
 s
 s
@@ -318,8 +283,8 @@ s
 (18,1,1) = {"
 a
 a
-a
-a
+p
+p
 a
 a
 a

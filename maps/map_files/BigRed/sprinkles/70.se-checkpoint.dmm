@@ -20,7 +20,6 @@
 /area/bigred/ground/security)
 "bp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 4;
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Checkpoint Office";
@@ -39,7 +38,7 @@
 /area/bigred/ground/security)
 "cO" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -48,7 +47,7 @@
 "dz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 6;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
@@ -78,14 +77,11 @@
 /area/bigred/ground/security)
 "ie" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_east)
 "kG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 6;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
@@ -96,7 +92,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 9;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
@@ -107,7 +103,7 @@
 /area/bigred/ground/security)
 "mp" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 9;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
@@ -118,7 +114,7 @@
 /area/bigredv2/caves_east)
 "pb" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -126,7 +122,7 @@
 /area/bigredv2/caves_east)
 "pJ" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 5;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHEAST)"
@@ -141,9 +137,9 @@
 /area/bigred/ground/security)
 "qg" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/caves_east)
 "qy" = (
@@ -213,7 +209,7 @@
 /area/bigred/ground/security)
 "wi" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
@@ -225,7 +221,6 @@
 "xj" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	icon_state = "officechair_white";
 	tag = ""
 	},
 /turf/open/floor{
@@ -245,7 +240,7 @@
 /area/bigred/ground/security)
 "zE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 8;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (WEST)"
@@ -265,7 +260,7 @@
 	},
 /area/bigred/ground/security)
 "AZ" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -273,7 +268,7 @@
 /area/bigredv2/caves_east)
 "EV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
@@ -281,7 +276,7 @@
 /area/bigredv2/outside/se)
 "Ge" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 5;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHEAST)"
@@ -291,7 +286,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
@@ -300,16 +295,16 @@
 "GJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/caves_east)
 "HH" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/caves_east)
 "Ih" = (
@@ -332,8 +327,7 @@
 /area/bigred/ground/security)
 "LX" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -350,8 +344,7 @@
 /area/bigred/ground/security)
 "NU" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/structure/machinery/vending/security,
 /turf/open/floor{
@@ -359,7 +352,7 @@
 	},
 /area/bigred/ground/security)
 "OD" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
@@ -367,7 +360,7 @@
 /area/bigredv2/outside/se)
 "OM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 10;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (SOUTHWEST)"
@@ -381,7 +374,7 @@
 	},
 /area/bigred/ground/security)
 "PS" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "Qf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -416,14 +409,14 @@
 /area/bigred/ground/security)
 "Ue" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 1;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/caves_east)
 "Vg" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 8;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (WEST)"
@@ -442,14 +435,14 @@
 	},
 /area/bigred/ground/security)
 "Wa" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 6;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigredv2/outside/se)
 "XU" = (
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 10;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (SOUTHWEST)"
@@ -472,7 +465,7 @@
 "Zu" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor{
+/turf/open/floor/layer2{
 	dir = 5;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHEAST)"

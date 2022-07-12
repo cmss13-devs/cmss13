@@ -1638,7 +1638,7 @@
 "aeE" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -1773,7 +1773,7 @@
 "aeZ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowcorner";
 	tag = "icon-whiteyellowcorner (EAST)"
 	},
@@ -1975,7 +1975,7 @@
 "afy" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},
@@ -2979,7 +2979,7 @@
 	},
 /obj/item/storage/box/beakers,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -3313,7 +3313,7 @@
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -3799,7 +3799,7 @@
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -3815,7 +3815,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -3855,7 +3855,7 @@
 "akG" = (
 /obj/structure/machinery/botany/extractor,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -3863,7 +3863,7 @@
 "akH" = (
 /obj/structure/machinery/centrifuge,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -3871,7 +3871,7 @@
 "akI" = (
 /obj/structure/machinery/mill,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -3983,7 +3983,7 @@
 "alb" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -3998,7 +3998,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/book/manual/research_and_development,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},
@@ -4042,7 +4042,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "alj" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (EAST)"
 	},
@@ -4294,7 +4294,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -4580,7 +4580,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "amO" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},
@@ -4631,7 +4631,7 @@
 "amU" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -5251,7 +5251,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/XenoBio/Resin,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},
@@ -5916,14 +5916,14 @@
 "aqq" = (
 /obj/structure/closet/secure_closet/chemical,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
 /area/bigredv2/outside/medical)
 "aqr" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -5939,7 +5939,7 @@
 /obj/structure/machinery/chem_master,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -5947,7 +5947,7 @@
 "aqu" = (
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -6206,7 +6206,7 @@
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -6214,7 +6214,7 @@
 "arf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -6224,7 +6224,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -6450,7 +6450,7 @@
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -6459,7 +6459,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -6714,7 +6714,7 @@
 	},
 /obj/item/tool/surgery/circular_saw,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -6722,7 +6722,7 @@
 "asz" = (
 /obj/item/device/reagent_scanner,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -6739,7 +6739,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7028,7 +7028,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7257,7 +7257,7 @@
 "atR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -7265,7 +7265,7 @@
 "atS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7278,7 +7278,7 @@
 	},
 /obj/item/tool/hand_labeler,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7592,7 +7592,7 @@
 "auG" = (
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (NORTH)"
 	},
@@ -7601,7 +7601,7 @@
 /obj/structure/bed/chair,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7610,7 +7610,7 @@
 /obj/structure/surface/table,
 /obj/item/storage/box/bodybags,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -7625,14 +7625,14 @@
 "auK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
 /area/bigredv2/outside/medical)
 "auL" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -7640,7 +7640,7 @@
 "auM" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -7650,7 +7650,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -7672,7 +7672,7 @@
 "auQ" = (
 /obj/structure/machinery/sleeper,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue (NORTH)"
 	},
@@ -7680,7 +7680,7 @@
 "auR" = (
 /obj/structure/machinery/sleep_console,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue (NORTH)"
 	},
@@ -7690,7 +7690,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue (NORTH)"
 	},
@@ -7958,7 +7958,7 @@
 /area/bigredv2/outside/medical)
 "avy" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -8138,7 +8138,7 @@
 	dir = 6
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -8147,7 +8147,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -8160,7 +8160,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -8170,7 +8170,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -8180,7 +8180,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (NORTH)"
 	},
@@ -8260,7 +8260,7 @@
 "awm" = (
 /obj/structure/machinery/sleep_console,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue (EAST)"
 	},
@@ -8508,7 +8508,7 @@
 /area/bigredv2/outside/medical)
 "awW" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue (NORTH)"
 	},
@@ -8693,7 +8693,7 @@
 "axx" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -8726,7 +8726,7 @@
 "axB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -8998,7 +8998,7 @@
 	pixel_x = 30
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -9187,7 +9187,7 @@
 "ayQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (EAST)"
 	},
@@ -9195,7 +9195,7 @@
 "ayR" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -9206,7 +9206,7 @@
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -9217,7 +9217,7 @@
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -9318,7 +9318,7 @@
 "azh" = (
 /obj/structure/surface/table,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -9326,7 +9326,7 @@
 "azi" = (
 /obj/structure/machinery/r_n_d/protolathe,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -9710,7 +9710,7 @@
 /area/bigredv2/caves/lambda/research)
 "aAl" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner (EAST)"
 	},
@@ -9801,7 +9801,7 @@
 	pixel_x = 32
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -9926,7 +9926,7 @@
 /area/bigredv2/caves/lambda/research)
 "aAQ" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (NORTH)"
 	},
@@ -10500,7 +10500,7 @@
 	},
 /obj/structure/ore_box,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},
@@ -10579,7 +10579,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -11036,7 +11036,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/head/surgery/blue,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -11083,7 +11083,7 @@
 "aDM" = (
 /obj/structure/curtain/medical,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -11369,7 +11369,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -11399,7 +11399,7 @@
 "aEE" = (
 /obj/structure/bed,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -12046,7 +12046,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (NORTH)"
 	},
@@ -12057,7 +12057,7 @@
 	tag = "icon-S"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (EAST)"
 	},
@@ -12135,7 +12135,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -12166,7 +12166,7 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -12362,7 +12362,7 @@
 	tag = "icon-NE-in"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (EAST)"
 	},
@@ -12670,7 +12670,7 @@
 	tag = "icon-NW-in"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreencorner";
 	tag = "icon-whitegreencorner (NORTH)"
 	},
@@ -13099,7 +13099,7 @@
 	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -13191,7 +13191,7 @@
 	},
 /obj/effect/decal/cleanable/mucus,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -13569,7 +13569,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -13678,7 +13678,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
@@ -14060,7 +14060,7 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -16619,7 +16619,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -16630,7 +16630,7 @@
 	tag = "icon-map-supply (EAST)"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
@@ -21480,13 +21480,13 @@
 	name = "\improper Office Complex Janitor Room"
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
 "bfR" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21635,14 +21635,14 @@
 /obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
 "bgn" = (
 /obj/structure/janitorialcart,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21650,14 +21650,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
 "bgp" = (
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21718,7 +21718,7 @@
 	dir = 6
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21727,7 +21727,7 @@
 	dir = 4
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21737,14 +21737,14 @@
 	dir = 9
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
 "bgB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21871,7 +21871,7 @@
 	dir = 1
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21879,14 +21879,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
 "bgU" = (
 /obj/item/clothing/shoes/galoshes,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21898,7 +21898,7 @@
 	pixel_x = 30
 	},
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -21998,7 +21998,7 @@
 /obj/structure/surface/table,
 /obj/item/trash/kepler,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -22006,7 +22006,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/lighter/random,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -22020,7 +22020,7 @@
 /obj/item/clothing/head/beret/jan,
 /obj/item/clothing/head/beret/jan,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -22226,7 +22226,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper/janitor,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -22237,7 +22237,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whiteyellowfull"
 	},
 /area/bigredv2/outside/office_complex)
@@ -29654,7 +29654,7 @@
 /area/bigredv2/caves/mining)
 "ggW" = (
 /turf/open/floor{
-	dir = ;
+	dir = 9;
 	icon_state = "whitepurple";
 	tag = "icon-whitepurple (EAST)"
 	},

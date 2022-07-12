@@ -117,6 +117,9 @@
   - balance: if a scout or a sniper is the last marine alive during hijack, their
       cloaking abilities will no longer function and they will be forcibly decloaked.
 2022-07-12:
+  Geevies:
+  - bugfix: The Yautja tracker no longer reports items in Yautja areas and Quill styles
+      now save correctly.
   Jeser:
   - rscadd: Added Automated Supply Vendor to transport APC interior. It starts nearly
       empty and can be restocked with weapons, ammunition, explosives, building materials,

@@ -341,10 +341,7 @@
 	
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
-	if(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)
-		to_chat(src, SPAN_BOLDNOTICE("Middle Click will now swap your hands."))
-	else
-		to_chat(src, SPAN_BOLDNOTICE("Middle Click will no longer swap your hands."))
+	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

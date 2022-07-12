@@ -2003,8 +2003,9 @@ Defined in conflicts.dm of the #defines folder.
 	ammo_datum.flamer_reagent_type = flamer_reagent.type
 	P.generate_bullet(ammo_datum)
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
-	gun.muzzle_flash(Get_Angle(get_turf(user), target), user)
-	playsound(to_fire, pick(fire_sounds), 50, TRUE)
+	var/turf/user_turf = get_turf(user)
+	gun.muzzle_flash(Get_Angle(user_turf, target), user)
+	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
 	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remains!"))
 

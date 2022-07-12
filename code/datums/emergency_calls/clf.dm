@@ -19,8 +19,8 @@
 		to_chat(H, SPAN_BOLD("You grew up [message] and are considered a terrorist by the UA."))
 	else
 		to_chat(H, SPAN_BOLD("You were brought online in an underground CLF workshop, reprogrammed to serve the CLF and fight for their freedom."))
-		to_chat(H, SPAN_BOLD("Originally, you were programmed with all of the medical and combat experience a military fighting force support asset required."))
-		to_chat(H, SPAN_BOLD("However, the hackers decided to add another directive: Irrational hatred for everything USCM."))
+		to_chat(H, SPAN_BOLD("Originally, you were programmed with medical and engineering knowledge to assist with building and maintaining colonies."))
+		to_chat(H, SPAN_BOLD("However, the hackers managed to load combat protocols and install a new directive: Irrational hatred for everything USCM."))
 
 	to_chat(H, SPAN_BOLD("The Tychon's Rift sector has largely enjoyed its independence.."))
 	to_chat(H, SPAN_BOLD("Though technically part of the United American frontier, many colonists in the Tychon's Rift have enjoyed their freedoms."))

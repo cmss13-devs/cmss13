@@ -117,6 +117,8 @@
   - balance: if a scout or a sniper is the last marine alive during hijack, their
       cloaking abilities will no longer function and they will be forcibly decloaked.
 2022-07-12:
+  Morrow:
+  - rscadd: COs can now add their rank boards to CO Armor.
   SpartanBobby:
   - rscadd: Added Falling Falcon Challange coins to the USS Almayer.
   - rscadd: Added Wheelchair storage to the medical bay.

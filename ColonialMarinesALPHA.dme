@@ -1970,6 +1970,7 @@
 #include "code\modules\tgui\states\observer.dm"
 #include "code\modules\tgui\states\self.dm"
 #include "code\modules\tgui\states\xeno.dm"
+#include "code\modules\tgui\states\inventory.dm"
 #include "code\modules\tgui_panel\audio.dm"
 #include "code\modules\tgui_panel\external.dm"
 #include "code\modules\tgui_panel\telemetry.dm"

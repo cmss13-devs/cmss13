@@ -299,8 +299,9 @@
 			reagents.clear_reagents()
 			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 			to_chat(user, SPAN_WARNING("The contents of \the [src] spill!"))
-		new /obj/item/trash/crushed_cup(user.hand)
 		qdel(src)
+		var/obj/item/trash/crushed_cup/C = new /obj/item/trash/crushed_cup(user)
+		user.equip_to_slot_if_possible(C, (user.hand ? WEAR_L_HAND : WEAR_R_HAND))
 
 /obj/item/trash/crushed_cup
 	name = "crushed cup"

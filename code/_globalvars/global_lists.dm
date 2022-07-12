@@ -122,6 +122,7 @@ GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 
+
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
 
@@ -248,6 +249,8 @@ var/global/list/paramslist_cache = list()
 		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
 		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
+
+/proc/setup_upp_language()
 
 //Comb Sort. This works apparently, so we're keeping it that way
 /proc/setup_surgeries()

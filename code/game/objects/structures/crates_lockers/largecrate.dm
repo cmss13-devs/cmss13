@@ -296,11 +296,8 @@
 	..()
 	var/i = pick(1,5)
 	switch(i)
-		if(1) //KT42 x2 set
+		if(1) //KT42 set
 			new /obj/item/weapon/gun/pistol/kt42(src)
-			new /obj/item/weapon/gun/pistol/kt42(src)
-			new /obj/item/ammo_magazine/pistol/automatic(src)
-			new /obj/item/ammo_magazine/pistol/automatic(src)
 			new /obj/item/ammo_magazine/pistol/automatic(src)
 			new /obj/item/ammo_magazine/pistol/automatic(src)
 			new /obj/item/ammo_magazine/pistol/automatic(src)
@@ -316,20 +313,43 @@
 			new /obj/item/ammo_magazine/revolver/cmb(src)
 			new /obj/item/ammo_magazine/revolver/cmb(src)
 			new /obj/item/ammo_magazine/revolver/cmb(src)
-		if(4) // 2x ppsh
+		if(4) // type 71c, deals garbage damage
+			new /obj/item/weapon/gun/rifle/type71/carbine(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+			new /obj/item/ammo_magazine/rifle/type71(src)
+		if(5) // Bolt Action Rifle set x2
+			new /obj/item/weapon/gun/rifle/hunting(src)
+			new /obj/item/weapon/gun/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+			new /obj/item/ammo_magazine/rifle/hunting(src)
+		if(6)// Dual B92FS
+			new /obj/item/weapon/gun/pistol/b92fs(src)
+			new /obj/item/weapon/gun/pistol/b92fs(src)
+			new /obj/item/ammo_magazine/pistol/b92fs(src)
+			new /obj/item/ammo_magazine/pistol/b92fs(src)
+			new /obj/item/ammo_magazine/pistol/b92fs(src)
+			new /obj/item/ammo_magazine/pistol/b92fs(src)
+			new /obj/item/ammo_magazine/pistol/b92fs(src)
+		if(7) //M1911 kit + HEDP. 45 or nothin'
+			new /obj/item/weapon/gun/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/explosive/grenade/HE(src)
+		if(8) //PPSH set
 			new /obj/item/weapon/gun/smg/ppsh(src)
-			new /obj/item/weapon/gun/smg/ppsh(src)
 			new /obj/item/ammo_magazine/smg/ppsh(src)
 			new /obj/item/ammo_magazine/smg/ppsh(src)
 			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-		if(5) // assorted garbage
-			new /obj/item/weapon/gun/rifle/hunting(src)
-			new /obj/item/weapon/gun/rifle/hunting(src)
-			new /obj/item/weapon/gun/rifle/hunting(src)
-			new /obj/item/ammo_magazine/rifle/hunting(src)
-			new /obj/item/ammo_magazine/rifle/hunting(src)
-			new /obj/item/ammo_magazine/rifle/hunting(src)
 
 /obj/structure/largecrate/mediocre
 	name = "\improper Weapons crate"
@@ -357,11 +377,11 @@
 			new /obj/item/ammo_magazine/smg/uzi(src)
 			new /obj/item/ammo_magazine/smg/uzi(src)
 			new /obj/item/ammo_magazine/smg/uzi(src)
-		if(4) //PPSH set
-			new /obj/item/weapon/gun/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
+		if(4) //MP5 set
+			new /obj/item/weapon/gun/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
 		if(5) //MP5
 			new /obj/item/weapon/gun/smg/mp5(src)
 			new /obj/item/ammo_magazine/smg/mp5(src)

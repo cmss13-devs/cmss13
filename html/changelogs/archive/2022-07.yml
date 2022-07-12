@@ -116,3 +116,11 @@
   stanalbatross:
   - balance: if a scout or a sniper is the last marine alive during hijack, their
       cloaking abilities will no longer function and they will be forcibly decloaked.
+2022-07-12:
+  nauticall:
+  - rscadd: Added new general ranks to the 'Create Humans' / 'Select Equipment' tabs,
+      for events.
+  - bugfix: Renamed stuff named "admiral" to "general", to fix disparity.
+  - bugfix: General officer's HUD icons now show up properly.
+  - code_imp: Modified item paths for everything related to changing admiral stuff
+      to general stuff. Includes item states.

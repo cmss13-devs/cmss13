@@ -91,7 +91,10 @@
 	paygrade = "ME5"
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
-	languages = list(LANGUAGE_ENGLISH, upp_language) //can speak russian, but it's not default
+
+/datum/equipment_preset/uscm_event/upp_spy/New()
+	languages = list(GLOB.upp_language) + languages	//can speak russian, but it's not default
+	. = ..()
 
 /datum/equipment_preset/uscm_event/upp_spy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

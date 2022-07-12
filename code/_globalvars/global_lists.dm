@@ -250,8 +250,6 @@ var/global/list/paramslist_cache = list()
 		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
 
-/proc/setup_upp_language()
-
 //Comb Sort. This works apparently, so we're keeping it that way
 /proc/setup_surgeries()
 	var/list/surgeries = list()

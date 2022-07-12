@@ -42,12 +42,15 @@
 
 
 //half a max stack
+/obj/item/stack/sandbags_empty/small_stack
+	amount = STACK_10
+
 /obj/item/stack/sandbags_empty/half
 	amount = 25
 
 //full stack
 /obj/item/stack/sandbags_empty/full
-	amount = 50
+	amount = STACK_50
 
 //Full sandbags
 /obj/item/stack/sandbags

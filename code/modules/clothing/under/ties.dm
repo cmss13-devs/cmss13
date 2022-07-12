@@ -284,7 +284,7 @@
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
-	desc = "A very prestigious platinum medal, only able to be handed out by admirals due to special circumstances."
+	desc = "A very prestigious platinum medal, only able to be handed out by generals due to special circumstances."
 	icon_state = "platinum_b"
 
 /obj/item/clothing/accessory/medal/bronze/service
@@ -302,7 +302,7 @@
 	icon_state = "gold"
 /obj/item/clothing/accessory/medal/platinum/service
 	name = "platinum service medal"
-	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Admirals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
+	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Generals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
 	icon_state = "platinum"
 //Armbands
 /obj/item/clothing/accessory/armband

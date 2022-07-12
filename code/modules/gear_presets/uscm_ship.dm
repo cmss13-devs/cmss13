@@ -376,7 +376,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commanding Officer (CO++)"
-	idtype = /obj/item/card/id/admiral
+	idtype = /obj/item/card/id/general
 	paygrade = "MO5"
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
@@ -607,7 +607,7 @@
 	name = "USCM Officer (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	idtype = /obj/item/card/id/admiral
+	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"

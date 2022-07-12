@@ -117,6 +117,29 @@
   - balance: if a scout or a sniper is the last marine alive during hijack, their
       cloaking abilities will no longer function and they will be forcibly decloaked.
 2022-07-12:
+  Jeser:
+  - rscadd: Added Automated Supply Vendor to transport APC interior. It starts nearly
+      empty and can be restocked with weapons, ammunition, explosives, building materials,
+      helmets, armor and miscellaneous gear and utilities. It's used to store and
+      transport massive amounts of supplies between FOB, checkpoints and frontline
+      as well as turns APC into mobile resupply point for marines.
+  - rscadd: Added vehicle version of NanoMED, it supports refilling most of the common
+      injectors used by marines.
+  - rscadd: Added vehicle version of WYmed, the Wey-Med Resupply Station. Designed
+      to be a resupply point for squad medics on the battlefield.
+  - code_imp: Renamed viewports to External Cameras Terminal and added new sprite
+      and description. Functionally identical to viewports, but can be placed on the
+      interior wall near wheel without looking weird. Old looking viewpoints are still
+      avaialble for unarmored vehicles.
+  - imageadd: Added color-coding to APC doors identical to what M56 FPWs have in transport
+      APC. RED marks left door, while CYAN marks right door. APC exterior sprites
+      also have doors marked. Hopefully, this will help marines to determine which
+      side is safe to exit and which goes into Ravager's embrace. If they actually
+      start checking surroundings before going out first.
+  - imageadd: Added missing vehicle interior camera sprites.
+  - imageadd: Added vehicle versions of sprites for Bloodbags Dispenser, extinguisher
+      locker and telephone.
+  - rscdel: Removed Body Scanner from MED APC.
   Morrow:
   - rscadd: COs can now add their rank boards to CO Armor.
   SpartanBobby:

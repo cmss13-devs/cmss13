@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	16
+#define SAVEFILE_VERSION_MAX	17
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -47,6 +47,12 @@
 		S["toggles_flashing"] >> flash_toggles_two
 		flash_toggles_two |= FLASH_POOLSPAWN
 		S["toggles_flashing"] << flash_toggles_two
+		
+	if(savefile_version < 17) //toggle middle click swap hands on by default
+		var/pref_middle_click_swap
+		S["toggle_prefs"] >> pref_middle_click_swap
+		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+		S["toggle_prefs"] << pref_middle_click_swap
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

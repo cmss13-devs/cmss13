@@ -45,6 +45,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()
@@ -235,6 +236,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()

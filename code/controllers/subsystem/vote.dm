@@ -298,6 +298,7 @@ SUBSYSTEM_DEF(vote)
 							continue
 					maps += i
 
+				shuffle(maps)
 				choices.Add(maps)
 				if(!length(choices))
 					return FALSE

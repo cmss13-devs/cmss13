@@ -99,7 +99,7 @@
 		/obj/item/stack/medical/splint
 		)
 
-/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(var/scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
 		list("Advanced Burn Kit", round(scale * 4), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),

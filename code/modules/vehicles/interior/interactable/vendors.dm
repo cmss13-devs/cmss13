@@ -135,6 +135,13 @@
 
 	req_access = list()
 
+	unacidable = TRUE
+	unslashable = TRUE
+	indestructible = TRUE
+	wrenchable = FALSE
+	hackable = FALSE
+	density = FALSE
+
 //----------------------SUPPLY VENDORS--------------------
 
 //Combined vehicle version of req guns and ammo vendors. Starts, basically, empty, but can become a resupply point if marines bother to stock it with ammo and weapons.
@@ -143,8 +150,9 @@
 	desc = "An automated supply rack hooked up to a vehicle storage of various firearms, explosives and ammunition types. Used for storing and transporting supplies between forward operating bases and the frontline."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "supply"
-	req_access = null
 	vendor_theme = VENDOR_THEME_USCM
+
+	req_access = list()
 
 	unacidable = TRUE
 	unslashable = TRUE

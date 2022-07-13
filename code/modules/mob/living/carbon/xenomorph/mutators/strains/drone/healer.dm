@@ -77,20 +77,20 @@
 	if(!check_state())
 		return
 
-	if(target.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target] is already dead!"))
-		return
-
-	if(target.health >= target.maxHealth)
-		to_chat(src, SPAN_WARNING("\The [target] is already at max health!"))
-		return
-
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
 
 	if(get_dist(src, target) > max_range)
 		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
+		return
+
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is already dead!"))
+		return
+
+	if(target.health >= target.maxHealth)
+		to_chat(src, SPAN_WARNING("\The [target] is already at max health!"))
 		return
 
 	if(health <= 0)

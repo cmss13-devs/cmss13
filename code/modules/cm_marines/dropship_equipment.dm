@@ -38,11 +38,14 @@
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)
-			load_ammo(PC, user)
-
+			if(ammo_equipped)
+				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first."))
+			else if(uses_ammo)
+				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+			else
+				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]."))
 		else if(uses_ammo && ammo_equipped)
 			unload_ammo(PC, user)
-
 		else
 			grab_equipment(PC, user)
 		return TRUE

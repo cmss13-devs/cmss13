@@ -17,16 +17,32 @@
 	var/open_state = "powerloader_open"
 	var/overlay_state = "powerloader_overlay"
 	var/wreckage = /obj/structure/powerloader_wreckage
+	var/obj/item/powerloader_clamp/PC_left
+	var/obj/item/powerloader_clamp/PC_right
+
+//--------------------GENERAL PROCS-----------------
 
 /obj/vehicle/powerloader/Initialize()
 	cell = new /obj/item/cell/apc
-	for(var/i = 1, i <= 2, i++)
-		var/obj/item/powerloader_clamp/PC = new(src)
-		PC.linked_powerloader = src
+	PC_left = new(src)
+	PC_left.name = "\improper Power Loader Left Hydraulic Claw"
+	PC_left.linked_powerloader = src
+	PC_right = new(src)
+	PC_right.name = "\improper Power Loader Right Hydraulic Claw"
+	PC_right.linked_powerloader = src
+
 	. = ..()
 
+/obj/vehicle/powerloader/Destroy()
+	qdel(PC_left)
+	PC_left = null
+	qdel(PC_right)
+	PC_right = null
+	return ..()
+
 /obj/vehicle/powerloader/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
+	if(user.is_mob_incapacitated())
+		return
 	if(world.time > l_move_time + move_delay)
 		if(dir != direction)
 			l_move_time = world.time
@@ -38,6 +54,31 @@
 			. = step(src, direction)
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+
+/obj/vehicle/powerloader/handle_rotation()
+	if(buckled_mob)
+		buckled_mob.setDir(dir)
+		switch(dir)
+			if(EAST)
+				buckled_mob.pixel_x = 7
+			if(WEST)
+				buckled_mob.pixel_x = -7
+			else
+				buckled_mob.pixel_x = 0
+
+/obj/vehicle/powerloader/explode()
+	new wreckage(loc)
+	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
+	..()
+
+//--------------------INTERACTION PROCS-----------------
+
+/obj/vehicle/powerloader/examine(mob/user)
+	. = ..()
+	if(PC_left)
+		PC_left.examine(user, TRUE)
+	if(PC_right)
+		PC_right.examine(user, TRUE)
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
@@ -59,28 +100,11 @@
 			return 1
 	. = ..()
 
-/obj/vehicle/powerloader/afterbuckle(mob/M)
-	. = ..()
-	overlays.Cut()
-	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
-	if(.)
-		icon_state = base_state
-		overlays += image(icon_state = overlay_state, layer = MOB_LAYER + 0.1)
-		if(M.mind && M.skills)
-			move_delay = max(4, move_delay - 2 * M.skills.get_skill_level(SKILL_POWERLOADER))
-		var/clamp_equipped = 0
-		for(var/obj/item/powerloader_clamp/PC in contents)
-			if(!M.put_in_hands(PC)) PC.forceMove(src)
-			else clamp_equipped++
-		if(clamp_equipped != 2) unbuckle() //can't use the powerloader without both clamps equipped
-	else
-		move_delay = initial(move_delay)
-		icon_state = open_state
-		M.drop_held_items() //drop the clamp when unbuckling
-
 /obj/vehicle/powerloader/buckle_mob(mob/M, mob/user)
-	if(M != user) return
-	if(!ishuman(M))	return
+	if(M != user)
+		return
+	if(!ishuman(M))
+		return
 	var/mob/living/carbon/human/H = M
 	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_TRAINED))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to operate [src]."))
@@ -90,6 +114,30 @@
 		return
 	. = ..()
 
+/obj/vehicle/powerloader/afterbuckle(mob/M)
+	. = ..()
+	overlays.Cut()
+	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
+	if(.)
+		icon_state = base_state
+		overlays += image(icon_state = overlay_state, layer = MOB_LAYER + 0.1)
+		if(M.mind && M.skills)
+			move_delay = max(4, move_delay - 2 * M.skills.get_skill_level(SKILL_POWERLOADER))
+		if(!M.put_in_l_hand(PC_left))
+			PC_left.forceMove(src)
+			unbuckle()
+			return
+		else if(!M.put_in_r_hand(PC_right))
+			PC_right.forceMove(src)
+			unbuckle()
+			return
+			//can't use the powerloader without both clamps equipped
+	else
+		move_delay = initial(move_delay)
+		icon_state = open_state
+		M.drop_held_items() //drop the clamp when unbuckling
+
+//verb
 /obj/vehicle/powerloader/verb/enter_powerloader(mob/M)
 	set category = "Object"
 	set name = "Enter Power Loader"
@@ -97,18 +145,7 @@
 
 	buckle_mob(M, usr)
 
-/obj/vehicle/powerloader/handle_rotation()
-	if(buckled_mob)
-		buckled_mob.setDir(dir)
-		switch(dir)
-			if(EAST) buckled_mob.pixel_x = 7
-			if(WEST) buckled_mob.pixel_x = -7
-			else buckled_mob.pixel_x = 0
-
-/obj/vehicle/powerloader/explode()
-	new wreckage(loc)
-	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
-	..()
+//--------------------POWERLOADER CLAMP-----------------
 
 /obj/item/powerloader_clamp
 	name = "\improper Power Loader Hydraulic Claw"
@@ -120,9 +157,12 @@
 	var/obj/vehicle/powerloader/linked_powerloader
 	var/obj/loaded
 
+//--------------------GENERAL PROCS-----------------
+
 /obj/item/powerloader_clamp/Destroy()
 	if(loaded)
 		loaded.forceMove(get_turf(src))
+	linked_powerloader = null
 	return ..()
 
 /obj/item/powerloader_clamp/dropped(mob/user)
@@ -133,6 +173,20 @@
 	if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
 		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
+/obj/item/powerloader_clamp/update_icon()
+	if(loaded) icon_state = "loader_clamp_full"
+	else icon_state = "loader_clamp"
+
+//--------------------INTERACTION PROCS-----------------
+
+/obj/item/powerloader_clamp/examine(mob/user, var/compact_info = FALSE)
+	if(compact_info)
+		if(loaded)
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] held by [icon2html(src, user)] [src.name]."))
+	else
+		. = ..()
+		if(loaded)
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] held by [icon2html(src, user)] [src.name]."))
 
 /obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user)
 	if(M == linked_powerloader.buckled_mob)
@@ -224,14 +278,12 @@
 			user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
 			SPAN_NOTICE("You grab [loaded] with [src]."))
 
-/obj/item/powerloader_clamp/update_icon()
-	if(loaded) icon_state = "loader_clamp_full"
-	else icon_state = "loader_clamp"
-
 /obj/item/powerloader_clamp/attack_self(mob/user)
 	..()
 	if(linked_powerloader)
 		linked_powerloader.unbuckle()
+
+//--------------------LOADER WRECKAGE-----------------
 
 /obj/structure/powerloader_wreckage
 	name = "\improper Caterpillar P-5000 Work Loader wreckage"

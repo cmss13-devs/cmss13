@@ -165,3 +165,6 @@
   - rscadd: Changes CO minimum ages from O4/5 40/45 to 30/35.
   stanalbatross:
   - rscadd: Added Scottish and Welsh flags to the OOC country flags system
+  - bugfix: You can now only try to give things to people one at a time. This stops
+      you from spamming give prompts onto peoples' screens.
+  - ui: Changed the old alert on the give prompt to a tgui alert.

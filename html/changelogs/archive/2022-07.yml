@@ -161,6 +161,11 @@
   - code_imp: Modified item paths for everything related to changing admiral stuff
       to general stuff. Includes item states.
 2022-07-13:
+  Geevies:
+  - rscadd: Xenos now have a one second grace period before falling into crit.
+  - rscadd: The sound environment system now affects all heard sounds, so open spaces
+      will echo, so will interiors. Xenos in their crit grace period now have a Call
+      of Duty near death soundscape.
   Morrow:
   - rscadd: Changes CO minimum ages from O4/5 40/45 to 30/35.
   stanalbatross:

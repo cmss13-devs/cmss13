@@ -168,6 +168,10 @@
       of Duty near death soundscape.
   Morrow:
   - rscadd: Changes CO minimum ages from O4/5 40/45 to 30/35.
+  TeDGamer:
+  - bugfix: Hive core can be repaired again
+  - bugfix: Xenos must be in the same hive to destroy the core quickly
+  - qol: Hive core and cluster can be repaired when health is less than max
   stanalbatross:
   - rscadd: Added Scottish and Welsh flags to the OOC country flags system
   - bugfix: You can now only try to give things to people one at a time. This stops

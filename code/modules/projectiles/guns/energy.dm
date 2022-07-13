@@ -83,7 +83,7 @@
 	if(.)
 		var/to_firer = "You fire the [name]!"
 		if(has_charge_meter)
-			to_firer += " [round((cell.charge / charge_cost), 1)]/[max_shots] SHOTS REMAINING"
+			to_firer += " [round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
 		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 
@@ -98,7 +98,9 @@
 
 /obj/item/weapon/gun/energy/examine(mob/user)
 	. = ..()
-	if(cell)
+	if(has_charge_meter && cell)
+		to_chat(user, SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left."))
+	else if(cell)
 		to_chat(user, SPAN_NOTICE("It has [cell.percent()]% charge left."))
 	else
 		to_chat(user, SPAN_NOTICE("It has no power cell inside."))

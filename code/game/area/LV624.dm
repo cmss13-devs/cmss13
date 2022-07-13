@@ -181,7 +181,7 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"

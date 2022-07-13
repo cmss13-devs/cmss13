@@ -155,7 +155,7 @@ structure:
 	name = "Small caves (event P)"
 	icon_state = "under"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -211,7 +211,7 @@ structure:
 	icon_state = "undercas"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -266,7 +266,7 @@ structure:
 	ceiling = CEILING_DEEP_UNDERGROUND
 
 	ceiling_muffle = FALSE
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25

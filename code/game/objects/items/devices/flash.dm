@@ -9,8 +9,10 @@
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
 
+	var/broken_icon_state = "flashburnt"
 
 	var/times_used = 0 //Number of times it's been used.
+	var/flashes_per_minute = 5 //how many you can do per minute
 	var/broken = 0     //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 
@@ -23,6 +25,8 @@
 		times_used -= 2
 	last_used = world.time
 	times_used = max(0,round(times_used)) //sanity
+
+/obj/item/device/flash/proc/attempt_to_flash(mob/user)
 
 
 /obj/item/device/flash/attack(mob/living/M, mob/user)
@@ -49,20 +53,21 @@
 	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
 	//It will never break on the first use.
 	switch(times_used)
-		if(0 to 5)
+		if(0 to flashes_per_minute)
 			last_used = world.time
 			if(prob(times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
 				to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
-				icon_state = "flashburnt"
+				update_icon()
 				return
 			times_used++
-		else	//can only use it  5 times a minute
+		else	//can only use it 5 times a minute
 			to_chat(user, SPAN_WARNING("*click* *click*"))
+			playsound(src.loc, 'sound/weapons/gun_empty.ogg', 25, 1)
 			return
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
-	var/flashfail = 0
-
+	var/flashfail = 0 //determines if you actually blind + stun the guy or not
+	flick("flash2", src)
 	if(iscarbon(M))
 		flashfail = !M.flash_eyes()
 		if(!flashfail)
@@ -85,21 +90,17 @@
 			qdel(animation)
 
 	if(!flashfail)
-	//	flick("flash2", src)
 		if(!isSilicon(M))
-
-			user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
+			user.visible_message(SPAN_DANGER"[user] blinds [M] with \the [src]!")
 		else
-
-			user.visible_message(SPAN_NOTICE("[user] overloads [M]'s sensors with the flash!"))
+			user.visible_message(SPAN_WARNING("[user] overloads [M]'s sensors with \the [src]!"))
 	else
-
-		user.visible_message(SPAN_NOTICE("[user] fails to blind [M] with the flash!"))
-
+		user.visible_message(SPAN_WARNING("[user] fails to blind [M] with \the [src]!"))
 	return
 
-
-
+/obj/item/device/flash/update_icon()
+	if(broken)
+		icon_state = broken_icon_state
 
 /obj/item/device/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()
@@ -108,11 +109,11 @@
 		return
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 		return
 
 	if(broken)
-		user.show_message(SPAN_WARNING("The [src.name] is broken"), 2)
+		user.show_message(SPAN_WARNING("The [src.name] is broken!"), 2)
 		return
 
 	flash_recharge()
@@ -124,11 +125,12 @@
 			if(prob(2*times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
 				to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
-				icon_state = "flashburnt"
+				update_icon()
 				return
 			times_used++
 		else	//can only use it  5 times a minute
 			user.show_message(SPAN_WARNING("*click* *click*"), 2)
+
 			return
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 	//flick("flash2", src)
@@ -165,7 +167,7 @@
 		if(0 to 5)
 			if(prob(2*times_used))
 				broken = 1
-				icon_state = "flashburnt"
+				update_icon()
 				return
 			times_used++
 			if(istype(loc, /mob/living/carbon))
@@ -179,17 +181,18 @@
 	name = "synthetic flash"
 	desc = "When a problem arises, SCIENCE is the solution."
 	icon_state = "sflash"
+	broken_icon_state = "flashburnt_very_old"
 
 /obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
 	..()
 	if(!broken)
 		broken = 1
 		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		icon_state = "flashburnt"
+		update_icon()
 
 /obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()
 	if(!broken)
 		broken = 1
 		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		icon_state = "flashburnt"
+		update_icon()

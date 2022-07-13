@@ -188,22 +188,11 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, src)
 			if(istype(vehicle, /obj/vehicle/multitile/apc))
 				var/obj/vehicle/multitile/apc/APC = vehicle
-				switch(APC.dir)
-					if(NORTH)
-						M.client.pixel_x = 0
-						M.client.pixel_y = APC.gunner_view_offset * 32
-					if(SOUTH)
-						M.client.pixel_x = 0
-						M.client.pixel_y = -1 * APC.gunner_view_offset * 32
-					if(EAST)
-						M.client.pixel_x = APC.gunner_view_offset * 32
-						M.client.pixel_y = 0
-					if(WEST)
-						M.client.pixel_x = -1 * APC.gunner_view_offset * 32
-						M.client.pixel_y = 0
+				M.client.change_view(APC.gunner_view_buff, src)
+			else
+				M.client.change_view(8, src)
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()

@@ -1955,7 +1955,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer_nozzle
 	name = "GEV-8 flamer nozzle"
-	desc = "A bungus special, this nozzle can be flipped over the output of a flamer to turn the jet into a focused projectile."
+	desc = "A special nozzle designed to alter flamethrowers to be used in a more offense orientated manner. As the inside of the nozzle is coated in a special gel and resin substance that takes the fuel that passes through and hardens it. Upon exiting the barrel, a cluster of burning gel is projected instead of a stream of burning naphtha."
 	icon_state = "extinguisher"
 	attach_icon = "extinguisher_a"
 	w_class = SIZE_MEDIUM

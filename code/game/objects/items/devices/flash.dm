@@ -91,7 +91,7 @@
 
 	if(!flashfail)
 		if(!isSilicon(M))
-			user.visible_message(SPAN_DANGER"[user] blinds [M] with \the [src]!")
+			user.visible_message(SPAN_DANGER("[user] blinds [M] with \the [src]!"))
 		else
 			user.visible_message(SPAN_WARNING("[user] overloads [M]'s sensors with \the [src]!"))
 	else

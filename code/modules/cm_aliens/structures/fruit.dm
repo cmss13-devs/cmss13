@@ -151,7 +151,7 @@
 			xeno_noncombat_delay(X)
 			if(!do_after(X, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return XENO_NO_DELAY_ACTION
-			if(isXenoQueen(X) && X.observed_xeno)
+			if(isXenoQueen(X) && X.observed_xeno && X.observed_xeno.stat != DEAD)
 				consume_effect(X.observed_xeno, FALSE)
 			consume_effect(X)
 		else
@@ -370,6 +370,9 @@
 			return
 	if(!istype(X))
 		return ..()
+	if(X.stat == DEAD)
+		to_chat(user, SPAN_WARNING("That sister is already dead, they won't benefit from the fruit now..."))
+		return
 	user.affected_message(X,
 		SPAN_HELPFUL("You <b>start [user == X ? "eating" : "feeding [X]"] [src]</b>."),
 		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -382,7 +385,7 @@
 		SPAN_NOTICE("[user] [user == X ? "ate" : "fed [X]"] <b>[src]</b>."))
 	var/obj/effect/alien/resin/fruit/F = new fruit_type(X)
 	F.mature = TRUE
-	if(isXenoQueen(X) && X.observed_xeno && X.z == X.observed_xeno.z)
+	if(isXenoQueen(X) && X.observed_xeno && X.observed_xeno.stat != DEAD && X.z == X.observed_xeno.z)
 		F.consume_effect(X.observed_xeno, FALSE)
 	F.consume_effect(X)
 	//Notify the fruit's bound xeno if they exist

@@ -14,6 +14,7 @@
 	can_wire = TRUE
 	stack_amount = 1
 	var/build_stage = BARRICADE_SANDBAG_1
+	metallic = FALSE
 
 /obj/structure/barricade/sandbags/New(loc, mob/user, direction, var/amount = 1)
 	if(direction)

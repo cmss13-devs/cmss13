@@ -160,3 +160,6 @@
   - bugfix: General officer's HUD icons now show up properly.
   - code_imp: Modified item paths for everything related to changing admiral stuff
       to general stuff. Includes item states.
+2022-07-13:
+  Morrow:
+  - rscadd: Changes CO minimum ages from O4/5 40/45 to 30/35.

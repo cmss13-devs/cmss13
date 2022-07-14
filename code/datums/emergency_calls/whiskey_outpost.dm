@@ -25,23 +25,23 @@
 	M.transfer_to(mob, TRUE)
 
 	sleep(5)
-	if(!leader && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/leader, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (heavies < max_heavies && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+	else if (heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if(smartgunners < max_smartgunners && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/smartgunner, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a smartgunner in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if(engineers < max_engineers && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (medics < max_medics && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	else if (medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))

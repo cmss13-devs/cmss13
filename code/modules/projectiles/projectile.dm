@@ -913,14 +913,7 @@
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
-		if(isHumanStrict(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
-		if(isYautja(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter(loc, splatter_dir)
-		if(isXeno(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
-		if(isSynth(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter(loc, splatter_dir)
+		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
@@ -1010,8 +1003,7 @@
 
 	if(damage)
 		//only apply the blood splatter if we do damage
-		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+		handle_blood_splatter(get_dir(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
 		if(xeno_shields.len)

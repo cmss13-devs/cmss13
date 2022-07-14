@@ -440,3 +440,6 @@
 	if(hud_used && hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 0
 		hud_used.locate_leader.mouse_opacity = 0
+
+/mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
+	species.handle_blood_splatter(src, splatter_dir)

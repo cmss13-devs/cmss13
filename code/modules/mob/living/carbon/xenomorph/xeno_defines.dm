@@ -263,7 +263,8 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	internal_faction = name
+	if(!internal_faction)
+		internal_faction = name
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
@@ -881,6 +882,16 @@
 	prefix = "Forsaken "
 	color = "#cc8ec4"
 	ui_color = "#cc8ec4"
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+
+/datum/hive_status/yautja
+	name = "Yautja Hive"
+	hivenumber = XENO_HIVE_YAUTJA
+	internal_faction = FACTION_YAUTJA
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE

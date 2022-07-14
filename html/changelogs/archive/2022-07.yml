@@ -184,3 +184,6 @@
   TotalEpicness:
   - bugfix: Fixes a consistency error with sandbags and also adds a message that shows
       if you try to weld a non-metallic barricade.
+  Unknownity:
+  - bugfix: The garbage bin in the Brig Courtyard now actually uses the correct disposal
+      pipes.

@@ -451,6 +451,10 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 			being_repaired = FALSE
 			return
 
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+			return
+
 		WT.remove_fuel(1, user)
 
 		//get_skill_duration_multiplier returns a multiplier, so we delete by it

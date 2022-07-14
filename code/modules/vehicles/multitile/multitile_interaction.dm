@@ -84,6 +84,7 @@
 					return
 		else
 			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
+			handle_player_entrance(user)
 			return
 
 	if(istype(O, /obj/item/device/motiondetector))

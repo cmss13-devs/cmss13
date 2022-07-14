@@ -72,7 +72,7 @@
 		if(!SG_seat)
 			to_chat(H, SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!"))
 			return
-	if(!SG_seat.buckled_mob)
+	if(!SG_seat.buckled_mob && !H.buckled)
 		SG_seat.do_buckle(H, H)
 		for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
 			if(FPW.allowed_seat == SG_seat.seat)

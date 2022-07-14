@@ -178,6 +178,8 @@
       you from spamming give prompts onto peoples' screens.
   - ui: Changed the old alert on the give prompt to a tgui alert.
 2022-07-14:
+  FoxyStalin:
+  - rscdel: Removes Slowdown from Galoshes
   Geevies:
   - rscadd: Added a synth to the UPP and CLF ERTs.
   - rscadd: CLF ERTs now spawn specialists.

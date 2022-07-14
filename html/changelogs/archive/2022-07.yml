@@ -199,3 +199,6 @@
   - qol: added an "all reagents" button to the chemmaster - this will transfer/dispose
       of all reagents in the beaker/buffer instead of you having to click every reagent
       entry individually
+  - bugfix: fixed turning on rail lights and turning on/off glasses breaking item
+      action icons for the same item
+  - bugfix: made collapsing/extending stocks actually update the action button icon

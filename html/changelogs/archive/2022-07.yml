@@ -177,3 +177,7 @@
   - bugfix: You can now only try to give things to people one at a time. This stops
       you from spamming give prompts onto peoples' screens.
   - ui: Changed the old alert on the give prompt to a tgui alert.
+2022-07-14:
+  JeserTheFox:
+  - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
+      intent.

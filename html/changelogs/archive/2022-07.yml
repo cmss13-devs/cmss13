@@ -202,3 +202,4 @@
   - bugfix: fixed turning on rail lights and turning on/off glasses breaking item
       action icons for the same item
   - bugfix: made collapsing/extending stocks actually update the action button icon
+  - bugfix: The British flag will now appear again properly in OOC

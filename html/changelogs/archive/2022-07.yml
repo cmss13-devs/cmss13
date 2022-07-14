@@ -187,6 +187,9 @@
   JeserTheFox:
   - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
       intent.
+  SpartanBobby:
+  - bugfix: Fixes both VC spawners being on the same tile
+  - bugfix: Fixes the camera in a doorway in the VC room
   TotalEpicness:
   - bugfix: Fixes a consistency error with sandbags and also adds a message that shows
       if you try to weld a non-metallic barricade.

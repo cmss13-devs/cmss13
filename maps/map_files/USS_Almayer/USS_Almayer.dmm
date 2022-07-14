@@ -23977,15 +23977,16 @@
 	},
 /area/almayer/living/cryo_cells)
 "bAZ" = (
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
-	pixel_x = 32;
-	density = 0
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	tag = "icon-camera (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/area/almayer/hull/lower_hull/l_a_s)
+/area/almayer/living/tankerbunks)
 "bBa" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -29343,8 +29344,6 @@
 /obj/item/bedsheet/brown{
 	pixel_y = 13
 	},
-/obj/effect/landmark/start/tank_crew,
-/obj/effect/landmark/start/tank_crew,
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 3.3;
@@ -29366,6 +29365,7 @@
 /obj/item/bedsheet/brown{
 	layer = 3.1
 	},
+/obj/effect/landmark/start/tank_crew,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -38727,17 +38727,6 @@
 	tag = "icon-orange (SOUTHWEST)"
 	},
 /area/almayer/hallways/stern_hallway)
-"dZk" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/tankerbunks)
 "dZr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -53995,6 +53984,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
+/obj/effect/landmark/start/tank_crew,
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "kYB" = (
@@ -97874,8 +97864,8 @@ uNL
 hJp
 bSv
 oMi
+bAZ
 bTS
-dZk
 bTS
 niR
 bSv
@@ -131362,7 +131352,7 @@ jeU
 hlz
 rdK
 tSr
-bAZ
+jZv
 jZv
 hlz
 aLG

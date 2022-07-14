@@ -95,7 +95,7 @@
 	if (!H.has_item_in_ears(src))
 		return ..()
 	user.set_interaction(src)
-	tgui_interact(user)
+	ui_interact(user)
 
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
@@ -180,7 +180,7 @@
 
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
-	SStgui.update_uis(src)
+	SStgui.try_update_ui(src_object = src, ui = ui)
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

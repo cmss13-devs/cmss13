@@ -188,6 +188,7 @@
 				//else
 				//	recalculateChannels()
 				. = TRUE
+	SStgui.try_update_ui(src_object = src, ui = ui)
 
 /obj/item/device/radio/proc/text_wires()
 	if (!b_stat)
@@ -597,6 +598,8 @@
 
 	for (var/ch_name in src.channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+
+	SStgui.try_update_ui(src_object = src, ui = ui)
 
 /obj/item/device/radio/borg/Topic(href, href_list)
 	if(usr.stat || !on)

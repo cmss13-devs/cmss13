@@ -129,10 +129,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/preferred_squad = "None"
 
 		//Some faction information.
-	var/home_system = "Unset"           //System of birth.
-	var/citizenship = "United Americas (United States)" //Current home system.
-	var/faction = "None"                //Antag faction/general associated faction.
-	var/religion = "None"               //Religious association.
+	var/home_system = "Unset"           	//System of birth.
+	var/citizenship = CITIZENSHIP_US 		//Current home system.
+	var/faction = "None"                	//Antag faction/general associated faction.
+	var/religion = RELIGION_AGNOSTICISM     //Religious association.
 
 		//Mob preview
 	var/icon/preview_icon = null
@@ -1440,7 +1440,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						citizenship = choice
 
 				if("religion")
-					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + list("None","Other"))
+					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + list("Other"))
 					if(!choice)
 						return
 					if(choice == "Other")

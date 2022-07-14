@@ -185,7 +185,7 @@
 
 		else if(href_list["removeall"])
 			for(var/datum/reagent/R in src.reagents.reagent_list)
-				var/amount = beaker.volume
+				var/amount = src.reagents.total_volume
 				if(mode)
 					transfer_chemicals(beaker, src, amount, R.id)
 				else
@@ -391,7 +391,7 @@
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=60'>60</A> "
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=[N.volume]'>All</A> "
 				dat += "<A href='?src=\ref[src];removecustom=[N.id]'>Custom</A><BR>"
-			dat += "<A href='?src=\ref[src];removeall=[beaker]'>All reagents</A><BR>"
+			dat += "<A href='?src=\ref[src];removeall=[src]'>All reagents</A><BR>"
 		else
 			dat += "Empty<BR>"
 		if(!condi)

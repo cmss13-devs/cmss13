@@ -178,6 +178,12 @@
       you from spamming give prompts onto peoples' screens.
   - ui: Changed the old alert on the give prompt to a tgui alert.
 2022-07-14:
+  Geevies:
+  - rscadd: Added a synth to the UPP and CLF ERTs.
+  - rscadd: CLF ERTs now spawn specialists.
+  - rscadd: Added preferences to the ERT roles you want to play in the ERT settings
+      menu.
+  - bugfix: Fixed some ERTs not having proper timelocks.
   JeserTheFox:
   - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
       intent.

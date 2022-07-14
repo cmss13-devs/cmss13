@@ -189,6 +189,8 @@
   JeserTheFox:
   - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
       intent.
+  Maciekkub:
+  - bugfix: character preferences consistency
   Morrow:
   - rscadd: Created a toggle for middle click swapping hands.
   SpartanBobby:

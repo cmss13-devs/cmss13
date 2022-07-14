@@ -196,3 +196,6 @@
   stanalbatross:
   - bugfix: you now have to fix vendors 100% to use them after being broken - you
       cannot simply use them after unscrewing the panel.
+  - qol: added an "all reagents" button to the chemmaster - this will transfer/dispose
+      of all reagents in the beaker/buffer instead of you having to click every reagent
+      entry individually

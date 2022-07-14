@@ -153,7 +153,7 @@ IN_USE						used for vending/denying
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
 
-	if(stat & (BROKEN|MAINT))
+	if(stat & MAINT)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
 		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
@@ -270,7 +270,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
-			stat &= ~(MAINT|BROKEN)
+			stat &= ~MAINT
 			stat |= REPAIR_STEP_ONE
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
@@ -279,7 +279,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
-			stat &= ~(REPAIR_STEP_FOUR|MAINT)
+			stat &= ~(REPAIR_STEP_FOUR|MAINT|BROKEN)
 			stat |= WORKING
 			update_icon()
 			return TRUE

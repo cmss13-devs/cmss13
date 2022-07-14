@@ -12,6 +12,8 @@
 		if(geodata["countryCode"] == "GB")
 			if((geodata["regionName"] == "Scotland") || (geodata["regionName"] == "Wales"))
 				return geodata["regionName"]
+			else
+				return geodata["countryCode"]
 		else
 			return geodata["countryCode"]
 

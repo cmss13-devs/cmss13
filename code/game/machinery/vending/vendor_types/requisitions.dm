@@ -325,7 +325,15 @@
 					return
 			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
 				var/obj/item/ammo_box/magazine/A = item_to_stock
-				if(A.contents.len < A.num_of_magazines)
+				if(istype(A, /obj/item/ammo_box/magazine/shotgun))
+					var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+					if(!AM)
+						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+						return
+					if(AM.current_rounds != AM.max_rounds)
+						to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+						return
+				else if(A.contents.len < A.num_of_magazines)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
 					return
 				for(var/obj/item/ammo_magazine/M in A.contents)
@@ -589,3 +597,29 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/stock(obj/item/item_to_stock, mob/user)
+	var/list/R
+	for(R in (listed_products))
+		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+			if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+				if(AR.pockets && AR.pockets.contents.len)
+					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+					return
+
+			if(item_to_stock.loc == user) //Inside the mob's inventory
+				if(item_to_stock.flags_item & WIELDED)
+					item_to_stock.unwield(user)
+				user.temp_drop_inv_item(item_to_stock)
+
+			if(isstorage(item_to_stock.loc)) //inside a storage item
+				var/obj/item/storage/S = item_to_stock.loc
+				S.remove_from_storage(item_to_stock, user.loc)
+
+			qdel(item_to_stock)
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
+			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
+			R[2]++
+			updateUsrDialog()
+			return //We found our item, no reason to go on.

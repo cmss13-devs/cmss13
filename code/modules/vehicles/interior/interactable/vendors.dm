@@ -328,12 +328,20 @@
 					return
 			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
 				var/obj/item/ammo_box/magazine/A = item_to_stock
-				if(A.contents.len < A.num_of_magazines)
-					to_chat(user, SPAN_WARNING("\The [A] is not full."))
+				if(istype(A, /obj/item/ammo_box/magazine/shotgun))
+					var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+					if(!AM)
+						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+						return
+					if(AM.current_rounds != AM.max_rounds)
+						to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+						return
+				else if(A.contents.len < A.num_of_magazines)
+					to_chat(user, SPAN_WARNING("[A] is not full."))
 					return
 				for(var/obj/item/ammo_magazine/M in A.contents)
 					if(M.current_rounds != M.max_rounds)
-						to_chat(user, SPAN_WARNING("Not all the magazines in \the [A] are full."))
+						to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
 						return
 			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock

@@ -189,6 +189,8 @@
   JeserTheFox:
   - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
       intent.
+  Morrow:
+  - rscadd: Created a toggle for middle click swapping hands.
   SpartanBobby:
   - bugfix: Fixes both VC spawners being on the same tile
   - bugfix: Fixes the camera in a doorway in the VC room

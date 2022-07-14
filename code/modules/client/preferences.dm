@@ -103,7 +103,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/be_random_name = 0				//whether we are a random name every round
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
-	var/age = 18						//age of character
+	var/age = 19						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)"			//underwear type
 	var/undershirt = "Undershirt"					//undershirt type
@@ -131,10 +131,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/preferred_squad = "None"
 
 		//Some faction information.
-	var/home_system = "Unset"           //System of birth.
-	var/citizenship = "United Americas (United States)" //Current home system.
-	var/faction = "None"                //Antag faction/general associated faction.
-	var/religion = "None"               //Religious association.
+	var/home_system = "Unset"           	//System of birth.
+	var/citizenship = CITIZENSHIP_US 		//Current home system.
+	var/faction = "None"                	//Antag faction/general associated faction.
+	var/religion = RELIGION_AGNOSTICISM     //Religious association.
 
 		//Mob preview
 	var/icon/preview_icon = null
@@ -1457,13 +1457,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						citizenship = choice
 
 				if("religion")
-					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + list("None","Other"))
+					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + "Other")
 					if(!choice)
 						return
 					if(choice == "Other")
 						var/raw_choice = input(user, "Please enter a religon.")  as text|null
 						if(raw_choice)
-							religion = strip_html(raw_choice)
+							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
 					religion = choice
 		else

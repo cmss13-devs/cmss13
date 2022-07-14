@@ -193,3 +193,6 @@
   Unknownity:
   - bugfix: The garbage bin in the Brig Courtyard now actually uses the correct disposal
       pipes.
+  stanalbatross:
+  - bugfix: you now have to fix vendors 100% to use them after being broken - you
+      cannot simply use them after unscrewing the panel.

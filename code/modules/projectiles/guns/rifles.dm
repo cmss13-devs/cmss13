@@ -296,22 +296,6 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
-	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/rifle/extended,
-		/obj/item/ammo_magazine/rifle/incendiary,
-		/obj/item/ammo_magazine/rifle/explosive,
-		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/le,
-		/obj/item/ammo_magazine/rifle/penetrating,
-		/obj/item/ammo_magazine/rifle/cluster,
-		/obj/item/ammo_magazine/rifle/toxin,
-		/obj/item/ammo_magazine/rifle/rubber
-	)
-
-
-
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -367,6 +351,7 @@
 		/obj/item/ammo_magazine/rifle/toxin,
 		/obj/item/ammo_magazine/rifle/penetrating,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
 		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,

@@ -216,6 +216,11 @@
   - bugfix: if you are wearing prescription glasses, due to a loadout item or prescription
       hud on spawn, you will no longer get an extra pair of prescription glasses
 2022-07-15:
+  BKryth:
+  - balance: Cloaked bell doesnt start cloaked anymore, it slowly becomes invisible
+      when its turned on and instantly visible when turned off
+  - balance: Cloaked bell becomes slightly more visible when it rings, more xenos
+      around it means more ring and more visible
   stanalbatross:
   - bugfix: You can no longer restock defibs and power cells if they are not at full
       charge.

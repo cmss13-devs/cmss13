@@ -215,3 +215,9 @@
   - bugfix: automatically spawned glasses will no longer be ghost items
   - bugfix: if you are wearing prescription glasses, due to a loadout item or prescription
       hud on spawn, you will no longer get an extra pair of prescription glasses
+2022-07-15:
+  stanalbatross:
+  - bugfix: You can no longer restock defibs and power cells if they are not at full
+      charge.
+  - balance: increased the rate of charge for power cells (including power cells inside
+      other items such as defibrillators).

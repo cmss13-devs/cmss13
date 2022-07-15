@@ -788,19 +788,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	var/mob/living/L = hellhound_mob_list[choice]
-	if(!L || !(L in GLOB.hellhound_list))
+	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 
-	if(QDELETED(L) || L.client)
+	if(QDELETED(Hellhound) || Hellhound.client)
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	if(L.stat == DEAD)
+	if(Hellhound.stat == DEAD)
 		to_chat(src, SPAN_WARNING("That Hellhound has died."))
 		return
 
-	M.mind.transfer_to(L, TRUE)
+	M.mind.transfer_to(Hellhound, TRUE)
+	Hellhound.generate_name()
 
 /mob/dead/verb/join_as_yautja()
 	set category = "Ghost.Join"

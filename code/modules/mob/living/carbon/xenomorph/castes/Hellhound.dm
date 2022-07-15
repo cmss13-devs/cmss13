@@ -73,6 +73,16 @@
 	SSmob.living_misc_mobs += src
 	GLOB.hellhound_list += src
 
+/mob/living/carbon/Xenomorph/Hellhound/prepare_huds()
+	..()
+	var/image/health_holder = hud_list[HEALTH_HUD_XENO]
+	health_holder.pixel_x = -12
+	var/image/status_holder = hud_list[XENO_STATUS_HUD]
+	status_holder.pixel_x = -10
+	var/image/banished_holder = hud_list[XENO_BANISHED_HUD]
+	banished_holder.pixel_x = -12
+	banished_holder.pixel_y = -6
+
 /mob/living/carbon/Xenomorph/Hellhound/emote(var/act,var/m_type=1,var/message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)

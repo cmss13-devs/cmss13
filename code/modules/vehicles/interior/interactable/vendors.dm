@@ -307,14 +307,24 @@
 
 //combined from req guns and ammo vendors
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/stock(obj/item/item_to_stock, mob/user)
+	//these are exempted because checks would be huge and not worth it
+	if(istype(item_to_stock, /obj/item/storage) || istype(item_to_stock, /obj/item/ammo_box/magazine/misc))
+		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
+		return
 	var/list/R
+
+	//this below checks for /empty boxes. No way to do it more fancy way
+	var/corrected_path = null
+	if(istype(item_to_stock, /obj/item/ammo_box))
+		corrected_path = return_corresponding_box_type(item_to_stock.type)
+
 	for(R in (listed_products))
-		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem == initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains the wrong fuel."))
+						to_chat(user, SPAN_WARNING("\The [FT] contains not standard fuel."))
 						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)

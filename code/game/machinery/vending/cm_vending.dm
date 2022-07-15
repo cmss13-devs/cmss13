@@ -78,6 +78,8 @@ IN_USE						used for vending/denying
 		apply_transform(A)
 
 /obj/structure/machinery/cm_vending/ex_act(severity)
+	if(indestructible)
+		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -169,7 +171,7 @@ IN_USE						used for vending/denying
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(stat & TIPPED_OVER)
+	if(stat & TIPPED_OVER || indestructible)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
@@ -797,6 +799,63 @@ IN_USE						used for vending/denying
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 
+	//this here is made to provide ability to restock vendors with handmade and manually filled ammo boxes.
+	var/list/corresponding_box_types = list(
+		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
+		/obj/item/ammo_box/magazine/m4a3/empty = /obj/item/ammo_box/magazine/m4a3,
+		/obj/item/ammo_box/magazine/m4a3/ap/empty = /obj/item/ammo_box/magazine/m4a3/ap,
+		/obj/item/ammo_box/magazine/m4a3/hp/empty = /obj/item/ammo_box/magazine/m4a3/hp,
+		/obj/item/ammo_box/magazine/su6/empty = /obj/item/ammo_box/magazine/su6,
+		/obj/item/ammo_box/magazine/vp78/empty = /obj/item/ammo_box/magazine/vp78,
+
+		/obj/item/ammo_box/magazine/m44/empty = /obj/item/ammo_box/magazine/m44,
+		/obj/item/ammo_box/magazine/m44/heavy/empty = /obj/item/ammo_box/magazine/m44/heavy,
+		/obj/item/ammo_box/magazine/m44/marksman/empty = /obj/item/ammo_box/magazine/m44/marksman,
+
+		/obj/item/ammo_box/magazine/m39/empty = /obj/item/ammo_box/magazine/m39,
+		/obj/item/ammo_box/magazine/m39/ext/empty = /obj/item/ammo_box/magazine/m39/ext,
+		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
+		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
+		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
+		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,
+		/obj/item/ammo_box/magazine/l42a/ext/empty = /obj/item/ammo_box/magazine/l42a/ext,
+		/obj/item/ammo_box/magazine/l42a/incen/empty = /obj/item/ammo_box/magazine/l42a/incen,
+		/obj/item/ammo_box/magazine/l42a/le/empty = /obj/item/ammo_box/magazine/l42a/le,
+
+		/obj/item/ammo_box/magazine/empty = /obj/item/ammo_box/magazine,
+		/obj/item/ammo_box/magazine/ap/empty = /obj/item/ammo_box/magazine/ap,
+		/obj/item/ammo_box/magazine/explosive/empty = /obj/item/ammo_box/magazine/explosive,
+		/obj/item/ammo_box/magazine/ext/empty = /obj/item/ammo_box/magazine/ext,
+		/obj/item/ammo_box/magazine/incen/empty = /obj/item/ammo_box/magazine/incen,
+		/obj/item/ammo_box/magazine/le/empty = /obj/item/ammo_box/magazine/le,
+
+		/obj/item/ammo_box/magazine/shotgun/beanbag/empty = /obj/item/ammo_box/magazine/shotgun/beanbag,
+		/obj/item/ammo_box/magazine/shotgun/buckshot/empty = /obj/item/ammo_box/magazine/shotgun/buckshot,
+		/obj/item/ammo_box/magazine/shotgun/flechette/empty = /obj/item/ammo_box/magazine/shotgun/flechette,
+		/obj/item/ammo_box/magazine/shotgun/incendiary/empty = /obj/item/ammo_box/magazine/shotgun/incendiary,
+		/obj/item/ammo_box/magazine/shotgun/empty = /obj/item/ammo_box/magazine/shotgun,
+
+		/obj/item/ammo_box/magazine/lever_action/empty = /obj/item/ammo_box/magazine/lever_action,
+		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
+		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
+		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+
+		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
+		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
+		/obj/item/ammo_box/rounds/smg/incen/empty = /obj/item/ammo_box/rounds/smg/incen,
+		/obj/item/ammo_box/rounds/smg/le/empty = /obj/item/ammo_box/rounds/smg/le,
+
+		/obj/item/ammo_box/rounds/empty = /obj/item/ammo_box/rounds,
+		/obj/item/ammo_box/rounds/ap/empty = /obj/item/ammo_box/rounds/ap,
+		/obj/item/ammo_box/rounds/incen/empty = /obj/item/ammo_box/rounds/incen,
+		/obj/item/ammo_box/rounds/le/empty = /obj/item/ammo_box/rounds/le,
+
+		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
+		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
+	)
+
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
@@ -982,6 +1041,14 @@ IN_USE						used for vending/denying
 			R[2]++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
+
+//sending an /empty ammo box type path here will return corresponding regular (full) type of this box
+//if there is one set in corresponding_box_types or will return FALSE otherwise
+/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_box_type(var/empty_box_path)
+	if(corresponding_box_types.Find(empty_box_path))
+		return corresponding_box_types[empty_box_path]
+	return FALSE
+
 
 //------------GEAR VENDORS---------------
 //For vendors with their own points available

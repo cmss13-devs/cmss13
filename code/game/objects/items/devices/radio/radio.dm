@@ -13,7 +13,7 @@
 	var/b_stat = 0
 	var/broadcasting = FALSE
 	var/listening = TRUE
-	var/freqlock = FALSE
+	var/freqlock = TRUE
 	var/ignore_z = FALSE
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
 	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
@@ -83,46 +83,22 @@
 /obj/item/device/radio/attack_self(mob/user as mob)
 	..()
 	user.set_interaction(src)
-	ui_interact(user)
-
-/*/obj/item/device/radio/interact(mob/user as mob)
-	if(!on)
-		return
-
-	var/dat = "<html><body><TT>"
-
-	if(!istype(src, /obj/item/device/radio/headset)) //Headsets dont get a mic button
-		dat += "Microphone: [broadcasting ? "<A href='byond://?src=\ref[src];talk=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];talk=1'>Disengaged</A>"]<BR>"
-
-	dat += {"
-				Speaker: [listening ? "<A href='byond://?src=\ref[src];listen=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];listen=1'>Disengaged</A>"]<BR>
-				Frequency: 	[format_frequency(frequency)]<BR>"}
-//				<A href='byond://?src=\ref[src];freq=-10'>-</A>
-//				<A href='byond://?src=\ref[src];freq=-2'>-</A>
-//
-//				<A href='byond://?src=\ref[src];freq=2'>+</A>
-//				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
-//				"}
-
-	dat += "<table>"
-	for (var/ch_name in channels)
-		dat+=text_sec_channel(ch_name, channels[ch_name])
-	dat += "</table>"
-	dat += "<br>"
-	dat += {"[text_wires()]</TT></body></html>"}
-	show_browser(user, dat, name, "radio")
-	return*/
+	tgui_interact(user)
 
 /obj/item/device/radio/ui_state(mob/user)
+	if(!on)
+		return UI_CLOSE
 	return GLOB.inventory_state
 
-/obj/item/device/radio/ui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/device/radio/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Radio", "Radio")
 		if(state)
 			ui.set_state(state)
 		ui.open()
+	else if(!on)
+		ui.close()
 
 /obj/item/device/radio/ui_data(mob/user)
 	var/list/data = list()
@@ -188,7 +164,6 @@
 				//else
 				//	recalculateChannels()
 				. = TRUE
-	SStgui.try_update_ui(src_object = src, ui = ui)
 
 /obj/item/device/radio/proc/text_wires()
 	if (!b_stat)
@@ -212,63 +187,6 @@
 			<tr><td><B>[chan_name]</B>	[channel_key]</td>
 			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>
 			"}
-
-/*/obj/item/device/radio/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if (usr.stat || !on)
-		return
-
-	if (!(isRemoteControlling(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
-		close_browser(usr, "radio")
-		return
-	usr.set_interaction(src)
-	if (href_list["track"])
-		var/mob/target = locate(href_list["track"])
-		var/mob/living/silicon/ai/A = locate(href_list["track2"])
-		if(A && target)
-			A.ai_actual_track(target)
-		return
-
-	else if (href_list["freq"])
-		var/new_frequency = (frequency + text2num(href_list["freq"]))
-		if (!freerange || (frequency < 1200 || frequency > 1600))
-			new_frequency = sanitize_frequency(new_frequency)
-		set_frequency(new_frequency)
-
-	else if (href_list["talk"])
-		broadcasting = text2num(href_list["talk"])
-	else if (href_list["listen"])
-		var/chan_name = href_list["ch_name"]
-		if (!chan_name)
-			listening = text2num(href_list["listen"])
-		else
-			if (channels[chan_name] & FREQ_LISTENING)
-				channels[chan_name] &= ~FREQ_LISTENING
-			else
-				channels[chan_name] |= FREQ_LISTENING
-	else if (href_list["wires"])
-		var/t1 = text2num(href_list["wires"])
-		var/obj/item/held_item = usr.get_held_item()
-		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-			return
-		if (wires & t1)
-			wires &= ~t1
-		else
-			wires |= t1
-
-	if (!( master ))
-		if (istype(loc, /mob))
-			ui_interact(loc)
-		else
-			updateDialog()
-	else
-		if (istype(master.loc, /mob))
-			ui_interact(master.loc)
-		else
-			updateDialog()
-	add_fingerprint(usr) */
 
 // Interprets the message mode when talking into a radio, possibly returning a connection datum
 /obj/item/device/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)

@@ -95,7 +95,7 @@
 	if (!H.has_item_in_ears(src))
 		return ..()
 	user.set_interaction(src)
-	ui_interact(user)
+	tgui_interact(user)
 
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))

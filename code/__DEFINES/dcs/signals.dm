@@ -231,6 +231,11 @@
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
+
+// from /mob/living/carbon/Xenomorph/proc/gain_health()
+#define COMSIG_XENO_ON_HEAL "xeno_on_heal"
+#define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
+
 /// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 

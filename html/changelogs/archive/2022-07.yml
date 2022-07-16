@@ -226,3 +226,7 @@
       charge.
   - balance: increased the rate of charge for power cells (including power cells inside
       other items such as defibrillators).
+2022-07-16:
+  stanalbatross:
+  - code_imp: the "say, ask, shout" messages for Chinese now use pinyin rather than
+      non UTF compliant Chinese characters

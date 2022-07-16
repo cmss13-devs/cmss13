@@ -328,7 +328,7 @@
 	name = "floor"
 
 /turf/open/floor/wood
-	name = "floor"
+	name = "wooden floor"
 	icon_state = "wood"
 	tile_type = /obj/item/stack/tile/wood
 	tool_flags = BREAK_CROWBAR|REMOVE_SCREWDRIVER
@@ -337,7 +337,9 @@
 	return TRUE
 
 /turf/open/floor/wood/ship
+	name = "fake wooden floor"
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
+	tile_type = /obj/item/stack/tile/wood/fake
 
 /turf/open/floor/vault
 	icon_state = "rockvault"

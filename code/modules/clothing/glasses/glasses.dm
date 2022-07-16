@@ -245,17 +245,6 @@
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
 
-/obj/item/clothing/glasses/m42c_goggles
-	name = "\improper M42C special operations sight"
-	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
-	icon = 'icons/obj/items/clothing/glasses.dmi'
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
-	vision_flags = SEE_TURFS|SEE_MOBS
-	darkness_view = 12
-	toggleable = TRUE
-	actions_types = list(/datum/action/item_action/toggle)
-
 /obj/item/clothing/glasses/disco_fever
 	name = "malfunctioning AR visor"
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."

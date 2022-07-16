@@ -95,7 +95,7 @@
 	mob.next_delay_update = world.time + mob.next_delay_delay
 
 /client/Move(n, direct)
-	if(world.time < next_movement || mob.crawling)
+	if(world.time < next_movement || (mob.lying && mob.crawling))
 		return
 
 	next_move_dir_add = 0

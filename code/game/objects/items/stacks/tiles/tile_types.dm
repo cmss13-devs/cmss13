@@ -94,7 +94,7 @@
 /obj/item/stack/tile/carpet
 	name = "carpet tile"
 	desc = "A piece of carpet. It is the same size as a normal floor tile!"
-	singular_name = "carpet"
+	singular_name = "carpet tile"
 	icon_state = "tile-carpet"
 	stack_id = "carpet tile"
 	turf_type = /turf/open/floor/carpet

@@ -18,7 +18,7 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 		return FALSE
 	else
 		if(!T.supports_surgery)
-			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG) && !istype(tool, /obj/item/tool/surgery/synthgraft))
+			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
 

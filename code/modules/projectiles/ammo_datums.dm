@@ -240,6 +240,53 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
+	if(flags_ammo_behavior & AMMO_HIGHIMPACT)
+		if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+			return
+
+		var/mob/living/carbon/human/H = L
+		if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+			to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+			return
+
+		if(H.status_flags & PERMANENTLY_DEAD)
+			to_chat(user, SPAN_DANGER("[H] is already as dead as it's possible to be!"))
+			fired_from.delete_bullet(P, TRUE)
+			return TRUE
+
+		user.affected_message(H,
+			SPAN_HIGHDANGER("You aim \the [fired_from] at [H]'s head!"),
+			SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
+			SPAN_DANGER("[user] aims \the [fired_from] at [H]'s head!"))
+
+		user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+			fired_from.delete_bullet(P, TRUE)
+			return TRUE
+
+		H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+		H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+		H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+		H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
+		H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
+			SPAN_HIGHDANGER("You WERE EXECUTED!"))
+
+		user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+
+		var/area/A = get_area(H)
+
+		msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+		log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
+
+		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
+			H.gib()
+		return
+	. = ..()
+
 /*
 //======
 					Pistol Ammo
@@ -367,48 +414,10 @@
 	name = ".50 high-impact pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_2
 	debilitate = list(0,2,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
-
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return
-
-	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return
-
-	if(L.status_flags & PERMANENTLY_DEAD)
-		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
-		return TRUE
-
-	var/mob/living/carbon/human/H = L
-	user.affected_message(L,
-		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
-		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
-		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
-
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return TRUE
-
-	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
-	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
-	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
-
-	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
-
-	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
-		SPAN_HIGHDANGER("You were executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -655,59 +664,15 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
-	var/explosive = FALSE
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_2
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
-
-/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/revolver/fired_from)
-	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return
-
-	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return
-
-	if(L.status_flags & PERMANENTLY_DEAD)
-		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
-
-	var/mob/living/carbon/human/H = L
-	user.affected_message(L,
-		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
-		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
-		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
-
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
-
-	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
-	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
-	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
-
-	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
-
-	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
-		SPAN_HIGHDANGER("You were executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
-
-	if(explosive)
-		H.gib()
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
 	name = ".454 heavy explosive revolver bullet"
@@ -715,7 +680,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	explosive = TRUE
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	..()

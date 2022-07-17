@@ -100,6 +100,11 @@
 		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
 
+	if(isturf(loc))
+		langchat_image.loc = src
+	else
+		langchat_image.loc = recursive_holder_check(src)
+
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	if(text_left)
 		addtimer(CALLBACK(src, /mob.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)

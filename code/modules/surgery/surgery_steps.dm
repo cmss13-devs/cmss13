@@ -64,7 +64,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 		return FALSE
 	else
 		if(!T.supports_surgery)
-			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
+			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG) && !istype(tool, /obj/item/tool/surgery/synthgraft))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
 

@@ -234,6 +234,9 @@
   Geevies:
   - rscadd: Your overhead chat now attaches to the object you're in if you're in an
       object, like a locker or stasis bag.
+  Jeser:
+  - bugfix: Fixed some medical items showing warning message when used for treating
+      wounds in vehicle interiors and shuttles.
   Segrain:
   - bugfix: Fixing vehicular hardpoints no longer gets stuck with them being seen
       as being actively fixed when they are not.

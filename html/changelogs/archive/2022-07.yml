@@ -230,3 +230,7 @@
   stanalbatross:
   - code_imp: the "say, ask, shout" messages for Chinese now use pinyin rather than
       non UTF compliant Chinese characters
+2022-07-17:
+  Segrain:
+  - bugfix: Fixing vehicular hardpoints no longer gets stuck with them being seen
+      as being actively fixed when they are not.

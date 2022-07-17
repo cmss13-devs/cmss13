@@ -25,12 +25,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/lz2_habs)
-"h" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-south-caves"
-	},
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
 "i" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
@@ -302,7 +296,7 @@ a
 i
 i
 i
-h
+i
 "}
 (2,1,1) = {"
 a

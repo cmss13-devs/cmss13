@@ -149,9 +149,6 @@
 "Z" = (
 /obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/ash,
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-southeast-gate"
-	},
 /turf/open/floor/shiva{
 	dir = 1
 	},

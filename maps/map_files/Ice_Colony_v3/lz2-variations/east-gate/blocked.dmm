@@ -132,14 +132,6 @@
 	},
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
-"Q" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-east-gate"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "U" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
@@ -172,7 +164,7 @@ m
 m
 H
 J
-Q
+H
 "}
 (2,1,1) = {"
 a

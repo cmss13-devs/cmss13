@@ -58,12 +58,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/exterior/lz2_fortress)
-"r" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-south-gate"
-	},
-/turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
 "s" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
@@ -172,7 +166,7 @@ a
 a
 a
 a
-r
+W
 "}
 (2,1,1) = {"
 z

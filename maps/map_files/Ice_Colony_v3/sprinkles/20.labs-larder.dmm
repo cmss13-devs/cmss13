@@ -142,12 +142,6 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
-"O" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-larder"
-	},
-/turf/closed/wall/shiva/prefabricated/blue,
-/area/shiva/interior/colony/research_hab)
 "P" = (
 /obj/item/reagent_container/food/drinks/flask/vacuumflask{
 	pixel_x = -5;
@@ -192,7 +186,7 @@ j
 j
 j
 j
-O
+j
 "}
 (2,1,1) = {"
 N

@@ -146,12 +146,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/research_hab)
-"pw" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-elevator"
-	},
-/turf/closed/wall/shiva/prefabricated/blue,
-/area/shiva/interior/colony/research_hab)
 "pC" = (
 /obj/structure/closet/radiation,
 /turf/open/floor/shiva{
@@ -535,7 +529,7 @@ fs
 ju
 ju
 ju
-pw
+ju
 "}
 (2,1,1) = {"
 Vv

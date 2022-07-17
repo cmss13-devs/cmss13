@@ -231,6 +231,9 @@
   - code_imp: the "say, ask, shout" messages for Chinese now use pinyin rather than
       non UTF compliant Chinese characters
 2022-07-17:
+  Geevies:
+  - rscadd: Your overhead chat now attaches to the object you're in if you're in an
+      object, like a locker or stasis bag.
   Segrain:
   - bugfix: Fixing vehicular hardpoints no longer gets stuck with them being seen
       as being actively fixed when they are not.

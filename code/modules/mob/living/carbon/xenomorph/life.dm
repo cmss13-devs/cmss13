@@ -478,6 +478,7 @@ updatehealth()
 		return
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
+	KnockOut(3)
 	stat = UNCONSCIOUS
 	blinded = 1
 	see_in_dark = 5

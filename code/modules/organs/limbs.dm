@@ -928,7 +928,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
-			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < 80)
+			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
 				INVOKE_ASYNC(owner, /mob.proc/emote, pick("pain", "scream"))
 
 			if(organ)

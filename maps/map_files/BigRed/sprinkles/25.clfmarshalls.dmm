@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aw" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/space)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -60,8 +76,12 @@
 /area/bigredv2/outside/marshal_office)
 "ca" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldpack,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldpack,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "cd" = (
@@ -105,6 +125,7 @@
 "di" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/item/ammo_casing/bullet,
+/obj/item/attachable/scope/mini,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -158,7 +179,7 @@
 /area/bigredv2/outside/marshal_office)
 "fe" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/stack/rods,
+/obj/effect/decal/cleanable/ash,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -235,11 +256,18 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"hn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/bayonet,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "hr" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -279,7 +307,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "jT" = (
-/obj/structure/machinery/deployable/barrier,
+/obj/structure/barricade/wooden,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -370,13 +398,15 @@
 	pixel_x = -5
 	},
 /obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 6
 	},
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 5
 	},
 /obj/item/ammo_magazine/shotgun/slugs{
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 6
 	},
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor,
@@ -426,6 +456,7 @@
 /area/bigredv2/outside/marshal_office)
 "nd" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/attachable/lasersight,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
@@ -443,6 +474,13 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
+	},
+/area/bigredv2/outside/marshal_office)
+"nm" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/attachable/lasersight,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
 "ns" = (
@@ -540,7 +578,6 @@
 "pJ" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "pV" = (
@@ -577,6 +614,10 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
+/area/bigredv2/outside/marshal_office)
+"qA" = (
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "qJ" = (
 /obj/structure/bed/chair{
@@ -624,6 +665,14 @@
 "ro" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5;
+	pixel_y = 6
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -639,6 +688,11 @@
 "rB" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"rH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/heavy_barrel,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "rS" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor{
@@ -668,10 +722,7 @@
 "sf" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/weapon/shield/riot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
 "so" = (
 /obj/structure/barricade/metal/wired{
@@ -788,6 +839,12 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
+	},
+/area/bigredv2/outside/marshal_office)
+"vu" = (
+/obj/item/attachable/verticalgrip,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
 "vY" = (
@@ -915,6 +972,10 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
+"zi" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "zo" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
@@ -955,6 +1016,7 @@
 "AV" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/hunting,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -998,7 +1060,6 @@
 "CB" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Dc" = (
@@ -1034,7 +1095,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/obj/structure/machinery/deployable/barrier,
+/obj/structure/barricade/wooden,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1082,7 +1143,6 @@
 /area/bigredv2/outside/marshal_office)
 "Ga" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/frame/table,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1125,6 +1185,7 @@
 "GW" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze,
+/obj/item/attachable/attached_gun/flamer,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1147,25 +1208,38 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"HE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"HJ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/attachable/heavy_barrel,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/marshal_office)
 "HQ" = (
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 6;
+	pixel_x = -7
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -8
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 5;
+	pixel_x = 7
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -8;
+	pixel_x = 7
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -1176,9 +1250,17 @@
 	},
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_y = 3;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = -6
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "IC" = (
@@ -1409,11 +1491,58 @@
 "OL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 1;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -5;
+	pixel_x = 11
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ON" = (
@@ -1434,6 +1563,11 @@
 "OU" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1475,8 +1609,23 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/weapon/gun/pistol/holdout,
-/obj/item/weapon/gun/pistol/holdout,
+/obj/item/weapon/gun/pistol/holdout{
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 6;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 5;
+	pixel_x = -5
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Qy" = (
@@ -1486,7 +1635,7 @@
 	tag = "icon-gib6"
 	},
 /obj/structure/window_frame/solaris,
-/turf/open/floor/plating,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
 "QS" = (
 /obj/structure/machinery/camera/autoname{
@@ -1574,27 +1723,6 @@
 /area/bigredv2/outside/marshal_office)
 "To" = (
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16/ap{
-	pixel_x = 8
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
 /obj/item/ammo_magazine/rifle/m16/ap{
 	pixel_x = 8
 	},
@@ -1605,14 +1733,28 @@
 	pixel_x = 8
 	},
 /obj/item/ammo_magazine/rifle/m16/ap{
-	pixel_x = 8
+	pixel_x = 5;
+	pixel_y = 6
 	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/M16,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "TA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/attachable/heavy_barrel,
 /turf/open/floor{
 	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
+"TU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/verticalgrip,
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
 "TV" = (
@@ -1623,13 +1765,8 @@
 /area/bigredv2/outside/marshal_office)
 "Uc" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/m60{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/weapon/gun/m60{
-	pixel_x = 1;
-	pixel_y = 2
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_y = 9
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -1757,6 +1894,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/item/attachable/lasersight,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1792,6 +1930,7 @@
 /area/bigredv2/outside/marshal_office)
 "ZA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/attachable/verticalgrip,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -1814,13 +1953,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ZX" = (
-/obj/item/attachable/heavy_barrel,
-/obj/item/attachable/verticalgrip,
-/obj/item/attachable/verticalgrip,
-/obj/item/attachable/attached_gun/flamer,
-/obj/item/attachable/bayonet,
-/obj/item/attachable/bayonet,
 /obj/structure/surface/table,
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 
@@ -1899,7 +2033,7 @@ nL
 nL
 RC
 ng
-Gi
+vu
 Sm
 st
 RC
@@ -1928,7 +2062,7 @@ sp
 RC
 AV
 Bz
-um
+TU
 FQ
 uJ
 RL
@@ -1949,7 +2083,7 @@ um
 rZ
 OR
 RC
-qg
+aw
 JY
 ch
 Nu
@@ -2014,7 +2148,7 @@ nL
 nL
 RC
 vi
-sp
+nm
 aR
 NG
 RC
@@ -2068,7 +2202,7 @@ Dq
 Dq
 Po
 Dq
-He
+RC
 wv
 bD
 QS
@@ -2082,7 +2216,7 @@ RC
 fq
 ec
 Xv
-kE
+hn
 Dq
 SJ
 co
@@ -2111,10 +2245,10 @@ MV
 PT
 uJ
 pJ
-Dq
+zi
 YZ
 sY
-He
+RC
 JA
 YZ
 nd
@@ -2137,7 +2271,7 @@ CB
 Dq
 Po
 ZX
-He
+RC
 te
 Rk
 YA
@@ -2148,7 +2282,7 @@ RC
 "}
 (15,1,1) = {"
 RC
-He
+RC
 oi
 oi
 oi
@@ -2158,12 +2292,12 @@ RC
 Jx
 ca
 Dq
-Po
+HE
 ZX
-He
-He
+RC
+RC
 et
-He
+RC
 RC
 RC
 RC
@@ -2190,7 +2324,7 @@ kE
 eh
 gs
 gs
-He
+RC
 "}
 (17,1,1) = {"
 Ta
@@ -2202,7 +2336,7 @@ jT
 Jx
 Dq
 Dq
-kE
+rH
 kE
 Po
 Dq
@@ -2236,7 +2370,7 @@ ZB
 Dq
 ZB
 ZB
-He
+RC
 "}
 (19,1,1) = {"
 Ta
@@ -2282,7 +2416,7 @@ gM
 Pa
 mt
 mt
-He
+RC
 "}
 (21,1,1) = {"
 RC
@@ -2314,7 +2448,7 @@ nL
 nL
 nL
 nL
-He
+RC
 Tl
 Dq
 Fz
@@ -2328,7 +2462,7 @@ bn
 Bl
 yz
 kE
-He
+RC
 "}
 (23,1,1) = {"
 nL
@@ -2337,9 +2471,9 @@ nL
 nL
 nL
 nL
-He
+RC
 Tl
-Dq
+qA
 Ck
 Dq
 Po
@@ -2351,7 +2485,7 @@ kl
 IY
 KC
 Dq
-He
+RC
 "}
 (24,1,1) = {"
 nL
@@ -2360,21 +2494,21 @@ nL
 nL
 nL
 nL
-He
-He
-He
-He
+RC
+RC
+RC
+RC
 Dq
 Po
-He
-He
-He
-He
-He
-He
-He
-He
-He
+RC
+RC
+RC
+RC
+RC
+RC
+RC
+RC
+RC
 "}
 (25,1,1) = {"
 nL
@@ -2386,7 +2520,7 @@ nL
 nL
 nL
 nL
-He
+RC
 Dq
 Po
 uJ
@@ -2397,7 +2531,7 @@ LE
 DA
 hV
 tH
-He
+RC
 "}
 (26,1,1) = {"
 rB
@@ -2409,10 +2543,10 @@ nL
 nL
 nL
 nL
-He
+RC
 Dq
 Pq
-yJ
+Jx
 Yq
 nQ
 kN
@@ -2420,7 +2554,7 @@ nQ
 nQ
 ki
 Kz
-He
+RC
 "}
 (27,1,1) = {"
 rB
@@ -2432,7 +2566,7 @@ nL
 nL
 nL
 nL
-yJ
+Jx
 Dq
 mL
 ZD
@@ -2443,7 +2577,7 @@ lP
 lP
 ne
 IC
-He
+RC
 "}
 (28,1,1) = {"
 rB
@@ -2458,15 +2592,15 @@ nL
 mZ
 nP
 kE
-yJ
+Jx
 Yq
 kN
 ki
 kN
-Ac
+HJ
 kN
 Cw
-He
+RC
 "}
 (29,1,1) = {"
 rB
@@ -2489,7 +2623,7 @@ nQ
 kN
 yN
 Yq
-He
+RC
 "}
 (30,1,1) = {"
 rB
@@ -2501,7 +2635,7 @@ nL
 nL
 nL
 nL
-yJ
+Jx
 xV
 kE
 uJ
@@ -2512,7 +2646,7 @@ tC
 VQ
 tC
 so
-He
+RC
 "}
 (31,1,1) = {"
 rB
@@ -2524,10 +2658,10 @@ nL
 nL
 nL
 nL
-He
-He
-He
-He
+RC
+RC
+RC
+RC
 GT
 GT
 GT
@@ -2535,5 +2669,5 @@ GT
 GT
 GT
 GT
-He
+RC
 "}

@@ -240,3 +240,6 @@
   Segrain:
   - bugfix: Fixing vehicular hardpoints no longer gets stuck with them being seen
       as being actively fixed when they are not.
+2022-07-18:
+  Geevies:
+  - bugfix: Auto-turfs now generate their inner and outer corners correctly.

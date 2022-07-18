@@ -41619,6 +41619,7 @@
 	pixel_y = 8
 	},
 /obj/item/storage/belt/utility/full,
+/obj/item/clothing/suit/storage/hazardvest/black,
 /obj/item/tool/crowbar,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -42677,6 +42678,11 @@
 /obj/item/clothing/suit/storage/hazardvest{
 	pixel_x = -8;
 	pixel_y = 6
+	},
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_x = 8;
+	pixel_y = 7
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -48598,9 +48604,13 @@
 /area/almayer/command/cichallway)
 "iuu" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/suit/storage/hazardvest{
+/obj/item/clothing/head/hardhat/orange{
 	pixel_x = -9;
-	pixel_y = -5
+	pixel_y = 16
+	},
+/obj/item/clothing/suit/storage/hazardvest/blue{
+	pixel_x = -7;
+	pixel_y = -4
 	},
 /obj/item/clothing/head/hardhat{
 	pixel_x = 10;
@@ -52544,8 +52554,19 @@
 "kpY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat{
+	pixel_y = 15
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/obj/item/clothing/head/hardhat{
 	pixel_x = 4;
 	pixel_y = 7
+	},
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = 7;
+	pixel_y = -5
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -77058,6 +77079,7 @@
 	name = "leather gloves"
 	},
 /obj/structure/closet/crate,
+/obj/item/clothing/suit/storage/hazardvest/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

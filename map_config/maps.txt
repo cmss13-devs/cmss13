@@ -13,7 +13,7 @@ Format:
 endmap
 
 map lv624
-	default
+	//default
 endmap
 
 map bigredv2
@@ -44,6 +44,7 @@ map shivas_snowball
 endmap
 
 map kutjevo
+	default
 endmap
 
 map sorokyne_strata

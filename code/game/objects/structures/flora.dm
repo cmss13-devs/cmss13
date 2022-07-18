@@ -220,6 +220,7 @@ ICE GRASS
 /obj/structure/flora/grass/tallgrass/desert/corner
 	icon_state = "tallgrass_corner"
 	overlay_type = "tallgrass_overlay_corner"
+	cut_level = PLANT_CUT_MACHETE
 	center = FALSE
 
 ///ICE COLONY - SOROKYNE///
@@ -324,6 +325,7 @@ ICE GRASS
 
 /obj/structure/flora/bush/ausbushes/var3
 	icon_state = "leafybush_1"
+	cut_level = PLANT_CUT_KNIFE
 	variations = 3
 
 /obj/structure/flora/bush/ausbushes/var3/leafybush
@@ -373,6 +375,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/dam.dmi'
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
+	cut_level = PLANT_CUT_KNIFE
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/flora/bush/desert/cactus

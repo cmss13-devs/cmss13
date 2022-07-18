@@ -99,10 +99,10 @@
 			return FALSE
 		if(user.z != A.z)
 			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
-			return
+			return FALSE
 		if(!(is_ground_level(A.z)))
 			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
-			return
+			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
 			for(var/turf/T in path)

@@ -1234,12 +1234,6 @@
 /obj/item/ammo_magazine/m60{
 	pixel_x = 1
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "HU" = (
@@ -1766,10 +1760,6 @@
 /obj/structure/surface/table,
 /obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_y = 9
-	},
-/obj/item/weapon/gun/m60{
-	pixel_x = 1;
-	pixel_y = 2
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)

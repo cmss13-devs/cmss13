@@ -274,7 +274,9 @@
 	},
 /area/bigredv2/outside/library)
 "Bl" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -568,11 +570,9 @@
 	dir = 4
 	},
 /obj/structure/surface/table/woodentable,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -589,6 +589,8 @@
 	dir = 4
 	},
 /obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/snacks/sliceable/cheesecake,
+/obj/item/tool/kitchen/knife,
 /turf/open/floor{
 	icon_state = "wood"
 	},

@@ -267,16 +267,11 @@
 /area/bigredv2/outside/library)
 "zc" = (
 /obj/structure/surface/table/woodentable,
-<<<<<<< HEAD
 /obj/item/tool/pen/clicky,
 /obj/item/paper{
 	name = "Pinwizard Data Sheet"
 	},
 /obj/item/toy/dice/d20,
-=======
-/obj/item/paper,
-/obj/item/tool/pen/clicky,
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -304,7 +299,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-<<<<<<< HEAD
 "ES" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper{
@@ -316,8 +310,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> br_laststand
 "EX" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -509,15 +501,10 @@
 "Rj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
-<<<<<<< HEAD
 /obj/item/tool/pen/clicky,
 /obj/item/paper{
 	name = "Pinwizard Data Sheet"
 	},
-=======
-/obj/item/paper,
-/obj/item/tool/pen/clicky,
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -602,12 +589,9 @@
 /obj/item/stack/sheet/wood/large_stack,
 /obj/item/stack/sheet/wood/large_stack,
 /obj/item/stack/sheet/wood/large_stack,
-<<<<<<< HEAD
 /obj/item/tool/weldingtool,
 /obj/item/tool/weldpack,
 /obj/item/clothing/glasses/welding,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -799,11 +783,7 @@ iQ
 iQ
 hL
 nn
-<<<<<<< HEAD
 ES
-=======
-zc
->>>>>>> br_laststand
 zc
 xz
 HT

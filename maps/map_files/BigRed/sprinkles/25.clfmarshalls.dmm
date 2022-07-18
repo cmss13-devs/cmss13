@@ -1,5 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-<<<<<<< HEAD
 "aw" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/hunting,
@@ -16,8 +15,6 @@
 	icon_state = "dark"
 	},
 /area/space)
-=======
->>>>>>> br_laststand
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -79,17 +76,12 @@
 /area/bigredv2/outside/marshal_office)
 "ca" = (
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/tool/weldingtool,
 /obj/item/tool/weldpack,
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
 /obj/item/tool/weldingtool,
 /obj/item/tool/weldpack,
-=======
-/obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "cd" = (
@@ -133,10 +125,7 @@
 "di" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/item/ammo_casing/bullet,
-<<<<<<< HEAD
 /obj/item/attachable/scope/mini,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -190,11 +179,7 @@
 /area/bigredv2/outside/marshal_office)
 "fe" = (
 /obj/effect/decal/cleanable/blood/oil,
-<<<<<<< HEAD
 /obj/effect/decal/cleanable/ash,
-=======
-/obj/item/stack/rods,
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -271,24 +256,18 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "hn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/bayonet,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "hr" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -328,11 +307,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "jT" = (
-<<<<<<< HEAD
 /obj/structure/barricade/wooden,
-=======
-/obj/structure/machinery/deployable/barrier,
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -423,23 +398,15 @@
 	pixel_x = -5
 	},
 /obj/item/ammo_magazine/shotgun/buckshot{
-<<<<<<< HEAD
 	pixel_x = -5;
 	pixel_y = 6
-=======
-	pixel_x = -5
->>>>>>> br_laststand
 	},
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 5
 	},
 /obj/item/ammo_magazine/shotgun/slugs{
-<<<<<<< HEAD
 	pixel_x = 5;
 	pixel_y = 6
-=======
-	pixel_x = 5
->>>>>>> br_laststand
 	},
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor,
@@ -489,10 +456,7 @@
 /area/bigredv2/outside/marshal_office)
 "nd" = (
 /obj/item/ammo_casing/bullet,
-<<<<<<< HEAD
 /obj/item/attachable/lasersight,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
@@ -512,7 +476,6 @@
 	icon_state = "vault"
 	},
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "nm" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/attachable/lasersight,
@@ -520,8 +483,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "ns" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/fire,
@@ -617,10 +578,6 @@
 "pJ" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/plasteel/large_stack,
-<<<<<<< HEAD
-=======
-/obj/item/stack/sheet/plasteel/large_stack,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "pV" = (
@@ -658,13 +615,10 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "qA" = (
 /obj/item/attachable/attached_gun/flamer,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "qJ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -711,7 +665,6 @@
 "ro" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = -5;
 	pixel_y = 6
@@ -720,8 +673,6 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -737,14 +688,11 @@
 "rB" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
-<<<<<<< HEAD
 "rH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/heavy_barrel,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "rS" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor{
@@ -774,14 +722,7 @@
 "sf" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/weapon/shield/riot,
-<<<<<<< HEAD
 /turf/closed/wall/solaris/reinforced,
-=======
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
->>>>>>> br_laststand
 /area/bigredv2/outside/marshal_office)
 "so" = (
 /obj/structure/barricade/metal/wired{
@@ -900,15 +841,12 @@
 	icon_state = "vault"
 	},
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "vu" = (
 /obj/item/attachable/verticalgrip,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "vY" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1034,13 +972,10 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "zi" = (
 /obj/item/attachable/bayonet,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "zo" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
@@ -1081,10 +1016,7 @@
 "AV" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/weapon/gun/rifle/hunting,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -1128,10 +1060,6 @@
 "CB" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal/large_stack,
-<<<<<<< HEAD
-=======
-/obj/item/stack/sheet/metal/large_stack,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Dc" = (
@@ -1167,11 +1095,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-<<<<<<< HEAD
 /obj/structure/barricade/wooden,
-=======
-/obj/structure/machinery/deployable/barrier,
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1219,10 +1143,6 @@
 /area/bigredv2/outside/marshal_office)
 "Ga" = (
 /obj/effect/decal/cleanable/dirt,
-<<<<<<< HEAD
-=======
-/obj/item/frame/table,
->>>>>>> br_laststand
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1265,10 +1185,7 @@
 "GW" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze,
-<<<<<<< HEAD
 /obj/item/attachable/attached_gun/flamer,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1291,7 +1208,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "HE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1324,27 +1240,6 @@
 /obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_y = -8;
 	pixel_x = 7
-=======
-"HQ" = (
-/obj/structure/surface/table,
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
->>>>>>> br_laststand
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -1355,7 +1250,6 @@
 	},
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-<<<<<<< HEAD
 /obj/item/ammo_magazine/smg/fp9000{
 	pixel_y = 3;
 	pixel_x = -6
@@ -1367,11 +1261,6 @@
 /obj/item/ammo_magazine/smg/fp9000{
 	pixel_x = -6
 	},
-=======
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "IC" = (
@@ -1602,7 +1491,6 @@
 "OL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/ammo_magazine/rifle/mar40/extended{
 	pixel_y = -4;
 	pixel_x = -5
@@ -1655,13 +1543,6 @@
 	pixel_y = -5;
 	pixel_x = 11
 	},
-=======
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
-/obj/item/ammo_magazine/rifle/mar40/extended,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ON" = (
@@ -1682,14 +1563,11 @@
 "OU" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/gun/smg/fp9000,
-<<<<<<< HEAD
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1731,7 +1609,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/item/weapon/gun/pistol/holdout{
 	pixel_y = 8
 	},
@@ -1749,10 +1626,6 @@
 	pixel_y = 5;
 	pixel_x = -5
 	},
-=======
-/obj/item/weapon/gun/pistol/holdout,
-/obj/item/weapon/gun/pistol/holdout,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "Qy" = (
@@ -1762,11 +1635,7 @@
 	tag = "icon-gib6"
 	},
 /obj/structure/window_frame/solaris,
-<<<<<<< HEAD
 /turf/closed/wall/solaris/reinforced,
-=======
-/turf/open/floor/plating,
->>>>>>> br_laststand
 /area/bigredv2/outside/marshal_office)
 "QS" = (
 /obj/structure/machinery/camera/autoname{
@@ -1854,33 +1723,6 @@
 /area/bigredv2/outside/marshal_office)
 "To" = (
 /obj/structure/surface/table,
-<<<<<<< HEAD
-/obj/item/ammo_magazine/rifle/m16/ap{
-	pixel_x = 8
-	},
-=======
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16/ap{
-	pixel_x = 8
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
-/obj/item/ammo_magazine/rifle/m16{
-	pixel_x = -7
-	},
->>>>>>> br_laststand
 /obj/item/ammo_magazine/rifle/m16/ap{
 	pixel_x = 8
 	},
@@ -1888,7 +1730,9 @@
 	pixel_x = 8
 	},
 /obj/item/ammo_magazine/rifle/m16/ap{
-<<<<<<< HEAD
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
 	pixel_x = 5;
 	pixel_y = 6
 	},
@@ -1897,26 +1741,15 @@
 	pixel_y = -3
 	},
 /obj/item/ammo_box/magazine/M16,
-=======
-	pixel_x = 8
-	},
-/obj/item/ammo_magazine/rifle/m16/ap{
-	pixel_x = 8
-	},
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "TA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< HEAD
 /obj/item/attachable/heavy_barrel,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
-<<<<<<< HEAD
 "TU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/verticalgrip,
@@ -1924,8 +1757,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/marshal_office)
-=======
->>>>>>> br_laststand
 "TV" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
@@ -1934,18 +1765,8 @@
 /area/bigredv2/outside/marshal_office)
 "Uc" = (
 /obj/structure/surface/table,
-<<<<<<< HEAD
 /obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_y = 9
-=======
-/obj/item/weapon/gun/m60{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/weapon/gun/m60{
-	pixel_x = 1;
-	pixel_y = 2
->>>>>>> br_laststand
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -2073,10 +1894,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
-<<<<<<< HEAD
 /obj/item/attachable/lasersight,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -2112,10 +1930,7 @@
 /area/bigredv2/outside/marshal_office)
 "ZA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< HEAD
 /obj/item/attachable/verticalgrip,
-=======
->>>>>>> br_laststand
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -2138,18 +1953,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ZX" = (
-<<<<<<< HEAD
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
-=======
-/obj/item/attachable/heavy_barrel,
-/obj/item/attachable/verticalgrip,
-/obj/item/attachable/verticalgrip,
-/obj/item/attachable/attached_gun/flamer,
-/obj/item/attachable/bayonet,
-/obj/item/attachable/bayonet,
-/obj/structure/surface/table,
->>>>>>> br_laststand
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 
@@ -2228,11 +2033,7 @@ nL
 nL
 RC
 ng
-<<<<<<< HEAD
 vu
-=======
-Gi
->>>>>>> br_laststand
 Sm
 st
 RC
@@ -2261,11 +2062,7 @@ sp
 RC
 AV
 Bz
-<<<<<<< HEAD
 TU
-=======
-um
->>>>>>> br_laststand
 FQ
 uJ
 RL
@@ -2286,11 +2083,7 @@ um
 rZ
 OR
 RC
-<<<<<<< HEAD
 aw
-=======
-qg
->>>>>>> br_laststand
 JY
 ch
 Nu
@@ -2355,11 +2148,7 @@ nL
 nL
 RC
 vi
-<<<<<<< HEAD
 nm
-=======
-sp
->>>>>>> br_laststand
 aR
 NG
 RC
@@ -2413,11 +2202,7 @@ Dq
 Dq
 Po
 Dq
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 wv
 bD
 QS
@@ -2431,11 +2216,7 @@ RC
 fq
 ec
 Xv
-<<<<<<< HEAD
 hn
-=======
-kE
->>>>>>> br_laststand
 Dq
 SJ
 co
@@ -2464,17 +2245,10 @@ MV
 PT
 uJ
 pJ
-<<<<<<< HEAD
 zi
 YZ
 sY
 RC
-=======
-Dq
-YZ
-sY
-He
->>>>>>> br_laststand
 JA
 YZ
 nd
@@ -2497,11 +2271,7 @@ CB
 Dq
 Po
 ZX
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 te
 Rk
 YA
@@ -2512,11 +2282,7 @@ RC
 "}
 (15,1,1) = {"
 RC
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 oi
 oi
 oi
@@ -2526,21 +2292,12 @@ RC
 Jx
 ca
 Dq
-<<<<<<< HEAD
 HE
 ZX
 RC
 RC
 et
 RC
-=======
-Po
-ZX
-He
-He
-et
-He
->>>>>>> br_laststand
 RC
 RC
 RC
@@ -2567,11 +2324,7 @@ kE
 eh
 gs
 gs
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (17,1,1) = {"
 Ta
@@ -2583,11 +2336,7 @@ jT
 Jx
 Dq
 Dq
-<<<<<<< HEAD
 rH
-=======
-kE
->>>>>>> br_laststand
 kE
 Po
 Dq
@@ -2621,11 +2370,7 @@ ZB
 Dq
 ZB
 ZB
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (19,1,1) = {"
 Ta
@@ -2671,11 +2416,7 @@ gM
 Pa
 mt
 mt
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (21,1,1) = {"
 RC
@@ -2707,11 +2448,7 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 Tl
 Dq
 Fz
@@ -2725,11 +2462,7 @@ bn
 Bl
 yz
 kE
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (23,1,1) = {"
 nL
@@ -2738,15 +2471,9 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
 Tl
 qA
-=======
-He
-Tl
-Dq
->>>>>>> br_laststand
 Ck
 Dq
 Po
@@ -2758,11 +2485,7 @@ kl
 IY
 KC
 Dq
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (24,1,1) = {"
 nL
@@ -2771,7 +2494,6 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
 RC
 RC
@@ -2787,23 +2509,6 @@ RC
 RC
 RC
 RC
-=======
-He
-He
-He
-He
-Dq
-Po
-He
-He
-He
-He
-He
-He
-He
-He
-He
->>>>>>> br_laststand
 "}
 (25,1,1) = {"
 nL
@@ -2815,11 +2520,7 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 Dq
 Po
 uJ
@@ -2830,11 +2531,7 @@ LE
 DA
 hV
 tH
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (26,1,1) = {"
 rB
@@ -2846,17 +2543,10 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
 Dq
 Pq
 Jx
-=======
-He
-Dq
-Pq
-yJ
->>>>>>> br_laststand
 Yq
 nQ
 kN
@@ -2864,11 +2554,7 @@ nQ
 nQ
 ki
 Kz
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (27,1,1) = {"
 rB
@@ -2880,11 +2566,7 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 Jx
-=======
-yJ
->>>>>>> br_laststand
 Dq
 mL
 ZD
@@ -2895,11 +2577,7 @@ lP
 lP
 ne
 IC
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (28,1,1) = {"
 rB
@@ -2914,26 +2592,15 @@ nL
 mZ
 nP
 kE
-<<<<<<< HEAD
 Jx
-=======
-yJ
->>>>>>> br_laststand
 Yq
 kN
 ki
 kN
-<<<<<<< HEAD
 HJ
 kN
 Cw
 RC
-=======
-Ac
-kN
-Cw
-He
->>>>>>> br_laststand
 "}
 (29,1,1) = {"
 rB
@@ -2956,11 +2623,7 @@ nQ
 kN
 yN
 Yq
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (30,1,1) = {"
 rB
@@ -2972,11 +2635,7 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 Jx
-=======
-yJ
->>>>>>> br_laststand
 xV
 kE
 uJ
@@ -2987,11 +2646,7 @@ tC
 VQ
 tC
 so
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}
 (31,1,1) = {"
 rB
@@ -3003,17 +2658,10 @@ nL
 nL
 nL
 nL
-<<<<<<< HEAD
 RC
 RC
 RC
 RC
-=======
-He
-He
-He
-He
->>>>>>> br_laststand
 GT
 GT
 GT
@@ -3021,9 +2669,5 @@ GT
 GT
 GT
 GT
-<<<<<<< HEAD
 RC
-=======
-He
->>>>>>> br_laststand
 "}

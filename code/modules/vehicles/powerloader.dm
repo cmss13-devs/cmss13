@@ -107,10 +107,10 @@
 		return
 	var/mob/living/carbon/human/H = M
 	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_TRAINED))
-		to_chat(H, SPAN_WARNING("You don't seem to know how to operate [src]."))
+		to_chat(H, SPAN_WARNING("You don't seem to know how to operate \the [src]."))
 		return
 	if(H.r_hand || H.l_hand)
-		to_chat(H, SPAN_WARNING("You need your two hands to use [src]."))
+		to_chat(H, SPAN_WARNING("You need both hands free to operate \the [src]."))
 		return
 	. = ..()
 
@@ -182,11 +182,11 @@
 /obj/item/powerloader_clamp/examine(mob/user, var/compact_info = FALSE)
 	if(compact_info)
 		if(loaded)
-			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] held by [icon2html(src, user)] [src.name]."))
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
 	else
 		. = ..()
 		if(loaded)
-			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] held by [icon2html(src, user)] [src.name]."))
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
 
 /obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user)
 	if(M == linked_powerloader.buckled_mob)

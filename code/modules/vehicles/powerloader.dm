@@ -30,6 +30,8 @@
 	PC_right = new(src)
 	PC_right.name = "\improper Power Loader Right Hydraulic Claw"
 	PC_right.linked_powerloader = src
+	PC_right.is_right = TRUE
+	PC_right.icon_state = "loader_clamp_right"
 
 	. = ..()
 
@@ -156,6 +158,7 @@
 								//We're controlling the clamp but the item isn't really in our hand.
 	var/obj/vehicle/powerloader/linked_powerloader
 	var/obj/loaded
+	var/is_right = FALSE
 
 //--------------------GENERAL PROCS-----------------
 
@@ -174,8 +177,12 @@
 		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
 /obj/item/powerloader_clamp/update_icon()
-	if(loaded) icon_state = "loader_clamp_full"
-	else icon_state = "loader_clamp"
+	var/icon_tag = ""
+	if(loaded)
+		icon_tag = "_full"
+	if(is_right)
+		icon_tag += "_right"
+	icon_state = "loader_clamp" + icon_tag
 
 //--------------------INTERACTION PROCS-----------------
 

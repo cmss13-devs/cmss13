@@ -814,6 +814,15 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/general_offices)
+"Mr" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldingtool,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "Nm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1401,7 +1410,7 @@ kI
 kI
 fa
 cd
-XZ
+Mr
 XZ
 oK
 XZ

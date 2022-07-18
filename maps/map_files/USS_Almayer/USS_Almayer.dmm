@@ -70087,6 +70087,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "swN" = (
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/suit/storage/hazardvest/blue,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "cargo";
@@ -70784,6 +70785,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/basketball)
+"sOx" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "cargo";
+	tag = "icon-cargo (SOUTHWEST)"
+	},
+/area/almayer/engineering/upper_engineering)
 "sOy" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -131498,7 +131508,7 @@ apd
 alR
 amA
 pZK
-swN
+sOx
 alO
 axM
 amA
@@ -131701,7 +131711,7 @@ apd
 alR
 amA
 atq
-swN
+sOx
 alO
 axN
 azq

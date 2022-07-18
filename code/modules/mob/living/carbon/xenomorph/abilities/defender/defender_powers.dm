@@ -68,8 +68,8 @@
 	if(!X.crest_defense)
 		apply_cooldown()
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
-
 	if(!X.Adjacent(H))
+		on_cooldown_end()
 		return
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)

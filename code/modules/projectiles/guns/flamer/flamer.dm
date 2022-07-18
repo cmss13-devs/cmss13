@@ -513,8 +513,7 @@
 				var/mob/living/carbon/human/H = M
 				if (HAS_TRAIT(M, TRAIT_SUPER_STRONG))
 					resist_modifier = 0.25
-				H.next_move_slowdown = H.next_move_slowdown + (3 * resist_modifier)
-				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
+				to_chat(H, SPAN_DANGER("The viscous napalm clings to your body!"))
 			else if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
 				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
@@ -522,8 +521,7 @@
 					//type_b_debuff_xeno_armor(X)
 				resist_modifier = type_b_debuff_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
-				X.next_move_slowdown = X.next_move_slowdown + (3 * resist_modifier)
-				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
+				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and being torn off!"))
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
 	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)

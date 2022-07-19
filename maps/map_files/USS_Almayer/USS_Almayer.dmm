@@ -44121,10 +44121,6 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "gqW" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/donut_box{
-	pixel_x = 7;
-	pixel_y = 10
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -59343,6 +59339,9 @@
 /area/almayer/shipboard/brig/main_office)
 "ntq" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box{
+	pixel_y = 20
+	},
 /obj/structure/machinery/computer/security/almayer_network{
 	dir = 8
 	},
@@ -69889,6 +69888,9 @@
 	pixel_x = -6
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/storage/donut_box{
+	pixel_y = -11
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -73932,8 +73934,7 @@
 	pixel_y = -9
 	},
 /obj/item/storage/donut_box{
-	pixel_x = 10;
-	pixel_y = 10
+	pixel_y = 19
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -83084,10 +83085,6 @@
 	pixel_x = -6;
 	pixel_y = 18;
 	req_access_txt = "3"
-	},
-/obj/item/storage/donut_box{
-	pixel_x = 9;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

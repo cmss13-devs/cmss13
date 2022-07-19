@@ -247,3 +247,7 @@
   - bugfix: Auto-turfs now generate their inner and outer corners correctly.
   Segrain:
   - bugfix: Zombies and PMC snipers once again have the intended nightvision.
+2022-07-19:
+  Segrain:
+  - bugfix: Fixed some issues with different types of floors and floor tiles not being
+      properly differentiated.

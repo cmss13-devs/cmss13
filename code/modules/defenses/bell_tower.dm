@@ -114,9 +114,11 @@
 	if(M.get_target_lock(faction))
 		return
 
-	if(!(src in view(linked_bell))) //anti exploit -> stops placing walls after making tripwires saving them
-		qdel(src)
-		return
+	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
+	for(var/turf/PT in path)
+		if(PT.density)
+			qdel(src)
+			return
 
 	if(linked_bell.last_mob_activated == M)
 		return

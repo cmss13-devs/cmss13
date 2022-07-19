@@ -272,15 +272,15 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
-/datum/gear/pack_emeraldgreen
-	display_name = "Pack Of Emerald Greens"
-	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
+/datum/gear/pack_arcturian_ace
+	display_name = "Pack Of Arcturian Aces"
+	path = /obj/item/storage/fancy/cigarettes/arcturian_ace
 	slot = WEAR_IN_BACK
 	cost = 3
 
-/datum/gear/pack_wypacket
-	display_name = "Pack Of Weyland-Yutani Golds"
-	path = /obj/item/storage/fancy/cigarettes/wypacket
+/datum/gear/pack_emeraldgreen
+	display_name = "Pack Of Emerald Greens"
+	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
 	slot = WEAR_IN_BACK
 	cost = 3
 
@@ -296,12 +296,6 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 3
 
-/datum/gear/pack_arcturian_ace
-	display_name = "Pack Of Arcturian Aces"
-	path = /obj/item/storage/fancy/cigarettes/arcturian_ace
-	slot = WEAR_IN_BACK
-	cost = 3
-
 /datum/gear/pack_lady_finger
 	display_name = "Pack Of Lady Fingers"
 	path = /obj/item/storage/fancy/cigarettes/lady_finger
@@ -313,6 +307,12 @@ var/global/list/gear_datums = list()
 	path = /obj/item/storage/fancy/cigarettes/lucky_strikes
 	slot = WEAR_IN_BACK
 	cost = 1
+
+/datum/gear/pack_wypacket
+	display_name = "Pack Of Weyland-Yutani Golds"
+	path = /obj/item/storage/fancy/cigarettes/wypacket
+	slot = WEAR_IN_BACK
+	cost = 3
 
 /datum/gear/weed_joint
 	display_name = "Joint of Space Weed"

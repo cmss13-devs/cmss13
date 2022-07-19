@@ -1,6 +1,6 @@
 /obj/item/device/flash
 	name = "flash"
-	desc = "Used for blinding and being an asshole."
+	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
 	icon_state = "flash"
 	item_state = "flash_device"	//Replace me later
 	throwforce = 5
@@ -11,24 +11,31 @@
 
 	var/broken_icon_state = "flashburnt"
 	var/skilllock = SKILL_POLICE_FLASH
-	var/times_used = 0 //Number of times it's been used.
-	var/flashes_per_minute = 5 //how many you can do per minute
+	var/flashes_stored = 5
+	var/max_flashes_stored = 5 //how many you can do per minute
 	var/broken = FALSE     //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
+	var/recharge_time_per_flash = 30 SECONDS
+	var/cooldown_between_flashes = 1 SECONDS
 
 /obj/item/device/flash/update_icon()
 	if(broken)
 		icon_state = broken_icon_state
 
-/obj/item/device/flash/proc/flash_recharge()
-	//capacitor recharges over time
-	for(var/i=0, i<flashes_per_minute, i++)
-		if(last_used+300 > world.time)
-			break
-		last_used += 300
-		times_used -= 1
-	last_used = world.time
-	times_used = max(0,round(times_used)) //sanity
+/obj/item/device/flash/examine(mob/user)
+	. = ..()
+	if(broken)
+		to_chat(user, "This one's bulb has popped. Oh well.")
+	else
+		to_chat(user, SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining."))
+
+/obj/item/device/flash/proc/add_charge()
+	if(broken)
+		return
+	flashes_stored++
+	if(flashes_stored <= max_flashes_stored)
+		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping"), 3)
+	flashes_stored = min(max_flashes_stored, round(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
 	if(!ishuman(user))
@@ -45,18 +52,22 @@
 	return TRUE
 
 /obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, var/aoe = FALSE) //actually does the stun and logs it
-	flash_recharge()
-	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
+	//spamming the flash before it's fully charged increases the chance of it  breaking
 	//It will never break on the first use.
-	if(times_used <= flashes_per_minute)
+	if(flashes_stored)
+		if((world.time - last_used) < cooldown_between_flashes)
+			to_chat(user, SPAN_WARNING("\The [src]'s capacitor is still recharging for the next flash, wait a moment!"))
+			return
 		last_used = world.time
-		if(prob(times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
+		flashes_stored--
+		if(prob(10 - (flashes_stored*2)))	//it has a 10% chance to break on the final flash
 			broken = TRUE
 			to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 			update_icon()
 			return
-		times_used++
-	else	//can only use it 5 times a minute
+		addtimer(CALLBACK(src, .proc/add_charge), recharge_time_per_flash)
+		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
+	else
 		to_chat(user, SPAN_WARNING("*click* *click*"))
 		playsound(src.loc, 'sound/weapons/gun_empty.ogg', 25, 1)
 		return
@@ -119,7 +130,7 @@
 
 /obj/item/device/flash/attack(mob/living/M, mob/user)
 	if(!user || !M)	return	//sanity
-	if(!ishuman(M)) return
+	if(!istype(M)) return
 
 	if(check_if_can_use_flash(user))
 		if(isXeno(M))
@@ -145,14 +156,13 @@
 
 /obj/item/device/flash/emp_act(severity)
 	if(broken)	return
-	flash_recharge()
-	switch(times_used)
+	switch(flashes_stored)
 		if(0 to 5)
-			if(prob(2*times_used))
+			if(prob(20 - (2*flashes_stored)))
 				broken = TRUE
 				update_icon()
 				return
-			times_used++
+			flashes_stored--
 			if(istype(loc, /mob/living/carbon))
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())

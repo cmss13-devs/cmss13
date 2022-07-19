@@ -255,3 +255,6 @@
   - balance: removed the "mixed metal and plasteel" crate from req
   - balance: your vision is no longer extended by 5 tiles when you man an m2c
   - balance: removed the m2c from engineer vendors
+  - rscadd: changed the radio's UI to TGUI. You can now toggle on and off if you want
+      to broadcast using "high volume" mode, and you can see what channel your radio
+      is set to by default with ease.

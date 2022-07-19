@@ -52,7 +52,7 @@
 
 				if(isobserver(C.mob))
 					counted_humanoids["Observers"]++
-					if(C.admin_holder)
+					if(C.admin_holder?.rights & R_MOD)
 						counted_humanoids["Admin observers"]++
 						counted_humanoids["Observers"]--
 					var/mob/dead/observer/O = C.mob
@@ -71,22 +71,23 @@
 						if(ishuman(C.mob))
 							if(C.mob.faction == FACTION_ZOMBIE)
 								counted_humanoids[FACTION_ZOMBIE]++
-								continue
-							if(C.mob.faction == FACTION_YAUTJA)
+								entry += " - <font color='#2DACB1'><B>Zombie</B></font>"
+							else if(C.mob.faction == FACTION_YAUTJA)
 								counted_humanoids[FACTION_YAUTJA]++
+								entry += " - <font color='#7ABA19'><B>Predator</B></font>"
 								if(C.mob.status_flags & XENO_HOST)
 									counted_humanoids["Infected preds"]++
-								continue
-							counted_humanoids["Humans"]++
-							if(C.mob.status_flags & XENO_HOST)
-								counted_humanoids["Infected humans"]++
-							if(C.mob.faction == FACTION_MARINE)
-								counted_humanoids[FACTION_MARINE]++
-								if(C.mob.job in (ROLES_MARINES))
-									counted_humanoids["USCM Marines"]++
 							else
-								counted_humanoids[C.mob.faction]++
-						if(isXeno(C.mob))
+								counted_humanoids["Humans"]++
+								if(C.mob.status_flags & XENO_HOST)
+									counted_humanoids["Infected humans"]++
+								if(C.mob.faction == FACTION_MARINE)
+									counted_humanoids[FACTION_MARINE]++
+									if(C.mob.job in (ROLES_MARINES))
+										counted_humanoids["USCM Marines"]++
+								else
+									counted_humanoids[C.mob.faction]++
+						else if(isXeno(C.mob))
 							var/mob/living/carbon/Xenomorph/X = C.mob
 							counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
@@ -105,6 +106,8 @@
 			dat += "<BR><B style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</B> <B style='color:#688944'>(Marines: [counted_humanoids["USCM Marines"]])</B>"
 		if(counted_humanoids[FACTION_YAUTJA])
 			dat += "<BR><B style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</B> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+		if(counted_humanoids[FACTION_ZOMBIE])
+			dat += "<BR><B style='color:#2DACB1'>Zombies: [counted_humanoids[FACTION_ZOMBIE]]</B>"
 
 		var/show_fact = TRUE
 		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)
@@ -145,7 +148,7 @@
 		dat += "<b>Total Players: [players]</b><br>"
 
 	dat += "</body></html>"
-	show_browser(usr, dat, "Who", "who", "size=600x1000")
+	show_browser(usr, dat, "Who", "who", "size=600x800")
 
 
 /client/verb/staffwho()
@@ -179,14 +182,14 @@
 			if(CLIENT_IS_STAFF(src))
 				if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"
-			if(istype(entry.mob, /mob/dead/observer))
-				dat += "<B> - </B><B style='color:#777'>Observing</B>"
-			else if(istype(entry.mob, /mob/new_player))
-				dat += "<B> - </B><font color='#000'>Lobby</font></B>"
-			else
-				dat += "<B> - </B><B style='color:#688944'>Playing</B>"
-			if(entry.is_afk())
-				dat += "<B style='color:#4D0096'> (AFK)</B>"
+				if(istype(entry.mob, /mob/dead/observer))
+					dat += "<B> - </B><B style='color:#777'>Observing</B>"
+				else if(istype(entry.mob, /mob/new_player))
+					dat += "<B> - </B><font color='#000'>Lobby</font></B>"
+				else
+					dat += "<B> - </B><B style='color:#688944'>Playing</B>"
+				if(entry.is_afk())
+					dat += "<B style='color:#4D0096'> (AFK)</B>"
 			dat += "<BR>"
 	dat += "</body></html>"
-	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x1000")
+	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x800")

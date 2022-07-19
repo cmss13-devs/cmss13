@@ -1,8 +1,3 @@
-GLOBAL_VAR_INIT(upp_language, setup_upp_language())
-
-/proc/setup_upp_language()
-    return pick(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
-
 /datum/faction/upp
 	name = "Union of Progressive Peoples"
 	faction_tag = FACTION_UPP

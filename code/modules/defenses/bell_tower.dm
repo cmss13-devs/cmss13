@@ -51,18 +51,6 @@
 /obj/structure/machinery/defenses/bell_tower/proc/setup_tripwires()
 	clear_tripwires()
 	for(var/turf/T in orange(BELL_TOWER_RANGE, loc))
-		var/blocked = FALSE
-		if(T.density)
-			continue
-
-		var/list/turf/path = getline2(T, src, include_from_atom = TRUE)
-		for(var/turf/PT in path)
-			if(PT.density)
-				blocked = TRUE
-
-		if(blocked)
-			continue
-
 		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
 		FE.linked_bell = src
 		tripwires_placed += FE
@@ -117,7 +105,6 @@
 	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
 	for(var/turf/PT in path)
 		if(PT.density)
-			qdel(src)
 			return
 
 	if(linked_bell.last_mob_activated == M)

@@ -49,7 +49,6 @@
 
 	attachable_allowed = list(
 						/obj/item/attachable/smartbarrel,
-						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY

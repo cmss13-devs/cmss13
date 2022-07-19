@@ -251,3 +251,5 @@
   Segrain:
   - bugfix: Fixed some issues with different types of floors and floor tiles not being
       properly differentiated.
+  stanalbatross:
+  - balance: removed the "mixed metal and plasteel" crate from req

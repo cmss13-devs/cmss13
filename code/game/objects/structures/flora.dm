@@ -240,7 +240,6 @@ ICE GRASS
 	color = COLOR_G_JUNG
 	icon_state = "tallgrass"
 	desc = "A clump of vibrant jungle grasses"
-	cut_level = PLANT_CUT_MACHETE
 	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/grass/tallgrass/jungle/corner

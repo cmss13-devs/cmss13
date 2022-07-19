@@ -97,7 +97,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Radio", "Radio")
-	ui.open()
+		ui.open()
 
 /obj/item/device/radio/ui_data(mob/user)
 	var/list/data = list()

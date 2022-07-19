@@ -86,19 +86,18 @@
 	tgui_interact(user)
 
 /obj/item/device/radio/ui_state(mob/user)
+	return GLOB.inventory_state
+
+/obj/item/device/radio/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
 	if(!on)
 		return UI_CLOSE
-	return GLOB.inventory_state
 
 /obj/item/device/radio/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Radio", "Radio")
-		if(state)
-			ui.set_state(state)
-		ui.open()
-	else if(!on)
-		ui.close()
+	ui.open()
 
 /obj/item/device/radio/ui_data(mob/user)
 	var/list/data = list()

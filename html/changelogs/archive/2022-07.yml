@@ -253,6 +253,11 @@
       properly differentiated.
   - bugfix: Rangefinders/designators now require you to actually be on the surface
       to get orbital coordinates.
+  sose96:
+  - rscadd: Separate button for CL shutters/door, also relocated some items in the
+      CL's office.
+  - rscdel: CL office window that looked into maint and the alcohol outside of storage
+      room for the CL.
   stanalbatross:
   - balance: removed the "mixed metal and plasteel" crate from req
   - balance: your vision is no longer extended by 5 tiles when you man an m2c

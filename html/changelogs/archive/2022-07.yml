@@ -253,3 +253,5 @@
       properly differentiated.
   stanalbatross:
   - balance: removed the "mixed metal and plasteel" crate from req
+  - balance: your vision is no longer extended by 5 tiles when you man an m2c
+  - balance: removed the m2c from engineer vendors

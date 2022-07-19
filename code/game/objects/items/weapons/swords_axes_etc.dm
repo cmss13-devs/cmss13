@@ -102,6 +102,7 @@
 	user.flick_attack_overlay(target, "punch")
 	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
 	// Hit 'em
+	var/target_zone = check_zone(user.zone_selected)
 	target.apply_stamina_damage(stunforce, target_zone, ARMOR_MELEE)
 	return TRUE
 

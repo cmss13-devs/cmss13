@@ -24,8 +24,6 @@
 	. = ..()
 
 /obj/item/device/radio/intercom/ui_state(mob/user)
-	if(!on)
-		return UI_CLOSE
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/item/device/radio/intercom/attack_remote(mob/user as mob)

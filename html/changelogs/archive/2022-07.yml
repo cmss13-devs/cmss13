@@ -265,3 +265,6 @@
   - rscadd: changed the radio's UI to TGUI. You can now toggle on and off if you want
       to broadcast using "high volume" mode, and you can see what channel your radio
       is set to by default with ease.
+  - bugfix: you can no longer activate pred cloak while dead or incapacitated
+  - bugfix: you no longer get to_chats of errors if trying to use a bracer while being
+      a human and dead

@@ -51,7 +51,16 @@
 /obj/structure/machinery/defenses/bell_tower/proc/setup_tripwires()
 	clear_tripwires()
 	for(var/turf/T in orange(BELL_TOWER_RANGE, loc))
+		var/blocked = FALSE
 		if(T.density)
+			continue
+
+		var/list/turf/path = getline2(T, src, include_from_atom = TRUE)
+		for(var/turf/PT in path)
+			if(PT.density)
+				blocked = TRUE
+
+		if(blocked)
 			continue
 
 		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
@@ -74,7 +83,7 @@
 
 
 /obj/effect/bell_tripwire
-	name = "flag effect"
+	name = "bell tripwire"
 	anchored = TRUE
 	mouse_opacity = 0
 	invisibility = 101
@@ -103,6 +112,10 @@
 
 	var/mob/living/carbon/M = A
 	if(M.get_target_lock(faction))
+		return
+
+	if(!(src in view(linked_bell))) //anti exploit -> stops placing walls after making tripwires saving them
+		qdel(src)
 		return
 
 	if(linked_bell.last_mob_activated == M)

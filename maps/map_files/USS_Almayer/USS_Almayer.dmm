@@ -8028,6 +8028,10 @@
 "avh" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/uscm_mre,
+/obj/item/storage/fancy/cigarettes/arcturian_ace{
+	pixel_x = 10;
+	pixel_y = 14
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -10111,6 +10115,10 @@
 /area/almayer/medical/morgue)
 "aAK" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigarettes/arcturian_ace{
+	pixel_x = -4;
+	pixel_y = 14
+	},
 /obj/item/device/camera,
 /obj/item/device/camera_film,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -13109,6 +13117,10 @@
 /area/almayer/evacuation/pod10)
 "aLk" = (
 /obj/structure/largecrate/random/case,
+/obj/item/storage/fancy/cigarettes/emeraldgreen{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
 "aLl" = (
@@ -35429,6 +35441,9 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
+/obj/item/storage/fancy/cigarettes/lady_finger{
+	pixel_x = -6
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -41696,6 +41711,10 @@
 	pixel_y = 5
 	},
 /obj/item/toy/deck/uno,
+/obj/item/storage/fancy/cigarettes/blackpack{
+	pixel_x = -11;
+	pixel_y = 9
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -42612,14 +42631,16 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "fGh" = (
-/obj/structure/bed/chair{
-	dir = 1
+/obj/item/storage/fancy/cigarettes/emeraldgreen{
+	pixel_x = 12;
+	pixel_y = 8
 	},
+/obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/living/briefing)
+/area/almayer/hull/upper_hull/u_a_s)
 "fGm" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor9";
@@ -44100,6 +44121,10 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "gqW" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box{
+	pixel_x = 7;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -47626,6 +47651,10 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/item/storage/fancy/cigarettes/emeraldgreen{
+	pixel_x = 9;
+	pixel_y = 11
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -50276,6 +50305,9 @@
 /area/almayer/command/cichallway)
 "jgM" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigarettes/blackpack{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -52084,6 +52116,9 @@
 	layer = 3.7;
 	pixel_x = 5;
 	pixel_y = 8
+	},
+/obj/item/storage/fancy/cigarettes/lady_finger{
+	pixel_x = -5
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -54172,9 +54207,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "lcW" = (
-/obj/item/storage/donut_box{
-	pixel_y = 8
-	},
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
@@ -61433,6 +61465,10 @@
 	desc = "A small coin, bearing the falling falcons insignia.";
 	name = "falling falcons challenge coin"
 	},
+/obj/item/storage/donut_box{
+	pixel_x = -3;
+	pixel_y = 9
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "ott" = (
@@ -61509,6 +61545,14 @@
 	tag = "icon-greencorner (WEST)"
 	},
 /area/almayer/command/cichallway)
+"ovc" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigarettes/blackpack,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "ovn" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -69866,6 +69910,18 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hallways/repair_bay)
+"ssi" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/obj/item/storage/fancy/cigarettes/arcturian_ace,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/hallways/hangar)
 "ssD" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -73875,6 +73931,10 @@
 	pixel_x = -17;
 	pixel_y = -9
 	},
+/obj/item/storage/donut_box{
+	pixel_x = 10;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -73900,6 +73960,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/cigbutt,
 /obj/item/ashtray/glass,
+/obj/item/storage/fancy/cigarettes/arcturian_ace{
+	pixel_x = -11
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "uhP" = (
@@ -83021,6 +83084,10 @@
 	pixel_x = -6;
 	pixel_y = 18;
 	req_access_txt = "3"
+	},
+/obj/item/storage/donut_box{
+	pixel_x = 9;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -93181,7 +93248,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -109025,7 +109092,7 @@ aRu
 aRu
 aRu
 bcm
-aZZ
+ssi
 aYC
 aZZ
 bkA
@@ -118994,7 +119061,7 @@ uMk
 uMk
 bgO
 beH
-fGh
+bqZ
 bdg
 buH
 hOR
@@ -119197,7 +119264,7 @@ uMk
 uMk
 bgO
 beH
-fGh
+bqZ
 bdg
 buH
 hOR
@@ -128402,7 +128469,7 @@ atG
 psm
 seO
 aDF
-amP
+fGh
 egB
 xlX
 aDF
@@ -132402,7 +132469,7 @@ osE
 cAH
 cAH
 vuR
-gHv
+ovc
 gHv
 haq
 vuR

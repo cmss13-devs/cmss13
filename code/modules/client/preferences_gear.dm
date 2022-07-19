@@ -276,7 +276,37 @@ var/global/list/gear_datums = list()
 	display_name = "Pack Of Emerald Greens"
 	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
 	slot = WEAR_IN_BACK
-	cost = 1
+	cost = 3
+
+/datum/gear/pack_wypacket
+	display_name = "Pack Of Weyland-Yutani Golds"
+	path = /obj/item/storage/fancy/cigarettes/wypacket
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pack_blackpack
+	display_name = "Pack Of Executive Selects"
+	path = /obj/item/storage/fancy/cigarettes/blackpack
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pack_kpack
+	display_name = "Pack Of Koorlander Golds"
+	path = /obj/item/storage/fancy/cigarettes/kpack
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pack_arcturian_ace
+	display_name = "Pack Of Arcturian Aces"
+	path = /obj/item/storage/fancy/cigarettes/arcturian_ace
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pack_lady_finger
+	display_name = "Pack Of Lady Fingers"
+	path = /obj/item/storage/fancy/cigarettes/lady_finger
+	slot = WEAR_IN_BACK
+	cost = 3
 
 /datum/gear/pack_lucky_strikes
 	display_name = "Pack Of Lucky Strikes"

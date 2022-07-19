@@ -167,6 +167,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/tallgrass.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
+	cut_level = PLANT_CUT_MACHETE
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/Initialize()
@@ -220,7 +221,6 @@ ICE GRASS
 /obj/structure/flora/grass/tallgrass/desert/corner
 	icon_state = "tallgrass_corner"
 	overlay_type = "tallgrass_overlay_corner"
-	cut_level = PLANT_CUT_MACHETE
 	center = FALSE
 
 ///ICE COLONY - SOROKYNE///

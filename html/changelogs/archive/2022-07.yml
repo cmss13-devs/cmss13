@@ -251,6 +251,8 @@
   Segrain:
   - bugfix: Fixed some issues with different types of floors and floor tiles not being
       properly differentiated.
+  - bugfix: Rangefinders/designators now require you to actually be on the surface
+      to get orbital coordinates.
   stanalbatross:
   - balance: removed the "mixed metal and plasteel" crate from req
   - balance: your vision is no longer extended by 5 tiles when you man an m2c

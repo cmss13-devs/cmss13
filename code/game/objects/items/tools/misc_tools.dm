@@ -167,7 +167,9 @@
 	update_pen_state()
 
 /obj/item/tool/pen/proc/update_pen_state()
-	icon_state = "pen_[colour]_[on? "on": "off"]"
+	overlays.Cut()
+	if(on)
+		overlays += "+[color]_tip"
 
 /obj/item/tool/pen/clicky
 	desc = "It's a WY brand extra clicky black ink pen."
@@ -190,6 +192,15 @@
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
 	name = "WY red pen"
+	clicky = TRUE
+
+/obj/item/tool/pen/green
+	desc = "It's a normal green ink pen."
+	colour = "green"
+
+/obj/item/tool/pen/green/clicky
+	desc = "It's a WY brand extra clicky green ink pen."
+	name = "WY green pen"
 	clicky = TRUE
 
 /obj/item/tool/pen/invisible

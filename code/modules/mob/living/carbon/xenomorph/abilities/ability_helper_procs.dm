@@ -40,7 +40,9 @@
 				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
 				return
 
-		if(O.density || istype(O, /obj/structure))
+		if(istype(O, /obj/item/hardpoint))
+			wait_time = 100 //you are not supposed to be able to easily combat-melt irreplaceable things.
+		else if(O.density || istype(O, /obj/structure))
 			wait_time = 40 //dense objects are big, so takes longer to melt.
 
 	//TURF CHECK

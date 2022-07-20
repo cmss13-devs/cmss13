@@ -57,15 +57,15 @@
 						counted_humanoids["Observers"]--
 					var/mob/dead/observer/O = C.mob
 					if(O.started_as_observer)
-						entry += " - <font color='#777'>Observing</font>"
+						entry += " - <font color='#808080'>Observing</font>"
 					else
-						entry += " - <font color='#000'><b>DEAD</B></font>"
+						entry += " - <font color='#A000D0'><b>DEAD</B></font>"
 				else
 					switch(C.mob.stat)
 						if(UNCONSCIOUS)
-							entry += " - <font color='#404040'><b>Unconscious</B></font>"
+							entry += " - <font color='#B0B0B0'><b>Unconscious</B></font>"
 						if(DEAD)
-							entry += " - <font color='#000'><b>DEAD</B></font>"
+							entry += " - <font color='#A000D0'><b>DEAD</B></font>"
 
 					if(C.mob && C.mob.stat != DEAD)
 						if(ishuman(C.mob))
@@ -183,13 +183,13 @@
 				if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"
 				if(istype(entry.mob, /mob/dead/observer))
-					dat += "<B> - </B><B style='color:#777'>Observing</B>"
+					dat += "<B> - <font color='#808080'>Observing</font></B>"
 				else if(istype(entry.mob, /mob/new_player))
-					dat += "<B> - </B><font color='#000'>Lobby</font></B>"
+					dat += "<B> - <font color='#FFFFFF'>Lobby</font></B>"
 				else
-					dat += "<B> - </B><B style='color:#688944'>Playing</B>"
+					dat += "<B> - <font color='#688944'>Playing</font></B>"
 				if(entry.is_afk())
-					dat += "<B style='color:#4D0096'> (AFK)</B>"
+					dat += "<B> <font color='#A040D0'> (AFK)</font></B>"
 			dat += "<BR>"
 	dat += "</body></html>"
 	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x800")

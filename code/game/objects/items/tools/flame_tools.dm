@@ -376,14 +376,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/go_out(mob/user)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, var/silent = FALSE)
 	var/mob/living/M
 	if(ismob(loc))
 		M = loc
-		if(user == M)
-			user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out [src]."))
-		else
-			to_chat(M, SPAN_NOTICE("Your [src] goes out."))
+		if(!silent)
+			if(user == M)
+				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out [src]."))
+			else
+				to_chat(M, SPAN_NOTICE("Your [src] goes out."))
 	STOP_PROCESSING(SSobj, src)
 	if(type_butt)
 		var/turf/T = get_turf(src)
@@ -392,6 +393,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		//if(M)
 			//M.temp_drop_inv_item(src)	//un-equip it so the overlays can updat
 		qdel(src)
+		. = butt
 	else
 		heat_source = 0
 		icon_state = icon_off
@@ -582,6 +584,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 200 SECONDS
 	var/ash = FALSE
 
+/obj/item/clothing/mask/cigarette/pipe/examine()
+	..()
+	if(ash)
+		to_chat(usr, "It is full of ash.")
+	else if(smoketime <= 0)
+		to_chat(usr, "It is empty.")
+
 /obj/item/clothing/mask/cigarette/pipe/go_out()
 	..()
 	if(smoketime <= 0)
@@ -626,6 +635,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
 		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
+
+/obj/item/clothing/mask/cigarette/pipe/light()
+	if(smoketime > 0)
+		return ..()
+	to_chat(usr, SPAN_WARNING("[src] is empty!"))
+	return
 
 /obj/item/clothing/mask/cigarette/pipe/cobpipe
 	name = "corn cob pipe"

@@ -271,3 +271,8 @@
   - bugfix: you can no longer activate pred cloak while dead or incapacitated
   - bugfix: you no longer get to_chats of errors if trying to use a bracer while being
       a human and dead
+2022-07-20:
+  Diegoflores31:
+  - bugfix: fixed defenders hitting headbutts twice by applying the cooldown to the
+      ability once it is used. If you use the ability but do not actually headbutt
+      your target, the cooldown will be refunded.

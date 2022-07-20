@@ -75,7 +75,9 @@
 		for(var/mob/living/carbon/Xenomorph/target_for_message in X.hive.totalXenos)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
-			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [X] (<a href='byond://?src=\ref[X];[overwatch_target]=\ref[src];[overwatch_src]=\ref[X]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [X] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[X];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+
+//" (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
 	X.use_plasma(plasma_cost)
 	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))

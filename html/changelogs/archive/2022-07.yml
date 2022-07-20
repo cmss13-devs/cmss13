@@ -276,6 +276,8 @@
   - bugfix: fixed defenders hitting headbutts twice by applying the cooldown to the
       ability once it is used. If you use the ability but do not actually headbutt
       your target, the cooldown will be refunded.
+  Geeves:
+  - rscadd: Added the option to buy ceramic plates to the CL's Briefcase.
   Segrain:
   - bugfix: Reflective walls now actually take damage from the bullets they did not
       reflect.

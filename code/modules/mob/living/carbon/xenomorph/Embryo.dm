@@ -225,6 +225,9 @@
 		if(L.client)
 			L.set_lighting_alpha_from_prefs(L.client)
 
+		L.attack_log += "\[[time_stamp()]\]<font color='red'> chestbursted from [key_name(victim)]</font>"
+		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(L)]</font>"
+
 		if(burstcount)
 			step(L, pick(cardinal))
 
@@ -243,6 +246,7 @@
 		if(!victim.first_xeno)
 			to_chat(L, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
 			to_chat(L, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
+			log_attack("[key_name(victim)] chestbursted, the larva was [key_name(L)].") //this is so that admins are not spammed with los logs
 
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)
@@ -259,9 +263,6 @@
 				O = H.internal_organs_by_name[i]
 				H.internal_organs_by_name -= i
 				H.internal_organs -= O
-		L.attack_log += "\[[time_stamp()]\]<font color='red'> chestbursted from [key_name(victim)]</font>"
-		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(L)]</font>"
-		log_attack("[key_name(victim)] chestbursted, the larva was [key_name(L)].")
 		victim.death(create_cause_data("chestbursting", src)) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()

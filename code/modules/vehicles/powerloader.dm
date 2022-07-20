@@ -267,11 +267,11 @@
 						return
 					for(var/atom/movable/AM in next_turf.contents)
 						if(AM.density)
-							to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
+							to_chat(user, SPAN_WARNING("You can't drop \the [loaded] here, \the [AM] blocks the way."))
 							return
 
-				user.visible_message(SPAN_NOTICE("[user] drops [loaded] on [T] with [src]."),
-				SPAN_NOTICE("You drop [loaded] on [T] with [src]."))
+				user.visible_message(SPAN_NOTICE("[user] drops \the [loaded] on [T] with \the [src]."),
+				SPAN_NOTICE("You drop \the [loaded] on [T] with \the [src]."))
 				loaded.forceMove(T)
 
 				if(istype(loaded, /obj/structure/bed/chair))
@@ -341,7 +341,7 @@
 	else if(istypestrict(target, /obj/structure/machinery/floodlight))
 		var/obj/structure/machinery/floodlight/FD = target
 		if(FD.anchored)
-			to_chat(user, SPAN_WARNING("\The [FD] is secured to the ground, you need to use [SPAN_HELPFUL("wrench")] to loosen up the anchoring bolts before you can grab it with \the [src]."))
+			to_chat(user, SPAN_WARNING("\The [FD] is secured to the ground, you need to use a [SPAN_HELPFUL("wrench")] to loosen up the anchoring bolts before you can grab it with \the [src]."))
 			return
 		load_target = TRUE
 
@@ -351,8 +351,8 @@
 	loaded.forceMove(linked_powerloader)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
-	SPAN_NOTICE("You grab [loaded] with [src]."))
+	user.visible_message(SPAN_NOTICE("[user] grabs \the [loaded] with \the [src]."),
+	SPAN_NOTICE("You grab \the [loaded] with \the [src]."))
 
 /obj/item/powerloader_clamp/attack_self(mob/user)
 	..()

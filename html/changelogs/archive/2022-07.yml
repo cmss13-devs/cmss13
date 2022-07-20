@@ -279,3 +279,4 @@
   Segrain:
   - bugfix: Reflective walls now actually take damage from the bullets they did not
       reflect.
+  - admin: Some cleanup performed for Who/Staffwho displays.

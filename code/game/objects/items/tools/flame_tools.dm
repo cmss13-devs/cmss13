@@ -216,7 +216,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)
-	AddElement(/datum/element/mouth_drop_item)
+	if(w_class == SIZE_TINY)
+		AddElement(/datum/element/mouth_drop_item)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
@@ -469,6 +470,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigar_off"
 	icon_on = "cigar_on"
 	icon_off = "cigar_off"
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
 	item_state = "cigar_off"
@@ -580,6 +583,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_FACE
 	type_butt = null
 	smoketime = 200 SECONDS
 	var/ash = FALSE

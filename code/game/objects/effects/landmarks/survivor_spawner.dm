@@ -60,4 +60,5 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
-	make_objective = 1
+
+

@@ -98,6 +98,7 @@
 #define SLOWDOWN_ADS_SPECIALIST			1.75
 #define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	1.8
 #define SLOWDOWN_ADS_SUPERWEAPON		2.75
+#define SLOWDOWN_AMT_GREENFIRE			1
 
 //Wield delays, in milliseconds. 10 is 1 second
 #define WIELD_DELAY_NONE			0

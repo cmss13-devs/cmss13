@@ -513,7 +513,7 @@
 				var/mob/living/carbon/human/H = M
 				if (HAS_TRAIT(M, TRAIT_SUPER_STRONG))
 					resist_modifier = 0.25
-				H.next_move_slowdown = H.next_move_slowdown + (3 * resist_modifier)
+				H.next_move_slowdown = H.next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 			else if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/X = M
@@ -522,7 +522,7 @@
 					//type_b_debuff_xeno_armor(X)
 				resist_modifier = type_b_debuff_xeno_armor(X)
 				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
-				X.next_move_slowdown = X.next_move_slowdown + (3 * resist_modifier)
+				X.next_move_slowdown = X.next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)

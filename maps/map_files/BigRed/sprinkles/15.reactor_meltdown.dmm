@@ -209,7 +209,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aQ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aR" = (

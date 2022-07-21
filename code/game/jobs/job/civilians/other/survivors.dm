@@ -24,7 +24,7 @@
 	var/obj/effect/landmark/survivor_spawner/spawner = pick(GLOB.survivor_spawns)
 	H.forceMove(get_turf(spawner))
 
-	if(istype(spawner) && spawner.equipment)
+	if(spawner.equipment)
 		arm_equipment(H, spawner.equipment, FALSE, TRUE)
 	else
 		survivor_old_equipment(H)
@@ -35,10 +35,10 @@
 
 	H.name = H.get_visible_name()
 
-	if(istype(spawner) && spawner.intro_text && length(spawner.intro_text))
+	if(length(spawner.intro_text))
 		intro_text = spawner.intro_text
 
-	if(istype(spawner) && spawner.story_text)
+	if(spawner.story_text)
 		story_text = spawner.story_text
 
 /datum/job/civilian/survivor/generate_entry_message(var/mob/living/carbon/human/H)

@@ -292,6 +292,7 @@
       dumping ash onto the floor.
   - qol: Cigars and pipes are now big enough that they do not fall out when you lie
       down (regular cigarettes still do).
+  - bugfix: Generals' armour looks properly once again.
   stanalbatross:
   - refactor: made the ability of ammo to BE a bitflag trait rather than subtyping
       the on_pointblack proc for all execution ammo

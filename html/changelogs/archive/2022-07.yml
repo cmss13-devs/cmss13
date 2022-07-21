@@ -282,3 +282,7 @@
   - bugfix: Reflective walls now actually take damage from the bullets they did not
       reflect.
   - admin: Some cleanup performed for Who/Staffwho displays.
+2022-07-21:
+  stanalbatross:
+  - refactor: made the ability of ammo to BE a bitflag trait rather than subtyping
+      the on_pointblack proc for all execution ammo

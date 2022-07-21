@@ -225,3 +225,11 @@
 	// Effects
 	if(SSweather.weather_event_instance.effect_type)
 		new SSweather.weather_event_instance.effect_type(src)
+
+/mob/living/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	fire.set_on_fire(src)
+
+/mob/living/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	fire.set_on_fire(src)

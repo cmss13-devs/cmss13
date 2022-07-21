@@ -291,3 +291,26 @@
 
 	var/list/overlap = iff_tag.faction_groups & access_to_check
 	return length(overlap)
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	if(caste && (caste.fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE)))
+		return
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B)
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+				reset_xeno_armor_debuff_after_time(src, delta_time*10)
+			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	if(caste && (caste.fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE)))
+		return
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
+			if(!armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
+				reset_xeno_armor_debuff_after_time(src, 20)
+			var/resist_modifier = fire.type_b_debuff_xeno_armor(src)
+			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
+			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))

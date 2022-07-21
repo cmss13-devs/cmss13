@@ -609,3 +609,9 @@ Parameters are passed from New.
 	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
+
+/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+	return
+
+/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+	return

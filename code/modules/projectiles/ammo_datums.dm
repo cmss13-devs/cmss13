@@ -242,13 +242,16 @@
 
 /datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	if(flags_ammo_behavior & AMMO_HIGHIMPACT)
-		if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-			return
+		if(!user)
+			return FALSE
+
+		if(L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+			return ..()
 
 		var/mob/living/carbon/human/execution_target = L
 		if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 			to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-			return
+			return FALSE
 
 		if(execution_target.status_flags & PERMANENTLY_DEAD)
 			to_chat(user, SPAN_DANGER("[execution_target] is already as dead as it's possible to be!"))
@@ -284,7 +287,7 @@
 
 		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 			execution_target.gib()
-		return
+		return TRUE
 	return ..()
 
 /*

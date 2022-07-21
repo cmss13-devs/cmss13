@@ -295,3 +295,5 @@
   stanalbatross:
   - refactor: made the ability of ammo to BE a bitflag trait rather than subtyping
       the on_pointblack proc for all execution ammo
+  - admin: added attack logs for when larvas chestburst from a person, and niche logs
+      for when they exit spawn pools

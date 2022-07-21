@@ -383,7 +383,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M = loc
 		if(!silent)
 			if(user == M)
-				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out [src]."))
+				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out \the [src]."))
 			else
 				to_chat(M, SPAN_NOTICE("Your [src] goes out."))
 	STOP_PROCESSING(SSobj, src)
@@ -604,7 +604,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user)
 	if(ash)
-		user.visible_message("[user] empties the ash out of [src].", "You empty the ash out of [src].")
+		user.visible_message("[user] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
 		new /obj/effect/decal/cleanable/ash(get_turf(user))
 		ash = FALSE
 	else if(smoketime <= 0)
@@ -639,12 +639,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
+		light(SPAN_NOTICE("[user] fiddles with \the [W], and manages to light their [name] with the power of science."))
 
 /obj/item/clothing/mask/cigarette/pipe/light()
 	if(smoketime > 0)
 		return ..()
-	to_chat(usr, SPAN_WARNING("[src] is empty!"))
+	to_chat(usr, SPAN_WARNING("\The [src] is empty!"))
 	return
 
 /obj/item/clothing/mask/cigarette/pipe/cobpipe

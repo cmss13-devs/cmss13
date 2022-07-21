@@ -299,3 +299,4 @@
   - admin: added attack logs for when larvas chestburst from a person, and niche logs
       for when they exit spawn pools
   - bugfix: fixed a corpse spawner on LV that was causing a corpse to spawn alive...
+  - balance: removed SEA spec skills

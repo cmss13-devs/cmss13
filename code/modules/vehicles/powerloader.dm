@@ -176,48 +176,14 @@
 	if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
 		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
-/obj/item/powerloader_clamp/update_icon()
-	var/icon_tag = ""
+/obj/item/powerloader_clamp/update_icon(var/icon_tag = "")
 	if(loaded)
-		if(istype(loaded, /obj/structure/dropship_equipment))
-			icon_tag = "ds_gear"
-
-		else if(istype(loaded, /obj/structure/ship_ammo))
-			if(istype(loaded, /obj/structure/ship_ammo/rocket))
-				icon_tag = "ds_rocket"
-			else
-				icon_tag = "ds_ammo"
-
-		else if(istype(loaded, /obj/structure/ob_ammo))
-			if(istype(loaded, /obj/structure/ob_ammo/warhead))
-				icon_tag = "ob_warhead"
-			else
-				icon_tag = "ob_fuel"
-
-		else if(istype(loaded, /obj/item/hardpoint/holder))
-			icon_tag = "vehicle_module"
-
-		else if(istype(loaded, /obj/structure/closet/crate))
-			icon_tag = "crate"
-
-		else if(istype(loaded, /obj/structure/reagent_dispensers))
-			icon_tag = "reagent_dispenser"
-
-		else if(istype(loaded, /obj/structure/machinery/floodlight))
-			icon_tag = "floodlight"
-
-		else if(istype(loaded, /obj/structure/bed/chair))
-			icon_tag = "chairs"
-
-		else
+		if(!icon_tag)
 			icon_tag = "big_crate"
-
-	if(!icon_tag)
+	else
 		icon_tag = "loader_clamp"
-
 	if(is_right)
 		icon_tag += "_right"
-
 	icon_state = icon_tag
 
 //--------------------INTERACTION PROCS-----------------
@@ -238,10 +204,13 @@
 	else
 		return ..()
 
-/obj/item/powerloader_clamp/afterattack(atom/target, mob/user, proximity)
+/obj/item/powerloader_clamp/afterattack(var/atom/target, var/mob/user, var/proximity)
 	if(!proximity)
 		return
 	if(!linked_powerloader)
+		if(!isturf(loc))
+			forceMove(get_turf(loc))
+		qdel(src)
 		return
 	if(loaded)
 		if(isturf(target))
@@ -273,21 +242,18 @@
 				user.visible_message(SPAN_NOTICE("[user] drops \the [loaded] on [T] with \the [src]."),
 				SPAN_NOTICE("You drop \the [loaded] on [T] with \the [src]."))
 				loaded.forceMove(T)
+				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 
 				if(istype(loaded, /obj/structure/bed/chair))
-					var/obj/structure/bed/chair/unloading_chair = loaded
-					unloading_chair.dir = user.dir
-					unloading_chair.update_overlays()
-					if(unloading_chair.stacked_size > 8 && prob(50))
-						unloading_chair.stack_collapse(linked_powerloader.buckled_mob)
+					var/obj/structure/bed/chair/chair_stack = loaded
+					chair_stack.dir = user.dir
+					chair_stack.update_overlays()
+					//skill reduces the chance of collapse
+					if(chair_stack.stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
+						chair_stack.stack_collapse(user)
 
 				loaded = null
-				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 				update_icon()
-				return
-		else
-			if(!istype(target, /obj/structure/dropship_equipment) && !istype(target, /obj/item/hardpoint/holder) && !istype(target, /obj/vehicle))	//handled in their procs
-				to_chat(user, SPAN_WARNING("\The [src] is already holding \the [loaded] and can't grab \the [target]."))
 				return
 
 	if(isturf(target))
@@ -298,7 +264,8 @@
 			to_chat(src, SPAN_WARNING("\The [target] is melting under a sizzling acidic substance. Trying to grab it will damage \the [src]."))
 			return
 
-	var/load_target = FALSE
+	var/load_target_tag = ""
+
 	if(istype(target, /obj/structure/closet/crate))
 		var/obj/structure/closet/crate/C = target
 		if(C.anchored || C.store_mobs)
@@ -308,23 +275,14 @@
 			if(ismob(X)) //just in case.
 				to_chat(user, SPAN_WARNING("\The [src] can't grab \the [target], it has a creature inside!"))
 				return
-		load_target = TRUE
+		load_target_tag = "crate"
 
 	else if(istype(target, /obj/structure/largecrate))
 		var/obj/structure/largecrate/LC = target
 		if(LC.anchored)
 			to_chat(user, SPAN_WARNING("\The [src] can't grab \the [target] as it appears to be anchored to the ground."))
 			return
-		load_target = TRUE
-
-	else if(istype(target, /obj/structure/bed/chair))
-		var/obj/structure/bed/chair/CS = target
-		if(!CS.stacked_size)
-			to_chat(user, SPAN_WARNING("\The [src] can only grab stacks of chairs."))
-			return
-		if(CS.stacked_size > 8 && prob(30))
-			CS.stack_collapse(linked_powerloader.buckled_mob)
-		load_target = TRUE
+		load_target_tag = "big_crate"
 
 	else if(istype(target, /obj/structure/reagent_dispensers))
 		var/obj/structure/reagent_dispensers/RD = target
@@ -336,23 +294,31 @@
 				if(R.name != "Water" && R.name != "Beer")
 					to_chat(user, SPAN_WARNING("It is unsafe to use \the [linked_powerloader] to transport \the [RD] without emptying it first."))
 					return
-		load_target = TRUE
+		load_target_tag = "reagent_dispenser"
 
 	else if(istypestrict(target, /obj/structure/machinery/floodlight))
 		var/obj/structure/machinery/floodlight/FD = target
 		if(FD.anchored)
 			to_chat(user, SPAN_WARNING("\The [FD] is secured to the ground, you need to use a [SPAN_HELPFUL("wrench")] to loosen up the anchoring bolts before you can grab it with \the [src]."))
 			return
-		load_target = TRUE
+		load_target_tag = "floodlight"
 
-	if(!load_target)
+	if(!load_target_tag)
+		return
+	grab_object(target, load_target_tag)
+	user.visible_message(SPAN_NOTICE("[user] grabs \the [loaded] with \the [src]."),
+	SPAN_NOTICE("You grab \the [loaded] with \the [src]."))
+
+//a bit unsafe proc
+/obj/item/powerloader_clamp/proc/grab_object(var/obj/target, var/target_tag = "", var/sound = 'sound/machines/hydraulics_2.ogg')
+	if(!linked_powerloader)
+		qdel(src)
 		return
 	loaded = target
 	loaded.forceMove(linked_powerloader)
-	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] grabs \the [loaded] with \the [src]."),
-	SPAN_NOTICE("You grab \the [loaded] with \the [src]."))
+	playsound(src, sound, 40, 1)
+	update_icon(target_tag)
+	target.update_icon()
 
 /obj/item/powerloader_clamp/attack_self(mob/user)
 	..()

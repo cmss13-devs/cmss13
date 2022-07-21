@@ -102,6 +102,28 @@
 				stack_collapse(user)
 				return FALSE
 		return FALSE
+
+	if(istype(I, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/PC = I
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+		if(PC.loaded)
+			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+			return TRUE
+		if(!stacked_size)
+			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
+			return TRUE
+		//skill reduces the chance of collapse
+		if(stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
+			stack_collapse(user)
+			return TRUE
+
+		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		PC.grab_object(src, "chairs", 'sound/machines/hydraulics_2.ogg')
+		update_icon()
+		return TRUE
+
 	return ..()
 
 /obj/structure/bed/chair/hitby(atom/movable/AM)

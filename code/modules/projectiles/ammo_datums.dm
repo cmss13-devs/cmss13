@@ -285,7 +285,7 @@
 		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 			execution_target.gib()
 		return
-	. = ..()
+	return ..()
 
 /*
 //======

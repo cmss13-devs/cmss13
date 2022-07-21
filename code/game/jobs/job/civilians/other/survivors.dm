@@ -21,8 +21,11 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(GLOB.survivor_spawns)
-	H.forceMove(get_turf(spawner))
+	var/list/potential_spawners = list()
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
+		if(spawner.check_can_spawn(H))
+			potential_spawners += H
+	H.forceMove(get_turf(potential_spawners))
 
 	if(spawner.equipment)
 		arm_equipment(H, spawner.equipment, FALSE, TRUE)

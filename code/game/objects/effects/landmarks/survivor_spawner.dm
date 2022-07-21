@@ -16,6 +16,9 @@
 	return ..()
 
 /obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
+	// prevents stacking survivors on top of eachother
+	if(locate(/mob/living/carbon/human) in loc)
+		return FALSE
 	return TRUE
 
 /obj/effect/landmark/survivor_spawner/lv624_skylight

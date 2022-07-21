@@ -130,7 +130,7 @@
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
 
-/obj/structure/ship_ammo/heavygun/highvelocity
+/obj/structure/ship_ammo/heavygun/antitank
 	name = "PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
 	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It's designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store."
@@ -141,7 +141,7 @@
 	bullet_spread_range = 4
 	point_cost = 325
 	fire_mission_delay = 2
-	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/hv
+	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
 
 //laser battery
 

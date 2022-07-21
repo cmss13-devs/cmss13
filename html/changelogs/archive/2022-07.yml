@@ -283,6 +283,15 @@
       reflect.
   - admin: Some cleanup performed for Who/Staffwho displays.
 2022-07-21:
+  Segrain:
+  - bugfix: Lighting one cigarette no longer ignites all other cigarettes you are
+      holding.
+  - bugfix: Extinguishing smoking pipes no longer irreversibly turns them into cigarette
+      butts.
+  - qol: Pipes full of ash can now be emptied into ashtrays instead of automatically
+      dumping ash onto the floor.
+  - qol: Cigars and pipes are now big enough that they do not fall out when you lie
+      down (regular cigarettes still do).
   stanalbatross:
   - refactor: made the ability of ammo to BE a bitflag trait rather than subtyping
       the on_pointblack proc for all execution ammo

@@ -178,6 +178,7 @@
 /// From /mob/living/proc/IgniteMob
 #define COMSIG_LIVING_PREIGNITION "living_preignition"
 	#define COMPONENT_CANCEL_IGNITION (1<<0)
+#define COMSIG_LIVING_IGNITION "living_ignition"
 
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"

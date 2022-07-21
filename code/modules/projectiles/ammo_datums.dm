@@ -245,45 +245,45 @@
 		if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
 			return
 
-		var/mob/living/carbon/human/BE_target = L
+		var/mob/living/carbon/human/execution_target = L
 		if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 			to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
 			return
 
-		if(BE_target.status_flags & PERMANENTLY_DEAD)
-			to_chat(user, SPAN_DANGER("[BE_target] is already as dead as it's possible to be!"))
+		if(execution_target.status_flags & PERMANENTLY_DEAD)
+			to_chat(user, SPAN_DANGER("[execution_target] is already as dead as it's possible to be!"))
 			fired_from.delete_bullet(P, TRUE)
 			return TRUE
 
-		user.affected_message(BE_target,
-			SPAN_HIGHDANGER("You aim \the [fired_from] at [BE_target]'s head!"),
+		user.affected_message(execution_target,
+			SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 			SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
-			SPAN_DANGER("[user] aims \the [fired_from] at [BE_target]'s head!"))
+			SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
 
 		user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
-		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(BE_target))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
 			fired_from.delete_bullet(P, TRUE)
 			return TRUE
 
-		BE_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
-		BE_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
-		BE_target.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+		execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+		execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+		execution_target.death(create_cause_data("execution", user)) //...make certain they're properly dead...
 
-		BE_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+		execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-		BE_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
+		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
 			SPAN_HIGHDANGER("You WERE EXECUTED!"))
 
 		user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
 
-		var/area/A = get_area(BE_target)
+		var/area/A = get_area(execution_target)
 
-		msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(BE_target)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-		log_attack("[key_name(usr)] battlefield executed [key_name(BE_target)] at [A.name].")
+		msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(execution_target)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+		log_attack("[key_name(usr)] battlefield executed [key_name(execution_target)] at [A.name].")
 
 		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
-			BE_target.gib()
+			execution_target.gib()
 		return
 	. = ..()
 

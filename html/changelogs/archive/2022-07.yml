@@ -316,3 +316,24 @@
       to touching range again. The healing effect takes 10 seconds, providing the
       target with 20 health every 2 seconds. This effect can be stacked.
   - bugfix: Health overlays now properly align with xeno sprites.
+  Jeser:
+  - balance: APC armor received explosive and blunt damage resistances buff as well
+      as slash and acid resistances nerf.
+  - balance: Vehicle hull now takes little bit of damage even if there are no destroyed
+      modules.
+  - balance: MED APC has 8 passengers (same as CMD APC) and 6 revivable bodies slots
+      now.
+  - balance: APC now deals a bit of damage when ramming allies in order to discourage
+      Vehicle Crewmen from ramming marines without serious reason like delivering
+      near-perma patient to medics. Includes big warning for driver and adjusted FF
+      log for staff.
+  - balance: Queen can be pushed only from the back now.
+  - balance: Acid spray from acid traps and some xenos abilities damages vehicle locomotion
+      (wheels or treads) modules directly. Acid traps are trigggered by vehicles now.
+      Some locomotion modules can be acid-resistant, which cuts damage received by
+      half.
+  - balance: T3s overall do more damage to vehicles than before. Queen now also deals
+      double damage to vehicles just as Ravager.
+  - balance: Boilers acid gas damage to vehicles was nerfed, due to overall acid resistance
+      nerf of APC armor.
+  - code_imp: Made SensorMates mandatory in Vehicle Crewman vendor.

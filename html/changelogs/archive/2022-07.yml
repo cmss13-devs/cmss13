@@ -300,3 +300,15 @@
       for when they exit spawn pools
   - bugfix: fixed a corpse spawner on LV that was causing a corpse to spawn alive...
   - balance: removed SEA spec skills
+2022-07-22:
+  Geevies:
+  - balance: Gardener drones now have six fruit slots.
+  - rscadd: Gardener drones can now plant hardy weeds in addition to normal weeds.
+      Hardy weeds have a two minute cooldown, but can grow on grass and red sand turfs,
+      and let fruits grow in 80% of the usual time. They cannot support special structures,
+      and have a bit more health than standard weeds.
+  - rscadd: Feeding fruit to a queen while she's overwatching a xeno on the same z-level
+      now grants the fruit benefit to that xeno in addition to the queen.
+  - rscadd: Added cruor fruits, which grants the xeno who eats it 240 plasma over
+      15 seconds.
+  - tweak: Resin surge can now be used while resting, and works on any visible turf.

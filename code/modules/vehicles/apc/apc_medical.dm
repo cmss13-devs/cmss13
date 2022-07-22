@@ -7,12 +7,12 @@
 
 	interior_map = "apc_med"
 
-	//increased 4->6, because having only 4 passenger slots is not nearly enough, especially if you have also a medic/nurse/synth inside helping with triage
-	passengers_slots = 6
-	//MED APC can store additional 8 dead revivable bodies for the triage
+
+	passengers_slots = 8
+	//MED APC can store additional 6 dead revivable bodies for the triage
 	//but interior won't allow more revivable dead if passengers_taken_slots >= passengers_slots + revivable_dead_slots
 	//to prevent infinitely growing the marine force inside of the vehicle
-	revivable_dead_slots = 8
+	revivable_dead_slots = 6
 
 	entrances = list(
 		"left" = list(2, 0),

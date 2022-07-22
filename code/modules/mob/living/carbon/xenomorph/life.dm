@@ -457,7 +457,7 @@ updatehealth()
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	if(stat != DEAD && !gibbing)
-		var/warding_health = crit_health != 0 ? warding_aura * 20
+		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
 		if(health <= crit_health - warding_health) //dead
 			if(prob(gib_chance + 0.5*(crit_health - health)))
 				async_gib(last_damage_data)

@@ -337,3 +337,6 @@
   - balance: Boilers acid gas damage to vehicles was nerfed, due to overall acid resistance
       nerf of APC armor.
   - code_imp: Made SensorMates mandatory in Vehicle Crewman vendor.
+  stanalbatross:
+  - qol: the xeno tunnel creation message now shows which burrower created it, and
+      provides an overwatch link for them

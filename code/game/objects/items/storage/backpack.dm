@@ -433,21 +433,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		internal_transmitter.phone_id = "[user]"
 
 	internal_transmitter.enabled = TRUE
+	give_action(user, /datum/action/human_action/activable/rto_pack/use_phone)
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
 	. = ..()
 	internal_transmitter.phone_id = "[src]"
 	internal_transmitter.enabled = FALSE
+	remove_action(user, /datum/action/human_action/activable/rto_pack/use_phone)
 
-/obj/item/storage/backpack/marine/satchel/rto/attack_hand(mob/user)
+/obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
 	if(user.back == src)
 		internal_transmitter.attack_hand(user)
 	else if(internal_transmitter.get_calling_phone())
-		if(internal_transmitter.attached_to && internal_transmitter.attached_to.loc != internal_transmitter)
-			return . = ..()
 		internal_transmitter.attack_hand(user)
-	else
-		. = ..()
+	for(var/datum/action/A in actions)
+		A.update_button_icon()
+
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
 	if(internal_transmitter && internal_transmitter.attached_to == W)

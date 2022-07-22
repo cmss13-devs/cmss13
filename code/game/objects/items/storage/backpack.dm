@@ -446,8 +446,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		internal_transmitter.attack_hand(user)
 	else if(internal_transmitter.get_calling_phone())
 		internal_transmitter.attack_hand(user)
-	for(var/datum/action/A in actions)
-		A.update_button_icon()
 
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)

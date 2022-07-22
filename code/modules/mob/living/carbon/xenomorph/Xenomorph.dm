@@ -49,7 +49,7 @@
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
-	var/icon_size = 48
+	icon_size = 48
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null

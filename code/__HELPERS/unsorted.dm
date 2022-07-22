@@ -861,7 +861,7 @@
 	if(ismob(source))
 		var/mob/M = source
 		has_nightvision = M.see_in_dark >= 12
-	if (!has_nightvision && target_turf.lighting_lumcount == 0)
+	if(!has_nightvision && target_turf.lighting_lumcount == 0)
 		return FALSE
 
 	while(current != target_turf)

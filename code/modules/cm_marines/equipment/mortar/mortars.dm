@@ -216,7 +216,7 @@
 			busy = FALSE
 			firing = TRUE
 			flick(icon_state + "_fire", src)
-			mortar_shell.source_mob = user
+			mortar_shell.cause_data = create_cause_data(initial(mortar_shell.name), user, src)
 			mortar_shell.forceMove(src)
 
 			var/turf/G = get_turf(src)

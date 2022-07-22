@@ -217,7 +217,6 @@
 /obj/effect/landmark/interior/spawn/telephone/on_load(var/datum/interior/I)
 	var/obj/structure/transmitter/Phone = new(loc)
 
-	Phone.name = name
 	Phone.icon = icon
 	Phone.icon_state = icon_state
 	Phone.layer = layer

@@ -343,3 +343,5 @@
   stanalbatross:
   - qol: the xeno tunnel creation message now shows which burrower created it, and
       provides an overwatch link for them
+  - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
+      have melee weapons skill level 1 to be in line with USCM specs

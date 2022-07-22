@@ -212,7 +212,6 @@
 	qdel(src)
 	return TRUE
 
-
 /obj/structure/foamed_metal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
 		V.move_momentum -= V.move_momentum * 0.5
@@ -490,7 +489,7 @@
 		dmg = TRUE
 		if(get_target_lock(driver.faction))
 			KnockDown(0.5, 1)
-			apply_damage(5 + rand(0, 5), BRUTE)
+			apply_damage(5 + rand(0, 5), BRUTE, no_limb_loss = TRUE)
 			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*")))
 		else
 			KnockDown(2, 1)

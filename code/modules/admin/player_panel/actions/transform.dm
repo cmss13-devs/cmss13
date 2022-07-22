@@ -31,6 +31,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = "Larva",
 	  key = /mob/living/carbon/Xenomorph/Larva,
 	  color = "purple"
+	),
+	list(
+	  name = "Facehugger",
+	  key = /mob/living/carbon/Xenomorph/Facehugger,
+	  color = "purple"
 	)
   ),
   "Alien Tier 1" = list(

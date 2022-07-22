@@ -242,8 +242,6 @@
 	attack_sound = null
 	friendly = "nuzzles"
 	wall_smash = 0
-	amount_grown = 0
-	max_grown = 10
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
@@ -380,13 +378,7 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/Xenomorph/Queen/generate_name()
-	. = ..()
-
-	var/datum/hive_status/in_hive = hive
-	if(!in_hive)
-		in_hive = GLOB.hive_datum[hivenumber]
-
+/mob/living/carbon/Xenomorph/Queen/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
 		switch(age)

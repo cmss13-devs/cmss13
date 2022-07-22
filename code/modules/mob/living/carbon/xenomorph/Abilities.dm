@@ -134,23 +134,13 @@
 			else
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
+	var/list/mobs_in_view = list()
 	for(var/mob/living/carbon/M in oview(7, X))
+		mobs_in_view += M
+	for(var/mob/living/carbon/M in orange(10, X))
 		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, X) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
-
-		M.scream_stun_timeout = 20 SECONDS
-		var/dist = get_dist(X, M)
-		if(dist <= 4)
-			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(4)
-			M.KnockDown(4)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(5) //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
-			M.AdjustStunned(3)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(2)
-			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+		M.handle_queen_screech(X, mobs_in_view)
 
 	apply_cooldown()
 

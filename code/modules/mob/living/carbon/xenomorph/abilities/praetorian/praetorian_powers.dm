@@ -965,9 +965,9 @@
 	X.emote("roar")
 
 	var/throw_target_turf = get_step(X.loc, facing)
-	var/turf/behind = get_step(X.loc, reversefacing)
-	if(behind.density)
-		throw_target_turf = behind
+	var/turf/behind_turf = get_step(X.loc, reversefacing)
+	if(!(behind_turf.density))
+		throw_target_turf = behind_turf
 
 	X.frozen = TRUE
 	X.update_canmove()
@@ -1000,10 +1000,15 @@
 		to_chat(X, SPAN_XENOWARNING("You can't reach [targetXeno] with your resin retrieval hook!"))
 		return
 
-	to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
+	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("You are pulled toward [X]!"))
 
 	shake_camera(targetXeno, 10, 1)
-	targetXeno.throw_atom(throw_target_turf, get_dist(throw_target_turf, targetXeno), SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
-	message_admins("throwing complete")
+	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
+	if(throw_target_turf == behind_turf)
+		throw_dist++
+		to_chat(X, SPAN_XENOBOLDNOTICE("You fling [targetXeno] over your head with your resin hook, and they land behind you!"))
+	else
+		to_chat(X, SPAN_XENOBOLDNOTICE("You fling [targetXeno] towards you with your resin hook, and they in front of you!"))
+	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
 	return

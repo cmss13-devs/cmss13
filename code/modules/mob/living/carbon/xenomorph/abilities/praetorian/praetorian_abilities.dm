@@ -108,7 +108,7 @@
 ////////// Oppressor powers
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
-	action_icon_state = "stomp"
+	action_icon_state = "abduct"
 	ability_name = "abduct"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -303,7 +303,7 @@
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
 	name = "Toggle Heal Type"
-	action_icon_state = "warden_shield" // default = shield
+	action_icon_state = "warden_heal" // default = heal
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -340,7 +340,7 @@
 
 /datum/action/xeno_action/activable/prae_retrieve
 	name = "Retrieve"
-	action_icon_state = "stomp"
+	action_icon_state = "retrieve"
 	ability_name = "retrieve"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
 	ability_primacy = XENO_PRIMARY_ACTION_4

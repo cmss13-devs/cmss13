@@ -23,7 +23,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || !T.is_weedable())
+	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return FALSE
 

@@ -429,7 +429,7 @@
 
 /obj/item/clothing/head/beret/marine/commander/cdrechief
 	name = "marine commodore-in-chief beret"
-	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an Admiral."
+	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an General."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
@@ -609,10 +609,10 @@ D
 	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
 
-/obj/item/clothing/head/admiral
-	name = "\improper armored Admiral cap"
-	desc = "A sturdy admiral's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
-	icon_state = "admiral_helmet"
+/obj/item/clothing/head/general
+	name = "\improper armored General cap"
+	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
+	icon_state = "general_helmet"
 	siemens_coefficient = 2.0
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_HIGH

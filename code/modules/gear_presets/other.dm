@@ -1,8 +1,6 @@
 /datum/equipment_preset/other
 	name = "Other"
-
-/datum/equipment_preset/other/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH))
+	languages = list(LANGUAGE_ENGLISH)
 
 //*****************************************************************************************************/
 
@@ -157,7 +155,10 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 
 	load_freelancer_medic(H, shotgunner)
@@ -217,8 +218,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
@@ -595,11 +598,11 @@
 	name = "Souto Man"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE) //Just in case they are delivering to UPP or CLF...
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
 	assignment = FACTION_SOUTO
 	rank = "Souto Man"
-	skills = /datum/skills/mercenary
+	skills = /datum/skills/souto
 	faction = FACTION_SOUTO
 
 /datum/equipment_preset/other/souto/New()
@@ -780,21 +783,14 @@
 	idtype = /obj/item/card/id/lanyard
 	skills = /datum/skills/civilian/survivor
 
+	languages = list(LANGUAGE_XENOMORPH, LANGUAGE_ENGLISH)
+
 	assignment = "Cultist"
 	rank = "Cultist"
 
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
 	access = get_all_civilian_accesses()
-
-/datum/equipment_preset/other/xeno_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
-	. = ..()
-	H.hivenumber = hivenumber
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-	if(hive)
-		H.faction = hive.internal_faction
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(H), WEAR_BODY)
@@ -818,10 +814,12 @@
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
 
-	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-
-	if(hive.leading_cult_sl == H)
-		hive.leading_cult_sl = null
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive)
+		H.faction = hive.internal_faction
+		if(hive.leading_cult_sl == H)
+			hive.leading_cult_sl = null
+	H.hivenumber = hivenumber
 
 	GLOB.xeno_cultists += H
 

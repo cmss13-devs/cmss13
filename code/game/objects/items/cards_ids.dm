@@ -209,12 +209,12 @@
 	desc = "It lists a callsign and a bloodtype. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
 
-/obj/item/card/id/admiral
-	name = "admirality holo-badge"
+/obj/item/card/id/general
+	name = "general officer holo-badge"
 	desc = "Top brass of the top brass. Issued to only the most dedicated."
-	icon_state = "admiral"
+	icon_state = "general"
 	registered_name = "The USCM"
-	assignment = "Admiral"
+	assignment = "General"
 	New()
 		access = get_all_centcom_access()
 

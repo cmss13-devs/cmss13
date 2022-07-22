@@ -138,6 +138,7 @@
 #define WEED_XENO_SPEED_MULT 1
 
 #define WEED_HEALTH_STANDARD 5
+#define WEED_HEALTH_HARDY    10
 #define WEED_HEALTH_HIVE     15
 
 #define NODE_HEALTH_GROWING  5
@@ -281,6 +282,8 @@
 #define XENO_DAMAGE_TIER_5 40 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_TIER_6 45 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_TIER_7 50 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_TIER_8 55 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_TIER_9 60 * XENO_UNIVERSAL_DAMAGEMULT
 
 // Cost to make things, add +XENO_RESIN_BASE_COST to them all for actual cost
 #define XENO_RESIN_BASE_COST 25
@@ -637,3 +640,10 @@
 #define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
 #define XENO_FRUIT_SPORE "Spore Resin Fruit"
 #define XENO_FRUIT_SPEED "Alacrit Resin Fruit"
+#define XENO_FRUIT_PLASMA "Cruor Resin Fruit"
+
+
+// turf weedable states
+#define NOT_WEEDABLE 0
+#define SEMI_WEEDABLE 1
+#define FULLY_WEEDABLE 2

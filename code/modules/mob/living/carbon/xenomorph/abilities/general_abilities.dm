@@ -17,6 +17,9 @@
 	xeno_cooldown = 10
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
+	var/plant_on_semiweedable = FALSE
+	var/node_type = /obj/effect/alien/weeds/node
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"

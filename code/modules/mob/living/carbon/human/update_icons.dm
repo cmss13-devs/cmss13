@@ -109,10 +109,8 @@ There are several things that need to be remembered:
 				L.Turn(90)
 			M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
-		langchat_image.transform = L
 	else
 		apply_transform(M)
-		langchat_image.transform = L
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)

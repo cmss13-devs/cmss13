@@ -53,7 +53,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("M41AE2 Heavy Pulse Rifle", 18, /obj/item/storage/box/guncase/lmg, null, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", 24, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", 24, /obj/item/storage/box/guncase/m56d, null, VENDOR_ITEM_REGULAR),
-		list("M2C Heavy Machine Gun", 24, /obj/item/storage/box/guncase/m2c, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
 		list("SensorMate Medical HUD", 12, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),

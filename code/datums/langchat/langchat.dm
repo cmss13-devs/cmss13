@@ -39,7 +39,7 @@
 		langchat_image = image(null, src)
 		langchat_image.layer = 20
 		langchat_image.plane = RUNECHAT_PLANE
-		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
 		langchat_image.maptext_x = LANGCHAT_X_OFFSET
@@ -69,6 +69,11 @@
 		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
 			M.client.images += langchat_image
 
+	if(isturf(loc))
+		langchat_image.loc = src
+	else
+		langchat_image.loc = recursive_holder_check(src)
+
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
@@ -94,6 +99,11 @@
 	for(var/mob/M in langchat_listeners)
 		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
+
+	if(isturf(loc))
+		langchat_image.loc = src
+	else
+		langchat_image.loc = recursive_holder_check(src)
 
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	if(text_left)

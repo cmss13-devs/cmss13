@@ -18,7 +18,11 @@
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
-	if(!T.is_weedable())
+	var/is_weedable = T.is_weedable()
+	if(!is_weedable)
+		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
+		return
+	if(!plant_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
 		return
 
@@ -46,7 +50,7 @@
 
 	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
 	SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
-	var/obj/effect/alien/weeds/node/new_node = new /obj/effect/alien/weeds/node(X.loc, src, X)
+	var/obj/effect/alien/weeds/node/new_node = new node_type(X.loc, src, X)
 
 	if(to_convert)
 		for(var/weed in to_convert)
@@ -481,7 +485,7 @@
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, SPAN_NOTICE("You are now hiding."))
 	else
-		X.layer = MOB_LAYER
+		X.layer = initial(X.layer)
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 	X.update_wounds()
 
@@ -500,7 +504,7 @@
 		return
 	var/turf/T = get_turf(X)
 
-	if(!istype(T) || !T.is_weedable() || !can_xeno_build(T))
+	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE || !can_xeno_build(T))
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
@@ -626,8 +630,14 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(!T.is_weedable())
-		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+	if(T.is_weedable() < FULLY_WEEDABLE)
+		to_chat(X, SPAN_WARNING("\The [T] can't support a [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/obj/effect/alien/weeds/weeds = locate() in T
+	if(weeds?.block_special_structures)
+		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE
 

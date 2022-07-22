@@ -115,6 +115,22 @@
 			handle_xeno_macro_datum(src, XA)
 			break
 
+/mob/living/carbon/Xenomorph/verb/xeno_primary_action_five()
+	set category = "Alien"
+	set name = "Xeno Primary Action Five"
+	set hidden = 1
+	var/mob/living/carbon/Xenomorph/X = src
+	if (!istype(X))
+		return
+	for (var/datum/action/xeno_action/XA in X.actions)
+		if (!istype(XA))
+			continue
+		if(XA.hidden)
+			continue
+		if (XA.ability_primacy == XENO_PRIMARY_ACTION_5)
+			handle_xeno_macro_datum(src, XA)
+			break
+
 /mob/living/carbon/Xenomorph/verb/m_corrosive_acid()
 	set category = "Alien"
 	set name = "Corrosive Acid"

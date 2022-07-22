@@ -201,7 +201,7 @@
 	icon_state = "black"
 
 /turf/open/floor/almayer/empty/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructable
 	return

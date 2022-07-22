@@ -346,6 +346,7 @@
 #include "code\datums\effects\acid.dm"
 #include "code\datums\effects\bleeding.dm"
 #include "code\datums\effects\heal_over_time.dm"
+#include "code\datums\effects\plasma_over_time.dm"
 #include "code\datums\effects\tether.dm"
 #include "code\datums\effects\weather.dm"
 #include "code\datums\effects\mob_crit\crit.dm"

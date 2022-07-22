@@ -397,7 +397,7 @@
 	desc = "A wall made of molted old resin. This place is more alive than you are."
 
 /turf/closed/wall/mineral/bone/is_weedable()
-    return FALSE
+	return NOT_WEEDABLE
 
 /turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
 	return

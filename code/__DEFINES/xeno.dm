@@ -138,6 +138,7 @@
 #define WEED_XENO_SPEED_MULT 1
 
 #define WEED_HEALTH_STANDARD 5
+#define WEED_HEALTH_HARDY    10
 #define WEED_HEALTH_HIVE     15
 
 #define NODE_HEALTH_GROWING  5
@@ -637,3 +638,10 @@
 #define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
 #define XENO_FRUIT_SPORE "Spore Resin Fruit"
 #define XENO_FRUIT_SPEED "Alacrit Resin Fruit"
+#define XENO_FRUIT_PLASMA "Cruor Resin Fruit"
+
+
+// turf weedable states
+#define NOT_WEEDABLE 0
+#define SEMI_WEEDABLE 1
+#define FULLY_WEEDABLE 2

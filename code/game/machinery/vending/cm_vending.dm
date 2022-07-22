@@ -799,8 +799,8 @@ IN_USE						used for vending/denying
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 
-	//this here is made to provide ability to restock vendors with handmade and manually filled ammo boxes.
-	var/list/corresponding_box_types = list(
+	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
+	var/list/corresponding_types_list = list(
 		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
 		/obj/item/ammo_box/magazine/m4a3/empty = /obj/item/ammo_box/magazine/m4a3,
 		/obj/item/ammo_box/magazine/m4a3/ap/empty = /obj/item/ammo_box/magazine/m4a3/ap,
@@ -854,6 +854,40 @@ IN_USE						used for vending/denying
 
 		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
 		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
+
+		/obj/item/ammo_box/magazine/misc/mre/empty = /obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/ammo_box/magazine/misc/flares/empty = /obj/item/ammo_box/magazine/misc/flares,
+
+		/obj/item/stack/folding_barricade = /obj/item/stack/folding_barricade/three,
+
+		/obj/item/stack/sheet/cardboard = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/medium_stack = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/full_stack = /obj/item/stack/sheet/cardboard/small_stack,
+
+		/obj/item/stack/barbed_wire = /obj/item/stack/barbed_wire/small_stack,
+		/obj/item/stack/barbed_wire/full_stack = /obj/item/stack/barbed_wire/small_stack,
+
+		/obj/item/stack/sheet/metal = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_small_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/medium_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_large_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/large_stack = /obj/item/stack/sheet/metal/small_stack,
+
+		/obj/item/stack/sheet/plasteel = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_small_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+
+		/obj/item/stack/sandbags_empty = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/half = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/full = /obj/item/stack/sandbags_empty/small_stack,
+
+		/obj/item/stack/sandbags = /obj/item/stack/sandbags/small_stack,
+		/obj/item/stack/sandbags/large_stack = /obj/item/stack/sandbags/small_stack,
+
+		/obj/item/storage/large_holster/machete = /obj/item/storage/large_holster/machete/full,
+
 	)
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
@@ -1044,10 +1078,10 @@ IN_USE						used for vending/denying
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box
 //if there is one set in corresponding_box_types or will return FALSE otherwise
-/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_box_type(var/empty_box_path)
-	if(corresponding_box_types.Find(empty_box_path))
-		return corresponding_box_types[empty_box_path]
-	return FALSE
+/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_type(var/unusual_path)
+	if(corresponding_types_list.Find(unusual_path))
+		return corresponding_types_list[unusual_path]
+	return
 
 
 //------------GEAR VENDORS---------------

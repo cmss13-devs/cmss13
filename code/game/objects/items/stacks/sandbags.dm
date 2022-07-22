@@ -72,6 +72,9 @@
 /obj/item/stack/sandbags/large_stack
 	amount = 25
 
+/obj/item/stack/sandbags/small_stack
+	amount = 5
+
 /obj/item/stack/sandbags/attack_self(mob/living/user)
 	..()
 	add_fingerprint(user)

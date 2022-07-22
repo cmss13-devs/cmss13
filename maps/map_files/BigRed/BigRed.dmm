@@ -20354,11 +20354,6 @@
 /area/bigredv2/outside/office_complex)
 "bae" = (
 /obj/structure/machinery/camera/autoname,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "\improper Operations";
-	req_access = null;
-	dir = 2
-	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -38439,9 +38434,7 @@
 	},
 /area/bigredv2/caves/mining)
 "uJF" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "uJI" = (

@@ -260,18 +260,19 @@
 #define XENO_EVASION_HIGH 20
 
 // Speeds
-#define XENO_SPEED_QUEEN 	0.6
-#define XENO_SPEED_TIER_1 	0.4
-#define XENO_SPEED_TIER_2 	0.2
-#define XENO_SPEED_TIER_3 	0.0
-#define XENO_SPEED_TIER_4 	-0.2
-#define XENO_SPEED_TIER_5 	-0.4
-#define XENO_SPEED_TIER_6 	-0.6
-#define XENO_SPEED_TIER_7 	-0.8
-#define XENO_SPEED_TIER_8 	-1.4
-#define XENO_SPEED_TIER_9 	-1.6
-#define XENO_SPEED_TIER_10 	-1.8
-#define XENO_SPEED_RUNNER 	-2.0
+#define XENO_SPEED_QUEEN		0.6
+#define XENO_SPEED_TIER_1		0.4
+#define XENO_SPEED_TIER_2		0.2
+#define XENO_SPEED_TIER_3		0.0
+#define XENO_SPEED_TIER_4		-0.2
+#define XENO_SPEED_TIER_5		-0.4
+#define XENO_SPEED_TIER_6		-0.6
+#define XENO_SPEED_TIER_7		-0.8
+#define XENO_SPEED_HELLHOUND	-1.0
+#define XENO_SPEED_TIER_8		-1.4
+#define XENO_SPEED_TIER_9		-1.6
+#define XENO_SPEED_TIER_10		-1.8
+#define XENO_SPEED_RUNNER		-2.0
 
 // Xeno damage categories
 #define XENO_DAMAGE_TIER_1 20 * XENO_UNIVERSAL_DAMAGEMULT

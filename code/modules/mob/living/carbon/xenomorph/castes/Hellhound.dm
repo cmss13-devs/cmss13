@@ -7,10 +7,10 @@
 	plasma_gain = XENO_PLASMA_GAIN_TIER_4
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
-	armor_deflection = XENO_ARMOR_TIER_4
+	armor_deflection = XENO_ARMOR_TIER_3
 	max_health = XENO_HEALTH_TIER_7
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_7
+	speed = XENO_SPEED_HELLHOUND
 	attack_delay = -2
 
 	tackle_min = 4
@@ -20,7 +20,7 @@
 	tacklestrength_max = 4
 
 	heal_resting = 2.5
-	heal_standing = 1.75
+	heal_standing = 1.25
 	heal_knocked_out = 1.25
 	innate_healing = TRUE
 

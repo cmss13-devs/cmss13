@@ -360,6 +360,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rto_backpack"
 	item_state = "rto_backpack"
 	has_gamemode_skin = FALSE
+	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
 
@@ -367,6 +368,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/obj/structure/transmitter/internal/internal_transmitter
 
 	var/base_icon
+
+/datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Use Phone"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/misc.dmi', button, "rpb_phone")
+	button.overlays += IMG
+
+/datum/action/item_action/rto_pack/use_phone/action_activate()
+	if(!istype(owner, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/user = owner
+	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
+		var/obj/item/storage/backpack/marine/satchel/rto/R = user.back
+		R.use_phone(user)
 
 /obj/item/storage/backpack/marine/satchel/rto/post_skin_selection()
 	base_icon = icon_state
@@ -433,13 +450,11 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		internal_transmitter.phone_id = "[user]"
 
 	internal_transmitter.enabled = TRUE
-	give_action(user, /datum/action/human_action/activable/rto_pack/use_phone)
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
 	. = ..()
 	internal_transmitter.phone_id = "[src]"
 	internal_transmitter.enabled = FALSE
-	remove_action(user, /datum/action/human_action/activable/rto_pack/use_phone)
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
 	if(user.back == src)

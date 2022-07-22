@@ -116,18 +116,6 @@
 /datum/action/human_action/smartpack/repair_form/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
 	return S.repairing
 
-/datum/action/human_action/activable/rto_pack/use_phone
-	name = "Use Phone"
-	action_icon_state = "phone"
-
-/datum/action/human_action/activable/rto_pack/use_phone/action_activate()
-	if(!istype(owner, /mob/living/carbon/human))
-		return
-	var/mob/living/carbon/human/user = owner
-	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
-		var/obj/item/storage/backpack/marine/satchel/rto/R = user.back
-		R.use_phone(user)
-
 /*
 CULT
 */

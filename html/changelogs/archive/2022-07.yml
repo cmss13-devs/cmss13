@@ -312,3 +312,7 @@
   - rscadd: Added cruor fruits, which grants the xeno who eats it 240 plasma over
       15 seconds.
   - tweak: Resin surge can now be used while resting, and works on any visible turf.
+  - balance: Healer drones now apply healing instantly, but the range has been dropped
+      to touching range again. The healing effect takes 10 seconds, providing the
+      target with 20 health every 2 seconds. This effect can be stacked.
+  - bugfix: Health overlays now properly align with xeno sprites.

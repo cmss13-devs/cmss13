@@ -40151,7 +40151,6 @@
 /obj/item/device/flashlight/lamp/green,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/coffeecup/gromit{
-	icon = null;
 	pixel_x = -5;
 	pixel_y = 6
 	},

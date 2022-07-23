@@ -381,6 +381,7 @@
 /mob/living/carbon/Xenomorph/Queen/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
+		age_xeno()
 		switch(age)
 			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
 			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature

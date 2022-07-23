@@ -345,3 +345,23 @@
       provides an overwatch link for them
   - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
       have melee weapons skill level 1 to be in line with USCM specs
+2022-07-23:
+  Sennen, Nanu:
+  - imageadd: New lobby-art brought to you by Sennen also known as Rasta
+  Stan_Albatross, Nauticall:
+  - rscadd: added the autocompressor, a new synthtool that automatically does CPR.
+      Runs on an internal battery, can be attached to people just by clicking on them.
+      Has a high risk of breaking bones if used alongside a person performing CPR.
+      Sprites by Naut.
+  TeDGamer:
+  - balance: Fire damage dealt to carbon humans on fire is based on the fire reagent.
+  stanalbatross:
+  - rscadd: energy weapons, provided they have a charge meter, now tell you how many
+      shots they have left on examine and when you fire them
+  - bugfix: taser overlays now update properly again
+  - bugfix: flashes now visually burn out, added a modern sprite for burnt out flashes
+  - code_imp: rewrote most of the code for flashes. It was really, really bad.
+  - rscadd: flashes now tell you how many flashes they have left when you use them,
+      when you examine them, and they tell you when they recharge a flash
+  - rscadd: you can now only use a flash twice per second.
+

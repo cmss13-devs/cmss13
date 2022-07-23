@@ -248,11 +248,11 @@
 						else
 							playsound(src.loc, 'sound/voice/human_female_medic.ogg', 25, 0)
 						var/list/heard = get_mobs_in_view(7, src)
-						var/medic_message = pick("MEDIC!", "HELP!", "I'M HIT!", "WOUNDED!", "IT HURTS!", "DOC!")
+						var/medic_message = pick("Medic!" "Doc!", "Help!")
 						for(var/mob/M in heard)
 							if(M.ear_deaf)
 								heard -= M
-						langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
+						langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else

@@ -73,7 +73,6 @@ They're all essentially identical when it comes to getting the job done.
 	else
 		to_chat(user, "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>.")
 
-
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
@@ -148,12 +147,17 @@ They're all essentially identical when it comes to getting the job done.
 	gun_type = source.gun_type
 
 //~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act(damage, flame_cause_data)
-	switch(current_rounds)
-		if(0) return
-		if(1 to 100) explosion(loc,  -1, -1, 0, 2, , , , flame_cause_data) //blow it up.
-		else explosion(loc,  -1, -1, 1, 2, , , , flame_cause_data) //blow it up HARDER
-	qdel(src)
+/obj/item/ammo_magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(current_rounds < 1)
+		return
+	else
+		var/severity = current_rounds / 50
+		//the more ammo inside, the faster and harder it cooks off
+		if(severity > 0)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+
+	if(!QDELETED(src))
+		qdel(src)
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
 /obj/item/ammo_magazine/internal
@@ -315,6 +319,40 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
+	var/can_explode = FALSE
+	var/burning = FALSE
+	var/limit_per_tile = 1	//how many you can deploy per tile
+
+//---------------------GENERAL PROCS
+
+/obj/item/ammo_box/Destroy()
+	SetLuminosity(0)
+	. = ..()
+
+//---------------------FIRE HANDLING PROCS
+/obj/item/ammo_box/flamer_fire_act(var/severity, var/datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+
+	SetLuminosity(3)
+	apply_fire_overlay()
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+
+/obj/item/ammo_box/proc/apply_fire_overlay(var/will_explode = FALSE)
+	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
+	var/offset_x = pixel_x
+	var/offset_y = pixel_y
+	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
+		offset_x += 1
+		offset_y += -6
+	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
+		offset_y += -2
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays.Add(fire_overlay)
+
+/obj/item/ammo_box/proc/explode(var/severity, var/datum/cause_data/flame_cause_data)
+	qdel(src)
 
 /obj/item/ammo_box/magazine
 	name = "magazine box (M41A x 10)"
@@ -327,6 +365,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/handfuls = FALSE
 	var/icon_state_deployed = null
 	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
+	can_explode = TRUE
+	limit_per_tile = 2
+
+/obj/item/ammo_box/magazine/empty
+	empty = TRUE
+
+//---------------------GENERAL PROCS
 
 /obj/item/ammo_box/magazine/Initialize()
 	. = ..()
@@ -343,9 +388,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	pixel_y = rand(-5, 5)
 	update_icon()
 
-/obj/item/ammo_box/magazine/empty
-	empty = TRUE
-
 /obj/item/ammo_box/magazine/update_icon()
 	if(overlays)
 		overlays.Cut()
@@ -355,6 +397,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(overlay_ammo_type)
 		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
+
+//---------------------INTERACTION PROCS
 
 /obj/item/ammo_box/magazine/examine(mob/living/user)
 	..()
@@ -379,9 +423,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				to_chat(user, SPAN_INFO("It feels about half full."))
 				return
 			to_chat(user, SPAN_INFO("It feels almost full."))
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
 	..()
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		return
 
 	if(length(contents))
 		if(!handfuls)
@@ -398,26 +447,109 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	new /obj/item/stack/sheet/cardboard(T)
 	qdel(src)
 
-/obj/item/ammo_box/magazine/proc/deploy_ammo_box(mob/living/user, turf/T)
-	for(var/obj/structure/magazine_box/MB in T.contents)
-		to_chat(user, SPAN_WARNING("There is a [MB] deployed here already."))
+/obj/item/ammo_box/magazine/proc/deploy_ammo_box(var/mob/living/user, var/turf/T)
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
 		return
+
+	var/box_on_tile = 0
+	for(var/obj/structure/magazine_box/found_MB in T.contents)
+		if(limit_per_tile != found_MB.limit_per_tile)
+			to_chat(user, SPAN_WARNING("You can't deploy different size boxes in one place."))
+			return
+		box_on_tile++
+		if(box_on_tile >= limit_per_tile)
+			to_chat(user, SPAN_WARNING("There is a maximum possible amount of boxes deployed here already."))
+			return
+
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name
 	M.desc = desc
 	M.item_box = src
+	M.can_explode = can_explode
+	M.limit_per_tile = limit_per_tile
 	M.update_icon()
+	if(limit_per_tile > 1)
+		M.assign_offsets(T)
 	user.drop_inv_item_on_ground(src)
 	Move(M)
 
 /obj/item/ammo_box/magazine/afterattack(atom/target, mob/living/user, proximity)
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		return
 	if(!proximity)
 		return
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density)
 			deploy_ammo_box(user, T)
+
+//---------------------FIRE HANDLING PROCS
+
+/obj/item/ammo_box/magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+	if(can_explode)
+		var/severity = 0
+
+		if(handfuls)
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+			if(AM)
+				severity = round(AM.current_rounds / 50)
+		else
+			for(var/obj/item/ammo_magazine/AM in contents)
+				severity += AM.current_rounds
+			severity = round(severity / 200)
+		//we need a lot of bullets to produce an explosion. Different scaling because of very different ammo counts
+
+		if(severity > 0)
+			if(istype(loc, /obj/structure/magazine_box))
+				var/obj/structure/magazine_box/host_box = loc
+				host_box.apply_fire_overlay(TRUE)
+				host_box.SetLuminosity(3)
+				host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+			else
+				apply_fire_overlay(TRUE)
+				SetLuminosity(3)
+				visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
+			return
+
+	if(istype(loc, /obj/structure/magazine_box))
+		var/obj/structure/magazine_box/host_box = loc
+		host_box.apply_fire_overlay()
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		//need to make sure we also delete the structure box
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
+	else
+		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		apply_fire_overlay()
+		SetLuminosity(3)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	return
+
+/obj/item/ammo_box/magazine/apply_fire_overlay(var/will_explode = FALSE)
+	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
+	var/offset_x = pixel_x
+	var/offset_y = pixel_y
+	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
+		offset_x += 1
+		offset_y += -6
+	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
+		offset_y += -2
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays.Add(fire_overlay)
+
+/obj/item/ammo_box/magazine/explode(var/severity, var/datum/cause_data/flame_cause_data)
+	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
+	//just in case
+	if(!QDELETED(src))
+		qdel(src)
+	return
 
 //-----------------------------------------------------------------------------------
 
@@ -475,6 +607,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_state = "base_bean"
 	overlay_content = "_bean"
 	magazine_type = /obj/item/ammo_magazine/shotgun/beanbag
+	can_explode = FALSE
+
 
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty
 	empty = TRUE
@@ -682,12 +816,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	overlay_content = "_training"
 	magazine_type = /obj/item/ammo_magazine/handful/lever_action/training
 
-	/*if(overlay_gun_type)
-		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
-	if(overlay_ammo_type)
-		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
-		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	adding base color stripes*/
-
 /obj/item/ammo_box/magazine/lever_action/training/empty
 	empty = TRUE
 
@@ -845,6 +973,24 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/type71/ap/empty
 	empty = TRUE
 
+//-----------------------Nailgun Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/smg/nailgun
+	name = "magazine box (Nailgun x 10)"
+	icon_state = "base_nailgun"			//base color of box
+	icon_state_deployed = "base_nailgun_deployed"
+	overlay_ammo_type = "_nail"		//used for ammo type color overlay
+	overlay_gun_type = null	//used for text overlay
+	overlay_content = "_nailgun"
+	magazine_type = /obj/item/ammo_magazine/smg/nailgun
+	num_of_magazines = 10
+	handfuls = FALSE
+	can_explode = FALSE
+	limit_per_tile = 1	//this one has unique too big sprite, so not stackable
+
+/obj/item/ammo_box/magazine/smg/nailgun/empty
+	empty = TRUE
+
 //-----------------------MAG BOX STRUCTURE-----------------------
 
 /obj/structure/magazine_box
@@ -852,28 +998,18 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
 	icon_state = "base_m41"
 	var/obj/item/ammo_box/magazine/item_box
+	var/can_explode = TRUE
+	var/burning = FALSE
+	var/limit_per_tile = 1 //this is inherited from the item when deployed
 
-/obj/structure/magazine_box/MouseDrop(over_object, src_location, over_location)
-	..()
-	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr))	return
-		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
+//---------------------GENERAL PROCS
 
-		usr.put_in_hands(item_box)
+/obj/structure/magazine_box/Destroy()
+	SetLuminosity(0)
+	if(item_box)
+		qdel(item_box)
 		item_box = null
-		qdel(src)
-
-/obj/structure/magazine_box/examine(mob/user)
-	..()
-	if(get_dist(src,user) > 2 && !isobserver(user))
-		return
-	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up."))
-	if(item_box.handfuls)
-		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
-		if(AM)
-			to_chat(user, SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining."))
-	else
-		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
+	return ..()
 
 /obj/structure/magazine_box/update_icon()
 	if(overlays)
@@ -905,8 +1041,63 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		else if(AM.current_rounds > 0)
 			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_1")
 
+//handles assigning offsets for stacked boxes
+/obj/structure/magazine_box/proc/assign_offsets(var/turf/T)
+	if(limit_per_tile == 2)	//you can deploy 2 mag boxes per tile
+		for(var/obj/structure/magazine_box/found_MB in T.contents)
+			if(found_MB != src)
+				pixel_y = found_MB.pixel_y * -1	//we assign a mirrored offset
+				return
+		pixel_y = -8	//if there is no box, by default we offset the box to the bottom
+	else if(limit_per_tile == 4)	//you can deploy 4 misc boxes per tile
+		var/list/possible_offsets = list(list(-8, -3), list(7, -3), list(-8, 13), list(7, 13))
+		var/available_offset = 1
+		for(var/obj/structure/magazine_box/found_MB in T.contents)
+			if(found_MB == src)
+				continue
+			for(var/list/L in possible_offsets)
+				if(L[1] == found_MB.pixel_x && L[2] == found_MB.pixel_y)
+					available_offset++	//this one taken, switch to next one
+					break
+		pixel_x = possible_offsets[available_offset][1]
+		pixel_y = possible_offsets[available_offset][2]
+		return
+
+//---------------------INTERACTION PROCS
+
+/obj/structure/magazine_box/MouseDrop(over_object, src_location, over_location)
+	..()
+	if(over_object == usr && Adjacent(usr))
+		if(burning)
+			to_chat(usr, SPAN_DANGER("It's on fire and can explode!"))
+			return
+
+		if(!ishuman(usr))
+			return
+		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
+
+		usr.put_in_hands(item_box)
+		item_box = null
+		qdel(src)
+
+/obj/structure/magazine_box/examine(mob/user)
+	..()
+	if(get_dist(src,user) > 2 && !isobserver(user))
+		return
+	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up."))
+	if(item_box.handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
+		if(AM)
+			to_chat(user, SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining."))
+	else
+		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		return
 	if(item_box.contents.len)
 		if(!item_box.handfuls)
 			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
@@ -921,8 +1112,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	else
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 
-
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		return
 	if(!item_box.handfuls)
 		if(istypestrict(W,item_box.magazine_type))
 			if(istype(W, /obj/item/storage/box/m94))
@@ -987,7 +1180,29 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			AM.attackby(W, user, 1)
 			update_icon()
 
-//-----------------------BIG AMMO BOX-----------------------
+//---------------------FIRE HANDLING PROCS
+/obj/structure/magazine_box/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(burning || !item_box)
+		return
+	burning = TRUE
+	item_box.flamer_fire_act(damage, flame_cause_data)
+	return
+
+/obj/structure/magazine_box/proc/apply_fire_overlay(var/will_explode = FALSE)
+	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
+	var/offset_x = 0
+	var/offset_y = 0
+
+	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
+		offset_x += 1
+		offset_y += -6
+	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
+		offset_y += -2
+
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays.Add(fire_overlay)
+
+//-----------------------BIG AMMO BOX (with loose ammunition)---------------
 
 /obj/item/ammo_box/rounds
 	name = "rifle ammunition box (10x24mm)"
@@ -1001,15 +1216,18 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/bullet_amount = 600
 	var/max_bullet_amount = 600
 	var/caliber = "10x24mm"
+	can_explode = TRUE
+
+/obj/item/ammo_box/rounds/empty
+	empty = TRUE
+
+//---------------------GENERAL PROCS
 
 /obj/item/ammo_box/rounds/Initialize()
 	. = ..()
 	if(empty)
 		bullet_amount = 0
 	update_icon()
-
-/obj/item/ammo_box/rounds/empty
-	empty = TRUE
 
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
@@ -1025,6 +1243,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	else if(bullet_amount > 0)
 		overlays += image(icon, icon_state = "rounds[overlay_content]_1")
 
+//---------------------INTERACTION PROCS
+
 /obj/item/ammo_box/rounds/examine(mob/user)
 	..()
 	to_chat(user, SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine."))
@@ -1032,6 +1252,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		to_chat(user, "It contains [bullet_amount] round\s.")
 	else
 		to_chat(user, "It's empty.")
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
 	..()
@@ -1043,6 +1265,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	qdel(src)
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		return
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
 		if(!isturf(loc))
@@ -1117,13 +1342,47 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				user.temp_drop_inv_item(AM)
 				qdel(AM)
 
-//explosion when using flamer procs.
-/obj/item/ammo_box/rounds/flamer_fire_act(damage, flame_cause_data)
-	switch(bullet_amount)
-		if(0) return
-		if(1 to 100) explosion(loc,  0, 0, 1, 2, , , , flame_cause_data) //blow it up.
-		else explosion(loc,  0, 0, 2, 3, , , , flame_cause_data) //blow it up HARDER
-	qdel(src)
+//---------------------FIRE HANDLING PROCS
+
+/obj/item/ammo_box/rounds/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+	if(can_explode)
+		var/severity = 0
+		severity = round(bullet_amount / 200)
+		//we need a lot of bullets to produce an explosion.
+
+		if(severity > 0)
+			visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+			apply_fire_overlay(TRUE)
+			SetLuminosity(3)
+			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
+			return
+
+	visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+	apply_fire_overlay()
+	SetLuminosity(3)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	return
+
+/obj/item/ammo_box/rounds/apply_fire_overlay(var/will_explode = FALSE)
+	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = pixel_x, pixel_y = pixel_y)
+	overlays.Add(fire_overlay)
+
+/obj/item/ammo_box/rounds/explode(var/severity, var/datum/cause_data/flame_cause_data)
+	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
+	//just in case
+	if(!QDELETED(src))
+		qdel(src)
+	return
+
+//-----------------------------------------------------------------------------------
+
+//-----------------------AMMUNITION BOXES (LOOSE AMMO)-----------------------
+
+//----------------10x24mm Ammunition Boxes (for M41 family and L42)------------------
 
 /obj/item/ammo_box/rounds/ap
 	name = "rifle ammunition box (10x24mm AP)"
@@ -1154,32 +1413,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/rounds/incen/empty
 	empty = TRUE
 
-//UPP type71
-
-/obj/item/ammo_box/rounds/type71
-	name = "rifle ammunition box (5.45x39mm)"
-	desc = "A 5.45x39mm ammunition box. Used to refill Type71 magazines. It comes with a leather strap allowing to wear it on the back."
-	icon_state = "base_type71"
-	overlay_gun_type = "_rounds_type71"
-	overlay_content = "_type71_reg"
-	caliber = "5.45x39mm"
-	default_ammo = /datum/ammo/bullet/rifle
-
-/obj/item/ammo_box/rounds/type71/empty
-	empty = TRUE
-
-/obj/item/ammo_box/rounds/type71/ap
-	name = "rifle ammunition box (5.45x39mm AP)"
-	desc = "A 5.45x39mm armor-piercing ammunition box. Used to refill Type71 AP magazines. It comes with a leather strap allowing to wear it on the back."
-	icon_state = "base_type71"
-	overlay_gun_type = "_rounds_type71"
-	overlay_content = "_type71_ap"
-	default_ammo = /datum/ammo/bullet/rifle/ap
-
-/obj/item/ammo_box/rounds/type71/ap/empty
-	empty = TRUE
-
-//SMG
+//----------------10x20mm Ammunition Boxes (for M39 SMG)------------------
 
 /obj/item/ammo_box/rounds/smg
 	name = "SMG HV ammunition box (10x20mm)"
@@ -1224,22 +1458,34 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/rounds/smg/incen/empty
 	empty = TRUE
 
+//----------------5.45x39mm Ammunition Boxes (for UPP Type71 family)------------------
 
-/obj/item/ammo_box/magazine/smg/nailgun
-	name = "magazine box (Nailgun x 10)"
-	icon_state = "base_nailgun"			//base color of box
-	icon_state_deployed = "base_nailgun_deployed"
-	overlay_ammo_type = "_nail"		//used for ammo type color overlay
-	overlay_gun_type = null	//used for text overlay
-	overlay_content = "_nailgun"
-	magazine_type = /obj/item/ammo_magazine/smg/nailgun
-	num_of_magazines = 10
-	handfuls = FALSE
+/obj/item/ammo_box/rounds/type71
+	name = "rifle ammunition box (5.45x39mm)"
+	desc = "A 5.45x39mm ammunition box. Used to refill Type71 magazines. It comes with a leather strap allowing to wear it on the back."
+	icon_state = "base_type71"
+	overlay_gun_type = "_rounds_type71"
+	overlay_content = "_type71_reg"
+	caliber = "5.45x39mm"
+	default_ammo = /datum/ammo/bullet/rifle
 
-/obj/item/ammo_box/magazine/smg/nailgun/empty
+/obj/item/ammo_box/rounds/type71/empty
 	empty = TRUE
 
-//Misc
+/obj/item/ammo_box/rounds/type71/ap
+	name = "rifle ammunition box (5.45x39mm AP)"
+	desc = "A 5.45x39mm armor-piercing ammunition box. Used to refill Type71 AP magazines. It comes with a leather strap allowing to wear it on the back."
+	icon_state = "base_type71"
+	overlay_gun_type = "_rounds_type71"
+	overlay_content = "_type71_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+
+/obj/item/ammo_box/rounds/type71/ap/empty
+	empty = TRUE
+
+//-----------------------------------------------------------------------------------
+
+//-----------------------MISC SUPPLIES BOXES-----------------------
 
 /obj/item/ammo_box/magazine/misc
 	name = "miscellaneous equipment box"
@@ -1248,6 +1494,42 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	overlay_ammo_type = "blank"
 	overlay_gun_type = "blank"
 	overlay_content = ""
+	can_explode = FALSE
+	limit_per_tile = 4
+
+//---------------------FIRE HANDLING PROCS
+
+/obj/item/ammo_box/magazine/misc/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+
+	if(istype(loc, /obj/structure/magazine_box))
+		var/obj/structure/magazine_box/host_box = loc
+		host_box.apply_fire_overlay()
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 7 SECONDS)
+	else
+		apply_fire_overlay()
+		SetLuminosity(3)
+		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	return
+
+/obj/item/ammo_box/magazine/misc/apply_fire_overlay(var/will_explode = FALSE)
+	var/offset_x = 1
+	var/offset_y = -6
+
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays.Add(fire_overlay)
+
+/obj/item/ammo_box/magazine/misc/explode(var/severity, var/datum/cause_data/flame_cause_data)
+	if(!QDELETED(src))
+		qdel(src)
+	return
+
+//------------------------MRE Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/mre
 	name = "box of MREs"
@@ -1259,12 +1541,85 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/misc/mre/empty
 	empty = TRUE
 
+//------------------------M94 Marking Flare Packs Box--------------------------
+
 /obj/item/ammo_box/magazine/misc/flares
 	name = "box of M94 marking flare packs"
 	desc = "A box of M94 marking flare packs, to brighten up your day."
 	magazine_type = /obj/item/storage/box/m94
 	num_of_magazines = 10
+	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
+
+//---------------------FIRE HANDLING PROCS
+
+//flare box has unique stuff
+/obj/item/ammo_box/magazine/misc/flares/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	if(burning)
+		return
+	burning = TRUE
+
+	var/flare_amount = 0
+	for(var/obj/item/storage/box/m94/flare_box in contents)
+		flare_amount += flare_box.contents.len
+	flare_amount = round(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we take
+
+	if(flare_amount > 0)
+
+		if(istype(loc, /obj/structure/magazine_box))
+			var/obj/structure/magazine_box/host_box = loc
+			host_box.apply_fire_overlay(FALSE)
+			host_box.SetLuminosity(3)
+			host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and starts shooting out flares!"))
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 7 SECONDS)
+
+			for(var/i = 1, i <= flare_amount, i++)
+				addtimer(CALLBACK(src, .proc/explode, host_box), rand(1, 6) SECONDS)
+		else
+			apply_fire_overlay(FALSE)
+			SetLuminosity(3)
+			visible_message(SPAN_WARNING("\The [src] catches on fire and starts shooting out flares!"))
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 7 SECONDS)
+
+			for(var/i = 1, i <= flare_amount, i++)
+				addtimer(CALLBACK(src, .proc/explode, src), rand(1, 6) SECONDS)
+		return
+
+	if(istype(loc, /obj/structure/magazine_box))
+		var/obj/structure/magazine_box/host_box = loc
+		host_box.apply_fire_overlay()
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		//need to make sure we also delete the structure box
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
+	else
+		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		apply_fire_overlay()
+		SetLuminosity(3)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	return
+
+/obj/item/ammo_box/magazine/misc/flares/apply_fire_overlay(var/will_explode = FALSE)
+	var/offset_x = 1
+	var/offset_y = -6
+
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays.Add(fire_overlay)
+
+//for flare box, instead of actually exploding, we throw out a flare at random direction
+/obj/item/ammo_box/magazine/misc/flares/explode(var/obj/structure/magazine_box/host_box)
+	var/range = rand(1, 4)
+	var/speed = pick(SPEED_SLOW, SPEED_AVERAGE, SPEED_FAST)
+	var/atom/target = get_ranged_target_turf(host_box ? host_box : src, pick(alldirs), range)
+
+	var/turf/target_turf = get_turf(target)
+	var/obj/item/device/flashlight/flare/on/F = new (get_turf(host_box ? host_box : src))
+	playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1)
+
+	INVOKE_ASYNC(F, /atom/movable.proc/throw_atom, target_turf, range, speed, null, TRUE)
+	return
 
 /obj/item/ammo_box/magazine/misc/flares/empty
 	empty = TRUE
+
+

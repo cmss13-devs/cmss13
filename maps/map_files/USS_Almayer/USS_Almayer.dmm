@@ -34816,6 +34816,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
+"cqr" = (
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -37122,16 +37131,6 @@
 "dqw" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room/notunnel)
-"dqD" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "dqE" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -44636,7 +44635,7 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "gAj" = (
 /obj/structure/bed/chair/comfy/charlie{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
@@ -46363,6 +46362,16 @@
 	req_access_txt = "19"
 	},
 /turf/open/floor/almayer,
+/area/almayer/living/briefing)
+"htI" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
 /area/almayer/living/briefing)
 "huf" = (
 /obj/structure/machinery/cryopod/evacuation,
@@ -52156,6 +52165,16 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"kio" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "kiq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/almayer{
@@ -81816,6 +81835,15 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/shipboard/brig/main_office)
+"xAt" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
+/area/almayer/living/briefing)
 "xAB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -82646,15 +82674,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"xRJ" = (
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -119432,19 +119451,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 xRw
 bPO
 whA
 gAj
 gAj
 bgO
-gAj
-gAj
-bgO
-gAj
-gAj
+xAt
+xAt
 bgO
 cab
 bdd
@@ -119469,8 +119485,8 @@ bJt
 oed
 oDf
 alm
-tbK
-tbK
+oed
+oDf
 hGZ
 etB
 hGZ
@@ -119480,6 +119496,9 @@ tbK
 lNy
 oed
 yhQ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -119635,19 +119654,16 @@ bgO
 vGG
 vGG
 bgO
-xRJ
-xRJ
+cqr
+cqr
 viO
 gMU
 ksN
 gAj
 gAj
 bgO
-gAj
-gAj
-bgO
-gAj
-gAj
+xAt
+xAt
 bgO
 bqZ
 bdd
@@ -119672,8 +119688,8 @@ bJt
 aYU
 bVt
 wlp
-oed
-oed
+aYU
+bVt
 fiq
 fiq
 fFz
@@ -119683,6 +119699,9 @@ jZO
 wlp
 ndQ
 yhQ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -119835,15 +119854,16 @@ aLG
 bdg
 bqZ
 aXc
-dqD
-dqD
+kio
+kio
 dRT
-dqD
-dqD
+kio
+kio
 dRT
-tXb
-tXb
-tXb
+dRT
+htI
+htI
+htI
 dRT
 tXb
 tXb
@@ -119882,7 +119902,6 @@ wUD
 lFF
 ndM
 yhQ
-aaa
 aaa
 aaa
 aaa
@@ -120041,20 +120060,16 @@ beH
 vGG
 vGG
 beH
-xRJ
-xRJ
-xRJ
+cqr
+cqr
+cqr
 beH
 gAj
 gAj
 gAj
 beH
-gAj
-gAj
-gAj
-beH
-gAj
-gAj
+xAt
+xAt
 beH
 bqZ
 bdg
@@ -120090,6 +120105,10 @@ rNW
 scI
 oDf
 yhQ
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aab
@@ -121265,10 +121284,10 @@ moQ
 hGO
 fvf
 uNM
-gAj
-gAj
-gAj
-gAj
+xAt
+xAt
+xAt
+xAt
 nNH
 bqZ
 bdg
@@ -122271,10 +122290,10 @@ bbh
 bdd
 bDT
 tHv
-xRJ
-xRJ
-xRJ
-xRJ
+cqr
+cqr
+cqr
+cqr
 tSB
 moQ
 caO

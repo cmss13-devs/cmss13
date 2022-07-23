@@ -247,6 +247,12 @@
 							playsound(src.loc, medic_sound, 25, 0)
 						else
 							playsound(src.loc, 'sound/voice/human_female_medic.ogg', 25, 0)
+						var/list/heard = get_mobs_in_view(7, src)
+						var/medic_message = pick("MEDIC!", "HELP!", "I'M HIT!", "WOUNDED!", "IT HURTS!", "DOC!")
+						for(var/mob/M in heard)
+							if(M.ear_deaf)
+								heard -= M
+						langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else
@@ -292,6 +298,12 @@
 						playsound(loc, "male_pain", 50)
 					else
 						playsound(loc, "female_pain", 50)
+					var/list/heard = get_mobs_in_view(7, src)
+					var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
+					for(var/mob/M in heard)
+						if(M.ear_deaf)
+							heard -= M
+					langchat_speech(pain_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 				else if(Primate)
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				else if(Pred)
@@ -336,6 +348,12 @@
 						playsound(loc, "male_scream", 50)
 					else
 						playsound(loc, "female_scream", 50)
+					var/list/heard = get_mobs_in_view(7, src)
+					var/scream_message = pick("FUCK!!!", "AGH!!!", "ARGH!!!", "AAAA!!!", "HGH!!!", "NGHHH!!!", "NNHH!!!", "SHIT!!!")
+					for(var/mob/M in heard)
+						if(M.ear_deaf)
+							heard -= M
+					langchat_speech(scream_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 				else if(isYautja(src))
 					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
 				else if(has_species(src,"Monkey"))

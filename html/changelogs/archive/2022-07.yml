@@ -350,3 +350,12 @@
   - imageadd: New lobby-art brought to you by Sennen also known as Rasta
   TeDGamer:
   - balance: Fire damage dealt to carbon humans on fire is based on the fire reagent.
+  stanalbatross:
+  - rscadd: energy weapons, provided they have a charge meter, now tell you how many
+      shots they have left on examine and when you fire them
+  - bugfix: taser overlays now update properly again
+  - bugfix: flashes now visually burn out, added a modern sprite for burnt out flashes
+  - code_imp: rewrote most of the code for flashes. It was really, really bad.
+  - rscadd: flashes now tell you how many flashes they have left when you use them,
+      when you examine them, and they tell you when they recharge a flash
+  - rscadd: you can now only use a flash twice per second.

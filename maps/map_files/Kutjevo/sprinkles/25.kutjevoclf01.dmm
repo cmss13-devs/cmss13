@@ -1,7 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
 /obj/effect/decal/cleanable/blood,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "ad" = (
@@ -16,6 +19,7 @@
 	dir = 4
 	},
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "as" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 8
@@ -24,11 +28,16 @@
 	dir = 4
 	},
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "aG" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/decal/cleanable/blood,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -142,11 +151,14 @@
 /obj/item/storage/backpack/general_belt{
 	pixel_y = 7
 	},
+<<<<<<< master
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "dO" = (
@@ -198,6 +210,7 @@
 "fi" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "gw" = (
 /obj/item/stool{
 	pixel_y = 8
@@ -205,6 +218,8 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "gy" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/weapon/gun/rifle/mar40/lmg,
@@ -271,8 +286,11 @@
 "it" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "iM" = (
@@ -338,6 +356,7 @@
 /obj/item/paper_bin,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "lY" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -348,6 +367,8 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "md" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -389,6 +410,7 @@
 /obj/structure/window_frame/kutjevo/reinforced,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/foremans_office)
+<<<<<<< master
 "ns" = (
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
@@ -404,6 +426,8 @@
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "or" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
@@ -414,11 +438,14 @@
 "oB" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/foremans_office)
+<<<<<<< master
 "oO" = (
 /obj/item/ammo_magazine/smg/nailgun,
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "pe" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_y = 10
@@ -533,7 +560,10 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "vo" = (
@@ -544,7 +574,10 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/corpsespawner/chef,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "wv" = (
@@ -758,6 +791,7 @@
 	dir = 1
 	},
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "FB" = (
 /obj/structure/platform/kutjevo{
 	dir = 4
@@ -779,6 +813,12 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
+=======
+"FP" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/med_rec)
+>>>>>>> reimported backup
 "Gt" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -819,10 +859,13 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+<<<<<<< master
 "ID" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "IR" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -917,10 +960,13 @@
 	dir = 1
 	},
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "Op" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "Oq" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
@@ -995,7 +1041,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Si" = (
@@ -1015,6 +1064,7 @@
 /obj/item/tank/emergency_oxygen/engi,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/foremans_office)
+<<<<<<< master
 "Sn" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -1022,13 +1072,18 @@
 /obj/item/explosive/mine/clf/active,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+=======
+>>>>>>> reimported backup
 "SI" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/exterior/complex_border/med_rec)
 "Tb" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Tv" = (
@@ -1042,6 +1097,15 @@
 	dir = 8
 	},
 /area/kutjevo/interior/construction)
+<<<<<<< master
+=======
+"TK" = (
+/obj/item/stool{
+	pixel_y = 8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
+>>>>>>> reimported backup
 "Ua" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
@@ -1068,6 +1132,7 @@
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/foremans_office)
+<<<<<<< master
 "UD" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1075,14 +1140,19 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge,
 /area/kutjevo/interior/construction)
+=======
+>>>>>>> reimported backup
 "UP" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
+<<<<<<< master
 "UU" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+=======
+>>>>>>> reimported backup
 "Ve" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -1160,6 +1230,7 @@
 "Yg" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/construction)
+<<<<<<< master
 "Yz" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -1167,6 +1238,8 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
+=======
+>>>>>>> reimported backup
 "YJ" = (
 /obj/effect/landmark/corpsespawner/security/cmb,
 /obj/effect/decal/cleanable/blood,
@@ -1273,7 +1346,11 @@ Ro
 (2,1,1) = {"
 uv
 rG
+<<<<<<< master
 oO
+=======
+ZT
+>>>>>>> reimported backup
 QR
 fi
 Vg
@@ -1296,12 +1373,21 @@ Hu
 ZT
 fi
 QN
+<<<<<<< master
 gw
 gw
 gw
 Cx
 hv
 ns
+=======
+TK
+TK
+TK
+Cx
+hv
+Fv
+>>>>>>> reimported backup
 hp
 tN
 IB
@@ -1338,11 +1424,19 @@ ZI
 qn
 cz
 Ed
+<<<<<<< master
 oo
 Fv
 sx
 nn
 Yz
+=======
+ln
+Fv
+sx
+nn
+fb
+>>>>>>> reimported backup
 Ro
 Ro
 "}
@@ -1350,17 +1444,30 @@ Ro
 fi
 xK
 sx
+<<<<<<< master
 ID
 ck
 uj
 gw
 gw
 gw
+=======
+sx
+ck
+uj
+TK
+TK
+TK
+>>>>>>> reimported backup
 Cx
 hv
 aG
 hp
+<<<<<<< master
 UD
+=======
+tN
+>>>>>>> reimported backup
 IB
 Ro
 Ro
@@ -1378,7 +1485,11 @@ HE
 JV
 hv
 KQ
+<<<<<<< master
 as
+=======
+HE
+>>>>>>> reimported backup
 IR
 IB
 Ro
@@ -1387,7 +1498,11 @@ Ft
 (8,1,1) = {"
 fi
 fi
+<<<<<<< master
 lY
+=======
+ln
+>>>>>>> reimported backup
 fi
 fi
 fi
@@ -1407,7 +1522,11 @@ Ft
 fi
 Vu
 xQ
+<<<<<<< master
 FX
+=======
+QK
+>>>>>>> reimported backup
 Rb
 xk
 YJ
@@ -1418,7 +1537,11 @@ jr
 ih
 ad
 hv
+<<<<<<< master
 Sn
+=======
+IB
+>>>>>>> reimported backup
 ri
 Ro
 "}
@@ -1427,19 +1550,31 @@ fi
 ET
 wb
 QK
+<<<<<<< master
 ID
+=======
+sx
+>>>>>>> reimported backup
 Fv
 uc
 RP
 uc
 uc
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 uc
 Cx
 hv
 Qk
 Me
+<<<<<<< master
 UU
+=======
+Ft
+>>>>>>> reimported backup
 "}
 (11,1,1) = {"
 fi
@@ -1448,7 +1583,11 @@ sT
 Vl
 jM
 Fv
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 ji
 dL
 KH
@@ -1471,7 +1610,11 @@ uc
 uc
 uc
 Oq
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 Jt
 Ed
 it
@@ -1486,7 +1629,11 @@ QK
 DE
 cR
 uj
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 Jt
 ac
 uc
@@ -1494,7 +1641,11 @@ uc
 DU
 Ed
 ln
+<<<<<<< master
 FB
+=======
+cy
+>>>>>>> reimported backup
 wv
 FP
 "}
@@ -1506,7 +1657,11 @@ QK
 fi
 RJ
 Cp
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 kX
 YX
 Si
@@ -1529,7 +1684,11 @@ Hd
 uc
 uM
 uM
+<<<<<<< master
 Op
+=======
+uc
+>>>>>>> reimported backup
 io
 hv
 zt

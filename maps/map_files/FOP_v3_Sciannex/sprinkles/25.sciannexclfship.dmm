@@ -303,9 +303,13 @@
 "dC" = (
 /obj/item/stack/rods,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated clf ship to have mines
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -313,9 +317,13 @@
 "dM" = (
 /obj/item/ammo_casing/bullet,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated clf ship to have mines
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -502,6 +510,9 @@
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "hF" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 5;
@@ -512,8 +523,11 @@
 	icon_state = "platingdmg3"
 	},
 /area/fiorina/tumor/ice_lab)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "hI" = (
 /obj/structure/surface/table/reinforced/prison{
 	flipped = 1
@@ -952,9 +966,13 @@
 /area/lv624/lazarus/crashed_ship)
 "ob" = (
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated clf ship to have mines
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -1028,14 +1046,20 @@
 	},
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "pn" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "pr" = (
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -1601,6 +1625,9 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "vy" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/prison{
@@ -1608,8 +1635,11 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "vD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/weldpack,
@@ -1652,17 +1682,25 @@
 	},
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "vV" = (
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 =======
 >>>>>>> reimported backup
+=======
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+>>>>>>> updated clf ship to have mines
 "vX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -1921,12 +1959,18 @@
 	},
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "zU" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/plating/prison,
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "Ab" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
@@ -2269,6 +2313,9 @@
 	},
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "Ee" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/prison{
@@ -2277,8 +2324,11 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "El" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison{
@@ -3297,14 +3347,20 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "SA" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/fiorina/tumor/ice_lab)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "SC" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -3344,12 +3400,18 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated clf ship to have mines
 "Tt" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated clf ship to have mines
 "TB" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -3870,10 +3932,14 @@ pi
 Mo
 aB
 <<<<<<< master
+<<<<<<< master
 SA
 =======
 Fm
 >>>>>>> reimported backup
+=======
+SA
+>>>>>>> updated clf ship to have mines
 Fm
 YB
 Nk
@@ -4014,10 +4080,14 @@ aB
 aB
 lR
 <<<<<<< master
+<<<<<<< master
 Ee
 =======
 aB
 >>>>>>> reimported backup
+=======
+Ee
+>>>>>>> updated clf ship to have mines
 nW
 Cu
 uI
@@ -4154,10 +4224,14 @@ In
 tT
 Fm
 <<<<<<< master
+<<<<<<< master
 hF
 =======
 WE
 >>>>>>> reimported backup
+=======
+hF
+>>>>>>> updated clf ship to have mines
 np
 WE
 UX
@@ -4351,10 +4425,14 @@ WI
 nC
 rU
 <<<<<<< master
+<<<<<<< master
 pn
 =======
 nC
 >>>>>>> reimported backup
+=======
+pn
+>>>>>>> updated clf ship to have mines
 tq
 vo
 ow
@@ -4402,8 +4480,12 @@ nC
 CZ
 nC
 gK
+<<<<<<< master
 Wz
 >>>>>>> reimported backup
+=======
+Tt
+>>>>>>> updated clf ship to have mines
 tq
 Pe
 tq
@@ -4503,10 +4585,14 @@ WI
 tq
 WI
 <<<<<<< master
+<<<<<<< master
 zU
 =======
 Ws
 >>>>>>> reimported backup
+=======
+zU
+>>>>>>> updated clf ship to have mines
 tE
 RV
 Fk
@@ -4556,10 +4642,14 @@ tE
 iL
 av
 <<<<<<< master
+<<<<<<< master
 SA
 =======
 Fm
 >>>>>>> reimported backup
+=======
+SA
+>>>>>>> updated clf ship to have mines
 VH
 Jt
 gt
@@ -4597,10 +4687,14 @@ Wz
 tq
 Ac
 <<<<<<< master
+<<<<<<< master
 pn
 =======
 nC
 >>>>>>> reimported backup
+=======
+pn
+>>>>>>> updated clf ship to have mines
 Ws
 Ws
 tq
@@ -4650,10 +4744,14 @@ Wz
 tq
 nC
 <<<<<<< master
+<<<<<<< master
 pn
 =======
 nC
 >>>>>>> reimported backup
+=======
+pn
+>>>>>>> updated clf ship to have mines
 tq
 vo
 VH
@@ -4839,10 +4937,14 @@ Jf
 QZ
 Uy
 <<<<<<< master
+<<<<<<< master
 vV
 =======
 Wz
 >>>>>>> reimported backup
+=======
+vV
+>>>>>>> updated clf ship to have mines
 ZM
 nC
 dx
@@ -4994,10 +5096,14 @@ Ra
 NS
 OQ
 <<<<<<< master
+<<<<<<< master
 vy
 =======
 OQ
 >>>>>>> reimported backup
+=======
+vy
+>>>>>>> updated clf ship to have mines
 OQ
 OQ
 LD
@@ -5134,10 +5240,14 @@ sS
 Fm
 VH
 <<<<<<< master
+<<<<<<< master
 SA
 =======
 Fm
 >>>>>>> reimported backup
+=======
+SA
+>>>>>>> updated clf ship to have mines
 aP
 sS
 uI

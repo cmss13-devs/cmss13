@@ -38618,9 +38618,9 @@
 /obj/structure/machinery/door_control{
 	id = "cl_shutters 2";
 	name = "Quarters Shutters";
-	req_access_txt = "200";
+	pixel_x = 11;
 	pixel_y = 37;
-	pixel_x = 11
+	req_access_txt = "200"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -40150,6 +40150,11 @@
 /obj/effect/landmark/map_item,
 /obj/item/device/flashlight/lamp/green,
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/coffeecup/gromit{
+	icon = null;
+	pixel_x = -5;
+	pixel_y = 6
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "eBC" = (
@@ -41882,20 +41887,20 @@
 "fqe" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen/blue/clicky{
-	pixel_y = 2;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 2
 	},
 /obj/item/tool/pen/red/clicky{
 	pixel_x = -1;
 	pixel_y = 1
 	},
 /obj/item/tool/pen/clicky{
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/item/paper_bin/wy{
-	pixel_y = 5;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)

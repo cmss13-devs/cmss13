@@ -34816,15 +34816,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
-"cqr" = (
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -46373,12 +46364,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
-"htI" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "huf" = (
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
@@ -52171,16 +52156,6 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
-"kio" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "kiq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/almayer{
@@ -81841,15 +81816,6 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/shipboard/brig/main_office)
-"xAt" = (
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
-/area/almayer/living/briefing)
 "xAB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -119264,7 +119230,7 @@ beH
 beH
 duv
 beH
-htI
+eWp
 cCD
 shp
 oAB
@@ -119466,16 +119432,16 @@ bgO
 vGG
 vGG
 bgO
-cqr
-cqr
+xRJ
+xRJ
 xRw
 bPO
 whA
-xAt
-xAt
+gAj
+gAj
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 gAj
 gAj
@@ -119514,9 +119480,6 @@ tbK
 lNy
 oed
 yhQ
-aaa
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -119672,16 +119635,16 @@ bgO
 vGG
 vGG
 bgO
-cqr
-cqr
+xRJ
+xRJ
 viO
 gMU
 ksN
-xAt
-xAt
+gAj
+gAj
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 gAj
 gAj
@@ -119720,9 +119683,6 @@ jZO
 wlp
 ndQ
 yhQ
-aaa
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -119928,6 +119888,7 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
 aaa
@@ -120080,17 +120041,17 @@ beH
 vGG
 vGG
 beH
-cqr
-cqr
-cqr
+xRJ
+xRJ
+xRJ
 beH
-xAt
-xAt
-xAt
+gAj
+gAj
+gAj
 beH
-xAt
-xAt
-xAt
+gAj
+gAj
+gAj
 beH
 gAj
 gAj
@@ -120129,10 +120090,6 @@ rNW
 scI
 oDf
 yhQ
-aaa
-aaa
-aaa
-aaa
 aaa
 aaa
 aab
@@ -121308,10 +121265,10 @@ moQ
 hGO
 fvf
 uNM
-xAt
-xAt
-xAt
-xAt
+gAj
+gAj
+gAj
+gAj
 nNH
 bqZ
 bdg
@@ -122314,10 +122271,10 @@ bbh
 bdd
 bDT
 tHv
-cqr
-cqr
-cqr
-cqr
+xRJ
+xRJ
+xRJ
+xRJ
 tSB
 moQ
 caO

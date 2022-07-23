@@ -1,0 +1,4609 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"ak" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"am" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"au" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"aX" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2";
+	dir = 8
+	},
+/obj/structure/machinery/m56d_hmg{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"bq" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"bJ" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"bZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"ci" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"cj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"cl" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"cn" = (
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"cs" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"cw" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"cz" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"cA" = (
+/turf/open/floor/prison{
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"cC" = (
+/obj/structure/window_frame/colony,
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_backup)
+"cH" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"cM" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"cQ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"cR" = (
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"cS" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"cX" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"da" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"dc" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"dq" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_main)
+"du" = (
+/turf/open/desert/dirt{
+	dir = 10;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"dv" = (
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"dH" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"dI" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"dQ" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"dZ" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2";
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"eb" = (
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"ee" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ek" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"ep" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"er" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"es" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+"eu" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"ez" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"eA" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"eC" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
+"eD" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"fb" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"fe" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"fj" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"fB" = (
+/obj/structure/machinery/power/geothermal,
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"fJ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"fL" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"fM" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"fN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"fS" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"fT" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ge" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"gr" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"gw" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"gA" = (
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"gF" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"gS" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"gU" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"gV" = (
+/turf/open/gm/empty,
+/area/shuttle/tri_trans1/omega)
+"gZ" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"hb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"hh" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"hk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ht" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"hw" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"hH" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"hJ" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ia" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"iv" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"iO" = (
+/obj/structure/bed,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"jb" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"jd" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"jl" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"jq" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"js" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"jw" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"jx" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"jz" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"jL" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"jY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_2"
+	},
+/obj/structure/machinery/m56d_hmg{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"ki" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_backup)
+"kt" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+"ku" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/nailgun,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"kv" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
+"kJ" = (
+/obj/structure/machinery/power/geothermal,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"kQ" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge/covered{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"lc" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"lf" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"lh" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"lt" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"lD" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8;
+	tag = "icon-term (WEST)"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_main)
+"lX" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"mj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"mn" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"mq" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"mu" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"mz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"mH" = (
+/obj/structure/surface/table,
+/obj/item/device/flashlight/flare,
+/obj/item/device/radio,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"mO" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"mX" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"ne" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"nq" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"nr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"nw" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"nz" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"nO" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"nR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"nS" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"nY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"od" = (
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"oh" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"oj" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"oq" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge/covered{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"or" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"oR" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"oW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"oY" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"pd" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/gun/pistol/m4a3,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+"pe" = (
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ph" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"py" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"pA" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"pR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor{
+	icon_state = "dark2";
+	tag = "icon-dark2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"qh" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"qj" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"qk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/rifle/hunting{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"qs" = (
+/obj/structure/flora/grass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"qu" = (
+/turf/open/floor/prison{
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"qE" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"qG" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"qJ" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"qK" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"rd" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"rh" = (
+/obj/structure/machinery/door/poddoor/shutters{
+	dir = 2;
+	icon_state = "shutter1";
+	unacidable = 1
+	},
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/west_tunnel)
+"rp" = (
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"rq" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"ru" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"rv" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_main)
+"ry" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"rA" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/control_room)
+"rB" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellowcorners2";
+	tag = "icon-darkyellowcorners2 (NORTH)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"rG" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"rJ" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"rP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"rX" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"rY" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"sf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	tag = "icon-pipe-c (NORTH)"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"sk" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"sq" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"sv" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"sC" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"sE" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"sF" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_backup)
+"sG" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"sY" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"tc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"td" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"tj" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"tx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"tB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"tH" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_2"
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"tJ" = (
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"tL" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_2"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"tN" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"tP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"tU" = (
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"ul" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"uv" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"uM" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"uR" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"vr" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"vG" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"vM" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"vO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"wn" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"wA" = (
+/obj/structure/machinery/power/apc{
+	dir = 4;
+	pixel_x = 24;
+	start_charge = 0
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"wH" = (
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"wK" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"wL" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"wU" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"wY" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"xg" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"xi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"xl" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"xp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"xu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"xC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"xO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"yh" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"ym" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"yn" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"yw" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"yM" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached14"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"yX" = (
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"yZ" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"za" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"zd" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"zg" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"zi" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"zs" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"zR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"zT" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Af" = (
+/obj/structure/machinery/colony_floodlight_switch{
+	pixel_y = 30
+	},
+/obj/effect/decal/warning_stripes{
+	pixel_y = 30
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Au" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"Aw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"AB" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"AJ" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"AV" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Bi" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Bm" = (
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"Bt" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"BL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"BN" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"BR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"BU" = (
+/obj/structure/machinery/door/poddoor/shutters,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/west_tunnel)
+"Ca" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Ce" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Cy" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"CK" = (
+/obj/structure/flora/grass/desert{
+	icon_state = "lightgrass_3"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"CO" = (
+/obj/structure/surface/table,
+/obj/item/device/analyzer,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2";
+	tag = "icon-darkyellow2 (NORTH)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"CS" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"CZ" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"De" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Dp" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"DH" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"DQ" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"DW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Ee" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Ef" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Eh" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"En" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/nailgun,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Ep" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Er" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Et" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"Ex" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"EC" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"ED" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"EH" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/prison{
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"EK" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"ET" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Fb" = (
+/obj/structure/surface/table,
+/obj/item/tool/crowbar/red,
+/obj/item/device/flash,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Fe" = (
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Fi" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached9"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Fr" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Fw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"FE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"FO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"FR" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"Gb" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_main)
+"Gc" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Go" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/fp9000{
+	pixel_y = 7
+	},
+/obj/item/weapon/gun/smg/fp9000{
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Gr" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Gt" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Gu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"GM" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"GP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"GW" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Hb" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Hm" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/lightstick,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Hn" = (
+/obj/structure/closet/radiation,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Hp" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Hs" = (
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Ht" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"HB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"HD" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"HS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Im" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Iy" = (
+/obj/structure/machinery/computer3/powermonitor,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2";
+	tag = "icon-darkyellow2 (NORTH)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"ID" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"IK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Jm" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"JX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Kd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Kv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Kz" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"KP" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"KT" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"KW" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"KY" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Ld" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Lj" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Lp" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Lr" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"LD" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"LH" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge/covered{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"LN" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Mf" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Mh" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Mm" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate";
+	tag = "icon-warnplate (SOUTHEAST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Mu" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Mw" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"MF" = (
+/obj/structure/machinery/power/terminal,
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"MQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"MS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"MZ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"Ng" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Nj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/attachment,
+/obj/effect/spawner/random/attachment,
+/obj/effect/spawner/random/attachment,
+/obj/effect/spawner/random/attachment,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Nx" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/glasses/welding,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Nz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"NH" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"NP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"NT" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"NY" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"NZ" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Oc" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Og" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Oi" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge/covered{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"Oj" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Ow" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2";
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9;
+	pixel_x = 16
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Ox" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/west_tunnel)
+"OR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"OT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Pr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_backup)
+"PB" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"PD" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
+"PE" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"PG" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"PH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"PL" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"PS" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"PT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Qe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Qn" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Qq" = (
+/obj/structure/machinery/power/monitor{
+	name = "Core Power Monitoring"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2";
+	tag = "icon-darkyellow2 (NORTH)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"QB" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"QD" = (
+/turf/open/floor{
+	dir = 7;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"QH" = (
+/obj/structure/bed/stool,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"QJ" = (
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Rh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Rn" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Ro" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Rs" = (
+/obj/structure/girder,
+/obj/structure/sign/poster/clf,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Rw" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Rz" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"RA" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"RK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"RP" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"RX" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Sk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"St" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Sv" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Sx" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"SG" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"SJ" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8;
+	tag = "icon-term (WEST)"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/smes_main)
+"Td" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Te" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Atmospheric Storage"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"Th" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Tk" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Tm" = (
+/obj/structure/machinery/power/geothermal,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Tz" = (
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"TB" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"TD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"TM" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"TN" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"TO" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
+"TR" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Uc" = (
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Um" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/desert_dam/exterior/river/riverside_central_north)
+"Ur" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Uy" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"Uz" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"UI" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"UJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/surgical,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"UR" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"UX" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Vb" = (
+/obj/structure/machinery/power/terminal,
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate";
+	tag = "icon-warnplate (NORTHEAST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Vm" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/structure/sign/poster/clf,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Vp" = (
+/obj/structure/bed/stool,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"VC" = (
+/obj/structure/pipes/vents/pump/on,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"VE" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"VG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"VK" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"VQ" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"VY" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Wc" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Wj" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
+"Wo" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Ws" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Ww" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"WI" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"WX" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Xd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Xe" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Xf" = (
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Xy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"XB" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"XI" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/cans/thirteenloko,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"XS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"XU" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"XX" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Yh" = (
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"Yj" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Yq" = (
+/obj/structure/window_frame/colony,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Yt" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/north_valley_dam)
+"YO" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"YY" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
+"Zd" = (
+/obj/structure/platform,
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_north)
+"Zh" = (
+/obj/structure/machinery/power/geothermal,
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Zl" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"Zw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"Zx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
+"Zy" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/desert_dam/exterior/river/riverside_central_south)
+"ZN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"ZV" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+"ZW" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+
+(1,1,1) = {"
+fM
+fM
+fM
+sG
+rv
+Ca
+au
+rv
+sG
+fM
+TM
+vM
+TM
+rA
+JX
+mj
+rA
+Ww
+Hp
+Hp
+Hp
+Hp
+Hp
+Hp
+"}
+(2,1,1) = {"
+sG
+nO
+NH
+NH
+ac
+Ro
+fN
+YY
+Tk
+fb
+Af
+Rn
+mO
+CS
+FE
+Aw
+rX
+Hp
+uR
+QH
+Lj
+SG
+ci
+Hp
+"}
+(3,1,1) = {"
+rv
+bZ
+wY
+Cy
+VC
+rP
+TB
+ET
+ET
+zi
+mz
+mz
+Sx
+mz
+fJ
+Ef
+bq
+ki
+vO
+ku
+PT
+QB
+Im
+ki
+"}
+(4,1,1) = {"
+rv
+Fr
+Ro
+cR
+cR
+TD
+cR
+TD
+Ro
+HB
+HS
+PH
+Wc
+PH
+PH
+IK
+zT
+lc
+CZ
+Zx
+MF
+fS
+Im
+ki
+"}
+(5,1,1) = {"
+rv
+Fr
+Ro
+TD
+Gb
+Gb
+Gb
+uu
+BR
+rv
+rB
+qj
+OT
+tP
+NP
+Zl
+Yj
+Th
+RX
+oh
+Vb
+Mm
+xp
+ki
+"}
+(6,1,1) = {"
+rv
+Fr
+Ro
+TD
+SJ
+lD
+SJ
+Fw
+BR
+rv
+Qq
+Ur
+xi
+Ex
+dH
+DW
+qu
+ki
+Xe
+Qe
+sk
+Qe
+xp
+ki
+"}
+(7,1,1) = {"
+rv
+Fr
+Ro
+Xy
+Fw
+cR
+cR
+Fw
+XU
+rv
+CO
+Td
+Xd
+hb
+hb
+ak
+pA
+ki
+sY
+cj
+Qe
+UI
+Im
+ki
+"}
+(8,1,1) = {"
+rv
+Fr
+PB
+bJ
+Er
+Ee
+Ee
+Kd
+XU
+rv
+Iy
+EK
+Td
+dQ
+NP
+BL
+vG
+cC
+KY
+lt
+nr
+Gr
+dI
+ki
+"}
+(9,1,1) = {"
+sG
+AB
+XX
+WI
+uv
+cQ
+GP
+cz
+cA
+fM
+Fe
+DQ
+DQ
+qE
+dQ
+xC
+vG
+Hp
+Pr
+sF
+nS
+RP
+Hp
+Hp
+"}
+(10,1,1) = {"
+fM
+sG
+dq
+dq
+sG
+fM
+rv
+pR
+rv
+dc
+Yq
+Yq
+Yq
+Yq
+Yh
+XS
+Mh
+Ww
+Hp
+Hp
+ki
+ki
+Ww
+Ep
+"}
+(11,1,1) = {"
+Yt
+qJ
+qs
+qJ
+qJ
+wU
+xg
+Lp
+xg
+St
+xg
+xg
+xg
+xg
+PS
+Ws
+js
+St
+Xf
+wU
+Oj
+Oj
+Oj
+fe
+"}
+(12,1,1) = {"
+jb
+LD
+LD
+LD
+LD
+dc
+Xf
+KT
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+ek
+tc
+sC
+ek
+Xf
+dc
+Rz
+Rz
+Rz
+cl
+"}
+(13,1,1) = {"
+ry
+uM
+uM
+yh
+oq
+ED
+TO
+zg
+kJ
+fB
+kJ
+gA
+Hs
+kt
+Uz
+Rh
+qK
+ul
+NZ
+ED
+LH
+zd
+Zy
+Zy
+"}
+(14,1,1) = {"
+Au
+qh
+qh
+Bm
+eC
+ED
+TO
+jx
+Gt
+Gt
+Gt
+Gt
+PL
+kt
+am
+da
+Wj
+tU
+NZ
+ED
+kt
+Wj
+oR
+oR
+"}
+(15,1,1) = {"
+Uy
+jl
+jl
+FR
+eC
+ED
+TO
+zg
+kJ
+fB
+kJ
+gA
+Hs
+kt
+PL
+da
+er
+ne
+pd
+ED
+kt
+er
+Bi
+Bi
+"}
+(16,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+dc
+Nz
+zg
+Hs
+Hs
+Hs
+Hs
+Hs
+Hs
+Hs
+Ng
+Hs
+QD
+Dp
+dc
+QJ
+QJ
+QJ
+QJ
+"}
+(17,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+ZW
+NT
+mn
+Hs
+Hs
+vr
+Hs
+Hs
+wU
+gU
+KP
+rd
+QD
+LN
+ht
+QJ
+QJ
+QJ
+QJ
+"}
+(18,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+dc
+Nz
+Qn
+Hs
+Hs
+Hs
+dZ
+aX
+fj
+Ow
+tB
+sC
+QD
+Dp
+dc
+QJ
+QJ
+QJ
+QJ
+"}
+(19,1,1) = {"
+eu
+cH
+cH
+eD
+kv
+sq
+PD
+Qn
+Tm
+Zh
+Tm
+Mu
+zs
+es
+jw
+MS
+EC
+jL
+UX
+sq
+es
+EC
+wK
+wK
+"}
+(20,1,1) = {"
+cS
+Jm
+Jm
+Zd
+kv
+sq
+PD
+eA
+mq
+mq
+mq
+mq
+cs
+es
+ia
+RK
+nq
+rp
+UX
+sq
+es
+nq
+Rw
+Rw
+"}
+(21,1,1) = {"
+mX
+ID
+ID
+za
+kv
+sq
+PD
+zg
+Tm
+Zh
+Tm
+Sv
+jz
+es
+xl
+qk
+Gc
+BN
+UX
+sq
+es
+Gc
+ez
+ez
+"}
+(22,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+dc
+Nz
+zg
+Hs
+MQ
+sC
+xu
+tL
+zs
+tH
+jY
+Hs
+QD
+Dp
+dc
+QJ
+QJ
+QJ
+QJ
+"}
+(23,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+ht
+UR
+Hs
+Hs
+ek
+Sk
+sC
+Hs
+wU
+Hs
+Ng
+Hs
+QD
+LN
+ht
+QJ
+QJ
+QJ
+QJ
+"}
+(24,1,1) = {"
+eb
+eb
+eb
+eb
+eb
+dc
+Nz
+zg
+Hs
+ep
+ek
+MQ
+Hs
+Hs
+Hs
+Ng
+Hs
+QD
+Dp
+dc
+QJ
+QJ
+QJ
+QJ
+"}
+(25,1,1) = {"
+eu
+cH
+cH
+eD
+kv
+sq
+PD
+zg
+Tm
+Zh
+Tm
+gA
+Hs
+es
+cs
+Kv
+EC
+jL
+UX
+sq
+es
+EC
+wK
+wK
+"}
+(26,1,1) = {"
+cS
+Jm
+Jm
+Zd
+kv
+sq
+PD
+VQ
+mq
+mq
+mq
+mq
+cs
+es
+cs
+Kv
+nq
+rp
+UX
+sq
+es
+nq
+Rw
+Rw
+"}
+(27,1,1) = {"
+wn
+Um
+Um
+jq
+Oi
+sq
+PD
+zg
+Tm
+Zh
+Tm
+gA
+Hs
+es
+cs
+Kv
+Gc
+BN
+UX
+Vm
+kQ
+sE
+lX
+lX
+"}
+(28,1,1) = {"
+Et
+gw
+gw
+gw
+gw
+dc
+Xf
+lh
+Bt
+Bt
+Bt
+Bt
+Bt
+Bt
+Hs
+Ng
+Bt
+TR
+Xf
+dc
+py
+Ep
+QJ
+QJ
+"}
+(29,1,1) = {"
+Yt
+qJ
+qJ
+qJ
+qJ
+wU
+Xf
+GM
+GM
+jd
+GM
+GM
+Xf
+GM
+Wo
+nR
+GM
+jd
+Xf
+wU
+Oj
+fe
+QJ
+QJ
+"}
+(30,1,1) = {"
+Yt
+CK
+Hb
+Hb
+Hb
+wU
+dc
+Yq
+Yq
+dc
+Yq
+Yq
+dc
+Yq
+Uc
+FO
+Yq
+dc
+wU
+wU
+Oj
+fe
+ym
+hw
+"}
+(31,1,1) = {"
+Yt
+qJ
+PG
+sv
+Hn
+ru
+XB
+XI
+mH
+Fb
+lf
+Hm
+Hm
+Og
+De
+nY
+DH
+gF
+PE
+PG
+Oj
+fe
+tj
+RA
+"}
+(32,1,1) = {"
+MZ
+LD
+hh
+yw
+En
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+De
+nY
+Tz
+Tz
+cX
+td
+Rz
+cl
+tj
+ge
+"}
+(33,1,1) = {"
+rJ
+yM
+zR
+Kz
+De
+VK
+De
+De
+De
+De
+De
+De
+De
+nz
+yX
+nY
+De
+De
+Ht
+mu
+ym
+hw
+RA
+ge
+"}
+(34,1,1) = {"
+KW
+nw
+TN
+VK
+VK
+NY
+Zw
+ZN
+xO
+xO
+sf
+WX
+xO
+xO
+ZN
+hJ
+Ld
+De
+Ht
+mu
+Fi
+VY
+RA
+ge
+"}
+(35,1,1) = {"
+gr
+gw
+Mw
+fT
+ph
+ph
+OR
+YO
+Tz
+Tz
+hk
+Lr
+EH
+oj
+wA
+De
+De
+VG
+oW
+td
+py
+Ep
+tj
+ge
+"}
+(36,1,1) = {"
+Yt
+qJ
+Rs
+yn
+yn
+ph
+gZ
+VE
+Tz
+Tz
+De
+Gu
+Oc
+rG
+iv
+Te
+Te
+iv
+qG
+iv
+Oj
+fe
+tj
+ge
+"}
+(37,1,1) = {"
+wL
+wL
+AJ
+AJ
+AJ
+rG
+rG
+pe
+Vp
+Tz
+De
+Gu
+oY
+rG
+Ce
+ZV
+ZV
+cn
+fL
+qG
+Oj
+fe
+tj
+ge
+"}
+(38,1,1) = {"
+BU
+rh
+BU
+Ox
+wL
+wL
+rG
+od
+tJ
+Tz
+De
+Gu
+oY
+rG
+rq
+cn
+cn
+cn
+cw
+qG
+Oj
+fe
+tj
+ge
+"}
+(39,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+rG
+rG
+cM
+Tz
+De
+Gu
+wH
+rG
+iO
+cn
+cn
+cn
+yZ
+qG
+Oj
+fe
+tj
+ge
+"}
+(40,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+wL
+rG
+HD
+VE
+Mf
+Gu
+wH
+rG
+UJ
+cn
+cn
+cn
+tN
+qG
+du
+fe
+Fi
+VY
+"}
+(41,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+wL
+rG
+rG
+rG
+rG
+ee
+rG
+rG
+GW
+cn
+cn
+cn
+Go
+qG
+dv
+fe
+QJ
+or
+"}
+(42,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+tx
+wL
+rG
+cn
+cn
+cn
+cn
+gS
+qG
+wL
+wL
+wL
+wL
+"}
+(43,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+tx
+wL
+rG
+Nx
+AV
+Nj
+rY
+hH
+qG
+wL
+wL
+wL
+wL
+"}
+(44,1,1) = {"
+gV
+gV
+gV
+Ox
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+tx
+wL
+rG
+qG
+qG
+qG
+qG
+qG
+qG
+wL
+wL
+wL
+wL
+"}

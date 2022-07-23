@@ -298,6 +298,18 @@
 	base_icon_state = "m20p"
 	map_deployed = TRUE
 
+/obj/item/explosive/mine/mine
+	name = "\improper Hacked M20P Claymore anti-personnel mine"
+	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Colonial Liberation Front forces."
+	icon_state = "m20p"
+	iff_signal = FACTION_CLF
+	hard_iff_lock = TRUE
+
+/obj/item/explosive/mine/clf/active
+	icon_state = "m20p_active"
+	base_icon_state = "m20p"
+	map_deployed = TRUE
+
 /obj/item/explosive/mine/custom
 	name = "Custom mine"
 	desc = "A custom chemical mine built from an M20 casing."

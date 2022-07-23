@@ -111,3 +111,13 @@
 /obj/effect/landmark/corpsespawner/ua_riot/burst
 	name = "Burst UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
+///Hostile Faction Spawner Corpse///
+
+/obj/effect/landmark/corpsespawner/clf
+	name = "Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf
+
+/obj/effect/landmark/corpsespawner/clf/burst
+	name = "Burst Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf/burst

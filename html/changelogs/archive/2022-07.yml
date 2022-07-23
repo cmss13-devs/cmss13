@@ -345,3 +345,6 @@
       provides an overwatch link for them
   - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
       have melee weapons skill level 1 to be in line with USCM specs
+2022-07-23:
+  TeDGamer:
+  - balance: Fire damage dealt to carbon humans on fire is based on the fire reagent.

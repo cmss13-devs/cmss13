@@ -664,10 +664,6 @@
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 8;
 	pixel_y = 12
-<<<<<<< master
->>>>>>> reimported backup
-=======
->>>>>>> reimported backup
 	},
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = -8;

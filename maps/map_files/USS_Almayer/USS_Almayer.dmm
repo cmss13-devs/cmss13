@@ -40150,10 +40150,6 @@
 /obj/effect/landmark/map_item,
 /obj/item/device/flashlight/lamp/green,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/reagent_container/food/drinks/coffeecup/gromit{
-	pixel_x = -5;
-	pixel_y = 6
-	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "eBC" = (

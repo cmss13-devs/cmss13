@@ -15640,17 +15640,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
-"aSy" = (
-/obj/structure/morgue{
-	dir = 8;
-	tag = "icon-morgue1 (WEST)"
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2";
-	tag = "icon-bright_clean2 (SOUTHWEST)"
-	},
-/area)
 "aSz" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
@@ -107219,7 +107208,7 @@ cjv
 ckg
 ckg
 ckg
-aSy
+ckg
 ckg
 cka
 cpI

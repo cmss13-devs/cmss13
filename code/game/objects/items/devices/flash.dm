@@ -9,7 +9,6 @@
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
 
-	var/broken_icon_state = "flashburnt"
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
 	var/max_flashes_stored = 5 //how many you can do per minute
@@ -20,7 +19,7 @@
 
 /obj/item/device/flash/update_icon()
 	if(broken)
-		icon_state = broken_icon_state
+		icon_state = "[icon_state]_burnt"
 
 /obj/item/device/flash/examine(mob/user)
 	. = ..()
@@ -74,7 +73,7 @@
 
 	if(aoe)
 		playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
-		flick("flash2", src)
+		flick("[icon_state]_flashing", src)
 		user.visible_message(SPAN_DANGER("[user] activates \the [src]'s bulb, emitting a brilliant light!"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around them in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
@@ -174,7 +173,6 @@
 	name = "synthetic flash"
 	desc = "When a problem arises, SCIENCE is the solution. Only good for one use."
 	icon_state = "sflash"
-	broken_icon_state = "flashburnt_very_old"
 
 /obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
 	..()
@@ -189,3 +187,7 @@
 		broken = TRUE
 		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
 		update_icon()
+
+/obj/item/device/flash/old
+	name = "old-looking flash"
+	icon_state = "flash_old"

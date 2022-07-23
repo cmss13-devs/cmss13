@@ -337,3 +337,11 @@
   - balance: Boilers acid gas damage to vehicles was nerfed, due to overall acid resistance
       nerf of APC armor.
   - code_imp: Made SensorMates mandatory in Vehicle Crewman vendor.
+  TeDGamer:
+  - bugfix: can_see now takes into account the darkness of the target tile and whether
+      you have nightvision
+  stanalbatross:
+  - qol: the xeno tunnel creation message now shows which burrower created it, and
+      provides an overwatch link for them
+  - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
+      have melee weapons skill level 1 to be in line with USCM specs

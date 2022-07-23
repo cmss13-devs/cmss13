@@ -155,7 +155,6 @@
 /obj/item/clothing/suit/auto_cpr/mob_can_equip(mob/living/carbon/human/H, slot, disable_warning = 0, force = 0)
 	. = ..()
 	if(!isHumanStrict(H))
-		to_chat("\The [src] only fits on humans!")
 		return FALSE
 
 /obj/item/clothing/suit/auto_cpr/attack(mob/living/carbon/human/M, mob/living/user)
@@ -167,11 +166,15 @@
 	if(M.stat == CONSCIOUS)
 		to_chat(user, SPAN_WARNING("They're fine, no need for <b>CPR</b>!"))
 		return
+	if(!M.is_revivable() || !H.check_tod())
+		to_chat(user, SPAN_WARNING("That won't be of any use, they're already too far gone!"))
+		return
 	if(istype(M) && user.a_intent == INTENT_HELP)
 		if(M.wear_suit)
 			to_chat(user, SPAN_WARNING("Their [M.wear_suit] is in the way, remove it first!"))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
+			to_chat(user, SPAN_WARNING("\The [src] only fits on humans!"))
 			return
 		user.affected_message(M,
 							SPAN_NOTICE("You start fitting \the [src] onto [M]'s chest."),

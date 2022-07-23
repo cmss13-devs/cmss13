@@ -12838,10 +12838,7 @@
 /area/bigredv2/outside/virology)
 "aHc" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/storage/box/donkpockets,
 /obj/structure/machinery/power/apc{
-	dir = 4;
-	pixel_x = 28;
 	start_charge = 0
 	},
 /turf/open/floor{
@@ -17209,7 +17206,6 @@
 	},
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whitegreen";
@@ -18534,6 +18530,7 @@
 "aUJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whitegreen";
@@ -18844,7 +18841,6 @@
 /area/bigredv2/caves/lambda/virology)
 "aVA" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkgreen2";
@@ -19053,6 +19049,10 @@
 "aWb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/wy_mre,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/open/floor{
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen"
@@ -32779,6 +32779,13 @@
 	tag = "icon-bcircuitoff"
 	},
 /area/bigredv2/caves/lambda/research)
+"jzD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor{
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/caves/lambda/virology)
 "jAo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -85472,7 +85479,7 @@ aPr
 aMX
 aRA
 aSq
-bQi
+jzD
 aUG
 aVz
 aHc

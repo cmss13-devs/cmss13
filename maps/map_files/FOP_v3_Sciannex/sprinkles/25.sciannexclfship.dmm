@@ -1,0 +1,5257 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"af" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"am" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"ar" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"at" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"av" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/gun/shotgun/double/with_stock,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"aB" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"aD" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aH" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/melee/twohanded/lungemine,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aL" = (
+/obj/item/ammo_box/magazine/misc/flares{
+	layer = 3.1;
+	pixel_y = 16
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"aP" = (
+/obj/structure/barricade/handrail/type_b{
+	dir = 4;
+	layer = 3.5
+	},
+/turf/open/floor/plating,
+/area/fiorina/tumor/ice_lab)
+"aQ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bj" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"bk" = (
+/obj/item/clothing/head/pirate,
+/obj/item/clothing/under/pirate,
+/obj/item/clothing/suit/armor/swat/officer,
+/obj/structure/closet,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"bn" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bo" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = 3;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bA" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"bB" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"bG" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/oob)
+"bM" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"bX" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ca" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ck" = (
+/obj/structure/bed,
+/obj/item/bedsheet/rd,
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cu" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_2"
+	},
+/area/fiorina/oob)
+"cv" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"cz" = (
+/obj/item/explosive/grenade/HE/frag,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"cI" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"cN" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cQ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_t_left"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan21"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"cZ" = (
+/turf/open/space/basic,
+/area/fiorina/oob)
+"de" = (
+/obj/structure/girder/displaced,
+/obj/structure/girder/reinforced,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"di" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"dw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan9"
+	},
+/area/lv624/lazarus/crashed_ship)
+"dx" = (
+/obj/structure/cargo_container{
+	icon_state = "green 1,0"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"dy" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"dC" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"dM" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"eo" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"er" = (
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"eu" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 1;
+	name = "\improper Side Entrance";
+	indestructible = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"ex" = (
+/obj/structure/machinery/door/airlock/secure{
+	name = "\improper Engineering Storage"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/oob)
+"eO" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/rifle/type71/ap,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"fp" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4;
+	icon_state = "plasteel_closed_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"fr" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"fD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/weapon/melee/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 9
+	},
+/obj/item/weapon/melee/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"fZ" = (
+/obj/structure/platform_decoration,
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"gk" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/fiorina/oob)
+"gq" = (
+/obj/item/explosive/grenade/HE/frag,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"gt" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"gy" = (
+/obj/structure/machinery/door/airlock/secure{
+	name = "\improper Engineering Storage";
+	indestructible = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"gK" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/structure/machinery/m56d_hmg{
+	rounds = 700
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"gW" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"hh" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/fiorina/oob)
+"hi" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"ho" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "\improper General Area"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"hs" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"hD" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/turf/closed/wall/prison,
+/area/fiorina/tumor/ice_lab)
+"hI" = (
+/obj/structure/surface/table/reinforced/prison{
+	flipped = 1
+	},
+/obj/item/device/cassette_tape/hiphop,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"hP" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ic" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ie" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"ij" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"il" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"im" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"io" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"it" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"iK" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/fiorina/oob)
+"iL" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship)
+"iM" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"iS" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ji" = (
+/obj/item/ammo_magazine/rifle/type71/ap,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"jn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"jq" = (
+/obj/structure/sign/poster/clf,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"jA" = (
+/obj/structure/ice/thin/indestructible{
+	icon_state = "Corner"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"jJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2"
+	},
+/area/lv624/lazarus/crashed_ship)
+"jP" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"kd" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"kj" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"kl" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"ko" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_2"
+	},
+/area/lv624/lazarus/crashed_ship)
+"kz" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"kC" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"kK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"kM" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"kV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 3
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/oob)
+"kY" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"lg" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange";
+	tag = "icon-orange (SOUTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"lo" = (
+/turf/open/space,
+/area/fiorina/oob)
+"ly" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/lv624/lazarus/crashed_ship)
+"lN" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"lR" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"lT" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"lU" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "casing_2_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"mu" = (
+/obj/item/trash/pistachios,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"mD" = (
+/obj/structure/ice/thin/indestructible{
+	icon_state = "Straight"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"mE" = (
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/tumor/ice_lab)
+"mI" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 1;
+	icon_state = "Straight"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"mK" = (
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"mN" = (
+/obj/structure/disposalpipe/segment{
+	icon_state = "delivery_outlet";
+	layer = 6;
+	name = "overhead ducting";
+	pixel_y = 33
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"mS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_r_w"
+	},
+/area/lv624/lazarus/crashed_ship)
+"na" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/tumor/ice_lab)
+"nb" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"ne" = (
+/obj/item/storage/pill_bottle/bicaridine/skillless,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"nh" = (
+/obj/structure/window_frame/prison,
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"np" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"nu" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/item/storage/firstaid/regular/empty,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"nC" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"nM" = (
+/turf/closed/shuttle/ert,
+/area/lv624/lazarus/crashed_ship)
+"nP" = (
+/obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"nU" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "Cargo Airlock"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"nW" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"nZ" = (
+/turf/open/floor/almayer{
+	icon_state = "greencorner";
+	tag = "icon-greencorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ob" = (
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"oj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer,
+/area/fiorina/oob)
+"ow" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 12;
+	pixel_y = 13
+	},
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"oy" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_3"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"oA" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"oE" = (
+/obj/item/stack/rods,
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"pe" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"pi" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"pr" = (
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"pt" = (
+/obj/structure/machinery/light/double/blue,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"pD" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"pJ" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "\improper Dining Room"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"pR" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/fiorina/tumor/ice_lab)
+"pW" = (
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"qh" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"qm" = (
+/obj/structure/machinery/computer/communications{
+	icon_state = "commb";
+	stat = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"qo" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"qp" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/newspaper{
+	name = "character sheet";
+	pixel_x = -6
+	},
+/obj/item/newspaper{
+	name = "character sheet";
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"qH" = (
+/obj/structure/machinery/deployable/barrier{
+	anchored = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"qM" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "Straight"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"qW" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"qY" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"rm" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"rr" = (
+/turf/open/floor/prison,
+/area/fiorina/tumor/ice_lab)
+"rz" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/oob)
+"rQ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_l_w"
+	},
+/area/lv624/lazarus/crashed_ship)
+"rU" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/crashed_ship)
+"sj" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"sm" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"sn" = (
+/obj/item/stool,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"sp" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"sC" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/ice_lab)
+"sI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"sL" = (
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"sP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_3"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"sS" = (
+/obj/structure/barricade/handrail/type_b{
+	dir = 4;
+	layer = 3.5
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"sU" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/fiorina/tumor/ice_lab)
+"tc" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"th" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tk" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tl" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"tq" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tt" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"tv" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"tx" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"ty" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"tC" = (
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tD" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_t_right"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tE" = (
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tL" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"tM" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"tN" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tP" = (
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tS" = (
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"tT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/lv624/lazarus/crashed_ship)
+"tY" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_white_t_up"
+	},
+/area/lv624/lazarus/crashed_ship)
+"tZ" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ug" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "casing_9_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"uh" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"ul" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/gun/shotgun/double/sawn,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/tumor/ice_lab)
+"us" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"uv" = (
+/obj/structure/sink{
+	pixel_y = 15
+	},
+/obj/item/tool/soap{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"uy" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"uB" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"uF" = (
+/obj/item/tool/shovel/snow,
+/obj/item/device/flashlight,
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"uI" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/prison,
+/area/fiorina/tumor/ice_lab)
+"uK" = (
+/obj/structure/platform_decoration,
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"uM" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 8;
+	icon_state = "Straight"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.1
+	},
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"uQ" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"uZ" = (
+/obj/item/stack/rods,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"vd" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vf" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner (WEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vh" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vi" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"vo" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan2"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vr" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vs" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vv" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio{
+	pixel_x = 3
+	},
+/obj/item/device/radio,
+/obj/item/device/radio{
+	pixel_x = -3
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "green";
+	tag = "icon-green (SOUTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vx" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"vD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/weldpack,
+/obj/item/clothing/glasses/welding,
+/obj/item/tool/weldingtool,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vG" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan23"
+	},
+/area/fiorina/oob)
+"vL" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"vT" = (
+/obj/structure/sign/poster/clf,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"vX" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"vY" = (
+/obj/structure/girder/reinforced,
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_2"
+	},
+/area/fiorina/oob)
+"wa" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"wc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"wk" = (
+/obj/structure/girder/reinforced,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"wv" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"wM" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 1;
+	icon_state = "Corner"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.1
+	},
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"wP" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/fiorina/oob)
+"wS" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"xe" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_s_w"
+	},
+/area/fiorina/oob)
+"xf" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"xg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_white_t_up"
+	},
+/area/fiorina/oob)
+"xi" = (
+/turf/open/floor/plating,
+/area/fiorina/tumor/ice_lab)
+"xl" = (
+/obj/item/circuitboard/apc{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/cell{
+	pixel_x = -2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"xA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"xP" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/obj/structure/sign/poster/clf,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"xU" = (
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"xW" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"yh" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"yk" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"yw" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"yx" = (
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe{
+	pixel_y = 5
+	},
+/obj/item/tool/pickaxe{
+	pixel_y = 10
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"yz" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"yF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/lv624/lazarus/crashed_ship)
+"yI" = (
+/obj/item/tool/weldingtool,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"yL" = (
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"yQ" = (
+/obj/structure/largecrate/supply/supplies/mre{
+	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
+	name = "\improper CLF Supply MRE crate (x50)"
+	},
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ze" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "\improper Bridge"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"zr" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"zv" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"zG" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"zI" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 1;
+	name = "\improper Medical Bay"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"zM" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Ab" = (
+/obj/structure/bed,
+/obj/item/bedsheet/yellow,
+/obj/item/handcuffs{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/handcuffs,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ac" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/m56d_hmg{
+	rounds = 700
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ag" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/item/toy/farwadoll,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Aj" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Am" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Au" = (
+/obj/structure/cargo_container{
+	icon_state = "green 0,0"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Av" = (
+/obj/item/newspaper,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Aw" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"AI" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"AV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Bc" = (
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Bf" = (
+/obj/structure/girder/reinforced,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"Bs" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Bw" = (
+/obj/item/weapon/gun/rifle/type71,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"By" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"BG" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"BM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"BV" = (
+/obj/structure/barricade/wooden,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"BY" = (
+/obj/item/stool,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"Cb" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/melee/twohanded/lungemine,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Cd" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/wirecutters,
+/obj/item/tool/wrench{
+	pixel_y = 7
+	},
+/obj/item/tool/screwdriver{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"Ce" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/clothing/accessory/storage/webbing,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Cj" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ck" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Cq" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	icon_state = "plasteel_closed_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Cu" = (
+/turf/closed/wall/prison,
+/area/fiorina/tumor/ice_lab)
+"Cw" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/ice_lab)
+"Cy" = (
+/obj/structure/closet/emcloset,
+/obj/item/storage/pill_bottle/kelotane/skillless,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"CF" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"CG" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"CH" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"CO" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"CY" = (
+/obj/structure/bed/chair,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"CZ" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Df" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Crashed Ship APC";
+	pixel_y = 30;
+	start_charge = 1
+	},
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Di" = (
+/obj/item/stack/cable_coil/blue,
+/obj/item/stack/rods,
+/turf/open/floor/prison{
+	icon_state = "whitegreencorner"
+	},
+/area/fiorina/tumor/ice_lab)
+"Dp" = (
+/obj/structure/bed,
+/obj/item/bedsheet/yellow,
+/obj/item/toy/katana,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Dw" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "clf_umbilical_1";
+	pixel_x = 1;
+	pixel_y = 28;
+	range = 20
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"DU" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/obj/item/tool/warning_cone,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"El" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Ez" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"EI" = (
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"EU" = (
+/obj/structure/window_frame/prison,
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"EW" = (
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/invuln{
+	desc = "It is slimy.";
+	dir = 4;
+	icon = 'icons/mob/hostiles/sentinel.dmi';
+	icon_state = "Normal Sentinel Knocked Down";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -22;
+	pixel_y = 8
+	},
+/obj/structure/prop/invuln{
+	desc = "He knows something that you don't.";
+	dir = 4;
+	icon = 'icons/mob/hostiles/larva.dmi';
+	icon_state = "Larva Sleeping";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = 8;
+	pixel_y = -18
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"EY" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/toy/dice/d20,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"Fa" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/almayer{
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Fj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"Fk" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/tumor/ice_lab)
+"Fm" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"Fv" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"FB" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"FE" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Gf" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Gj" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Gm" = (
+/obj/effect/vehicle_spawner/van/decrepit,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Go" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Gr" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Gv" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"GJ" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"GK" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"GQ" = (
+/obj/item/ammo_magazine/rifle/type71/ap,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"GU" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "End"
+	},
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "End"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"GV" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Hb" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"He" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Hu" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"HB" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 1;
+	name = "\improper Medical Bay"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"HD" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"HF" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"HJ" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"HX" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Ih" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"In" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ip" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Iu" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"IA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8;
+	pixel_x = -11
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 3;
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 6;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -8;
+	pixel_x = -11
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -8;
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -2;
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -2
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"IB" = (
+/obj/structure/ice/thin/indestructible,
+/obj/structure/prop/invuln{
+	desc = "Its eyes follow you around through the ice.";
+	dir = 4;
+	icon = 'icons/mob/hostiles/queen.dmi';
+	icon_state = "Normal Queen Knocked Down";
+	layer = 2.5;
+	name = "frozen creature";
+	pixel_x = -15;
+	pixel_y = -16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"II" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Jd" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (WEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Jf" = (
+/turf/open/floor/almayer{
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Jt" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Jw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Jx" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "Corner"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.1
+	},
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"JD" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"JE" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Kf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ky" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/oob)
+"KH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/lv624/lazarus/crashed_ship)
+"KU" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Lj" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/ice_lab)
+"Lt" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"LA" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/oob)
+"LD" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"LF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_box/magazine/smg/nailgun,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"LU" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"Mn" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"Mo" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-pottedplant_10"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Mr" = (
+/obj/structure/machinery/power/smes/buildable/charged,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"MC" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/poncho/red,
+/obj/item/clothing/suit/poncho/green,
+/obj/item/clothing/suit/suspenders,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"MF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tank/oxygen/red,
+/obj/item/storage/bag/trash,
+/obj/item/tool/screwdriver,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"MR" = (
+/mob/living/simple_animal/hostile/carp{
+	desc = "He is late for work.";
+	name = "Egbert"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"MS" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"MT" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio{
+	pixel_x = -3
+	},
+/obj/item/device/radio,
+/obj/item/device/radio{
+	pixel_x = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Nc" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -5;
+	tag = "icon-chair (EAST)"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"Ne" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer{
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Nk" = (
+/obj/item/explosive/grenade/HE/frag,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"Nl" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_s_w"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Nq" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Nt" = (
+/obj/item/stool,
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"Nx" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"NJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan8"
+	},
+/area/lv624/lazarus/crashed_ship)
+"NN" = (
+/obj/item/stack/rods,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"NR" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/space,
+/area/fiorina/oob)
+"NS" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/weapon/melee/twohanded/lungemine,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"NV" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"NX" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Ob" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_y = 11
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"Oi" = (
+/turf/open/floor/almayer{
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ol" = (
+/obj/item/stack/cable_coil/orange,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"Op" = (
+/obj/item/tool/pickaxe,
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Ow" = (
+/obj/structure/machinery/deployable/barrier{
+	anchored = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"Oy" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = -3;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"OD" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"OM" = (
+/obj/item/ammo_box/magazine/type71,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"OQ" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"OS" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Pe" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/crashed_ship)
+"Pg" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Pn" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"Py" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"PC" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/lv624/lazarus/crashed_ship)
+"PH" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "cartridge_2_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"PO" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"PV" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"Qb" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"Qf" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "Straight"
+	},
+/obj/structure/ice/thin/indestructible{
+	dir = 4;
+	icon_state = "Straight"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"Qw" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_4_1"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Qx" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "\improper Bunk Beds"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"QE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 9
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"QH" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"QI" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"QM" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/newspaper{
+	name = "character sheet"
+	},
+/obj/item/device/cassette_tape/heavymetal{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"QT" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/toy/dice,
+/obj/item/toy/crayon/blue{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"QU" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"QY" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"QZ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ra" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "whitegreencorner"
+	},
+/area/fiorina/tumor/ice_lab)
+"Rk" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/obj/item/tool/pickaxe,
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Rp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/oob)
+"RK" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 8;
+	icon_state = "End"
+	},
+/obj/structure/ice/thin/indestructible{
+	dir = 8;
+	icon_state = "End"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"RS" = (
+/obj/item/ammo_box/magazine/misc/flares/empty,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"RV" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Sd" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Sm" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Sn" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer,
+/area/fiorina/oob)
+"So" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/glasses/welding,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange";
+	tag = "icon-orange (SOUTHEAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Sw" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"SC" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"SG" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/fiorina/oob)
+"SL" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"SO" = (
+/obj/structure/bed/chair,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"Ti" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"TB" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"TO" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"TT" = (
+/obj/item/stack/rods,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"TU" = (
+/obj/structure/machinery/computer/station_alert{
+	icon_state = "atmosb";
+	stat = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"Ui" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Up" = (
+/obj/item/stack/rods,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/oob)
+"Uy" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"UI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan23"
+	},
+/area/lv624/lazarus/crashed_ship)
+"UM" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"UU" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"UX" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"VD" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	name = "\improper Dining Room"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"VH" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"VM" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"VN" = (
+/obj/structure/machinery/floodlight,
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/fiorina/oob)
+"VZ" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Wd" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/ice_lab)
+"Wg" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_s_w"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Wh" = (
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/obj/item/storage/backpack/general_belt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Wi" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_3_1"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Wr" = (
+/obj/structure/cargo_container{
+	icon_state = "green 2,0"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ws" = (
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/crashed_ship)
+"Wz" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"WE" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/fiorina/tumor/ice_lab)
+"WH" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/spawner/random/toolbox,
+/obj/item/toy/deck/uno{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"WI" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Xn" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_6_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Xo" = (
+/obj/structure/surface/rack,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "emerald";
+	tag = "icon-emerald"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Xz" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"XE" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"XG" = (
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"XI" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"XK" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"XS" = (
+/obj/item/poster,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
+"Yg" = (
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Yj" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/fiorina/oob)
+"Yr" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"Yt" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"YB" = (
+/obj/item/paper/crumpled/bloody,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"YD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/obj/item/paper/prison_station/pirate_note{
+	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \"Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of Wey-Yu and USCM henchmen."
+	},
+/turf/open/floor/almayer{
+	icon_state = "emerald";
+	tag = "icon-emerald"
+	},
+/area/lv624/lazarus/crashed_ship)
+"YM" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Za" = (
+/obj/item/stack/rods,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Zc" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/tumor/ice_lab)
+"Zg" = (
+/obj/structure/ice/thin/indestructible{
+	dir = 8;
+	icon_state = "Corner"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/ice/noweed,
+/area/fiorina/tumor/ice_lab)
+"Zj" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/ice_lab)
+"Zm" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (SOUTHWEST)"
+	},
+/area/fiorina/tumor/ice_lab)
+"Zo" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Zw" = (
+/turf/open/floor/prison{
+	icon_state = "whitegreen"
+	},
+/area/fiorina/tumor/ice_lab)
+"Zz" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ZE" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ZM" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+
+(1,1,1) = {"
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+NR
+NR
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+aL
+RS
+"}
+(2,1,1) = {"
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+pD
+lo
+lo
+NR
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Cw
+Cw
+Cw
+Cw
+Cw
+pi
+pi
+Cu
+El
+bM
+Cu
+Cu
+ne
+Cy
+Cu
+Cu
+Cu
+Cu
+"}
+(3,1,1) = {"
+lo
+lo
+lo
+lo
+lo
+pD
+lo
+pD
+By
+lo
+NR
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Zj
+Cw
+Cw
+Cw
+Cw
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+Mo
+aB
+Fm
+Fm
+YB
+Nk
+lR
+Nx
+nW
+Cu
+uI
+"}
+(4,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+Ui
+Ui
+Ui
+Ui
+Yt
+tN
+wS
+wS
+mS
+wS
+nM
+cN
+yF
+In
+tT
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+aB
+GJ
+LU
+ul
+LU
+OQ
+OQ
+OQ
+BV
+tl
+vT
+"}
+(5,1,1) = {"
+Ui
+cZ
+Ui
+cZ
+cZ
+cZ
+cZ
+Ui
+Yt
+Bs
+Bs
+wS
+vr
+lg
+QZ
+jn
+GV
+NJ
+cN
+yF
+In
+tT
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+gq
+np
+LU
+LU
+yk
+zr
+Yg
+zr
+XK
+tl
+jq
+"}
+(6,1,1) = {"
+cZ
+cZ
+cZ
+Ui
+cZ
+Ui
+cZ
+cZ
+Bs
+tN
+nM
+Ck
+Oy
+vf
+QZ
+BM
+xA
+sp
+NJ
+xf
+ly
+ly
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+aB
+np
+LU
+aB
+aB
+aB
+lR
+aB
+nW
+Cu
+uI
+"}
+(7,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+Bs
+cS
+Df
+xl
+FB
+Iu
+QZ
+QH
+XG
+CF
+vN
+tD
+nM
+nM
+ij
+wS
+nM
+xf
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+aB
+Av
+Zw
+aB
+Cu
+Cu
+nh
+EU
+EU
+Cu
+Cu
+"}
+(8,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+gk
+io
+Rp
+QZ
+Mr
+Iu
+Gv
+Ne
+QZ
+th
+Iu
+Iu
+YD
+QZ
+yQ
+QY
+Xz
+vL
+tC
+NJ
+cN
+yF
+In
+tT
+Zj
+Zc
+aB
+dM
+Zw
+nW
+Cu
+He
+iM
+tL
+pe
+SC
+SL
+"}
+(9,1,1) = {"
+Ui
+Ui
+Ui
+cZ
+gk
+JD
+SG
+lT
+HF
+QZ
+bn
+Iu
+ZE
+So
+QZ
+wc
+CF
+Iu
+Xo
+QZ
+Zz
+tE
+Gm
+nC
+tE
+Wz
+NJ
+cN
+yF
+In
+tT
+Fm
+WE
+np
+WE
+UX
+EU
+Jx
+mD
+jA
+RK
+Rk
+jP
+"}
+(10,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+Up
+MF
+io
+Yr
+zv
+tY
+ko
+Wz
+Wz
+ko
+Nl
+NV
+Oi
+FB
+xA
+QZ
+vs
+tE
+Zz
+nC
+OS
+uZ
+mK
+NJ
+cN
+yF
+In
+tT
+aB
+LU
+Mn
+Za
+nh
+uM
+IB
+qM
+Qf
+QU
+sj
+"}
+(11,1,1) = {"
+cZ
+cZ
+gk
+zv
+xe
+Cd
+io
+zv
+JD
+QZ
+Iu
+Iu
+Jd
+vv
+QZ
+Wh
+sL
+Iu
+XG
+nU
+tP
+EI
+tP
+kY
+ic
+sm
+PH
+Wz
+NJ
+nM
+nM
+xf
+aB
+LU
+kj
+Ol
+EU
+wM
+mI
+Zg
+GU
+uK
+TB
+"}
+(12,1,1) = {"
+cZ
+gk
+SG
+JD
+TT
+lT
+lN
+Fj
+io
+QZ
+CO
+Iu
+Iu
+MT
+QZ
+gW
+kM
+Iu
+Iu
+Wz
+qW
+nC
+di
+Hb
+im
+aQ
+oy
+sP
+hi
+WI
+Wz
+vo
+tx
+np
+tv
+GK
+Cu
+Am
+Op
+tt
+NX
+xP
+uF
+"}
+(13,1,1) = {"
+gk
+JD
+zv
+lT
+Up
+zv
+JD
+Ky
+VN
+QZ
+bX
+XG
+Iu
+Jd
+tY
+ko
+Wz
+HB
+ko
+Nl
+tZ
+fp
+Lt
+lU
+tk
+Ti
+WI
+nC
+rU
+nC
+tq
+vo
+ow
+tM
+Fm
+tM
+Cu
+EU
+EU
+nh
+Cu
+uI
+yx
+"}
+(14,1,1) = {"
+de
+qm
+Nt
+zv
+Up
+QE
+zv
+JD
+Ky
+wk
+it
+kz
+Iu
+Iu
+ho
+Iu
+Wz
+bj
+Wz
+QZ
+Dw
+nC
+CZ
+nC
+gK
+Wz
+tq
+Pe
+tq
+Pg
+Cb
+Zo
+LU
+LU
+Fk
+Fm
+gt
+aB
+gq
+aB
+Cu
+hD
+aB
+"}
+(15,1,1) = {"
+oE
+zv
+JD
+aa
+xg
+vY
+gy
+ex
+cu
+Nl
+kC
+wv
+wv
+eo
+Wz
+Gj
+Wz
+nC
+Wz
+wS
+Bc
+Wi
+mK
+WI
+Xn
+Wz
+rU
+Ws
+nC
+tq
+nC
+iL
+VH
+Fm
+Fm
+OQ
+vi
+OQ
+Gr
+uy
+cv
+tl
+OQ
+"}
+(16,1,1) = {"
+Bf
+io
+TT
+JD
+ze
+io
+JD
+TT
+kV
+tY
+ko
+ko
+ko
+ko
+Nl
+OD
+Wz
+Wz
+Wz
+QZ
+pW
+er
+nC
+UM
+vd
+WI
+WI
+tq
+WI
+Ws
+tE
+RV
+Fk
+Fm
+Di
+il
+zr
+CG
+zr
+XK
+zr
+tl
+zr
+"}
+(17,1,1) = {"
+hh
+TU
+sn
+io
+JD
+kK
+Ky
+Ky
+Sn
+QZ
+CY
+yz
+rm
+yh
+QZ
+af
+Ob
+fD
+Jf
+wS
+Wz
+NN
+Qw
+WI
+FE
+Ws
+aH
+dC
+Ws
+Ws
+tE
+iL
+av
+Fm
+VH
+Jt
+gt
+aB
+aB
+aB
+Cu
+hD
+aB
+"}
+(18,1,1) = {"
+iK
+vG
+io
+bG
+wP
+io
+io
+LA
+oj
+wk
+nP
+Qb
+WH
+yh
+QZ
+CH
+IA
+Kf
+Nq
+QZ
+tq
+Wz
+Wz
+tq
+Ac
+nC
+Ws
+Ws
+tq
+Pe
+Ws
+Cj
+Fm
+na
+VH
+aB
+Cu
+EU
+EU
+nh
+Cu
+uI
+yx
+"}
+(19,1,1) = {"
+cZ
+iK
+zG
+Sw
+JD
+JD
+LA
+LA
+Sn
+QZ
+QI
+pr
+pr
+pr
+QZ
+Wz
+xW
+hP
+Wz
+QZ
+Ez
+Cq
+Jw
+Wz
+XE
+hi
+Wz
+tq
+nC
+nC
+tq
+vo
+VH
+Zc
+Fm
+pt
+Cu
+He
+pe
+Hu
+Py
+SC
+uF
+"}
+(20,1,1) = {"
+cZ
+cZ
+JD
+ty
+JD
+io
+JD
+LA
+rz
+pJ
+qH
+Iu
+Iu
+Iu
+VD
+Wz
+nC
+Gf
+Nq
+nU
+nC
+ji
+Bw
+iS
+VM
+JE
+TO
+vx
+hi
+Wz
+WI
+vo
+Fm
+VH
+Zw
+UX
+EU
+Jx
+mD
+jA
+RK
+uQ
+jP
+"}
+(21,1,1) = {"
+Ui
+cZ
+JD
+zv
+zv
+lT
+zG
+rz
+Sn
+kd
+Ow
+pr
+pr
+pr
+Wz
+Wz
+Wz
+nC
+vh
+Wz
+Wz
+Gf
+yL
+eO
+us
+ca
+ug
+Wz
+dw
+PC
+PC
+sI
+Aw
+VH
+wa
+cW
+nh
+uM
+EW
+qM
+Qf
+am
+sj
+"}
+(22,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+JD
+io
+zG
+rz
+Sn
+tY
+ko
+ko
+ko
+ko
+Nl
+Wg
+af
+zI
+Nl
+QZ
+VZ
+YM
+GQ
+tq
+Au
+nC
+Wz
+dw
+AV
+aD
+jJ
+dy
+Fm
+np
+Fm
+HX
+EU
+wM
+mI
+Zg
+GU
+fZ
+TB
+"}
+(23,1,1) = {"
+cZ
+cZ
+Ui
+cZ
+iK
+Yj
+vG
+rz
+Sn
+QZ
+Ag
+Dp
+KU
+Sd
+Qx
+XG
+bj
+af
+Jf
+QZ
+Uy
+Wz
+ZM
+nC
+dx
+Wz
+dw
+AV
+aD
+jJ
+dy
+Fm
+aB
+Fm
+Zw
+aB
+Cu
+Am
+qo
+tt
+NX
+zM
+SL
+"}
+(24,1,1) = {"
+Ui
+cZ
+Ui
+cZ
+Ui
+cZ
+iK
+io
+eu
+Nl
+nu
+kz
+BY
+Iu
+Wz
+PV
+Iu
+Iu
+vD
+QZ
+kl
+WI
+OM
+WI
+Wr
+dw
+AV
+aD
+jJ
+dy
+pi
+Fm
+aB
+np
+Zw
+aB
+Cu
+Cu
+EU
+EU
+nh
+Cu
+Cu
+"}
+(25,1,1) = {"
+cZ
+cZ
+Ui
+Ui
+Ui
+Ui
+cZ
+cZ
+Bs
+cS
+II
+ck
+eo
+nZ
+QZ
+BG
+UI
+XG
+LF
+cQ
+PC
+PC
+PC
+PC
+PC
+sI
+Zj
+Zj
+Zj
+Zj
+pi
+pi
+aB
+XI
+Zw
+aB
+aB
+aB
+aB
+aB
+nW
+Cu
+uI
+"}
+(26,1,1) = {"
+cZ
+cZ
+Ui
+cZ
+cZ
+cZ
+Ui
+cZ
+Bs
+KH
+PC
+UI
+bo
+Fa
+QZ
+uv
+QZ
+hs
+dw
+sI
+ly
+ly
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cu
+pi
+pi
+aB
+cz
+Ra
+NS
+OQ
+OQ
+OQ
+OQ
+LD
+tl
+OQ
+"}
+(27,1,1) = {"
+cZ
+Ui
+cZ
+cZ
+Ui
+Ui
+cZ
+cZ
+Bs
+Bs
+Bs
+cS
+Ce
+Ab
+QZ
+ar
+QZ
+dw
+AV
+aD
+jJ
+dy
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cu
+pi
+pi
+aB
+ob
+CG
+zr
+Fm
+Fm
+mE
+zr
+qY
+tl
+zr
+"}
+(28,1,1) = {"
+cZ
+cZ
+cZ
+cZ
+Ui
+cZ
+cZ
+cZ
+cZ
+cZ
+Bs
+KH
+PC
+PC
+rQ
+PC
+rQ
+AV
+aD
+jJ
+dy
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cu
+pi
+pi
+aB
+aB
+aB
+aB
+VH
+Fk
+Fm
+pR
+nW
+Cu
+uI
+"}
+(29,1,1) = {"
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+uI
+sS
+Fm
+VH
+Fm
+aP
+sS
+uI
+Cu
+"}
+(30,1,1) = {"
+lo
+pD
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+Zj
+lo
+lo
+Zj
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+Cw
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Cu
+vX
+Cu
+Cu
+Cu
+Cu
+Cu
+bB
+HD
+Fv
+xi
+Zc
+sU
+HD
+aB
+uh
+"}
+(31,1,1) = {"
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+lo
+lo
+lo
+lo
+NR
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Cw
+Cw
+Zj
+UU
+uB
+uh
+Nc
+Nc
+Cu
+vX
+Cu
+Cu
+Cu
+Cu
+Cu
+Cu
+mN
+Ip
+xU
+xi
+xi
+aB
+aB
+uh
+"}
+(32,1,1) = {"
+lo
+lo
+lo
+Zj
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+NR
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+sC
+Cw
+Zj
+uh
+uh
+SO
+QT
+qp
+Cu
+hI
+Cu
+Cu
+rr
+rr
+Lj
+Lj
+aB
+bA
+tS
+Ip
+aB
+aB
+aB
+PO
+"}
+(33,1,1) = {"
+lo
+lo
+lo
+Zj
+Zj
+lo
+lo
+lo
+MR
+lo
+lo
+Zj
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Wd
+yw
+yI
+uh
+uh
+SO
+EY
+QM
+Cu
+Cu
+Cu
+tS
+rr
+rr
+ie
+ie
+DU
+Zm
+nb
+qh
+tc
+Cu
+Cu
+tS
+"}
+(34,1,1) = {"
+lo
+lo
+lo
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Cw
+Cw
+Ih
+Zj
+Zj
+uh
+uh
+uh
+Cu
+Cu
+Cu
+uh
+tS
+tS
+Cu
+Cu
+Aj
+Ip
+tS
+Ip
+aB
+Zj
+Zj
+Zj
+"}
+(35,1,1) = {"
+lo
+lo
+lo
+Zj
+Zj
+Zj
+lo
+lo
+lo
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Cw
+HJ
+Cw
+Zj
+Zj
+Zj
+uh
+tl
+uh
+aB
+uh
+aB
+Pn
+AI
+cI
+Go
+Ip
+tS
+Ip
+Sm
+Zj
+Cu
+Cu
+"}
+(36,1,1) = {"
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Ih
+uh
+XS
+MC
+Cu
+Cu
+Cu
+Cu
+MS
+uh
+aB
+mu
+fr
+at
+Go
+Ip
+tS
+Ip
+uh
+Cu
+Cu
+Zj
+"}
+(37,1,1) = {"
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+Zj
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Zj
+Zj
+Zj
+uh
+uh
+XS
+bk
+Cu
+Cu
+Cu
+Cu
+bM
+uh
+aB
+aB
+fr
+at
+Go
+oA
+tS
+Ip
+uh
+Cw
+Cw
+Cw
+"}

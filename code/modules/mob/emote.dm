@@ -42,35 +42,36 @@
 
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
 		if(m_type & 1)
+			var/list/viewers = list(src)
 			for (var/mob/O in viewers(src, null))
-
 				if(O.status_flags & PASSEMOTES)
-
 					for(var/obj/item/holder/H in O.contents)
 						H.show_message(message, m_type)
-
+						viewers.Add(H)
 					for(var/mob/living/M in O.contents)
 						M.show_message(message, m_type)
-
+						viewers.Add(M)
 				O.show_message(message, m_type)
+				viewers.Add(O)
+			langchat_speech(input, viewers, GLOB.all_languages, additional_styles = list("langchat_italic"))
 
 		// Type 2 (Audible) emotes are sent to anyone in hear range
 		// of the *LOCATION* -- this is important for pAIs to be heard
 		else if(m_type & 2)
+			var/list/hearers = list(src)
 			for (var/mob/O in hearers(get_turf(src), null))
-
 				if(O.z != z)	//cases like interior vehicles, for example
 					continue
-
 				if(O.status_flags & PASSEMOTES)
-
 					for(var/obj/item/holder/H in O.contents)
 						H.show_message(message, m_type)
-
+						hearers.Add(H)
 					for(var/mob/living/M in O.contents)
 						M.show_message(message, m_type)
-
+						hearers.Add(M)
 				O.show_message(message, m_type)
+				hearers.Add(O)
+			langchat_speech(input, hearers, GLOB.all_languages, additional_styles = list("langchat_italic"))
 
 /mob/proc/emote_dead(var/message)
 	if(client.prefs.muted & MUTE_DEADCHAT)

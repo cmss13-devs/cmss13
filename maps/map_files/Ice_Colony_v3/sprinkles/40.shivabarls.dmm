@@ -1,0 +1,1955 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ak" = (
+/obj/item/stack/sheet/mineral/plastic/small_stack,
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"ap" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"aP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"bi" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"cs" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"cA" = (
+/obj/structure/barricade/snow{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"cH" = (
+/obj/structure/machinery/gibber,
+/turf/open/floor/prison,
+/area/shiva/interior/bar)
+"dt" = (
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"dz" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"ef" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"ei" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/structure/machinery/light/double,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"ey" = (
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"eV" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"fs" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/clothing/glasses/sunglasses{
+	desc = "Polarized bioneural eyewear, designed to augment your vision.";
+	icon_state = "jensenshades";
+	name = "augmented shades"
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"fz" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"fL" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 6;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"fV" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/item/reagent_container/food/snacks/bigbiteburger,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"gq" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard)
+"gU" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/structure/reagent_dispensers/beerkeg{
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -6;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"hk" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/shard,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"hr" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"hR" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/surgical{
+	pixel_x = -7
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 10
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 10
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"hY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/tool/soap{
+	pixel_x = -7
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"if" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"iy" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/clothing/head/cakehat,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"jC" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"jE" = (
+/obj/structure/barricade/snow{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"jG" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"jM" = (
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"jY" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 8;
+	name = "\improper Anti-Freeze Lounge Freezer"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"kk" = (
+/obj/item/tool/shovel/snow,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"kB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"lc" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/mask/rebreather/scarf{
+	pixel_x = 9
+	},
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/head/ushanka{
+	pixel_x = -7
+	},
+/obj/item/clothing/mask/rebreather/scarf{
+	pixel_x = 9
+	},
+/obj/item/clothing/mask/rebreather/scarf{
+	pixel_x = 9
+	},
+/obj/item/clothing/mask/rebreather/scarf{
+	pixel_x = 9
+	},
+/obj/item/clothing/mask/rebreather/scarf{
+	pixel_x = 9
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"lf" = (
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"ll" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"lp" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard)
+"ls" = (
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/bar)
+"lK" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"lQ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/weapon/gun/rifle/hunting{
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/hunting{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"md" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/flour{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"mf" = (
+/obj/structure/closet/bodybag,
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"mC" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"mN" = (
+/obj/structure/surface/table/woodentable{
+	flipped = 1
+	},
+/obj/effect/spawner/random/technology_scanner,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"mT" = (
+/obj/item/reagent_container/food/drinks/cans/beer,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"mV" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/bar)
+"ni" = (
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/junkyard/cp_bar)
+"nv" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Anti-Freeze Lounge"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"nK" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"nU" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"oh" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/double,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"om" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/obj/item/shard,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"oF" = (
+/obj/structure/window/framed/shiva,
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"qd" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"qi" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_y = -12
+	},
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_y = -12
+	},
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"qu" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"rq" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"rx" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"rB" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"rZ" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"sU" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"ta" = (
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"tt" = (
+/obj/structure/barricade/snow{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"tD" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"tR" = (
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"tU" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"tV" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_x = 20;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/shotgun/double{
+	pixel_x = -16;
+	pixel_y = 10
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/shotgun/double{
+	pixel_x = -16;
+	pixel_y = 10
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_x = 20;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"ud" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"uD" = (
+/obj/structure/machinery/chem_master/condimaster,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"uI" = (
+/obj/item/tool/wet_sign,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"uL" = (
+/obj/item/ammo_magazine/handful/shotgun/incendiary,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"ve" = (
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/junkyard)
+"vZ" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"wf" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"wk" = (
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"wQ" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"xc" = (
+/obj/structure/flora/tree/dead{
+	icon_state = "tree_4"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"xI" = (
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = 8;
+	pixel_y = -11
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/shiva/interior/bar)
+"xQ" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Anti-Freeze Lounge"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"xS" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/PMC,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"yf" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"yh" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"yz" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Anti-Freeze Lounge"
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"yM" = (
+/obj/item/shard,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"zi" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xtracks";
+	tag = "icon-xtracks"
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"zE" = (
+/obj/item/tool/kitchen/rollingpin,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"At" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassbb_1"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"Au" = (
+/obj/structure/machinery/chem_dispenser/soda{
+	pixel_y = 7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"AR" = (
+/obj/structure/flora/tree/dead,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"AW" = (
+/obj/structure/fence{
+	layer = 2.9
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"Bl" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Bz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/hotchili{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/hotchili{
+	pixel_y = 14
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"BA" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 11
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"BQ" = (
+/obj/structure/barricade/snow,
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"BV" = (
+/obj/item/weapon/melee/broken_bottle,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Ci" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Cm" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Cv" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"CF" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"CM" = (
+/obj/item/dogtag,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"DJ" = (
+/obj/item/reagent_container/food/snacks/meat,
+/turf/open/floor/prison,
+/area/shiva/interior/bar)
+"DM" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"DY" = (
+/obj/item/tool/mop,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Eb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Em" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"Es" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/green{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/red{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"EB" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/item/stack/rods,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/bar)
+"ET" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Fd" = (
+/obj/structure/largecrate/random/mini/wooden,
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"Fh" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/storage/pill_bottle/russianRed{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 9
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Ft" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/sliceable/cheesecake,
+/obj/item/reagent_container/food/snacks/sliceable/cheesecake,
+/obj/item/reagent_container/food/snacks/cheesecakeslice{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/cheesecakeslice{
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"Fy" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"FH" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"GT" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/item/shard,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Hb" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Hf" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Hu" = (
+/obj/structure/barricade/snow{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/junkyard)
+"HA" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"HB" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"HE" = (
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Iu" = (
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"II" = (
+/obj/structure/barricade/snow{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/junkyard/cp_bar)
+"IR" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Ja" = (
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"Jg" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"JC" = (
+/obj/item/trash/hotdog,
+/obj/effect/landmark/corpsespawner/chef,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"JZ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"KC" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"KF" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -7
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 11
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -7
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 11
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Lc" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 4
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"Lf" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Lo" = (
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/ammo_magazine/handful/shotgun/buckshot{
+	pixel_x = 4;
+	pixel_y = -16
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"LI" = (
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"LK" = (
+/obj/item/trash/tray,
+/obj/item/trash/tray{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"LO" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/bar)
+"LS" = (
+/obj/structure/closet/bodybag,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"LT" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"LX" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/item/shard,
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"Mj" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/rebreather{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/rebreather{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"MP" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"MZ" = (
+/obj/structure/fence,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"No" = (
+/obj/structure/kitchenspike,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Nr" = (
+/obj/structure/machinery/chem_dispenser/beer{
+	pixel_y = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"NN" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/item/shard,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"NO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"NT" = (
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard/cp_bar)
+"Oc" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/shiva/interior/bar)
+"Ot" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/shiva/interior/bar)
+"OE" = (
+/obj/item/lightstick/red/spoke,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Pk" = (
+/obj/item/stool,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"PI" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"PK" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/obj/structure/barricade/snow{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
+"Qq" = (
+/obj/item/lightstick/red/spoke,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"Qr" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"QA" = (
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"QT" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"QW" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/junkyard/cp_bar)
+"Rn" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"Rt" = (
+/obj/structure/machinery/smartfridge{
+	density = 0;
+	pixel_y = 22
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/obj/item/reagent_container/food/snacks/mre_pack,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Si" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"Sy" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xtracks";
+	tag = "icon-xtracks"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Tm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/processor{
+	desc = "It CAN blend it.";
+	icon_state = "blender_e";
+	name = "Blendomatic";
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/shiva/interior/bar)
+"TD" = (
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"TJ" = (
+/obj/structure/coatrack,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"TV" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"Vg" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"Vp" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xtracks";
+	tag = "icon-xtracks"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"VT" = (
+/obj/structure/reagent_dispensers/beerkeg{
+	density = 0;
+	pixel_x = -12;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/beer,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"WG" = (
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
+"WW" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/shaker{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"WZ" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/interior/bar)
+"Xo" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+"XD" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard)
+"XY" = (
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"Ym" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/bar)
+"YN" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
+"YO" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
+"YZ" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"Zw" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
+"ZG" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
+"ZX" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen";
+	tag = "icon-kitchen"
+	},
+/area/shiva/interior/bar)
+
+(1,1,1) = {"
+ni
+WZ
+WZ
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+oF
+oF
+ls
+ls
+"}
+(2,1,1) = {"
+DM
+WZ
+WZ
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+gU
+lf
+lf
+LK
+MZ
+"}
+(3,1,1) = {"
+DM
+WZ
+hY
+ef
+zE
+WZ
+WZ
+iy
+Hf
+WZ
+WZ
+VT
+CM
+lf
+lf
+lf
+"}
+(4,1,1) = {"
+TD
+CF
+fz
+wk
+md
+Bz
+mC
+QA
+Si
+qd
+CF
+cA
+PI
+lf
+lf
+MZ
+"}
+(5,1,1) = {"
+BQ
+Cv
+Jg
+wk
+Ft
+JC
+QA
+HE
+QA
+Tm
+ls
+fL
+NO
+lf
+Ym
+AW
+"}
+(6,1,1) = {"
+TD
+Cv
+NN
+wk
+jC
+ET
+QA
+QA
+QA
+aP
+ls
+MZ
+lf
+MZ
+MZ
+ls
+"}
+(7,1,1) = {"
+Rn
+Cv
+ZX
+Xo
+wk
+QA
+BV
+QA
+QA
+LI
+ls
+mT
+NO
+lf
+lf
+fs
+"}
+(8,1,1) = {"
+xc
+yf
+GT
+tR
+tR
+Fy
+Qq
+kk
+hr
+Cm
+nv
+lf
+NO
+lf
+lf
+lf
+"}
+(9,1,1) = {"
+dz
+ls
+Iu
+Iu
+Iu
+Iu
+vZ
+OE
+Lf
+uD
+ls
+Mj
+lf
+NO
+lf
+lf
+"}
+(10,1,1) = {"
+QW
+ls
+ls
+Rt
+JZ
+mN
+ls
+ls
+Lc
+ls
+ls
+ls
+ls
+jY
+ls
+ls
+"}
+(11,1,1) = {"
+XY
+ls
+Fd
+rZ
+xS
+tU
+yf
+Nr
+tR
+WG
+ls
+LS
+Oc
+QA
+KC
+ls
+"}
+(12,1,1) = {"
+XY
+yz
+Em
+if
+uL
+Eb
+yf
+Au
+tR
+WG
+ls
+LS
+Ot
+HB
+fV
+ls
+"}
+(13,1,1) = {"
+XY
+yz
+Em
+jM
+Lo
+bi
+WW
+Pk
+MP
+WG
+ls
+mf
+DJ
+ey
+ei
+ls
+"}
+(14,1,1) = {"
+ni
+yz
+zi
+jM
+jM
+bi
+YO
+Fh
+yh
+TV
+ls
+LS
+xI
+QA
+No
+ls
+"}
+(15,1,1) = {"
+ls
+ls
+YZ
+Vp
+Sy
+jM
+YN
+cs
+uI
+DY
+ls
+LS
+cH
+oh
+No
+ls
+"}
+(16,1,1) = {"
+ZG
+FH
+jM
+IR
+jM
+jM
+jM
+eV
+if
+qu
+ls
+ls
+ls
+ls
+ls
+ls
+"}
+(17,1,1) = {"
+CF
+LX
+Vg
+Ci
+Hb
+jM
+hR
+nU
+KF
+rB
+jM
+wf
+ls
+ve
+jG
+ls
+"}
+(18,1,1) = {"
+yf
+ll
+HA
+rB
+Qr
+jM
+rB
+jM
+jM
+jM
+jM
+hk
+CF
+PK
+ve
+jG
+"}
+(19,1,1) = {"
+ls
+ls
+YZ
+jM
+jM
+eV
+eV
+jM
+Bl
+jM
+HA
+hk
+yf
+PK
+XD
+ve
+"}
+(20,1,1) = {"
+Ja
+yf
+FH
+rx
+lc
+Es
+tD
+jM
+qi
+lQ
+tV
+LT
+CF
+jE
+XD
+lp
+"}
+(21,1,1) = {"
+Ja
+CF
+kB
+ta
+rB
+jM
+jM
+jM
+jM
+ud
+jM
+sU
+yf
+Hu
+XD
+rq
+"}
+(22,1,1) = {"
+XY
+ls
+dt
+Zw
+om
+ap
+nK
+ak
+tR
+Iu
+tR
+TJ
+ls
+ve
+rq
+AR
+"}
+(23,1,1) = {"
+XY
+ls
+ls
+yf
+CF
+yf
+ls
+ls
+yM
+yh
+tR
+ls
+ls
+ls
+ve
+rq
+"}
+(24,1,1) = {"
+ni
+ni
+wQ
+II
+tt
+tt
+NT
+yf
+EB
+mV
+LO
+yf
+Hu
+rq
+rq
+XD
+"}
+(25,1,1) = {"
+XY
+QT
+ni
+lK
+wQ
+At
+BA
+WZ
+ls
+xQ
+ls
+WZ
+gq
+rq
+ve
+rq
+"}

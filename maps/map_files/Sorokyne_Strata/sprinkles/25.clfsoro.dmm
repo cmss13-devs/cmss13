@@ -1,0 +1,2321 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"at" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"aD" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/russian,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"aJ" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"bl" = (
+/obj/item/device/megaphone,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"cg" = (
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"cp" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
+"cw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"cQ" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"db" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"dp" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"dx" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"dF" = (
+/obj/structure/machinery/weather_siren{
+	dir = 1;
+	pixel_y = 28
+	},
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
+"dG" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/m56d_hmg,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"dL" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"ek" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"el" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/security{
+	dir = 1
+	},
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"eA" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"eB" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"eH" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"eN" = (
+/turf/open/auto_turf/snow/brown_base/layer4,
+/area/strata/ag/exterior/paths/north_outpost)
+"fr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"fs" = (
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/strata/ag/exterior/paths/north_outpost)
+"fC" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"gb" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/north_outpost)
+"gv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"gx" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"gz" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"hq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"hA" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"hN" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"hV" = (
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"hX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"ia" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"id" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"ix" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/strata/ag/interior/outpost/security)
+"iM" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"iT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"jl" = (
+/obj/structure/bed/chair/office/light,
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"jr" = (
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"jG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"jL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"jQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"kd" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"kA" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi)
+"lo" = (
+/obj/item/storage/box/ids,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/ids,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"lt" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-pottedplant_10"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"lx" = (
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"lz" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"lO" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"lY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"mk" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"mv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
+"mw" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"mP" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"nH" = (
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/security)
+"nN" = (
+/obj/structure/barricade/handrail/strata,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"nP" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"nW" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"nX" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/engi)
+"oc" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"od" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"po" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"pq" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"pz" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"pT" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/attachable/heavy_barrel,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/attached_gun/flamer,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"qa" = (
+/obj/structure/pipes/vents/pump,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"qb" = (
+/obj/item/stool,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/security)
+"qc" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/engi)
+"qj" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"qn" = (
+/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"qo" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"qR" = (
+/obj/structure/machinery/weather_siren{
+	dir = 1;
+	pixel_y = 28
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
+"qS" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"rC" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"rE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"rK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/tool/stamp,
+/obj/item/paper_bin,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"sh" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"sj" = (
+/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"sk" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"sL" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"tt" = (
+/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/structure/surface/rack,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/engi)
+"tv" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"tB" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"tX" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/stamp,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"uh" = (
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"ui" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"ux" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/engi)
+"uO" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"vi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/cans/souto/grape,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"vJ" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"vP" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"vW" = (
+/obj/structure/surface/rack,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"we" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+"wr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"wu" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"wx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"wW" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/exterior/paths/north_outpost)
+"wY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"xn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"xu" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"xM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/secure_data{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"xU" = (
+/obj/item/fuelCell,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/platform/strata/metal{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "red2"
+	},
+/area/strata/ag/interior/outpost/engi)
+"ym" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/engi)
+"yu" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"yw" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"yM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"yQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"yT" = (
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"zt" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"zz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"zG" = (
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"zL" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi)
+"zQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"zV" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Al" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Aq" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Au" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"AV" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3"
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"AY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"BZ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Ch" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Ci" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"Cj" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+"CC" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Dg" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"DI" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Eh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Ei" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Ev" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"EV" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"FK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/corpsespawner/russian,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"FO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"FT" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/m56d_hmg,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/security)
+"FX" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gb" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gd" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Gf" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gh" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gk" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gr" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"Gs" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gt" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Gx" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"GN" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/item/ammo_casing/bullet,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Hh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Hj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Ik" = (
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"In" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+"IB" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/security)
+"ID" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/strata/ag/interior/outpost/security)
+"IR" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/russian,
+/obj/item/ammo_casing/bullet,
+/obj/item/weapon/gun/pistol/c99/upp,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/security)
+"IZ" = (
+/obj/structure/barricade/handrail/strata,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Jj" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+"Jl" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Jy" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"Kg" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/strata/ag/interior/outpost/security)
+"Kl" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/north_outpost)
+"Ky" = (
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/north_outpost)
+"Ll" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/strata/ag/exterior/paths/north_outpost)
+"Lx" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"LF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/security{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"LQ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"LS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"LZ" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"My" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"MC" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"MO" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Nr" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"NE" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"OJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"OW" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/security)
+"Pn" = (
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/exterior/paths/north_outpost)
+"Pq" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"PJ" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"PX" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/security{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Qa" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"Qs" = (
+/obj/structure/window_frame/strata,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"QA" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"QE" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"QG" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"QT" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"QX" = (
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/strata/ag/exterior/paths/north_outpost)
+"Re" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Rf" = (
+/obj/structure/girder,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/engi)
+"Ro" = (
+/obj/structure/window_frame/strata,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/item/stack/rods,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Rt" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/engi)
+"RP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"RT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"RV" = (
+/obj/structure/girder,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/engi)
+"Sd" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Sf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Sp" = (
+/obj/item/poster,
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"SB" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"SF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"SJ" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"SO" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"TN" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"Uh" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Ut" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	dir = 2;
+	name = "Security Barracks";
+	req_access = null
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"VX" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"WE" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"WG" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi)
+"WP" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Xc" = (
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/strata/ag/exterior/paths/north_outpost)
+"XA" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"XY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"Yf" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Yz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"YN" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/strata/ag/interior/outpost/security)
+"Zb" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"Zk" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/surgical,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"Zz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/effect/landmark/corpsespawner/russian,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"ZM" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/suit/radiation,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+"ZU" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"ZW" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"ZZ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/weapon/melee/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 9
+	},
+/obj/item/weapon/melee/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+
+(1,1,1) = {"
+fs
+Pn
+Pn
+Pn
+OW
+MO
+xn
+cp
+jQ
+cp
+ym
+xU
+xU
+xU
+xU
+zL
+"}
+(2,1,1) = {"
+eN
+Pn
+Pn
+Pn
+OW
+Ik
+AY
+Lx
+SO
+AV
+Rt
+yu
+dp
+sj
+ia
+Gr
+"}
+(3,1,1) = {"
+QX
+eN
+Pn
+Pn
+OW
+jl
+LF
+uh
+cg
+ZW
+ym
+lY
+yw
+RV
+WG
+zL
+"}
+(4,1,1) = {"
+QX
+fs
+eN
+eN
+Gb
+qa
+rK
+fC
+yT
+Nr
+ym
+db
+qc
+nX
+tt
+WG
+"}
+(5,1,1) = {"
+fs
+Xc
+eN
+eN
+Gb
+FX
+yQ
+yT
+yT
+SJ
+ym
+qj
+Rf
+eB
+ux
+kA
+"}
+(6,1,1) = {"
+Ll
+eN
+wW
+wW
+OW
+OW
+mv
+kd
+OW
+OW
+ym
+sh
+WG
+WG
+sh
+WG
+"}
+(7,1,1) = {"
+OW
+OW
+OW
+My
+Zk
+aD
+jL
+SO
+Aq
+OW
+jr
+VX
+LQ
+XA
+QG
+OW
+"}
+(8,1,1) = {"
+dF
+bl
+Eh
+Gk
+qn
+xu
+mk
+uh
+Ch
+OW
+vP
+PJ
+ix
+DI
+eA
+OJ
+"}
+(9,1,1) = {"
+Gt
+Sd
+Sf
+Gk
+uh
+uh
+fr
+uh
+Ch
+OW
+jG
+Dg
+DI
+GN
+dG
+el
+"}
+(10,1,1) = {"
+Gt
+Gs
+EV
+Gk
+sk
+ZU
+lz
+iM
+tX
+OW
+LS
+hN
+gv
+SF
+qo
+XY
+"}
+(11,1,1) = {"
+OW
+hN
+IZ
+My
+cQ
+mw
+at
+vJ
+rE
+OW
+Jy
+OW
+Qs
+Gh
+Gh
+cp
+"}
+(12,1,1) = {"
+cp
+OW
+QE
+OW
+OW
+OW
+mv
+lO
+OW
+cp
+wY
+cp
+nW
+RT
+hV
+NE
+"}
+(13,1,1) = {"
+WP
+QT
+yT
+zV
+DI
+ID
+DI
+PJ
+yT
+Zz
+CC
+cw
+ui
+as
+zQ
+ui
+"}
+(14,1,1) = {"
+WP
+Sd
+yT
+PJ
+PJ
+DI
+pq
+ui
+LZ
+wx
+iT
+yM
+yT
+yT
+yT
+oc
+"}
+(15,1,1) = {"
+cp
+hV
+MC
+Re
+hV
+sL
+ek
+MC
+Yf
+hV
+Uh
+cp
+Qs
+Gh
+Qs
+cp
+"}
+(16,1,1) = {"
+qR
+uh
+zz
+OW
+OW
+OW
+OW
+lO
+OW
+cp
+Yz
+OW
+hq
+Al
+vW
+Gb
+"}
+(17,1,1) = {"
+Pq
+TN
+WE
+OW
+Ei
+hA
+RP
+Au
+OW
+vi
+LS
+Kg
+aJ
+tB
+gz
+rC
+"}
+(18,1,1) = {"
+Pq
+dL
+sk
+OW
+qS
+Ik
+Ik
+Ik
+OW
+FO
+Hj
+wr
+hX
+FK
+zt
+cp
+"}
+(19,1,1) = {"
+OW
+Gx
+Ci
+OW
+Ei
+Zb
+ZZ
+pT
+OW
+pz
+id
+zG
+PJ
+PJ
+YN
+Gb
+"}
+(20,1,1) = {"
+OW
+OW
+OW
+OW
+OW
+OW
+OW
+OW
+OW
+od
+yT
+QA
+PJ
+ID
+FT
+rC
+"}
+(21,1,1) = {"
+Kl
+QX
+fs
+OW
+qb
+nH
+Ut
+hV
+Gd
+Ik
+hN
+Sp
+mP
+Gf
+Qa
+cp
+"}
+(22,1,1) = {"
+Ky
+fs
+QX
+qR
+IR
+IB
+Ro
+hV
+Jl
+Ik
+cp
+eH
+dx
+tv
+po
+OW
+"}
+(23,1,1) = {"
+Ky
+Ky
+QX
+OW
+OW
+OW
+OW
+BZ
+gx
+uO
+lo
+Ik
+nN
+lx
+nP
+Ik
+"}
+(24,1,1) = {"
+Ky
+gb
+we
+we
+Jj
+Jj
+OW
+PX
+xM
+Ev
+Hh
+nP
+FX
+nP
+Ik
+wu
+"}
+(25,1,1) = {"
+Ky
+Ky
+In
+ZM
+Cj
+Jj
+OW
+OW
+OW
+OW
+cp
+SB
+OW
+lt
+lt
+OW
+"}

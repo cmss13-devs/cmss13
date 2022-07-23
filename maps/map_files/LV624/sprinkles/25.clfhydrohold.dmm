@@ -10,7 +10,10 @@
 /obj/item/stack/sheet/wood/small_stack{
 	pixel_y = 8
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -102,16 +105,20 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "gp" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
+=======
+>>>>>>> reimported backup
 "hj" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "iM" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 8
@@ -124,6 +131,8 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/colony/south_medbay_road)
+=======
+>>>>>>> reimported backup
 "jA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/wo_supplies/storage/webbing,
@@ -156,9 +165,12 @@
 "kV" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -173,6 +185,7 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "lU" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/wood/large_stack,
@@ -181,6 +194,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "me" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/m16/ap{
@@ -250,6 +265,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "pv" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -261,6 +277,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "pw" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -275,7 +293,10 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "pK" = (
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
+=======
+>>>>>>> reimported backup
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -299,6 +320,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "rr" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -307,6 +329,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "rG" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -336,6 +360,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "sn" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
@@ -343,6 +368,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "sY" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -353,12 +380,15 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "tj" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 1
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
+=======
+>>>>>>> reimported backup
 "vh" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -413,7 +443,10 @@
 /area/lv624/lazarus/hydroponics)
 "wj" = (
 /obj/structure/surface/table,
+<<<<<<< master
 /obj/item/stack/sheet/metal/large_stack,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -430,6 +463,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "xs" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirt,
@@ -442,6 +476,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "xX" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_closed_1";
@@ -458,7 +494,10 @@
 	pixel_x = 3;
 	pixel_y = 11
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -497,7 +536,10 @@
 	icon_state = "metal_1";
 	dir = 8
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -532,7 +574,10 @@
 "EG" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood/oil,
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -552,7 +597,10 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -589,6 +637,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "Gy" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/welding{
@@ -607,6 +656,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "GS" = (
 /turf/open/floor{
 	dir = 8;
@@ -621,6 +672,7 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "Ht" = (
 /obj/structure/surface/table,
 /obj/item/explosive/mine/clf,
@@ -633,6 +685,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "HU" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -702,12 +756,15 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/north_nexus_road)
+<<<<<<< master
 "Ks" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
+=======
+>>>>>>> reimported backup
 "Kt" = (
 /obj/structure/surface/table,
 /obj/item/ammo_box/magazine/M16,
@@ -725,6 +782,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "LN" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -734,6 +792,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "LS" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/wood/small_stack{
@@ -768,6 +828,7 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "NX" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -779,6 +840,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "OJ" = (
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/attachment,
@@ -816,8 +879,11 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -885,6 +951,7 @@
 /area/lv624/lazarus/hydroponics)
 "Rw" = (
 /obj/structure/barricade/wooden,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
@@ -894,14 +961,19 @@
 "Rx" = (
 /obj/effect/spawner/random/attachment,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "RZ" = (
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/item/explosive/mine/clf/active,
+=======
+>>>>>>> reimported backup
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -932,7 +1004,10 @@
 	pixel_y = -15;
 	pixel_x = 11
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -998,6 +1073,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 "WZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /obj/item/explosive/mine/clf/active{
@@ -1013,6 +1089,8 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+=======
+>>>>>>> reimported backup
 "Xk" = (
 /turf/open/floor{
 	dir = 9;
@@ -1077,6 +1155,7 @@ Tx
 DE
 DE
 DE
+<<<<<<< master
 iM
 WZ
 Ec
@@ -1087,6 +1166,18 @@ Ec
 Ec
 jn
 jn
+=======
+DE
+HU
+Ec
+Ec
+kV
+kV
+Ec
+Ec
+Cb
+Cb
+>>>>>>> reimported backup
 Cb
 rK
 Tx
@@ -1111,12 +1202,20 @@ Tx
 "}
 (4,1,1) = {"
 DE
+<<<<<<< master
 tj
+=======
+DE
+>>>>>>> reimported backup
 XF
 nw
 Fn
 Jp
+<<<<<<< master
 xH
+=======
+yr
+>>>>>>> reimported backup
 QK
 Xk
 jL
@@ -1129,6 +1228,7 @@ Tx
 "}
 (5,1,1) = {"
 DE
+<<<<<<< master
 tj
 Ew
 WY
@@ -1138,11 +1238,26 @@ Xk
 sn
 Xk
 sn
+=======
+DE
+Ew
+WY
+Tu
+Cj
+Xk
+Xk
+Xk
+Xk
+>>>>>>> reimported backup
 yr
 HW
 cF
 SQ
+<<<<<<< master
 xs
+=======
+Tx
+>>>>>>> reimported backup
 Tx
 "}
 (6,1,1) = {"
@@ -1150,25 +1265,38 @@ DE
 Ec
 Ec
 Gw
+<<<<<<< master
 Xh
+=======
+Xk
+>>>>>>> reimported backup
 as
 jA
 vK
 kN
 wj
 Xk
+<<<<<<< master
 sn
+=======
+Xk
+>>>>>>> reimported backup
 OJ
 Ec
 Ec
 Tx
 "}
 (7,1,1) = {"
+<<<<<<< master
 tj
+=======
+DE
+>>>>>>> reimported backup
 Jj
 WY
 Xk
 Xk
+<<<<<<< master
 Ht
 LS
 ne
@@ -1184,6 +1312,23 @@ gp
 (8,1,1) = {"
 DE
 NX
+=======
+wj
+LS
+ne
+Rw
+wj
+wj
+Xk
+Jp
+Ql
+Gs
+vN
+"}
+(8,1,1) = {"
+DE
+kV
+>>>>>>> reimported backup
 Ph
 Xk
 Xk
@@ -1201,9 +1346,15 @@ vN
 "}
 (9,1,1) = {"
 DE
+<<<<<<< master
 NX
 Ph
 LN
+=======
+kV
+Ph
+Cj
+>>>>>>> reimported backup
 Xk
 sY
 qN
@@ -1212,17 +1363,29 @@ Md
 ay
 cj
 Xk
+<<<<<<< master
 Xh
+=======
+Xk
+>>>>>>> reimported backup
 Yz
 EG
 vN
 "}
 (10,1,1) = {"
+<<<<<<< master
 tj
 wa
 WY
 Xk
 Xh
+=======
+DE
+wa
+WY
+Xk
+Xk
+>>>>>>> reimported backup
 me
 bJ
 kY
@@ -1233,7 +1396,11 @@ Md
 XR
 Ql
 bR
+<<<<<<< master
 gp
+=======
+vN
+>>>>>>> reimported backup
 "}
 (11,1,1) = {"
 DE
@@ -1255,7 +1422,11 @@ vN
 "}
 (12,1,1) = {"
 DE
+<<<<<<< master
 tj
+=======
+DE
+>>>>>>> reimported backup
 qC
 bY
 Xk
@@ -1264,25 +1435,43 @@ Xk
 Xk
 Xk
 Md
+<<<<<<< master
 sn
 Cj
 Ql
 cs
 gp
+=======
+Xk
+Cj
+Ql
+cs
+vN
+>>>>>>> reimported backup
 vN
 "}
 (13,1,1) = {"
 DE
+<<<<<<< master
 tj
+=======
+DE
+>>>>>>> reimported backup
 SQ
 Pe
 wx
 mn
 Cj
 Xk
+<<<<<<< master
 Xh
 Xk
 Rx
+=======
+Xk
+Xk
+Jp
+>>>>>>> reimported backup
 Pm
 pw
 Ew
@@ -1311,16 +1500,26 @@ vN
 DE
 DE
 DE
+<<<<<<< master
 Ks
 Ks
+=======
+DE
+DE
+>>>>>>> reimported backup
 Ec
 Ew
 kV
 kV
 Bj
 Ec
+<<<<<<< master
 Ks
 Ks
+=======
+DE
+DE
+>>>>>>> reimported backup
 DE
 Km
 vN

@@ -34816,15 +34816,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
-"cqr" = (
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -37131,6 +37122,16 @@
 "dqw" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room/notunnel)
+"dqD" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "dqE" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -41025,10 +41026,14 @@
 	},
 /area/almayer/evacuation/pod13)
 "eWp" = (
-/obj/structure/platform_decoration{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "emeraldfull";
+	tag = "icon-emeraldfull"
+	},
 /area/almayer/living/briefing)
 "eWF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -44635,7 +44640,7 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "gAj" = (
 /obj/structure/bed/chair/comfy/charlie{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
@@ -46364,14 +46369,10 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "htI" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/charlie{
-	dir = 8
+/obj/structure/platform_decoration{
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
-	},
+/turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "huf" = (
 /obj/structure/machinery/cryopod/evacuation,
@@ -52165,16 +52166,6 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
-"kio" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/bravo{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangefull";
-	tag = "icon-orangefull"
-	},
-/area/almayer/living/briefing)
 "kiq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/almayer{
@@ -81837,7 +81828,7 @@
 /area/almayer/shipboard/brig/main_office)
 "xAt" = (
 /obj/structure/bed/chair/comfy/charlie{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
@@ -82674,6 +82665,15 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
+"xRJ" = (
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -102712,7 +102712,7 @@ bZJ
 aRt
 axp
 aPI
-avY
+lQG
 aIf
 aEB
 wVW
@@ -119249,7 +119249,7 @@ beH
 beH
 duv
 beH
-eWp
+htI
 cCD
 shp
 oAB
@@ -119451,16 +119451,16 @@ bgO
 vGG
 vGG
 bgO
-cqr
-cqr
+xRJ
+xRJ
 xRw
 bPO
 whA
-gAj
-gAj
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 cab
 bdd
@@ -119654,16 +119654,16 @@ bgO
 vGG
 vGG
 bgO
-cqr
-cqr
+xRJ
+xRJ
 viO
 gMU
 ksN
-gAj
-gAj
+xAt
+xAt
 bgO
-xAt
-xAt
+gAj
+gAj
 bgO
 bqZ
 bdd
@@ -119854,16 +119854,16 @@ aLG
 bdg
 bqZ
 aXc
-kio
-kio
+dqD
+dqD
 dRT
-kio
-kio
+dqD
+dqD
 dRT
 dRT
-htI
-htI
-htI
+eWp
+eWp
+eWp
 dRT
 tXb
 tXb
@@ -120060,16 +120060,16 @@ beH
 vGG
 vGG
 beH
-cqr
-cqr
-cqr
-beH
-gAj
-gAj
-gAj
+xRJ
+xRJ
+xRJ
 beH
 xAt
 xAt
+xAt
+beH
+gAj
+gAj
 beH
 bqZ
 bdg
@@ -121284,10 +121284,10 @@ moQ
 hGO
 fvf
 uNM
-xAt
-xAt
-xAt
-xAt
+gAj
+gAj
+gAj
+gAj
 nNH
 bqZ
 bdg
@@ -122290,10 +122290,10 @@ bbh
 bdd
 bDT
 tHv
-cqr
-cqr
-cqr
-cqr
+xRJ
+xRJ
+xRJ
+xRJ
 tSB
 moQ
 caO

@@ -24,11 +24,7 @@
 	return positions
 
 
-/datum/job/marine/specialist/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/specialist_equipped
-
-/datum/job/marine/specialist/equipped/whiskey
+/datum/job/marine/specialist/whiskey
 	title = JOB_WO_SQUAD_SPECIALIST
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/spec

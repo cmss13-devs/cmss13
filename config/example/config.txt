@@ -150,6 +150,9 @@ TICKLAG 0.5
 ## Uncomment this to ban use of ToR
 #TOR_BAN
 
+## Uncomment this to have country flags pop up in OOC alongside names if the user has the pref turned on (uses IP-API)
+#OOC_COUNTRY_FLAGS
+
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
 

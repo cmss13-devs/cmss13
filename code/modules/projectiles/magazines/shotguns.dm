@@ -115,6 +115,13 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
 
+/obj/item/ammo_magazine/internal/shotgun/cmb
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 8
+
+/obj/item/ammo_magazine/internal/shotgun/cmb/m3717
+	max_rounds = 10
+
 //-------------------------------------------------------
 
 /*

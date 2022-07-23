@@ -9,7 +9,7 @@
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)
-		var/ui_datum = custom_huds_list[client.prefs.UI_style]
+		var/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 		var/ui_color = client.prefs.UI_style_color
 		var/ui_alpha = client.prefs.UI_style_alpha
 		hud_used = new /datum/hud/human/yautja(src, ui_datum, ui_color, ui_alpha)

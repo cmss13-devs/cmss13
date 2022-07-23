@@ -466,7 +466,7 @@ const ReverseMenu = (props, context) => {
               Where the pods
               go after being recalled`}
             tooltipOverrideLong
-            tooltipPosition="bottom-right"
+            tooltipPosition="bottom"
             onClick={() => {
               if (data.target_mode === TARGET_MODE_DROPOFF) {
                 act("set_target_mode", {
@@ -607,7 +607,7 @@ class PresetsPage extends Component {
               color="transparent"
               icon="trash"
               tooltip="Deletes the selected preset"
-              tooltipPosition="bottom-left"
+              tooltipPosition="bottom"
               onClick={() => this.deletePreset(presetIndex)} />
           </>
         )}>
@@ -726,7 +726,7 @@ const Timing = (props, context) => {
           Reset all pod
           timings/delays`}
           tooltipOverrideLong
-          tooltipPosition="top-left"
+          tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
               "drop_time": 0,
@@ -819,7 +819,7 @@ const Damage = (props, context) => {
           color="transparent"
           tooltip="Reset damage"
           tooltipOverrideLong
-          tooltipPosition="top-left"
+          tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
               "damage": 0,
@@ -857,7 +857,7 @@ const Explosion = (props, context) => {
           color="transparent"
           tooltip="Toggle explosion"
           tooltipOverrideLong
-          tooltipPosition="top-left"
+          tooltipPosition="top"
           onClick={() => {
             if (enabled) {
               setEnabled(false);

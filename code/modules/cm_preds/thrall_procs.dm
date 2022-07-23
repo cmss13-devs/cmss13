@@ -1,75 +1,88 @@
 //Claim gear, same as the Hunter's get.
-/obj/item/clothing/gloves/yautja/thrall/proc/buy_gear()
-	set category = "Thrall.Misc"
+/obj/item/clothing/gloves/yautja/proc/buy_thrall_gear()
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
-	var/mob/living/carbon/human/user = usr
+	set category = "Thrall.Misc"
+	set src in usr
 
-	if(isSpeciesYautja(user))
+	var/mob/living/carbon/human/wearer = usr
+	if(wearer.gloves != src)
+		to_chat(wearer, SPAN_WARNING("You need to be wearing your thrall bracers to do this."))
 		return
 
-	if(user.is_mob_incapacitated() || user.lying || user.buckled)
-		to_chat(user, "You're not able to do that right now.")
+	if(wearer.hunter_data.claimed_equipment)
+		to_chat(wearer, SPAN_WARNING("You've already claimed your equipment."))
 		return
 
-	if(!istype(get_area(user),/area/yautja))
-		to_chat(user, "Not here. Only on the ship.")
+	if(wearer.is_mob_incapacitated() || wearer.lying || wearer.buckled)
+		to_chat(wearer, SPAN_WARNING("You're not able to do that right now."))
 		return
 
-	var/obj/item/clothing/gloves/yautja/thrall/Y = user.gloves
-	if(!istype(Y) || Y.upgrades) return
+	if(!istype(get_area(wearer), /area/yautja))
+		to_chat(wearer, SPAN_WARNING("Not here. Only on the ship."))
+		return
 
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
 	if(sure == "Begin the Hunt")
-		var/list/ymelee = list("The Lumbering Glaive", "The Nimble Spear", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick")
-		var/list/hmelee = list("The Swift Machete", "The Dancing Rapier", "The Broad Claymore", "The Purposeful Fireaxe")
-		var/list/radial_ymelee = list("The Lumbering Glaive" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), "The Rending Chain-Whip" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),"The Piercing Hunting Sword" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),"The Cleaving War-Scythe" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), "The Adaptive Combi-Stick" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), "The Nimble Spear" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spearhunter"))
-		var/list/radial_hmelee = list("The Swift Machete" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "machete"), "The Dancing Rapier" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "ceremonial"), "The Broad Claymore" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "mercsword"), "The Purposeful Fireaxe" = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "fireaxe"))
-		var/msel
-		var/type = alert("Do you seek to bring honor to your race, or embrace an alien culture?", "Human or Alien?", "Semper Humanus!", "What's loyalty?")
-		if(type == "Semper Humanus!")
-			if(usr.client.prefs && usr.client.prefs.no_radials_preference)
-				msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", hmelee)
-			else
-				msel = show_radial_menu(usr, src, radial_hmelee)
-		else if(type == "What's loyalty?")
-			if(usr.client.prefs && usr.client.prefs.no_radials_preference)
-				msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", ymelee)
-			else
-				msel = show_radial_menu(usr, src, radial_ymelee)
-		if(!msel) return //We don't want them to cancel out then get nothing.
+		var/list/hmelee = list(YAUTJA_THRALL_GEAR_MACHETE = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "machete"), YAUTJA_THRALL_GEAR_RAPIER = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "ceremonial"), YAUTJA_THRALL_GEAR_CLAYMORE = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "mercsword"), YAUTJA_THRALL_GEAR_FIREAXE = image(icon = 'icons/obj/items/weapons/weapons.dmi', icon_state = "fireaxe"))
+		var/list/ymelee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"), YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"), YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SPEAR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spearhunter"))
 
+		var/main_weapon
+		var/use_radials = wearer.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/type = alert("Do you plan on embracing alien weaponry, or sticking to your human roots?", "Human or Alien?", "Once Human, Always Human", "Let's try Alien")
+		if(type == "Once Human, Always Human")
+			main_weapon = use_radials ? show_radial_menu(wearer, wearer, hmelee) : tgui_input_list(wearer, "Which weapon shall you use on your hunt?:", "Melee Weapon", hmelee)
+		else
+			main_weapon = use_radials ? show_radial_menu(wearer, wearer, ymelee) : tgui_input_list(wearer, "Which weapon shall you use on your hunt?:", "Melee Weapon", ymelee)
+		if(!main_weapon)
+			return //We don't want them to cancel out then get nothing.
 
-		if(!istype(Y) || Y.upgrades) return //Tried to run it several times in the same loop. That's not happening.
-		Y.upgrades++ //Just means gear was purchased.
+		if(wearer.gloves != src)
+			to_chat(wearer, SPAN_WARNING("You need to be wearing your thrall bracers to do this."))
+			return
 
-		switch(msel)
-			if("The Lumbering Glaive")
-				new /obj/item/weapon/melee/twohanded/yautja/glaive(user.loc)
-			if("The Nimble Spear")
-				new /obj/item/weapon/melee/twohanded/yautja/spear(user.loc)
-			if("The Rending Chain-Whip")
-				new /obj/item/weapon/melee/yautja/chain(user.loc)
-			if("The Piercing Hunting Sword")
-				new /obj/item/weapon/melee/yautja/sword(user.loc)
-			if("The Cleaving War-Scythe")
-				new /obj/item/weapon/melee/yautja/scythe(user.loc)
-			if("The Adaptive Combi-Stick")
-				new /obj/item/weapon/melee/yautja/combistick(user.loc)
-			if("The Swift Machete")
-				new /obj/item/weapon/melee/claymore/mercsword/machete(user.loc)
-			if("The Dancing Rapier")
-				new /obj/item/weapon/melee/claymore/mercsword/ceremonial(user.loc)
-			if("The Broad Claymore")
-				new /obj/item/weapon/melee/claymore(user.loc)
-			if("The Purposeful Fireaxe")
-				new /obj/item/weapon/melee/twohanded/fireaxe(user.loc)
+		if(wearer.hunter_data.claimed_equipment)
+			to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
+			return
 
-		Y.verbs -= /obj/item/clothing/gloves/yautja/thrall/proc/buy_gear
-		new /obj/item/clothing/suit/armor/yautja/thrall(user.loc)
-		new /obj/item/clothing/shoes/yautja/thrall(user.loc)
-		new /obj/item/clothing/under/chainshirt/thrall(user.loc)
-		new /obj/item/clothing/mask/gas/yautja/thrall(user.loc)
+		var/obj/item/spawned_weapon
+		switch(main_weapon)
+			if(YAUTJA_GEAR_GLAIVE)
+				spawned_weapon = new /obj/item/weapon/melee/twohanded/yautja/glaive(wearer.loc)
+			if(YAUTJA_GEAR_SPEAR)
+				spawned_weapon = new /obj/item/weapon/melee/twohanded/yautja/spear(wearer.loc)
+			if(YAUTJA_GEAR_WHIP)
+				spawned_weapon = new /obj/item/weapon/melee/yautja/chain(wearer.loc)
+			if(YAUTJA_GEAR_SWORD)
+				spawned_weapon = new /obj/item/weapon/melee/yautja/sword(wearer.loc)
+			if(YAUTJA_GEAR_SCYTHE)
+				spawned_weapon = new /obj/item/weapon/melee/yautja/scythe(wearer.loc)
+			if(YAUTJA_GEAR_STICK)
+				spawned_weapon = new /obj/item/weapon/melee/yautja/combistick(wearer.loc)
+			if(YAUTJA_THRALL_GEAR_MACHETE)
+				spawned_weapon = new /obj/item/weapon/melee/claymore/mercsword/machete(wearer.loc)
+			if(YAUTJA_THRALL_GEAR_RAPIER)
+				spawned_weapon = new /obj/item/weapon/melee/claymore/mercsword/ceremonial(wearer.loc)
+			if(YAUTJA_THRALL_GEAR_CLAYMORE)
+				spawned_weapon = new /obj/item/weapon/melee/claymore(wearer.loc)
+			if(YAUTJA_THRALL_GEAR_FIREAXE)
+				spawned_weapon = new /obj/item/weapon/melee/twohanded/fireaxe(wearer.loc)
+
+		if(istype(spawned_weapon, /obj/item/weapon/melee/yautja))
+			var/obj/item/weapon/melee/yautja/yautja_melee = spawned_weapon
+			yautja_melee.human_adapted = TRUE
+		else if(istype(spawned_weapon, /obj/item/weapon/melee/twohanded/yautja))
+			var/obj/item/weapon/melee/twohanded/yautja/yautja_melee = spawned_weapon
+			yautja_melee.human_adapted = TRUE
+		spawned_weapon.desc += " It looks like this one has been modified for human use."
+
+		wearer.hunter_data.claimed_equipment = TRUE
+
+		verbs -= /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
+		new /obj/item/clothing/suit/armor/yautja/thrall(wearer.loc)
+		new /obj/item/clothing/shoes/yautja/thrall(wearer.loc)
+		new /obj/item/clothing/under/chainshirt/thrall(wearer.loc)
+		new /obj/item/clothing/mask/gas/yautja/thrall(wearer.loc)
 
 
 //Link to thrall bracer, enabling most of it's abilities
@@ -77,6 +90,7 @@
 	set name = "Link Thrall Bracer"
 	set desc = "Link your bracer to that of your thrall."
 	set category = "Yautja.Thrall"
+	set src in usr
 
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user))
@@ -85,102 +99,96 @@
 		to_chat(user, SPAN_WARNING("ERROR: No hunter_data detected."))
 		return
 
-	var/mob/living/carbon/human/T = user.hunter_data.thrall
-	var/obj/item/clothing/gloves/yautja/hunter/G
-	var/obj/item/clothing/gloves/yautja/thrall/TG
+	if(linked_bracer)
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Link is already established!"))
+		return
 
-	if(istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
-		G = user.gloves
-	else if(user.gloves != src)
+	if(user.gloves != src)
 		to_chat(user, SPAN_WARNING("You are not wearing your bracer!"))
 		return
-	else if(!owner || !user == owner)
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: Wrong user detected!"))
+	else if(!owner || user != owner)
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Wrong user detected!"))
 		return
 
+	var/mob/living/carbon/human/T = user.hunter_data.thrall
 	if(!T)
 		to_chat(user, SPAN_WARNING("You do not have a thrall to link to!"))
 		return
 	else if(!istype(T.gloves, /obj/item/clothing/gloves/yautja/thrall))
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: Your thrall is not wearing a bracer!"))
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your thrall is not wearing a bracer!"))
 		return
-	else if(G.linked_bracer)
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: link is already established!"))
 	else
-		TG = T.gloves
+		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = T.gloves
 
-		G.linked_bracer = TG
-		TG.linked_bracer = G
-		TG.owner = T
-		TG.verbs += /obj/item/clothing/gloves/yautja/thrall/proc/buy_gear
+		linked_bracer = thrall_gloves
+		thrall_gloves.linked_bracer = src
+		thrall_gloves.owner = T
+		thrall_gloves.verbs += /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
+		if(T.client)
+			T.client.init_statbrowser() // quite possibly the worst thing ever, we need to restart their stat panel to get the new verb to appear
 
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: Your bracer is now linked to your thrall."))
-		if(G.notification_sound)
-			playsound(G.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
+		if(notification_sound)
+			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-		to_chat(T, SPAN_WARNING("The [TG] locks around your wrist with a sharp click."))
-		to_chat(T, SPAN_YAUTJABOLD("[icon2html(TG)] \The <b>[TG]</b> beep: Your master has linked their bracer to yours."))
-		if(TG.notification_sound)
-			playsound(TG.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+		to_chat(T, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
+		if(thrall_gloves.notification_sound)
+			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-
-
-
-//Message thrall or master
+// Message thrall or master
 /obj/item/clothing/gloves/yautja/verb/bracer_message()
 	set name = "Transmit Message"
 	set desc = "For direct communication between thrall and master."
+	set src in usr
 
-	var/mob/living/carbon/human/O = usr
-	if(!O || !istype(O) || !O.hunter_data)
-		return
-	var/obj/item/clothing/gloves/yautja/OG = O.gloves
-	if(!OG || !istype(OG) || !OG.linked_bracer)
-		return
-	var/mob/living/carbon/human/T = O.hunter_data.thrall
-	var/obj/item/clothing/gloves/yautja/TG = OG.linked_bracer
-	var/TM = "thrall" //This is the target
-	var/OM = "master" //This is the origin
-
-	if(!istype(OG, /obj/item/clothing/gloves/yautja))
-		return
-	if(!isYautja(O)) //Swap origin and target due to race
-		T = O.hunter_data.thralled_set
-		TM = "master"
-		OM = "thrall"
-
-	if(!T)
-		to_chat(O, SPAN_WARNING("You do not have a [TM] to message."))
+	var/mob/living/carbon/human/messenger = usr
+	if(!istype(messenger))
 		return
 
-	if(!TG)
-		to_chat(usr, SPAN_YAUTJABOLD("[icon2html(OG)] \The <b>[OG]</b> beep: Your [TM]'s bracer is unlinked!"))
-	else if(!T.gloves == TG)
-		to_chat(usr, SPAN_YAUTJABOLD("[icon2html(OG)] \The <b>[OG]</b> beep: Your [TM] is not wearing their bracer!"))
-	else if(!TG.owner)
-		to_chat(usr, SPAN_YAUTJABOLD("[icon2html(OG)] \The <b>[OG]</b> beep: [TM] bracer is unbound."))
-		return
+	var/mob/living/carbon/human/receiver
+	var/messenger_title = "thrall"
+	var/receiver_title = "master"
+	if(messenger.hunter_data.thralled)
+		receiver = messenger.hunter_data.thralled_set
 	else
-		OG.bracer_message_int(O, OG, T, TG, TM, OM)
+		receiver = messenger.hunter_data.thrall
+		messenger_title = "master"
+		receiver_title = "thrall"
+
+	if(!istype(receiver))
+		to_chat(messenger, SPAN_WARNING("You have no one to message!"))
+		return
+	if(!istype(receiver.gloves, /obj/item/clothing/gloves/yautja))
+		to_chat(messenger, SPAN_WARNING("Your [receiver_title] isn't wearing their bracer!"))
+		return
+
+	var/message = sanitize(input(messenger, "Enter the message you want to send:", "Send Message") as null|text)
+	if(!message)
+		return
+
+	if(!istype(receiver))
+		to_chat(messenger, SPAN_WARNING("You have no one to message!"))
+		return
+	var/obj/item/clothing/gloves/yautja/receiver_gloves = receiver.gloves
+	if(!istype(receiver_gloves))
+		to_chat(messenger, SPAN_WARNING("Your [receiver_title] isn't wearing their bracer!"))
+		return
+
+	to_chat(receiver, SPAN_YAUTJABOLD("\The <b>[receiver_gloves]</b> beeps with a message from your [messenger_title]: [message]"))
+	to_chat(messenger, SPAN_YAUTJABOLD("\The <b>[src]</b> beeps: You have sent '[message]' to your [receiver_title]."))
+
+	if(notification_sound)
+		playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
+	if(receiver_gloves.notification_sound)
+		playsound(receiver_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+
+	log_game("HUNTER: [key_name(messenger)] has sent [key_name(receiver)] the message '[message]' via bracer")
 
 /obj/item/clothing/gloves/yautja/hunter/bracer_message()
 	set category = "Yautja.Thrall"
-
 	. = ..()
+
 /obj/item/clothing/gloves/yautja/thrall/bracer_message()
 	set category = "Thrall"
-
 	. = ..()
-
-/obj/item/clothing/gloves/yautja/proc/bracer_message_int(var/mob/living/carbon/human/O, var/obj/item/clothing/gloves/yautja/OG, var/mob/living/carbon/human/T, var/obj/item/clothing/gloves/yautja/TG, var/TM, var/OM, var/msg)
-
-	if(!msg)
-		msg = input("Enter a message to send to your [TM].")
-
-	to_chat(T, SPAN_YAUTJABOLD("[icon2html(TG)] \The <b>[TG]</b> beep with a message from your [OM]: [msg]"))
-	to_chat(O, SPAN_YAUTJABOLD("[icon2html(OG)] \The <b>[OG]</b> beep: you have sent '[msg]' to your [TM]"))
-	log_game("HUNTER: [key_name(owner)] has sent [key_name(T)] the message '[msg]' via bracer")
-	if(TG.notification_sound)
-		playsound(TG.loc, 'sound/items/pred_bracer.ogg', 75, 1)
-	if(OG.notification_sound)
-		playsound(OG.loc, 'sound/items/pred_bracer.ogg', 75, 1)

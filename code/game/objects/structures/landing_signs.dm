@@ -50,6 +50,11 @@
 	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The Company logo is proudly emblazoned in the corner. Someone has crudely written 'FUCK OFF' in teal paint across the majority of the sign."
 	icon_state = "sorokyne_sign_2"
 
+/obj/structure/lz_sign/new_varadero
+	name = "New Varadero landing sign"
+	desc = "A large sign that reads 'New Varadero'. Its always sunny here!"
+	icon_state = "new_varadero"
+
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.
 	name = "Chigusa Shipyard Sign"
 	desc = "A large sign that reads 'Chigusa Shipyard - Subsidary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."

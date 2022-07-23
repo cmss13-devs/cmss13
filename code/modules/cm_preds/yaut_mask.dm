@@ -144,7 +144,6 @@
 				qdel(G)
 				user.update_inv_glasses()
 
-	add_to_missing_pred_gear(src)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)

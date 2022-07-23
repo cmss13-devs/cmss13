@@ -93,7 +93,7 @@
 	plane = ABOVE_HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
-/obj/screen/plane_master/above_hud
+/obj/screen/plane_master/cinematic
 	name = "cinematic plane"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME

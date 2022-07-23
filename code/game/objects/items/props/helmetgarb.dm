@@ -74,17 +74,39 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
+#define NVG_SHAPE_COSMETIC 1
+#define NVG_SHAPE_BROKEN 2
+#define NVG_SHAPE_PATCHED 3
+#define NVG_SHAPE_FINE 4
+
 /obj/item/prop/helmetgarb/helmet_nvg
-	name = "\improper old M2 night vision goggles"
-	desc = "They've been out of batteries since two shoreleaves ago. But hey, they make you feel tacticool, and that's all that matters, right?"
+	name = "\improper M2 night vision goggles"
+	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work"
 	icon_state = "nvg"
+	gender = PLURAL
+	garbage = FALSE
+	w_class = SIZE_MEDIUM
+
+	var/nvg_maxhealth = 125
+	var/nvg_health = 125
+
+	var/nvg_maxcharge = 2500
+	var/nvg_charge = 2500
+	var/nvg_drain = 8 // has a 5 minute duration but byond may give it a couple of irl time due to lag
+	var/infinite_charge = FALSE
+
 	var/activated = FALSE
+	var/nightvision = FALSE
+	var/shape = NVG_SHAPE_FINE
+
+	var/active_powered_icon_state = "nvg_down_powered"
 	var/active_icon_state = "nvg_down"
 	var/inactive_icon_state = "nvg"
 
 	var/datum/action/item_action/activation
-	var/obj/item/attached_item
-	garbage = FALSE
+	var/obj/item/clothing/head/attached_item
+	var/mob/living/attached_mob
+	var/lighting_alpha = 100
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -94,110 +116,348 @@
 
 	remove_attached_item()
 
-	attached_item = S.master_object
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	activation = new /datum/action/item_action/toggle(src, S.master_object)
+	var/obj/item/MO = S.master_object
+	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap)) // Do not bother if it's not a helmet or at least a hat
+		return
 
-	if(ismob(S.master_object.loc))
-		activation.give_to(S.master_object.loc)
+	attached_item = MO
+
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/toggle_check)
+
+	if(ismob(attached_item.loc))
+		set_attached_mob(attached_item.loc)
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A,/obj/item/cell))
+		recharge(A, user)
+
+	if(HAS_TRAIT(A, TRAIT_TOOL_SCREWDRIVER))
+		repair(user)
+
+	else
+		..()
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(var/obj/item/cell/C, mob/user as mob)
+	if(user.action_busy)
+		return
+	if(src != user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to recharge them."))
+		return
+	if(shape == NVG_SHAPE_COSMETIC)
+		to_chat(user, SPAN_WARNING("There is no connector for the power cell inside \the [src]."))
+		return
+	if(shape == NVG_SHAPE_BROKEN)
+		to_chat(user, SPAN_WARNING("You need to repair \the [src] first."))
+		return
+	if(nvg_charge == nvg_maxcharge)
+		to_chat(user, SPAN_WARNING("\The [src] are already fully charged."))
+		return
+
+	while(nvg_charge < nvg_maxcharge)
+		if(C.charge <= 0)
+			to_chat(user, SPAN_WARNING("\The [C] is completely dry."))
+			break
+		if(!do_after(user, 1 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
+			to_chat(user, SPAN_WARNING("You were interrupted."))
+			break
+		var/to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
+		if(C.use(to_transfer))
+			nvg_charge += to_transfer
+			to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/repair(mob/user as mob)
+	if(user.action_busy)
+
+		return
+	if(src != user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
+		return
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
+		return
+
+	if(shape == NVG_SHAPE_BROKEN)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
+			return
+
+		to_chat(user, "You begin to repair \the [src].")
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			to_chat(user, SPAN_WARNING("You were interrupted."))
+			return
+		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		color = "#bebebe"
+		shape = NVG_SHAPE_PATCHED
+		to_chat(user, "You successfully patch \the [src].")
+		nvg_maxhealth = 65
+		nvg_health = 65
+		nvg_drain = initial(nvg_drain) * 2
+		return
+
+	else if(nvg_health == nvg_maxhealth)
+		if(shape == NVG_SHAPE_PATCHED)
+			to_chat(user, SPAN_WARNING("Already repaired, nothing more you can do."))
+		else if(shape == NVG_SHAPE_FINE)
+			to_chat(user, SPAN_WARNING("Nothing to fix."))
+		else if(shape == NVG_SHAPE_COSMETIC)
+
+			to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
+
+	else
+		to_chat(user, "You begin to repair \the [src].")
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			to_chat(user, "You successfully repair \the [src].")
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			nvg_health = nvg_maxhealth
+		else
+			to_chat(user, SPAN_WARNING("You were interrupted."))
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
+	. = ..()
+
+	if(shape == NVG_SHAPE_BROKEN)
+		to_chat(user, "They appear to be broken. Maybe someone competent can fix them.")
+	else
+
+		if(shape == NVG_SHAPE_PATCHED)
+			to_chat(user, "They are covered in scratches and have traces of a recent repair.")
+
+		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
+		if(nvg_health_procent > 70)
+			to_chat(user, "They appear to be in good shape.")
+		else if(nvg_health_procent > 50)
+			to_chat(user, "They are visibly damaged.")
+		else if(nvg_health_procent > 30)
+			to_chat(user, "It's unlikely they can sustain more damage.")
+		else if(nvg_health_procent >= 0)
+			to_chat(user, "They are falling apart.")
+
+	if (get_dist(user, src) <= 1 && (shape == NVG_SHAPE_FINE || shape == NVG_SHAPE_PATCHED))
+		to_chat(user, "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
 	return ..()
 
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/User)
+	attached_mob = User
+	activation = new /datum/action/item_action/toggle(src, attached_item)
+	activation.give_to(attached_mob)
+	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
+	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, .proc/break_nvg)
+	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, .proc/remove_attached_mob)
+
 /obj/item/prop/helmetgarb/helmet_nvg/proc/remove_attached_item()
 	SIGNAL_HANDLER
+
 	if(!attached_item)
 		return
+	UnregisterSignal(attached_item, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_ITEM_EQUIPPED
+	))
 
-	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
-	qdel(activation)
+	if(activated)
+		activated = FALSE
+		icon_state = inactive_icon_state
+
+	remove_attached_mob()
 	attached_item = null
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/remove_attached_mob()
+	UnregisterSignal(attached_item, COMSIG_ITEM_DROPPED)
+	qdel(activation)
+	if(!attached_mob)
+		return
+	UnregisterSignal(attached_mob, list(
+		COMSIG_HUMAN_XENO_ATTACK,
+		COMSIG_MOB_CHANGE_VIEW
+	))
+	remove_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
+	remove_nvg()
+	attached_mob = null
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+	SIGNAL_HANDLER
+
+	if(attached_mob != user && slot == WEAR_HEAD)
+		set_attached_mob(user)
+
+	if(slot == WEAR_HEAD && !nightvision && activated && nvg_charge > 0 && shape > NVG_SHAPE_BROKEN)
+		enable_nvg(user)
+	else
+		remove_nvg()
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(var/mob/living/carbon/human/user)
+	if(nightvision)
+		remove_nvg()
+
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
+
+	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
+	user.overlay_fullscreen("nvg", /obj/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_blur", /obj/screen/fullscreen/brute/nvg, 3)
+	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
+	nightvision = TRUE
+	user.update_sight()
+
+	icon_state = active_powered_icon_state
+	attached_item.update_icon()
+	activation.update_button_icon()
+
+	START_PROCESSING(SSobj, src)
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(var/mob/M)
+	SIGNAL_HANDLER
+
+	if(lighting_alpha < 255)
+		M.see_in_dark = 12
+	M.lighting_alpha = lighting_alpha
+	M.sync_lighting_plane_alpha()
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/remove_nvg()
+	SIGNAL_HANDLER
+
+	if(!attached_mob)
+		return
+
+	if(nightvision)
+		attached_mob.remove_client_color_matrix("nvg", 1 SECONDS)
+		attached_mob.clear_fullscreen("nvg", 0.5 SECONDS)
+		attached_mob.clear_fullscreen("nvg_blur", 0.5 SECONDS)
+		playsound(attached_mob, 'sound/handling/toggle_nv2.ogg', 25)
+		nightvision = FALSE
+
+		UnregisterSignal(attached_mob, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+
+		if(activated)
+			icon_state = active_icon_state
+			attached_item.update_icon()
+			activation.update_button_icon()
+
+		attached_mob.update_sight()
+
+		STOP_PROCESSING(SSobj, src)
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/process(delta_time)
+	if(nvg_charge > 0 && !infinite_charge)
+		nvg_charge = max(0, nvg_charge - nvg_drain * delta_time)
+
+	if(!attached_mob)
+		return PROCESS_KILL
+
+	if(!activated || !attached_item || nvg_charge <= 0 || attached_mob.is_dead())
+		if(activated && !attached_mob.is_dead())
+			to_chat(attached_mob, SPAN_WARNING("\The [src] emit a low power warning and immediately shut down!"))
+		remove_nvg()
+		return
+
+	if(!attached_item.has_garb_overlay())
+		to_chat(attached_mob, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
+		remove_nvg()
+		return
+
 
 /obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(var/mob/owner, var/obj/item/holder)
 	toggle_nods(owner)
-	activation.update_button_icon()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle()
+	set category = "Object"
+	set name = "Toggle M2 night vision goggles"
+
+	var/obj/item/clothing/head/helmet/marine/H = usr.get_item_by_slot(WEAR_HEAD)
+	if(istype(H))
+		for(var/obj/item/prop/helmetgarb/helmet_nvg/G in H.pockets.contents)
+			G.toggle_nods(usr)
+			break
+
+
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
 		return
 
 	if(!attached_item)
 		return
 
+	if(!attached_item.has_garb_overlay())
+		to_chat(user, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
+		return
+
+	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC)
+		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
+		return
+
 	activated = !activated
+
 	if(activated)
 		to_chat(user, SPAN_NOTICE("You flip the goggles down."))
 		icon_state = active_icon_state
-	else
-		to_chat(user, SPAN_NOTICE("You push the goggles up."))
-		icon_state = inactive_icon_state
-
-	attached_item.update_icon()
-
-/obj/item/prop/helmetgarb/helmet_nvg/functional //for ERTs and admemes. Not available to marines by default.
-	name = "\improper M2 night vision goggles"
-	desc = "With a pack of triple As, nothing can stop you. Put them on your helmet and press the button and it's go-time."
-
-	var/lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	var/mob/attached_mob
-
-/obj/item/prop/helmetgarb/helmet_nvg/functional/toggle_nods(mob/living/carbon/human/user)
-	. = ..()
-	if(activated)
-		RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/toggle_check)
-		RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, .proc/remove_nvg)
-		if(user.head == attached_item)
+		if(nvg_charge > 0 && user.head == attached_item && shape > NVG_SHAPE_BROKEN)
 			enable_nvg(user)
+		else
+			icon_state = active_icon_state
+			attached_item.update_icon()
+			activation.update_button_icon()
+
+		if(shape != NVG_SHAPE_COSMETIC)
+			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, .proc/change_view) // will flip non-cosmetic nvgs back up when zoomed
+
 	else
-		UnregisterSignal(attached_item, list(
-			COMSIG_ITEM_EQUIPPED,
-			COMSIG_ITEM_DROPPED
-		))
+		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
+
+		icon_state = inactive_icon_state
+		attached_item.update_icon()
+		activation.update_button_icon()
+
 		remove_nvg()
+		UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
-/obj/item/prop/helmetgarb/helmet_nvg/functional/remove_attached_item()
-	if(attached_item)
-		UnregisterSignal(attached_item, list(
-			COMSIG_ITEM_EQUIPPED,
-			COMSIG_ITEM_DROPPED
-		))
-
-	remove_nvg()
-	attached_mob = null
-	return ..()
-
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/enable_nvg(var/mob/living/carbon/human/user)
-	remove_nvg()
-
-	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
-	update_sight(user)
-	attached_mob = user
-
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/update_sight(var/mob/M)
-	SIGNAL_HANDLER
-	if(lighting_alpha < 255)
-		M.see_in_dark = 12
-	M.lighting_alpha = lighting_alpha
-	M.sync_lighting_plane_alpha()
-
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(var/mob/M, var/new_size)
 	SIGNAL_HANDLER
 
-	if(slot == WEAR_HEAD)
-		enable_nvg(user)
-	else
-		remove_nvg()
+	if(new_size > 7) // cannot use binos with NVG
+		toggle_nods(M)
 
-/obj/item/prop/helmetgarb/helmet_nvg/functional/proc/remove_nvg()
+/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/Xeno) //xenos can break NVG if aim head
 	SIGNAL_HANDLER
-	if(!attached_mob)
-		return
 
-	UnregisterSignal(attached_mob, COMSIG_HUMAN_POST_UPDATE_SIGHT)
-	update_sight(attached_mob)
-	attached_mob = null
+	if(check_zone(Xeno.zone_selected) == "head" && user == attached_mob)
+		nvg_health -= slashdata["n_damage"] // damage can be adjusted here
+	if(nvg_health <= 0)
+		nvg_health = 0
+		user.visible_message(SPAN_WARNING("\The [src] on [user]'s head break with a crinkling noise."),
+			SPAN_WARNING("Your [src.name] break with a crinkling noise."),
+			SPAN_WARNING("You hear a crinkling noise, as if something was broken in your helmet."))
+		playsound(user, "bone_break", 30, TRUE)
+		src.color = "#4e4e4e"
+		if(shape != NVG_SHAPE_COSMETIC)
+			shape = NVG_SHAPE_BROKEN
+		var/obj/item/clothing/head/helmet/marine/H = attached_item
+		H.pockets.remove_from_storage(src, get_turf(H))
+
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic //for "custom loadout", purely cosmetic
+	name = "\improper old M2 night vision goggles"
+	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
+	shape = NVG_SHAPE_COSMETIC
+
+/obj/item/prop/helmetgarb/helmet_nvg/marsoc //for MARSOC
+	name = "\improper Tactical M3 night vision goggles"
+	desc = "With an integrated self recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
+	infinite_charge = TRUE
+
+#undef NVG_SHAPE_COSMETIC
+#undef NVG_SHAPE_BROKEN
+#undef NVG_SHAPE_PATCHED
+#undef NVG_SHAPE_FINE
 
 /obj/item/prop/helmetgarb/flair_initech
 	name = "\improper Initech flair"

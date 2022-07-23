@@ -7,7 +7,6 @@ changelogToPrefix = {
 	'qol': ["Quality of Life", ["made something easier to use"]],
 	'add': ["Feature", ["Added new mechanics or gameplay changes", "Added more things"]],
 	'del': ["Removal", ["Removed old things"]],
-    'expansion': ["Expansion", ["Expanded existing mechanics or gameplay"]],
 	'spellcheck': ["Grammar and Formatting", ["fixed a few typos"]],
 	'balance': ["Balance", ["rebalanced something"]],
 	'code': ["Code Improvement", ["changed some code"]],
@@ -31,12 +30,16 @@ fileToPrefix = {
 	'dmi': "Sprites",
 }
 
+githubLabel = "Github"
+
 def get_labels(pr):
 	labels = {}
 
 	files = pr.get_files()
 	for file in files:
 		prefix = file.filename.split(".")[-1]
+		if file.filename.startswith(".github"):
+			labels[githubLabel] = True
 		if not prefix in fileToPrefix:
 			continue
 		labels[fileToPrefix[prefix]] = True

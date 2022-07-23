@@ -66,7 +66,7 @@
 
 
 /mob/living/carbon/Xenomorph/update_inv_pockets()
-	var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
+	var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
 	if(l_store)
 		if(client && hud_used && hud_used.hud_shown)
 			client.screen += l_store
@@ -80,7 +80,7 @@
 	remove_overlay(X_R_HAND_LAYER)
 	if(r_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
-			var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
+			var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
 			client.screen += r_hand
 			r_hand.screen_loc = ui_datum.hud_slot_offset(r_hand, ui_datum.ui_rhand)
 		var/t_state = r_hand.item_state
@@ -93,7 +93,7 @@
 	remove_overlay(X_L_HAND_LAYER)
 	if(l_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
-			var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
+			var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
 			client.screen += l_hand
 			l_hand.screen_loc = ui_datum.hud_slot_offset(l_hand, ui_datum.ui_lhand)
 		var/t_state = l_hand.item_state

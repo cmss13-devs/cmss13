@@ -1,5 +1,8 @@
 var/list/datum/admins/admin_datums = list()
 
+GLOBAL_VAR_INIT(href_token, GenerateToken())
+GLOBAL_PROTECT(href_token)
+
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -15,6 +18,9 @@ var/list/datum/admins/admin_datums = list()
 
 	var/href_token
 
+	///Whether this admin is invisiminning
+	var/invisimined = FALSE
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
@@ -23,6 +29,7 @@ var/list/datum/admins/admin_datums = list()
 	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
+	href_token = GenerateToken()
 	admin_datums[ckey] = src
 
 /datum/admins/proc/associate(client/C)
@@ -78,6 +85,21 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 /proc/check_rights(rights_required, show_msg=TRUE)
 	if(usr && usr.client)
 		return check_client_rights(usr.client, rights_required, show_msg)
+	return FALSE
+
+/proc/check_other_rights(client/other, rights_required, show_msg = TRUE)
+	if(!other)
+		return FALSE
+	if(rights_required && other.admin_holder?.rank)
+		if(check_client_rights(usr.client, rights_required, show_msg))
+			return TRUE
+		else if(show_msg)
+			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+	else
+		if(other.admin_holder)
+			return TRUE
+		else if(show_msg)
+			to_chat(usr, SPAN_WARNING("You are not a holder."))
 	return FALSE
 
 //probably a bit iffy - will hopefully figure out a better solution
@@ -141,6 +163,11 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(--GLOB.AdminProcCallCount == 0)
 		GLOB.AdminProcCaller = null
 
+/datum/admins/proc/check_for_rights(rights_required)
+	if(rights_required && !(rights_required & rights))
+		return FALSE
+	return TRUE
+
 
 /world/proc/WrapAdminProcCall(datum/target, procname, list/arguments)
 	if(target == GLOBAL_PROC)
@@ -152,3 +179,28 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 
 /datum/proc/CanProcCall(procname)
 	return TRUE
+
+//This proc checks whether subject has at least ONE of the rights specified in rights_required.
+/proc/check_rights_for(client/subject, rights_required)
+	if(subject?.admin_holder)
+		return subject.admin_holder.check_for_rights(rights_required)
+	return FALSE
+
+/proc/GenerateToken()
+	. = ""
+	for(var/I in 1 to 32)
+		. += "[rand(10)]"
+
+/proc/RawHrefToken(forceGlobal = FALSE)
+	var/tok = GLOB.href_token
+	if(!forceGlobal && usr)
+		var/client/C = usr.client
+		if(!C)
+			CRASH("No client for HrefToken()!")
+		var/datum/admins/holder = C.admin_holder
+		if(holder)
+			tok = holder.href_token
+	return tok
+
+/proc/HrefToken(forceGlobal = FALSE)
+	return "admin_token=[RawHrefToken(forceGlobal)]"

@@ -35,7 +35,7 @@
 
 /datum/tech/repeatable/on_unlock()
 	..()
-	if(announce_message && announce_name)
+	if(!(tech_flags & TECH_FLAG_NO_ANNOUNCE) && announce_message && announce_name)
 		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg')
 
 	next_purchase = world.time + purchase_cooldown

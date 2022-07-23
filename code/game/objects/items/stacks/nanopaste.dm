@@ -33,7 +33,7 @@
 			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
-		if (S && (S.status & LIMB_ROBOT))
+		if (S && (S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			if(S.get_damage())
 				S.heal_damage(15, 15, robo_repair = 1)
 				H.pain.recalculate_pain()

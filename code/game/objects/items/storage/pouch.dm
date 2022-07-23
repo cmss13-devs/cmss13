@@ -320,7 +320,6 @@
 	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
-	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
 					/obj/item/weapon/gun/revolver,
 					/obj/item/weapon/gun/pistol,
@@ -571,6 +570,10 @@
 /obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+
+/obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -942,6 +945,29 @@
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
 
+/obj/item/storage/pouch/document
+	name = "large document pouch"
+	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
+	icon_state = "document"
+	storage_slots = 21
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 21
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CLICK_GATHER
+	can_hold = list(
+		/obj/item/paper,
+		/obj/item/clipboard,
+		/obj/item/document_objective/paper,
+		/obj/item/document_objective/report,
+		/obj/item/document_objective/folder,
+		/obj/item/disk/objective,
+		/obj/item/document_objective/technical_manual
+	)
+
+/obj/item/storage/pouch/document/small
+	name = "small document pouch"
+	desc = "A smaller version of the document pouch. It can contain papers, folders, disks, technical manuals, and clipboards."
+	storage_slots = 7
+
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
@@ -1014,6 +1040,16 @@
 	new /obj/item/stack/sheet/plasteel(src, 50)
 	new /obj/item/stack/sheet/metal(src, 50)
 	new /obj/item/stack/sandbags_empty(src, 50)
+
+/obj/item/storage/pouch/construction/full_barbed_wire/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 50)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 20)
+
+/obj/item/storage/pouch/construction/low_grade_full/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 30)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 15)
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"

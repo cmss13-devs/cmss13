@@ -8,7 +8,7 @@
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 15
-	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "folding"
 	can_wire = FALSE
 	can_change_dmg_state = 1

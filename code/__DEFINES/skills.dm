@@ -18,6 +18,8 @@
 #define SKILL_VEHICLE "vehicles"
 #define SKILL_JTAC "jtac"
 #define SKILL_EXECUTION "execution"
+#define SKILL_INTEL "intel"
+#define SKILL_DOMESTIC "domestics"
 
 /*
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,7 +109,7 @@
 
 //execution skill
 //roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
-//should be restricted to CO/admiral/W-Y execs maybe
+//should be restricted to CO/general/W-Y execs maybe
 
 #define SKILL_EXECUTION_DEFAULT 0
 #define SKILL_EXECUTION_TRAINED 1
@@ -163,6 +165,12 @@
 #define SKILL_ENDURANCE_SURVIVOR 2
 #define SKILL_ENDURANCE_MAX 5
 
+//domestic skill, how well you work cleaning equipment and cooking stuff
+#define SKILL_DOMESTIC_NONE 0
+#define SKILL_DOMESTIC_TRAINED 1
+#define SKILL_DOMESTIC_MASTER 2
+#define SKILL_DOMESTIC_MAX 2
+
 //multitile vehicle skills
 //Can't drive
 #define SKILL_VEHICLE_DEFAULT 0
@@ -174,3 +182,9 @@
 #define SKILL_VEHICLE_CREWMAN 3
 //MAX skill
 #define SKILL_VEHICLE_MAX 3
+
+// Intel skills
+#define SKILL_INTEL_NOVICE 0
+#define SKILL_INTEL_TRAINED 1
+#define SKILL_INTEL_EXPERT 2
+#define SKILL_INTEL_MAX 2

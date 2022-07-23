@@ -186,14 +186,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		return dat
 
 /world/Reboot(var/reason)
-	var/reboot_sound = pick(reboot_sfx)
-	var/sound/reboot_sound_ref = sound(reboot_sound)
-	for (var/client/C as anything in GLOB.clients)
-		if(C?.prefs.toggles_sound & SOUND_REBOOT)
-			SEND_SOUND(C, reboot_sound_ref)
-
 	Master.Shutdown()
-
+	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)
@@ -203,11 +197,9 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
-	var/round_extra_data = ""
-	// Notify helper daemon of reboot, regardless of reason.
-	if(SSticker.mode)
-		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
-	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
+
+	if(!notify_manager(restarting = TRUE))
+		log_debug("Failed to notify manager daemon of restart")
 
 	if(CONFIG_GET(flag/no_restarts))
 		shutdown()
@@ -215,8 +207,38 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	..(reason)
 
+/world/proc/send_reboot_sound()
+	var/reboot_sound = SAFEPICK(reboot_sfx)
+	if(reboot_sound)
+		var/sound/reboot_sound_ref = sound(reboot_sound)
+		for(var/client/client as anything in GLOB.clients)
+			if(client?.prefs.toggles_sound & SOUND_REBOOT)
+				SEND_SOUND(client, reboot_sound_ref)
 
+/world/proc/notify_manager(restarting = FALSE)
+	. = FALSE
+	var/manager = CONFIG_GET(string/manager_url)
+	if(!manager)
+		return TRUE
 
+	var/list/payload = list()
+	payload["round_time"] = world.time
+	payload["drift"] = Master.tickdrift
+	if(restarting)
+		payload["restarting"] = TRUE
+		if(SSticker?.mode)
+			payload["round_result"] = SSticker.mode.end_round_message()
+	if(round_statistics?.round_name)
+		payload["mission_name"] = round_statistics.round_name
+	if(SSmapping.next_map_configs)
+		var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
+		if(next_map)
+			payload["next_map"] = next_map.map_name
+	payload["avg_players"] = SSstats_collector.get_avg_players()
+
+	var/payload_ser = url_encode(json_encode(payload))
+	world.Export("[manager]/?payload=[payload_ser]")
+	return TRUE
 
 /world/proc/load_mode()
 	var/list/Lines = file2list("data/mode.txt")

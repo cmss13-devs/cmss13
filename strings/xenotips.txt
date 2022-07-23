@@ -23,3 +23,4 @@ Claymores have directional explosions. Set them off early by slashing them from 
 If you have difficulty clicking marines, try using Directional Slashing, though there's no directional slashing for abilities.
 You can diagonally pounce through the corners of fire as a Lurker or Runner without getting ignited.
 When playing as xeno, consider aiming at the limbs instead of the chest. Marine armour doesn't protect the arms and legs as well as it does the body.
+As xeno, you can break Night-Vision goggles that some marines wear on their helmets. Just aim for the head and slash until the goggles shatter.

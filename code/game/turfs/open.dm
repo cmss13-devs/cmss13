@@ -5,6 +5,7 @@
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
+	var/supports_surgery = TRUE
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -16,19 +17,53 @@
 
 	add_cleanable_overlays()
 
+	var/list/turf/open/auto_turf/auto_turf_dirs = list()
 	for(var/direction in alldirs)
 		var/turf/open/auto_turf/T = get_step(src, direction)
 		if(!istype(T))
 			continue
 
-		if(bleed_layer > T.bleed_layer || bleed_layer == T.bleed_layer)
+		if(bleed_layer >= T.bleed_layer)
 			continue
 
-		var/special_icon_state = "[T.icon_prefix]_[(direction & (direction-1)) ? "outercorner" : pick("innercorner", "outercorner")]"
-		var/image/I = image(T.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + T.bleed_layer * 0.0001)
-		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+		auto_turf_dirs["[direction]"] = T
 
+	var/list/handled_dirs = list()
+	var/list/unhandled_dirs = list()
+	for(var/direction in diagonals)
+		var/x_dir = direction & (direction-1)
+		var/y_dir = direction - x_dir
+
+		if(!("[direction]" in auto_turf_dirs))
+			unhandled_dirs |= x_dir
+			unhandled_dirs |= y_dir
+			continue
+
+		var/turf/open/auto_turf/xy_turf = auto_turf_dirs["[direction]"]
+		if(("[x_dir]" in auto_turf_dirs) && ("[y_dir]" in auto_turf_dirs))
+			var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
+			var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+			overlays += I
+			handled_dirs += "[x_dir]"
+			handled_dirs += "[y_dir]"
+			continue
+
+		var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
+		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 		overlays += I
+		unhandled_dirs |= x_dir
+		unhandled_dirs |= y_dir
+
+	for(var/direction in unhandled_dirs)
+		if(("[direction]" in auto_turf_dirs) && !("[direction]" in handled_dirs))
+			var/turf/open/auto_turf/turf = auto_turf_dirs["[direction]"]
+			var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
+			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
+			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+			overlays += I
+
 
 /turf/open/examine(mob/user)
 	..()
@@ -41,15 +76,17 @@
 	icon_state = "black"
 	mouse_opacity = FALSE
 	can_bloody = FALSE
+	supports_surgery = FALSE
 
 /turf/open/void/vehicle
 	density = TRUE
 
 /turf/open/void/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/river
 	can_bloody = FALSE
+	supports_surgery = FALSE
 
 // Prison grass
 /turf/open/organic/grass
@@ -115,6 +152,7 @@
 /turf/open/beach
 	name = "Beach"
 	icon = 'icons/turf/floors/beach.dmi'
+	supports_surgery = FALSE
 
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
@@ -130,6 +168,7 @@
 /turf/open/beach/sand
 	name = "Sand"
 	icon_state = "sand"
+	supports_surgery = TRUE
 
 /turf/open/beach/coastline
 	name = "Coastline"
@@ -240,6 +279,7 @@
 	var/default_name = "river"
 	var/no_overlay = FALSE
 	baseturfs = /turf/open/gm/river
+	supports_surgery = FALSE
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -346,12 +386,16 @@
 	name = "coastline"
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
+	supports_surgery = FALSE
+
 
 /turf/open/gm/riverdeep
 	name = "river"
 	icon_state = "seadeep"
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
+	supports_surgery = FALSE
+
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()
@@ -359,6 +403,7 @@
 
 /turf/open/gm/river/no_overlay
 	no_overlay = TRUE
+	supports_surgery = FALSE
 
 
 
@@ -369,9 +414,10 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 	density = 1
+	supports_surgery = FALSE
 
 /turf/open/gm/empty/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 
 
@@ -383,6 +429,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "seadeep"
 	can_bloody = FALSE
+	supports_surgery = FALSE
 
 //Ice Colony grounds
 
@@ -400,7 +447,7 @@
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 /turf/open/ice/noweed/is_weedable() //used for new prison ice block xenos
-	return FALSE
+	return NOT_WEEDABLE
 
 
 
@@ -541,6 +588,7 @@
 	icon_state = "water"
 	icon_spawn_state = "water"
 	can_bloody = FALSE
+	supports_surgery = FALSE
 
 
 /turf/open/jungle/water/Initialize(mapload, ...)
@@ -604,6 +652,7 @@
 	icon_state = "floor"
 	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = FALSE
+	supports_surgery = FALSE
 
 /turf/open/shuttle/dropship
 	name = "floor"
@@ -648,3 +697,4 @@
 /turf/open/shuttle/vehicle/med
 	name = "floor"
 	icon_state = "dark_sterile"
+	supports_surgery = TRUE

@@ -180,7 +180,7 @@ var/savefile/Banlist
 				expiry = "Removal Pending"
 		else
 			expiry = "Permaban"
-		var/unban_link = "<A href='?src=\ref[src];unbanf=[ban.ckey]'>(U)</A>"
+		var/unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(U)</A>"
 
 		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Reason: [ban.reason])</td></tr>"
 

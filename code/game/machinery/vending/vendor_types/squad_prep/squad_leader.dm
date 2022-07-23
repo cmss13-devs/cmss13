@@ -7,9 +7,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("UTILITIES", 0, null, null, null),
 		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Logistics IMP Backpack", 10, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
 		list("Range Finder", 3, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 5, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
+		list("M2 Night Vision Goggles", 20, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Scabbard (Full)", 4, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 4, /obj/item/storage/large_holster/macheteB/full, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_RECOMMENDED),
+		list("Breaching Charge", 7, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Signal Flare Pack", 7, /obj/item/storage/box/m94/signal, null, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
@@ -67,7 +68,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M41A Extended Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A MK1 Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank (Napthal)", 3, /obj/item/ammo_magazine/flamer_tank, null, VENDOR_ITEM_REGULAR),
-		list("M240 Incinerator Tank (Gel)", 3, /obj/item/ammo_magazine/flamer_tank/gellied, null, VENDOR_ITEM_REGULAR),
+		list("M240 Incinerator Tank (B-Gel)", 3, /obj/item/ammo_magazine/flamer_tank/gellied, null, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("M240 Incinerator Unit", 18, /obj/item/storage/box/guncase/flamer, null, VENDOR_ITEM_REGULAR),
@@ -78,7 +79,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 3, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),
-		list("Tactics Radio Encryption Key", 3, /obj/item/device/encryptionkey/tactics, null, VENDOR_ITEM_REGULAR),
+		list("Intel Radio Encryption Key", 3, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 3, /obj/item/device/encryptionkey/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 3, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
 	))
@@ -163,22 +164,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	listed_products = GLOB.cm_vending_clothing_leader
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
-	squad_tag = SQUAD_NAME_1
+	squad_tag = SQUAD_MARINE_1
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/bravo
-	squad_tag = SQUAD_NAME_2
+	squad_tag = SQUAD_MARINE_2
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/charlie
-	squad_tag = SQUAD_NAME_3
+	squad_tag = SQUAD_MARINE_3
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/delta
-	squad_tag = SQUAD_NAME_4
+	squad_tag = SQUAD_MARINE_4
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 

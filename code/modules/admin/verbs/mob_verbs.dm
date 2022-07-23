@@ -23,6 +23,7 @@
 	var/mob/living/carbon/Xenomorph/XNO = M
 	if(istype(XNO))
 		XNO.generate_name()
+		XNO.set_lighting_alpha_from_prefs(M.client)
 	M.client?.change_view(world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
@@ -159,7 +160,9 @@
 				return
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
-	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	var/message = WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]).")
+	message_staff(message, M.x, M.y, M.z)
+	admin_ticket_log(M, message)
 
 /client/proc/cmd_admin_alert_message(var/mob/M)
 	set name = "Alert Message"
@@ -220,13 +223,21 @@
 	set name = "Attack Log"
 	set category = null
 
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
 	to_chat(usr, SPAN_DANGER("<b>Attack Log for [mob]</b>"))
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 
-/proc/possess(obj/O as obj in GLOB.object_list)
+/client/proc/possess(obj/O as obj in GLOB.object_list)
 	set name = "Possess Obj"
 	set category = null
+
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
 
 	var/turf/T = get_turf(O)
 
@@ -244,9 +255,13 @@
 	usr.client.eye = O
 	usr.control_object = O
 
-/proc/release(obj/O as obj in GLOB.object_list)
+/client/proc/release(obj/O as obj in GLOB.object_list)
 	set name = "Release Obj"
 	set category = null
+
+	if (!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object
 		usr.real_name = usr.name_archive

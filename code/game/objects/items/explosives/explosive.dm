@@ -2,6 +2,7 @@
 //explosive items (grenades, plastic c4, onetankbomb, etc)
 
 /obj/item/explosive
+	var/base_icon_state
 	var/active = FALSE
 	var/customizable = FALSE
 	var/datum/cause_data/cause_data
@@ -29,6 +30,8 @@
 
 /obj/item/explosive/Initialize()
 	. = ..()
+	if(!base_icon_state)
+		base_icon_state = initial(icon_state)
 	if(!customizable)
 		return
 	if(has_blast_wave_dampener)
@@ -64,7 +67,7 @@
 			usr.put_in_hands(detonator)
 			detonator=null
 			assembly_stage = ASSEMBLY_EMPTY
-			icon_state = initial(icon_state)
+			icon_state = base_icon_state
 		else if(containers.len)
 			for(var/obj/B in containers)
 				if(istype(B))
@@ -78,20 +81,20 @@
 
 /obj/item/explosive/update_icon()
 	if(active)
-		icon_state = initial(icon_state) + "_active"
+		icon_state = base_icon_state + "_active"
 		return
 	switch(assembly_stage)
 		if(ASSEMBLY_EMPTY)
-			icon_state = initial(icon_state)
+			icon_state = base_icon_state
 		if(ASSEMBLY_UNLOCKED)
 			if(detonator)
-				icon_state = initial(icon_state) + "_ass"
+				icon_state = base_icon_state + "_ass"
 			else
-				icon_state = initial(icon_state)
+				icon_state = base_icon_state
 		if(ASSEMBLY_LOCKED)
-			icon_state = initial(icon_state) + "_locked"
+			icon_state = base_icon_state + "_locked"
 		else
-			icon_state = initial(icon_state)
+			icon_state = base_icon_state
 
 /obj/item/explosive/attackby(obj/item/W as obj, mob/user as mob)
 	if(!customizable || active)
@@ -198,7 +201,7 @@
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
 		reagents.source_mob = WEAKREF(cause_mob)
-		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
+		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
 
 	if(containers.len < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer

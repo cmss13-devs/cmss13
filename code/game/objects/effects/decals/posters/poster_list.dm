@@ -51,7 +51,7 @@ Template
 /datum/poster/poster_9
 	icon_state="poster9"
 	name = "Seegson"
-	desc = "Hey, Seegson! That's a blast from the past. They bought by Wey-Yu around the time one of their stations fell into a planet after a system failure."
+	desc = "Hey, Seegson! That's a blast from the past. They got bought out by Weyland-Yutani around the time one of their space stations de-orbited and fell into a planet's gravity well after a systems failure."
 
 /datum/poster/poster_10
 	icon_state="poster10"

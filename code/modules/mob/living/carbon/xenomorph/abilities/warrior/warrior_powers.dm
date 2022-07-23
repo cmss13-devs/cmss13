@@ -182,7 +182,7 @@
 			H.Slow(3)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
-		else if(L.status & LIMB_ROBOT)
+		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
@@ -199,7 +199,7 @@
 	if(ishuman(H))
 		if(isYautja(H))
 			damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
-		else if(L.status & LIMB_ROBOT)
+		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
@@ -213,7 +213,10 @@
 
 	var/datum/action/xeno_action/activable/jab/JA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/jab)
 	if (istype(JA) && !JA.action_cooldown_check())
-		JA.end_cooldown()
+		if(isXeno(H))
+			JA.reduce_cooldown(JA.xeno_cooldown / 2)
+		else
+			JA.end_cooldown()
 
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -260,7 +263,10 @@
 		break
 
 	if (punch_action && !punch_action.action_cooldown_check())
-		punch_action.end_cooldown()
+		if(isXeno(H))
+			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
+		else
+			punch_action.end_cooldown()
 
 	H.Daze(3)
 	H.Slow(5)

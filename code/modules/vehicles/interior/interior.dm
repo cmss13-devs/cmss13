@@ -166,8 +166,9 @@
 				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
 					//check each category if it has our role. We stop after we find role to avoid checking others.
 					if(RRS.roles.Find(H.job))
-						RRS.taken++
-						role_slot_taken = TRUE
+						if(RRS.taken < RRS.total)
+							RRS.taken++
+							role_slot_taken = TRUE
 						break
 			//if no special slot is taken, we will check for common passengers
 			if(!role_slot_taken)
@@ -183,10 +184,10 @@
 // Moves the atom to the interior
 /datum/interior/proc/enter(var/atom/movable/A, var/entrance_used)
 	if(!ready)
-		return
+		return FALSE
 
 	if(!A)
-		return
+		return FALSE
 
 	if(forbidden_atoms)
 		for(var/type in forbidden_atoms)
@@ -298,7 +299,7 @@
 			return FALSE
 
 	A.forceMove(get_turf(exit_turf))
-
+	update_passenger_count()
 	return TRUE
 
 // Returns min and max turfs for the interior

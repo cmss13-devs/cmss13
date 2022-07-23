@@ -30,7 +30,10 @@
 	for(var/T in SStechtree.trees)
 		trees += list("[T]" = SStechtree.trees[T])
 
-	var/value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+	var/value = SStechtree.trees[1]
+
+	if(trees.len > 1)
+		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
 
 	if(!value)
 		to_chat(src, SPAN_WARNING("Something went wrong"))
@@ -55,7 +58,10 @@
 	for(var/T in SStechtree.trees)
 		trees += list("[T]" = SStechtree.trees[T])
 
-	var/value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
+	var/value = SStechtree.trees[1]
+
+	if(trees.len > 1)
+		value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
 
 	if(!value)
 		to_chat(src, SPAN_WARNING("Something went wrong"))

@@ -11,6 +11,37 @@
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
 	var/volume = 30
+	var/transparent = FALSE //can we see what's in it?
+	var/reagent_desc_override = FALSE //does it have a special examining mechanic that should override the normal /reagent_containers examine proc?
+
+/obj/item/reagent_container/examine(mob/user)
+	. = ..()
+	show_reagent_info(user)
+
+/obj/item/reagent_container/proc/show_reagent_info(mob/user)
+	if(isXeno(user) || reagent_desc_override)
+		return
+	var/list/reagent_desc
+	if(reagents && (transparent || user.can_see_reagents()))
+		reagent_desc += "It contains : "
+		if(!user.can_see_reagents())
+			if(get_dist(user, src) > 2 && user != loc) //we have a distance check with this
+				to_chat(user, SPAN_WARNING("It's too far away for you to see what's in it!"))
+				return
+			if(!length(reagents.reagent_list))
+				reagent_desc += "nothing."
+			else
+				reagent_desc += "[reagents.total_volume] units of liquid."
+			to_chat(user, SPAN_INFO("[reagent_desc]"))
+			return
+		else //when wearing science goggles, you can see what's in something from any range
+			if(!length(reagents.reagent_list))
+				reagent_desc += "nothing."
+			else
+				for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+					reagent_desc += "[round(current_reagent.volume, 0.01)] units of [current_reagent.name].<br>"
+			to_chat(user, SPAN_INFO("[reagent_desc]"))
+			return
 
 /obj/item/reagent_container/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -36,7 +67,12 @@
 	possible_transfer_amounts = null
 	return ..()
 
-/obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
+/*
+// Used on examine for properly skilled people to see contents.
+// this is separate from show_reagent_info, as that proc is intended for use with science goggles
+// this proc is general-purpose and primarily for medical items that you shouldn't need scigoggles to scan - ie pills, syringes, etc.
+*/
+/obj/item/reagent_container/proc/display_contents(mob/user)
 	if(isXeno(user))
 		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))

@@ -261,7 +261,6 @@
 	. = ..()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = ABOVE_MOB_LAYER) //over mobs
 	overlays += I
-	verbs -= /atom/movable/verb/pull
 
 /obj/vehicle/souto/manual_unbuckle(mob/user)
 	if(buckled_mob && buckled_mob != user)
@@ -288,7 +287,7 @@
 	health = initial(health) //Souto Man never dies, and neither does his bike.
 
 /obj/vehicle/souto/super/buckle_mob(mob/M, mob/user)
-	if(!locked) //Vehicle is unlocked until first being mounted, since the Soutomobile is faction-locked and otherwise Souto Man cannot automatically buckle in on spawn as his equipment is spawned before his ID.	
+	if(!locked) //Vehicle is unlocked until first being mounted, since the Soutomobile is faction-locked and otherwise Souto Man cannot automatically buckle in on spawn as his equipment is spawned before his ID.
 		locked = TRUE
 	else if(M == user && M.faction != FACTION_SOUTO && locked == TRUE) //Are you a cool enough dude to drive this bike? Nah, nobody's THAT cool.
 		to_chat(user, SPAN_WARNING("Somehow, as you take hold of the handlebars, [src] manages to glare at you. You back off. We didn't sign up for haunted motorbikes, man."))

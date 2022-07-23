@@ -35,6 +35,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 	var/list/roles_to_roll
 
+	var/corpses_to_spawn = 0
+
 	var/hardcore = FALSE
 
 /datum/game_mode/New()
@@ -67,6 +69,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/pre_setup()
 	SHOULD_CALL_PARENT(TRUE)
 	setup_structures()
+	if(corpses_to_spawn)
+		generate_corpses()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
@@ -76,6 +80,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 ///Triggered when the dropship first lands.
 /datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
 
 /// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.
@@ -226,6 +232,21 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		if(player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
+
+
+/datum/game_mode/proc/generate_corpses()
+	var/list/obj/effect/landmark/corpsespawner/gamemode_spawn_corpse = GLOB.corpse_spawns.Copy()
+	while(corpses_to_spawn--)
+		if(!length(gamemode_spawn_corpse))
+			break
+		var/obj/effect/landmark/corpsespawner/spawner = pick(gamemode_spawn_corpse)
+		var/turf/spawnpoint = get_turf(spawner)
+		if(spawnpoint)
+			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
+			M.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+		gamemode_spawn_corpse.Remove(spawner)
+
 
 //////////////////////////
 //Reports player logouts//

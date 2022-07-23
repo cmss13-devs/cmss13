@@ -609,7 +609,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
+		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makerobot"])
 		if(!check_rights(R_SPAWN))
@@ -624,7 +624,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"]))
+		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))
@@ -639,7 +639,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makealien"=href_list["makealien"]))
+		admin_holder.Topic(href, list("makealien"=href_list["makealien"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))
@@ -650,7 +650,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"]))
+		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))
@@ -665,7 +665,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
+		admin_holder.Topic(href, list("makeai"=href_list["makeai"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["selectequipment"])
 		if(!check_rights(R_SPAWN))
@@ -712,7 +712,7 @@ body
 		if(!H.skills)
 			H.skills = new /datum/skills/pfc(H)
 
-		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader"))
+		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", GLOB.all_skills)
 		if(!selected_skill)
 			return
 

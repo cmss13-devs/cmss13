@@ -20,7 +20,7 @@
 
 //Update the power display thing. This is called in Life()
 /mob/living/carbon/human/proc/update_power_display(var/perc)
-	if(hud_used && hud_used.pred_power_icon)
+	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
 				hud_used.pred_power_icon.icon_state = "powerbar100"
@@ -49,128 +49,122 @@
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
 	if(is_mob_incapacitated() || lying || buckled)
-		to_chat(src, "You're not able to do that right now.")
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/carbon/M in view(1,src))
-		if(Adjacent(M) && M.stat)
-			if(istype(M,/mob/living/carbon/human))
+	for(var/mob/living/carbon/M in view(1, src) - src)
+		if(Adjacent(M) && M.stat == DEAD)
+			if(ishuman(M))
 				var/mob/living/carbon/human/Q = M
 				if(Q.species && isSameSpecies(Q, src))
 					continue
 			choices += M
 
-	if(src in choices)
-		choices -= src
-
-	var/mob/living/carbon/T = tgui_input_list(src,"What do you wish to butcher?", "Butcher", choices)
+	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
 	var/mob/living/carbon/Xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)
-		to_chat(src, "Nope.")
+		to_chat(src, SPAN_WARNING("Nope."))
 		return
 
 	if(!Adjacent(T))
-		to_chat(src, "You have to be next to your target.")
+		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
 
-	if(istype(T,/mob/living/carbon/Xenomorph/Larva))
-		to_chat(src, "This tiny worm is not even worth using your tools on.")
+	if(isXenoLarva(T))
+		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		to_chat(src, "Not right now.")
 		return
-
-	if(!T) return
 
 	if(isXeno(T))
 		xeno_victim = T
 
-	var/list/procedureChoices = list(
-		"Skin",
-		"Behead",
-		"Delimb - right hand",
-		"Delimb - left hand",
-		"Delimb - right arm",
-		"Delimb - left arm",
-		"Delimb - right foot",
-		"Delimb - left foot",
-		"Delimb - right leg",
-		"Delimb - left leg",
+	var/static/list/procedure_choices = list(
+		"Skin" = null,
+		"Behead" = "head",
+		"Delimb - Right Hand" = "r_hand",
+		"Delimb - Left Hand" = "l_hand",
+		"Delimb - Right Arm" = "r_arm",
+		"Delimb - Left Arm" = "l_arm",
+		"Delimb - Right Foot" = "r_foot",
+		"Delimb - Left Foot" = "l_foot",
+		"Delimb - Right Leg" = "r_leg",
+		"Delimb - Left Leg" = "l_leg",
 	)
+
 	var/procedure = ""
 	if(ishuman(T))
 		victim = T
-		procedure = tgui_input_list(src,"Which slice would you like to take?", "Take slice", procedureChoices)
 
+	if(victim)
+		procedure = tgui_input_list(src, "Which slice would you like to take?", "Take Slice", procedure_choices)
+		if(!procedure)
+			return
 
-	if (isXeno(T) || procedure == "Skin")
+	if(isXeno(T) || procedure == "Skin")
 		if(T.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message("<b>[src] goes back to butchering \the [T].</b>","<b>You get back to butchering \the [T].</b>")
+			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message("<b>[src] begins chopping and mutilating \the [T].</b>","<b>You take out your tools and begin your gruesome work on \the [T]. Hold still.</b>")
+			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [T]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [T]. Hold still."))
 			T.butchery_progress = 1
 
 		if(T.butchery_progress == 1)
-			if(do_after(src,70, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
-				visible_message("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity.","You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!")
+			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!"))
 				T.butchery_progress = 2
 				playsound(loc, 'sound/weapons/slash.ogg', 25)
 			else
-				to_chat(src, "You pause your butchering for later.")
+				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
 		if(T.butchery_progress == 2)
-			if(do_after(src,65, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
-				visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
+			if(do_after(src, 6.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+				visible_message(SPAN_DANGER("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [T]'s limbs, making sure to get the finest cuts."))
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
-					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
+					victim.apply_damage(100, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm"), FALSE, TRUE) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] steak"
 				T.butchery_progress = 3
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			else
-				to_chat(src, "You pause your butchering for later.")
+				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
 		if(T.butchery_progress == 3)
-			if(do_after(src,70, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
-				visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
+			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+				visible_message(SPAN_DANGER("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [T]'s ribcage and start tearing the tastiest bits out."))
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
 				else if(victim && isturf(T.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
-	//				T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
-	//				Why was this even in here?
+					victim.apply_damage(100, BRUTE,"chest", FALSE, FALSE)
 				T.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
-				to_chat(src, "You pause your butchering for later.")
+				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 
 		if(T.butchery_progress == 4)
-			if(do_after(src,90, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
+			if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(xeno_victim && isturf(T.loc))
-					visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
+					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
 					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-
 				else if(victim && isturf(T.loc))
-					visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")
-					var/mob/living/carbon/human/H = T
-					if(H.get_limb("head"))
-						H.apply_damage(150,BRUTE,"head",0,1,1)
+					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
+					if(victim.get_limb("head"))
+						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
 					else
 						var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 						meat.name = "raw [victim.name] steak"
@@ -185,64 +179,37 @@
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
 				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
-					emote("roar")
+					emote("roar2")
 					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
 				qdel(T)
 			else
-				to_chat(src, "You pause your butchering for later.")
+				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
 	else
-		var/limb = ""
-		switch(procedure)
-			if ("")
-				to_chat(src, "You pause your butchering for later.")
-				return
-			if ("Behead")
-				limb = "head"
-			if ("Delimb - right hand")
-				limb = "r_hand"
-			if ("Delimb - left hand")
-				limb = "l_hand"
-			if ("Delimb - right arm")
-				limb = "r_arm"
-			if ("Delimb - left arm")
-				limb = "l_arm"
-			if ("Delimb - right foot")
-				limb = "r_foot"
-			if ("Delimb - left foot")
-				limb = "l_foot"
-			if ("Delimb - right leg")
-				limb = "r_leg"
-			if ("Delimb - left leg")
-				limb = "l_leg"
-
+		var/limb = procedure_choices[procedure]
 		var/limbName = parse_zone(limb)
-		var/mob/living/carbon/human/H = T
-		if(H.get_limb(limb).status & LIMB_DESTROYED)
-			to_chat(src, "The victim lacks a [limbName].")
+		if(victim.get_limb(limb).status & LIMB_DESTROYED)
+			to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 			return
 		if(limb == "head")
 			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
 		else
 			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
-		if(do_after(src,90, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
-			if(H.get_limb(limb).status & LIMB_DESTROYED)
-				to_chat(src, "The victim lacks a [limbName].")
+		if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if(victim.get_limb(limb).status & LIMB_DESTROYED)
+				to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
 				return
-			H.get_limb(limb).droplimb(1, 0, "butchering")
+			victim.get_limb(limb).droplimb(TRUE, FALSE, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
-			H.butchery_progress = 0
 			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
-				emote("roar")
+				emote("roar2")
 				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-
-	return
 
 /area/yautja
 	name = "\improper Yautja Ship"
@@ -259,86 +226,96 @@
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
 
+	if(hunter_data.claimed_equipment)
+		to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
+		return
+
 	if(is_mob_incapacitated() || lying || buckled)
-		to_chat(src, "You're not able to do that right now.")
+		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
-	if(!istype(get_area(src),/area/yautja))
-		to_chat(src, "Not here. Only on the ship.")
+	if(!istype(get_area(src), /area/yautja))
+		to_chat(src, SPAN_WARNING("Not here. Only on the ship."))
 		return
 
-	var/obj/item/clothing/gloves/yautja/hunter/Y = src.gloves
-	if(!istype(Y) || Y.upgrades) return
+	var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
+	if(!istype(bracers))
+		to_chat(src, SPAN_WARNING("You need to be wearing your bracers to do this."))
+		return
 
-	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
-	if(sure == "Begin the Hunt")
-		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick", "The Fearsome Scimitars")
-		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor", "The Steadfast Shield")//, "The Clever Hologram")
-		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor", "The Steadfast Shield") //Can only select them once each.
-	//the radial ones have to be in seperate lists in order for the images to not fuck with the no radials one
-		var/list/radial_melee = list("The Lumbering Glaive" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), "The Rending Chain-Whip" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),"The Piercing Hunting Sword" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),"The Cleaving War-Scythe" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), "The Adaptive Combi-Stick" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), "The Fearsome Scimitars" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
-		var/list/radial_other = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Purifying Smart-Disc" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"))
-		var/list/radial_restricted = list("The Fleeting Spike Launcher" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), "The Swift Plasma Pistol" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), "The Formidable Plate Armor" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), "The Steadfast Shield" = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield")) //Can only select them once each.
+	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.", "Sure?", "Begin the Hunt", "No, not now")
+	if(sure != "Begin the Hunt")
+		return
 
-		var/msel
-		var/mother_0
-		var/mother_1
+	var/list/melee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
+	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
+	var/list/restricted = list(YAUTJA_GEAR_LAUNCHER, YAUTJA_GEAR_PISTOL, YAUTJA_GEAR_FULL_ARMOR, YAUTJA_GEAR_SHIELD, YAUTJA_GEAR_DRONE) //Can only select them once each.
 
-		if(src.client.prefs && src.client.prefs.no_radials_preference)
-			msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", melee)
-			if(!msel) return //We don't want them to cancel out then get nothing.
-			mother_0 = tgui_input_list(usr, "Which secondary gear shall you take?","Item 1 (of 2)", other)
-			if(!mother_0) return
-			if(mother_0 in restricted)
-				other -= mother_0
-			mother_1 = tgui_input_list(usr, "And the last piece of equipment?:","Item 2 (of 2)", other)
-			if(!mother_1) return
-		else
-			msel = show_radial_menu(src, src, radial_melee)
-			if(!msel) return //We don't want them to cancel out then get nothing.
-			mother_0 = show_radial_menu(src, src, radial_other)
-			if(!mother_0) return
-			if(mother_0 in radial_restricted)
-				radial_other -= mother_0
-			mother_1 = show_radial_menu(src, src, radial_other)
-			if(!mother_1) return
+	var/list/secondaries = list()
+	var/total_secondaries = 2
 
-		if(!istype(Y) || Y.upgrades) return //Tried to run it several times in the same loop. That's not happening.
-		Y.upgrades++ //Just means gear was purchased.
+	var/use_radials = src.client.prefs?.no_radials_preference ? FALSE : TRUE
+	var/main_weapon = use_radials ? show_radial_menu(src, src, melee) : tgui_input_list(usr, "Which weapon shall you use on your hunt?:", "Melee Weapon", melee)
+	if(!main_weapon)
+		return
+	for(var/i = 1 to total_secondaries)
+		var/secondary = use_radials ? show_radial_menu(src, src, other) : tgui_input_list(usr, "Which secondary gear shall you take?", "Item [i] (of [total_secondaries])", other)
+		if(!secondary)
+			return
+		secondaries += secondary
+		if(secondary in restricted)
+			other -= secondary
 
-		switch(msel)
-			if("The Lumbering Glaive")
-				new /obj/item/weapon/melee/twohanded/yautja/glaive(src.loc)
-			if("The Rending Chain-Whip")
-				new /obj/item/weapon/melee/yautja/chain(src.loc)
-			if("The Piercing Hunting Sword")
-				new /obj/item/weapon/melee/yautja/sword(src.loc)
-			if("The Cleaving War-Scythe")
-				new /obj/item/weapon/melee/yautja/scythe(src.loc)
-			if("The Adaptive Combi-Stick")
-				new /obj/item/weapon/melee/yautja/combistick(src.loc)
-			if("The Fearsome Scimitars")
-				Y.scimitars = TRUE
-				Y.charge_max -= 500
+	bracers = gloves
+	if(!istype(bracers))
+		to_chat(src, SPAN_WARNING("You need to be wearing your bracers to do this."))
+		return
 
-		var/choice = mother_0
-		var/i = 0
-		while(++i <= 2)
-			switch(choice)
-				if("The Fleeting Spike Launcher")
-					new /obj/item/weapon/gun/launcher/spike(src.loc)
-				if("The Swift Plasma Pistol")
-					new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc)
-				if("The Purifying Smart-Disc")
-					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
-				if("The Formidable Plate Armor")
-					new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0,  src.client.prefs.predator_armor_material)
-				if("The Steadfast Shield")
-					new /obj/item/weapon/shield/riot/yautja(src.loc)
-			choice = mother_1
+	if(hunter_data.claimed_equipment)
+		to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
+		return
 
-		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
+	hunter_data.claimed_equipment = TRUE
+
+	switch(main_weapon)
+		if(YAUTJA_GEAR_GLAIVE)
+			equip_to_slot_if_possible(new /obj/item/weapon/melee/twohanded/yautja/glaive(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_WHIP)
+			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/chain(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_SWORD)
+			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/sword(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_SCYTHE)
+			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/scythe(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_STICK)
+			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/combistick(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_SCIMS)
+			if(bracers.wristblades_deployed)
+				bracers.wristblades_internal(usr, TRUE)
+			qdel(bracers.left_wristblades)
+			qdel(bracers.right_wristblades)
+			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
+			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
+			bracers.charge_max -= 500
+
+	for(var/choice in secondaries)
+		switch(choice)
+			if(YAUTJA_GEAR_LAUNCHER)
+				equip_to_slot_if_possible(new /obj/item/weapon/gun/launcher/spike(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
+			if(YAUTJA_GEAR_PISTOL)
+				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
+			if(YAUTJA_GEAR_DISC)
+				equip_to_slot_if_possible(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
+			if(YAUTJA_GEAR_FULL_ARMOR)
+				if(wear_suit)
+					drop_inv_item_on_ground(wear_suit)
+				equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0, src.client.prefs.predator_armor_material), WEAR_JACKET, disable_warning = TRUE)
+			if(YAUTJA_GEAR_SHIELD)
+				equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(src.loc), WEAR_BACK, disable_warning = TRUE)
+			if(YAUTJA_GEAR_DRONE)
+				equip_to_slot_if_possible(new /obj/item/falcon_drone(src.loc), WEAR_R_EAR, disable_warning = TRUE)
+
+	remove_verb(src, /mob/living/carbon/human/proc/pred_buy)

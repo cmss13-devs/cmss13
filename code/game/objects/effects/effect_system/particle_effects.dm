@@ -18,13 +18,13 @@
 	name = "fire"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "3"
-	var/life = 0.5 //In seconds
+	var/life = 0.5 SECONDS
 	mouse_opacity = 0
 
 /obj/effect/particle_effect/fire/New()
 	if(!istype(loc, /turf))
 		qdel(src)
-	extinguish()
+	addtimer(CALLBACK(src, .proc/handle_extinguish), life)
 
 	setDir(pick(cardinal))
 	SetLuminosity(3)
@@ -38,11 +38,10 @@
 	for(var/obj/structure/bed/nest/N in loc)//Nests
 		N.fire_act()
 
-/obj/effect/particle_effect/fire/proc/extinguish()
-	spawn(life * 10)
-		if (istype(loc, /turf))
-			SetLuminosity(0)
-		qdel(src)
+/obj/effect/particle_effect/fire/proc/handle_extinguish()
+	if(istype(loc, /turf))
+		SetLuminosity(0)
+	qdel(src)
 
 /obj/effect/particle_effect/fire/Crossed(mob/living/L)
 	..()

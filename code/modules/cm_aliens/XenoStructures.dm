@@ -834,11 +834,6 @@
 		to_chat(M, SPAN_XENOWARNING("It's about to burst!"))
 	return XENO_NO_DELAY_ACTION
 
-/obj/item/explosive/grenade/alien/verb_pickup()
-	if(isXeno(usr))
-		attack_alien(usr)
-	return
-
 /obj/item/explosive/grenade/alien/acid
 	name = "acid grenade"
 	desc = "Sprays acid projectiles outwards when detonated."

@@ -50,8 +50,12 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+
 		if(H.is_revivable())
 			to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
+			return
+		if(H.chestburst && H.stat != DEAD) // This isn't covered in H.is_revivable() as it returns FALSE if chestburst is TRUE
+			to_chat(user, SPAN_XENOWARNING("Let this one burst first!"))
 			return
 		if(H.spawned_corpse)
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
@@ -132,6 +136,13 @@
 	iterations -= 1
 	if(!iterations)
 		vis_contents.Cut()
+
+		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
+			if(isobj(A))
+				var/obj/O = A
+				if(O.unacidable)
+					O.forceMove(get_turf(loc))
+
 		QDEL_NULL(melting_body)
 	else
 		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
@@ -148,14 +159,19 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
+		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from \the [src]!"),
 		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+		if(new_xeno.client)
+			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
+			if(new_xeno.client?.prefs.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_xeno.client)
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_pooled_larva()

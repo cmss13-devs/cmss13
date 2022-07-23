@@ -13,6 +13,8 @@
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/talked = 0
 	var/chatWarn = 0
+	/// The last urgent ahelp that this player sent
+	COOLDOWN_DECLARE(urgent_ahelp_cooldown)
 
 		/////////
 		//OTHER//
@@ -29,6 +31,8 @@
 	var/adminhelped = 0
 
 	var/obj/screen/click_catcher/void
+
+	var/country
 
 		///////////////
 		//SOUND STUFF//

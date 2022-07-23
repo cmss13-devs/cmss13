@@ -18,6 +18,8 @@
 			admin_cancel_evacuation()
 		if("disable_shuttle_console")
 			disable_shuttle_console()
+		if("add_req_points")
+			add_req_points()
 		if("medal")
 			owner.award_medal()
 		if("pmcguns")

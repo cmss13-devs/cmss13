@@ -78,14 +78,14 @@
 /mob/living/carbon/human/getBruteLoss(var/organic_only=0)
 	var/amount = 0
 	for(var/obj/limb/O in limbs)
-		if(!(organic_only && O.status & LIMB_ROBOT))
+		if(!(organic_only && O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			amount += O.brute_dam
 	return amount
 
 /mob/living/carbon/human/getFireLoss(var/organic_only=0)
 	var/amount = 0
 	for(var/obj/limb/O in limbs)
-		if(!(organic_only && O.status & LIMB_ROBOT))
+		if(!(organic_only && O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			amount += O.burn_dam
 	return amount
 
@@ -127,7 +127,7 @@
 				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(-amount, 0, O.status & LIMB_ROBOT)
+				O.heal_damage(-amount, 0, O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			break
 
 
@@ -145,7 +145,7 @@
 				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(0, -amount, O.status & LIMB_ROBOT)
+				O.heal_damage(0, -amount, O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			break
 
 
@@ -174,7 +174,7 @@
 		if(prob(mut_prob))
 			var/list/obj/limb/candidates = list()
 			for(var/obj/limb/O in limbs)
-				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED)) continue
+				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED|LIMB_SYNTHSKIN)) continue
 				candidates |= O
 			if(candidates.len)
 				var/obj/limb/O = pick(candidates)

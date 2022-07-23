@@ -53,9 +53,17 @@
 		iff_group = user.get_id_faction_group()
 		LAZYSET(iff_group_cache, user, iff_group)
 		// Remove them from the cache if they are deleted
+		RegisterSignal(user, COMSIG_HUMAN_EQUIPPED_ITEM, .proc/handle_id_equip)
 		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/reset_iff_group_cache)
 
 	return iff_group
+
+/datum/element/bullet_trait_iff/proc/handle_id_equip(equipper, item, slot)
+	SIGNAL_HANDLER
+	if(slot == WEAR_ID)
+		reset_iff_group_cache(equipper)
+		UnregisterSignal(equipper, COMSIG_HUMAN_EQUIPPED_ITEM)
+		UnregisterSignal(equipper, COMSIG_PARENT_QDELETING)
 
 /datum/element/bullet_trait_iff/proc/reset_iff_group_cache(mob/living/carbon/human/user)
 	SIGNAL_HANDLER

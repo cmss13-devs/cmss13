@@ -5,20 +5,6 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	name = TREE_MARINE
 	flags = TREE_FLAG_MARINE
 
-	resource_icon_state = "node_marine"
-
-	resource_make_sound = 'sound/machines/resource_node/node_marine_on.ogg'
-	resource_destroy_sound = 'sound/machines/resource_node/node_marine_die_2.ogg'
-
-	resource_break_sound = 'sound/effects/metalhit.ogg'
-
-	resource_harvest_sound = 'sound/machines/resource_node/node_marine_harvest.ogg'
-
-	resource_receive_process = TRUE
-
-	var/last_pain_reduction = 0
-	var/barricade_bonus_health = 100
-
 	background_icon_locked = "marine"
 
 	var/mob/living/carbon/human/leader
@@ -55,65 +41,13 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 			if(M.faction == faction)
 				return TRUE
 		if(TREE_ACCESS_MODIFY)
-			if(M == leader)
+			if(skillcheck(M, SKILL_INTEL, SKILL_INTEL_TRAINED))
 				return TRUE
 
 	return FALSE
 
 /datum/techtree/marine/can_attack(var/mob/living/carbon/H)
 	return !ishuman(H)
-
-/datum/techtree/marine/proc/apply_barricade_health(var/obj/structure/barricade/B)
-	B.maxhealth += barricade_bonus_health
-	B.update_health(-barricade_bonus_health)
-
-#define LIGHT_OK 0
-/datum/techtree/marine/on_node_gained(var/obj/structure/resource_node/RN)
-	. = ..()
-
-	RN.SetLuminosity(8)
-
-	var/area/A = RN.controlled_area
-	if(!A)
-		return
-
-	A.requires_power = FALSE
-	A.unlimited_power = TRUE
-
-	for(var/obj/structure/machinery/light/L in A.contents)
-		L.status = LIGHT_OK
-		L.update(0)
-
-	A.update_power_channels(TRUE, TRUE, TRUE)
-
-#undef LIGHT_OK
-
-/datum/techtree/marine/on_node_lost(var/obj/structure/resource_node/RN)
-	. = ..()
-
-	RN.SetLuminosity(0)
-
-	var/area/A = RN.controlled_area
-	if(!A)
-		return
-
-	A.requires_power = TRUE
-	A.unlimited_power = FALSE
-
-	A.update_power_channels(FALSE, FALSE, FALSE)
-
-/datum/techtree/marine/on_process(var/obj/structure/resource_node/RN)
-	if(last_pain_reduction > world.time)
-		return
-
-	var/area/A = RN.controlled_area
-	if(!A)
-		return
-
-	for(var/mob/living/carbon/human/H in A)
-		H.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER) // Level 1 painkilling chem
-
-	last_pain_reduction = world.time + 1 SECONDS // Every second
 
 /datum/techtree/marine/proc/transfer_leader_to(var/mob/living/carbon/human/H)
 	if(!H)
@@ -174,10 +108,11 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 
 /obj/structure/machinery/computer/tech_control
 	name = "tech control console"
-	desc = "A console used to acquire the means to control the techtree."
+	desc = "A console used to make tech purchases."
 
 	icon_state = "techweb"
 
+	req_access = list(ACCESS_MARINE_BRIDGE)
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE
@@ -195,114 +130,48 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	attached_tree = null
 	return ..()
 
-
 // Disallow deconstructing
 /obj/structure/machinery/computer/tech_control/attackby(obj/item/I, mob/user)
 	return
 
 /obj/structure/machinery/computer/tech_control/attack_hand(var/mob/M)
 	. = ..()
+
+	if(!skillcheck(M, SKILL_INTEL, SKILL_INTEL_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
+		to_chat(M, SPAN_WARNING("You don't have the training to use \the [src]."))
+		return
+
 	if(!attached_tree)
 		return
 
-	tgui_interact(M)
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.enter_mob(usr, FALSE)
 
-/obj/structure/machinery/computer/tech_control/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "TechControl", name)
-		ui.open()
-		ui.set_autoupdate(FALSE)
-
-/obj/structure/machinery/computer/tech_control/ui_data(mob/user)
-	. = list()
-
-	var/mob/living/carbon/human/current_leader = attached_tree.leader
-	if(current_leader)
-		var/list/leaderdata = list(
-			"name" = current_leader.name,
-			"job" = current_leader.job,
-		)
-
-		var/datum/paygrade/P = GLOB.paygrades[current_leader.wear_id?.paygrade]
-		if(P)
-			leaderdata["paygrade"] = "[P.name] ([P.paygrade])"
-			leaderdata["rank"] = P.ranking
-
-		.["leader_data"] = leaderdata
-	else
-		.["leader_data"] = FALSE
-
-	var/list/userdata = list(
-		"name" = user.name,
-		"job" = user.job,
-		"is_leader" = (user == current_leader)
-	)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-
-		var/datum/paygrade/P = GLOB.paygrades[H.wear_id?.paygrade]
-		if(P)
-			userdata["paygrade"] = "[P.name] ([P.paygrade])"
-			userdata["rank"] = P.ranking
-
-	.["user_data"] = userdata
+/obj/structure/machinery/computer/view_objectives
+	name = "Intel Database Computer"
+	desc = "An USCM Intel Computer for consulting the current Intel database."
+	icon_state = "terminal1_old"
+	unslashable = TRUE
+	unacidable = TRUE
 
 
-/obj/structure/machinery/computer/tech_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
+/obj/structure/machinery/computer/view_objectives/attack_hand(mob/living/user)
+	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
+		return FALSE
+	if(!powered())
+		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		return FALSE
+	if(!intel_system)
+		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		return FALSE
+	if(user.action_busy)
+		return FALSE
 
-	if(!ishuman(usr))
-		return TRUE
+	user.mind.view_objective_memories(src)
 
-	var/mob/living/carbon/human/H = usr
-
-	switch(action)
-		if("override_leader")
-			var/mob/living/carbon/human/current_leader = attached_tree.leader
-			if(!current_leader)
-				to_chat(usr, SPAN_PURPLE("[icon2html(src)] Leadership status updated!"))
-				attached_tree.transfer_leader_to(H)
-				return TRUE
-
-			if(current_leader == H)
-				return TRUE
-
-			if(current_leader.job in attached_tree.job_cannot_be_overriden)
-				return TRUE
-
-			var/datum/paygrade/p_leader = GLOB.paygrades[current_leader.wear_id?.paygrade]
-			var/datum/paygrade/p_user = GLOB.paygrades[H.wear_id?.paygrade]
-			if(!p_user)
-				return TRUE
-
-			if(!p_leader || p_user.ranking > p_leader.ranking)
-				to_chat(usr, SPAN_PURPLE("[icon2html(src)] Leadership transfer complete!"))
-				attached_tree.transfer_leader_to(H)
-				return TRUE
-
-		if("giveup_control")
-			if(attached_tree.leader != H)
-				return TRUE
-
-			to_chat(usr, SPAN_PURPLE("[icon2html(src)] Leadership status revoked!"))
-			attached_tree.remove_leader()
-			return TRUE
-
-/datum/admins/proc/remove_marine_techtree_leader()
-	set name = "Remove Marine Techtree Leader"
-	set desc = "Remove the marine's techtree leader"
-	set category = "Admin.Game"
-
-	if(!check_rights(R_MOD))
-		return
-
-	if(tgui_alert(usr, "Are you sure you want to remove the current techtree leader?",\
-		"Remove techtree leader", list("No", "Yes")) == "No")
-		return
-
-	var/datum/techtree/marine/M = GET_TREE(TREE_MARINE)
-	M.remove_dead_leader()
-	M.remove_leader()
+/datum/techtree/marine/on_tier_change(datum/tier/oldtier)
+	if(tier.tier < 2)
+		return //No need to announce tier updates for tier 1
+	var/name = "ALMAYER DEFCON LEVEL INCREASED"
+	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [tier.tier].\n\nLEVEL [tier.tier] assets have been authorised to handle the situation."
+	marine_announcement(input, name, 'sound/AI/commandreport.ogg')

@@ -34,7 +34,7 @@
 	. += ""
 
 	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]"
+	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
 	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
@@ -133,14 +133,14 @@
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
 	if(!permissive)
-		if(is_mob_incapacitated() || lying || buckled)
+		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 	else
-		if(is_mob_incapacitated() || buckled)
+		if(is_mob_incapacitated() || buckled || evolving)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 
@@ -549,7 +549,7 @@
 	if(L.status & LIMB_DESTROYED)
 		return FALSE
 
-	if(L.status & LIMB_ROBOT)
+	if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		L.take_damage(rand(30,40), 0, 0) // just do more damage
 		visible_message(SPAN_XENOWARNING("You hear [M]'s [L.display_name] being pulled beyond its load limits!"), \
 		SPAN_XENOWARNING("[M]'s [L.display_name] begins to tear apart!"))
@@ -655,7 +655,7 @@
 
 /mob/living/carbon/Xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)
-		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!."))
+		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!"))
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target

@@ -21,14 +21,6 @@
     log_debug("Weather subsystem map holder [src] is improperly configured. Code: WSSMH01")
     return FALSE
 
-// Use our current area to decide whether or not we should affect a given atom
-/datum/weather_ss_map_holder/proc/should_affect_atom(var/atom/A)
-    if (!istype(A))
-        return FALSE
-
-    var/area/target_area = get_area(A)
-    return should_affect_area(target_area)
-
 // Should we start an event? This just deals with the logic that an event is starting
 // period, nothing to do with what the type of the event will be when its
 // eventually chosen

@@ -294,6 +294,8 @@
 						playsound(loc, "female_pain", 50)
 				else if(Primate)
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
+				else if(Pred)
+					playsound(loc, 'sound/voice/pred_pain1.ogg', 50)
 				if(player_caused)
 					start_audio_emote_cooldown()
 				track_scream(job)
@@ -334,6 +336,8 @@
 						playsound(loc, "male_scream", 50)
 					else
 						playsound(loc, "female_scream", 50)
+				else if(isYautja(src))
+					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
 				else if(has_species(src,"Monkey"))
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				if(player_caused)
@@ -505,6 +509,7 @@
 				to_chat(src, "<br><b>As a Predator, you have the following additional emotes. Tip: The *medic emote has neither a cooldown nor a visibile origin...<br><br>\
 				<span style='color: green;'>anytime</span>, \
 				<span style='color: green;'>click</span>, \
+				<span style='color: green;'>click2</span>, \
 				<span style='color: green;'>helpme</span>, \
 				<span style='color: green;'>iseeyou</span>, \
 				<span style='color: green;'>itsatrap</span>, \
@@ -515,6 +520,10 @@
 				<span style='color: green;'>femalescream</span>, \
 				<span style='color: green;'>overhere</span>, \
 				<span style='color: green;'>turnaround</span>, \
+				<span style='color: green;'>aliengrowl</span>, \
+				<span style='color: green;'>alienhelp</span>, \
+				<span style='color: green;'>comeonout</span>, \
+				<span style='color: green;'>overthere</span>, \
 				<span style='color: green;'>roar</span></b><br>")
 			if (Primate)
 				to_chat(src, "<br><b>As a Primate, you have the following additional emotes.<br><br>\
@@ -587,15 +596,52 @@
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"
 				m_type = 1
-				spawn(2)
-					if(rand(0,100) < 50)
-						playsound(src.loc, 'sound/voice/pred_roar1.ogg', 50, 1)
+				spawn(3)
+					if(prob(50))
+						playsound(src.loc, 'sound/voice/pred_roar1.ogg', 50,1)
 					else
-						playsound(src.loc, 'sound/voice/pred_roar2.ogg', 50, 1)
+						playsound(src.loc, 'sound/voice/pred_roar2.ogg', 50,1)
+		if("roar2")
+			if(Pred && src.loc)
+				message = "<B>[src] roars!</b>"
+				m_type = 1
+				playsound(src.loc, 'sound/voice/pred_roar3.ogg', 50,1)
 		if ("turnaround")
 			if(Pred && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/pred_turnaround.ogg', 25, 0)
+		if("click2")
+			if(Pred && src.loc)
+				m_type = 1
+				spawn(2)
+					if(prob(50))
+						playsound(src.loc, 'sound/voice/pred_click3.ogg', 50)
+					else
+						playsound(src.loc, 'sound/voice/pred_click4.ogg', 50)
+		if("aliengrowl")
+			if(Pred && src.loc)
+				m_type = 1
+				spawn(2)
+					if(prob(50))
+						playsound(src.loc, 'sound/voice/alien_growl1.ogg', 50)
+					else
+						playsound(src.loc, 'sound/voice/alien_growl2.ogg', 50)
+		if("alienhelp")
+			if(Pred && src.loc)
+				m_type = 1
+				spawn(2)
+					if(prob(50))
+						playsound(src.loc, 'sound/voice/alien_help1.ogg', 50)
+					else
+						playsound(src.loc, 'sound/voice/alien_help2.ogg', 50)
+		if("comeonout")
+			if(Pred && src.loc)
+				m_type = 1
+				playsound(loc, 'sound/voice/pred_come_on_out.ogg', 50)
+		if("overthere")
+			if(Pred && src.loc)
+				m_type = 1
+				playsound(loc, 'sound/voice/pred_over_there.ogg', 50)
 
 		//working joe emotes
 		if ("alwaysknow")

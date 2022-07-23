@@ -165,9 +165,9 @@
 
 	var/datum/custom_hud/ui_datum
 	if(client)
-		ui_datum = custom_huds_list[client.prefs.UI_style]
+		ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 	else
-		ui_datum = custom_huds_list["midnight"]
+		ui_datum = GLOB.custom_huds_list[HUD_MIDNIGHT]
 
 	var/is_bleeding = is_bleeding()
 	if(is_bleeding)

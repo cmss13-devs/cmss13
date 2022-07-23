@@ -9,6 +9,7 @@
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
+	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -122,7 +123,7 @@
 				evolution_threshold = 500
 			//Other tiers (T3, Queen, etc.) can't evolve anyway
 
-	resin_build_order = GLOB.resin_build_order_default
+	resin_build_order = GLOB.resin_build_order_drone
 
 /client/var/cached_xeno_playtime
 
@@ -253,6 +254,10 @@
 	var/list/allies = list()
 
 	var/list/resin_marks = list()
+
+	var/list/banished_ckeys = list()
+
+	var/hivecore_cooldown = FALSE
 
 /datum/hive_status/New()
 	mutators.hive = src
@@ -772,6 +777,8 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
+	hivecore_cooldown = FALSE
+	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++
@@ -798,6 +805,8 @@
 	return faction_is_ally(C.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction)
+	if(faction == internal_faction)
+		return TRUE
 	if(!living_xeno_queen)
 		return FALSE
 

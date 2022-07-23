@@ -338,16 +338,17 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(href_list["fire_mission"])
 		if(shuttle.moving_status != SHUTTLE_IDLE) return
 		if(shuttle.locked) return
-		shuttle.transit_gun_mission = !shuttle.transit_gun_mission
-		if(shuttle.transit_gun_mission)
+		if(!shuttle.transit_gun_mission)
 			var/mob/M = usr
 			if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT)) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
 				to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 				return
 			else
 				to_chat(usr, SPAN_NOTICE("You upload a flight plan for a low altitude flyby above the planet."))
+				shuttle.transit_gun_mission = TRUE
 		else
 			to_chat(usr, SPAN_NOTICE("You reset the flight plan to a transport mission between the Almayer and the planet."))
+			shuttle.transit_gun_mission = FALSE
 
 	if(href_list["lockdown"])
 		if(shuttle.door_override)

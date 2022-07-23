@@ -432,7 +432,6 @@
 	if(istype(W) && !W.heat_source && !W.burnt)
 		W.light_match()
 
-
 /obj/item/storage/box/quickclot
 	name = "box of quickclot injectors"
 	desc = "Contains quickclot autoinjectors."
@@ -687,7 +686,7 @@
 	icon_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = 0
 	use_sound = "rip"
 	var/isopened = 0
@@ -703,6 +702,9 @@
 	name = "[initial(name)] ([main])"
 	//1 in 3 chance of getting a fortune cookie
 	var/cookie = rand(1,3)
+	var/matches_type = rand(1, 5)
+	if(cookie == 1)
+		storage_slots = 8
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, main)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
@@ -710,6 +712,18 @@
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
 	if(cookie == 1)
 		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
+	new /obj/item/storage/fancy/cigarettes/lucky_strikes_4(src)
+	switch(matches_type)
+		if(1)
+			new /obj/item/storage/fancy/cigar/matchbook(src)
+		if(2)
+			new /obj/item/storage/fancy/cigar/matchbook/koorlander(src)
+		if(3)
+			new /obj/item/storage/fancy/cigar/matchbook/exec_select(src)
+		if(4)
+			new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
+		if(5)
+			new /obj/item/storage/fancy/cigar/matchbook/brown(src)
 
 /obj/item/storage/box/MRE/Initialize()
 	. = ..()

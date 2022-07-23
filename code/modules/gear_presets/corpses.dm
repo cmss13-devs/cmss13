@@ -471,3 +471,42 @@
 /datum/equipment_preset/corpse/ua_riot/burst
 	name = "Corpse - Burst UA Officer"
 	xenovictim = TRUE
+
+//Hostile Faction Corpse
+/datum/equipment_preset/corpse/clf
+	name = "Corpse - Colonial Liberation Front Soldier"
+	assignment = "Colonial Liberation Front Soldier"
+	idtype = /obj/item/card/id/silver
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/clf/load_gear(mob/living/carbon/human/H)
+	
+	spawn_rebel_uniform(H)
+	spawn_rebel_suit(H)
+	spawn_rebel_helmet(H)
+	spawn_rebel_shoes(H)
+	spawn_rebel_gloves(H)
+	spawn_rebel_belt(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+
+/datum/equipment_preset/corpse/clf/burst
+	name = "Corpse - Colonial Liberation Front Soldier"
+	xenovictim = TRUE

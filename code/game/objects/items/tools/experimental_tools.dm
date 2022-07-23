@@ -252,7 +252,6 @@
 
 	var/mob/living/carbon/human/H = loc
 	if(H.wear_suit != src)
-		message_admins("killed process off non loc")
 		end_cpr()
 		return PROCESS_KILL
 
@@ -264,7 +263,7 @@
 	if(world.time > last_pump + 10 SECONDS)
 		last_pump = world.time
 		if(H.stat == UNCONSCIOUS)
-			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
+			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
 			H.apply_damage(-suff, OXY)
 			H.updatehealth()
 			H.affected_message(H,

@@ -3,7 +3,10 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -64,6 +67,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "cQ" = (
@@ -98,6 +105,10 @@
 /area/strata/ag/interior/outpost/engi)
 "dx" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -133,12 +144,15 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "dZ" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "ek" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -178,6 +192,10 @@
 /area/strata/ag/interior/outpost/engi)
 "eH" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -188,6 +206,7 @@
 "eN" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
+<<<<<<< master
 "fa" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -197,6 +216,8 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -292,7 +313,10 @@
 "hX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing/bullet,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -314,12 +338,15 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "im" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "ix" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
@@ -378,10 +405,15 @@
 /area/strata/ag/interior/outpost/security)
 "jQ" = (
 /obj/effect/decal/cleanable/blood/oil,
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
+=======
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -396,12 +428,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "ko" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "kA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost,
@@ -410,6 +445,10 @@
 /obj/item/storage/box/ids,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -453,6 +492,10 @@
 "lO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -474,7 +517,10 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -489,7 +535,10 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -507,6 +556,7 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "ne" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/explosive/mine/clf/active{
@@ -516,6 +566,8 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "nH" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -527,9 +579,12 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -552,7 +607,10 @@
 	dir = 1;
 	pixel_y = 20
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -578,6 +636,10 @@
 /area/strata/ag/interior/outpost/security)
 "po" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -626,7 +688,10 @@
 /area/strata/ag/interior/outpost/security)
 "qb" = (
 /obj/item/stool,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -693,6 +758,10 @@
 /area/strata/ag/interior/outpost/security)
 "rC" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -719,6 +788,7 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+<<<<<<< master
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
@@ -729,6 +799,10 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+=======
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -773,13 +847,20 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/engi)
 "tv" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -831,6 +912,7 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "uR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -840,6 +922,8 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "vi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
@@ -906,7 +990,10 @@
 	dir = 9
 	},
 /obj/item/ammo_magazine/rifle/type71,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -980,6 +1067,10 @@
 "yM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "yQ" = (
@@ -992,6 +1083,7 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "yR" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
@@ -999,6 +1091,8 @@
 	icon_state = "damaged3"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "yT" = (
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -1094,10 +1188,13 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "BG" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1190,6 +1287,7 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "Fl" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -1200,6 +1298,8 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "FK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/corpsespawner/russian,
@@ -1240,6 +1340,10 @@
 /area/strata/ag/interior/outpost/security)
 "Gb" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1285,8 +1389,13 @@
 /area/strata/ag/interior/outpost/security)
 "Gr" = (
 /obj/effect/decal/cleanable/blood/oil,
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active,
+=======
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil/cut,
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1307,6 +1416,10 @@
 /area/strata/ag/interior/outpost/security)
 "Gt" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1330,6 +1443,10 @@
 /area/strata/ag/interior/outpost/security)
 "Hh" = (
 /obj/structure/surface/table/reinforced/prison,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1341,7 +1458,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1392,7 +1512,10 @@
 "IZ" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/ammo_casing/bullet,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1509,12 +1632,15 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "NU" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "OJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/rods,
@@ -1535,6 +1661,7 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "Pq" = (
 /obj/structure/window_frame/strata,
+<<<<<<< master
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "Pv" = (
@@ -1543,6 +1670,11 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+>>>>>>> reimported backup
 "PJ" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1644,6 +1776,10 @@
 /area/strata/ag/interior/outpost/security)
 "Rt" = (
 /obj/effect/decal/cleanable/blood/oil,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/strata{
 	dir = 10;
@@ -1720,9 +1856,12 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -1732,7 +1871,10 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1765,17 +1907,23 @@
 	icon_state = "metal_1";
 	dir = 1
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "Ub" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "Uh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1800,10 +1948,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "Wv" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "WE" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -1862,6 +2013,7 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 "YG" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -1872,6 +2024,8 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+=======
+>>>>>>> reimported backup
 "YN" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/barricade/metal/wired{
@@ -2044,7 +2198,11 @@ Gb
 qa
 rK
 fC
+<<<<<<< master
 NU
+=======
+yT
+>>>>>>> reimported backup
 Nr
 ym
 db
@@ -2115,7 +2273,11 @@ Gk
 qn
 xu
 mk
+<<<<<<< master
 Pv
+=======
+uh
+>>>>>>> reimported backup
 Ch
 OW
 vP
@@ -2130,7 +2292,11 @@ Gt
 Sd
 Sf
 Gk
+<<<<<<< master
 Pv
+=======
+uh
+>>>>>>> reimported backup
 uh
 fr
 uh
@@ -2154,7 +2320,11 @@ lz
 iM
 tX
 OW
+<<<<<<< master
 uR
+=======
+LS
+>>>>>>> reimported backup
 hN
 gv
 SF
@@ -2194,7 +2364,11 @@ wY
 cp
 nW
 RT
+<<<<<<< master
 BG
+=======
+hV
+>>>>>>> reimported backup
 NE
 "}
 (13,1,1) = {"
@@ -2205,7 +2379,11 @@ zV
 DI
 ID
 DI
+<<<<<<< master
 dZ
+=======
+PJ
+>>>>>>> reimported backup
 yT
 Zz
 CC
@@ -2216,19 +2394,33 @@ zQ
 ui
 "}
 (14,1,1) = {"
+<<<<<<< master
 fa
 Sd
 yT
 dZ
 dZ
 im
+=======
+WP
+Sd
+yT
+PJ
+PJ
+DI
+>>>>>>> reimported backup
 pq
 ui
 LZ
 wx
 iT
 yM
+<<<<<<< master
 ko
+yT
+>>>>>>> reimported backup
+=======
+yT
 yT
 >>>>>>> reimported backup
 yT
@@ -2247,14 +2439,24 @@ Yf
 hV
 Uh
 cp
+<<<<<<< master
 YG
 Fl
 YG
+=======
+Qs
+Gh
+Qs
+>>>>>>> reimported backup
 cp
 "}
 (16,1,1) = {"
 qR
+<<<<<<< master
 Pv
+=======
+uh
+>>>>>>> reimported backup
 zz
 OW
 OW
@@ -2294,9 +2496,15 @@ dL
 sk
 OW
 qS
+<<<<<<< master
 Ub
 Ik
 Ub
+=======
+Ik
+Ik
+Ik
+>>>>>>> reimported backup
 OW
 FO
 Hj
@@ -2338,7 +2546,11 @@ od
 yT
 QA
 PJ
+<<<<<<< master
 yR
+=======
+ID
+>>>>>>> reimported backup
 FT
 rC
 "}
@@ -2352,7 +2564,11 @@ nH
 Ut
 hV
 Gd
+<<<<<<< master
 Ub
+=======
+Ik
+>>>>>>> reimported backup
 hN
 Sp
 mP
@@ -2368,7 +2584,11 @@ qR
 IR
 IB
 Ro
+<<<<<<< master
 Wv
+=======
+hV
+>>>>>>> reimported backup
 Jl
 Ik
 cp
@@ -2393,7 +2613,11 @@ lo
 Ik
 nN
 lx
+<<<<<<< master
 ne
+=======
+nP
+>>>>>>> reimported backup
 Ik
 "}
 (24,1,1) = {"

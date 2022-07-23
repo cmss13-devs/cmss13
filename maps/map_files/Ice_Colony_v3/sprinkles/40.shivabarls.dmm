@@ -166,9 +166,20 @@
 /area/shiva/interior/bar)
 "hR" = (
 /obj/structure/surface/table/woodentable,
+<<<<<<< master
 /obj/item/storage/firstaid/adv{
 	pixel_y = -4;
 	pixel_x = -3
+=======
+/obj/item/storage/firstaid/surgical{
+	pixel_x = -7
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 10
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 10
+>>>>>>> reimported backup
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -485,7 +496,26 @@
 /area/shiva/interior/bar)
 "nU" = (
 /obj/structure/surface/table/woodentable,
+<<<<<<< master
 /obj/item/storage/firstaid/regular,
+=======
+/obj/item/storage/firstaid{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+>>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -617,20 +647,44 @@
 	pixel_x = 8;
 	pixel_y = 12
 	},
+<<<<<<< master
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = -8;
 	pixel_y = -5
+=======
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
 	},
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 8;
 	pixel_y = 12
 >>>>>>> reimported backup
 	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 8;
+	pixel_y = 12
+<<<<<<< master
+>>>>>>> reimported backup
+=======
+>>>>>>> reimported backup
+	},
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = -8;
 	pixel_y = -5
 	},
+<<<<<<< master
 /obj/item/ammo_magazine/shotgun/incendiary,
+=======
+/obj/item/weapon/gun/shotgun/double{
+	pixel_x = -16;
+	pixel_y = 10
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_x = 20;
+	pixel_y = -5
+	},
+>>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "ud" = (
@@ -751,9 +805,15 @@
 	icon_state = "xtracks";
 	tag = "icon-xtracks"
 	},
+<<<<<<< master
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_2"
+=======
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	dir = 1
+>>>>>>> reimported backup
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
@@ -829,6 +889,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/wood/large_stack,
 /obj/item/stack/sheet/wood/large_stack,
+<<<<<<< master
 /obj/item/tool/weldpack{
 	pixel_y = -6;
 	pixel_x = -8
@@ -841,6 +902,11 @@
 	pixel_y = 9;
 	pixel_x = -12
 	},
+=======
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+>>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Cm" = (
@@ -854,6 +920,10 @@
 /area/shiva/interior/bar)
 "Cv" = (
 /obj/structure/window_frame/colony/reinforced,
+<<<<<<< master
+=======
+/obj/item/stack/rods,
+>>>>>>> reimported backup
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -884,6 +954,7 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
+<<<<<<< master
 "DZ" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -891,6 +962,8 @@
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
+=======
+>>>>>>> reimported backup
 "Eb" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1018,6 +1091,10 @@
 "Hb" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/plasteel/large_stack,
+<<<<<<< master
+=======
+/obj/item/stack/sheet/plasteel/large_stack,
+>>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Hf" = (
@@ -1112,6 +1189,18 @@
 /area/shiva/interior/bar)
 "KF" = (
 /obj/structure/surface/table/woodentable,
+<<<<<<< master
+=======
+/obj/item/storage/firstaid/fire{
+	pixel_x = -7
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 11
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -7
+	},
+>>>>>>> reimported backup
 /obj/item/storage/firstaid/o2{
 	pixel_x = 11
 	},
@@ -1201,10 +1290,13 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
+<<<<<<< master
 "Mu" = (
 /obj/structure/barricade/snow,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
+=======
+>>>>>>> reimported backup
 "MP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva,
@@ -1220,7 +1312,14 @@
 	},
 /area/shiva/interior/bar)
 "Nr" = (
+<<<<<<< master
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+=======
+/obj/structure/machinery/chem_dispenser/beer{
+	pixel_y = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+>>>>>>> reimported backup
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "NN" = (
@@ -1366,7 +1465,11 @@
 "Vg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/metal/large_stack,
+<<<<<<< master
 /obj/effect/landmark/wo_supplies/storage/mines,
+=======
+/obj/item/stack/sheet/metal/large_stack,
+>>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Vp" = (
@@ -1465,6 +1568,10 @@
 /area/shiva/interior/bar)
 "ZG" = (
 /obj/structure/window_frame/colony/reinforced,
+<<<<<<< master
+=======
+/obj/item/shard,
+>>>>>>> reimported backup
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "ZX" = (
@@ -1534,7 +1641,11 @@ lf
 "}
 (4,1,1) = {"
 TD
+<<<<<<< master
 ZG
+=======
+CF
+>>>>>>> reimported backup
 fz
 wk
 md
@@ -1677,9 +1788,15 @@ KC
 ls
 "}
 (12,1,1) = {"
+<<<<<<< master
 Ja
 yz
 DZ
+=======
+XY
+yz
+Em
+>>>>>>> reimported backup
 if
 uL
 Eb
@@ -1713,7 +1830,11 @@ ei
 ls
 "}
 (14,1,1) = {"
+<<<<<<< master
 Mu
+=======
+ni
+>>>>>>> reimported backup
 yz
 zi
 jM
@@ -1767,7 +1888,11 @@ ls
 ls
 "}
 (17,1,1) = {"
+<<<<<<< master
 ZG
+=======
+CF
+>>>>>>> reimported backup
 LX
 Vg
 Ci
@@ -1785,7 +1910,11 @@ jG
 ls
 "}
 (18,1,1) = {"
+<<<<<<< master
 ZG
+=======
+yf
+>>>>>>> reimported backup
 ll
 HA
 rB
@@ -1797,7 +1926,11 @@ jM
 jM
 jM
 hk
+<<<<<<< master
 ZG
+=======
+CF
+>>>>>>> reimported backup
 PK
 ve
 jG
@@ -1815,14 +1948,22 @@ Bl
 jM
 HA
 hk
+<<<<<<< master
 ZG
+=======
+yf
+>>>>>>> reimported backup
 PK
 XD
 ve
 "}
 (20,1,1) = {"
 Ja
+<<<<<<< master
 ZG
+=======
+yf
+>>>>>>> reimported backup
 FH
 rx
 lc
@@ -1833,14 +1974,22 @@ qi
 lQ
 tV
 LT
+<<<<<<< master
 ZG
+=======
+CF
+>>>>>>> reimported backup
 jE
 XD
 lp
 "}
 (21,1,1) = {"
 Ja
+<<<<<<< master
 ZG
+=======
+CF
+>>>>>>> reimported backup
 kB
 ta
 rB
@@ -1851,7 +2000,11 @@ jM
 ud
 jM
 sU
+<<<<<<< master
 ZG
+=======
+yf
+>>>>>>> reimported backup
 Hu
 XD
 rq
@@ -1878,9 +2031,15 @@ AR
 XY
 ls
 ls
+<<<<<<< master
 ZG
 ZG
 ZG
+=======
+yf
+CF
+yf
+>>>>>>> reimported backup
 ls
 ls
 yM
@@ -1900,11 +2059,19 @@ II
 tt
 tt
 NT
+<<<<<<< master
 ZG
 EB
 mV
 LO
 ZG
+=======
+yf
+EB
+mV
+LO
+yf
+>>>>>>> reimported backup
 Hu
 rq
 rq

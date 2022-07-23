@@ -498,7 +498,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		if(handfuls)
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 			if(AM)
-				severity = round(AM.current_rounds / 50)
+				severity = round(AM.current_rounds / 40)
 		else
 			for(var/obj/item/ammo_magazine/AM in contents)
 				severity += AM.current_rounds

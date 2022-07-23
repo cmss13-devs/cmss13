@@ -394,6 +394,9 @@
 
 		name = "[name_prefix]Young Queen"
 
+	//Update linked data so they show up properly
+	change_real_name(src, name)
+
 /mob/living/carbon/Xenomorph/Queen/proc/make_combat_effective()
 	queen_aged = TRUE
 

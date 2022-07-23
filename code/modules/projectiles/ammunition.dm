@@ -502,7 +502,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		else
 			for(var/obj/item/ammo_magazine/AM in contents)
 				severity += AM.current_rounds
-			severity = round(severity / 200)
+			severity = round(severity / 150)
 		//we need a lot of bullets to produce an explosion. Different scaling because of very different ammo counts
 
 		if(severity > 0)

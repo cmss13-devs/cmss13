@@ -106,12 +106,18 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "gp" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "hj" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
@@ -119,6 +125,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "iM" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 8
@@ -131,8 +140,11 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/colony/south_medbay_road)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "jA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/wo_supplies/storage/webbing,
@@ -166,11 +178,17 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -186,6 +204,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "lU" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/wood/large_stack,
@@ -194,8 +215,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "me" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/m16/ap{
@@ -266,6 +290,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "pv" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -277,8 +304,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "pw" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -294,9 +324,13 @@
 /area/lv624/lazarus/hydroponics)
 "pK" = (
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -381,14 +415,20 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "tj" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 1
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "vh" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -444,9 +484,13 @@
 "wj" = (
 /obj/structure/surface/table,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/sheet/metal/large_stack,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/stack/sheet/metal/large_stack,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -464,10 +508,14 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "xs" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
+<<<<<<< master
 "xH" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -478,6 +526,8 @@
 /area/lv624/lazarus/hydroponics)
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "xX" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_closed_1";
@@ -575,9 +625,13 @@
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -638,6 +692,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Gy" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/welding{
@@ -656,8 +713,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "GS" = (
 /turf/open/floor{
 	dir = 8;
@@ -673,6 +733,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Ht" = (
 /obj/structure/surface/table,
 /obj/item/explosive/mine/clf,
@@ -685,8 +748,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "HU" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -757,14 +823,20 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/north_nexus_road)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Ks" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Kt" = (
 /obj/structure/surface/table,
 /obj/item/ammo_box/magazine/M16,
@@ -829,6 +901,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "NX" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -840,8 +915,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "OJ" = (
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/attachment,
@@ -970,10 +1048,15 @@
 /area/lv624/lazarus/hydroponics)
 "RZ" = (
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -1074,6 +1157,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "WZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /obj/item/explosive/mine/clf/active{
@@ -1081,6 +1167,7 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
+<<<<<<< master
 "Xh" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -1091,6 +1178,8 @@
 /area/lv624/lazarus/hydroponics)
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Xk" = (
 /turf/open/floor{
 	dir = 9;
@@ -1156,6 +1245,7 @@ DE
 DE
 DE
 <<<<<<< master
+<<<<<<< master
 iM
 WZ
 Ec
@@ -1169,15 +1259,24 @@ jn
 =======
 DE
 HU
+=======
+iM
+WZ
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ec
 Ec
-kV
-kV
+pv
+pv
 Ec
 Ec
+<<<<<<< master
 Cb
 Cb
 >>>>>>> reimported backup
+=======
+jn
+jn
+>>>>>>> updated all maps to have CLF Mines and corpses
 Cb
 rK
 Tx
@@ -1203,10 +1302,14 @@ Tx
 (4,1,1) = {"
 DE
 <<<<<<< master
+<<<<<<< master
 tj
 =======
 DE
 >>>>>>> reimported backup
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 XF
 nw
 Fn
@@ -1229,6 +1332,7 @@ Tx
 (5,1,1) = {"
 DE
 <<<<<<< master
+<<<<<<< master
 tj
 Ew
 WY
@@ -1240,6 +1344,9 @@ Xk
 sn
 =======
 DE
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ew
 WY
 Tu
@@ -1254,10 +1361,14 @@ HW
 cF
 SQ
 <<<<<<< master
+<<<<<<< master
 xs
 =======
 Tx
 >>>>>>> reimported backup
+=======
+xs
+>>>>>>> updated all maps to have CLF Mines and corpses
 Tx
 "}
 (6,1,1) = {"
@@ -1288,14 +1399,19 @@ Tx
 "}
 (7,1,1) = {"
 <<<<<<< master
+<<<<<<< master
 tj
 =======
 DE
 >>>>>>> reimported backup
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 Jj
 WY
 Xk
 Xk
+<<<<<<< master
 <<<<<<< master
 Ht
 LS
@@ -1314,21 +1430,28 @@ DE
 NX
 =======
 wj
+=======
+Ht
+>>>>>>> updated all maps to have CLF Mines and corpses
 LS
 ne
 Rw
-wj
-wj
+Gy
+lU
 Xk
 Jp
 Ql
 Gs
-vN
+gp
 "}
 (8,1,1) = {"
 DE
+<<<<<<< master
 kV
 >>>>>>> reimported backup
+=======
+NX
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ph
 Xk
 Xk
@@ -1347,11 +1470,15 @@ vN
 (9,1,1) = {"
 DE
 <<<<<<< master
+<<<<<<< master
 NX
 Ph
 LN
 =======
 kV
+=======
+NX
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ph
 Cj
 >>>>>>> reimported backup
@@ -1374,6 +1501,7 @@ vN
 "}
 (10,1,1) = {"
 <<<<<<< master
+<<<<<<< master
 tj
 wa
 WY
@@ -1381,6 +1509,9 @@ Xk
 Xh
 =======
 DE
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 wa
 WY
 Xk
@@ -1397,10 +1528,14 @@ XR
 Ql
 bR
 <<<<<<< master
+<<<<<<< master
 gp
 =======
 vN
 >>>>>>> reimported backup
+=======
+gp
+>>>>>>> updated all maps to have CLF Mines and corpses
 "}
 (11,1,1) = {"
 DE
@@ -1423,10 +1558,14 @@ vN
 (12,1,1) = {"
 DE
 <<<<<<< master
+<<<<<<< master
 tj
 =======
 DE
 >>>>>>> reimported backup
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 qC
 bY
 Xk
@@ -1446,17 +1585,25 @@ Xk
 Cj
 Ql
 cs
+<<<<<<< master
 vN
 >>>>>>> reimported backup
+=======
+gp
+>>>>>>> updated all maps to have CLF Mines and corpses
 vN
 "}
 (13,1,1) = {"
 DE
 <<<<<<< master
+<<<<<<< master
 tj
 =======
 DE
 >>>>>>> reimported backup
+=======
+tj
+>>>>>>> updated all maps to have CLF Mines and corpses
 SQ
 Pe
 wx
@@ -1501,18 +1648,6 @@ DE
 DE
 DE
 <<<<<<< master
-Ks
-Ks
-=======
-DE
-DE
->>>>>>> reimported backup
-Ec
-Ew
-kV
-kV
-Bj
-Ec
 <<<<<<< master
 Ks
 Ks
@@ -1520,6 +1655,28 @@ Ks
 DE
 DE
 >>>>>>> reimported backup
+=======
+Ks
+Ks
+>>>>>>> updated all maps to have CLF Mines and corpses
+Ec
+Ew
+kV
+kV
+Bj
+Ec
+<<<<<<< master
+<<<<<<< master
+Ks
+Ks
+=======
+DE
+DE
+>>>>>>> reimported backup
+=======
+Ks
+Ks
+>>>>>>> updated all maps to have CLF Mines and corpses
 DE
 Km
 vN

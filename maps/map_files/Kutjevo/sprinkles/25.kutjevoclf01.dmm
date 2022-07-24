@@ -20,6 +20,7 @@
 	},
 /area/kutjevo/interior/construction)
 <<<<<<< master
+<<<<<<< master
 "as" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 8
@@ -30,6 +31,19 @@
 /area/kutjevo/interior/construction)
 =======
 >>>>>>> reimported backup
+=======
+"aA" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/complex_border/med_rec)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "aG" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
@@ -152,13 +166,19 @@
 	pixel_y = 7
 	},
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "dO" = (
@@ -287,10 +307,14 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "iM" = (
@@ -533,6 +557,16 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+"ua" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/circuitboard/airlock,
+/obj/item/stack/cable_coil,
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction)
 "uc" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
@@ -651,6 +685,14 @@
 "yc" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
+"yk" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 4
+	},
+/area/kutjevo/interior/construction)
 "zt" = (
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/kutjevo/colors/purple,
@@ -816,6 +858,8 @@
 =======
 "FP" = (
 /obj/effect/landmark/corpsespawner/colonist,
+/obj/item/weapon/gun/pistol/holdout,
+/obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 >>>>>>> reimported backup
@@ -937,6 +981,13 @@
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction)
+"MZ" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/item/explosive/mine/clf/active,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/med_rec)
 "Nl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -28
@@ -971,6 +1022,14 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
+"Pw" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/circuitboard/airlock,
+/obj/item/stack/cable_coil,
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "PP" = (
 /obj/structure/closet/crate/freezer/rations,
@@ -1188,6 +1247,12 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/foremans_office)
+"Wm" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/construction)
 "Ww" = (
 /obj/structure/platform/kutjevo{
 	dir = 4
@@ -1386,8 +1451,12 @@ TK
 TK
 Cx
 hv
+<<<<<<< master
 Fv
 >>>>>>> reimported backup
+=======
+Wm
+>>>>>>> updated all maps to have CLF Mines and corpses
 hp
 tN
 IB
@@ -1425,6 +1494,7 @@ qn
 cz
 Ed
 <<<<<<< master
+<<<<<<< master
 oo
 Fv
 sx
@@ -1432,6 +1502,9 @@ nn
 Yz
 =======
 ln
+=======
+Pw
+>>>>>>> updated all maps to have CLF Mines and corpses
 Fv
 sx
 nn
@@ -1486,10 +1559,14 @@ JV
 hv
 KQ
 <<<<<<< master
+<<<<<<< master
 as
 =======
 HE
 >>>>>>> reimported backup
+=======
+yk
+>>>>>>> updated all maps to have CLF Mines and corpses
 IR
 IB
 Ro
@@ -1499,10 +1576,14 @@ Ft
 fi
 fi
 <<<<<<< master
+<<<<<<< master
 lY
 =======
 ln
 >>>>>>> reimported backup
+=======
+ua
+>>>>>>> updated all maps to have CLF Mines and corpses
 fi
 fi
 fi
@@ -1538,10 +1619,14 @@ ih
 ad
 hv
 <<<<<<< master
+<<<<<<< master
 Sn
 =======
 IB
 >>>>>>> reimported backup
+=======
+MZ
+>>>>>>> updated all maps to have CLF Mines and corpses
 ri
 Ro
 "}
@@ -1642,10 +1727,14 @@ DU
 Ed
 ln
 <<<<<<< master
+<<<<<<< master
 FB
 =======
 cy
 >>>>>>> reimported backup
+=======
+aA
+>>>>>>> updated all maps to have CLF Mines and corpses
 wv
 FP
 "}

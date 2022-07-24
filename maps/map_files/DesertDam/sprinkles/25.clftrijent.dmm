@@ -58,16 +58,26 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 <<<<<<< master
+<<<<<<< master
 "bD" = (
 /obj/effect/spawner/random/attachment,
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+"bD" = (
+/obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 7;
 	icon_state = "warning"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "bJ" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -127,6 +137,9 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "cq" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/weapon/melee/twohanded/lungemine,
@@ -135,8 +148,11 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "cs" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/floor{
@@ -145,11 +161,15 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "cw" = (
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/weapon/melee/katana,
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt{
 	icon_state = "tile"
+<<<<<<< master
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "cz" = (
@@ -182,13 +202,25 @@
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
-/area/desert_dam/interior/dam_interior/atmos_storage)
+/area/desert_dam/exterior/valley/south_valley_dam)
 "cz" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/item/weapon/melee/baseballbat/metal,
 /obj/effect/decal/cleanable/blood,
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+/obj/item/weapon/gun/smg/fp9000{
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -204,9 +236,12 @@
 /obj/structure/window_frame/colony,
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -273,17 +308,23 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "dq" = (
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
+<<<<<<< master
 =======
 /obj/structure/window_frame/colony,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "du" = (
 /turf/open/desert/dirt{
 	dir = 10;
@@ -337,6 +378,7 @@
 	},
 /obj/effect/landmark/corpsespawner/engineer,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/m16{
 	pixel_x = 5;
@@ -346,6 +388,13 @@
 /obj/item/weapon/melee/baseballbat/metal,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -409,6 +458,7 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/effect/landmark/corpsespawner/engineer,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/hunting,
 /obj/item/ammo_magazine/rifle/hunting,
@@ -420,6 +470,15 @@
 /obj/item/weapon/melee/baseballbat/metal,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
@@ -454,11 +513,17 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 <<<<<<< master
+<<<<<<< master
 /obj/item/ammo_box/magazine/shotgun/buckshot,
 /obj/item/ammo_box/magazine/shotgun,
 /obj/item/ammo_magazine/shotgun/incendiary,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/ammo_box/magazine/shotgun/buckshot,
+/obj/item/ammo_box/magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/incendiary,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -484,6 +549,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "fL" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt{
 	icon_state = "tile"
@@ -506,6 +572,13 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/asphalt{
+	icon_state = "tile"
+	},
+/area/desert_dam/exterior/valley/south_valley_dam)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "fM" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -549,6 +622,9 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "gu" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
@@ -557,8 +633,11 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "gw" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -583,6 +662,7 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "gS" = (
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
 	dir = 1;
@@ -594,12 +674,19 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
+=======
+/obj/item/stack/sheet/wood,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
-	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	dir = 1;
+	icon_state = "darkyellow2"
 	},
+<<<<<<< master
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/area/desert_dam/interior/dam_interior/smes_main)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "gU" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -630,9 +717,12 @@
 "hh" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "hk" = (
@@ -651,6 +741,9 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "hr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -665,16 +758,22 @@
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 "ht" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active,
 =======
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ht" = (
-/obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -687,6 +786,7 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 "hH" = (
+<<<<<<< master
 <<<<<<< master
 /obj/item/stack/tile/plasteel,
 /turf/open/floor{
@@ -705,6 +805,13 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/item/stack/tile/plasteel,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "hJ" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -760,13 +867,26 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 =======
 "iO" = (
-/obj/structure/bed,
-/turf/open/floor/prison{
-	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/item/tool/weldpack,
+/obj/item/tool/weldingtool{
+	pixel_y = -9;
+	pixel_x = 11
 	},
+<<<<<<< master
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/item/clothing/glasses/welding{
+	pixel_y = 9;
+	pixel_x = -12
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "jb" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -872,9 +992,12 @@
 "ki" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -894,9 +1017,13 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/nailgun,
 <<<<<<< master
+<<<<<<< master
 /obj/item/clothing/accessory/storage/webbing,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/clothing/accessory/storage/webbing,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -918,6 +1045,9 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "kY" = (
 /obj/item/stack/tile/plasteel,
 /obj/item/explosive/mine/clf/active{
@@ -927,6 +1057,7 @@
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 "lc" = (
 /obj/structure/disposalpipe/segment,
 =======
@@ -934,6 +1065,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+"lc" = (
+/obj/structure/disposalpipe/segment,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/prison{
@@ -952,9 +1087,14 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "lh" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warning"
@@ -977,14 +1117,20 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "lJ" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "lX" = (
 /obj/structure/platform{
 	dir = 4
@@ -995,20 +1141,27 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "lY" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "mj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
 <<<<<<< master
 /obj/item/shard{
 	icon_state = "medium"
@@ -1022,6 +1175,14 @@
 	icon_state = "medium"
 	},
 >>>>>>> reimported backup
+=======
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1042,9 +1203,13 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1052,13 +1217,19 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "mw" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "mz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -1112,6 +1283,9 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "na" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/attachment,
@@ -1119,8 +1293,11 @@
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ne" = (
 /obj/structure/platform{
 	dir = 4
@@ -1130,15 +1307,25 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 <<<<<<< master
+<<<<<<< master
 "nk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+"nk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "nq" = (
 /obj/structure/platform{
 	dir = 1
@@ -1149,10 +1336,15 @@
 "nr" = (
 /obj/effect/decal/cleanable/dirt,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/tile/plasteel,
 /obj/effect/spawner/random/attachment,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/stack/tile/plasteel,
+/obj/effect/spawner/random/attachment,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1234,6 +1426,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1348,6 +1542,7 @@
 	},
 /obj/effect/landmark/corpsespawner/security/cmb,
 <<<<<<< master
+<<<<<<< master
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
@@ -1361,6 +1556,12 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m16,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -1375,17 +1576,26 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "qD" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "qE" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -1397,6 +1607,7 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+<<<<<<< master
 <<<<<<< master
 "qH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1411,6 +1622,16 @@
 /area/desert_dam/interior/dam_interior/control_room)
 =======
 >>>>>>> reimported backup
+=======
+"qH" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "qJ" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -1449,6 +1670,7 @@
 /area/desert_dam/exterior/river/riverside_central_south)
 "rq" = (
 <<<<<<< master
+<<<<<<< master
 /obj/structure/platform{
 	dir = 1
 	},
@@ -1467,6 +1689,16 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ru" = (
 /obj/structure/closet/toolcloset,
 /obj/structure/machinery/light{
@@ -1480,9 +1712,12 @@
 "rv" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -1503,9 +1738,12 @@
 "rA" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -1553,6 +1791,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "rY" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
@@ -1572,6 +1811,17 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_south)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "sf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -1587,6 +1837,8 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "sk" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1597,9 +1849,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -1667,9 +1922,12 @@
 "td" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -1681,6 +1939,9 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "tr" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -1694,8 +1955,11 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "tx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1721,13 +1985,19 @@
 	icon_state = "sandbag_2"
 	},
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -1757,10 +2027,14 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "tN" = (
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
+<<<<<<< master
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 =======
@@ -1792,6 +2066,10 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "tP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1846,6 +2124,9 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "vo" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/prison{
@@ -1853,7 +2134,10 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+<<<<<<< master
 =======
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "vr" = (
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
@@ -1931,6 +2215,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/corpsespawner/engineer,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = 9
@@ -1940,6 +2225,12 @@
 /obj/item/weapon/melee/baseballbat,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2041,13 +2332,19 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ys" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/weapon/melee/baseballbat/metal,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "yw" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -2058,14 +2355,20 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "yC" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "yM" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
@@ -2075,6 +2378,9 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/weapon/gun/smg/fp9000{
 	pixel_y = -8
 	},
@@ -2083,9 +2389,12 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+<<<<<<< master
 =======
 /obj/item/weapon/gun/pistol/b92fs,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2093,6 +2402,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "yZ" = (
+<<<<<<< master
 <<<<<<< master
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating{
@@ -2114,6 +2424,11 @@
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/obj/item/stack/tile/plasteel,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "za" = (
@@ -2125,6 +2440,9 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "zc" = (
 /obj/item/explosive/mine/clf/active{
 	dir = 4
@@ -2134,8 +2452,11 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "zd" = (
 /obj/structure/platform{
 	dir = 1
@@ -2160,9 +2481,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2178,6 +2502,7 @@
 "zR" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active{
 	dir = 1
@@ -2186,6 +2511,12 @@
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
 >>>>>>> reimported backup
+=======
+/obj/item/stack/cable_coil/cut,
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2246,6 +2577,7 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "AV" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/attachment,
@@ -2261,6 +2593,15 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Bi" = (
 /obj/structure/platform{
 	dir = 4
@@ -2329,6 +2670,9 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "Ce" = (
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
@@ -2340,9 +2684,12 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "Cu" = (
 /obj/item/stack/tile/plasteel,
+<<<<<<< master
 =======
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -2373,12 +2720,16 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "CS" = (
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/sheet/wood,
 =======
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
 >>>>>>> reimported backup
+=======
+/obj/item/stack/sheet/wood,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowcorners2"
@@ -2522,9 +2873,12 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -2605,6 +2959,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "FO" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 1;
@@ -2624,6 +2979,13 @@
 	icon_state = "bright_clean";
 	tag = "icon-bright_clean (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "FR" = (
@@ -2635,6 +2997,9 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "FY" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor{
@@ -2642,8 +3007,11 @@
 	icon_state = "damaged3"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Gb" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -2663,6 +3031,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "Go" = (
+<<<<<<< master
 <<<<<<< master
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -2688,6 +3057,10 @@
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "Gr" = (
@@ -2711,14 +3084,20 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Gz" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "GM" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -2738,6 +3117,7 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "GW" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -2747,6 +3127,11 @@
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/obj/effect/spawner/random/attachment,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "Hb" = (
@@ -2796,23 +3181,32 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Hw" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "HB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2850,6 +3244,9 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "IB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
@@ -2858,8 +3255,11 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ID" = (
 /obj/structure/platform{
 	dir = 4
@@ -2893,12 +3293,18 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2980,6 +3386,7 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "KY" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
 =======
@@ -2988,6 +3395,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/wood,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -3076,6 +3487,7 @@
 	icon_state = "medium"
 	},
 <<<<<<< master
+<<<<<<< master
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "Ml" = (
@@ -3091,6 +3503,18 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 >>>>>>> reimported backup
+=======
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/engine_room)
+"Ml" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Mm" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -3113,9 +3537,12 @@
 "Mw" = (
 /obj/structure/window_frame/colony,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -3180,6 +3607,7 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "Nj" = (
 <<<<<<< master
+<<<<<<< master
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -3198,9 +3626,14 @@
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
+=======
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
-/area/desert_dam/interior/dam_interior/atmos_storage)
+/area/desert_dam/exterior/valley/north_valley_dam)
 "Nx" = (
+<<<<<<< master
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/glasses/welding,
 /obj/item/stack/sheet/metal/large_stack,
@@ -3212,6 +3645,11 @@
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "Nz" = (
@@ -3312,6 +3750,9 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "OS" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/weapon/gun/smg/fp9000{
@@ -3337,6 +3778,9 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Pk" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/weapon/melee/twohanded/lungemine,
@@ -3346,8 +3790,11 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Pr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -3470,6 +3917,9 @@
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "QK" = (
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor{
@@ -3477,6 +3927,7 @@
 	icon_state = "warning"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 "QM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3492,6 +3943,8 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Rh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3510,6 +3963,7 @@
 	},
 /obj/effect/landmark/corpsespawner/security,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = 3
@@ -3518,6 +3972,12 @@
 /obj/item/weapon/gun/pistol/b92fs,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 3
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -3590,9 +4050,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/tile/plasteel,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/stack/tile/plasteel,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -3621,6 +4085,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3653,6 +4119,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "Te" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 =======
@@ -3660,6 +4127,10 @@
 	name = "\improper Atmospheric Storage"
 	},
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3670,9 +4141,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/prison{
@@ -3729,6 +4203,7 @@
 "TN" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active{
 	dir = 1
@@ -3737,6 +4212,12 @@
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
 >>>>>>> reimported backup
+=======
+/obj/item/stack/cable_coil/cut,
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -3757,6 +4238,7 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "Uc" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 8;
@@ -3770,6 +4252,13 @@
 	icon_state = "bright_clean";
 	tag = "icon-bright_clean (SOUTHWEST)"
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "Um" = (
@@ -3819,6 +4308,7 @@
 "UI" = (
 /obj/effect/landmark/corpsespawner/engineer,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
@@ -3833,6 +4323,17 @@
 /obj/item/weapon/gun/pistol/m4a3,
 /obj/effect/decal/cleanable/blood,
 >>>>>>> reimported backup
+=======
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3840,6 +4341,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "UJ" = (
+<<<<<<< master
 <<<<<<< master
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -3860,6 +4362,10 @@
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
+=======
+/turf/open/floor{
+	icon_state = "platingdmg1"
+>>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 >>>>>>> reimported backup
@@ -3902,9 +4408,13 @@
 "Vp" = (
 /obj/structure/bed/stool,
 <<<<<<< master
+<<<<<<< master
 /obj/item/clothing/accessory/storage/webbing,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/clothing/accessory/storage/webbing,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -3926,14 +4436,20 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "VF" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "VG" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -4000,12 +4516,18 @@
 	},
 /obj/effect/landmark/corpsespawner/engineer,
 <<<<<<< master
+<<<<<<< master
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = 9
 	},
 =======
 /obj/item/weapon/melee/baseballbat,
 >>>>>>> reimported backup
+=======
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 9
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -4066,16 +4588,25 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 <<<<<<< master
+<<<<<<< master
 "Xu" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+"Xu" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Xy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4093,6 +4624,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
 "XF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4101,6 +4633,17 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 =======
 >>>>>>> reimported backup
+=======
+"XF" = (
+/obj/item/stack/tile/plasteel,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
+>>>>>>> updated all maps to have CLF Mines and corpses
 "XI" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
@@ -4128,9 +4671,12 @@
 	},
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison{
 	dir = 10;
@@ -4159,9 +4705,12 @@
 "Yh" = (
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison{
 	dir = 10;
@@ -4187,14 +4736,23 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 <<<<<<< master
+<<<<<<< master
 "Yr" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
+=======
+"Yr" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor{
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "Yt" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt{
@@ -4239,9 +4797,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/tile/plasteel,
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/stack/tile/plasteel,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -4257,6 +4819,9 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
@@ -4265,9 +4830,12 @@
 /obj/item/ammo_magazine/rifle/mar40/lmg,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
+<<<<<<< master
 =======
 /obj/item/weapon/gun/pistol/b92fs,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -4304,12 +4872,16 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ZO" = (
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/smes_main)
 "ZT" = (
 /obj/item/explosive/mine/clf/active{
+<<<<<<< master
 	dir = 8
 	},
 /turf/open/floor{
@@ -4334,19 +4906,33 @@
 =======
 "ZV" = (
 /obj/structure/barricade/plasteel/wired{
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+/turf/open/floor{
+	dir = 4;
+	icon_state = "warning"
 	},
-/area/desert_dam/interior/dam_interior/atmos_storage)
+/area/desert_dam/interior/dam_interior/engine_room)
+"ZV" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "ZW" = (
-/obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /obj/effect/decal/cleanable/blood/drip,
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -4439,10 +5025,14 @@ ki
 (4,1,1) = {"
 rv
 <<<<<<< master
+<<<<<<< master
 gS
 =======
 Fr
 >>>>>>> reimported backup
+=======
+gS
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ro
 cR
 cR
@@ -4464,10 +5054,14 @@ Zx
 MF
 fS
 <<<<<<< master
+<<<<<<< master
 lY
 =======
 Im
 >>>>>>> reimported backup
+=======
+lY
+>>>>>>> updated all maps to have CLF Mines and corpses
 ki
 "}
 (5,1,1) = {"
@@ -4494,10 +5088,14 @@ oh
 Vb
 Mm
 <<<<<<< master
+<<<<<<< master
 IB
 =======
 xp
 >>>>>>> reimported backup
+=======
+IB
+>>>>>>> updated all maps to have CLF Mines and corpses
 ki
 "}
 (6,1,1) = {"
@@ -4540,6 +5138,7 @@ Fr
 Ro
 Xy
 <<<<<<< master
+<<<<<<< master
 AV
 ZO
 cR
@@ -4552,16 +5151,27 @@ cR
 Fw
 XU
 >>>>>>> reimported backup
+=======
+AV
+ZO
+cR
+Fw
+gu
+>>>>>>> updated all maps to have CLF Mines and corpses
 rv
 CO
 Td
 Xd
 hb
 <<<<<<< master
+<<<<<<< master
 nk
 =======
 hb
 >>>>>>> reimported backup
+=======
+nk
+>>>>>>> updated all maps to have CLF Mines and corpses
 ak
 pA
 ki
@@ -4591,12 +5201,17 @@ Iy
 EK
 Td
 <<<<<<< master
+<<<<<<< master
 VF
 na
 =======
 dQ
 NP
 >>>>>>> reimported backup
+=======
+VF
+na
+>>>>>>> updated all maps to have CLF Mines and corpses
 BL
 vG
 cC
@@ -4637,12 +5252,17 @@ Hp
 fM
 sG
 <<<<<<< master
+<<<<<<< master
 rv
 rv
 =======
 dq
 dq
 >>>>>>> reimported backup
+=======
+rv
+rv
+>>>>>>> updated all maps to have CLF Mines and corpses
 sG
 fM
 rv
@@ -4650,16 +5270,22 @@ pR
 rv
 dc
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 Mh
 Mh
 Mh
 Mh
+<<<<<<< master
 =======
 Yq
 Yq
 Yq
 Yq
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 Yh
 XS
 Mh
@@ -4698,10 +5324,14 @@ Xf
 wU
 Oj
 <<<<<<< master
+<<<<<<< master
 ys
 =======
 Oj
 >>>>>>> reimported backup
+=======
+ys
+>>>>>>> updated all maps to have CLF Mines and corpses
 Oj
 fe
 "}
@@ -4728,17 +5358,21 @@ kY
 =======
 Xf
 KT
+Uc
 Eh
 Eh
+iO
 Eh
 Eh
-Eh
-Eh
-ek
+lJ
 tc
 sC
+<<<<<<< master
 ek
 >>>>>>> reimported backup
+=======
+kY
+>>>>>>> updated all maps to have CLF Mines and corpses
 Xf
 dc
 Rz
@@ -4847,8 +5481,12 @@ yC
 =======
 zg
 Hs
+<<<<<<< master
 >>>>>>> reimported backup
 Hs
+=======
+yC
+>>>>>>> updated all maps to have CLF Mines and corpses
 Hs
 Hs
 Hs
@@ -4856,6 +5494,7 @@ Hs
 <<<<<<< master
 hr
 Hs
+<<<<<<< master
 bD
 =======
 Hs
@@ -4863,6 +5502,11 @@ Ng
 Hs
 QD
 >>>>>>> reimported backup
+=======
+hr
+Hs
+bD
+>>>>>>> updated all maps to have CLF Mines and corpses
 Dp
 dc
 QJ
@@ -4897,6 +5541,7 @@ LN
 ht
 QJ
 <<<<<<< master
+<<<<<<< master
 cq
 fL
 fL
@@ -4905,6 +5550,11 @@ QJ
 QJ
 QJ
 >>>>>>> reimported backup
+=======
+cq
+fL
+fL
+>>>>>>> updated all maps to have CLF Mines and corpses
 "}
 (18,1,1) = {"
 eb
@@ -4914,7 +5564,7 @@ eb
 eb
 dc
 Nz
-Qn
+rq
 Hs
 Hs
 Hs
@@ -4970,6 +5620,7 @@ eA
 mq
 mq
 <<<<<<< master
+<<<<<<< master
 mw
 mq
 ZV
@@ -4978,16 +5629,25 @@ mq
 mq
 cs
 >>>>>>> reimported backup
+=======
+mw
+mq
+ZV
+>>>>>>> updated all maps to have CLF Mines and corpses
 es
 ia
 RK
 nq
 rp
 <<<<<<< master
+<<<<<<< master
 rY
 =======
 UX
 >>>>>>> reimported backup
+=======
+rY
+>>>>>>> updated all maps to have CLF Mines and corpses
 sq
 es
 nq
@@ -5022,6 +5682,7 @@ ez
 "}
 (22,1,1) = {"
 <<<<<<< master
+<<<<<<< master
 Nj
 Nj
 Nj
@@ -5030,6 +5691,11 @@ eb
 eb
 eb
 >>>>>>> reimported backup
+=======
+Nj
+Nj
+Nj
+>>>>>>> updated all maps to have CLF Mines and corpses
 eb
 eb
 dc
@@ -5054,10 +5720,14 @@ QJ
 "}
 (23,1,1) = {"
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 Nj
 Nj
 dq
 Nj
+<<<<<<< master
 eb
 tr
 =======
@@ -5068,6 +5738,10 @@ eb
 eb
 ht
 >>>>>>> reimported backup
+=======
+eb
+tr
+>>>>>>> updated all maps to have CLF Mines and corpses
 UR
 Hs
 Hs
@@ -5083,12 +5757,17 @@ Yr
 QK
 =======
 Hs
+<<<<<<< master
 QD
 >>>>>>> reimported backup
+=======
+QK
+>>>>>>> updated all maps to have CLF Mines and corpses
 LN
 ht
 QJ
 QJ
+<<<<<<< master
 <<<<<<< master
 cw
 fL
@@ -5114,26 +5793,34 @@ Ml
 =======
 QJ
 QJ
+=======
+cw
+fL
+>>>>>>> updated all maps to have CLF Mines and corpses
 "}
 (24,1,1) = {"
-eb
-eb
-eb
-eb
-eb
+dq
+OS
+Nj
+Nj
+Nj
 dc
 Nz
-zg
-Hs
+FO
+qD
 ep
 ek
-MQ
+tN
 Hs
-Hs
+Yr
 Hs
 Ng
+<<<<<<< master
 Hs
 >>>>>>> reimported backup
+=======
+Ml
+>>>>>>> updated all maps to have CLF Mines and corpses
 QD
 Dp
 dc
@@ -5156,10 +5843,14 @@ Zh
 Tm
 gA
 <<<<<<< master
+<<<<<<< master
 Gz
 =======
 Hs
 >>>>>>> reimported backup
+=======
+Gz
+>>>>>>> updated all maps to have CLF Mines and corpses
 es
 cs
 Kv
@@ -5243,10 +5934,14 @@ Bt
 Bt
 Bt
 <<<<<<< master
+<<<<<<< master
 ZT
 =======
 Bt
 >>>>>>> reimported backup
+=======
+ZT
+>>>>>>> updated all maps to have CLF Mines and corpses
 Bt
 Hs
 Ng
@@ -5304,16 +5999,22 @@ Yq
 Yq
 dc
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 Mh
 Yh
 XS
 Mh
+<<<<<<< master
 =======
 Yq
 Uc
 FO
 Yq
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 dc
 wU
 wU
@@ -5390,24 +6091,33 @@ Kz
 De
 VK
 De
+Xu
 De
 De
+<<<<<<< master
 De
 <<<<<<< master
 Pk
 =======
 De
 >>>>>>> reimported backup
+=======
+Pk
+>>>>>>> updated all maps to have CLF Mines and corpses
 De
 De
 nz
 yX
 nY
 <<<<<<< master
+<<<<<<< master
 Xu
 =======
 De
 >>>>>>> reimported backup
+=======
+Xu
+>>>>>>> updated all maps to have CLF Mines and corpses
 De
 Ht
 mu
@@ -5452,6 +6162,7 @@ gw
 Mw
 fT
 <<<<<<< master
+<<<<<<< master
 hH
 hH
 OR
@@ -5464,6 +6175,13 @@ OR
 YO
 Tz
 >>>>>>> reimported backup
+=======
+hH
+hH
+OR
+YO
+vo
+>>>>>>> updated all maps to have CLF Mines and corpses
 Tz
 hk
 Lr
@@ -5471,10 +6189,14 @@ EH
 oj
 wA
 <<<<<<< master
+<<<<<<< master
 Ce
 =======
 De
 >>>>>>> reimported backup
+=======
+Ce
+>>>>>>> updated all maps to have CLF Mines and corpses
 De
 VG
 oW
@@ -5495,7 +6217,7 @@ gZ
 VE
 Tz
 Tz
-De
+Xu
 Gu
 Oc
 rG
@@ -5521,14 +6243,19 @@ rG
 pe
 Vp
 <<<<<<< master
+<<<<<<< master
 zc
 =======
 Tz
 >>>>>>> reimported backup
+=======
+zc
+>>>>>>> updated all maps to have CLF Mines and corpses
 De
 Gu
 oY
 rG
+<<<<<<< master
 <<<<<<< master
 cn
 UJ
@@ -5542,6 +6269,13 @@ ZV
 cn
 fL
 >>>>>>> reimported backup
+=======
+cn
+UJ
+cn
+GW
+cn
+>>>>>>> updated all maps to have CLF Mines and corpses
 qG
 Oj
 fe
@@ -5574,12 +6308,16 @@ De
 Gu
 oY
 rG
-rq
+UJ
+FY
+UJ
 cn
-cn
-cn
+<<<<<<< master
 cw
 >>>>>>> reimported backup
+=======
+Nx
+>>>>>>> updated all maps to have CLF Mines and corpses
 qG
 Oj
 fe
@@ -5596,11 +6334,12 @@ wL
 rG
 rG
 cM
-Tz
+qH
 De
 Gu
 wH
 rG
+<<<<<<< master
 <<<<<<< master
 cn
 UJ
@@ -5612,6 +6351,12 @@ cn
 cn
 cn
 >>>>>>> reimported backup
+=======
+cn
+UJ
+XF
+Go
+>>>>>>> updated all maps to have CLF Mines and corpses
 yZ
 qG
 Oj
@@ -5637,6 +6382,7 @@ rG
 UJ
 cn
 <<<<<<< master
+<<<<<<< master
 Go
 Go
 UJ
@@ -5645,6 +6391,11 @@ cn
 cn
 tN
 >>>>>>> reimported backup
+=======
+Go
+Go
+UJ
+>>>>>>> updated all maps to have CLF Mines and corpses
 qG
 du
 fe
@@ -5667,6 +6418,7 @@ ee
 rG
 rG
 <<<<<<< master
+<<<<<<< master
 cn
 Ev
 UJ
@@ -5675,6 +6427,11 @@ GW
 cn
 cn
 >>>>>>> reimported backup
+=======
+cn
+Go
+UJ
+>>>>>>> updated all maps to have CLF Mines and corpses
 cn
 Go
 qG
@@ -5700,6 +6457,7 @@ wL
 rG
 cn
 <<<<<<< master
+<<<<<<< master
 Hw
 Cu
 UJ
@@ -5710,6 +6468,12 @@ cn
 cn
 gS
 >>>>>>> reimported backup
+=======
+Hw
+Cu
+UJ
+cn
+>>>>>>> updated all maps to have CLF Mines and corpses
 qG
 wL
 wL
@@ -5733,16 +6497,22 @@ wL
 rG
 Nx
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 Go
 UJ
 Go
 cn
+<<<<<<< master
 =======
 AV
 Nj
 rY
 hH
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 qG
 wL
 wL

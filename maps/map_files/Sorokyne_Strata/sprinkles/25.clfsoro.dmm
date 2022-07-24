@@ -207,6 +207,9 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "fa" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -216,8 +219,11 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -413,7 +419,13 @@
 =======
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -429,14 +441,20 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ko" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "kA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost,
@@ -557,6 +575,9 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "ne" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/explosive/mine/clf/active{
@@ -566,8 +587,11 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "nH" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -580,11 +604,17 @@
 	icon_state = "large"
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -789,6 +819,9 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
@@ -799,10 +832,13 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+<<<<<<< master
 =======
 /obj/item/storage/box/explosive_mines,
 /obj/item/storage/box/explosive_mines,
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1189,12 +1225,18 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "BG" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> updated all maps to have CLF Mines and corpses
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1395,7 +1437,11 @@
 =======
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active,
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1857,11 +1903,17 @@
 	dir = 1
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
 =======
 >>>>>>> reimported backup
+=======
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
+>>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -2365,10 +2417,14 @@ cp
 nW
 RT
 <<<<<<< master
+<<<<<<< master
 BG
 =======
 hV
 >>>>>>> reimported backup
+=======
+BG
+>>>>>>> updated all maps to have CLF Mines and corpses
 NE
 "}
 (13,1,1) = {"
@@ -2395,6 +2451,7 @@ ui
 "}
 (14,1,1) = {"
 <<<<<<< master
+<<<<<<< master
 fa
 Sd
 yT
@@ -2403,6 +2460,9 @@ dZ
 im
 =======
 WP
+=======
+fa
+>>>>>>> updated all maps to have CLF Mines and corpses
 Sd
 yT
 PJ
@@ -2416,10 +2476,14 @@ wx
 iT
 yM
 <<<<<<< master
+<<<<<<< master
 ko
 =======
 yT
 >>>>>>> reimported backup
+=======
+ko
+>>>>>>> updated all maps to have CLF Mines and corpses
 yT
 yT
 oc
@@ -2612,10 +2676,14 @@ Ik
 nN
 lx
 <<<<<<< master
+<<<<<<< master
 ne
 =======
 nP
 >>>>>>> reimported backup
+=======
+ne
+>>>>>>> updated all maps to have CLF Mines and corpses
 Ik
 "}
 (24,1,1) = {"

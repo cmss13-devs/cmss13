@@ -51,29 +51,10 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
-
-
-/mob/living/carbon/Xenomorph/Warrior/update_icons()
-	if (stat == DEAD)
-		icon_state = "[mutation_type] Warrior Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Warrior Sleeping"
-		else
-			icon_state = "[mutation_type] Warrior Knocked Down"
-	else if (agility)
-		icon_state = "[mutation_type] Warrior Agility"
-	else
-		icon_state = "[mutation_type] Warrior Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 

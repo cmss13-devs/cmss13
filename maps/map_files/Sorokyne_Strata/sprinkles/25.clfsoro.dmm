@@ -184,6 +184,15 @@
 "eN" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
+"fa" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil/cut,
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -360,6 +369,9 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -372,6 +384,12 @@
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
+"ko" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/strata{
+	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
 "kA" = (
@@ -479,6 +497,15 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
+"ne" = (
+/obj/structure/barricade/handrail/strata,
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
 "nH" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -489,6 +516,9 @@
 /obj/structure/barricade/handrail/strata,
 /obj/item/shard{
 	icon_state = "large"
+	},
+/obj/item/explosive/mine/clf/active{
+	dir = 4
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -679,8 +709,16 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/storage/box/explosive_mines,
-/obj/item/storage/box/explosive_mines,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1030,6 +1068,10 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+"BG" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1210,6 +1252,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
+/obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1632,6 +1675,9 @@
 "SB" = (
 /obj/structure/machinery/light/small{
 	dir = 1
+	},
+/obj/item/explosive/mine/clf/active{
+	dir = 4
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -2082,7 +2128,7 @@ wY
 cp
 nW
 RT
-hV
+BG
 NE
 "}
 (13,1,1) = {"
@@ -2104,7 +2150,7 @@ zQ
 ui
 "}
 (14,1,1) = {"
-WP
+fa
 Sd
 yT
 PJ
@@ -2116,7 +2162,7 @@ LZ
 wx
 iT
 yM
-yT
+ko
 yT
 yT
 oc
@@ -2280,7 +2326,7 @@ lo
 Ik
 nN
 lx
-nP
+ne
 Ik
 "}
 (24,1,1) = {"

@@ -15887,6 +15887,12 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"kCQ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = shivabarls
+	},
+/turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/bar)
 "kDi" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent4";
@@ -27257,6 +27263,12 @@
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/n_admin)
+"wMB" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = shivaclf01
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/cp_s_research)
 "wMC" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/shiva{
@@ -43080,7 +43092,7 @@ kOV
 kOV
 ukp
 kVd
-kVd
+wMB
 dHr
 rAH
 msh
@@ -46826,7 +46838,7 @@ tnu
 gWk
 gWk
 tnu
-tnu
+kCQ
 tiO
 muH
 cUQ

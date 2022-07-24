@@ -15606,6 +15606,12 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_central_jungle)
+"gHv" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = clfhydrohold
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/south_medbay_road)
 "gKg" = (
 /obj/item/clothing/head/hardhat/orange,
 /turf/open/floor/plating{
@@ -43789,7 +43795,7 @@ jHN
 jHN
 jHN
 szy
-udP
+gHv
 udP
 udP
 udP

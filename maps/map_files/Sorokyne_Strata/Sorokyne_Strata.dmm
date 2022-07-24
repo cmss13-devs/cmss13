@@ -32938,6 +32938,12 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/strata,
 /area/strata/ag/exterior)
+"gAN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = clfsoro
+	},
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi)
 "gBj" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/ice/layer1,
@@ -66365,7 +66371,7 @@ ayP
 ayP
 acf
 acC
-oKo
+gAN
 aMX
 dgB
 bfM

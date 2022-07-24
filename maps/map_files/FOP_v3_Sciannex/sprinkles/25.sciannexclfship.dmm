@@ -190,6 +190,7 @@
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/effect/landmark/corpsespawner/clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -271,6 +272,7 @@
 /area/fiorina/oob)
 "di" = (
 /obj/item/stack/rods,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -686,6 +688,7 @@
 /area/lv624/lazarus/crashed_ship)
 "kz" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
@@ -747,6 +750,12 @@
 "ly" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv624/lazarus/crashed_ship)
+"lI" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
 "lN" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -775,6 +784,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -889,6 +899,7 @@
 /area/lv624/lazarus/crashed_ship)
 "nP" = (
 /obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -1101,6 +1112,11 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
+"rl" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
 "rm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -1354,6 +1370,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1448,6 +1465,7 @@
 "uZ" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
@@ -1594,6 +1612,7 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vX" = (
@@ -2268,6 +2287,7 @@
 /area/fiorina/tumor/ice_lab)
 "Fa" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2617,6 +2637,11 @@
 	},
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
+"JA" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
 "JD" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor{
@@ -3454,6 +3479,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
+"WK" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
 "Xn" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_6_1"
@@ -3929,7 +3958,7 @@ Bs
 cS
 Df
 xl
-FB
+rl
 Iu
 QZ
 QH
@@ -3973,7 +4002,7 @@ io
 Rp
 QZ
 Mr
-Iu
+FB
 Gv
 Ne
 QZ
@@ -4069,13 +4098,13 @@ ko
 Nl
 NV
 Oi
-FB
+rl
 xA
 QZ
 vs
 tE
 Zz
-nC
+lI
 OS
 uZ
 mK
@@ -4159,7 +4188,7 @@ MT
 QZ
 gW
 kM
-Iu
+FB
 Iu
 Wz
 qW
@@ -4199,7 +4228,7 @@ VN
 QZ
 bX
 XG
-Iu
+FB
 Jd
 tY
 ko
@@ -4253,7 +4282,7 @@ bj
 Wz
 QZ
 Dw
-nC
+lI
 CZ
 nC
 gK
@@ -4293,8 +4322,8 @@ wv
 eo
 Wz
 Gj
-Wz
-nC
+Gf
+lI
 Wz
 wS
 Bc
@@ -4518,8 +4547,8 @@ Iu
 Iu
 VD
 Wz
-nC
-Gf
+lI
+JA
 Nq
 nU
 nC
@@ -4559,7 +4588,7 @@ Sn
 kd
 Ow
 pr
-pr
+WK
 pr
 Wz
 Wz
@@ -4568,7 +4597,7 @@ nC
 vh
 Wz
 Wz
-Gf
+JA
 yL
 eO
 us

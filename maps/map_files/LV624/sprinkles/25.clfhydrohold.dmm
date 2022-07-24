@@ -101,12 +101,28 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"gp" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/north_nexus_road)
 "hj" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
+"iM" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"jn" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/colony/south_medbay_road)
 "jA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/wo_supplies/storage/webbing,
@@ -139,6 +155,9 @@
 "kV" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -151,6 +170,14 @@
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/hydroponics)
+"lU" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "me" = (
@@ -222,6 +249,17 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"pv" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "pw" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -236,6 +274,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "pK" = (
+/obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -298,6 +337,12 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"tj" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
 "vh" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -352,6 +397,7 @@
 /area/lv624/lazarus/hydroponics)
 "wj" = (
 /obj/structure/surface/table,
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -368,6 +414,10 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"xs" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/south_medbay_road)
 "xX" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_closed_1";
@@ -456,6 +506,7 @@
 "EG" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/explosive/mine/clf/active,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -511,6 +562,24 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"Gy" = (
+/obj/structure/surface/table,
+/obj/item/clothing/glasses/welding{
+	pixel_y = 9;
+	pixel_x = -12
+	},
+/obj/item/tool/weldingtool{
+	pixel_y = -9;
+	pixel_x = 11
+	},
+/obj/item/tool/weldpack{
+	pixel_y = 8
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "GS" = (
 /turf/open/floor{
 	dir = 8;
@@ -523,6 +592,18 @@
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/hydroponics)
+"Ht" = (
+/obj/structure/surface/table,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/obj/item/explosive/mine/clf,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "HU" = (
@@ -594,6 +675,12 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/north_nexus_road)
+"Ks" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
 "Kt" = (
 /obj/structure/surface/table,
 /obj/item/ammo_box/magazine/M16,
@@ -643,6 +730,17 @@
 /obj/item/stack/sheet/wood/small_stack,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/hydroponics)
+"NX" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/explosive/mine/clf/active{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "OJ" = (
@@ -755,6 +853,8 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "RZ" = (
+/obj/item/explosive/mine/clf/active,
+/obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -850,6 +950,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"WZ" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
 "Xk" = (
 /turf/open/floor{
 	dir = 9;
@@ -914,16 +1021,16 @@ Tx
 DE
 DE
 DE
-DE
-HU
+iM
+WZ
 Ec
 Ec
-kV
-kV
+pv
+pv
 Ec
 Ec
-Cb
-Cb
+jn
+jn
 Cb
 rK
 Tx
@@ -948,7 +1055,7 @@ Tx
 "}
 (4,1,1) = {"
 DE
-DE
+tj
 XF
 nw
 Fn
@@ -966,7 +1073,7 @@ Tx
 "}
 (5,1,1) = {"
 DE
-DE
+tj
 Ew
 WY
 Tu
@@ -979,7 +1086,7 @@ yr
 HW
 cF
 SQ
-Tx
+xs
 Tx
 "}
 (6,1,1) = {"
@@ -1001,26 +1108,26 @@ Ec
 Tx
 "}
 (7,1,1) = {"
-DE
+tj
 Jj
 WY
 Xk
 Xk
-wj
+Ht
 LS
 ne
 Rw
-wj
-wj
+Gy
+lU
 Xk
 Jp
 Ql
 Gs
-vN
+gp
 "}
 (8,1,1) = {"
 DE
-kV
+NX
 Ph
 Xk
 Xk
@@ -1038,7 +1145,7 @@ vN
 "}
 (9,1,1) = {"
 DE
-kV
+NX
 Ph
 Cj
 Xk
@@ -1055,7 +1162,7 @@ EG
 vN
 "}
 (10,1,1) = {"
-DE
+tj
 wa
 WY
 Xk
@@ -1070,7 +1177,7 @@ Md
 XR
 Ql
 bR
-vN
+gp
 "}
 (11,1,1) = {"
 DE
@@ -1092,7 +1199,7 @@ vN
 "}
 (12,1,1) = {"
 DE
-DE
+tj
 qC
 bY
 Xk
@@ -1105,12 +1212,12 @@ Xk
 Cj
 Ql
 cs
-vN
+gp
 vN
 "}
 (13,1,1) = {"
 DE
-DE
+tj
 SQ
 Pe
 wx
@@ -1148,16 +1255,16 @@ vN
 DE
 DE
 DE
-DE
-DE
+Ks
+Ks
 Ec
 Ew
 kV
 kV
 Bj
 Ec
-DE
-DE
+Ks
+Ks
 DE
 Km
 vN

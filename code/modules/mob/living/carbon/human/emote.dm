@@ -524,6 +524,7 @@
 				<span style='color: green;'>alienhelp</span>, \
 				<span style='color: green;'>comeonout</span>, \
 				<span style='color: green;'>overthere</span>, \
+				<span style='color: green;'>uglyfreak</span>, \
 				<span style='color: green;'>roar</span></b><br>")
 			if (Primate)
 				to_chat(src, "<br><b>As a Primate, you have the following additional emotes.<br><br>\
@@ -642,6 +643,10 @@
 			if(Pred && src.loc)
 				m_type = 1
 				playsound(loc, 'sound/voice/pred_over_there.ogg', 50)
+		if("uglyfreak")
+			if(Pred && src.loc)
+				m_type = 1
+				playsound(loc, 'sound/voice/pred_ugly_freak.ogg', 50)
 
 		//working joe emotes
 		if ("alwaysknow")

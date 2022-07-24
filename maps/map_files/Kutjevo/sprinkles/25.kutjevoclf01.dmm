@@ -543,6 +543,16 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+"ua" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/circuitboard/airlock,
+/obj/item/stack/cable_coil,
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction)
 "uc" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
@@ -661,6 +671,14 @@
 "yc" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
+"yk" = (
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 4
+	},
+/area/kutjevo/interior/construction)
 "zt" = (
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/kutjevo/colors/purple,
@@ -954,6 +972,13 @@
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction)
+"MZ" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/item/explosive/mine/clf/active,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/med_rec)
 "Nl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -28
@@ -991,6 +1016,14 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
+"Pw" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/obj/item/circuitboard/airlock,
+/obj/item/stack/cable_coil,
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "PP" = (
 /obj/structure/closet/crate/freezer/rations,
@@ -1215,6 +1248,12 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/foremans_office)
+"Wm" = (
+/obj/item/explosive/mine/clf/active,
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 1
+	},
+/area/kutjevo/interior/construction)
 "Ww" = (
 /obj/structure/platform/kutjevo{
 	dir = 4

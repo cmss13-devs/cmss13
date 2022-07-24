@@ -833,6 +833,7 @@
 "sd" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1145,6 +1146,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1191,6 +1193,7 @@
 /area/shiva/interior/colony/s_admin)
 "Ap" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -1241,6 +1244,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1415,6 +1419,13 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
+	},
+/area/shiva/interior/colony/s_admin)
+"Gm" = (
+/obj/item/stack/sandbags,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/shiva/interior/colony/s_admin)
 "GH" = (
@@ -1807,6 +1818,7 @@
 	pixel_x = -24
 	},
 /obj/item/device/flashlight/lamp,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -2419,7 +2431,7 @@ Qk
 FI
 Mo
 Un
-Un
+aN
 yw
 Qk
 DM
@@ -2572,7 +2584,7 @@ JD
 il
 bN
 Un
-WP
+Gm
 WP
 hO
 VY
@@ -2589,7 +2601,7 @@ tF
 jl
 Hj
 JD
-JD
+Ds
 JD
 Hr
 Hr
@@ -2662,7 +2674,7 @@ pR
 vm
 aQ
 Hr
-JD
+Ds
 MQ
 ag
 ak
@@ -2697,7 +2709,7 @@ Nv
 NP
 zf
 sV
-Hr
+Kr
 Qk
 Qk
 Iq
@@ -2845,7 +2857,7 @@ Kr
 Hr
 >>>>>>> reimported backup
 VY
-Mo
+QC
 Hr
 Hr
 Hr
@@ -2991,7 +3003,7 @@ Nt
 Rf
 Jn
 GH
-JD
+Ds
 JD
 qO
 Kk

@@ -206,7 +206,6 @@
 "eN" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
-<<<<<<< master
 "fa" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -216,8 +215,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-=======
->>>>>>> reimported backup
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -413,7 +410,9 @@
 =======
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
->>>>>>> reimported backup
+/obj/item/explosive/mine/clf/active{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -428,15 +427,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
 "ko" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-=======
->>>>>>> reimported backup
 "kA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost,
@@ -556,7 +552,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
 "ne" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/explosive/mine/clf/active{
@@ -566,8 +561,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
-=======
->>>>>>> reimported backup
 "nH" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -579,12 +572,9 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
-=======
->>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -788,7 +778,6 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-<<<<<<< master
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
@@ -799,10 +788,6 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
-=======
-/obj/item/storage/box/explosive_mines,
-/obj/item/storage/box/explosive_mines,
->>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1188,13 +1173,10 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
 "BG" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-=======
->>>>>>> reimported backup
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1395,7 +1377,7 @@
 =======
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
->>>>>>> reimported backup
+/obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1856,12 +1838,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
-=======
->>>>>>> reimported backup
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -2364,11 +2343,7 @@ wY
 cp
 nW
 RT
-<<<<<<< master
 BG
-=======
-hV
->>>>>>> reimported backup
 NE
 "}
 (13,1,1) = {"
@@ -2394,15 +2369,7 @@ zQ
 ui
 "}
 (14,1,1) = {"
-<<<<<<< master
 fa
-Sd
-yT
-dZ
-dZ
-im
-=======
-WP
 Sd
 yT
 PJ
@@ -2415,12 +2382,9 @@ LZ
 wx
 iT
 yM
-<<<<<<< master
 ko
-=======
 yT
 >>>>>>> reimported backup
-yT
 yT
 oc
 "}
@@ -2611,11 +2575,7 @@ lo
 Ik
 nN
 lx
-<<<<<<< master
 ne
-=======
-nP
->>>>>>> reimported backup
 Ik
 "}
 (24,1,1) = {"

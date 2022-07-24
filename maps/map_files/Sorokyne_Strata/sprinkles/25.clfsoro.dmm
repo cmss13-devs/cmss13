@@ -4,9 +4,13 @@
 	dir = 4
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -68,9 +72,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "cQ" = (
@@ -106,9 +113,12 @@
 "dx" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -145,14 +155,20 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "dZ" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "ek" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -193,9 +209,12 @@
 "eH" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -320,9 +339,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing/bullet,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -345,14 +368,20 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "im" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "ix" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
@@ -412,12 +441,15 @@
 "jQ" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
 =======
 /obj/item/stack/rods,
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
 >>>>>>> reimported backup
@@ -464,9 +496,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -511,9 +546,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -536,9 +574,13 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -554,9 +596,13 @@
 	dir = 4
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -638,9 +684,13 @@
 	pixel_y = 20
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -667,9 +717,12 @@
 "po" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -719,9 +772,13 @@
 "qb" = (
 /obj/item/stool,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -789,9 +846,12 @@
 "rC" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -884,9 +944,13 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -894,9 +958,12 @@
 "tv" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -949,6 +1016,9 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "uR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -958,8 +1028,11 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "vi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
@@ -1027,9 +1100,13 @@
 	},
 /obj/item/ammo_magazine/rifle/type71,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1104,9 +1181,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "yQ" = (
@@ -1120,6 +1200,9 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "yR" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
@@ -1127,8 +1210,11 @@
 	icon_state = "damaged3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "yT" = (
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -1330,6 +1416,9 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Fl" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -1340,8 +1429,11 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "FK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/corpsespawner/russian,
@@ -1383,9 +1475,12 @@
 "Gb" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1432,10 +1527,13 @@
 "Gr" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active,
 =======
 /obj/item/stack/rods,
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/stack/cable_coil/cut,
 <<<<<<< master
 >>>>>>> reimported backup
@@ -1463,9 +1561,12 @@
 "Gt" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1490,9 +1591,12 @@
 "Hh" = (
 /obj/structure/surface/table/reinforced/prison,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1505,9 +1609,13 @@
 	dir = 10
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1559,9 +1667,13 @@
 /obj/structure/barricade/handrail/strata,
 /obj/item/ammo_casing/bullet,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1679,14 +1791,20 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "NU" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "OJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/rods,
@@ -1708,6 +1826,7 @@
 "Pq" = (
 /obj/structure/window_frame/strata,
 <<<<<<< master
+<<<<<<< master
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "Pv" = (
@@ -1721,6 +1840,16 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 >>>>>>> reimported backup
+=======
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"Pv" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+>>>>>>> added spawn pointss for clf survivors
 "PJ" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1823,9 +1952,12 @@
 "Rt" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/item/stack/rods,
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/strata{
 	dir = 10;
@@ -1924,9 +2056,13 @@
 	icon_state = "metal_1"
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1960,22 +2096,32 @@
 	dir = 1
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Ub" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Uh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -2001,12 +2147,18 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Wv" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "WE" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -2066,6 +2218,9 @@
 	},
 /area/strata/ag/interior/outpost/security)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "YG" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -2076,8 +2231,11 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "YN" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/barricade/metal/wired{
@@ -2251,10 +2409,14 @@ qa
 rK
 fC
 <<<<<<< master
+<<<<<<< master
 NU
 =======
 yT
 >>>>>>> reimported backup
+=======
+NU
+>>>>>>> added spawn pointss for clf survivors
 Nr
 ym
 db
@@ -2326,10 +2488,14 @@ qn
 xu
 mk
 <<<<<<< master
+<<<<<<< master
 Pv
 =======
 uh
 >>>>>>> reimported backup
+=======
+Pv
+>>>>>>> added spawn pointss for clf survivors
 Ch
 OW
 vP
@@ -2345,10 +2511,14 @@ Sd
 Sf
 Gk
 <<<<<<< master
+<<<<<<< master
 Pv
 =======
 uh
 >>>>>>> reimported backup
+=======
+Pv
+>>>>>>> added spawn pointss for clf survivors
 uh
 fr
 uh
@@ -2373,10 +2543,14 @@ iM
 tX
 OW
 <<<<<<< master
+<<<<<<< master
 uR
 =======
 LS
 >>>>>>> reimported backup
+=======
+uR
+>>>>>>> added spawn pointss for clf survivors
 hN
 gv
 SF
@@ -2436,10 +2610,14 @@ DI
 ID
 DI
 <<<<<<< master
+<<<<<<< master
 dZ
 =======
 PJ
 >>>>>>> reimported backup
+=======
+dZ
+>>>>>>> added spawn pointss for clf survivors
 yT
 Zz
 CC
@@ -2458,6 +2636,7 @@ yT
 dZ
 dZ
 im
+<<<<<<< master
 =======
 WP
 =======
@@ -2469,6 +2648,8 @@ PJ
 PJ
 DI
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 pq
 ui
 LZ
@@ -2502,6 +2683,7 @@ hV
 Uh
 cp
 <<<<<<< master
+<<<<<<< master
 YG
 Fl
 YG
@@ -2510,15 +2692,24 @@ Qs
 Gh
 Qs
 >>>>>>> reimported backup
+=======
+YG
+Fl
+YG
+>>>>>>> added spawn pointss for clf survivors
 cp
 "}
 (16,1,1) = {"
 qR
 <<<<<<< master
+<<<<<<< master
 Pv
 =======
 uh
 >>>>>>> reimported backup
+=======
+Pv
+>>>>>>> added spawn pointss for clf survivors
 zz
 OW
 OW
@@ -2559,6 +2750,7 @@ sk
 OW
 qS
 <<<<<<< master
+<<<<<<< master
 Ub
 Ik
 Ub
@@ -2567,6 +2759,11 @@ Ik
 Ik
 Ik
 >>>>>>> reimported backup
+=======
+Ub
+Ik
+Ub
+>>>>>>> added spawn pointss for clf survivors
 OW
 FO
 Hj
@@ -2609,10 +2806,14 @@ yT
 QA
 PJ
 <<<<<<< master
+<<<<<<< master
 yR
 =======
 ID
 >>>>>>> reimported backup
+=======
+yR
+>>>>>>> added spawn pointss for clf survivors
 FT
 rC
 "}
@@ -2627,10 +2828,14 @@ Ut
 hV
 Gd
 <<<<<<< master
+<<<<<<< master
 Ub
 =======
 Ik
 >>>>>>> reimported backup
+=======
+Ub
+>>>>>>> added spawn pointss for clf survivors
 hN
 Sp
 mP
@@ -2647,10 +2852,14 @@ IR
 IB
 Ro
 <<<<<<< master
+<<<<<<< master
 Wv
 =======
 hV
 >>>>>>> reimported backup
+=======
+Wv
+>>>>>>> added spawn pointss for clf survivors
 Jl
 Ik
 cp

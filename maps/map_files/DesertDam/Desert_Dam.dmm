@@ -67548,7 +67548,11 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "szl" = (
 /obj/effect/landmark/nightmare{
+<<<<<<< master
 	insert_tag = "clftrijent"
+=======
+	insert_tag = clftrijent
+>>>>>>> added nightmare insert tags to main maps
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"

@@ -67549,6 +67549,14 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
+"szl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = clftrijent
+	},
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
 "sDf" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison{
@@ -93425,7 +93433,7 @@ bHm
 bHm
 bHm
 bHm
-bHm
+szl
 dCt
 naH
 ozu

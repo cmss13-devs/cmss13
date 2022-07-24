@@ -8838,6 +8838,12 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/Northwest_Colony)
+"mfs" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = kutjevoclf01
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/complex_border/med_rec)
 "mfD" = (
 /obj/structure/prop/dam/truck/mining,
 /turf/open/auto_turf/sand/layer1,
@@ -37594,7 +37600,7 @@ sYo
 sYo
 smo
 msK
-msK
+mfs
 msK
 msK
 msK

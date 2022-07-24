@@ -190,10 +190,7 @@
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/effect/landmark/corpsespawner/clf,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -276,10 +273,7 @@
 "di" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "dw" = (
@@ -694,10 +688,7 @@
 /area/lv624/lazarus/crashed_ship)
 "kz" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
@@ -759,15 +750,12 @@
 "ly" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
 "lI" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-=======
->>>>>>> reimported backup
 "lN" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -796,10 +784,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -915,10 +900,7 @@
 "nP" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
@@ -1130,14 +1112,11 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
 "rl" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
-=======
->>>>>>> reimported backup
 "rm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -1391,10 +1370,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1489,10 +1465,7 @@
 "uZ" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
@@ -1639,6 +1612,7 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vX" = (
@@ -2313,10 +2287,7 @@
 /area/fiorina/tumor/ice_lab)
 "Fa" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2666,14 +2637,11 @@
 	},
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
 "JA" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-=======
->>>>>>> reimported backup
 "JD" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor{
@@ -3511,13 +3479,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
 "WK" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
-=======
->>>>>>> reimported backup
 "Xn" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_6_1"
@@ -3993,11 +3958,7 @@ Bs
 cS
 Df
 xl
-<<<<<<< master
 rl
-=======
-FB
->>>>>>> reimported backup
 Iu
 QZ
 QH
@@ -4041,11 +4002,7 @@ io
 Rp
 QZ
 Mr
-<<<<<<< master
 FB
-=======
-Iu
->>>>>>> reimported backup
 Gv
 Ne
 QZ
@@ -4141,21 +4098,13 @@ ko
 Nl
 NV
 Oi
-<<<<<<< master
 rl
-=======
-FB
->>>>>>> reimported backup
 xA
 QZ
 vs
 tE
 Zz
-<<<<<<< master
 lI
-=======
-nC
->>>>>>> reimported backup
 OS
 uZ
 mK
@@ -4239,11 +4188,7 @@ MT
 QZ
 gW
 kM
-<<<<<<< master
 FB
-=======
-Iu
->>>>>>> reimported backup
 Iu
 Wz
 qW
@@ -4283,11 +4228,7 @@ VN
 QZ
 bX
 XG
-<<<<<<< master
 FB
-=======
-Iu
->>>>>>> reimported backup
 Jd
 tY
 ko
@@ -4341,14 +4282,7 @@ bj
 Wz
 QZ
 Dw
-<<<<<<< master
 lI
-CZ
-nC
-gK
-Tt
-=======
-nC
 CZ
 nC
 gK
@@ -4388,13 +4322,8 @@ wv
 eo
 Wz
 Gj
-<<<<<<< master
 Gf
 lI
-=======
-Wz
-nC
->>>>>>> reimported backup
 Wz
 wS
 Bc
@@ -4618,13 +4547,8 @@ Iu
 Iu
 VD
 Wz
-<<<<<<< master
 lI
 JA
-=======
-nC
-Gf
->>>>>>> reimported backup
 Nq
 nU
 nC
@@ -4664,11 +4588,7 @@ Sn
 kd
 Ow
 pr
-<<<<<<< master
 WK
-=======
-pr
->>>>>>> reimported backup
 pr
 Wz
 Wz
@@ -4677,11 +4597,7 @@ nC
 vh
 Wz
 Wz
-<<<<<<< master
 JA
-=======
-Gf
->>>>>>> reimported backup
 yL
 eO
 us

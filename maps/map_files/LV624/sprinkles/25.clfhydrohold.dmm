@@ -11,9 +11,13 @@
 	pixel_y = 8
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -355,6 +359,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "rr" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -363,8 +370,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "rG" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -395,6 +405,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "sn" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
@@ -402,8 +415,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "sY" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -516,6 +532,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "xH" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -524,10 +543,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
 =======
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+>>>>>>> added spawn pointss for clf survivors
 "xX" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_closed_1";
@@ -545,9 +567,13 @@
 	pixel_y = 11
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -587,9 +613,13 @@
 	dir = 8
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -652,9 +682,13 @@
 	dir = 8
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -855,6 +889,9 @@
 	},
 /area/lv624/lazarus/hydroponics)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "LN" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -864,8 +901,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "LS" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/wood/small_stack{
@@ -958,10 +998,15 @@
 	pixel_y = 6
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -1030,6 +1075,9 @@
 "Rw" = (
 /obj/structure/barricade/wooden,
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
@@ -1039,8 +1087,11 @@
 "Rx" = (
 /obj/effect/spawner/random/attachment,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -1088,9 +1139,13 @@
 	pixel_x = 11
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1168,6 +1223,9 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Xh" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -1176,10 +1234,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
 =======
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Xk" = (
 /turf/open/floor{
 	dir = 9;
@@ -1315,10 +1376,14 @@ nw
 Fn
 Jp
 <<<<<<< master
+<<<<<<< master
 xH
 =======
 yr
 >>>>>>> reimported backup
+=======
+xH
+>>>>>>> added spawn pointss for clf survivors
 QK
 Xk
 jL
@@ -1350,12 +1415,15 @@ tj
 Ew
 WY
 Tu
-Cj
+rr
 Xk
+sn
 Xk
-Xk
-Xk
+<<<<<<< master
 >>>>>>> reimported backup
+=======
+sn
+>>>>>>> added spawn pointss for clf survivors
 yr
 HW
 cF
@@ -1377,10 +1445,14 @@ Ec
 Ec
 Gw
 <<<<<<< master
+<<<<<<< master
 Xh
 =======
 Xk
 >>>>>>> reimported backup
+=======
+Xh
+>>>>>>> added spawn pointss for clf survivors
 as
 jA
 vK
@@ -1388,10 +1460,14 @@ kN
 wj
 Xk
 <<<<<<< master
+<<<<<<< master
 sn
 =======
 Xk
 >>>>>>> reimported backup
+=======
+sn
+>>>>>>> added spawn pointss for clf survivors
 OJ
 Ec
 Ec
@@ -1438,7 +1514,7 @@ ne
 Rw
 Gy
 lU
-Xk
+sn
 Jp
 Ql
 Gs
@@ -1474,6 +1550,7 @@ DE
 NX
 Ph
 LN
+<<<<<<< master
 =======
 kV
 =======
@@ -1482,6 +1559,8 @@ NX
 Ph
 Cj
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 Xk
 sY
 qN
@@ -1491,10 +1570,14 @@ ay
 cj
 Xk
 <<<<<<< master
+<<<<<<< master
 Xh
 =======
 Xk
 >>>>>>> reimported backup
+=======
+Xh
+>>>>>>> added spawn pointss for clf survivors
 Yz
 EG
 vN
@@ -1515,8 +1598,12 @@ tj
 wa
 WY
 Xk
+<<<<<<< master
 Xk
 >>>>>>> reimported backup
+=======
+Xh
+>>>>>>> added spawn pointss for clf survivors
 me
 bJ
 kY
@@ -1575,6 +1662,7 @@ Xk
 Xk
 Md
 <<<<<<< master
+<<<<<<< master
 sn
 Cj
 Ql
@@ -1582,6 +1670,9 @@ cs
 gp
 =======
 Xk
+=======
+sn
+>>>>>>> added spawn pointss for clf survivors
 Cj
 Ql
 cs
@@ -1611,6 +1702,7 @@ mn
 Cj
 Xk
 <<<<<<< master
+<<<<<<< master
 Xh
 Xk
 Rx
@@ -1619,6 +1711,11 @@ Xk
 Xk
 Jp
 >>>>>>> reimported backup
+=======
+Xh
+Xk
+Rx
+>>>>>>> added spawn pointss for clf survivors
 Pm
 pw
 Ew

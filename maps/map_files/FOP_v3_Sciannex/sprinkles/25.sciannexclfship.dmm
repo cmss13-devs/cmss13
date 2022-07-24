@@ -191,9 +191,13 @@
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/effect/landmark/corpsespawner/clf,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -277,9 +281,13 @@
 /obj/item/stack/rods,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "dw" = (
@@ -718,9 +726,13 @@
 "kz" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
@@ -783,14 +795,20 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv624/lazarus/crashed_ship)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "lI" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "lN" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -820,9 +838,13 @@
 	icon_state = "casing_2_1"
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -939,9 +961,13 @@
 /obj/structure/bed/chair,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
@@ -1170,13 +1196,19 @@
 	},
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "rl" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "rm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -1431,9 +1463,13 @@
 	icon_state = "casing_9_1"
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1529,9 +1565,13 @@
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
@@ -1692,6 +1732,9 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -2392,9 +2435,13 @@
 "Fa" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+>>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2745,13 +2792,19 @@
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "JA" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "JD" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor{
@@ -3608,12 +3661,18 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> added spawn pointss for clf survivors
 "WK" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
+<<<<<<< master
 =======
 >>>>>>> reimported backup
+=======
+>>>>>>> added spawn pointss for clf survivors
 "Xn" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_6_1"
@@ -4106,10 +4165,14 @@ cS
 Df
 xl
 <<<<<<< master
+<<<<<<< master
 rl
 =======
 FB
 >>>>>>> reimported backup
+=======
+rl
+>>>>>>> added spawn pointss for clf survivors
 Iu
 QZ
 QH
@@ -4154,10 +4217,14 @@ Rp
 QZ
 Mr
 <<<<<<< master
+<<<<<<< master
 FB
 =======
 Iu
 >>>>>>> reimported backup
+=======
+FB
+>>>>>>> added spawn pointss for clf survivors
 Gv
 Ne
 QZ
@@ -4262,20 +4329,28 @@ Nl
 NV
 Oi
 <<<<<<< master
+<<<<<<< master
 rl
 =======
 FB
 >>>>>>> reimported backup
+=======
+rl
+>>>>>>> added spawn pointss for clf survivors
 xA
 QZ
 vs
 tE
 Zz
 <<<<<<< master
+<<<<<<< master
 lI
 =======
 nC
 >>>>>>> reimported backup
+=======
+lI
+>>>>>>> added spawn pointss for clf survivors
 OS
 uZ
 mK
@@ -4360,10 +4435,14 @@ QZ
 gW
 kM
 <<<<<<< master
+<<<<<<< master
 FB
 =======
 Iu
 >>>>>>> reimported backup
+=======
+FB
+>>>>>>> added spawn pointss for clf survivors
 Iu
 Wz
 qW
@@ -4404,10 +4483,14 @@ QZ
 bX
 XG
 <<<<<<< master
+<<<<<<< master
 FB
 =======
 Iu
 >>>>>>> reimported backup
+=======
+FB
+>>>>>>> added spawn pointss for clf survivors
 Jd
 tY
 ko
@@ -4470,6 +4553,7 @@ Wz
 QZ
 Dw
 <<<<<<< master
+<<<<<<< master
 lI
 CZ
 nC
@@ -4477,6 +4561,9 @@ gK
 Tt
 =======
 nC
+=======
+lI
+>>>>>>> added spawn pointss for clf survivors
 CZ
 nC
 gK
@@ -4522,12 +4609,17 @@ eo
 Wz
 Gj
 <<<<<<< master
+<<<<<<< master
 Gf
 lI
 =======
 Wz
 nC
 >>>>>>> reimported backup
+=======
+Gf
+lI
+>>>>>>> added spawn pointss for clf survivors
 Wz
 wS
 Bc
@@ -4784,12 +4876,17 @@ Iu
 VD
 Wz
 <<<<<<< master
+<<<<<<< master
 lI
 JA
 =======
 nC
 Gf
 >>>>>>> reimported backup
+=======
+lI
+JA
+>>>>>>> added spawn pointss for clf survivors
 Nq
 nU
 nC
@@ -4830,10 +4927,14 @@ kd
 Ow
 pr
 <<<<<<< master
+<<<<<<< master
 WK
 =======
 pr
 >>>>>>> reimported backup
+=======
+WK
+>>>>>>> added spawn pointss for clf survivors
 pr
 Wz
 Wz
@@ -4843,10 +4944,14 @@ vh
 Wz
 Wz
 <<<<<<< master
+<<<<<<< master
 JA
 =======
 Gf
 >>>>>>> reimported backup
+=======
+JA
+>>>>>>> added spawn pointss for clf survivors
 yL
 eO
 us

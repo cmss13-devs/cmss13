@@ -1968,7 +1968,6 @@
 #include "code\modules\tgui\states\deep_inventory.dm"
 #include "code\modules\tgui\states\default.dm"
 #include "code\modules\tgui\states\inventory.dm"
-#include "code\modules\tgui\states\not_incapacitated_and_adjacent.dm"
 #include "code\modules\tgui\states\observer.dm"
 #include "code\modules\tgui\states\self.dm"
 #include "code\modules\tgui\states\xeno.dm"

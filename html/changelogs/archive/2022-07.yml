@@ -247,6 +247,7 @@
   - bugfix: Auto-turfs now generate their inner and outer corners correctly.
   Segrain:
   - bugfix: Zombies and PMC snipers once again have the intended nightvision.
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/master
 2022-07-19:
   50RemAndCounting:
@@ -382,3 +383,5 @@
   - rscadd: me" custom emotes will now appear in above-head chat
 =======
 >>>>>>> Revert "Merge branch 'cmss13-devs:master' into br_laststand"
+=======
+>>>>>>> big_red_laststand

@@ -1153,11 +1153,21 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshal_office)
-"Gd" = (
+"Gi" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshal_office)
+"Gj" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/marshal_office)
+"GF" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
-/obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
@@ -1230,9 +1240,6 @@
 /obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_y = -8;
 	pixel_x = 7
-	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)

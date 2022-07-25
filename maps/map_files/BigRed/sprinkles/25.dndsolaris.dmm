@@ -512,6 +512,7 @@
 "Ro" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/clothing/suit/imperium_monk,
+/obj/item/storage/bible,
 /turf/open/floor{
 	icon_state = "wood"
 	},

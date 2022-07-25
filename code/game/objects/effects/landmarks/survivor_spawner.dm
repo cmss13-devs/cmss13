@@ -70,5 +70,5 @@
 	equipment = /datum/equipment_preset/survivor/civilian
 	intro_text = list("<h2>You are a civilian participating in a dungeons and dragons game!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat due to the rather engaging dnd game going on.</span>",\
-	"<span class='danger'>Your primary objective is to have a fun time and survive.</span>")
-	story_text = "You are a goup of colonist who regularly meet up to play dnd in the library every friday night. You alongside your fellow colonist brought various costumes, food, drinks, and props (very real guns) to help get you all into character. You aren't very exceptional in your skills but you do have the one thing that bests even the mightiest demons. That special power imagination!"
+	"<span class='danger'>Your primary objective is to have a fun time and survive. If you want to assualt the hive - ahelp.</span>")
+	story_text = "You are a group of colonist who regularly meet up to play dnd in the library every friday night. You alongside your fellow colonist brought various costumes, food, drinks, and props (very real guns) to help get you all into character. You aren't very exceptional in your skills but you do have the one thing that bests even the mightiest demons. That special power imagination!"

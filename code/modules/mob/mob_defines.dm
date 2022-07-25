@@ -6,8 +6,6 @@
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 
-	var/icon_size = 32
-
 	// An ID that uniquely identifies this mob through the full round
 	var/gid = 0
 

@@ -247,6 +247,7 @@
   - bugfix: Auto-turfs now generate their inner and outer corners correctly.
   Segrain:
   - bugfix: Zombies and PMC snipers once again have the intended nightvision.
+<<<<<<< refs/remotes/origin/master
 2022-07-19:
   50RemAndCounting:
   - bugfix: Kutjevo/Trijent tallgrass and other flora can now be properly cut away
@@ -379,3 +380,5 @@
       can't feel it anyways. Fake it if you want.
   - rscadd: added above-head chat messages for the *medic emote
   - rscadd: me" custom emotes will now appear in above-head chat
+=======
+>>>>>>> Revert "Merge branch 'cmss13-devs:master' into br_laststand"

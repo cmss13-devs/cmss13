@@ -35,7 +35,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 7
-	var/gunner_view_buff = 10
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/primary/dualcannon,
@@ -64,11 +63,11 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	dmg_multipliers = list(
 		"all" = 1,
-		"acid" = 1.6,
-		"slash" = 0.8,
+		"acid" = 1.5,
+		"slash" = 0.7,
 		"bullet" = 0.6,
-		"explosive" = 0.7,
-		"blunt" = 0.7,
+		"explosive" = 0.9,
+		"blunt" = 0.9,
 		"abstract" = 1.0
 	)
 

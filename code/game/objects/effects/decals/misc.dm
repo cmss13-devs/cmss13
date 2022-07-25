@@ -40,16 +40,24 @@
 		// Are we hitting someone?
 		if(ishuman(A))
 			// Check what they are hit with
-			var/list/reagent_list = list()
+			var/reagent_list_text		// The list of reagents
+			var/counter = 0				// Used for formatting
+			var/log_spraying = FALSE	// If it worths logging
 			for(var/X in reagents.reagent_list)
 				var/datum/reagent/R = X
 				// Is it a chemical we should log?
 				if(R.spray_warning)
-					reagent_list += "[R]"
+					if(counter == 0)
+						reagent_list_text += "[R.name]"
+					else
+						reagent_list_text += ", [R.name]"
 
 			// One or more bad reagents means we log it
-			if(length(reagent_list) && source_user)
-				var/reagent_list_text = english_list(reagent_list)
+			if(!counter)
+				log_spraying = TRUE
+
+			// Did we have a log-worthy spray? Then we log it
+			if(log_spraying && source_user)
 				var/mob/living/carbon/human/M = A
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [name] (REAGENT: [reagent_list_text]) by [key_name(source_user)]</font>")
 				source_user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [name] (REAGENT: [reagent_list_text]) to spray [key_name(M)]</font>")

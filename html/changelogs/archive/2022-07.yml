@@ -364,4 +364,6 @@
   - rscadd: flashes now tell you how many flashes they have left when you use them,
       when you examine them, and they tell you when they recharge a flash
   - rscadd: you can now only use a flash twice per second.
-
+2022-07-24:
+  Segrain:
+  - admin: Fixed attack logs for spraying somebody with chemicals.

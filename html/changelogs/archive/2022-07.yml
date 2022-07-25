@@ -374,6 +374,7 @@
   Geevies:
   - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
       causes scatter over time.
+<<<<<<< HEAD
   stanalbatross:
   - rscadd: added back above-head chat messages when you scream or cry out in pain
   - rscdel: synths can no longer scream or cry out in pain - let's face it, you guys
@@ -382,3 +383,5 @@
   - rscadd: me" custom emotes will now appear in above-head chat
 =======
 >>>>>>> Revert "Merge branch 'cmss13-devs:master' into br_laststand"
+=======
+>>>>>>> parent of 8aef920... Automatic changelog compile [ci skip]

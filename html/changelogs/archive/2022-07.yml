@@ -368,6 +368,8 @@
   Segrain:
   - admin: Fixed attack logs for spraying somebody with chemicals.
 2022-07-25:
+  50RemAndCounting:
+  - qol: The bell tower sound effect is not obnoxiously loud anymore.
   Geevies:
   - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
       causes scatter over time.

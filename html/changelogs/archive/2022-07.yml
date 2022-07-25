@@ -248,6 +248,9 @@
   Segrain:
   - bugfix: Zombies and PMC snipers once again have the intended nightvision.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 39f58e8... Revert "Merge branch 'cmss13-devs:master' into br_laststand"
 <<<<<<< refs/remotes/origin/master
 2022-07-19:
   50RemAndCounting:
@@ -383,5 +386,8 @@
   - rscadd: me" custom emotes will now appear in above-head chat
 =======
 >>>>>>> Revert "Merge branch 'cmss13-devs:master' into br_laststand"
+<<<<<<< HEAD
 =======
 >>>>>>> big_red_laststand
+=======
+>>>>>>> 39f58e8... Revert "Merge branch 'cmss13-devs:master' into br_laststand"

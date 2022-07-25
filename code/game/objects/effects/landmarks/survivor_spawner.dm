@@ -58,3 +58,17 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 	make_objective = 1
+
+/obj/effect/landmark/survivor_spawner/bigred_clf
+	equipment = /datum/equipment_preset/survivor/clf
+	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier of the Colonial Liberation Front. Your ship received a distress signal from a planet bordering CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded a small ship called the Marie Curie. You took over the Colonial Marshal's office and sent an all clear signal to the nearby PMC distress team, however an unknown entity has responded to the call. You dont know who they are but they will likely identify you as a foe."
+
+/obj/effect/landmark/survivor_spawner/dnd
+	equipment = /datum/equipment_preset/survivor/civilian
+	intro_text = list("<h2>You are a civilian participating in a dungeons and dragons game!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat due to the rather engaging dnd game going on.</span>",\
+	"<span class='danger'>Your primary objective is to have a fun time and survive. If you want to assualt the hive - ahelp.</span>")
+	story_text = "You are a group of colonist who regularly meet up to play dnd in the library every friday afternoon. You alongside your fellow colonist brought various costumes, food, drinks, and props (very real guns) to help get you all into character. You aren't very exceptional in your skills but you do have the one thing that bests even the mightiest demons. That special power imagination!"

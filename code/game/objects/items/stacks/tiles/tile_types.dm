@@ -15,7 +15,6 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
-	stack_id = "abstract tile"
 
 	var/turf_type = /turf/open/floor/plating
 
@@ -26,10 +25,10 @@
 
 /obj/item/stack/tile/proc/set_turf_type(var/new_turf_type)
 	var/turf/open/floor/floor_type = new_turf_type
-	name = "[initial(floor_type.name)] tile"
+	name = initial(floor_type.name)
 	singular_name = name
 	turf_type = new_turf_type
-	stack_id = name
+	stack_id = "[new_turf_type]"
 
 /obj/item/stack/tile/proc/build(var/turf/build_turf)
 	build_turf.ChangeTurf(turf_type)
@@ -47,7 +46,7 @@
 	throw_range = 6
 	flags_atom = FPRINT|CONDUCT
 	max_amount = 60
-	stack_id = "floor tile"
+
 	turf_type = null
 
 /obj/item/stack/tile/plasteel/Initialize(mapload, amount)
@@ -62,11 +61,10 @@
  * Grass
  */
 /obj/item/stack/tile/grass
-	name = "grass patch tile"
+	name = "grass tile"
 	desc = "A patch of grass like they often use on golf courses."
-	singular_name = "grass patch tile"
+	singular_name = "grass floor tile"
 	icon_state = "tile_grass"
-	stack_id = "grass patch tile"
 	turf_type = /turf/open/floor/grass
 
 
@@ -74,27 +72,18 @@
  * Wood
  */
 /obj/item/stack/tile/wood
-	name = "wooden floor tile"
+	name = "wood floor tile"
 	desc = "An easy to fit wooden floor tile."
-	singular_name = "wooden floor tile"
+	singular_name = "wood floor tile"
 	icon_state = "tile-wood"
-	stack_id = "wooden floor tile"
 	turf_type = /turf/open/floor/wood
-
-/obj/item/stack/tile/wood/fake
-	name = "fake wooden floor tile"
-	desc = "Looks like wood. Feels like metal."
-	singular_name = "fake wooden floor tile"
-	stack_id = "fake wooden floor tile"
-	turf_type = /turf/open/floor/wood/ship
 
 /*
  * Carpets
  */
 /obj/item/stack/tile/carpet
-	name = "carpet tile"
+	name = "carpet"
 	desc = "A piece of carpet. It is the same size as a normal floor tile!"
-	singular_name = "carpet tile"
+	singular_name = "carpet"
 	icon_state = "tile-carpet"
-	stack_id = "carpet tile"
 	turf_type = /turf/open/floor/carpet

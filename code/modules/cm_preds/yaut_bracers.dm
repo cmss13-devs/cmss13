@@ -125,9 +125,6 @@
 	if(forced || HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return FALSE
 
-	if(user.is_mob_incapacitated()) //let's do this here to avoid to_chats to dead guys
-		return TRUE
-
 	var/workingProbability = 20
 	var/randomProbability = 10
 	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
@@ -470,9 +467,6 @@
 		return
 
 	var/mob/living/carbon/human/M = caller
-
-	if(!istype(M) || M.is_mob_incapacitated())
-		return FALSE
 
 	if(cloaked) //Turn it off.
 		if(cloak_timer > world.time)

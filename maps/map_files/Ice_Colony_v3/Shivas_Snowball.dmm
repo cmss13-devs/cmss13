@@ -8477,12 +8477,6 @@
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/s_admin)
-"cwm" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-eastsouth"
-	},
-/turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
 "cwZ" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse/caves)
@@ -9890,12 +9884,6 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
-"ehe" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-entrance"
-	},
-/turf/closed/wall/shiva/prefabricated/blue,
-/area/shiva/interior/colony/research_hab)
 "ehV" = (
 /obj/structure/platform/shiva/catwalk{
 	dir = 1
@@ -13350,12 +13338,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/medseceng)
-"ifQ" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-cave-complete"
-	},
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
 "igl" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -14347,12 +14329,6 @@
 	},
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
-"jfS" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-south-caves"
-	},
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
 "jgz" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -15120,14 +15096,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/medseceng)
-"kdd" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-east-gate"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "kdy" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva{
@@ -15399,12 +15367,6 @@
 	icon_state = "green"
 	},
 /area/shiva/interior/colony/botany)
-"krT" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-elevator"
-	},
-/turf/closed/wall/shiva/prefabricated/orange,
-/area/shiva/interior/colony/research_hab)
 "krU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
@@ -16227,12 +16189,6 @@
 /obj/structure/surface/rack,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
-"lhu" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "south-spidercave"
-	},
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
 "lip" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
@@ -16848,14 +16804,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
-"lTL" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-north"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "lTN" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -18865,12 +18813,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
-"ocl" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "labs-larder"
-	},
-/turf/closed/wall/shiva/prefabricated/blue,
-/area/shiva/interior/colony/research_hab)
 "ocv" = (
 /obj/item/weapon/melee/ice_axe/red,
 /turf/open/auto_turf/ice/layer0,
@@ -20678,15 +20620,6 @@
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"qaI" = (
-/obj/structure/flora/bush/snow{
-	icon_state = "snowgrassbb_3"
-	},
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-southeast"
-	},
-/turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
 "qbh" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/firealarm{
@@ -24209,12 +24142,6 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
-"tUN" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-southwest"
-	},
-/turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
 "tVZ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_1"
@@ -24882,14 +24809,6 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/colony/central)
-"uDZ" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-east"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "uEo" = (
 /obj/structure/platform/strata,
 /obj/item/lightstick/variant/planted,
@@ -25273,16 +25192,6 @@
 	},
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
-"uTM" = (
-/obj/structure/foamed_metal,
-/obj/effect/decal/cleanable/ash,
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-southeast-gate"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "uTN" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/shiva{
@@ -27458,12 +27367,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/cp_camp)
-"xFN" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz2-south-gate"
-	},
-/turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
 "xFP" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/research_hab)
@@ -28440,7 +28343,7 @@ puZ
 puZ
 puZ
 puZ
-jfS
+puZ
 puZ
 puZ
 puZ
@@ -29049,7 +28952,7 @@ caS
 caS
 caS
 caS
-caS
+vUR
 aac
 iVT
 pME
@@ -29211,7 +29114,7 @@ caS
 caS
 caS
 caS
-caS
+vUR
 aac
 reV
 fZP
@@ -29373,7 +29276,7 @@ dsD
 gpn
 caS
 caS
-caS
+vUR
 aac
 aac
 tQN
@@ -29471,7 +29374,7 @@ puZ
 puZ
 puZ
 puZ
-lhu
+puZ
 puZ
 puZ
 asz
@@ -29535,7 +29438,7 @@ dsD
 mFm
 caS
 caS
-caS
+vUR
 aac
 aac
 lYf
@@ -30383,7 +30286,7 @@ mFm
 caS
 caS
 mMK
-tUN
+mMK
 kOV
 kOV
 kOV
@@ -31356,7 +31259,7 @@ caS
 caS
 caS
 caS
-xFN
+mMK
 eni
 eni
 mMK
@@ -31465,7 +31368,7 @@ rZt
 flN
 puZ
 puZ
-ifQ
+puZ
 puZ
 "}
 (23,1,1) = {"
@@ -32651,7 +32554,7 @@ cBB
 wMj
 wMj
 mMK
-qaI
+aHb
 kOV
 kOV
 eni
@@ -32712,7 +32615,7 @@ dRb
 dRb
 dRb
 dRb
-ocl
+lSU
 dwQ
 dwQ
 dwQ
@@ -33274,13 +33177,13 @@ iuK
 iuK
 mFm
 arB
-kdd
 mFm
 mFm
 mFm
 mFm
 mFm
-uDZ
+mFm
+mFm
 bFP
 mFm
 aqb
@@ -33288,7 +33191,7 @@ iuK
 iuK
 mFm
 arB
-uTM
+hlO
 jMD
 ftm
 mFm
@@ -33428,7 +33331,7 @@ mFm
 caS
 caS
 mFm
-lTL
+mFm
 caS
 voH
 slj
@@ -33461,7 +33364,7 @@ jMD
 wMj
 wMj
 mMK
-cwm
+mMK
 kOV
 kOV
 kOV
@@ -34339,7 +34242,7 @@ rEW
 lSU
 lSU
 lSU
-ehe
+lSU
 bxW
 chU
 goj
@@ -37248,7 +37151,7 @@ asz
 asz
 asz
 asz
-krT
+asz
 rZt
 rZt
 rZt

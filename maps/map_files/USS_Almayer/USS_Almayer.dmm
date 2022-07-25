@@ -29842,6 +29842,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_south)
+"bVI" = (
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "cl_shutters 2";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/corporateliason)
 "bVL" = (
 /obj/structure/surface/rack,
 /obj/structure/ob_ammo/ob_fuel,
@@ -30291,16 +30300,16 @@
 	},
 /area/almayer/medical/operating_room_two)
 "bXx" = (
+/obj/structure/machinery/door_control{
+	id = "cl_shutters 2";
+	name = "Quarters Shutters";
+	pixel_x = -25;
+	req_access_txt = "200"
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_y = 7;
 	tag = "icon-plant-10"
-	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
-	name = "Quarters Shutters";
-	pixel_x = -25;
-	req_access_txt = "200"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -30411,7 +30420,7 @@
 /area/almayer/engineering/engine_core)
 "bXW" = (
 /obj/structure/machinery/door_control{
-	id = "cl_shutters 3";
+	id = "cl_shutters 2";
 	name = "Quarters Shutters";
 	pixel_x = 25;
 	req_access_txt = "200"
@@ -38615,13 +38624,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cl_shutters 2";
-	name = "Quarters Shutters";
-	req_access_txt = "200";
-	pixel_y = 37;
-	pixel_x = 11
-	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "dWX" = (
@@ -38899,18 +38901,13 @@
 	pixel_x = -15;
 	req_access_txt = "200"
 	},
-/obj/item/storage/fancy/cigarettes/blackpack{
-	pixel_x = -1;
-	pixel_y = 1
-	},
+/obj/item/storage/fancy/cigarettes/blackpack,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/fancy/cigarettes/wypacket{
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/obj/item/tool/lighter/zippo/gold{
-	pixel_x = 2
-	},
+/obj/item/tool/lighter/zippo/gold,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
 "ecR" = (
@@ -41881,21 +41878,18 @@
 /area/almayer/command/cichallway)
 "fqe" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen/blue/clicky{
-	pixel_y = 2;
-	pixel_x = 2
+/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/clicky,
+/obj/item/paper_bin/wy,
+/obj/item/folder/black_random{
+	pixel_x = 3;
+	pixel_y = 3
 	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/obj/item/tool/pen/clicky{
-	pixel_y = -1;
-	pixel_x = 1
-	},
-/obj/item/paper_bin/wy{
-	pixel_y = 5;
-	pixel_x = -5
+/obj/item/tool/stamp{
+	name = "Corporate Liaison's stamp";
+	pixel_x = 3;
+	pixel_y = 10
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -48044,10 +48038,7 @@
 	pixel_y = 4
 	},
 /obj/item/clothing/glasses/monocle,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = -2
-	},
+/obj/item/reagent_container/food/drinks/coffee,
 /obj/item/staff/gentcane{
 	pixel_x = 5
 	},
@@ -48238,15 +48229,6 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "ilv" = (
 /obj/structure/surface/table/almayer,
-/obj/item/folder/black_random{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/tool/stamp{
-	name = "Corporate Liaison's stamp";
-	pixel_x = -8;
-	pixel_y = 6
-	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "ily" = (
@@ -56293,6 +56275,13 @@
 "maq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -4
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
 "maw" = (
@@ -58424,7 +58413,7 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = "cl_shutters 3";
+	id = "cl_shutters 2";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/disposalpipe/segment{
@@ -65853,6 +65842,9 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/storage/photo_album,
+/obj/item/reagent_container/food/drinks/cans/aspen{
+	pixel_x = 8
+	},
 /obj/item/device/camera_film,
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
@@ -75648,9 +75640,7 @@
 /area/almayer/living/cafeteria_starboard)
 "uTN" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clipboard{
-	pixel_x = -4
-	},
+/obj/item/clipboard,
 /obj/item/device/taperecorder{
 	pixel_x = 3;
 	pixel_y = 3
@@ -116683,7 +116673,7 @@ awE
 tnm
 dhQ
 qyz
-awE
+bVI
 vGk
 vGk
 gYS
@@ -116886,7 +116876,7 @@ aRD
 aGt
 byp
 uTN
-awE
+bVI
 vGk
 qVM
 qVM
@@ -117089,7 +117079,7 @@ eHj
 bvl
 byq
 maq
-awE
+bVI
 vGk
 qVM
 riM
@@ -117713,7 +117703,7 @@ aaa
 aaa
 aaa
 aaa
-bdH
+aaa
 aaa
 aaa
 aaa

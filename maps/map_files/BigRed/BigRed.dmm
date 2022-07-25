@@ -36855,12 +36855,6 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/caves_east)
-"sfW" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = bigredbarls
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/bar)
 "sgF" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -39184,12 +39178,6 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_lambda)
-"wQW" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = clfmarshalls
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/medical)
 "wRH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight,
@@ -56754,7 +56742,7 @@ aic
 acp
 acp
 acp
-wQW
+alX
 aqD
 aqD
 aqD
@@ -64166,7 +64154,7 @@ aoz
 anJ
 aoz
 anJ
-sfW
+anJ
 aHD
 aBR
 aVo

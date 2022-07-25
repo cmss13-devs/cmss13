@@ -29497,15 +29497,12 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_lambda)
-"ciY" = (
-/obj/structure/machinery/light/small{
-	dir = 1
+"cks" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "dndsolaris"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/bigredv2/caves/mining)
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/library)
 "clB" = (
 /turf/open/floor{
 	dir = 1;
@@ -29632,6 +29629,8 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"cwk" = (
+)
 "cxi" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -33497,11 +33496,12 @@
 "kYd" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/e)
-"kZG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/storage/bible/hefa,
-/turf/open/floor/plating,
-/area/bigredv2/caves/mining)
+"kYA" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "bigredbarls"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
 "laj" = (
 /obj/structure/tunnel{
 	id = "hole5"
@@ -38273,32 +38273,12 @@
 	},
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
-"uJI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
-	dir = 1
+"uLP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmarshalls"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves/mining)
-"uNW" = (
-/obj/effect/decal/cleanable/blood{
-	dir = 8;
-	icon_state = "gib6";
-	layer = 4;
-	pixel_x = 12;
-	pixel_y = 3;
-	tag = "icon-gib6"
-	},
-/obj/effect/landmark/corpsespawner/miner,
-/obj/effect/decal/cleanable/blood,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_13";
-	tag = "icon-mars_cave_13"
-	},
-/area/bigredv2/caves/mining)
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/marshal_office)
 "uPm" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -45410,7 +45390,7 @@ qhk
 cVd
 jGQ
 gGO
-kZG
+cwk
 kCe
 uzB
 rxh
@@ -46299,7 +46279,7 @@ tZU
 pSa
 sqQ
 oKy
-uJI
+cwk
 rxh
 rxh
 jtL
@@ -48230,7 +48210,7 @@ hzP
 fnO
 xkR
 tWS
-uNW
+cwk
 iJF
 omG
 pJX
@@ -54533,7 +54513,7 @@ rsv
 rsv
 oIc
 vHw
-ciY
+cwk
 xRl
 sbk
 wVQ
@@ -57651,7 +57631,7 @@ acp
 als
 ajL
 anc
-acp
+uLP
 acp
 acp
 alX

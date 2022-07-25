@@ -159,6 +159,9 @@ They're all essentially identical when it comes to getting the job done.
 	if(!QDELETED(src))
 		qdel(src)
 
+/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+	return
+
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
 /obj/item/ammo_magazine/internal
 	name = "internal chamber"
@@ -339,19 +342,16 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	apply_fire_overlay()
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
 
-/obj/item/ammo_box/proc/apply_fire_overlay(var/will_explode = FALSE)
-	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
-	var/offset_x = pixel_x
-	var/offset_y = pixel_y
-	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
-		offset_x += 1
-		offset_y += -6
-	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
-		offset_y += -2
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
-	overlays.Add(fire_overlay)
+/obj/item/ammo_box/proc/get_severity()
+	return
 
-/obj/item/ammo_box/proc/explode(var/severity, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/proc/apply_fire_overlay()
+	return
+
+/obj/item/ammo_box/proc/process_burning()
+	return
+
+/obj/item/ammo_box/proc/explode()
 	qdel(src)
 
 /obj/item/ammo_box/magazine
@@ -424,12 +424,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				return
 			to_chat(user, SPAN_INFO("It feels almost full."))
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
 	..()
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 
 	if(length(contents))
@@ -477,7 +477,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/afterattack(atom/target, mob/living/user, proximity)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 	if(!proximity)
 		return
@@ -492,18 +492,25 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(burning)
 		return
 	burning = TRUE
-	if(can_explode)
-		var/severity = 0
+	process_burning(flame_cause_data)
+	return
 
-		if(handfuls)
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
-			if(AM)
-				severity = round(AM.current_rounds / 40)
-		else
-			for(var/obj/item/ammo_magazine/AM in contents)
-				severity += AM.current_rounds
-			severity = round(severity / 150)
-		//we need a lot of bullets to produce an explosion. Different scaling because of very different ammo counts
+//we need a lot of bullets to produce an explosion. Different scaling because of very different ammo counts
+/obj/item/ammo_box/magazine/get_severity()
+	var/severity = 0
+	if(handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		if(AM)
+			severity = round(AM.current_rounds / 40)
+	else
+		for(var/obj/item/ammo_magazine/AM in contents)
+			severity += AM.current_rounds
+		severity = round(severity / 150)
+	return severity
+
+/obj/item/ammo_box/magazine/process_burning(var/datum/cause_data/flame_cause_data)
+	if(can_explode)
+		var/severity = get_severity()
 
 		if(severity > 0)
 			if(istype(loc, /obj/structure/magazine_box))
@@ -536,10 +543,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/offset_x = pixel_x
 	var/offset_y = pixel_y
-	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
-		offset_x += 1
-		offset_y += -6
-	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
+	if(limit_per_tile == 1)	//snowflake nailgun ammo box again
 		offset_y += -2
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
 	overlays.Add(fire_overlay)
@@ -1348,6 +1352,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(burning)
 		return
 	burning = TRUE
+	process_burning(flame_cause_data)
+	return
+
+/obj/item/ammo_box/rounds/get_severity()
+	return round(bullet_amount / 200)
+
+/obj/item/ammo_box/rounds/process_burning(var/datum/cause_data/flame_cause_data)
 	if(can_explode)
 		var/severity = 0
 		severity = round(bullet_amount / 200)
@@ -1503,7 +1514,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(burning)
 		return
 	burning = TRUE
+	process_burning()
+	return
 
+/obj/item/ammo_box/magazine/misc/get_severity()
+	return
+
+/obj/item/ammo_box/magazine/misc/process_burning()
 	if(istype(loc, /obj/structure/magazine_box))
 		var/obj/structure/magazine_box/host_box = loc
 		host_box.apply_fire_overlay()
@@ -1559,11 +1576,30 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		return
 	burning = TRUE
 
+
+	if(istype(loc, /obj/structure/magazine_box))
+		var/obj/structure/magazine_box/host_box = loc
+		host_box.apply_fire_overlay()
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		//need to make sure we also delete the structure box
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
+	else
+		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+		apply_fire_overlay()
+		SetLuminosity(3)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	return
+
+/obj/item/ammo_box/magazine/misc/flares/get_severity()
 	var/flare_amount = 0
 	for(var/obj/item/storage/box/m94/flare_box in contents)
 		flare_amount += flare_box.contents.len
 	flare_amount = round(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we take
+	return flare_amount
 
+/obj/item/ammo_box/magazine/misc/flares/process_burning()
+	var/flare_amount = get_severity()
 	if(flare_amount > 0)
 
 		if(istype(loc, /obj/structure/magazine_box))
@@ -1584,27 +1620,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			for(var/i = 1, i <= flare_amount, i++)
 				addtimer(CALLBACK(src, .proc/explode, src), rand(1, 6) SECONDS)
 		return
-
-	if(istype(loc, /obj/structure/magazine_box))
-		var/obj/structure/magazine_box/host_box = loc
-		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
-		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		//need to make sure we also delete the structure box
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
-	else
-		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		apply_fire_overlay()
-		SetLuminosity(3)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
-	return
-
-/obj/item/ammo_box/magazine/misc/flares/apply_fire_overlay(var/will_explode = FALSE)
-	var/offset_x = 1
-	var/offset_y = -6
-
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
-	overlays.Add(fire_overlay)
 
 //for flare box, instead of actually exploding, we throw out a flare at random direction
 /obj/item/ammo_box/magazine/misc/flares/explode(var/obj/structure/magazine_box/host_box)

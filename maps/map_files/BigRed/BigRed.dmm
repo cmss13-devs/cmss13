@@ -29497,12 +29497,6 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_lambda)
-"cks" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "dndsolaris"
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/library)
 "clB" = (
 /turf/open/floor{
 	dir = 1;
@@ -33496,12 +33490,6 @@
 "kYd" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/e)
-"kYA" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "bigredbarls"
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/bar)
 "laj" = (
 /obj/structure/tunnel{
 	id = "hole5"
@@ -35466,12 +35454,6 @@
 "pmS" = (
 /turf/open/mars,
 /area/bigredv2/caves_north)
-"pmW" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = dndsolaris
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/library)
 "pnL" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
@@ -72206,7 +72188,7 @@ anW
 anW
 anW
 anW
-pmW
+anW
 anW
 aTq
 aUp

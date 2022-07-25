@@ -35283,7 +35283,7 @@
 /area/bigredv2/caves/mining)
 "oXK" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = dndsolaris
+	insert_tag = "dndsolaris"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/library)

@@ -35281,6 +35281,12 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
+"oXK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = dndsolaris
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/library)
 "oZA" = (
 /obj/structure/prop/almayer/cannon_cables{
 	name = "\improper Large Cables";
@@ -72176,7 +72182,7 @@ anW
 anW
 anW
 anW
-anW
+oXK
 anW
 aTq
 aUp

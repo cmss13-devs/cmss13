@@ -351,8 +351,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/proc/process_burning()
 	return
 
-/obj/item/ammo_box/proc/explode()
-	qdel(src)
+/obj/item/ammo_box/proc/explode(var/severity, var/datum/cause_data/flame_cause_data)
+	if(severity > 0)
+		explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
+	//just in case
+	if(!QDELETED(src))
+		qdel(src)
+	return
 
 /obj/item/ammo_box/magazine
 	name = "magazine box (M41A x 10)"
@@ -547,13 +552,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		offset_y += -2
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
 	overlays.Add(fire_overlay)
-
-/obj/item/ammo_box/magazine/explode(var/severity, var/datum/cause_data/flame_cause_data)
-	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
-	//just in case
-	if(!QDELETED(src))
-		qdel(src)
-	return
 
 //-----------------------------------------------------------------------------------
 
@@ -1356,13 +1354,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	return
 
 /obj/item/ammo_box/rounds/get_severity()
-	return round(bullet_amount / 200)
+	return round(bullet_amount / 200)	//we need a lot of bullets to produce an explosion.
 
 /obj/item/ammo_box/rounds/process_burning(var/datum/cause_data/flame_cause_data)
 	if(can_explode)
 		var/severity = 0
-		severity = round(bullet_amount / 200)
-		//we need a lot of bullets to produce an explosion.
+		severity = get_severity()
 
 		if(severity > 0)
 			visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
@@ -1382,12 +1379,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = pixel_x, pixel_y = pixel_y)
 	overlays.Add(fire_overlay)
 
-/obj/item/ammo_box/rounds/explode(var/severity, var/datum/cause_data/flame_cause_data)
-	explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
-	//just in case
-	if(!QDELETED(src))
-		qdel(src)
-	return
 
 //-----------------------------------------------------------------------------------
 

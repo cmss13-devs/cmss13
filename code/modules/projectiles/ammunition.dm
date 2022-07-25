@@ -449,17 +449,17 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/proc/deploy_ammo_box(var/mob/living/user, var/turf/T)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 
 	var/box_on_tile = 0
 	for(var/obj/structure/magazine_box/found_MB in T.contents)
 		if(limit_per_tile != found_MB.limit_per_tile)
-			to_chat(user, SPAN_WARNING("You can't deploy different size boxes in one place."))
+			to_chat(user, SPAN_WARNING("You can't deploy different size boxes in one place!"))
 			return
 		box_on_tile++
 		if(box_on_tile >= limit_per_tile)
-			to_chat(user, SPAN_WARNING("There is a maximum possible amount of boxes deployed here already."))
+			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
 			return
 
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
@@ -510,11 +510,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				var/obj/structure/magazine_box/host_box = loc
 				host_box.apply_fire_overlay(TRUE)
 				host_box.SetLuminosity(3)
-				host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+				host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
 			else
 				apply_fire_overlay(TRUE)
 				SetLuminosity(3)
-				visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+				visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
 			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
 			return
 
@@ -1069,12 +1069,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	..()
 	if(over_object == usr && Adjacent(usr))
 		if(burning)
-			to_chat(usr, SPAN_DANGER("It's on fire and can explode!"))
+			to_chat(usr, SPAN_DANGER("It's on fire and might explode!"))
 			return
 
 		if(!ishuman(usr))
 			return
-		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
+		visible_message(SPAN_NOTICE("[usr] picks up the [name]."))
 
 		usr.put_in_hands(item_box)
 		item_box = null
@@ -1092,11 +1092,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	else
 		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 	if(item_box.contents.len)
 		if(!item_box.handfuls)
@@ -1114,7 +1114,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 	if(!item_box.handfuls)
 		if(istypestrict(W,item_box.magazine_type))
@@ -1253,7 +1253,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	else
 		to_chat(user, "It's empty.")
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
 	..()
@@ -1266,7 +1266,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and can explode!"))
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
@@ -1354,7 +1354,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		//we need a lot of bullets to produce an explosion.
 
 		if(severity > 0)
-			visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! Its gonna blow!"))
+			visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
 			apply_fire_overlay(TRUE)
 			SetLuminosity(3)
 			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off

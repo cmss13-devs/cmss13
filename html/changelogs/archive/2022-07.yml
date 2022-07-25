@@ -367,3 +367,7 @@
 2022-07-24:
   Segrain:
   - admin: Fixed attack logs for spraying somebody with chemicals.
+2022-07-25:
+  Geevies:
+  - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
+      causes scatter over time.

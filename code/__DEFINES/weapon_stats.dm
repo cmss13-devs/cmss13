@@ -77,6 +77,7 @@ var/accuracy_mult_unwielded
 #define SCATTER_AMOUNT_TIER_8 3
 #define SCATTER_AMOUNT_TIER_9 2
 #define SCATTER_AMOUNT_TIER_10 1
+#define SCATTER_AMOUNT_NONE 0
 
 /*
 ////FULL AUTO SCATTER PEAK////

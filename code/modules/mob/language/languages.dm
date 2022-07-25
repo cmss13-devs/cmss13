@@ -94,6 +94,18 @@
 	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
 	space_chance = 20
 
+/datum/language/hellhound
+	name = LANGUAGE_HELLHOUND
+	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	colour = "monkey"
+	key = "h"
+
+/datum/language/hellhound/scramble(input)
+	return pick("Grrr...", "Grah!", "Gurrr..")
+
 /datum/language/primitive
 	name = LANGUAGE_MONKEY
 	desc = "Ook ook ook."

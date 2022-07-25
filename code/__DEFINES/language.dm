@@ -6,7 +6,8 @@
 #define LANGUAGE_NEOSPANISH "Neospanish"
 #define LANGUAGE_TSL "Tactical Sign Language"
 #define LANGUAGE_YAUTJA "Sainja"
-#define LANGUAGE_MONKEY "Primitive"
+#define LANGUAGE_MONKEY "Primitive" // nanu
+#define LANGUAGE_HELLHOUND "Hellhound"
 
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"

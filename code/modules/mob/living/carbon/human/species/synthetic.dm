@@ -11,6 +11,8 @@
 	rarity_value = 2
 	insulated = TRUE
 
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
+
 	total_health = 150 //more health than regular humans
 
 	brute_mod = 0.5

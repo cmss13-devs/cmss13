@@ -305,6 +305,10 @@ Only checks living mobs with a client attached.
 			else
 				var/area/A = get_area(M)
 				if(isXeno(M))
+					var/mob/living/carbon/Xenomorph/xeno = M
+					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
+					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
+						continue
 					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++

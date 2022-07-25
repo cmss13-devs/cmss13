@@ -141,6 +141,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = "Corgi",
 	  key = /mob/living/simple_animal/corgi,
 	  color = "orange"
+	),
+	list(
+	  name = XENO_CASTE_HELLHOUND,
+	  key = /mob/living/carbon/Xenomorph/Hellhound,
+	  color = "orange"
 	)
   )
 ))

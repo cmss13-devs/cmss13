@@ -32,6 +32,7 @@
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
 	icon_state = "Predalien Walking"
+	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN
 	wall_smash = TRUE

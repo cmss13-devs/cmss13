@@ -13585,7 +13585,6 @@
 	},
 /area/shiva/interior/colony/botany)
 "iji" = (
-/obj/effect/landmark/corpsespawner/PMC,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
@@ -15912,6 +15911,7 @@
 /area/shiva/interior/bar)
 "kEy" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/shiva{
 	dir = 1
 	},

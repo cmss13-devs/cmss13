@@ -252,7 +252,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "bb" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "bc" = (

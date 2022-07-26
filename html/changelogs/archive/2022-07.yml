@@ -385,6 +385,9 @@
   Jeser:
   - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
   - code_imp: Xenos can slash mortar to knock it over.
+  Segrain:
+  - admin: Custom OT rockets and mortar shells now correctly attribute their explosions
+      to firer and not to maker.
   stanalbatross:
   - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
       longer give the overwatched xeno the fruit's effects.

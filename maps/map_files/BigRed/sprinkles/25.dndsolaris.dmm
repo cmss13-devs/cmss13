@@ -31,14 +31,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-"dF" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet10-8";
-	tag = "icon-carpet10-8 (WEST)"
-	},
-/area/bigredv2/outside/library)
 "dL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -82,14 +74,6 @@
 /area/bigredv2/outside/library)
 "ho" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/library)
-"hF" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet7-3";
-	tag = "icon-carpet7-3 (WEST)"
-	},
 /area/bigredv2/outside/library)
 "hL" = (
 /obj/structure/surface/table/woodentable,
@@ -140,6 +124,7 @@
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -256,6 +241,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -267,15 +253,6 @@
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/library)
-"yx" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet11-12";
-	tag = "icon-carpet11-12 (WEST)"
-	},
 /area/bigredv2/outside/library)
 "yT" = (
 /obj/structure/machinery/light{
@@ -347,7 +324,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -356,6 +332,7 @@
 /area/bigredv2/outside/library)
 "FH" = (
 /obj/effect/landmark/survivor_spawner/dnd,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -392,7 +369,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -426,7 +402,6 @@
 /area/bigredv2/outside/library)
 "Kj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -445,7 +420,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -497,17 +471,10 @@
 	},
 /area/bigredv2/outside/library)
 "Oe" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
-	},
-/area/bigredv2/outside/library)
-"Oi" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
 "OZ" = (
@@ -559,7 +526,6 @@
 /area/bigredv2/outside/library)
 "Ss" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet6-2";
@@ -721,10 +687,10 @@ HT
 HT
 NI
 FH
-Oi
-Oi
+HT
+HT
 FH
-Oi
+HT
 FH
 HT
 FH
@@ -744,9 +710,8 @@ Kj
 Kj
 Kj
 Lx
-hF
 ww
->>>>>>> reuploaded code and maps
+ww
 ww
 ww
 pr
@@ -758,15 +723,14 @@ ho
 Wz
 HT
 fo
-Oi
-dF
+HT
+xd
 Oe
 Oe
 Oe
 Fm
-yx
 pJ
->>>>>>> reuploaded code and maps
+pJ
 pJ
 Nm
 eh
@@ -778,13 +742,13 @@ ho
 YF
 HT
 NI
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+HT
+HT
+HT
+HT
+HT
+HT
+HT
 Pp
 ZD
 Uh
@@ -803,9 +767,8 @@ nn
 zc
 Rj
 xz
-Oi
 HT
->>>>>>> reuploaded code and maps
+HT
 HT
 Uh
 au
@@ -823,7 +786,7 @@ nn
 ES
 zc
 xz
-Oi
+HT
 ZV
 ZD
 Uh
@@ -838,11 +801,11 @@ Rh
 Ro
 iQ
 Kz
-Oi
-Oi
-Oi
-Oi
-Oi
+HT
+HT
+HT
+HT
+HT
 ei
 ZD
 xd

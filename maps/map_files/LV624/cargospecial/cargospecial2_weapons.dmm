@@ -16,7 +16,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "t" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "B" = (

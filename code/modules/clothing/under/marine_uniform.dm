@@ -201,12 +201,12 @@
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
 
-/obj/item/clothing/under/marine/officer/admiral
-	name = "admiral uniform"
-	desc = "A uniform worn by a fleet admiral. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
-	item_state = "admiral_jumpsuit"
-	worn_state = "admiral_jumpsuit"
-	specialty = "admiral"
+/obj/item/clothing/under/marine/officer/general
+	name = "general uniform"
+	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
+	item_state = "general_jumpsuit"
+	worn_state = "general_jumpsuit"
+	specialty = "general"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/ce

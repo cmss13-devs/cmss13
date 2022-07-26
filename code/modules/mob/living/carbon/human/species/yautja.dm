@@ -212,3 +212,7 @@
 
 /datum/species/yautja/get_hairstyle(var/style)
 	return GLOB.yautja_hair_styles_list[style]
+
+/datum/species/yautja/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))

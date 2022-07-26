@@ -441,7 +441,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
+	if(!T || T.is_weedable() < FULLY_WEEDABLE || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 

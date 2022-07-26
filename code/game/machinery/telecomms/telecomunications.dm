@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	circuitboard = /obj/item/circuitboard/machine/telecomms/relay
 	netspeed = 5
 	long_range_link = 1
-	var/broadcasting = 1
+	var/broadcasting = TRUE
 	var/receiving = 1
 
 /*

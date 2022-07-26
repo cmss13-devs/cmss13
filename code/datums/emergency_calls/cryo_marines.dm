@@ -31,18 +31,18 @@
 
 	sleep(5)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	if(leaders < cryo_squad.max_leaders && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(leaders < cryo_squad.max_leaders && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (medics < max_medics && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	else if (medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/uscm/medic/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (engineers < max_engineers && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+	else if (engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))

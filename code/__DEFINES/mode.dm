@@ -85,6 +85,7 @@
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
+#define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
 //=================================================
 
 var/list/be_special_flags = list(

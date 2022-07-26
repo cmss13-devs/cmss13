@@ -695,11 +695,23 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(flags_gun_features & GUN_BURST_ONLY)
 		if(!(flags_gun_features & GUN_BURST_ON))
-			stack_trace("[src] has GUN_BUST_ONLY flag but not GUN_BURST_ON.")
+			stack_trace("[src] has GUN_BURST_ONLY flag but not GUN_BURST_ON.")
 			flags_gun_features |= GUN_BURST_ON
 			return
 
-		to_chat(usr, SPAN_NOTICE("[src] can only be fired in bursts!"))
+		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
+		return
+
+	if(flags_gun_features & GUN_FULL_AUTO_ONLY)
+		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
+			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
+			flags_gun_features |= GUN_FULL_AUTO_ON
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			return
+
+		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
 		return
 
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)

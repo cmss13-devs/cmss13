@@ -125,6 +125,9 @@
 	if(forced || HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return FALSE
 
+	if(user.is_mob_incapacitated()) //let's do this here to avoid to_chats to dead guys
+		return TRUE
+
 	var/workingProbability = 20
 	var/randomProbability = 10
 	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
@@ -403,6 +406,8 @@
 		var/atom/loc = get_true_location(I)
 		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
+		if(istype(get_area(src), /area/yautja))
+			continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
 		else if(is_mainship_level(loc.z))
@@ -417,6 +422,8 @@
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
+			continue
+		if(istype(get_area(src), /area/yautja))
 			continue
 		if(is_loworbit_level(Y.z))
 			dead_low_orbit++
@@ -439,6 +446,7 @@
 		output = TRUE
 		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
 	if(closest < 900)
+		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
 			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
@@ -462,6 +470,9 @@
 		return
 
 	var/mob/living/carbon/human/M = caller
+
+	if(!istype(M) || M.is_mob_incapacitated())
+		return FALSE
 
 	if(cloaked) //Turn it off.
 		if(cloak_timer > world.time)

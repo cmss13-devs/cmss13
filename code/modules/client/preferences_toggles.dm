@@ -338,6 +338,11 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
 	prefs.save_preferences()
+	
+/client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
+	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

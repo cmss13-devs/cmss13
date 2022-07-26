@@ -1,10 +1,10 @@
 
 //-------------------------------------------------------
-//ENERGY GUNS/ETC
+//ENERGY GUNS/LASER GUNS/ETC
 
 
 
-/obj/item/weapon/gun/energy//whoever delegated all behavior to the taser instead of a parent object needs to dig themselves a hole to die in. Fuck you old dev.
+/obj/item/weapon/gun/energy //whoever delegated all behavior to the taser instead of a parent object needs to dig themselves a hole to die in. Fuck you old dev.
 	name = "energy pistol"
 	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convetion stations."
 
@@ -19,7 +19,7 @@
 
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 350
-
+	var/max_shots //calculated on init, no need to manually fill out
 	var/works_in_recharger = TRUE
 	var/has_charge_meter = FALSE//do we use the charging overlay system or just have an empty overlay
 	var/charge_icon = "+stunrevolver_empty"//define on a per gun basis, used for the meter and empty icon on non meter guns
@@ -31,6 +31,7 @@
 	. = ..()
 	cell = new /obj/item/cell/high(src)
 	update_icon()
+	max_shots = round((cell.maxcharge / charge_cost), 1)
 
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
@@ -77,6 +78,15 @@
 	if(cell?.charge >= charge_cost)
 		return TRUE //Enough charge for a shot.
 
+/obj/item/weapon/gun/energy/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	if(.)
+		var/to_firer = "You fire the [name]!"
+		if(has_charge_meter)
+			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
+		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
+		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
+
 /obj/item/weapon/gun/energy/reload_into_chamber()
 	update_icon()
 	return TRUE
@@ -88,7 +98,9 @@
 
 /obj/item/weapon/gun/energy/examine(mob/user)
 	. = ..()
-	if(cell)
+	if(has_charge_meter && cell)
+		to_chat(user, SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left."))
+	else if(cell)
 		to_chat(user, SPAN_NOTICE("It has [cell.percent()]% charge left."))
 	else
 		to_chat(user, SPAN_NOTICE("It has no power cell inside."))
@@ -116,10 +128,11 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	ammo = /datum/ammo/energy/taser/precise
-	charge_cost = 625 // approx 16 shots shots.
+	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
 	var/precision = TRUE
+	var/skilllock = SKILL_POLICE_SKILLED
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
@@ -134,7 +147,7 @@
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(skilllock && !skillcheck(user, SKILL_POLICE, skilllock))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 

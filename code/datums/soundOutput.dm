@@ -25,7 +25,6 @@
 
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
-
 		if(owner_turf)
 			// We're in an interior and sound came from outside
 			if(owner_turf.z == GLOB.interior_manager.interior_z && owner_turf.z != T.z)
@@ -39,8 +38,13 @@
 			S.x = T.x - owner_turf.x
 			S.y = 0
 			S.z = T.y - owner_turf.y
+			var/area/A = owner_turf.loc
+			S.environment = owner_turf == owner.mob.loc ? A.sound_environment : SOUND_ENVIRONMENT_BATHROOM
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
+
+	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE)
+		S.environment = owner.mob.sound_environment_override
 
 	sound_to(owner,S)
 

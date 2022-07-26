@@ -29,5 +29,6 @@
 
 	var/mob/living/carbon/Xenomorph/affected_mob = affected_atom
 	affected_mob.gain_health(heal_each_process)
+	affected_mob.updatehealth()
 
 	return TRUE

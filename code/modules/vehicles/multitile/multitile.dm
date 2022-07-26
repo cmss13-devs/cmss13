@@ -280,23 +280,25 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
 		if(H.can_take_damage())
-			H.take_damage(damage * get_dmg_multi(type))
+			H.take_damage(round(damage * get_dmg_multi(type)))
 			all_broken = FALSE
 
-	// If all hardpoints are broken, the vehicle frame begins taking damage
+	// If all hardpoints are broken, the vehicle frame begins taking full damage
 	if(all_broken)
 		health = max(0, health - damage * get_dmg_multi(type))
-		update_icon()
+	else //otherwise, 1/10th of damage lands on the hull
+		health = max(0, health - round(damage * get_dmg_multi(type) / 10))
 
-	if(istype(attacker, /mob))
+	if(ismob(attacker))
 		var/mob/M = attacker
 		log_attack("[src] took [damage] [type] damage from [M] ([M.client ? M.client.ckey : "disconnected"]).")
 	else
 		log_attack("[src] took [damage] [type] damage from [attacker].")
+	update_icon()
 
 /obj/vehicle/multitile/Entered(var/atom/movable/A)
 	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint) && !istype(A, /obj/item/hardpoint))
-		A.forceMove(src.loc)
+		A.forceMove(loc)
 		return
 	return ..()
 

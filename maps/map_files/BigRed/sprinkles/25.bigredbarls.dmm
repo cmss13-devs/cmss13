@@ -60,8 +60,8 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -214,6 +214,16 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
+"lu" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "lI" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -250,7 +260,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -526,6 +536,15 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+"vQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "yz" = (
 /obj/structure/machinery/squeezer,
 /turf/open/floor{
@@ -534,7 +553,7 @@
 /area/bigredv2/outside/bar)
 "zm" = (
 /obj/structure/bed/stool,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -604,6 +623,16 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
+"Cn" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4;
+	tag = ""
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
@@ -654,7 +683,7 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -777,7 +806,8 @@
 	dir = 4;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -814,6 +844,14 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/general_offices)
+"Me" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
+	},
+/area/bigredv2/outside/bar)
 "Mr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/weldpack,
@@ -871,7 +909,7 @@
 	dir = 4;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -914,6 +952,12 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
+"Ry" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "Si" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -958,7 +1002,7 @@
 	dir = 4;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1019,8 +1063,8 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1165,12 +1209,12 @@ Wq
 Gc
 Si
 QK
-OL
+Me
 fi
 Eb
 Xl
 ax
-Xl
+lu
 qY
 Xl
 ax
@@ -1192,7 +1236,7 @@ fS
 Gt
 gv
 Eb
-Kv
+Cn
 Tc
 FC
 hz
@@ -1214,7 +1258,7 @@ Gq
 vc
 QK
 OL
-OL
+Me
 Eb
 ZP
 AI
@@ -1270,7 +1314,7 @@ ax
 ax
 Wd
 Fa
-ax
+Ry
 ax
 kI
 "}
@@ -1315,7 +1359,7 @@ ax
 Yd
 Yd
 ax
-ax
+Ry
 hP
 ax
 qQ
@@ -1341,7 +1385,7 @@ rD
 hz
 CB
 gV
-ax
+Ry
 ax
 fJ
 Yw
@@ -1358,7 +1402,7 @@ QA
 ax
 Dr
 Ii
-ax
+Ry
 ax
 Yd
 ax
@@ -1379,7 +1423,7 @@ SE
 kI
 hP
 ax
-ax
+Ry
 ax
 Ii
 ic
@@ -1428,17 +1472,17 @@ kI
 nV
 hz
 In
-ax
+Ry
 eQ
 tF
 kI
-Xl
+lu
 tq
-Xl
+lu
 pf
 sg
 XZ
-hP
+vQ
 ax
 kI
 "}

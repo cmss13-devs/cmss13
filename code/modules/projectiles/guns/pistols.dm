@@ -129,26 +129,10 @@
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper SOCOM M1911 service pistol"
 	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. This one is slightly modified."
-	icon_state = "m4a345"
-	item_state = "m4a3"
 
-	fire_sound = 'sound/weapons/gun_servicepistol.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/m1911
 	starting_attachment_types = list(/obj/item/attachable/lasersight, obj/item/attachable/suppressor, obj/item/attachable/reflex)
 
-	/obj/item/weapon/gun/pistol/m1911/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
-
-/obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
 

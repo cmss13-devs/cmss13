@@ -32,7 +32,8 @@
 		tethered = null
 	if (affected_atom)
 		if (islist(affected_atom.beams))
-			affected_atom.beams -= "[beam_id]"
+			affected_atom.beams -= beam_id
+		QDEL_NULL(beam_id)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_MOVED)
 	. = ..()
 
@@ -61,7 +62,7 @@
 /datum/effects/tethering/proc/set_tethered(var/datum/effects/tethered/T)
 	tethered = T
 	T.tether = src
-	beam_id = affected_atom.Beam(T.affected_atom, tether_icon, 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, range+1, always_face)
+	beam_id = affected_atom.beam(T.affected_atom, tether_icon, time = BEAM_INFINITE_DURATION, maxdistance = range+1, always_turn = always_face)
 
 /datum/effects/tethered
 	effect_name = "tethered"

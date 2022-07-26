@@ -394,3 +394,22 @@
   - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
       cooldown on the ability is now applied earlier
   - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
+  Kaga:
+  - add: "Greenfire" has been unified into a single unique fire type. This is generally
+      referred to as "Type B" Napalm/Napthal.
+  - expansion: Flames with the "Type B" property behave as an area denial tool, remaining
+      on the ground for a long time if not extinguished. Moving through them will slow you
+      down (similar to weeds), deal heavy additional damage, and reduce your Armor while
+      lingering inside.
+  - expansion: Flames with the "Type B" property can be easily put out. They are instantly
+      removed by extinguishers, and Xeno Acid has increased extinguishing effectiveness.
+  - expansion: Fires applied to mobs by flames with the "Type B" property can be
+      extinguished instantly by resisting and patting.
+  - expansion: HIDP Grenades, Incendiary Mortar Shells, Gel Incinerator Tanks, and the Pyro
+      Specialist's Type-B Tanks now all produce flames with "Type B" properties.
+  - expansion: Gel Incinerator Tanks are now B-Gel Incinerator Tanks.
+  - expansion: flame_radius now defaults to UT-Napalm (Flamer) values, instead of the old
+      HIDP values. This only affects molotovs and the Whiskey Outpost Airstrike ability,
+      which now generate using UT-Napalm flamer-equivalent fires instead of HIDP fires.
+  - expansion: The Xenomorph Status Tab now displays your actual current armor, as
+      modified by buffs and debuffs.

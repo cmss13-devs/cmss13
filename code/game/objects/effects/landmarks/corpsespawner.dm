@@ -90,9 +90,9 @@
 	name = "Commanding Officer"
 	equip_path = /datum/equipment_preset/corpse/commander
 
-/obj/effect/landmark/corpsespawner/PMC
+/obj/effect/landmark/corpsespawner/wysec
 	name = "Weyland-Yutani Corporate Security Guard"
-	equip_path = /datum/equipment_preset/corpse/PMC
+	equip_path = /datum/equipment_preset/corpse/wysec
 
 ///CM specific jobs///
 
@@ -119,3 +119,29 @@
 /obj/effect/landmark/corpsespawner/ua_riot/burst
 	name = "Burst UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
+///////////Faction Specific Corpses//////////////////////
+
+/obj/effect/landmark/corpsespawner/clf
+	name = "Corpse - Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf
+
+/obj/effect/landmark/corpsespawner/clf/burst
+	name = "Burst Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf/burst
+
+/obj/effect/landmark/corpsespawner/upp
+	name = "Corpse - Union of Progressive Peoples Soldier"
+	equip_path = /datum/equipment_preset/corpse/upp
+
+/obj/effect/landmark/corpsespawner/upp/burst
+	name = "Burst Union of Progressive Peoples Soldier"
+	equip_path = /datum/equipment_preset/corpse/upp/burst
+
+/obj/effect/landmark/corpsespawner/pmc
+	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/pmc
+
+/obj/effect/landmark/corpsespawner/pmc/burst
+	name = "Burst Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/pmc/burst

@@ -77,6 +77,7 @@ var/accuracy_mult_unwielded
 #define SCATTER_AMOUNT_TIER_8 3
 #define SCATTER_AMOUNT_TIER_9 2
 #define SCATTER_AMOUNT_TIER_10 1
+#define SCATTER_AMOUNT_NONE 0
 
 /*
 ////FULL AUTO SCATTER PEAK////
@@ -317,3 +318,5 @@ Fire Variant = Markers for special fire types that behave outside of chemfire co
 #define FIRE_VARIANT_DEFAULT 0
 ///"Type B" Armor Shredding Greenfire: Burn Time T5, Burn Level T2, Slows on Tile, Increased Tile Damage, Easier Extinguishing.
 #define FIRE_VARIANT_TYPE_B 1
+// Lowers burn damage to humans
+#define HUMAN_BURN_DIVIDER 5

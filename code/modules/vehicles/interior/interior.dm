@@ -166,8 +166,9 @@
 				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
 					//check each category if it has our role. We stop after we find role to avoid checking others.
 					if(RRS.roles.Find(H.job))
-						RRS.taken++
-						role_slot_taken = TRUE
+						if(RRS.taken < RRS.total)
+							RRS.taken++
+							role_slot_taken = TRUE
 						break
 			//if no special slot is taken, we will check for common passengers
 			if(!role_slot_taken)

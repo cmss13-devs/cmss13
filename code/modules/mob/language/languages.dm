@@ -31,9 +31,9 @@
 /datum/language/generated/chinese
 	name = LANGUAGE_CHINESE
 	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
-	speech_verb = "说"
-	ask_verb = "问"
-	exclaim_verb = "喊"
+	speech_verb = "shuo"
+	ask_verb = "wen"
+	exclaim_verb = "han"
 	colour = "chinese"
 	key = "8"
 

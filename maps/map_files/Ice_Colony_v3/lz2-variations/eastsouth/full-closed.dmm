@@ -1,0 +1,135 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/cp_lz2)
+"b" = (
+/obj/item/clothing/shoes/snow,
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/item/clothing/mask/rebreather,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/item/clothing/mask/rebreather,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/shiva/exterior/lz2_fortress)
+"g" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
+"h" = (
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"i" = (
+/turf/closed/wall/shiva/prefabricated/pink,
+/area/shiva/exterior/lz2_fortress)
+"m" = (
+/turf/open/floor/shiva{
+	icon_state = "radiator_tile"
+	},
+/area/shiva/exterior/lz2_fortress)
+"t" = (
+/obj/structure/largecrate/random/mini/ammo,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"P" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
+"S" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/cp_lz2)
+"V" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/cp_lz2)
+
+(1,1,1) = {"
+h
+h
+h
+h
+h
+h
+t
+i
+i
+a
+a
+"}
+(2,1,1) = {"
+b
+b
+m
+m
+b
+b
+i
+i
+i
+S
+a
+"}
+(3,1,1) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+(4,1,1) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+(5,1,1) = {"
+P
+P
+g
+g
+a
+a
+V
+g
+g
+a
+a
+"}
+(6,1,1) = {"
+P
+P
+g
+g
+V
+V
+a
+g
+g
+a
+V
+"}

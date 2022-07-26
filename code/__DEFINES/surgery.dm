@@ -68,7 +68,8 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 	/obj/item/tool/weldingtool,\
 	/obj/item/tool/pen,\
 	/obj/item/stack/rods,\
-	/obj/item/tool/surgery/surgical_line\
+	/obj/item/tool/surgery/surgical_line,\
+	/obj/item/tool/surgery/synthgraft\
 	)
 
 /////////////////////////////

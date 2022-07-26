@@ -98,3 +98,299 @@
   Geeves:
   - rscadd: Re-adds Small RTO Packs, Req has them in the Misc section, and its also
       in the squad req vendors, though in much smaller quantity.
+2022-07-10:
+  Geevies:
+  - rscadd: Cultists now have xenomorph as their default language.
+  - bugfix: Cultists now properly get the correct hive faction.
+  - bugfix: Crowbarable item crates now initialize their items correctly.
+  TeDGamer:
+  - bugfix: Flamers should deal non-zero damage to objects appropriately (resin doors,
+      barricades, thickbush ).
+2022-07-11:
+  BKryth:
+  - bugfix: Synth type of mob no longer scream repeatedly when on fire
+  Shad0vvs:
+  - bugfix: Fixed Souto Man's skills to allow him to use his drink cannon again.
+  TotalEpicness:
+  - bugfix: Fixed an invisible wall in VC prep
+  stanalbatross:
+  - balance: if a scout or a sniper is the last marine alive during hijack, their
+      cloaking abilities will no longer function and they will be forcibly decloaked.
+2022-07-12:
+  Geevies:
+  - bugfix: The Yautja tracker no longer reports items in Yautja areas and Quill styles
+      now save correctly.
+  Jeser:
+  - rscadd: Added Automated Supply Vendor to transport APC interior. It starts nearly
+      empty and can be restocked with weapons, ammunition, explosives, building materials,
+      helmets, armor and miscellaneous gear and utilities. It's used to store and
+      transport massive amounts of supplies between FOB, checkpoints and frontline
+      as well as turns APC into mobile resupply point for marines.
+  - rscadd: Added vehicle version of NanoMED, it supports refilling most of the common
+      injectors used by marines.
+  - rscadd: Added vehicle version of WYmed, the Wey-Med Resupply Station. Designed
+      to be a resupply point for squad medics on the battlefield.
+  - code_imp: Renamed viewports to External Cameras Terminal and added new sprite
+      and description. Functionally identical to viewports, but can be placed on the
+      interior wall near wheel without looking weird. Old looking viewpoints are still
+      avaialble for unarmored vehicles.
+  - imageadd: Added color-coding to APC doors identical to what M56 FPWs have in transport
+      APC. RED marks left door, while CYAN marks right door. APC exterior sprites
+      also have doors marked. Hopefully, this will help marines to determine which
+      side is safe to exit and which goes into Ravager's embrace. If they actually
+      start checking surroundings before going out first.
+  - imageadd: Added missing vehicle interior camera sprites.
+  - imageadd: Added vehicle versions of sprites for Bloodbags Dispenser, extinguisher
+      locker and telephone.
+  - rscdel: Removed Body Scanner from MED APC.
+  Morrow:
+  - rscadd: COs can now add their rank boards to CO Armor.
+  SpartanBobby:
+  - rscadd: Added Falling Falcon Challange coins to the USS Almayer.
+  - rscadd: Added Wheelchair storage to the medical bay.
+  - rscdel: Removed Contraband such as Alcohol from the public spaces of the USS Almayer.
+  - bugfix: Fixed the USS Almayer having colony cigarette vendors.
+  - rscadd: Remodeled the VC bunk to be more fitting for lower enlisted
+  TotalEpicness:
+  - rscadd: Added new plastic cups! Credit to purplecloud for the sprites.
+  nauticall:
+  - rscadd: Added new general ranks to the 'Create Humans' / 'Select Equipment' tabs,
+      for events.
+  - bugfix: Renamed stuff named "admiral" to "general", to fix disparity.
+  - bugfix: General officer's HUD icons now show up properly.
+  - code_imp: Modified item paths for everything related to changing admiral stuff
+      to general stuff. Includes item states.
+2022-07-13:
+  Geevies:
+  - rscadd: Xenos now have a one second grace period before falling into crit.
+  - rscadd: The sound environment system now affects all heard sounds, so open spaces
+      will echo, so will interiors. Xenos in their crit grace period now have a Call
+      of Duty near death soundscape.
+  Morrow:
+  - rscadd: Changes CO minimum ages from O4/5 40/45 to 30/35.
+  TeDGamer:
+  - bugfix: Hive core can be repaired again
+  - bugfix: Xenos must be in the same hive to destroy the core quickly
+  - qol: Hive core and cluster can be repaired when health is less than max
+  stanalbatross:
+  - rscadd: Added Scottish and Welsh flags to the OOC country flags system
+  - bugfix: You can now only try to give things to people one at a time. This stops
+      you from spamming give prompts onto peoples' screens.
+  - ui: Changed the old alert on the give prompt to a tgui alert.
+2022-07-14:
+  FoxyStalin:
+  - rscdel: Removes Slowdown from Galoshes
+  Geevies:
+  - rscadd: Added a synth to the UPP and CLF ERTs.
+  - rscadd: CLF ERTs now spawn specialists.
+  - rscadd: Added preferences to the ERT roles you want to play in the ERT settings
+      menu.
+  - bugfix: Fixed some ERTs not having proper timelocks.
+  JeserTheFox:
+  - bugfix: Fixed humans not entering when clicking vehicle with grab not on help
+      intent.
+  Maciekkub:
+  - bugfix: character preferences consistency
+  Morrow:
+  - rscadd: Created a toggle for middle click swapping hands.
+  SpartanBobby:
+  - bugfix: Fixes both VC spawners being on the same tile
+  - bugfix: Fixes the camera in a doorway in the VC room
+  TotalEpicness:
+  - bugfix: Fixes a consistency error with sandbags and also adds a message that shows
+      if you try to weld a non-metallic barricade.
+  Unknownity:
+  - bugfix: The garbage bin in the Brig Courtyard now actually uses the correct disposal
+      pipes.
+  stanalbatross:
+  - bugfix: you now have to fix vendors 100% to use them after being broken - you
+      cannot simply use them after unscrewing the panel.
+  - qol: added an "all reagents" button to the chemmaster - this will transfer/dispose
+      of all reagents in the beaker/buffer instead of you having to click every reagent
+      entry individually
+  - bugfix: fixed turning on rail lights and turning on/off glasses breaking item
+      action icons for the same item
+  - bugfix: made collapsing/extending stocks actually update the action button icon
+  - bugfix: The British flag will now appear again properly in OOC
+  - bugfix: automatically spawned glasses will no longer be ghost items
+  - bugfix: if you are wearing prescription glasses, due to a loadout item or prescription
+      hud on spawn, you will no longer get an extra pair of prescription glasses
+2022-07-15:
+  BKryth:
+  - balance: Cloaked bell doesnt start cloaked anymore, it slowly becomes invisible
+      when its turned on and instantly visible when turned off
+  - balance: Cloaked bell becomes slightly more visible when it rings, more xenos
+      around it means more ring and more visible
+  stanalbatross:
+  - bugfix: You can no longer restock defibs and power cells if they are not at full
+      charge.
+  - balance: increased the rate of charge for power cells (including power cells inside
+      other items such as defibrillators).
+2022-07-16:
+  stanalbatross:
+  - code_imp: the "say, ask, shout" messages for Chinese now use pinyin rather than
+      non UTF compliant Chinese characters
+2022-07-17:
+  Geevies:
+  - rscadd: Your overhead chat now attaches to the object you're in if you're in an
+      object, like a locker or stasis bag.
+  Jeser:
+  - bugfix: Fixed some medical items showing warning message when used for treating
+      wounds in vehicle interiors and shuttles.
+  Segrain:
+  - bugfix: Fixing vehicular hardpoints no longer gets stuck with them being seen
+      as being actively fixed when they are not.
+2022-07-18:
+  BKryth:
+  - rscadd: forces scream emote on delimb
+  Geevies:
+  - bugfix: Auto-turfs now generate their inner and outer corners correctly.
+  Segrain:
+  - bugfix: Zombies and PMC snipers once again have the intended nightvision.
+2022-07-19:
+  50RemAndCounting:
+  - bugfix: Kutjevo/Trijent tallgrass and other flora can now be properly cut away
+      with machetes and other bladed equipment.
+  Segrain:
+  - bugfix: Fixed some issues with different types of floors and floor tiles not being
+      properly differentiated.
+  - bugfix: Rangefinders/designators now require you to actually be on the surface
+      to get orbital coordinates.
+  sose96:
+  - rscadd: Separate button for CL shutters/door, also relocated some items in the
+      CL's office.
+  - rscdel: CL office window that looked into maint and the alcohol outside of storage
+      room for the CL.
+  stanalbatross:
+  - balance: removed the "mixed metal and plasteel" crate from req
+  - balance: your vision is no longer extended by 5 tiles when you man an m2c
+  - balance: removed the m2c from engineer vendors
+  - rscadd: changed the radio's UI to TGUI. You can now toggle on and off if you want
+      to broadcast using "high volume" mode, and you can see what channel your radio
+      is set to by default with ease.
+  - bugfix: you can no longer activate pred cloak while dead or incapacitated
+  - bugfix: you no longer get to_chats of errors if trying to use a bracer while being
+      a human and dead
+2022-07-20:
+  Diegoflores31:
+  - bugfix: fixed defenders hitting headbutts twice by applying the cooldown to the
+      ability once it is used. If you use the ability but do not actually headbutt
+      your target, the cooldown will be refunded.
+  Geeves:
+  - rscadd: Added the option to buy ceramic plates to the CL's Briefcase.
+  Segrain:
+  - bugfix: Reflective walls now actually take damage from the bullets they did not
+      reflect.
+  - admin: Some cleanup performed for Who/Staffwho displays.
+2022-07-21:
+  Segrain:
+  - bugfix: Lighting one cigarette no longer ignites all other cigarettes you are
+      holding.
+  - bugfix: Extinguishing smoking pipes no longer irreversibly turns them into cigarette
+      butts.
+  - qol: Pipes full of ash can now be emptied into ashtrays instead of automatically
+      dumping ash onto the floor.
+  - qol: Cigars and pipes are now big enough that they do not fall out when you lie
+      down (regular cigarettes still do).
+  - bugfix: Generals' armour looks properly once again.
+  stanalbatross:
+  - refactor: made the ability of ammo to BE a bitflag trait rather than subtyping
+      the on_pointblack proc for all execution ammo
+  - admin: added attack logs for when larvas chestburst from a person, and niche logs
+      for when they exit spawn pools
+  - bugfix: fixed a corpse spawner on LV that was causing a corpse to spawn alive...
+  - balance: removed SEA spec skills
+2022-07-22:
+  Geevies:
+  - balance: Gardener drones now have six fruit slots.
+  - rscadd: Gardener drones can now plant hardy weeds in addition to normal weeds.
+      Hardy weeds have a two minute cooldown, but can grow on grass and red sand turfs,
+      and let fruits grow in 80% of the usual time. They cannot support special structures,
+      and have a bit more health than standard weeds.
+  - rscadd: Feeding fruit to a queen while she's overwatching a xeno on the same z-level
+      now grants the fruit benefit to that xeno in addition to the queen.
+  - rscadd: Added cruor fruits, which grants the xeno who eats it 240 plasma over
+      15 seconds.
+  - tweak: Resin surge can now be used while resting, and works on any visible turf.
+  - balance: Healer drones now apply healing instantly, but the range has been dropped
+      to touching range again. The healing effect takes 10 seconds, providing the
+      target with 20 health every 2 seconds. This effect can be stacked.
+  - bugfix: Health overlays now properly align with xeno sprites.
+  Jeser:
+  - balance: APC armor received explosive and blunt damage resistances buff as well
+      as slash and acid resistances nerf.
+  - balance: Vehicle hull now takes little bit of damage even if there are no destroyed
+      modules.
+  - balance: MED APC has 8 passengers (same as CMD APC) and 6 revivable bodies slots
+      now.
+  - balance: APC now deals a bit of damage when ramming allies in order to discourage
+      Vehicle Crewmen from ramming marines without serious reason like delivering
+      near-perma patient to medics. Includes big warning for driver and adjusted FF
+      log for staff.
+  - balance: Queen can be pushed only from the back now.
+  - balance: Acid spray from acid traps and some xenos abilities damages vehicle locomotion
+      (wheels or treads) modules directly. Acid traps are trigggered by vehicles now.
+      Some locomotion modules can be acid-resistant, which cuts damage received by
+      half.
+  - balance: T3s overall do more damage to vehicles than before. Queen now also deals
+      double damage to vehicles just as Ravager.
+  - balance: Boilers acid gas damage to vehicles was nerfed, due to overall acid resistance
+      nerf of APC armor.
+  - code_imp: Made SensorMates mandatory in Vehicle Crewman vendor.
+  TeDGamer:
+  - bugfix: can_see now takes into account the darkness of the target tile and whether
+      you have nightvision
+  stanalbatross:
+  - qol: the xeno tunnel creation message now shows which burrower created it, and
+      provides an overwatch link for them
+  - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
+      have melee weapons skill level 1 to be in line with USCM specs
+2022-07-23:
+  Sennen, Nanu:
+  - imageadd: New lobby-art brought to you by Sennen also known as Rasta
+  Stan_Albatross, Nauticall:
+  - rscadd: added the autocompressor, a new synthtool that automatically does CPR.
+      Runs on an internal battery, can be attached to people just by clicking on them.
+      Has a high risk of breaking bones if used alongside a person performing CPR.
+      Sprites by Naut.
+  TeDGamer:
+  - balance: Fire damage dealt to carbon humans on fire is based on the fire reagent.
+  stanalbatross:
+  - rscadd: energy weapons, provided they have a charge meter, now tell you how many
+      shots they have left on examine and when you fire them
+  - bugfix: taser overlays now update properly again
+  - bugfix: flashes now visually burn out, added a modern sprite for burnt out flashes
+  - code_imp: rewrote most of the code for flashes. It was really, really bad.
+  - rscadd: flashes now tell you how many flashes they have left when you use them,
+      when you examine them, and they tell you when they recharge a flash
+  - rscadd: you can now only use a flash twice per second.
+2022-07-24:
+  Segrain:
+  - admin: Fixed attack logs for spraying somebody with chemicals.
+2022-07-25:
+  50RemAndCounting:
+  - qol: The bell tower sound effect is not obnoxiously loud anymore.
+  Geevies:
+  - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
+      causes scatter over time.
+  stanalbatross:
+  - rscadd: added back above-head chat messages when you scream or cry out in pain
+  - rscdel: synths can no longer scream or cry out in pain - let's face it, you guys
+      can't feel it anyways. Fake it if you want.
+  - rscadd: added above-head chat messages for the *medic emote
+  - rscadd: me" custom emotes will now appear in above-head chat
+2022-07-26:
+  Geevies:
+  - bugfix: Survivors no longer spawn on top of eachother.
+  Jeser:
+  - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
+  - code_imp: Xenos can slash mortar to knock it over.
+  Segrain:
+  - admin: Custom OT rockets and mortar shells now correctly attribute their explosions
+      to firer and not to maker.
+  stanalbatross:
+  - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
+      longer give the overwatched xeno the fruit's effects.
+  - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
+      cooldown on the ability is now applied earlier
+  - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto

@@ -124,6 +124,11 @@
 	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
 	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
 
+	// checks if cloaked bell, if it is, then it reduces the cloaked bells alpha
+	if(istype(linked_bell, /obj/structure/machinery/defenses/bell_tower/cloaker))
+		var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = linked_bell
+		cloakedbell.cloaker_fade_in()
+
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
 	detector_range = 7 //yeah no offscreen bs with this
@@ -165,17 +170,41 @@
 	name = "camouflaged R-1NG bell tower"
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged and reinforced."
 	handheld_type = /obj/item/defenses/handheld/bell_tower/cloaker
-	var/cloak_alpha = BELL_TOWER_CLOAKER_ALPHA
+	var/cloak_alpha_max = BELL_TOWER_CLOAKER_ALPHA
+	var/cloak_alpha_current = BELL_TOWER_CLOAKER_ALPHA
+	var/incremental_ring_camo_penalty = 40
+	var/camouflage_break = 5 SECONDS
 	density = FALSE
 	health = 250
 	health_max = 250
 	defense_type = "Cloaker"
 
-/obj/structure/machinery/defenses/bell_tower/cloaker/Initialize()
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_on_action()
 	. = ..()
-	animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
+	// For cloaker bell, cloaks them when turned on
+	animate(src, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, ANIMATION_END_NOW)
 
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_off_action()
+	. = ..()
+	// For cloaker bell, uncloaks them when turned off
+	animate(src, alpha = initial(src.alpha), flags = ANIMATION_END_NOW)
 
+/obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_in()
+	// This is activated whenever the bell is rang, makes the cloaked tower visible a bit
+	var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakebelltower = src
+	if(turned_on)
+		if(cloak_alpha_current < cloak_alpha_max)
+			cloak_alpha_current = cloak_alpha_max
+		cloak_alpha_current = Clamp(cloak_alpha_current + incremental_ring_camo_penalty, cloak_alpha_max, 255)
+		cloakebelltower.alpha = cloak_alpha_current
+		addtimer(CALLBACK(src, .proc/cloaker_fade_out_finish, cloakebelltower), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
+		animate(cloakebelltower, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)
+
+/obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_out_finish()
+	// Resets the cloak to its max invisibility
+	if(turned_on)
+		animate(src, alpha = cloak_alpha_max)
+		cloak_alpha_current = cloak_alpha_max
 
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"

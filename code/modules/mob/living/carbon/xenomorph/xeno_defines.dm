@@ -9,6 +9,7 @@
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
+	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -804,6 +805,8 @@
 	return faction_is_ally(C.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction)
+	if(faction == internal_faction)
+		return TRUE
 	if(!living_xeno_queen)
 		return FALSE
 

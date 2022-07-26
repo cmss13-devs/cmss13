@@ -27,7 +27,7 @@
 		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
 		/obj/item/reagent_container/food/snacks/grown/tomato = list("ketchup" = 0),
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0),
-		///obj/item/reagent_container/food/snacks/grown/wheat = list("flour" = -5),
+		/obj/item/reagent_container/food/snacks/grown/wheat = list("flour" = -5),
 		/obj/item/reagent_container/food/snacks/grown/ricestalk = list("rice" = -5),
 		/obj/item/reagent_container/food/snacks/grown/cherries = list("cherryjelly" = 0),
 		/obj/item/reagent_container/food/snacks/grown/plastellium = list("plasticide" = 5),
@@ -45,6 +45,7 @@
 		/obj/item/reagent_container/food/snacks/grown/tomato = list("tomatojuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/carrot = list("carrotjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/berries = list("berryjuice" = 0),
+		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
 		/obj/item/reagent_container/food/snacks/grown/banana = list("banana" = 0),
 		/obj/item/reagent_container/food/snacks/grown/potato = list("potato" = 0),
 		/obj/item/reagent_container/food/snacks/grown/lemon = list("lemonjuice" = 0),
@@ -53,6 +54,7 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
+
 	)
 
 

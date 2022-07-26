@@ -627,3 +627,35 @@
 	name = "\improper LZ2 'Cargo'"
 	icon_state = "tcomsatcham"
 	requires_power = 0
+
+//Custom zones for cave CAS removal PR - Sose96
+
+/area/bigredv2/outside/lz1_north_cas
+	name = "\improper lz1_north_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/bigredv2/outside/lz1_telecomm_cas
+	name = "\improper lz1_telecomm_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/bigredv2/outside/lz2_west_cas
+	name = "\improper lz2_west_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/bigredv2/outside/lz2_south_cas
+	name = "\improper lz2_south_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/bigredv2/outside/filtration_cave_cas
+	name = "\improper filtration_cave_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/bigredv2/outside/lambad_cave_cas
+	name = "\improper lambad_cave_cas"
+	icon_state = "garden"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS

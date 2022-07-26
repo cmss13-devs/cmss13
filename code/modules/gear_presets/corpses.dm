@@ -646,7 +646,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id/lanyard
 
-/datum/equipment_preset/colonist/random/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
 
 	add_random_synth_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
@@ -665,7 +665,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id/lanyard
 
-/datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/H)
 	
 	add_random_kutjevo_survivor_uniform(H)
 	add_random_kutjevo_survivor_equipment(H)
@@ -674,7 +674,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
-/datum/equipment_preset/corpse/colonist// Kutjevoburst
+/datum/equipment_preset/corpse/colonist/kutjevo/burst
 	name = "Corpse - Burst Colonist"
 	xenovictim = TRUE
 
@@ -938,8 +938,6 @@
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
-
-	load_upp_soldier(H, UPP)
 
 /datum/equipment_preset/corpse/upp/burst
 	name = "Corpse - Union of Progressive Peoples Soldier"

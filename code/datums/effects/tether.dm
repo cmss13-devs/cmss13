@@ -4,7 +4,7 @@
 	var/range = 0
 	var/datum/effects/tethered/tethered
 	var/tether_icon // The icon used for the Beam proc for the tether
-	var/beam_id
+	var/datum/beam/beam_id
 	var/always_face
 
 /datum/effects/tethering/New(var/atom/A, var/range, var/icon, var/always_face)
@@ -26,13 +26,11 @@
 	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, .proc/moved)
 
 /datum/effects/tethering/Destroy()
-	if (tethered)
+	if(tethered)
 		tethered.tether = null
 		qdel(tethered)
 		tethered = null
-	if (affected_atom)
-		if (islist(affected_atom.beams))
-			affected_atom.beams -= beam_id
+	if(affected_atom)
 		QDEL_NULL(beam_id)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_MOVED)
 	. = ..()

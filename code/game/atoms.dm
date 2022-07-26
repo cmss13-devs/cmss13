@@ -50,10 +50,6 @@
 	// Whether the atom is an obstacle that should be considered for passing
 	var/can_block_movement = FALSE
 
-	// Beams
-	var/list/beams // An assoc list where the keys are ids and their values are TRUE (indicating beam should persist)
-	var/beam_id = 0
-
 	var/datum/component/orbiter/orbiters
 
 	///Reference to atom being orbited

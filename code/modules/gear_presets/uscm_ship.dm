@@ -298,7 +298,7 @@
 	rank = JOB_CO
 	paygrade = "MO4"
 	role_comm_title = "CO"
-	minimum_age = 30
+	minimum_age = 40
 	skills = /datum/skills/commander
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
@@ -367,7 +367,7 @@
 	rank = JOB_CO
 	paygrade = "MO5"
 	role_comm_title = "CO"
-	minimum_age = 35
+	minimum_age = 45
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
@@ -376,7 +376,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commanding Officer (CO++)"
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 	paygrade = "MO5"
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
@@ -607,7 +607,7 @@
 	name = "USCM Officer (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"

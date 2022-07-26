@@ -108,6 +108,7 @@
 
 	. = ..(cause)
 
+
 /mob/living/carbon/revive()
 	if(handcuffed && !initial(handcuffed))
 		drop_inv_item_on_ground(handcuffed)

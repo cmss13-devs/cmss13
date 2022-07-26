@@ -12,7 +12,7 @@
 		if (isStructure(A) && get_dist(src, A) <= 1)
 			var/obj/structure/S = A
 			S.do_climb(src, mods)
-		else if(!(isitem(A) && get_dist(src, A) <= 1) && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)
+		else if(!(isitem(A) && get_dist(src, A) <= 1))
 			swap_hand()
 		return TRUE
 

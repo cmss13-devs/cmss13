@@ -257,6 +257,7 @@
 			M.Turn(90)
 			L.Turn(270)
 			target.apply_transform(M)
+			target.langchat_image.transform = L
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)

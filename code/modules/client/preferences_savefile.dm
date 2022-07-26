@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	16
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -47,12 +47,6 @@
 		S["toggles_flashing"] >> flash_toggles_two
 		flash_toggles_two |= FLASH_POOLSPAWN
 		S["toggles_flashing"] << flash_toggles_two
-		
-	if(savefile_version < 17) //toggle middle click swap hands on by default
-		var/pref_middle_click_swap
-		S["toggle_prefs"] >> pref_middle_click_swap
-		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
-		S["toggle_prefs"] << pref_middle_click_swap
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -99,7 +93,6 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
-	S["toggles_ert"]		>> toggles_ert
 	S["UI_style"]			>> UI_style
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
@@ -132,7 +125,6 @@
 	S["pred_caster_mat"]	>> predator_caster_material
 	S["pred_cape_type"]		>> predator_cape_type
 	S["pred_cape_color"]	>> predator_cape_color
-	S["pred_h_style"]		>> predator_h_style
 	S["pred_flavor_text"]	>> predator_flavor_text
 
 	S["commander_status"]	>> commander_status
@@ -165,7 +157,6 @@
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
-	toggles_ert		= sanitize_integer(toggles_ert, 0, 65535, initial(toggles_ert))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
@@ -193,7 +184,6 @@
 	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
 	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
-	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
@@ -251,7 +241,6 @@
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing
-	S["toggles_ert"]		<< toggles_ert
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
@@ -281,7 +270,6 @@
 	S["pred_caster_mat"]	<< predator_caster_material
 	S["pred_cape_type"]		<< predator_cape_type
 	S["pred_cape_color"]	<< predator_cape_color
-	S["pred_h_style"]		<< predator_h_style
 	S["pred_flavor_text"]	<< predator_flavor_text
 
 	S["commander_status"] 	<< commander_status
@@ -444,9 +432,9 @@
 	//if(!skin_style) skin_style = "Default"
 
 	if(!home_system) home_system = "Unset"
-	if(!citizenship) citizenship = CITIZENSHIP_US
+	if(!citizenship) citizenship = "None"
 	if(!faction)     faction =     "None"
-	if(!religion)    religion =    RELIGION_AGNOSTICISM
+	if(!religion)    religion =    "None"
 	if(!preferred_squad)	preferred_squad = "None"
 
 	return 1

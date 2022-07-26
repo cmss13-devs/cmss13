@@ -7,22 +7,19 @@
 /area/space)
 "b" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/recharger{
-	pixel_x = -5
-	},
-/obj/item/device/defibrillator,
+/obj/item/storage/box/bodybags,
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_11"
 	},
 /area/vehicle/apc)
 "c" = (
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "docdecal2";
-	pixel_x = -5;
-	pixel_y = 16
+/obj/structure/bed/roller,
+/obj/structure/machinery/iv_drip{
+	anchored = 1
 	},
 /obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecalbottom"
+	icon_state = "docdecal2";
+	pixel_y = 16
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_5"
@@ -32,11 +29,8 @@
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecalbottom"
 	},
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecaltopright"
-	},
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_14"
+	icon_state = "dark_sterile_green_5"
 	},
 /area/vehicle/apc)
 "e" = (
@@ -58,6 +52,10 @@
 /turf/open/void/vehicle,
 /area/space)
 "h" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	alpha = 100;
+	pixel_y = -2
+	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = 8
@@ -89,18 +87,26 @@
 /turf/open/void/vehicle,
 /area/space)
 "m" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle{
-	pixel_x = -20;
-	pixel_y = 23
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	density = 0;
+	indestructible = 1;
+	layer = 2.79;
+	pixel_x = -18;
+	pixel_y = 19;
+	req_access = list();
+	unslashable = 1;
+	wrenchable = 0
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/vehicle{
-	pixel_x = 2;
-	pixel_y = 23
+/obj/structure/machinery/cm_vending/sorted/medical{
+	density = 0;
+	indestructible = 1;
+	pixel_x = 4;
+	pixel_y = 19;
+	req_access = list();
+	unslashable = 1;
+	wrenchable = 0
 	},
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecaltop";
-	pixel_y = -2
-	},
+/obj/structure/machinery/body_scanconsole,
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_7"
 	},
@@ -113,6 +119,22 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
+"o" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltop"
+	},
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = 15;
+	pixel_y = 38
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottomright"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_13"
+	},
+/area/vehicle/apc)
 "p" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall"
@@ -171,12 +193,8 @@
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
-/obj/effect/decal/medical_decals/permanent{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_8"
+	icon_state = "dark_sterile"
 	},
 /area/vehicle/apc)
 "x" = (
@@ -187,21 +205,14 @@
 /turf/open/void/vehicle,
 /area/space)
 "y" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	dir = 8;
-	pixel_x = 5;
-	pixel_y = 8
-	},
 /obj/effect/landmark/interior/spawn/entrance{
-	alpha = 50;
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	name = "Left APC door";
 	pixel_y = 32;
 	tag = "left"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_11"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "z" = (
@@ -213,6 +224,9 @@
 /turf/open/void/vehicle,
 /area/space)
 "A" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_y = 28
+	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
@@ -224,14 +238,7 @@
 	},
 /area/vehicle/apc)
 "B" = (
-/obj/structure/machinery/iv_drip{
-	anchored = 1
-	},
-/obj/structure/bed/roller,
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_x = -6;
-	pixel_y = 23
-	},
+/obj/structure/machinery/bodyscanner,
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_12"
 	},
@@ -245,7 +252,6 @@
 "D" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "docdecal1";
-	pixel_x = -5;
 	pixel_y = 16
 	},
 /turf/open/shuttle/vehicle{
@@ -304,21 +310,15 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	name = "Right APC door";
 	tag = "right"
 	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	dir = 8;
-	pixel_x = 5;
-	pixel_y = 1
-	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_12"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "L" = (
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_14"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc)
 "M" = (
@@ -339,19 +339,10 @@
 /area/space)
 "O" = (
 /obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecaltop";
-	pixel_y = -2
-	},
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecalbottomright"
-	},
-/obj/effect/landmark/interior/spawn/interior_camera{
-	dir = 10;
-	pixel_x = -14;
-	pixel_y = 38
+	icon_state = "triagedecaltop"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_13"
+	icon_state = "dark_sterile_green_7"
 	},
 /area/vehicle/apc)
 "P" = (
@@ -361,8 +352,14 @@
 /turf/open/void/vehicle,
 /area/space)
 "Q" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottom"
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltopright"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
+	icon_state = "dark_sterile_green_14"
 	},
 /area/vehicle/apc)
 "R" = (
@@ -378,8 +375,12 @@
 /turf/open/void/vehicle,
 /area/space)
 "T" = (
+/obj/effect/decal/medical_decals/permanent{
+	dir = 4;
+	icon_state = "triagedecaldir"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_3_3"
+	icon_state = "dark_sterile_green_8"
 	},
 /area/vehicle/apc)
 "U" = (
@@ -389,34 +390,32 @@
 /turf/open/void/vehicle,
 /area/space)
 "V" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 9
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -7
+	dir = 1
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "W" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/effect/landmark/interior/spawn/telephone{
-	pixel_x = 5;
-	pixel_y = 30
+/obj/structure/transmitter{
+	name = "APC Telephone";
+	phone_category = "Vehicles";
+	phone_id = "M577-MED APC";
+	pixel_x = 6;
+	pixel_y = 31
 	},
 /obj/structure/extinguisher_cabinet/lifeboat{
-	icon = 'icons/obj/vehicles/interiors/general.dmi';
-	pixel_x = -8;
-	pixel_y = 28
+	pixel_x = -5;
+	pixel_y = 29
 	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/bed/chair/vehicle,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
@@ -474,7 +473,7 @@ l
 (5,1,1) = {"
 P
 y
-Q
+o
 T
 Q
 K

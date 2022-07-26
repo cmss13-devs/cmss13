@@ -133,7 +133,6 @@
 		on_fire = TRUE
 		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
 		update_fire()
-		SEND_SIGNAL(src, COMSIG_LIVING_IGNITION)
 		return IGNITE_IGNITED
 	return IGNITE_FAILED
 

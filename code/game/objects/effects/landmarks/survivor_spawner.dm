@@ -6,6 +6,7 @@
 	var/roundstart_damage_min = 0
 	var/roundstart_damage_max = 0
 	var/roundstart_damage_times = 1
+	var/make_objective = 1
 
 /obj/effect/landmark/survivor_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -14,13 +15,6 @@
 /obj/effect/landmark/survivor_spawner/Destroy()
 	GLOB.survivor_spawns -= src
 	return ..()
-
-/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
-	// prevents stacking survivors on top of eachother
-	if(locate(/mob/living/carbon/human) in loc)
-		return FALSE
-	return TRUE
-
 /obj/effect/landmark/survivor_spawner/lv624_skylight
 	intro_text = list("<h2>You are a survivor!</h2>",\
 	"<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>",\
@@ -30,6 +24,7 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 3
+	make_objective = 1
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	equipment = /datum/equipment_preset/survivor/clf
@@ -40,6 +35,7 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
+	make_objective = 0
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
@@ -50,9 +46,10 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
+	make_objective = 0
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
-	equipment = /datum/equipment_preset/survivor/wy/manager
+	equipment = "Survivor - Corporate Supervisor"
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -60,5 +57,4 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
-
-
+	make_objective = 1

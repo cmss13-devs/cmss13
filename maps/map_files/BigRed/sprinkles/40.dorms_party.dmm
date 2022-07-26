@@ -168,7 +168,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aF" = (
@@ -304,7 +304,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ba" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "grimy"
 	},

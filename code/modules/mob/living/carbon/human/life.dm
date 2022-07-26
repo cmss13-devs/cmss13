@@ -49,7 +49,7 @@
 				vomit()
 
 			if(on_fire)
-				species.handle_on_fire(src)
+				INVOKE_ASYNC(src, /mob.proc/emote, pick("pain", "scream"))
 
 			//effects of being grabbed aggressively by another mob
 			if(pulledby && pulledby.grab_level)

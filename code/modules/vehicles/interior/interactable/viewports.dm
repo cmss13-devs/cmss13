@@ -1,6 +1,6 @@
 /obj/structure/interior_viewport
-	name = "External Cameras Terminal"
-	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360 degree visual survey of vehicle surroundings."
+	name = "viewport"
+	desc = "Hey, I can see my base from here!"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = INTERIOR_DOOR_LAYER
@@ -22,7 +22,20 @@
 	M.reset_view(vehicle)
 	give_action(M, /datum/action/human_action/cancel_view)
 
-/obj/structure/interior_viewport/simple
-	name = "viewport"
-	desc = "Hey, I can see my base from here!"
-	icon_state = "viewport_simple"
+// Landmark for spawning windows
+/obj/effect/landmark/interior/spawn/interior_viewport
+	name = "vehicle viewport spawner"
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "viewport"
+	layer = INTERIOR_DOOR_LAYER
+
+/obj/effect/landmark/interior/spawn/interior_viewport/on_load(var/datum/interior/I)
+	var/obj/structure/interior_viewport/V = new(loc)
+
+	V.vehicle = I.exterior
+	V.pixel_x = pixel_x
+	V.pixel_y = pixel_y
+	V.alpha = alpha
+	V.update_icon()
+
+	qdel(src)

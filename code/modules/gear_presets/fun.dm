@@ -448,7 +448,7 @@
 	assignment = "Santa"
 
 	skills = null
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 
 /datum/equipment_preset/fun/santa/New()
 	. = ..()
@@ -481,7 +481,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	//waist
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/santa(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/santa(H), WEAR_WAIST)
 
 	H.set_species("Human Hero") //Santa is STRONG.
 

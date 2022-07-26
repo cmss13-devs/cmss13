@@ -11,11 +11,10 @@
 		/datum/action/xeno_action/activable/transfer_plasma
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro
-		/datum/action/xeno_action/activable/resin_surge, // third macro
-		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
-		/datum/action/xeno_action/onclick/change_fruit
-	)
+		/datum/action/xeno_action/activable/resin_surge, //second macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
+		/datum/action/xeno_action/onclick/change_fruit //fourth macro
+		)
 	keystone = TRUE
 
 /datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -25,9 +24,9 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.mutation_type = DRONE_GARDENER
-	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
+	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed)
 	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
-	D.max_placeable = 6
+	D.max_placeable = 4
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
@@ -46,7 +45,7 @@
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
 	name = "Plant Resin Fruit (100)"
 	plasma_cost = 100
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/verb/plant_resin_fruit()
 	set category = "Alien"
@@ -124,6 +123,7 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
 	. = ..()
@@ -221,11 +221,11 @@
 	xeno_cooldown = 10 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/channel_in_progress = FALSE
 	var/max_range = 7
 
-/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A, mods)
+/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return
@@ -233,20 +233,12 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state(TRUE))
+	if (!X.check_state())
 		return
 
-	if(mods["click_catcher"])
+	if (!can_see(X, A, max_range))
+		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
 		return
-
-	if(ismob(A)) // to prevent using thermal vision to bypass clickcatcher
-		if(!can_see(X, A, max_range))
-			to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
-			return
-	else
-		if(get_dist(X, A) > max_range)
-			to_chat(X, SPAN_WARNING("That's too far away!"))
-			return
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -326,29 +318,4 @@
 	set name = "Resin Surge"
 	set hidden = 1
 	var/action_name = "Resin Surge"
-	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/onclick/plant_weeds/gardener
-	name = "Plant Hardy Weeds (125)"
-	ability_name = "Plant Hardy Weeds"
-	action_icon_state = "plant_gardener_weeds"
-	plasma_cost = 125
-	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
-	xeno_cooldown = 2 MINUTES
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
-
-	plant_on_semiweedable = TRUE
-	node_type = /obj/effect/alien/weeds/node/gardener
-
-/obj/effect/alien/weeds/node/gardener
-	spread_on_semiweedable = TRUE
-	block_special_structures = TRUE
-	fruit_growth_multiplier = 0.8
-
-/datum/action/xeno_action/verb/verb_plant_gardening_weeds()
-	set category = "Alien"
-	set name = "Plant Hardy Weeds"
-	set hidden = 1
-	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)

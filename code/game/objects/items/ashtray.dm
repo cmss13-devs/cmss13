@@ -15,30 +15,21 @@
 		if (contents.len >= max_butts)
 			to_chat(user, "This ashtray is full.")
 			return
-		var/drop = TRUE
+		user.drop_inv_item_to_loc(W, src)
 
 		if (istype(W,/obj/item/clothing/mask/cigarette))
 			var/obj/item/clothing/mask/cigarette/cig = W
-			if(cig.type_butt)
-				if(cig.heat_source)
-					user.visible_message("[user] crushes \the [cig] in \the [src], putting it out.", "You crush \the [cig] in \the [src], putting it out.")
-					var/obj/item/butt = cig.go_out(user, TRUE)
-					butt.forceMove(src)
-					drop = FALSE
-				else if (cig.heat_source == 0)
-					to_chat(user, "You place \the [cig] in \the [src] without even smoking it. Why would you do that?")
-			else
-				drop = FALSE
-				var/obj/item/clothing/mask/cigarette/pipe/P = W
-				if(P.ash)
-					user.visible_message("[user] empties the ash out of \the [P] into \the [src].", "You empty the ash out of \the [P] into \the [src].")
-					P.ash = FALSE
-				else
-					to_chat(user, "There is no ash in \the [P].")
+			if (cig.heat_source)
+				src.visible_message("[user] crushes [cig] in [src], putting it out.")
+				STOP_PROCESSING(SSobj, cig)
+				var/obj/item/butt = new cig.type_butt(src)
+				cig.transfer_fingerprints_to(butt)
+				qdel(cig)
+				W = butt
+			else if (cig.heat_source == 0)
+				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
 
-		if(drop)
-			user.visible_message("[user] places \the [W] into \the [src].", "You place \the [W] into \the [src].")
-			user.drop_inv_item_to_loc(W, src)
+		src.visible_message("[user] places [W] in [src].")
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()
 		add_fingerprint(user)

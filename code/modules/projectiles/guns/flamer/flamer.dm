@@ -614,8 +614,7 @@
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
 		qdel(src)
 		return PROCESS_KILL
-	var/damage = burnlevel*delta_time
-	T.flamer_fire_act(damage)
+	T.flamer_fire_act(burnlevel*delta_time)
 
 	update_flame()
 
@@ -637,7 +636,7 @@
 			set_on_fire(i)
 		else if(isobj(i))
 			var/obj/O = i
-			O.flamer_fire_act(damage, weapon_cause_data)
+			O.flamer_fire_act(0, weapon_cause_data)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick

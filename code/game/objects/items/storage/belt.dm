@@ -1149,8 +1149,8 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 
-/obj/item/storage/belt/gun/mateba/general
-	name = "general's M276 pattern Mateba holster rig"
+/obj/item/storage/belt/gun/mateba/admiral
+	name = "admiral's M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
@@ -1158,24 +1158,24 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	icon_state = "amateba_holster"
 	item_state = "s_marinebelt"
 
-/obj/item/storage/belt/gun/mateba/general/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general())
+/obj/item/storage/belt/gun/mateba/admiral/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
-/obj/item/storage/belt/gun/mateba/general/impact/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general())
+/obj/item/storage/belt/gun/mateba/admiral/impact/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
-/obj/item/storage/belt/gun/mateba/general/santa/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general/santa())
+/obj/item/storage/belt/gun/mateba/admiral/santa/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral/santa())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
@@ -1192,7 +1192,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	item_state = "s_marinebelt"
 
 /obj/item/storage/belt/gun/mateba/pmc/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general())
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/admiral())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)

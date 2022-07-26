@@ -83,8 +83,7 @@
 
 	for(var/X in actions)
 		var/datum/action/A = X
-		if(istype(A, /datum/action/item_action/toggle))
-			A.update_button_icon()
+		A.update_button_icon()
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
@@ -243,6 +242,17 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = 1
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/m42c_goggles
+	name = "\improper M42C special operations sight"
+	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
+	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon_state = "m56_goggles"
+	deactive_state = "m56_goggles_0"
+	vision_flags = SEE_TURFS|SEE_MOBS
+	darkness_view = 12
+	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/disco_fever
@@ -437,8 +447,7 @@
 
 		for(var/X in actions)
 			var/datum/action/A = X
-			if(istype(A, /datum/action/item_action/toggle))
-				A.update_button_icon()
+			A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"

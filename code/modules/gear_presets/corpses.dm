@@ -293,7 +293,7 @@
 
 /datum/equipment_preset/corpse/bridgeofficer
 	name = "Corpse - Staff Officer"
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 	assignment = "Staff Officer"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -314,7 +314,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/corpse/bridgeofficer/johnson
 	name = "Corpse - Mr. Johnson Telovin"
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
 	paygrade = "WY-1B-X"
@@ -345,7 +345,7 @@
 
 /datum/equipment_preset/corpse/commander
 	name = "Corpse - Commanding Officer"
-	idtype = /obj/item/card/id/general
+	idtype = /obj/item/card/id/admiral
 	assignment = "Commanding Officer"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

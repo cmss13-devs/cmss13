@@ -1460,7 +1460,7 @@
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
 	//waist
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/impact, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/impact, WEAR_WAIST)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -1619,7 +1619,7 @@
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
 	//waist
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/impact, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/impact, WEAR_WAIST)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)

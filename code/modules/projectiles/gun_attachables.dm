@@ -653,8 +653,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	for(var/X in G.actions)
 		var/datum/action/A = X
-		if(A.target == src)
-			A.update_button_icon()
+		A.update_button_icon()
 	return TRUE
 
 
@@ -1046,11 +1045,6 @@ Defined in conflicts.dm of the #defines folder.
 	playsound(user, activation_sound, 15, 1)
 	var/message = deploy_message[1 + stock_activated]
 	to_chat(user, SPAN_NOTICE("You [message] [src]."))
-
-	for(var/X in gun.actions)
-		var/datum/action/A = X
-		if(istype(A, /datum/action/item_action/toggle))
-			A.update_button_icon()
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"

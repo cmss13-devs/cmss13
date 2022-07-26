@@ -30223,6 +30223,12 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves_sw)
+"dxX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmarshalls"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/marshal_office)
 "dyv" = (
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
@@ -35040,6 +35046,12 @@
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves_research)
+"nnK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "bigredbarls"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
 "npz" = (
 /obj/structure/surface/table,
 /obj/item/spacecash/c100,
@@ -38022,6 +38034,12 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_se)
+"sJp" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "dndsolaris"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/library)
 "sJq" = (
 /obj/structure/fence,
 /turf/open/floor{
@@ -58653,7 +58671,7 @@ acp
 als
 ajL
 anc
-acp
+dxX
 acp
 acp
 alX
@@ -65200,7 +65218,7 @@ aoz
 anJ
 aoz
 anJ
-anJ
+nnK
 aHD
 aBR
 aVo
@@ -73228,7 +73246,7 @@ anW
 anW
 anW
 anW
-anW
+sJp
 anW
 aTq
 aUp

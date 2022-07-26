@@ -100,7 +100,7 @@
 	name = "Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist
 
-/obj/effect/landmark/corpsespawner/colonist/kutjevo //default is a colonist
+/obj/effect/landmark/corpsespawner/colonist/kutjevo 
 	name = "Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo
 
@@ -112,6 +112,14 @@
 	name = "Burst Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo/burst
 
+/obj/effect/landmark/corpsespawner/colonist/random
+	name = "Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/colonist/random
+
+/obj/effect/landmark/corpsespawner/colonist/random/burst
+	name = "Burst Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/colonist/random/burst
+	
 /obj/effect/landmark/corpsespawner/ua_riot
 	name = "UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot
@@ -119,6 +127,15 @@
 /obj/effect/landmark/corpsespawner/ua_riot/burst
 	name = "Burst UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
+/obj/effect/landmark/corpsespawner/wy/manager
+	name = "Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/wy/manager
+
+/obj/effect/landmark/corpsespawner/wy/manager/burst
+	name = "Burst Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
 
 ///////////Faction Specific Corpses//////////////////////
 
@@ -145,3 +162,11 @@
 /obj/effect/landmark/corpsespawner/pmc/burst
 	name = "Burst Weyland-Yutani PMC (Standard)"
 	equip_path = /datum/equipment_preset/corpse/pmc/burst
+
+/obj/effect/landmark/corpsespawner/freelancer
+	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/freelancer
+
+/obj/effect/landmark/corpsespawner/freelancer/burst
+	name = "Burst Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/freelancer/burst

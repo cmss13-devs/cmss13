@@ -507,6 +507,25 @@
 	name = "Corpse - Burst Colonist"
 	xenovictim = TRUE
 
+/datum/equipment_preset/corpse/colonist/random
+	name = "Corpse - Colonist Random"
+	assignment = JOB_COLONIST
+	xenovictim = FALSE
+	rank = JOB_COLONIST
+	faction = FACTION_COLONIST
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+	idtype = /obj/item/card/id/lanyard
+
+/datum/equipment_preset/colonist/random/load_gear(mob/living/carbon/human/H)
+
+	add_random_synth_survivor_equipment(H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/colonist/random/burst
+	name = "Corpse - Burst Colonist"
+	xenovictim = TRUE
+
 /datum/equipment_preset/corpse/colonist/kutjevo
 	name = "Corpse - Colonist Kutjevo"
 	assignment = JOB_COLONIST
@@ -578,6 +597,47 @@
 
 /datum/equipment_preset/corpse/ua_riot/burst
 	name = "Corpse - Burst UA Officer"
+	xenovictim = TRUE
+
+//Colonial Supervisor Corpse
+
+/datum/equipment_preset/corpse/wy/manager
+	name = "Corpse - Corporate Supervisor"
+	flags = EQUIPMENT_PRESET_EXTRA
+	paygrade = "WY-5G"
+	assignment = "Colony Supervisor"
+	role_comm_title = "Supervisor"
+	rank = FACTION_WY
+	idtype = /obj/item/card/id/silver/clearance_badge/manager
+	faction_group = FACTION_LIST_WY
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	access = list(
+		ACCESS_WY_CORPORATE,
+		ACCESS_ILLEGAL_PIRATE,
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY
+	)
+
+/datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/H)
+	
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	add_random_cl_survivor_loot(H)
+	add_survivor_weapon(H)
+
+/datum/equipment_preset/corpse/wy/manager/burst
+	name = "Corpse - Corporate Supervisor"
 	xenovictim = TRUE
 
 //Faction Specific Corpses
@@ -661,6 +721,8 @@
 	name = "Corpse - Union of Progressive Peoples Soldier"
 	xenovictim = TRUE
 
+// PMC
+
 /datum/equipment_preset/corpse/pmc
 	name = " Corpse - Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -695,4 +757,40 @@
 
 /datum/equipment_preset/corpse/pmc/burst
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	xenovictim = TRUE
+
+// Freelancer
+
+/datum/equipment_preset/corpse/freelancer
+	name = "Corpse - Freelancer Mercenary"
+	assignment = "Freelancer Mercenary"
+	idtype = /obj/item/card/id/silver
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/freelancer/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	spawn_merc_helmet(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/freelancer/burst
+	name = "Corpse - Freelancer Mercenary"
 	xenovictim = TRUE

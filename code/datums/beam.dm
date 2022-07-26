@@ -28,7 +28,7 @@
 	///This is used as the visual_contents of beams, so you can apply one effect to this and the whole beam will look like that. never gets deleted on redrawing.
 	var/obj/effect/ebeam/visuals
 	///will the origin object always turn to face the target?
-	var/always_turn = TRUE
+	var/always_turn = FALSE
 
 /datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=BEAM_INFINITE_DURATION,maxdistance=INFINITY,btype = /obj/effect/ebeam)
 	origin = beam_origin

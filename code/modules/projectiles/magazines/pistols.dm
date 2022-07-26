@@ -58,7 +58,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 9
+	max_rounds = 14
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
 

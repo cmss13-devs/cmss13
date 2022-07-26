@@ -343,6 +343,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/rifle/m41aMK1/tactical
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
 
 
 //----------------------------------------------
@@ -605,67 +607,14 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
 
+/obj/weapon/gun/rifle/mar40/tactical
+	starting_attachment_types = list(/obj/item/attachable/angledgrip, obj/item/attachable/suppressor, obj/item/attachable/magnetic_harness)
 
-/obj/item/weapon/gun/rifle/mar40/carbine
-	name = "\improper MAR-30 battle carbine"
-	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries."
-	icon_state = "mar30"
-	item_state = "mar30"
-	fire_sound = 'sound/weapons/gun_mar40.ogg'
-	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
-	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+obj/weapon/gun/rifle/mar40/lmg/tactical
+	starting_attachment_types = list(obj/item/attachable/magnetic_harness)
 
-	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
-	wield_delay = WIELD_DELAY_FAST
-	attachable_allowed = list(
-					/obj/item/attachable/suppressor,
-					/obj/item/attachable/bayonet,
-					/obj/item/attachable/bayonet/upp,
-					/obj/item/attachable/reddot,
-					/obj/item/attachable/reflex,
-					/obj/item/attachable/verticalgrip,
-					/obj/item/attachable/angledgrip,
-					/obj/item/attachable/lasersight,
-					/obj/item/attachable/flashlight,
-					/obj/item/attachable/bipod,
-					/obj/item/attachable/extended_barrel,
-					/obj/item/attachable/heavy_barrel,
-					/obj/item/attachable/magnetic_harness,
-					/obj/item/attachable/attached_gun/grenade,
-					/obj/item/attachable/attached_gun/flamer,
-					/obj/item/attachable/attached_gun/extinguisher,
-					/obj/item/attachable/attached_gun/shotgun,
-					/obj/item/attachable/scope,
-					/obj/item/attachable/scope/mini
-					)
-	random_spawn_chance = 35
-	random_spawn_rail = list(
-							/obj/item/attachable/reddot,
-							/obj/item/attachable/reflex/,
-							/obj/item/attachable/scope/mini,
-							/obj/item/attachable/magnetic_harness
-							)
-	random_spawn_under = list(
-							/obj/item/attachable/angledgrip,
-							/obj/item/attachable/verticalgrip,
-							/obj/item/attachable/bipod,
-							/obj/item/attachable/attached_gun/extinguisher,
-							/obj/item/attachable/attached_gun/shotgun,
-							/obj/item/attachable/lasersight,
-									)
-	random_spawn_muzzle = list(
-							/obj/item/attachable/suppressor,
-							/obj/item/attachable/bayonet/upp,
-							/obj/item/attachable/extended_barrel
-								)
-
-/obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+/obj/item/weapon/gun/rifle/mar40/carbine/tactical
+	starting_attachment_types = list(/obj/item/attachable/angledgrip, obj/item/attachable/suppressor, obj/item/attachable/magnetic_harness)
 
 
 /obj/item/weapon/gun/rifle/mar40/lmg

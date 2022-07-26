@@ -31,7 +31,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-<<<<<<< master
 "dF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -40,8 +39,6 @@
 	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> reuploaded code and maps
 "dL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -86,7 +83,6 @@
 "ho" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/library)
-<<<<<<< master
 "hF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -95,8 +91,6 @@
 	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> reuploaded code and maps
 "hL" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/chicken,
@@ -146,10 +140,6 @@
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< master
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -266,10 +256,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< master
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -282,7 +268,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
-<<<<<<< master
 "yx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -292,8 +277,6 @@
 	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> reuploaded code and maps
 "yT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -364,10 +347,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -376,10 +356,6 @@
 /area/bigredv2/outside/library)
 "FH" = (
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< master
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -416,10 +392,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -453,10 +426,7 @@
 /area/bigredv2/outside/library)
 "Kj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -475,10 +445,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -530,25 +497,19 @@
 	},
 /area/bigredv2/outside/library)
 "Oe" = (
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/bigredv2/outside/library)
-<<<<<<< master
 "Oi" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> reuploaded code and maps
 "OZ" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor{
@@ -598,10 +559,7 @@
 /area/bigredv2/outside/library)
 "Ss" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> reuploaded code and maps
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet6-2";
@@ -763,17 +721,10 @@ HT
 HT
 NI
 FH
-<<<<<<< master
 Oi
 Oi
 FH
 Oi
-=======
-HT
-HT
-FH
-HT
->>>>>>> reuploaded code and maps
 FH
 HT
 FH
@@ -793,12 +744,9 @@ Kj
 Kj
 Kj
 Lx
-<<<<<<< master
 hF
-=======
 ww
 >>>>>>> reuploaded code and maps
-ww
 ww
 ww
 pr
@@ -810,23 +758,15 @@ ho
 Wz
 HT
 fo
-<<<<<<< master
 Oi
 dF
-=======
-HT
-xd
->>>>>>> reuploaded code and maps
 Oe
 Oe
 Oe
 Fm
-<<<<<<< master
 yx
-=======
 pJ
 >>>>>>> reuploaded code and maps
-pJ
 pJ
 Nm
 eh
@@ -838,7 +778,6 @@ ho
 YF
 HT
 NI
-<<<<<<< master
 Oi
 Oi
 Oi
@@ -846,15 +785,6 @@ Oi
 Oi
 Oi
 Oi
-=======
-HT
-HT
-HT
-HT
-HT
-HT
-HT
->>>>>>> reuploaded code and maps
 Pp
 ZD
 Uh
@@ -873,12 +803,9 @@ nn
 zc
 Rj
 xz
-<<<<<<< master
 Oi
-=======
 HT
 >>>>>>> reuploaded code and maps
-HT
 HT
 Uh
 au
@@ -896,11 +823,7 @@ nn
 ES
 zc
 xz
-<<<<<<< master
 Oi
-=======
-HT
->>>>>>> reuploaded code and maps
 ZV
 ZD
 Uh
@@ -915,19 +838,11 @@ Rh
 Ro
 iQ
 Kz
-<<<<<<< master
 Oi
 Oi
 Oi
 Oi
 Oi
-=======
-HT
-HT
-HT
-HT
-HT
->>>>>>> reuploaded code and maps
 ei
 ZD
 xd

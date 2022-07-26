@@ -65,12 +65,12 @@
 	equip_path = /datum/equipment_preset/corpse/security
 
 /obj/effect/landmark/corpsespawner/security/cmb
-	name = "Marshal"
+	name = " Colonial Marshal"
 	equip_path = /datum/equipment_preset/corpse/security/marshal
 
-/obj/effect/landmark/corpsespawner/security/lawyer
-	name = "Lawyer"
-	equip_path = /datum/equipment_preset/corpse/security/lawyer
+/obj/effect/landmark/corpsespawner/security/liaison
+	name = "Corporate Liaison"
+	equip_path = /datum/equipment_preset/corpse/security/liaison
 
 /obj/effect/landmark/corpsespawner/prison_security
 	name = "Prison Guard"
@@ -91,7 +91,7 @@
 	equip_path = /datum/equipment_preset/corpse/commander
 
 /obj/effect/landmark/corpsespawner/PMC
-	name = "Private Security Officer"
+	name = "Weyland-Yutani Corporate Security Guard"
 	equip_path = /datum/equipment_preset/corpse/PMC
 
 ///CM specific jobs///
@@ -100,9 +100,17 @@
 	name = "Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist
 
+/obj/effect/landmark/corpsespawner/colonist/kutjevo //default is a colonist
+	name = "Colonist"
+	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo
+
 /obj/effect/landmark/corpsespawner/colonist/burst
 	name = "Burst Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist/burst
+
+/obj/effect/landmark/corpsespawner/colonist/kutjevo/burst
+	name = "Burst Colonist"
+	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo/burst
 
 /obj/effect/landmark/corpsespawner/ua_riot
 	name = "UA Officer"

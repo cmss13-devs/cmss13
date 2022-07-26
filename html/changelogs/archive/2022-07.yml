@@ -386,3 +386,5 @@
   stanalbatross:
   - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
       longer give the overwatched xeno the fruit's effects.
+  - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
+      cooldown on the ability is now applied earlier

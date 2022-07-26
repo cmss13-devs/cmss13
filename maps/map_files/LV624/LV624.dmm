@@ -680,12 +680,6 @@
 	icon_state = "cult"
 	},
 /area/lv624/ground/caves/west_caves)
-"adf" = (
-/obj/effect/landmark/corpsespawner/PMC,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
-/area/lv624/lazarus/crashed_ship_containers)
 "adg" = (
 /obj/structure/girder/displaced,
 /turf/open/gm/dirt,
@@ -9562,6 +9556,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -13629,7 +13624,6 @@
 "bXd" = (
 /obj/item/device/flashlight/on,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -17618,6 +17612,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitebluecorner";
@@ -18765,8 +18760,8 @@
 	},
 /area/lv624/ground/jungle/north_east_jungle)
 "ocG" = (
-/obj/effect/landmark/corpsespawner/security/lawyer,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/start/liaison,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -20477,7 +20472,7 @@
 "sbt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21211,6 +21206,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21542,7 +21538,6 @@
 /area/lv624/ground/colony/west_nexus_road)
 "uxq" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security/lawyer,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "uxT" = (
@@ -50555,7 +50550,7 @@ acQ
 yfH
 gcI
 yfH
-adf
+yfH
 yfH
 kSs
 vhx

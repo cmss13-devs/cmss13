@@ -906,7 +906,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "ado" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -4718,7 +4718,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "aBB" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -7935,7 +7935,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "bOh" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
@@ -8728,7 +8728,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "cKE" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
 	},
@@ -10173,7 +10173,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "eBU" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -16835,7 +16835,7 @@
 	},
 /area/shiva/interior/valley_huts)
 "lSz" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -20813,7 +20813,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "qiu" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},

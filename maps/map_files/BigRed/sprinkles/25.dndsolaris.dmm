@@ -31,7 +31,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-<<<<<<< HEAD
 "dF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -40,8 +39,6 @@
 	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> big_red_final_last_stand
 "dL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -86,7 +83,6 @@
 "ho" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/library)
-<<<<<<< HEAD
 "hF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -95,8 +91,6 @@
 	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> big_red_final_last_stand
 "hL" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/chicken,
@@ -146,10 +140,6 @@
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< HEAD
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -266,10 +256,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< HEAD
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -282,7 +268,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
-<<<<<<< HEAD
 "yx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -292,8 +277,6 @@
 	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> big_red_final_last_stand
 "yT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -364,10 +347,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -376,10 +356,6 @@
 /area/bigredv2/outside/library)
 "FH" = (
 /obj/effect/landmark/survivor_spawner/dnd,
-<<<<<<< HEAD
-=======
-/obj/effect/landmark/survivor_spawn,
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -416,10 +392,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -453,10 +426,7 @@
 /area/bigredv2/outside/library)
 "Kj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -475,10 +445,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -530,25 +497,19 @@
 	},
 /area/bigredv2/outside/library)
 "Oe" = (
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/bigredv2/outside/library)
-<<<<<<< HEAD
 "Oi" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
-=======
->>>>>>> big_red_final_last_stand
 "OZ" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor{
@@ -598,10 +559,7 @@
 /area/bigredv2/outside/library)
 "Ss" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-<<<<<<< HEAD
 /obj/effect/landmark/survivor_spawner,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet6-2";
@@ -763,17 +721,10 @@ HT
 HT
 NI
 FH
-<<<<<<< HEAD
 Oi
 Oi
 FH
 Oi
-=======
-HT
-HT
-FH
-HT
->>>>>>> big_red_final_last_stand
 FH
 HT
 FH
@@ -793,11 +744,7 @@ Kj
 Kj
 Kj
 Lx
-<<<<<<< HEAD
 hF
-=======
-ww
->>>>>>> big_red_final_last_stand
 ww
 ww
 ww
@@ -810,22 +757,13 @@ ho
 Wz
 HT
 fo
-<<<<<<< HEAD
 Oi
 dF
-=======
-HT
-xd
->>>>>>> big_red_final_last_stand
 Oe
 Oe
 Oe
 Fm
-<<<<<<< HEAD
 yx
-=======
-pJ
->>>>>>> big_red_final_last_stand
 pJ
 pJ
 Nm
@@ -838,7 +776,6 @@ ho
 YF
 HT
 NI
-<<<<<<< HEAD
 Oi
 Oi
 Oi
@@ -846,15 +783,6 @@ Oi
 Oi
 Oi
 Oi
-=======
-HT
-HT
-HT
-HT
-HT
-HT
-HT
->>>>>>> big_red_final_last_stand
 Pp
 ZD
 Uh
@@ -873,11 +801,7 @@ nn
 zc
 Rj
 xz
-<<<<<<< HEAD
 Oi
-=======
-HT
->>>>>>> big_red_final_last_stand
 HT
 HT
 Uh
@@ -896,11 +820,7 @@ nn
 ES
 zc
 xz
-<<<<<<< HEAD
 Oi
-=======
-HT
->>>>>>> big_red_final_last_stand
 ZV
 ZD
 Uh
@@ -915,19 +835,11 @@ Rh
 Ro
 iQ
 Kz
-<<<<<<< HEAD
 Oi
 Oi
 Oi
 Oi
 Oi
-=======
-HT
-HT
-HT
-HT
-HT
->>>>>>> big_red_final_last_stand
 ei
 ZD
 xd

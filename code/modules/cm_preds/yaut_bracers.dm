@@ -404,9 +404,9 @@
 	var/atom/areaLoc = null
 	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
-		if(is_honorable_carrier(recursive_holder_check(I)))
-			continue
 		if(I.anchored)
+			continue
+		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
 		if(istype(get_area(src), /area/yautja))
 			continue

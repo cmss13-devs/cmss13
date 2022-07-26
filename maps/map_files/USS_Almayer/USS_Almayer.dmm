@@ -15191,6 +15191,11 @@
 /area/almayer/living/numbertwobunks)
 "aUp" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -32109,6 +32114,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)"
 	},
+/obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
 "ceQ" = (
@@ -105218,14 +105224,14 @@ wVW
 wVW
 fDU
 uiZ
-pUJ
-pUJ
-pUJ
-pUJ
-pUJ
-pUJ
-pUJ
-pUJ
+qFl
+qFl
+qFl
+qFl
+qFl
+qFl
+qFl
+qFl
 aUp
 qFl
 gaO

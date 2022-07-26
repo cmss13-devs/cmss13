@@ -82,6 +82,7 @@
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -183,6 +184,7 @@
 	icon_state = "metal_2"
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -277,10 +279,17 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+"nX" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "ob" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -330,6 +339,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -342,6 +352,7 @@
 	dir = 4;
 	icon_state = "plasteel_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -386,6 +397,18 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+"rd" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	icon_state = "plasteel_2"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
+	},
+/area/bigredv2/outside/bar)
 "rp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -398,6 +421,14 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"ry" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
+	},
 /area/bigredv2/outside/bar)
 "rD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -414,6 +445,7 @@
 	icon_state = "metal_2";
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -442,6 +474,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/chef,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -503,6 +536,7 @@
 	dir = 1;
 	icon_state = "plasteel_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -532,6 +566,7 @@
 	dir = 4;
 	icon_state = "plasteel_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -688,6 +723,15 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+"Fz" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "FC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -718,6 +762,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -806,7 +851,6 @@
 	dir = 4;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
@@ -1036,6 +1080,7 @@
 /area/bigredv2/outside/dorms)
 "UF" = (
 /obj/structure/bed,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1104,6 +1149,7 @@
 	icon_state = "metal_2";
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1257,8 +1303,8 @@ nr
 Gq
 vc
 QK
+ry
 OL
-Me
 Eb
 ZP
 AI
@@ -1281,7 +1327,7 @@ lb
 lb
 lb
 fS
-Gt
+rd
 oA
 SF
 Nn
@@ -1363,7 +1409,7 @@ Ry
 hP
 ax
 qQ
-UL
+Fz
 kp
 "}
 (9,1,1) = {"
@@ -1482,8 +1528,8 @@ lu
 pf
 sg
 XZ
-vQ
-ax
+hP
+nX
 kI
 "}
 (14,1,1) = {"

@@ -100,7 +100,7 @@
 	name = "Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist
 
-/obj/effect/landmark/corpsespawner/colonist/kutjevo //default is a colonist
+/obj/effect/landmark/corpsespawner/colonist/kutjevo 
 	name = "Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo
 

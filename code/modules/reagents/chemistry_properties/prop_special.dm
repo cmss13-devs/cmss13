@@ -356,7 +356,7 @@
 	code = "PTR"
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_LEGENDARY
-	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	category = PROPERTY_TYPE_REACTANT
 	value = 8
 	max_level = 1
 

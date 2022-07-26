@@ -172,6 +172,7 @@
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
+#define PROPERTY_FIRE_PENETRATING	"fire-penetrating"
 //Admin Only Properties
 #define PROPERTY_ORGAN_HEALING "organ-healing"
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
@@ -183,7 +184,6 @@
 #define PROPERTY_RADIUS				"radius" // Fire related admin property
 #define PROPERTY_INTENSITY			"intensity" // Fire related admin property
 #define PROPERTY_DURATION			"duration" // Fire related admin property
-#define PROPERTY_FIRE_PENETRATING	"fire-penetrating" // Fire related admin property
 //Reaction Properties
 #define PROPERTY_FUELING			"fueling"
 #define PROPERTY_OXIDIZING			"oxidizing"

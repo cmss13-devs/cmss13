@@ -388,3 +388,4 @@
       longer give the overwatched xeno the fruit's effects.
   - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
       cooldown on the ability is now applied earlier
+  - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto

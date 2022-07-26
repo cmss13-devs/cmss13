@@ -52,8 +52,8 @@
 	H.equip_to_slot_or_del(new /obj/item/accessory/holobadge_cord, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/tactical, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
@@ -66,7 +66,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15, WEAR_IN_BACK)
@@ -102,8 +102,8 @@
 	H.equip_to_slot_or_del(new /obj/item/accessory/holobadge_cord, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/lmg, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911, WEAR_WAIST)
+	H.equip_to_slot_or_del(new obj/weapon/gun/rifle/mar40/lmg/tactical, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
@@ -149,7 +149,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine/tactical, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
@@ -165,8 +165,8 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
@@ -206,7 +206,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine/tactical, WEAR_J_STORE)
 	//storage items
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_R_STORE)
@@ -251,7 +251,7 @@
 	H.equip_to_slot_or_del(new /obj/item/accessory/holobadge_cord, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/tactical, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
@@ -334,7 +334,7 @@
 	H.equip_to_slot_or_del(new /obj/item/box/packet/smoke, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
 	//body
@@ -362,3 +362,107 @@
 	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_R_STORE)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/contractor/duty
+	name = "Covert Military Contractor (Standard)"
+	uses_special_name = TRUE
+	paygrade = "VASC Covert Mercenary"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/data
+	assignment = "VASC Covert Mercenary"
+	rank = "Mercenary"
+	skills = /datum/skills/contractor
+	faction = FACTION_MARINE
+
+/datum/equipment_preset/contractor/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/contractor/duty/load_gear(mob/living/carbon/human/H)
+	//TODO: add unique backpacks and satchels
+	//clothes
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/accessory/health/ceramic_plate, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/accessory/holobadge_cord, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/tactical, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_R_STORE)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15/rubber, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15/rubber, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+
+//*****************************************************************************************************/
+
+	/datum/equipment_preset/contractor/duty/medic
+	name = "Covert Military Contractor (Medic)"
+	paygrade = "VASC Covert Mercenary Medic"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/data
+	assignment = "VASC Covert Medical Specialist"
+	rank = "Mercenary"
+	skills = /datum/skills/contractor/medic
+	faction = FACTION_MARINE
+
+/datum/equipment_preset/contractor/duty/medic/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/contractor/duty/medic/load_gear(mob/living/carbon/human/H)
+	//clothing
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/accessory/holobadge_cord, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/accessory/health/ceramic_plate, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine/tactical, WEAR_J_STORE)
+	//storage items
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
+	//backpack and stuff in it
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK) //Line in vest.
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_BACK)

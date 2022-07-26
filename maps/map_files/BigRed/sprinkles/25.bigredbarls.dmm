@@ -60,8 +60,13 @@
 	dir = 8;
 	tag = ""
 	},
+<<<<<<< master
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+/obj/item/ammo_casing/bullet,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -82,7 +87,10 @@
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -184,7 +192,10 @@
 	icon_state = "metal_2"
 	},
 /obj/item/ammo_casing/bullet,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -216,6 +227,7 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
+<<<<<<< master
 "lu" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -226,6 +238,8 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "lI" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -262,7 +276,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -279,17 +297,23 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+<<<<<<< master
 "nX" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "ob" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -339,7 +363,10 @@
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/engineer,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -352,7 +379,10 @@
 	dir = 4;
 	icon_state = "plasteel_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -397,6 +427,7 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+<<<<<<< master
 "rd" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -409,6 +440,8 @@
 	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "rp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -422,6 +455,7 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
+<<<<<<< master
 "ry" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -430,6 +464,8 @@
 	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "rD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
@@ -445,7 +481,10 @@
 	icon_state = "metal_2";
 	dir = 8
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -474,7 +513,10 @@
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/chef,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -536,7 +578,10 @@
 	dir = 1;
 	icon_state = "plasteel_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -566,6 +611,7 @@
 	dir = 4;
 	icon_state = "plasteel_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
@@ -576,6 +622,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -588,7 +636,11 @@
 /area/bigredv2/outside/bar)
 "zm" = (
 /obj/structure/bed/stool,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -658,6 +710,7 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
+<<<<<<< master
 "Cn" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -668,6 +721,8 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
@@ -718,6 +773,7 @@
 	dir = 8;
 	tag = ""
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
@@ -728,6 +784,9 @@
 	icon_state = "plasteel_2"
 	},
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -762,7 +821,10 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -851,7 +913,11 @@
 	dir = 4;
 	tag = ""
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -888,6 +954,7 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/general_offices)
+<<<<<<< master
 "Me" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -896,6 +963,8 @@
 	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "Mr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/weldpack,
@@ -953,7 +1022,11 @@
 	dir = 4;
 	tag = ""
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -996,12 +1069,15 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
+<<<<<<< master
 "Ry" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
+=======
+>>>>>>> reuploaded code and maps
 "Si" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -1046,7 +1122,11 @@
 	dir = 4;
 	tag = ""
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1080,7 +1160,10 @@
 /area/bigredv2/outside/dorms)
 "UF" = (
 /obj/structure/bed,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1108,8 +1191,13 @@
 	dir = 8;
 	tag = ""
 	},
+<<<<<<< master
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner,
+=======
+/obj/effect/landmark/survivor_spawn,
+/obj/item/ammo_casing/bullet,
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1149,7 +1237,10 @@
 	icon_state = "metal_2";
 	dir = 8
 	},
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner,
+=======
+>>>>>>> reuploaded code and maps
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1255,12 +1346,20 @@ Wq
 Gc
 Si
 QK
+<<<<<<< master
 Me
+=======
+OL
+>>>>>>> reuploaded code and maps
 fi
 Eb
 Xl
 ax
+<<<<<<< master
 lu
+=======
+Xl
+>>>>>>> reuploaded code and maps
 qY
 Xl
 ax
@@ -1282,7 +1381,11 @@ fS
 Gt
 gv
 Eb
+<<<<<<< master
 Cn
+=======
+Kv
+>>>>>>> reuploaded code and maps
 Tc
 FC
 hz
@@ -1303,7 +1406,11 @@ nr
 Gq
 vc
 QK
+<<<<<<< master
 ry
+=======
+OL
+>>>>>>> reuploaded code and maps
 OL
 Eb
 ZP
@@ -1327,7 +1434,11 @@ lb
 lb
 lb
 fS
+<<<<<<< master
 rd
+=======
+Gt
+>>>>>>> reuploaded code and maps
 oA
 SF
 Nn
@@ -1360,7 +1471,11 @@ ax
 ax
 Wd
 Fa
+<<<<<<< master
 Ry
+=======
+ax
+>>>>>>> reuploaded code and maps
 ax
 kI
 "}
@@ -1405,11 +1520,19 @@ ax
 Yd
 Yd
 ax
+<<<<<<< master
 Ry
 hP
 ax
 qQ
 Fz
+=======
+ax
+hP
+ax
+qQ
+UL
+>>>>>>> reuploaded code and maps
 kp
 "}
 (9,1,1) = {"
@@ -1431,7 +1554,11 @@ rD
 hz
 CB
 gV
+<<<<<<< master
 Ry
+=======
+ax
+>>>>>>> reuploaded code and maps
 ax
 fJ
 Yw
@@ -1448,7 +1575,11 @@ QA
 ax
 Dr
 Ii
+<<<<<<< master
 Ry
+=======
+ax
+>>>>>>> reuploaded code and maps
 ax
 Yd
 ax
@@ -1469,7 +1600,11 @@ SE
 kI
 hP
 ax
+<<<<<<< master
 Ry
+=======
+ax
+>>>>>>> reuploaded code and maps
 ax
 Ii
 ic
@@ -1518,6 +1653,7 @@ kI
 nV
 hz
 In
+<<<<<<< master
 Ry
 eQ
 tF
@@ -1525,11 +1661,24 @@ kI
 lu
 tq
 lu
+=======
+ax
+eQ
+tF
+kI
+Xl
+tq
+Xl
+>>>>>>> reuploaded code and maps
 pf
 sg
 XZ
 hP
+<<<<<<< master
 nX
+=======
+ax
+>>>>>>> reuploaded code and maps
 kI
 "}
 (14,1,1) = {"

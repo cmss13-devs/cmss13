@@ -61,7 +61,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
-		to_chat(M, SPAN_XENOWARNING("[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
+		to_chat(M, SPAN_XENOWARNING("\The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
 		return XENO_NO_DELAY_ACTION
 
 	if(firing)
@@ -70,11 +70,11 @@
 		playsound(src, "acid_hit", 25, 1)
 		playsound(M, "alien_help", 25, 1)
 		M.apply_damage(10, BURN)
-		M.visible_message(SPAN_DANGER("[M] has tried to knock steaming hot [src] over, but pulled away burning itself!"),
-		SPAN_XENOWARNING("[src] is burning hot! Wait a few seconds."))
+		M.visible_message(SPAN_DANGER("[M] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
+		SPAN_XENOWARNING("\The [src] is burning hot! Wait a few seconds."))
 		return XENO_ATTACK_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] has lashed at \the [src] and knocked it over!"),
+	M.visible_message(SPAN_DANGER("[M] lashes at \the [src] and knocks it over!"),
 	SPAN_DANGER("You knock \the [src] over!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")

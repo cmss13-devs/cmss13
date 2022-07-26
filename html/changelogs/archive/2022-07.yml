@@ -380,6 +380,8 @@
   - rscadd: added above-head chat messages for the *medic emote
   - rscadd: me" custom emotes will now appear in above-head chat
 2022-07-26:
+  Geevies:
+  - bugfix: Survivors no longer spawn on top of eachother.
   Jeser:
   - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
   - code_imp: Xenos can slash mortar to knock it over.

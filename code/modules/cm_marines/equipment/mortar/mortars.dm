@@ -45,6 +45,46 @@
 	qdel(internal_camera)
 	return ..()
 
+/obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_OVER
+
+/obj/structure/mortar/get_projectile_hit_boolean(obj/item/projectile/P)
+	if(P.original == src)
+		return TRUE
+	else
+		return FALSE
+
+/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(isXenoLarva(M))
+		return XENO_NO_DELAY_ACTION
+
+	if(fixed)
+		to_chat(M, SPAN_XENOWARNING("\The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
+		return XENO_NO_DELAY_ACTION
+
+	if(firing)
+		M.animation_attack_on(src)
+		M.flick_attack_overlay(src, "slash")
+		playsound(src, "acid_hit", 25, 1)
+		playsound(M, "alien_help", 25, 1)
+		M.apply_damage(10, BURN)
+		M.visible_message(SPAN_DANGER("[M] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
+		SPAN_XENOWARNING("\The [src] is burning hot! Wait a few seconds."))
+		return XENO_ATTACK_ACTION
+
+	M.visible_message(SPAN_DANGER("[M] lashes at \the [src] and knocks it over!"),
+	SPAN_DANGER("You knock \the [src] over!"))
+	M.animation_attack_on(src)
+	M.flick_attack_overlay(src, "slash")
+	playsound(loc, 'sound/effects/metalhit.ogg', 25)
+	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
+	MK.name = name
+	qdel(src)
+
+	return XENO_ATTACK_ACTION
+
 /obj/structure/mortar/attack_hand(mob/user)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))

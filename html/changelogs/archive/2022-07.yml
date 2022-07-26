@@ -379,3 +379,10 @@
       can't feel it anyways. Fake it if you want.
   - rscadd: added above-head chat messages for the *medic emote
   - rscadd: me" custom emotes will now appear in above-head chat
+2022-07-26:
+  Jeser:
+  - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
+  - code_imp: Xenos can slash mortar to knock it over.
+  stanalbatross:
+  - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
+      longer give the overwatched xeno the fruit's effects.

@@ -9609,6 +9609,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -17863,6 +17864,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitebluecorner";
@@ -19039,6 +19041,7 @@
 "ocG" = (
 /obj/effect/landmark/corpsespawner/security/liaison,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/start/liaison,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21536,6 +21539,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "white"
 	},

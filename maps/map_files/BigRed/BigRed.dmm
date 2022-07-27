@@ -39869,7 +39869,7 @@
 	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";

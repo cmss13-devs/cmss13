@@ -80,9 +80,7 @@
 	else if(additional_styles.Find("virtual-speaker"))
 		var/image/r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "radio")
 		text_to_display = "\icon[r_icon]&nbsp;[text_to_display]"
-	text_to_display = "<span class='center [additional_styles.Join(" ")] [langchat_styles] langchat'>[text_to_display]</span>"
-
-//[additional_styles != null ? additional_styles.Join(" ") : ""]
+	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [langchat_styles] langchat'>[text_to_display]</span>"
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH

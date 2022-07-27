@@ -404,6 +404,8 @@
 	var/atom/areaLoc = null
 	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
+		if(I.anchored)
+			continue
 		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
 		if(istype(get_area(src), /area/yautja))
@@ -608,7 +610,7 @@
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)
-			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
+			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
 		if(explosion_type == 0 && is_ground_level(T.z))

@@ -577,12 +577,11 @@
 	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
-
-	add_random_synth_survivor_equipment(H)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	add_random_synth_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 

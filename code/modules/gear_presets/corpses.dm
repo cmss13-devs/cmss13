@@ -644,6 +644,8 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	else
@@ -680,7 +682,9 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	add_random_synth_survivor_equipment(H)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 
@@ -701,6 +705,9 @@
 	
 	add_random_kutjevo_survivor_uniform(H)
 	add_random_kutjevo_survivor_equipment(H)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
@@ -893,7 +900,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 	add_random_cl_survivor_loot(H)
+	add_random_survivor_equipment(H)
 	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/wy/manager/burst
 	name = "Corpse - Corporate Supervisor"
@@ -935,6 +944,9 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/clf/burst
 	name = "Corpse - Colonial Liberation Front Soldier"
@@ -972,6 +984,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	add_random_survivor_equipment(H)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
@@ -983,7 +996,7 @@
 // PMC
 
 /datum/equipment_preset/corpse/pmc
-	name = " Corpse - Survivor - PMC"
+	name = " Corpse - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
 	faction = FACTION_PMC
@@ -1013,6 +1026,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	add_random_survivor_equipment(H)
 
 /datum/equipment_preset/corpse/pmc/burst
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
@@ -1043,12 +1057,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	spawn_merc_helmet(H)
-
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	add_random_survivor_equipment(H)
+	spawn_merc_helmet(H)
 
 /datum/equipment_preset/corpse/freelancer/burst
 	name = "Corpse - Freelancer Mercenary"
@@ -1087,6 +1101,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(H), WEAR_FEET)
+	spawn_merc_helmet(H)
+	add_random_survivor_equipment(H)
 
 /datum/equipment_preset/corpse/dutchrifle/burst
 	name = "Corpse - Dutch Dozen Rifleman"
@@ -1133,6 +1149,9 @@
 	H.equip_to_slot_or_del(new /obj/item/pizzabox/meat, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/pizza/burst
 	name = "Corpse - Pizza Deliverer"

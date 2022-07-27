@@ -18,7 +18,12 @@
 				if (!alt)
 					alt = L // last option is a simple mob
 				continue
-
+			if (istype(L, /mob/living/carbon/Xenomorph) && client?.prefs?.toggle_prefs & TOGGLE_DIR_ASSIST_IFF)
+				var/mob/living/carbon/Xenomorph/X = L
+				to_chat_forced(world,"A")
+				if (X.hivenumber == src.hivenumber)
+					to_chat_forced(world,"B")
+					continue
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
 			if (L.lying)

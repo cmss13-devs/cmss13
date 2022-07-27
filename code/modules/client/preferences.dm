@@ -48,7 +48,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_DIR_ASSIST_IFF // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -550,6 +550,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_CLICK]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Directional Assist: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIRECTIONAL_ATTACK]'><b>[toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Disable directional assist on friendly xenos: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIR_ASSIST_IFF]'><b>[toggle_prefs & TOGGLE_DIR_ASSIST_IFF ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Magazine Auto-Ejection: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_EJECT_MAGAZINE_OFF];flag_undo=[TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND]'><b>[!(toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF) ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Magazine Auto-Ejection to Offhand: \

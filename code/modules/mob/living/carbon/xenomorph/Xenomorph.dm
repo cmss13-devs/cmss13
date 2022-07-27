@@ -207,16 +207,8 @@
 	var/mob/living/carbon/Xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
-	var/current_aura = null //"claw", "armor", "regen", "speed"
-	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
-	var/warding_new = 0
-	var/recovery_new = 0
-	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
-	var/warding_aura = 0
-	var/recovery_aura = 0
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
-	var/ignores_pheromones = FALSE // title
 	var/is_zoomed = FALSE
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
@@ -268,6 +260,22 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+
+	/////////////////////////////////////////////////////////////////////
+	//
+	//		Phero related vars
+	//
+	//////////////////////////////////////////////////////////////////
+	var/ignores_pheromones = FALSE // title, ignores ALL pheros
+	var/current_aura = null //"claw", "armor", "regen", "speed"
+	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
+	var/warding_new = 0
+	var/recovery_new = 0
+	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
+	var/warding_aura = 0
+	var/recovery_aura = 0
+	var/ignore_aura = FALSE // ignore a specific pherom, input type
+
 
 	//////////////////////////////////////////////////////////////////
 	//

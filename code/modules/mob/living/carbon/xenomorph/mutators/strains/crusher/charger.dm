@@ -1,6 +1,6 @@
 /datum/xeno_mutator/charger
 	name = "STRAIN: Crusher - Charger"
-	description = "You trade your shield and pounce for speed and health."
+	description = "Your charge is now momentum based, the further you go, the more damage and speed you will get until you achieve max momentum when you roar. Your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. Your shield is also removed. In return you gain more health, gain an ability to tumble to avoid enemies, and gain an ability to forcefully move enemies via ramming. Finally, you trade being able to resist slowdowns from tall autospitters for being unaffected by frenzy pheros."
 	flavor_description = "We're just getting started. Nothing stops this train."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -27,10 +27,12 @@
 	var/mob/living/carbon/Xenomorph/Crusher/C = MS.xeno
 	C.mutation_type = CRUSHER_CHARGER
 	C.small_explosives_stun = FALSE
-	C.health_modifier += XENO_HEALTH_MOD_MED
+	C.health_modifier += XENO_HEALTH_MOD_LARGE
 	C.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	C.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
-
+	C.armor_modifier -= XENO_ARMOR_MOD_SMALL
+	C.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
+	C.phero_modifier = -C.caste.aura_strength
+	C.recalculate_pheromones()
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	apply_behavior_holder(C)
@@ -39,8 +41,8 @@
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"
 
-	var/frontal_armor = 25
-	var/side_armor = 10
+	var/frontal_armor = 30
+	var/side_armor = 15
 
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, .proc/cancel_dir_lock)

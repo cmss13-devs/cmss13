@@ -74,7 +74,7 @@
 /mob/living/simple_animal/hostile/alien/hologram/lurker
 	name = XENO_CASTE_LURKER
 	desc = "A beefy, fast alien with sharp claws."
-	icon = 'icons/mob/hostiles/lurker.dmi'
+	icon = '/cm/icons/custom/mob/xenos/lurker.dmi'
 	icon_state = "Normal Lurker Walking"
 	icon_living = "Normal Lurker Running"
 	icon_dead = "Normal Lurker Dead"
@@ -104,7 +104,7 @@
 /mob/living/simple_animal/hostile/alien/hologram/sentinel
 	name = XENO_CASTE_SENTINEL
 	desc = "A slithery, spitting kind of alien."
-	icon = 'icons/mob/hostiles/sentinel.dmi'
+	icon = '/cm/icons/custom/mob/xenos/spitter.dmi'
 	icon_state = "Normal Sentinel Walking"
 	icon_living = "Normal Sentinel Running"
 	icon_dead = "Normal Sentinel Dead"
@@ -137,7 +137,7 @@
 /mob/living/simple_animal/hostile/alien/hologram/praetorian
 	name = XENO_CASTE_PRAETORIAN
 	desc = "A huge, looming beast of an alien."
-	icon = 'icons/mob/hostiles/praetorian.dmi'
+	icon = 'cm/icons/custom/mob/xenos/praetorian.dmi'
 	icon_state = "Normal Praetorian Walking"
 	icon_living = "Normal Praetorian Running"
 	icon_dead = "Normal Praetorian Dead"
@@ -160,9 +160,9 @@
 	icon_dead = "Vanguard Praetorian Dead"
 
 /mob/living/simple_animal/hostile/alien/hologram/praetorian/oppressor
-	icon_state = "Opressor Praetorian Running"
-	icon_living = "Opressor Praetorian Running"
-	icon_dead = "Opressor Praetorian Dead"
+	icon_state = "Oppressor Praetorian Running"
+	icon_living = "Oppressor Praetorian Running"
+	icon_dead = "Oppressor Praetorian Dead"
 
 /mob/living/simple_animal/hostile/alien/hologram/hivelord
 	name = XENO_CASTE_HIVELORD
@@ -182,7 +182,7 @@
 /mob/living/simple_animal/hostile/alien/hologram/spitter
 	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
-	icon = 'icons/mob/hostiles/spitter.dmi'
+	icon = '/cm/icons/custom/mob/xenos/spitter.dmi'
 	icon_state = "Normal Spitter Walking"
 	icon_living = "Normal Spitter Running"
 	icon_dead = "Normal Spitter Dead"
@@ -205,7 +205,7 @@
 /mob/living/simple_animal/hostile/alien/hologram/crusher
 	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
-	icon = 'icons/mob/hostiles/crusher.dmi'
+	icon = '/cm/icons/custom/mob/xenos/crusher.dmi'
 	icon_state = "Normal Crusher Walking"
 	icon_living = "Normal Crusher Running"
 	icon_dead = "Normal Crusher Dead"
@@ -243,7 +243,6 @@
 	name = XENO_CASTE_WARRIOR
 	icon = 'icons/mob/hostiles/warrior.dmi'
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/mob/hostiles/warrior.dmi'
 	icon_state = "Normal Warrior Walking"
 	icon_living = "Normal Warrior Running"
 	icon_dead = "Normal Warrior Dead"

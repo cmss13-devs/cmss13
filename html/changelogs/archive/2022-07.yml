@@ -415,6 +415,21 @@
       cooldown on the ability is now applied earlier
   - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
 2022-07-27:
+  Jeser:
+  - rscadd: Examining a powerloader clamp will show held object, if there is one.
+      Examining powerloader itself will show held objects in both clamps, if there
+      are any.
+  - imageadd: Changed powerloader clamp sprites. Added versions for each main category
+      of objects that can be grabbed. Those include OB warhead and fuel, dropship
+      module, ammo and rocket, vehicle module, reagents dispenser, crate, chair stack,
+      portable floodlight and large supply crate which also used as default sprite
+      for any object outside of aforementioned categories.
+  - rscadd: Powerloaders are able to grab watertanks, beerkegs and empty reagents
+      tanks now.
+  - rscadd: Big chair stacks can now collapse on grabbing and putting them on floor
+      with powerloader clamp.
+  - rscadd: Failed attempts to grab and put objects on floor now provide more feedback.
+  - rscadd: Can't grab acided objects anymore.
   Kaga:
   - bugfix: The Type-B "Greenfire" Update now actually shows up on the Changelog.
       Watch out, Green Fire can no longer be ignored! Originally Merged on July 4,

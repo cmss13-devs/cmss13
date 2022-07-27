@@ -395,7 +395,7 @@
       cooldown on the ability is now applied earlier
   - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
   Kaga:
-  - add: "Greenfire" has been unified into a single unique fire type. This is generally
+  - add: All variants of "Greenfire" have been unified into a single unique fire type. This is generally
       referred to as "Type B" Napalm/Napthal.
   - expansion: Flames with the "Type B" property behave as an area denial tool, remaining
       on the ground for a long time if not extinguished. Moving through them will slow you

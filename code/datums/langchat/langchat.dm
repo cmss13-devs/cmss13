@@ -83,7 +83,7 @@
 		additional_styles.Remove("virtual-speaker")
 		r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "radio")
 	if(r_icon)
-		text_to_display = "\icon[r_icon]&nbsp;[text_to_display]"
+		text_to_display = "\icon[r_icon]&zwsp;[text_to_display]"
 	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [use_mob_style ? langchat_styles : ""] langchat'>[text_to_display]</span>"
 
 	langchat_image.maptext = text_to_display

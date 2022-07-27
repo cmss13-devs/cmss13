@@ -120,7 +120,7 @@
 	M.anchored = TRUE
 	M.update_icon()
 	M.set_name_label(name_label)
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
 
@@ -165,7 +165,7 @@
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 	M.set_name_label(name_label)
 	qdel(src)
@@ -299,6 +299,15 @@
 					fail = TRUE
 					break
 				if(istype(X, /obj/structure/machinery/defenses))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/window))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/windoor_assembly))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/machinery/door))
 					fail = TRUE
 					break
 		if(fail)
@@ -965,6 +974,9 @@
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
 	if(!ishuman(user))
 		return FALSE
+	if(broken_gun)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+		return FALSE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
@@ -974,12 +986,25 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
-	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
-		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
+	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR) || (locate(/obj/structure/window) in ACR) || (locate(/obj/structure/windoor_assembly) in ACR))
+		to_chat(user, SPAN_WARNING("There are barriers nearby, you can't set up \the [src] here!"))
 		return FALSE
-	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+	var/fail = FALSE
+	for(var/obj/X in OT.contents - src)
+		if(istype(X, /obj/structure/machinery/defenses))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/door))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/m56d_hmg))
+			fail = TRUE
+			break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 		return FALSE
+
+
 	if(!(user.alpha > 60))
 		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
 		return FALSE
@@ -1006,7 +1031,7 @@
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
 	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
 	M.rounds = rounds
@@ -1141,7 +1166,12 @@
 /obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/AM, target_dir)
 	if(istype(AM, /obj/structure/barricade))
 		return BLOCKED_MOVEMENT
-
+	else if(istype(AM, /obj/structure/window))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/windoor_assembly))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/machinery/door))
+		return BLOCKED_MOVEMENT
 	return ..()
 
 /obj/structure/blocker/anti_cade/Destroy()

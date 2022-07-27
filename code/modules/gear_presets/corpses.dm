@@ -43,7 +43,7 @@
 
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	add_survivor_weapon(H)
+	add_random_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 
@@ -639,6 +639,7 @@
 	xenovictim = TRUE
 
 //Faction Specific Corpses
+
 /datum/equipment_preset/corpse/clf
 	name = "Corpse - Colonial Liberation Front Soldier"
 	assignment = "Colonial Liberation Front Soldier"
@@ -789,4 +790,123 @@
 
 /datum/equipment_preset/corpse/freelancer/burst
 	name = "Corpse - Freelancer Mercenary"
+	xenovictim = TRUE
+
+// Fun Faction Corpse
+
+// Dutch Dozen
+
+/datum/equipment_preset/corpse/dutchrifle
+	name = "Corpse - Dutch Dozen Rifleman"
+	assignment = "Dutch Dozen Rifleman"
+	idtype = /obj/item/card/id/silver
+	faction = FACTION_DUTCH
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/dutchrifle/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(H), WEAR_FEET)
+
+/datum/equipment_preset/corpse/dutchrifle/burst
+	name = "Corpse - Dutch Dozen Rifleman"
+	xenovictim = TRUE
+
+// Pizza Planet
+
+/datum/equipment_preset/corpse/pizza
+	name = "Corpse - Pizza Deliverer"
+	assignment = "Pizza Deliverer"
+	idtype = /obj/item/card/id/silver
+	faction = FACTION_PIZZA
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/pizza/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/pizza, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/margherita, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/vegetable, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/mushroom, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/meat, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/pizza/burst
+	name = "Corpse - Pizza Deliverer"
+	xenovictim = TRUE
+
+// Gladiator
+
+/datum/equipment_preset/corpse/gladiator
+	name = "Corpse - Gladiator"
+	assignment = "Gladiator"
+	idtype = /obj/item/card/id/dogtag
+	faction = FACTION_GLADIATOR
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/gladiator/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gladiator, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
+
+	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
+	lantern.name = "Beacon of Holy Light"
+
+/datum/equipment_preset/corpse/gladiator/burst
+	name = "Corpse - Gladiator"
 	xenovictim = TRUE

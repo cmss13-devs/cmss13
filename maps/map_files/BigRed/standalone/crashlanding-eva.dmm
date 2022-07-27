@@ -269,7 +269,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "bq" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -291,7 +293,8 @@
 /area/bigredv2/outside/general_offices)
 "bt" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -299,6 +302,8 @@
 /area/bigredv2/outside/general_offices)
 "bu" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -523,12 +528,14 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cc" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
 	tag = "icon-rasputin7"
 	},
 /area/bigredv2/outside/general_offices)
 "cd" = (
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin7"
@@ -589,6 +596,8 @@
 "cm" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -630,6 +639,8 @@
 "cu" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1278,8 +1289,13 @@
 	},
 /area/bigredv2/outside/general_offices)
 "Zt" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1795,7 +1811,7 @@ cm
 bj
 bj
 bj
-Zt
+bj
 bj
 aS
 bk
@@ -1859,7 +1875,7 @@ bv
 bv
 bv
 bh
-ce
+Zt
 cp
 cf
 cf

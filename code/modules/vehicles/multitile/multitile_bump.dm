@@ -228,6 +228,52 @@
 	qdel(src)
 	return TRUE
 
+/obj/structure/inflatable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		V.move_momentum -= V.move_momentum * 0.5
+	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
+	density = FALSE
+	deflate(TRUE)
+	return TRUE
+
+/obj/structure/prop/dam/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
+		V.move_momentum -= V.move_momentum * 0.5
+	else if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		return FALSE
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/metal_crash.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/prop/dam/drill/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/torii/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/flora/tree/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		return FALSE
+	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
+		V.move_momentum -= V.move_momentum * 0.5
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/metal_crash.ogg', 20)
+	playsound(src, 'sound/effects/woodhit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/flora/tree/jungle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
 //-------------------------MACHINERY------------------------
 
 /obj/structure/machinery/door/handle_vehicle_bump(var/obj/vehicle/multitile/V)
@@ -372,6 +418,14 @@
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
+		playsound(V, 'sound/effects/metal_crash.ogg', 20)
+		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+		qdel(src)
+		return TRUE
+	return FALSE
 
 //-------------------------VEHICLES------------------------
 

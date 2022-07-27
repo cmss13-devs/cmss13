@@ -164,9 +164,35 @@
 	equip_path = /datum/equipment_preset/corpse/pmc/burst
 
 /obj/effect/landmark/corpsespawner/freelancer
-	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	name = "Corpse - Corpse - Freelancer Mercenary"
 	equip_path = /datum/equipment_preset/corpse/freelancer
 
 /obj/effect/landmark/corpsespawner/freelancer/burst
-	name = "Burst Weyland-Yutani PMC (Standard)"
+	name = "Burst Corpse - Freelancer Mercenary"
 	equip_path = /datum/equipment_preset/corpse/freelancer/burst
+
+// Fun Faction Corpse
+
+/obj/effect/landmark/corpsespawner/dutchrifle
+	name = "Corpse - Corpse - Dutch Dozen Rifleman"
+	equip_path = /datum/equipment_preset/corpse/dutchrifle
+
+/obj/effect/landmark/corpsespawner/dutchrifle/burst
+	name = "Burst Corpse - Dutch Dozen Rifleman"
+	equip_path = /datum/equipment_preset/corpse/dutchrifle/burst
+
+/obj/effect/landmark/corpsespawner/pizza
+	name = "Corpse - Corpse - Pizza Deliverer"
+	equip_path = /datum/equipment_preset/corpse/pizza
+
+/obj/effect/landmark/corpsespawner/pizza/burst
+	name = "Burst Corpse - Pizza Deliverer"
+	equip_path = /datum/equipment_preset/corpse/pizza/burst
+
+/obj/effect/landmark/corpsespawner/gladiator
+	name = "Corpse - Corpse - Gladiator"
+	equip_path = /datum/equipment_preset/corpse/gladiator
+
+/obj/effect/landmark/corpsespawner/gladiator/burst
+	name = "Burst Corpse - Gladiator"
+	equip_path = /datum/equipment_preset/corpse/gladiator/burst

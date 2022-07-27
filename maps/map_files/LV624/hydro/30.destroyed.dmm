@@ -185,12 +185,15 @@
 	icon_state = "folding_3"
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "vm" = (
-/obj/item/weapon/gun/rifle/nsg23,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -198,6 +201,11 @@
 "xa" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -235,7 +243,6 @@
 /area/lv624/lazarus/hydroponics)
 "zj" = (
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
@@ -252,6 +259,8 @@
 "zX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -317,6 +326,11 @@
 	health = 245;
 	icon_state = "folding_1"
 	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -466,6 +480,8 @@
 "Qd" = (
 /obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (
@@ -498,6 +514,7 @@
 	health = 140;
 	icon_state = "folding_2"
 	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -527,6 +544,8 @@
 "YJ" = (
 /obj/item/storage/firstaid,
 /obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"

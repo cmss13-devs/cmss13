@@ -14581,7 +14581,6 @@
 /obj/item/clothing/suit/chef/classic,
 /obj/structure/bed/stool,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/chef,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
@@ -17081,7 +17080,6 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gibup1"
 	},
-/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -23111,19 +23109,6 @@
 	icon_state = "yellowfull"
 	},
 /area/fiorina/station/disco)
-"nSS" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/landmark/corpsespawner/chef,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white";
-	tag = "icon-sterile_white (SOUTHWEST)"
-	},
-/area/fiorina/station/research_cells)
 "nSU" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/emergency,
@@ -30213,13 +30198,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
-"smb" = (
-/obj/structure/bed{
-	icon_state = "psychbed"
-	},
-/obj/effect/landmark/corpsespawner/security/liaison,
-/turf/open/floor/wood,
-/area/fiorina/station/civres_blue)
 "smq" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison{
@@ -56058,7 +56036,7 @@ xxD
 xxD
 xxD
 xxD
-smb
+jta
 vVi
 gma
 bfZ
@@ -83592,7 +83570,7 @@ jmG
 roY
 roY
 roY
-nSS
+sTB
 ubQ
 okF
 fis

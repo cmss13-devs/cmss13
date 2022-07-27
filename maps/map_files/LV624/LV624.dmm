@@ -617,7 +617,7 @@
 /area/lv624/ground/caves/west_caves)
 "acT" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -9609,7 +9609,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -13596,7 +13595,7 @@
 /area/lv624/ground/caves/sand_temple)
 "bJz" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "bLs" = (
@@ -15069,7 +15068,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "eZD" = (
@@ -17864,7 +17863,6 @@
 /area/lv624/ground/jungle/east_jungle)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitebluecorner";
@@ -19041,7 +19039,6 @@
 "ocG" = (
 /obj/effect/landmark/corpsespawner/security/liaison,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/start/liaison,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -20538,7 +20535,7 @@
 "rwx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
@@ -20786,7 +20783,7 @@
 "sbt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21539,7 +21536,6 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21851,7 +21847,7 @@
 "upQ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "urR" = (

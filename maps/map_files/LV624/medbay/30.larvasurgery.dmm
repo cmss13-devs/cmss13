@@ -399,7 +399,7 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 1;

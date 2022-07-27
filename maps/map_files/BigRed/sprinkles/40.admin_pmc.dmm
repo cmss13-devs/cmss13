@@ -7,7 +7,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
 "ad" = (
-/obj/structure/window_frame/solaris,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "ae" = (
@@ -19,8 +19,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/wysec,
-/obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -29,7 +27,6 @@
 /area/bigredv2/outside/admin_building)
 "ag" = (
 /obj/effect/spawner/random/toolbox,
-/obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark"
@@ -43,26 +40,30 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
-	dir = 8
-	},
+/obj/structure/window_frame/solaris,
+/obj/item/shard,
+/turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "ak" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
 	dir = 1
 	},
-/turf/open/floor,
+/turf/open/floor{
+	tag = "icon-carpet14-10 (WEST)";
+	icon_state = "carpet14-10";
+	dir = 8
+	},
 /area/bigredv2/outside/admin_building)
 "al" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/turf/open/floor,
+/turf/open/floor{
+	tag = "icon-carpet10-8 (WEST)";
+	icon_state = "carpet10-8";
+	dir = 8
+	},
 /area/bigredv2/outside/admin_building)
 "am" = (
 /obj/structure/barricade/metal/wired{
@@ -106,11 +107,6 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor{
 	tag = "icon-carpet7-3 (WEST)";
 	icon_state = "carpet7-3";
@@ -150,10 +146,6 @@
 /area/bigredv2/outside/admin_building)
 "aw" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/wysec,
-/obj/item/weapon/gun/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark"
@@ -169,9 +161,9 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
+	tag = "icon-carpet7-3 (WEST)";
+	icon_state = "carpet7-3";
+	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aB" = (
@@ -205,7 +197,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	tag = "icon-darkredcorners2";
 	icon_state = "darkredcorners2"
@@ -216,10 +207,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/wysec,
-/obj/item/weapon/gun/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
 	tag = "icon-darkred2";
 	icon_state = "darkred2"
@@ -279,8 +266,6 @@
 /area/bigredv2/outside/admin_building)
 "aO" = (
 /obj/item/storage/secure/briefcase,
-/obj/effect/landmark/corpsespawner/security/liaison,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -308,18 +293,13 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
 "aT" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wysec,
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark"
@@ -347,11 +327,6 @@
 "aW" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/weldingtool/largetank,
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor{
 	tag = "icon-carpet11-12 (WEST)";
 	icon_state = "carpet11-12";
@@ -389,14 +364,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/item/ammo_magazine/rifle/nsg23/ap{
-	pixel_x = -5;
-	pixel_y = 8
-	},
-/obj/item/ammo_magazine/rifle/nsg23/ap{
-	pixel_x = -5
-	},
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -423,12 +391,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	tag = "icon-carpet11-12 (WEST)";
 	icon_state = "carpet11-12";
@@ -439,7 +401,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "be" = (
@@ -552,10 +513,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	dir = 4
-	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bm" = (
@@ -613,29 +570,6 @@
 	dir = 6
 	},
 /area/bigredv2/outside/admin_building)
-"uG" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4;
-	icon_state = "metal_1"
-	},
-/obj/item/ammo_casing/bullet,
-/turf/open/floor,
-/area/bigredv2/outside/admin_building)
-"vs" = (
-/obj/effect/acid_hole{
-	dir = 4
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/admin_building)
-"wg" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/prop/helmetgarb/spent_buckshot,
-/turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
-	dir = 8
-	},
-/area/bigredv2/outside/admin_building)
 
 (1,1,1) = {"
 ab
@@ -653,7 +587,7 @@ ab
 ac
 aD
 ar
-aI
+aA
 aI
 aI
 aI
@@ -662,8 +596,8 @@ bi
 ab
 "}
 (3,1,1) = {"
-ad
-al
+aj
+ak
 as
 as
 aJ
@@ -674,7 +608,7 @@ bj
 bp
 "}
 (4,1,1) = {"
-ad
+aj
 ak
 at
 aB
@@ -686,8 +620,8 @@ bj
 aR
 "}
 (5,1,1) = {"
-ad
-al
+aj
+ak
 as
 aC
 as
@@ -712,7 +646,6 @@ aR
 (7,1,1) = {"
 ad
 am
-uG
 av
 aP
 aP
@@ -720,27 +653,27 @@ aP
 aP
 bd
 bl
-av
+aR
 "}
 (8,1,1) = {"
 ae
+aj
+aj
 ad
 ad
 ad
 ad
-ad
-ad
-vs
+ae
 bm
 ae
 "}
 (9,1,1) = {"
 af
-wg
-aj
+an
+an
 be
 aM
-an
+aS
 aX
 be
 bn
@@ -750,7 +683,7 @@ bq
 ag
 ay
 aw
-aA
+bf
 ay
 aT
 ay
@@ -759,7 +692,7 @@ ay
 br
 "}
 (11,1,1) = {"
-aS
+ay
 ap
 ay
 aG
@@ -773,7 +706,7 @@ bs
 (12,1,1) = {"
 ai
 ay
-aS
+ay
 aH
 ae
 ae

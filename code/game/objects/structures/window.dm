@@ -305,6 +305,12 @@
 		handle_debris()
 	qdel(src)
 
+/obj/structure/window/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		revrotate(user)
+		return TRUE
+
+	return ..()
 
 /obj/structure/window/verb/rotate()
 	set name = "Rotate Window Counter-Clockwise"

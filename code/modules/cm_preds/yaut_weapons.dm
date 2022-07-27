@@ -475,8 +475,7 @@
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
 		return
-	if(target == user || isanimal(target))
-		to_chat(user, SPAN_DANGER("You think you're smart?"))
+	if(isanimal(target))
 		return
 
 	if(!charged)

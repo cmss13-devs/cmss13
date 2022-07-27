@@ -52,7 +52,7 @@
 						M.show_message(message, m_type)
 						viewers.Add(M)
 				O.show_message(message, m_type)
-			langchat_speech(input, viewers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_italic"))
+			langchat_speech(input, viewers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small", "emote"))
 
 
 
@@ -72,7 +72,7 @@
 						M.show_message(message, m_type)
 						hearers.Add(M)
 				O.show_message(message, m_type)
-			langchat_speech(input, hearers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_italic"))
+			langchat_speech(input, hearers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small", "emote"))
 
 /mob/proc/emote_dead(var/message)
 	if(client.prefs.muted & MUTE_DEADCHAT)

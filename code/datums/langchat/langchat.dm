@@ -74,7 +74,15 @@
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
 	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS + 2 SECONDS
-	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [langchat_styles] langchat'>[text_to_display]</span>"
+	if(additional_styles.Find("emote"))
+		var/image/r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "emote")
+		text_to_display = "\icon[r_icon]&nbsp;[text_to_display]"
+	else if(additional_styles.Find("virtual-speaker"))
+		var/image/r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "radio")
+		text_to_display = "\icon[r_icon]&nbsp;[text_to_display]"
+	text_to_display = "<span class='center [additional_styles.Join(" ")] [langchat_styles] langchat'>[text_to_display]</span>"
+
+//[additional_styles != null ? additional_styles.Join(" ") : ""]
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH

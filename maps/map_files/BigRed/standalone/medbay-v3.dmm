@@ -100,7 +100,6 @@
 "aq" = (
 /obj/structure/closet/secure_closet/CMO,
 /obj/item/device/healthanalyzer,
-
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull"
@@ -251,7 +250,6 @@
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
-
 /turf/open/floor{
 	icon_state = "damaged2";
 	dir = 8
@@ -271,7 +269,7 @@
 /area/bigredv2/outside/medical)
 "aN" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -326,6 +324,7 @@
 /area/bigredv2/outside/medical)
 "aV" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "damaged2";
 	dir = 8
@@ -569,7 +568,7 @@
 /area/bigredv2/outside/medical)
 "bE" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -592,7 +591,7 @@
 "bH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -621,6 +620,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTH)";
 	icon_state = "whitegreen";
@@ -752,6 +752,7 @@
 "cd" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -808,6 +809,7 @@
 /area/bigredv2/outside/medical)
 "cl" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1004,6 +1006,7 @@
 	amount = 1;
 	icon_state = "coil2"
 	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "damaged3";
 	dir = 8
@@ -1139,16 +1142,15 @@
 "cZ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor{
 	icon_state = "damaged5";
 	dir = 8
 	},
 /area/bigredv2/outside/medical)
 "db" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1159,7 +1161,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1316,6 +1318,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1332,6 +1335,7 @@
 "dy" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1394,6 +1398,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1682,10 +1687,10 @@
 	},
 /area/bigredv2/outside/medical)
 "es" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor{
-	tag = "icon-whitebluefull (NORTHEAST)";
-	icon_state = "whitebluefull";
-	dir = 5
+	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/medical)
 "et" = (
@@ -1812,8 +1817,8 @@
 "eH" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner,
 /obj/item/reagent_container/food/snacks/margheritaslice,
+/obj/effect/landmark/corpsespawner/pizza/burst,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1860,6 +1865,7 @@
 "eN" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/reagent_container/food/snacks/margheritaslice,
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -2225,7 +2231,7 @@ ew
 eK
 aL
 eN
-es
+fi
 aa
 eT
 "}
@@ -2328,7 +2334,7 @@ bX
 aa
 aa
 bB
-cl
+db
 ab
 aa
 aa
@@ -2403,7 +2409,7 @@ az
 aU
 bc
 bp
-cl
+es
 ca
 ci
 cr
@@ -2719,7 +2725,7 @@ cL
 cY
 cs
 bG
-db
+cY
 dI
 aL
 an

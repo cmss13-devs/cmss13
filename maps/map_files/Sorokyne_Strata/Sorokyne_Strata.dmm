@@ -48,7 +48,7 @@
 /area/strata/ag/interior/paths/cabin_area/central)
 "aal" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aam" = (
@@ -118,7 +118,7 @@
 "aax" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aay" = (
@@ -355,7 +355,7 @@
 "abk" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abl" = (
@@ -434,7 +434,7 @@
 /area/strata/ag/exterior)
 "abB" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -953,7 +953,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/russian,
 /obj/structure/bed/roller,
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -1017,7 +1017,7 @@
 "acW" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "acX" = (
@@ -1556,7 +1556,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "aev" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aex" = (
@@ -2629,7 +2629,7 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -5973,7 +5973,7 @@
 /area/strata/ag/interior/outpost/security)
 "arw" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -8844,7 +8844,7 @@
 /area/strata/ag/interior/dorms)
 "azH" = (
 /obj/structure/machinery/optable,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/russian,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
@@ -17969,7 +17969,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bdm" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/russian,
 /obj/structure/bed/roller,
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -26571,7 +26571,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -32853,7 +32853,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "grP" = (
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -33455,7 +33455,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "hyu" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "hzb" = (
@@ -33808,7 +33808,7 @@
 "ioz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -34000,7 +34000,7 @@
 "izc" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/russian,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -41832,7 +41832,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "vPY" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "vQo" = (

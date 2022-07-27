@@ -430,6 +430,12 @@
       with powerloader clamp.
   - rscadd: Failed attempts to grab and put objects on floor now provide more feedback.
   - rscadd: Can't grab acided objects anymore.
+  Joe Lampost:
+  - bugfix: Made the predator self destruct actually gib the pred and kill them instead
+      of the fake gib that was added.
+  - bugfix: Removed anchored items from showing up on the gear tracker
+  - bugfix: Fixed preds being able to charge their combi sticks on simple mobs including
+      their own smart discs
   Kaga:
   - bugfix: The Type-B "Greenfire" Update now actually shows up on the Changelog.
       Watch out, Green Fire can no longer be ignored! Originally Merged on July 4,

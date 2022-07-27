@@ -25788,7 +25788,6 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "byp" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/effect/landmark/corpsespawner/security/lawyer,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
@@ -57687,6 +57686,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -57705,6 +57705,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "dKf" = (
@@ -64080,6 +64081,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -64794,6 +64796,7 @@
 /area/desert_dam/building/medical/emergency_room)
 "ijc" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"

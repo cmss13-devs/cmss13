@@ -108,7 +108,7 @@
 	if(!X.wound_icon_carrier)
 		return
 	X.wound_icon_carrier.alpha = 255
-	x.evasion = 0
+	X.evasion = 0
 
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_hide_pain(var/datum/action/xeno_action/activable/sacrifice_egg/hide_pain/action_def)
 	if(!check_state())
@@ -150,7 +150,7 @@
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in xenomorphs_in_range)
-		x.evasion = 100
+		X.evasion = 100
 		X.wound_icon_carrier.alpha = 0
 		addtimer(CALLBACK(src, .proc/return_wounds_alpha, X), action_def.hide_pain_seconds)
 

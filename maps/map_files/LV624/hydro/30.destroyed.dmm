@@ -177,7 +177,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 3;
 	dir = 1;
@@ -196,7 +196,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "xa" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -310,7 +310,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ha" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 1;
 	dir = 1;
@@ -491,7 +491,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ul" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
 	dir = 8;

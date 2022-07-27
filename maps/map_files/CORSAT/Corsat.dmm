@@ -37295,7 +37295,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "cqT" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -37900,7 +37900,7 @@
 /area/corsat/omega/offices)
 "cUT" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -40382,7 +40382,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "eJz" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -42341,7 +42341,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "ghu" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -50687,7 +50687,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "mfS" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"

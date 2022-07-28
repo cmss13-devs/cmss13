@@ -661,7 +661,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //-----------------------R4T Lever-action rifle handfuls box-----------------------
 
 /obj/item/ammo_box/magazine/lever_action
-	name = "45-70 bullets box (45-70 x 300)"
+	name = "\improper 45-70 bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_4570"
@@ -675,7 +675,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/lever_action/training
-	name = "45-70 blank box (45-70 x 300)"
+	name = "\improper 45-70 blank box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_training"
 	overlay_gun_type = "_4570"
@@ -693,7 +693,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 //unused
 /obj/item/ammo_box/magazine/lever_action/tracker
-	name = "45-70 tracker bullets box (45-70 x 300)"
+	name = "\improper 45-70 tracker bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_tracker"
 	overlay_gun_type = "_4570"
@@ -705,7 +705,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 //unused
 /obj/item/ammo_box/magazine/lever_action/marksman
-	name = "45-70 marksman bullets box (45-70 x 300)"
+	name = "\improper 45-70 marksman bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_marksman"
 	overlay_gun_type = "_4570"
@@ -713,6 +713,17 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/handful/lever_action/marksman
 
 /obj/item/ammo_box/magazine/lever_action/marksman/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/lever_action/xm88
+	name = "\improper .458 bullets box (.458 x 300)"
+	icon_state = "base_458"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_458"
+	overlay_content = "_458"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/xm88
+
+/obj/item/ammo_box/magazine/lever_action/xm88/empty
 	empty = TRUE
 
 //-----------------------M4A3 Pistol Mag Box-----------------------

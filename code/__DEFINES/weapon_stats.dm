@@ -145,6 +145,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_7 	4
 #define FIRE_DELAY_TIER_8 	3
 #define FIRE_DELAY_TIER_9 	2
+#define FIRE_DELAY_TIER_SG 	1.5
 #define FIRE_DELAY_TIER_10 	1
 #define FIRE_DELAY_TIER_SMG	1.3
 

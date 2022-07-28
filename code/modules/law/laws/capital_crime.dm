@@ -31,3 +31,8 @@
 	name = "Sedition"
 	desc = "To engage in actions or refuse to follow orders as to overthrow or usurp the legitimate command structure."
 	brig_time = PERMABRIG_SENTENCE
+	
+/datum/law/capital_law/crimes_against_humanity
+	name = "Crimes against Humanity"
+	desc = "To engage in actions that violate human rights or otherwise are heinous acts against humans. Examples are torture, cannibalism and forced infection with Xenomorph larva."
+	brig_time = PERMABRIG_SENTENCE

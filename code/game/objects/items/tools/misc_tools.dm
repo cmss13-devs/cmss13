@@ -150,7 +150,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	matter = list("metal" = 10)
-	var/colour = "black"	//what colour the ink is!
+	var/pen_colour = "black"	//what colour the ink is!
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -169,7 +169,7 @@
 /obj/item/tool/pen/proc/update_pen_state()
 	overlays.Cut()
 	if(on)
-		overlays += "+[color]_tip"
+		overlays += "+[pen_colour]_tip"
 
 /obj/item/tool/pen/clicky
 	desc = "It's a WY brand extra clicky black ink pen."
@@ -178,7 +178,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	colour = "blue"
+	pen_colour = "blue"
 
 /obj/item/tool/pen/blue/clicky
 	desc = "It's a WY brand extra clicky blue ink pen."
@@ -187,7 +187,7 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	colour = "red"
+	pen_colour = "red"
 
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
@@ -196,7 +196,7 @@
 
 /obj/item/tool/pen/green
 	desc = "It's a normal green ink pen."
-	colour = "green"
+	pen_colour = "green"
 
 /obj/item/tool/pen/green/clicky
 	desc = "It's a WY brand extra clicky green ink pen."
@@ -205,7 +205,7 @@
 
 /obj/item/tool/pen/invisible
 	desc = "It's an invisble pen marker."
-	colour = "white"
+	pen_colour = "white"
 
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)

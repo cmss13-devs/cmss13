@@ -62,7 +62,7 @@
 
 /datum/law/major_law/prevarication
 	name = "Prevarication"
-	desc = "To intentionally order the arrest of a marine who is then found to be innocent, or to apply an improper or abusive NJP."
+	desc = "To intentionally order the arrest of a person on false charges who is then found to be innocent, or to apply an improper or abusive NJP. This includes intentionally arresting a person on false charges, on ones own initiative without orders."
 	brig_time = 20
 
 /datum/law/major_law/sexual_harrasment

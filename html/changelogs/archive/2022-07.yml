@@ -440,3 +440,11 @@
   - bugfix: The Type-B "Greenfire" Update now actually shows up on the Changelog.
       Watch out, Green Fire can no longer be ignored! Originally Merged on July 4,
       2022.
+2022-07-28:
+  Stan_Albatross, Nanu308:
+  - balance: added MK1 AP mags, the normal MK1 mags no longer have AP rounds in them.
+  - balance: removed the ability of the MK1 to load MK2 mags
+  - rscadd: gave the CIC armoury MK1 AP mags
+  - rscadd: added MK1 AP mags to the CO vendor, and some to req
+  - balance: tweaked some ammo prices in the CO vendor
+  - rscdel: removed the mk1 kit from SLs

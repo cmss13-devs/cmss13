@@ -440,6 +440,14 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/hunting(src)
 
+/obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/fp9000(src)
+
+/obj/item/storage/belt/marine/nsg23/fill_preset_inventory() // NSG23
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23(src)
+
 
 
 /obj/item/storage/belt/marine/smartgunner
@@ -609,9 +617,6 @@
 	for(var/i in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
-/obj/item/storage/belt/shotgun/van_bandolier/buckshot/fill_preset_inventory() // Buckshot
-	for(var/i in 1 to max_storage_space * 0.5)
-		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/belt/shotgun/lever_action
 	name = "\improper M276 pattern 45-70 loading rig"

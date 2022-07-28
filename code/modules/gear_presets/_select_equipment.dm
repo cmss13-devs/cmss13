@@ -865,6 +865,25 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/small(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/small(H), WEAR_IN_BACK)
 
+/datum/equipment_preset/proc/add_pmc_survivor_weapon(var/mob/living/carbon/human/H) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
+	var/random_weapon = rand(0,4)
+	switch(random_weapon)
+		if(0)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mp5(H), WEAR_WAIST)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/stripped(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/nsg23(H), WEAR_WAIST)
+		if(4)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
+
 /datum/equipment_preset/proc/add_survivor_weapon(var/mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet. For the most part you will stil get a shotgun but there is an off chance you get something unique. If you dont like the weapon deal with it. With exception of CMB SHotgun, everything else has some level of ammo. Some weapons may not appear at all in a colony so they will need the extra ammo. MERC, and DB needed a handfull of shells to compete with the normal CMB.
 	var/random_weapon = rand(0,20)
 	switch(random_weapon)
@@ -897,7 +916,8 @@ var/list/rebel_rifles = list(
 		if(13)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)
 		if(14)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
 		if(15)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/hunting(H), WEAR_WAIST)
@@ -912,10 +932,10 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(H), WEAR_WAIST)
 		if(19)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/van_bandolier/buckshot(H.back), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
 		if(20)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/van_bandolier/buckshot(H.back), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
 
 
 /////////////// Antag Vendor Equipment ///////////////

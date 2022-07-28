@@ -152,7 +152,7 @@
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in xenomorphs_in_range)
-		X.evasion = 100
+		X.evasion = 35
 		X.wound_icon_carrier.alpha = 0
 		addtimer(CALLBACK(src, .proc/return_wounds_alpha, X), action_def.hide_pain_seconds)
 

@@ -277,7 +277,7 @@
 	icon_state = "kt42"
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/automatic
+	current_mag = /obj/item/ammo_magazine/pistol/kt42
 
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_attachment_offsets()

@@ -400,6 +400,16 @@
 	qdel(src)
 	return TRUE
 
+/obj/structure/machinery/colony_floodlight
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		return FALSE
+	if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		V.move_momentum -= V.move_momentum * 0.5
+	playsound(V, 'sound/effects/metal_crash.ogg', 20)
+	visible_message(SPAN_DANGER("\The [V]crushes \the [src]!"))
+	qdel(src)
+	return TRUE
+
 /obj/structure/machinery/floodlight/landing/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)

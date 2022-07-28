@@ -410,19 +410,37 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
-// Colony Weapon Belts
+// Outer Rim Weapon Belts
 
-/obj/item/storage/belt/marine/m16
-	name = "M276 pattern ammo load rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations."
-
-/obj/item/storage/belt/marine/m16/fill_preset_inventory()
+/obj/item/storage/belt/marine/m16/fill_preset_inventory() // M16
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
 
 /obj/item/storage/belt/marine/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40 (src)
+
+/obj/item/storage/belt/marine/mar40/drum/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40/lmg (src)
+
+/obj/item/storage/belt/marine/mar40/extended/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40/extended (src)
+
+/obj/item/storage/belt/marine/mp5/fill_preset_inventory() // MP5
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5 (src)
+
+/obj/item/storage/belt/marine/hunting/fill_preset_inventory() // Hunting Rifle
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/hunting(src)
+
+
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
@@ -590,6 +608,10 @@
 /obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
 	for(var/i in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
+
+/obj/item/storage/belt/shotgun/van_bandolier/buckshot/fill_preset_inventory() // Buckshot
+	for(var/i in 1 to max_storage_space * 0.5)
+		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/belt/shotgun/lever_action
 	name = "\improper M276 pattern 45-70 loading rig"

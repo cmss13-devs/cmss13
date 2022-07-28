@@ -81,7 +81,7 @@
 	action_icon_state = "hide_pain"
 	ability_name = "hide pain"
 	macro_path = /datum/action/xeno_action/verb/verb_hide_pain
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	var/windup_delay = 25
 	var/hide_pain_seconds = 30 SECONDS
@@ -164,7 +164,7 @@
 	action_icon_state = "screech"
 	ability_name = "frenzied scream"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/windup_delay = 30
 	var/scream_range = 5
@@ -259,7 +259,7 @@
 	action_icon_state = "firewalk"
 	ability_name = "firewalk"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_firewalk
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/windup_delay = 25
 	var/firewalk_range = 7
@@ -371,7 +371,7 @@
 	action_icon_state = "project_xeno"
 	ability_name = "mindtrick"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_mindtrick
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	var/windup_delay = 25
 	var/mindtrick_seconds = 16 SECONDS //-1 for qdel in the end

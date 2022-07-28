@@ -47,6 +47,6 @@
 
 /datum/law/minor_law/theft
 	name = "Theft"
-	desc = "To take items (or property) from another person or entity without their express permission, or to retain possession of items that have been taken without permission."
+	desc = "To take items (or property) from another person or entity without their express permission, or to retain possession of items that have been taken without permission. This includes the removal of vendors from department areas without permission."
 	special_punishment = "Return of Stolen Item"
 	brig_time = 10

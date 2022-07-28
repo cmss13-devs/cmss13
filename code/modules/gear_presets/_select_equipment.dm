@@ -866,13 +866,13 @@ var/list/rebel_rifles = list(
 		if(0)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H.back), WEAR_HEAD)
 		if(1)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(H.back), WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(H.back), WEAR_HEAD)
 		if(2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(H.back), WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(H.back), WEAR_HEAD)
 		if(3)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H.back), WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H.back), WEAR_HEAD)
 		if(4)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(H.back), WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(H.back), WEAR_HEAD)
 
 /datum/equipment_preset/proc/add_survivor_weapon_pistol(var/mob/living/carbon/human/H) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one becuase of hostile natives.
 	var/random_weapon = rand(0,4)

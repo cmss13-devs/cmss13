@@ -54,7 +54,6 @@
 				PC.grab_object(src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
 			update_icon()
 			return FALSE
-		return TRUE
 	else
 		. = ..()
 

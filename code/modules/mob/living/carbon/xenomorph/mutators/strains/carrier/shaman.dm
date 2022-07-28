@@ -105,10 +105,12 @@
 		apply_cooldown()
 
 /mob/living/carbon/Xenomorph/Carrier/proc/return_wounds_alpha(var/mob/living/carbon/Xenomorph/X)
+	if(!istype(X))
+		return
+	X.evasion = 0
 	if(!X.wound_icon_carrier)
 		return
 	X.wound_icon_carrier.alpha = 255
-	X.evasion = 0
 
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_hide_pain(var/datum/action/xeno_action/activable/sacrifice_egg/hide_pain/action_def)
 	if(!check_state())

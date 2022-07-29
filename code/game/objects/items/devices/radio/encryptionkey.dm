@@ -223,6 +223,10 @@
 	icon_state = "binary_key"
 	channels = list("HighCom" = 1, SQUAD_MARSOC = 1, "Command" = 1, "MP" = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
+/obj/item/device/encryptionkey/contractor
+	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"
+	icon_state = "sl_key"
+	channels = list("Command" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "Almayer" = 1)
 /// Used by the Mortar Crew in WO game mode - intently has no squad radio access
 /obj/item/device/encryptionkey/mortar
 	name = "\improper Mortar Crew Radio Encryption Key"

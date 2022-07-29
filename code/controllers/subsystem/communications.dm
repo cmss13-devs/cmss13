@@ -80,6 +80,7 @@ var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
 var/const/HC_FREQ		= 1240
 var/const/CCT_FREQ		= 1350
+var/const/VAI_FREQ		= 1226
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -119,6 +120,7 @@ var/list/radiochannels = list(
 	"WY" 			= WY_FREQ,
 	"WY PMC" 		= PMC_FREQ,
 	"SpecOps" 		= DTH_FREQ,
+	"VAI" 			= VAI_FREQ,
 	"UPP" 			= RUS_FREQ,
 	"CLF"			= CLF_FREQ,
 	"DD"			= DUT_FREQ,
@@ -149,7 +151,7 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, VAI_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
@@ -200,6 +202,7 @@ SUBSYSTEM_DEF(radio)
 		"[SUP_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",
 		"[TACTICS_FREQ]" = "intelradio",
+		"[VAI_FREQ]" = "vairadio",
 		"[WY_FREQ]" = "wyradio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",

@@ -236,7 +236,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aaQ" = (
@@ -516,7 +516,7 @@
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/structure/surface/rack,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -525,7 +525,7 @@
 "abM" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -1151,7 +1151,7 @@
 	pixel_x = -18;
 	pixel_y = 10
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/wood,
 /area/strata/ug/interior/jungle/deep/minehead)
 "ads" = (
@@ -1305,7 +1305,7 @@
 "adM" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1450,7 +1450,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "aef" = (
 /obj/structure/inflatable/door,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1834,7 +1834,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "afk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/wood,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "afl" = (
@@ -2791,7 +2791,7 @@
 /area/strata/ag/interior/dorms/hive)
 "ahS" = (
 /obj/item/stack/rods,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "ahT" = (
@@ -4421,7 +4421,7 @@
 /area/strata/ag/exterior/research_decks)
 "amA" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "amF" = (
@@ -4432,7 +4432,7 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "amK" = (
@@ -6595,7 +6595,7 @@
 	dir = 1
 	},
 /obj/item/device/megaphone,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement{
 	icon_state = "cement4"
 	},
@@ -6897,7 +6897,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "atY" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/jungle/deep/minehead)
 "atZ" = (
@@ -7276,7 +7276,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "ave" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -17275,7 +17275,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "baN" = (
@@ -22629,7 +22629,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "btO" = (
@@ -24357,7 +24357,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "bBr" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "bBB" = (
@@ -24734,7 +24734,7 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "bDE" = (
@@ -25649,7 +25649,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bKN" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/wood,
 /area/strata/ag/interior/paths/cabin_area/central)
 "bKO" = (
@@ -26734,7 +26734,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "bUX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bUY" = (
@@ -29980,7 +29980,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "csk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -30145,7 +30145,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "ctl" = (
@@ -30248,7 +30248,7 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "ctI" = (
@@ -30275,14 +30275,14 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cuc" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cui" = (
@@ -30453,7 +30453,7 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cwd" = (
@@ -31420,7 +31420,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "eaO" = (
@@ -32099,7 +32099,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "fln" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "flK" = (
@@ -32128,7 +32128,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 9
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "fre" = (
@@ -32228,7 +32228,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
 "fyP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "fzn" = (
@@ -32332,7 +32332,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "fDG" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "fEW" = (
@@ -33347,7 +33347,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/nearlz2)
 "hmw" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "hni" = (
@@ -33437,7 +33437,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hwI" = (
@@ -33538,7 +33538,7 @@
 /area/strata/ag/exterior/marsh/water)
 "hHm" = (
 /obj/item/stack/rods,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -34078,7 +34078,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
 "iHZ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "iIz" = (
@@ -34091,7 +34091,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "iJh" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "iJp" = (
@@ -34112,7 +34112,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
 "iKI" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "iKW" = (
@@ -34274,7 +34274,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "iZa" = (
@@ -34471,7 +34471,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "jrA" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/cabin_area)
 "jrU" = (
@@ -35392,7 +35392,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "kXR" = (
@@ -35411,7 +35411,7 @@
 /area/strata/ag/exterior/marsh)
 "kYl" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "kYx" = (
@@ -35545,7 +35545,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lkB" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/wood,
 /area/strata/ug/interior/jungle/deep/minehead)
 "llC" = (
@@ -35568,7 +35568,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "lmv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "lmV" = (
@@ -36844,7 +36844,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/tcomms)
 "nqX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
 "nrc" = (
@@ -37413,7 +37413,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "oFG" = (
@@ -38257,11 +38257,11 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "pPk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "pQH" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "pRj" = (
@@ -38827,7 +38827,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -39135,7 +39135,7 @@
 /area/strata/ag/interior/tcomms)
 "rok" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "roI" = (
@@ -39383,7 +39383,7 @@
 /area/strata/ag/exterior/vanyard)
 "rPA" = (
 /obj/structure/platform/strata/metal,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "rQV" = (
@@ -39410,7 +39410,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "rSl" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "rSE" = (
@@ -40270,7 +40270,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "twa" = (
@@ -41732,7 +41732,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "vDm" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -42117,7 +42117,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/east_carp)
 "wvt" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "wvF" = (
@@ -42251,7 +42251,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "wLv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "wMy" = (
@@ -42789,7 +42789,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "xId" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "xJD" = (

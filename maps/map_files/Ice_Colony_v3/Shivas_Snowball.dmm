@@ -121,7 +121,7 @@
 	opacity = 1;
 	unacidable = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "aau" = (
@@ -601,7 +601,7 @@
 "abV" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "abW" = (
@@ -1073,7 +1073,7 @@
 /area/shiva/interior/colony/medseceng)
 "aeg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "aeh" = (
@@ -4141,7 +4141,7 @@
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/central)
 "axF" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "axG" = (
@@ -7566,7 +7566,7 @@
 	},
 /area/shiva/interior/colony/central)
 "buJ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/colony/medseceng)
 "bvb" = (
@@ -8298,7 +8298,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "ckH" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_s_research)
 "ckI" = (
@@ -8701,7 +8701,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "cIV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
 "cJy" = (
@@ -9472,7 +9472,7 @@
 	opacity = 1;
 	unacidable = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "dDo" = (
@@ -10699,7 +10699,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "fjs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
 "fjv" = (
@@ -10752,7 +10752,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "fkB" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_s_research)
 "fkF" = (
@@ -11579,7 +11579,7 @@
 	name = "\improper Colony Engineering Material Storage";
 	req_access_txt = "100"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "gjg" = (
@@ -15097,7 +15097,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/colony/research_hab)
 "kbZ" = (
@@ -16677,7 +16677,7 @@
 	},
 /area/shiva/interior/colony/central)
 "lIa" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "lJh" = (
@@ -17653,7 +17653,7 @@
 /area/shiva/interior/bar)
 "mKf" = (
 /obj/structure/girder,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
 "mKk" = (
@@ -17953,7 +17953,7 @@
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/central)
 "mXV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "mYm" = (
@@ -18991,7 +18991,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "oig" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "oiH" = (
@@ -19006,7 +19006,7 @@
 /area/shiva/interior/caves/cp_camp)
 "ojU" = (
 /obj/structure/fence,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "okz" = (
@@ -19377,11 +19377,11 @@
 	},
 /area/shiva/interior/bar)
 "oGg" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
 "oHf" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "oHz" = (
@@ -20819,7 +20819,7 @@
 	},
 /area/shiva/interior/bar)
 "qjY" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "qjZ" = (
@@ -21093,7 +21093,7 @@
 	},
 /area/shiva/interior/colony/central)
 "qxQ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "qyd" = (
@@ -22519,7 +22519,7 @@
 /area/shiva/interior/bar)
 "sgB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/colony/research_hab)
 "sgS" = (
@@ -23406,7 +23406,7 @@
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "tig" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
 "tiw" = (
@@ -23612,7 +23612,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "tsK" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
 "tsR" = (
@@ -25143,7 +25143,7 @@
 	name = "\improper Colony Engineering Locker Room";
 	req_access_txt = "100"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "uOc" = (
@@ -25374,7 +25374,7 @@
 	name = "\improper Underground Security";
 	req_access_txt = "100"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "uZf" = (
@@ -26130,7 +26130,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "vQZ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/cp_colony_grounds)
 "vRM" = (
@@ -26304,7 +26304,7 @@
 	name = "\improper Underground Security Evidence Storage";
 	req_access_txt = "100"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "wfP" = (
@@ -27043,11 +27043,11 @@
 /area/shiva/interior/caves/cp_camp)
 "xbz" = (
 /obj/structure/window/framed/shiva,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "xbP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -27061,7 +27061,7 @@
 	},
 /area/shiva/exterior/cp_colony_grounds)
 "xct" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "xcE" = (
@@ -27776,7 +27776,7 @@
 	name = "\improper Underground Security Showers";
 	req_access_txt = "100"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "yfE" = (
@@ -27879,8 +27879,8 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "ylz" = (
-/obj/structure/blocker/forcefield/vehicles,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
 "ylO" = (

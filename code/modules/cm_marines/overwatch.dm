@@ -482,13 +482,15 @@
 				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
 					send_to_squad(input, 1) //message, adds username
+					send_maptext_to_squad(input, "Squad Message:")
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to all Marines of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(usr)] sent '[input]' to squad [current_squad].")
 		if("sl_message")
 			if(current_squad && operator == usr)
 				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
-					send_to_squad(input, 1, 1) //message, adds usrname, only to leader
+					send_to_squad(input, 1, 1) //message, adds usrname, only to leader#
+					send_maptext_to_squad(input, "Squad Leader Message:", 1)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(usr)] sent '[input]' to Squad Leader [current_squad.squad_leader] of squad [current_squad].")
 		if("check_primary")
@@ -506,6 +508,7 @@
 			if(current_squad && input)
 				current_squad.primary_objective = "[input] ([worldtime2text()])"
 				send_to_squad("Your primary objective has been changed to '[input]'. See Status pane for details.")
+				send_maptext_to_squad(input, "Primary Objective Updated:")
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set to '[input]'.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s primary objective to '[input]'.")
 		if("set_secondary")
@@ -513,6 +516,7 @@
 			if(input)
 				current_squad.secondary_objective = input + " ([worldtime2text()])"
 				send_to_squad("Your secondary objective has been changed to '[input]'. See Status pane for details.")
+				send_maptext_to_squad(input, "Secondary Objective Updated:")
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set to '[input]'.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s secondary objective to '[input]'.")
 		if("supply_x")
@@ -647,13 +651,28 @@
 		if(!M.stat && M.client) //Only living and connected people in our squad
 			if(!only_leader)
 				if(plus_name)
-					M << sound('sound/effects/radiostatic.ogg')
+					M << sound('sound/effects/tech_notification.ogg')
 				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
 			else
 				if(current_squad.squad_leader == M)
 					if(plus_name)
-						M << sound('sound/effects/radiostatic.ogg')
+						M << sound('sound/effects/tech_notification.ogg')
 					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
+					return
+
+//Sends a maptext alert to our currently selected squad. Does not make sound.
+/obj/structure/machinery/computer/overwatch/proc/send_maptext_to_squad(var/text = "", var/title_text = "", var/only_leader = 0)
+	if(text == "" || !current_squad || !operator)
+		return //Logic
+
+	for(var/mob/living/carbon/human/M in current_squad.marines_list)
+		if(!M.stat && M.client) //Only living and connected people in our squad
+			if(!only_leader)
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order)
+				return
+			else
+				if(current_squad.squad_leader == M)
+					M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order)
 					return
 
 // Alerts all groundside marines about the incoming OB

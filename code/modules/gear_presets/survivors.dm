@@ -25,6 +25,7 @@
 	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform

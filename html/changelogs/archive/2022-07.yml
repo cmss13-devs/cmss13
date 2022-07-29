@@ -448,3 +448,7 @@
   - rscadd: added MK1 AP mags to the CO vendor, and some to req
   - balance: tweaked some ammo prices in the CO vendor
   - rscdel: removed the mk1 kit from SLs
+2022-07-29:
+  JeserTheFox:
+  - bugfix: fixed powerloaders not deleting empty DS ammo when they remove it from
+      a weapon

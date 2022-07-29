@@ -784,7 +784,8 @@
 /area/shiva/interior/caves/right_spiders)
 "acx" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -5140,7 +5141,8 @@
 	specialfunctions = 4
 	},
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 50
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -7760,7 +7762,8 @@
 /area/shiva/interior/colony/medseceng)
 "bFP" = (
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 10
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -9671,7 +9674,8 @@
 /area/shiva/interior/colony/research_hab)
 "dVw" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
@@ -9854,7 +9858,8 @@
 /area/shiva/exterior/cp_lz2)
 "edW" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
@@ -11707,7 +11712,8 @@
 /area/shiva/exterior/cp_lz2)
 "grd" = (
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -14278,7 +14284,8 @@
 /area/shiva/interior/caves/cp_camp)
 "iZX" = (
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 0
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
@@ -16241,7 +16248,8 @@
 /area/shiva/exterior/junkyard)
 "liD" = (
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -16301,7 +16309,8 @@
 /area/shiva/interior/colony/central)
 "lnk" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 10
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -16425,7 +16434,8 @@
 /area/shiva/interior/bar)
 "lro" = (
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -16704,7 +16714,8 @@
 /area/shiva/interior/caves/cp_camp)
 "lKJ" = (
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -16858,7 +16869,8 @@
 /area/shiva/exterior/lz2_fortress)
 "lTN" = (
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 0
 	},
 /turf/open/floor{
 	dir = 4;
@@ -17273,7 +17285,8 @@
 "mpt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
@@ -18636,7 +18649,8 @@
 /area/shiva/interior/colony/research_hab)
 "nNX" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -19261,7 +19275,8 @@
 /area/shiva/exterior/junkyard)
 "oyc" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -19883,7 +19898,8 @@
 /area/shiva/interior/caves/s_lz2)
 "prb" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20512,7 +20528,8 @@
 /area/shiva/interior/colony/central)
 "pOM" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/fort_biceps)
@@ -21226,7 +21243,8 @@
 /area/shiva/interior/colony/medseceng)
 "qEt" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
@@ -21607,7 +21625,8 @@
 /area/shiva/interior/caves/research_caves)
 "raQ" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -22426,7 +22445,8 @@
 /area/shiva/interior/colony/medseceng)
 "san" = (
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -23525,7 +23545,8 @@
 /area/shiva/interior/colony/botany)
 "tnU" = (
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
@@ -24120,7 +24141,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc{
-	dir = 8
+	dir = 8;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -24419,7 +24441,8 @@
 /area/shiva/exterior/junkyard/fortbiceps)
 "ufb" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -26225,7 +26248,8 @@
 /area/shiva/exterior/cp_colony_grounds)
 "vXw" = (
 /obj/structure/machinery/power/apc{
-	dir = 4
+	dir = 4;
+	start_charge = 0
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
@@ -27528,7 +27552,8 @@
 /area/shiva/interior/bar)
 "xMH" = (
 /obj/structure/machinery/power/apc{
-	dir = 1
+	dir = 1;
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"

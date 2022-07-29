@@ -10,11 +10,13 @@
 * These are ported from TGMC and are hopefully more flexible than text blurbs
 */
 
-/mob/proc/play_screen_text(text, alert_type = /obj/screen/text/screen_text)
+/mob/proc/play_screen_text(text, alert_type = /obj/screen/text/screen_text, var/override_color = "#FFFFFF")
 	if(!client)
 		return
 	var/obj/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text
+	if(override_color)
+		text_box.color = override_color
 	LAZYADD(client.screen_texts, text_box)
 	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
 		INVOKE_ASYNC(text_box, /obj/screen/text/screen_text.proc/play_to_client, client)
@@ -62,7 +64,6 @@
 	fade_out_delay = 4.5 SECONDS
 	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
 	style_close = "</span>"
-
 
 /**
  * proc for actually playing this screen_text on a mob.

@@ -665,14 +665,16 @@
 	if(text == "" || !current_squad || !operator)
 		return //Logic
 
+	var/message_colour = squad_colors_chat[current_squad.color]
+
 	for(var/mob/living/carbon/human/M in current_squad.marines_list)
 		if(!M.stat && M.client) //Only living and connected people in our squad
 			if(!only_leader)
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order)
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, message_colour)
 				return
 			else
 				if(current_squad.squad_leader == M)
-					M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order)
+					M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, message_colour)
 					return
 
 // Alerts all groundside marines about the incoming OB

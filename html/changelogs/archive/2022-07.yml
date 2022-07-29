@@ -454,5 +454,9 @@
       a weapon
   Morrow:
   - bugfix: JAS updated with new Marine Law laws.
+  Shad0vvs:
+  - balance: Smartgun firerate adjusted to ~400 RPM, Full auto scatter peak set to
+      80 shots, Scatter amount set to 8.
+  - bugfix: Fixed WO Terminator's dirty smartgun flags.
   stanalbatross:
   - bugfix: the R1NG bell tower can no longer affect enemies through walls

@@ -34,9 +34,20 @@
 	. = ..()
 	update_icon()
 
-
 /obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+
+/obj/item/weapon/gun/flamer/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 8
+	return 0
+
+/obj/item/weapon/gun/flamer/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
@@ -246,7 +257,6 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
-
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
 		fuelpack.do_toggle_fuel(user)
@@ -272,8 +282,20 @@
 			return TRUE
 	return ..()
 
+/obj/item/weapon/gun/flamer/M240T/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 7
+	return 0
+
+/obj/item/weapon/gun/flamer/M240T/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
+
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if (!link_fuelpack(user) && !current_mag)

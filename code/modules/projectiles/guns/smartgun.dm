@@ -72,9 +72,9 @@
 	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_9
-	fa_delay = FIRE_DELAY_TIER_10
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
-	fa_max_scatter = SCATTER_AMOUNT_NONE
+	fa_delay = FIRE_DELAY_TIER_SG
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
+	fa_max_scatter = SCATTER_AMOUNT_TIER_3
 	if(accuracy_improvement)
 		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	else
@@ -588,7 +588,7 @@
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
 	. = ..()
@@ -611,6 +611,9 @@
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	fa_delay = FIRE_DELAY_TIER_10
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
+	fa_max_scatter = SCATTER_AMOUNT_NONE
 
 
 // CLF SMARTGUN

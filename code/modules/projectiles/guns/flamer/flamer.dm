@@ -67,15 +67,14 @@
 	icon_state = new_icon_state
 
 	if(current_mag && current_mag.reagents)
-
 		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
 		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
-
 		overlays += I
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
+		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
-		I.pixel_x += 3
+		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
 /obj/item/weapon/gun/flamer/able_to_fire(mob/user)
@@ -116,7 +115,7 @@
 		return
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
+		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
 		return
 
 	if(!current_mag)

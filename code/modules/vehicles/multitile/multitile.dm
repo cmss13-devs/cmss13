@@ -409,3 +409,6 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		if(NORTH)
 			M.try_rotate(90)
 			M.try_rotate(90)
+
+/obj/vehicle/multitile/get_applying_acid_time()
+	return 3 SECONDS

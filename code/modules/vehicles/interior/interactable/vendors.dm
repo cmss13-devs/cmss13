@@ -345,7 +345,7 @@
 						to_chat(user, SPAN_WARNING("\The [A] isn't full. Fill it before you can restock it."))
 						return
 				else if(A.contents.len < A.num_of_magazines)
-					to_chat(user, SPAN_WARNING("[\The A] isn't full."))
+					to_chat(user, SPAN_WARNING("\The [A] isn't full."))
 					return
 				else
 					for(var/obj/item/ammo_magazine/M in A.contents)
@@ -404,7 +404,7 @@
 			//Machete holsters handling
 			else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
 				var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
-				if(!Mac)
+				if(!mac)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
 					return
 			//Machete holsters handling

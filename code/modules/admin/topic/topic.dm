@@ -834,15 +834,15 @@
 		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
-			var/datum/equipment_preset/other/xeno_cultist/XC = new()
-			XC.load_race(H, hive.hivenumber)
-			XC.load_status(H)
+			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+			preset.load_race(H, hive.hivenumber)
+			preset.load_status(H)
 			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
-			var/datum/equipment_preset/other/xeno_cultist/leader/XC = new()
-			XC.load_race(H, hive.hivenumber)
-			XC.load_status(H)
+			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+			preset.load_race(H, hive.hivenumber)
+			preset.load_status(H)
 			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
 		H.faction = hive.internal_faction

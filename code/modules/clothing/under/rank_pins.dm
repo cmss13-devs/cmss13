@@ -135,6 +135,11 @@
 	rank_short = "O10C"
 	icon_state = "ranks_flagofficer"
 
+/obj/item/clothing/accessory/ranks/marine/o10s
+	name = "rank boards"
+	rank_short = "O10S"
+	icon_state = "ranks_flagofficer"
+
 /*################################################
 ################    NAVY     #####################
 ################################################*/

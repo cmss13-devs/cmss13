@@ -168,6 +168,7 @@
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
+	var/has_welding_screen = TRUE
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -353,7 +354,8 @@
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
 /obj/item/tool/weldingtool/proc/eyecheck(mob/user)
-	if(!iscarbon(user))	return 1
+	if(has_welding_screen || !iscarbon(user))
+		return TRUE
 	var/safety = user.get_eye_protection()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

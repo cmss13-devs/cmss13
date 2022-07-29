@@ -66,6 +66,8 @@ Frequency range: 1200 to 1600
 Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency, even during mapmaking)
 */
 
+var/const/MIN_FREE_FREQ = 1201 // -------------------------------------------------
+
 //Misc channels
 var/const/YAUT_FREQ 	= 1214
 var/const/PMC_FREQ 		= 1235
@@ -100,10 +102,16 @@ var/const/ECHO_FREQ 	= 1456
 var/const/CRYO_FREQ		= 1457
 var/const/MARSOC_FREQ	= 1241
 
+var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
+
 var/const/PUB_FREQ 		= 1461
+
+var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
 
 //Civilian channels
 var/const/COLONY_FREQ	= 1469
+
+var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
 
 var/list/radiochannels = list(
 	"Response Team" = ERT_FREQ,

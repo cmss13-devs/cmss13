@@ -661,6 +661,22 @@
 				if(W.tape)
 					to_chat(user,SPAN_WARNING("Remove the tape first!"))
 					return
+
+			if(istype(item_to_stock, /obj/item/device/defibrillator))
+				var/obj/item/device/defibrillator/D = item_to_stock
+				if(!D.dcell)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+					return
+				if(D.dcell.charge < D.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
+			if(istype(item_to_stock, /obj/item/cell))
+				var/obj/item/cell/C = item_to_stock
+				if(C.charge < C.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
 					item_to_stock.unwield(user)

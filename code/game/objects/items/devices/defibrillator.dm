@@ -243,4 +243,4 @@
 	icon_state = "compact_defib"
 	item_state = "defib"
 	w_class = SIZE_SMALL
-	charge_cost = 132
+	charge_cost = 99

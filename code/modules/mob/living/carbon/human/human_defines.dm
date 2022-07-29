@@ -29,8 +29,8 @@
 	var/age = 30		//Player's age (pure fluff)
 	var/b_type = "A+"	//Player's bloodtype
 
-	var/underwear = "Briefs"	//Which underwear the player wants
-	var/undershirt = 0	//Which undershirt the player wants.
+	var/underwear = "Boxers (Camo Conforming)"	//Which underwear the player wants
+	var/undershirt = "Undershirt"	//Which undershirt the player wants.
 	var/backbag = 2		//Which backpack type the player has chosen. Satchel or Backpack.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().

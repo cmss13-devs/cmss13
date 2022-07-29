@@ -11,15 +11,20 @@
 	var/canhear_range = 3 // the range which mobs can hear this radio from
 	var/wires = WIRE_SIGNAL|WIRE_RECEIVE|WIRE_TRANSMIT
 	var/b_stat = 0
-	var/broadcasting = 0
-	var/listening = 1
+	var/broadcasting = FALSE
+	var/listening = TRUE
+	var/freqlock = TRUE
 	var/ignore_z = FALSE
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
 	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
 	var/subspace_transmission = 0
+	/// If true, subspace_transmission can be toggled at will.
+	var/subspace_switchable = FALSE
 	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
 	var/volume = RADIO_VOLUME_QUIET
+	///if false it will just default to RADIO_VOLUME_QUIET every time
+	var/use_volume = TRUE
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throw_speed = SPEED_FAST
@@ -78,35 +83,86 @@
 /obj/item/device/radio/attack_self(mob/user as mob)
 	..()
 	user.set_interaction(src)
-	interact(user)
+	tgui_interact(user)
 
-/obj/item/device/radio/interact(mob/user as mob)
+/obj/item/device/radio/ui_state(mob/user)
+	return GLOB.inventory_state
+
+/obj/item/device/radio/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
 	if(!on)
+		return UI_CLOSE
+
+/obj/item/device/radio/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Radio", "Radio")
+		ui.open()
+
+/obj/item/device/radio/ui_data(mob/user)
+	var/list/data = list()
+
+	data["broadcasting"] = src.broadcasting
+	data["listening"] = src.listening
+	data["frequency"] = src.frequency
+	data["minFrequency"] = freerange ? MIN_FREE_FREQ : MIN_FREQ
+	data["maxFrequency"] = freerange ? MAX_FREE_FREQ : MAX_FREQ
+	data["freqlock"] = freqlock
+	data["channels"] = list()
+	for(var/channel in channels)
+		data["channels"][channel] = channels[channel] & FREQ_LISTENING
+	data["command"] = volume
+	data["useCommand"] = use_volume
+	data["subspace"] = subspace_transmission
+	data["subspaceSwitchable"] = subspace_switchable
+	data["headset"] = FALSE
+
+	return data
+
+/obj/item/device/radio/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
 		return
-
-	var/dat = "<html><body><TT>"
-
-	if(!istype(src, /obj/item/device/radio/headset)) //Headsets dont get a mic button
-		dat += "Microphone: [broadcasting ? "<A href='byond://?src=\ref[src];talk=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];talk=1'>Disengaged</A>"]<BR>"
-
-	dat += {"
-				Speaker: [listening ? "<A href='byond://?src=\ref[src];listen=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];listen=1'>Disengaged</A>"]<BR>
-				Frequency: 	[format_frequency(frequency)]<BR>"}
-//				<A href='byond://?src=\ref[src];freq=-10'>-</A>
-//				<A href='byond://?src=\ref[src];freq=-2'>-</A>
-//
-//				<A href='byond://?src=\ref[src];freq=2'>+</A>
-//				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
-//				"}
-
-	dat += "<table>"
-	for (var/ch_name in channels)
-		dat+=text_sec_channel(ch_name, channels[ch_name])
-	dat += "</table>"
-	dat += "<br>"
-	dat += {"[text_wires()]</TT></body></html>"}
-	show_browser(user, dat, name, "radio")
-	return
+	switch(action)
+		if("frequency")
+			if(freqlock)
+				return
+			var/tune = params["tune"]
+			var/adjust = text2num(params["adjust"])
+			if(adjust)
+				tune = frequency + adjust * 10
+				. = TRUE
+			else if(text2num(tune) != null)
+				tune = tune * 10
+				. = TRUE
+			if(.)
+				set_frequency(sanitize_frequency(tune))
+		if("listen")
+			listening = !listening
+			. = TRUE
+		if("broadcast")
+			broadcasting = !broadcasting
+			. = TRUE
+		if("channel")
+			var/channel = params["channel"]
+			if(!(channel in channels))
+				return
+			if(channels[channel] & FREQ_LISTENING)
+				channels[channel] &= ~FREQ_LISTENING
+			else
+				channels[channel] |= FREQ_LISTENING
+			. = TRUE
+		if("command")
+			use_volume = !use_volume
+			. = TRUE
+		if("subspace")
+			if(subspace_switchable)
+				subspace_transmission = !subspace_transmission
+				if(!subspace_transmission)
+					channels = list()
+				//else
+				//	recalculateChannels()
+				. = TRUE
 
 /obj/item/device/radio/proc/text_wires()
 	if (!b_stat)
@@ -130,63 +186,6 @@
 			<tr><td><B>[chan_name]</B>	[channel_key]</td>
 			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>
 			"}
-
-/obj/item/device/radio/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if (usr.stat || !on)
-		return
-
-	if (!(isRemoteControlling(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
-		close_browser(usr, "radio")
-		return
-	usr.set_interaction(src)
-	if (href_list["track"])
-		var/mob/target = locate(href_list["track"])
-		var/mob/living/silicon/ai/A = locate(href_list["track2"])
-		if(A && target)
-			A.ai_actual_track(target)
-		return
-
-	else if (href_list["freq"])
-		var/new_frequency = (frequency + text2num(href_list["freq"]))
-		if (!freerange || (frequency < 1200 || frequency > 1600))
-			new_frequency = sanitize_frequency(new_frequency)
-		set_frequency(new_frequency)
-
-	else if (href_list["talk"])
-		broadcasting = text2num(href_list["talk"])
-	else if (href_list["listen"])
-		var/chan_name = href_list["ch_name"]
-		if (!chan_name)
-			listening = text2num(href_list["listen"])
-		else
-			if (channels[chan_name] & FREQ_LISTENING)
-				channels[chan_name] &= ~FREQ_LISTENING
-			else
-				channels[chan_name] |= FREQ_LISTENING
-	else if (href_list["wires"])
-		var/t1 = text2num(href_list["wires"])
-		var/obj/item/held_item = usr.get_held_item()
-		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-			return
-		if (wires & t1)
-			wires &= ~t1
-		else
-			wires |= t1
-
-	if (!( master ))
-		if (istype(loc, /mob))
-			interact(loc)
-		else
-			updateDialog()
-	else
-		if (istype(master.loc, /mob))
-			interact(master.loc)
-		else
-			updateDialog()
-	add_fingerprint(usr)
 
 // Interprets the message mode when talking into a radio, possibly returning a connection datum
 /obj/item/device/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)
@@ -295,11 +294,14 @@
 	if(istype(src, /obj/item/device/radio/intercom))
 		filter_type = RADIO_FILTER_TYPE_INTERCOM
 
-
-	Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
-					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
-
+	if(use_volume)
+		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
+						src, message, displayname, jobname, real_name, M.voice_name,
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
+	else
+		Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
+						src, message, displayname, jobname, real_name, M.voice_name,
+						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET)
 
 /obj/item/device/radio/proc/get_target_zs(var/frequency)
 	var/turf/position = get_turf(src)
@@ -422,8 +424,8 @@
 	else return
 
 /obj/item/device/radio/emp_act(severity)
-	broadcasting = 0
-	listening = 0
+	broadcasting = FALSE
+	listening = FALSE
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
 	..()
@@ -513,6 +515,8 @@
 
 	for (var/ch_name in src.channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+
+	SStgui.update_uis(src)
 
 /obj/item/device/radio/borg/Topic(href, href_list)
 	if(usr.stat || !on)

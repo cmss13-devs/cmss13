@@ -152,3 +152,30 @@
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 #define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COMBAT, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+
+// Human citizenship defines
+#define CITIZENSHIP_US			"United Americas (United States)"
+#define CITIZENSHIP_LUNA		"United Americas (Luna)"
+#define CITIZENSHIP_OTHER		"United Americas (Other)"
+#define CITIZENSHIP_COLONY		"Limited Service (Colony)"
+#define CITIZENSHIP_FOREIGN		"Green Card (Foreign)"
+
+
+// Human religion defines
+#define RELIGION_PROTESTANT		 		"Christianity (Protestant)"
+#define RELIGION_CATHOLIC				"Christianity (Catholic)"
+#define RELIGION_ORTHODOX		 		"Christianity (Orthodox)"
+#define RELIGION_MORMONISM			 	"Christianity (Mormonism)"
+#define RELIGION_CHRISTIANITY_OTHER 	"Christianity (Other)"
+#define RELIGION_JUDAISM				"Judaism"
+#define RELIGION_SHIA					"Islam (Shia)"
+#define RELIGION_SUNNI					"Islam (Sunni)"
+#define RELIGION_BUDDHISM				"Buddhism"
+#define RELIGION_HINDUISM				"Hinduism"
+#define RELIGION_SIKHISM				"Sikhism"
+#define RELIGION_SHINTOISM				"Shintoism"
+#define RELIGION_WICCANISM				"Wiccanism"
+#define RELIGION_PAGANISM				"Paganism (Wicca)"
+#define RELIGION_MINOR					"Minor Religion"
+#define RELIGION_ATHEISM				"Atheism"
+#define RELIGION_AGNOSTICISM			"Agnostic"

@@ -541,7 +541,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag)
 		return
 	if(refund) current_mag.current_rounds++
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
 	if(!current_mag)

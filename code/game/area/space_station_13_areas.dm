@@ -26,6 +26,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	pressure = 0
 	flags_area = AREA_NOTUNNEL
 	test_exemptions = MAP_TEST_EXEMPTION_SPACE
+	weather_enabled = FALSE
 
 /area/engine
 	//ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')

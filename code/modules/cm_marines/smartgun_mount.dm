@@ -1457,7 +1457,7 @@
 		var/diff_x = 0
 		var/diff_y = 0
 		var/tilesize = 32
-		var/viewoffset = tilesize * 5
+		var/viewoffset = tilesize * 1
 
 		user.reset_view(src)
 		if(dir == EAST)

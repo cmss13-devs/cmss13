@@ -1,6 +1,7 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
 /mob/proc/gib(var/cause = "gibbing")
+	gibbing = TRUE
 	death(istype(cause, /datum/cause_data) ? cause : create_cause_data(cause), TRUE)
 	gib_animation()
 	if (!SSticker?.mode?.hardcore)
@@ -10,6 +11,10 @@
 	SSround_recording.recorder.stop_tracking(src)
 
 	qdel(src)
+
+/mob/proc/async_gib(var/cause)
+	gibbing = TRUE
+	INVOKE_ASYNC(src, .proc/gib, cause)
 
 
 /mob/proc/gib_animation()

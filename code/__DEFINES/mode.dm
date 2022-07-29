@@ -85,6 +85,7 @@
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
+#define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
 //=================================================
 
 var/list/be_special_flags = list(
@@ -262,10 +263,6 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_XENOMORPH_DELTA "Delta Xenomorph"
 
 #define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA)
-
-// ERT Proportions
-
-#define ERT_PMC_GUNNER_FRACTION 0.5 //50% gunners, 50% snipers among PMCs
 
 //SSticker.current_state values
 #define GAME_STATE_STARTUP		0

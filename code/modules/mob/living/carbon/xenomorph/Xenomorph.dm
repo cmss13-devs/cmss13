@@ -49,7 +49,7 @@
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
-	var/icon_size = 48
+	icon_size = 48
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -72,6 +72,7 @@
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
@@ -91,6 +92,9 @@
 
 	var/last_hit_time = 0
 
+	var/crit_grace_time = 1 SECONDS
+	var/next_grace_time = 0
+
 	//Amount of construction resources stored internally
 	var/crystal_stored = 0
 	var/crystal_max = 0
@@ -100,6 +104,7 @@
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
 	var/armor_deflection_buff = 0 // temp buffs to armor
+	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
 	var/armor_integrity = 100     // Current health % of our armor
 	var/armor_integrity_max = 100
@@ -858,9 +863,11 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
 	melee_damage_upper = damage_modifier
+	melee_vehicle_damage = damage_modifier
 	if(caste)
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
+		melee_vehicle_damage += caste.melee_vehicle_damage
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
 	if(caste)

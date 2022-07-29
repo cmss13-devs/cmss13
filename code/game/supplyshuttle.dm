@@ -1003,6 +1003,7 @@ var/datum/controller/supply/supply_controller = new()
 	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
 	req_access = list(ACCESS_MARINE_CREWMAN)
+	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
 	var/tank_unlocked = FALSE

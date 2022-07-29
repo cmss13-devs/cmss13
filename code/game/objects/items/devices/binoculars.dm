@@ -97,6 +97,12 @@
 			return FALSE
 		if(mods["click_catcher"])
 			return FALSE
+		if(user.z != A.z)
+			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
+			return FALSE
+		if(!(is_ground_level(A.z)))
+			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
+			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
 			for(var/turf/T in path)
@@ -268,12 +274,11 @@
 	var/area/targ_area = get_area(A)
 	if(!istype(TU)) return
 	var/is_outside = FALSE
-	if(is_ground_level(TU.z))
-		switch(targ_area.ceiling)
-			if(CEILING_NONE)
-				is_outside = TRUE
-			if(CEILING_GLASS)
-				is_outside = TRUE
+	switch(targ_area.ceiling)
+		if(CEILING_NONE)
+			is_outside = TRUE
+		if(CEILING_GLASS)
+			is_outside = TRUE
 
 	if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 		is_outside = FALSE
@@ -455,13 +460,13 @@
 		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
 		sleep(50) //AWW YEAH
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
-		flame_radius(cause_data, 3, target)
+		flame_radius(cause_data, 3, target, , , , , )
 		explosion(target,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_2)
+		flame_radius(cause_data, 3, target_2, , , , , )
 		explosion(target_2,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_3)
+		flame_radius(cause_data, 3, target_3, , , , , )
 		explosion(target_3,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_4)
+		flame_radius(cause_data, 3, target_4, , , , , )
 		explosion(target_4,  -1, 2, 3, 5, , , , cause_data)
 		sleep(1)
 		qdel(lasertarget)

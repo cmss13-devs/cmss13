@@ -39,15 +39,6 @@
 	containername = "plasteel sheets crate"
 	group = "Engineering"
 
-/datum/supply_packs/plas_metal
-	name = "mixed metal sheets (x30 metal, x20 plasteel)"
-	contains = list(/obj/item/stack/sheet/plasteel/med_small_stack,
-					/obj/item/stack/sheet/metal/medium_stack,)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/supply
-	containername = "mixed metal sheet crate"
-	group = "Engineering"
-
 /datum/supply_packs/glass
 	name = "glass sheets (x50)"
 	contains = list(/obj/item/stack/sheet/glass/large_stack)

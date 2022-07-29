@@ -162,15 +162,15 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
-/obj/item/clothing/suit/storage/jacket/marine/dress/admiral
-	name = "admiral's jacket"
-	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an Admiral. Has quite a few pockets."
+/obj/item/clothing/suit/storage/jacket/marine/dress/general
+	name = "general's jacket"
+	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an General. Has quite a few pockets."
 	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_state = "admiral_jacket"
+	icon_state = "general_jacket"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
 	)
-	item_state = "admiral_jacket"
+	item_state = "general_jacket"
 	storage_slots = 4
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -178,7 +178,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
-/obj/item/clothing/suit/storage/jacket/marine/dress/admiral/executive
+/obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 

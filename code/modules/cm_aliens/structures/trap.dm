@@ -104,6 +104,8 @@
 				var/mob/living/carbon/Xenomorph/X = AM
 				if(X.hivenumber != hivenumber)
 					trigger_trap()
+			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
+				trigger_trap()
 
 /obj/effect/alien/resin/trap/proc/set_state(var/state = RESIN_TRAP_EMPTY)
 	switch(state)
@@ -330,7 +332,7 @@
 		qdel(FH)
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
-	if(ismob(A))
+	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 
 /obj/effect/alien/resin/trap/Destroy()
@@ -362,5 +364,5 @@
 		qdel(src)
 		return
 
-	if(ishuman(A) || isXeno(A))
+	if(ishuman(A) || isXeno(A) || isVehicleMultitile(A))
 		linked_trap.HasProximity(A)

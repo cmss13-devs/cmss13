@@ -1264,7 +1264,7 @@
 /area/kutjevo/interior/colony_S_East)
 "bPf" = (
 /obj/structure/platform_decoration/kutjevo,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "bPV" = (
@@ -6915,7 +6915,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/power)
 "jGX" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "jIt" = (
@@ -7543,7 +7543,7 @@
 /area/kutjevo/interior/colony_north)
 "kDl" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/machinery/computer/security/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
@@ -8513,7 +8513,7 @@
 	},
 /area/kutjevo/interior/oob)
 "lYW" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med)
 "lZz" = (
@@ -10551,7 +10551,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "oMw" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "oMS" = (
@@ -11392,7 +11392,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "pOI" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "pPn" = (
@@ -12458,7 +12458,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "rxr" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "rxX" = (
@@ -14190,7 +14190,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/bed/chair{
 	dir = 8;
 	tag = "icon-chair (WEST)"
@@ -16286,7 +16286,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "wIG" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "wJZ" = (

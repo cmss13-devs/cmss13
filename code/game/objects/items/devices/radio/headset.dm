@@ -95,7 +95,7 @@
 	if (!H.has_item_in_ears(src))
 		return ..()
 	user.set_interaction(src)
-	interact(user)
+	tgui_interact(user)
 
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
@@ -134,9 +134,9 @@
 			removed_keys = TRUE
 		if(removed_keys)
 			recalculateChannels()
-			to_chat(user, "You pop out the encryption keys in the headset!")
+			to_chat(user, SPAN_NOTICE("You pop out the encryption keys in \the [src]!"))
 		else
-			to_chat(user, "This headset doesn't have any encryption keys!  How useless...")
+			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		var/keycount = 0
@@ -144,11 +144,12 @@
 			if(!key.abstract)
 				keycount++
 		if(keycount >= maximum_keys)
-			to_chat(user, "The headset can't hold another key!")
+			to_chat(user, SPAN_WARNING("\The [src] can't hold another key!"))
 			return
 		if(user.drop_held_item())
 			W.forceMove(src)
 			keys += W
+			to_chat(user, SPAN_NOTICE("You slot \the [W] into \the [src]!"))
 			recalculateChannels()
 
 	return
@@ -179,6 +180,7 @@
 
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+	SStgui.update_uis(src)
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

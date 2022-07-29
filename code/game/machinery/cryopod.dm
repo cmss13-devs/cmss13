@@ -318,7 +318,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
-			if(GET_MAPPED_ROLE(H.job) == JOB_SQUAD_SPECIALIST)
+			S.forget_marine_in_squad(H)
+			var/datum/job/J = GET_MAPPED_ROLE(H.job)
+			if(istype(J, /datum/job/marine/specialist))
 				//we make the set this specialist took if any available again
 				if(H.skills)
 					var/set_name
@@ -336,7 +338,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
-			S.forget_marine_in_squad(H)
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 

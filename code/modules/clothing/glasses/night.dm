@@ -61,6 +61,13 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/glasses/night/m42_night_goggles/m42c
+	name = "\improper M42C special operations sight"
+	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
+	icon_state = "m56_goggles"
+	deactive_state = "m56_goggles_0"
+	vision_flags = SEE_TURFS|SEE_MOBS
+
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
@@ -159,18 +166,23 @@
 		if(!pp.drain_powerpack(25 * delta_time, c))
 			set_far_sight(user, FALSE)
 
-/datum/action/item_action/m56_goggles/far_sight
-	action_icon_state = "m56_goggles"
-
 /datum/action/item_action/m56_goggles/far_sight/New()
-	..()
+	. = ..()
 	name = "Toggle Far Sight"
+	action_icon_state = "far_sight"
 	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/m56_goggles/far_sight/action_activate()
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
+		if(G.far_sight)
+			button.icon_state = "template_on"
+		else
+			button.icon_state = "template"
+		to_chat(owner, "[icon2html(G, owner)] You changed the [G.name]'s sight setting to <b>[G.far_sight ? "far" : "normal"]</b>.")
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
@@ -183,7 +195,7 @@
 	fullscreen_vision = null
 
 /obj/item/clothing/glasses/night/cultist
-	name = "\improper Unusual Thermal Imaging Goggles"
+	name = "\improper unusual thermal imaging goggles"
 	desc = "Seems to be thermal imaging goggles, except they have an unusual design. Looking at it makes you nauseous."
 	icon_state = "thermal"
 	item_state = "thermal"

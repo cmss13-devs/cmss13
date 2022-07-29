@@ -66,12 +66,11 @@
 		return
 
 	if(!X.crest_defense)
+		apply_cooldown()
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
-
 	if(!X.Adjacent(H))
+		on_cooldown_end()
 		return
-
-	apply_cooldown()
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
 	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
@@ -94,7 +93,7 @@
 
 	H.throw_atom(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
-
+	apply_cooldown()
 	..()
 	return
 

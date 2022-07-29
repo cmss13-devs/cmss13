@@ -120,6 +120,7 @@
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
 		PC.loaded.forceMove(src)
+		to_chat(user, SPAN_NOTICE("You install \the [PC.loaded] on \the [src] with \the [PC]."))
 		PC.loaded = null
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		PC.update_icon()
@@ -189,12 +190,9 @@
 
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
-		old.forceMove(PC.linked_powerloader)
-		PC.loaded = old
-		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-		old.update_icon()
+		PC.grab_object(old, "vehicle_module")
+		to_chat(user, SPAN_NOTICE("You uninstall the \the [PC.loaded] from \the [src] with \the [PC]."))
+		PC.loaded.update_icon()
 
 	if(old.slot == HDPT_TREADS && clamped)
 		detach_clamp(user)

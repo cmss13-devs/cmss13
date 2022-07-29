@@ -696,8 +696,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item ^= WIELDED
+	name += " (Wielded)"
 	item_state += "_w"
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))

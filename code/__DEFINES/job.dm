@@ -82,9 +82,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_STOWAWAY					"Stowaway"
 
-#define JOB_ADMIRAL						"USCM Admiral"
 #define JOB_GENERAL						"USCM General"
-#define JOB_B_GENERAL					"USCM Brigadier General"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \

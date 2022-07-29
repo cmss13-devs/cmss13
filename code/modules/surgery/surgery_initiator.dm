@@ -5,6 +5,9 @@
 	  */
 
 proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
+	if(!tool)
+		return FALSE
+
 	var/target_zone = user.zone_selected
 	var/list/available_surgeries = list()
 	var/list/valid_steps = list() //Steps that could be performed, if we had the right tool.
@@ -13,9 +16,11 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 	if(!istype(user.loc, /turf/open))
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
-	else if(!T.supports_surgery)
-		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
-		return FALSE
+	else
+		if(!T.supports_surgery)
+			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
+				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+			return FALSE
 
 	if(user.action_busy) //already doing an action
 		return FALSE

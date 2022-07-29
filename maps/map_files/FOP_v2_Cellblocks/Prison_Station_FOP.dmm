@@ -493,7 +493,7 @@
 	dir = 4;
 	tag = "icon-officechair_dark (EAST)"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -9016,7 +9016,7 @@
 	},
 /area/prison/medbay)
 "awh" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
 	tag = "icon-intact-supply (EAST)"
@@ -10119,7 +10119,7 @@
 	},
 /area/prison/medbay/foyer)
 "azo" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
 	tag = "icon-intact-supply (EAST)"
@@ -17334,7 +17334,7 @@
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aTm" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aTn" = (
@@ -26254,7 +26254,7 @@
 /area/prison/cellblock/lowsec/se)
 "bro" = (
 /obj/structure/bed,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -32271,7 +32271,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/west)
 "bIw" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -37368,7 +37368,7 @@
 	},
 /area/prison/cellblock/protective)
 "bWZ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/prison/library)
 "bXa" = (
@@ -41938,7 +41938,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "ckN" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -42810,7 +42810,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cny" = (
@@ -44299,7 +44299,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "csr" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "css" = (
@@ -44449,7 +44449,7 @@
 /area/prison/pirate)
 "csP" = (
 /obj/structure/bed,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},

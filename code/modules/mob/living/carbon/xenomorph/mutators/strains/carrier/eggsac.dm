@@ -51,7 +51,7 @@
 
 /datum/action/xeno_action/activable/generate_egg/use_ability()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!istype(X))
+	if(!istype(X) || !action_cooldown_check())
 		return FALSE
 	if(X.eggs_cur >= X.eggs_max)
 		to_chat(X, SPAN_XENOWARNING("You don't have any space to store a new egg!"))

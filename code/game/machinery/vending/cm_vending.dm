@@ -153,7 +153,7 @@ IN_USE						used for vending/denying
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
 
-	if(stat & (BROKEN|MAINT))
+	if(stat & MAINT)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
 		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
@@ -270,7 +270,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
-			stat &= ~(MAINT|BROKEN)
+			stat &= ~MAINT
 			stat |= REPAIR_STEP_ONE
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
@@ -279,7 +279,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
-			stat &= ~(REPAIR_STEP_FOUR|MAINT)
+			stat &= ~(REPAIR_STEP_FOUR|MAINT|BROKEN)
 			stat |= WORKING
 			update_icon()
 			return TRUE
@@ -951,6 +951,21 @@ IN_USE						used for vending/denying
 	var/list/stock_listed_products = get_listed_products(user)
 	for(R in (stock_listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+
+			if(istype(item_to_stock, /obj/item/device/defibrillator))
+				var/obj/item/device/defibrillator/D = item_to_stock
+				if(!D.dcell)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+					return
+				if(D.dcell.charge < D.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
+			if(istype(item_to_stock, /obj/item/cell))
+				var/obj/item/cell/C = item_to_stock
+				if(C.charge < C.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)

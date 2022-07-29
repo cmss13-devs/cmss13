@@ -184,7 +184,7 @@
 	qdel(projectile_to_fire)
 	if(refund && current_mag)
 		current_mag.current_rounds++
-	return 1
+	return TRUE
 
 // FLUFF
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
@@ -593,9 +593,9 @@
 
 
 
-/obj/item/weapon/gun/revolver/mateba/admiral
+/obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an admiral."
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an general."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -610,14 +610,14 @@
 					/obj/item/attachable/mateba/short/dark)
 	starting_attachment_types = null
 
-/obj/item/weapon/gun/revolver/mateba/admiral/handle_starting_attachment()
+/obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/mateba/long/dark/barrel = new(src)
 	barrel.flags_attach_features &= ~ATTACH_REMOVABLE
 	barrel.Attach(src)
 	update_attachables()
 
-/obj/item/weapon/gun/revolver/mateba/admiral/santa
+/obj/item/weapon/gun/revolver/mateba/general/santa
 	name = "\improper Festeba"
 	desc = "The Mateba used by SANTA himself. Rumoured to be loaded with explosive ammunition."
 	icon_state = "amateba"

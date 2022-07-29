@@ -108,7 +108,7 @@
 
 //execution skill
 //roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
-//should be restricted to CO/admiral/W-Y execs maybe
+//should be restricted to CO/general/W-Y execs maybe
 
 #define SKILL_EXECUTION_DEFAULT 0
 #define SKILL_EXECUTION_TRAINED 1

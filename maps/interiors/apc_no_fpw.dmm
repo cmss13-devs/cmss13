@@ -8,10 +8,6 @@
 	},
 /area/vehicle/apc)
 "c" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	alpha = 100;
-	pixel_y = -2
-	},
 /obj/structure/bed/chair/vehicle{
 	dir = 4
 	},
@@ -24,6 +20,11 @@
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	tag = "right"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
@@ -38,8 +39,13 @@
 	dir = 1;
 	pixel_x = 8
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 1;
+	pixel_x = 8;
+	pixel_y = -11
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
+	icon_state = "floor_3_5"
 	},
 /area/vehicle/apc)
 "f" = (
@@ -60,6 +66,11 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
+"i" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_1_3"
+	},
+/area/vehicle/apc)
 "j" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -68,11 +79,15 @@
 	tag = "rear right"
 	},
 /obj/structure/bed/chair/vehicle{
-	dir = 8;
-	pixel_x = 3
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_12"
+	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "k" = (
@@ -125,20 +140,17 @@
 	icon_state = "floor_3_8_1"
 	},
 /area/vehicle/apc)
-"q" = (
-/obj/effect/landmark/interior/spawn/interior_camera{
-	dir = 10;
-	pixel_x = 15;
-	pixel_y = 38
-	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
-	},
-/area/vehicle/apc)
 "r" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Left APC door";
 	pixel_y = 32;
 	tag = "left"
 	},
@@ -158,6 +170,11 @@
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
+	},
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = -14;
+	pixel_y = 38
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
@@ -200,7 +217,7 @@
 	tag = "rear center"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_3_3"
+	icon_state = "floor_1_13"
 	},
 /area/vehicle/apc)
 "A" = (
@@ -225,9 +242,6 @@
 	},
 /area/vehicle/apc)
 "C" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_y = 28
-	},
 /obj/structure/bed/chair/vehicle{
 	dir = 4
 	},
@@ -274,23 +288,15 @@
 /turf/open/void/vehicle,
 /area/space)
 "I" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply{
+	pixel_y = 20
 	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = -8;
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	name = "Vehicle NanoMed";
-	pixel_x = 7;
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = -24;
 	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
+	icon_state = "floor_1_11"
 	},
 /area/vehicle/apc)
 "J" = (
@@ -386,18 +392,20 @@
 /turf/open/void/vehicle,
 /area/space)
 "W" = (
-/obj/structure/transmitter{
-	name = "APC Telephone";
-	phone_category = "Vehicles";
-	phone_id = "M577 APC";
-	pixel_x = -1;
-	pixel_y = 31
-	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
+	},
+/obj/effect/landmark/interior/spawn/telephone{
+	pixel_x = 5;
+	pixel_y = 30
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_x = -8;
+	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
@@ -424,11 +432,17 @@
 	tag = "rear left"
 	},
 /obj/structure/bed/chair/vehicle{
-	dir = 8;
-	pixel_x = 3
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_x = -7;
+	pixel_y = 23
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_11"
+	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 
@@ -454,7 +468,7 @@ a
 K
 S
 I
-E
+i
 e
 Y
 a
@@ -471,7 +485,7 @@ R
 (5,1,1) = {"
 N
 r
-q
+b
 L
 b
 d

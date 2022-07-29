@@ -357,6 +357,53 @@
 	. = ..()
 	reagents.add_reagent("pwine", 100)
 
+////////////////////////// BEERS ///////////////////////
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft
+	name = "Pendleton's Triple Star Lager"
+	desc = "A brand of colonial lager prevalent in the Outer Rim but practically unknown in the inner systems, probably because of health concerns. It tastes like absolutely nothing familiar to you, but is oddly refreshing and has a fruity taste. The label on the back reads, 'Brewed with exotic hops in Costaguana.' You're almost certain that's a fake country."
+	icon_state = "pendleton"
+	center_of_mass = "x=16;y=13"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/Initialize()
+	. = ..()
+	reagents.add_reagent("beer", 30)
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo
+	name = "Tuxedo Premium"
+	desc = "A craft ale originally brewed in England, the Tuxedo Premium brand is widely advertised as a beer for the gentleman; one not enjoyed in a pub, but rather sipped over a formal dinner. It doesn't sell very well, partially because it doesn't taste much different than any other beer and partially because it is three times as expensive. But cherish it! This is the nectar of the rich."
+	icon_state = "tuxedo"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci
+	name = "Ganucci's Genuine Light Beer"
+	desc = "A light beer with a watery taste and sour undertones. It's not the best, but it's dirt cheap, and brewed in Italy, so it's naturally popular with the masses. Contrary to popular belief, it is real beer, and not in fact druidic dirt water."
+	icon_state = "ganucci"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt
+	name = "Blue Malt"
+	desc = "A malt beer with an alcohol content that toes the line of legality. So-called 'blue' because it's the color face you get when you down so many of these that your heart stops working. The surgeon general's warning is printed in huge letters on the back of the bottle. Do guns count as heavy machinery?"
+	icon_state = "bluemalt"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/partypopper
+	name = "Party Popper Ale"
+	desc = "A fun, exotic craft beer from the colonies that mixes in a tiny bit of sugar along with light, fruity ale. The result makes the taste buds in your mouth do a little dance, presumably of confusion, and is said to make people smile after a sip. Best served at parties, worst served at funerals. Smile over your best friends's grave, why don't you."
+	icon_state = "partypopper"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tazhushka
+	name = "Tazhushka's Turquoise Beer"
+	desc = "A UPP-originating beer made by the eponymous Tazhushka State Brewery. It singes your throat when you drink it, but it makes you also feel ready for anything. For a time, at least, until the hangover the brand is famous for kicks in and wrecks you inside out."
+	icon_state = "tazhushka"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper
+	name = "Reaper Red"
+	desc = "A strong Japanese beer that is marketed as 'daring' and 'adventurous'. Considering the label is quite literally the universal sign for 'HAZARD', it's safe to say drinking enough of this will be enough of a daring adventure to make you move up your next appointment with your doctor regarding your weeping liver."
+	icon_state = "reaper"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono
+	name = "Mono Lager"
+	desc = "This black and white beer bottle does not say where it's from, nor does it say what it is supposed to be. All you know is that it is a beer, and it has a rather bland taste. Makes you feel like you're looking through a photo from four centuries ago. Rumor is f you say the name fast enough, it makes you want to say a long-winded, villainous speech."
+	icon_state = "mono"
+
 //////////////////////////JUICES AND STUFF ///////////////////////
 
 /obj/item/reagent_container/food/drinks/bottle/orangejuice

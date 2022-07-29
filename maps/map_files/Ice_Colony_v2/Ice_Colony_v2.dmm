@@ -1054,7 +1054,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "adx" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -1521,7 +1521,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -3232,7 +3232,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiI" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -4469,7 +4469,7 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -4581,7 +4581,7 @@
 /turf/open/ice,
 /area/ice_colony/surface/mining)
 "ame" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreen2";
@@ -6191,7 +6191,7 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -6971,7 +6971,7 @@
 "arW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -9019,7 +9019,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "awN" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "awO" = (
@@ -10010,7 +10010,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "azu" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -11140,7 +11140,7 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aCd" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -16740,7 +16740,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/shuttle{
 	icon_state = "floor6";
 	tag = "icon-floor6"
@@ -16979,7 +16979,7 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aSb" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -18802,7 +18802,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWv" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -19070,7 +19070,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXg" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXh" = (
@@ -21610,7 +21610,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "beK" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -22093,7 +22093,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "bgc" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/icefloor{
 	icon_state = "rockvault";
 	tag = "icon-bcircuit"

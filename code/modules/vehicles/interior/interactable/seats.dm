@@ -45,6 +45,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()
@@ -169,6 +170,30 @@
 	. = ..()
 	update_icon()
 
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(var/mob/M)
+
+	if(!vehicle)
+		return
+
+	if(QDELETED(buckled_mob))
+		vehicle.set_seated_mob(seat, null)
+		M.unset_interaction()
+		if(M.client)
+			M.client.change_view(world_view_size, src)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
+	else
+		if(M.stat != CONSCIOUS)
+			unbuckle()
+			return
+		vehicle.set_seated_mob(seat, M)
+		if(M && M.client)
+			if(istype(vehicle, /obj/vehicle/multitile/apc))
+				var/obj/vehicle/multitile/apc/APC = vehicle
+				M.client.change_view(APC.gunner_view_buff, src)
+			else
+				M.client.change_view(8, src)
+
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()
 
@@ -235,6 +260,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()

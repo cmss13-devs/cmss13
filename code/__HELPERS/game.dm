@@ -89,10 +89,8 @@
 /proc/recursive_holder_check(var/obj/item/held_item, var/recursion_limit = 3)
 	if(recursion_limit <= 0)
 		return held_item
-	if(isturf(held_item.loc))
+	if(!held_item.loc || isturf(held_item.loc))
 		return held_item
-	if(isturf(held_item.loc.loc))
-		return held_item.loc
 	recursion_limit--
 	return recursive_holder_check(held_item.loc, recursion_limit)
 

@@ -47,13 +47,14 @@
 /obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/M)
 	if(!istype(M))
 		return
-	if(!damaged)
+	var/can_repair = damaged || health < maxhealth
+	if(!can_repair)
 		to_chat(M, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
 	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
 	xeno_attack_delay(M)
-	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !damaged)
+	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
 
 	var/amount_to_use = min(M.plasma_stored, (plasma_required_to_repair - plasma_stored))
@@ -121,25 +122,24 @@
 
 
 /obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent != INTENT_HARM || !M.can_destroy_special())
-		return
-	if(!hardcore && last_attempt + 6 SECONDS > world.time)
-		to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
-		return XENO_NO_DELAY_ACTION
-
-	else if(warn && world.time > HIVECORE_COOLDOWN_CUTOFF)
-		if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
+	if(M.a_intent != INTENT_HELP && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
+		if(!hardcore && last_attempt + 6 SECONDS > world.time)
+			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
-		INVOKE_ASYNC(src, .proc/startDestroying,M)
-		return XENO_NO_DELAY_ACTION
+		else if(warn && world.time > HIVECORE_COOLDOWN_CUTOFF)
+			if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
+				return XENO_NO_DELAY_ACTION
 
-	else if(world.time < HIVECORE_COOLDOWN_CUTOFF)
-		if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") == "No"))
+			INVOKE_ASYNC(src, .proc/startDestroying,M)
 			return XENO_NO_DELAY_ACTION
 
-		INVOKE_ASYNC(src, .proc/startDestroying,M)
-		return XENO_NO_DELAY_ACTION
+		else if(world.time < HIVECORE_COOLDOWN_CUTOFF)
+			if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") == "No"))
+				return XENO_NO_DELAY_ACTION
+
+			INVOKE_ASYNC(src, .proc/startDestroying,M)
+			return XENO_NO_DELAY_ACTION
 
 	if(linked_hive)
 		var/current_health = health

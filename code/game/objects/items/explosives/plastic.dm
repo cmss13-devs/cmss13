@@ -15,8 +15,9 @@
 	)
 
 	var/deploying_time = 50
-	var/penetration = 1 // How much damage adjacent walls receive
+	var/penetration = 1.5 // How much damage adjacent walls receive
 	var/timer = 10 // detonation time
+	var/min_timer = 10
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
@@ -51,12 +52,11 @@
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
 			detonator.attack_self(user)
 		return
-	var/new_time = input(usr, "Please set the timer.", "Timer", 10) as num
-	if(new_time < timer)
-		new_time = timer
+	var/new_time = input(usr, "Please set the timer.", "Timer", min_timer) as num
+	if(new_time < min_timer)
+		new_time = min_timer
 	else if(new_time > 60)
 		new_time = 60
-
 	timer = new_time
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
@@ -169,6 +169,11 @@
 /obj/item/explosive/plastic/proc/can_place(var/mob/user, var/atom/target)
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
+
+	if(istype(target, /obj/structure/closet))
+		var/obj/structure/closet/C = target
+		if(C.opened)
+			return FALSE
 
 	//vehicle interior stuff checks
 	if(istype(target, /obj/vehicle/multitile))
@@ -283,7 +288,7 @@
 			qdel(src)
 		return
 
-	plant_target.ex_act(1000 * penetration, , cause_data)
+	plant_target.ex_act(2000, dir, cause_data)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
@@ -308,7 +313,7 @@
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
 	create_shrapnel(explosion_target, 40, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
-	sleep(1)// prevents explosion from eating shrapnell
+	sleep(1)// prevents explosion from eating shrapnel
 	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
 
@@ -332,5 +337,6 @@
 	w_class = SIZE_SMALL
 	angle = 55
 	timer = 3
-	penetration = 0.45
+	min_timer = 3
+	penetration = 0.60
 	deploying_time = 10

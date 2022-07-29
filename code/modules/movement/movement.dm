@@ -151,3 +151,8 @@
 			if(old_area)
 				old_area.Exited(src, null)
 		loc = null
+
+// resets our langchat position if we get forcemoved out of a locker or something
+/mob/doMove(atom/destination)
+	. = ..()
+	langchat_image?.loc = src

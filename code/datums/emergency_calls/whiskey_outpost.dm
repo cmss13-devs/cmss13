@@ -7,7 +7,10 @@
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_heavies = 4
+
+	max_smartgunners = 1
+	max_heavies = 1
+	max_engineers = 2
 	max_medics = 2
 
 /datum/emergency_call/wo/create_member(datum/mind/M, var/turf/override_spawn_loc)
@@ -22,28 +25,29 @@
 	M.transfer_to(mob, TRUE)
 
 	sleep(5)
-	if(!leader)
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/leader, TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. </B>")
-	else if (heavies < max_heavies)
+		to_chat(mob, SPAN_BOLDNOTICE("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
+	else if (heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
-		if(prob(40))
-			arm_equipment(mob, /datum/equipment_preset/dust_raider/smartgunner, TRUE, TRUE)
-			to_chat(mob, "<font size='3'>\red You are a smartgunner in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
-		else if(prob(20))
-			arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
-			to_chat(mob, "<font size='3'>\red You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
-		else
-			arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
-			to_chat(mob, "<font size='3'>\red You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
-	else if (medics < max_medics)
+		arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
+		to_chat(mob, SPAN_BOLDNOTICE("You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
+	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		smartgunners++
+		arm_equipment(mob, /datum/equipment_preset/dust_raider/smartgunner, TRUE, TRUE)
+		to_chat(mob, SPAN_BOLDNOTICE("You are a smartgunner in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
+	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
+		to_chat(mob, SPAN_BOLDNOTICE("You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
+	else if (medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
+		to_chat(mob, SPAN_BOLDNOTICE("You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/private, TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a private in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
+		to_chat(mob, SPAN_BOLDNOTICE("You are a private in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
 
 	sleep(10)
 	to_chat(mob, "<B>Objectives:</b> [objectives]")
@@ -64,7 +68,9 @@ datum/emergency_call/wo/platoon
 	mob_min = 8
 	mob_max = 30
 	probability = 0
-	max_heavies = 8
+
+	max_heavies = 4
+	max_smartgunners = 4
 
 datum/emergency_call/wo/platoon/cryo
 	name = "Marine Reinforcements (Platoon) (Cryo)"

@@ -386,3 +386,9 @@
 
 /datum/species/proc/get_hairstyle(var/style)
 	return GLOB.hair_styles_list[style]
+
+// Used for checking on how each species would scream when they are burning
+/datum/species/proc/handle_on_fire(var/humanoidmob)
+	// call this for each species so each has their own unique scream options when burning alive
+	// heebie-jebies made me do all this effort, I HATE YOU
+	return

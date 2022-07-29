@@ -357,6 +357,7 @@
 
 /obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/WT, mob/user)
 	if(!metallic)
+		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
 		return FALSE
 
 	if(!(WT.remove_fuel(2, user)))

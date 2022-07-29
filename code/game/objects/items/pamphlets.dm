@@ -102,6 +102,11 @@ obj/item/pamphlet/Initialize()
 	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
 	trait = /datum/character_trait/language/japanese
 
+/obj/item/pamphlet/language/chinese
+	name = "Pages from the Little Red Book"
+	desc = "没有共产党就没有新中国! Pages from the handbook to starting a famine that kills over 100 million of your people. Apparently this will help you learn Chinese."
+	trait = /datum/character_trait/language/chinese
+
 /obj/item/pamphlet/language/german
 	name = "Translated Lyrics to 99 Luftballons"
 	desc = "These hastily scribbled translations of 99 Luftballons, an iconic German hit of the 80s, were meant for the yearly Battalion Karaoke Night. I guess you can get some better use out of this."

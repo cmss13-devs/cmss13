@@ -106,3 +106,33 @@
 	description = "Increased gun accuracy and effective range."
 	keybind_signal = COMSIG_KB_HUMAN_ISSUE_ORDER_FOCUS
 	order = COMMAND_ORDER_FOCUS
+
+/datum/keybinding/human/specialist_one
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "specialist_activation_one"
+	full_name = "Specialist Activation One"
+	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE
+
+/datum/keybinding/human/specialist_one/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.spec_activation_one()
+	return TRUE
+
+/datum/keybinding/human/specialist_two
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "specialist_activation_two"
+	full_name = "Specialist Activation Two"
+	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO
+
+/datum/keybinding/human/specialist_two/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.spec_activation_two()
+	return TRUE

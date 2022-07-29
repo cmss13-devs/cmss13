@@ -1,11 +1,12 @@
 /obj/item/stack/tile/light
-	name = "light tile"
+	name = "light floor tile"
 	singular_name = "light floor tile"
 	desc = "A floor tile, made out off glass. It produces light."
 	icon_state = "tile_e"
 	force = 3.0
 	throwforce = 5.0
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
+	stack_id = "light floor tile"
 	var/on = 1
 	var/state //0 = fine, 1 = flickering, 2 = breaking, 3 = broken
 

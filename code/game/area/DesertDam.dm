@@ -178,7 +178,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 /area/desert_dam/interior/caves/northern_caves
 	name = "Northern Caves"
 	icon_state = "red"

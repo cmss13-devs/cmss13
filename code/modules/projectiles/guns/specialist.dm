@@ -286,587 +286,7 @@
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
-
-
-
-//-------------------------------------------------------
-//SMARTGUN
-
-//Come get some.
-/obj/item/weapon/gun/smartgun
-	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action. \nAlt-click it to open the top cover and allow for reloading."
-	icon_state = "m56"
-	item_state = "m56"
-	fire_sound = "gun_smartgun"
-	fire_rattle	= "gun_smartgun_rattle"
-	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
-	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/smartgun
-	flags_equip_slot = NO_FLAGS
-	w_class = SIZE_HUGE
-	force = 20
-	wield_delay = WIELD_DELAY_FAST
-	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	var/powerpack = null
-	ammo = /datum/ammo/bullet/smartgun
-	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
-	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
-	var/iff_enabled = TRUE //Begin with the safety on.
-	var/secondary_toggled = 0 //which ammo we use
-	var/recoil_compensation = 0
-	var/accuracy_improvement = 0
-	var/auto_fire = 0
-	var/motion_detector = 0
-	var/drain = 11
-	var/range = 7
-	var/angle = 2
-	var/list/angle_list = list(180,135,90,60,30)
-	var/obj/item/device/motiondetector/sg/MD
-	var/long_range_cooldown = 2
-	var/recycletime = 120
-	var/cover_open = FALSE
-
-	unacidable = 1
-	indestructible = 1
-
-	attachable_allowed = list(
-						/obj/item/attachable/smartbarrel,
-						/obj/item/attachable/burstfire_assembly,
-						/obj/item/attachable/flashlight)
-
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
-	gun_category = GUN_CATEGORY_HEAVY
-	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
-	auto_retrieval_slot = WEAR_J_STORE
-
-
-/obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
-	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
-	ammo_secondary = GLOB.ammo_list[ammo_secondary]
-	MD = new(src)
-	. = ..()
-	update_icon()
-
-/obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
-
-/obj/item/weapon/gun/smartgun/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
-	fa_delay = FIRE_DELAY_TIER_9
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_6
-	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-	if(accuracy_improvement)
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
-	else
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_1
-	if(recoil_compensation)
-		scatter = SCATTER_AMOUNT_TIER_10
-		recoil = RECOIL_OFF
-	else
-		scatter = SCATTER_AMOUNT_TIER_6
-		recoil = RECOIL_AMOUNT_TIER_3
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-/obj/item/weapon/gun/smartgun/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
-	))
-
-/obj/item/weapon/gun/smartgun/examine(mob/user)
-	..()
-	var/rounds = 0
-	if(current_mag && current_mag.current_rounds)
-		rounds = current_mag.current_rounds
-	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
-	to_chat(user, message)
-	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
-
-/obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
-	if(mods["alt"])
-		if(!ishuman(user))
-			return ..()
-		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
-			return TRUE
-		if(user.get_active_hand() && user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
-			return TRUE
-		if(!cover_open)
-			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open \the [src]'s dust cover, allowing the drum to be removed."))
-			cover_open = TRUE
-		else
-			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close \the [src]'s dust cover."))
-			cover_open = FALSE
-		update_icon()
-		return TRUE
-	else
-		return ..()
-
-/obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
-	if(!cover_open)
-		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't put a new drum in!"))
-		return
-	. = ..()
-
-/obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
-	if(!cover_open)
-		to_chat(user, SPAN_WARNING("The [src]'s dust cover is closed! You can't take out the drum!"))
-		return
-	. = ..()
-
-/obj/item/weapon/gun/smartgun/update_icon()
-	. = ..()
-	if(cover_open)
-		overlays += "+[base_gun_icon]_cover_open"
-	else
-		overlays += "+[base_gun_icon]_cover_closed"
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
-	set category = "Smartgun"
-	set name = "Toggle Lethal Mode"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_lethal_mode(usr)
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_ammo_type()
-	set category = "Smartgun"
-	set name = "Toggle Ammo Type"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_ammo_type(usr)
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_recoil_compensation()
-	set category = "Smartgun"
-	set name = "Toggle Recoil Compensation"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_recoil_compensation(usr)
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_accuracy_improvement()
-	set category = "Smartgun"
-	set name = "Toggle Accuracy Improvement"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_accuracy_improvement(usr)
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_auto_fire()
-	set category = "Smartgun"
-	set name = "Toggle Auto Fire"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_auto_fire(usr)
-
-/obj/item/weapon/gun/smartgun/verb/vtoggle_motion_detector()
-	set category = "Smartgun"
-	set name = "Toggle Motion Detector"
-	set src in usr
-	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr, FALSE)
-	if(!istype(G))
-		return
-
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
-	G.toggle_motion_detector(usr)
-
-/obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
-	. = ..()
-	if(.)
-		if(!ishuman(user)) return 0
-		var/mob/living/carbon/human/H = user
-		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
-		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
-			return FALSE
-		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the cover open!"))
-			return FALSE
-
-/obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	if(!current_mag)
-		return
-	qdel(projectile_to_fire)
-	if(refund) current_mag.current_rounds++
-	return 1
-
-/obj/item/weapon/gun/smartgun/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
-		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_ammo_type(usr)
-
-/obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
-	if(!iff_enabled)
-		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src.name]'s fire restriction is disabled.")
-		return
-	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
-
-/obj/item/weapon/gun/smartgun/replace_ammo()
-	..()
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary
-
-/obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	iff_enabled = !iff_enabled
-	ammo = ammo_primary
-	secondary_toggled = FALSE
-	if(iff_enabled)
-		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
-		drain += 10
-		MD.iff_signal = initial(MD.iff_signal)
-	if(!iff_enabled)
-		remove_bullet_trait("iff")
-		drain -= 10
-		MD.iff_signal = null
-	if(!powerpack)
-		link_powerpack(usr)
-
-/obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!powerpack || (powerpack && user.back != powerpack))
-		if(!link_powerpack(user))
-			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
-			unlink_powerpack()
-			return
-	if(powerpack)
-		var/obj/item/smartgun_powerpack/pp = user.back
-		if(istype(pp))
-			var/obj/item/cell/c = pp.pcell
-			var/d = drain
-			if(flags_gun_features & GUN_BURST_ON)
-				d = drain*burst_amount*1.5
-			if(pp.drain_powerpack(d, c))
-				..()
-
-
-/obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
-	if(!QDELETED(user) && !QDELETED(user.back))
-		if(istype(user.back, /obj/item/smartgun_powerpack))
-			powerpack = user.back
-			return TRUE
-	return FALSE
-
-/obj/item/weapon/gun/smartgun/proc/unlink_powerpack()
-	powerpack = null
-
-/obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s recoil compensation.")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	recoil_compensation = !recoil_compensation
-	if(recoil_compensation)
-		drain += 50
-	else
-		drain -= 50
-	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
-
-/obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s accuracy improvement.")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	accuracy_improvement = !accuracy_improvement
-	if(accuracy_improvement)
-		drain += 50
-	else
-		drain -= 50
-	recalculate_attachment_bonuses()
-
-/obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
-	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield the [src.name] to enable autofire.")
-		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s auto fire mode.")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	auto_fire = !auto_fire
-	auto_fire()
-
-/obj/item/weapon/gun/smartgun/proc/auto_fire()
-	if(auto_fire)
-		drain += 150
-		if(!motion_detector)
-			START_PROCESSING(SSobj, src)
-	if(!auto_fire)
-		drain -= 150
-		if(!motion_detector)
-			STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/gun/smartgun/process()
-	if(!auto_fire && !motion_detector)
-		STOP_PROCESSING(SSobj, src)
-	if(auto_fire)
-		auto_prefire()
-	if(motion_detector)
-		recycletime--
-		if(!recycletime)
-			recycletime = initial(recycletime)
-			MD.refresh_blip_pool()
-
-		long_range_cooldown--
-		if(long_range_cooldown)
-			return
-		long_range_cooldown = initial(long_range_cooldown)
-		MD.scan()
-
-/obj/item/weapon/gun/smartgun/proc/auto_prefire(var/warned) //To allow the autofire delay to properly check targets after waiting.
-	if(ishuman(loc) && (flags_item & WIELDED))
-		var/human_user = loc
-		target = get_target(human_user)
-		process_shot(human_user, warned)
-	else
-		auto_fire = FALSE
-		auto_fire()
-
-/obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
-	var/list/conscious_targets = list()
-	var/list/unconscious_targets = list()
-	var/list/turf/path = list()
-	var/turf/T
-
-	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
-		if((M.stat & DEAD)) continue // No dead or non living.
-
-		if(M.get_target_lock(user.faction_group)) continue
-		if(angle > 0)
-			var/opp
-			var/adj
-
-			switch(user.dir)
-				if(NORTH)
-					opp = user.x-M.x
-					adj = M.y-user.y
-				if(SOUTH)
-					opp = user.x-M.x
-					adj = user.y-M.y
-				if(EAST)
-					opp = user.y-M.y
-					adj = M.x-user.x
-				if(WEST)
-					opp = user.y-M.y
-					adj = user.x-M.x
-
-			var/r = 9999
-			if(adj != 0) r = abs(opp/adj)
-			var/angledegree = arcsin(r/sqrt(1+(r*r)))
-			if(adj < 0)
-				continue
-
-			if((angledegree*2) > angle_list[angle])
-				continue
-
-		path = getline2(user, M)
-
-		if(path.len)
-			var/blocked = FALSE
-			for(T in path)
-				if(T.density || T.opacity)
-					blocked = TRUE
-					break
-				for(var/obj/structure/S in T)
-					if(S.opacity)
-						blocked = TRUE
-						break
-				for(var/obj/structure/machinery/MA in T)
-					if(MA.opacity)
-						blocked = TRUE
-						break
-				if(blocked)
-					break
-			if(blocked)
-				continue
-			if(M.stat & UNCONSCIOUS)
-				unconscious_targets += M
-			else
-				conscious_targets += M
-
-	if(conscious_targets.len)
-		. = pick(conscious_targets)
-	else if(unconscious_targets.len)
-		. = pick(unconscious_targets)
-
-/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user, var/warned)
-	set waitfor = 0
-
-
-	if(!target)
-		return //Acquire our victim.
-
-	if(!ammo)
-		return
-
-	if(target && (world.time-last_fired >= 3)) //Practical firerate is limited mainly by process delay; this is just to make sure it doesn't fire too soon after a manual shot or slip a shot into an ongoing burst.
-		if(world.time-last_fired >= 300 && !warned) //if we haven't fired for a while, beep first
-			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-			addtimer(CALLBACK(src, /obj/item/weapon/gun/smartgun/proc/auto_prefire, TRUE), 3)
-			return
-
-		Fire(target,user)
-
-	target = null
-
-/obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s motion detector.")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	motion_detector = !motion_detector
-	motion_detector()
-
-/obj/item/weapon/gun/smartgun/proc/motion_detector()
-	if(motion_detector)
-		drain += 15
-		if(!auto_fire)
-			START_PROCESSING(SSobj, src)
-	if(!motion_detector)
-		drain -= 15
-		if(!auto_fire)
-			STOP_PROCESSING(SSobj, src)
-
-//CO SMARTGUN
-/obj/item/weapon/gun/smartgun/co
-	name = "\improper M56C 'Cavalier' smartgun"
-	desc = "The actual firearm in the 4-piece M56C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B."
-	icon_state = "m56c"
-	item_state = "m56c"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
-
-	var/mob/living/carbon/human/linked_human
-	var/is_locked = TRUE
-
-/obj/item/weapon/gun/smartgun/co/able_to_fire(mob/user)
-	. = ..()
-	if(is_locked && linked_human && linked_human != user)
-		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src)] Trigger locked by [src]. Unauthorized user."))
-			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
-			return FALSE
-
-		linked_human = null
-		is_locked = FALSE
-		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
-
-/obj/item/weapon/gun/smartgun/co/pickup(user)
-	if(!linked_human)
-		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
-	..()
-
-/obj/item/weapon/gun/smartgun/co/verb/toggle_lock()
-	set category = "Weapons"
-	set name = "Toggle Lock"
-	set src in usr
-
-	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by \the [src]. Unauthorized user."))
-		return
-
-	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [is_locked? "lock": "unlock"] \the [src]."))
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-
-/obj/item/weapon/gun/smartgun/co/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/smartgun/co/I)
-	linked_human = H
-	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
-
-/obj/item/weapon/gun/smartgun/co/examine()
-	..()
-	if(linked_human)
-		if(is_locked)
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
-		else
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human], but has its fire restrictions unlocked."))
-	else
-		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
-
-/obj/item/weapon/gun/smartgun/co/proc/remove_idlock()
-	SIGNAL_HANDLER
-	linked_human = null
-
-/obj/item/weapon/gun/smartgun/dirty
-	name = "\improper M56D 'Dirty' smartgun"
-	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
-	current_mag = /obj/item/ammo_magazine/smartgun/dirty
-	ammo = /obj/item/ammo_magazine/smartgun/dirty
-	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
-
-/obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_PMC
-
-
-//TERMINATOR SMARTGUN
-/obj/item/weapon/gun/smartgun/dirty/elite
-	name = "\improper M56T 'Terminator' smartgun"
-	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
-
-/obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_WY_DEATHSQUAD
-
-/obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
-	..()
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_10
-	if(!recoil_compensation)
-		scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-
-
-// CLF SMARTGUN
-
-/obj/item/weapon/gun/smartgun/clf
-	name = "\improper M56B 'Freedom' smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufactoring stamp.\nYou may toggle firing restrictions by using a special action."
-
-/obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_CLF
 
 //-------------------------------------------------------
 //HEAVY WEAPONS
@@ -1016,6 +436,11 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		return
 	return cylinder.attackby(I, user)
 
+/obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
+	if(isobserver(usr) || isXeno(usr))
+		return
+	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
+		toggle_firing_level(usr)
 
 /obj/item/weapon/gun/launcher/grenade/proc/allowed_ammo_type(obj/item/I)
 	for(var/G in disallowed_grenade_types) //Check for the bad stuff.
@@ -1117,6 +542,40 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	return length(cylinder.contents)
 
 //-------------------------------------------------------
+//Toggle firing level special action for grenade launchers
+
+/datum/action/item_action/toggle_firing_level/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Firing Level"
+	button.name = name
+	update_icon()
+
+/datum/action/item_action/toggle_firing_level/action_activate()
+	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
+		return
+	G.toggle_firing_level(usr)
+
+/datum/action/item_action/toggle_firing_level/proc/update_icon()
+	var/obj/item/weapon/gun/launcher/grenade/G = holder_item
+	if(G.is_lobbing)
+		action_icon_state = "hightoss_on"
+	else
+		action_icon_state = "hightoss_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/obj/item/weapon/gun/launcher/grenade/proc/toggle_firing_level(mob/user)
+	is_lobbing = !is_lobbing
+	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s firing level. You will now fire [is_lobbing ? "in an arcing path over obstacles" : "directly at your target"].")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	var/datum/action/item_action/toggle_firing_level/TFL = locate(/datum/action/item_action/toggle_firing_level) in actions
+	TFL.update_icon()
+
+//-------------------------------------------------------
 //M92 GRENADE LAUNCHER
 
 /obj/item/weapon/gun/launcher/grenade/m92
@@ -1127,6 +586,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	unacidable = TRUE
 	indestructible = 1
 	matter = list("metal" = 6000)
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -1197,6 +657,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	item_state = "m79"
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
@@ -1226,7 +687,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
-
 
 //-------------------------------------------------------
 //M5 RPG

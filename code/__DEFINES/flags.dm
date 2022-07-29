@@ -1,3 +1,5 @@
+#define HAS_FLAG(var, flag) (var & flag)
+
 /*
 	These defines are specific to the atom/flags_1 bitmask
 */

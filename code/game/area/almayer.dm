@@ -7,7 +7,7 @@
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
 	powernet_name = "almayer"
-	sound_environment = 2
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_interval = 30
 	//soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER

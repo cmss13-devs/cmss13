@@ -224,10 +224,10 @@
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0
-		F.times_used = 0
+		F.flashes_stored = F.max_flashes_stored
 		F.icon_state = "flash"
-	else if(F.times_used)
-		F.times_used--
+	else if(F.flashes_stored > F.max_flashes_stored)
+		F.flashes_stored++
 	// var/obj/item/weapon/gun/energy/taser/cyborg/T = locate() in src.modules
 	// if(T.power_supply.charge < T.power_supply.maxcharge)
 	// 	T.power_supply.give(T.charge_cost)

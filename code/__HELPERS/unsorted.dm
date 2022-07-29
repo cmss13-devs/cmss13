@@ -857,6 +857,12 @@
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
+	var/has_nightvision = FALSE
+	if(ismob(source))
+		var/mob/M = source
+		has_nightvision = M.see_in_dark >= 12
+	if(!has_nightvision && target_turf.lighting_lumcount == 0)
+		return FALSE
 
 	while(current != target_turf)
 		if(steps > length) return FALSE

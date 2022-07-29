@@ -63,7 +63,7 @@
 /area/adminlevel/chinook)
 "ap" = (
 /obj/structure/closet/secure_closet/securecom{
-	name = "admiral's secure box"
+	name = "general's secure box"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -589,7 +589,7 @@
 /area/adminlevel/chinook/sec)
 "bR" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/storage/mateba_case/admiral{
+/obj/item/storage/mateba_case/general{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer,

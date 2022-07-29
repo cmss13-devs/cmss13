@@ -177,18 +177,6 @@
 	GLOB.xeno_hive_spawns -= src
 	return ..()
 
-/obj/effect/landmark/survivor_spawn
-	name = "survivor spawn"
-	icon_state = "x3"
-
-/obj/effect/landmark/survivor_spawn/Initialize(mapload, ...)
-	. = ..()
-	GLOB.survivor_spawns += src
-
-/obj/effect/landmark/survivor_spawn/Destroy()
-	GLOB.survivor_spawns -= src
-	return ..()
-
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
 

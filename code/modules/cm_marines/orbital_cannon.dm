@@ -279,52 +279,52 @@ var/list/ob_type_fuel_requirements
 /obj/structure/orbital_tray/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(PC.loaded)
-				if(istype(PC.loaded, /obj/structure/ob_ammo))
-					var/obj/structure/ob_ammo/OA = PC.loaded
-					if(OA.is_solid_fuel)
-						if(fuel_amt >= 6)
-							to_chat(user, SPAN_WARNING("[src] can't accept more solid fuel."))
-						else if(!warhead)
-							to_chat(user, SPAN_WARNING("A warhead must be placed in [src] first."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							fuel_amt++
-							PC.loaded = null
-							PC.update_icon()
-							qdel(OA)
-							update_icon()
-					else
-						if(warhead)
-							to_chat(user, SPAN_WARNING("[src] already has a warhead."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							warhead = OA
-							OA.forceMove(src)
-							PC.loaded = null
-							PC.update_icon()
-							update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
 
-			else
+		if(PC.loaded)
+			if(!istype(PC.loaded, /obj/structure/ob_ammo))
+				to_chat(user, SPAN_WARNING("There is no way you can put \the [PC.loaded] into \the [src]!"))
+				return TRUE
 
-				if(fuel_amt)
-					var/obj/structure/ob_ammo/ob_fuel/OF = new (PC.linked_powerloader)
-					PC.loaded = OF
-					fuel_amt--
-				else if(warhead)
-					warhead.forceMove(PC.linked_powerloader)
-					PC.loaded = warhead
-					warhead = null
-				else
+			var/obj/structure/ob_ammo/OA = PC.loaded
+			if(OA.is_solid_fuel)
+				if(fuel_amt >= 6)
+					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
 					return TRUE
-				PC.update_icon()
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
-		return TRUE
+				if(!warhead)
+					to_chat(user, SPAN_WARNING("A warhead must be placed in \the [src] first."))
+					return TRUE
+				to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+				fuel_amt++
+				qdel(OA)
+			else
+				if(warhead)
+					to_chat(user, SPAN_WARNING("\The [src] already has \the [warhead] loaded."))
+					return TRUE
+				else
+					to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+					warhead = OA
+					OA.forceMove(src)
+
+			playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
+			PC.loaded = null
+			update_icon()
+			PC.update_icon()
+
+		else
+			if(fuel_amt)
+				var/obj/structure/ob_ammo/ob_fuel/OF = new (src)
+				fuel_amt--
+				PC.grab_object(OF, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+			else if(warhead)
+				PC.grab_object(warhead, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+				warhead = null
+
+			to_chat(user, SPAN_NOTICE("You retrieve \the [PC.loaded] from \the [src]."))
+			update_icon()
+			return TRUE
 	else
 		. = ..()
 
@@ -344,17 +344,24 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(!PC.loaded)
-				forceMove(PC.linked_powerloader)
-				PC.loaded = src
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				PC.update_icon()
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+
+		if(PC.loaded)
+			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+			return TRUE
+
+		if(is_solid_fuel)
+			PC.grab_object(src, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+		else
+			PC.grab_object(src, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		update_icon()
 		return TRUE
 	else
 		. = ..()
+
 
 /obj/structure/ob_ammo/examine(mob/user)
 	..()

@@ -4345,7 +4345,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "alt" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -4719,7 +4719,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "amv" = (
@@ -4781,7 +4781,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "amB" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -5638,7 +5638,7 @@
 /area/bigredv2/outside/marshal_office)
 "aoW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aoX" = (
@@ -9135,7 +9135,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axI" = (
@@ -9653,7 +9653,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aza" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -14997,7 +14997,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aMj" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -16472,7 +16472,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aPM" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17335,7 +17335,7 @@
 /area/bigredv2/outside/general_store)
 "aRP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRQ" = (
@@ -19735,7 +19735,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aYk" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -20651,7 +20651,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbh" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbi" = (
@@ -21010,7 +21010,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bcd" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "bce" = (
@@ -21060,7 +21060,7 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "chapel"
@@ -21868,7 +21868,7 @@
 /area/bigredv2/outside/office_complex)
 "beM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "beN" = (
@@ -22772,7 +22772,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "bhk" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
@@ -23976,7 +23976,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blB" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -24080,7 +24080,7 @@
 "bma" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -24791,7 +24791,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bpe" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpf" = (
@@ -25231,7 +25231,7 @@
 /area/bigredv2/outside/engineering)
 "bqT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bqV" = (

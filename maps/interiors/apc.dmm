@@ -27,8 +27,13 @@
 	dir = 1;
 	pixel_x = 8
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 1;
+	pixel_x = 8;
+	pixel_y = -11
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
+	icon_state = "floor_3_5"
 	},
 /area/vehicle/apc)
 "d" = (
@@ -51,10 +56,6 @@
 /turf/open/void/vehicle,
 /area/space)
 "f" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	alpha = 100;
-	pixel_y = -2
-	},
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second,
 /obj/structure/prop/vehicle/firing_port_weapon{
 	layer = 4.1;
@@ -150,7 +151,7 @@
 	tag = "rear center"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_3_3"
+	icon_state = "floor_1_13"
 	},
 /area/vehicle/apc)
 "t" = (
@@ -172,29 +173,31 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
 	},
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = -14;
+	pixel_y = 38
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
 /area/vehicle/apc)
 "w" = (
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Left APC door";
 	pixel_y = 32;
 	tag = "left"
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
-	},
-/area/vehicle/apc)
-"x" = (
-/obj/effect/landmark/interior/spawn/interior_camera{
-	dir = 10;
-	pixel_x = 15;
-	pixel_y = 38
-	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
 	},
 /area/vehicle/apc)
 "y" = (
@@ -203,6 +206,11 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
+"z" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_5"
+	},
+/area/vehicle/apc)
 "A" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
@@ -216,23 +224,15 @@
 /turf/open/void/vehicle,
 /area/space)
 "C" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply{
+	pixel_y = 20
 	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = -8;
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	name = "Vehicle NanoMed";
-	pixel_x = 7;
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = -24;
 	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
+	icon_state = "floor_1_11"
 	},
 /area/vehicle/apc)
 "D" = (
@@ -262,35 +262,38 @@
 	tag = "rear right"
 	},
 /obj/structure/bed/chair/vehicle{
-	dir = 8;
-	pixel_x = 3
-	},
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_1_12"
-	},
-/area/vehicle/apc)
-"H" = (
-/obj/structure/transmitter{
-	name = "APC Telephone";
-	phone_category = "Vehicles";
-	phone_id = "M577 APC";
-	pixel_x = -1;
-	pixel_y = 31
-	},
-/obj/structure/bed/chair/vehicle{
+	dir = 1;
 	pixel_x = -8
 	},
 /obj/structure/bed/chair/vehicle{
+	dir = 1;
 	pixel_x = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
-"I" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
+"H" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/effect/landmark/interior/spawn/telephone{
+	pixel_x = 5;
+	pixel_y = 30
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_x = -8;
 	pixel_y = 28
 	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
+	},
+/area/vehicle/apc)
+"I" = (
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat{
 	dir = 1
 	},
@@ -355,16 +358,9 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
-"Q" = (
-/obj/structure/interior_wall/apc{
-	icon_state = "wall_2";
-	opacity = 0
-	},
-/turf/open/void/vehicle,
-/area/space)
 "R" = (
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_5"
+	icon_state = "floor_1_1_3"
 	},
 /area/vehicle/apc)
 "S" = (
@@ -392,11 +388,17 @@
 	tag = "rear left"
 	},
 /obj/structure/bed/chair/vehicle{
-	dir = 8;
-	pixel_x = 3
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_x = -7;
+	pixel_y = 23
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_11"
+	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "V" = (
@@ -427,7 +429,13 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Right APC door";
 	tag = "right"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
@@ -451,7 +459,7 @@ j
 "}
 (2,1,1) = {"
 T
-Q
+D
 U
 s
 F
@@ -471,7 +479,7 @@ j
 V
 I
 v
-R
+z
 d
 f
 l
@@ -479,7 +487,7 @@ l
 (5,1,1) = {"
 O
 w
-x
+A
 i
 A
 Y

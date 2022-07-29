@@ -73,12 +73,12 @@
 	name = "commodore's mateba customization kit case"
 	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for commodores."
 
-/obj/item/storage/mateba_case/admiral
+/obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
-	name = "admiral's mateba customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for admiral-grade golden Matebas and comes with golden barrel attachments."
+	name = "general's mateba customization kit case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
 
-/obj/item/storage/mateba_case/admiral/fill_preset_inventory()
+/obj/item/storage/mateba_case/general/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/dark(src)
 	new /obj/item/attachable/mateba/dark(src)
 	new /obj/item/attachable/mateba/long/dark(src)

@@ -9,10 +9,6 @@
 		blinded = 1
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		//updatehealth() // moved to Life()
-
-		recalculate_move_delay = TRUE
-
 		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_data)
 			blinded = 1

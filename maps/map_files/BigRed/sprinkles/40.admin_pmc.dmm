@@ -36,7 +36,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "ai" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";

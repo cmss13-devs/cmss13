@@ -83,7 +83,8 @@
 
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.update_button_icon()
+		if(istype(A, /datum/action/item_action/toggle))
+			A.update_button_icon()
 
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
@@ -223,7 +224,7 @@
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
 	icon_state = "mgoggles"
 	item_state = "mgoggles"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg
@@ -242,17 +243,6 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = 1
-	actions_types = list(/datum/action/item_action/toggle)
-
-/obj/item/clothing/glasses/m42c_goggles
-	name = "\improper M42C special operations sight"
-	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
-	icon = 'icons/obj/items/clothing/glasses.dmi'
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
-	vision_flags = SEE_TURFS|SEE_MOBS
-	darkness_view = 12
-	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/disco_fever
@@ -447,7 +437,8 @@
 
 		for(var/X in actions)
 			var/datum/action/A = X
-			A.update_button_icon()
+			if(istype(A, /datum/action/item_action/toggle))
+				A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
@@ -476,12 +467,13 @@
 	//vision_flags = DISABILITY_BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
 
 /obj/item/clothing/glasses/sunglasses/prescription
+	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
 	name = "prescription sunglasses"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
-	name = "big sunglasses"
+	name = "shades"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
@@ -500,6 +492,11 @@
 	icon_state = "sunhud"
 	eye_protection = 1
 	hud_type = MOB_HUD_SECURITY_ADVANCED
+
+/obj/item/clothing/glasses/sunglasses/sechud/prescription
+	name = "Prescription Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"

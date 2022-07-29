@@ -62,9 +62,11 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	if(!istype(user.loc, /turf/open))
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
-	else if(!T.supports_surgery)
-		to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
-		return FALSE
+	else
+		if(!T.supports_surgery)
+			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
+				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+			return FALSE
 
 	surgery.step_in_progress = TRUE
 

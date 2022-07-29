@@ -45,27 +45,6 @@
 
 	handle_reload(user)
 
-// Landmark for spawning the reloader
-/obj/effect/landmark/interior/spawn/weapons_loader
-	name = "vehicle weapons reloader spawner"
-	icon = 'icons/obj/vehicles/interiors/general.dmi'
-	icon_state = "weapons_loader"
-	color = "blue"
-
-/obj/effect/landmark/interior/spawn/weapons_loader/on_load(var/datum/interior/I)
-	var/obj/structure/weapons_loader/R = new(loc)
-
-	R.icon = icon
-	R.icon_state = icon_state
-	R.layer = layer
-	R.pixel_x = pixel_x
-	R.pixel_y = pixel_y
-	R.vehicle = I.exterior
-	R.setDir(dir)
-	R.update_icon()
-
-	qdel(src)
-
 obj/structure/weapons_loader/proc/reload_ammo()
 	set name = "Reload Ammo"
 	set category = "Object"

@@ -9922,7 +9922,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCv" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCw" = (
@@ -10106,7 +10106,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCZ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -12822,7 +12822,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "aKV" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen"
@@ -17831,7 +17831,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aZy" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -19328,7 +19328,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "beh" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet{
 	dir = 1;
 	icon_state = "carpetside";
@@ -20776,7 +20776,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "biI" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -25232,7 +25232,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bwz" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -26290,7 +26290,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bzP" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -26337,7 +26337,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bzW" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bzX" = (
@@ -27585,7 +27585,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bEo" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -28681,7 +28681,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "bHu" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bHv" = (
@@ -31618,7 +31618,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bQW" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -32998,7 +32998,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bVj" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -34126,7 +34126,7 @@
 /area/desert_dam/interior/dam_interior/disposals)
 "bYy" = (
 /obj/item/trash/pistachios,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYA" = (
@@ -37933,7 +37933,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "ckq" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -38649,7 +38649,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cms" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -39898,7 +39898,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cqu" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -41221,7 +41221,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cuB" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/desert_dam/building/telecommunication)
 "cuH" = (
@@ -43685,7 +43685,7 @@
 	},
 /area/desert_dam/building/medical/office1)
 "cBC" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -49805,7 +49805,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cUs" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -50945,7 +50945,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cZy" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -54258,7 +54258,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsc" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsf" = (
@@ -57685,7 +57685,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dKs" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
@@ -60720,7 +60720,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUF" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -60763,7 +60763,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUJ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -63939,7 +63939,7 @@
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "gak" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreencorner"
@@ -64507,7 +64507,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "hTg" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -65075,7 +65075,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -66507,7 +66507,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "qwZ" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -66700,7 +66700,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -67781,7 +67781,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "vxt" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"

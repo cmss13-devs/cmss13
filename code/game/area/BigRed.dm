@@ -366,7 +366,7 @@
 	name = "\improper Unknown Area"
 	icon_state = "bluenew"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -378,7 +378,7 @@
 	icon_state = "bluenew"
 	color = "purple"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -390,7 +390,7 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_ALMAYER
-	sound_environment = 2
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
 
 /area/bigredv2/outside/eta
@@ -531,7 +531,7 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_ALMAYER
-	sound_environment = 2
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
 
 /area/bigredv2/caves/lambda/virology
@@ -559,7 +559,7 @@
 	name = "\improper Virology Caves"
 	icon_state = "caves_virology"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -569,7 +569,7 @@
 	name = "\improper Southwestern Caves"
 	icon_state = "caves_sw"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -579,7 +579,7 @@
 	name = "\improper Wey-Yu Research Lab Caves"
 	icon_state = "caves_research"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -589,7 +589,7 @@
 	name = "\improper Southeastern Caves"
 	icon_state = "caves_se"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -599,7 +599,7 @@
 	name = "\improper Eastern Caves"
 	icon_state = "caves_east"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -609,7 +609,7 @@
 	name = "\improper Lambda Lab Caves"
 	icon_state = "caves_lambda"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
@@ -619,7 +619,7 @@
 	name = "\improper Northern Caves"
 	icon_state = "caves_north"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE

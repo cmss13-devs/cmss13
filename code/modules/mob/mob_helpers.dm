@@ -420,6 +420,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
+		if(SKILL_DOMESTIC)
+			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+				return 0.5
+			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_TRAINED))
+				return 1
+			else
+				return 2
 
 /mob/proc/check_view_change(var/new_size, var/atom/source)
 	return new_size
@@ -429,3 +436,50 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/can_see_reagents()
 	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+
+/**
+ * Examine a mob
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/examine()
+ */
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
+	set name = "Examine"
+	set category = "IC"
+
+	examinify.examine(src)
+
+/mob/verb/pickup_item(obj/item/pickupify in oview(1, usr))
+	set name = "Pick Up"
+	set category = "Object"
+
+	if(!canmove || stat || is_mob_restrained() || !Adjacent(pickupify))
+		return
+
+	if(world.time <= next_move)
+		return
+
+	if(!hand && r_hand)
+		to_chat(usr, SPAN_DANGER("Your right hand is full."))
+		return
+	if(hand && l_hand)
+		to_chat(usr, SPAN_DANGER("Your left hand is full."))
+		return
+
+	if(pickupify.anchored)
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		return
+	if(!isturf(pickupify.loc))
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		return
+
+	next_move += 6 // stop insane pickup speed
+	UnarmedAttack(pickupify)
+
+/mob/verb/pull_item(atom/movable/pullify in view(1, usr))
+	set name = "Pull"
+	set category = "Object"
+
+	if(Adjacent(pullify))
+		start_pulling(pullify)

@@ -129,10 +129,9 @@
 	},
 /area/yautja)
 "ao" = (
-/obj/item/clothing/cape/eldercape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
-	icon_state = "cape_elder_n";
 	pixel_x = 2;
 	pixel_y = 32
 	},
@@ -168,10 +167,9 @@
 	},
 /area/yautja)
 "aq" = (
-/obj/item/clothing/cape/eldercape{
+/obj/item/clothing/yautja_cape/ceremonial{
 	anchored = 1;
 	color = "#292b29";
-	icon_state = "cape_elder_n";
 	pixel_x = 2;
 	pixel_y = 32
 	},
@@ -736,10 +734,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/claymore/mercsword/machete{
-	anchored = 1;
+/obj/item/weapon/melee/claymore/mercsword/machete/arnold{
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
-	name = "\improper Dutch's Machete"
+	name = "\improper Dutch's Machete";
+	anchored = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -971,10 +969,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/toy/prize/ripley{
-	anchored = 1;
-	pixel_y = 9
-	},
+/obj/effect/spawner/random/toy,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

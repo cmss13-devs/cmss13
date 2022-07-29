@@ -27,11 +27,7 @@
 
 	return (slots*4)
 
-/datum/job/marine/medic/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/medic_equipped
-
-/datum/job/marine/medic/equipped/whiskey
+/datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/medic

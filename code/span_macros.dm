@@ -44,6 +44,8 @@
 #define SPAN_COMBAT(X) "<span class='attacklog'>[X]</span>"
 #define SPAN_ADMINNOTICE(X) "<span class='adminnotice'>[X]</span>"
 #define SPAN_ADMIN(X) "<span class='admin'>[X]</span>"
+#define SPAN_ADMINHELP(X) ("<span class='adminhelp'>" + X + "</span>")
+#define SPAN_ADMINSAY(str) ("<span class='adminsay'>" + str + "</span>")
 
 #define SPAN_PM(X) "<span class='pm'>[X]</span>"
 

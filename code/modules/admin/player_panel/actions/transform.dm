@@ -170,6 +170,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 			newXeno.set_hive_and_update(X.hivenumber)
 
 		newXeno.generate_name()
+		newXeno.set_lighting_alpha_from_prefs(user)
 
 
 	QDEL_IN(target, 0.3 SECONDS)

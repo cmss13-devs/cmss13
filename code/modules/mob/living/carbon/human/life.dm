@@ -48,6 +48,9 @@
 			if(!stat && getToxLoss() >= 45 && nutrition > 20)
 				vomit()
 
+			if(on_fire)
+				species.handle_on_fire(src)
+
 			//effects of being grabbed aggressively by another mob
 			if(pulledby && pulledby.grab_level)
 				handle_grabbed()
@@ -73,10 +76,10 @@
 	//Handle temperature/pressure differences between body and environment
 	handle_environment() //Optimized a good bit.
 
+	updatehealth()
+
 	//Status updates, death etc.
 	handle_regular_status_updates() //Optimized a bit
-
-	updatehealth()
 
 	update_canmove()
 

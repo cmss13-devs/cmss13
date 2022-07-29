@@ -72,7 +72,10 @@
 		tunnelobj.tunnel_desc = "[msg]"
 
 	if(X.hive.living_xeno_queen || X.hive.allow_no_queen_actions)
-		xeno_message("Hive: A new tunnel[description ? " ([description])" : ""] has been created at <b>[get_area_name(tunnelobj)]</b>.", 3, X.hivenumber)
+		for(var/mob/living/carbon/Xenomorph/target_for_message as anything in X.hive.totalXenos)
+			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
+			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [X] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[X];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
 
 	X.use_plasma(plasma_cost)
 	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))
@@ -295,6 +298,24 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 
+/datum/action/xeno_action/onclick/queen_word
+	name = "Word of the Queen (50)"
+	action_icon_state = "queen_word"
+	plasma_cost = 50
+
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	X.hive_message()
+
+/datum/action/xeno_action/onclick/queen_tacmap
+	name = "View Xeno Tacmap"
+	action_icon_state = "toggle_queen_zoom"
+	plasma_cost = 0
+
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	X.xeno_tacmap()
+
 /datum/action/xeno_action/deevolve
 	name = "De-Evolve a Xenomorph"
 	action_icon_state = "xeno_deevolve"
@@ -402,7 +423,8 @@
 
 		//Regenerate the new mob's name now that our player is inside
 		new_xeno.generate_name()
-
+		if(new_xeno.client)
+			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
 		// If the player has self-deevolved before, don't allow them to do it again
 		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
 			remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)

@@ -45,6 +45,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()
@@ -169,6 +170,30 @@
 	. = ..()
 	update_icon()
 
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(var/mob/M)
+
+	if(!vehicle)
+		return
+
+	if(QDELETED(buckled_mob))
+		vehicle.set_seated_mob(seat, null)
+		M.unset_interaction()
+		if(M.client)
+			M.client.change_view(world_view_size, src)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
+	else
+		if(M.stat != CONSCIOUS)
+			unbuckle()
+			return
+		vehicle.set_seated_mob(seat, M)
+		if(M && M.client)
+			if(istype(vehicle, /obj/vehicle/multitile/apc))
+				var/obj/vehicle/multitile/apc/APC = vehicle
+				M.client.change_view(APC.gunner_view_buff, src)
+			else
+				M.client.change_view(8, src)
+
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()
 
@@ -181,13 +206,19 @@
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
-	name = "support gunner's seat"
+	name = "left support gunner's seat"
 	desc = "Military-grade seat for a support gunner with some controls, switches and indicators."
 	seat = VEHICLE_SUPPORT_GUNNER_ONE
 
 	required_skill = SKILL_VEHICLE_DEFAULT
 
 	var/image/over_image = null
+
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/Destroy()
+	var/obj/structure/prop/vehicle/firing_port_weapon/FPW = locate() in get_turf(src)
+	if(FPW)
+		FPW.SG_seat = null
+	. = ..()
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
 	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
@@ -229,6 +260,7 @@
 			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
+			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()
@@ -257,6 +289,7 @@
 		to_chat(M, SPAN_WARNING("ERROR. NO FPW FOUND, TELL A DEV!"))
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/second
+	name = "right support gunner's seat"
 	seat = VEHICLE_SUPPORT_GUNNER_TWO
 
 //ARMORED VEHICLES PASSENGER SEATS

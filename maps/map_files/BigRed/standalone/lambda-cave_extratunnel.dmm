@@ -116,11 +116,65 @@
 	tag = "icon-whitegreen (SOUTHWEST)"
 	},
 /area/bigredv2/caves/lambda/virology)
+"r" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_lambda)
+"w" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10";
+	tag = "icon-mars_cave_10"
+	},
+/area/bigredv2/caves_lambda)
+"F" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_8";
+	tag = "icon-mars_cave_8"
+	},
+/area/bigredv2/caves_lambda)
+"H" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_3"
+	},
+/area/bigredv2/caves_lambda)
+"I" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
+	},
+/area/bigredv2/caves_lambda)
+"K" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10";
+	tag = "icon-mars_cave_10"
+	},
+/area/bigredv2/caves_lambda)
+"O" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
+	},
+/area/bigredv2/caves_lambda)
+"P" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
+"X" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_8";
+	tag = "icon-mars_cave_8"
+	},
+/area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
 a
 h
-c
+H
 c
 b
 b
@@ -137,31 +191,31 @@ b
 b
 b
 c
-c
-c
+r
+I
 b
 "}
 (4,1,1) = {"
 b
 b
-c
-c
-c
-c
+r
+O
+H
+h
 "}
 (5,1,1) = {"
-c
-c
-c
-m
-c
+h
+F
+I
+X
+h
 c
 "}
 (6,1,1) = {"
 b
-c
-c
-c
+O
+I
+I
 c
 b
 "}
@@ -169,48 +223,48 @@ b
 b
 b
 c
-c
+K
 c
 b
 "}
 (8,1,1) = {"
 b
 b
-c
-c
-c
-c
+K
+F
+I
+O
 "}
 (9,1,1) = {"
 b
+h
 c
-c
-c
-c
+K
+I
 c
 "}
 (10,1,1) = {"
-c
-c
+h
+H
 m
 c
-c
-c
+O
+I
 "}
 (11,1,1) = {"
-c
-c
-c
-c
-c
-c
+I
+h
+H
+H
+O
+O
 "}
 (12,1,1) = {"
 b
 c
-c
-c
-c
+O
+K
+I
 c
 "}
 (13,1,1) = {"
@@ -218,14 +272,14 @@ b
 b
 c
 c
-m
-c
+w
+O
 "}
 (14,1,1) = {"
 b
 b
 c
-c
+O
 c
 c
 "}
@@ -233,23 +287,23 @@ c
 b
 b
 c
-c
+O
 c
 b
 "}
 (16,1,1) = {"
 b
-c
-c
-c
+I
+K
+P
 b
 b
 "}
 (17,1,1) = {"
 b
 c
-c
-c
+h
+O
 b
 b
 "}
@@ -263,22 +317,22 @@ b
 "}
 (19,1,1) = {"
 c
-c
-c
+K
+K
 c
 b
 b
 "}
 (20,1,1) = {"
-c
-c
-c
+H
+O
+K
 b
 b
 b
 "}
 (21,1,1) = {"
-c
+h
 c
 b
 b

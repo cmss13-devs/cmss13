@@ -17,7 +17,7 @@
 	can_be_shield_blocked = TRUE	// Some legacy stuff, self explanatory
 
 /datum/action/xeno_action/onclick/toggle_long_range/runner
-	movement_datum_type = XENOZOOM_NO_MOVEMENT_HANDLER
+	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 

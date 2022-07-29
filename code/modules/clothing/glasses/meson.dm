@@ -6,6 +6,7 @@
 	desc = "Used to shield the user's eyes from harmful electromagnetic emissions, also used as general safety goggles. Not adequate as welding protection."
 	icon_state = "meson"
 	item_state = "glasses"
+	deactive_state = "degoggles"
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
 	fullscreen_vision = /obj/screen/fullscreen/meson

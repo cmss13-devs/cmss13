@@ -439,7 +439,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "chapel"

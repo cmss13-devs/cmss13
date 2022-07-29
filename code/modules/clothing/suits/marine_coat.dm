@@ -11,14 +11,14 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_NONE
 	allowed = list(
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
@@ -38,6 +38,7 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
@@ -73,12 +74,36 @@
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
 
-//Marine service jacket
+//Marine service jacket and MP themed variants
 /obj/item/clothing/suit/storage/jacket/marine/service
 	name = "marine service jacket"
-	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	has_buttons = TRUE
 	icon_state = "coat_officer"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/mp
+	name = "military police service jacket"
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
+	has_buttons = TRUE
+	icon_state = "coat_mp"
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_mp"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/warden
+	name = "military warden service jacket"
+	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
+	has_buttons = TRUE
+	icon_state = "coat_warden"
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_warden"
+
+/obj/item/clothing/suit/storage/jacket/marine/service/cmp
+	name = "chief military police service jacket"
+	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
+	has_buttons = TRUE
+	icon_state = "coat_cmp"
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "coat_cmp"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess technician jacket"
@@ -137,15 +162,15 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
-/obj/item/clothing/suit/storage/jacket/marine/dress/admiral
-	name = "admiral's jacket"
-	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an Admiral. Has quite a few pockets."
+/obj/item/clothing/suit/storage/jacket/marine/dress/general
+	name = "general's jacket"
+	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an General. Has quite a few pockets."
 	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_state = "admiral_jacket"
+	icon_state = "general_jacket"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
 	)
-	item_state = "admiral_jacket"
+	item_state = "general_jacket"
 	storage_slots = 4
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -153,7 +178,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
-/obj/item/clothing/suit/storage/jacket/marine/dress/admiral/executive
+/obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 

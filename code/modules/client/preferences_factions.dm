@@ -1,27 +1,28 @@
 
 var/global/list/citizenship_choices = list(
-	"United Americas (United States)",
-	"United Americas (Luna)",
-	"United Americas (Other)",
-	"Limited Service (Colony)",
-	"Green Card (Foreign)"
+	CITIZENSHIP_US,
+	CITIZENSHIP_LUNA,
+	CITIZENSHIP_OTHER,
+	CITIZENSHIP_COLONY,
+	CITIZENSHIP_FOREIGN
 	)
 
 var/global/list/religion_choices = list(
-    "Christianity (Protestant)",
-    "Christianity (Catholic)",
-    "Christianity (Orthodox)",
-    "Christianity (Mormonism)",
-    "Christianity (Other)",
-    "Judaism",
-    "Islam (Shia)",
-    "Islam (Sunni)",
-    "Buddhism",
-    "Hinduism",
-    "Sikhism",
-    "Shintoism",
-    "Wiccanism",
-    "Paganism (Wicca)",
-    "Minor Religion",
-    "Atheism"
+    RELIGION_PROTESTANT,
+    RELIGION_CATHOLIC,
+    RELIGION_ORTHODOX,
+    RELIGION_MORMONISM,
+    RELIGION_CHRISTIANITY_OTHER,
+    RELIGION_JUDAISM,
+    RELIGION_SHIA,
+    RELIGION_SUNNI,
+    RELIGION_BUDDHISM,
+    RELIGION_HINDUISM,
+    RELIGION_SIKHISM,
+    RELIGION_SHINTOISM,
+    RELIGION_WICCANISM,
+    RELIGION_PAGANISM,
+    RELIGION_MINOR,
+    RELIGION_ATHEISM,
+	RELIGION_AGNOSTICISM
 	)

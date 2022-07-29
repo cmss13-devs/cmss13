@@ -48,7 +48,6 @@ endmap
 
 map sorokyne_strata
 	minplayers 130
-	disabled
 endmap
 
 map whiskey_outpost_v2

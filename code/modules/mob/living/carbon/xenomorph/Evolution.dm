@@ -77,6 +77,7 @@
 	SPAN_XENONOTICE("You begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
+	var/level_to_switch_to = get_vision_level()
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
@@ -126,7 +127,8 @@
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
-
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
 		new_xeno.fireloss = src.fireloss //Transfers the damage over.
@@ -154,7 +156,7 @@
 	SSround_recording.recorder.track_player(new_xeno)
 
 /mob/living/carbon/Xenomorph/proc/evolve_checks()
-	if(!check_state())
+	if(!check_state(TRUE))
 		return FALSE
 
 	if(is_ventcrawling)
@@ -261,7 +263,7 @@
 		return FALSE
 
 	var/xeno_type
-
+	var/level_to_switch_to = get_vision_level()
 	switch(newcaste)
 		if("Larva")
 			xeno_type = /mob/living/carbon/Xenomorph/Larva
@@ -302,7 +304,8 @@
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
-
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 

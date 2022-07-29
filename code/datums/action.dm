@@ -27,11 +27,7 @@
 	button.name = name
 	if(button_icon_state)
 		button.icon_state = button_icon_state
-
-	if(override_icon_state)
-		button.overlays += image('icons/mob/hud/actions.dmi', button, override_icon_state)
-	else if(action_icon_state)
-		button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, override_icon_state || action_icon_state)
 
 /datum/action/Destroy()
 	if(owner)

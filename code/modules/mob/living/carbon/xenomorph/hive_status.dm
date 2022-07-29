@@ -214,8 +214,4 @@
 			if(!xenoSrc.check_state(TRUE))
 				return
 
-			var/isQueen = (xenoSrc.caste_type == XENO_CASTE_QUEEN)
-			if (isQueen)
-				xenoSrc.overwatch(xenoTarget, movement_event_handler = /datum/event_handler/xeno_overwatch_onmovement/queen)
-			else
-				xenoSrc.overwatch(xenoTarget)
+			xenoSrc.overwatch(xenoTarget)

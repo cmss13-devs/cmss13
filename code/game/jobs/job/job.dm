@@ -150,7 +150,7 @@
 
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)
-		entry_message_intro = "You are the [title]!."
+		entry_message_intro = "You are the [title]!"
 	if(!entry_message_end)
 		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"

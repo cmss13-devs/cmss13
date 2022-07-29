@@ -206,15 +206,13 @@
 	 * The group or groups of the gun where a fire delay is applied and the delays applied to each group when the gun is dropped
 	 * after being fired
 	 *
-	 * Guns with this var set will apply the specified delays for firing any other guns
-	 * in a specific group
-	 * e.g. FIRE_DELAY_GROUP_X = 1 SECONDS means any gun with the fire delay group FIRE_DELAY_GROUP_X will have to wait 1
-	 * second after the gun has been dropped (the user has to have fired the gun beforehand otherwise no delay is applied)
+	 * Guns with this var set will apply the gun's remaining fire delay to any other guns in the same group
 	 *
 	 * Set as null (does not apply any fire delays to any other gun group) or a list of fire delay groups (string defines)
 	 * matched with the corresponding fire delays applied
 	 */
 	var/list/fire_delay_group
+	var/additional_fire_group_delay = 0 // adds onto the fire delay of the above
 
 /**
  * An assoc list where the keys are fire delay group string defines
@@ -698,8 +696,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item ^= WIELDED
+	name += " (Wielded)"
 	item_state += "_w"
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
@@ -1159,7 +1157,6 @@ and you're good to go.
 				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 			. = TRUE
-			flags_gun_features |= GUN_FIRED_BY_USER
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				fa_shots++
@@ -1200,7 +1197,7 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return TRUE
 
-		var/ffl = " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)"
+		var/ffl = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
@@ -1371,7 +1368,6 @@ and you're good to go.
 			last_fired = world.time
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
-		flags_gun_features |= GUN_FIRED_BY_USER
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
@@ -1671,3 +1667,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)
+
+/obj/item/weapon/gun/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	..()
+	var/slashed_light = FALSE
+	for(var/slot in attachments)
+		if(istype(attachments[slot], /obj/item/attachable/flashlight))
+			var/obj/item/attachable/flashlight/flashlight = attachments[slot]
+			if(flashlight.activate_attachment(src, xeno, TRUE))
+				slashed_light = TRUE
+	if(slashed_light)
+		playsound(loc, "alien_claw_metal", 25, 1)
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("You slash the lights on \the [src]!"))
+	return XENO_ATTACK_ACTION

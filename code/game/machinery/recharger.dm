@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-obj/structure/machinery/recharger
+/obj/structure/machinery/recharger
 	name = "recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
@@ -10,11 +10,11 @@ obj/structure/machinery/recharger
 	active_power_usage = 15000	//15 kW
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
+	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator)
 
 	var/charge_amount = 1000
 
-obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
+/obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
 
@@ -48,7 +48,7 @@ obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
-obj/structure/machinery/recharger/attack_hand(mob/user as mob)
+/obj/structure/machinery/recharger/attack_hand(mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
 
@@ -62,7 +62,7 @@ obj/structure/machinery/recharger/attack_hand(mob/user as mob)
 		percent_charge_complete = 0
 		update_icon()
 
-obj/structure/machinery/recharger/process()
+/obj/structure/machinery/recharger/process()
 	if(inoperable() || !anchored)
 		update_use_power(0)
 		update_icon()
@@ -73,8 +73,10 @@ obj/structure/machinery/recharger/process()
 		update_icon()
 	//This is an awful check. Holy cow.
 	else
-		if(istype(charging, /obj/item/weapon/gun/energy/taser))
-			var/obj/item/weapon/gun/energy/taser/E = charging
+		if(istype(charging, /obj/item/weapon/gun/energy))
+			var/obj/item/weapon/gun/energy/E = charging
+			if(!E.works_in_recharger)
+				return;
 			if(!E.cell.fully_charged())
 				E.cell.give(charge_amount)
 				percent_charge_complete = E.cell.percent()
@@ -151,7 +153,7 @@ obj/structure/machinery/recharger/process()
 	..()
 	update_icon()
 
-obj/structure/machinery/recharger/emp_act(severity)
+/obj/structure/machinery/recharger/emp_act(severity)
 	if(inoperable() || !anchored)
 		..(severity)
 		return
@@ -167,7 +169,7 @@ obj/structure/machinery/recharger/emp_act(severity)
 			B.bcell.charge = 0
 	..(severity)
 
-obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
+/obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0
 	if((inoperable()))
 		return
@@ -186,8 +188,8 @@ obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in ad
 	else if(percent_charge_complete >= 100)
 		overlays += "recharger-100"
 
-	if(istype(charging, /obj/item/weapon/gun/energy/taser))
-		overlays += "recharger-taser"
+	if(istype(charging, /obj/item/weapon/gun/energy))
+		overlays += "recharger-taser"//todo make more generic I guess. It works for now -trii
 	else if(istype(charging, /obj/item/weapon/melee/baton))
 		overlays += "recharger-baton"
 

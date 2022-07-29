@@ -67,6 +67,10 @@
 		client.buildmode.object_click(src, mods, A)
 		return
 
+	if(istype(A, /obj/effect/statclick))
+		A.clicked(src, mods)
+		return
+
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
 	if (click(A, mods) | A.clicked(src, mods, location, params))
 		return
@@ -236,14 +240,31 @@
 	if(!dx && !dy) return
 
 	var/direction
+	var/specific_direction
 	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
+		if(dy > 0)
+			direction = NORTH
+		else
+			direction = SOUTH
+		if(dx)
+			if(dx > 0)
+				specific_direction = direction|EAST
+			else
+				specific_direction = direction|WEST
 	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
+		if(dx > 0)
+			direction = EAST
+		else
+			direction = WEST
+		if(dy)
+			if(dy > 0)
+				specific_direction = direction|NORTH
+			else
+				specific_direction = direction|SOUTH
+	if(!specific_direction)
+		specific_direction = direction
 
-	facedir(direction)
+	facedir(direction, specific_direction)
 
 
 
@@ -281,6 +302,8 @@
 
 
 /client/proc/change_view(new_size, var/atom/source)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
+		return TRUE
 	view = mob.check_view_change(new_size, source)
 	apply_clickcatcher()
 	mob.reload_fullscreens()

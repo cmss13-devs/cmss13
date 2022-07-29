@@ -15,8 +15,6 @@ SUBSYSTEM_DEF(objectives)
 
 	var/nextDChatAnnouncement = 5 MINUTES //5 minutes in
 
-	var/corpses = 15
-
 /datum/controller/subsystem/objectives/Initialize(start_timeofday)
 	. = ..()
 	generate_objectives()
@@ -31,8 +29,6 @@ SUBSYSTEM_DEF(objectives)
 	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
 	add_objective(new /datum/cm_objective/recover_corpses/colonists)
 	active_objectives += power
-
-	generate_corpses(corpses)
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
@@ -98,19 +94,6 @@ SUBSYSTEM_DEF(objectives)
 	for(var/i=0;i<vial_boxes;i++)
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
-
-/datum/controller/subsystem/objectives/proc/generate_corpses(corpses)
-	var/list/obj/effect/landmark/corpsespawner/objective_spawn_corpse = GLOB.corpse_spawns.Copy()
-	while(corpses--)
-		if(!length(objective_spawn_corpse))
-			break
-		var/obj/effect/landmark/corpsespawner/spawner = pick(objective_spawn_corpse)
-		var/turf/spawnpoint = get_turf(spawner)
-		if(spawnpoint)
-			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
-			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
-		objective_spawn_corpse.Remove(spawner)
 
 /datum/controller/subsystem/objectives/proc/clear_objective_landmarks()
 	//Don't need them anymore, so we remove them

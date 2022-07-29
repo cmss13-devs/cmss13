@@ -79,13 +79,13 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	// List all possible preys
 	// We only target living humans and xenos
 	var/list/target_list = list()
-	for(var/mob/living/prey in view(7, src))
+	for(var/mob/living/prey in view(7, usr.client))
 		if((isHumanStrict(prey) || isXeno(prey)) && prey.stat != DEAD)
 			target_list += prey
 
@@ -93,7 +93,7 @@
 	if(!M)
 		return
 	if(M.hunter_data.hunter)
-		to_chat(src, SPAN_YAUTJABOLD("[M] is already being hunted by [M.hunter_data.hunter.real_name]!."))
+		to_chat(src, SPAN_YAUTJABOLD("[M] is already being hunted by [M.hunter_data.hunter.real_name]!"))
 		return
 	hunter_data.prey = M
 	M.hunter_data.hunter = src
@@ -124,8 +124,9 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
+
 	if (alert(usr, "Are you sure you want to abandon this prey?", "Remove from Hunt:", "Yes", "No") != "Yes")
 		return
 	var/mob/living/carbon/prey = hunter_data.prey
@@ -139,17 +140,16 @@
 
 
 /mob/living/carbon/human/proc/mark_honored()
-
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) || isXeno(target)) && target.stat != DEAD)
 			target_list += target
 
@@ -157,7 +157,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.honored)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been honored by [T.hunter_data.honored_set.real_name] for '[T.hunter_data.honored_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been honored by [T.hunter_data.honored_set.real_name] for '[T.hunter_data.honored_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as honored.", "Mark as Honored", "", 120)
@@ -177,17 +177,16 @@
 
 
 /mob/living/carbon/human/proc/unmark_honored()
-
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) || isXeno(target)) && target.stat != DEAD)
 			if(target.hunter_data.honored)
 				target_list += target
@@ -220,11 +219,11 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) || isXeno(target)) && target.stat != DEAD)
 			target_list += target
 
@@ -235,7 +234,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.dishonored)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as dishonorable by [T.hunter_data.dishonored_set.real_name] for '[T.hunter_data.dishonored_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as dishonorable by [T.hunter_data.dishonored_set.real_name] for '[T.hunter_data.dishonored_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as dishonorable.", "Mark as Dishonorable", "", 120)
@@ -260,11 +259,11 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) || isXeno(target)) && target.stat != DEAD)
 			if(target.job != "Predalien" && target.job != "Predalien Larva")
 				if(target.hunter_data.dishonored)
@@ -301,11 +300,11 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) && target.stat != DEAD))
 			target_list += target
 
@@ -313,7 +312,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.gear)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as a gear carrier by [T.hunter_data.gear_set]!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as a gear carrier by [T.hunter_data.gear_set]!"))
 		return
 
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as a Gear Carrier!")
@@ -332,11 +331,11 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if((isHumanStrict(target) && target.stat != DEAD))
 			if(target.hunter_data.gear)
 				target_list += target
@@ -367,17 +366,17 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	if(hunter_data.thrall)
-		to_chat(src, "You already have a thrall!")
+		to_chat(src, SPAN_WARNING("You already have a thrall."))
 		return
 
 	// List all possible targets
 	// We only target living humans
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if(isHumanStrict(target) && target.stat != DEAD)
 			target_list += target
 
@@ -385,7 +384,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.thralled)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been thralled by [T.hunter_data.thralled_set.real_name] for '[T.hunter_data.thralled_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been thralled by [T.hunter_data.thralled_set.real_name] for '[T.hunter_data.thralled_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as thralled.", "Mark as Thralled", "", 120)
@@ -410,13 +409,13 @@
 		return
 
 	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
 	// List all possible targets
 	// We only target living humans
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, src))
+	for(var/mob/living/carbon/target in view(7, usr.client))
 		if(isHumanStrict(target) && target.stat != DEAD)
 			if(target.hunter_data.thralled)
 				target_list += target

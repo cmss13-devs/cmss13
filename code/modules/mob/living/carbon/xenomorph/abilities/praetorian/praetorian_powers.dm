@@ -507,7 +507,7 @@
 		return
 
 	var/buffed = FALSE
-
+	apply_cooldown()
 	if (X.mutation_type == PRAETORIAN_DANCER)
 		var/found = FALSE
 		for (var/datum/effects/dancer_tag/DT in H.effects_list)
@@ -529,7 +529,7 @@
 	X.visible_message(SPAN_DANGER("\The [X] violently slices [A] with its tail[buffed?" twice":""]!"), \
 					SPAN_DANGER("You slice [A] with your tail[buffed?" twice":""]!"))
 
-	if (buffed)
+	if(buffed)
 		// Do two attacks instead of one
 		X.animation_attack_on(A)
 		X.flick_attack_overlay(A, "slash")
@@ -549,8 +549,6 @@
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
-
-	apply_cooldown()
 	..()
 	return
 
@@ -807,6 +805,9 @@
 	else if (curr_effect_type == WARDEN_HEAL_HP)
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
+			return
+		if (targetXeno.mutation_type == PRAETORIAN_WARDEN)
+			to_chat(X, SPAN_XENODANGER("You cannot heal a sister of the same strain!"))
 			return
 		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal this xeno!"))

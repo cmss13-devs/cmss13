@@ -125,6 +125,7 @@
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
+	max_w_class = SIZE_TINY
 	storage_slots = 20
 	can_hold = list(
 		/obj/item/clothing/mask/cigarette,
@@ -226,7 +227,6 @@
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
 	icon = 'icons/obj/items/cigarettes.dmi'
-	w_class = SIZE_TINY
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
@@ -288,6 +288,7 @@
 	can_hold = list()
 	icon_type = "match"
 	default_cigar_type = /obj/item/tool/match/paper
+	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
 

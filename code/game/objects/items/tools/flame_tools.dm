@@ -123,6 +123,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	attack_verb = list("burnt", "singed")
 
+/obj/item/tool/match/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
+	if(istype(user) && istype(target, /obj/item/clothing/shoes/marine) && user.shoes == target && light_match())
+		if(prob(5))
+			user.visible_message(SPAN_NOTICE("<b>[user]</b> strikes \the [src] against their [target.name] and it splinters into pieces!"), SPAN_NOTICE("You strike \the [src] against your [target.name] and it splinters into pieces!"), max_distance = 3)
+			qdel(src)
+		else
+			user.visible_message(SPAN_NOTICE("<b>[user]</b> strikes \the [src] against their [target.name], igniting it!"), SPAN_NOTICE("You strike \the [src] against your [target.name], igniting it!"), max_distance = 3)
+		return
+	return ..()
+
 /obj/item/tool/match/process(delta_time)
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
@@ -140,7 +150,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	return ..()
 
 /obj/item/tool/match/proc/light_match()
-	if(heat_source) return
+	if(heat_source || burnt)
+		return
 	heat_source = 1000
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
@@ -151,6 +162,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		SetLuminosity(2)
 	START_PROCESSING(SSobj, src)
 	update_icon()
+	return TRUE
 
 /obj/item/tool/match/proc/burn_out(mob/user)
 	heat_source = 0
@@ -204,6 +216,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)
+	if(w_class == SIZE_TINY)
+		AddElement(/datum/element/mouth_drop_item)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
@@ -305,6 +319,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
+	SIGNAL_HANDLER
+
 	if(!heat_source)
 		heat_source = 1000
 		damtype = "fire"
@@ -336,7 +352,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.IgniteMob()
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
-		die()
+		smoketime = 0
+		go_out()
 		return
 
 	if(reagents && reagents.total_volume)	//	check if it has any reagents at all
@@ -357,21 +374,59 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/attack_self(mob/user)
 	if(heat_source)
-		user.visible_message(SPAN_NOTICE("[user] calmly drops and treads on the lit [src], putting it out instantly."))
-		die()
+		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/die()
-	var/turf/T = get_turf(src)
-	var/obj/item/butt = new type_butt(T)
-	transfer_fingerprints_to(butt)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, var/silent = FALSE)
+	var/mob/living/M
 	if(ismob(loc))
-		var/mob/living/M = loc
-		to_chat(M, SPAN_NOTICE("Your [name] goes out."))
-		M.temp_drop_inv_item(src)	//un-equip it so the overlays can update
-		M.update_inv_wear_mask()
+		M = loc
+		if(!silent)
+			if(user == M)
+				user.visible_message(SPAN_NOTICE(type_butt ? "[user] calmly drops and treads on the lit [src], putting it out instantly." : "[user] puts out \the [src]."))
+			else
+				to_chat(M, SPAN_NOTICE("Your [src] goes out."))
 	STOP_PROCESSING(SSobj, src)
-	qdel(src)
+	if(type_butt)
+		var/turf/T = get_turf(src)
+		var/obj/item/butt = new type_butt(T)
+		transfer_fingerprints_to(butt)
+		//if(M)
+			//M.temp_drop_inv_item(src)	//un-equip it so the overlays can updat
+		qdel(src)
+		. = butt
+	else
+		heat_source = 0
+		icon_state = icon_off
+		item_state = icon_off
+	if(M)
+		M.update_inv_wear_mask()
+
+/obj/item/clothing/mask/cigarette/flamer_fire_act()
+	. = ..()
+	if(!heat_source)
+		light()
+
+/obj/item/clothing/mask/cigarette/extinguish()
+	. = ..()
+	if(heat_source)
+		go_out()
+
+/obj/item/clothing/mask/cigarette/proc/handle_extinguish()
+	SIGNAL_HANDLER
+
+	if(heat_source)
+		go_out()
+
+/obj/item/clothing/mask/cigarette/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_LIVING_IGNITION, .proc/light)
+	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
+
+/obj/item/clothing/mask/cigarette/dropped(mob/user)
+	. = ..()
+	if(loc != user)
+		UnregisterSignal(user, list(COMSIG_LIVING_IGNITION, COMSIG_HUMAN_EXTINGUISH))
 
 /obj/item/clothing/mask/cigarette/ucigarette
 	icon_on = "ucigon"
@@ -415,6 +470,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigar_off"
 	icon_on = "cigar_on"
 	icon_off = "cigar_off"
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
 	item_state = "cigar_off"
@@ -505,7 +562,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!."))
+		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!"))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
@@ -526,37 +583,34 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
+	w_class = SIZE_SMALL
+	flags_equip_slot = SLOT_FACE
+	type_butt = null
 	smoketime = 200 SECONDS
+	var/ash = FALSE
 
-/obj/item/clothing/mask/cigarette/pipe/process(delta_time)
-	var/turf/location = get_turf(src)
-	smoketime -= delta_time SECONDS
-	if(smoketime < 1)
-		new /obj/effect/decal/cleanable/ash(location)
-		if(ismob(loc))
-			var/mob/living/M = loc
-			to_chat(M, SPAN_NOTICE("Your [name] goes out, and you empty the ash."))
-			heat_source = 0
-			icon_state = icon_off
-			item_state = icon_off
-			M.update_inv_wear_mask(0)
-		STOP_PROCESSING(SSobj, src)
-		return
+/obj/item/clothing/mask/cigarette/pipe/examine()
+	..()
+	if(ash)
+		to_chat(usr, "It is full of ash.")
+	else if(smoketime <= 0)
+		to_chat(usr, "It is empty.")
+
+/obj/item/clothing/mask/cigarette/pipe/go_out()
+	..()
+	if(smoketime <= 0)
+		ash = TRUE
 
 /// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user)
-	..()
-
-	if(heat_source)
-		user.visible_message(SPAN_NOTICE("[user] puts out [src]."))
-		heat_source = 0
-		icon_state = icon_off
-		item_state = icon_off
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(smoketime <= 0)
+	if(ash)
+		user.visible_message("[user] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
+		new /obj/effect/decal/cleanable/ash(get_turf(user))
+		ash = FALSE
+	else if(smoketime <= 0)
 		to_chat(user, SPAN_NOTICE("You refill the pipe with tobacco."))
 		smoketime = initial(smoketime)
+	..()
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))
@@ -585,7 +639,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
+		light(SPAN_NOTICE("[user] fiddles with \the [W], and manages to light their [name] with the power of science."))
+
+/obj/item/clothing/mask/cigarette/pipe/light()
+	if(smoketime > 0)
+		return ..()
+	to_chat(usr, SPAN_WARNING("\The [src] is empty!"))
+	return
 
 /obj/item/clothing/mask/cigarette/pipe/cobpipe
 	name = "corn cob pipe"
@@ -623,6 +683,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "zippo"
 	icon_on = "zippoon"
 	icon_off = "zippo"
+	var/engraved = FALSE
+
+/obj/item/tool/lighter/zippo/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
+	if(istype(W, /obj/item/attachable/bayonet))
+		if(engraved)
+			to_chat(user, SPAN_NOTICE("\The [src] is already engraved."))
+			return
+
+		var/str = copytext(reject_bad_text(input(user,"Engrave text?", "Set engraving", "")), 1)
+		if(length(str) == 0 || length(str) > 32)
+			to_chat(user, SPAN_NOTICE("You fumble [W], maybe try again?"))
+			return
+		desc += "\nEngraved with \"[str]\""
+		engraved = TRUE
+		to_chat(user, SPAN_NOTICE("You engrave \the [src] with \"[str]\"."))
+
+		log_admin("[user] has engraved \the [src] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"

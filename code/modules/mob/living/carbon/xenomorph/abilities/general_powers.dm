@@ -18,7 +18,11 @@
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
-	if(!T.is_weedable())
+	var/is_weedable = T.is_weedable()
+	if(!is_weedable)
+		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
+		return
+	if(!plant_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
 		return
 
@@ -46,7 +50,7 @@
 
 	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
 	SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
-	var/obj/effect/alien/weeds/node/new_node = new /obj/effect/alien/weeds/node(X.loc, src, X)
+	var/obj/effect/alien/weeds/node/new_node = new node_type(X.loc, src, X)
 
 	if(to_convert)
 		for(var/weed in to_convert)
@@ -224,16 +228,24 @@
 
 // leader Marker
 
-/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
 	if(!..())
 		return FALSE
+
+	if(mods["click_catcher"])
+		return
 
 	if(!action_cooldown_check())
 		return
 
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state())
+	if(!X.check_state(TRUE))
 		return FALSE
+
+	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
+		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
+		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
+
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
@@ -311,8 +323,8 @@
 				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
 					return
 			else
-				var/static/list/phero_selections = list("help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				pheromone = show_radial_menu(src, src, phero_selections)
+				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
+				pheromone = lowertext(show_radial_menu(src, src, phero_selections))
 				if(pheromone == "help")
 					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
 					return
@@ -395,7 +407,7 @@
 			X.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name]s at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
 
 	// ok so basically the way this code works is godawful
 	// what happens next is if we hit anything
@@ -473,7 +485,7 @@
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, SPAN_NOTICE("You are now hiding."))
 	else
-		X.layer = MOB_LAYER
+		X.layer = initial(X.layer)
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 	X.update_wounds()
 
@@ -492,7 +504,7 @@
 		return
 	var/turf/T = get_turf(X)
 
-	if(!istype(T) || !T.is_weedable() || !can_xeno_build(T))
+	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE || !can_xeno_build(T))
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
@@ -559,6 +571,9 @@
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE
+	if(X.hive.hivecore_cooldown)
+		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
+		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
 		if(!choice)
@@ -584,10 +599,9 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore)
-			to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
+		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
-
 		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
 			return
 		qdel(X.hive.hive_location)
@@ -616,8 +630,14 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(!T.is_weedable())
-		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+	if(T.is_weedable() < FULLY_WEEDABLE)
+		to_chat(X, SPAN_WARNING("\The [T] can't support a [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/obj/effect/alien/weeds/weeds = locate() in T
+	if(weeds?.block_special_structures)
+		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE
 

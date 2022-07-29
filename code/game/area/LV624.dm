@@ -181,7 +181,7 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -366,12 +366,12 @@
 /area/lv624/landing/console
 	name = "\improper LZ1 'Nexus'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/lv624/landing/console2
 	name = "\improper LZ2 'Robotics'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/lv624/lazarus/crashed_ship
 	name = "\improper Crashed Ship"

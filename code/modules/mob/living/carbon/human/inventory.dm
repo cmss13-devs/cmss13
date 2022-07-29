@@ -124,10 +124,6 @@
 			drop_inv_item_on_ground(l_store)
 		if(belt)
 			drop_inv_item_on_ground(belt)
-		if(wear_suit) //We estimate all armors with uniform restrictions aren't okay with removing the uniform altogether
-			var/obj/item/clothing/suit/S = wear_suit
-			if(S.uniform_restricted)
-				drop_inv_item_on_ground(wear_suit)
 		w_uniform = null
 		update_suit_sensors()
 		update_inv_w_uniform()
@@ -526,12 +522,16 @@
 		if(I.flags_inventory & CANTSTRIP)
 			to_chat(src, SPAN_WARNING("You're having difficulty putting \the [I.name] on [M]."))
 			return
+		if(I.flags_item & WIELDED)
+			I.unwield(src)
 		if(!I.mob_can_equip(M, slot_to_process, TRUE))
 			to_chat(src, SPAN_WARNING("You can't put \the [I.name] on [M]!"))
 			return
-		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, null, 5)
+		visible_message(SPAN_NOTICE("[src] tries to put \the [I.name] on [M]."), null, null, 5)
 		if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(I == get_active_hand() && !M.get_item_by_slot(slot_to_process) && Adjacent(M))
+				if(I.flags_item & WIELDED) //to prevent re-wielding it during the do_after
+					I.unwield(src)
 				if(I.mob_can_equip(M, slot_to_process, TRUE))//Placing an item on the mob
 					drop_inv_item_on_ground(I)
 					if(I && !QDELETED(I)) //Might be self-deleted?

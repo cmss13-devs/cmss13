@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()
@@ -9,10 +9,10 @@
 	access = get_all_accesses()
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
-	if(!H.client || !H.client.prefs || !H.client.prefs.synthetic_type)
-		H.set_species("Synthetic")
-	else
+	if(H.client?.prefs?.synthetic_type)
 		H.set_species(H.client.prefs.synthetic_type)
+		return
+	H.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "David"
@@ -46,7 +46,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
@@ -70,7 +70,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
@@ -86,7 +86,7 @@
 /datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
@@ -110,7 +110,19 @@
 	skills = /datum/skills/colonial_synthetic
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
+	var/generation_selection = SYNTH_COLONY_GEN_ONE
+	if(H.client?.prefs?.synthetic_type)
+		generation_selection = H.client.prefs.synthetic_type
+	switch(generation_selection)
+		if(SYNTH_GEN_THREE)
+			H.set_species(SYNTH_COLONY)
+		if(SYNTH_GEN_TWO)
+			H.set_species(SYNTH_COLONY_GEN_TWO)
+		if(SYNTH_GEN_ONE)
+			H.set_species(SYNTH_COLONY_GEN_ONE)
+		else
+			H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
@@ -119,7 +131,7 @@
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/H)
 	add_random_synth_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/marine(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_L_HAND)
@@ -136,42 +148,56 @@
 
 /datum/equipment_preset/synth/working_joe
 	name = "Working Joe"
-	flags = EQUIPMENT_PRESET_EXTRA
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
-	skills = /datum/skills/colonial_synthetic
+	skills = /datum/skills/working_joe
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
 	access = get_all_accesses()
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_WORKING_JOE)
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	//New equipment added as of 5-20-22
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/mop(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/wet_sign(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_R_HAND)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
 	. = ..()
-	H.r_eyes = 255
-	H.g_eyes = 255
-	H.b_eyes = 255
 	H.h_style = "Bald"
-	H.r_hair = 255
-	H.g_hair = 255
-	H.b_hair = 255
 	H.f_style = "Shaved"
+	if(prob(5))
+		H.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
+	H.r_eyes = 0
+	H.g_eyes = 0
+	H.b_eyes = 0
+	H.r_hair = 100
+	H.g_hair = 88
+	H.b_hair = 74
 	H.r_facial = 255
 	H.g_facial = 255
 	H.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
-	H.change_real_name(H, "Working Joe")
+	H.change_real_name(H, "Working Joe #[rand(100)][rand(100)]")
 
 //*****************************************************************************************************/
 

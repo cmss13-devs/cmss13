@@ -168,19 +168,19 @@
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client)
+/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client, var/show_job_gear = TRUE)
 	if(ispath(dresscode))
 		if(!GLOB.gear_path_presets_list)
 			CRASH("arm_equipment !gear_path_presets_list")
 		if(!GLOB.gear_path_presets_list[dresscode])
 			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
-		GLOB.gear_path_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
+		GLOB.gear_path_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
 	else
 		if(!GLOB.gear_name_presets_list)
 			CRASH("arm_equipment !gear_path_presets_list")
 		if(!GLOB.gear_name_presets_list[dresscode])
 			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
-		GLOB.gear_name_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
+		GLOB.gear_name_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
 
 	if(M.faction)
 		M.check_event_info(M.faction)

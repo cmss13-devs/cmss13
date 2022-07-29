@@ -170,6 +170,7 @@
 
 	if(!istype(M))
 		return
+
 	if(!M.can_inject(user, TRUE))
 		return
 

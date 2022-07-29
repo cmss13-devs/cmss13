@@ -74,9 +74,12 @@
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
 			if(prefs.unlock_content)
-				if(prefs.toggle_prefs & MEMBER_PUBLIC)
+				if(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC)
 					var/byond = icon('icons/effects/effects.dmi', "byondlogo")
 					display_name = "[icon2html(byond, GLOB.clients)][display_name]"
+			if(CONFIG_GET(flag/ooc_country_flags))
+				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
+					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
 			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 	usr.talked = 1

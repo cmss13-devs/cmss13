@@ -19,13 +19,13 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/gladiator/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of these holy warriors!"))
 		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
-	else if(heavies < max_heavies)
+	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/other/gladiator/champion, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a champion of the holy warriors!"))

@@ -10,7 +10,7 @@
 
 /obj/item/stool
 	name = "stool"
-	desc = "Uh-hoh, bar is heating up."
+	desc = "Uh-hoh, the bar is heating up."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "stool"
 	force = 15

@@ -4,6 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
@@ -54,6 +55,8 @@
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
+	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
+
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
@@ -74,14 +77,13 @@
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
-	if(isliving(pulling))
-		var/mob/living/L = pulling
-		L.SetStunned(0)
-		L.SetKnockeddown(0)
-	..()
-
+	if(isliving(pulling) && lunging)
+		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+		var/mob/living/lunged = pulling
+		lunged.SetStunned(0)
+		lunged.SetKnockeddown(0)
+	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
@@ -95,7 +97,6 @@
 	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
-		return // Warrior should not-regrab the victim to reset the knockdown
 
 	. = ..(L, lunge, should_neckgrab)
 
@@ -111,6 +112,11 @@
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
+			lunging = TRUE
+			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+
+/mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
+	lunging = FALSE
 
 /mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
@@ -139,6 +145,7 @@
 		bound_xeno.TakeComponent(shield_component)
 
 /datum/behavior_delegate/warrior_base/remove_from_xeno()
+	bound_xeno.remove_xeno_shield()
 	shield_component.RemoveComponent()
 	return ..()
 
@@ -166,7 +173,6 @@
 
 /datum/behavior_delegate/boxer/New()
 	. = ..()
-
 	if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
 		clear_head = 0
 		max_clear_head = 0

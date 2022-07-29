@@ -1,7 +1,6 @@
 #define TYPING_INDICATOR_LIFETIME 30 * 10	//grace period after which typing indicator disappears regardless of text in chatbar
 
 mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
-mob/var/typing
 mob/var/last_typed
 mob/var/last_typed_time
 
@@ -27,13 +26,9 @@ var/global/list/image/typed_typing_indicators
 			overlays -= indicator
 		else
 			if(state)
-				if(!typing)
-					if(stat == CONSCIOUS) overlays += indicator
-					typing = TRUE
+				if(stat == CONSCIOUS) overlays += indicator
 			else
-				if(typing)
-					overlays -= indicator
-					typing = FALSE
+				overlays -= indicator
 			return state
 
 /mob/verb/say_wrapper()

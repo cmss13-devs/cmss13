@@ -3,7 +3,7 @@
 
 /datum/hud/alien/New(mob/living/carbon/Xenomorph/owner)
 	..()
-	ui_alien_datum = custom_huds_list["alien"]
+	ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
 	draw_act_intent(ui_alien_datum)
 	draw_drop(ui_alien_datum)
@@ -57,7 +57,7 @@
 	locate_marker.screen_loc = ui_alien_datum.ui_mark_locator
 	infodisplay += locate_marker
 
-/datum/hud/alien/persistant_inventory_update()
+/datum/hud/alien/persistent_inventory_update()
 	if(!mymob || !ui_alien_datum)
 		return
 	var/mob/living/carbon/Xenomorph/H = mymob
@@ -82,7 +82,7 @@
 
 /datum/hud/larva/New(mob/living/carbon/Xenomorph/Larva/owner)
 	..()
-	var/datum/custom_hud/alien/ui_alien_datum = custom_huds_list["alien"]
+	var/datum/custom_hud/alien/ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
 	draw_healths(ui_alien_datum)
 

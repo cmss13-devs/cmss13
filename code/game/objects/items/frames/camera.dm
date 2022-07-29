@@ -159,6 +159,7 @@
 	if(user.action_busy)
 		return 0
 	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
 	to_chat(user, SPAN_NOTICE("You start to weld the [src].."))
@@ -166,6 +167,7 @@
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return 0
 		return 1
 	return 0

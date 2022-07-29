@@ -35,7 +35,6 @@
 /obj/vehicle/train/cargo/engine/Initialize()
 	. = ..()
 	cell = new /obj/item/cell/apc
-	verbs -= /atom/movable/verb/pull
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
@@ -213,10 +212,5 @@
 
 	if(!lead && !tow)
 		anchored = 0
-		if(verbs.Find(/atom/movable/verb/pull))
-			return
-		else
-			verbs += /atom/movable/verb/pull
 	else
 		anchored = 1
-		verbs -= /atom/movable/verb/pull

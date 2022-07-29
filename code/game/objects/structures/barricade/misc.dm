@@ -72,7 +72,7 @@
 	debris = list(/obj/item/stack/sheet/wood)
 	stack_amount = 5
 	destroyed_stack_amount = 3
-	barricade_hitsound = "sound/effects/woodhit.ogg"
+	barricade_hitsound = 'sound/effects/woodhit.ogg'
 	can_change_dmg_state = 0
 	barricade_type = "wooden"
 	can_wire = FALSE

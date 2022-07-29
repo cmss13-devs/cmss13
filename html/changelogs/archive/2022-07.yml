@@ -452,3 +452,5 @@
   JeserTheFox:
   - bugfix: fixed powerloaders not deleting empty DS ammo when they remove it from
       a weapon
+  stanalbatross:
+  - bugfix: the R1NG bell tower can no longer affect enemies through walls

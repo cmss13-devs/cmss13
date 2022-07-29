@@ -325,7 +325,7 @@
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains not standard fuel."))
+						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
 						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
@@ -342,21 +342,21 @@
 						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
 						return
 					if(AM.current_rounds != AM.max_rounds)
-						to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+						to_chat(user, SPAN_WARNING("\The [A] isn't full. Fill it before you can restock it."))
 						return
 				else if(A.contents.len < A.num_of_magazines)
-					to_chat(user, SPAN_WARNING("[A] is not full."))
+					to_chat(user, SPAN_WARNING("[\The A] isn't full."))
 					return
 				else
 					for(var/obj/item/ammo_magazine/M in A.contents)
 						if(M.current_rounds != M.max_rounds)
-							to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
+							to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
 							return
 			//loose rounds ammo box handling
 			else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
 				var/obj/item/ammo_box/rounds/A = item_to_stock
 				if(A.bullet_amount < A.max_bullet_amount)
-					to_chat(user, SPAN_WARNING("[A] is not full."))
+					to_chat(user, SPAN_WARNING("\The [A] isn't full."))
 					return
 			//Guns handling
 			else if(isgun(item_to_stock))
@@ -387,7 +387,7 @@
 			else if(istype(item_to_stock, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = item_to_stock
 				if(flare_pack.contents.len < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("[item_to_stock] is not full."))
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
 					return
 				var/flare_type
 				if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
@@ -403,7 +403,7 @@
 						return
 			//Machete holsters handling
 			else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
-				var/obj/item/weapon/melee/claymore/mercsword/machete/Mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+				var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
 				if(!Mac)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
 					return

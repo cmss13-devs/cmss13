@@ -928,7 +928,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			if(istype(W, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = W
 				if(flare_pack.contents.len < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("[W] is not full."))
+					to_chat(user, SPAN_WARNING("\The [W] is not full."))
 					return
 				var/flare_type
 				if(istype(W, /obj/item/storage/box/m94/signal))

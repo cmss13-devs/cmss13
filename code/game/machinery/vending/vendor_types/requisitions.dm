@@ -149,7 +149,7 @@
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains not standard fuel."))
+						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
 						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
@@ -170,13 +170,13 @@
 			else if(istype(item_to_stock, /obj/item/stack/folding_barricade))
 				var/obj/item/stack/folding_barricade/B = item_to_stock
 				if(B.amount != 3)
-					to_chat(user, SPAN_WARNING("[B] is being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
+					to_chat(user, SPAN_WARNING("[B]s are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
 					return
 			//M94 flare packs handling
 			else if(istype(item_to_stock, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = item_to_stock
 				if(flare_pack.contents.len < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("[item_to_stock] is not full."))
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
 					return
 				var/flare_type
 				if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
@@ -383,7 +383,7 @@
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains not standard fuel."))
+						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
 						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
@@ -399,7 +399,7 @@
 						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
 						return
 					if(AM.current_rounds != AM.max_rounds)
-						to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+						to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 						return
 				else if(A.contents.len < A.num_of_magazines)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
@@ -407,7 +407,7 @@
 				else
 					for(var/obj/item/ammo_magazine/M in A.contents)
 						if(M.current_rounds != M.max_rounds)
-							to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
+							to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
 							return
 			//loose rounds ammo box handling
 			else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
@@ -691,8 +691,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
-			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
+			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 			R[2]++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.

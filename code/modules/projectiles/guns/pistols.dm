@@ -129,8 +129,9 @@
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper SOCOM M1911 service pistol"
 	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. This one is slightly modified."
-
-	starting_attachment_types = list(/obj/item/attachable/lasersight, obj/item/attachable/suppressor, obj/item/attachable/reflex)
+	scatter = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	starting_attachment_types = list(/obj/item/attachable/lasersight, /obj/item/attachable/suppressor, /obj/item/attachable/reflex)
 
 
 //-------------------------------------------------------

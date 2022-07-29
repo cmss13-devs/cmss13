@@ -315,7 +315,7 @@
 		qdel(src)
 		return
 	loaded = target
-	loaded.forceMove(linked_powerloader)
+	loaded.forceMove(src)
 	playsound(src, sound, 40, 1)
 	update_icon(target_tag)
 	target.update_icon()

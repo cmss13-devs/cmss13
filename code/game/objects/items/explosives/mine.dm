@@ -1,7 +1,7 @@
 ///***MINES***///
 //Mines have an invisible "tripwire" atom that explodes when crossed
 //Stepping directly on the mine will also blow it up
-/obj/item/explosive/mine/claymore
+/obj/item/explosive/mine
 	name = "\improper M20 Claymore anti-personnel mine"
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
@@ -243,7 +243,7 @@
 		disarm()
 
 
-/obj/effect/mine_tripwire/claymore
+/obj/effect/mine_tripwire
 	name = "claymore tripwire"
 	anchored = TRUE
 	mouse_opacity = 0
@@ -288,14 +288,57 @@
 	has_blast_wave_dampener = TRUE
 
 
+
 /obj/item/explosive/mine/bounding
 	name = "\improper M5 Bounding Mine"
 	desc = "The M5 Bounding Mine is a landmine that propels itself upwards when the tripwire is set off. It explodes mid-air and either maims, kills, or fucks up anything standing in the blast zone. The 'Bouncing Betty' has seen limited use since the year 2150 due to the IFF sensors on the earlier models were prone to failure, resulting in friendly casualties. Be careful to not trip this or you're going to be ending up in a hospital bed full of shrapnel."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m5"
+	force = 5.0
+	w_class = SIZE_SMALL
+	// layer = MOB_HIDING_LAYER = 0.1 // geeves told me this was a good idea but it didnt work so it's gonna be like claymores lol
+	throwforce = 5.0
+	throw_range = 6
+	throw_speed = SPEED_VERY_FAST
+	unacidable = TRUE
+	flags_atom = FPRINT|CONDUCT
+	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
+	max_container_volume = 120
+	reaction_limits = list(	"max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
+							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
+							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
 	angle = 360
 	use_dir = FALSE
 	var/obj/effect/mine_tripwire/bounding
+
+/obj/effect/mine_tripwire/bounding
+	name = "bouncing betty tripwire"
+	anchored = TRUE
+	mouse_opacity = 0
+	invisibility = 101
+	unacidable = TRUE
+	var/obj/item/explosive/mine/bounding/linked_betty
+
+/obj/effect/mine_tripwire/bounding/Destroy()
+	if(linked_betty)
+		linked_betty = null
+	. = ..()
+
+//immune to explosions.
+/obj/effect/mine_tripwire/bounding/ex_act(severity)
+	return
+
+/obj/effect/mine_tripwire/bounding/Crossed(atom/movable/AM)
+	if(!linked_betty)
+		qdel(src)
+		return
+
+	if(linked_betty.triggered)
+		return
+
+	if(linked_betty)
+		linked_betty.try_to_prime(AM)
 
 
 //arming
@@ -379,7 +422,7 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 48, dir, angle, , cause_data)
+		create_shrapnel(loc, 48, dir, angle, cause_data)
 		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 		cell_explosion(loc, 30, 60, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		qdel(src)

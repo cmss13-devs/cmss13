@@ -422,7 +422,7 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 48, dir, angle, cause_data)
+		create_shrapnel(loc, 48, dir, angle, , cause_data)
 		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 		cell_explosion(loc, 30, 60, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		qdel(src)

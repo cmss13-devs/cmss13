@@ -294,14 +294,6 @@
 	desc = "The M5 Bounding Mine is a landmine that propels itself upwards when the tripwire is set off. It explodes mid-air and either maims, kills, or fucks up anything standing in the blast zone. The 'Bouncing Betty' has seen limited use since the year 2150 due to the IFF sensors on the earlier models were prone to failure, resulting in friendly casualties. Be careful to not trip this or you're going to be ending up in a hospital bed full of shrapnel."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m5"
-	force = 5.0
-	w_class = SIZE_SMALL
-	throwforce = 5.0
-	throw_range = 6
-	throw_speed = SPEED_VERY_FAST
-	unacidable = TRUE
-	flags_atom = FPRINT|CONDUCT
-	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
 	reaction_limits = list(	"max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
 							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
@@ -309,35 +301,6 @@
 	)
 	angle = 360
 	use_dir = FALSE
-	var/obj/effect/mine_tripwire/bounding
-
-/obj/effect/mine_tripwire/bounding
-	name = "bouncing betty tripwire"
-	anchored = TRUE
-	mouse_opacity = 0
-	invisibility = 101
-	unacidable = TRUE
-	var/obj/item/explosive/mine/bounding/linked_betty
-
-/obj/effect/mine_tripwire/bounding/Destroy()
-	if(linked_betty)
-		linked_betty = null
-	. = ..()
-
-//immune to explosions.
-/obj/effect/mine_tripwire/bounding/ex_act(severity)
-	return
-
-/obj/effect/mine_tripwire/bounding/Crossed(atom/movable/AM)
-	if(!linked_betty)
-		qdel(src)
-		return
-
-	if(linked_betty.triggered)
-		return
-
-	if(linked_betty)
-		linked_betty.try_to_prime(AM)
 
 
 //arming
@@ -429,18 +392,3 @@
 		. = ..()
 		if(!QDELETED(src))
 			disarm()
-
-
-// xenomorph shit
-/obj/item/explosive/mine/bounding/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(triggered) //Mine is already set to go off
-		return XENO_NO_DELAY_ACTION
-
-	if(M.a_intent == INTENT_HELP)
-		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
-		return XENO_NO_DELAY_ACTION
-
-	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
-		SPAN_DANGER("You slash [src]!"))
-	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)

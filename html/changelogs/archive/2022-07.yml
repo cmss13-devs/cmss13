@@ -460,3 +460,14 @@
   - bugfix: Fixed WO Terminator's dirty smartgun flags.
   stanalbatross:
   - bugfix: the R1NG bell tower can no longer affect enemies through walls
+2022-07-30:
+  Jeser:
+  - rscadd: Minor content tweaks in Dropship Pilot, Dropship Crew Chief, Vehicle Crewman
+      and Squad Specialist vendors.
+  - rscadd: APC Supply and Requisitions Ammunition vendors support restocking with
+      handmade ammo boxes. (The ones made out of cardboard). Same requirements as
+      for regular ammo boxes apply.
+  - rscadd: Requisitions Ammunition vendor supports restocking flamer fueltanks now.
+  - rscadd: Uniform vendors now support restocking armor in them.
+  - bugfix: Fixed not being able to restock shotgun shells boxes in APC Supply and
+      Requisitions Ammunition vendors.

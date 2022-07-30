@@ -9,6 +9,7 @@
 	var/can_explode = FALSE
 	var/burning = FALSE
 	var/limit_per_tile = 1	//how many you can deploy per tile
+	layer = LOWER_ITEM_LAYER	//to not hide other items
 
 //---------------------GENERAL PROCS
 
@@ -687,6 +688,7 @@
 	var/can_explode = TRUE
 	var/burning = FALSE
 	var/limit_per_tile = 1 //this is inherited from the item when deployed
+	layer = LOWER_ITEM_LAYER	//to not hide other items
 
 //---------------------GENERAL PROCS
 
@@ -1252,8 +1254,12 @@
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 7 SECONDS)
 	if(flare_amount > 0)
 		handle_side_effects(host_box, TRUE)
+
+		var/list/turf_list = list()
+		for(var/turf/T in range(5, (host_box ? host_box : src)))
+			turf_list += T
 		for(var/i = 1, i <= flare_amount, i++)
-			addtimer(CALLBACK(src, .proc/explode, src), rand(1, 6) SECONDS)
+			addtimer(CALLBACK(src, .proc/explode, (host_box ? host_box : src), turf_list), rand(1, 6) SECONDS)
 		return
 	handle_side_effects(host_box)
 	return
@@ -1273,12 +1279,11 @@
 		visible_message(SPAN_WARNING(shown_message))
 
 //for flare box, instead of actually exploding, we throw out a flare at random direction
-/obj/item/ammo_box/magazine/misc/flares/explode(var/obj/structure/magazine_box/host_box)
-	var/range = rand(1, 4)
+/obj/item/ammo_box/magazine/misc/flares/explode(var/obj/structure/magazine_box/host_box, var/list/turf_list = list())
+	var/range = rand(1, 6)
 	var/speed = pick(SPEED_SLOW, SPEED_AVERAGE, SPEED_FAST)
-	var/atom/target = get_ranged_target_turf(host_box ? host_box : src, pick(alldirs), range)
 
-	var/turf/target_turf = get_turf(target)
+	var/turf/target_turf = pick(turf_list)
 	var/obj/item/device/flashlight/flare/on/F = new (get_turf(host_box ? host_box : src))
 	playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1)
 

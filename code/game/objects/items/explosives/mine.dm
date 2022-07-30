@@ -344,7 +344,12 @@
     if(user.loc && (user.loc.density || istype(user.loc, /turf/open/floor/almayer) || istype(user.loc, /turf/open/floor/plating/plating_catwalk) || istype(user.loc, /turf/open/floor/plating) || istype(user.loc, /turf/open/floor))) // you have to plant it somewhere that isnt the ship
         to_chat(user, SPAN_WARNING("You can't plant a mine here."))
         return TRUE
-
+	if(user.z == GLOB.interior_manager.interior_z)
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return TRUE
+	if(locate(/obj/item/explosive/mine) in get_turf(src))
+		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		return TRUE
 
 //disarming, it's a little different than a normal claymore
 /obj/item/explosive/mine/bounding/attackby(obj/item/W, mob/user)

@@ -66,12 +66,12 @@
 		to_chat(M, SPAN_BOLD("You were soon after bought by the Vanguard's Arrow Security Consulting Agency to act as support personnel."))
 		to_chat(M, SPAN_BOLD("Some months after your purchase, you were assigned to the USCSS Marlow, a VASC transport vessel."))
 	to_chat(M, SPAN_BOLD("You are [pick(80;"unaware", 15;"faintly aware", 5;"knowledgeable")] of the xenomorph threat."))
-	to_chat(M, SPAN_BOLD("You are employed by Vanguard's Arrow Incorporated(VIA), as a member VIA Primary Operations(VAIPO)"))
+	to_chat(M, SPAN_BOLD("You are employed by Vanguard's Arrow Incorporated(VAI), as a member of VAI Primary Operations(VAIPO)"))
 	to_chat(M, SPAN_BOLD("You are stationed on-board the USCSS Inheritor, a part of VAIPO Task-Force Charlie."))
-	to_chat(M, SPAN_BOLD("Under the directive of the VIA executive board, you have been assist in riot control, military aid, and to assist USCMC forces wherever possible."))
+	to_chat(M, SPAN_BOLD("Under the directive of the VAI executive board, you have been assist in riot control, military aid, and to assist USCMC forces wherever possible."))
 	to_chat(M, SPAN_BOLD("The USCSS Inheritor is staffed with crew of roughly three hundred military contractors, and fifty support personnel."))
 	to_chat(M, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
-	to_chat(M, SPAN_BOLD("As a side-objective, VIA has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, avoid direct conflict; you aren't VAISO; but attempt to recover Wey-Yu secrets and plans if possible."))
+	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, avoid direct conflict; you aren't VAISO; but attempt to recover Wey-Yu secrets and plans if possible."))
 
 
 /datum/emergency_call/contractors/platoon

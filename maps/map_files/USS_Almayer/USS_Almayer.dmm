@@ -38618,9 +38618,9 @@
 /obj/structure/machinery/door_control{
 	id = "cl_shutters 2";
 	name = "Quarters Shutters";
-	req_access_txt = "200";
+	pixel_x = 11;
 	pixel_y = 37;
-	pixel_x = 11
+	req_access_txt = "200"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -41882,20 +41882,20 @@
 "fqe" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen/blue/clicky{
-	pixel_y = 2;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 2
 	},
 /obj/item/tool/pen/red/clicky{
 	pixel_x = -1;
 	pixel_y = 1
 	},
 /obj/item/tool/pen/clicky{
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/item/paper_bin/wy{
-	pixel_y = 5;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -44075,6 +44075,13 @@
 "gpe" = (
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"gpi" = (
+/obj/structure/dropship_equipment/rappel_system,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/hallways/hangar)
 "gpE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/sign/safety/distribution_pipes{
@@ -102151,7 +102158,7 @@ btJ
 bvi
 bAn
 blJ
-blJ
+bAn
 blJ
 bAn
 bpl
@@ -104987,7 +104994,7 @@ kqv
 pcl
 gHZ
 pcl
-gHZ
+gpi
 pcl
 oJp
 bvf
@@ -106617,7 +106624,7 @@ btR
 bvo
 bAy
 blP
-blP
+bAy
 blP
 bAy
 bpq

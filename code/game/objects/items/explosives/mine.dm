@@ -341,7 +341,7 @@
 	update_icon()
 
 /obj/item/explosive/mine/bounding/check_for_obstacles(mob/living/user)
-    if(user.loc && (user.loc.density || istype(user.loc, /turf/open/floor/almayer) || istype(user.loc, /turf/open/floor/plating/plating_catwalk) || istype(user.loc, /turf/open/floor/plating) || istype(user.loc, /turf/open/floor))) // you have to plant it somewhere that isnt the ship
+	if(user.loc && (user.loc.density || is_mainship_level(user.z)))
         to_chat(user, SPAN_WARNING("You can't plant a mine here."))
         return TRUE
 	if(user.z == GLOB.interior_manager.interior_z)

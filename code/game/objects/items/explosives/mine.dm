@@ -363,7 +363,7 @@
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
-			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
 					SPAN_WARNING("You stop disarming [src]."))
 				return

@@ -631,31 +631,31 @@
 //Custom zones for cave CAS removal PR - Sose96
 
 /area/bigredv2/outside/lz1_north_cas
-	name = "\improper lz1_north_cas"
+	name = "\improper Northern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/bigredv2/outside/lz1_telecomm_cas
-	name = "\improper lz1_telecomm_cas"
+	name = "\improper Virology Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/bigredv2/outside/lz2_west_cas
-	name = "\improper lz2_west_cas"
+	name = "\improper Southwestern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/bigredv2/outside/lz2_south_cas
-	name = "\improper lz2_south_cas"
+	name = "\improper ETA Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/bigredv2/outside/filtration_cave_cas
-	name = "\improper filtration_cave_cas"
+	name = "\improper Filtration Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
-/area/bigredv2/outside/lambad_cave_cas
-	name = "\improper lambad_cave_cas"
+/area/bigredv2/outside/lambda_cave_cas
+	name = "\improper Lambda Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS

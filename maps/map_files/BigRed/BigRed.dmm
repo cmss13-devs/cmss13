@@ -5916,7 +5916,7 @@
 /area/bigredv2/outside/marshal_office)
 "apI" = (
 /turf/closed/wall/solaris/reinforced/hull,
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "apJ" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -17152,7 +17152,7 @@
 	icon_state = "mars_cave_22";
 	tag = "icon-mars_cave_22"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aRw" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -17160,7 +17160,7 @@
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aRx" = (
 /obj/structure/machinery/teleport/station,
 /turf/open/floor{
@@ -17462,7 +17462,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aSk" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -17470,7 +17470,7 @@
 	icon_state = "mars_cave_8";
 	tag = "icon-mars_cave_8"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aSl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -18010,7 +18010,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aTy" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -18029,7 +18029,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aTA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -18390,7 +18390,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aUv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18400,7 +18400,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aUw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18416,7 +18416,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aUx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18428,7 +18428,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aUy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18448,7 +18448,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aUB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -18797,7 +18797,7 @@
 	icon_state = "mars_cave_8";
 	tag = "icon-mars_cave_8"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "aVx" = (
 /obj/structure/curtain/medical,
 /obj/structure/machinery/alarm{
@@ -29752,7 +29752,7 @@
 	icon_state = "mars_cave_23";
 	tag = "icon-mars_cave_23"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "cIP" = (
 /obj/item/paper/bigred/smuggling,
 /turf/open/floor,
@@ -29788,7 +29788,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "cLZ" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -29929,7 +29929,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "dmB" = (
 /obj/item/tool/pickaxe,
 /turf/open/mars,
@@ -32061,7 +32061,7 @@
 	icon_state = "mars_cave_8";
 	tag = "icon-mars_cave_8"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "hSP" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/mars_cave{
@@ -32351,7 +32351,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "izh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
@@ -32572,7 +32572,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "iZA" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
@@ -33343,7 +33343,7 @@
 	icon_state = "mars_cave_23";
 	tag = "icon-mars_cave_23"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "kqS" = (
 /turf/open/floor{
 	icon_state = "wood"
@@ -33935,7 +33935,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "lEw" = (
 /obj/item/tool/pickaxe{
 	pixel_y = -3
@@ -35156,7 +35156,7 @@
 	icon_state = "mars_cave_5";
 	tag = "icon-mars_cave_5"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "onR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/broken,
@@ -37209,7 +37209,7 @@
 	icon_state = "mars_cave_8";
 	tag = "icon-mars_cave_8"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "slG" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -38435,7 +38435,7 @@
 	icon_state = "mars_cave_18";
 	tag = "icon-mars_cave_18"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "uuO" = (
 /obj/item/shard{
 	icon_state = "small";
@@ -39288,7 +39288,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "whi" = (
 /turf/open/floor{
 	dir = 4;
@@ -39588,7 +39588,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "wNA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/pistol/m1911,
@@ -40289,7 +40289,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/lambad_cave_cas)
+/area/bigredv2/outside/lambda_cave_cas)
 "ycM" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";

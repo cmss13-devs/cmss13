@@ -790,7 +790,7 @@
 			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
 			item_box.contents -= AM
 			user.put_in_hands(AM)
-			to_chat(user, SPAN_NOTICE("You retrieve a [AM] from \the [src]."))
+			to_chat(user, SPAN_NOTICE("You retrieve \a [AM] from \the [src]."))
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(AM)

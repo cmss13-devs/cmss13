@@ -75,6 +75,11 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/m4a3/suppressed
+	starting_attachment_types = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/lasersight
+	)
 
 /obj/item/weapon/gun/pistol/m4a3/training
 	current_mag = /obj/item/ammo_magazine/pistol/rubber

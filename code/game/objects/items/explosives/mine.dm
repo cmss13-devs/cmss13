@@ -296,7 +296,6 @@
 	icon_state = "m5"
 	force = 5.0
 	w_class = SIZE_SMALL
-	// layer = MOB_HIDING_LAYER = 0.1 // geeves told me this was a good idea but it didnt work so it's gonna be like claymores lol
 	throwforce = 5.0
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST

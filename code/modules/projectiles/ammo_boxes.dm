@@ -1,320 +1,3 @@
-//Magazine items, and casings.
-/*
-Boxes of ammo. Certain weapons have internal boxes of ammo that cannot be removed and function as part of the weapon.
-They're all essentially identical when it comes to getting the job done.
-*/
-/obj/item/ammo_magazine
-	name = "generic ammo"
-	desc = "A box of ammo."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
-	icon_state = null
-	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
-	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on
-	flags_atom = FPRINT|CONDUCT
-	flags_equip_slot = SLOT_WAIST
-	matter = list("metal" = 1000)
-	 //Low.
-	throwforce = 2
-	w_class = SIZE_SMALL
-	throw_speed = SPEED_SLOW
-	throw_range = 6
-	var/default_ammo = /datum/ammo/bullet
-	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
-	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
-	var/max_rounds = 7 //How many rounds can it hold?
-	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
-	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
-	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
-	var/base_mag_icon //the default mag icon state.
-	var/base_mag_item //the default mag item (inhand) state.
-	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
-	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
-
-/obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
-	. = ..()
-	GLOB.ammo_magazine_list += src
-	base_mag_icon = icon_state
-	base_mag_item = item_state
-	if(spawn_empty) current_rounds = 0
-	switch(current_rounds)
-		if(-1) current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
-		if(0)
-			icon_state += "_e" //In case it spawns empty instead.
-			item_state += "_e"
-
-/obj/item/ammo_magazine/Destroy()
-	GLOB.ammo_magazine_list -= src
-	return ..()
-
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
-	if(current_rounds <= 0)
-		icon_state = base_mag_icon + "_e"
-		item_state = base_mag_item + "_e"
-		add_to_garbage(src)
-	else if(current_rounds - round_diff <= 0)
-		icon_state = base_mag_icon
-		item_state = base_mag_item //to-do, unique magazine inhands for majority firearms.
-	if(iscarbon(loc))
-		var/mob/living/carbon/C = loc
-		if(C.r_hand == src)
-			C.update_inv_r_hand()
-		else if(C.l_hand == src)
-			C.update_inv_l_hand()
-
-/obj/item/ammo_magazine/examine(mob/user)
-	..()
-
-	if(flags_magazine & AMMUNITION_HIDE_AMMO)
-		return
-	// It should never have negative ammo after spawn. If it does, we need to know about it.
-	if(current_rounds < 0)
-		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine.")
-		log_debug("ERROR CODE R1: negative current_rounds on examine. User: <b>[usr]</b> Magazine: <b>[src]</b>")
-	else
-		to_chat(user, "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>.")
-
-/obj/item/ammo_magazine/attack_hand(mob/user)
-	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
-		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
-			if (current_rounds > 0)
-				if(create_handful(user))
-					return
-			else to_chat(user, "[src] is empty. Nothing to grab.")
-			return
-	return ..() //Do normal stuff.
-
-//We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, var/bypass_hold_check = 0)
-	if(istype(I, /obj/item/ammo_magazine))
-		var/obj/item/ammo_magazine/MG = I
-		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
-			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
-				var/obj/item/ammo_magazine/handful/transfer_from = I
-				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
-					if(default_ammo == transfer_from.default_ammo)
-						transfer_ammo(transfer_from,user,transfer_from.current_rounds) // This takes care of the rest.
-					else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
-				else to_chat(user, "Try holding [src] before you attempt to restock it.")
-
-//Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
-/obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
-	if(current_rounds == max_rounds) //Does the mag actually need reloading?
-		to_chat(user, "[src] is already full.")
-		return
-
-	if(source.caliber != caliber) //Are they the same caliber?
-		to_chat(user, "The rounds don't match up. Better not mix them up.")
-		return
-
-	var/S = min(transfer_amount, max_rounds - current_rounds)
-	source.current_rounds -= S
-	current_rounds += S
-	if(source.current_rounds <= 0 && istype(source, /obj/item/ammo_magazine/handful)) //We want to delete it if it's a handful.
-		if(user)
-			user.temp_drop_inv_item(source)
-		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
-	else source.update_icon()
-
-	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
-		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
-
-	update_icon(S)
-	return S // We return the number transferred if it was successful.
-
-//This will attempt to place the ammo in the user's hand if possible.
-/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
-	var/amount_to_transfer
-	if (current_rounds > 0)
-		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
-		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
-		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
-		current_rounds -= amount_to_transfer
-		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
-			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
-
-		if(user)
-			user.put_in_hands(new_handful)
-			to_chat(user, SPAN_NOTICE("You grab <b>[amount_to_transfer]</b> round\s from [obj_name]."))
-
-		else new_handful.forceMove(get_turf(src))
-		update_icon(-amount_to_transfer) //Update the other one.
-	return amount_to_transfer //Give the number created.
-
-//our magazine inherits ammo info from a source magazine
-/obj/item/ammo_magazine/proc/match_ammo(obj/item/ammo_magazine/source)
-	caliber = source.caliber
-	default_ammo = source.default_ammo
-	gun_type = source.gun_type
-
-//~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
-	if(current_rounds < 1)
-		return
-	else
-		var/severity = current_rounds / 50
-		//the more ammo inside, the faster and harder it cooks off
-		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
-
-	if(!QDELETED(src))
-		qdel(src)
-
-//our fueltanks are extremely fire-retardant and won't explode
-/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
-	return
-
-//Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
-/obj/item/ammo_magazine/internal
-	name = "internal chamber"
-	desc = "You should not be able to examine it."
-	//For revolvers and shotguns.
-	var/chamber_contents[] //What is actually in the chamber. Initiated on New().
-	var/chamber_position = 1 //Where the firing pin is located. We usually move this instead of the contents.
-	var/chamber_closed = 1 //Starts out closed. Depends on firearm.
-
-//Helper proc, to allow us to see a percentage of how full the magazine is.
-/obj/item/ammo_magazine/proc/get_ammo_percent()		// return % charge of cell
-	return 100.0*current_rounds/max_rounds
-
-//----------------------------------------------------------------//
-//Now for handfuls, which follow their own rules and have some special differences from regular boxes.
-
-/*
-Handfuls are generated dynamically and they are never actually loaded into the item.
-What they do instead is refill the magazine with ammo and sometime save what sort of
-ammo they are in order to use later. The internal magazine for the gun really does the
-brunt of the work. This is also far, far better than generating individual items for
-bullets/shells. ~N
-*/
-
-/obj/item/ammo_magazine/handful
-	name = "generic handful"
-	desc = "A handful of rounds to reload on the go."
-	icon = 'icons/obj/items/weapons/guns/handful.dmi'
-	icon_state = "bullet"
-	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
-	flags_equip_slot = null // It only fits into pockets and such.
-	w_class = SIZE_SMALL
-	current_rounds = 1 // So it doesn't get autofilled for no reason.
-	max_rounds = 5 // For shotguns, though this will be determined by the handful type when generated.
-	flags_atom = FPRINT|CONDUCT
-	flags_magazine = AMMUNITION_HANDFUL
-	attack_speed = 3 // should make reloading less painful
-
-/obj/item/ammo_magazine/handful/Initialize(mapload, spawn_empty)
-	. = ..()
-	update_icon()
-
-/obj/item/ammo_magazine/handful/update_icon() //Handles the icon itself as well as some bonus things.
-	if(max_rounds >= current_rounds)
-		var/I = current_rounds*50 // For the metal.
-		matter = list("metal" = I)
-	icon_state = handful_state + "_[current_rounds]"
-
-/obj/item/ammo_magazine/handful/pickup(mob/user)
-	var/olddir = dir
-	. = ..()
-	dir = olddir
-
-/obj/item/ammo_magazine/handful/equipped(mob/user, slot)
-	var/thisDir = src.dir
-	..(user,slot)
-	setDir(thisDir)
-	return
-/*
-There aren't many ways to interact here.
-If the default ammo isn't the same, then you can't do much with it.
-If it is the same and the other stack isn't full, transfer an amount (default 1) to the other stack.
-*/
-/obj/item/ammo_magazine/handful/attackby(obj/item/ammo_magazine/handful/transfer_from, mob/user)
-	if(istype(transfer_from)) // We have a handful. They don't need to hold it.
-		if(default_ammo == transfer_from.default_ammo) //Has to match.
-			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
-		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
-
-/obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
-	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
-	var/ammo_name = A.name //Let's pull up the name.
-	var/multiple_handful_name = A.multiple_handful_name
-
-	name = "handful of [ammo_name + (multiple_handful_name ? " ":"s ") + "([new_caliber])"]"
-
-	default_ammo = new_ammo
-	caliber = new_caliber
-	max_rounds = new_max_rounds
-	current_rounds = new_rounds
-	gun_type = new_gun_type
-	handful_state = A.handful_state
-	if(A.handful_color)
-		color = A.handful_color
-	update_icon()
-
-//----------------------------------------------------------------//
-
-
-/*
-Doesn't do anything or hold anything anymore.
-Generated per the various mags, and then changed based on the number of
-casings. .dir is the main thing that controls the icon. It modifies
-the icon_state to look like more casings are hitting the ground.
-There are 8 directions, 8 bullets are possible so after that it tries to grab the next
-icon_state while reseting the direction. After 16 casings, it just ignores new
-ones. At that point there are too many anyway. Shells and bullets leave different
-items, so they do not intersect. This is far more efficient than using Bl*nd() or
-Turn() or Shift() as there is virtually no overhead. ~N
-*/
-/obj/item/ammo_casing
-	name = "spent casing"
-	desc = "Empty and useless now."
-	icon = 'icons/obj/items/casings.dmi'
-	icon_state = "casing_"
-	throwforce = 1
-	w_class = SIZE_TINY
-	layer = LOWER_ITEM_LAYER //Below other objects
-	dir = NORTH //Always north when it spawns.
-	flags_atom = FPRINT|CONDUCT|DIRLOCK
-	matter = list("metal" = 8) //tiny amount of metal
-	var/current_casings = 1 //This is manipulated in the procs that use these.
-	var/max_casings = 16
-	var/current_icon = 0
-	var/number_of_states = 10 //How many variations of this item there are.
-	garbage = TRUE
-
-/obj/item/ammo_casing/Initialize()
-	. = ..()
-	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
-	pixel_y = rand(-2.0, 2)
-	icon_state += "[rand(1,number_of_states)]" //Set the icon to it.
-
-//This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
-/obj/item/ammo_casing/update_icon()
-	if(max_casings >= current_casings)
-		if(current_casings == 2) name += "s" //In case there is more than one.
-		if(round((current_casings-1)/8) > current_icon)
-			current_icon++
-			icon_state += "_[current_icon]"
-
-		var/I = current_casings*8 // For the metal.
-		matter = list("metal" = I)
-		var/base_direction = current_casings - (current_icon * 8)
-		setDir(base_direction + round(base_direction)/3)
-		switch(current_casings)
-			if(3 to 5) w_class = SIZE_SMALL //Slightly heavier.
-			if(9 to 10) w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
-
-
-//Making child objects so that locate() and istype() doesn't screw up.
-/obj/item/ammo_casing/bullet
-
-/obj/item/ammo_casing/cartridge
-	name = "spent cartridge"
-	icon_state = "cartridge_"
-
-/obj/item/ammo_casing/shell
-	name = "spent shell"
-	icon_state = "shell_"
-
-
 //---------------------------MAGAZINE BOXES------------------
 
 /obj/item/ammo_box
@@ -350,6 +33,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	return
 
 /obj/item/ammo_box/proc/process_burning()
+	return
+
+/obj/item/ammo_box/proc/handle_side_effects()
 	return
 
 /obj/item/ammo_box/proc/explode(var/severity, var/datum/cause_data/flame_cause_data)
@@ -515,43 +201,40 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(var/datum/cause_data/flame_cause_data)
+	var/obj/structure/magazine_box/host_box
+	if(istype(loc, /obj/structure/magazine_box))
+		host_box = loc
 	if(can_explode)
 		var/severity = get_severity()
-
 		if(severity > 0)
-			if(istype(loc, /obj/structure/magazine_box))
-				var/obj/structure/magazine_box/host_box = loc
-				host_box.apply_fire_overlay(TRUE)
-				host_box.SetLuminosity(3)
-				host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
-			else
-				apply_fire_overlay(TRUE)
-				SetLuminosity(3)
-				visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
+			handle_side_effects(host_box, TRUE)
 			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
 			return
-
-	if(istype(loc, /obj/structure/magazine_box))
-		var/obj/structure/magazine_box/host_box = loc
-		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
-		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		//need to make sure we also delete the structure box
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
-	else
-		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		apply_fire_overlay()
-		SetLuminosity(3)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	handle_side_effects(host_box)
+	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 5 SECONDS)
 	return
+
+/obj/item/ammo_box/magazine/handle_side_effects(var/obj/structure/magazine_box/host_box, var/will_explode = FALSE)
+	var/shown_message = "\The [src] catches on fire!"
+	if(will_explode)
+		shown_message = "\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"
+
+	if(host_box)
+		host_box.apply_fire_overlay(will_explode)
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING(shown_message))
+	else
+		apply_fire_overlay(will_explode)
+		SetLuminosity(3)
+		visible_message(SPAN_WARNING(shown_message))
 
 /obj/item/ammo_box/magazine/apply_fire_overlay(var/will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
-	var/offset_x = pixel_x
-	var/offset_y = pixel_y
+	var/offset_y = 0
 	if(limit_per_tile == 1)	//snowflake nailgun ammo box again
 		offset_y += -2
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
 	overlays.Add(fire_overlay)
 
 //-----------------------------------------------------------------------------------
@@ -1053,18 +736,19 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				return
 		pixel_y = -8	//if there is no box, by default we offset the box to the bottom
 	else if(limit_per_tile == 4)	//you can deploy 4 misc boxes per tile
-		var/list/possible_offsets = list(list(-8, -3), list(7, -3), list(-8, 13), list(7, 13))
-		var/available_offset = 1
+		var/list/possible_offsets = list(list(-8, -3, TRUE), list(7, -3, TRUE), list(-8, 13, TRUE), list(7, 13, TRUE))	//x_offset, y_offset, available
 		for(var/obj/structure/magazine_box/found_MB in T.contents)
 			if(found_MB == src)
 				continue
 			for(var/list/L in possible_offsets)
 				if(L[1] == found_MB.pixel_x && L[2] == found_MB.pixel_y)
-					available_offset++	//this one taken, switch to next one
+					L[3] = FALSE
 					break
-		pixel_x = possible_offsets[available_offset][1]
-		pixel_y = possible_offsets[available_offset][2]
-		return
+		for(var/list/L in possible_offsets)
+			if(L[3])
+				pixel_x = L[1]
+				pixel_y = L[2]
+				return
 
 //---------------------INTERACTION PROCS
 
@@ -1293,7 +977,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 					AM.current_rounds += transfering
 					bullet_amount     -= transfering
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
-					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
+					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] rounds to [dumping ? src : AM]."))
 					transfering = 0
 
 			while(transferable >= 1)
@@ -1318,7 +1002,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			bullet_amount += S
 			AM.update_icon()
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You put [S] round\s into [src]."))
+			to_chat(user, SPAN_NOTICE("You put [S] rounds into [src]."))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
 				qdel(AM)
@@ -1337,27 +1021,27 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/rounds/process_burning(var/datum/cause_data/flame_cause_data)
 	if(can_explode)
-		var/severity = 0
-		severity = get_severity()
-
+		var/severity = get_severity()
 		if(severity > 0)
-			visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
-			apply_fire_overlay(TRUE)
-			SetLuminosity(3)
+			handle_side_effects(TRUE)
 			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
 			return
+	handle_side_effects()
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (src)), 5 SECONDS)
 
-	visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-	apply_fire_overlay()
+/obj/item/ammo_box/rounds/handle_side_effects(var/will_explode = FALSE)
+	if(will_explode)
+		visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
+	else
+		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
+
+	apply_fire_overlay(will_explode)
 	SetLuminosity(3)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
-	return
 
 /obj/item/ammo_box/rounds/apply_fire_overlay(var/will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = pixel_x, pixel_y = pixel_y)
 	overlays.Add(fire_overlay)
-
 
 //-----------------------------------------------------------------------------------
 
@@ -1490,19 +1174,24 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/misc/get_severity()
 	return
 
-/obj/item/ammo_box/magazine/misc/process_burning()
+/obj/item/ammo_box/magazine/misc/process_burning(var/datum/cause_data/flame_cause_data)
+	var/obj/structure/magazine_box/host_box
 	if(istype(loc, /obj/structure/magazine_box))
-		var/obj/structure/magazine_box/host_box = loc
+		host_box = loc
+	handle_side_effects(host_box)
+	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 7 SECONDS)
+	return
+
+/obj/item/ammo_box/magazine/misc/handle_side_effects(var/obj/structure/magazine_box/host_box)
+	if(host_box)
 		host_box.apply_fire_overlay()
 		host_box.SetLuminosity(3)
 		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 7 SECONDS)
 	else
 		apply_fire_overlay()
 		SetLuminosity(3)
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
-	return
 
 /obj/item/ammo_box/magazine/misc/apply_fire_overlay(var/will_explode = FALSE)
 	var/offset_x = 1
@@ -1545,51 +1234,43 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(burning)
 		return
 	burning = TRUE
-
-
-	if(istype(loc, /obj/structure/magazine_box))
-		var/obj/structure/magazine_box/host_box = loc
-		host_box.apply_fire_overlay()
-		host_box.SetLuminosity(3)
-		host_box.visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		//need to make sure we also delete the structure box
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 5 SECONDS)
-	else
-		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
-		apply_fire_overlay()
-		SetLuminosity(3)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
-	return
+	process_burning()
 
 /obj/item/ammo_box/magazine/misc/flares/get_severity()
 	var/flare_amount = 0
 	for(var/obj/item/storage/box/m94/flare_box in contents)
 		flare_amount += flare_box.contents.len
-	flare_amount = round(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we take
+	flare_amount = round(flare_amount / 8) //10 packs, 8 flares each, maximum total of 10 flares we can throw out
 	return flare_amount
 
-/obj/item/ammo_box/magazine/misc/flares/process_burning()
+/obj/item/ammo_box/magazine/misc/flares/process_burning(var/datum/cause_data/flame_cause_data)
+	var/obj/structure/magazine_box/host_box
+	if(istype(loc, /obj/structure/magazine_box))
+		host_box = loc
 	var/flare_amount = get_severity()
+	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 7 SECONDS)
 	if(flare_amount > 0)
-
-		if(istype(loc, /obj/structure/magazine_box))
-			var/obj/structure/magazine_box/host_box = loc
-			host_box.apply_fire_overlay(FALSE)
-			host_box.SetLuminosity(3)
-			host_box.visible_message(SPAN_WARNING("\The [src] catches on fire and starts shooting out flares!"))
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, host_box), 7 SECONDS)
-
-			for(var/i = 1, i <= flare_amount, i++)
-				addtimer(CALLBACK(src, .proc/explode, host_box), rand(1, 6) SECONDS)
-		else
-			apply_fire_overlay(FALSE)
-			SetLuminosity(3)
-			visible_message(SPAN_WARNING("\The [src] catches on fire and starts shooting out flares!"))
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 7 SECONDS)
-
-			for(var/i = 1, i <= flare_amount, i++)
-				addtimer(CALLBACK(src, .proc/explode, src), rand(1, 6) SECONDS)
+		handle_side_effects(host_box, TRUE)
+		for(var/i = 1, i <= flare_amount, i++)
+			addtimer(CALLBACK(src, .proc/explode, src), rand(1, 6) SECONDS)
 		return
+	handle_side_effects(host_box)
+	return
+
+/obj/item/ammo_box/magazine/misc/flares/handle_side_effects(var/obj/structure/magazine_box/host_box, var/will_explode = FALSE)
+	var/shown_message = "\The [src] catches on fire!"
+	if(will_explode)
+		shown_message = "\The [src] catches on fire and starts shooting out flares!"
+
+	if(host_box)
+		host_box.apply_fire_overlay()
+		host_box.SetLuminosity(3)
+		host_box.visible_message(SPAN_WARNING(shown_message))
+	else
+		apply_fire_overlay()
+		SetLuminosity(3)
+		visible_message(SPAN_WARNING(shown_message))
 
 //for flare box, instead of actually exploding, we throw out a flare at random direction
 /obj/item/ammo_box/magazine/misc/flares/explode(var/obj/structure/magazine_box/host_box)
@@ -1606,5 +1287,3 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/misc/flares/empty
 	empty = TRUE
-
-

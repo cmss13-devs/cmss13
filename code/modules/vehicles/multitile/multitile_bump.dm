@@ -236,6 +236,14 @@
 	deflate(TRUE)
 	return TRUE
 
+/obj/structure/bed/chair/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
+	if(stacked_size > 0)
+		stack_collapse()
+	else
+		qdel(src)
+	return TRUE
+
 /obj/structure/prop/dam/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
 		V.move_momentum -= V.move_momentum * 0.5
@@ -273,6 +281,14 @@
 
 /obj/structure/flora/tree/jungle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	return FALSE
+
+/obj/structure/window/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(not_damageable)
+		return FALSE
+
+	health = 0
+	healthcheck()
+	return TRUE
 
 //-------------------------MACHINERY------------------------
 
@@ -400,7 +416,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/colony_floodlight
+/obj/structure/machinery/colony_floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
 	if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))

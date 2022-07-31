@@ -125,6 +125,22 @@
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 
+/mob/living/carbon/Xenomorph/verb/directional_attack_iff_toggle()
+	set name = "Toggle Directional Attack Friendly Fire"
+	set desc = "Toggles whether we should check for friendlies on a directional attack."
+	set category = "Alien"
+
+	if (!client || !client.prefs)
+		return
+
+	client.prefs.toggle_prefs ^= TOGGLE_DIR_ASSIST_IFF
+	client.prefs.save_preferences()
+	if(client.prefs.toggle_prefs & TOGGLE_DIR_ASSIST_IFF)
+		to_chat(src, SPAN_NOTICE("Directional assist will no longer target friendly xenomorphs. To target them, you now must click their sprite."))
+	else
+		to_chat(src, SPAN_NOTICE("Directional assist will now target xenomorphs even if their sprite is clicked."))
+
+
 /mob/living/carbon/Xenomorph/cancel_camera()
 	. = ..()
 

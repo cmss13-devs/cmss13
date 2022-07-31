@@ -381,7 +381,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
 	new /obj/item/pamphlet/skill/medical(src)
-	new /obj/item/storage/pouch/medical/full(src)
+	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/clothing/glasses/hud/sensor(src)
 	new /obj/item/roller(src)

@@ -378,7 +378,6 @@
 		else
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
-
 /mob/Topic(href, href_list)
 	. = ..()
 	if(.)
@@ -704,9 +703,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/set_face_dir(var/newdir)
+	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
+		facedir(newdir)
+		return
+
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if(facedir(newdir))
+	else if (facedir(newdir))
 		flags_atom |= DIRLOCK
 
 

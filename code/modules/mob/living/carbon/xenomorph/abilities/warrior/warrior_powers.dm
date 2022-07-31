@@ -94,7 +94,8 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
+	if(stun_power)
+		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	H.apply_effect(weaken_power, WEAKEN)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)

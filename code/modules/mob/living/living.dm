@@ -318,6 +318,9 @@
 		launch_impact(AM)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_COLLIDE, AM) & COMPONENT_LIVING_COLLIDE_HANDLED)
+		return
+
 	if(!isliving(AM))
 		..()
 		return

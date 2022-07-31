@@ -311,17 +311,23 @@
 	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 	var/relative_dir
 	for(var/mob/M in range(15, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 	for(var/mob/M in range(10, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)

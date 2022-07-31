@@ -95,7 +95,7 @@
 	mob.next_delay_update = world.time + mob.next_delay_delay
 
 /client/Move(n, direct)
-	if(world.time < next_movement)
+	if(world.time < next_movement || (mob.lying && mob.crawling))
 		return
 
 	next_move_dir_add = 0
@@ -170,6 +170,13 @@
 		//We are now going to move
 		moving = 1
 		mob.move_intentionally = TRUE
+		if(mob.lying)
+			mob.crawling = TRUE
+			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
+				mob.crawling = FALSE
+				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+				return
+		mob.crawling = FALSE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(cardinal)))
 		else

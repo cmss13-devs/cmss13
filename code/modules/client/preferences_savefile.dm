@@ -54,6 +54,13 @@
 		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
 		S["toggle_prefs"] << pref_middle_click_swap
 
+	if(savefile_version < 17) //remove omniglots
+		var/list/language_traits = list()
+		S["traits"] >> language_traits
+		if(language_traits.len > 1)
+			language_traits = null
+		S["traits"] << language_traits
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

@@ -1,5 +1,7 @@
 /obj/item/clothing
 	name = "clothing"
+	pickupvol = 40
+	dropvol = 40
 	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0

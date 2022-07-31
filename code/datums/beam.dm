@@ -153,7 +153,7 @@
 	mouse_opacity = FALSE
 
 	var/tmp/atom/BeamSource
-	New()
+	Initialize()
 		..()
 		QDEL_IN(src, 10)
 

@@ -3200,7 +3200,7 @@
 	},
 /area/lv624/ground/jungle/south_central_jungle)
 "aph" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "apl" = (
@@ -3576,7 +3576,7 @@
 	},
 /area/lv624/ground/jungle/west_jungle)
 "arG" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/quartstorage/outdoors)
 "arH" = (
@@ -3967,7 +3967,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "atF" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -4906,7 +4906,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "awG" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -4999,7 +4999,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "awS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -5114,7 +5114,7 @@
 	},
 /area/lv624/ground/caves/north_central_caves)
 "axp" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle)
 "axt" = (
@@ -6439,7 +6439,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -6769,7 +6769,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aCI" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aCK" = (
@@ -6936,7 +6936,7 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -7191,7 +7191,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aEn" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -7307,7 +7307,7 @@
 	icon_state = "coffin_open";
 	opened = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -7549,7 +7549,7 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -7871,7 +7871,7 @@
 	},
 /area/lv624/lazarus/toilet)
 "aGn" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -9205,13 +9205,13 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "aLs" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
 /area/lv624/lazarus/robotics)
 "aLt" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -10023,7 +10023,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aON" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -10326,7 +10326,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/comms)
 "aPU" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aPV" = (
@@ -11379,7 +11379,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aTS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "aTU" = (
@@ -13131,7 +13131,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aZM" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -18448,7 +18448,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
 "nfD" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_nexus_road)
 "nfK" = (
@@ -19793,7 +19793,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "pHx" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
 "pHA" = (

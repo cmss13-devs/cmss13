@@ -2021,6 +2021,7 @@
 	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
 			rocket.forceMove(P.loc)
+		rocket.warhead.cause_data = P.weapon_cause_data
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(A))

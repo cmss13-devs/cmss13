@@ -367,3 +367,107 @@
 2022-07-24:
   Segrain:
   - admin: Fixed attack logs for spraying somebody with chemicals.
+2022-07-25:
+  50RemAndCounting:
+  - qol: The bell tower sound effect is not obnoxiously loud anymore.
+  Geevies:
+  - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
+      causes scatter over time.
+  stanalbatross:
+  - rscadd: added back above-head chat messages when you scream or cry out in pain
+  - rscdel: synths can no longer scream or cry out in pain - let's face it, you guys
+      can't feel it anyways. Fake it if you want.
+  - rscadd: added above-head chat messages for the *medic emote
+  - rscadd: me" custom emotes will now appear in above-head chat
+2022-07-26:
+  Geevies:
+  - bugfix: Survivors no longer spawn on top of eachother.
+  Jeser:
+  - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
+  - code_imp: Xenos can slash mortar to knock it over.
+  Kaga:
+  - add: All variants of "Greenfire" have been unified into a single unique fire type.
+      This is generally referred to as "Type B" Napalm/Napthal.
+  - expansion: Flames with the "Type B" property behave as an area denial tool, remaining
+      on the ground for a long time if not extinguished. Moving through them will
+      slow you down (similar to weeds), deal heavy additional damage, and reduce your
+      Armor while lingering inside.
+  - expansion: Flames with the "Type B" property can be easily put out. They are instantly
+      removed by extinguishers, and Xeno Acid has increased extinguishing effectiveness.
+  - expansion: Fires applied to mobs by flames with the "Type B" property can be extinguished
+      instantly by resisting and patting.
+  - expansion: HIDP Grenades, Incendiary Mortar Shells, Gel Incinerator Tanks, and
+      the Pyro Specialist's Type-B Tanks now all produce flames with "Type B" properties.
+  - expansion: Gel Incinerator Tanks are now B-Gel Incinerator Tanks.
+  - expansion: flame_radius now defaults to UT-Napalm (Flamer) values, instead of
+      the old HIDP values. This only affects molotovs and the Whiskey Outpost Airstrike
+      ability, which now generate using UT-Napalm flamer-equivalent fires instead
+      of HIDP fires.
+  - expansion: The Xenomorph Status Tab now displays your actual current armor, as
+      modified by buffs and debuffs.
+  Segrain:
+  - admin: Custom OT rockets and mortar shells now correctly attribute their explosions
+      to firer and not to maker.
+  stanalbatross:
+  - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
+      longer give the overwatched xeno the fruit's effects.
+  - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
+      cooldown on the ability is now applied earlier
+  - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
+2022-07-27:
+  Jeser:
+  - rscadd: Examining a powerloader clamp will show held object, if there is one.
+      Examining powerloader itself will show held objects in both clamps, if there
+      are any.
+  - imageadd: Changed powerloader clamp sprites. Added versions for each main category
+      of objects that can be grabbed. Those include OB warhead and fuel, dropship
+      module, ammo and rocket, vehicle module, reagents dispenser, crate, chair stack,
+      portable floodlight and large supply crate which also used as default sprite
+      for any object outside of aforementioned categories.
+  - rscadd: Powerloaders are able to grab watertanks, beerkegs and empty reagents
+      tanks now.
+  - rscadd: Big chair stacks can now collapse on grabbing and putting them on floor
+      with powerloader clamp.
+  - rscadd: Failed attempts to grab and put objects on floor now provide more feedback.
+  - rscadd: Can't grab acided objects anymore.
+  Joe Lampost:
+  - bugfix: Made the predator self destruct actually gib the pred and kill them instead
+      of the fake gib that was added.
+  - bugfix: Removed anchored items from showing up on the gear tracker
+  - bugfix: Fixed preds being able to charge their combi sticks on simple mobs including
+      their own smart discs
+  Kaga:
+  - bugfix: The Type-B "Greenfire" Update now actually shows up on the Changelog.
+      Watch out, Green Fire can no longer be ignored! Originally Merged on July 4,
+      2022.
+2022-07-28:
+  Stan_Albatross, Nanu308:
+  - balance: added MK1 AP mags, the normal MK1 mags no longer have AP rounds in them.
+  - balance: removed the ability of the MK1 to load MK2 mags
+  - rscadd: gave the CIC armoury MK1 AP mags
+  - rscadd: added MK1 AP mags to the CO vendor, and some to req
+  - balance: tweaked some ammo prices in the CO vendor
+  - rscdel: removed the mk1 kit from SLs
+2022-07-29:
+  JeserTheFox:
+  - bugfix: fixed powerloaders not deleting empty DS ammo when they remove it from
+      a weapon
+  Morrow:
+  - bugfix: JAS updated with new Marine Law laws.
+  Shad0vvs:
+  - balance: Smartgun firerate adjusted to ~400 RPM, Full auto scatter peak set to
+      80 shots, Scatter amount set to 8.
+  - bugfix: Fixed WO Terminator's dirty smartgun flags.
+  stanalbatross:
+  - bugfix: the R1NG bell tower can no longer affect enemies through walls
+2022-07-30:
+  Jeser:
+  - rscadd: Minor content tweaks in Dropship Pilot, Dropship Crew Chief, Vehicle Crewman
+      and Squad Specialist vendors.
+  - rscadd: APC Supply and Requisitions Ammunition vendors support restocking with
+      handmade ammo boxes. (The ones made out of cardboard). Same requirements as
+      for regular ammo boxes apply.
+  - rscadd: Requisitions Ammunition vendor supports restocking flamer fueltanks now.
+  - rscadd: Uniform vendors now support restocking armor in them.
+  - bugfix: Fixed not being able to restock shotgun shells boxes in APC Supply and
+      Requisitions Ammunition vendors.

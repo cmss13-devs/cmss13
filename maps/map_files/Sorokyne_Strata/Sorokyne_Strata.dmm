@@ -2351,7 +2351,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -4273,7 +4273,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "alY" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -6869,7 +6869,7 @@
 /area/strata/ag/interior/outpost/security)
 "atL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -7587,7 +7587,7 @@
 /area/strata/ag/interior/outpost/engi)
 "avT" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -8126,7 +8126,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -8276,7 +8276,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "axO" = (
@@ -9047,7 +9047,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -9693,7 +9693,7 @@
 "aCn" = (
 /obj/item/stool,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "aCo" = (
@@ -10764,7 +10764,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -12709,7 +12709,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -12805,7 +12805,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aMb" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -13620,7 +13620,7 @@
 	dir = 8;
 	tag = "icon-officechair_white (EAST)"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -14279,7 +14279,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -15378,7 +15378,7 @@
 /area/strata/ag/interior/outpost/admin)
 "aTK" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -21597,7 +21597,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -26042,7 +26042,7 @@
 	dir = 4;
 	tag = "icon-chair (EAST)"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	pixel_x = -24;
@@ -27415,7 +27415,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -31231,7 +31231,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "dvX" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -33276,7 +33276,7 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "gTk" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -34987,7 +34987,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -39665,7 +39665,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "rLn" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},

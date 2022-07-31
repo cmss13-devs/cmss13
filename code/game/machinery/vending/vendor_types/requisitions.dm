@@ -135,9 +135,30 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)
+	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/box/m94) && !istype(item_to_stock, /obj/item/storage/large_holster/machete))
+		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
+		return
+
+	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
+	var/corrected_path = return_corresponding_type(item_to_stock.type)
+
 	var/list/R
 	for(R in (listed_products))
-		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
+			//magazines handling (mainly for subtypes)
+			if(istype(item_to_stock, /obj/item/ammo_magazine))
+				//flamer fuel tanks handling
+				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+					if(FT.flamer_chem != initial(FT.flamer_chem))
+						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+						return
+				var/obj/item/ammo_magazine/A = item_to_stock
+				if(A.current_rounds < A.max_rounds)
+					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+					return
+
+			//Guns handling
 			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
@@ -147,6 +168,36 @@
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
 						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
+			//various stacks handling
+			else if(istype(item_to_stock, /obj/item/stack/folding_barricade))
+				var/obj/item/stack/folding_barricade/B = item_to_stock
+				if(B.amount != 3)
+					to_chat(user, SPAN_WARNING("[B]s are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
+					return
+			//M94 flare packs handling
+			else if(istype(item_to_stock, /obj/item/storage/box/m94))
+				var/obj/item/storage/box/m94/flare_pack = item_to_stock
+				if(flare_pack.contents.len < flare_pack.max_storage_space)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
+					return
+				var/flare_type
+				if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
+					flare_type = /obj/item/device/flashlight/flare/signal
+				else
+					flare_type = /obj/item/device/flashlight/flare
+				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
+					if(F.fuel < 1)
+						to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+						return
+					if(F.type != flare_type)
+						to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
+						return
+			//Machete holsters handling
+			else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
+				var/obj/item/weapon/melee/claymore/mercsword/machete/Mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+				if(!Mac)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+					return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -287,6 +338,7 @@
 		list("M240 Incinerator Tank", round(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Box Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/lmg, VENDOR_ITEM_REGULAR),
 		list("M41A MK1 Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 AP Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/m41aMK1/ap, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 
@@ -318,24 +370,51 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)
+	//these are exempted because checks would be huge and not worth it
+	if(istype(item_to_stock, /obj/item/storage))
+		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
+		return
 	var/list/R
+
+	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
+	var/corrected_path = return_corresponding_type(item_to_stock.type)
+
 	for(R in (listed_products))
-		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
+			//magazines handling
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
+				//flamer fuel tanks handling
+				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+					if(FT.flamer_chem != initial(FT.flamer_chem))
+						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+						return
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 					return
-			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
+			//magazine ammo boxes handling
+			else if(istype(item_to_stock, /obj/item/ammo_box/magazine))
 				var/obj/item/ammo_box/magazine/A = item_to_stock
-				if(A.contents.len < A.num_of_magazines)
+				//shotgun shells ammo boxes handling
+				if(A.handfuls)
+					var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+					if(!AM)
+						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+						return
+					if(AM.current_rounds != AM.max_rounds)
+						to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+						return
+				else if(A.contents.len < A.num_of_magazines)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
 					return
-				for(var/obj/item/ammo_magazine/M in A.contents)
-					if(M.current_rounds != M.max_rounds)
-						to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
-						return
-			if(istype(item_to_stock, /obj/item/ammo_box/rounds))
+				else
+					for(var/obj/item/ammo_magazine/M in A.contents)
+						if(M.current_rounds != M.max_rounds)
+							to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
+							return
+			//loose rounds ammo box handling
+			else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
 				var/obj/item/ammo_box/rounds/A = item_to_stock
 				if(A.bullet_amount < A.max_bullet_amount)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
@@ -566,10 +645,6 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
 		list("Marine Black Combat Gloves", 40, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 
-		list("MASKS (Choose 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
 		list("RADIO", -1, null, null),
 		list("Alpha Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/alpha, VENDOR_ITEM_REGULAR),
 		list("Bravo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/bravo, VENDOR_ITEM_REGULAR),
@@ -592,3 +667,36 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/stock(obj/item/item_to_stock, mob/user)
+	var/list/R
+	for(R in (listed_products))
+		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+			//Marine armor handling
+			if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+				if(AR.pockets && AR.pockets.contents.len)
+					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+					return
+			//Marine helmet handling
+			else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
+				var/obj/item/clothing/head/helmet/marine/H = item_to_stock
+				if(H.pockets && H.pockets.contents.len)
+					to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+					return
+
+			if(item_to_stock.loc == user) //Inside the mob's inventory
+				if(item_to_stock.flags_item & WIELDED)
+					item_to_stock.unwield(user)
+				user.temp_drop_inv_item(item_to_stock)
+
+			if(isstorage(item_to_stock.loc)) //inside a storage item
+				var/obj/item/storage/S = item_to_stock.loc
+				S.remove_from_storage(item_to_stock, user.loc)
+
+			qdel(item_to_stock)
+			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
+			R[2]++
+			updateUsrDialog()
+			return //We found our item, no reason to go on.

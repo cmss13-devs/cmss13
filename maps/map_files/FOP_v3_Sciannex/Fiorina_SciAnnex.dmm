@@ -2004,7 +2004,7 @@
 	},
 /area/fiorina/tumor/civres)
 "aZZ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -4679,7 +4679,7 @@
 	},
 /area/fiorina/tumor/fiberbush)
 "cJW" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "cKa" = (
@@ -4861,7 +4861,7 @@
 	},
 /area/fiorina/tumor/servers)
 "cRs" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -6127,7 +6127,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "dCF" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dCM" = (
@@ -6394,7 +6394,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "dKX" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/maintenance)
 "dLq" = (
@@ -8784,7 +8784,7 @@
 	},
 /area/fiorina/station/research_cells)
 "fmM" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15633,7 +15633,7 @@
 	},
 /area/fiorina/station/lowsec)
 "jsE" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15679,7 +15679,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "juS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15819,7 +15819,7 @@
 /obj/item/ammo_casing{
 	icon_state = "cartridge_1"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "jAW" = (
@@ -21581,7 +21581,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mTS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -26473,7 +26473,7 @@
 	},
 /area/fiorina/station/chapel)
 "pYO" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
 	},
@@ -31770,7 +31770,7 @@
 	},
 /area/fiorina/station/lowsec)
 "tnr" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -32840,7 +32840,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "tQJ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -34339,7 +34339,7 @@
 	},
 /area/fiorina/station/medbay)
 "uRe" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";

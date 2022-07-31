@@ -21,25 +21,29 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(GLOB.survivor_spawns)
-	H.forceMove(get_turf(spawner))
+	var/list/potential_spawners = list()
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
+		if(spawner.check_can_spawn(H))
+			potential_spawners += spawner
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
+	H.forceMove(get_turf(picked_spawner))
 
-	if(istype(spawner) && spawner.equipment)
-		arm_equipment(H, spawner.equipment, FALSE, TRUE)
+	if(picked_spawner.equipment)
+		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
 	else
 		survivor_old_equipment(H)
 
-	if(istype(spawner) && spawner.roundstart_damage_max > 0)
-		for(var/i in 0 to spawner.roundstart_damage_times)
-			H.take_limb_damage(rand(spawner.roundstart_damage_min, spawner.roundstart_damage_max), 0)
+	if(picked_spawner.roundstart_damage_max > 0)
+		for(var/i in 0 to picked_spawner.roundstart_damage_times)
+			H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
 	H.name = H.get_visible_name()
 
-	if(istype(spawner) && spawner.intro_text && length(spawner.intro_text))
-		intro_text = spawner.intro_text
+	if(length(picked_spawner.intro_text))
+		intro_text = picked_spawner.intro_text
 
-	if(istype(spawner) && spawner.story_text)
-		story_text = spawner.story_text
+	if(picked_spawner.story_text)
+		story_text = picked_spawner.story_text
 
 /datum/job/civilian/survivor/generate_entry_message(var/mob/living/carbon/human/H)
 	if(intro_text)

@@ -2010,6 +2010,10 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	. = ..()
 
+	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
+		return
+
 	if(gun.flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("\The [gun] isn't lit!"))
 		return

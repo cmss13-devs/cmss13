@@ -1945,7 +1945,7 @@ Defined in conflicts.dm of the #defines folder.
 	to_chat(user, SPAN_WARNING("It's empty."))
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
-	return "It has [icon2html(src)] [name] ([current_rounds]/[max_rounds]) mounted underneath.<br>"
+	return "It has [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()

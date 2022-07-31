@@ -16,7 +16,7 @@
 	///where the beam goes to
 	var/atom/target = null
 	///list of beam objects. These have their visuals set by the visuals var which is created on starting
-	var/list/elements = list()
+	var/list/elements// = list()
 	///icon used by the beam.
 	var/icon
 	///icon state of the main segments of the beam
@@ -30,13 +30,14 @@
 	///will the origin object always turn to face the target?
 	var/always_turn = FALSE
 
-/datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=BEAM_INFINITE_DURATION,maxdistance=INFINITY,btype = /obj/effect/ebeam)
-	origin = beam_origin
-	target = beam_target
-	max_distance = maxdistance
-	icon = beam_icon
-	icon_state = beam_icon_state
-	beam_type = btype
+/datum/beam/New(origin, target, icon='icons/effects/beam.dmi', icon_state="b_beam", time=BEAM_INFINITE_DURATION, max_distance=INFINITY, beam_type = /obj/effect/ebeam)
+	src.origin = origin
+	src.target = target
+	src.max_distance = max_distance
+	src.icon = icon
+	src.icon_state = icon_state
+	src.beam_type = beam_type
+	elements = list()
 	if(time > BEAM_INFINITE_DURATION)
 		QDEL_IN(src, time)
 
@@ -169,11 +170,11 @@
  * beam_type: The type of your custom beam. This is for adding other wacky stuff for your beam only. Most likely, you won't (and shouldn't) change it.
  */
 /atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
-	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,always_turn)
+	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
 	INVOKE_ASYNC(newbeam, /datum/beam/.proc/Start)
 	return newbeam
 
-/proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
+/proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
 	. = list()
 	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
 		. += beno

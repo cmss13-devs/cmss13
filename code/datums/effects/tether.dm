@@ -4,7 +4,7 @@
 	var/range = 0
 	var/datum/effects/tethered/tethered
 	var/tether_icon // The icon used for the Beam proc for the tether
-	var/datum/beam/beam_id
+	var/datum/beam/tether_beam
 	var/always_face
 
 /datum/effects/tethering/New(var/atom/A, var/range, var/icon, var/always_face)
@@ -31,7 +31,7 @@
 		qdel(tethered)
 		tethered = null
 	if(affected_atom)
-		QDEL_NULL(beam_id)
+		QDEL_NULL(tether_beam)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_MOVED)
 	. = ..()
 
@@ -60,7 +60,7 @@
 /datum/effects/tethering/proc/set_tethered(var/datum/effects/tethered/T)
 	tethered = T
 	T.tether = src
-	beam_id = affected_atom.beam(T.affected_atom, tether_icon, time = BEAM_INFINITE_DURATION, maxdistance = range+1, always_turn = always_face)
+	tether_beam = affected_atom.beam(T.affected_atom, tether_icon, time = BEAM_INFINITE_DURATION, maxdistance = range+1, always_turn = always_face)
 
 /datum/effects/tethered
 	effect_name = "tethered"

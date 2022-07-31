@@ -162,7 +162,7 @@
 	for (var/k in GLOB.resin_constructions_list)
 		var/datum/resin_construction/RC = k
 
-		var/icon_file = 'icons/mob/hud/actions.dmi'
+		var/icon_file = 'icons/mob/hud/actions_xeno.dmi'
 		var/icon_state = initial(RC.construction_name)
 		var/icon_name = replacetext(icon_state, " ", "-")
 

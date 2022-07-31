@@ -1,4 +1,5 @@
 /datum/action/xeno_action
+	icon_file = 'icons/mob/hud/actions_xeno.dmi'
 	var/ability_name // Our name
 
 	var/plasma_cost = 0

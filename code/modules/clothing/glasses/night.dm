@@ -134,7 +134,6 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(8, src)
-			to_chat(user, SPAN_NOTICE("[icon2html(G, owner)] far sight system enabled."))
 		START_PROCESSING(SSobj, src)
 	else
 		powerpack = null
@@ -142,12 +141,11 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(world_view_size, src)
-			to_chat(user, SPAN_NOTICE("[icon2html(G, owner)] far sight system disabled."))
 		STOP_PROCESSING(SSobj, src)
 
-	for(var/datum/action/action in actions)
-		if(istype, (action, /datum/action/item_action/m56_goggles/far_sight))
-		action.update_button_icon()
+	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
+	FT.update_button_icon()
+
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -182,6 +180,7 @@
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
+		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [src]'s far sight system."))
 
 /datum/action/item_action/m56_goggles/far_sight/update_button_icon()
 	if(!target)

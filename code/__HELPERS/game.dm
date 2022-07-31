@@ -130,7 +130,6 @@
 					hear += M
 	return hear
 
-
 /proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
 
 	set background = 1
@@ -303,3 +302,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	for(var/client/C as anything in GLOB.clients)
 		if(C.prefs?.toggles_flashing & FLASH_ROUNDSTART)
 			window_flash(C)
+
+/// Removes an image from a client's `.images`. Useful as a callback.
+/proc/remove_image_from_client(image/image, client/remove_from)
+	remove_from?.images -= image

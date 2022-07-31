@@ -18,7 +18,11 @@
 /mob/proc/get_gender()
 	return gender
 
-
+/proc/is_blind(A)
+	if(isliving(A))
+		var/mob/living/M = A
+		return M.eye_blind
+	return FALSE
 
 
 /*

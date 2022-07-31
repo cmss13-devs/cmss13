@@ -2041,6 +2041,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
 	ammo_datum.flamer_reagent_type = flamer_reagent.type
 	P.generate_bullet(ammo_datum)
+	P.icon_state = "naptha_ball"
+	P.color = flamer_reagent.color
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
 	var/turf/user_turf = get_turf(user)
 	gun.muzzle_flash(Get_Angle(user_turf, target), user)

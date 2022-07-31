@@ -410,6 +410,46 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
+// Outer Rim Weapon Belts
+
+/obj/item/storage/belt/marine/m16/fill_preset_inventory() // M16
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16 (src)
+
+/obj/item/storage/belt/marine/m16/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40 (src)
+
+/obj/item/storage/belt/marine/mar40/drum/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40/lmg (src)
+
+/obj/item/storage/belt/marine/mar40/extended/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/mar40/extended (src)
+
+/obj/item/storage/belt/marine/mp5/fill_preset_inventory() // MP5
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5 (src)
+
+/obj/item/storage/belt/marine/hunting/fill_preset_inventory() // Hunting Rifle
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/hunting(src)
+
+/obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/fp9000(src)
+
+/obj/item/storage/belt/marine/nsg23/fill_preset_inventory() // NSG23
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23(src)
+
+
+
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
 	desc = "Despite the fact that 1. drum magazines are incredibly non-ergonomical, and 2. require incredibly precise machining in order to fit universally (spoiler, they don't, adding further to the myth of 'Smartgun Personalities'), the USCM decided to issue a modified marine belt (more formally known by the designation M280) with hooks and dust covers (overly complex for the average jarhead) for the M56B system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled up velcro, the rig actually does do a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
@@ -576,6 +616,7 @@
 /obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
 	for(var/i in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
+
 
 /obj/item/storage/belt/shotgun/lever_action
 	name = "\improper M276 pattern 45-70 loading rig"

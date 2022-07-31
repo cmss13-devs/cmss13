@@ -931,6 +931,9 @@
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
+			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			if(istype(large_embed))
+				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
 				var/found_one = FALSE
 				for(var/obj/item/shard/shrapnel/S in embedded_items)

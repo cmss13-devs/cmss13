@@ -155,6 +155,9 @@
 	if(!G.powerpack)
 		G.link_powerpack(usr)
 
+/datum/action/item_action/smartgun/update_button_icon()
+	return
+
 /datum/action/item_action/smartgun/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Motion Detector"

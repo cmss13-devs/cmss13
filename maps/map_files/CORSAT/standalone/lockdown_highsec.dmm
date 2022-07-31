@@ -188,7 +188,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "A" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},

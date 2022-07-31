@@ -37292,7 +37292,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "cqT" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -37897,7 +37897,7 @@
 /area/corsat/omega/offices)
 "cUT" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -39130,7 +39130,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "dPH" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -40046,7 +40046,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "etp" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -40379,7 +40379,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "eJz" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -41325,7 +41325,7 @@
 /area/corsat/sigma/south/robotics)
 "fsr" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -42122,7 +42122,7 @@
 	},
 /area/corsat/gamma/security)
 "gaO" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -42338,7 +42338,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "ghu" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -46701,7 +46701,7 @@
 	},
 /area/corsat/gamma/administration)
 "jhR" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -47530,7 +47530,7 @@
 /area/corsat/gamma/rnr)
 "jUn" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -50684,7 +50684,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "mfS" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -51704,7 +51704,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "mSG" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
@@ -57158,7 +57158,7 @@
 	},
 /area/corsat/theta/biodome)
 "qVz" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -57618,7 +57618,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "rpr" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -60565,7 +60565,7 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "tuo" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61855,7 +61855,7 @@
 	},
 /area/corsat/gamma/security/cells)
 "usz" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/corsat{
 	icon_state = "squares"

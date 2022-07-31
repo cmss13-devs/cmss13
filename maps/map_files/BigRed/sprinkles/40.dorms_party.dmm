@@ -44,6 +44,8 @@
 /area/bigredv2/outside/dorms)
 "ai" = (
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aj" = (
@@ -140,6 +142,7 @@
 	icon_state = "xgib4";
 	tag = "icon-xgib4"
 	},
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -161,7 +164,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aD" = (
-
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aE" = (
@@ -371,6 +374,7 @@
 	dir = 4;
 	layer = 2.4
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bk" = (
@@ -429,11 +433,45 @@
 	icon_state = "grimy"
 	},
 /area/bigredv2/outside/dorms)
+"do" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"el" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"iE" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
 "lN" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
+/area/bigredv2/outside/dorms)
+"zO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"XP" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
 /area/bigredv2/outside/dorms)
 
 (1,1,1) = {"
@@ -458,14 +496,14 @@ bc
 ac
 ai
 ad
-aD
+ad
 ad
 aX
 bd
 "}
 (4,1,1) = {"
 ad
-ad
+XP
 ad
 ah
 ad
@@ -477,7 +515,7 @@ ad
 ad
 ad
 ad
-ad
+aD
 ad
 bf
 "}
@@ -509,13 +547,13 @@ aY
 bi
 "}
 (9,1,1) = {"
-ad
+el
 aj
 au
 aG
 aO
-ad
-aq
+XP
+zO
 "}
 (10,1,1) = {"
 ad
@@ -523,7 +561,7 @@ aj
 au
 aH
 aO
-ad
+XP
 bj
 "}
 (11,1,1) = {"
@@ -559,7 +597,7 @@ dl
 ay
 aJ
 aJ
-aJ
+do
 bm
 "}
 (15,1,1) = {"
@@ -590,7 +628,7 @@ aJ
 bo
 "}
 (18,1,1) = {"
-ae
+iE
 ap
 aB
 aM

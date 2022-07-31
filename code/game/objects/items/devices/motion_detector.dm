@@ -131,7 +131,7 @@
 
 /obj/item/device/motiondetector/proc/turn_off(mob/user, var/forced = FALSE)
 	if(forced)
-		visible_message(SPAN_NOTICE("\The [src] turns off."), SPAN_NOTICE("You hear a click."), 3)
+		visible_message(SPAN_NOTICE("\The [src] shorts out."), SPAN_NOTICE("You hear a click."), 3)
 	else if(user)
 		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning

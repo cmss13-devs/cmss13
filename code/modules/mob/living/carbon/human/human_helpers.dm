@@ -240,11 +240,13 @@
 	for(var/i in cont)
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
-			md.toggle_active(src, TRUE)
+			md.toggle_active(src, old_active = TRUE, forced = TRUE)
 		if(istype(i, /obj/item/weapon/gun/smartgun))
 			var/obj/item/weapon/gun/smartgun/sg = i
 			if(sg.motion_detector)
 				sg.motion_detector = FALSE
+				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
+				TMD.update_icon()
 				sg.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()

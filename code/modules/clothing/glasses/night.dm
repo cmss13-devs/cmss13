@@ -134,7 +134,7 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(8, src)
-			to_chat(user, SPAN_NOTICE("You enable the far sight system."))
+			to_chat(user, SPAN_NOTICE("[icon2html(G, owner)] far sight system enabled."))
 		START_PROCESSING(SSobj, src)
 	else
 		powerpack = null
@@ -142,8 +142,12 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(world_view_size, src)
-			to_chat(user, SPAN_NOTICE("You disable the far sight system."))
+			to_chat(user, SPAN_NOTICE("[icon2html(G, owner)] far sight system disabled."))
 		STOP_PROCESSING(SSobj, src)
+
+	for(var/datum/action/action in actions)
+		if(istype, (action, /datum/action/item_action/m56_goggles/far_sight))
+		action.update_button_icon()
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -178,11 +182,15 @@
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
-		if(G.far_sight)
-			button.icon_state = "template_on"
-		else
-			button.icon_state = "template"
-		to_chat(owner, "[icon2html(G, owner)] You changed the [G.name]'s sight setting to <b>[G.far_sight ? "far" : "normal"]</b>.")
+
+/datum/action/item_action/m56_goggles/far_sight/update_button_icon()
+	if(!target)
+		return
+	var/obj/item/clothing/glasses/night/m56_goggles/G = target
+	if(G.far_sight)
+		button.icon_state = "template_on"
+	else
+		button.icon_state = "template"
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"

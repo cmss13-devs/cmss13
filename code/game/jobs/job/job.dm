@@ -6,6 +6,7 @@
 
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
+	var/override_hide_if_no_positions = FALSE
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
 	var/allow_additional	= 0 //Can admins modify positions to it
 	var/scaled = 0

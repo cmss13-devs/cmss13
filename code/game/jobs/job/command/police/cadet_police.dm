@@ -1,7 +1,7 @@
 /datum/job/command/cadet_police
 	title = JOB_POLICE_CADET
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	allow_additional = 0
 	scaled = 0
 	selection_class = "job_mp"

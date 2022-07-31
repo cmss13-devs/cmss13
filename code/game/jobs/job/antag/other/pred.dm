@@ -2,6 +2,7 @@
 
 /datum/job/antag/predator
 	title = JOB_PREDATOR
+	override_hide_if_no_positions = TRUE
 	selection_class = "job_predator"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_YAUTJA

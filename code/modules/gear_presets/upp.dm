@@ -1,6 +1,6 @@
 /datum/equipment_preset/upp
 	name = FACTION_UPP
-	languages = (LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
 

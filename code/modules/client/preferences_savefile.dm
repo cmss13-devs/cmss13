@@ -49,13 +49,11 @@
 		S["toggles_flashing"] << flash_toggles_two
 
 	if(savefile_version < 17) //remove omniglots
-		var/language_traits = list()
+		var/list/language_traits = list()
 		S["traits"] >> language_traits
-		if(language_traits.length > 1)
+		if(language_traits.len > 1)
 			language_traits = null
 		S["traits"] << language_traits
-
-/datum/preferences/var/list/traits
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

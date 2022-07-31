@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	16
+#define SAVEFILE_VERSION_MAX	17
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -47,6 +47,15 @@
 		S["toggles_flashing"] >> flash_toggles_two
 		flash_toggles_two |= FLASH_POOLSPAWN
 		S["toggles_flashing"] << flash_toggles_two
+
+	if(savefile_version < 17) //remove omniglots
+		var/language_traits = list()
+		S["traits"] >> language_traits
+		if(language_traits.length > 1)
+			language_traits = null
+		S["traits"] << language_traits
+
+/datum/preferences/var/list/traits
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

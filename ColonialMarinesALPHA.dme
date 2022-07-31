@@ -299,6 +299,8 @@
 #include "code\datums\components\armor_link.dm"
 #include "code\datums\components\bonus_damage_stack.dm"
 #include "code\datums\components\cluster_stack.dm"
+#include "code\datums\components\healing_reduction.dm"
+#include "code\datums\components\speed_modifier.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\toxin_buildup.dm"

@@ -45,7 +45,7 @@
 	var/creation_complexity = list(CHEM_CLASS_COMMON, CHEM_CLASS_UNCOMMON, CHEM_CLASS_RARE)
 	var/creation_name = ""
 	var/creation_cost = 0
-	var/min_creation_cost = 5
+	var/min_creation_cost = 0
 	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
 
 /obj/structure/machinery/chem_simulator/Initialize()
@@ -296,7 +296,13 @@
 		else
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
-		var/level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
+		var/level_to_set = 1
+		if(chemical_data.clearance_level <= 2)
+			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
+		else if(chemical_data.clearance_level <= 4)
+			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
+		else
+			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
 		if(!level_to_set)
 			return
 
@@ -402,11 +408,11 @@
 			if(!isPositiveProperty(P))
 				only_positive = FALSE
 			if(P.category & PROPERTY_TYPE_ANOMALOUS)
-				property_costs[P.name] = P.level * 10
+				property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_ANOMALOUS
 				continue
 			switch(mode)
 				if(MODE_AMPLIFY)
-					property_costs[P.name] = max(min(P.level - 1, 5), 1)
+					property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
 				if(MODE_SUPPRESS)
 					property_costs[P.name] = 2
 				if(MODE_RELATE)
@@ -416,7 +422,7 @@
 						else if(reference_property.rarity < PROPERTY_RARE)
 							property_costs[P.name] = P.level
 						else
-							property_costs[P.name] = P.level * 3
+							property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_RARE
 					else
 						property_costs[P.name] = P.level * 1
 		if(only_positive)
@@ -435,7 +441,6 @@
 		creation_cost += max(abs(P.value), 1) * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
 			creation_cost += P.level - 6 + n_ceil((P.level - 5) / 2)
-			min_creation_cost += max(P.level - 6, 0) // Min creation cost scales linearly for each property at level 7+
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)
@@ -523,7 +528,10 @@
 			if(target_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
-	if(mode == MODE_RELATE)
+			if(mode == MODE_AMPLIFY)
+				if(target_property.level >= chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && chemical_data.clearance_level < 5)
+					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
+					return FALSE
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE

@@ -472,5 +472,7 @@
   - bugfix: Fixed not being able to restock shotgun shells boxes in APC Supply and
       Requisitions Ammunition vendors.
 2022-07-31:
+  Joe lampost:
+  - bugfix: Fixes the pred tracker being unable to track pred bodies.
   Reisyn, Geeves:
   - rscadd: Added a Falling Falcons poster.

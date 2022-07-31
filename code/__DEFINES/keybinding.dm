@@ -122,6 +122,7 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+#define COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE "keybinding_xeno_primary_attack_five"
 
 #define COMSIG_KB_XENO_EMIT_PHEROMONES "keybiding_xeno_emit_pheromones"
 #define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybiding_xeno_emit_pheromones_frenzy"

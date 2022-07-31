@@ -65,6 +65,21 @@
 	X.xeno_primary_action_four()
 	return TRUE
 
+/datum/keybinding/xenomorph/primary_attack_five
+	hotkey_keys = list("N")
+	classic_keys = list()
+	name = "primary_attack_five"
+	full_name = "Primary Attack Five"
+	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE
+
+/datum/keybinding/xenomorph/primary_attack_five/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/X = user.mob
+	X.xeno_primary_action_five()
+	return TRUE
+
 /datum/keybinding/xenomorph/emit_pheromones
 	hotkey_keys = list()
 	classic_keys = list()

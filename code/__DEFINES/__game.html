@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;__game.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/__game.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/__game.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_NO_PROTECTION">CEILING_NO_PROTECTION</a></th><td>Do not block any ordnance</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_1">CEILING_PROTECTION_TIER_1</a></th><td>Blocks mortar placement, lasing, and medevac</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_2">CEILING_PROTECTION_TIER_2</a></th><td>Blocks CAS signals, supply drops, fultoning, and mortar fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_3">CEILING_PROTECTION_TIER_3</a></th><td>Blocks CAS fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_4">CEILING_PROTECTION_TIER_4</a></th><td>Blocks OB fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_IS_PROTECTED">CEILING_IS_PROTECTED</a></th><td>Only use the CEILING_PROTECTION_TIER_X defines for <code>protection_level</code></td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_CAPACITY">QUADTREE_CAPACITY</a></th><td>Max amount of player coordinates in a quadtree cell</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_BOUNDARY_MINIMUM_WIDTH">QUADTREE_BOUNDARY_MINIMUM_WIDTH</a></th><td>Minimum X width up to which we keep dividing the tree (meaning cells can be half that)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_BOUNDARY_MINIMUM_HEIGHT">QUADTREE_BOUNDARY_MINIMUM_HEIGHT</a></th><td>Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/BEAM_INFINITE_DURATION">BEAM_INFINITE_DURATION</a></th><td>For beams with an infinite duration (deletion is handled separately)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/AMOUNT_PER_TIME">AMOUNT_PER_TIME</a></th><td>Used for calculations with delta_time when figuring how much &quot;amount&quot; to give per &quot;time&quot;
+<code>amount</code> - The number to get per time
+<code>time</code> - The time period in which to gain this amount
+To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_LAZYSS">PERF_TOGGLE_LAZYSS</a></th><td>Set conservative MC timings on game start</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_NOBLOODPRINTS">PERF_TOGGLE_NOBLOODPRINTS</a></th><td>Disable bloody footprints</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_ATTACKLOGS">PERF_TOGGLE_ATTACKLOGS</a></th><td>Disable file-based attacklogs</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_SHUTTLES">PERF_TOGGLE_SHUTTLES</a></th><td>Disables loading/ticking shuttle controllers</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_TECHWEBS">PERF_TOGGLE_TECHWEBS</a></th><td>Disables loading Techwebs and additional Z-Levels</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/AMOUNT_PER_TIME"><aside class="declaration">#define </aside>AMOUNT_PER_TIME
+            <aside>(amount, time)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L482">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 482"/></a>
+    </h3>
+    <p>Used for calculations with delta_time when figuring how much &quot;amount&quot; to give per &quot;time&quot;
+<code>amount</code> - The number to get per time
+<code>time</code> - The time period in which to gain this amount
+To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds</p><h3 id="define/BEAM_INFINITE_DURATION"><aside class="declaration">#define </aside>BEAM_INFINITE_DURATION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L476">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 476"/></a>
+    </h3>
+    <p>For beams with an infinite duration (deletion is handled separately)</p><h3 id="define/CEILING_IS_PROTECTED"><aside class="declaration">#define </aside>CEILING_IS_PROTECTED
+            <aside>(ceiling, protection_level)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L258">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 258"/></a>
+    </h3>
+    <p>Only use the CEILING_PROTECTION_TIER_X defines for <code>protection_level</code></p><h3 id="define/CEILING_NO_PROTECTION"><aside class="declaration">#define </aside>CEILING_NO_PROTECTION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L230">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 230"/></a>
+    </h3>
+    <p>Do not block any ordnance</p><h3 id="define/CEILING_PROTECTION_TIER_1"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_1
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L235">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 235"/></a>
+    </h3>
+    <p>Blocks mortar placement, lasing, and medevac</p><h3 id="define/CEILING_PROTECTION_TIER_2"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_2
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L239">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 239"/></a>
+    </h3>
+    <p>Blocks CAS signals, supply drops, fultoning, and mortar fire</p><h3 id="define/CEILING_PROTECTION_TIER_3"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_3
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L244">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 244"/></a>
+    </h3>
+    <p>Blocks CAS fire</p><h3 id="define/CEILING_PROTECTION_TIER_4"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_4
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L249">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 249"/></a>
+    </h3>
+    <p>Blocks OB fire</p><h3 id="define/PERF_TOGGLE_ATTACKLOGS"><aside class="declaration">#define </aside>PERF_TOGGLE_ATTACKLOGS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L495">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 495"/></a>
+    </h3>
+    <p>Disable file-based attacklogs</p><h3 id="define/PERF_TOGGLE_LAZYSS"><aside class="declaration">#define </aside>PERF_TOGGLE_LAZYSS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L491">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 491"/></a>
+    </h3>
+    <p>Set conservative MC timings on game start</p><h3 id="define/PERF_TOGGLE_NOBLOODPRINTS"><aside class="declaration">#define </aside>PERF_TOGGLE_NOBLOODPRINTS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L493">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 493"/></a>
+    </h3>
+    <p>Disable bloody footprints</p><h3 id="define/PERF_TOGGLE_SHUTTLES"><aside class="declaration">#define </aside>PERF_TOGGLE_SHUTTLES
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L497">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 497"/></a>
+    </h3>
+    <p>Disables loading/ticking shuttle controllers</p><h3 id="define/PERF_TOGGLE_TECHWEBS"><aside class="declaration">#define </aside>PERF_TOGGLE_TECHWEBS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L499">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 499"/></a>
+    </h3>
+    <p>Disables loading Techwebs and additional Z-Levels</p><h3 id="define/QUADTREE_BOUNDARY_MINIMUM_HEIGHT"><aside class="declaration">#define </aside>QUADTREE_BOUNDARY_MINIMUM_HEIGHT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L432">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 432"/></a>
+    </h3>
+    <p>Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)</p><h3 id="define/QUADTREE_BOUNDARY_MINIMUM_WIDTH"><aside class="declaration">#define </aside>QUADTREE_BOUNDARY_MINIMUM_WIDTH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L430">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 430"/></a>
+    </h3>
+    <p>Minimum X width up to which we keep dividing the tree (meaning cells can be half that)</p><h3 id="define/QUADTREE_CAPACITY"><aside class="declaration">#define </aside>QUADTREE_CAPACITY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/__game.dm#L428">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 428"/></a>
+    </h3>
+    <p>Max amount of player coordinates in a quadtree cell</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

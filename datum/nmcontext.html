@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;nmcontext - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/nmcontext.html#var">Var Details</a> - <a href="datum/nmcontext.html#proc">Proc Details</a></header>
+<main>
+<h1>default nmcontext <aside>/<a href="datum.html">datum</a>/<a href="datum/nmcontext.html">nmcontext</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 2"/></a></h1>
+
+<p>Nightmare setup global state</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/done">done</a></th><td>TRUE once finished running the tasks</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/maintask">maintask</a></th><td>Global task controller</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/mapcontroller">mapcontroller</a></th><td>Map loading controller</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/name">name</a></th><td>Setup name</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/scenario">scenario</a></th><td>Scenario values</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/start_time">start_time</a></th><td>Time of start of setup</td></tr>
+            <tr><th><a href="datum/nmcontext.html#var/steps">steps</a></th><td>Hash of config nodes by type</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/nmcontext.html#proc/init_config">init_config</a></th><td>Loads nightmare config from a map config</td></tr>
+            <tr><th><a href="datum/nmcontext.html#proc/init_scenario">init_scenario</a></th><td>Initializes pre-generated scenario</td></tr>
+            <tr><th><a href="datum/nmcontext.html#proc/resolve_scenario">resolve_scenario</a></th><td>Resolves result of the main steps for execution</td></tr>
+            <tr><th><a href="datum/nmcontext.html#proc/run_steps">run_steps</a></th><td>Run scenario steps synchronously - sleeps</td></tr>
+            <tr><th><a href="datum/nmcontext.html#proc/start_setup">start_setup</a></th><td>Wrapper to request to execute the whole scenario</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/done"><aside class="declaration">var </aside>done
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 14"/></a></h3>
+        <p>TRUE once finished running the tasks</p><h3 id="var/maintask"><aside class="declaration">var </aside>maintask
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/nmtask.html">nmtask</a>/<a href="datum/nmtask/sync.html">sync</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 10"/></a></h3>
+        <p>Global task controller</p><h3 id="var/mapcontroller"><aside class="declaration">var </aside>mapcontroller
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/nmtask.html">nmtask</a>/<a href="datum/nmtask/sync.html">sync</a>/mapinit</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 12"/></a></h3>
+        <p>Map loading controller</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 4"/></a></h3>
+        <p>Setup name</p><h3 id="var/scenario"><aside class="declaration">var </aside>scenario
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 6"/></a></h3>
+        <p>Scenario values</p><h3 id="var/start_time"><aside class="declaration">var </aside>start_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 18"/></a></h3>
+        <p>Time of start of setup</p><h3 id="var/steps"><aside class="declaration">var </aside>steps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 8"/></a></h3>
+        <p>Hash of config nodes by type</p><h2 id="proc">Proc Details</h2><h3 id="proc/init_config"><aside class="declaration">proc </aside>init_config<aside>(map_type) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 26"/></a></aside>
+        </h3>
+        <p>Loads nightmare config from a map config</p><h3 id="proc/init_scenario"><aside class="declaration">proc </aside>init_scenario<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 41"/></a></aside>
+        </h3>
+        <p>Initializes pre-generated scenario</p><h3 id="proc/resolve_scenario"><aside class="declaration">proc </aside>resolve_scenario<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 64"/></a></aside>
+        </h3>
+        <p>Resolves result of the main steps for execution</p><h3 id="proc/run_steps"><aside class="declaration">proc </aside>run_steps<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 75"/></a></aside>
+        </h3>
+        <p>Run scenario steps synchronously - sleeps</p><h3 id="proc/start_setup"><aside class="declaration">proc </aside>start_setup<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/nightmare/nmcontext.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;nightmare&#x2F;nmcontext.dm 53"/></a></aside>
+        </h3>
+        <p>Wrapper to request to execute the whole scenario</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

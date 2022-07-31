@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;atom - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="atom.html#var">Var Details</a> - <a href="atom.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="atom.html">atom</a><aside> inherits /<a href="datum.html">datum</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/_DynamicAreaLighting_TG.dm#L141">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;_DynamicAreaLighting_TG.dm 141"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="atom.html#var/desc_lore">desc_lore</a></th><td>Labels put onto the atom by a hand labeler. usually in the format &quot;[initial(name)] ([name_label])&quot;</td></tr>
+            <tr><th><a href="atom.html#var/orbit_target">orbit_target</a></th><td>Reference to atom being orbited</td></tr>
+            <tr><th><a href="atom.html#var/reagents">reagents</a></th><td>Chemistry.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="atom.html#proc/Topic">Topic</a></th><td>Passes Stat Browser Panel clicks to the game and calls client click on an atom</td></tr>
+            <tr><th><a href="atom.html#proc/add_blood">add_blood</a></th><td>add_blood</td></tr>
+            <tr><th><a href="atom.html#proc/attack_alien">attack_alien</a></th><td>*The parent proc, will default to UnarmedAttack behaviour unless overriden
+Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
+Return XENO_NONCOMBAT_ACTION if it did something and should have some delay.
+Return XENO_NO_DELAY_ACTION if it gave an error message or should have no delay at all, ex. &quot;You can't X that, it's Y!&quot;
+Return FALSE if it didn't do anything and should count as a missed slash.</td></tr>
+            <tr><th><a href="atom.html#proc/connect_to_shuttle">connect_to_shuttle</a></th><td>This proc is called on atoms when they are loaded into a shuttle</td></tr>
+            <tr><th><a href="atom.html#proc/get_all_orbiters">get_all_orbiters</a></th><td>Recursive getter method to return a list of all ghosts orbitting this atom</td></tr>
+            <tr><th><a href="atom.html#proc/get_storage_depth_to">get_storage_depth_to</a></th><td><em>Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
+Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.
+An alternative to loc.loc; looked at another way, the number it returns is the number of loc checks before reaching the target.
+Returns FALSE if the atom isn't somewhere inside the container's contents.</em></td></tr>
+            <tr><th><a href="atom.html#proc/get_storage_depth_turf">get_storage_depth_turf</a></th><td><em>Like get storage depth to, but returns the depth to the nearest turf, inclusively
+Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).</em></td></tr>
+            <tr><th><a href="atom.html#proc/setDir">setDir</a></th><td>Hook for running code when a dir change occurs</td></tr>
+            <tr><th><a href="atom.html#proc/set_name_label">set_name_label</a></th><td>Hand Labeler</td></tr>
+            <tr><th><a href="atom.html#proc/shuttleRotate">shuttleRotate</a></th><td>Base proc</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/desc_lore"><aside class="declaration">var </aside>desc_lore
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 4"/></a></h3>
+        <p>Labels put onto the atom by a hand labeler. usually in the format &quot;[initial(name)] ([name_label])&quot;</p><h3 id="var/orbit_target"><aside class="declaration">var </aside>orbit_target
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 62"/></a></h3>
+        <p>Reference to atom being orbited</p><h3 id="var/reagents"><aside class="declaration">var </aside>reagents
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 41"/></a></h3>
+        <p>Chemistry.</p><h2 id="proc">Proc Details</h2><h3 id="proc/Topic">Topic<aside>(href, /list/href_list) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L478">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 478"/></a></aside>
+        </h3>
+        <p>Passes Stat Browser Panel clicks to the game and calls client click on an atom</p><h3 id="proc/add_blood"><aside class="declaration">proc </aside>add_blood<aside>(b_color) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/blood.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;blood.dm 11"/></a></aside>
+        </h3>
+        <p>add_blood</p><h3 id="proc/attack_alien"><aside class="declaration">proc </aside>attack_alien<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_onclick/xeno.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_onclick&#x2F;xeno.dm 65"/></a></aside>
+        </h3>
+        <p>*The parent proc, will default to UnarmedAttack behaviour unless overriden
+Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
+Return XENO_NONCOMBAT_ACTION if it did something and should have some delay.
+Return XENO_NO_DELAY_ACTION if it gave an error message or should have no delay at all, ex. &quot;You can't X that, it's Y!&quot;
+Return FALSE if it didn't do anything and should count as a missed slash.</p>
+<p>If using do_afters or sleeps, use invoke_async (or manually add the relevant action delayand return FALSE
+so that it doesn't double up on the delays) so that it applies the delay immediately instead of when it finishes.*</p><h3 id="proc/connect_to_shuttle"><aside class="declaration">proc </aside>connect_to_shuttle<aside>(/<a href="obj.html">obj</a>/<a href="obj/docking_port.html">docking_port</a>/<a href="obj/docking_port/mobile.html">mobile</a>/port, /<a href="obj.html">obj</a>/<a href="obj/docking_port.html">docking_port</a>/stationary/dock, idnum, override) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L502">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 502"/></a></aside>
+        </h3>
+        <p>This proc is called on atoms when they are loaded into a shuttle</p><h3 id="proc/get_all_orbiters"><aside class="declaration">proc </aside>get_all_orbiters<aside>(/list/processed, source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L600">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 600"/></a></aside>
+        </h3>
+        <p>Recursive getter method to return a list of all ghosts orbitting this atom</p>
+<p>This will work fine without manually passing arguments.</p><h3 id="proc/get_storage_depth_to"><aside class="declaration">proc </aside>get_storage_depth_to<aside>(/<a href="atom.html">atom</a>/container) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items/storage/storage.dm#L783">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 783"/></a></aside>
+        </h3>
+        <p><em>Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
+Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.
+An alternative to loc.loc; looked at another way, the number it returns is the number of loc checks before reaching the target.
+Returns FALSE if the atom isn't somewhere inside the container's contents.</em></p><h3 id="proc/get_storage_depth_turf"><aside class="declaration">proc </aside>get_storage_depth_turf<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items/storage/storage.dm#L798">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;storage&#x2F;storage.dm 798"/></a></aside>
+        </h3>
+        <p><em>Like get storage depth to, but returns the depth to the nearest turf, inclusively
+Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).</em></p><h3 id="proc/setDir"><aside class="declaration">proc </aside>setDir<aside>(newdir) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/atoms.dm#L510">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 510"/></a></aside>
+        </h3>
+        <p>Hook for running code when a dir change occurs</p>
+<p>Not recommended to use, listen for the <a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_DIR_CHANGE" title="COMSIG_ATOM_DIR_CHANGE">COMSIG_ATOM_DIR_CHANGE</a> signal instead (sent by this proc)</p><h3 id="proc/set_name_label"><aside class="declaration">proc </aside>set_name_label<aside>(new_label) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items/tools/misc_tools.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tools&#x2F;misc_tools.dm 8"/></a></aside>
+        </h3>
+        <p>Hand Labeler</p><h3 id="proc/shuttleRotate"><aside class="declaration">proc </aside>shuttleRotate<aside>(rotation, params) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/shuttle/shuttle_rotate.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle_rotate.dm 9"/></a></aside>
+        </h3>
+        <p>Base proc</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

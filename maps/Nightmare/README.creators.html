@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>maps&#x2F;Nightmare&#x2F;README.creators.md - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>CM Nightmare for Content Creators <aside>maps/Nightmare/README.creators.md</aside> 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/maps/Nightmare/README.creators.md">
+        <img src="git.png" width="16" height="16" title="maps&#x2F;Nightmare&#x2F;README.creators.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><h2 id="introduction">Introduction</h2>
+<p>Nightmare is a system designed to provide variation to game rounds. This can take the form of additions, or modifications, completely randomly, or in a structured fashion such as a scenario. It provides a (although incomplete) framework for this by providing config files in a tree-like JSON structure, and pre-made tools.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Generic actions</strong> : While most of the implementations are for mapping, the configuration aims to be generic enough to do more</li>
+<li><strong>'Scenario'</strong> : The Scenario is a simple set of values representing the setup, to make creation simpler and allow hand edit eg. for events</li>
+<li><strong>Map folder scanning</strong> : Common map variations can be setup just by putting files in folders, and placing landmarks on map</li>
+</ul>
+<h2 id="map-inserts-primer">Map inserts primer</h2>
+<p><em>Okay, your stuff is cool and all, but I just want to map.</em></p>
+<p>If you are creating standalone inserts, or creating variations of existing ones, but don't care about more advanced features, you can just use some of the added tools mentionned above! Just keep in mind they have to be setup in the map first.</p>
+<h3 id="landmarks-and-map-placement">Landmarks and map placement</h3>
+<p>Default Nightmare Map inserts occur at map-placed landmarks (type <code>/obj/effect/nightmare/landmark</code>). If there is not already one where you would want the map to pop up, you will have to add one. The map files will insert from this point toward positive coordinates, north and east. You also need to give it an <code>insert_tag</code> value to reference it, that doesn't contain underscores [<code>_</code>]. <strong>You are, obviously, encouraged to reuse existing and matching ones!</strong></p>
+<h3 id="map-creation-notes">Map creation notes</h3>
+<p>When creating inserts, you are advised to use passthrough when able. If you set turfs/areas to /{turf,area}/template_noop, this means the turf (or area) won't be changed. This is interesting because it means your insert doesn't have to replicate (and keep updated) the main map, and blends in nicer with others.</p>
+<h3 id="adding-standalone-inserts-sprinkles">Adding standalone inserts: 'sprinkles'</h3>
+<p>The <code>map_sprinkle</code> tool is designed to allow easily adding small map inserts. If the map uses it, there should probably be a <code>sprinkles/</code> directory.</p>
+<p>From there on, all you need to do is create (or reuse) a landmark, toss the file in with correct name, and that's it!</p>
+<p>The name should be as follows:</p>
+<ul>
+<li>A number, percentage of chances to be included</li>
+<li>Either a dot <code>.</code> to mean this replaces previous map, or <code>+</code> to mean it adds to it</li>
+<li>The <code>insert_tag</code> of the landmark this should be put at</li>
+<li>Optionally an underscore and additional name</li>
+<li><code>.dmm</code></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>50.hydro_destroyed.dmm</code> -&gt; 50% chance to put this at <code>hydro</code>, replacing what's there</li>
+<li><code>20+cargo_furniture.dmm</code> -&gt; 20% chance to add this to <code>cargo</code></li>
+<li><code>10.armory.dmm</code> -&gt; 10% chance to replace what's at armory with this</li>
+<li><code>_34.something.dmm</code> -&gt; doesn't start by digits, so ignored</li>
+</ul>
+<h3 id="adding-variations">Adding 'variations'</h3>
+<p>The <code>map_variations</code> tool is similar, but selects among several files to put one at the landmark.</p>
+<ul>
+<li>This works similarly to sprinkles, but picks from files in a folder</li>
+<li>The weighting is relative, so if you have 50, 50, and 100, this means 25%, 25%, and 50%</li>
+<li>The rest of the file name doesn't matter</li>
+</ul>
+<p>Example, if you have both:</p>
+<ul>
+<li><code>maps/LV624/armory/10.extra.dmm</code></li>
+<li><code>maps/LV624/armory/10.looted.dmm</code></li>
+</ul>
+<p>-&gt; Will pick either at 50% and insert it at the landmark defined in configuration.
+From there on you can easily toss more in to add more.</p>
+<h2 id="content-creation-primer">Content creation primer</h2>
+<p>There's more you can do in term of content creation, beyond just adding more random map changes.</p>
+<h3 id="the-scenario">The Scenario</h3>
+<p>The Scenario is a simple intermediate step that is meant to simplify, and railroad, the creation process into something that globally makes sense.</p>
+<p>Because it's easy to get lost in conditions, and the JSON tree format is not the most practical for this, but we don't want to give people unneeded freedom into making spagget, the intended way use Nightmare is to paint a scenario separately, then applying it.</p>
+<p>This means deciding on important global parameters that are important to the process as a whole, such as the intended pathing that will be used in the map, global events, and so on, and encourage to sit down for a second, and clearly define what you're doing. It also allows these values to be edited in-game during Lobby!</p>
+<p>The Scenario is special in that it is run immediately on loading, and provides more freedom in a logical sense. The main, simple intended usage is to use <code>def</code> node, which allows to set values.</p>
+<p>This might sound stupidly simple, or annoying and unneeded, but for example allows to clearly untangle the 300 lines of NMC LV mess into something much simpler:</p>
+<ul>
+<li>Choosing between one of two special events, or none</li>
+<li>Choosing for a potential fog gap, west, bridge, or east</li>
+</ul>
+<h3 id="doing-more-than-maps">Doing more than maps</h3>
+<p>As of current, all implemented tooling revolves around mapping. However the reason for making this system generic is to allow expanding on it with much more, as was attempted previously, for example flavouring of roles! Contact your nearby coder to implement new ones.</p></td></tr></table></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;global_vars - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/global_vars.html#var">Var Details</a></header>
+<main>
+<h1>Global Variables <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/global_vars.html">controller/global_vars</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/mc/globals.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;mc&#x2F;globals.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/admin_state">admin_state</a></th><td>tgui state: admin_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/always_state">always_state</a></th><td>tgui state: always_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/areas_by_type">areas_by_type</a></th><td>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/blurb_witnesses">blurb_witnesses</a></th><td>List of ckeys that have seen a blurb of a given key.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/character_trait_groups">character_trait_groups</a></th><td></td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/cm_vending_clothing_doctor">cm_vending_clothing_doctor</a></th><td>defined in senior_officers.dm</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/cm_vending_clothing_nurse">cm_vending_clothing_nurse</a></th><td>If there are no issues with docs getting nurse uniforms and vice-versa, or we remove Nurse role, this will be nuked
+Only difference is available uniforms, and removal of surgical webbing from accessory list</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/deep_inventory_state">deep_inventory_state</a></th><td>tgui state: deep_inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/default_state">default_state</a></th><td>tgui state: default_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/gamemode_roles">gamemode_roles</a></th><td>List of roles that can be setup for each gamemode</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/hive_state">hive_state</a></th><td>tgui state: hive_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/hive_state_queen">hive_state_queen</a></th><td>tgui state: hive_state_queen</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/inventory_state">inventory_state</a></th><td>tgui state: inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/not_incapacitated_and_adjacent_state">not_incapacitated_and_adjacent_state</a></th><td>tgui state: not_incapacitated_and_adjacent state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/not_incapacitated_and_adjacent_turf_state">not_incapacitated_and_adjacent_turf_state</a></th><td>tgui state: not_incapacitated_turf_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/observer_state">observer_state</a></th><td>tgui state: observer_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/ooc_color_override">ooc_color_override</a></th><td>In-round override to default OOC color</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/perf_flags">perf_flags</a></th><td>Global performance feature toggle flags</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/self_state">self_state</a></th><td>tgui state: self_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/xeno_datum_list">xeno_datum_list</a></th><td>Xeno caste datums</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/admin_state"><aside class="declaration">var </aside>admin_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/admin_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/admin.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;admin.dm 10"/></a></h3>
+        <p>tgui state: admin_state</p>
+<p>Checks that the user is an admin, end-of-story.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/always_state"><aside class="declaration">var </aside>always_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/always_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/always.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;always.dm 10"/></a></h3>
+        <p>tgui state: always_state</p>
+<p>Always grants the user UI_INTERACTIVE. Period.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/areas_by_type"><aside class="declaration">var </aside>areas_by_type
+            <aside>&ndash; /static/list/area</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/lists/mapping_globals.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mapping_globals.dm 4"/></a></h3>
+        <p>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</p><h3 id="var/blurb_witnesses"><aside class="declaration">var </aside>blurb_witnesses
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/lists/client.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;client.dm 24"/></a></h3>
+        <p>List of ckeys that have seen a blurb of a given key.</p><h3 id="var/character_trait_groups"><aside class="declaration">var </aside>character_trait_groups
+            <aside>&ndash; /static/list/datum/character_trait_group</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/character_traits/character_trait.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;character_traits&#x2F;character_trait.dm 23"/></a></h3>
+        <ul>
+<li>
+<p>Global lists</p>
+</li>
+<li>
+<p>character_trait_groups should be defined BEFORE character_traits because of dependencies</p>
+</li>
+<li>
+<p>When trying to reference specific traits or trait groups, reference these lists, which</p>
+</li>
+<li>
+<p>store character traits and character trait groups by their type paths</p>
+</li>
+<li>
+<p>Example:</p>
+</li>
+<li>
+<p>GLOB.character_traits<a href="datum/character_trait.html" title="/datum/character_trait">/datum/character_trait/language/spanish</a> will get the</p>
+</li>
+<li>
+<p>&quot;Speaks Spanish&quot; character trait, which you can use to give or remove traits</p>
+</li>
+</ul><h3 id="var/cm_vending_clothing_doctor"><aside class="declaration">var </aside>cm_vending_clothing_doctor
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/machinery/vending/vendor_types/crew/medical.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;vending&#x2F;vendor_types&#x2F;crew&#x2F;medical.dm 26"/></a></h3>
+        <p>defined in senior_officers.dm</p><h3 id="var/cm_vending_clothing_nurse"><aside class="declaration">var </aside>cm_vending_clothing_nurse
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/machinery/vending/vendor_types/crew/medical.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;vending&#x2F;vendor_types&#x2F;crew&#x2F;medical.dm 68"/></a></h3>
+        <p>If there are no issues with docs getting nurse uniforms and vice-versa, or we remove Nurse role, this will be nuked
+Only difference is available uniforms, and removal of surgical webbing from accessory list</p><h3 id="var/deep_inventory_state"><aside class="declaration">var </aside>deep_inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/deep_inventory_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/deep_inventory.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;deep_inventory.dm 11"/></a></h3>
+        <p>tgui state: deep_inventory_state</p>
+<p>Checks that the src_object is in the user's deep
+(backpack, box, toolbox, etc) inventory.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/default_state"><aside class="declaration">var </aside>default_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/default</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/default.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;default.dm 11"/></a></h3>
+        <p>tgui state: default_state</p>
+<p>Checks a number of things -- mostly physical distance for humans
+and view for robots.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/gamemode_roles"><aside class="declaration">var </aside>gamemode_roles
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/misc.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;misc.dm 18"/></a></h3>
+        <p>List of roles that can be setup for each gamemode</p><h3 id="var/hive_state"><aside class="declaration">var </aside>hive_state
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/xeno.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;xeno.dm 8"/></a></h3>
+        <p>tgui state: hive_state</p>
+<p>Checks that the user is part of a hive.</p><h3 id="var/hive_state_queen"><aside class="declaration">var </aside>hive_state_queen
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/xeno.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;xeno.dm 37"/></a></h3>
+        <p>tgui state: hive_state_queen</p>
+<p>Checks that the user is part of a hive and is the leading queen of that hive.</p><h3 id="var/inventory_state"><aside class="declaration">var </aside>inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/inventory_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/inventory.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;inventory.dm 11"/></a></h3>
+        <p>tgui state: inventory_state</p>
+<p>Checks that the src_object is in the user's top-level
+(hand, ear, pocket, belt, etc) inventory.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/not_incapacitated_and_adjacent_state"><aside class="declaration">var </aside>not_incapacitated_and_adjacent_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/not_incapacitated_and_adjacent_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/not_incapacitated_and_adjacent.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;not_incapacitated_and_adjacent.dm 10"/></a></h3>
+        <p>tgui state: not_incapacitated_and_adjacent state</p>
+<p>Checks that the user isn't incapacitated and that they are adjacent</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/not_incapacitated_and_adjacent_turf_state"><aside class="declaration">var </aside>not_incapacitated_and_adjacent_turf_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/not_incapacitated_and_adjacent_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/not_incapacitated_and_adjacent.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;not_incapacitated_and_adjacent.dm 18"/></a></h3>
+        <p>tgui state: not_incapacitated_turf_state</p>
+<p>Checks that the user isn't incapacitated and that their loc is a turf</p><h3 id="var/observer_state"><aside class="declaration">var </aside>observer_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/observer_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/observer.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;observer.dm 10"/></a></h3>
+        <p>tgui state: observer_state</p>
+<p>Checks that the user is an observer/ghost.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/ooc_color_override"><aside class="declaration">var </aside>ooc_color_override
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/misc.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;misc.dm 15"/></a></h3>
+        <p>In-round override to default OOC color</p><h3 id="var/perf_flags"><aside class="declaration">var </aside>perf_flags
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/misc.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;misc.dm 4"/></a></h3>
+        <p>Global performance feature toggle flags</p><h3 id="var/self_state"><aside class="declaration">var </aside>self_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/self_state</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/states/self.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;self.dm 10"/></a></h3>
+        <p>tgui state: self_state</p>
+<p>Only checks that the user and src_object are the same.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/xeno_datum_list"><aside class="declaration">var </aside>xeno_datum_list
+            <aside>&ndash; /static/list/datum/caste_datum</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/global_lists.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;global_lists.dm 68"/></a></h3>
+        <p>Xeno caste datums</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

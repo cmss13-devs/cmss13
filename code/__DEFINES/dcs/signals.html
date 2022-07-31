@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/dcs/signals.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/dcs/signals.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_NEW_Z">COMSIG_GLOB_NEW_Z</a></th><td>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_VEHICLE_ORDERED">COMSIG_GLOB_VEHICLE_ORDERED</a></th><td>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_MODE_PREGAME_LOBBY">COMSIG_GLOB_MODE_PREGAME_LOBBY</a></th><td>from /datum/controller/subsystem/ticker/fire</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_MODE_PRESETUP">COMSIG_GLOB_MODE_PRESETUP</a></th><td>from /datum/game_mode/proc/pre_setup</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_MODE_POSTSETUP">COMSIG_GLOB_MODE_POSTSETUP</a></th><td>from /datum/game_mode/proc/post_setup</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_MARINE_DEATH">COMSIG_GLOB_MARINE_DEATH</a></th><td>from /mob/living/carbon/human/death</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_XENO_DEATH">COMSIG_GLOB_XENO_DEATH</a></th><td>from /mob/living/carbon/Xenomorph/death</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_XENO_SPAWN">COMSIG_GLOB_XENO_SPAWN</a></th><td>from /mob/living/carbon/Xenomorph/Initialize</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_NIGHTMARE_SETUP_DONE">COMSIG_GLOB_NIGHTMARE_SETUP_DONE</a></th><td>from /datum/nmcontext/proc/run_steps</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_POST_SETUP">COMSIG_GLOB_POST_SETUP</a></th><td>from /datum/controller/subsystem/ticker/PostSetup</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_GLOB_SECURITY_LEVEL_CHANGED">COMSIG_GLOB_SECURITY_LEVEL_CHANGED</a></th><td>from /proc/set_security_level</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS">COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS</a></th><td>from /datum/controller/subsystem/radio/get_available_tcomm_zs(): (list/tcomms)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_CLIENT_PRE_CLICK">COMSIG_CLIENT_PRE_CLICK</a></th><td>from /mob/do_click(): (atom/A, list/mods)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_COMPONENT_ADDED">COMSIG_COMPONENT_ADDED</a></th><td>when a component is added to a datum: (/datum/component)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_COMPONENT_REMOVING">COMSIG_COMPONENT_REMOVING</a></th><td>before a component is removed from a datum because of RemoveComponent: (/datum/component)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PARENT_PREQDELETED">COMSIG_PARENT_PREQDELETED</a></th><td>before a datum's Destroy() is called: (force), returning a COMPONENT_ABORT_QDEL value will cancel the qdel operation</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_PARENT_QDELETING">COMSIG_PARENT_QDELETING</a></th><td>just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_TOPIC">COMSIG_TOPIC</a></th><td>generic topic handler (usr, href_list)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ELEMENT_ATTACH">COMSIG_ELEMENT_ATTACH</a></th><td>fires on the target datum when an element is attached to it (/datum/element)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ELEMENT_DETACH">COMSIG_ELEMENT_DETACH</a></th><td>fires on the target datum when an element is attached to it  (/datum/element)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_DECORATED">COMSIG_ATOM_DECORATED</a></th><td>From /atom/proc/Decorate</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_DIR_CHANGE">COMSIG_ATOM_DIR_CHANGE</a></th><td>from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DESTROY_AIRLOCK">COMSIG_MOB_DESTROY_AIRLOCK</a></th><td>From /obj/structure/machinery/door/airlock/proc/take_damage</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DISASSEMBLE_AIRLOCK">COMSIG_MOB_DISASSEMBLE_AIRLOCK</a></th><td>From /obj/structure/machinery/door/airlock/attackby</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DESTROY_WALL">COMSIG_MOB_DESTROY_WALL</a></th><td>From /turf/closed/wall/proc/take_damage</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_EXPLODED_WALL">COMSIG_MOB_EXPLODED_WALL</a></th><td>From /turf/closed/wall/ex_act</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_CONSTRUCT_WALL">COMSIG_MOB_CONSTRUCT_WALL</a></th><td>From /obj/structure/girder/proc/do_wall</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_EXPLODE_W_FRAME">COMSIG_MOB_EXPLODE_W_FRAME</a></th><td>From /obj/structure/window/framed/ex_act</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DISASSEMBLE_W_FRAME">COMSIG_MOB_DISASSEMBLE_W_FRAME</a></th><td>From /obj/structure/window_frame/attackby</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DESTROY_WINDOW">COMSIG_MOB_DESTROY_WINDOW</a></th><td>From /obj/structure/window/proc/healthcheck</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_WINDOW_EXPLODED">COMSIG_MOB_WINDOW_EXPLODED</a></th><td>From /obj/structure/window/ex_act</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_CONSTRUCT_WINDOW">COMSIG_MOB_CONSTRUCT_WINDOW</a></th><td>From /obj/structure/window_frame/attackby</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DISASSEMBLE_WINDOW">COMSIG_MOB_DISASSEMBLE_WINDOW</a></th><td>From /obj/structure/window/attackby</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_APC_REMOVE_BOARD">COMSIG_MOB_APC_REMOVE_BOARD</a></th><td>From /obj/structure/machinery/power/apc/attackby</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_APC_REMOVE_CELL">COMSIG_MOB_APC_REMOVE_CELL</a></th><td>From /obj/structure/machinery/power/apc/attack_hand</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_APC_CUT_WIRE">COMSIG_MOB_APC_CUT_WIRE</a></th><td>From /obj/structure/machinery/power/apc/proc/cut</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_APC_POWER_PULSE">COMSIG_MOB_APC_POWER_PULSE</a></th><td>From /obj/structure/machinery/power/apc/proc/pulse</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_FIRED_GUN">COMSIG_MOB_FIRED_GUN</a></th><td>From /projectiles/updated_projectiles/guns/proc/fire</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_FIRED_GUN_ATTACHMENT">COMSIG_MOB_FIRED_GUN_ATTACHMENT</a></th><td>From /projectiles/updated_projectiles/guns/proc/fire_attachment</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DEATH">COMSIG_MOB_DEATH</a></th><td>From /mob/proc/death</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_GETTING_UP">COMSIG_MOB_GETTING_UP</a></th><td>From /mob/proc/update_canmove()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_KNOCKED_DOWN">COMSIG_MOB_KNOCKED_DOWN</a></th><td>From /mob/proc/update_canmove()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DRAGGED">COMSIG_MOB_DRAGGED</a></th><td>For when a mob is dragged</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_RESISTED">COMSIG_MOB_RESISTED</a></th><td>From /mob/living/verb/resist()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_RECALCULATE_CLIENT_COLOR">COMSIG_MOB_RECALCULATE_CLIENT_COLOR</a></th><td>From /mob/living/verb/resist()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_ITEM_UNEQUIPPED">COMSIG_MOB_ITEM_UNEQUIPPED</a></th><td>From /obj/item/proc/unequipped()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_DEVOURED">COMSIG_MOB_DEVOURED</a></th><td>For when a mob is devoured by a Xeno</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_RESET_VIEW">COMSIG_MOB_RESET_VIEW</a></th><td>Called in /mob/reset_view(): (atom/A)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_CHANGE_VIEW">COMSIG_MOB_CHANGE_VIEW</a></th><td>called in /client/change_view()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_REJUVENATED">COMSIG_LIVING_REJUVENATED</a></th><td>From /mob/living/rejuvenate</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_PREIGNITION">COMSIG_LIVING_PREIGNITION</a></th><td>From /mob/living/proc/IgniteMob</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_EXTINGUISH">COMSIG_HUMAN_EXTINGUISH</a></th><td>From /mob/living/carbon/human/ExtinguishMob()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_FLAMER_CROSSED">COMSIG_LIVING_FLAMER_CROSSED</a></th><td>From /obj/flamer_fire/Crossed</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_FLAMER_FLAMED">COMSIG_LIVING_FLAMER_FLAMED</a></th><td>From /obj/flamer_fire/Initialize</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_ZOOM_OUT">COMSIG_LIVING_ZOOM_OUT</a></th><td>From /obj/item/proc/unzoom</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_REVIVED">COMSIG_HUMAN_REVIVED</a></th><td>From /obj/item/device/defibrillator/attack</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_PRE_BULLET_ACT">COMSIG_HUMAN_PRE_BULLET_ACT</a></th><td>From /mob/living/carbon/human/bullet_act</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_BULLET_ACT">COMSIG_HUMAN_BULLET_ACT</a></th><td>From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_ORBIT_BEGIN">COMSIG_ATOM_ORBIT_BEGIN</a></th><td>called when an atom starts orbiting another atom: (atom)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_ORBIT_STOP">COMSIG_ATOM_ORBIT_STOP</a></th><td>called when an atom stops orbiting another atom: (atom)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_BLOOD_CROSSED">COMSIG_HUMAN_BLOOD_CROSSED</a></th><td>From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_ALIEN_ATTACK">COMSIG_HUMAN_ALIEN_ATTACK</a></th><td>from /mob/living/carbon/human/attack_alien()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_IMPREGNATE">COMSIG_HUMAN_IMPREGNATE</a></th><td>From /obj/item/clothing/mask/facehugger/proc/impregnate(): (obj/item/clothing/mask/facehugger/hugger)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_OVERLAY_APPLIED">COMSIG_HUMAN_OVERLAY_APPLIED</a></th><td>From /mob/living/carbon/human/apply_overlay(): (cache_index, overlay_image)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_OVERLAY_REMOVED">COMSIG_HUMAN_OVERLAY_REMOVED</a></th><td>From /mob/living/carbon/human/remove_overlay(): (cache_index, overlay_image)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_ALIEN_ATTACK">COMSIG_XENO_ALIEN_ATTACK</a></th><td>from /mob/living/carbon/Xenomorph/attack_alien()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE">COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE</a></th><td>from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE">COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE</a></th><td>from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_BULLET_ACT">COMSIG_XENO_BULLET_ACT</a></th><td>From /mob/living/carbon/Xenomorph/bullet_act</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_APPEND_TO_STAT">COMSIG_XENO_APPEND_TO_STAT</a></th><td>from /mob/living/carbon/Xenomorph/get_status_tab_items(): (list/statdata)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_MOVEMENT_DELAY">COMSIG_XENO_MOVEMENT_DELAY</a></th><td>from /mob/living/carbon/Xenomorph/movement_delay()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_QUEEN_MOUNT_OVIPOSITOR">COMSIG_QUEEN_MOUNT_OVIPOSITOR</a></th><td>From /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_QUEEN_DISMOUNT_OVIPOSITOR">COMSIG_QUEEN_DISMOUNT_OVIPOSITOR</a></th><td>From /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(): (instant_dismount)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_WALL_RESIN_XENO_ATTACK">COMSIG_WALL_RESIN_XENO_ATTACK</a></th><td>From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/Xenomorph/X)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_WALL_RESIN_ATTACKBY">COMSIG_WALL_RESIN_ATTACKBY</a></th><td>From /turf/closed/wall/resin/attackby(): (obj/item/I, mob/M)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_POST_UPDATE_SIGHT">COMSIG_HUMAN_POST_UPDATE_SIGHT</a></th><td>from /mob/living/carbon/human/update_sight()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_POST_MOVE_DELAY">COMSIG_HUMAN_POST_MOVE_DELAY</a></th><td>from /mob/living/carbon/human/movement_delay(): (list/movedata)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_DROPPED">COMSIG_ITEM_DROPPED</a></th><td>from base of obj/item/dropped(): (mob/user)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_EQUIPPED">COMSIG_ITEM_EQUIPPED</a></th><td>From base of /obj/item/proc/equipped(): (mob/user, slot)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_UNEQUIPPED">COMSIG_ITEM_UNEQUIPPED</a></th><td>From base of /obj/item/proc/unequipped(): (mob/user, slot)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_UNWIELD">COMSIG_ITEM_UNWIELD</a></th><td>from /obj/item/proc/unwield</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ITEM_ATTACK_SELF">COMSIG_ITEM_ATTACK_SELF</a></th><td>From base of /obj/item/proc/attack_self(): (mob/user)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_DROP_RETRIEVAL_CHECK">COMSIG_DROP_RETRIEVAL_CHECK</a></th><td>From /datum/element/drop_retrieval usage: /obj/item/attachable/magnetic_harness/can_be_attached_to_gun(), /obj/item/storage/pouch/sling/can_be_inserted() (/obj/item/I)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_PRE_THROW">COMSIG_MOVABLE_PRE_THROW</a></th><td>From /atom/movable/proc/launch_towards</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_MOVED">COMSIG_MOVABLE_MOVED</a></th><td>from base of atom/movable/Moved(): (/atom, dir, forced)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_PRE_MOVE">COMSIG_MOVABLE_PRE_MOVE</a></th><td>From /atom/movable/Move(): (atom/NewLoc)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SNACK_EATEN">COMSIG_SNACK_EATEN</a></th><td>from /obj/item/reagent_container/food/snacks/proc/On_Consume</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_POSTER_PLACED">COMSIG_POSTER_PLACED</a></th><td>from /turf/closed/wall/proc/place_poster</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_TURF_BULLET_ACT">COMSIG_TURF_BULLET_ACT</a></th><td>Called when a bullet hits a turf</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_TURF_ENTERED">COMSIG_MOVABLE_TURF_ENTERED</a></th><td>from /turf/Entered</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_TURF_CHANGE">COMSIG_ATOM_TURF_CHANGE</a></th><td>from /turf/ChangeTurf</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ATOM_HITBY">COMSIG_ATOM_HITBY</a></th><td>from /atom/hitby(): (atom/movable/AM)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_XENO_START_PULLING">COMSIG_MOVABLE_XENO_START_PULLING</a></th><td>from /mob/living/carbon/Xenomorph/start_pulling(): (mob/living/carbon/Xenomorph/X)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_DIRECT_BULLET_HIT">COMSIG_DIRECT_BULLET_HIT</a></th><td>Called when a bullet hits a living mob on a sprite click (original target is final target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_ACT_LIVING">COMSIG_BULLET_ACT_LIVING</a></th><td>Called when a bullet hits a living mob</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_POST_BULLET_ACT_HUMAN">COMSIG_POST_BULLET_ACT_HUMAN</a></th><td>Called when a bullet hits a human</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_ACT_XENO">COMSIG_BULLET_ACT_XENO</a></th><td>Called when a bullet hits a xenomorph</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_USER_EFFECTS">COMSIG_BULLET_USER_EFFECTS</a></th><td>Apply any effects to the bullet (primarily through bullet traits)
+based on the user</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_CHECK_MOB_SKIPPING">COMSIG_BULLET_CHECK_MOB_SKIPPING</a></th><td>Called when checking whether bullet should skip mob for whatever reasons (like IFF)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_PRE_HANDLE_MOB">COMSIG_BULLET_PRE_HANDLE_MOB</a></th><td>From /obj/item/projectile/handle_mob(): (mob/living/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_POST_HANDLE_MOB">COMSIG_BULLET_POST_HANDLE_MOB</a></th><td>From /obj/item/projectile/handle_mob(): (mob/living/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_POST_HANDLE_OBJ">COMSIG_BULLET_POST_HANDLE_OBJ</a></th><td>From /obj/item/projectile/handle_obj(): (obj/target, did_hit)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_PRE_HANDLE_OBJ">COMSIG_BULLET_PRE_HANDLE_OBJ</a></th><td>From /obj/item/projectile/handle_obj(): (obj/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_POST_HANDLE_TURF">COMSIG_BULLET_POST_HANDLE_TURF</a></th><td>From /obj/item/projectile/scan_a_turf(): (turf/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BULLET_PRE_HANDLE_TURF">COMSIG_BULLET_PRE_HANDLE_TURF</a></th><td>From /obj/item/projectile/scan_a_turf(): (turf/target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF">COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF</a></th><td>For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ACTION_GIVEN">COMSIG_ACTION_GIVEN</a></th><td>From /datum/action/proc/give_to(): (mob/owner)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ACTION_REMOVED">COMSIG_ACTION_REMOVED</a></th><td>From base of /datum/action/proc/remove_from(): (mob/owner)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ACTION_HIDDEN">COMSIG_ACTION_HIDDEN</a></th><td>From base of /datum/action/proc/hide_from(): (mob/owner)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_ACTION_UNHIDDEN">COMSIG_ACTION_UNHIDDEN</a></th><td>From base of /datum/action/proc/unhide_from(): (mob/owner)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_LIVING_CLIMB_STRUCTURE">COMSIG_LIVING_CLIMB_STRUCTURE</a></th><td>From /obj/structure/proc/do_climb(var/mob/living/user, mods)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_HUMAN_CARRY">COMSIG_HUMAN_CARRY</a></th><td>From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOB_GRAB_UPGRADE">COMSIG_MOB_GRAB_UPGRADE</a></th><td>From /obj/item/grab/attack_self(mob/user)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_ACTION_USED">COMSIG_XENO_ACTION_USED</a></th><td>From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_XENO_DEAL_ACID_DAMAGE">COMSIG_XENO_DEAL_ACID_DAMAGE</a></th><td>From /mob/living/carbon/Xenomorph/proc/check_blood_splash()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SHUTTLE_SETMODE">COMSIG_SHUTTLE_SETMODE</a></th><td>shuttle mode change</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_SHUTTLE_CRUSH">COMSIG_MOVABLE_SHUTTLE_CRUSH</a></th><td>shuttle crushing something</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_MOVABLE_UPDATE_GLIDE_SIZE">COMSIG_MOVABLE_UPDATE_GLIDE_SIZE</a></th><td>from base of /atom/movable/proc/set_glide_size(): (target)</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_TRANSMITTER_UPDATE_ICON">COMSIG_TRANSMITTER_UPDATE_ICON</a></th><td>from /obj/structure/transmitter/update_icon()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_WEEDNODE_GROWTH_COMPLETE">COMSIG_WEEDNODE_GROWTH_COMPLETE</a></th><td>From /obj/effect/alien/weeds/Initialize()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER">COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER</a></th><td>From /obj/effect/alien/weeds/proc/on_weed_expand()</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_BONUS_DAMAGE">COMSIG_BONUS_DAMAGE</a></th><td>from /datum/component/bonus_damage_stack</td></tr>
+        <tr><th><a href="code/__DEFINES/dcs/signals.html#define/COMSIG_SET_SQUAD">COMSIG_SET_SQUAD</a></th><td>from /datum/squad/proc/put_marine_in_squad</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/COMSIG_ACTION_GIVEN"><aside class="declaration">#define </aside>COMSIG_ACTION_GIVEN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L385">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 385"/></a>
+    </h3>
+    <p>From /datum/action/proc/give_to(): (mob/owner)</p><h3 id="define/COMSIG_ACTION_HIDDEN"><aside class="declaration">#define </aside>COMSIG_ACTION_HIDDEN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L389">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 389"/></a>
+    </h3>
+    <p>From base of /datum/action/proc/hide_from(): (mob/owner)</p><h3 id="define/COMSIG_ACTION_REMOVED"><aside class="declaration">#define </aside>COMSIG_ACTION_REMOVED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L387">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 387"/></a>
+    </h3>
+    <p>From base of /datum/action/proc/remove_from(): (mob/owner)</p><h3 id="define/COMSIG_ACTION_UNHIDDEN"><aside class="declaration">#define </aside>COMSIG_ACTION_UNHIDDEN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L391">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 391"/></a>
+    </h3>
+    <p>From base of /datum/action/proc/unhide_from(): (mob/owner)</p><h3 id="define/COMSIG_ATOM_DECORATED"><aside class="declaration">#define </aside>COMSIG_ATOM_DECORATED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 75"/></a>
+    </h3>
+    <p>From /atom/proc/Decorate</p><h3 id="define/COMSIG_ATOM_DIR_CHANGE"><aside class="declaration">#define </aside>COMSIG_ATOM_DIR_CHANGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 78"/></a>
+    </h3>
+    <p>from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.</p><h3 id="define/COMSIG_ATOM_HITBY"><aside class="declaration">#define </aside>COMSIG_ATOM_HITBY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L323">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 323"/></a>
+    </h3>
+    <p>from /atom/hitby(): (atom/movable/AM)</p><h3 id="define/COMSIG_ATOM_ORBIT_BEGIN"><aside class="declaration">#define </aside>COMSIG_ATOM_ORBIT_BEGIN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L207">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 207"/></a>
+    </h3>
+    <p>called when an atom starts orbiting another atom: (atom)</p><h3 id="define/COMSIG_ATOM_ORBIT_STOP"><aside class="declaration">#define </aside>COMSIG_ATOM_ORBIT_STOP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L209">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 209"/></a>
+    </h3>
+    <p>called when an atom stops orbiting another atom: (atom)</p><h3 id="define/COMSIG_ATOM_TURF_CHANGE"><aside class="declaration">#define </aside>COMSIG_ATOM_TURF_CHANGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L320">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 320"/></a>
+    </h3>
+    <p>from /turf/ChangeTurf</p><h3 id="define/COMSIG_BONUS_DAMAGE"><aside class="declaration">#define </aside>COMSIG_BONUS_DAMAGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L433">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 433"/></a>
+    </h3>
+    <p>from /datum/component/bonus_damage_stack</p><h3 id="define/COMSIG_BULLET_ACT_LIVING"><aside class="declaration">#define </aside>COMSIG_BULLET_ACT_LIVING
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L355">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 355"/></a>
+    </h3>
+    <p>Called when a bullet hits a living mob</p><h3 id="define/COMSIG_BULLET_ACT_XENO"><aside class="declaration">#define </aside>COMSIG_BULLET_ACT_XENO
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L359">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 359"/></a>
+    </h3>
+    <p>Called when a bullet hits a xenomorph</p><h3 id="define/COMSIG_BULLET_CHECK_MOB_SKIPPING"><aside class="declaration">#define </aside>COMSIG_BULLET_CHECK_MOB_SKIPPING
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L364">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 364"/></a>
+    </h3>
+    <p>Called when checking whether bullet should skip mob for whatever reasons (like IFF)</p><h3 id="define/COMSIG_BULLET_POST_HANDLE_MOB"><aside class="declaration">#define </aside>COMSIG_BULLET_POST_HANDLE_MOB
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L370">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 370"/></a>
+    </h3>
+    <p>From /obj/item/projectile/handle_mob(): (mob/living/target)</p><h3 id="define/COMSIG_BULLET_POST_HANDLE_OBJ"><aside class="declaration">#define </aside>COMSIG_BULLET_POST_HANDLE_OBJ
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L372">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 372"/></a>
+    </h3>
+    <p>From /obj/item/projectile/handle_obj(): (obj/target, did_hit)</p><h3 id="define/COMSIG_BULLET_POST_HANDLE_TURF"><aside class="declaration">#define </aside>COMSIG_BULLET_POST_HANDLE_TURF
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L376">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 376"/></a>
+    </h3>
+    <p>From /obj/item/projectile/scan_a_turf(): (turf/target)</p><h3 id="define/COMSIG_BULLET_PRE_HANDLE_MOB"><aside class="declaration">#define </aside>COMSIG_BULLET_PRE_HANDLE_MOB
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L368">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 368"/></a>
+    </h3>
+    <p>From /obj/item/projectile/handle_mob(): (mob/living/target)</p><h3 id="define/COMSIG_BULLET_PRE_HANDLE_OBJ"><aside class="declaration">#define </aside>COMSIG_BULLET_PRE_HANDLE_OBJ
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L374">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 374"/></a>
+    </h3>
+    <p>From /obj/item/projectile/handle_obj(): (obj/target)</p><h3 id="define/COMSIG_BULLET_PRE_HANDLE_TURF"><aside class="declaration">#define </aside>COMSIG_BULLET_PRE_HANDLE_TURF
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L378">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 378"/></a>
+    </h3>
+    <p>From /obj/item/projectile/scan_a_turf(): (turf/target)</p><h3 id="define/COMSIG_BULLET_USER_EFFECTS"><aside class="declaration">#define </aside>COMSIG_BULLET_USER_EFFECTS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L362">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 362"/></a>
+    </h3>
+    <p>Apply any effects to the bullet (primarily through bullet traits)
+based on the user</p><h3 id="define/COMSIG_CLIENT_PRE_CLICK"><aside class="declaration">#define </aside>COMSIG_CLIENT_PRE_CLICK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 55"/></a>
+    </h3>
+    <p>from /mob/do_click(): (atom/A, list/mods)</p><h3 id="define/COMSIG_COMPONENT_ADDED"><aside class="declaration">#define </aside>COMSIG_COMPONENT_ADDED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 59"/></a>
+    </h3>
+    <p>when a component is added to a datum: (/datum/component)</p><h3 id="define/COMSIG_COMPONENT_REMOVING"><aside class="declaration">#define </aside>COMSIG_COMPONENT_REMOVING
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 61"/></a>
+    </h3>
+    <p>before a component is removed from a datum because of RemoveComponent: (/datum/component)</p><h3 id="define/COMSIG_DIRECT_BULLET_HIT"><aside class="declaration">#define </aside>COMSIG_DIRECT_BULLET_HIT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L352">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 352"/></a>
+    </h3>
+    <p>Called when a bullet hits a living mob on a sprite click (original target is final target)</p><h3 id="define/COMSIG_DROP_RETRIEVAL_CHECK"><aside class="declaration">#define </aside>COMSIG_DROP_RETRIEVAL_CHECK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L284">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 284"/></a>
+    </h3>
+    <p>From /datum/element/drop_retrieval usage: /obj/item/attachable/magnetic_harness/can_be_attached_to_gun(), /obj/item/storage/pouch/sling/can_be_inserted() (/obj/item/I)</p><h3 id="define/COMSIG_ELEMENT_ATTACH"><aside class="declaration">#define </aside>COMSIG_ELEMENT_ATTACH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 71"/></a>
+    </h3>
+    <p>fires on the target datum when an element is attached to it (/datum/element)</p><h3 id="define/COMSIG_ELEMENT_DETACH"><aside class="declaration">#define </aside>COMSIG_ELEMENT_DETACH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 73"/></a>
+    </h3>
+    <p>fires on the target datum when an element is attached to it  (/datum/element)</p><h3 id="define/COMSIG_GLOB_MARINE_DEATH"><aside class="declaration">#define </aside>COMSIG_GLOB_MARINE_DEATH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 20"/></a>
+    </h3>
+    <p>from /mob/living/carbon/human/death</p><h3 id="define/COMSIG_GLOB_MODE_POSTSETUP"><aside class="declaration">#define </aside>COMSIG_GLOB_MODE_POSTSETUP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 18"/></a>
+    </h3>
+    <p>from /datum/game_mode/proc/post_setup</p><h3 id="define/COMSIG_GLOB_MODE_PREGAME_LOBBY"><aside class="declaration">#define </aside>COMSIG_GLOB_MODE_PREGAME_LOBBY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 14"/></a>
+    </h3>
+    <p>from /datum/controller/subsystem/ticker/fire</p><h3 id="define/COMSIG_GLOB_MODE_PRESETUP"><aside class="declaration">#define </aside>COMSIG_GLOB_MODE_PRESETUP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 16"/></a>
+    </h3>
+    <p>from /datum/game_mode/proc/pre_setup</p><h3 id="define/COMSIG_GLOB_NEW_Z"><aside class="declaration">#define </aside>COMSIG_GLOB_NEW_Z
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 10"/></a>
+    </h3>
+    <p>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</p><h3 id="define/COMSIG_GLOB_NIGHTMARE_SETUP_DONE"><aside class="declaration">#define </aside>COMSIG_GLOB_NIGHTMARE_SETUP_DONE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 34"/></a>
+    </h3>
+    <p>from /datum/nmcontext/proc/run_steps</p><h3 id="define/COMSIG_GLOB_POST_SETUP"><aside class="declaration">#define </aside>COMSIG_GLOB_POST_SETUP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 37"/></a>
+    </h3>
+    <p>from /datum/controller/subsystem/ticker/PostSetup</p><h3 id="define/COMSIG_GLOB_SECURITY_LEVEL_CHANGED"><aside class="declaration">#define </aside>COMSIG_GLOB_SECURITY_LEVEL_CHANGED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 40"/></a>
+    </h3>
+    <p>from /proc/set_security_level</p><h3 id="define/COMSIG_GLOB_VEHICLE_ORDERED"><aside class="declaration">#define </aside>COMSIG_GLOB_VEHICLE_ORDERED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 12"/></a>
+    </h3>
+    <p>from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)</p><h3 id="define/COMSIG_GLOB_XENO_DEATH"><aside class="declaration">#define </aside>COMSIG_GLOB_XENO_DEATH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 22"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/death</p><h3 id="define/COMSIG_GLOB_XENO_SPAWN"><aside class="declaration">#define </aside>COMSIG_GLOB_XENO_SPAWN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 25"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/Initialize</p><h3 id="define/COMSIG_HUMAN_ALIEN_ATTACK"><aside class="declaration">#define </aside>COMSIG_HUMAN_ALIEN_ATTACK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L214">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 214"/></a>
+    </h3>
+    <p>from /mob/living/carbon/human/attack_alien()</p><h3 id="define/COMSIG_HUMAN_BLOOD_CROSSED"><aside class="declaration">#define </aside>COMSIG_HUMAN_BLOOD_CROSSED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L211">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 211"/></a>
+    </h3>
+    <p>From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)</p><h3 id="define/COMSIG_HUMAN_BULLET_ACT"><aside class="declaration">#define </aside>COMSIG_HUMAN_BULLET_ACT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L204">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 204"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)</p><h3 id="define/COMSIG_HUMAN_CARRY"><aside class="declaration">#define </aside>COMSIG_HUMAN_CARRY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L398">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 398"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)</p><h3 id="define/COMSIG_HUMAN_EXTINGUISH"><aside class="declaration">#define </aside>COMSIG_HUMAN_EXTINGUISH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L184">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 184"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/ExtinguishMob()</p><h3 id="define/COMSIG_HUMAN_IMPREGNATE"><aside class="declaration">#define </aside>COMSIG_HUMAN_IMPREGNATE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L216">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 216"/></a>
+    </h3>
+    <p>From /obj/item/clothing/mask/facehugger/proc/impregnate(): (obj/item/clothing/mask/facehugger/hugger)</p><h3 id="define/COMSIG_HUMAN_OVERLAY_APPLIED"><aside class="declaration">#define </aside>COMSIG_HUMAN_OVERLAY_APPLIED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L219">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 219"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/apply_overlay(): (cache_index, overlay_image)</p><h3 id="define/COMSIG_HUMAN_OVERLAY_REMOVED"><aside class="declaration">#define </aside>COMSIG_HUMAN_OVERLAY_REMOVED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L221">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 221"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/remove_overlay(): (cache_index, overlay_image)</p><h3 id="define/COMSIG_HUMAN_POST_MOVE_DELAY"><aside class="declaration">#define </aside>COMSIG_HUMAN_POST_MOVE_DELAY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L269">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 269"/></a>
+    </h3>
+    <p>from /mob/living/carbon/human/movement_delay(): (list/movedata)</p><h3 id="define/COMSIG_HUMAN_POST_UPDATE_SIGHT"><aside class="declaration">#define </aside>COMSIG_HUMAN_POST_UPDATE_SIGHT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L267">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 267"/></a>
+    </h3>
+    <p>from /mob/living/carbon/human/update_sight()</p><h3 id="define/COMSIG_HUMAN_PRE_BULLET_ACT"><aside class="declaration">#define </aside>COMSIG_HUMAN_PRE_BULLET_ACT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L202">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 202"/></a>
+    </h3>
+    <p>From /mob/living/carbon/human/bullet_act</p><h3 id="define/COMSIG_HUMAN_REVIVED"><aside class="declaration">#define </aside>COMSIG_HUMAN_REVIVED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L200">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 200"/></a>
+    </h3>
+    <p>From /obj/item/device/defibrillator/attack</p><h3 id="define/COMSIG_ITEM_ATTACK_SELF"><aside class="declaration">#define </aside>COMSIG_ITEM_ATTACK_SELF
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L281">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 281"/></a>
+    </h3>
+    <p>From base of /obj/item/proc/attack_self(): (mob/user)</p><h3 id="define/COMSIG_ITEM_DROPPED"><aside class="declaration">#define </aside>COMSIG_ITEM_DROPPED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L273">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 273"/></a>
+    </h3>
+    <p>from base of obj/item/dropped(): (mob/user)</p><h3 id="define/COMSIG_ITEM_EQUIPPED"><aside class="declaration">#define </aside>COMSIG_ITEM_EQUIPPED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L275">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 275"/></a>
+    </h3>
+    <p>From base of /obj/item/proc/equipped(): (mob/user, slot)</p><h3 id="define/COMSIG_ITEM_UNEQUIPPED"><aside class="declaration">#define </aside>COMSIG_ITEM_UNEQUIPPED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L277">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 277"/></a>
+    </h3>
+    <p>From base of /obj/item/proc/unequipped(): (mob/user, slot)</p><h3 id="define/COMSIG_ITEM_UNWIELD"><aside class="declaration">#define </aside>COMSIG_ITEM_UNWIELD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L279">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 279"/></a>
+    </h3>
+    <p>from /obj/item/proc/unwield</p><h3 id="define/COMSIG_LIVING_CLIMB_STRUCTURE"><aside class="declaration">#define </aside>COMSIG_LIVING_CLIMB_STRUCTURE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L395">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 395"/></a>
+    </h3>
+    <p>From /obj/structure/proc/do_climb(var/mob/living/user, mods)</p><h3 id="define/COMSIG_LIVING_FLAMER_CROSSED"><aside class="declaration">#define </aside>COMSIG_LIVING_FLAMER_CROSSED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L187">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 187"/></a>
+    </h3>
+    <p>From /obj/flamer_fire/Crossed</p><h3 id="define/COMSIG_LIVING_FLAMER_FLAMED"><aside class="declaration">#define </aside>COMSIG_LIVING_FLAMER_FLAMED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L189">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 189"/></a>
+    </h3>
+    <p>From /obj/flamer_fire/Initialize</p><h3 id="define/COMSIG_LIVING_PREIGNITION"><aside class="declaration">#define </aside>COMSIG_LIVING_PREIGNITION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L179">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 179"/></a>
+    </h3>
+    <p>From /mob/living/proc/IgniteMob</p><h3 id="define/COMSIG_LIVING_REJUVENATED"><aside class="declaration">#define </aside>COMSIG_LIVING_REJUVENATED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 177"/></a>
+    </h3>
+    <p>From /mob/living/rejuvenate</p><h3 id="define/COMSIG_LIVING_ZOOM_OUT"><aside class="declaration">#define </aside>COMSIG_LIVING_ZOOM_OUT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L194">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 194"/></a>
+    </h3>
+    <p>From /obj/item/proc/unzoom</p><h3 id="define/COMSIG_MOB_APC_CUT_WIRE"><aside class="declaration">#define </aside>COMSIG_MOB_APC_CUT_WIRE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L110">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 110"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/power/apc/proc/cut</p><h3 id="define/COMSIG_MOB_APC_POWER_PULSE"><aside class="declaration">#define </aside>COMSIG_MOB_APC_POWER_PULSE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 112"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/power/apc/proc/pulse</p><h3 id="define/COMSIG_MOB_APC_REMOVE_BOARD"><aside class="declaration">#define </aside>COMSIG_MOB_APC_REMOVE_BOARD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L106">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 106"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/power/apc/attackby</p><h3 id="define/COMSIG_MOB_APC_REMOVE_CELL"><aside class="declaration">#define </aside>COMSIG_MOB_APC_REMOVE_CELL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 108"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/power/apc/attack_hand</p><h3 id="define/COMSIG_MOB_CHANGE_VIEW"><aside class="declaration">#define </aside>COMSIG_MOB_CHANGE_VIEW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L154">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 154"/></a>
+    </h3>
+    <p>called in /client/change_view()</p><h3 id="define/COMSIG_MOB_CONSTRUCT_WALL"><aside class="declaration">#define </aside>COMSIG_MOB_CONSTRUCT_WALL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 92"/></a>
+    </h3>
+    <p>From /obj/structure/girder/proc/do_wall</p><h3 id="define/COMSIG_MOB_CONSTRUCT_WINDOW"><aside class="declaration">#define </aside>COMSIG_MOB_CONSTRUCT_WINDOW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L102">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 102"/></a>
+    </h3>
+    <p>From /obj/structure/window_frame/attackby</p><h3 id="define/COMSIG_MOB_DEATH"><aside class="declaration">#define </aside>COMSIG_MOB_DEATH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 118"/></a>
+    </h3>
+    <p>From /mob/proc/death</p><h3 id="define/COMSIG_MOB_DESTROY_AIRLOCK"><aside class="declaration">#define </aside>COMSIG_MOB_DESTROY_AIRLOCK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 84"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/door/airlock/proc/take_damage</p><h3 id="define/COMSIG_MOB_DESTROY_WALL"><aside class="declaration">#define </aside>COMSIG_MOB_DESTROY_WALL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 88"/></a>
+    </h3>
+    <p>From /turf/closed/wall/proc/take_damage</p><h3 id="define/COMSIG_MOB_DESTROY_WINDOW"><aside class="declaration">#define </aside>COMSIG_MOB_DESTROY_WINDOW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 98"/></a>
+    </h3>
+    <p>From /obj/structure/window/proc/healthcheck</p><h3 id="define/COMSIG_MOB_DEVOURED"><aside class="declaration">#define </aside>COMSIG_MOB_DEVOURED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 134"/></a>
+    </h3>
+    <p>For when a mob is devoured by a Xeno</p><h3 id="define/COMSIG_MOB_DISASSEMBLE_AIRLOCK"><aside class="declaration">#define </aside>COMSIG_MOB_DISASSEMBLE_AIRLOCK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 86"/></a>
+    </h3>
+    <p>From /obj/structure/machinery/door/airlock/attackby</p><h3 id="define/COMSIG_MOB_DISASSEMBLE_WINDOW"><aside class="declaration">#define </aside>COMSIG_MOB_DISASSEMBLE_WINDOW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 104"/></a>
+    </h3>
+    <p>From /obj/structure/window/attackby</p><h3 id="define/COMSIG_MOB_DISASSEMBLE_W_FRAME"><aside class="declaration">#define </aside>COMSIG_MOB_DISASSEMBLE_W_FRAME
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 96"/></a>
+    </h3>
+    <p>From /obj/structure/window_frame/attackby</p><h3 id="define/COMSIG_MOB_DRAGGED"><aside class="declaration">#define </aside>COMSIG_MOB_DRAGGED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L124">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 124"/></a>
+    </h3>
+    <p>For when a mob is dragged</p><h3 id="define/COMSIG_MOB_EXPLODED_WALL"><aside class="declaration">#define </aside>COMSIG_MOB_EXPLODED_WALL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 90"/></a>
+    </h3>
+    <p>From /turf/closed/wall/ex_act</p><h3 id="define/COMSIG_MOB_EXPLODE_W_FRAME"><aside class="declaration">#define </aside>COMSIG_MOB_EXPLODE_W_FRAME
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L94">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 94"/></a>
+    </h3>
+    <p>From /obj/structure/window/framed/ex_act</p><h3 id="define/COMSIG_MOB_FIRED_GUN"><aside class="declaration">#define </aside>COMSIG_MOB_FIRED_GUN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L114">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 114"/></a>
+    </h3>
+    <p>From /projectiles/updated_projectiles/guns/proc/fire</p><h3 id="define/COMSIG_MOB_FIRED_GUN_ATTACHMENT"><aside class="declaration">#define </aside>COMSIG_MOB_FIRED_GUN_ATTACHMENT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L116">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 116"/></a>
+    </h3>
+    <p>From /projectiles/updated_projectiles/guns/proc/fire_attachment</p><h3 id="define/COMSIG_MOB_GETTING_UP"><aside class="declaration">#define </aside>COMSIG_MOB_GETTING_UP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 120"/></a>
+    </h3>
+    <p>From /mob/proc/update_canmove()</p><h3 id="define/COMSIG_MOB_GRAB_UPGRADE"><aside class="declaration">#define </aside>COMSIG_MOB_GRAB_UPGRADE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L401">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 401"/></a>
+    </h3>
+    <p>From /obj/item/grab/attack_self(mob/user)</p><h3 id="define/COMSIG_MOB_ITEM_UNEQUIPPED"><aside class="declaration">#define </aside>COMSIG_MOB_ITEM_UNEQUIPPED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L131">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 131"/></a>
+    </h3>
+    <p>From /obj/item/proc/unequipped()</p><h3 id="define/COMSIG_MOB_KNOCKED_DOWN"><aside class="declaration">#define </aside>COMSIG_MOB_KNOCKED_DOWN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L122">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 122"/></a>
+    </h3>
+    <p>From /mob/proc/update_canmove()</p><h3 id="define/COMSIG_MOB_RECALCULATE_CLIENT_COLOR"><aside class="declaration">#define </aside>COMSIG_MOB_RECALCULATE_CLIENT_COLOR
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 128"/></a>
+    </h3>
+    <p>From /mob/living/verb/resist()</p><h3 id="define/COMSIG_MOB_RESET_VIEW"><aside class="declaration">#define </aside>COMSIG_MOB_RESET_VIEW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L151">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 151"/></a>
+    </h3>
+    <p>Called in /mob/reset_view(): (atom/A)</p><h3 id="define/COMSIG_MOB_RESISTED"><aside class="declaration">#define </aside>COMSIG_MOB_RESISTED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L126">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 126"/></a>
+    </h3>
+    <p>From /mob/living/verb/resist()</p><h3 id="define/COMSIG_MOB_WINDOW_EXPLODED"><aside class="declaration">#define </aside>COMSIG_MOB_WINDOW_EXPLODED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 100"/></a>
+    </h3>
+    <p>From /obj/structure/window/ex_act</p><h3 id="define/COMSIG_MOVABLE_MOVED"><aside class="declaration">#define </aside>COMSIG_MOVABLE_MOVED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L291">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 291"/></a>
+    </h3>
+    <p>from base of atom/movable/Moved(): (/atom, dir, forced)</p><h3 id="define/COMSIG_MOVABLE_PRE_MOVE"><aside class="declaration">#define </aside>COMSIG_MOVABLE_PRE_MOVE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L293">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 293"/></a>
+    </h3>
+    <p>From /atom/movable/Move(): (atom/NewLoc)</p><h3 id="define/COMSIG_MOVABLE_PRE_THROW"><aside class="declaration">#define </aside>COMSIG_MOVABLE_PRE_THROW
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L288">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 288"/></a>
+    </h3>
+    <p>From /atom/movable/proc/launch_towards</p><h3 id="define/COMSIG_MOVABLE_SHUTTLE_CRUSH"><aside class="declaration">#define </aside>COMSIG_MOVABLE_SHUTTLE_CRUSH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L412">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 412"/></a>
+    </h3>
+    <p>shuttle crushing something</p><h3 id="define/COMSIG_MOVABLE_TURF_ENTERED"><aside class="declaration">#define </aside>COMSIG_MOVABLE_TURF_ENTERED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L317">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 317"/></a>
+    </h3>
+    <p>from /turf/Entered</p><h3 id="define/COMSIG_MOVABLE_UPDATE_GLIDE_SIZE"><aside class="declaration">#define </aside>COMSIG_MOVABLE_UPDATE_GLIDE_SIZE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L415">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 415"/></a>
+    </h3>
+    <p>from base of /atom/movable/proc/set_glide_size(): (target)</p><h3 id="define/COMSIG_MOVABLE_XENO_START_PULLING"><aside class="declaration">#define </aside>COMSIG_MOVABLE_XENO_START_PULLING
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L338">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 338"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/start_pulling(): (mob/living/carbon/Xenomorph/X)</p><h3 id="define/COMSIG_PARENT_PREQDELETED"><aside class="declaration">#define </aside>COMSIG_PARENT_PREQDELETED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 63"/></a>
+    </h3>
+    <p>before a datum's Destroy() is called: (force), returning a COMPONENT_ABORT_QDEL value will cancel the qdel operation</p><h3 id="define/COMSIG_PARENT_QDELETING"><aside class="declaration">#define </aside>COMSIG_PARENT_QDELETING
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 66"/></a>
+    </h3>
+    <p>just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called</p><h3 id="define/COMSIG_POSTER_PLACED"><aside class="declaration">#define </aside>COMSIG_POSTER_PLACED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L299">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 299"/></a>
+    </h3>
+    <p>from /turf/closed/wall/proc/place_poster</p><h3 id="define/COMSIG_POST_BULLET_ACT_HUMAN"><aside class="declaration">#define </aside>COMSIG_POST_BULLET_ACT_HUMAN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L357">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 357"/></a>
+    </h3>
+    <p>Called when a bullet hits a human</p><h3 id="define/COMSIG_QUEEN_DISMOUNT_OVIPOSITOR"><aside class="declaration">#define </aside>COMSIG_QUEEN_DISMOUNT_OVIPOSITOR
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L251">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 251"/></a>
+    </h3>
+    <p>From /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(): (instant_dismount)</p><h3 id="define/COMSIG_QUEEN_MOUNT_OVIPOSITOR"><aside class="declaration">#define </aside>COMSIG_QUEEN_MOUNT_OVIPOSITOR
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L249">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 249"/></a>
+    </h3>
+    <p>From /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor</p><h3 id="define/COMSIG_SET_SQUAD"><aside class="declaration">#define </aside>COMSIG_SET_SQUAD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L436">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 436"/></a>
+    </h3>
+    <p>from /datum/squad/proc/put_marine_in_squad</p><h3 id="define/COMSIG_SHUTTLE_SETMODE"><aside class="declaration">#define </aside>COMSIG_SHUTTLE_SETMODE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L410">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 410"/></a>
+    </h3>
+    <p>shuttle mode change</p><h3 id="define/COMSIG_SNACK_EATEN"><aside class="declaration">#define </aside>COMSIG_SNACK_EATEN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L297">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 297"/></a>
+    </h3>
+    <p>from /obj/item/reagent_container/food/snacks/proc/On_Consume</p><h3 id="define/COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS"><aside class="declaration">#define </aside>COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 52"/></a>
+    </h3>
+    <p>from /datum/controller/subsystem/radio/get_available_tcomm_zs(): (list/tcomms)</p><h3 id="define/COMSIG_TOPIC"><aside class="declaration">#define </aside>COMSIG_TOPIC
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 68"/></a>
+    </h3>
+    <p>generic topic handler (usr, href_list)</p><h3 id="define/COMSIG_TRANSMITTER_UPDATE_ICON"><aside class="declaration">#define </aside>COMSIG_TRANSMITTER_UPDATE_ICON
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L418">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 418"/></a>
+    </h3>
+    <p>from /obj/structure/transmitter/update_icon()</p><h3 id="define/COMSIG_TURF_BULLET_ACT"><aside class="declaration">#define </aside>COMSIG_TURF_BULLET_ACT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L313">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 313"/></a>
+    </h3>
+    <p>Called when a bullet hits a turf</p><h3 id="define/COMSIG_WALL_RESIN_ATTACKBY"><aside class="declaration">#define </aside>COMSIG_WALL_RESIN_ATTACKBY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L260">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 260"/></a>
+    </h3>
+    <p>From /turf/closed/wall/resin/attackby(): (obj/item/I, mob/M)</p><h3 id="define/COMSIG_WALL_RESIN_XENO_ATTACK"><aside class="declaration">#define </aside>COMSIG_WALL_RESIN_XENO_ATTACK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L254">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 254"/></a>
+    </h3>
+    <p>From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/Xenomorph/X)</p><h3 id="define/COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER"><aside class="declaration">#define </aside>COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L423">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 423"/></a>
+    </h3>
+    <p>From /obj/effect/alien/weeds/proc/on_weed_expand()</p><h3 id="define/COMSIG_WEEDNODE_GROWTH_COMPLETE"><aside class="declaration">#define </aside>COMSIG_WEEDNODE_GROWTH_COMPLETE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L421">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 421"/></a>
+    </h3>
+    <p>From /obj/effect/alien/weeds/Initialize()</p><h3 id="define/COMSIG_XENO_ACTION_USED"><aside class="declaration">#define </aside>COMSIG_XENO_ACTION_USED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L404">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 404"/></a>
+    </h3>
+    <p>From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)</p><h3 id="define/COMSIG_XENO_ALIEN_ATTACK"><aside class="declaration">#define </aside>COMSIG_XENO_ALIEN_ATTACK
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L226">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 226"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/attack_alien()</p><h3 id="define/COMSIG_XENO_APPEND_TO_STAT"><aside class="declaration">#define </aside>COMSIG_XENO_APPEND_TO_STAT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L243">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 243"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/get_status_tab_items(): (list/statdata)</p><h3 id="define/COMSIG_XENO_BULLET_ACT"><aside class="declaration">#define </aside>COMSIG_XENO_BULLET_ACT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L239">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 239"/></a>
+    </h3>
+    <p>From /mob/living/carbon/Xenomorph/bullet_act</p><h3 id="define/COMSIG_XENO_DEAL_ACID_DAMAGE"><aside class="declaration">#define </aside>COMSIG_XENO_DEAL_ACID_DAMAGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L407">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 407"/></a>
+    </h3>
+    <p>From /mob/living/carbon/Xenomorph/proc/check_blood_splash()</p><h3 id="define/COMSIG_XENO_MOVEMENT_DELAY"><aside class="declaration">#define </aside>COMSIG_XENO_MOVEMENT_DELAY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L246">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 246"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/movement_delay()</p><h3 id="define/COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE"><aside class="declaration">#define </aside>COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L236">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 236"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)</p><h3 id="define/COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE"><aside class="declaration">#define </aside>COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L234">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 234"/></a>
+    </h3>
+    <p>from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)</p><h3 id="define/COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF"><aside class="declaration">#define </aside>COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/dcs/signals.dm#L382">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;dcs&#x2F;signals.dm 382"/></a>
+    </h3>
+    <p>For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

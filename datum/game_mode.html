@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;game_mode - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/game_mode.html#var">Var Details</a> - <a href="datum/game_mode.html#proc">Proc Details</a></header>
+<main>
+<h1>invalid <aside>/<a href="datum.html">datum</a>/<a href="datum/game_mode.html">game_mode</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/datums/emergency_calls/emergency_call.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;emergency_calls&#x2F;emergency_call.dm 8"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/game_mode.html#var/role_mappings">role_mappings</a></th><td>List of role titles to override to different roles when starting game</td></tr>
+            <tr><th><a href="datum/game_mode.html#var/taskbar_icon">taskbar_icon</a></th><td>When set and this gamemode is selected, the taskbar icon will change to the png selected here</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/can_start">can_start</a></th><td>can_start()
+Checks to see if the game can be setup and ran with the current number of players or whatnot.</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/ds_first_drop">ds_first_drop</a></th><td>Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/ds_first_landed">ds_first_landed</a></th><td>Triggered when the dropship first lands.</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/pick_queen_spawn">pick_queen_spawn</a></th><td>Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/post_setup">post_setup</a></th><td>post_setup()
+Everyone should now be on the station and have their normal gear.  This is the place to give the special roles extra things</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/pre_setup">pre_setup</a></th><td>pre_setup()
+Attempts to select players for special roles the mode might have.</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/process">process</a></th><td>process()
+Called by the gameticker</td></tr>
+            <tr><th><a href="datum/game_mode.html#proc/setup_structures">setup_structures</a></th><td>Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/role_mappings"><aside class="declaration">var </aside>role_mappings
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/cm_initialize.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;cm_initialize.dm 81"/></a></h3>
+        <p>List of role titles to override to different roles when starting game</p><h3 id="var/taskbar_icon"><aside class="declaration">var </aside>taskbar_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 31"/></a></h3>
+        <p>When set and this gamemode is selected, the taskbar icon will change to the png selected here</p><h2 id="proc">Proc Details</h2><h3 id="proc/can_start"><aside class="declaration">proc </aside>can_start<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 52"/></a></aside>
+        </h3>
+        <p>can_start()
+Checks to see if the game can be setup and ran with the current number of players or whatnot.</p><h3 id="proc/ds_first_drop"><aside class="declaration">proc </aside>ds_first_drop<aside>(/<a href="datum.html">datum</a>/<a href="datum/shuttle/ferry/marine.html">shuttle/ferry/marine</a>/m_shuttle) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 78"/></a></aside>
+        </h3>
+        <p>Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.</p><h3 id="proc/ds_first_landed"><aside class="declaration">proc </aside>ds_first_landed<aside>(/<a href="datum.html">datum</a>/<a href="datum/shuttle/ferry/marine.html">shuttle/ferry/marine</a>/m_shuttle) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 82"/></a></aside>
+        </h3>
+        <p>Triggered when the dropship first lands.</p><h3 id="proc/pick_queen_spawn"><aside class="declaration">proc </aside>pick_queen_spawn<aside>(/<a href="datum.html">datum</a>/mind/ghost_mind, hivenumber) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/cm_initialize.dm#L487">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;cm_initialize.dm 487"/></a></aside>
+        </h3>
+        <p>Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup</p><h3 id="proc/post_setup"><aside class="declaration">proc </aside>post_setup<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 92"/></a></aside>
+        </h3>
+        <p>post_setup()
+Everyone should now be on the station and have their normal gear.  This is the place to give the special roles extra things</p><h3 id="proc/pre_setup"><aside class="declaration">proc </aside>pre_setup<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 69"/></a></aside>
+        </h3>
+        <p>pre_setup()
+Attempts to select players for special roles the mode might have.</p><h3 id="proc/process"><aside class="parent"><a title="/datum" href="datum.html#proc/process">&uarr;</a></aside>process<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L111">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 111"/></a></aside>
+        </h3>
+        <p>process()
+Called by the gameticker</p><h3 id="proc/setup_structures"><aside class="declaration">proc </aside>setup_structures<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/gamemodes/game_mode.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;game_mode.dm 86"/></a></aside>
+        </h3>
+        <p>Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

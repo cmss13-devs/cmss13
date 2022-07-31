@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item.html#var">Var Details</a> - <a href="obj/item.html#proc">Proc Details</a></header>
+<main>
+<h1>item <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item.html#var/attack_verb">attack_verb</a></th><td>Used in attackby() to say how something was attacked &quot;[x] has been [z.attack_verb] by [y] with [z]&quot;</td></tr>
+            <tr><th><a href="obj/item.html#var/fire_intensity_resistance">fire_intensity_resistance</a></th><td>Used for stepping onto flame and seeing how much dmg you take and if you're ignited.</td></tr>
+            <tr><th><a href="obj/item.html#var/hud_offset">hud_offset</a></th><td>Adjusts the item's position in the HUD, currently only by guns with stock/barrel attachments.</td></tr>
+            <tr><th><a href="obj/item.html#var/vision_impair">vision_impair</a></th><td>Vision impairing effect if worn on head/mask/glasses.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item.html#proc/dig_out_shrapnel_check">dig_out_shrapnel_check</a></th><td>For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.</td></tr>
+            <tr><th><a href="obj/item.html#proc/is_valid_slot">is_valid_slot</a></th><td>Checks if an item can be put in a slot (string) based on their slot flags (bit flags)</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/attack_verb"><aside class="declaration">var </aside>attack_verb
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 18"/></a></h3>
+        <p>Used in attackby() to say how something was attacked &quot;[x] has been [z.attack_verb] by [y] with [z]&quot;</p><h3 id="var/fire_intensity_resistance"><aside class="declaration">var </aside>fire_intensity_resistance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 87"/></a></h3>
+        <p>Used for stepping onto flame and seeing how much dmg you take and if you're ignited.</p><h3 id="var/hud_offset"><aside class="declaration">var </aside>hud_offset
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 32"/></a></h3>
+        <p>Adjusts the item's position in the HUD, currently only by guns with stock/barrel attachments.</p><h3 id="var/vision_impair"><aside class="declaration">var </aside>vision_impair
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 84"/></a></h3>
+        <p>Vision impairing effect if worn on head/mask/glasses.</p><h2 id="proc">Proc Details</h2><h3 id="proc/dig_out_shrapnel_check"><aside class="declaration">proc </aside>dig_out_shrapnel_check<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon/human.html">carbon/human</a>/target, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon/human.html">carbon/human</a>/user) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items/weapons/blades.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;weapons&#x2F;blades.dm 145"/></a></aside>
+        </h3>
+        <p>For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.</p><h3 id="proc/is_valid_slot"><aside class="declaration">proc </aside>is_valid_slot<aside>(slot, ignore_non_flags) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items.dm#L662">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items.dm 662"/></a></aside>
+        </h3>
+        <p>Checks if an item can be put in a slot (string) based on their slot flags (bit flags)</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

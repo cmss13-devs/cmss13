@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;subsystem.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/subsystem.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/subsystem.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><h2 id="timing-subsystem">Timing subsystem</h2></td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_UNIQUE">TIMER_UNIQUE</a></th><td>Don't run if there is an identical unique timer active</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_OVERRIDE">TIMER_OVERRIDE</a></th><td>For unique timers: Replace the old timer rather then not start this one</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_CLIENT_TIME">TIMER_CLIENT_TIME</a></th><td>Timing should be based on how timing progresses on clients, not the server.</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_STOPPABLE">TIMER_STOPPABLE</a></th><td>Timer can be stopped using deltimer()</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_NO_HASH_WAIT">TIMER_NO_HASH_WAIT</a></th><td>prevents distinguishing identical timers with the wait variable</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_LOOP">TIMER_LOOP</a></th><td>Loops the timer repeatedly until qdeleted</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/TIMER_ID_NULL">TIMER_ID_NULL</a></th><td>Empty ID define</td></tr>
+        <tr><td colspan="2"><h2 id="initialization-subsystem">Initialization subsystem</h2></td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/INITIALIZATION_INSSATOMS">INITIALIZATION_INSSATOMS</a></th><td>New should not call Initialize</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/INITIALIZATION_INNEW_MAPLOAD">INITIALIZATION_INNEW_MAPLOAD</a></th><td>New should call Initialize(TRUE)</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/INITIALIZATION_INNEW_REGULAR">INITIALIZATION_INNEW_REGULAR</a></th><td>New should call Initialize(FALSE)</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/addtimer">addtimer</a></th><td>Create a new timer and add it to the queue.</td></tr>
+        <tr><th><a href="code/__DEFINES/subsystem.html#define/INITIALIZE_IMMEDIATE">INITIALIZE_IMMEDIATE</a></th><td>type and all subtypes should always immediately call Initialize in New()</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/INITIALIZATION_INNEW_MAPLOAD"><aside class="declaration">#define </aside>INITIALIZATION_INNEW_MAPLOAD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 43"/></a>
+    </h3>
+    <p>New should call Initialize(TRUE)</p><h3 id="define/INITIALIZATION_INNEW_REGULAR"><aside class="declaration">#define </aside>INITIALIZATION_INNEW_REGULAR
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 45"/></a>
+    </h3>
+    <p>New should call Initialize(FALSE)</p><h3 id="define/INITIALIZATION_INSSATOMS"><aside class="declaration">#define </aside>INITIALIZATION_INSSATOMS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 41"/></a>
+    </h3>
+    <p>New should not call Initialize</p><h3 id="define/INITIALIZE_IMMEDIATE"><aside class="declaration">#define </aside>INITIALIZE_IMMEDIATE
+            <aside>(X)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L179">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 179"/></a>
+    </h3>
+    <p>type and all subtypes should always immediately call Initialize in New()</p><h3 id="define/TIMER_CLIENT_TIME"><aside class="declaration">#define </aside>TIMER_CLIENT_TIME
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 20"/></a>
+    </h3>
+    <p>Timing should be based on how timing progresses on clients, not the server.</p>
+<p>Tracking this is more expensive,
+should only be used in conjuction with things that have to progress client side, such as
+animate() or sound()</p><h3 id="define/TIMER_ID_NULL"><aside class="declaration">#define </aside>TIMER_ID_NULL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 36"/></a>
+    </h3>
+    <p>Empty ID define</p><h3 id="define/TIMER_LOOP"><aside class="declaration">#define </aside>TIMER_LOOP
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 33"/></a>
+    </h3>
+    <p>Loops the timer repeatedly until qdeleted</p>
+<p>In most cases you want a subsystem instead, so don't use this unless you have a good reason</p><h3 id="define/TIMER_NO_HASH_WAIT"><aside class="declaration">#define </aside>TIMER_NO_HASH_WAIT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 28"/></a>
+    </h3>
+    <p>prevents distinguishing identical timers with the wait variable</p>
+<p>To be used with TIMER_UNIQUE</p><h3 id="define/TIMER_OVERRIDE"><aside class="declaration">#define </aside>TIMER_OVERRIDE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 11"/></a>
+    </h3>
+    <p>For unique timers: Replace the old timer rather then not start this one</p><h3 id="define/TIMER_STOPPABLE"><aside class="declaration">#define </aside>TIMER_STOPPABLE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 23"/></a>
+    </h3>
+    <p>Timer can be stopped using deltimer()</p><h3 id="define/TIMER_UNIQUE"><aside class="declaration">#define </aside>TIMER_UNIQUE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 8"/></a>
+    </h3>
+    <p>Don't run if there is an identical unique timer active</p>
+<p>if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer,
+and returns the id of the existing timer</p><h3 id="define/addtimer"><aside class="declaration">#define </aside>addtimer
+            <aside>(args ...)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/subsystem.dm#L176">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;subsystem.dm 176"/></a>
+    </h3>
+    <p>Create a new timer and add it to the queue.</p>
+<ul>
+<li>Arguments:</li>
+<li>
+<ul>
+<li>callback the callback to call on timer finish</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>wait deciseconds to run the timer for</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>flags flags for this timer, see: code__DEFINES\subsystems.dm</li>
+</ul>
+</li>
+</ul></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

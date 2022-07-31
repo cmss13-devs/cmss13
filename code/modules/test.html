@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;modules&#x2F;test&#x2F;README.md - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>Organizing tests <aside>code/modules/test/README.md</aside> 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/test/README.md">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;test&#x2F;README.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><p>Test cases should be organized in test sets, which are named collections of individual tests. Test results belonging to the same set are grouped together during test execution. Test sets may also be run individually from the debug menu.</p>
+<p>To define a test set:</p>
+<ol>
+<li>Make a new folder for your test set in <code>test/</code>, e.g. <code>test/mob_death/</code></li>
+<li>Make a new file for your test set definition, e.g. <code>test/mob_death/test_set_mob_death.dm</code></li>
+<li>Define the test set:</li>
+</ol>
+<pre><code>/datum/test_case/mob_death  
+    test_set = &quot;Mob death&quot;
+</code></pre>
+<p><strong>NOTE</strong>: You should not set the <code>name</code> variable for the datum defining a test set.</p>
+<h1 id="writing-test-cases">Writing test cases</h1>
+<p>Define test cases like this, preferably in their own files, e.g. <code>test/TESTSETNAME/TESTCASENAME.dm</code>:</p>
+<pre><code>/datum/test_case/TESTSETNAME/TESTCASENAME
+    name = &quot;description of what the test case is testing&quot;  
+
+// Run the test in here
+// A *falsy return* from this is interpreted as the test *passing*
+// Remember: not returning anything is a falsy return by default
+/datum/test_case/TESTSETNAME/TESTCASENAME/test()
+    ...
+
+// This is run before test()
+// Set up stuff you need in the test here
+// This could be spawning mobs, items, etc.
+/datum/test_case/TESTSETNAME/TESTCASENAME/setUp()  
+    ...  
+</code></pre>
+<p><code>test()</code> should be a short proc that checks if the program behaved correctly, which can be done by using one or more of the following assertions:</p>
+<pre><code>// Assert that a statement evaluates to true
+/datum/test_case/proc/assertTrue(var/statement, var/fail_msg)
+
+// Assert that a statement evaluates to false
+/datum/test_case/proc/assertFalse(var/statement, var/fail_msg)  
+
+// Assert that a equals b
+/datum/test_case/proc/assertEquals(var/a, var/b, var/fail_msg)  
+
+// Assert that a &gt; b
+/datum/test_case/proc/assertGt(var/a, var/b, var/fail_msg)  
+
+// Assert that a &gt;= b
+/datum/test_case/proc/assertGtEq(var/a, var/b, var/fail_msg)  
+
+// Assert that a &lt; b
+/datum/test_case/proc/assertLt(var/a, var/b, var/fail_msg)  
+
+// Assert that a &lt;= b
+/datum/test_case/proc/assertLtEq(var/a, var/b, var/fail_msg)  
+
+// Assert that a is in the list L
+/datum/test_case/proc/assertInList(var/a, var/list/L, var/fail_msg)
+</code></pre>
+<p>The <code>fail_msg</code> variable is <em>technically</em> optional, but should <em>always</em> be used. If the test fails on any assertion, <code>fail_msg</code> is output by the test framework as an explanation for why the test failed.</p>
+<p>If you want finer control over when the test should fail, you can use the <code>fail()</code> proc to manually fail the test at any time.</p>
+<pre><code>// Fails the test with the given message
+/datum/test_case/proc/fail(var/fail_msg)
+</code></pre>
+<p>If the test case requires setup before it runs, for example building a room, spawning a mob, etc. you can do it in the <code>setUp()</code> proc of your test case.</p>
+<h1 id="running-tests">Running tests</h1>
+<p>You have a couple of options for running tests.</p>
+<p>There are three in-game debug verbs:</p>
+<ul>
+<li>Run All Tests - Runs <em>all</em> test sets, which in turn runs <em>all</em> test cases</li>
+<li>Run Test Set - Runs a specific test set, meaning all test cases belonging to the chosen test set</li>
+<li>Run Test Case - Runs a specific test case</li>
+</ul>
+<p>The test manager is also available through the global variable <code>test_executor</code>. Use the verbose argument for detailed logs:</p>
+<ul>
+<li>
+<p>To run all test cases, call:
+<code>test_executor.run_all_tests(var/verbose=FALSE)</code></p>
+</li>
+<li>
+<p>To run a specific test set, call:
+<code>test_executor.run_test_set(var/test_set, var/verbose=FALSE)</code>
+<strong>NOTE</strong>: You should be passing the name of the test set into this proc, not the datum defining the test set.</p>
+</li>
+<li>
+<p>To run an individual test, call:
+<code>test_executor.run_individual_test(var/datum/test_case/case, var/verbose=FALSE)</code>
+<strong>NOTE</strong>: You should be passing a test case datum here. The test manager will already have one, but it’s perfectly safe and far easier to just create a new one.</p>
+</li>
+</ul>
+<p>You can also run all test cases when the server boots up by passing the <code>run_tests</code> world parameter to Dream Daemon when starting the server. If this is done, the server will begin the round as soon as possible, run all test cases, then shut down. You can also pass the <code>verbose_tests</code> parameter for more detailed test logs.</p>
+<h1 id="interpreting-test-results">Interpreting test results</h1>
+<p>The output from the test depends on whether you’re running all tests, a test set or just a single test case. Whether or not the test ran in verbose mode also affects the log output.</p>
+<p>When running individual test cases, <code>run_individual_test()</code> will only return a value indicating the result of the test. That is, one of <code>TEST_PASS</code>, <code>TEST_FAIL</code> or <code>TEST_ERROR</code>. These are pretty straightforward, but it should be noted that there is a distinction between a test failing and a test erroring.</p>
+<p>The test can only fail if an assertion in the test case fails, meaning that a test fail indicates you have syntactically valid code, but it produces the wrong behavior. If the test <em>errored</em>, it means a runtime occured while the test case was running, either in the feature code or the test case code itself. If a test fails or errors, it will always log details. In the case of a fail, the log will include basic information about what kind of assertion failed, while errors also log the full details of the runtime that occured.</p>
+<p>Output from a single test case looks like this (<code>verbose</code> = true):</p>
+<p><code>Test  case: Undefibbables should not process - pass</code></p>
+<p>If you are running a test set, the test manager sums the test results and returns them in a list. The amount of any test result type can be retrieved by indexing <code>TEST_PASS</code>, <code>TEST_FAIL</code> or <code>TEST_ERROR</code> respectively. If the test set is run in verbose mode, it will log how many passes, fails and errors there were in the test set.</p>
+<p>Output from a test set looks something like this (<code>verbose</code> = true):</p>
+<pre><code>Test case: Undefibbables should not process - pass
+Test case Dead mobs process reagents failed with the following message:  
+expected 0 &gt;= 1
+Test case: Dead mobs process reagents - fail
+...
+
+Finished test set: Mob death  
+Pass: 4  
+Fail: 1  
+Error: 1
+</code></pre>
+<p>Running all tests will run every test set, sum the results from each test set, then return them in a list. The amount of any test result type can be retrieved by indexing <code>TEST_PASS</code>, <code>TEST_FAIL</code> or <code>TEST_ERROR</code> respectively. If the tests are run in verbose mode, the only additional log output is which test sets are being run.</p>
+<p>Output from running all tests looks something like this (<code>verbose</code> = true):</p>
+<pre><code>Running test set: Mob death  
+Test case: Undefibbables should not process - pass  
+Test case Dead mobs process reagents failed with the following message:  
+expected 0 &gt;= 1  
+Test case: Dead mobs process reagents - fail  
+...
+
+Finished test set: Mob death
+Pass: 4  
+Fail: 1  
+Error: 1  
+
+Running test set: Something else
+...  
+
+Finished 23 test(s) in 381.8 seconds  
+----------------------------------------  
+Pass: 16  
+Fail: 6  
+Error: 1  
+----------------------------------------
+</code></pre></td></tr></table></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

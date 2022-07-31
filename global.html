@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>(global) - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="global.html#var">Var Details</a> - <a href="global.html#proc">Proc Details</a></header>
+<main>
+<h1>(global)
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/(unknown)">
+        <img src="git.png" width="16" height="16" title="(unknown)"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="global.html#var/Failsafe">Failsafe</a></th><td>Failsafe</td></tr>
+            <tr><th><a href="global.html#var/Master">Master</a></th><td>StonedMC</td></tr>
+            <tr><th><a href="global.html#var/SSpager_status">SSpager_status</a></th><td>Updates BYOND pager status periodically</td></tr>
+            <tr><th><a href="global.html#var/SSstats_collector">SSstats_collector</a></th><td>Collects simple round statistics periodically</td></tr>
+            <tr><th><a href="global.html#var/SStgui">SStgui</a></th><td>tgui subsystem</td></tr>
+            <tr><th><a href="global.html#var/SStimer">SStimer</a></th><td></td></tr>
+            <tr><th><a href="global.html#var/note_categories">note_categories</a></th><td>Note categories in text form, in order of their numerical #defines.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="global.html#proc/CreateBans">CreateBans</a></th><td>DEBUG</td></tr>
+            <tr><th><a href="global.html#proc/_addtimer">_addtimer</a></th><td>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</td></tr>
+            <tr><th><a href="global.html#proc/add_keybinding">add_keybinding</a></th><td>Adds an instanced keybinding to the global tracker</td></tr>
+            <tr><th><a href="global.html#proc/add_verb">add_verb</a></th><td>handles adding verbs and updating the stat panel browser</td></tr>
+            <tr><th><a href="global.html#proc/admin_ticket_log">admin_ticket_log</a></th><td>Use this proc when an admin takes action that may be related to an open ticket on what
+what can be a client, ckey, or mob
+player_message: If the message should be shown in the player ticket panel, fill this out
+log_in_blackbox: Whether or not this message with the blackbox system.
+If disabled, this message should be logged with a different proc call</td></tr>
+            <tr><th><a href="global.html#proc/capitalize_first_letters">capitalize_first_letters</a></th><td>Finds the first letter of each word in the provided string and capitalize them</td></tr>
+            <tr><th><a href="global.html#proc/check_asay_links">check_asay_links</a></th><td>Checks a given message to see if any of the words are something we want to treat specially, as detailed below.</td></tr>
+            <tr><th><a href="global.html#proc/color_matrix_from_string">color_matrix_from_string</a></th><td>Converts a hex colour string to a colour matrix.</td></tr>
+            <tr><th><a href="global.html#proc/color_matrix_recolor_red">color_matrix_recolor_red</a></th><td><em>Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new colour. In the base sprite, Hue must always be pure red.
+Saturation and Lightness can be anything. Arg is a hex string for a colour. Proc is by Lummox JR, www.byond.com/forum/post/2209545
+color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colours.</em></td></tr>
+            <tr><th><a href="global.html#proc/color_matrix_recolor_rgb">color_matrix_recolor_rgb</a></th><td><em>Creates a matrix to re-paint a sprite, replacing pure red, green, and blue with 3 different shades. Doesn't work with mixed tones of RGB or whites or greys
+-- <em>must</em> be pure. R/G/B 255 becomes the new colour, darker shades become correspondingly darker.
+The arg is a list of hex colours, for ex &quot;list(&quot;#d4c218&quot;, &quot;#b929f7&quot;, &quot;#339933&quot;&quot;.
+if you want variations of the same colour, color_matrix_recolor_red() is simpler.</em></td></tr>
+            <tr><th><a href="global.html#proc/deltimer">deltimer</a></th><td>Delete a timer</td></tr>
+            <tr><th><a href="global.html#proc/generate_asset_name">generate_asset_name</a></th><td>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</td></tr>
+            <tr><th><a href="global.html#proc/getFlatIcon">getFlatIcon</a></th><td>Create a single [/icon] from a given <a href="atom.html" title="/atom">/atom</a> or <a href="https://secure.byond.com/docs/ref/#/image" title="/image">/image</a>.</td></tr>
+            <tr><th><a href="global.html#proc/get_bbox_of_atoms">get_bbox_of_atoms</a></th><td>Get a bounding box of a list of atoms.</td></tr>
+            <tr><th><a href="global.html#proc/getpois">getpois</a></th><td>Returns a list of all items of interest with their name</td></tr>
+            <tr><th><a href="global.html#proc/give_action">give_action</a></th><td>Gives an action to a mob and returns it</td></tr>
+            <tr><th><a href="global.html#proc/init_keybindings">init_keybindings</a></th><td>Creates and sorts all the keybinding datums</td></tr>
+            <tr><th><a href="global.html#proc/initiate_surgery_moment">initiate_surgery_moment</a></th><td>Does the surgery initiation. Returns TRUE if the triggering attack should be halted.</td></tr>
+            <tr><th><a href="global.html#proc/load_map">load_map</a></th><td>Shortcut function to parse a map and apply it to the world.</td></tr>
+            <tr><th><a href="global.html#proc/log_tgui">log_tgui</a></th><td>Appends a tgui-related log entry. All arguments are optional.</td></tr>
+            <tr><th><a href="global.html#proc/map_pill_icons">map_pill_icons</a></th><td>Pills.</td></tr>
+            <tr><th><a href="global.html#proc/md5asfile">md5asfile</a></th><td>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</td></tr>
+            <tr><th><a href="global.html#proc/message_to_html">message_to_html</a></th><td>Message-related procs</td></tr>
+            <tr><th><a href="global.html#proc/mutable_appearance">mutable_appearance</a></th><td>Helper similar to image()</td></tr>
+            <tr><th><a href="global.html#proc/pick_n_take">pick_n_take</a></th><td>Pick a random element from the list and remove it from the list.</td></tr>
+            <tr><th><a href="global.html#proc/recursive_holder_check">recursive_holder_check</a></th><td>Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human</td></tr>
+            <tr><th><a href="global.html#proc/remove_verb">remove_verb</a></th><td>handles removing verb and sending it to browser to update, use this for removing verbs</td></tr>
+            <tr><th><a href="global.html#proc/show_blurb">show_blurb</a></th><td>*Shows a ticker reading out the given text on a client's screen.
+targets = mob or list of mobs to show it to.</td></tr>
+            <tr><th><a href="global.html#proc/show_blurb_uscm">show_blurb_uscm</a></th><td><em>Shows operation start blurb to living marines. Slightly different for squad marines, pilots, and deploying ship crew/passengers.
+exempt_ztraits = trait or list of traits of zlevels where any marines don't see the message, ex. marine faction survivors colonyside
+shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
+unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
+base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.</em></td></tr>
+            <tr><th><a href="global.html#proc/show_location_blurb">show_location_blurb</a></th><td>Reads out a description of game time, game date, main ship and current area. Originally for displaying roundstart messages on a conventional SS13 server.</td></tr>
+            <tr><th><a href="global.html#proc/sort_list">sort_list</a></th><td>sort any value in a list</td></tr>
+            <tr><th><a href="global.html#proc/tgui_Topic">tgui_Topic</a></th><td>Middleware for /client/Topic.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_alert">tgui_alert</a></th><td>Creates a TGUI alert window and returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_alert_async">tgui_alert_async</a></th><td>Creates an asynchronous TGUI alert window with an associated callback.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_input_list">tgui_input_list</a></th><td>Creates a TGUI input list window and returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_input_list_async">tgui_input_list_async</a></th><td>Creates an asynchronous TGUI input list window with an associated callback.</td></tr>
+            <tr><th><a href="global.html#proc/timeleft">timeleft</a></th><td>Get the remaining deciseconds on a timer</td></tr>
+            <tr><th><a href="global.html#proc/to_chat">to_chat</a></th><td>Sends the message to the recipient (target).</td></tr>
+            <tr><th><a href="global.html#proc/to_chat_immediate">to_chat_immediate</a></th><td>Circumvents the message queue and sends the message
+to the recipient (target) as soon as possible.</td></tr>
+            <tr><th><a href="global.html#proc/url2htmlloader">url2htmlloader</a></th><td>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</td></tr>
+            <tr><th><a href="global.html#proc/worldtime2text">worldtime2text</a></th><td>Returns the world time in english. Do not use to get date information - starts at 0 + 12 hours.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/Failsafe"><aside class="declaration">var </aside>Failsafe
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/controller/failsafe</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/mc/failsafe.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;mc&#x2F;failsafe.dm 7"/></a></h3>
+        <p>Failsafe</p>
+<p>Pretty much pokes the MC to make sure it's still alive.</p><h3 id="var/Master"><aside class="declaration">var </aside>Master
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/master.html">controller/master</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/mc/master.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;mc&#x2F;master.dm 12"/></a></h3>
+        <p>StonedMC</p>
+<p>Designed to properly split up a given tick among subsystems
+Note: if you read parts of this code and think &quot;why is it doing it that way&quot;
+Odds are, there is a reason</p><h3 id="var/SSpager_status"><aside class="declaration">var </aside>SSpager_status
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/pager_status</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/pager_status.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;pager_status.dm 2"/></a></h3>
+        <p>Updates BYOND pager status periodically</p><h3 id="var/SSstats_collector"><aside class="declaration">var </aside>SSstats_collector
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/stats_collector</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/stats_collector.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;stats_collector.dm 2"/></a></h3>
+        <p>Collects simple round statistics periodically</p><h3 id="var/SStgui"><aside class="declaration">var </aside>SStgui
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/tgui.html">tgui</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/tgui.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;tgui.dm 13"/></a></h3>
+        <p>tgui subsystem</p>
+<p>Contains all tgui state and subsystem code.</p><h3 id="var/SStimer"><aside class="declaration">var </aside>SStimer
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/timer.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 19"/></a></h3>
+        <h1 id="timer-subsystem">Timer Subsystem</h1>
+<p>Handles creation, callbacks, and destruction of timed events.</p>
+<p>It is important to understand the buckets used in the timer subsystem are just a series of circular doubly-linked
+lists. The object at a given index in bucket_list is a /datum/timedevent, the head of a circular list, which has prev
+and next references for the respective elements in that bucket's circular list.</p><h3 id="var/note_categories"><aside class="declaration">var </aside>note_categories
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__DEFINES/admin.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;admin.dm 29"/></a></h3>
+        <p>Note categories in text form, in order of their numerical #defines.</p><h2 id="proc">Proc Details</h2><h3 id="proc/CreateBans"><aside class="declaration">proc </aside>CreateBans<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/admin/NewBan.dm#L194">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;NewBan.dm 194"/></a></aside>
+        </h3>
+        <p>DEBUG</p><h3 id="proc/_addtimer"><aside class="declaration">proc </aside>_addtimer<aside>(/<a href="datum.html">datum</a>/callback/callback, wait, flags, file, line) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/timer.dm#L528">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 528"/></a></aside>
+        </h3>
+        <p>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</p>
+<p>Arguments:</p>
+<ul>
+<li>callback the callback to call on timer finish</li>
+<li>wait deciseconds to run the timer for</li>
+<li>flags flags for this timer, see: code__DEFINES\subsystems.dm</li>
+</ul><h3 id="proc/add_keybinding"><aside class="declaration">proc </aside>add_keybinding<aside>(/<a href="datum.html">datum</a>/keybinding/instance, /list/to_add_to) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/lists/keybindings.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybindings.dm 14"/></a></aside>
+        </h3>
+        <p>Adds an instanced keybinding to the global tracker</p><h3 id="proc/add_verb"><aside class="declaration">proc </aside>add_verb<aside>(/<a href="client.html">client</a>/target, verb_or_list_to_add) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/verb_helpers.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;verb_helpers.dm 9"/></a></aside>
+        </h3>
+        <p>handles adding verbs and updating the stat panel browser</p>
+<p>pass the verb type path to this instead of adding it directly to verbs so the statpanel can update
+Arguments:</p>
+<ul>
+<li>target - Who the verb is being added to, client or mob typepath</li>
+<li>verb - typepath to a verb, or a list of verbs, supports lists of lists</li>
+</ul><h3 id="proc/admin_ticket_log"><aside class="declaration">proc </aside>admin_ticket_log<aside>(what, message, player_message, log_in_blackbox) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/admin/verbs/adminhelp.dm#L811">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;adminhelp.dm 811"/></a></aside>
+        </h3>
+        <p>Use this proc when an admin takes action that may be related to an open ticket on what
+what can be a client, ckey, or mob
+player_message: If the message should be shown in the player ticket panel, fill this out
+log_in_blackbox: Whether or not this message with the blackbox system.
+If disabled, this message should be logged with a different proc call</p><h3 id="proc/capitalize_first_letters"><aside class="declaration">proc </aside>capitalize_first_letters<aside>(string) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/text.dm#L318">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 318"/></a></aside>
+        </h3>
+        <p>Finds the first letter of each word in the provided string and capitalize them</p><h3 id="proc/check_asay_links"><aside class="declaration">proc </aside>check_asay_links<aside>(msg) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/admin/verbs/adminhelp.dm#L869">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;adminhelp.dm 869"/></a></aside>
+        </h3>
+        <p>Checks a given message to see if any of the words are something we want to treat specially, as detailed below.</p>
+<p>There are 3 cases where a word is something we want to act on</p>
+<ol>
+<li>Admin pings, like @adminckey. Pings the admin in question, text is not clickable</li>
+<li>Datum refs, like @0x2001169 or @mob_23. Clicking on the link opens up the VV for that datum</li>
+<li>Ticket refs, like #3. Displays the status and ahelper in the link, clicking on it brings up the ticket panel for it.
+Returns a list being used as a tuple. Index ASAY_LINK_NEW_MESSAGE_INDEX contains the new message text (with clickable links and such)
+while index ASAY_LINK_PINGED_ADMINS_INDEX contains a list of pinged admin clients, if there are any.</li>
+</ol>
+<p>Arguments:</p>
+<ul>
+<li>msg - the message being scanned</li>
+</ul><h3 id="proc/color_matrix_from_string"><aside class="declaration">proc </aside>color_matrix_from_string<aside>(string) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/matrices.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;matrices.dm 112"/></a></aside>
+        </h3>
+        <p>Converts a hex colour string to a colour matrix.</p><h3 id="proc/color_matrix_recolor_red"><aside class="declaration">proc </aside>color_matrix_recolor_red<aside>(new_color) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/matrices.dm#L237">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;matrices.dm 237"/></a></aside>
+        </h3>
+        <p><em>Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new colour. In the base sprite, Hue must always be pure red.
+Saturation and Lightness can be anything. Arg is a hex string for a colour. Proc is by Lummox JR, www.byond.com/forum/post/2209545
+color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colours.</em></p><h3 id="proc/color_matrix_recolor_rgb"><aside class="declaration">proc </aside>color_matrix_recolor_rgb<aside>(/list/replacement_shades) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/matrices.dm#L213">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;matrices.dm 213"/></a></aside>
+        </h3>
+        <p><em>Creates a matrix to re-paint a sprite, replacing pure red, green, and blue with 3 different shades. Doesn't work with mixed tones of RGB or whites or greys
+-- <em>must</em> be pure. R/G/B 255 becomes the new colour, darker shades become correspondingly darker.
+The arg is a list of hex colours, for ex &quot;list(&quot;#d4c218&quot;, &quot;#b929f7&quot;, &quot;#339933&quot;&quot;.
+if you want variations of the same colour, color_matrix_recolor_red() is simpler.</em></p><h3 id="proc/deltimer"><aside class="declaration">proc </aside>deltimer<aside>(id) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/timer.dm#L577">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 577"/></a></aside>
+        </h3>
+        <p>Delete a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/generate_asset_name"><aside class="declaration">proc </aside>generate_asset_name<aside>(file) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/icons.dm#L700">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 700"/></a></aside>
+        </h3>
+        <p>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</p><h3 id="proc/getFlatIcon"><aside class="declaration">proc </aside>getFlatIcon<aside>(/image/A, defdir, deficon, defstate, defblend, start, no_anim) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/icons.dm#L335">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 335"/></a></aside>
+        </h3>
+        <p>Create a single [/icon] from a given <a href="atom.html" title="/atom">/atom</a> or <a href="https://secure.byond.com/docs/ref/#/image" title="/image">/image</a>.</p>
+<p>Very low-performance. Should usually only be used for HTML, where BYOND's
+appearance system (overlays/underlays, etc.) is not available.</p>
+<p>Only the first argument is required.</p><h3 id="proc/get_bbox_of_atoms"><aside class="declaration">proc </aside>get_bbox_of_atoms<aside>(/list/atoms) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/game.dm#L279">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 279"/></a></aside>
+        </h3>
+        <p>Get a bounding box of a list of atoms.</p>
+<p>Arguments:</p>
+<ul>
+<li>atoms - List of atoms. Can accept output of view() and range() procs.</li>
+</ul>
+<p>Returns: list(x1, y1, x2, y2)</p><h3 id="proc/getpois"><aside class="declaration">proc </aside>getpois<aside>(mobs_only, skip_mindless, specify_dead_role) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/unsorted.dm#L1879">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 1879"/></a></aside>
+        </h3>
+        <p>Returns a list of all items of interest with their name</p><h3 id="proc/give_action"><aside class="declaration">proc </aside>give_action<aside>(/<a href="mob.html">mob</a>/L, action_path, ...) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/datums/action.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;action.dm 63"/></a></aside>
+        </h3>
+        <p>Gives an action to a mob and returns it</p>
+<p>If mob already has the action, unhide it if it's hidden</p>
+<p>Can pass additional initialization args</p><h3 id="proc/init_keybindings"><aside class="declaration">proc </aside>init_keybindings<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/_globalvars/lists/keybindings.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybindings.dm 4"/></a></aside>
+        </h3>
+        <p>Creates and sorts all the keybinding datums</p><h3 id="proc/initiate_surgery_moment"><aside class="declaration">proc </aside>initiate_surgery_moment<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/tool, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/carbon/target, /<a href="obj.html">obj</a>/<a href="obj/limb.html">limb</a>/affecting, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/surgery/surgery_initiator.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;surgery_initiator.dm 7"/></a></aside>
+        </h3>
+        <p>Does the surgery initiation. Returns TRUE if the triggering attack should be halted.</p><h3 id="proc/load_map"><aside class="declaration">proc </aside>load_map<aside>(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/mapping/reader.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mapping&#x2F;reader.dm 44"/></a></aside>
+        </h3>
+        <p>Shortcut function to parse a map and apply it to the world.</p>
+<ul>
+<li><code>dmm_file</code>: A .dmm file to load (Required).</li>
+<li><code>x_offset</code>, <code>y_offset</code>, <code>z_offset</code>: Positions representign where to load the map (Optional).</li>
+<li><code>cropMap</code>: When true, the map will be cropped to fit the existing world dimensions (Optional).</li>
+<li><code>measureOnly</code>: When true, no changes will be made to the world (Optional).</li>
+<li><code>no_changeturf</code>: When true, <a href="turf.html" title="/turf">turf/AfterChange</a> won't be called on loaded turfs</li>
+<li><code>x_lower</code>, <code>x_upper</code>, <code>y_lower</code>, <code>y_upper</code>: Coordinates (relative to the map) to crop to (Optional).</li>
+<li><code>placeOnTop</code>: Whether to use <a href="turf.html" title="/turf">turf/PlaceOnTop</a> rather than <a href="turf.html" title="/turf">turf/ChangeTurf</a> (Optional).</li>
+</ul><h3 id="proc/log_tgui"><aside class="declaration">proc </aside>log_tgui<aside>(user, message, context, /<a href="datum.html">datum</a>/<a href="datum/tgui_window.html">tgui_window</a>/window, /<a href="datum.html">datum</a>/src_object) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/logging.dm#L173">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;logging.dm 173"/></a></aside>
+        </h3>
+        <p>Appends a tgui-related log entry. All arguments are optional.</p><h3 id="proc/map_pill_icons"><aside class="declaration">proc </aside>map_pill_icons<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/game/objects/items/reagent_containers/pill.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;reagent_containers&#x2F;pill.dm 6"/></a></aside>
+        </h3>
+        <p>Pills.</p>
+<p>Returns a list mapping pill icon classes to icon states</p><h3 id="proc/md5asfile"><aside class="declaration">proc </aside>md5asfile<aside>(file) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/files.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 68"/></a></aside>
+        </h3>
+        <p>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</p><h3 id="proc/message_to_html"><aside class="declaration">proc </aside>message_to_html<aside>(message) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgchat/message.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;message.dm 14"/></a></aside>
+        </h3>
+        <p>Message-related procs</p>
+<p>Message format (/list):</p>
+<ul>
+<li>type - Message type, must be one of defines in <code>code/__DEFINES/chat.dm</code></li>
+<li>text - Plain message text</li>
+<li>html - HTML message text</li>
+<li>Optional metadata, can be any key/value pair.</li>
+</ul>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="proc/mutable_appearance"><aside class="declaration">proc </aside>mutable_appearance<aside>(icon, icon_state, layer, plane, alpha, appearance_flags) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/datums/mutable_appearance.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutable_appearance.dm 13"/></a></aside>
+        </h3>
+        <p>Helper similar to image()</p><h3 id="proc/pick_n_take"><aside class="declaration">proc </aside>pick_n_take<aside>(/list/L) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/lists.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;lists.dm 107"/></a></aside>
+        </h3>
+        <p>Pick a random element from the list and remove it from the list.</p><h3 id="proc/recursive_holder_check"><aside class="declaration">proc </aside>recursive_holder_check<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/held_item, recursion_limit) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/game.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 89"/></a></aside>
+        </h3>
+        <p>Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human</p><h3 id="proc/remove_verb"><aside class="declaration">proc </aside>remove_verb<aside>(/<a href="client.html">client</a>/target, verb_or_list_to_remove) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/verb_helpers.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;verb_helpers.dm 58"/></a></aside>
+        </h3>
+        <p>handles removing verb and sending it to browser to update, use this for removing verbs</p>
+<p>pass the verb type path to this instead of removing it from verbs so the statpanel can update
+Arguments:</p>
+<ul>
+<li>target - Who the verb is being removed from, client or mob typepath</li>
+<li>verb - typepath to a verb, or a list of verbs, supports lists of lists</li>
+</ul><h3 id="proc/show_blurb"><aside class="declaration">proc </aside>show_blurb<aside>(/list/mob/targets, duration, message, scroll_down, screen_position, text_alignment, text_color, blurb_key, ignore_key, speed) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/text_blurbs.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text_blurbs.dm 92"/></a></aside>
+        </h3>
+        <p>*Shows a ticker reading out the given text on a client's screen.
+targets = mob or list of mobs to show it to.</p>
+<p>duration = how long it lingers after it finishes ticking.</p>
+<p>message = the message to display. Due to using maptext it isn't very flexible format-wise. 11px font, up to 480 pixels per line.
+Use \n for line breaks. Single-character HTML tags (<b>, <i>, <u> etc.) are handled correctly but others display strangely.
+Note that maptext can display text macros in strange ways, ex. \improper showing as &quot;Ã¿&quot;. Lines containing only spaces,
+including ones only containing &quot;\improper &quot;, don't display.</p>
+<p>scroll_down = by default each line pushes the previous line upwards - this tells it to start high and scroll down.
+Ticks on \n - does not autodetect line breaks in long strings.</p>
+<p>screen_position = screen loc for the bottom-left corner of the blurb.</p>
+<p>text_alignment = &quot;right&quot;, &quot;left&quot;, or &quot;center&quot;</p>
+<p>text_color = colour of the text.</p>
+<p>blurb_key = a key used for specific blurb types so they are not shown repeatedly. Ex. someone who joins as CLF repeatedly only seeing the mission blurb the first time.</p>
+<p>ignore_key = used to skip key checks. Ex. a USCM ERT member shouldn't see the normal USCM drop message,
+but should see their own spawn message even if the player already dropped as USCM.*</p><h3 id="proc/show_blurb_uscm"><aside class="declaration">proc </aside>show_blurb_uscm<aside>(/list/exempt_ztraits, unit, base) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/text_blurbs.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text_blurbs.dm 17"/></a></aside>
+        </h3>
+        <p><em>Shows operation start blurb to living marines. Slightly different for squad marines, pilots, and deploying ship crew/passengers.
+exempt_ztraits = trait or list of traits of zlevels where any marines don't see the message, ex. marine faction survivors colonyside
+shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
+unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
+base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.</em></p><h3 id="proc/show_location_blurb"><aside class="declaration">proc </aside>show_location_blurb<aside>(/list/mob/targets, /<a href="area.html">area</a>/A, duration) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/text_blurbs.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text_blurbs.dm 4"/></a></aside>
+        </h3>
+        <p>Reads out a description of game time, game date, main ship and current area. Originally for displaying roundstart messages on a conventional SS13 server.</p><h3 id="proc/sort_list"><aside class="declaration">proc </aside>sort_list<aside>(/list/list_to_sort, cmp) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/_lists.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_lists.dm 73"/></a></aside>
+        </h3>
+        <p>sort any value in a list</p><h3 id="proc/tgui_Topic"><aside class="declaration">proc </aside>tgui_Topic<aside>(href_list) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/external.dm#L172">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;external.dm 172"/></a></aside>
+        </h3>
+        <p>Middleware for /client/Topic.</p>
+<p>return bool If TRUE, prevents propagation of the topic call.</p><h3 id="proc/tgui_alert"><aside class="declaration">proc </aside>tgui_alert<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, timeout) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/tgui_alert.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_alert.dm 12"/></a></aside>
+        </h3>
+        <p>Creates a TGUI alert window and returns the user's response.</p>
+<p>This proc should be used to create alerts that the caller will wait for a response from.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/tgui_alert_async"><aside class="declaration">proc </aside>tgui_alert_async<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, /<a href="datum.html">datum</a>/callback/callback, timeout) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/tgui_alert.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_alert.dm 40"/></a></aside>
+        </h3>
+        <p>Creates an asynchronous TGUI alert window with an associated callback.</p>
+<p>This proc should be used to create alerts that invoke a callback with the user's chosen option.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>callback - The callback to be invoked when a choice is made.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/tgui_input_list"><aside class="declaration">proc </aside>tgui_input_list<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, timeout) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/tgui_input_list.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_input_list.dm 30"/></a></aside>
+        </h3>
+        <p>Creates a TGUI input list window and returns the user's response.</p>
+<p>This proc should be used to create alerts that the caller will wait for a response from.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The title of the list input, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>timeout - The timeout of the alert, after which the list input will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/tgui_input_list_async"><aside class="declaration">proc </aside>tgui_input_list_async<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, /<a href="datum.html">datum</a>/callback/callback, timeout) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgui/tgui_input_list.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_input_list.dm 60"/></a></aside>
+        </h3>
+        <p>Creates an asynchronous TGUI input list window with an associated callback.</p>
+<p>This proc should be used to create inputs that invoke a callback with the user's chosen option.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>callback - The callback to be invoked when a choice is made.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/timeleft"><aside class="declaration">proc </aside>timeleft<aside>(id) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/controllers/subsystem/timer.dm#L598">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;timer.dm 598"/></a></aside>
+        </h3>
+        <p>Get the remaining deciseconds on a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/to_chat"><aside class="declaration">proc </aside>to_chat<aside>(target, html, type, text, avoid_highlighting, handle_whitespace, trailing_newline, confidential) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgchat/to_chat.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 52"/></a></aside>
+        </h3>
+        <p>Sends the message to the recipient (target).</p>
+<p>Recommended way to write to_chat calls:</p>
+<pre><code>to_chat(client,
+    type = MESSAGE_TYPE_INFO,
+    html = &quot;You have found &lt;strong&gt;[object]&lt;/strong&gt;&quot;)
+</code></pre><h3 id="proc/to_chat_immediate"><aside class="declaration">proc </aside>to_chat_immediate<aside>(target, html, type, text, avoid_highlighting) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/modules/tgchat/to_chat.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 10"/></a></aside>
+        </h3>
+        <p>Circumvents the message queue and sends the message
+to the recipient (target) as soon as possible.</p><h3 id="proc/url2htmlloader"><aside class="declaration">proc </aside>url2htmlloader<aside>(url) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/type2type.dm#L228">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;type2type.dm 228"/></a></aside>
+        </h3>
+        <p>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</p><h3 id="proc/worldtime2text"><aside class="declaration">proc </aside>worldtime2text<aside>(format, time) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/2700da8cc3adf975fc7d3140465c19764f488159/code/__HELPERS/_time.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_time.dm 33"/></a></aside>
+        </h3>
+        <p>Returns the world time in english. Do not use to get date information - starts at 0 + 12 hours.</p></main>
+<footer>
+    ColonialMarinesALPHA.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/2700da8cc3adf975fc7d3140465c19764f488159">2700da8</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -261,7 +261,7 @@
 	desc = "This ancient and frayed gilded spear almost gleans with its razor-sharp edge.";
 	name = "strange spear"
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "pred_mask_elder_n";
@@ -1641,7 +1641,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1
 	},
 /obj/item/clothing/shoes/yautja/hunter{

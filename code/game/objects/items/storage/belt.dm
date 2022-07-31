@@ -517,7 +517,7 @@
 
 /obj/item/storage/belt/shotgun/full/random/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		var/random_shell_type = pick(shotgun_shells_12g)
+		var/random_shell_type = pick(shotgun_handfuls_12g)
 		new random_shell_type(src)
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)

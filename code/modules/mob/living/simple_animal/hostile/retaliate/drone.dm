@@ -21,7 +21,7 @@
 	maxHealth = 300
 	speed = 8
 	projectiletype = /obj/item/projectile/beam/drone
-	projectilesound = 'sound/weapons/laser3.ogg'
+	projectilesound = 'sound/weapons/Laser3.ogg'
 	destroy_surroundings = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail
 

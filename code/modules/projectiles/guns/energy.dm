@@ -14,7 +14,7 @@
 	fire_sound = 'sound/weapons/emitter2.ogg'
 
 	ammo = /datum/ammo/energy
-
+	w_class = SIZE_LARGE
 	matter = list("metal" = 2000)
 
 	var/obj/item/cell/high/cell //10000 power.
@@ -109,7 +109,7 @@
 	name = "RXF-M5 eva pistol"
 	desc = "A high power focusing blue laser pistol for use in space. Though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
 	icon_state = "rxfm5_eva"
-
+	w_class = SIZE_MEDIUM
 	ammo = /datum/ammo/energy/rxfm_eva
 
 	has_charge_meter = FALSE
@@ -119,6 +119,33 @@
 	name = "'LAZ-TOP'"
 	desc = "The 'LAZ-TOP', aka the Laser Anode something something"//finish this later
 
+/obj/item/weapon/gun/energy/laz_uzi
+	name = "laser UZI"
+	desc = "A refit of the classic Israeli SMG. Fires laser bolts."
+	icon_state = "laz_uzi"
+	item_state = "laz_uzi"
+	muzzle_flash = "muzzle_laser"
+	gun_category = GUN_CATEGORY_SMG
+	flags_equip_slot = SLOT_WAIST
+	charge_cost = 200
+	ammo = /datum/ammo/energy/laz_uzi
+	fire_sound = 'sound/weapons/Laser4.ogg'
+	has_charge_meter = FALSE
+	charge_icon = "+laz_uzi_empty"
+
+/obj/item/weapon/gun/energy/laz_uzi/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_2
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
 /obj/item/weapon/gun/energy/taser
 	name = "disabler gun"
 	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns. "
@@ -126,7 +153,7 @@
 	item_state = "taser"
 	muzzle_flash = null //TO DO.
 	fire_sound = 'sound/weapons/Taser.ogg'
-
+	w_class = SIZE_MEDIUM
 	ammo = /datum/ammo/energy/taser/precise
 	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE

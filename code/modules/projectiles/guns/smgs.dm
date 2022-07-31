@@ -183,14 +183,14 @@
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
 
-/obj/item/weapon/gun/smg/mp7
+/obj/item/weapon/gun/smg/mp27
 	name = "\improper MP27 submachinegun"
 	desc = "An archaic design going back hundreds of years, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms."
 	icon_state = "mp7"
 	item_state = "mp7"
 
 	fire_sound = 'sound/weapons/smg_light.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/mp7
+	current_mag = /obj/item/ammo_magazine/smg/mp27
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -213,10 +213,10 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 
-/obj/item/weapon/gun/smg/mp7/set_gun_attachment_offsets()
+/obj/item/weapon/gun/smg/mp27/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 16, "stock_x" = 28, "stock_y" = 17)
 
-/obj/item/weapon/gun/smg/mp7/set_gun_config_values()
+/obj/item/weapon/gun/smg/mp27/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_9
 	burst_delay = FIRE_DELAY_TIER_SMG
@@ -266,14 +266,14 @@
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
-/obj/item/weapon/gun/smg/uzi
+/obj/item/weapon/gun/smg/mac15
 	name = "\improper MAC-15 submachinegun"
 	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age. Turn on burst mode for maximum firepower."
 	icon_state = "mac15"
 	item_state = "mac15"
 
-	fire_sound = 'sound/weapons/uzi.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/uzi
+	fire_sound = 'sound/weapons/gun_mac15.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/mac15
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 	attachable_allowed = list(
@@ -290,11 +290,11 @@
 							)
 
 
-/obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
+/obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
 
-/obj/item/weapon/gun/smg/uzi/set_gun_config_values()
+/obj/item/weapon/gun/smg/mac15/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
 	burst_delay = FIRE_DELAY_TIER_SMG
@@ -307,6 +307,60 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+
+//-------------------------------------------------------
+//	DAS REAL UZI
+
+/obj/item/weapon/gun/smg/uzi
+	name = "\improper UZI"
+	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use. Turn on burst mode for maximum firepower."
+	icon_state = "uzi"
+	item_state = "uzi"
+	flags_equip_slot = SLOT_WAIST
+	fire_sound = 'sound/weapons/gun_uzi.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/uzi
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/extended_barrel
+						)
+	random_spawn_chance = 20
+	random_spawn_rail = list(
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/flashlight
+							)
+	random_spawn_under = list(
+							/obj/item/attachable/lasersight
+							)
+
+
+/obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
+
+
+/obj/item/weapon/gun/smg/uzi/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_1
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 
 //-------------------------------------------------------

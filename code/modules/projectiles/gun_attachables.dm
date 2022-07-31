@@ -1265,6 +1265,18 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/New()//no stats, its cosmetic
 	..()
 
+/obj/item/attachable/stock/ar10
+	name = "\improper AR10 wooden stock"
+	desc = "The spring's in here, don't take it off!"
+	icon_state = "ar10_stock"
+	attach_icon = "ar10_stock_a"
+	wield_delay_mod = WIELD_DELAY_MIN
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 3
+
+/obj/item/attachable/stock/ar10/New()//no stats, its cosmetic
+	..()
+
 /obj/item/attachable/stock/m79
 	name = "\improper M79 hardened polykevlon stock"
 	desc = "Helps to mitigate the recoil of launching a 40mm grenade. Fits only to the M79."

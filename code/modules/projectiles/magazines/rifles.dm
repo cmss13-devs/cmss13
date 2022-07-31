@@ -173,6 +173,18 @@
 	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
 
+//-------------------------------------------------------
+//AR10 RIFLE
+
+/obj/item/ammo_magazine/rifle/ar10
+	name = "\improper AR10 magazine (7.62x51mm)"
+	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
+	caliber = "7.62x51mm"
+	icon_state = "ar10"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/ar10
+	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
 //M41AE2 HEAVY PULSE RIFLE

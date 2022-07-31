@@ -541,7 +541,7 @@
 	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
 	req_access = list(ACCESS_WY_CORPORATE)
-	var/req_role = "Corporate Liaison"
+	var/req_role = JOB_CORPORATE_LIAISON
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)

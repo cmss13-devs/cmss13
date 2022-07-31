@@ -237,7 +237,7 @@
 		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
 		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
+		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
 		t = replacetext(t, "\[hr\]", "")
@@ -251,7 +251,7 @@
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.colour : "black"]><b>[t]</b></font>"
+		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
 

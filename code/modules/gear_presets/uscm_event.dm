@@ -93,9 +93,6 @@
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
 
-/datum/equipment_preset/uscm_event/upp_spy/New()
-	. = ..()
-
 /datum/equipment_preset/uscm_event/upp_spy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech(H), WEAR_BACK)

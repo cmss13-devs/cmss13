@@ -135,6 +135,9 @@
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE
 
+		for(var/obj/item/device/radio/radio in original.contents_recursive())
+			radio.listening = FALSE
+
 		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
 		original.statistic_exempt = TRUE
 		original.buckled = start_nest

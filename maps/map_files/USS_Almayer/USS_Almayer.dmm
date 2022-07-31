@@ -5648,13 +5648,10 @@
 	},
 /area/shuttle/drop1/sulaco)
 "apE" = (
-/obj/structure/surface/rack,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/circuitboard/machine/telecomms/relay/tower,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
 	},
 /area/almayer/hallways/hangar)
 "apF" = (
@@ -5664,17 +5661,6 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
-"apH" = (
-/obj/structure/surface/rack,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/subspace/filter,
-/obj/item/stock_parts/subspace/filter,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/hallways/hangar)
 "apI" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
@@ -41862,13 +41848,13 @@
 	},
 /area/almayer/engineering/starboard_atmos)
 "fpW" = (
-/obj/structure/machinery/constructable_frame/porta_comms,
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/hallways/hangar)
 "fqc" = (
@@ -49239,8 +49225,6 @@
 /area/almayer/living/port_emb)
 "iKb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/cell/apc/full,
-/obj/item/cell/apc/full,
 /turf/open/floor/almayer{
 	icon_state = "orange";
 	tag = "icon-orange (EAST)"
@@ -73947,10 +73931,10 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "uiT" = (
-/obj/structure/closet/crate/construction,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-orange (EAST)"
 	},
 /area/almayer/hallways/hangar)
 "uiZ" = (
@@ -78873,7 +78857,7 @@
 /area/almayer/living/briefing)
 "wkc" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Portable Comms Storage";
+	name = "\improper Engineering Storage";
 	req_one_access_txt = "2;7;11"
 	},
 /turf/open/floor/almayer{
@@ -106830,7 +106814,7 @@ bGO
 bHB
 aYt
 cdA
-apH
+uiT
 aYt
 jyR
 bcm

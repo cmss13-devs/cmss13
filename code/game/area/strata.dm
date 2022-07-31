@@ -158,19 +158,19 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 ////////Telecomms//////////////////
 
 /area/strata/ag/interior/tcomms/ //T-Comms is inside until you leave the sheltered area..
-	name = "Telecommunications Relay"
+	name = "Relay"
 	icon_state = "tcomms1"
 
 /area/strata/ag/interior/tcomms/tcomms_engi
-	name = "Telecommunications Maintenance"
+	name = "Relay Maintenance"
 	icon_state = "tcomms2"
 
 /area/strata/ag/exterior/tcomms/tcomms_cave
-	name = "Telecommunications Cave"
+	name = "Relay Cave"
 	icon_state = "tcomms3"
 
 /area/strata/ag/exterior/tcomms/tcomms_deck
-	name = "Telecommunications Storage Deck"
+	name = "Relay Storage Deck"
 	icon_state = "tcomms4"
 
 //JUNGLE CAVES, ALL UNDERGROUND, ALL INTERIOR//
@@ -287,6 +287,10 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/administration
 	name = "Flight Control Offices"
 	icon_state = "offices"
+
+/area/strata/ag/interior/admin_tcomms/ //T-Comms is inside until you leave the sheltered area..
+	name = "Telecommunications"
+	icon_state = "tcomms1"
 
 /area/strata/ag/exterior/administration_decks
 	name = "Flight Control Office Deck"

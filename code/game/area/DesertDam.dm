@@ -720,6 +720,34 @@
 	name = "Valley Bridge"
 	icon_state = "valley"
 
+
+//telecomms areas
+/area/desert_dam/exterior/telecomm
+	name = "\improper Trijent Dam Communications Relay"
+	icon_state = "ass_line"
+	is_resin_allowed = FALSE
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_LOW
+	always_unpowered = 0
+
+/area/desert_dam/exterior/telecomm/lz2_containers
+	name = "\improper Containers Communications Relay"
+
+/area/desert_dam/exterior/telecomm/lz2_tcomms
+	name = "\improper Telecomms Communications Relay"
+
+/area/desert_dam/exterior/telecomm/lz2_storage
+	name = "\improper East LZ2 Communications Relay"
+
+/area/desert_dam/exterior/telecomm/lz1_south
+	name = "\improper South LZ1 Communications Relay"
+
+/area/desert_dam/exterior/telecomm/lz1_valley
+	name = "\improper LZ1 Valley Communications Relay"
+
+/area/desert_dam/exterior/telecomm/lz1_xenoflora
+	name = "\improper Xenoflora Communications Relay"
+
 //Away from LZ
 
 /area/desert_dam/exterior/valley/valley_labs

@@ -170,6 +170,7 @@
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/supply
+	buyable = 0
 	containername = "replacement telecommunications crate"
 	group = "Operations"
 

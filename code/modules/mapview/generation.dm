@@ -74,6 +74,7 @@ var/global/list/faction_to_tacmap_color = list(
 			draw_marines(tacmap)
 			draw_vehicles(tacmap)
 			draw_xenos(tacmap)
+			draw_tcomms_towers(tacmap)
 		if(TACMAP_XENO)
 			draw_xenos(tacmap, FALSE, FALSE, additional_parameter)
 		if(TACMAP_YAUTJA)
@@ -82,6 +83,7 @@ var/global/list/faction_to_tacmap_color = list(
 			draw_xenos(tacmap, FALSE, FALSE)
 		if(TACMAP_FACTION)
 			draw_faction_units(tacmap, additional_parameter, (additional_parameter in faction_to_tacmap_color) ? faction_to_tacmap_color[additional_parameter] : "#2facc2d3")
+			draw_tcomms_towers(tacmap)
 
 /proc/draw_marines(var/icon/tacmap)
 	var/list/colors = squad_colors.Copy()
@@ -115,6 +117,15 @@ var/global/list/faction_to_tacmap_color = list(
 			tacmap.DrawBox(rgb(128,255,128),V.x+1,V.y)
 			tacmap.DrawBox(rgb(128,255,128),V.x,V.y-1)
 			tacmap.DrawBox(rgb(128,255,128),V.x,V.y+1)
+
+/proc/draw_tcomms_towers(var/icon/tacmap)
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/V as anything in GLOB.all_static_telecomms_towers)
+		if(is_ground_level(V.z))
+			tacmap.DrawBox(rgb(255,123,0),V.x-1,V.y-1,V.x+1,V.y+1)
+			tacmap.DrawBox(rgb(255,180,0),V.x-1,V.y)
+			tacmap.DrawBox(rgb(255,180,0),V.x+1,V.y)
+			tacmap.DrawBox(rgb(255,180,0),V.x,V.y+1)
+			tacmap.DrawBox(rgb(255,180,0),V.x,V.y-1)
 
 /proc/draw_xenos(var/icon/tacmap, var/human_pov = TRUE, var/use_vehicle = TRUE, var/hivenumber = null)
 	if(!human_pov || SSticker.toweractive)

@@ -2227,7 +2227,7 @@
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "ajZ" = (
 /obj/structure/disposalpipe/broken{
 	dir = 1
@@ -2804,7 +2804,7 @@
 /area/lv624/ground/river/west_river)
 "amJ" = (
 /turf/open/gm/dirtgrassborder,
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "amK" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
@@ -2970,7 +2970,7 @@
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "aoa" = (
 /obj/structure/machinery/sleeper,
 /turf/open/floor{
@@ -3185,11 +3185,6 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/river/west_river)
-"apb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
-/area/lv624/ground/jungle/south_central_jungle)
 "aph" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/gm/grass,
@@ -5742,9 +5737,9 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "azB" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_central_jungle)
+/area/lv624/ground/colony/telecomm/tcommdome/south)
 "azD" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -9874,7 +9869,6 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
 /obj/structure/machinery/power/apc{
-	dir = 8;
 	name = "Secure Vault APC";
 	pixel_x = -28;
 	start_charge = 0
@@ -10627,12 +10621,14 @@
 /area/lv624/lazarus/chapel)
 "aRi" = (
 /obj/structure/surface/table,
-/obj/item/device/multitool,
+/obj/item/ashtray/glass,
+/obj/item/tool/crowbar,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/lazarus/comms)
+/area/lv624/ground/colony/telecomm/tcommdome)
 "aRj" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light,
@@ -10878,14 +10874,13 @@
 	},
 /area/lv624/lazarus/comms)
 "aSe" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
+/obj/structure/surface/table,
+/obj/item/device/multitool,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/lazarus/comms)
+/area/lv624/ground/colony/telecomm/tcommdome)
 "aSg" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
@@ -11049,7 +11044,7 @@
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/lazarus/comms)
+/area/lv624/ground/colony/telecomm/tcommdome)
 "aSL" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/engineering)
@@ -11160,9 +11155,12 @@
 	},
 /area/lv624/lazarus/comms)
 "aTk" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
-/area/lv624/lazarus/comms)
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "aTo" = (
 /obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
@@ -11288,8 +11286,7 @@
 	start_charge = 15
 	},
 /turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
+	icon_state = "delivery"
 	},
 /area/lv624/lazarus/comms)
 "aTK" = (
@@ -12512,10 +12509,11 @@
 "aXQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "aXR" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor{
@@ -12548,16 +12546,6 @@
 "aXX" = (
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
-"aXY" = (
-/obj/structure/surface/table,
-/obj/item/ashtray/glass,
-/obj/item/tool/crowbar,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/lazarus/comms)
 "aXZ" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -12879,20 +12867,6 @@
 	icon_state = "grimy"
 	},
 /area/lv624/lazarus/captain)
-"aZk" = (
-/obj/structure/surface/table,
-/obj/item/device/radio/off{
-	frequency = 1469
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/lazarus/comms)
 "aZn" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/candle,
@@ -13223,6 +13197,11 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass,
 /area/lv624/ground/colony/south_medbay_road)
+"bhr" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle/south_east_jungle)
 "bhL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -13433,6 +13412,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
+"bAB" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle/south_east_jungle)
 "bBk" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
@@ -13504,6 +13489,9 @@
 	tag = "icon-whitehall (WEST)"
 	},
 /area/lv624/lazarus/medbay)
+"bHs" = (
+/turf/closed/wall/r_wall,
+/area/lv624/ground/colony/telecomm/tcommdome)
 "bIO" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
@@ -14097,6 +14085,12 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
+"dfD" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "dfJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -14280,6 +14274,11 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/caves/sand_temple)
+"dxL" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "dCL" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 2
@@ -14427,6 +14426,9 @@
 "dNj" = (
 /turf/open/gm/grass,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"dNx" = (
+/turf/closed/wall/r_wall,
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "dNN" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -14594,11 +14596,6 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle/north_jungle)
-"ejn" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/lv624/lazarus/comms)
 "ejx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/window/framed/colony,
@@ -14803,6 +14800,15 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"eFd" = (
+/obj/structure/surface/table,
+/obj/item/device/flashlight,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "eFS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -14880,7 +14886,7 @@
 	dir = 4;
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "ePV" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder{
@@ -14910,6 +14916,9 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"eTQ" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/jungle/south_east_jungle)
 "eVH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
@@ -15087,6 +15096,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/east_jungle)
+"fqM" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "fsa" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -15113,12 +15129,13 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "fuy" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
-/area/lv624/ground/jungle/west_central_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "fuY" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -15227,6 +15244,14 @@
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
+"fFZ" = (
+/obj/structure/machinery/power/apc{
+	start_charge = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/ground/colony/telecomm/cargo)
 "fGO" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -15247,7 +15272,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "fIj" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -15283,6 +15308,11 @@
 "fPi" = (
 /turf/open/gm/coast,
 /area/lv624/ground/caves/sand_temple)
+"fPH" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/west_central_jungle)
 "fQL" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -15758,6 +15788,13 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"hdh" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "hdA" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating{
@@ -16186,7 +16223,14 @@
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
+"ihe" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "ifX" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/landmark/nightmare{
@@ -16322,7 +16366,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "iBy" = (
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "iBD" = (
 /turf/open/floor{
 	dir = 10;
@@ -16721,6 +16765,16 @@
 /obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"jGs" = (
+/obj/structure/machinery/power/apc{
+	start_charge = 0
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "jGW" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
@@ -17159,6 +17213,9 @@
 	icon_state = "beachcorner"
 	},
 /area/lv624/ground/barrens/west_barrens)
+"kGk" = (
+/turf/closed/wall/r_wall,
+/area/lv624/ground/colony/telecomm/tcommdome/south)
 "kHB" = (
 /turf/open/gm/dirt{
 	icon_state = "desert3"
@@ -17287,7 +17344,7 @@
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "kYg" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
@@ -17888,6 +17945,10 @@
 	dir = 4
 	},
 /area/lv624/ground/caves/sand_temple)
+"msP" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "msV" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -17920,6 +17981,12 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
+"mvc" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/ground/colony/telecomm/cargo)
 "mvr" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -17954,11 +18021,12 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
 "mBL" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
-/area/lv624/ground/jungle/west_central_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "mBN" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -17976,6 +18044,10 @@
 	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/corporate_dome)
+"mCo" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/ground/colony/telecomm/tcommdome)
 "mEw" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
@@ -18098,6 +18170,13 @@
 	icon_state = "desert0"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"mUN" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "mUQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
@@ -18138,6 +18217,15 @@
 	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/corporate_dome)
+"mVz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "mVK" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -18390,12 +18478,6 @@
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"nzh" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/lv624/lazarus/comms)
 "nzw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -18866,6 +18948,9 @@
 "opP" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_medbay_road)
+"opS" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_east_jungle)
 "oqO" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -19498,6 +19583,11 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv624/ground/caves/sand_temple)
+"pFe" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle/south_east_jungle)
 "pGD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
@@ -20089,6 +20179,13 @@
 	icon_state = "desert1"
 	},
 /area/lv624/ground/barrens/west_barrens)
+"rbC" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHEAST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz2)
 "rck" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -20136,7 +20233,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "rfH" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -20439,11 +20536,11 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "rTK" = (
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
+	dir = 1
 	},
-/area/lv624/ground/jungle/west_central_jungle)
+/area/lv624/ground/colony/north_tcomms_road)
 "rWW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
@@ -21027,9 +21124,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"tmn" = (
-/turf/open/gm/grass,
-/area/lv624/lazarus/comms)
 "tmE" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -21112,6 +21206,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"tuT" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "tuX" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/wood{
@@ -21486,6 +21587,11 @@
 	icon_state = "desert1"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"ukZ" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/ground/colony/telecomm/cargo)
 "ulj" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -21501,6 +21607,9 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
+"unT" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/telecomm/tcommdome/south)
 "upM" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
@@ -21793,17 +21902,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
-"vbj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Storage Containers APC";
-	pixel_x = -30;
-	start_charge = 0
-	},
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
-/area/lv624/lazarus/quartstorage/outdoors)
 "vcY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -21847,6 +21945,13 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
+"vgp" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "vgJ" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
@@ -21928,6 +22033,9 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle/north_jungle)
+"vrc" = (
+/turf/open/gm/grass,
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "vsT" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
@@ -22090,6 +22198,13 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
+"vOD" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome/south)
 "vOF" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -22204,9 +22319,7 @@
 "whr" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteblue";
@@ -22622,11 +22735,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "wXg" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
+/obj/structure/machinery/power/apc{
+	start_charge = 0
 	},
-/area/lv624/ground/jungle/south_central_jungle)
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome/south)
 "wXp" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
@@ -22854,6 +22971,16 @@
 	dir = 4
 	},
 /area/lv624/ground/jungle/east_central_jungle)
+"xDw" = (
+/obj/structure/machinery/power/apc{
+	start_charge = 0
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "xDR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
@@ -23018,6 +23145,15 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"ydG" = (
+/obj/structure/machinery/power/apc{
+	start_charge = 0
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/ground/colony/telecomm/tcommdome)
 "yfH" = (
 /turf/open/shuttle{
 	icon_state = "floor4"
@@ -24921,8 +25057,8 @@ aId
 aVS
 aWm
 aWO
-aWO
-aWO
+mUN
+fuy
 aXQ
 aVS
 aLm
@@ -25149,9 +25285,9 @@ aVT
 acr
 aWn
 aWO
-aWO
-aWO
-xTT
+mBL
+hdh
+jGs
 aVS
 aYm
 aXh
@@ -25377,9 +25513,9 @@ exf
 acr
 aWo
 aWP
-aWO
-xTT
-xTT
+ihe
+fqM
+rbC
 axR
 xdO
 hUs
@@ -37661,7 +37797,7 @@ byY
 byY
 byY
 byY
-jLR
+fPH
 xEt
 bbU
 mfI
@@ -38117,7 +38253,7 @@ byY
 byY
 byY
 byY
-xEt
+rTK
 bCH
 bCH
 mfI
@@ -38345,7 +38481,7 @@ byY
 byY
 byY
 byY
-mBL
+rTK
 bbH
 bbZ
 rBF
@@ -38572,7 +38708,7 @@ jlh
 byY
 byY
 byY
-fuy
+byY
 rTK
 cPV
 cPV
@@ -40414,7 +40550,7 @@ byY
 taK
 aPt
 aPt
-aZk
+aTI
 aQn
 aTg
 aTg
@@ -40640,10 +40776,10 @@ byY
 byY
 byY
 fTf
-ejn
-aPT
+mCo
 aRi
-aSe
+dfD
+dfD
 aSK
 aTg
 aTJ
@@ -40868,11 +41004,11 @@ byY
 byY
 byY
 fTf
-ejn
-aPT
-aXY
-aQn
-aQn
+mCo
+aSe
+dfD
+dfD
+dfD
 aQn
 aQn
 aZK
@@ -40887,8 +41023,8 @@ kxI
 dEc
 pcA
 azB
-hLu
-tsa
+vOD
+kGk
 tsa
 aac
 aaa
@@ -41096,11 +41232,11 @@ byY
 byY
 byY
 fTf
-tmn
-aPT
-aSg
-aSg
-aQn
+mCo
+dfD
+aTk
+dfD
+dfD
 aTj
 aQn
 aQn
@@ -41114,9 +41250,9 @@ sBJ
 kxI
 kxI
 ayU
-apb
+unT
 wXg
-tsa
+kGk
 tsa
 aac
 aaa
@@ -41324,11 +41460,11 @@ aMN
 aNA
 aMN
 aIO
-tmn
-aPt
-aPT
-aPT
-aPT
+bHs
+mVz
+dfD
+dfD
+ydG
 aPt
 aQn
 aQn
@@ -41342,9 +41478,9 @@ tzK
 kxI
 kxI
 ooM
-kxI
-tsa
-tsa
+unT
+kGk
+kGk
 tsa
 aac
 aaa
@@ -41552,11 +41688,11 @@ aMO
 aKB
 aMP
 aIO
-tmn
-tmn
-ejn
-tmn
-ejn
+vgp
+dfD
+dfD
+dfD
+dfD
 aPt
 aPT
 aUk
@@ -41783,9 +41919,9 @@ aIO
 aIL
 aIL
 aIO
-ejn
-nzh
-aTk
+eFd
+dfD
+aPT
 aTK
 aTK
 aTK
@@ -42012,8 +42148,8 @@ aNB
 aQo
 aJz
 aIO
-ejn
-aTk
+vgp
+aPT
 aTK
 aTK
 aSL
@@ -42240,7 +42376,7 @@ aEt
 aQp
 aRo
 aIO
-ejn
+vgp
 aSL
 aSL
 aSL
@@ -52056,8 +52192,8 @@ wpw
 wpw
 wpw
 tBB
-wpw
-eNK
+vrc
+dxL
 fHC
 lBw
 lBw
@@ -52287,7 +52423,7 @@ wpw
 ajY
 ifF
 iBy
-iBy
+msP
 lBw
 lBw
 aac
@@ -52743,8 +52879,8 @@ wpw
 kWX
 ePw
 iBy
-iBy
-lBw
+tuT
+dNx
 lBw
 aac
 aaa
@@ -52968,11 +53104,11 @@ wpw
 wpw
 wpw
 lBw
-wpw
+vrc
 anW
 reZ
-reZ
-lBw
+xDw
+dNx
 lBw
 aac
 aaa
@@ -53199,8 +53335,8 @@ sGg
 wpw
 wpw
 wpw
-wpw
-lBw
+dNx
+dNx
 lBw
 aac
 aaa
@@ -53350,8 +53486,8 @@ cpY
 cpY
 cpY
 cpY
-fuY
-fuY
+ukZ
+mvc
 fuY
 fuY
 cpY
@@ -53578,8 +53714,8 @@ fuY
 cpY
 cpY
 cpY
-cpY
-cpY
+ukZ
+ukZ
 fuY
 fuY
 fuY
@@ -53806,8 +53942,8 @@ cpY
 cpY
 cpY
 cpY
-cpY
-cpY
+ukZ
+fFZ
 fuY
 fuY
 fuY
@@ -53819,8 +53955,8 @@ cpY
 aqG
 aqW
 aqW
+arH
 aqW
-asi
 aqW
 aqW
 asj
@@ -53828,10 +53964,10 @@ asj
 asA
 asj
 avc
-atc
-atc
 ask
-vbj
+ask
+ask
+ask
 arK
 axY
 abY
@@ -54047,8 +54183,8 @@ cpY
 aqH
 aqW
 aqW
-arH
-arH
+aqW
+aqW
 asz
 aqW
 arI
@@ -54274,7 +54410,7 @@ cpY
 cpY
 aqG
 aqW
-aqW
+arH
 aqW
 aqW
 aqW
@@ -60719,11 +60855,11 @@ aYr
 wpw
 lBw
 eNK
-fHC
+pFe
 tvC
 bCe
 wpw
-wpw
+lBw
 lBw
 lBw
 aac
@@ -60946,11 +61082,11 @@ wpw
 wpw
 lBw
 lBw
-amJ
-iBy
-iBy
+eTQ
+opS
+opS
 gUq
-xPS
+wpw
 lBw
 lBw
 lBw
@@ -61174,9 +61310,9 @@ lBw
 wpw
 wpw
 wpw
-amJ
+eTQ
 oov
-iBy
+opS
 gUq
 lBw
 lBw
@@ -61402,8 +61538,8 @@ wpw
 qjt
 wpw
 wpw
-amJ
-iBy
+eTQ
+opS
 lnV
 qgA
 lBw
@@ -61630,8 +61766,8 @@ wpw
 wpw
 wpw
 lBw
-kWX
-reZ
+bAB
+bhr
 qgA
 lBw
 lBw

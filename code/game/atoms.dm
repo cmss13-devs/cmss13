@@ -50,10 +50,6 @@
 	// Whether the atom is an obstacle that should be considered for passing
 	var/can_block_movement = FALSE
 
-	// Beams
-	var/list/beams // An assoc list where the keys are ids and their values are TRUE (indicating beam should persist)
-	var/beam_id = 0
-
 	var/datum/component/orbiter/orbiters
 
 	///Reference to atom being orbited
@@ -181,92 +177,6 @@ directive is properly returned.
 		if(A.contents.len)
 			found += A.search_contents_for(path,filter_path)
 	return found
-
-/*
-Beam code by Gunbuddy
-
-Beam() proc will only allow one beam to come from a source at a time.  Attempting to call it more than
-once at a time per source will cause graphical errors.
-Also, the icon used for the beam will have to be vertical and 32x32.
-The math involved assumes that the icon is vertical to begin with so unless you want to adjust the math,
-its easier to just keep the beam vertical.
-*/
-/atom/proc/Beam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi', time = 50, maxdistance = 10, always_turn = TRUE)
-	set waitfor = FALSE
-
-	if (isnull(beams))
-		beams = list()
-
-	. = beam_id
-	var/str_id = "[beam_id++]"
-	beams[str_id] = TRUE
-
-	//BeamTarget represents the target for the beam, basically just means the other end.
-	//Time is the duration to draw the beam
-	//Icon is obviously which icon to use for the beam, default is beam.dmi
-	//Icon_state is what icon state is used. Default is b_beam which is a blue beam.
-	//Maxdistance is the longest range the beam will persist before it gives up.
-	var/EndTime = world.time+time
-
-	while(BeamTarget && ((time == BEAM_INFINITE_DURATION && beams[str_id]) || world.time < EndTime) && get_dist(src,BeamTarget) < maxdistance && z == BeamTarget.z)
-	//If the BeamTarget gets deleted, the time expires, or the BeamTarget gets out
-	//of range or to another z-level, then the beam will stop.  Otherwise it will
-	//continue to draw.
-
-		if(always_turn)
-			setDir(get_dir(src,BeamTarget))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
-
-		for(var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
-			if(O.BeamSource == src)				//just draw another instance of the beam instead of trying to manipulate all the
-				qdel(O)							//pieces to a new orientation.
-		var/Angle = round(Get_Angle(src,BeamTarget))
-		var/icon/I = new(icon,icon_state)
-		I.Turn(Angle)
-		var/DX = (32*BeamTarget.x - BeamTarget.pixel_x) - (32*x + pixel_x)
-		var/DY = (32*BeamTarget.y - BeamTarget.pixel_y) - (32*y + pixel_y)
-		var/N = 0
-		var/length = round(sqrt((DX)**2 + (DY)**2))
-		for(N, N < length, N += 32)
-			var/obj/effect/overlay/beam/X = new(loc)
-			X.BeamSource = src
-			if(N + 32 > length)
-				var/icon/II = new(icon,icon_state)
-				II.DrawBox(null,1,(length-N),32,32)
-				II.Turn(Angle)
-				X.icon = II
-			else
-				X.icon = I
-			var/Pixel_x = round(sin(Angle) + 32*sin(Angle)*(N+16)/32)
-			var/Pixel_y = round(cos(Angle) + 32*cos(Angle)*(N+16)/32)
-			if(DX == 0)
-				Pixel_x = 0
-			if(DY == 0)
-				Pixel_y = 0
-			if(Pixel_x > 32)
-				for(var/a = 0, a <= Pixel_x, a += 32)
-					X.x++
-					Pixel_x -= 32
-			if(Pixel_x < -32)
-				for(var/a = 0, a >= Pixel_x, a -= 32)
-					X.x--
-					Pixel_x += 32
-			if(Pixel_y > 32)
-				for(var/a = 0, a <= Pixel_y, a += 32)
-					X.y++
-					Pixel_y -= 32
-			if(Pixel_y < -32)
-				for(var/a = 0, a >= Pixel_y, a -= 32)
-					X.y--
-					Pixel_y += 32
-			X.pixel_x = Pixel_x + pixel_x
-			X.pixel_y = Pixel_y + pixel_y
-		stoplag()
-
-	for(var/obj/effect/overlay/beam/O in orange(10,src))
-		if(O.BeamSource == src)
-			qdel(O)
-
-	return TRUE
 
 /atom/proc/examine(mob/user)
 	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn

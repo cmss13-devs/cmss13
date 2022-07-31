@@ -307,6 +307,14 @@
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
+
+/obj/item/reagent_container/glass/minitank/basic
+	starts_with_reagent = list(
+		"bicaridine" = 60,
+		"kelotane" = 60,
+		"tramadol" = 60
+	)
+
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
@@ -525,6 +533,11 @@
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
 	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+
+/obj/item/reagent_container/glass/pressurized_canister/Initialize(mapload, var/list/override_starts_with_reagent)
+	if(override_starts_with_reagent)
+		starts_with_reagent = override_starts_with_reagent.Copy()
+	return ..()
 
 /obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
 	return

@@ -146,6 +146,18 @@
 		/obj/item/reagent_container/glass/minitank
 	)
 
+/obj/item/storage/belt/medical/examine()
+	..()
+	to_chat(usr, SPAN_NOTICE("The belt is currently set to [mode ? "take pills directly from bottles": "NOT take pills directly from bottles"]."))
+
+/obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle Belt Mode"
+	set src in usr
+	if(src && ishuman(usr))
+		mode = !mode
+		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
@@ -159,14 +171,6 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 
-/obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
-	set category = "Object"
-	set name = "Toggle Belt Mode"
-	set src in usr
-	if(src && ishuman(usr))
-		mode = !mode
-		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
-
 /obj/item/storage/belt/medical/full/with_defib_and_analyzer/fill_preset_inventory()
 	. = ..()
 	new /obj/item/device/defibrillator(src)
@@ -176,10 +180,6 @@
 	. = ..()
 	new	/obj/item/tool/surgery/surgical_line(src)
 	new	/obj/item/tool/surgery/synthgraft(src)
-
-/obj/item/storage/belt/medical/examine()
-	..()
-	to_chat(usr, SPAN_NOTICE("The belt is currently set to [mode ? "take pills directly from bottles": "NOT take pills directly from bottles"]."))
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"

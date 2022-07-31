@@ -325,7 +325,8 @@
 /area/vehicle/apc)
 "M" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "front_wheel_L"
+	icon_state = "front_wheel_L";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -420,7 +421,8 @@
 /area/space)
 "Y" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "rear_wheel_R"
+	icon_state = "rear_wheel_R";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)

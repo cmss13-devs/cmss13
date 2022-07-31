@@ -33,7 +33,7 @@
 	dir = 1;
 	tag = "icon-comfychair (NORTH)"
 	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	alpha = 100;
 	pixel_y = -2
 	},
@@ -111,6 +111,9 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "front_roof_2"
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon_state = "windshield_viewport_bottom"
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
@@ -122,6 +125,7 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "front_roof_1"
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield,
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
@@ -192,11 +196,11 @@
 /area/space)
 "M" = (
 /obj/structure/bed/chair/comfy,
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	pixel_y = 30
+	},
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_2"
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_2"

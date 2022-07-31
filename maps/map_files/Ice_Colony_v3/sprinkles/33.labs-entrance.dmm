@@ -90,7 +90,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "lM" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "labs_ice_1";
 	name = "\improper Research Shutters"

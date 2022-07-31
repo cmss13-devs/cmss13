@@ -12458,7 +12458,7 @@
 	id = "OmegaS";
 	name = "Omega Airlock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -19819,7 +19819,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -21363,7 +21363,7 @@
 	name = "Theta Emergency Access";
 	use_power = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -37047,7 +37047,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "cgt" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -37170,7 +37170,7 @@
 	},
 /area/corsat/gamma/rnr)
 "clN" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -39890,7 +39890,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/gamma/biodome)
 "epI" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/airlock/south/id)
 "epN" = (
@@ -40133,7 +40133,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "ewW" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/offices)
 "exb" = (
@@ -42425,7 +42425,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "gjX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/checkpoint)
 "gke" = (
@@ -42534,7 +42534,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "goe" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -43161,7 +43161,7 @@
 	},
 /area/corsat/sigma/hangar/checkpoint)
 "gJX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/theta/airlock/west/id)
 "gKn" = (
@@ -43869,7 +43869,7 @@
 	},
 /area/corsat/gamma/hangar/monorail)
 "hhj" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -44889,7 +44889,7 @@
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "hOb" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/airlock/south)
 "hOw" = (
@@ -46885,7 +46885,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "jqo" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/theta/airlock/west)
 "jqz" = (
@@ -50172,7 +50172,7 @@
 	},
 /area/corsat/inaccessible)
 "lPh" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/control)
 "lPi" = (
@@ -50359,7 +50359,7 @@
 	},
 /area/corsat/gamma/cargo)
 "lVw" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -51092,13 +51092,13 @@
 	},
 /area/corsat/sigma/north)
 "mwy" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/corsat/omega/control)
 "mwC" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/emergency_access)
 "mwH" = (
@@ -53890,7 +53890,7 @@
 	id = "GammaSouthN";
 	name = "Gamma South Airlock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -54055,7 +54055,7 @@
 	id = "ThetaWestE";
 	name = "Theta West Airlock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -63284,7 +63284,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -64081,7 +64081,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "vVU" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"

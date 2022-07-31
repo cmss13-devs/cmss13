@@ -635,7 +635,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "nk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris,
 /area/bigredv2/caves_east)
 "np" = (
@@ -665,7 +665,7 @@
 /area/bigredv2/outside/filtration_plant)
 "Qx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
@@ -673,7 +673,7 @@
 	},
 /area/bigredv2/caves_east)
 "Rv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
@@ -714,7 +714,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "WD" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"

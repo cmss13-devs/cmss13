@@ -80,8 +80,8 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "y" = (
-/obj/structure/blocker/forcefield/vehicles,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
 "A" = (
@@ -139,7 +139,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "N" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
 "P" = (

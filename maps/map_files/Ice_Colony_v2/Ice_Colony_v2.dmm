@@ -32321,7 +32321,7 @@
 /area/ice_colony/underground/research)
 "bIa" = (
 /obj/structure/mineral_door/resin,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkpurple2";
@@ -32331,14 +32331,14 @@
 "bIb" = (
 /obj/item/stack/sheet/wood,
 /obj/structure/mineral_door/resin,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bIc" = (
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bIe" = (
@@ -33744,7 +33744,7 @@
 /area/ice_colony/underground/research)
 "bLq" = (
 /obj/structure/barricade/wooden,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bLr" = (
@@ -38856,7 +38856,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/south)
 "fHx" = (
@@ -38915,7 +38915,7 @@
 	},
 /area/ice_colony/surface/research)
 "hfj" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/south)
 "hmT" = (
@@ -38928,7 +38928,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/north)
 "hAX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "hDM" = (
@@ -38959,7 +38959,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "iQg" = (
@@ -38970,7 +38970,7 @@
 /turf/closed/wall,
 /area/ice_colony/exterior/surface/cliff)
 "juq" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/leisure)
 "jCk" = (
@@ -39049,7 +39049,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "mwS" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/south)
 "mHc" = (
@@ -39123,7 +39123,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "qpn" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "qwB" = (

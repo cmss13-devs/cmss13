@@ -47,7 +47,7 @@
 		S["toggles_flashing"] >> flash_toggles_two
 		flash_toggles_two |= FLASH_POOLSPAWN
 		S["toggles_flashing"] << flash_toggles_two
-		
+
 	if(savefile_version < 17) //toggle middle click swap hands on by default
 		var/pref_middle_click_swap
 		S["toggle_prefs"] >> pref_middle_click_swap
@@ -96,6 +96,7 @@
 	S["toggles_chat"]		>> toggles_chat
 	S["chat_display_preferences"] >> chat_display_preferences
 	S["toggles_ghost"]		>> toggles_ghost
+	S["toggles_langchat"]	>> toggles_langchat
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
@@ -162,6 +163,7 @@
 	toggles_chat	= sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
 	chat_display_preferences	= sanitize_integer(chat_display_preferences, 0, 65535, initial(chat_display_preferences))
 	toggles_ghost	= sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
+	toggles_langchat			= sanitize_integer(toggles_langchat, 0, 65535, initial(toggles_langchat))
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
@@ -248,6 +250,7 @@
 	S["toggles_chat"]		<< toggles_chat
 	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_ghost"]		<< toggles_ghost
+	S["toggles_langchat"]	<< toggles_langchat
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing

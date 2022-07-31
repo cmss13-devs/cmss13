@@ -35765,7 +35765,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/admin3)
 "lkl" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	icon_state = "purp1"
 	},
@@ -38858,7 +38858,7 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "qsI" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "qsZ" = (

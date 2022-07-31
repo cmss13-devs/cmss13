@@ -8709,6 +8709,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ayE" = (
 /obj/structure/closet/secure_closet/RD,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue"
@@ -28767,6 +28768,7 @@
 	amount = 50
 	},
 /obj/item/storage/briefcase/inflatable,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "green"
@@ -36047,6 +36049,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/quickclot{
 	name = "\improper Lethal Injection"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "cdJ" = (
@@ -42579,6 +42582,7 @@
 	pixel_x = -5;
 	pixel_y = -5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitered"
@@ -42615,6 +42619,7 @@
 	pixel_x = -5;
 	pixel_y = -5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitered"
@@ -46869,6 +46874,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -52853,6 +52859,7 @@
 /area/desert_dam/building/warehouse/loading)
 "dgt" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -64926,6 +64933,13 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
+"iIB" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "iJC" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
@@ -65126,6 +65140,13 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
+"jBh" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "jCJ" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall,
@@ -65160,6 +65181,10 @@
 	tag = "icon-freezerfloor"
 	},
 /area/desert_dam/building/cafeteria/cold_room)
+"jJE" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "jLI" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -65553,6 +65578,18 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"ltq" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white (WEST)"
+	},
+/area/desert_dam/building/medical/break_room)
 "ltE" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -66019,6 +66056,10 @@
 	icon_state = "cement_sunbleached3"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"naF" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/valley/valley_cargo)
 "naH" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -66498,6 +66539,14 @@
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/interior/dam_interior/break_room)
+"oRZ" = (
+/obj/structure/closet/radiation,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkpurple2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "oUr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/desert/dirt,
@@ -68632,6 +68681,15 @@
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"wIl" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "wIr" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
@@ -87380,7 +87438,7 @@ daU
 cJZ
 daU
 daU
-daU
+naF
 daU
 cKi
 doj
@@ -102954,7 +103012,7 @@ dTs
 brh
 mnA
 bFa
-bFa
+jBh
 wTP
 bIB
 bDx
@@ -105684,7 +105742,7 @@ acu
 acu
 afG
 ajy
-afN
+jJE
 afN
 afN
 amk
@@ -107677,7 +107735,7 @@ cjw
 ckR
 cjx
 cmB
-cnN
+ltq
 cjy
 cpI
 cqA
@@ -113178,7 +113236,7 @@ alI
 amo
 amo
 amo
-amo
+iIB
 alI
 alI
 ajY
@@ -116928,7 +116986,7 @@ amz
 anD
 anP
 anP
-aoF
+wIl
 apl
 aoF
 apl
@@ -118788,7 +118846,7 @@ acu
 acu
 dTs
 akk
-ako
+oRZ
 akK
 akK
 akK

@@ -3540,6 +3540,13 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
+"bZF" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/tumor/aux_engi)
 "bZY" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/plating/prison,
@@ -4446,6 +4453,7 @@
 	pixel_y = 22
 	},
 /obj/item/reagent_container/food/snacks/eat_bar,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -7322,6 +7330,14 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"esE" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/power_ring)
 "esF" = (
 /turf/open/floor/prison{
 	icon_state = "panelscorched"
@@ -13679,6 +13695,15 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/chapel)
+"imn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellowfull2";
+	tag = "icon-darkyellowfull2 (EAST)"
+	},
+/area/fiorina/lz/near_lzI)
 "imt" = (
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
@@ -13903,6 +13928,13 @@
 "itN" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
+"itW" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/tumor/fiberbush)
 "iuV" = (
 /obj/structure/curtain,
 /turf/open/floor/prison{
@@ -22041,6 +22073,7 @@
 "nhi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -24227,6 +24260,7 @@
 /area/fiorina/station/flight_deck)
 "oAH" = (
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -24568,6 +24602,10 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/research_cells)
+"oKq" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/civres)
 "oKV" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight,
 /turf/open/floor/corsat{
@@ -25944,6 +25982,13 @@
 	name = "pool"
 	},
 /area/fiorina/station/park)
+"pHc" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
 "pHh" = (
 /obj/structure/ice/thin/indestructible{
 	dir = 4;
@@ -29012,6 +29057,13 @@
 "rzt" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
+/area/fiorina/station/power_ring)
+"rzR" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
 /area/fiorina/station/power_ring)
 "rAa" = (
 /obj/item/pamphlet/skill/powerloader,
@@ -33600,6 +33652,13 @@
 	icon_state = "whitepurple"
 	},
 /area/fiorina/station/research_cells)
+"utf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
 "uts" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical/green,
@@ -34393,6 +34452,10 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
+"uVv" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison,
+/area/fiorina/station/flight_deck)
 "uVD" = (
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -35377,6 +35440,10 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/station/park)
+"vwt" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/civres)
 "vwM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0
@@ -44206,7 +44273,7 @@ wJa
 hDx
 hDx
 pwL
-dXG
+oKq
 hDx
 diP
 qty
@@ -45122,7 +45189,7 @@ aap
 tQn
 sVP
 gCX
-pGi
+bZF
 rGq
 hjP
 euT
@@ -45298,7 +45365,7 @@ qPb
 qPb
 qPb
 qPb
-qPb
+itW
 gwH
 gwH
 gwH
@@ -47158,7 +47225,7 @@ dXG
 dXG
 dXG
 dXG
-dXG
+vwt
 xCo
 yis
 dIo
@@ -77746,7 +77813,7 @@ usz
 duF
 koy
 gsL
-mcc
+pHc
 mcc
 qOq
 mcc
@@ -82422,7 +82489,7 @@ ycN
 oYM
 nVq
 xUz
-xUz
+rzR
 pRG
 jjg
 aqW
@@ -84723,7 +84790,7 @@ mQZ
 fGM
 vpk
 bhX
-aRG
+uVv
 vAi
 fpl
 aRG
@@ -87282,7 +87349,7 @@ rBF
 rOa
 rOa
 bzO
-cLu
+esE
 tUs
 tUs
 tUs
@@ -87721,7 +87788,7 @@ nVq
 rev
 oYM
 mKy
-whR
+utf
 rzt
 bQM
 rzt
@@ -92583,7 +92650,7 @@ iWq
 lRT
 laP
 laP
-laP
+imn
 lRT
 xDw
 xDw

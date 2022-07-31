@@ -2644,6 +2644,7 @@
 /area/bigredv2/outside/marshal_office)
 "agP" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -3537,6 +3538,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitepurplecorner";
@@ -6531,7 +6533,6 @@
 "are" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitepurplecorner";
@@ -6540,6 +6541,7 @@
 /area/bigredv2/outside/medical)
 "arf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner";
@@ -7701,7 +7703,6 @@
 	layer = 3;
 	pixel_x = 24
 	},
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -11607,7 +11608,6 @@
 /area/bigredv2/outside/dorms)
 "aDT" = (
 /obj/structure/machinery/recharge_station,
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -11617,7 +11617,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -29482,7 +29481,6 @@
 /area/bigredv2/outside/dorms)
 "bNE" = (
 /obj/structure/closet/secure_closet/brig,
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -30167,17 +30165,6 @@
 	icon_state = "platingdmg3";
 	tag = "icon-platingdmg3 (WEST)"
 	},
-/area)
-"dBa" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
-	},
 /area/bigredv2/caves/mining)
 "dBE" = (
 /obj/item/trash/cigbutt/cigarbutt{
@@ -30835,6 +30822,18 @@
 	tag = "icon-darkpurplecorners2 (EAST)"
 	},
 /area/bigredv2/caves/lambda/breakroom)
+"eJU" = (
+/obj/structure/surface/table,
+/obj/structure/bedsheetbin,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
+	},
+/area/bigredv2/outside/general_offices)
 "eKU" = (
 /obj/structure/machinery/door_control{
 	id = "filtration";
@@ -39722,6 +39721,11 @@
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
+"xqf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "xrp" = (
 /obj/structure/largecrate/guns/merc{
 	name = "\improper dodgy crate"
@@ -67705,7 +67709,7 @@ aao
 ako
 aos
 ape
-apP
+eJU
 aqS
 aos
 ako
@@ -70317,7 +70321,7 @@ asV
 aoB
 aue
 ako
-atE
+xqf
 apc
 apc
 axR

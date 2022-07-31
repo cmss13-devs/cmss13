@@ -3824,6 +3824,7 @@
 	pixel_x = -3;
 	pixel_y = -13
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -10578,6 +10579,7 @@
 /area/shiva/exterior/junkyard)
 "eVX" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "snow_mat"
@@ -11137,6 +11139,7 @@
 "fFd" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -12401,6 +12404,13 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/shiva{
 	dir = 1
+	},
+/area/shiva/interior/colony/botany)
+"gVJ" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva{
+	dir = 9;
+	icon_state = "green"
 	},
 /area/shiva/interior/colony/botany)
 "gWk" = (
@@ -13969,6 +13979,19 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
+"iCr" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
 "iCs" = (
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{
@@ -15798,6 +15821,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -20435,6 +20459,7 @@
 /area/shiva/interior/bar)
 "pBy" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -44802,7 +44827,7 @@ nGv
 hyu
 rbo
 rbM
-wZY
+iCr
 hyu
 nOd
 uhL
@@ -45264,7 +45289,7 @@ rBH
 mIt
 vmy
 hWK
-sjo
+gVJ
 rZD
 hKR
 vNJ

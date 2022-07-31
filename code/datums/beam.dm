@@ -16,7 +16,7 @@
 	///where the beam goes to
 	var/atom/target = null
 	///list of beam objects. These have their visuals set by the visuals var which is created on starting
-	var/list/elements// = list()
+	var/list/elements
 	///icon used by the beam.
 	var/icon
 	///icon state of the main segments of the beam

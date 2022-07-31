@@ -378,3 +378,7 @@
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
 
+/obj/item/reagent_container/food/drinks/coffeecup/gromit
+	name = "gromit mug"
+	desc = "A spectacular mug, depicting a noble hound. Don't trip and break it!"
+	icon_state = "gromitmug"

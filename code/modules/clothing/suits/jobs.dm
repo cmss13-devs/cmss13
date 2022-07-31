@@ -235,8 +235,8 @@
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
-	name = "hazard vest"
-	desc = "A high-visibility vest used in work zones."
+	name = "orange hazard vest"
+	desc = "An orange high-visibility vest used in work zones."
 	icon_state = "hazard"
 	item_state = "hazard"
 	blood_overlay_type = "armor"
@@ -262,6 +262,24 @@
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+
+/obj/item/clothing/suit/storage/hazardvest/blue
+	name = "blue hazard vest"
+	desc = "A blue high-visibility vest used in work zones."
+	icon_state = "hazard_blue"
+	item_state = "hazard_blue"
+
+/obj/item/clothing/suit/storage/hazardvest/yellow
+	name = "yellow hazard vest"
+	desc = "A yellow high-visibility vest used in work zones."
+	icon_state = "hazard_yellow"
+	item_state = "hazard_yellow"
+
+/obj/item/clothing/suit/storage/hazardvest/black
+	name = "black hazard vest"
+	desc = "A niche-market, black, allegedly high-visibility vest supposedly used in work zones. Features extra-reflective tapes. The etiquette on the vest insists that it's fully compliant with all the United American workplace safety standards."
+	icon_state = "hazard_black"
+	item_state = "hazard_black"
 
 //Lawyer
 /obj/item/clothing/suit/storage/lawyer/bluejacket

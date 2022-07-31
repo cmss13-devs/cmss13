@@ -77,7 +77,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/tech, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Hardhat", 0, /obj/item/clothing/head/hardhat/white, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Toolbelt", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
-		list("Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Orange Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Blue Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/blue, null, VENDOR_ITEM_REGULAR),
+		list("Yellow Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/yellow, null, VENDOR_ITEM_REGULAR),
+		list("Black Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/black, null, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),

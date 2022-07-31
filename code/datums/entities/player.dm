@@ -42,6 +42,7 @@
 	var/list/datum/entity/player_note/notes
 	var/list/datum/entity/player_job_ban/job_bans
 	var/list/datum/entity/player_time/playtimes
+	var/list/datum/entity/player_stat/stats
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
@@ -369,6 +370,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_jobbans)
 
 	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_timestat))
+	DB_FILTER(/datum/entity/player_stat, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_stats))
 
 	if(!migrated_bans && !migrating_bans)
 		migrating_bans = TRUE
@@ -406,6 +408,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
 
+/datum/entity/player/proc/on_read_stats(var/list/datum/entity/player_stat/_stat)
+	if(_stat)
+		for(var/datum/entity/player_stat/S as anything in _stat)
+			LAZYSET(stats, S.stat_id, S)
 
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)
@@ -625,6 +631,20 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	jobbans_loaded = TRUE
 	migrated_jobbans = TRUE
 	save()
+
+/datum/entity/player/proc/adjust_stat(var/stat_id, var/stat_category, var/num, var/set_to_num = FALSE)
+	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
+	if(!stat)
+		stat = DB_ENTITY(/datum/entity/player_stat)
+		stat.player_id = id
+		stat.stat_id = stat_id
+		stat.stat_category = stat_category
+		LAZYSET(stats, stat_id, stat)
+	if(set_to_num)
+		stat.stat_number = num
+	else
+		stat.stat_number += num
+	stat.save()
 
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player

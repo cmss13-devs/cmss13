@@ -105,17 +105,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 	return ..()
 
-/mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
-	a_intent = INTENT_HELP //Forces help intent for all interactions.
-	if(!caste)
-		return FALSE
-
-	if(lying) //No attacks while laying down
-		return FALSE
-
-	A.attack_larva(src)
-	xeno_attack_delay(src) //Adds some lag to the 'attack'
-
 //Larva attack, will default to attack_alien behaviour unless overriden
 /atom/proc/attack_larva(mob/living/carbon/Xenomorph/Larva/user)
 	return attack_alien(user)

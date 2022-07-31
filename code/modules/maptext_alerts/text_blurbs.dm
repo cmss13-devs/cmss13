@@ -18,7 +18,7 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 	if(!islist(exempt_ztraits))
 		exempt_ztraits = list(exempt_ztraits)
 	var/list/exempt_zlevels = SSmapping.levels_by_any_trait(exempt_ztraits)
-	
+
 	var/base_text = "<b>[uppertext(round_statistics.round_name)]</b>\n\
 						[worldtime2text("hhmm hrs")], [uppertext(time2text(REALTIMEOFDAY, "DD-MMM-[game_year]"))]\n\
 						[SSmapping.configs[GROUND_MAP].map_name]"
@@ -150,7 +150,7 @@ but should see their own spawn message even if the player already dropped as USC
 
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/fade_blurb, targets, T), duration)
 
-/proc/fade_blurb(list/mob/targets, obj/T)
+/proc/fade_blurb(list/mob/targets, obj/T, var/fadeout_time = 0.5 SECONDS)
 	animate(T, alpha = 0, time = 0.5 SECONDS)
 	sleep(5)
 	for(var/mob/M as anything in targets)

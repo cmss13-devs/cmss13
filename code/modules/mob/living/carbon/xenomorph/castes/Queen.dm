@@ -506,6 +506,7 @@
 	if(txt)
 		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
+		xeno_maptext(txt, "Hive Orders Updated")
 		hive.hive_orders = txt
 		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else

@@ -14,6 +14,8 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < BLOOD_VOLUME_NORMAL)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+		if(blood_volume > BLOOD_VOLUME_HIGH)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 
 		var/b_volume = blood_volume
 
@@ -32,8 +34,20 @@
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
 
-	//Effects of bloodloss
+	//Effects of bloodloss/too much blood
 		switch(b_volume)
+			if(BLOOD_VOLUME_MAXIMUM to 1000) // 1000cl of blood should not be attainable
+				if(prob(10))
+					to_chat(src, SPAN_DANGER("You feel dizzy."))
+				if(eye_blurry < 20)
+					eye_blurry += 2
+				if(oxyloss < 30)
+					oxyloss += 2
+			if((BLOOD_VOLUME_HIGH+20) to BLOOD_VOLUME_MAXIMUM) // +20 so that not everyone starts with 10 oxy damage due to post-cryo eating
+				if(prob(5))
+					to_chat(src, SPAN_DANGER("Your head aches."))
+				if(oxyloss < 10)
+					oxyloss += 1
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")
@@ -108,7 +122,7 @@
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
-				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
+				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_HIGH)
 		else
 			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()

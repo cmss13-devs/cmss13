@@ -87,8 +87,8 @@
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
-	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
-	if(potency > 3 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isYautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
+	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_HIGH+100)
+	if(potency > 3 && C.blood_volume > BLOOD_VOLUME_HIGH && !isYautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(0.5 * potency * delta_time)
 		M.apply_damage(potency * delta_time, OXY)
 		M.reagent_move_delay_modifier += potency

@@ -175,10 +175,10 @@
 	return newbeam
 
 /proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
-	. = list()
+	var/list/zap_data = list()
 	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
-		. += beno
-	for(var/xeno in .)
+		zap_data += beno
+	for(var/xeno in zap_data)
 		var/mob/living/carbon/Xenomorph/living = xeno
 		if(!living)
 			return

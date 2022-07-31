@@ -1230,7 +1230,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M41A solid stock"
 	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
 	slot = "stock"
-	melee_mod = 5
+	melee_mod = 10
 	size_mod = 1
 	icon_state = "riflestock"
 	attach_icon = "riflestock_a"
@@ -1242,16 +1242,83 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/rifle/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_7
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
+/obj/item/attachable/stock/rifle/collapsible
+	name = "\improper M41A folding stock"
+	desc = "The standard back end of any gun starting with \"M41\". Compatible with the M41A series, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m41_folding"
+	attach_icon = "m41_folding_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/rifle/collapsible/New()
+	..()
+	//it makes stuff better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_2 //worse than 5
+	recoil_mod = -RECOIL_AMOUNT_TIER_5 //only minus one tier
+	scatter_mod = -SCATTER_AMOUNT_TIER_9 //only minus two
+	//it makes stuff worse when one handed
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5 //only minus one
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+	//but at the same time you are slow when 2 handed
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
+/obj/item/attachable/stock/rifle/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		icon_state = "m41_folding_on"
+		attach_icon = "m41_folding_a_on"
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "m41_folding"
+		attach_icon = "m41_folding_a"
+
+	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
+	accuracy_mod *= -1
+	recoil_mod *= -1
+	scatter_mod *= -1
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/m16
 	name = "\improper M16 bump stock"

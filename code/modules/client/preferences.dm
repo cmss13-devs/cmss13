@@ -588,7 +588,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width	 		- Screen' width. Defaults to 550 to make it look nice.
 //height 	 	- Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 18, list/splitJobs = list(), width = 800, height = 850)
+/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(), width = 950, height = 700)
 	if(!RoleAuthority)
 		return
 

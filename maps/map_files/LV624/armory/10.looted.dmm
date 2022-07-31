@@ -79,6 +79,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "l" = (
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
@@ -94,7 +95,6 @@
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -106,7 +106,6 @@
 /area/lv624/lazarus/main_hall)
 "p" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -127,7 +126,6 @@
 "s" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -145,14 +143,12 @@
 	start_charge = 0
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "w" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -179,7 +175,6 @@
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -189,7 +184,6 @@
 	name = "\improper Nexus Dome Armory"
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -201,13 +195,18 @@
 	range = 200
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
+"Y" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
 
 (1,1,1) = {"
-a
+Y
 a
 a
 a

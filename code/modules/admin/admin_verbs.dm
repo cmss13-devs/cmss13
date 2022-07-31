@@ -112,9 +112,10 @@ var/list/admin_verbs_debug = list(
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
-	/client/proc/bulk_fetcher,
 	/client/proc/debug_game_history,
 	/client/proc/construct_env_dmm,
+	/client/proc/enter_tree,
+	/client/proc/set_tree_points
 )
 
 var/list/admin_verbs_debug_advanced = list(

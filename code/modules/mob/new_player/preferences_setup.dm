@@ -242,6 +242,8 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
+		if(JOB_INTEL)
+			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_PILOT)
 			return /datum/equipment_preset/uscm_ship/po/full
 		if(JOB_DROPSHIP_CREW_CHIEF)

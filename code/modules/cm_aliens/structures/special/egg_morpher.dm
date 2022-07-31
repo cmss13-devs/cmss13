@@ -124,6 +124,13 @@
 		if(huggers_to_grow <= 0)
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
 			vis_contents.Cut()
+
+			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
+				if(isobj(A))
+					var/obj/O = A
+					if(O.unacidable)
+						O.forceMove(get_turf(loc))
+
 			QDEL_NULL(captured_mob)
 			update_icon()
 

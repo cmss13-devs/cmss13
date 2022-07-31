@@ -711,7 +711,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	SIGNAL_HANDLER
 	storage_close(watcher)
 
+/obj/item/storage/proc/dump_objectives()
+	for(var/obj/item/I in src)
+		if(I.is_objective)
+			I.forceMove(loc)
+
+
 /obj/item/storage/Destroy()
+	dump_objectives()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
 	content_watchers = null

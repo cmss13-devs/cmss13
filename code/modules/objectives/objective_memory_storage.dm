@@ -17,8 +17,7 @@
 /datum/objective_memory_storage/proc/store_single_objective(var/datum/cm_objective/O)
 	if(!istype(O))
 		return
-	if (O.is_finalised())
-		//We don't need to store the objective, it is either completed or failed and won't be coming back
+	if (O.state == OBJECTIVE_COMPLETE)
 		return
 	if(istype(O, /datum/cm_objective/document/folder))
 		addToListNoDupe(folders, O)
@@ -53,76 +52,27 @@
 		return TRUE
 	return FALSE
 
-/datum/objective_memory_storage/proc/view_objective_memories(mob/recipient, var/real_name)
-	synchronize_objectives()
-	var/output
-
-	// Do we have DEFCON?
-	output += "<b>DEFCON [defcon_controller.current_defcon_level]:</b> [defcon_controller.check_defcon_percentage()]%"
-
-	output += format_objective_list(folders, "FOLDERS")
-	output += format_objective_list(progress_reports, "PROGRESS REPORTS")
-	output += format_objective_list(technical_manuals, "TECHNICAL MANUALS")
-	output += format_objective_list(disks, "DISKS")
-	output += format_objective_list(terminals, "TERMINALS")
-	output += format_objective_list(retrieve_items, "RETRIEVE ITEMS")
-	output += format_objective_list(other, "OTHER")
-
-	output += "<br>"
-	output += "<hr>"
-	output += "<br>"
-
-	// Item and body retrieval %, power, etc.
-	output += SSobjectives.get_objectives_progress()
-	var/window_name = "objective clues"
-	if(real_name)
-		window_name = "[real_name]'s objective clues"
-
-	show_browser(recipient, output, window_name, "objectivesmemory")
-
-/datum/objective_memory_storage/proc/format_objective_list(var/list/datum/cm_objective/os, var/category)
-	var/output = ""
-	if (!os || !os.len)
-		return output
-
-	var/something_to_display = FALSE
-	for(var/datum/cm_objective/O in os)
-		if(!O)
-			continue
-		if(!O.is_prerequisites_completed() || !O.is_active())
-			continue
-		if(O.display_flags & OBJ_DISPLAY_HIDDEN)
-			continue
-		if(O.is_complete())
-			continue
-		output += "<BR>[O.get_clue()]"
-		something_to_display = TRUE
-
-	if (something_to_display)
-		output = "<br><hr><b>[category]</b>" + output
-	return output
-
 /datum/objective_memory_storage/proc/clean_objectives()
 	for(var/datum/cm_objective/O in folders)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			folders -= O
 	for(var/datum/cm_objective/O in progress_reports)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			progress_reports -= O
 	for(var/datum/cm_objective/O in technical_manuals)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			technical_manuals -= O
 	for(var/datum/cm_objective/O in terminals)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			terminals -= O
 	for(var/datum/cm_objective/O in disks)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			disks -= O
 	for(var/datum/cm_objective/O in retrieve_items)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			retrieve_items -= O
 	for(var/datum/cm_objective/O in other)
-		if(O.is_finalised())
+		if(O.state == OBJECTIVE_COMPLETE)
 			other -= O
 
 /datum/objective_memory_storage/proc/synchronize_objectives()
@@ -188,6 +138,8 @@ var/global/datum/intel_system/intel_system = new()
 	var/total_transferred = 0
 	var/outcome = 0 //outcome of an individual upload - if something interrupts us, we cancel the rest
 
+	user.mind.objective_memory.clean_objectives() // Don't upload completed objectives, there's no point.
+
 	for(var/datum/cm_objective/O in user.mind.objective_memory.folders)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
@@ -252,12 +204,42 @@ var/global/datum/intel_system/intel_system = new()
 	if(user.action_busy)
 		return 0
 
+	var/clue = O.get_clue()
+	if(!clue) // Not all objectives have clues.
+		return 0
+
 	playsound(user, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
-	if(!do_after(user, typing_time * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
+	if(!do_after(user, typing_time * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start the typing over..."))
 		return -1
 
-	to_chat(user, SPAN_NOTICE("...something about \"[O.get_clue()]\"..."))
+	to_chat(user, SPAN_NOTICE("...something about \"[clue]\"..."))
 	intel_system.store_single_objective(O)
 	return 1
+
+// --------------------------------------------
+// *** View objectives with the computer ***
+// --------------------------------------------
+
+/obj/structure/machinery/computer/view_objectives
+	name = "Intel Database Computer"
+	desc = "An USCM Intel Database Computer used for consulting the current intel database."
+	icon_state = "terminal1_old"
+	unslashable = TRUE
+	unacidable = TRUE
+
+
+/obj/structure/machinery/computer/view_objectives/attack_hand(mob/living/user)
+	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
+		return FALSE
+	if(!powered())
+		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		return FALSE
+	if(!intel_system)
+		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		return FALSE
+	if(user.action_busy)
+		return FALSE
+
+	user.mind.view_objective_memories(src)

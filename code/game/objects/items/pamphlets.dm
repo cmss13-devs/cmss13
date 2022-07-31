@@ -86,6 +86,13 @@ obj/item/pamphlet/Initialize()
 	trait = /datum/character_trait/skills/surgery
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/intel
+	name = "field intelligence instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has an intelligence insignia."
+	icon_state = "pamphlet_reading"
+	trait = /datum/character_trait/skills/intel
+	bypass_pamphlet_limit = TRUE
+
 /obj/item/pamphlet/language
 	name = "translation pamphlet"
 	desc = "A pamphlet used by lazy USCM interpreters to quickly learn new languages on the spot."

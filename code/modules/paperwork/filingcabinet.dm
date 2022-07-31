@@ -19,7 +19,12 @@
 	wrenchable = TRUE
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
 
+/obj/structure/filingcabinet/proc/dump_contents()
+	for(var/obj/I in src)
+		I.forceMove(loc)
+
 /obj/structure/filingcabinet/Destroy()
+	dump_contents()
 	for(var/obj/item/W in contents)
 		if(W.unacidable)
 			W.forceMove(loc)

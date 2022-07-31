@@ -25,7 +25,6 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "fd" = (
@@ -71,7 +70,6 @@
 "mG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/shotgun/buckshot,
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -99,7 +97,6 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "px" = (
@@ -109,13 +106,12 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "qk" = (
 /obj/effect/spawner/random/toolbox,
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "qS" = (
-
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "sq" = (
@@ -131,7 +127,6 @@
 /obj/item/ammo_magazine/rifle/m16,
 /obj/item/ammo_magazine/rifle/m16,
 /obj/item/weapon/gun/rifle/m16,
-
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "wK" = (
@@ -149,8 +144,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "yS" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/lazarus/crashed_ship_containers)
 "zh" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/gm/dirt,
@@ -175,7 +174,6 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -197,7 +195,6 @@
 "Ex" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/m16,
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -224,9 +221,10 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "Io" = (
-/obj/effect/landmark/crap_item,
-
-/turf/open/gm/dirt,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
 /area/lv624/lazarus/crashed_ship_containers)
 "IT" = (
 /obj/structure/girder/displaced,
@@ -243,7 +241,6 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "KY" = (
 /obj/effect/landmark/crap_item,
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -271,7 +268,6 @@
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -307,14 +303,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "Vy" = (
-
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "Wh" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -344,14 +338,14 @@ cb
 ab
 Xu
 fC
-yS
+Vy
 pg
-yS
-yS
-yS
-yS
-yS
-yS
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
 "}
 (2,1,1) = {"
 Um
@@ -360,7 +354,7 @@ iK
 ng
 fb
 eC
-fb
+yS
 pd
 Wh
 cb
@@ -368,13 +362,13 @@ cb
 cb
 wK
 Vy
-yS
+Vy
 dZ
-yS
-yS
-yS
-yS
-yS
+Vy
+Vy
+Vy
+Vy
+Vy
 "}
 (3,1,1) = {"
 Um
@@ -384,7 +378,7 @@ SS
 AT
 AI
 Pp
-Pa
+Io
 AI
 qk
 At
@@ -392,12 +386,12 @@ cb
 SS
 gQ
 Vf
-yS
-yS
+Vy
+Vy
 Sj
 CI
 pg
-yS
+Vy
 "}
 (4,1,1) = {"
 Um
@@ -416,10 +410,10 @@ SS
 gQ
 gQ
 Vy
-yS
-yS
+Vy
+Vy
 dZ
-yS
+Vy
 bL
 "}
 (5,1,1) = {"
@@ -439,34 +433,34 @@ SS
 gQ
 gQ
 jM
-yS
-yS
-yS
-yS
-yS
+Vy
+Vy
+Vy
+Vy
+Vy
 "}
 (6,1,1) = {"
 Um
 cb
 WE
-AI
-iF
 qS
+iF
+AI
 xU
 At
 At
 SS
 AI
-Io
+Pp
 SS
 gQ
 dZ
-yS
+Vy
 pg
 FC
-yS
-yS
-yS
+Vy
+Vy
+Vy
 "}
 (7,1,1) = {"
 Um
@@ -475,7 +469,7 @@ vh
 KY
 SS
 AI
-Pa
+Io
 fd
 Pa
 Pa
@@ -483,9 +477,9 @@ Pa
 cb
 cb
 Vy
-yS
+Vy
 My
-yS
+Vy
 bL
 yK
 My
@@ -505,13 +499,13 @@ cb
 cb
 cb
 Fb
-yS
+Vy
 My
 CI
-yS
-yS
-yS
-yS
+Vy
+Vy
+Vy
+Vy
 dZ
 "}
 (9,1,1) = {"
@@ -528,14 +522,14 @@ cb
 ab
 IT
 NQ
-yS
+Vy
 pg
 dZ
-yS
-yS
-yS
+Vy
+Vy
+Vy
 pg
-yS
+Vy
 "}
 (10,1,1) = {"
 Dq
@@ -550,13 +544,13 @@ QE
 QE
 QE
 QE
-yS
-yS
-yS
-yS
-yS
-yS
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
 sq
-yS
-yS
+Vy
+Vy
 "}

@@ -164,3 +164,7 @@
 
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
+
+/mob/living/carbon/Xenomorph/revive()
+	SEND_SIGNAL(src, COMSIG_XENO_REVIVED)
+	..()

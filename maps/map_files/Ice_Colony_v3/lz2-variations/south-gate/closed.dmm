@@ -78,6 +78,12 @@
 	dir = 1
 	},
 /area/shiva/exterior/lz2_fortress)
+"y" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
 "B" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -203,7 +209,7 @@ W
 X
 "}
 (7,1,1) = {"
-f
+y
 L
 l
 L

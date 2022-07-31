@@ -614,6 +614,7 @@
 	generate()
 
 /obj/item/paper/research_notes/proc/generate()
+	is_objective = TRUE
 	if(!note_type)
 		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
 	var/datum/reagent/generated/C = data

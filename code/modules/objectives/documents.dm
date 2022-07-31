@@ -3,21 +3,20 @@
 // These are intended as the initial breadcrumbs that lead to more objectives such as data retrieval
 // --------------------------------------------
 /datum/cm_objective/document
-	name = "Document Clue"
+	name = "Paper scrap objective"
 	var/obj/item/document_objective/document
 	var/area/initial_area
-	var/important = 0
-	priority = OBJECTIVE_LOW_VALUE
-	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_FAILABLE
-	display_flags = OBJ_DISPLAY_HIDDEN
-	prerequisites_required = PREREQUISITES_NONE
-	display_category = "Documents"
+	value = OBJECTIVE_LOW_VALUE
+	state = OBJECTIVE_ACTIVE
+	controller = TREE_MARINE
 
 /datum/cm_objective/document/New(var/obj/item/document_objective/D)
 	. = ..()
 	document = D
 	initial_area = get_area(document)
-	important = rand(0,1)
+
+/datum/cm_objective/document/pre_round_start()
+	SSobjectives.statistics["documents_total_instances"]++
 
 /datum/cm_objective/document/Destroy()
 	document.objective = null
@@ -28,46 +27,88 @@
 /datum/cm_objective/document/get_related_label()
 	return document.label
 
-/datum/cm_objective/document/complete()
-	if(..())
-		if(important)
-			var/datum/cm_objective/O = new /datum/cm_objective/retrieve_item/almayer(document)
-			O.priority = priority //retrieving item gets you double the points for whatever the item is worth, rather than EXTREME value each time
-			SSobjectives.add_objective(O)
+/datum/cm_objective/document/complete(var/mob/living/carbon/human/user)
+	. = ..()
+
+	SSobjectives.statistics["documents_total_points_earned"] += value
+	award_points()
+
+	if (user && user.mind)
+		user.mind.store_objective(document.retrieve_objective)
+
+	// Enable child objectives
+	for(var/datum/cm_objective/child_objective in enables_objectives)
+		if(child_objective.state & OBJECTIVE_INACTIVE)
+			child_objective.state = OBJECTIVE_ACTIVE
+			if(child_objective.objective_flags & OBJECTIVE_START_PROCESSING_ON_DISCOVERY)
+				child_objective.activate()
 
 /datum/cm_objective/document/get_clue()
 	return SPAN_DANGER("[document.name] in <u>[initial_area]</u>")
 
-/datum/cm_objective/document/check_completion()
-	. = ..()
-	if(document)
-		if(document.read)
-			complete()
-			return TRUE
-	else
-		fail()
-		return FALSE
+// Paper scrap
+/datum/cm_objective/document/get_tgui_data()
+	var/list/clue = list()
 
-/datum/cm_objective/document/folder
-	priority = OBJECTIVE_MEDIUM_VALUE
-	prerequisites_required = PREREQUISITES_ONE
-	display_flags = 0
-	var/color
-	var/display_color = "white"
-	number_of_clues_to_generate = 2
+	clue["text"] = "Paper scrap"
+	clue["location"] = initial_area.name
 
+	return clue
+
+// Progress report
 /datum/cm_objective/document/progress_report
-	priority = OBJECTIVE_MEDIUM_VALUE
-	prerequisites_required = PREREQUISITES_NONE
-	display_flags = 0
+	name = "Progress report objective"
+	value = OBJECTIVE_MEDIUM_VALUE
+
+/datum/cm_objective/document/progress_report/get_tgui_data()
+	var/list/clue = list()
+
+	clue["text"] = "Progress report"
+	clue["location"] = initial_area.name
+
+	return clue
+
+/datum/cm_objective/document/progress_report/get_clue()
+	return SPAN_DANGER("A progress report in <u>[initial_area]</u>.")
+
+// Folder
+/datum/cm_objective/document/folder
+	name = "Folder objective"
+	value = OBJECTIVE_MEDIUM_VALUE
+	var/color // Text name of the color
+	var/display_color // Color of the sprite
+	number_of_clues_to_generate = 2
+	state = OBJECTIVE_INACTIVE
+
+/datum/cm_objective/document/folder/get_tgui_data()
+	var/list/clue = list()
+
+	clue["text"] = "folder"
+	clue["itemID"] = document.label
+	clue["color"] = color
+	clue["color_name"] = display_color
+	clue["location"] = initial_area.name
+
+	return clue
 
 /datum/cm_objective/document/folder/get_clue()
 	return SPAN_DANGER("A <font color=[display_color]><u>[color]</u></font> folder <b>[document.label]</b> in <u>[initial_area]</u>.")
 
+// Technical manual
 /datum/cm_objective/document/technical_manual
-	priority = OBJECTIVE_HIGH_VALUE
-	prerequisites_required = PREREQUISITES_NONE
-	display_flags = 0
+	name = "Technical manual objective"
+	value = OBJECTIVE_HIGH_VALUE
+	state = OBJECTIVE_INACTIVE
+	number_of_clues_to_generate = 2
+
+/datum/cm_objective/document/technical_manual/get_tgui_data()
+	var/list/clue = list()
+
+	clue["text"] = "Technical manual"
+	clue["itemID"] = document.label
+	clue["location"] = initial_area.name
+
+	return clue
 
 // --------------------------------------------
 // *** Mapping objects ***
@@ -75,11 +116,12 @@
 
 /obj/item/document_objective
 	var/datum/cm_objective/document/objective
-	var/read = 0
+	var/datum/cm_objective/retrieve_item/document/retrieve_objective
 	var/reading_time = 10
 	var/objective_type = /datum/cm_objective/document
 	unacidable = TRUE
 	indestructible = 1
+	is_objective = TRUE
 	var/label // label on the document
 	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
@@ -87,11 +129,16 @@
 	. = ..()
 	label = "[pick(alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
+	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
+	LAZYADD(objective.enables_objectives, retrieve_objective)
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
-	objective?.fail()
 	objective.document = null
 	objective = null
+	retrieve_objective.target_item = null
+	retrieve_objective = null
 	return ..()
 
 /obj/item/document_objective/proc/display_read_message(mob/living/user)
@@ -99,40 +146,44 @@
 		user.mind.store_objective(objective)
 	var/related_labels = ""
 	for(var/datum/cm_objective/D in objective.enables_objectives)
-		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
+		var/clue = D.get_clue()
+
+		// Some objectives don't have clues.
+		if (!clue)
+			continue
+
+		to_chat(user, SPAN_NOTICE("You make out something about [clue]."))
 		if (related_labels != "")
 			related_labels+=","
 		related_labels+=D.get_related_label()
 	to_chat(user, SPAN_INFO("You finish reading \the [src]."))
-	if (!renamed)
+
+	// Our first time reading this successfully, add the clue labels.
+	if(!(objective.state & OBJECTIVE_COMPLETE))
 		src.name+= " ([related_labels])"
 		renamed = TRUE
 
-/obj/item/document_objective/proc/display_fail_message(mob/living/user)
-	if(objective)
-		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
-	else
-		to_chat(user, SPAN_NOTICE("You don't notice anything useful."))
-
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
-	if(!objective.is_active())
-		objective.activate() //Trying to rejig it just in case
+	. = ..()
+
 	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
 
-	if(!do_after(user, reading_time * user.get_skill_duration_multiplier(), INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
+	if(!do_after(user, reading_time * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
-		return FALSE
+		return
 
-	if(!objective.is_active() && !objective.is_complete())
-		display_fail_message(user)
-		return FALSE
+	// Prerequisit objective not complete.
+	if(objective.state & OBJECTIVE_INACTIVE)
+		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
+		return
 
-	read = 1
-	objective.check_completion()
 	display_read_message(user)
-	if(objective.important && objective.is_complete())
-		to_chat(user, SPAN_NOTICE("You feel this document is important and should be returned to the [MAIN_SHIP_NAME]."))
-	return TRUE
+
+	// Our first time reading this successfully.
+	if(!(objective.state & OBJECTIVE_COMPLETE))
+		objective.complete(user)
+		SSobjectives.statistics["documents_completed"]++
+		objective.state = OBJECTIVE_COMPLETE
 
 /obj/item/document_objective/paper
 	name = "Paper scrap"
@@ -140,11 +191,6 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
 	w_class = SIZE_TINY
-
-/obj/item/document_objective/paper/Initialize(mapload, ...)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/report
 	name = "Progress report"
@@ -155,13 +201,8 @@
 	reading_time = 60
 	objective_type = /datum/cm_objective/document/progress_report
 
-/obj/item/document_objective/report/Initialize(mapload, ...)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-
 /obj/item/document_objective/folder
-	name = "intel folder"
+	name = "Intel folder"
 	desc = "A folder with some documents inside."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
@@ -173,31 +214,27 @@
 /obj/item/document_objective/folder/Initialize(mapload, ...)
 	. = ..()
 	var/datum/cm_objective/document/folder/F = objective
-	var/col = pick("red", "black", "blue", "yellow", "white")
+	var/col = pick("Red", "Black", "Blue", "Yellow", "White")
 	switch(col)
-		if ("red")
+		if ("Red")
 			folder_color = "#ed5353"
-		if ("black")
+		if ("Black")
 			folder_color = "#8f9494" //can't display black on black!
-		if ("blue")
+		if ("Blue")
 			folder_color = "#5296e3"
-		if ("yellow")
+		if ("Yellow")
 			folder_color = "#e3cd52"
-		if ("white")
+		if ("White")
 			folder_color = "#e8eded"
-	icon_state = "folder_[col]"
-	if(istype(F))
-		F.color = col
-		F.display_color = folder_color
+	icon_state = "folder_[lowertext(col)]"
+	F.color = col
+	F.display_color = folder_color
 	name = "[initial(name)] ([label])"
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/folder/examine(mob/living/user)
 	..()
 	if(get_dist(user, src) < 2 && ishuman(user))
 		to_chat(user, SPAN_INFO("\The [src] is labelled [label]."))
-
 
 /obj/item/document_objective/technical_manual
 	name = "Technical Manual"

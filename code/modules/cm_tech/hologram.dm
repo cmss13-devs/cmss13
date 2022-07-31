@@ -107,3 +107,12 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	else
 		linked_hologram = null
 	return ..()
+
+/mob/hologram/techtree/Initialize(mapload, mob/M)
+	. = ..(mapload, M)
+	RegisterSignal(M, COMSIG_MOB_ENTER_TREE, .proc/disallow_tree_entering)
+
+
+/mob/hologram/techtree/proc/disallow_tree_entering(var/mob/M, var/datum/techtree/T, var/force)
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_TREE_ENTRY

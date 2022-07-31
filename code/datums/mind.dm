@@ -15,10 +15,21 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
+	// List of objectives you have knowledge about
+	var/datum/objective_memory_storage/objective_memory
+	var/datum/objective_memory_interface/objective_interface
+
 /datum/mind/New(var/key, var/ckey)
 	src.key = key
 	src.ckey = ckey
 	player_entity = setup_player_entity(ckey)
+	objective_memory = new()
+	objective_interface = new()
+
+/datum/mind/Destroy()
+	QDEL_NULL(objective_memory)
+	QDEL_NULL(objective_interface)
+	return ..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character, var/force = FALSE)
 	if(QDELETED(new_character))
@@ -113,3 +124,18 @@
 		. = 1 //successfully created a new mind
 	if(!mind.name)	mind.name = real_name
 	mind.current = src
+
+//this is an objective that the player has just completed
+//and we want to store the objective clues generated based on it -spookydonut
+/datum/mind/proc/store_objective(datum/cm_objective/O)
+	if(objective_memory)
+		objective_memory.store_objective(O)
+
+/datum/mind/proc/view_objective_memories(mob/recipient)
+	if(!objective_memory)
+		return
+
+	objective_memory.synchronize_objectives()
+
+	objective_interface.holder = GET_TREE(TREE_MARINE)
+	objective_interface.tgui_interact(current)

@@ -237,14 +237,10 @@ CULT
 	var/list/list_of_techs = list()
 	if(!can_deploy_droppod(T))
 		return
-
 	var/area/turf_area = get_area(T)
-
 	if(!turf_area)
 		return
-
 	var/land_time = max(turf_area.ceiling, 1) * (20 SECONDS)
-
 	playsound(T, 'sound/effects/alert.ogg', 75)
 	assigned_droppod = new(T, tech_to_deploy)
 	assigned_droppod.drop_time = land_time
@@ -252,11 +248,9 @@ CULT
 	var/list/to_send_to = H.assigned_squad?.marines_list
 	if(!to_send_to)
 		to_send_to = list(H)
-
 	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
-
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
 */
 

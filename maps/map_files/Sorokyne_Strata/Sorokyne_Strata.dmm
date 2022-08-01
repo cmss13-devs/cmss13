@@ -33108,7 +33108,7 @@
 /area/strata/ag/exterior)
 "gAN" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = clfsoro
+	insert_tag = "clfsoro"
 	},
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)

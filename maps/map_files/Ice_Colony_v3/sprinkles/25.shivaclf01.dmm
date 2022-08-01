@@ -96,9 +96,9 @@
 >>>>>>> reimported backup
 =======
 "aN" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor{
-	icon_state = "platingdmg1"
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/s_admin)
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -178,12 +178,16 @@
 /obj/item/device/pinpointer,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -452,8 +456,12 @@
 =======
 "jH" = (
 /obj/effect/spawner/random/attachment,
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -463,10 +471,14 @@
 	layer = 3
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -532,12 +544,10 @@
 >>>>>>> reimported backup
 =======
 "kv" = (
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor/shiva{
-	dir = 1
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
 	},
 /area/shiva/interior/colony/s_admin)
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -835,10 +845,13 @@
 "rJ" = (
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
+<<<<<<< master
 =======
 "rJ" = (
 /obj/item/explosive/mine/clf/active,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -887,7 +900,6 @@
 "sd" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1028,12 +1040,16 @@
 	},
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1203,7 +1219,6 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1250,7 +1265,6 @@
 /area/shiva/interior/colony/s_admin)
 "Ap" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -1301,7 +1315,6 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1321,12 +1334,16 @@
 /obj/structure/bed/chair,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1370,10 +1387,14 @@
 /area/shiva/interior/colony/s_admin)
 "Ds" = (
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -1410,9 +1431,12 @@
 >>>>>>> reimported backup
 =======
 "DZ" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -1480,9 +1504,12 @@
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c500,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/effect/landmark/good_item,
 >>>>>>> reimported backup
+=======
+>>>>>>> Updated CLF spawner
 /obj/item/storage/pill_bottle/ultrazine/skillless,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -1493,13 +1520,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
-	},
-/area/shiva/interior/colony/s_admin)
-"Gm" = (
-/obj/item/stack/sandbags,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor{
-	icon_state = "platingdmg1"
 	},
 /area/shiva/interior/colony/s_admin)
 "GH" = (
@@ -1695,6 +1715,7 @@
 "Kr" = (
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -1706,6 +1727,9 @@
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -1840,12 +1864,16 @@
 /obj/structure/bed/chair,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1857,12 +1885,16 @@
 /obj/structure/bed/chair,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1909,7 +1941,6 @@
 	pixel_x = -24
 	},
 /obj/item/device/flashlight/lamp,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -1987,9 +2018,10 @@
 >>>>>>> reimported backup
 =======
 "QC" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	icon_state = "bluefull"
 	},
 >>>>>>> updated all maps to have CLF Mines and corpses
 /area/shiva/interior/colony/s_admin)
@@ -2086,9 +2118,13 @@
 	pixel_x = 5
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "Sg" = (
@@ -2239,7 +2275,7 @@
 >>>>>>> reimported backup
 =======
 "VE" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -2255,9 +2291,13 @@
 /obj/effect/landmark/corpsespawner/chef,
 /obj/item/ammo_casing/bullet,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -2302,8 +2342,12 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 "Xu" = (
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -2536,7 +2580,7 @@ Qk
 FI
 Mo
 Un
-aN
+Un
 yw
 Qk
 DM
@@ -2600,6 +2644,7 @@ jl
 Hr
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 qW
 JD
 JD
@@ -2611,9 +2656,12 @@ JD
 =======
 kv
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+qW
+>>>>>>> Updated CLF spawner
 JD
 JD
-aQ
+DZ
 At
 <<<<<<< master
 FM
@@ -2697,7 +2745,7 @@ JD
 il
 bN
 Un
-Gm
+WP
 WP
 hO
 VY
@@ -2714,16 +2762,20 @@ tF
 jl
 Hj
 JD
-Ds
+JD
 JD
 Hr
 Hr
 WP
 <<<<<<< master
+<<<<<<< master
 kv
 =======
 FM
 >>>>>>> reimported backup
+=======
+kv
+>>>>>>> Updated CLF spawner
 Un
 Hr
 pL
@@ -2748,8 +2800,12 @@ pC
 Nt
 >>>>>>> updated all maps to have CLF Mines and corpses
 Fq
+<<<<<<< master
 JD
 >>>>>>> reimported backup
+=======
+Ds
+>>>>>>> Updated CLF spawner
 JD
 JD
 Hr
@@ -2762,10 +2818,14 @@ pL
 zI
 Hr
 <<<<<<< master
+<<<<<<< master
 QC
 =======
 fg
 >>>>>>> reimported backup
+=======
+QC
+>>>>>>> Updated CLF spawner
 Hr
 Hr
 Mo
@@ -2788,7 +2848,7 @@ pR
 vm
 aQ
 Hr
-Ds
+JD
 MQ
 ag
 ak
@@ -2810,10 +2870,14 @@ Un
 YL
 BG
 <<<<<<< master
+<<<<<<< master
 Kr
 =======
 Hr
 >>>>>>> reimported backup
+=======
+Kr
+>>>>>>> Updated CLF spawner
 JD
 MQ
 Zz
@@ -2823,7 +2887,7 @@ Nv
 NP
 zf
 sV
-Kr
+Hr
 Qk
 Qk
 Iq
@@ -2913,6 +2977,7 @@ rJ
 Jn
 GJ
 Ds
+<<<<<<< master
 Hr
 Qk
 jH
@@ -2928,6 +2993,8 @@ rJ
 Jn
 GJ
 JD
+=======
+>>>>>>> Updated CLF spawner
 Hr
 Qk
 <<<<<<< master
@@ -2964,14 +3031,19 @@ kb
 Hr
 fg
 <<<<<<< master
+<<<<<<< master
 Kr
 =======
 Hr
 >>>>>>> reimported backup
+=======
+Kr
+>>>>>>> Updated CLF spawner
 VY
-QC
+Mo
 Hr
 Hr
+<<<<<<< master
 <<<<<<< master
 <<<<<<< master
 QC
@@ -2981,6 +3053,10 @@ Kr
 >>>>>>> updated all maps to have CLF Mines and corpses
 fg
 >>>>>>> reimported backup
+=======
+Hr
+QC
+>>>>>>> Updated CLF spawner
 Hr
 Hz
 Wl
@@ -3025,8 +3101,12 @@ gr
 gr
 =======
 Qz
+<<<<<<< master
 DZ
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+gr
+>>>>>>> Updated CLF spawner
 jS
 Qk
 xt
@@ -3070,10 +3150,14 @@ fP
 xt
 qT
 <<<<<<< master
+<<<<<<< master
 Xu
 Tf
 hD
 =======
+=======
+Xu
+>>>>>>> Updated CLF spawner
 Tf
 Tf
 <<<<<<< master
@@ -3103,6 +3187,7 @@ Qk
 hb
 Tf
 <<<<<<< master
+<<<<<<< master
 Tf
 <<<<<<< master
 qW
@@ -3111,6 +3196,9 @@ JD
 >>>>>>> reimported backup
 =======
 Xu
+=======
+Tf
+>>>>>>> Updated CLF spawner
 qW
 >>>>>>> updated all maps to have CLF Mines and corpses
 xt
@@ -3128,7 +3216,7 @@ Nt
 Rf
 Jn
 GH
-Ds
+JD
 JD
 qO
 Kk
@@ -3202,6 +3290,7 @@ JD
 dT
 gr
 <<<<<<< master
+<<<<<<< master
 aN
 JD
 xt
@@ -3209,6 +3298,9 @@ iv
 VE
 =======
 gr
+=======
+aN
+>>>>>>> Updated CLF spawner
 JD
 xt
 iv
@@ -3237,10 +3329,10 @@ pC
 Nt
 >>>>>>> updated all maps to have CLF Mines and corpses
 Jk
+Ds
 JD
 >>>>>>> reimported backup
 JD
-Ds
 CX
 pC
 zU

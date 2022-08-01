@@ -26,6 +26,7 @@
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
+	var/disarm_success_chance = 75
 
 
 /obj/item/explosive/mine/Destroy()
@@ -85,7 +86,7 @@
 
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
-	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
+	playsound(loc, 'sound/weapons/mine_armed.ogg', vol = 25, vary = TRUE)
 	user.drop_inv_item_on_ground(src)
 	setDir(user.dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
@@ -93,23 +94,23 @@
 
 
 //Disarming
-/obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+/obj/item/explosive/mine/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
-				SPAN_NOTICE("You start disarming [src]."))
+				user.visible_message(SPAN_NOTICE("[user] starts disarming \the [src]."), \
+				SPAN_NOTICE("You start disarming \the [src]."))
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
-				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
+				SPAN_NOTICE("You start disarming \the [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
-					SPAN_WARNING("You stop disarming [src]."))
+				user.visible_message(SPAN_WARNING("[user] stops disarming \the [src]."), \
+					SPAN_WARNING("You stop disarming \the [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
-				if(prob(75))
+				if(prob(disarm_success_chance))
 					triggered = TRUE
 					if(tripwire)
 						var/direction = reverse_dir[src.dir]
@@ -301,6 +302,7 @@
 	)
 	angle = 360
 	use_dir = FALSE
+	disarm_success_chance = 50
 
 
 //arming
@@ -365,10 +367,10 @@
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
-					SPAN_WARNING("You stop disarming [src]."))
+					SPAN_WARNING("You stop disarming \the [src]."))
 				return
 			if(user.faction != iff_signal)
-				if(prob(50)) // 50/50 chance for it to either blow up in your face or actually disarm
+				if(prob(disarm_success_chance)) // 50/50 chance for it to either blow up in your face or actually disarm, check bouncing betty object code
 					triggered = TRUE
 					if(tripwire)
 						var/direction = reverse_dir[src.dir]

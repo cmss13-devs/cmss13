@@ -4,3 +4,7 @@
       melting.
   - balance: Vehicles require 3 seconds to apply acid instead of 4 and receive twice
       more damage for it.
+  Kaga:
+  - bugfix: Fixed an unintended oversight where mobs were taking damage calculated
+      for runners from the Aimed Shot ability when used by an XMB or M42C sniper rifle.
+      Normal-size Xenos now have their own tier for damage calculation.

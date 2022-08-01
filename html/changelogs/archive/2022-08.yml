@@ -1,6 +1,9 @@
 2022-08-01:
+<<<<<<< HEAD
   50RemAndCounting:
   - imageadd: added several new hazard vest colour variants.
+=======
+>>>>>>> corpse_update
   CasperEvans, CometBlaze:
   - rscadd: IOs are back! You need 5 hours in squad roles to be able to select them
   - rscadd: Gathering intel, setting communications, enabling colony power and collecting

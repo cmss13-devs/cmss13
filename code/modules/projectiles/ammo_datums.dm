@@ -2831,6 +2831,27 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
 		M.Slow(0.4)
+
+/*
+//========
+					CAS 30mm impacters
+//========
+*/
+/datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
+	name = "30mm Multi-Purpose shell"
+
+	damage = 115 //More damaging, but 2x less shells and low AP
+	penetration = ARMOR_PENETRATION_TIER_2
+	accuracy = HIT_ACCURACY_TIER_MAX
+	max_range = 0
+	shrapnel_chance = 100 //the least of your problems
+
+/datum/ammo/bullet/shrapnel/gau/at
+	name = "30mm Anti-Tank shell"
+
+	damage = 80 //Standard AP vs standard. (more AP for less damage)
+	penetration = ARMOR_PENETRATION_TIER_8
+	accuracy = HIT_ACCURACY_TIER_MAX
 /*
 //======
 					Misc Ammo

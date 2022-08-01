@@ -1,4 +1,20 @@
 2022-08-01:
+  CasperEvans, CometBlaze:
+  - rscadd: IOs are back! You need 5 hours in squad roles to be able to select them
+  - rscadd: Gathering intel, setting communications, enabling colony power and collecting
+      corpses (human or xeno) will now award you tech points, these points can be
+      cashed in for extra points for Req or CAS or for more OBs at any tech console.
+  - rscadd: All maps now have documents and other relevant items scattered about them
+  - rscadd: 'The old IO office has been refurbished to serve a new purpose: being
+      an office for IOs'
+  - rscadd: Data Detectors have been made available to marine vendors
+  - rscadd: ARES now yells at command when comms are estabilished
+  - rscadd: Marines can now get small document pouches from their vendor
+  - balance: Requisitions no longer receives points every 30 minutes
+  - balance: Reduced number of roundstart OBs from 4 to 2
+  - bugfix: Colonists and colonist corpses no longer show up on the marines' crew
+      monitor
+  - tweak: Filing cabinets now dump their contents when destroyed
   JeserTheFox:
   - balance: Hardpoints require 10 seconds to apply acid to them to prevent easy combat
       melting.

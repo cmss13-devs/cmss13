@@ -15882,7 +15882,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "kCQ" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = shivabarls
+	insert_tag = "shivabarls"
 	},
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/bar)

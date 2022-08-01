@@ -7786,10 +7786,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"eJO" = (
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "eJP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/cigbutt,
@@ -7844,10 +7840,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
-"eMQ" = (
-/obj/structure/surface/rack,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
 "eMU" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
@@ -14665,13 +14657,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"iSP" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "yellowfull"
-	},
-/area/fiorina/station/lowsec)
 "iSQ" = (
 /obj/structure/lattice,
 /turf/closed/wall/mineral/bone_resin,
@@ -18598,13 +18583,6 @@
 	name = "astroturf"
 	},
 /area/fiorina/tumor/fiberbush)
-"lik" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/pills/lowchance,
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "lif" = (
 /obj/structure/closet/crate/bravo,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -18612,6 +18590,13 @@
 /obj/item/fuelCell,
 /obj/item/stack/sheet/plasteel,
 /obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
+"lik" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/pills/lowchance,
 /turf/open/floor/prison{
 	icon_state = "bluefull"
 	},
@@ -24827,11 +24812,6 @@
 	icon_state = "redcorner"
 	},
 /area/fiorina/station/security)
-"oXB" = (
-/obj/structure/closet/cabinet,
-/obj/effect/spawner/random/gun/special/lowchance,
-/turf/open/floor/wood,
-/area/fiorina/station/civres_blue)
 "oXE" = (
 /obj/item/newspaper,
 /turf/open/floor/prison,
@@ -33019,13 +32999,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"tXG" = (
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/station/security)
 "tXQ" = (
 /turf/open/floor/prison{
 	icon_state = "platingdmg1"
@@ -35134,13 +35107,6 @@
 	tag = "icon-cell_stripe"
 	},
 /area/fiorina/station/lowsec)
-"vqp" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/fiorina/station/security)
 "vqM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/tomatosoup,
@@ -55535,7 +55501,7 @@ wZv
 lzJ
 wbI
 eFa
-pKT
+wbI
 cGR
 uGT
 bQM
@@ -70552,7 +70518,7 @@ tHs
 fnB
 fnB
 pTj
-tXG
+sRV
 uSo
 bOh
 wBK

@@ -216,16 +216,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
-"lu" = (
-/obj/structure/barricade/metal/wired{
-	icon_state = "metal_2";
-	dir = 8
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
 "lI" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -571,15 +561,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
-"vQ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
 "yz" = (
 /obj/structure/machinery/squeezer,
 /turf/open/floor{
@@ -658,16 +639,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
-"Cn" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 4;
-	tag = ""
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
@@ -888,14 +859,6 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/general_offices)
-"Me" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet15-15";
-	tag = "icon-carpet15-15 (WEST)"
-	},
-/area/bigredv2/outside/bar)
 "Mr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/weldpack,
@@ -996,12 +959,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
-"Ry" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
 "Si" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -1255,12 +1212,12 @@ Wq
 Gc
 Si
 QK
-Me
+OL
 fi
 Eb
 Xl
 ax
-lu
+Xl
 qY
 Xl
 ax
@@ -1282,7 +1239,7 @@ fS
 Gt
 gv
 Eb
-Cn
+Kv
 Tc
 FC
 hz
@@ -1360,7 +1317,7 @@ ax
 ax
 Wd
 Fa
-Ry
+ax
 ax
 kI
 "}
@@ -1405,7 +1362,7 @@ ax
 Yd
 Yd
 ax
-Ry
+ax
 hP
 ax
 qQ
@@ -1431,7 +1388,7 @@ rD
 hz
 CB
 gV
-Ry
+ax
 ax
 fJ
 Yw
@@ -1448,7 +1405,7 @@ QA
 ax
 Dr
 Ii
-Ry
+ax
 ax
 Yd
 ax
@@ -1469,7 +1426,7 @@ SE
 kI
 hP
 ax
-Ry
+ax
 ax
 Ii
 ic
@@ -1518,13 +1475,13 @@ kI
 nV
 hz
 In
-Ry
+ax
 eQ
 tF
 kI
-lu
+Xl
 tq
-lu
+Xl
 pf
 sg
 XZ

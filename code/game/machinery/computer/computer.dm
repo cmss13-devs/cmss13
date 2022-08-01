@@ -134,9 +134,6 @@
 		if(ishuman(usr))
 			playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
-/obj/structure/machinery/computer/get_applying_acid_time()
-	return -1
-
 /obj/structure/machinery/computer/fixer
 	var/all_configs
 

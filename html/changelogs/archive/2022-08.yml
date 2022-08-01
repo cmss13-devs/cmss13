@@ -1,0 +1,6 @@
+2022-08-01:
+  JeserTheFox:
+  - balance: Hardpoints require 10 seconds to apply acid to them to prevent easy combat
+      melting.
+  - balance: Vehicles require 3 seconds to apply acid instead of 4 and receive twice
+      more damage for it.

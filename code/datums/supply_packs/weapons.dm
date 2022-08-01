@@ -365,7 +365,18 @@
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper explosive M74 AGM-I  grenades crate (WARNING)"
+	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
+	group = "Weapons"
+
+/datum/supply_packs/explosives_airburst_smoke
+	name = "M74 Airburst Grenade Munition smoke grenades crate (x6)"
+	contains = list(
+					/obj/item/storage/box/packet/airburst_smoke,
+					/obj/item/storage/box/packet/airburst_smoke
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive M74 AGM-S grenades crate"
 	group = "Weapons"
 
 /datum/supply_packs/explosives_m74_hornet

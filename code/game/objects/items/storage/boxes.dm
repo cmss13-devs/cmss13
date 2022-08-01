@@ -518,13 +518,13 @@
 /obj/item/storage/box/explosive_mines/bounding
 	name = "\improper M5 mine box"
 	desc = "A secure box holding four M5 anti-personel proximity mines."
-	icon_state = "minebox"
+	icon_state = "bettybox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine/bounding)
 
 /obj/item/storage/box/explosive_mines/fill_preset_inventory()
-	for(var/i in 1 to 4)
+	for(var/i in 1 to (max_storage_space/2))
 		new /obj/item/explosive/mine/bounding(src)
 
 /obj/item/storage/box/explosive_mines/pmc

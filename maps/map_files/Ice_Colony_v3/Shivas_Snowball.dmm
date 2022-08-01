@@ -15890,10 +15890,14 @@
 "kCQ" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "shivabarls"
 =======
 	insert_tag = shivabarls
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "shivabarls"
+>>>>>>> fix
 	},
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/bar)

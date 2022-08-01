@@ -2135,6 +2135,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
+<<<<<<< master
 =======
 =======
 >>>>>>> updated all maps to have CLF Mines and corpses
@@ -2145,6 +2146,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 >>>>>>> reimported backup
+=======
+>>>>>>> updated CLF spawner
 "vG" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
@@ -4760,6 +4763,7 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 <<<<<<< master
+<<<<<<< master
 =======
 "YO" = (
 /obj/effect/landmark/survivor_spawn,
@@ -4769,6 +4773,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 >>>>>>> reimported backup
+=======
+>>>>>>> updated CLF spawner
 "YY" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
@@ -5526,10 +5532,14 @@ mn
 Hs
 Hs
 <<<<<<< master
+<<<<<<< master
 Yr
 =======
 vr
 >>>>>>> reimported backup
+=======
+Hs
+>>>>>>> updated CLF spawner
 Hs
 Hs
 wU
@@ -6179,7 +6189,7 @@ Tz
 hH
 hH
 OR
-YO
+Tz
 vo
 >>>>>>> updated all maps to have CLF Mines and corpses
 Tz

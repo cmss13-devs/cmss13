@@ -44,17 +44,18 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
-	var/icon_size = 48
+	icon_size = 48
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
+
+	var/obj/item/iff_tag/iff_tag = null
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -71,6 +72,7 @@
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
@@ -90,6 +92,9 @@
 
 	var/last_hit_time = 0
 
+	var/crit_grace_time = 1 SECONDS
+	var/next_grace_time = 0
+
 	//Amount of construction resources stored internally
 	var/crystal_stored = 0
 	var/crystal_max = 0
@@ -99,6 +104,7 @@
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
 	var/armor_deflection_buff = 0 // temp buffs to armor
+	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
 	var/armor_integrity = 100     // Current health % of our armor
 	var/armor_integrity_max = 100
@@ -182,6 +188,8 @@
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
 
+	var/list/modifier_sources
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Intrinsic State - well-ish modularized
@@ -217,7 +225,7 @@
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 12
+	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 
 
@@ -252,10 +260,10 @@
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
-	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
-	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
+	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
+	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
-	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
+	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
 	var/list/built_structures = list()
 
 	var/icon_xeno
@@ -302,6 +310,12 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+		life_kills_total = oldXeno.life_kills_total
+		life_damage_taken_total = oldXeno.life_damage_taken_total
+		if(oldXeno.iff_tag)
+			iff_tag = oldXeno.iff_tag
+			iff_tag.forceMove(src)
+			oldXeno.iff_tag = null
 	else if (h_number)
 		hivenumber = h_number
 
@@ -369,6 +383,10 @@
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
+	if(client)
+		set_lighting_alpha_from_prefs(client)
+	else
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	if(caste && caste.spit_types && caste.spit_types.len)
 		ammo = GLOB.ammo_list[caste.spit_types[1]]
@@ -524,6 +542,41 @@
 	// Since we updated our name we should update the info in the UI
 	in_hive.hive_ui.update_xeno_info()
 
+/mob/living/carbon/Xenomorph/proc/set_lighting_alpha_from_prefs(var/client/xeno_client)
+	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref
+	switch(vision_level)
+		if(XENO_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(XENO_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
+	if(hud_used)
+		var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+		screenobj.update_icon(src)
+
+/mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
+	switch(level)
+		if(XENO_VISION_LEVEL_NO_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if(XENO_VISION_LEVEL_FULL_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	update_sight()
+	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	screenobj.update_icon(src)
+
+/mob/living/carbon/Xenomorph/proc/get_vision_level()
+	switch(lighting_alpha)
+		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
+			return XENO_VISION_LEVEL_FULL_NVG
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			return XENO_VISION_LEVEL_MID_NVG
+		if(LIGHTING_PLANE_ALPHA_VISIBLE)
+			return XENO_VISION_LEVEL_NO_NVG
+
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
@@ -563,6 +616,9 @@
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
 			to_chat(user, "It has specialized into a [mutation_type].")
+
+	if(iff_tag)
+		to_chat(user, SPAN_NOTICE("It has an IFF tag sticking out of its carapace."))
 
 	return
 
@@ -608,6 +664,8 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+
+	QDEL_NULL(iff_tag)
 
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
@@ -681,18 +739,10 @@
 	MH.add_hud_to(src)
 
 
-/mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
-	//xeno leader get a bit arrow and less cooldown
+/mob/living/carbon/Xenomorph/check_improved_pointing()
+	//xeno leaders get a big arrow and less cooldown
 	if(hive_pos != NORMAL_XENO)
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
-	else
-		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
-	visible_message("<b>[src]</b> points to [A]")
-	return 1
-
-
+		return TRUE
 
 ///get_eye_protection()
 ///Returns a number between -1 to 2
@@ -813,9 +863,11 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
 	melee_damage_upper = damage_modifier
+	melee_vehicle_damage = damage_modifier
 	if(caste)
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
+		melee_vehicle_damage += caste.melee_vehicle_damage
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
 	if(caste)
@@ -927,6 +979,8 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
+		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()

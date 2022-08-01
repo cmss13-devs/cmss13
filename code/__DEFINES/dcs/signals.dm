@@ -127,6 +127,9 @@
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
+/// From /obj/item/proc/unequipped()
+#define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
+
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
@@ -147,6 +150,8 @@
 ///Called in /mob/reset_view(): (atom/A)
 #define COMSIG_MOB_RESET_VIEW "mob_reset_view"
 #define COMSIG_CLIENT_RESET_VIEW "client_reset_view"
+///called in /client/change_view()
+#define COMSIG_MOB_CHANGE_VIEW "mob_change_view"
 	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
@@ -158,6 +163,14 @@
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
 
+#define COMSIG_DBLCLICK_SHIFT_MIDDLE "dblclick_shift_middle"
+#define COMSIG_DBLCLICK_CTRL_SHIFT "dblclick_ctrl_shift"
+#define COMSIG_DBLCLICK_CTRL_MIDDLE "dblclick_ctrl_middle"
+#define COMSIG_DBLCLICK_MIDDLE "dblclick_middle"
+#define COMSIG_DBLCLICK_SHIFT "dblclick_shift"
+#define COMSIG_DBLCLICK_ALT "dblclick_alt"
+#define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
+
 #define COMSIG_MOB_LOGIN "mob_login"
 
 /// From /mob/living/rejuvenate
@@ -165,6 +178,7 @@
 /// From /mob/living/proc/IgniteMob
 #define COMSIG_LIVING_PREIGNITION "living_preignition"
 	#define COMPONENT_CANCEL_IGNITION (1<<0)
+#define COMSIG_LIVING_IGNITION "living_ignition"
 
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
@@ -189,6 +203,10 @@
 /// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
+///called when an atom starts orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+///called when an atom stops orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_STOP "atom_orbit_stop"
 /// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
@@ -282,6 +300,9 @@
 
 #define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
+
+#define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
+	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 #define COMSIG_TURF_ENTER "turf_enter"
@@ -390,6 +411,9 @@
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
 
+///from base of /atom/movable/proc/set_glide_size(): (target)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
+
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
 
@@ -422,3 +446,9 @@
 #define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
+
+
+// Used in resin_constructions.dm
+// Checks whether the xeno can build a thick structure regardless of hive weeds
+#define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
+	#define COMPONENT_THICK_BYPASS (1<<0)

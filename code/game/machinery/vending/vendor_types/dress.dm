@@ -70,10 +70,12 @@
 	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
 		usr.set_interaction(src)
 		if (href_list["vend"])
+			var/exploiting = TRUE
 			var/item_path = text2path(href_list["vend"])
 			var/mob/living/carbon/human/H = usr
 
 			var/obj/item/card/id/I = H.wear_id
+
 			if(!istype(I)) //not wearing an ID
 				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 				return
@@ -84,6 +86,23 @@
 
 			if(LAZYLEN(vendor_role) && !vendor_role.Find(I.rank))
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				return
+
+			for(var/category in uniform_categories) // Very Hacky fix
+				if(!exploiting)
+					break
+				for(var/specific_category in uniform_categories[category])
+					if(!exploiting)
+						break
+					if(!(specific_category in I.uniform_sets))
+						continue
+					for(var/outfit in I.uniform_sets[specific_category])
+						if(ispath(item_path, outfit))
+							exploiting = FALSE
+							break
+
+
+			if(exploiting)
 				return
 
 			var/obj/item/IT = new item_path(get_appropriate_vend_turf())

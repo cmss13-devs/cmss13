@@ -6,9 +6,9 @@
 #define WALL_STATE_CROWBAR		4
 
 // Defines for barricade upgrades
-#define BARRICADE_UPGRADE_BURN 		"biohazard upgrade(+burn)"
-#define BARRICADE_UPGRADE_BRUTE 	"reinforced upgrade(+brute)"
-#define BARRICADE_UPGRADE_EXPLOSIVE "explosive upgrade(+explosive)"
+#define BARRICADE_UPGRADE_BURN 		"Biohazard Upgrade (+Burn)"
+#define BARRICADE_UPGRADE_BRUTE 	"Reinforced Upgrade (+Brute)"
+#define BARRICADE_UPGRADE_EXPLOSIVE "Explosive Upgrade (+Explosive)"
 
 // Defines for defense stats
 #define DEFENSE_FUNCTIONAL 		0

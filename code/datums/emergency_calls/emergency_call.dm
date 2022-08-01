@@ -28,14 +28,18 @@
 	var/medics = 0
 	var/engineers = 0
 	var/heavies = 0
+	var/smartgunners = 0
 	var/max_medics = 1
 	var/max_engineers = 1
 	var/max_heavies = 1
+	var/max_smartgunners = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
+
+	var/time_required_for_job = 5 HOURS
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -91,8 +95,8 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. >>> <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a></span> <<<"))
-			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
@@ -100,6 +104,11 @@
 		return
 	random_call.activate()
 	return
+
+/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+	if(C?.check_timelock(roles, hours))
+		return TRUE
+	return FALSE
 
 /mob/dead/observer/verb/JoinResponseTeam()
 	set name = "Join Response Team"

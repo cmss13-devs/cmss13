@@ -13,24 +13,15 @@
 	if (!evolve_checks())
 		return
 
-	//Debugging that should've been done
-
 	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
 	if(!castepick) //Changed my mind
 		return
 
-	if(!isturf(loc)) //qdel'd or inside something
-		return
-
-	if (!evolve_checks())
+	if(!evolve_checks())
 		return
 
 	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !isXenoLarva(src) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
-		return
-
-	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
@@ -86,6 +77,7 @@
 	SPAN_XENONOTICE("You begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
+	var/level_to_switch_to = get_vision_level()
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
@@ -135,7 +127,8 @@
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
-
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
 		new_xeno.fireloss = src.fireloss //Transfers the damage over.
@@ -163,8 +156,7 @@
 	SSround_recording.recorder.track_player(new_xeno)
 
 /mob/living/carbon/Xenomorph/proc/evolve_checks()
-	if(evolving)
-		to_chat(src, SPAN_WARNING("You are already evolving!"))
+	if(!check_state(TRUE))
 		return FALSE
 
 	if(is_ventcrawling)
@@ -187,10 +179,6 @@
 		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
 		return FALSE
 
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
-		return FALSE
-
 	if(handcuffed || legcuffed)
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return FALSE
@@ -208,15 +196,8 @@
 		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
 		return FALSE
 
-	if (agility || fortify || crest_defense)
+	if(agility || fortify || crest_defense)
 		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
-		return FALSE
-
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
-		return FALSE
-
-	if(!isturf(loc)) //qdel'd or inside something
 		return FALSE
 
 	return TRUE
@@ -282,7 +263,7 @@
 		return FALSE
 
 	var/xeno_type
-
+	var/level_to_switch_to = get_vision_level()
 	switch(newcaste)
 		if("Larva")
 			xeno_type = /mob/living/carbon/Xenomorph/Larva
@@ -323,7 +304,8 @@
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
-
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 

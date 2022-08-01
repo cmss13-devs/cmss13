@@ -1,6 +1,0 @@
-[
-	{
-		"type": "include", "name": "Standalone variations",
-		"file": "maps/Sorokyne_Strate/mapgen_variations.json"
-	}
-]

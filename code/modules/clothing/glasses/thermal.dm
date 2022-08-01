@@ -14,24 +14,28 @@
 	eye_protection = -1
 	deactive_state = "goggles_off"
 	fullscreen_vision = /obj/screen/fullscreen/thermal
+	var/blinds_on_emp = TRUE
 
 /obj/item/clothing/glasses/thermal/emp_act(severity)
-	if(istype(src.loc, /mob/living/carbon/human))
-		var/mob/living/carbon/human/M = src.loc
-		to_chat(M, SPAN_WARNING("The Optical Thermal Scanner overloads and blinds you!"))
-		if(M.glasses == src)
-			M.eye_blind = 3
-			M.eye_blurry = 5
-			if(!(M.disabilities & NEARSIGHTED))
-				M.disabilities |= NEARSIGHTED
-				spawn(100)
-					M.disabilities &= ~NEARSIGHTED
+	if(blinds_on_emp)
+		if(istype(src.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/M = src.loc
+			to_chat(M, SPAN_WARNING("The Optical Thermal Scanner overloads and blinds you!"))
+			if(M.glasses == src)
+				M.eye_blind = 3
+				M.eye_blurry = 5
+				if(!(M.disabilities & NEARSIGHTED))
+					M.disabilities |= NEARSIGHTED
+					spawn(100)
+						M.disabilities &= ~NEARSIGHTED
 	..()
+
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "Optical Meson Scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
+	deactive_state = "degoggles"
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/thermal/monocle
@@ -68,3 +72,7 @@
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 	toggleable = FALSE
+
+/obj/item/clothing/glasses/thermal/empproof
+	desc = "Thermals in the shape of glasses. This one is EMP proof."
+	blinds_on_emp = FALSE

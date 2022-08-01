@@ -24,7 +24,9 @@
 /obj/structure/machinery/constructable_frame/proc/update_desc()
 	if(state == CONSTRUCTION_STATE_BEGIN)
 		requirements_left = " Requires 5 lengths of cable."
-	if(req_components)
+	else if(state == CONSTRUCTION_STATE_PROGRESS)
+		requirements_left = " Requires a circuit board."
+	else if(state == CONSTRUCTION_STATE_FINISHED)
 		requirements_left = " Requires "
 		var/first = 1
 		for(var/I in req_components)
@@ -63,6 +65,7 @@
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
 						anchored = 1
+						update_desc()
 			else if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
@@ -93,9 +96,8 @@
 						req_component_names[A] = initial(ct.name)
 					if(circuit.frame_desc)
 						requirements_left = circuit.frame_desc
-					else
-						update_desc()
 					to_chat(user, requirements_left)
+					update_desc()
 
 			else if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))

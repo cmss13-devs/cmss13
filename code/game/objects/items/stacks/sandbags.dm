@@ -42,12 +42,15 @@
 
 
 //half a max stack
+/obj/item/stack/sandbags_empty/small_stack
+	amount = STACK_10
+
 /obj/item/stack/sandbags_empty/half
 	amount = 25
 
 //full stack
 /obj/item/stack/sandbags_empty/full
-	amount = 50
+	amount = STACK_50
 
 //Full sandbags
 /obj/item/stack/sandbags
@@ -60,7 +63,7 @@
 	w_class = SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0
-	throw_speed = 0
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 25
 	attack_verb = list("hit", "bludgeoned", "whacked")

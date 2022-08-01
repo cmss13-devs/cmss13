@@ -61,6 +61,7 @@
 	var/reagent_tag                 //Used for metabolizing reagents.
 
 	var/darksight = 2
+	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	var/brute_mod = null    // Physical damage reduction/malus.
 	var/burn_mod = null     // Burn damage reduction/malus.
@@ -92,6 +93,8 @@
 	var/knock_down_reduction = 1 //how much the knocked_down effect is reduced per Life call.
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
+
+	var/acid_blood_dodge_chance = 0
 
 	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY
 	var/list/equip_adjust = list()
@@ -147,7 +150,7 @@
 		H.internal_organs_by_name[organ] = new organ_type(H)
 
 	if(flags & IS_SYNTHETIC)
-		C.robotize() //Also gets all other limbs, as those are attached.
+		C.robotize(synth_skin = TRUE) //Also gets all other limbs, as those are attached.
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
@@ -380,3 +383,12 @@
 			return 1
 
 	return 0
+
+/datum/species/proc/get_hairstyle(var/style)
+	return GLOB.hair_styles_list[style]
+
+// Used for checking on how each species would scream when they are burning
+/datum/species/proc/handle_on_fire(var/humanoidmob)
+	// call this for each species so each has their own unique scream options when burning alive
+	// heebie-jebies made me do all this effort, I HATE YOU
+	return

@@ -79,7 +79,7 @@
 	if(mentor)
 		return TRUE // No need
 
-	var/message = strip_html(input("Please enter your message:", "Mentor Help"))
+	var/message = strip_html(input("Please enter your message:", "MentorHelp", null, null) as message|null)
 	if(!message)
 		return FALSE
 	broadcast_unhandled(message, opener)
@@ -148,7 +148,7 @@
 		else if(mentor != sender)
 			to_chat(sender, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 			return
-	
+
 	var/target = mentor
 	if(sender == mentor)
 		target = author

@@ -30,30 +30,32 @@
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(PC.loaded)
-				if(istype(PC.loaded, /obj/structure/ship_ammo))
-					var/obj/structure/ship_ammo/SA = PC.loaded
-					if(SA.transferable_ammo && SA.ammo_count > 0 && SA.type == type)
-						if(ammo_count < max_ammo_count)
-							var/transf_amt = min(max_ammo_count - ammo_count, SA.ammo_count)
-							ammo_count += transf_amt
-							SA.ammo_count -= transf_amt
-							playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to [src]."))
-							if(!SA.ammo_count)
-								PC.loaded = null
-								PC.update_icon()
-								qdel(SA)
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return FALSE
+		if(PC.loaded)
+			if(istype(PC.loaded, /obj/structure/ship_ammo))
+				var/obj/structure/ship_ammo/SA = PC.loaded
+				SA.transfer_ammo(src, user)
+				return FALSE
 			else
-				forceMove(PC.linked_powerloader)
-				PC.loaded = src
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				PC.update_icon()
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
-		return TRUE
-	. = ..()
+				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+				return FALSE
+		else
+			if(ammo_count < 1)
+				to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+				qdel(src)
+				return FALSE
+
+			to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+			if(ammo_name == "rocket")
+				PC.grab_object(src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
+			else
+				PC.grab_object(src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
+			update_icon()
+			return FALSE
+	else
+		. = ..()
 
 
 /obj/structure/ship_ammo/examine(mob/user)
@@ -71,6 +73,45 @@
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
+/obj/structure/ship_ammo/proc/transfer_ammo(var/obj/structure/ship_ammo/target, var/mob/user)
+	if(type != target.type)
+		to_chat(user, SPAN_NOTICE("\The [src] and \the [target] use incompatible types of ammunition!"))
+		return
+	if(!transferable_ammo)
+		to_chat(user, SPAN_NOTICE("\The [src] doesn't support [ammo_name] transfer!"))
+		return
+	var/obj/item/powerloader_clamp/PC
+	if(istype(loc, /obj/item/powerloader_clamp))
+		PC = loc
+	if(ammo_count < 1)
+		if(PC)
+			PC.loaded = null
+			PC.update_icon()
+		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+		forceMove(get_turf(loc))
+		qdel(src)
+	if(target.ammo_count >= target.max_ammo_count)
+		to_chat(user, SPAN_WARNING("\The [target] is fully loaded!"))
+		return
+
+	var/transf_amt = min(target.max_ammo_count - target.ammo_count, ammo_count)
+	target.ammo_count += transf_amt
+	ammo_count -= transf_amt
+	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
+	to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to \the [target]."))
+	if(ammo_count < 1)
+		if(PC)
+			PC.loaded = null
+			PC.update_icon()
+		to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
+		forceMove(get_turf(loc))
+		qdel(src)
+	else
+		if(PC)
+			if(ammo_name == "rocket")
+				PC.update_icon("ds_rocket")
+			else
+				PC.update_icon("ds_ammo")
 
 
 //30mm gun

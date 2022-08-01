@@ -47,6 +47,7 @@ var/global/players_preassigned = 0
 
 	var/list/unassigned_players
 	var/list/squads
+	var/list/squads_by_type
 
 //Whenever the controller is created, we want to set up the basic role lists.
 /datum/authority/branch/role/New()
@@ -105,9 +106,11 @@ var/global/players_preassigned = 0
 		roles_by_name[J.title] = J
 
 	squads = list()
+	squads_by_type = list()
 	for(var/squad in squads_all) //Setting up our squads.
 		var/datum/squad/S = new squad()
 		squads += S
+		squads_by_type[S.type] = S
 
 	load_whitelist()
 
@@ -313,20 +316,6 @@ var/global/players_preassigned = 0
 	if(count)
 		return assigned
 	return roles_left
-
-/datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
-	var/datum/mind/P = M.mind
-	var/datum/game_mode/G = SSticker.mode
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	// if we don't have at least one thing - abort
-	if(!P || !G || !hive)
-		return
-
-	if(hive.stored_larva)
-		hive.stored_larva--
-		G.transform_xeno(P)
-
-	return
 
 /datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
 	var/assigned = 0
@@ -580,7 +569,7 @@ var/global/players_preassigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -635,7 +624,7 @@ var/global/players_preassigned = 0
 	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	//Deal with non-standards first.

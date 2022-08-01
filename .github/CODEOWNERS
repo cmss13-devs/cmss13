@@ -1,0 +1,35 @@
+# This list auto requests reviews from the specified org members
+# when a PR that modifies the file in question is opened
+# This list is alphabetized by User -> Filename and separated into sections for Maintainers KEEP IT THAT WAY
+# In the event that people are to be informed of changes
+# to the same file or dir, add them to the end of under Multiple Owners
+
+# Fira
+
+/.dockerignore @Fira
+/code/controllers/subsystem/atoms.dm @Fira
+/code/controllers/subsystem/mapping.dm @Fira
+/code/controllers/subsystem/sound.dm @Fira
+/code/controllers/subsystem/predships.dm @Fira
+/code/controllers/subsystem/quadtrees.dm @Fira
+/code/datums/quadtree.dm @Fira
+/code/datums/soundOutput.dm @Fira
+/code/game/cas_manager/ @Fira
+/code/game/machinery/computer/dropship_weapons.dm @Fira
+/code/game/sound.dm @Fira
+/code/game/world.dm @Fira
+/code/modules/mapping/reader.dm @Fira
+/code/modules/mapping/map_template.dm @Fira
+/code/modules/nightmare/ @Fira
+/tools/docker/ @Fira
+/Dockerfile @Fira
+
+# Stan_Albatross
+
+/code/modules/projectiles/guns/lever_action.dm @stanalbatross
+/code/game/objects/items/backpack_sprayers.dm @stanalbatross
+/code/game/objects/items/tools/experimental_tools.dm @stanalbatross
+
+# MULTIPLE OWNERS
+/icons/ @Agameofscones @Monkeysfist101 @nauticall
+/maps/ @Agameofscones @nauticall @Nanu308

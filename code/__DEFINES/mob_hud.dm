@@ -52,6 +52,13 @@
 #define TRACKER_CO					"track_co"
 #define TRACKER_XO					"track_xo"
 
+
+#define TRACKER_ASL					"_asl" // Alpha Squad Leader
+#define TRACKER_BSL					"_bsl" // Bravo Squad Leader
+#define TRACKER_CSL					"_csl" // Charlie Squad Leader
+#define TRACKER_DSL					"_dsl" // Delta Squad Leader
+#define TRACKER_ESL					"_esl" // Echo Squad Leader
+
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN	"Queen"
 #define TRACKER_HIVE	"Hive Core"

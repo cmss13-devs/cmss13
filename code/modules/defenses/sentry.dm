@@ -66,7 +66,7 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 7, 7)
+		range_bounds = RECT(x, y, 8, 8)
 		return
 	switch(dir)
 		if(EAST)
@@ -97,12 +97,13 @@
 	else
 		overlays += "[defense_type] uac_[sentry_type]"
 
-/obj/structure/machinery/defenses/sentry/attack_hand(mob/user as mob)
+
+/obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
 	if(immobile)
 		to_chat(user, SPAN_WARNING("[src]'s panel is completely locked, you can't do anything."))
-		return
+		return FALSE
 
-	..()
+	return TRUE
 
 /obj/structure/machinery/defenses/sentry/examine(mob/user)
 	. = ..()
@@ -515,13 +516,16 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 
 /obj/structure/machinery/defenses/sentry/launchable
 	name = "\improper UA 571-O sentry post"
-	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine."
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine.  Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
 	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE
 	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
+	return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")

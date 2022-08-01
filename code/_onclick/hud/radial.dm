@@ -209,6 +209,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		E.maptext = null
 		E.next_page = FALSE
 		if(choices_icons[choice_id])
+			var/image/I = choices_icons[choice_id]
+			I.layer += max(((py + radius) / 10), 0)
 			E.overlays += (choices_icons[choice_id])
 
 /datum/radial_menu/New()
@@ -227,7 +229,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu/proc/get_next_id()
 	return "c_[choices.len]"
 
-/datum/radial_menu/proc/set_choices(list/new_choices, use_tooltips)
+/datum/radial_menu/proc/set_choices(list/new_choices, use_tooltips, use_labels)
 	if(length(choices))
 		Reset()
 	for(var/E in new_choices)
@@ -235,18 +237,24 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		choices += id
 		choices_values[id] = E
 		if(new_choices[E])
-			var/I = extract_image(new_choices[E])
+			var/I = extract_image(new_choices[E], E, use_labels)
 			if(I)
 				choices_icons[id] = I
 	setup_menu(use_tooltips)
 
 
-/datum/radial_menu/proc/extract_image(E)
+/datum/radial_menu/proc/extract_image(image/E, var/label, var/use_labels)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = ABOVE_HUD_LAYER
 		MA.plane = ABOVE_HUD_PLANE
-		MA.appearance_flags |= RESET_TRANSFORM
+		MA.appearance_flags |= RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+		if(use_labels)
+			MA.maptext_width = 64
+			MA.maptext_height = 64
+			MA.maptext_x = -round(MA.maptext_width / 2) + 16
+			MA.maptext_y = -round(MA.maptext_height / 2) + 16
+			MA.maptext = SMALL_FONTS_CENTRED(7, label)
 	return MA
 
 
@@ -294,7 +302,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	Choices should be a list where list keys are movables or text used for element names and return value
 	and list values are movables/icons/images used for element icons
 */
-/proc/show_radial_menu(mob/user, atom/anchor, list/choices, uniqueid, radius, datum/callback/custom_check, require_near = FALSE, tooltips = FALSE)
+/proc/show_radial_menu(mob/user, atom/anchor, list/choices, uniqueid, radius, datum/callback/custom_check, require_near = FALSE, tooltips = FALSE, use_labels = TRUE)
 	if(!user || !anchor || !length(choices))
 		return
 	if(!uniqueid)
@@ -307,11 +315,15 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	GLOB.radial_menus[uniqueid] = menu
 	if(radius)
 		menu.radius = radius
+	else if(use_labels)
+		menu.radius = 46
 	if(istype(custom_check))
 		menu.custom_check_callback = custom_check
 	menu.anchor = anchor
 	menu.check_screen_border(user) //Do what's needed to make it look good near borders or on hud
-	menu.set_choices(choices, tooltips)
+	if(use_labels && user.client?.prefs?.no_radial_labels_preference)
+		use_labels = FALSE
+	menu.set_choices(choices, tooltips, use_labels)
 	menu.show_to(user)
 	menu.wait(user, anchor, require_near)
 	var/answer = menu.selected_choice

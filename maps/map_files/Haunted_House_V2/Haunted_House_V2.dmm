@@ -804,7 +804,6 @@
 /area/event/underground_no_CAS/dynamic)
 "cP" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -2821,7 +2820,6 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -3580,7 +3578,6 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -3943,7 +3940,6 @@
 "nc" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -5219,7 +5215,6 @@
 "qJ" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -5795,7 +5790,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -6360,7 +6354,6 @@
 "tW" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -6491,7 +6484,6 @@
 	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -6557,7 +6549,6 @@
 "uv" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -7046,7 +7037,6 @@
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -7977,7 +7967,6 @@
 	pixel_x = -6
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -8109,7 +8098,6 @@
 /obj/structure/machinery/prop/almayer/CICmap,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -8539,7 +8527,6 @@
 	},
 /obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -9055,7 +9042,6 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -9463,7 +9449,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -9617,7 +9602,6 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -9673,7 +9657,6 @@
 	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -9811,7 +9794,6 @@
 	pixel_x = 9
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -10328,7 +10310,6 @@
 /area/event/metal/dynamic)
 "FO" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/deep_underground/dynamic)
@@ -12327,7 +12308,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -12614,7 +12594,7 @@
 	},
 /area/event/metal/dynamic)
 "Nh" = (
-/obj/vehicle/multitile/van/decrepit{
+/obj/effect/vehicle_spawner/van/decrepit{
 	pixel_x = 0;
 	pixel_y = 0
 	},
@@ -13374,7 +13354,6 @@
 "PF" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -14454,7 +14433,6 @@
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/deep_underground/dynamic)
@@ -14584,7 +14562,6 @@
 "TI" = (
 /obj/structure/machinery/door/airlock/strata/mining,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/deep_underground/dynamic)
@@ -15068,7 +15045,6 @@
 	},
 /obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -15676,7 +15652,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -15716,7 +15691,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/event/underground_no_CAS/dynamic)

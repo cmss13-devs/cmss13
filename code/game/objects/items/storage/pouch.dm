@@ -320,7 +320,6 @@
 	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
-	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
 					/obj/item/weapon/gun/revolver,
 					/obj/item/weapon/gun/pistol,
@@ -571,6 +570,10 @@
 /obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+
+/obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -1014,6 +1017,16 @@
 	new /obj/item/stack/sheet/plasteel(src, 50)
 	new /obj/item/stack/sheet/metal(src, 50)
 	new /obj/item/stack/sandbags_empty(src, 50)
+
+/obj/item/storage/pouch/construction/full_barbed_wire/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 50)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 20)
+
+/obj/item/storage/pouch/construction/low_grade_full/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 30)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 15)
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"

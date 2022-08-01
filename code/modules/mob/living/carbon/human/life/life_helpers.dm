@@ -209,7 +209,8 @@
 	see_in_dark += G.darkness_view
 	if(G.vision_flags)
 		sight |= G.vision_flags
-	lighting_alpha = G.lighting_alpha
+	if(G.lighting_alpha < lighting_alpha)
+		lighting_alpha = G.lighting_alpha
 
 /mob/living/carbon/human/handle_silent()
 	if(..())

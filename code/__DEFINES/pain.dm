@@ -1,9 +1,10 @@
 // Pain
 
 // How slow we go from losing a limb
-#define MOVE_REDUCTION_LIMB_DESTROYED 4.0
-#define MOVE_REDUCTION_LIMB_BROKEN    1.5
-#define MOVE_REDUCTION_LIMB_SPLINTED  0.5
+#define MOVE_REDUCTION_LIMB_DESTROYED	4.0
+#define MOVE_REDUCTION_LIMB_BROKEN		1.5
+#define MOVE_REDUCTION_DIRECTION_LOCKED	1
+#define MOVE_REDUCTION_LIMB_SPLINTED	0.5
 
 // Traumatic shock reduction for different reagents
 #define PAIN_REDUCTION_MULTIPLIER	20

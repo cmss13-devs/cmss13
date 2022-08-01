@@ -141,14 +141,20 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	turn_off_light(user)
 
-	if(fire_delay_group && flags_gun_features & GUN_FIRED_BY_USER)
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+	if(fire_delay_group && delay_left > 0)
 		for(var/group in fire_delay_group)
-			var/fire_delay = fire_delay_group[group]
-			LAZYSET(user.fire_delay_next_fire, group, world.time + fire_delay)
-
-	flags_gun_features &= ~GUN_FIRED_BY_USER
+			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
 	unwield(user)
+
+/obj/item/weapon/gun/equipped(mob/user, slot)
+	. = ..()
+
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+	if(fire_delay_group && delay_left > 0)
+		for(var/group in fire_delay_group)
+			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
@@ -469,20 +475,23 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(16 to 35) attack_verb = list("smashed", "struck", "whacked", "beaten", "cracked")
 		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
-/obj/item/weapon/gun/proc/get_active_firearm(mob/user)
+/obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
 	if(!ishuman(usr)) return
-
 	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
 	var/obj/item/weapon/gun/G = user.get_held_item()
 
-	if(!istype(G))
+	if(!istype(G) && !restrictive)
+		G = user.get_inactive_hand()
+	if(!istype(G) && G != null)
+		G = user.get_active_hand()
+	if(!istype(G) && restrictive)
 		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
 		return
 
-	if(G.flags_gun_features & GUN_BURST_FIRING)
+	if(G?.flags_gun_features & GUN_BURST_FIRING)
 		return
 
 	return G
@@ -533,14 +542,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(slot == w_uniform)
-		for(var/obj/item/clothing/accessory/holster/T in w_uniform.accessories)
-			if(T.holstered)
+		for(var/obj/item/storage/internal/accessory/holster/T in w_uniform.accessories)
+			if(T.current_gun)
 				w_uniform.attack_hand(src)
 				return TRUE
 		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
 			var/obj/item/storage/internal/accessory/holster/HS = H.hold
 			if(HS.current_gun)
 				HS.current_gun.attack_hand(src)
+				return TRUE
 		return
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
@@ -567,17 +577,22 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	var/obj/item/W = get_active_hand()
-	var/obj/item/clothing/under/U = w_uniform
-	var/obj/item/clothing/accessory/holster/T
-	if(istype(U))
-		for(var/obj/item/clothing/accessory/holster/HS in U.accessories)
-			T = HS
-			break
 	if(W)
-		if(T && istype(W) && !T.holstered && T.can_holster(W))
-			T.holster(W, src)
-		else
-			quick_equip()
+		if(w_uniform)
+			for(var/obj/A in w_uniform.accessories)
+				var/obj/item/storage/internal/accessory/holster/H = A
+				if(istype(H) && !H.current_gun && H.can_be_inserted(W))
+					H._item_insertion(W, src)
+					return
+
+				var/obj/item/clothing/accessory/storage/holster/HS = A
+				if(istype(HS))
+					var/obj/item/storage/internal/accessory/holster/S = HS.hold
+					if(S.can_be_inserted(W, TRUE))
+						S.handle_item_insertion(W, user = src)
+						return
+
+		quick_equip()
 	else //empty hand, start checking slots and holsters
 		var/list/slot_order
 		switch(keymod)
@@ -600,7 +615,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Remove all attachables from a weapon."
 	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE) // don't see why it should be restrictive
 
 	if(!G)
 		return
@@ -611,47 +626,29 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(zoom)
-		to_chat(usr, SPAN_WARNING("You cannot conceviably do that while looking down \the [src]'s scope!"))
+		to_chat(usr, SPAN_WARNING("You cannot conceivably do that while looking down \the [src]'s scope!"))
 		return
 
-	var/list/possible_attachments = list()
+	var/list/choices = list()
+	var/list/choice_to_attachment = list()
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(R && (R.flags_attach_features & ATTACH_REMOVABLE))
-			possible_attachments += R
+			var/capitalized_name = capitalize_first_letters(R.name)
+			choices[capitalized_name] = image(icon = R.icon, icon_state = R.icon_state)
+			choice_to_attachment[capitalized_name] = R
 
-
-	var/static/list/slots
-	if(!slots)
-		slots = list(
-			"rail",
-			"muzzle",
-			"stock",
-			"under",
-		)
-
-	var/list/choices = list()
-
-
-	for(var/attachment_key in slots)
-		var/obj/item/attachable/attachment = attachments[attachment_key]
-		if(attachment && (attachment.flags_attach_features & ATTACH_REMOVABLE))
-			choices[attachment_key] = attachment
-
-	if(!possible_attachments.len)
+	if(!length(choices))
 		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
 		return
 
 	var/obj/item/attachable/A
-	if(possible_attachments.len == 1)
-		A = possible_attachments[1]
+	if(length(choices) == 1)
+		A = choice_to_attachment[choices[1]]
 	else
-		if(usr.client.prefs?.no_radials_preference)
-			A = tgui_input_list(usr, "Which attachment to remove?", "Remove attachment", possible_attachments)
-		else
-			var/middleman = show_radial_menu(usr, src, choices, require_near = TRUE)
-			A = attachments[middleman]
-
+		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
+		var/choice = use_radials ? show_radial_menu(usr, usr, choices, require_near = TRUE) : tgui_input_list(usr, "Which attachment to remove?", "Remove Attachment", choices)
+		A = choice_to_attachment[choice]
 
 	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
@@ -698,11 +695,23 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(flags_gun_features & GUN_BURST_ONLY)
 		if(!(flags_gun_features & GUN_BURST_ON))
-			stack_trace("[src] has GUN_BUST_ONLY flag but not GUN_BURST_ON.")
+			stack_trace("[src] has GUN_BURST_ONLY flag but not GUN_BURST_ON.")
 			flags_gun_features |= GUN_BURST_ON
 			return
 
-		to_chat(usr, SPAN_NOTICE("[src] can only be fired in bursts!"))
+		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
+		return
+
+	if(flags_gun_features & GUN_FULL_AUTO_ONLY)
+		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
+			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
+			flags_gun_features |= GUN_FULL_AUTO_ON
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			return
+
+		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
 		return
 
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
@@ -749,10 +758,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	src = G
 
 	var/drop_to_ground = TRUE
-	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+	if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 		drop_to_ground = FALSE
 		unwield(user)
-		if(!G.flags_gun_features && GUN_INTERNAL_MAG)
+		if(!(G.flags_gun_features & GUN_INTERNAL_MAG))
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
@@ -776,7 +785,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Toggle the safety of the held gun."
 	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr,FALSE) // safeties shouldn't be restrictive
 
 	if(!G)
 		return
@@ -807,7 +816,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Activates one of the attached attachments on the gun."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE)
 	if(!G) return
 	src = G
 
@@ -838,7 +847,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the attachment that is mounted on your rail."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE)
 	if(!G) return
 	src = G
 
@@ -873,7 +882,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the attachment that is mounted on your underbarrel."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr,FALSE)
 	if(!G) return
 	src = G
 
@@ -890,7 +899,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the stock attachment that is mounted on your gun."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE) // incase someone
 	if(!G) return
 	src = G
 

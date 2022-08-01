@@ -296,22 +296,6 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
-	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/rifle/extended,
-		/obj/item/ammo_magazine/rifle/incendiary,
-		/obj/item/ammo_magazine/rifle/explosive,
-		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/le,
-		/obj/item/ammo_magazine/rifle/penetrating,
-		/obj/item/ammo_magazine/rifle/cluster,
-		/obj/item/ammo_magazine/rifle/toxin,
-		/obj/item/ammo_magazine/rifle/rubber
-	)
-
-
-
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -343,7 +327,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
+/obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
@@ -366,6 +351,7 @@
 		/obj/item/ammo_magazine/rifle/toxin,
 		/obj/item/ammo_magazine/rifle/penetrating,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
 		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
@@ -380,7 +366,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -405,10 +390,8 @@
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/extended_barrel,
-							/obj/item/attachable/heavy_barrel,
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	unacidable = TRUE
 	indestructible = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 
@@ -438,14 +421,14 @@
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = BURST_AMOUNT_TIER_5
+	burst_amount = BURST_AMOUNT_TIER_4
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
@@ -463,7 +446,7 @@
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
 	if(!linked_human)
 		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up [src], registering you as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
 	..()
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_lock()
@@ -502,7 +485,6 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		damage_mult -= BULLET_DAMAGE_MULT_TIER_1 //Loses a tier of damage
 		fire_delay += FIRE_DELAY_TIER_10
 		burst_amount -=  BURST_AMOUNT_TIER_6
 
@@ -521,7 +503,7 @@
 		else
 			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
 	else
-		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register you as its owner."))
+		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
 	if(!iff_enabled)
 		to_chat(usr, SPAN_WARNING("Its IFF restrictions are disabled."))
 
@@ -1130,125 +1112,6 @@
 
 //-------------------------------------------------------
 
-//UPP HvH Attachments Rifle
-#define UPP_HVH_ATTACHABLES_RIFLE list(\
-	/obj/item/attachable/suppressor,\
-	/obj/item/attachable/bayonet,\
-	/obj/item/attachable/bayonet/upp,\
-	/obj/item/attachable/reddot,\
-	/obj/item/attachable/reflex,\
-	/obj/item/attachable/verticalgrip,\
-	/obj/item/attachable/angledgrip,\
-	/obj/item/attachable/flashlight/grip,\
-	/obj/item/attachable/lasersight,\
-	/obj/item/attachable/gyro,\
-	/obj/item/attachable/flashlight,\
-	/obj/item/attachable/bipod,\
-	/obj/item/attachable/extended_barrel,\
-	/obj/item/attachable/heavy_barrel,\
-	/obj/item/attachable/burstfire_assembly,\
-	/obj/item/attachable/magnetic_harness,\
-	/obj/item/attachable/stock/rifle,\
-	/obj/item/attachable/attached_gun/grenade,\
-	/obj/item/attachable/attached_gun/flamer,\
-	/obj/item/attachable/attached_gun/shotgun,\
-	/obj/item/attachable/attached_gun/extinguisher,\
-	/obj/item/attachable/scope,\
-	/obj/item/attachable/scope/mini\
-	)
-
-// UPP HvH Attachments Carbine
-#define UPP_HVH_ATTACHABLES_CARBINE list(\
-	/obj/item/attachable/suppressor,\
-	/obj/item/attachable/reddot,\
-	/obj/item/attachable/reflex,\
-	/obj/item/attachable/verticalgrip,\
-	/obj/item/attachable/angledgrip,\
-	/obj/item/attachable/flashlight/grip,\
-	/obj/item/attachable/stock/smg,\
-	/obj/item/attachable/stock/smg/collapsible,\
-	/obj/item/attachable/compensator,\
-	/obj/item/attachable/lasersight,\
-	/obj/item/attachable/flashlight,\
-	/obj/item/attachable/extended_barrel,\
-	/obj/item/attachable/bayonet,\
-	/obj/item/attachable/bayonet/upp,\
-	/obj/item/attachable/heavy_barrel,\
-	/obj/item/attachable/scope/mini,\
-	/obj/item/attachable/burstfire_assembly,\
-	/obj/item/attachable/magnetic_harness,\
-	/obj/item/attachable/gyro,\
-	/obj/item/attachable/stock/smg/collapsible/brace,\
-	/obj/item/attachable/bipod,\
-	/obj/item/attachable/attached_gun/grenade,\
-	/obj/item/attachable/attached_gun/flamer,\
-	/obj/item/attachable/attached_gun/shotgun,\
-	/obj/item/attachable/attached_gun/extinguisher,\
-	)
-
-// Pulse Rifle Type 71 HvH
-/obj/item/weapon/gun/rifle/type71/hvh/Initialize()
-	. = ..()
-	attachable_allowed = UPP_HVH_ATTACHABLES_RIFLE
-
-/obj/item/weapon/gun/rifle/type71/hvh/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-
-// Flamer Type 71 HvH Rifle
-/obj/item/weapon/gun/rifle/type71/flamer/hvh/Initialize()
-	. = ..()
-	attachable_allowed = UPP_HVH_ATTACHABLES_RIFLE
-
-// Carbine Type 71 HvH Rifle
-/obj/item/weapon/gun/rifle/type71/carbine/hvh/Initialize()
-	. = ..()
-	attachable_allowed = UPP_HVH_ATTACHABLES_CARBINE
-
-/obj/item/weapon/gun/rifle/type71/carbine/hvh/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
-	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-
-// Commando Type 71 HvH Rifle
-/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/Initialize()
-	. = ..()
-	attachable_allowed = UPP_HVH_ATTACHABLES_CARBINE
-
-/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	scatter = SCATTER_AMOUNT_TIER_10
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	scatter_unwielded = SCATTER_AMOUNT_TIER_7
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
-
-//-------------------------------------------------------
-#undef UPP_HVH_ATTACHABLES_CARBINE
-#undef UPP_HVH_ATTACHABLES_RIFLE
 //L42A Battle Rifle
 
 /obj/item/weapon/gun/rifle/l42a

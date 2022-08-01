@@ -39,8 +39,8 @@
 	contains = list(
 					/obj/item/storage/box/guncase/flamer,
 					/obj/item/storage/box/guncase/flamer,
-					/obj/item/storage/large_holster/fuelpack,
-					/obj/item/storage/large_holster/fuelpack
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
@@ -246,6 +246,18 @@
 	containername = "\improper plastic explosives crate (WARNING)"
 	group = "Weapons"
 
+/datum/supply_packs/explosives_breaching_charge
+	name = "breaching charge crate (x4)"
+	contains = list(
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge
+	)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper plastic explosives crate (WARNING)"
+	group = "Weapons"
 
 /datum/supply_packs/explosives_incendiary
 	name = "M40 HIDP incendiary grenades crate (x6)"

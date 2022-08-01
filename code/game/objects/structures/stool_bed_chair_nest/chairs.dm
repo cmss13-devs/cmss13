@@ -13,8 +13,6 @@
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
-	if(anchored)
-		verbs -= /atom/movable/verb/pull
 	handle_rotation()
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -104,6 +102,28 @@
 				stack_collapse(user)
 				return FALSE
 		return FALSE
+
+	if(istype(I, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/PC = I
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+		if(PC.loaded)
+			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+			return TRUE
+		if(!stacked_size)
+			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
+			return TRUE
+		//skill reduces the chance of collapse
+		if(stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
+			stack_collapse(user)
+			return TRUE
+
+		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		PC.grab_object(src, "chairs", 'sound/machines/hydraulics_2.ogg')
+		update_icon()
+		return TRUE
+
 	return ..()
 
 /obj/structure/bed/chair/hitby(atom/movable/AM)
@@ -246,6 +266,26 @@
 
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
+
+/obj/structure/bed/chair/comfy/alpha
+	icon_state = "comfychair_alpha"
+	name = "Alpha squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Alpha squad red. Only for the bravest and freshest USCM recruits."
+
+/obj/structure/bed/chair/comfy/bravo
+	icon_state = "comfychair_bravo"
+	name = "Bravo squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Bravo squad brown. Certified fortified on all sides from enemy incursion."
+
+/obj/structure/bed/chair/comfy/charlie
+	icon_state = "comfychair_charlie"
+	name = "Charlie squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Charlie squad purple. Feels out of place without a full breakfast to accompany it."
+
+/obj/structure/bed/chair/comfy/delta
+	icon_state = "comfychair_delta"
+	name = "Delta squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
 /obj/structure/bed/chair/office
 	anchored = 0

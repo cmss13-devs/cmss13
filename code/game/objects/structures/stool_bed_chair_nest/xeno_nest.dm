@@ -78,14 +78,16 @@
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
 				return
-
+			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+				return
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
-		H.attack_log += "\[[time_stamp()]\]<font color='orange'>Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+		user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+		H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 	unbuckle()
 	return
 
@@ -201,6 +203,9 @@
 	if(!istype(H) || !istype(G) || !istype(M) || H.undefibbable || H.mind || M.original != H)
 		return // Zealous checking as most is handled by ghost code
 	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
+	sound_to(G, 'sound/effects/attackblob.ogg')
+	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(H.client)
 	G.can_reenter_corpse = TRUE
 	return
 

@@ -26,7 +26,7 @@
 	..()
 	var/obj/screen/using
 
-	var/datum/custom_hud/ui_datum = custom_huds_list["midnight"]
+	var/datum/custom_hud/ui_datum = GLOB.custom_huds_list[HUD_MIDNIGHT]
 
 	using = new /obj/screen/act_intent/corner()
 	using.icon = ui_style

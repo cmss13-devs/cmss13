@@ -1,8 +1,8 @@
 /datum/action/xeno_action/onclick/toggle_long_range/boiler
-	movement_datum_type = /datum/event_handler/xeno_zoom_onmovement/buffer
 	should_delay = TRUE
 	delay = 20
 	ability_primacy = XENO_PRIMARY_ACTION_4
+	movement_buffer = 7
 
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"
@@ -95,6 +95,6 @@
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
 
 /datum/action/xeno_action/onclick/toggle_long_range/trapper
-	movement_datum_type = XENOZOOM_NO_MOVEMENT_HANDLER
+	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4

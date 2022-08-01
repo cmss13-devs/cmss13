@@ -3,16 +3,15 @@ reset_label = "GBP: Reset"
 
 [points]
 "Accessibility" = 3
-"Administration" = 2
+"Admin" = 2
 "Atomic" = 2
-"Balance" = -8
+"Balance" = -5
 "Code Improvement" = 2
 "Fix" = 3
 "Grammar and Formatting" = 1
 "Hard Deletes" = 12
 "Logging" = 1
-"Feature" = -10
-"Tweak" = -3
+"Feature" = -5
 "Performance" = 12
 "Priority: CRITICAL" = 20
 "Priority: High" = 15

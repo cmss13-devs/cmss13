@@ -989,7 +989,7 @@
 /area/fiorina/lz/near_lzI)
 "aAM" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
-	layer = 2.5
+	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -1971,7 +1971,7 @@
 	},
 /area/fiorina/tumor/civres)
 "aZZ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -2180,7 +2180,7 @@
 /area/fiorina/maintenance)
 "bgG" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -3314,7 +3314,6 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
 	health = null;
-	icon_state = "hydrotray5";
 	indestructible = 1;
 	unacidable = 1
 	},
@@ -3345,14 +3344,7 @@
 /area/fiorina/oob)
 "bTG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	item_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -4169,7 +4161,7 @@
 "cvr" = (
 /obj/structure/platform,
 /obj/structure/reagent_dispensers/oxygentank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
@@ -4613,7 +4605,7 @@
 	},
 /area/fiorina/tumor/fiberbush)
 "cJW" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "cKa" = (
@@ -4784,7 +4776,7 @@
 	},
 /area/fiorina/tumor/servers)
 "cRs" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -6041,7 +6033,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "dCF" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dCM" = (
@@ -6307,7 +6299,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "dKX" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/maintenance)
 "dLq" = (
@@ -8665,7 +8657,7 @@
 	},
 /area/fiorina/station/research_cells)
 "fmM" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -9529,7 +9521,7 @@
 /area/fiorina/station/security)
 "fMY" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
@@ -12104,6 +12096,7 @@
 /area/fiorina/station/medbay)
 "hpN" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
+	density = 0;
 	desc = "Its a telephone, and a computer. Woah.";
 	name = "\improper funny telephone booth";
 	pixel_x = 2;
@@ -12957,19 +12950,13 @@
 /area/fiorina/station/flight_deck)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
 /obj/item/clothing/under/marine{
 	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology.";
 	icon_state = "clown";
 	name = "\improper UCF uniform"
 	},
 /obj/item/clothing/mask/gas/clown_hat,
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -15400,7 +15387,7 @@
 	},
 /area/fiorina/station/lowsec)
 "jsE" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15435,7 +15422,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "juS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15574,7 +15561,7 @@
 /obj/item/ammo_casing{
 	icon_state = "cartridge_1"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "jAW" = (
@@ -20205,7 +20192,7 @@
 /area/fiorina/tumor/servers)
 "mpf" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
@@ -21245,7 +21232,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mTS" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -21384,22 +21371,6 @@
 	tag = "icon-kitchen"
 	},
 /area/fiorina/station/lowsec)
-"mXD" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
-	damage_mult = 1.1;
-	desc = "A ten-round dual tube pump action shotgun. This variant is issued to select USCM vessels out on the rim.";
-	icon_state = "m37-17";
-	item_state = "m37-17";
-	name = "\improper M37-17 pump shotgun";
-	unacidable = 1
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/tumor/ice_lab)
 "mXI" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -26094,7 +26065,7 @@
 	},
 /area/fiorina/station/chapel)
 "pYO" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
 	},
@@ -31342,7 +31313,7 @@
 	},
 /area/fiorina/station/lowsec)
 "tnr" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -32403,7 +32374,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "tQJ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -33862,7 +33833,7 @@
 	},
 /area/fiorina/station/medbay)
 "uRe" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -33911,7 +33882,7 @@
 /area/fiorina/station/transit_hub)
 "uSQ" = (
 /obj/structure/reagent_dispensers/watertank{
-	layer = 2.5
+	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
@@ -63740,7 +63711,7 @@ azZ
 azZ
 azZ
 lJa
-mXD
+pBn
 lax
 nDJ
 dsT

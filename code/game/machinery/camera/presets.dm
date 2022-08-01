@@ -57,6 +57,8 @@
 
 /obj/structure/machinery/camera/vehicle
 	name = "military-grade vehicle camera"
+	desc = "It is used to monitor vehicle interiors."
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
 

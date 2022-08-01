@@ -480,21 +480,29 @@
 	name = "\improper Alkysine pill bottle"
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Al"
 
+/obj/item/storage/pill_bottle/alkysine/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 //imidazoline
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Im"
+
+/obj/item/storage/pill_bottle/imidazoline/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Pr"
 
 /obj/item/storage/pill_bottle/peridaxon/skillless
@@ -505,15 +513,22 @@
 	name = "\improper Russian Red pill bottle"
 	icon_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Rr"
+
+/obj/item/storage/pill_bottle/russianRed/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 
 /obj/item/storage/pill_bottle/quickclot
 	name = "\improper Quickclot pill bottle"
 	icon_state = "pill_canister8"
 	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
+	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Qc"
 
+/obj/item/storage/pill_bottle/quickclot/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 //Ultrazine
 /obj/item/storage/pill_bottle/ultrazine

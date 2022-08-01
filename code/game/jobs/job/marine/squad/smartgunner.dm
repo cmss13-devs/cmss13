@@ -23,11 +23,7 @@
 		total_positions_so_far = positions
 	return positions
 
-/datum/job/marine/smartgunner/equipped
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/sg/full
-
-/datum/job/marine/smartgunner/equipped/whiskey
+/datum/job/marine/smartgunner/whiskey
 	title = JOB_WO_SQUAD_SMARTGUNNER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/sg

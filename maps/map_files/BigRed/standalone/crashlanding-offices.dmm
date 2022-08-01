@@ -1483,8 +1483,8 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
 "rF" = (

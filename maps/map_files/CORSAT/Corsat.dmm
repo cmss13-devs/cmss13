@@ -11984,12 +11984,12 @@
 /area/corsat/gamma/residential/laundry)
 "aGM" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp7,
-/obj/item/weapon/gun/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"

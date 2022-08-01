@@ -73377,7 +73377,7 @@
 	pixel_y = 13
 	},
 /obj/structure/sign/poster{
-	desc = "This poster features Audrey Rainwater standing in a jaccuzi. She was the July 2182 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that.";
+	desc = "This poster features Audrey Rainwater standing in a jacuzzi. She was the July 2182 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that.";
 	icon_state = "poster16";
 	layer = 3.3;
 	name = "'Miss July' Pinup";
@@ -81699,7 +81699,7 @@
 	serial_number = 12
 	},
 /obj/structure/sign/poster{
-	desc = "This poster features Audrey Rainwater standing in a jaccuzi. She was the July 2182 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that.";
+	desc = "This poster features Audrey Rainwater standing in a jacuzzi. She was the July 2182 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that.";
 	icon_state = "poster16";
 	name = "'Miss July' Pinup";
 	serial_number = 16

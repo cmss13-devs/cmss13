@@ -65095,6 +65095,9 @@
 	dir = 8
 	},
 /obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clftrijent"
+	},
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
 "jtz" = (

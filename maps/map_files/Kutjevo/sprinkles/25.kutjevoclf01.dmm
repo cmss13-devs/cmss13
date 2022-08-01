@@ -2,9 +2,13 @@
 "ac" = (
 /obj/effect/decal/cleanable/blood,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "ad" = (
@@ -26,6 +30,7 @@
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
+<<<<<<< master
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 4
 	},
@@ -43,6 +48,8 @@
 >>>>>>> added spawn pointss for clf survivors
 	},
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 4
 	},
@@ -59,9 +66,13 @@
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/decal/cleanable/blood,
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -249,6 +260,7 @@
 	pixel_y = 8
 	},
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
@@ -257,6 +269,9 @@
 =======
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
@@ -330,11 +345,14 @@
 <<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
+<<<<<<< master
 =======
 >>>>>>> reimported backup
 =======
 /obj/item/explosive/mine/clf/active,
 >>>>>>> updated all maps to have CLF Mines and corpses
+=======
+>>>>>>> Updated CLF spawner
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "iM" = (
@@ -424,7 +442,6 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 4
 	},
@@ -469,7 +486,11 @@
 =======
 "ns" = (
 /obj/item/explosive/mine/clf/active,
+<<<<<<< master
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -508,6 +529,7 @@
 >>>>>>> reimported backup
 =======
 "oO" = (
+<<<<<<< master
 /obj/structure/platform/kutjevo{
 	dir = 1
 	},
@@ -515,6 +537,12 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction)
+>>>>>>> Updated CLF spawner
 "pe" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_y = 10
@@ -631,12 +659,16 @@
 	},
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "vo" = (
@@ -649,12 +681,16 @@
 /obj/effect/landmark/corpsespawner/chef,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "wv" = (
@@ -769,7 +805,6 @@
 /area/kutjevo/interior/construction)
 "DU" = (
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "DX" = (
@@ -894,6 +929,7 @@
 "FX" = (
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/grey/plate,
+<<<<<<< master
 /area/kutjevo/interior/construction)
 =======
 =======
@@ -911,6 +947,8 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple,
+=======
+>>>>>>> Updated CLF spawner
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
 "Gt" = (
@@ -933,7 +971,6 @@
 /area/kutjevo/interior/construction)
 "Hd" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 5
 	},
@@ -964,10 +1001,16 @@
 >>>>>>> reimported backup
 =======
 "ID" = (
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction)
+>>>>>>> Updated CLF spawner
 "IR" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1072,7 +1115,7 @@
 >>>>>>> reimported backup
 =======
 "Op" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
@@ -1116,7 +1159,6 @@
 /area/kutjevo/interior/construction)
 "Rb" = (
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Rc" = (
@@ -1153,12 +1195,16 @@
 	},
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Si" = (
@@ -1202,12 +1248,16 @@
 /obj/effect/spawner/random/attachment,
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 =======
 >>>>>>> reimported backup
 =======
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+>>>>>>> Updated CLF spawner
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Tv" = (
@@ -1222,6 +1272,7 @@
 	},
 /area/kutjevo/interior/construction)
 <<<<<<< master
+<<<<<<< master
 =======
 "TK" = (
 /obj/item/stool{
@@ -1231,6 +1282,8 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 >>>>>>> reimported backup
+=======
+>>>>>>> Updated CLF spawner
 "Ua" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
@@ -1270,8 +1323,10 @@
 >>>>>>> reimported backup
 =======
 "UD" = (
-/obj/structure/machinery/light,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge,
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
@@ -1289,12 +1344,18 @@
 >>>>>>> reimported backup
 =======
 "UU" = (
+<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
+=======
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/med_rec)
+>>>>>>> Updated CLF spawner
 "Ve" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -1385,10 +1446,17 @@
 >>>>>>> reimported backup
 =======
 "Yz" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/auto_turf/sand/layer1,
+<<<<<<< master
 /area/kutjevo/interior/construction)
 >>>>>>> added spawn pointss for clf survivors
+=======
+/area/kutjevo/exterior/complex_border/med_rec)
+>>>>>>> Updated CLF spawner
 "YJ" = (
 /obj/effect/landmark/corpsespawner/security/cmb,
 /obj/effect/decal/cleanable/blood,
@@ -1477,7 +1545,7 @@
 QK
 DE
 DE
-Yz
+DE
 Ms
 fi
 hv
@@ -1496,10 +1564,14 @@ Ro
 uv
 rG
 <<<<<<< master
+<<<<<<< master
 oO
 =======
 ZT
 >>>>>>> reimported backup
+=======
+oO
+>>>>>>> Updated CLF spawner
 QR
 fi
 Vg
@@ -1523,6 +1595,7 @@ ZT
 fi
 QN
 <<<<<<< master
+<<<<<<< master
 gw
 gw
 gw
@@ -1531,8 +1604,11 @@ hv
 ns
 =======
 TK
+=======
+>>>>>>> Updated CLF spawner
 gw
-TK
+gw
+gw
 Cx
 hv
 <<<<<<< master
@@ -1545,8 +1621,12 @@ Wm
 hp
 =======
 ns
+<<<<<<< master
 FX
 >>>>>>> added spawn pointss for clf survivors
+=======
+hp
+>>>>>>> Updated CLF spawner
 tN
 IB
 Ro
@@ -1601,8 +1681,12 @@ oo
 Fv
 sx
 nn
+<<<<<<< master
 fb
 >>>>>>> reimported backup
+=======
+Yz
+>>>>>>> Updated CLF spawner
 Ro
 Ro
 "}
@@ -1611,6 +1695,7 @@ fi
 xK
 sx
 <<<<<<< master
+<<<<<<< master
 ID
 ck
 uj
@@ -1625,17 +1710,29 @@ TK
 TK
 TK
 >>>>>>> reimported backup
+=======
+ID
+ck
+uj
+gw
+gw
+gw
+>>>>>>> Updated CLF spawner
 Cx
 hv
 aG
 hp
 <<<<<<< master
+<<<<<<< master
 UD
 =======
 tN
 >>>>>>> reimported backup
+=======
+UD
+>>>>>>> Updated CLF spawner
 IB
-ID
+Ro
 Ro
 "}
 (7,1,1) = {"
@@ -1705,10 +1802,14 @@ fi
 Vu
 xQ
 <<<<<<< master
+<<<<<<< master
 FX
 =======
 QK
 >>>>>>> reimported backup
+=======
+FX
+>>>>>>> Updated CLF spawner
 Rb
 xk
 YJ
@@ -1741,13 +1842,18 @@ ET
 wb
 QK
 <<<<<<< master
+<<<<<<< master
 ID
 =======
 sx
 >>>>>>> reimported backup
+=======
+ID
+>>>>>>> Updated CLF spawner
 Fv
-Op
+uc
 RP
+<<<<<<< master
 <<<<<<< master
 uc
 uc
@@ -1758,18 +1864,26 @@ Op
 Op
 Op
 >>>>>>> added spawn pointss for clf survivors
+=======
+>>>>>>> Updated CLF spawner
 uc
 >>>>>>> reimported backup
+uc
+Op
 uc
 Cx
 hv
 Qk
 Me
 <<<<<<< master
+<<<<<<< master
 UU
 =======
 Ft
 >>>>>>> reimported backup
+=======
+UU
+>>>>>>> Updated CLF spawner
 "}
 (11,1,1) = {"
 fi
@@ -1778,6 +1892,7 @@ sT
 Vl
 jM
 <<<<<<< master
+<<<<<<< master
 Fv
 <<<<<<< master
 Op
@@ -1787,6 +1902,10 @@ UU
 >>>>>>> added spawn pointss for clf survivors
 uc
 >>>>>>> reimported backup
+=======
+Fv
+Op
+>>>>>>> Updated CLF spawner
 ji
 dL
 KH
@@ -1795,7 +1914,7 @@ or
 Jj
 Ms
 ZS
-oO
+IB
 Ro
 "}
 (12,1,1) = {"
@@ -1805,15 +1924,20 @@ hv
 hv
 fi
 xY
-Op
 uc
 uc
+<<<<<<< master
 Oq
 <<<<<<< master
 Op
 =======
 uc
 >>>>>>> reimported backup
+=======
+uc
+Oq
+Op
+>>>>>>> Updated CLF spawner
 Jt
 Ed
 it
@@ -1829,10 +1953,14 @@ DE
 cR
 uj
 <<<<<<< master
+<<<<<<< master
 Op
 =======
 uc
 >>>>>>> reimported backup
+=======
+Op
+>>>>>>> Updated CLF spawner
 Jt
 ac
 uc
@@ -1865,15 +1993,19 @@ fi
 RJ
 Cp
 <<<<<<< master
+<<<<<<< master
 Op
 =======
 uc
 >>>>>>> reimported backup
+=======
+Op
+>>>>>>> Updated CLF spawner
 kX
 YX
 Si
 uc
-UD
+Jj
 Ms
 ZS
 ue
@@ -1892,10 +2024,14 @@ uc
 uM
 uM
 <<<<<<< master
+<<<<<<< master
 Op
 =======
 uc
 >>>>>>> reimported backup
+=======
+Op
+>>>>>>> Updated CLF spawner
 io
 hv
 zt

@@ -638,20 +638,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
 	winset(src, "mainwindow", "is-maximized=true")
 
-/// Attempts to make the client orbit the given object, for administrative purposes.
-/// If they are not an observer, will try to aghost them.
-/client/proc/admin_follow(atom/movable/target)
-	var/can_ghost = TRUE
-
-	if (!isobserver(mob))
-		can_ghost = admin_ghost()
-
-	if(!can_ghost)
-		return FALSE
-
-	var/mob/dead/observer/observer = mob
-	observer.ManualFollow(target)
-
 /client/proc/check_timelock(var/list/roles, var/hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
 	if(!GLOB.timelocks[timelock_name])

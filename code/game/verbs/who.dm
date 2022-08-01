@@ -93,7 +93,7 @@
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++
 							entry += " - <B><font color='red'>Xenomorph</font></B>"
-				entry += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[C.mob]'>?</A>)"
+				entry += " (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))
@@ -153,7 +153,7 @@
 
 /client/verb/staffwho()
 	set name = "Staffwho"
-	set category = "Admin"
+	set category = "OOC"
 
 	var/dat = "<B>Administration:</B><br>"
 	var/list/mappings
@@ -192,4 +192,4 @@
 					dat += "<B> <font color='#A040D0'> (AFK)</font></B>"
 			dat += "<BR>"
 	dat += "</body></html>"
-	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x800")
+	show_browser(usr, dat, "Staffwho", "staffwho", "size=600x1000")

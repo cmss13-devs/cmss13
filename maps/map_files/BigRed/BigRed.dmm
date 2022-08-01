@@ -33122,13 +33122,6 @@
 /obj/structure/lz_sign/solaris_sign,
 /turf/open/mars,
 /area/bigredv2/outside/w)
-"jAm" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/admin_building)
 "jwj" = (
 /obj/structure/platform/shiva{
 	dir = 8
@@ -33146,6 +33139,13 @@
 	tag = "icon-darkish"
 	},
 /area/bigredv2/caves/lambda/virology)
+"jAm" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
 "jAo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -36367,6 +36367,19 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
+"pTA" = (
+/obj/structure/platform_decoration/shiva{
+	dir = 1
+	},
+/obj/structure/platform_decoration/shiva{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/bluegrid{
+	icon_state = "bcircuitoff";
+	tag = "icon-bcircuitoff"
+	},
+/area/bigredv2/caves/lambda/research)
 "pTH" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/mars_cave{
@@ -82545,7 +82558,7 @@ gan
 tSI
 xfN
 jwj
-gan
+pTA
 tSI
 anI
 aao

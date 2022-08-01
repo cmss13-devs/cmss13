@@ -1549,12 +1549,6 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
-"vr" = (
-/obj/effect/landmark/survivor_spawn,
-/turf/open/floor{
-	icon_state = "neutral"
-	},
-/area/desert_dam/interior/dam_interior/engine_room)
 "vG" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
@@ -3538,13 +3532,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
-"YO" = (
-/obj/effect/landmark/survivor_spawn,
-/turf/open/floor/prison{
-	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
-	},
-/area/desert_dam/interior/dam_interior/engine_east_wing)
 "YY" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
@@ -4091,7 +4078,7 @@ NT
 mn
 Hs
 Hs
-vr
+Hs
 Hs
 Hs
 wU
@@ -4556,7 +4543,7 @@ fT
 hH
 hH
 OR
-YO
+Tz
 vo
 Tz
 hk

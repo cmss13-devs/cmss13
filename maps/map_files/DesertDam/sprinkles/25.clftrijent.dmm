@@ -59,8 +59,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "bD" = (
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 7;
 	icon_state = "warning"
@@ -273,6 +272,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"dR" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "dZ" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2";
@@ -537,6 +543,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -605,6 +612,15 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+"iD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
 "iO" = (
 /obj/effect/landmark/corpsespawner/engineer,
 /obj/item/tool/weldpack,
@@ -693,6 +709,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
+"jS" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "jY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -783,8 +805,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "lh" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warning"
@@ -880,6 +901,15 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"mB" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
 "mH" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
@@ -927,8 +957,7 @@
 /area/desert_dam/exterior/river/riverside_central_south)
 "nk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1025,8 +1054,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1161,6 +1188,7 @@
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -1177,13 +1205,16 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "qH" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
-/area/desert_dam/interior/dam_interior/engine_east_wing)
+/area/desert_dam/interior/dam_interior/control_room)
 "qJ" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/north_valley_dam)
@@ -1221,14 +1252,16 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "rq" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
+/obj/structure/platform{
+	dir = 1
 	},
-/area/desert_dam/interior/dam_interior/engine_room)
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
 "ru" = (
 /obj/structure/closet/toolcloset,
 /obj/structure/machinery/light{
@@ -1330,8 +1363,6 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "sk" = (
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1397,6 +1428,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1622,6 +1654,7 @@
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_y = 9
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1653,6 +1686,15 @@
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"xo" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
 "xp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden,
@@ -1878,8 +1920,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/smes_main)
 "Bi" = (
@@ -2103,6 +2143,12 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
+"Ev" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "Ex" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2202,8 +2248,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "FO" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
@@ -2448,6 +2493,17 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
+"Kl" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "Kv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2478,6 +2534,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -2625,8 +2682,14 @@
 	icon_state = "warnplate"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
+"MH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
 "MQ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -2786,6 +2849,7 @@
 "OT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -2861,6 +2925,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2922,6 +2987,19 @@
 /turf/open/floor{
 	dir = 7;
 	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"QM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "Rh" = (
@@ -3045,8 +3123,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3123,6 +3199,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3163,8 +3240,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "Uc" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "warning"
@@ -3188,6 +3264,13 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"Uw" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "Uy" = (
 /obj/structure/platform{
 	dir = 1
@@ -3215,6 +3298,7 @@
 /obj/item/ammo_magazine/rifle/mar40/lmg,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3226,6 +3310,14 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+"UL" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_central_south)
 "UR" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
@@ -3419,8 +3511,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "Xu" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3444,14 +3535,11 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "XF" = (
-/obj/item/stack/tile/plasteel,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
-/area/desert_dam/interior/dam_interior/atmos_storage)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
 "XI" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
@@ -3460,6 +3548,13 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+"XO" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "XS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3520,8 +3615,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "Yr" = (
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -3715,7 +3809,7 @@ ET
 ET
 zi
 mz
-mz
+qH
 Sx
 mz
 fJ
@@ -3785,7 +3879,7 @@ ki
 rv
 Fr
 Ro
-TD
+MH
 SJ
 lD
 SJ
@@ -3801,7 +3895,7 @@ DW
 qu
 ki
 Xe
-Qe
+iD
 sk
 Qe
 xp
@@ -3815,7 +3909,7 @@ Xy
 AV
 ZO
 cR
-Fw
+XF
 gu
 rv
 CO
@@ -3840,7 +3934,7 @@ PB
 bJ
 Er
 Ee
-Ee
+mB
 Kd
 XU
 rv
@@ -3924,7 +4018,7 @@ xg
 St
 xg
 xg
-xg
+Kl
 xg
 PS
 Ws
@@ -3944,7 +4038,7 @@ LD
 LD
 LD
 dc
-Xf
+XO
 KT
 Uc
 Eh
@@ -3970,7 +4064,7 @@ uM
 yh
 oq
 ED
-TO
+xo
 zg
 kJ
 fB
@@ -4006,7 +4100,7 @@ PL
 kt
 am
 da
-Wj
+UL
 tU
 NZ
 ED
@@ -4049,7 +4143,7 @@ eb
 eb
 dc
 Nz
-zg
+FO
 Hs
 yC
 Hs
@@ -4078,7 +4172,7 @@ NT
 mn
 Hs
 Hs
-Hs
+Yr
 Hs
 Hs
 wU
@@ -4101,7 +4195,7 @@ eb
 eb
 dc
 Nz
-rq
+Qn
 Hs
 Hs
 Hs
@@ -4240,7 +4334,7 @@ Hs
 wU
 Hs
 Ng
-Hs
+Yr
 QK
 LN
 ht
@@ -4343,8 +4437,8 @@ gA
 Hs
 es
 cs
-Kv
-Gc
+QM
+rq
 BN
 UX
 Vm
@@ -4372,7 +4466,7 @@ Hs
 Ng
 Bt
 TR
-Xf
+XO
 dc
 py
 Ep
@@ -4446,7 +4540,7 @@ lf
 Hm
 Hm
 Og
-De
+Xu
 nY
 DH
 gF
@@ -4464,7 +4558,7 @@ hh
 yw
 En
 Tz
-Tz
+Uw
 Tz
 Tz
 Tz
@@ -4491,7 +4585,7 @@ Kz
 De
 VK
 De
-Xu
+De
 De
 De
 Pk
@@ -4513,7 +4607,7 @@ ge
 KW
 nw
 TN
-VK
+jS
 VK
 NY
 Zw
@@ -4543,7 +4637,7 @@ fT
 hH
 hH
 OR
-Tz
+Uw
 vo
 Tz
 hk
@@ -4572,7 +4666,7 @@ gZ
 VE
 Tz
 Tz
-Xu
+De
 Gu
 Oc
 rG
@@ -4624,14 +4718,14 @@ rG
 od
 tJ
 Tz
-De
+Xu
 Gu
 oY
 rG
 UJ
 FY
 UJ
-cn
+dR
 Nx
 qG
 Oj
@@ -4649,14 +4743,14 @@ wL
 rG
 rG
 cM
-qH
+Tz
 De
 Gu
 wH
 rG
 cn
 UJ
-XF
+FY
 Go
 yZ
 qG
@@ -4707,7 +4801,7 @@ ee
 rG
 rG
 cn
-Go
+Ev
 UJ
 cn
 Go

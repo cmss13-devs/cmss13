@@ -65096,7 +65096,7 @@
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/effect/landmark/nightmare{
-	insert_tag = "purple-south-bridge"
+	insert_tag = "clftrijent"
 	},
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
@@ -67551,7 +67551,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "szl" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = clftrijent
+	insert_tag = "clftrijent"
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"

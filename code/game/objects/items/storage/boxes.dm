@@ -517,7 +517,7 @@
 /obj/item/storage/box/explosive_mines/bounding
 	name = "\improper M5 mine box"
 	desc = "A secure box holding four M5 anti-personel proximity mines."
-	icon_state = "minebox"
+	icon_state = "bettybox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine/bounding)

@@ -26784,7 +26784,7 @@
 /area/shiva/interior/colony/n_admin)
 "wMB" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = shivaclf01
+	insert_tag = "shivaclf01"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)

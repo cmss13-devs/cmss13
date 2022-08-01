@@ -335,7 +335,7 @@
 
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
-	playsound(loc, 'sound/weapons/mine_armed.ogg', volume = 25, vary = TRUE)
+	playsound(loc, 'sound/weapons/mine_armed.ogg', vol = 25, vary = TRUE)
 	user.drop_inv_item_on_ground(src)
 	activate_sensors()
 	update_icon()

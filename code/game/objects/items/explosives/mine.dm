@@ -342,8 +342,8 @@
 
 /obj/item/explosive/mine/bounding/check_for_obstacles(mob/living/user)
 	if(user.loc && (user.loc.density || is_mainship_level(user.z)))
-        to_chat(user, SPAN_WARNING("You can't plant a mine here."))
-        return TRUE
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		return TRUE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
@@ -352,8 +352,8 @@
 		return TRUE
 
 //disarming, it's a little different than a normal claymore
-/obj/item/explosive/mine/bounding/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+/obj/item/explosive/mine/bounding/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(active)
 			if(user.action_busy)
 				return

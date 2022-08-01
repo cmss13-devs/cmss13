@@ -8841,10 +8841,14 @@
 "mfs" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "kutjevoclf01"
 =======
 	insert_tag = kutjevoclf01
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "kutjevoclf01"
+>>>>>>> fixed issue with invalid landmark
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)

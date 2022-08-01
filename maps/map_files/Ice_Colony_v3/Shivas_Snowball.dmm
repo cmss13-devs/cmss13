@@ -27270,10 +27270,14 @@
 "wMB" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "shivaclf01"
 =======
 	insert_tag = shivaclf01
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "shivaclf01"
+>>>>>>> fixed issue with invalid landmark
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)

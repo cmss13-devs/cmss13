@@ -15777,10 +15777,14 @@
 "gHv" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "clfhydrohold"
 =======
 	insert_tag = clfhydrohold
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "clfhydrohold"
+>>>>>>> fixed issue with invalid landmark
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)

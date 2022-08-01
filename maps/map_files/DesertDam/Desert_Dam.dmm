@@ -65096,11 +65096,14 @@
 	},
 /obj/effect/blocker/toxic_water/Group_1,
 <<<<<<< master
+<<<<<<< master
 =======
 /obj/effect/landmark/nightmare{
 	insert_tag = "clftrijent"
 	},
 >>>>>>> updated CLF spawner
+=======
+>>>>>>> fixed issue with invalid landmark
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
 "jtz" = (

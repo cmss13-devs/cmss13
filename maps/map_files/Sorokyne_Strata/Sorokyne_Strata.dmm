@@ -33109,10 +33109,14 @@
 "gAN" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "clfsoro"
 =======
 	insert_tag = clfsoro
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "clfsoro"
+>>>>>>> fixed issue with invalid landmark
 	},
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)

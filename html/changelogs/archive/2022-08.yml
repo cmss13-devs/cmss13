@@ -8,3 +8,15 @@
   - bugfix: Fixed an unintended oversight where mobs were taking damage calculated
       for runners from the Aimed Shot ability when used by an XMB or M42C sniper rifle.
       Normal-size Xenos now have their own tier for damage calculation.
+  Tisx:
+  - balance: Changed GAU impacts from a purely explosive damage model to a more ballistic
+      one for greater fine tuning.
+  - spellcheck: Renamed GAU ammo types; standard is now PGU-100 Multi-purpose. HV
+      is now PGU-105 Anti-Tank
+  - balance: Current damage numbers for GAU are; 150 damage 10 AP for multi-purpose.
+      95 damage and 40 AP (2x the bullets however) for Anti-tank
+  - balance: Point cost for both ammo types have been changed to be more equivalent
+      with each other.
+  - qol: Getting directly hit by a GAU shell will now display a message (same as getting
+      hit by any other bullet)
+  - soundadd: Added in some new sounds to the GAU to spice things up a bit.

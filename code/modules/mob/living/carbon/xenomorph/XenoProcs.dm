@@ -174,6 +174,12 @@
 	if(bruteloss == 0 && fireloss == 0)
 		return
 
+	var/list/L = list("healing" = value)
+	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL, L)
+	value = L["healing"]
+	if(value < 0)
+		value = 0
+
 	if(bruteloss < value)
 		value -= bruteloss
 		bruteloss = 0

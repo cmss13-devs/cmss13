@@ -1402,7 +1402,7 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
@@ -7362,7 +7362,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ati" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
 	tag = "icon-intact-supply (NORTH)"
@@ -23247,7 +23247,7 @@
 /turf/open/floor/plating,
 /area/shuttle/drop2/BigRed)
 "biK" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "biL" = (
@@ -26843,7 +26843,7 @@
 /area/bigredv2/caves/eta/research)
 "byt" = (
 /obj/structure/bed,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -30184,7 +30184,7 @@
 	},
 /area/bigredv2/caves/mining)
 "dCb" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/weapon/gun/launcher/grenade/m81/m79{
 	pixel_x = -3;
@@ -32177,7 +32177,7 @@
 /area/bigredv2/caves/mining)
 "iaX" = (
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
 	tag = "icon-mars_cave_16"
@@ -34203,7 +34203,7 @@
 /area/bigredv2/caves/mining)
 "miD" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/item/weapon/gun/revolver/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -36651,7 +36651,7 @@
 	},
 /area/bigredv2/caves_sw)
 "rtR" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/melee/classic_baton,
 /turf/open/mars_cave{
@@ -40176,7 +40176,7 @@
 	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";

@@ -13971,7 +13971,7 @@
 	layer = 3.5
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/prison_security,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "ivB" = (
@@ -14426,7 +14426,7 @@
 "iKG" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/prison_security,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "iLy" = (
@@ -19461,7 +19461,7 @@
 /area/fiorina/tumor/servers)
 "lFc" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "lFj" = (
@@ -26330,7 +26330,7 @@
 	},
 /area/fiorina/station/medbay)
 "pSJ" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/wood,
 /area/fiorina/maintenance)
 "pSU" = (
@@ -28246,7 +28246,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown2"

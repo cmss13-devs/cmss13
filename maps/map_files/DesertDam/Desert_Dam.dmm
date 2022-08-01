@@ -65095,6 +65095,12 @@
 	dir = 8
 	},
 /obj/effect/blocker/toxic_water/Group_1,
+<<<<<<< master
+=======
+/obj/effect/landmark/nightmare{
+	insert_tag = "clftrijent"
+	},
+>>>>>>> updated CLF spawner
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
 "jtz" = (
@@ -67549,10 +67555,14 @@
 "szl" = (
 /obj/effect/landmark/nightmare{
 <<<<<<< master
+<<<<<<< master
 	insert_tag = "clftrijent"
 =======
 	insert_tag = clftrijent
 >>>>>>> added nightmare insert tags to main maps
+=======
+	insert_tag = "clftrijent"
+>>>>>>> updated CLF spawner
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"

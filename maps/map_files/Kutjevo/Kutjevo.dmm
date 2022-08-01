@@ -8840,7 +8840,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "mfs" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = kutjevoclf01
+	insert_tag = "kutjevoclf01"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)

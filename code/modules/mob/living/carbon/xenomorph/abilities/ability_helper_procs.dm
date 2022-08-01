@@ -39,7 +39,7 @@
 
 		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
-			to_chat(src, SPAN_WARNING("You cannot dissolve [I]."))
+			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))
 			return
 
 	//TURF CHECK

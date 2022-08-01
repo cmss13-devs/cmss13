@@ -15776,7 +15776,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "gHv" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = clfhydrohold
+	insert_tag = "clfhydrohold"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)

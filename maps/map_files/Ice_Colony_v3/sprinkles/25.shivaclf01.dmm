@@ -170,10 +170,7 @@
 /area/shiva/interior/colony/s_admin)
 "cZ" = (
 /obj/item/device/pinpointer,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -833,7 +830,6 @@
 "sd" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -973,10 +969,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1146,7 +1139,6 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1193,7 +1185,6 @@
 /area/shiva/interior/colony/s_admin)
 "Ap" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -1244,7 +1235,6 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1262,10 +1252,7 @@
 /area/shiva/interior/colony/s_admin)
 "BY" = (
 /obj/structure/bed/chair,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1405,10 +1392,6 @@
 	},
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c500,
-<<<<<<< master
-=======
-/obj/effect/landmark/good_item,
->>>>>>> reimported backup
 /obj/item/storage/pill_bottle/ultrazine/skillless,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -1419,13 +1402,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
-	},
-/area/shiva/interior/colony/s_admin)
-"Gm" = (
-/obj/item/stack/sandbags,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
-/turf/open/floor{
-	icon_state = "platingdmg1"
 	},
 /area/shiva/interior/colony/s_admin)
 "GH" = (
@@ -1616,7 +1592,6 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "Kr" = (
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -1755,10 +1730,7 @@
 "NB" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/bed/chair,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1768,10 +1740,7 @@
 	layer = 3
 	},
 /obj/structure/bed/chair,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1818,7 +1787,6 @@
 	pixel_x = -24
 	},
 /obj/item/device/flashlight/lamp,
-/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -1989,10 +1957,7 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 5
 	},
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "Sg" = (
@@ -2154,10 +2119,7 @@
 "VP" = (
 /obj/effect/landmark/corpsespawner/chef,
 /obj/item/ammo_casing/bullet,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -2431,7 +2393,7 @@ Qk
 FI
 Mo
 Un
-aN
+Un
 yw
 Qk
 DM
@@ -2493,19 +2455,10 @@ DM
 (11,1,1) = {"
 jl
 Hr
-<<<<<<< master
 qW
 JD
 JD
 DZ
-At
-FM
->>>>>>> reimported backup
-=======
-JD
-JD
-JD
-aQ
 At
 FM
 >>>>>>> reimported backup
@@ -2584,7 +2537,7 @@ JD
 il
 bN
 Un
-Gm
+WP
 WP
 hO
 VY
@@ -2601,16 +2554,12 @@ tF
 jl
 Hj
 JD
-Ds
+JD
 JD
 Hr
 Hr
 WP
-<<<<<<< master
 kv
-=======
-FM
->>>>>>> reimported backup
 Un
 Hr
 pL
@@ -2635,9 +2584,6 @@ JD
 pC
 Fq
 JD
-JD
->>>>>>> reimported backup
-JD
 Hr
 iB
 il
@@ -2647,11 +2593,7 @@ Ey
 pL
 zI
 Hr
-<<<<<<< master
 QC
-=======
-fg
->>>>>>> reimported backup
 Hr
 Hr
 Mo
@@ -2674,7 +2616,7 @@ pR
 vm
 aQ
 Hr
-Ds
+JD
 MQ
 ag
 ak
@@ -2695,11 +2637,7 @@ Ey
 Un
 YL
 BG
-<<<<<<< master
 Kr
-=======
-Hr
->>>>>>> reimported backup
 JD
 MQ
 Zz
@@ -2709,7 +2647,7 @@ Nv
 NP
 zf
 sV
-Kr
+Hr
 Qk
 Qk
 Iq
@@ -2851,21 +2789,13 @@ Hr
 kb
 Hr
 fg
-<<<<<<< master
 Kr
-=======
-Hr
->>>>>>> reimported backup
 VY
+Mo
+Hr
+Hr
+Hr
 QC
-Hr
-Hr
-Hr
-<<<<<<< master
-QC
-=======
-fg
->>>>>>> reimported backup
 Hr
 Hz
 Wl
@@ -2904,9 +2834,6 @@ jS
 <<<<<<< master
 <<<<<<< master
 Qz
-=======
-gr
->>>>>>> reimported backup
 gr
 jS
 Qk
@@ -2950,15 +2877,9 @@ OT
 fP
 xt
 qT
-<<<<<<< master
 Xu
 Tf
 hD
-=======
-Tf
-Tf
-JD
->>>>>>> reimported backup
 ex
 rM
 Sc
@@ -2980,7 +2901,6 @@ Qk
 hb
 Tf
 Tf
-<<<<<<< master
 qW
 =======
 JD
@@ -3003,7 +2923,7 @@ Nt
 Rf
 Jn
 GH
-Ds
+JD
 JD
 qO
 Kk
@@ -3076,11 +2996,7 @@ MT
 JD
 dT
 gr
-<<<<<<< master
 aN
-=======
-gr
->>>>>>> reimported backup
 JD
 xt
 iv
@@ -3107,9 +3023,6 @@ JD
 =======
 pC
 Jk
-JD
-JD
->>>>>>> reimported backup
 JD
 CX
 pC

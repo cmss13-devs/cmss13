@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
 /obj/effect/decal/cleanable/blood,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "ad" = (
@@ -23,7 +20,6 @@
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 4
 	},
@@ -32,10 +28,7 @@
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/decal/cleanable/blood,
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -212,8 +205,7 @@
 /obj/item/stool{
 	pixel_y = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "gy" = (
@@ -285,8 +277,6 @@
 <<<<<<< master
 /obj/item/explosive/mine/clf/active,
 /obj/effect/landmark/survivor_spawner/clf/generic,
-=======
->>>>>>> reimported backup
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "iM" = (
@@ -367,7 +357,6 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 4
 	},
@@ -406,6 +395,7 @@
 /area/kutjevo/interior/foremans_office)
 "ns" = (
 /obj/item/explosive/mine/clf/active,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -429,12 +419,10 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/foremans_office)
 "oO" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/complex_border/med_rec)
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction)
 "pe" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_y = 10
@@ -549,7 +537,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "vo" = (
@@ -560,7 +548,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/corpsespawner/chef,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "wv" = (
@@ -675,7 +663,6 @@
 /area/kutjevo/interior/construction)
 "DU" = (
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "DX" = (
@@ -793,9 +780,8 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "FX" = (
-/obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/kutjevo/colors/purple,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "Gt" = (
 /obj/structure/platform/kutjevo{
@@ -817,7 +803,6 @@
 /area/kutjevo/interior/construction)
 "Hd" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 5
 	},
@@ -839,9 +824,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "ID" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/complex_border/med_rec)
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction)
 "IR" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -937,7 +922,7 @@
 	},
 /area/kutjevo/interior/construction)
 "Op" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Oq" = (
@@ -980,7 +965,6 @@
 /area/kutjevo/interior/construction)
 "Rb" = (
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Rc" = (
@@ -1015,7 +999,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Si" = (
@@ -1048,7 +1032,7 @@
 "Tb" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Tv" = (
@@ -1062,16 +1046,6 @@
 	dir = 8
 	},
 /area/kutjevo/interior/construction)
-<<<<<<< master
-=======
-"TK" = (
-/obj/item/stool{
-	pixel_y = 8
-	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/construction)
->>>>>>> reimported backup
 "Ua" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
@@ -1099,8 +1073,10 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/foremans_office)
 "UD" = (
-/obj/structure/machinery/light,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge,
 /area/kutjevo/interior/construction)
 "UP" = (
@@ -1108,11 +1084,9 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "UU" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/kutjevo/colors/purple/edge{
-	dir = 1
-	},
-/area/kutjevo/interior/construction)
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/med_rec)
 "Ve" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -1191,9 +1165,12 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/construction)
 "Yz" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/construction)
+/area/kutjevo/exterior/complex_border/med_rec)
 "YJ" = (
 /obj/effect/landmark/corpsespawner/security/cmb,
 /obj/effect/decal/cleanable/blood,
@@ -1282,7 +1259,7 @@
 QK
 DE
 DE
-Yz
+DE
 Ms
 fi
 hv
@@ -1300,11 +1277,7 @@ Ro
 (2,1,1) = {"
 uv
 rG
-<<<<<<< master
 oO
-=======
-ZT
->>>>>>> reimported backup
 QR
 fi
 Vg
@@ -1327,21 +1300,13 @@ Hu
 ZT
 fi
 QN
-<<<<<<< master
 gw
 gw
 gw
 Cx
 hv
 ns
-=======
-TK
-gw
-TK
-Cx
-hv
-ns
-FX
+hp
 tN
 IB
 Ro
@@ -1382,13 +1347,6 @@ Fv
 sx
 nn
 Yz
-=======
-ln
-Fv
-sx
-nn
-fb
->>>>>>> reimported backup
 Ro
 Ro
 "}
@@ -1396,32 +1354,19 @@ Ro
 fi
 xK
 sx
-<<<<<<< master
 ID
 ck
 uj
 gw
 gw
 gw
-=======
-sx
-ck
-uj
-TK
-TK
-TK
->>>>>>> reimported backup
 Cx
 hv
 aG
 hp
-<<<<<<< master
 UD
-=======
-tN
->>>>>>> reimported backup
 IB
-ID
+Ro
 Ro
 "}
 (7,1,1) = {"
@@ -1466,11 +1411,7 @@ Ft
 fi
 Vu
 xQ
-<<<<<<< master
 FX
-=======
-QK
->>>>>>> reimported backup
 Rb
 xk
 YJ
@@ -1490,27 +1431,19 @@ fi
 ET
 wb
 QK
-<<<<<<< master
 ID
-=======
-sx
->>>>>>> reimported backup
 Fv
-Op
-RP
-Op
-Op
 uc
+RP
+uc
+uc
+Op
 uc
 Cx
 hv
 Qk
 Me
-<<<<<<< master
 UU
-=======
-Ft
->>>>>>> reimported backup
 "}
 (11,1,1) = {"
 fi
@@ -1518,9 +1451,8 @@ ed
 sT
 Vl
 jM
-UU
-uc
->>>>>>> reimported backup
+Fv
+Op
 ji
 dL
 KH
@@ -1529,7 +1461,7 @@ or
 Jj
 Ms
 ZS
-oO
+IB
 Ro
 "}
 (12,1,1) = {"
@@ -1539,15 +1471,11 @@ hv
 hv
 fi
 xY
-Op
+uc
 uc
 uc
 Oq
-<<<<<<< master
 Op
-=======
-uc
->>>>>>> reimported backup
 Jt
 Ed
 it
@@ -1562,11 +1490,7 @@ QK
 DE
 cR
 uj
-<<<<<<< master
 Op
-=======
-uc
->>>>>>> reimported backup
 Jt
 ac
 uc
@@ -1586,16 +1510,12 @@ QK
 fi
 RJ
 Cp
-<<<<<<< master
 Op
-=======
-uc
->>>>>>> reimported backup
 kX
 YX
 Si
 uc
-UD
+Jj
 Ms
 ZS
 ue
@@ -1613,11 +1533,7 @@ Hd
 uc
 uM
 uM
-<<<<<<< master
 Op
-=======
-uc
->>>>>>> reimported backup
 io
 hv
 zt

@@ -65,3 +65,4 @@
       to dropship cockpit doors and escape pod doors
   - bugfix: fixed a few permanently lit areas on shiva's snowball
   - bugfix: fixed basically every shiva's snowball APC starting powered
+  - code_imp: refactored how defib sprites are applied to use overlays

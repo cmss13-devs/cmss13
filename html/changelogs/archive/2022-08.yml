@@ -39,6 +39,8 @@
       hit by any other bullet)
   - soundadd: Added in some new sounds to the GAU to spice things up a bit.
 2022-08-02:
+  Morrow:
+  - bugfix: Orbiters will now follow xenos if they evolve or de-evolve
   Stan_Albatross, Triiodine:
   - rscadd: added random spawners for survivor loot items (guns, sentries, stims,
       thermals, etc). These random spawners come in a few types - stimulants, thermals,

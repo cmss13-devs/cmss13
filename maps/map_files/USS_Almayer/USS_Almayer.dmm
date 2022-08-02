@@ -4567,7 +4567,7 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -19056,6 +19056,7 @@
 	req_access_txt = "22";
 	req_one_access = null
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -19105,6 +19106,7 @@
 	req_access_txt = "22";
 	req_one_access = null
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -34440,7 +34442,7 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -35135,7 +35137,7 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "cyG" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -51703,7 +51705,7 @@
 /area/almayer/hallways/starboard_hallway)
 "jWU" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
@@ -51872,7 +51874,7 @@
 /area/almayer/squads/alpha)
 "kaF" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/sign/safety/stairs{
 	pixel_x = 8;
 	pixel_y = 32
@@ -69631,7 +69633,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/sign/safety/stairs{
 	pixel_x = 8;
 	pixel_y = -32

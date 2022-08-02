@@ -4643,7 +4643,7 @@
 	id = "dam_checkpoint_northeast";
 	name = "\improper Checkpoint Lock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
@@ -6130,7 +6130,7 @@
 	id = "dam_checkpoint_northeast";
 	name = "\improper Checkpoint Lock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "warning"
 	},
@@ -8329,7 +8329,7 @@
 	name = "\improper Lobby"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -8338,7 +8338,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Lobby"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -10597,7 +10597,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "aEp" = (
 /obj/structure/prop/dam/boulder/boulder3,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt{
 	dir = 10;
 	icon_state = "desert_transition_edge1"
@@ -15920,7 +15920,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "aTt" = (
@@ -15967,7 +15967,7 @@
 /area/desert_dam/building/security/staffroom)
 "aTz" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "aTB" = (
@@ -18512,7 +18512,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "bbs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -21214,7 +21214,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "bjQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -26015,7 +26015,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -26592,14 +26592,14 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bAO" = (
 /obj/structure/stairs,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement{
 	icon_state = "cement3"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bAP" = (
 /obj/structure/stairs,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
 	},
@@ -63756,7 +63756,7 @@
 /area/desert_dam/building/security/deathrow)
 "eVJ" = (
 /obj/structure/window/framed/chigusa,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "eVR" = (
@@ -63797,7 +63797,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
 	},
@@ -64037,7 +64037,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
 	},
@@ -64086,7 +64086,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "gab" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "gak" = (
@@ -64170,7 +64170,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "glO" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "gmk" = (
@@ -64221,7 +64221,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "grk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt{
 	dir = 1;
 	icon_state = "desert_transition_edge1"
@@ -64320,7 +64320,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "gKm" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
@@ -64479,7 +64479,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -64688,7 +64688,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "hVs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "hWz" = (
@@ -64800,7 +64800,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "ilq" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -64864,7 +64864,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ivr" = (
@@ -64927,7 +64927,7 @@
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "iCE" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt{
 	dir = 9;
 	icon_state = "desert_transition_edge1"
@@ -64978,7 +64978,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -65148,7 +65148,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "jCJ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall,
 /area/desert_dam/building/dorms/hallway_northwing)
 "jFf" = (
@@ -65350,7 +65350,7 @@
 /area/desert_dam/interior/caves/temple)
 "kAV" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "kEq" = (
@@ -65423,7 +65423,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "kPs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "kRX" = (
@@ -65495,7 +65495,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "lfM" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "lib" = (
@@ -66425,7 +66425,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ouK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -66553,7 +66553,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oUN" = (
 /obj/structure/window/framed/chigusa,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "oVs" = (
@@ -66573,7 +66573,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "oYa" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "pac" = (
@@ -66610,7 +66610,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached4"
 	},
@@ -66715,7 +66715,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "pAE" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -66732,7 +66732,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -66852,7 +66852,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
 	},
@@ -66886,13 +66886,13 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qlx" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "qlG" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "qlU" = (
@@ -67314,7 +67314,7 @@
 	name = "\improper Checkpoint Lock";
 	unacidable = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "warning"
 	},
@@ -67522,7 +67522,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Research Hallway"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -67585,7 +67585,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "sLS" = (
 /obj/structure/window/framed/bunker/reinforced,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "sMi" = (
@@ -67859,14 +67859,14 @@
 	id = "dam_checkpoint_northeast";
 	name = "\improper Checkpoint Lock"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "tFi" = (
 /obj/effect/decal/sand_overlay/sand2,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -67927,13 +67927,13 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "tMy" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/building/mining/workshop)
 "tQR" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "tSK" = (
@@ -68177,7 +68177,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
@@ -68233,7 +68233,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "vfr" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt{
 	dir = 4;
 	icon_state = "desert_transition_corner1"
@@ -68694,7 +68694,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -68879,7 +68879,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "xkh" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall,
 /area/desert_dam/building/dorms/restroom)
 "xkF" = (
@@ -68906,7 +68906,7 @@
 	name = "\improper Checkpoint Lock";
 	unacidable = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
@@ -69015,7 +69015,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "xEP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -69031,7 +69031,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "xHA" = (
@@ -69088,7 +69088,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "xOb" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "xOK" = (
@@ -69164,7 +69164,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "ydw" = (
 /obj/structure/window/framed/hangar/reinforced,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/building/mining/workshop)
 "yfq" = (
@@ -69181,7 +69181,7 @@
 	name = "\improper Checkpoint Lock";
 	unacidable = 0
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},

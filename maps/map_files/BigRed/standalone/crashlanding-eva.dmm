@@ -7,17 +7,17 @@
 /turf/open/mars,
 /area/bigredv2/caves_north)
 "at" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "au" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
 /area/bigredv2/caves_north)
 "av" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
 	tag = "icon-mars_dirt_11"
@@ -107,7 +107,7 @@
 /area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
 /area/bigredv2/caves_north)
 "aR" = (
@@ -343,7 +343,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bz" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -765,7 +765,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cU" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
@@ -1254,7 +1254,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "xT" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"

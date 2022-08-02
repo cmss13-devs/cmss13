@@ -2037,7 +2037,7 @@
 	},
 /area/lv624/ground/jungle/west_jungle)
 "ajc" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
@@ -5927,7 +5927,7 @@
 	pixel_x = 1;
 	pixel_y = -31
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
@@ -6284,7 +6284,7 @@
 	pixel_x = -1;
 	pixel_y = -31
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
@@ -13333,7 +13333,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "bkY" = (
@@ -14035,7 +14035,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "cIU" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -14186,7 +14186,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "daz" = (
 /obj/structure/prop/brazier/torch,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "dbA" = (
@@ -14248,7 +14248,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
 "dkN" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "dkO" = (
@@ -14415,7 +14415,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -14817,7 +14817,7 @@
 /area/lv624/ground/barrens/west_barrens)
 "esp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor{
 	icon_state = "cult"
@@ -16030,7 +16030,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/caves/sand_temple)
 "hrD" = (
@@ -17180,7 +17180,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/east_barrens)
 "kff" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "kft" = (
@@ -19491,7 +19491,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "pat" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "paJ" = (
@@ -20365,7 +20365,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_central_jungle)
 "rac" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rah" = (
@@ -21920,7 +21920,7 @@
 	},
 /area/lv624/ground/jungle/east_central_jungle)
 "uDw" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "uEb" = (
@@ -22003,7 +22003,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -22361,7 +22361,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "vCG" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -22442,7 +22442,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "vMV" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -22478,7 +22478,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "vUx" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_west_caves)
 "vUO" = (
@@ -23401,7 +23401,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "ydz" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "yfH" = (

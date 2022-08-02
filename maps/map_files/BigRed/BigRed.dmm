@@ -1939,7 +1939,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afe" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "eta";
 	name = "Eta Lockdown"
@@ -17516,7 +17516,7 @@
 /area/bigredv2/outside/e)
 "aSj" = (
 /obj/effect/decal/remains/human,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
@@ -18484,7 +18484,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -29681,7 +29681,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "se-checkpoint"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "coT" = (
@@ -29841,7 +29841,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cGQ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
@@ -30037,7 +30037,7 @@
 /area/bigredv2/caves/mining)
 "dij" = (
 /obj/structure/fence,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -30445,7 +30445,7 @@
 /area/bigredv2/caves/mining)
 "dXu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -31458,7 +31458,7 @@
 	},
 /area/bigredv2/caves/mining)
 "glB" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves_sw)
 "gmN" = (
@@ -31632,11 +31632,11 @@
 	},
 /area/bigredv2/caves/mining)
 "gJw" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
 /area/bigredv2/caves_virology)
 "gKk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_4";
 	tag = "icon-mars_cave_4"
@@ -31730,7 +31730,7 @@
 	},
 /area/bigredv2/oob)
 "gYl" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
 	tag = "icon-mars_cave_18"
@@ -31888,7 +31888,7 @@
 	},
 /area/bigredv2/caves_sw)
 "hqO" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
 /area/bigredv2/caves_north)
 "hqS" = (
@@ -32400,7 +32400,7 @@
 /area/bigredv2/caves/mining)
 "ixR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -32876,7 +32876,7 @@
 	},
 /area/bigredv2/caves/mining)
 "jBq" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -33295,7 +33295,7 @@
 	},
 /area/bigredv2/caves/mining)
 "kgw" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
 	tag = "icon-mars_cave_18"
@@ -33874,7 +33874,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "lvX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "eta";
 	name = "Eta Lockdown"
@@ -33922,7 +33922,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "lzI" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "lBe" = (
@@ -34098,7 +34098,7 @@
 /area/bigredv2/outside/space_port)
 "lSS" = (
 /obj/item/tool/warning_cone,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
@@ -34403,7 +34403,7 @@
 	},
 /area/bigredv2/caves/mining)
 "mGq" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
 	tag = "icon-mars_cave_17"
@@ -34470,7 +34470,7 @@
 	},
 /area/bigredv2/caves/mining)
 "mPC" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/fence,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -34889,7 +34889,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "nUV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
@@ -35271,7 +35271,7 @@
 	},
 /area/bigredv2/caves/mining)
 "ozv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/bigredv2/caves_virology)
 "ozQ" = (
@@ -35571,7 +35571,7 @@
 	},
 /area/bigredv2/caves/mining)
 "pbr" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris,
 /area/bigredv2/caves_east)
 "pbs" = (
@@ -35621,7 +35621,7 @@
 	},
 /area/bigredv2/caves/mining)
 "pcF" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "pcI" = (
@@ -36012,7 +36012,7 @@
 	},
 /area/bigred/ground/garage_workshop)
 "qez" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -36235,7 +36235,7 @@
 	},
 /area/bigredv2/caves/mining)
 "qzO" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "eta";
 	name = "Eta Lockdown"
@@ -36644,7 +36644,7 @@
 	},
 /area/bigredv2/caves/mining)
 "rtL" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
@@ -36785,7 +36785,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "rGP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -36943,7 +36943,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/oob)
 "rRO" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
@@ -37174,7 +37174,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "smh" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "smy" = (
@@ -37536,7 +37536,7 @@
 	},
 /area/bigredv2/caves/mining)
 "sOE" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
@@ -37712,7 +37712,7 @@
 	},
 /area/bigredv2/caves/mining)
 "tft" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
 /area/bigredv2/caves_sw)
 "tfz" = (
@@ -37761,7 +37761,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "tlj" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_15";
 	tag = "icon-mars_cave_15"
@@ -37993,7 +37993,7 @@
 	},
 /area/bigredv2/caves_research)
 "tFM" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -38356,7 +38356,7 @@
 	},
 /area/bigredv2/caves_east)
 "uuo" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
 	tag = "icon-mars_cave_18"
@@ -38399,7 +38399,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "uzv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
 	tag = "icon-mars_dirt_7"
@@ -38894,7 +38894,7 @@
 	},
 /area/bigredv2/caves/mining)
 "vwP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -38913,7 +38913,7 @@
 	},
 /area/bigredv2/caves/mining)
 "vAy" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_9";
 	tag = "icon-mars_cave_9"
@@ -38979,14 +38979,14 @@
 	},
 /area/bigredv2/caves/mining)
 "vNh" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_virology)
 "vNm" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
 	tag = "icon-mars_cave_5"
@@ -39117,7 +39117,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "wcs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"
@@ -39585,7 +39585,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "xbV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_14";
 	tag = "icon-mars_cave_14"

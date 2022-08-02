@@ -47,7 +47,7 @@
 /area/bigredv2/caves_east)
 "dz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
@@ -71,13 +71,13 @@
 	name = "\improper Checkpoint Office";
 	req_access = null
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
 "ie" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -299,7 +299,7 @@
 /area/bigredv2/caves_east)
 "GJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
@@ -397,7 +397,7 @@
 	},
 /area/bigredv2/caves_east)
 "Qo" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
 "Sr" = (
@@ -471,7 +471,7 @@
 /area/bigred/ground/security)
 "Zu" = (
 /obj/effect/landmark/hunter_primary,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";

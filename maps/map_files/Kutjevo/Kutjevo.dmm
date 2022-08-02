@@ -294,7 +294,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "ast" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
 "asQ" = (
@@ -2710,7 +2710,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/interior/construction)
 "dCP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/interior/colony_central)
 "dDj" = (
@@ -3513,7 +3513,7 @@
 	},
 /area/kutjevo/exterior/runoff_bridge)
 "exD" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/bed{
 	can_buckle = 0;
 	desc = "A lightweight support lattice.";
@@ -3937,7 +3937,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "eZP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "eZT" = (
@@ -5823,7 +5823,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/exterior/runoff_bridge)
 "hGP" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_central)
 "hHi" = (
@@ -7073,7 +7073,7 @@
 	req_access = null;
 	req_one_access = null
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction)
 "jEh" = (
@@ -7619,7 +7619,7 @@
 	},
 /area/kutjevo/interior/complex/med)
 "kvI" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_central)
 "kvS" = (
@@ -7696,7 +7696,7 @@
 	},
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "kAr" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction)
 "kAW" = (
@@ -9328,7 +9328,7 @@
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/exterior/scrubland)
 "mIq" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/construction)
 "mIr" = (
@@ -9361,7 +9361,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east)
 "mJY" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction)
 "mLe" = (
@@ -9453,7 +9453,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_river)
 "mSm" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "mSq" = (
@@ -10047,7 +10047,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "nJa" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "nJj" = (
@@ -10232,7 +10232,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/oob)
 "nUV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/botany/east_tech)
 "nVF" = (
@@ -12476,7 +12476,7 @@
 	},
 /area/kutjevo/exterior/Northwest_Colony)
 "rfE" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_South/power2)
 "rfH" = (
@@ -13078,7 +13078,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "rUM" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany/east_tech)
@@ -13729,7 +13729,7 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)
 "sMg" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_north)
 "sMM" = (
@@ -13842,7 +13842,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
 "sUs" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/colony_central)
 "sUt" = (
@@ -13904,7 +13904,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
 "sXR" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/construction)
 "sYd" = (
@@ -13949,7 +13949,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med)
 "sZY" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/tan/alt_edge{
 	dir = 1
 	},
@@ -14386,11 +14386,11 @@
 /area/kutjevo/exterior/runoff_river)
 "tFK" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "tFN" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/construction)
 "tGi" = (
@@ -16210,7 +16210,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/botany)
 "wcl" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany/east_tech)
 "wcr" = (
@@ -16765,7 +16765,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "wUa" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "wVt" = (
@@ -17003,7 +17003,7 @@
 /area/kutjevo/interior/complex/med)
 "xoM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "xoV" = (

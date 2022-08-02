@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("M74 AGM-Smoke Airburst Packet (x3 airburst grenades)", 10, /obj/item/storage/box/packet/airburst_smoke, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Airburst Packet (x3 airburst grenades", 20, /obj/item/storage/box/packet/hornet, null, VENDOR_ITEM_REGULAR),
 		list("M20 Mine Box (x4 mines)", 18, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
+		list("M5 Mine Box (x4 mines)", 30, /obj/item/storage/box/explosive_mines/bounding, null, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", 5, /obj/item/explosive/grenade/metal_foam, null, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION", 0, null, null, null),

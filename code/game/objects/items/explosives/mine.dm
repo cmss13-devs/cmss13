@@ -26,6 +26,7 @@
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
+	var/disarm_success_chance = 75
 
 	var/map_deployed = FALSE
 
@@ -103,8 +104,8 @@
 
 
 //Disarming
-/obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+/obj/item/explosive/mine/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return
@@ -119,7 +120,7 @@
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
-				if(prob(75))
+				if(prob(disarm_success_chance))
 					triggered = TRUE
 					if(tripwire)
 						var/direction = reverse_dir[src.dir]
@@ -312,3 +313,113 @@
 	customizable = TRUE
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
+
+/obj/item/explosive/mine/bounding
+	name = "\improper M5 Bounding Mine"
+	desc = "The M5 Bounding Mine is a landmine that propels itself upwards when the tripwire is set off. It explodes mid-air and either maims, kills, or fucks up anything standing in the blast zone. The 'Bouncing Betty' has seen limited use since the year 2150 due to the IFF sensors on the earlier models were prone to failure, resulting in friendly casualties. Be careful to not trip this or you're going to be ending up in a hospital bed full of shrapnel."
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "m5"
+	max_container_volume = 120
+	reaction_limits = list(	"max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
+							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
+							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
+	angle = 360
+	use_dir = FALSE
+	disarm_success_chance = 50
+
+
+//arming
+/obj/item/explosive/mine/bounding/attack_self(mob/living/user)
+	if(!..())
+		return
+
+	if(check_for_obstacles(user))
+		return
+
+	if(active || user.action_busy)
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+		SPAN_NOTICE("You start deploying [src]."))
+	if(!do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
+			SPAN_NOTICE("You stop deploying \the [src]."))
+		return
+
+	if(active)
+		return
+
+	if(check_for_obstacles(user))
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
+		SPAN_NOTICE("You finish deploying [src]."))
+
+	if(!hard_iff_lock)
+		iff_signal = user.faction
+
+	cause_data = create_cause_data(initial(name), user)
+	anchored = TRUE
+	playsound(loc, 'sound/weapons/mine_armed.ogg', vol = 25, vary = TRUE)
+	user.drop_inv_item_on_ground(src)
+	activate_sensors()
+	update_icon()
+
+/obj/item/explosive/mine/bounding/check_for_obstacles(mob/living/user)
+	if(user.loc && (user.loc.density || is_mainship_level(user.z)))
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		return TRUE
+	if(user.z == GLOB.interior_manager.interior_z)
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return TRUE
+	if(locate(/obj/item/explosive/mine) in get_turf(src))
+		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		return TRUE
+
+//disarming, it's a little different than a normal claymore
+/obj/item/explosive/mine/bounding/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+		if(active)
+			if(user.action_busy)
+				return
+			if(user.faction == iff_signal)
+				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+				SPAN_NOTICE("You start disarming [src]."))
+			else
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
+				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+					SPAN_WARNING("You stop disarming \the [src]."))
+				return
+			if(user.faction != iff_signal)
+				if(prob(disarm_success_chance)) // 50/50 chance for it to either blow up in your face or actually disarm, check bouncing betty object code
+					triggered = TRUE
+					if(tripwire)
+						var/direction = reverse_dir[src.dir]
+						var/step_direction = get_step(src, direction)
+						tripwire.forceMove(step_direction)
+					prime()
+			if(!active)
+				return
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			SPAN_NOTICE("You finish disarming [src]."))
+			disarm()
+
+	else
+		return ..()
+
+//the actual explosion values
+/obj/item/explosive/mine/bounding/prime()
+	set waitfor = 0
+
+	if(!customizable)
+		create_shrapnel(loc, 48, dir, angle, , cause_data)
+		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
+		cell_explosion(loc, 30, 60, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		qdel(src)
+	else
+		. = ..()
+		if(!QDELETED(src))
+			disarm()

@@ -30115,6 +30115,9 @@
 /area/fiorina/station/power_ring)
 "sgb" = (
 /obj/item/ammo_box/magazine/misc/flares/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "sciannexclfship"
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";

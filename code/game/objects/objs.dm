@@ -367,13 +367,3 @@
 
 /obj/proc/extinguish()
 	return
-
-//returns time or -1 if unmeltable
-/obj/proc/get_applying_acid_time()
-	if(unacidable)
-		return -1
-
-	if(density)//dense objects are big, so takes longer to melt.
-		return 4 SECONDS
-
-	return 1 SECONDS

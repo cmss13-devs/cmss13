@@ -131,10 +131,12 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
-// /mob/living/carbon/Xenomorph/verb/enter_tree()
-// 	set name = "Enter Techtree"
-// 	set desc = "Enter the Xenomorph techtree"
-// 	set category = "Alien.Techtree"
+/*
+/mob/living/carbon/Xenomorph/verb/enter_tree()
+	set name = "Enter Techtree"
+	set desc = "Enter the Xenomorph techtree"
+	set category = "Alien.Techtree"
 
-// 	var/datum/techtree/T = GET_TREE(TREE_XENO)
-// 	T.enter_mob(src)
+	var/datum/techtree/T = GET_TREE(TREE_XENO)
+	T.enter_mob(src)
+*/

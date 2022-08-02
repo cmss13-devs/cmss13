@@ -11,7 +11,7 @@
 /obj/item/stack/sheet/mineral/platinum{
 	pixel_x = 4
 	},
-/obj/effect/landmark/objective_landmark/close,
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -35,6 +35,11 @@
 	icon_state = "dark"
 	},
 /area/lv624/ground/barrens/north_east_barrens)
+"h" = (
+
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
 "i" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/mp7,
@@ -51,6 +56,7 @@
 /obj/item/ammo_magazine/smg/mp7{
 	pixel_x = 7
 	},
+
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -70,10 +76,10 @@
 /obj/item/stack/sheet/mineral/platinum{
 	pixel_x = 6
 	},
+
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -114,6 +120,7 @@
 "x" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/fp9000,
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -128,6 +135,7 @@
 /obj/item/explosive/grenade/HE/stick{
 	pixel_x = -6
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -141,7 +149,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = -3
 	},
-/obj/effect/landmark/objective_landmark/close,
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -160,12 +168,20 @@
 	icon_state = "dark"
 	},
 /area/lv624/ground/barrens/north_east_barrens)
+"E" = (
+
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/ground/barrens/north_east_barrens)
 "F" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/ammo_box/magazine/smg/nailgun,
 /obj/item/ammo_box/magazine/smg/nailgun,
+
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -178,6 +194,7 @@
 /obj/item/weapon/gun/smg/mp7{
 	pixel_y = 6
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -200,10 +217,15 @@
 /obj/item/ammo_magazine/smg/uzi{
 	pixel_x = 6
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
+/area/lv624/ground/barrens/north_east_barrens)
+"J" = (
+
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "K" = (
 /obj/effect/landmark/crap_item,
@@ -228,6 +250,7 @@
 /obj/item/weapon/gun/smg/uzi{
 	pixel_y = 6
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -238,6 +261,7 @@
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -257,7 +281,7 @@
 "U" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
-/obj/effect/landmark/objective_landmark/close,
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -271,6 +295,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -288,8 +313,8 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
+
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -299,7 +324,7 @@
 (1,1,1) = {"
 X
 p
-K
+h
 K
 p
 p
@@ -307,12 +332,12 @@ X
 p
 "}
 (2,1,1) = {"
-p
+J
 p
 p
 X
 p
-p
+J
 K
 p
 "}
@@ -342,7 +367,7 @@ N
 N
 N
 e
-v
+E
 N
 j
 "}
@@ -393,7 +418,7 @@ y
 V
 j
 X
-K
+h
 p
 "}
 (11,1,1) = {"
@@ -402,7 +427,7 @@ j
 j
 j
 j
-p
+J
 p
 p
 "}

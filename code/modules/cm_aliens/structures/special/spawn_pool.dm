@@ -50,7 +50,6 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-
 		if(H.is_revivable())
 			to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
 			return
@@ -136,13 +135,6 @@
 	iterations -= 1
 	if(!iterations)
 		vis_contents.Cut()
-
-		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-			if(isobj(A))
-				var/obj/O = A
-				if(O.unacidable)
-					O.forceMove(get_turf(loc))
-
 		QDEL_NULL(melting_body)
 	else
 		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)

@@ -77,6 +77,7 @@
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -98,6 +99,7 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -112,6 +114,7 @@
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -129,13 +132,14 @@
 /obj/item/explosive/grenade/flashbang,
 /obj/item/explosive/grenade/flashbang,
 /obj/item/ammo_magazine/shotgun/beanbag,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "p" = (
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -148,6 +152,7 @@
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -163,6 +168,7 @@
 "s" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -180,6 +186,7 @@
 	start_charge = 0
 	},
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -193,6 +200,7 @@
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -216,6 +224,7 @@
 "A" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -225,6 +234,7 @@
 	name = "\improper Nexus Dome Armory"
 	},
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -243,12 +253,7 @@
 	range = 200
 	},
 /turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
-"H" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
@@ -297,7 +302,7 @@ i
 k
 p
 p
-H
+p
 A
 i
 "}

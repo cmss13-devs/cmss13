@@ -1,6 +1,6 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
-var/global/list/deployed_fultons = list() // A list of fultons currently airborne.
+var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
@@ -98,7 +98,8 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 			if(X.stat != DEAD)
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
 				return
-			can_attach = TRUE
+			else
+				can_attach = TRUE
 		else
 			can_attach = TRUE
 
@@ -112,7 +113,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	if(can_attach)
 		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
 				return
 			for(var/obj/item/stack/fulton/F in get_turf(target_atom))
@@ -155,19 +156,13 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
 
 /obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
-
-	// Fulton is not in space, it must have been collected.
 	if(!istype(get_area(attached_atom), /area/space/highalt))
 		return
+	if(return_turf)
+		attached_atom.forceMove(return_turf)
+		attached_atom.anchored = FALSE
+		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
-	attached_atom.forceMove(return_turf)
-	attached_atom.anchored = FALSE
-	playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
-
-	if(intel_system)
-		if (!LAZYISIN(GLOB.failed_fultons, attached_atom))
-			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
-			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
-			intel_system.store_single_objective(objective)
 	qdel(src)
 	return
+

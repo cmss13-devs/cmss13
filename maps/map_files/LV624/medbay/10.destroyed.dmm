@@ -1,6 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "am" = (
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -67,6 +69,7 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
+	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -76,7 +79,8 @@
 /area/lv624/lazarus/medbay)
 "iq" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -113,6 +117,7 @@
 "kh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
+
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
@@ -150,6 +155,7 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
+	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor/plating{
@@ -185,10 +191,10 @@
 /area/lv624/lazarus/medbay)
 "pp" = (
 /obj/structure/closet/wardrobe,
+
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -202,6 +208,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
+
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -282,7 +289,9 @@
 	},
 /area/lv624/lazarus/medbay)
 "zy" = (
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -290,6 +299,7 @@
 /area/lv624/lazarus/medbay)
 "zD" = (
 /obj/structure/surface/table,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -309,13 +319,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
-"AB" = (
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
-	},
-/area/lv624/lazarus/medbay)
 "Be" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -341,7 +344,9 @@
 	},
 /area/lv624/lazarus/medbay)
 "Df" = (
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/plating{
@@ -377,6 +382,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -457,17 +463,12 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/medbay)
-"LX" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/medbay)
 "MT" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
+	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -498,11 +499,11 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
+
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/storage/belt/medical/full,
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -513,6 +514,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -524,7 +526,10 @@
 	},
 /area/lv624/lazarus/medbay)
 "OO" = (
-/obj/item/tool/kitchen/utensil/fork,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -540,14 +545,15 @@
 /area/lv624/lazarus/medbay)
 "Px" = (
 /obj/structure/surface/table,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/medbay)
 "PE" = (
 /obj/structure/filingcabinet,
+
 /obj/structure/machinery/light,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged5"
@@ -579,15 +585,10 @@
 	icon_state = "damaged5"
 	},
 /area/lv624/lazarus/medbay)
-"Sz" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/medbay)
 "TC" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -762,7 +763,7 @@ XA
 XJ
 XJ
 hW
-LX
+YV
 Gh
 UH
 Pk
@@ -824,7 +825,7 @@ Il
 yU
 QR
 QR
-AB
+YJ
 vm
 uV
 fX
@@ -857,7 +858,7 @@ XA
 XJ
 XJ
 ok
-Sz
+YV
 aO
 YV
 JY

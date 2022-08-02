@@ -404,6 +404,7 @@
 "aZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
+	dir = 2;
 	flipped = 1
 	},
 /turf/open/floor,
@@ -430,6 +431,7 @@
 	flipped = 1
 	},
 /obj/structure/surface/table{
+	dir = 2;
 	flipped = 1
 	},
 /turf/open/floor{
@@ -491,6 +493,7 @@
 "bj" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "whitegreencorner"
 	},
 /area/lv624/lazarus/main_hall)
@@ -636,7 +639,6 @@
 /obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "floorscorched1"
 	},
@@ -711,6 +713,7 @@
 "bJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
+	dir = 2;
 	flipped = 1
 	},
 /obj/structure/surface/table{
@@ -733,6 +736,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/surface/table{
+	dir = 2;
 	flipped = 1
 	},
 /obj/item/ammo_casing,
@@ -742,6 +746,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/leg/r_leg,
 /obj/structure/surface/table{
+	dir = 2;
 	flipped = 1
 	},
 /obj/effect/decal/cleanable/blood/splatter,
@@ -822,6 +827,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "whitegreen"
 	},
 /area/lv624/lazarus/main_hall)
@@ -860,6 +866,7 @@
 /area/lv624/lazarus/main_hall)
 "Cw" = (
 /turf/open/floor{
+	dir = 2;
 	icon_state = "whitegreencorner"
 	},
 /area/lv624/lazarus/main_hall)
@@ -1015,6 +1022,7 @@
 "Lq" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/canteen)
@@ -1054,6 +1062,7 @@
 "NU" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
+	dir = 2;
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/kitchen)

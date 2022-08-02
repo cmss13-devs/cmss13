@@ -18,7 +18,6 @@
 #define SKILL_VEHICLE "vehicles"
 #define SKILL_JTAC "jtac"
 #define SKILL_EXECUTION "execution"
-#define SKILL_INTEL "intel"
 #define SKILL_DOMESTIC "domestics"
 
 /*
@@ -182,9 +181,3 @@
 #define SKILL_VEHICLE_CREWMAN 3
 //MAX skill
 #define SKILL_VEHICLE_MAX 3
-
-// Intel skills
-#define SKILL_INTEL_NOVICE 0
-#define SKILL_INTEL_TRAINED 1
-#define SKILL_INTEL_EXPERT 2
-#define SKILL_INTEL_MAX 2

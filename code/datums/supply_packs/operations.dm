@@ -88,6 +88,7 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/incendiary,
+
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
@@ -112,6 +113,7 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/explosive,
+
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
@@ -136,6 +138,7 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/cluster,
+
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,

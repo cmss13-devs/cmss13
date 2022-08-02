@@ -5,6 +5,12 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"b" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 "c" = (
 /turf/open/floor{
 	dir = 8;
@@ -61,10 +67,12 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "o" = (
 /obj/item/device/radio/intercom{
+	anyai = 1;
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = -30
+	pixel_x = -30;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	dir = 10;
@@ -102,6 +110,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "L" = (
+
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -145,7 +154,6 @@
 	health = 1;
 	on = 0
 	},
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -176,9 +184,9 @@ g
 c
 c
 k
-L
+b
 p
-L
+b
 m
 U
 m
@@ -189,7 +197,7 @@ p
 (3,1,1) = {"
 m
 d
-L
+b
 d
 t
 d
@@ -225,9 +233,9 @@ C
 d
 X
 f
-L
+b
 d
-L
+b
 p
 O
 d
@@ -238,19 +246,19 @@ d
 p
 "}
 (6,1,1) = {"
-L
+b
 d
-L
+b
 d
-L
+b
 d
-L
+b
 p
-L
-L
-L
+b
+b
+b
 t
 K
-L
+b
 p
 "}

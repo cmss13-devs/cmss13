@@ -51,6 +51,9 @@
 /obj/structure/machinery/defenses/bell_tower/proc/setup_tripwires()
 	clear_tripwires()
 	for(var/turf/T in orange(BELL_TOWER_RANGE, loc))
+		if(T.density)
+			continue
+
 		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
 		FE.linked_bell = src
 		tripwires_placed += FE
@@ -71,7 +74,7 @@
 
 
 /obj/effect/bell_tripwire
-	name = "bell tripwire"
+	name = "flag effect"
 	anchored = TRUE
 	mouse_opacity = 0
 	invisibility = 101
@@ -101,11 +104,6 @@
 	var/mob/living/carbon/M = A
 	if(M.get_target_lock(faction))
 		return
-
-	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
-	for(var/turf/PT in path)
-		if(PT.density)
-			return
 
 	if(linked_bell.last_mob_activated == M)
 		return

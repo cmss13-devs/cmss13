@@ -452,27 +452,3 @@
   JeserTheFox:
   - bugfix: fixed powerloaders not deleting empty DS ammo when they remove it from
       a weapon
-  Morrow:
-  - bugfix: JAS updated with new Marine Law laws.
-  Shad0vvs:
-  - balance: Smartgun firerate adjusted to ~400 RPM, Full auto scatter peak set to
-      80 shots, Scatter amount set to 8.
-  - bugfix: Fixed WO Terminator's dirty smartgun flags.
-  stanalbatross:
-  - bugfix: the R1NG bell tower can no longer affect enemies through walls
-2022-07-30:
-  Jeser:
-  - rscadd: Minor content tweaks in Dropship Pilot, Dropship Crew Chief, Vehicle Crewman
-      and Squad Specialist vendors.
-  - rscadd: APC Supply and Requisitions Ammunition vendors support restocking with
-      handmade ammo boxes. (The ones made out of cardboard). Same requirements as
-      for regular ammo boxes apply.
-  - rscadd: Requisitions Ammunition vendor supports restocking flamer fueltanks now.
-  - rscadd: Uniform vendors now support restocking armor in them.
-  - bugfix: Fixed not being able to restock shotgun shells boxes in APC Supply and
-      Requisitions Ammunition vendors.
-2022-07-31:
-  Joe lampost:
-  - bugfix: Fixes the pred tracker being unable to track pred bodies.
-  Reisyn, Geeves:
-  - rscadd: Added a Falling Falcons poster.

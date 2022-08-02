@@ -90,8 +90,6 @@
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 
-	var/is_objective = FALSE //lets us know if the item is an objective or not
-
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)

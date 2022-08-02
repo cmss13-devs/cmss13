@@ -805,7 +805,6 @@
 
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
-
 	if(stat & BROKEN)
 		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
 		return XENO_NO_DELAY_ACTION

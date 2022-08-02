@@ -493,12 +493,6 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"ho" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper General Area"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
 "hs" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
@@ -971,9 +965,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "Cargo Airlock"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "nW" = (
@@ -1103,10 +1095,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "pJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "pR" = (
@@ -1978,9 +1968,8 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 "zI" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2305,13 +2294,10 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Df" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Crashed Ship APC";
-	pixel_y = 30;
-	start_charge = 1
-	},
 /obj/structure/machinery/autolathe,
+/obj/structure/machinery/power/apc/high{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
@@ -2609,9 +2595,8 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "HB" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -3237,12 +3222,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"Qx" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Bunk Beds"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
 "QE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical{
@@ -3551,10 +3530,10 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "VD" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
 	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "VH" = (
 /obj/item/stack/tile/plasteel{
@@ -4323,7 +4302,7 @@ zv
 tY
 ko
 Wz
-Wz
+HB
 ko
 Nl
 NV
@@ -4545,7 +4524,7 @@ it
 kz
 Iu
 Iu
-ho
+nU
 Iu
 Wz
 bj
@@ -4825,7 +4804,7 @@ Wz
 xW
 hP
 Wz
-QZ
+VD
 Ez
 Cq
 Jw
@@ -4873,7 +4852,7 @@ qH
 Iu
 Iu
 Iu
-VD
+nU
 Wz
 <<<<<<< master
 <<<<<<< master
@@ -5034,7 +5013,7 @@ Ag
 Dp
 KU
 Sd
-Qx
+nU
 XG
 bj
 af

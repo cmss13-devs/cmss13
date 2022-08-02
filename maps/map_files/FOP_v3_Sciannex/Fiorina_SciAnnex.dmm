@@ -15395,10 +15395,6 @@
 	icon_state = "bluecorner"
 	},
 /area/fiorina/station/power_ring)
-"jpb" = (
-/obj/structure/window/framed/prison,
-/turf/closed/wall/prison,
-/area/fiorina/station/security)
 "jpc" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -67775,7 +67771,7 @@ qms
 fnB
 qms
 cph
-jpb
+gIB
 ndC
 hbq
 ejn

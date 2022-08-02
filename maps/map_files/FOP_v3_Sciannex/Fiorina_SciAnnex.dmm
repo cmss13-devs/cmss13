@@ -1930,6 +1930,7 @@
 /area/fiorina/tumor/aux_engi)
 "aXM" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/cable_coil/orange,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -4954,11 +4955,8 @@
 	},
 /area/fiorina/lz/near_lzI)
 "cWR" = (
-/obj/structure/closet/secure_closet/engineering_personal{
-	density = 0;
-	pixel_y = 16
-	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -15586,10 +15584,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "jtv" = (
-/obj/structure/closet/secure_closet/engineering_personal{
-	density = 0;
-	pixel_y = 16
-	},
+/obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 1;
@@ -17967,6 +17962,10 @@
 "kMq" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/civres_blue)
+"kMU" = (
+/obj/effect/spawner/gibspawner/robot,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/maintenance)
 "kNl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -21032,6 +21031,10 @@
 /obj/item/reagent_container/food/drinks/sillycup,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
+"mHC" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/maintenance)
 "mHN" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/prison{
@@ -33724,11 +33727,8 @@
 	},
 /area/fiorina/station/park)
 "uxO" = (
-/obj/structure/closet/secure_closet/engineering_personal{
-	density = 0;
-	pixel_y = 16
-	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -63140,7 +63140,7 @@ cME
 cME
 ayX
 hxg
-gfo
+mHC
 gfo
 bNz
 twb
@@ -63777,7 +63777,7 @@ fQV
 erT
 twb
 bxr
-gfo
+kMU
 gfo
 bNz
 twb
@@ -67987,7 +67987,7 @@ flC
 qms
 fnB
 nDT
-jpb
+gIB
 aVD
 dzo
 sRV

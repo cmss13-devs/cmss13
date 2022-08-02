@@ -197,6 +197,7 @@
 
 /obj/structure/machinery/power/apc/examine(mob/user)
 	to_chat(user, desc)
+
 	if(stat & BROKEN)
 		to_chat(user, SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it."))
 		return
@@ -1251,7 +1252,6 @@
 	cell_type = /obj/item/cell/apc/full
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
-
 //------Almayer APCs ------//
 
 /obj/structure/machinery/power/apc/almayer
@@ -1261,9 +1261,5 @@
 	name = "hardened area power controller"
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0
-
-
-
-
 
 #undef APC_UPDATE_ICON_COOLDOWN

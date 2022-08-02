@@ -408,7 +408,7 @@
 			continue
 		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
-		if(istype(get_area(src), /area/yautja))
+		if(istype(get_area(I), /area/yautja))
 			continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
@@ -425,7 +425,7 @@
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
 			continue
-		if(istype(get_area(src), /area/yautja))
+		if(istype(get_area(Y), /area/yautja))
 			continue
 		if(is_loworbit_level(Y.z))
 			dead_low_orbit++

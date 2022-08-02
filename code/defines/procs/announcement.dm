@@ -90,17 +90,17 @@
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
 
-/proc/ai_silent_announcement(var/message, var/channel_prefix)
+/proc/ai_silent_announcement(var/message, var/channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
 		return
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		if(AI.silent_announcement_cooldown >= world.time)
+		if(!bypass_cooldown && AI.silent_announcement_cooldown >= world.time)
 			continue
 
 		AI.silent_announcement_cooldown = world.time + 10 SECONDS
 		if(channel_prefix)
-			message = "[channel_prefix] [message]"
+			message = "[channel_prefix][message]"
 		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
 
 /mob/proc/detectable_by_ai()

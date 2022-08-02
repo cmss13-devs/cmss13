@@ -2098,6 +2098,18 @@
 	damage = 25
 	shell_speed = AMMO_SPEED_TIER_2
 
+/datum/ammo/energy/laz_uzi
+	name = "laser bolt"
+	icon_state = "laser_new"
+	flags_ammo_behavior = AMMO_ENERGY
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	max_range = 10
+	shell_speed = AMMO_SPEED_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM

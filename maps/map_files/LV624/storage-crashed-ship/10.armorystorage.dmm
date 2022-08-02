@@ -37,18 +37,18 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "i" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7{
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27{
 	pixel_x = -8
 	},
-/obj/item/ammo_magazine/smg/mp7{
+/obj/item/ammo_magazine/smg/mp27{
 	pixel_x = -4
 	},
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7{
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27{
 	pixel_x = 4
 	},
-/obj/item/ammo_magazine/smg/mp7{
+/obj/item/ammo_magazine/smg/mp27{
 	pixel_x = 7
 	},
 /obj/structure/machinery/light{
@@ -172,10 +172,10 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "G" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp7{
+/obj/item/weapon/gun/smg/mp27{
 	pixel_y = -4
 	},
-/obj/item/weapon/gun/smg/mp7{
+/obj/item/weapon/gun/smg/mp27{
 	pixel_y = 6
 	},
 /turf/open/floor{
@@ -188,16 +188,16 @@
 	dir = 4
 	},
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/uzi{
+/obj/item/ammo_magazine/smg/mac15{
 	pixel_x = 1
 	},
-/obj/item/ammo_magazine/smg/uzi{
+/obj/item/ammo_magazine/smg/mac15{
 	pixel_x = -3
 	},
-/obj/item/ammo_magazine/smg/uzi{
+/obj/item/ammo_magazine/smg/mac15{
 	pixel_x = -7
 	},
-/obj/item/ammo_magazine/smg/uzi{
+/obj/item/ammo_magazine/smg/mac15{
 	pixel_x = 6
 	},
 /turf/open/floor{
@@ -224,8 +224,8 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "P" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/uzi,
-/obj/item/weapon/gun/smg/uzi{
+/obj/item/weapon/gun/smg/mac15,
+/obj/item/weapon/gun/smg/mac15{
 	pixel_y = 6
 	},
 /turf/open/floor{

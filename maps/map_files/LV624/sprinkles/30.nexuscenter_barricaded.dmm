@@ -75,7 +75,7 @@
 /area/lv624/lazarus/main_hall)
 "ak" = (
 /obj/item/frame/table,
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -329,7 +329,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aQ" = (
-/obj/item/weapon/gun/smg/mp7,
+/obj/item/weapon/gun/smg/mp27,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -354,9 +354,9 @@
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aT" = (
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor{
 	icon_state = "wall_thermite"
 	},
@@ -565,7 +565,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bt" = (
-/obj/item/weapon/gun/smg/mp7,
+/obj/item/weapon/gun/smg/mp27,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -700,7 +700,7 @@
 /area/lv624/lazarus/main_hall)
 "bI" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp27,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -786,7 +786,7 @@
 "bR" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp27,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -801,7 +801,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bT" = (
-/obj/item/weapon/gun/smg/mp7,
+/obj/item/weapon/gun/smg/mp27,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched1"

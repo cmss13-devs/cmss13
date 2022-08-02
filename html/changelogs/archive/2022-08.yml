@@ -57,3 +57,9 @@
   - rscadd: made the claymore spawners on the lv destroyed hydro nightmare insert
       random
   - balance: the m79 can now fit on your back
+  stanalbatross:
+  - rscadd: powerloaders and cargo tugs are no longer blocked by vehicle blockers
+  - rscadd: added vehicle blockers that block all vehicles including powerloaders
+      to dropship cockpit doors and escape pod doors
+  - bugfix: fixed a few permanently lit areas on shiva's snowball
+  - bugfix: fixed basically every shiva's snowball APC starting powered

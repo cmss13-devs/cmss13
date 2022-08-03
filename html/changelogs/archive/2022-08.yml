@@ -66,3 +66,9 @@
   - bugfix: fixed a few permanently lit areas on shiva's snowball
   - bugfix: fixed basically every shiva's snowball APC starting powered
   - code_imp: refactored how defib sprites are applied to use overlays
+2022-08-03:
+  Segrain:
+  - bugfix: Professor Dummy being unhugable now properly means that it cannot be infected
+      by other methods too.
+  - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
+      of severed limb items.

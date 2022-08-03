@@ -961,7 +961,7 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC))
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable)
 			volume = 0
 			return
 		if(volume < overdose_critical)

@@ -53,6 +53,7 @@ type OrbitData = {
   ghosts: OrbitList[],
   misc: OrbitList[],
   npcs: OrbitList[],
+  vehicles: OrbitList[],
 }
 
 type BasicSectionProps = {
@@ -128,6 +129,7 @@ export const Orbit = (props: any, context: any) => {
     ghosts,
     misc,
     npcs,
+    vehicles,
   } = data;
 
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
@@ -287,6 +289,13 @@ export const Orbit = (props: any, context: any) => {
           source={misc}
           searchText={searchText}
         />
+
+        <BasicSection
+          title="Vehicles"
+          source={vehicles}
+          searchText={searchText}
+        />
+
       </Window.Content>
     </Window>
   );

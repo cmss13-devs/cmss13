@@ -5,8 +5,6 @@
 	This applies to for example interior entrances and hardpoint origins
 */
 
-GLOBAL_LIST_EMPTY(all_multi_vehicles)
-
 /obj/vehicle/multitile
 	name = "multitile vehicle"
 	desc = "Get inside to operate the vehicle."

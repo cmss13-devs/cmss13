@@ -1077,6 +1077,25 @@
 
     mind.view_objective_memories(src)
 
+/mob/living/carbon/human/verb/purge_objective_memory()
+	set name = "Reset view objectives"
+	set category = "IC"
+
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
+
+	if(tgui_alert(src, "Remove the faulty entry?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+		for(var/datum/cm_objective/retrieve_data/disk/O in src.mind.objective_memory.disks)
+			if(O.disk.disk_color == null || O.disk.display_color == null)
+				src.mind.objective_memory.disks -= O
+	else
+		return
+
+	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
+		for(var/datum/cm_objective/O in src.mind.objective_memory.disks)
+			src.mind.objective_memory.disks -= O
+
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)
 		new_species = "Human"

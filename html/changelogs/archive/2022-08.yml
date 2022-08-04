@@ -83,6 +83,9 @@
   - rscadd: Added OB ammo crate capable of storing OB warheads and fuel only. New
       OBs come in this crate now.
   - imageadd: Added sprites for OB ammo crate.
+  Morrow:
+  - bugfix: Charlie cafeteria chairs should face the correct way now. Also removes
+      folding chairs missed in previous removal PR.
   stanalbatross:
   - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
       turned off automatically

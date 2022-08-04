@@ -31,6 +31,11 @@
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
 		return
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in T
+	if(resin_trap)
+		to_chat(X, SPAN_WARNING("You can't weed on top of a trap!"))
+		return
+
 	var/list/to_convert
 	if(N)
 		to_convert = N.children.Copy()

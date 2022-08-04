@@ -72,3 +72,7 @@
       by other methods too.
   - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
       of severed limb items.
+2022-08-04:
+  Jeser:
+  - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
+      Air Support, mortar) not showing direction if mob was on target tile.

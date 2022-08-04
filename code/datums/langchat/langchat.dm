@@ -16,9 +16,24 @@
 #define LANGCHAT_X_OFFSET -32
 #define LANGCHAT_MAX_ALPHA 196
 
+//pop defines
+#define LANGCHAT_DEFAULT_POP 0 	//normal message
+#define LANGCHAT_PANIC_POP 1 	//this causes shaking
+#define LANGCHAT_FAST_POP 2 	//this just makes it go away faster
+
 // params for default pop
 #define LANGCHAT_MESSAGE_POP_TIME 3
 #define LANGCHAT_MESSAGE_POP_Y_SINK 8
+
+// params for panic pop
+#define LANGCHAT_MESSAGE_PANIC_POP_TIME 1
+#define LANGCHAT_MESSAGE_PANIC_POP_Y_SINK 8
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE 6
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_TIMES 6
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN 1
+// params for fast pop
+#define LANGCHAT_MESSAGE_FAST_POP_TIME 1
+#define LANGCHAT_MESSAGE_FAST_POP_Y_SINK 8
 
 #define langchat_client_enabled(M) (M && M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled)
 
@@ -51,7 +66,7 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE)
+/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles)
 	langchat_drop_image()
 	langchat_make_image(override_color)
 
@@ -59,7 +74,7 @@
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
 	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS + 2 SECONDS
-	text_to_display = "<span class='center [langchat_styles] langchat'>[text_to_display]</span>"
+	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [langchat_styles] langchat'>[text_to_display]</span>"
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH
@@ -74,7 +89,22 @@
 	else
 		langchat_image.loc = recursive_holder_check(src)
 
-	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
+	switch(animation_style)
+		if(LANGCHAT_DEFAULT_POP)
+			langchat_image.alpha = 0
+			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
+		if(LANGCHAT_PANIC_POP)
+			langchat_image.alpha = LANGCHAT_MAX_ALPHA
+			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_PANIC_POP_Y_SINK, time = LANGCHAT_MESSAGE_PANIC_POP_TIME)
+			animate(pixel_x = langchat_image.pixel_x - LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+			for(var/i = 1 to LANGCHAT_MESSAGE_PANIC_SHAKE_TIMES)
+				animate(pixel_x = langchat_image.pixel_x + 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = 2*LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+				animate(pixel_x = langchat_image.pixel_x - 2*LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+			animate(pixel_x = langchat_image.pixel_x + LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE, time = LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN, easing = CUBIC_EASING)
+		if(LANGCHAT_FAST_POP)
+			langchat_image.alpha = 0
+			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_FAST_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_FAST_POP_TIME)
+
 	addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /mob/proc/langchat_long_speech(message, var/list/listeners, language)

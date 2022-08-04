@@ -21,6 +21,20 @@
 	for(var/i in 1 to storage_slots)
 		new content_type(src)
 
+var/list/grenade_packets = list(
+	/obj/item/storage/box/packet/high_explosive,
+	/obj/item/storage/box/packet/baton_slug,
+	/obj/item/storage/box/packet/flare,
+	/obj/item/storage/box/packet/hornet,
+	/obj/item/storage/box/packet/incendiary,
+	/obj/item/storage/box/packet/smoke,
+	/obj/item/storage/box/packet/phosphorus,
+	/obj/item/storage/box/packet/phosphorus/upp,
+	/obj/item/storage/box/packet/m15,
+	/obj/item/storage/box/packet/airburst_he,
+	/obj/item/storage/box/packet/airburst_incen
+	)
+
 /obj/item/storage/box/packet/high_explosive
 	name = "HEDP grenade packet"
 	desc = "It contains three HEDP high explosive grenades."

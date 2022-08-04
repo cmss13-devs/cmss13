@@ -121,6 +121,9 @@
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+	
+	T.transfer_observers_to(new_xeno)
+	
 	qdel(T)
 	..()
 	return

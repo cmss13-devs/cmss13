@@ -209,7 +209,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aQ" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aR" = (
@@ -854,7 +854,7 @@
 	},
 /area/bigredv2/caves_sw)
 "de" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_19";
 	tag = "icon-mars_cave_19"
@@ -1026,7 +1026,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "dU" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_10";
 	tag = "icon-mars_cave_10"
@@ -1158,7 +1158,7 @@
 	luminosity = 1;
 	name = "glowing goo"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -1238,7 +1238,7 @@
 	luminosity = 1;
 	name = "glowing goo"
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
 /area/bigredv2/caves_sw)
 "eC" = (
@@ -1338,14 +1338,14 @@
 /turf/closed/wall/mineral/uranium/leaking,
 /area/bigredv2/outside/engineering)
 "jr" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_5";
 	tag = "icon-mars_dirt_5"
 	},
 /area/bigredv2/caves_sw)
 "kN" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
 /area/bigredv2/caves_sw)
 "pi" = (
@@ -1355,21 +1355,21 @@
 	},
 /area/bigredv2/outside/eta)
 "sU" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves_sw)
 "Ah" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
 /area/bigredv2/caves_sw)
 "Ha" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves)
 "IE" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -1382,14 +1382,14 @@
 	},
 /area/bigredv2/outside/eta)
 "NX" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
 	tag = "icon-mars_dirt_11"
 	},
 /area/bigredv2/caves_sw)
 "Ph" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"

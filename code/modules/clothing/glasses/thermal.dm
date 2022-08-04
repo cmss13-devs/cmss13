@@ -38,6 +38,12 @@
 	deactive_state = "degoggles"
 	actions_types = list(/datum/action/item_action/toggle)
 
+/obj/item/clothing/glasses/thermal/syndi/bug_b_gone
+	name = "Bug-B Gone Thermal Goggles"
+	desc = "For all your bug hunting needs!"
+	icon_state = "rwelding-g"
+	deactive_state = "rwelding-gup"
+
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"
 	desc = "A monocle thermal."

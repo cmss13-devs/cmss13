@@ -1235,11 +1235,11 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
-/obj/item/storage/pouch/machete/fill_preset_inventory()
-	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
-
 /obj/item/storage/pouch/machete/update_icon()
 	if(length(contents))
 		icon_state = "[initial(icon_state)]_full"
 	else
 		icon_state = initial(icon_state)
+
+/obj/item/storage/pouch/machete/full/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/machete(src)

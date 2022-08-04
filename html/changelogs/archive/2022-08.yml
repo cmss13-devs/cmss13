@@ -86,6 +86,8 @@
   Morrow:
   - bugfix: Charlie cafeteria chairs should face the correct way now. Also removes
       folding chairs missed in previous removal PR.
+  Shad0vvs:
+  - bugfix: Fixed new radiator sprites defaulting to parent.
   stanalbatross:
   - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
       turned off automatically

@@ -98,7 +98,7 @@
 
 	name = "OB Incendiary Crate"
 	cost = 0
-	containertype = /obj/structure/closet/crate/secure/ammo
+	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (Incendiary x2)"
 	buyable = 0
 	group = "Operations"
@@ -122,7 +122,7 @@
 
 	name = "OB HE Crate"
 	cost = 0
-	containertype = /obj/structure/closet/crate/secure/ammo
+	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (HE x2)"
 	buyable = 0
 	group = "Operations"
@@ -146,7 +146,7 @@
 
 	name = "OB Cluster Crate"
 	cost = 0
-	containertype = /obj/structure/closet/crate/secure/ammo
+	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (Cluster x2)"
 	buyable = 0
 	group = "Operations"

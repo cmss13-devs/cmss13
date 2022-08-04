@@ -187,9 +187,9 @@
 
 /obj/structure/closet/crate/secure/ob/close()
 	if(!opened)
-		return 0
+		return FALSE
 	if(!can_close())
-		return 0
+		return FALSE
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	var/itemcount = 0
@@ -202,7 +202,7 @@
 		O.forceMove(src)
 		itemcount++
 
-	opened = 0
-	climbable = 1
+	opened = FALSE
+	climbable = TRUE
 	update_icon()
-	return 1
+	return TRUE

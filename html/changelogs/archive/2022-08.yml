@@ -80,6 +80,9 @@
   Jeser:
   - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
       Air Support, mortar) not showing direction if mob was on target tile.
+  - rscadd: Added OB ammo crate capable of storing OB warheads and fuel only. New
+      OBs come in this crate now.
+  - imageadd: Added sprites for OB ammo crate.
   stanalbatross:
   - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
       turned off automatically

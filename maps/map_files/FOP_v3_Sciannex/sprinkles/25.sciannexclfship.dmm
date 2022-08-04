@@ -190,7 +190,6 @@
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/effect/landmark/corpsespawner/clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -273,7 +272,6 @@
 "di" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "dw" = (
@@ -296,14 +294,12 @@
 /area/lv624/lazarus/crashed_ship)
 "dC" = (
 /obj/item/stack/rods,
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
 "dM" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -465,15 +461,12 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< HEAD
-=======
 "ho" = (
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	name = "\improper General Area"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
->>>>>>> clf_inserts
 "hs" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
@@ -491,16 +484,6 @@
 "hD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/prison,
-/area/fiorina/tumor/ice_lab)
-"hF" = (
-/obj/item/stack/tile/plasteel{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
 /area/fiorina/tumor/ice_lab)
 "hI" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -691,7 +674,6 @@
 /area/lv624/lazarus/crashed_ship)
 "kz" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
@@ -753,12 +735,6 @@
 "ly" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv624/lazarus/crashed_ship)
-"lI" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
 "lN" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -787,7 +763,6 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -903,17 +878,12 @@
 "nP" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
-<<<<<<< HEAD
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-=======
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	name = "Cargo Airlock"
 	},
->>>>>>> clf_inserts
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "nW" = (
@@ -931,7 +901,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ob" = (
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -1004,12 +973,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/fiorina/tumor/ice_lab)
-"pn" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
 "pr" = (
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -1027,15 +990,10 @@
 /turf/open/space,
 /area/fiorina/oob)
 "pJ" = (
-<<<<<<< HEAD
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
-=======
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	name = "\improper Dining Room"
 	},
 /obj/structure/blocker/invisible_wall,
->>>>>>> clf_inserts
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "pR" = (
@@ -1124,11 +1082,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"rl" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating/plating_catwalk,
-/area/lv624/lazarus/crashed_ship)
 "rm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -1382,7 +1335,6 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1477,7 +1429,6 @@
 "uZ" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
@@ -1570,13 +1521,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"vy" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
-/area/fiorina/tumor/ice_lab)
 "vD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/weldpack,
@@ -1618,15 +1562,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"vV" = (
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
 "vX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -1861,14 +1796,9 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 "zI" = (
-<<<<<<< HEAD
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
-=======
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 1;
 	name = "\improper Medical Bay"
->>>>>>> clf_inserts
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1889,10 +1819,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"zU" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating/prison,
-/area/lv624/lazarus/crashed_ship)
 "Ab" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
@@ -2184,12 +2110,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Df" = (
-<<<<<<< HEAD
-/obj/structure/machinery/autolathe,
-/obj/structure/machinery/power/apc/high{
-	pixel_y = 24
-	},
-=======
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
@@ -2197,7 +2117,6 @@
 	start_charge = 1
 	},
 /obj/structure/machinery/autolathe,
->>>>>>> clf_inserts
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
@@ -2235,14 +2154,6 @@
 	dir = 8
 	},
 /obj/item/tool/warning_cone,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/tumor/ice_lab)
-"Ee" = (
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -2310,7 +2221,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "Fa" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	icon_state = "green";
@@ -2479,14 +2389,9 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "HB" = (
-<<<<<<< HEAD
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
-=======
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 1;
 	name = "\improper Medical Bay"
->>>>>>> clf_inserts
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -2666,11 +2571,6 @@
 	},
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
-"JA" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
 "JD" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor{
@@ -3103,15 +3003,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< HEAD
-=======
 "Qx" = (
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	name = "\improper Bunk Beds"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
->>>>>>> clf_inserts
 "QE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical{
@@ -3268,12 +3165,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/fiorina/oob)
-"SA" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/tumor/ice_lab)
 "SC" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -3311,10 +3202,6 @@
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/lv624/lazarus/crashed_ship)
-"Tt" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "TB" = (
 /obj/structure/stairs/perspective{
@@ -3402,17 +3289,10 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "VD" = (
-<<<<<<< HEAD
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-/turf/closed/shuttle/ert{
-	icon_state = "stan_inner_w_1"
-	},
-=======
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	name = "\improper Dining Room"
 	},
 /turf/open/floor/plating,
->>>>>>> clf_inserts
 /area/lv624/lazarus/crashed_ship)
 "VH" = (
 /obj/item/stack/tile/plasteel{
@@ -3517,10 +3397,6 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
-/area/lv624/lazarus/crashed_ship)
-"WK" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "Xn" = (
 /obj/item/ammo_casing/shell{
@@ -3839,7 +3715,7 @@ pi
 pi
 Mo
 aB
-SA
+Fm
 Fm
 YB
 Nk
@@ -3979,7 +3855,7 @@ aB
 aB
 aB
 lR
-Ee
+aB
 nW
 Cu
 uI
@@ -3997,7 +3873,7 @@ Bs
 cS
 Df
 xl
-rl
+FB
 Iu
 QZ
 QH
@@ -4041,7 +3917,7 @@ io
 Rp
 QZ
 Mr
-FB
+Iu
 Gv
 Ne
 QZ
@@ -4107,7 +3983,7 @@ yF
 In
 tT
 Fm
-hF
+WE
 np
 WE
 UX
@@ -4132,22 +4008,18 @@ zv
 tY
 ko
 Wz
-<<<<<<< HEAD
-HB
-=======
 Wz
->>>>>>> clf_inserts
 ko
 Nl
 NV
 Oi
-rl
+FB
 xA
 QZ
 vs
 tE
 Zz
-lI
+nC
 OS
 uZ
 mK
@@ -4231,7 +4103,7 @@ MT
 QZ
 gW
 kM
-FB
+Iu
 Iu
 Wz
 qW
@@ -4271,7 +4143,7 @@ VN
 QZ
 bX
 XG
-FB
+Iu
 Jd
 tY
 ko
@@ -4288,7 +4160,7 @@ Ti
 WI
 nC
 rU
-pn
+nC
 tq
 vo
 ow
@@ -4318,22 +4190,18 @@ it
 kz
 Iu
 Iu
-<<<<<<< HEAD
-nU
-=======
 ho
->>>>>>> clf_inserts
 Iu
 Wz
 bj
 Wz
 QZ
 Dw
-lI
+nC
 CZ
 nC
 gK
-Tt
+Wz
 tq
 Pe
 tq
@@ -4369,8 +4237,8 @@ wv
 eo
 Wz
 Gj
-Gf
-lI
+Wz
+nC
 Wz
 wS
 Bc
@@ -4427,7 +4295,7 @@ WI
 WI
 tq
 WI
-zU
+Ws
 tE
 RV
 Fk
@@ -4476,7 +4344,7 @@ Ws
 tE
 iL
 av
-SA
+Fm
 VH
 Jt
 gt
@@ -4513,7 +4381,7 @@ Wz
 Wz
 tq
 Ac
-pn
+nC
 Ws
 Ws
 tq
@@ -4552,11 +4420,7 @@ Wz
 xW
 hP
 Wz
-<<<<<<< HEAD
-VD
-=======
 QZ
->>>>>>> clf_inserts
 Ez
 Cq
 Jw
@@ -4566,7 +4430,7 @@ hi
 Wz
 tq
 nC
-pn
+nC
 tq
 vo
 VH
@@ -4596,20 +4460,12 @@ qH
 Iu
 Iu
 Iu
-<<<<<<< HEAD
-nU
-=======
 VD
->>>>>>> clf_inserts
 Wz
-lI
-JA
+nC
+Gf
 Nq
-<<<<<<< HEAD
-Wz
-=======
 nU
->>>>>>> clf_inserts
 nC
 ji
 Bw
@@ -4647,20 +4503,16 @@ Sn
 kd
 Ow
 pr
-WK
+pr
 pr
 Wz
 Wz
 Wz
 nC
 vh
-<<<<<<< HEAD
-QZ
-=======
 Wz
->>>>>>> clf_inserts
 Wz
-JA
+Gf
 yL
 eO
 us
@@ -4743,18 +4595,14 @@ Ag
 Dp
 KU
 Sd
-<<<<<<< HEAD
-nU
-=======
 Qx
->>>>>>> clf_inserts
 XG
 bj
 af
 Jf
 QZ
 Uy
-vV
+Wz
 ZM
 nC
 dx
@@ -4905,7 +4753,7 @@ cz
 Ra
 NS
 OQ
-vy
+OQ
 OQ
 OQ
 LD
@@ -5041,7 +4889,7 @@ uI
 sS
 Fm
 VH
-SA
+Fm
 aP
 sS
 uI

@@ -10,7 +10,6 @@
 /obj/item/stack/sheet/wood/small_stack{
 	pixel_y = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -102,28 +101,12 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"gp" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/north_nexus_road)
 "hj" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
-"iM" = (
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
-"jn" = (
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/colony/south_medbay_road)
 "jA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/wo_supplies/storage/webbing,
@@ -156,9 +139,6 @@
 "kV" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -171,14 +151,6 @@
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/hydroponics)
-"lU" = (
-/obj/structure/surface/table,
-/obj/item/stack/sheet/wood/large_stack,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "me" = (
@@ -250,17 +222,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"pv" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/cleanable/ash,
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "pw" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -275,7 +236,6 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "pK" = (
-/obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -294,14 +254,6 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"rr" = (
-/obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -336,13 +288,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"sn" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "sY" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -353,12 +298,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"tj" = (
-/obj/item/explosive/mine/clf/active{
-	dir = 1
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
 "vh" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -413,7 +352,6 @@
 /area/lv624/lazarus/hydroponics)
 "wj" = (
 /obj/structure/surface/table,
-/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -425,18 +363,6 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"xs" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_medbay_road)
-"xH" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -458,7 +384,6 @@
 	pixel_x = 3;
 	pixel_y = 11
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -497,7 +422,6 @@
 	icon_state = "metal_1";
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -532,7 +456,6 @@
 "EG" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -552,7 +475,6 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -589,24 +511,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"Gy" = (
-/obj/structure/surface/table,
-/obj/item/clothing/glasses/welding{
-	pixel_y = 9;
-	pixel_x = -12
-	},
-/obj/item/tool/weldingtool{
-	pixel_y = -9;
-	pixel_x = 11
-	},
-/obj/item/tool/weldpack{
-	pixel_y = 8
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "GS" = (
 /turf/open/floor{
 	dir = 8;
@@ -619,18 +523,6 @@
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
-	},
-/area/lv624/lazarus/hydroponics)
-"Ht" = (
-/obj/structure/surface/table,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "HU" = (
@@ -702,12 +594,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/north_nexus_road)
-"Ks" = (
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
 "Kt" = (
 /obj/structure/surface/table,
 /obj/item/ammo_box/magazine/M16,
@@ -720,15 +606,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"LN" = (
-/obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -768,17 +645,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
-"NX" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/cleanable/ash,
-/obj/item/explosive/mine/clf/active{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "OJ" = (
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/attachment,
@@ -816,8 +682,6 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -885,23 +749,12 @@
 /area/lv624/lazarus/hydroponics)
 "Rw" = (
 /obj/structure/barricade/wooden,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"Rx" = (
-/obj/effect/spawner/random/attachment,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "RZ" = (
-/obj/item/explosive/mine/clf/active,
-/obj/item/explosive/mine/clf/active,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -932,7 +785,6 @@
 	pixel_y = -15;
 	pixel_x = 11
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -993,21 +845,6 @@
 	icon_state = "metal_1";
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"WZ" = (
-/obj/structure/flora/bush/ausbushes/genericbush,
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
-"Xh" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -1077,16 +914,16 @@ Tx
 DE
 DE
 DE
-iM
-WZ
+DE
+HU
 Ec
 Ec
-pv
-pv
+kV
+kV
 Ec
 Ec
-jn
-jn
+Cb
+Cb
 Cb
 rK
 Tx
@@ -1111,12 +948,12 @@ Tx
 "}
 (4,1,1) = {"
 DE
-tj
+DE
 XF
 nw
 Fn
 Jp
-xH
+yr
 QK
 Xk
 jL
@@ -1129,20 +966,20 @@ Tx
 "}
 (5,1,1) = {"
 DE
-tj
+DE
 Ew
 WY
 Tu
-rr
+Cj
 Xk
-sn
 Xk
-sn
+Xk
+Xk
 yr
 HW
 cF
 SQ
-xs
+Tx
 Tx
 "}
 (6,1,1) = {"
@@ -1150,40 +987,40 @@ DE
 Ec
 Ec
 Gw
-Xh
+Xk
 as
 jA
 vK
 kN
 wj
 Xk
-sn
+Xk
 OJ
 Ec
 Ec
 Tx
 "}
 (7,1,1) = {"
-tj
+DE
 Jj
 WY
 Xk
 Xk
-Ht
+wj
 LS
 ne
 Rw
-Gy
-lU
-sn
+wj
+wj
+Xk
 Jp
 Ql
 Gs
-gp
+vN
 "}
 (8,1,1) = {"
 DE
-NX
+kV
 Ph
 Xk
 Xk
@@ -1201,9 +1038,9 @@ vN
 "}
 (9,1,1) = {"
 DE
-NX
+kV
 Ph
-LN
+Cj
 Xk
 sY
 qN
@@ -1212,17 +1049,17 @@ Md
 ay
 cj
 Xk
-Xh
+Xk
 Yz
 EG
 vN
 "}
 (10,1,1) = {"
-tj
+DE
 wa
 WY
 Xk
-Xh
+Xk
 me
 bJ
 kY
@@ -1233,7 +1070,7 @@ Md
 XR
 Ql
 bR
-gp
+vN
 "}
 (11,1,1) = {"
 DE
@@ -1255,7 +1092,7 @@ vN
 "}
 (12,1,1) = {"
 DE
-tj
+DE
 qC
 bY
 Xk
@@ -1264,25 +1101,25 @@ Xk
 Xk
 Xk
 Md
-sn
+Xk
 Cj
 Ql
 cs
-gp
+vN
 vN
 "}
 (13,1,1) = {"
 DE
-tj
+DE
 SQ
 Pe
 wx
 mn
 Cj
 Xk
-Xh
 Xk
-Rx
+Xk
+Jp
 Pm
 pw
 Ew
@@ -1311,16 +1148,16 @@ vN
 DE
 DE
 DE
-Ks
-Ks
+DE
+DE
 Ec
 Ew
 kV
 kV
 Bj
 Ec
-Ks
-Ks
+DE
+DE
 DE
 Km
 vN

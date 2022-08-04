@@ -3,7 +3,6 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -64,6 +63,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "cQ" = (
@@ -74,6 +75,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -98,6 +100,7 @@
 /area/strata/ag/interior/outpost/engi)
 "dx" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -129,14 +132,9 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
-	},
-/area/strata/ag/interior/outpost/security)
-"dZ" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
 "ek" = (
@@ -178,6 +176,7 @@
 /area/strata/ag/interior/outpost/engi)
 "eH" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -188,15 +187,6 @@
 "eN" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
-"fa" = (
-/obj/item/stack/rods,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/item/stack/cable_coil/cut,
-/obj/item/explosive/mine/clf/active{
-	dir = 1
-	},
-/turf/open/floor/strata,
-/area/strata/ag/interior/outpost/security)
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -217,6 +207,12 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+"fT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
 "gb" = (
 /obj/structure/machinery/light/small,
 /turf/open/auto_turf/snow/brown_base/layer0,
@@ -226,6 +222,7 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -235,6 +232,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "gz" = (
@@ -292,7 +290,6 @@
 "hX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -314,12 +311,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-"im" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/strata/ag/interior/outpost/security)
 "ix" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
@@ -329,6 +320,7 @@
 /area/strata/ag/interior/outpost/security)
 "iM" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -378,10 +370,8 @@
 /area/strata/ag/interior/outpost/security)
 "jQ" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -396,8 +386,9 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-"ko" = (
-/obj/item/explosive/mine/clf/active,
+"km" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -410,6 +401,7 @@
 /obj/item/storage/box/ids,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -453,6 +445,7 @@
 "lO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -474,7 +467,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -489,9 +482,14 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
+"mB" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
 "mP" = (
@@ -503,20 +501,13 @@
 /obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/rifle/type71,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
-"ne" = (
-/obj/structure/barricade/handrail/strata,
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
-/turf/open/floor/strata{
-	icon_state = "floor3"
-	},
-/area/strata/ag/interior/outpost/security)
 "nH" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -526,9 +517,6 @@
 /obj/structure/barricade/handrail/strata,
 /obj/item/shard{
 	icon_state = "large"
-	},
-/obj/item/explosive/mine/clf/active{
-	dir = 4
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -545,6 +533,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "nX" = (
@@ -552,7 +541,6 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -578,6 +566,7 @@
 /area/strata/ag/interior/outpost/security)
 "po" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -626,7 +615,6 @@
 /area/strata/ag/interior/outpost/security)
 "qb" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -639,6 +627,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "qj" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -693,6 +682,7 @@
 /area/strata/ag/interior/outpost/security)
 "rC" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -719,16 +709,8 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -773,13 +755,13 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/engi)
 "tv" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -792,6 +774,7 @@
 /area/strata/ag/interior/outpost/security)
 "tB" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -817,6 +800,7 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "ux" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -831,20 +815,21 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
-"uR" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ag/interior/outpost/security)
 "vi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
 /turf/open/floor/strata{
 	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"vF" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
 "vJ" = (
@@ -861,6 +846,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -906,7 +892,6 @@
 	dir = 9
 	},
 /obj/item/ammo_magazine/rifle/type71,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -933,6 +918,10 @@
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
+/area/strata/ag/interior/outpost/security)
+"xq" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "xu" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -966,6 +955,7 @@
 "yu" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -977,9 +967,16 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/engi)
+"yJ" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
 "yM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
+/obj/item/stack/rods,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "yQ" = (
@@ -992,16 +989,16 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-"yR" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged3"
-	},
-/area/strata/ag/interior/outpost/security)
 "yT" = (
 /turf/open/floor/strata{
 	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"yX" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
 	},
 /area/strata/ag/interior/outpost/security)
 "zt" = (
@@ -1021,6 +1018,7 @@
 /area/strata/ag/interior/outpost/security)
 "zG" = (
 /obj/item/ammo_magazine/rifle/type71,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1032,6 +1030,7 @@
 "zQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1094,10 +1093,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-"BG" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/strata,
-/area/strata/ag/interior/outpost/security)
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1132,6 +1127,12 @@
 	},
 /turf/open/floor/strata{
 	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
+"CJ" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/security)
 "Dg" = (
@@ -1179,6 +1180,15 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+"Ex" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
 "EV" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/phone{
@@ -1188,16 +1198,6 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
 	icon_state = "red1"
-	},
-/area/strata/ag/interior/outpost/security)
-"Fl" = (
-/obj/structure/window_frame/strata,
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
 "FK" = (
@@ -1240,6 +1240,7 @@
 /area/strata/ag/interior/outpost/security)
 "Gb" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1285,8 +1286,8 @@
 /area/strata/ag/interior/outpost/security)
 "Gr" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
-/obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1307,6 +1308,7 @@
 /area/strata/ag/interior/outpost/security)
 "Gt" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1330,6 +1332,7 @@
 /area/strata/ag/interior/outpost/security)
 "Hh" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1341,7 +1344,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1392,7 +1394,6 @@
 "IZ" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1470,6 +1471,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1509,12 +1511,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-"NU" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ag/interior/outpost/security)
 "OJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/rods,
@@ -1535,13 +1531,8 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "Pq" = (
 /obj/structure/window_frame/strata,
+/obj/item/stack/rods,
 /turf/open/floor/strata,
-/area/strata/ag/interior/outpost/security)
-"Pv" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata{
-	icon_state = "fake_wood"
-	},
 /area/strata/ag/interior/outpost/security)
 "PJ" = (
 /turf/open/floor/plating{
@@ -1644,6 +1635,7 @@
 /area/strata/ag/interior/outpost/security)
 "Rt" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/strata{
 	dir = 10;
@@ -1720,9 +1712,6 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -1732,7 +1721,6 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1765,21 +1753,16 @@
 	icon_state = "metal_1";
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
-	},
-/area/strata/ag/interior/outpost/security)
-"Ub" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata{
-	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
 "Uh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "Ut" = (
@@ -1799,10 +1782,6 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
-/area/strata/ag/interior/outpost/security)
-"Wv" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "WE" = (
 /obj/structure/bed/chair{
@@ -1862,16 +1841,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-"YG" = (
-/obj/structure/window_frame/strata,
-/obj/item/shard{
-	icon_state = "large"
-	},
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/outpost/security)
 "YN" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/barricade/metal/wired{
@@ -1919,6 +1888,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "ZU" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -2005,7 +1975,7 @@ Pn
 Pn
 Pn
 OW
-Ik
+mB
 AY
 Lx
 SO
@@ -2025,7 +1995,7 @@ Pn
 OW
 jl
 LF
-uh
+fT
 cg
 ZW
 ym
@@ -2044,7 +2014,7 @@ Gb
 qa
 rK
 fC
-NU
+yT
 Nr
 ym
 db
@@ -2062,7 +2032,7 @@ Gb
 FX
 yQ
 yT
-yT
+yJ
 SJ
 ym
 qj
@@ -2115,22 +2085,22 @@ Gk
 qn
 xu
 mk
-Pv
+uh
 Ch
 OW
 vP
 PJ
 ix
-DI
+CJ
 eA
 OJ
 "}
 (9,1,1) = {"
 Gt
-Sd
+vF
 Sf
 Gk
-Pv
+fT
 uh
 fr
 uh
@@ -2154,7 +2124,7 @@ lz
 iM
 tX
 OW
-uR
+LS
 hN
 gv
 SF
@@ -2163,7 +2133,7 @@ XY
 "}
 (11,1,1) = {"
 OW
-hN
+Ex
 IZ
 My
 cQ
@@ -2194,7 +2164,7 @@ wY
 cp
 nW
 RT
-BG
+hV
 NE
 "}
 (13,1,1) = {"
@@ -2205,7 +2175,7 @@ zV
 DI
 ID
 DI
-dZ
+PJ
 yT
 Zz
 CC
@@ -2216,29 +2186,29 @@ zQ
 ui
 "}
 (14,1,1) = {"
-fa
+WP
 Sd
-yT
-dZ
-dZ
-im
+yJ
+PJ
+PJ
+DI
 pq
-ui
+km
 LZ
 wx
 iT
 yM
-ko
 yT
+yJ
 yT
 oc
 "}
 (15,1,1) = {"
 cp
-hV
+xq
 MC
 Re
-hV
+xq
 sL
 ek
 MC
@@ -2246,14 +2216,14 @@ Yf
 hV
 Uh
 cp
-YG
-Fl
-YG
+Qs
+Gh
+Qs
 cp
 "}
 (16,1,1) = {"
 qR
-Pv
+fT
 zz
 OW
 OW
@@ -2293,9 +2263,9 @@ dL
 sk
 OW
 qS
-Ub
+mB
 Ik
-Ub
+mB
 OW
 FO
 Hj
@@ -2337,7 +2307,7 @@ od
 yT
 QA
 PJ
-yR
+yX
 FT
 rC
 "}
@@ -2351,8 +2321,8 @@ nH
 Ut
 hV
 Gd
-Ub
-hN
+Ik
+Ex
 Sp
 mP
 Gf
@@ -2367,7 +2337,7 @@ qR
 IR
 IB
 Ro
-Wv
+xq
 Jl
 Ik
 cp
@@ -2392,7 +2362,7 @@ lo
 Ik
 nN
 lx
-ne
+nP
 Ik
 "}
 (24,1,1) = {"

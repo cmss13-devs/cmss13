@@ -200,6 +200,7 @@
 /obj/item/bedsheet/rd,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
@@ -271,7 +272,6 @@
 /area/fiorina/oob)
 "di" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "dw" = (
@@ -462,9 +462,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "ho" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper General Area"
-	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "hs" = (
@@ -512,6 +510,7 @@
 	pixel_y = 4
 	},
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
@@ -673,8 +672,10 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "kz" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
@@ -877,13 +878,11 @@
 /area/lv624/lazarus/crashed_ship)
 "nP" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "Cargo Airlock"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "nW" = (
@@ -990,10 +989,10 @@
 /turf/open/space,
 /area/fiorina/oob)
 "pJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	indestructible = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "pR" = (
@@ -1193,6 +1192,7 @@
 /area/fiorina/tumor/ice_lab)
 "th" = (
 /obj/structure/machinery/body_scanconsole,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
@@ -1255,6 +1255,15 @@
 	icon_state = "platingdmg1"
 	},
 /area/fiorina/oob)
+"tz" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
 "tC" = (
 /turf/open/floor/plating{
 	dir = 10;
@@ -1695,6 +1704,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "yk" = (
@@ -1754,6 +1764,7 @@
 /area/fiorina/tumor/ice_lab)
 "yL" = (
 /obj/effect/landmark/corpsespawner/clf,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1796,9 +1807,8 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 "zI" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1852,6 +1862,7 @@
 	pixel_y = 20
 	},
 /obj/item/toy/farwadoll,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green";
@@ -2098,8 +2109,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "CY" = (
-/obj/structure/bed/chair,
-/turf/open/floor/wood,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "CZ" = (
 /obj/item/stack/rods,
@@ -2134,6 +2145,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
 /obj/item/toy/katana,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
@@ -2147,6 +2159,7 @@
 	pixel_y = 28;
 	range = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "DU" = (
@@ -2221,7 +2234,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "Fa" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2260,8 +2272,12 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "FB" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
 /area/lv624/lazarus/crashed_ship)
 "FE" = (
 /obj/structure/barricade/plasteel/wired{
@@ -2389,9 +2405,8 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "HB" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -2516,6 +2531,7 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
@@ -3001,13 +3017,14 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_4_1"
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Qx" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Bunk Beds"
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "QE" = (
 /obj/structure/surface/table/almayer,
@@ -3289,10 +3306,12 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "VD" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
+/obj/structure/bed/chair{
+	dir = 1
 	},
-/turf/open/floor/plating,
+/obj/effect/landmark/survivor_spawner/clf,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "VH" = (
 /obj/item/stack/tile/plasteel{
@@ -3505,6 +3524,7 @@
 /area/lv624/lazarus/crashed_ship)
 "YM" = (
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -3832,7 +3852,7 @@ Oy
 vf
 QZ
 BM
-xA
+tz
 sp
 NJ
 xf
@@ -3873,7 +3893,7 @@ Bs
 cS
 Df
 xl
-FB
+Iu
 Iu
 QZ
 QH
@@ -3917,7 +3937,7 @@ io
 Rp
 QZ
 Mr
-Iu
+CY
 Gv
 Ne
 QZ
@@ -3967,7 +3987,7 @@ ZE
 So
 QZ
 wc
-CF
+FB
 Iu
 Xo
 QZ
@@ -4008,12 +4028,12 @@ zv
 tY
 ko
 Wz
-Wz
+HB
 ko
 Nl
 NV
 Oi
-FB
+Iu
 xA
 QZ
 vs
@@ -4097,7 +4117,7 @@ Fj
 io
 QZ
 CO
-Iu
+CY
 Iu
 MT
 QZ
@@ -4107,7 +4127,7 @@ Iu
 Iu
 Wz
 qW
-nC
+Qx
 di
 Hb
 im
@@ -4160,7 +4180,7 @@ Ti
 WI
 nC
 rU
-nC
+Qx
 tq
 vo
 ow
@@ -4187,10 +4207,10 @@ JD
 Ky
 wk
 it
-kz
+XG
 Iu
 Iu
-ho
+nU
 Iu
 Wz
 bj
@@ -4239,12 +4259,12 @@ Wz
 Gj
 Wz
 nC
-Wz
+ho
 wS
 Bc
 Wi
 mK
-WI
+kz
 Xn
 Wz
 rU
@@ -4321,7 +4341,7 @@ Ky
 Ky
 Sn
 QZ
-CY
+nP
 yz
 rm
 yh
@@ -4369,7 +4389,7 @@ wk
 nP
 Qb
 WH
-yh
+VD
 QZ
 CH
 IA
@@ -4377,7 +4397,7 @@ Kf
 Nq
 QZ
 tq
-Wz
+ho
 Wz
 tq
 Ac
@@ -4429,7 +4449,7 @@ XE
 hi
 Wz
 tq
-nC
+Qx
 nC
 tq
 vo
@@ -4460,10 +4480,10 @@ qH
 Iu
 Iu
 Iu
-VD
+nU
 Wz
 nC
-Gf
+Wz
 Nq
 nU
 nC
@@ -4508,7 +4528,7 @@ pr
 Wz
 Wz
 Wz
-nC
+Qx
 vh
 Wz
 Wz
@@ -4595,7 +4615,7 @@ Ag
 Dp
 KU
 Sd
-Qx
+nU
 XG
 bj
 af
@@ -4637,13 +4657,13 @@ io
 eu
 Nl
 nu
-kz
+XG
 BY
 Iu
 Wz
 PV
 Iu
-Iu
+CY
 vD
 QZ
 kl

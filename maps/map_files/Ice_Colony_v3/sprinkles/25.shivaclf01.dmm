@@ -156,6 +156,13 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/s_admin)
+"cT" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
 "cZ" = (
 /obj/item/device/pinpointer,
 /turf/open/floor/shiva{
@@ -306,6 +313,7 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/vomit,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "hv" = (
@@ -326,6 +334,7 @@
 /area/shiva/exterior/cp_s_research)
 "hO" = (
 /obj/structure/machinery/light/double,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -365,6 +374,12 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
+"iM" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
 "je" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Colony Security Checkpoint";
@@ -392,6 +407,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -437,6 +453,12 @@
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/shiva{
 	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
+"kW" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
 "kY" = (
@@ -496,6 +518,7 @@
 /obj/structure/barricade/sandbags{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -536,6 +559,12 @@
 "nX" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
+"oJ" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/shiva/interior/colony/s_admin)
 "oZ" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1";
@@ -544,6 +573,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -753,6 +783,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -826,6 +857,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -844,6 +876,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -853,6 +886,7 @@
 /area/shiva/interior/colony/s_admin)
 "yo" = (
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -976,6 +1010,7 @@
 "At" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1035,12 +1070,21 @@
 /area/shiva/interior/colony/s_admin)
 "BY" = (
 /obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
+"CB" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/shiva/interior/colony/s_admin)
 "CN" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1347,6 +1391,10 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
+"KU" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
 "Lr" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_s_research)
@@ -1426,6 +1474,7 @@
 "NB" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1435,6 +1484,7 @@
 	layer = 3
 	},
 /obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1628,10 +1678,12 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 5
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "Sg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1713,6 +1765,13 @@
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
+	},
+/area/shiva/interior/colony/s_admin)
+"TL" = (
+/obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
 "Ue" = (
@@ -1817,6 +1876,15 @@
 	icon_state = "platingdmg1"
 	},
 /area/shiva/interior/colony/s_admin)
+"Xt" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
 "XJ" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/shiva{
@@ -1826,6 +1894,13 @@
 /area/shiva/interior/colony/s_admin)
 "XL" = (
 /obj/structure/closet/secure_closet/personal,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/colony/s_admin)
+"XT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -2093,7 +2168,7 @@ DM
 (11,1,1) = {"
 jl
 Hr
-JD
+iM
 JD
 JD
 aQ
@@ -2159,9 +2234,9 @@ tF
 (14,1,1) = {"
 jl
 Hj
+iM
 JD
-JD
-JD
+iM
 Hr
 Hr
 WP
@@ -2206,7 +2281,7 @@ xh
 Su
 pR
 vm
-aQ
+Xt
 Hr
 JD
 MQ
@@ -2231,7 +2306,7 @@ YL
 BG
 Hr
 JD
-MQ
+cT
 Zz
 OH
 pL
@@ -2239,7 +2314,7 @@ Nv
 NP
 zf
 sV
-Hr
+kW
 Qk
 Qk
 Iq
@@ -2251,7 +2326,7 @@ FM
 Un
 Ey
 Hr
-Hr
+kW
 JD
 Nd
 ny
@@ -2270,7 +2345,7 @@ cL
 pC
 nT
 uq
-il
+oJ
 JD
 Hr
 Hr
@@ -2323,11 +2398,11 @@ Hr
 fg
 Hr
 VY
-Mo
-Hr
-Hr
-Hr
-fg
+XT
+kW
+kW
+kW
+TL
 Hr
 Hz
 Wl
@@ -2342,8 +2417,8 @@ xt
 Qk
 ff
 Tf
-Tf
-JD
+CB
+iM
 Qk
 nk
 hi
@@ -2430,7 +2505,7 @@ RV
 Qk
 hb
 Tf
-Tf
+CB
 JD
 xt
 Fh
@@ -2448,7 +2523,7 @@ Rf
 Jn
 GH
 JD
-JD
+iM
 qO
 Kk
 DI
@@ -2497,7 +2572,7 @@ JD
 dT
 gr
 gr
-JD
+iM
 xt
 iv
 rM
@@ -2511,7 +2586,7 @@ uK
 (30,1,1) = {"
 pC
 Jk
-JD
+iM
 JD
 JD
 CX
@@ -2522,7 +2597,7 @@ wa
 Su
 ex
 rM
-rM
+KU
 rM
 Fw
 xt

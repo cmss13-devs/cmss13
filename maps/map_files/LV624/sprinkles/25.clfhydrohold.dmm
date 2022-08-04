@@ -14,6 +14,13 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/hydroponics)
+"bw" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "bJ" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/rifle/m16{
@@ -49,6 +56,7 @@
 	pixel_x = -11
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -80,12 +88,14 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
 "eE" = (
 /obj/structure/machinery/light,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -118,6 +128,7 @@
 "jL" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -176,11 +187,22 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"mi" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "mn" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -217,6 +239,7 @@
 	icon_state = "metal_1";
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -230,6 +253,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -298,6 +322,23 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"tZ" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"uT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/hydroponics)
 "vh" = (
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -363,6 +404,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -391,6 +433,7 @@
 /area/lv624/lazarus/hydroponics)
 "yr" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -400,6 +443,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -422,6 +466,7 @@
 	icon_state = "metal_1";
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -431,6 +476,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "Cj" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -466,6 +512,7 @@
 	icon_state = "metal_1";
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -506,12 +553,14 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "GS" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -536,6 +585,7 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -585,6 +635,7 @@
 /area/lv624/lazarus/hydroponics)
 "Jp" = (
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -606,6 +657,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -648,6 +700,7 @@
 "OJ" = (
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -662,6 +715,7 @@
 	icon_state = "metal_1";
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -682,6 +736,7 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -699,6 +754,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -729,6 +785,7 @@
 	pixel_x = 13
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -796,6 +853,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -877,6 +935,7 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -955,7 +1014,7 @@ Fn
 Jp
 yr
 QK
-Xk
+bw
 jL
 Ku
 BL
@@ -968,13 +1027,13 @@ Tx
 DE
 DE
 Ew
-WY
+tZ
 Tu
 Cj
-Xk
-Xk
-Xk
-Xk
+bw
+bw
+bw
+bw
 yr
 HW
 cF
@@ -987,14 +1046,14 @@ DE
 Ec
 Ec
 Gw
-Xk
+bw
 as
 jA
 vK
 kN
 wj
 Xk
-Xk
+bw
 OJ
 Ec
 Ec
@@ -1004,15 +1063,15 @@ Tx
 DE
 Jj
 WY
-Xk
-Xk
+bw
+bw
 wj
 LS
 ne
 Rw
 wj
 wj
-Xk
+bw
 Jp
 Ql
 Gs
@@ -1022,16 +1081,16 @@ vN
 DE
 kV
 Ph
-Xk
-Xk
+bw
+bw
 WM
 Gj
 yk
 Md
 Hr
 rG
-Xk
-Xk
+bw
+bw
 Yz
 EG
 vN
@@ -1041,15 +1100,15 @@ DE
 kV
 Ph
 Cj
-Xk
+bw
 sY
 qN
 TY
 Md
 ay
 cj
-Xk
-Xk
+bw
+bw
 Yz
 EG
 vN
@@ -1058,15 +1117,15 @@ vN
 DE
 wa
 WY
-Xk
-Xk
+bw
+bw
 me
 bJ
 kY
 SZ
 mH
 LZ
-Md
+uT
 XR
 Ql
 bR
@@ -1084,7 +1143,7 @@ Ra
 MV
 PB
 Md
-Xk
+bw
 eE
 Ec
 Ec
@@ -1095,15 +1154,15 @@ DE
 DE
 qC
 bY
-Xk
+bw
 Pj
-Xk
-Xk
-Xk
-Md
-Xk
+bw
+bw
+bw
+uT
+bw
 Cj
-Ql
+mi
 cs
 vN
 vN
@@ -1116,9 +1175,9 @@ Pe
 wx
 mn
 Cj
-Xk
-Xk
-Xk
+bw
+bw
+bw
 Jp
 Pm
 pw

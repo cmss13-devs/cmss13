@@ -106,6 +106,16 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction)
+"cS" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 8
+	},
+/area/kutjevo/interior/construction)
 "dg" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/communications{
@@ -244,11 +254,13 @@
 	icon_state = "metal_1"
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge,
 /area/kutjevo/interior/construction)
 "it" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "iM" = (
@@ -294,6 +306,7 @@
 "kX" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "ln" = (
@@ -479,12 +492,17 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "vo" = (
 /obj/structure/platform/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
+"vI" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction)
 "wb" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/holdout,
@@ -555,6 +573,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -572,6 +591,13 @@
 	},
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
+"Ae" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple/edge,
+/area/kutjevo/interior/construction)
 "Cm" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	name = "\improper Null Hatch REPLACE ME";
@@ -581,6 +607,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction)
 "Cp" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 5
 	},
@@ -590,6 +617,12 @@
 	icon_state = "metal_1"
 	},
 /turf/open/floor/kutjevo/colors/purple/edge,
+/area/kutjevo/interior/construction)
+"CC" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple/edge{
+	dir = 1
+	},
 /area/kutjevo/interior/construction)
 "Dj" = (
 /obj/structure/platform/kutjevo{
@@ -603,6 +636,7 @@
 /area/kutjevo/interior/construction)
 "DU" = (
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "DX" = (
@@ -692,6 +726,7 @@
 /obj/item/stool{
 	pixel_y = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "Ft" = (
@@ -701,6 +736,10 @@
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
+/area/kutjevo/interior/construction)
+"FA" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "FP" = (
 /obj/effect/landmark/corpsespawner/colonist,
@@ -740,6 +779,10 @@
 	dir = 4
 	},
 /area/kutjevo/interior/construction)
+"HL" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction)
 "IB" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -750,6 +793,7 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/colors/purple/inner_corner{
 	dir = 8
 	},
@@ -865,6 +909,15 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+"Qt" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction)
+"QF" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction)
 "QK" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
@@ -914,6 +967,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Si" = (
@@ -956,6 +1010,7 @@
 /obj/item/stool{
 	pixel_y = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Ua" = (
@@ -1169,7 +1224,7 @@ Ro
 Ro
 "}
 (2,1,1) = {"
-uv
+HL
 rG
 ZT
 QR
@@ -1199,9 +1254,9 @@ TK
 TK
 Cx
 hv
-Fv
+CC
 hp
-tN
+Ae
 IB
 Ro
 Ro
@@ -1257,7 +1312,7 @@ TK
 Cx
 hv
 aG
-hp
+Qt
 tN
 IB
 Ro
@@ -1266,7 +1321,7 @@ Ro
 (7,1,1) = {"
 fi
 PP
-sx
+vI
 fa
 fi
 Ol
@@ -1305,7 +1360,7 @@ Ft
 fi
 Vu
 xQ
-QK
+QF
 Rb
 xk
 YJ
@@ -1313,7 +1368,7 @@ ih
 Ua
 Nl
 jr
-ih
+cS
 ad
 hv
 IB
@@ -1326,11 +1381,11 @@ ET
 wb
 QK
 sx
-Fv
+CC
 uc
 RP
 uc
-uc
+FA
 uc
 uc
 Cx

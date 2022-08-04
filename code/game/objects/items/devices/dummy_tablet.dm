@@ -191,7 +191,7 @@
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
-            limb.droplimb(1, 0, "tablet")
+            limb.droplimb(TRUE, TRUE, "tablet")
             playsound(loc, 'sound/weapons/slice.ogg', 25)
         if("reset")
             linked_dummy.revive()

@@ -86,7 +86,7 @@ Template
 /datum/poster/poster_16
 	icon_state="poster16"
 	name = "'Miss July' pinup"
-	desc = "This poster features Audrey Rainwater standing in a jaccuzi. She was the July 2180 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that."
+	desc = "This poster features Audrey Rainwater standing in a jacuzzi. She was the July 2180 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that."
 
 /datum/poster/poster_17
 	icon_state="poster17"

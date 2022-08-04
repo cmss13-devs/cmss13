@@ -1,0 +1,96 @@
+2022-08-01:
+  50RemAndCounting:
+  - imageadd: added several new hazard vest colour variants.
+  CasperEvans, CometBlaze:
+  - rscadd: IOs are back! You need 5 hours in squad roles to be able to select them
+  - rscadd: Gathering intel, setting communications, enabling colony power and collecting
+      corpses (human or xeno) will now award you tech points, these points can be
+      cashed in for extra points for Req or CAS or for more OBs at any tech console.
+  - rscadd: All maps now have documents and other relevant items scattered about them
+  - rscadd: 'The old IO office has been refurbished to serve a new purpose: being
+      an office for IOs'
+  - rscadd: Data Detectors have been made available to marine vendors
+  - rscadd: ARES now yells at command when comms are estabilished
+  - rscadd: Marines can now get small document pouches from their vendor
+  - balance: Requisitions no longer receives points every 30 minutes
+  - balance: Reduced number of roundstart OBs from 4 to 2
+  - bugfix: Colonists and colonist corpses no longer show up on the marines' crew
+      monitor
+  - tweak: Filing cabinets now dump their contents when destroyed
+  JeserTheFox:
+  - balance: Hardpoints require 10 seconds to apply acid to them to prevent easy combat
+      melting.
+  - balance: Vehicles require 3 seconds to apply acid instead of 4 and receive twice
+      more damage for it.
+  Kaga:
+  - bugfix: Fixed an unintended oversight where mobs were taking damage calculated
+      for runners from the Aimed Shot ability when used by an XMB or M42C sniper rifle.
+      Normal-size Xenos now have their own tier for damage calculation.
+  Tisx:
+  - balance: Changed GAU impacts from a purely explosive damage model to a more ballistic
+      one for greater fine tuning.
+  - spellcheck: Renamed GAU ammo types; standard is now PGU-100 Multi-purpose. HV
+      is now PGU-105 Anti-Tank
+  - balance: Current damage numbers for GAU are; 150 damage 10 AP for multi-purpose.
+      95 damage and 40 AP (2x the bullets however) for Anti-tank
+  - balance: Point cost for both ammo types have been changed to be more equivalent
+      with each other.
+  - qol: Getting directly hit by a GAU shell will now display a message (same as getting
+      hit by any other bullet)
+  - soundadd: Added in some new sounds to the GAU to spice things up a bit.
+2022-08-02:
+  Morrow:
+  - bugfix: Orbiters will now follow xenos if they evolve or de-evolve
+  Stan_Albatross, Triiodine:
+  - rscadd: added random spawners for survivor loot items (guns, sentries, stims,
+      thermals, etc). These random spawners come in a few types - stimulants, thermals,
+      shotguns, rifles, smgs, special weapons, and pistols. They also come in four
+      rarities - 100%, 80%, 50%, and 20%. These all have unique icons and can be further
+      configured with how many additional mags they spawn for gun spawners, if they
+      move around, etc.
+  - rscadd: added more double doors to sci annex
+  - rscadd: coded in and added inhands for the ar10, sprites by Triiodine
+  - rscadd: coded in and added inhands for the laser UZI, sprites by Triiodine
+  - soundadd: added sounds for the ar10 firing and cocking, by Triiodine
+  - soundadd: added a new sound for laser firing, from tg
+  - imageadd: added some new laser sprites from tg
+  - imageadd: added back sprites for the m16 and ar10, by Triiodine
+  - balance: changed most of the survivor loot on science annex to random spawners
+  - rscadd: made the claymore spawners on the lv destroyed hydro nightmare insert
+      random
+  - balance: the m79 can now fit on your back
+  stanalbatross:
+  - rscadd: powerloaders and cargo tugs are no longer blocked by vehicle blockers
+  - rscadd: added vehicle blockers that block all vehicles including powerloaders
+      to dropship cockpit doors and escape pod doors
+  - bugfix: fixed a few permanently lit areas on shiva's snowball
+  - bugfix: fixed basically every shiva's snowball APC starting powered
+  - code_imp: refactored how defib sprites are applied to use overlays
+2022-08-03:
+  Segrain:
+  - bugfix: Professor Dummy being unhugable now properly means that it cannot be infected
+      by other methods too.
+  - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
+      of severed limb items.
+2022-08-04:
+  CometBlaze:
+  - qol: Using the radiopack's phone is now done via a button similarly to turning
+      on the armour light. Hanging up is still done by clicking the radiopack
+  - bugfix: Grabbing items from the radiopack no longer requires pixel hunting
+  Jeser:
+  - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
+      Air Support, mortar) not showing direction if mob was on target tile.
+  - rscadd: Added OB ammo crate capable of storing OB warheads and fuel only. New
+      OBs come in this crate now.
+  - imageadd: Added sprites for OB ammo crate.
+  Morrow:
+  - bugfix: Charlie cafeteria chairs should face the correct way now. Also removes
+      folding chairs missed in previous removal PR.
+  Shad0vvs:
+  - bugfix: Fixed new radiator sprites defaulting to parent.
+  stanalbatross:
+  - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
+      turned off automatically
+  - bugfix: fixed the motion detector claiming that YOU turned it off when you died.
+      It will now "short out"
+  - bugfix: fixed issuing an order breaking all the sg buttons

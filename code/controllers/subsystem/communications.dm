@@ -80,7 +80,6 @@ var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
 var/const/HC_FREQ		= 1240
 var/const/CCT_FREQ		= 1350
-var/const/VAI_FREQ		= 1226
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -89,7 +88,7 @@ var/const/ENG_FREQ 		= 1357
 var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
 var/const/JTAC_FREQ 	= 1358
-var/const/TACTICS_FREQ	= 1356
+var/const/INTEL_FREQ	= 1356
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -120,7 +119,6 @@ var/list/radiochannels = list(
 	"WY" 			= WY_FREQ,
 	"WY PMC" 		= PMC_FREQ,
 	"SpecOps" 		= DTH_FREQ,
-	"VAI" 			= VAI_FREQ,
 	"UPP" 			= RUS_FREQ,
 	"CLF"			= CLF_FREQ,
 	"DD"			= DUT_FREQ,
@@ -134,7 +132,15 @@ var/list/radiochannels = list(
 	"MP"			= SEC_FREQ,
 	"Req"			= SUP_FREQ,
 	"JTAC"			= JTAC_FREQ,
-	"Tactics" 		= TACTICS_FREQ,
+	"Intel" 		= INTEL_FREQ,
+
+	SQUAD_MARINE_1	= ALPHA_FREQ,
+	SQUAD_MARINE_2	= BRAVO_FREQ,
+	SQUAD_MARINE_3	= CHARLIE_FREQ,
+	SQUAD_MARINE_4	= DELTA_FREQ,
+	SQUAD_MARINE_5	= ECHO_FREQ,
+	SQUAD_MARINE_CRYO		= CRYO_FREQ,
+	SQUAD_MARSOC	= MARSOC_FREQ,
 
 	SQUAD_MARINE_1	= ALPHA_FREQ,
 	SQUAD_MARINE_2	= BRAVO_FREQ,
@@ -151,13 +157,13 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, VAI_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -201,8 +207,7 @@ SUBSYSTEM_DEF(radio)
 		"[MED_FREQ]" = "medradio",
 		"[SUP_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",
-		"[TACTICS_FREQ]" = "intelradio",
-		"[VAI_FREQ]" = "vairadio",
+		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",

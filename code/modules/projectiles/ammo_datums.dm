@@ -1598,12 +1598,15 @@
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
+		var/size_damage_mod = 0.8
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.6
 			if(target.mob_size >= MOB_SIZE_BIG)
-				L.apply_armoured_damage(damage*1.2, ARMOR_BULLET, BRUTE, null, penetration)
-		L.apply_armoured_damage(damage*0.8, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 300% against Big xenos (375). -Kaga
+				size_damage_mod += 0.6
+		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/elite
@@ -1623,14 +1626,17 @@
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
+		var/size_damage_mod = 0.5
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.5
 			if(target.mob_size >= MOB_SIZE_BIG)
-				L.apply_armoured_damage(damage*1.5, ARMOR_BULLET, BRUTE, null, penetration)
-			L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+				size_damage_mod += 1
+			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		else
 			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
-		// 150% damage to non-Big xenos (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
@@ -2093,6 +2099,18 @@
 	damage = 25
 	shell_speed = AMMO_SPEED_TIER_2
 
+/datum/ammo/energy/laz_uzi
+	name = "laser bolt"
+	icon_state = "laser_new"
+	flags_ammo_behavior = AMMO_ENERGY
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	max_range = 10
+	shell_speed = AMMO_SPEED_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
@@ -2826,6 +2844,27 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
 		M.Slow(0.4)
+
+/*
+//========
+					CAS 30mm impacters
+//========
+*/
+/datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
+	name = "30mm Multi-Purpose shell"
+
+	damage = 115 //More damaging, but 2x less shells and low AP
+	penetration = ARMOR_PENETRATION_TIER_2
+	accuracy = HIT_ACCURACY_TIER_MAX
+	max_range = 0
+	shrapnel_chance = 100 //the least of your problems
+
+/datum/ammo/bullet/shrapnel/gau/at
+	name = "30mm Anti-Tank shell"
+
+	damage = 80 //Standard AP vs standard. (more AP for less damage)
+	penetration = ARMOR_PENETRATION_TIER_8
+	accuracy = HIT_ACCURACY_TIER_MAX
 /*
 //======
 					Misc Ammo

@@ -342,6 +342,7 @@
 	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
+	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)

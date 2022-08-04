@@ -36,6 +36,7 @@
 
 /obj/item/device/defibrillator/update_icon()
 	icon_state = initial(icon_state)
+	overlays.Cut()
 
 	if(ready)
 		icon_state += "_out"
@@ -43,13 +44,13 @@
 	if(dcell && dcell.charge)
 		switch(round(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
-				icon_state += "_full"
+				overlays += "+full"
 			if(34 to 66)
-				icon_state += "_half"
+				overlays += "+half"
 			if(1 to 33)
-				icon_state += "_low"
+				overlays += "+low"
 	else
-		icon_state += "_empty"
+		overlays += "+empty"
 
 /obj/item/device/defibrillator/examine(mob/user)
 	..()

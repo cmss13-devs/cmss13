@@ -77,6 +77,9 @@
   - qol: Using the radiopack's phone is now done via a button similarly to turning
       on the armour light. Hanging up is still done by clicking the radiopack
   - bugfix: Grabbing items from the radiopack no longer requires pixel hunting
+  Geevies:
+  - balance: Added an additional crew weapon attachment point to both dropships, also
+      added a rappel system into the hanger.
   Jeser:
   - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
       Air Support, mortar) not showing direction if mob was on target tile.

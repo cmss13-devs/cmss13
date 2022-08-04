@@ -329,8 +329,8 @@
 	take_overall_armored_damage(CCA.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 50, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(CCA.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
 	X.visible_message(
-		SPAN_DANGER("[X] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[X] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
@@ -397,8 +397,8 @@
 		momentum_mult = 8
 	take_overall_damage(CCA.momentum * momentum_mult)
 	X.visible_message(
-		SPAN_DANGER("[X] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[X] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
@@ -467,8 +467,8 @@ bell immunity [d]
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(5, 1, loc)
 	X.visible_message(
-		SPAN_DANGER("[X] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[X] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	if(health <= CCA.momentum * 9)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
@@ -493,13 +493,12 @@ bell immunity [d]
 		s.set_up(1, 1, loc)
 		s.start()
 		X.visible_message(
-			SPAN_DANGER("[X] rams [src]!"),
-			SPAN_XENODANGER("You ram [src]!")
+			SPAN_DANGER("[X] rams \the [src]!"),
+			SPAN_XENODANGER("You ram \the [src]!")
 		)
 		playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 		if(istype(src,/obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			to_chat(world, "TEST STEST")
 			HMG = new(src.loc)
 			HMG.health = src.health
 			HMG.set_name_label(name_label)
@@ -549,8 +548,8 @@ bell immunity [d]
 		CCA.stop_momentum()
 		return
 	X.visible_message(
-		SPAN_DANGER("[X] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[X] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	Destroy()
@@ -569,8 +568,8 @@ bell immunity [d]
 		CCA.stop_momentum()
 		return
 	X.visible_message(
-		SPAN_DANGER("[X] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[X] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)

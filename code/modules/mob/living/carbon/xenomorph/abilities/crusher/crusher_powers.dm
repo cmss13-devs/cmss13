@@ -107,7 +107,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/crusher_stomp/charger/use_ability(atom/Target)
+/datum/action/xeno_action/onclick/crusher_stomp/charger/use_ability()
 	var/mob/living/carbon/Xenomorph/Xeno = owner
 	var/mob/living/carbon/Targeted
 	if (!istype(Xeno))
@@ -144,12 +144,8 @@
 	for (var/mob/living/carbon/Human in orange(distance, get_turf(Xeno))) // MOBS AROUND
 		if (Human.stat == DEAD || Xeno.can_not_harm(Human))
 			continue
-		//new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
-		//if(H.mob_size < MOB_SIZE_BIG)
-			//H.KnockDown(get_xeno_stun_duration(H, 0.2))
 		if(Human.client)
 			shake_camera(Human, 2, 2)
-		//to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 		if(Targeted)
 			to_chat(Human, SPAN_XENOHIGHDANGER("You watch as [Targeted] gets crushed by [Xeno]!"))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are shaken as [Xeno] quakes the earth!"))

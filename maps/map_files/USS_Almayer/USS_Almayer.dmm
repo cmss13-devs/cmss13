@@ -42559,15 +42559,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
-"fGh" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/briefing)
 "fGm" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor9";
@@ -118888,7 +118879,7 @@ uMk
 uMk
 bgO
 beH
-fGh
+bqZ
 bdg
 buH
 hOR
@@ -119091,7 +119082,7 @@ uMk
 uMk
 bgO
 beH
-fGh
+bqZ
 bdg
 buH
 hOR

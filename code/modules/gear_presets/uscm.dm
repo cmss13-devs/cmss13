@@ -720,6 +720,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
+	H.back.pickup()
+
 /datum/equipment_preset/uscm/rto_equipped/cryo
 	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO

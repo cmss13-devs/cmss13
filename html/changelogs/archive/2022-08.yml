@@ -80,3 +80,9 @@
   Jeser:
   - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
       Air Support, mortar) not showing direction if mob was on target tile.
+  stanalbatross:
+  - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
+      turned off automatically
+  - bugfix: fixed the motion detector claiming that YOU turned it off when you died.
+      It will now "short out"
+  - bugfix: fixed issuing an order breaking all the sg buttons

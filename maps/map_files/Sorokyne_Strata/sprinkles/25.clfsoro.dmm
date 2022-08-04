@@ -3,14 +3,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -71,13 +64,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "cQ" = (
@@ -112,13 +98,6 @@
 /area/strata/ag/interior/outpost/engi)
 "dx" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -154,21 +133,12 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "dZ" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "ek" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -208,13 +178,6 @@
 /area/strata/ag/interior/outpost/engi)
 "eH" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -225,10 +188,6 @@
 "eN" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/north_outpost)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "fa" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -238,11 +197,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -338,14 +292,7 @@
 "hX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing/bullet,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -367,21 +314,12 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "im" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "ix" = (
 /obj/effect/spawner/random/attachment,
 /turf/open/floor{
@@ -440,24 +378,10 @@
 /area/strata/ag/interior/outpost/security)
 "jQ" = (
 /obj/effect/decal/cleanable/blood/oil,
-<<<<<<< master
-<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active{
 	dir = 8
 	},
-=======
-/obj/item/stack/rods,
-=======
->>>>>>> added spawn pointss for clf survivors
-/obj/item/stack/cable_coil/cut,
-<<<<<<< master
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active{
-	dir = 8
-	},
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -472,21 +396,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "ko" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "kA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost,
@@ -495,13 +410,6 @@
 /obj/item/storage/box/ids,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -545,13 +453,6 @@
 "lO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -573,14 +474,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -595,14 +489,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -620,10 +507,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "ne" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/explosive/mine/clf/active{
@@ -633,11 +516,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "nH" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -649,18 +527,9 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
-=======
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -683,14 +552,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -716,13 +578,6 @@
 /area/strata/ag/interior/outpost/security)
 "po" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -771,14 +626,7 @@
 /area/strata/ag/interior/outpost/security)
 "qb" = (
 /obj/item/stool,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -845,13 +693,6 @@
 /area/strata/ag/interior/outpost/security)
 "rC" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -878,10 +719,6 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
@@ -892,13 +729,6 @@
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
 /obj/item/explosive/mine/clf,
-<<<<<<< master
-=======
-/obj/item/storage/box/explosive_mines,
-/obj/item/storage/box/explosive_mines,
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -943,27 +773,13 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/strata/ag/interior/outpost/engi)
 "tv" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1015,10 +831,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "uR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1028,11 +840,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "vi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
@@ -1099,14 +906,7 @@
 	dir = 9
 	},
 /obj/item/ammo_magazine/rifle/type71,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1180,13 +980,6 @@
 "yM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "yQ" = (
@@ -1199,10 +992,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "yR" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
@@ -1210,11 +999,6 @@
 	icon_state = "damaged3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "yT" = (
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -1310,19 +1094,10 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "BG" = (
 /obj/item/explosive/mine/clf/active,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "BZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1415,10 +1190,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "Fl" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -1429,11 +1200,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "FK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/corpsespawner/russian,
@@ -1474,13 +1240,6 @@
 /area/strata/ag/interior/outpost/security)
 "Gb" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1526,20 +1285,8 @@
 /area/strata/ag/interior/outpost/security)
 "Gr" = (
 /obj/effect/decal/cleanable/blood/oil,
-<<<<<<< master
-<<<<<<< master
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active,
-=======
-/obj/item/stack/rods,
-=======
->>>>>>> added spawn pointss for clf survivors
-/obj/item/stack/cable_coil/cut,
-<<<<<<< master
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active,
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1560,13 +1307,6 @@
 /area/strata/ag/interior/outpost/security)
 "Gt" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1590,13 +1330,6 @@
 /area/strata/ag/interior/outpost/security)
 "Hh" = (
 /obj/structure/surface/table/reinforced/prison,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -1608,14 +1341,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1666,14 +1392,7 @@
 "IZ" = (
 /obj/structure/barricade/handrail/strata,
 /obj/item/ammo_casing/bullet,
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1790,21 +1509,12 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "NU" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "OJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/rods,
@@ -1825,8 +1535,6 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "Pq" = (
 /obj/structure/window_frame/strata,
-<<<<<<< master
-<<<<<<< master
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "Pv" = (
@@ -1835,21 +1543,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
-=======
-/obj/item/stack/rods,
-/turf/open/floor/strata,
-/area/strata/ag/interior/outpost/security)
->>>>>>> reimported backup
-=======
-/turf/open/floor/strata,
-/area/strata/ag/interior/outpost/security)
-"Pv" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/strata{
-	icon_state = "fake_wood"
-	},
-/area/strata/ag/interior/outpost/security)
->>>>>>> added spawn pointss for clf survivors
 "PJ" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1951,13 +1644,6 @@
 /area/strata/ag/interior/outpost/security)
 "Rt" = (
 /obj/effect/decal/cleanable/blood/oil,
-<<<<<<< master
-<<<<<<< master
-=======
-/obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/strata{
 	dir = 10;
@@ -2034,18 +1720,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/item/explosive/mine/clf/active{
 	dir = 4
 	},
-=======
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active{
-	dir = 4
-	},
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -2055,14 +1732,7 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -2095,33 +1765,17 @@
 	icon_state = "metal_1";
 	dir = 1
 	},
-<<<<<<< master
-<<<<<<< master
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "Ub" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "Uh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -2146,19 +1800,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "Wv" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "WE" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -2217,10 +1862,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
 "YG" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -2231,11 +1872,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/security)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "YN" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/barricade/metal/wired{
@@ -2408,15 +2044,7 @@ Gb
 qa
 rK
 fC
-<<<<<<< master
-<<<<<<< master
 NU
-=======
-yT
->>>>>>> reimported backup
-=======
-NU
->>>>>>> added spawn pointss for clf survivors
 Nr
 ym
 db
@@ -2487,15 +2115,7 @@ Gk
 qn
 xu
 mk
-<<<<<<< master
-<<<<<<< master
 Pv
-=======
-uh
->>>>>>> reimported backup
-=======
-Pv
->>>>>>> added spawn pointss for clf survivors
 Ch
 OW
 vP
@@ -2510,15 +2130,7 @@ Gt
 Sd
 Sf
 Gk
-<<<<<<< master
-<<<<<<< master
 Pv
-=======
-uh
->>>>>>> reimported backup
-=======
-Pv
->>>>>>> added spawn pointss for clf survivors
 uh
 fr
 uh
@@ -2542,15 +2154,7 @@ lz
 iM
 tX
 OW
-<<<<<<< master
-<<<<<<< master
 uR
-=======
-LS
->>>>>>> reimported backup
-=======
-uR
->>>>>>> added spawn pointss for clf survivors
 hN
 gv
 SF
@@ -2590,15 +2194,7 @@ wY
 cp
 nW
 RT
-<<<<<<< master
-<<<<<<< master
 BG
-=======
-hV
->>>>>>> reimported backup
-=======
-BG
->>>>>>> updated all maps to have CLF Mines and corpses
 NE
 "}
 (13,1,1) = {"
@@ -2609,15 +2205,7 @@ zV
 DI
 ID
 DI
-<<<<<<< master
-<<<<<<< master
 dZ
-=======
-PJ
->>>>>>> reimported backup
-=======
-dZ
->>>>>>> added spawn pointss for clf survivors
 yT
 Zz
 CC
@@ -2628,43 +2216,19 @@ zQ
 ui
 "}
 (14,1,1) = {"
-<<<<<<< master
-<<<<<<< master
 fa
 Sd
 yT
 dZ
 dZ
 im
-<<<<<<< master
-=======
-WP
-=======
-fa
->>>>>>> updated all maps to have CLF Mines and corpses
-Sd
-yT
-PJ
-PJ
-DI
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 pq
 ui
 LZ
 wx
 iT
 yM
-<<<<<<< master
-<<<<<<< master
 ko
-=======
-yT
->>>>>>> reimported backup
-=======
-ko
->>>>>>> updated all maps to have CLF Mines and corpses
 yT
 yT
 oc
@@ -2682,34 +2246,14 @@ Yf
 hV
 Uh
 cp
-<<<<<<< master
-<<<<<<< master
 YG
 Fl
 YG
-=======
-Qs
-Gh
-Qs
->>>>>>> reimported backup
-=======
-YG
-Fl
-YG
->>>>>>> added spawn pointss for clf survivors
 cp
 "}
 (16,1,1) = {"
 qR
-<<<<<<< master
-<<<<<<< master
 Pv
-=======
-uh
->>>>>>> reimported backup
-=======
-Pv
->>>>>>> added spawn pointss for clf survivors
 zz
 OW
 OW
@@ -2749,21 +2293,9 @@ dL
 sk
 OW
 qS
-<<<<<<< master
-<<<<<<< master
 Ub
 Ik
 Ub
-=======
-Ik
-Ik
-Ik
->>>>>>> reimported backup
-=======
-Ub
-Ik
-Ub
->>>>>>> added spawn pointss for clf survivors
 OW
 FO
 Hj
@@ -2805,15 +2337,7 @@ od
 yT
 QA
 PJ
-<<<<<<< master
-<<<<<<< master
 yR
-=======
-ID
->>>>>>> reimported backup
-=======
-yR
->>>>>>> added spawn pointss for clf survivors
 FT
 rC
 "}
@@ -2827,15 +2351,7 @@ nH
 Ut
 hV
 Gd
-<<<<<<< master
-<<<<<<< master
 Ub
-=======
-Ik
->>>>>>> reimported backup
-=======
-Ub
->>>>>>> added spawn pointss for clf survivors
 hN
 Sp
 mP
@@ -2851,15 +2367,7 @@ qR
 IR
 IB
 Ro
-<<<<<<< master
-<<<<<<< master
 Wv
-=======
-hV
->>>>>>> reimported backup
-=======
-Wv
->>>>>>> added spawn pointss for clf survivors
 Jl
 Ik
 cp
@@ -2884,15 +2392,7 @@ lo
 Ik
 nN
 lx
-<<<<<<< master
-<<<<<<< master
 ne
-=======
-nP
->>>>>>> reimported backup
-=======
-ne
->>>>>>> updated all maps to have CLF Mines and corpses
 Ik
 "}
 (24,1,1) = {"

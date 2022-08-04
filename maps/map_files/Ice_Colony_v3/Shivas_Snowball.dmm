@@ -15889,15 +15889,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "kCQ" = (
 /obj/effect/landmark/nightmare{
-<<<<<<< master
-<<<<<<< master
 	insert_tag = "shivabarls"
-=======
-	insert_tag = shivabarls
->>>>>>> added nightmare insert tags to main maps
-=======
-	insert_tag = "shivabarls"
->>>>>>> fix
 	},
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/bar)
@@ -27273,15 +27265,7 @@
 /area/shiva/interior/colony/n_admin)
 "wMB" = (
 /obj/effect/landmark/nightmare{
-<<<<<<< master
-<<<<<<< master
 	insert_tag = "shivaclf01"
-=======
-	insert_tag = shivaclf01
->>>>>>> added nightmare insert tags to main maps
-=======
-	insert_tag = "shivaclf01"
->>>>>>> fixed issue with invalid landmark
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)

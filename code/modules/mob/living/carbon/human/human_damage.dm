@@ -336,32 +336,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	UpdateDamageIcon()
 
 
-/*
-/mob/living/carbon/human/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
-	if(damage <= 0)
-		return ..(damage, armour_type, damage_type, def_zone)
-
-	var/obj/limb/target_limb = null
-	if(def_zone)
-		target_limb = get_limb(check_zone(def_zone))
-	else
-		target_limb = get_limb(check_zone(rand_zone()))
-	if(isnull(target_limb))
-		return FALSE
-
-	var/armor = getarmor(target_limb, armour_type)
-
-	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
-
-	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
-	apply_damage(modified_damage, damage_type, target_limb)
-
-	return modified_damage
-
-
-*/
 
 ////////////////////////////////////////////
 

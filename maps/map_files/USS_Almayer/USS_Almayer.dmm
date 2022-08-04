@@ -44013,6 +44013,13 @@
 "gpe" = (
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"gpi" = (
+/obj/structure/dropship_equipment/rappel_system,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/hallways/hangar)
 "gpE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/sign/safety/distribution_pipes{
@@ -102026,7 +102033,7 @@ btJ
 bvi
 bAn
 blJ
-blJ
+bAn
 blJ
 bAn
 bpl
@@ -104862,7 +104869,7 @@ kqv
 pcl
 gHZ
 pcl
-gHZ
+gpi
 pcl
 oJp
 bvf
@@ -106492,7 +106499,7 @@ btR
 bvo
 bAy
 blP
-blP
+bAy
 blP
 bAy
 bpq

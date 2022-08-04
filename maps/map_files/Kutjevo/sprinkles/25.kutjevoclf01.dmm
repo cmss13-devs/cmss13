@@ -922,8 +922,6 @@
 <<<<<<< master
 "FP" = (
 /obj/effect/landmark/corpsespawner/colonist,
-/obj/item/weapon/gun/pistol/holdout,
-/obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "FX" = (

@@ -73,6 +73,10 @@
   - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
       of severed limb items.
 2022-08-04:
+  CometBlaze:
+  - qol: Using the radiopack's phone is now done via a button similarly to turning
+      on the armour light. Hanging up is still done by clicking the radiopack
+  - bugfix: Grabbing items from the radiopack no longer requires pixel hunting
   Jeser:
   - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
       Air Support, mortar) not showing direction if mob was on target tile.

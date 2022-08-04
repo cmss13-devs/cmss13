@@ -209,6 +209,7 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[VAI_FREQ]" = "vairadio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[CCT_FREQ]" = "cctradio",

@@ -174,6 +174,13 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/s_admin)
+"cT" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
 "cZ" = (
 /obj/item/device/pinpointer,
 <<<<<<< master
@@ -336,6 +343,7 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/vomit,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "hv" = (
@@ -372,6 +380,7 @@
 /area/shiva/exterior/cp_s_research)
 "hO" = (
 /obj/structure/machinery/light/double,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -407,6 +416,12 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
+"iM" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -514,6 +529,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -591,6 +607,12 @@
 >>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/shiva{
 	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
+"kW" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
 "kY" = (
@@ -674,6 +696,7 @@
 /obj/structure/barricade/sandbags{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -759,6 +782,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1132,6 +1156,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1150,6 +1175,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1159,6 +1185,7 @@
 /area/shiva/interior/colony/s_admin)
 "yo" = (
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -1282,6 +1309,7 @@
 "At" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1357,8 +1385,16 @@
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
+"CB" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/shiva/interior/colony/s_admin)
 "CN" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1778,6 +1814,10 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
+"KU" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
 "Lr" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_s_research)
@@ -2138,6 +2178,7 @@
 /area/shiva/interior/colony/s_admin)
 "Sg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -2219,6 +2260,13 @@
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
+	},
+/area/shiva/interior/colony/s_admin)
+"TL" = (
+/obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
 "Ue" = (
@@ -2376,6 +2424,13 @@
 /area/shiva/interior/colony/s_admin)
 "XL" = (
 /obj/structure/closet/secure_closet/personal,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/colony/s_admin)
+"XT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -2657,7 +2712,6 @@ Hr
 qW
 JD
 JD
-JD
 aQ
 At
 KB
@@ -2771,9 +2825,9 @@ tF
 (14,1,1) = {"
 jl
 Hj
+iM
 JD
-JD
-JD
+iM
 Hr
 Hr
 WP
@@ -2856,7 +2910,7 @@ xh
 Su
 pR
 vm
-aQ
+Xt
 Hr
 JD
 MQ
@@ -2889,7 +2943,7 @@ Hr
 Kr
 >>>>>>> Updated CLF spawner
 JD
-MQ
+cT
 Zz
 OH
 pL
@@ -2897,7 +2951,7 @@ Nv
 NP
 zf
 sV
-Hr
+kW
 Qk
 Qk
 Iq
@@ -2917,7 +2971,7 @@ FM
 Un
 Ey
 Hr
-Hr
+kW
 JD
 Nd
 ny
@@ -2944,7 +2998,7 @@ Nt
 >>>>>>> updated all maps to have CLF Mines and corpses
 nT
 uq
-il
+oJ
 JD
 <<<<<<< master
 <<<<<<< master
@@ -3050,7 +3104,11 @@ Hr
 Kr
 >>>>>>> Updated CLF spawner
 VY
-Mo
+XT
+kW
+kW
+kW
+TL
 Hr
 Hr
 <<<<<<< master
@@ -3081,8 +3139,8 @@ xt
 Qk
 ff
 Tf
-Tf
-JD
+CB
+iM
 Qk
 nk
 hi
@@ -3227,7 +3285,7 @@ Rf
 Jn
 GH
 JD
-JD
+iM
 qO
 Kk
 DI
@@ -3343,7 +3401,6 @@ Ds
 JD
 >>>>>>> reimported backup
 JD
-JD
 CX
 pC
 zU
@@ -3352,7 +3409,7 @@ wa
 Su
 ex
 rM
-rM
+KU
 rM
 Fw
 xt

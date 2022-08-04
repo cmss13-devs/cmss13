@@ -88,6 +88,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -150,6 +151,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -263,6 +265,12 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+"fT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ag/interior/outpost/security)
 "gb" = (
 /obj/structure/machinery/light/small,
 /turf/open/auto_turf/snow/brown_base/layer0,
@@ -272,6 +280,7 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -281,6 +290,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "gz" = (
@@ -391,6 +401,7 @@
 /area/strata/ag/interior/outpost/security)
 "iM" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -607,6 +618,12 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/security)
+"mB" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
 "mP" = (
 /obj/effect/landmark/corpsespawner/russian,
 /obj/structure/barricade/metal/wired{
@@ -616,6 +633,7 @@
 /obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/rifle/type71,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -639,6 +657,7 @@
 =======
 >>>>>>> updated all maps to have CLF Mines and corpses
 "nH" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -676,6 +695,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "nX" = (
@@ -791,6 +811,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "qj" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -976,6 +997,7 @@
 /area/strata/ag/interior/outpost/security)
 "tB" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1001,6 +1023,7 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "ux" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1040,6 +1063,16 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/security)
+"vF" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
 "vJ" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
@@ -1054,6 +1087,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1134,6 +1168,10 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+"xq" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
 "xu" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/doctor,
@@ -1166,6 +1204,7 @@
 "yu" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -1177,6 +1216,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/engi)
+"yJ" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/outpost/security)
 "yM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
@@ -1220,6 +1265,13 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+"yX" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/strata/ag/interior/outpost/security)
 "zt" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -1237,6 +1289,7 @@
 /area/strata/ag/interior/outpost/security)
 "zG" = (
 /obj/item/ammo_magazine/rifle/type71,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1248,6 +1301,7 @@
 "zQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -1359,6 +1413,12 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
+"CJ" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/strata/ag/interior/outpost/security)
 "Dg" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating{
@@ -1402,6 +1462,15 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata{
 	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/security)
+"Ex" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/strata{
+	icon_state = "red1"
 	},
 /area/strata/ag/interior/outpost/security)
 "EV" = (
@@ -1751,6 +1820,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -2126,6 +2196,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "Ut" = (
@@ -2283,6 +2354,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "ZU" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -2369,7 +2441,7 @@ Pn
 Pn
 Pn
 OW
-Ik
+mB
 AY
 Lx
 SO
@@ -2389,7 +2461,7 @@ Pn
 OW
 jl
 LF
-uh
+fT
 cg
 ZW
 ym
@@ -2434,7 +2506,7 @@ Gb
 FX
 yQ
 yT
-yT
+yJ
 SJ
 ym
 qj
@@ -2501,13 +2573,13 @@ OW
 vP
 PJ
 ix
-DI
+CJ
 eA
 OJ
 "}
 (9,1,1) = {"
 Gt
-Sd
+vF
 Sf
 Gk
 <<<<<<< master
@@ -2559,7 +2631,7 @@ XY
 "}
 (11,1,1) = {"
 OW
-hN
+Ex
 IZ
 My
 cQ
@@ -2651,7 +2723,7 @@ DI
 =======
 >>>>>>> added spawn pointss for clf survivors
 pq
-ui
+km
 LZ
 wx
 iT
@@ -2671,10 +2743,10 @@ oc
 "}
 (15,1,1) = {"
 cp
-hV
+xq
 MC
 Re
-hV
+xq
 sL
 ek
 MC

@@ -73,7 +73,7 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 >>>>>>> Updated CLF spawner
 /turf/open/floor{
-	dir = 7;
+	dir = 1;
 	icon_state = "warning"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
@@ -175,9 +175,14 @@
 	icon_state = "tile"
 <<<<<<< master
 	},
-/area/desert_dam/exterior/valley/south_valley_dam)
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "cz" = (
 /obj/effect/landmark/corpsespawner/engineer,
+/obj/item/weapon/melee/baseballbat/metal,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000{
 	pixel_y = 7
@@ -538,6 +543,14 @@
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"fA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
 "fB" = (
 /obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
@@ -551,6 +564,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -625,6 +639,13 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"go" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "gr" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt{
@@ -675,8 +696,8 @@
 <<<<<<< master
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkyellow2"
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 =======
@@ -774,6 +795,7 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 <<<<<<< master
 "ht" = (
+/obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /obj/item/explosive/mine/clf/active,
@@ -862,8 +884,7 @@
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "bright_clean";
-	tag = "icon-bright_clean (SOUTHWEST)"
+	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 <<<<<<< master
@@ -1221,6 +1242,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "mn" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -1308,6 +1330,13 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"mU" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "mX" = (
 /obj/structure/platform{
 	dir = 1
@@ -1441,6 +1470,13 @@
 	icon_state = "warnplate"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
+"nU" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "nY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1466,6 +1502,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -1712,6 +1749,15 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
+"ri" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/smes_backup)
 "rp" = (
 /obj/structure/platform,
 /obj/effect/blocker/toxic_water/Group_2,
@@ -1820,6 +1866,13 @@
 	tag = "icon-darkyellowcorners2 (NORTH)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"rC" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "warning"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "rG" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -1834,6 +1887,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -2162,6 +2216,7 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/smes_main)
 "uv" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -2195,7 +2250,8 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/prison{
 	dir = 10;
-	tag = "icon-floor (SOUTHWEST)"
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 <<<<<<< master
@@ -2576,6 +2632,13 @@
 	icon_state = "neutral"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"zM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
 "zR" = (
 /obj/effect/decal/cleanable/blood/oil,
 <<<<<<< master
@@ -2778,6 +2841,12 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
+"CC" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "CK" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
@@ -2940,6 +3009,20 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"Ey" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "EC" = (
 /obj/structure/platform{
 	dir = 1
@@ -2982,6 +3065,17 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"EL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
+"EP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/smes_main)
 "ET" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -3014,6 +3108,17 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"Fn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "Fr" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -3298,6 +3403,17 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"HC" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1";
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "HD" = (
 /obj/structure/surface/table,
 /turf/open/floor/prison{
@@ -3469,6 +3585,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "KT" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "warning"
@@ -3556,6 +3673,16 @@
 	dir = 8
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
+"LK" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "LN" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3"
@@ -3715,7 +3842,7 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
-/area/desert_dam/exterior/valley/north_valley_dam)
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "Nx" = (
 /turf/open/floor{
 	dir = 8;
@@ -3765,6 +3892,12 @@
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"ND" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor{
+	icon_state = "neutral"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "NH" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -3789,6 +3922,16 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"NV" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "NY" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/plating{
@@ -3906,6 +4049,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
+"Pt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
 "PB" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison{
@@ -4051,8 +4201,10 @@
 	},
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/effect/landmark/survivor_spawner/clf/generic,
-/turf/open/floor{
-	icon_state = "neutral"
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 <<<<<<< master
@@ -4355,13 +4507,19 @@
 	icon_state = "warning"
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
+"TW" = (
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
 "Uc" = (
 <<<<<<< master
 <<<<<<< master
 <<<<<<< master
 /obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor{
-	dir = 8;
+	dir = 7;
 	icon_state = "warning"
 =======
 /obj/item/stack/rods,
@@ -4589,6 +4747,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
 	},
@@ -4615,6 +4774,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -4880,6 +5040,17 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/control_room)
+"Yp" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/generic,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean";
+	tag = "icon-bright_clean (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
 "Yq" = (
 /obj/structure/window_frame/colony,
 /obj/item/stack/rods,
@@ -5044,19 +5215,13 @@
 <<<<<<< master
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
+/turf/open/floor/prison{
+	dir = 10;
+	tag = "icon-floor (SOUTHWEST)"
 	},
-/area/desert_dam/interior/dam_interior/engine_room)
-"ZV" = (
-/obj/effect/blocker/toxic_water/Group_2,
-/obj/item/ammo_box/magazine/M16,
-/turf/open/floor{
-	icon_state = "neutral"
-	},
-/area/desert_dam/interior/dam_interior/engine_room)
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "ZW" = (
+/obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/cable_coil/cut,
 /obj/effect/decal/cleanable/blood/drip,
@@ -5183,7 +5348,7 @@ vO
 ku
 PT
 QB
-Im
+YO
 ki
 "}
 (4,1,1) = {"
@@ -5232,7 +5397,7 @@ ki
 rv
 Fr
 Ro
-TD
+EL
 Gb
 Gb
 Gb
@@ -5278,7 +5443,7 @@ MH
 SJ
 lD
 SJ
-Fw
+EP
 BR
 rv
 Qq
@@ -5301,6 +5466,8 @@ iD
 >>>>>>> Updated CLF spawner
 sk
 Qe
+sk
+ri
 xp
 ki
 "}
@@ -5334,6 +5501,7 @@ rv
 CO
 Td
 Xd
+zM
 hb
 <<<<<<< master
 <<<<<<< master
@@ -5349,7 +5517,7 @@ pA
 ki
 sY
 cj
-Qe
+ri
 UI
 Im
 ki
@@ -5480,10 +5648,11 @@ qs
 qJ
 qJ
 wU
-xg
+HC
 Lp
 xg
 St
+HC
 xg
 xg
 <<<<<<< master
@@ -5526,13 +5695,13 @@ dc
 <<<<<<< master
 XO
 KT
-Uc
 Eh
 Eh
-iO
 Eh
 Eh
-lJ
+Eh
+Eh
+ek
 tc
 sC
 kY
@@ -5685,6 +5854,7 @@ yC
 >>>>>>> updated all maps to have CLF Mines and corpses
 Hs
 Hs
+Ng
 Hs
 Hs
 <<<<<<< master
@@ -5740,7 +5910,7 @@ wU
 gU
 KP
 rd
-QD
+Uf
 LN
 ht
 QJ
@@ -5866,7 +6036,7 @@ za
 kv
 sq
 PD
-zg
+by
 Tm
 Zh
 Tm
@@ -5947,7 +6117,7 @@ eb
 tr
 >>>>>>> updated all maps to have CLF Mines and corpses
 UR
-Hs
+ND
 Hs
 ek
 Sk
@@ -5981,20 +6151,20 @@ cw
 fL
 "}
 (24,1,1) = {"
-dq
-OS
-Nj
-Nj
-Nj
+eb
+eb
+eb
+eb
+eb
 dc
 Nz
-FO
-qD
-ep
-ek
-tN
+zg
 Hs
-Yr
+ep
+TW
+MQ
+Hs
+ND
 Hs
 Ng
 Ml
@@ -6185,7 +6355,7 @@ wU
 Xf
 GM
 GM
-jd
+LK
 GM
 GM
 Xf
@@ -6292,6 +6462,7 @@ Uw
 >>>>>>> Updated CLF spawner
 Tz
 Tz
+nU
 Tz
 Tz
 Tz
@@ -6316,7 +6487,10 @@ Kz
 De
 VK
 De
+vr
+vr
 De
+vr
 De
 De
 <<<<<<< master
@@ -6372,12 +6546,12 @@ xO
 xO
 sf
 WX
-xO
+NV
 xO
 ZN
 hJ
 Ld
-De
+vr
 Ht
 mu
 Fi
@@ -6443,9 +6617,9 @@ yn
 yn
 ph
 gZ
-VE
+go
 Tz
-Tz
+nU
 De
 Gu
 Oc
@@ -6573,7 +6747,7 @@ rG
 cM
 Tz
 De
-Gu
+Fn
 wH
 rG
 <<<<<<< master

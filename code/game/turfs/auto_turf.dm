@@ -12,7 +12,7 @@
 	baseturfs += type
 
 /turf/open/auto_turf/is_weedable()//for da xenos
-	return TRUE
+	return FULLY_WEEDABLE
 
 /turf/open/auto_turf/get_dirt_type()
 	return DIRT_TYPE_GROUND //automatically diggable I guess
@@ -162,7 +162,7 @@
 		return DIRT_TYPE_GROUND
 
 /turf/open/auto_turf/snow/is_weedable()
-	return !bleed_layer
+	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
 	//Light Stick

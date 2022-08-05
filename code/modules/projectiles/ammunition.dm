@@ -925,6 +925,28 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
 	if(!item_box.handfuls)
 		if(istypestrict(W,item_box.magazine_type))
+			if(istype(W, /obj/item/storage/box/m94))
+				var/obj/item/storage/box/m94/flare_pack = W
+				if(flare_pack.contents.len < flare_pack.max_storage_space)
+					to_chat(user, SPAN_WARNING("\The [W] is not full."))
+					return
+				var/flare_type
+				if(istype(W, /obj/item/storage/box/m94/signal))
+					flare_type = /obj/item/device/flashlight/flare/signal
+				else
+					flare_type = /obj/item/device/flashlight/flare
+				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
+					if(F.fuel < 1)
+						to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+						return
+					if(F.type != flare_type)
+						to_chat(user, SPAN_WARNING("Some flares in \the [W] are not of the correct type."))
+						return
+			else if(istype(W, /obj/item/storage/box/MRE))
+				var/obj/item/storage/box/MRE/mre_pack = W
+				if(mre_pack.isopened)
+					to_chat(user, SPAN_WARNING("\The [W] was already opened and isn't suitable for storing in \the [src]."))
+					return
 			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W

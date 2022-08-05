@@ -38,15 +38,22 @@
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)
-			load_ammo(PC, user)
-
-		else if(uses_ammo && ammo_equipped)
-			unload_ammo(PC, user)
+			if(ammo_equipped)
+				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
+				return TRUE
+			if(uses_ammo)
+				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+				return
+			else
+				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+				return TRUE
 
 		else
-			grab_equipment(PC, user)
+			if(uses_ammo && ammo_equipped)
+				unload_ammo(PC, user)
+			else
+				grab_equipment(PC, user)
 		return TRUE
-
 
 /obj/structure/dropship_equipment/proc/load_ammo(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
@@ -79,16 +86,16 @@
 		return
 	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
 		return
-	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
-		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in [src]."))
+		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in \the [src]."))
 		qdel(ammo_equipped)
 	else
-		ammo_equipped.forceMove(PC.linked_powerloader)
-		PC.loaded = ammo_equipped
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from [src] and load it into [PC]."))
+		if(ammo_equipped.ammo_name == "rocket")
+			PC.grab_object(ammo_equipped, "ds_rocket")
+		else
+			PC.grab_object(ammo_equipped, "ds_ammo")
+		to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from \the [src] and grab it with \the [PC]."))
 	ammo_equipped = null
 	update_icon()
 
@@ -105,10 +112,7 @@
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return
-	forceMove(PC.linked_powerloader)
-	PC.loaded = src
-	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	PC.update_icon()
+	PC.grab_object(src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	to_chat(user, SPAN_NOTICE("You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC]."))
 	if(ship_base)
 		ship_base.installed_equipment = null
@@ -119,10 +123,6 @@
 			if(linked_console && linked_console.selected_equipment == src)
 				linked_console.selected_equipment = null
 	update_equipment()
-
-
-
-
 
 /obj/structure/dropship_equipment/update_icon()
 	return
@@ -673,7 +673,7 @@
 	name = "\improper GAU-21 30mm cannon"
 	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run."
 	icon_state = "30mm_cannon"
-	firing_sound = 'sound/effects/cannon30.ogg'
+	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE

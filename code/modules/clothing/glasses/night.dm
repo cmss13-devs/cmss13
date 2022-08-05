@@ -61,6 +61,13 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/glasses/night/m42_night_goggles/m42c
+	name = "\improper M42C special operations sight"
+	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
+	icon_state = "m56_goggles"
+	deactive_state = "m56_goggles_0"
+	vision_flags = SEE_TURFS|SEE_MOBS
+
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
@@ -127,7 +134,6 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(8, src)
-			to_chat(user, SPAN_NOTICE("You enable the far sight system."))
 		START_PROCESSING(SSobj, src)
 	else
 		powerpack = null
@@ -135,8 +141,11 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(world_view_size, src)
-			to_chat(user, SPAN_NOTICE("You disable the far sight system."))
 		STOP_PROCESSING(SSobj, src)
+
+	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
+	FT.update_button_icon()
+
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -171,11 +180,16 @@
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
-		if(G.far_sight)
-			button.icon_state = "template_on"
-		else
-			button.icon_state = "template"
-		to_chat(owner, "[icon2html(G, owner)] You changed the [G.name]'s sight setting to <b>[G.far_sight ? "far" : "normal"]</b>.")
+		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [src]'s far sight system."))
+
+/datum/action/item_action/m56_goggles/far_sight/update_button_icon()
+	if(!target)
+		return
+	var/obj/item/clothing/glasses/night/m56_goggles/G = target
+	if(G.far_sight)
+		button.icon_state = "template_on"
+	else
+		button.icon_state = "template"
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"

@@ -229,14 +229,20 @@
 		return
 
 	var/is_announcing = TRUE
-	var/announce = alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No")
-	if(announce == "No")
-		is_announcing = FALSE
+	switch(alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
+		if("Cancel")
+			qdel(chosen_ert)
+			return
+		if("No")
+			is_announcing = FALSE
 
 	var/turf/override_spawn_loc
-	var/use_current_loc = alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location") == "Current Location" ? TRUE : FALSE
-	if(use_current_loc)
-		override_spawn_loc = get_turf(usr)
+	switch(alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location", "Cancel"))
+		if("Cancel")
+			qdel(chosen_ert)
+			return
+		if("Current Location")
+			override_spawn_loc = get_turf(usr)
 
 	chosen_ert.activate(is_announcing, override_spawn_loc)
 
@@ -314,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct stystem.")
+	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"

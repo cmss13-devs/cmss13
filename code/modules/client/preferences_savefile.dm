@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	16
+#define SAVEFILE_VERSION_MAX	17
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -47,6 +47,12 @@
 		S["toggles_flashing"] >> flash_toggles_two
 		flash_toggles_two |= FLASH_POOLSPAWN
 		S["toggles_flashing"] << flash_toggles_two
+		
+	if(savefile_version < 17) //toggle middle click swap hands on by default
+		var/pref_middle_click_swap
+		S["toggle_prefs"] >> pref_middle_click_swap
+		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+		S["toggle_prefs"] << pref_middle_click_swap
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -93,6 +99,7 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
+	S["toggles_ert"]		>> toggles_ert
 	S["UI_style"]			>> UI_style
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
@@ -158,6 +165,7 @@
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
+	toggles_ert		= sanitize_integer(toggles_ert, 0, 65535, initial(toggles_ert))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
@@ -243,6 +251,7 @@
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing
+	S["toggles_ert"]		<< toggles_ert
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
@@ -435,9 +444,9 @@
 	//if(!skin_style) skin_style = "Default"
 
 	if(!home_system) home_system = "Unset"
-	if(!citizenship) citizenship = "None"
+	if(!citizenship) citizenship = CITIZENSHIP_US
 	if(!faction)     faction =     "None"
-	if(!religion)    religion =    "None"
+	if(!religion)    religion =    RELIGION_AGNOSTICISM
 	if(!preferred_squad)	preferred_squad = "None"
 
 	return 1

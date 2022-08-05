@@ -167,6 +167,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/tallgrass.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
+	cut_level = PLANT_CUT_MACHETE
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/Initialize()
@@ -239,7 +240,6 @@ ICE GRASS
 	color = COLOR_G_JUNG
 	icon_state = "tallgrass"
 	desc = "A clump of vibrant jungle grasses"
-	cut_level = PLANT_CUT_MACHETE
 	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/grass/tallgrass/jungle/corner
@@ -324,6 +324,7 @@ ICE GRASS
 
 /obj/structure/flora/bush/ausbushes/var3
 	icon_state = "leafybush_1"
+	cut_level = PLANT_CUT_KNIFE
 	variations = 3
 
 /obj/structure/flora/bush/ausbushes/var3/leafybush
@@ -373,6 +374,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/dam.dmi'
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
+	cut_level = PLANT_CUT_KNIFE
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/flora/bush/desert/cactus

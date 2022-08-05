@@ -97,6 +97,12 @@
 			return FALSE
 		if(mods["click_catcher"])
 			return FALSE
+		if(user.z != A.z)
+			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
+			return FALSE
+		if(!(is_ground_level(A.z)))
+			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
+			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
 			for(var/turf/T in path)
@@ -268,12 +274,11 @@
 	var/area/targ_area = get_area(A)
 	if(!istype(TU)) return
 	var/is_outside = FALSE
-	if(is_ground_level(TU.z))
-		switch(targ_area.ceiling)
-			if(CEILING_NONE)
-				is_outside = TRUE
-			if(CEILING_GLASS)
-				is_outside = TRUE
+	switch(targ_area.ceiling)
+		if(CEILING_NONE)
+			is_outside = TRUE
+		if(CEILING_GLASS)
+			is_outside = TRUE
 
 	if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 		is_outside = FALSE

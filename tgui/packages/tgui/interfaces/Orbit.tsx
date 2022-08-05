@@ -260,6 +260,18 @@ export const Orbit = (props: any, context: any) => {
             ))}
         </Section>
 
+        <Section title={`Vehicles - (${vehicles.length})`}>
+          {vehicles
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="blue"
+                thing={thing} />
+            ))}
+        </Section>
+
         <Section title={`Ghosts - (${ghosts.length})`}>
           {ghosts
             .filter(searchFor(searchText))
@@ -290,17 +302,6 @@ export const Orbit = (props: any, context: any) => {
           searchText={searchText}
         />
 
-         <Section title={`Vehicles - (${vehicles.length})`}>
-          {vehicles
-            .filter(searchFor(searchText))
-            .sort(compareNumberedText)
-            .map(thing => (
-              <OrbitedButton
-                key={thing.name}
-                color="blue"
-                thing={thing} />
-            ))}
-        </Section>
       </Window.Content>
     </Window>
   );

@@ -290,12 +290,17 @@ export const Orbit = (props: any, context: any) => {
           searchText={searchText}
         />
 
-        <BasicSection
-          title="Vehicles"
-          source={vehicles}
-          searchText={searchText}
-        />
-
+         <Section title={`Vehicles - (${vehicles.length})`}>
+          {vehicles
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="blue"
+                thing={thing} />
+            ))}
+        </Section>
       </Window.Content>
     </Window>
   );

@@ -97,3 +97,6 @@
   - bugfix: fixed the motion detector claiming that YOU turned it off when you died.
       It will now "short out"
   - bugfix: fixed issuing an order breaking all the sg buttons
+2022-08-05:
+  Jeser:
+  - rscadd: Vehicles appear in Follow window now and can be followed from there.

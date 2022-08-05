@@ -324,9 +324,9 @@
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Hellhound/H as anything in GLOB.hellhound_list)
-		if(!H.stat)
-			to_chat(H, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
+	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+		if(!hellhound.stat)
+			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
 /obj/item/device/radio/headset/yautja/attackby()

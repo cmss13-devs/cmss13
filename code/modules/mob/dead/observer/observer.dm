@@ -792,8 +792,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Hellhound"
 	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
 
-	var/mob/M = src
-	if(!M.stat || !M.mind)
+	var/mob/dead/current_mob = src
+	if(!current_mob.stat || !current_mob.mind)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -822,7 +822,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("That Hellhound has died."))
 		return
 
-	M.mind.transfer_to(Hellhound, TRUE)
+	current_mob.mind.transfer_to(Hellhound, TRUE)
 	Hellhound.generate_name()
 
 /mob/dead/verb/join_as_yautja()

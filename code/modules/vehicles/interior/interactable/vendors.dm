@@ -365,6 +365,7 @@
 
 	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
 	var/corrected_path = return_corresponding_type(item_to_stock.type)
+	var/stack_restock = 0	//used for making restocking stacked stuff much better.
 
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
@@ -432,18 +433,23 @@
 				if(istype(item_to_stock, /obj/item/stack/folding_barricade))
 					if(S.amount != 3)
 						if(user)
-							to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [S] stack to make it a stack of 3 before restocking."))
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [S] stack to make it a stack of 3 before restocking."))
 						return FALSE
 				else if(istype(item_to_stock, /obj/item/stack/sandbags))
-					if(S.amount != 5)
+					if(S.amount < 5)
 						if(user)
-							to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. [(S.amount < 5) ? "Add to" : "Split"] \the [S] stack to make it a stack of 10 before restocking."))
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. You need \the [S] stack of at least 5 to restock it."))
 						return FALSE
+					else
+						stack_restock = Floor(S.amount / 5)
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
-				else if(S.amount != 10)
-					if(user)
-						to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to make it a stack of 10 before restocking."))
-					return FALSE
+				else
+					if(S.amount < 10)
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. You need \the [S] stack of at least 10 to restock it."))
+						return FALSE
+					else
+						stack_restock = Floor(S.amount / 10)
 			//M94 flare packs handling
 			else if(istype(item_to_stock, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = item_to_stock
@@ -494,22 +500,40 @@
 						to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 					return FALSE
 
-			if(user)
-				if(item_to_stock.loc == user) //Inside the mob's inventory
-					if(item_to_stock.flags_item & WIELDED)
-						item_to_stock.unwield(user)
-					user.temp_drop_inv_item(item_to_stock)
+			//item we are restocking is a stack and we need to conveniently restock it
+			//instead of demanding user to split it into stacks of appropriate amount
+			//if there are any left overs in stack after we restock, we do not move it anywhere nor delete
+			if(stack_restock)
+				var/modifier = 10
+				var/obj/item/stack/ST = item_to_stock
+				if(istype(item_to_stock, /obj/item/stack/sandbags))
+					modifier = 5
+				if(ST.amount > stack_restock * modifier)
+					ST.amount -= stack_restock * modifier
+					ST.update_icon()
+					item_to_stock = null	//we have left overs, so we don't delete stack
 
-			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				R[2] += stack_restock
+			else
+				R[2]++
 
-			qdel(item_to_stock)
+			if(item_to_stock)
+				if(user)
+					if(item_to_stock.loc == user) //Inside the mob's inventory
+						if(item_to_stock.flags_item & WIELDED)
+							item_to_stock.unwield(user)
+						user.temp_drop_inv_item(item_to_stock)
+
+				if(isstorage(item_to_stock.loc)) //inside a storage item
+					var/obj/item/storage/S = item_to_stock.loc
+					S.remove_from_storage(item_to_stock, user.loc)
+
+				qdel(item_to_stock)
+
 			if(user)
 				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
 				SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 
-			R[2]++
 			updateUsrDialog()
 			return TRUE//We found our item, no reason to go on.
 

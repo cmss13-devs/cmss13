@@ -1897,6 +1897,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 				name += " \[dead\]"
 		pois[name] = M
 
+	pois.Add(get_multi_vehicles())
+
 	return pois
 
 //takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate

@@ -226,7 +226,7 @@
 /obj/item/device/encryptionkey/contractor
 	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"
 	icon_state = "sl_key"
-	channels = list("Command" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "Almayer" = 1)
+	channels = list("Command" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "Almayer" = 1)
 /// Used by the Mortar Crew in WO game mode - intently has no squad radio access
 /obj/item/device/encryptionkey/mortar
 	name = "\improper Mortar Crew Radio Encryption Key"

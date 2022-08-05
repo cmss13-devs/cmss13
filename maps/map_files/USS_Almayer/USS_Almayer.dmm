@@ -2383,12 +2383,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/grunt_rnr)
-"agI" = (
-/obj/structure/sign/safety/bathunisex{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south1)
 "agJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -15789,9 +15783,6 @@
 /turf/open/floor/plating,
 /area/almayer/living/cafeteria_starboard)
 "aWV" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -25710,6 +25701,9 @@
 	},
 /area/almayer/hallways/hangar)
 "bHG" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -67533,6 +67527,10 @@
 	pixel_x = 32;
 	pixel_y = 7
 	},
+/obj/structure/sign/safety/galley{
+	pixel_x = 32;
+	pixel_y = -8
+	},
 /turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
@@ -78799,12 +78797,6 @@
 	tag = "icon-emerald (EAST)"
 	},
 /area/almayer/squads/charlie)
-"wqh" = (
-/obj/structure/sign/safety/galley{
-	pixel_x = -17
-	},
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south1)
 "wqq" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -82452,16 +82444,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"xRU" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = -17
-	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
-	},
-/area/almayer/hallways/aft_hallway)
 "xSb" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -105339,7 +105321,7 @@ vjb
 cZb
 aXe
 baw
-wqh
+baw
 baw
 baw
 baw
@@ -105744,7 +105726,7 @@ cPg
 rvA
 cZb
 aXe
-agI
+baw
 baw
 baw
 baw
@@ -109186,14 +109168,14 @@ bbL
 bbL
 aWl
 afv
-yfv
 bbL
 bbL
 bbL
 bbL
-kij
 bbL
-xRU
+bbL
+bbL
+bit
 pgo
 baw
 baw

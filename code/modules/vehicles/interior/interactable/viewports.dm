@@ -20,7 +20,7 @@
 		return
 
 	M.reset_view(vehicle)
-	give_action(M, /datum/action/human_action/cancel_view)
+	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
 /obj/structure/interior_viewport/simple
 	name = "viewport"

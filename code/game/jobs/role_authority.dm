@@ -769,7 +769,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Boiler
 		if(XENO_CASTE_PREDALIEN)
 			M =	/mob/living/carbon/Xenomorph/Predalien
-
+		if(XENO_CASTE_HELLHOUND)
+			M =	/mob/living/carbon/Xenomorph/Hellhound
 	return M
 
 

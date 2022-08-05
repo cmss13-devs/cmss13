@@ -155,7 +155,7 @@
 			howl, \
 			growl, \
 			stare, \
-			snift \
+			sniff \
 			</b><br>")
 			return
 		else

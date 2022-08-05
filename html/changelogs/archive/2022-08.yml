@@ -98,5 +98,11 @@
       It will now "short out"
   - bugfix: fixed issuing an order breaking all the sg buttons
 2022-08-05:
+  Geevies:
+  - refactor: Hellhounds are now based on xeno code, making them far less terrible
+      to play as.
+  - rscadd: Forsaken and Yautja hives now never delay round end, Corrupted don't count
+      as hostile xenos as long as they're allied to marines, as far as round-end is
+      concerned.
   Jeser:
   - rscadd: Vehicles appear in Follow window now and can be followed from there.

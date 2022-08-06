@@ -107,6 +107,8 @@
   Jeser:
   - rscadd: Vehicles appear in Follow window now and can be followed from there.
 2022-08-06:
+  Ghostsheet:
+  - balance: you can now take machetes out of the machete pouch via hotkey
   stanalbatross:
   - rscdel: removed officers knowing languages that they would absolutely not have
       the time to learn before being deployed, instead take these languages in the

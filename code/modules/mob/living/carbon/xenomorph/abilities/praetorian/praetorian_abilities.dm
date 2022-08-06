@@ -103,7 +103,7 @@
 		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
 /datum/action/xeno_action/activable/prae_abduct
@@ -341,4 +341,4 @@
 		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by increasing their resilience from afar!"))
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

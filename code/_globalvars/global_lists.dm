@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes)		//Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if source paper is deleted
 
+GLOBAL_LIST_EMPTY(failed_fultons) 	//A list of fultoned items which weren't collected and fell back down
+
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
@@ -122,6 +124,7 @@ GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 
+
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
 
@@ -136,7 +139,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
-	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken()
+	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
+	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())

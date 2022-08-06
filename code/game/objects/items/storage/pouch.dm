@@ -945,6 +945,29 @@
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
 
+/obj/item/storage/pouch/document
+	name = "large document pouch"
+	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
+	icon_state = "document"
+	storage_slots = 21
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 21
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CLICK_GATHER
+	can_hold = list(
+		/obj/item/paper,
+		/obj/item/clipboard,
+		/obj/item/document_objective/paper,
+		/obj/item/document_objective/report,
+		/obj/item/document_objective/folder,
+		/obj/item/disk/objective,
+		/obj/item/document_objective/technical_manual
+	)
+
+/obj/item/storage/pouch/document/small
+	name = "small document pouch"
+	desc = "A smaller version of the document pouch. It can contain papers, folders, disks, technical manuals, and clipboards."
+	storage_slots = 7
+
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
@@ -1201,3 +1224,22 @@
 				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
 			if(0)
 				icon_state = base_icon_state
+
+/obj/item/storage/pouch/machete
+	name = "\improper H6B pattern M2132 machete scabbard"
+	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "macheteB_holster"
+	item_state = "machete_holster"
+	max_w_class = SIZE_LARGE
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
+
+/obj/item/storage/pouch/machete/update_icon()
+	if(length(contents))
+		icon_state = "[initial(icon_state)]_full"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/storage/pouch/machete/full/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/machete(src)

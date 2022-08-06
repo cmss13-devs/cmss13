@@ -48,6 +48,7 @@
 /area/lv624/lazarus/fitness)
 "ej" = (
 /obj/structure/closet/crate/secure/hydrosec,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -72,6 +73,7 @@
 	pixel_y = -9;
 	name = "running shoes"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -92,7 +94,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "fv" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "fV" = (
@@ -137,6 +139,7 @@
 	pixel_x = -1;
 	pixel_y = -8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -247,6 +250,14 @@
 	},
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
+"uV" = (
+/obj/structure/bed/chair,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
 "uY" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -285,6 +296,7 @@
 "xe" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -305,6 +317,7 @@
 /area/lv624/lazarus/fitness)
 "Ah" = (
 /obj/structure/closet/athletic_mixed,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -367,6 +380,7 @@
 "DH" = (
 /obj/structure/closet/lasertag/blue,
 /obj/item/tool/crowbar,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -379,6 +393,7 @@
 /obj/structure/holohoop{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "warnwhite"
@@ -474,6 +489,7 @@
 /area/lv624/lazarus/fitness)
 "JN" = (
 /obj/structure/filingcabinet/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "Kc" = (
@@ -512,7 +528,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "Op" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
@@ -630,6 +646,7 @@
 /area/lv624/lazarus/fitness)
 "Vk" = (
 /obj/structure/closet/lasertag/red,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -641,6 +658,7 @@
 	id = "lv_gym_1";
 	name = "treadmill"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -806,7 +824,7 @@ Tv
 hd
 Ia
 hd
-wA
+uV
 To
 It
 FD

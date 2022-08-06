@@ -79,17 +79,16 @@
 	if(isobj(O))
 		I = O
 
-		if(I.unacidable || istype(I, /obj/structure/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
-			to_chat(src, SPAN_WARNING("You cannot dissolve [I].")) // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
-			return
 		if(istype(O, /obj/structure/window_frame))
 			var/obj/structure/window_frame/WF = O
 			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
 				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
 				return
 
-		if(O.density || istype(O, /obj/structure))
-			wait_time = 40 //dense objects are big, so takes longer to melt.
+		wait_time = I.get_applying_acid_time()
+		if(wait_time == -1)
+			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))
+			return
 	else
 		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
 		return

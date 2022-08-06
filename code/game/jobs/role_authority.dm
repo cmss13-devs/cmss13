@@ -317,20 +317,6 @@ var/global/players_preassigned = 0
 		return assigned
 	return roles_left
 
-/datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
-	var/datum/mind/P = M.mind
-	var/datum/game_mode/G = SSticker.mode
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	// if we don't have at least one thing - abort
-	if(!P || !G || !hive)
-		return
-
-	if(hive.stored_larva)
-		hive.stored_larva--
-		G.transform_xeno(P)
-
-	return
-
 /datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
 	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
@@ -783,7 +769,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Boiler
 		if(XENO_CASTE_PREDALIEN)
 			M =	/mob/living/carbon/Xenomorph/Predalien
-
+		if(XENO_CASTE_HELLHOUND)
+			M =	/mob/living/carbon/Xenomorph/Hellhound
 	return M
 
 

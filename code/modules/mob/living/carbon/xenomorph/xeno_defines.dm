@@ -259,12 +259,15 @@
 
 	var/hivecore_cooldown = FALSE
 
+	var/need_round_end_check = FALSE
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	internal_faction = name
+	if(!internal_faction)
+		internal_faction = name
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
@@ -804,13 +807,16 @@
 
 	return faction_is_ally(C.faction)
 
-/datum/hive_status/proc/faction_is_ally(var/faction)
+/datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
 	if(faction == internal_faction)
 		return TRUE
-	if(!living_xeno_queen)
+	if(!ignore_queen_check && !living_xeno_queen)
 		return FALSE
 
 	return allies[faction]
+
+/datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return TRUE
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
@@ -819,6 +825,8 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 
+	need_round_end_check = TRUE
+
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	X.add_language(LANGUAGE_ENGLISH)
@@ -826,6 +834,11 @@
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
 	X.remove_language(LANGUAGE_ENGLISH)
+
+/datum/hive_status/corrupted/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	if(!faction_is_ally(FACTION_MARINE, TRUE))
+		return TRUE
+	return FALSE
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"
@@ -887,6 +900,26 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+
+	need_round_end_check = TRUE
+
+/datum/hive_status/forsaken/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/yautja
+	name = "Yautja Hive"
+	hivenumber = XENO_HIVE_YAUTJA
+	internal_faction = FACTION_YAUTJA
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+
+	need_round_end_check = TRUE
+
+/datum/hive_status/yautja/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return FALSE
 
 /datum/hive_status/mutated
 	name = "Mutated Hive"

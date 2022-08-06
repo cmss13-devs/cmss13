@@ -5,7 +5,7 @@
 	icon_state = "mortar_ammo_cas"
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
-	var/source_mob
+	var/datum/cause_data/cause_data
 
 /obj/item/mortar_shell/proc/detonate(var/turf/T)
 	forceMove(T)
@@ -22,7 +22,7 @@
 	icon_state = "mortar_ammo_he"
 
 /obj/item/mortar_shell/he/detonate(var/turf/T)
-	explosion(T, 0, 3, 5, 7, , , , create_cause_data(initial(name), source_mob))
+	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -30,7 +30,6 @@
 	icon_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(var/turf/T)
-	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	create_shrapnel(T, 60, cause_data = cause_data)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -46,8 +45,7 @@
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/mortar_shell/incendiary/detonate(var/turf/T)
-	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-	explosion(T, 0, 2, 4, 7, , , , cause_data)
+	explosion(T, 0, 2, 4, 7, explosion_cause_data = cause_data)
 	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
@@ -87,6 +85,7 @@
 			if(warhead?.has_camera)
 				deploy_camera(T)
 	if(warhead && locked && warhead.detonator)
+		warhead.cause_data = cause_data
 		warhead.prime()
 
 /obj/item/mortar_shell/custom/attack_self(mob/user)

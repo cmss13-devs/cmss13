@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "e" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "f" = (
@@ -21,7 +21,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_central_caves)
 "m" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,

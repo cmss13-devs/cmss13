@@ -339,15 +339,17 @@
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
-		/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
+		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi
 		)
 
@@ -431,10 +433,11 @@ var/list/rebel_shotguns = list(
 
 var/list/rebel_smgs = list(
 	/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
-	/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
+	/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 	/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 	/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 	/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
+	/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 	/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 	/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 	)
@@ -446,6 +449,7 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 	/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 	/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+	/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 	)
@@ -502,13 +506,13 @@ var/list/rebel_rifles = list(
 	var/list/merc_sidearms = list(
 		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
-		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/automatic,
+		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
-		/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
+		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi/extended)
+		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
+		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15/extended)
 
 	var/list/merc_firearms = list(
 		/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/slug,
@@ -533,10 +537,10 @@ var/list/rebel_rifles = list(
 	if(!M) return
 
 	var/list/merc_shotguns = list(
-		/obj/item/weapon/gun/shotgun/merc = pick(shotgun_shells_12g),
-		/obj/item/weapon/gun/shotgun/combat = pick(shotgun_shells_12g),
-		/obj/item/weapon/gun/shotgun/double/with_stock = pick(shotgun_shells_12g),
-		/obj/item/weapon/gun/shotgun/pump/cmb = pick(shotgun_shells_12g))
+		/obj/item/weapon/gun/shotgun/merc = pick(shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/combat = pick(shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/double/with_stock = pick(shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/pump/cmb = pick(shotgun_handfuls_12g))
 
 	var/gunpath = pick(merc_shotguns)
 	var/ammopath = merc_shotguns[gunpath]
@@ -568,9 +572,9 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
-	/obj/item/weapon/gun/shotgun/merc = pick(shotgun_shells_12g),
-	/obj/item/weapon/gun/shotgun/combat = pick(shotgun_shells_12g),
-	/obj/item/weapon/gun/shotgun/type23 = pick(shotgun_shells_8g))
+	/obj/item/weapon/gun/shotgun/merc = pick(shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/combat = pick(shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/type23 = pick(shotgun_handfuls_8g))
 
 	if(prob(shotgun_chance))
 		var/gunpath = pick(elite_merc_shotguns)

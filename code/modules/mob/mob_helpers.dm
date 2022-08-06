@@ -415,6 +415,12 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				return 1
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 				return 1.2 //Medic/nurse.
+
+		if(SKILL_INTEL)
+			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))
+				return DURATION_MULTIPLIER_TIER_2
+			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 		//if(SKILL_RESEARCH)
 		//if(SKILL_PILOT)
 		//if(SKILL_POLICE)
@@ -483,3 +489,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	if(Adjacent(pullify))
 		start_pulling(pullify)
+
+/mob/proc/handle_blood_splatter(var/splatter_dir)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)

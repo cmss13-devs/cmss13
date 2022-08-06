@@ -597,8 +597,6 @@
 		moblist.Add(M)
 	for(var/mob/living/carbon/human/monkey/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/hellhound/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
 	return moblist
@@ -1896,6 +1894,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 			else
 				name += " \[dead\]"
 		pois[name] = M
+
+	pois.Add(get_multi_vehicles())
 
 	return pois
 

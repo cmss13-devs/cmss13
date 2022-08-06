@@ -90,7 +90,7 @@
 /obj/item/lightstick/red,
 /obj/item/lightstick/red,
 /obj/item/storage/box/lightstick/red,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -123,7 +123,7 @@
 "q" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -132,7 +132,7 @@
 "r" = (
 /obj/structure/surface/table,
 /obj/item/pizzabox,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -141,7 +141,7 @@
 "s" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -149,7 +149,7 @@
 /area/bigredv2/caves_north)
 "t" = (
 /obj/structure/ore_box,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -168,7 +168,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "A" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -176,7 +176,7 @@
 /area/bigredv2/caves_north)
 "P" = (
 /obj/item/ore,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"

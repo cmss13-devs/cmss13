@@ -42,7 +42,7 @@
 	if(caste)
 		if(isnull(speaking) || speaking.key != "q") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
 			for(var/datum/language/L in languages)
-				if(L.key == "x")
+				if(L.key == speaking_key)
 					verb = L.speech_verb
 					speaking = L
 					forced = 1
@@ -73,10 +73,8 @@
 			message += "."
 
 	if(forced)
-		if(isXenoPredalien(src))
-			playsound(loc, 'sound/voice/predalien_click.ogg', 25, 1)
-		else
-			playsound(loc, "alien_talk", 25, 1)
+		if(speaking_noise)
+			playsound(loc, speaking_noise, 25, 1)
 		..(message, speaking, verb, null, null, message_range, null)
 	else
 		hivemind_talk(message)

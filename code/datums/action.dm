@@ -1,6 +1,7 @@
 
 /datum/action
 	var/name = "Generic Action"
+	var/icon_file = 'icons/mob/hud/actions.dmi'
 	var/action_icon_state
 	var/button_icon_state
 	var/obj/target = null
@@ -19,6 +20,7 @@
 	target = Target
 	button = new
 	if(target)
+		target.icon = icon_file
 		var/image/IMG = image(target.icon, button, target.icon_state)
 		IMG.pixel_x = 0
 		IMG.pixel_y = 0
@@ -27,7 +29,7 @@
 	button.name = name
 	if(button_icon_state)
 		button.icon_state = button_icon_state
-	button.overlays += image('icons/mob/hud/actions.dmi', button, override_icon_state || action_icon_state)
+	button.overlays += image(icon_file, button, override_icon_state || action_icon_state)
 
 /datum/action/Destroy()
 	if(owner)

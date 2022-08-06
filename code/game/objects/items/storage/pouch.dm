@@ -1243,11 +1243,13 @@
 		
 /obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()
-	playsound(src, soundin = 'sound/weapons/gun_rifle_draw.ogg', vol = 15, vary = TRUE)
+	var/sheatheSound = 'sound/weapons/gun_rifle_draw.ogg'
+	playsound(src, sheatheSound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/_item_removal(obj/item/W, atom/new_location)
 	..()
-	playsound(src, soundin = 'sound/weapons/gun_rifle_draw.ogg', vol = 15, vary = TRUE)
+	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
+	playsound(src, drawSound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/machete(src)

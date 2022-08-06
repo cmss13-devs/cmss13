@@ -29,7 +29,7 @@
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
 				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, "#b491c8")
 				return
 

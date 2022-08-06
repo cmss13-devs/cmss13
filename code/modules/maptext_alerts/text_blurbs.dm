@@ -150,7 +150,7 @@ but should see their own spawn message even if the player already dropped as USC
 
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/fade_blurb, targets, T), duration)
 
-/proc/fade_blurb(list/mob/targets, obj/T, var/fadeout_time = 0.5 SECONDS)
+/proc/fade_blurb(list/mob/targets, obj/T)
 	animate(T, alpha = 0, time = 0.5 SECONDS)
 	sleep(5)
 	for(var/mob/M as anything in targets)

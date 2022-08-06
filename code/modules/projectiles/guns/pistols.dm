@@ -446,6 +446,13 @@
 /obj/item/weapon/gun/pistol/mod88/training
 	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
 
+
+/obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/S = new(src)
+	S.Attach(src)
+	update_attachable(S.slot)
+
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.
 

@@ -437,11 +437,17 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"
-	pro_case_overlay = "defense"
+	icon_state = "cryo_defense_kit"
 	storage_slots = 2
 
+/obj/item/storage/box/kit/cryo_self_defense/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_e"
+
 /obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/holdout/flashlight(src)
+	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper

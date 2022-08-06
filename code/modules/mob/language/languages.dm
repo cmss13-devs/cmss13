@@ -15,14 +15,27 @@
 			return ask_verb
 	return speech_verb
 
+
+/datum/language/generated //parent type for languages with custom sound generation methods like chinese and japanese
+	space_chance = 100 //uses a unique system
+
 // Galactic common languages (systemwide accepted standards).
-/datum/language/japanese
+/datum/language/generated/japanese
 	name = LANGUAGE_JAPANESE
 	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
 	speech_verb = "vocalizes"
 	colour = "japanese"
 	key = "2"
-	space_chance = 100 //uses a unique system
+
+
+/datum/language/generated/chinese
+	name = LANGUAGE_CHINESE
+	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
+	speech_verb = "shuo"
+	ask_verb = "wen"
+	exclaim_verb = "han"
+	colour = "chinese"
+	key = "8"
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
@@ -80,6 +93,18 @@
 
 	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
 	space_chance = 20
+
+/datum/language/hellhound
+	name = LANGUAGE_HELLHOUND
+	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	colour = "monkey"
+	key = "h"
+
+/datum/language/hellhound/scramble(input)
+	return pick("Grrr...", "Grah!", "Gurrr..")
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY

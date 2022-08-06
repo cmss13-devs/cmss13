@@ -16,6 +16,8 @@
 #define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
 ///from /datum/game_mode/proc/post_setup
 #define COMSIG_GLOB_MODE_POSTSETUP "!mode_postsetup"
+///from /datum/game_mode/proc/ds_first_landed
+#define COMSIG_GLOB_DS_FIRST_LANDED "!ds_first_landed"
 ///from /mob/living/carbon/human/death
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
 ///from /mob/living/carbon/Xenomorph/death
@@ -163,6 +165,14 @@
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
 
+#define COMSIG_DBLCLICK_SHIFT_MIDDLE "dblclick_shift_middle"
+#define COMSIG_DBLCLICK_CTRL_SHIFT "dblclick_ctrl_shift"
+#define COMSIG_DBLCLICK_CTRL_MIDDLE "dblclick_ctrl_middle"
+#define COMSIG_DBLCLICK_MIDDLE "dblclick_middle"
+#define COMSIG_DBLCLICK_SHIFT "dblclick_shift"
+#define COMSIG_DBLCLICK_ALT "dblclick_alt"
+#define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
+
 #define COMSIG_MOB_LOGIN "mob_login"
 
 /// From /mob/living/rejuvenate
@@ -170,6 +180,7 @@
 /// From /mob/living/proc/IgniteMob
 #define COMSIG_LIVING_PREIGNITION "living_preignition"
 	#define COMPONENT_CANCEL_IGNITION (1<<0)
+#define COMSIG_LIVING_IGNITION "living_ignition"
 
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
@@ -194,6 +205,10 @@
 /// From /mob/living/carbon/human/bullet_act(): (damage_result, ammo_flags, obj/item/projectile/P)
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
+///called when an atom starts orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+///called when an atom stops orbiting another atom: (atom)
+#define COMSIG_ATOM_ORBIT_STOP "atom_orbit_stop"
 /// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
@@ -215,7 +230,13 @@
 #define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
-	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+
+/// From /mob/living/carbon/Xenomorph/revive()
+#define COMSIG_XENO_REVIVED "xeno_revived"
+
+// From /obj/structure/safe/Topic()
+#define COMSIG_SAFE_OPENED "safe_opened"
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
@@ -397,6 +418,9 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+
+///from base of /atom/movable/proc/set_glide_size(): (target)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"

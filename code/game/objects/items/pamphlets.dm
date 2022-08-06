@@ -86,6 +86,13 @@ obj/item/pamphlet/Initialize()
 	trait = /datum/character_trait/skills/surgery
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/intel
+	name = "field intelligence instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has an intelligence insignia."
+	icon_state = "pamphlet_reading"
+	trait = /datum/character_trait/skills/intel
+	bypass_pamphlet_limit = TRUE
+
 /obj/item/pamphlet/language
 	name = "translation pamphlet"
 	desc = "A pamphlet used by lazy USCM interpreters to quickly learn new languages on the spot."
@@ -101,6 +108,11 @@ obj/item/pamphlet/Initialize()
 	name = "Pages of Turedobando Yohei Adobencha Zohuken"
 	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
 	trait = /datum/character_trait/language/japanese
+
+/obj/item/pamphlet/language/chinese
+	name = "Pages from the Little Red Book"
+	desc = "没有共产党就没有新中国! Pages from the handbook to starting a famine that kills over 100 million of your people. Apparently this will help you learn Chinese."
+	trait = /datum/character_trait/language/chinese
 
 /obj/item/pamphlet/language/german
 	name = "Translated Lyrics to 99 Luftballons"

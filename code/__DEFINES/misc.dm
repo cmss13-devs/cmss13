@@ -226,3 +226,10 @@
 #define GHOST_VISION_LEVEL_NO_NVG		"No Night Vision"
 #define GHOST_VISION_LEVEL_MID_NVG		"Half Night Vision"
 #define GHOST_VISION_LEVEL_FULL_NVG		"Full Night Vision"
+
+//Ghost orbit types:
+#define GHOST_ORBIT_CIRCLE "circular"
+#define GHOST_ORBIT_TRIANGLE "triangular"
+#define GHOST_ORBIT_HEXAGON "hexagonal"
+#define GHOST_ORBIT_SQUARE "square"
+#define GHOST_ORBIT_PENTAGON "pentagonal"

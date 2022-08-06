@@ -240,6 +240,56 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
+	if(flags_ammo_behavior & AMMO_HIGHIMPACT)
+		if(!user)
+			return FALSE
+
+		if(L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+			return ..()
+
+		var/mob/living/carbon/human/execution_target = L
+		if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+			to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+			return FALSE
+
+		if(execution_target.status_flags & PERMANENTLY_DEAD)
+			to_chat(user, SPAN_DANGER("[execution_target] is already as dead as it's possible to be!"))
+			fired_from.delete_bullet(P, TRUE)
+			return TRUE
+
+		user.affected_message(execution_target,
+			SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
+			SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
+			SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
+
+		user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
+			fired_from.delete_bullet(P, TRUE)
+			return TRUE
+
+		execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+		execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+		execution_target.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+		execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
+		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
+			SPAN_HIGHDANGER("You WERE EXECUTED!"))
+
+		user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+
+		var/area/execution_area = get_area(execution_target)
+
+		msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(execution_target)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+		log_attack("[key_name(usr)] battlefield executed [key_name(execution_target)] at [execution_area.name].")
+
+		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
+			execution_target.gib()
+		return TRUE
+	return ..()
+
 /*
 //======
 					Pistol Ammo
@@ -367,48 +417,10 @@
 	name = ".50 high-impact pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_2
 	debilitate = list(0,2,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
-
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return
-
-	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return
-
-	if(L.status_flags & PERMANENTLY_DEAD)
-		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
-		return TRUE
-
-	var/mob/living/carbon/human/H = L
-	user.affected_message(L,
-		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
-		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
-		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
-
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return TRUE
-
-	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
-	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
-	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
-
-	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
-
-	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
-		SPAN_HIGHDANGER("You were executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -655,59 +667,15 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
-	var/explosive = FALSE
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_2
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
-
-/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/revolver/fired_from)
-	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return
-
-	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return
-
-	if(L.status_flags & PERMANENTLY_DEAD)
-		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
-
-	var/mob/living/carbon/human/H = L
-	user.affected_message(L,
-		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
-		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
-		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
-
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
-
-	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
-	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
-	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
-
-	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
-
-	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
-		SPAN_HIGHDANGER("You were executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
-
-	if(explosive)
-		H.gib()
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
 	name = ".454 heavy explosive revolver bullet"
@@ -715,7 +683,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	explosive = TRUE
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	..()
@@ -1274,7 +1242,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	accurate_range = 3
 	max_range = 3
-	damage = 90
+	damage = 75
 	penetration	= 0
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -1295,7 +1263,7 @@
 	handful_state = "heavy_dragonsbreath"
 	multiple_handful_name = TRUE
 	damage_type = BURN
-	damage = 75
+	damage = 60
 	accurate_range = 3
 	max_range = 4
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
@@ -1319,7 +1287,7 @@
 
 	accurate_range = 7
 	max_range = 8
-	damage = 100 //ouch.
+	damage = 90 //ouch.
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
 
@@ -1358,7 +1326,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
 	max_range = 12
-	damage = 50
+	damage = 45
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_10
@@ -1370,7 +1338,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = 50
+	damage = 45
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_10
@@ -1629,12 +1597,15 @@
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
+		var/size_damage_mod = 0.8
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.6
 			if(target.mob_size >= MOB_SIZE_BIG)
-				L.apply_armoured_damage(damage*1.2, ARMOR_BULLET, BRUTE, null, penetration)
-		L.apply_armoured_damage(damage*0.8, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 300% against Big xenos (375). -Kaga
+				size_damage_mod += 0.6
+		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/elite
@@ -1654,14 +1625,17 @@
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
+		var/size_damage_mod = 0.5
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.5
 			if(target.mob_size >= MOB_SIZE_BIG)
-				L.apply_armoured_damage(damage*1.5, ARMOR_BULLET, BRUTE, null, penetration)
-			L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+				size_damage_mod += 1
+			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		else
 			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
-		// 150% damage to non-Big xenos (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
@@ -2053,6 +2027,7 @@
 	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
 			rocket.forceMove(P.loc)
+		rocket.warhead.cause_data = P.weapon_cause_data
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(A))
@@ -2114,6 +2089,27 @@
 	name = "precise taser bolt"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
+/datum/ammo/energy/rxfm_eva
+	name = "focused energy bolt"
+	icon_state = "cm_laser"
+	flags_ammo_behavior = AMMO_ENERGY
+	accurate_range = 7
+	max_range = 14
+	damage = 25
+	shell_speed = AMMO_SPEED_TIER_2
+
+/datum/ammo/energy/laz_uzi
+	name = "laser bolt"
+	icon_state = "laser_new"
+	flags_ammo_behavior = AMMO_ENERGY
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	max_range = 10
+	shell_speed = AMMO_SPEED_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
@@ -2847,6 +2843,27 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
 		M.Slow(0.4)
+
+/*
+//========
+					CAS 30mm impacters
+//========
+*/
+/datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
+	name = "30mm Multi-Purpose shell"
+
+	damage = 115 //More damaging, but 2x less shells and low AP
+	penetration = ARMOR_PENETRATION_TIER_2
+	accuracy = HIT_ACCURACY_TIER_MAX
+	max_range = 0
+	shrapnel_chance = 100 //the least of your problems
+
+/datum/ammo/bullet/shrapnel/gau/at
+	name = "30mm Anti-Tank shell"
+
+	damage = 80 //Standard AP vs standard. (more AP for less damage)
+	penetration = ARMOR_PENETRATION_TIER_8
+	accuracy = HIT_ACCURACY_TIER_MAX
 /*
 //======
 					Misc Ammo

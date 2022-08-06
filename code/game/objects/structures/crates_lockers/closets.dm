@@ -123,6 +123,10 @@
 
 /obj/structure/closet/proc/store_items(var/stored_units)
 	for(var/obj/item/I in src.loc)
+		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
+			var/obj/item/explosive/plastic/P = I
+			if(P.active)
+				continue
 		var/item_size = Ceiling(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
@@ -208,8 +212,14 @@
 			return 0
 		if(istype(W, /obj/item/tool/weldingtool))
 			var/obj/item/tool/weldingtool/WT = W
-			if(!WT.remove_fuel(0,user))
+			if(!WT.isOn())
+				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+				return
+			if(!WT.remove_fuel(0 ,user))
 				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+				return
+			playsound(src, 'sound/items/Welder.ogg', 25, 1)
+			if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 			new /obj/item/stack/sheet/metal(src.loc)
 			for(var/mob/M in viewers(src))
@@ -220,18 +230,28 @@
 			return
 		user.drop_inv_item_to_loc(W,loc)
 
-	else if(istype(W, /obj/item/packageWrap))
+	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
 	else if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.remove_fuel(0,user))
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+			return
+		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+			return
+		playsound(src, 'sound/items/Welder.ogg', 25, 1)
+		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		welded = !welded
 		update_icon()
 		for(var/mob/M in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
 	else
+		if(isXeno(user))
+			var/mob/living/carbon/Xenomorph/opener = user
+			src.attack_alien(opener)
+			return
 		src.attack_hand(user)
 	return
 

@@ -28,3 +28,5 @@ GLOBAL_LIST_EMPTY_TYPED(disposalpipe_down_list, /obj/structure/disposalpipe/down
 GLOBAL_LIST_EMPTY_TYPED(hijack_bustable_windows, /obj/structure/window)
 GLOBAL_LIST_EMPTY_TYPED(hijack_deletable_windows, /obj/structure/machinery/door/window/ultra)
 GLOBAL_LIST_EMPTY_TYPED(hijack_bustable_ladders, /obj/structure/ladder/fragile_almayer)
+
+GLOBAL_LIST_EMPTY_TYPED(all_multi_vehicles, /obj/vehicle/multitile)

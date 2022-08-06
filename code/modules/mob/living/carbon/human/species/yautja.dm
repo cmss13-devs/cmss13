@@ -27,6 +27,8 @@
 	total_health = 150 //more health than regular humans, makes up for hardcrit reintroduction
 	timed_hug = FALSE
 
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
@@ -212,3 +214,7 @@
 
 /datum/species/yautja/get_hairstyle(var/style)
 	return GLOB.yautja_hair_styles_list[style]
+
+/datum/species/yautja/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))

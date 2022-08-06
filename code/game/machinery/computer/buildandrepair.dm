@@ -21,8 +21,8 @@
 					src.state = 1
 			if(istype(P, /obj/item/tool/weldingtool))
 				var/obj/item/tool/weldingtool/WT = P
-				if(!WT.remove_fuel(0, user))
-					to_chat(user, "[WT] must be on to complete this task.")
+				if(!WT.isOn())
+					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 					return
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

@@ -5,7 +5,7 @@
 /datum/reagent/generated
 	reagent_state = LIQUID //why isn't this default, seriously
 	chemclass = CHEM_CLASS_ULTRA
-	objective_value = 20
+	objective_value = OBJECTIVE_HIGH_VALUE
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/generated/New()

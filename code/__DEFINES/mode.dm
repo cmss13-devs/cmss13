@@ -85,6 +85,7 @@
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
+#define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
 //=================================================
 
 var/list/be_special_flags = list(
@@ -113,11 +114,11 @@ var/list/be_special_flags = list(
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.
-var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_POLICE, JOB_POLICE_CADET, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
+var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_POLICE, JOB_POLICE_CADET, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
 
-#define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
+#define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_CIC			= list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
-var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
+var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
 var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_WORKING_JOE, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
 var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
@@ -189,36 +190,27 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 
 // Objective priorities
 #define OBJECTIVE_NO_VALUE 0
-#define OBJECTIVE_LOW_VALUE 10
-#define OBJECTIVE_MEDIUM_VALUE 20
-#define OBJECTIVE_HIGH_VALUE 30
-#define OBJECTIVE_EXTREME_VALUE 50
-#define OBJECTIVE_ABSOLUTE_VALUE 100
-//=================================================
+#define OBJECTIVE_LOW_VALUE 0.1
+#define OBJECTIVE_MEDIUM_VALUE 0.2
+#define OBJECTIVE_HIGH_VALUE 0.35
+#define OBJECTIVE_EXTREME_VALUE 0.7
+#define OBJECTIVE_ABSOLUTE_VALUE 1.4
+#define OBJECTIVE_POWER_VALUE 5
 
-// Required prereqs
-#define PREREQUISITES_NONE 0
-#define PREREQUISITES_ONE 1
-#define PREREQUISITES_QUARTER 2
-#define PREREQUISITES_MAJORITY 3
-#define PREREQUISITES_ALL 4
+// Objective states
+#define OBJECTIVE_INACTIVE (1<<0)
+#define OBJECTIVE_ACTIVE (1<<1)
+#define OBJECTIVE_COMPLETE (1<<2)
 
 // Functionality flags
-#define OBJ_PREREQS_CANT_FAIL 1
-#define OBJ_DO_NOT_TREE 2
-#define OBJ_REQUIRES_POWER 4
-#define OBJ_REQUIRES_COMMS 8
-#define OBJ_DEAD_END 16
-#define OBJ_PROCESS_ON_DEMAND 32
-#define OBJ_CRITICAL 64 // does failing this constitute a loss?
-#define OBJ_CAN_BE_UNCOMPLETED 128
-#define OBJ_FAILABLE 256
+#define OBJECTIVE_DO_NOT_TREE (1<<0) // Not part of the 'clue' tree
+#define OBJECTIVE_DEAD_END (1<<1) // Should this objective unlock zero clues?
+#define OBJECTIVE_START_PROCESSING_ON_DISCOVERY (1<<2) // Should this objective process() every subsystem 'tick' once its breadcrumb trail of clues have been finished?
 
-// Display flags
-#define OBJ_DISPLAY_AT_END 1 // show it on the round end screen
-#define OBJ_DISPLAY_WHEN_INACTIVE 2
-#define OBJ_DISPLAY_WHEN_COMPLETE 4
-#define OBJ_DISPLAY_HIDDEN 8
+/// Misc. defines for objectives
+#define APC_SCORE_INTERVAL 10 MINUTES
+
+//=================================================
 
 // Faction names
 #define FACTION_NEUTRAL "Neutral"
@@ -262,10 +254,6 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_XENOMORPH_DELTA "Delta Xenomorph"
 
 #define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA)
-
-// ERT Proportions
-
-#define ERT_PMC_GUNNER_FRACTION 0.5 //50% gunners, 50% snipers among PMCs
 
 //SSticker.current_state values
 #define GAME_STATE_STARTUP		0

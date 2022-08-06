@@ -131,8 +131,9 @@
 #define XENO_HIVE_TAMED "xeno_hive_tamed"
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
+#define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA)
 
 //=================================================
 
@@ -171,6 +172,7 @@
 #define EASY_SURGERY			(1<<2)  // Surgeries on this mob don't require advanced skills.
 #define SURGERY_MODE_ON			(1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 #define MUTINEER				(1<<4)  // Part of the Mutiny Gang
+#define GIVING					(1<<5)	// Is currently trying to give an item to someone
 
 //=================================================
 
@@ -350,6 +352,9 @@
 #define PRAETORIAN_DANCER	  "Dancer"
 #define PRAETORIAN_WARDEN 	  "Warden"
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
+
+// Hellhound strain flags
+#define HELLHOUND_NORMAL	"Normal"
 
 var/list/default_onmob_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',

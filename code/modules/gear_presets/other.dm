@@ -1,8 +1,6 @@
 /datum/equipment_preset/other
 	name = "Other"
-
-/datum/equipment_preset/other/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH))
+	languages = list(LANGUAGE_ENGLISH)
 
 //*****************************************************************************************************/
 
@@ -107,7 +105,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(shotgun_shells_8g), H, 0, 14) //shotgunner mini-spec
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(shotgun_handfuls_8g), H, 0, 14) //shotgunner mini-spec
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
@@ -157,7 +155,10 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 
 	load_freelancer_medic(H, shotgunner)
@@ -205,7 +206,7 @@
 	paygrade = "Freelancer Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA)
 
 	skills = /datum/skills/freelancer/SL
 
@@ -217,8 +218,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
@@ -550,7 +553,7 @@
 	name = "Pizza"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE) //Just in case they are delivering to UPP or CLF...
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/pizza
 	assignment = "Pizza Deliverer"
 	rank = FACTION_PIZZA
@@ -595,11 +598,11 @@
 	name = "Souto Man"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE) //Just in case they are delivering to UPP or CLF...
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
 	assignment = FACTION_SOUTO
 	rank = "Souto Man"
-	skills = /datum/skills/mercenary
+	skills = /datum/skills/souto
 	faction = FACTION_SOUTO
 
 /datum/equipment_preset/other/souto/New()
@@ -780,6 +783,8 @@
 	idtype = /obj/item/card/id/lanyard
 	skills = /datum/skills/civilian/survivor
 
+	languages = list(LANGUAGE_XENOMORPH, LANGUAGE_ENGLISH)
+
 	assignment = "Cultist"
 	rank = "Cultist"
 
@@ -787,39 +792,34 @@
 	. = ..()
 	access = get_all_civilian_accesses()
 
-/datum/equipment_preset/other/xeno_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
-	. = ..()
-	H.hivenumber = hivenumber
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-	if(hive)
-		H.faction = hive.internal_faction
-
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
-
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cultist_hoodie(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cultist_hood(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+
+	var/obj/item/clothing/suit/cultist_hoodie/hoodie = new /obj/item/clothing/suit/cultist_hoodie(H)
+	hoodie.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hoodie, WEAR_JACKET)
+
+	var/obj/item/clothing/head/cultist_hood/hood = new /obj/item/clothing/head/cultist_hood(H)
+	hood.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hood, WEAR_HEAD)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
 
-	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-
-	if(hive.leading_cult_sl == H)
-		hive.leading_cult_sl = null
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive)
+		H.faction = hive.internal_faction
+		if(hive.leading_cult_sl == H)
+			hive.leading_cult_sl = null
+	H.hivenumber = hivenumber
 
 	GLOB.xeno_cultists += H
 
@@ -831,11 +831,14 @@
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
 
-	for(var/datum/action/human_action/activable/O in H.actions)
-		O.remove_from(H)
+	if(istype(H.wear_suit, /obj/item/clothing/suit/cultist_hoodie) || istype(H.head, /obj/item/clothing/head/cultist_hood))
+		actions_to_add -= /datum/action/human_action/activable/cult/obtain_equipment
 
 	for(var/action_to_add in actions_to_add)
 		give_action(H, action_to_add)
+
+	H.default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	H.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader
 	name = "Cultist - Xeno Cultist Leader"
@@ -856,10 +859,10 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 	hive.leading_cult_sl = H
 
-	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)
-
+	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader)
 	for(var/type in types)
 		give_action(H, type)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/professor_dummy

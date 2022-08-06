@@ -6,6 +6,7 @@
 		objectjs = jointext(typesof(/obj), ";")
 		create_object_html = file2text('html/create_object.html')
 		create_object_html = replacetext(create_object_html, "null /* object types */", "\"[objectjs]\"")
+		create_object_html = replacetext(create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
 	show_browser(user, replacetext(create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=425x475")
 
@@ -43,5 +44,6 @@
 		objectjs = jointext(typesof(path), ";")
 		quick_create_object_html = file2text('html/create_object.html')
 		quick_create_object_html = replacetext(quick_create_object_html, "null /* object types */", "\"[objectjs]\"")
+		quick_create_object_html = replacetext(quick_create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
 	show_browser(user, replacetext(quick_create_object_html, "/* ref src */", "\ref[src]"), "Quick Create Object", "quick_create_object", "size=425x475")

@@ -180,18 +180,15 @@
 			W.reagents.reaction(atm)
 			if(istype(atm, /obj/flamer_fire))
 				var/obj/flamer_fire/FF = atm
-				if(FF.firelevel > power)
+				if((FF.firelevel > power) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 					FF.firelevel -= power
 					FF.update_flame()
-				else
+				else //See: aliens.dm acid extinguishing behavior for more variant cases if needed.
 					qdel(atm)
 				continue
 			if(isliving(atm)) //For extinguishing mobs on fire
 				var/mob/living/M = atm
 				M.ExtinguishMob()
-				for(var/obj/item/clothing/mask/cigarette/C in M.contents)
-					if(C.item_state == C.icon_on)
-						C.die()
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)

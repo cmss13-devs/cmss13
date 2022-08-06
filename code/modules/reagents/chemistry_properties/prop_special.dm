@@ -88,7 +88,9 @@
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
 	chemical_data.update_credits(10)
-	message_staff("The research department has discovered DNA_Disintegrating in [holder.name], and received 10 Research Credits.")
+	message_staff("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
 
 /datum/chem_property/special/ciphering
@@ -170,7 +172,7 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC)) //No effect if already infected
+	if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable) //No effect if already infected
 		return
 	for(var/i=1,i<=max((level % 100)/10,1),i++)//10's determine number of embryos
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)

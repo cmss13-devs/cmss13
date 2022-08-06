@@ -9,7 +9,13 @@
 	var/page_content = http_response["CONTENT"]
 	if(page_content)
 		var/list/geodata = json_decode(html_decode(file2text(page_content)))
-		return geodata["countryCode"]
+		if(geodata["countryCode"] == "GB")
+			if((geodata["regionName"] == "Scotland") || (geodata["regionName"] == "Wales"))
+				return geodata["regionName"]
+			else
+				return geodata["countryCode"]
+		else
+			return geodata["countryCode"]
 
 var/list/countries = icon_states('icons/flags.dmi')
 

@@ -28,7 +28,7 @@
 
 /datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/H, randomise, count_participant)
 	. = ..()
-	if(!auto_squad_name)
+	if(!auto_squad_name || is_admin_level(H.z))
 		return
 	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
 		GLOB.data_core.manifest_inject(H)
@@ -179,6 +179,71 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/intel
+	name = "USCM Intelligence Officer (IO) (Cryo)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+	)
+	assignment = JOB_INTEL
+	rank = JOB_INTEL
+	paygrade = "MO1"
+	role_comm_title = "IO"
+	skills = /datum/skills/intel
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
+
+/datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+
+/datum/equipment_preset/uscm/intel/load_status()
+	return //No cryo munchies
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/intel/full
+	name = "USCM Intelligence Officer (IO)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
+
+/datum/equipment_preset/uscm/intel/full/load_gear(mob/living/carbon/human/H)
+
+	var/obj/item/clothing/under/marine/officer/intel/U = new(H)
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	U.attach_accessory(H, W)
+	H.equip_to_slot_or_del(U, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/intel(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/intel(src), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/intel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/document(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
+
+
+	H.hud_set_squad()
 
 /*****************************************************************************************************/
 /datum/equipment_preset/uscm/spec
@@ -538,7 +603,10 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
@@ -651,6 +719,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
+
+	H.back.pickup()
 
 /datum/equipment_preset/uscm/rto_equipped/cryo
 	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"

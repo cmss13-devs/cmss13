@@ -8,7 +8,7 @@
 	opacity = 0
 	anchored = TRUE
 	health = 25
-	layer = RESIN_STRUCTURE_LAYER
+	layer = BUSH_LAYER // technically a plant amiright
 	var/picked = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/consume_delay = 2 SECONDS
@@ -21,6 +21,8 @@
 	var/regeneration_ticks = 1
 	var/mature_icon_state = "fruit_lesser"
 	var/consumed_icon_state = "fruit_spent"
+
+	var/glow_color = "#17991b80"
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
@@ -51,7 +53,7 @@
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, .proc/handle_xeno_qdel)
 	set_hive_data(src, hivenumber)
 	//Keep timer value here
-	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature, TIMER_UNIQUE | TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/hostiles/fruits.dmi'
@@ -118,13 +120,16 @@
 	mature = TRUE
 	icon_state = mature_icon_state
 	timer_id = TIMER_ID_NULL
+	if(glow_color)
+		add_filter("fruity_glow", 1, list("type" = "outline", "color" = glow_color, "size" = 1))
 	update_icon()
 
-/obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature) // Someone might've eaten it before us!
 		recipient.gain_health(75)
 		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries."))
-		finish_consume(recipient)
+		if(do_consume)
+			finish_consume(recipient)
 
 /obj/effect/alien/resin/fruit/proc/finish_consume(mob/living/carbon/Xenomorph/recipient)
 	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
@@ -182,7 +187,7 @@
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/greater
 
 
-/obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(!mature)
 		return
 	if(recipient && !QDELETED(recipient))
@@ -190,7 +195,8 @@
 		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries, and begin to regenerate rapidly."))
 		// Every second, heal him for 15.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
-	finish_consume(recipient)
+	if(do_consume)
+		finish_consume(recipient)
 
 //Unstable
 /obj/effect/alien/resin/fruit/unstable
@@ -208,14 +214,16 @@
 	var/shield_duration = 1 MINUTES
 	var/shield_decay = 10
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/unstable
+	glow_color = "#17997280"
 
-/obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(Clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		to_chat(recipient, SPAN_XENONOTICE("You feel your defense being bolstered, and begin to regenerate rapidly."))
 		// Every seconds, heal him for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
-	finish_consume(recipient)
+	if(do_consume)
+		finish_consume(recipient)
 
 //Spore
 /obj/effect/alien/resin/fruit/spore
@@ -231,8 +239,9 @@
 	var/pheromone_range = 1
 	consumed_icon_state = "fruit_spent_2"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/spore
+	glow_color = "#99461780"
 
-/obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		mature = FALSE
 		for (var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
@@ -240,7 +249,8 @@
 				qdel(E)
 		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 60 SECONDS, "spore")
 		to_chat(recipient, SPAN_XENONOTICE("You feel a frenzy coming onto you! Your abilities will cool off faster as you slash!"))
-	finish_consume(recipient)
+	if(do_consume)
+		finish_consume(recipient)
 
 /obj/effect/alien/resin/fruit/spore/mature()
 	..()
@@ -267,6 +277,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/speed
+	glow_color = "#9559ca80"
 	var/speed_buff_amount = 0.4
 	var/speed_duration = 15 SECONDS
 
@@ -276,11 +287,34 @@
 		return XENO_NO_DELAY_ACTION
 	return ..()
 
-/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates you to move faster!"))
 		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("You feel the effects of the [name] wane..."))
-	finish_consume(recipient)
+	if(do_consume)
+		finish_consume(recipient)
+
+/obj/effect/alien/resin/fruit/plasma
+	name = XENO_FRUIT_PLASMA
+	desc = "A fruit that can be eaten to boost your plasma generation."
+	time_to_mature = 25 SECONDS
+	icon_state = "fruit_plasma_immature"
+	mature_icon_state = "fruit_plasma"
+	consumed_icon_state = "fruit_spent_2"
+	flags = CAN_CONSUME_AT_FULL_HEALTH
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/plasma
+	glow_color = "#287A90"
+	var/plasma_amount = 240
+	var/plasma_time = 15
+	var/time_between_plasmas = 3
+
+/obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
+	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
+		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts your plasma regeneration!"))
+		// with the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds
+		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
+	if(do_consume)
+		finish_consume(recipient)
 
 #undef CAN_CONSUME_AT_FULL_HEALTH
 
@@ -334,6 +368,9 @@
 			return
 	if(!istype(X))
 		return ..()
+	if(X.stat == DEAD)
+		to_chat(user, SPAN_WARNING("That sister is already dead, they won't benefit from the fruit now..."))
+		return
 	user.affected_message(X,
 		SPAN_HELPFUL("You <b>start [user == X ? "eating" : "feeding [X]"] [src]</b>."),
 		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -360,14 +397,14 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/add_juice()
 	reagents.add_reagent("fruit_resin", 8)
 
-/obj/effect/alien/resin/fruit/MouseDrop(mob/living/carbon/Xenomorph/user)
-	if(!istype(user))
-		return
-	if(Adjacent(user) && !user.is_mob_incapacitated() && !user.lying)
-		user.pickup_fruit(src)
+/obj/effect/alien/resin/fruit/MouseDrop(atom/over_object)
+	var/mob/living/carbon/Xenomorph/X = over_object
+	if(!istype(X) || !Adjacent(X) || X != usr || X.is_mob_incapacitated() || X.lying) return ..()
+	X.pickup_fruit(src)
 
 // Handles xenos picking up fruit
 /mob/living/carbon/Xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
+
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
 		to_chat(src, SPAN_XENODANGER("You crush [F]."))
 		qdel(F)
@@ -394,6 +431,10 @@
 	if(!QDELETED(F.bound_xeno))
 		new_fruit.link_xeno(F.bound_xeno)
 	qdel(F)
+
+/mob/living/carbon/Xenomorph/Larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
+	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	return
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
@@ -435,3 +476,12 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/speed/add_juice()
 	reagents.add_reagent("fruit_resin", 4)
 	reagents.add_reagent(PLASMA_PHEROMONE, 12)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma
+	name = XENO_FRUIT_PLASMA
+	icon_state = "fruit_plasma_item"
+	fruit_type = /obj/effect/alien/resin/fruit/plasma
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
+	reagents.add_reagent("fruit_resin", 4)
+	reagents.add_reagent(PLASMA_PURPLE, 12)

@@ -23,8 +23,9 @@
 /turf/open/desert/dirt
 	name = "desert"
 	icon_state = "desert1"
+
 /turf/open/desert/dirt/is_weedable()
-	return TRUE
+	return FULLY_WEEDABLE
 
 /turf/open/desert/dirt/dirt_transition_edge1
 	name = "desert"
@@ -54,8 +55,9 @@
 /turf/open/desert/rock
 	name = "rock"
 	icon_state = "rock1"
+
 /turf/open/desert/rock/is_weedable()
-	return TRUE
+	return FULLY_WEEDABLE
 
 /turf/open/desert/rock/edge1
 	name = "desert"
@@ -119,7 +121,8 @@
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
+
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
@@ -210,7 +213,7 @@
 	default_name = "water"
 
 /turf/open/gm/river/desert/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/gm/river/desert/update_icon()
 	..()

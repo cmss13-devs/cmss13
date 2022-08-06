@@ -21,8 +21,9 @@
 			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
 			if(JOB_XO) marine_rk = "xo"
 			if(JOB_CO) marine_rk = "co"
-			if(JOB_ADMIRAL) marine_rk = "admiral"
+			if(JOB_GENERAL) marine_rk = "general"
 			if(JOB_PILOT) marine_rk = "po"
+			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_CREWMAN) marine_rk = "tc"
 			if(JOB_MARSOC) marine_rk = "soc"
@@ -74,9 +75,11 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_ADMIRAL)
-				marine_rk = "admiral"
+			if(JOB_GENERAL)
+				marine_rk = "general"
 				border_rk = "command"
+			if(JOB_INTEL)
+				marine_rk = "io"
 			if(JOB_PILOT)
 				marine_rk = "po"
 			if(JOB_DROPSHIP_CREW_CHIEF)

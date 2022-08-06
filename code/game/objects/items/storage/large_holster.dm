@@ -134,8 +134,8 @@
 	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
-		/obj/item/weapon/gun/smg/mp7,
-		/obj/item/weapon/gun/smg/uzi,
+		/obj/item/weapon/gun/smg/mp27,
+		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/weapon/gun/pistol/skorpion
 		)
 	///Guns have a hud offset that throws the vis_contents alignment off.
@@ -184,6 +184,10 @@
 
 /obj/item/storage/large_holster/m39/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
+
+/obj/item/storage/large_holster/m39/full/elite/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite())
+
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"

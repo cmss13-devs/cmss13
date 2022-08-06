@@ -22,10 +22,11 @@
 	possible_transfer_amounts = null
 	w_class = SIZE_TINY
 	volume = 60
-	reagent_desc_override = TRUE //it has a special examining mechanic
-	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
-	var/pill_icon_class = "random"     // Pills with the same icon class share icons
-	var/list/pill_initial_reagents     // Defaults reagents if any
+	reagent_desc_override = TRUE		//it has a special examining mechanic
+	var/identificable = TRUE			//can medically trained people tell what's in it?
+	var/pill_desc = "An unknown pill."	// The real description of the pill, shown when examined by a medically trained person
+	var/pill_icon_class = "random"		// Pills with the same icon class share icons
+	var/list/pill_initial_reagents		// Default reagents if any
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -46,6 +47,8 @@
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
 	if(isXeno(user))
+		return
+	if(!identificable)
 		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		to_chat(user, pill_desc)

@@ -35,6 +35,8 @@
 #define AMMO_NO_DEFLECT			(1<<20)
 ///Can only hit people with criminal status
 #define AMMO_MP					(1<<21)
+/// Can BE people with it
+#define AMMO_HIGHIMPACT			(1<<22)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -42,7 +44,7 @@
 #define GUN_UNUSUAL_DESIGN		(1<<2)
 #define GUN_SILENCED			(1<<3)
 #define GUN_AUTOMATIC			(1<<4)
-#define GUN_INTERNAL_MAG		(1<<5)
+#define GUN_INTERNAL_MAG		(1<<5)  // If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
 #define GUN_AUTO_EJECTOR		(1<<6)
 #define GUN_AMMO_COUNTER		(1<<7)
 #define GUN_BURST_ON			(1<<8)
@@ -59,6 +61,7 @@
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
 #define GUN_BURST_ONLY			(1<<20)
+#define GUN_FULL_AUTO_ONLY		(1<<21)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

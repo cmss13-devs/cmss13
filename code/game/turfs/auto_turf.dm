@@ -12,7 +12,7 @@
 	baseturfs += type
 
 /turf/open/auto_turf/is_weedable()//for da xenos
-	return TRUE
+	return FULLY_WEEDABLE
 
 /turf/open/auto_turf/get_dirt_type()
 	return DIRT_TYPE_GROUND //automatically diggable I guess
@@ -103,6 +103,22 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
+/turf/open/auto_turf/sand_white
+	layer_name = list("aged igneous", "wind swept dunes", "warn a coder", "warn a coder", "warn a coder")
+	icon_state = "varadero_1"
+	icon_prefix = "varadero"
+
+/turf/open/auto_turf/sand_white/get_dirt_type()
+	return DIRT_TYPE_SAND
+
+/turf/open/auto_turf/sand_white/layer0
+	icon_state = "varadero_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/sand_white/layer1
+	icon_state = "varadero_1"
+	bleed_layer = 1
+
 //Ice Colony perma frost
 /turf/open/auto_turf/ice
 	name = "auto-ice"
@@ -146,7 +162,7 @@
 		return DIRT_TYPE_GROUND
 
 /turf/open/auto_turf/snow/is_weedable()
-	return !bleed_layer
+	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
 	//Light Stick

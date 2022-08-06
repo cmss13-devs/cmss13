@@ -82,6 +82,7 @@
 	TR.placed = 1
 	TR.update_icon()
 	TR.setDir(direction)
+	TR.set_name_label(name_label)
 	TR.owner_mob = user
 	dropped = 0
 	user.drop_inv_item_to_loc(src, TR)

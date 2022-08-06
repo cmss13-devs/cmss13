@@ -11,6 +11,8 @@
 	rarity_value = 2
 	insulated = TRUE
 
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
+
 	total_health = 150 //more health than regular humans
 
 	brute_mod = 0.5
@@ -46,7 +48,7 @@
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH))
+	H.set_languages(list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH))
 	GLOB.alive_human_list -= H
 	return ..()
 

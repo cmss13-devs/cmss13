@@ -104,7 +104,7 @@
 
 	var/list/damagedata = list(
 		"damage" = damage,
-		"armor" = (armor_deflection + armor_deflection_buff) * effectiveness_mult,
+		"armor" = (armor_deflection + armor_deflection_buff - armor_deflection_debuff) * effectiveness_mult,
 		"penetration" = penetration,
 		"armour_break_pr_pen" = armour_break_pr_pen,
 		"armour_break_flat" = armour_break_flat,
@@ -234,7 +234,7 @@
 	updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
-	if(!damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
+	if(!damage || !acid_blood_damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
 		return FALSE
 	var/chance = 20 //base chance
 	if(damtype == BRUTE) chance += 5

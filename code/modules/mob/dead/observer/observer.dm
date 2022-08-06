@@ -35,7 +35,11 @@
 							"Xeno Status HUD" = FALSE
 							)
 	universal_speak = 1
+	var/updatedir = TRUE	//Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
+	var/datum/orbit_menu/orbit_menu
+	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -123,11 +127,66 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 
+/mob/dead/observer/proc/clean_observetarget()
+	SIGNAL_HANDLER
+	UnregisterSignal(observetarget, COMSIG_PARENT_QDELETING)
+	if(observetarget?.observers)
+		observetarget.observers -= src
+		UNSETEMPTY(observetarget.observers)
+	observetarget = null
+	client.eye = src
+	hud_used.show_hud(hud_used.hud_version, src)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+
+/mob/dead/observer/proc/observer_move_react()
+	SIGNAL_HANDLER
+	if(src.loc == get_turf(observetarget))
+		return
+	clean_observetarget()
+
+///makes the ghost see the target hud and sets the eye at the target.
+/mob/dead/observer/proc/do_observe(mob/target)
+	if(!client || !target || !istype(target))
+		return
+
+	//I do not give a singular flying fuck about not being able to see xeno huds, literally only human huds are useful to see
+	if(!ishuman(target))
+		ManualFollow(target)
+		return
+
+	client.eye = target
+
+	if(!target.hud_used)
+		return
+
+	client.screen = list()
+	LAZYINITLIST(target.observers)
+	target.observers |= src
+	target.hud_used.show_hud(target.hud_used.hud_version, src)
+	observetarget = target
+	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, .proc/clean_observetarget)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/observer_move_react)
+
+/mob/dead/observer/reset_perspective(atom/A)
+	if(observetarget)
+		clean_observetarget()
+	. = ..()
+
+	if(!.)
+		return
+
+	if(!hud_used)
+		return
+
+	client.screen = list()
+	hud_used.show_hud(hud_used.hud_version)
+
 /mob/dead/observer/Login()
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Destroy()
+	QDEL_NULL(orbit_menu)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -224,6 +283,10 @@ Works together with spawning an observer, noted above.
 
 	return TRUE
 
+/mob/dead/observer/create_hud()
+	if(!hud_used)
+		hud_used = new /datum/hud/ghost(src)
+
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
@@ -291,32 +354,30 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-/mob/dead/observer/Move(NewLoc, direct)
+/mob/dead/observer/Move(atom/newloc, direct)
 	following = null
-	setDir(direct)
 	var/area/last_area = get_area(loc)
-	if(NewLoc)
-		for(var/obj/effect/step_trigger/S in NewLoc)
-			S.Crossed(src)
+	if(updatedir)
+		setDir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
 
-	var/turf/T = get_turf(src)
-	if(T) // Get out of closets and such as a ghost
-		forceMove(T)
-
-	if((direct & NORTH) && y < world.maxy)
-		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
-	else if((direct & SOUTH) && y > 1)
-		y -= m_intent
-	if((direct & EAST) && x < world.maxx)
-		x += m_intent
-	else if((direct & WEST) && x > 1)
-		x -= m_intent
+	if(newloc)
+		abstract_move(newloc)
+	else
+		abstract_move(get_turf(src))  //Get out of closets and such as a ghost
+		if((direct & NORTH) && y < world.maxy)
+			y++
+		else if((direct & SOUTH) && y > 1)
+			y--
+		if((direct & EAST) && x < world.maxx)
+			x++
+		else if((direct & WEST) && x > 1)
+			x--
 
 	var/turf/new_turf = locate(x, y, z)
 	if(!new_turf)
@@ -357,6 +418,28 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SStgui.on_transfer(src, mind.current)
 	qdel(src)
 	return TRUE
+
+/mob/dead/observer/verb/enter_tech_tree()
+	set category = "Ghost"
+	set name = "Teleport to Techtree"
+
+	var/list/trees = list()
+
+	for(var/T in SStechtree.trees)
+		trees += list("[T]" = SStechtree.trees[T])
+
+	var/value = SStechtree.trees[1]
+
+	if(trees.len > 1)
+		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+
+	if(!value)
+		return
+
+	var/datum/techtree/tree = trees[value]
+
+	forceMove(tree.entrance)
+
 
 /mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"
@@ -400,88 +483,49 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Follow"
 	set name = "Follow"
 
-	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
-	var/input = tgui_input_list(usr, "Please, select a category:", "Follow", choices)
-	if(!input)
-		return
-	var/atom/movable/target
-	var/list/targets = list()
-	switch(input)
-		if("Humans")
-			targets = gethumans()
-		if("Xenomorphs")
-			targets = getxenos()
-		if("Predators")
-			targets = getpreds()
-		if("Synthetics")
-			targets = getsynths()
-		if("ERT Members")
-			targets = getertmembers()
-		if("Survivors")
-			targets = getsurvivors()
-		if("Any Mobs")
-			targets = getmobs()
-		if("Vehicles")
-			targets = get_multi_vehicles()
-
-		if("Holograms")
-			targets = get_holograms()
-
-		if("Mobs by Faction")
-			choices = FACTION_LIST_HUMANOID
-			input = tgui_input_list(usr, "Please, select a Faction:", "Follow", choices)
-
-			targets = gethumans()
-			for(var/name in targets)
-				var/mob/living/carbon/human/M = targets[name]
-				if(!istype(M) || M.faction != input)
-					targets.Remove(name)
-
-		if("Xenos by Hive")
-			var/hives = list()
-			var/datum/hive_status/hive
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				hives += list("[hive.name]" = hive.hivenumber)
-
-			input = tgui_input_list(usr, "Please, select a Hive:", "Follow", hives)
-			if(!input)
-				return
-
-			targets = getxenos()
-			for(var/name in targets)
-				var/mob/living/carbon/Xenomorph/X = targets[name]
-				if(!istype(X) || X.hivenumber != hives[input])
-					targets.Remove(name)
-
-	if(!LAZYLEN(targets))
-		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
-		return
-	input = tgui_input_list(usr, "Please select a target among [input] to follow", "Follow", targets)
-	target = targets[input]
-
-	ManualFollow(target)
-	return
+	if(!orbit_menu)
+		orbit_menu = new(src)
+	orbit_menu.ui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
-	if(target)
-		if(target == src)
-			to_chat(src, SPAN_WARNING("You can't follow yourself"))
-			return
-		if(following && following == target)
-			return
-		following = target
-		to_chat(src, SPAN_NOTICE(" Now following [target]"))
-		spawn(0)
-			while(target && following == target && client)
-				var/turf/T = get_turf(target)
-				if(!T)
-					break
-				// To stop the ghost flickering.
-				if(loc != T)
-					forceMove(T)
-				sleep(15)
+	if(!istype(target))
+		return
+
+	var/orbitsize
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		orbitsize = human_target.langchat_height
+	else
+		var/icon/I = icon(target.icon, target.icon_state, target.dir)
+		orbitsize = (I.Width() + I.Height()) * 0.5
+	orbitsize -= (orbitsize / world.icon_size) * (world.icon_size * 0.25)
+
+	var/rot_seg
+
+	switch(ghost_orbit)
+		if(GHOST_ORBIT_TRIANGLE)
+			rot_seg = 3
+		if(GHOST_ORBIT_SQUARE)
+			rot_seg = 4
+		if(GHOST_ORBIT_PENTAGON)
+			rot_seg = 5
+		if(GHOST_ORBIT_HEXAGON)
+			rot_seg = 6
+		else //Circular
+			rot_seg = 36
+
+	orbit(target, orbitsize, FALSE, 20, rot_seg)
+
+/mob/dead/observer/orbit()
+	setDir(SOUTH)//reset dir so the right directional sprites show up //might tweak this for xenos, stan_albatross orbitshit
+	return ..()
+
+
+/mob/dead/observer/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	pixel_y = -2
+	animate(src, pixel_y = 0, time = 10, loop = -1)
 
 /mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
 	if(!tx || !ty || !tz)
@@ -748,72 +792,38 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Hellhound"
 	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
 
-	var/mob/L = src
-
-	if(SSticker.current_state < GAME_STATE_PLAYING)
-		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
+	var/mob/dead/current_mob = src
+	if(!current_mob.stat || !current_mob.mind)
 		return
 
-	if (!usr.stat) // Make sure we're an observer
-		// to_chat(usr, "!usr.stat")
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if (usr != src)
-		// to_chat(usr, "usr != src")
-		return 0 // Something is terribly wrong
+	var/list/hellhound_mob_list = list() // the list we'll be choosing from
+	for(var/mob/living/carbon/Xenomorph/Hellhound/Hellhound as anything in GLOB.hellhound_list)
+		if(Hellhound.client)
+			continue
+		hellhound_mob_list[Hellhound.name] = Hellhound
 
-	if(jobban_isbanned(usr, JOB_XENOMORPH)) // User is jobbanned
-		to_chat(usr, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a Hellhound."))
+	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
+	if(!choice)
 		return
 
-	var/list/hellhound_list = list()
-
-	for(var/mob/living/carbon/hellhound/A in GLOB.hellhound_list)
-		if(istype(A) && !A.client)
-			hellhound_list += A.real_name
-
-	if(hellhound_list.len == 0)
-		to_chat(usr, "<span style='color: red;'>There aren't any available Hellhounds.</span>")
+	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_list)
-	if (isnull(choice) || choice == "Cancel")
+	if(QDELETED(Hellhound) || Hellhound.client)
+		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	for(var/mob/living/carbon/hellhound/X in GLOB.hellhound_list)
-		if(choice == X.real_name)
-			L = X
-			break
-
-	if(!L || QDELETED(L))
-		to_chat(usr, "<span style='color: red;'>Not a valid mob!</span>")
+	if(Hellhound.stat == DEAD)
+		to_chat(src, SPAN_WARNING("That Hellhound has died."))
 		return
 
-	if(!istype(L, /mob/living/carbon/hellhound))
-		to_chat(usr, "<span style='color: red;'>That's not a Hellhound.</span>")
-		return
-
-	if(L.stat == DEAD)  // DEAD
-		to_chat(usr, "<span style='color: red;'>It's dead.</span>")
-		return
-
-	if(L.client) // Larva player is still online
-		to_chat(usr, "<span style='color: red;'>That player is still connected.</span>")
-		return
-
-	if (alert(usr, "Everything checks out. Are you sure you want to transfer yourself into this hellhound?", "Confirmation", "Yes", "No") == "Yes")
-
-		if(L.client || L.stat == DEAD) // Do it again, just in case
-			to_chat(usr, "<span style='color: red;'>Oops. That mob can no longer be controlled. Sorry.</span>")
-			return
-
-		var/mob/ghostmob = usr.client.mob
-		msg_admin_niche("[key_name(usr)] has joined as a [L].")
-		L.ckey = usr.ckey
-		if(L.client) L.client.change_view(world_view_size)
-
-		if( isobserver(ghostmob) )
-			qdel(ghostmob)
+	current_mob.mind.transfer_to(Hellhound, TRUE)
+	Hellhound.generate_name()
 
 /mob/dead/verb/join_as_yautja()
 	set category = "Ghost.Join"

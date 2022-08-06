@@ -90,6 +90,11 @@
 	trait_desc = "Boosts the powerloader skill to 1. Crewmember received training in operating powerloaders."
 	skill = SKILL_POWERLOADER
 
+/datum/character_trait/skills/intel
+	trait_name = "Intelligence training"
+	trait_desc = "Boosts the Intel skill to 1. Crewmember received training in quickly processing intelligence documents."
+	skill = SKILL_INTEL
+
 /datum/character_trait/skills/police
 	trait_name = "Police Training"
 	trait_desc = "Boosts the policing skill by 1. Crewmember received training in use of security equipment."

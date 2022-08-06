@@ -694,6 +694,31 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
+/obj/item/storage/pouch/first_responder
+	name = "first responder pouch"
+	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	icon_state = "frt_med"
+	storage_slots = 4
+
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/roller,
+		/obj/item/bodybag,
+	)
+
+/obj/item/storage/pouch/first_responder/full/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/roller(src)
+	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/bodybag/cryobag(src)
+
+
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
 	desc = "A pouch for carrying glass vials."

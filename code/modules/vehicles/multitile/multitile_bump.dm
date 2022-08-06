@@ -396,6 +396,19 @@
 	deployment_system.undeploy_mg()
 	return FALSE
 
+/obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.seats[VEHICLE_DRIVER])
+		var/last_moved = V.l_move_time	//in case VC moves before answering
+		if(alert("Are you sure you want to crush \the [name]?",,"Yes","No") == "Yes")
+			if(last_moved == V.l_move_time)
+				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+				playsound(V, 'sound/effects/metal_crash.ogg', 20)
+				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				qdel(src)
+				return FALSE
+	return FALSE
+
 /obj/structure/machinery/disposal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	qdel(src)
 	return TRUE

@@ -107,6 +107,10 @@
   Jeser:
   - rscadd: Vehicles appear in Follow window now and can be followed from there.
 2022-08-06:
+  Geevies:
+  - bugfix: Building a tunnel over a resin hole now destroys the resin hole.
+  - balance: You can no longer place a resin node over resin hole. And you can no
+      longer place resin holes on resin nodes.
   Ghostsheet:
   - balance: you can now take machetes out of the machete pouch via hotkey
   stanalbatross:

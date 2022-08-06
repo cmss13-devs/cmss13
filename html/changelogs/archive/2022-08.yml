@@ -122,3 +122,6 @@
       the language from the setup screen
   - code_imp: split the actions.dmi file into actions.dmi and actions_xeno.dmi to
       make adding new action sprites easier and cause less conflicts
+  - rscadd: re-added the first responder pouch - it's like a medical pouch but can
+      hold some special items like roller beds and stasis bags, but also can't hold
+      some other items. Can be found in the same places as medical pouches.

@@ -1024,8 +1024,6 @@ var/global/image/action_purple_power_up
 
 	var/cur_user_zone_sel = L.zone_selected
 	var/cur_target_zone_sel
-	if(has_target && istype(T))
-		cur_target_zone_sel = T.zone_selected
 	var/delayfraction = Ceiling(delay/numticks)
 	var/user_orig_loc = L.loc
 	var/user_orig_turf = get_turf(L)
@@ -1036,10 +1034,15 @@ var/global/image/action_purple_power_up
 		target_orig_turf = get_turf(target)
 	var/obj/user_holding = L.get_active_hand()
 	var/obj/target_holding
-	if(has_target && istype(T))
-		target_holding = T.get_active_hand()
+	var/cur_user_lying = L.lying
+	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
+
+	if(has_target && istype(T))
+		cur_target_zone_sel = T.zone_selected
+		target_holding = T.get_active_hand()
+		cur_target_lying = T.lying
 
 	. = TRUE
 	for(var/i in 1 to numticks)
@@ -1135,6 +1138,11 @@ var/global/image/action_purple_power_up
 			break
 		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
 			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		)
+			. = FALSE
+			break
+		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
 		)
 			. = FALSE
 			break

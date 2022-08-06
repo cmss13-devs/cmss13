@@ -106,3 +106,11 @@
       concerned.
   Jeser:
   - rscadd: Vehicles appear in Follow window now and can be followed from there.
+2022-08-06:
+  stanalbatross:
+  - rscdel: removed officers knowing languages that they would absolutely not have
+      the time to learn before being deployed, instead take these languages in the
+      character setup screen
+  - rscdel: removed the automatic ability of CLs to speak Japanese - not all WY employees
+      would speak Japanese, if you want to roleplay as a Japanese speaker CL take
+      the language from the setup screen

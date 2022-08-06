@@ -437,6 +437,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"
+	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
 	icon_state = "cryo_defense_kit"
 	storage_slots = 2
 
@@ -448,6 +449,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
+	new /obj/item/attachable/bayonet(src)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper

@@ -41,6 +41,9 @@
 
 		hive.tunnels += src
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
+	if(resin_trap) 
+		qdel(resin_trap)
 
 /obj/structure/tunnel/Destroy()
 	if(hive)

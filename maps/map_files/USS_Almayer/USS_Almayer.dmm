@@ -29370,6 +29370,18 @@
 	tag = "icon-wall9"
 	},
 /area/almayer/evacuation/pod12)
+"bUb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull"
+	},
+/area/almayer/living/briefing)
 "bUc" = (
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
@@ -67766,6 +67778,14 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
+"rwv" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo,
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "rwS" = (
 /obj/structure/machinery/light/small,
 /obj/structure/largecrate/random/case/double,
@@ -119886,12 +119906,12 @@ aLG
 bdg
 bqZ
 aXc
-dqD
-dqD
+rwv
+rwv
 dRT
 dqD
 dqD
-dRT
+bUb
 dRT
 eWp
 eWp

@@ -620,7 +620,7 @@ var/list/datum/mob_hud/huds = list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINEER)
-		holder.icon_state = "hudmutineer"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
 
 	F.modify_hud_holder(holder, src)

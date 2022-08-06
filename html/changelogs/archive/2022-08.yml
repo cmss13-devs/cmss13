@@ -107,6 +107,8 @@
   Jeser:
   - rscadd: Vehicles appear in Follow window now and can be followed from there.
 2022-08-06:
+  Geeves, Sose96:
+  - balance: Big Red caves can't be CAS'd anymore.
   Geevies:
   - bugfix: Building a tunnel over a resin hole now destroys the resin hole.
   - balance: You can no longer place a resin node over resin hole. And you can no

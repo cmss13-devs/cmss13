@@ -148,3 +148,5 @@
       to_chats. These are short floating messages that quickly fade out, and are designed
       to give you visual feedback on actions. They are currently only implemented
       for multitool APC tracking.
+  - rscadd: 'Solaris Ridge : tweaked some areas, doors, windows, and added a server
+      room to lambda'

@@ -141,3 +141,8 @@
   - code_imp: Returned restocking of empty mags in squad prep vendors.
   Morrow:
   - rscadd: Adds wield sound for machete pouch
+  stanalbatross:
+  - rscadd: added balloon alerts from TG, a system designed to supplement and replace
+      to_chats. These are short floating messages that quickly fade out, and are designed
+      to give you visual feedback on actions. They are currently only implemented
+      for multitool APC tracking.

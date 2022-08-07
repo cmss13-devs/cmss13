@@ -45,7 +45,7 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
-	var/stunforce = 50
+	var/stunforce = 60
 
 /obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
 	if(!istype(target) || !on)

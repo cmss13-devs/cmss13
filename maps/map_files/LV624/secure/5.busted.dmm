@@ -1,0 +1,530 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/secure_storage)
+"aM" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"do" = (
+/obj/structure/surface/rack,
+/obj/item/device/aicard,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"dI" = (
+/obj/structure/machinery/door_control{
+	id = "secure_blast";
+	name = "Dome Access";
+	pixel_x = 25
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"fC" = (
+/obj/item/stack/sheet/wood,
+/obj/item/tool/crowbar,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"gq" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"hT" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"if" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/secure_storage)
+"ip" = (
+/obj/structure/computerframe{
+	anchored = 1
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"jf" = (
+/obj/structure/surface/rack,
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"lM" = (
+/obj/structure/surface/rack,
+/obj/item/ore/gold,
+/obj/item/ore/silver,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"pg" = (
+/obj/item/stack/sheet/metal,
+/turf/open/gm/grass,
+/area/template_noop)
+"pw" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/grass,
+/area/template_noop)
+"qR" = (
+/turf/open/gm/grass,
+/area/template_noop)
+"rj" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"uN" = (
+/obj/item/stack/rods,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"vi" = (
+/obj/structure/surface/rack,
+/obj/item/ore/diamond,
+/obj/effect/landmark/good_item,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"wS" = (
+/obj/structure/surface/rack,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"wY" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"xA" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"xR" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating,
+/area/lv624/lazarus/secure_storage)
+"xU" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/lv624/lazarus/secure_storage)
+"yR" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Co" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Secure Vault APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Dy" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"DN" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"DQ" = (
+/turf/template_noop,
+/area/template_noop)
+"Ez" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/gun/m44/gunslinger,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Fy" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"FQ" = (
+/obj/structure/largecrate,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"FR" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/objective{
+	dir = 4
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Gf" = (
+/obj/item/ore/silver,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"HO" = (
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Jq" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"JR" = (
+/obj/structure/surface/rack,
+/obj/item/attachable/scope/variable_zoom,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Kh" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Ki" = (
+/obj/structure/largecrate/lisa,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"KA" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"LP" = (
+/obj/item/disk/nuclear,
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/attachable/bayonet/upp,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Mw" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/extended{
+	current_rounds = 0
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Nt" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/template_noop)
+"PQ" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/extended{
+	current_rounds = 0
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"QT" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"RY" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/lv624/lazarus/secure_storage)
+"Sl" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Tg" = (
+/obj/structure/surface/rack,
+/obj/structure/prop/mech/drill,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Un" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Ux" = (
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Vq" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/secure_storage)
+"Ww" = (
+/obj/structure/surface/rack,
+/obj/item/tank/phoron,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"WM" = (
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"XJ" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
+"Zi" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+
+(1,1,1) = {"
+DQ
+DQ
+DQ
+DQ
+DQ
+ah
+ah
+ah
+ah
+ah
+DQ
+DQ
+DQ
+DQ
+DQ
+"}
+(2,1,1) = {"
+DQ
+DQ
+DQ
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+DQ
+DQ
+DQ
+"}
+(3,1,1) = {"
+DQ
+DQ
+ah
+ah
+ah
+ah
+FR
+WM
+XJ
+ah
+ah
+ah
+ah
+DQ
+DQ
+"}
+(4,1,1) = {"
+DQ
+ah
+ah
+ah
+XJ
+Kh
+HO
+HO
+HO
+HO
+gq
+ah
+ah
+ah
+DQ
+"}
+(5,1,1) = {"
+DQ
+ah
+ah
+HO
+HO
+wS
+HO
+Jq
+HO
+Fy
+HO
+XJ
+ah
+ah
+DQ
+"}
+(6,1,1) = {"
+ah
+ah
+ah
+Co
+HO
+LP
+HO
+do
+HO
+Tg
+HO
+HO
+ah
+ah
+ah
+"}
+(7,1,1) = {"
+ah
+ah
+aM
+Un
+HO
+JR
+HO
+Dy
+HO
+wY
+HO
+HO
+Ki
+ah
+ah
+"}
+(8,1,1) = {"
+ah
+ah
+XJ
+HO
+HO
+yR
+Gf
+jf
+HO
+Ww
+HO
+HO
+FQ
+ah
+ah
+"}
+(9,1,1) = {"
+ah
+ah
+aM
+fC
+Ux
+vi
+HO
+Ez
+HO
+QT
+DN
+HO
+FQ
+ah
+ah
+"}
+(10,1,1) = {"
+ah
+ah
+Vq
+uN
+HO
+lM
+HO
+PQ
+HO
+Sl
+HO
+HO
+ah
+ah
+ah
+"}
+(11,1,1) = {"
+Nt
+RY
+Vq
+xR
+HO
+uN
+HO
+Mw
+HO
+hT
+HO
+KA
+ah
+ah
+DQ
+"}
+(12,1,1) = {"
+pg
+xU
+Vq
+Vq
+xA
+dI
+HO
+DN
+HO
+HO
+HO
+ah
+ah
+ah
+DQ
+"}
+(13,1,1) = {"
+qR
+Zi
+ah
+ah
+ah
+ah
+rj
+rj
+rj
+ah
+ah
+ah
+ah
+DQ
+DQ
+"}
+(14,1,1) = {"
+qR
+qR
+qR
+ah
+ah
+ip
+HO
+HO
+HO
+ah
+ah
+ah
+DQ
+DQ
+DQ
+"}
+(15,1,1) = {"
+qR
+pw
+qR
+qR
+ah
+ah
+if
+if
+if
+ah
+DQ
+DQ
+DQ
+DQ
+DQ
+"}

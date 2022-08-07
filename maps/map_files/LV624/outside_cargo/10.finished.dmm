@@ -1,0 +1,646 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"b" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/gun/smg/highchance,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"c" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"d" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"e" = (
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"f" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"g" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"h" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"i" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_m"
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"j" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"k" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"l" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/template_noop)
+"m" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_m"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"n" = (
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"p" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"q" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/pills/midchance,
+/obj/item/clothing/under/colonist,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"r" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_l"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"s" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/lazarus/quartstorage/outdoors)
+"t" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"u" = (
+/turf/template_noop,
+/area/lv624/lazarus/quartstorage/outdoors)
+"v" = (
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 4
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"w" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"x" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"y" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/largecrate,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"z" = (
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"A" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"B" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"C" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"D" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"E" = (
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage/outdoors)
+"F" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"G" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"H" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage/outdoors)
+"I" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"J" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_r"
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"K" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage/outdoors)
+"L" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	name = "Storage Containers APC";
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"M" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/lazarus/quartstorage/outdoors)
+"N" = (
+/turf/open/gm/grass,
+/area/template_noop)
+"O" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"P" = (
+/obj/structure/cargo_container{
+	icon_state = "seegson_l"
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"Q" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"R" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/lazarus/quartstorage/outdoors)
+"S" = (
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv624/lazarus/quartstorage/outdoors)
+"T" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"V" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"W" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"X" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage/outdoors)
+"Y" = (
+/obj/structure/cargo_container{
+	icon_state = "lockmart_r"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"Z" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/largecrate/supply/weapons/pistols,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 5
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+
+(1,1,1) = {"
+n
+n
+R
+O
+I
+O
+O
+O
+O
+O
+v
+v
+v
+O
+t
+l
+N
+N
+"}
+(2,1,1) = {"
+n
+n
+R
+O
+P
+O
+O
+O
+H
+H
+e
+e
+e
+H
+H
+N
+N
+N
+"}
+(3,1,1) = {"
+n
+n
+R
+O
+i
+O
+O
+H
+H
+Z
+V
+e
+e
+W
+H
+H
+N
+N
+"}
+(4,1,1) = {"
+n
+T
+g
+O
+J
+O
+H
+H
+h
+B
+e
+e
+e
+e
+e
+H
+H
+N
+"}
+(5,1,1) = {"
+n
+R
+O
+O
+O
+H
+H
+h
+h
+e
+E
+E
+E
+e
+e
+L
+H
+H
+"}
+(6,1,1) = {"
+n
+M
+O
+O
+O
+H
+y
+e
+o
+E
+E
+E
+E
+d
+e
+e
+W
+H
+"}
+(7,1,1) = {"
+n
+R
+O
+O
+z
+e
+e
+e
+E
+C
+E
+k
+E
+c
+E
+p
+e
+e
+"}
+(8,1,1) = {"
+n
+R
+G
+O
+z
+e
+e
+E
+E
+E
+E
+b
+E
+X
+E
+E
+e
+e
+"}
+(9,1,1) = {"
+n
+f
+j
+j
+z
+e
+e
+E
+x
+r
+E
+Q
+E
+E
+E
+E
+e
+e
+"}
+(10,1,1) = {"
+n
+S
+S
+S
+z
+e
+e
+e
+x
+m
+E
+q
+E
+D
+E
+e
+e
+e
+"}
+(11,1,1) = {"
+n
+n
+n
+n
+n
+H
+F
+e
+x
+Y
+E
+E
+K
+E
+e
+C
+a
+s
+"}
+(12,1,1) = {"
+n
+n
+n
+n
+n
+H
+H
+p
+e
+e
+E
+E
+E
+e
+C
+A
+s
+s
+"}
+(13,1,1) = {"
+n
+n
+n
+n
+n
+u
+H
+H
+C
+a
+w
+e
+e
+a
+C
+s
+s
+n
+"}
+(14,1,1) = {"
+n
+n
+n
+n
+n
+u
+u
+H
+H
+H
+e
+e
+e
+s
+s
+s
+n
+n
+"}
+(15,1,1) = {"
+n
+n
+n
+n
+n
+n
+n
+n
+n
+H
+e
+e
+e
+s
+n
+n
+n
+n
+"}
+(16,1,1) = {"
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+"}

@@ -1,0 +1,585 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage/outdoors)
+"b" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"c" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"d" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"e" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"f" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"h" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"i" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"j" = (
+/obj/structure/girder/displaced,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"k" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"l" = (
+/obj/structure/girder,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"m" = (
+/obj/structure/cargo_container{
+	icon_state = "red 0,0";
+	tag = "icon-red 0,0"
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"n" = (
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"p" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/template_noop)
+"q" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"r" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"s" = (
+/obj/structure/girder,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"t" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/lazarus/quartstorage/outdoors)
+"u" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	name = "Storage Containers APC";
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"v" = (
+/obj/structure/barricade/wooden,
+/turf/template_noop,
+/area/template_noop)
+"w" = (
+/obj/structure/cargo_container{
+	icon_state = "ch_red 0,1";
+	tag = "icon-blue 0,0"
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"x" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"A" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"B" = (
+/obj/structure/girder/displaced,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"C" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/lazarus/quartstorage/outdoors)
+"D" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"E" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"F" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"G" = (
+/obj/structure/cargo_container{
+	icon_state = "gorg 0,0";
+	tag = "icon-WY 0,0"
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"H" = (
+/obj/structure/cargo_container{
+	icon_state = "gorg 2,0";
+	tag = "icon-WY 0,0"
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"I" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/lazarus/quartstorage/outdoors)
+"J" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"K" = (
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv624/lazarus/quartstorage/outdoors)
+"L" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"M" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"N" = (
+/obj/structure/girder,
+/turf/template_noop,
+/area/template_noop)
+"P" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"Q" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"R" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"S" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"U" = (
+/obj/structure/closet/crate/science,
+/obj/structure/closet/crate/science,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"W" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"X" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"Z" = (
+/obj/structure/cargo_container{
+	icon_state = "ch_red 0,2";
+	tag = "icon-blue 0,0"
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+
+(1,1,1) = {"
+n
+n
+I
+Q
+M
+Q
+Q
+Q
+Q
+Q
+Q
+l
+A
+a
+S
+n
+n
+n
+"}
+(2,1,1) = {"
+x
+n
+I
+Q
+Q
+Q
+B
+Q
+Q
+Q
+z
+o
+A
+A
+a
+a
+n
+n
+"}
+(3,1,1) = {"
+N
+n
+I
+W
+Q
+Q
+Q
+Q
+s
+s
+k
+o
+A
+A
+A
+a
+a
+n
+"}
+(4,1,1) = {"
+v
+r
+D
+Q
+B
+Q
+Q
+s
+Q
+Q
+Q
+o
+A
+A
+A
+A
+a
+a
+"}
+(5,1,1) = {"
+n
+I
+Q
+Q
+s
+z
+z
+Q
+o
+o
+o
+P
+A
+G
+A
+A
+u
+a
+"}
+(6,1,1) = {"
+n
+C
+Q
+Q
+L
+Q
+Q
+Q
+j
+E
+A
+U
+A
+H
+A
+A
+A
+a
+"}
+(7,1,1) = {"
+n
+I
+Q
+L
+Q
+Q
+B
+Q
+o
+A
+A
+A
+A
+A
+A
+b
+A
+A
+"}
+(8,1,1) = {"
+n
+I
+W
+Q
+o
+o
+o
+o
+o
+A
+A
+A
+A
+d
+A
+A
+A
+A
+"}
+(9,1,1) = {"
+n
+h
+X
+X
+J
+A
+A
+A
+A
+m
+A
+q
+A
+A
+e
+A
+A
+A
+"}
+(10,1,1) = {"
+n
+K
+K
+K
+a
+a
+A
+A
+A
+w
+A
+A
+R
+e
+A
+A
+A
+A
+"}
+(11,1,1) = {"
+n
+n
+n
+n
+n
+a
+A
+A
+A
+Z
+A
+A
+b
+A
+A
+f
+f
+t
+"}
+(12,1,1) = {"
+n
+n
+n
+n
+n
+A
+F
+b
+A
+A
+A
+A
+A
+A
+f
+c
+t
+t
+"}
+(13,1,1) = {"
+n
+n
+n
+n
+n
+A
+A
+A
+f
+f
+i
+A
+A
+f
+f
+t
+t
+n
+"}
+(14,1,1) = {"
+n
+n
+n
+n
+n
+e
+A
+a
+a
+a
+A
+A
+A
+t
+t
+t
+n
+n
+"}
+(15,1,1) = {"
+n
+n
+n
+n
+n
+n
+n
+n
+n
+a
+p
+p
+p
+t
+n
+n
+n
+n
+"}
+(16,1,1) = {"
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+"}

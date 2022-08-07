@@ -14551,6 +14551,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
+"dNX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-secure"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/south_west_jungle)
 "dOf" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/crap_item,
@@ -18657,6 +18663,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
+"nAk" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-open-cargo"
+	},
+/turf/open/gm/grass,
+/area/lv624/lazarus/quartstorage/outdoors)
 "nAR" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -30110,7 +30122,7 @@ cWm
 aXh
 aXh
 hUs
-aXh
+dNX
 aKb
 aKb
 aKb
@@ -53316,7 +53328,7 @@ arK
 avR
 vLO
 fjM
-fjM
+nAk
 fjM
 fjM
 fjM

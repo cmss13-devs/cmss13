@@ -146,19 +146,16 @@
 	pixel_x = 9;
 	pixel_y = -4
 	},
-/obj/item/storage/box/packet{
-	desc = "It contains three HIRR (High Impact Rubber Rounds) Baton Slugs.";
-	icon_state = "baton_packet";
-	name = "HIRR baton slug packet";
-	pixel_x = -5;
-	pixel_y = -6
-	},
 /obj/item/explosive/grenade/HE/airburst/hornet_shell{
 	pixel_x = -6;
 	pixel_y = 6
 	},
 /obj/item/explosive/grenade/HE/airburst{
 	pixel_y = 8
+	},
+/obj/item/storage/box/packet/baton_slug{
+	pixel_x = -7;
+	pixel_y = -3
 	},
 /turf/open/floor/plating{
 	dir = 8;

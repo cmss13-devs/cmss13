@@ -769,6 +769,10 @@
 	unacidable = TRUE
 	health = 1000000
 
+/obj/structure/window/framed/solaris/reinforced/tinted
+	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	opacity = 1
+
 //GREYBOX DEV WINDOWS
 
 /obj/structure/window/framed/dev

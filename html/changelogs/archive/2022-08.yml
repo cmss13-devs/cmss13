@@ -156,3 +156,5 @@
       CL briefcase before 12:25
   - code_imp: made the code for update_icons on pens much nicer
   - rscadd: added DCC spawn landmarks to the uss runtime
+  - qol: added paper macros for date and time. [date] for date, [shortdate] for number
+      date, [time] for time, [date+time] for both.

@@ -190,7 +190,7 @@
 		return
 
 	if(being_restocked)
-		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in a way!"))
+		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in the way!"))
 		return
 
 	being_restocked = TRUE
@@ -353,7 +353,7 @@
 //combined from req guns and ammo vendors
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/stock(obj/item/item_to_stock, mob/user)
 	if(being_restocked && user)
-		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in a way!"))
+		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in the way!"))
 		return FALSE
 
 	//storage items except few are exempted because checks would be huge and not worth it

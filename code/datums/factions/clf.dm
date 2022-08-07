@@ -24,7 +24,7 @@
 		if(JOB_CLF_COMMANDER)
 			hud_icon_state = "cellcom"
 	if(hud_icon_state)
-		holder.icon_state = "clf_[hud_icon_state]"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "clf_[hud_icon_state]")
 
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(

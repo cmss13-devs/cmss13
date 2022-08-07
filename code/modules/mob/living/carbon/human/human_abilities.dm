@@ -504,7 +504,7 @@ CULT
 
 	to_chat(H, SPAN_NOTICE("Mutiny join request sent to [chosen]!"))
 
-	if(alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", "Yes", "No") == "No")
+	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) == "No")
 		return
 
 	converted += chosen
@@ -522,10 +522,10 @@ CULT
 
 	var/mob/living/carbon/human/H = owner
 
-	if(alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", "Yes", "No") == "No")
+	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) == "No")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend")
+	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
 	var/datum/equipment_preset/other/mutineer/XC = new()
 
 	XC.load_status(H)

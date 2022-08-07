@@ -127,3 +127,6 @@
   - rscadd: re-added the first responder pouch - it's like a medical pouch but can
       hold some special items like roller beds and stasis bags, but also can't hold
       some other items. Can be found in the same places as medical pouches.
+2022-08-07:
+  Morrow:
+  - rscadd: Adds wield sound for machete pouch

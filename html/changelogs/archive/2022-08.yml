@@ -128,5 +128,16 @@
       hold some special items like roller beds and stasis bags, but also can't hold
       some other items. Can be found in the same places as medical pouches.
 2022-08-07:
+  Jeser:
+  - qol: CTRL + Clicking APC Supply vendor starts an automated repeating restocking
+      process of every valid items within 1 tile of vendor. Should prevent VC players
+      from breaking fingers and hands restocking lots of supplies manually. Information
+      about that appears upon examining the vendor.
+  - qol: Slightly increased amount of standard-issue weapons and ammunition, so that
+      there is no need to restock those at roundstart, and even without restocking
+      APC can provide marines with basic resupply.
+  - qol: Materials stacks no longer require user to split them into appropriate stack
+      sizes, it is done automatically by vendor, any left overs will be returned back.
+  - code_imp: Returned restocking of empty mags in squad prep vendors.
   Morrow:
   - rscadd: Adds wield sound for machete pouch

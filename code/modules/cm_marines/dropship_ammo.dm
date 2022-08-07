@@ -201,7 +201,7 @@
 	ammo_used_per_firing = 10
 	max_inaccuracy = 1
 	warning_sound = 'sound/effects/nightvision.ogg'
-	point_cost = 100
+	point_cost = 200
 	fire_mission_delay = 4 //very good but long cooldown
 
 

@@ -1235,6 +1235,9 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
+	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'
+	var/draw_sound = 'sound/weapons/gun_rifle_draw.ogg'
+
 /obj/item/storage/pouch/machete/update_icon()
 	if(length(contents))
 		icon_state = "[initial(icon_state)]_full"
@@ -1243,13 +1246,11 @@
 		
 /obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()
-	var/sheatheSound = 'sound/weapons/gun_rifle_draw.ogg'
-	playsound(src, sheatheSound, vol = 15, vary = TRUE)
+	playsound(src, sheathe_sound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/_item_removal(obj/item/W, atom/new_location)
 	..()
-	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
-	playsound(src, drawSound, vol = 15, vary = TRUE)
+	playsound(src, draw_sound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/machete(src)

@@ -190,14 +190,6 @@
 /obj/item/stack/rods,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /obj/effect/landmark/corpsespawner/clf,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -280,15 +272,6 @@
 /area/fiorina/oob)
 "di" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "dw" = (
@@ -311,28 +294,12 @@
 /area/lv624/lazarus/crashed_ship)
 "dC" = (
 /obj/item/stack/rods,
-<<<<<<< master
-<<<<<<< master
-/obj/item/explosive/mine/clf/active,
-=======
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active,
->>>>>>> updated clf ship to have mines
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
 "dM" = (
 /obj/item/ammo_casing/bullet,
-<<<<<<< master
-<<<<<<< master
-/obj/item/explosive/mine/clf/active,
-=======
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active,
->>>>>>> updated clf ship to have mines
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -494,13 +461,10 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
 "ho" = (
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
->>>>>>> reimported backup
 "hs" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
@@ -519,25 +483,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"hF" = (
-/obj/item/stack/tile/plasteel{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/fiorina/tumor/ice_lab)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "hI" = (
 /obj/structure/surface/table/reinforced/prison{
 	flipped = 1
@@ -727,16 +672,10 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "kz" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
-/turf/open/floor/almayer,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/lv624/lazarus/crashed_ship)
 "kC" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
@@ -797,21 +736,6 @@
 "ly" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
-"lI" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "lN" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -840,14 +764,6 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
 	},
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -962,27 +878,11 @@
 /area/lv624/lazarus/crashed_ship)
 "nP" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "nU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-=======
-/turf/open/floor/wood,
-/area/lv624/lazarus/crashed_ship)
-"nU" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "Cargo Airlock"
-	},
->>>>>>> reimported backup
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "nW" = (
@@ -1000,14 +900,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ob" = (
-<<<<<<< master
-<<<<<<< master
-/obj/item/explosive/mine/clf/active,
-=======
->>>>>>> reimported backup
-=======
-/obj/item/explosive/mine/clf/active,
->>>>>>> updated clf ship to have mines
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -1080,21 +972,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"pn" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "pr" = (
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -1112,15 +989,10 @@
 /turf/open/space,
 /area/fiorina/oob)
 "pJ" = (
-<<<<<<< master
 /obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
-=======
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	indestructible = 1
 	},
-/obj/structure/blocker/invisible_wall,
->>>>>>> reimported backup
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "pR" = (
@@ -1209,20 +1081,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
-"rl" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating/plating_catwalk,
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "rm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -1486,14 +1344,6 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1588,14 +1438,6 @@
 "uZ" = (
 /obj/item/stack/rods,
 /obj/effect/spawner/random/attachment,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "vd" = (
@@ -1688,22 +1530,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"vy" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
-/area/fiorina/tumor/ice_lab)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "vD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/weldpack,
@@ -1745,29 +1571,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"vV" = (
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-/obj/item/explosive/mine/clf,
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
-=======
->>>>>>> reimported backup
-=======
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
->>>>>>> updated clf ship to have mines
 "vX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -2004,14 +1807,8 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 "zI" = (
-<<<<<<< master
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
-=======
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
->>>>>>> reimported backup
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2032,19 +1829,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"zU" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating/prison,
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "Ab" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
@@ -2337,12 +2121,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Df" = (
-<<<<<<< master
-/obj/structure/machinery/autolathe,
-/obj/structure/machinery/power/apc/high{
-	pixel_y = 24
-	},
-=======
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
@@ -2350,7 +2128,6 @@
 	start_charge = 1
 	},
 /obj/structure/machinery/autolathe,
->>>>>>> reimported backup
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
@@ -2396,23 +2173,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"Ee" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/tumor/ice_lab)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "El" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison{
@@ -2474,15 +2234,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "Fa" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-=======
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
->>>>>>> added spawn pointss for clf survivors
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2654,14 +2405,8 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "HB" = (
-<<<<<<< master
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 2
-=======
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	dir = 1;
-	name = "\improper Medical Bay"
->>>>>>> reimported backup
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
@@ -2842,20 +2587,6 @@
 	},
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
-"JA" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "JD" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor{
@@ -3289,15 +3020,12 @@
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
 "Qx" = (
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
->>>>>>> reimported backup
 "QE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical{
@@ -3454,21 +3182,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/fiorina/oob)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"SA" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/tumor/ice_lab)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "SC" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -3507,19 +3220,6 @@
 	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated clf ship to have mines
-"Tt" = (
-/obj/item/explosive/mine/clf/active,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated clf ship to have mines
 "TB" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -3606,17 +3306,12 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "VD" = (
-<<<<<<< master
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-/turf/closed/shuttle/ert{
-	icon_state = "stan_inner_w_1"
+/obj/structure/bed/chair{
+	dir = 1
 	},
-=======
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
-	},
-/turf/open/floor/plating,
->>>>>>> reimported backup
+/obj/effect/landmark/survivor_spawner/clf,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "VH" = (
 /obj/item/stack/tile/plasteel{
@@ -3722,19 +3417,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> added spawn pointss for clf survivors
-"WK" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/wood,
-/area/lv624/lazarus/crashed_ship)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> added spawn pointss for clf survivors
 "Xn" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_6_1"
@@ -4053,15 +3735,7 @@ pi
 pi
 Mo
 aB
-<<<<<<< master
-<<<<<<< master
-SA
-=======
 Fm
->>>>>>> reimported backup
-=======
-SA
->>>>>>> updated clf ship to have mines
 Fm
 YB
 Nk
@@ -4201,15 +3875,7 @@ aB
 aB
 aB
 lR
-<<<<<<< master
-<<<<<<< master
-Ee
-=======
 aB
->>>>>>> reimported backup
-=======
-Ee
->>>>>>> updated clf ship to have mines
 nW
 Cu
 uI
@@ -4227,15 +3893,6 @@ Bs
 cS
 Df
 xl
-<<<<<<< master
-<<<<<<< master
-rl
-=======
-FB
->>>>>>> reimported backup
-=======
-rl
->>>>>>> added spawn pointss for clf survivors
 Iu
 Iu
 QZ
@@ -4280,15 +3937,7 @@ io
 Rp
 QZ
 Mr
-<<<<<<< master
-<<<<<<< master
-FB
-=======
-Iu
->>>>>>> reimported backup
-=======
-FB
->>>>>>> added spawn pointss for clf survivors
+CY
 Gv
 Ne
 QZ
@@ -4354,15 +4003,7 @@ yF
 In
 tT
 Fm
-<<<<<<< master
-<<<<<<< master
-hF
-=======
 WE
->>>>>>> reimported backup
-=======
-hF
->>>>>>> updated clf ship to have mines
 np
 WE
 UX
@@ -4387,38 +4028,18 @@ zv
 tY
 ko
 Wz
-<<<<<<< master
 HB
-=======
-Wz
->>>>>>> reimported backup
 ko
 Nl
 NV
 Oi
-<<<<<<< master
-<<<<<<< master
-rl
-=======
-FB
->>>>>>> reimported backup
-=======
-rl
->>>>>>> added spawn pointss for clf survivors
+Iu
 xA
 QZ
 vs
 tE
 Zz
-<<<<<<< master
-<<<<<<< master
-lI
-=======
 nC
->>>>>>> reimported backup
-=======
-lI
->>>>>>> added spawn pointss for clf survivors
 OS
 uZ
 mK
@@ -4502,15 +4123,7 @@ MT
 QZ
 gW
 kM
-<<<<<<< master
-<<<<<<< master
-FB
-=======
 Iu
->>>>>>> reimported backup
-=======
-FB
->>>>>>> added spawn pointss for clf survivors
 Iu
 Wz
 qW
@@ -4550,15 +4163,7 @@ VN
 QZ
 bX
 XG
-<<<<<<< master
-<<<<<<< master
-FB
-=======
 Iu
->>>>>>> reimported backup
-=======
-FB
->>>>>>> added spawn pointss for clf survivors
 Jd
 tY
 ko
@@ -4575,15 +4180,7 @@ Ti
 WI
 nC
 rU
-<<<<<<< master
-<<<<<<< master
-pn
-=======
-nC
->>>>>>> reimported backup
-=======
-pn
->>>>>>> updated clf ship to have mines
+Qx
 tq
 vo
 ow
@@ -4613,38 +4210,18 @@ it
 XG
 Iu
 Iu
-<<<<<<< master
 nU
-=======
-ho
->>>>>>> reimported backup
 Iu
 Wz
 bj
 Wz
 QZ
 Dw
-<<<<<<< master
-<<<<<<< master
-lI
+nC
 CZ
 nC
 gK
-Tt
-=======
-nC
-=======
-lI
->>>>>>> added spawn pointss for clf survivors
-CZ
-nC
-gK
-<<<<<<< master
 Wz
->>>>>>> reimported backup
-=======
-Tt
->>>>>>> updated clf ship to have mines
 tq
 Pe
 tq
@@ -4680,19 +4257,9 @@ wv
 eo
 Wz
 Gj
-<<<<<<< master
-<<<<<<< master
-Gf
-lI
-=======
 Wz
 nC
->>>>>>> reimported backup
-=======
-Gf
-lI
->>>>>>> added spawn pointss for clf survivors
-Wz
+ho
 wS
 Bc
 Wi
@@ -4748,15 +4315,7 @@ WI
 WI
 tq
 WI
-<<<<<<< master
-<<<<<<< master
-zU
-=======
 Ws
->>>>>>> reimported backup
-=======
-zU
->>>>>>> updated clf ship to have mines
 tE
 RV
 Fk
@@ -4805,15 +4364,7 @@ Ws
 tE
 iL
 av
-<<<<<<< master
-<<<<<<< master
-SA
-=======
 Fm
->>>>>>> reimported backup
-=======
-SA
->>>>>>> updated clf ship to have mines
 VH
 Jt
 gt
@@ -4850,15 +4401,7 @@ ho
 Wz
 tq
 Ac
-<<<<<<< master
-<<<<<<< master
-pn
-=======
 nC
->>>>>>> reimported backup
-=======
-pn
->>>>>>> updated clf ship to have mines
 Ws
 Ws
 tq
@@ -4897,11 +4440,7 @@ Wz
 xW
 hP
 Wz
-<<<<<<< master
-VD
-=======
 QZ
->>>>>>> reimported backup
 Ez
 Cq
 Jw
@@ -4912,15 +4451,6 @@ Wz
 tq
 Qx
 nC
-<<<<<<< master
-<<<<<<< master
-pn
-=======
-nC
->>>>>>> reimported backup
-=======
-pn
->>>>>>> updated clf ship to have mines
 tq
 vo
 VH
@@ -4950,31 +4480,12 @@ qH
 Iu
 Iu
 Iu
-<<<<<<< master
 nU
 Wz
-lI
-JA
-Nq
-Wz
-=======
-VD
-Wz
-<<<<<<< master
-<<<<<<< master
-lI
-JA
-=======
 nC
-Gf
->>>>>>> reimported backup
-=======
-lI
-JA
->>>>>>> added spawn pointss for clf survivors
+Wz
 Nq
 nU
->>>>>>> reimported backup
 nC
 ji
 Bw
@@ -5012,36 +4523,16 @@ Sn
 kd
 Ow
 pr
-<<<<<<< master
-<<<<<<< master
-WK
-=======
 pr
->>>>>>> reimported backup
-=======
-WK
->>>>>>> added spawn pointss for clf survivors
 pr
 Wz
 Wz
 Wz
 Qx
 vh
-<<<<<<< master
-QZ
 Wz
-JA
-=======
 Wz
-<<<<<<< master
-<<<<<<< master
-JA
-=======
 Gf
->>>>>>> reimported backup
-=======
-JA
->>>>>>> added spawn pointss for clf survivors
 yL
 eO
 us
@@ -5124,26 +4615,14 @@ Ag
 Dp
 KU
 Sd
-<<<<<<< master
 nU
-=======
-Qx
->>>>>>> reimported backup
 XG
 bj
 af
 Jf
 QZ
 Uy
-<<<<<<< master
-<<<<<<< master
-vV
-=======
 Wz
->>>>>>> reimported backup
-=======
-vV
->>>>>>> updated clf ship to have mines
 ZM
 nC
 dx
@@ -5294,18 +4773,8 @@ cz
 Ra
 NS
 OQ
-<<<<<<< master
-<<<<<<< master
-vy
-=======
 OQ
->>>>>>> reimported backup
-=======
-vy
->>>>>>> updated clf ship to have mines
 OQ
->>>>>>> reimported backup
-=======
 OQ
 LD
 tl
@@ -5440,15 +4909,7 @@ uI
 sS
 Fm
 VH
-<<<<<<< master
-<<<<<<< master
-SA
-=======
 Fm
->>>>>>> reimported backup
-=======
-SA
->>>>>>> updated clf ship to have mines
 aP
 sS
 uI

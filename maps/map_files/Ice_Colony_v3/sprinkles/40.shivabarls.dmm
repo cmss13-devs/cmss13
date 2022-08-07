@@ -166,12 +166,6 @@
 /area/shiva/interior/bar)
 "hR" = (
 /obj/structure/surface/table/woodentable,
-<<<<<<< master
-<<<<<<< master
-/obj/item/storage/firstaid/adv{
-	pixel_y = -4;
-	pixel_x = -3
-=======
 /obj/item/storage/firstaid/surgical{
 	pixel_x = -7
 	},
@@ -180,12 +174,6 @@
 	},
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 10
->>>>>>> reimported backup
-=======
-/obj/item/storage/firstaid/adv{
-	pixel_y = -4;
-	pixel_x = -3
->>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -502,10 +490,6 @@
 /area/shiva/interior/bar)
 "nU" = (
 /obj/structure/surface/table/woodentable,
-<<<<<<< master
-<<<<<<< master
-/obj/item/storage/firstaid/regular,
-=======
 /obj/item/storage/firstaid{
 	pixel_x = -7;
 	pixel_y = -4
@@ -522,10 +506,6 @@
 	pixel_x = 10;
 	pixel_y = -4
 	},
->>>>>>> reimported backup
-=======
-/obj/item/storage/firstaid/regular,
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -657,12 +637,6 @@
 	pixel_x = 8;
 	pixel_y = 12
 	},
-<<<<<<< master
-<<<<<<< master
-/obj/item/ammo_magazine/shotgun/slugs{
-	pixel_x = -8;
-	pixel_y = -5
-=======
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 8;
 	pixel_y = 12
@@ -670,12 +644,6 @@
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 8;
 	pixel_y = 12
->>>>>>> reimported backup
-=======
-/obj/item/ammo_magazine/shotgun/slugs{
-	pixel_x = -8;
-	pixel_y = -5
->>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 8;
@@ -685,10 +653,6 @@
 	pixel_x = -8;
 	pixel_y = -5
 	},
-<<<<<<< master
-<<<<<<< master
-/obj/item/ammo_magazine/shotgun/incendiary,
-=======
 /obj/item/weapon/gun/shotgun/double{
 	pixel_x = -16;
 	pixel_y = 10
@@ -697,10 +661,6 @@
 	pixel_x = 20;
 	pixel_y = -5
 	},
->>>>>>> reimported backup
-=======
-/obj/item/ammo_magazine/shotgun/incendiary,
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "ud" = (
@@ -821,21 +781,9 @@
 	icon_state = "xtracks";
 	tag = "icon-xtracks"
 	},
-<<<<<<< master
-<<<<<<< master
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	icon_state = "metal_2"
-=======
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3";
 	dir = 1
->>>>>>> reimported backup
-=======
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	icon_state = "metal_2"
->>>>>>> updated all maps to have CLF Mines and corpses
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
@@ -911,30 +859,9 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/wood/large_stack,
 /obj/item/stack/sheet/wood/large_stack,
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
-/obj/item/tool/weldpack{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/obj/item/tool/weldingtool{
-	pixel_y = -9;
-	pixel_x = 11
-	},
-/obj/item/clothing/glasses/welding{
-	pixel_y = 9;
-	pixel_x = -12
-	},
-<<<<<<< master
-=======
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/ammo_box/magazine/smg/nailgun,
 /obj/item/weapon/gun/smg/nailgun,
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Cm" = (
@@ -948,13 +875,7 @@
 /area/shiva/interior/bar)
 "Cv" = (
 /obj/structure/window_frame/colony/reinforced,
-<<<<<<< master
-<<<<<<< master
-=======
 /obj/item/stack/rods,
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/shard{
 	icon_state = "large"
 	},
@@ -985,22 +906,6 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
-"DZ" = (
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	icon_state = "metal_2"
-	},
-/turf/open/floor/shiva,
-/area/shiva/interior/bar)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "Eb" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1128,13 +1033,7 @@
 "Hb" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/plasteel/large_stack,
-<<<<<<< master
-<<<<<<< master
-=======
 /obj/item/stack/sheet/plasteel/large_stack,
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Hf" = (
@@ -1229,9 +1128,6 @@
 /area/shiva/interior/bar)
 "KF" = (
 /obj/structure/surface/table/woodentable,
-<<<<<<< master
-<<<<<<< master
-=======
 /obj/item/storage/firstaid/fire{
 	pixel_x = -7
 	},
@@ -1241,9 +1137,6 @@
 /obj/item/storage/firstaid/fire{
 	pixel_x = -7
 	},
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /obj/item/storage/firstaid/o2{
 	pixel_x = 11
 	},
@@ -1333,19 +1226,6 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
-"Mu" = (
-/obj/structure/barricade/snow,
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/junkyard/cp_bar)
-<<<<<<< master
-=======
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 "MP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva,
@@ -1361,18 +1241,10 @@
 	},
 /area/shiva/interior/bar)
 "Nr" = (
-<<<<<<< master
-<<<<<<< master
-/obj/structure/machinery/cm_vending/sorted/boozeomat,
-=======
 /obj/structure/machinery/chem_dispenser/beer{
 	pixel_y = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
->>>>>>> reimported backup
-=======
-/obj/structure/machinery/cm_vending/sorted/boozeomat,
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "NN" = (
@@ -1518,15 +1390,7 @@
 "Vg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/metal/large_stack,
-<<<<<<< master
-<<<<<<< master
-/obj/effect/landmark/wo_supplies/storage/mines,
-=======
 /obj/item/stack/sheet/metal/large_stack,
->>>>>>> reimported backup
-=======
-/obj/effect/landmark/wo_supplies/storage/mines,
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "Vp" = (
@@ -1625,13 +1489,7 @@
 /area/shiva/interior/bar)
 "ZG" = (
 /obj/structure/window_frame/colony/reinforced,
-<<<<<<< master
-<<<<<<< master
-=======
 /obj/item/shard,
->>>>>>> reimported backup
-=======
->>>>>>> updated all maps to have CLF Mines and corpses
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "ZX" = (
@@ -1701,15 +1559,7 @@ lf
 "}
 (4,1,1) = {"
 TD
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 CF
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 fz
 wk
 md
@@ -1852,21 +1702,9 @@ KC
 ls
 "}
 (12,1,1) = {"
-<<<<<<< master
-<<<<<<< master
-Ja
-yz
-DZ
-=======
 XY
 yz
 Em
->>>>>>> reimported backup
-=======
-Ja
-yz
-DZ
->>>>>>> updated all maps to have CLF Mines and corpses
 if
 uL
 Eb
@@ -1900,15 +1738,7 @@ ei
 ls
 "}
 (14,1,1) = {"
-<<<<<<< master
-<<<<<<< master
-Mu
-=======
 ni
->>>>>>> reimported backup
-=======
-Mu
->>>>>>> updated all maps to have CLF Mines and corpses
 yz
 zi
 jM
@@ -1962,15 +1792,7 @@ ls
 ls
 "}
 (17,1,1) = {"
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 CF
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 LX
 Vg
 Ci
@@ -1988,15 +1810,7 @@ jG
 ls
 "}
 (18,1,1) = {"
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 yf
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 ll
 HA
 rB
@@ -2008,15 +1822,7 @@ jM
 jM
 jM
 hk
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 CF
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 PK
 ve
 jG
@@ -2034,30 +1840,14 @@ Bl
 jM
 HA
 hk
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 yf
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 PK
 XD
 ve
 "}
 (20,1,1) = {"
 Ja
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 yf
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 FH
 rx
 lc
@@ -2068,30 +1858,14 @@ qi
 lQ
 tV
 LT
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 CF
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 jE
 XD
 lp
 "}
 (21,1,1) = {"
 Ja
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 CF
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 kB
 ta
 rB
@@ -2102,15 +1876,7 @@ jM
 ud
 jM
 sU
-<<<<<<< master
-<<<<<<< master
-ZG
-=======
 yf
->>>>>>> reimported backup
-=======
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 Hu
 XD
 rq
@@ -2137,21 +1903,9 @@ AR
 XY
 ls
 ls
-<<<<<<< master
-<<<<<<< master
-ZG
-ZG
-ZG
-=======
 yf
 CF
 yf
->>>>>>> reimported backup
-=======
-ZG
-ZG
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 ls
 ls
 yM
@@ -2171,27 +1925,11 @@ II
 tt
 tt
 NT
-<<<<<<< master
-<<<<<<< master
-ZG
-EB
-mV
-LO
-ZG
-=======
 yf
 EB
 mV
 LO
 yf
->>>>>>> reimported backup
-=======
-ZG
-EB
-mV
-LO
-ZG
->>>>>>> updated all maps to have CLF Mines and corpses
 Hu
 rq
 rq

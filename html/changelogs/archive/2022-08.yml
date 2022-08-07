@@ -150,3 +150,9 @@
       for multitool APC tracking.
   - rscadd: 'Solaris Ridge : tweaked some areas, doors, windows, and added a server
       room to lambda'
+  - rscadd: added green pens, the CL gets a green pen in their briefcase
+  - balance: upped the price of ultrazine in the CL briefcase to 25 points
+  - balance: you can no longer buy ultrazine or neurostimulator implants from the
+      CL briefcase before 12:25
+  - code_imp: made the code for update_icons on pens much nicer
+  - rscadd: added DCC spawn landmarks to the uss runtime

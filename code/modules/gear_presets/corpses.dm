@@ -43,7 +43,6 @@
 
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	add_survivor_weapon(H)
 	add_random_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
@@ -130,13 +129,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
@@ -175,14 +167,6 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
@@ -211,14 +195,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H.back), WEAR_IN_BACK)
 
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -336,32 +312,12 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security/marshal
-	name = "Corpse - Colonial Marshal"
-	assignment = "Colonial Marshal"
 	name = "Corpse - Colonial Marshal"
 	assignment = "Colonial Marshal"
 	xenovictim = TRUE
@@ -379,17 +335,6 @@
 	
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(H), WEAR_WAIST)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	else
@@ -443,24 +388,6 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-/datum/equipment_preset/corpse/security/liaison/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	add_random_cl_survivor_loot(H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
 	. = ..()
 
 //*****************************************************************************************************/
@@ -481,11 +408,6 @@
 /datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/H)
 	
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	else
@@ -588,8 +510,6 @@
 
 /datum/equipment_preset/corpse/wysec
 	name = "Corpse - Weyland-Yutani Corporate Security Guard"
-/datum/equipment_preset/corpse/wysec
-	name = "Corpse - Weyland-Yutani Corporate Security Guard"
 	idtype = /obj/item/card/id/pmc
 	assignment = "Weyland-Yutani Corporate Security Guard"
 	access = list(
@@ -608,14 +528,6 @@
 		ACCESS_WY_CORPORATE,
 	)
 
-/datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -652,17 +564,6 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
 /datum/equipment_preset/corpse/colonist/burst
 	name = "Corpse - Burst Colonist"
@@ -676,97 +577,6 @@
 	faction = FACTION_COLONIST
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id/lanyard
-
-/datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-
-/datum/equipment_preset/corpse/colonist/random/burst
-	name = "Corpse - Burst Colonist"
-	xenovictim = TRUE
-
-/datum/equipment_preset/corpse/colonist/kutjevo
-	name = "Corpse - Colonist Kutjevo"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
-
-/datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/H)
-	
-	add_random_kutjevo_survivor_uniform(H)
-	add_random_kutjevo_survivor_equipment(H)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-
-/datum/equipment_preset/corpse/colonist/kutjevo/burst
-	name = "Corpse - Burst Colonist"
-	xenovictim = TRUE
-
-/datum/equipment_preset/corpse/colonist/random
-	name = "Corpse - Colonist Random"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
-
-/datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-
-/datum/equipment_preset/corpse/colonist/random/burst
-	name = "Corpse - Burst Colonist"
-	xenovictim = TRUE
-
-/datum/equipment_preset/corpse/colonist/kutjevo
-	name = "Corpse - Colonist Kutjevo"
-	assignment = JOB_COLONIST
-	xenovictim = FALSE
-	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	idtype = /obj/item/card/id/lanyard
-
-/datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/H)
-	
-	add_random_kutjevo_survivor_uniform(H)
-	add_random_kutjevo_survivor_equipment(H)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-
-/datum/equipment_preset/corpse/colonist/kutjevo/burst
-	name = "Corpse - Burst Colonist"
-	xenovictim = TRUE
-
-/datum/equipment_preset/corpse/colonist/doctor
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -958,7 +768,6 @@
 	assignment = "Union of Progressive Peoples Soldier"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
-	faction = FACTION_UPP
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,

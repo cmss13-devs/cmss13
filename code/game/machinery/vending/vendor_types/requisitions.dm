@@ -146,17 +146,10 @@
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
-			//magazines handling (mainly for subtypes)
-			if(istype(item_to_stock, /obj/item/ammo_magazine))
-				//flamer fuel tanks handling
-				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
-					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
-					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
-						return
-				var/obj/item/ammo_magazine/A = item_to_stock
-				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+			if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+				var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+				if(FT.flamer_chem != initial(FT.flamer_chem))
+					to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
 					return
 
 			//Guns handling

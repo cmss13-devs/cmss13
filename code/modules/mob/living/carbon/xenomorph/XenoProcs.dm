@@ -31,7 +31,7 @@
 			var/mob/living/carbon/M = L.current
 			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
 				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, "#b491c8")
-				return
+				break
 
 /proc/xeno_message_all(var/message = null, var/size = 3)
 	xeno_message(message, size)

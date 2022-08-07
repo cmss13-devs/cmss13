@@ -661,7 +661,7 @@
 				if(plus_name)
 					M << sound('sound/effects/tech_notification.ogg')
 				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
-				return
+				break
 
 //Sends a maptext alert to our currently selected squad. Does not make sound.
 /obj/structure/machinery/computer/overwatch/proc/send_maptext_to_squad(var/text = "", var/title_text = "", var/only_leader = 0)

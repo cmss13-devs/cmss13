@@ -36,12 +36,20 @@ export const SupplyDropConsole = (_props, context) => {
           <LabeledList>
             <LabeledList.Item label="X Offset">
               <NumberInput
+                width="4em"
+                step={1}
+                minValue={-1000}
+                maxValue={1000}
                 value={data.x_offset}
                 onChange={(e, value) => act('set_x', { set_x: `${value}` })}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Y Offset">
               <NumberInput
+                width="4em"
+                step={1}
+                minValue={-1000}
+                maxValue={1000}
                 value={data.y_offset}
                 onChange={(e, value) => act('set_y', { set_y: `${value}` })}
               />
@@ -52,11 +60,15 @@ export const SupplyDropConsole = (_props, context) => {
             title="Supply pad status"
             buttons={
               <Button
-                icon="reload"
+                icon="sync-alt"
                 content="Update"
                 onClick={() => act('refresh_pad')}
               />
             }>
+            {data.loaded
+              ? `Supply pad status :
+                ${data.loaded.name} loaded.`
+              : 'No crate loaded.'}
             <ProgressBar
               width="100%"
               value={timeLeftPct}

@@ -126,9 +126,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
 	var/busy = 0 //The computer is busy launching a drop, lock controls
-	var/drop_cooldown = 5000
+	var/drop_cooldown = 1 MINUTES
+	var/time_until_next_drop
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
+	var/obj/structure/closet/crate/loaded_crate
 
 /obj/structure/machinery/computer/supply_drop_console/ui_status(mob/user)
 	if(!inoperable(MAINT))
@@ -149,6 +151,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
 	. = ..()
+	check_pad()
 	.["busy"] = busy
 	.["can_pick_squad"] = can_pick_squad
 	.["current_squad"] = current_squad
@@ -157,6 +160,7 @@ var/datum/controller/supply/supply_controller = new()
 	.["x_offset"] = x_supply
 	.["y_offset"] = y_supply
 	.["active"] = busy
+	.["loaded"] = loaded_crate
 
 /obj/structure/machinery/computer/supply_drop_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -199,6 +203,8 @@ var/datum/controller/supply/supply_controller = new()
 				else
 					handle_supplydrop()
 
+		if("refresh_pad")
+			check_pad()
 
 /obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
@@ -285,6 +291,13 @@ var/datum/controller/supply/supply_controller = new()
 	src.attack_hand(usr) //Refresh
 
 */
+/obj/structure/machinery/computer/supply_drop_console/proc/check_pad()
+	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
+	if(C)
+		loaded_crate = C
+	else
+		loaded_crate = null
+
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")

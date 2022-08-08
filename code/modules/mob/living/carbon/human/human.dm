@@ -1086,15 +1086,15 @@
 		return
 
 	if(tgui_alert(src, "Remove the faulty entry?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
-		for(var/datum/cm_objective/retrieve_data/disk/O in src.mind.objective_memory.disks)
-			if(O.disk.disk_color == null || O.disk.display_color == null)
-				src.mind.objective_memory.disks -= O
+		for(var/datum/cm_objective/retrieve_data/disk/Objective in src.mind.objective_memory.disks)
+			if(!Objective.disk.disk_color || !Objective.disk.display_color)
+				src.mind.objective_memory.disks -= Objective
 	else
 		return
 
 	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
-		for(var/datum/cm_objective/O in src.mind.objective_memory.disks)
-			src.mind.objective_memory.disks -= O
+		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
+			src.mind.objective_memory.disks -= Objective
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)

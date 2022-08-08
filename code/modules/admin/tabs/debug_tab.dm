@@ -81,8 +81,8 @@
 	set name = "Reset Intel Data Tab"
 
 	if(tgui_alert(src, "Clear the data tab?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
-		for(var/datum/cm_objective/O in intel_system.oms.disks)
-			intel_system.oms.disks -= O
+		for(var/datum/cm_objective/Objective in intel_system.oms.disks)
+			intel_system.oms.disks -= Objective
 
 /client/proc/check_round_statistics()
 	set category = "Debug"

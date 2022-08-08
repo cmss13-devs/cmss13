@@ -51,7 +51,6 @@
 			new_icon = icon_xenonid
 
 	icon = new_icon
-
 	set_hive_data(src, hivenumber)
 	go_active()
 
@@ -377,7 +376,7 @@
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
-
+	flags_inventory &= ~CANTSTRIP
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 

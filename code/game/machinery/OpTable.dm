@@ -103,10 +103,8 @@
 	if(H.wear_mask)
 		var/obj/item/mask = H.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)
-			var/obj/item/clothing/mask/facehugger/hugger = mask
-			if(hugger.stat != DEAD)
-				to_chat(user, SPAN_DANGER("You can't remove their mask!"))
-				return
+			to_chat(user, SPAN_DANGER("You can't remove their mask!"))
+			return
 		H.drop_inv_item_on_ground(mask)
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE, TRUE))

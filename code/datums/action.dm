@@ -20,7 +20,6 @@
 	target = Target
 	button = new
 	if(target)
-		target.icon = icon_file
 		var/image/IMG = image(target.icon, button, target.icon_state)
 		IMG.pixel_x = 0
 		IMG.pixel_y = 0

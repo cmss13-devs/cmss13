@@ -130,12 +130,85 @@ var/datum/controller/supply/supply_controller = new()
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
 
+/obj/structure/machinery/computer/supply_drop_console/ui_status(mob/user)
+	if(!inoperable(MAINT))
+		. = UI_INTERACTIVE
+
+/obj/structure/machinery/computer/supply_drop_console/ui_state(mob/user)
+	if(inoperable(MAINT))
+		return UI_CLOSE
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/computer/supply_drop_console/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SupplyDropConsole", name)
+		ui.open()
+
+
+/obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
+	. = ..()
+	.["busy"] = busy
+	.["can_pick_squad"] = can_pick_squad
+	.["current_squad"] = current_squad
+	.["launch_cooldown"] = drop_cooldown
+	.["next_fire"] = current_squad.supply_cooldown + drop_cooldown - world.time
+	.["x_offset"] = x_supply
+	.["y_offset"] = y_supply
+	.["active"] = busy
+
+/obj/structure/machinery/computer/supply_drop_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("set_x")
+			var/new_x = text2num(params["set_x"])
+			if(!new_x)
+				return
+			x_supply = new_x
+
+		if("set_y")
+			var/new_y = text2num(params["set_y"])
+			if(!new_y)
+				return
+			y_supply = new_y
+
+		if("pick_squad")
+			if(can_pick_squad)
+				var/list/squad_list = list()
+				for(var/datum/squad/S in RoleAuthority.squads)
+					if(S.active && S.faction == faction)
+						squad_list += S.name
+
+				var/name_sel = tgui_input_list(usr, "Which squad pad would you like to use to send supplies?", "Supply drop console", squad_list)
+				if(!name_sel) return
+				var/datum/squad/selected = get_squad_by_name(name_sel)
+				if(selected)
+					current_squad = selected
+					attack_hand(usr)
+				else
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+
+		if("send_beacon")
+			if(current_squad)
+				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
+				else
+					handle_supplydrop()
+
+
 /obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
-		return 1
+		return TRUE
+	tgui_interact(user)
+	return
+/*
 	user.set_interaction(src)
 	var/dat = "<body>"
 
@@ -211,6 +284,7 @@ var/datum/controller/supply/supply_controller = new()
 					handle_supplydrop()
 	src.attack_hand(usr) //Refresh
 
+*/
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")

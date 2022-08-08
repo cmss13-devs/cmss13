@@ -454,6 +454,16 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
+	var/obj/limb/l_arm = attached.get_limb("l_arm")
+	var/obj/limb/r_arm = attached.get_limb("r_arm")
+	if((l_arm.status & LIMB_DESTROYED) && (r_arm.status & LIMB_DESTROYED))
+		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached] - \he has no arms to attach to!."))
+		attached = null
+		filtering = FALSE
+		update_icon(TRUE)
+		STOP_PROCESSING(SSobj, src)
+		return
+
 	if(filtering)
 		attached.reagents.remove_any_but("blood", reagent_removed_per_second*delta_time)
 		attached.take_blood(attached, blood_cost*delta_time)
@@ -472,4 +482,5 @@
 		arms_to_damage -= l_arm
 	if(r_arm.status & LIMB_DESTROYED)
 		arms_to_damage -= r_arm
-	human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))
+	if(arms_to_damage.len)
+		human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))

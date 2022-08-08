@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, Dimmer, Icon } from '../components';
+import { Button, Section, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 export const CommandTablet = (_props, context) => {
@@ -8,87 +8,60 @@ export const CommandTablet = (_props, context) => {
   const evacstatus = data.evac_status;
 
   const timeLeft = data.cooldown_message;
-  const timeLeftPct = timeLeft / data.launch_cooldown;
+  const timeLeftPct = 100 - (timeLeft / data.cooldown_message);
 
   const canAnnounce = (
     timeLeft === 0);
 
   const canEvac = (
-    evacstatus === 1);
+    evacstatus === 0);
 
   return (
     <Window
       width={350}
       height={350}>
       <Window.Content scrollable>
-        {!!canEvac && (
-          <Button
-            ml={1}
-            icon="rocket-launch"
-            content={"Initiate Evacuation"}
-            onClick={() => act('evacuation_start')}
-          />
-        )}
-        <Section title="Supply Drop">
-          <LabeledList>
-            <LabeledList.Item label="Longitude">
-              <NumberInput
-                width="4em"
-                step={1}
-                minValue={-1000}
-                maxValue={1000}
-                value={data.x_offset}
-                onChange={(e, value) => act('set_x', { set_x: `${value}` })}
-              />
-            </LabeledList.Item>
-            <LabeledList.Item label="Latitude">
-              <NumberInput
-                width="4em"
-                step={1}
-                minValue={-1000}
-                maxValue={1000}
-                value={data.y_offset}
-                onChange={(e, value) => act('set_y', { set_y: `${value}` })}
-              />
-            </LabeledList.Item>
-          </LabeledList>
-          <Divider />
-          <Section
-            title="Supply Pad Status"
-            buttons={
-              <Button
-                icon="sync-alt"
-                content="Update"
-                onClick={() => act('refresh_pad')}
-              />
-            }>
-            {data.loaded
-              ? `Supply Pad Status :
-                ${data.crate_name} loaded.`
-              : 'No crate loaded.'}
+        <Section>
+          <Section>
+            <Button
+              icon="bullhorn"
+              title="Make Announcement"
+              content="Make an announcement"
+              onClick={() => act('announce')}
+              disabled={!canAnnounce} />
             <ProgressBar
-              width="100%"
+              width="50%"
               value={timeLeftPct}
               ranges={{
-                good: [-Infinity, 0.33],
+                bad: [-Infinity, 0.33],
                 average: [0.33, 0.67],
-                bad: [0.67, Infinity],
+                good: [0.67, Infinity],
               }}>
-              {Math.ceil(timeLeft / 10)} seconds
+              {Math.ceil(timeLeft / 10)} secs
             </ProgressBar>
           </Section>
-          <Button
-            disabled={!canFire}
-            icon="paper-plane"
-            color="good"
-            content="Launch Supply Drop"
-            onClick={() => act('send_beacon')}
-          />
-          {active === 1 && (
-            <Dimmer fontSize="32px">
-              <Icon name="cog" spin />
-              {'Launching...'}
-            </Dimmer>
+          <Section>
+            <Button
+              icon="medal"
+              title="Give Award"
+              content="Give an award"
+              onClick={() => act('award')} />
+          </Section>
+          <Section>
+            <Button
+              icon="globe-europe"
+              title="Open Tacmap"
+              content="View Tacmap"
+              onClick={() => act('mapview')} />
+          </Section>
+          {!!canEvac && (
+            <Section>
+              <Button
+                ml={1}
+                icon="door-open"
+                content={"Initiate Evacuation"}
+                onClick={() => act('evacuation_start')} />
+            </Section>
           )}
         </Section>
       </Window.Content>

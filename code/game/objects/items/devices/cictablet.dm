@@ -20,7 +20,7 @@
 	unacidable = TRUE
 	indestructible = TRUE
 	req_access = list(ACCESS_MARINE_COMMANDER)
-	var/on = 1 // 0 for off
+	var/on = TRUE // 0 for off
 	var/mob/living/carbon/human/current_mapviewer
 	var/state = STATE_DEFAULT
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
@@ -53,8 +53,7 @@
 	..()
 
 	if(src.allowed(user))
-		user.set_interaction(src)
-		interact(user)
+		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
 
@@ -65,14 +64,93 @@
 	data["evac_status"] = EvacuationAuthority.evac_status
 	data["cooldown_message"] = COOLDOWN_TIMELEFT(src, announcement_cooldown)
 
-/obj/item/device/cotablet/
+	return data
+
+/obj/item/device/cotablet/ui_status(mob/user, datum/ui_state/state)
+	. = UI_INTERACTIVE
+
+/obj/item/device/cotablet/ui_state(mob/user)
+	if(src.allowed(user) && on)
+		return GLOB.not_incapacitated_and_adjacent_state
+	else
+		return UI_CLOSE
+
+/obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "CommandTablet", "Command Tablet")
+		ui.open()
+
+/obj/item/device/cotablet/ui_close(mob/user)
+	. = ..()
+	if(current_mapviewer)
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
+		return
 
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	switch(action)
 
+	switch(action)
+		if("announce")
+			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
+				to_chat(usr, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
+				return FALSE
+
+			var/input = stripped_multiline_input(usr, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(usr in view(1, src)))
+				return FALSE
+
+			var/signed = null
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/id = H.wear_id
+				if(istype(id))
+					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					signed = "[paygrade] [id.registered_name]"
+
+			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
+			message_staff("[key_name(usr)] has made a command announcement.")
+			log_announcement("[key_name(usr)] has announced the following: [input]")
+			COOLDOWN_START(src, announcement_cooldown, cooldown_between_messages)
+
+		if("award")
+			if(announcement_faction != FACTION_MARINE)
+				return
+			print_medal(usr, src)
+
+		if("mapview")
+			if(current_mapviewer)
+				update_mapview(TRUE)
+				return
+			current_mapviewer = usr
+			update_mapview()
+			return
+
+		if("evacuation_start")
+			if(announcement_faction != FACTION_MARINE)
+				return
+			if(state == STATE_EVACUATION)
+				if(security_level < SEC_LEVEL_RED)
+					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+					return FALSE
+
+				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+					return FALSE
+
+				if(!EvacuationAuthority.initiate_evacuation())
+					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+					return FALSE
+
+				log_game("[key_name(usr)] has called for an emergency evacuation.")
+				message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
+				return TRUE
+			state = STATE_EVACUATION
+
+/*
 
 /obj/item/device/cotablet/interact(mob/user as mob)
 	if(!on)
@@ -105,6 +183,8 @@
 	onclose(user, "communications")
 	updateDialog()
 
+*/
+
 /obj/item/device/cotablet/proc/update_mapview(var/close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
@@ -115,6 +195,8 @@
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
 		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+
+/*
 
 /obj/item/device/cotablet/Topic(href, href_list)
 	if(..())
@@ -188,6 +270,8 @@
 			state = STATE_EVACUATION
 
 	updateUsrDialog()
+
+*/
 
 /obj/item/device/cotablet/pmc
 	desc = "A special device used by corporate PMC directors."

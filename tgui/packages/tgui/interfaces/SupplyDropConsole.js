@@ -23,18 +23,18 @@ export const SupplyDropConsole = (_props, context) => {
         {!!can_pick_squad && (
           <Button
             ml={1}
-            icon="bullhorn"
+            icon="ballot"
             selected={data.current_squad}
             content={data.current_squad
-              ? `Current squad is
+              ? `Current squad is :
                 ${data.current_squad}`
               : 'No squad selected'}
             onClick={() => act('pick_squad')}
           />
         )}
-        <Section title="Supply drop">
+        <Section title="Supply Drop">
           <LabeledList>
-            <LabeledList.Item label="X Offset">
+            <LabeledList.Item label="Longitude">
               <NumberInput
                 width="4em"
                 step={1}
@@ -44,7 +44,7 @@ export const SupplyDropConsole = (_props, context) => {
                 onChange={(e, value) => act('set_x', { set_x: `${value}` })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Y Offset">
+            <LabeledList.Item label="Latitude">
               <NumberInput
                 width="4em"
                 step={1}
@@ -57,7 +57,7 @@ export const SupplyDropConsole = (_props, context) => {
           </LabeledList>
           <Divider />
           <Section
-            title="Supply pad status"
+            title="Supply Pad Status"
             buttons={
               <Button
                 icon="sync-alt"
@@ -66,8 +66,8 @@ export const SupplyDropConsole = (_props, context) => {
               />
             }>
             {data.loaded
-              ? `Supply pad status :
-                ${data.loaded.name} loaded.`
+              ? `Supply Pad Status :
+                ${data.crate_name} loaded.`
               : 'No crate loaded.'}
             <ProgressBar
               width="100%"
@@ -77,19 +77,20 @@ export const SupplyDropConsole = (_props, context) => {
                 average: [0.33, 0.67],
                 bad: [0.67, Infinity],
               }}>
-              {Math.ceil(timeLeft / 10)} sec(s)
+              {Math.ceil(timeLeft / 10)} seconds
             </ProgressBar>
           </Section>
           <Button
             disabled={!canFire}
+            icon="paper-plane"
             color="good"
-            content="Launch Supply drop"
+            content="Launch Supply Drop"
             onClick={() => act('send_beacon')}
           />
           {active === 1 && (
             <Dimmer fontSize="32px">
               <Icon name="cog" spin />
-              {'Building items...'}
+              {'Launching...'}
             </Dimmer>
           )}
         </Section>

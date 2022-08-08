@@ -125,12 +125,12 @@ var/datum/controller/supply/supply_controller = new()
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
-	var/busy = 0 //The computer is busy launching a drop, lock controls
+	var/busy = FALSE //The computer is busy launching a drop, lock controls
 	var/drop_cooldown = 1 MINUTES
-	var/time_until_next_drop
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
 	var/obj/structure/closet/crate/loaded_crate
+	COOLDOWN_DECLARE(next_fire)
 
 /obj/structure/machinery/computer/supply_drop_console/ui_status(mob/user)
 	if(!inoperable(MAINT))
@@ -149,6 +149,7 @@ var/datum/controller/supply/supply_controller = new()
 		ui.open()
 
 
+
 /obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
 	. = ..()
 	check_pad()
@@ -156,11 +157,12 @@ var/datum/controller/supply/supply_controller = new()
 	.["can_pick_squad"] = can_pick_squad
 	.["current_squad"] = current_squad
 	.["launch_cooldown"] = drop_cooldown
-	.["next_fire"] = current_squad.supply_cooldown + drop_cooldown - world.time
+	.["next_fire"] = COOLDOWN_TIMELEFT(src, next_fire)
 	.["x_offset"] = x_supply
 	.["y_offset"] = y_supply
 	.["active"] = busy
 	.["loaded"] = loaded_crate
+	.["crate_name"] = loaded_crate.name
 
 /obj/structure/machinery/computer/supply_drop_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -198,8 +200,9 @@ var/datum/controller/supply/supply_controller = new()
 
 		if("send_beacon")
 			if(current_squad)
-				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
+				if(!COOLDOWN_FINISHED(src, next_fire))
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available! Please wait [COOLDOWN_TIMELEFT(src, next_fire)/10] seconds!")]")
+					return
 				else
 					handle_supplydrop()
 
@@ -295,16 +298,18 @@ var/datum/controller/supply/supply_controller = new()
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
 	if(C)
 		loaded_crate = C
+		return C
 	else
 		loaded_crate = null
+		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
 		return
 
-	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
-	if(!istype(C))
+	var/obj/structure/closet/crate/C = check_pad()
+	if(!C)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -330,7 +335,7 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = 1
+	busy = TRUE
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
 	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
@@ -339,10 +344,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C) C.anchored = FALSE
+			if(C)
+				C.anchored = FALSE
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
 			return
-		S.supply_cooldown = world.time
+		COOLDOWN_START(src, next_fire, drop_cooldown)
 		if(ismob(usr))
 			var/mob/M = usr
 			M.count_niche_stat(STATISTICS_NICHE_CRATES)
@@ -355,7 +361,7 @@ var/datum/controller/supply/supply_controller = new()
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
 		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = 0
+		busy = FALSE
 
 
 //Sends a string to our currently selected squad.

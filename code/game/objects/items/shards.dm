@@ -102,7 +102,7 @@
 	spawn(1)
 	if(!detonating && !thrown && !cause && prob(50))
 		cause = "accidental"
-		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside [src] as [user] drops it. Uh oh."))
+		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src] as [user] drops it. Uh oh."))
 		manual_detonate(get_turf(src), user)
 	cause = null
 
@@ -190,8 +190,8 @@
 		organ.take_damage(damage_on_move, 0, 0, no_limb_loss = TRUE)
 		embedded_mob.pain.apply_pain(damage_on_move)
 		if(prob(5))
-			to_chat(embedded_mob, SPAN_DANGER("The [src] sticking out of you jostles roughly against your innards! Oh no."))
-			embedded_mob.visible_message(SPAN_DANGER("The [src] sticking out of [embedded_mob] suddenly explodes!"))
+			to_chat(embedded_mob, SPAN_DANGER("\The [src] sticking out of you jostles roughly against your innards! Oh no."))
+			embedded_mob.visible_message(SPAN_DANGER("\The [src] sticking out of [embedded_mob] suddenly explodes!"))
 			cell_explosion(get_turf(embedded_mob), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("accidental UXO detonation", embedded_mob))
 
 /obj/item/shard/shrapnel

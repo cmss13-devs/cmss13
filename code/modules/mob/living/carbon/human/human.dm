@@ -1007,7 +1007,7 @@
 		if(istype(W, /obj/item/large_shrapnel))
 			var/obj/item/large_shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
-		if(istype(W, /obj/item/shard/shrapnel))
+		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon

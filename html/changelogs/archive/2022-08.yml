@@ -159,6 +159,8 @@
   - qol: added paper macros for date and time. [date] for date, [shortdate] for number
       date, [time] for time, [date+time] for both.
 2022-08-08:
+  Morrow:
+  - admin: Resin walls on dead bodies will now be logged.
   Segrain:
   - bugfix: Items with actions no longer have FIX ME for icons.
   stanalbatross:

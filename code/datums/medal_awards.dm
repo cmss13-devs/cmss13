@@ -1,4 +1,5 @@
 GLOBAL_LIST_EMPTY(medal_awards)
+GLOBAL_LIST_EMPTY(resin_awards)
 
 /datum/recipient_awards
 	var/list/medal_names
@@ -78,3 +79,57 @@ GLOBAL_LIST_EMPTY(medal_awards)
 		return
 	if(give_medal_award(get_turf(printer)))
 		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))
+
+
+/proc/give_resin_award(var/datum/hive_status/hive)
+	if(!hive)
+		return
+	var/list/possible_recipients = list("Cancel")
+	var/list/listed_rcpt_castes = list()
+	for(var/mob/living/carbon/Xenomorph/t in hive.totalXenos)
+		if (t.persistent_ckey == usr.persistent_ckey) // Don't award self
+			continue
+		var/rcpt_name = t.name
+		listed_rcpt_castes[rcpt_name] = t.caste_type
+		possible_recipients += rcpt_name
+	for(var/mob/living/carbon/Xenomorph/t in hive.totalDeadXenos)
+		if (t.persistent_ckey == usr.persistent_ckey || istype(t.caste, /datum/caste_datum/queen)) // Don't award previous selves or a queen
+			continue
+		var/rcpt_name = t.name
+		listed_rcpt_castes[rcpt_name] = t.caste_type
+		possible_recipients += rcpt_name
+	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients)
+	if(!chosen_recipient || chosen_recipient == "Cancel") return
+	var/recipient_caste = listed_rcpt_castes[chosen_recipient]
+	var/posthumous = TRUE
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of strength", "royal jelly of courage", "royal jelly of sabotage"))  // TODO: Update terminology?
+	if(!medal_type) return
+	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	if(!citation) return
+	var/recipient_ckey
+	var/recipient_mob
+	for(var/mob/M in GLOB.mob_list)
+		if(M == usr)
+			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
+		if(M.real_name == chosen_recipient)
+			if(isliving(M) && M.stat != DEAD)
+				posthumous = FALSE
+			recipient_ckey = M.ckey
+			recipient_mob = M
+			break
+	if(!GLOB.resin_awards[chosen_recipient])
+		GLOB.resin_awards[chosen_recipient] = new /datum/recipient_awards()
+	var/datum/recipient_awards/RA = GLOB.resin_awards[chosen_recipient]
+	RA.recipient_rank = recipient_caste
+	RA.medal_names += medal_type // TODO: Should multiple medals be allowed?
+	RA.medal_citations += citation
+	RA.posthumous += posthumous
+
+	if(recipient_ckey)
+		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
+		if(P)
+			P.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
+	
+	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
+
+	return TRUE

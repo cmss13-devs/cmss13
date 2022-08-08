@@ -270,6 +270,7 @@
 	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+
 /datum/action/xeno_action/onclick/queen_order
 	name = "Give Order (100)"
 	action_icon_state = "queen_order"
@@ -297,6 +298,17 @@
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
+
+/datum/action/xeno_action/onclick/queen_award
+	name = "Give Royal Jelly (500)" // TODO: Update terminology?
+	action_icon_state = "queen_award"
+	plasma_cost = 500
+
+/datum/action/xeno_action/onclick/queen_award/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	if(!X.check_state())
+		return
+	give_resin_award(X.hive)
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"

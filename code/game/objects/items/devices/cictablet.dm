@@ -23,7 +23,7 @@
 	var/on = 1 // 0 for off
 	var/mob/living/carbon/human/current_mapviewer
 	var/state = STATE_DEFAULT
-	var/cooldown_message = 0
+	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
 
 	var/tablet_name = "Commanding Officer's Tablet"
 
@@ -35,6 +35,7 @@
 	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
 	var/tacmap_additional_parameter = null
 	var/minimap_name = "Marine Minimap"
+	COOLDOWN_DECLARE(announcement_cooldown)
 
 /obj/item/device/cotablet/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -56,6 +57,22 @@
 		interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
+
+
+/obj/item/device/cotablet/ui_data(mob/user)
+	var/list/data = list()
+
+	data["evac_status"] = EvacuationAuthority.evac_status
+	data["cooldown_message"] = COOLDOWN_TIMELEFT(src, announcement_cooldown)
+
+/obj/item/device/cotablet/
+
+/obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+
 
 /obj/item/device/cotablet/interact(mob/user as mob)
 	if(!on)
@@ -115,12 +132,12 @@
 			interact(usr)
 
 		if("announce")
-			if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
-				to_chat(usr, SPAN_WARNING("Please wait [(COOLDOWN_COMM_MESSAGE + cooldown_message - world.time)*0.1] second\s before making your next announcement."))
+			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
+				to_chat(usr, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
 				return FALSE
 
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(usr in view(1, src)))
 				return FALSE
 
 			var/signed = null
@@ -134,7 +151,7 @@
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
 			message_staff("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
-			cooldown_message = world.time
+			COOLDOWN_START(src, announcement_cooldown, cooldown_between_messages)
 
 		if("award")
 			if(announcement_faction != FACTION_MARINE)

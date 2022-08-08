@@ -100,7 +100,7 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
-	if(H.wear_mask && !H.drop_inv_item_on_ground(H.wear_mask))
+	if(H.wear_mask && NODROP)
 		to_chat(user, SPAN_DANGER("You can't remove their mask!"))
 		return
 

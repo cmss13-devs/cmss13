@@ -97,12 +97,17 @@ var/list/grenade_packets = list(
 /obj/item/storage/box/packet/airburst_he
 	name = "M74 airbust grenade packet"
 	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."
-	icon_state = "general_packet"
+	icon_state = "agmf_packet"
 	content_type = /obj/item/explosive/grenade/HE/airburst
 
 /obj/item/storage/box/packet/airburst_incen
 	name = "M74 airbust incendiary grenade packet"
 	desc = "It contains three M74 airburst incendiary grenades. This end towards the enemy."
-	icon_state = "general_packet"
+	icon_state = "agmi_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/airburst
 
+/obj/item/storage/box/packet/airburst_smoke
+	name = "M74 airbust smoke grenade packet"
+	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
+	icon_state = "agms_packet"
+	content_type = /obj/item/explosive/grenade/smokebomb/airburst

@@ -86,14 +86,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return
 	var/list/possible_recipients = list("Cancel")
 	var/list/listed_rcpt_castes = list()
+	// TODO: Also filter out facehuggers
 	for(var/mob/living/carbon/Xenomorph/t in hive.totalXenos)
 		if (t.persistent_ckey == usr.persistent_ckey) // Don't award self
+			continue
+		if (istype(t.caste, /datum/caste_datum/larva)) // Don't award larva
 			continue
 		var/rcpt_name = t.name
 		listed_rcpt_castes[rcpt_name] = t.caste_type
 		possible_recipients += rcpt_name
 	for(var/mob/living/carbon/Xenomorph/t in hive.totalDeadXenos)
-		if (t.persistent_ckey == usr.persistent_ckey || istype(t.caste, /datum/caste_datum/queen)) // Don't award previous selves or a queen
+		if (t.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
+			continue
+		if (istype(t.caste, /datum/caste_datum/queen)) // Don't award previous queens
+			continue
+		if (istype(t.caste, /datum/caste_datum/larva)) // Don't award previous larva
 			continue
 		var/rcpt_name = t.name
 		listed_rcpt_castes[rcpt_name] = t.caste_type

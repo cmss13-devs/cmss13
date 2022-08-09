@@ -91,6 +91,8 @@ export const SupplyDropConsole = (_props, context) => {
               </ProgressBar>
             )}
             <Button
+              fontSize="20px"
+              textAlign="center"
               disabled={!!cantFire}
               fluid={1}
               icon="paper-plane"

@@ -56,10 +56,10 @@
 	var/icon_vend //Icon_state when vending!
 	var/icon_deny //Icon_state when vending!
 	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	var/shoot_inventory = FALSE //Fire items at customers! We're broken!
 	var/shut_up = 0 //Stop spouting those godawful pitches!
 	var/extended_inventory = 0 //can we access the hidden inventory?
-	var/panel_open = 0 //Hacking that vending machine. Gonna get a free candy bar.
+	var/panel_open = FALSE //Hacking that vending machine. Gonna get a free candy bar.
 	var/wires = 15
 	var/obj/item/coin/coin
 	var/announce_hacked = TRUE
@@ -798,7 +798,7 @@
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
+				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(var/wire)
@@ -811,7 +811,7 @@
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = 0
+			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(var/wire)

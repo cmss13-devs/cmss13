@@ -57,6 +57,8 @@
 	if(savefile_version < 17) //remove omniglots
 		var/list/language_traits = list()
 		S["traits"] >> language_traits
+		if(!language_traits)
+			return
 		if(language_traits.len > 1)
 			language_traits = null
 		S["traits"] << language_traits

@@ -106,19 +106,22 @@
 			message_staff("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 			COOLDOWN_START(src, announcement_cooldown, cooldown_between_messages)
+			. = TRUE
 
 		if("award")
 			if(announcement_faction != FACTION_MARINE)
 				return
 			print_medal(usr, src)
+			. = TRUE
 
 		if("mapview")
 			if(current_mapviewer)
 				update_mapview(TRUE)
+				. = TRUE
 				return
 			current_mapviewer = usr
 			update_mapview()
-			return
+			. = TRUE
 
 		if("evacuation_start")
 			if(announcement_faction != FACTION_MARINE)
@@ -138,7 +141,7 @@
 
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
-			return TRUE
+			. = TRUE
 
 /obj/item/device/cotablet/proc/update_mapview(var/close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))

@@ -368,7 +368,7 @@
 
 /obj/item/explosive/mine/bounding/check_for_obstacles(mob/living/user)
 	if(user.loc && (user.loc.density || is_mainship_level(user.z)))
-		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		to_chat(user, SPAN_WARNING("You can't plant \a [src] here."))
 		return TRUE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))

@@ -182,6 +182,9 @@
   - balance: buffed the rifle solid stock a bit
   - imageadd: resprited the MK1, by Triiodine
   - imageadd: added map variants for the m46c, by Triiodine
+  sose96:
+  - balance: Sentry deployment system now shoots 360 and has 30% reduced damage due
+      to potential overlapping fields of fire.
   stanalbatross:
   - refactor: refactored beam code
   - bugfix: RTO backpacks with no phone now have an icon state

@@ -52,6 +52,7 @@
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
+		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
@@ -62,7 +63,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 460];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])
@@ -198,6 +199,9 @@
 
 		if("manifest")
 			ViewManifest()
+
+		if("hiveleaders")
+			ViewHiveLeaders()
 
 		if("SelectedJob")
 
@@ -401,6 +405,40 @@
 	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+
+/mob/new_player/proc/ViewHiveLeaders()
+	var/dat = "<html><body>"
+
+	dat += {"
+	<div align='center'>
+	<head><style>
+		.hiveleaders { border-collapse:collapse; }
+		.hiveleaders td, th { border:1px solid #F2B3F2; background-color:white; color:black; padding:.25em }
+		.hiveleaders th { height: 2em; background-color: #AA44CC; color:white }
+		.hiveleaders tr.head th { background-color: #784488; }
+		.hiveleaders tr.alt td { background-color: #F2B3F2 }
+	</style></head>
+	<table class="hiveleaders">
+	<tr class='head'><th>Designation</th><th>Caste</th></tr>
+	"}
+
+	var/even = FALSE
+
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+
+	dat += "<tr><th colspan=3>Queen</th></tr>"
+	if(main_hive.living_xeno_queen)
+		dat += "<tr[even ? " class='alt'" : ""]><td>[main_hive.living_xeno_queen.full_designation]</td><td>[main_hive.living_xeno_queen.name]</td></tr>"
+		even = !even
+
+	dat += "<tr><th colspan=3>Leaders</th></tr>"
+	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
+		dat += "<tr[even ? " class='alt'" : ""]><td>[xeno_leader.full_designation]</td><td>[xeno_leader.caste_type]</td></tr>"
+		even = !even
+
+	dat += "</table></div>"
+
+	show_browser(src, dat, "Hive Leaders", "hiveleaders", "size=250x350")
 
 /mob/new_player/Move()
 	return 0

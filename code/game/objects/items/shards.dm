@@ -95,27 +95,29 @@
 	var/detonating = 0
 	var/thrown = 0
 	var/cause = null
+	var/drop_sensitivity = 25 //% chance of it detonating when dropped. THIS ALSO TRIGGERS WHEN PUTTING IT IN A BAG.
+	var/impact_sensitivity = 75 //% chance of it detonating when thrown and hitting an atom.
 
 /obj/item/large_shrapnel/at_rocket_dud/dropped(mob/user)
 	. = ..()
 
 	spawn(1)
-	if(!detonating && !thrown && !cause && prob(50))
+	if(!detonating && !thrown && !cause && prob(drop_sensitivity))
 		cause = "accidental"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src] as [user] drops it. Uh oh."))
 		manual_detonate(get_turf(src), user)
 	cause = null
 
 /obj/item/large_shrapnel/at_rocket_dud/try_to_throw(var/mob/living/user)
-	to_chat(user, SPAN_NOTICE("You heft [src] up, preparing to throw it."))
-	user.visible_message(SPAN_DANGER("[user] strains to lift up [src]. It looks like they're trying to throw it!"))
+	to_chat(user, SPAN_NOTICE("You heft \the [src] up, preparing to throw it."))
+	user.visible_message(SPAN_DANGER("[user] strains to lift up \the [src]. It looks like they're trying to throw it!"))
 	throw_range = 5
 	throw_channel = 2 SECONDS
 	if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		throw_range = 8
 		throw_channel = 1 SECONDS
 	if(!do_after(user, throw_channel, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(user, SPAN_WARNING("Your attempt to throw [src] was interrupted!"))
+		to_chat(user, SPAN_WARNING("Your attempt to throw \the [src] was interrupted!"))
 		return FALSE
 	cause = "manually triggered"
 	thrown = 1
@@ -125,9 +127,9 @@
 	. = ..()
 	var/datum/launch_metadata/LM = src.launch_metadata
 	var/user = LM.thrower
-	if(!detonating && prob(50))
+	if(!detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
-		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside [src]. Uh oh."))
+		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))
 		vehicle_impact(hit_atom, user)
 		manual_detonate(hit_atom, user, 0)
 		return
@@ -164,7 +166,7 @@
 /obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(var/atom/target, var/mob/living/user, var/melee = 1, var/direction = null)
 	detonating = 1
 	if(user && (cause == "manually triggered"))
-		user.visible_message(SPAN_DANGER("[user] [melee?"slams [src] into":"throws [src] at"] [target]!"))
+		user.visible_message(SPAN_DANGER("[user] [melee?"slams \the [src] into":"throws \the [src] at"] [target]!"))
 	if((!direction) && target && user)
 		direction = get_dir(user, target)
 	cell_explosion(get_turf(target), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, create_cause_data("[cause] UXO detonation", user))

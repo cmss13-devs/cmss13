@@ -174,3 +174,6 @@
   - balance: buffed the rifle solid stock a bit
   - imageadd: resprited the MK1, by Triiodine
   - imageadd: added map variants for the m46c, by Triiodine
+  stanalbatross:
+  - refactor: refactored beam code
+  - bugfix: RTO backpacks with no phone now have an icon state

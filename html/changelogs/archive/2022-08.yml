@@ -177,3 +177,5 @@
   stanalbatross:
   - refactor: refactored beam code
   - bugfix: RTO backpacks with no phone now have an icon state
+  - rscadd: added AGM-S smoke grenades, they work like smoke grenades but in AGM form,
+      and have a smaller radius.

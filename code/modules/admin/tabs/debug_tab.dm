@@ -76,6 +76,14 @@
 
 	tree.set_points(number_to_set)
 
+/client/proc/purge_data_tab()
+	set category = "Debug"
+	set name = "Reset Intel Data Tab"
+
+	if(tgui_alert(src, "Clear the data tab?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+		for(var/datum/cm_objective/Objective in intel_system.oms.disks)
+			intel_system.oms.disks -= Objective
+
 /client/proc/check_round_statistics()
 	set category = "Debug"
 	set name = "Round Statistics"

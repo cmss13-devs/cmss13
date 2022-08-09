@@ -187,3 +187,9 @@
   - bugfix: RTO backpacks with no phone now have an icon state
   - rscadd: added AGM-S smoke grenades, they work like smoke grenades but in AGM form,
       and have a smaller radius.
+  - bugfix: fixed roundstart dead bodies having pulses
+  - bugfix: fixed the sprite offsets on the double barrel shotgun
+  - bugfix: fixed smartfridge ID wires not working (supposedly). They now disable
+      ID checking when pulsed and totally lock you out when cut.
+  - bugfix: fixed MK1 ap mags not being in WO
+  - bugfix: fixed unnest notifications showing to bursted people

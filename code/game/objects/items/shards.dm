@@ -101,7 +101,6 @@
 /obj/item/large_shrapnel/at_rocket_dud/dropped(mob/user)
 	. = ..()
 
-	spawn(1)
 	if(!detonating && !thrown && !cause && prob(drop_sensitivity))
 		cause = "accidental"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src] as [user] drops it. Uh oh."))

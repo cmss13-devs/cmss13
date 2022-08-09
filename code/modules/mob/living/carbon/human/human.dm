@@ -1079,7 +1079,7 @@
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
-	set category = "IC"
+	set category = "OOC.Fix"
 
 	if(!mind)
 		to_chat(src, "The game appears to have misplaced your mind datum.")

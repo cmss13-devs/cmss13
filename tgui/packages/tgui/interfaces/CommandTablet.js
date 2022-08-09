@@ -8,7 +8,6 @@ export const CommandTablet = (_props, context) => {
   const evacstatus = data.evac_status;
 
   const timeLeft = data.message_time_left;
-  const timeLeftPct = (timeLeft / data.cooldown_message);
 
   const AlertLevel = data.alert_level;
 
@@ -17,7 +16,7 @@ export const CommandTablet = (_props, context) => {
 
   const canEvac = (
     evacstatus === 0,
-    AlertLevel > 2);
+    AlertLevel >= 2);
 
   return (
     <Window
@@ -32,13 +31,15 @@ export const CommandTablet = (_props, context) => {
                   Announcement on cooldown : {Math.ceil(timeLeft / 10)} secs
                 </NoticeBox>
               )}
-              <Button
-                fluid={1}
-                icon="bullhorn"
-                title="Make an announcement"
-                content="Make an announcement"
-                onClick={() => act('announce')}
-                disabled={!canAnnounce} />
+              {!!canAnnounce && (
+                <Button
+                  fluid={1}
+                  icon="bullhorn"
+                  title="Make an announcement"
+                  content="Make an announcement"
+                  onClick={() => act('announce')}
+                  disabled={!canAnnounce} />
+              )}
             </Flex.Item>
             <Flex.Item>
               <Button
@@ -77,13 +78,18 @@ export const CommandTablet = (_props, context) => {
                       disabled={!canEvac} />
                   </Flex.Item>
                 )}
-                {evacstatus === 2 && (
+                {evacstatus === 1 && (
                   <NoticeBox color="good" info={1} textAlign="center">
                     Evacuation ongoing.
                   </NoticeBox>
                 )}
-                {evacstatus === 3 && (
+                {evacstatus === 2 && (
                   <NoticeBox color="good" info={1} textAlign="center">
+                    Escape pods launching.
+                  </NoticeBox>
+                )}
+                {evacstatus === 3 && (
+                  <NoticeBox color="good" success={1} textAlign="center">
                     Evacuation complete.
                   </NoticeBox>
                 )}

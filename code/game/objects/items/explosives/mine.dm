@@ -340,10 +340,10 @@
 	if(active || user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
-		SPAN_NOTICE("You start deploying [src]."))
+	user.visible_message(SPAN_NOTICE("[user] starts deploying \the [src]."), \
+		SPAN_NOTICE("You start deploying \the [src]."))
 	if(!do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] stops deploying \the [src]."), \
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
@@ -353,8 +353,8 @@
 	if(check_for_obstacles(user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
-		SPAN_NOTICE("You finish deploying [src]."))
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying \the [src]."), \
+		SPAN_NOTICE("You finish deploying \the [src]."))
 
 	if(!hard_iff_lock)
 		iff_signal = user.faction
@@ -374,7 +374,7 @@
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
-		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		to_chat(user, SPAN_WARNING("There is already a mine at this position!"))
 		return TRUE
 
 //disarming, it's a little different than a normal claymore
@@ -384,13 +384,13 @@
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] starts disarming \the [src]."), \
 				SPAN_NOTICE("You start disarming [src]."))
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
-				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
-			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				SPAN_NOTICE("You start disarming \the [src], but you don't know its IFF data. This might end badly..."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				user.visible_message(SPAN_WARNING("[user] stops disarming \the [src]."), \
 					SPAN_WARNING("You stop disarming \the [src]."))
 				return
 			if(user.faction != iff_signal)
@@ -403,8 +403,8 @@
 					prime()
 			if(!active)
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
-			SPAN_NOTICE("You finish disarming [src]."))
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming \the [src]."), \
+			SPAN_NOTICE("You finish disarming \the [src]."))
 			disarm()
 
 	else

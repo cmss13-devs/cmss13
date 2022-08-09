@@ -166,3 +166,11 @@
   stanalbatross:
   - rscadd: the telebaton can now deal 50 stam damage when used on a human if not
       on harm intent
+2022-08-09:
+  Stan_Albatross, Triiodine:
+  - rscadd: added an M41 series folding stock, can be attached to the M41aMK1, M41aMK2,
+      and M46c (as well as sister guns). Is slightly worse than the solid stock, but
+      can be folded. Sprites by Triiodine
+  - balance: buffed the rifle solid stock a bit
+  - imageadd: resprited the MK1, by Triiodine
+  - imageadd: added map variants for the m46c, by Triiodine

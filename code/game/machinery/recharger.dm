@@ -10,7 +10,7 @@
 	active_power_usage = 15000	//15 kW
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator)
+	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
 
 	var/charge_amount = 1000
 
@@ -29,12 +29,17 @@
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		var/area/a = get_area(src)
 		if(!isarea(a) || (a.power_equip == 0 && !a.unlimited_power))
-			to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the item!"))
+			to_chat(user, SPAN_DANGER("\The [name] blinks red as you try to insert the item!"))
 			return
 		if(istype(G, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = G
 			if(D.ready)
-				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into [D] first!"))
+				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into \the [D] first!"))
+				return
+		if(istype(G, /obj/item/tool/portadialysis))
+			var/obj/item/tool/portadialysis/P = G
+			if(P.attached)
+				to_chat(user, SPAN_WARNING("It won't fit, detach it from [P.attached] first!"))
 				return
 		if(user.drop_inv_item_to_loc(G, src))
 			charging = G
@@ -42,7 +47,7 @@
 			update_icon()
 	else if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
 		if(charging)
-			to_chat(user, SPAN_DANGER("Remove [charging] first!"))
+			to_chat(user, SPAN_DANGER("Remove \the [charging] first!"))
 			return
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
@@ -111,6 +116,34 @@
 			if(!D.dcell.fully_charged())
 				D.dcell.give(active_power_usage*CELLRATE)
 				percent_charge_complete = D.dcell.percent()
+				update_use_power(2)
+				update_icon()
+			else
+				percent_charge_complete = 100
+				update_use_power(1)
+				update_icon()
+			return
+
+
+
+		if(istype(charging, /obj/item/clothing/suit/auto_cpr))
+			var/obj/item/clothing/suit/auto_cpr/A = charging
+			if(!A.pdcell.fully_charged())
+				A.pdcell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = A.pdcell.percent()
+				update_use_power(2)
+				update_icon()
+			else
+				percent_charge_complete = 100
+				update_use_power(1)
+				update_icon()
+			return
+
+		if(istype(charging, /obj/item/tool/portadialysis))
+			var/obj/item/tool/portadialysis/P = charging
+			if(!P.pdcell.fully_charged())
+				P.pdcell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = P.pdcell.percent()
 				update_use_power(2)
 				update_icon()
 			else

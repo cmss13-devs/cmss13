@@ -175,6 +175,16 @@
   Morrow:
   - Fix: Puts M41A folding stock in req and squad prep vendors. Fixes some unintended
       behavior with starting unfolded.
+  Stan_Albatross, Frans_Feiffer:
+  - rscadd: Added a new medical tool - the portable dialysis machine, which is a medium
+      sized item. Attach it to someone and it will filter out all the drugs from their
+      bloodstream over time, but also take some of their blood in the process. Has
+      enough charge for 100s of use, or 150u of drugs. Can be recharged. Make sure
+      to detach it by clicking the person it's attached to with it again before walking
+      away or putting it away, or they'll get a nasty needle wound. Sprites by Frans_Feiffer.
+  - rscadd: added a portable dialysis machine to lower medbay, added portable dialysis
+      machines to the synthtool vendor for 15 points.
+  - bugfix: autocompressors can now be recharged
   Stan_Albatross, Triiodine:
   - rscadd: added an M41 series folding stock, can be attached to the M41aMK1, M41aMK2,
       and M46c (as well as sister guns). Is slightly worse than the solid stock, but

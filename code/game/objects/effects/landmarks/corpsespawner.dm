@@ -113,11 +113,11 @@
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo/burst
 
 /obj/effect/landmark/corpsespawner/colonist/random
-	name = "Corporate Supervisor"
+	name = "Colonist Random"
 	equip_path = /datum/equipment_preset/corpse/colonist/random
 
 /obj/effect/landmark/corpsespawner/colonist/random/burst
-	name = "Burst Corporate Supervisor"
+	name = "Burst Colonist Random"
 	equip_path = /datum/equipment_preset/corpse/colonist/random/burst
 	
 /obj/effect/landmark/corpsespawner/ua_riot

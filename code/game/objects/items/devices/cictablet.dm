@@ -1,15 +1,3 @@
-#define STATE_DEFAULT 1
-#define STATE_MESSAGELIST 5
-#define STATE_VIEWMESSAGE 6
-#define STATE_DELMESSAGE 7
-#define STATE_STATUSDISPLAY 8
-#define STATE_ALERT_LEVEL 9
-#define STATE_CONFIRM_LEVEL 10
-
-#define COOLDOWN_COMM_MESSAGE 30 SECONDS
-#define COOLDOWN_COMM_REQUEST 5 MINUTES
-#define COOLDOWN_COMM_CENTRAL 30 SECONDS
-
 /obj/item/device/cotablet
 	icon = 'icons/obj/items/devices.dmi'
 	name = "command tablet"
@@ -22,7 +10,6 @@
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	var/on = TRUE // 0 for off
 	var/mob/living/carbon/human/current_mapviewer
-	var/state = STATE_DEFAULT
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
 
 	var/tablet_name = "Commanding Officer's Tablet"
@@ -61,8 +48,11 @@
 /obj/item/device/cotablet/ui_data(mob/user)
 	var/list/data = list()
 
+	data["faction"] = announcement_faction
+	data["alert_level"] = security_level
 	data["evac_status"] = EvacuationAuthority.evac_status
-	data["cooldown_message"] = COOLDOWN_TIMELEFT(src, announcement_cooldown)
+	data["message_time_left"] = COOLDOWN_TIMELEFT(src, announcement_cooldown)
+	data["cooldown_message"] = cooldown_between_messages
 
 	return data
 
@@ -132,23 +122,23 @@
 		if("evacuation_start")
 			if(announcement_faction != FACTION_MARINE)
 				return
-			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_RED)
-					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
-					return FALSE
 
-				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
-					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
-					return FALSE
+			if(security_level < SEC_LEVEL_RED)
+				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				return FALSE
 
-				if(!EvacuationAuthority.initiate_evacuation())
-					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
-					return FALSE
+			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				return FALSE
 
-				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
-				return TRUE
-			state = STATE_EVACUATION
+			if(!EvacuationAuthority.initiate_evacuation())
+				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				return FALSE
+
+			log_game("[key_name(usr)] has called for an emergency evacuation.")
+			message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
+			return TRUE
+
 
 /*
 

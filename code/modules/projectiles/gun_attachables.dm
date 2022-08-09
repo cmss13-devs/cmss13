@@ -1315,11 +1315,6 @@ Defined in conflicts.dm of the #defines folder.
 		attach_icon = "m41_folding_a"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
-	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
-	accuracy_mod *= -1
-	recoil_mod *= -1
-	scatter_mod *= -1
-
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 

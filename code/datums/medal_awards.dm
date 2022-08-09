@@ -6,6 +6,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/list/medal_citations
 	var/list/posthumous
 	var/recipient_rank
+	var/giver_name // Actually key for xenos
+	var/giver_rank // Actually name for xenos
 
 /datum/recipient_awards/New()
 	medal_names = list()
@@ -48,6 +50,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	RA.medal_names += medal_type
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
+	RA.giver_rank = listed_rcpt_ranks[usr.name] // Currently not used in marine award message
+	RA.giver_name = usr.name // Currently not used in marine award message and may need exceptions for admin granting
 
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
@@ -131,6 +135,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	RA.medal_names += medal_type // TODO: Should multiple medals be allowed?
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
+	RA.giver_rank = usr.name
+	RA.giver_name = usr.key
 
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)

@@ -1,5 +1,5 @@
 GLOBAL_LIST_EMPTY(medal_awards)
-GLOBAL_LIST_EMPTY(resin_awards)
+GLOBAL_LIST_EMPTY(jelly_awards)
 
 /datum/recipient_awards
 	var/list/medal_names
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(resin_awards)
 		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
 
-/proc/give_resin_award(var/datum/hive_status/hive)
+/proc/give_jelly_award(var/datum/hive_status/hive)
 	if(!hive)
 		return
 	var/list/possible_recipients = list("Cancel")
@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(resin_awards)
 	if(!chosen_recipient || chosen_recipient == "Cancel") return
 	var/recipient_caste = listed_rcpt_castes[chosen_recipient]
 	var/posthumous = TRUE
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of strength", "royal jelly of courage", "royal jelly of sabotage"))  // TODO: Update terminology?
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of slaughter", "royal jelly of resilience", "royal jelly of sabotage"))
 	if(!medal_type) return
 	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
@@ -117,10 +117,10 @@ GLOBAL_LIST_EMPTY(resin_awards)
 			recipient_ckey = M.ckey
 			recipient_mob = M
 			break
-	if(!GLOB.resin_awards[chosen_recipient])
-		GLOB.resin_awards[chosen_recipient] = new /datum/recipient_awards()
-	var/datum/recipient_awards/RA = GLOB.resin_awards[chosen_recipient]
-	RA.recipient_rank = recipient_caste
+	if(!GLOB.jelly_awards[chosen_recipient])
+		GLOB.jelly_awards[chosen_recipient] = new /datum/recipient_awards()
+	var/datum/recipient_awards/RA = GLOB.jelly_awards[chosen_recipient]
+	RA.recipient_rank = recipient_caste // Currently not used in xeno award message
 	RA.medal_names += medal_type // TODO: Should multiple medals be allowed?
 	RA.medal_citations += citation
 	RA.posthumous += posthumous

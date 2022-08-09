@@ -94,11 +94,11 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			for(var/i in 1 to RA.medal_names.len)
 				dat += "<br><b>[RA.recipient_rank] [recipient]</b> is awarded [RA.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[RA.medal_names[i]]</span>: \'<i>[RA.medal_citations[i]]</i>\'."
 		to_world(dat)
-	if(GLOB.resin_awards.len)
+	if(GLOB.jelly_awards.len)
 		var/dat = "<br>"
-		dat +=  SPAN_ROUNDBODY("<br>Royal Jelly Awards:") // TODO: Update terminology?
-		for(var/recipient in GLOB.resin_awards)
-			var/datum/recipient_awards/RA = GLOB.resin_awards[recipient]
+		dat +=  SPAN_ROUNDBODY("<br>Royal Jelly Awards:")
+		for(var/recipient in GLOB.jelly_awards)
+			var/datum/recipient_awards/RA = GLOB.jelly_awards[recipient]
 			for(var/i in 1 to RA.medal_names.len)
 				dat += "<br><b>[recipient]</b> is awarded [RA.posthumous[i] ? "posthumously " : ""]<span class='boldnotice'>[RA.medal_names[i]]</span>: \'<i>[RA.medal_citations[i]]</i>\'."
 		to_world(dat)

@@ -1266,23 +1266,24 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 
 /obj/item/attachable/stock/rifle/collapsible/New()
 	..()
-	//it makes stuff better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_2 //worse than 5
-	recoil_mod = -RECOIL_AMOUNT_TIER_5 //only minus one tier
-	scatter_mod = -SCATTER_AMOUNT_TIER_9 //only minus two
-	//it makes stuff worse when one handed
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5 //only minus one
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+	
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
 
 /obj/item/attachable/stock/rifle/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -1298,6 +1299,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 5
 		icon_state = "m41_folding_on"
 		attach_icon = "m41_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
 		accuracy_mod = 0
@@ -1311,6 +1313,7 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 3
 		icon_state = "m41_folding"
 		attach_icon = "m41_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
 	accuracy_mod *= -1

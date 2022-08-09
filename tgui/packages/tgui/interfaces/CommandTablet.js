@@ -27,9 +27,9 @@ export const CommandTablet = (_props, context) => {
           <Flex height="100%" direction="column">
             <Flex.Item>
               {!canAnnounce && (
-                <NoticeBox color="bad" warning={1} textAlign="center">
+                <Button color="bad" warning={1} fluid={1} icon="bullhorn">
                   Announcement on cooldown : {Math.ceil(timeLeft / 10)} secs
-                </NoticeBox>
+                </Button>
               )}
               {!!canAnnounce && (
                 <Button

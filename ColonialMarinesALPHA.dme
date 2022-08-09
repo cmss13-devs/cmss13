@@ -251,6 +251,7 @@
 #include "code\datums\_atmos_setup.dm"
 #include "code\datums\action.dm"
 #include "code\datums\ASRS.dm"
+#include "code\datums\beam.dm"
 #include "code\datums\browser.dm"
 #include "code\datums\callback.dm"
 #include "code\datums\changelog.dm"

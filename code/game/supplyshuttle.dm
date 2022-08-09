@@ -133,12 +133,11 @@ var/datum/controller/supply/supply_controller = new()
 	COOLDOWN_DECLARE(next_fire)
 
 /obj/structure/machinery/computer/supply_drop_console/ui_status(mob/user)
-	if(!inoperable(MAINT))
-		. = UI_INTERACTIVE
-
-/obj/structure/machinery/computer/supply_drop_console/ui_state(mob/user)
+	. = ..()
 	if(inoperable(MAINT))
 		return UI_CLOSE
+
+/obj/structure/machinery/computer/supply_drop_console/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/computer/supply_drop_console/tgui_interact(mob/user, datum/tgui/ui)
@@ -147,8 +146,6 @@ var/datum/controller/supply/supply_controller = new()
 	if (!ui)
 		ui = new(user, src, "SupplyDropConsole", name)
 		ui.open()
-
-
 
 /obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
 	. = ..()

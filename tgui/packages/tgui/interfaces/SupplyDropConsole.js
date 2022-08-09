@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, Dimmer, Icon } from '../components';
+import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, Dimmer, Icon, NoticeBox, Box } from '../components';
 import { Window } from '../layouts';
 
 export const SupplyDropConsole = (_props, context) => {
@@ -12,8 +12,9 @@ export const SupplyDropConsole = (_props, context) => {
   const timeLeft = data.next_fire;
   const timeLeftPct = timeLeft / data.launch_cooldown;
 
-  const canFire = (
-    timeLeft === 0);
+  const cantFire = (
+    timeLeft !== 0,
+    data.loaded === null);
 
   return (
     <Window
@@ -65,34 +66,45 @@ export const SupplyDropConsole = (_props, context) => {
                 onClick={() => act('refresh_pad')}
               />
             }>
-            {data.loaded
-              ? `Supply Pad Status :
-                ${data.crate_name} loaded.`
-              : 'No crate loaded.'}
-            <ProgressBar
-              width="100%"
-              value={timeLeftPct}
-              ranges={{
-                good: [-Infinity, 0.33],
-                average: [0.33, 0.67],
-                bad: [0.67, Infinity],
-              }}>
-              {Math.ceil(timeLeft / 10)} seconds
-            </ProgressBar>
+            <NoticeBox info={1} textAlign="center" >
+              {data.loaded
+                ? `Supply Pad Status :
+                  ${data.crate_name} loaded.`
+                : 'No crate loaded.'}
+            </NoticeBox>
+            {timeLeft === 0 && (
+              <NoticeBox success={1} textAlign="center" >
+                Ready to fire!
+              </NoticeBox>
+            ) || (
+              <ProgressBar
+                width="100%"
+                value={timeLeftPct}
+                ranges={{
+                  good: [-Infinity, 0.33],
+                  average: [0.33, 0.67],
+                  bad: [0.67, Infinity],
+                }}>
+                <Box textAlign="center">
+                  {Math.ceil(timeLeft / 10)} seconds until next launch
+                </Box>
+              </ProgressBar>
+            )}
+            <Button
+              disabled={!!cantFire}
+              fluid={1}
+              icon="paper-plane"
+              color="good"
+              content="Launch Supply Drop"
+              onClick={() => act('send_beacon')}
+            />
+            {active === 1 && (
+              <Dimmer fontSize="32px">
+                <Icon name="cog" spin />
+                {'Launching...'}
+              </Dimmer>
+            )}
           </Section>
-          <Button
-            disabled={!canFire}
-            icon="paper-plane"
-            color="good"
-            content="Launch Supply Drop"
-            onClick={() => act('send_beacon')}
-          />
-          {active === 1 && (
-            <Dimmer fontSize="32px">
-              <Icon name="cog" spin />
-              {'Launching...'}
-            </Dimmer>
-          )}
         </Section>
       </Window.Content>
     </Window>

@@ -167,6 +167,11 @@
   - rscadd: the telebaton can now deal 50 stam damage when used on a human if not
       on harm intent
 2022-08-09:
+  CometBlaze:
+  - qol: Added a verb to the OOC fix tab that resets the Objectives Data Tab (use
+      this when your objectives UI bluescreens)
+  - admin: Added a new verb to the Debug tab that resets the Data Tab of the Intel
+      Database as a whole
   Morrow:
   - Fix: Puts M41A folding stock in req and squad prep vendors. Fixes some unintended
       behavior with starting unfolded.

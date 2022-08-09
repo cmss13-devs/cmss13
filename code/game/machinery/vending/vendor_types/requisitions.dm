@@ -536,6 +536,7 @@
 		list("M39 Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
 		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 

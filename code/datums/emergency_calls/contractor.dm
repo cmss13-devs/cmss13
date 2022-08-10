@@ -1,11 +1,11 @@
 /datum/emergency_call/contractors
-	name = "Military Contractors (Squad)"
-	mob_max = 11
-	probability = 15
+	name = "Military Contractors (Squad) (Friendly)"
+	mob_max = 7
+	probability = 20
 
 	max_engineers =  1
-	max_medics = 2
-	max_heavies = 2
+	max_medics = 1
+	max_heavies = 1
 	var/max_synths = 1
 	var/synths = 0
 
@@ -13,7 +13,7 @@
 /datum/emergency_call/contractors/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
-	objectives = "Assure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
+	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
 /datum/emergency_call/contractors/create_member(datum/mind/M, var/turf/override_spawn_loc)
@@ -75,19 +75,20 @@
 
 
 /datum/emergency_call/contractors/platoon
-	name = "Military Contractors (Platoon)"
-	mob_min = 12
-	mob_max = 41
+	name = "Military Contractors (Platoon) (Friendly)"
+	mob_min = 7
+	mob_max = 28
 	probability = 0
-	max_medics = 5
-	max_heavies = 4
-	max_engineers = 3
+	max_medics = 3
+	max_heavies = 3
+	max_engineers = 2
+	max_synths = 2
 
 /datum/emergency_call/contractors/covert
-	name = "Military Contractors (Covert)"
-	mob_max = 11
+	name = "Military Contractors (Covert) (Hostile to WY)"
+	mob_max = 7
 	probability = 0
-	max_medics = 2
+	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1
 	max_synths = 1

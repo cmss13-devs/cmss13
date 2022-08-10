@@ -100,6 +100,10 @@
 /obj/item/weapon/gun/rifle/m41a/training
 	current_mag = /obj/item/ammo_magazine/rifle/rubber
 
+
+/obj/item/weapon/gun/rifle/m41a/tactical
+	current_mag = /obj/item/ammo_magazine/rifle/ap
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
 //-------------------------------------------------------
 //NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 

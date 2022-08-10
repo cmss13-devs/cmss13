@@ -127,11 +127,21 @@
 
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper SOCOM M1911 service pistol"
-	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. This one is modified with an ammo counter."
-	scatter = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	starting_attachment_types = list(/obj/item/attachable/lasersight, /obj/item/attachable/suppressor, /obj/item/attachable/reflex)
+	desc = "A timeless classic since the first World War. Chambered in .45 ACP. This one has a darkened grip and appears especially well-kept. "
+	icon_state = "m4a345_s"
+	item_state = "m4a3"
+	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+
+/obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
 
 //-------------------------------------------------------

@@ -213,3 +213,6 @@
       objective updates from overwatch, tweaked the sound played upon receiving squad
       messages
   - qol: added messages that appear on your screen for when hive orders are changed
+  stanalbatross:
+  - balance: larvas can no longer evolve off weeds before 15 minutes into the round
+      has passed.

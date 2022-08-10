@@ -239,6 +239,19 @@
 	if(!allowed(user))
 		return UI_CLOSE
 
+/obj/structure/machinery/door_display/research_cell/ui_static_data(mob/user)
+	var/list/data = list()
+	var/has_flash = FALSE
+
+	if(locate(/obj/structure/machinery/flasher) in targets)
+		has_flash = TRUE
+
+	data["has_divider"] = has_wall_divider
+	data["door_id"] = id
+	data["has_flash"] = has_flash
+
+	return data
+
 /obj/structure/machinery/door_display/research_cell/ui_data(mob/user)
 	var/list/data = list()
 	var/flash_charging
@@ -248,11 +261,9 @@
 		if(F.last_flash && (F.last_flash + 150) > world.time)
 			flash_charging = TRUE
 
-	data["door_id"] = id
 	data["open_door"] = open
 	data["open_shutter"] = open_shutter
 	data["flash_charging"] = flash_charging
-	data["has_divider"] = has_wall_divider
 
 	return data
 
@@ -309,10 +320,9 @@
 	for(var/obj/structure/machinery/door/airlock/D in targets)
 		if(!D.density)
 			continue
-		spawn(0)
-			D.unlock(force)
-			D.open(force)
-			open = TRUE
+		D.unlock(force)
+		D.open(force)
+		open = TRUE
 
 	return TRUE
 
@@ -324,10 +334,9 @@
 	for(var/obj/structure/machinery/door/airlock/D in targets)
 		if(D.density)
 			continue
-		spawn(0)
-			D.close()
-			D.lock()
-			open = FALSE
+		D.close()
+		D.lock()
+		open = FALSE
 
 	return TRUE
 

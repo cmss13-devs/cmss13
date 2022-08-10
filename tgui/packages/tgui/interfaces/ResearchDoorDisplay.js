@@ -60,23 +60,25 @@ export const ResearchDoorDisplay = (_props, context) => {
                   onClick={() => act('divider')} />
               </Flex.Item>
             )}
-            <Flex.Item>
-              {!data.flash_charging && (
-                <Button
-                  fluid={1}
-                  icon="sun"
-                  content="Activate flash"
-                  onClick={() => act('flash')}
-                />
-              ) || (
-                <Button
-                  fluid={1}
-                  color="bad"
-                  icon="sync-alt"
-                  content="Flash recharging!"
-                />
-              )}
-            </Flex.Item>
+            {!!data.has_flash && (
+              <Flex.Item>
+                {!data.flash_charging && (
+                  <Button
+                    fluid={1}
+                    icon="sun"
+                    content="Activate flash"
+                    onClick={() => act('flash')}
+                  />
+                ) || (
+                  <Button
+                    fluid={1}
+                    color="bad"
+                    icon="sync-alt"
+                    content="Flash recharging!"
+                  />
+                )}
+              </Flex.Item>
+            )}
           </Flex>
         </Section>
       </Window.Content>

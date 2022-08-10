@@ -504,8 +504,9 @@
 	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 
 	if(txt)
-		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
-		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
+		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
+		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
+		xeno_maptext(txt, "Hive Orders Updated", hivenumber)
 		hive.hive_orders = txt
 		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else

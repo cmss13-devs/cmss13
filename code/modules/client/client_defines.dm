@@ -116,3 +116,7 @@
 	var/next_move_dir_add
 	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
+
+	//screen_text vars
+	///lazylist of screen_texts for this client, first in this list is the one playing
+	var/list/obj/screen/text/screen_text/screen_texts

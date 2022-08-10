@@ -626,7 +626,7 @@
 			caste_xenos_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.niche_stats)
-			var/datum/entity/statistic/D = S.niche_stats[iteration]
+			var/datum/entity/statistic/D = S.niche_stats[sub_iteration]
 			if(!D)
 				continue
 			caste_niche_stats_list += list(list("name" = D.name, "value" = D.value))

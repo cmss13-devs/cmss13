@@ -258,6 +258,7 @@
 		var/datum/entity/player_stats/xeno/H = player_stats["xeno"]
 		var/list/humans_killed = list()
 		var/list/xenos_killed = list()
+		var/list/medal_list = list()
 		var/list/death_list = list()
 		var/list/caste_stats_list = list()
 		var/list/niche_stats_list = list()
@@ -287,6 +288,15 @@
 		for(var/iteration in H.niche_stats)
 			var/datum/entity/statistic/S = H.niche_stats[iteration]
 			niche_stats_list += list(list("name" = S.name, "value" = S.value))
+
+		for(var/datum/entity/statistic/medal/S in H.medal_list)
+			medal_list += list(list(
+				"medal_type" = sanitize(S.medal_type),
+				"recipient" = sanitize(S.recipient_name),
+				"recipient_job" = sanitize(S.recipient_role),
+				"citation" = sanitize(S.citation),
+				"giver" = sanitize(S.giver_name)
+			))
 
 		for(var/datum/entity/statistic/death/S in H.death_list)
 			var/list/damage_list = list()
@@ -394,6 +404,7 @@
 			"nemesis" = xeno_nemesis,
 			"humans_killed" = humans_killed,
 			"xenos_killed" = xenos_killed,
+			"medal_list" = medal_list,
 			"death_list" = death_list,
 			"caste_stats_list" = caste_stats_list,
 			"niche_stats" = niche_stats_list,

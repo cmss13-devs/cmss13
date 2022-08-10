@@ -50,6 +50,11 @@
 	new_medal.save()
 	new_medal.detach()
 
-	var/datum/entity/player_stats/human/human_stats = setup_human_stats()
-	human_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, 1, new_recipient_role)
-	human_stats.medal_list.Insert(1, new_medal)
+	if (isXeno(new_recipient))
+		var/datum/entity/player_stats/xeno/xeno_stats = setup_xeno_stats()
+		xeno_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, 1, new_recipient_role)
+		xeno_stats.medal_list.Insert(1, new_medal)
+	else
+		var/datum/entity/player_stats/human/human_stats = setup_human_stats()
+		human_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, 1, new_recipient_role)
+		human_stats.medal_list.Insert(1, new_medal)

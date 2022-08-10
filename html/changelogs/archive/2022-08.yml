@@ -206,3 +206,10 @@
       ID checking when pulsed and totally lock you out when cut.
   - bugfix: fixed MK1 ap mags not being in WO
   - bugfix: fixed unnest notifications showing to bursted people
+2022-08-10:
+  Stan_Albatross:
+  - code_imp: ported the screen messages system from TGMC
+  - qol: added messages that appear on your screen for receiving squad messages and
+      objective updates from overwatch, tweaked the sound played upon receiving squad
+      messages
+  - qol: added messages that appear on your screen for when hive orders are changed

@@ -6,18 +6,20 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/list/medal_citations
 	var/list/posthumous
 	var/recipient_rank
-	var/giver_name // Actually key for xenos
-	var/giver_rank // Actually name for xenos
+	var/list/giver_name // Actually key for xenos
+	var/list/giver_rank // Actually name for xenos
 
 /datum/recipient_awards/New()
 	medal_names = list()
 	medal_citations = list()
 	posthumous = list()
+	giver_name = list()
+	giver_rank = list()
 
 
 
 
-/proc/give_medal_award(medal_location)
+/proc/give_medal_award(medal_location, var/attributed = TRUE)
 	var/list/possible_recipients = list("Cancel")
 	var/list/listed_rcpt_ranks = list()
 	for(var/datum/data/record/t in GLOB.data_core.general)
@@ -34,9 +36,9 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!citation) return
 	var/recipient_ckey
 	var/recipient_mob
-	var/foundOther = FALSE
+	var/foundOther = !attributed
 	for(var/mob/M in GLOB.mob_list)
-		if(M == usr)
+		if(attributed && M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 			if(foundOther)
 				break
@@ -56,8 +58,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	RA.medal_names += medal_type
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
-	RA.giver_rank = listed_rcpt_ranks[usr.name] // Currently not used in marine award message
-	RA.giver_name = usr.name // Currently not used in marine award message and may need exceptions for admin granting
+	if(attributed)
+		RA.giver_rank += listed_rcpt_ranks[usr.name] // Currently not used in marine award message
+		RA.giver_name += usr.name // Currently not used in marine award message and may need exceptions for admin granting
+	else
+		RA.giver_rank += null
+		RA.giver_name += null
 
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
@@ -91,7 +97,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
 
-/proc/give_jelly_award(var/datum/hive_status/hive)
+/proc/give_jelly_award(var/datum/hive_status/hive, var/attributed = TRUE)
 	if(!hive)
 		return
 	var/list/possible_recipients = list("Cancel")
@@ -99,6 +105,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	// TODO: Also filter out facehuggers
 	for(var/mob/living/carbon/Xenomorph/t in hive.totalXenos)
 		if (t.persistent_ckey == usr.persistent_ckey) // Don't award self
+			continue
+		if (istype(t.caste, /datum/caste_datum/queen)) // Don't award queens (otherwise M.name has to be used below)
 			continue
 		if (istype(t.caste, /datum/caste_datum/larva)) // Don't award larva
 			continue
@@ -125,9 +133,9 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!citation) return
 	var/recipient_ckey
 	var/recipient_mob
-	var/foundOther = FALSE
+	var/foundOther = !attributed
 	for(var/mob/M in GLOB.mob_list)
-		if(M == usr)
+		if(attributed && M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 			if(foundOther)
 				break
@@ -147,8 +155,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	RA.medal_names += medal_type // TODO: Should multiple medals be allowed?
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
-	RA.giver_rank = usr.name
-	RA.giver_name = usr.key
+	if(attributed)
+		RA.giver_rank += usr.name
+		RA.giver_name += usr.key
+	else
+		RA.giver_rank += null
+		RA.giver_name += null
 
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)

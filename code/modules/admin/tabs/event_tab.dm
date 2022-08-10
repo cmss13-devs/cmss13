@@ -378,6 +378,33 @@
 
 	give_medal_award()
 
+/client/proc/award_jelly()
+	if(!check_rights(R_ADMIN))
+		return
+
+	// Mostly replicated code from observer.dm.hive_status()
+	var/list/hives = list()
+	var/datum/hive_status/last_hive_checked
+
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len > 0)
+			hives += list("[hive.name]" = hive.hivenumber)
+			last_hive_checked = hive
+
+	if(!length(hives))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		return
+	else if(length(hives) > 1) // More than one hive, display an input menu for that
+		var/faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives)
+		if(!faction)
+			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		last_hive_checked = GLOB.hive_datum[hives[faction]]
+
+	give_jelly_award(last_hive_checked, FALSE)
+
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
@@ -670,6 +697,7 @@
 		<BR>
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>

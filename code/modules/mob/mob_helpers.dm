@@ -18,7 +18,11 @@
 /mob/proc/get_gender()
 	return gender
 
-
+/proc/is_blind(A)
+	if(isliving(A))
+		var/mob/living/M = A
+		return M.eye_blind
+	return FALSE
 
 
 /*
@@ -489,3 +493,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	if(Adjacent(pullify))
 		start_pulling(pullify)
+
+/mob/proc/handle_blood_splatter(var/splatter_dir)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)

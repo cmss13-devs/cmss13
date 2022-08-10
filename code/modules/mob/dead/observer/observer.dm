@@ -792,72 +792,38 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Hellhound"
 	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
 
-	var/mob/L = src
-
-	if(SSticker.current_state < GAME_STATE_PLAYING)
-		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
+	var/mob/dead/current_mob = src
+	if(!current_mob.stat || !current_mob.mind)
 		return
 
-	if (!usr.stat) // Make sure we're an observer
-		// to_chat(usr, "!usr.stat")
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if (usr != src)
-		// to_chat(usr, "usr != src")
-		return 0 // Something is terribly wrong
+	var/list/hellhound_mob_list = list() // the list we'll be choosing from
+	for(var/mob/living/carbon/Xenomorph/Hellhound/Hellhound as anything in GLOB.hellhound_list)
+		if(Hellhound.client)
+			continue
+		hellhound_mob_list[Hellhound.name] = Hellhound
 
-	if(jobban_isbanned(usr, JOB_XENOMORPH)) // User is jobbanned
-		to_chat(usr, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a Hellhound."))
+	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
+	if(!choice)
 		return
 
-	var/list/hellhound_list = list()
-
-	for(var/mob/living/carbon/hellhound/A in GLOB.hellhound_list)
-		if(istype(A) && !A.client)
-			hellhound_list += A.real_name
-
-	if(hellhound_list.len == 0)
-		to_chat(usr, "<span style='color: red;'>There aren't any available Hellhounds.</span>")
+	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_list)
-	if (isnull(choice) || choice == "Cancel")
+	if(QDELETED(Hellhound) || Hellhound.client)
+		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	for(var/mob/living/carbon/hellhound/X in GLOB.hellhound_list)
-		if(choice == X.real_name)
-			L = X
-			break
-
-	if(!L || QDELETED(L))
-		to_chat(usr, "<span style='color: red;'>Not a valid mob!</span>")
+	if(Hellhound.stat == DEAD)
+		to_chat(src, SPAN_WARNING("That Hellhound has died."))
 		return
 
-	if(!istype(L, /mob/living/carbon/hellhound))
-		to_chat(usr, "<span style='color: red;'>That's not a Hellhound.</span>")
-		return
-
-	if(L.stat == DEAD)  // DEAD
-		to_chat(usr, "<span style='color: red;'>It's dead.</span>")
-		return
-
-	if(L.client) // Larva player is still online
-		to_chat(usr, "<span style='color: red;'>That player is still connected.</span>")
-		return
-
-	if (alert(usr, "Everything checks out. Are you sure you want to transfer yourself into this hellhound?", "Confirmation", "Yes", "No") == "Yes")
-
-		if(L.client || L.stat == DEAD) // Do it again, just in case
-			to_chat(usr, "<span style='color: red;'>Oops. That mob can no longer be controlled. Sorry.</span>")
-			return
-
-		var/mob/ghostmob = usr.client.mob
-		msg_admin_niche("[key_name(usr)] has joined as a [L].")
-		L.ckey = usr.ckey
-		if(L.client) L.client.change_view(world_view_size)
-
-		if( isobserver(ghostmob) )
-			qdel(ghostmob)
+	current_mob.mind.transfer_to(Hellhound, TRUE)
+	Hellhound.generate_name()
 
 /mob/dead/verb/join_as_yautja()
 	set category = "Ghost.Join"

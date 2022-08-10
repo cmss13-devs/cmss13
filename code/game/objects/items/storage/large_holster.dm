@@ -89,19 +89,6 @@
 /obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/machete/arnold(src)
 
-/obj/item/storage/large_holster/macheteB
-	name = "\improper H6B pattern M2132 machete scabbard"
-	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	base_icon = "macheteB_holster"
-	icon_state = "macheteB_holster"
-	item_state = "machete_holster"
-	flags_equip_slot = SLOT_STORE
-	storage_flags = STORAGE_FLAGS_POUCH
-	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
-
-/obj/item/storage/large_holster/macheteB/full/fill_preset_inventory()
-	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
-
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
 	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."

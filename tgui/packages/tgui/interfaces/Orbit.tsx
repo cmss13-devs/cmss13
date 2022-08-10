@@ -53,6 +53,7 @@ type OrbitData = {
   ghosts: OrbitList[],
   misc: OrbitList[],
   npcs: OrbitList[],
+  vehicles: OrbitList[],
 }
 
 type BasicSectionProps = {
@@ -128,6 +129,7 @@ export const Orbit = (props: any, context: any) => {
     ghosts,
     misc,
     npcs,
+    vehicles,
   } = data;
 
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
@@ -258,6 +260,18 @@ export const Orbit = (props: any, context: any) => {
             ))}
         </Section>
 
+        <Section title={`Vehicles - (${vehicles.length})`}>
+          {vehicles
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="blue"
+                thing={thing} />
+            ))}
+        </Section>
+
         <Section title={`Ghosts - (${ghosts.length})`}>
           {ghosts
             .filter(searchFor(searchText))
@@ -287,6 +301,7 @@ export const Orbit = (props: any, context: any) => {
           source={misc}
           searchText={searchText}
         />
+
       </Window.Content>
     </Window>
   );

@@ -160,6 +160,7 @@
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
+	var/being_restocked = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/Initialize()
 	. = ..()
@@ -172,19 +173,62 @@
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/vend_fail()
 	return
 
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/examine(mob/living/carbon/human/user)
+	. = ..()
+	if(ishuman(user))
+		to_chat(user, SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor."))
+		return FALSE
+
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(var/mob/user, var/list/mods)
+	if(mods["ctrl"])
+		initiate_autorestock(user)
+		return TRUE
+	. = ..()
+
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/proc/initiate_autorestock(mob/living/carbon/human/user)
+	if(!ishuman(user))
+		return
+
+	if(being_restocked)
+		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in the way!"))
+		return
+
+	being_restocked = TRUE
+
+	user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into \the [src]."),
+	SPAN_NOTICE("You start stocking a bunch of supplies into \the [src]."))
+
+	//done this way because for obj in range creates a list and goes through list even if items themselves being picked up or moved.
+	while(being_restocked)
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking \the [src] with supplies."),
+			SPAN_NOTICE("You stop stocking \the [src] with supplies."))
+			being_restocked = FALSE
+			return
+
+		being_restocked = FALSE
+		for(var/obj/item/I in range(1, src))
+			if(stock(I))
+				being_restocked = TRUE
+				break
+
+	user.visible_message(SPAN_NOTICE("[user] finishes stocking \the [src] with supplies."),
+	SPAN_NOTICE("You finish stocking \the [src] with supplies."))
+	return
+
 //combined from req guns and ammo vendors
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(var/scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("M37A2 Pump Shotgun", round(scale * 1), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
-		list("M39 Submachinegun", round(scale * 1.5), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK2", round(scale * 2), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
-		list("L42A Battle Rifle", round(scale * 1.3), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", round(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M39 Submachinegun", round(scale * 2.5), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK2", round(scale * 4), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
+		list("L42A Battle Rifle", round(scale * 2), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("88 Mod 4 Combat Pistol", round(scale * 1), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
-		list("M44 Combat Revolver", round(scale * 1.3), /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
-		list("M4A3 Service Pistol", round(scale * 2), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
+		list("88 Mod 4 Combat Pistol", round(scale * 2), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
+		list("M44 Combat Revolver", round(scale * 1.5), /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
+		list("M4A3 Service Pistol", round(scale * 2.5), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("M15 Fragmentation Grenade", 0, /obj/item/explosive/grenade/HE/m15, VENDOR_ITEM_REGULAR),
@@ -194,7 +238,8 @@
 		list("M40 HPDP White Phosphorus Smoke Grenade", 0, /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", round(scale * 1), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", 0, /obj/item/explosive/grenade/HE/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Icendiary Airburst Grenade", 0, /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Incendiary Airburst Grenade", 0, /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Smoke Airburst Grenade", 0, /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Star Shell", 2, /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Shell", 0, /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", round(scale * 2), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
@@ -203,17 +248,17 @@
 		list("Plastic Explosives", 2, /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
 
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Box Of Buckshot Shells", round(scale * 0.8), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Box Of Flechette Shells", round(scale * 1), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Box Of Shotgun Slugs", round(scale * 1.2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
-		list("L42A Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Magazine (10x24mm", round(scale * 2), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
-		list("M39 HV Magazine (10x20mm)", round(scale * 1), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M44 Speed Loader (.44)", round(scale * 1), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
-		list("M4A3 Magazine (9mm)", round(scale * 1.3), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
+		list("Box Of Buckshot Shells", round(scale * 3), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Box Of Shotgun Slugs", round(scale * 4), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
+		list("L42A Magazine (10x24mm)", round(scale * 5), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Magazine (10x24mm", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M39 HV Magazine (10x20mm)", round(scale * 6), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M44 Speed Loader (.44)", round(scale * 4), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
+		list("M4A3 Magazine (9mm)", round(scale * 10), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
-		list("88 Mod 4 AP Magazine (9mm)", round(scale * 1.5), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
+		list("88 Mod 4 AP Magazine (9mm)", round(scale * 8), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("L42A AP Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 0, /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 AP Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
@@ -257,7 +302,7 @@
 		list("Barbed Wire x10", 0, /obj/item/stack/barbed_wire/small_stack, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 0, /obj/item/stack/sheet/metal/small_stack, VENDOR_ITEM_REGULAR),
 		list("Plasteel x10", 0, /obj/item/stack/sheet/plasteel/small_stack, VENDOR_ITEM_REGULAR),
-		list("Sandbags (empty) x10", 0, /obj/item/stack/sandbags_empty/small_stack, VENDOR_ITEM_REGULAR),
+		list("Sandbags (empty) x10", 1, /obj/item/stack/sandbags_empty/small_stack, VENDOR_ITEM_REGULAR),
 		list("Sandbags (full) x5", 0, /obj/item/stack/sandbags/small_stack, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
@@ -308,14 +353,20 @@
 
 //combined from req guns and ammo vendors
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/stock(obj/item/item_to_stock, mob/user)
-	//these are exempted because checks would be huge and not worth it
+	if(being_restocked && user)
+		to_chat(user, SPAN_WARNING("\The [src] is already being restocked, you will get in the way!"))
+		return FALSE
+
+	//storage items except few are exempted because checks would be huge and not worth it
 	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/box/m94) && !istype(item_to_stock, /obj/item/storage/large_holster/machete))
-		to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
-		return
+		if(user)
+			to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
+		return FALSE
 	var/list/R
 
 	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
 	var/corrected_path = return_corresponding_type(item_to_stock.type)
+	var/stack_restock = 0	//used for making restocking stacked stuff much better.
 
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
@@ -325,12 +376,14 @@
 				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
 					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
 					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+						return FALSE
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+					return FALSE
 
 			//magazine ammo boxes handling
 			else if(istype(item_to_stock, /obj/item/ammo_box/magazine))
@@ -339,56 +392,72 @@
 				if(A.handfuls)
 					var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
 					if(!AM)
-						to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+						return FALSE
 					if(AM.current_rounds != AM.max_rounds)
-						to_chat(user, SPAN_WARNING("\The [A] isn't full. Fill it before you can restock it."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [A] isn't full. Fill it before you can restock it."))
+						return FALSE
 				else if(A.contents.len < A.num_of_magazines)
-					to_chat(user, SPAN_WARNING("\The [A] isn't full."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [A] isn't full."))
+					return FALSE
 				else
 					for(var/obj/item/ammo_magazine/M in A.contents)
 						if(M.current_rounds != M.max_rounds)
-							to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
-							return
+							if(user)
+								to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
+							return FALSE
 			//loose rounds ammo box handling
 			else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
 				var/obj/item/ammo_box/rounds/A = item_to_stock
 				if(A.bullet_amount < A.max_bullet_amount)
-					to_chat(user, SPAN_WARNING("\The [A] isn't full."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [A] isn't full."))
+					return FALSE
 			//Guns handling
 			else if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
-					to_chat(user, SPAN_WARNING("\The [G] is still loaded. Unload it before you can restock it."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [G] is still loaded. Unload it before you can restock it."))
+					return FALSE
 				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
-						to_chat(user, SPAN_WARNING("\The [G] has non-standard attachments equipped. Detach them before you can restock it."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [G] has non-standard attachments equipped. Detach them before you can restock it."))
+						return FALSE
 			//various stacks handling
 			else if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/S = item_to_stock
 				if(istype(item_to_stock, /obj/item/stack/folding_barricade))
 					if(S.amount != 3)
-						to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [S] stack to make it a stack of 3 before restocking."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [S] stack to make it a stack of 3 before restocking."))
+						return FALSE
 				else if(istype(item_to_stock, /obj/item/stack/sandbags))
-					if(S.amount != 5)
-						to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. [(S.amount < 5) ? "Add to" : "Split"] \the [S] stack to make it a stack of 10 before restocking."))
-						return
+					if(S.amount < 5)
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 5")] for convenience. You need \the [S] stack of at least 5 to restock it."))
+						return FALSE
+					else
+						stack_restock = Floor(S.amount / 5)
 				//for the ease of finding enough materials to stack, it will be stored in stacks of 10 sheets just like they come in engie vendor
-				else if(S.amount != 10)
-					to_chat(user, SPAN_WARNING("[S] is being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. [(S.amount < 10) ? "Add to" : "Split"] \the [S] stack to make it a stack of 10 before restocking."))
-					return
+				else
+					if(S.amount < 10)
+						if(user)
+							to_chat(user, SPAN_WARNING("\The [S] are being stored in [SPAN_HELPFUL("stacks of 10")] for convenience. You need \the [S] stack of at least 10 to restock it."))
+						return FALSE
+					else
+						stack_restock = Floor(S.amount / 10)
 			//M94 flare packs handling
 			else if(istype(item_to_stock, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = item_to_stock
 				if(flare_pack.contents.len < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
+					return FALSE
 				var/flare_type
 				if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
 					flare_type = /obj/item/device/flashlight/flare/signal
@@ -396,49 +465,76 @@
 					flare_type = /obj/item/device/flashlight/flare
 				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
 					if(F.fuel < 1)
-						to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+						return FALSE
 					if(F.type != flare_type)
-						to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
-						return
+						if(user)
+							to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
+						return FALSE
 			//Machete holsters handling
 			else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
 				var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
 				if(!mac)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+					return FALSE
 			//Machete holsters handling
 			else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
 				if(AR.pockets && AR.pockets.contents.len)
-					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+					return FALSE
 			//Marine armor handling
 			else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 				var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
 				if(AR.pockets && AR.pockets.contents.len)
-					to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+					return FALSE
 			//Marine helmet handling
 			else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
 				var/obj/item/clothing/head/helmet/marine/H = item_to_stock
 				if(H.pockets && H.pockets.contents.len)
-					to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
-					return
+					if(user)
+						to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+					return FALSE
 
-			if(item_to_stock.loc == user) //Inside the mob's inventory
-				if(item_to_stock.flags_item & WIELDED)
-					item_to_stock.unwield(user)
-				user.temp_drop_inv_item(item_to_stock)
+			//item we are restocking is a stack and we need to conveniently restock it
+			//instead of demanding user to split it into stacks of appropriate amount
+			//if there are any left overs in stack after we restock, we do not move it anywhere nor delete
+			if(stack_restock)
+				var/modifier = 10
+				var/obj/item/stack/ST = item_to_stock
+				if(istype(item_to_stock, /obj/item/stack/sandbags))
+					modifier = 5
+				if(ST.amount > stack_restock * modifier)
+					ST.amount -= stack_restock * modifier
+					ST.update_icon()
+					item_to_stock = null	//we have left overs, so we don't delete stack
 
-			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				R[2] += stack_restock
+			else
+				R[2]++
 
-			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
-			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
-			R[2]++
+			if(item_to_stock)
+				if(user)
+					if(item_to_stock.loc == user) //Inside the mob's inventory
+						if(item_to_stock.flags_item & WIELDED)
+							item_to_stock.unwield(user)
+						user.temp_drop_inv_item(item_to_stock)
+
+				if(isstorage(item_to_stock.loc)) //inside a storage item
+					var/obj/item/storage/S = item_to_stock.loc
+					S.remove_from_storage(item_to_stock, user.loc)
+
+				qdel(item_to_stock)
+
+			if(user)
+				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+				SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
+
 			updateUsrDialog()
-			return //We found our item, no reason to go on.
+			return TRUE//We found our item, no reason to go on.
 

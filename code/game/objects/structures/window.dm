@@ -185,7 +185,7 @@
 		if(windowknock_cooldown > world.time)
 			return
 
-		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
+		playsound(loc, 'sound/effects/glassbash.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
 		SPAN_WARNING("You bang against [src]!"),
 		SPAN_WARNING("You hear a banging sound."))
@@ -768,6 +768,10 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
+
+/obj/structure/window/framed/solaris/reinforced/tinted
+	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	opacity = 1
 
 //GREYBOX DEV WINDOWS
 

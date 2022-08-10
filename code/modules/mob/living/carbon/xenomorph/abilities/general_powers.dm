@@ -31,6 +31,11 @@
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
 		return
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in T
+	if(resin_trap)
+		to_chat(X, SPAN_WARNING("You can't weed on top of a trap!"))
+		return
+
 	var/list/to_convert
 	if(N)
 		to_convert = N.children.Copy()
@@ -99,7 +104,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	..()
 	return
 
@@ -198,7 +203,7 @@
 			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
 			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
+			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
@@ -515,13 +520,16 @@
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
-
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
+		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
 		return
 
 	if(!X.check_alien_construction(T))

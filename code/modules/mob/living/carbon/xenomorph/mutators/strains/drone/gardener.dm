@@ -118,7 +118,7 @@
 
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
-	action_icon_state = "fruit_greater"
+	action_icon_state = "blank"
 	ability_name = "change fruit"
 	plasma_cost = 0
 	xeno_cooldown = 0
@@ -129,6 +129,7 @@
 	. = ..()
 
 	button.overlays.Cut()
+	button.overlays += image(icon_file, button, action_icon_state)
 	button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
 
 /datum/action/xeno_action/onclick/change_fruit/use_ability(atom/A)
@@ -203,6 +204,7 @@
 			to_chat(X, SPAN_NOTICE("You will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
 			button.overlays.Cut()
+			button.overlays += image(icon_file, button, action_icon_state)
 			button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(fruit.mature_icon_state))
 			X.selected_fruit = selected_type
 			. = TRUE

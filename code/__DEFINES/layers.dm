@@ -3,6 +3,12 @@
 
 //the hardcoded ones are AREA_LAYER = 1, TURF_LAYER = 2, OBJ_LAYER = 3, MOB_LAYER = 4, FLY_LAYER = 5
 
+/*=============================*\
+|								|
+|		  LAYER DEFINES			|
+|								|
+\*=============================*/
+
 //#define AREA_LAYER 1
 
 #define UNDER_TURF_LAYER 1.99
@@ -111,8 +117,6 @@
 
 #define ABOVE_FLY_LAYER 6
 
-#define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
-
 #define ABOVE_LIGHTING_PLANE 16
 
 #define BELOW_FULLSCREEN_LAYER 16.9 //blip from motion detector
@@ -131,6 +135,14 @@
 #define ABOVE_HUD_LAYER 20
 
 #define CINEMATIC_LAYER 21
+
+#define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
+
+/*=============================*\
+|								|
+|		  PLANE DEFINES			|
+|								|
+\*=============================*/
 
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200

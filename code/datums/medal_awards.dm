@@ -34,15 +34,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!citation) return
 	var/recipient_ckey
 	var/recipient_mob
+	var/foundOther = FALSE
 	for(var/mob/M in GLOB.mob_list)
 		if(M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
+			if(foundOther)
+				break
+			foundOther = TRUE
 		if(M.real_name == chosen_recipient)
 			if(isliving(M) && M.stat != DEAD)
 				posthumous = FALSE
 			recipient_ckey = M.ckey
 			recipient_mob = M
-			break
+			if(foundOther)
+				break
+			foundOther = TRUE
 	if(!GLOB.medal_awards[chosen_recipient])
 		GLOB.medal_awards[chosen_recipient] = new /datum/recipient_awards()
 	var/datum/recipient_awards/RA = GLOB.medal_awards[chosen_recipient]
@@ -119,15 +125,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!citation) return
 	var/recipient_ckey
 	var/recipient_mob
+	var/foundOther = FALSE
 	for(var/mob/M in GLOB.mob_list)
 		if(M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
-		if(M.real_name == chosen_recipient)
+			if(foundOther)
+				break
+			foundOther = TRUE
+		if(M.real_name == chosen_recipient) // real_name will not match name for a queen
 			if(isliving(M) && M.stat != DEAD)
 				posthumous = FALSE
 			recipient_ckey = M.ckey
 			recipient_mob = M
-			break
+			if(foundOther)
+				break
+			foundOther = TRUE
 	if(!GLOB.jelly_awards[chosen_recipient])
 		GLOB.jelly_awards[chosen_recipient] = new /datum/recipient_awards()
 	var/datum/recipient_awards/RA = GLOB.jelly_awards[chosen_recipient]

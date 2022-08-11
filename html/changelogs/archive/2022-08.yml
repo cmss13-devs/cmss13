@@ -226,3 +226,6 @@
       prevent abuse via firing "through" a window on the same tile as you
   - bugfix: m2cs can no longer be built on top of each other
   - qol: you can now rotate windows with alt-click
+  - bugfix: fixed a bug with the pred mask where it would not properly remove vision
+      filters from people wearing it when turned off/taken off
+  - refactor: refactored pred mask HUD/effects application code

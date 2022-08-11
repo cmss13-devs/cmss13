@@ -131,22 +131,26 @@
 #define TRAIT_XENONID "t_xenonid"
 
 // MISC MOB TRAITS
- /// If the mob is nested.
-#define TRAIT_NESTED "t_nested"
  /// If the mob can crawl through pipes equipped
 #define TRAIT_CRAWLER "t_crawler"
  /// If the mob is hidden from examination
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
  /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
- /// If the mob has equipment that alleviates nearsightedness
-#define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
  /// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
  /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+
+//MOB TRAITS THAT ARE APPLIED/TAKEN AWAY BY STUFF
+ /// If the mob is nested.
+#define TRAIT_NESTED "t_nested"
+ /// If the mob has equipment that alleviates nearsightedness
+#define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
+ /// If the mob is being locked onto by a smartpistol
+#define TRAIT_LOCKED_ON_BY_SMARTPISTOL "t_locked_on_by_smartpistol"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them
@@ -208,3 +212,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
  ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+ ///Status trait coming from an item
+#define TRAIT_SOURCE_ITEM(item) "t_s_item_[item]"

@@ -6,7 +6,7 @@
 		stop_aim()
 		usr.visible_message(SPAN_NOTICE("\The [usr] lowers \the [src]..."))
 
-//Removes lock fro mall targets
+//Removes lock from all targets
 /obj/item/weapon/gun/proc/stop_aim()
 	if(target)
 		for(var/mob/living/M in target)

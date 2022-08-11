@@ -547,10 +547,14 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 //-------------------------------------------------------
 //Smartpistol. An IFF pistol, pretty much.
+#define NOT_LOCKING	0
+#define LOCKING_ON	1
+#define LOCKED_ON	2
+#define LOCK_ON_COOLDOWN 1 SECONDS
 
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
-	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
+	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts. It can also lock onto targets via integrated circuitry and tracking systems."
 	icon_state = "smartpistol"
 	item_state = "smartpistol"
 	force = 8
@@ -559,6 +563,16 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	reload_sound = 'sound/weapons/handling/gun_su6_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	actions_types = list(/datum/action/item_action/smartpistol_lock_mode)
+	var/locking_state = NOT_LOCKING
+	var/mob/living/auto_aim_target //the ref to the mob we're locking onto
+	var/lock_duration = 15 SECONDS //how long it lasts
+	var/lockonattempt_cooldown = 0
+	var/image/locked
+
+/obj/item/weapon/gun/pistol/smart/Initialize(mapload, spawn_empty)
+	. = ..()
+	locked = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locked-spistol")
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 24, "under_y" = 17, "stock_x" = 24, "stock_y" = 17)
@@ -581,6 +595,278 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/obj/item/weapon/gun/pistol/smart/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	if(locking_state == LOCKED_ON && auto_aim_target)
+		target = auto_aim_target
+	. = ..()
+
+/obj/item/weapon/gun/pistol/smart/unwield(mob/user)
+	. = ..()
+	switch(locking_state)
+		if(LOCKED_ON)
+			break_iff_lock(user)
+		if(LOCKING_ON)
+			stop_aiming(user)
+
+/obj/item/weapon/gun/pistol/smart/Destroy()
+	switch(locking_state)
+		if(LOCKED_ON)
+			break_iff_lock()
+		if(LOCKING_ON)
+			stop_aiming()
+	. = ..()
+
+/obj/item/weapon/gun/pistol/smart/proc/break_iff_lock(var/mob/living/carbon/human/user) // to be used when locked on
+	if(!locking_state)
+		return
+	locking_state = NOT_LOCKING
+	LAZYREMOVE(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_homing)
+	))
+	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
+	if(user)
+		user.next_move += 0.25 SECONDS
+	if(auto_aim_target)
+		auto_aim_target.overlays["smartpistol"] = null
+		message_admins("removing overlays in break iff lock proc")
+		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
+	auto_aim_target = null
+	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/weapon/gun/pistol/smart/proc/stop_aiming(var/mob/living/carbon/human/user) //proc we use if interrupted during the aiming process
+	if(!locking_state)
+		return
+	locking_state = NOT_LOCKING
+	lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
+	if(user)
+		user.next_move += 0.25 SECONDS
+	if(auto_aim_target)
+		REMOVE_TRAIT(auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
+		auto_aim_target.overlays["smartpistol"] = null
+		message_admins("removing overlays in break stop aiming proc")
+		auto_aim_target = null
+	playsound(src, 'sound/weapons/TargetOff.ogg', 50, FALSE, 8, falloff = 0.4)
+
+/obj/item/weapon/gun/pistol/smart/process()
+	. = ..()
+	var/datum/action/item_action/smartpistol_lock_mode/ability = src.actions[1]
+	var/mob/living/L = auto_aim_target
+	if(!ability.check_can_keep_locking(L))
+		break_iff_lock()
+
+/datum/action/item_action/smartpistol_lock_mode
+	name = "Aim Lock-On"
+	var/image/locking
+	var/image/locked
+
+/datum/action/item_action/smartpistol_lock_mode/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "spistol_aim")
+	button.overlays |= IMG
+
+/datum/action/item_action/smartpistol_lock_mode/action_activate()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.selected_ability == src)
+		to_chat(H, "You will no longer use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		button.icon_state = "template"
+		H.selected_ability = null
+	else
+		to_chat(H, "You will now use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(H.selected_ability)
+			H.selected_ability.button.icon_state = "template"
+			H.selected_ability = null
+		button.icon_state = "template_on"
+		H.selected_ability = src
+
+/datum/action/item_action/smartpistol_lock_mode/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying)
+		return TRUE
+
+/datum/action/item_action/smartpistol_lock_mode/proc/check_can_keep_locking(var/mob/M)
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/weapon/gun/pistol/smart/SP = holder_item
+
+	if(!can_use_action())
+		return FALSE
+
+	if(!SP.auto_aim_target)
+		return FALSE
+
+	if(get_dist(H, M) < 2)
+		to_chat(H, SPAN_WARNING("[M] is too close to lock on to!"))
+		return FALSE
+
+	if(get_dist(H, M) > 7)
+		to_chat(H, SPAN_WARNING("[M] is too far away for \the [SP]'s circuitry to get a lock!"))
+		return FALSE
+
+	return TRUE
+
+/datum/action/item_action/smartpistol_lock_mode/proc/check_can_use(var/mob/living/M)
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/weapon/gun/pistol/smart/SP = holder_item
+
+	if(!istype(M))
+		return FALSE
+
+	if(!can_use_action())
+		return FALSE
+
+	if(!istype(H.l_hand, /obj/item/weapon/melee/twohanded/offhand) && !istype(H.r_hand, /obj/item/weapon/melee/twohanded/offhand))
+		to_chat(H, SPAN_WARNING("Your grip on \the [SP] is not stable enough with just one hand. Use both hands!"))
+		return FALSE
+
+	if(!SP.in_chamber)
+		to_chat(H, SPAN_WARNING("\The [SP] is unloaded!"))
+		return FALSE
+
+	if(get_dist(H, M) < 2)
+		to_chat(H, SPAN_WARNING("[M] is too close to lock on to!"))
+		return FALSE
+
+	if(get_dist(H, M) > 7)
+		to_chat(H, SPAN_WARNING("[M] is too far away for \the [SP]'s circuitry to get a lock!"))
+		return FALSE
+
+	if(!SP.in_chamber)
+		to_chat(H, SPAN_WARNING("There is no ammo left in \the [SP], and it drops the lock."))
+		return FALSE
+
+	if(M.get_target_lock(H.faction_group))
+		to_chat(H, SPAN_WARNING("\The [SP] refuses to lock onto [M]! They have a friendly IFF signal!"))
+		return FALSE
+
+	var/obj/item/projectile/P = SP.in_chamber
+	if(check_shot_is_blocked(H, M, P))
+		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
+		return FALSE
+
+	return TRUE
+
+/datum/action/item_action/smartpistol_lock_mode/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
+	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
+		return TRUE
+
+	var/blocked = FALSE
+	for(var/turf/T in path)
+		if(T.density || T.opacity)
+			blocked = TRUE
+			break
+
+		for(var/obj/O in T)
+			if(O.get_projectile_hit_boolean(P))
+				blocked = TRUE
+				break
+
+		for(var/obj/effect/particle_effect/smoke/S in T)
+			blocked = TRUE
+			break
+
+	return blocked
+
+/datum/action/item_action/smartpistol_lock_mode/proc/use_ability(atom/A) //the proc for ACTUALLY using the ability
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	var/mob/living/M = A
+	var/obj/item/weapon/gun/pistol/smart/SP = istype(H.l_hand, /obj/item/weapon/gun/pistol/smart) ? H.l_hand : H.r_hand
+	var/obj/item/projectile/P = SP.in_chamber
+	locking = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spistol", dir = get_cardinal_dir(M, H))
+	locked = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locked-spistol")
+	// intial checks before we begin the locking sequence
+	if(!istype(A, /mob/living))
+		return
+
+	if(M.stat == DEAD || M == H)
+		return
+
+	message_admins("locking state is [SP.locking_state]")
+	switch(SP.locking_state)
+		if(LOCKED_ON)
+			M.overlays["smartpistol"] = null
+			message_admins("should be removing overlays due to sp already locked on")
+			SP.break_iff_lock(H)
+			return
+		if(LOCKING_ON)
+			M.overlays["smartpistol"] = null
+			message_admins("should be removing overlays due to sp already locking on")
+			SP.stop_aiming(H)
+			return
+
+	if(SP.lockonattempt_cooldown >= world.time) //cooldown only to prevent spam toggling
+		to_chat(H, SPAN_WARNING("\The [SP]'s internal circuitry is still recharging!"))
+		return
+
+	if(HAS_TRAIT(M, TRAIT_LOCKED_ON_BY_SMARTPISTOL))
+		to_chat(H, SPAN_WARNING("Something is already locking on to \the [M]! Your gun's circuitry jams up!"))
+		SP.lockonattempt_cooldown = world.time + LOCK_ON_COOLDOWN
+		return
+
+	if(!check_can_use(M))
+		return
+
+	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
+	var/distance = round(get_dist(M, H) * 0.5)
+	var/f_aiming_time = (5 * M.get_skill_duration_multiplier(SKILL_FIREARMS)) + distance
+
+	//we now begin the locking sequence. To return after this, you must use the "stop_aiming" proc
+	SP.auto_aim_target = M //assign here to help with the cancel procs
+	ADD_TRAIT(SP.auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
+	SP.locking_state = LOCKING_ON
+	M.overlays["smartpistol"] = locking
+	if(H.client)
+		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
+	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	if(!do_after(H, f_aiming_time, INTERRUPT_ALL, NO_BUSY_ICON))
+		if(SP.auto_aim_target)
+			M.overlays["smartpistol"] = null
+			message_admins("should be removing overlays due to do_after fail")
+			SP.stop_aiming(H)
+		return
+
+	if(!check_can_use(M))
+		if(SP.auto_aim_target)
+			M.overlays["smartpistol"] = null
+			message_admins("should be removing overlays due to check use fail")
+			SP.stop_aiming(H)
+		return
+
+	//we now lock on. To return after this, use the "break_iff_lock" proc
+	if(SP.locking_state == NOT_LOCKING)
+		M.overlays["smartpistol"] = null
+		message_admins("should be removing overlays due to not locking fail")
+		SP.stop_aiming(H)
+		return
+	P.homing_target = M
+	P.projectile_override_flags |= AMMO_HOMING
+	SP.locking_state = LOCKED_ON
+	M.overlays["smartpistol"] = null
+	message_admins("removing overlays due to success")
+	M.overlays["smartpistol"] = locked
+	LAZYADD(SP.traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_homing)
+	))
+	addtimer(CALLBACK(SP, /obj/item/weapon/gun/pistol/smart/proc/break_iff_lock), SP.lock_duration)
+	if(!do_after(H, delay = SP.lock_duration, user_flags = INTERRUPT_OUT_OF_RANGE, show_busy_icon = FALSE, target = M, target_flags = null, max_dist = 7))
+		to_chat(H, SPAN_WARNING("[M] is too far away for \the [SP]'s circuitry to get a lock!"))
+		return SP.break_iff_lock(H)
+	START_PROCESSING(SSobj, SP)
+
+#undef NOT_LOCKING
+#undef LOCKING_ON
+#undef LOCKED_ON
+#undef LOCK_ON_COOLDOWN
 
 //-------------------------------------------------------
 //SKORPION //Based on the same thing.

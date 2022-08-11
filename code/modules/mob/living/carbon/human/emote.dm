@@ -256,11 +256,11 @@
 							if(M.ear_deaf)
 								heard -= M
 								continue
-						var/toggles_langchat = M.client.prefs.toggles_langchat
-						if(toggles_langchat)
-							if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
-								heard.Remove(M)
-								continue
+							var/toggles_langchat = M.client?.prefs.toggles_langchat
+							if(toggles_langchat)
+								if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
+									heard.Remove(M)
+									continue
 						langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 					if(player_caused)
 						start_audio_emote_cooldown()
@@ -315,11 +315,11 @@
 						if(M.ear_deaf)
 							heard -= M
 							continue
-					var/toggles_langchat = M.client.prefs.toggles_langchat
-					if(toggles_langchat)
-						if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
-							heard.Remove(M)
-							continue
+						var/toggles_langchat = M.client?.prefs.toggles_langchat
+						if(toggles_langchat)
+							if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
+								heard.Remove(M)
+								continue
 					langchat_speech(pain_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 				else if(Primate)
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
@@ -372,7 +372,7 @@
 						if(M.ear_deaf)
 							heard -= M
 							continue
-						var/toggles_langchat = M.client.prefs.toggles_langchat
+						var/toggles_langchat = M.client?.prefs.toggles_langchat
 						if(toggles_langchat)
 							if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
 								heard.Remove(M)

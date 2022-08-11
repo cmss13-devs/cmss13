@@ -52,7 +52,7 @@
 						M.show_message(message, m_type)
 						viewers.Add(M)
 				O.show_message(message, m_type)
-				var/toggles_langchat = O.client.prefs.toggles_langchat
+				var/toggles_langchat = O.client?.prefs.toggles_langchat
 				if(toggles_langchat)
 					if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
 						viewers.Remove(O)
@@ -76,7 +76,7 @@
 						M.show_message(message, m_type)
 						hearers.Add(M)
 				O.show_message(message, m_type)
-				var/toggles_langchat = O.client.prefs.toggles_langchat
+				var/toggles_langchat = O.client?.prefs.toggles_langchat
 				if(toggles_langchat)
 					if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
 						hearers.Remove(O)

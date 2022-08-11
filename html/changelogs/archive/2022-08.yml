@@ -219,3 +219,5 @@
 2022-08-11:
   50RemAndCounting:
   - soundadd: readded old Almayer/Sulaco ambient noise.
+  Shad0vvs:
+  - bugfix: Fixed possible null runtime in prefrences_savefile.

@@ -166,11 +166,16 @@
 	. = ..()
 	if(!ishuman(user) && !isobserver(user))
 		return
-	var/allowed_roles = ""
-	for(var/role in allowed_roles_list)
-		if(length(allowed_roles))
-			allowed_roles += ", "
-		allowed_roles = allowed_roles + SPAN_HELPFUL("[role]s")
+
+	var/allowed_roles
+	if(length(allowed_roles_list))
+		allowed_roles = ""
+		for(var/role in allowed_roles_list)
+			if(length(allowed_roles))
+				allowed_roles += ", "
+			allowed_roles += SPAN_HELPFUL("[role]")
+	else
+		allowed_roles = SPAN_HELPFUL("anyone")
 	to_chat(user, SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet."))
 
 /obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)

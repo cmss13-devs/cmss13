@@ -148,52 +148,67 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
-var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "Demo" = 2)
+ //-----------------SPEC KIT BOX------------------
+ //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
-/obj/item/spec_kit //For events/WO, allowing the user to choose a specalist kit
+/obj/item/spec_kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "deliverycrate"
+	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST)
 
-/obj/item/spec_kit/attack_self(mob/user)
-	..()
-
-	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
-		return
-	if(select_and_spawn(user))
-		qdel(src)
-
+//this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
 /obj/item/spec_kit/asrs
-	desc = "A paper box. Open it and get a specialist kit. Works only for squad riflemen."
+	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/asrs/attack_self(mob/user)
+/obj/item/spec_kit/examine(var/mob/user)
+	. = ..()
+	if(!ishuman(user) && !isobserver(user))
+		return
+	var/allowed_roles = ""
+	for(var/role in allowed_roles_list)
+		if(length(allowed_roles))
+			allowed_roles += ", "
+		allowed_roles = allowed_roles + SPAN_HELPFUL("[role]s")
+	to_chat(user, SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet."))
+
+/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
 	..()
-
-	if(user.job == JOB_SQUAD_MARINE)
-		if(select_and_spawn(user))
-			qdel(src)
-	else
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad rifleman!"))
-
-/obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	if(!istype(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
 		return
 
-	var/selection = tgui_input_list(user, "Pick your equipment", "Specialist Kit Selection", kits)
-	if(!selection)
+	if(!length(allowed_roles_list))
+		if(select_and_spawn(user))
+			qdel(src)
+			return
+
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+				to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
+				return
+			if(select_and_spawn(user))
+				qdel(src)
+			return
+
+	to_chat(user, SPAN_WARNING("You can't use this [name]!"))
+	return
+
+/obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
+	if(!selection || QDELETED(src))
 		return FALSE
-	if(!kits[selection] || kits[selection] <= 0)
-		to_chat(user, SPAN_NOTICE("No more kits of this type may be chosen!!"))
-		return FALSE
-	if(!istype(user.wear_id, /obj/item/card/id))
-		to_chat(user, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
+	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
+		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
+		return FALSE
 	var/obj/item/card/id/ID = user.wear_id
-	if(ID.registered_ref != WEAKREF(user))
-		to_chat(user, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+	if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
 		return
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/spec_box
@@ -215,15 +230,19 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 			spec_box = new /obj/item/storage/box/spec/scout(T)
 			specialist_assignment = "Scout"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			//this is to be able to use C4s that are coming with the kit
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 		if("Demo")
 			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
 			specialist_assignment = "Demo"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			//this is to be able to use C4s that are coming with the kit
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+		ID.set_assignment(user.assigned_squad ? (user.assigned_squad.name + " ") : "" + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE

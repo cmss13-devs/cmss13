@@ -155,7 +155,7 @@
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "deliverycrate"
+	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST)
 
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have

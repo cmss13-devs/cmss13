@@ -389,10 +389,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
-"jl" = (
-/obj/structure/sign/poster/clf,
-/turf/closed/wall/shiva/prefabricated,
-/area/shiva/interior/colony/s_admin)
 "jE" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -1151,8 +1147,8 @@
 	dir = 8
 	},
 /obj/structure/machinery/power/terminal,
-/turf/open/floor/shiva{
-	icon_state = "bluefull"
+/turf/open/floor{
+	icon_state = "platingdmg1"
 	},
 /area/shiva/interior/colony/s_admin)
 "Fq" = (
@@ -1377,6 +1373,7 @@
 /area/shiva/interior/colony/s_admin)
 "Kv" = (
 /obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -2144,7 +2141,7 @@ DM
 DM
 "}
 (10,1,1) = {"
-xt
+Qk
 Hr
 Il
 QE
@@ -2166,7 +2163,7 @@ Qk
 DM
 "}
 (11,1,1) = {"
-jl
+VY
 Hr
 iM
 JD
@@ -2232,7 +2229,7 @@ Qk
 tF
 "}
 (14,1,1) = {"
-jl
+VY
 Hj
 iM
 JD
@@ -2298,7 +2295,7 @@ Qk
 tF
 "}
 (17,1,1) = {"
-jl
+VY
 WC
 Ey
 Un
@@ -2364,7 +2361,7 @@ Hz
 Wl
 "}
 (20,1,1) = {"
-jl
+VY
 Hr
 Su
 NY
@@ -2386,7 +2383,7 @@ Hz
 Wl
 "}
 (21,1,1) = {"
-xt
+Qk
 Hr
 Hr
 wG
@@ -2409,11 +2406,11 @@ Wl
 "}
 (22,1,1) = {"
 Qk
-xt
-xt
-xt
-jl
-xt
+Qk
+Qk
+Qk
+VY
+Qk
 Qk
 ff
 Tf
@@ -2430,57 +2427,57 @@ UM
 AL
 "}
 (23,1,1) = {"
-xt
+Qk
 iG
 Ho
 CU
 rQ
 AH
-xt
+Qk
 jS
 gr
 gr
 jS
 Qk
-xt
-xt
-xt
-xt
+Qk
+Qk
+Qk
+Qk
 Qk
 Qk
 Qk
 Iq
 "}
 (24,1,1) = {"
-xt
+Qk
 SI
 PH
 rM
 rM
 RD
-jl
+VY
 zm
 CN
 Tf
 JD
-xt
+Qk
 XL
 PF
 Rl
 mc
-xt
+Qk
 Ml
 uK
 jE
 "}
 (25,1,1) = {"
-xt
+Qk
 kT
 kL
 hn
 OT
 fP
-xt
+Qk
 qT
 Tf
 Tf
@@ -2490,7 +2487,7 @@ rM
 Sc
 uk
 Lw
-xt
+Qk
 rT
 uK
 uK
@@ -2507,12 +2504,12 @@ hb
 Tf
 CB
 JD
-xt
+Qk
 Fh
 rq
 yq
 GO
-xt
+Qk
 Vo
 uK
 uK
@@ -2530,10 +2527,10 @@ DI
 XJ
 JD
 VY
-xt
-xt
-xt
-xt
+Qk
+Qk
+Qk
+Qk
 Qk
 bR
 sK
@@ -2551,12 +2548,12 @@ Qw
 gr
 gr
 JD
-xt
+Qk
 Kr
 RN
 IG
 is
-xt
+Qk
 Jd
 uK
 jE
@@ -2573,12 +2570,12 @@ dT
 gr
 gr
 iM
-xt
+Qk
 iv
 rM
 yZ
 QZ
-xt
+Qk
 rT
 uK
 uK
@@ -2600,50 +2597,50 @@ rM
 KU
 rM
 Fw
-xt
+Qk
 rT
 uK
 Pi
 "}
 (31,1,1) = {"
-xt
+Qk
 Zk
 Zc
 nJ
 Zc
 jS
-xt
+Qk
 ad
 nD
 KP
 Zk
-xt
+Qk
 Fh
 Mo
 GO
 GO
-xt
+Qk
 wY
 uK
 uK
 "}
 (32,1,1) = {"
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
 Qk
 Qk
 Qk
 Qk
-xt
-xt
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
 Qk
 rT
 uK

@@ -99,11 +99,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "dx" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -175,11 +175,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "eH" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -395,7 +395,7 @@
 /area/strata/ag/interior/outpost/security)
 "kA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/engi)
 "lo" = (
 /obj/item/storage/box/ids,
@@ -461,6 +461,17 @@
 	icon_state = "platingdmg3"
 	},
 /area/strata/ag/interior/outpost/engi)
+"lZ" = (
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/structure/window_frame/strata/reinforced,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
 "mk" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -565,11 +576,11 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "po" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -681,11 +692,11 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "rC" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -760,7 +771,6 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "tv" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
@@ -768,6 +778,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1025,7 +1036,7 @@
 /area/strata/ag/interior/outpost/security)
 "zL" = (
 /obj/structure/sign/poster/clf,
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/engi)
 "zQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -1239,11 +1250,11 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "Gb" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1307,8 +1318,8 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "Gt" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1530,8 +1541,8 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/exterior/paths/north_outpost)
 "Pq" = (
-/obj/structure/window_frame/strata,
 /obj/item/stack/rods,
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "PJ" = (
@@ -1623,11 +1634,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "Ro" = (
-/obj/structure/window_frame/strata,
 /obj/item/shard{
 	icon_state = "large"
 	},
 /obj/item/stack/rods,
+/obj/structure/window_frame/strata/reinforced,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -1794,8 +1805,16 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "WG" = (
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior/outpost/engi)
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/structure/window_frame/strata/reinforced,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/security)
 "WP" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
@@ -2002,7 +2021,7 @@ ym
 lY
 yw
 RV
-WG
+ym
 zL
 "}
 (4,1,1) = {"
@@ -2021,7 +2040,7 @@ db
 qc
 nX
 tt
-WG
+ym
 "}
 (5,1,1) = {"
 fs
@@ -2054,10 +2073,10 @@ OW
 OW
 ym
 sh
-WG
-WG
+ym
+ym
 sh
-WG
+ym
 "}
 (7,1,1) = {"
 OW
@@ -2216,9 +2235,9 @@ Yf
 hV
 Uh
 cp
-Qs
-Gh
-Qs
+lZ
+WG
+lZ
 cp
 "}
 (16,1,1) = {"

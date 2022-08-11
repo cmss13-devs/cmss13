@@ -550,6 +550,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 #define NOT_LOCKING	0
 #define LOCKING_ON	1
 #define LOCKED_ON	2
+
 #define LOCK_ON_COOLDOWN 1 SECONDS
 
 /obj/item/weapon/gun/pistol/smart
@@ -823,7 +824,10 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	SP.auto_aim_target = M //assign here to help with the cancel procs
 	ADD_TRAIT(SP.auto_aim_target, TRAIT_LOCKED_ON_BY_SMARTPISTOL, TRAIT_SOURCE_ITEM("smartpistol"))
 	SP.locking_state = LOCKING_ON
+	if(!locate("smartpistol") in M.overlays)
+		M.overlays += "smartpistol"
 	M.overlays["smartpistol"] = locking
+	message_admins("applying locking overlay + trait")
 	if(H.client)
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
 	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)

@@ -68,7 +68,7 @@
 
 #define SOUND_MARINE_DRUMS 'sound/effects/drums.ogg'
 
-#define AMBIENCE_ALMAYER 'sound/ambience/shipambience1.ogg'
+#define AMBIENCE_ALMAYER 'sound/ambience/almayerambience.ogg'
 #define AMBIENCE_LV624 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_BIGRED 'sound/ambience/desert.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'

@@ -216,3 +216,6 @@
   stanalbatross:
   - balance: larvas can no longer evolve off weeds before 15 minutes into the round
       has passed.
+2022-08-11:
+  50RemAndCounting:
+  - soundadd: readded old Almayer/Sulaco ambient noise.

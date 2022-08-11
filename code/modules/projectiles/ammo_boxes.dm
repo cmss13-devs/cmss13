@@ -1001,7 +1001,7 @@
 					AM.current_rounds += transfering
 					bullet_amount     -= transfering
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
-					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] rounds to [dumping ? src : AM]."))
+					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
 					transfering = 0
 
 			while(transferable >= 1)
@@ -1026,7 +1026,7 @@
 			bullet_amount += S
 			AM.update_icon()
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You put [S] rounds into [src]."))
+			to_chat(user, SPAN_NOTICE("You put [S] round\s into [src]."))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
 				qdel(AM)

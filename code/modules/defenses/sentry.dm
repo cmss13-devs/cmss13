@@ -108,7 +108,7 @@
 /obj/structure/machinery/defenses/sentry/examine(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] rounds loaded."))
+		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded."))
 	else
 		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
 

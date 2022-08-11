@@ -816,7 +816,7 @@
 /obj/structure/fence{
 	layer = 2.9
 	},
-/turf/open/auto_turf/snow/layer0,
+/turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/bar)
 "Bl" = (
 /obj/structure/bed/chair/wood/normal{
@@ -844,6 +844,10 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
+"BM" = (
+/obj/structure/fence,
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/shiva/interior/bar)
 "BQ" = (
 /obj/structure/barricade/snow,
 /obj/structure/barricade/snow,
@@ -1444,7 +1448,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "Ym" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/auto_turf/snow/layer0,
+/turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/bar)
 "YN" = (
 /obj/structure/bed/chair/wood/normal{
@@ -1525,14 +1529,14 @@ ls
 DM
 WZ
 WZ
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 gU
 lf
 lf
@@ -1586,7 +1590,7 @@ QA
 HE
 QA
 Tm
-ls
+WZ
 fL
 NO
 lf
@@ -1604,12 +1608,12 @@ QA
 QA
 QA
 aP
-ls
+WZ
 MZ
 lf
 MZ
-MZ
-ls
+BM
+WZ
 "}
 (7,1,1) = {"
 Rn
@@ -1622,7 +1626,7 @@ BV
 QA
 QA
 LI
-ls
+WZ
 mT
 NO
 lf
@@ -1649,7 +1653,7 @@ lf
 "}
 (9,1,1) = {"
 dz
-ls
+WZ
 Iu
 Iu
 Iu
@@ -1658,7 +1662,7 @@ vZ
 OE
 Lf
 uD
-ls
+WZ
 Mj
 lf
 NO
@@ -1667,7 +1671,7 @@ lf
 "}
 (10,1,1) = {"
 QW
-ls
+WZ
 ls
 Rt
 JZ
@@ -1675,17 +1679,17 @@ mN
 ls
 ls
 Lc
-ls
-ls
-ls
-ls
+WZ
+WZ
+WZ
+WZ
 jY
-ls
-ls
+WZ
+WZ
 "}
 (11,1,1) = {"
 XY
-ls
+WZ
 Fd
 rZ
 xS
@@ -1694,12 +1698,12 @@ yf
 Nr
 tR
 WG
-ls
+WZ
 LS
 Oc
 QA
 KC
-ls
+WZ
 "}
 (12,1,1) = {"
 XY
@@ -1712,12 +1716,12 @@ yf
 Au
 tR
 WG
-ls
+WZ
 LS
 Ot
 HB
 fV
-ls
+WZ
 "}
 (13,1,1) = {"
 XY
@@ -1730,12 +1734,12 @@ WW
 Pk
 MP
 WG
-ls
+WZ
 mf
 DJ
 ey
 ei
-ls
+WZ
 "}
 (14,1,1) = {"
 ni
@@ -1748,16 +1752,16 @@ YO
 Fh
 yh
 TV
-ls
+WZ
 LS
 xI
 QA
 No
-ls
+WZ
 "}
 (15,1,1) = {"
-ls
-ls
+WZ
+WZ
 YZ
 Vp
 Sy
@@ -1766,12 +1770,12 @@ YN
 cs
 uI
 DY
-ls
+WZ
 LS
 cH
 oh
 No
-ls
+WZ
 "}
 (16,1,1) = {"
 ZG
@@ -1784,12 +1788,12 @@ jM
 eV
 if
 qu
-ls
-ls
-ls
-ls
-ls
-ls
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 "}
 (17,1,1) = {"
 CF
@@ -1804,10 +1808,10 @@ KF
 rB
 jM
 wf
-ls
+WZ
 ve
 jG
-ls
+WZ
 "}
 (18,1,1) = {"
 yf
@@ -1828,8 +1832,8 @@ ve
 jG
 "}
 (19,1,1) = {"
-ls
-ls
+WZ
+WZ
 YZ
 jM
 jM
@@ -1883,7 +1887,7 @@ rq
 "}
 (22,1,1) = {"
 XY
-ls
+WZ
 dt
 Zw
 om
@@ -1894,26 +1898,26 @@ tR
 Iu
 tR
 TJ
-ls
+WZ
 ve
 rq
 AR
 "}
 (23,1,1) = {"
 XY
-ls
-ls
+WZ
+WZ
 yf
 CF
 yf
-ls
-ls
+WZ
+WZ
 yM
 yh
 tR
-ls
-ls
-ls
+WZ
+WZ
+WZ
 ve
 rq
 "}
@@ -1944,9 +1948,9 @@ wQ
 At
 BA
 WZ
-ls
+WZ
 xQ
-ls
+WZ
 WZ
 gq
 rq

@@ -229,3 +229,8 @@
   - bugfix: fixed a bug with the pred mask where it would not properly remove vision
       filters from people wearing it when turned off/taken off
   - refactor: refactored pred mask HUD/effects application code
+  - qol: abovehead emotes now use smaller chat + a small blue asterisk before them,
+      which makes them much easier to read
+  - qol: added a setting to turn off seeing abovehead emotes
+  - qol: added abovehead chat settings to the setup settings section
+  - bugfix: abovehead emotes no longer inherit size and boldness from their user

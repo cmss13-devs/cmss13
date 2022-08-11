@@ -21,9 +21,11 @@
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 
 	attachable_allowed = list( //give it some flexibility.
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/extinguisher)
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/flamer_nozzle
+	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
 
@@ -32,9 +34,20 @@
 	. = ..()
 	update_icon()
 
-
 /obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+
+/obj/item/weapon/gun/flamer/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 8
+	return 0
+
+/obj/item/weapon/gun/flamer/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
@@ -65,15 +78,14 @@
 	icon_state = new_icon_state
 
 	if(current_mag && current_mag.reagents)
-
 		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
 		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
-
 		overlays += I
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
+		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
-		I.pixel_x += 3
+		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
 /obj/item/weapon/gun/flamer/able_to_fire(mob/user)
@@ -91,8 +103,10 @@
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
+
 	if(!able_to_fire(user))
 		return
+
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc)
@@ -108,27 +122,16 @@
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
 			active_attachable.fire_attachment(target, src, user) //Fire it.
-		return
-
-	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			return
-		if(active_attachable.current_rounds <= 0)
-			click_empty(user) //If it's empty, let them know.
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-			active_attachable.activate_attachment(src, null, TRUE)
-		else
-			active_attachable.fire_attachment(target, src, user) //Fire it.
 			active_attachable.last_fired = world.time
 		return
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
+		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
 		return
 
 	if(!current_mag)
 		return
+
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
@@ -244,10 +247,15 @@
 	indestructible = 1
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
+
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher
+	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
-
 
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
@@ -274,8 +282,20 @@
 			return TRUE
 	return ..()
 
+/obj/item/weapon/gun/flamer/M240T/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 7
+	return 0
+
+/obj/item/weapon/gun/flamer/M240T/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
+
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if (!link_fuelpack(user) && !current_mag)

@@ -441,11 +441,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(A.attach_icon)
 			item_icon = A.attach_icon
 		I = image(A.icon,src, item_icon)
-		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x
-		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y
+		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x + x_offset_by_attachment_type(A.type)
+		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y + y_offset_by_attachment_type(A.type)
 		attachable_overlays[slot] = I
 		overlays += I
 	else attachable_overlays[slot] = null
+
+/obj/item/weapon/gun/proc/x_offset_by_attachment_type(var/attachment_type)
+	return 0
+
+/obj/item/weapon/gun/proc/y_offset_by_attachment_type(var/attachment_type)
+	return 0
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
 	var/image/I = attachable_overlays["mag"]

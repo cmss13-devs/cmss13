@@ -256,7 +256,9 @@
 							if(M.ear_deaf)
 								heard -= M
 								continue
-							if(!(M?.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+						var/toggles_langchat = M.client.prefs.toggles_langchat
+						if(toggles_langchat)
+							if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
 								heard.Remove(M)
 								continue
 						langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
@@ -313,7 +315,9 @@
 						if(M.ear_deaf)
 							heard -= M
 							continue
-						if(!(M?.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+					var/toggles_langchat = M.client.prefs.toggles_langchat
+					if(toggles_langchat)
+						if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
 							heard.Remove(M)
 							continue
 					langchat_speech(pain_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
@@ -368,9 +372,11 @@
 						if(M.ear_deaf)
 							heard -= M
 							continue
-						if(!(M?.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
-							heard.Remove(M)
-							continue
+						var/toggles_langchat = M.client.prefs.toggles_langchat
+						if(toggles_langchat)
+							if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
+								heard.Remove(M)
+								continue
 					langchat_speech(scream_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 				else if(isYautja(src))
 					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)

@@ -3,7 +3,7 @@
 	name = "USCM Provost Inspection"
 	mob_max = 5
 	mob_min = 5
-	objectives = "Inspect the USS Almayer and ensure Marine Law is being upheld by the Military Police team."
+	objectives = "Inspect the [MAIN_SHIP_NAME] and ensure Marine Law is being upheld by the Military Police team."
 	probability = 0
 
 
@@ -44,7 +44,7 @@
 	name = "USCM Provost Enforcers"
 	mob_max = 5
 	mob_min = 5
-	objectives = "Deploy to the USS Almayer and enforce Marine Law."
+	objectives = "Deploy to the [MAIN_SHIP_NAME] and enforce Marine Law."
 	probability = 0
 
 

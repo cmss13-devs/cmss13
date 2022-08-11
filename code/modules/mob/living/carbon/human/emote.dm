@@ -312,7 +312,7 @@
 				else if(Primate)
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				else if(Pred)
-					playsound(loc, 'sound/voice/pred_pain1.ogg', 50)
+					playsound(loc, "pred_pain", 50)
 				if(player_caused)
 					start_audio_emote_cooldown()
 				track_scream(job)
@@ -361,7 +361,7 @@
 							heard -= M
 					langchat_speech(scream_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 				else if(isYautja(src))
-					playsound(loc, 'sound/voice/pred_scream1.ogg', 50)
+					playsound(loc, "pred_pain", 50)
 				else if(has_species(src,"Monkey"))
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				if(player_caused)
@@ -634,7 +634,7 @@
 			if(Pred && src.loc)
 				message = "<B>[src] roars!</b>"
 				m_type = 1
-				playsound(src.loc, 'sound/voice/pred_roar3.ogg', 50,1)
+				playsound(src.loc, 'sound/voice/pred_roar3.ogg', 50)
 		if("turnaround")
 			if(Pred && src.loc)
 				m_type = 1

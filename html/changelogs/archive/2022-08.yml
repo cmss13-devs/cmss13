@@ -221,3 +221,8 @@
   - soundadd: readded old Almayer/Sulaco ambient noise.
   Shad0vvs:
   - bugfix: Fixed possible null runtime in prefrences_savefile.
+  stanalbatross:
+  - bugfix: you can no longer build windows on the same tile as an m56d, this will
+      prevent abuse via firing "through" a window on the same tile as you
+  - bugfix: m2cs can no longer be built on top of each other
+  - qol: you can now rotate windows with alt-click

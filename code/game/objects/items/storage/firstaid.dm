@@ -82,6 +82,21 @@
 /obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/robust
+	icon_state = "firstaid"
+
+/obj/item/storage/firstaid/robust/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/firstaid/robust/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/toxin
 	name = "toxin first-aid kit"
 	desc = "Used to treat when you have a high amount of toxins in your body."

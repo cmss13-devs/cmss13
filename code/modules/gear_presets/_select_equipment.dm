@@ -772,31 +772,20 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
-	var/random_gear = rand(0,5)
+	var/random_gear = rand(0,4)
 	switch(random_gear)
 		if(0)
-			if(H.disabilities & NEARSIGHTED)
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
-			else
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 		if(1)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/robust(H), WEAR_IN_BACK)
 		if(2)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(H), WEAR_WAIST)
-			if(H.disabilities & NEARSIGHTED)
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
-			else
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/robust(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 		if(3)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-		if(4)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-			if(H.disabilities & NEARSIGHTED)
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
-			else
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-		if(5)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(H.back), WEAR_IN_BACK)
+			
+			
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(var/mob/living/carbon/human/H) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.
 	var/random_gear = rand(0,2)

@@ -220,6 +220,7 @@
 	if(fire)
 		qdel(fire)
 
+	muzzle_flash(Get_Angle(get_turf(user), target), user)
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)

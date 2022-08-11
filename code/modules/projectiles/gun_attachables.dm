@@ -219,18 +219,18 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/handle_attachment_description()
 	switch(slot)
 		if("rail")
-			return "It has [icon2html(src)] [name] mounted on the top.<br>"
+			return "It has a [icon2html(src)] [name] mounted on the top.<br>"
 		if("muzzle")
-			return "It has [icon2html(src)] [name] mounted on the front.<br>"
+			return "It has a [icon2html(src)] [name] mounted on the front.<br>"
 		if("stock")
-			return "It has [icon2html(src)] [name] for a stock.<br>"
+			return "It has a [icon2html(src)] [name] for a stock.<br>"
 		if("under")
-			var/output = "It has [icon2html(src)] [name]"
+			var/output = "It has a [icon2html(src)] [name]"
 			if(flags_attach_features & ATTACH_WEAPON)
 				output += " ([current_rounds]/[max_rounds])"
 			output += " mounted underneath.<br>"
 			return output
-	return "It has [icon2html(src)] [name] attached.<br>"
+	return "It has a [icon2html(src)] [name] attached.<br>"
 
 
 /////////// Muzzle Attachments /////////////////////////////////
@@ -1289,7 +1289,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/rifle/collapsible/New()
 	..()
-	
+
 	//rifle stock starts collapsed so we zero out everything
 	accuracy_mod = 0
 	recoil_mod = 0
@@ -2022,7 +2022,7 @@ Defined in conflicts.dm of the #defines folder.
 	to_chat(user, SPAN_WARNING("It's empty."))
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
-	return "It has [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
+	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()
@@ -2077,7 +2077,7 @@ Defined in conflicts.dm of the #defines folder.
 	)
 
 /obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(var/slot)
-	return "It has [icon2html(src)] [name] mounted beneath the barrel.<br>"
+	return "It has a [icon2html(src)] [name] mounted beneath the barrel.<br>"
 
 /obj/item/attachable/attached_gun/flamer_nozzle/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	. = ..()

@@ -27,13 +27,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		listed_rcpt_ranks[rcpt_name] = t.fields["rank"]
 		possible_recipients += rcpt_name
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
-	if(!chosen_recipient || chosen_recipient == "Cancel") return
+	if(!chosen_recipient || chosen_recipient == "Cancel") return FALSE
 	var/recipient_rank = listed_rcpt_ranks[chosen_recipient]
 	var/posthumous = TRUE
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism"))
-	if(!medal_type) return
+	if(!medal_type) return FALSE
 	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
-	if(!citation) return
+	if(!citation) return FALSE
 	var/recipient_ckey
 	var/recipient_mob
 	var/foundOther = !attributed
@@ -59,8 +59,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
 	if(attributed)
-		RA.giver_rank += listed_rcpt_ranks[usr.name] // Currently not used in marine award message
-		RA.giver_name += usr.name // Currently not used in marine award message and may need exceptions for admin granting
+		RA.giver_rank += listed_rcpt_ranks[usr.real_name] // Currently not used in marine award message
+		RA.giver_name += usr.real_name // Currently not used in marine award message and may need exceptions for admin granting
 	else
 		RA.giver_rank += null
 		RA.giver_name += null
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			if("bronze heart medal") 			MD = new /obj/item/clothing/accessory/medal/bronze/heart(medal_location)
 			if("medal of valor") 				MD = new /obj/item/clothing/accessory/medal/silver/valor(medal_location)
 			if("medal of exceptional heroism")	MD = new /obj/item/clothing/accessory/medal/gold/heroism(medal_location)
-			else return
+			else return FALSE
 		MD.recipient_name = chosen_recipient
 		MD.medal_citation = citation
 		MD.recipient_rank = recipient_rank
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 
 /proc/give_jelly_award(var/datum/hive_status/hive, var/attributed = TRUE)
 	if(!hive)
-		return
+		return FALSE
 	var/list/possible_recipients = list("Cancel")
 	var/list/listed_rcpt_castes = list()
 	// TODO: Also filter out facehuggers
@@ -124,13 +124,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		listed_rcpt_castes[rcpt_name] = t.caste_type
 		possible_recipients += rcpt_name
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients)
-	if(!chosen_recipient || chosen_recipient == "Cancel") return
+	if(!chosen_recipient || chosen_recipient == "Cancel") return FALSE
 	var/recipient_caste = listed_rcpt_castes[chosen_recipient]
 	var/posthumous = TRUE
 	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of slaughter", "royal jelly of resilience", "royal jelly of sabotage"))
-	if(!medal_type) return
+	if(!medal_type) return FALSE
 	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
-	if(!citation) return
+	if(!citation) return FALSE
 	var/recipient_ckey
 	var/recipient_mob
 	var/foundOther = !attributed
@@ -168,5 +168,78 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			P.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
 	
 	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
+
+	return TRUE
+
+/proc/remove_award(var/recipient_name, var/is_marine_medal, var/index = 1)
+	if(!check_rights(R_MOD))
+		return FALSE
+
+	// Because the DB is slow, give an early message so there aren't two jumping on it
+	message_staff("[key_name_admin(usr)] is deleting one of [recipient_name]'s medals...")
+	
+	// Find the award in the glob list
+	var/datum/recipient_awards/RA
+	if(is_marine_medal)
+		RA = GLOB.medal_awards[recipient_name]
+	else
+		RA = GLOB.jelly_awards[recipient_name]
+	if(!RA)
+		to_chat(usr, "Error: Could not find the [is_marine_medal ? "marine" : "xeno"] awards for '[recipient_name]'!")
+		return FALSE
+
+	if(index < 1 || index > RA.medal_names.len)
+		to_chat(usr, "Error: Index [index] is out of bounds!")
+		return FALSE
+
+	// Get mob references since we're only working with name
+	var/mob/recipient_mob
+	var/mob/giver_mob
+	var/giver_name = RA.giver_name[index]
+	var/foundOther = isnull(giver_name)
+	for(var/mob/M in GLOB.mob_list)
+		if(M.real_name == recipient_name) // Both marine and xeno recipients use real_name currently
+			recipient_mob = M
+			if(foundOther)
+				break
+			foundOther = TRUE
+		if(is_marine_medal)
+			if(M.real_name == giver_name)
+				giver_mob = M
+				if(foundOther)
+					break
+				foundOther = TRUE
+		else
+			if(M.key == giver_name)
+				giver_mob = M
+				if(foundOther)
+					break
+				foundOther = TRUE
+
+	// Either entirely delete the award from the list, or just remove the entry if there are multiple
+	var/medal_type = RA.medal_names[index]
+	var/citation = RA.medal_citations[index]
+	if(RA.medal_names.len == 1)
+		if(is_marine_medal)
+			GLOB.medal_awards.Remove(recipient_name)
+		else
+			GLOB.jelly_awards.Remove(recipient_name)
+	else
+		RA.medal_names.Cut(index, index + 1)
+		RA.medal_citations.Cut(index, index + 1)
+		RA.posthumous.Cut(index, index + 1)
+		RA.giver_name.Cut(index, index + 1)
+		RA.giver_rank.Cut(index, index + 1)
+
+	// Remove giver's stat
+	if(giver_mob)
+		giver_mob.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE, -1)
+
+	// Remove stats for recipient (this has a weakref to the mob, but theres a possibility of recipient.statistic_exempt)
+	var/datum/entity/player_entity/P = setup_player_entity(recipient_mob.ckey)
+	if(P)
+		P.untrack_medal_earned(medal_type, recipient_mob, citation)
+
+	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s [medal_type] for for: \'[citation]\'.")
 
 	return TRUE

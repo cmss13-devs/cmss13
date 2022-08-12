@@ -251,3 +251,6 @@
       blow up, overlay will be slightly different to indicate that.
   - imageadd: New sprites include burning and burning, going to explode overlays as
       well as M94 flare box markings overlay.
+  johnravioliUSA:
+  - bugfix: The M276 Pattern Ammo Load Rig is now under the belts section of the Surplus
+      Uniform Vendor inside the squad prep room.

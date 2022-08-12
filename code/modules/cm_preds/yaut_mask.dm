@@ -182,7 +182,7 @@
 	)
 	item_state_slots = list(WEAR_FACE = "thrall_mask")
 	thrall = TRUE
-	mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN)
+	mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 
 /obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
 	set category = "Thrall.Utility"
@@ -203,6 +203,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	anti_hug = 100
+	mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
 	set category = "Yautja.Utility"

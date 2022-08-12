@@ -234,3 +234,20 @@
   - qol: added a setting to turn off seeing abovehead emotes
   - qol: added abovehead chat settings to the setup settings section
   - bugfix: abovehead emotes no longer inherit size and boldness from their user
+2022-08-12:
+  Jeser:
+  - qol: Supply and logistics workers, rejoice! Ammo boxes became stackable. Regular
+      ammo boxes can be stacked up to 2 per tile, miscellaneous supply boxes (flares
+      and MREs, currently) up to 4 per tile. No stacking for nail gun ammo, because
+      of a snowflake sprite.
+  - qol: Added flare box overlay to make it easier to separate MRE from flare boxes.
+  - balance: Reworked how explosion happens when flaming ammo boxes.
+  - code_imp: Explosion level scales with amount of rounds inside. Boxes will not
+      explode until amount of rounds inside won't reach a certain threshold. Fully
+      filled boxes explode harder now.
+  - code_imp: After being flamed, boxes now spend some time being on fire before they
+      will be deleted or explode, during which they receive a new on fire overlay.
+      This time is also based on amount of ammo in the box. If the box is going to
+      blow up, overlay will be slightly different to indicate that.
+  - imageadd: New sprites include burning and burning, going to explode overlays as
+      well as M94 flare box markings overlay.

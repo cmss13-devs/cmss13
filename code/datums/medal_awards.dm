@@ -123,11 +123,11 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		var/rcpt_name = t.name
 		listed_rcpt_castes[rcpt_name] = t.caste_type
 		possible_recipients += rcpt_name
-	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients)
+	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
 	if(!chosen_recipient || chosen_recipient == "Cancel") return FALSE
 	var/recipient_caste = listed_rcpt_castes[chosen_recipient]
 	var/posthumous = TRUE
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of slaughter", "royal jelly of resilience", "royal jelly of sabotage"))
+	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list("royal jelly of slaughter", "royal jelly of resilience", "royal jelly of sabotage"), theme="hive_status")
 	if(!medal_type) return FALSE
 	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return FALSE

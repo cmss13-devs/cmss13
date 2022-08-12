@@ -78,8 +78,8 @@
 	if(isXeno(M))
 		return
 	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		if (src.occupant)
-			to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
+		if(occupant)
+			to_chat(usr, SPAN_NOTICE("<B>The scanner is already occupied!</B>"))
 			return
 		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
 		M.forceMove(src)

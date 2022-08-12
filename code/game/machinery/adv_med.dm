@@ -65,10 +65,10 @@
 	if (usr.stat || !(ishuman(usr)))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, SPAN_NOTICE(" <B>Subject cannot have abiotic items on.</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
 		return
 	go_in_bodyscanner(usr)
 	add_fingerprint(usr)
@@ -79,7 +79,7 @@
 		return
 	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if (src.occupant)
-			to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))
+			to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
 			return
 		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
 		M.forceMove(src)

@@ -57,8 +57,9 @@
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * theme - The ui theme to use for the TGUI window.
  */
-/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS, theme)
+/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS, theme = null)
 	if (!user)
 		user = usr
 	if(!length(buttons))

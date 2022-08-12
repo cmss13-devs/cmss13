@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 	return GLOB.admin_state
 
 /datum/medals_panel_tgui/ui_data(mob/user)
-	. = list()
+	var/list/data = list()
 	var/list/uscm_awards = list()
 	var/list/xeno_awards = list()
 	
@@ -31,8 +31,9 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 		for(var/i in 1 to RA.medal_names.len) // We're assuming everything is same length
 			xeno_awards[recipient_name] += "[RA.medal_names[i]]: \'[RA.medal_citations[i]]\' by [RA.giver_rank[i]] [RA.giver_name[i]]"
 	
-	.["uscm_awards"] = uscm_awards
-	.["xeno_awards"] = xeno_awards
+	data["uscm_awards"] = uscm_awards
+	data["xeno_awards"] = xeno_awards
+	return data
 
 /datum/medals_panel_tgui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -41,17 +42,21 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 
 	switch(action)
 		if("refresh")
-			ui = SStgui.try_update_ui(usr, src, ui)
+			. = TRUE
 
-		if("add medal")
+		if("add_medal")
 			usr.client.award_medal()
+			. = TRUE
 
-		if("add jelly")
+		if("add_jelly")
 			usr.client.award_jelly() // Done this way to re-use some hive-selection code in event_tab.dm
+			. = TRUE
 
-		if("delete medal")
+		if("delete_medal")
 			remove_award(params["recipient"], TRUE, params["index"] + 1) // Why is byond not 0 indexed?
+			. = TRUE
 		
-		if("delete jelly")
+		if("delete_jelly")
 			remove_award(params["recipient"], FALSE, params["index"] + 1) // Why is byond not 0 indexed?	
+			. = TRUE
 	

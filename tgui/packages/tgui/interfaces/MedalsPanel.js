@@ -4,13 +4,13 @@ import { Window } from '../layouts';
 
 const PAGES = [
   {
-    title: 'US Colonial Marines',
+    title: 'USCM',
     component: () => USCMPage,
     color: "blue",
     icon: "medal",
   },
   {
-    title: 'Xenomorph Hive',
+    title: 'Hive',
     component: () => HivePage,
     color: "purple",
     icon: "star",
@@ -75,7 +75,7 @@ const USCMPage = (props, context) => {
           align="center"
           width={8.5}
           ml={0.5}
-          onClick={() => act("add medal")} />
+          onClick={() => act("add_medal")} />
       </Fragment>
     )}>
       <Flex direction="column">
@@ -97,7 +97,7 @@ const USCMPage = (props, context) => {
                         width={6.5}
                         textAlign="center"
                         verticalAlignContent="bottom"
-                        onClick={() => act("delete medal", {
+                        onClick={() => act("delete_medal", {
                           recipient: recipient_name,
                           index: medalIndex,
                         })}
@@ -131,7 +131,7 @@ const HivePage = (props, context) => {
           align="center"
           width={8.5}
           ml={0.5}
-          onClick={() => act("add jelly")} />
+          onClick={() => act("add_jelly")} />
       </Fragment>
     )}>
       <Flex direction="column">
@@ -153,7 +153,7 @@ const HivePage = (props, context) => {
                         width={6.5}
                         textAlign="center"
                         verticalAlignContent="bottom"
-                        onClick={() => act("delete jelly", {
+                        onClick={() => act("delete_jelly", {
                           recipient: recipient_name,
                           index: medalIndex,
                         })}

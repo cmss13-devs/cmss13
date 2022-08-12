@@ -240,6 +240,6 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(P)
 		P.untrack_medal_earned(medal_type, recipient_mob, citation)
 
-	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s [medal_type] for for: \'[citation]\'.")
+	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s [medal_type] for: \'[citation]\'.")
 
 	return TRUE

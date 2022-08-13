@@ -272,7 +272,7 @@
 		execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 		execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
 		execution_target.death(create_cause_data("execution", user)) //...make certain they're properly dead...
-
+		shake_camera(execution_target, 3, 4)
 		execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
 		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
@@ -287,7 +287,6 @@
 
 		if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 			execution_target.gib()
-		return TRUE
 	return ..()
 
 /*

@@ -341,7 +341,6 @@
 
 // Warrior strain flags
 #define WARRIOR_NORMAL		"Normal"
-#define WARRIOR_BOXER		"Boxer"
 
 // Crusher strain flags
 #define CRUSHER_NORMAL		"Normal"

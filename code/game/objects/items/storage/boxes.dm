@@ -522,7 +522,7 @@
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine/bounding)
 
-/obj/item/storage/box/explosive_mines/fill_preset_inventory()
+/obj/item/storage/box/explosive_mines/bounding/fill_preset_inventory()
 	for(var/i in 1 to 4)
 		new /obj/item/explosive/mine/bounding(src)
 

@@ -255,6 +255,8 @@
   - bugfix: The M276 Pattern Ammo Load Rig is now under the belts section of the Surplus
       Uniform Vendor inside the squad prep room.
 2022-08-13:
+  ChainsawMullet:
+  - rscdel: Warrior's Boxer strain has been removed.
   Shad0vvs:
   - bugfix: Fixed the pred mask to have the proper huds attached.
   stanalbatross:

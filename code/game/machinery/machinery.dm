@@ -139,7 +139,7 @@ Class Procs:
 
 /obj/structure/machinery/examine(mob/user)
 	..()
-	if (!stat)
+	if(!stat)
 		return
 
 	to_chat(user, "It does not appear to be working.")
@@ -288,3 +288,13 @@ Class Procs:
 
 /obj/structure/machinery/proc/get_repair_move_text(var/include_name = TRUE)
 	return
+
+// UI related procs \\
+
+/obj/structure/machinery/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED

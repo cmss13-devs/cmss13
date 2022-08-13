@@ -221,6 +221,16 @@
 	containername = "\improper explosive mine boxes crate (WARNING)"
 	group = "Weapons"
 
+/datum/supply_packs/explosives_mines/bounding
+	name = "bounding mines crate (x8)"
+	contains = list(
+					/obj/item/storage/box/explosive_mines/bounding,
+					/obj/item/storage/box/explosive_mines/bounding
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive mine boxes crate (WARNING)"
+	group = "Weapons"
 
 /datum/supply_packs/explosives_m15
 	name = "M15 fragmentation grenades crate (x6)"

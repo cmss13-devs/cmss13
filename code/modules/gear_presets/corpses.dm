@@ -794,7 +794,7 @@
 // PMC
 
 /datum/equipment_preset/corpse/pmc
-	name = "Corpse - PMC"
+	name = "Corpse - Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
 	faction = FACTION_PMC

@@ -138,10 +138,10 @@
 		vis_contents.Cut()
 
 		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-			if(isobj(A))
-				var/obj/O = A
-				if(O.is_objective)
-					O.forceMove(get_step(loc, pick(alldirs)))
+			if(isitem(A))
+				var/obj/item/item = A
+				if(item.is_objective)
+					item.forceMove(get_step(loc, pick(alldirs)))
 
 		QDEL_NULL(melting_body)
 	else

@@ -341,7 +341,7 @@
 
 /obj/effect/alien/weeds/node/gardener
 	spread_on_semiweedable = TRUE
-	block_structures = BLOCK_ALL_STRUCTURES
+	block_structures = BLOCK_SPECIAL_STRUCTURES
 	fruit_growth_multiplier = 0.8
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()

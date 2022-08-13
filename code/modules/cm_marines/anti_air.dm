@@ -66,22 +66,23 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(!allowed(user))
 		return UI_CLOSE
 
-/obj/structure/machinery/computer/aa_console/ui_data(mob/user)
+/obj/structure/machinery/computer/aa_console/ui_static_data(mob/user)
 	var/list/data = list()
 
 	data["sections"] = list()
-	data["disabled"] = almayer_aa_cannon.is_disabled
-	data["protecting_section"] = almayer_aa_cannon.protecting_section
 
-	var/protecting = FALSE
 	for(var/section in almayer_ship_sections)
-		if(section == almayer_aa_cannon.protecting_section)
-			protecting = TRUE
 		data["sections"] += list(list(
 			"section_id" = section,
-			"protecting" = protecting,
 		))
-		protecting = FALSE
+
+	return data
+
+/obj/structure/machinery/computer/aa_console/ui_data(mob/user)
+	var/list/data = list()
+
+	data["disabled"] = almayer_aa_cannon.is_disabled
+	data["protecting_section"] = almayer_aa_cannon.protecting_section
 
 	return data
 

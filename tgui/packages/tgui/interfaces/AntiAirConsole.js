@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Stack, Section, Tabs, Button, NoticeBox, Box } from '../components';
+import { Stack, Section, Tabs, Button, NoticeBox, Box, Dimmer, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const AntiAirConsole = (props, context) => {
@@ -58,7 +58,7 @@ const GeneralPanel = (props, context) => {
                     onFocus={() => document.activeElement
                       ? document.activeElement.blur() : false}
                   >
-                    {!!val.protecting && (
+                    {!!(val.section_id === data.protecting_section) && (
                       <Box color="good">
                         {val.section_id}
                       </Box>
@@ -93,6 +93,12 @@ const GeneralPanel = (props, context) => {
           )}
         </Stack.Item>
       </Stack>
+      {!!data.disabled && (
+        <Dimmer fontSize="32px">
+          <Icon name="exclamation-triangle" />
+          {' AA disabled!'}
+        </Dimmer>
+      )}
     </Section>
   );
 };

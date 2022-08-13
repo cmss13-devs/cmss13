@@ -44,15 +44,21 @@
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
 
+/obj/item/device/cotablet/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["faction"] = announcement_faction
+	data["cooldown_message"] = cooldown_between_messages
+
+	return data
 
 /obj/item/device/cotablet/ui_data(mob/user)
 	var/list/data = list()
 
-	data["faction"] = announcement_faction
 	data["alert_level"] = security_level
 	data["evac_status"] = EvacuationAuthority.evac_status
-	data["message_time_left"] = COOLDOWN_TIMELEFT(src, announcement_cooldown)
-	data["cooldown_message"] = cooldown_between_messages
+	data["endtime"] = announcement_cooldown
+	data["worldtime"] = world.time
 
 	return data
 

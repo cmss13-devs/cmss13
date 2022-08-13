@@ -7,12 +7,10 @@ export const CommandTablet = (_props, context) => {
 
   const evacstatus = data.evac_status;
 
-  const timeLeft = data.message_time_left;
-
   const AlertLevel = data.alert_level;
 
   const canAnnounce = (
-    timeLeft === 0);
+    data.endtime < data.worldtime);
 
   const canEvac = (
     evacstatus === 0,
@@ -28,7 +26,8 @@ export const CommandTablet = (_props, context) => {
             <Flex.Item>
               {!canAnnounce && (
                 <Button color="bad" warning={1} fluid={1} icon="bullhorn">
-                  Announcement on cooldown : {Math.ceil(timeLeft / 10)} secs
+                  Announcement on cooldown
+                  : {Math.ceil((data.endtime - data.worldtime)/10)} secs
                 </Button>
               )}
               {!!canAnnounce && (

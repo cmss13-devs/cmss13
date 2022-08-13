@@ -60,7 +60,7 @@
 
 /mob/hologram/queen
 	name = "Queen Eye"
-	action_icon_state = "queen_eye"
+	action_icon_state = "queen_exit"
 
 	color = "#a800a8"
 
@@ -747,8 +747,8 @@
 		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/onclick/queen_tacmap,
+		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/activable/info_marker/queen
 	)
 

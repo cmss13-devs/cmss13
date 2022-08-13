@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 	name = "[initial(name)] ([M.name])"
 
-	leave_button = new(leave_button, action_icon_state)
+	leave_button = new(null, action_icon_state)
 	leave_button.linked_hologram = src
 	leave_button.give_to(M)
 
@@ -116,7 +116,3 @@ GLOBAL_LIST_EMPTY(hologram_list)
 /mob/hologram/techtree/proc/disallow_tree_entering(var/mob/M, var/datum/techtree/T, var/force)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_TREE_ENTRY
-
-/datum/action/leave_hologram/queen
-	icon_file = 'icons/mob/hud/actions_xeno.dmi'
-	action_icon_state = "queen_exit"

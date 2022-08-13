@@ -500,3 +500,9 @@
 	signal.linked_cam = new(loc, name)
 	cas_groups[FACTION_MARINE].add_signal(signal)
 	anchored = TRUE
+
+/obj/item/device/flashlight/shoulder
+	name = "TNR shoulder lamp"
+	desc = "The TNR Shoulder Lamp, also known as the Personal Light Unit or simply the flashlight, is a high-powered torch issued to combat personnel in the United States Colonial Marine Corps. It is typically attached to the marine's M3 Pattern Personal Armor, although it could also be used as a handheld unit."
+	icon_state = "tnr_shoulder"
+	raillight_compatible = FALSE

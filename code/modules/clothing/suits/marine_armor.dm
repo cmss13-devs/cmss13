@@ -113,8 +113,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/brightness_on = 6 //Average attachable pocket light
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
-	var/armor_overlays[]
-	actions_types = list(/datum/action/item_action/toggle)
+	var/list/armor_overlays
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
 	w_class = SIZE_HUGE
@@ -128,6 +127,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/Initialize()
+	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
+		LAZYDISTINCTADD(actions_types, /datum/action/item_action/toggle)
+		verbs += /obj/item/clothing/suit/storage/marine/proc/remove_armor_light
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -140,7 +142,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
-	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -151,17 +152,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
-	var/image/I
-	armor_overlays["lamp"] = null
+	LAZYCLEARLIST(armor_overlays)
+	overlays.Cut()
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
-		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")
-		else
-			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-off")
-		armor_overlays["lamp"] = I
-		overlays += I
-	else armor_overlays["lamp"] = null
-	if(user) user.update_inv_wear_suit()
+		var/image/lamp_overlay = image('icons/obj/items/clothing/cm_suits.dmi', src, HAS_FLAG(flags_marine_armor, ARMOR_LAMP_ON) ? "lamp-on" : "lamp-off")
+		LAZYSET(armor_overlays, "lamp", lamp_overlay)
+		overlays += lamp_overlay
+	if(user)
+		user.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)
@@ -174,18 +172,45 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		turn_off_light(user)
 	..()
 
+/obj/item/clothing/suit/storage/marine/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/device/flashlight/shoulder))
+		if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
+			to_chat(user, SPAN_WARNING("\The [src] already has a TNR shoulder lamp attached."))
+			return
+		if(!(initial(flags_marine_armor) & ARMOR_LAMP_OVERLAY))
+			to_chat(user, SPAN_WARNING("\The [src] doesn't have an attachment point for a TNR shoulder lamp."))
+			return
+		var/obj/item/device/flashlight/shoulder/shoulder_light = W
+		flags_marine_armor |= ARMOR_LAMP_OVERLAY
+		var/datum/action/item_action/toggle/flash_toggle = new(src)
+		LAZYADD(actions, flash_toggle)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.wear_suit == src)
+				flash_toggle.give_to(usr)
+		verbs += /obj/item/clothing/suit/storage/marine/proc/remove_armor_light
+		if(shoulder_light.on)
+			turn_on_light(user)
+		to_chat(user, SPAN_WARNING("You attach \the [shoulder_light] to \the [src]."))
+		update_icon(user)
+		qdel(shoulder_light)
+		return
+	return ..()
 
 /obj/item/clothing/suit/storage/marine/proc/is_light_on()
 	return flags_marine_armor & ARMOR_LAMP_ON
 
+/obj/item/clothing/suit/storage/marine/proc/turn_on_light(mob/wearer)
+	if(!is_light_on())
+		toggle_armor_light(wearer)
+		return TRUE
+	return FALSE
+
 /obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
 	if(is_light_on())
-		if(wearer)
-			wearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-		toggle_armor_light() //turn the light off
-		return 1
-	return 0
+		toggle_armor_light(wearer)
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	if(ismob(src.loc))
@@ -241,6 +266,28 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		if(isSynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
 			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
+
+/obj/item/clothing/suit/storage/marine/proc/remove_armor_light()
+	set name = "Remove Suit Light"
+	set category = "Object"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	var/obj/item/device/flashlight/shoulder/shoulder_light = new /obj/item/device/flashlight/shoulder(usr.loc)
+	usr.put_in_hands(shoulder_light)
+	shoulder_light.on = is_light_on()
+	shoulder_light.update_brightness(usr)
+	turn_off_light(usr)
+	flags_marine_armor &= ~ARMOR_LAMP_OVERLAY
+	var/datum/action/item_action/toggle/flash_toggle = locate() in actions
+	flash_toggle.remove_from(usr)
+	actions -= flash_toggle
+	qdel(flash_toggle)
+	verbs -= /obj/item/clothing/suit/storage/marine/proc/remove_armor_light
+	update_icon(usr)
+	to_chat(usr, SPAN_WARNING("You take off \the [src]'s TNR shoulder lamp."))
 
 /obj/item/clothing/suit/storage/marine/padded
 	name = "M3 pattern padded marine armor"
@@ -1386,7 +1433,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state = "van_bandolier_jacket"
 	blood_overlay_type = "coat"
 	flags_marine_armor = NO_FLAGS //No shoulder light.
-	actions_types = list()
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	storage_slots = 2
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT

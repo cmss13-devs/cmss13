@@ -521,7 +521,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 						overlays_standing[SUIT_SQUAD_LAYER] = J
 						apply_overlay(SUIT_SQUAD_LAYER)
 
-			if(marine_armor.armor_overlays.len)
+			if(length(marine_armor.armor_overlays))
 				var/image/K
 				var/image/IMG
 				for(var/i in marine_armor.armor_overlays)

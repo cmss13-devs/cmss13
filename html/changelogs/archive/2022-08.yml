@@ -254,3 +254,9 @@
   johnravioliUSA:
   - bugfix: The M276 Pattern Ammo Load Rig is now under the belts section of the Surplus
       Uniform Vendor inside the squad prep room.
+2022-08-13:
+  stanalbatross:
+  - ui: cryopods now use tgui
+  - rscadd: cryopods now have a toggleable auto-eject function. They will auto-eject
+      dead and fully healed people
+  - rscadd: ARES will now announce over the radio when cryopods auto-eject someone

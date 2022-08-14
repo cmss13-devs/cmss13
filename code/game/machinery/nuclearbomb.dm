@@ -75,7 +75,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
-		user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
+		user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
@@ -87,7 +87,7 @@ var/bomb_set = FALSE
 		return
 
 	if(isYautja(user))
-		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave hunting grounds before it detonates."))
+		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
 	user.set_interaction(src)
 	if(deployable)
@@ -97,7 +97,7 @@ var/bomb_set = FALSE
 
 		if (isXenoQueen(user))
 			if(timing && bomb_set)
-				user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
+				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return

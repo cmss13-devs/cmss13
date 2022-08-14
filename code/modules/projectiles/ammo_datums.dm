@@ -241,7 +241,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if((!flags_ammo_behavior & AMMO_HIGHIMPACT))
+	if(!(flags_ammo_behavior & AMMO_HIGHIMPACT))
 		return . = ..()
 
 	if(!user)

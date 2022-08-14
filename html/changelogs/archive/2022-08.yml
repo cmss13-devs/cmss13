@@ -269,3 +269,7 @@
   - ui: overhauled the command tablet to use tgui
   - ui: area power controllers, more commonly known as APCs, now use TGUI.
   - ui: SMESes also now use TGUI
+  - ui: changed the research door control UI from HTML to TGUI
+  - ui: changed the filtration console UI from HTML to TGUI
+  - ui: changed the binoculars UI from HTML to TGUI
+  - ui: changed the AA cannon UI from HTML to TGUI

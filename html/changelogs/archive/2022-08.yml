@@ -293,3 +293,4 @@
   - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"
   - rscadd: shooting bottles will now cause them to break
   - rscadd: gave glasses the same shattering mechanics as bottles
+  - bugfix: BEs will now actually fire bullets again

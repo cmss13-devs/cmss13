@@ -127,6 +127,12 @@
 	if(ismob(loc))
 		dropped(loc)
 
+	for(var/atom/movable/A in contents_recursive()) // Get rid of any intel objects so we don't delete them
+		if(isitem(A))
+			var/obj/item/item = A
+			if(item.is_objective)
+				item.forceMove(get_step(loc, pick(alldirs)))
+
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)

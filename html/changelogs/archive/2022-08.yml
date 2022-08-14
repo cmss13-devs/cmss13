@@ -270,6 +270,11 @@
       it completely if it happens
   - bugfix: Corrected some weird spelling of human in the scalping code
   - soundadd: added three new pain screams for preds
+  SpartanBobby:
+  - balance: VP78 Now costs 15 points in PFC vendor
+  - balance: VP78 Now has the lore accurate 18 magazine capacity instead of 14
+  - balance: VP78 Now has the lore-accurate pre-attached laser sight
+  - balance: VP78 Now has falloff 5 from falloff 7, one more than the MK2
   Tisx:
   - balance: Changed Multi-Purpose ammo count and bullets per burst to match Anti-Tank's.
   stanalbatross:

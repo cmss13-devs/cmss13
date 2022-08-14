@@ -1,5 +1,4 @@
 import { map } from 'common/collections';
-import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
 import { Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -8,7 +7,7 @@ export const HiveLeaders = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     queens,
-    leaders
+    leaders,
   } = data;
   return (
     <Window

@@ -265,6 +265,8 @@
       dead and fully healed people
   - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
 2022-08-14:
+  Tisx:
+  - balance: Changed Multi-Purpose ammo count and bullets per burst to match Anti-Tank's.
   stanalbatross:
   - ui: overhauled the command tablet to use tgui
   - ui: area power controllers, more commonly known as APCs, now use TGUI.

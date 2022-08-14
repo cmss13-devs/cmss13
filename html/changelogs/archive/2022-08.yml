@@ -265,6 +265,11 @@
       dead and fully healed people
   - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
 2022-08-14:
+  Joe Lampost:
+  - bugfix: Fixed the plasma caster being able to be deleted by explosions which breaks
+      it completely if it happens
+  - bugfix: Corrected some weird spelling of human in the scalping code
+  - soundadd: added three new pain screams for preds
   Tisx:
   - balance: Changed Multi-Purpose ammo count and bullets per burst to match Anti-Tank's.
   stanalbatross:

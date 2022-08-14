@@ -12,13 +12,26 @@
 	///This excludes all the juices and dairy in cartons that are also defined in this file.
 	var/isGlass = TRUE
 
+/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
+	. = ..()
+	if(isGlass)
+		smash()
+
 ///Audio/visual bottle breaking effects start here
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target, mob/living/user)
-	user.temp_drop_inv_item(src)
-	var/obj/item/weapon/melee/broken_bottle/B = new /obj/item/weapon/melee/broken_bottle(user.loc)
-	user.put_in_active_hand(B)
+	var/obj/item/weapon/melee/broken_bottle/B
+	if(user)
+		user.temp_drop_inv_item(src)
+		B = new /obj/item/weapon/melee/broken_bottle(user.loc)
+		user.put_in_active_hand(B)
+	else
+		B = new /obj/item/weapon/melee/broken_bottle(src.loc)
 	if(prob(33))
-		new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
+		if(target)
+			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
+		else
+			new/obj/item/shard(src.loc)
+
 	B.icon_state = icon_state
 
 	var/icon/I = new('icons/obj/items/drinks.dmi', icon_state)
@@ -27,7 +40,6 @@
 	B.icon = I
 
 	playsound(src, "shatter", 25, 1)
-	user.put_in_active_hand(B)
 	transfer_fingerprints_to(B)
 
 	qdel(src)
@@ -48,17 +60,21 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && istype(target, /mob/living/carbon/) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isXeno(target))
 		for(var/mob/O in viewers(user, null))
-			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
-			else O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
 		if(drowsy_threshold > 0)
 			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 	else //Regular attack text
 		for(var/mob/O in viewers(user, null))
-			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
-			else O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
 
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a bottle!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a bottle by [user.name] ([user.ckey])</font>")
@@ -66,7 +82,7 @@
 
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text(SPAN_NOTICE("<B>The contents of the [src] splashes all over [target]!</B>")), 1)
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
 		reagents.reaction(target, TOUCH)
 
 	smash(target, user)
@@ -77,7 +93,7 @@
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
 	if(!reagents || !reagents.reagent_list.len)
-		to_chat(user, SPAN_NOTICE("[src] is empty..."))
+		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))
 		return
 	var/alcohol_potency = 0
 	for(var/datum/reagent/R in reagents.reagent_list)
@@ -88,7 +104,7 @@
 			alcohol_potency += RA.boozepwr * (R.volume / 8)
 
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
-		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in [src]!"))
+		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
 	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 

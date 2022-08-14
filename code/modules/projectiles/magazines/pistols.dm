@@ -106,7 +106,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
 	icon_state = "vp78" //PLACEHOLDER
-	max_rounds = 14
+	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/pistol/vp78
 
 /obj/item/ammo_magazine/pistol/vp78/toxin

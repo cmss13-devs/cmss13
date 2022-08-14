@@ -60,7 +60,7 @@
 
 /mob/hologram/queen
 	name = "Queen Eye"
-	action_icon_state = "queen_eye"
+	action_icon_state = "queen_exit"
 
 	color = "#a800a8"
 
@@ -504,8 +504,9 @@
 	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 
 	if(txt)
-		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
-		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
+		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
+		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
+		xeno_maptext(txt, "Hive Orders Updated", hivenumber)
 		hive.hive_orders = txt
 		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else
@@ -747,8 +748,8 @@
 		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/onclick/queen_tacmap,
+		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/activable/info_marker/queen
 	)
 

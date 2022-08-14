@@ -301,6 +301,8 @@
 			//misc mobs
 			if("cat_meow")
 				S = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
+			if("pred_pain")
+				S = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg',5;'sound/voice/pred_pain_rare1.ogg')
 	return S
 
 /client/proc/generate_sound_queues()

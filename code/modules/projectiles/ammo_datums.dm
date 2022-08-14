@@ -448,6 +448,7 @@
 	damage = 45
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_6 //"VP78 - the only pistol viable as a primary."-Vampmare, probably.
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"

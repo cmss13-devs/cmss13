@@ -1,5 +1,3 @@
-#define COOLDOWN_COMM_MESSAGE 30 SECONDS
-
 /obj/structure/machinery/computer/groundside_operations
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
@@ -359,5 +357,3 @@
 	tacmap_base_type = TACMAP_BASE_OPEN
 	tacmap_additional_parameter = FACTION_PMC
 	minimap_name = "PMC Tactical Map"
-
-#undef COOLDOWN_COMM_MESSAGE

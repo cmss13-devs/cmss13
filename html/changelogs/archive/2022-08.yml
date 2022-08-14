@@ -273,6 +273,8 @@
       it completely if it happens
   - bugfix: Corrected some weird spelling of human in the scalping code
   - soundadd: added three new pain screams for preds
+  Nanu:
+  - bugfix: Fixes a minor issue with MDB. Remember case sensitive stuff.
   SpartanBobby:
   - balance: VP78 Now costs 15 points in PFC vendor
   - balance: VP78 Now has the lore accurate 18 magazine capacity instead of 14

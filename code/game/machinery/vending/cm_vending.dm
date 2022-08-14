@@ -1238,7 +1238,7 @@ IN_USE						used for vending/denying
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
+				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(var/wire)
@@ -1251,7 +1251,7 @@ IN_USE						used for vending/denying
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = 0
+			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(var/wire)

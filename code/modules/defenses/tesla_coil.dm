@@ -99,7 +99,7 @@
 		S.start()
 		qdel(S)
 
-		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
+		beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
 		track_shot()
 
 	targets = null

@@ -175,3 +175,34 @@
 	icon_opened = "secure_open_weyland"
 	icon_locked = "secure_locked_weyland"
 	icon_unlocked = "secure_unlocked_weyland"
+
+//special version, able to store OB fuel and warheads only
+/obj/structure/closet/crate/secure/ob
+	name = "secure orbital bombardment ammunition crate"
+	desc = "A secure crate capable of storing orbital bombardment warheads and fuel."
+	icon_state = "secure_locked_ob"
+	icon_opened = "secure_open_ob"
+	icon_locked = "secure_locked_ob"
+	icon_unlocked = "secure_unlocked_ob"
+
+/obj/structure/closet/crate/secure/ob/close()
+	if(!opened)
+		return FALSE
+	if(!can_close())
+		return FALSE
+
+	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
+	var/itemcount = 0
+	for(var/obj/O in get_turf(src))
+		if(itemcount >= storage_capacity)
+			break
+	 	//Only OB warheads and fuel gets in this boi
+		if(!istype(O, /obj/structure/ob_ammo))
+			continue
+		O.forceMove(src)
+		itemcount++
+
+	opened = FALSE
+	climbable = TRUE
+	update_icon()
+	return TRUE

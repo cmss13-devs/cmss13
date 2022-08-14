@@ -54,6 +54,7 @@
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/HE/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Icendiary Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Smoke Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Star Shell", round(scale * 2), /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", round(scale * 8), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
@@ -94,14 +95,16 @@
 		list("POUCHES", -1, null, null),
 		list("Autoinjector Pouch", round(scale * 2), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
+		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
+		list("First Responder Pouch", round(scale * 2), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", round(scale * 4), /obj/item/storage/pouch/flamertank, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", round(scale * 5), /obj/item/storage/pouch/shotgun, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/large_holster/macheteB/full, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/pouch/machete/full, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
@@ -121,6 +124,7 @@
 		list("Machete Scabbard (Full)", round(scale * 6), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", round(scale * 3), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", round(scale * 4), /obj/item/device/motiondetector, VENDOR_ITEM_REGULAR),
+		list("Data Detector", round(scale * 4), /obj/item/device/motiondetector/intel, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 2), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("Rangefinder", round(scale * 1), /obj/item/device/binoculars/range, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", round(scale * 1), /obj/item/device/binoculars/range/designator, VENDOR_ITEM_REGULAR),
@@ -143,17 +147,10 @@
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
-			//magazines handling (mainly for subtypes)
-			if(istype(item_to_stock, /obj/item/ammo_magazine))
-				//flamer fuel tanks handling
-				if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
-					var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
-					if(FT.flamer_chem != initial(FT.flamer_chem))
-						to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
-						return
-				var/obj/item/ammo_magazine/A = item_to_stock
-				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+			if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+				var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+				if(FT.flamer_chem != initial(FT.flamer_chem))
+					to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
 					return
 
 			//Guns handling
@@ -254,8 +251,10 @@
 
 		list("POUCHES", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
+		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
+		list("First Responder Pouch (Empty)", round(scale * 4), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 3), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
@@ -538,6 +537,7 @@
 		list("M39 Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
 		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 
@@ -649,7 +649,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Delta Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/delta, VENDOR_ITEM_REGULAR),
 		list("Echo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/echo, VENDOR_ITEM_REGULAR),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
-		list("Tactics Radio Encryption Key", 5, /obj/item/device/encryptionkey/tactics, VENDOR_ITEM_REGULAR),
+		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, VENDOR_ITEM_REGULAR),

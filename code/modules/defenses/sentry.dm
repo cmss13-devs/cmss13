@@ -108,7 +108,7 @@
 /obj/structure/machinery/defenses/sentry/examine(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] rounds loaded."))
+		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded."))
 	else
 		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
 
@@ -437,6 +437,8 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
+	omni_directional = TRUE
+	damage_mult = 0.7
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()

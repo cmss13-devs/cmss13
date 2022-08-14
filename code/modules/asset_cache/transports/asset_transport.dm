@@ -72,10 +72,10 @@
 /// asset_list - A list of asset filenames to be sent to the client. Can optionally be assoicated with the asset's asset_cache_item datum.
 /// Returns TRUE if any assets were sent.
 /datum/asset_transport/proc/send_assets(client/client, list/asset_list)
-	if (!istype(client))
-		if (ismob(client))
+	if(!istype(client))
+		if(ismob(client))
 			var/mob/M = client
-			if (M.client)
+			if(M.client)
 				client = M.client
 			else //no stacktrace because this will mainly happen because the client went away
 				return

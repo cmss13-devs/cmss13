@@ -597,8 +597,6 @@
 		moblist.Add(M)
 	for(var/mob/living/carbon/human/monkey/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/hellhound/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
 	return moblist
@@ -1897,6 +1895,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 				name += " \[dead\]"
 		pois[name] = M
 
+	pois.Add(get_multi_vehicles())
+
 	return pois
 
 //takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
@@ -1910,3 +1910,14 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	else
 		used_key_list[input_key] = 1
 	return input_key
+
+//Returns the atom sitting on the turf.
+//For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
+//Optional arg 'type' to stop once it reaches a specific type instead of a turf.
+/proc/get_atom_on_turf(atom/movable/M, stop_type)
+	var/atom/turf_to_check = M
+	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
+		turf_to_check = turf_to_check.loc
+		if(stop_type && istype(turf_to_check, stop_type))
+			break
+	return turf_to_check

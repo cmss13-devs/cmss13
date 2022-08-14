@@ -3,17 +3,6 @@
 	unacidable = TRUE
 	var/i_attached //Added for possible image attachments to objects. For hallucinations and the like.
 
-/obj/effect/overlay/beam//Not actually a projectile, just an effect.
-	name="beam"
-	icon='icons/effects/beam.dmi'
-	icon_state="b_beam"
-	mouse_opacity = FALSE
-
-	var/tmp/atom/BeamSource
-	New()
-		..()
-		QDEL_IN(src, 10)
-
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
 	icon = 'icons/turf/beach2.dmi'

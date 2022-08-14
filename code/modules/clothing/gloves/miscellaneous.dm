@@ -78,15 +78,6 @@
 		if(isliving(A) && M.a_intent == INTENT_HARM)
 			if(isYautja(A))
 				return 0
-			if (isXeno(A))
-				var/mob/living/carbon/Xenomorph/X = A
-				if (X.mutation_type == WARRIOR_BOXER)
-					M.visible_message(SPAN_DANGER("[M] boxes with [A]!"))
-					var/fisticuff_phrase = pick("Have at ye!", "En guard fuckboy!", "Huttah!", "Take this uncultured cur!", "Have at you little man!")
-					M.say(fisticuff_phrase)//this is probably going to trigger spam filter, but I don't care?
-					return 0
-				else
-					return 0
 			if (ishuman(A))
 				var/mob/living/carbon/human/L = A
 				var/boxing_icon = pick("boxing_up","boxing_down","boxing_left","boxing_right")

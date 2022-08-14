@@ -324,9 +324,9 @@
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/hellhound/H in GLOB.player_list)
-		if(istype(H) && !H.stat)
-			to_chat(H, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
+	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+		if(!hellhound.stat)
+			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
 /obj/item/device/radio/headset/yautja/attackby()
@@ -498,7 +498,7 @@
 	overlays += blood_overlay
 
 	if(!scalpee) //Presumably spawned as map decoration.
-		true_desc = "This is the scalp of an irrelevant hooman."
+		true_desc = "This is the scalp of an irrelevant human."
 		color = list(null, null, null, null, rgb(rand(0,255), rand(0,255), rand(0,255)))
 		return
 
@@ -552,28 +552,28 @@
 	switch(scalpee.life_kills_total)
 		if(0)
 			if(dishonourable)
-				true_desc += " hooman who was even more shameful than usual."
+				true_desc += " human who was even more shameful than usual."
 				worth = -1
 			else if(honourable) //They weren't marked as killing anyone but otherwise distinguished themselves.
-				true_desc += " hooman."
+				true_desc += " human."
 			else
-				true_desc += "n irrelevant hooman."
+				true_desc += "n irrelevant human."
 				worth = 0
 
 		if(1 to 4)
 			if(dishonourable)
-				true_desc += " hooman who could have been worthy, had [they] not insisted on disgracing [themselves]."
+				true_desc += " human who could have been worthy, had [they] not insisted on disgracing [themselves]."
 				worth = -1
 			else
-				true_desc += " respectable hooman with blood on [their] hands."
+				true_desc += " respectable human with blood on [their] hands."
 
 		if(5 to 9)
-			true_desc += "n uncommonly destructive hooman."
+			true_desc += "n uncommonly destructive human."
 			if(!dishonourable)
 				worth = 2 //Even if they did do something dishonourable, this person is worth at least grudging respect.
 
 		if(10 to INFINITY)
-			true_desc += " truly worthy hooman, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
+			true_desc += " truly worthy human, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
 			worth = 2
 
 	if(length(biography))
@@ -599,7 +599,7 @@
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/hellhound
+	spawner_type = /mob/living/carbon/Xenomorph/Hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -625,11 +625,6 @@
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.toggle_throw_mode(THROW_MODE_NORMAL)
-	else
-		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			return
-		activated_turf = get_turf(user)
-		display_camera(user)
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
 	if(active)
@@ -655,31 +650,6 @@
 		user.unset_interaction()
 	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
 		user.unset_interaction()
-
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(var/mob/user as mob)
-	var/list/L = list()
-	for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
-		L += H.real_name
-	L["Cancel"] = "Cancel"
-
-	var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
-	if(!choice || choice == "Cancel" || isnull(choice))
-		user.unset_interaction()
-		to_chat(user, "Stopping camera feed.")
-		return
-
-	for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
-		if(Q.real_name == choice)
-			current = Q.camera
-			break
-
-	if(istype(current))
-		to_chat(user, "Switching feed..")
-		user.set_interaction(current)
-
-	else
-		to_chat(user, "Something went wrong with the camera feed.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()

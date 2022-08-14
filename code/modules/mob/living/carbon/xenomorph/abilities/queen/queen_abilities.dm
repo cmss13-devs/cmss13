@@ -97,11 +97,6 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS
 
-/datum/action/xeno_action/onclick/eye
-	name = "Enter Eye Form"
-	action_icon_state = "queen_eye"
-	plasma_cost = 0
-
 /datum/action/xeno_action/activable/bombard/queen
 	// Range and other config
 	interrupt_flags = NO_FLAGS

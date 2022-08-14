@@ -655,6 +655,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
 	icon_state = "m79"
 	item_state = "m79"
+	flags_equip_slot = SLOT_BACK
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)

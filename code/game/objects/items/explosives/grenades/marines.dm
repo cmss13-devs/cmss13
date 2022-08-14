@@ -314,6 +314,7 @@
 	harmful = FALSE
 	antigrief_protection = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
+	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/smokebomb/New()
 	..()
@@ -322,7 +323,7 @@
 
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(3, 0, get_turf(src), null, 6)
+	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
 	smoke.start()
 	qdel(src)
 
@@ -336,6 +337,7 @@
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
 	dangerous = 1
 	harmful = TRUE
+	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/phosphorus/weak
 	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
@@ -352,7 +354,7 @@
 
 /obj/item/explosive/grenade/phosphorus/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(3, 0, get_turf(src))
+	smoke.set_up(smoke_radius, 0, get_turf(src))
 	smoke.start()
 	qdel(src)
 
@@ -365,8 +367,48 @@
 /obj/item/explosive/grenade/phosphorus/clf
 	name = "\improper improvised phosphorus bomb"
 	desc = "An improvised version of gas grenade designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
-	icon_state = "grenade_clf_wp"
-	item_state = "grenade_clf_wp"
+	icon_state = "grenade_phos_clf"
+	item_state = "grenade_phos_clf"
+
+/*
+//================================================
+			Airburst Smoke Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/smokebomb/airburst
+	name = "\improper M74 AGM-S 40mm Grenade"
+	desc = "M74 - Airburst Grenade Munition - Smoke. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. Upon detonation, instantly combines multiple chemicals inside its casing to form a smoke cloud."
+	icon_state = "grenade_m74_airburst_s"
+	item_state = "grenade_m74_airburst_s_active"
+	det_time = 0 // Unused, because we don't use prime.
+	hand_throwable = FALSE
+	smoke_radius = 2
+
+/obj/item/explosive/grenade/smokebomb/airburst/New()
+	..()
+	smoke = new /datum/effect_system/smoke_spread/bad
+	smoke.attach(src)
+
+
+/obj/item/explosive/grenade/smokebomb/airburst/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/smokebomb/airburst/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+		smoke.set_up(radius = smoke_radius, c = 0, loca = get_turf(src), direct = null, smoke_time = 6)
+		smoke.start()
+		qdel(src)
 
 /*
 //================================================

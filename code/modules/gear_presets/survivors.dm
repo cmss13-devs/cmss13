@@ -1309,7 +1309,6 @@
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,

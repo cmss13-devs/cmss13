@@ -175,7 +175,11 @@
 	icon_state = "radiator"
 	anchored = TRUE
 
+/obj/structure/machinery/space_heater/radiator/update_icon()
+	return
+
 /obj/structure/machinery/space_heater/radiator/red
 	name = "radiator"
 	desc = "It's a radiator. It heats the room through convection with hot water. This one has a red handle."
 	icon_state = "radiator-r"
+

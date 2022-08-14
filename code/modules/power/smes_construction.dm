@@ -194,7 +194,7 @@
 			to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
 			return
 
-		if (online || chargemode)
+		if (outputting || input_attempt)
 			to_chat(user, SPAN_WARNING("Turn off the [src] first!"))
 			return
 

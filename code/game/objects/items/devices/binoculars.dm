@@ -153,25 +153,35 @@
 	coord = LT
 	last_x = obfuscate_x(coord.x)
 	last_y = obfuscate_y(coord.y)
-	if(rangefinder_popup)
-		interact(user)
-	else
-		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
+	show_coords(user)
 	while(coord)
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			QDEL_NULL(coord)
 			break
 
-/obj/item/device/binoculars/range/interact(mob/user as mob)
-	var/dat = "<html><head><title>[src]</title></head><body><TT>"
+/obj/item/device/binoculars/range/proc/show_coords(mob/user)
+	if(rangefinder_popup)
+		tgui_interact(user)
+	else
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 
-	dat += "<h1><big>SIMPLIFIED COORDINATES OF TARGET:</big></h1><BR>"
-	dat += "<h2><big>LONGITUDE [last_x]. LATITUDE [last_y].</big></h2></TT></body></html>"
+/obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Binoculars", "[src.name]")
+		ui.open()
 
-	show_browser(user, dat, "Coordinates successfully acquired", "rangebinos")
-	onclose(user, "rangebinos")
-	return
+/obj/item/device/binoculars/range/ui_state(mob/user)
+	return GLOB.inventory_state
+
+/obj/item/device/binoculars/range/ui_data(mob/user)
+	var/list/data = list()
+
+	data["xcoord"] = src.last_x
+	data["ycoord"] = src.last_y
+
+	return data
 
 //LASER DESIGNATOR with ability to acquire coordinates and CAS lasing support
 /obj/item/device/binoculars/range/designator
@@ -297,10 +307,7 @@
 		coord = LT
 		last_x = obfuscate_x(coord.x)
 		last_y = obfuscate_y(coord.y)
-		if(rangefinder_popup)
-			interact(user)
-		else
-			to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
+		show_coords(user)
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))

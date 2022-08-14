@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct stystem.")
+	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"

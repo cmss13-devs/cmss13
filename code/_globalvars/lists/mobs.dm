@@ -24,8 +24,7 @@ GLOBAL_LIST_EMPTY_TYPED(xeno_mob_list, /mob/living/carbon/Xenomorph)
 GLOBAL_LIST_EMPTY_TYPED(living_xeno_list, /mob/living/carbon/Xenomorph)
 GLOBAL_LIST_EMPTY_TYPED(xeno_cultists, /mob/living/carbon/human)
 
-GLOBAL_LIST_EMPTY_TYPED(hellhound_list, /mob/living/carbon/hellhound)
+GLOBAL_LIST_EMPTY_TYPED(hellhound_list, /mob/living/carbon/Xenomorph/Hellhound)
 GLOBAL_LIST_EMPTY_TYPED(zombie_list, /mob/living/carbon/human)
 GLOBAL_LIST_EMPTY_TYPED(yautja_mob_list, /mob/living/carbon/human)
 
-GLOBAL_LIST_EMPTY(marine_leaders)

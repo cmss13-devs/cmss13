@@ -80,6 +80,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 ///Triggered when the dropship first lands.
 /datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
 
 /// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.

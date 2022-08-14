@@ -130,6 +130,12 @@
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
+	
+	if(istype(new_resin, /turf/closed))
+		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
+			if(enclosed_human.stat == DEAD)
+				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[new_resin.x];Y=[new_resin.y];Z=[new_resin.z]'>JMP</a>)")
+	
 	return SECRETE_RESIN_SUCCESS
 
 /mob/living/carbon/Xenomorph/proc/remove_built_structure(var/atom/A)

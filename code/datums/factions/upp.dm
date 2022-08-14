@@ -42,7 +42,7 @@
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
 	if(hud_icon_state)
-		holder.icon_state = "upp_[hud_icon_state]"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

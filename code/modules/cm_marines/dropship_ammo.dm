@@ -121,13 +121,13 @@
 	icon_state = "30mm_crate"
 	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti Tank 30mm ammo is needed."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
-	ammo_count = 200
-	max_ammo_count = 200
+	ammo_count = 400
+	max_ammo_count = 400
 	transferable_ammo = TRUE
-	ammo_used_per_firing = 20
+	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
-	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
+	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
 /obj/structure/ship_ammo/heavygun/examine(mob/user)
@@ -201,7 +201,7 @@
 	ammo_used_per_firing = 10
 	max_inaccuracy = 1
 	warning_sound = 'sound/effects/nightvision.ogg'
-	point_cost = 100
+	point_cost = 200
 	fire_mission_delay = 4 //very good but long cooldown
 
 

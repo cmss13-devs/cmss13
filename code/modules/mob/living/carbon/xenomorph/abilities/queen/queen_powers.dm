@@ -121,6 +121,9 @@
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+
+	T.transfer_observers_to(new_xeno)
+
 	qdel(T)
 	..()
 	return
@@ -411,6 +414,11 @@
 	if(get_dist(A, HS.hive_location) > 35)
 		// Apply the normal cooldown if not building near the hive
 		apply_cooldown_override(initial(xeno_cooldown))
+
+/datum/action/xeno_action/onclick/eye
+	name = "Enter Eye Form"
+	action_icon_state = "queen_eye"
+	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()

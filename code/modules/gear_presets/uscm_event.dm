@@ -85,13 +85,13 @@
 	name = "UPP Spy"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN)
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_ORDNANCE_TECH
 	rank = "UPP"
 	paygrade = "ME5"
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN) //can speak russian, but it's not default
 
 /datum/equipment_preset/uscm_event/upp_spy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

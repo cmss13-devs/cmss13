@@ -273,3 +273,4 @@
   - ui: changed the filtration console UI from HTML to TGUI
   - ui: changed the binoculars UI from HTML to TGUI
   - ui: changed the AA cannon UI from HTML to TGUI
+  - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"

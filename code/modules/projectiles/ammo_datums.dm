@@ -256,7 +256,7 @@
 		return FALSE
 
 	if(execution_target.status_flags & PERMANENTLY_DEAD)
-		to_chat(user, SPAN_DANGER("[execution_target] is already as dead as it's possible to be!"))
+		to_chat(user, SPAN_DANGER("[execution_target] has already been executed!"))
 		fired_from.delete_bullet(P, TRUE)
 		return TRUE
 

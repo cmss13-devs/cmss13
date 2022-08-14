@@ -264,3 +264,6 @@
   - rscadd: cryopods now have a toggleable auto-eject function. They will auto-eject
       dead and fully healed people
   - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
+2022-08-14:
+  stanalbatross:
+  - ui: overhauled the command tablet to use tgui

@@ -45,6 +45,7 @@
 	var/speed = 0 //Speed that modifies the movement delay of a given mob
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
+	var/can_crawl = TRUE
 	var/monkeyizing = null	//Carbon
 	var/hand = null
 	var/eye_blind = null	//Carbon

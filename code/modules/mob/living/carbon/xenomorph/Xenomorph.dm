@@ -75,6 +75,7 @@
 	var/crit_health = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	can_crawl = FALSE
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	var/melee_vehicle_damage = 10

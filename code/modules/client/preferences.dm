@@ -109,10 +109,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/underwear = "Boxers (Camo Conforming)"			//underwear type
 	var/undershirt = "Undershirt"					//undershirt type
 	var/backbag = 2						//backpack type
+
 	var/h_style = "Crewcut"				//Hair type
 	var/r_hair = 0						//Hair color
 	var/g_hair = 0						//Hair color
 	var/b_hair = 0						//Hair color
+
+	var/grad_style = "None"				//Hair Gradient type
+	var/r_gradient = 0					//Hair Gradient color
+	var/g_gradient = 0					//Hair Gradient color
+	var/b_gradient = 0					//Hair Gradient color
+
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
@@ -317,6 +324,14 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += " | "
 			dat += "<a href='?_src_=prefs;preference=hair;task=input'>"
 			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)];'></span>"
+			dat += "</a>"
+			dat += "<br>"
+
+			dat += "<b>Hair Gradient:</b> "
+			dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
+			dat += " | "
+			dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
+			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
 			dat += "</a>"
 			dat += "<br>"
 
@@ -1098,7 +1113,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
-					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as color|null
+					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)
 						return
 					predator_cape_color = new_cape_color
@@ -1274,7 +1289,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("hair")
 					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
+						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
@@ -1296,6 +1311,29 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_h_style)
 						h_style = new_h_style
 
+				if("grad")
+					if(species == "Human")
+						var/new_hair_grad = input(user, "Choose your character's hair gradient colour:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
+						if(new_hair_grad)
+							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
+							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
+							b_gradient = hex2num(copytext(new_hair_grad, 6, 8))
+
+				if("grad_style")
+					var/list/valid_hair_gradients = list()
+					for(var/hair_gradient in GLOB.hair_gradient_list)
+						var/datum/sprite_accessory/S = GLOB.hair_gradient_list[hair_gradient]
+						if(!(species in S.species_allowed))
+							continue
+						if(!S.selectable)
+							continue
+						valid_hair_gradients[hair_gradient] = GLOB.hair_gradient_list[hair_gradient]
+					valid_hair_gradients = sortList(valid_hair_gradients)
+
+					var/new_h_gradient_style = input(user, "Choose your character's hair gradient style:", "Character Preference")  as null|anything in valid_hair_gradients
+					if(new_h_gradient_style)
+						grad_style = new_h_gradient_style
+
 				if ("ethnicity")
 					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
 
@@ -1309,7 +1347,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						body_type = new_body_type
 
 				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference") as color|null
+					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
 					if(new_facial)
 						r_facial = hex2num(copytext(new_facial, 2, 4))
 						g_facial = hex2num(copytext(new_facial, 4, 6))
@@ -1356,7 +1394,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference") as color|null
+					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1364,7 +1402,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
+					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
@@ -1499,14 +1537,13 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("ui")
 					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", GLOB.custom_human_huds)
-					UI_style = ui_style_choice
-					if(!ui_style_choice)
-						UI_style = "midnight"
+					if(ui_style_choice)
+						UI_style = ui_style_choice
 
 				if("UIcolor")
-					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null
-					if(!UI_style_color_new) return
-					UI_style_color = UI_style_color_new
+					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!", UI_style_color) as color|null
+					if(UI_style_color_new)
+						UI_style_color = UI_style_color_new
 
 				if("UIalpha")
 					var/UI_style_alpha_new = input(user, "Select a new alpha (transparency) parametr for your UI, between 50 and 255") as num
@@ -1687,6 +1724,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
+	character.r_gradient = r_gradient
+	character.g_gradient = g_gradient
+	character.b_gradient = b_gradient
+
 	character.r_facial = r_facial
 	character.g_facial = g_facial
 	character.b_facial = b_facial
@@ -1696,6 +1737,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.b_skin = b_skin
 
 	character.h_style = h_style
+	character.grad_style = grad_style
 	character.f_style = f_style
 
 	character.home_system = home_system
@@ -1757,6 +1799,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
+	character.r_gradient = r_gradient
+	character.g_gradient = g_gradient
+	character.b_gradient = b_gradient
+
 	character.r_facial = r_facial
 	character.g_facial = g_facial
 	character.b_facial = b_facial
@@ -1766,6 +1812,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.b_skin = b_skin
 
 	character.h_style = h_style
+	character.grad_style = grad_style
 	character.f_style = f_style
 
 	// Destroy/cyborgize organs

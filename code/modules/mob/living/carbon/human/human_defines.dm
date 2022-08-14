@@ -5,6 +5,13 @@
 	var/b_hair = 0
 	var/h_style = "Crewcut"
 
+	//Hair gradient colour and style
+	var/r_gradient = 0
+	var/g_gradient = 0
+	var/b_gradient = 0
+	///Style used for the hair gradient.
+	var/grad_style = "None"
+
 	//Facial hair colour and style
 	var/r_facial = 0
 	var/g_facial = 0

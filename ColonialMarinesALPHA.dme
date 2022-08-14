@@ -1779,6 +1779,7 @@
 #include "code\modules\mob\new_player\preferences_setup.dm"
 #include "code\modules\mob\new_player\sprite_accessories\facial_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair.dm"
+#include "code\modules\mob\new_player\sprite_accessories\hair_accessories.dm"
 #include "code\modules\mob\new_player\sprite_accessories\sprite_accessories.dm"
 #include "code\modules\mob\new_player\sprite_accessories\tattoo.dm"
 #include "code\modules\mob\new_player\sprite_accessories\undershirt.dm"

@@ -147,19 +147,40 @@ var/datum/controller/supply/supply_controller = new()
 		ui = new(user, src, "SupplyDropConsole", name)
 		ui.open()
 
+/obj/structure/machinery/computer/supply_drop_console/ui_static_data(mob/user)
+	var/list/data = list()
+
+	var/list/squad_list = list()
+	for(var/datum/squad/S in RoleAuthority.squads)
+		if(S.active && S.faction == faction && S.color)
+			squad_list += list(list(
+				"squad_name" = S.name,
+				"squad_color" = squad_colors[S.color]
+				))
+
+	data["can_pick_squad"] = can_pick_squad
+	data["squad_list"] = squad_list
+
+	return data
+
 /obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
-	. = ..()
+	var/list/data = list()
+
 	check_pad()
-	.["busy"] = busy
-	.["can_pick_squad"] = can_pick_squad
-	.["current_squad"] = current_squad
-	.["launch_cooldown"] = drop_cooldown
-	.["next_fire"] = COOLDOWN_TIMELEFT(src, next_fire)
-	.["x_offset"] = x_supply
-	.["y_offset"] = y_supply
-	.["active"] = busy
-	.["loaded"] = loaded_crate
-	.["crate_name"] = loaded_crate.name
+	data["current_squad"] = current_squad
+	data["launch_cooldown"] = drop_cooldown
+	data["nextfiretime"] = next_fire
+	data["worldtime"] = world.time
+	data["x_offset"] = x_supply
+	data["y_offset"] = y_supply
+	data["active"] = busy
+	data["loaded"] = loaded_crate
+	if(loaded_crate)
+		data["crate_name"] = loaded_crate.name
+	else
+		data["crate_name"] = null
+
+	return data
 
 /obj/structure/machinery/computer/supply_drop_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -172,28 +193,25 @@ var/datum/controller/supply/supply_controller = new()
 			if(!new_x)
 				return
 			x_supply = new_x
+			. = TRUE
 
 		if("set_y")
 			var/new_y = text2num(params["set_y"])
 			if(!new_y)
 				return
 			y_supply = new_y
+			. = TRUE
 
 		if("pick_squad")
 			if(can_pick_squad)
-				var/list/squad_list = list()
-				for(var/datum/squad/S in RoleAuthority.squads)
-					if(S.active && S.faction == faction)
-						squad_list += S.name
-
-				var/name_sel = tgui_input_list(usr, "Which squad pad would you like to use to send supplies?", "Supply drop console", squad_list)
-				if(!name_sel) return
-				var/datum/squad/selected = get_squad_by_name(name_sel)
+				var/datum/squad/selected = get_squad_by_name(params["squad_name"])
 				if(selected)
 					current_squad = selected
 					attack_hand(usr)
+					. = TRUE
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+					. = TRUE
 
 		if("send_beacon")
 			if(current_squad)
@@ -202,9 +220,11 @@ var/datum/controller/supply/supply_controller = new()
 					return
 				else
 					handle_supplydrop()
+					. = TRUE
 
 		if("refresh_pad")
 			check_pad()
+			. = TRUE
 
 /obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
@@ -216,6 +236,9 @@ var/datum/controller/supply/supply_controller = new()
 	return
 
 /obj/structure/machinery/computer/supply_drop_console/proc/check_pad()
+	if(!current_squad.drop_pad)
+		loaded_crate = null
+		return FALSE
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
 	if(C)
 		loaded_crate = C

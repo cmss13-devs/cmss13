@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		GLOB.jelly_awards[chosen_recipient] = new /datum/recipient_awards()
 	var/datum/recipient_awards/RA = GLOB.jelly_awards[chosen_recipient]
 	RA.recipient_rank = recipient_caste // Currently not used in xeno award message
-	RA.medal_names += medal_type // TODO: Should multiple medals be allowed?
+	RA.medal_names += medal_type
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
 	if(attributed)

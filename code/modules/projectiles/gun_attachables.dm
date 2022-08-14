@@ -2063,7 +2063,7 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 4
 	pixel_shift_y = 14
 
-	max_range = 5
+	max_range = 6
 	last_fired = 0
 	attachment_firing_delay = 2 SECONDS
 

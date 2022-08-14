@@ -826,7 +826,7 @@
 	add_random_survivor_equipment(H)
 
 /datum/equipment_preset/corpse/pmc/burst
-	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	name = "Burst Corpse - Weyland-Yutani PMC (Standard)"
 	xenovictim = TRUE
 
 // Freelancer

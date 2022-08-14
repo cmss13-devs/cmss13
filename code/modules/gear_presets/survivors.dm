@@ -478,8 +478,8 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	add_random_prison_survivor_helmet(H)
-	add_random_prison_survivor_armor(H)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H.back), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
 	..()
@@ -496,8 +496,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	add_random_prison_survivor_helmet(H)
-	add_random_prison_survivor_armor(H)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H.back), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
 	..()

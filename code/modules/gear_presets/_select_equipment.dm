@@ -836,22 +836,6 @@ var/list/rebel_rifles = list(
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/proc/add_random_prison_survivor_armor(var/mob/living/carbon/human/H) // Random set of armor a prisioner might repurpose in the event of a breakout
-	var/random_weapon = rand(0,1)
-	switch(random_weapon)
-		if(0)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H.back), WEAR_JACKET)
-		if(1)
-			H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_IN_BACK)
-			
-
-/datum/equipment_preset/proc/add_random_prison_survivor_helmet(var/mob/living/carbon/human/H) // Random helmet a prisioner might repurpose in the event of a breakout
-	var/random_weapon = rand(0,1)
-	switch(random_weapon)
-		if(0)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H.back), WEAR_HEAD)
-		if(1)
-			H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_IN_BACK)
 
 // Random Survivor Weapon Spawners
 /datum/equipment_preset/proc/add_survivor_weapon_pistol(var/mob/living/carbon/human/H) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one becuase of hostile natives.

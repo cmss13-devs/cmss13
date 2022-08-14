@@ -407,38 +407,37 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
 
 /mob/new_player/proc/ViewHiveLeaders()
-	var/dat = "<html><body>"
+	var/datum/hive_leaders/ui = new(src)
+	ui.tgui_interact(src)
 
-	dat += {"
-	<div align='center'>
-	<head><style>
-		.hiveleaders { border-collapse:collapse; }
-		.hiveleaders td, th { border:1px solid #F2B3F2; background-color:white; color:black; padding:.25em }
-		.hiveleaders th { height: 2em; background-color: #AA44CC; color:white }
-		.hiveleaders tr.head th { background-color: #784488; }
-		.hiveleaders tr.alt td { background-color: #F2B3F2 }
-	</style></head>
-	<table class="hiveleaders">
-	<tr class='head'><th>Designation</th><th>Caste</th></tr>
-	"}
+/datum/hive_leaders/Destroy(force, ...)
+	SStgui.close_uis(src)
+	return ..()
 
-	var/even = FALSE
+/datum/hive_leaders/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HiveLeaders", "Hive Leaders")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+// Player panel
+/datum/hive_leaders/ui_data(mob/user)
+	. = list()
 
 	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-
-	dat += "<tr><th colspan=3>Queen</th></tr>"
+	var/list/queens = list()
 	if(main_hive.living_xeno_queen)
-		dat += "<tr[even ? " class='alt'" : ""]><td>[main_hive.living_xeno_queen.full_designation]</td><td>[main_hive.living_xeno_queen.name]</td></tr>"
-		even = !even
-
-	dat += "<tr><th colspan=3>Leaders</th></tr>"
+		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
+	.["queens"] = queens
+	var/list/leaders = list()
 	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
-		dat += "<tr[even ? " class='alt'" : ""]><td>[xeno_leader.full_designation]</td><td>[xeno_leader.caste_type]</td></tr>"
-		even = !even
+		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
+	.["leaders"] = leaders
 
-	dat += "</table></div>"
 
-	show_browser(src, dat, "Hive Leaders", "hiveleaders", "size=250x350")
+/datum/hive_leaders/ui_state(mob/user)
+	return GLOB.always_state
 
 /mob/new_player/Move()
 	return 0

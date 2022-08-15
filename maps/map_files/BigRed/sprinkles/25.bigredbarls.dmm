@@ -1,13 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-<<<<<<< HEAD
 "ax" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/template_noop)
-=======
->>>>>>> big_red_final_last_stand
 "bM" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -546,7 +543,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-<<<<<<< HEAD
 "vQ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/pmc,
@@ -554,8 +550,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-=======
->>>>>>> big_red_final_last_stand
 "yz" = (
 /obj/structure/machinery/squeezer,
 /turf/open/floor{
@@ -634,7 +628,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-<<<<<<< HEAD
 "Cn" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -645,8 +638,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-=======
->>>>>>> big_red_final_last_stand
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
@@ -813,10 +804,7 @@
 	tag = ""
 	},
 /obj/effect/landmark/survivor_spawner,
-<<<<<<< HEAD
 /obj/effect/landmark/corpsespawner/pmc,
-=======
->>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -966,18 +954,10 @@
 	},
 /area/template_noop)
 "SE" = (
-<<<<<<< HEAD
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
-=======
-/obj/effect/landmark/corpsespawner/pmc,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet11-12";
-	tag = "icon-carpet11-12 (WEST)"
->>>>>>> big_red_final_last_stand
 	},
 /area/template_noop)
 "SF" = (
@@ -1207,11 +1187,7 @@ Wq
 Gc
 Si
 QK
-<<<<<<< HEAD
 ry
-=======
-gv
->>>>>>> big_red_final_last_stand
 fi
 Eb
 Xl
@@ -1238,17 +1214,10 @@ fS
 Gt
 gv
 Eb
-<<<<<<< HEAD
 Cn
 Tc
 FC
 SE
-=======
-Kv
-Tc
-FC
-hz
->>>>>>> big_red_final_last_stand
 Qn
 Kv
 Yd
@@ -1323,11 +1292,7 @@ mi
 mi
 Wd
 Fa
-<<<<<<< HEAD
 nX
-=======
-mi
->>>>>>> big_red_final_last_stand
 mi
 QK
 "}
@@ -1345,13 +1310,8 @@ QK
 he
 SE
 ts
-<<<<<<< HEAD
 ax
 vQ
-=======
-mi
-Dr
->>>>>>> big_red_final_last_stand
 mi
 mi
 hP
@@ -1369,11 +1329,7 @@ qj
 QK
 SX
 mi
-<<<<<<< HEAD
 ax
-=======
-mi
->>>>>>> big_red_final_last_stand
 mi
 tR
 mi
@@ -1381,11 +1337,7 @@ mi
 Yd
 Yd
 mi
-<<<<<<< HEAD
 nX
-=======
-mi
->>>>>>> big_red_final_last_stand
 hP
 mi
 qQ
@@ -1411,11 +1363,7 @@ rD
 hz
 CB
 gV
-<<<<<<< HEAD
 nX
-=======
-mi
->>>>>>> big_red_final_last_stand
 mi
 fJ
 Yw
@@ -1430,15 +1378,9 @@ QK
 hP
 QA
 mi
-<<<<<<< HEAD
 vQ
 tR
 nX
-=======
-Dr
-tR
-mi
->>>>>>> big_red_final_last_stand
 mi
 Yd
 mi
@@ -1459,11 +1401,7 @@ qj
 QK
 hP
 mi
-<<<<<<< HEAD
 nX
-=======
-mi
->>>>>>> big_red_final_last_stand
 mi
 tR
 ic
@@ -1512,11 +1450,7 @@ QK
 nV
 hz
 In
-<<<<<<< HEAD
 nX
-=======
-mi
->>>>>>> big_red_final_last_stand
 eQ
 tF
 QK

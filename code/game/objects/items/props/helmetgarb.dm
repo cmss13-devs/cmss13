@@ -74,6 +74,78 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
+/obj/item/clothing/glasses/mgoggles/prescription
+	name = "\improper prescription marine ballistic goggles"
+	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
+	icon_state = "mgoggles"
+	item_state = "mgoggles"
+	prescription = TRUE
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
+/obj/item/clothing/glasses/mgoggles
+	name = "\improper marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
+	icon_state = "mgoggles"
+	item_state = "mgoggles"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	var/activated = FALSE
+	var/active_icon_state = "mgoggles_down"
+	var/inactive_icon_state = "mgoggles"
+
+	var/datum/action/item_action/activation
+	var/obj/item/attached_item
+	garbage = FALSE
+
+/obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
+	..()
+
+	if(!istype(S))
+		return
+
+	remove_attached_item()
+
+	attached_item = S.master_object
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	activation = new /datum/action/item_action/toggle(src, S.master_object)
+
+	if(ismob(S.master_object.loc))
+		activation.give_to(S.master_object.loc)
+
+/obj/item/clothing/glasses/mgoggles/on_exit_storage(obj/item/storage/S)
+	remove_attached_item()
+	return ..()
+
+/obj/item/clothing/glasses/mgoggles/proc/remove_attached_item()
+	SIGNAL_HANDLER
+	if(!attached_item)
+		return
+
+	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	qdel(activation)
+	attached_item = null
+
+/obj/item/clothing/glasses/mgoggles/ui_action_click(var/mob/owner, var/obj/item/holder)
+	toggle_goggles(owner)
+	activation.update_button_icon()
+
+
+/obj/item/clothing/glasses/mgoggles/proc/toggle_goggles(var/mob/user)
+	if(user.is_mob_incapacitated())
+		return
+
+	if(!attached_item)
+		return
+
+	activated = !activated
+	if(activated)
+		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
+		icon_state = active_icon_state
+	else
+		to_chat(user, SPAN_NOTICE("You push the goggles up."))
+		icon_state = inactive_icon_state
+
+	attached_item.update_icon()
+
 #define NVG_SHAPE_COSMETIC 1
 #define NVG_SHAPE_BROKEN 2
 #define NVG_SHAPE_PATCHED 3

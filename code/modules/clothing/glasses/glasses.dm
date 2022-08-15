@@ -205,26 +205,11 @@
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
-/obj/item/clothing/glasses/mgoggles
-	name = "marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
-	icon_state = "mgoggles"
-	item_state = "mgoggles"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
 	desc = "Augmented sunglasses with the HUD removed"
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
-/obj/item/clothing/glasses/mgoggles/prescription
-	name = "prescription marine ballistic goggles"
-	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
-	icon_state = "mgoggles"
-	item_state = "mgoggles"
-	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg

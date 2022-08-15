@@ -102,7 +102,7 @@
 /datum/equipment_preset/corpse/russian
 
 /datum/equipment_preset/corpse/russian/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
@@ -243,7 +243,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
@@ -297,7 +297,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
@@ -335,7 +335,7 @@
 	)
 
 /datum/equipment_preset/corpse/security/marshal/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -409,7 +409,7 @@
 	)
 
 /datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
@@ -554,7 +554,7 @@
 	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
@@ -601,7 +601,7 @@
 	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/H)
-	
+
 	add_random_kutjevo_survivor_uniform(H)
 	add_random_kutjevo_survivor_equipment(H)
 	add_random_survivor_equipment(H)
@@ -686,7 +686,7 @@
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
@@ -705,7 +705,7 @@
 
 
 /datum/equipment_preset/corpse/wy/manager/burst
-	name = "Corpse - Corporate Supervisor"
+	name = "Corpse - Burst Corporate Supervisor"
 	xenovictim = TRUE
 
 //Faction Specific Corpses
@@ -729,7 +729,7 @@
 	)
 
 /datum/equipment_preset/corpse/clf/load_gear(mob/living/carbon/human/H)
-	
+
 	spawn_rebel_uniform(H)
 	spawn_rebel_suit(H)
 	spawn_rebel_helmet(H)
@@ -748,7 +748,7 @@
 	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/clf/burst
-	name = "Corpse - Colonial Liberation Front Soldier"
+	name = "Corpse - Burst Colonial Liberation Front Soldier"
 	xenovictim = TRUE
 
 // UPP
@@ -770,7 +770,7 @@
 	)
 
 /datum/equipment_preset/corpse/upp/load_gear(mob/living/carbon/human/H)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP, WEAR_HEAD)
@@ -788,7 +788,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 /datum/equipment_preset/corpse/upp/burst
-	name = "Corpse - Union of Progressive Peoples Soldier"
+	name = "Corpse - Burst Union of Progressive Peoples Soldier"
 	xenovictim = TRUE
 
 // PMC
@@ -826,7 +826,7 @@
 	add_random_survivor_equipment(H)
 
 /datum/equipment_preset/corpse/pmc/burst
-	name = "Burst Corpse - Weyland-Yutani PMC (Standard)"
+	name = "Corpse - Burst Weyland-Yutani PMC (Standard)"
 	xenovictim = TRUE
 
 // Freelancer
@@ -861,7 +861,7 @@
 	spawn_merc_helmet(H)
 
 /datum/equipment_preset/corpse/freelancer/burst
-	name = "Corpse - Freelancer Mercenary"
+	name = "Corpse - Burst Freelancer Mercenary"
 	xenovictim = TRUE
 
 // Fun Faction Corpse
@@ -900,7 +900,7 @@
 	spawn_merc_helmet(H)
 
 /datum/equipment_preset/corpse/dutchrifle/burst
-	name = "Corpse - Dutch Dozen Rifleman"
+	name = "Corpse - Burst Dutch Dozen Rifleman"
 	xenovictim = TRUE
 
 // Pizza Planet
@@ -946,7 +946,7 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
 
 /datum/equipment_preset/corpse/pizza/burst
-	name = "Corpse - Pizza Deliverer"
+	name = "Corpse - Burst Pizza Deliverer"
 	xenovictim = TRUE
 
 // Gladiator
@@ -985,5 +985,5 @@
 	lantern.name = "Beacon of Holy Light"
 
 /datum/equipment_preset/corpse/gladiator/burst
-	name = "Corpse - Gladiator"
+	name = "Corpse - Burst Gladiator"
 	xenovictim = TRUE

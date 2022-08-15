@@ -119,7 +119,7 @@
 /obj/effect/landmark/corpsespawner/colonist/random/burst
 	name = "Burst Colonist Random"
 	equip_path = /datum/equipment_preset/corpse/colonist/random/burst
-	
+
 /obj/effect/landmark/corpsespawner/ua_riot
 	name = "UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot
@@ -140,7 +140,7 @@
 ///////////Faction Specific Corpses//////////////////////
 
 /obj/effect/landmark/corpsespawner/clf
-	name = "Corpse - Colonial Liberation Front Soldier"
+	name = "Colonial Liberation Front Soldier"
 	equip_path = /datum/equipment_preset/corpse/clf
 
 /obj/effect/landmark/corpsespawner/clf/burst
@@ -148,7 +148,7 @@
 	equip_path = /datum/equipment_preset/corpse/clf/burst
 
 /obj/effect/landmark/corpsespawner/upp
-	name = "Corpse - Union of Progressive Peoples Soldier"
+	name = "Union of Progressive Peoples Soldier"
 	equip_path = /datum/equipment_preset/corpse/upp
 
 /obj/effect/landmark/corpsespawner/upp/burst
@@ -156,7 +156,7 @@
 	equip_path = /datum/equipment_preset/corpse/upp/burst
 
 /obj/effect/landmark/corpsespawner/pmc
-	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	name = "Weyland-Yutani PMC (Standard)"
 	equip_path = /datum/equipment_preset/corpse/pmc
 
 /obj/effect/landmark/corpsespawner/pmc/burst
@@ -164,35 +164,35 @@
 	equip_path = /datum/equipment_preset/corpse/pmc/burst
 
 /obj/effect/landmark/corpsespawner/freelancer
-	name = "Corpse - Corpse - Freelancer Mercenary"
+	name = "Freelancer Mercenary"
 	equip_path = /datum/equipment_preset/corpse/freelancer
 
 /obj/effect/landmark/corpsespawner/freelancer/burst
-	name = "Burst Corpse - Freelancer Mercenary"
+	name = "Burst Freelancer Mercenary"
 	equip_path = /datum/equipment_preset/corpse/freelancer/burst
 
 // Fun Faction Corpse
 
 /obj/effect/landmark/corpsespawner/dutchrifle
-	name = "Corpse - Corpse - Dutch Dozen Rifleman"
+	name = "Dutch Dozen Rifleman"
 	equip_path = /datum/equipment_preset/corpse/dutchrifle
 
 /obj/effect/landmark/corpsespawner/dutchrifle/burst
-	name = "Burst Corpse - Dutch Dozen Rifleman"
+	name = "Burst Dutch Dozen Rifleman"
 	equip_path = /datum/equipment_preset/corpse/dutchrifle/burst
 
 /obj/effect/landmark/corpsespawner/pizza
-	name = "Corpse - Corpse - Pizza Deliverer"
+	name = "Pizza Deliverer"
 	equip_path = /datum/equipment_preset/corpse/pizza
 
 /obj/effect/landmark/corpsespawner/pizza/burst
-	name = "Burst Corpse - Pizza Deliverer"
+	name = "Burst Pizza Deliverer"
 	equip_path = /datum/equipment_preset/corpse/pizza/burst
 
 /obj/effect/landmark/corpsespawner/gladiator
-	name = "Corpse - Corpse - Gladiator"
+	name = "Gladiator"
 	equip_path = /datum/equipment_preset/corpse/gladiator
 
 /obj/effect/landmark/corpsespawner/gladiator/burst
-	name = "Burst Corpse - Gladiator"
+	name = "Burst Gladiator"
 	equip_path = /datum/equipment_preset/corpse/gladiator/burst

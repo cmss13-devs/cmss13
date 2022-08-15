@@ -789,8 +789,8 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/robust(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-			
-			
+
+
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(var/mob/living/carbon/human/H) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.
 	var/random_gear = rand(0,2)
@@ -848,7 +848,7 @@ var/list/rebel_rifles = list(
 		if(0)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/b92fs(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
-			
+
 		if(1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/cmb(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb(H), WEAR_IN_BACK)
@@ -891,7 +891,7 @@ var/list/rebel_rifles = list(
 /datum/equipment_preset/proc/add_survivor_weapon(var/mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet. For the most part you will stil get a shotgun but there is an off chance you get something unique. If you dont like the weapon deal with it. With exception of CMB SHotgun, everything else has some level of ammo. Some weapons may not appear at all in a colony so they will need the extra ammo. MERC, and DB needed a handfull of shells to compete with the normal CMB.
 	var/random_weapon = rand(0,15)
 	switch(random_weapon)
-		if(0-8)
+		if(0 to 8)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)
 		if(9)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)

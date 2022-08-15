@@ -298,6 +298,8 @@
   Geevies:
   - rscadd: You can now crawl if you try moving while lying down, crawling takes three
       seconds.
+  - bugfix: Xenos now always update their name and default vision mode when a client
+      transfers into them.
   Jeser:
   - rscadd: Specialist kit (the one that allows you to select a specialization and
       receive a respecting equipment box) now supports specifying what roles are able

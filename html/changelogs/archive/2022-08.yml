@@ -295,6 +295,13 @@
   - rscadd: gave glasses the same shattering mechanics as bottles
   - bugfix: BEs will now actually fire bullets again
 2022-08-15:
+  Jeser:
+  - rscadd: Specialist kit (the one that allows you to select a specialization and
+      receive a respecting equipment box) now supports specifying what roles are able
+      to activate it or removing restrictions at all by admins for events.
+  - qol: Specialist kit shows what roles exactly can use it upon examination now.
+  - bugfix: Fixed a couple of bugs and exploits related to specialist kit.
+  - imageadd: Specialist kit has it's own sprite now!
   theflyingflail:
   - rscadd: Added New Weapon Pool for PMC Survivors
   - rscadd: Prisoner survivors now have a chance to spawn with a helmet or weapon

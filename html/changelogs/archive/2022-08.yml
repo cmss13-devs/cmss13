@@ -294,3 +294,32 @@
   - rscadd: shooting bottles will now cause them to break
   - rscadd: gave glasses the same shattering mechanics as bottles
   - bugfix: BEs will now actually fire bullets again
+2022-08-15:
+  Jeser:
+  - rscadd: Specialist kit (the one that allows you to select a specialization and
+      receive a respecting equipment box) now supports specifying what roles are able
+      to activate it or removing restrictions at all by admins for events.
+  - qol: Specialist kit shows what roles exactly can use it upon examination now.
+  - bugfix: Fixed a couple of bugs and exploits related to specialist kit.
+  - imageadd: Specialist kit has it's own sprite now!
+  theflyingflail:
+  - rscadd: Added New Weapon Pool for PMC Survivors
+  - rscadd: Prisoner survivors now have a chance to spawn with a helmet or weapon
+  - rscadd: FP9000 and MP5 have been added to the survivor spawn pool to help combat
+      shotgun meta while adding variety to weapon loadouts
+  - rscdel: Removed old things
+  - qol: Reduced amount of lines required for survivors to spawn with essential gear
+  - qol: Survival pouches now include radios and knives
+  - qol: Unique survivor spawn weapons now include ammo belts to help free up space
+  - tweak: PMC survivors now draw from a separate weapons pool dedicated to PMC survivors
+  - tweak: PMC survivors no longer spawn with pmc mask
+  - tweak: Survivors no longer spawn with pistol belts or any belts
+  - tweak: Survivors doctors have updated medical loot spawn due to loss of belts
+  - tweak: Moved the large stack of metal from survivor pouches to the survivor's
+      satchel
+  - tweak: tweaked various survivor skills and load-outs at the request of devs
+  - balance: CMB Shotguns have been reduced to 50% spawn chance as opposed to 75%
+  - bugfix: Various bugs related to winter gear not spawning and CL loot
+  - bugfix: Research survivors now can do surgery again
+  - bugfix: Fixed chaplain survivor being unable to store a weapon in robes
+  - bugfix: Fixed issue were survivors didn't spawn with winter gear

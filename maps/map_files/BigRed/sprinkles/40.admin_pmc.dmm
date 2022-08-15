@@ -45,7 +45,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "ak" = (
-/obj/structure/barricade/metal{
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2";
 	dir = 1
 	},
 /turf/open/floor{
@@ -55,7 +56,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "al" = (
-/obj/structure/barricade/metal{
+/obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor{
@@ -65,11 +66,12 @@
 	},
 /area/bigredv2/outside/admin_building)
 "am" = (
-/obj/structure/barricade/metal{
-	dir = 4
-	},
-/obj/structure/barricade/metal{
+/obj/structure/barricade/metal/wired{
 	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2";
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
@@ -127,7 +129,8 @@
 	},
 /area/bigredv2/outside/admin_building)
 "au" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
 	tag = "icon-carpet11-12 (WEST)";
 	icon_state = "carpet11-12";
@@ -135,7 +138,8 @@
 	},
 /area/bigredv2/outside/admin_building)
 "av" = (
-/obj/structure/barricade/metal{
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2";
 	dir = 4
 	},
 /turf/open/floor,
@@ -154,7 +158,8 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aA" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
 	tag = "icon-carpet7-3 (WEST)";
 	icon_state = "carpet7-3";
@@ -268,12 +273,10 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aP" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	tag = "icon-carpet15-15 (WEST)";
-	icon_state = "carpet15-15";
-	dir = 8
+/obj/structure/barricade/metal/wired{
+	dir = 4
 	},
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "aQ" = (
 /turf/open/floor{
@@ -287,7 +290,8 @@
 /area/bigredv2/outside/admin_building)
 "aS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -314,7 +318,6 @@
 /area/bigredv2/outside/admin_building)
 "aV" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -375,7 +378,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -441,7 +445,50 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bi" = (
-/obj/item/ammo_box/magazine/m39/ap,
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = -1;
+	pixel_x = -9
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = 7;
+	pixel_x = 15
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = -1;
+	pixel_x = -17
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = -9;
+	pixel_y = -10
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = 8;
+	pixel_x = -10
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = -9;
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = 10;
+	pixel_x = -16
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_y = -7;
+	pixel_x = 12
+	},
 /turf/open/floor{
 	tag = "icon-carpet5-1 (WEST)";
 	icon_state = "carpet5-1";
@@ -566,7 +613,7 @@ ak
 at
 aB
 aK
-aP
+aV
 aV
 ba
 bj
@@ -600,10 +647,10 @@ aR
 ad
 am
 av
-av
-av
-aR
-aR
+aP
+aP
+aP
+aP
 bd
 bl
 aR

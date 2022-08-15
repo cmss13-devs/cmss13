@@ -1,23 +1,38 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ax" = (
+<<<<<<< HEAD
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "bM" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/ne)
+>>>>>>> big_red_final_last_stand
 "cd" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ct" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/light{
@@ -27,24 +42,39 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "eC" = (
 /turf/open/floor,
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"eC" = (
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "eQ" = (
 /obj/structure/machinery/reagentgrinder,
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fa" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fi" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -55,7 +85,11 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fz" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -66,7 +100,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fG" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -75,7 +113,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -87,7 +129,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "fS" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -100,45 +146,75 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "gv" = (
+=======
+/area/bigredv2/outside/dorms)
+"gv" = (
+/obj/effect/landmark/corpsespawner/PMC,
+>>>>>>> big_red_final_last_stand
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "gM" = (
 /obj/structure/bed,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/general_offices)
+>>>>>>> big_red_final_last_stand
 "gV" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ha" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "he" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "hz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "hP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -146,13 +222,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ic" = (
 /obj/effect/landmark/corpsespawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "iq" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -160,7 +244,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "iD" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
@@ -177,7 +265,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "jD" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/metal/wired{
@@ -188,7 +280,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "kp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Bar"
@@ -200,19 +296,34 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"kI" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "lb" = (
 /obj/structure/bed/stool,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "lq" = (
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "lI" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -221,7 +332,11 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "md" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -232,12 +347,27 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "mi" = (
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"mi" = (
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"nr" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "nK" = (
 /obj/structure/bed/stool,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -247,7 +377,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "nV" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -259,13 +393,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "nX" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ob" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -274,7 +416,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "oe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -287,7 +433,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "oA" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -295,7 +445,11 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "oD" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -304,7 +458,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "oK" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -313,7 +471,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "pf" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -324,7 +486,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "pL" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -337,10 +503,17 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "qj" = (
 /turf/open/floor/plating,
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"qj" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "qQ" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
@@ -349,7 +522,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "qS" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -357,11 +534,19 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
 "qX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"qX" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "qY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -369,7 +554,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "rb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -377,7 +566,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "rd" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -389,7 +582,11 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "rp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -402,7 +599,11 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ry" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -410,14 +611,22 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "rD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "sg" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -430,7 +639,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"sH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Bar Maintenance";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "tj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/beach_ball,
@@ -438,7 +661,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "tq" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -449,34 +676,54 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ts" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4";
 	tag = "icon-carpet9-4 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "tF" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "tH" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "tK" = (
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "tR" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -485,7 +732,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "ul" = (
 /obj/item/paper_bin,
 /obj/structure/barricade/metal/wired{
@@ -494,13 +745,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "uu" = (
 /obj/structure/machinery/power/apc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "uR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired{
@@ -511,11 +770,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "uZ" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"uZ" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "vc" = (
 /obj/structure/machinery/door_control{
 	id = "Dormitories";
@@ -528,7 +795,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "vv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -541,6 +812,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "vQ" = (
 /obj/effect/decal/cleanable/blood,
@@ -549,19 +821,30 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "yz" = (
 /obj/structure/machinery/squeezer,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "zm" = (
 /obj/structure/bed/stool,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "zV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -575,14 +858,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Ac" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "AI" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/guns/merc{
@@ -597,19 +888,31 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Bm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "BN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Cb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -620,12 +923,17 @@
 	tag = "icon-alarm0 (NORTH)"
 	},
 /turf/open/floor,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Cm" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "Cn" = (
 /obj/structure/bed/chair/wood/normal{
@@ -637,13 +945,20 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Dc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -655,13 +970,24 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Dr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"Dv" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/general_offices)
+>>>>>>> big_red_final_last_stand
 "Ea" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -671,14 +997,22 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Eb" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Fa" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -688,7 +1022,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Fz" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -697,14 +1035,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "FC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "FP" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc/ammo,
@@ -713,14 +1059,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Gc" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Gi" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -732,7 +1086,17 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"Gq" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Gt" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -743,7 +1107,11 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "GX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sandbags/large_stack,
@@ -754,19 +1122,40 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "HC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Ic" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+"Ii" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "In" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -774,12 +1163,20 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "IA" = (
 /turf/open/floor{
 	icon_state = "grimy"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "IP" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -788,7 +1185,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Jk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
@@ -796,30 +1197,49 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Kv" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
 	tag = ""
 	},
 /obj/effect/landmark/survivor_spawner,
+<<<<<<< HEAD
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "KB" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Ld" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/ne)
+>>>>>>> big_red_final_last_stand
 "Li" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -830,7 +1250,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "LT" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -839,7 +1263,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/general_offices)
+>>>>>>> big_red_final_last_stand
 "Mr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/weldpack,
@@ -848,7 +1276,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Nm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -859,7 +1291,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Nn" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun/buckshot,
@@ -870,7 +1306,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Ou" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -881,7 +1321,18 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"OL" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
+	},
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Qn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -894,7 +1345,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Qz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -906,22 +1361,37 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "QA" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "QG" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "QK" = (
 /turf/closed/wall/solaris,
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"QK" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Rs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -932,7 +1402,11 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Si" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -940,7 +1414,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "SD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -951,6 +1429,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
 "SE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -959,6 +1438,12 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
+=======
+/area/bigredv2/outside/ne)
+"SE" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "SF" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
@@ -966,7 +1451,11 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "SX" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -974,7 +1463,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Tc" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/bed/chair/wood/normal{
@@ -985,7 +1478,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Ts" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -993,33 +1490,53 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "TF" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Uq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "UC" = (
 /obj/structure/bed/stool,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "UF" = (
 /obj/structure/bed,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "UL" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -1027,14 +1544,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "UX" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Wd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1048,7 +1573,15 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+"Wk" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Wm" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/light{
@@ -1058,14 +1591,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Wn" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/ne)
+>>>>>>> big_red_final_last_stand
 "Wq" = (
 /obj/structure/closet/athletic_mixed,
 /obj/structure/machinery/light{
@@ -1074,7 +1615,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/dorms)
+>>>>>>> big_red_final_last_stand
 "Xl" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -1084,7 +1629,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Xu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1094,25 +1643,41 @@
 	req_one_access = null
 	},
 /turf/open/floor/plating,
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "XZ" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Yc" = (
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Yd" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Yi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1121,7 +1686,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "Yw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -1131,7 +1700,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ZP" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun,
@@ -1141,7 +1714,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 "ZX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/plasteel/large_stack,
@@ -1149,7 +1726,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
+<<<<<<< HEAD
 /area/template_noop)
+=======
+/area/bigredv2/outside/bar)
+>>>>>>> big_red_final_last_stand
 
 (1,1,1) = {"
 Bm
@@ -1162,6 +1743,7 @@ QK
 QK
 QK
 QK
+<<<<<<< HEAD
 QK
 QK
 QK
@@ -1174,6 +1756,20 @@ QK
 lI
 QK
 QK
+=======
+kI
+kI
+kI
+lI
+kI
+lI
+kI
+lI
+kI
+lI
+kI
+kI
+>>>>>>> big_red_final_last_stand
 "}
 (2,1,1) = {"
 Bm
@@ -1186,6 +1782,7 @@ Wq
 Gc
 Si
 QK
+<<<<<<< HEAD
 ry
 fi
 Eb
@@ -1198,25 +1795,54 @@ mi
 Xl
 mi
 QK
+=======
+OL
+fi
+Eb
+Xl
+ax
+Xl
+qY
+Xl
+ax
+Xl
+ax
+kI
+>>>>>>> big_red_final_last_stand
 "}
 (3,1,1) = {"
 Ac
 uZ
 fS
 oD
+<<<<<<< HEAD
 mi
 Yd
 mi
 mi
 mi
+=======
+nr
+Gq
+nr
+nr
+nr
+>>>>>>> big_red_final_last_stand
 fS
 Gt
 gv
 Eb
+<<<<<<< HEAD
 Cn
 Tc
 FC
 SE
+=======
+Kv
+Tc
+FC
+hz
+>>>>>>> big_red_final_last_stand
 Qn
 Kv
 Yd
@@ -1228,6 +1854,7 @@ Bm
 tH
 QK
 tR
+<<<<<<< HEAD
 mi
 mi
 mi
@@ -1246,6 +1873,26 @@ GX
 mi
 mi
 QK
+=======
+nr
+nr
+nr
+Gq
+vc
+QK
+ry
+OL
+Eb
+ZP
+AI
+ax
+Dr
+md
+GX
+ax
+ax
+kI
+>>>>>>> big_red_final_last_stand
 "}
 (5,1,1) = {"
 IA
@@ -1264,7 +1911,11 @@ SF
 Nn
 FP
 Yd
+<<<<<<< HEAD
 mi
+=======
+ax
+>>>>>>> big_red_final_last_stand
 Dc
 ZX
 mi
@@ -1283,6 +1934,7 @@ lq
 lq
 QK
 Ea
+<<<<<<< HEAD
 gv
 SF
 fz
@@ -1298,6 +1950,23 @@ QK
 (7,1,1) = {"
 QK
 Xu
+=======
+OL
+SF
+fz
+Fa
+ax
+ax
+Wd
+Fa
+ax
+ax
+kI
+"}
+(7,1,1) = {"
+QK
+sH
+>>>>>>> big_red_final_last_stand
 QK
 QK
 QK
@@ -1310,6 +1979,7 @@ he
 he
 ts
 ax
+<<<<<<< HEAD
 vQ
 mi
 mi
@@ -1318,12 +1988,23 @@ mi
 mi
 QG
 QK
+=======
+Dr
+ax
+ax
+hP
+ax
+ax
+QG
+kI
+>>>>>>> big_red_final_last_stand
 "}
 (8,1,1) = {"
 QK
 Rs
 qj
 qj
+<<<<<<< HEAD
 qj
 QK
 SX
@@ -1337,6 +2018,21 @@ Yd
 Yd
 mi
 nX
+=======
+SE
+kI
+SX
+ax
+ax
+ax
+Ii
+ax
+ax
+Yd
+Yd
+ax
+ax
+>>>>>>> big_red_final_last_stand
 hP
 ax
 qQ
@@ -1348,7 +2044,11 @@ QK
 BN
 Ic
 qX
+<<<<<<< HEAD
 qX
+=======
+Wk
+>>>>>>> big_red_final_last_stand
 rp
 Qz
 hz
@@ -1362,12 +2062,18 @@ rD
 hz
 CB
 gV
+<<<<<<< HEAD
 nX
 mi
+=======
+ax
+ax
+>>>>>>> big_red_final_last_stand
 fJ
 Yw
 "}
 (10,1,1) = {"
+<<<<<<< HEAD
 QK
 tK
 HC
@@ -1385,10 +2091,30 @@ Yd
 mi
 Dr
 mi
+=======
+kI
+tK
+HC
+SE
+SE
+kI
+hP
+QA
+ax
+Dr
+Ii
+ax
+ax
+Yd
+ax
+Dr
+ax
+>>>>>>> big_red_final_last_stand
 iq
 rD
 Ts
 rb
+<<<<<<< HEAD
 QK
 "}
 (11,1,1) = {"
@@ -1403,6 +2129,22 @@ mi
 nX
 mi
 tR
+=======
+kI
+"}
+(11,1,1) = {"
+kI
+SE
+Ou
+SE
+SE
+kI
+hP
+ax
+ax
+ax
+Ii
+>>>>>>> big_red_final_last_stand
 ic
 Li
 zm
@@ -1410,6 +2152,7 @@ zm
 zm
 zm
 nK
+<<<<<<< HEAD
 mi
 hP
 mi
@@ -1429,6 +2172,27 @@ QK
 QK
 QK
 QK
+=======
+ax
+hP
+ax
+kI
+"}
+(12,1,1) = {"
+kI
+kI
+Xu
+kI
+kI
+kI
+Nm
+kI
+kI
+kI
+kI
+kI
+kI
+>>>>>>> big_red_final_last_stand
 fa
 cd
 Mr
@@ -1441,6 +2205,7 @@ qS
 "}
 (13,1,1) = {"
 LT
+<<<<<<< HEAD
 QK
 SD
 Ld
@@ -1453,6 +2218,20 @@ nX
 eQ
 tF
 QK
+=======
+Dv
+SD
+Ld
+Wn
+kI
+nV
+hz
+In
+ax
+eQ
+tF
+kI
+>>>>>>> big_red_final_last_stand
 Xl
 tq
 Xl
@@ -1461,6 +2240,7 @@ sg
 XZ
 hP
 nX
+<<<<<<< HEAD
 QK
 "}
 (14,1,1) = {"
@@ -1494,16 +2274,58 @@ SD
 Ld
 bM
 QK
+=======
+kI
+"}
+(14,1,1) = {"
+gM
+Dv
+SD
+Ld
+bM
+kI
+uu
+ic
+ax
+ax
+ax
+KB
+IP
+ax
+ax
+ax
+ax
+UL
+ax
+hP
+jD
+kI
+"}
+(15,1,1) = {"
+Dv
+Dv
+SD
+Ld
+bM
+kI
+>>>>>>> big_red_final_last_stand
 ha
 ha
 Wm
 yz
 Yc
 UF
+<<<<<<< HEAD
 QK
 TF
 ct
 QK
+=======
+kI
+TF
+ct
+kI
+>>>>>>> big_red_final_last_stand
 iD
 ul
 XZ
@@ -1513,6 +2335,7 @@ qS
 "}
 (16,1,1) = {"
 LT
+<<<<<<< HEAD
 QK
 SD
 Ld
@@ -1534,4 +2357,27 @@ QK
 oe
 zV
 QK
+=======
+Dv
+SD
+Ld
+bM
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+oe
+zV
+kI
+>>>>>>> big_red_final_last_stand
 "}

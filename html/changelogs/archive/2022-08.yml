@@ -307,6 +307,9 @@
   - qol: Specialist kit shows what roles exactly can use it upon examination now.
   - bugfix: Fixed a couple of bugs and exploits related to specialist kit.
   - imageadd: Specialist kit has it's own sprite now!
+  stanalbatross:
+  - bugfix: fixes incorrectly named corpse spawners, incorrectly parsed to, and unused
+      variable
   theflyingflail:
   - rscadd: Added New Weapon Pool for PMC Survivors
   - rscadd: Prisoner survivors now have a chance to spawn with a helmet or weapon

@@ -125,12 +125,6 @@
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
 			vis_contents.Cut()
 
-			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any intel objects so we don't delete them
-				if(isitem(A))
-					var/obj/item/item = A
-					if(item.is_objective)
-						item.forceMove(get_step(loc, pick(alldirs)))
-
 			QDEL_NULL(captured_mob)
 			update_icon()
 

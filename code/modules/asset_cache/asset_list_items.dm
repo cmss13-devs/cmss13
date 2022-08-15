@@ -72,6 +72,10 @@
 			SSassets.transport.register_asset(filename, fcopy_rsc(path + filename))
 
 /datum/asset/nanoui/send(client, uncommon, var/send_only_temp = FALSE)
+	if(!client)
+		log_debug("Warning! Tried to send nanoui data with a null client! (asset_list_items.dm line 76)")
+		return
+
 	if(!islist(uncommon))
 		uncommon = list(uncommon)
 
@@ -89,6 +93,9 @@
 	uncommon_dirs = list()
 
 /datum/asset/nanoui/weapons/send(client)
+	if(!client)
+		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
+		return
 	SSassets.transport.send_assets(client, common)
 
 

@@ -166,3 +166,131 @@
   stanalbatross:
   - rscadd: the telebaton can now deal 50 stam damage when used on a human if not
       on harm intent
+2022-08-09:
+  CometBlaze:
+  - qol: Added a verb to the OOC fix tab that resets the Objectives Data Tab (use
+      this when your objectives UI bluescreens)
+  - admin: Added a new verb to the Debug tab that resets the Data Tab of the Intel
+      Database as a whole
+  Morrow:
+  - Fix: Puts M41A folding stock in req and squad prep vendors. Fixes some unintended
+      behavior with starting unfolded.
+  Stan_Albatross, Frans_Feiffer:
+  - rscadd: Added a new medical tool - the portable dialysis machine, which is a medium
+      sized item. Attach it to someone and it will filter out all the drugs from their
+      bloodstream over time, but also take some of their blood in the process. Has
+      enough charge for 100s of use, or 150u of drugs. Can be recharged. Make sure
+      to detach it by clicking the person it's attached to with it again before walking
+      away or putting it away, or they'll get a nasty needle wound. Sprites by Frans_Feiffer.
+  - rscadd: added a portable dialysis machine to lower medbay, added portable dialysis
+      machines to the synthtool vendor for 15 points.
+  - bugfix: autocompressors can now be recharged
+  Stan_Albatross, Triiodine:
+  - rscadd: added an M41 series folding stock, can be attached to the M41aMK1, M41aMK2,
+      and M46c (as well as sister guns). Is slightly worse than the solid stock, but
+      can be folded. Sprites by Triiodine
+  - balance: buffed the rifle solid stock a bit
+  - imageadd: resprited the MK1, by Triiodine
+  - imageadd: added map variants for the m46c, by Triiodine
+  sose96:
+  - balance: Sentry deployment system now shoots 360 and has 30% reduced damage due
+      to potential overlapping fields of fire.
+  stanalbatross:
+  - refactor: refactored beam code
+  - bugfix: RTO backpacks with no phone now have an icon state
+  - rscadd: added AGM-S smoke grenades, they work like smoke grenades but in AGM form,
+      and have a smaller radius.
+  - bugfix: fixed roundstart dead bodies having pulses
+  - bugfix: fixed the sprite offsets on the double barrel shotgun
+  - bugfix: fixed smartfridge ID wires not working (supposedly). They now disable
+      ID checking when pulsed and totally lock you out when cut.
+  - bugfix: fixed MK1 ap mags not being in WO
+  - bugfix: fixed unnest notifications showing to bursted people
+2022-08-10:
+  Stan_Albatross:
+  - code_imp: ported the screen messages system from TGMC
+  - qol: added messages that appear on your screen for receiving squad messages and
+      objective updates from overwatch, tweaked the sound played upon receiving squad
+      messages
+  - qol: added messages that appear on your screen for when hive orders are changed
+  stanalbatross:
+  - balance: larvas can no longer evolve off weeds before 15 minutes into the round
+      has passed.
+2022-08-11:
+  50RemAndCounting:
+  - soundadd: readded old Almayer/Sulaco ambient noise.
+  Shad0vvs:
+  - bugfix: Fixed possible null runtime in prefrences_savefile.
+  stanalbatross:
+  - bugfix: you can no longer build windows on the same tile as an m56d, this will
+      prevent abuse via firing "through" a window on the same tile as you
+  - bugfix: m2cs can no longer be built on top of each other
+  - qol: you can now rotate windows with alt-click
+  - bugfix: fixed a bug with the pred mask where it would not properly remove vision
+      filters from people wearing it when turned off/taken off
+  - refactor: refactored pred mask HUD/effects application code
+  - qol: abovehead emotes now use smaller chat + a small blue asterisk before them,
+      which makes them much easier to read
+  - qol: added a setting to turn off seeing abovehead emotes
+  - qol: added abovehead chat settings to the setup settings section
+  - bugfix: abovehead emotes no longer inherit size and boldness from their user
+2022-08-12:
+  Jeser:
+  - qol: Supply and logistics workers, rejoice! Ammo boxes became stackable. Regular
+      ammo boxes can be stacked up to 2 per tile, miscellaneous supply boxes (flares
+      and MREs, currently) up to 4 per tile. No stacking for nail gun ammo, because
+      of a snowflake sprite.
+  - qol: Added flare box overlay to make it easier to separate MRE from flare boxes.
+  - balance: Reworked how explosion happens when flaming ammo boxes.
+  - code_imp: Explosion level scales with amount of rounds inside. Boxes will not
+      explode until amount of rounds inside won't reach a certain threshold. Fully
+      filled boxes explode harder now.
+  - code_imp: After being flamed, boxes now spend some time being on fire before they
+      will be deleted or explode, during which they receive a new on fire overlay.
+      This time is also based on amount of ammo in the box. If the box is going to
+      blow up, overlay will be slightly different to indicate that.
+  - imageadd: New sprites include burning and burning, going to explode overlays as
+      well as M94 flare box markings overlay.
+  johnravioliUSA:
+  - bugfix: The M276 Pattern Ammo Load Rig is now under the belts section of the Surplus
+      Uniform Vendor inside the squad prep room.
+2022-08-13:
+  ChainsawMullet:
+  - rscdel: Warrior's Boxer strain has been removed.
+  Shad0vvs:
+  - bugfix: Fixed the pred mask to have the proper huds attached.
+  stanalbatross:
+  - ui: cryopods now use tgui
+  - rscadd: cryopods now have a toggleable auto-eject function. They will auto-eject
+      dead and fully healed people
+  - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
+2022-08-14:
+  Diegoflores31:
+  - bugfix: Bodyscanner no longer dissapears marines if they hop inside at the same
+      time.
+  Joe Lampost:
+  - bugfix: Fixed the plasma caster being able to be deleted by explosions which breaks
+      it completely if it happens
+  - bugfix: Corrected some weird spelling of human in the scalping code
+  - soundadd: added three new pain screams for preds
+  Nanu:
+  - bugfix: Fixes a minor issue with MDB. Remember case sensitive stuff.
+  SpartanBobby:
+  - balance: VP78 Now costs 15 points in PFC vendor
+  - balance: VP78 Now has the lore accurate 18 magazine capacity instead of 14
+  - balance: VP78 Now has the lore-accurate pre-attached laser sight
+  - balance: VP78 Now has falloff 5 from falloff 7, one more than the MK2
+  Tisx:
+  - balance: Changed Multi-Purpose ammo count and bullets per burst to match Anti-Tank's.
+  stanalbatross:
+  - ui: overhauled the command tablet to use tgui
+  - ui: area power controllers, more commonly known as APCs, now use TGUI.
+  - ui: SMESes also now use TGUI
+  - ui: changed the research door control UI from HTML to TGUI
+  - ui: changed the filtration console UI from HTML to TGUI
+  - ui: changed the binoculars UI from HTML to TGUI
+  - ui: changed the AA cannon UI from HTML to TGUI
+  - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"
+  - rscadd: shooting bottles will now cause them to break
+  - rscadd: gave glasses the same shattering mechanics as bottles
+  - bugfix: BEs will now actually fire bullets again

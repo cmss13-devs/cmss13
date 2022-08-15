@@ -31,9 +31,9 @@ if grep -P '/obj/structure/cable(/\w+)+\{' maps/**/*.dmm;	then
     echo "ERROR: vareditted cables detected, please remove them."
     st=1
 fi;
-if grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' maps/**/*.dmm ||
-	grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' maps/**/*.dmm ||
-	grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' maps/**/*.dmm ;	then
+if grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' maps/**/*.dmm ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' maps/**/*.dmm ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' maps/**/*.dmm ;	then
 	echo
     echo "ERROR: found an APC with a manually set pixel_x or pixel_y that is not +-25."
     st=1

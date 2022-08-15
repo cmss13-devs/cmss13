@@ -21575,7 +21575,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1
 	},
 /turf/open/gm/dirt,

@@ -66,15 +66,25 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles)
+/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles = list("langchat"))
 	langchat_drop_image()
 	langchat_make_image(override_color)
-
+	var/image/r_icon
+	var/use_mob_style = TRUE
 	var/text_to_display = message
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
 	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS + 2 SECONDS
-	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [langchat_styles] langchat'>[text_to_display]</span>"
+	if(additional_styles.Find("emote"))
+		additional_styles.Remove("emote")
+		use_mob_style = FALSE
+		r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "emote")
+	else if(additional_styles.Find("virtual-speaker"))
+		additional_styles.Remove("virtual-speaker")
+		r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "radio")
+	if(r_icon)
+		text_to_display = "\icon[r_icon]&zwsp;[text_to_display]"
+	text_to_display = "<span class='center [additional_styles != null ? additional_styles.Join(" ") : ""] [use_mob_style ? langchat_styles : ""] langchat'>[text_to_display]</span>"
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH

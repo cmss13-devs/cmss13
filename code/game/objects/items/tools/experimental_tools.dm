@@ -289,3 +289,198 @@
 		else
 			end_cpr()
 			return PROCESS_KILL
+
+/obj/item/tool/portadialysis
+	name = "portable dialysis machine"
+	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
+	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon_state = "portadialysis"
+	item_state = "syringe_0"
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_MEDIUM
+	var/attaching = FALSE
+	var/filtering = FALSE
+	var/mob/living/carbon/human/attached = null
+	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 2 SECONDS)
+	var/obj/item/cell/pdcell = null
+	var/filter_cost = AMOUNT_PER_TIME(20, 2 SECONDS)
+	var/blood_cost = AMOUNT_PER_TIME(12, 2 SECONDS)
+	var/attach_time = 1.2 SECONDS
+
+/obj/item/tool/portadialysis/Initialize(mapload, ...)
+	. = ..()
+
+	pdcell = new/obj/item/cell(src) //has 1000 charge
+	update_icon()
+
+/obj/item/tool/portadialysis/update_icon(var/detaching = FALSE)
+	overlays.Cut()
+	if(attached)
+		overlays += "+hooked"
+	else
+		overlays += "+unhooked"
+
+	if(detaching)
+		overlays += "+draining"
+		addtimer(CALLBACK(src, .proc/update_icon), attach_time)
+
+	else if(attaching)
+		overlays += "+filling"
+		overlays += "+running"
+
+	else if(filtering)
+		overlays += "+running"
+		overlays += "+filtering"
+
+	if(pdcell && pdcell.charge)
+		switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+			if(85 to INFINITY)
+				overlays += "dialysis_battery_100"
+			if(60 to 84)
+				overlays += "dialysis_battery_85"
+			if(45 to 59)
+				overlays += "dialysis_battery_60"
+			if(30 to 44)
+				overlays += "dialysis_battery_45"
+			if(15 to 29)
+				overlays += "dialysis_battery_30"
+			if(1 to 14)
+				overlays += "dialysis_battery_15"
+			else
+				overlays += "dialysis_battery_0"
+
+/obj/item/tool/portadialysis/examine(mob/user)
+	..()
+	var/currentpercent = 0
+	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
+	to_chat(user, SPAN_INFO("It has [currentpercent]% charge left in its internal battery."))
+
+/obj/item/tool/portadialysis/proc/painful_detach()
+	if(!attached)	//sanity
+		return
+	attached.visible_message(SPAN_WARNING("\The [src]'s needle is ripped out of [attached], doesn't that hurt?"))
+	to_chat(attached, SPAN_WARNING("Ow! A needle is ripped out of you!"))
+	damage_arms(attached)
+	if(attached.pain.feels_pain)
+		attached.emote("scream")
+	attached = null
+	filtering = FALSE
+	attaching = FALSE
+	update_icon(TRUE)
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/tool/portadialysis/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
+	if(!isHumanStrict(target))
+		return ..()
+
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+		return
+
+	if(!pdcell || pdcell.charge == 0)
+		to_chat(user, SPAN_NOTICE("\The [src] flashes its 'battery low' light, and refuses to attach."))
+		return
+
+	if(ishuman(user))
+		if(user.stat || user.blinded || user.lying)
+			return
+
+		if(attaching)
+			return
+
+		if(attached && !(target == attached)) //are we already attached to something that isn't the target?
+			to_chat(user, SPAN_WARNING("You're already using \the [src] on someone else!"))
+			return
+
+		if(target == attached) //are we attached to the target?
+			user.visible_message("[user] detaches \the [src] from [attached].", \
+			"You detach \the [src] from [attached].")
+			attached = null
+			filtering = FALSE
+			attaching = FALSE
+			update_icon(TRUE)
+			STOP_PROCESSING(SSobj, src)
+			return
+
+		else
+			//check for if they actually have arms...
+			var/obj/limb/l_arm = target.get_limb("l_arm")
+			var/obj/limb/r_arm = target.get_limb("r_arm")
+			if((l_arm.status & LIMB_DESTROYED) && (r_arm.status & LIMB_DESTROYED))
+				to_chat(user, SPAN_WARNING("[target] has no arms to attach \the [src] to!"))
+				return
+
+			attaching = TRUE
+			update_icon()
+			to_chat(target, SPAN_DANGER("[user] is trying to attach \the [src] to you!"))
+			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."), \
+				SPAN_WARNING("You start setting up \the [src]'s needle on [target]'s arm."))
+			if(!do_after(user, attach_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."), \
+				SPAN_WARNING("You stop setting up \the [src]'s needle on [target]'s arm."))
+				visible_message("\The [src]'s tubing snaps back onto the machine frame.")
+				attaching = FALSE
+				update_icon()
+				return
+
+			user.visible_message("[user] attaches \the [src] to [target].", \
+			"You attach \the [src] to [target].")
+			attached = target
+			filtering = TRUE
+			attaching = FALSE
+			update_icon()
+			START_PROCESSING(SSobj, src)
+			return
+
+/obj/item/tool/portadialysis/dropped(mob/user)
+	if(attached)
+		painful_detach()
+	. = ..()
+
+
+/obj/item/tool/portadialysis/process(delta_time)
+	if(!attached)
+		return
+
+	if(get_dist(src, attached) > 1)
+		painful_detach()
+		return
+
+	if(!pdcell || pdcell.charge == 0)
+		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached], blinking its 'battery low' light."))
+		attached = null
+		filtering = FALSE
+		update_icon(TRUE)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	var/obj/limb/l_arm = attached.get_limb("l_arm")
+	var/obj/limb/r_arm = attached.get_limb("r_arm")
+	if((l_arm.status & LIMB_DESTROYED) && (r_arm.status & LIMB_DESTROYED))
+		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached] - \he has no arms to attach to!."))
+		attached = null
+		filtering = FALSE
+		update_icon(TRUE)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(filtering)
+		attached.reagents.remove_any_but("blood", reagent_removed_per_second*delta_time)
+		attached.take_blood(attached, blood_cost*delta_time)
+		if(attached.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+			visible_message("\The [src] beeps loudly.")
+		pdcell.use(filter_cost*delta_time)
+
+	updateUsrDialog()
+	update_icon()
+
+/obj/item/tool/portadialysis/proc/damage_arms(var/mob/living/carbon/human/human_to_damage)
+	var/obj/limb/l_arm = human_to_damage.get_limb("l_arm")
+	var/obj/limb/r_arm = human_to_damage.get_limb("r_arm")
+	var/list/arms_to_damage = list(l_arm, r_arm)
+	if(l_arm.status & LIMB_DESTROYED)
+		arms_to_damage -= l_arm
+	if(r_arm.status & LIMB_DESTROYED)
+		arms_to_damage -= r_arm
+	if(arms_to_damage.len)
+		human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))

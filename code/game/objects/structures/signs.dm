@@ -113,7 +113,7 @@
 
 /obj/structure/sign/safety
 	name = "sign"
-	icon = 'icons/obj/structures/props/Semiotic_Standard.dmi'
+	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
 	anchored = 1
 	opacity = 0

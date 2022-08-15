@@ -107,7 +107,7 @@
 	icon_state = "yaut";
 	name = "alien sarcophagus"
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1;
 	color = "#880808";
 	desc = "A clan mask of uncertain origin, whoever wore it must have been cruel and sadistic.";

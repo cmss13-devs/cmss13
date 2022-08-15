@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	unacidable = TRUE
 	var/cryotype = "REQ"
 	var/mode = null
+	var/z_restricted = TRUE
 
 /obj/structure/machinery/computer/cryopod/medical
 	cryotype = "Med"
@@ -47,12 +48,17 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	z_restricted = FALSE
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
 
 /obj/structure/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(inoperable())
+		return
+
+	if(z_restricted && !is_mainship_level(src))
+		to_chat(user, SPAN_WARNING("\The [src] cannot connect to the cryo bay system off the [MAIN_SHIP_NAME]!"))
 		return
 
 	user.set_interaction(src)

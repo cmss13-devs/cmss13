@@ -1,0 +1,887 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"au" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
+	},
+/area/template_noop)
+"cv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Greenhouse Storage"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Library";
+	name = "\improper Library Shutters"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"dF" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
+	},
+/area/template_noop)
+"dL" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"eh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
+	},
+/area/template_noop)
+"ei" = (
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"fe" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"fo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ho" = (
+/turf/closed/wall/solaris/reinforced,
+/area/template_noop)
+"hF" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
+	},
+/area/template_noop)
+"hL" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/chicken,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"hT" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"iQ" = (
+/turf/closed/wall/solaris,
+/area/template_noop)
+"kv" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/elpresidente,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"lH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/plaguedoctor,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"mn" = (
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -30
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/pizzabox/vegetable,
+/obj/item/pizzabox/vegetable,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"nn" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner/dnd,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"nI" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/scratch,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"nR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/pirate,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"oh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"pk" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/pizzabox/margherita,
+/obj/item/pizzabox/margherita,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"pr" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
+	},
+/area/template_noop)
+"pJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/template_noop)
+"qF" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Library";
+	name = "\improper Library Shutters"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"qK" = (
+/obj/structure/machinery/door_control{
+	id = "Library";
+	name = "Storm Shutters";
+	pixel_x = 32
+	},
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/highlander,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ue" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/structure/machinery/power/apc,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ww" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
+	},
+/area/template_noop)
+"xd" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
+	},
+/area/template_noop)
+"xx" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/commie,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"xz" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/dnd,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"yw" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Library";
+	name = "\improper Library Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"yx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/template_noop)
+"yT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/pizzabox/meat,
+/obj/item/pizzabox/meat,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"zc" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/pen/clicky,
+/obj/item/paper{
+	name = "Pinwizard Data Sheet"
+	},
+/obj/item/toy/dice/d20,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Bl" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Bp" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/random,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Cg" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/pizzabox/mushroom,
+/obj/item/pizzabox/mushroom,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ES" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper{
+	name = "Pinwizard Data Sheet"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/toy/dice/d20,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"EX" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	tag = ""
+	},
+/obj/effect/landmark/survivor_spawner/dnd,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Fm" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/template_noop)
+"FH" = (
+/obj/effect/landmark/survivor_spawner/dnd,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Gt" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"GW" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/largecrate/merc/clothing,
+/obj/structure/largecrate/merc/clothing,
+/obj/structure/largecrate/merc/clothing,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Hu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"HT" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"HY" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Jb" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/largecrate/merc,
+/obj/structure/largecrate/merc,
+/obj/structure/largecrate/merc,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"JM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Library Backroom"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"JU" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/beer_pack,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Kj" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
+	},
+/area/template_noop)
+"Kz" = (
+/obj/structure/machinery/camera/autoname,
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/butler,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Lx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
+	},
+/area/template_noop)
+"Mh" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_box/magazine/shotgun/buckshot,
+/obj/item/ammo_box/magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"MF" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Library";
+	name = "\improper Library Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"Nm" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
+	},
+/area/template_noop)
+"NE" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"NI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Oe" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/template_noop)
+"Oi" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"OZ" = (
+/obj/structure/machinery/cm_vending/sorted/walkman,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Pp" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Rh" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Rj" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/toy/dice/d20,
+/obj/item/tool/pen/clicky,
+/obj/item/paper{
+	name = "Pinwizard Data Sheet"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Ro" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clothing/suit/imperium_monk,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"RD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Ss" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
+	},
+/area/template_noop)
+"SW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Tq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Library"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Library";
+	name = "\improper Library Shutters"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Tz" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/gladiator,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Uh" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
+	},
+/area/template_noop)
+"Vc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
+	},
+/area/template_noop)
+"Wf" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldpack,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Wz" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/costume/prig,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"WR" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/snacks/sliceable/cheesecake,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"YF" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ZD" = (
+/obj/structure/bookcase,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ZJ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
+	},
+/area/template_noop)
+"ZV" = (
+/obj/structure/bookcase/manuals/medical,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+
+(1,1,1) = {"
+ho
+ho
+ho
+ho
+cv
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+"}
+(2,1,1) = {"
+ho
+Pp
+Pp
+Pp
+SW
+JU
+pk
+Cg
+mn
+yT
+OZ
+Mh
+Jb
+GW
+Bl
+Wf
+ho
+"}
+(3,1,1) = {"
+ho
+nI
+HT
+HT
+NI
+FH
+Oi
+Oi
+FH
+Oi
+FH
+HT
+FH
+HT
+FH
+fe
+yw
+"}
+(4,1,1) = {"
+ho
+Bp
+HT
+oh
+HY
+Ss
+Kj
+Kj
+Kj
+Lx
+hF
+ww
+ww
+ww
+pr
+fe
+yw
+"}
+(5,1,1) = {"
+ho
+Wz
+HT
+fo
+Oi
+dF
+Oe
+Oe
+Oe
+Fm
+yx
+pJ
+pJ
+Nm
+eh
+Gt
+ho
+"}
+(6,1,1) = {"
+ho
+YF
+HT
+NI
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Pp
+ZD
+Uh
+Vc
+hT
+Tq
+"}
+(7,1,1) = {"
+ho
+RD
+lH
+nR
+qK
+Tz
+nn
+zc
+Rj
+xz
+Oi
+HT
+HT
+Uh
+au
+NE
+qF
+"}
+(8,1,1) = {"
+ho
+JM
+iQ
+iQ
+iQ
+hL
+nn
+ES
+zc
+xz
+Oi
+ZV
+ZD
+Uh
+au
+Gt
+ho
+"}
+(9,1,1) = {"
+ho
+SW
+Rh
+Ro
+iQ
+Kz
+Oi
+Oi
+Oi
+Oi
+Oi
+ei
+ZD
+xd
+ZJ
+fe
+yw
+"}
+(10,1,1) = {"
+ho
+ue
+Hu
+EX
+iQ
+xx
+kv
+ab
+ab
+WR
+ab
+ab
+dL
+ab
+ab
+fe
+yw
+"}
+(11,1,1) = {"
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+MF
+MF
+ho
+MF
+MF
+ho
+MF
+MF
+ho
+ho
+"}

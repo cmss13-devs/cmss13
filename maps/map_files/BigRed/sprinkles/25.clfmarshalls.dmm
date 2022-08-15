@@ -1,0 +1,2689 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aw" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"aM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"aR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"aW" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window/brigdoor/westright,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"bn" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper/Court,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"bB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"bD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"bX" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ca" = (
+/obj/structure/surface/table,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldpack,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/tool/weldingtool,
+/obj/item/tool/weldpack,
+/turf/open/floor,
+/area/template_noop)
+"cd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"cg" = (
+/obj/structure/barricade/metal/wired,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"ch" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"co" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor,
+/area/template_noop)
+"cA" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/template_noop)
+"di" = (
+/obj/effect/landmark/corpsespawner/security,
+/obj/item/ammo_casing/bullet,
+/obj/item/attachable/scope/mini,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"dm" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/recharger,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"dO" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"ec" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor,
+/area/template_noop)
+"eh" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"et" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor,
+/area/template_noop)
+"eF" = (
+/turf/closed/wall/solaris/reinforced,
+/area/template_noop)
+"eU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"fe" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"fq" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor,
+/area/template_noop)
+"fF" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"fK" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"fP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"gp" = (
+/obj/structure/machinery/flasher/portable,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"gs" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"gL" = (
+/obj/structure/filingcabinet,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"gM" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"gP" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"gX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor,
+/area/template_noop)
+"hn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/bayonet,
+/turf/open/floor,
+/area/template_noop)
+"hr" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"hV" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/camera,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ia" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"jC" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	icon_state = "plasteel_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"jQ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"jT" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"ki" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"kl" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"kq" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"kC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/template_noop)
+"kE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"kL" = (
+/obj/structure/filingcabinet/security,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"kN" = (
+/obj/effect/landmark/corpsespawner/security/liaison,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"le" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/security/wooden_tv,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"lu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor,
+/area/template_noop)
+"lz" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"lP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"lT" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor,
+/area/template_noop)
+"mi" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/flask/detflask,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"mt" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"mC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"mL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor,
+/area/template_noop)
+"mY" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor,
+/area/template_noop)
+"mZ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor,
+/area/template_noop)
+"nd" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/attachable/lasersight,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"ne" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"ng" = (
+/obj/structure/closet/l3closet/security,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"nm" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/attachable/lasersight,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"ns" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"nL" = (
+/turf/open/mars,
+/area/template_noop)
+"nP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor,
+/area/template_noop)
+"nQ" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"nS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"nT" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"oi" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating,
+/area/template_noop)
+"pg" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"ph" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"pl" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"pF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor,
+/area/template_noop)
+"pI" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"pJ" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor,
+/area/template_noop)
+"pV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor,
+/area/template_noop)
+"qa" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"qg" = (
+/obj/structure/surface/table,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"qm" = (
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"qs" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"qA" = (
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor,
+/area/template_noop)
+"qJ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor,
+/area/template_noop)
+"qP" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"rh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"rk" = (
+/obj/structure/machinery/door_control{
+	id = "Marshal Offices";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/template_noop)
+"ro" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"rv" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/surgical,
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"rB" = (
+/turf/closed/wall/solaris/rock,
+/area/template_noop)
+"rH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/heavy_barrel,
+/turf/open/floor,
+/area/template_noop)
+"rS" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"rZ" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"sc" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_2"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"sf" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/weapon/shield/riot,
+/turf/closed/wall/solaris/reinforced,
+/area/template_noop)
+"so" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"sp" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"st" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"sv" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"sY" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor,
+/area/template_noop)
+"te" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 30
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/template_noop)
+"tC" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"tH" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/camera_film,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"tN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor,
+/area/template_noop)
+"tO" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor,
+/area/template_noop)
+"um" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"ut" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"uv" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"uJ" = (
+/obj/structure/window_frame/solaris,
+/turf/open/floor/plating,
+/area/template_noop)
+"vg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"vi" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"vu" = (
+/obj/item/attachable/verticalgrip,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"vY" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"wo" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = -32
+	},
+/obj/structure/bed,
+/turf/open/floor,
+/area/template_noop)
+"wq" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"wv" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"xe" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor,
+/area/template_noop)
+"xw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/template_noop)
+"xy" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"xC" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"xE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"xF" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor,
+/area/template_noop)
+"xH" = (
+/obj/structure/surface/rack,
+/turf/open/floor,
+/area/template_noop)
+"xV" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor,
+/area/template_noop)
+"yg" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor,
+/area/template_noop)
+"yu" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor,
+/area/template_noop)
+"yz" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"yJ" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/solaris,
+/area/template_noop)
+"yN" = (
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"yP" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/template_noop)
+"za" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"zi" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor,
+/area/template_noop)
+"zo" = (
+/obj/structure/bookcase/manuals/engineering,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"zS" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor,
+/area/template_noop)
+"Ac" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"AH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor,
+/area/template_noop)
+"AI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"AV" = (
+/obj/structure/machinery/camera/autoname,
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/hunting,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Be" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/template_noop)
+"Bl" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"Bz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Ck" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor,
+/area/template_noop)
+"Cw" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"CB" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor,
+/area/template_noop)
+"Dc" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/template_noop)
+"Dk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Dq" = (
+/turf/open/floor,
+/area/template_noop)
+"DA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"DN" = (
+/obj/structure/machinery/door_control{
+	id = "Marshal Offices";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"DV" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor,
+/area/template_noop)
+"Fd" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"Fz" = (
+/obj/structure/bed/chair,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor,
+/area/template_noop)
+"FL" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"FO" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "rampbottom";
+	tag = "icon-rampbottom"
+	},
+/area/template_noop)
+"FQ" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/template_noop)
+"Ga" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"Gi" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Gj" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"GF" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "floor4";
+	tag = "icon-floor4"
+	},
+/area/template_noop)
+"GT" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Office Complex 2";
+	name = "\improper Marshal Office Complex Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"GW" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/bronze,
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"GY" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor,
+/area/template_noop)
+"He" = (
+/turf/closed/wall/solaris,
+/area/template_noop)
+"Hj" = (
+/obj/structure/pipes/vents/pump/on,
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/turf/open/floor,
+/area/template_noop)
+"HE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor,
+/area/template_noop)
+"HJ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/attachable/heavy_barrel,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/template_noop)
+"HQ" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -8
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = -8;
+	pixel_x = 7
+	},
+/turf/open/floor,
+/area/template_noop)
+"HU" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_y = 3;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = -6
+	},
+/turf/open/floor,
+/area/template_noop)
+"IC" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"IY" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/template_noop)
+"Jl" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Jx" = (
+/obj/structure/sign/poster/clf,
+/turf/closed/wall/solaris/reinforced,
+/area/template_noop)
+"JA" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"JH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"JJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"JY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/template_noop)
+"Kg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Kq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Kz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"KC" = (
+/turf/open/floor{
+	icon_state = "rampbottom";
+	tag = "icon-rampbottom"
+	},
+/area/template_noop)
+"KK" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"Lu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"Ly" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"LE" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "Office Complex 2";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"LF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"LH" = (
+/obj/structure/closet/l3closet/security,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"LZ" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/tank/anesthetic,
+/obj/effect/landmark/corpsespawner/security,
+/obj/structure/bed,
+/turf/open/floor,
+/area/template_noop)
+"MU" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"MV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/template_noop)
+"Ni" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"No" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/template_noop)
+"Nu" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"NF" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"NG" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"NY" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"OD" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"OL" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 4;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = 1;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/obj/item/ammo_magazine/rifle/mar40/extended{
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/open/floor,
+/area/template_noop)
+"ON" = (
+/obj/structure/bed,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"OR" = (
+/obj/structure/machinery/power/apc,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"OU" = (
+/obj/structure/closet/secure_closet/detective,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Pa" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/template_noop)
+"Po" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"Pq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"Pu" = (
+/obj/structure/machinery/alarm{
+	dir = 1;
+	pixel_y = -30;
+	tag = "icon-alarm0 (NORTH)"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"PT" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor,
+/area/template_noop)
+"Qs" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/weapon/gun/pistol/holdout{
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 6;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/turf/open/floor,
+/area/template_noop)
+"Qy" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/obj/structure/window_frame/solaris,
+/turf/closed/wall/solaris/reinforced,
+/area/template_noop)
+"QS" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"Rk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4;
+	icon_state = "plasteel_2"
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"RC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor,
+/area/template_noop)
+"RL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"Sb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/template_noop)
+"Sm" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Sr" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"SJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor,
+/area/template_noop)
+"SR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_2"
+	},
+/obj/structure/closet/secure_closet/marshal,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Ta" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"Tl" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor,
+/area/template_noop)
+"To" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor,
+/area/template_noop)
+"TA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/attachable/heavy_barrel,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"TU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/verticalgrip,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"TV" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/turf/open/floor,
+/area/template_noop)
+"Uc" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_y = 9
+	},
+/turf/open/floor,
+/area/template_noop)
+"Uv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"UJ" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Marshal Office Holding Cell";
+	req_access = null
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"UK" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clothing/head/det_hat,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Vb" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Vs" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"VQ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Xg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor,
+/area/template_noop)
+"Xj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor{
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"Xv" = (
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor,
+/area/template_noop)
+"XJ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/template_noop)
+"XL" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"XM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2"
+	},
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"XX" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"XZ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"Yq" = (
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"Yt" = (
+/obj/structure/barricade/metal/wired,
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/effect/landmark/survivor_spawner/bigred_clf,
+/obj/item/attachable/lasersight,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/template_noop)
+"YA" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	name = "Emergency NanoMed";
+	pixel_x = 30;
+	req_access = null
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/template_noop)
+"YN" = (
+/obj/structure/machinery/door_control{
+	id = "garage";
+	name = "Garage Shutters";
+	pixel_x = 26;
+	range = 500
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
+"YZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/template_noop)
+"ZA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/attachable/verticalgrip,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/template_noop)
+"ZB" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/template_noop)
+"ZD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor,
+/area/template_noop)
+"ZX" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/good_item,
+/turf/open/floor,
+/area/template_noop)
+
+(1,1,1) = {"
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+uJ
+aW
+uJ
+eF
+XX
+Po
+Pu
+eF
+eF
+eF
+eF
+"}
+(2,1,1) = {"
+rB
+nL
+nL
+eF
+gp
+sv
+sv
+sv
+eF
+SR
+fP
+sc
+gP
+uJ
+um
+bD
+uv
+uJ
+Gi
+xC
+eF
+"}
+(3,1,1) = {"
+rB
+nL
+nL
+eF
+LH
+sp
+Be
+Gj
+eF
+qg
+XJ
+NG
+Yt
+uJ
+di
+bD
+Lu
+UJ
+Gi
+Vb
+eF
+"}
+(4,1,1) = {"
+rB
+nL
+nL
+eF
+ng
+vu
+Sm
+st
+eF
+ro
+st
+ch
+Nu
+rS
+um
+YZ
+ut
+uJ
+Gi
+ON
+eF
+"}
+(5,1,1) = {"
+nL
+nL
+nL
+eF
+ng
+Bz
+pI
+sp
+eF
+AV
+Bz
+TU
+FQ
+uJ
+RL
+YZ
+Xj
+eF
+eF
+eF
+eF
+"}
+(6,1,1) = {"
+nL
+nL
+nL
+eF
+No
+um
+rZ
+OR
+eF
+aw
+JY
+ch
+Nu
+uJ
+LF
+Po
+mC
+yP
+rk
+cA
+eF
+"}
+(7,1,1) = {"
+nL
+nL
+nL
+eF
+pg
+Dk
+ia
+Vb
+eF
+hr
+vg
+JJ
+cg
+uJ
+wv
+Uv
+cd
+uJ
+xw
+Dc
+eF
+"}
+(8,1,1) = {"
+nL
+nL
+nL
+eF
+No
+kC
+Jl
+XM
+pl
+TA
+qs
+fF
+Kg
+pl
+ZA
+mY
+ut
+Jx
+uJ
+uJ
+eF
+"}
+(9,1,1) = {"
+nL
+nL
+nL
+eF
+vi
+nm
+aR
+NG
+eF
+JH
+Vs
+aM
+rh
+eF
+wv
+gX
+Ga
+AH
+Sb
+pV
+ZD
+"}
+(10,1,1) = {"
+eF
+eF
+eF
+eF
+eF
+eF
+sf
+eF
+eF
+eF
+uJ
+bB
+uJ
+Jx
+ph
+YZ
+mC
+mZ
+Dq
+pF
+mZ
+"}
+(11,1,1) = {"
+eF
+wo
+LZ
+KK
+vY
+AI
+Dq
+tO
+uJ
+Dq
+Dq
+Po
+Dq
+eF
+wv
+bD
+QS
+Jx
+eF
+eF
+eF
+"}
+(12,1,1) = {"
+eF
+fq
+ec
+Xv
+hn
+Dq
+SJ
+co
+mZ
+Dq
+Dq
+lu
+co
+mZ
+wv
+xE
+qm
+uJ
+Gi
+xC
+eF
+"}
+(13,1,1) = {"
+eF
+xH
+Dq
+Pa
+kE
+tN
+MV
+PT
+uJ
+pJ
+zi
+YZ
+sY
+eF
+JA
+YZ
+nd
+Kq
+Gi
+Vb
+eF
+"}
+(14,1,1) = {"
+eF
+rv
+nS
+dO
+ns
+nT
+qa
+GF
+uJ
+CB
+Dq
+Po
+ZX
+eF
+te
+Rk
+YA
+uJ
+Gi
+ON
+eF
+"}
+(15,1,1) = {"
+eF
+eF
+oi
+oi
+oi
+eF
+eF
+eF
+Jx
+ca
+Dq
+HE
+ZX
+eF
+eF
+et
+eF
+eF
+eF
+eF
+eF
+"}
+(16,1,1) = {"
+eF
+gL
+le
+dm
+wq
+DN
+uJ
+xF
+Dq
+kE
+RC
+Po
+TV
+He
+Pa
+za
+kE
+eh
+gs
+gs
+eF
+"}
+(17,1,1) = {"
+Ta
+kL
+wq
+mi
+FL
+jT
+Jx
+Dq
+Dq
+rH
+kE
+Po
+Dq
+He
+gs
+Ly
+XZ
+tN
+gs
+qJ
+MU
+"}
+(18,1,1) = {"
+Ta
+kq
+NF
+GW
+Yq
+Yq
+fe
+Dq
+kE
+Fz
+Hj
+OL
+yg
+He
+ZB
+Ni
+ZB
+Dq
+ZB
+ZB
+eF
+"}
+(19,1,1) = {"
+Ta
+zo
+wq
+UK
+FL
+jT
+Jx
+Dq
+RC
+Fz
+Uc
+Qs
+yg
+yJ
+NY
+Sr
+Dq
+xe
+NY
+qP
+Qy
+"}
+(20,1,1) = {"
+eF
+OU
+YN
+wq
+wq
+jT
+uJ
+Dq
+Dq
+Fz
+HQ
+lT
+yg
+He
+mt
+lz
+gM
+Pa
+mt
+mt
+eF
+"}
+(21,1,1) = {"
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+DV
+Dq
+Fz
+yu
+zS
+yg
+He
+Dq
+Xg
+Dq
+kE
+kE
+PT
+MU
+"}
+(22,1,1) = {"
+nL
+nL
+nL
+nL
+nL
+nL
+eF
+Tl
+Dq
+Fz
+To
+HU
+yg
+He
+kE
+Fd
+bn
+Bl
+yz
+kE
+eF
+"}
+(23,1,1) = {"
+nL
+nL
+nL
+nL
+nL
+nL
+eF
+Tl
+qA
+Ck
+Dq
+Po
+xV
+He
+MV
+FO
+kl
+IY
+KC
+Dq
+eF
+"}
+(24,1,1) = {"
+nL
+nL
+nL
+nL
+nL
+nL
+eF
+eF
+eF
+eF
+Dq
+Po
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+"}
+(25,1,1) = {"
+nL
+nL
+nL
+nL
+nL
+nL
+nL
+nL
+nL
+eF
+Dq
+Po
+uJ
+XL
+wq
+bX
+LE
+DA
+hV
+tH
+eF
+"}
+(26,1,1) = {"
+rB
+rB
+nL
+nL
+nL
+nL
+nL
+nL
+nL
+eF
+Dq
+Pq
+Jx
+wq
+nQ
+kN
+nQ
+nQ
+ki
+Kz
+eF
+"}
+(27,1,1) = {"
+rB
+rB
+rB
+nL
+nL
+nL
+nL
+nL
+nL
+Jx
+Dq
+mL
+ZD
+jC
+eU
+fK
+lP
+lP
+ne
+IC
+eF
+"}
+(28,1,1) = {"
+rB
+rB
+rB
+rB
+nL
+nL
+nL
+nL
+nL
+mZ
+nP
+kE
+Jx
+wq
+yN
+ki
+yN
+HJ
+yN
+Cw
+eF
+"}
+(29,1,1) = {"
+rB
+rB
+rB
+rB
+nL
+nL
+nL
+nL
+nL
+mZ
+GY
+kE
+uJ
+jQ
+Ac
+yN
+nQ
+yN
+yN
+wq
+eF
+"}
+(30,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+nL
+nL
+nL
+nL
+Jx
+xV
+kE
+uJ
+xy
+OD
+VQ
+tC
+VQ
+tC
+so
+eF
+"}
+(31,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+nL
+nL
+nL
+nL
+eF
+eF
+eF
+eF
+GT
+GT
+GT
+GT
+GT
+GT
+GT
+eF
+"}

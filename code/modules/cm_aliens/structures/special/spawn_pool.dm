@@ -137,12 +137,6 @@
 	if(!iterations)
 		vis_contents.Cut()
 
-		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-			if(isitem(A))
-				var/obj/item/item = A
-				if(item.is_objective)
-					item.forceMove(get_step(loc, pick(alldirs)))
-
 		QDEL_NULL(melting_body)
 	else
 		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)

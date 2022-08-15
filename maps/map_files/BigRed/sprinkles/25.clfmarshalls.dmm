@@ -14,7 +14,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/space)
+/area/template_noop)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22,7 +22,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "aR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal/wired{
@@ -32,7 +32,7 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "aW" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
@@ -40,14 +40,14 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "bn" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper/Court,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "bB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -57,7 +57,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "bD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -65,7 +65,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "bX" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -73,7 +73,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ca" = (
 /obj/structure/surface/table,
 /obj/item/tool/weldingtool,
@@ -83,7 +83,7 @@
 /obj/item/tool/weldingtool,
 /obj/item/tool/weldpack,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "cd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal/wired{
@@ -92,27 +92,27 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "cg" = (
 /obj/structure/barricade/metal/wired,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ch" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "co" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "cA" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -121,7 +121,7 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "di" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/item/ammo_casing/bullet,
@@ -130,34 +130,34 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "dm" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "dO" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ec" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "eh" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "et" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -165,10 +165,10 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "eF" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/medical)
+/area/template_noop)
 "eU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
@@ -176,20 +176,20 @@
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "fe" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "fq" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "fF" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -197,14 +197,14 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "fK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "fP" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -213,31 +213,31 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gp" = (
 /obj/structure/machinery/flasher/portable,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gs" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gL" = (
 /obj/structure/filingcabinet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gM" = (
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gP" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -248,19 +248,19 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "gX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "hn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/bayonet,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "hr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -271,14 +271,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "hV" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ia" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -286,7 +286,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "jC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired{
@@ -297,7 +297,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "jQ" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -305,19 +305,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "jT" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ki" = (
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kl" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -329,13 +329,13 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kq" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
@@ -344,29 +344,38 @@
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kL" = (
 /obj/structure/filingcabinet/security,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "kN" = (
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "le" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/security/wooden_tv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
+"lu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor,
+/area/template_noop)
 "lz" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -376,13 +385,13 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "lP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "lT" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -410,21 +419,21 @@
 	},
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mi" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/flask/detflask,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mt" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
@@ -435,32 +444,32 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mY" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "mZ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nd" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/attachable/lasersight,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ne" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -468,21 +477,21 @@
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ng" = (
 /obj/structure/closet/l3closet/security,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nm" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/attachable/lasersight,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ns" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/fire,
@@ -491,10 +500,10 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nL" = (
 /turf/open/mars,
-/area/bigredv2/outside/n)
+/area/template_noop)
 "nP" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -503,13 +512,13 @@
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nQ" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/adv,
@@ -518,7 +527,7 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "nT" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -531,11 +540,11 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "oi" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pg" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
@@ -543,7 +552,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ph" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -552,7 +561,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -560,26 +569,26 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pI" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pJ" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/plasteel/large_stack,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "pV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -587,7 +596,7 @@
 	icon_state = "metal_2"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qa" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/toxin,
@@ -596,29 +605,29 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qg" = (
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qm" = (
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qA" = (
 /obj/item/attachable/attached_gun/flamer,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qJ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -626,7 +635,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/metal/wired,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "qP" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -635,7 +644,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal/wired{
@@ -649,7 +658,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rk" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -661,7 +670,7 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ro" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/surface/table,
@@ -676,7 +685,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/surgical,
@@ -684,22 +693,22 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rB" = (
 /turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
+/area/template_noop)
 "rH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/heavy_barrel,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rS" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "rZ" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -708,7 +717,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "sc" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8;
@@ -718,12 +727,12 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "sf" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/weapon/shield/riot,
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "so" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -733,26 +742,26 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "sp" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "st" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "sv" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "sY" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -761,7 +770,7 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "te" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -774,7 +783,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "tC" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -782,53 +791,53 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "tH" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera_film,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "tN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "tO" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "um" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ut" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "uv" = (
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "uJ" = (
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "vg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "vi" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -840,13 +849,13 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "vu" = (
 /obj/item/attachable/verticalgrip,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "vY" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -855,24 +864,29 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "wo" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
 	},
 /obj/structure/bed,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
+"wq" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/template_noop)
 "wv" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xe" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xw" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -883,7 +897,7 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xy" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -896,13 +910,13 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xC" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xE" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -910,22 +924,22 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xF" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xH" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "xV" = (
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yg" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -933,29 +947,28 @@
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yu" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/rifle/m16,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yz" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yJ" = (
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yN" = (
-/obj/effect/landmark/corpsespawner/security/lawyer,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "yP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
@@ -963,7 +976,7 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "za" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -971,11 +984,11 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "zi" = (
 /obj/item/attachable/bayonet,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "zo" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
@@ -984,7 +997,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "zS" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -992,27 +1005,27 @@
 	},
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ac" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "AH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "AI" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "AV" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table,
@@ -1020,7 +1033,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Be" = (
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
@@ -1028,26 +1041,26 @@
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Bl" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Bz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ck" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Cw" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -1056,12 +1069,12 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "CB" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Dc" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -1071,24 +1084,24 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Dk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Dq" = (
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "DA" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/storage/lawyer/bluejacket,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "DN" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -1099,11 +1112,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "DV" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Fd" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -1112,13 +1125,13 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Fz" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "FL" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -1126,21 +1139,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "FO" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "rampbottom";
 	tag = "icon-rampbottom"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "FQ" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ga" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1152,18 +1165,18 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Gi" = (
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Gj" = (
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "GF" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1172,7 +1185,7 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "GT" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -1181,7 +1194,7 @@
 	name = "\improper Marshal Office Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "GW" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze,
@@ -1189,17 +1202,17 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "GY" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
 	icon_state = "plasteel_2"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "He" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Hj" = (
 /obj/structure/pipes/vents/pump/on,
 /obj/structure/surface/table,
@@ -1207,21 +1220,21 @@
 	pixel_y = -1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "HE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/item/attachable/attached_gun/flamer,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "HJ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/attachable/heavy_barrel,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "HQ" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -1242,7 +1255,7 @@
 	pixel_x = 7
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "HU" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1262,13 +1275,13 @@
 	pixel_x = -6
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "IC" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "IY" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -1277,31 +1290,31 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Jl" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Jx" = (
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "JA" = (
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "JH" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "JJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1309,14 +1322,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "JY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Kg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -1327,26 +1340,26 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Kq" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Kz" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "KC" = (
 /turf/open/floor{
 	icon_state = "rampbottom";
 	tag = "icon-rampbottom"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "KK" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
@@ -1356,14 +1369,14 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Lu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ly" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1372,7 +1385,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "LE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1385,14 +1398,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "LF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "LH" = (
 /obj/structure/closet/l3closet/security,
 /obj/structure/machinery/light{
@@ -1403,7 +1416,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "LZ" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
@@ -1414,7 +1427,7 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/structure/bed,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "MU" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -1422,12 +1435,12 @@
 	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "MV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ni" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -1440,7 +1453,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "No" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
@@ -1448,7 +1461,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Nu" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -1456,21 +1469,20 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "NF" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security/lawyer,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "NG" = (
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "NY" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1478,7 +1490,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "OD" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -1487,7 +1499,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "OL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/surface/table,
@@ -1544,13 +1556,13 @@
 	pixel_x = 11
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ON" = (
 /obj/structure/bed,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "OR" = (
 /obj/structure/machinery/power/apc,
 /obj/structure/machinery/camera/autoname{
@@ -1559,7 +1571,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "OU" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/gun/smg/fp9000,
@@ -1571,24 +1583,24 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Pa" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Po" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Pq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Pu" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
@@ -1599,11 +1611,11 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "PT" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Qs" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1627,7 +1639,7 @@
 	pixel_x = -5
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Qy" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -1636,7 +1648,7 @@
 	},
 /obj/structure/window_frame/solaris,
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "QS" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -1644,7 +1656,7 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Rk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1657,22 +1669,24 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "RC" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshal_office)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor,
+/area/template_noop)
 "RL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Sb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Sm" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
@@ -1682,7 +1696,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Sr" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1693,12 +1707,12 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "SJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "SR" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8;
@@ -1708,7 +1722,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Ta" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -1716,11 +1730,11 @@
 	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Tl" = (
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "To" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/m16/ap{
@@ -1742,34 +1756,34 @@
 	},
 /obj/item/ammo_box/magazine/M16,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "TA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/attachable/heavy_barrel,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "TU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/attachable/verticalgrip,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "TV" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Uc" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_y = 9
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Uv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1778,7 +1792,7 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "UJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -1790,20 +1804,20 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "UK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/head/det_hat,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Vb" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Vs" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -1812,7 +1826,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "VQ" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -1821,7 +1835,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Xg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1829,24 +1843,24 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Xj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Xv" = (
 /obj/effect/landmark/survivor_spawner/bigred_clf,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "XJ" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "XL" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -1855,7 +1869,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "XM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -1867,7 +1881,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "XX" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -1876,19 +1890,20 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "XZ" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Yq" = (
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "Yt" = (
 /obj/structure/barricade/metal/wired,
 /obj/item/ammo_casing/bullet,
@@ -1898,7 +1913,7 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "YA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
@@ -1909,7 +1924,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "YN" = (
 /obj/structure/machinery/door_control{
 	id = "garage";
@@ -1920,22 +1935,23 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "YZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ZA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/attachable/verticalgrip,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ZB" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -1945,52 +1961,52 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ZD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 "ZX" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
 /turf/open/floor,
-/area/bigredv2/outside/marshal_office)
+/area/template_noop)
 
 (1,1,1) = {"
-RC
-RC
-RC
-RC
-RC
-RC
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 uJ
 aW
 uJ
-RC
+eF
 XX
 Po
 Pu
-RC
-RC
-RC
+eF
+eF
+eF
 eF
 "}
 (2,1,1) = {"
 rB
 nL
 nL
-RC
+eF
 gp
 sv
 sv
 sv
-RC
+eF
 SR
 fP
 sc
@@ -2008,12 +2024,12 @@ eF
 rB
 nL
 nL
-RC
+eF
 LH
 sp
 Be
 Gj
-RC
+eF
 qg
 XJ
 NG
@@ -2031,12 +2047,12 @@ eF
 rB
 nL
 nL
-RC
+eF
 ng
 vu
 Sm
 st
-RC
+eF
 ro
 st
 ch
@@ -2054,12 +2070,12 @@ eF
 nL
 nL
 nL
-RC
+eF
 ng
 Bz
 pI
 sp
-RC
+eF
 AV
 Bz
 TU
@@ -2068,21 +2084,21 @@ uJ
 RL
 YZ
 Xj
-RC
-RC
-RC
+eF
+eF
+eF
 eF
 "}
 (6,1,1) = {"
 nL
 nL
 nL
-RC
+eF
 No
 um
 rZ
 OR
-RC
+eF
 aw
 JY
 ch
@@ -2100,12 +2116,12 @@ eF
 nL
 nL
 nL
-RC
+eF
 pg
 Dk
 ia
 Vb
-RC
+eF
 hr
 vg
 JJ
@@ -2123,7 +2139,7 @@ eF
 nL
 nL
 nL
-RC
+eF
 No
 kC
 Jl
@@ -2146,17 +2162,17 @@ eF
 nL
 nL
 nL
-RC
+eF
 vi
 nm
 aR
 NG
-RC
+eF
 JH
 Vs
 aM
 rh
-RC
+eF
 wv
 gX
 Ga
@@ -2166,16 +2182,16 @@ pV
 ZD
 "}
 (10,1,1) = {"
-RC
-RC
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
+eF
+eF
 sf
-RC
-RC
-RC
+eF
+eF
+eF
 uJ
 bB
 uJ
@@ -2189,7 +2205,7 @@ pF
 mZ
 "}
 (11,1,1) = {"
-RC
+eF
 wo
 LZ
 KK
@@ -2202,17 +2218,17 @@ Dq
 Dq
 Po
 Dq
-RC
+eF
 wv
 bD
 QS
 Jx
-RC
-RC
-RC
+eF
+eF
+eF
 "}
 (12,1,1) = {"
-RC
+eF
 fq
 ec
 Xv
@@ -2223,7 +2239,7 @@ co
 mZ
 Dq
 Dq
-YZ
+lu
 co
 mZ
 wv
@@ -2232,10 +2248,10 @@ qm
 uJ
 Gi
 xC
-RC
+eF
 "}
 (13,1,1) = {"
-RC
+eF
 xH
 Dq
 Pa
@@ -2248,17 +2264,17 @@ pJ
 zi
 YZ
 sY
-RC
+eF
 JA
 YZ
 nd
 Kq
 Gi
 Vb
-RC
+eF
 "}
 (14,1,1) = {"
-RC
+eF
 rv
 nS
 dO
@@ -2271,50 +2287,50 @@ CB
 Dq
 Po
 ZX
-RC
+eF
 te
 Rk
 YA
 uJ
 Gi
 ON
-RC
+eF
 "}
 (15,1,1) = {"
-RC
-RC
+eF
+eF
 oi
 oi
 oi
-RC
-RC
-RC
+eF
+eF
+eF
 Jx
 ca
 Dq
 HE
 ZX
-RC
-RC
+eF
+eF
 et
-RC
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
+eF
 "}
 (16,1,1) = {"
-RC
+eF
 gL
 le
 dm
-Yq
+wq
 DN
 uJ
 xF
 Dq
 kE
-kE
+RC
 Po
 TV
 He
@@ -2324,12 +2340,12 @@ kE
 eh
 gs
 gs
-RC
+eF
 "}
 (17,1,1) = {"
 Ta
 kL
-Yq
+wq
 mi
 FL
 jT
@@ -2370,18 +2386,18 @@ ZB
 Dq
 ZB
 ZB
-RC
+eF
 "}
 (19,1,1) = {"
 Ta
 zo
-Yq
+wq
 UK
 FL
 jT
 Jx
 Dq
-kE
+RC
 Fz
 Uc
 Qs
@@ -2396,11 +2412,11 @@ qP
 Qy
 "}
 (20,1,1) = {"
-RC
+eF
 OU
 YN
-Yq
-Yq
+wq
+wq
 jT
 uJ
 Dq
@@ -2416,16 +2432,16 @@ gM
 Pa
 mt
 mt
-RC
+eF
 "}
 (21,1,1) = {"
-RC
-RC
-RC
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 DV
 Dq
 Fz
@@ -2448,7 +2464,7 @@ nL
 nL
 nL
 nL
-RC
+eF
 Tl
 Dq
 Fz
@@ -2462,7 +2478,7 @@ bn
 Bl
 yz
 kE
-RC
+eF
 "}
 (23,1,1) = {"
 nL
@@ -2471,7 +2487,7 @@ nL
 nL
 nL
 nL
-RC
+eF
 Tl
 qA
 Ck
@@ -2485,7 +2501,7 @@ kl
 IY
 KC
 Dq
-RC
+eF
 "}
 (24,1,1) = {"
 nL
@@ -2494,21 +2510,21 @@ nL
 nL
 nL
 nL
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
 Dq
 Po
-RC
-RC
-RC
-RC
-RC
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
+eF
 "}
 (25,1,1) = {"
 nL
@@ -2520,18 +2536,18 @@ nL
 nL
 nL
 nL
-RC
+eF
 Dq
 Po
 uJ
 XL
-Yq
+wq
 bX
 LE
 DA
 hV
 tH
-RC
+eF
 "}
 (26,1,1) = {"
 rB
@@ -2543,18 +2559,18 @@ nL
 nL
 nL
 nL
-RC
+eF
 Dq
 Pq
 Jx
-Yq
+wq
 nQ
 kN
 nQ
 nQ
 ki
 Kz
-RC
+eF
 "}
 (27,1,1) = {"
 rB
@@ -2577,7 +2593,7 @@ lP
 lP
 ne
 IC
-RC
+eF
 "}
 (28,1,1) = {"
 rB
@@ -2593,14 +2609,14 @@ mZ
 nP
 kE
 Jx
-Yq
-kN
+wq
+yN
 ki
-kN
+yN
 HJ
-kN
+yN
 Cw
-RC
+eF
 "}
 (29,1,1) = {"
 rB
@@ -2618,12 +2634,12 @@ kE
 uJ
 jQ
 Ac
-kN
-nQ
-kN
 yN
-Yq
-RC
+nQ
+yN
+yN
+wq
+eF
 "}
 (30,1,1) = {"
 rB
@@ -2646,7 +2662,7 @@ tC
 VQ
 tC
 so
-RC
+eF
 "}
 (31,1,1) = {"
 rB
@@ -2658,10 +2674,10 @@ nL
 nL
 nL
 nL
-RC
-RC
-RC
-RC
+eF
+eF
+eF
+eF
 GT
 GT
 GT
@@ -2669,5 +2685,5 @@ GT
 GT
 GT
 GT
-RC
+eF
 "}

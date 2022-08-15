@@ -235,7 +235,7 @@
 	classic_keys = list()
 	name = "caster"
 	full_name = "Toggle plasma caster"
-	keybind_signal = COMSIG_KB_YAUTJA_
+	keybind_signal = COMSIG_KB_YAUTJA_CASTER
 
 /datum/keybinding/yautja/bracer_hunter/caster/down(client/user)
 	. = ..()
@@ -296,7 +296,7 @@
 
 	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
 	if(istype(held))
-		held.activate_suicide
+		held.activate_suicide()
 		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/injectors
@@ -352,7 +352,7 @@
 	full_name = "Remove item from tracker"
 	keybind_signal = COMSIG_KB_YAUTJA_REMOVE_TRACKED_ITEM
 
-/datum/keybinding/yautja/bracer_hunter//down(client/user)
+/datum/keybinding/yautja/bracer_hunter/remove_tracked_item/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -398,7 +398,7 @@
 	full_name = "Yank combi-stick"
 	keybind_signal = COMSIG_KB_YAUTJA_CALL_COMBI
 
-/datum/keybinding/yautja/bracer_hunter//down(client/user)
+/datum/keybinding/yautja/bracer_hunter/call_combi/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -515,7 +515,7 @@
 	if(!.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(istype(H.mask, /obj/item/clothing/mask/gas/yautja))
+	if(istype(H.wear_mask, /obj/item/clothing/mask/gas/yautja))
 		return TRUE
 
 /datum/keybinding/yautja/mask/toggle_zoom
@@ -530,7 +530,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.mask
+	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
 	mask.toggle_zoom()
 	return TRUE
 
@@ -547,7 +547,7 @@
 		return
 	var/mob/living/carbon/human/H = user.mob
 
-	var/obj/item/clothing/mask/gas/yautja/mask = H.mask
+	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
 	mask.togglesight()
 	return TRUE
 
@@ -555,7 +555,8 @@
 
 /datum/keybinding/yautja/tele_loc/can_use(client/user)
 	. = ..()
-	if(locate(/obj/item/device/yautja_teleporter) in user.contents)
+	var/mob/living/carbon/human/H = user.mob
+	if(locate(/obj/item/device/yautja_teleporter) in H.contents)
 		return TRUE
 
 /datum/keybinding/yautja/tele_loc
@@ -570,5 +571,5 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/device/yautja_teleporter/tele = locate(/obj/item/device/yautja_teleporter) in user.contents
+	var/obj/item/device/yautja_teleporter/tele = locate(/obj/item/device/yautja_teleporter) in H.contents
 	tele.add_tele_loc()

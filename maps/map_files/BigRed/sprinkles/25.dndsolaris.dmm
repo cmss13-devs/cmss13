@@ -7,22 +7,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "au" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "cv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38,11 +30,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "dF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -50,11 +38,7 @@
 	icon_state = "carpet10-8";
 	tag = "icon-carpet10-8 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "dL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -62,11 +46,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "eh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -76,21 +56,13 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ei" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "fe" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -98,11 +70,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "fo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -111,17 +79,10 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-"ho" = (
-/turf/closed/wall/solaris/reinforced,
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
 "ho" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "hF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -129,22 +90,14 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "hL" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/chicken,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "hT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired{
@@ -153,28 +106,17 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-"iQ" = (
-/turf/closed/wall/solaris,
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
 "iQ" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "kv" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/elpresidente,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "lH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/surface/table/woodentable,
@@ -182,11 +124,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "mn" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -198,33 +136,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/landmark/survivor_spawner/dnd,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "nI" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/scratch,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "nR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -234,11 +160,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "oh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -247,11 +169,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "pk" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/margherita,
@@ -259,22 +177,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "pr" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet5-1";
 	tag = "icon-carpet5-1 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "pJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -282,11 +192,7 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "qF" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Library";
@@ -295,11 +201,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "qK" = (
 /obj/structure/machinery/door_control{
 	id = "Library";
@@ -311,11 +213,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ue" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -328,33 +226,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ww" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "xd" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet10-8";
 	tag = "icon-carpet10-8 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "xx" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -364,11 +250,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "xz" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -377,11 +259,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "yw" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -389,11 +267,7 @@
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "yx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -402,11 +276,7 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "yT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -417,11 +287,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "zc" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/pen/clicky,
@@ -432,11 +298,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Bl" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -444,22 +306,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Bp" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/random,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Cg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/mushroom,
@@ -467,11 +321,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ES" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper{
@@ -482,11 +332,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "EX" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -496,11 +342,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Fm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -511,31 +353,19 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "FH" = (
 /obj/effect/landmark/survivor_spawner/dnd,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Gt" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "GW" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc/clothing,
@@ -544,11 +374,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Hu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -556,20 +382,12 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "HT" = (
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "HY" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -578,11 +396,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Jb" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc,
@@ -591,11 +405,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "JM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -606,22 +416,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "JU" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/beer_pack,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Kj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -630,11 +432,7 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Kz" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table/woodentable,
@@ -642,11 +440,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Lx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -657,11 +451,7 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Mh" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun/buckshot,
@@ -672,11 +462,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "MF" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -685,11 +471,7 @@
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Nm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -697,11 +479,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "NE" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -709,11 +487,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "NI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -721,11 +495,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Oe" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -733,41 +503,25 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Oi" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "OZ" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Pp" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Rh" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -776,11 +530,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Rj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
@@ -791,22 +541,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Ro" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/clothing/suit/imperium_monk,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "RD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -814,11 +556,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Ss" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -827,11 +565,7 @@
 	icon_state = "carpet6-2";
 	tag = "icon-carpet6-2 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "SW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -843,11 +577,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Tq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -860,33 +590,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Tz" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/gladiator,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Uh" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet14-10";
 	tag = "icon-carpet14-10 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Vc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -896,11 +614,7 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Wf" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -915,22 +629,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "Wz" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/prig,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "WR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -941,11 +647,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "YF" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -953,42 +655,26 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ZD" = (
 /obj/structure/bookcase,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ZJ" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4";
 	tag = "icon-carpet9-4 (WEST)"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 "ZV" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-<<<<<<< HEAD
-/area/template_noop)
-=======
 /area/bigredv2/outside/library)
->>>>>>> big_red_final_last_stand
 
 (1,1,1) = {"
 ho

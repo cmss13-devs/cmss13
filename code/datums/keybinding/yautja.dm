@@ -6,6 +6,89 @@
 	if(!ishuman(user.mob))
 		return
 
+
+// mob \\
+
+/datum/keybinding/yautja/butcher
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "butcher"
+	full_name = "Butcher"
+	keybind_signal = COMSIG_KB_YAUTJA_BUTCHER
+
+/datum/keybinding/yautja/butcher/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isYautja(H))
+		return
+	H.butcher()
+
+/datum/keybinding/yautja/pred_buy
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "pred_buy"
+	full_name = "Claim equipment"
+	keybind_signal = COMSIG_KB_YAUTJA_BUTCHER
+
+/datum/keybinding/yautja/butcher/pred_buy/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isYautja(H))
+		return
+	H.pred_buy()
+
+/datum/keybinding/yautja/mark_panel
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "mark_panel"
+	full_name = "Mark panel"
+	keybind_signal = COMSIG_KB_YAUTJA_MARK_PANEL
+
+/datum/keybinding/yautja/butcher/mark_panel/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isYautja(H))
+		return
+	H.mark_panel()
+
+/datum/keybinding/yautja/mark_for_hunt
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "mark_for_hunt"
+	full_name = "Mark for hunt"
+	keybind_signal = COMSIG_KB_YAUTJA_MARK_FOR_HUNT
+
+/datum/keybinding/yautja/butcher/mark_for_hunt/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isYautja(H))
+		return
+	H.mark_for_hunt()
+
+/datum/keybinding/yautja/remove_from_hunt
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "remove_from_hunt"
+	full_name = "Remove from hunt"
+	keybind_signal = COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT
+
+/datum/keybinding/yautja/butcher/remove_from_hunt/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(!isYautja(H))
+		return
+	H.remove_from_hunt()
+
 // BRACER SPECIFIC \\
 
 // parent bracer \\
@@ -422,3 +505,70 @@
 	if(istype(held))
 		held.link_bracer()
 		return TRUE
+
+// Misc stuff - mask, teleporter \\
+
+// mask
+
+/datum/keybinding/yautja/mask/can_use(client/user)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	if(istype(H.mask, /obj/item/clothing/mask/gas/yautja))
+		return TRUE
+
+/datum/keybinding/yautja/mask/toggle_zoom
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "toggle_zoom"
+	full_name = "Toggle mask zoom"
+	keybind_signal = COMSIG_KB_YAUTJA_LINK_BRACER
+
+/datum/keybinding/yautja/mask/toggle_zoom/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	var/obj/item/clothing/mask/gas/yautja/mask = H.mask
+	mask.toggle_zoom()
+	return TRUE
+
+/datum/keybinding/yautja/mask/togglesight
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "togglesight"
+	full_name = "Toggle mask visors"
+	keybind_signal = COMSIG_KB_YAUTJA_LINK_BRACER
+
+/datum/keybinding/yautja/mask/togglesight/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+
+	var/obj/item/clothing/mask/gas/yautja/mask = H.mask
+	mask.togglesight()
+	return TRUE
+
+// teleporter
+
+/datum/keybinding/yautja/tele_loc/can_use(client/user)
+	. = ..()
+	if(locate(/obj/item/device/yautja_teleporter) in user.contents)
+		return TRUE
+
+/datum/keybinding/yautja/tele_loc
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "tele_loc"
+	full_name = "Add teleporter location"
+	keybind_signal = COMSIG_KB_YAUTJA_TELE_LOC
+
+/datum/keybinding/yautja/tele_loc/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	var/obj/item/device/yautja_teleporter/tele = locate(/obj/item/device/yautja_teleporter) in user.contents
+	tele.add_tele_loc()

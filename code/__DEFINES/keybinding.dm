@@ -133,6 +133,12 @@
 
 // Yautja
 
+#define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"
+#define COMSIG_KB_YAUTJA_PRED_BUY "keybinding_yautja_pred_buy"
+#define COMSIG_KB_YAUTJA_MARK_PANEL "keybinding_yautja_mark_panel"
+#define COMSIG_KB_YAUTJA_MARK_FOR_HUNT "keybinding_yautja_mark_for_hunt"
+#define COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT "keybinding_yautja_remove_from_hunt"
+
 // Yautja Bracer
 #define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
 #define COMSIG_KB_YAUTJA_BRACER_MESSAGE "keybinding_yautja_bracer_message"
@@ -151,3 +157,11 @@
 #define COMSIG_KB_YAUTJA_BRACERNAME "keybinding_yautja_bracername"
 #define COMSIG_KB_YAUTJA_IDCHIP "keybinding_yautja_idchip"
 #define COMSIG_KB_YAUTJA_LINK_BRACER "keybinding_yautja_link_bracer"
+
+//mask
+#define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"
+#define COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT "keybinding_yautja_mask_togglesight"
+
+//misc yautja
+
+#define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"

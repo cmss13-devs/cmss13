@@ -7,14 +7,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "au" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "cv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -30,7 +30,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "dF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -38,7 +38,7 @@
 	icon_state = "carpet10-8";
 	tag = "icon-carpet10-8 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "dL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -46,7 +46,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "eh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -56,13 +56,13 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ei" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "fe" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -70,7 +70,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "fo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -79,10 +79,10 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ho" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/library)
+/area/template_noop)
 "hF" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -90,14 +90,14 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "hL" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/chicken,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "hT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired{
@@ -106,17 +106,17 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "iQ" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/library)
+/area/template_noop)
 "kv" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/elpresidente,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "lH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/surface/table/woodentable,
@@ -124,7 +124,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "mn" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -136,21 +136,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "nn" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/landmark/survivor_spawner/dnd,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "nI" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/scratch,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "nR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -160,7 +160,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "oh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -169,7 +169,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "pk" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/margherita,
@@ -177,14 +177,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "pr" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet5-1";
 	tag = "icon-carpet5-1 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "pJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -192,7 +192,7 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "qF" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Library";
@@ -201,7 +201,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "qK" = (
 /obj/structure/machinery/door_control{
 	id = "Library";
@@ -213,7 +213,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ue" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -226,21 +226,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ww" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "xd" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet10-8";
 	tag = "icon-carpet10-8 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "xx" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -250,7 +250,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "xz" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -259,7 +259,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "yw" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -267,7 +267,7 @@
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/library)
+/area/template_noop)
 "yx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -276,7 +276,7 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "yT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -287,7 +287,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "zc" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/pen/clicky,
@@ -298,7 +298,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Bl" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
@@ -306,14 +306,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Bp" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/random,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Cg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/mushroom,
@@ -321,7 +321,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ES" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper{
@@ -332,7 +332,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "EX" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -342,7 +342,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Fm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -353,19 +353,19 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "FH" = (
 /obj/effect/landmark/survivor_spawner/dnd,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Gt" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "GW" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc/clothing,
@@ -374,7 +374,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Hu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -382,12 +382,12 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "HT" = (
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "HY" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -396,7 +396,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Jb" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc,
@@ -405,7 +405,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "JM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -416,14 +416,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "JU" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/beer_pack,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Kj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -432,7 +432,7 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Kz" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table/woodentable,
@@ -440,7 +440,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Lx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -451,7 +451,7 @@
 	icon_state = "carpet7-3";
 	tag = "icon-carpet7-3 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Mh" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun/buckshot,
@@ -462,7 +462,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "MF" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -471,7 +471,7 @@
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Nm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -479,7 +479,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "NE" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -487,7 +487,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "NI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -495,7 +495,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Oe" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -503,25 +503,25 @@
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Oi" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "OZ" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Pp" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Rh" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -530,7 +530,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Rj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
@@ -541,14 +541,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Ro" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/clothing/suit/imperium_monk,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "RD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -556,7 +556,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Ss" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner,
@@ -565,7 +565,7 @@
 	icon_state = "carpet6-2";
 	tag = "icon-carpet6-2 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "SW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -577,7 +577,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Tq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -590,21 +590,21 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Tz" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/gladiator,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Uh" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet14-10";
 	tag = "icon-carpet14-10 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Vc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -614,7 +614,7 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Wf" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -629,14 +629,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "Wz" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/costume/prig,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "WR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -647,7 +647,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "YF" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -655,26 +655,26 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ZD" = (
 /obj/structure/bookcase,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ZJ" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4";
 	tag = "icon-carpet9-4 (WEST)"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 "ZV" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/library)
+/area/template_noop)
 
 (1,1,1) = {"
 ho

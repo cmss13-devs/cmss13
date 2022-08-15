@@ -1,22 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ax" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
 "bM" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/ne)
+/area/template_noop)
 "cd" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ct" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/light{
@@ -26,24 +21,24 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "eC" = (
 /turf/open/floor,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "eQ" = (
 /obj/structure/machinery/reagentgrinder,
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fa" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fi" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -54,7 +49,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fz" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -65,7 +60,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fG" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -74,7 +69,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -86,7 +81,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "fS" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -99,46 +94,45 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "gv" = (
-/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "gM" = (
 /obj/structure/bed,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/general_offices)
+/area/template_noop)
 "gV" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ha" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "he" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
 	tag = "icon-carpet11-12 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "hz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "hP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -146,13 +140,13 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ic" = (
 /obj/effect/landmark/corpsespawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "iq" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -160,7 +154,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "iD" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
@@ -177,7 +171,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "jD" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/metal/wired{
@@ -188,7 +182,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "kp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Bar"
@@ -200,22 +194,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"kI" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "lb" = (
 /obj/structure/bed/stool,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "lq" = (
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "lI" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -224,7 +215,7 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "md" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -235,18 +226,12 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "mi" = (
-/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"nr" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "nK" = (
 /obj/structure/bed/stool,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -256,7 +241,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "nV" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -268,13 +253,13 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "nX" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ob" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -283,7 +268,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "oe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -296,7 +281,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "oA" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -304,7 +289,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "oD" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -313,7 +298,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "oK" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -322,7 +307,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "pf" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -333,7 +318,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "pL" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -346,10 +331,10 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "qj" = (
 /turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "qQ" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
@@ -358,7 +343,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "qS" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -366,11 +351,11 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "qX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "qY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -378,15 +363,16 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "rb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "rd" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -398,7 +384,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "rp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -411,7 +397,7 @@
 	name = "\improper Bar Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ry" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
@@ -419,14 +405,14 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "rD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "sg" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2"
@@ -439,17 +425,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"sH" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Bar Maintenance";
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "tj" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/beach_ball,
@@ -457,7 +433,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "tq" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -468,34 +444,34 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ts" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4";
 	tag = "icon-carpet9-4 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "tF" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "tH" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "tK" = (
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "tR" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -504,7 +480,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "ul" = (
 /obj/item/paper_bin,
 /obj/structure/barricade/metal/wired{
@@ -513,13 +489,13 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "uu" = (
 /obj/structure/machinery/power/apc,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "uR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired{
@@ -530,11 +506,11 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "uZ" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "vc" = (
 /obj/structure/machinery/door_control{
 	id = "Dormitories";
@@ -547,7 +523,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "vv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -560,20 +536,20 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "yz" = (
 /obj/structure/machinery/squeezer,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "zm" = (
 /obj/structure/bed/stool,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "zV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -587,14 +563,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Ac" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "AI" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/guns/merc{
@@ -609,19 +585,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Bm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "BN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Cb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -632,20 +608,20 @@
 	tag = "icon-alarm0 (NORTH)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Cm" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "CB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Dc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -657,16 +633,13 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Dr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"Dv" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/general_offices)
+/area/template_noop)
 "Ea" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -676,14 +649,14 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Eb" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Fa" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -693,7 +666,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Fz" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -702,14 +675,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "FC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "FP" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/largecrate/merc/ammo,
@@ -718,14 +691,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Gc" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Gi" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -737,13 +710,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"Gq" = (
-/obj/item/ammo_casing/bullet,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Gt" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -754,7 +721,7 @@
 	icon_state = "carpet15-15";
 	tag = "icon-carpet15-15 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "GX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sandbags/large_stack,
@@ -765,28 +732,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "HC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Ic" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
-"Ii" = (
-/obj/structure/barricade/metal/wired{
-	dir = 1;
-	icon_state = "metal_2"
-	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "In" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -794,12 +752,12 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "IA" = (
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "IP" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -808,7 +766,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Jk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
@@ -816,7 +774,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Kv" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -826,19 +784,19 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "KB" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Ld" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/ne)
+/area/template_noop)
 "Li" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -849,7 +807,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "LT" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -858,7 +816,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/general_offices)
+/area/template_noop)
 "Mr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/weldpack,
@@ -867,7 +825,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Nm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -878,7 +836,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Nn" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun/buckshot,
@@ -889,7 +847,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Ou" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -900,14 +858,7 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
-"OL" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet15-15";
-	tag = "icon-carpet15-15 (WEST)"
-	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Qn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -920,7 +871,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Qz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -932,22 +883,22 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "QA" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "QG" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "QK" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Rs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -958,7 +909,7 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Si" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
@@ -966,7 +917,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "SD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -977,10 +928,15 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/ne)
+/area/template_noop)
 "SE" = (
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/obj/effect/landmark/corpsespawner/pmc,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
+	},
+/area/template_noop)
 "SF" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
@@ -988,7 +944,7 @@
 	icon_state = "carpet13-5";
 	tag = "icon-carpet13-5 (WEST)"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "SX" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -996,7 +952,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Tc" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/bed/chair/wood/normal{
@@ -1007,7 +963,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Ts" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -1015,33 +971,33 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "TF" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Uq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "UC" = (
 /obj/structure/bed/stool,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "UF" = (
 /obj/structure/bed,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "UL" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2"
@@ -1049,14 +1005,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "UX" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Wd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1070,11 +1026,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
-"Wk" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Wm" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/light{
@@ -1084,14 +1036,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Wn" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/ne)
+/area/template_noop)
 "Wq" = (
 /obj/structure/closet/athletic_mixed,
 /obj/structure/machinery/light{
@@ -1100,7 +1052,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/dorms)
+/area/template_noop)
 "Xl" = (
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_2";
@@ -1110,7 +1062,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Xu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1120,25 +1072,25 @@
 	req_one_access = null
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "XZ" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Yc" = (
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Yd" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Yi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1147,7 +1099,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "Yw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -1157,7 +1109,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ZP" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_box/magazine/shotgun,
@@ -1167,7 +1119,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 "ZX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/plasteel/large_stack,
@@ -1175,7 +1127,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/bar)
+/area/template_noop)
 
 (1,1,1) = {"
 Bm
@@ -1188,18 +1140,18 @@ QK
 QK
 QK
 QK
-kI
-kI
-kI
+QK
+QK
+QK
 lI
-kI
+QK
 lI
-kI
+QK
 lI
-kI
+QK
 lI
-kI
-kI
+QK
+QK
 "}
 (2,1,1) = {"
 Bm
@@ -1212,29 +1164,29 @@ Wq
 Gc
 Si
 QK
-OL
+gv
 fi
 Eb
 Xl
-ax
+mi
 Xl
 qY
 Xl
-ax
+mi
 Xl
-ax
-kI
+mi
+QK
 "}
 (3,1,1) = {"
 Ac
 uZ
 fS
 oD
-nr
-Gq
-nr
-nr
-nr
+mi
+Yd
+mi
+mi
+mi
 fS
 Gt
 gv
@@ -1254,24 +1206,24 @@ Bm
 tH
 QK
 tR
-nr
-nr
-nr
-Gq
+mi
+mi
+mi
+Yd
 vc
 QK
 ry
-OL
+gv
 Eb
 ZP
 AI
-ax
+mi
 Dr
 md
 GX
-ax
-ax
-kI
+mi
+mi
+QK
 "}
 (5,1,1) = {"
 IA
@@ -1290,7 +1242,7 @@ SF
 Nn
 FP
 Yd
-ax
+mi
 Dc
 ZX
 mi
@@ -1309,21 +1261,21 @@ lq
 lq
 QK
 Ea
-OL
+gv
 SF
 fz
 Fa
-ax
-ax
+mi
+mi
 Wd
 Fa
-ax
-ax
-kI
+mi
+mi
+QK
 "}
 (7,1,1) = {"
 QK
-sH
+Xu
 QK
 QK
 QK
@@ -1333,38 +1285,38 @@ QK
 QK
 QK
 he
-he
+SE
 ts
-ax
+mi
 Dr
-ax
-ax
+mi
+mi
 hP
-ax
-ax
+mi
+mi
 QG
-kI
+QK
 "}
 (8,1,1) = {"
 QK
 Rs
 qj
 qj
-SE
-kI
+qj
+QK
 SX
-ax
-ax
-ax
-Ii
-ax
-ax
+mi
+mi
+mi
+tR
+mi
+mi
 Yd
 Yd
-ax
-ax
+mi
+mi
 hP
-ax
+mi
 qQ
 Fz
 kp
@@ -1374,7 +1326,7 @@ QK
 BN
 Ic
 qX
-Wk
+qX
 rp
 Qz
 hz
@@ -1388,47 +1340,47 @@ rD
 hz
 CB
 gV
-ax
-ax
+mi
+mi
 fJ
 Yw
 "}
 (10,1,1) = {"
-kI
+QK
 tK
 HC
-SE
-SE
-kI
+qj
+qj
+QK
 hP
 QA
-ax
+mi
 Dr
-Ii
-ax
-ax
+tR
+mi
+mi
 Yd
-ax
+mi
 Dr
-ax
+mi
 iq
 rD
 Ts
 rb
-kI
+QK
 "}
 (11,1,1) = {"
-kI
-SE
+QK
+qj
 Ou
-SE
-SE
-kI
+qj
+qj
+QK
 hP
-ax
-ax
-ax
-Ii
+mi
+mi
+mi
+tR
 ic
 Li
 zm
@@ -1436,25 +1388,25 @@ zm
 zm
 zm
 nK
-ax
+mi
 hP
-ax
-kI
+mi
+QK
 "}
 (12,1,1) = {"
-kI
-kI
+QK
+QK
 Xu
-kI
-kI
-kI
+QK
+QK
+QK
 Nm
-kI
-kI
-kI
-kI
-kI
-kI
+QK
+QK
+QK
+QK
+QK
+QK
 fa
 cd
 Mr
@@ -1467,18 +1419,18 @@ qS
 "}
 (13,1,1) = {"
 LT
-Dv
+QK
 SD
 Ld
 Wn
-kI
+QK
 nV
 hz
 In
-ax
+mi
 eQ
 tF
-kI
+QK
 Xl
 tq
 Xl
@@ -1487,49 +1439,49 @@ sg
 XZ
 hP
 nX
-kI
+QK
 "}
 (14,1,1) = {"
 gM
-Dv
+QK
 SD
 Ld
 bM
-kI
+QK
 uu
 ic
-ax
-ax
-ax
+mi
+mi
+mi
 KB
 IP
-ax
-ax
-ax
-ax
+mi
+mi
+mi
+mi
 UL
-ax
+mi
 hP
 jD
-kI
+QK
 "}
 (15,1,1) = {"
-Dv
-Dv
+QK
+QK
 SD
 Ld
 bM
-kI
+QK
 ha
 ha
 Wm
 yz
 Yc
 UF
-kI
+QK
 TF
 ct
-kI
+QK
 iD
 ul
 XZ
@@ -1539,25 +1491,25 @@ qS
 "}
 (16,1,1) = {"
 LT
-Dv
+QK
 SD
 Ld
 bM
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
-kI
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+QK
 oe
 zV
-kI
+QK
 "}

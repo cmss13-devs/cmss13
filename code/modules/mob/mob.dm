@@ -1,4 +1,8 @@
 /mob/Destroy()
+	for(var/obj/item/item in contents_recursive()) // Get rid of any intel objects so we don't delete them
+		if(item.is_objective)
+			item.forceMove(get_step(loc, pick(alldirs)))
+
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src

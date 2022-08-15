@@ -4,7 +4,7 @@
 		spawn if(src)
 			src.country = ip2country(address, src)
 
-/proc/ip2country(ipaddr, client/origin, var/failed = 0)
+/proc/ip2country(ipaddr, client/origin)
 	if(!origin || origin?.country)
 		return //null source, or already has a flag
 
@@ -24,7 +24,7 @@
 				origin?.country = geodata["countryCode"]
 				return geodata["countryCode"]
 	else //null response, ratelimited most likely. Try again in 60s
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/ip2country, ipaddr, origin, failed++), 60 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/ip2country, ipaddr, origin), 60 SECONDS)
 
 var/list/countries = icon_states('icons/flags.dmi')
 

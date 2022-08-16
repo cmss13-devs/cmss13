@@ -119,4 +119,6 @@ Verbs related to getting fucking jacked, bro
 		stamina_loss += 2
 	if(stamina_loss <= 0)
 		stamina_loss = 1
+	if(isYautja(src))
+		stamina_loss = stamina_loss/2
 	return stamina_loss

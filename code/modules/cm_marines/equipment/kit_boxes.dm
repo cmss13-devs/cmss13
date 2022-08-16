@@ -249,7 +249,7 @@
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment(user.assigned_squad ? (user.assigned_squad.name + " ") : "" + ID.assignment + " ([specialist_assignment])")
+		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE

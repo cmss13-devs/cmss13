@@ -563,7 +563,7 @@ IN_USE						used for vending/denying
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-					ID.set_assignment(H.assigned_squad ? (H.assigned_squad.name + " ") : "" + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 

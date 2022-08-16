@@ -2,7 +2,7 @@
 	. = ..()
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
-			src.country = ip2country(address, src)
+			ip2country(address, src)
 
 /proc/ip2country(ipaddr, client/origin)
 	if(!origin || origin?.country)

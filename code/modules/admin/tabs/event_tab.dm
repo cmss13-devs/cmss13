@@ -397,7 +397,7 @@
 		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
 		return
 	else if(length(hives) > 1) // More than one hive, display an input menu for that
-		var/faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives)
+		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
 		if(!faction)
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return

@@ -65,7 +65,7 @@
 	equip_path = /datum/equipment_preset/corpse/security
 
 /obj/effect/landmark/corpsespawner/security/marshal
-	name = " Colonial Marshal"
+	name = "Colonial Marshal"
 	equip_path = /datum/equipment_preset/corpse/security/marshal
 
 /obj/effect/landmark/corpsespawner/security/liaison

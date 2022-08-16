@@ -29,6 +29,7 @@
 /obj/item/device/mass_spectrometer/adv/objective
 	var/datum/cm_objective/retrieve_item/device/objective
 	unacidable = TRUE
+	indestructible = TRUE
 	is_objective = TRUE
 
 /obj/item/device/mass_spectrometer/adv/objective/Initialize()
@@ -44,6 +45,7 @@
 /obj/item/device/reagent_scanner/adv/objective
 	var/datum/cm_objective/retrieve_item/device/objective
 	unacidable = TRUE
+	indestructible = TRUE
 	is_objective = TRUE
 
 /obj/item/device/reagent_scanner/adv/objective/Initialize(mapload, ...)
@@ -59,6 +61,7 @@
 /obj/item/device/healthanalyzer/objective
 	var/datum/cm_objective/retrieve_item/device/objective
 	unacidable = TRUE
+	indestructible = TRUE
 	is_objective = TRUE
 
 /obj/item/device/healthanalyzer/objective/Initialize(mapload, ...)
@@ -74,6 +77,7 @@
 /obj/item/device/autopsy_scanner/objective
 	var/datum/cm_objective/retrieve_item/device/objective
 	unacidable = TRUE
+	indestructible = TRUE
 	is_objective = TRUE
 
 /obj/item/device/autopsy_scanner/objective/Initialize(mapload, ...)

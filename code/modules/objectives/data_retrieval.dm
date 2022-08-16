@@ -171,6 +171,7 @@
 	var/label = ""
 	desc = "A boring looking computer disk. The name label is just a gibberish collection of letters and numbers."
 	unacidable = TRUE
+	indestructible = TRUE
 	is_objective = TRUE
 	var/datum/cm_objective/retrieve_data/disk/objective
 	var/datum/cm_objective/retrieve_item/document/retrieve_objective

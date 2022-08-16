@@ -334,3 +334,5 @@
 2022-08-16:
   Jeser:
   - bugfix: Fixed specialist dogtags specialization assignment.
+  stanalbatross:
+  - bugfix: hotfixed the colonial marshal corpse spawner breaking

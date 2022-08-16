@@ -331,3 +331,6 @@
   - bugfix: Research survivors now can do surgery again
   - bugfix: Fixed chaplain survivor being unable to store a weapon in robes
   - bugfix: Fixed issue were survivors didn't spawn with winter gear
+2022-08-16:
+  Jeser:
+  - bugfix: Fixed specialist dogtags specialization assignment.

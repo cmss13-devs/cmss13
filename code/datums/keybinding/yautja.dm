@@ -32,7 +32,7 @@
 	full_name = "Claim equipment"
 	keybind_signal = COMSIG_KB_YAUTJA_BUTCHER
 
-/datum/keybinding/yautja/butcher/pred_buy/down(client/user)
+/datum/keybinding/yautja/pred_buy/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -48,7 +48,7 @@
 	full_name = "Mark panel"
 	keybind_signal = COMSIG_KB_YAUTJA_MARK_PANEL
 
-/datum/keybinding/yautja/butcher/mark_panel/down(client/user)
+/datum/keybinding/yautja/mark_panel/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -64,7 +64,7 @@
 	full_name = "Mark for hunt"
 	keybind_signal = COMSIG_KB_YAUTJA_MARK_FOR_HUNT
 
-/datum/keybinding/yautja/butcher/mark_for_hunt/down(client/user)
+/datum/keybinding/yautja/mark_for_hunt/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -80,7 +80,7 @@
 	full_name = "Remove from hunt"
 	keybind_signal = COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT
 
-/datum/keybinding/yautja/butcher/remove_from_hunt/down(client/user)
+/datum/keybinding/yautja/remove_from_hunt/down(client/user)
 	. = ..()
 	if(.)
 		return

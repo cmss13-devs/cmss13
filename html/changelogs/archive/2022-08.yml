@@ -346,3 +346,5 @@
   - bugfix: fixes on fire dead xenomorph being eternal light source even when extinguished
   stanalbatross:
   - ui: made the NtOS error message weyland-yutani themed
+  - balance: hardy weeds can no longer be planted in unweedable areas. They will still
+      spread into not normally weedable areas, but cannot be planted there.

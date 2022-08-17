@@ -52,7 +52,7 @@
 		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
 		return
 	if (iswelder(C))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = C
 		if(WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE(" Slicing lattice joints ..."))

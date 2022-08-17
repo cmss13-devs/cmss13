@@ -106,7 +106,7 @@
 	var/obj/item/tool/weldingtool/WT = W
 	if(istype(WT))
 		if(!damaged) return
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(WT, TRAIT_TOOL_BLOWTORCH))
 			return
 		if(WT.remove_fuel(0, user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)

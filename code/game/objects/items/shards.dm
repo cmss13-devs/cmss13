@@ -42,7 +42,7 @@
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if ( iswelder(W))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = W
 		if(source_sheet_type) //can be melted into something
 			if(WT.remove_fuel(0, user))

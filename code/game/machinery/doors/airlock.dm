@@ -572,7 +572,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if((iswelder(C) && !operating && density))
 		var/obj/item/tool/weldingtool/W = C
 		var/weldtime = 50
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			weldtime = 70
 
 		if(not_weldable)

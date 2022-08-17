@@ -39,7 +39,7 @@
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

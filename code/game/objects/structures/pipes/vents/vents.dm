@@ -74,7 +74,7 @@
 /obj/structure/pipes/vents/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
 		var/weldtime = 50
-		if(HAS_TRAIT(P, TRAIT_TOOL_SIMPLE_BLOWTORCH))
+		if(HAS_TRAIT(W, TRAIT_TOOL_SIMPLE_BLOWTORCH))
 			weldtime = 60
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))

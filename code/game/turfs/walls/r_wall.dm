@@ -61,7 +61,7 @@
 	switch(d_state)
 		if(WALL_STATE_WELD)
 			if(iswelder(W))
-				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 				var/obj/item/tool/weldingtool/WT = W
 				try_weldingtool_deconstruction(WT, user)
 

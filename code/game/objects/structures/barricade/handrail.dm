@@ -153,7 +153,7 @@
 					return
 			else
 				if(iswelder(W))	// Finish reinforcing
-					if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+					if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))

@@ -423,7 +423,7 @@
 			to_chat(user, "You attach the screws around the power connection.")
 			return
 	else if(iswelder(I) && c_mode==1)
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)

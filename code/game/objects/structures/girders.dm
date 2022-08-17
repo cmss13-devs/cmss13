@@ -106,7 +106,7 @@
 		if(change_state(W, user))
 			return
 	else if(iswelder(W))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
@@ -232,7 +232,7 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
@@ -279,7 +279,7 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))

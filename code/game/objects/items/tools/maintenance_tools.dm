@@ -164,7 +164,7 @@
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
 
-	inherent_traits = (TRAIT_TOOL_BLOWTORCH)
+	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -444,7 +444,7 @@
 	max_fuel = 5
 	color = "#cc0000"
 	has_welding_screen = TRUE
-	inherent_traits = (TRAIT_TOOL_SIMPLE_BLOWTORCH)
+	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 
 /*
  * Crowbar

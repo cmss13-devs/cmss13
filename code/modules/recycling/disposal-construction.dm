@@ -244,7 +244,7 @@
 			update()
 
 		else if(iswelder(I))
-			if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
 			if(anchored)
 				var/obj/item/tool/weldingtool/W = I
 				if(W.remove_fuel(0,user))

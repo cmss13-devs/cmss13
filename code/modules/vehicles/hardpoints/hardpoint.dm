@@ -385,7 +385,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 /obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(iswelder(O))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH)) return
 		handle_repair(O, user)
 		return
 	..()

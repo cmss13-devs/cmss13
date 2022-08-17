@@ -79,7 +79,7 @@
 		return 1
 
 	if (iswelder(O))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = O
 		if (WT.remove_fuel(0))
 			if(health < maxHealth)

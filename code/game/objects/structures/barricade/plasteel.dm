@@ -64,7 +64,7 @@
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
 		if(busy || tool_cooldown > world.time)
 			return
 		tool_cooldown = world.time + 10

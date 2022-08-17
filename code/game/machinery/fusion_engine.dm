@@ -134,7 +134,7 @@
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
 			return TRUE
 	else if(iswelder(O))
-		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			return
 		if(buildstate == 1)
 			var/obj/item/tool/weldingtool/WT = O

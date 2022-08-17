@@ -385,7 +385,7 @@
 				return
 			if(user.faction == iff_signal)
 				user.visible_message(SPAN_NOTICE("[user] starts disarming \the [src]."), \
-				SPAN_NOTICE("You start disarming [src]."))
+				SPAN_NOTICE("You start disarming \the [src]."))
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
 				SPAN_NOTICE("You start disarming \the [src], but you don't know its IFF data. This might end badly..."))

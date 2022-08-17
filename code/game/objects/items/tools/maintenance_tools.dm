@@ -439,8 +439,10 @@
 		reagents = max_fuel
 
 /obj/item/tool/weldingtool/simple
-	name = "simple blowtorch"
+	name = "old blowtorch"
+	desc = "An old model blowtorch with very limited welding fuel capacity and torch strength. However, due to its low strength the light is weak enough to be blocked by a small welding shield on the torch itself. Can only weld doors and vents."
 	max_fuel = 5
+	color = "#cc0000"
 	has_welding_screen = TRUE
 	inherent_traits = (TRAIT_TOOL_SIMPLE_BLOWTORCH)
 

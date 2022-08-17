@@ -440,7 +440,7 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "An old model blowtorch with very limited welding fuel capacity and torch strength. However, due to its low strength the light is weak enough to be blocked by a small welding shield on the torch itself. Can only weld doors and vents."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full sized technician's blowtorch."
 	max_fuel = 5
 	color = "#cc0000"
 	has_welding_screen = TRUE

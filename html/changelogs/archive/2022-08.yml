@@ -336,3 +336,7 @@
   - bugfix: Fixed specialist dogtags specialization assignment.
   stanalbatross:
   - bugfix: hotfixed the colonial marshal corpse spawner breaking
+2022-08-17:
+  Segrain:
+  - refactor: Corpse spawning landmarks should now actually spawn their supposed corpses
+      correctly in every case.

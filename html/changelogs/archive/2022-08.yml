@@ -344,3 +344,5 @@
   - bugfix: Requisitions' cryo storage console works once again.
   TheBoondock:
   - bugfix: fixes on fire dead xenomorph being eternal light source even when extinguished
+  stanalbatross:
+  - ui: made the NtOS error message weyland-yutani themed

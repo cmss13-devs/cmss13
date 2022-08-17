@@ -342,3 +342,5 @@
       correctly in every case.
   - bugfix: WO Honour Guard specialists once again can properly select their kits.
   - bugfix: Requisitions' cryo storage console works once again.
+  TheBoondock:
+  - bugfix: fixes on fire dead xenomorph being eternal light source even when extinguished

@@ -35,22 +35,44 @@
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN
 
-/obj/structure/bed/nest/attackby(obj/item/W, mob/user)
+/obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
-			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+			to_chat(user, SPAN_NOTICE("You place \the [M] on \the [src]."))
 			M.forceMove(loc)
 		return TRUE
-	else
-		if(W.flags_item & NOBLUDGEON) return
-		var/aforce = W.force
-		health = max(0, health - aforce)
-		playsound(loc, "alien_resin_break", 25)
-		user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"), \
-		SPAN_WARNING("You hit \the [src] with \the [W]!"))
-		healthcheck()
+	if(W.flags_item & NOBLUDGEON)
+		return
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon = user
+		if(HIVE_ALLIED_TO_HIVE(carbon.hivenumber, hivenumber))
+			to_chat(user, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			return
+	if(buckled_mob && iswelder(W))
+		var/obj/item/tool/weldingtool/WT = W
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("You need to turn \the [W] on before you can unnest someone!"))
+			return
+		playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
+		user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
+			return
+		buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
+		playsound(loc, "alien_resin_move", 50)
+		if(ishuman(buckled_mob))
+			var/mob/living/carbon/human/H = buckled_mob
+			user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+			H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+		unbuckle()
+		return
+	health = max(0, health - W.force)
+	playsound(loc, "alien_resin_break", 25)
+	user.animation_attack_on(src)
+	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"), \
+	SPAN_WARNING("You hit \the [src] with \the [W]!"))
+	healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
@@ -69,6 +91,8 @@
 		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
 			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
+		to_chat(user, SPAN_WARNING("The resin binding \the [buckled_mob] down is too strong to rip apart! You need a cutting tool!"))
+		return
 
 	if(ishuman(buckled_mob) && isXeno(user))
 		var/mob/living/carbon/human/H = buckled_mob

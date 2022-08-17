@@ -39,6 +39,7 @@
 		if(1)
 			// State 1
 			if(iswelder(W))
+				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 				if(weld(W, user))
 					to_chat(user, "You weld the assembly securely into place.")
 					anchored = 1
@@ -65,7 +66,7 @@
 				return
 
 			else if(iswelder(W))
-
+				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 				if(weld(W, user))
 					to_chat(user, "You unweld the assembly from it's place.")
 					state = 1

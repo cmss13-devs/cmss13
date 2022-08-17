@@ -410,7 +410,8 @@
 		break_seat()
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
-	if((istype(W, /obj/item/tool/weldingtool) && broken))
+	if((iswelder(W) && broken))
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)

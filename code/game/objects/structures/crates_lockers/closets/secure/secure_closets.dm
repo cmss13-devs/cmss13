@@ -95,7 +95,8 @@
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
-	else if(istype(W,/obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		return ..(W,user)
 	else
 		if(isXeno(user))

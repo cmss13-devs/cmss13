@@ -243,7 +243,8 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			update()
 
-		else if(istype(I, /obj/item/tool/weldingtool))
+		else if(iswelder(I))
+			if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 			if(anchored)
 				var/obj/item/tool/weldingtool/W = I
 				if(W.remove_fuel(0,user))

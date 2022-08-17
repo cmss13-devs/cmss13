@@ -120,6 +120,8 @@
 		interact(user)
 
 	else if(iswelder(W) && canDeconstruct())
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+			return
 		if(weld(W, user))
 			if(assembly)
 				assembly.forceMove(loc)

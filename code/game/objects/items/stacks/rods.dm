@@ -22,8 +22,10 @@
 	recipes = GLOB.rod_recipes
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
-	if (!istype(W, /obj/item/tool/weldingtool))
+	if (!iswelder(W))
 		return ..()
+
+	if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 
 	var/obj/item/tool/weldingtool/WT = W
 

@@ -422,7 +422,8 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, "You attach the screws around the power connection.")
 			return
-	else if(istype(I,/obj/item/tool/weldingtool) && c_mode==1)
+	else if(iswelder(I) && c_mode==1)
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)

@@ -61,7 +61,8 @@
 		if(!locked)
 			open = !open
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)

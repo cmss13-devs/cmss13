@@ -164,6 +164,8 @@
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
 
+	inherent_traits = (TRAIT_TOOL_BLOWTORCH)
+
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
@@ -436,6 +438,12 @@
 	if(reagents > max_fuel)
 		reagents = max_fuel
 
+/obj/item/tool/weldingtool/simple
+	name = "simple blowtorch"
+	max_fuel = 5
+	has_welding_screen = TRUE
+	inherent_traits = (TRAIT_TOOL_SIMPLE_BLOWTORCH)
+
 /*
  * Crowbar
  */
@@ -491,7 +499,7 @@
 	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/T = W
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")

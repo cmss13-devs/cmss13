@@ -210,7 +210,8 @@
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
-		if(istype(W, /obj/item/tool/weldingtool))
+		if(iswelder(W))
+			if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 			var/obj/item/tool/weldingtool/WT = W
 			if(!WT.isOn())
 				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
@@ -232,7 +233,8 @@
 
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))

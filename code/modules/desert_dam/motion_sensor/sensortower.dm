@@ -104,6 +104,7 @@
 
 /obj/structure/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
+		if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))

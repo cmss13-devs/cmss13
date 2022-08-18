@@ -16,6 +16,7 @@
 		/datum/action/xeno_action/activable/prae_impale,
 		/datum/action/xeno_action/activable/prae_dodge,
 		/datum/action/xeno_action/activable/prae_tail_trip,
+		/datum/action/xeno_action/activable/pounce/dancer,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer
 	keystone = TRUE
@@ -43,7 +44,7 @@
 	name = "Praetorian Dancer Behavior Delegate"
 
 	var/evasion_buff_amount = 40
-	var/evasion_buff_ttl = 25     // 2.5 seconds seems reasonable
+	var/evasion_buff_ttl = 50     // 2.5 seconds seems reasonable
 
 	// State
 	var/next_slash_buffed = FALSE

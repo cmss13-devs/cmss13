@@ -208,6 +208,23 @@
 
 	var/click_miss_cooldown = 15
 
+/datum/action/xeno_action/activable/pounce/dancer
+	name = "Dive"
+	action_icon_state = "prae_dash"
+	ability_name = "Dive"
+	macro_path = /datum/action/xeno_action/verb/verb_dive
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 40
+	plasma_cost = 50
+
+	// Config options
+	distance = 6
+	knockdown = FALSE
+	slash = FALSE
+	freeze_self = FALSE
+	throw_speed = SPEED_VERY_FAST //tier 3 agile xeno
+
 ////////// BASE PRAE
 
 /datum/action/xeno_action/activable/pounce/base_prae_dash

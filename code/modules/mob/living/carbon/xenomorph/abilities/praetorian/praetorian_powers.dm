@@ -697,6 +697,34 @@
 	..()
 	return
 
+/datum/action/xeno_action/activable/pounce/dancer/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (!action_cooldown_check())
+		return
+
+	.=..()
+
+	var/mob/living/carbon/H = A
+	if(isXenoOrHuman(H))
+		var/mob/living/carbon/human/Hu = H
+		Hu.update_xeno_hostile_hud()
+	
+	if (X.mutation_type == PRAETORIAN_DANCER)
+		var/found = FALSE
+		for (var/datum/effects/dancer_tag/DT in H.effects_list)
+			found = TRUE
+			qdel(DT)
+			break
+
+		knockdown = found
+		slash = found
+	
+	X.emote("roar")
+
+/datum/action/xeno_action/activable/pounce/dancer/ability_cooldown_over()
+	update_button_icon()
+	return
+
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!X.check_state() || X.action_busy)

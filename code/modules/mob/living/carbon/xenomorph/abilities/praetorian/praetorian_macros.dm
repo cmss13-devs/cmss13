@@ -68,6 +68,13 @@
 	var/action_name = "Dodge"
 	handle_xeno_macro(src, action_name) 
 
+/datum/action/xeno_action/verb/verb_dive()
+	set category = "Alien"
+	set name = "Praetorian Dive"
+	set hidden = 1
+	var/action_name = "Dive"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_prae_tail_trip()
 	set category = "Alien"
 	set name = "Praetorian Tail Trip"

@@ -107,6 +107,8 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
+			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
+				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))

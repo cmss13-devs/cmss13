@@ -631,6 +631,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 		else
 			wiresexposed = !wiresexposed
+			beenhit = wiresexposed ? XENO_HITS_TO_EXPOSE_WIRES_MIN : 0
 			user.visible_message(SPAN_NOTICE("[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring."),
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -890,22 +891,22 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(wire, mob/user)
+/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/withMessage = TRUE)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
 			shock(usr, 50)
 			shorted = 1
-			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+			if(withMessage)
+				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
-			visible_message(SPAN_NOTICE("\The [src] emits a click."))
-	if(isXeno(usr)) //So aliens don't see this when they cut all of the wires.
-		return
+			if(withMessage)
+				visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
 /obj/structure/machinery/power/apc/proc/mend(var/wire)
 	apcwires |= getWireFlag(wire)

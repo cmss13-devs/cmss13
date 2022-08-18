@@ -811,8 +811,9 @@
 		set_broken()
 		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
 	else if(wiresexposed)
-		for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-			cut(wire, M)
+		for(var/wire = 1; wire <= length(get_wire_descriptions()); wire++) // Cut all the wires because xenos don't know any better
+			if(!isWireCut(wire)) // Xenos don't need to mend the wires either
+				cut(wire, M, FALSE) // This is XOR so it toggles; FALSE just because we don't want the messages
 		update_icon()
 		beenhit = XENO_HITS_TO_CUT_WIRES
 		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)

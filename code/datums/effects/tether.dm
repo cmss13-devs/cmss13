@@ -42,7 +42,9 @@
 		return
 
 	if(isStructure(tethered.affected_atom))//we are attached to a structure, shouldnt move it (too heavy)
-		return
+		var/obj/structure/BigBoi = tethered.affected_atom
+		if(BigBoi.anchored)
+			return
 
 	var/atom/movable/A = tethered.affected_atom
 	if (get_dist(affected_atom, A) <= range)

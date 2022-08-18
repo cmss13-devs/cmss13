@@ -352,3 +352,5 @@
   TheBoondock:
   - bugfix: fixed a xeno being able to smash open welded lockers just as easily as
       normal closed lockers
+  stanalbatross:
+  - bugfix: xenos can no longer damage dead bodies with acid

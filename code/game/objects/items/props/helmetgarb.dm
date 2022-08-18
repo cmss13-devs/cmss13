@@ -74,19 +74,10 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
-/obj/item/clothing/glasses/mgoggles/prescription
-	name = "\improper prescription marine ballistic goggles"
-	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
-	icon_state = "mgoggles"
-	item_state = "mgoggles"
-	prescription = TRUE
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
 /obj/item/clothing/glasses/mgoggles
-	name = "\improper marine ballistic goggles"
+	name = "marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
 	icon_state = "mgoggles"
-	item_state = "mgoggles"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	var/activated = FALSE
 	var/active_icon_state = "mgoggles_down"
@@ -95,6 +86,13 @@
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
 	garbage = FALSE
+
+/obj/item/clothing/glasses/mgoggles/prescription
+	name = "prescription marine ballistic goggles"
+	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
+	icon_state = "mgoggles"
+	prescription = TRUE
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()

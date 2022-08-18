@@ -575,7 +575,7 @@
 	icon_state = "helmet_gasmask"
 
 /obj/item/prop/helmetgarb/trimmed_wire
-	name = "\improper trimmed barbed wire"
+	name = "trimmed barbed wire"
 	desc = "It is a length of barbed wire that's had most of the sharp points filed down so that it is safe to handle."
 	icon_state = "trimmed_wire"
 

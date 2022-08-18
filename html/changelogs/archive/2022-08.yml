@@ -349,6 +349,9 @@
   - balance: hardy weeds can no longer be planted in unweedable areas. They will still
       spread into not normally weedable areas, but cannot be planted there.
 2022-08-18:
+  50RemAndCounting:
+  - rscdel: Removed the wrongfully added surgical webbing vest crate as a purchasable
+      option in the req console.
   TheBoondock:
   - bugfix: fixed a xeno being able to smash open welded lockers just as easily as
       normal closed lockers

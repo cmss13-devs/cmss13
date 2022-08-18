@@ -8,6 +8,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/recipient_rank
 	var/list/giver_name // Actually key for xenos
 	var/list/giver_rank // Actually name for xenos
+	var/list/medal_items
 
 /datum/recipient_awards/New()
 	medal_names = list()
@@ -15,6 +16,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	posthumous = list()
 	giver_name = list()
 	giver_rank = list()
+	medal_items = list()
 
 
 
@@ -81,6 +83,9 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		MD.recipient_name = chosen_recipient
 		MD.medal_citation = citation
 		MD.recipient_rank = recipient_rank
+		RA.medal_items += MD
+	else
+		RA.medal_items += null
 	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
@@ -161,6 +166,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	else
 		RA.giver_rank += null
 		RA.giver_name += null
+	
+	RA.medal_items += null // TODO: Xeno award item?
 
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
@@ -216,6 +223,17 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 					break
 				foundOther = TRUE
 
+	// Delete the physical award item
+	var/obj/item/medal_item = RA.medal_items[index]
+	if(medal_item)
+		// Marine medals
+		if(istype(medal_item, /obj/item/clothing/accessory))
+			var/obj/item/clothing/accessory/marine_medal_item = medal_item
+			if(marine_medal_item.has_suit)
+				var/obj/item/clothing/attached_clothing = marine_medal_item.has_suit
+				attached_clothing.remove_accessory(usr, marine_medal_item)
+		qdel(medal_item)
+
 	// Either entirely delete the award from the list, or just remove the entry if there are multiple
 	var/medal_type = RA.medal_names[index]
 	var/citation = RA.medal_citations[index]
@@ -230,6 +248,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		RA.posthumous.Cut(index, index + 1)
 		RA.giver_name.Cut(index, index + 1)
 		RA.giver_rank.Cut(index, index + 1)
+		RA.medal_items.Cut(index, index + 1)
 
 	// Remove giver's stat
 	if(giver_mob)

@@ -515,7 +515,7 @@
 		H.pockets.remove_from_storage(src, get_turf(H))
 
 /obj/item/prop/helmetgarb/helmet_nvg/cosmetic //for "custom loadout", purely cosmetic
-	name = "\improper old M2 night vision goggles"
+	name = "old M2 night vision goggles"
 	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
 	shape = NVG_SHAPE_COSMETIC
 

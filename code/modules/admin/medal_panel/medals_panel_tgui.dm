@@ -20,16 +20,16 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 	
 	// Break the medals up by recipient and then pack each medal into a string
 	for(var/recipient_name as anything in GLOB.medal_awards)
-		var/datum/recipient_awards/RA = GLOB.medal_awards[recipient_name]
+		var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient_name]
 		uscm_awards[recipient_name] = list()
-		for(var/i in 1 to RA.medal_names.len) // We're assuming everything is same length
-			uscm_awards[recipient_name] += "[RA.medal_names[i]]: \'[RA.medal_citations[i]]\' by [RA.giver_rank[i]] [RA.giver_name[i]]"
+		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
+			uscm_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i]] [recipient_award.giver_name[i]]"
 		
 	for(var/recipient_name as anything in GLOB.jelly_awards)
-		var/datum/recipient_awards/RA = GLOB.jelly_awards[recipient_name]
+		var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient_name]
 		xeno_awards[recipient_name] = list()
-		for(var/i in 1 to RA.medal_names.len) // We're assuming everything is same length
-			xeno_awards[recipient_name] += "[RA.medal_names[i]]: \'[RA.medal_citations[i]]\' by [RA.giver_rank[i]] [RA.giver_name[i]]"
+		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
+			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i]] [recipient_award.giver_name[i]]"
 	
 	data["uscm_awards"] = uscm_awards
 	data["xeno_awards"] = xeno_awards
@@ -42,21 +42,21 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 
 	switch(action)
 		if("refresh")
-			. = TRUE
+			return TRUE
 
 		if("add_medal")
 			usr.client.award_medal()
-			. = TRUE
+			return TRUE
 
 		if("add_jelly")
 			usr.client.award_jelly() // Done this way to re-use some hive-selection code in event_tab.dm
-			. = TRUE
+			return TRUE
 
 		if("delete_medal")
 			remove_award(params["recipient"], TRUE, params["index"] + 1) // Why is byond not 0 indexed?
-			. = TRUE
+			return TRUE
 		
 		if("delete_jelly")
 			remove_award(params["recipient"], FALSE, params["index"] + 1) // Why is byond not 0 indexed?	
-			. = TRUE
+			return TRUE
 	

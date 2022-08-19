@@ -105,6 +105,7 @@
 	// Remove the stats for the job/caste, individual, and the stat's list of medals
 	var/round_id = SSperf_logging.round.id
 	if (isXeno(recipient))
+		// Xeno jellies
 		var/mob/living/carbon/Xenomorph/xeno = recipient
 		var/caste = xeno.caste
 		var/datum/entity/player_stats/xeno/xeno_stats = setup_xeno_stats()
@@ -116,12 +117,13 @@
 				medal.delete()
 				break
 	else
+		// Marine medals
 		var/rank
-		var/weak_ref = WEAKREF(recipient)
-		for(var/list/L in list(GLOB.data_core.general))
-			for(var/datum/data/record/R in L)
-				if(R.fields["ref"] == weak_ref)
-					rank = R.fields["rank"]
+		var/weak_ref_recipient = WEAKREF(recipient)
+		for(var/list/marine_manifest_list in list(GLOB.data_core.general))
+			for(var/datum/data/record/record in marine_manifest_list)
+				if(record.fields["ref"] == weak_ref_recipient)
+					rank = record.fields["rank"]
 					break
 		var/datum/entity/player_stats/human/human_stats = setup_human_stats()
 		human_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, -1, rank)

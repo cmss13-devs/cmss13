@@ -243,12 +243,12 @@
 	desc = "A bronze medal."
 
 /obj/item/clothing/accessory/medal/bronze/conduct
-	name = "distinguished conduct medal"
+	name = MARINE_CONDUCT_MEDAL
 	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the USCM"
 	icon_state = "bronze_b"
 
 /obj/item/clothing/accessory/medal/bronze/heart
-	name = "bronze heart medal"
+	name = MARINE_BRONZE_HEART_MEDAL
 	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
 	icon_state = "bronze_heart"
 
@@ -262,7 +262,7 @@
 	icon_state = "silver_b"
 
 /obj/item/clothing/accessory/medal/silver/valor
-	name = "medal of valor"
+	name = MARINE_VALOR_MEDAL
 	desc = "A silver medal awarded for acts of exceptional valor."
 
 /obj/item/clothing/accessory/medal/silver/security
@@ -279,7 +279,7 @@
 	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to Wey-Yu, and their undisputable authority over their crew."
 
 /obj/item/clothing/accessory/medal/gold/heroism
-	name = "medal of exceptional heroism"
+	name = MARINE_HEROISM_MEDAL
 	desc = "An extremely rare golden medal awarded only by the USCM. To recieve such a medal is the highest honor and as such, very few exist."
 
 /obj/item/clothing/accessory/medal/platinum

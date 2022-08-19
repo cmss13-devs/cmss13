@@ -728,24 +728,24 @@ IN_USE						used for vending/denying
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
 		
-/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/L, var/mob/living/carbon/human/H)
-	if(!(H.marine_buy_flags & L[4]))
+/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	if(!(vending_human.marine_buy_flags & listed_products[4]))
 		return FALSE
 	
-	if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-		if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-			H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
 		else
-			H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
 		return TRUE
-	if(L[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
-		if(H.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
-			H.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+	if(listed_products[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
 		else
-			H.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
 		return TRUE
 		
-	H.marine_buy_flags &= ~L[4]
+	vending_human.marine_buy_flags &= ~listed_products[4]
 	return TRUE
 
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)

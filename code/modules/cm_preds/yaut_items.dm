@@ -340,7 +340,7 @@
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list("Yautja" = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = 1)
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/backpack/yautja

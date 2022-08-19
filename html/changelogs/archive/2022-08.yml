@@ -363,3 +363,6 @@
       as be less likely to runtime.
   Morrow:
   - admin: Adds fingerprints for built walls
+  Segrain:
+  - bugfix: IO objectives tied to items no longer bluescreen due to said items getting
+      exploded.

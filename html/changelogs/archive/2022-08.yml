@@ -358,5 +358,8 @@
   stanalbatross:
   - bugfix: xenos can no longer damage dead bodies with acid
 2022-08-19:
+  Kaga:
+  - bugfix: OOC Country Flags should now retry failed people after a minute, as well
+      as be less likely to runtime.
   Morrow:
   - admin: Adds fingerprints for built walls

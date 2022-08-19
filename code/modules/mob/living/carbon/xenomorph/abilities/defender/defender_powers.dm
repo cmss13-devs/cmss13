@@ -19,13 +19,13 @@
 		to_chat(X, SPAN_XENOWARNING("You lower your crest."))
 		X.ability_speed_modifier += speed_debuff
 		X.armor_deflection_buff += armor_buff
-		X.mob_size = MOB_SIZE_BIG //knockback immune
+		ADD_TRAIT(X, TRAIT_KNOCKBACK_IMMUNE, TRAIT_SOURCE_INHERENT) //knockback immune
 		X.update_icons()
 	else
 		to_chat(X, SPAN_XENOWARNING("You raise your crest."))
 		X.ability_speed_modifier -= speed_debuff
 		X.armor_deflection_buff -= armor_buff
-		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		REMOVE_TRAIT(X, TRAIT_KNOCKBACK_IMMUNE, TRAIT_SOURCE_INHERENT) //no longer knockback immune
 		X.update_icons()
 
 	apply_cooldown()

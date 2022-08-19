@@ -97,6 +97,8 @@
 
 	if(L.mob_size >= MOB_SIZE_BIG)
 		return //Big xenos are not affected.
+	if(HAS_TRAIT(L, TRAIT_KNOCKBACK_IMMUNE))
+		return //if they are immune to knockback, they shrug it off.
 
 	shake_camera(L, 3, 4)
 
@@ -127,6 +129,8 @@
 		return
 	if(L.mob_size >= MOB_SIZE_BIG)
 		return
+	if(HAS_TRAIT(L, TRAIT_KNOCKBACK_IMMUNE))
+		return //if they are immune to knockback, they shrug it off.
 
 	shake_camera(L, 3, 4)
 	if(isCarbonSizeXeno(L))
@@ -159,6 +163,8 @@
 
 	if(M.mob_size >= MOB_SIZE_BIG)
 		return //too big to push
+	if(HAS_TRAIT(M, TRAIT_KNOCKBACK_IMMUNE))
+		return //if they are immune to knockback, they shrug it off.
 
 	to_chat(M, isXeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
 	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))

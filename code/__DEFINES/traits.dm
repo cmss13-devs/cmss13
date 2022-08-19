@@ -147,6 +147,8 @@
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+/// Immune to knockback
+#define TRAIT_KNOCKBACK_IMMUNE "knockback_immune"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them
@@ -180,6 +182,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_TWOBORE_TRAINING,
 	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
+	TRAIT_KNOCKBACK_IMMUNE,
 	TRAIT_REAGENT_SCANNER
 ))
 

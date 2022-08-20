@@ -74,9 +74,6 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
-#define GOGGLES_NORMAL 1
-#define GOGGLES_PRESCRIPTION 2
-
 /obj/item/clothing/glasses/mgoggles
 	name = "marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
@@ -85,7 +82,6 @@
 	var/activated = FALSE
 	var/active_icon_state = "mgoggles_down"
 	var/inactive_icon_state = "mgoggles"
-	var/shape = GOGGLES_NORMAL
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -96,7 +92,6 @@
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
 	icon_state = "mgoggles"
 	prescription = TRUE
-	shape = GOGGLES_PRESCRIPTION
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
@@ -143,18 +138,15 @@
 	if(activated)
 		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
 		icon_state = active_icon_state
-		if(shape == GOGGLES_PRESCRIPTION)
+		if(prescription == TRUE)
 			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 	else
 		to_chat(user, SPAN_NOTICE("You push the goggles up."))
 		icon_state = inactive_icon_state
-		if(shape == GOGGLES_PRESCRIPTION)
+		if(prescription == TRUE)
 			REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 
 	attached_item.update_icon()
-
-#undef GOGGLES_NORMAL 1
-#undef GOGGLES_PRESCRIPTION 2
 
 #define NVG_SHAPE_COSMETIC 1
 #define NVG_SHAPE_BROKEN 2

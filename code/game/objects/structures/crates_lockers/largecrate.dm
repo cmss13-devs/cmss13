@@ -301,7 +301,7 @@
 
 /obj/structure/largecrate/crap/New()
 	..()
-	var/i = pick(1,5)
+	var/i = pick(1,8)
 	switch(i)
 		if(1) //KT42 set
 			new /obj/item/weapon/gun/pistol/kt42(src)
@@ -511,10 +511,11 @@
 			new /obj/item/ammo_magazine/rifle/nsg23(src)
 			new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 			new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
-		if(2) //Mk1 set
+		if(2) //Mk1 AP set
 			new /obj/item/weapon/gun/rifle/m41aMK1(src)
-			new /obj/item/ammo_magazine/rifle/m41aMK1(src)
-			new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+			new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+			new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+			new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 			new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 		if(3) //Tac shottie set + incen slugs
 			new /obj/item/weapon/gun/shotgun/combat(src)

@@ -222,6 +222,10 @@
 	desc = "A case containing twenty five 80mm flare mortar shells."
 	supplies = list(/obj/item/mortar_shell/flare = 25)
 
+/obj/structure/largecrate/supply/explosives/mortar_cluster
+	name = "80mm cluster mortar shell case (x25)"
+	desc = "A case containing twenty five 80mm cluster mortar shells."
+	supplies = list(/obj/item/mortar_shell/cluster = 25)
 
 /obj/structure/largecrate/supply/supplies
 	name = "supplies crate"

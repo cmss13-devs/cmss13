@@ -452,3 +452,18 @@
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Ammo"
+
+/datum/supply_packs/ammo_mortar_cluster
+	name = "M402 mortar shells crate (x6 Cluster)"
+	cost = RO_PRICE_VERY_CHEAP
+	contains = list(
+		/obj/item/mortar_shell/cluster,
+		/obj/item/mortar_shell/cluster,
+		/obj/item/mortar_shell/cluster,
+		/obj/item/mortar_shell/cluster,
+		/obj/item/mortar_shell/cluster,
+		/obj/item/mortar_shell/cluster
+	)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 mortar cluster shells crate"
+	group = "Ammo"

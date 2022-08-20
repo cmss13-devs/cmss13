@@ -59,6 +59,33 @@
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 	deploy_camera(T)
 
+/obj/item/mortar_shell/cluster
+	name = "\improper 80mm cluster mortar shell"
+	desc = "An 80mm mortar shell, loaded with cluster munitions."
+	icon_state = "mortar_ammo_cluster"
+
+	var/total_amount = 8
+	var/instant_amount = 3
+
+/obj/item/mortar_shell/cluster/detonate(var/turf/T)
+	start_cluster(T)
+
+/obj/item/mortar_shell/cluster/proc/start_cluster(turf/target)
+	set waitfor = 0
+
+	var/range_num = 7
+	var/list/turf_list = list()
+
+	for(var/turf/T in RANGE_TURFS(range_num, target))
+		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+			continue
+		turf_list += T
+
+	for(var/i = 1 to total_amount)
+		for(var/k = 1 to instant_amount)
+			cell_explosion(pick(turf_list), 100, 75, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		sleep(5)
+
 /obj/item/mortar_shell/custom
 	name = "\improper 80mm custom mortar shell"
 	desc = "An 80mm mortar shell."
@@ -159,22 +186,16 @@
 
 /obj/structure/closet/crate/secure/mortar_ammo/full/Initialize()
 	. = ..()
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/mortar_shell/flare(src)
+	for(var/i = 1 to 4)
+		new /obj/item/mortar_shell/he(src)
+	for(var/i = 1 to 4)
+		new /obj/item/mortar_shell/frag(src)
+	for(var/i = 1 to 4)
+		new /obj/item/mortar_shell/incendiary(src)
+	for(var/i = 1 to 4)
+		new /obj/item/mortar_shell/flare(src)
+	for(var/i = 1 to 4)
+		new /obj/item/mortar_shell/cluster(src)
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
@@ -184,18 +205,16 @@
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/Initialize()
 	. = ..()
 	new /obj/item/mortar_kit(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/incendiary(src)
-	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/mortar_shell/flare(src)
+	for(var/i = 1 to 3)
+		new /obj/item/mortar_shell/he(src)
+	for(var/i = 1 to 3)
+		new /obj/item/mortar_shell/frag(src)
+	for(var/i = 1 to 3)
+		new /obj/item/mortar_shell/incendiary(src)
+	for(var/i = 1 to 3)
+		new /obj/item/mortar_shell/flare(src)
+	for(var/i = 1 to 3)
+		new /obj/item/mortar_shell/cluster(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new jtac_key_type(src)

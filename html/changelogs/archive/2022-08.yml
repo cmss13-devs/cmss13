@@ -394,3 +394,5 @@
   - balance: Nerfs the AGMF from 400+dmg on avg with a maxcap of 750 down to around
       200 dmg on avg with a maxcap of 400dmg via turning the shrapnel count down to
       16 from 30.
+  theflyingflail:
+  - bugfix: fixed trijent dam cl survivor not spawning with survivor equipment

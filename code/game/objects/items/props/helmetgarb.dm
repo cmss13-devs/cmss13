@@ -104,6 +104,7 @@
 
 	attached_item = S.master_object
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/wear_check)
 	activation = new /datum/action/item_action/toggle(src, S.master_object)
 
 	if(ismob(S.master_object.loc))
@@ -126,8 +127,15 @@
 	toggle_goggles(owner)
 	activation.update_button_icon()
 
+/obj/item/clothing/glasses/mgoggles/proc/wear_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+	SIGNAL_HANDLER
 
-/obj/item/clothing/glasses/mgoggles/proc/toggle_goggles(var/mob/user)
+	if(slot == WEAR_HEAD && prescription == TRUE && activated)
+		ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription)) //Checks if dropped/unequipped for prescription.
+	else
+		REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription)) //Looks messy but potential for adding other cases for goggle types other than prescription in the future such as welding or helmet HUD attachments.
+
+/obj/item/clothing/glasses/mgoggles/proc/toggle_goggles(mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -138,7 +146,7 @@
 	if(activated)
 		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
 		icon_state = active_icon_state
-		if(prescription == TRUE)
+		if(prescription == TRUE && user.head == attached_item)
 			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 	else
 		to_chat(user, SPAN_NOTICE("You push the goggles up."))

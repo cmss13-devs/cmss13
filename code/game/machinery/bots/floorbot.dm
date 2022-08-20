@@ -247,7 +247,7 @@
 		spawn(50)
 			T.build(src.loc)
 			src.repairing = 0
-			src.amount -= 1
+			src.amount--
 			src.updateicon()
 			src.anchored = 0
 			src.target = null
@@ -257,7 +257,7 @@
 		spawn(50)
 			src.loc.icon_state = "floor"
 			src.repairing = 0
-			src.amount -= 1
+			src.amount--
 			src.updateicon()
 			src.anchored = 0
 			src.target = null

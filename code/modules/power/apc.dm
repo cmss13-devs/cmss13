@@ -361,7 +361,7 @@
 	if(last_update_state == update_state && last_update_overlay == update_overlay)
 		return 0
 	if(last_update_state != update_state)
-		results += 1
+		results++
 	if(last_update_overlay != update_overlay && update_overlay != 0)
 		results += 2
 	return results
@@ -672,7 +672,7 @@
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 			else
-				beenhit += 1
+				beenhit++
 			return
 
 
@@ -1081,7 +1081,7 @@
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
 		if(charging && longtermpower < 10)
-			longtermpower += 1
+			longtermpower++
 		else if(longtermpower > -10)
 			longtermpower -= 2
 

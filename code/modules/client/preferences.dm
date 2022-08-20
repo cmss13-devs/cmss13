@@ -612,7 +612,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
-		index += 1
+		index++
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
 				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
@@ -799,7 +799,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					SetChoices(user)
 				if("random")
 					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_MARINE || alternate_option == RETURN_TO_LOBBY)
-						alternate_option += 1
+						alternate_option++
 					else if(alternate_option == BE_XENOMORPH)
 						alternate_option = 0
 					else

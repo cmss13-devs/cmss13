@@ -2148,7 +2148,7 @@
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			stun_time += 1
+			stun_time++
 			H.KnockDown(stun_time)
 		else
 			M.KnockDown(stun_time, 1)

@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(mapping)
 				return reserve
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
 		log_debug("Ran out of space in existing transit levels, adding a new one")
-		num_of_res_levels += 1
+		num_of_res_levels++
 		var/datum/space_level/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
 		initialize_reserved_level(newReserved.z_value)
 		for(var/i in levels_by_trait(ZTRAIT_RESERVED))

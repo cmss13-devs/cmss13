@@ -341,12 +341,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				cont = 0
 				if(secondsMainPowerLost>0)
 					if(!isWireCut(AIRLOCK_WIRE_MAIN_POWER))
-						secondsMainPowerLost -= 1
+						secondsMainPowerLost--
 					cont = 1
 
 				if(secondsBackupPowerLost>0)
 					if(!isWireCut(AIRLOCK_WIRE_BACKUP_POWER))
-						secondsBackupPowerLost -= 1
+						secondsBackupPowerLost--
 					cont = 1
 			spawnPowerRestoreRunning = 0
 

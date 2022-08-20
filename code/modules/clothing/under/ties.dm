@@ -676,7 +676,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
 			var/ammo_stored = length(contents)
 			if(current_gun)
-				ammo_stored -= 1
+				ammo_stored--
 			if(ammo_stored >= ammo_slots)
 				if(!stop_messages)
 					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))

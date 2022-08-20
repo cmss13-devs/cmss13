@@ -444,7 +444,7 @@
 			if(CHEM_CLASS_COMMON)
 				creation_cost += 4
 			if(CHEM_CLASS_UNCOMMON)
-				creation_cost += 1
+				creation_cost++
 			if(CHEM_CLASS_RARE)
 				creation_cost -= 5
 	creation_cost = max(creation_cost, min_creation_cost) //checks against minimum cost

@@ -535,7 +535,7 @@
 
 		if(current_pos == position_to_get)
 			. = i
-		current_pos += 1
+		current_pos++
 	qdel(temp_atom)
 
 	if(!.)
@@ -571,7 +571,7 @@
 	if(next_turf.density)
 		return FALSE
 
-	info.distance_travelled += 1
+	info.distance_travelled++
 	info.current_turf = next_turf
 
 	new acid_type(next_turf, create_cause_data(initial(name)), hivenumber)
@@ -916,7 +916,7 @@
 			E.direction = dir
 
 			if(dir in diagonals)
-				E.range -= 1
+				E.range--
 
 			switch(E.range)
 				if(-INFINITY to 0)

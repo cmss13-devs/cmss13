@@ -445,7 +445,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] += 1
+			temp_flag_counter[flag_str]++
 		else
 			temp_flag_counter[flag_str] = 1
 			flags_pass_temp |= flag
@@ -459,7 +459,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] -= 1
+			temp_flag_counter[flag_str]--
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
 				flags_pass_temp &= ~flag

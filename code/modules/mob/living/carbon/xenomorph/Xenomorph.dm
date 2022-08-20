@@ -435,7 +435,7 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 		if(free_slots)
-			hive.free_slots[selected_caste] -= 1
+			hive.free_slots[selected_caste]--
 			var/new_val = LAZYACCESS(hive.used_free_slots, selected_caste) + 1
 			LAZYSET(hive.used_free_slots, selected_caste, new_val)
 
@@ -637,7 +637,7 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
 		if(used_slots)
-			hive.used_free_slots[selected_caste] -= 1
+			hive.used_free_slots[selected_caste]--
 			var/new_val = LAZYACCESS(hive.free_slots, selected_caste) + 1
 			LAZYSET(hive.free_slots, selected_caste, new_val)
 

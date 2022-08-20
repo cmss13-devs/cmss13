@@ -291,12 +291,12 @@
 	..()
 	wash(O)
 	if(ismob(O))
-		mobpresent += 1
+		mobpresent++
 		check_heat(O)
 
 /obj/structure/machinery/shower/Uncrossed(atom/movable/O)
 	if(ismob(O))
-		mobpresent -= 1
+		mobpresent--
 	..()
 
 //Yes, showers are super powerful as far as washing goes.

@@ -143,7 +143,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	next_fire = world.time + fire_cooldown
 
 	addtimer(CALLBACK(src, .proc/recharge_ammo), ammo_recharge_time, TIMER_UNIQUE)
-	ammo -= 1
+	ammo--
 
 	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
 

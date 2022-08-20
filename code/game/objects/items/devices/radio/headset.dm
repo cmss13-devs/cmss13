@@ -797,7 +797,7 @@
 	name = "VAI Headset"
 	desc = "A special headset used by Vanguard's Arrow Incorporated mercenaries, features a non-standard brace. Channels are as follows: :g - public, :v - marine command, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."
 	frequency = VAI_FREQ
-	icon_state = "mcom_headset"
+	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
 	has_hud = TRUE
 	ignore_z = TRUE

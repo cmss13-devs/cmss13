@@ -55,8 +55,8 @@ var/list/department_radio_keys = list(
 	  ":�" = RADIO_CHANNEL_INTERCOM,	"#�" = RADIO_CHANNEL_INTERCOM,		".�" = RADIO_CHANNEL_INTERCOM,
 	  ":�" = RADIO_CHANNEL_DEPARTMENT,	"#�" = RADIO_CHANNEL_DEPARTMENT,	".�" = RADIO_CHANNEL_DEPARTMENT,
 	  ":�" = RADIO_CHANNEL_COMMAND,		"#�" = RADIO_CHANNEL_COMMAND,		".�" = RADIO_CHANNEL_COMMAND,
-	  ":�" = "Medical",		"#�" = "Medical",		".�" = "Medical",
-	  ":�" = "Engineering",	"#�" = "Engineering",	".�" = "Engineering",
+	  ":�" = RADIO_CHANNEL_MEDSCI,		"#�" = RADIO_CHANNEL_MEDSCI,		".�" = RADIO_CHANNEL_MEDSCI,
+	  ":�" = RADIO_CHANNEL_ENGI,	"#�" = RADIO_CHANNEL_ENGI,	".�" = RADIO_CHANNEL_ENGI,
 	  ":�" = RADIO_MODE_WHISPER,		"#�" = RADIO_MODE_WHISPER,		".�" = RADIO_MODE_WHISPER,
 	  ":�" = RADIO_CHANNEL_SYNDICATE,	"#�" = RADIO_CHANNEL_SYNDICATE,		".�" = RADIO_CHANNEL_SYNDICATE,
 )

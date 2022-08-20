@@ -6,8 +6,10 @@
 	icon_state = "watertank"
 	density = 1
 	anchored = 0
+	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
-
+	wrenchable = TRUE
+	var/slashable = FALSE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
@@ -38,6 +40,11 @@
 			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
 	else
 		to_chat(user, SPAN_NOTICE(" Nothing."))
+
+/obj/structure/reagent_dispensers/Destroy()
+	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
+	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
+	. = ..()
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"

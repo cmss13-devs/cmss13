@@ -539,8 +539,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	
 /obj/structure/machinery/defenses/sentry/launchable/power_on_action()
 	. = ..()
-	//The way the camera system is handled going back and forth from TGUI makes the \improper char not function correctly and it tries to find it at the beginning of the passed name. Our bad boy here's got one in our get_area() call so we gotta remove it.
-	linked_cam = new(loc, "[name] [sentry_number] at [copytext_char(get_area(src), 3)] ([obfuscate_x(x)], [obfuscate_y(y)])")
+	linked_cam = new(loc, "[name] [sentry_number] at [get_area(src)] ([obfuscate_x(x)], [obfuscate_y(y)])")
 
 /obj/structure/machinery/defenses/sentry/launchable/power_off_action()
 	. = ..()

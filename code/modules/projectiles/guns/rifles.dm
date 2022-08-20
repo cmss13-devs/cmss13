@@ -104,7 +104,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/tactical
 	current_mag = /obj/item/ammo_magazine/rifle/ap
-	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/stock/rifle/collapsible)
 //-------------------------------------------------------
 //NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 
@@ -337,7 +337,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 /obj/item/weapon/gun/rifle/m41aMK1/tactical
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun

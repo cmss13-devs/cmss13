@@ -46,6 +46,8 @@
 	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
 	. = ..()
 
+
+
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
@@ -60,6 +62,22 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/proc/healthcheck()
+	if(health <= 0)
+		Destroy()
+
+/obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
+	health -= Proj.damage
+	if(Proj.firer)
+		message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	if(health <= 0)
+		Destroy()
+
+	return TRUE
+
 
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"

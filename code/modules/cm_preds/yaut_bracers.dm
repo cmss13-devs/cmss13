@@ -125,6 +125,9 @@
 	if(forced || HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return FALSE
 
+	if(user.is_mob_incapacitated()) //let's do this here to avoid to_chats to dead guys
+		return TRUE
+
 	var/workingProbability = 20
 	var/randomProbability = 10
 	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
@@ -401,7 +404,11 @@
 	var/atom/areaLoc = null
 	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
+		if(I.anchored)
+			continue
 		if(is_honorable_carrier(recursive_holder_check(I)))
+			continue
+		if(istype(get_area(I), /area/yautja))
 			continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
@@ -417,6 +424,8 @@
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
+			continue
+		if(istype(get_area(Y), /area/yautja))
 			continue
 		if(is_loworbit_level(Y.z))
 			dead_low_orbit++
@@ -439,6 +448,7 @@
 		output = TRUE
 		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
 	if(closest < 900)
+		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
 			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
@@ -462,6 +472,9 @@
 		return
 
 	var/mob/living/carbon/human/M = caller
+
+	if(!istype(M) || M.is_mob_incapacitated())
+		return FALSE
 
 	if(cloaked) //Turn it off.
 		if(cloak_timer > world.time)
@@ -590,14 +603,14 @@
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	T = get_turf(src)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)
-			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
+			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
 		if(explosion_type == 0 && is_ground_level(T.z))
@@ -656,7 +669,7 @@
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)
-							message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
 							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explode(victim)
@@ -700,7 +713,7 @@
 		to_chat(M, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
-		message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+		message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[key_name(M)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 		message_all_yautja("[M.real_name] has triggered their bracer's self-destruction sequence.")
 		explode(M)

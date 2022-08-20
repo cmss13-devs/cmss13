@@ -15,8 +15,8 @@ datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
 	randomize_hair_color("facial")
 	randomize_eyes_color()
 	randomize_skin_color()
-	underwear = gender == MALE ? pick(underwear_m) : pick(underwear_f)
-	undershirt = rand(1,undershirt_t.len)
+	underwear = gender == MALE ? pick(GLOB.underwear_m) : pick(GLOB.underwear_f)
+	undershirt = gender == MALE ? pick(GLOB.undershirt_m) : pick(GLOB.undershirt_f)
 	backbag = 2
 	age = rand(AGE_MIN,AGE_MAX)
 	if(H)
@@ -242,6 +242,8 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
+		if(JOB_INTEL)
+			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_PILOT)
 			return /datum/equipment_preset/uscm_ship/po/full
 		if(JOB_DROPSHIP_CREW_CHIEF)

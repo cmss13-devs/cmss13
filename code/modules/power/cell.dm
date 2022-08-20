@@ -25,6 +25,10 @@
 	charge = maxcharge
 	updateicon()
 
+/obj/item/cell/update_icon()
+	..()
+	updateicon()
+
 /obj/item/cell/proc/updateicon()
 	overlays.Cut()
 
@@ -62,10 +66,11 @@
 
 
 /obj/item/cell/examine(mob/user)
+	..()
 	if(maxcharge <= 2500)
-		to_chat(user, "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%.")
+		to_chat(user, SPAN_NOTICE("The manufacturer's label states this cell has a power rating of <b>[maxcharge]</b>, and that you should not swallow it.\nThe charge meter reads <b>[round(src.percent() )]%</b>."))
 	else
-		to_chat(user, "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%.")
+		to_chat(user, SPAN_NOTICE("This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of <b>[maxcharge]</b>!\nThe charge meter reads <b>[round(src.percent() )]%</b>."))
 	if(crit_fail)
 		to_chat(user, SPAN_DANGER("This power cell seems to be faulty."))
 
@@ -110,8 +115,9 @@
 			return 0
 
 /obj/item/cell/crap
-	name = "\improper Yutani brand rechargable AA battery"
-	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
+	name = "\improper W-Y rechargable mini-battery"
+	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independant colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
+	icon_state = "mini-cell"
 
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)

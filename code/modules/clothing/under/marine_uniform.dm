@@ -130,6 +130,14 @@
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
 
+/obj/item/clothing/under/marine/officer/intel
+	name = "\improper marine intelligence officer sweatsuit"
+	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of intelligence officers, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."
+	icon_state = "io"
+	item_state = "io"
+	worn_state = "io"
+	specialty = "marine intelligence officer"
+
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"
 	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
@@ -201,12 +209,12 @@
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
 
-/obj/item/clothing/under/marine/officer/admiral
-	name = "admiral uniform"
-	desc = "A uniform worn by a fleet admiral. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
-	item_state = "admiral_jumpsuit"
-	worn_state = "admiral_jumpsuit"
-	specialty = "admiral"
+/obj/item/clothing/under/marine/officer/general
+	name = "general uniform"
+	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
+	item_state = "general_jumpsuit"
+	worn_state = "general_jumpsuit"
+	specialty = "general"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/ce

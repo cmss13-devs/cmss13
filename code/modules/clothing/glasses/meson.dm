@@ -27,6 +27,7 @@
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
+	actions_types = null
 
 /obj/item/clothing/glasses/meson/refurbished
 	name = "refurbished meson scanner"

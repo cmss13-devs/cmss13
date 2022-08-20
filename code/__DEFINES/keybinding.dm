@@ -51,6 +51,9 @@
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_HOLD "keybinding_human_issue_order_hold"
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_FOCUS "keybinding_human_issue_order_focus"
 
+#define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
+#define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
+
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
 #define COMSIG_KB_HUMAN_WEAPON_BURSTFIRE "keybinding_human_weapon_burstfire"

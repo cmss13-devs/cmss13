@@ -121,6 +121,9 @@
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+
+	T.transfer_observers_to(new_xeno)
+
 	qdel(T)
 	..()
 	return
@@ -412,6 +415,11 @@
 		// Apply the normal cooldown if not building near the hive
 		apply_cooldown_override(initial(xeno_cooldown))
 
+/datum/action/xeno_action/onclick/eye
+	name = "Enter Eye Form"
+	action_icon_state = "queen_eye"
+	plasma_cost = 0
+
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()
 	if(!owner)
@@ -441,7 +449,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
+	if(!T || T.is_weedable() < FULLY_WEEDABLE || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 

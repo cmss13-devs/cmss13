@@ -788,7 +788,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || faction != C.sensor_faction)
+		if(!C.has_sensor || !C.sensor_mode || faction != H.faction)
 			continue
 
 		// Check if z-level is correct
@@ -938,8 +938,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_STOWAWAY = 999,
 
 				// 200-229: Centcom
-				JOB_ADMIRAL = 200,
-				JOB_B_GENERAL = 200,
 				JOB_GENERAL = 200,
 				JOB_MARSOC_CMD = 210,
 				JOB_MARSOC_SL = 210,

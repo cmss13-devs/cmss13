@@ -7,7 +7,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_north)
+/area/bigredv2/outside/lz1_north_cas)
 "d" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
@@ -23,14 +23,14 @@
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
-/area/bigredv2/caves_north)
+/area/bigredv2/outside/lz1_north_cas)
 "j" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_north)
+/area/bigredv2/outside/lz1_north_cas)
 "F" = (
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/solaris/reinforced,

@@ -95,7 +95,20 @@
 	if(mods["ctrl"])
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
-
+		if(mods["click_catcher"])
+			return FALSE
+		if(user.z != A.z)
+			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
+			return FALSE
+		if(!(is_ground_level(A.z)))
+			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
+			return FALSE
+		if(user.sight & SEE_TURFS)
+			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
+			for(var/turf/T in path)
+				if(T.opacity)
+					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+					return FALSE
 		acquire_target(A, user)
 		return TRUE
 	return FALSE
@@ -140,25 +153,35 @@
 	coord = LT
 	last_x = obfuscate_x(coord.x)
 	last_y = obfuscate_y(coord.y)
-	if(rangefinder_popup)
-		interact(user)
-	else
-		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
+	show_coords(user)
 	while(coord)
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			QDEL_NULL(coord)
 			break
 
-/obj/item/device/binoculars/range/interact(mob/user as mob)
-	var/dat = "<html><head><title>[src]</title></head><body><TT>"
+/obj/item/device/binoculars/range/proc/show_coords(mob/user)
+	if(rangefinder_popup)
+		tgui_interact(user)
+	else
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
 
-	dat += "<h1><big>SIMPLIFIED COORDINATES OF TARGET:</big></h1><BR>"
-	dat += "<h2><big>LONGITUDE [last_x]. LATITUDE [last_y].</big></h2></TT></body></html>"
+/obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Binoculars", "[src.name]")
+		ui.open()
 
-	show_browser(user, dat, "Coordinates successfully acquired", "rangebinos")
-	onclose(user, "rangebinos")
-	return
+/obj/item/device/binoculars/range/ui_state(mob/user)
+	return GLOB.inventory_state
+
+/obj/item/device/binoculars/range/ui_data(mob/user)
+	var/list/data = list()
+
+	data["xcoord"] = src.last_x
+	data["ycoord"] = src.last_y
+
+	return data
 
 //LASER DESIGNATOR with ability to acquire coordinates and CAS lasing support
 /obj/item/device/binoculars/range/designator
@@ -191,9 +214,9 @@
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
 		return
-	if(mods["alt"])
+	if(mods["alt"] && loc == user)
 		toggle_bino_mode(user)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/item/device/binoculars/range/designator/stop_targeting(mob/living/carbon/human/user)
@@ -261,12 +284,11 @@
 	var/area/targ_area = get_area(A)
 	if(!istype(TU)) return
 	var/is_outside = FALSE
-	if(is_ground_level(TU.z))
-		switch(targ_area.ceiling)
-			if(CEILING_NONE)
-				is_outside = TRUE
-			if(CEILING_GLASS)
-				is_outside = TRUE
+	switch(targ_area.ceiling)
+		if(CEILING_NONE)
+			is_outside = TRUE
+		if(CEILING_GLASS)
+			is_outside = TRUE
 
 	if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 		is_outside = FALSE
@@ -285,10 +307,7 @@
 		coord = LT
 		last_x = obfuscate_x(coord.x)
 		last_y = obfuscate_y(coord.y)
-		if(rangefinder_popup)
-			interact(user)
-		else
-			to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
+		show_coords(user)
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -300,7 +319,7 @@
 		laser = LT
 
 		var/turf/userloc = get_turf(user)
-		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[userloc.x];Y=[userloc.y];Z=[userloc.z]'>JMP SRC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[TU.x];Y=[TU.y];Z=[TU.z]'>JMP LOC</a>)")
+		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[userloc.x];Y=[userloc.y];Z=[userloc.z]'>JMP SRC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[TU.x];Y=[TU.y];Z=[TU.z]'>JMP LOC</a>)")
 		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]).")
 
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
@@ -423,7 +442,7 @@
 		return 0
 
 	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
-	message_staff("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
+	message_staff("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
 	if(las_mode == 1 && !las_r) // Heres our IR bomb code.
 		lasing = TRUE
@@ -448,13 +467,13 @@
 		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
 		sleep(50) //AWW YEAH
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
-		flame_radius(cause_data, 3, target)
+		flame_radius(cause_data, 3, target, , , , , )
 		explosion(target,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_2)
+		flame_radius(cause_data, 3, target_2, , , , , )
 		explosion(target_2,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_3)
+		flame_radius(cause_data, 3, target_3, , , , , )
 		explosion(target_3,  -1, 2, 3, 5, , , , cause_data)
-		flame_radius(cause_data, 3, target_4)
+		flame_radius(cause_data, 3, target_4, , , , , )
 		explosion(target_4,  -1, 2, 3, 5, , , , cause_data)
 		sleep(1)
 		qdel(lasertarget)

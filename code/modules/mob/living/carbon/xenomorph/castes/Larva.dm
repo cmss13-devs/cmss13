@@ -5,6 +5,7 @@
 	plasma_max = 10
 	melee_damage_lower = 0
 	melee_damage_upper = 0
+	melee_vehicle_damage = 0
 	max_health = XENO_HEALTH_LARVA
 	caste_desc = "D'awwwww, so cute!"
 	speed = XENO_SPEED_TIER_10

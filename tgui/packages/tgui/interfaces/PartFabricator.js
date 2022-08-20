@@ -6,7 +6,7 @@ export const PartFabricator = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Window
-      width={750}
+      width={775}
       height={450}
     >
       <Window.Content>

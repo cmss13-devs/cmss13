@@ -18,13 +18,22 @@
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
-	if(!T.is_weedable())
+	var/is_weedable = T.is_weedable()
+	if(!is_weedable)
+		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
+		return
+	if(!plant_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
 		return
 
 	var/obj/effect/alien/weeds/node/N = locate() in T
 	if(N && N.weed_strength >= X.weed_level)
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
+		return
+
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in T
+	if(resin_trap)
+		to_chat(X, SPAN_WARNING("You can't weed on top of a trap!"))
 		return
 
 	var/list/to_convert
@@ -46,7 +55,7 @@
 
 	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
 	SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
-	var/obj/effect/alien/weeds/node/new_node = new /obj/effect/alien/weeds/node(X.loc, src, X)
+	var/obj/effect/alien/weeds/node/new_node = new node_type(X.loc, src, X)
 
 	if(to_convert)
 		for(var/weed in to_convert)
@@ -95,7 +104,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	..()
 	return
 
@@ -194,7 +203,7 @@
 			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
 			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
+			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
@@ -224,9 +233,12 @@
 
 // leader Marker
 
-/datum/action/xeno_action/activable/info_marker/use_ability(atom/A)
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
 	if(!..())
 		return FALSE
+
+	if(mods["click_catcher"])
+		return
 
 	if(!action_cooldown_check())
 		return
@@ -234,6 +246,11 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state(TRUE))
 		return FALSE
+
+	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
+		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
+		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
+
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
@@ -473,7 +490,7 @@
 		X.layer = XENO_HIDING_LAYER
 		to_chat(X, SPAN_NOTICE("You are now hiding."))
 	else
-		X.layer = MOB_LAYER
+		X.layer = initial(X.layer)
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 	X.update_wounds()
 
@@ -492,7 +509,7 @@
 		return
 	var/turf/T = get_turf(X)
 
-	if(!istype(T) || !T.is_weedable() || !can_xeno_build(T))
+	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE || !can_xeno_build(T))
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 
@@ -503,13 +520,16 @@
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
-
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
+		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
 		return
 
 	if(!X.check_alien_construction(T))
@@ -559,6 +579,9 @@
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE
+	if(X.hive.hivecore_cooldown)
+		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
+		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
 		if(!choice)
@@ -584,10 +607,9 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore)
-			to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
+		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
-
 		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
 			return
 		qdel(X.hive.hive_location)
@@ -616,8 +638,14 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(!T.is_weedable())
-		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+	if(T.is_weedable() < FULLY_WEEDABLE)
+		to_chat(X, SPAN_WARNING("\The [T] can't support a [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/obj/effect/alien/weeds/weeds = locate() in T
+	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
+		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE
 

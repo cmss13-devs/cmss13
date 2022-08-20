@@ -16,6 +16,8 @@
 #define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
 ///from /datum/game_mode/proc/post_setup
 #define COMSIG_GLOB_MODE_POSTSETUP "!mode_postsetup"
+///from /datum/game_mode/proc/ds_first_landed
+#define COMSIG_GLOB_DS_FIRST_LANDED "!ds_first_landed"
 ///from /mob/living/carbon/human/death
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
 ///from /mob/living/carbon/Xenomorph/death
@@ -178,6 +180,7 @@
 /// From /mob/living/proc/IgniteMob
 #define COMSIG_LIVING_PREIGNITION "living_preignition"
 	#define COMPONENT_CANCEL_IGNITION (1<<0)
+#define COMSIG_LIVING_IGNITION "living_ignition"
 
 /// From /mob/living/carbon/human/ExtinguishMob()
 #define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
@@ -227,7 +230,13 @@
 #define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
-	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+
+/// From /mob/living/carbon/Xenomorph/revive()
+#define COMSIG_XENO_REVIVED "xeno_revived"
+
+// From /obj/structure/safe/Topic()
+#define COMSIG_SAFE_OPENED "safe_opened"
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"

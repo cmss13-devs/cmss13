@@ -439,8 +439,8 @@ can cause issues with ammo types getting mixed up during the burst.
 //DOUBLE SHOTTY
 
 /obj/item/weapon/gun/shotgun/double
-	name = "double barrel shotgun"
-	desc = "A double barreled shotgun of archaic, but sturdy design. Uses 12 Gauge Special slugs, but can only hold 2 at a time."
+	name = "\improper Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. Only holds two 12g shells at a time."
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
 
@@ -456,14 +456,15 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness)
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/stock/double)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
 
 /obj/item/weapon/gun/shotgun/double/set_gun_config_values()
 	..()
@@ -540,7 +541,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag)
 		return
 	if(refund) current_mag.current_rounds++
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -562,16 +563,24 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, seal_sound, 25, 1)
 
 
+/obj/item/weapon/gun/shotgun/double/with_stock/handle_starting_attachment()
+	. = ..()
+	var/obj/item/attachable/stock/double/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
 /obj/item/weapon/gun/shotgun/double/sawn
-	name = "sawn-off shotgun"
-	desc = "A double barreled shotgun whose barrel has been artificially shortened to reduce range but increase damage and spread."
+	name = "\improper sawn-off Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. It has been artificially shortened to reduce range but increase damage and spread."
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 22, "under_x" = 18, "under_y" = 16, "stock_x" = 18, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14,  "stock_x" = 18, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
 	..()
@@ -931,6 +940,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/Initialize(mapload, spawn_empty)
 	. = ..()
 	pump_delay = FIRE_DELAY_TIER_4*2
+	additional_fire_group_delay += pump_delay
 
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
@@ -1014,11 +1024,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A nine-round pump action shotgun with internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
+	desc = "A eight-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -1028,6 +1038,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer)
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 
 
@@ -1037,7 +1048,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 15,"rail_x" = 7, "rail_y" = 18, "under_x" = 19, "under_y" = 13, "stock_x" = 19, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
@@ -1052,5 +1063,14 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717
+	name = "\improper M37-17 pump shotgun"
+	desc = "A ten-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim."
+	icon_state = "m3717"
+	item_state = "m3717"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
+	unacidable = TRUE
+	damage_mult = 1.1
 
 //-------------------------------------------------------

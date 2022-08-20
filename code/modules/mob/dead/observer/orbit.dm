@@ -25,8 +25,10 @@
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
-				. = TRUE
-				return
+				poi = locate(ref) in GLOB.all_multi_vehicles
+				if (poi == null)
+					. = TRUE
+					return
 			owner.ManualFollow(poi)
 			owner.reset_perspective(null)
 			if(auto_observe)
@@ -63,6 +65,7 @@
 	var/list/ghosts = list()
 	var/list/misc = list()
 	var/list/npcs = list()
+	var/list/vehicles = list()
 
 	var/is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
@@ -76,7 +79,10 @@
 
 		var/mob/M = poi
 		if(!istype(M))
-			misc += list(serialized)
+			if(isVehicleMultitile(M))
+				vehicles += list(serialized)
+			else
+				misc += list(serialized)
 			continue
 
 		var/number_of_orbiters = length(M.get_all_orbiters())
@@ -119,6 +125,7 @@
 	data["ghosts"] = ghosts
 	data["misc"] = misc
 	data["npcs"] = npcs
+	data["vehicles"] = vehicles
 
 	return data
 

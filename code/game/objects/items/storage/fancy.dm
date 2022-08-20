@@ -125,6 +125,7 @@
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
+	max_w_class = SIZE_TINY
 	storage_slots = 20
 	can_hold = list(
 		/obj/item/clothing/mask/cigarette,
@@ -226,7 +227,6 @@
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
 	icon = 'icons/obj/items/cigarettes.dmi'
-	w_class = SIZE_TINY
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
@@ -342,6 +342,7 @@
 	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
+	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)

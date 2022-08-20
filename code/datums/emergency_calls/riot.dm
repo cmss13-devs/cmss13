@@ -17,15 +17,15 @@
 	var/mob/living/carbon/human/H = new(T)
 	M.transfer_to(H, TRUE)
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_WARDEN, JOB_CHIEF_POLICE), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/riot_cmp, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of the High Command Riot Control!"))
-		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!</b>"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to the Marine Law and the High Command!"))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm_ship/uscm_police/riot_mp, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a member of the High Command Riot Control!!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a member of the High Command Riot Control!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your superior!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, the Marine Law and the High Command!"))
 

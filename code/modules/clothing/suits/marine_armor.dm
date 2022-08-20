@@ -132,7 +132,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
 		else
 			name += " armor"
 	if(armor_variation)
@@ -287,6 +287,22 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	brightness_on = 7 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/intel
+	icon_state = "io"
+	name = "\improper XM4 pattern intelligence officer armor"
+	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 4
+	brightness_on = 7 //slightly higher
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/officer/intel)
+	specialty = "XM4 pattern intel"
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -396,9 +412,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "CMP service jacket over M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer_jacket")
 
-/obj/item/clothing/suit/storage/marine/MP/admiral
-	icon_state = "admiral"
-	name = "\improper M3 pattern admiral armor"
+/obj/item/clothing/suit/storage/marine/MP/general
+	icon_state = "general"
+	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
 	w_class = SIZE_MEDIUM
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -410,9 +426,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
-	specialty = "M3 pattern admiral"
-	item_state_slots = list(WEAR_JACKET = "admiral")
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
+	specialty = "M3 pattern general"
+	item_state_slots = list(WEAR_JACKET = "general")
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	icon_state = "officer"
@@ -431,13 +447,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co_officer"
 	item_state = "co_officer"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
+	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/ro_suit)
 	flags_atom = NO_SNOW_TYPE
 	flags_inventory = SMARTGUN_HARNESS
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	storage_slots = 3
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"
@@ -869,6 +886,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
 	var/aiming_time = 1.25 SECONDS
+	var/can_camo = TRUE
 
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
@@ -891,7 +909,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 
-	if(!ishuman(usr) || hide_in_progress)
+	if(!ishuman(usr) || hide_in_progress || !can_camo)
 		return
 	var/mob/living/carbon/human/H = usr
 	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)

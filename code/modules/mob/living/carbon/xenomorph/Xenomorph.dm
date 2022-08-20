@@ -49,7 +49,7 @@
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
-	var/icon_size = 48
+	icon_size = 48
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -65,13 +65,20 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
+	var/speaking_key = "x"
+	var/speaking_noise = "alien_talk"
+	var/slash_verb = "slash"
+	var/slashes_verb = "slashes"
+	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
 	var/crit_health = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	can_crawl = FALSE
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
@@ -91,6 +98,9 @@
 
 	var/last_hit_time = 0
 
+	var/crit_grace_time = 1 SECONDS
+	var/next_grace_time = 0
+
 	//Amount of construction resources stored internally
 	var/crystal_stored = 0
 	var/crystal_max = 0
@@ -100,6 +110,7 @@
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
 	var/armor_deflection_buff = 0 // temp buffs to armor
+	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
 	var/armor_integrity = 100     // Current health % of our armor
 	var/armor_integrity_max = 100
@@ -605,8 +616,10 @@
 			if(1 to 24)
 				to_chat(user, "It is heavily injured and limping badly.")
 
-	if(hivenumber != XENO_HIVE_NORMAL)
-		to_chat(user, "It appears to belong to [hive ? "the [hive.prefix]" : "a different "]hive.")
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/xeno = user
+		if(hivenumber != xeno.hivenumber)
+			to_chat(user, "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive.")
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -858,9 +871,11 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
 	melee_damage_upper = damage_modifier
+	melee_vehicle_damage = damage_modifier
 	if(caste)
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
+		melee_vehicle_damage += caste.melee_vehicle_damage
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
 	if(caste)
@@ -1001,3 +1016,6 @@
 	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
 		return
 	return ..()
+
+/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)

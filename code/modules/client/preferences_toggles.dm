@@ -77,6 +77,15 @@
 	prefs.save_preferences()
 	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
 
+/client/verb/togglechatemotes()
+	set name = "Toggle Abovehead Chat Emotes"
+	set category = "Preferences.Chat"
+	set desc = "Toggles seeing emotes in abovehead chat"
+
+	prefs.toggles_langchat ^= LANGCHAT_SEE_EMOTES
+	prefs.save_preferences()
+	to_chat(src,SPAN_BOLDNOTICE( "You will [(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
+
 /client/verb/toggle_permission_errors()
 	set name = "Toggle Permission Errors"
 	set category = "Preferences.Chat"
@@ -112,7 +121,7 @@
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
 		to_chat(src,SPAN_BOLDNOTICE( "You will now hear ambient sounds."))
 		if(soundOutput)
-			soundOutput.update_ambience(null, TRUE)
+			soundOutput.update_ambience(null, null, TRUE)
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "You will no longer hear ambient sounds."))
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
@@ -337,6 +346,11 @@
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+	prefs.save_preferences()
+
+/client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
+	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

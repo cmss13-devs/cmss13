@@ -1,4 +1,4 @@
-//Areas for the Kutjevo Refinery
+//Areas for Shiva's Snowball, aka Ice LZ1, above ground revamp.
 
 /area/shiva
 	name = "Shiva's Snowball"
@@ -89,7 +89,6 @@
 /area/shiva/exterior/junkyard/fortbiceps
 	name = "Shiva's Snowball - Fort Biceps"
 	icon_state = "junkyard1"
-	requires_power = FALSE
 
 /area/shiva/exterior/junkyard/cp_bar
 	name = "Shiva's Snowball - Bar Grounds"
@@ -123,7 +122,6 @@
 /area/shiva/interior/caves/left_spiders
 	name = "Shiva's Snowball - Crevice Passage"
 	icon_state = "caves2"
-	requires_power = FALSE
 
 /area/shiva/interior/caves/s_lz2
 	name = "Shiva's Snowball - South LZ2 Caves"
@@ -140,7 +138,6 @@
 /area/shiva/interior/caves/medseceng_caves
 	name = "Shiva's Snowball - South Med-Sec-Eng Complex Caves"
 	icon_state = "caves3"
-	requires_power = FALSE
 
 /area/shiva/interior/colony
 	name = "Shiva's Snowball - Colony MegaStruct(TM)"

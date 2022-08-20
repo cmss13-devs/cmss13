@@ -279,52 +279,52 @@ var/list/ob_type_fuel_requirements
 /obj/structure/orbital_tray/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(PC.loaded)
-				if(istype(PC.loaded, /obj/structure/ob_ammo))
-					var/obj/structure/ob_ammo/OA = PC.loaded
-					if(OA.is_solid_fuel)
-						if(fuel_amt >= 6)
-							to_chat(user, SPAN_WARNING("[src] can't accept more solid fuel."))
-						else if(!warhead)
-							to_chat(user, SPAN_WARNING("A warhead must be placed in [src] first."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							fuel_amt++
-							PC.loaded = null
-							PC.update_icon()
-							qdel(OA)
-							update_icon()
-					else
-						if(warhead)
-							to_chat(user, SPAN_WARNING("[src] already has a warhead."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							warhead = OA
-							OA.forceMove(src)
-							PC.loaded = null
-							PC.update_icon()
-							update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
 
-			else
+		if(PC.loaded)
+			if(!istype(PC.loaded, /obj/structure/ob_ammo))
+				to_chat(user, SPAN_WARNING("There is no way you can put \the [PC.loaded] into \the [src]!"))
+				return TRUE
 
-				if(fuel_amt)
-					var/obj/structure/ob_ammo/ob_fuel/OF = new (PC.linked_powerloader)
-					PC.loaded = OF
-					fuel_amt--
-				else if(warhead)
-					warhead.forceMove(PC.linked_powerloader)
-					PC.loaded = warhead
-					warhead = null
-				else
+			var/obj/structure/ob_ammo/OA = PC.loaded
+			if(OA.is_solid_fuel)
+				if(fuel_amt >= 6)
+					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
 					return TRUE
-				PC.update_icon()
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
-		return TRUE
+				if(!warhead)
+					to_chat(user, SPAN_WARNING("A warhead must be placed in \the [src] first."))
+					return TRUE
+				to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+				fuel_amt++
+				qdel(OA)
+			else
+				if(warhead)
+					to_chat(user, SPAN_WARNING("\The [src] already has \the [warhead] loaded."))
+					return TRUE
+				else
+					to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+					warhead = OA
+					OA.forceMove(src)
+
+			playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
+			PC.loaded = null
+			update_icon()
+			PC.update_icon()
+
+		else
+			if(fuel_amt)
+				var/obj/structure/ob_ammo/ob_fuel/OF = new (src)
+				fuel_amt--
+				PC.grab_object(OF, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+			else if(warhead)
+				PC.grab_object(warhead, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+				warhead = null
+
+			to_chat(user, SPAN_NOTICE("You retrieve \the [PC.loaded] from \the [src]."))
+			update_icon()
+			return TRUE
 	else
 		. = ..()
 
@@ -344,17 +344,24 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(!PC.loaded)
-				forceMove(PC.linked_powerloader)
-				PC.loaded = src
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				PC.update_icon()
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+
+		if(PC.loaded)
+			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+			return TRUE
+
+		if(is_solid_fuel)
+			PC.grab_object(src, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+		else
+			PC.grab_object(src, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		update_icon()
 		return TRUE
 	else
 		. = ..()
+
 
 /obj/structure/ob_ammo/examine(mob/user)
 	..()
@@ -372,27 +379,32 @@ var/list/ob_type_fuel_requirements
 
 	var/cancellation_token = rand(0,32000)
 	orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
 	for(var/mob/M in range(30, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
+			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(25, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
-			SPAN_HIGHDANGER("The sound becomes louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
+			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
+			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(15, target))
-		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
 			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \

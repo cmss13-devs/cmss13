@@ -231,6 +231,9 @@
 	item_state = "holidaypriest"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEJUMPSUIT
+	allowed = list(
+		/obj/item/weapon/gun,
+	)
 
 
 /obj/item/clothing/suit/cardborg

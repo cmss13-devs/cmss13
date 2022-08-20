@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ai" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "ap" = (
@@ -81,7 +81,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "bZ" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "ci" = (
@@ -331,7 +331,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ic" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "if" = (
@@ -430,7 +430,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "lS" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ma" = (
@@ -1050,7 +1050,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Ak" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/coast{
 	dir = 8
 	},
@@ -1285,7 +1285,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1;
 	armor_bio = 0;
 	armor_bomb = 0;
@@ -1496,7 +1496,7 @@
 	pixel_x = -1;
 	pixel_y = -31
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
@@ -1743,7 +1743,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "OR" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Ps" = (
@@ -1771,7 +1771,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1
 	},
 /turf/open/gm/dirt,
@@ -1794,7 +1794,7 @@
 	pixel_x = 1;
 	pixel_y = -31
 	},
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
@@ -1842,7 +1842,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Rg" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	name = "\improper Strange Temple"
 	},
@@ -1978,7 +1978,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Wz" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Xg" = (

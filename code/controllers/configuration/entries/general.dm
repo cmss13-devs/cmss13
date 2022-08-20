@@ -79,6 +79,8 @@ Administrative related.
 /datum/config_entry/flag/log_hrefs
 	protection = CONFIG_ENTRY_LOCKED
 
+/datum/config_entry/flag/debug_admin_hrefs
+
 /datum/config_entry/flag/popup_admin_pm
 
 /datum/config_entry/flag/log_debug
@@ -495,3 +497,25 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /// Map configuration file to use in ephemeral mode
 /datum/config_entry/string/ephemeral_ground_map
 	config_entry_value = "maps/testing.json"
+
+/datum/config_entry/number/urgent_ahelp_cooldown
+	default = 300
+
+/datum/config_entry/string/urgent_ahelp_message
+	default = "This ahelp is urgent!"
+
+/datum/config_entry/string/ahelp_message
+	default = ""
+
+/datum/config_entry/string/urgent_ahelp_user_prompt
+	default = "There are no admins currently on. Do not press the button below if your ahelp is a joke, a request or a question. Use it only for cases of obvious grief."
+
+/datum/config_entry/string/urgent_adminhelp_webhook_url
+
+/datum/config_entry/string/regular_adminhelp_webhook_url
+
+/datum/config_entry/string/adminhelp_webhook_pfp
+
+/datum/config_entry/string/adminhelp_webhook_name
+
+/datum/config_entry/string/adminhelp_ahelp_link

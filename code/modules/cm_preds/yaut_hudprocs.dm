@@ -93,7 +93,7 @@
 	if(!M)
 		return
 	if(M.hunter_data.hunter)
-		to_chat(src, SPAN_YAUTJABOLD("[M] is already being hunted by [M.hunter_data.hunter.real_name]!."))
+		to_chat(src, SPAN_YAUTJABOLD("[M] is already being hunted by [M.hunter_data.hunter.real_name]!"))
 		return
 	hunter_data.prey = M
 	M.hunter_data.hunter = src
@@ -157,7 +157,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.honored)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been honored by [T.hunter_data.honored_set.real_name] for '[T.hunter_data.honored_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been honored by [T.hunter_data.honored_set.real_name] for '[T.hunter_data.honored_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as honored.", "Mark as Honored", "", 120)
@@ -234,7 +234,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.dishonored)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as dishonorable by [T.hunter_data.dishonored_set.real_name] for '[T.hunter_data.dishonored_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as dishonorable by [T.hunter_data.dishonored_set.real_name] for '[T.hunter_data.dishonored_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as dishonorable.", "Mark as Dishonorable", "", 120)
@@ -312,7 +312,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.gear)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as a gear carrier by [T.hunter_data.gear_set]!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been marked as a gear carrier by [T.hunter_data.gear_set]!"))
 		return
 
 	log_interact(src, T, "[key_name(src)] has marked [key_name(T)] as a Gear Carrier!")
@@ -384,7 +384,7 @@
 	if(!T)
 		return
 	if(T.hunter_data.thralled)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been thralled by [T.hunter_data.thralled_set.real_name] for '[T.hunter_data.thralled_reason]'!."))
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been thralled by [T.hunter_data.thralled_set.real_name] for '[T.hunter_data.thralled_reason]'!"))
 		return
 
 	var/reason = stripped_input(usr, "Enter the reason for marking your target as thralled.", "Mark as Thralled", "", 120)

@@ -90,6 +90,8 @@
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 
+	var/is_objective = FALSE //lets us know if the item is an objective or not
+
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)
@@ -206,6 +208,8 @@ cases. Override_icon_state should be a list.*/
 	to_chat(user, "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item.")
 	if(desc)
 		to_chat(user, desc)
+	if(desc_lore)
+		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
 
 /obj/item/attack_hand(mob/user)
 	if (!user)
@@ -435,10 +439,16 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_L_HAND)
 				if(H.l_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(H.r_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_FACE)
 				if(H.wear_mask)
@@ -589,9 +599,9 @@ cases. Override_icon_state should be a list.*/
 							var/obj/item/clothing/accessory/storage/S = A
 							if(S.hold.can_be_inserted(src, TRUE))
 								return TRUE
-						else if(istype(A, /obj/item/clothing/accessory/holster))
-							var/obj/item/clothing/accessory/holster/AH = A
-							if(!(AH.holstered) && AH.can_holster(src))
+						else if(istype(A, /obj/item/storage/internal/accessory/holster))
+							var/obj/item/storage/internal/accessory/holster/AH = A
+							if(!(AH.current_gun) && AH.can_be_inserted(src))
 								return TRUE
 				return FALSE
 			if(WEAR_IN_JACKET)

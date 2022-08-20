@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes)		//Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if source paper is deleted
 
+GLOBAL_LIST_EMPTY(failed_fultons) 	//A list of fultoned items which weren't collected and fell back down
+
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
@@ -122,6 +124,7 @@ GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 
+
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
 
@@ -136,7 +139,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
-	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken()
+	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
+	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
@@ -154,11 +158,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, na
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
-	//Underwear
-var/global/list/underwear_m = list("Briefs") //Curse whoever made male/female underwear diffrent colours
-var/global/list/underwear_f = list("Briefs", "Panties")
-	//undershirt
-var/global/list/undershirt_t = list("None","Undershirt(Sleeveless)", "Undershirt(Sleeved)", "Rolled Undershirt(Sleeveless)", "Rolled Undershirt(Sleeved)")
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
@@ -370,3 +369,26 @@ var/global/list/paramslist_cache = list()
 */
 
 GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
+
+
+// Timelock
+GLOBAL_LIST_EMPTY(timelocks)
+
+
+//the global list of specialist kits that haven't been claimed yet.
+var/global/list/available_specialist_sets = list(
+			"Scout Set",
+			"Sniper Set",
+			"Demolitionist Set",
+			"Heavy Grenadier Set",
+			"Pyro Set"
+			)
+
+//Similar thing, but used in /obj/item/spec_kit
+var/global/list/available_specialist_kit_boxes = list(
+			"Pyro" = 2,
+			"Grenadier" = 2,
+			"Sniper" = 2,
+			"Scout" = 2,
+			"Demo" = 2,
+			)

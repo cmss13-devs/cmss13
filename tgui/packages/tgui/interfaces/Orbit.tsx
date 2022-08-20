@@ -1,8 +1,7 @@
-import { BooleanLike } from 'common/react';
-import { createSearch, multiline } from 'common/string';
+import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { resolveAsset } from '../assets';
-import { Box, Button, Divider, Flex, Icon, Input, Section } from '../components';
+import { Box, Button, Flex, Icon, Input, Section } from '../components';
 import { Window } from '../layouts';
 
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
@@ -54,7 +53,7 @@ type OrbitData = {
   ghosts: OrbitList[],
   misc: OrbitList[],
   npcs: OrbitList[],
-  auto_observe: BooleanLike,
+  vehicles: OrbitList[],
 }
 
 type BasicSectionProps = {
@@ -130,7 +129,7 @@ export const Orbit = (props: any, context: any) => {
     ghosts,
     misc,
     npcs,
-    auto_observe,
+    vehicles,
   } = data;
 
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
@@ -173,27 +172,6 @@ export const Orbit = (props: any, context: any) => {
                 value={searchText}
                 onInput={(_: any, value: string) => setSearchText(value)}
                 onEnter={(_: any, value: string) => orbitMostRelevant(value)} />
-            </Flex.Item>
-            <Flex.Item>
-              <Divider vertical />
-            </Flex.Item>
-            <Flex.Item>
-              <Button
-                inline
-                color="transparent"
-                tooltip={multiline`Toggle Auto-Observe. When active, you'll
-                see the UI / full inventory of any humans you orbit, Neat!`}
-                tooltipPosition="bottom-start"
-                selected={auto_observe}
-                icon={auto_observe ? "toggle-on" : "toggle-off"}
-                onClick={() => act("toggle_observe")} />
-              <Button
-                inline
-                color="transparent"
-                tooltip="Refresh"
-                tooltipPosition="bottom-start"
-                icon="sync-alt"
-                onClick={() => act("refresh")} />
             </Flex.Item>
           </Flex>
         </Section>
@@ -282,6 +260,18 @@ export const Orbit = (props: any, context: any) => {
             ))}
         </Section>
 
+        <Section title={`Vehicles - (${vehicles.length})`}>
+          {vehicles
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="blue"
+                thing={thing} />
+            ))}
+        </Section>
+
         <Section title={`Ghosts - (${ghosts.length})`}>
           {ghosts
             .filter(searchFor(searchText))
@@ -311,6 +301,7 @@ export const Orbit = (props: any, context: any) => {
           source={misc}
           searchText={searchText}
         />
+
       </Window.Content>
     </Window>
   );

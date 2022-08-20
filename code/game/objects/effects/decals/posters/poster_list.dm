@@ -51,7 +51,7 @@ Template
 /datum/poster/poster_9
 	icon_state="poster9"
 	name = "Seegson"
-	desc = "Hey, Seegson! That's a blast from the past. They bought by Wey-Yu around the time one of their stations fell into a planet after a system failure."
+	desc = "Hey, Seegson! That's a blast from the past. They got bought out by Weyland-Yutani around the time one of their space stations de-orbited and fell into a planet's gravity well after a systems failure."
 
 /datum/poster/poster_10
 	icon_state="poster10"
@@ -86,7 +86,7 @@ Template
 /datum/poster/poster_16
 	icon_state="poster16"
 	name = "'Miss July' pinup"
-	desc = "This poster features Audrey Rainwater standing in a jaccuzi. She was the July 2180 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that."
+	desc = "This poster features Audrey Rainwater standing in a jacuzzi. She was the July 2180 centerfold in House Bunny Gentleman's Magazine. Don't ask how you know that."
 
 /datum/poster/poster_17
 	icon_state="poster17"
@@ -208,3 +208,8 @@ Template
 	icon_state="poster40"
 	name = "Vote 'NO' to Proposition 339 and Vote 'NO!' to the Colonial Protection Act"
 	desc = "This poster demands that you vote 'NO!' to that new piece of legislation that would give the military carte-blance permission to stick its nose in corporate affairs. Many view the bill as government overreach, but many others view it as the lesser of two evils compared to letting the megacorps do whatever they want. Because space is friggin' huge, it's going to take a while to gather all of the votes and even if it's passed, it likely won't go into effect until 2186 at the earliest."
+
+/datum/poster/poster_41
+	icon_state="poster41"
+	name = "Falling Falcons"
+	desc = "Promotional material for the 2nd Company of the 2nd Battalion of the 4th Brigade, the Falling Falcons. Designed by an unknown artist and printed in an effort to bolster the ranks of the Falling Falcons."

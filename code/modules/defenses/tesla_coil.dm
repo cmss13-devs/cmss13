@@ -99,7 +99,7 @@
 		S.start()
 		qdel(S)
 
-		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
+		beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
 		track_shot()
 
 	targets = null
@@ -124,6 +124,10 @@
 			if(S.opacity)
 				blocked = TRUE
 				break
+			if(S.layer >= DOOR_CLOSED_LAYER || istype(S, /obj/structure/window))
+				if(S.density)
+					blocked = TRUE
+					break
 
 		for(var/obj/effect/particle_effect/smoke/S in T)
 			blocked = TRUE

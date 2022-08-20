@@ -6,7 +6,7 @@
 	assignment = "Whiteout Team Operative"
 	role_comm_title = "WO"
 	rank = FACTION_WY_DEATHSQUAD
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_RUSSIAN, LANGUAGE_TSL) //Synths after all.
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_RUSSIAN, LANGUAGE_TSL, LANGUAGE_CHINESE) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	idtype = /obj/item/card/id/pmc/ds
 	paygrade = "O"

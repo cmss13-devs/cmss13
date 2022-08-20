@@ -144,6 +144,8 @@
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
+		
+	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
@@ -199,6 +201,13 @@
 	if(agility || fortify || crest_defense)
 		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
 		return FALSE
+
+	if(world.time < (SSticker.mode.round_time_lobby + XENO_ROUNDSTART_PROGRESS_TIME_2))
+		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
+			var/turf/evoturf = get_turf(src)
+			if(!locate(/obj/effect/alien/weeds) in evoturf)
+				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve off weeds!"))
+				return FALSE
 
 	return TRUE
 
@@ -312,6 +321,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
+	
+	src.transfer_observers_to(new_xeno)
+	
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)

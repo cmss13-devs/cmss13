@@ -95,7 +95,7 @@
 	mob.next_delay_update = world.time + mob.next_delay_delay
 
 /client/Move(n, direct)
-	if(world.time < next_movement)
+	if(world.time < next_movement || (mob.lying && mob.crawling))
 		return
 
 	next_move_dir_add = 0
@@ -131,7 +131,7 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
-	if(!mob.canmove || mob.is_mob_incapacitated(TRUE))
+	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
 		return
 
 	//Check if you are being grabbed and if so attemps to break it
@@ -168,8 +168,17 @@
 		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
-		moving = 1
+		moving = TRUE
 		mob.move_intentionally = TRUE
+		if(mob.lying)
+			mob.crawling = TRUE
+			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
+				mob.crawling = FALSE
+				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+				mob.move_intentionally = FALSE
+				moving = FALSE
+				return
+		mob.crawling = FALSE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(cardinal)))
 		else
@@ -183,7 +192,7 @@
 			if(mob.clone != null)
 				mob.update_clone()
 		mob.move_intentionally = FALSE
-		moving = 0
+		moving = FALSE
 		next_movement = world.time + move_delay
 	return
 

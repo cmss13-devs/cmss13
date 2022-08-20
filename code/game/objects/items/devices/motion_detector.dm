@@ -16,7 +16,7 @@
 
 /obj/item/device/motiondetector
 	name = "motion detector"
-	desc = "A device that detects movement, but ignores marines."
+	desc = "A device that detects movement, but ignores marines. Can also be used to scan a vehicle interior from outside, but accuracy of such scanning is low and there is no way to differentiate friends from foes."
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector"
 	item_state = "motion_detector"
@@ -113,23 +113,27 @@
 		toggle_active(user, active)
 
 // var/active is used to forcefully toggle it to a specific state
-/obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
+/obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active, var/forced = FALSE)
 	active = !old_active
 	if(!active)
-		turn_off(user)
+		turn_off(user, forced)
 	else
-		turn_on(user)
+		turn_on(user, forced)
 	update_icon()
 
-/obj/item/device/motiondetector/proc/turn_on(mob/user)
-	if(user)
-		to_chat(user, SPAN_NOTICE("You activate [src]."))
+/obj/item/device/motiondetector/proc/turn_on(mob/user, var/forced = FALSE)
+	if(forced)
+		visible_message(SPAN_NOTICE("\The [src] turns on."), SPAN_NOTICE("You hear a beep."), 3)
+	else if(user)
+		to_chat(user, SPAN_NOTICE("You activate \the [src]."))
 	playsound(loc, 'sound/items/detector_turn_on.ogg', 30, FALSE, 5, 2)
 	START_PROCESSING(SSobj, src)
 
-/obj/item/device/motiondetector/proc/turn_off(mob/user)
-	if(user)
-		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+/obj/item/device/motiondetector/proc/turn_off(mob/user, var/forced = FALSE)
+	if(forced)
+		visible_message(SPAN_NOTICE("\The [src] shorts out."), SPAN_NOTICE("You hear a click."), 3)
+	else if(user)
+		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning
 	icon_state = "[initial(icon_state)]"
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)

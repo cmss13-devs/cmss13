@@ -141,6 +141,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = "Corgi",
 	  key = /mob/living/simple_animal/corgi,
 	  color = "orange"
+	),
+	list(
+	  name = XENO_CASTE_HELLHOUND,
+	  key = /mob/living/carbon/Xenomorph/Hellhound,
+	  color = "orange"
 	)
   )
 ))
@@ -168,9 +173,6 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 		if(isXeno(target))
 			var/mob/living/carbon/Xenomorph/X = target
 			newXeno.set_hive_and_update(X.hivenumber)
-
-		newXeno.generate_name()
-		newXeno.set_lighting_alpha_from_prefs(user)
 
 
 	QDEL_IN(target, 0.3 SECONDS)

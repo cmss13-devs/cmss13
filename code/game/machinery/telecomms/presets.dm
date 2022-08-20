@@ -113,7 +113,9 @@
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attackby(obj/item/I, mob/user)
 	if(iswelder(I))
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

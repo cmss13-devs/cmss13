@@ -25,7 +25,9 @@
 	if (!iswelder(W))
 		return ..()
 
-	if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
+	if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
 
 	var/obj/item/tool/weldingtool/WT = W
 

@@ -21,6 +21,7 @@
 			if(iswelder(P))
 				var/obj/item/tool/weldingtool/WT = P
 				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
 				if(!WT.isOn())
 					to_chat(user, "The welder must be on for this task.")

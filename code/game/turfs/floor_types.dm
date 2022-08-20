@@ -49,7 +49,9 @@
 		coil.turf_place(src, user)
 		return
 	if(iswelder(C))
-		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/welder = C
 		if(welder.isOn() && (broken || burnt))
 			if(welder.remove_fuel(0, user))

@@ -164,7 +164,9 @@
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
 	if (iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
@@ -564,7 +566,9 @@
 		return
 
 	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -1103,7 +1107,9 @@
 	if(!iswelder(O) || user.action_busy)
 		return
 
-	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH)) return
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
 
 	if(!broken_gun)
 		to_chat(user, SPAN_WARNING("\The [src] isn't critically broken, no need for field recovery operations."))
@@ -1295,7 +1301,9 @@
 
 	// WELDER REPAIR
 	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 

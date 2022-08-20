@@ -67,7 +67,9 @@
 				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
 		else if(iswelder(I) && mode == -1)
-			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			if(contents.len > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -782,7 +784,9 @@
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
 	if(iswelder(I))
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 
 		if(W.remove_fuel(0, user))
@@ -1266,7 +1270,9 @@
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
 	if(iswelder(I))
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -1374,7 +1380,9 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 	else if(iswelder(I) && mode == 1)
-		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)

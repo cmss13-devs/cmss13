@@ -63,7 +63,9 @@
 	else if(istype(W, /obj/item/cell) && !cell && open)
 		insert_cell(W, user)
 	else if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH)) return
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
 			if(health < maxhealth)

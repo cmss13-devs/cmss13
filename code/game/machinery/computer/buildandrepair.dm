@@ -20,7 +20,9 @@
 					src.anchored = 1
 					src.state = 1
 			if(iswelder(P))
-				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH)) return
+				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = P
 				if(!WT.isOn())
 					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))

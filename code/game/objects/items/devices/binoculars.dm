@@ -335,6 +335,109 @@
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
+/obj/item/device/binoculars/range/designator/spotter
+	name = "spotter's laser designator"
+	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+
+	var/spotting_time = 10 SECONDS
+	var/spotting_cooldown
+	var/spotting_cooldown_delay = 5 SECONDS
+
+/obj/item/device/binoculars/range/designator/spotter/Initialize()
+	LAZYADD(actions_types, /datum/action/item_action/specialist/spotter_target)
+	return ..()
+
+/datum/action/item_action/specialist/spotter_target
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+	var/minimum_laze_distance = 2
+
+/datum/action/item_action/specialist/spotter_target/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Spot Target"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "spotter_target")
+	button.overlays += IMG
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+	designator.spotting_cooldown = world.time
+
+/datum/action/item_action/specialist/spotter_target/action_activate()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.selected_ability == src)
+		to_chat(H, "You will no longer use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		button.icon_state = "template"
+		H.selected_ability = null
+	else
+		to_chat(H, "You will now use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(H.selected_ability)
+			H.selected_ability.button.icon_state = "template"
+			H.selected_ability = null
+		button.icon_state = "template_on"
+		H.selected_ability = src
+
+/datum/action/item_action/specialist/spotter_target/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && (holder_item == H.r_hand || holder_item || H.l_hand))
+		return TRUE
+
+/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/A)
+	var/mob/living/carbon/human/H = owner
+	if(!istype(A, /mob/living))
+		return
+
+	var/mob/living/M = A
+
+	if(M.stat == DEAD || M == H)
+		return
+
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+	if(world.time < designator.spotting_cooldown)
+		return
+
+	if(!check_can_use(M))
+		return
+
+	designator.spotting_cooldown = world.time + designator.spotting_cooldown_delay
+
+	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
+	var/distance = round(get_dist(M, H) * 0.5)
+	var/f_spotting_time = designator.spotting_time + distance
+
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spotter", dir = get_cardinal_dir(M, H))
+	M.overlays += I
+	ADD_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+	if(H.client)
+		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
+	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	if(!do_after(H, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		M.overlays -= I
+		REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+		return
+	M.overlays -= I
+	REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+
+/datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/M, var/cover_lose_focus)
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
+
+	if(!can_use_action())
+		return FALSE
+
+	if(designator != H.r_hand && designator != H.l_hand)
+		to_chat(H, SPAN_WARNING("How do you expect to do this without your laser designator?"))
+		return FALSE
+
+	if(get_dist(H, M) < minimum_laze_distance)
+		to_chat(H, SPAN_WARNING("\The [M] is too close to laze!"))
+		return FALSE
+
+	return TRUE
+
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.

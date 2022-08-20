@@ -137,8 +137,8 @@
 			CCA.stop_momentum()
 			return
 		X.visible_message(
-			SPAN_DANGER("[X] smashes straight into [src]!"),
-			SPAN_XENODANGER("You smash straight into [src]!")
+			SPAN_DANGER("[X] smashes straight into \the [src]!"),
+			SPAN_XENODANGER("You smash straight into \the [src]!")
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()

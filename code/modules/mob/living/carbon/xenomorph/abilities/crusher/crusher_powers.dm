@@ -131,7 +131,7 @@
 			continue
 
 		new effect_type_base(Human, Xeno, , , get_xeno_stun_duration(Human, effect_duration))
-		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed an stompted on by [Xeno] !!!"))
+		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [Xeno]!!!"))
 
 		if(Human.mob_size < MOB_SIZE_BIG)
 			Human.KnockDown(get_xeno_stun_duration(Human, 0.2))

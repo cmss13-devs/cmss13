@@ -891,21 +891,21 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/withMessage = TRUE)
+/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/with_message = TRUE)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
 			shock(usr, 50)
 			shorted = 1
-			if(withMessage)
+			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
-			if(withMessage)
+			if(with_message)
 				visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
 /obj/structure/machinery/power/apc/proc/mend(var/wire)

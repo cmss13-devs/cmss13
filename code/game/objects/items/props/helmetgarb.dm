@@ -153,6 +153,9 @@
 
 	attached_item.update_icon()
 
+#undefine GOGGLES_NORMAL 1
+#undefine GOGGLES_PRESCRIPTION 2
+
 #define NVG_SHAPE_COSMETIC 1
 #define NVG_SHAPE_BROKEN 2
 #define NVG_SHAPE_PATCHED 3

@@ -2122,7 +2122,6 @@ Defined in conflicts.dm of the #defines folder.
 	P.color = flamer_reagent.color
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
 	var/turf/user_turf = get_turf(user)
-	gun.muzzle_flash(Get_Angle(user_turf, target), user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 
 	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))

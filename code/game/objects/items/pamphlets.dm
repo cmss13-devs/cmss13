@@ -75,12 +75,29 @@ obj/item/pamphlet/Initialize()
 	if(specialist_skill != SKILL_SPEC_DEFAULT)
 		to_chat(user, SPAN_WARNING("You're already a specialist! Give this to a lesser trained marine."))
 		return FALSE
+
+	if(user.job != JOB_SQUAD_MARINE)
+		to_chat(user, SPAN_WARNING("Only squad marines can use this."))
+		return
+
+	var/obj/item/card/id/ID = user.wear_id
+	if(!istype(ID)) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+	if(ID.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
 	return ..()
 
 /obj/item/pamphlet/skill/spotter/on_use(mob/living/carbon/human/user)
 	. = ..()
 	user.rank_fallback = "ass"
 	user.hud_set_squad()
+
+	var/obj/item/card/id/ID = user.wear_id
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Squad Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"

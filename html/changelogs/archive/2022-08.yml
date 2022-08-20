@@ -370,6 +370,15 @@
   - bugfix: IO objectives tied to items no longer bluescreen due to said items getting
       exploded.
 2022-08-20:
+  Drulikar:
+  - bugfix: Fixed power APCs being unbreakable (atleast not by small/med xenos) after
+      basic repairs have been made (mending wires and closing panel)
+  - bugfix: Xenos now cut all power APC wires, not just all - 1 because of an off-by-one
+      error
+  - bugfix: If a power APC's wires are exposed some reason, now they can just immediately
+      be slashed
+  - code_imp: Power APC cut proc now can take a boolean argument to hide messages
+      (And xeno slashing now doesn't produce the redundant messages)
   Kaga:
   - rscadd: Added in a new type of embedded shrapnel, unexploded ordnance. Currently
       only the event-related AT Rockets can rarely (5%) cause it when hitting unintended

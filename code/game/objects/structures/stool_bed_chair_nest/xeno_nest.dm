@@ -50,23 +50,36 @@
 		if(HIVE_ALLIED_TO_HIVE(carbon.hivenumber, hivenumber))
 			to_chat(user, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
-	if(buckled_mob && iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("You need to turn \the [W] on before you can unnest someone!"))
+	if(buckled_mob)
+		if(iswelder(W))
+			var/obj/item/tool/weldingtool/WT = W
+			if(!WT.isOn())
+				to_chat(user, SPAN_WARNING("You need to turn \the [W] on before you can unnest someone!"))
+				return
+			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
+			user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
+				return
+			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
+			playsound(loc, "alien_resin_move", 50)
+			if(ishuman(buckled_mob))
+				var/mob/living/carbon/human/H = buckled_mob
+				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+			unbuckle()
 			return
-		playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-		user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
-		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
+		if(is_sharp(W))
+			user.visible_message(SPAN_NOTICE("\The [user] starts cutting through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start cutting through the resin binding \the [buckled_mob] in place..."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				return
+			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
+			playsound(loc, "alien_resin_move", 50)
+			if(ishuman(buckled_mob))
+				var/mob/living/carbon/human/H = buckled_mob
+				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+			unbuckle()
 			return
-		buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
-		playsound(loc, "alien_resin_move", 50)
-		if(ishuman(buckled_mob))
-			var/mob/living/carbon/human/H = buckled_mob
-			user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
-			H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
-		unbuckle()
-		return
 	health = max(0, health - W.force)
 	playsound(loc, "alien_resin_break", 25)
 	user.animation_attack_on(src)
@@ -91,8 +104,6 @@
 		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
 			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
-		to_chat(user, SPAN_WARNING("The resin binding \the [buckled_mob] down is too strong to rip apart! You need a cutting tool!"))
-		return
 
 	if(ishuman(buckled_mob) && isXeno(user))
 		var/mob/living/carbon/human/H = buckled_mob
@@ -104,6 +115,11 @@
 				return
 			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
 				return
+
+	if(ishuman(user))
+		user.visible_message(SPAN_NOTICE("\The [user] starts pulling \the [buckled_mob] free from the resin binding them in place..."), SPAN_NOTICE("You start pulling \the [buckled_mob] free from the resin binding them in place..."))
+		if(!do_after(user, 8 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			return
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 	SPAN_NOTICE("You hear squelching."))

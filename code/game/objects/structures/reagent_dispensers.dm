@@ -70,12 +70,10 @@
 /obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	if(Proj.firer)
-		message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	if(health <= 0)
-		Destroy()
-
+	healthcheck()
 	return TRUE
 
 

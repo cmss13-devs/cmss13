@@ -56455,9 +56455,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 0
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
@@ -67739,9 +67737,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 0
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

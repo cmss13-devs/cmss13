@@ -526,16 +526,25 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	static = TRUE
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
+	var/sentry_number
 	
 /obj/structure/machinery/defenses/sentry/launchable/Initialize()
 	. = ..()
-	linked_cam = new(loc, "[name] [sentry_count]")
-	SetLuminosity(7)
+	sentry_number = sentry_count
 	sentry_count++
 	
 /obj/structure/machinery/defenses/sentry/launchable/Destroy()
 	QDEL_NULL(linked_cam)
 	. = ..()
+	
+/obj/structure/machinery/defenses/sentry/launchable/power_on_action()
+	. = ..()
+	//The way the camera system is handled going back and forth from TGUI makes the \improper char not function correctly and it tries to find it at the beginning of the passed name. Our bad boy here's got one in our get_area() call so we gotta remove it.
+	linked_cam = new(loc, "[name] [sentry_number] at [copytext_char(get_area(src), 3)] ([obfuscate_x(x)], [obfuscate_y(y)])")
+
+/obj/structure/machinery/defenses/sentry/launchable/power_off_action()
+	. = ..()
+	QDEL_NULL(linked_cam)
 	
 
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)

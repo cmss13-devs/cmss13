@@ -176,7 +176,7 @@
 	channels = list(SQUAD_MARINE_5 = 1)
 
 /obj/item/device/encryptionkey/cryo
-	name = "\improper Reserves Squad Radio Encryption Key"
+	name = "\improper Foxtrot Squad Radio Encryption Key"
 	icon_state = "cryo_key"
 	channels = list(SQUAD_MARINE_CRYO = 1)
 

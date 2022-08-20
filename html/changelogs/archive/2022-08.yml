@@ -370,6 +370,17 @@
   - bugfix: IO objectives tied to items no longer bluescreen due to said items getting
       exploded.
 2022-08-20:
+  Kaga:
+  - rscadd: Added in a new type of embedded shrapnel, unexploded ordnance. Currently
+      only the event-related AT Rockets can rarely (5%) cause it when hitting unintended
+      soft targets (human mobs) directly. Moving with one embedded has a small chance
+      to detonate it with each step, but it can be yanked out as with other embedded
+      objects.
+  - rscadd: Unexploded Anti-Tank Rockets can be manually detonated in various ways
+      as a makeshift weapon or tool. While significantly weaker than proper rockets,
+      they detonate in a contained direction when used. Despite the potential uses,
+      they are highly unstable and prone to accidental detonations with each interaction.
+      Exercise caution when handling them!
   Nanu:
   - balance: Nerfs the AGMF from 400+dmg on avg with a maxcap of 750 down to around
       200 dmg on avg with a maxcap of 400dmg via turning the shrapnel count down to

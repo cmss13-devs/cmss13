@@ -23,7 +23,7 @@ export const OrbitalCannonConsole = (_props, context) => {
         <Section title="Warhead status">
           {!!data.warhead && (
             <NoticeBox info>
-              {data.warhead} warhead loaded!
+              {data.warhead} loaded!
             </NoticeBox>
           ) || (
             <NoticeBox danger>

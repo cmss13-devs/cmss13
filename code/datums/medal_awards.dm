@@ -263,20 +263,21 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			if(found_other)
 				break
 			found_other = TRUE
-		if(is_marine_medal)
-			// Giver (marine)
-			if(mob.real_name == giver_name)
-				giver_mob = mob
-				if(found_other)
-					break
-				found_other = TRUE
-		else
-			// Giver (xeno)
-			if(mob.key == giver_name)
-				giver_mob = mob
-				if(found_other)
-					break
-				found_other = TRUE
+		if(giver_name)
+			if(is_marine_medal)
+				// Giver (marine)
+				if(mob.real_name == giver_name)
+					giver_mob = mob
+					if(found_other)
+						break
+					found_other = TRUE
+			else
+				// Giver (xeno)
+				if(mob.key == giver_name)
+					giver_mob = mob
+					if(found_other)
+						break
+					found_other = TRUE
 
 	// Delete the physical award item
 	var/obj/item/medal_item = recipient_award.medal_items[index]

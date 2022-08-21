@@ -33,14 +33,14 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 
 /proc/give_medal_award(var/medal_location, var/attributed = TRUE)
 	// Pick a marine
-	var/list/possible_recipients = list("Cancel")
+	var/list/possible_recipients = list()
 	var/list/recipient_ranks = list()
 	for(var/datum/data/record/record in GLOB.data_core.general)
 		var/recipient_name = record.fields["name"]
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
-	if(!chosen_recipient || chosen_recipient == "Cancel")
+	if(!chosen_recipient)
 		return FALSE
 	var/recipient_rank = recipient_ranks[chosen_recipient]
 	
@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 	
 	// Write a citation
-	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation)
 		return FALSE
 	
@@ -141,7 +141,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return FALSE
 
 	// Pick a xeno
-	var/list/possible_recipients = list("Cancel")
+	var/list/possible_recipients = list()
 	var/list/recipient_castes = list()
 	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_castes[recipient_name] = xeno.caste_type
 		possible_recipients += recipient_name
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
-	if(!chosen_recipient || chosen_recipient == "Cancel")
+	if(!chosen_recipient)
 		return FALSE
 	var/recipient_caste = recipient_castes[chosen_recipient]
 	

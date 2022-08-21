@@ -399,3 +399,6 @@
 2022-08-21:
   Morrow:
   - bugfix: You can no longer use picked up simple mobs to get around the C4 limits.
+  theflyingflail:
+  - rscadd: Added ert medical pouch to ert corpses
+  - tweak: Swapped PMC mask for heat coif in black market crate and pmc corpses

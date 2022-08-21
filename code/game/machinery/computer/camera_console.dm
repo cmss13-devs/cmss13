@@ -60,6 +60,11 @@
 		user.set_interaction(src)
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
+
 /obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)

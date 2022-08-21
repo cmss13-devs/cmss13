@@ -1,6 +1,6 @@
 import { map } from 'common/collections';
 import { useBackend } from '../backend';
-import { Section, Table } from '../components';
+import { Section, Table, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const HiveLeaders = (props, context) => {
@@ -21,16 +21,38 @@ export const HiveLeaders = (props, context) => {
         <Section>
           <Table className="xeno_list">
             <Table.Row header className="xenoListRow">
-              <Table.Cell width="100px">Designation</Table.Cell>
-              <Table.Cell width="150px">Caste</Table.Cell>
+              <Table.Cell width="5%" className="noPadCell" />
+              <Table.Cell textAlign="left">Designation</Table.Cell>
+              <Table.Cell textAlign="left">Caste</Table.Cell>
             </Table.Row>
 
-            <Table.Row className="xenoListRow">
-              <Table.Cell width="250px">Queen</Table.Cell>
+            <Table.Row className="xenoListRow" backgroundColor="xeno" height="25px" lineHeight="5px">
+              <Table.Cell colspan={3} p={1}>Queen</Table.Cell>
             </Table.Row>
 
             {map((entry, i) => (
               <Table.Row key={i} >
+                <Table.Cell className="noPadCell">
+                  <div unselectable="on" className="leaderIcon">
+                    <Icon name="star" ml={0.2} />
+                  </div>
+                </Table.Cell>
+                <Table.Cell>{entry.designation}</Table.Cell>
+                <Table.Cell>{entry.caste_type}</Table.Cell>
+              </Table.Row>
+            ))(queens)}
+
+            <Table.Row className="xenoListRow" backgroundColor="xeno" height="25px" lineHeight="5px">
+              <Table.Cell colspan={3} p={1}>Leaders</Table.Cell>
+            </Table.Row>
+
+            {map((entry, i) => (
+              <Table.Row key={i} >
+                <Table.Cell className="noPadCell">
+                  <div unselectable="on" className="leaderIcon">
+                    <Icon name="star" ml={0.2} />
+                  </div>
+                </Table.Cell>
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>

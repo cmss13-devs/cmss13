@@ -74,19 +74,6 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
-/obj/item/clothing/glasses/mgoggles
-	name = "marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
-	icon_state = "mgoggles"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-	var/activated = FALSE
-	var/active_icon_state = "mgoggles_down"
-	var/inactive_icon_state = "mgoggles"
-
-	var/datum/action/item_action/activation
-	var/obj/item/attached_item
-	garbage = FALSE
-
 #define NVG_SHAPE_COSMETIC 1
 #define NVG_SHAPE_BROKEN 2
 #define NVG_SHAPE_PATCHED 3

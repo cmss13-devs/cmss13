@@ -321,6 +321,6 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_player.untrack_medal_earned(medal_type, recipient_mob, citation)
 
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s [medal_type] for: \'[citation]\'.")
+	message_staff("[key_name_admin(usr)] deleted [recipient_name]'s <a href='?medals_panel=[is_marine_medal ? MEDALS_PANEL_USCM : MEDALS_PANEL_XENO]'>[medal_type]</a> for: \'[citation]\'.")
 
 	return TRUE

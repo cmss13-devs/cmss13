@@ -31,7 +31,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	giver_rank = list()
 
 
-/proc/give_medal_award(var/medal_location, var/attributed = TRUE)
+/proc/give_medal_award(var/medal_location, var/as_admin = FALSE)
+	if(as_admin && !check_rights(R_ADMIN))
+		as_admin = FALSE
+
 	// Pick a marine
 	var/list/possible_recipients = list()
 	var/list/recipient_ranks = list()
@@ -57,10 +60,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	// Get mob information
 	var/posthumous = TRUE
 	var/recipient_ckey
-	var/recipient_mob
-	var/found_other = !attributed // Don't need to check for other mob if we aren't attributing the giver
+	var/mob/recipient_mob
+	var/found_other = as_admin // Don't need to check for giver mob in admin mode
 	for(var/mob/mob in GLOB.mob_list)
-		if(attributed && mob == usr)
+		if(!as_admin && mob == usr)
 			// Giver: Increment their medals given stat
 			mob.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 			if(found_other)
@@ -84,13 +87,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
-	if(attributed)
-		recipient_award.giver_rank += recipient_ranks[usr.real_name] // Currently not used in marine award message
-		recipient_award.giver_name += usr.real_name // Currently not used in marine award message and may need exceptions for admin granting
-	else
-		recipient_award.giver_rank += null
-		recipient_award.giver_name += null
 
+	if(!as_admin)
+		recipient_award.giver_rank += recipient_ranks[usr.real_name] // Currently not used in marine award message
+		recipient_award.giver_name += usr.real_name // Currently not used in marine award message
+	else
+		recipient_award.giver_rank += usr.ckey + " (Staff)" // Just because it'll be displayed in the panel
+		recipient_award.giver_name += null // If not null, rescinding it will stats take away from a mob named this
 
 	// Create an actual medal item
 	if(medal_location)
@@ -137,9 +140,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(give_medal_award(get_turf(printer)))
 		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
-/proc/give_jelly_award(var/datum/hive_status/hive, var/attributed = TRUE)
+/proc/give_jelly_award(var/datum/hive_status/hive, var/as_admin = FALSE)
 	if(!hive)
 		return FALSE
+
+	if(as_admin && !check_rights(R_ADMIN))
+		as_admin = FALSE
 
 	// Pick a xeno
 	var/list/possible_recipients = list()
@@ -147,23 +153,23 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
 			continue
-		if (istype(xeno.caste, /datum/caste_datum/queen)) // Don't award queens (otherwise M.name has to be used below)
+		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award queens unless admin
 			continue
 		if (istype(xeno.caste, /datum/caste_datum/larva)) // Don't award larva
 			continue
 		// TODO: Also filter out facehuggers
-		var/recipient_name = xeno.name
+		var/recipient_name = xeno.real_name
 		recipient_castes[recipient_name] = xeno.caste_type
 		possible_recipients += recipient_name
 	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalDeadXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
 			continue
-		if (istype(xeno.caste, /datum/caste_datum/queen)) // Don't award previous queens
+		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award previous queens unless admin
 			continue
 		if (istype(xeno.caste, /datum/caste_datum/larva)) // Don't award previous larva
 			continue
 		// TODO: Also filter out facehuggers
-		var/recipient_name = xeno.name
+		var/recipient_name = xeno.real_name
 		recipient_castes[recipient_name] = xeno.caste_type
 		possible_recipients += recipient_name
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
@@ -181,13 +187,20 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!citation)
 		return FALSE
 
+	// Admin: Override attribution
+	var/admin_attribution = null
+	if(as_admin)
+		admin_attribution = strip_html(input("Override the jelly attribution? Press cancel for no attribution.", "Jelly Attribution", "Queen Mother", null) as text|null, MAX_NAME_LEN)
+		if(!admin_attribution) // Its actually "" but this also seems to check that
+			admin_attribution = "none"
+
 	// Get mob information
 	var/posthumous = TRUE
 	var/recipient_ckey
-	var/recipient_mob
-	var/found_other = !attributed // Don't need to check for other mob if we aren't attributing the giver
+	var/mob/recipient_mob
+	var/found_other = as_admin // Don't need to check for giver mob in admin mode
 	for(var/mob/mob in GLOB.mob_list)
-		if(attributed && mob == usr)
+		if(!as_admin && mob == usr)
 			// Giver: Increment their medals given stat
 			mob.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 			if(found_other)
@@ -211,12 +224,15 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	recipient_award.medal_names += medal_type
 	recipient_award.medal_citations += citation
 	recipient_award.posthumous += posthumous
-	if(attributed)
+	if(!admin_attribution)
 		recipient_award.giver_rank += usr.name
 		recipient_award.giver_name += usr.key
-	else
+	else if(admin_attribution == "none")
 		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
+	else
+		recipient_award.giver_rank += admin_attribution
+		recipient_award.giver_name += null // If not null, rescinding it will take stats away from a mob with this key
 	
 	recipient_award.medal_items += null // TODO: Xeno award item?
 

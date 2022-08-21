@@ -19,8 +19,9 @@ const PAGES = [
 
 export const MedalsPanel = (props, context) => {
   const { data } = useBackend(context);
+  const { startingPage } = data;
   
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
+  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', startingPage);
   
   const PageComponent = PAGES[pageIndex].component();
   

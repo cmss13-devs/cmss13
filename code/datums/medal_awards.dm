@@ -7,6 +7,9 @@
 #define XENO_RESILIENCE_MEDAL		"royal jelly of resilience"
 #define XENO_SABOTAGE_MEDAL			"royal jelly of sabotage"
 
+#define MEDALS_PANEL_USCM 0
+#define MEDALS_PANEL_XENO 1
+
 GLOBAL_LIST_EMPTY(medal_awards)
 GLOBAL_LIST_EMPTY(jelly_awards)
 
@@ -116,7 +119,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.medal_items += null
 
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
+	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=[MEDALS_PANEL_USCM]'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
@@ -223,7 +226,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
 	
 	// Inform staff of success
-	message_staff("[key_name_admin(usr)] awarded a [medal_type] to [chosen_recipient] for: \'[citation]\'.")
+	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=[MEDALS_PANEL_XENO]'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 

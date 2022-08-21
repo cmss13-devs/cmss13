@@ -396,3 +396,6 @@
       16 from 30.
   theflyingflail:
   - bugfix: fixed trijent dam cl survivor not spawning with survivor equipment
+2022-08-21:
+  Morrow:
+  - bugfix: You can no longer use picked up simple mobs to get around the C4 limits.

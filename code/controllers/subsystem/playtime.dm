@@ -7,15 +7,15 @@ SUBSYSTEM_DEF(playtime)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/playtime/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		src.currentrun = GLOB.clients.Copy()
 
 	var/list/currentrun = src.currentrun
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
-		
+
 		var/mob/M = C.mob
 		var/datum/entity/player/P = C.player_data
 
@@ -23,17 +23,17 @@ SUBSYSTEM_DEF(playtime)
 			if(MC_TICK_CHECK)
 				return
 			continue
-		
+
 		var/datum/entity/player_time/PTime = LAZYACCESS(P.playtimes, M.job)
-		
+
 		if(!PTime)
 			PTime = DB_ENTITY(/datum/entity/player_time)
 			PTime.player_id = P.id
 			PTime.role_id = M.job
 			LAZYSET(P.playtimes, M.job, PTime)
-		
+
 		PTime.total_minutes += 1
 		PTime.save()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

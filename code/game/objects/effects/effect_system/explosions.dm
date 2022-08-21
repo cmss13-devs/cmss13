@@ -20,7 +20,7 @@
 		return
 
 	start()
-		if (amount <= 2)
+		if(amount <= 2)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 1, location)
 			s.start()
@@ -28,7 +28,7 @@
 			for(var/mob/M in viewers(5, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 			for(var/mob/M in viewers(1, location))
-				if (prob (50 * amount))
+				if(prob (50 * amount))
 					to_chat(M, SPAN_WARNING("The explosion knocks you down."))
 					M.KnockDown(rand(1,5))
 			return
@@ -37,7 +37,7 @@
 			var/flash = -1
 
 			light = max(-1, amount/8)
-			if (flash && flashing_factor) flash = light + 1
+			if(flash && flashing_factor) flash = light + 1
 
 			for(var/mob/M in viewers(8, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
@@ -50,11 +50,11 @@
 		if(holder)
 			var/dmglevel = 4
 
-			if (round(amount/8) > 0)
+			if(round(amount/8) > 0)
 				dmglevel = 1
-			else if (round(amount/4) > 0)
+			else if(round(amount/4) > 0)
 				dmglevel = 2
-			else if (round(amount/2) > 0)
+			else if(round(amount/2) > 0)
 				dmglevel = 3
 
 			if(dmglevel<4) holder.ex_act(dmglevel)

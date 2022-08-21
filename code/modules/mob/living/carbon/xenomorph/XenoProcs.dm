@@ -50,7 +50,7 @@
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
-	for (var/datum/xeno_shield/XS in xeno_shields)
+	for(var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
 
 	. += "Shield: [shieldtotal]"
@@ -83,7 +83,7 @@
 
 	. += ""
 
-	if (behavior_delegate)
+	if(behavior_delegate)
 		var/datum/behavior_delegate/MD = behavior_delegate
 		. += MD.append_to_stat()
 
@@ -229,14 +229,14 @@
 		. += caste.agility_speed_increase
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
-	if (W)
-		if (W.linked_hive.hivenumber == hivenumber)
+	if(W)
+		if(W.linked_hive.hivenumber == hivenumber)
 			if(weedwalking_activated)
 				. -= 1.5
 			. *= 0.95
 
 	var/obj/effect/alien/resin/sticky/fast/FR = locate(/obj/effect/alien/resin/sticky/fast) in loc
-	if (FR && FR.hivenumber == hivenumber)
+	if(FR && FR.hivenumber == hivenumber)
 		. *= 0.8
 
 	if(superslowed)
@@ -268,7 +268,7 @@
 		throwing = FALSE
 		return
 
-	if (pounceAction.can_be_shield_blocked)
+	if(pounceAction.can_be_shield_blocked)
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
@@ -302,11 +302,11 @@
 
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 
-	if (pounceAction.knockdown)
+	if(pounceAction.knockdown)
 		M.KnockDown(pounceAction.knockdown_duration)
 		step_to(src, M)
 
-	if (pounceAction.freeze_self)
+	if(pounceAction.freeze_self)
 		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
@@ -330,7 +330,7 @@
 		obj_launch_collision(O)
 		return
 
-	if (pounceAction.should_destroy_objects)
+	if(pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
@@ -389,7 +389,7 @@
 			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
-			if (stuns)
+			if(stuns)
 				victim.AdjustStunned(2)
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
@@ -609,12 +609,12 @@
 		LAZYSET(tackle_counter, M, TC)
 		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, .proc/tackle_handle_lying_changed)
 
-	if (TC.tackle_reset_id)
+	if(TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
-	if (!.)
+	if(!.)
 		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)
@@ -630,7 +630,7 @@
 
 /mob/living/carbon/Xenomorph/proc/reset_tackle(var/mob/M)
 	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
-	if (TC)
+	if(TC)
 		qdel(TC)
 		LAZYREMOVE(tackle_counter, M)
 		UnregisterSignal(M, COMSIG_MOB_KNOCKED_DOWN)

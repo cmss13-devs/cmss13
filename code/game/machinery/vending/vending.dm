@@ -271,10 +271,10 @@
 			if(!src) return
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
-				if (0)
+				if(0)
 					anchored = 1
 					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
-				if (1)
+				if(1)
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
 					anchored = 0
 		return
@@ -293,7 +293,7 @@
 		scan_card(I)
 		ui_interact(user)
 		return
-	else if (istype(W, /obj/item/spacecash/ewallet))
+	else if(istype(W, /obj/item/spacecash/ewallet))
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
@@ -304,11 +304,11 @@
 
 /obj/structure/machinery/vending/proc/scan_card(var/obj/item/card/I)
 	if(!currently_vending) return
-	if (istype(I, /obj/item/card/id))
+	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(C.associated_account_number)
-		if (CH) // Only proceed if card contains proper account number.
+		if(CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 					if(vendor_account)
@@ -419,7 +419,7 @@
 		display_records += hidden_records
 	if(coin)
 		display_records += coin_records
-	for (var/datum/data/vending_product/R in display_records)
+	for(var/datum/data/vending_product/R in display_records)
 		var/prodname = adminscrub(R.product_name)
 		if(R.amount) prodname += ": [R.amount]"
 		else prodname += ": SOLD OUT"
@@ -449,7 +449,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "vending_machine.tmpl", name , 450, 600)
 		ui.set_initial_data(data)
 		ui.open()
@@ -476,7 +476,7 @@
 		coin = null
 
 	if(href_list["remove_ewallet"] && !istype(usr,/mob/living/silicon))
-		if (!ewallet)
+		if(!ewallet)
 			to_chat(usr, "There is no charge card in this machine.")
 			return
 		ewallet.forceMove(src.loc)
@@ -485,9 +485,9 @@
 		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
 		ewallet = null
 
-	if (isRemoteControlling(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if(isRemoteControlling(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
-		if ((href_list["vend"]) && vend_ready && !currently_vending)
+		if((href_list["vend"]) && vend_ready && !currently_vending)
 
 			if(!allowed(usr) && (wires & VENDING_WIRE_IDSCAN || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
 				to_chat(usr, SPAN_WARNING("Access denied.")) //Unless emagged of course
@@ -498,14 +498,14 @@
 			var/cat=text2num(href_list["cat"])
 
 			var/datum/data/vending_product/R = GetProductByID(idx,cat)
-			if (!R || !istype(R) || !R.product_path || R.amount <= 0)
+			if(!R || !istype(R) || !R.product_path || R.amount <= 0)
 				return
 
 			if(R.price == null)
 				src.vend(R, usr)
 			else
-				if (ewallet)
-					if (R.price <= ewallet.worth)
+				if(ewallet)
+					if(R.price <= ewallet.worth)
 						ewallet.worth -= R.price
 						src.vend(R, usr)
 					else
@@ -519,12 +519,12 @@
 
 			return
 
-		else if (href_list["cancel_buying"])
+		else if(href_list["cancel_buying"])
 			src.currently_vending = null
 			ui_interact(usr)
 			return
 
-		else if ((href_list["cutwire"]) && (src.panel_open))
+		else if((href_list["cutwire"]) && (src.panel_open))
 			var/wire = text2num(href_list["cutwire"])
 
 			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -532,11 +532,11 @@
 				return 0
 
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(usr, "You need wirecutters!")
 				return
 
-			if (src.isWireCut(wire))
+			if(src.isWireCut(wire))
 				src.mend(wire)
 			else
 				src.cut(wire)
@@ -545,7 +545,7 @@
 				announce_hacked = FALSE
 				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 
-		else if ((href_list["pulsewire"]) && (src.panel_open))
+		else if((href_list["pulsewire"]) && (src.panel_open))
 			var/wire = text2num(href_list["pulsewire"])
 
 			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -553,17 +553,17 @@
 				return 0
 
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return
 
-			if (src.isWireCut(wire))
+			if(src.isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return
 			else
 				src.pulse(wire)
 
-		else if ((href_list["togglevoice"]) && (src.panel_open))
+		else if((href_list["togglevoice"]) && (src.panel_open))
 			src.shut_up = !src.shut_up
 
 		src.add_fingerprint(usr)
@@ -578,7 +578,7 @@
 		flick(src.icon_deny,src)
 		return
 
-	if (R in coin_records)
+	if(R in coin_records)
 		if(!coin)
 			to_chat(user, SPAN_NOTICE(" You need to insert a coin to get this item."))
 			return
@@ -608,14 +608,14 @@
 
 	ui_interact(user)
 
-	if (delay_vending)
+	if(delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
-		if (icon_vend)
+		if(icon_vend)
 			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
-	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))
+	if(vending_dir == VEND_HAND && istype(user) && Adjacent(user))
 		user.put_in_hands(new R.product_path)
-	else if (ispath(R.product_path,/obj/item/weapon/gun))
+	else if(ispath(R.product_path,/obj/item/weapon/gun))
 		. = new R.product_path(get_turf(src), 1)
 	else
 		. = new R.product_path(get_turf(src))
@@ -717,7 +717,7 @@
 	if(stat & NOPOWER)
 		return
 
-	if (!message)
+	if(!message)
 		return
 
 	for(var/mob/O in hearers(src, null))
@@ -737,10 +737,10 @@
 		return
 	var/release_amt = rand(3,4)
 	for(var/datum/data/vending_product/R in src.product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+		if(R.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
 		var/dump_path = R.product_path
-		if (!dump_path)
+		if(!dump_path)
 			continue
 
 		while(R.amount > 0 && release_amt > 0)
@@ -760,16 +760,16 @@
 		return 0
 
 	for(var/datum/data/vending_product/R in product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+		if(R.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
 		var/dump_path = R.product_path
-		if (!dump_path)
+		if(!dump_path)
 			continue
 
 		R.amount--
 		throw_item = release_item(R, 0)
 		break
-	if (!throw_item)
+	if(!throw_item)
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
@@ -796,7 +796,7 @@
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = -1
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
 				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
@@ -810,7 +810,7 @@
 			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
@@ -819,10 +819,10 @@
 		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = !src.extended_inventory
 			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
-		if (VENDING_WIRE_SHOCK)
+		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 30
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = !src.shoot_inventory
 			if(shoot_inventory)
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))

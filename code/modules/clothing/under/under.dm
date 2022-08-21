@@ -93,12 +93,12 @@
 		M.update_inv_w_uniform()
 
 /obj/item/clothing/under/MouseDrop(obj/over_object as obj)
-	if (ishuman(usr))
+	if(ishuman(usr))
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
-		if ((flags_item & NODROP) || loc != usr)
+		if((flags_item & NODROP) || loc != usr)
 			return
 
-		if (!usr.is_mob_incapacitated() && !(usr.buckled && usr.lying))
+		if(!usr.is_mob_incapacitated() && !(usr.buckled && usr.lying))
 			if(over_object)
 				switch(over_object.name)
 					if("r_hand")
@@ -124,8 +124,8 @@
 				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
-	if (istype(user, /mob/dead/)) return
-	if (user.stat || user.is_mob_restrained()) return
+	if(istype(user, /mob/dead/)) return
+	if(user.stat || user.is_mob_restrained()) return
 	if(has_sensor >= UNIFORM_FORCED_SENSORS)
 		to_chat(user, "The controls are locked.")
 		return 0
@@ -145,7 +145,7 @@
 		if(H.w_uniform == src)
 			H.update_suit_sensors()
 
-	if (loc == user)
+	if(loc == user)
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				to_chat(user, "You disable your suit's remote sensing equipment.")
@@ -155,7 +155,7 @@
 				to_chat(user, "Your suit will now report your vital lifesigns.")
 			if(SENSOR_MODE_LOCATION)
 				to_chat(user, "Your suit will now report your vital lifesigns as well as your coordinate position.")
-	else if (ismob(loc))
+	else if(ismob(loc))
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				for(var/mob/V in viewers(usr, 1))

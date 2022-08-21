@@ -2237,17 +2237,17 @@
 
 /datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/item/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
-	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
+	for(var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
 		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
-		if (isYautja(M))
+		if(isYautja(M))
 			stun_time -= 2
 		if(isXenoPredalien(M))
 			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		M.Stun(stun_time)
 
-		if (ishuman(M))
+		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.KnockDown(stun_time)
 		else
@@ -2549,17 +2549,17 @@
 	apply_delegate = FALSE
 
 /datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/item/projectile/P)
-	if (!ishuman(M))
+	if(!ishuman(M))
 		return
 
 	var/mob/living/carbon/human/H = M
 
 	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+	for(var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
 		PAS = prae_acid_stacks
 		break
 
-	if (PAS == null)
+	if(PAS == null)
 		PAS = new /datum/effects/prae_acid_stacks(H)
 	else
 		PAS.increment_stack_count()
@@ -2592,18 +2592,18 @@
 
 /datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(var/turf/T)
 
-	if (!istype(T))
+	if(!istype(T))
 		return
 
-	for (var/mob/living/carbon/human/H in orange(1, T))
+	for(var/mob/living/carbon/human/H in orange(1, T))
 		to_chat(H, SPAN_XENODANGER("You are spattered with acid!"))
 		animation_flash_color(H)
 		var/datum/effects/prae_acid_stacks/PAS = null
-		for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+		for(var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
 			PAS = prae_acid_stacks
 			break
 
-		if (PAS == null)
+		if(PAS == null)
 			PAS = new /datum/effects/prae_acid_stacks(H)
 			PAS.increment_stack_count()
 		else

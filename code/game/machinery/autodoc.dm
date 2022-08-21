@@ -243,7 +243,7 @@
 	var/datum/data/record/N = null
 	var/human_ref = WEAKREF(H)
 	for(var/datum/data/record/R in GLOB.data_core.medical)
-		if (R.fields["ref"] == human_ref)
+		if(R.fields["ref"] == human_ref)
 			N = R
 	if(isnull(N))
 		visible_message("\The [src] buzzes: No records found for occupant.")
@@ -759,7 +759,7 @@
 			var/datum/data/record/N = null
 			var/occupant_ref = WEAKREF(connected.occupant)
 			for(var/datum/data/record/R in GLOB.data_core.medical)
-				if (R.fields["ref"] == occupant_ref)
+				if(R.fields["ref"] == occupant_ref)
 					N = R
 			if(isnull(N))
 				N = create_medical_record(connected.occupant)
@@ -869,7 +869,7 @@
 			var/datum/data/record/N = null
 			var/occupant_ref = WEAKREF(connected.occupant)
 			for(var/datum/data/record/R in GLOB.data_core.medical)
-				if (R.fields["ref"] == occupant_ref)
+				if(R.fields["ref"] == occupant_ref)
 					N = R
 			if(isnull(N))
 				N = create_medical_record(connected.occupant)

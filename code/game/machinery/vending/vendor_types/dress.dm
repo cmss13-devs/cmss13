@@ -52,7 +52,7 @@
 	)
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "cm_vending_uniform.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
@@ -67,9 +67,9 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
+	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
 		usr.set_interaction(src)
-		if (href_list["vend"])
+		if(href_list["vend"])
 			var/exploiting = TRUE
 			var/item_path = text2path(href_list["vend"])
 			var/mob/living/carbon/human/H = usr

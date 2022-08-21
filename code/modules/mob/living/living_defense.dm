@@ -7,13 +7,13 @@
 /mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	flash_pain()
 
-	if (stun_amount)
+	if(stun_amount)
 		Stun(stun_amount)
 		KnockDown(stun_amount)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 
-	if (agony_amount)
+	if(agony_amount)
 		apply_damage(agony_amount, HALLOSS, def_zone, used_weapon)
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
@@ -45,7 +45,7 @@
 		dist = LM.dist
 	var/miss_chance = min(15*(dist - 2), 0)
 
-	if (prob(miss_chance))
+	if(prob(miss_chance))
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
 
@@ -53,7 +53,7 @@
 	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
 
 	var/last_damage_source
-	if (damage_done > 5)
+	if(damage_done > 5)
 		last_damage_source = initial(O.name)
 		animation_flash_color(src)
 		var/obj/item/I = O
@@ -69,7 +69,7 @@
 		M = LM.thrower
 		if(damage_done > 5)
 			M.track_hit(initial(O.name))
-			if (M.faction == faction)
+			if(M.faction == faction)
 				M.track_friendly_fire(initial(O.name))
 		var/client/assailant = M.client
 		if(assailant)
@@ -193,7 +193,7 @@
 
 /mob/living/proc/TryIgniteMob(fire_stacks, datum/reagent/R)
 	adjust_fire_stacks(fire_stacks, R)
-	if (!IgniteMob())
+	if(!IgniteMob())
 		adjust_fire_stacks(-fire_stacks)
 		return FALSE
 	return TRUE

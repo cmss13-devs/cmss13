@@ -118,20 +118,20 @@
 	return ambience_exterior
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
-	if (state != poweralm)
+	if(state != poweralm)
 		poweralm = state
 		if(istype(source))	//Only report power alarms on the z-level where the source is located.
 			var/list/cameras = list()
-			for (var/area/RA in related)
-				for (var/obj/structure/machinery/camera/C in RA)
+			for(var/area/RA in related)
+				for(var/obj/structure/machinery/camera/C in RA)
 					cameras += C
 					if(state == 1)
 						C.network.Remove(CAMERA_NET_POWER_ALARMS)
 					else
 						C.network.Add(CAMERA_NET_POWER_ALARMS)
-			for (var/mob/living/silicon/aiPlayer in ai_mob_list)
+			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				if(aiPlayer.z == source.z)
-					if (state == 1)
+					if(state == 1)
 						aiPlayer.cancelAlarm("Power", src, source)
 					else
 						aiPlayer.triggerAlarm("Power", src, cameras, source)
@@ -148,17 +148,17 @@
 //		return 0 //redudant
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/area/RA in related)
-		for (var/obj/structure/machinery/alarm/AA in RA)
-			if ( !(AA.inoperable()) && !AA.shorted)
+	for(var/area/RA in related)
+		for(var/obj/structure/machinery/alarm/AA in RA)
+			if( !(AA.inoperable()) && !AA.shorted)
 				danger_level = max(danger_level, AA.danger_level)
 
 	if(danger_level != atmosalm)
-		if (danger_level < 1 && atmosalm >= 1)
+		if(danger_level < 1 && atmosalm >= 1)
 			//closing the doors on red and opening on green provides a bit of hysteresis that will hopefully prevent fire doors from opening and closing repeatedly due to noise
 			air_doors_open()
 
-		if (danger_level < 2 && atmosalm >= 2)
+		if(danger_level < 2 && atmosalm >= 2)
 			for(var/area/RA in related)
 				for(var/obj/structure/machinery/camera/C in RA)
 					C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
@@ -167,7 +167,7 @@
 			for(var/obj/structure/machinery/computer/station_alert/a in machines)
 				a.cancelAlarm("Atmosphere", src, src)
 
-		if (danger_level >= 2 && atmosalm < 2)
+		if(danger_level >= 2 && atmosalm < 2)
 			var/list/cameras = list()
 			for(var/area/RA in related)
 				//updateicon()
@@ -182,7 +182,7 @@
 
 		atmosalm = danger_level
 		for(var/area/RA in related)
-			for (var/obj/structure/machinery/alarm/AA in RA)
+			for(var/obj/structure/machinery/alarm/AA in RA)
 				AA.update_icon()
 
 		return 1
@@ -225,12 +225,12 @@
 					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 		var/list/cameras = list()
 		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
+			for(var/obj/structure/machinery/camera/C in RA)
 				cameras.Add(C)
 				C.network.Add(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
+		for(var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
+		for(var/obj/structure/machinery/computer/station_alert/a in machines)
 			a.triggerAlarm("Fire", src, cameras, src)
 
 /area/proc/firereset()
@@ -246,11 +246,11 @@
 				else if(D.density)
 					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
+			for(var/obj/structure/machinery/camera/C in RA)
 				C.network.Remove(CAMERA_NET_FIRE_ALARMS)
-		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
+		for(var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
+		for(var/obj/structure/machinery/computer/station_alert/a in machines)
 			a.cancelAlarm("Fire", src, src)
 
 /area/proc/readyalert()

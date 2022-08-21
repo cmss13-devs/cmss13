@@ -47,7 +47,7 @@
 /obj/structure/machinery/sleep_console/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
@@ -63,13 +63,13 @@
 	if(inoperable())
 		return
 	var/dat = ""
-	if (!connected || (connected.inoperable()))
+	if(!connected || (connected.inoperable()))
 		dat += "This console is not connected to a sleeper or the sleeper is non-functional."
 	else
 		var/mob/living/occupant = connected.occupant
 		dat += SET_CLASS("<B>Occupant Statistics:</B>", INTERFACE_BLUE)
 		dat += "<BR>"
-		if (occupant)
+		if(occupant)
 			var/t1
 			switch(occupant.stat)
 				if(0)
@@ -133,12 +133,12 @@
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
-	if ((user.contents.Find(src) || ((get_dist(src, user) <= 1) && isturf(loc))))
+	if((user.contents.Find(src) || ((get_dist(src, user) <= 1) && isturf(loc))))
 		user.set_interaction(src)
-		if (href_list["chemical"])
-			if (connected)
-				if (connected.occupant)
-					if (connected.occupant.stat == DEAD)
+		if(href_list["chemical"])
+			if(connected)
+				if(connected.occupant)
+					if(connected.occupant.stat == DEAD)
 						to_chat(user, SPAN_WARNING("This person has no life for to preserve anymore. Take them to a department capable of reanimating them."))
 					else if(href_list["chemical"] in connected.available_chemicals)
 						var/amount = text2num(href_list["amount"])
@@ -147,12 +147,12 @@
 					else
 						to_chat(user, SPAN_WARNING("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
 					updateUsrDialog()
-		if (href_list["refresh"])
+		if(href_list["refresh"])
 			updateUsrDialog()
-		if (href_list["togglefilter"])
+		if(href_list["togglefilter"])
 			connected.toggle_filter()
 			updateUsrDialog()
-		if (href_list["ejectify"])
+		if(href_list["ejectify"])
 			connected.eject()
 			updateUsrDialog()
 		add_fingerprint(user)
@@ -224,7 +224,7 @@
 	return 0
 
 /obj/structure/machinery/sleeper/process(delta_time)
-	if (inoperable())
+	if(inoperable())
 		return
 
 	if(filtering)

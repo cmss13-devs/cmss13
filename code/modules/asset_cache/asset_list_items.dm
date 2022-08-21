@@ -156,7 +156,7 @@
 	for(var/path in typesof(/datum/language))
 		var/datum/language/L = path
 		var/icon = initial(L.icon)
-		if (icon != 'icons/misc/language.dmi')
+		if(icon != 'icons/misc/language.dmi')
 			var/icon_state = initial(L.icon_state)
 			Insert("language-[icon_state]", icon, icon_state=icon_state)*/
 	..()
@@ -166,21 +166,21 @@
 	name = "chooseresin"
 
 /datum/asset/spritesheet/choose_resin/register()
-	for (var/k in GLOB.resin_constructions_list)
+	for(var/k in GLOB.resin_constructions_list)
 		var/datum/resin_construction/RC = k
 
 		var/icon_file = 'icons/mob/hud/actions_xeno.dmi'
 		var/icon_state = initial(RC.construction_name)
 		var/icon_name = replacetext(icon_state, " ", "-")
 
-		if (sprites[icon_name])
+		if(sprites[icon_name])
 			continue
 
 		var/icon_states_list = icon_states(icon_file)
 		if(!(icon_state in icon_states_list))
 			var/icon_states_string
-			for (var/an_icon_state in icon_states_list)
-				if (!icon_states_string)
+			for(var/an_icon_state in icon_states_list)
+				if(!icon_states_string)
 					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
@@ -201,21 +201,21 @@
 	name = "choosemark"
 
 /datum/asset/spritesheet/choose_mark/register()
-	for (var/k in GLOB.resin_mark_meanings)
+	for(var/k in GLOB.resin_mark_meanings)
 		var/datum/xeno_mark_define/RC = k
 
 		var/icon_file = 'icons/mob/hud/xeno_markers.dmi'
 		var/icon_state = initial(RC.icon_state)
 		var/icon_name = icon_state
 
-		if (sprites[icon_name])
+		if(sprites[icon_name])
 			continue
 
 		var/icon_states_list = icon_states(icon_file)
 		if(!(icon_state in icon_states_list))
 			var/icon_states_string
-			for (var/an_icon_state in icon_states_list)
-				if (!icon_states_string)
+			for(var/an_icon_state in icon_states_list)
+				if(!icon_states_string)
 					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
@@ -241,13 +241,13 @@
 		var/icon_state = initial(fruit.mature_icon_state)
 		var/icon_name = replacetext(icon_state, " ", "-")
 
-		if (sprites[icon_name])
+		if(sprites[icon_name])
 			continue
 
 		if(!(icon_state in icon_states_list))
 			var/icon_states_string
-			for (var/an_icon_state in icon_states_list)
-				if (!icon_states_string)
+			for(var/an_icon_state in icon_states_list)
+				if(!icon_states_string)
 					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"

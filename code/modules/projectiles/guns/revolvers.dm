@@ -323,7 +323,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
-	if (folded)
+	if(folded)
 		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
 		return 0
 	else

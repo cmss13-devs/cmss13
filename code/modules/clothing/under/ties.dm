@@ -382,15 +382,15 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob, mods)
-	if (!isnull(hold) && hold.handle_attack_hand(user, mods))
+	if(!isnull(hold) && hold.handle_attack_hand(user, mods))
 		..(user)
 	return TRUE
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
-	if (has_suit || hold)
+	if(has_suit || hold)
 		return
 
-	if (hold.handle_mousedrop(usr, over_object))
+	if(hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
 /obj/item/clothing/accessory/storage/attackby(obj/item/W, mob/user)

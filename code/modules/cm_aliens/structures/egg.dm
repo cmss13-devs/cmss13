@@ -19,7 +19,7 @@
 /obj/effect/alien/egg/Initialize(mapload, var/hive)
 	. = ..()
 	create_egg_triggers()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)

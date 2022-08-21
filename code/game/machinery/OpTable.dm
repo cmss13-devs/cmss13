@@ -31,7 +31,7 @@
 	. = ..()
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/structure/machinery/computer/operating, get_step(src, dir))
-		if (computer)
+		if(computer)
 			computer.table = src
 			break
 	anes_tank = new(src)
@@ -42,17 +42,17 @@
 
 /obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
 /obj/structure/machinery/optable/ex_act(severity)
 
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				src.density = 0
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -153,10 +153,10 @@
 
 	if(istype(A, /obj/item))
 		var/obj/item/I = A
-		if (!istype(I) || user.get_active_hand() != I)
+		if(!istype(I) || user.get_active_hand() != I)
 			return
 		if(user.drop_held_item())
-			if (I.loc != loc)
+			if(I.loc != loc)
 				step(I, get_dir(I, src))
 	else if(ismob(A))
 		..()
@@ -213,7 +213,7 @@
 				patient_exam |= PATIENT_NOT_AWAKE
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
-	if (C == user)
+	if(C == user)
 		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
@@ -241,7 +241,7 @@
 			anes_tank = W
 			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
 			return
-	if (istype(W, /obj/item/grab) && ishuman(user))
+	if(istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W
 		if(buckled_mob)
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))

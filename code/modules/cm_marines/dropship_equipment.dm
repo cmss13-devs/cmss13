@@ -327,7 +327,7 @@
 					if(NORTH)
 						if(	istype(get_step(src, WEST), /turf/open) )
 							deployed_mg.pixel_x = 5
-						else if ( istype(get_step(src, EAST), /turf/open) )
+						else if( istype(get_step(src, EAST), /turf/open) )
 							deployed_mg.pixel_x = -5
 					if(EAST)
 						deployed_mg.pixel_y = 9
@@ -356,7 +356,7 @@
 				if(NORTH)
 					if( istype(get_step(src, WEST), /turf/open) )
 						deployed_mg.forceMove(get_step(src, WEST))
-					else if ( istype(get_step(src, EAST), /turf/open) )
+					else if( istype(get_step(src, EAST), /turf/open) )
 						deployed_mg.forceMove(get_step(src, EAST))
 					else
 						deployed_mg.forceMove(get_step(src, NORTH))
@@ -817,7 +817,7 @@
 		var/evaccee_triagecard_color
 		if(MS.buckled_mob)
 			evaccee_name = MS.buckled_mob.real_name
-			if (ishuman(MS.buckled_mob))
+			if(ishuman(MS.buckled_mob))
 				var/mob/living/carbon/human/H = MS.buckled_mob
 				evaccee_triagecard_color = H.holo_card_color
 		else if(MS.buckled_bodybag)
@@ -825,7 +825,7 @@
 				if(isliving(AM))
 					var/mob/living/L = AM
 					evaccee_name = "[MS.buckled_bodybag.name]: [L.real_name]"
-					if (ishuman(L))
+					if(ishuman(L))
 						var/mob/living/carbon/human/H = L
 						evaccee_triagecard_color = H.holo_card_color
 					break
@@ -834,7 +834,7 @@
 		else
 			evaccee_name = "Empty"
 
-		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
+		if(evaccee_triagecard_color && evaccee_triagecard_color == "none")
 			evaccee_triagecard_color = null
 
 		possible_stretchers["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS

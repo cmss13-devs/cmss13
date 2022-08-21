@@ -24,12 +24,12 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	var/e_icon
 	var/b_icon
 
-	if (!E)
+	if(!E)
 		e_icon = "western"
 	else
 		e_icon = E.icon_name
 
-	if (!B)
+	if(!B)
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name

@@ -7,9 +7,9 @@
 
 /datum/xeno_shield/hedgehog_shield/on_hit(damage)
     . =  ..(damage)
-    if (last_proc_time > world.time)
+    if(last_proc_time > world.time)
         return
-    if (!owner)
+    if(!owner)
         return
     last_proc_time = world.time
     create_shrapnel(get_turf(owner), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(owner.caste_type), owner), TRUE)

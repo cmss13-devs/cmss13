@@ -448,7 +448,7 @@
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
-	if (!user) return
+	if(!user) return
 
 	if(anchored)
 		to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")

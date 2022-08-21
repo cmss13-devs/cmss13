@@ -28,14 +28,14 @@
 
 	attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
 
-		if (istype(A, /obj/item/toy/gun_ammo))
-			if (src.bullets >= 7)
+		if(istype(A, /obj/item/toy/gun_ammo))
+			if(src.bullets >= 7)
 				to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
 				return 1
-			if (A.amount_left <= 0)
+			if(A.amount_left <= 0)
 				to_chat(user, SPAN_DANGER("There is no more caps!"))
 				return 1
-			if (A.amount_left < (7 - bullets))
+			if(A.amount_left < (7 - bullets))
 				src.bullets += A.amount_left
 				to_chat(user, SPAN_DANGER("You reload [A.amount_left] caps\s!"))
 				A.amount_left = 0
@@ -49,13 +49,13 @@
 		return
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-		if (flag)
+		if(flag)
 			return
-		if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+		if(!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 		src.add_fingerprint(user)
-		if (src.bullets < 1)
+		if(src.bullets < 1)
 			user.show_message(SPAN_DANGER("*click* *click*"), 2)
 			playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
 			return
@@ -96,7 +96,7 @@
 
 	examine(mob/user)
 		..()
-		if (bullets)
+		if(bullets)
 			to_chat(user, SPAN_NOTICE(" It is loaded with [bullets] foam darts!"))
 
 	attackby(obj/item/I as obj, mob/user as mob)
@@ -114,9 +114,9 @@
 		if(!isturf(target.loc) || target == user) return
 		if(flag) return
 
-		if (locate (/obj/structure/surface/table, src.loc))
+		if(locate (/obj/structure/surface/table, src.loc))
 			return
-		else if (bullets)
+		else if(bullets)
 			var/turf/trg = get_turf(target)
 			var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
 			bullets--
@@ -125,7 +125,7 @@
 			playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 
 			for(var/i=0, i<6, i++)
-				if (D)
+				if(D)
 					if(D.loc == trg) break
 					step_towards(D,trg)
 
@@ -152,7 +152,7 @@
 					qdel(D)
 
 			return
-		else if (bullets == 0)
+		else if(bullets == 0)
 			user.KnockDown(5)
 			for(var/mob/O in viewers(world_view_size, user))
 				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
@@ -163,7 +163,7 @@
 
 // ******* Check
 
-		if (src.bullets > 0 && M.lying)
+		if(src.bullets > 0 && M.lying)
 
 			for(var/mob/O in viewers(M, null))
 				if(O.client)
@@ -173,9 +173,9 @@
 			playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 			new /obj/item/toy/crossbow_ammo(M.loc)
 			src.bullets--
-		else if (M.lying && src.bullets == 0)
+		else if(M.lying && src.bullets == 0)
 			for(var/mob/O in viewers(M, null))
-				if (O.client)
+				if(O.client)
 					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
 			user.KnockDown(5)
 		return
@@ -214,7 +214,7 @@
 	..()
 
 	active = !active
-	if (active)
+	if(active)
 		to_chat(user, SPAN_NOTICE(" You extend the plastic blade with a quick flick of your wrist."))
 		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
 		icon_state = "swordblue"

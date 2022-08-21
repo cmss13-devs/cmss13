@@ -29,10 +29,10 @@ var/list/ai_verbs_default = list(
 //Not sure why this is necessary...
 /proc/AutoUpdateAI(obj/subject)
 	var/is_in_use = 0
-	if (subject!=null)
+	if(subject!=null)
 		for(var/A in ai_list)
 			var/mob/living/silicon/ai/M = A
-			if ((M.client && M.interactee == subject))
+			if((M.client && M.interactee == subject))
 				is_in_use = 1
 				subject.attack_remote(M)
 	return is_in_use
@@ -93,8 +93,8 @@ var/list/ai_verbs_default = list(
 	var/pickedName = null
 	while(!pickedName)
 		pickedName = pick(ai_names)
-		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
-			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
+		for(var/mob/living/silicon/ai/A in GLOB.mob_list)
+			if(A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
 				pickedName = null
 
@@ -112,7 +112,7 @@ var/list/ai_verbs_default = list(
 	aiRadio.myAi = src
 	aiCamera = new/obj/item/device/camera/siliconcam/ai_camera(src)
 
-	if (istype(loc, /turf))
+	if(istype(loc, /turf))
 		add_ai_verbs(src)
 
 	//Languages
@@ -123,12 +123,12 @@ var/list/ai_verbs_default = list(
 
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
-		if (!B)//If there is no player/brain inside.
+		if(!B)//If there is no player/brain inside.
 			new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
 			return
 		else
-			if (B.brainmob.mind)
+			if(B.brainmob.mind)
 				B.brainmob.mind.transfer_to(src)
 
 			to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
@@ -234,21 +234,21 @@ var/list/ai_verbs_default = list(
 
 	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
 	dat += "<A HREF='?src=\ref[src];mach_close=aialerts'>Close</A><BR><BR>"
-	for (var/cat in alarms)
+	for(var/cat in alarms)
 		dat += text("<B>[]</B><BR>\n", cat)
 		var/list/alarmlist = alarms[cat]
-		if (alarmlist.len)
-			for (var/area_name in alarmlist)
+		if(alarmlist.len)
+			for(var/area_name in alarmlist)
 				var/datum/alarm/alarm = alarmlist[area_name]
 				dat += "<NOBR>"
 
 				var/cameratext = ""
-				if (alarm.cameras)
-					for (var/obj/structure/machinery/camera/I in alarm.cameras)
+				if(alarm.cameras)
+					for(var/obj/structure/machinery/camera/I in alarm.cameras)
 						cameratext += text("[]<A HREF=?src=\ref[];switchcamera=\ref[]>[]</A>", (cameratext=="") ? "" : "|", src, I, I.c_tag)
 				dat += text("-- [] ([])", alarm.area.name, (cameratext)? cameratext : "No Camera")
 
-				if (alarm.sources.len > 1)
+				if(alarm.sources.len > 1)
 					dat += text(" - [] sources", alarm.sources.len)
 				dat += "</NOBR><BR>\n"
 		else
@@ -288,7 +288,7 @@ var/list/ai_verbs_default = list(
 		message_cooldown = 0
 
 /mob/living/silicon/ai/check_eye(mob/user)
-	if (!camera)
+	if(!camera)
 		user.reset_view(null)
 		return
 	user.reset_view(camera)
@@ -297,25 +297,25 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/emp_act(severity)
-	if (prob(30)) view_core()
+	if(prob(30)) view_core()
 	..()
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	if(usr != src)
 		return
 	..()
-	if (href_list["mach_close"])
-		if (href_list["mach_close"] == "aialerts")
+	if(href_list["mach_close"])
+		if(href_list["mach_close"] == "aialerts")
 			viewalerts = 0
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_interaction()
 		src << browse(null, t1)
-	if (href_list["switchcamera"])
+	if(href_list["switchcamera"])
 		switchCamera(locate(href_list["switchcamera"])) in cameranet.cameras
-	if (href_list["showalerts"])
+	if(href_list["showalerts"])
 		ai_alerts()
 	//Carn: holopad requests
-	if (href_list["jumptoholopad"])
+	if(href_list["jumptoholopad"])
 		var/obj/structure/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
 		if(stat == CONSCIOUS)
 			if(H)
@@ -323,7 +323,7 @@ var/list/ai_verbs_default = list(
 			else
 				to_chat(src, SPAN_NOTICE("Unable to locate the holopad."))
 
-	if (href_list["track"])
+	if(href_list["track"])
 		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 
 		if(target && (!istype(target, /mob/living/carbon/human) || html_decode(href_list["trackname"]) == target:get_face_name()))
@@ -361,7 +361,7 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
-	if (!C || stat == DEAD) //C.can_use())
+	if(!C || stat == DEAD) //C.can_use())
 		return 0
 
 	if(!src.eyeobj)
@@ -374,25 +374,25 @@ var/list/ai_verbs_default = list(
 	return 1
 
 /mob/living/silicon/ai/triggerAlarm(var/class, area/A, list/cameralist, var/source)
-	if (stat == 2)
+	if(stat == 2)
 		return 1
 
 	..()
 
 	var/cameratext = ""
-	for (var/obj/structure/machinery/camera/C in cameralist)
+	for(var/obj/structure/machinery/camera/C in cameralist)
 		cameratext += "[(cameratext == "")? "" : "|"]<A HREF=?src=\ref[src];switchcamera=\ref[C]>[C.c_tag]</A>"
 
 	queueAlarm("--- [class] alarm detected in [A.name]! ([(cameratext)? cameratext : "No Camera"])", class)
 
-	if (viewalerts) ai_alerts()
+	if(viewalerts) ai_alerts()
 
 /mob/living/silicon/ai/cancelAlarm(var/class, area/A as area, var/source)
 	var/has_alarm = ..()
 
-	if (!has_alarm)
+	if(!has_alarm)
 		queueAlarm(text("--- [] alarm in [] has been cleared.", class, A.name), class, 0)
-		if (viewalerts) ai_alerts()
+		if(viewalerts) ai_alerts()
 
 	return has_alarm
 
@@ -418,7 +418,7 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/U = usr
 
-	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 		if(!C.can_use())
 			continue
 
@@ -454,7 +454,7 @@ var/list/ai_verbs_default = list(
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Surprised", "Sad", "Upset", "Angry", "Awesome", "BSOD", "Blank", "Problems?", "Facepalm", "Friend Computer")
 	var/emote = tgui_input_list(usr, "Please, select a status!", "AI Status", ai_emotions)
-	for (var/obj/structure/machinery/M in machines) //change status
+	for(var/obj/structure/machinery/M in machines) //change status
 		if(istype(M, /obj/structure/machinery/ai_status_display))
 			var/obj/structure/machinery/ai_status_display/AISD = M
 			AISD.emotion = emote
@@ -597,7 +597,7 @@ var/list/ai_verbs_default = list(
 		return
 
 	to_chat(src, "Accessing Subspace Transceiver control...")
-	if (src.aiRadio)
+	if(src.aiRadio)
 		src.aiRadio.interact(src)
 
 /mob/living/silicon/ai/proc/sensor_mode()

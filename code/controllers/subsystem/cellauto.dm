@@ -13,17 +13,17 @@ SUBSYSTEM_DEF(cellauto)
 	return ..()
 
 /datum/controller/subsystem/cellauto/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = cellauto_cells.Copy()
 
 	while(currentrun.len)
 		var/datum/automata_cell/C = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!C || QDELETED(C))
+		if(!C || QDELETED(C))
 			continue
 
 		C.update_state()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

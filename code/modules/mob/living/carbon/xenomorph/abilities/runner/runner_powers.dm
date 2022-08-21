@@ -1,15 +1,15 @@
 /datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
@@ -34,7 +34,7 @@
 		to_chat(X, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
 	var/datum/behavior_delegate/runner_acider/BD = X.behavior_delegate
-	if (!istype(BD))
+	if(!istype(BD))
 		return
 	if(BD.acid_amount < acid_cost)
 		to_chat(X, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
@@ -46,7 +46,7 @@
 	..()
 
 /mob/living/carbon/Xenomorph/Runner/corrosive_acid(atom/O, acid_type, plasma_cost)
-	if (mutation_type != RUNNER_ACIDER)
+	if(mutation_type != RUNNER_ACIDER)
 		..(O, acid_type, plasma_cost)
 		return
 	if(!O.Adjacent(src))
@@ -119,7 +119,7 @@
 			return
 
 	var/datum/behavior_delegate/runner_acider/BD = behavior_delegate
-	if (!istype(BD))
+	if(!istype(BD))
 		return
 	if(BD.acid_amount < BD.melt_acid_cost)
 		to_chat(src, SPAN_XENOHIGHDANGER("Not enough acid stored!"))

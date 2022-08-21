@@ -96,11 +96,11 @@
 	set category = "Debug"
 	set name = "Delete"
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
+	if(alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
 		message_staff("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])")
 		if(isturf(O))
 			var/turf/T = O
@@ -174,7 +174,7 @@
 	set name = "Bulk Fetch Items"
 	set category = "Debug"
 
-	if (admin_holder)
+	if(admin_holder)
 		admin_holder.bulk_fetcher_panel()
 
 /datum/admins/proc/bulk_fetcher_panel()

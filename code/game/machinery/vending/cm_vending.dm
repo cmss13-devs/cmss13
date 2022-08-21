@@ -82,11 +82,11 @@ IN_USE						used for vending/denying
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				tip_over()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				tip_over()
 				malfunction()
 				return
@@ -417,7 +417,7 @@ IN_USE						used for vending/denying
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "cm_vending.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
@@ -433,7 +433,7 @@ IN_USE						used for vending/denying
 	if(usr.is_mob_incapacitated())
 		return
 
-	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
+	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
 		usr.set_interaction(src)
 		if(href_list["vend"])
 			return
@@ -929,7 +929,7 @@ IN_USE						used for vending/denying
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "cm_vending_sorted.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
@@ -1232,7 +1232,7 @@ IN_USE						used for vending/denying
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = -1
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
 				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
@@ -1246,7 +1246,7 @@ IN_USE						used for vending/denying
 			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
@@ -1255,10 +1255,10 @@ IN_USE						used for vending/denying
 		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = !src.extended_inventory
 			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
-		if (VENDING_WIRE_SHOCK)
+		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 30
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
-		if (VENDING_WIRE_SHOOT_INV)
+		if(VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = !src.shoot_inventory
 			if(shoot_inventory)
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))

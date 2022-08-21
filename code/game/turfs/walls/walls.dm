@@ -130,7 +130,7 @@
 	. = ..()
 
 	if(!damage)
-		if (acided_hole)
+		if(acided_hole)
 			to_chat(user, SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid."))
 		else
 			to_chat(user, SPAN_NOTICE("It looks fully intact."))
@@ -143,7 +143,7 @@
 		else
 			to_chat(user, SPAN_DANGER("It looks heavily damaged."))
 
-		if (acided_hole)
+		if(acided_hole)
 			to_chat(user, SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid."))
 
 	switch(d_state)
@@ -172,7 +172,7 @@
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WALLS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_WALL, src)
 		// Xenos used to be able to crawl through the wall, should suggest some structural damage to the girder
-		if (acided_hole)
+		if(acided_hole)
 			dismantle_wall(1)
 		else
 			dismantle_wall()
@@ -185,7 +185,7 @@
 	G.icon_state = "girder[junctiontype]"
 	G.original = src.type
 
-	if (destroyed_girder)
+	if(destroyed_girder)
 		G.dismantle()
 
 
@@ -198,7 +198,7 @@
 		return
 	if(devastated)
 		make_girder(TRUE)
-	else if (explode)
+	else if(explode)
 		make_girder(TRUE)
 	else
 		make_girder(FALSE)
@@ -212,7 +212,7 @@
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
 	var/mob/M = cause_data.resolve_mob()
 
-	if ( damage + exp_damage > damage_cap*2 )
+	if( damage + exp_damage > damage_cap*2 )
 		if(M)
 			SEND_SIGNAL(M, COMSIG_MOB_EXPLODED_WALL, src)
 		dismantle_wall(FALSE, TRUE)
@@ -221,7 +221,7 @@
 	else
 		if(istype(src, /turf/closed/wall/resin))
 			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
-		else if (prob(25))
+		else if(prob(25))
 			if(prob(50)) // prevents spam in close corridors etc
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall, cause_data)

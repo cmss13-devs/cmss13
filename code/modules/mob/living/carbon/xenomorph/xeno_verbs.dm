@@ -74,7 +74,7 @@
 	set category = "Alien"
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
-	if (xeno_mobhud)
+	if(xeno_mobhud)
 		H.remove_hud_from(usr)
 	else
 		H.add_hud_to(usr)
@@ -87,7 +87,7 @@
 	set category = "Alien"
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
-	if (xeno_hostile_hud)
+	if(xeno_hostile_hud)
 		H.remove_hud_from(usr)
 	else
 		H.add_hud_to(usr)
@@ -100,12 +100,12 @@
 	set desc = "Toggles between using middle mouse click and shift click for selected abilitiy use."
 	set category = "Alien"
 
-	if (!client || !client.prefs)
+	if(!client || !client.prefs)
 		return
 
 	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
 	client.prefs.save_preferences()
-	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+	if(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
@@ -115,7 +115,7 @@
 	set desc = "Toggles the use of directional assist attacks."
 	set category = "Alien"
 
-	if (!client || !client.prefs)
+	if(!client || !client.prefs)
 		return
 
 	client.prefs.toggle_prefs ^= TOGGLE_DIRECTIONAL_ATTACK

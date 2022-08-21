@@ -557,7 +557,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_closed = !current_mag.chamber_closed
 	update_icon()
 
-	if (current_mag.chamber_closed)
+	if(current_mag.chamber_closed)
 		playsound(user, break_sound, 25, 1)
 	else
 		playsound(user, seal_sound, 25, 1)
@@ -984,7 +984,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
 	if(pumped)
-		if (world.time > (message + pump_delay))
+		if(world.time > (message + pump_delay))
 			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
 			message = world.time
 		return
@@ -997,7 +997,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	playsound(user, pump_sound, 25, 1)
 	recent_pump = world.time
-	if (in_chamber)
+	if(in_chamber)
 		pumped = TRUE
 
 

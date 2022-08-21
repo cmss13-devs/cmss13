@@ -500,7 +500,7 @@
 		usr.client?.admin_follow(locate(href_list["adminplayerobservefollow"]))
 	else if(href_list["boot2"])
 		var/mob/M = locate(href_list["boot2"])
-		if (ismob(M))
+		if(ismob(M))
 			if(!check_if_greater_rights_than(M.client))
 				return
 			var/reason = input("Please enter reason")
@@ -1157,12 +1157,12 @@
 		message_staff("[src.owner] has cancelled the orbital strike.")
 
 	else if(href_list["admincancelpredsd"])
-		if (!check_rights(R_MOD))	return
+		if(!check_rights(R_MOD))	return
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = locate(href_list["bracer"])
 		var/mob/living/carbon/victim = locate(href_list["victim"])
-		if (!istype(bracer))
+		if(!istype(bracer))
 			return
-		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
+		if(alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
 			return
 		bracer.exploding = FALSE
 		message_staff("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
@@ -1499,9 +1499,9 @@
 		var/atom/loc = usr.loc
 
 		var/dirty_paths
-		if (istext(href_list["object_list"]))
+		if(istext(href_list["object_list"]))
 			dirty_paths = list(href_list["object_list"])
-		else if (istype(href_list["object_list"], /list))
+		else if(istype(href_list["object_list"], /list))
 			dirty_paths = href_list["object_list"]
 
 		var/paths = list()
@@ -1537,23 +1537,23 @@
 			obj_dir = 2
 		var/obj_name = sanitize(href_list["object_name"])
 		var/where = href_list["object_where"]
-		if (!(where in list("onfloor","inhand","inmarked")))
+		if(!(where in list("onfloor","inhand","inmarked")))
 			where = "onfloor"
 
 		if( where == "inhand" )
 			to_chat(usr, "Support for inhand not available yet. Will spawn on floor.")
 			where = "onfloor"
 
-		if (where == "inhand")	//Can only give when human or monkey
-			if (!(ishuman(usr)))
+		if(where == "inhand")	//Can only give when human or monkey
+			if(!(ishuman(usr)))
 				to_chat(usr, "Can only spawn in hand when you're a human or a monkey.")
 				where = "onfloor"
-			else if (usr.get_active_hand())
+			else if(usr.get_active_hand())
 				to_chat(usr, "Your active hand is full. Spawning on floor.")
 				where = "onfloor"
 
-		if (where == "inmarked" )
-			if (!marked_datums.len)
+		if(where == "inmarked" )
+			if(!marked_datums.len)
 				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
@@ -1561,19 +1561,19 @@
 				if(!D)
 					return
 
-				if (!istype(D,/atom))
+				if(!istype(D,/atom))
 					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
 					return
 
 		var/atom/target //Where the object will be spawned
 		switch (where)
-			if ("onfloor")
+			if("onfloor")
 				switch (href_list["offset_type"])
-					if ("absolute")
+					if("absolute")
 						target = locate(0 + X,0 + Y,0 + Z)
-					if ("relative")
+					if("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
-			if ("inmarked")
+			if("inmarked")
 				var/datum/D = input_marked_datum(marked_datums)
 				if(!D)
 					to_chat(usr, "Invalid marked datum. Abandoning.")
@@ -1582,8 +1582,8 @@
 				target = D
 
 		if(target)
-			for (var/path in paths)
-				for (var/i = 0; i < number; i++)
+			for(var/path in paths)
+				for(var/i = 0; i < number; i++)
 					if(path in typesof(/turf))
 						var/turf/O = target
 						var/turf/N = O.ChangeTurf(path)
@@ -1600,7 +1600,7 @@
 									var/mob/M = O
 									M.change_real_name(M, obj_name)
 
-		if (number == 1)
+		if(number == 1)
 			log_admin("[key_name(usr)] created a [english_list(paths)]")
 			for(var/path in paths)
 				if(ispath(path, /mob))

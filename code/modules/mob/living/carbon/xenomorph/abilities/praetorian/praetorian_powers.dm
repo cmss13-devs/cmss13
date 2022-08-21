@@ -1,15 +1,15 @@
 /datum/action/xeno_action/activable/pierce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	// Get list of target mobs
@@ -44,7 +44,7 @@
 
 	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/carbon/H in target_turf)
-			if (!isXenoOrHuman(H) || X.can_not_harm(H))
+			if(!isXenoOrHuman(H) || X.can_not_harm(H))
 				continue
 
 			if(!(H in target_mobs))
@@ -56,20 +56,20 @@
 	X.emote("roar")
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
-	for (var/mob/living/carbon/H in target_mobs)
-		if (!isXenoOrHuman(H) || X.can_not_harm(H))
+	for(var/mob/living/carbon/H in target_mobs)
+		if(!isXenoOrHuman(H) || X.can_not_harm(H))
 			continue
 
-		if (H.stat == DEAD)
+		if(H.stat == DEAD)
 			continue
 
 		X.flick_attack_overlay(H, "slash")
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
 
-	if (target_mobs.len >= shield_regen_threshold)
-		if (X.mutation_type == PRAETORIAN_VANGUARD)
+	if(target_mobs.len >= shield_regen_threshold)
+		if(X.mutation_type == PRAETORIAN_VANGUARD)
 			var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
-			if (istype(BD))
+			if(istype(BD))
 				BD.regen_shield()
 
 	apply_cooldown()
@@ -89,7 +89,7 @@
 		damage_nearby_targets()
 
 /datum/action/xeno_action/activable/pounce/prae_dash/proc/timeout()
-	if (activated_once)
+	if(activated_once)
 		activated_once = FALSE
 		damage_nearby_targets()
 
@@ -100,28 +100,28 @@
 /datum/action/xeno_action/activable/pounce/prae_dash/proc/damage_nearby_targets()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (QDELETED(X) || !X.check_state())
+	if(QDELETED(X) || !X.check_state())
 		return
 
 	activated_once = FALSE
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
-	for (var/mob/living/carbon/H in L)
-		if (!isXenoOrHuman(H) || X.can_not_harm(H))
+	for(var/mob/living/carbon/H in L)
+		if(!isXenoOrHuman(H) || X.can_not_harm(H))
 			continue
 
-		if (!(H in target_mobs))
+		if(!(H in target_mobs))
 			target_mobs += H
 
 	X.visible_message(SPAN_XENODANGER("[X] slashes its claws through the area around it!"), SPAN_XENODANGER("You slash your claws through the area around you!"))
 	X.spin_circle()
 
-	for (var/mob/living/carbon/H in target_mobs)
-		if (H.stat)
+	for(var/mob/living/carbon/H in target_mobs)
+		if(H.stat)
 			continue
 
-		if (!isXenoOrHuman(H) || X.can_not_harm(H))
+		if(!isXenoOrHuman(H) || X.can_not_harm(H))
 			continue
 
 
@@ -129,34 +129,34 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
-	if (target_mobs.len >= shield_regen_threshold)
-		if (X.mutation_type == PRAETORIAN_VANGUARD)
+	if(target_mobs.len >= shield_regen_threshold)
+		if(X.mutation_type == PRAETORIAN_VANGUARD)
 			var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
-			if (istype(BD))
+			if(istype(BD))
 				BD.regen_shield()
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		return
 
 	var/mob/living/carbon/H = A
 
-	if (!X.Adjacent(H))
+	if(!X.Adjacent(H))
 		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
-	if (H.stat == DEAD)
+	if(H.stat == DEAD)
 		to_chat(X, SPAN_XENODANGER("[H] is dead, why would you want to touch it?"))
 		return
 
@@ -165,7 +165,7 @@
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 
-	if (root_toggle)
+	if(root_toggle)
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
 		X.visible_message(SPAN_XENODANGER("[X] smashes [A] with its claws, pinning them to the ground!"), SPAN_XENOHIGHDANGER("You smash [A] with your claws, pinning them to the ground!"))
@@ -173,7 +173,7 @@
 		H.frozen = TRUE
 		H.update_canmove()
 
-		if (ishuman(H))
+		if(ishuman(H))
 			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
@@ -238,7 +238,7 @@
 
 		T = temp
 
-		if (T in turflist)
+		if(T in turflist)
 			break
 
 		turflist += T
@@ -260,7 +260,7 @@
 		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
 		apply_cooldown()
 
-		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
 			telegraph_atom_list -= XT
 			qdel(XT)
 
@@ -278,39 +278,39 @@
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
 
 	var/list/targets = list()
-	for (var/turf/target_turf in turflist)
-		for (var/mob/living/carbon/H in target_turf)
+	for(var/turf/target_turf in turflist)
+		for(var/mob/living/carbon/H in target_turf)
 			if(!isXenoOrHuman(H) || X.can_not_harm(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
 				continue
 
 			targets += H
 
-	if (LAZYLEN(targets) == 1)
+	if(LAZYLEN(targets) == 1)
 		to_chat(X, SPAN_XENOHIGHDANGER("You hit one target! You will slow it."))
-	else if (LAZYLEN(targets) == 2)
+	else if(LAZYLEN(targets) == 2)
 		to_chat(X, SPAN_XENOHIGHDANGER("You hit two targets! You will daze and root them!"))
-	else if (LAZYLEN(targets) >= 3)
+	else if(LAZYLEN(targets) >= 3)
 		to_chat(X, SPAN_XENOHIGHDANGER("You hit 3 or more targets! You will stun them!"))
 
-	for (var/mob/living/carbon/H in targets)
+	for(var/mob/living/carbon/H in targets)
 		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
 
 		H.KnockDown(0.2)
 
-		if (LAZYLEN(targets) == 1)
+		if(LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
-		else if (LAZYLEN(targets) == 2)
+		else if(LAZYLEN(targets) == 2)
 
 			H.frozen = TRUE
 			H.update_canmove()
-			if (ishuman(H))
+			if(ishuman(H))
 				var/mob/living/carbon/human/Hu = H
 				Hu.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 			H.SetDazed(2)
-		else if (LAZYLEN(targets) >= 3)
+		else if(LAZYLEN(targets) >= 3)
 			H.KnockDown(get_xeno_stun_duration(H, 1.3))
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
 
@@ -325,28 +325,28 @@
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!X.check_state() || X.agility)
+	if(!X.check_state() || X.agility)
 		return
 
 	var/mob/living/carbon/H = A
 
-	if (!X.Adjacent(H))
+	if(!X.Adjacent(H))
 		return
 
 	if(H.stat == DEAD) return
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
-	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
+	if(ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
@@ -356,12 +356,12 @@
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 
-	if (H.frozen || H.slowed || H.knocked_down)
+	if(H.frozen || H.slowed || H.knocked_down)
 		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
 		H.frozen = TRUE
 		H.update_canmove()
 
-		if (ishuman(H))
+		if(ishuman(H))
 			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
@@ -390,13 +390,13 @@
 /datum/action/xeno_action/activable/tail_lash/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X) || !X.check_state() || !action_cooldown_check())
+	if(!istype(X) || !X.check_state() || !action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if (!check_plasma_owner())
+	if(!check_plasma_owner())
 		return
 
 	// Transient turf list
@@ -419,17 +419,17 @@
 		temp_turfs += infront_right
 
 	for(var/turf/T in temp_turfs)
-		if (!istype(T))
+		if(!istype(T))
 			continue
 
-		if (T.density)
+		if(T.density)
 			continue
 
 		target_turfs += T
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown/lash(T, windup)
 
 		var/turf/next_turf = get_step(T, facing)
-		if (!istype(next_turf) || next_turf.density)
+		if(!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
@@ -456,9 +456,9 @@
 	X.spin_circle()
 	X.emote("tail")
 
-	for (var/turf/T in target_turfs)
-		for (var/mob/living/carbon/H in T)
-			if (H.stat == DEAD)
+	for(var/turf/T in target_turfs)
+		for(var/mob/living/carbon/H in T)
+			if(H.stat == DEAD)
 				continue
 
 			if(!isXenoOrHuman(H) || X.can_not_harm(H))
@@ -480,37 +480,37 @@
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	if (!X.Adjacent(A))
+	if(!X.Adjacent(A))
 		to_chat(X, SPAN_XENODANGER("You must be adjacent to [A]!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/H = A
 
-	if (H.stat == DEAD)
+	if(H.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/buffed = FALSE
 	apply_cooldown()
-	if (X.mutation_type == PRAETORIAN_DANCER)
+	if(X.mutation_type == PRAETORIAN_DANCER)
 		var/found = FALSE
-		for (var/datum/effects/dancer_tag/DT in H.effects_list)
+		for(var/datum/effects/dancer_tag/DT in H.effects_list)
 			found = TRUE
 			qdel(DT)
 			break
@@ -555,20 +555,20 @@
 /datum/action/xeno_action/activable/prae_dodge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if(!istype(X) || !X.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if(X.mutation_type != PRAETORIAN_DANCER)
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	if(!istype(BD))
 		return
 
 	BD.dodge_activated = TRUE
@@ -586,17 +586,17 @@
 /datum/action/xeno_action/activable/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if(X.mutation_type != PRAETORIAN_DANCER)
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	if(!istype(BD))
 		return
 
-	if (BD.dodge_activated)
+	if(BD.dodge_activated)
 		BD.dodge_activated = FALSE
 		X.speed_modifier += speed_buff_amount
 		X.remove_temp_pass_flags(PASS_MOB_THRU)
@@ -606,32 +606,32 @@
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if(!istype(X) || !X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/T = A
 
-	if (T.stat == DEAD)
+	if(T.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/buffed = FALSE
 
-	if (X.mutation_type == PRAETORIAN_DANCER)
+	if(X.mutation_type == PRAETORIAN_DANCER)
 		var/found = FALSE
-		for (var/datum/effects/dancer_tag/DT in T.effects_list)
+		for(var/datum/effects/dancer_tag/DT in T.effects_list)
 			found = TRUE
 			qdel(DT)
 			break
@@ -644,31 +644,31 @@
 
 	var/dist = get_dist(X, T)
 
-	if (dist > range)
+	if(dist > range)
 		to_chat(X, SPAN_WARNING("[T] is too far away!"))
 		return
 
-	if (dist > 1)
+	if(dist > 1)
 		var/turf/targetTurf = get_step(X, get_dir(X, T))
-		if (targetTurf.density)
+		if(targetTurf.density)
 			to_chat(X, SPAN_WARNING("You can't attack through [targetTurf]!"))
 			return
 		else
-			for (var/atom/I in targetTurf)
-				if (I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
+			for(var/atom/I in targetTurf)
+				if(I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
 					to_chat(X, SPAN_WARNING("You can't attack through [I]!"))
 					return
 
 	// Hmm today I will kill a marine while looking away from them
 	X.face_atom(T)
 
-	if (!buffed)
+	if(!buffed)
 		new /datum/effects/xeno_slow(T, X, null, null, get_xeno_stun_duration(T, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
 
-	if (buffed)
+	if(buffed)
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 
@@ -683,14 +683,14 @@
 			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [X] smashes you with their tail!"))
 
 	if(!xeno_smashed)
-		if (stun_duration > 0)
+		if(stun_duration > 0)
 			T.KnockDown(stun_duration)
 		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
 		X.spin_circle()
 		X.emote("tail")
 		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
-	if (daze_duration > 0)
+	if(daze_duration > 0)
 		T.Daze(daze_duration)
 
 	apply_cooldown()
@@ -699,22 +699,22 @@
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!X.check_state() || X.action_busy)
+	if(!X.check_state() || X.action_busy)
 		return
 
-	if (!action_cooldown_check() && check_and_use_plasma_owner())
+	if(!action_cooldown_check() && check_and_use_plasma_owner())
 		return
 
 	var/turf/current_turf = get_turf(X)
 
-	if (!current_turf)
+	if(!current_turf)
 		return
 
-	if (!do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+	if(!do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You cancel your acid ball."))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	apply_cooldown()
@@ -732,24 +732,24 @@
 
 /datum/action/xeno_action/activable/warden_heal/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state(TRUE))
 		return
 
-	if (!isXeno(A) || !X.can_not_harm(A))
+	if(!isXeno(A) || !X.can_not_harm(A))
 		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
-	if (A == X)
+	if(A == X)
 		to_chat(X, SPAN_XENODANGER("You cannot heal yourself!"))
 		return
 
-	if (A.z != X.z)
+	if(A.z != X.z)
 		to_chat(X, SPAN_XENODANGER("That Sister is too far away!"))
 		return
 
@@ -759,33 +759,33 @@
 		to_chat(X, SPAN_WARNING("[targetXeno] is already dead!"))
 		return
 
-	if (!check_plasma_owner())
+	if(!check_plasma_owner())
 		return
 
 	var/use_plasma = FALSE
 
-	if (curr_effect_type == WARDEN_HEAL_SHIELD)
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+	if(curr_effect_type == WARDEN_HEAL_SHIELD)
+		if(SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal bolster the defenses of this xeno!"))
 			return
 
 		var/bonus_shield = 0
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
+		if(X.mutation_type == PRAETORIAN_WARDEN)
 			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
+			if(!istype(BD))
 				return
 
-			if (!BD.use_internal_hp_ability(shield_cost))
+			if(!BD.use_internal_hp_ability(shield_cost))
 				return
 
 			bonus_shield = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_shield))
+			if(!BD.use_internal_hp_ability(bonus_shield))
 				bonus_shield = 0
 
 		var/total_shield_amount = shield_amount + bonus_shield
 
-		if (X.observed_xeno != null)
+		if(X.observed_xeno != null)
 			to_chat(X, SPAN_XENOHIGHDANGER("You cannot shield [targetXeno] as effectively over distance!"))
 			total_shield_amount = total_shield_amount/4
 			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
@@ -802,29 +802,29 @@
 		X.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
 		use_plasma = TRUE
 
-	else if (curr_effect_type == WARDEN_HEAL_HP)
-		if (!X.Adjacent(A))
+	else if(curr_effect_type == WARDEN_HEAL_HP)
+		if(!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
 			return
-		if (targetXeno.mutation_type == PRAETORIAN_WARDEN)
+		if(targetXeno.mutation_type == PRAETORIAN_WARDEN)
 			to_chat(X, SPAN_XENODANGER("You cannot heal a sister of the same strain!"))
 			return
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		if(SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal this xeno!"))
 			return
 
 		var/bonus_heal = 0
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
+		if(X.mutation_type == PRAETORIAN_WARDEN)
 			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
+			if(!istype(BD))
 				return
 
-			if (!BD.use_internal_hp_ability(heal_cost))
+			if(!BD.use_internal_hp_ability(heal_cost))
 				return
 
 			bonus_heal = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_heal))
+			if(!BD.use_internal_hp_ability(bonus_heal))
 				bonus_heal = 0
 
 		to_chat(X, SPAN_XENODANGER("You heal [targetXeno]!"))
@@ -836,17 +836,17 @@
 		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
-	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
-		if (X.observed_xeno != null)
+	else if(curr_effect_type == WARDEN_HEAL_DEBUFFS)
+		if(X.observed_xeno != null)
 			to_chat(X, SPAN_XENOHIGHDANGER("You cannot rejuvenate targets through overwatch!"))
 			return
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
+		if(X.mutation_type == PRAETORIAN_WARDEN)
 			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
+			if(!istype(BD))
 				return
 
-			if (!BD.use_internal_hp_ability(debuff_cost))
+			if(!BD.use_internal_hp_ability(debuff_cost))
 				return
 
 		to_chat(X, SPAN_XENODANGER("You rejuvenate [targetXeno]!"))
@@ -861,7 +861,7 @@
 		targetXeno.SetSlowed(0)
 		targetXeno.SetSuperslowed(0)
 		use_plasma = TRUE
-	if (use_plasma)
+	if(use_plasma)
 		use_plasma_owner()
 
 	apply_cooldown()

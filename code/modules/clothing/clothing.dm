@@ -42,7 +42,7 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
+	if(drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
 		return
 
 	..()
@@ -110,7 +110,7 @@
 	flags_equip_slot = SLOT_EAR
 
 /obj/item/clothing/ears/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_ears()
 
@@ -161,14 +161,14 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
 
 /obj/item/clothing/suit/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_wear_suit()
 
 
 /obj/item/clothing/suit/mob_can_equip(mob/M, slot, disable_warning = 0)
 	//if we can't equip the item anyway, don't bother with other checks.
-	if (!..())
+	if(!..())
 		return 0
 
 	if(ishuman(M))
@@ -206,7 +206,7 @@
 	var/hide_prints = FALSE
 
 /obj/item/clothing/gloves/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_gloves()
 
@@ -214,7 +214,7 @@
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
-		if (cell.charge < 0)
+		if(cell.charge < 0)
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
@@ -236,7 +236,7 @@
 	var/anti_hug = 0
 
 /obj/item/clothing/mask/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_wear_mask()
 
@@ -284,10 +284,10 @@
 						if("nitrogen")
 							if(t.gas_type == GAS_TYPE_NITROGEN)
 								goodtank = TRUE
-						if ("oxygen")
+						if("oxygen")
 							if(t.gas_type == GAS_TYPE_OXYGEN || t.gas_type == GAS_TYPE_AIR)
 								goodtank = TRUE
-						if ("carbon dioxide")
+						if("carbon dioxide")
 							if(t.gas_type == GAS_TYPE_CO2)
 								goodtank = TRUE
 				if(goodtank)
@@ -330,7 +330,7 @@
 	var/shoes_blood_amt = 0
 
 /obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_shoes()
 
@@ -353,7 +353,7 @@
 
 /obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/living/M)
 	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
+		for(var/i in items_allowed)
 			if(istype(I, i))
 				if(stored_item)	return
 				stored_item = I

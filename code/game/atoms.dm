@@ -203,9 +203,9 @@ directive is properly returned.
 /atom/proc/add_hiddenprint(mob/living/M)
 	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
 		return
-	if (ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if (H.gloves)
+		if(H.gloves)
 			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 		else
 			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
@@ -221,7 +221,7 @@ directive is properly returned.
 		fingerprintshidden = list()
 	fingerprintslast = M.key
 
-	if (ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 
 		//Fibers~
@@ -230,7 +230,7 @@ directive is properly returned.
 		fingerprintslast = M.key
 
 		//Now, deal with gloves.
-		if (H.gloves && H.gloves != src)
+		if(H.gloves && H.gloves != src)
 			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 		else
 			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
@@ -303,7 +303,7 @@ Parameters are passed from New.
 	flags_atom |= INITIALIZED
 
 	pass_flags = pass_flags_cache[type]
-	if (isnull(pass_flags))
+	if(isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
 		pass_flags_cache[type] = pass_flags
@@ -347,30 +347,30 @@ Parameters are passed from New.
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)
-	if (isnull(temp_flag_counter))
+	if(isnull(temp_flag_counter))
 		temp_flag_counter = list()
 
-	for (var/flag in GLOB.bitflags)
+	for(var/flag in GLOB.bitflags)
 		if(!(flags_to_add & flag))
 			continue
 		var/flag_str = "[flag]"
-		if (temp_flag_counter[flag_str])
+		if(temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] += 1
 		else
 			temp_flag_counter[flag_str] = 1
 			flags_pass_temp |= flag
 
 /atom/proc/remove_temp_pass_flags(flags_to_remove)
-	if (isnull(temp_flag_counter))
+	if(isnull(temp_flag_counter))
 		return
 
-	for (var/flag in GLOB.bitflags)
+	for(var/flag in GLOB.bitflags)
 		if(!(flags_to_remove & flag))
 			continue
 		var/flag_str = "[flag]"
-		if (temp_flag_counter[flag_str])
+		if(temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] -= 1
-			if (temp_flag_counter[flag_str] == 0)
+			if(temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
 				flags_pass_temp &= ~flag
 
@@ -509,11 +509,11 @@ Parameters are passed from New.
  */
 /atom/proc/get_all_orbiters(list/processed, source = TRUE)
 	var/list/output = list()
-	if (!processed)
+	if(!processed)
 		processed = list()
-	if (src in processed)
+	if(src in processed)
 		return output
-	if (!source)
+	if(!source)
 		output += src
 	processed += src
 	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)

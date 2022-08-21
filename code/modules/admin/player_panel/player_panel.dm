@@ -1,6 +1,6 @@
 
 /datum/admins/proc/player_panel_new()//The new one
-	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 	var/dat = "<html>"
 
@@ -15,20 +15,20 @@
 					var filter_text = document.getElementById('filter');
 					var filter = filter_text.value.toLowerCase();
 
-					if (complete_list != null && complete_list != "") {
+					if(complete_list != null && complete_list != "") {
 						var mtbl = document.getElementById("maintable_data_archive");
 						mtbl.innerHTML = complete_list;
 					}
 
-					if (filter.value == "") {
+					if(filter.value == "") {
 						return;
 					} else {
 						var maintable_data = document.getElementById('maintable_data');
 						var ltr = maintable_data.getElementsByTagName("tr");
-						for (var i = 0; i < ltr.length; ++i) {
+						for(var i = 0; i < ltr.length; ++i) {
 							try {
 								var tr = ltr\[i\];
-								if (tr.getAttribute("id").indexOf("data") != 0) {
+								if(tr.getAttribute("id").indexOf("data") != 0) {
 									continue;
 								}
 								tr.style.display = '';
@@ -36,7 +36,7 @@
 								var td = ltd\[0\];
 								var lsearch = td.getElementsByTagName("b");
 								var search = lsearch\[0\];
-								if (search.innerText.toLowerCase().indexOf(filter) == -1) {
+								if(search.innerText.toLowerCase().indexOf(filter) == -1) {
 									tr.style.display = 'none';
 								}
 							} catch(err) {}
@@ -76,7 +76,7 @@
 
 				function clearAll() {
 					var spans = document.getElementsByTagName('span');
-					for (var i = 0; i < spans.length; i++) {
+					for(var i = 0; i < spans.length; i++) {
 						var span = spans\[i\];
 
 						var id = span.getAttribute("id");
@@ -86,14 +86,14 @@
 
 						var pass = 1;
 
-						for (var j = 0; j < locked_tabs.length; j++) {
-							if (locked_tabs\[j\]==id) {
+						for(var j = 0; j < locked_tabs.length; j++) {
+							if(locked_tabs\[j\]==id) {
 								pass = 0;
 								break;
 							}
 						}
 
-						if (pass != 1)
+						if(pass != 1)
 							continue;
 
 						span.innerHTML = "";
@@ -103,7 +103,7 @@
 				function addToLocked(id,link_id,notice_span_id) {
 					var link = document.getElementById(link_id);
 					var decision = link.getAttribute("name");
-					if (decision == "1") {
+					if(decision == "1") {
 						link.setAttribute("name","2");
 					} else {
 						link.setAttribute("name","1");
@@ -112,13 +112,13 @@
 					}
 
 					var pass = 1;
-					for (var j = 0; j < locked_tabs.length; j++) {
-						if (locked_tabs\[j\]==id) {
+					for(var j = 0; j < locked_tabs.length; j++) {
+						if(locked_tabs\[j\]==id) {
 							pass = 0;
 							break;
 						}
 					}
-					if (!pass)
+					if(!pass)
 						return;
 					locked_tabs.push(id);
 					var notice_span = document.getElementById(notice_span_id);
@@ -132,14 +132,14 @@
 				function removeFromLocked(id,link_id,notice_span_id) {
 					var index = 0;
 					var pass = 0;
-					for (var j = 0; j < locked_tabs.length; j++) {
-						if (locked_tabs\[j\]==id) {
+					for(var j = 0; j < locked_tabs.length; j++) {
+						if(locked_tabs\[j\]==id) {
 							pass = 1;
 							index = j;
 							break;
 						}
 					}
-					if (!pass)
+					if(!pass)
 						return;
 					locked_tabs\[index\] = "";
 					var notice_span = document.getElementById(notice_span_id);
@@ -274,7 +274,7 @@
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
-	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 
 	var/dat = "<html>"
@@ -381,7 +381,7 @@
 	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
 
 /datum/admins/proc/check_round_status()
-	if (SSticker.current_state >= GAME_STATE_PLAYING)
+	if(SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
@@ -431,7 +431,7 @@
 	return txt
 
 /proc/check_role_table_row(mob/M, admins=src, show_objectives)
-	if (!istype(M))
+	if(!istype(M))
 		return "<tr><td><i>Not found!</i></td></tr>"
 
 	var/txt = {"
@@ -446,7 +446,7 @@
 			</td>
 	"}
 
-	if (show_objectives)
+	if(show_objectives)
 		txt += {"
 			<td>
 				<a href='?src=\ref[admins];traitor=\ref[M]'>Show Objective</a>
@@ -476,7 +476,7 @@
 		return
 
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "PlayerPanel", "[targetMob.name] Player Panel")
 		ui.open()
 		ui.set_autoupdate(FALSE)
@@ -601,7 +601,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 		var/client/C = src
 		src = C.admin_holder
 
-	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+	if(!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(owner, "Error: you are not an admin!")
 		return
 

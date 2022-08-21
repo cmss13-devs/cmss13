@@ -46,5 +46,5 @@ SUBSYSTEM_DEF(round_recording)
 
 		recorder.snapshot_player(M)
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return*/

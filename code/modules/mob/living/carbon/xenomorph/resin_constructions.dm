@@ -98,7 +98,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_turf.PlaceOnTop(path)
 
 	var/turf/closed/wall/resin/resin_wall = build_turf
-	if (istype(resin_wall) && pass_hivenumber)
+	if(istype(resin_wall) && pass_hivenumber)
 		resin_wall.hivenumber = hivenumber
 		resin_wall.set_resin_builder(builder)
 		set_hive_data(resin_wall, hivenumber)
@@ -182,7 +182,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/mineral_door/resin
 
 /datum/resin_construction/resin_obj/door/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
-	if (!..())
+	if(!..())
 		return FALSE
 
 	var/wall_support = FALSE
@@ -231,7 +231,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/bed/nest
 
 /datum/resin_construction/resin_obj/nest/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
-	if (!..())
+	if(!..())
 		return FALSE
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T // No need to check if null, because if there are no weeds then parent call fails any way

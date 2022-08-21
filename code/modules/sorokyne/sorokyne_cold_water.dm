@@ -56,8 +56,8 @@
 		M.apply_damage(dam_amount,BURN,"r_leg")
 		M.apply_damage(dam_amount,BURN,"r_foot")
 
-	if (ishuman(M))
-		if (M.bodytemperature > MINIMUM_TEMP)
+	if(ishuman(M))
+		if(M.bodytemperature > MINIMUM_TEMP)
 			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
 		else
 			M.bodytemperature = MINIMUM_TEMP

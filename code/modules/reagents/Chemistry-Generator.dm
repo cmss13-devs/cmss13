@@ -108,7 +108,7 @@
 						chem_id = pick(chemical_gen_classes_list["C5"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
-						if (prob(50))
+						if(prob(50))
 							chem_id = pick(chemical_gen_classes_list["C5"])
 						else
 							chem_id = pick(chemical_gen_classes_list["C4"])
@@ -252,28 +252,28 @@
 			if(1)
 				if(roll<=30)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=60)
+				else if(roll<=60)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
 			if(2)
 				if(roll<=25)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=45)
+				else if(roll<=45)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
 			if(3)
 				if(roll<=15)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if(roll<=40)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
 			else
 				if(roll<=15)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if(roll<=40)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
@@ -348,7 +348,7 @@
 				if(property == C && P.name == conflicting_properties[C])
 					match = P
 					break
-				else if (property == conflicting_properties[C] && C == P.name)
+				else if(property == conflicting_properties[C] && C == P.name)
 					match = P
 					break
 		if(match)

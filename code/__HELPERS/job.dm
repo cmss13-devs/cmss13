@@ -20,7 +20,7 @@
 //gets the actual job rank (ignoring alt titles)
 //this is used solely for sechuds
 /obj/proc/GetJobRealName()
-	if (!istype(src,/obj/item/card/id)) return
+	if(!istype(src,/obj/item/card/id)) return
 	var/obj/item/card/id/I = src
 	if(I.rank in GLOB.joblist) return I.rank
 	if(I.assignment in GLOB.joblist) return I.assignment

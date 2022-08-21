@@ -58,7 +58,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
 		var/mob/M
-		for (var/msg in dead_queens)
+		for(var/msg in dead_queens)
 			dat += msg
 		for(var/datum/mind/X in xenomorphs)
 			if(!istype(X))
@@ -173,9 +173,9 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		larva += HS.stored_larva
 
 	//Keeping track of peak numbers to determine when a side is "losing"
-	if (peakHumans < length(GLOB.alive_human_list))
+	if(peakHumans < length(GLOB.alive_human_list))
 		peakHumans = length(GLOB.alive_human_list)
-	if (peakXenos < length(GLOB.living_xeno_list))
+	if(peakXenos < length(GLOB.living_xeno_list))
 		peakXenos = length(GLOB.living_xeno_list)
 
 	for(var/mob/M in GLOB.living_xeno_list)
@@ -184,7 +184,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 			numXenosShip++
 			continue
 		var/atom/where = M
-		if (where == 0 && M.loc)
+		if(where == 0 && M.loc)
 			where = M.loc
 		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 			numXenosPlanet++
@@ -195,11 +195,11 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 			xenosShipLocations+=where
 
 
-	for (var/i in GLOB.alive_human_list)
+	for(var/i in GLOB.alive_human_list)
 		var/mob/living/carbon/human/H = i
 		var/atom/where = H
 		if(isSpeciesHuman(H))
-			if (where == 0 && H.loc)
+			if(where == 0 && H.loc)
 				where = H.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 				numHostsPlanet++
@@ -208,23 +208,23 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 				numHostsShip++
 				hostsShipLocations += where
 
-	if (world.time > nextAdminBioscan)
+	if(world.time > nextAdminBioscan)
 		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
 		message_staff("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 
 	//Pick one random location to disclose
 	var/RandomHostsPlanetLocation = ""
-	if (hostsPlanetLocations.len>0)
+	if(hostsPlanetLocations.len>0)
 		RandomHostsPlanetLocation = get_area_name(pick(hostsPlanetLocations))
 	var/RandomHostsShipLocation = ""
-	if (hostsShipLocations.len>0)
+	if(hostsShipLocations.len>0)
 		RandomHostsShipLocation = get_area_name(pick(hostsShipLocations))
 	var/RandomXenosPlanetLocation = ""
-	if (xenosPlanetLocations.len>0)
+	if(xenosPlanetLocations.len>0)
 		RandomXenosPlanetLocation = get_area_name(pick(xenosPlanetLocations))
 	var/RandomXenosShipLocation = ""
-	if (xenosShipLocations.len>0)
+	if(xenosShipLocations.len>0)
 		RandomXenosShipLocation = get_area_name(pick(xenosShipLocations))
 
 	if(world.time > nextPredatorBioscan)
@@ -235,12 +235,12 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
 		for(var/mob/M in GLOB.player_list)
 			//Announce the numbers to Yautja, they have good scanners
-			if (isYautja(M))
+			if(isYautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
 				to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
 
 			//Let the ghosts know what's up, they also get good numbers
-			if (isobserver(M))
+			if(isobserver(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
 				to_chat(M, SPAN_ALERT("[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship."))
 
@@ -309,11 +309,11 @@ Only checks living mobs with a client attached.
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+					if(A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 				else if(iszombie(M))
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+					if(A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 

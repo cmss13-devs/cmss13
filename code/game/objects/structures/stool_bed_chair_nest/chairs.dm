@@ -17,7 +17,7 @@
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 

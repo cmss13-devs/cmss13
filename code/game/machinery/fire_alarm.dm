@@ -75,7 +75,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
 		wiresexposed = !wiresexposed
 		update_icon()
 		return
@@ -83,13 +83,13 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+				if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
-					if (src.detecting)
+					if(src.detecting)
 						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
 						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
-				else if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+				else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
@@ -97,7 +97,7 @@ FIRE ALARM
 			if(1)
 				if(istype(W, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/C = W
-					if (C.use(5))
+					if(C.use(5))
 						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 						buildstage = 2
 						return
@@ -139,21 +139,21 @@ FIRE ALARM
 	if(user.stat || inoperable())
 		return
 
-	if (buildstage != 2)
+	if(buildstage != 2)
 		return
 
 	user.set_interaction(src)
 	var/area/A = src.loc
 	var/d1
 	var/d2
-	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
+	if(istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
 		A = A.loc
 
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
+		if(A.flags_alarm_state & ALARM_WARNING_FIRE)
 			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
 		else
 			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
-		if (src.timing)
+		if(src.timing)
 			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
 		else
 			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
@@ -163,11 +163,11 @@ FIRE ALARM
 		show_browser(user, dat, "Fire Alarm", "firealarm")
 	else
 		A = A.loc
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
+		if(A.flags_alarm_state & ALARM_WARNING_FIRE)
 			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
 		else
 			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
-		if (src.timing)
+		if(src.timing)
 			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
 		else
 			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
@@ -179,23 +179,23 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/Topic(href, href_list)
 	..()
-	if (usr.stat || inoperable())
+	if(usr.stat || inoperable())
 		return
 
-	if (buildstage != 2)
+	if(buildstage != 2)
 		return
 
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
+	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
-		if (href_list["reset"])
+		if(href_list["reset"])
 			src.reset()
-		else if (href_list["alarm"])
+		else if(href_list["alarm"])
 			src.alarm()
-		else if (href_list["time"])
+		else if(href_list["time"])
 			src.timing = text2num(href_list["time"])
 			last_process = world.timeofday
 			//START_PROCESSING(SSobj, src)
-		else if (href_list["tp"])
+		else if(href_list["tp"])
 			var/tp = text2num(href_list["tp"])
 			src.time += tp
 			src.time = min(max(round(src.time), 0), 120)
@@ -209,22 +209,22 @@ FIRE ALARM
 	return
 
 /obj/structure/machinery/firealarm/proc/reset()
-	if (!( src.working ))
+	if(!( src.working ))
 		return
 	var/area/A = src.loc
 	A = A.loc
-	if (!( istype(A, /area) ))
+	if(!( istype(A, /area) ))
 		return
 	A.firereset()
 	update_icon()
 	return
 
 /obj/structure/machinery/firealarm/proc/alarm()
-	if (!( src.working ))
+	if(!( src.working ))
 		return
 	var/area/A = src.loc
 	A = A.loc
-	if (!( istype(A, /area) ))
+	if(!( istype(A, /area) ))
 		return
 	A.firealert()
 	update_icon()

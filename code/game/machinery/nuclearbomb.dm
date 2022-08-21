@@ -91,11 +91,11 @@ var/bomb_set = FALSE
 
 	user.set_interaction(src)
 	if(deployable)
-		if (!ishuman(user) && !isXenoQueen(user))
+		if(!ishuman(user) && !isXenoQueen(user))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
-		if (isXenoQueen(user))
+		if(isXenoQueen(user))
 			if(timing && bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -123,7 +123,7 @@ var/bomb_set = FALSE
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "nuclear_bomb.tmpl","Nuclear Fission Explosives Control Panel", 500, 250)
 		ui.set_initial_data(data)
 		ui.open()
@@ -134,22 +134,22 @@ var/bomb_set = FALSE
 	set name = "Make Deployable"
 	set src in oview(1)
 
-	if (!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
 		return
 
-	if (!ishuman(usr))
+	if(!ishuman(usr))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
 	var/area/A = get_area(src)
-	if (!A.can_build_special)
+	if(!A.can_build_special)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
 
 	usr.visible_message(SPAN_WARNING("[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."), SPAN_WARNING("You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."))
 	being_used = TRUE
 	if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		if (deployable)
+		if(deployable)
 			deployable = FALSE
 			anchored = FALSE
 		else
@@ -161,13 +161,13 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Topic(href, href_list)
 	..()
-	if (!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || !in_range(src, usr))
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || !in_range(src, usr))
 		return
 	usr.set_interaction(src)
 	var/area/A = get_area(src)
 	switch(href_list["command"])
-		if ("toggleNuke")
-			if (timing == -1)
+		if("toggleNuke")
+			if(timing == -1)
 				return
 
 			if(!ishuman(usr))
@@ -177,15 +177,15 @@ var/bomb_set = FALSE
 				to_chat(usr, SPAN_DANGER("Access denied!"))
 				return
 
-			if (!anchored)
+			if(!anchored)
 				to_chat(usr, SPAN_DANGER("Engage anchors first!"))
 				return
 
-			if (safety)
+			if(safety)
 				to_chat(usr, SPAN_DANGER("The safety is still on."))
 				return
 
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 
@@ -208,14 +208,14 @@ var/bomb_set = FALSE
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 
-		if ("toggleSafety")
+		if("toggleSafety")
 			if(!allowed(usr))
 				to_chat(usr, SPAN_DANGER("Access denied!"))
 				return
-			if (timing)
+			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			usr.visible_message(SPAN_WARNING("[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
@@ -228,7 +228,7 @@ var/bomb_set = FALSE
 				timing = FALSE
 				bomb_set = FALSE
 
-		if ("toggleCommandLockout")
+		if("toggleCommandLockout")
 			if(!ishuman(usr))
 				return
 			if(!allowed(usr))
@@ -254,11 +254,11 @@ var/bomb_set = FALSE
 				req_one_access = list(ACCESS_MARINE_BRIDGE)
 				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
 
-		if ("toggleAnchor")
-			if (timing)
+		if("toggleAnchor")
+			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			being_used = TRUE
@@ -274,7 +274,7 @@ var/bomb_set = FALSE
 	update_icon()
 	add_fingerprint(usr)
 	for(var/mob/M in viewers(1, src))
-		if ((M.client && M.interactee == src))
+		if((M.client && M.interactee == src))
 			attack_hand(M)
 
 //unified all announcements to one proc

@@ -254,9 +254,9 @@
 	switch(M.a_intent)
 
 		if(INTENT_HELP)
-			if (health > 0)
+			if(health > 0)
 				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
+					if((O.client && !( O.blinded )))
 						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"))
 
 		if(INTENT_GRAB)
@@ -269,7 +269,7 @@
 		if(INTENT_HARM, INTENT_DISARM)
 			apply_damage(harm_intent_damage, BRUTE)
 			for(var/mob/O in viewers(src, null))
-				if ((O.client && !( O.blinded )))
+				if((O.client && !( O.blinded )))
 					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"))
 
 	return
@@ -285,7 +285,7 @@
 					apply_damage(-MED.heal_brute, BRUTE)
 					MED.use(1)
 					for(var/mob/M in viewers(src, null))
-						if ((M.client && !( M.blinded )))
+						if((M.client && !( M.blinded )))
 							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
 					return
 		else
@@ -331,11 +331,11 @@
 	health = Clamp(health - damage, 0, maxHealth)
 
 /mob/living/simple_animal/proc/SA_attackable(target_mob)
-	if (isliving(target_mob))
+	if(isliving(target_mob))
 		var/mob/living/L = target_mob
 		if(!L.stat)
 			return (0)
-	if (istype(target_mob,/obj/structure/machinery/bot))
+	if(istype(target_mob,/obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/B = target_mob
 		if(B.health > 0)
 			return (0)
@@ -346,7 +346,7 @@
 	if(!targeted_by && target_locked)
 		QDEL_NULL(target_locked)
 	overlays = null
-	if (targeted_by && target_locked)
+	if(targeted_by && target_locked)
 		overlays += target_locked
 
 /mob/living/simple_animal/say(var/message)

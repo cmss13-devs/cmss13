@@ -106,7 +106,7 @@
 
     if(href_list["select_source"])
         var/new_source = tgui_input_list(usr, "Select source location","Source Location", linked_teleporter.locations)
-        if (selected_source && !new_source)
+        if(selected_source && !new_source)
             return
         else
             selected_source = new_source

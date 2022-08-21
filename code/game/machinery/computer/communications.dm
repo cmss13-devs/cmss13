@@ -59,7 +59,7 @@
 		updateDialog()
 
 /obj/structure/machinery/computer/communications/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
+	if(close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
@@ -69,7 +69,7 @@
 	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
-	if (href_list["close"] && current_mapviewer)
+	if(href_list["close"] && current_mapviewer)
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
@@ -257,7 +257,7 @@
 
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
-			if (!currmsg)
+			if(!currmsg)
 				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
 				else 							state = STATE_MESSAGELIST
 
@@ -385,9 +385,9 @@
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
-				if (authenticated)
+				if(authenticated)
 					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
@@ -395,7 +395,7 @@
 				return FALSE
 
 		if(STATE_DELMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
@@ -470,9 +470,9 @@
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
-				if (authenticated)
+				if(authenticated)
 					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
@@ -480,7 +480,7 @@
 				return FALSE
 
 		if(STATE_DELMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST

@@ -218,7 +218,7 @@
 		var/datum/job/J = RoleAuthority.roles_by_name[i]
 
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
-		if (J.spawn_positions < 0)
+		if(J.spawn_positions < 0)
 			J.spawn_positions = J.current_positions
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
@@ -239,7 +239,7 @@
 /datum/game_mode/whiskey_outpost/proc/pickovertime()
 	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*50 SECONDS)
 	var/maxovertime = 20 MINUTES
-	if (randomtime >= maxovertime)
+	if(randomtime >= maxovertime)
 		return maxovertime
 	return randomtime
 
@@ -319,7 +319,7 @@
 	if(!OT)
 		OT = "sup" //no breaking anything.
 
-	else if (OT == "sup")
+	else if(OT == "sup")
 		randpick = rand(0,50)
 		switch(randpick)
 			if(0 to 5)//Marine Gear 10% Chance.

@@ -33,7 +33,7 @@
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	keys = list()
-	for (var/key in initial_keys)
+	for(var/key in initial_keys)
 		keys += new key(src)
 	recalculateChannels()
 
@@ -64,11 +64,11 @@
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
-	if (channel == "special")
-		if (translate_binary)
+	if(channel == "special")
+		if(translate_binary)
 			var/datum/language/binary = GLOB.all_languages[LANGUAGE_BINARY]
 			binary.broadcast(M, message)
-		if (translate_hive)
+		if(translate_hive)
 			var/datum/language/hivemind = GLOB.all_languages[LANGUAGE_HIVEMIND]
 			hivemind.broadcast(M, message)
 		return null
@@ -80,7 +80,7 @@
 	. = ..()
 
 /obj/item/device/radio/headset/receive_range(freq, level, aiOverride = 0)
-	if (aiOverride)
+	if(aiOverride)
 		return ..(freq, level)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -92,7 +92,7 @@
 	if(!ishuman(user) || loc != user)
 		return ..()
 	var/mob/living/carbon/human/H = user
-	if (!H.has_item_in_ears(src))
+	if(!H.has_item_in_ears(src))
 		return ..()
 	user.set_interaction(src)
 	tgui_interact(user)
@@ -117,7 +117,7 @@
 /obj/item/device/radio/headset/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)
-	if ( !(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey)) ))
+	if( !(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey)) ))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -126,7 +126,7 @@
 			to_chat(user, "You cannot do it here.")
 			return
 		var/removed_keys = FALSE
-		for (var/obj/item/device/encryptionkey/key in keys)
+		for(var/obj/item/device/encryptionkey/key in keys)
 			if(key.abstract)
 				continue
 			key.forceMove(T)
@@ -140,7 +140,7 @@
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		var/keycount = 0
-		for (var/obj/item/device/encryptionkey/key in keys)
+		for(var/obj/item/device/encryptionkey/key in keys)
 			if(!key.abstract)
 				keycount++
 		if(keycount >= maximum_keys)
@@ -178,13 +178,13 @@
 		if(key.syndie)
 			syndie = TRUE
 
-	for (var/ch_name in channels)
+	for(var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if (slot == WEAR_L_EAR || slot == WEAR_R_EAR)
+	if(slot == WEAR_L_EAR || slot == WEAR_R_EAR)
 		RegisterSignal(user, list(
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
@@ -289,7 +289,7 @@
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
-	if (disabledAi)
+	if(disabledAi)
 		return -1 //Transciever Disabled.
 	return ..(freq, level, 1)
 

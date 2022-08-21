@@ -22,7 +22,7 @@
 	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
-	if (stored_huggers && linked_hive)
+	if(stored_huggers && linked_hive)
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
@@ -152,7 +152,7 @@
 	if(!stored_huggers || isSynth(AM))
 		return
 
-	if (!linked_hive)
+	if(!linked_hive)
 		return
 
 	if(!can_hug(AM, linked_hive.hivenumber))

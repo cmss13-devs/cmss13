@@ -158,7 +158,7 @@ var/global/dmm_suite/preloader/_preloader = new
 									if(!grid_models[model_key])
 										throw EXCEPTION("Undefined model key in DMM.")
 									var/datum/grid_load_metadata/M = parse_grid(grid_models[model_key], model_key, xcrd, ycrd, zcrd, no_changeturf, clear_contents, initialized_areas_by_type)
-									if (M)
+									if(M)
 										atoms_to_initialise += M.atoms_to_initialise
 										atoms_to_delete += M.atoms_to_delete
 								#ifdef TESTING
@@ -259,7 +259,7 @@ var/global/dmm_suite/preloader/_preloader = new
 	#ifdef UNIT_TEST
 				log_error("Couldn't find atom path specified in map: [full_def]")
 	#endif
-				if (dpos == 0)
+				if(dpos == 0)
 					break
 				else
 					continue
@@ -317,7 +317,7 @@ var/global/dmm_suite/preloader/_preloader = new
 	if(members[index] != /area/template_noop)
 		is_not_noop = TRUE
 		var/list/attr = members_attributes[index]
-		if (LAZYLEN(attr))
+		if(LAZYLEN(attr))
 			_preloader.setup(attr)//preloader for assigning  set variables on atom creation
 		var/atype = members[index]
 		var/atom/instance = initialized_areas_by_type[atype]
@@ -358,10 +358,10 @@ var/global/dmm_suite/preloader/_preloader = new
 			index++
 			atoms_to_initialise += T
 
-	if (clear_contents && is_not_noop)
-		for (var/type_to_delete in types_to_delete())
-			for (var/atom/pre_existing in crds)
-				if (istype(pre_existing, type_to_delete))
+	if(clear_contents && is_not_noop)
+		for(var/type_to_delete in types_to_delete())
+			for(var/atom/pre_existing in crds)
+				if(istype(pre_existing, type_to_delete))
 					atoms_to_delete |= pre_existing
 
 	//finally instance all remainings objects/mobs
@@ -381,7 +381,7 @@ var/global/dmm_suite/preloader/_preloader = new
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /dmm_suite/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf)
-	if (LAZYLEN(attributes))
+	if(LAZYLEN(attributes))
 		_preloader.setup(attributes, path)
 
 	if(crds)
@@ -529,13 +529,13 @@ var/global/dmm_suite/preloader/_preloader = new
 			what.vars[attribute] = value
 		catch (var/ex)
 			var/found = FALSE
-			for (var/V in what.vars)
-				if (deep_string_equals(V, attribute))
+			for(var/V in what.vars)
+				if(deep_string_equals(V, attribute))
 					what.vars[V] = value
 					log_debug("Successfully performed manual var detection for var [V] \ref[V] on provided attribute [attribute] \ref[attribute] for atom [what]")
 					found = TRUE
 					break
-			if (!found)
+			if(!found)
 				throw ex
 	use_preloader = FALSE
 

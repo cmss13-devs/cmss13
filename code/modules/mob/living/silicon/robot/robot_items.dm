@@ -20,7 +20,7 @@
 			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
 			if(newcolour) pen_colour = newcolour
 		if("Mode")
-			if (mode == 1)
+			if(mode == 1)
 				mode = 2
 			else
 				mode = 1
@@ -30,10 +30,10 @@
 // see code\modules\paperwork\paper.dm line 62
 
 /obj/item/tool/pen/robopen/proc/RenamePaper(mob/user as mob,obj/paper as obj)
-	if ( !user || !paper )
+	if( !user || !paper )
 		return
 	var/n_name = input(user, "What would you like to label the paper?", "Paper Labelling", null)  as text
-	if ( !user || !paper )
+	if( !user || !paper )
 		return
 
 	n_name = copytext(n_name, 1, 32)
@@ -83,7 +83,7 @@
 	set src in range(0)
 
 	var/N = tgui_input_list(usr, "How much damage should the shield absorb?", "Shield level", list("5","10","25","50","75","100"))
-	if (N)
+	if(N)
 		shield_level = text2num(N)/100
 
 /obj/item/robot/combat/mobility

@@ -60,7 +60,7 @@
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=observe'>Observe</A></p>"
 
 	output += "</div>"
-	if (refresh)
+	if(refresh)
 		close_browser(src, "playersetup")
 	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
 	return
@@ -222,7 +222,7 @@
 			new_player_panel()
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
-	if (src != usr)
+	if(src != usr)
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
@@ -363,7 +363,7 @@
 
 	client.prefs.copy_all_to(new_character)
 
-	if (client.prefs.be_random_body)
+	if(client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
 		TP.randomize_appearance(new_character)
 

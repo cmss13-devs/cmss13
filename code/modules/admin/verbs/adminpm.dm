@@ -73,7 +73,7 @@
 
 	if(AH)
 		LAZYREMOVE(AH.opening_responders, src)
-		if (!msg)
+		if(!msg)
 			message_staff("[key_name_admin(src)] has cancelled their reply to [key_name_admin(C, 0, 0)]'s admin help.")
 			return
 
@@ -168,7 +168,7 @@
 			confidential = TRUE)
 		return
 
-	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
+	if(src.handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
 
 	//clean the message if it's not sent by a high-rank admin

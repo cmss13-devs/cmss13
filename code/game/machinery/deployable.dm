@@ -25,24 +25,24 @@
 
 /obj/structure/machinery/deployable/barrier/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/card/id/))
-		if (src.allowed(user))
+	if(istype(W, /obj/item/card/id/))
+		if(src.allowed(user))
 			src.locked = !src.locked
 			src.anchored = !src.anchored
 			src.icon_state = "barrier[src.locked]"
-			if (src.locked == 1.0)
+			if(src.locked == 1.0)
 				to_chat(user, "Barrier lock toggled on.")
 				return
-			else if (src.locked == 0.0)
+			else if(src.locked == 0.0)
 				to_chat(user, "Barrier lock toggled off.")
 				return
 		return
-	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if (src.health < src.maxhealth)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(src.health < src.maxhealth)
 			src.health = src.maxhealth
 			src.req_access = list(ACCESS_MARINE_PREP)
 			visible_message(SPAN_DANGER("[user] repairs \the [src]!"))
@@ -55,13 +55,13 @@
 			if("brute")
 				src.health -= W.force * 0.5
 			else
-		if (src.health <= 0)
+		if(src.health <= 0)
 			src.explode()
 		..()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
 	src.health -= severity/2
-	if (src.health <= 0)
+	if(src.health <= 0)
 		src.explode()
 	return
 

@@ -322,7 +322,7 @@
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)
 			oldXeno.iff_tag = null
-	else if (h_number)
+	else if(h_number)
 		hivenumber = h_number
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
@@ -351,7 +351,7 @@
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
-	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+	if(caste.fire_immunity != FIRE_IMMUNITY_NONE)
 		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
 			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
 		RegisterSignal(src, list(
@@ -428,7 +428,7 @@
 		if(IS_XENO_LEADER(oldXeno))
 			hive.replace_hive_leader(oldXeno, src)
 
-	if (caste)
+	if(caste)
 		behavior_delegate = new caste.behavior_delegate_type()
 		behavior_delegate.bound_xeno = src
 		behavior_delegate.add_to_xeno()
@@ -450,7 +450,7 @@
 	generate_name()
 
 	// This can happen if a xeno gets made before the game starts
-	if (hive && hive.hive_ui)
+	if(hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
 	job = caste.caste_type // Used for tracking the caste playtime
@@ -467,7 +467,7 @@
 
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_MOB_IS_XENO
 		PF.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
@@ -828,7 +828,7 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
-	if (new_max_health == maxHealth)
+	if(new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
 	if(health < maxHealth)
@@ -844,7 +844,7 @@
 
 	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
-	if (new_plasma_max == plasma_max)
+	if(new_plasma_max == plasma_max)
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
@@ -985,14 +985,14 @@
 
 /mob/living/carbon/Xenomorph/IgniteMob()
 	. = ..()
-	if (. & IGNITE_IGNITED)
+	if(. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
 		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()
-	if (.)
+	if(.)
 		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
 
 /mob/living/carbon/Xenomorph/proc/cancel_heal()

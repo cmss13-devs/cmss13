@@ -36,7 +36,7 @@
 /obj/item/reagent_container/food/snacks/attack_self(mob/user)
 	..()
 
-	if (world.time <= user.next_move)
+	if(world.time <= user.next_move)
 		return
 	attack(user, user, "head")//zone does not matter
 	user.next_move += attack_speed
@@ -65,18 +65,18 @@
 			C.overeat_cooldown = world.time + OVEREAT_TIME
 
 		if(M == user)//If you're eating it yourself
-			if (fullness <= 50)
+			if(fullness <= 50)
 				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
-			if (fullness > 50 && fullness <= 150)
+			if(fullness > 50 && fullness <= 150)
 				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
-			if (fullness > 150 && fullness <= 350)
+			if(fullness > 150 && fullness <= 350)
 				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
-			if (fullness > 350 && fullness <= 540)
+			if(fullness > 350 && fullness <= 540)
 				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
-			if (fullness > 540)
+			if(fullness > 540)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
-			if (fullness <= 540)
+			if(fullness <= 540)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -120,12 +120,12 @@
 
 /obj/item/reagent_container/food/snacks/examine(mob/user)
 	..()
-	if (!(user in range(0)) && user != loc) return
-	if (bitecount==0)
+	if(!(user in range(0)) && user != loc) return
+	if(bitecount==0)
 		return
-	else if (bitecount==1)
+	else if(bitecount==1)
 		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
-	else if (bitecount<=3)
+	else if(bitecount<=3)
 		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
 	else
 		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
@@ -143,7 +143,7 @@
 		if(!U.reagents)
 			U.create_reagents(5)
 
-		if (U.reagents.total_volume > 0)
+		if(U.reagents.total_volume > 0)
 			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
 			return
 
@@ -161,7 +161,7 @@
 
 		reagents.trans_to(U,min(reagents.total_volume,5))
 
-		if (reagents.total_volume <= 0)
+		if(reagents.total_volume <= 0)
 			qdel(src)
 		return
 
@@ -174,7 +174,7 @@
 		inaccurate = 1
 	else
 		return 1
-	if ( 	!istype(loc, /obj/structure/surface/table) && \
+	if( 	!istype(loc, /obj/structure/surface/table) && \
 			(!isturf(src.loc) || \
 			!(locate(/obj/structure/surface/table) in src.loc) && \
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
@@ -183,7 +183,7 @@
 		to_chat(user, SPAN_DANGER("You cannot slice [src] here! You need a table or at least a tray to do it."))
 		return 1
 	var/slices_lost = 0
-	if (!inaccurate)
+	if(!inaccurate)
 		user.visible_message( \
 			SPAN_NOTICE("[user] slices \the [src]!"), \
 			SPAN_NOTICE("You slice \the [src]!") \
@@ -1544,7 +1544,7 @@
 /obj/item/reagent_container/food/snacks/monkeycube/On_Consume(var/mob/M)
 	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
 
-	if (istype(M, /mob/living/carbon/human))
+	if(istype(M, /mob/living/carbon/human))
 		//Do not try to understand.
 		var/obj/item/surprise = new(M)
 		var/mob/ook = monkey_type
@@ -1558,9 +1558,9 @@
 		var/obj/limb/E = H.get_limb("chest")
 		E.fracture(100)
 		H.recalculate_move_delay = TRUE
-		for (var/datum/internal_organ/I in E.internal_organs)
+		for(var/datum/internal_organ/I in E.internal_organs)
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
-		if (!E.hidden && prob(60)) //set it snuggly
+		if(!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
 		else 		//someone is having a bad day
 			E.createwound(CUT, 30)

@@ -25,7 +25,7 @@
 /datum/shuttle/multi_shuttle/move(var/area/origin, var/area/destination)
 	..()
 	last_move = world.time
-	if (destination == src.origin)
+	if(destination == src.origin)
 		returned_home = 1
 
 /datum/shuttle/multi_shuttle/proc/announce_departure()

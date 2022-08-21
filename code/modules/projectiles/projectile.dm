@@ -140,7 +140,7 @@
 		original = istype(original_override) ? original_override : target
 	src.is_shrapnel = is_shrapnel
 	if(!loc)
-		if (!is_shrapnel)
+		if(!is_shrapnel)
 			var/move_turf = get_turf(F)
 			if(move_turf)
 				forceMove(move_turf)
@@ -160,7 +160,7 @@
 
 	if(F && !is_shrapnel)
 		permutated |= F //Don't hit the shooter (firer)
-	else if (S && is_shrapnel)
+	else if(S && is_shrapnel)
 		permutated |= S
 
 	permutated |= src //Don't try to hit self.
@@ -369,9 +369,9 @@
 					var/mob/living/carbon/Xenomorph/X = dL
 					var/mob/living/carbon/Xenomorph/F = firer
 
-					if (!istype(F))
+					if(!istype(F))
 						continue
-					if (F.can_not_harm(X))
+					if(F.can_not_harm(X))
 						continue
 				remote_detonation = 1
 				kill_proj = ammo.on_near_target(T, src)
@@ -415,9 +415,9 @@
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		// If we are a xeno shooting something
-		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && ammo.apply_delegate)
+		if(istype(ammo, /datum/ammo/xeno) && isXeno(firer) && ammo.apply_delegate)
 			var/mob/living/carbon/Xenomorph/X = firer
-			if (X.behavior_delegate)
+			if(X.behavior_delegate)
 				var/datum/behavior_delegate/MD = X.behavior_delegate
 				MD.ranged_attack_additional_effects_target(O)
 				MD.ranged_attack_additional_effects_self(O)
@@ -485,17 +485,17 @@
 				ammo.on_hit_mob(L,src, firer)
 
 				// If we are a xeno shooting something
-				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
+				if(istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
 					var/mob/living/carbon/Xenomorph/X = firer
-					if (X.behavior_delegate)
+					if(X.behavior_delegate)
 						var/datum/behavior_delegate/MD = X.behavior_delegate
 						MD.ranged_attack_additional_effects_target(L)
 						MD.ranged_attack_additional_effects_self(L)
 
 				// If the thing we're hitting is a Xeno
-				if (istype(L, /mob/living/carbon/Xenomorph))
+				if(istype(L, /mob/living/carbon/Xenomorph))
 					var/mob/living/carbon/Xenomorph/X = L
-					if (X.behavior_delegate)
+					if(X.behavior_delegate)
 						X.behavior_delegate.on_hitby_projectile(ammo)
 
 			. = TRUE

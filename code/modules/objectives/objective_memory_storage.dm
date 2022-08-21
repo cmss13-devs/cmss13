@@ -17,7 +17,7 @@
 /datum/objective_memory_storage/proc/store_single_objective(var/datum/cm_objective/O)
 	if(!istype(O))
 		return
-	if (O.state == OBJECTIVE_COMPLETE)
+	if(O.state == OBJECTIVE_COMPLETE)
 		return
 	if(istype(O, /datum/cm_objective/document/folder))
 		addToListNoDupe(folders, O)

@@ -21,7 +21,7 @@
 /obj/item/handcuffs/attack(mob/living/carbon/C, mob/user)
 	if(!istype(C))
 		return ..()
-	if (!istype(user, /mob/living/carbon/human))
+	if(!istype(user, /mob/living/carbon/human))
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!C.handcuffed)
@@ -29,11 +29,11 @@
 
 /obj/item/handcuffs/obj/structure/MouseDrop(var/mob/living/carbon/human/H)
 	var/mob/living/carbon/human/user = usr
-	if (!istype(user))
+	if(!istype(user))
 		return
-	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
+	if(user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
 		return
-	if (!istype(H))
+	if(!istype(H))
 		return
 
 	if(!do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -55,10 +55,10 @@
 	if(user.action_busy)
 		return
 
-	if (ishuman(target))
+	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 
-		if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
+		if(!H.has_limb_for_slot(WEAR_HANDCUFFS))
 			to_chat(user, SPAN_DANGER("\The [H] needs at least two wrists before you can cuff them together!"))
 			return
 
@@ -78,7 +78,7 @@
 					H.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
-	else if (ismonkey(target))
+	else if(ismonkey(target))
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
 		if(do_after(user, 30, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.handcuffed && Adjacent(user))
@@ -136,7 +136,7 @@
 	..()
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
-		if (R.use(1))
+		if(R.use(1))
 			var/obj/item/weapon/melee/wirerod/W = new /obj/item/weapon/melee/wirerod
 
 			user.put_in_hands(W)
@@ -155,9 +155,9 @@
 		playsound(src.loc, cuff_sound, 25, 1, 4)
 		user.visible_message(SPAN_DANGER("<B>[user] is trying to put handcuffs on [C]!</B>"))
 
-		if (ishuman(C))
+		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
+			if(!H.has_limb_for_slot(WEAR_HANDCUFFS))
 				to_chat(user, SPAN_DANGER("\The [H] needs at least two wrists before you can cuff them together!"))
 				return
 

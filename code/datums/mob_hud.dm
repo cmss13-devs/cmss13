@@ -230,7 +230,7 @@ var/list/datum/mob_hud/huds = list(
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection))
+		else if(istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src)
 
 
@@ -281,7 +281,7 @@ var/list/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 	holder.overlays.Cut()
 	var/total_shield_hp
-	for (var/datum/xeno_shield/XS in xeno_shields)
+	for(var/datum/xeno_shield/XS in xeno_shields)
 		total_shield_hp += XS.amount
 
 	var/percentage_shield = round(100*XENO_SHIELD_HUD_SCALE_FACTOR*total_shield_hp/maxHealth, 10)
@@ -516,7 +516,7 @@ var/list/datum/mob_hud/huds = list(
 				has_recovery_aura = TRUE
 				has_warding_aura = TRUE
 
-		if (has_frenzy_aura)
+		if(has_frenzy_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
 		if(has_recovery_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
@@ -530,10 +530,10 @@ var/list/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
+	if(stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
-		if (Q && Q.observed_xeno == src)
+		if(Q && Q.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
@@ -541,19 +541,19 @@ var/list/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[XENO_BANISHED_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && banished)
+	if(stat != DEAD && banished)
 		holder.icon_state = "xeno_banished"
 	hud_list[XENO_BANISHED_HUD] = holder
 
 /mob/living/carbon/Xenomorph/proc/hud_update()
 	var/image/holder = hud_list[XENO_STATUS_HUD]
 	holder.overlays.Cut()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		return
-	if (IS_XENO_LEADER(src))
+	if(IS_XENO_LEADER(src))
 		var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
 		holder.overlays += I
-	if (age)
+	if(age)
 		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
 		holder.overlays += J
 	if(hive && hivenumber != XENO_HIVE_NORMAL)
@@ -749,35 +749,35 @@ var/global/image/hud_icon_hudfocus
 
 	var/acid_found = FALSE
 	var/acid_count = 0
-	for (var/datum/effects/prae_acid_stacks/PAS in effects_list)
-		if (!QDELETED(PAS))
+	for(var/datum/effects/prae_acid_stacks/PAS in effects_list)
+		if(!QDELETED(PAS))
 			acid_count = PAS.stack_count
 			acid_found = TRUE
 			break
 
-	if (acid_found && acid_count > 0)
+	if(acid_found && acid_count > 0)
 		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")
 
 	var/slow_found = FALSE
-	for (var/datum/effects/xeno_slow/XS in effects_list)
-		if (!QDELETED(XS))
+	for(var/datum/effects/xeno_slow/XS in effects_list)
+		if(!QDELETED(XS))
 			slow_found = TRUE
 			break
 
-	if (slow_found)
+	if(slow_found)
 		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
 
 	var/tag_found = FALSE
-	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!QDELETED(DT))
+	for(var/datum/effects/dancer_tag/DT in effects_list)
+		if(!QDELETED(DT))
 			tag_found = TRUE
 			break
 
-	if (tag_found)
+	if(tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
 
 	// Hacky, but works. Currently effects are hard to make with precise timings
 	var/freeze_found = frozen
 
-	if (freeze_found)
+	if(freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

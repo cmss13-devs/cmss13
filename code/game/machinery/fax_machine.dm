@@ -47,7 +47,7 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 
@@ -143,7 +143,7 @@ var/list/alldepartments = list()
 				tofax = null
 
 	if(href_list["scan"])
-		if (scan)
+		if(scan)
 			if(ishuman(usr))
 				scan.forceMove(usr.loc)
 				if(!usr.get_active_hand())
@@ -154,7 +154,7 @@ var/list/alldepartments = list()
 				scan = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id))
+			if(istype(I, /obj/item/card/id))
 				usr.drop_inv_item_to_loc(I, src)
 				scan = I
 		authenticated = 0
@@ -165,8 +165,8 @@ var/list/alldepartments = list()
 		if(!dpt) dpt = lastdpt
 
 	if(href_list["auth"])
-		if ( (!( authenticated ) && (scan)) )
-			if (check_access(scan))
+		if( (!( authenticated ) && (scan)) )
+			if(check_access(scan))
 				authenticated = 1
 
 	if(href_list["logout"])

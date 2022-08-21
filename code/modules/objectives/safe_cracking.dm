@@ -49,6 +49,6 @@
 /datum/cm_objective/crack_safe/proc/on_safe_open(var/obj/structure/safe)
 	SIGNAL_HANDLER
 
-	if (state != OBJECTIVE_COMPLETE)
+	if(state != OBJECTIVE_COMPLETE)
 		UnregisterSignal(safe, COMSIG_SAFE_OPENED)
 		complete()

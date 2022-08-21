@@ -92,7 +92,7 @@
 				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
 				dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
 			else
@@ -101,7 +101,7 @@
 				return FALSE
 
 		if(STATE_DELMESSAGE)
-			if (currmsg)
+			if(currmsg)
 				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
@@ -258,7 +258,7 @@
 
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
-			if (!currmsg)
+			if(!currmsg)
 				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
 				else 							state = STATE_MESSAGELIST
 

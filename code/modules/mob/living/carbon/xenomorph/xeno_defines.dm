@@ -356,20 +356,20 @@
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
-	if (!living_xeno_queen)
+	if(!living_xeno_queen)
 		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
 	else
 		queen_leader_limit = 4 + mutators.leader_count_boost
 
-	if (xeno_leader_list.len > queen_leader_limit)
+	if(xeno_leader_list.len > queen_leader_limit)
 		var/diff = 0
-		for (var/i in queen_leader_limit + 1 to xeno_leader_list.len)
+		for(var/i in queen_leader_limit + 1 to xeno_leader_list.len)
 			if(!open_xeno_leader_positions.Remove(i))
 				remove_hive_leader(xeno_leader_list[i])
 			diff++
 		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
-	else if (xeno_leader_list.len < queen_leader_limit)
-		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
+	else if(xeno_leader_list.len < queen_leader_limit)
+		for(var/i in xeno_leader_list.len + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
 
@@ -413,8 +413,8 @@
 		xeno.hud_update() // To remove leader star
 
 	// Need to maintain ascending order of open_xeno_leader_positions
-	for (var/i in 1 to queen_leader_limit)
-		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
+	for(var/i in 1 to queen_leader_limit)
+		if(i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 

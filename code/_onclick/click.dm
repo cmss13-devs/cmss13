@@ -18,7 +18,7 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+	if(control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
@@ -27,30 +27,30 @@
 	if(!client)
 		return
 	// No clicking on atoms with the NOINTERACT flag
-	if ((A.flags_atom & NOINTERACT))
-		if (istype(A, /obj/screen/click_catcher))
+	if((A.flags_atom & NOINTERACT))
+		if(istype(A, /obj/screen/click_catcher))
 			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
-			if (TU)
+			if(TU)
 				params += ";click_catcher=1"
 				do_click(TU, location, params)
 		return
 
-	if (world.time < next_click)
+	if(world.time < next_click)
 		return
 
 
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
 
-	if (!clicked_something)
+	if(!clicked_something)
 		clicked_something = list("" = null)
 
-	for (var/mod in mods)
+	for(var/mod in mods)
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if (mods["drag"])
+	if(mods["drag"])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -59,8 +59,8 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if (client.buildmode)
-		if (istype(A, /obj/effect/bmode) || istype(A, /obj/effect/buildholder))
+	if(client.buildmode)
+		if(istype(A, /obj/effect/bmode) || istype(A, /obj/effect/buildholder))
 			A.clicked(src, mods)
 			return
 
@@ -72,23 +72,23 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) | A.clicked(src, mods, location, params))
+	if(click(A, mods) | A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
 
-	if (is_mob_incapacitated(TRUE))
+	if(is_mob_incapacitated(TRUE))
 		return
 
 	face_atom(A)
 
 	// Special type of click.
-	if (is_mob_restrained())
+	if(is_mob_restrained())
 		RestrainedClickOn(A)
 		return
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
-	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /obj/screen))
+	if(throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /obj/screen))
 		throw_item(A)
 		return
 
@@ -99,22 +99,22 @@
 	var/obj/item/W = get_active_hand()
 
 	// Special gun mode stuff.
-	if (W == A)
+	if(W == A)
 		mode()
 		return
 
 	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
-		if (world.time % 3)
+	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+		if(world.time % 3)
 			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 		return
 
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
-	if (!isturf(loc))
+	if(!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src)	// Attack click cooldown check
+	if(world.time <= next_move && A.loc != src)	// Attack click cooldown check
 		return
 
 	next_move = world.time
@@ -168,12 +168,12 @@
 	return FALSE
 
 /atom/proc/clicked(var/mob/user, var/list/mods)
-	if (mods["shift"] && !mods["middle"])
+	if(mods["shift"] && !mods["middle"])
 		if(can_examine(user))
 			examine(user)
 		return TRUE
 
-	if (mods["alt"])
+	if(mods["alt"])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && T.contents.len)
 			user.listed_turf = T
@@ -183,11 +183,11 @@
 	return FALSE
 
 /atom/movable/clicked(var/mob/user, var/list/mods)
-	if (..())
+	if(..())
 		return TRUE
 
-	if (mods["ctrl"])
-		if (Adjacent(user))
+	if(mods["ctrl"])
+		if(Adjacent(user))
 			user.start_pulling(src)
 		return TRUE
 	return FALSE

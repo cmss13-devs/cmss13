@@ -78,9 +78,9 @@
 		update_icon()
 		return 1
 
-	if (istype(O, /obj/item/tool/weldingtool))
+	if(istype(O, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = O
-		if (WT.remove_fuel(0))
+		if(WT.remove_fuel(0))
 			if(health < maxHealth)
 				health += pick(1,1,1,2,2,3)
 				if(health > maxHealth)
@@ -94,7 +94,7 @@
 			to_chat(user, "Need more welding fuel!")
 			return
 	else if(istype(O, /obj/item/card/id))
-		if (!mmi)
+		if(!mmi)
 			to_chat(user, SPAN_DANGER("There's no reason to swipe your ID - the spiderbot has no brain to remove."))
 			return 0
 
@@ -118,16 +118,16 @@
 	else
 		if(O.force)
 			var/damage = O.force
-			if (O.damtype == HALLOSS)
+			if(O.damtype == HALLOSS)
 				damage = 0
 			apply_damage(damage, BRUTE)
 			for(var/mob/M in viewers(src, null))
-				if ((M.client && !( M.blinded )))
+				if((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))
 		else
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M in viewers(src, null))
-				if ((M.client && !( M.blinded )))
+				if((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with the [O]. "))
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
@@ -140,7 +140,7 @@
 
 /mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
 	for(var/mob/M in viewers(src, null))
-		if ((M.client && !( M.blinded )))
+		if((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."))
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()

@@ -16,7 +16,7 @@
 	if(hull)
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
@@ -112,7 +112,7 @@
 //vv OK, we weren't performing a valid deconstruction step or igniting thermite,let's check the other possibilities vv
 
 	//DRILLING
-	if (istype(W, /obj/item/tool/pickaxe/diamonddrill))
+	if(istype(W, /obj/item/tool/pickaxe/diamonddrill))
 
 		to_chat(user, SPAN_NOTICE("You begin to drill though the wall."))
 

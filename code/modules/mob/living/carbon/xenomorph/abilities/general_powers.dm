@@ -41,7 +41,7 @@
 		to_convert = N.children.Copy()
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
-	if (W && W.weed_strength >= WEED_LEVEL_HIVE)
+	if(W && W.weed_strength >= WEED_LEVEL_HIVE)
 		to_chat(X, SPAN_WARNING("These weeds are too strong to plant a node on!"))
 		return
 
@@ -50,7 +50,7 @@
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
@@ -384,29 +384,29 @@
 	if(isXenoRavager(X))
 		X.emote("roar")
 
-	if (!tracks_target)
+	if(!tracks_target)
 		A = get_turf(A)
 
 	apply_cooldown()
 
-	if (windup)
+	if(windup)
 		X.set_face_dir(get_cardinal_dir(X, A))
-		if (!windup_interruptable)
+		if(!windup_interruptable)
 			X.frozen = TRUE
 			X.anchored = TRUE
 			X.update_canmove()
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
-			if (!windup_interruptable)
+			if(!windup_interruptable)
 				X.frozen = FALSE
 				X.anchored = FALSE
 				X.update_canmove()
 			post_windup_effects(interrupted = TRUE)
 			return
 
-		if (!windup_interruptable)
+		if(!windup_interruptable)
 			X.frozen = FALSE
 			X.anchored = FALSE
 			X.update_canmove()
@@ -453,13 +453,13 @@
 	if(!X.check_state() || X.action_busy)
 		return
 
-	if (activation_delay)
+	if(activation_delay)
 		if(!do_after(X, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENOWARNING("You decide to cancel your acid spray."))
 			end_cooldown()
 			return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	apply_cooldown()
@@ -473,10 +473,10 @@
 	apply_cooldown()
 
 	// Build our list of target turfs based on
-	if (spray_type == ACID_SPRAY_LINE)
+	if(spray_type == ACID_SPRAY_LINE)
 		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
 
-	else if (spray_type == ACID_SPRAY_CONE)
+	else if(spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
 
 	..()
@@ -500,9 +500,9 @@
 	if(!X.check_state())
 		return
 
-	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))
+	if(istype(X, /mob/living/carbon/Xenomorph/Burrower))
 		var/mob/living/carbon/Xenomorph/Burrower/B = X
-		if (B.burrow)
+		if(B.burrow)
 			return
 
 	if(!X.check_plasma(plasma_cost))
@@ -622,7 +622,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	if (QDELETED(T))
+	if(QDELETED(T))
 		to_chat(X, SPAN_WARNING("You cannot build here!"))
 		qdel(structure_template)
 		return FALSE
@@ -721,7 +721,7 @@
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
+	if(!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
 		return FALSE
 
 	var/turf/T = get_turf(A)
@@ -730,7 +730,7 @@
 		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
 		return FALSE
 
-	if (!check_plasma_owner())
+	if(!check_plasma_owner())
 		return FALSE
 
 	if(T.z != X.z)
@@ -738,20 +738,20 @@
 		return FALSE
 
 	var/atom/bombard_source = get_bombard_source()
-	if (!X.can_bombard_turf(T, range, bombard_source))
+	if(!X.can_bombard_turf(T, range, bombard_source))
 		return FALSE
 
 	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
-	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
+	if(!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
 		return FALSE
 
-	if (!X.can_bombard_turf(T, range, bombard_source)) //Second check in case something changed during the do_after.
+	if(!X.can_bombard_turf(T, range, bombard_source)) //Second check in case something changed during the do_after.
 		return FALSE
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return FALSE
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
@@ -809,7 +809,7 @@
 	var/turf/current = bombard_source.loc
 	var/turf/target_turf = get_turf(target)
 
-	if (get_dist_sqrd(current, target_turf) > (range*range))
+	if(get_dist_sqrd(current, target_turf) > (range*range))
 		to_chat(src, SPAN_XENODANGER("That is too far away!"))
 		return
 

@@ -12,7 +12,7 @@
 
 
 /obj/item/circuitboard/airlock/attack_self(mob/user as mob)
-	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
+	if(!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
 	var/mob/living/carbon/human/H = user
@@ -22,10 +22,10 @@
 	var/t1
 
 
-	if (last_configurator)
+	if(last_configurator)
 		t1 += "Operator: [last_configurator]<br>"
 
-	if (locked)
+	if(locked)
 		t1 += "<a href='?src=\ref[src];login=1'>Swipe ID</a><hr>"
 	else
 		t1 += "<a href='?src=\ref[src];logout=1'>Block</a><hr>"
@@ -38,10 +38,10 @@
 		t1 += "<br>"
 
 		var/list/accesses = get_all_accesses()
-		for (var/acc in accesses)
+		for(var/acc in accesses)
 			var/aname = get_access_desc(acc)
 
-			if (!conf_access || !conf_access.len || !(acc in conf_access))
+			if(!conf_access || !conf_access.len || !(acc in conf_access))
 				t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
 			else if(one_access)
 				t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
@@ -56,51 +56,51 @@
 
 /obj/item/circuitboard/airlock/Topic(href, href_list)
 	..()
-	if (usr.stat || usr.is_mob_restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
+	if(usr.stat || usr.is_mob_restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 		return
-	if (href_list["close"])
+	if(href_list["close"])
 		close_browser(usr, "airlock")
 		return
 
-	if (href_list["login"])
+	if(href_list["login"])
 		if(istype(usr,/mob/living/silicon))
 			src.locked = 0
 			src.last_configurator = usr.name
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if (I && src.check_access(I))
+			if(I && src.check_access(I))
 				src.locked = 0
 				src.last_configurator = I:registered_name
 
-	if (locked)
+	if(locked)
 		return
 
-	if (href_list["logout"])
+	if(href_list["logout"])
 		locked = 1
 
-	if (href_list["one_access"])
+	if(href_list["one_access"])
 		one_access = !one_access
 
-	if (href_list["access"])
+	if(href_list["access"])
 		toggle_access(href_list["access"])
 
 	attack_self(usr)
 
 
 /obj/item/circuitboard/airlock/proc/toggle_access(var/acc)
-	if (acc == "all")
+	if(acc == "all")
 		conf_access = null
 	else
 		var/req = text2num(acc)
 
-		if (conf_access == null)
+		if(conf_access == null)
 			conf_access = list()
 
-		if (!(req in conf_access))
+		if(!(req in conf_access))
 			conf_access += req
 		else
 			conf_access -= req
-			if (!conf_access.len)
+			if(!conf_access.len)
 				conf_access = null
 
 

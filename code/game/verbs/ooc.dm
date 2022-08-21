@@ -159,7 +159,7 @@
 		if(!M.client)
 			continue
 		var/client/C = M.client
-		if (C.admin_holder && (C.admin_holder.rights & R_MOD))
+		if(C.admin_holder && (C.admin_holder.rights & R_MOD))
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
@@ -180,7 +180,7 @@
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
 			var/prefix = "(R)LOOC"
-			if (C.mob in heard)
+			if(C.mob in heard)
 				prefix = "LOOC"
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 	usr.talked = 1

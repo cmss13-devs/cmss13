@@ -49,7 +49,7 @@
 		to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
 		return
 
-	if (X.observed_xeno != T)
+	if(X.observed_xeno != T)
 		return
 
 	var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_type] to [newcaste]?", , "Yes", "No")
@@ -61,7 +61,7 @@
 		to_chat(X, SPAN_XENOWARNING("You must provide a reason for deevolving [T]."))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	to_chat(T, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
@@ -467,7 +467,7 @@
 			to_chat(X, SPAN_XENOWARNING("There's stronger weeds here already!"))
 			return
 
-		if (!check_and_use_plasma_owner(node_plant_plasma_cost))
+		if(!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
 		to_chat(X, SPAN_XENONOTICE("You plant a node at [T]."))
@@ -496,7 +496,7 @@
 		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	new /obj/effect/alien/weeds(T, node)

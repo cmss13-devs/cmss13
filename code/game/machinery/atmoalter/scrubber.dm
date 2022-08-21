@@ -14,7 +14,7 @@
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
@@ -87,7 +87,7 @@
 	//doesn't use power cells
 	if(istype(I, /obj/item/cell))
 		return
-	if (HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		return
 
 	//doesn't hold tanks

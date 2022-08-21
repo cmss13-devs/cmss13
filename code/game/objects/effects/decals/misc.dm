@@ -14,7 +14,7 @@
 
 /obj/effect/decal/chempuff/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
 /obj/effect/decal/chempuff/proc/move_towards(atom/A, move_delay = 3, tiles_left = 1)
@@ -69,7 +69,7 @@
 
 /obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)

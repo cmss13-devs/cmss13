@@ -113,7 +113,7 @@ explosion resistance exactly as much as their health
 						Controller.explosion_damage()
 				return
 
-		else if (istype(A, /obj/structure/ladder)) //check for ladders
+		else if(istype(A, /obj/structure/ladder)) //check for ladders
 			L = A
 
 	Controller.explosion_turfs[src] = power  //recording the power applied
@@ -140,14 +140,14 @@ explosion resistance exactly as much as their health
 				var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
 
 				switch(angle) //this reduces power when the explosion is going around corners
-					if (0)
+					if(0)
 						//no change
-					if (45)
+					if(45)
 						if(spread_power >= 0)
 							spread_power *= 0.75
 						else
 							spread_power *= 1.25
-					if (90)
+					if(90)
 						if(spread_power >= 0)
 							spread_power *= 0.50
 						else
@@ -161,7 +161,7 @@ explosion resistance exactly as much as their health
 				else
 					spread_power -= Controller.falloff * 1.414 //diagonal spreading
 
-			if (spread_power <= Controller.minimum_spread_power)
+			if(spread_power <= Controller.minimum_spread_power)
 				continue
 
 			var/turf/T = get_step(src, spread_direction)
@@ -187,7 +187,7 @@ explosion resistance exactly as much as their health
 				else
 					ladder_spread_power = power*1.5 - Controller.falloff
 
-			if (ladder_spread_power > Controller.minimum_spread_power)
+			if(ladder_spread_power > Controller.minimum_spread_power)
 				if(L.up)
 					var/turf/T_up = get_turf(L.up)
 					if(T_up)
@@ -226,7 +226,7 @@ explosion resistance exactly as much as their health
 		if(!T) continue
 
 		var/severity = explosion_turfs[T] + damage_addon
-		if (severity <= 0)
+		if(severity <= 0)
 			continue
 		var/direction = explosion_turf_directions[T]
 

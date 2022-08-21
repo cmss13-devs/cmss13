@@ -5,74 +5,74 @@
 
 /proc/get_gender_name(gender)
 	var/g = "m"
-	if (gender == FEMALE)
+	if(gender == FEMALE)
 		g = "f"
 	return g
 
 /proc/get_limb_icon_name(var/datum/species/S, var/body_type, var/gender, var/limb_name, var/ethnicity)
 	if(S.uses_ethnicity)
 		switch(limb_name)
-			if ("torso")
+			if("torso")
 				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
 
-			if ("chest")
+			if("chest")
 				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
 
-			if ("head")
+			if("head")
 				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
 
-			if ("groin")
+			if("groin")
 				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
 
 			if("synthetic head")
 				return "head_[get_gender_name(gender)]"
 
-			if ("r_arm")
+			if("r_arm")
 				return "[ethnicity]_right_arm"
 
-			if ("right arm")
+			if("right arm")
 				return "[ethnicity]_right_arm"
 
-			if ("l_arm")
+			if("l_arm")
 				return "[ethnicity]_left_arm"
 
-			if ("left arm")
+			if("left arm")
 				return "[ethnicity]_left_arm"
 
-			if ("r_leg")
+			if("r_leg")
 				return "[ethnicity]_right_leg"
 
-			if ("right leg")
+			if("right leg")
 				return "[ethnicity]_right_leg"
 
-			if ("l_leg")
+			if("l_leg")
 				return "[ethnicity]_left_leg"
 
-			if ("left leg")
+			if("left leg")
 				return "[ethnicity]_left_leg"
 
-			if ("r_hand")
+			if("r_hand")
 				return "[ethnicity]_right_hand"
 
-			if ("right hand")
+			if("right hand")
 				return "[ethnicity]_right_hand"
 
-			if ("l_hand")
+			if("l_hand")
 				return "[ethnicity]_left_hand"
 
-			if ("left hand")
+			if("left hand")
 				return "[ethnicity]_left_hand"
 
-			if ("r_foot")
+			if("r_foot")
 				return "[ethnicity]_right_foot"
 
-			if ("right foot")
+			if("right foot")
 				return "[ethnicity]_right_foot"
 
-			if ("l_foot")
+			if("l_foot")
 				return "[ethnicity]_left_foot"
 
-			if ("left foot")
+			if("left foot")
 				return "[ethnicity]_left_foot"
 
 			else
@@ -80,67 +80,67 @@
 				return null
 	else
 		switch(limb_name)
-			if ("torso")
+			if("torso")
 				return "[limb_name]_[get_gender_name(gender)]"
 
-			if ("chest")
+			if("chest")
 				return "[limb_name]_[get_gender_name(gender)]"
 
-			if ("head")
+			if("head")
 				return "[limb_name]_[get_gender_name(gender)]"
 
-			if ("groin")
+			if("groin")
 				return "[limb_name]_[get_gender_name(gender)]"
 
 			if("synthetic head")
 				return "head_[get_gender_name(gender)]"
 
-			if ("r_arm")
+			if("r_arm")
 				return "[limb_name]"
 
-			if ("right arm")
+			if("right arm")
 				return "r_arm"
 
-			if ("l_arm")
+			if("l_arm")
 				return "[limb_name]"
 
-			if ("left arm")
+			if("left arm")
 				return "l_arm"
 
-			if ("r_leg")
+			if("r_leg")
 				return "[limb_name]"
 
-			if ("right leg")
+			if("right leg")
 				return "r_leg"
 
-			if ("l_leg")
+			if("l_leg")
 				return "[limb_name]"
 
-			if ("left leg")
+			if("left leg")
 				return "l_leg"
 
-			if ("r_hand")
+			if("r_hand")
 				return "[limb_name]"
 
-			if ("right hand")
+			if("right hand")
 				return "r_hand"
 
-			if ("l_hand")
+			if("l_hand")
 				return "[limb_name]"
 
-			if ("left hand")
+			if("left hand")
 				return "l_hand"
 
-			if ("r_foot")
+			if("r_foot")
 				return "[limb_name]"
 
-			if ("right foot")
+			if("right foot")
 				return "r_foot"
 
-			if ("l_foot")
+			if("l_foot")
 				return "[limb_name]"
 
-			if ("left foot")
+			if("left foot")
 				return "l_foot"
 			else
 				message_admins("DEBUG: Something called get_limb_icon_name() incorrectly, they use the name [limb_name]")
@@ -153,12 +153,12 @@
 	var/e_icon
 	var/b_icon
 
-	if (!E)
+	if(!E)
 		e_icon = "western"
 	else
 		e_icon = E.icon_name
 
-	if (!B)
+	if(!B)
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name
@@ -205,12 +205,12 @@
 /mob/living/carbon/human/is_mob_restrained(var/check_grab = 1)
 	if(check_grab && pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE)
 		return 1
-	if (handcuffed)
+	if(handcuffed)
 		return 1
-	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
+	if(istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 		return 1
 
-	if (HAS_TRAIT(src, TRAIT_NESTED))
+	if(HAS_TRAIT(src, TRAIT_NESTED))
 		return TRUE
 
 	return 0
@@ -365,12 +365,12 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/is_tethering()
-	for (var/datum/effects/tethering/TR in effects_list)
+	for(var/datum/effects/tethering/TR in effects_list)
 		return TRUE
 	return FALSE
 
 /mob/living/carbon/human/proc/is_tethered()
-	for (var/datum/effects/tethered/TD in effects_list)
+	for(var/datum/effects/tethered/TD in effects_list)
 		return TRUE
 	return FALSE
 

@@ -44,14 +44,14 @@
 /obj/structure/bookcase/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
+			if(prob(50))
 				for(var/obj/item/book/b in contents)
 					b.forceMove((get_turf(src)))
 				qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.forceMove((get_turf(src)))
+				if(prob(50)) b.forceMove((get_turf(src)))
 				else qdel(b)
 			qdel(src)
 			return

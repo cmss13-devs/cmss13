@@ -120,7 +120,7 @@
 	var/atom/k
 	var/j
 
-	if (dir == SOUTH)
+	if(dir == SOUTH)
 		T = locate(x, y+2, z)
 		for(j in tiles_with)
 			if(istype(T, j))
@@ -141,7 +141,7 @@
 					k.relativewall()
 					break
 
-	else if (dir == EAST)
+	else if(dir == EAST)
 		T = locate(x+2, y, z)
 		for(j in tiles_with)
 			if(istype(T, j))

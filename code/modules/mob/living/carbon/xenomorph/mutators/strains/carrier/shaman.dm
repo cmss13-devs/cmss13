@@ -40,7 +40,7 @@
 
 /datum/xeno_mutator/shaman/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (!.)
+	if(!.)
 		return .
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
 	if(!istype(C))

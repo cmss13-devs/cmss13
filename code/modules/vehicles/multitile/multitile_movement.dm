@@ -257,10 +257,10 @@
 	var/fling_distance = Ceiling(move_momentum/move_max_momentum) * 2
 	var/turf/target = interior.get_middle_turf()
 
-	for (var/x in 0 to fling_distance-1)
+	for(var/x in 0 to fling_distance-1)
 		// NOTE: We fling east/west because all interiors are front-facing east
 		target = get_step(target, move_momentum > 0 ? EAST : WEST)
-		if (!target)
+		if(!target)
 			break
 
 	var/list/bounds = interior.get_bound_turfs()

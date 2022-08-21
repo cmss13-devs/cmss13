@@ -32,7 +32,7 @@
 
 /obj/structure/machinery/door_display/proc/get_targets()
 	for(var/obj/structure/machinery/door/D in machines)
-		if (D.id == id)
+		if(D.id == id)
 			targets += D
 
 	if(targets.len == 0)
@@ -95,7 +95,7 @@
 	data += " <b> [id]</b><br/>"
 
 	// Open/Close Door
-	if (open)
+	if(open)
 		data += "<a href='?src=\ref[src];open=0'>Close Door</a><br/>"
 	else
 		data += "<a href='?src=\ref[src];open=1'>Open Door</a><br/>"
@@ -122,7 +122,7 @@
 	if(href_list["open"])
 		open = text2num(href_list["open"])
 
-		if (open)
+		if(open)
 			open_door()
 		else
 			close_door()
@@ -138,15 +138,15 @@
 // if NOPOWER, display blank
 // if BROKEN, display blue screen of death icon AI uses
 /obj/structure/machinery/door_display/update_icon()
-	if (stat & (NOPOWER))
+	if(stat & (NOPOWER))
 		icon_state = "frame"
 		return
-	if (stat & (BROKEN))
+	if(stat & (BROKEN))
 		set_picture("ai_bsod")
 		return
 
 	var/display
-	if (open)
+	if(open)
 		display = "OPEN"
 	else
 		display = "CLOSED"

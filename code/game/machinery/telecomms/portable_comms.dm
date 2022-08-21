@@ -33,7 +33,7 @@
 
 /obj/structure/machinery/constructable_frame/porta_comms/attackby(obj/item/I, mob/user)
 	var/area/A = get_area(src)
-	if (!A.can_build_special)
+	if(!A.can_build_special)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
 	if(istype(I, /obj/item/circuitboard/machine) && !istype(I, /obj/item/circuitboard/machine/telecomms/relay/tower))

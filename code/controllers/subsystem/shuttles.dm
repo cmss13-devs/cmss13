@@ -236,15 +236,15 @@ SUBSYSTEM_DEF(shuttle)
 	return new_transit_dock
 
 /datum/controller/subsystem/shuttle/Recover()
-	if (istype(SSshuttle.mobile))
+	if(istype(SSshuttle.mobile))
 		mobile = SSshuttle.mobile
-	if (istype(SSshuttle.stationary))
+	if(istype(SSshuttle.stationary))
 		stationary = SSshuttle.stationary
-	if (istype(SSshuttle.transit))
+	if(istype(SSshuttle.transit))
 		transit = SSshuttle.transit
-	if (istype(SSshuttle.transit_requesters))
+	if(istype(SSshuttle.transit_requesters))
 		transit_requesters = SSshuttle.transit_requesters
-	if (istype(SSshuttle.transit_request_failures))
+	if(istype(SSshuttle.transit_request_failures))
 		transit_request_failures = SSshuttle.transit_request_failures
 
 	lockdown = SSshuttle.lockdown
@@ -528,13 +528,13 @@ SUBSYSTEM_DEF(shuttle)
 		L["id"] = M.id
 		L["timer"] = M.timer
 		L["timeleft"] = M.getTimerStr()
-		if (timeleft > 1 HOURS)
+		if(timeleft > 1 HOURS)
 			L["timeleft"] = "Infinity"
 		L["can_fast_travel"] = M.timer && timeleft >= 50
 		L["can_fly"] = TRUE
 		if(!M.destination)
 			L["can_fast_travel"] = FALSE
-		if (M.mode != SHUTTLE_IDLE)
+		if(M.mode != SHUTTLE_IDLE)
 			L["mode"] = capitalize(M.mode)
 		L["status"] = M.getDbgStatusText()
 		if(M == existing_shuttle)

@@ -1,19 +1,19 @@
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X) || !X.check_state())
+	if(!istype(X) || !X.check_state())
 		return
 
-	if (!activated_once && !action_cooldown_check())
+	if(!activated_once && !action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if (!activated_once)
+	if(!activated_once)
 		// Start our 'charging'
 
-		if (!check_and_use_plasma_owner())
+		if(!check_and_use_plasma_owner())
 			return
 
 		X.create_empower()
@@ -29,7 +29,7 @@
 		var/range = base_range + stacks*range_per_stack
 		var/damage = base_damage + stacks*damage_per_stack
 		var/turfs_visited = 0
-		for (var/turf/T in getline2(get_turf(X), A))
+		for(var/turf/T in getline2(get_turf(X), A))
 			if(T.density || T.opacity)
 				break
 
@@ -44,10 +44,10 @@
 					should_stop = TRUE
 					break
 
-			if (should_stop)
+			if(should_stop)
 				break
 
-			if (turfs_visited >= range)
+			if(turfs_visited >= range)
 				break
 
 			turfs_visited++
@@ -59,14 +59,14 @@
 
 /datum/action/xeno_action/activable/acid_lance/proc/stack()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!activated_once)
+	if(!activated_once)
 		return
 
 	stacks = min(max_stacks, stacks + 1)
-	if (stacks != max_stacks)
+	if(stacks != max_stacks)
 		X.speed_modifier += movespeed_per_stack
 		movespeed_nerf_applied += movespeed_per_stack
 		X.recalculate_speed()
@@ -79,13 +79,13 @@
 /datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (stacks <= 0)
+	if(stacks <= 0)
 		return
 
-	if (message)
+	if(message)
 		to_chat(X, SPAN_XENODANGER(message))
 
 	stacks = 0
@@ -94,7 +94,7 @@
 	X.recalculate_speed()
 
 /datum/action/xeno_action/activable/acid_lance/proc/timeout()
-	if (activated_once)
+	if(activated_once)
 		activated_once = FALSE
 		remove_stack_effects("You have waited too long and can no longer use your acid lance!")
 
@@ -103,15 +103,15 @@
 	return (activated_once || ..())
 
 /datum/action/xeno_action/onclick/dump_acid/use_ability(atom/A)
-	if (!isXeno(owner))
+	if(!isXeno(owner))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
 	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
@@ -121,9 +121,9 @@
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
 
-	for (var/action_type in action_types_to_cd)
+	for(var/action_type in action_types_to_cd)
 		var/datum/action/xeno_action/XA = get_xeno_action_by_type(X, action_type)
-		if (!istype(XA))
+		if(!istype(XA))
 			continue
 
 		XA.apply_cooldown_override(cooldown_duration)
@@ -133,7 +133,7 @@
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (isXeno(owner))
+	if(isXeno(owner))
 		var/mob/living/carbon/Xenomorph/X = owner
 		X.speed_modifier += speed_buff_amount
 		X.recalculate_speed()
@@ -154,20 +154,20 @@
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!can_see(X, A, TRAPPER_VIEWRANGE))
+	if(!can_see(X, A, TRAPPER_VIEWRANGE))
 		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	// 5-long line of turfs orthogonal to the line between us and our target as precisely as we can figure it
@@ -183,16 +183,16 @@
 	target_turfs += get_step(right_turf, turn(dir_between, 90))
 
 
-	for (var/turf/T in target_turfs)
-		if (!istype(T) || T.density)
+	for(var/turf/T in target_turfs)
+		if(!istype(T) || T.density)
 			continue
 
 		var/trap_found = FALSE
-		for (var/obj/effect/alien/resin/boilertrap/BT in T)
+		for(var/obj/effect/alien/resin/boilertrap/BT in T)
 			trap_found = TRUE
 			break
 
-		if (trap_found)
+		if(trap_found)
 			continue
 
 		var/obj/effect/alien/resin/boilertrap/BT
@@ -220,13 +220,13 @@
 /datum/action/xeno_action/activable/acid_mine/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
@@ -236,7 +236,7 @@
 		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/turf/T = get_turf(A)
@@ -247,7 +247,7 @@
 	X.visible_message(SPAN_XENODANGER("[X] fires " + acid_bolt_message + " at [A]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [A]!"))
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", X, )
 
-	for (var/turf/targetTurf in orange(1, T))
+	for(var/turf/targetTurf in orange(1, T))
 		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(targetTurf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", X)
 
 	if(empowered)
@@ -260,10 +260,10 @@
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())

@@ -27,7 +27,7 @@
 	if(!user.melee_allowed)
 		return FALSE
 
-	if (user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
+	if(user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
 		return FALSE
 	return TRUE
 

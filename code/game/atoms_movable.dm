@@ -48,12 +48,12 @@
 	return
 
 /atom/movable/overlay/attackby(a, b)
-	if (src.master)
+	if(src.master)
 		return src.master.attackby(a, b)
 	return
 
 /atom/movable/overlay/attack_hand(a, b, c)
-	if (src.master)
+	if(src.master)
 		return src.master.attack_hand(a, b, c)
 	return
 
@@ -106,18 +106,18 @@
 /atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
 	set waitfor = 0
 
-	if (turn_delay < 1)
+	if(turn_delay < 1)
 		return
 
 	var/spin_degree = 90
 
-	if (!cardinal_only)
+	if(!cardinal_only)
 		spin_degree = 45
 
-	if (clockwise)
+	if(clockwise)
 		spin_degree *= -1
 
-	while (duration > turn_delay)
+	while(duration > turn_delay)
 		sleep(turn_delay)
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
@@ -125,20 +125,20 @@
 /atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
 	set waitfor = 0
 
-	if (num_circles < 1 || turn_delay < 1)
+	if(num_circles < 1 || turn_delay < 1)
 		return
 
 	var/spin_degree = 90
 	num_circles *= 4
 
-	if (!cardinal_only)
+	if(!cardinal_only)
 		spin_degree = 45
 		num_circles *= 2
 
-	if (clockwise)
+	if(clockwise)
 		spin_degree *= -1
 
-	for (var/x in 0 to num_circles -1)
+	for(var/x in 0 to num_circles -1)
 		sleep(turn_delay)
 		setDir(turn(dir, spin_degree))
 

@@ -30,8 +30,8 @@
 
 /obj/structure/machinery/power/monitor/interact(mob/user)
 
-	if ( (get_dist(src, user) > 1 ) || (inoperable()) )
-		if (!isRemoteControlling(user))
+	if( (get_dist(src, user) > 1 ) || (inoperable()) )
+		if(!isRemoteControlling(user))
 			user.unset_interaction()
 			close_browser(user, "powcomp")
 			return
@@ -92,7 +92,7 @@
 	if(stat & BROKEN)
 		icon_state = "broken"
 	else
-		if (stat & NOPOWER)
+		if(stat & NOPOWER)
 			spawn(rand(0, 15))
 				src.icon_state = "power0"
 		else
@@ -108,9 +108,9 @@
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
 			A.anchored = 1
-			for (var/obj/C in src)
+			for(var/obj/C in src)
 				C.forceMove(src.loc)
-			if (src.stat & BROKEN)
+			if(src.stat & BROKEN)
 				to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
 				new /obj/item/shard( src.loc )
 				A.state = 3

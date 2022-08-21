@@ -14,7 +14,7 @@
 		if(thermal_protection < 1)
 			temp_adj = (1 - thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR) //This will be negative
 
-	else if (loc_temp > bodytemperature) //Place is hotter than we are
+	else if(loc_temp > bodytemperature) //Place is hotter than we are
 		var/thermal_protection = get_flags_heat_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
 		if(thermal_protection < 1)
 			temp_adj = (1 - thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)

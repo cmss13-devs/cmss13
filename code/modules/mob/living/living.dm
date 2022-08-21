@@ -167,8 +167,8 @@
 	return
 
 /mob/living/Move(NewLoc, direct)
-	if (buckled && buckled.loc != NewLoc) //not updating position
-		if (!buckled.anchored)
+	if(buckled && buckled.loc != NewLoc) //not updating position
+		if(!buckled.anchored)
 			return buckled.Move(NewLoc, direct)
 		else
 			return FALSE
@@ -216,7 +216,7 @@
 	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
-	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
+	if(s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.storage_close(src)
 
 	// Check if we're still pulling something
@@ -251,11 +251,11 @@
 /mob/living/movement_delay()
 	. = ..()
 
-	if (do_bump_delay)
+	if(do_bump_delay)
 		. += 10
 		do_bump_delay = 0
 
-	if (drowsyness > 0)
+	if(drowsyness > 0)
 		. += 6
 
 	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
@@ -585,16 +585,16 @@
 				dat += "\n"
 
 	// Show red messages - broken bokes, etc
-	if (src.getCloneLoss())
+	if(src.getCloneLoss())
 		dat += "\t<span class='scanner'> *Subject appears to have been imperfectly cloned.</span>\n"
 	for(var/datum/disease/D in src.viruses)
 		if(!D.hidden[SCANNER])
 			dat += "\t<span class='scannerb'> *Warning: [D.form] Detected</span><span class='scanner'>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</span>\n"
-	if (src.getBrainLoss() >= 100 || !src.has_brain())
+	if(src.getBrainLoss() >= 100 || !src.has_brain())
 		dat += "\t<span class='scanner'> *Subject is <b>brain dead</b></span>.\n"
-	else if (src.getBrainLoss() >= 60)
+	else if(src.getBrainLoss() >= 60)
 		dat += "\t<span class='scanner'> *<b>Severe brain damage</b> detected. Subject likely to have mental retardation.</span>\n"
-	else if (src.getBrainLoss() >= 10)
+	else if(src.getBrainLoss() >= 10)
 		dat += "\t<span class='scanner'> *<b>Significant brain damage</b> detected. Subject may have had a concussion.</span>\n"
 
 	if(src.has_brain() && src.stat != DEAD && ishuman(src))
@@ -650,7 +650,7 @@
 	// Show body temp
 	dat += "\n\tBody Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)\n"
 
-	if (ishuman(src))
+	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		// Show blood level
 		var/blood_volume = BLOOD_VOLUME_NORMAL

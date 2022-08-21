@@ -47,7 +47,7 @@
 
 /obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER
 
 /obj/structure/mortar/get_projectile_hit_boolean(obj/item/projectile/P)

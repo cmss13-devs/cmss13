@@ -413,7 +413,7 @@ var/list/roundstart_mod_verbs = list(
 	if(mob.control_object)
 		if(!msg)
 			return
-		for (var/mob/V in hearers(mob.control_object))
+		for(var/mob/V in hearers(mob.control_object))
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
 
 
@@ -472,7 +472,7 @@ var/list/roundstart_mod_verbs = list(
 		M.f_style = new_fstyle
 
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female")
-	if (new_gender)
+	if(new_gender)
 		if(new_gender == "Male")
 			M.gender = MALE
 		else
@@ -486,7 +486,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_ATTACKLOGS
-	if (prefs.toggles_chat & CHAT_ATTACKLOGS)
+	if(prefs.toggles_chat & CHAT_ATTACKLOGS)
 		to_chat(usr, SPAN_BOLDNOTICE("You will now get attack log messages."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get attack log messages."))
@@ -497,7 +497,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_FFATTACKLOGS
-	if (prefs.toggles_chat & CHAT_FFATTACKLOGS)
+	if(prefs.toggles_chat & CHAT_FFATTACKLOGS)
 		to_chat(usr, SPAN_BOLDNOTICE("You will now get friendly fire attack log messages."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get friendly fire attack log messages."))

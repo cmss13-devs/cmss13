@@ -5,17 +5,17 @@
 	set category = "Object"
 	set src = usr
 
-	if (usr.is_mob_incapacitated())
+	if(usr.is_mob_incapacitated())
 		return
 
 	if(hand)
 		var/obj/item/W = l_hand
-		if (W)
+		if(W)
 			W.attack_self(src)
 			update_inv_l_hand()
 	else
 		var/obj/item/W = r_hand
-		if (W)
+		if(W)
 			W.attack_self(src)
 			update_inv_r_hand()
 	if(next_move < world.time)
@@ -63,7 +63,7 @@
 		return 0
 
 	var/tile = get_turf(A)
-	if (!tile)
+	if(!tile)
 		return 0
 
 	if(recently_pointed_to > world.time)
@@ -110,13 +110,13 @@
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 
-	if (!CONFIG_GET(flag/respawn) && !is_admin)
+	if(!CONFIG_GET(flag/respawn) && !is_admin)
 		to_chat(usr, SPAN_NOTICE(" Respawn is disabled."))
 		return
-	if (stat != 2)
+	if(stat != 2)
 		to_chat(usr, SPAN_NOTICE(" <B>You must be dead to use this!</B>"))
 		return
-	if (SSticker.mode && (SSticker.mode.name == "meteor" || SSticker.mode.name == "epidemic")) //BS12 EDIT
+	if(SSticker.mode && (SSticker.mode.name == "meteor" || SSticker.mode.name == "epidemic")) //BS12 EDIT
 		to_chat(usr, SPAN_NOTICE(" Respawn is disabled for this roundtype."))
 		return
 	else

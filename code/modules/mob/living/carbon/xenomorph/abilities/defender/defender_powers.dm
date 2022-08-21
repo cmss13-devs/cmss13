@@ -1,6 +1,6 @@
 /datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
 	if(X.fortify)
@@ -35,7 +35,7 @@
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
 	if(!isXenoOrHuman(A) || X.can_not_harm(A))
@@ -44,7 +44,7 @@
 	if(!X.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -100,13 +100,13 @@
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
 	if(!X.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(X.fortify)
@@ -128,7 +128,7 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
+		if(!isXenoOrHuman(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)
@@ -149,7 +149,7 @@
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
 	if(X.crest_defense && X.steelcrest)
@@ -163,7 +163,7 @@
 	if(!X.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	playsound(get_turf(X), 'sound/effects/stonedoor_openclose.ogg', 30, 1)

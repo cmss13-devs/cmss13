@@ -40,7 +40,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(FM))
+	if(!istype(FM))
 		return
 
 	var/shuttle_state
@@ -208,7 +208,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "dropship_weapons_console.tmpl", "Weapons Control", 800, 600)
 		ui.set_initial_data(data)
 		ui.open()
@@ -221,7 +221,7 @@
 	add_fingerprint(usr)
 
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	if(href_list["equip_interact"])
@@ -293,7 +293,7 @@
 				if(!is_outside && !cavebreaker) //cavebreaker doesn't care
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 					return
-				if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
+				if(protected_by_pylon(TURF_PROTECTION_CAS, TU))
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 					return
 				if(!DEW.ammo_equipped.can_fire_at(TU, usr))
@@ -570,12 +570,12 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
-	if (shuttle.in_transit_time_left < firemission_envelope.get_total_duration())
+	if(shuttle.in_transit_time_left < firemission_envelope.get_total_duration())
 		to_chat(usr, "Not enough time to complete the Fire Mission")
 		return
-	if (!shuttle.transit_gun_mission || shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(!shuttle.transit_gun_mission || shuttle.moving_status != SHUTTLE_INTRANSIT)
 		to_chat(usr, "Has to be in Fly By mode")
 		return
 

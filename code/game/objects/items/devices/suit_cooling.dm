@@ -35,13 +35,13 @@
 	return ..()
 
 /obj/item/device/suit_cooling_unit/process()
-	if (!on || !cell)
+	if(!on || !cell)
 		return
 
-	if (!ismob(loc))
+	if(!ismob(loc))
 		return
 
-	if (!attached_to_suit(loc))		//make sure they have a suit and we are attached to it
+	if(!attached_to_suit(loc))		//make sure they have a suit and we are attached to it
 		return
 
 	var/mob/living/carbon/human/H = loc
@@ -50,7 +50,7 @@
 	var/env_temp = get_environment_temperature()		//wont save you from a fire
 	var/temp_adj = min(H.bodytemperature - max(thermostat, env_temp), max_cooling)
 
-	if (temp_adj < 0.5)	//only cools, doesn't heat, also we don't need extreme precision
+	if(temp_adj < 0.5)	//only cools, doesn't heat, also we don't need extreme precision
 		return
 
 	var/charge_usage = (temp_adj/max_cooling)*charge_consumption
@@ -64,7 +64,7 @@
 		turn_off()
 
 /obj/item/device/suit_cooling_unit/proc/get_environment_temperature()
-	if (ishuman(loc))
+	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		return H.return_temperature()
 
@@ -72,12 +72,12 @@
 	return T.return_temperature()
 
 /obj/item/device/suit_cooling_unit/proc/attached_to_suit(mob/M)
-	if (!ishuman(M))
+	if(!ishuman(M))
 		return 0
 
 	var/mob/living/carbon/human/H = M
 
-	if (!H.wear_suit || H.s_store != src)
+	if(!H.wear_suit || H.s_store != src)
 		return 0
 
 	return 1
@@ -92,7 +92,7 @@
 	updateicon()
 
 /obj/item/device/suit_cooling_unit/proc/turn_off()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.show_message("\The [src] clicks and whines as it powers down.", 2)	//let them know in case it's run out of power.
 	on = 0
@@ -120,11 +120,11 @@
 		turn_off()
 	else
 		turn_on()
-		if (on)
+		if(on)
 			to_chat(user, "You switch on the [src].")
 
 /obj/item/device/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(cover_open)
 			cover_open = 0
 			to_chat(user, "You screw the panel into place.")
@@ -134,7 +134,7 @@
 		updateicon()
 		return
 
-	if (istype(W, /obj/item/cell))
+	if(istype(W, /obj/item/cell))
 		if(cover_open)
 			if(cell)
 				to_chat(user, "There is a [cell] already installed here.")
@@ -149,8 +149,8 @@
 	return ..()
 
 /obj/item/device/suit_cooling_unit/proc/updateicon()
-	if (cover_open)
-		if (cell)
+	if(cover_open)
+		if(cell)
 			icon_state = "suitcooler1"
 		else
 			icon_state = "suitcooler2"
@@ -159,21 +159,21 @@
 
 /obj/item/device/suit_cooling_unit/examine(mob/user)
 	..()
-	if (on)
-		if (attached_to_suit(src.loc))
+	if(on)
+		if(attached_to_suit(src.loc))
 			to_chat(user, "It's switched on and running.")
 		else
 			to_chat(user, "It's switched on, but not attached to anything.")
 	else
 		to_chat(user, "It is switched off.")
 
-	if (cover_open)
+	if(cover_open)
 		if(cell)
 			to_chat(user, "The panel is open, exposing the [cell].")
 		else
 			to_chat(user, "The panel is open.")
 
-	if (cell)
+	if(cell)
 		to_chat(user, "The charge meter reads [round(cell.percent())]%.")
 	else
 		to_chat(user, "It doesn't have a power cell installed.")

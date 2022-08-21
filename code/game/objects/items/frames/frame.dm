@@ -18,32 +18,32 @@
 
 /obj/item/frame/apc/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), 2 )
 		qdel(src)
 
 /obj/item/frame/apc/proc/try_build(turf/on_wall)
-	if (get_dist(on_wall,usr)>1)
+	if(get_dist(on_wall,usr)>1)
 		return
 	var/ndir = get_dir(usr,on_wall)
-	if (!(ndir in cardinal))
+	if(!(ndir in cardinal))
 		return
 	var/turf/loc = get_turf(usr)
 	var/area/A = get_area(loc)
-	if (!istype(loc, /turf/open/floor))
+	if(!istype(loc, /turf/open/floor))
 		to_chat(usr, SPAN_WARNING("APC cannot be placed on this spot."))
 		return
-	if (A.requires_power == 0 || istype(A, /area/space))
+	if(A.requires_power == 0 || istype(A, /area/space))
 		to_chat(usr, SPAN_WARNING("APC cannot be placed in this area."))
 		return
-	if (A.get_apc())
+	if(A.get_apc())
 		to_chat(usr, SPAN_WARNING("This area already has APC."))
 		return //only one APC per area
-	if (A.always_unpowered)
+	if(A.always_unpowered)
 		to_chat(usr, SPAN_WARNING("This area is unsuitable for an APC."))
 		return
 	for(var/obj/structure/machinery/power/terminal/T in loc)
-		if (T.master)
+		if(T.master)
 			to_chat(usr, SPAN_WARNING("There is another network terminal here."))
 			return
 		else

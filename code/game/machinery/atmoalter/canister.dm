@@ -69,7 +69,7 @@ update_flag
 32 = tank_pressure go boom.
 */
 
-	if (destroyed)
+	if(destroyed)
 		overlays = 0
 		icon_state = text("[]-1", src.canister_color)
 		return
@@ -84,7 +84,7 @@ update_flag
 
 /obj/structure/machinery/portable_atmospherics/canister/update_health(var/damage = 0)
 	..()
-	if (health <= 20)
+	if(health <= 20)
 		destroyed = 1
 		playsound(src.loc, 'sound/effects/spray.ogg', 25, 1, 5)
 		density = 0

@@ -41,12 +41,12 @@
 
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
-	if ( istype(W, /obj/item/tool/weldingtool))
+	if( istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(source_sheet_type) //can be melted into something
 			if(WT.remove_fuel(0, user))
 				var/obj/item/stack/sheet/NG = new source_sheet_type(user.loc)
-				for (var/obj/item/stack/sheet/G in user.loc)
+				for(var/obj/item/stack/sheet/G in user.loc)
 					if(G==NG)
 						continue
 					if(!istype(G, source_sheet_type))

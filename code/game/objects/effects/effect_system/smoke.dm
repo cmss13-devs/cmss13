@@ -38,7 +38,7 @@
 
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_SMOKE
 
 /obj/effect/particle_effect/smoke/process()
@@ -108,7 +108,7 @@
 
 
 /obj/effect/particle_effect/smoke/proc/affect(var/mob/living/carbon/M)
-	if (istype(M))
+	if(istype(M))
 		return 0
 	return 1
 
@@ -127,7 +127,7 @@
 
 /obj/effect/particle_effect/smoke/bad/affect(var/mob/living/carbon/M)
 	..()
-	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
+	if(M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 		return
 	else
 		if(prob(20))
@@ -152,7 +152,7 @@
 		affect(M)
 
 /obj/effect/particle_effect/smoke/sleepy/affect(mob/living/carbon/M as mob )
-	if (!..())
+	if(!..())
 		return 0
 
 	M.drop_held_item()
@@ -215,7 +215,7 @@
 	..()
 	burn_damage = 40
 	if(ishuman(M))
-		if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
+		if(M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 			return
 		else
 			if(prob(20))
@@ -266,7 +266,7 @@
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
 	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
-	if (istype(X) && X.hivenumber)
+	if(istype(X) && X.hivenumber)
 		hivenumber = X.hivenumber
 
 		set_hive_data(src, hivenumber)
@@ -370,7 +370,7 @@
 		else
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if (prob(20))
+	if(prob(20))
 		M.KnockDown(1)
 
 	//Topical damage (neurotoxin on exposed skin)
@@ -422,7 +422,7 @@
 		else
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if (prob(20))
+	if(prob(20))
 		M.KnockDown(1)
 
 	//Topical damage (neurotoxin on exposed skin)
@@ -454,8 +454,8 @@
 				continue
 		var/obj/effect/particle_effect/smoke/S = new type(T, amount, cause_data)
 
-		for (var/atom/A in T)
-			if (istype(A, /mob/living))
+		for(var/atom/A in T)
+			if(istype(A, /mob/living))
 				var/mob/living/M = A
 				M.ExtinguishMob()
 			if(istype(A, /obj/flamer_fire))
@@ -536,8 +536,8 @@
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, cause_data)
 
-	for (var/atom/A in location)
-		if (istype(A, /mob/living))
+	for(var/atom/A in location)
+		if(istype(A, /mob/living))
 			var/mob/living/M = A
 			M.ExtinguishMob()
 		if(istype(A, /obj/flamer_fire))

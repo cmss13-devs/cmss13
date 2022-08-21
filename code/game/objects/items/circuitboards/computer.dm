@@ -19,11 +19,11 @@
 	var/locked = 1
 
 /obj/item/circuitboard/computer/security/construct(var/obj/structure/machinery/computer/security/C)
-	if (..(C))
+	if(..(C))
 		C.network = network
 
 /obj/item/circuitboard/computer/security/deconstruct(var/obj/structure/machinery/computer/security/C)
-	if (..(C))
+	if(..(C))
 		network = C.network
 
 /obj/item/circuitboard/computer/security/engineering
@@ -161,11 +161,11 @@
 	var/contraband_enabled = 0
 
 /obj/item/circuitboard/computer/supplycomp/construct(var/obj/structure/machinery/computer/supplycomp/SC)
-	if (..(SC))
+	if(..(SC))
 		SC.can_order_contraband = contraband_enabled
 
 /obj/item/circuitboard/computer/supplycomp/deconstruct(var/obj/structure/machinery/computer/supplycomp/SC)
-	if (..(SC))
+	if(..(SC))
 		contraband_enabled = SC.can_order_contraband
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
@@ -175,12 +175,12 @@
 	var/tank_unlocked = FALSE
 
 /obj/item/circuitboard/computer/supplycomp/vehicle/construct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
-	if (..(SCV))
+	if(..(SCV))
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
 /obj/item/circuitboard/computer/supplycomp/vehicle/deconstruct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
-	if (..(SCV))
+	if(..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked
 

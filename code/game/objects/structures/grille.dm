@@ -13,7 +13,7 @@
 
 /obj/structure/grille/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
 
 /obj/structure/grille/fence
@@ -163,7 +163,7 @@
 					return
 
 			var/wtype = ST.created_window
-			if (ST.use(1))
+			if(ST.use(1))
 				var/obj/structure/window/WD = new wtype(loc)
 				WD.set_constructed_window(dir_to_set)
 				to_chat(user, SPAN_NOTICE("You place the [WD] on [src]."))

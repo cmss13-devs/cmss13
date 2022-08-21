@@ -10,10 +10,10 @@
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
  */
 /proc/tgui_alert(mob/user, message, title, list/buttons, timeout = 60 SECONDS)
-	if (!user)
+	if(!user)
 		user = usr
-	if (!istype(user))
-		if (istype(user, /client))
+	if(!istype(user))
+		if(istype(user, /client))
 			var/client/client = user
 			user = client.mob
 		else
@@ -21,7 +21,7 @@
 	var/datum/tgui_modal/alert = new(user, message, title, buttons, timeout)
 	alert.tgui_interact(user)
 	alert.wait()
-	if (alert)
+	if(alert)
 		. = alert.choice
 		qdel(alert)
 
@@ -38,10 +38,10 @@
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
  */
 /proc/tgui_alert_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS)
-	if (!user)
+	if(!user)
 		user = usr
-	if (!istype(user))
-		if (istype(user, /client))
+	if(!istype(user))
+		if(istype(user, /client))
 			var/client/client = user
 			user = client.mob
 		else
@@ -75,7 +75,7 @@
 	src.title = title
 	src.message = message
 	src.buttons = buttons.Copy()
-	if (timeout)
+	if(timeout)
 		src.timeout = timeout
 		start_time = world.time
 		QDEL_REF_IN(src, timeout)
@@ -90,7 +90,7 @@
  * the window was closed by the user.
  */
 /datum/tgui_modal/proc/wait()
-	while (!choice && !closed)
+	while(!choice && !closed)
 		stoplag(0.2 SECONDS)
 
 /datum/tgui_modal/tgui_interact(mob/user, datum/tgui/ui)
@@ -118,11 +118,11 @@
 
 /datum/tgui_modal/ui_act(action, list/params)
 	. = ..()
-	if (.)
+	if(.)
 		return
 	switch(action)
 		if("choose")
-			if (!(params["choice"] in buttons))
+			if(!(params["choice"] in buttons))
 				return
 			choice = params["choice"]
 			SStgui.close_uis(src)
@@ -151,7 +151,7 @@
 
 /datum/tgui_modal/async/ui_act(action, list/params)
 	. = ..()
-	if (!. || choice == null)
+	if(!. || choice == null)
 		return
 	callback.InvokeAsync(choice)
 	qdel(src)

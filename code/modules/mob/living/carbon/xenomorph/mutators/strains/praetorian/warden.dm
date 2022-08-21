@@ -22,7 +22,7 @@
 
 /datum/xeno_mutator/praetorian_warden/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
@@ -83,8 +83,8 @@
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)
-	if (amount > 0)
-		if (internal_hitpoints >= internal_hitpoints_max)
+	if(amount > 0)
+		if(internal_hitpoints >= internal_hitpoints_max)
 			return
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of health increase!"))
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
@@ -93,7 +93,7 @@
 	add_internal_hitpoints(-1*amount)
 
 /datum/behavior_delegate/praetorian_warden/proc/use_internal_hp_ability(cost)
-	if (cost > internal_hitpoints)
+	if(cost > internal_hitpoints)
 		to_chat(bound_xeno, SPAN_XENODANGER("Your health reserves are insufficient! You need at least [cost] to do that!"))
 		return FALSE
 	else

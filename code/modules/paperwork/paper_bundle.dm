@@ -19,9 +19,9 @@
 	var/obj/item/paper/P
 	if(istype(W, /obj/item/paper))
 		P = W
-		if (istype(P, /obj/item/paper/carbon))
+		if(istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
-			if (!C.iscopy && !C.copied)
+			if(!C.iscopy && !C.copied)
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return

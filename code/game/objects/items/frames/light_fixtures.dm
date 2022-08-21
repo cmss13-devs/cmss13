@@ -11,27 +11,27 @@
 	var/sheets_refunded = 2
 
 /obj/item/frame/light_fixture/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 		qdel(src)
 		return
 	..()
 
 /obj/item/frame/light_fixture/proc/try_build(turf/on_wall)
-	if (get_dist(on_wall,usr)>1)
+	if(get_dist(on_wall,usr)>1)
 		return
 	var/ndir = get_dir(usr,on_wall)
-	if (!(ndir in cardinal))
+	if(!(ndir in cardinal))
 		return
 	var/turf/loc = get_turf(usr)
-	if (!istype(loc, /turf/open/floor))
+	if(!istype(loc, /turf/open/floor))
 		to_chat(usr, SPAN_DANGER("[src.name] cannot be placed on this spot."))
 		return
 	to_chat(usr, "Attaching [src] to the wall.")
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	var/constrdir = usr.dir
 	var/constrloc = usr.loc
-	if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	switch(fixture_type)
 		if("bulb")

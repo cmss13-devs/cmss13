@@ -78,9 +78,9 @@
 /datum/admins/proc/player_notes_all(var/key as text)
 	set category = null
 	set name = "Player Record"
-	if (!istype(src,/datum/admins))
+	if(!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+	if(!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -166,7 +166,7 @@
 	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
 	CONFIG_SET(flag/respawn, !CONFIG_GET(flag/respawn))
-	if (CONFIG_GET(flag/respawn))
+	if(CONFIG_GET(flag/respawn))
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
@@ -215,7 +215,7 @@
 	set name = "Update Mob Sprite"
 	set desc = "Should fix any mob sprite update errors."
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 

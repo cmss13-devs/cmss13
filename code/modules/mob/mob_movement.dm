@@ -184,7 +184,7 @@
 		else
 			. = ..()
 
-			if (mob.tile_contents)
+			if(mob.tile_contents)
 				mob.tile_contents = list()
 		if(.)
 			mob.track_steps_walked()

@@ -5,13 +5,13 @@
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 
-	if (canopened == FALSE)
+	if(canopened == FALSE)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 		canopened = TRUE
 
 /obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user)
-	if (canopened == 0)
+	if(canopened == 0)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return
 	var/datum/reagents/R = src.reagents
@@ -30,11 +30,11 @@
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (canopened == 0)
+		if(canopened == 0)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
-	else if (canopened == 1)
+	else if(canopened == 1)
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -72,17 +72,17 @@
 	if(!proximity) return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (canopened == 0)
+		if(canopened == 0)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (canopened == 0)
+		if(canopened == 0)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
-		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
+		if(istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
 			if(cantarget.canopened == 0)
 				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))

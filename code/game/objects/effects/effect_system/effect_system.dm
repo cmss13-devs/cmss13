@@ -93,7 +93,7 @@ steam.start() -- spawns the effect
 	..()
 	playsound(src.loc, "sparks", 25, 1)
 //	var/turf/T = src.loc
-//	if (istype(T, /turf))
+//	if(istype(T, /turf))
 //		T.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)

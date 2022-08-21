@@ -95,74 +95,74 @@
 
 
     switch(href_list["operation"])
-        if ("brute_damage_organ")
+        if("brute_damage_organ")
             var/selection = select_internal_organ()
-            if (!selection)
+            if(!selection)
                 return
             var/datum/internal_organ/organ = LAZYACCESS(linked_dummy.internal_organs_by_name, selection)
-            if (!istype(organ))
+            if(!istype(organ))
                 return
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
-            if (amount==0)
+            if(amount==0)
                 return
             organ.take_damage(amount)
-        if ("brute_damage_limb")
+        if("brute_damage_limb")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
-            if (amount==0)
+            if(amount==0)
                 return
             limb.take_damage(amount, 0)
-        if ("burn_damage")
+        if("burn_damage")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
-            if (amount==0)
+            if(amount==0)
                 return
             limb.take_damage(0, amount)
-        if ("toxin")
+        if("toxin")
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
-            if (amount==0)
+            if(amount==0)
                 return
             linked_dummy.reagents.add_reagent("toxin", amount)
-        if ("bones")
+        if("bones")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
             limb.fracture(100)
-        if ("blood_loss")
+        if("blood_loss")
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
-            if (amount==0)
+            if(amount==0)
                 return
             linked_dummy.drip(amount)
-        if ("bleeding")
+        if("bleeding")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
@@ -171,23 +171,23 @@
             var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
             limb.add_bleeding(I, TRUE)
             limb.wounds += I
-        if ("shrapnel")
+        if("shrapnel")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
             var/obj/item/shard/shrapnel/s = new /obj/item/shard/shrapnel()
             limb.embed(s)
-        if ("delimb")
+        if("delimb")
             var/selection = select_body_part()
-            if (!selection)
+            if(!selection)
                 return
             var/obj/limb/limb = linked_dummy.get_limb(selection)
-            if (!istype(limb))
+            if(!istype(limb))
                 return
             if(limb.status & LIMB_DESTROYED)
                 return

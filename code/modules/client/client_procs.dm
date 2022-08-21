@@ -58,22 +58,22 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
 		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
-		if (!asset_cache_job)
+		if(!asset_cache_job)
 			return
 
 	// Rate limiting
 	var/mtl = CONFIG_GET(number/minute_topic_limit)
-	if (!admin_holder && mtl)
+	if(!admin_holder && mtl)
 		var/minute = round(world.time, 600)
-		if (!topiclimiter)
+		if(!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
-		if (minute != topiclimiter[CURRENT_MINUTE])
+		if(minute != topiclimiter[CURRENT_MINUTE])
 			topiclimiter[CURRENT_MINUTE] = minute
 			topiclimiter[MINUTE_COUNT] = 0
 		topiclimiter[MINUTE_COUNT] += 1
-		if (topiclimiter[MINUTE_COUNT] > mtl)
+		if(topiclimiter[MINUTE_COUNT] > mtl)
 			var/msg = "Your previous action was ignored because you've done too many in a minute."
-			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
+			if(minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
 				topiclimiter[ADMINSWARNED_AT] = minute
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
@@ -82,15 +82,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
-	if (!admin_holder && stl)
+	if(!admin_holder && stl)
 		var/second = round(world.time, 10)
-		if (!topiclimiter)
+		if(!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
-		if (second != topiclimiter[CURRENT_SECOND])
+		if(second != topiclimiter[CURRENT_SECOND])
 			topiclimiter[CURRENT_SECOND] = second
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
-		if (topiclimiter[SECOND_COUNT] > stl)
+		if(topiclimiter[SECOND_COUNT] > stl)
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
@@ -103,12 +103,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//byond bug ID:2256651
-	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
+	if(asset_cache_job && (asset_cache_job in completed_asset_jobs))
 		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
 		src << browse("...", "window=asset_cache_browser")
 		return
 
-	if (href_list["asset_cache_preload_data"])
+	if(href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
 
@@ -206,9 +206,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return SSvote.Topic(href, href_list)
 
 	switch(href_list["action"])
-		if ("openLink")
+		if("openLink")
 			src << link(href_list["link"])
-		if ("proccall")
+		if("proccall")
 			var/proc_to_call = text2path(href_list["procpath"])
 
 			if(proc_to_call in GLOB.whitelisted_client_procs)
@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return*/
 	//hardcode for now
 
-	if (num2text(byond_build) in GLOB.blacklisted_builds)
+	if(num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
 		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
 		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
@@ -513,11 +513,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	add_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
-	if (!macro_button || !parent || !command)
+	if(!macro_button || !parent || !command)
 		return
 
 	var/list/macro_sets = params2list(winget(src, null, "macros"))
-	if (!(parent in macro_sets))
+	if(!(parent in macro_sets))
 		var/old = LAZYACCESS(params2list(winget(src, "mainwindow", "macro")), 1)
 		if(!old)
 			return
@@ -527,11 +527,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
 
 /client/proc/runtime_macro_remove(var/macro_button, var/parent)
-	if (!macro_button || !parent)
+	if(!macro_button || !parent)
 		return
 
 	var/list/macro_sets = params2list(winget(src, null, "macros"))
-	if (!(parent in macro_sets))
+	if(!(parent in macro_sets))
 		var/old = params2list(winget(src, "mainwindow", "macro"))[1]
 		winset(src, null, "mainwindow.macro=[parent]")
 		winset(src, null, "mainwindow.macro=[old]")
@@ -542,7 +542,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
-	if (!key)
+	if(!key)
 		return
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
@@ -551,7 +551,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
-	if (!key)
+	if(!key)
 		return
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_UP, key)
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/admin_follow(atom/movable/target)
 	var/can_ghost = TRUE
 
-	if (!isobserver(mob))
+	if(!isobserver(mob))
 		can_ghost = admin_ghost()
 
 	if(!can_ghost)

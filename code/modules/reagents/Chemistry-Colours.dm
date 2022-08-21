@@ -38,7 +38,7 @@
 	return finalcolor
 
 /proc/mixOneColor(var/list/weight, var/list/color)
-	if (!weight || !color || length(weight)!=length(color))
+	if(!weight || !color || length(weight)!=length(color))
 		return 0
 
 	var/contents = length(weight)
@@ -92,4 +92,3 @@
 	//assemble all the pieces
 	var/finalcolor = rgb(red, green, blue)
 	return finalcolor
-	

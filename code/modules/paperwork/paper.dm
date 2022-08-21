@@ -364,17 +364,17 @@
 		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
-		if (istype(P, /obj/item/paper/carbon))
+		if(istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
-			if (!C.iscopy && !C.copied)
+			if(!C.iscopy && !C.copied)
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
 		if(loc != user) return
 		var/obj/item/paper_bundle/B = new(get_turf(user))
-		if (name != "paper")
+		if(name != "paper")
 			B.name = name
-		else if (P.name != "paper" && P.name != "photo")
+		else if(P.name != "paper" && P.name != "photo")
 			B.name = P.name
 		user.drop_inv_item_on_ground(P)
 		user.drop_inv_item_on_ground(src)
@@ -389,7 +389,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
+		if( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
 			P:RenamePaper(user,src)
 		else
 			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window

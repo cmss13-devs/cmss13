@@ -60,11 +60,11 @@
 
 	handleInactive()
 		heat -= 2
-		if (heat < 0)
+		if(heat < 0)
 			heat = 0
 		else
 			for(var/mob/M in viewers(1, src))
-				if (M.client && M.machine == src)
+				if(M.client && M.machine == src)
 					src.updateUsrDialog()
 
 	proc
@@ -108,7 +108,7 @@
 
 	attack_hand(mob/user as mob)
 		..()
-		if (!anchored)
+		if(!anchored)
 			return
 
 		interact(user)
@@ -121,8 +121,8 @@
 
 	proc
 		interact(mob/user)
-			if (get_dist(src, user) > 1 )
-				if (!isRemoteControlling(user))
+			if(get_dist(src, user) > 1 )
+				if(!isRemoteControlling(user))
 					user.machine = null
 					close_browser(user, "port_gen")
 					return
@@ -130,7 +130,7 @@
 			user.machine = src
 
 			var/dat
-			if (active)
+			if(active)
 				dat += "Generator: <A href='?src=\ref[src];action=disable'>On</A><br>"
 			else
 				dat += "Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>"
@@ -155,18 +155,18 @@
 					icon_state = "portgen1"
 					src.updateUsrDialog()
 			if(href_list["action"] == "disable")
-				if (active)
+				if(active)
 					active = 0
 					icon_state = "portgen0"
 					src.updateUsrDialog()
 			if(href_list["action"] == "lower_power")
-				if (power_output > 1)
+				if(power_output > 1)
 					power_output--
 					src.updateUsrDialog()
-			if (href_list["action"] == "higher_power")
-				if (power_output < 4)
+			if(href_list["action"] == "higher_power")
+				if(power_output < 4)
 					power_output++
 					src.updateUsrDialog()
-			if (href_list["action"] == "close")
+			if(href_list["action"] == "close")
 				close_browser(usr, "port_gen")
 				usr.machine = null

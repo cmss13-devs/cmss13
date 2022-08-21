@@ -180,7 +180,7 @@
 	permissions_required = R_SPAWN
 
 /datum/player_action/strip_equipment/act(var/client/user, var/mob/target, var/list/params)
-	for (var/obj/item/I in target)
+	for(var/obj/item/I in target)
 		if(params["drop_items"])
 			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
 		else

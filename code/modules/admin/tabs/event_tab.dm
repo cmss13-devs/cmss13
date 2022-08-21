@@ -140,7 +140,7 @@
 	set desc = "Force Launch the ERT Shuttle."
 	set category = "Admin.Shuttles"
 
-	if (!SSticker.mode)
+	if(!SSticker.mode)
 		return
 	if(!check_rights(R_ADMIN))
 		return
@@ -196,7 +196,7 @@
 	set desc = "Call a distress beacon. This should not be done if the shuttle's already been called."
 	set category = "Admin.Shuttles"
 
-	if (!SSticker.mode)
+	if(!SSticker.mode)
 		return
 
 	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
@@ -380,9 +380,9 @@
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
-	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
+	if(alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
 		random_names = TRUE
-	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
+	if(alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
 		return
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(ismonkey(H))
@@ -594,7 +594,7 @@
 	set name = "Narrate to Everyone"
 	set category = "Admin.Events"
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -681,7 +681,7 @@
 /client/proc/event_panel()
 	set name = "Event Panel"
 	set category = "Admin.Panels"
-	if (admin_holder)
+	if(admin_holder)
 		admin_holder.event_panel()
 	return
 

@@ -22,7 +22,7 @@
 	var/obj/structure/pipes/standard/P = A
 
 	var/turf/T = P.loc
-	if (P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)
+	if(P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)
 		to_chat(user, SPAN_DANGER("You must remove the plating first."))
 		return
 

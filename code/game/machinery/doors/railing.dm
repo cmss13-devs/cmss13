@@ -31,11 +31,11 @@
 
 /obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = (PASS_OVER^PASS_OVER_FIRE)|PASS_CRUSHER_CHARGE
 
 /obj/structure/machinery/door/poddoor/railing/open()
-	if (operating == 1) //doors can still open when emag-disabled
+	if(operating == 1) //doors can still open when emag-disabled
 		return 0
 	if(!operating) //in case of emag
 		operating = 1
@@ -51,7 +51,7 @@
 	return 1
 
 /obj/structure/machinery/door/poddoor/railing/close()
-	if (operating)
+	if(operating)
 		return 0
 	density = 1
 	operating = 1

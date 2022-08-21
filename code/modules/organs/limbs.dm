@@ -630,9 +630,9 @@ This function completely restores a damaged organ to perfect condition.
 		var/heal_amt = 0
 
 		// if damage >= 50 AFTER treatment then it's probably too severe to heal within the timeframe of a round.
-		if (W.can_autoheal() && owner.health >= 0 && !W.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
+		if(W.can_autoheal() && owner.health >= 0 && !W.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
 			heal_amt += 0.3 * 0.35 //They can't autoheal if in critical
-		else if (W.is_treated())
+		else if(W.is_treated())
 			heal_amt += 0.5 * 0.75 //Treated wounds heal faster
 
 		if(heal_amt)
@@ -696,7 +696,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	var/race_icon = owner.species.icobase
 
-	if ((status & LIMB_ROBOT) && !(owner.species && owner.species.flags & IS_SYNTHETIC))
+	if((status & LIMB_ROBOT) && !(owner.species && owner.species.flags & IS_SYNTHETIC))
 		overlays.Cut()
 		icon = 'icons/mob/robotic.dmi'
 		icon_state = "[icon_name]"
@@ -708,12 +708,12 @@ This function completely restores a damaged organ to perfect condition.
 	var/e_icon
 	var/b_icon
 
-	if (!E)
+	if(!E)
 		e_icon = "western"
 	else
 		e_icon = E.icon_name
 
-	if (!B)
+	if(!B)
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name
@@ -723,7 +723,7 @@ This function completely restores a damaged organ to perfect condition.
 	wound_overlay.color = owner.species.blood_color
 
 	var/n_is = damage_state_text()
-	if (forced || n_is != damage_state)
+	if(forced || n_is != damage_state)
 		overlays.Cut()
 		damage_state = n_is
 		update_overlays()
@@ -751,18 +751,18 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(burn_dam == 0)
 		tburn = 0
-	else if (burn_dam < (max_damage * 0.1667)) //0.25 / 1.5
+	else if(burn_dam < (max_damage * 0.1667)) //0.25 / 1.5
 		tburn = 1
-	else if (burn_dam < (max_damage * 0.5)) //0.75 / 1.5
+	else if(burn_dam < (max_damage * 0.5)) //0.75 / 1.5
 		tburn = 2
 	else
 		tburn = 3
 
-	if (brute_dam == 0)
+	if(brute_dam == 0)
 		tbrute = 0
-	else if (brute_dam < (max_damage * 0.1667))
+	else if(brute_dam < (max_damage * 0.1667))
 		tbrute = 1
-	else if (brute_dam < (max_damage * 0.5))
+	else if(brute_dam < (max_damage * 0.5))
 		tbrute = 2
 	else
 		tbrute = 3
@@ -964,14 +964,14 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/release_restraints()
 	if(!owner)
 		return
-	if (owner.handcuffed && (body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT)))
+	if(owner.handcuffed && (body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT)))
 		owner.visible_message(\
 			"\The [owner.handcuffed.name] falls off of [owner.name].",\
 			"\The [owner.handcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.handcuffed)
 
-	if (owner.legcuffed && (body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT)))
+	if(owner.legcuffed && (body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT)))
 		owner.visible_message(\
 			"\The [owner.legcuffed.name] falls off of [owner.name].",\
 			"\The [owner.legcuffed.name] falls off you.")
@@ -1048,7 +1048,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/proc/fracture(var/bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN))
-		if (knitting_time != -1)
+		if(knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
@@ -1142,7 +1142,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 //for arms and hands
 /obj/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)
-	if (!c_hand)
+	if(!c_hand)
 		return
 
 	if(is_broken())
@@ -1184,7 +1184,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, var/indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
-		if (target == user)
+		if(target == user)
 			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
@@ -1372,14 +1372,14 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 							var/mob/attack_source = null,\
 							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
 	. = ..()
-	if (!disfigured)
-		if (brute_dam > 50 || brute_dam > 40 && prob(50))
+	if(!disfigured)
+		if(brute_dam > 50 || brute_dam > 40 && prob(50))
 			disfigure("brute")
-		if (burn_dam > 40)
+		if(burn_dam > 40)
 			disfigure("burn")
 
 /obj/limb/head/proc/disfigure(var/type = "brute")
-	if (disfigured)
+	if(disfigured)
 		return
 	if(type == "brute")
 		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."),	\

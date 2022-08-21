@@ -22,7 +22,7 @@
 	recipes = GLOB.rod_recipes
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
-	if (!istype(W, /obj/item/tool/weldingtool))
+	if(!istype(W, /obj/item/tool/weldingtool))
 		return ..()
 
 	var/obj/item/tool/weldingtool/WT = W
@@ -34,7 +34,7 @@
 	if(WT.remove_fuel(0,user))
 		var/obj/item/stack/sheet/new_item = new sheet_path(user.loc)
 		new_item.add_to_stacks(user)
-		for (var/mob/M in viewers(src))
+		for(var/mob/M in viewers(src))
 			M.show_message(SPAN_DANGER("[src] is shaped into metal by [user.name] with the weldingtool."), 3, SPAN_DANGER("You hear welding."), 2)
 		use(used_per_sheet)
 

@@ -10,7 +10,7 @@
 
 /obj/structure/machinery/door/airlock/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = NONE
 
 /obj/structure/machinery/door/airlock/proc/can_radio()
@@ -20,15 +20,15 @@
 
 /obj/structure/machinery/door/airlock/process()
 	..()
-	if (arePowerSystemsOn())
+	if(arePowerSystemsOn())
 		execute_current_command()
 	else
 		stop_processing()
 
 /obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
-	if (!arePowerSystemsOn()) return //no power
+	if(!arePowerSystemsOn()) return //no power
 
-	if (!can_radio()) return //no radio
+	if(!can_radio()) return //no radio
 
 	if(!signal || signal.encryption) return
 
@@ -42,14 +42,14 @@
 	if(operating)
 		return //emagged or busy doing something else
 
-	if (isnull(cur_command) || inoperable())
+	if(isnull(cur_command) || inoperable())
 		//Nothing to do, stop processing!
 		//Or power out, in case we also stop doing stuff
 		stop_processing()
 		return
 
 	do_command(cur_command)
-	if (command_completed(cur_command))
+	if(command_completed(cur_command))
 		cur_command = null
 		//Nothing to do, stop processing!
 		stop_processing()
@@ -117,7 +117,7 @@
 		signal.data["door_status"] = density?("closed"):("open")
 		signal.data["lock_status"] = locked?("locked"):("unlocked")
 
-		if (bumped)
+		if(bumped)
 			signal.data["bumped_with_access"] = 1
 
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
@@ -247,7 +247,7 @@
 
 /obj/structure/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 	//Swiping ID on the access button
-	if (istype(I, /obj/item/card/id))
+	if(istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
 	..()

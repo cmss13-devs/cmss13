@@ -103,7 +103,7 @@
 		return
 
 	onfire = !onfire
-	if (onfire)
+	if(onfire)
 		force = 3
 		damtype = "fire"
 		icon_state = "cake1"

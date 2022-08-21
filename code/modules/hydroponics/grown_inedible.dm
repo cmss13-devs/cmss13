@@ -48,7 +48,7 @@
 			user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), 1)
 			for(var/i=0,i<2,i++)
 				var/obj/item/stack/sheet/wood/NG = new (user.loc)
-				for (var/obj/item/stack/sheet/wood/G in user.loc)
+				for(var/obj/item/stack/sheet/wood/G in user.loc)
 					if(G==NG)
 						continue
 					if(G.amount>=G.max_amount)

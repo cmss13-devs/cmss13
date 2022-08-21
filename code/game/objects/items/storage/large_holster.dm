@@ -326,7 +326,7 @@
 	..()
 	if(contents.len)
 		to_chat(user, "It is storing \a M240-T incinerator unit.")
-	if (get_dist(user, src) <= 1)
+	if(get_dist(user, src) <= 1)
 		if(fuel)
 			to_chat(user, "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
 		if(fuelB)
@@ -345,7 +345,7 @@
 
 /datum/action/item_action/specialist/toggle_fuel/update_button_icon()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
-	if (!istype(FP))
+	if(!istype(FP))
 		return
 
 	var/icon = 'icons/obj/items/weapons/guns/ammo.dmi'
@@ -368,6 +368,6 @@
 
 /datum/action/item_action/specialist/toggle_fuel/action_activate()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
-	if (!istype(FP))
+	if(!istype(FP))
 		return
 	FP.toggle_fuel()

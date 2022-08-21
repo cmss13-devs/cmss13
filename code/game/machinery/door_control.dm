@@ -64,7 +64,7 @@
 	if(!shuttle_tag)
 		return
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 	if(shuttle.door_override)
 		return // its been locked down by the queen
@@ -108,7 +108,7 @@
 	for(var/obj/structure/machinery/door/airlock/D in range(range))
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
-				if (D.density)
+				if(D.density)
 					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 				else
 					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)

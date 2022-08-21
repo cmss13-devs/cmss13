@@ -24,7 +24,7 @@
 
 /obj/structure/machinery/computer/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/computer/process()
@@ -42,14 +42,14 @@
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				verbs.Cut()
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(25))
+			if(prob(25))
 				qdel(src)
 				return
-			if (prob(50))
+			if(prob(50))
 				verbs.Cut()
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -108,9 +108,9 @@
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
 			A.anchored = 1
-			for (var/obj/C in src)
+			for(var/obj/C in src)
 				C.forceMove(loc)
-			if (src.stat & BROKEN)
+			if(src.stat & BROKEN)
 				to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
 				new /obj/item/shard( src.loc )
 				A.state = 3

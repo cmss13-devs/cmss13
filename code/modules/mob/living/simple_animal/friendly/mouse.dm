@@ -69,7 +69,7 @@
 
 /mob/living/simple_animal/mouse/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/mouse/proc/splat()
@@ -116,7 +116,7 @@
 		return ..()
 
 /mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
-	if (stat >= DEAD)
+	if(stat >= DEAD)
 		return
 	..()
 

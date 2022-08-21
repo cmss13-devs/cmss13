@@ -50,7 +50,7 @@ obj/structure/windoor_assembly/Destroy()
 		if("01")
 			if(istype(W, /obj/item/tool/weldingtool) && !anchored )
 				var/obj/item/tool/weldingtool/WT = W
-				if (WT.remove_fuel(0,user))
+				if(WT.remove_fuel(0,user))
 					user.visible_message("[user] dissassembles the windoor assembly.", "You start to dissassemble the windoor assembly.")
 					playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 
@@ -106,7 +106,7 @@ obj/structure/windoor_assembly/Destroy()
 				to_chat(user, SPAN_NOTICE("You start to reinforce the windoor with rods."))
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !secure)
-					if (R.use(4))
+					if(R.use(4))
 						to_chat(user, SPAN_NOTICE("You reinforce the windoor."))
 						src.secure = "secure_"
 						if(src.anchored)
@@ -120,7 +120,7 @@ obj/structure/windoor_assembly/Destroy()
 
 				var/obj/item/stack/cable_coil/CC = W
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if (CC.use(1))
+					if(CC.use(1))
 						to_chat(user, SPAN_NOTICE("You wire the windoor!"))
 						src.state = "02"
 						if(src.secure)
@@ -250,7 +250,7 @@ obj/structure/windoor_assembly/Destroy()
 	set category = "Object"
 	set src in oview(1)
 
-	if (src.anchored)
+	if(src.anchored)
 		to_chat(usr, "It is fastened to the floor; therefore, you can't rotate it!")
 		return 0
 	src.setDir(turn(src.dir, 270))

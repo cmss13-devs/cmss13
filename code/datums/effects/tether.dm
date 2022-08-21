@@ -14,10 +14,10 @@
 	src.always_face = always_face
 
 /datum/effects/tethering/validate_atom(var/atom/A)
-	if (isturf(A))
+	if(isturf(A))
 		return TRUE
 
-	if (istype(A, /atom/movable))
+	if(istype(A, /atom/movable))
 		return TRUE
 
 	return FALSE
@@ -38,20 +38,20 @@
 /datum/effects/tethering/proc/moved()
 	SIGNAL_HANDLER
 
-	if (isnull(tethered))
+	if(isnull(tethered))
 		return
 
 	var/atom/movable/A = tethered.affected_atom
-	if (get_dist(affected_atom, A) <= range)
+	if(get_dist(affected_atom, A) <= range)
 		return
 
 	var/turf/T
 	var/dir_away = get_dir(affected_atom, A)
-	for (var/dir in alldirs)
-		if (dir & dir_away)
+	for(var/dir in alldirs)
+		if(dir & dir_away)
 			continue
 		T = get_step(A, dir)
-		if (get_dist(T, affected_atom) <= range && A.Move(T))
+		if(get_dist(T, affected_atom) <= range && A.Move(T))
 			return
 
 	// Integrity of tether is compromised (cannot maintain range), so delete it
@@ -74,45 +74,45 @@
 	..()
 
 /datum/effects/tethered/validate_atom(var/atom/A)
-	if (istype(A, /atom/movable))
+	if(istype(A, /atom/movable))
 		return TRUE
 
 	return FALSE
 
 /datum/effects/tethered/on_apply_effect()
 	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, .proc/check_move)
-	if (resistable)
+	if(resistable)
 		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, .proc/resist_callback)
 
 // affected is always going to be the same as affected_atom
 /datum/effects/tethered/proc/check_move(var/dummy, var/turf/target)
 	SIGNAL_HANDLER
 
-	if (isnull(tether))
+	if(isnull(tether))
 		return
 
 	var/atom/A = tether.affected_atom
 
 	// If the target turf is out of range, can't move
-	if (get_dist(target, A) > tether.range)
+	if(get_dist(target, A) > tether.range)
 		to_chat(affected_atom, SPAN_WARNING("Your tether to \the [A] prevents you from moving any further!"))
 		return COMPONENT_CANCEL_MOVE
 
 /datum/effects/tethered/Destroy()
-	if (tether)
+	if(tether)
 		tether.tethered = null
 		qdel(tether)
 		tether = null
-	if (affected_atom)
+	if(affected_atom)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE)
-		if (resistable)
+		if(resistable)
 			UnregisterSignal(affected_atom, COMSIG_MOB_RESISTED)
 	. = ..()
 
 /datum/effects/tethered/proc/resist_callback()
 	SIGNAL_HANDLER
 
-	if (isnull(tether))
+	if(isnull(tether))
 		return
 
 	INVOKE_ASYNC(src, .proc/resisted)
@@ -136,7 +136,7 @@
 	ret_list["tetherer_tether"] = TR
 	ret_list["tethered_tethered"] = TD
 
-	if (two_way)
+	if(two_way)
 		TR = new /datum/effects/tethering(tethered, icon)
 		TD = new /datum/effects/tethered(tetherer, resistable)
 		TR.set_tethered(TD)

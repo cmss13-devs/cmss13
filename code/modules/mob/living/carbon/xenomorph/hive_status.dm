@@ -161,7 +161,7 @@
 		return
 
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "HiveStatus", "[assoc_hive.name] Status")
 		ui.open()
 		ui.set_autoupdate(FALSE)

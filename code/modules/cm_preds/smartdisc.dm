@@ -48,7 +48,7 @@
 				continue
 			else if(isYautja(L))
 				continue
-			else if (L.stat == DEAD)
+			else if(L.stat == DEAD)
 				continue
 			else
 				T = L
@@ -203,7 +203,7 @@
 				continue
 			else if(isYautja(L))
 				continue
-			else if (L.stat == DEAD)
+			else if(L.stat == DEAD)
 				continue
 			else
 				if(!L.stat)

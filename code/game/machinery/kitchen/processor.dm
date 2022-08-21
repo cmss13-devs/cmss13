@@ -17,9 +17,9 @@
 	var/output
 	var/time = 40
 	process(loc, what)
-		if (src.output && loc)
+		if(src.output && loc)
 			new src.output(loc)
-		if (what)
+		if(what)
 			qdel(what)
 
 	/* objs */
@@ -54,13 +54,13 @@
 
 /obj/structure/machinery/processor/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/processor/proc/select_recipe(var/X)
-	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
+	for(var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
 		var/datum/food_processor_process/P = new Type()
-		if (!istype(X, P.input))
+		if(!istype(X, P.input))
 			continue
 		return P
 	return 0
@@ -76,12 +76,12 @@
 		. = ..()
 		return
 	var/obj/what = O
-	if (istype(O, /obj/item/grab))
+	if(istype(O, /obj/item/grab))
 		var/obj/item/grab/G = O
 		what = G.grabbed_thing
 
 	var/datum/food_processor_process/P = select_recipe(what)
-	if (!P)
+	if(!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
@@ -90,7 +90,7 @@
 	what.forceMove(src)
 
 /obj/structure/machinery/processor/attack_hand(var/mob/user as mob)
-	if (src.stat != 0) //NOPOWER etc
+	if(src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
@@ -100,7 +100,7 @@
 		return 1
 	for(var/O in src.contents)
 		var/datum/food_processor_process/P = select_recipe(O)
-		if (!P)
+		if(!P)
 			log_admin("DEBUG: [O] in processor havent suitable recipe. How do you put it in?") //-rastaf0
 			continue
 		src.processing = 1

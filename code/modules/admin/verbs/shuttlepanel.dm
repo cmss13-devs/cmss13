@@ -13,10 +13,10 @@
 	var/list/options = list()
 
 	for(var/port in SSshuttle.stationary)
-		if (istype(port, /obj/docking_port/stationary/transit))
+		if(istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
-		if (canDock(S) == SHUTTLE_CAN_DOCK)
+		if(canDock(S) == SHUTTLE_CAN_DOCK)
 			options[S.name || S.id] = S
 
 	options += "--------"

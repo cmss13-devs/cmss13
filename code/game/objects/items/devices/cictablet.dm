@@ -150,7 +150,7 @@
 			. = TRUE
 
 /obj/item/device/cotablet/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
+	if(close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return

@@ -31,7 +31,7 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 	if(!CONFIG_GET(flag/usealienwhitelist) || !GLOB.alien_whitelist)
 		return 0
 	if(M && species)
-		for (var/s in GLOB.alien_whitelist)
+		for(var/s in GLOB.alien_whitelist)
 			if(findtext(lowertext(s),"[lowertext(M.key)] - [species]"))
 				return 1
 			//if(findtext(lowertext(s),"[lowertext(M.key)] - [species] Elder")) //Unnecessary.

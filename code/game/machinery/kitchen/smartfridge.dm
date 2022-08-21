@@ -168,24 +168,24 @@
 	data["transfer_mode"] = transfer_mode
 
 	var/list/items[0]
-	for (var/i=1 to length(item_quants))
+	for(var/i=1 to length(item_quants))
 		var/K = item_quants[i]
 		var/count = item_quants[K]
-		if (count > 0)
+		if(count > 0)
 			items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
 
-	if (length(items) > 0)
+	if(length(items) > 0)
 		data["contents"] = items
 
 	if(is_in_network())
 		var/list/networked_items = list()
-		for (var/i=1 to length(chemical_data.shared_item_quantity))
+		for(var/i=1 to length(chemical_data.shared_item_quantity))
 			var/K = chemical_data.shared_item_quantity[i]
 			var/count = chemical_data.shared_item_quantity[K]
-			if (count > 0)
+			if(count > 0)
 				networked_items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
 
-		if (length(networked_items) > 0)
+		if(length(networked_items) > 0)
 			data["networked_contents"] = networked_items
 
 	var/list/wire_descriptions = get_wire_descriptions()
@@ -193,29 +193,29 @@
 	for(var/wire = 1 to wire_descriptions.len)
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
-	if (panel_wires)
+	if(panel_wires)
 		data["wires"] = panel_wires
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 420, 500)
 		ui.set_initial_data(data)
 		ui.open()
 
 /obj/structure/machinery/smartfridge/Topic(href, href_list)
-	if (..()) return 0
+	if(..()) return 0
 
 	var/mob/user = usr
 	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
 
 	src.add_fingerprint(user)
 
-	if (href_list["close"])
+	if(href_list["close"])
 		user.unset_interaction()
 		ui.close()
 		return FALSE
 
-	if (href_list["toggletransfer"])
+	if(href_list["toggletransfer"])
 		if(is_secure_fridge)
 			if(locked == FRIDGE_LOCK_COMPLETE)
 				to_chat(usr, SPAN_DANGER("Access denied."))
@@ -229,11 +229,11 @@
 			transfer_mode = FALSE
 		return TRUE
 
-	if (href_list["vend"])
+	if(href_list["vend"])
 		if(!ispowered)
 			to_chat(usr, SPAN_WARNING("[src] has no power."))
 			return FALSE
-		if (!in_range(src, usr))
+		if(!in_range(src, usr))
 			return FALSE
 		if(is_secure_fridge)
 			if(locked == FRIDGE_LOCK_COMPLETE)
@@ -269,7 +269,7 @@
 						source.Remove(O)
 						O.forceMove(loc)
 						i--
-						if (i <= 0)
+						if(i <= 0)
 							return TRUE
 			else
 				for(var/obj/O in source)
@@ -288,28 +288,28 @@
 
 		return TRUE
 
-	if (panel_open)
-		if (href_list["cutwire"])
+	if(panel_open)
+		if(href_list["cutwire"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(user, "You need wirecutters!")
 				return TRUE
 
 			var/wire = text2num(href_list["cutwire"])
-			if (isWireCut(wire))
+			if(isWireCut(wire))
 				mend(wire)
 			else
 				cut(wire)
 			return TRUE
 
-		if (href_list["pulsewire"])
+		if(href_list["pulsewire"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return TRUE
 
 			var/wire = text2num(href_list["pulsewire"])
-			if (isWireCut(wire))
+			if(isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return TRUE
 
@@ -336,7 +336,7 @@
 		if(FRIDGE_WIRE_SHOCK)
 			seconds_electrified = -1
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
-		if (FRIDGE_WIRE_SHOOT_INV)
+		if(FRIDGE_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
 				shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
@@ -349,7 +349,7 @@
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			seconds_electrified = 0
-		if (FRIDGE_WIRE_SHOOT_INV)
+		if(FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 		if(FRIDGE_WIRE_IDSCAN)
@@ -380,7 +380,7 @@
 	if(!target)
 		return 0
 
-	for (var/O in item_quants)
+	for(var/O in item_quants)
 		if(item_quants[O] <= 0) //Try to use a record that actually has something to dump.
 			continue
 

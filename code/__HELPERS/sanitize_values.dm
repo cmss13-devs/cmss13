@@ -46,13 +46,13 @@
 	return default
 
 /proc/sanitize_ethnicity(ethnicity, default = "Western")
-	if (ethnicity in GLOB.ethnicities_list)
+	if(ethnicity in GLOB.ethnicities_list)
 		return ethnicity
 
 	return default
 
 /proc/sanitize_body_type(body_type, default = "Mesomorphic (Average)")
-	if (body_type in GLOB.body_types_list)
+	if(body_type in GLOB.body_types_list)
 		return body_type
 
 	return default

@@ -431,7 +431,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target)
 	. = ..()
-	if (!.)
+	if(!.)
 		return
 
 	new /obj/effect/overlay/temp/blinking_laser (target)
@@ -468,7 +468,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
 	. = ..()
-	if (!.)
+	if(!.)
 		return
 	if(fire_color)
 		fire_type = "dynamic"
@@ -492,7 +492,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
-	if (!.)
+	if(!.)
 		return
 
 	start_cluster(target)
@@ -544,7 +544,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_ALL
 
 /obj/structure/machinery/computer/orbital_cannon_console/ex_act()

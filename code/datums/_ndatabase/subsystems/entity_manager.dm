@@ -93,18 +93,18 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = tables_unsorted.Copy()
 	if(!SSdatabase.connection.connection_ready())
 		return
-	while (currentrun.len)
+	while(currentrun.len)
 		var/datum/entity_meta/Q = currentrun[currentrun.len]
 		do_select(Q)
 		do_insert(Q)
 		do_update(Q)
 		do_delete(Q)
 		currentrun.len--
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return
 
 

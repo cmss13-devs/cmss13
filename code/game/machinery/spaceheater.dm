@@ -112,9 +112,9 @@
 	. = ..()
 	if(.)
 		return
-	if (usr.stat)
+	if(usr.stat)
 		return
-	if ((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))
+	if((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 
 		switch(href_list["op"])

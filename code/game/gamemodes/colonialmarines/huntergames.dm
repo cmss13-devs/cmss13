@@ -365,7 +365,7 @@ var/waiting_for_drop_votes = 0
 	last_tally = C
 	if(last_tally == 1 || ismob(last_tally))
 		finished = 1
-	else if (last_tally < 1)
+	else if(last_tally < 1)
 		finished = 2
 	else
 		finished = 0

@@ -212,14 +212,14 @@ var/global/list/paramslist_cache = list()
 
 /proc/setup_resin_constructions()
 	var/list/resin_constructions_list = list()
-	for (var/T in subtypesof(/datum/resin_construction) - list(/datum/resin_construction/resin_obj, /datum/resin_construction/resin_turf))
+	for(var/T in subtypesof(/datum/resin_construction) - list(/datum/resin_construction/resin_obj, /datum/resin_construction/resin_turf))
 		var/datum/resin_construction/RC = new T
 		resin_constructions_list[T] = RC
 	return sortAssoc(resin_constructions_list)
 
 /proc/setup_resin_mark_meanings()
 	var/list/resin_meanings_list = list()
-	for (var/T in subtypesof(/datum/xeno_mark_define))
+	for(var/T in subtypesof(/datum/xeno_mark_define))
 		var/datum/xeno_mark_define/XMD = new T
 		resin_meanings_list[T] = XMD
 	return sortAssoc(resin_meanings_list)
@@ -228,7 +228,7 @@ var/global/list/paramslist_cache = list()
 	var/list/gear_path_presets_list = list()
 	for(var/T in typesof(/datum/equipment_preset))
 		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
+		if(!initial(EP.flags))
 			continue
 		EP = new T
 		gear_path_presets_list[EP.type] = EP
@@ -238,7 +238,7 @@ var/global/list/paramslist_cache = list()
 	var/list/gear_path_presets_list = list()
 	for(var/T in typesof(/datum/equipment_preset))
 		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
+		if(!initial(EP.flags))
 			continue
 		EP = new T
 		gear_path_presets_list[EP.name] = EP
@@ -246,7 +246,7 @@ var/global/list/paramslist_cache = list()
 
 /proc/setup_language_keys()
 	var/list/language_keys = list()
-	for (var/language_name in subtypesof(/datum/language))
+	for(var/language_name in subtypesof(/datum/language))
 		var/datum/language/L = language_name
 		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
 		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
@@ -359,7 +359,7 @@ var/global/list/paramslist_cache = list()
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_filtered_list)
+	for(var/reaction in chemical_reactions_filtered_list)
 		. += "chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[chemical_reactions_filtered_list[reaction]]\"\n"
 		if(islist(chemical_reactions_filtered_list[reaction]))
 			var/list/L = chemical_reactions_filtered_list[reaction]

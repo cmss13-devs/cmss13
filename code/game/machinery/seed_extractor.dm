@@ -36,6 +36,6 @@ obj/structure/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/u
 	//Grass.
 	else if(istype(O, /obj/item/stack/tile/grass))
 		var/obj/item/stack/tile/grass/S = O
-		if (S.use(1))
+		if(S.use(1))
 			to_chat(user, SPAN_NOTICE("You extract some seeds from the grass tile."))
 			new /obj/item/seeds/grassseed(loc)

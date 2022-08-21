@@ -2,7 +2,7 @@
 /client/proc/change_ckey(mob/M in GLOB.mob_list, var/a_ckey = null)
 	var/new_ckey = a_ckey
 
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -14,7 +14,7 @@
 
 	if(!new_ckey)
 		return
-	if (M.client)
+	if(M.client)
 		M.ghostize(FALSE)
 	M.aghosted = FALSE //Incase you ckey into an aghosted body.
 	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
@@ -122,7 +122,7 @@
 
 	if(!ismob(M))
 		return
-	if (!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -138,7 +138,7 @@
 
 	var/msg = input("Contents of the message", text("Subtle PM to [M.key]")) as text
 
-	if (!msg)
+	if(!msg)
 		return
 
 	switch(message_option)
@@ -166,7 +166,7 @@
 
 	if(!ismob(M))
 		return
-	if (!CLIENT_IS_STAFF(src))
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -219,7 +219,7 @@
 	set name = "Attack Log"
 	set category = null
 
-	if (!CLIENT_IS_STAFF(src))
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -231,7 +231,7 @@
 	set name = "Possess Obj"
 	set category = null
 
-	if (!CLIENT_IS_STAFF(src))
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -255,7 +255,7 @@
 	set name = "Release Obj"
 	set category = null
 
-	if (!CLIENT_IS_STAFF(src))
+	if(!CLIENT_IS_STAFF(src))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -359,7 +359,7 @@
 
 	if(!check_rights(0))	return
 
-	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
+	if(M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0
 		M.RemoveSleepingIcon()
 	else

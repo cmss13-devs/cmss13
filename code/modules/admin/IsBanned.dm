@@ -4,11 +4,11 @@ world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
 	var/ckey = ckey(key)
 
 	// This is added siliently. Thanks to MSO for this fix. You will see it when/if we go OS
-	if (type == "world")
+	if(type == "world")
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
 
 	var/client/C = GLOB.directory[ckey]
-	if (C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
+	if(C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
 		return //don't recheck connected clients.
 
 	//Guest Checking

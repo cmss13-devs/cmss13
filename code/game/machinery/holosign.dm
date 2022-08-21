@@ -66,7 +66,7 @@
 		icon_state = "light0"
 
 	for(var/obj/structure/machinery/holosign/M in machines)
-		if (M.id == src.id)
+		if(M.id == src.id)
 			INVOKE_ASYNC(M, /obj/structure/machinery/holosign.proc/toggle)
 
 	return

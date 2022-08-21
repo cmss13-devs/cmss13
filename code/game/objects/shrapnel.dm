@@ -36,7 +36,7 @@
 		if(!(ignore_source_mob && mob_standing_on_turf == source_mob) && mob_standing_on_turf && prob(100*on_hit_coefficient)) //if a non-prone mob is on the same turf as the shrapnel explosion, some of the shrapnel hits him
 			S.ammo.on_hit_mob(mob_standing_on_turf, S)
 			mob_standing_on_turf.bullet_act(S)
-		else if (!(ignore_source_mob && mob_lying_on_turf == source_mob) && mob_lying_on_turf && prob(100*on_hit_coefficient))
+		else if(!(ignore_source_mob && mob_lying_on_turf == source_mob) && mob_lying_on_turf && prob(100*on_hit_coefficient))
 			S.ammo.on_hit_mob(mob_lying_on_turf, S)
 			mob_lying_on_turf.bullet_act(S)
 

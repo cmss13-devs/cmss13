@@ -22,7 +22,7 @@
 
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_MOB_IS_HUMAN
 		PF.flags_can_pass_all = PASS_MOB_THRU_HUMAN|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
@@ -509,7 +509,7 @@
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
 
-	if (href_list["squadfireteam"])
+	if(href_list["squadfireteam"])
 
 		var/mob/living/carbon/human/target
 		var/mob/living/carbon/human/sl
@@ -535,7 +535,7 @@
 
 		target.assigned_squad.manage_fireteams(target)
 
-	if (href_list["squad_status"])
+	if(href_list["squad_status"])
 		var/mob/living/carbon/human/target
 		for(var/mob/living/carbon/human/mar in assigned_squad.marines_list)
 			if(href_list["squad_status_target"] == "\ref[mar]")
@@ -625,7 +625,7 @@
 					for(var/com_i in R.fields["comments"])
 						var/comment = R.fields["comments"][com_i]
 						comment_markup += text("<br /><b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-						if (isnull(comment["deleted_by"]))
+						if(isnull(comment["deleted_by"]))
 							comment_markup += text("[]<br />", comment["entry"])
 							continue
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
@@ -1115,7 +1115,7 @@
 	species = GLOB.all_species[new_species]
 
 	// If an invalid new_species value is passed, just default to human
-	if (!istype(species))
+	if(!istype(species))
 		species = GLOB.all_species["Human"]
 
 	if(oldspecies)

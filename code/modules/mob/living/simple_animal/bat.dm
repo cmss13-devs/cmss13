@@ -12,7 +12,7 @@
 
 /mob/living/simple_animal/bat/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/bat/Life(delta_time)

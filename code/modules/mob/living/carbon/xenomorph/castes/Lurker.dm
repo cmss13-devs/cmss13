@@ -71,11 +71,11 @@
 	var/can_go_invisible = TRUE
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if(!isXenoOrHuman(A))
 		return original_damage
 
 	var/mob/living/carbon/H = A
-	if (next_slash_buffed)
+	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [H]!"))
 		to_chat(H, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		original_damage *= buffed_slash_damage_ratio
@@ -85,11 +85,11 @@
 	return original_damage
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if(!isXenoOrHuman(A))
 		return
 
 	var/mob/living/carbon/H = A
-	if (H.knocked_down)
+	if(H.knocked_down)
 		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(H, slash_slow_duration))
 
 	return
@@ -98,13 +98,13 @@
 	..()
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if (LIA && istype(LIA))
+	if(LIA && istype(LIA))
 		LIA.invisibility_off()
 
 // What to do when we go invisible
 /datum/behavior_delegate/lurker_base/proc/on_invisibility()
 	var/datum/action/xeno_action/activable/pounce/lurker/LPA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
-	if (LPA && istype(LPA))
+	if(LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
 	can_go_invisible = FALSE
@@ -112,7 +112,7 @@
 
 /datum/behavior_delegate/lurker_base/proc/on_invisibility_off()
 	var/datum/action/xeno_action/activable/pounce/lurker/LPA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
-	if (LPA && istype(LPA))
+	if(LPA && istype(LPA))
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
 
@@ -123,7 +123,7 @@
 	invis_start_time = -1
 
 /datum/behavior_delegate/lurker_base/proc/regen_invisibility()
-	if (can_go_invisible)
+	if(can_go_invisible)
 		return
 
 	can_go_invisible = TRUE

@@ -9,15 +9,15 @@
 		icon_broken	= ""
 
 /obj/item/ashtray/attackby(obj/item/W as obj, mob/user as mob)
-	if (health < 1)
+	if(health < 1)
 		return
-	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/cigarette) || istype(W, /obj/item/tool/match))
-		if (contents.len >= max_butts)
+	if(istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/cigarette) || istype(W, /obj/item/tool/match))
+		if(contents.len >= max_butts)
 			to_chat(user, "This ashtray is full.")
 			return
 		var/drop = TRUE
 
-		if (istype(W,/obj/item/clothing/mask/cigarette))
+		if(istype(W,/obj/item/clothing/mask/cigarette))
 			var/obj/item/clothing/mask/cigarette/cig = W
 			if(cig.type_butt)
 				if(cig.heat_source)
@@ -25,7 +25,7 @@
 					var/obj/item/butt = cig.go_out(user, TRUE)
 					butt.forceMove(src)
 					drop = FALSE
-				else if (cig.heat_source == 0)
+				else if(cig.heat_source == 0)
 					to_chat(user, "You place \the [cig] in \the [src] without even smoking it. Why would you do that?")
 			else
 				drop = FALSE
@@ -42,35 +42,35 @@
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()
 		add_fingerprint(user)
-		if (contents.len == max_butts)
+		if(contents.len == max_butts)
 			icon_state = icon_full
 			desc = empty_desc + " It's stuffed full."
-		else if (contents.len > max_butts/2)
+		else if(contents.len > max_butts/2)
 			icon_state = icon_half
 			desc = empty_desc + " It's half-filled."
 	else
 		health = max(0,health - W.force)
 		to_chat(user, "You hit [src] with [W].")
-		if (health < 1)
+		if(health < 1)
 			die()
 	return
 
 /obj/item/ashtray/launch_impact(atom/hit_atom)
-	if (health > 0)
+	if(health > 0)
 		health = max(0,health - 3)
-		if (health < 1)
+		if(health < 1)
 			die()
 			return
-		if (contents.len)
+		if(contents.len)
 			src.visible_message(SPAN_DANGER("[src] slams into [hit_atom] spilling its contents!"))
-		for (var/obj/item/clothing/mask/cigarette/O in contents)
+		for(var/obj/item/clothing/mask/cigarette/O in contents)
 			O.forceMove(src.loc)
 		icon_state = icon_empty
 	return ..()
 
 /obj/item/ashtray/proc/die()
 	src.visible_message(SPAN_DANGER("[src] shatters spilling its contents!"))
-	for (var/obj/item/clothing/mask/cigarette/O in contents)
+	for(var/obj/item/clothing/mask/cigarette/O in contents)
 		O.forceMove(src.loc)
 	icon_state = icon_broken
 

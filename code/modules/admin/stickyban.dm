@@ -200,7 +200,7 @@
         return TRUE
 
     if(href_list["stickyban_update_query"])
-        var/query_data = input("Please input what to search for (this can include IPs, CIDs and ckeys):") as null|text
+        var/query_data = input("Please input what to search for(this can include IPs, CIDs and ckeys):") as null|text
 
         if(!query_data)
             return TRUE

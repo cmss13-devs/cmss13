@@ -27,7 +27,7 @@
 
 /obj/structure/window_frame/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
 
 /obj/structure/window_frame/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -71,11 +71,11 @@
 /obj/structure/window_frame/ex_act(var/power)
 	switch(power)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -141,7 +141,7 @@
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		take_damage((max_health / XENO_HITS_TO_DESTROY_WINDOW_FRAME) + 1)
 		return XENO_ATTACK_ACTION
-	else if (reinforced && user.claw_type >= CLAW_TYPE_SHARP)
+	else if(reinforced && user.claw_type >= CLAW_TYPE_SHARP)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		take_damage((max_health / XENO_HITS_TO_DESTROY_R_WINDOW_FRAME) + 1)

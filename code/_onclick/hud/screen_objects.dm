@@ -124,7 +124,7 @@
 
 		//Calculate fullness for etiher max storage, or for storage slots if the container has them
 		var/fullness = 0
-		if (S.storage_slots == null)
+		if(S.storage_slots == null)
 			fullness = round(10*total_w/S.max_storage_space)
 		else
 			fullness = round(10*S.contents.len/S.storage_slots)
@@ -157,7 +157,7 @@
 		screen_loc = null
 
 /obj/screen/gun/move/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
@@ -188,7 +188,7 @@
 		screen_loc = null
 
 /obj/screen/gun/run/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
@@ -218,7 +218,7 @@
 		screen_loc = null
 
 /obj/screen/gun/item/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
@@ -240,7 +240,7 @@
 		else icon_state = "gun0"
 
 /obj/screen/gun/mode/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 	user.ToggleGunMode()
 	return 1
@@ -257,7 +257,7 @@
 	user.zone_selected = selecting
 
 /obj/screen/zone_sel/clicked(var/mob/user, var/list/mods)
-	if (..())
+	if(..())
 		return 1
 
 	var/icon_x = text2num(mods["icon-x"])
@@ -402,7 +402,7 @@
 
 
 /obj/screen/inventory/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 	if(user.is_mob_incapacitated(TRUE))
 		return 1
@@ -438,13 +438,13 @@
 /obj/screen/throw_catch/clicked(var/mob/user, var/list/mods)
 	var/mob/living/carbon/C = user
 
-	if (!istype(C))
+	if(!istype(C))
 		return
 
 	if(user.is_mob_incapacitated())
 		return TRUE
 
-	if (mods["ctrl"])
+	if(mods["ctrl"])
 		C.toggle_throw_mode(THROW_MODE_HIGH)
 	else
 		C.toggle_throw_mode(THROW_MODE_NORMAL)
@@ -512,7 +512,7 @@
 	icon_state = "pull0"
 
 /obj/screen/pull/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 	user.stop_pulling()
 	return 1
@@ -627,7 +627,7 @@
 	icon_state = "nightvision_full"
 
 /obj/screen/xenonightvision/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 	var/mob/living/carbon/Xenomorph/X = user
 	X.toggle_nightvision()
@@ -662,7 +662,7 @@
 	icon_state = "other"
 
 /obj/screen/toggle_inv/clicked(var/mob/user)
-	if (..())
+	if(..())
 		return 1
 
 	if(user && user.hud_used)

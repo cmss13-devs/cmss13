@@ -73,7 +73,7 @@
 			"}
 
 	var/list/names = list()
-	for (var/V in global.vars)
+	for(var/V in global.vars)
 		names += V
 
 	names = sortList(names)
@@ -126,13 +126,13 @@
 		html += "<font color='#B300B3'>"
 		change = 1
 
-	if (isnull(value))
+	if(isnull(value))
 		html += "[name] = <span class='value'>null</span>"
 
-	else if (istext(value))
+	else if(istext(value))
 		html += "[name] = <span class='value'>\"[value]\"</span>"
 
-	else if (isicon(value))
+	else if(isicon(value))
 		#ifdef VARSICON
 		var/icon/I = new/icon(value)
 		var/rnd = rand(1,10000)
@@ -143,26 +143,26 @@
 		html += "[name] = /icon (<span class='value'>[value]</span>)"
 		#endif
 
-	else if (isfile(value))
+	else if(isfile(value))
 		html += "[name] = <span class='value'>'[value]'</span>"
 
-	else if (istype(value, /datum))
+	else if(istype(value, /datum))
 		var/datum/D = value
 		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
 
-	else if (istype(value, /client))
+	else if(istype(value, /client))
 		var/client/C = value
 		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
 
-	else if (istype(value, /list))
+	else if(istype(value, /list))
 		var/list/L = value
 		html += "[name] = /list ([L.len])"
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
+		if(L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
 			// not sure if this is completely right...
 			html += "<ul>"
 			var/index = 1
-			for (var/entry in L)
+			for(var/entry in L)
 				if(istext(entry))
 					html += debug_variable(entry, L[entry], level + 1)
 				//html += debug_variable("[index]", L[index], level + 1)
@@ -265,7 +265,7 @@
 				class = "file"
 	else
 		var/list/names = list()
-		for (var/V in global.vars)
+		for(var/V in global.vars)
 			names += V
 
 		names = sortList(names)

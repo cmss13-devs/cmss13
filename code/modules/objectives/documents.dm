@@ -33,7 +33,7 @@
 	SSobjectives.statistics["documents_total_points_earned"] += value
 	award_points()
 
-	if (user && user.mind)
+	if(user && user.mind)
 		user.mind.store_objective(document.retrieve_objective)
 
 	// Enable child objectives
@@ -149,11 +149,11 @@
 		var/clue = D.get_clue()
 
 		// Some objectives don't have clues.
-		if (!clue)
+		if(!clue)
 			continue
 
 		to_chat(user, SPAN_NOTICE("You make out something about [clue]."))
-		if (related_labels != "")
+		if(related_labels != "")
 			related_labels+=","
 		related_labels+=D.get_related_label()
 	to_chat(user, SPAN_INFO("You finish reading \the [src]."))
@@ -216,15 +216,15 @@
 	var/datum/cm_objective/document/folder/F = objective
 	var/col = pick("Red", "Black", "Blue", "Yellow", "White")
 	switch(col)
-		if ("Red")
+		if("Red")
 			folder_color = "#ed5353"
-		if ("Black")
+		if("Black")
 			folder_color = "#8f9494" //can't display black on black!
-		if ("Blue")
+		if("Blue")
 			folder_color = "#5296e3"
-		if ("Yellow")
+		if("Yellow")
 			folder_color = "#e3cd52"
-		if ("White")
+		if("White")
 			folder_color = "#e8eded"
 	icon_state = "folder_[lowertext(col)]"
 	F.color = col

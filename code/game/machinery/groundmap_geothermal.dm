@@ -30,7 +30,7 @@
 			if(100) icon_state = "on[power_gen_percent]"
 
 
-	else if (!buildstate && !is_on)
+	else if(!buildstate && !is_on)
 		icon_state = "off"
 		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently turned off and silent."
 	else
@@ -112,10 +112,10 @@
 	if(buildstate == 1)
 		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 		return 0
-	else if (buildstate == 2)
+	else if(buildstate == 2)
 		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 		return 0
-	else if (buildstate == 3)
+	else if(buildstate == 3)
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return 0
 	if(is_on)

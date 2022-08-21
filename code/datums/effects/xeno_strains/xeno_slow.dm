@@ -17,17 +17,17 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
 
-	if (ishuman(A))
+	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		H.update_xeno_hostile_hud()
 
 
 /datum/effects/xeno_slow/validate_atom(var/atom/A)
-	if (!ishuman(A) && !isXeno(A))
+	if(!ishuman(A) && !isXeno(A))
 		return FALSE
 
 	var/mob/M = A
-	if (M.stat == DEAD)
+	if(M.stat == DEAD)
 		return FALSE
 
 	. = ..()
@@ -43,7 +43,7 @@
 
 /datum/effects/xeno_slow/Destroy()
 
-	if (!ishuman(affected_atom))
+	if(!ishuman(affected_atom))
 		. = ..()
 		return
 

@@ -34,7 +34,7 @@
 	name = "Toggle Sleeping"
 
 /datum/player_action/mob_sleep/act(var/client/user, var/mob/target, var/list/params)
-	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
+	if(!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
 		target.sleeping = 0
 		target.RemoveSleepingIcon()
 	else

@@ -592,11 +592,11 @@
 		//This could 100% be coded as max(VEHICLE_TRAMPLE_DAMAGE_MIN, 22.5-4.5*X.tier) but I think this is more readable, plus it lets me avoid a special case for Queen/Larva/Abom.
 		var/damage_percentage = VEHICLE_TRAMPLE_DAMAGE_SPECIAL // Queen and abomb
 		switch (tier)
-			if (1)
+			if(1)
 				damage_percentage = VEHICLE_TRAMPLE_DAMAGE_TIER_1 // 2.5 * 9 = 22.5
-			if (2)
+			if(2)
 				damage_percentage = VEHICLE_TRAMPLE_DAMAGE_TIER_2 // 18%
-			if (3)
+			if(3)
 				damage_percentage = VEHICLE_TRAMPLE_DAMAGE_TIER_3 // 13.5%
 
 		//this adds more flexibility for trample damage
@@ -618,7 +618,7 @@
 	// If the mob is knocked down or was pushed away from the APC (aka have actual space to move), allow movement in desired direction
 	if(mob_knocked_down)
 		return TRUE
-	else if (mob_moved)
+	else if(mob_moved)
 		if(momentum_penalty)
 			V.move_momentum = Floor(V.move_momentum*0.8)
 			V.update_next_move()

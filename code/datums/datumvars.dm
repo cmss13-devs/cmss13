@@ -41,7 +41,7 @@
 		title = "[A.name] (\ref[A]) = [A.type]"
 
 		#ifdef VARSICON
-		if (A.icon)
+		if(A.icon)
 			body += debug_variable("icon", new/icon(A.icon, A.icon_state, A.dir), 0)
 		#endif
 
@@ -68,10 +68,10 @@
 					var vars_ol = document.getElementById('vars');
 					var lis = vars_ol.getElementsByTagName("li");
 
-					for ( var i = 0; i < lis.length; ++i )
+					for( var i = 0; i < lis.length; ++i )
 					{
 						var li = lis\[i\];
-						if ( li.innerText.toLowerCase().indexOf(filter) == -1 )
+						if( li.innerText.toLowerCase().indexOf(filter) == -1 )
 						{
 							li.style.display = "none"
 						} else {
@@ -200,19 +200,19 @@
 	body += "<ol id='vars'>"
 
 	var/list/names = list()
-	for (var/V in D.vars)
+	for(var/V in D.vars)
 		names += V
 
 	names = sortList(names)
 
-	for (var/V in names)
+	for(var/V in names)
 		CHECK_TICK
 		body += debug_variable(V, D.vars[V], 0, D)
 
 	body += "</ol>"
 
 	var/html = "<html><head>"
-	if (title)
+	if(title)
 		html += "<title>[title]</title>"
 	html += {"<style>
 body
@@ -288,13 +288,13 @@ body
 	else
 		html += "<li>"
 
-	if (isnull(value))
+	if(isnull(value))
 		html += "[name] = <span class='value'>null</span>"
 
-	else if (istext(value))
+	else if(istext(value))
 		html += "[name] = <span class='value'>\"[value]\"</span>"
 
-	else if (isicon(value))
+	else if(isicon(value))
 		#ifdef VARSICON
 		var/icon/I = new/icon(value)
 		var/rnd = rand(1,10000)
@@ -305,25 +305,25 @@ body
 		html += "[name] = /icon (<span class='value'>[value]</span>)"
 		#endif
 
-	else if (isfile(value))
+	else if(isfile(value))
 		html += "[name] = <span class='value'>'[value]'</span>"
 
-	else if (istype(value, /datum))
+	else if(istype(value, /datum))
 		var/datum/D = value
 		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
 
-	else if (istype(value, /client))
+	else if(istype(value, /client))
 		var/client/C = value
 		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
 //
-	else if (istype(value, /list))
+	else if(istype(value, /list))
 		var/list/L = value
 		html += "[name] = /list ([L.len])"
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
+		if(L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
 			html += "<ul>"
 			var/index = 1
-			for (var/entry in L)
+			for(var/entry in L)
 				if(istext(entry))
 					html += debug_variable(entry, L[entry], level + 1)
 				//html += debug_variable("[index]", L[index], level + 1)
@@ -1073,7 +1073,7 @@ body
 		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Revert to Default" + "Cancel"))
 		if(!matrix_name || matrix_name == "Cancel")
 			return
-		else if (matrix_name == "Revert to Default")
+		else if(matrix_name == "Revert to Default")
 			A.base_transform = null
 			A.transform = matrix()
 			A.disable_pixel_scaling()
@@ -1086,7 +1086,7 @@ body
 		A.base_transform = MX
 		A.transform = MX
 
-		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+		if(alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
 			A.enable_pixel_scaling()
 
 		href_list["datumrefresh"] = href_list["setmatrix"]

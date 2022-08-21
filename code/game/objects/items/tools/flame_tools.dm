@@ -742,7 +742,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 				else
 					to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
-					if (user.l_hand == src)
+					if(user.l_hand == src)
 						user.apply_damage(2,BURN,"l_hand")
 					else
 						user.apply_damage(2,BURN,"r_hand")

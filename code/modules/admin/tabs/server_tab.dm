@@ -3,7 +3,7 @@
 	set desc = "Restarts the world"
 	set category = "Server"
 
-	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 
 	if(!check_rights(R_DEBUG, FALSE) && SSticker.current_state != GAME_STATE_FINISHED)

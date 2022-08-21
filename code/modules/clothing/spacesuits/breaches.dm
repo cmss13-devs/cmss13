@@ -106,7 +106,7 @@ var/global/list/breach_burn_descriptors = list(
 		if(existing.damtype != damtype)
 			continue
 
-		if (existing.class < 5)
+		if(existing.class < 5)
 			var/needs = 5 - existing.class
 			if(amount < needs)
 				existing.class += amount
@@ -120,7 +120,7 @@ var/global/list/breach_burn_descriptors = list(
 			else if(existing.damtype == BURN)
 				T.visible_message(SPAN_WARNING("\The [existing.descriptor] on [src] widens!"))
 
-	if (amount)
+	if(amount)
 		//Spawn a new breach.
 		var/datum/breach/B = new()
 		breaches += B
@@ -200,7 +200,7 @@ var/global/list/breach_burn_descriptors = list(
 			to_chat(user, SPAN_DANGER("How do you intend to patch a hardsuit while someone is wearing it?"))
 			return
 
-		if (!damage || ! brute_damage)
+		if(!damage || ! brute_damage)
 			to_chat(user, "There is no structural damage on \the [src] to repair.")
 			return
 

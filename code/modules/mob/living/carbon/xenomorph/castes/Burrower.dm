@@ -98,14 +98,14 @@
 		return 0
 
 /mob/living/carbon/Xenomorph/Burrower/update_icons()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		icon_state = "[mutation_type] Burrower Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
 			icon_state = "[mutation_type] Burrower Sleeping"
 		else
 			icon_state = "[mutation_type] Burrower Knocked Down"
-	else if (burrow)
+	else if(burrow)
 		icon_state = "[mutation_type] Burrower Burrowed"
 	else
 		icon_state = "[mutation_type] Burrower Running"

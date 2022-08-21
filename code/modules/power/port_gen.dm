@@ -174,33 +174,33 @@ display round(lastgen) and phorontank amount
 	sheet_left -= temp
 	sheets -= round(needed_sheets)
 	needed_sheets -= round(needed_sheets)
-	if (sheet_left <= 0 && sheets > 0)
+	if(sheet_left <= 0 && sheets > 0)
 		sheet_left = 1 - needed_sheets
 		sheets--
 
 	var/lower_limit = 56 + power_output * 10
 	var/upper_limit = 76 + power_output * 10
 	var/bias = 0
-	if (power_output > 4)
+	if(power_output > 4)
 		upper_limit = 400
 		bias = power_output * 3
-	if (heat < lower_limit)
+	if(heat < lower_limit)
 		heat += 3
 	else
 		heat += rand(-7 + bias, 7 + bias)
-		if (heat < lower_limit)
+		if(heat < lower_limit)
 			heat = lower_limit
-		if (heat > upper_limit)
+		if(heat > upper_limit)
 			heat = upper_limit
 
-	if (heat > 300)
+	if(heat > 300)
 		overheat()
 		qdel(src)
 	return
 
 /obj/structure/machinery/power/port_gen/pacman/handleInactive()
 
-	if (heat > 0)
+	if(heat > 0)
 		heat = max(heat - 2, 0)
 		src.updateDialog()
 
@@ -246,10 +246,10 @@ display round(lastgen) and phorontank amount
 				if(I.reliability < 100)
 					I.crit_fail = 1
 				I.forceMove(src.loc)
-			while ( sheets > 0 )
+			while( sheets > 0 )
 				var/obj/item/stack/sheet/G = new sheet_path(src.loc)
 
-				if ( sheets > 50 )
+				if( sheets > 50 )
 					G.amount = 50
 				else
 					G.amount = sheets
@@ -262,7 +262,7 @@ display round(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/port_gen/pacman/attack_hand(mob/user as mob)
 	..()
-	if (!anchored)
+	if(!anchored)
 		return
 
 	interact(user)
@@ -271,8 +271,8 @@ display round(lastgen) and phorontank amount
 	interact(user)
 
 /obj/structure/machinery/power/port_gen/pacman/interact(mob/user)
-	if (get_dist(src, user) > 1 )
-		if (!isRemoteControlling(user))
+	if(get_dist(src, user) > 1 )
+		if(!isRemoteControlling(user))
 			user.unset_interaction()
 			close_browser(user, "port_gen")
 			return
@@ -280,7 +280,7 @@ display round(lastgen) and phorontank amount
 	user.set_interaction(src)
 
 	var/dat = text("<b>[name]</b><br>")
-	if (active)
+	if(active)
 		dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
 	else
 		dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
@@ -307,7 +307,7 @@ display round(lastgen) and phorontank amount
 				icon_state = "portgen1"
 				src.updateUsrDialog()
 		if(href_list["action"] == "disable")
-			if (active)
+			if(active)
 				active = 0
 				stop_processing()
 				icon_state = "portgen0"
@@ -317,14 +317,14 @@ display round(lastgen) and phorontank amount
 				DropFuel()
 				src.updateUsrDialog()
 		if(href_list["action"] == "lower_power")
-			if (power_output > 1)
+			if(power_output > 1)
 				power_output--
 				src.updateUsrDialog()
-		if (href_list["action"] == "higher_power")
-			if (power_output < 4)
+		if(href_list["action"] == "higher_power")
+			if(power_output < 4)
 				power_output++
 				src.updateUsrDialog()
-		if (href_list["action"] == "close")
+		if(href_list["action"] == "close")
 			close_browser(usr, "port_gen")
 			usr.unset_interaction()
 

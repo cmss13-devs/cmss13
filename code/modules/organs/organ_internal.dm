@@ -58,7 +58,7 @@
 		src.damage += amount
 
 	var/obj/limb/parent = owner.get_limb(parent_limb)
-	if (!silent)
+	if(!silent)
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
 
 /datum/internal_organ/proc/heal_damage(amount)
@@ -73,10 +73,10 @@
 			return
 		if(1)
 			switch (severity)
-				if (1.0)
+				if(1.0)
 					take_damage(20,0)
 					return
-				if (2.0)
+				if(2.0)
 					take_damage(7,0)
 					return
 				if(3.0)
@@ -84,10 +84,10 @@
 					return
 		if(2)
 			switch (severity)
-				if (1.0)
+				if(1.0)
 					take_damage(40,0)
 					return
-				if (2.0)
+				if(2.0)
 					take_damage(15,0)
 					return
 				if(3.0)
@@ -160,7 +160,7 @@
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 60 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
-			if (src.damage < min_broken_damage)
+			if(src.damage < min_broken_damage)
 				src.damage += 0.2 * PROCESS_ACCURACY
 			//Damaged one shares the fun
 			else
@@ -169,7 +169,7 @@
 					O.damage += 0.2 * PROCESS_ACCURACY
 
 		//Detox can heal small amounts of damage
-		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
+		if(src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
 			src.damage -= 0.2 * PROCESS_ACCURACY
 
 		if(src.damage < 0)

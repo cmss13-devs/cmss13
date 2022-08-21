@@ -237,7 +237,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
-	if (.)
+	if(.)
 		if(isSynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
 			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
@@ -817,7 +817,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		. |= COMPONENT_NO_BURN
 
 /obj/item/clothing/suit/storage/marine/M35/dropped(var/mob/user)
-	if (!istype(user))
+	if(!istype(user))
 		return
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_PREIGNITION,
@@ -841,7 +841,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /datum/action/item_action/specialist/fire_shield/action_cooldown_check()
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
-	if (!istype(armor))
+	if(!istype(armor))
 		return FALSE
 
 	return !armor.can_activate
@@ -853,7 +853,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /datum/action/item_action/specialist/fire_shield/action_activate()
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
-	if (!istype(armor))
+	if(!istype(armor))
 		return
 
 	armor.fire_shield()

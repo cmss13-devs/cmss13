@@ -65,10 +65,10 @@
 #define NEURO_TOUCH_DELAY 4 SECONDS
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/C)
-	if (!next_slash_buffed)
+	if(!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(C))
+	if(!isXenoOrHuman(C))
 		return original_damage
 
 	if(skillcheck(C, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
@@ -81,7 +81,7 @@
 			H.visible_message(SPAN_DANGER("[H] shrugs off the neurotoxin!"))
 			next_slash_buffed = FALSE
 			return //species like zombies or synths are immune to neurotoxin
-	if (next_slash_buffed)
+	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You add neurotoxin into your attack, [C] is about to fall over paralyzed!"))
 		to_chat(C, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		C.sway_jitter(times = 3, steps = round(NEURO_TOUCH_DELAY/3))

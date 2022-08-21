@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 /obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = get_shuttle()
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	var/shuttle_state
@@ -120,9 +120,9 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/shuttle_status
 	switch (shuttle.process_state)
 		if(IDLE_STATE)
-			if (shuttle.in_use)
+			if(shuttle.in_use)
 				shuttle_status = "Busy."
-			else if (!shuttle.location)
+			else if(!shuttle.location)
 				shuttle_status = "Standing by at station."
 			else
 				shuttle_status = "Standing by at an off-site location."
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, shuttle.iselevator? "elevator_control_console.tmpl" : "shuttle_control_console.tmpl", shuttle.iselevator? "Elevator Control" : "Shuttle Control", 550, 500)
 		ui.set_initial_data(data)
 		ui.open()
@@ -211,7 +211,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	add_fingerprint(usr)
 
 	var/datum/shuttle/ferry/shuttle = get_shuttle()
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	if(href_list["move"])
@@ -460,7 +460,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				reardoor.unlock()
 				to_chat(usr, SPAN_WARNING("You hear the rear door unlock."))
 			else
-				if (!reardoor.density)
+				if(!reardoor.density)
 					reardoor.close()
 				reardoor.lock()
 				to_chat(usr, SPAN_WARNING("You hear the rear door lock."))

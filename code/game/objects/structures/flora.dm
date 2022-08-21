@@ -477,10 +477,10 @@ ICE GRASS
 
 
 /obj/structure/flora/jungle/thickbush/Collided(M as mob)
-	if (istype(M, /mob/living/simple_animal))
+	if(istype(M, /mob/living/simple_animal))
 		var/mob/living/simple_animal/A = M
 		A.forceMove(get_turf(src))
-	else if (ismonkey(M))
+	else if(ismonkey(M))
 		var/mob/A = M
 		A.forceMove(get_turf(src))
 

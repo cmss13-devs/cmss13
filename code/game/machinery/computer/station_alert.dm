@@ -40,17 +40,17 @@
 
 	var/list/L = alarms[class]
 	for(var/I in L)
-		if (I == A.name)
+		if(I == A.name)
 			var/list/alarm = L[I]
 			var/list/sources = alarm[3]
-			if (!(source in sources))
+			if(!(source in sources))
 				sources += source
 			return 1
 	var/obj/structure/machinery/camera/C = null
 	var/list/CL = null
 	if(O && islist(O))
 		CL = O
-		if (CL.len == 1)
+		if(CL.len == 1)
 			C = CL[1]
 	else if(O && istype(O, /obj/structure/machinery/camera))
 		C = O
@@ -62,13 +62,13 @@
 		return
 	var/list/L = alarms[class]
 	var/cleared = 0
-	for (var/I in L)
-		if (I == A.name)
+	for(var/I in L)
+		if(I == A.name)
 			var/list/alarm = L[I]
 			var/list/srcs  = alarm[3]
-			if (origin in srcs)
+			if(origin in srcs)
 				srcs -= origin
-			if (srcs.len == 0)
+			if(srcs.len == 0)
 				cleared = 1
 				L -= I
 	return !cleared
@@ -78,7 +78,7 @@
 		icon_state = "atmos0"
 		return
 	var/active_alarms = 0
-	for (var/cat in src.alarms)
+	for(var/cat in src.alarms)
 		var/list/L = src.alarms[cat]
 		if(L.len) active_alarms = 1
 	if(active_alarms)

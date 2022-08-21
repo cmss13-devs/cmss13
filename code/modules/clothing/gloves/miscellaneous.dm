@@ -74,21 +74,21 @@
 	var/mob/living/M = loc
 	var/painforce = pain_dam
 	var/boxing_verb = pick(attack_verb)
-	if (A in range(1, M))
+	if(A in range(1, M))
 		if(isliving(A) && M.a_intent == INTENT_HARM)
 			if(isYautja(A))
 				return 0
-			if (ishuman(A))
+			if(ishuman(A))
 				var/mob/living/carbon/human/L = A
 				var/boxing_icon = pick("boxing_up","boxing_down","boxing_left","boxing_right")
-				if (!istype(L.gloves, /obj/item/clothing/gloves/boxing))
+				if(!istype(L.gloves, /obj/item/clothing/gloves/boxing))
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're not wearing boxing gloves!"))
 					return 1
-				if (L.halloss > 100)
+				if(L.halloss > 100)
 					playsound(loc, knockout_sound, 50, FALSE)
 					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")))
 					return 1
-				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
+				if(L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
 					return 1
 				M.visible_message(SPAN_DANGER("[M] [boxing_verb] [A]!"))

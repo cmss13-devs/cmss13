@@ -131,7 +131,7 @@
 		if(STATE_CIRCUIT)
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = W
-				if (C.get_amount() < 1)
+				if(C.get_amount() < 1)
 					to_chat(user, SPAN_WARNING("You need one length of coil to wire the airlock assembly."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to wire the circuit."))
@@ -172,7 +172,7 @@
 				var/path
 				if(istext(glass))
 					path = text2path("/obj/structure/machinery/door/airlock/[glass]")
-				else if (glass == 1)
+				else if(glass == 1)
 					path = text2path("/obj/structure/machinery/door/airlock[glass_type]")
 				else
 					path = text2path("/obj/structure/machinery/door/airlock[airlock_type]")
@@ -199,7 +199,7 @@
 	icon_state = "door_as_[state]"
 	if(glass == 1)
 		icon_state = "door_as_g[state]"
-	else if (istext(glass))
+	else if(istext(glass))
 		icon_state = "door_as_[glass][state]"
 	else
 		icon_state = "door_as_[base_icon_state][state]"

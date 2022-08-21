@@ -64,7 +64,7 @@
 /proc/islinked(var/mob/living/silicon/robot/bot, var/mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
 		return 0
-	if (bot.connected_ai == ai)
+	if(bot.connected_ai == ai)
 		return 1
 	return 0
 
@@ -111,15 +111,15 @@
 	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	if (..(language) && can_speak)
+	if(..(language) && can_speak)
 		speech_synthesizer_langs.Add(GLOB.all_languages[language])
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
 	..(rem_language)
 
-	for (var/datum/language/L in speech_synthesizer_langs)
-		if (L.name == rem_language)
+	for(var/datum/language/L in speech_synthesizer_langs)
+		if(L.name == rem_language)
 			speech_synthesizer_langs -= L
 
 /mob/living/silicon/check_languages()
@@ -193,14 +193,14 @@
 
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (stat != 2)
+			if(stat != 2)
 				apply_damage(30, BRUTE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (stat != 2)
+			if(stat != 2)
 				apply_damage(60, BRUTE)
 				apply_damage(60, BURN)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			if (stat != 2)
+			if(stat != 2)
 				apply_damage(100, BRUTE)
 				apply_damage(100, BURN)
 				if(!anchored)

@@ -1,5 +1,5 @@
 /proc/notes_add(var/key, var/note, var/mob/usr)
-	if (!key || !note)
+	if(!key || !note)
 		return
 
 	//Loading list of notes for this key
@@ -24,7 +24,7 @@
 	var/day_loc = findtext(full_date, time2text(world.timeofday, "DD"))
 
 	var/datum/player_info/P = new
-	if (usr)
+	if(usr)
 		P.author = usr.key
 		if(usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 			P.rank = usr.client.admin_holder.rank

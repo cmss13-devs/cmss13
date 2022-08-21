@@ -93,7 +93,7 @@
 	var/turf/initial_turf = get_turf(initial_spot)
 
 	var/job_name
-	if (istext(href_list["create_humans_list"]))
+	if(istext(href_list["create_humans_list"]))
 		job_name = href_list["create_humans_list"]
 	else
 		alert("Select fewer paths, (max 1)")
@@ -142,7 +142,7 @@
 
 			humans += H
 
-		if (offer_as_ert)
+		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
 			em_call.name = name
@@ -163,14 +163,14 @@
 	var/turf/initial_turf = get_turf(initial_spot)
 
 	var/xeno_hive
-	if (istext(href_list["create_hive_list"]))
+	if(istext(href_list["create_hive_list"]))
 		xeno_hive = href_list["create_hive_list"]
 	else
 		alert("Select fewer hive paths, (max 1)")
 		return
 
 	var/xeno_caste
-	if (istext(href_list["create_xenos_list"]))
+	if(istext(href_list["create_xenos_list"]))
 		xeno_caste = href_list["create_xenos_list"]
 	else
 		alert("Select fewer xeno paths, (max 1)")
@@ -219,7 +219,7 @@
 
 			xenos += X
 
-		if (offer_as_ert)
+		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
 			em_call.name = name

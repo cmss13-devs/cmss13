@@ -34,7 +34,7 @@
 	set category = "Object"
 	set src in usr
 
-	if (t)
+	if(t)
 		src.name = text("data disk- '[]'", t)
 	else
 		src.name = "data disk"
@@ -390,7 +390,7 @@
 		var/msg = "There [fallen_names.len>1 ? \
 			"are [fallen_names.len] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
-		for (var/i=1 to fallen_names.len)
+		for(var/i=1 to fallen_names.len)
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
 		to_chat(user, SPAN_NOTICE("[msg]"))
 

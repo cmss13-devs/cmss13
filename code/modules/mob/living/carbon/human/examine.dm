@@ -195,7 +195,7 @@
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
-	if (stat)
+	if(stat)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
@@ -378,56 +378,56 @@
 	if(is_bleeding["right foot"])
 		display_foot_right = 1
 
-	if (display_head)
+	if(display_head)
 		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>face</b>!\n")
 
-	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
+	if(display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
 		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>entire body</b>!\n")
 	else
-		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
+		if(display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
 			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>upper body</b>!\n")
 		else
-			if (display_chest)
+			if(display_chest)
 				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>shirt</b>!\n")
-			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
+			if(display_arm_left && display_arm_right && display_hand_left && display_hand_left)
 				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>gloves</b> and <b>sleeves</b>!\n")
 			else
-				if (display_arm_left && display_arm_right)
+				if(display_arm_left && display_arm_right)
 					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>sleeves</b>!\n")
 				else
-					if (display_arm_left)
+					if(display_arm_left)
 						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left sleeve</b>!\n")
-					if (display_arm_right)
+					if(display_arm_right)
 						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right sleeve</b>!\n")
-				if (display_hand_left && display_hand_right)
+				if(display_hand_left && display_hand_right)
 					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>gloves</b>!\n")
 				else
-					if (display_hand_left)
+					if(display_hand_left)
 						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>left glove</b>!\n")
-					if (display_hand_right)
+					if(display_hand_right)
 						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>right glove</b>!\n")
 
-		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
+		if(display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
 			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>lower body!</b>\n")
 		else
-			if (display_groin)
+			if(display_groin)
 				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>groin</b>!\n")
-			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
+			if(display_leg_left && display_leg_right && display_foot_left && display_foot_right)
 				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b> and <b>boots</b>!\n")
 			else
-				if (display_leg_left && display_leg_right)
+				if(display_leg_left && display_leg_right)
 					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b>!\n")
 				else
-					if (display_leg_left)
+					if(display_leg_left)
 						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left pant leg</b>!\n")
-					if (display_leg_right)
+					if(display_leg_right)
 						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right pant leg</b>!\n")
-				if (display_foot_left && display_foot_right)
+				if(display_foot_left && display_foot_right)
 					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] <b>boots</b>!\n")
 				else
-					if (display_foot_left)
+					if(display_foot_left)
 						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>left boot</b>!\n")
-					if (display_foot_right)
+					if(display_foot_right)
 						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>right boot</b>!\n")
 
 	if(chestburst == 2)
@@ -447,7 +447,7 @@
 			var/criminal = "None"
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] == perpref)
-					for (var/datum/data/record/R in GLOB.data_core.security)
+					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
@@ -463,7 +463,7 @@
 		var/datum/data/record/N = null
 		var/me_ref = WEAKREF(src)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["ref"] == me_ref)
+			if(R.fields["ref"] == me_ref)
 				N = R
 				break
 		if(!isnull(N))
@@ -485,7 +485,7 @@
 
 	msg += "*---------*</span>"
 
-	if (pose)
+	if(pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
@@ -516,7 +516,7 @@
 /proc/hasHUD(mob/M, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if (isSynth(H))
+		if(isSynth(H))
 			return 1
 		switch(hudtype)
 			if("security")

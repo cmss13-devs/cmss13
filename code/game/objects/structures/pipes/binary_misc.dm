@@ -100,7 +100,7 @@ obj/structure/pipes/binary/passive_gate
 	set name = "Rotate Circulator (Clockwise)"
 	set src in view(1)
 
-	if (usr.stat || usr.is_mob_restrained() || anchored)
+	if(usr.stat || usr.is_mob_restrained() || anchored)
 		return
 
 	src.setDir(turn(src.dir, 90))
@@ -111,7 +111,7 @@ obj/structure/pipes/binary/passive_gate
 	set name = "Rotate Circulator (Counterclockwise)"
 	set src in view(1)
 
-	if (usr.stat || usr.is_mob_restrained() || anchored)
+	if(usr.stat || usr.is_mob_restrained() || anchored)
 		return
 
 	src.setDir(turn(src.dir, -90))

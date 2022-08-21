@@ -24,7 +24,7 @@
 	to_chat(usr, SPAN_INFO(msg))
 
 /obj/item/device/motiondetector/intel/update_icon()
-	if (active)
+	if(active)
 		icon_state = "[initial(icon_state)]_on_[detector_mode]"
 	else
 		icon_state = "[initial(icon_state)]"

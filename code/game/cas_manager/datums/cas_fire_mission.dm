@@ -106,7 +106,7 @@
 			relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
+		if(M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
@@ -124,7 +124,7 @@
 			relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
+		if(M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
@@ -163,7 +163,7 @@
 			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
 				continue
 			var/offset = item.offsets[step]
-			if (current_turf == null)
+			if(current_turf == null)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/A = get_area(shootloc)

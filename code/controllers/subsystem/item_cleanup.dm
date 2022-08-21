@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(item_cleanup)
 	var/to_delete = items_to_clean_up.len * percentage_of_garbage_to_delete
 	var/deleted = 0
 	var/total_items = items_to_clean_up.len //save total before we start deleting stuff
-	for (var/atom/o in items_to_clean_up)
+	for(var/atom/o in items_to_clean_up)
 		if(QDELETED(o))
 			items_to_clean_up -= o
 			remove_from_garbage(o)

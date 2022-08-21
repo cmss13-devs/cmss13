@@ -460,7 +460,7 @@
 	if(flags_item & NODROP)	return
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		stop_aim()
-		if (user.client)
+		if(user.client)
 			user.update_gun_icons()
 
 	unwield(user)
@@ -669,7 +669,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "weapon_stats.tmpl", "USCM Weapon Codex", 850, 915)
 		ui.set_initial_data(data)
 		ui.set_auto_update(FALSE)
@@ -893,7 +893,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!user || !user.client || !user.client.prefs)
 		return FALSE
 	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
-		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
 			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
@@ -1004,11 +1004,11 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+				if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+				else if(!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 					var/drop_to_ground = TRUE
-					if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+					if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 						drop_to_ground = FALSE
 						unwield(user)
 						user.swap_hand()
@@ -1103,7 +1103,7 @@ and you're good to go.
 		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 			break //If you drop it while bursting, for example.
 
-		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
+		if(bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
 			break
 
 		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
@@ -1300,7 +1300,7 @@ and you're good to go.
 		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 			break //If you drop it while bursting, for example.
 
-		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
+		if(bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
 			break
 
 		if(QDELETED(M)) //Target deceased.
@@ -1564,7 +1564,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				playsound(user, active_attachable.fire_sound, 50)
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
-				if (firing_sndfreq && fire_rattle)
+				if(firing_sndfreq && fire_rattle)
 					playsound(user, fire_rattle, 60, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 				else
 					playsound(user, actual_sound, 60, firing_sndfreq)

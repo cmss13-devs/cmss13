@@ -17,7 +17,7 @@
 	var/mob/living/carbon/human/H = user
 
 	new gun_type(get_turf(H))
-	for (var/i in 1 to ammo_type_count)
+	for(var/i in 1 to ammo_type_count)
 		new ammo_type(get_turf(H))
 
 	qdel(src)
@@ -63,12 +63,12 @@
 	return charged
 
 /obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(var/user)
-	if (charged)
+	if(charged)
 		to_chat(user, SPAN_WARNING("Your railgun is already charged."))
 		return
 
 	to_chat(user, SPAN_WARNING("You start charging your railgun."))
-	if (!do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(user, SPAN_WARNING("You stop charging your railgun."))
 		return
 
@@ -78,15 +78,15 @@
 	return
 
 /obj/item/weapon/gun/rifle/techweb_railgun/on_enter_storage()
-	if (charged)
+	if(charged)
 		abort_charge()
 	. = ..()
 
 /obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(var/user)
-	if (!charged)
+	if(!charged)
 		return
 	charged = FALSE
-	if (user)
+	if(user)
 		to_chat(user, SPAN_WARNING("You depower your railgun to store it."))
 	return
 
@@ -108,12 +108,12 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/techweb_railgun/unique_action(mob/user)
-	if (in_chamber)
+	if(in_chamber)
 		to_chat(user, SPAN_WARNING("There's already a round chambered!"))
 		return
 
 	var/result = load_into_chamber()
-	if (result)
+	if(result)
 		to_chat(user, SPAN_WARNING("You run the bolt on [src], chambering a round!"))
 	else
 		to_chat(user, SPAN_WARNING("You run the bolt on [src], but it's out of rounds!"))
@@ -129,7 +129,7 @@
 	name = "Start Charging"
 
 /datum/action/item_action/techweb_railgun_start_charge/action_activate()
-	if (target)
+	if(target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.start_charging(owner)
 
@@ -137,7 +137,7 @@
 	name = "Abort Charge"
 
 /datum/action/item_action/techweb_railgun_abort_charge/action_activate()
-	if (target)
+	if(target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.abort_charge(owner)
 
@@ -167,5 +167,5 @@
 	damage_falloff = 0
 
 /datum/ammo/bullet/sniper/railgun/on_hit_mob(mob/M, _unused)
-	if (isXeno(M))
+	if(isXeno(M))
 		M.Slow(1)

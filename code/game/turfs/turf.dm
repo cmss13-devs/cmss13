@@ -72,7 +72,7 @@
 	visibilityChanged()
 
 	pass_flags = pass_flags_cache[type]
-	if (isnull(pass_flags))
+	if(isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
 		pass_flags_cache[type] = pass_flags
@@ -132,7 +132,7 @@
 
 // Handles whether an atom is able to enter the src turf
 /turf/Enter(atom/movable/mover, atom/forget)
-	if (!mover || !isturf(mover.loc))
+	if(!mover || !isturf(mover.loc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -144,7 +144,7 @@
 		return TRUE
 
 	var/fdir = get_dir(mover, src)
-	if (!fdir)
+	if(!fdir)
 		return TRUE
 
 	var/fd1 = fdir&(fdir-1) // X-component if fdir diagonal, 0 otherwise
@@ -158,17 +158,17 @@
 
 	T = mover.loc
 	blocking_dir |= T.BlockedExitDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(T)
 		return FALSE
-	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+	for(obstacle in T) //First, check objects to block exit
+		if(mover == obstacle || forget == obstacle)
 			continue
 		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
+		if(!istype(A) || !A.can_block_movement)
 			continue
 		blocking_dir |= A.BlockedExitDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			mover.Collide(A)
 			return FALSE
 
@@ -177,57 +177,57 @@
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
 			T = get_step(mover, fd1)
-			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
+			if(T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
 				if(forget == obstacle)
 					continue
 				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
+				if(!istype(A) || !A.can_block_movement)
 					continue
-				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				if(A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
 					blocking_dir |= fd1
-					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 						mover.Collide(A)
 						return FALSE
 
 		// Check for borders in adjacent turf NORTH/SOUTH
 		if(fd2 && fd2 != fdir)
 			T = get_step(mover, fd2)
-			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
+			if(T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
 				if(forget == obstacle)
 					continue
 				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
+				if(!istype(A) || !A.can_block_movement)
 					continue
-				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				if(A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
 					blocking_dir |= fd2
-					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 						mover.Collide(A)
 						return FALSE
 					break
 
 	//Next, check the turf itself
 	blocking_dir |= BlockedPassDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(src)
 		return FALSE
 	for(obstacle in src) //Then, check atoms in the target turf
 		if(forget == obstacle)
 			continue
 		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
+		if(!istype(A) || !A.can_block_movement)
 			continue
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			if(!mover.Collide(A))
 				return FALSE
 
@@ -636,8 +636,8 @@
 
 /turf/proc/get_pylon_protection_level()
 	var/protection_level = TURF_PROTECTION_NONE
-	for (var/atom/pylon in linked_pylons)
-		if (pylon.loc != null)
+	for(var/atom/pylon in linked_pylons)
+		if(pylon.loc != null)
 			var/obj/effect/alien/resin/special/pylon/P = pylon
 
 			if(!istype(P))

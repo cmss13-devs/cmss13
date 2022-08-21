@@ -81,7 +81,7 @@
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_MOB_IS_OTHER
 		PF.flags_can_pass_all = PASS_MOB_THRU_OTHER|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
@@ -97,20 +97,20 @@
 
 	if(!client || !client.prefs)	return
 
-	if (type)
+	if(type)
 		if(type & 1 && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
-			if (!alt)
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
-			if (!alt)
+		if(type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-				if (type & 1 && (sdisabilities & DISABILITY_BLIND))
+				if(type & 1 && (sdisabilities & DISABILITY_BLIND))
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
@@ -184,7 +184,7 @@
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[]", msg))
+		if(M.real_name == text("[]", msg))
 			return M
 	return 0
 
@@ -282,7 +282,7 @@
 /mob/proc/sync_lighting_plane_alpha()
 	if(hud_used)
 		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
-		if (lighting)
+		if(lighting)
 			lighting.alpha = lighting_alpha
 
 
@@ -300,12 +300,12 @@
 /mob/proc/reset_view(atom/A)
 	if(SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW, A) & COMPONENT_OVERRIDE_VIEW) return TRUE
 
-	if (client)
-		if (istype(A, /atom/movable))
+	if(client)
+		if(istype(A, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE
 			client.eye = A
 		else
-			if (isturf(loc))
+			if(isturf(loc))
 				client.eye = client.mob
 				client.perspective = MOB_PERSPECTIVE
 			else
@@ -371,7 +371,7 @@
 		to_chat(src, SPAN_ALERT("Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a>"))
 
 /mob/proc/print_flavor_text()
-	if (flavor_text && flavor_text != "")
+	if(flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
 		if(length(msg) <= 40)
 			return SPAN_NOTICE("[msg]")
@@ -421,10 +421,10 @@
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
-	if (AM.anchored || AM.throwing)
+	if(AM.anchored || AM.throwing)
 		return
 
 	if(throwing || is_mob_incapacitated())
@@ -676,7 +676,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 		if(pulledby && pulledby.grab_level == GRAB_CARRY)
 			layer = ABOVE_MOB_LAYER
-		else if (stat == DEAD)
+		else if(stat == DEAD)
 			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 		else if(layer == initial(layer)) //to avoid things like hiding larvas.
 			layer = LYING_LIVING_MOB_LAYER

@@ -266,7 +266,7 @@
 		else if(X.acid_level == 3)
 			acid_cost = 200
 
-		if (!X.check_plasma(acid_cost))
+		if(!X.check_plasma(acid_cost))
 			to_chat(X, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 			return XENO_NO_DELAY_ACTION
 
@@ -275,7 +275,7 @@
 		if(!do_after(X, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
 
-		if (!X.check_plasma(acid_cost))
+		if(!X.check_plasma(acid_cost))
 			return XENO_NO_DELAY_ACTION
 
 		X.use_plasma(acid_cost)
@@ -313,18 +313,18 @@
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else
 		var/mob/living/carbon/Xenomorph/X = user
-		if (!istype(X))
+		if(!istype(X))
 			return
 
-		if (X.hivenumber != hivenumber)
+		if(X.hivenumber != hivenumber)
 			to_chat(user, SPAN_XENOWARNING("This resin hole doesn't belong to your hive!"))
 			return
 
-		if (FH.hivenumber != hivenumber)
+		if(FH.hivenumber != hivenumber)
 			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
 			return
 
-		if (!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
 			return
 
 		set_state(RESIN_TRAP_HUGGER)

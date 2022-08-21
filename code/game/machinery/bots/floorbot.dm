@@ -47,7 +47,7 @@
 
 /obj/structure/machinery/bot/floorbot/attack_hand(mob/user as mob)
 	. = ..()
-	if (.)
+	if(.)
 		return
 	usr.set_interaction(src)
 	interact(user)
@@ -64,7 +64,7 @@
 		dat += "Finds tiles: <A href='?src=\ref[src];operation=tiles'>[src.eattiles ? "Yes" : "No"]</A><BR>"
 		dat += "Make singles pieces of metal into tiles when empty: <A href='?src=\ref[src];operation=make'>[src.maketiles ? "Yes" : "No"]</A><BR>"
 		var/bmode
-		if (src.targetdirection)
+		if(src.targetdirection)
 			bmode = dir2text(src.targetdirection)
 		else
 			bmode = "Disabled"
@@ -104,7 +104,7 @@
 	src.add_fingerprint(usr)
 	switch(href_list["operation"])
 		if("start")
-			if (src.on)
+			if(src.on)
 				turn_off()
 			else
 				turn_on()
@@ -164,7 +164,7 @@
 	if(!src.target || src.target == null)
 		if(targetdirection != null)
 			/*
-			for (var/turf/open/space/D in view(7,src))
+			for(var/turf/open/space/D in view(7,src))
 				if(!(D in floorbottargets) && D != src.oldtarget)			// Added for bridging mode -- TLE
 					if(get_dir(src, D) == targetdirection)
 						src.oldtarget = D
@@ -176,13 +176,13 @@
 				src.oldtarget = T
 				src.target = T
 		if(!src.target || src.target == null)
-			for (var/turf/open/space/D in view(7,src))
+			for(var/turf/open/space/D in view(7,src))
 				if(!(D in floorbottargets) && D != src.oldtarget && (D.loc.name != "Space"))
 					src.oldtarget = D
 					src.target = D
 					break
 		if((!src.target || src.target == null ) && src.improvefloors)
-			for (var/turf/open/floor/F in view(7,src))
+			for(var/turf/open/floor/F in view(7,src))
 				if(!(F in floorbottargets) && F != src.oldtarget && F.icon_state == "Floor1" && !(istype(F, /turf/open/floor/plating)))
 					src.oldtarget = F
 					src.target = F
@@ -205,7 +205,7 @@
 				src.path = AStar(src.loc, src.target.loc, /turf/proc/AdjacentTurfsSpace, /turf/proc/Distance, 0, 30, id=botcard)
 			else
 				src.path = AStar(src.loc, src.target, /turf/proc/AdjacentTurfsSpace, /turf/proc/Distance, 0, 30, id=botcard)
-			if (!src.path) src.path = list()
+			if(!src.path) src.path = list()
 			if(src.path.len == 0)
 				src.oldtarget = src.target
 				src.target = null
@@ -318,10 +318,10 @@
 
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 
-	if (prob(50))
+	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
-	while (amount)//Dumps the tiles into the appropriate sized stacks
+	while(amount)//Dumps the tiles into the appropriate sized stacks
 		if(amount >= 16)
 			var/obj/item/stack/tile/plasteel/T = new (Tsec)
 			T.amount = 16
@@ -347,7 +347,7 @@
 		return
 	for(var/mob/M in content_watchers)
 		storage_close(M)
-	if (T.use(10))
+	if(T.use(10))
 		var/obj/item/frame/toolbox_tiles/B = new /obj/item/frame/toolbox_tiles
 		user.put_in_hands(B)
 		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))

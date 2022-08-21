@@ -42,12 +42,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/simple/register()
 	for(var/asset_name in assets)
 		var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
-		if (!ACI)
+		if(!ACI)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
-		if (legacy)
+		if(legacy)
 			ACI.legacy = legacy
-		if (keep_local_name)
+		if(keep_local_name)
 			ACI.keep_local_name = keep_local_name
 		assets[asset_name] = ACI
 
@@ -56,7 +56,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset/simple/get_url_mappings()
 	. = list()
-	for (var/asset_name in assets)
+	for(var/asset_name in assets)
 		.[asset_name] = SSassets.transport.get_asset_url(asset_name, assets[asset_name])
 
 
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	var/list/sprites = list()  // "foo_bar" -> list("32x32", 5)
 
 /datum/asset/spritesheet/register()
-	if (!name)
+	if(!name)
 		CRASH("spritesheet [type] cannot register without a name")
 	ensure_stripped()
 	for(var/size_id in sizes)
@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	fdel(fname)
 
 /datum/asset/spritesheet/send(client/C)
-	if (!name)
+	if(!name)
 		return
 	var/all = list("spritesheet_[name].css")
 	for(var/size_id in sizes)
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	. = SSassets.transport.send_assets(C, all)
 
 /datum/asset/spritesheet/get_url_mappings()
-	if (!name)
+	if(!name)
 		return
 	. = list("spritesheet_[name].css" = SSassets.transport.get_asset_url("spritesheet_[name].css"))
 	for(var/size_id in sizes)
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet/proc/ensure_stripped(sizes_to_strip = sizes)
 	for(var/size_id in sizes_to_strip)
 		var/size = sizes[size_id]
-		if (size[SPRSZ_STRIPPED])
+		if(size[SPRSZ_STRIPPED])
 			continue
 
 		// save flattened version
@@ -144,12 +144,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet/proc/generate_css()
 	var/list/out = list()
 
-	for (var/size_id in sizes)
+	for(var/size_id in sizes)
 		var/size = sizes[size_id]
 		var/icon/tiny = size[SPRSZ_ICON]
 		out += ".[name][size_id]{display:inline-block;width:[tiny.Width()]px;height:[tiny.Height()]px;background:url('[SSassets.transport.get_asset_url("[name]_[size_id].png")]') no-repeat;}"
 
-	for (var/sprite_id in sprites)
+	for(var/sprite_id in sprites)
 		var/sprite = sprites[sprite_id]
 		var/size_id = sprite[SPR_SIZE]
 		var/idx = sprite[SPR_IDX]
@@ -167,15 +167,15 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset/spritesheet/proc/Insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
-	if (!I || !length(icon_states(I)))  // that direction or state doesn't exist
+	if(!I || !length(icon_states(I)))  // that direction or state doesn't exist
 		return
 	var/size_id = "[I.Width()]x[I.Height()]"
 	var/size = sizes[size_id]
 
-	if (sprites[sprite_name])
+	if(sprites[sprite_name])
 		CRASH("duplicate sprite \"[sprite_name]\" in sheet [name] ([type])")
 
-	if (size)
+	if(size)
 		var/position = size[SPRSZ_COUNT]++
 		var/icon/sheet = size[SPRSZ_ICON]
 		size[SPRSZ_STRIPPED] = null
@@ -186,14 +186,14 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		sprites[sprite_name] = list(size_id, 0)
 
 /datum/asset/spritesheet/proc/InsertAll(prefix, icon/I, list/directions)
-	if (length(prefix))
+	if(length(prefix))
 		prefix = "[prefix]-"
 
-	if (!directions)
+	if(!directions)
 		directions = list(SOUTH)
 
-	for (var/icon_state_name in icon_states(I))
-		for (var/direction in directions)
+	for(var/icon_state_name in icon_states(I))
+		for(var/direction in directions)
 			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]-" : ""
 			Insert("[prefix][prefix2][icon_state_name]", I, icon_state=icon_state_name, dir=direction)
 
@@ -205,14 +205,14 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset/spritesheet/proc/icon_tag(sprite_name)
 	var/sprite = sprites[sprite_name]
-	if (!sprite)
+	if(!sprite)
 		return null
 	var/size_id = sprite[SPR_SIZE]
 	return {"<span class="[name][size_id] [sprite_name]"></span>"}
 
 /datum/asset/spritesheet/proc/icon_class_name(sprite_name)
 	var/sprite = sprites[sprite_name]
-	if (!sprite)
+	if(!sprite)
 		return null
 	var/size_id = sprite[SPR_SIZE]
 	return {"[name][size_id] [sprite_name]"}
@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	var/list/assets
 
 /datum/asset/spritesheet/simple/register()
-	for (var/key in assets)
+	for(var/key in assets)
 		Insert(key, assets[key])
 	..()
 
@@ -248,12 +248,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	for(var/icon_state_name in icon_states(_icon))
 		for(var/direction in directions)
 			var/asset = icon(_icon, icon_state_name, direction, frame, movement_states)
-			if (!asset)
+			if(!asset)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
 			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]." : ""
 			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
-			if (generic_icon_names)
+			if(generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"
 
 			SSassets.transport.register_asset(asset_name, asset)
@@ -278,31 +278,31 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	var/list/parents = list()
 
 /datum/asset/simple/namespaced/register()
-	if (legacy)
+	if(legacy)
 		assets |= parents
 	var/list/hashlist = list()
 	var/list/sorted_assets = sortList(assets)
 
-	for (var/asset_name in sorted_assets)
+	for(var/asset_name in sorted_assets)
 		var/datum/asset_cache_item/ACI = new(asset_name, sorted_assets[asset_name])
-		if (!ACI?.hash)
+		if(!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
 		hashlist += ACI.hash
 		sorted_assets[asset_name] = ACI
 	var/namespace = md5(hashlist.Join())
 
-	for (var/asset_name in parents)
+	for(var/asset_name in parents)
 		var/datum/asset_cache_item/ACI = new(asset_name, parents[asset_name])
-		if (!ACI?.hash)
+		if(!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
 		ACI.namespace_parent = TRUE
 		sorted_assets[asset_name] = ACI
 
-	for (var/asset_name in sorted_assets)
+	for(var/asset_name in sorted_assets)
 		var/datum/asset_cache_item/ACI = sorted_assets[asset_name]
-		if (!ACI?.hash)
+		if(!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
 		ACI.namespace = namespace
@@ -324,11 +324,11 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	SSassets.transport.register_asset(item_filename, file("html/changelogs/archive/" + item_filename))
 
 /datum/asset/changelog_item/send(client)
-	if (!item_filename)
+	if(!item_filename)
 		return
 	. = SSassets.transport.send_assets(client, item_filename)
 
 /datum/asset/changelog_item/get_url_mappings()
-	if (!item_filename)
+	if(!item_filename)
 		return
 	. = list("[item_filename]" = SSassets.transport.get_asset_url(item_filename))

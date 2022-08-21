@@ -16,10 +16,10 @@
     return (A.temperature <= SOROKYNE_TEMPERATURE)
 
 /datum/weather_ss_map_holder/sorokyne/should_start_event()
-    if (prob(PROB_WEATHER_SOROKYNE))
+    if(prob(PROB_WEATHER_SOROKYNE))
         return TRUE
     return FALSE
 
 /datum/weather_ss_map_holder/sorokyne/weather_warning()
-    for (var/obj/structure/machinery/weather_siren/WS in weather_notify_objects)
+    for(var/obj/structure/machinery/weather_siren/WS in weather_notify_objects)
         WS.weather_warning()

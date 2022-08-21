@@ -128,19 +128,19 @@
 
 			//Accidental gun discharge
 			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED))
-				if (isgun(r_hand) || isgun(l_hand))
+				if(isgun(r_hand) || isgun(l_hand))
 					var/obj/item/weapon/gun/W = null
 					var/chance = 0
 
-					if (isgun(l_hand))
+					if(isgun(l_hand))
 						W = l_hand
 						chance = hand ? 40 : 20
 
-					if (isgun(r_hand))
+					if(isgun(r_hand))
 						W = r_hand
 						chance = !hand ? 40 : 20
 
-					if (prob(chance))
+					if(prob(chance))
 						visible_message(SPAN_DANGER("[M] accidentally makes [src]'s [W.name] go off during the struggle!"), SPAN_DANGER("You accidentally make [src]'s [W.name] go off during the struggle!"), null, 5)
 						var/list/turfs = list()
 						for(var/turf/T in view())
@@ -162,7 +162,7 @@
 				randn += 5 * skills.get_skill_level(SKILL_CQC) //defender's martial arts training
 
 
-			if (randn <= 25)
+			if(randn <= 25)
 				apply_effect(3, WEAKEN)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				visible_message(SPAN_DANGER("<B>[M] has pushed [src]!</B>"), null, null, 5)
@@ -201,11 +201,11 @@
 
 	//Target is not us
 	var/t_him = "it"
-	if (gender == MALE)
+	if(gender == MALE)
 		t_him = "him"
-	else if (gender == FEMALE)
+	else if(gender == FEMALE)
 		t_him = "her"
-	if (w_uniform)
+	if(w_uniform)
 		w_uniform.add_fingerprint(M)
 
 	if(lying || sleeping)

@@ -9,7 +9,7 @@
 
 /obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
 /obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
@@ -165,7 +165,7 @@ obj/structure/xenoautopsy/tank/larva
 
 /obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/structure/computer3frame

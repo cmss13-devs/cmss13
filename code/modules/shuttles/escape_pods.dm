@@ -230,7 +230,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 		ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-		if (!ui)
+		if(!ui)
 			ui = new(user, src, ui_key, "escape_pod_console.tmpl", id_tag, 470, 290)
 			ui.set_initial_data(data)
 			ui.open()
@@ -446,7 +446,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/armed = null
-	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
+	if(istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
 		var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program
 		armed = P.armed
 
@@ -458,7 +458,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)
 		ui.set_initial_data(data)
 		ui.open()

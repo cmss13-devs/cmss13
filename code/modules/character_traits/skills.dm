@@ -32,7 +32,7 @@
 
 	target.skills.decrement_skill(skill,skill_increment)
 
-	if (secondary_skill)
+	if(secondary_skill)
 		target.skills.decrement_skill(secondary_skill,skill_increment)
 
 

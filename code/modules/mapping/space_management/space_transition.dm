@@ -62,7 +62,7 @@
 	var/conf_set_len = 0
 	for(var/A in cached_z_list)
 		var/datum/space_level/D = A
-		if (D.linkage == CROSSLINKED)
+		if(D.linkage == CROSSLINKED)
 			SLS.Add(D)
 		conf_set_len++
 	var/list/point_grid[conf_set_len*2+1][conf_set_len*2+1]

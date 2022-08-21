@@ -15,7 +15,7 @@
 
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
 
-	for (var/obj/item/implant/I in src)
+	for(var/obj/item/implant/I in src)
 		if(I.implanted)
 			I.trigger(act, src)
 
@@ -66,7 +66,7 @@
 			if(!src.buckled)
 				var/M = null
 				if(param)
-					for (var/mob/A in view(null, null))
+					for(var/mob/A in view(null, null))
 						if(param == A.name)
 							M = A
 							break
@@ -158,7 +158,7 @@
 		if("glare")
 			var/M = null
 			if(param)
-				for (var/mob/A in view(null, null))
+				for(var/mob/A in view(null, null))
 					if(param == A.name)
 						M = A
 						break
@@ -198,7 +198,7 @@
 			if(!src.is_mob_restrained() && !src.r_hand)
 				var/mob/M = null
 				if(param)
-					for (var/mob/A in view(1, null))
+					for(var/mob/A in view(1, null))
 						if(param == A.name)
 							M = A
 							break
@@ -222,7 +222,7 @@
 		if("look")
 			var/M = null
 			if(param)
-				for (var/mob/A in view(null, null))
+				for(var/mob/A in view(null, null))
 					if(param == A.name)
 						M = A
 						break
@@ -340,7 +340,7 @@
 			if(!buckled)
 				var/M = null
 				if(param)
-					for (var/mob/A in view(null, null))
+					for(var/mob/A in view(null, null))
 						if(param == A.name)
 							M = A
 							break
@@ -459,7 +459,7 @@
 		if("stare")
 			var/M = null
 			if(param)
-				for (var/mob/A in view(null, null))
+				for(var/mob/A in view(null, null))
 					if(param == A.name)
 						M = A
 						break
@@ -738,10 +738,10 @@
 
 
 		if(m_type & 1)
-			for (var/mob/O in get_mobs_in_view(world_view_size,src))
+			for(var/mob/O in get_mobs_in_view(world_view_size,src))
 				O.show_message(message, m_type)
 		else if(m_type & 2)
-			for (var/mob/O in (hearers(src.loc, null)|get_mobs_in_view(world_view_size,src)))
+			for(var/mob/O in (hearers(src.loc, null)|get_mobs_in_view(world_view_size,src)))
 				O.show_message(message, m_type)
 
 

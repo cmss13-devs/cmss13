@@ -10,7 +10,7 @@
 
 /obj/effect/particle_effect/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_MOB_THRU
 
 	//Fire
@@ -59,14 +59,14 @@
 
 /obj/effect/particle_effect/water/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB_THRU|PASS_UNDER
 
 /obj/effect/particle_effect/water/Move(turf/newloc)
 	//var/turf/T = src.loc
-	//if (istype(T, /turf))
+	//if(istype(T, /turf))
 	//	T.firelevel = 0 //TODO: FIX
-	if (--src.life < 1)
+	if(--src.life < 1)
 		//SN src = null
 		qdel(src)
 	if(newloc.density)

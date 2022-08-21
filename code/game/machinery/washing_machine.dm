@@ -94,45 +94,45 @@
 		istype(W,/obj/item/bedsheet))
 
 		//YES, it's hardcoded... saves a var/can_be_washed for every single clothing item.
-		if ( istype(W,/obj/item/clothing/suit/space ) )
+		if( istype(W,/obj/item/clothing/suit/space ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/syndicatefake ) )
+		if( istype(W,/obj/item/clothing/suit/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-//		if ( istype(W,/obj/item/clothing/suit/powered ) )
+//		if( istype(W,/obj/item/clothing/suit/powered ) )
 //			to_chat(user, "This item does not fit.")
 //			return
-		if ( istype(W,/obj/item/clothing/suit/cyborg_suit ) )
+		if( istype(W,/obj/item/clothing/suit/cyborg_suit ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/bomb_suit ) )
+		if( istype(W,/obj/item/clothing/suit/bomb_suit ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/armor ) )
+		if( istype(W,/obj/item/clothing/suit/armor ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/armor ) )
+		if( istype(W,/obj/item/clothing/suit/armor ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/mask/gas ) )
+		if( istype(W,/obj/item/clothing/mask/gas ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/mask/cigarette ) )
+		if( istype(W,/obj/item/clothing/mask/cigarette ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/head/syndicatefake ) )
+		if( istype(W,/obj/item/clothing/head/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-//		if ( istype(W,/obj/item/clothing/head/powered ) )
+//		if( istype(W,/obj/item/clothing/head/powered ) )
 //			to_chat(user, "This item does not fit.")
 //			return
-		if ( istype(W,/obj/item/clothing/head/helmet ) )
+		if( istype(W,/obj/item/clothing/head/helmet ) )
 			to_chat(user, "This item does not fit.")
 			return
 
 		if(contents.len < 5)
-			if ( state in list(1, 3) )
+			if( state in list(1, 3) )
 				if(user.drop_inv_item_to_loc(W, src))
 					state = 3
 			else

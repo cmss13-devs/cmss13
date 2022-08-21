@@ -14,7 +14,7 @@
 
 //Called when the circuitboard is used to contruct a new machine.
 /obj/item/circuitboard/proc/construct(var/obj/structure/machinery/M)
-	if (istype(M, build_path))
+	if(istype(M, build_path))
 		return 1
 	return 0
 
@@ -22,7 +22,7 @@
 //Called when a computer is deconstructed to produce a circuitboard.
 //Only used by computers, as other machines store their circuitboard instance.
 /obj/item/circuitboard/proc/deconstruct(var/obj/structure/machinery/M)
-	if (istype(M, build_path))
+	if(istype(M, build_path))
 		return 1
 	return 0
 
@@ -51,7 +51,7 @@
 	desc = "Heavy-duty switching circuits for power control."
 
 /obj/item/circuitboard/apc/attackby(obj/item/W , mob/user)
-	if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/circuitboard/machine/ghettosmes/newcircuit = new(user.loc)
 		user.put_in_hands(newcircuit)
 		qdel(src)

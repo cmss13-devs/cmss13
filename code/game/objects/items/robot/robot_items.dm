@@ -16,12 +16,12 @@
 
 		playsound(M.loc, 'sound/weapons/Egloves.ogg', 25, 1, 4)
 		M.KnockDown(5)
-		if (M.stuttering < 5)
+		if(M.stuttering < 5)
 			M.stuttering = 5
 		M.Stun(5)
 
 		for(var/mob/O in viewers(M, null))
-			if (O.client)
+			if(O.client)
 				O.show_message(SPAN_DANGER("<B>[user] has prodded [M] with an electrically-charged arm!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
 
 /obj/item/robot/overdrive

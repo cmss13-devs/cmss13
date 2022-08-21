@@ -42,7 +42,7 @@
 
 /obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
@@ -498,7 +498,7 @@
 
 /obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
 /obj/structure/window/framed/update_nearby_icons()

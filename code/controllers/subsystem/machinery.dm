@@ -23,23 +23,23 @@ SUBSYSTEM_DEF(machinery)
 	return ..()
 
 /datum/controller/subsystem/machinery/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrunmachines = processing_machines.Copy()
 
-	while (currentrunmachines.len)
+	while(currentrunmachines.len)
 		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
 		currentrunmachines.len--
 
-		if (!M || QDELETED(M))
+		if(!M || QDELETED(M))
 			continue
 
 		M.process()
-		//if (M.process() == PROCESS_KILL)
+		//if(M.process() == PROCESS_KILL)
 			//M.inMachineList = FALSE
 			//machines.Remove(M)
 			//continue
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return
 
 

@@ -25,7 +25,7 @@
 	if(!buildstate && is_on)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is online."
 		icon_state = "sensor_"
-	else if (!buildstate && !is_on)
+	else if(!buildstate && !is_on)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is offline."
 		icon_state = "sensor_off"
 	else if(buildstate == 1)
@@ -82,10 +82,10 @@
 	if(buildstate == 1)
 		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 		return 0
-	else if (buildstate == 2)
+	else if(buildstate == 2)
 		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 		return 0
-	else if (buildstate == 3)
+	else if(buildstate == 3)
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return 0
 	if(is_on)

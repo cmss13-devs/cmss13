@@ -69,7 +69,7 @@
 	..()
 
 	active = !active
-	if (active)
+	if(active)
 		force = 30
 		heat_source = 3500
 		if(base_sword_icon != "sword")

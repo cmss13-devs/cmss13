@@ -54,7 +54,7 @@
 
 /obj/structure/machinery/door/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = NONE
 
 /obj/structure/machinery/door/proc/handle_multidoor()
@@ -219,7 +219,7 @@
 	src.density = 0
 	update_icon()
 	SetOpacity(0)
-	if (filler)
+	if(filler)
 		filler.SetOpacity(opacity)
 
 	if(operating)	operating = 0
@@ -244,7 +244,7 @@
 	update_icon()
 	if(visible && !glass)
 		SetOpacity(1)	//caaaaarn!
-		if (filler)
+		if(filler)
 			filler.SetOpacity(opacity)
 	operating = 0
 	return

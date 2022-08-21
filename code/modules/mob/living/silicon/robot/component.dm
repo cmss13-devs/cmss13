@@ -25,7 +25,7 @@
 
 /datum/robot_component/proc/destroy()
 	var/brokenstate = "broken" // Generic icon
-	if (istype(wrapped, /obj/item/robot_parts/robot_component))
+	if(istype(wrapped, /obj/item/robot_parts/robot_component))
 		var/obj/item/robot_parts/robot_component/comp = wrapped
 		brokenstate = comp.icon_state_broken
 	if(wrapped)
@@ -144,23 +144,23 @@
 
 /datum/robot_component/camera/update_power_state()
 	..()
-	if (camera)
+	if(camera)
 		//check if camera component was deactivated
-		if (!powered && camera.status != powered)
+		if(!powered && camera.status != powered)
 			camera.kick_viewers()
 		camera.status = powered
 
 /datum/robot_component/camera/install()
-	if (camera)
+	if(camera)
 		camera.status = 1
 
 /datum/robot_component/camera/uninstall()
-	if (camera)
+	if(camera)
 		camera.status = 0
 		camera.kick_viewers()
 
 /datum/robot_component/camera/destroy()
-	if (camera)
+	if(camera)
 		camera.status = 0
 		camera.kick_viewers()
 

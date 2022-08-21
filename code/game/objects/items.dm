@@ -212,7 +212,7 @@ cases. Override_icon_state should be a list.*/
 		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
 
 /obj/item/attack_hand(mob/user)
-	if (!user)
+	if(!user)
 		return
 
 	if(anchored)
@@ -620,7 +620,7 @@ cases. Override_icon_state should be a list.*/
 						if(I.can_be_inserted(src,TRUE))
 							return TRUE
 			if(WEAR_IN_BACK)
-				if (H.back && isstorage(H.back))
+				if(H.back && isstorage(H.back))
 					var/obj/item/storage/B = H.back
 					if(B.can_be_inserted(src, 1))
 						return TRUE
@@ -629,7 +629,7 @@ cases. Override_icon_state should be a list.*/
 				if(H.shoes && istype(H.shoes, /obj/item/clothing/shoes))
 					var/obj/item/clothing/shoes/S = H.shoes
 					if(!S.stored_item && S.items_allowed && S.items_allowed.len)
-						for (var/i in S.items_allowed)
+						for(var/i in S.items_allowed)
 							if(istype(src, i))
 								return TRUE
 				return FALSE
@@ -717,7 +717,7 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	for (var/mob/M in view(user))
+	for(var/mob/M in view(user))
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
 
 /mob/living/carbon/verb/showoff()
@@ -828,7 +828,7 @@ cases. Override_icon_state should be a list.*/
 	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
 	if(item_state_slot_state)
 		mob_state = item_state_slot_state
-	else if (item_state && (slot == WEAR_R_HAND || slot == WEAR_L_HAND || slot == WEAR_ID || slot == WEAR_WAIST))
+	else if(item_state && (slot == WEAR_R_HAND || slot == WEAR_L_HAND || slot == WEAR_ID || slot == WEAR_WAIST))
 		mob_state = item_state
 	else
 		mob_state = icon_state

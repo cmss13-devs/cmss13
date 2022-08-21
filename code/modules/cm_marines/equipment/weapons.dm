@@ -95,7 +95,7 @@
 
 /obj/item/smartgun_powerpack/examine(mob/user)
 	..()
-	if (get_dist(user, src) <= 1)
+	if(get_dist(user, src) <= 1)
 		if(pcell)
 			to_chat(user, "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge].")
 

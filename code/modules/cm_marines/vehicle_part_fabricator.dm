@@ -33,7 +33,7 @@
 
 /obj/structure/machinery/part_fabricator/power_change()
 	..()
-	if (stat & NOPOWER)
+	if(stat & NOPOWER)
 		icon_state = "drone_fab_nopower"
 
 /obj/structure/machinery/part_fabricator/process()
@@ -83,15 +83,15 @@
 		var/cost = text2num(params["cost"])
 		var/exploiting = TRUE
 
-		if (valid_parts && ispath(produce, valid_parts))
+		if(valid_parts && ispath(produce, valid_parts))
 			exploiting = FALSE
-		else if (valid_ammo && ispath(produce, valid_ammo))
+		else if(valid_ammo && ispath(produce, valid_ammo))
 			exploiting = FALSE
 
-		if (cost < 0)
+		if(cost < 0)
 			exploiting = TRUE
 
-		if (exploiting)
+		if(exploiting)
 			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] with [produce], [cost]")
 			return
 

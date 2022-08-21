@@ -11,7 +11,7 @@
 
 	src.bonus_health = bonus_health
 
-	if (istype(A, /obj/structure/mineral_door/resin))
+	if(istype(A, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/door = A
 		previous_health = door.health
 		door.health += bonus_health
@@ -36,7 +36,7 @@
 
 /datum/effects/xeno_structure_reinforcement/Destroy()
 	if(affected_atom)
-		if (istype(affected_atom, /obj/structure/mineral_door/resin))
+		if(istype(affected_atom, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/door = affected_atom
 			door.health = previous_health
 			door.color = original_color

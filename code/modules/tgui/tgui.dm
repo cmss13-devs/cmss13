@@ -104,7 +104,7 @@
 		/datum/asset/simple/fontawesome))
 	for(var/datum/asset/asset in src_object.ui_assets(user))
 		flush_queue |= window.send_asset(asset)
-	if (flush_queue)
+	if(flush_queue)
 		user.client?.browse_queue_flush()
 	window.send_message("update", get_payload(
 		with_data = TRUE,

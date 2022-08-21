@@ -50,7 +50,7 @@
 
 /obj/structure/surface/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
 	flags_can_pass_all_temp = PASS_UNDER
 
@@ -99,7 +99,7 @@
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir, 90), turn(dir, -90)) )
 			var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, get_step(src, direction))
-			if (T && T.flipped && T.dir == dir)
+			if(T && T.flipped && T.dir == dir)
 				ttype++
 				tabledirs |= direction
 
@@ -250,7 +250,7 @@
 		do_flip()
 
 /obj/structure/surface/table/MouseDrop_T(obj/item/I, mob/user)
-	if (!istype(I) || user.get_active_hand() != I)
+	if(!istype(I) || user.get_active_hand() != I)
 		return ..()
 	if(isrobot(user))
 		return
@@ -267,7 +267,7 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15))	M.KnockDown(5)
+					if(prob(15))	M.KnockDown(5)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -502,14 +502,14 @@
 	return 0 //No, just no. It's a full desk, you can't flip that
 
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(status == 2)
 				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
@@ -594,7 +594,7 @@
 
 /obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_CRUSHER_CHARGE
 
 /obj/structure/surface/rack/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -605,7 +605,7 @@
 	return ..()
 
 /obj/structure/surface/rack/MouseDrop_T(obj/item/I, mob/user)
-	if (!istype(I) || user.get_active_hand() != I)
+	if(!istype(I) || user.get_active_hand() != I)
 		return ..()
 	if(isrobot(user))
 		return

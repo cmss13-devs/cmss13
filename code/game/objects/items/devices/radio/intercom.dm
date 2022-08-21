@@ -37,15 +37,15 @@
 		attack_self(user)
 
 /obj/item/device/radio/intercom/receive_range(freq, level)
-	if (!on)
+	if(!on)
 		return -1
-	if (!(src.wires & WIRE_RECEIVE))
+	if(!(src.wires & WIRE_RECEIVE))
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
 		if(QDELETED(position) || !(position.z in level))
 			return -1
-	if (!src.listening)
+	if(!src.listening)
 		return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))

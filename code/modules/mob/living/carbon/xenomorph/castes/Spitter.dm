@@ -68,13 +68,13 @@
 	var/dot_cooldown_duration = 120 // every 12 seconds
 
 /datum/behavior_delegate/spitter_base/ranged_attack_additional_effects_target(atom/A)
-	if (ishuman(A))
+	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if (H.stat == DEAD)
+		if(H.stat == DEAD)
 			return
 
-	for (var/atom/dotA in dot_cooldown_atoms)
-		if (dotA == A)
+	for(var/atom/dotA in dot_cooldown_atoms)
+		if(dotA == A)
 			return
 
 	dot_cooldown_atoms += A
@@ -82,13 +82,13 @@
 
 	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
-	if (ismob(A))
+	if(ismob(A))
 		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)
-		if (istype(SFA) && !SFA.action_cooldown_check())
+		if(istype(SFA) && !SFA.action_cooldown_check())
 			SFA.end_cooldown()
 
 /datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
-	if (A != null && !QDELETED(src))
+	if(A != null && !QDELETED(src))
 		dot_cooldown_atoms -= A
-		if (istype(bound_xeno))
+		if(istype(bound_xeno))
 			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))

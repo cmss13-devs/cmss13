@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/stack/fulton(src)
 
 /obj/structure/closet/secure_closet/staff_officer/intel/select_gamemode_equipment(gamemode)
-	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/secure_closet/pilot_officer
@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/glasses/sunglasses(src)
 
 /obj/structure/closet/secure_closet/pilot_officer/select_gamemode_equipment(gamemode)
-	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/glasses/hud/health(src)
 
 /obj/structure/closet/secure_closet/medical_doctor/select_gamemode_equipment(gamemode)
-	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/suit/storage/snow_suit/doctor(src)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 

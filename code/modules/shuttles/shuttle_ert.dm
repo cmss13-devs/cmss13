@@ -115,7 +115,7 @@
 /obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	var/shuttle_state
@@ -128,9 +128,9 @@
 	var/shuttle_status
 	switch (shuttle.process_state)
 		if(IDLE_STATE)
-			if (shuttle.in_use)
+			if(shuttle.in_use)
 				shuttle_status = "Busy."
-			else if (!shuttle.location)
+			else if(!shuttle.location)
 				shuttle_status = "Standing by at station."
 			else
 				shuttle_status = "Standing by at an off-site location."
@@ -157,7 +157,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "ert_shuttle_control_console.tmpl" , "ERT Shuttle Control", 550, 500)
 		ui.set_initial_data(data)
 		ui.open()

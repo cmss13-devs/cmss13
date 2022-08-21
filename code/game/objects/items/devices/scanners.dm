@@ -94,12 +94,12 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/attack_self(mob/user)
 	..()
 
-	if (!last_scan)
+	if(!last_scan)
 		user.show_message("No previous scan found.")
 		return
 
 	switch (hud_mode)
-		if (1)
+		if(1)
 			var/dat = last_scan
 			dat = replacetext(dat, "\n", "<br>")
 			dat = replacetext(dat, "\t", "&emsp;")
@@ -109,7 +109,7 @@ FORENSIC SCANNER
 			dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
 			dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
 			show_browser(user, dat, name, "handscanner", "size=500x400")
-		if (0)
+		if(0)
 			user.show_message(last_scan)
 
 	return
@@ -164,14 +164,14 @@ FORENSIC SCANNER
 /obj/item/device/analyzer/attack_self(mob/user as mob)
 	..()
 
-	if (user.stat)
+	if(user.stat)
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+	if(!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
 	var/turf/location = user.loc
-	if (!( istype(location, /turf) ))
+	if(!( istype(location, /turf) ))
 		return
 
 	var/env_pressure = location.return_pressure()
@@ -221,12 +221,12 @@ FORENSIC SCANNER
 /obj/item/device/mass_spectrometer/attack_self(mob/user)
 	..()
 
-	if (user.stat)
+	if(user.stat)
 		return
-	if (crit_fail)
+	if(crit_fail)
 		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
-	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
@@ -257,14 +257,14 @@ FORENSIC SCANNER
 /obj/item/device/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if (user.stat)
+	if(user.stat)
 		return
-	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!istype(O))
 		return
-	if (crit_fail)
+	if(crit_fail)
 		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
 
@@ -272,7 +272,7 @@ FORENSIC SCANNER
 		var/dat = ""
 		if(O.reagents.reagent_list.len > 0)
 			var/one_percent = O.reagents.total_volume / 100
-			for (var/datum/reagent/R in O.reagents.reagent_list)
+			for(var/datum/reagent/R in O.reagents.reagent_list)
 				if(prob(reliability))
 					dat += "\n \t \blue [R.name][details ? ": [R.volume / one_percent]%" : ""]"
 					recent_fail = 0

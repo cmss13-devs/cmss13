@@ -109,22 +109,22 @@
 		user.unset_interaction()
 
 	//Are ladder cameras ok?
-	else if (is_watching == 1)
-		if (istype(down) && down.cam && !down.cam.can_use()) //Camera doesn't work or is gone
+	else if(is_watching == 1)
+		if(istype(down) && down.cam && !down.cam.can_use()) //Camera doesn't work or is gone
 			user.unset_interaction()
-	else if (is_watching == 2)
-		if (istype(up) && up.cam && !up.cam.can_use()) //Camera doesn't work or is gone
+	else if(is_watching == 2)
+		if(istype(up) && up.cam && !up.cam.can_use()) //Camera doesn't work or is gone
 			user.unset_interaction()
 
 
 
 /obj/structure/ladder/on_set_interaction(mob/user)
-	if (is_watching == 1)
-		if (istype(down) && down.cam && down.cam.can_use()) //Camera works
+	if(is_watching == 1)
+		if(istype(down) && down.cam && down.cam.can_use()) //Camera works
 			user.reset_view(down.cam)
 			return
-	else if (is_watching == 2)
-		if (istype(up) && up.cam && up.cam.can_use())
+	else if(is_watching == 2)
+		if(istype(up) && up.cam && up.cam.can_use())
 			user.reset_view(up.cam)
 			return
 

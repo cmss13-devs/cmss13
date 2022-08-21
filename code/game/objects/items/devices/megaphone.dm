@@ -37,7 +37,7 @@
 		return
 	message = capitalize(message)
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
-	if ((src.loc == user && usr.stat == 0))
+	if((src.loc == user && usr.stat == 0))
 		var/list/mob/living/carbon/human/vw = viewers(user) // slow but we need it
 		for(var/mob/living/carbon/human/O in vw)
 			if(O.species && O.species.name == "Yautja") //NOPE

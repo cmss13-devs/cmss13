@@ -57,7 +57,7 @@
 	. = ..()
 	if(prob(6))
 		icon_state = "wall1"
-	else if (prob(5))
+	else if(prob(5))
 		icon_state = "wall3"
 	else
 		icon_state = "wall2"

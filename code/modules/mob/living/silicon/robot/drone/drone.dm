@@ -80,7 +80,7 @@
 
 /mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 
 /mob/living/silicon/robot/drone/init()
@@ -115,7 +115,7 @@
 		to_chat(user, SPAN_DANGER("The maintenance drone chassis not compatible with \the [W]."))
 		return
 
-	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		to_chat(user, "The machine is hermetically sealed. You can't open the case.")
 		return
 
@@ -190,7 +190,7 @@
 	to_chat(src, "<b>If a crewmember has noticed you, <i>you are probably breaking your third law</i></b>.")
 
 /mob/living/silicon/robot/drone/Collide(atom/A)
-	if (!istype(A,/obj/structure/machinery/door) && \
+	if(!istype(A,/obj/structure/machinery/door) && \
 	 !istype(A,/obj/structure/machinery/recharge_station) && \
 	 !istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
 	 !istype(A,/obj/structure/machinery/teleport/hub) && \
@@ -232,7 +232,7 @@
 		if(custom_name)
 			return
 
-		for (var/mob/living/silicon/robot/drone/A in GLOB.mob_list)
+		for(var/mob/living/silicon/robot/drone/A in GLOB.mob_list)
 			if(newname == A.nicknumber)
 				to_chat(src, SPAN_WARNING("That identifier is taken, pick again."))
 				return

@@ -569,7 +569,7 @@
 				marine_filter_enabled = TRUE
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Individual Marine Filter is now enabled.")]")
 		if("filter_marine")
-			if (current_squad)
+			if(current_squad)
 				var/squaddie = href_list["squaddie"]
 				if(!(squaddie in marine_filter))
 					marine_filter += squaddie

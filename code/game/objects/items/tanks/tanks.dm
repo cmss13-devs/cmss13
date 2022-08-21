@@ -27,11 +27,11 @@
 
 /obj/item/tank/examine(mob/user)
 	..()
-	if (in_range(src, user))
+	if(in_range(src, user))
 		var/celsius_temperature = temperature-T0C
 		var/descriptive
 		switch(celsius_temperature)
-			if (-280 to 20)
+			if(-280 to 20)
 				descriptive = "cold"
 			if(20 to 40)
 				descriptive = "room temperature"
@@ -50,14 +50,14 @@
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
-		for (var/mob/O in viewers(user, null))
+	if((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
+		for(var/mob/O in viewers(user, null))
 			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]"))
 
 		manipulated_by = user.real_name			//This person is aware of the contents of the tank.
 
 		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(src, user)]"))
-		if (pressure>0)
+		if(pressure>0)
 			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
 
 			to_chat(user, SPAN_NOTICE(" [gas_type]: 100%"))
@@ -70,7 +70,7 @@
 /obj/item/tank/attack_self(mob/user)
 	..()
 
-	if (pressure == 0)
+	if(pressure == 0)
 		return
 
 	ui_interact(user)
@@ -99,7 +99,7 @@
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
+	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "tanks.tmpl", "Tank", 500, 300)
@@ -112,21 +112,21 @@
 
 /obj/item/tank/Topic(href, href_list)
 	..()
-	if (usr.stat|| usr.is_mob_restrained())
+	if(usr.stat|| usr.is_mob_restrained())
 		return 0
-	if (src.loc != usr)
+	if(src.loc != usr)
 		return 0
 
-	if (href_list["dist_p"])
-		if (href_list["dist_p"] == "reset")
+	if(href_list["dist_p"])
+		if(href_list["dist_p"] == "reset")
 			src.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
-		else if (href_list["dist_p"] == "max")
+		else if(href_list["dist_p"] == "max")
 			src.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
 		else
 			var/cp = text2num(href_list["dist_p"])
 			src.distribute_pressure += cp
 		src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
-	if (href_list["stat"])
+	if(href_list["stat"])
 		if(istype(loc,/mob/living/carbon))
 			var/mob/living/carbon/location = loc
 			if(location.internal == src)

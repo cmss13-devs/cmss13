@@ -62,9 +62,9 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
-	if (isXeno(A))
+	if(isXeno(A))
 		var/mob/living/carbon/Xenomorph/X = A
-		if (X.hivenumber != hivenumber)
+		if(X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))
 		trigger_trap(A)

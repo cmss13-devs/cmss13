@@ -151,7 +151,7 @@
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
 	..()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 
@@ -189,7 +189,7 @@
 
 /obj/effect/alien/resin/spike/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	setDir(pick(alldirs))
@@ -339,7 +339,7 @@
 		W.update_connections()
 		W.update_icon()
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
@@ -369,12 +369,12 @@
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user
-		if (L.hivenumber == hivenumber)
+		if(L.hivenumber == hivenumber)
 			L.scuttle(src)
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if (C.ally_of_hivenumber(hivenumber))
+		if(C.ally_of_hivenumber(hivenumber))
 			return ..()
 
 /obj/structure/mineral_door/resin/Open()
@@ -500,7 +500,7 @@
 
 /obj/effect/alien/resin/acid_pillar/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSprocessing, src)
@@ -615,7 +615,7 @@
 
 /obj/effect/alien/resin/shield_pillar/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSshield_pillar, src)

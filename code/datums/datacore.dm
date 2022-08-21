@@ -227,9 +227,9 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	if(foundrecord)
 		if(assignment)
 			foundrecord.fields["rank"] = assignment
-		if (rank)
+		if(rank)
 			foundrecord.fields["real_rank"] = rank
-		if (p_stat)
+		if(p_stat)
 			foundrecord.fields["p_stat"] = p_stat
 		return TRUE
 	return FALSE
@@ -332,7 +332,7 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 	var/icon/preview_icon = null
 
 	//var/g = "m"
-	//if (H.gender == FEMALE)
+	//if(H.gender == FEMALE)
 	//	g = "f"
 
 	var/icon/icobase = H.species.icobase
@@ -344,12 +344,12 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 	var/e_icon
 	var/b_icon
 
-	if (!ET)
+	if(!ET)
 		e_icon = "western"
 	else
 		e_icon = ET.icon_name
 
-	if (!B)
+	if(!B)
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name

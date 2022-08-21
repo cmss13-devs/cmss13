@@ -112,7 +112,7 @@
 
 /obj/item/device/assembly/prox_sensor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "Proximity", "Proximity Assembly")
 		ui.open()
 		ui.set_autoupdate(timing)

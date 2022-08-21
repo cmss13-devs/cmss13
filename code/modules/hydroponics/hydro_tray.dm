@@ -145,7 +145,7 @@
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
@@ -178,7 +178,7 @@
 
 	// There's a chance for a weed explosion to happen if the weeds take over.
 	// Plants that are themselves weeds (weed_tolerance > 10) are unaffected.
-	if (weedlevel >= 10 && prob(10))
+	if(weedlevel >= 10 && prob(10))
 		if(!seed || weedlevel >= seed.weed_tolerance)
 			weed_invasion()
 
@@ -246,7 +246,7 @@
 		if(seed.carnivorous)
 			plant_health += HYDRO_SPEED_MULTIPLIER
 			pestlevel -= HYDRO_SPEED_MULTIPLIER
-		else if (pestlevel >= seed.pest_tolerance)
+		else if(pestlevel >= seed.pest_tolerance)
 			plant_health -= HYDRO_SPEED_MULTIPLIER
 
 	// Some plants thrive and live off of weeds.
@@ -254,7 +254,7 @@
 		if(seed.parasite)
 			plant_health += HYDRO_SPEED_MULTIPLIER
 			weedlevel -= HYDRO_SPEED_MULTIPLIER
-		else if (weedlevel >= seed.weed_tolerance)
+		else if(weedlevel >= seed.weed_tolerance)
 			plant_health -= HYDRO_SPEED_MULTIPLIER
 
 	// Handle life and death.
@@ -510,7 +510,7 @@
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
-	if (O.is_open_container())
+	if(O.is_open_container())
 		return 0
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/attachable/bayonet))
@@ -545,7 +545,7 @@
 
 		var/obj/item/reagent_container/syringe/S = O
 
-		if (S.mode == 1)
+		if(S.mode == 1)
 			if(seed)
 				return ..()
 			else
@@ -559,7 +559,7 @@
 				to_chat(user, "There's nothing to draw something from.")
 			return 1
 
-	else if (istype(O, /obj/item/seeds))
+	else if(istype(O, /obj/item/seeds))
 
 		if(!seed)
 
@@ -600,7 +600,7 @@
 		else
 			to_chat(user, SPAN_DANGER("\The [src] already has seeds in it!"))
 
-	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
+	else if(istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
 			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
@@ -609,17 +609,17 @@
 		else
 			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
 
-	else if (istype(O, /obj/item/storage/bag/plants))
+	else if(istype(O, /obj/item/storage/bag/plants))
 
 		attack_hand(user)
 
 		var/obj/item/storage/bag/plants/S = O
-		for (var/obj/item/reagent_container/food/snacks/grown/G in locate(user.x,user.y,user.z))
+		for(var/obj/item/reagent_container/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G))
 				return
 			S.handle_item_insertion(G, TRUE, user)
 
-	else if ( istype(O, /obj/item/tool/plantspray) )
+	else if( istype(O, /obj/item/tool/plantspray) )
 
 		var/obj/item/tool/plantspray/spray = O
 		user.drop_held_item()
@@ -699,7 +699,7 @@
 
 	if(!usr || usr.stat || usr.is_mob_restrained())
 		return
-	if (alert(usr, "Are you sure you want to flush the hydroponics tray?", "Flush tray:", "Yes", "No") != "Yes")
+	if(alert(usr, "Are you sure you want to flush the hydroponics tray?", "Flush tray:", "Yes", "No") != "Yes")
 		return
 
 	seed = null

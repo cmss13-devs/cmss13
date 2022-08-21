@@ -58,7 +58,7 @@
 
 /obj/item/device/assembly/signaller/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "Signaller", "Signaller")
 		ui.open()
 		ui.set_autoupdate(FALSE)

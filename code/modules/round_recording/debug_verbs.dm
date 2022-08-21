@@ -2,7 +2,7 @@
 	set name = "Debug Round Recorder"
 	set category = "Debug"
 
-	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
+	if(!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
 		return
 
 	var/datum/round_recorder/recorder = SSround_recording.recorder

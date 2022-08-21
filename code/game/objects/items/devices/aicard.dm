@@ -23,7 +23,7 @@
 	return
 
 /obj/item/device/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
-	if (!istype (M, /mob/living/silicon/decoy))
+	if(!istype (M, /mob/living/silicon/decoy))
 		return ..()
 	else
 		M.death()
@@ -32,7 +32,7 @@
 /obj/item/device/aicard/attack_self(mob/user)
 	..()
 
-	if (!in_range(src, user))
+	if(!in_range(src, user))
 		return
 
 	user.set_interaction(src)
@@ -40,10 +40,10 @@
 	for(var/mob/living/silicon/ai/A in src)
 		dat += "Stored AI: [A.name]<br>System integrity: [(A.health+100)/2]%<br>"
 
-		if (A.stat == 2)
+		if(A.stat == 2)
 			dat += "<b>AI nonfunctional</b>"
 		else
-			if (!src.flush)
+			if(!src.flush)
 				dat += {"<A href='byond://?src=\ref[src];choice=Wipe'>Wipe AI</A>"}
 			else
 				dat += "<b>Wipe in progress</b>"
@@ -64,7 +64,7 @@
 	if(.)
 		return
 	var/mob/U = usr
-	if (!in_range(src, U)||U.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
+	if(!in_range(src, U)||U.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
 		close_browser(U, "aicard")
 		U.unset_interaction()
 		return
@@ -73,15 +73,15 @@
 	U.set_interaction(src)
 
 	switch(href_list["choice"])//Now we switch based on choice.
-		if ("Close")
+		if("Close")
 			close_browser(U, "aicard")
 			U.unset_interaction()
 			return
 
-		if ("Radio")
+		if("Radio")
 			for(var/mob/living/silicon/ai/A in src)
 				A.aiRadio.disabledAi = !A.aiRadio.disabledAi
-		if ("Wipe")
+		if("Wipe")
 			var/confirm = alert("Are you sure you want to wipe this card's memory? This cannot be undone once started.", "Confirm Wipe", "Yes", "No")
 			if(confirm == "Yes")
 				if(QDELETED(src)||!in_range(src, U)||U.interactee!=src)
@@ -92,16 +92,16 @@
 					flush = 1
 					for(var/mob/living/silicon/ai/A in src)
 						to_chat(A, "Your core files are being wiped!")
-						while (A.stat != 2)
+						while(A.stat != 2)
 							A.apply_damage(2, OXY)
 							A.updatehealth()
 							sleep(10)
 						flush = 0
 
-		if ("Wireless")
+		if("Wireless")
 			for(var/mob/living/silicon/ai/A in src)
 				A.control_disabled = !A.control_disabled
-				if (A.control_disabled)
+				if(A.control_disabled)
 					overlays -= image('icons/obj/items/robot_component.dmi', "aicard-on")
 				else
 					overlays += image('icons/obj/items/robot_component.dmi', "aicard-on")

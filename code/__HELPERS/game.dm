@@ -113,20 +113,20 @@
 				hear += M
 		else if(istype(A, /obj/item/device/radio))
 			hear += A
-		else if (istype(A, /obj/vehicle/multitile))
+		else if(istype(A, /obj/vehicle/multitile))
 			var/obj/vehicle/multitile/vehicle = A
 			for(var/mob/M in vehicle.get_passengers())
 				hear += M
-		else if (istype(A, /obj/structure/closet))
+		else if(istype(A, /obj/structure/closet))
 			var/obj/structure/closet/C = A
-			if (!C.store_mobs)
+			if(!C.store_mobs)
 				continue
-			for (var/mob/M in C)
-				if (M.client)
+			for(var/mob/M in C)
+				if(M.client)
 					hear += M
-		else if (istype(A, /obj/structure/morgue))
-			for (var/mob/M in A)
-				if (M.client)
+		else if(istype(A, /obj/structure/morgue))
+			for(var/mob/M in A)
+				if(M.client)
 					hear += M
 	return hear
 
@@ -242,7 +242,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 		//players that can still be revived are skipped
 		if(O.mind && O.mind.original && ishuman(O.mind.original))
 			var/mob/living/carbon/human/H = O.mind.original
-			if (H.check_tod() && H.is_revivable())
+			if(H.check_tod() && H.is_revivable())
 				continue
 
 		// copied from join as xeno

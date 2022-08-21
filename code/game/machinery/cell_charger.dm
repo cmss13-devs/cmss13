@@ -92,7 +92,7 @@
 		update_use_power(0)
 		return
 
-	if (charging && !charging.fully_charged())
+	if(charging && !charging.fully_charged())
 		charging.give(active_power_usage*CELLRATE)
 		update_use_power(2)
 

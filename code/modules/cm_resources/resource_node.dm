@@ -25,7 +25,7 @@
 
 /obj/structure/resource_node/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
 // Sets the amount of resources this node has

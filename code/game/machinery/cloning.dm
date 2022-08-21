@@ -31,13 +31,13 @@
 	var/healthstring = ""
 
 /obj/item/implant/health/proc/sensehealth()
-	if (!src.implanted)
+	if(!src.implanted)
 		return "ERROR"
 	else
 		if(isliving(src.implanted))
 			var/mob/living/L = src.implanted
 			src.healthstring = "[round(L.getOxyLoss())] - [round(L.getFireLoss())] - [round(L.getToxLoss())] - [round(L.getBruteLoss())]"
-		if (!src.healthstring)
+		if(!src.healthstring)
 			src.healthstring = "ERROR"
 		return src.healthstring
 

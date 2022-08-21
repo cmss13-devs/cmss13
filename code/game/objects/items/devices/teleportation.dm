@@ -27,7 +27,7 @@
 	..()
 	user.set_interaction(src)
 	var/dat
-	if (src.temp)
+	if(src.temp)
 		dat = "[src.temp]<BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear</A>"
 	else
 		dat = {"
@@ -45,58 +45,58 @@
 
 /obj/item/device/locator/Topic(href, href_list)
 	..()
-	if (usr.stat || usr.is_mob_restrained())
+	if(usr.stat || usr.is_mob_restrained())
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
 	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2.
 		to_chat(usr, "The [src] is malfunctioning.")
 		return
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
-		if (href_list["refresh"])
+		if(href_list["refresh"])
 			src.temp = "<B>Persistent Signal Locator</B><HR>"
 			var/turf/sr = get_turf(src)
 
-			if (sr)
+			if(sr)
 				src.temp += "<B>Located Beacons:</B><BR>"
 
 				for(var/i in GLOB.radio_beacon_list)
 					var/obj/item/device/radio/beacon/W = i
-					if (W.frequency == src.frequency)
+					if(W.frequency == src.frequency)
 						var/turf/tr = get_turf(W)
-						if (tr.z == sr.z && tr)
+						if(tr.z == sr.z && tr)
 							var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
-							if (direct < 5)
+							if(direct < 5)
 								direct = "very strong"
 							else
-								if (direct < 10)
+								if(direct < 10)
 									direct = "strong"
 								else
-									if (direct < 20)
+									if(direct < 20)
 										direct = "weak"
 									else
 										direct = "very weak"
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>Extranneous Signals:</B><BR>"
-				for (var/i in GLOB.tracking_implant_list)
+				for(var/i in GLOB.tracking_implant_list)
 					var/obj/item/implant/tracking/W = i
-					if (!W.implanted || !(istype(W.loc,/obj/limb) || ismob(W.loc)))
+					if(!W.implanted || !(istype(W.loc,/obj/limb) || ismob(W.loc)))
 						continue
 					else
 						var/mob/M = W.loc
-						if (M.stat == 2)
-							if (M.timeofdeath + 6000 < world.time)
+						if(M.stat == 2)
+							if(M.timeofdeath + 6000 < world.time)
 								continue
 
 					var/turf/tr = get_turf(W)
-					if (tr.z == sr.z && tr)
+					if(tr.z == sr.z && tr)
 						var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
-						if (direct < 20)
-							if (direct < 5)
+						if(direct < 20)
+							if(direct < 5)
 								direct = "very strong"
 							else
-								if (direct < 10)
+								if(direct < 10)
 									direct = "strong"
 								else
 									direct = "weak"
@@ -106,17 +106,17 @@
 			else
 				src.temp += "<B><FONT color='red'>Processing Error:</FONT></B> Unable to locate orbital position.<BR>"
 		else
-			if (href_list["freq"])
+			if(href_list["freq"])
 				src.frequency += text2num(href_list["freq"])
 				src.frequency = sanitize_frequency(src.frequency)
 			else
-				if (href_list["temp"])
+				if(href_list["temp"])
 					src.temp = null
-		if (istype(src.loc, /mob))
+		if(istype(src.loc, /mob))
 			attack_self(src.loc)
 		else
 			for(var/mob/M in viewers(1, src))
-				if (M.client)
+				if(M.client)
 					src.attack_self(M)
 	return
 
@@ -146,7 +146,7 @@
 	var/list/L = list(  )
 	for(var/obj/structure/machinery/teleport/hub/R in machines)
 		var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
-		if (istype(com, /obj/structure/machinery/computer/teleporter) && com.locked && !com.one_time_use)
+		if(istype(com, /obj/structure/machinery/computer/teleporter) && com.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")
 				L["[com.id] (Active)"] = com.locked
 			else
@@ -159,7 +159,7 @@
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
 	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
-	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
+	if((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
 	var/count = 0	//num of portals from this teleport in the world
 	for(var/i in GLOB.portal_list)

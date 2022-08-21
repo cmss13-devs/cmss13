@@ -4,7 +4,7 @@
 	gibbing = TRUE
 	death(istype(cause, /datum/cause_data) ? cause : create_cause_data(cause), TRUE)
 	gib_animation()
-	if (!SSticker?.mode?.hardcore)
+	if(!SSticker?.mode?.hardcore)
 		spawn_gibs()
 
 	// You're not coming back from being gibbed. Stop tracking here

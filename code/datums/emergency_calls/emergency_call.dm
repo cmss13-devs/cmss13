@@ -206,7 +206,7 @@
 		var/list/datum/mind/picked_candidates = list()
 		if(mob_max > 0)
 			var/mob_count = 0
-			while (mob_count < mob_max && candidates.len)
+			while(mob_count < mob_max && candidates.len)
 				var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)

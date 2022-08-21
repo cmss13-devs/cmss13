@@ -82,7 +82,7 @@
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
-	if (outputting)
+	if(outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(inputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_inputting")
@@ -101,8 +101,8 @@
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-			if (charge < (capacity / 100))
-				if (!outputting && !input_attempt)
+			if(charge < (capacity / 100))
+				if(!outputting && !input_attempt)
 					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
 					var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 					M.state = CONSTRUCTION_STATE_PROGRESS
@@ -117,9 +117,9 @@
 					to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
 			else
 				to_chat(user, SPAN_WARNING("Better let [src] discharge before dismantling it."))
-		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
-			if (charge < (capacity / 100))
-				if (!outputting && !input_attempt)
+		else if((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
+			if(charge < (capacity / 100))
+				if(!outputting && !input_attempt)
 					if(user.drop_inv_item_to_loc(W, src))
 						LAZYADD(component_parts, W)
 						RefreshParts()
@@ -151,11 +151,11 @@
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
-	if (outputting)
+	if(outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(inputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_inputting")
-	if (overcharge_percent > 100)
+	if(overcharge_percent > 100)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_overcharge")
 	else
 		var/clevel = chargedisplay()
@@ -171,42 +171,42 @@
 //(3.6M-INFI): 8% ion_act from 115%. 2% of EMP from 125%. 1% of Hull-breaching explosion from 140%.
 /obj/structure/machinery/power/smes/batteryrack/makeshift/proc/overcharge_consequences()
 	switch (capacity)
-		if (0 to (1.2e6-1))
-			if (overcharge_percent >= 125)
-				if (prob(5))
+		if(0 to (1.2e6-1))
+			if(overcharge_percent >= 125)
+				if(prob(5))
 					ion_act()
-		if (1.2e6 to 2.4e6)
-			if (overcharge_percent >= 120)
-				if (prob(6))
+		if(1.2e6 to 2.4e6)
+			if(overcharge_percent >= 120)
+				if(prob(6))
 					ion_act()
 			else
 				return
-			if (overcharge_percent >= 140)
-				if (prob(1))
+			if(overcharge_percent >= 140)
+				if(prob(1))
 					empulse(src.loc, 1, 2, 0)
-		if ((2.4e6+1) to 3.6e6)
-			if (overcharge_percent >= 115)
-				if (prob(7))
+		if((2.4e6+1) to 3.6e6)
+			if(overcharge_percent >= 115)
+				if(prob(7))
 					ion_act()
 			else
 				return
-			if (overcharge_percent >= 130)
-				if (prob(1))
+			if(overcharge_percent >= 130)
+				if(prob(1))
 					empulse(src.loc, 1, 3, 0)
-			if (overcharge_percent >= 150)
-				if (prob(1))
+			if(overcharge_percent >= 150)
+				if(prob(1))
 					explosion(src.loc, 0, 0, 1, 3)
-		if ((3.6e6+1) to INFINITY)
-			if (overcharge_percent >= 115)
-				if (prob(8))
+		if((3.6e6+1) to INFINITY)
+			if(overcharge_percent >= 115)
+				if(prob(8))
 					ion_act()
 			else
 				return
-			if (overcharge_percent >= 125)
-				if (prob(2))
+			if(overcharge_percent >= 125)
+				if(prob(2))
 					empulse(src.loc, 4, 10, 1)
-			if (overcharge_percent >= 140)
-				if (prob(1))
+			if(overcharge_percent >= 140)
+				if(prob(1))
 					explosion(src.loc, 0, 1, 2, 4)
 		else //how the hell was this proc called for negative charge
 			charge = 0
@@ -236,7 +236,7 @@
 				inputting = 0		// stop inputting
 
 		else
-			if (input_attempt && excess > 0 && excess >= input_level)
+			if(input_attempt && excess > 0 && excess >= input_level)
 				inputting = 1
 
 	if(outputting)		// if outputting
@@ -247,7 +247,7 @@
 			outputting = 0					// stop output if charge falls to zero
 
 	overcharge_percent = round((charge / capacity) * 100)
-	if (overcharge_percent > 115) //115% is the minimum overcharge for anything to happen
+	if(overcharge_percent > 115) //115% is the minimum overcharge for anything to happen
 		overcharge_consequences()
 
 	// only update icon if state changed

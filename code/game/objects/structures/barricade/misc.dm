@@ -92,7 +92,7 @@
 				return
 			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
-				if (D.use(1))
+				if(D.use(1))
 					update_health(-0.5*maxhealth)
 					update_damage_state()
 					visible_message(SPAN_NOTICE("[user] clumsily repairs [src]."))

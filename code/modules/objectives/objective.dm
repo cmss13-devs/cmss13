@@ -39,10 +39,10 @@
 /// Add points to the techtree of whoever owns the objective.
 /datum/cm_objective/proc/award_points(override_points = -1)
 	var/datum/techtree/controlling_tree = GET_TREE(controller)
-	if (!controlling_tree)
+	if(!controlling_tree)
 		return
 
-	if (override_points != -1)
+	if(override_points != -1)
 		controlling_tree.add_points(override_points)
 	else
 		controlling_tree.add_points(value)

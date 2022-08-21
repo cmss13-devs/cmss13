@@ -41,15 +41,15 @@
 /obj/effect/landmark/teleporter_loc/LateInitialize()
 	. = ..()
 
-	if (SSteleporter)
+	if(SSteleporter)
 		var/datum/teleporter/T = SSteleporter.teleporters_by_id[linked_teleporter]
-		if (T)
-			if (!T.locations[location_id])
+		if(T)
+			if(!T.locations[location_id])
 				T.locations[location_id] = list()
 
 			var/list/location = T.locations[location_id]
 
-			if (!location)
+			if(!location)
 				log_debug("Teleporter locations turf list not properly instantiated. Code: TELEPORTER_LANDMARK_1")
 				log_admin("Teleporter locations turf list not properly instantiated. Tell the devs. Code: TELEPORTER_LANDMARK_1")
 				qdel(src)

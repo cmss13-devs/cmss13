@@ -222,7 +222,7 @@ mob/living/carbon/proc/handle_hallucinations()
 	return start_txt + mocktxt + end_txt + "</TT></BODY></HTML>"
 
 proc/check_panel(mob/M)
-	if (istype(M, /mob/living/carbon/human) || isRemoteControlling(M))
+	if(istype(M, /mob/living/carbon/human) || isRemoteControlling(M))
 		if(M.hallucination < 15)
 			return 1
 	return 0*/
@@ -367,7 +367,7 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 		if(!(locate(clone.l_hand) in non_fakeattack_weapons))
 			clone_weapon = clone.l_hand.name
 			F.weap = clone.l_hand
-	else if (clone.r_hand)
+	else if(clone.r_hand)
 		if(!(locate(clone.r_hand) in non_fakeattack_weapons))
 			clone_weapon = clone.r_hand.name
 			F.weap = clone.r_hand

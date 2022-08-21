@@ -42,13 +42,13 @@
 
 					var/obj/item/safe_thing = null
 					if( victim.wear_mask )
-						if ( victim.wear_mask.flags_inventory & COVEREYES )
+						if( victim.wear_mask.flags_inventory & COVEREYES )
 							safe_thing = victim.wear_mask
 					if( victim.head )
-						if ( victim.head.flags_inventory & COVEREYES )
+						if( victim.head.flags_inventory & COVEREYES )
 							safe_thing = victim.head
 					if(victim.glasses)
-						if ( !safe_thing )
+						if( !safe_thing )
 							safe_thing = victim.glasses
 
 					if(safe_thing)
@@ -62,7 +62,7 @@
 							src.reagents.reaction(safe_thing, TOUCH)
 
 						to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-						if (src.reagents.total_volume<=0)
+						if(src.reagents.total_volume<=0)
 							filled = 0
 							icon_state = "dropper[filled]"
 						return
@@ -83,7 +83,7 @@
 
 			trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 			to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-			if (src.reagents.total_volume<=0)
+			if(src.reagents.total_volume<=0)
 				filled = 0
 				icon_state = "dropper[filled]"
 

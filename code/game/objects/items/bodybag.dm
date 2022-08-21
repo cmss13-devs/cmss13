@@ -89,13 +89,13 @@
 			name = "[bag_name] (empty)"
 
 /obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/tool/pen))
+	if(istype(W, /obj/item/tool/pen))
 		var/t = stripped_input(user, "What would you like the label to be?", name, null, MAX_MESSAGE_LEN)
-		if (user.get_active_hand() != W)
+		if(user.get_active_hand() != W)
 			return
-		if (!in_range(src, user) && src.loc != user)
+		if(!in_range(src, user) && src.loc != user)
 			return
-		if (t)
+		if(t)
 			src.name = "body bag - "
 			src.name += t
 			src.overlays += image(src.icon, "bodybag_label")
@@ -167,8 +167,8 @@
 
 
 /obj/structure/closet/bodybag/Move(NewLoc, direct)
-	if (roller_buckled && roller_buckled.loc != NewLoc) //not updating position
-		if (!roller_buckled.anchored)
+	if(roller_buckled && roller_buckled.loc != NewLoc) //not updating position
+		if(!roller_buckled.anchored)
 			return roller_buckled.Move(NewLoc, direct)
 		else
 			return 0
@@ -297,7 +297,7 @@
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["ref"] == stasis_ref)
+					if(R.fields["ref"] == stasis_ref)
 						if(!(R.fields["last_scan_time"]))
 							to_chat(user, "<span class = 'deptradio'>No scan report on record</span>\n")
 						else
@@ -315,7 +315,7 @@
 	. = ..()
 	if(.)
 		return
-	if (href_list["scanreport"])
+	if(href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
@@ -327,7 +327,7 @@
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["ref"] == stasis_ref)
+					if(R.fields["ref"] == stasis_ref)
 						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
 						break

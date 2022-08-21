@@ -184,25 +184,25 @@
 	icon_state = "disk_[diskvar]"
 
 	switch(diskvar)
-		if (1,2)
+		if(1,2)
 			disk_color = "Grey"
 			display_color = "#8f9494"
-		if (3 to 5)
+		if(3 to 5)
 			disk_color = "White"
 			display_color = "#e8eded"
-		if (6,7)
+		if(6,7)
 			disk_color = "Green"
 			display_color = "#64c242"
-		if (8 to 10)
+		if(8 to 10)
 			disk_color = "Red"
 			display_color = "#ed5353"
-		if (11 to 13)
+		if(11 to 13)
 			disk_color = "Blue"
 			display_color = "#5296e3"
-		if (14)
+		if(14)
 			disk_color = "Cracked blue"
 			display_color = "#5296e3"
-		if (15)
+		if(15)
 			disk_color = "Bloodied blue"
 			display_color = "#5296e3"
 
@@ -247,7 +247,7 @@
 	return ..()
 
 /obj/structure/machinery/computer/objective/attack_hand(mob/living/user)
-	if (!check_if_usable(user))
+	if(!check_if_usable(user))
 		return
 
 	if(input(user,"Enter the password","Password","") != objective.decryption_password)
@@ -255,7 +255,7 @@
 		return
 
 	// Check if the terminal became unusable since we started entering the password.
-	if (!check_if_usable(user))
+	if(!check_if_usable(user))
 		return
 
 	uploading = 1

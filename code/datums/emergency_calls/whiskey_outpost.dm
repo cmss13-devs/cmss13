@@ -29,7 +29,7 @@
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/leader, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
@@ -41,7 +41,7 @@
 		engineers++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
-	else if (medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_BOLDNOTICE("You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))

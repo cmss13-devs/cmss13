@@ -1,6 +1,6 @@
 //TODO: Convert this over for languages.
 /mob/living/brain/say(var/message)
-	if (silent)
+	if(silent)
 		return
 
 	if(stat != DEAD)

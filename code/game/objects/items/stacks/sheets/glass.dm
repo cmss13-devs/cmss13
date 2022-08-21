@@ -44,7 +44,7 @@
 	if(!is_reinforced)
 		if(istype(W,/obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/CC = W
-			if (get_amount() < 1 || CC.get_amount() < 5)
+			if(get_amount() < 1 || CC.get_amount() < 5)
 				to_chat(user, SPAN_WARNING("You need five lengths of coil and one sheet of glass to make wired glass."))
 				return
 
@@ -54,7 +54,7 @@
 			to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/item/stack/rods/V  = W
-			if (V.get_amount() < 1 || get_amount() < 1)
+			if(V.get_amount() < 1 || get_amount() < 1)
 				to_chat(user, SPAN_WARNING("You need one rod and one sheet of glass to make reinforced glass."))
 				return
 
@@ -66,7 +66,7 @@
 			var/replace = (user.get_inactive_hand()==G)
 			V.use(1)
 			G.use(1)
-			if (!G && replace)
+			if(!G && replace)
 				user.put_in_hands(RG)
 
 /obj/item/stack/sheet/glass/proc/construct_window(mob/user)
@@ -108,7 +108,7 @@
 				return TRUE
 			var/list/directions = new/list(cardinal)
 			var/i = 0
-			for (var/obj/structure/window/win in user.loc)
+			for(var/obj/structure/window/win in user.loc)
 				i++
 				if(i >= 4)
 					to_chat(user, SPAN_DANGER("There are too many windows in this location."))
@@ -217,7 +217,7 @@
 		src = null
 		var/replace = (user.get_inactive_hand()==G)
 		G.use(1)
-		if (!G && !RG && replace)
+		if(!G && !RG && replace)
 			user.put_in_hands(RG)
 	else
 		return ..()

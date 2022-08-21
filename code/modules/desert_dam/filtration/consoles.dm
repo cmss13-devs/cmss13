@@ -28,11 +28,11 @@ var/global/river_activated = FALSE
 			get_broken()
 			return
 		if(2.0)
-			if (prob(40))
+			if(prob(40))
 				get_broken()
 				return
 		if(3.0)
-			if (prob(10))
+			if(prob(10))
 				get_broken()
 				return
 		else

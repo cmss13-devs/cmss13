@@ -120,7 +120,7 @@
 	..()
 
 	active = !active
-	if (active)
+	if(active)
 		force = 10
 		icon_state = "eshield[active]"
 		w_class = SIZE_LARGE

@@ -749,7 +749,7 @@
 
 /turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
 /datum/movable_wall_group
@@ -958,7 +958,7 @@
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
-	if (M.hivenumber == hivenumber)
+	if(M.hivenumber == hivenumber)
 		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
@@ -1149,7 +1149,7 @@
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
-	else if (isobj(AM))
+	else if(isobj(AM))
 		var/obj/O = AM
 		tforce = O.throwforce
 	playsound(src, "alien_resin_break", 25)
@@ -1169,7 +1169,7 @@
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
-	if (M.hivenumber == hivenumber)
+	if(M.hivenumber == hivenumber)
 		take_damage(Ceiling(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
@@ -1210,7 +1210,7 @@
 				R.check_resin_support()
 
 		var/turf/closed/wall/resin/W = .
-		if (istype(W))
+		if(istype(W))
 			W.hivenumber = hive
 			set_hive_data(W, W.hivenumber)
 

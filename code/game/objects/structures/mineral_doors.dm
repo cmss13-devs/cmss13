@@ -45,7 +45,7 @@
 			return NO_BLOCKED_MOVEMENT
 		else
 			return BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
@@ -118,7 +118,7 @@
 
 /obj/structure/mineral_door/proc/Dismantle(devastated = 0)
 	if(!devastated)
-		if (mineralType == "metal")
+		if(mineralType == "metal")
 			var/ore = /obj/item/stack/sheet/metal
 			for(var/i = 1, i <= oreAmount, i++)
 				new ore(get_turf(src))
@@ -127,7 +127,7 @@
 			for(var/i = 1, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	else
-		if (mineralType == "metal")
+		if(mineralType == "metal")
 			var/ore = /obj/item/stack/sheet/metal
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))

@@ -9,13 +9,13 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
 
-	if (ishuman(A))
+	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		H.update_xeno_hostile_hud()
 
 
 /datum/effects/dancer_tag/validate_atom(mob/living/carbon/H)
-	if (!isXenoOrHuman(H) || H.stat == DEAD)
+	if(!isXenoOrHuman(H) || H.stat == DEAD)
 		return FALSE
 	return ..()
 
@@ -24,15 +24,15 @@
 	. = ..()
 
 	// Also checks for null atoms
-	if (!istype(affected_atom, /mob/living/carbon/human))
-		return 
+	if(!istype(affected_atom, /mob/living/carbon/human))
+		return
 
 	var/mob/living/carbon/human/H = affected_atom
 	H.update_xeno_hostile_hud()
 
 
 /datum/effects/dancer_tag/Destroy()
-	if (!ishuman(affected_atom))
+	if(!ishuman(affected_atom))
 		return ..()
 
 	var/mob/living/carbon/human/H = affected_atom

@@ -7,7 +7,7 @@
 	return 1
 
 /mob/living/carbon/is_mob_restrained()
-	if (handcuffed)
+	if(handcuffed)
 		return 1
 	return
 

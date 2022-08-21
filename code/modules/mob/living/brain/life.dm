@@ -138,8 +138,8 @@
 
 
 /mob/living/brain/proc/handle_regular_hud_updates()
-	if (hud_used && hud_used.healths)
-		if (stat != DEAD)
+	if(hud_used && hud_used.healths)
+		if(stat != DEAD)
 			switch(health)
 				if(100 to INFINITY)
 					hud_used.healths.icon_state = "health0"
@@ -176,7 +176,7 @@
 				clear_fullscreen("high")
 
 
-		if (interactee)
+		if(interactee)
 			interactee.check_eye(src)
 		else
 			if(client && !client.adminobs)

@@ -19,7 +19,7 @@
 	if(I == back)
 		back = null
 		update_inv_back()
-	else if (I == wear_mask)
+	else if(I == wear_mask)
 		wear_mask = null
 		wear_mask_update(I)
 		sec_hud_set_ID()

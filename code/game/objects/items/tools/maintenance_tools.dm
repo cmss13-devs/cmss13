@@ -53,29 +53,29 @@
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
-		if ("red")
+		if("red")
 			icon_state = "screwdriver2"
 			item_state = "screwdriver"
-		if ("blue")
+		if("blue")
 			icon_state = "screwdriver"
 			item_state = "screwdriver_blue"
-		if ("purple")
+		if("purple")
 			icon_state = "screwdriver3"
 			item_state = "screwdriver_purple"
-		if ("brown")
+		if("brown")
 			icon_state = "screwdriver4"
 			item_state = "screwdriver_brown"
-		if ("green")
+		if("green")
 			icon_state = "screwdriver5"
 			item_state = "screwdriver_green"
-		if ("cyan")
+		if("cyan")
 			icon_state = "screwdriver6"
 			item_state = "screwdriver_cyan"
-		if ("yellow")
+		if("yellow")
 			icon_state = "screwdriver7"
 			item_state = "screwdriver_yellow"
 
-	if (prob(75))
+	if(prob(75))
 		src.pixel_y = rand(0, 16)
 	return
 
@@ -210,7 +210,7 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
-		if (!S) return
+		if(!S) return
 		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
@@ -244,7 +244,7 @@
 /obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding)
 			O.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
@@ -258,7 +258,7 @@
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 		return
-	if (welding)
+	if(welding)
 		remove_fuel(1)
 
 		if(isliving(O))
@@ -381,11 +381,11 @@
 				E.damage += rand(12, 16)
 		if(safety<2)
 
-			if (E.damage >= E.min_broken_damage)
+			if(E.damage >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return
 
-			if (E.damage >= E.min_bruised_damage)
+			if(E.damage >= E.min_bruised_damage)
 				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
 				return
 
@@ -519,12 +519,12 @@
 /obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
 		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
+	else if(istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
 		return
 /obj/item/tool/weldpack/examine(mob/user)

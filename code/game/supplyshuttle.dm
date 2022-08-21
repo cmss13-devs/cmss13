@@ -51,7 +51,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/plasticflaps/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_UNDER|PASS_THROUGH
 
 /obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -62,9 +62,9 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/plasticflaps/Collided(atom/movable/AM)
 	var/mob/living/carbon/C = AM
-	if (!istype(C))
+	if(!istype(C))
 		return
-	if (isHumanStrict(C))
+	if(isHumanStrict(C))
 		return
 	if(collide_message_busy > world.time)
 		return
@@ -79,10 +79,10 @@ var/datum/controller/supply/supply_controller = new()
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(5))
+			if(prob(5))
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
@@ -609,7 +609,7 @@ var/datum/controller/supply/supply_controller = new()
 		dat = temp
 	else
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-		if (shuttle)
+		if(shuttle)
 			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
 			<HR>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
@@ -647,7 +647,7 @@ var/datum/controller/supply/supply_controller = new()
 				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
-	else if (href_list["doorder"])
+	else if(href_list["doorder"])
 		if(world.time < reqtime)
 			for(var/mob/V in hearers(src))
 				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
@@ -702,21 +702,21 @@ var/datum/controller/supply/supply_controller = new()
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
-	else if (href_list["vieworders"])
+	else if(href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
-	else if (href_list["viewrequests"])
+	else if(href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
 		for(var/S in supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
-	else if (href_list["mainmenu"])
+	else if(href_list["mainmenu"])
 		temp = null
 
 	add_fingerprint(usr)
@@ -734,37 +734,37 @@ var/datum/controller/supply/supply_controller = new()
 	user.set_interaction(src)
 	post_signal("supply")
 	var/dat
-	if (temp)
+	if(temp)
 		dat = temp
 	else
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-		if (shuttle)
+		if(shuttle)
 			dat += "\nPlatform position: "
-			if (shuttle.has_arrive_time())
+			if(shuttle.has_arrive_time())
 				dat += "Moving<BR>"
 			else
-				if (shuttle.at_station())
-					if (shuttle.docking_controller)
+				if(shuttle.at_station())
+					if(shuttle.docking_controller)
 						switch(shuttle.docking_controller.get_docking_status())
-							if ("docked") dat += "Raised<BR>"
-							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if("docked") dat += "Raised<BR>"
+							if("undocked") dat += "Lowered<BR>"
+							if("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
 
-					if (shuttle.can_launch())
+					if(shuttle.can_launch())
 						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
-					else if (shuttle.can_cancel())
+					else if(shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
 				else
 					dat += "Lowered<BR>"
-					if (shuttle.can_launch())
+					if(shuttle.can_launch())
 						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
-					else if (shuttle.can_cancel())
+					else if(shuttle.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"
@@ -787,7 +787,7 @@ var/datum/controller/supply/supply_controller = new()
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return
 	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-	if (!shuttle)
+	if(!shuttle)
 		world.log << "## ERROR: Eek. The supply/shuttle datum is missing somehow."
 		return
 	if(..())
@@ -802,7 +802,7 @@ var/datum/controller/supply/supply_controller = new()
 	//Calling the shuttle
 	if(href_list["send"])
 		if(shuttle.at_station())
-			if (shuttle.forbidden_atoms_check())
+			if(shuttle.forbidden_atoms_check())
 				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else
 				shuttle.launch(src)
@@ -812,13 +812,13 @@ var/datum/controller/supply/supply_controller = new()
 			temp = "Raising platform.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			post_signal("supply")
 
-	if (href_list["force_send"])
+	if(href_list["force_send"])
 		shuttle.force_launch(src)
 
-	if (href_list["cancel_send"])
+	if(href_list["cancel_send"])
 		shuttle.cancel_launch(src)
 
-	else if (href_list["order"])
+	else if(href_list["order"])
 		//if(!shuttle.idle()) return	//this shouldn't be necessary it seems
 		if(href_list["order"] == "categories")
 			//all_supply_groups
@@ -848,7 +848,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"    //the obj because it would get caught by the garbage
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"*/
 
-	else if (href_list["doorder"])
+	else if(href_list["doorder"])
 		if(world.time < reqtime)
 			for(var/mob/V in hearers(src))
 				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
@@ -936,14 +936,14 @@ var/datum/controller/supply/supply_controller = new()
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 				break
 
-	else if (href_list["vieworders"])
+	else if(href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 /*
-	else if (href_list["cancelorder"])
+	else if(href_list["cancelorder"])
 		var/datum/supply_order/remove_supply = href_list["cancelorder"]
 		supply_shuttle_shoppinglist -= remove_supply
 		supply_shuttle_points += remove_supply.object.cost
@@ -954,7 +954,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "[SO.object.name] approved by [SO.orderedby] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 */
-	else if (href_list["viewrequests"])
+	else if(href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
 		for(var/S in supply_controller.requestlist)
 			var/datum/supply_order/SO = S
@@ -963,7 +963,7 @@ var/datum/controller/supply/supply_controller = new()
 		temp += "<BR><A href='?src=\ref[src];clearreq=1'>Clear list</A>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
-	else if (href_list["rreq"])
+	else if(href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)
@@ -974,12 +974,12 @@ var/datum/controller/supply/supply_controller = new()
 				break
 		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
-	else if (href_list["clearreq"])
+	else if(href_list["clearreq"])
 		supply_controller.requestlist.Cut()
 		temp = "List cleared.<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
-	else if (href_list["mainmenu"])
+	else if(href_list["mainmenu"])
 		temp = null
 
 	add_fingerprint(usr)
@@ -1076,7 +1076,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 
 	dat += "Platform position: "
-	if (SSshuttle.vehicle_elevator.timeLeft())
+	if(SSshuttle.vehicle_elevator.timeLeft())
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
@@ -1112,7 +1112,7 @@ var/datum/controller/supply/supply_controller = new()
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return
 
-	if (!SSshuttle.vehicle_elevator)
+	if(!SSshuttle.vehicle_elevator)
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 

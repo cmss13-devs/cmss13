@@ -23,7 +23,7 @@
 
 /datum/xeno_mutator/vanguard/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
@@ -51,7 +51,7 @@
 	var/last_shield_regen_time = 0
 
 /datum/behavior_delegate/praetorian_vanguard/on_life()
-	if (last_shield_regen_time <= last_combat_time &&  last_combat_time + shield_recharge_time <= world.time)
+	if(last_shield_regen_time <= last_combat_time &&  last_combat_time + shield_recharge_time <= world.time)
 		regen_shield()
 
 
@@ -66,7 +66,7 @@
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
 	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
+	if(istype(pAction))
 		pAction.should_spin_instead = TRUE
 
 	addtimer(CALLBACK(src, .proc/next_pierce_normal), pierce_spin_time)
@@ -74,7 +74,7 @@
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
 	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
+	if(istype(pAction))
 		pAction.should_spin_instead = FALSE
 	return
 
@@ -82,12 +82,12 @@
 	var/mob/living/carbon/Xenomorph/X = bound_xeno
 	var/datum/xeno_shield/vanguard/found_shield = null
 	last_shield_regen_time = world.time
-	for (var/datum/xeno_shield/vanguard/XS in X.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_VANGUARD_PRAE)
+	for(var/datum/xeno_shield/vanguard/XS in X.xeno_shields)
+		if(XS.shield_source == XENO_SHIELD_SOURCE_VANGUARD_PRAE)
 			found_shield = XS
 			break
 
-	if (found_shield)
+	if(found_shield)
 		qdel(found_shield)
 
 		X.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
@@ -100,7 +100,7 @@
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your defensive shell regenerate! It will block one hit!"))
 
 	var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/cleave)
-	if (istype(cAction))
+	if(istype(cAction))
 		cAction.buffed = TRUE
 
 

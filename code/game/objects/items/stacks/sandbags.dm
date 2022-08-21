@@ -16,7 +16,7 @@
 	stack_id = "empty sandbags"
 
 /obj/item/stack/sandbags_empty/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/tool/shovel))
+	if(istype(W, /obj/item/tool/shovel))
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
 			ET.dirt_amt -= 1
@@ -31,7 +31,7 @@
 			if(!E && replace)
 				user.put_in_hands(new_bags)
 
-	else if (istype(W, /obj/item/stack/snow))
+	else if(istype(W, /obj/item/stack/snow))
 		var/obj/item/stack/S = W
 		var/obj/item/stack/sandbags/new_bags = new(user.loc)
 		new_bags.add_to_stacks(user)

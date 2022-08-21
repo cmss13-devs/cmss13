@@ -14,19 +14,19 @@
 		cycle_modules()
 		return 1
 
-	if (mods["ctrl"] && mods["shift"])
-		if (!A.BorgCtrlShiftClick(src))
+	if(mods["ctrl"] && mods["shift"])
+		if(!A.BorgCtrlShiftClick(src))
 			return 1
 
-	else if (mods["ctrl"])
-		if (!A.BorgCtrlClick(src))
+	else if(mods["ctrl"])
+		if(!A.BorgCtrlClick(src))
 			return 1
 
 	else if(mods["shift"])
 		return A.BorgShiftClick(src)
 
 	if(mods["alt"]) // alt and alt-gr (rightalt)
-		if (!A.BorgAltClick(src))
+		if(!A.BorgAltClick(src))
 			return 1
 
 
@@ -39,7 +39,7 @@
 		return 1
 
 	face_atom(A)
-	if (world.time <= next_move) return
+	if(world.time <= next_move) return
 	var/obj/item/W = get_active_hand()
 
 	// Cyborgs have no range-checking unless there is item use

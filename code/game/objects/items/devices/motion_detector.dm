@@ -95,9 +95,9 @@
 	playsound(usr,'sound/machines/click.ogg', 15, TRUE)
 
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
-	if (isobserver(user) || isXeno(user)) return
+	if(isobserver(user) || isXeno(user)) return
 
-	if (mods["alt"])
+	if(mods["alt"])
 		if(!long_range_locked)
 			toggle_mode(usr)
 		else

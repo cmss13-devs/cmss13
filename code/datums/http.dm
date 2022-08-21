@@ -12,7 +12,7 @@
 	var/_raw_response
 
 /datum/http_request/proc/prepare(method, url, body = "", list/headers, output_file)
-	if (!length(headers))
+	if(!length(headers))
 		headers = ""
 	else
 		headers = json_encode(headers)
@@ -27,12 +27,12 @@
 	_raw_response = rustg_http_request_blocking(method, url, body, headers, build_options())
 
 /datum/http_request/proc/begin_async()
-	if (in_progress)
+	if(in_progress)
 		CRASH("Attempted to re-use a request object.")
 
 	id = rustg_http_request_async(method, url, body, headers, build_options())
 
-	if (isnull(text2num(id)))
+	if(isnull(text2num(id)))
 		stack_trace("Proc error: [id]")
 		_raw_response = "Proc error: [id]"
 	else
@@ -44,15 +44,15 @@
 	return null
 
 /datum/http_request/proc/is_complete()
-	if (isnull(id))
+	if(isnull(id))
 		return TRUE
 
-	if (!in_progress)
+	if(!in_progress)
 		return TRUE
 
 	var/r = rustg_http_check_request(id)
 
-	if (r == RUSTG_JOB_NO_RESULTS_YET)
+	if(r == RUSTG_JOB_NO_RESULTS_YET)
 		return FALSE
 	else
 		_raw_response = r

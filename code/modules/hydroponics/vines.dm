@@ -33,7 +33,7 @@
 
 /obj/effect/plantsegment/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
 /obj/effect/plantsegment/attackby(obj/item/W as obj, mob/user as mob)
@@ -205,11 +205,11 @@
 /obj/effect/plantsegment/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
+			if(prob(50))
 				die()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(90))
+			if(prob(90))
 				die()
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)

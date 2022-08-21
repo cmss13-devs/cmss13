@@ -479,7 +479,7 @@
 	. = ..()
 	if(isXeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+	else if(ishuman(user) && istype(W, /obj/item/tool/crowbar))
 		on = !on
 		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
@@ -487,7 +487,7 @@
 
 /obj/structure/prop/turbine/proc/Update()
 	icon_state = "biomass_turbine[on ? "-on" : ""]"
-	if (on)
+	if(on)
 		SetLuminosity(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else

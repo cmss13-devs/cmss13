@@ -1,10 +1,10 @@
 /datum/action/xeno_action/activable/predalien_roar/use_ability(atom/A)
     var/mob/living/carbon/Xenomorph/X = owner
 
-    if (!action_cooldown_check())
+    if(!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if(!X.check_state())
         return
 
     if(!check_and_use_plasma_owner())
@@ -44,10 +44,10 @@
 /datum/action/xeno_action/activable/smash/use_ability(atom/A)
     var/mob/living/carbon/Xenomorph/X = owner
 
-    if (!action_cooldown_check())
+    if(!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if(!X.check_state())
         return
 
     var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
@@ -80,7 +80,7 @@
             C.frozen = 1
             C.update_canmove()
 
-            if (ishuman(C))
+            if(ishuman(C))
                 var/mob/living/carbon/human/H = C
                 H.update_xeno_hostile_hud()
 
@@ -99,23 +99,23 @@
 /datum/action/xeno_action/activable/devastate/use_ability(atom/A)
     var/mob/living/carbon/Xenomorph/X = owner
 
-    if (!action_cooldown_check())
+    if(!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if(!X.check_state())
         return
 
-    if (!isXenoOrHuman(A) || X.can_not_harm(A))
+    if(!isXenoOrHuman(A) || X.can_not_harm(A))
         to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
         return
 
-    if (get_dist_sqrd(A, X) > 2)
+    if(get_dist_sqrd(A, X) > 2)
         to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
         return
 
     var/mob/living/carbon/H = A
 
-    if (H.stat == DEAD)
+    if(H.stat == DEAD)
         to_chat(X, SPAN_XENOWARNING("[H] is dead, why would you want to touch them?"))
         return
 
@@ -123,13 +123,13 @@
     if(!istype(P))
         return
 
-    if (!check_and_use_plasma_owner())
+    if(!check_and_use_plasma_owner())
         return
 
     H.frozen = 1
     H.update_canmove()
 
-    if (ishuman(H))
+    if(ishuman(H))
         var/mob/living/carbon/human/Hu = H
         Hu.update_xeno_hostile_hud()
 
@@ -139,7 +139,7 @@
     X.anchored = 1
     X.update_canmove()
 
-    if (do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+    if(do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
         X.emote("roar")
         X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
         H.spawn_gibs()

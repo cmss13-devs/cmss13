@@ -76,8 +76,8 @@
 
 
 		if(m_type & 1)
-			for (var/mob/O in viewers(src, null))
+			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else if(m_type & 2)
-			for (var/mob/O in hearers(src.loc, null))
+			for(var/mob/O in hearers(src.loc, null))
 				O.show_message(message, m_type)

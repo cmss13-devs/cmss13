@@ -49,9 +49,9 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 						break
 				else
 					for(var/obj/item/storage/S in M.contents) // Try to place it in any item that can store stuff, on the mob.
-						if (S.handle_item_insertion(Item, TRUE))
+						if(S.handle_item_insertion(Item, TRUE))
 							ok = 1
 							break
 
-				if (ok == 0) // Finally, since everything else failed, place it on the ground
+				if(ok == 0) // Finally, since everything else failed, place it on the ground
 					Item.forceMove(get_turf(M.loc))

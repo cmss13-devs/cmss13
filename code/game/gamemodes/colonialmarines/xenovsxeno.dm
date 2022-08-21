@@ -232,14 +232,14 @@
 		if(length(living_player_list[H]) > 0)
 			living_hives++
 			last_living_hive = H
-		else if (H in current_hives)
+		else if(H in current_hives)
 			xeno_announcement("\The [H] has been eliminated from the world", "everything", HIGHER_FORCE_ANNOUNCE)
 			current_hives -= H
 
 
 	if(!living_hives)
 		round_finished = "No one has won."
-	else if (living_hives == 1)
+	else if(living_hives == 1)
 		round_finished = "The [last_living_hive] has won."
 
 

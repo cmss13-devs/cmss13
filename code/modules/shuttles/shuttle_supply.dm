@@ -64,10 +64,10 @@
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time)
-		if (moving_status == SHUTTLE_IDLE)
+		if(moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 
-		if (at_station())
+		if(at_station())
 			raise_railings()
 			sleep(12)
 			if(forbidden_atoms_check())
@@ -89,7 +89,7 @@
 			elevator_animation.vis_contents += T
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
-		if (origin != away_area)
+		if(origin != away_area)
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
 			move(origin, away_area)
 			SW.forceMove(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
@@ -115,7 +115,7 @@
 		stop_gears()
 		elevator_animation.vis_contents.Cut()
 
-		if (!at_station())	//at centcom
+		if(!at_station())	//at centcom
 			handle_sell()
 		else
 			lower_railings()
@@ -128,7 +128,7 @@
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
-	if (!at_station())
+	if(!at_station())
 		return 0	//if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
 	return supply_controller.forbidden_atoms_check(get_location_area())

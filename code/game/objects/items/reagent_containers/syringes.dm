@@ -65,7 +65,7 @@
 		to_chat(user, SPAN_DANGER("This syringe is broken!"))
 		return
 
-	if (user.a_intent == INTENT_HARM && ismob(target))
+	if(user.a_intent == INTENT_HARM && ismob(target))
 		var/mob/M = target
 		if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isYautja(M))) // preds have null skills
 			user.KnockDown(3)
@@ -135,7 +135,7 @@
 					return
 
 				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
-			if (reagents.total_volume >= reagents.maximum_volume)
+			if(reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
 
@@ -203,7 +203,7 @@
 				trans = reagents.trans_to(target, amount_per_transfer_from_this)
 
 			to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
-			if (reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
+			if(reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
 
@@ -218,9 +218,9 @@
 	if(ismob(loc))
 		var/injoverlay
 		switch(mode)
-			if (SYRINGE_DRAW)
+			if(SYRINGE_DRAW)
 				injoverlay = "draw"
-			if (SYRINGE_INJECT)
+			if(SYRINGE_INJECT)
 				injoverlay = "inject"
 		overlays += injoverlay
 	icon_state = "[rounded_vol]"
@@ -245,7 +245,7 @@
 		var/target_zone = rand_zone(check_zone(user.zone_selected, target))
 		var/obj/limb/affecting = H.get_limb(target_zone)
 
-		if (!affecting)
+		if(!affecting)
 			return
 		if(affecting.status & LIMB_DESTROYED)
 			to_chat(user, "What [affecting.display_name]?")
@@ -255,7 +255,7 @@
 		if((user != target) && H.check_shields(7, "the [src.name]"))
 			return
 
-		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
+		if(target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
 			for(var/mob/O in viewers(world_view_size, user))
 				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), 1)
 			user.temp_drop_inv_item(src)
@@ -347,7 +347,7 @@
 					return
 
 				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
-			if (reagents.total_volume >= reagents.maximum_volume)
+			if(reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
 
@@ -374,7 +374,7 @@
 			spawn(5)
 				var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 				to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
-				if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
+				if(reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
 					mode = SYRINGE_DRAW
 					update_icon()
 	return
@@ -385,9 +385,9 @@
 	if(ismob(loc))
 		var/mode_t
 		switch(mode)
-			if (SYRINGE_DRAW)
+			if(SYRINGE_DRAW)
 				mode_t = "d"
-			if (SYRINGE_INJECT)
+			if(SYRINGE_INJECT)
 				mode_t = "i"
 		icon_state = "[mode_t][rounded_vol]"
 	else

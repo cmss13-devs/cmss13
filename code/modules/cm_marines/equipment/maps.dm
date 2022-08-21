@@ -164,12 +164,12 @@
 			desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 			html_link = "images/1/1c/Sorokyne_map.png"
 			color = "cyan"
-		if (MAP_CORSAT)
+		if(MAP_CORSAT)
 			name = "\improper CORSAT map"
 			desc = "A blueprint of CORSAT station"
 			html_link = "images/8/8e/CORSAT_Satellite.png"
 			color = "red"
-		if (MAP_KUTJEVO)
+		if(MAP_KUTJEVO)
 			name = "\improper Kutjevo Refinery map"
 			desc = "An orbital scan of Kutjevo Refinery"
 			html_link = "images/0/0d/Kutjevo_a1.jpg"

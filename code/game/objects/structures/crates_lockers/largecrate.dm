@@ -10,7 +10,7 @@
 
 /obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
@@ -248,17 +248,17 @@
 	var/strapped = 1
 
 /obj/structure/largecrate/random/secure/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if (!strapped)
+	if(!strapped)
 		..()
 		return
 
-	if (!W.sharp)
+	if(!W.sharp)
 		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You begin to cut the straps off \the [src]..."))
 
-	if (do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You cut the straps away."))
 		icon_state = "secure_crate"

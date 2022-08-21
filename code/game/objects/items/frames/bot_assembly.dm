@@ -26,11 +26,11 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if(istype(W, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
-		if (!t)
+		if(!t)
 			return
-		if (!in_range(src, usr) && src.loc != usr)
+		if(!in_range(src, usr) && src.loc != usr)
 			return
 		src.created_name = t
 
@@ -61,11 +61,11 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if(istype(W, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
-		if (!t)
+		if(!t)
 			return
-		if (!in_range(src, usr) && src.loc != usr)
+		if(!in_range(src, usr) && src.loc != usr)
 			return
 
 		src.created_name = t
@@ -94,12 +94,12 @@
 		to_chat(user, SPAN_NOTICE("You add the robot arm to the odd looking toolbox assembly! Boop beep!"))
 		user.temp_drop_inv_item(src)
 		qdel(src)
-	else if (istype(W, /obj/item/tool/pen))
+	else if(istype(W, /obj/item/tool/pen))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name)
 
-		if (!t)
+		if(!t)
 			return
-		if (!in_range(src, usr) && src.loc != usr)
+		if(!in_range(src, usr) && src.loc != usr)
 			return
 
 		src.created_name = t
@@ -131,9 +131,9 @@
 	..()
 	if(istype(W, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
-		if (!t)
+		if(!t)
 			return
-		if (!in_range(src, usr) && src.loc != usr)
+		if(!in_range(src, usr) && src.loc != usr)
 			return
 		src.created_name = t
 	else

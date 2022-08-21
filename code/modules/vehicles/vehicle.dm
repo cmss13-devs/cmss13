@@ -36,7 +36,7 @@
 
 /obj/vehicle/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/vehicle/relaymove(mob/user, direction)

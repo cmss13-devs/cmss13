@@ -43,7 +43,7 @@
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
 	var/new_icon = icon_xeno
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]

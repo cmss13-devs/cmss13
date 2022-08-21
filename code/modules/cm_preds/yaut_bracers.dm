@@ -594,7 +594,7 @@
 /obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
 	set waitfor = 0
 
-	if (exploding)
+	if(exploding)
 		return
 
 	exploding = 1
@@ -671,7 +671,7 @@
 						if(A)
 							message_staff(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
 							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
-						if (!bracer.exploding)
+						if(!bracer.exploding)
 							bracer.explode(victim)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
 						message_all_yautja("[M.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")

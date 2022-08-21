@@ -34,7 +34,7 @@
 				continue
 			else if(L in friends)
 				continue
-			else if (istype(src, /mob/living/simple_animal/hostile/alien) && (isXeno(L) || (isSilicon(L))))
+			else if(istype(src, /mob/living/simple_animal/hostile/alien) && (isXeno(L) || (isSilicon(L))))
 				continue
 			else
 				if(!L.stat)
@@ -44,7 +44,7 @@
 
 		if(istype(A, /obj/structure/machinery/bot))
 			var/obj/structure/machinery/bot/B = A
-			if (B.health > 0)
+			if(B.health > 0)
 				stance = HOSTILE_STANCE_ATTACK
 				T = B
 				break
@@ -174,7 +174,7 @@
 	playsound(user, projectilesound, 25, 1)
 	if(!A)	return
 
-	if (!istype(target, /turf))
+	if(!istype(target, /turf))
 		qdel(A)
 		return
 	A.current = target

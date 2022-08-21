@@ -136,7 +136,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(H.loc)
 				h_meat.name = "[H.name] meat"
 
-		else if (isXeno(M))
+		else if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/xeno_victim = M
 
 			new /obj/effect/decal/remains/xeno(xeno_victim.loc)

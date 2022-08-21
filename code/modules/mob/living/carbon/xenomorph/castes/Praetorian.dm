@@ -66,17 +66,17 @@
 	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+	if(!ishuman(A))
 		return
 
 	var/mob/living/carbon/human/H = A
 
 	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+	for(var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
 		PAS = prae_acid_stacks
 		break
 
-	if (PAS == null)
+	if(PAS == null)
 		new /datum/effects/prae_acid_stacks(H)
 		return
 	else

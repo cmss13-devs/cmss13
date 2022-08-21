@@ -145,9 +145,9 @@
 /datum/admins/proc/player_notes_show(var/key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
-	if (!istype(src,/datum/admins))
+	if(!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+	if(!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -256,7 +256,7 @@
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 
-	if (!msg)
+	if(!msg)
 		return
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
@@ -275,7 +275,7 @@
 	log_adminpm("MOD: [key_name(src)] : [msg]")
 
 	var/color = "mod"
-	if (check_rights(R_ADMIN,0))
+	if(check_rights(R_ADMIN,0))
 		color = "adminmod"
 
 	var/channel = "MOD:"
@@ -298,7 +298,7 @@
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 
-	if (!msg)
+	if(!msg)
 		return
 
 	log_adminpm("MENTOR: [key_name(src)] : [msg]")

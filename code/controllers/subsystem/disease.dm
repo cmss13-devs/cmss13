@@ -15,17 +15,17 @@ SUBSYSTEM_DEF(disease)
 
 
 /datum/controller/subsystem/disease/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = active_diseases.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/datum/disease/D = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!D || QDELETED(D))
+		if(!D || QDELETED(D))
 			continue
 
 		D.process()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

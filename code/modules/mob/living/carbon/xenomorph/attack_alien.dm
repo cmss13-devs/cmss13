@@ -192,7 +192,7 @@
 			var/tackle_mult = 1
 			var/tackle_min_offset = 0
 			var/tackle_max_offset = 0
-			if (isYautja(src))
+			if(isYautja(src))
 				tackle_mult = 0.2
 				tackle_min_offset += 2
 				tackle_max_offset += 2
@@ -204,7 +204,7 @@
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				if (knocked_down)
+				if(knocked_down)
 					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
 					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
@@ -642,7 +642,7 @@
 			playsound(loc, "alien_resin_break", 25)
 
 		M.animation_attack_on(src)
-		if (hivenumber == M.hivenumber)
+		if(hivenumber == M.hivenumber)
 			qdel(src)
 		else
 			health -= M.melee_damage_lower * RESIN_XENO_DAMAGE_MULTIPLIER
@@ -807,7 +807,7 @@
 	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
-	if (beenhit >= XENO_HITS_TO_CUT_WIRES)
+	if(beenhit >= XENO_HITS_TO_CUT_WIRES)
 		set_broken()
 		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
 	else if(wiresexposed)

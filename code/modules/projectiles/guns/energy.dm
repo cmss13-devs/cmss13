@@ -173,7 +173,7 @@
 
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()
-	if (. && istype(user)) //Let's check all that other stuff first.
+	if(. && istype(user)) //Let's check all that other stuff first.
 		if(skilllock && !skillcheck(user, SKILL_POLICE, skilllock))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE

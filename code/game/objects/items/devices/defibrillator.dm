@@ -69,7 +69,7 @@
 		return
 
 	//Job knowledge requirement
-	if (istype(user))
+	if(istype(user))
 		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return

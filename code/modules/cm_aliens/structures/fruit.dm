@@ -98,7 +98,7 @@
 		bound_xeno = null
 
 /obj/effect/alien/resin/fruit/proc/reduce_timer(maturity_increase)
-	if (mature || timer_id == TIMER_ID_NULL)
+	if(mature || timer_id == TIMER_ID_NULL)
 		return
 
 	// Unconditionally delete the first timer
@@ -107,7 +107,7 @@
 	timer_id = TIMER_ID_NULL
 
 	// Are we done, or do we need to add a new timer
-	if ((timeleft - maturity_increase) < 0)
+	if((timeleft - maturity_increase) < 0)
 		mature()
 	else
 		// Restart the timer.
@@ -244,7 +244,7 @@
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		mature = FALSE
-		for (var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
+		for(var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
 			if(E.effect_source == "spore")
 				qdel(E)
 		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 60 SECONDS, "spore")

@@ -33,17 +33,17 @@
 
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
-		if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
 				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
 			return
-		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
+		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
 			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), 1)
 			l_hacking = 1
-			if (do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if (prob(40))
+			if(do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(prob(40))
 					l_setshort = 1
 					l_set = 0
 					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), 1)
@@ -64,7 +64,7 @@
 
 
 /obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
-	if (locked)
+	if(locked)
 		add_fingerprint(usr)
 		return
 	..()
@@ -75,26 +75,26 @@
 	user.set_interaction(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
-	if ((l_set == 0) && (!l_setshort))
+	if((l_set == 0) && (!l_setshort))
 		dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
-	if (l_setshort)
+	if(l_setshort)
 		dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
 	message = text("[]", code)
-	if (!locked)
+	if(!locked)
 		message = "*****"
 	dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
 	user << browse(dat, "window=caselock;size=300x280")
 
 /obj/item/storage/secure/Topic(href, href_list)
 	..()
-	if ((usr.stat || usr.is_mob_restrained()) || (get_dist(src, usr) > 1))
+	if((usr.stat || usr.is_mob_restrained()) || (get_dist(src, usr) > 1))
 		return
-	if (href_list["type"])
-		if (href_list["type"] == "E")
-			if ((l_set == 0) && (length(code) == 5) && (!l_setshort) && (code != "ERROR"))
+	if(href_list["type"])
+		if(href_list["type"] == "E")
+			if((l_set == 0) && (length(code) == 5) && (!l_setshort) && (code != "ERROR"))
 				l_code = code
 				l_set = 1
-			else if ((code == l_code) && (l_set == 1))
+			else if((code == l_code) && (l_set == 1))
 				locked = 0
 				overlays = null
 				overlays += image('icons/obj/items/storage.dmi', icon_opened)
@@ -102,18 +102,18 @@
 			else
 				code = "ERROR"
 		else
-			if ((href_list["type"] == "R") && (!l_setshort))
+			if((href_list["type"] == "R") && (!l_setshort))
 				locked = 1
 				overlays = null
 				code = null
 				storage_close(usr)
 			else
 				code += text("[]", href_list["type"])
-				if (length(code) > 5)
+				if(length(code) > 5)
 					code = "ERROR"
 		add_fingerprint(usr)
 		for(var/mob/M in viewers(1, loc))
-			if ((M.client && M.interactee == src))
+			if((M.client && M.interactee == src))
 				attack_self(M)
 			return
 	return
@@ -138,8 +138,8 @@
 	new /obj/item/tool/pen(src)
 
 /obj/item/storage/secure/briefcase/attack_hand(mob/user as mob)
-	if (loc == user)
-		if (locked)
+	if(loc == user)
+		if(locked)
 			to_chat(usr, SPAN_DANGER("[src] is locked and cannot be opened!"))
 		else
 			open(usr)

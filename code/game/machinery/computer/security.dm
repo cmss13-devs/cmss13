@@ -55,7 +55,7 @@
 		return
 	var/dat
 
-	if (temp)
+	if(temp)
 		dat = text("<TT>[]</TT><BR><BR><A href='?src=\ref[];choice=Clear Screen'>Clear Screen</A>", temp, src)
 	else
 		switch(screen)
@@ -84,7 +84,7 @@
 					for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
 						var/crimstat = ""
 						for(var/datum/data/record/E in GLOB.data_core.security)
-							if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
+							if((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
 								crimstat = E.fields["criminal"]
 						var/background
 						switch(crimstat)
@@ -114,7 +114,7 @@
 				dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
 			if(3.0)
 				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
-				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+				if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 					dat += text("<table><tr><td>	\
 					Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 					ID: [active1.fields["id"]]<BR>\n \
@@ -129,7 +129,7 @@
 					</td></tr></table>")
 				else
 					dat += "<B>General Record Lost!</B><BR>"
-				if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
+				if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
 								Criminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
 								Incidents: [active2.fields["incident"]]<BR>\n \
@@ -140,7 +140,7 @@
 						for(var/com_i in active2.fields["comments"])
 							var/comment = active2.fields["comments"][com_i]
 							var/comment_markup = text("<b>[] / [] ([])</b>\n", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-							if (isnull(comment["deleted_by"]))
+							if(isnull(comment["deleted_by"]))
 								comment_markup += text("<a href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
 								comment_markup += text("<br />[]", comment["entry"])
 							else
@@ -213,11 +213,11 @@ What a mess.*/
 /obj/structure/machinery/computer/secure_data/Topic(href, href_list)
 	if(..())
 		return
-	if (!( GLOB.data_core.general.Find(active1) ))
+	if(!( GLOB.data_core.general.Find(active1) ))
 		active1 = null
-	if (!( GLOB.data_core.security.Find(active2) ))
+	if(!( GLOB.data_core.security.Find(active2) ))
 		active2 = null
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
 		usr.set_interaction(src)
 		switch(href_list["choice"])
 // SORTING!
@@ -236,7 +236,7 @@ What a mess.*/
 			if("Clear Screen")
 				temp = null
 
-			if ("Return")
+			if("Return")
 				screen = 1
 				active1 = null
 				active2 = null
@@ -266,7 +266,7 @@ What a mess.*/
 //RECORD FUNCTIONS
 			if("Search Records")
 				var/t1 = input("Search String: (Partial Name or ID or Rank)", "Secure. records", null, null)  as text
-				if ((!t1 || usr.stat || usr.is_mob_restrained() || !in_range(src, usr)))
+				if((!t1 || usr.stat || usr.is_mob_restrained() || !in_range(src, usr)))
 					return
 				Perp = new/list()
 				t1 = lowertext(t1)
@@ -283,7 +283,7 @@ What a mess.*/
 				for(var/i = 1, i<=Perp.len, i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
-						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
+						if((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
 							Perp[i+1] = E
 				tempname = t1
 				screen = 4
@@ -293,45 +293,45 @@ What a mess.*/
 				active1 = null
 				active2 = null
 
-			if ("Browse Record")
+			if("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"])
 				var/S = locate(href_list["d_rec"])
-				if (!( GLOB.data_core.general.Find(R) ))
+				if(!( GLOB.data_core.general.Find(R) ))
 					temp = "Record Not Found!"
 				else
 					for(var/datum/data/record/E in GLOB.data_core.security)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+						if((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
 							S = E
 					active1 = R
 					active2 = S
 					screen = 3
 
 
-			if ("Print Record")
-				if (!( printing ))
+			if("Print Record")
+				if(!( printing ))
 					printing = 1
 					var/datum/data/record/record1 = null
 					var/datum/data/record/record2 = null
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						record1 = active1
-					if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
+					if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 						record2 = active2
 					sleep(50)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
-					if (record1)
+					if(record1)
 						P.info += text("Name: []<br />\nID: []<br />\nSex: []<br />\nAge: []<br />\nRank: []<br />\nPhysical Status: []<br />\nMental Status: []<br />Criminal Status: []<br />", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["rank"], record1.fields["p_stat"], record1.fields["m_stat"], record2.fields["criminal"])
 						P.name = text("Security Record ([])", record1.fields["name"])
 					else
 						P.info += "<b>General Record Lost!</b><br />"
 						P.name = "Security Record"
-					if (record2)
+					if(record2)
 						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nIncidents: [record2.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>")
 						if(islist(record2.fields["comments"]) || length(record2.fields["comments"]) > 0)
 							for(var/com_i in record2.fields["comments"])
 								var/comment = record2.fields["comments"][com_i]
 								var/comment_markup = text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-								if (isnull(comment["deleted_by"]))
+								if(isnull(comment["deleted_by"]))
 									comment_markup += comment["entry"]
 								else
 									comment_markup += text("<i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
@@ -344,20 +344,20 @@ What a mess.*/
 					printing = null
 					updateUsrDialog()
 //RECORD DELETE
-			if ("Delete All Records")
+			if("Delete All Records")
 				temp = ""
 				temp += "Are you sure you wish to delete all Security records?<br>"
 				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
 				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 
-			if ("Purge All Records")
+			if("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Security records deleted."
 
-			if ("Add Entry")
-				if (!(istype(active2, /datum/data/record)))
+			if("Add Entry")
+				if(!(istype(active2, /datum/data/record)))
 					return
 				var/a2 = active2
 				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
@@ -378,7 +378,7 @@ What a mess.*/
 					active2.fields["comments"]["[new_com_i]"] = new_comment
 				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
 
-			if ("Delete Entry")
+			if("Delete Entry")
 				if(!islist(active2.fields["comments"]))
 					return
 				if(active2.fields["comments"][href_list["del_c"]])
@@ -395,42 +395,42 @@ What a mess.*/
 					active2.fields["comments"] = updated_comments
 					to_chat(usr, text("You have deleted a comment from the Security Record of [].", active2.fields["name"]))
 //RECORD CREATE
-			if ("New Record (Security)")
-				if ((istype(active1, /datum/data/record) && !( istype(active2, /datum/data/record) )))
+			if("New Record (Security)")
+				if((istype(active1, /datum/data/record) && !( istype(active2, /datum/data/record) )))
 					active2 = CreateSecurityRecord(active1.fields["name"], active1.fields["id"])
 					screen = 3
 
-			if ("New Record (General)")
+			if("New Record (General)")
 				active1 = CreateGeneralRecord()
 				active2 = null
 
 //FIELD FUNCTIONS
-			if ("Edit Field")
-				if (is_not_allowed(usr))
+			if("Edit Field")
+				if(is_not_allowed(usr))
 					return
 				var/a1 = active1
 				switch(href_list["field"])
 					if("name")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
-							if (!t1 || active1 != a1)
+							if(!t1 || active1 != a1)
 								return
 							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("sex")
-						if (istype(active1, /datum/data/record))
-							if (active1.fields["sex"] == "Male")
+						if(istype(active1, /datum/data/record))
+							if(active1.fields["sex"] == "Male")
 								active1.fields["sex"] = "Female"
 							else
 								active1.fields["sex"] = "Male"
 					if("age")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if (!t1 || active1 != a1)
+							if(!t1 || active1 != a1)
 								return
 							active1.fields["age"] = t1
 					if("criminal")
-						if (istype(active2, /datum/data/record))
+						if(istype(active2, /datum/data/record))
 							temp = "<h5>Criminal Status:</h5>"
 							temp += "<ul>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=none'>None</a></li>"
@@ -442,7 +442,7 @@ What a mess.*/
 							temp += "</ul>"
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+						if(istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
@@ -451,9 +451,9 @@ What a mess.*/
 						else
 							alert(usr, "You do not have the required rank to do this!")
 					if("species")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active1 != a1)
+							if(!t1 || active1 != a1)
 								return
 							active1.fields["species"] = t1
 
@@ -462,14 +462,14 @@ What a mess.*/
 			else//To properly clear as per clear screen.
 				temp=null
 				switch(href_list["choice"])
-					if ("Change Rank")
-						if (active1)
+					if("Change Rank")
+						if(active1)
 							active1.fields["rank"] = href_list["rank"]
 							if(href_list["rank"] in GLOB.joblist)
 								active1.fields["real_rank"] = href_list["real_rank"]
 
-					if ("Change Criminal Status")
-						if (active2)
+					if("Change Criminal Status")
+						if(active2)
 							switch(href_list["criminal2"])
 								if("none")
 									active2.fields["criminal"] = "None"
@@ -520,7 +520,7 @@ What a mess.*/
 	if(ishighersilicon(user))
 		var/mob/living/silicon/tempAI = usr
 		var/datum/picture/selection = tempAI.GetPicture()
-		if (selection)
+		if(selection)
 			return selection.fields["img"]
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)

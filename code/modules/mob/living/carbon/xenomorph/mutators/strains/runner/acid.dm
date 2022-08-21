@@ -19,7 +19,7 @@
 
 /datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
@@ -69,9 +69,9 @@
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/A)
-	if (ishuman(A))
+	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if (H.stat == DEAD)
+		if(H.stat == DEAD)
 			return
 	for(var/datum/effects/acid/AA in A.effects_list)
 		qdel(AA)
@@ -121,7 +121,7 @@
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y
 	for(var/mob/living/M in view(bound_xeno, burn_range))
-		if (!isXenoOrHuman(M) || bound_xeno.can_not_harm(M))
+		if(!isXenoOrHuman(M) || bound_xeno.can_not_harm(M))
 			continue
 		var/dist = 0
 		// such cheap, much fast

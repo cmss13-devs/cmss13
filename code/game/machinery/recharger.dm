@@ -19,8 +19,8 @@
 		return
 
 	var/allowed = 0
-	for (var/allowed_type in allowed_devices)
-		if (istype(G, allowed_type)) allowed = 1
+	for(var/allowed_type in allowed_devices)
+		if(istype(G, allowed_type)) allowed = 1
 
 	if(allowed)
 		if(charging)

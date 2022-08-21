@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(statpanels)
 	var/list/cached_images = list()
 
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		var/datum/map_config/cached
 		if(SSmapping.next_map_configs)
 			cached = SSmapping.next_map_configs[GROUND_MAP]

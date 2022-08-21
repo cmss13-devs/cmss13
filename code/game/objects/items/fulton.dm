@@ -39,7 +39,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 
 /obj/item/stack/fulton/update_icon()
 	..()
-	if (attached_atom)
+	if(attached_atom)
 		if(istype(attached_atom, /obj/structure/closet/crate))
 			icon_state = "fulton_crate"
 		else
@@ -58,7 +58,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	return
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
-	if (attached_atom)
+	if(attached_atom)
 		to_chat(user, SPAN_WARNING("It's firmly secured to [attached_atom], and there's no way to remove it now!"))
 		return
 	else
@@ -165,7 +165,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
 	if(intel_system)
-		if (!LAZYISIN(GLOB.failed_fultons, attached_atom))
+		if(!LAZYISIN(GLOB.failed_fultons, attached_atom))
 			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
 			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
 			intel_system.store_single_objective(objective)

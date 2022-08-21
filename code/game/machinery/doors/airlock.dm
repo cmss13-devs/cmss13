@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 				spawn(10)
 					//TODO: Move this into process() and make pulsing reset secondsElectrified to 30
-					while (secondsElectrified>0)
+					while(secondsElectrified>0)
 						secondsElectrified-=1
 						if(secondsElectrified<0)
 							secondsElectrified = 0
@@ -336,7 +336,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		spawnPowerRestoreRunning = 1
 		spawn(0)
 			var/cont = 1
-			while (cont)
+			while(cont)
 				sleep(10)
 				cont = 0
 				if(secondsMainPowerLost>0)
@@ -438,7 +438,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "Wires", "[name] Wires")
 		ui.open()
 
@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		switch(action)
 			if("cut")
 				var/obj/item/held_item = usr.get_held_item()
-				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 					return TRUE
 
@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				. = TRUE
 			if("pulse")
 				var/obj/item/held_item = usr.get_held_item()
-				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+				if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					to_chat(usr, SPAN_WARNING("You need a multitool!"))
 					return TRUE
 

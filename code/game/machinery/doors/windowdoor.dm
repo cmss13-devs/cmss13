@@ -16,7 +16,7 @@
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
 	addtimer(CALLBACK(src, .proc/update_icon), 1)
-	if (src.req_access && src.req_access.len)
+	if(src.req_access && src.req_access.len)
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
 
@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
 //Enforces perspective layering like it's contemporary; windows.
@@ -40,7 +40,7 @@
 		else layer = initial(layer)
 
 /obj/structure/machinery/door/window/Collided(atom/movable/AM)
-	if (!( ismob(AM) ))
+	if(!( ismob(AM) ))
 		var/obj/structure/machinery/bot/bot = AM
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
@@ -49,9 +49,9 @@
 				close()
 		return
 	var/mob/M = AM // we've returned by here if M is not a mob
-	if (src.operating)
+	if(src.operating)
 		return
-	if (src.density && M.mob_size > MOB_SIZE_SMALL && src.allowed(AM))
+	if(src.density && M.mob_size > MOB_SIZE_SMALL && src.allowed(AM))
 		open()
 		if(src.check_access(null))
 			sleep(50)
@@ -61,7 +61,7 @@
 	return
 
 /obj/structure/machinery/door/window/open()
-	if (src.operating == 1) //doors can still open when emag-disabled
+	if(src.operating == 1) //doors can still open when emag-disabled
 		return 0
 	if(!src.operating) //in case of emag
 		src.operating = 1
@@ -77,7 +77,7 @@
 	return 1
 
 /obj/structure/machinery/door/window/close()
-	if (src.operating)
+	if(src.operating)
 		return 0
 	src.operating = 1
 	flick(text("[]closing", src.base_state), src)
@@ -93,7 +93,7 @@
 
 /obj/structure/machinery/door/window/proc/take_damage(var/damage)
 	src.health = max(0, src.health - damage)
-	if (src.health <= 0)
+	if(src.health <= 0)
 		new /obj/item/shard(src.loc)
 		var/obj/item/stack/cable_coil/CC = new /obj/item/stack/cable_coil(src.loc)
 		CC.amount = 2
@@ -104,7 +104,7 @@
 				src.check_access()
 			if(src.req_access.len)
 				ae.conf_access = src.req_access
-			else if (src.req_one_access && src.req_one_access.len)
+			else if(src.req_one_access && src.req_one_access.len)
 				ae.conf_access = src.req_one_access
 				ae.one_access = 1
 		else
@@ -158,23 +158,23 @@
 /obj/structure/machinery/door/window/attackby(obj/item/I, mob/user)
 
 	//If it's in the process of opening/closing, ignore the click
-	if (src.operating == 1)
+	if(src.operating == 1)
 		return
 
 	//If it's emagged, crowbar can pry electronics out.
-	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
+	if(src.operating == -1 && istype(I, /obj/item/tool/crowbar))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
-		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			to_chat(user, SPAN_NOTICE(" You removed the windoor electronics!"))
 
 			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
-			if (istype(src, /obj/structure/machinery/door/window/brigdoor))
+			if(istype(src, /obj/structure/machinery/door/window/brigdoor))
 				wa.secure = "secure_"
 				wa.name = "Secure Wired Windoor Assembly"
 			else
 				wa.name = "Wired Windoor Assembly"
-			if (src.base_state == "right" || src.base_state == "rightsecure")
+			if(src.base_state == "right" || src.base_state == "rightsecure")
 				wa.facing = "r"
 			wa.setDir(src.dir)
 			wa.state = "02"
@@ -187,7 +187,7 @@
 					src.check_access()
 				if(src.req_access.len)
 					ae.conf_access = src.req_access
-				else if (src.req_one_access.len)
+				else if(src.req_one_access.len)
 					ae.conf_access = src.req_one_access
 					ae.one_access = 1
 			else

@@ -187,10 +187,10 @@
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
-	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
+	if(storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for (var/obj/item/stack/sheet/I in contents)
+		for(var/obj/item/stack/sheet/I in contents)
 			adjusted_contents++
 			var/datum/numbered_display/D = new/datum/numbered_display(I)
 			D.number = I.amount
@@ -198,7 +198,7 @@
 
 	var/row_num = 0
 	var/col_count = min(7,storage_slots) -1
-	if (adjusted_contents > 7)
+	if(adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 	slot_orient_objs(row_num, col_count, numbered_contents)
 	return

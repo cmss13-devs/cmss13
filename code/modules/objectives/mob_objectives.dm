@@ -52,7 +52,7 @@
 	RegisterSignal(dead_mob, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
 	RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, .proc/handle_mob_revival)
 
-	if (isXeno(dead_mob))
+	if(isXeno(dead_mob))
 		RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, .proc/handle_mob_revival)
 	else
 		RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, .proc/handle_mob_revival)
@@ -63,7 +63,7 @@
 
 	UnregisterSignal(revived_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_PARENT_QDELETING))
 
-	if (isXeno(revived_mob))
+	if(isXeno(revived_mob))
 		UnregisterSignal(revived_mob, COMSIG_XENO_REVIVED)
 	else
 		UnregisterSignal(revived_mob, COMSIG_HUMAN_REVIVED)
@@ -79,7 +79,7 @@
 		COMSIG_PARENT_QDELETING
 	))
 
-	if (isXeno(deleted_mob))
+	if(isXeno(deleted_mob))
 		UnregisterSignal(deleted_mob, COMSIG_XENO_REVIVED)
 	else
 		UnregisterSignal(deleted_mob, COMSIG_HUMAN_REVIVED)
@@ -134,7 +134,7 @@
 			corpses -= target
 			scored_corpses += target
 
-			if (isXeno(target))
+			if(isXeno(target))
 				UnregisterSignal(target, COMSIG_XENO_REVIVED)
 			else
 				UnregisterSignal(target, COMSIG_HUMAN_REVIVED)

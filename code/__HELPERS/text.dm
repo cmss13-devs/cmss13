@@ -156,7 +156,7 @@
 
 //Adds 'u' number of zeros ahead of the text 't'
 /proc/add_zero(t, u)
-	while (length(t) < u)
+	while(length(t) < u)
 		t = "0[t]"
 	return t
 
@@ -174,15 +174,15 @@
 
 //Returns a string with reserved characters and spaces before the first letter removed
 /proc/trim_left(text)
-	for (var/i in 1 to length(text))
-		if (text2ascii(text, i) > 32)
+	for(var/i in 1 to length(text))
+		if(text2ascii(text, i) > 32)
 			return copytext(text, i)
 	return ""
 
 //Returns a string with reserved characters and spaces after the last letter removed
 /proc/trim_right(text)
-	for (var/i in length(text) to 1 step -1)
-		if (text2ascii(text, i) > 32)
+	for(var/i in length(text) to 1 step -1)
+		if(text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 
 	return ""
@@ -235,7 +235,7 @@ proc/strip_improper(input_text)
 	if(length(A) != length(B))
 		return FALSE
 	for(var/i = 1 to length(A))
-		if (text2ascii(A, i) != text2ascii(B, i))
+		if(text2ascii(A, i) != text2ascii(B, i))
 			return FALSE
 	return TRUE
 
@@ -323,27 +323,27 @@ proc/strip_improper(input_text)
 // For processing simple markup, similar to what Skype and Discord use.
 // Enabled from a config setting.
 /proc/process_chat_markup(var/message, var/list/ignore_tags = list())
-	if (!message)
+	if(!message)
 		return ""
 
 	// ---Begin URL caching.
 	var/list/urls = list()
 	var/i = 1
-	while (url_find_lazy.Find_char(message))
+	while(url_find_lazy.Find_char(message))
 		urls["\ref[urls]-[i]"] = url_find_lazy.match
 		i++
 
-	for (var/ref in urls)
+	for(var/ref in urls)
 		message = replacetextEx_char(message, urls[ref], ref)
 	// ---End URL caching
 
 	var/regex/tag_markup
-	for (var/tag in (markup_tags - ignore_tags))
+	for(var/tag in (markup_tags - ignore_tags))
 		tag_markup = markup_regex[tag]
 		message = tag_markup.Replace_char(message, "$2[markup_tags[tag][1]]$3[markup_tags[tag][2]]$5")
 
 	// ---Unload URL cache
-	for (var/ref in urls)
+	for(var/ref in urls)
 		message = replacetextEx_char(message, ref, urls[ref])
 
 	return message

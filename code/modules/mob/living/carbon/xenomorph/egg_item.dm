@@ -19,7 +19,7 @@
 	reagents.add_reagent("eggplasma",60)
 
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
@@ -46,8 +46,8 @@
 		if(!istype(T, /turf/open/floor/almayer/research/containment))
 			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 			return
-		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+		for(var/obj/O in T)
+			if(!istype(O,/obj/structure/machinery/light/small))
 				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 				return
 
@@ -57,8 +57,8 @@
 		return
 
 	if(user.hivenumber != hivenumber)
-		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+		for(var/obj/O in T)
+			if(!istype(O,/obj/structure/machinery/light/small))
 				return
 
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)

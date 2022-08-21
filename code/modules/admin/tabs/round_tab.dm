@@ -141,7 +141,7 @@
 
 	if(!check_rights(R_SERVER))
 		return
-	if (SSticker.current_state != GAME_STATE_PREGAME)
+	if(SSticker.current_state != GAME_STATE_PREGAME)
 		SSticker.delay_end = !SSticker.delay_end
 		message_staff("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in GLOB.admins)
@@ -160,12 +160,12 @@
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"
 
-	if (!SSticker)
+	if(!SSticker)
 		alert("Unable to start the game as it is not set up.")
 		return
-	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
+	if(alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
-	if (SSticker.current_state == GAME_STATE_PREGAME)
+	if(SSticker.current_state == GAME_STATE_PREGAME)
 		SSticker.request_start()
 		message_staff(SPAN_BLUE("[usr.key] has started the game."))
 

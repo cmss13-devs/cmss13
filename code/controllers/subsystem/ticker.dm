@@ -227,7 +227,7 @@ SUBSYSTEM_DEF(ticker)
 	mode.setup_round_stats()
 
 	//Configure mode and assign player to special mode stuff
-	if (!(mode.flags_round_type & MODE_NO_SPAWN))
+	if(!(mode.flags_round_type & MODE_NO_SPAWN))
 		var/roles_to_roll = null
 		if(length(mode.roles_to_roll))
 			roles_to_roll = mode.roles_to_roll

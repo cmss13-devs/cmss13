@@ -20,20 +20,20 @@ SUBSYSTEM_DEF(midi)
 
 
 /datum/controller/subsystem/midi/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = prepped_midis
 		prepped_midis = list()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/datum/midi_record/E = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!E)
+		if(!E)
 			continue
 
 		E.target << E.midi
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return
 
 /datum/controller/subsystem/midi/proc/queue(target, midi)

@@ -20,7 +20,7 @@
 
 /datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
@@ -63,7 +63,7 @@
 
 /datum/behavior_delegate/ravager_hedgehog/proc/lock_shards()
 
-	if (!bound_xeno)
+	if(!bound_xeno)
 		return
 
 	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
@@ -77,7 +77,7 @@
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 
-	if (!bound_xeno)
+	if(!bound_xeno)
 		return
 
 	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
@@ -89,19 +89,19 @@
 
 // Return true if we have enough shards, false otherwise
 /datum/behavior_delegate/ravager_hedgehog/proc/check_shards(amount)
-	if (!amount)
+	if(!amount)
 		return FALSE
 	else
 		return (shards >= amount)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/use_shards(amount)
-	if (!amount)
+	if(!amount)
 		return
 	shards = max(0, shards - amount)
 
 /datum/behavior_delegate/ravager_hedgehog/on_life()
 
-	if (!shards_locked)
+	if(!shards_locked)
 		shards = min(max_shards, shards + shard_gain_onlife)
 
 	var/armor_buff_count = shards/50 //0-6
@@ -112,6 +112,6 @@
 	return
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
-	if (!shards_locked)
+	if(!shards_locked)
 		shards = min(max_shards, shards + shards_per_projectile)
 	return

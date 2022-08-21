@@ -236,9 +236,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/client_qdeled = isnull(owner) || QDELETED(owner)
 	var/client_status = client_qdeled ? "client is null or disposed" : "client is OK"
 	var/client_mob_status
-	if (client_qdeled)
+	if(client_qdeled)
 		client_mob_status = "no client for mob"
-	else if (isnull(owner.mob) || QDELETED(owner.mob))
+	else if(isnull(owner.mob) || QDELETED(owner.mob))
 		client_mob_status = "client mob is null or disposed"
 	else
 		client_mob_status = "client mob is OK"
@@ -652,7 +652,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		var/b_color
 		var/priority_text
-		for (var/j in NEVER_PRIORITY to LOW_PRIORITY)
+		for(var/j in NEVER_PRIORITY to LOW_PRIORITY)
 			switch (j)
 				if(NEVER_PRIORITY)
 					b_color = "red"
@@ -668,7 +668,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					priority_text = "LOW"
 
 			HTML += "<a class='[j == cur_priority ? b_color : "inactive"]' href='?_src_=prefs;preference=job;task=input;text=[job.title];target_priority=[j];'>[priority_text]</a>"
-			if (j < 4)
+			if(j < 4)
 				HTML += "&nbsp"
 
 		HTML += "</td></tr>"
@@ -963,53 +963,53 @@ var/const/MAX_SAVE_SLOTS = 10
 			bg_state = next_in_list(bg_state, GLOB.bgstate_options)
 
 	switch (href_list["task"])
-		if ("random")
+		if("random")
 			switch (href_list["preference"])
-				if ("name")
+				if("name")
 					real_name = random_name(gender)
-				if ("age")
+				if("age")
 					age = rand(AGE_MIN, AGE_MAX)
-				if ("ethnicity")
+				if("ethnicity")
 					ethnicity = random_ethnicity()
-				if ("body_type")
+				if("body_type")
 					body_type = random_body_type()
-				if ("hair")
+				if("hair")
 					r_hair = rand(0,255)
 					g_hair = rand(0,255)
 					b_hair = rand(0,255)
-				if ("h_style")
+				if("h_style")
 					h_style = random_hair_style(gender, species)
-				if ("facial")
+				if("facial")
 					r_facial = rand(0,255)
 					g_facial = rand(0,255)
 					b_facial = rand(0,255)
-				if ("f_style")
+				if("f_style")
 					f_style = random_facial_hair_style(gender, species)
-				if ("underwear")
+				if("underwear")
 					underwear = gender == MALE ? pick(GLOB.underwear_m) : pick(GLOB.underwear_f)
 					ShowChoices(user)
-				if ("undershirt")
+				if("undershirt")
 					undershirt = gender == MALE ? pick(GLOB.undershirt_m) : pick(GLOB.undershirt_f)
 					ShowChoices(user)
-				if ("eyes")
+				if("eyes")
 					r_eyes = rand(0,255)
 					g_eyes = rand(0,255)
 					b_eyes = rand(0,255)
 
-				if ("s_color")
+				if("s_color")
 					r_skin = rand(0,255)
 					g_skin = rand(0,255)
 					b_skin = rand(0,255)
-				if ("bag")
+				if("bag")
 					backbag = rand(1,2)
 
-				if ("all")
+				if("all")
 					randomize_appearance()
 		if("input")
 			switch(href_list["preference"])
 				if("name")
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
-					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
+					if(!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(new_name)
 							real_name = new_name
@@ -1296,16 +1296,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_h_style)
 						h_style = new_h_style
 
-				if ("ethnicity")
+				if("ethnicity")
 					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
 
-					if (new_ethnicity)
+					if(new_ethnicity)
 						ethnicity = new_ethnicity
 
-				if ("body_type")
+				if("body_type")
 					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_types_list)
 
-					if (new_body_type)
+					if(new_body_type)
 						body_type = new_body_type
 
 				if("facial")
@@ -1587,7 +1587,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/flag = text2num(href_list["flag"])
 					var/flag_undo = text2num(href_list["flag_undo"])
 					toggle_prefs ^= flag
-					if (toggle_prefs & flag && toggle_prefs & flag_undo)
+					if(toggle_prefs & flag && toggle_prefs & flag_undo)
 						toggle_prefs ^= flag_undo
 
 				if("toggles_ert")
@@ -1870,10 +1870,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	SIGNAL_HANDLER
 	key = uppertext(key)
 
-	if (key in key_mod_buf)
+	if(key in key_mod_buf)
 		return
 
-	if (key in key_mods)
+	if(key in key_mods)
 		key_mod_buf.Add(key)
 
 /datum/preferences/proc/set_key_buf(client/source, key)
@@ -1882,8 +1882,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/key_upper = uppertext(key)
 
-	for (var/mod in key_mod_buf)
-		if (mod == key_upper)
+	for(var/mod in key_mod_buf)
+		if(mod == key_upper)
 			continue
 		key_buf += "[mod]+"
 

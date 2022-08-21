@@ -9,17 +9,17 @@ SUBSYSTEM_DEF(stamina)
 
 
 /datum/controller/subsystem/stamina/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = active_staminas.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/datum/stamina/S = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!S || QDELETED(S))
+		if(!S || QDELETED(S))
 			continue
 
 		S.process()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

@@ -30,18 +30,18 @@
 	. = ..()
 	create_reagents(100)
 	reagents.my_atom = src
-	if (!available_recipes)
+	if(!available_recipes)
 		available_recipes = new
-		for (var/type in (typesof(/datum/recipe)-/datum/recipe))
+		for(var/type in (typesof(/datum/recipe)-/datum/recipe))
 			available_recipes+= new type
 		acceptable_items = new
 		acceptable_reagents = new
-		for (var/datum/recipe/recipe in available_recipes)
-			for (var/item in recipe.items)
+		for(var/datum/recipe/recipe in available_recipes)
+			for(var/item in recipe.items)
 				acceptable_items |= item
-			for (var/reagent in recipe.reagents)
+			for(var/reagent in recipe.reagents)
 				acceptable_reagents |= reagent
-			if (recipe.items)
+			if(recipe.items)
 				max_n_of_items = max(max_n_of_items,recipe.items.len)
 
 		// This will do until I can think of a fun recipe to use dionaea in -
@@ -51,7 +51,7 @@
 
 /obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //*******************
@@ -65,7 +65,7 @@
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
 			)
-			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
 					SPAN_NOTICE("[user] fixes part of the microwave."), \
 					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!") \
@@ -76,7 +76,7 @@
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
 			)
-			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
 					SPAN_NOTICE("[user] fixes the microwave."), \
 					SPAN_NOTICE("You have fixed the microwave.") \
@@ -100,7 +100,7 @@
 				SPAN_NOTICE("[user] starts to clean the microwave."), \
 				SPAN_NOTICE("You start to clean the microwave.") \
 			)
-			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message( \
 					SPAN_NOTICE("[user]  has cleaned  the microwave."), \
 					SPAN_NOTICE("You have cleaned the microwave.") \
@@ -115,7 +115,7 @@
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
-		if (contents.len>=max_n_of_items)
+		if(contents.len>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
@@ -133,10 +133,10 @@
 					SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
-		if (!O.reagents)
+		if(!O.reagents)
 			return 1
-		for (var/datum/reagent/R in O.reagents.reagent_list)
-			if (!(R.id in acceptable_reagents))
+		for(var/datum/reagent/R in O.reagents.reagent_list)
+			if(!(R.id in acceptable_reagents))
 				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
 				return 1
 		//G.reagents.trans_to(src,G.amount_per_transfer_from_this)
@@ -170,44 +170,44 @@
 		var/list/items_counts = new
 		var/list/items_measures = new
 		var/list/items_measures_p = new
-		for (var/obj/O in contents)
+		for(var/obj/O in contents)
 			var/display_name = O.name
-			if (istype(O,/obj/item/reagent_container/food/snacks/egg))
+			if(istype(O,/obj/item/reagent_container/food/snacks/egg))
 				items_measures[display_name] = "egg"
 				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_container/food/snacks/tofu))
+			if(istype(O,/obj/item/reagent_container/food/snacks/tofu))
 				items_measures[display_name] = "tofu chunk"
 				items_measures_p[display_name] = "tofu chunks"
-			if (istype(O,/obj/item/reagent_container/food/snacks/meat)) //any meat
+			if(istype(O,/obj/item/reagent_container/food/snacks/meat)) //any meat
 				items_measures[display_name] = "slab of meat"
 				items_measures_p[display_name] = "slabs of meat"
-			if (istype(O,/obj/item/reagent_container/food/snacks/donkpocket))
+			if(istype(O,/obj/item/reagent_container/food/snacks/donkpocket))
 				display_name = "Turnovers"
 				items_measures[display_name] = "turnover"
 				items_measures_p[display_name] = "turnovers"
-			if (istype(O,/obj/item/reagent_container/food/snacks/carpmeat))
+			if(istype(O,/obj/item/reagent_container/food/snacks/carpmeat))
 				items_measures[display_name] = "fillet of meat"
 				items_measures_p[display_name] = "fillets of meat"
 			items_counts[display_name]++
-		for (var/O in items_counts)
+		for(var/O in items_counts)
 			var/N = items_counts[O]
-			if (!(O in items_measures))
+			if(!(O in items_measures))
 				dat += {"<B>[capitalize(O)]:</B> [N] [lowertext(O)]\s<BR>"}
 			else
-				if (N==1)
+				if(N==1)
 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures[O]]<BR>"}
 				else
 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
 
-		for (var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
 			var/display_name = R.name
-			if (R.id == "hotsauce")
+			if(R.id == "hotsauce")
 				display_name = "Hotsauce"
-			if (R.id == "frostoil")
+			if(R.id == "frostoil")
 				display_name = "Coldsauce"
 			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
 
-		if (items_counts.len==0 && reagents.reagent_list.len==0)
+		if(items_counts.len==0 && reagents.reagent_list.len==0)
 			dat = {"<B>The microwave is empty</B><BR>"}
 		else
 			dat = {"<b>Ingredients:</b><br>[dat]"}
@@ -229,8 +229,8 @@
 	if(inoperable())
 		return
 	start()
-	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
-		if (!wzhzhzh(10 * time_multiplier))
+	if(reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
+		if(!wzhzhzh(10 * time_multiplier))
 			abort()
 			return
 		stop()
@@ -238,10 +238,10 @@
 
 	var/datum/recipe/recipe = select_recipe(available_recipes,src)
 	var/obj/cooked
-	if (!recipe)
+	if(!recipe)
 		dirty += 1
-		if (prob(max(10,dirty*5)))
-			if (!wzhzhzh(4 * time_multiplier))
+		if(prob(max(10,dirty*5)))
+			if(!wzhzhzh(4 * time_multiplier))
 				abort()
 				return
 			muck_start()
@@ -250,8 +250,8 @@
 			cooked = fail()
 			cooked.forceMove(src.loc)
 			return
-		else if (has_extra_item())
-			if (!wzhzhzh(4 * time_multiplier))
+		else if(has_extra_item())
+			if(!wzhzhzh(4 * time_multiplier))
 				abort()
 				return
 			broke()
@@ -259,7 +259,7 @@
 			cooked.forceMove(src.loc)
 			return
 		else
-			if (!wzhzhzh(10 * time_multiplier))
+			if(!wzhzhzh(10 * time_multiplier))
 				abort()
 				return
 			stop()
@@ -268,10 +268,10 @@
 			return
 	else
 		var/halftime = round(recipe.time/10/2)
-		if (!wzhzhzh(halftime * time_multiplier))
+		if(!wzhzhzh(halftime * time_multiplier))
 			abort()
 			return
-		if (!wzhzhzh(halftime * time_multiplier))
+		if(!wzhzhzh(halftime * time_multiplier))
 			abort()
 			cooked = fail()
 			cooked.forceMove(src.loc)
@@ -283,16 +283,16 @@
 		return
 
 /obj/structure/machinery/microwave/proc/wzhzhzh(var/seconds as num)
-	for (var/i=1 to seconds)
-		if (inoperable())
+	for(var/i=1 to seconds)
+		if(inoperable())
 			return 0
 		use_power(500)
 		sleep(10)
 	return 1
 
 /obj/structure/machinery/microwave/proc/has_extra_item()
-	for (var/obj/O in contents)
-		if ( \
+	for(var/obj/O in contents)
+		if( \
 				!istype(O,/obj/item/reagent_container/food) && \
 				!istype(O, /obj/item/grown) \
 			)
@@ -317,9 +317,9 @@
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/dispose()
-	for (var/obj/O in contents)
+	for(var/obj/O in contents)
 		O.forceMove(src.loc)
-	if (src.reagents.total_volume)
+	if(src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()
 	to_chat(usr, SPAN_NOTICE(" You dispose of the microwave contents."))
@@ -352,11 +352,11 @@
 /obj/structure/machinery/microwave/proc/fail()
 	var/obj/item/reagent_container/food/snacks/badrecipe/ffuu = new(src)
 	var/amount = 0
-	for (var/obj/O in contents-ffuu)
+	for(var/obj/O in contents-ffuu)
 		amount++
-		if (O.reagents)
+		if(O.reagents)
 			var/id = O.reagents.get_master_reagent_id()
-			if (id)
+			if(id)
 				amount+=O.reagents.get_reagent_amount(id)
 		qdel(O)
 	if(src.reagents)
@@ -375,9 +375,9 @@
 		return
 
 	switch(href_list["action"])
-		if ("cook")
+		if("cook")
 			cook(usr.get_skill_duration_multiplier(SKILL_DOMESTIC)) // picking the right microwave setting for the right food. when's the last time you used the special setting on the microwave? i bet you just slam the 30 second increment. Do you know how much programming went into putting the Pizza setting into a microwave emitter?
 
-		if ("dispose")
+		if("dispose")
 			dispose()
 	return

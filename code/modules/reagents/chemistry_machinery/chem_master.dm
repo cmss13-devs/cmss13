@@ -45,7 +45,7 @@
 /obj/structure/machinery/chem_master/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -208,7 +208,7 @@
 			reagents.clear_reagents()
 			update_icon()
 
-		else if (href_list["createpill"] || href_list["createpill_multiple"])
+		else if(href_list["createpill"] || href_list["createpill_multiple"])
 			var/count = 1
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
@@ -234,7 +234,7 @@
 				return
 			var/was_logged = FALSE
 
-			while (count--)
+			while(count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
 				P.pill_desc = "A custom pill."
 				P.pixel_x = rand(-7, 7) //random position

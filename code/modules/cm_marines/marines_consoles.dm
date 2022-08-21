@@ -39,7 +39,7 @@
 
 /obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "CardMod", name)
 		ui.open()
 
@@ -54,7 +54,7 @@
 	switch(action)
 		if("PRG_authenticate")
 			var/obj/item/I = user.get_active_hand()
-			if (istype(I, /obj/item/card/id))
+			if(istype(I, /obj/item/card/id))
 				if(user.drop_held_item())
 					I.forceMove(src)
 					user_id_card = I
@@ -153,7 +153,7 @@
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
-				if (istype(I, /obj/item/card/id))
+				if(istype(I, /obj/item/card/id))
 					if(user.drop_held_item())
 						I.forceMove(src)
 						target_id_card = I
@@ -332,7 +332,7 @@
 
 		var/list/accesses = list()
 		for(var/access in get_region_accesses(i))
-			if (get_access_desc(access))
+			if(get_access_desc(access))
 				accesses += list(list(
 					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
 					"ref" = access,
@@ -505,7 +505,7 @@
 
 /obj/structure/machinery/computer/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "SquadMod", name)
 		ui.open()
 
@@ -536,7 +536,7 @@
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
-				if (istype(I, /obj/item/card/id))
+				if(istype(I, /obj/item/card/id))
 					if(user.drop_held_item())
 						I.forceMove(src)
 						ID_to_modify = I
@@ -741,7 +741,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 /datum/crewmonitor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "CrewConsole")
 		ui.set_autoupdate(FALSE)
 		ui.open()
@@ -807,18 +807,18 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 		// ID and id-related data
 		var/obj/item/card/id/id_card = H.get_idcard()
-		if (id_card)
+		if(id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
 			if(id_card.assignment in jobs)
 				entry["ijob"] = jobs[id_card.assignment]
 
 		// Binary living/dead status
-		if (C.sensor_mode >= SENSOR_LIVING)
+		if(C.sensor_mode >= SENSOR_LIVING)
 			entry["life_status"] = !H.stat
 
 		// Damage
-		if (C.sensor_mode >= SENSOR_VITALS)
+		if(C.sensor_mode >= SENSOR_VITALS)
 			entry += list(
 				"oxydam" = round(H.getOxyLoss(), 1),
 				"toxdam" = round(H.getToxLoss(), 1),
@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			)
 
 		// Location
-		if (C.sensor_mode >= SENSOR_COORDS)
+		if(C.sensor_mode >= SENSOR_COORDS)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
 			var/area/A = get_area(H)
@@ -849,7 +849,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	if(.)
 		return
 	switch (action)
-		if ("select_person")
+		if("select_person")
 			// May work badly cause currently there is no player-controlled AI
 			var/mob/living/silicon/ai/AI = usr
 			if(!istype(AI))

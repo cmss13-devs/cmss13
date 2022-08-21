@@ -103,7 +103,7 @@
 	if(I)
 		if(I == r_hand)
 			return drop_r_hand()
-		else if (I == l_hand)
+		else if(I == l_hand)
 			return drop_l_hand()
 	else if(hand)
 		return drop_l_hand()
@@ -132,14 +132,14 @@
 	if((I.flags_item & NODROP) && !force)
 		return FALSE //u_equip() only fails if item has NODROP
 	var/slot = get_slot_by_item(I)
-	if (I == r_hand)
+	if(I == r_hand)
 		r_hand = null
 		update_inv_r_hand()
-	else if (I == l_hand)
+	else if(I == l_hand)
 		l_hand = null
 		update_inv_l_hand()
 
-	if (client)
+	if(client)
 		client.screen -= I
 	I.layer = initial(I.layer)
 	I.plane = initial(I.plane)
@@ -191,7 +191,7 @@
 			if(src:module_active)
 				return src:module_active
 	else
-		if (hand)
+		if(hand)
 			return l_hand
 		else
 			return r_hand
@@ -273,7 +273,7 @@
 				src.s_store = W
 				equipped = 1
 		if(WEAR_IN_BACK)
-			if (src.back && isstorage(src.back))
+			if(src.back && isstorage(src.back))
 				var/obj/item/storage/B = src.back
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.forceMove(B)
@@ -342,7 +342,7 @@
 		if(src.back && W.loc != src.back)
 			W.forceMove(src)
 	else
-		if (del_on_fail)
+		if(del_on_fail)
 			qdel(W)
 	return equipped
 

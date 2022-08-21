@@ -12,7 +12,7 @@
 
 /datum/orbit_menu/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "Orbit")
 		ui.open()
 
@@ -24,9 +24,9 @@
 		if("orbit")
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
-			if (poi == null)
+			if(poi == null)
 				poi = locate(ref) in GLOB.all_multi_vehicles
-				if (poi == null)
+				if(poi == null)
 					. = TRUE
 					return
 			owner.ManualFollow(poi)

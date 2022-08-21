@@ -122,12 +122,12 @@
 				if(!camera)
 					return
 				var/datum/picture/selection = camera.selectpicture()
-				if (!selection)
+				if(!selection)
 					return
 
 				var/obj/item/photo/p = new /obj/item/photo (src.loc)
 				p.construct(selection)
-				if (p.desc == "")
+				if(p.desc == "")
 					p.desc += "Copied by [tempAI.name]"
 				else
 					p.desc += " - Copied by [tempAI.name]"
@@ -216,10 +216,10 @@
 
 	//Iterates through stamps and puts a matching gray overlay onto the copy
 	var/image/img                                //
-	for (var/j = 1, j <= original.ico.len, j++)
-		if (findtext(original.ico[j], "cap") || findtext(original.ico[j], "cent"))
+	for(var/j = 1, j <= original.ico.len, j++)
+		if(findtext(original.ico[j], "cap") || findtext(original.ico[j], "cent"))
 			img = image('icons/obj/items/paper.dmi', "paper_stamp-circle")
-		else if (findtext(original.ico[j], "deny"))
+		else if(findtext(original.ico[j], "deny"))
 			img = image('icons/obj/items/paper.dmi', "paper_stamp-x")
 		else
 			img = image('icons/obj/items/paper.dmi', "paper_stamp-dots")

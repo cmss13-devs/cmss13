@@ -24,7 +24,7 @@
 
 /obj/structure/machinery/flasher/power_change()
 	..()
-	if ( !(stat & NOPOWER) )
+	if( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
 //		src.sd_SetLuminosity(2)
 	else
@@ -33,26 +33,26 @@
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		add_fingerprint(user)
 		src.disable = !src.disable
-		if (src.disable)
+		if(src.disable)
 			user.visible_message(SPAN_DANGER("[user] has disconnected the [src]'s flashbulb!"), SPAN_DANGER("You disconnect the [src]'s flashbulb!"))
-		if (!src.disable)
+		if(!src.disable)
 			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
 /obj/structure/machinery/flasher/attack_remote()
-	if (src.anchored)
+	if(src.anchored)
 		return src.flash()
 	else
 		return
 
 /obj/structure/machinery/flasher/proc/flash()
-	if (!(powered()))
+	if(!(powered()))
 		return
 
-	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
+	if((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
 		return
 
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
@@ -60,23 +60,23 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for (var/mob/O in viewers(src, null))
-		if (get_dist(src, O) > src.range)
+	for(var/mob/O in viewers(src, null))
+		if(get_dist(src, O) > src.range)
 			continue
 
-		if (istype(O, /mob/living/carbon/human))
+		if(istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			if(H.get_eye_protection() > 0)
 				continue
 
-		if (istype(O, /mob/living/carbon/Xenomorph))//So aliens don't get flashed (they have no external eyes)/N
+		if(istype(O, /mob/living/carbon/Xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
 		O.KnockDown(strength)
-		if (istype(O, /mob/living/carbon/human))
+		if(istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-			if (E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
+			if(E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
 				H.flash_eyes()
 				E.damage += rand(1, 5)
 		else
@@ -92,23 +92,23 @@
 	..(severity)
 
 /obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
-	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
+	if((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
 		return
 
 	if(istype(AM, /mob/living/carbon))
-		if (src.anchored)
+		if(src.anchored)
 			src.flash()
 
 /obj/structure/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		add_fingerprint(user)
 		src.anchored = !src.anchored
 
-		if (!src.anchored)
+		if(!src.anchored)
 			user.show_message(text(SPAN_DANGER("[src] can now be moved.")))
 			src.overlays.Cut()
 
-		else if (src.anchored)
+		else if(src.anchored)
 			user.show_message(text(SPAN_DANGER("[src] is now secured.")))
 			src.overlays += "[base_state]-s"
 

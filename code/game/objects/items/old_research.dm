@@ -44,10 +44,10 @@
 	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/XenoItem/ResinPaste/afterattack(obj/item/clothing/head/helmet/marine/A as obj, mob/user as mob)
-	if (!istype(A) || !istype(usr))
+	if(!istype(A) || !istype(usr))
 		to_chat(usr, "Doesn't work that way")
 		return
-	if (A.anti_hug >= 1)
+	if(A.anti_hug >= 1)
 		usr <<"This Helmet can't be further reinforced."
 		return
 	to_chat(usr, "You reinforce the Helmet...")
@@ -64,10 +64,10 @@
 	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/XenoItem/ChitinPlate/afterattack(obj/item/clothing/suit/storage/marine/A as obj, mob/user as mob)
-	if (!istype(A) || !istype(usr))
+	if(!istype(A) || !istype(usr))
 		to_chat(usr, "Doesn't work that way...")
 		return
-	if (A.flags_marine_armor & ARMOR_IS_REINFORCED)
+	if(A.flags_marine_armor & ARMOR_IS_REINFORCED)
 		usr <<"This armor is already reinforced."
 		return
 	to_chat(usr, "You reinforce the armor with some Chitin Plating...")
@@ -94,13 +94,13 @@
 
 
 /obj/item/XenoItem/AntiAcid/afterattack(obj/A as obj, mob/user as mob, proximity)
-	if (!isobj(A))
+	if(!isobj(A))
 		to_chat(usr, "Doesn't work that way...")
 		return
-	if (A.unacidable == 1)
+	if(A.unacidable == 1)
 		to_chat(usr, "It's already resistant to acid...")
 		return
-	if (istype(A, /obj/structure/machinery/door))
+	if(istype(A, /obj/structure/machinery/door))
 		to_chat(usr, "It doesn't work on doors...")
 		return
 	to_chat(usr, "You spray [A] with the Anti-Acid spray making it unacidable...")

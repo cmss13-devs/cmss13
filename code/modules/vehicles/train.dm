@@ -43,7 +43,7 @@
 // Vehicle procs
 //-------------------------------------------
 /obj/vehicle/train/explode()
-	if (tow)
+	if(tow)
 		tow.unattach()
 	unattach()
 	..()
@@ -86,25 +86,25 @@
 	if(istype(user))
 		display_to_chat = TRUE
 
-	if (get_dist(src, T) > 1)
+	if(get_dist(src, T) > 1)
 		if(display_to_chat)
 			to_chat(user, SPAN_DANGER("[src] is too far away from [T] to hitch them together."))
 		return
 
-	if (lead)
+	if(lead)
 		if(display_to_chat)
 			to_chat(user, SPAN_DANGER("[src] is already hitched to something."))
 		return
 
-	if (T.tow)
+	if(T.tow)
 		if(display_to_chat)
 			to_chat(user, SPAN_DANGER("[T] is already towing something."))
 		return
 
 	//check for cycles.
 	var/obj/vehicle/train/next_car = T
-	while (next_car)
-		if (next_car == src)
+	while(next_car)
+		if(next_car == src)
 			if(display_to_chat)
 				to_chat(user, SPAN_DANGER("That seems very silly."))
 			return
@@ -126,7 +126,7 @@
 	if(istype(user))
 		display_to_chat = TRUE
 
-	if (!lead)
+	if(!lead)
 		if(display_to_chat)
 			to_chat(user, SPAN_DANGER("[src] is not hitched to anything."))
 		return
@@ -153,7 +153,7 @@
 
 //returns 1 if this is the lead car of the train
 /obj/vehicle/train/proc/is_train_head()
-	if (lead)
+	if(lead)
 		return 0
 	return 1
 
@@ -169,7 +169,7 @@
 	var/obj/vehicle/train/T = src
 	while(T.tow)
 		//check for cyclic train.
-		if (T.tow == src)
+		if(T.tow == src)
 			lead.tow = null
 			lead.update_stats()
 
@@ -183,7 +183,7 @@
 	var/train_length = 0
 	while(T)
 		train_length++
-		if (powered && on)
+		if(powered && on)
 			active_engines++
 		T.update_car(train_length, active_engines)
 		T = T.lead

@@ -165,9 +165,9 @@
 
 /obj/effect/decal/cleanable/blood/gibs/proc/streak(var/list/directions)
 	var/direction = pick(directions)
-	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
+	for(var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
 		sleep(3)
-		if (i > 0)
+		if(i > 0)
 			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
 			b.basecolor = src.basecolor
 			b.update_icon()
@@ -176,5 +176,5 @@
 				LAZYADD(b.viruses, ND)
 				ND.holder = b
 
-		if (step_to(src, get_step(src, direction), 0))
+		if(step_to(src, get_step(src, direction), 0))
 			break

@@ -34,11 +34,11 @@
 // if this would look bad on laggy clients.
 /atom/proc/balloon_alert_perform(mob/viewer, text)
 	var/client/viewer_client = viewer.client
-	if (isnull(viewer_client))
+	if(isnull(viewer_client))
 		return
 
 	var/bound_width = world.icon_size
-	if (ismovable(src))
+	if(ismovable(src))
 		var/atom/movable/movable_source = src
 		bound_width = movable_source.bound_width
 

@@ -74,7 +74,7 @@
 
 	set_frequency(frequency)
 
-	for (var/ch_name in channels)
+	for(var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
 
 	flags_atom |= USES_HEARING
@@ -165,7 +165,7 @@
 				. = TRUE
 
 /obj/item/device/radio/proc/text_wires()
-	if (!b_stat)
+	if(!b_stat)
 		return ""
 	return {"
 			<hr>
@@ -195,10 +195,10 @@
 
 	// Otherwise, if a channel is specified, look for it.
 	if(channels && channels.len)
-		if (message_mode == "department" ) // Department radio shortcut
+		if(message_mode == "department" ) // Department radio shortcut
 			message_mode = channels[1]
 
-		if (channels[message_mode]) // only broadcast if the channel is set on
+		if(channels[message_mode]) // only broadcast if the channel is set on
 			return secure_radio_connections[message_mode]
 
 	// If we were to send to a channel we don't have, drop it.
@@ -286,7 +286,7 @@
 		filter_type = RADIO_FILTER_TYPE_ALL
 		if(!src.ignore_z)
 			target_zs = get_target_zs(connection.frequency)
-			if (isnull(target_zs))
+			if(isnull(target_zs))
 				//We don't have a radio connection on our Z-level, abort!
 				return
 
@@ -329,7 +329,7 @@
 	return target_zs
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
-	if (broadcasting)
+	if(broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)
 
@@ -337,7 +337,7 @@
 /*
 /obj/item/device/radio/proc/accept_rad(obj/item/device/radio/R as obj, message)
 
-	if ((R.frequency == frequency && message))
+	if((R.frequency == frequency && message))
 		return 1
 	else if
 
@@ -352,7 +352,7 @@
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
 
-	if (!(wires & WIRE_RECEIVE))
+	if(!(wires & WIRE_RECEIVE))
 		return -1
 	if(!listening)
 		return -1
@@ -374,20 +374,20 @@
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
-	if (!on)
+	if(!on)
 		return -1
-	if (!freq) //recieved on main frequency
-		if (!listening)
+	if(!freq) //recieved on main frequency
+		if(!listening)
 			return -1
 	else
 		var/accept = (freq==frequency && listening)
-		if (!accept)
-			for (var/ch_name in channels)
+		if(!accept)
+			for(var/ch_name in channels)
 				var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
-				if (RF.frequency==freq && (channels[ch_name]&FREQ_LISTENING))
+				if(RF.frequency==freq && (channels[ch_name]&FREQ_LISTENING))
 					accept = 1
 					break
-		if (!accept)
+		if(!accept)
 			return -1
 	return canhear_range
 
@@ -399,8 +399,8 @@
 
 /obj/item/device/radio/examine(mob/user)
 	..()
-	if ((in_range(src, user) || loc == user))
-		if (b_stat)
+	if((in_range(src, user) || loc == user))
+		if(b_stat)
 			to_chat(user, SPAN_NOTICE(" [src] can be attached and modified!"))
 		else
 			to_chat(user, SPAN_NOTICE(" [src] can not be modified or attached!"))
@@ -409,11 +409,11 @@
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	user.set_interaction(src)
-	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		return
 	b_stat = !( b_stat )
 	if(!istype(src, /obj/item/device/radio/beacon))
-		if (b_stat)
+		if(b_stat)
 			user.show_message(SPAN_NOTICE("The radio can now be attached and modified!"))
 		else
 			user.show_message(SPAN_NOTICE("The radio can no longer be modified or attached!"))
@@ -426,7 +426,7 @@
 /obj/item/device/radio/emp_act(severity)
 	broadcasting = FALSE
 	listening = FALSE
-	for (var/ch_name in channels)
+	for(var/ch_name in channels)
 		channels[ch_name] = 0
 	..()
 
@@ -445,7 +445,7 @@
 
 /obj/item/device/radio/borg/talk_into()
 	..()
-	if (isrobot(src.loc))
+	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		var/datum/robot_component/C = R.components["radio"]
 		R.cell_use_power(C.active_usage)
@@ -453,7 +453,7 @@
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)
-	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
+	if(!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -513,7 +513,7 @@
 			src.syndie = 1
 
 
-	for (var/ch_name in src.channels)
+	for(var/ch_name in src.channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 	SStgui.update_uis(src)
@@ -521,7 +521,7 @@
 /obj/item/device/radio/borg/Topic(href, href_list)
 	if(usr.stat || !on)
 		return
-	if (href_list["mode"])
+	if(href_list["mode"])
 		if(subspace_transmission != 1)
 			subspace_transmission = 1
 			to_chat(usr, "Subspace Transmission is disabled")
@@ -532,7 +532,7 @@
 			channels = list()
 		else
 			recalculateChannels()
-	if (href_list["shutup"]) // Toggle loudspeaker mode, AKA everyone around you hearing your radio.
+	if(href_list["shutup"]) // Toggle loudspeaker mode, AKA everyone around you hearing your radio.
 		shut_up = !shut_up
 		if(shut_up)
 			canhear_range = 0
@@ -559,7 +559,7 @@
 				"}
 
 	if(!subspace_transmission)//Don't even bother if subspace isn't turned on
-		for (var/ch_name in channels)
+		for(var/ch_name in channels)
 			dat+=text_sec_channel(ch_name, channels[ch_name])
 	dat+={"[text_wires()]</TT></body></html>"}
 	show_browser(user, dat, name, "radio")
@@ -567,11 +567,11 @@
 
 
 /obj/item/device/radio/proc/config(op)
-	for (var/ch_name in channels)
+	for(var/ch_name in channels)
 		SSradio.remove_object(src, radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
-	for (var/ch_name in op)
+	for(var/ch_name in op)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/off

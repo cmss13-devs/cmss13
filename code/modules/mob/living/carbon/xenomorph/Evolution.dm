@@ -10,7 +10,7 @@
 	set category = "Alien"
 	var/potential_queens = 0
 
-	if (!evolve_checks())
+	if(!evolve_checks())
 		return
 
 	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
@@ -144,13 +144,13 @@
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
-		
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
 
-	if (new_xeno.client)
+	if(new_xeno.client)
 		new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
 
 	if(new_xeno.mind && round_statistics)
@@ -321,9 +321,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)

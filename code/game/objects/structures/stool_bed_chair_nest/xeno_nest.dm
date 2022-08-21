@@ -22,7 +22,7 @@
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)

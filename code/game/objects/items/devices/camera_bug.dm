@@ -10,25 +10,25 @@
 	..()
 
 	var/list/cameras = new/list()
-	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
-		if (C.bugged && C.status)
+	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+		if(C.bugged && C.status)
 			cameras.Add(C)
-	if (length(cameras) == 0)
+	if(length(cameras) == 0)
 		to_chat(usr, SPAN_DANGER("No bugged functioning cameras found."))
 		return
 
 	var/list/friendly_cameras = new/list()
 
-	for (var/obj/structure/machinery/camera/C in cameras)
+	for(var/obj/structure/machinery/camera/C in cameras)
 		friendly_cameras.Add(C.c_tag)
 
 	var/target = tgui_input_list(usr, "Select the camera to observe", "Camera to Observe", friendly_cameras)
-	if (!target)
+	if(!target)
 		return
-	for (var/obj/structure/machinery/camera/C in cameras)
-		if (C.c_tag == target)
+	for(var/obj/structure/machinery/camera/C in cameras)
+		if(C.c_tag == target)
 			target = C
 			break
-	if (usr.stat == 2) return
+	if(usr.stat == 2) return
 
 	usr.client.eye = target

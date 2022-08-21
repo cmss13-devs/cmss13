@@ -9,7 +9,7 @@
 	var/anti_hug = 0
 
 /obj/item/clothing/head/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_head()
 

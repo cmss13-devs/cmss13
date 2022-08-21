@@ -1,20 +1,20 @@
 /datum/action/xeno_action/activable/lunge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
 			X.visible_message(SPAN_XENOWARNING("\The [X]'s claws twitch."), SPAN_XENOWARNING("Your claws twitch as you try to lunge but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
-	if (!A)
+	if(!A)
 		return
 
-	if (!isturf(X.loc))
+	if(!isturf(X.loc))
 		to_chat(X, SPAN_XENOWARNING("You can't lunge from here!"))
 		return
 
-	if (!X.check_state() || X.agility)
+	if(!X.check_state() || X.agility)
 		return
 
 	if(X.can_not_harm(A) || !ismob(A))
@@ -25,7 +25,7 @@
 	if(H.stat == DEAD)
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	apply_cooldown()
@@ -35,7 +35,7 @@
 
 	X.throw_atom(get_step_towards(A, X), grab_range, SPEED_FAST, X)
 
-	if (X.Adjacent(H))
+	if(X.Adjacent(H))
 		X.start_pulling(H,1)
 	else
 		X.visible_message(SPAN_XENOWARNING("\The [X]'s claws twitch."), SPAN_XENOWARNING("Your claws twitch as you lunge but are unable to grab onto your target. Wait a moment to try again."))
@@ -45,14 +45,14 @@
 /datum/action/xeno_action/onclick/toggle_agility/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state(1))
+	if(!X.check_state(1))
 		return
 
 	X.agility = !X.agility
-	if (X.agility)
+	if(X.agility)
 		to_chat(X, SPAN_XENOWARNING("You lower yourself to all fours."))
 	else
 		to_chat(X, SPAN_XENOWARNING("You raise yourself to stand on two feet."))
@@ -65,16 +65,16 @@
 /datum/action/xeno_action/activable/fling/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!X.check_state() || X.agility)
+	if(!X.check_state() || X.agility)
 		return
 
-	if (!X.Adjacent(A))
+	if(!X.Adjacent(A))
 		return
 
 	var/mob/living/carbon/H = A
@@ -89,7 +89,7 @@
 		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to fling!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
@@ -103,9 +103,9 @@
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
 
-	for (var/x in 0 to fling_distance-1)
+	for(var/x in 0 to fling_distance-1)
 		temp = get_step(T, facing)
-		if (!temp)
+		if(!temp)
 			break
 		T = temp
 
@@ -118,18 +118,18 @@
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!X.check_state() || X.agility)
+	if(!X.check_state() || X.agility)
 		return
 
 	var/distance = get_dist(X, A)
 
-	if (distance > 2)
+	if(distance > 2)
 		return
 
 	var/mob/living/carbon/H = A
@@ -139,11 +139,11 @@
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
-	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
+	if(ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
 		return
 
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
@@ -182,11 +182,11 @@
 
 	// Check actions list for a warrior punch and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null
-	for (var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
+	for(var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
 		punch_action = P
 		break
 
-	if (punch_action && !punch_action.action_cooldown_check())
+	if(punch_action && !punch_action.action_cooldown_check())
 		if(isXeno(H))
 			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
 		else

@@ -13,7 +13,7 @@
 
 /obj/structure/machinery/portable_atmospherics/powered/pump/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/portable_atmospherics/powered/pump/update_icon()

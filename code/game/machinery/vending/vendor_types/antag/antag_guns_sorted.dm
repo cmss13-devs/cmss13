@@ -58,7 +58,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "cm_vending_sorted.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
@@ -67,7 +67,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/handle_topic(mob/user, href, href_list)
 	if(in_range(src, user) && isturf(loc) && ishuman(user))
 		user.set_interaction(src)
-		if (href_list["vend"])
+		if(href_list["vend"])
 
 			var/mob/living/carbon/human/H = user
 

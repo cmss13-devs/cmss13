@@ -24,7 +24,7 @@
 
 	if(istype(O,/obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = O
-		if (M.use(1))
+		if(M.use(1))
 			new/obj/item/stack/tile/light(user.loc, 1)
 			use(1)
 			to_chat(user, SPAN_NOTICE("You make a light tile."))

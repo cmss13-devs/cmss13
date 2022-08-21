@@ -95,12 +95,12 @@
 		var/is_in_use = 0
 		var/list/nearby = viewers(1, src)
 		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
+			if((M.client && M.interactee == src))
 				is_in_use = 1
 				attack_hand(M)
-		if (ishighersilicon(usr))
-			if (!(usr in nearby))
-				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
+		if(ishighersilicon(usr))
+			if(!(usr in nearby))
+				if(usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
 					is_in_use = 1
 					attack_remote(usr)
 		in_use = is_in_use
@@ -111,7 +111,7 @@
 		var/list/nearby = viewers(1, src)
 		var/is_in_use = 0
 		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
+			if((M.client && M.interactee == src))
 				is_in_use = 1
 				src.interact(M)
 		var/ai_in_use = AutoUpdateAI(src)
@@ -210,13 +210,13 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
+	if(!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
 		return
 
-	if (isXeno(user))
+	if(isXeno(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
-	if (iszombie(user))
+	if(iszombie(user))
 		return
 
 	if(density)
@@ -231,10 +231,10 @@
 			if(M.loc != src.loc)
 				return
 			. = buckle_mob(M)
-	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
+	if(M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
 		do_buckle(M, user)
 		return
-	if (M.mob_size > MOB_SIZE_HUMAN)
+	if(M.mob_size > MOB_SIZE_HUMAN)
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
 	do_buckle(M, user)
@@ -243,7 +243,7 @@
 // Yes I know this is not style but its unreadable otherwise
 /obj/proc/do_buckle(mob/target, mob/user)
 	send_buckling_message(target, user)
-	if (src && src.loc)
+	if(src && src.loc)
 		target.buckled = src
 		target.forceMove(src.loc)
 		target.setDir(dir)
@@ -260,7 +260,7 @@
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
-	if (M == user)
+	if(M == user)
 		M.visible_message(\
 			SPAN_NOTICE("[M] buckles in!"),\
 			SPAN_NOTICE("You buckle yourself to [src]."),\

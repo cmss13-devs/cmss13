@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	if (alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "Yes")
+	if(alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "Yes")
 		visible_message(SPAN_WARNING ("The hypersleep chamber's casket starts moving!"))
 		to_chat(usr, SPAN_NOTICE ("You get out of the hypersleep chamber."))
 		go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo

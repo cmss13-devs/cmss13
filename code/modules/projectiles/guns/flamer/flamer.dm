@@ -95,7 +95,7 @@
 		return
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-	if (!targloc || !curloc)
+	if(!targloc || !curloc)
 		return //Something has gone wrong...
 
 	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
@@ -175,10 +175,10 @@
 		return //no magazine to unload
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.forceMove(get_turf(src)) //Drop it on the ground.
-	else if (user)
+	else if(user)
 		user.put_in_hands(current_mag)
 
-	if (user)
+	if(user)
 		playsound(user, unload_sound, 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
 		SPAN_NOTICE("You unload [current_mag] from [src]."))
@@ -204,7 +204,7 @@
 	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
 	var/max_range = R.rangefire
-	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
+	if(max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
 		max_range = Clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
@@ -278,15 +278,15 @@
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if (!link_fuelpack(user) && !current_mag)
+	if(!link_fuelpack(user) && !current_mag)
 		to_chat(user, SPAN_WARNING("You must equip the specialized Broiler-T back harness or load in a fuel tank to use this incinerator unit!"))
 		click_empty(user)
 		return
-	if (fuelpack)
+	if(fuelpack)
 		// Check we're actually firing the right fuel tank
-		if (current_mag != fuelpack.active_fuel)
+		if(current_mag != fuelpack.active_fuel)
 			// This was a manually loaded fuel tank
-			if (current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
+			if(current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
 				to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
 				unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
@@ -295,13 +295,13 @@
 
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
-	if (fuelpack)
+	if(fuelpack)
 		to_chat(user, SPAN_WARNING("The Broiler-T feed system cannot be reloaded manually."))
 		return
 	..()
 
 /obj/item/weapon/gun/flamer/M240T/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
+	if(fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
 		to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
 		return
 	..()
@@ -317,7 +317,7 @@
 			return FALSE
 
 /obj/item/weapon/gun/flamer/M240T/proc/link_fuelpack(var/mob/user)
-	if (fuelpack)
+	if(fuelpack)
 		fuelpack.linked_flamer = null
 		fuelpack = null
 
@@ -422,14 +422,14 @@
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow
-	if (istype(loc, /turf/open/snow))
+	if(istype(loc, /turf/open/snow))
 		var/turf/open/snow/S = loc
 
-		if (S.bleed_layer > 0)
+		if(S.bleed_layer > 0)
 			S.bleed_layer -= 1
 			S.update_icon(1, 0)
 
-	if (istype(loc, /turf/open/auto_turf/snow))
+	if(istype(loc, /turf/open/auto_turf/snow))
 		var/turf/open/auto_turf/snow/S = loc
 		if(S.bleed_layer > 0)
 			var/new_layer = S.bleed_layer - 1
@@ -484,7 +484,7 @@
 		M.apply_damage(firedamage, BURN)
 
 		var/msg = "Augh! You are roasted by the flames!"
-		if (isXeno(M))
+		if(isXeno(M))
 			to_chat(M, SPAN_XENODANGER(msg))
 		else
 			to_chat(M, SPAN_HIGHDANGER(msg))
@@ -501,7 +501,7 @@
 
 /obj/flamer_fire/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliably do it when you walk into it.
@@ -511,7 +511,7 @@
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
-				if (HAS_TRAIT(M, TRAIT_SUPER_STRONG))
+				if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
 					resist_modifier = 0.25
 				H.next_move_slowdown = H.next_move_slowdown + (3 * resist_modifier)
 				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
@@ -665,9 +665,9 @@
 		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
 
 		switch(angle) //this reduces power when the explosion is going around corners
-			if (0)
+			if(0)
 				//no change
-			if (45)
+			if(45)
 				spread_power *= 0.75
 			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
 				continue
@@ -678,7 +678,7 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 
-		if (spread_power < 1)
+		if(spread_power < 1)
 			continue
 
 		var/turf/T = get_step(target, spread_direction)

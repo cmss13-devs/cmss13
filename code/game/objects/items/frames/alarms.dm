@@ -13,26 +13,26 @@ Code shamelessly copied from apc_frame
 	flags_atom = FPRINT|CONDUCT
 
 /obj/item/frame/air_alarm/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), 2 )
 		qdel(src)
 		return
 	..()
 
 /obj/item/frame/air_alarm/proc/try_build(turf/on_wall)
-	if (get_dist(on_wall,usr)>1)
+	if(get_dist(on_wall,usr)>1)
 		return
 
 	var/ndir = get_dir(on_wall,usr)
-	if (!(ndir in cardinal))
+	if(!(ndir in cardinal))
 		return
 
 	var/turf/loc = get_turf(usr)
 	var/area/A = loc.loc
-	if (!istype(loc, /turf/open/floor))
+	if(!istype(loc, /turf/open/floor))
 		to_chat(usr, SPAN_DANGER("Air Alarm cannot be placed on this spot."))
 		return
-	if (A.requires_power == 0 || A.name == "Space")
+	if(A.requires_power == 0 || A.name == "Space")
 		to_chat(usr, SPAN_DANGER("Air Alarm cannot be placed in this area."))
 		return
 
@@ -56,26 +56,26 @@ Code shamelessly copied from apc_frame
 	flags_atom = FPRINT|CONDUCT
 
 /obj/item/frame/fire_alarm/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		new /obj/item/stack/sheet/metal( get_turf(src.loc), 2 )
 		qdel(src)
 		return
 	..()
 
 /obj/item/frame/fire_alarm/proc/try_build(turf/on_wall)
-	if (get_dist(on_wall,usr)>1)
+	if(get_dist(on_wall,usr)>1)
 		return
 
 	var/ndir = get_dir(on_wall,usr)
-	if (!(ndir in cardinal))
+	if(!(ndir in cardinal))
 		return
 
 	var/turf/loc = get_turf(usr)
 	var/area/A = loc.loc
-	if (!istype(loc, /turf/open/floor))
+	if(!istype(loc, /turf/open/floor))
 		to_chat(usr, SPAN_DANGER("Fire Alarm cannot be placed on this spot."))
 		return
-	if (A.requires_power == 0 || A.name == "Space")
+	if(A.requires_power == 0 || A.name == "Space")
 		to_chat(usr, SPAN_DANGER("Fire Alarm cannot be placed in this area."))
 		return
 

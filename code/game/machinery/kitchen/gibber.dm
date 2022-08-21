@@ -17,7 +17,7 @@
 
 /obj/structure/machinery/gibber/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //auto-gibs anything that bumps into it
@@ -57,13 +57,13 @@
 
 /obj/structure/machinery/gibber/update_icon()
 	overlays.Cut()
-	if (dirty)
+	if(dirty)
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
 	if(inoperable())
 		return
-	if (!occupant)
+	if(!occupant)
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
-	else if (operating)
+	else if(operating)
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
 	else
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
@@ -120,18 +120,18 @@
 	set name = "Empty Gibber"
 	set src in oview(1)
 
-	if (usr.stat != 0)
+	if(usr.stat != 0)
 		return
 	go_out()
 	add_fingerprint(usr)
 	return
 
 /obj/structure/machinery/gibber/proc/go_out()
-	if (!occupant)
+	if(!occupant)
 		return
 	for(var/obj/O in src)
 		O.forceMove(loc)
-	if (occupant.client)
+	if(occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
@@ -193,12 +193,12 @@
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)
 	operating = FALSE
-	for (var/i in 1 to totalslabs)
+	for(var/i in 1 to totalslabs)
 		var/obj/item/meatslab = allmeat[i]
 		var/turf/Tx = locate(x - i, y, z)
 		meatslab.forceMove(loc)
 		meatslab.throw_atom(Tx, i, SPEED_FAST, src)
-		if (!Tx.density)
+		if(!Tx.density)
 			if(istype(meatslab, /obj/item/reagent_container/food/snacks/meat/xenomeat))
 				new /obj/effect/decal/cleanable/blood/gibs/xeno(Tx)
 			else

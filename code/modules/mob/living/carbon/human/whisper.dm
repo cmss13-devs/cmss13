@@ -4,18 +4,18 @@
 
 	log_whisper("[src.name]/[src.key] : [message]")
 
-	if (src.client)
-		if (src.client.prefs.muted & MUTE_IC)
+	if(src.client)
+		if(src.client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot whisper (muted)."))
 			return
 
-		if (src.client.handle_spam_prevention(message,MUTE_IC))
+		if(src.client.handle_spam_prevention(message,MUTE_IC))
 			return
 
-	if (src.stat == 2)
+	if(src.stat == 2)
 		return src.say_dead(message)
 
-	if (src.stat)
+	if(src.stat)
 		return
 
 	message =  trim(strip_html(message))	//made consistent with say
@@ -25,7 +25,7 @@
 
 	//parse the language code and consume it
 	var/datum/language/speaking = parse_language(message)
-	if (speaking)
+	if(speaking)
 		message = copytext(message,3)
 
 	whisper_say(message, speaking, alt_name)
@@ -38,34 +38,34 @@
 	var/watching_range = 5
 	var/italics = 1
 
-	if (speaking)
+	if(speaking)
 		verb = speaking.speech_verb + pick(" quietly", " softly")
 
 	message = capitalize(trim(message))
 
 	//TODO: handle_speech_problems for silent
-	if (!message || silent)
+	if(!message || silent)
 		return
 
 	// Mute disability
 	//TODO: handle_speech_problems
-	if (src.sdisabilities & DISABILITY_MUTE)
+	if(src.sdisabilities & DISABILITY_MUTE)
 		return
 
 	//TODO: handle_speech_problems
-	if (istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
+	if(istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
 		return
 
 	//TODO: handle_speech_problems
-	if (src.stuttering)
+	if(src.stuttering)
 		message = stutter(message)
 
 	var/list/listening = hearers(message_range, src)
 	listening |= src
 
 	//ghosts
-	for (var/mob/M in GLOB.dead_mob_list)	//does this include players who joined as observers as well?
-		if (!(M.client))
+	for(var/mob/M in GLOB.dead_mob_list)	//does this include players who joined as observers as well?
+		if(!(M.client))
 			continue
 		if((M.stat == DEAD || isobserver(M)) && M.client && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
 			listening |= M
@@ -77,9 +77,9 @@
 				listening += C
 
 	//pass on the message to objects that can hear us.
-	for (var/obj/O in view(message_range, src))
+	for(var/obj/O in view(message_range, src))
 		spawn (0)
-			if (O)
+			if(O)
 				O.hear_talk(src, message)	//O.hear_talk(src, message, verb, speaking)
 
 	var/list/eavesdropping = hearers(eavesdropping_range, src)
@@ -102,7 +102,7 @@
 			M << speech_bubble
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
 
-	if (eavesdropping.len)
+	if(eavesdropping.len)
 		var/new_message = stars(message)	//hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
 			if(not_dead_speaker)
@@ -118,7 +118,7 @@
 			for(var/mob/M in eavesdropping)
 				if(M.client) M.client.images -= speech_bubble
 
-	if (watching.len)
+	if(watching.len)
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"
-		for (var/mob/M in watching)
+		for(var/mob/M in watching)
 			M.show_message(rendered, 2)

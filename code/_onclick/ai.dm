@@ -16,23 +16,23 @@
 	if(!client || !client.remote_control)
 		return FALSE
 
-	if (mods["middle"])
+	if(mods["middle"])
 		A.AIMiddleClick(src)
 		return 1
 
-	if (mods["shift"])
+	if(mods["shift"])
 		A.AIShiftClick(src)
 		return 1
 
-	if (mods["alt"])
+	if(mods["alt"])
 		A.AIAltClick(src)
 		return 1
 
-	if (mods["ctrl"])
+	if(mods["ctrl"])
 		A.AICtrlClick(src)
 		return 1
 
-	if (world.time <= next_move)
+	if(world.time <= next_move)
 		return 1
 
 	A.attack_remote(src)

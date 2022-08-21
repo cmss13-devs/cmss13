@@ -66,7 +66,7 @@
 	var/list/can_purchase = list()
 
 	for(var/str in GLOB.xeno_mutator_list)
-		if (can_purchase_mutator(str))
+		if(can_purchase_mutator(str))
 			can_purchase += str //can purchase!
 
 	return can_purchase
@@ -92,12 +92,12 @@
 		to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
 		return
 	. = ..()
-	if (. == TRUE && purchased_mutators.len)
+	if(. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[hive.living_xeno_queen.name] purchased Hive Mutator '[m]'")
 
 /datum/mutator_set/hive_mutators/can_purchase_mutator(var/mutator_name)
-	if (..() == FALSE)
+	if(..() == FALSE)
 		return FALSE //Can't buy it regardless
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(XM.individual_only)
@@ -193,12 +193,12 @@
 
 /datum/mutator_set/individual_mutators/list_and_purchase_mutators()
 	. = ..()
-	if (. == TRUE && purchased_mutators.len)
+	if(. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[xeno.name] purchased Mutator '[m]'")
 
 /datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
-	if (..() == FALSE)
+	if(..() == FALSE)
 		return FALSE //Can't buy it regardless
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(XM.hive_only)
@@ -210,7 +210,7 @@
 /datum/mutator_set/individual_mutators/recalculate_actions(var/description, var/flavor_description = null)
 	xeno.recalculate_actions()
 	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
-	if (flavor_description != null)
+	if(flavor_description != null)
 		to_chat(xeno, SPAN_XENOLEADER("[flavor_description]"))
 	xeno.xeno_jitter(15)
 

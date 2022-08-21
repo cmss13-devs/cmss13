@@ -174,7 +174,7 @@
 	for(var/variable in L)
 		if(islist(variable))
 			new_list += list(recursive_list_copy(variable, already_copied))
-		else if (istext(variable))
+		else if(istext(variable))
 			if(islist(L[variable]))
 				new_list += list("[variable]" = recursive_list_copy(L[variable], already_copied))
 			else

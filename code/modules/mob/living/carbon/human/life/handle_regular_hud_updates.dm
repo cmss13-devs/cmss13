@@ -114,7 +114,7 @@
 						hud_used.pulse_line.icon_state = "pulse_good"
 
 			if(hud_used.bodytemp_icon)
-				if (!species)
+				if(!species)
 					switch(bodytemperature) //310.055 optimal body temp
 						if(370 to INFINITY)		hud_used.bodytemp_icon.icon_state = "temp4"
 						if(350 to 370)			hud_used.bodytemp_icon.icon_state = "temp3"

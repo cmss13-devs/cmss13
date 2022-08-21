@@ -71,7 +71,7 @@
 	for(var/atom/atm in loc)
 
 		// Other acid sprays? delete ourself
-		if (atm != src && istype(atm, /obj/effect/xenomorph/spray))
+		if(atm != src && istype(atm, /obj/effect/xenomorph/spray))
 			return INITIALIZE_HINT_QDEL
 
 		// Flamer fire?
@@ -91,7 +91,7 @@
 						qdel(atm)
 			continue
 
-		if (istype(atm, /obj/structure/barricade))
+		if(istype(atm, /obj/structure/barricade))
 			var/obj/structure/barricade/B = atm
 			B.acid_spray_act()
 			continue
@@ -109,9 +109,9 @@
 			M.ExtinguishMob()
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
-			if (iscarbon(M))
+			if(iscarbon(M))
 				var/mob/living/carbon/C = M
-				if (C.ally_of_hivenumber(hivenumber))
+				if(C.ally_of_hivenumber(hivenumber))
 					continue
 
 				apply_spray(M)
@@ -137,7 +137,7 @@
 
 /obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_ACID_SPRAY
 
 /obj/effect/xenomorph/spray/proc/die()
@@ -151,9 +151,9 @@
 		if(H.ally_of_hivenumber(hivenumber))
 			return
 		apply_spray(AM)
-	else if (isXeno(AM))
+	else if(isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
-		if (X.hivenumber != hivenumber)
+		if(X.hivenumber != hivenumber)
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
@@ -173,9 +173,9 @@
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
-		else if (isXeno(H))
+		else if(isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
-			if (X.mob_size < MOB_SIZE_BIG && should_stun)
+			if(X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
@@ -220,7 +220,7 @@
 		var/damage = damage_amount
 
 		var/should_stun = FALSE
-		for (var/datum/effects/acid/A in H.effects_list)
+		for(var/datum/effects/acid/A in H.effects_list)
 			should_stun = TRUE
 			damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
 			damage += bonus_damage
@@ -230,14 +230,14 @@
 
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
-		if (should_stun && !H.lying)
+		if(should_stun && !H.lying)
 			H.KnockDown(stun_duration)
 		H.last_damage_data = cause_data
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
 		H.UpdateDamageIcon()
 		H.updatehealth()
-	else if (isXeno(M))
+	else if(isXeno(M))
 		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/praetorian
@@ -270,7 +270,7 @@
 		else
 			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
-	else if (isXeno(M))
+	else if(isXeno(M))
 		..(M)
 
 //Medium-strength acid
@@ -344,7 +344,7 @@
 			else
 				var/turf/T = acid_t
 				T.ScrapeAway()
-		else if (istype(acid_t, /obj/structure/girder))
+		else if(istype(acid_t, /obj/structure/girder))
 			var/obj/structure/girder/G = acid_t
 			G.dismantle()
 		else if(istype(acid_t, /obj/structure/window/framed))
@@ -390,12 +390,12 @@
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
-	if (isXeno(source_xeno))
+	if(isXeno(source_xeno))
 		src.source_xeno = source_xeno
 
-	if (isturf(loc))
+	if(isturf(loc))
 		var/turf/T = loc
-		if (!T.density)
+		if(!T.density)
 			..(loc)
 		else
 			qdel(src)
@@ -406,19 +406,19 @@
 	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
-	if (!istype(src) || !isturf(loc))
+	if(!istype(src) || !isturf(loc))
 		qdel(src)
 		return
-	for (var/mob/living/carbon/H in loc)
-		if (isXeno(H))
+	for(var/mob/living/carbon/H in loc)
+		if(isXeno(H))
 			if(!source_xeno)
 				continue
 
 			var/mob/living/carbon/Xenomorph/X = H
-			if (source_xeno.can_not_harm(X))
+			if(source_xeno.can_not_harm(X))
 				continue
 
-		if (!H.stat)
+		if(!H.stat)
 			if(source_xeno.can_not_harm(H))
 				continue
 			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
@@ -488,8 +488,8 @@
 	var/immobilized_multiplier = 1.45
 	if(empowered)
 		xeno_empower_modifier = 1.25
-	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
+	for(var/mob/living/carbon/H in loc)
+		if(H.stat == DEAD)
 			continue
 
 		if(H.ally_of_hivenumber(hivenumber))
@@ -503,8 +503,8 @@
 			if(empowered)
 				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/F in H.effects_list)
-				if (F.cause_data && F.cause_data.resolve_mob() == linked_xeno)
+			for(var/datum/effects/boiler_trap/F in H.effects_list)
+				if(F.cause_data && F.cause_data.resolve_mob() == linked_xeno)
 					found = F
 					break
 			if(found)
@@ -512,7 +512,7 @@
 			else
 				H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 
-		if (message)
+		if(message)
 			to_chat(H, SPAN_XENODANGER(message))
 
 		. = TRUE
@@ -525,11 +525,11 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
+	for(var/obj/structure/barricade/B in loc)
 		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
 
-	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
+	for(var/mob/living/carbon/H in loc)
+		if(H.stat == DEAD)
 			continue
 
 		if(H.ally_of_hivenumber(hivenumber))

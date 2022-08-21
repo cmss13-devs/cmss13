@@ -49,7 +49,7 @@
 	if(!beaker)
 		return
 
-	if (href_list["create_vaccine"])
+	if(href_list["create_vaccine"])
 		if(!wait)
 			var/path = href_list["create_vaccine"]
 			var/vaccine_type = text2path(path)

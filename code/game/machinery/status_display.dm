@@ -147,7 +147,7 @@
 
 /obj/structure/machinery/status_display/proc/get_supply_shuttle_timer()
 	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-	if (!shuttle)
+	if(!shuttle)
 		return "Error"
 
 	if(shuttle.has_arrive_time())

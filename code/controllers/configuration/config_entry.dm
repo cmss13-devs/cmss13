@@ -102,10 +102,10 @@
 	dupes_allowed = TRUE
 
 /datum/config_entry/str_list/ValidateAndSet(str_val)
-	if (!VASProcCallGuard(str_val))
+	if(!VASProcCallGuard(str_val))
 		return FALSE
 	str_val = trim(str_val)
-	if (str_val != "")
+	if(str_val != "")
 		config_entry_value += str_val
 	return TRUE
 

@@ -44,9 +44,9 @@
 				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Four."))
 				stage_counter = stage
 			if(goo_message_cooldown < world.time)
-				if (prob(3)) to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-				else if (prob(6)) to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-				else if (prob(2)) H.vomit_on_floor()
+				if(prob(3)) to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
+				else if(prob(6)) to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
+				else if(prob(2)) H.vomit_on_floor()
 				goo_message_cooldown = world.time + 100
 		if(3)
 			if(H.stat == DEAD && stage_counter != stage)
@@ -56,13 +56,13 @@
 			//survive_mob_death = TRUE //even if host dies now, the transformation will occur.
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
 			if(goo_message_cooldown < world.time)
-				if (prob(3))
+				if(prob(3))
 					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
 					goo_message_cooldown = world.time + 100
-				else if (prob(6))
+				else if(prob(6))
 					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
 					goo_message_cooldown = world.time + 100
-				else if (prob(9))
+				else if(prob(9))
 					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 					goo_message_cooldown = world.time + 100
 				else if(prob(5))

@@ -173,7 +173,7 @@
 		to_chat_spaced(H, html = entrydisplay)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
-	if (istype(M) && M.client)
+	if(istype(M) && M.client)
 		M.client.soundOutput.update_ambience()
 
 	return //Anything special that should happen to the mob upon entering the world.
@@ -195,7 +195,7 @@
 
 	NP.client.prefs.copy_all_to(new_character)
 
-	if (NP.client.prefs.be_random_body)
+	if(NP.client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
 		TP.randomize_appearance(new_character)
 

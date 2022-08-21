@@ -20,7 +20,7 @@
 
 /datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
@@ -88,7 +88,7 @@
 		to_chat(X, SPAN_XENOWARNING("This is too close to another fruit!"))
 		return
 
-	if (check_and_use_plasma_owner())
+	if(check_and_use_plasma_owner())
 		if(length(X.current_fruits) >= X.max_placeable)
 			to_chat(X, SPAN_XENOWARNING("You cannot sustain another fruit, one will wither away to allow this one to live!"))
 			var/obj/effect/alien/resin/fruit/old_fruit = X.current_fruits[1]
@@ -229,13 +229,13 @@
 
 /datum/action/xeno_action/activable/resin_surge/use_ability(atom/A, mods)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	if(!istype(X))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state(TRUE))
+	if(!X.check_state(TRUE))
 		return
 
 	if(mods["click_catcher"])
@@ -250,7 +250,7 @@
 			to_chat(X, SPAN_WARNING("That's too far away!"))
 			return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/turf/T = get_turf(A)
@@ -309,7 +309,7 @@
 		channel_in_progress = FALSE
 		X.visible_message(SPAN_XENODANGER("\The [X] surges deep resin, creating an unstable sticky resin patch!"), \
 		SPAN_XENONOTICE("You surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
-		for (var/turf/targetTurf in orange(1, T))
+		for(var/turf/targetTurf in orange(1, T))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)
 				new /obj/effect/alien/resin/sticky/thin/weak(targetTurf, X.hivenumber)
 		if(!locate(/obj/effect/alien/resin/sticky) in T)

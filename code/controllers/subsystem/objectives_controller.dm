@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(objectives)
 
 	var/message = "TECH REPORT: [round(tree.points, 0.1)] points available"
 	var/earned = round(tree.total_points - tree.total_points_last_sitrep, 0.1)
-	if (earned)
+	if(earned)
 		message += " (+[earned])"
 	message += "."
 
@@ -300,7 +300,7 @@ SUBSYSTEM_DEF(objectives)
 	// Low
 	for(var/datum/cm_objective/objective in low_value)
 		// Add at least one guaranteed clue for this objective to unlock.
-		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(medium_value))
+		if(!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(medium_value))
 			var/datum/cm_objective/enables = pick(medium_value)
 			link_objectives(objective, enables)
 
@@ -313,7 +313,7 @@ SUBSYSTEM_DEF(objectives)
 			link_objectives(req, objective)
 
 		// Add at least one guaranteed clue for this objective to unlock.
-		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(high_value))
+		if(!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(high_value))
 			var/datum/cm_objective/enables = pick(high_value)
 			link_objectives(objective, enables)
 
@@ -326,7 +326,7 @@ SUBSYSTEM_DEF(objectives)
 			link_objectives(req, objective)
 
 		// Add at least one guaranteed clue for this objective to unlock.
-		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(extreme_value))
+		if(!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(extreme_value))
 			var/datum/cm_objective/enables = pick(extreme_value)
 			link_objectives(objective, enables)
 
@@ -339,7 +339,7 @@ SUBSYSTEM_DEF(objectives)
 			link_objectives(req, objective)
 
 		// Add at least one guaranteed clue for this objective to unlock.
-		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(absolute_value))
+		if(!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(absolute_value))
 			var/datum/cm_objective/enables = pick(absolute_value)
 			link_objectives(objective, enables)
 

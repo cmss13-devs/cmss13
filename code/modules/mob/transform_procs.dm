@@ -1,8 +1,8 @@
 /mob/living/carbon/human/proc/monkeyize()
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/obj/item/W in src)
-		if (W==w_uniform) // will be torn
+		if(W==w_uniform) // will be torn
 			continue
 		drop_inv_item_on_ground(W)
 	regenerate_icons()
@@ -38,7 +38,7 @@
 
 	O.med_hud_set_status()
 
-	if (client)
+	if(client)
 		client.mob = O
 	if(mind)
 		mind.transfer_to(O)
@@ -55,7 +55,7 @@
 	return ..()
 
 /mob/living/carbon/human/AIize()
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/t in limbs)
 		qdel(t)
@@ -63,7 +63,7 @@
 	return ..()
 
 /mob/living/carbon/AIize()
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/obj/item/W in src)
 		drop_inv_item_on_ground(W)
@@ -79,7 +79,7 @@
 
 //human -> robot
 /mob/living/carbon/human/proc/Robotize()
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/obj/item/W in src)
 		drop_inv_item_on_ground(W)
@@ -125,7 +125,7 @@
 
 //human -> alien
 /mob/living/carbon/human/proc/Alienize(var/list/types)
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/obj/item/W in src)
 		drop_inv_item_on_ground(W)
@@ -187,7 +187,7 @@
 	return
 
 /mob/living/carbon/human/proc/corgize()
-	if (monkeyizing)
+	if(monkeyizing)
 		return
 	for(var/obj/item/W in src)
 		drop_inv_item_on_ground(W)

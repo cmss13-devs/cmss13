@@ -24,9 +24,9 @@
 	return
 
 /obj/structure/machinery/igniter/process()	//ugh why is this even in process()?
-//	if (src.on && !(stat & NOPOWER) )
+//	if(src.on && !(stat & NOPOWER) )
 //		var/turf/location = src.loc
-//		if (isturf(location))
+//		if(isturf(location))
 //			location.hotspot_expose(1000,500,1)
 	return 1
 
@@ -56,7 +56,7 @@
 
 /obj/structure/machinery/sparker/power_change()
 	..()
-	if ( !(stat & NOPOWER) && disable == 0 )
+	if( !(stat & NOPOWER) && disable == 0 )
 
 		icon_state = "[base_state]"
 //		src.sd_SetLuminosity(2)
@@ -65,13 +65,13 @@
 //		src.sd_SetLuminosity(0)
 
 /obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		add_fingerprint(user)
 		src.disable = !src.disable
-		if (src.disable)
+		if(src.disable)
 			user.visible_message(SPAN_DANGER("[user] has disabled the [src]!"), SPAN_DANGER("You disable the connection to the [src]."))
 			icon_state = "[base_state]-d"
-		if (!src.disable)
+		if(!src.disable)
 			user.visible_message(SPAN_DANGER("[user] has reconnected the [src]!"), SPAN_DANGER("You fix the connection to the [src]."))
 			if(src.powered())
 				icon_state = "[base_state]"
@@ -79,16 +79,16 @@
 				icon_state = "[base_state]-p"
 
 /obj/structure/machinery/sparker/attack_remote()
-	if (src.anchored)
+	if(src.anchored)
 		return src.ignite()
 	else
 		return
 
 /obj/structure/machinery/sparker/proc/ignite()
-	if (!(powered()))
+	if(!(powered()))
 		return
 
-	if ((src.disable) || (src.last_spark && world.time < src.last_spark + 50))
+	if((src.disable) || (src.last_spark && world.time < src.last_spark + 50))
 		return
 
 
@@ -99,7 +99,7 @@
 	src.last_spark = world.time
 	use_power(1000)
 //	var/turf/location = src.loc
-//	if (isturf(location))
+//	if(isturf(location))
 //		location.hotspot_expose(1000,500,1)
 	return 1
 
@@ -125,7 +125,7 @@
 	icon_state = "launcheract"
 
 	for(var/obj/structure/machinery/sparker/M in machines)
-		if (M.id == src.id)
+		if(M.id == src.id)
 			INVOKE_ASYNC(M, /obj/structure/machinery/sparker.proc/ignite)
 
 	for(var/obj/structure/machinery/igniter/M in machines)

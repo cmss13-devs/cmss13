@@ -28,13 +28,13 @@
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/open/space/attack_hand(mob/user)
-	if ((user.is_mob_restrained() || !( user.pulling )))
+	if((user.is_mob_restrained() || !( user.pulling )))
 		return
-	if (user.pulling.anchored || !isturf(user.pulling.loc))
+	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return
-	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
+	if((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
-	if (ismob(user.pulling))
+	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
@@ -46,22 +46,22 @@
 
 /turf/open/space/attackby(obj/item/C, mob/user)
 
-	if (istype(C, /obj/item/stack/rods))
+	if(istype(C, /obj/item/stack/rods))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			return
 		var/obj/item/stack/rods/R = C
-		if (R.use(1))
+		if(R.use(1))
 			to_chat(user, SPAN_NOTICE(" Constructing support lattice ..."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			ReplaceWithLattice()
 		return
 
-	if (istype(C, /obj/item/stack/tile/plasteel))
+	if(istype(C, /obj/item/stack/tile/plasteel))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			var/obj/item/stack/tile/plasteel/S = C
-			if (S.get_amount() < 1)
+			if(S.get_amount() < 1)
 				return
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
@@ -77,7 +77,7 @@
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
-	if ((!(A) || src != A.loc))	return
+	if((!(A) || src != A.loc))	return
 
 	inertial_drift(A)
 
@@ -135,15 +135,15 @@
 				A.x = world.maxx - TRANSITIONEDGE - 2
 				A.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
 
-			else if (A.x >= (world.maxx - TRANSITIONEDGE - 1))
+			else if(A.x >= (world.maxx - TRANSITIONEDGE - 1))
 				A.x = TRANSITIONEDGE + 1
 				A.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
 
-			else if (src.y <= TRANSITIONEDGE)
+			else if(src.y <= TRANSITIONEDGE)
 				A.y = world.maxy - TRANSITIONEDGE -2
 				A.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
-			else if (A.y >= (world.maxy - TRANSITIONEDGE - 1))
+			else if(A.y >= (world.maxy - TRANSITIONEDGE - 1))
 				A.y = TRANSITIONEDGE + 1
 				A.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
@@ -151,5 +151,5 @@
 
 
 			spawn (0)
-				if ((A && A.loc))
+				if((A && A.loc))
 					A.loc.Entered(A)

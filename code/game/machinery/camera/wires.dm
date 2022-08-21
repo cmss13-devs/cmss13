@@ -14,9 +14,9 @@
 	var/flagIndex = 1
 	//I think it's easier to read this way, also doesn't rely on the random number generator to land on a new wire.
 	var/list/colorIndexList = list(CAMERA_WIRE_FOCUS, CAMERA_WIRE_POWER, CAMERA_WIRE_LIGHT, CAMERA_WIRE_ALARM, CAMERA_WIRE_NOTHING1, CAMERA_WIRE_NOTHING2)
-	for (var/flag = 1, flag <= 32, flag += flag)
+	for(var/flag = 1, flag <= 32, flag += flag)
 		var/colorIndex = pick(colorIndexList)
-		if (wires[colorIndex]==0)
+		if(wires[colorIndex]==0)
 			wires[colorIndex] = flag
 			IndexToFlag[flagIndex] = flag
 			IndexToWireColor[flagIndex] = colorIndex
@@ -135,30 +135,30 @@
 
 /obj/structure/machinery/camera/Topic(href, href_list)
 	..()
-	if (in_range(src, usr) && istype(src.loc, /turf))
+	if(in_range(src, usr) && istype(src.loc, /turf))
 		usr.set_interaction(src)
-		if (href_list["wires"])
+		if(href_list["wires"])
 			var/t1 = text2num(href_list["wires"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(usr, "You need wirecutters!")
 				return
-			if (src.isWireColorCut(t1))
+			if(src.isWireColorCut(t1))
 				src.mend(t1)
 			else
 				src.cut(t1)
-		else if (href_list["pulse"])
+		else if(href_list["pulse"])
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return
-			if (src.isWireColorCut(t1))
+			if(src.isWireColorCut(t1))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return
 			else
 				src.pulse(t1)
-		else if (href_list["close2"])
+		else if(href_list["close2"])
 			close_browser(usr, "wires")
 			usr.unset_interaction()
 			return

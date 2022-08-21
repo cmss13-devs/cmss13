@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(decorator)
 
 /datum/controller/subsystem/decorator/proc/add_decorator(decor_type, ...)
 	var/list/arguments = list()
-	if (length(args) > 1)
+	if(length(args) > 1)
 		arguments = args.Copy(2)
 	var/datum/decorator/decor = new decor_type(arglist(arguments))
 
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(decorator)
 	return ..()
 
 /datum/controller/subsystem/decorator/proc/decorate(var/atom/o)
-	if (!o || QDELETED(o))
+	if(!o || QDELETED(o))
 		return
 
 	var/list/datum/decorator/decors = registered_decorators[o.type]

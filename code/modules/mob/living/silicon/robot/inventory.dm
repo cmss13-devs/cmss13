@@ -12,7 +12,7 @@
 	if(module_state_1 == module_active)
 		if(istype(module_state_1,/obj/item/robot/sight))
 			sight_mode &= ~module_state_1:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_1
 		contents -= module_state_1
 		module_active = null
@@ -21,7 +21,7 @@
 	else if(module_state_2 == module_active)
 		if(istype(module_state_2,/obj/item/robot/sight))
 			sight_mode &= ~module_state_2:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_active = null
@@ -30,7 +30,7 @@
 	else if(module_state_3 == module_active)
 		if(istype(module_state_3,/obj/item/robot/sight))
 			sight_mode &= ~module_state_3:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_active = null
@@ -44,7 +44,7 @@
 	if(module_state_1)
 		if(istype(module_state_1,/obj/item/robot/sight))
 			sight_mode &= ~module_state_1:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_1
 		contents -= module_state_1
 		module_state_1 = null
@@ -52,7 +52,7 @@
 	if(module_state_2)
 		if(istype(module_state_2,/obj/item/robot/sight))
 			sight_mode &= ~module_state_2:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_state_2 = null
@@ -60,7 +60,7 @@
 	if(module_state_3)
 		if(istype(module_state_3,/obj/item/robot/sight))
 			sight_mode &= ~module_state_3:sight_mode
-		if (client)
+		if(client)
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_state_3 = null

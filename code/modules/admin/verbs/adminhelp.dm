@@ -148,7 +148,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	current_state = state
 
 /obj/effect/statclick/ticket_list/clicked()
-	if (!CLIENT_IS_STAFF(usr.client))
+	if(!CLIENT_IS_STAFF(usr.client))
 		message_staff("[key_name_admin(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		return
@@ -343,7 +343,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
 		heard_by_no_admins = FALSE
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
-	if (!isnull(player_message))
+	if(!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
 
 //Removes the ahelp verb and returns it after 2 minutes
@@ -357,7 +357,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		ref_src = "[REF(src)]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
 	if(state == AHELP_ACTIVE)
-		if (CONFIG_GET(flag/popup_admin_pm))
+		if(CONFIG_GET(flag/popup_admin_pm))
 			. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminpopup=[REF(initiator)]'>POPUP</A>)"
 		. += ClosureLinks(ref_src)
 
@@ -542,10 +542,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	// Append any tickets also opened by this user if relevant
 	var/list/related_tickets = GLOB.ahelp_tickets.TicketsByCKey(initiator_ckey)
-	if (related_tickets.len > 1)
+	if(related_tickets.len > 1)
 		dat += "<br/><b>Other Tickets by User</b><br/>"
-		for (var/datum/admin_help/related_ticket in related_tickets)
-			if (related_ticket.id == id)
+		for(var/datum/admin_help/related_ticket in related_tickets)
+			if(related_ticket.id == id)
 				continue
 			dat += "[related_ticket.TicketHref("#[related_ticket.id]")] ([related_ticket.ticket_status()]): [related_ticket.name]<br/>"
 
@@ -628,7 +628,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		dat += "<br>Closed at: [gameTimestamp("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
 	dat += "<br><br>"
 	dat += "<br><b>Log:</b><br><br>"
-	for (var/interaction in player_interactions)
+	for(var/interaction in player_interactions)
 		dat += "[interaction]<br>"
 
 	var/datum/browser/player_panel = new(usr, "ahelp[id]", 0, GLOB.stylesheets["Legacy"], 620, 480)
@@ -651,7 +651,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	return ..(ahelp_datum.name)
 
 /obj/effect/statclick/ahelp/clicked()
-	if (!CLIENT_IS_STAFF(usr.client))
+	if(!CLIENT_IS_STAFF(usr.client))
 		message_staff("[key_name_admin(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		return
@@ -816,7 +816,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	else
 		mob_client = what
 	if(istype(mob_client) && mob_client.current_ticket)
-		if (isnull(player_message))
+		if(isnull(player_message))
 			mob_client.current_ticket.AddInteraction(message)
 		else
 			mob_client.current_ticket.AddInteraction(message, player_message)
@@ -826,7 +826,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	if(istext(what)) //ckey
 		var/datum/admin_help/active_admin_help = GLOB.ahelp_tickets.CKey2ActiveTicket(what)
 		if(active_admin_help)
-			if (isnull(player_message))
+			if(isnull(player_message))
 				active_admin_help.AddInteraction(message)
 			else
 				active_admin_help.AddInteraction(message, player_message)

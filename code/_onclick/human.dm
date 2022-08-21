@@ -27,7 +27,7 @@
 		if(result != HANDLE_CLICK_PASS_THRU)
 			return result
 
-	if (mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
+	if(mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
 		var/mob/living/carbon/human/H = A
 		H.receive_from(src)
 		return TRUE
@@ -35,22 +35,22 @@
 	return ..()
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A) //chewing your handcuffs
-	if (A != src) return ..()
+	if(A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
-	if (last_chew + 75 > world.time)
+	if(last_chew + 75 > world.time)
 		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
 		return
 
 
-	if (!H.handcuffed) return
-	if (H.a_intent != INTENT_HARM) return
-	if (H.zone_selected != "mouth") return
-	if (H.wear_mask) return
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
+	if(!H.handcuffed) return
+	if(H.a_intent != INTENT_HARM) return
+	if(H.zone_selected != "mouth") return
+	if(H.wear_mask) return
+	if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
 
 	var/obj/limb/O = H.get_limb(H.hand?"l_hand":"r_hand")
-	if (!O) return
+	if(!O) return
 
 	var/s = SPAN_DANGER("[H.name] chews on \his [O.display_name]!")
 	H.visible_message(s, SPAN_DANGER("You chew on your [O.display_name]!"),null, null, CHAT_TYPE_FLUFF_ACTION)

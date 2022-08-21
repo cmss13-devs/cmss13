@@ -63,20 +63,20 @@
 				icon_state = "1"
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = P
-				if (C.get_amount() < 5)
+				if(C.get_amount() < 5)
 					to_chat(user, SPAN_WARNING("You need five coils of wire to add them to the frame."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to add cables to the frame."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 2)
-					if (C.use(5))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 2)
+					if(C.use(5))
 						state = 3
 						icon_state = "3"
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 				return
 		if(3)
 			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
-				if (brain)
+				if(brain)
 					to_chat(user, "Get that brain out of there first")
 				else
 					playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -88,12 +88,12 @@
 
 			if(istype(P, /obj/item/stack/sheet/glass/reinforced))
 				var/obj/item/stack/sheet/glass/reinforced/RG = P
-				if (RG.get_amount() < 2)
+				if(RG.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 3)
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 3)
 					if(RG.use(2))
 						to_chat(user, SPAN_NOTICE("You put in the glass panel."))
 						state = 4
@@ -130,7 +130,7 @@
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the glass panel."))
 				state = 3
-				if (brain)
+				if(brain)
 					icon_state = "3b"
 				else
 					icon_state = "3"
@@ -179,7 +179,7 @@ That prevents a few funky behaviors.
 							T.control_disabled = 1//Can't control things remotely if you're stuck in a card!
 							T.forceMove(C)//Throw AI into the card.
 							C.name = "inteliCard - [T.name]"
-							if (T.stat == 2)
+							if(T.stat == 2)
 								C.icon_state = "aicard-404"
 							else
 								C.icon_state = "aicard-full"
@@ -210,7 +210,7 @@ That prevents a few funky behaviors.
 					if("AICARD")
 						var/obj/item/device/aicard/C = src
 						if(!T.contents.len)
-							if (!C.contents.len)
+							if(!C.contents.len)
 								to_chat(U, "No AI to copy over!")//Well duh
 							else for(var/mob/living/silicon/ai/A in C)
 								C.icon_state = "aicard"
@@ -219,7 +219,7 @@ That prevents a few funky behaviors.
 								A.forceMove(T)
 								T.occupant = A
 								A.control_disabled = 1
-								if (A.stat == 2)
+								if(A.stat == 2)
 									T.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-404")
 								else
 									T.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-full")
@@ -231,7 +231,7 @@ That prevents a few funky behaviors.
 							if(!C.contents.len && T.occupant && !T.active)
 								C.name = "inteliCard - [T.occupant.name]"
 								T.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-empty")
-								if (T.occupant.stat == 2)
+								if(T.occupant.stat == 2)
 									C.icon_state = "aicard-404"
 									T.overlays -= image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-404")
 								else
@@ -242,11 +242,11 @@ That prevents a few funky behaviors.
 								T.occupant.forceMove(C)
 								T.occupant.cancel_camera()
 								T.occupant = null
-							else if (C.contents.len)
+							else if(C.contents.len)
 								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Artificial intelligence detected on terminal."))
-							else if (T.active)
+							else if(T.active)
 								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Reconstruction in progress."))
-							else if (!T.occupant)
+							else if(!T.occupant)
 								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Unable to locate artificial intelligence."))
 	else
 		to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black AI flush is in progress, cannot execute transfer protocol."))

@@ -34,7 +34,7 @@ var/global/datum/controller/defcon/defcon_controller
 	if(current_defcon_level == 1)
 		return "MAXIMUM"
 	else
-		if (!defcon_level_triggers)
+		if(!defcon_level_triggers)
 			return 0
 		var/percentage = last_objectives_scored_points / defcon_level_triggers[current_defcon_level -1] * 100
 		return percentage
@@ -90,7 +90,7 @@ var/global/datum/controller/defcon/defcon_controller
 		return can_purchase
 
 	for(var/str in GLOB.defcon_reward_list)
-		if (can_purchase_reward(GLOB.defcon_reward_list[str]))
+		if(can_purchase_reward(GLOB.defcon_reward_list[str]))
 			can_purchase += str //can purchase!
 
 	return can_purchase
@@ -223,7 +223,7 @@ var/global/datum/controller/defcon/defcon_controller
 	announcement_message = "Additional troops are being taken out of cryo."
 
 /datum/defcon_reward/cryo_squad/apply_reward(var/datum/controller/defcon/d)
-	if (!SSticker.mode)
+	if(!SSticker.mode)
 		return
 
 	. = ..()

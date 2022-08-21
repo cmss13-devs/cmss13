@@ -49,7 +49,7 @@
 	ghostvision = !ghostvision
 	if(hud_used)
 		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
-		if (lighting)
+		if(lighting)
 			lighting.alpha = ghostvision? 255 : 0
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
 
@@ -552,7 +552,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		dest += getmobs() //Fill list, prompt user with list
 		target = tgui_input_list(usr, "Please, select a player!", "Jump to Mob", dest)
 
-		if (!target)//Make sure we actually have a target
+		if(!target)//Make sure we actually have a target
 			return
 		else
 			var/mob/M = dest[target] //Destination mob
@@ -580,7 +580,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(usr, /mob/dead/observer)) return
 
 	// Shamelessly copied from the Gas Analyzers
-	if (!( istype(loc, /turf) ))
+	if(!( istype(loc, /turf) ))
 		return
 
 	var/turf/T = loc
@@ -636,7 +636,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Self Visibility"
 	set category = "Ghost.Settings"
 
-	if (alpha)
+	if(alpha)
 		alpha = 0
 	else
 		alpha = initial(alpha)
@@ -682,7 +682,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Xeno"
 	set desc = "Select an alive but logged-out Xenomorph to rejoin the game."
 
-	if (!client)
+	if(!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -697,7 +697,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join as Zombie"
 	set desc = "Select an alive but logged-out Zombie to rejoin the game."
 
-	if (!client)
+	if(!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -830,7 +830,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join the Hunt"
 	set desc = "If you are whitelisted, and it is the right type of round, join in."
 
-	if (!client)
+	if(!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -870,7 +870,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	target = tgui_input_list(usr, "Please, select a contestant!", "Cake Time", mobs)
 
-	if (!target)//Make sure we actually have a target
+	if(!target)//Make sure we actually have a target
 		return
 	else
 		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))

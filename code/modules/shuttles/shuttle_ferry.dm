@@ -22,7 +22,7 @@
 	var/last_locked = 0 //world.time value to determine if it can be contested
 	var/door_override = 0 //similar to queen_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
-	
+
 	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
@@ -53,8 +53,8 @@
 /datum/shuttle/ferry/move(var/area/origin,var/area/destination)
 	..(origin, destination)
 
-	if (destination == area_station) location = 0
-	if (destination == area_offsite) location = 1
+	if(destination == area_station) location = 0
+	if(destination == area_offsite) location = 1
 	//if this is a long_jump retain the location we were last at until we get to the new one
 
 /datum/shuttle/ferry/dock()
@@ -62,10 +62,10 @@
 	last_dock_attempt_time = world.time
 
 /datum/shuttle/ferry/proc/get_location_area(location_id = null)
-	if (isnull(location_id))
+	if(isnull(location_id))
 		location_id = location
 
-	if (!location_id)
+	if(!location_id)
 		return area_station
 	return area_offsite
 
@@ -82,41 +82,41 @@
 /datum/shuttle/ferry/process()
 
 	switch(process_state)
-		if (WAIT_LAUNCH)
+		if(WAIT_LAUNCH)
 			if(!preflight_checks())
 				announce_preflight_failure()
 				process_state = SHUTTLE_IDLE
 				return .
-			if (skip_docking_checks() || docking_controller.can_launch())
-				if (move_time && area_transition)
+			if(skip_docking_checks() || docking_controller.can_launch())
+				if(move_time && area_transition)
 					long_jump(interim=area_transition, travel_time=move_time, direction=transit_direction)
 				else
 					short_jump()
 
 				process_state = WAIT_ARRIVE
 
-		if (FORCE_LAUNCH)
-			if (move_time && area_transition)
+		if(FORCE_LAUNCH)
+			if(move_time && area_transition)
 				long_jump(interim=area_transition, travel_time=move_time, direction=transit_direction)
 			else
 				short_jump()
 
 			process_state = WAIT_ARRIVE
 
-		if (WAIT_ARRIVE)
-			if (moving_status == SHUTTLE_IDLE)
+		if(WAIT_ARRIVE)
+			if(moving_status == SHUTTLE_IDLE)
 				dock()
 				in_use = null	//release lock
 				process_state = WAIT_FINISH
 
-		if (WAIT_FINISH)
-			if (skip_docking_checks() || docking_controller.docked() || world.time > last_dock_attempt_time + DOCK_ATTEMPT_TIMEOUT)
+		if(WAIT_FINISH)
+			if(skip_docking_checks() || docking_controller.docked() || world.time > last_dock_attempt_time + DOCK_ATTEMPT_TIMEOUT)
 				process_state = IDLE_STATE
 				arrived()
 
 /datum/shuttle/ferry/current_dock_target()
 	var/dock_target
-	if (!location)	//station
+	if(!location)	//station
 		dock_target = dock_target_station
 	else
 		dock_target = dock_target_offsite
@@ -124,7 +124,7 @@
 
 
 /datum/shuttle/ferry/proc/launch(var/user)
-	if (!can_launch()) return
+	if(!can_launch()) return
 
 	in_use = user	//obtain an exclusive lock on the shuttle
 	locked = 1
@@ -133,20 +133,20 @@
 	undock()
 
 /datum/shuttle/ferry/proc/force_launch(var/user)
-	if (!can_force()) return
+	if(!can_force()) return
 
 	in_use = user	//obtain an exclusive lock on the shuttle
 
 	process_state = FORCE_LAUNCH
 
 /datum/shuttle/ferry/proc/cancel_launch(var/user)
-	if (!can_cancel()) return
+	if(!can_cancel()) return
 
 	moving_status = SHUTTLE_IDLE
 	process_state = WAIT_FINISH
 	in_use = null
 
-	if (docking_controller && !docking_controller.undocked())
+	if(docking_controller && !docking_controller.undocked())
 		docking_controller.force_undock()
 
 	addtimer(CALLBACK(src, .proc/dock), 10)
@@ -154,17 +154,17 @@
 	return
 
 /datum/shuttle/ferry/proc/can_launch()
-	if(moving_status != SHUTTLE_IDLE || locked || in_use) 
+	if(moving_status != SHUTTLE_IDLE || locked || in_use)
 		return FALSE
 	return TRUE
 
 /datum/shuttle/ferry/proc/can_force()
-	if (moving_status == SHUTTLE_IDLE && process_state == WAIT_LAUNCH)
+	if(moving_status == SHUTTLE_IDLE && process_state == WAIT_LAUNCH)
 		return 1
 	return 0
 
 /datum/shuttle/ferry/proc/can_cancel()
-	if (moving_status == SHUTTLE_WARMUP || process_state == WAIT_LAUNCH || process_state == FORCE_LAUNCH)
+	if(moving_status == SHUTTLE_WARMUP || process_state == WAIT_LAUNCH || process_state == FORCE_LAUNCH)
 		return 1
 	return 0
 

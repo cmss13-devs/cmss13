@@ -83,12 +83,12 @@
 
 	// Checks whether other other can be merged into src.
 	proc/can_merge(var/datum/wound/other)
-		if (other.type != src.type) return 0
-		if (other.current_stage != src.current_stage) return 0
-		if (other.damage_type != src.damage_type) return 0
-		if (!(other.can_autoheal()) != !(src.can_autoheal())) return 0
-		if (!(other.bandaged) != !(src.bandaged)) return 0
-		if (!(other.salved) != !(src.salved)) return 0
+		if(other.type != src.type) return 0
+		if(other.current_stage != src.current_stage) return 0
+		if(other.damage_type != src.damage_type) return 0
+		if(!(other.can_autoheal()) != !(src.can_autoheal())) return 0
+		if(!(other.bandaged) != !(src.bandaged)) return 0
+		if(!(other.salved) != !(src.salved)) return 0
 		return 1
 
 	proc/merge_wound(var/datum/wound/other)
@@ -131,17 +131,17 @@
 	// returns whether this wound can absorb the given amount of damage.
 	// this will prevent large amounts of damage being trapped in less severe wound types
 	proc/can_worsen(damage_type, damage)
-		if (src.damage_type != damage_type)
+		if(src.damage_type != damage_type)
 			return 0	//incompatible damage types
 
-		if (src.amount > 1)
+		if(src.amount > 1)
 			return 0
 
 		//with 1.5*, a shallow cut will be able to carry at most 30 damage,
 		//37.5 for a deep cut
 		//52.5 for a flesh wound, etc.
 		var/max_wound_damage = 1.5*src.damage_list[1]
-		if (src.damage + damage > max_wound_damage)
+		if(src.damage + damage > max_wound_damage)
 			return 0
 
 		return 1

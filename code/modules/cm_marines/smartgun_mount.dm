@@ -163,7 +163,7 @@
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
@@ -238,7 +238,7 @@
 
 /obj/structure/machinery/m56d_post/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //Making so rockets don't hit M56D
@@ -684,7 +684,7 @@
 	var/turf/T = get_turf(src)
 	var/turf/U = get_turf(target)
 
-	if (!istype(T) || !istype(U))
+	if(!istype(T) || !istype(U))
 		return
 
 	if(load_into_chamber() == 1)
@@ -717,7 +717,7 @@
 /obj/structure/machinery/m56d_hmg/proc/get_scatter(shots_fired = 1)
 	var/total_scatter_angle = in_chamber.ammo.scatter
 
-	if (shots_fired > 1)
+	if(shots_fired > 1)
 		total_scatter_angle += burst_scatter_mult * (shots_fired -1)
 	return total_scatter_angle
 
@@ -921,9 +921,9 @@
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
-	if (isobserver(user)) return
+	if(isobserver(user)) return
 
-	if (mods["ctrl"])
+	if(mods["ctrl"])
 		if(operator != user) return //only the operatore can toggle fire mode
 		burst_fire = !burst_fire
 		to_chat(user, SPAN_NOTICE("You set [src] to [burst_fire ? "burst fire" : "single fire"] mode."))
@@ -1199,7 +1199,7 @@
 		to_chat(user, SPAN_DANGER("[src]'s barrel is terribly hot, but is still able to fire."))
 	else if(overheat_value  >= M2C_OVERHEAT_OK)
 		to_chat(user, SPAN_DANGER("[src]'s barrel is pretty hot, although it's still stable."))
-	else if (overheat_value > 0)
+	else if(overheat_value > 0)
 		to_chat(user, SPAN_WARNING("[src]'s barrel is mildly warm."))
 
 	update_icon()
@@ -1436,9 +1436,9 @@
 // TOGGLE MODE
 
 /obj/structure/machinery/m56d_hmg/auto/clicked(var/mob/user, var/list/mods, var/atom/A)
-	if (isobserver(user)) return
+	if(isobserver(user)) return
 
-	if (mods["ctrl"])
+	if(mods["ctrl"])
 		if(operator != user) return
 		to_chat(user, SPAN_NOTICE("You try to toggle a burst-mode on the M2C, but realize that it doesn't exist."))
 		return
@@ -1503,7 +1503,7 @@
 			HMG.set_name_label(name_label)
 			HMG.rounds = src.rounds
 			HMG.overheat_value = round(0.5 * src.overheat_value)
-			if (HMG.overheat_value <= 10)
+			if(HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()
 			HMG.health = health

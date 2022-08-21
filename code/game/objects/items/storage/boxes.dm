@@ -438,7 +438,7 @@
 	icon_state = "syringe"
 
 /obj/item/storage/box/quickclot/fill_preset_inventory()
-	for (var/i; i < 7; i++)
+	for(var/i; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 
 /obj/item/storage/box/lights

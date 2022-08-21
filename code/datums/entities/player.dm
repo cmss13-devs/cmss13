@@ -77,7 +77,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 	if(note_category == NOTE_ADMIN || is_confidential)
-		if (!AHOLD_IS_MOD(admin.admin_holder))
+		if(!AHOLD_IS_MOD(admin.admin_holder))
 			return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -123,7 +123,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
@@ -141,7 +141,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
@@ -180,7 +180,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(!is_time_banned)
@@ -209,7 +209,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
@@ -271,7 +271,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!admin || !admin.player_data)
 		return FALSE
 
-	if (!AHOLD_IS_MOD(admin.admin_holder))
+	if(!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
 	var/safe_rank = ckey(rank)
@@ -491,9 +491,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			return FALSE
 		time_ban_admin.sync()
 		var/timeleftstring
-		if (time_left >= 1440) //1440 = 1 day in minutes
+		if(time_left >= 1440) //1440 = 1 day in minutes
 			timeleftstring = "[round(time_left / 1440, 0.1)] Days"
-		else if (time_left >= 60) //60 = 1 hour in minutes
+		else if(time_left >= 60) //60 = 1 hour in minutes
 			timeleftstring = "[round(time_left / 60, 0.1)] Hours"
 		else
 			timeleftstring = "[time_left] Minutes"
@@ -564,14 +564,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	Banlist.cd = "/base"
 
-	for (var/A in Banlist.dir)
+	for(var/A in Banlist.dir)
 		Banlist.cd = "/base/[A]"
 
 		if(ckey != Banlist["key"])
 			continue
 
 		if(Banlist["temp"])
-			if (!GetExp(Banlist["minutes"]))
+			if(!GetExp(Banlist["minutes"]))
 				return
 
 		if(expiration > Banlist["minutes"])

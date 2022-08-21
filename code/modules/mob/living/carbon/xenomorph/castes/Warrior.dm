@@ -59,14 +59,14 @@
 
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		icon_state = "[mutation_type] Warrior Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
 			icon_state = "[mutation_type] Warrior Sleeping"
 		else
 			icon_state = "[mutation_type] Warrior Knocked Down"
-	else if (agility)
+	else if(agility)
 		icon_state = "[mutation_type] Warrior Agility"
 	else
 		icon_state = "[mutation_type] Warrior Running"
@@ -86,7 +86,7 @@
 	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
-	if (!check_state() || agility)
+	if(!check_state() || agility)
 		return FALSE
 
 	if(!isliving(AM))

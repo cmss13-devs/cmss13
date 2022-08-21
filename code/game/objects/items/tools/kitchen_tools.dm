@@ -30,7 +30,7 @@
 
 /obj/item/tool/kitchen/utensil/Initialize()
 	. = ..()
-	if (prob(60))
+	if(prob(60))
 		src.pixel_y = rand(0, 4)
 
 	create_reagents(5)
@@ -43,7 +43,7 @@
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 
-	if (reagents.total_volume > 0)
+	if(reagents.total_volume > 0)
 		reagents.set_source_mob(user)
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)

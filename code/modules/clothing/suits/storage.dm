@@ -24,7 +24,7 @@
 		..(user)
 
 /obj/item/clothing/suit/storage/MouseDrop(obj/over_object)
-	if (pockets.handle_mousedrop(usr, over_object))
+	if(pockets.handle_mousedrop(usr, over_object))
 		..(over_object)
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W, mob/user)
@@ -55,7 +55,7 @@
 
 // Decides the storage flags when Switch Storage Draw Method gets called
 /obj/item/storage/proc/storage_draw_logic(var/name)
-	if (!(storage_flags & STORAGE_USING_DRAWING_METHOD))
+	if(!(storage_flags & STORAGE_USING_DRAWING_METHOD))
 		storage_flags |= STORAGE_USING_DRAWING_METHOD
 		to_chat(usr, "Clicking [name] with an empty hand now puts the last stored item in your hand.")
 	else if(!(storage_flags & STORAGE_USING_FIFO_DRAWING))

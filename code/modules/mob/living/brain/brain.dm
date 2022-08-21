@@ -21,22 +21,22 @@
 	. = ..()
 
 /mob/living/brain/say_understands(var/mob/other)//Goddamn is this hackish, but this say code is so odd
-	if (isAI(other))
+	if(isAI(other))
 		if(!(container && istype(container, /obj/item/device/mmi)))
 			return 0
 		else
 			return 1
-	if (istype(other, /mob/living/silicon/decoy))
+	if(istype(other, /mob/living/silicon/decoy))
 		if(!(container && istype(container, /obj/item/device/mmi)))
 			return 0
 		else
 			return 1
-	if (isrobot(other))
+	if(isrobot(other))
 		if(!(container && istype(container, /obj/item/device/mmi)))
 			return 0
 		else
 			return 1
-	if (istype(other, /mob/living/carbon/human))
+	if(istype(other, /mob/living/carbon/human))
 		return 1
 	return ..()
 
@@ -50,13 +50,13 @@
 
 
 /mob/living/brain/update_sight()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		sight |= SEE_TURFS
 		sight |= SEE_MOBS
 		sight |= SEE_OBJS
 		see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-	else if (stat != DEAD)
+	else if(stat != DEAD)
 		sight &= ~SEE_TURFS
 		sight &= ~SEE_MOBS
 		sight &= ~SEE_OBJS

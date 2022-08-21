@@ -57,9 +57,9 @@
 					break
 
 	if(speaking && !forced)
-		if (copytext(message,1,2) == ";")
+		if(copytext(message,1,2) == ";")
 			message = trim(copytext(message,2))
-		else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
+		else if(copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
 			message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))
@@ -111,7 +111,7 @@
 	var/ghostrend
 	var/rendered
 
-	for (var/mob/S in GLOB.player_list)
+	for(var/mob/S in GLOB.player_list)
 		var/hear_hivemind = 0
 		if(ishuman(S))
 			var/mob/living/carbon/human/Hu = S

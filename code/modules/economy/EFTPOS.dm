@@ -116,9 +116,9 @@
 			scan_card(I)
 		else
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to connect to linked account.")]")
-	else if (istype(O, /obj/item/spacecash/ewallet))
+	else if(istype(O, /obj/item/spacecash/ewallet))
 		var/obj/item/spacecash/ewallet/E = O
-		if (linked_account)
+		if(linked_account)
 			if(!linked_account.suspended)
 				if(transaction_locked && !transaction_paid)
 					if(transaction_amount <= E.worth)
@@ -194,7 +194,7 @@
 					transaction_amount = try_num
 			if("toggle_lock")
 				if(transaction_locked)
-					if (transaction_paid)
+					if(transaction_paid)
 						transaction_locked = 0
 						transaction_paid = 0
 					else
@@ -209,14 +209,14 @@
 			if("scan_card")
 				if(linked_account)
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card))
+					if(istype(I, /obj/item/card))
 						scan_card(I)
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to link accounts.")]")
 			if("reset")
 				//reset the access code - requires HoP/captain access
 				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card))
+				if(istype(I, /obj/item/card))
 					var/obj/item/card/id/C = I
 					if(ACCESS_MARINE_LOGISTICS in C.access)
 						access_code = 0
@@ -225,7 +225,7 @@
 	src.attack_self(usr)
 
 /obj/item/device/eftpos/proc/scan_card(var/obj/item/card/I)
-	if (istype(I, /obj/item/card/id))
+	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		if(transaction_locked && !transaction_paid)

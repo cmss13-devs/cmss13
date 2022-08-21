@@ -16,12 +16,12 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		jobban_keylist[.] = list()
 
 /proc/jobban_fullban(mob/M, rank, reason)
-	if (!M || !M.ckey) return
+	if(!M || !M.ckey) return
 	rank = check_jobban_path(rank)
 	jobban_keylist[rank][M.ckey] = reason
 
 /proc/jobban_client_fullban(ckey, rank)
-	if (!ckey || !rank) return
+	if(!ckey || !rank) return
 	rank = check_jobban_path(rank)
 	jobban_keylist[rank][ckey] = "Reason Unspecified"
 
@@ -53,7 +53,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	log_admin("Loading jobban_rank")
 	S["runonce"] >> jobban_runonce
 
-	if (!length(jobban_keylist))
+	if(!length(jobban_keylist))
 		jobban_keylist=list()
 		log_admin("jobban_keylist was empty")
 

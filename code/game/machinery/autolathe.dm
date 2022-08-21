@@ -79,8 +79,8 @@
 	update_printable()
 
 /obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if (HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
-		if (!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
 		panel_open = !panel_open
@@ -88,7 +88,7 @@
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance hatch of [src].")
 		return
 
-	if (panel_open)
+	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
 		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 			attack_hand(user)
@@ -99,12 +99,12 @@
 			dismantle()
 			return
 
-	if (stat)
+	if(stat)
 		return
 
 	//Resources are being loaded.
 	var/obj/item/eating = O
-	if (!eating.matter)
+	if(!eating.matter)
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
 
@@ -148,10 +148,10 @@
 
 	flick("[base_state]_o",src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
 
-	if (istype(eating,/obj/item/stack))
+	if(istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
 		stack.use(max(1,round(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
-	else if (user.temp_drop_inv_item(O))
+	else if(user.temp_drop_inv_item(O))
 		qdel(O)
 
 	update_printable()
@@ -159,17 +159,17 @@
 	return TRUE //so the item's afterattack isn't called
 
 /obj/structure/machinery/autolathe/process()
-	if (seconds_electrified > 0)
+	if(seconds_electrified > 0)
 		seconds_electrified--
 
-	if (seconds_electrified <= 0)
+	if(seconds_electrified <= 0)
 		stop_processing()
 
 /obj/structure/machinery/autolathe/attack_hand(var/mob/user)
-	if (stat)
+	if(stat)
 		return
 
-	if (seconds_electrified != 0)
+	if(seconds_electrified != 0)
 		shock(user, 50)
 
 	user.set_interaction(src)
@@ -182,7 +182,7 @@
 	usr.set_interaction(src)
 	add_fingerprint(usr)
 
-	if (href_list["change_category"])
+	if(href_list["change_category"])
 		var/choice = tgui_input_list(usr, "Which category do you wish to display?", "Category Selection", categories+"All")
 		if(!choice)
 			return
@@ -191,21 +191,21 @@
 		updateUsrDialog()
 		return
 
-	else if (href_list["cancel"])
+	else if(href_list["cancel"])
 		var/index = text2num(href_list["index"])
-		if (index < 1 || index > queue.len)
+		if(index < 1 || index > queue.len)
 			return
 
 		var/list/to_del = queue[index]
 		var/datum/autolathe/recipe/making = to_del[1]
 		var/multiplier = to_del[2]
 
-		if (making.name != href_list["name"])
+		if(making.name != href_list["name"])
 			return
-		else if (multiplier != text2num(href_list["multiplier"]))
+		else if(multiplier != text2num(href_list["multiplier"]))
 			return
 
-		for (var/material in making.resources)
+		for(var/material in making.resources)
 			projected_stored_material[material] = min(projected_stored_material[material]+(making.resources[material]*multiplier), storage_capacity[material])
 
 		to_chat(usr, SPAN_NOTICE("Removed the item \the [making.name] from the queue."))
@@ -214,70 +214,70 @@
 		updateUsrDialog()
 		return
 
-	else if (href_list["make"] && recipes)
+	else if(href_list["make"] && recipes)
 		var/index = text2num(href_list["make"])
 		var/multiplier = text2num(href_list["multiplier"])
 		var/datum/autolathe/recipe/making
 
-		if (!ishuman(usr))
+		if(!ishuman(usr))
 			return
 
 		if(!initial(make_loc))
 			make_loc = get_step(loc, get_dir(src,usr))
 
-		if (index > 0 && index <= recipes.len)
+		if(index > 0 && index <= recipes.len)
 			making = recipes[index]
 
 		//Exploit detection, not sure if necessary after rewrite.
-		if (!making || multiplier < 0 || multiplier > 100)
+		if(!making || multiplier < 0 || multiplier > 100)
 			var/turf/exploit_loc = get_turf(usr)
 			message_staff("[key_name_admin(usr)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])")
 			return
 
-		if (making.is_stack)
-			if (try_queue(usr, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
+		if(making.is_stack)
+			if(try_queue(usr, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
 				start_printing()
 			return
 
-		for (var/i in 1 to multiplier)
+		for(var/i in 1 to multiplier)
 			var/result = try_queue(usr, making, make_loc)
 			switch (result)
-				if (AUTOLATHE_FAILED)
+				if(AUTOLATHE_FAILED)
 					return
-				if (AUTOLATHE_START_PRINTING)
+				if(AUTOLATHE_START_PRINTING)
 					start_printing()
 		updateUsrDialog()
 		return
 
-	else if ((href_list["cutwire"]) && (panel_open))
+	else if((href_list["cutwire"]) && (panel_open))
 		var/wire = text2num(href_list["cutwire"])
 
-		if (!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 			return
 		var/obj/item/held_item = usr.get_held_item()
-		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+		if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 			to_chat(usr, "You need wirecutters!")
 			return
 
-		if (isWireCut(wire))
+		if(isWireCut(wire))
 			mend(wire, usr)
 		else
 			cut(wire, usr)
 
-	else if ((href_list["pulsewire"]) && (panel_open))
+	else if((href_list["pulsewire"]) && (panel_open))
 		var/wire = text2num(href_list["pulsewire"])
 
-		if (!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 			return 0
 
 		var/obj/item/held_item = usr.get_held_item()
-		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+		if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			to_chat(usr, "You need a multitool!")
 			return
 
-		if (isWireCut(wire))
+		if(isWireCut(wire))
 			to_chat(usr, "You can't pulse a cut wire.")
 			return
 		else
@@ -294,7 +294,7 @@
 		storage_capacity[material] = tot_rating  * 30000
 
 /obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
-	if (queue.len >= queue_max)
+	if(queue.len >= queue_max)
 		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
@@ -308,13 +308,13 @@
 		to_chat(user, SPAN_DANGER("The [name] does not have the materials to create \the [making.name]."))
 		return AUTOLATHE_FAILED
 
-	for (var/material in making.resources)
+	for(var/material in making.resources)
 		projected_stored_material[material] = max(0, projected_stored_material[material]-(making.resources[material]*multiplier))
 
 	var/list/print_params = list(making, multiplier, make_loc)
 	queue += list(print_params) // This notation is necessary because of how adding to lists works
 
-	if (busy)
+	if(busy)
 		to_chat(usr, SPAN_NOTICE("Added the item \"[making.name]\" to the queue."))
 		update_printable()
 		return AUTOLATHE_QUEUED
@@ -328,7 +328,7 @@
 
 	busy = TRUE
 
-	while (queue.len)
+	while(queue.len)
 		print_params = queue[1]
 		queue -= list(print_params)
 		print_item(arglist(print_params))
@@ -380,11 +380,11 @@
 	wires ^= getWireFlag(wire)
 
 	switch (wire)
-		if (AUTOLATHE_WIRE_HACK)
+		if(AUTOLATHE_WIRE_HACK)
 			hacked = TRUE
 			visible_message(SPAN_NOTICE("A blue light turns on in the panel of \the [src]."))
 			update_printable()
-		if (AUTOLATHE_WIRE_SHOCK)
+		if(AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = -1
 			visible_message(SPAN_DANGER("A green light turns on in the panel of \the [src] \
@@ -394,26 +394,26 @@
 	wires |= getWireFlag(wire)
 
 	switch (wire)
-		if (AUTOLATHE_WIRE_HACK)
+		if(AUTOLATHE_WIRE_HACK)
 			hacked = FALSE
 			visible_message(SPAN_NOTICE("A blue light turns off in the panel of \the [src]."))
 			update_printable()
-		if (AUTOLATHE_WIRE_SHOCK)
+		if(AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = 0
 			visible_message(SPAN_DANGER("A green light turns off in the panel of \the [src]."))
 
 /obj/structure/machinery/autolathe/proc/pulse(var/wire, var/mob/user)
 	switch (wire)
-		if (AUTOLATHE_WIRE_HACK)
+		if(AUTOLATHE_WIRE_HACK)
 			hacked = !hacked
 			visible_message(SPAN_NOTICE("A blue light flickers [hacked ? "on" : "off"] in the panel of \the [src]."))
 			update_printable()
 			addtimer(CALLBACK(src, .proc/flip_hacked), 10 SECONDS)
-		if (AUTOLATHE_WIRE_SHOCK)
+		if(AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = 10
-			if (!machine_processing)
+			if(!machine_processing)
 				start_processing()
 			visible_message(SPAN_DANGER("A green light flashes in the panel of \the [src] \
 				as electric arcs shoot off from it!"))
@@ -432,7 +432,7 @@
 	for(var/datum/autolathe/recipe/R in recipes)
 		index++
 
-		if (R.hidden && !hacked || (show_category != "All" && show_category != R.category))
+		if(R.hidden && !hacked || (show_category != "All" && show_category != R.category))
 			continue
 
 		var/list/print_data = list()
@@ -447,46 +447,46 @@
 
 		max_print_amt = -1
 
-		if (!R.resources || !R.resources.len)
+		if(!R.resources || !R.resources.len)
 			print_data["materials"] = "No resources required"
 		else
 			//Make sure it's buildable and list requires resources.
-			for (var/material in R.resources)
-				if (isnull(projected_stored_material[material]) || projected_stored_material[material] < R.resources[material])
+			for(var/material in R.resources)
+				if(isnull(projected_stored_material[material]) || projected_stored_material[material] < R.resources[material])
 					print_data["can_make"] = FALSE
 					max_print_amt = 0
 				else
 					print_amt = round(projected_stored_material[material]/R.resources[material])
 
-				if (print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
+				if(print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
 					max_print_amt = print_amt
 
 				print_data["materials"][material] = "[R.resources[material]] [material]"
 
-			if (print_data["can_make"] && max_print_amt > 1)
+			if(print_data["can_make"] && max_print_amt > 1)
 				print_data["has_multipliers"] = TRUE
 				print_data["multipliers"] = list()
 
 				var/max = max_print_amt
 
-				if (R.is_stack)
-					for (var/i = 5; i < max_print_amt; i += i) //5,10,20,40...
+				if(R.is_stack)
+					for(var/i = 5; i < max_print_amt; i += i) //5,10,20,40...
 						print_data["multipliers"]["[i]"] =  i
 				else
 					max = min(max_print_amt, queue_max)
-					for (var/i in 2 to (max - 1))
+					for(var/i in 2 to (max - 1))
 						print_data["multipliers"]["[i]"] =  i
 				print_data["multipliers"]["[max]"] = max
 
 		printable += list(print_data)
 
 /obj/structure/machinery/autolathe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	if (!ishuman(user))
+	if(!ishuman(user))
 		return
 
 	var/list/queue_list = list()
 	var/i = 1
-	for (var/params in queue)
+	for(var/params in queue)
 		var/datum/autolathe/recipe/making = params[1]
 		var/multiplier = params[2]
 		queue_list += list(list("name" = making.name, "index" = i++, "multiplier" = multiplier))
@@ -510,7 +510,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "autolathe.tmpl", "[name] Control Panel" , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()

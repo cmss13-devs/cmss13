@@ -101,21 +101,21 @@
 		angle+=360
 
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
-		if (22.5 to 67.5)
+		if(22.5 to 67.5)
 			return NORTHEAST
-		if (112.5 to 157.5)
+		if(112.5 to 157.5)
 			return SOUTHEAST
-		if (202.5 to 247.5)
+		if(202.5 to 247.5)
 			return SOUTHWEST
-		if (292.5 to 337.5)
+		if(292.5 to 337.5)
 			return NORTHWEST
-		if (0 to 22.5)
+		if(0 to 22.5)
 			return NORTH
-		if (67.5 to 112.5)
+		if(67.5 to 112.5)
 			return EAST
-		if (157.5 to 202.5)
+		if(157.5 to 202.5)
 			return SOUTH
-		if (247.5 to 292.5)
+		if(247.5 to 292.5)
 			return WEST
 		else
 			return NORTH
@@ -127,11 +127,11 @@
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
 /proc/LinkBlocked(var/atom/movable/mover, var/turf/start_turf, var/turf/target_turf, var/list/atom/forget)
-	if (!mover)
+	if(!mover)
 		return null
 
 	var/fdir = get_dir(start_turf, target_turf)
-	if (!fdir)
+	if(!fdir)
 		return null
 
 
@@ -146,66 +146,66 @@
 	var/atom/A
 
 	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
-	for (obstacle in start_turf) //First, check objects to block exit
-		if (mover == obstacle || (obstacle in forget))
+	for(obstacle in start_turf) //First, check objects to block exit
+		if(mover == obstacle || (obstacle in forget))
 			continue
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+		if(!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedExitDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
 	// Check for atoms in adjacent turf EAST/WEST
-	if (fd1 && fd1 != fdir)
+	if(fd1 && fd1 != fdir)
 		T = get_step(start_turf, fd1)
-		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
+		if(T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 			blocking_dir |= fd1
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 				return T
-		for (obstacle in T)
+		for(obstacle in T)
 			if(obstacle in forget)
 				continue
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			if(!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
 			A = obstacle
-			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+			if(A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					return A
 				break
 
 	// Check for atoms in adjacent turf NORTH/SOUTH
-	if (fd2 && fd2 != fdir)
+	if(fd2 && fd2 != fdir)
 		T = get_step(start_turf, fd2)
-		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
+		if(T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 			blocking_dir |= fd2
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 				return T
-		for (obstacle in T)
+		for(obstacle in T)
 			if(obstacle in forget)
 				continue
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			if(!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
 			A = obstacle
-			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+			if(A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					return A
 				break
 
 	// Check the turf itself
 	blocking_dir |= target_turf.BlockedPassDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		return target_turf
-	for (obstacle in target_turf) // Finally, check atoms in the target turf
+	for(obstacle in target_turf) // Finally, check atoms in the target turf
 		if(obstacle in forget)
 			continue
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+		if(!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf
@@ -224,7 +224,7 @@
 
 //Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
-	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
+	if(findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
 		return 0
 
 	var/i = 7, ch, len = length(key)
@@ -232,9 +232,9 @@
 	if(copytext(key, 7, 8) == "W") //webclient
 		i++
 
-	for (, i <= len, ++i)
+	for(, i <= len, ++i)
 		ch = text2ascii(key, i)
-		if (ch < 48 || ch > 57)
+		if(ch < 48 || ch > 57)
 			return 0
 	return 1
 
@@ -375,15 +375,15 @@
 			continue
 
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -398,7 +398,7 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
@@ -419,15 +419,15 @@
 	for(var/mob/M in mobs)
 		if(!isYautja(M)) continue
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -444,15 +444,15 @@
 		if(isYautja(M)) continue
 		if(iszombie(M))	continue
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -469,15 +469,15 @@
 		if(isYautja(M)) continue
 		if(iszombie(M))	continue
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -494,15 +494,15 @@
 		if(isYautja(M)) continue
 		if(iszombie(M))	continue
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -519,15 +519,15 @@
 		if(isYautja(M)) continue
 		if(iszombie(M))	continue
 		var/name = M.name
-		if (name in names)
+		if(name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
+		if(M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if(M.stat == 2)
 			name += " \[dead\]"
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
@@ -790,13 +790,13 @@
 	if(x < 1)
 		y += (1 - x) / ratio
 		x = 1
-	else if (x > world.maxx)
+	else if(x > world.maxx)
 		y += (world.maxx - x) / ratio
 		x = world.maxx
 	if(y < 1)
 		x += (1 - y) * ratio
 		y = 1
-	else if (y > world.maxy)
+	else if(y > world.maxy)
 		x += (world.maxy - y) * ratio
 		y = world.maxy
 
@@ -1158,7 +1158,7 @@ var/global/image/action_purple_power_up
 		T.resisting = FALSE
 	L.status_flags &= ~IMMOBILE_ACTION
 
-	if (show_remaining_time)
+	if(show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
 
 //Takes: Anything that could possibly have variables and a varname to check.
@@ -1234,13 +1234,13 @@ var/global/image/action_purple_power_up
 
 	var/src_min_x = 0
 	var/src_min_y = 0
-	for (var/turf/T in turfs_src)
+	for(var/turf/T in turfs_src)
 		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
 		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
-	for (var/turf/T in turfs_trg)
+	for(var/turf/T in turfs_trg)
 		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
 		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
 
@@ -1264,9 +1264,9 @@ var/global/image/action_purple_power_up
 	var/list/toupdate = new/list()
 
 	moving:
-		for (var/turf/T in refined_src)
+		for(var/turf/T in refined_src)
 			var/datum/coords/C_src = refined_src[T]
-			for (var/turf/B in refined_trg)
+			for(var/turf/B in refined_trg)
 				var/datum/coords/C_trg = refined_trg[B]
 				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
 
@@ -1275,7 +1275,7 @@ var/global/image/action_purple_power_up
 					var/old_icon1 = T.icon
 
 					var/turf/X = B.ChangeTurf(T.type)
-					if (X)
+					if(X)
 						X.setDir(old_dir1)
 						X.icon_state = old_icon_state1
 						X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
@@ -1371,23 +1371,23 @@ proc/get_perpen_dir(var/dir)
 
 /proc/parse_zone(zone)
 	if(zone == "r_hand") return "right hand"
-	else if (zone == "l_hand") return "left hand"
-	else if (zone == "l_arm") return "left arm"
-	else if (zone == "r_arm") return "right arm"
-	else if (zone == "l_leg") return "left leg"
-	else if (zone == "r_leg") return "right leg"
-	else if (zone == "l_foot") return "left foot"
-	else if (zone == "r_foot") return "right foot"
-	else if (zone == "l_hand") return "left hand"
-	else if (zone == "r_hand") return "right hand"
-	else if (zone == "l_foot") return "left foot"
-	else if (zone == "r_foot") return "right foot"
+	else if(zone == "l_hand") return "left hand"
+	else if(zone == "l_arm") return "left arm"
+	else if(zone == "r_arm") return "right arm"
+	else if(zone == "l_leg") return "left leg"
+	else if(zone == "r_leg") return "right leg"
+	else if(zone == "l_foot") return "left foot"
+	else if(zone == "r_foot") return "right foot"
+	else if(zone == "l_hand") return "left hand"
+	else if(zone == "r_hand") return "right hand"
+	else if(zone == "l_foot") return "left foot"
+	else if(zone == "r_foot") return "right foot"
 	else return zone
 
 proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
-		if (istype(subLoc.loc, /atom))
+		if(istype(subLoc.loc, /atom))
 			subLoc = subLoc.loc
 		else
 			return subLoc
@@ -1528,7 +1528,7 @@ var/list/WALLITEMS = list(
 		longest = abs(h)
 		shortest = abs(w)
 		if(h < 0) dy2 = -1
-		else if (h > 0) dy2 = 1
+		else if(h > 0) dy2 = 1
 		dx2 = 0
 
 	var/numerator = longest >> 1
@@ -1557,10 +1557,10 @@ var/list/WALLITEMS = list(
 
 //returns the number of ticks slept
 /proc/stoplag(initial_delay)
-	if (!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))
+	if(!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))
 		sleep(world.tick_lag)
 		return 1
-	if (!initial_delay)
+	if(!initial_delay)
 		initial_delay = world.tick_lag
 	. = 0
 	var/i = DS2TICKS(initial_delay)
@@ -1568,7 +1568,7 @@ var/list/WALLITEMS = list(
 		. += CEILING(i*DELTA_CALC, 1)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
-	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+	while(TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 
 #undef DELTA_CALC
 

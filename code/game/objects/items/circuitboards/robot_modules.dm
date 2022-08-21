@@ -360,7 +360,7 @@
 
 //checks whether this item is a module of the robot it is located in.
 /obj/item/proc/is_robot_module()
-	if (!isrobot(src.loc))
+	if(!isrobot(src.loc))
 		return 0
 
 	var/mob/living/silicon/robot/R = src.loc

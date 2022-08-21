@@ -43,7 +43,7 @@
 
 /obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER
 
 /obj/structure/platform/Collided(atom/movable/AM)
@@ -77,18 +77,18 @@ obj/structure/platform_decoration
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
 	switch(dir)
-		if (NORTH)
+		if(NORTH)
 			layer = ABOVE_MOB_LAYER+0.2
-		if (SOUTH)
+		if(SOUTH)
 			layer = ABOVE_MOB_LAYER+0.2
-		if (SOUTHEAST)
+		if(SOUTHEAST)
 			layer = ABOVE_MOB_LAYER+0.2
-		if (SOUTHWEST)
+		if(SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.2
 
 /obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER
 
 /obj/structure/platform_decoration/ex_act()

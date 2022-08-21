@@ -55,7 +55,7 @@
 		if(string_attached)
 			to_chat(user, SPAN_NOTICE("There already is a string attached to this coin."))
 			return
-		if (CC.use(1))
+		if(CC.use(1))
 			overlays += image('icons/obj/items/items.dmi',"coin_string_overlay")
 			string_attached = 1
 			to_chat(user, SPAN_NOTICE("You attach a string to the coin."))

@@ -76,7 +76,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
-			if (current_rounds > 0)
+			if(current_rounds > 0)
 				if(create_handful(user))
 					return
 			else to_chat(user, "[src] is empty. Nothing to grab.")
@@ -124,7 +124,7 @@ They're all essentially identical when it comes to getting the job done.
 //This will attempt to place the ammo in the user's hand if possible.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
 	var/amount_to_transfer
-	if (current_rounds > 0)
+	if(current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
 		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)

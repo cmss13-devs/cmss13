@@ -39,7 +39,7 @@
 
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 //Attack by item places it in to disposal
@@ -427,9 +427,9 @@
 		qdel(H)
 
 /obj/structure/machinery/disposal/hitby(atom/movable/mover)
-	if (!istype(mover, /obj/item))
+	if(!istype(mover, /obj/item))
 		return
-	if (prob(75))
+	if(prob(75))
 		mover.forceMove(src)
 		visible_message(SPAN_NOTICE("[mover] lands into [src]."))
 		//Something to flush, start processing!

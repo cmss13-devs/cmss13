@@ -127,6 +127,6 @@
 		to_chat(user, "That player hasn't been away long enough. Please wait [60 - away_timer] more seconds.")
 		return
 
-	if (alert(user, "Are you sure you want to transfer yourself into this Alien Larva?", "Confirmation", "Yes", "No") == "Yes")
+	if(alert(user, "Are you sure you want to transfer yourself into this Alien Larva?", "Confirmation", "Yes", "No") == "Yes")
 		src.client = user.client
 		return*/

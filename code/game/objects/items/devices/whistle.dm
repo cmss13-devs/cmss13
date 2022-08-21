@@ -28,7 +28,7 @@
 		..()
 
 /obj/item/device/whistle/proc/whistle_playsound(mob/user)
-	if (spamcheck)
+	if(spamcheck)
 		return
 
 	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
@@ -65,7 +65,7 @@
 /obj/item/device/hailer/attack_self(mob/living/carbon/user)
 	..()
 
-	if (spamcheck)
+	if(spamcheck)
 		return
 
 	playsound(get_turf(src), 'sound/voice/halt.ogg', 25, 1, vary = 0)

@@ -4,8 +4,8 @@
 
 /client/proc/vv_get_value(class, default_class, current_value, list/restricted_classes, list/extra_classes, list/classes, var_name)
 	. = list("class" = class, "value" = null)
-	if (!class)
-		if (!classes)
+	if(!class)
+		if(!classes)
 			classes = list (
 				VV_NUM,
 				VV_TEXT,
@@ -29,142 +29,142 @@
 
 		if(admin_holder?.marked_datum && !(VV_MARKED_DATUM in restricted_classes))
 			classes += "[VV_MARKED_DATUM] ([admin_holder.marked_datum.type])"
-		if (restricted_classes)
+		if(restricted_classes)
 			classes -= restricted_classes
 
-		if (extra_classes)
+		if(extra_classes)
 			classes += extra_classes
 
 		.["class"] = tgui_input_list(src, "What kind of data?", "Variable Type", classes)
-		if (admin_holder?.marked_datum && .["class"] == "[VV_MARKED_DATUM] ([admin_holder.marked_datum.type])")
+		if(admin_holder?.marked_datum && .["class"] == "[VV_MARKED_DATUM] ([admin_holder.marked_datum.type])")
 			.["class"] = VV_MARKED_DATUM
 
 
 	switch(.["class"])
-		if (VV_TEXT)
+		if(VV_TEXT)
 			.["value"] = input("Enter new text:", "Text", current_value) as null|text
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
-		if (VV_MESSAGE)
+		if(VV_MESSAGE)
 			.["value"] = input("Enter new text:", "Text", current_value) as null|message
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
-		if (VV_NUM)
+		if(VV_NUM)
 			.["value"] = input("Enter new number:", "Num", current_value) as null|num
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
-		if (VV_BITFIELD)
+		if(VV_BITFIELD)
 			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", var_name, current_value)
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
-		if (VV_ATOM_TYPE)
+		if(VV_ATOM_TYPE)
 			.["value"] = pick_closest_path(FALSE)
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
-		if (VV_DATUM_TYPE)
+		if(VV_DATUM_TYPE)
 			.["value"] = pick_closest_path(FALSE, get_fancy_list_of_datum_types())
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
-		if (VV_TYPE)
+		if(VV_TYPE)
 			var/type = current_value
 			var/error = ""
 			do
 				type = input("Enter type:[error]", "Type", type) as null|text
-				if (!type)
+				if(!type)
 					break
 				type = text2path(type)
 				error = "\nType not found, Please try again"
 			while(!type)
-			if (!type)
+			if(!type)
 				.["class"] = null
 				return
 			.["value"] = type
 
 
-		if (VV_ATOM_REFERENCE)
+		if(VV_ATOM_REFERENCE)
 			var/type = pick_closest_path(FALSE)
 			var/subtypes = vv_subtype_prompt(type)
-			if (subtypes == null)
+			if(subtypes == null)
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
 			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
-			if (!value)
+			if(!value)
 				.["class"] = null
 				return
 			.["value"] = things[value]
 
-		if (VV_DATUM_REFERENCE)
+		if(VV_DATUM_REFERENCE)
 			var/type = pick_closest_path(FALSE, get_fancy_list_of_datum_types())
 			var/subtypes = vv_subtype_prompt(type)
-			if (subtypes == null)
+			if(subtypes == null)
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
 			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
-			if (!value)
+			if(!value)
 				.["class"] = null
 				return
 			.["value"] = things[value]
 
-		if (VV_MOB_REFERENCE)
+		if(VV_MOB_REFERENCE)
 			var/type = pick_closest_path(FALSE, make_types_fancy(typesof(/mob)))
 			var/subtypes = vv_subtype_prompt(type)
-			if (subtypes == null)
+			if(subtypes == null)
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
 			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
-			if (!value)
+			if(!value)
 				.["class"] = null
 				return
 			.["value"] = things[value]
 
 
 
-		if (VV_CLIENT)
+		if(VV_CLIENT)
 			.["value"] = tgui_input_list(usr, "Select reference:", "Reference", current_value, GLOB.clients)
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
-		if (VV_FILE)
+		if(VV_FILE)
 			.["value"] = input("Pick file:", "File") as null|file
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
-		if (VV_ICON)
+		if(VV_ICON)
 			.["value"] = input("Pick icon:", "Icon") as null|icon
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
-		if (VV_MARKED_DATUM)
+		if(VV_MARKED_DATUM)
 			.["value"] = admin_holder.marked_datum
-			if (.["value"] == null)
+			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
-		if (VV_NEW_ATOM)
+		if(VV_NEW_ATOM)
 			var/type = pick_closest_path(FALSE)
-			if (!type)
+			if(!type)
 				.["class"] = null
 				return
 			.["type"] = type
@@ -172,9 +172,9 @@
 			newguy.datum_flags |= DF_VAR_EDITED
 			.["value"] = newguy
 
-		if (VV_NEW_DATUM)
+		if(VV_NEW_DATUM)
 			var/type = pick_closest_path(FALSE, get_fancy_list_of_datum_types())
-			if (!type)
+			if(!type)
 				.["class"] = null
 				return
 			.["type"] = type
@@ -182,17 +182,17 @@
 			newguy.datum_flags |= DF_VAR_EDITED
 			.["value"] = newguy
 
-		if (VV_NEW_TYPE)
+		if(VV_NEW_TYPE)
 			var/type = current_value
 			var/error = ""
 			do
 				type = input("Enter type:[error]", "Type", type) as null|text
-				if (!type)
+				if(!type)
 					break
 				type = text2path(type)
 				error = "\nType not found, Please try again"
 			while(!type)
-			if (!type)
+			if(!type)
 				.["class"] = null
 				return
 			.["type"] = type
@@ -202,7 +202,7 @@
 			.["value"] = newguy
 
 
-		if (VV_NEW_LIST)
+		if(VV_NEW_LIST)
 			.["value"] = list()
 			.["type"] = /list
 
@@ -261,10 +261,10 @@
 //TRUE = Yes subtypes
 //NULL = User cancelled at the prompt or invalid type given
 /client/proc/vv_subtype_prompt(type)
-	if (!ispath(type))
+	if(!ispath(type))
 		return null
 	var/list/subtypes = subtypesof(type)
-	if (!length(subtypes))
+	if(!length(subtypes))
 		return FALSE
 
 	switch(alert("Strict object type detection?", "Type detection", "Strictly this type","This type and subtypes", "Cancel"))
@@ -276,7 +276,7 @@
 /client/proc/vv_reference_list(type, subtypes)
 	. = list()
 	var/list/types = list(type)
-	if (subtypes)
+	if(subtypes)
 		types = typesof(type)
 
 	var/list/fancytypes = make_types_fancy(types)
@@ -295,12 +295,12 @@
 		//	fancy type with the base type removed from the begaining,
 		//	the type with the base type removed from the begaining
 		var/fancytype = types[D.type]
-		if (findtext(fancytype, types[type]))
+		if(findtext(fancytype, types[type]))
 			fancytype = copytext(fancytype, length(types[type]) + 1)
 		var/shorttype = copytext("[D.type]", length("[type]") + 1)
-		if (length_char(shorttype) > length_char(fancytype))
+		if(length_char(shorttype) > length_char(fancytype))
 			shorttype = fancytype
-		if (!length(shorttype))
+		if(!length(shorttype))
 			shorttype = "/"
 
 		.["[D]([shorttype])[REF(D)]#[i]"] = D
@@ -333,7 +333,7 @@
 			/mob/living = "LIVING",
 			/mob = "M"
 		)
-		for (var/tn in TYPES_SHORTCUTS)
+		for(var/tn in TYPES_SHORTCUTS)
 			if(copytext(typename, 1, length("[tn]/") + 1) == "[tn]/" /*findtextEx(typename,"[tn]/",1,2)*/ )
 				typename = TYPES_SHORTCUTS[tn] + copytext(typename, length("[tn]/"))
 				break
@@ -480,7 +480,7 @@ GLOBAL_LIST_EMPTY(bitfields)
 
 
 /datum/browser/modal/proc/wait()
-	while (opentime && selectedbutton <= 0 && (!timeout || opentime+timeout > world.time))
+	while(opentime && selectedbutton <= 0 && (!timeout || opentime+timeout > world.time))
 		stoplag(1)
 
 

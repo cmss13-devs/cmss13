@@ -21,10 +21,10 @@
 /obj/structure/machinery/hologram/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(5))
+			if(prob(5))
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
@@ -95,7 +95,7 @@ var/const/HOLOPAD_MODE = 0
 			to_chat(user, SPAN_NOTICE("A request for AI presence was already sent recently."))
 
 /obj/structure/machinery/hologram/holopad/attack_remote(mob/living/silicon/ai/user)
-	if (!istype(user))
+	if(!istype(user))
 		return
 	/*There are pretty much only three ways to interact here.
 	I don't need to check for client since they're clicking on an object.
@@ -166,7 +166,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 				if((HOLOPAD_MODE == 0 && (get_dist(master.eyeobj, src) <= holo_range)))
 					return 1
 
-				else if (HOLOPAD_MODE == 1)
+				else if(HOLOPAD_MODE == 1)
 
 					var/area/holo_area = get_area(src)
 					var/area/eye_area = get_area(master.eyeobj)

@@ -67,7 +67,7 @@
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
-	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
+	if(M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
 		return FALSE
 	else
 		return ..()
@@ -149,7 +149,7 @@
 	var/list/unpicked_targets = list()
 
 	for(var/a in 0 to (EXTINGUISHER_WATER_USE_AMT-1))
-		if (!unpicked_targets.len)
+		if(!unpicked_targets.len)
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
@@ -167,9 +167,9 @@
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)
-		if (!W || QDELETED(W))
+		if(!W || QDELETED(W))
 			return
-		else if (!W.reagents || get_turf(W) == T)
+		else if(!W.reagents || get_turf(W) == T)
 			break
 		W.reagents.reaction(get_turf(W))
 		for(var/atom/atm in get_turf(W))

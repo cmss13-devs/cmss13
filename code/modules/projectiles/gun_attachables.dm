@@ -1273,7 +1273,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/rifle/collapsible/New()
 	..()
-	
+
 	//rifle stock starts collapsed so we zero out everything
 	accuracy_mod = 0
 	recoil_mod = 0
@@ -1910,11 +1910,11 @@ Defined in conflicts.dm of the #defines folder.
 			qdel(temp)
 			if(AM)
 				AM.flamer_fire_act(0, cause_data)
-				if (AM.flags_atom & ON_BORDER)
+				if(AM.flags_atom & ON_BORDER)
 					break
 				stop_at_turf = TRUE
 		flame_turf(T, user)
-		if (stop_at_turf)
+		if(stop_at_turf)
 			break
 		distance++
 		prev_T = T

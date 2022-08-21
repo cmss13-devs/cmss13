@@ -6,9 +6,9 @@
 
 	if(devastation_range > 0)
 		power = 300
-	else if (heavy_impact_range > 0)
+	else if(heavy_impact_range > 0)
 		power = 220
-	else if (light_impact_range > 0)
+	else if(light_impact_range > 0)
 		power = 120
 	else
 		return

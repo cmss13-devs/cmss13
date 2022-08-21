@@ -29,7 +29,7 @@
 
 /obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/recharge_station/process()
@@ -135,7 +135,7 @@
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
 		var/doing_stuff = FALSE
-		if (isrobot(occupant))
+		if(isrobot(occupant))
 			var/mob/living/silicon/robot/R = occupant
 			if(R.module)
 				R.module.respawn_consumable(R)
@@ -150,7 +150,7 @@
 				doing_stuff = TRUE
 			else
 				update_use_power(1)
-		if (isrobot(occupant) || isSynth(occupant))
+		if(isrobot(occupant) || isSynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
@@ -173,7 +173,7 @@
 		return
 	//for(var/obj/O in src)
 	//	O.forceMove(src.loc)
-	if (src.occupant.client)
+	if(src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
@@ -189,7 +189,7 @@
 	set name = "Eject"
 
 	set src in oview(1)
-	if (usr.stat != 0)
+	if(usr.stat != 0)
 		return
 	src.go_out()
 	add_fingerprint(usr)
@@ -199,11 +199,11 @@
 	return move_mob_inside(target)
 
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
-	if (!isrobot(M) && !isSynth(M))
+	if(!isrobot(M) && !isSynth(M))
 		return FALSE
-	if (occupant)
+	if(occupant)
 		return FALSE
-	if (isrobot(M))
+	if(isrobot(M))
 		var/mob/living/silicon/robot/R = M
 		if(QDELETED(R.cell))
 			return FALSE
@@ -224,16 +224,16 @@
 	set name = "Move Inside"
 
 	set src in oview(1)
-	if (usr.stat == 2)
+	if(usr.stat == 2)
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
-	if (!isrobot(usr) && !isSynth(usr))
+	if(!isrobot(usr) && !isSynth(usr))
 		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
 		return
-	if (src.occupant)
+	if(src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
 		return
-	if (isrobot(usr))
+	if(isrobot(usr))
 		var/mob/living/silicon/robot/R = usr
 		if(QDELETED(R.cell))
 			to_chat(usr, SPAN_NOTICE("Without a powercell, you can't be recharged."))

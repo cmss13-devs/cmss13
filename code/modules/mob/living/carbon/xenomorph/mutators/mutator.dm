@@ -90,12 +90,12 @@
 
 // Substitutes the existing behavior delegate for the strain-defined one.
 /datum/xeno_mutator/proc/apply_behavior_holder(mob/living/carbon/Xenomorph/X)
-	if (!istype(X))
+	if(!istype(X))
 		log_debug("Null mob handed to apply_behavior_holder. Tell the devs.")
 		log_admin("Null mob handed to apply_behavior_holder. Tell the devs.")
 		message_admins("Null mob handed to apply_behavior_holder. Tell the devs.")
 
-	if (behavior_delegate_type)
+	if(behavior_delegate_type)
 		if(X.behavior_delegate)
 			qdel(X.behavior_delegate)
 		X.behavior_delegate = new behavior_delegate_type()

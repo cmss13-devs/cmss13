@@ -72,7 +72,7 @@
 
 	if(inputting == 2)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_oc2")
-	else if (inputting == 1)
+	else if(inputting == 1)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_oc1")
 	else
 		if(input_attempt)
@@ -109,9 +109,9 @@
 			charge += actual_load * SMESRATE	// increase the charge
 			input_available = actual_load
 
-			if (actual_load >= target_load) // Did we charge at full rate?
+			if(actual_load >= target_load) // Did we charge at full rate?
 				inputting = 2
-			else if (actual_load) // If not, did we charge at least partially?
+			else if(actual_load) // If not, did we charge at least partially?
 				inputting = 1
 			else // Or not at all?
 				inputting = 0
@@ -160,22 +160,22 @@
 
 //Will return 1 on failure
 /obj/structure/machinery/power/smes/proc/make_terminal(const/mob/user)
-	if (user.loc == loc)
+	if(user.loc == loc)
 		to_chat(user, SPAN_WARNING("You must not be on the same tile as \the [src]."))
 		return 1
 
 	//Direction the terminal will face to
 	var/tempDir = get_dir(user, src)
 	switch(tempDir)
-		if (NORTHEAST, SOUTHEAST)
+		if(NORTHEAST, SOUTHEAST)
 			tempDir = EAST
-		if (NORTHWEST, SOUTHWEST)
+		if(NORTHWEST, SOUTHWEST)
 			tempDir = WEST
 	var/turf/tempLoc = get_step(src, reverse_direction(tempDir))
-	if (istype(tempLoc, /turf/open/space))
+	if(istype(tempLoc, /turf/open/space))
 		to_chat(user, SPAN_WARNING("You can't build a terminal on space."))
 		return 1
-	else if (istype(tempLoc))
+	else if(istype(tempLoc))
 		if(tempLoc.intact_tile)
 			to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			return 1
@@ -217,18 +217,18 @@
 			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
 			return 0
 
-	if (!open_hatch)
+	if(!open_hatch)
 		to_chat(user, SPAN_WARNING("You need to open access hatch on [src] first!"))
 		return 0
 
 	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
 		building_terminal = 1
 		var/obj/item/stack/cable_coil/CC = W
-		if (CC.get_amount() <= 10)
+		if(CC.get_amount() <= 10)
 			to_chat(user, SPAN_WARNING("You need more cables."))
 			building_terminal = 0
 			return 0
-		if (make_terminal(user))
+		if(make_terminal(user))
 			building_terminal = 0
 			return 0
 		building_terminal = 0
@@ -243,14 +243,14 @@
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && !building_terminal)
 		building_terminal = 1
 		var/turf/tempTDir = terminal.loc
-		if (istype(tempTDir))
+		if(istype(tempTDir))
 			if(tempTDir.intact_tile)
 				to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			else
 				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
+					if(prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)
 						s.start()
@@ -391,7 +391,7 @@
 	inputting = 0
 	output_level = 0
 	charge -= 1e6/severity
-	if (charge < 0)
+	if(charge < 0)
 		charge = 0
 	spawn(100)
 		output_level = initial(output_level)

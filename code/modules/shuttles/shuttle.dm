@@ -41,7 +41,7 @@
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time)
-		if (moving_status == SHUTTLE_IDLE)
+		if(moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 
 		moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
@@ -57,7 +57,7 @@
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 	spawn(warmup_time)
-		if (moving_status == SHUTTLE_IDLE)
+		if(moving_status == SHUTTLE_IDLE)
 			recharging = 0
 			return	//someone canceled the launch
 
@@ -69,7 +69,7 @@
 		move(departing, interim, direction)
 		addtimer(CALLBACK(src, .proc/close_doors, interim), 1)
 
-		while (world.time < arrive_time)
+		while(world.time < arrive_time)
 			sleep(5)
 
 		sleep(100)
@@ -112,14 +112,14 @@
 		if(!P.density)
 			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
 
-	if (iselevator)	// Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
+	if(iselevator)	// Super snowflake code
+		for(var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_on()
 
-		for (var/turf/closed/shuttle/elevator/gears/G in area)
+		for(var/turf/closed/shuttle/elevator/gears/G in area)
 			G.start()
 
-		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
+		for(var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			INVOKE_ASYNC(src, .proc/force_close_launch, D)
 
 /datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
@@ -141,31 +141,31 @@
 		if(P.density)
 			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
 
-	if (iselevator)	// Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
+	if(iselevator)	// Super snowflake code
+		for(var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_off()
 
-		for (var/turf/closed/shuttle/elevator/gears/G in area)
+		for(var/turf/closed/shuttle/elevator/gears/G in area)
 			G.stop()
 
-		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
-			if (D.locked)
+		for(var/obj/structure/machinery/door/airlock/D in area)//For elevators
+			if(D.locked)
 				INVOKE_ASYNC(D, /obj/structure/machinery/door/airlock/.proc/unlock)
-			if (D.density)
+			if(D.density)
 				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 /datum/shuttle/proc/dock()
-	if (!docking_controller)
+	if(!docking_controller)
 		return
 
 	var/dock_target = current_dock_target()
-	if (!dock_target)
+	if(!dock_target)
 		return
 
 	docking_controller.initiate_docking(dock_target)
 
 /datum/shuttle/proc/undock()
-	if (!docking_controller)
+	if(!docking_controller)
 		return
 	docking_controller.initiate_undocking()
 
@@ -173,7 +173,7 @@
 	return null
 
 /datum/shuttle/proc/skip_docking_checks()
-	if (!docking_controller || !current_dock_target())
+	if(!docking_controller || !current_dock_target())
 		return 1	//shuttles without docking controllers or at locations without docking ports act like old-style shuttles
 	return 0
 
@@ -184,7 +184,7 @@
 
 	if(origin == destination)
 		return
-	if (docking_controller && !docking_controller.undocked())
+	if(docking_controller && !docking_controller.undocked())
 		docking_controller.force_undock()
 
 	for(var/turf/T in destination)
@@ -210,7 +210,7 @@
 				if(M.buckled && !iselevator)
 					to_chat(M, SPAN_WARNING("Sudden acceleration presses you into [M.buckled]!"))
 					shake_camera(M, 3, 1)
-				else if (!M.buckled)
+				else if(!M.buckled)
 					to_chat(M, SPAN_WARNING("The floor lurches beneath you!"))
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)

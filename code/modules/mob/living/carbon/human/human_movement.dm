@@ -134,7 +134,7 @@
 	//Check hands and mod slip
 	if(!l_hand)	prob_slip -= 2
 	else if(l_hand.w_class <= SIZE_SMALL)	prob_slip -= 1
-	if (!r_hand)	prob_slip -= 2
+	if(!r_hand)	prob_slip -= 2
 	else if(r_hand.w_class <= SIZE_SMALL)	prob_slip -= 1
 
 	prob_slip = round(prob_slip)

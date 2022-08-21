@@ -51,7 +51,7 @@
 
 		if(broken)
 			overlays += icon(src.icon,"broken")
-		else if (locked)
+		else if(locked)
 			overlays += icon(src.icon,"locked")
 		else
 			overlays += icon(src.icon,"open")

@@ -11,7 +11,7 @@
 
 /datum/xeno_mutator/steel_crest/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno

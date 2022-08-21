@@ -48,16 +48,16 @@
 
 
 /mob/living/carbon/Xenomorph/Defender/update_icons()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		icon_state = "[mutation_type] Defender Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
 			icon_state = "[mutation_type] Defender Sleeping"
 		else
 			icon_state = "[mutation_type] Defender Knocked Down"
-	else if (fortify)
+	else if(fortify)
 		icon_state = "[mutation_type] Defender Fortify"
-	else if (crest_defense)
+	else if(crest_defense)
 		icon_state = "[mutation_type] Defender Crest"
 	else
 		icon_state = "[mutation_type] Defender Running"

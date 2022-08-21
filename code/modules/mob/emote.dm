@@ -43,7 +43,7 @@
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
 		if(m_type & 1)
 			var/list/viewers = get_mobs_in_view(7, src)
-			for (var/mob/O in viewers(src, null))
+			for(var/mob/O in viewers(src, null))
 				if(O.status_flags & PASSEMOTES)
 					for(var/obj/item/holder/H in O.contents)
 						H.show_message(message, m_type)
@@ -65,7 +65,7 @@
 		else if(m_type & 2)
 			var/list/hearers = get_mobs_in_view(7, src)
 			hearers.Add(src)
-			for (var/mob/O in hearers(get_turf(src), null))
+			for(var/mob/O in hearers(get_turf(src), null))
 				if(O.z != z)	//cases like interior vehicles, for example
 					continue
 				if(O.status_flags & PASSEMOTES)

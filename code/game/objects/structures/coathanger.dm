@@ -16,10 +16,10 @@
 
 /obj/structure/coatrack/attackby(obj/item/W as obj, mob/user as mob)
 	var/can_hang = 0
-	for (var/T in allowed)
+	for(var/T in allowed)
 		if(istype(W,T))
 			can_hang = 1
-	if (can_hang && !coat)
+	if(can_hang && !coat)
 		user.visible_message("[user] hangs [W] on \the [src].", "You hang [W] on the \the [src]")
 		coat = W
 		user.drop_held_item(src)

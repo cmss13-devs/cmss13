@@ -22,13 +22,13 @@
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, var/atom/nref = null)
 	user = nuser
 	window_id = nwindow_id
-	if (ntitle)
+	if(ntitle)
 		title = format_text(ntitle)
-	if (nwidth)
+	if(nwidth)
 		width = nwidth
-	if (nheight)
+	if(nheight)
 		height = nheight
-	if (nref)
+	if(nref)
 		ref = nref
 	stylesheet = nstylesheet
 
@@ -45,7 +45,7 @@
 	window_options = nwindow_options
 
 /datum/browser/proc/add_stylesheet(name, file)
-	if (istype(name, /datum/asset/spritesheet))
+	if(istype(name, /datum/asset/spritesheet))
 		var/datum/asset/spritesheet/sheet = name
 		stylesheets["spritesheet_[sheet.name].css"] = "data/spritesheets/[sheet.name]"
 	else
@@ -53,7 +53,7 @@
 
 		stylesheets[asset_name] = file
 
-		if (!SSassets.cache[asset_name])
+		if(!SSassets.cache[asset_name])
 			SSassets.transport.register_asset(asset_name, file)
 
 /datum/browser/proc/add_script(name, file)
@@ -71,15 +71,15 @@
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
-	for (var/file in stylesheets)
+	for(var/file in stylesheets)
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
 
 
-	for (var/file in scripts)
+	for(var/file in scripts)
 		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
 
 	var/title_attributes = "class='uiTitle'"
-	if (title_image)
+	if(title_image)
 		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
 
 	return {"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -113,24 +113,24 @@
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
 		return
 	var/window_size = ""
-	if (width && height)
+	if(width && height)
 		window_size = "size=[width]x[height];"
 	common_asset.send(user)
 	other_asset.send(user)
-	if (stylesheets.len)
+	if(stylesheets.len)
 		SSassets.transport.send_assets(user, stylesheets)
-	if (scripts.len)
+	if(scripts.len)
 		SSassets.transport.send_assets(user, scripts)
 
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
 
-	if (use_onclose)
+	if(use_onclose)
 		setup_onclose()
 
 /datum/browser/proc/setup_onclose()
 	set waitfor = 0 //winexists sleeps, so we don't need to.
-	for (var/i in 1 to 10)
-		if (user && winexists(user, window_id))
+	for(var/i in 1 to 10)
+		if(user && winexists(user, window_id))
 			onclose(user, window_id, ref)
 			break
 
@@ -144,7 +144,7 @@
 /mob/proc/browse_rsc_icon(icon, icon_state, dir = -1)
 	/*
 	var/icon/I
-	if (dir >= 0)
+	if(dir >= 0)
 		I = new /icon(icon, icon_state, dir)
 	else
 		I = new /icon(icon, icon_state)
@@ -174,21 +174,21 @@
 /proc/onclose(user, windowid, var/atom/ref, var/list/params)
 	var/client/C = user
 
-	if (ismob(user))
+	if(ismob(user))
 		var/mob/M = user
 		C = M.client
 
-	if (!istype(C))
+	if(!istype(C))
 		return
 
 	var/ref_string = "null"
-	if (ref)
+	if(ref)
 		ref_string = "\ref[ref]"
 
 	var/params_string = "null"
-	if (params)
+	if(params)
 		params_string = ""
-		for (var/param in params)
+		for(var/param in params)
 			params_string += "[param]=[params[param]];"
 		params_string = copytext(params_string, 1, -1)
 
@@ -212,7 +212,7 @@
 			var/param_string = "close=1"
 			var/list/param_list = list("close"="1")
 
-			if (params && params != "null")
+			if(params && params != "null")
 				param_string = params
 				param_list = params2list(params)
 
@@ -229,20 +229,20 @@
 /proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref)
 	var/client/C = target
 
-	if (ismob(target))
+	if(ismob(target))
 		var/mob/M = target
 		C = M.client
 
-	if (!istype(C))
+	if(!istype(C))
 		return
 
 	var/stylesheet = C.prefs.stylesheet
-	if (!(stylesheet in GLOB.stylesheets))
+	if(!(stylesheet in GLOB.stylesheets))
 		C.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
 
 	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
 	popup.set_content(browser_content)
-	if (window_options)
+	if(window_options)
 		popup.set_window_options(window_options)
 	popup.open()

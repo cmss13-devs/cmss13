@@ -646,9 +646,9 @@
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
-	if (user.is_mob_incapacitated() || user.blinded )
+	if(user.is_mob_incapacitated() || user.blinded )
 		user.unset_interaction()
-	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
+	else if( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
 		user.unset_interaction()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
@@ -691,7 +691,7 @@
 		var/turf/T = mob.loc
 		if(istype(T,/turf/open/gm/dirt))
 			icon_state = "yauttrapdirt"
-		else if (istype(T,/turf/open/gm/grass))
+		else if(istype(T,/turf/open/gm/grass))
 			icon_state = "yauttrapgrass"
 		else
 			icon_state = "yauttrap1"
@@ -777,7 +777,7 @@
 	..()
 
 /obj/item/hunting_trap/proc/cleanup_tether()
-	if (tether_effect)
+	if(tether_effect)
 		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
 		qdel(tether_effect)
 		tether_effect = null
@@ -787,12 +787,12 @@
 	armed = FALSE
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"
-	if (user)
+	if(user)
 		to_chat(user, SPAN_NOTICE("[src] is now disarmed."))
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
-	if (trapped_mob)
-		if (isXeno(trapped_mob))
+	if(trapped_mob)
+		if(isXeno(trapped_mob))
 			var/mob/living/carbon/Xenomorph/X = trapped_mob
 			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null

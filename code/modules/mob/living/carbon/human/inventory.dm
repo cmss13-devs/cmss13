@@ -12,10 +12,10 @@
 			to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
-	for (var/slot in slots)
-		if (equip_to_slot_if_possible(W, slots[slot], 1, del_on_fail = 0))
+	for(var/slot in slots)
+		if(equip_to_slot_if_possible(W, slots[slot], 1, del_on_fail = 0))
 			return slot
-	if (del_on_fail)
+	if(del_on_fail)
 		qdel(W)
 	return null
 
@@ -144,39 +144,39 @@
 			update_inv_glasses()
 		update_tint()
 		update_inv_head()
-	else if (I == gloves)
+	else if(I == gloves)
 		gloves = null
 		update_inv_gloves()
-	else if (I == glasses)
+	else if(I == glasses)
 		glasses = null
 		update_tint()
 		update_glass_vision(I)
 		update_inv_glasses()
-	else if (I == wear_l_ear)
+	else if(I == wear_l_ear)
 		wear_l_ear = null
 		update_inv_ears()
-	else if (I == wear_r_ear)
+	else if(I == wear_r_ear)
 		wear_r_ear = null
 		update_inv_ears()
-	else if (I == shoes)
+	else if(I == shoes)
 		shoes = null
 		update_inv_shoes()
-	else if (I == belt)
+	else if(I == belt)
 		belt = null
 		update_inv_belt()
-	else if (I == wear_id)
+	else if(I == wear_id)
 		wear_id = null
 		sec_hud_set_ID()
 		hud_set_squad()
 		update_inv_wear_id()
 		name = get_visible_name()
-	else if (I == r_store)
+	else if(I == r_store)
 		r_store = null
 		update_inv_pockets()
-	else if (I == l_store)
+	else if(I == l_store)
 		l_store = null
 		update_inv_pockets()
-	else if (I == s_store)
+	else if(I == s_store)
 		s_store = null
 		update_inv_s_store()
 

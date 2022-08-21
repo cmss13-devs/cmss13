@@ -79,7 +79,7 @@
 		msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		for(var/mob/living/carbon/human/victim in oviewers(3, null))
 			if(prob(50))
-				if (locate(/obj/item/device/chameleon, victim))
+				if(locate(/obj/item/device/chameleon, victim))
 					for(var/obj/item/device/chameleon/S in victim)
 						S.disrupt(victim)
 			victim.flash_eyes()

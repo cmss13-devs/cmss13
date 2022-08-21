@@ -75,15 +75,15 @@
 /mob/living/carbon/human/Move(NewLoc, direction)
 	var/oldLoc = src.loc
 	. = ..()
-	if (.)
-		for (var/obj/item/clothing/head/helmet/marine/H in src)
-			if (!H.camera || !H.camera.network.len)
+	if(.)
+		for(var/obj/item/clothing/head/helmet/marine/H in src)
+			if(!H.camera || !H.camera.network.len)
 				continue
-			if (updating)
+			if(updating)
 				continue
 			updating = TRUE
 			spawn(BORG_CAMERA_BUFFER)
-				if (oldLoc != loc)
+				if(oldLoc != loc)
 					cameranet.updatePortableCamera(H.camera)
 				updating = FALSE
 

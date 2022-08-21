@@ -20,7 +20,7 @@
 
 /datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
@@ -66,7 +66,7 @@
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()
 
-	if (rage != max_rage && !rage_cooldown_start_time)
+	if(rage != max_rage && !rage_cooldown_start_time)
 		rage = rage + 1
 		bound_xeno.armor_modifier += armor_buff_per_rage
 		bound_xeno.attack_speed_modifier -= attack_delay_buff_per_rage
@@ -75,7 +75,7 @@
 		bound_xeno.recalculate_speed()
 		last_slash_time = world.time
 
-		if (rage == max_rage)
+		if(rage == max_rage)
 			rage_lock()
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel a euphoric rush as you reach max rage! You are LOCKED at max Rage!"))
 
@@ -88,15 +88,15 @@
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)
-	if (((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
+	if(((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
 		decrement_rage()
 
 // Handles internal state from decrementing rage
 /datum/behavior_delegate/ravager_berserker/proc/decrement_rage(amount = 1)
-	if (rage_lock_start_time)
+	if(rage_lock_start_time)
 		return
 	var/real_amount = amount
-	if (amount > rage)
+	if(amount > rage)
 		real_amount = rage
 
 	rage -= real_amount

@@ -117,7 +117,7 @@ Class Procs:
 
 /obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/structure/machinery/proc/start_processing()
@@ -157,11 +157,11 @@ Class Procs:
 /obj/structure/machinery/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -171,7 +171,7 @@ Class Procs:
 
 //sets the use_power var and then forces an area power update
 /obj/structure/machinery/proc/update_use_power(var/new_use_power)
-	if (new_use_power == use_power)
+	if(new_use_power == use_power)
 		return	//don't need to do anything
 
 	var/delta_power = 0 //figuring how much our power delta is
@@ -202,7 +202,7 @@ Class Procs:
 		return 1
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
-	if ( ! (istype(usr, /mob/living/carbon/human) || \
+	if( ! (istype(usr, /mob/living/carbon/human) || \
 			isRemoteControlling(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
@@ -231,10 +231,10 @@ Class Procs:
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
-	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
+	if((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
 		return 1
 */
-	if (ishuman(user))
+	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
 			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
@@ -255,7 +255,7 @@ Class Procs:
     O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", 2)
 
 /obj/structure/machinery/proc/ping(text=null)
-  if (!text)
+  if(!text)
     text = "\The [src] pings."
 
   state(text, "blue")
@@ -269,7 +269,7 @@ Class Procs:
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
-	if (electrocute_mob(user, get_area(src), src, 0.7))
+	if(electrocute_mob(user, get_area(src), src, 0.7))
 		return 1
 	else
 		return 0

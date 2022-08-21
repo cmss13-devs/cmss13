@@ -100,7 +100,7 @@
 		if("custom")
 			return
 		if("scratch")
-			if (!src.is_mob_restrained())
+			if(!src.is_mob_restrained())
 				message = "<B>The [src.name]</B> scratches."
 				m_type = 1
 		if("roar")
@@ -111,7 +111,7 @@
 			message = "<B>The [src.name]</B> waves its tail."
 			m_type = 1
 		if("paw")
-			if (!src.is_mob_restrained())
+			if(!src.is_mob_restrained())
 				message = "<B>The [src.name]</B> flails its paw."
 				m_type = 1
 		if("sway")
@@ -174,7 +174,7 @@
 
 /mob/living/carbon/Xenomorph/Hellhound/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/carbon/Xenomorph/Hellhound/Login()

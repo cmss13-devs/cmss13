@@ -107,12 +107,12 @@ var/list/department_radio_keys = list(
 			dst++ //Only speak once
 
 		//handle nonverbal and sign languages here
-		if (speaking)
-			if (speaking.flags & NONVERBAL)
-				if (prob(30))
+		if(speaking)
+			if(speaking.flags & NONVERBAL)
+				if(prob(30))
 					src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 
-			if (speaking.flags & SIGNLANG)
+			if(speaking.flags & SIGNLANG)
 				say_signlang(message, pick(speaking.signlang_verb), speaking)
 				return 1
 
@@ -179,7 +179,7 @@ var/list/department_radio_keys = list(
 	return 1
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
-	for (var/mob/O in viewers(src, null))
+	for(var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 
 /obj/effect/speech_bubble

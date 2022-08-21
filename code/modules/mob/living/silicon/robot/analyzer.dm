@@ -13,7 +13,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
-	
+
 	var/mode = 1;
 
 /obj/item/device/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
@@ -42,7 +42,7 @@
 	if(M.tod && M.stat == DEAD)
 		user.show_message(SPAN_NOTICE("Time of Disable: [M.tod]"))
 
-	if (isrobot(M))
+	if(isrobot(M))
 		var/mob/living/silicon/robot/H = M
 		var/list/damaged = H.get_damaged_components(1,1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage:"),1)
@@ -58,7 +58,7 @@
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)
 
-	if (isSynth(M))
+	if(isSynth(M))
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_limbs(1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage, Brute/Electronics:"),1)

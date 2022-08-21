@@ -78,14 +78,14 @@
 	..()
 
 	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
-	if (!cAction.action_cooldown_check())
+	if(!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/ravager_base/append_to_stat()
 	. = list()
 	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+	for(var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if(XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			shield_total += XS.amount
 
 	. += "Empower Shield: [shield_total]"
@@ -93,12 +93,12 @@
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+	for(var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if(XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			rav_shield = XS
 			break
 
-	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
+	if(rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
 		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
 		bound_xeno.overlay_shields()

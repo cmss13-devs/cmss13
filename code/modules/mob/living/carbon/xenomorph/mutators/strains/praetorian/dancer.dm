@@ -22,7 +22,7 @@
 
 /datum/xeno_mutator/praetorian_dancer/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
@@ -54,12 +54,12 @@
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
 
-	if (!istype(bound_xeno, /mob/living/carbon/Xenomorph))
+	if(!istype(bound_xeno, /mob/living/carbon/Xenomorph))
 		return
 
 	var/mob/living/carbon/Xenomorph/X = bound_xeno
 
-	if (!slash_evasion_buffed)
+	if(!slash_evasion_buffed)
 		slash_evasion_buffed = TRUE
 		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
 		X.evasion_modifier += evasion_buff_amount
@@ -69,7 +69,7 @@
 	else
 		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
-	if (dodge_activated)
+	if(dodge_activated)
 		dodge_activated = FALSE
 		X.remove_temp_pass_flags(PASS_MOB_THRU)
 		X.speed_modifier += 0.5
@@ -78,15 +78,15 @@
 
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if(!isXenoOrHuman(A))
 		return
 
 	var/mob/living/carbon/H = A
-	if (H.stat)
+	if(H.stat)
 		return
 
 	// Clean up all tags to 'refresh' our TTL
-	for (var/datum/effects/dancer_tag/DT in H.effects_list)
+	for(var/datum/effects/dancer_tag/DT in H.effects_list)
 		qdel(DT)
 
 	new /datum/effects/dancer_tag(H, bound_xeno, , , 35)
@@ -96,9 +96,9 @@
 		Hu.update_xeno_hostile_hud()
 
 /datum/behavior_delegate/praetorian_dancer/proc/remove_evasion_buff()
-	if (slash_evasion_timer == TIMER_ID_NULL || !slash_evasion_buffed)
+	if(slash_evasion_timer == TIMER_ID_NULL || !slash_evasion_buffed)
 		return
-	if (!istype(bound_xeno, /mob/living/carbon/Xenomorph))
+	if(!istype(bound_xeno, /mob/living/carbon/Xenomorph))
 		return
 
 	slash_evasion_timer = TIMER_ID_NULL

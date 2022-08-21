@@ -379,7 +379,7 @@ var/list/forbidden_varedit_object_types = list(
 	else
 
 		var/list/names = list()
-		for (var/V in O.vars)
+		for(var/V in O.vars)
 			names += V
 
 		names = sortList(names)
@@ -474,7 +474,7 @@ var/list/forbidden_varedit_object_types = list(
 
 	var/original_name
 
-	if (!istype(O, /atom))
+	if(!istype(O, /atom))
 		original_name = "\ref[O] ([O])"
 	else
 		original_name = O:name

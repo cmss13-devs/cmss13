@@ -13,7 +13,7 @@
 		return
 
 	if(!activated_once)
-		if (!check_and_use_plasma_owner())
+		if(!check_and_use_plasma_owner())
 			return
 
 		X.visible_message(SPAN_XENODANGER("[X] starts empowering!"), SPAN_XENODANGER("You start empowering yourself!"))
@@ -107,9 +107,9 @@
 	actual_empower(X)
 
 /datum/action/xeno_action/activable/empower/action_cooldown_check()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		return TRUE
-	else if (activated_once)
+	else if(activated_once)
 		return TRUE
 	else
 		return FALSE
@@ -134,7 +134,7 @@
 
 	for(var/x in 0 to BD.fling_distance-1)
 		temp = get_step(T, facing)
-		if (!temp)
+		if(!temp)
 			break
 		T = temp
 
@@ -143,10 +143,10 @@
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
 	// Determine whether or not we should daze here
@@ -165,7 +165,7 @@
 	var/turf/temp = X.loc
 	var/list/telegraph_atom_list = list()
 
-	for (var/x in 0 to 3)
+	for(var/x in 0 to 3)
 		temp = get_step(T, facing)
 		if(!temp || temp.density || temp.opacity)
 			break
@@ -188,16 +188,16 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(T, 0.25 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
-	if (target_turfs.len >= 2)
+	if(target_turfs.len >= 2)
 		X.animation_attack_on(target_turfs[target_turfs.len], 15)
 
 	X.emote("roar")
 	X.visible_message(SPAN_XENODANGER("[X] sweeps its claws through the area in front of it!"), SPAN_XENODANGER("You sweep your claws through the area in front of you!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
-	for (var/turf/target_turf in target_turfs)
-		for (var/mob/living/carbon/C in target_turf)
-			if (C.stat == DEAD)
+	for(var/turf/target_turf in target_turfs)
+		for(var/mob/living/carbon/C in target_turf)
+			if(C.stat == DEAD)
 				continue
 
 			if(X.can_not_harm(C))
@@ -221,27 +221,27 @@
 /datum/action/xeno_action/activable/apprehend/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state() || X.action_busy)
+	if(!X.check_state() || X.action_busy)
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
-	if (get_dist(A, X) > max_distance)
+	if(get_dist(A, X) > max_distance)
 		to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
 		return
 
 	var/mob/living/carbon/H = A
 
-	if (H.stat == DEAD)
+	if(H.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[H] is dead, you can't pull yourself to it!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 
@@ -256,7 +256,7 @@
 	new /datum/effects/xeno_slow(H, X, null, null, get_xeno_stun_duration(H, 20))
 	H.update_targeted()
 
-	if (!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if(!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		H.targeted_by = null
 		H.target_locked = null
 		H.update_targeted()
@@ -264,7 +264,7 @@
 		return
 
 	// Needs to occur AFTER the do_after resolves.
-	if (get_dist(A, X) > max_distance)
+	if(get_dist(A, X) > max_distance)
 		H.targeted_by = null
 		H.target_locked = null
 		H.update_targeted()
@@ -286,17 +286,17 @@
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
-	if (!X.Adjacent(A))
+	if(!X.Adjacent(A))
 		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
@@ -305,18 +305,18 @@
 	var/fling_distance = fling_dist_base
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
 
-	if (H.mob_size >= MOB_SIZE_BIG)
+	if(H.mob_size >= MOB_SIZE_BIG)
 		to_chat(X, SPAN_XENOWARNING("This creature is too massive to target"))
 		return
 
-	if (H.stat == DEAD)
+	if(H.stat == DEAD)
 		return
 
 	// All strain-specific behavior
-	if (X.mutation_type == RAVAGER_BERSERKER)
+	if(X.mutation_type == RAVAGER_BERSERKER)
 		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
 
-		if (BD.rage >= 1)
+		if(BD.rage >= 1)
 			BD.decrement_rage()
 		else
 			to_chat(X, SPAN_XENOWARNING("You don't have enough rage to heal!"))
@@ -339,16 +339,16 @@
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
 
-	for (var/x in 0 to fling_distance-1)
+	for(var/x in 0 to fling_distance-1)
 		temp = get_step(T, facing)
-		if (!temp)
+		if(!temp)
 			break
 		T = temp
 
 	H.throw_atom(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
 
 	// Negative stat effects
-	if (debilitate)
+	if(debilitate)
 		H.dazed += daze_amount
 
 	apply_cooldown()
@@ -368,9 +368,9 @@
 	var/range = 1
 	var/windup_reduction = 0
 
-	if (X.mutation_type == RAVAGER_BERSERKER)
+	if(X.mutation_type == RAVAGER_BERSERKER)
 		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
-		if (BD.rage == 0)
+		if(BD.rage == 0)
 			to_chat(X, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
 			return
 		damage = damage_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
@@ -380,7 +380,7 @@
 
 		apply_cooldown()
 
-	if (range > 1)
+	if(range > 1)
 		X.visible_message(SPAN_XENOHIGHDANGER("[X] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
 	else
 		X.visible_message(SPAN_XENODANGER("[X] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
@@ -389,21 +389,21 @@
 	X.anchored = 1
 	X.update_canmove()
 
-	if (do_after(X, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+	if(do_after(X, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		X.emote("roar")
 		X.spin_circle()
 
-		for (var/mob/living/carbon/H in orange(X, range))
+		for(var/mob/living/carbon/H in orange(X, range))
 			if(!isXenoOrHuman(H) || X.can_not_harm(H))
 				continue
 
-			if (H.stat == DEAD)
+			if(H.stat == DEAD)
 				continue
 
 			if(!check_clear_path_to_target(X, H))
 				continue
 
-			if (range > 1)
+			if(range > 1)
 				X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
 				H.spawn_gibs()
 				playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
@@ -427,15 +427,15 @@
 /datum/action/xeno_action/activable/spike_shield/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (X.mutation_type == RAVAGER_HEDGEHOG)
+	if(X.mutation_type == RAVAGER_HEDGEHOG)
 		var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
-		if (!BD.check_shards(shard_cost))
+		if(!BD.check_shards(shard_cost))
 			to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
 			return
 		BD.use_shards(shard_cost)
@@ -444,7 +444,7 @@
 
 	// Add our shield
 	var/datum/xeno_shield/hedgehog_shield/XS = X.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
-	if (XS)
+	if(XS)
 		XS.owner = X
 		XS.shrapnel_amount = shield_shrapnel_amount
 		X.overlay_shields()
@@ -458,11 +458,11 @@
 	return
 
 /datum/action/xeno_action/activable/spike_shield/action_cooldown_check()
-	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
+	if(shield_active) // If active shield, return FALSE so that this action does not get carried out
 		return FALSE
-	else if (cooldown_timer_id == TIMER_ID_NULL)
+	else if(cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
-		if (X.mutation_type == RAVAGER_HEDGEHOG)
+		if(X.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 			return BD.check_shards(shard_cost)
 		return TRUE
@@ -471,13 +471,13 @@
 /datum/action/xeno_action/activable/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!shield_active)
+	if(!shield_active)
 		return
 
 	shield_active = FALSE
 
-	for (var/datum/xeno_shield/XS in X.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
+	for(var/datum/xeno_shield/XS in X.xeno_shields)
+		if(XS.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
 			XS.on_removal()
 			qdel(XS)
 			break
@@ -489,15 +489,15 @@
 /datum/action/xeno_action/activable/rav_spikes/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
-	if (X.mutation_type == RAVAGER_HEDGEHOG)
+	if(X.mutation_type == RAVAGER_HEDGEHOG)
 		var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
-		if (!BD.check_shards(shard_cost))
+		if(!BD.check_shards(shard_cost))
 			to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
 			return
 		BD.use_shards(shard_cost)
@@ -519,9 +519,9 @@
 	return
 
 /datum/action/xeno_action/activable/rav_spikes/action_cooldown_check()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
-		if (X.mutation_type == RAVAGER_HEDGEHOG)
+		if(X.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 			return BD.check_shards(shard_cost)
 
@@ -532,15 +532,15 @@
 /datum/action/xeno_action/activable/spike_shed/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (X.mutation_type == RAVAGER_HEDGEHOG)
+	if(X.mutation_type == RAVAGER_HEDGEHOG)
 		var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
-		if (!BD.check_shards(shard_cost))
+		if(!BD.check_shards(shard_cost))
 			to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
 			return
 		BD.use_shards(shard_cost)
@@ -556,9 +556,9 @@
 	return
 
 /datum/action/xeno_action/activable/spike_shed/action_cooldown_check()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
-		if (X.mutation_type == RAVAGER_HEDGEHOG)
+		if(X.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 			return BD.check_shards(shard_cost)
 

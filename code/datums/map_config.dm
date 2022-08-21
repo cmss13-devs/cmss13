@@ -125,32 +125,32 @@
 
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"
-	if (istext(map_file))
-		if (!fexists("maps/[map_path]/[map_file]"))
+	if(istext(map_file))
+		if(!fexists("maps/[map_path]/[map_file]"))
 			log_world("Map file ([map_file]) does not exist!")
 			return
 	// "map_file": ["Lower.dmm", "Upper.dmm"]
-	else if (islist(map_file))
-		for (var/file in map_file)
-			if (!fexists("maps/[map_path]/[file]"))
+	else if(islist(map_file))
+		for(var/file in map_file)
+			if(!fexists("maps/[map_path]/[file]"))
 				log_world("Map file ([file]) does not exist!")
 				return
 	else
 		log_world("map_file missing from json!")
 		return
 
-	if (islist(json["shuttles"]))
+	if(islist(json["shuttles"]))
 		var/list/L = json["shuttles"]
 		for(var/key in L)
 			var/value = L[key]
 			shuttles[key] = value
-	else if ("shuttles" in json)
+	else if("shuttles" in json)
 		log_world("map_config shuttles is not a list!")
 		return
 
-	if (islist(json["survivor_types"]))
+	if(islist(json["survivor_types"]))
 		survivor_types = json["survivor_types"]
-	else if ("survivor_types" in json)
+	else if("survivor_types" in json)
 		log_world("map_config survivor_types is not a list!")
 		return
 
@@ -165,7 +165,7 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
-	if (islist(json["monkey_types"]))
+	if(islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
 			switch(monkey)
@@ -182,19 +182,19 @@
 				else
 					log_world("map_config monkey_types has invalid name!")
 					return
-	else if ("monkey_types" in json)
+	else if("monkey_types" in json)
 		log_world("map_config monkey_types is not a list!")
 		return
 
-	if (islist(json["xvx_hives"]))
+	if(islist(json["xvx_hives"]))
 		xvx_hives = json["xvx_hives"]
-	else if ("xvx_hives" in json)
+	else if("xvx_hives" in json)
 		log_world("map_config xvx_hives is not a list!")
 		return
 
-	if (islist(json["defcon_triggers"]))
+	if(islist(json["defcon_triggers"]))
 		defcon_triggers = json["defcon_triggers"]
-	else if ("defcon_triggers" in json)
+	else if("defcon_triggers" in json)
 		log_world("map_config defcon_triggers is not a list!")
 		return
 
@@ -208,9 +208,9 @@
 		return
 
 	var/temp = json["space_empty_levels"]
-	if (isnum(temp))
+	if(isnum(temp))
 		space_empty_levels = temp
-	else if (!isnull(temp))
+	else if(!isnull(temp))
 		log_world("map_config space_empty_levels is not a number!")
 		return
 
@@ -237,7 +237,7 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
-		
+
 	if(json["vote_cycle"])
 		vote_cycle = json["vote_cycle"]
 
@@ -295,10 +295,10 @@
 #undef CHECK_EXISTS
 
 /datum/map_config/proc/GetFullMapPaths()
-	if (istext(map_file))
+	if(istext(map_file))
 		return list("maps/[map_path]/[map_file]")
 	. = list()
-	for (var/file in map_file)
+	for(var/file in map_file)
 		. += "maps/[map_path]/[file]"
 
 

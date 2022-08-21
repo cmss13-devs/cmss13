@@ -12,7 +12,7 @@
 
 
 /obj/item/implanter/update()
-	if (src.imp)
+	if(src.imp)
 		src.icon_state = "implanter1"
 	else
 		src.icon_state = "implanter0"
@@ -20,15 +20,15 @@
 
 
 /obj/item/implanter/attack(mob/M as mob, mob/user as mob)
-	if (!istype(M, /mob/living/carbon/human))
+	if(!istype(M, /mob/living/carbon/human))
 		return
 	if(isYautja(M))
 		return
-	if (user && src.imp)
+	if(user && src.imp)
 		user.visible_message(SPAN_WARNING("[user] is attemping to implant [M]."), SPAN_NOTICE("You're attemping to implant [M]."))
 
 		var/turf/T1 = get_turf(M)
-		if (T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
+		if(T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
 			if(user && M && (get_turf(M) == T1) && src && src.imp)
 				if(src.imp.implanted(M, user))
 					M.visible_message(SPAN_WARNING("[M] has been implanted by [user]."))
@@ -40,7 +40,7 @@
 					src.imp.forceMove(M)
 					src.imp.imp_in = M
 					src.imp.implanted = 1
-					if (ishuman(M))
+					if(ishuman(M))
 						var/mob/living/carbon/human/H = M
 						var/obj/limb/affected = H.get_limb(user.zone_selected)
 						affected.implants += src.imp
@@ -89,7 +89,7 @@
 	update()
 
 /obj/item/implanter/compressed/update()
-	if (imp)
+	if(imp)
 		var/obj/item/implant/compressed/c = imp
 		if(!c.scanned)
 			icon_state = "cimplanter1"
@@ -101,8 +101,8 @@
 
 /obj/item/implanter/compressed/attack(mob/M as mob, mob/user as mob)
 	var/obj/item/implant/compressed/c = imp
-	if (!c)	return
-	if (c.scanned == null)
+	if(!c)	return
+	if(c.scanned == null)
 		to_chat(user, "Please scan an object with the implanter first.")
 		return
 	..()
@@ -112,7 +112,7 @@
 		return
 	if(istype(A,/obj/item) && imp)
 		var/obj/item/implant/compressed/c = imp
-		if (c.scanned)
+		if(c.scanned)
 			to_chat(user, SPAN_DANGER("Something is already scanned inside the implant!"))
 			return
 		c.scanned = A

@@ -16,7 +16,7 @@
 
 // Modified attack_hand to reduce the take-back time and some ID-locking stuff
 /obj/structure/machinery/computer/shuttle_control/monorail/attack_hand(mob/user)
-	if (stat & NOPOWER)
+	if(stat & NOPOWER)
 		return 1
 
 	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
@@ -64,7 +64,7 @@
 
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	var/shuttle_state
@@ -81,7 +81,7 @@
 	var/shuttle_status
 	switch (shuttle.process_state)
 		if(IDLE_STATE)
-			if (shuttle.in_use)
+			if(shuttle.in_use)
 				shuttle_status = "Busy."
 			else
 				shuttle_status = "Standing by."
@@ -122,7 +122,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "monorail_control_console.tmpl", "Monorail Control", 550, 500)
 		ui.set_initial_data(data)
 		ui.open()
@@ -134,7 +134,7 @@
 	add_fingerprint(usr)
 
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		return
 
 	if(href_list["move"])

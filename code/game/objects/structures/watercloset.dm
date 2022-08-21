@@ -80,7 +80,7 @@
 
 
 /obj/structure/toilet/send_buckling_message(mob/M, mob/user)
-	if (M == user)
+	if(M == user)
 		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet"))
 	else
 		to_chat(user, SPAN_NOTICE("[M] has been seated onto the toilet by [user]."))
@@ -239,10 +239,10 @@
 	update_icon()
 	if(on)
 		start_processing()
-		if (M.loc == loc)
+		if(M.loc == loc)
 			wash(M)
 			check_heat(M)
-		for (var/atom/movable/G in src.loc)
+		for(var/atom/movable/G in src.loc)
 			G.clean_blood()
 	else
 		stop_processing()
@@ -336,9 +336,9 @@
 					washears = !(H.head.flags_inv_hide & HIDEEARS)
 
 				if(H.wear_mask)
-					if (washears)
+					if(washears)
 						washears = !(H.wear_mask.flags_inv_hide & HIDEEARS)
-					if (washglasses)
+					if(washglasses)
 						washglasses = !(H.wear_mask.flags_inv_hide & HIDEEYES)
 
 				if(H.head)
@@ -489,12 +489,12 @@
 		return
 
 	var/obj/item/reagent_container/RG = O
-	if (istype(RG) && RG.is_open_container())
+	if(istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
-	else if (istype(O, /obj/item/weapon/melee/baton))
+	else if(istype(O, /obj/item/weapon/melee/baton))
 		var/obj/item/weapon/melee/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)

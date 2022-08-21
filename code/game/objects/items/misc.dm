@@ -11,7 +11,7 @@
 	garbage = TRUE
 
 /obj/item/bananapeel/Crossed(AM as mob|obj)
-	if (iscarbon(AM))
+	if(iscarbon(AM))
 		var/mob/living/carbon/C = AM
 		C.slip(name, 4, 2)
 
@@ -98,22 +98,22 @@
 	var/obj/item/stored_item = null
 
 /obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
-	if (!ishuman(usr))
+	if(!ishuman(usr))
 		return
 
 	var/mob/living/carbon/human/user = usr
 
-	if (!(user.l_hand == src || user.r_hand == src))
+	if(!(user.l_hand == src || user.r_hand == src))
 		return //bag must be in your hands to use
 
-	if (isturf(I.loc))
-		if (!user.Adjacent(I))
+	if(isturf(I.loc))
+		if(!user.Adjacent(I))
 			return
 	else
 		//If it isn't on the floor. Do some checks to see if it's in our hands or a box. Otherwise give up.
 		if(istype(I.loc,/obj/item/storage))	//in a container.
 			var/depth = I.get_storage_depth_to(user)
-			if (!depth || depth > 2)
+			if(!depth || depth > 2)
 				return	//too deeply nested to access or not being carried by the user.
 
 			var/obj/item/storage/U = I.loc
@@ -185,7 +185,7 @@
 
 /obj/item/evidencebag/examine(mob/user)
 	..()
-	if (stored_item) stored_item.examine(user)
+	if(stored_item) stored_item.examine(user)
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"

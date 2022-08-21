@@ -293,7 +293,7 @@ var/global/east_riverstart = 0
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 
 	for(var/obj/structure/machinery/dispersal_initiator/M in machines)
-		if (M.id == src.id)
+		if(M.id == src.id)
 			M.initiate()
 
 	sleep(50)

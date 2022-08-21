@@ -56,7 +56,7 @@
 		if(3)
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/A = P
-				if (A.use(5))
+				if(A.use(5))
 					to_chat(user, SPAN_NOTICE("You insert the cables."))
 					construct_op--
 					stat &= ~BROKEN // the machine's not borked anymore!
@@ -281,7 +281,7 @@
 		return
 	if(!ishighersilicon(usr))
 		var/obj/item/held_item = usr.get_held_item()
-		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+		if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			return
 
 	if(inoperable())

@@ -385,7 +385,7 @@ log transactions
 					playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
 				else
 					playsound(loc, 'sound/items/polaroid2.ogg', 15, 1)
-			if ("print_transaction")
+			if("print_transaction")
 				if(authenticated_account)
 					var/obj/item/paper/R = new(src.loc)
 					R.name = "Transaction logs: [authenticated_account.owner_name]"
@@ -431,7 +431,7 @@ log transactions
 			if("insert_card")
 				if(!held_card)
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card/id))
+					if(istype(I, /obj/item/card/id))
 						usr.drop_held_item()
 						I.forceMove(src)
 						held_card = I

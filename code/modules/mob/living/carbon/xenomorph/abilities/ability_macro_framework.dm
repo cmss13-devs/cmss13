@@ -5,18 +5,18 @@
 			handle_xeno_macro_datum(X, A)
 
 /proc/handle_xeno_macro_datum(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/A)
-	if (!istype(A))
+	if(!istype(A))
 		return
 
 	// "Old" behavior: select the action.
 	switch(A.action_type)
-		if (XENO_ACTION_CLICK) // This should be used for all actions that require an atom handed in by click() to function
+		if(XENO_ACTION_CLICK) // This should be used for all actions that require an atom handed in by click() to function
 			handle_xeno_macro_click(X, A)
 
-		if (XENO_ACTION_ACTIVATE) // Actions that don't require a click() atom to work
+		if(XENO_ACTION_ACTIVATE) // Actions that don't require a click() atom to work
 			handle_xeno_macro_activate(X, A)
 
-		if (XENO_ACTION_QUEUE)
+		if(XENO_ACTION_QUEUE)
 			handle_xeno_macro_actionqueue(X, A)
 
 		else
@@ -32,16 +32,16 @@
 
 	var/datum/action/xeno_action/activable/activableA = A
 
-	if (!istype(A))
+	if(!istype(A))
 		return
 
-	if (activableA.can_use_action() && activableA.action_cooldown_check())
+	if(activableA.can_use_action() && activableA.action_cooldown_check())
 		activableA.use_ability_wrapper()
 
 // Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
 // Other ones should just use the activate proc
 /proc/handle_xeno_macro_actionqueue(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/activable/A)
-	if (!istype(A))
+	if(!istype(A))
 		return
 
 	X.queued_action = A
@@ -56,14 +56,14 @@
 	set name = "Xeno Primary Action One"
 	set hidden = 1
 	var/mob/living/carbon/Xenomorph/X = src
-	if (!istype(X))
+	if(!istype(X))
 		return
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (!istype(XA))
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
 			continue
 		if(XA.hidden)
 			continue
-		if (XA.ability_primacy == XENO_PRIMARY_ACTION_1)
+		if(XA.ability_primacy == XENO_PRIMARY_ACTION_1)
 			handle_xeno_macro_datum(src, XA)
 			break
 
@@ -72,14 +72,14 @@
 	set name = "Xeno Primary Action Two"
 	set hidden = 1
 	var/mob/living/carbon/Xenomorph/X = src
-	if (!istype(X))
+	if(!istype(X))
 		return
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (!istype(XA))
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
 			continue
 		if(XA.hidden)
 			continue
-		if (XA.ability_primacy == XENO_PRIMARY_ACTION_2)
+		if(XA.ability_primacy == XENO_PRIMARY_ACTION_2)
 			handle_xeno_macro_datum(src, XA)
 			break
 
@@ -88,14 +88,14 @@
 	set name = "Xeno Primary Action Three"
 	set hidden = 1
 	var/mob/living/carbon/Xenomorph/X = src
-	if (!istype(X))
+	if(!istype(X))
 		return
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (!istype(XA))
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
 			continue
 		if(XA.hidden)
 			continue
-		if (XA.ability_primacy == XENO_PRIMARY_ACTION_3)
+		if(XA.ability_primacy == XENO_PRIMARY_ACTION_3)
 			handle_xeno_macro_datum(src, XA)
 			break
 
@@ -104,14 +104,14 @@
 	set name = "Xeno Primary Action Four"
 	set hidden = 1
 	var/mob/living/carbon/Xenomorph/X = src
-	if (!istype(X))
+	if(!istype(X))
 		return
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (!istype(XA))
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
 			continue
 		if(XA.hidden)
 			continue
-		if (XA.ability_primacy == XENO_PRIMARY_ACTION_4)
+		if(XA.ability_primacy == XENO_PRIMARY_ACTION_4)
 			handle_xeno_macro_datum(src, XA)
 			break
 
@@ -136,13 +136,13 @@
 	set name = "Secrete Resin (Tech)"
 	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/X = src
-	if (!istype(X))
+	if(!istype(X))
 		return
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (!istype(XA))
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
 			continue
 		if(XA.hidden)
 			continue
-		if (XA.ability_primacy == XENO_TECH_SECRETE_RESIN)
+		if(XA.ability_primacy == XENO_TECH_SECRETE_RESIN)
 			handle_xeno_macro_datum(src, XA)
 			break

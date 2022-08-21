@@ -19,7 +19,7 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 
-	if (prob(WEATHER_MESSAGE_PROB))
+	if(prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 
 	var/calculated_damage = isXeno(affected_mob) ? damage_per_tick*3 : damage_per_tick

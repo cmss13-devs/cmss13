@@ -13,17 +13,17 @@ SUBSYSTEM_DEF(mob)
 
 
 /datum/controller/subsystem/mob/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = living_misc_mobs.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/mob/living/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || QDELETED(M))
+		if(!M || QDELETED(M))
 			continue
 
 		M.Life(wait * 0.1)
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

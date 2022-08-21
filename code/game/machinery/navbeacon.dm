@@ -108,9 +108,9 @@
 
 			updateicon()
 
-		else if (istype(I, /obj/item/card/id))
+		else if(istype(I, /obj/item/card/id))
 			if(open)
-				if (src.allowed(user))
+				if(src.allowed(user))
 					src.locked = !src.locked
 					to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 				else
@@ -176,13 +176,13 @@ Transponder Codes:<UL>"}
 
 	Topic(href, href_list)
 		..()
-		if (usr.stat)
+		if(usr.stat)
 			return
-		if ((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))
+		if((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))
 			if(open && !locked)
 				usr.set_interaction(src)
 
-				if (href_list["freq"])
+				if(href_list["freq"])
 					freq = sanitize_frequency(freq + text2num(href_list["freq"]))
 					updateDialog()
 

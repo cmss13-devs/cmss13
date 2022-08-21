@@ -274,7 +274,7 @@
 	else
 		X.visible_message(SPAN_NOTICE("[X] starts looking off into the distance."), \
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
-		if (should_delay)
+		if(should_delay)
 			if(!do_after(X, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(X.is_zoomed) return
 		if(handles_movement)

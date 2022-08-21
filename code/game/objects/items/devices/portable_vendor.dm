@@ -103,7 +103,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "portable_vendor.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
@@ -119,9 +119,9 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	if (in_range(src, usr) && ishuman(usr))
+	if(in_range(src, usr) && ishuman(usr))
 		usr.set_interaction(src)
-		if (href_list["vend"])
+		if(href_list["vend"])
 
 			if(!allowed(usr))
 				to_chat(usr, SPAN_WARNING("Access denied."))
@@ -184,9 +184,9 @@
 
 /obj/item/device/portable_vendor/proc/update_overlays()
 	if(overlays) overlays.Cut()
-	if (broken)
+	if(broken)
 		overlays += image(icon, "securespark")
-	else if (fabricating)
+	else if(fabricating)
 		overlays += image(icon, "secureb")
 	else
 		overlays += image(icon, "secure0")
@@ -219,9 +219,9 @@
 	s.start()
 
 /obj/item/device/portable_vendor/emp_act(severity)
-	if (broken)
+	if(broken)
 		return
-	if (prob(40*severity))
+	if(prob(40*severity))
 		malfunction()
 
 /obj/item/device/portable_vendor/ex_act(severity)

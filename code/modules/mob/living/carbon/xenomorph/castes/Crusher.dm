@@ -69,44 +69,44 @@
 		return FALSE
 
 	//Barricade collision
-	else if (istype(target, /obj/structure/barricade))
+	else if(istype(target, /obj/structure/barricade))
 		var/obj/structure/barricade/B = target
 		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
 
 		B.Collided(src)
 		. =  FALSE
 
-	else if (istype(target, /obj/vehicle/multitile))
+	else if(istype(target, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = target
 		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("You ram into [M] and skid to a halt!"))
 
 		M.Collided(src)
 		. = FALSE
 
-	else if (istype(target, /obj/structure/machinery/m56d_hmg))
+	else if(istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target
 		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("You ram [HMG]!"))
 		playsound(loc, "punch", 25, 1)
 		HMG.CrusherImpact()
 		. =  FALSE
 
-	else if (istype(target, /obj/structure/window))
+	else if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
-		if (W.unacidable)
+		if(W.unacidable)
 			. = FALSE
 		else
 			W.shatter_window(1)
 			. =  TRUE // Continue throw
 
-	else if (istype(target, /obj/structure/machinery/door/airlock))
+	else if(istype(target, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/A = target
 
-		if (A.unacidable)
+		if(A.unacidable)
 			. = FALSE
 		else
 			A.destroy_airlock()
 
-	else if (istype(target, /obj/structure/grille))
+	else if(istype(target, /obj/structure/grille))
 		var/obj/structure/grille/G = target
 		if(G.unacidable)
 			. =  FALSE
@@ -115,16 +115,16 @@
 			G.healthcheck()
 			. = TRUE
 
-	else if (istype(target, /obj/structure/surface/table))
+	else if(istype(target, /obj/structure/surface/table))
 		var/obj/structure/surface/table/T = target
 		T.Crossed(src)
 		. = TRUE
 
-	else if (istype(target, /obj/structure/machinery/defenses))
+	else if(istype(target, /obj/structure/machinery/defenses))
 		var/obj/structure/machinery/defenses/DF = target
 		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("You ram [DF]!"))
 
-		if (!DF.unacidable)
+		if(!DF.unacidable)
 			playsound(loc, "punch", 25, 1)
 			DF.stat = 1
 			DF.update_icon()
@@ -132,10 +132,10 @@
 
 		. =  FALSE
 
-	else if (istype(target, /obj/structure/machinery/vending))
+	else if(istype(target, /obj/structure/machinery/vending))
 		var/obj/structure/machinery/vending/V = target
 
-		if (V.unslashable)
+		if(V.unslashable)
 			. = FALSE
 		else
 			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
@@ -150,9 +150,9 @@
 
 			. =  TRUE
 
-	else if (istype(target, /obj/structure/machinery/cm_vending))
+	else if(istype(target, /obj/structure/machinery/cm_vending))
 		var/obj/structure/machinery/cm_vending/V = target
-		if (V.unslashable)
+		if(V.unslashable)
 			. = FALSE
 		else
 			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
@@ -169,11 +169,11 @@
 
 	// Anything else?
 	else
-		if (isobj(target))
+		if(isobj(target))
 			var/obj/O = target
-			if (O.unacidable)
+			if(O.unacidable)
 				. = FALSE
-			else if (O.anchored)
+			else if(O.anchored)
 				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("You crush [O]!"))
 				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
@@ -196,7 +196,7 @@
 
 				. = TRUE
 
-	if (!.)
+	if(!.)
 		update_icons()
 
 /mob/living/carbon/Xenomorph/Crusher/update_icons()
@@ -224,7 +224,7 @@
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
-	if (!isXenoOrHuman(A))
+	if(!isXenoOrHuman(A))
 		return
 
 	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
@@ -232,8 +232,8 @@
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
 	var/cdr_amount = 15
-	for (var/mob/living/carbon/H in orange(1, A))
-		if (H.stat == DEAD)
+	for(var/mob/living/carbon/H in orange(1, A))
+		if(H.stat == DEAD)
 			continue
 
 		if(!isXenoOrHuman(H) || bound_xeno.can_not_harm(H))
@@ -266,18 +266,18 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
-	if (!cAction.action_cooldown_check())
+	if(!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(cdr_amount)
 
 	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
-	if (!sAction.action_cooldown_check())
+	if(!sAction.action_cooldown_check())
 		sAction.reduce_cooldown(cdr_amount)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()
 	. = list()
 	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
+	for(var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if(XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
 			shield_total += XS.amount
 
 	. += "Shield: [shield_total]"

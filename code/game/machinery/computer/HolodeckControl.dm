@@ -61,7 +61,7 @@
 
 
 /obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
+	if(istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
@@ -73,7 +73,7 @@
 			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
@@ -115,7 +115,7 @@
 
 /obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
 //BASKETBALL OBJECTS
@@ -139,7 +139,7 @@
 	var/id = ""
 
 /obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
+	if(istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
@@ -154,7 +154,7 @@
 					// no break, to update multiple scoreboards
 			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
 		return
-	else if (istype(W, /obj/item) && get_dist(src,user)<2)
+	else if(istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
 		for(var/obj/structure/machinery/scoreboard/X in machines)
 			if(X.id == id)
@@ -225,7 +225,7 @@
 	var/numready = 0
 	for(var/obj/structure/machinery/readybutton/button in currentarea)
 		numbuttons++
-		if (button.ready)
+		if(button.ready)
 			numready++
 
 	if(numbuttons == numready)
@@ -260,6 +260,6 @@
 	return
 
 /obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

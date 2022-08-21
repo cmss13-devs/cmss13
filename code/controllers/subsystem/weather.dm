@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(weather)
 		map_holder = new weathertype
 
 	// Disable the weather subsystem on maps that don't currently implement it
-	if (!map_holder)
+	if(!map_holder)
 		flags |= SS_NO_FIRE
 		return
 
@@ -54,15 +54,15 @@ SUBSYSTEM_DEF(weather)
 			weather_areas += A
 
 	curr_master_turf_overlay = new /obj/effect/weather_vfx_holder
-	if (map_holder.no_weather_turf_icon_state)
+	if(map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state
 	else
 		curr_master_turf_overlay.icon_state = ""
 
 	// We have successfully built weather areas, now place our effect holder
-	//for (var/area/A as anything in weather_areas)
-		//for (var/turf/T in A)
-		//	if (istype(T, /turf/open) && !(curr_master_turf_overlay in T.vis_contents))
+	//for(var/area/A as anything in weather_areas)
+		//for(var/turf/T in A)
+		//	if(istype(T, /turf/open) && !(curr_master_turf_overlay in T.vis_contents))
 		//		T.vis_contents += curr_master_turf_overlay
 
 	. = ..()
@@ -71,33 +71,33 @@ SUBSYSTEM_DEF(weather)
 	var/time_left = 0
 	if(weather_event_instance?.length)
 		time_left = (current_event_start_time + weather_event_instance.length - world.time) / 10
-	if (is_weather_event && weather_event_instance.display_name)
+	if(is_weather_event && weather_event_instance.display_name)
 		msg = "P: Current event: [weather_event_instance.display_name] - [time_left] seconds left"
-	else if (is_weather_event)
+	else if(is_weather_event)
 		msg = "P: Current event of unknown type ([weather_event_type]) - [time_left] seconds left"
 	else
 		msg = "P: No event"
 	return ..()
 
 /datum/controller/subsystem/weather/fire()
-	if (controller_state_lock)
+	if(controller_state_lock)
 		return
 
 	// End our current event if we must
-	if (is_weather_event && current_event_start_time + weather_event_instance.length < world.time)
+	if(is_weather_event && current_event_start_time + weather_event_instance.length < world.time)
 		end_weather_event()
 		return
 
 	// If there's a weather event, return
-	if (is_weather_event)
+	if(is_weather_event)
 		return
 
 	// Check if we have had enough time between events
-	if (last_event_end_time + map_holder.min_time_between_events > world.time)
+	if(last_event_end_time + map_holder.min_time_between_events > world.time)
 		return
 
 	// Each map decides its own logic for implementing weather events.
-	if (!is_weather_event_starting && map_holder.should_start_event())
+	if(!is_weather_event_starting && map_holder.should_start_event())
 		// Set up controller state
 		is_weather_event_starting = TRUE
 		weather_event_type = map_holder.get_new_event()
@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(weather)
 // now weather.
 /datum/controller/subsystem/weather/proc/start_weather_event()
 	SHOULD_NOT_SLEEP(TRUE)
-	if (controller_state_lock)
+	if(controller_state_lock)
 		return
 
 	// Set up our instance of the weather event
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(weather)
 	is_weather_event = TRUE
 	current_event_start_time = world.time
 
-	if (weather_event_instance.display_name)
+	if(weather_event_instance.display_name)
 		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds."))
 	else
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
@@ -150,11 +150,11 @@ SUBSYSTEM_DEF(weather)
 /datum/controller/subsystem/weather/proc/end_weather_event()
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if (controller_state_lock)
+	if(controller_state_lock)
 		return
 	controller_state_lock = TRUE
 
-	if (weather_event_instance.display_name)
+	if(weather_event_instance.display_name)
 		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
 	else
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
@@ -163,13 +163,13 @@ SUBSYSTEM_DEF(weather)
 		for(var/area/subarea as anything in area.related)
 			subarea.overlays -= curr_master_turf_overlay
 
-	if (map_holder.no_weather_turf_icon_state)
+	if(map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state
 	else
 		curr_master_turf_overlay.icon_state = ""
 
 	// Controller state
-	if (weather_event_instance)
+	if(weather_event_instance)
 		qdel(weather_event_instance)
 		weather_event_instance = null
 

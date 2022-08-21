@@ -60,15 +60,15 @@
 	last_hit_time = world.time
 
 	var/shieldtotal = 0
-	for (var/datum/xeno_shield/XS in xeno_shields)
+	for(var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
 
-	if (damage >= (health + shieldtotal) && damage >= EXPLOSION_THRESHOLD_GIB)
+	if(damage >= (health + shieldtotal) && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
 		gib(cause_data)
 		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
 		return
-	if (damage >= 0)
+	if(damage >= 0)
 		b_loss += damage * 0.5
 		f_loss += damage * 0.5
 		apply_damage(b_loss, BRUTE)

@@ -1,7 +1,7 @@
 /var/create_object_html = null
 
 /datum/admins/proc/create_object(var/mob/user)
-	if (!create_object_html)
+	if(!create_object_html)
 		var/objectjs = null
 		objectjs = jointext(typesof(/obj), ";")
 		create_object_html = file2text('html/create_object.html')
@@ -39,7 +39,7 @@
 		return
 	var/path = text2path(pathtext)
 
-	if (!quick_create_object_html)
+	if(!quick_create_object_html)
 		var/objectjs = null
 		objectjs = jointext(typesof(path), ";")
 		quick_create_object_html = file2text('html/create_object.html')

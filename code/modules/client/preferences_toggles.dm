@@ -261,7 +261,7 @@
 	)
 
 	var/dat = ""
-	for (var/pref_button in pref_buttons)
+	for(var/pref_button in pref_buttons)
 		dat += "[pref_button]\n"
 
 	var/height = 50+22*length(pref_buttons)
@@ -288,7 +288,7 @@
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
 	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
 		var/msg = "Guns with auto-ejectors will no longer automatically eject their magazines."
-		if (prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+		if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 			prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
 			msg += " The preference for auto-ejecting magazines to your hand has been toggled off."
 		to_chat(src, msg)
@@ -300,7 +300,7 @@
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 		var/msg = "Guns with auto-ejectors will eject their magazines to your offhand."
-		if (prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+		if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
 			prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
 			msg += " The preference for removing magazine auto-ejecting has been toggled off."
 		to_chat(src, SPAN_BOLDNOTICE(msg))
@@ -326,7 +326,7 @@
 
 /client/proc/toggle_middle_mouse_click() // Toggle whether abilities should use middle or shift clicking
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
-	if (prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+	if(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))

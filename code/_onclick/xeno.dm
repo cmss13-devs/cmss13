@@ -14,19 +14,19 @@
 	if(isturf(target) && tile_attack) //Attacks on turfs must be done indirectly through directional attacks or clicking own sprite.
 		var/turf/T = target
 		for(var/mob/living/L in T)
-			if (!iscarbon(L))
-				if (!alt)
+			if(!iscarbon(L))
+				if(!alt)
 					alt = L // last option is a simple mob
 				continue
 
-			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
+			if(!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
-			if (L.lying)
+			if(L.lying)
 				alt = L
 				continue
 			target = L
 			break
-		if (target == T && alt)
+		if(target == T && alt)
 			target = alt
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	switch(target.attack_alien(src))
@@ -47,9 +47,9 @@
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
 	. = ..()
-	if (.)
+	if(.)
 		return
-	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
+	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE)
 	return FALSE
@@ -66,22 +66,22 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	return
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
-	if (queued_action)
+	if(queued_action)
 		handle_queued_action(A)
 		return TRUE
 
-	if (mods["alt"] && mods["shift"])
-		if (istype(A, /mob/living/carbon/Xenomorph))
+	if(mods["alt"] && mods["shift"])
+		if(istype(A, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = A
 
-			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
-				if (caste && istype(caste, /datum/caste_datum/queen))
+			if(X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
+				if(caste && istype(caste, /datum/caste_datum/queen))
 					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 					overwatch(X, FALSE)
 
-					if (oldXeno)
+					if(oldXeno)
 						oldXeno.hud_set_queen_overwatch()
-					if (X && !QDELETED(X))
+					if(X && !QDELETED(X))
 						X.hud_set_queen_overwatch()
 
 				else

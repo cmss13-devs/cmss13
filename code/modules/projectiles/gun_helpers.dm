@@ -109,7 +109,7 @@ DEFINES in setup.dm, referenced here.
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
-	if (mods["alt"])
+	if(mods["alt"])
 		toggle_gun_safety()
 		return 1
 	return (..())
@@ -136,7 +136,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	. = ..()
 
 	stop_aim()
-	if (user && user.client)
+	if(user && user.client)
 		user.update_gun_icons()
 
 	turn_off_light(user)
@@ -157,11 +157,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
-	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
+	if(!(flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
-	for (var/slot in attachments)
+	for(var/slot in attachments)
 		var/obj/item/attachable/A = attachments[slot]
-		if (!A || !A.light_mod)
+		if(!A || !A.light_mod)
 			continue
 		bearer.SetLuminosity(0, FALSE, src)
 		SetLuminosity(A.light_mod)
@@ -171,10 +171,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/pickup(mob/user)
 	..()
 
-	if (flags_gun_features & GUN_FLASHLIGHT_ON)
-		for (var/slot in attachments)
+	if(flags_gun_features & GUN_FLASHLIGHT_ON)
+		for(var/slot in attachments)
 			var/obj/item/attachable/A = attachments[slot]
-			if (!A || !A.light_mod)
+			if(!A || !A.light_mod)
 				continue
 			user.SetLuminosity(A.light_mod, FALSE, src)
 			SetLuminosity(0)
@@ -216,9 +216,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return TRUE
 
 /obj/item/weapon/gun/proc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
-	if (!loc || !user)
+	if(!loc || !user)
 		return FALSE
-	if (!isturf(loc))
+	if(!isturf(loc))
 		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
@@ -240,15 +240,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return TRUE
 
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, var/retrieval_slot)
-	if (!ishuman(user))
+	if(!ishuman(user))
 		return
-	if (!retrieval_check(user, retrieval_slot))
+	if(!retrieval_check(user, retrieval_slot))
 		return
 	addtimer(CALLBACK(src, .proc/retrieve_to_slot, user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
-	if (target)
+	if(target)
 		lower_aim()
 		return
 
@@ -264,15 +264,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 //magnetic sling
 
 /obj/item/weapon/gun/proc/handle_sling(mob/living/carbon/human/user)
-	if (!ishuman(user))
+	if(!ishuman(user))
 		return
 
 	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
-	if (!loc || !user)
+	if(!loc || !user)
 		return
-	if (!isturf(loc))
+	if(!isturf(loc))
 		return
 
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))

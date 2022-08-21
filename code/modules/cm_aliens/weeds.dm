@@ -87,7 +87,7 @@
 
 /obj/effect/alien/weeds/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	. = ..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_WEEDS
 
 /obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
@@ -151,13 +151,13 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-	if (ishuman(AM))
+	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
+		if(!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
 			H.next_move_slowdown = H.next_move_slowdown + weed_strength
-	else if (isXeno(AM))
+	else if(isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
-		if (!linked_hive.is_ally(X))
+		if(!linked_hive.is_ally(X))
 			X.next_move_slowdown = X.next_move_slowdown + (weed_strength*WEED_XENO_SPEED_MULT)
 
 // Uh oh, we might be dying!
@@ -201,7 +201,7 @@
 				continue
 			else if(W.weed_strength >= WEED_LEVEL_HIVE)
 				continue
-			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
+			else if(W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
 				continue
 			qdel(W)
 
@@ -277,7 +277,7 @@
 		if(istype(check, /turf/closed/wall/resin))
 			my_dir |= check_dir
 
-		else if (locate(/obj/effect/alien/weeds) in check)
+		else if(locate(/obj/effect/alien/weeds) in check)
 			my_dir |= check_dir
 
 	// big brain the icon dir by letting -15 represent the base icon,
@@ -450,9 +450,9 @@
 	overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
-	if (istype(hive))
+	if(istype(hive))
 		linked_hive = hive
-	else if (istype(X) && X.hive)
+	else if(istype(X) && X.hive)
 		linked_hive = X.hive
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
@@ -479,7 +479,7 @@
 	if(X)
 		add_hiddenprint(X)
 		weed_strength = X.weed_level
-		if (weed_strength < WEED_LEVEL_STANDARD)
+		if(weed_strength < WEED_LEVEL_STANDARD)
 			weed_strength = WEED_LEVEL_STANDARD
 
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!

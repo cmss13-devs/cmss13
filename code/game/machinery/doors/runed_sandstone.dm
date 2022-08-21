@@ -24,7 +24,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)
-	if (!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
+	if(!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))
@@ -108,7 +108,7 @@
 	src.density = FALSE
 	update_icon()
 	SetOpacity(0)
-	if (filler)
+	if(filler)
 		filler.SetOpacity(opacity)
 
 	if(operating)

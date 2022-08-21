@@ -24,7 +24,7 @@
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
 	. = ..()
 	src.amount = length
-	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
+	if(param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -32,7 +32,7 @@
 	update_wclass()
 
 /obj/item/stack/cable_coil/proc/updateicon()
-	if (!color)
+	if(!color)
 		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
@@ -105,7 +105,7 @@
 	..()
 
 /obj/item/stack/cable_coil/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
+	if(user.get_inactive_hand() == src)
 		var/obj/item/stack/cable_coil/F = new /obj/item/stack/cable_coil(user, 1, color)
 		transfer_fingerprints_to(F)
 		user.put_in_hands(F)
@@ -172,8 +172,8 @@
 
 
 		use(1)
-		if (C.shock(user, 50))
-			if (prob(50)) //fail
+		if(C.shock(user, 50))
+			if(prob(50)) //fail
 				new/obj/item/stack/cable_coil(C.loc, 1, C.color)
 				qdel(C)
 		//src.laying = 1
@@ -227,8 +227,8 @@
 			NC.updateicon()
 
 			use(1)
-			if (NC.shock(user, 50))
-				if (prob(50)) //fail
+			if(NC.shock(user, 50))
+				if(prob(50)) //fail
 					new/obj/item/stack/cable_coil(NC.loc, 1, NC.color)
 					qdel(NC)
 
@@ -261,8 +261,8 @@
 		C.updateicon()
 
 		use(1)
-		if (C.shock(user, 50))
-			if (prob(50)) //fail
+		if(C.shock(user, 50))
+			if(prob(50)) //fail
 				new/obj/item/stack/cable_coil(C.loc, 2, C.color)
 				qdel(C)
 

@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	layer = LOWER_ITEM_LAYER
 	var/turf/closed/wall/holed_wall
-	
+
 /obj/effect/acid_hole/Initialize()
 	. = ..()
 	if(istype(loc, /turf/closed/wall))
@@ -32,7 +32,7 @@
 
 
 /obj/effect/acid_hole/MouseDrop_T(mob/M, mob/user)
-	if (!holed_wall)
+	if(!holed_wall)
 		return
 
 	if(M == user && isXeno(user))
@@ -70,7 +70,7 @@
 
 	var/turf/T = get_step(src, crawl_dir)
 
-	if (!T || T.density)
+	if(!T || T.density)
 		to_chat(user, "This hole leads nowhere!")
 		return
 
@@ -91,7 +91,7 @@
 
 	if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
-			if (T.density)
+			if(T.density)
 				return
 			for(var/obj/O in T)
 				if(O.BlockedPassDirs(user, crawl_dir))

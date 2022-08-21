@@ -15,7 +15,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (debug_server)
+	if(debug_server)
 		call(debug_server, "auxtools_init")()
 		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
@@ -117,16 +117,16 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	if (T == "ping")
+	if(T == "ping")
 		var/x = 1
-		for (var/client/C)
+		for(var/client/C)
 			x++
 		return x
 
 	else if(T == "players")
 		return length(GLOB.clients)
 
-	else if (T == "status")
+	else if(T == "status")
 		var/list/s = list()
 		s["version"] = game_version
 		s["mode"] = master_mode
@@ -154,7 +154,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return list2params(s)
 
 	// Used in external requests for player data.
-	else if (T == "pinfo")
+	else if(T == "pinfo")
 		var/retdata = ""
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"

@@ -16,16 +16,16 @@
 
 
 	trigger(emote, mob/living/carbon/source as mob)
-		if (src.uses < 1)	return 0
-		if (emote == src.activation_emote)
+		if(src.uses < 1)	return 0
+		if(emote == src.activation_emote)
 			src.uses--
 			to_chat(source, "You feel a faint click.")
-			if (source.handcuffed)
+			if(source.handcuffed)
 				var/obj/item/W = source.handcuffed
 				source.handcuffed = null
 				source.handcuff_update()
 				source.drop_inv_item_on_ground(W)
-			if (source.legcuffed)
+			if(source.legcuffed)
 				var/obj/item/W = source.legcuffed
 				source.legcuffed = null
 				source.update_inv_legcuffed()

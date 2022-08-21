@@ -14,17 +14,17 @@ SUBSYSTEM_DEF(human)
 	return ..()
 
 /datum/controller/subsystem/human/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = processable_human_list.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/mob/living/carbon/human/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || QDELETED(M))
+		if(!M || QDELETED(M))
 			continue
 
 		M.Life(wait * 0.1)
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

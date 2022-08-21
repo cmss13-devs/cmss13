@@ -186,7 +186,7 @@
 	return dat
 
 /obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
+	if(close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
@@ -197,7 +197,7 @@
 		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
-	if (href_list["close"] && current_mapviewer)
+	if(href_list["close"] && current_mapviewer)
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return

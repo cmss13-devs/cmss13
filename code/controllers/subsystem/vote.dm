@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(vote)
 	if(!CONFIG_GET(flag/default_no_vote) && length(choices))
 		var/list/non_voters = GLOB.directory.Copy()
 		non_voters -= voted
-		for (var/non_voter_ckey in non_voters)
+		for(var/non_voter_ckey in non_voters)
 			var/client/C = non_voters[non_voter_ckey]
 			if(!C || C.is_afk())
 				non_voters -= non_voter_ckey

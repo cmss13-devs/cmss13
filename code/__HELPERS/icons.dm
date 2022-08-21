@@ -562,8 +562,8 @@ proc/ReadRGB(rgb)
 	return flat_icon
 
 proc/adjust_brightness(var/color, var/value)
-	if (!color) return "#FFFFFF"
-	if (!value) return color
+	if(!color) return "#FFFFFF"
+	if(!value) return color
 
 	var/list/RGB = ReadRGB(color)
 	RGB[1] = Clamp(RGB[1]+value,0,255)
@@ -576,7 +576,7 @@ proc/sort_atoms_by_layer(var/list/atoms)
 	var/list/result = atoms.Copy()
 	var/gap = result.len
 	var/swapped = 1
-	while (gap > 1 || swapped)
+	while(gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
 			gap = round(gap / 1.3) // 1.3 is the emperic comb sort coefficient
@@ -613,30 +613,30 @@ proc/sort_atoms_by_layer(var/list/atoms)
 	I.flick_overlay(src, time)
 
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
-	if (!thing)
+	if(!thing)
 		return
 
 	var/key
 	var/icon/I = thing
 
-	if (!target)
+	if(!target)
 		return
-	if (target == world)
+	if(target == world)
 		target = GLOB.clients
 
 	var/list/targets
-	if (!islist(target))
+	if(!islist(target))
 		targets = list(target)
 	else
 		targets = target
-		if (!targets.len)
+		if(!targets.len)
 			return
-	if (!isicon(I))
-		if (isfile(thing)) //special snowflake
+	if(!isicon(I))
+		if(isfile(thing)) //special snowflake
 			var/name = sanitize_filename("[generate_asset_name(thing)].png")
-			if (!SSassets.cache[name])
+			if(!SSassets.cache[name])
 				SSassets.transport.register_asset(name, thing)
-			for (var/thing2 in targets)
+			for(var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
@@ -644,19 +644,19 @@ proc/sort_atoms_by_layer(var/list/atoms)
 		var/atom/A = thing
 
 		I = A.icon
-		if (isnull(icon_state))
+		if(isnull(icon_state))
 			icon_state = A.icon_state
-			if (!icon_state)
+			if(!icon_state)
 				icon_state = initial(A.icon_state)
-				if (isnull(dir))
+				if(isnull(dir))
 					dir = initial(A.dir)
 
-		if (isnull(dir))
+		if(isnull(dir))
 			dir = A.dir
 	else
-		if (isnull(dir))
+		if(isnull(dir))
 			dir = SOUTH
-		if (isnull(icon_state))
+		if(isnull(icon_state))
 			icon_state = ""
 
 	I = icon(I, icon_state, dir, frame, moving)
@@ -664,7 +664,7 @@ proc/sort_atoms_by_layer(var/list/atoms)
 	key = "[generate_asset_name(I)].png"
 	if(!SSassets.cache[key])
 		SSassets.transport.register_asset(key, I)
-	for (var/thing2 in targets)
+	for(var/thing2 in targets)
 		SSassets.transport.send_assets(thing2, key)
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
@@ -673,11 +673,11 @@ proc/sort_atoms_by_layer(var/list/atoms)
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
 	SHOULD_NOT_SLEEP(TRUE) // Sanity, for purpose of debugging with REALTIMEOFDAY below only
-	if (!thing)
+	if(!thing)
 		return
 
 	var/start_time = REALTIMEOFDAY
-	if (isicon(thing))
+	if(isicon(thing))
 		. = icon2html(thing, target)
 	else
 		var/icon/I = getFlatIcon(thing)

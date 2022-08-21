@@ -51,7 +51,7 @@
 	set category = "Object"
 	set name = "Eject Body Scanner"
 
-	if (usr.stat != 0)
+	if(usr.stat != 0)
 		return
 	src.go_out()
 	add_fingerprint(usr)
@@ -62,12 +62,12 @@
 	set category = "Object"
 	set name = "Enter Body Scanner"
 
-	if (usr.stat || !(ishuman(usr)))
+	if(usr.stat || !(ishuman(usr)))
 		return
-	if (src.occupant)
+	if(src.occupant)
 		to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
 		return
-	if (usr.abiotic())
+	if(usr.abiotic())
 		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
 		return
 	go_in_bodyscanner(usr)
@@ -92,7 +92,7 @@
 		playsound(src, 'sound/machines/scanning_pod1.ogg')
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
-	if ((!( src.occupant ) || src.locked))
+	if((!( src.occupant ) || src.locked))
 		return
 	for(var/obj/O in src)
 		O.forceMove(loc)
@@ -118,8 +118,8 @@
 
 /obj/structure/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
 	var/mob/M
-	if (istype(I, /obj/item/grab))
-		if (occupant)
+	if(istype(I, /obj/item/grab))
+		if(occupant)
 			to_chat(user, SPAN_WARNING("The scanner is already occupied!"))
 			return
 		var/obj/item/grab/G = I
@@ -137,10 +137,10 @@
 			return
 	else
 		return
-	if (M.abiotic())
+	if(M.abiotic())
 		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
 		return
-	if (isXeno(M))
+	if(isXeno(M))
 		to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
 		return
 
@@ -155,11 +155,11 @@
 		A.ex_act(severity, , cause_data)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
+			if(prob(25))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -218,7 +218,7 @@
 /obj/structure/machinery/body_scanconsole/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -232,7 +232,7 @@
 	if(stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
 	else
-		if (stat & NOPOWER)
+		if(stat & NOPOWER)
 			spawn(rand(0, 15))
 				src.icon_state = "body_scannerconsole-p"
 		else
@@ -262,16 +262,16 @@
 		return
 
 	var/dat
-	if (delete && temphtml) //Window in buffer but its just simple message, so nothing
+	if(delete && temphtml) //Window in buffer but its just simple message, so nothing
 		delete = delete
-	else if (!delete && temphtml) //Window in buffer - its a menu, dont add clear message
+	else if(!delete && temphtml) //Window in buffer - its a menu, dont add clear message
 		dat = "[temphtml]<BR><BR><A href='?src=\ref[src];clear=1'>Main Menu</A>"
-	else if (connected) //Is something connected?
+	else if(connected) //Is something connected?
 		var/mob/living/carbon/human/H = connected.occupant
 		var/datum/data/record/N = null
 		var/human_ref = WEAKREF(H)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["ref"] == human_ref)
+			if(R.fields["ref"] == human_ref)
 				N = R
 		if(isnull(N))
 			N = create_medical_record(H)
@@ -291,18 +291,18 @@
 
 
 /obj/structure/machinery/body_scanconsole/Topic(href, href_list)
-	if (..())
+	if(..())
 		return
 
-	if (href_list["print"])
-		if (!src.connected)
+	if(href_list["print"])
+		if(!src.connected)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: No body scanner connected.")]")
 			return
 		var/mob/living/carbon/human/occupant = src.connected.occupant
-		if (!src.connected.occupant)
+		if(!src.connected.occupant)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The body scanner is empty.")]")
 			return
-		if (!istype(occupant,/mob/living/carbon/human))
+		if(!istype(occupant,/mob/living/carbon/human))
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The body scanner cannot scan that lifeform.")]")
 			return
 		var/obj/item/paper/R = new(src.loc)
@@ -311,7 +311,7 @@
 
 
 /obj/structure/machinery/bodyscanner/proc/get_occupant_data()
-	if (!occupant || !istype(occupant, /mob/living/carbon/human))
+	if(!occupant || !istype(occupant, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = occupant
 	var/list/occupant_data = list(
@@ -360,7 +360,7 @@
 			aux = "Dead"
 	var/s_class = occ["health"] > 50 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("Health:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["health"]]% ([aux])</font>", s_class)]<br>"
-	if (occ["virus_present"])
+	if(occ["virus_present"])
 		dat += SET_CLASS("Viral pathogen detected in blood stream.", INTERFACE_RED)
 		dat += "<br>"
 
@@ -452,7 +452,7 @@
 			open = "Open<br>"
 
 		var/unknown_body = 0
-		if (e.implants.len)
+		if(e.implants.len)
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
 					imp += "[I] implanted<br>"

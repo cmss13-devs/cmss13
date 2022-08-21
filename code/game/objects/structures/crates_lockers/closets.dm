@@ -43,7 +43,7 @@
 
 /obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/structure/closet/alter_health()
@@ -165,7 +165,7 @@
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				for (var/atom/movable/A as mob|obj in src)
+				for(var/atom/movable/A as mob|obj in src)
 					A.forceMove(src.loc)
 					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 				qdel(src)
@@ -300,7 +300,7 @@
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1
-			for (var/mob/M in hearers(src, null))
+			for(var/mob/M in hearers(src, null))
 				to_chat(M, text("<FONT size=[]>BANG, bang!</FONT>", max(0, 5 - get_dist(src, M))))
 			addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
@@ -337,7 +337,7 @@
 		icon_state = icon_opened
 
 /obj/structure/closet/hear_talk(mob/M as mob, text, verb, language, italics)
-	for (var/atom/A in src)
+	for(var/atom/A in src)
 		if(istype(A,/obj/))
 			var/obj/O = A
 			O.hear_talk(M, text)

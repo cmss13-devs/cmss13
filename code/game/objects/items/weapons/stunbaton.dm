@@ -146,7 +146,7 @@
 
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
-		if (!..())	//item/attack() does it's own messaging and logs
+		if(!..())	//item/attack() does it's own messaging and logs
 			return FALSE	// item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
@@ -154,7 +154,7 @@
 
 	else
 		//copied from human_defense.dm - human defence code should really be refactored some time.
-		if (ishuman(L))
+		if(ishuman(L))
 
 			if(!target_zone) //shouldn't ever happen
 				L.visible_message(SPAN_DANGER("<B>[user] misses [L] with \the [src]!"))
@@ -162,7 +162,7 @@
 
 			var/mob/living/carbon/human/H = L
 			var/obj/limb/affecting = H.get_limb(target_zone)
-			if (affecting)
+			if(affecting)
 				if(!status)
 					L.visible_message(SPAN_WARNING("[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
 					return TRUE
@@ -205,7 +205,7 @@
 /obj/item/weapon/melee/baton/robot/attack_self(mob/user)
 	//try to find our power cell
 	var/mob/living/silicon/robot/R = loc
-	if (istype(R))
+	if(istype(R))
 		bcell = R.cell
 	return ..()
 

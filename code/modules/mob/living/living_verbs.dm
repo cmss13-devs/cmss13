@@ -50,7 +50,7 @@
 	//escaping a bodybag or a thermal tarp
 	if(loc && (istype(loc, /obj/structure/closet/bodybag)))
 		var/obj/structure/closet/bodybag/BB = loc
-		if (BB.opened)
+		if(BB.opened)
 			return
 		visible_message("[BB] begins to wiggle violently!")
 		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
@@ -72,7 +72,7 @@
 	//regular ejection is done with verbs and doesnt work for half the time
 	if(loc && (istype(loc, /obj/structure/machinery/autodoc)))
 		var/obj/structure/machinery/autodoc/BB = loc
-		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
+		if(alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
 			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
 			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
 			playsound(src, 'sound/machines/beepalert.ogg', 30)

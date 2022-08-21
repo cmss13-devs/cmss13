@@ -1,17 +1,17 @@
 /mob/dead/observer/say(var/message)
 	message = strip_html(message)
 
-	if (!message)
+	if(!message)
 		return
 
 	log_say("Ghost/[src.key] : [message]")
 
-	if (src.client)
+	if(src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
 			to_chat(src, SPAN_DANGER("You cannot talk in deadchat (muted)."))
 			return
 
-		if (src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
+		if(src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
 			return
 
 	. = src.say_dead(message)
@@ -58,7 +58,7 @@
 		message = "<b>[message]</b>"
 
 	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
-	if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
+	if(speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 		var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 		playsound_client(client, speech_sound, source, sound_vol)
 

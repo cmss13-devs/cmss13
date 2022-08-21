@@ -13,16 +13,16 @@
 /obj/structure/displaycase/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
+			if(prob(50))
 				src.health -= 5
 				src.healthcheck()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(50))
+			if(prob(50))
 				src.health -= 15
 				src.healthcheck()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			new /obj/item/shard( src.loc )
-			if (occupied)
+			if(occupied)
 				occupied = 0
 			qdel(src)
 
@@ -34,8 +34,8 @@
 	return 1
 
 /obj/structure/displaycase/proc/healthcheck()
-	if (src.health <= 0)
-		if (!( src.destroyed ))
+	if(src.health <= 0)
+		if(!( src.destroyed ))
 			src.density = 0
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
@@ -60,7 +60,7 @@
 	return
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
-	if (src.destroyed && src.occupied)
+	if(src.destroyed && src.occupied)
 		to_chat(user, "\b You deactivate the hover field built into the case.")
 		src.occupied = 0
 		src.add_fingerprint(user)
@@ -69,7 +69,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("You kick the display case."))
 		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
+			if((O.client && !( O.blinded )))
 				to_chat(O, SPAN_DANGER("[user] kicks the display case."))
 		src.health -= 2
 		healthcheck()

@@ -37,16 +37,16 @@
 /obj/structure/machinery/computer/skills/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if (src.z > 6)
+	if(src.z > 6)
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 		return
 	var/dat
 
-	if (temp)
+	if(temp)
 		dat = text("<TT>[]</TT><BR><BR><A href='?src=\ref[];choice=Clear Screen'>Clear Screen</A>", temp, src)
 	else
 		dat = text("Confirm Identity: <A href='?src=\ref[];choice=Confirm Identity'>[]</A><HR>", src, (scan ? text("[]", scan.name) : "----------"))
-		if (authenticated)
+		if(authenticated)
 			switch(screen)
 				if(1.0)
 					dat += {"
@@ -82,7 +82,7 @@
 					dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
 				if(3.0)
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						dat += text("<table><tr><td>	\
 						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n	\
@@ -142,9 +142,9 @@ What a mess.*/
 /obj/structure/machinery/computer/skills/Topic(href, href_list)
 	if(..())
 		return
-	if (!( GLOB.data_core.general.Find(active1) ))
+	if(!( GLOB.data_core.general.Find(active1) ))
 		active1 = null
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isRemoteControlling(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 		switch(href_list["choice"])
 // SORTING!
@@ -163,12 +163,12 @@ What a mess.*/
 			if("Clear Screen")
 				temp = null
 
-			if ("Return")
+			if("Return")
 				screen = 1
 				active1 = null
 
 			if("Confirm Identity")
-				if (scan)
+				if(scan)
 					if(istype(usr,/mob/living/carbon/human) && !usr.get_active_hand())
 						usr.put_in_hands(scan)
 					else
@@ -176,7 +176,7 @@ What a mess.*/
 					scan = null
 				else
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card/id))
+					if(istype(I, /obj/item/card/id))
 						if(usr.drop_held_item())
 							I.forceMove(src)
 							scan = I
@@ -187,18 +187,18 @@ What a mess.*/
 				active1 = null
 
 			if("Log In")
-				if (isRemoteControlling(usr))
+				if(isRemoteControlling(usr))
 					src.active1 = null
 					src.authenticated = usr.name
 					src.rank = "AI"
 					src.screen = 1
-				else if (isborg(usr))
+				else if(isborg(usr))
 					src.active1 = null
 					src.authenticated = usr.name
 					var/mob/living/silicon/robot/R = usr
 					src.rank = R.braintype
 					src.screen = 1
-				else if (istype(scan, /obj/item/card/id))
+				else if(istype(scan, /obj/item/card/id))
 					active1 = null
 					if(check_access(scan))
 						authenticated = scan.registered_name
@@ -207,7 +207,7 @@ What a mess.*/
 //RECORD FUNCTIONS
 			if("Search Records")
 				var/t1 = input("Search String: (Partial Name or ID or Fingerprints or Rank)", "Secure. records", null, null)  as text
-				if ((!( t1 ) || usr.stat || !( authenticated ) || usr.is_mob_restrained() || !in_range(src, usr)))
+				if((!( t1 ) || usr.stat || !( authenticated ) || usr.is_mob_restrained() || !in_range(src, usr)))
 					return
 				Perp = new/list()
 				t1 = lowertext(t1)
@@ -224,7 +224,7 @@ What a mess.*/
 				for(var/i = 1, i<=Perp.len, i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
-						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
+						if((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
 							Perp[i+1] = E
 				tempname = t1
 				screen = 4
@@ -233,22 +233,22 @@ What a mess.*/
 				screen = 2
 				active1 = null
 
-			if ("Browse Record")
+			if("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"])
-				if (!( GLOB.data_core.general.Find(R) ))
+				if(!( GLOB.data_core.general.Find(R) ))
 					temp = "Record Not Found!"
 				else
 					for(var/datum/data/record/E in GLOB.data_core.security)
 					active1 = R
 					screen = 3
 
-			if ("Print Record")
-				if (!( printing ))
+			if("Print Record")
+				if(!( printing ))
 					printing = 1
 					sleep(50)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Employment Record</B></CENTER><BR>"
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						P.info += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<BR>\nSex: [active1.fields["sex"]]<BR>\nAge: [active1.fields["age"]]<BR>\nPhysical Status: [active1.fields["p_stat"]]<BR>\nMental Status: [active1.fields["m_stat"]]<BR>\nEmployment/Skills Summary:<BR>\n[decode(active1.fields["notes"])]<BR>"
 						P.name = "Employment Record ([active1.fields["name"]])"
 					else
@@ -258,55 +258,55 @@ What a mess.*/
 
 					printing = null
 //RECORD DELETE
-			if ("Delete All Records")
+			if("Delete All Records")
 				temp = ""
 				temp += "Are you sure you wish to delete all Employment records?<br>"
 				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
 				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 
-			if ("Purge All Records")
+			if("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Employment records deleted."
 
-			if ("Delete Record (ALL)")
-				if (active1)
+			if("Delete Record (ALL)")
+				if(active1)
 					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
 					temp += "<a href='?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
 					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
-			if ("New Record (General)")
+			if("New Record (General)")
 				active1 = CreateGeneralRecord()
 
 //FIELD FUNCTIONS
-			if ("Edit Field")
+			if("Edit Field")
 				var/a1 = active1
 				switch(href_list["field"])
 					if("name")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
-							if ((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
+							if((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
 							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("id")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							if((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							active1.fields["id"] = t1
 
 					if("sex")
-						if (istype(active1, /datum/data/record))
-							if (active1.fields["sex"] == "Male")
+						if(istype(active1, /datum/data/record))
+							if(active1.fields["sex"] == "Male")
 								active1.fields["sex"] = "Female"
 							else
 								active1.fields["sex"] = "Male"
 					if("age")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							if((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							active1.fields["age"] = t1
 					if("rank")
@@ -320,9 +320,9 @@ What a mess.*/
 						else
 							alert(usr, "You do not have the required rank to do this!")
 					if("species")
-						if (istype(active1, /datum/data/record))
+						if(istype(active1, /datum/data/record))
 							var/t1 = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							if((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							active1.fields["species"] = t1
 
@@ -330,16 +330,16 @@ What a mess.*/
 			else//To properly clear as per clear screen.
 				temp=null
 				switch(href_list["choice"])
-					if ("Change Rank")
-						if (active1)
+					if("Change Rank")
+						if(active1)
 							active1.fields["rank"] = href_list["rank"]
 							if(href_list["rank"] in GLOB.joblist)
 								active1.fields["real_rank"] = href_list["real_rank"]
 
-					if ("Delete Record (ALL) Execute")
-						if (active1)
+					if("Delete Record (ALL) Execute")
+						if(active1)
 							for(var/datum/data/record/R in GLOB.data_core.medical)
-								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
+								if((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									GLOB.data_core.medical -= R
 									qdel(R)
 								else

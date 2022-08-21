@@ -41,7 +41,7 @@
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(!proximity) return
-	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
+	if(istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
@@ -189,18 +189,18 @@
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
 
-	if (istype(A, /obj/item/storage/backpack ))
+	if(istype(A, /obj/item/storage/backpack ))
 		return
 
-	else if (locate (/obj/structure/surface/table, src.loc))
+	else if(locate (/obj/structure/surface/table, src.loc))
 		return
 
-	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
+	else if(istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE(" You refill your flower!"))
 		return
 
-	else if (src.reagents.total_volume < 1)
+	else if(src.reagents.total_volume < 1)
 		src.empty = 1
 		to_chat(user, SPAN_NOTICE(" Your flower has run dry!"))
 		return
@@ -445,7 +445,7 @@
 /obj/item/toy/bikehorn/attack_self(mob/user)
 	..()
 
-	if (!spam_flag)
+	if(!spam_flag)
 		spam_flag = TRUE
 		playsound(src.loc, sound_effect, 25, 1)
 		src.add_fingerprint(user)

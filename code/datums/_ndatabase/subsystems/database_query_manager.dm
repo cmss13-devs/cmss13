@@ -181,7 +181,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 		t = trim(t)
 		if(length(t) == 0)
 			continue
-		else if (copytext(t, 1, 2) == "#")
+		else if(copytext(t, 1, 2) == "#")
 			continue
 
 		var/pos = findtext(t, " ")

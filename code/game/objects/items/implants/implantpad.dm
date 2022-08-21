@@ -17,7 +17,7 @@
 
 
 /obj/item/implantpad/update()
-	if (src.case)
+	if(src.case)
 		src.icon_state = "implantpad-1"
 	else
 		src.icon_state = "implantpad-0"
@@ -25,7 +25,7 @@
 
 
 /obj/item/implantpad/attack_hand(mob/user)
-	if ((src.case && (user.l_hand == src || user.r_hand == src)))
+	if((src.case && (user.l_hand == src || user.r_hand == src)))
 		user.put_in_active_hand(case)
 
 		src.case.add_fingerprint(user)
@@ -55,7 +55,7 @@
 	..()
 	user.set_interaction(src)
 	var/dat = "<B>Implant Mini-Computer:</B><HR>"
-	if (src.case)
+	if(src.case)
 		if(src.case.imp)
 			if(istype(src.case.imp, /obj/item/implant))
 				dat += src.case.imp.get_data()
@@ -76,21 +76,21 @@
 
 /obj/item/implantpad/Topic(href, href_list)
 	..()
-	if (usr.stat)
+	if(usr.stat)
 		return
-	if ((usr.contents.Find(src)) || ((in_range(src, usr) && istype(src.loc, /turf))))
+	if((usr.contents.Find(src)) || ((in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
-		if (href_list["tracking_id"])
+		if(href_list["tracking_id"])
 			var/obj/item/implant/tracking/T = src.case.imp
 			T.id += text2num(href_list["tracking_id"])
 			T.id = min(100, T.id)
 			T.id = max(1, T.id)
 
-		if (istype(src.loc, /mob))
+		if(istype(src.loc, /mob))
 			attack_self(src.loc)
 		else
 			for(var/mob/M in viewers(1, src))
-				if (M.client)
+				if(M.client)
 					src.attack_self(M)
 		src.add_fingerprint(usr)
 	else

@@ -183,9 +183,9 @@ GLOBAL_LIST_INIT(comp2table, list(
 		if(new_luminosity)
 			light = new(src)
 	trueLuminosity = new_luminosity
-	if (trueLuminosity < 1)
+	if(trueLuminosity < 1)
 		luminosity = 0
-	else if (trueLuminosity <= 100)
+	else if(trueLuminosity <= 100)
 		luminosity = sqrtTable[trueLuminosity]
 	else
 		luminosity = sqrt(trueLuminosity)
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	// replicate vars
 	for(var/V in Area.vars)
 		switch(V)
-			if ("contents","lighting_overlay", "overlays")
+			if("contents","lighting_overlay", "overlays")
 				continue
 			else
 				if(issaved(Area.vars[V])) A.vars[V] = Area.vars[V]
@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if(Area.tag!=new_tag)	//skip if already in this area
 		var/area/A = locate(new_tag)	// find an appropriate area
 
-		if (!A)
+		if(!A)
 			A = build_lighting_area(new_tag, level)
 
 		A.contents += src	// move the turf into the area
@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
 		lighting_overlay.plane = LIGHTING_PLANE
-	if (light < 6)
+	if(light < 6)
 		overlays.Add(lighting_overlay)
 
 /area/proc/SetDynamicLighting()

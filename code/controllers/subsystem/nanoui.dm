@@ -11,17 +11,17 @@ SUBSYSTEM_DEF(nano)
 	return ..()
 
 /datum/controller/subsystem/nano/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = nanomanager.processing_uis.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/datum/nanoui/UI = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!UI || QDELETED(UI))
+		if(!UI || QDELETED(UI))
 			continue
 
 		UI.process()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

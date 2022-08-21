@@ -13,8 +13,8 @@
 	var/comm_paygrade = ""
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
+	if(language && (language.flags & NONVERBAL))
+		if(!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
 			message = language.scramble(message)
 
 	if(!say_understands(speaker,language))
@@ -49,7 +49,7 @@
 			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
 	else
 		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
-		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
+		if(speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
 
@@ -75,8 +75,8 @@
 	var/style = "body"
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker in view(src)))
+	if(language && (language.flags & NONVERBAL))
+		if(!speaker || (src.sdisabilities & DISABILITY_BLIND || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
 	if(!say_understands(speaker,language))
@@ -117,7 +117,7 @@
 		var/jobname // the mob's "job"
 		var/mob/living/carbon/human/impersonating //The crewmember being impersonated, if any.
 
-		if (ishuman(speaker))
+		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
 
 			if((H.wear_id && istype(H.wear_id,/obj/item/card/id/syndicate)) && (H.wear_mask && istype(H.wear_mask,/obj/item/clothing/mask/gas/voice)))
@@ -136,13 +136,13 @@
 				jobname = H.get_assignment()
 				comm_paygrade = H.get_paygrade()
 
-		else if (iscarbon(speaker)) // Nonhuman carbon mob
+		else if(iscarbon(speaker)) // Nonhuman carbon mob
 			jobname = "No id"
 			comm_paygrade = ""
-		else if (isAI(speaker))
+		else if(isAI(speaker))
 			jobname = "AI"
 			comm_paygrade = ""
-		else if (isrobot(speaker))
+		else if(isrobot(speaker))
 			jobname = "Cyborg"
 			comm_paygrade = ""
 		else

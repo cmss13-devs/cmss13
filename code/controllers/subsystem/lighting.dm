@@ -64,5 +64,5 @@ SUBSYSTEM_DEF(lighting)
 				T.cached_lumcount = T.lighting_lumcount
 				T.shift_to_subarea()
 			T.lighting_changed = FALSE
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

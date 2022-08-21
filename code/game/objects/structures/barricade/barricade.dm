@@ -42,7 +42,7 @@
 
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = NONE
 		PF.flags_can_pass_front = NONE
 		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
@@ -122,7 +122,7 @@
 	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
 		var/mob/living/carbon/Xenomorph/Crusher/C = AM
 
-		if (!C.throwing)
+		if(!C.throwing)
 			return
 
 		if(crusher_resistant)
@@ -307,7 +307,7 @@
 // However, will look into fixing bugs w/diagonal movement different if this is
 // to hacky.
 /obj/structure/barricade/handle_rotation()
-	if (dir & EAST)
+	if(dir & EAST)
 		setDir(EAST)
 	else if(dir & WEST)
 		setDir(WEST)

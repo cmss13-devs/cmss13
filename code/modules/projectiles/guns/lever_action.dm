@@ -245,7 +245,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(world.time < (recent_lever + lever_delay))
 		return
 	if(levered)
-		if (world.time > (message_cooldown + lever_delay))
+		if(world.time > (message_cooldown + lever_delay))
 			to_chat(user, SPAN_WARNING("<i>[src] already has a bullet in the chamber!<i>"))
 			message_cooldown = world.time
 		return

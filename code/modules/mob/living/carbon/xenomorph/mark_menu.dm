@@ -173,7 +173,7 @@
 			var/list/possible_xenos = list()
 			possible_xenos |= FunkTownOhyea
 			for(var/mob/living/carbon/Xenomorph/T in GLOB.living_xeno_list)
-				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
+				if(T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
 			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
@@ -185,7 +185,7 @@
 					. = TRUE
 				update_all_data()
 				return
-			if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
+			if(!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
 				return
 			else
 				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your queen commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))

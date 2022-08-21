@@ -46,5 +46,5 @@ SUBSYSTEM_DEF(mapview)
 		if(istype(O) && O.current_squad && O.current_mapviewer)
 			O.update_mapview()
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

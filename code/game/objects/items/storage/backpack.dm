@@ -24,7 +24,7 @@
 		toggle_lock(card, H)
 		return
 
-	if (..() && use_sound)
+	if(..() && use_sound)
 		playsound(loc, use_sound, 15, TRUE, 6)
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
@@ -152,12 +152,12 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 		..()
 
 	proc/failcheck(mob/user as mob)
-		if (prob(src.reliability)) return 1 //No failure
-		if (prob(src.reliability))
+		if(prob(src.reliability)) return 1 //No failure
+		if(prob(src.reliability))
 			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
 		else
 			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-			for (var/obj/O in src.contents) //it broke, delete what was in it
+			for(var/obj/O in src.contents) //it broke, delete what was in it
 				qdel(O)
 			crit_fail = 1
 			icon_state = "brokenpack"
@@ -767,12 +767,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
 		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
+	else if(istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
 		return
 	..()
@@ -801,12 +801,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
-	if (istype(W, /obj/item/ammo_magazine/flamer_tank))
+	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/FTL = W
 		var/missing_volume = FTL.max_rounds - FTL.current_rounds
 
 		//Fuel has to be standard napalm OR tank needs to be empty. We need to have a non-full tank and our backpack be dry
-		if (((FTL.caliber == "UT-Napthal Fuel") || (!FTL.current_rounds)) && missing_volume && reagents.total_volume)
+		if(((FTL.caliber == "UT-Napthal Fuel") || (!FTL.current_rounds)) && missing_volume && reagents.total_volume)
 			var/fuel_available = reagents.total_volume < missing_volume ? reagents.total_volume : missing_volume
 			reagents.remove_reagent("fuel", fuel_available)
 			FTL.current_rounds = FTL.current_rounds + fuel_available

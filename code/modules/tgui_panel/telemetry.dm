@@ -67,9 +67,9 @@
 			return
 		var/list/row = telemetry_connections[i]
 		// Check for a malformed history object
-		if (!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
+		if(!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
 			return
-		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE))
+		if(world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE))
 			found = row
 			break
 		CHECK_TICK

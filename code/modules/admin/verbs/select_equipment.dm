@@ -8,7 +8,7 @@
 	var/rank_list = list("Custom", "Weyland-Yutani") + RoleAuthority.roles_by_name
 
 	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
-	if (!newrank)
+	if(!newrank)
 		return
 	if(!H)
 		return
@@ -122,15 +122,15 @@
 	cmd_admin_dress_human(M)
 
 /client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
-	if (!no_logs)
+	if(!no_logs)
 		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_name_presets_list)
 
 	if(isnull(dresscode))
 		return
 
 
-	for (var/obj/item/I in M)
-		if (istype(I, /obj/item/implant))
+	for(var/obj/item/I in M)
+		if(istype(I, /obj/item/implant))
 			continue
 		qdel(I)
 
@@ -156,7 +156,7 @@
 	set desc = "Applies an equipment preset to all humans in the world."
 
 	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.gear_name_presets_list)
-	if (isnull(dresscode))
+	if(isnull(dresscode))
 		return
 
 	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") == "No") return

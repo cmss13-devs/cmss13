@@ -135,7 +135,7 @@
 /datum/shuttle/ferry/marine/process()
 
 	switch(process_state)
-		if (WAIT_LAUNCH)
+		if(WAIT_LAUNCH)
 			if(!preflight_checks())
 				announce_preflight_failure()
 				if(automated_launch)
@@ -146,32 +146,32 @@
 				in_use = null
 				locked = 0
 				return .
-			if (skip_docking_checks() || docking_controller.can_launch())
-				if (move_time) long_jump()
+			if(skip_docking_checks() || docking_controller.can_launch())
+				if(move_time) long_jump()
 				else short_jump()
 
 				process_state = WAIT_ARRIVE
 
-		if (FORCE_CRASH)
+		if(FORCE_CRASH)
 			if(move_time) long_jump_crash()
 			else short_jump() //If there's no move time, we are doing this normally
 
 			process_state = WAIT_ARRIVE
 
-		if (FORCE_LAUNCH)
-			if (move_time) long_jump()
+		if(FORCE_LAUNCH)
+			if(move_time) long_jump()
 			else short_jump()
 
 			process_state = WAIT_ARRIVE
 
-		if (WAIT_ARRIVE)
-			if (moving_status == SHUTTLE_IDLE)
+		if(WAIT_ARRIVE)
+			if(moving_status == SHUTTLE_IDLE)
 				dock()
 				in_use = null	//release lock
 				process_state = WAIT_FINISH
 
-		if (WAIT_FINISH)
-			if (skip_docking_checks() || docking_controller.docked() || world.time > last_dock_attempt_time + DOCK_ATTEMPT_TIMEOUT)
+		if(WAIT_FINISH)
+			if(skip_docking_checks() || docking_controller.docked() || world.time > last_dock_attempt_time + DOCK_ATTEMPT_TIMEOUT)
 				process_state = IDLE_STATE
 				arrived()
 
@@ -220,7 +220,7 @@
 
 	//END: Heavy lifting backend
 
-	if (moving_status != SHUTTLE_WARMUP)
+	if(moving_status != SHUTTLE_WARMUP)
 		recharging = 0
 		return	//someone cancelled the launch
 
@@ -277,7 +277,7 @@
 	move_scheduled = 1
 
 	// Wait for move to be completed
-	while (move_scheduled)
+	while(move_scheduled)
 		sleep(10)
 
 	var/list/turfs_int = get_shuttle_turfs(T_int, info_datums) //Interim turfs
@@ -326,7 +326,7 @@
 	move_scheduled = 1
 
 	// Wait for move to be completed
-	while (move_scheduled)
+	while(move_scheduled)
 		sleep(10)
 
 	//Now that we've landed, assuming some rotation including 0, we need to make sure it doesn't fuck up when we go back
@@ -413,7 +413,7 @@
 
 	//END: Heavy lifting backend
 
-	if (moving_status == SHUTTLE_IDLE)
+	if(moving_status == SHUTTLE_IDLE)
 		recharging = 0
 		return	//someone canceled the launch
 
@@ -443,7 +443,7 @@
 	move_scheduled = 1
 
 	// Wait for move to be completed
-	while (move_scheduled)
+	while(move_scheduled)
 		sleep(10)
 
 	var/list/turfs_int = get_shuttle_turfs(T_int, info_datums) //Interim turfs
@@ -560,7 +560,7 @@
 	move_scheduled = 1
 
 	// Wait for move to be completed
-	while (move_scheduled)
+	while(move_scheduled)
 		sleep(10)
 
 	//We have to get these again so we can close the doors
@@ -574,15 +574,15 @@
 	open_doors_crashed(turfs_trg) //And now open the doors
 
 
-	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
+	for(var/obj/structure/machinery/door_display/research_cell/d in machines)
 		if(is_mainship_level(d.z) || is_loworbit_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
-	for (var/obj/structure/machinery/power/apc/APC in machines)
+	for(var/obj/structure/machinery/power/apc/APC in machines)
 		if(is_mainship_level(APC.z) || is_loworbit_level(APC.z))
 			APC.ion_act()
-	for (var/obj/structure/machinery/power/smes/SMES in machines)
+	for(var/obj/structure/machinery/power/smes/SMES in machines)
 		if(is_mainship_level(SMES.z) || is_loworbit_level(SMES.z))
 			SMES.ion_act()
 
@@ -622,7 +622,7 @@
 
 	sleep(warmup_time)
 
-	if (moving_status == SHUTTLE_IDLE)
+	if(moving_status == SHUTTLE_IDLE)
 		return	//someone cancelled the launch
 
 	moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
@@ -679,7 +679,7 @@
 				INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
 				//No break since transit shutters are the same parent type
 
-		if (iselevator)
+		if(iselevator)
 			for(var/obj/structure/machinery/door/airlock/A in T)
 				if(!istype(A)) continue
 				if(A.locked)

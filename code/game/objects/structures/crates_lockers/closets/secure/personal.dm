@@ -51,7 +51,7 @@
 	new /obj/item/device/radio/headset( src )
 
 /obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
-	if (src.opened)
+	if(src.opened)
 		return ..()
 	if(istype(W, /obj/item/card/id))
 		if(src.broken)
@@ -82,12 +82,12 @@
 		return
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
-		if (src.locked || !src.registered_name)
+		if(src.locked || !src.registered_name)
 			to_chat(usr, SPAN_DANGER("You need to unlock it first."))
-		else if (src.broken)
+		else if(src.broken)
 			to_chat(usr, SPAN_DANGER("It appears to be broken."))
 		else
-			if (src.opened)
+			if(src.opened)
 				if(!src.close())
 					return
 			src.locked = 1

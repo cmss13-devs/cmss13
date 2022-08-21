@@ -13,7 +13,7 @@
 	icon = 'icons/obj/items/harvest.dmi'
 
 /obj/item/reagent_container/food/snacks/grown/New(newloc,newpotency)
-	if (!isnull(newpotency))
+	if(!isnull(newpotency))
 		potency = newpotency
 	..()
 	src.pixel_x = rand(-5.0, 5)
@@ -452,7 +452,7 @@
 	return
 
 /obj/item/reagent_container/food/snacks/grown/bluetomato/Crossed(AM as mob|obj)
-	if (iscarbon(AM))
+	if(iscarbon(AM))
 		var/mob/living/carbon/C = AM
 		C.slip(name, 8, 5)
 

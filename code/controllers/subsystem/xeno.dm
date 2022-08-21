@@ -12,17 +12,17 @@ SUBSYSTEM_DEF(xeno)
 
 
 /datum/controller/subsystem/xeno/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = GLOB.xeno_mob_list.Copy()
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/mob/living/carbon/Xenomorph/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || QDELETED(M))
+		if(!M || QDELETED(M))
 			continue
 
 		M.Life(wait * 0.1)
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return

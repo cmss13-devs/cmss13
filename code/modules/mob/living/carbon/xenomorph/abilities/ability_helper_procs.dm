@@ -161,7 +161,7 @@
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H)
-	if (!isXenoOrHuman(H))
+	if(!isXenoOrHuman(H))
 		return
 
 	H.frozen = 0
@@ -173,14 +173,14 @@
 	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
 
 /proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/Xenomorph/X, direction, distance)
-	if (!istype(H) || !istype(X) ||  !direction || !distance)
+	if(!istype(H) || !istype(X) ||  !direction || !distance)
 		return
 
 	var/turf/T = get_turf(H)
 	var/turf/temp = get_turf(H)
-	for (var/x in 0 to distance)
+	for(var/x in 0 to distance)
 		temp = get_step(T, direction)
-		if (!temp)
+		if(!temp)
 			break
 		T = temp
 

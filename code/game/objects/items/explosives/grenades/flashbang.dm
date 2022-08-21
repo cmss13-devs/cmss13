@@ -128,19 +128,19 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if (E && E.damage >= E.min_bruised_damage)
+		if(E && E.damage >= E.min_bruised_damage)
 			to_chat(M, SPAN_WARNING("Your eyes start to burn badly!"))
 			if(!no_damage)
-				if (E.damage >= E.min_broken_damage)
+				if(E.damage >= E.min_broken_damage)
 					to_chat(M, SPAN_WARNING("You can't see anything!"))
-	if (M.ear_damage >= 15)
+	if(M.ear_damage >= 15)
 		to_chat(M, SPAN_WARNING("Your ears start to ring badly!"))
 		if(!no_damage)
-			if (prob(M.ear_damage - 10 + 5))
+			if(prob(M.ear_damage - 10 + 5))
 				to_chat(M, SPAN_WARNING("You can't hear anything!"))
 				M.sdisabilities |= DISABILITY_DEAF
 	else
-		if (M.ear_damage >= 5)
+		if(M.ear_damage >= 5)
 			to_chat(M, SPAN_WARNING("Your ears start to ring!"))
 
 //Created by Polymorph, fixed by Sieve
@@ -300,7 +300,7 @@
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 	if(E && E.damage >= E.min_bruised_damage)
 		to_chat(H, SPAN_WARNING("Your eyes start to burn badly!"))
-		if (E.damage >= E.min_broken_damage)
+		if(E.damage >= E.min_broken_damage)
 			to_chat(H, SPAN_WARNING("You can't see anything!"))
 	if(H.ear_damage >= 15)
 		to_chat(H, SPAN_WARNING("Your ears start to ring badly!"))

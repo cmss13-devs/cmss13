@@ -49,10 +49,10 @@
 		to_chat(usr, SPAN_DANGER("Access denied."))
 		return
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 
-	if (href_list["setarea"])
+	if(href_list["setarea"])
 
 		//Probably should consider using another list, but this one will do.
 		var/t_area = tgui_input_list(usr, "Select the area to ping.", "Set Target Area", null, tagger_locations)
@@ -63,14 +63,14 @@
 		drone_call_area = t_area
 		to_chat(usr, SPAN_NOTICE(" You set the area selector to [drone_call_area]."))
 
-	else if (href_list["ping"])
+	else if(href_list["ping"])
 
 		to_chat(usr, SPAN_NOTICE(" You issue a maintenance request for all active drones, highlighting [drone_call_area]."))
 		for(var/mob/living/silicon/robot/drone/D in GLOB.mob_list)
 			if(D.client && D.stat == 0)
 				to_chat(D, "-- Maintenance drone presence requested in: [drone_call_area].")
 
-	else if (href_list["shutdown"])
+	else if(href_list["shutdown"])
 
 		var/mob/living/silicon/robot/drone/D = locate(href_list["shutdown"])
 
@@ -80,7 +80,7 @@
 			log_game("[key_name(usr)] issued kill order for [key_name(src)] from control console.")
 			D.shut_down()
 
-	else if (href_list["search_fab"])
+	else if(href_list["search_fab"])
 		if(dronefab)
 			return
 
@@ -95,7 +95,7 @@
 
 		to_chat(usr, SPAN_DANGER("Unable to locate drone fabricator."))
 
-	else if (href_list["toggle_fab"])
+	else if(href_list["toggle_fab"])
 
 		if(!dronefab)
 			return

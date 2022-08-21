@@ -59,31 +59,31 @@
 	var/temp_movespeed_messaged = FALSE
 
 /datum/behavior_delegate/boiler_trapper/on_hitby_projectile(ammo)
-	if (temp_movespeed_usable)
+	if(temp_movespeed_usable)
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isXeno(bound_xeno))
+		if(isXeno(bound_xeno))
 			var/mob/living/carbon/Xenomorph/X = bound_xeno
 			X.speed_modifier -= temp_movespeed_amount
 			X.recalculate_speed()
 			addtimer(CALLBACK(src, .proc/remove_speed_buff), temp_movespeed_duration)
 
 /datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+	if(!ishuman(A))
 		return
-	if (!istype(bound_xeno))
+	if(!istype(bound_xeno))
 		return
 
 	var/mob/living/carbon/human/H = A
 	var/datum/effects/boiler_trap/found = null
-	for (var/datum/effects/boiler_trap/F in H.effects_list)
-		if (F.cause_data?.resolve_mob() == bound_xeno)
+	for(var/datum/effects/boiler_trap/F in H.effects_list)
+		if(F.cause_data?.resolve_mob() == bound_xeno)
 			found = F
 			break
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
-	if (found)
+	if(found)
 		H.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
@@ -99,15 +99,15 @@
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 
 /datum/behavior_delegate/boiler_trapper/on_life()
-	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
-		if (!temp_movespeed_messaged)
+	if((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
+		if(!temp_movespeed_messaged)
 			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isXeno(bound_xeno))
+	if(isXeno(bound_xeno))
 		var/mob/living/carbon/Xenomorph/X = bound_xeno
 		X.speed_modifier += temp_movespeed_amount
 		X.recalculate_speed()

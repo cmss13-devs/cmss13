@@ -21,7 +21,7 @@
 		if(fireaxe)
 			hasaxe = 1
 
-		if (isrobot(usr) || src.locked)
+		if(isrobot(usr) || src.locked)
 			if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
 				to_chat(user, SPAN_DANGER("Resetting circuitry..."))
 				playsound(user, 'sound/machines/lockreset.ogg', 25, 1)
@@ -51,7 +51,7 @@
 						src.localopened = 1
 				update_icon()
 			return
-		if (istype(O, /obj/item/weapon/melee/twohanded/fireaxe) && src.localopened)
+		if(istype(O, /obj/item/weapon/melee/twohanded/fireaxe) && src.localopened)
 			if(!fireaxe)
 				if(O.flags_item & WIELDED)
 					to_chat(user, SPAN_DANGER("Unwield the axe first."))
@@ -144,7 +144,7 @@
 		set name = "Open/Close"
 		set category = "Object"
 
-		if (isrobot(usr) || src.locked || src.smashed)
+		if(isrobot(usr) || src.locked || src.smashed)
 			if(src.locked)
 				to_chat(usr, SPAN_DANGER("The cabinet won't budge!"))
 			else if(src.smashed)
@@ -158,13 +158,13 @@
 		set name = "Remove Fire Axe"
 		set category = "Object"
 
-		if (isrobot(usr))
+		if(isrobot(usr))
 			return
 
-		if (istype(usr, /mob/living/carbon/Xenomorph))
+		if(istype(usr, /mob/living/carbon/Xenomorph))
 			return
 
-		if (localopened)
+		if(localopened)
 			if(fireaxe)
 				usr.put_in_hands(fireaxe)
 				fireaxe = null

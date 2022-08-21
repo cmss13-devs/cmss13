@@ -23,7 +23,7 @@
 
     apply_damage(damage)
 
-    if (amount <= 0)
+    if(amount <= 0)
         return -amount
     return 0
 
@@ -52,7 +52,7 @@
 /datum/xeno_shield/process(delta_time)
 	..()
 	amount = max(amount - decay_amount_per_second * delta_time, 0)
-	if (amount <= 0)
+	if(amount <= 0)
 		on_removal()
 		qdel(src)
 
@@ -63,8 +63,8 @@
 	added_amount, shield_source, type = /datum/xeno_shield, \
 	duration = -1, decay_amount_per_second = 1, \
 	add_shield_on = FALSE, max_shield = 200)
-	for (var/datum/xeno_shield/curr_shield in xeno_shields)
-		if (shield_source == curr_shield.shield_source)
+	for(var/datum/xeno_shield/curr_shield in xeno_shields)
+		if(shield_source == curr_shield.shield_source)
 			// New shield from the same source? increment amount if we can
 			if(add_shield_on)
 				curr_shield.amount = min(curr_shield.amount + added_amount, max_shield)
@@ -90,5 +90,5 @@
 
 
 /mob/living/carbon/Xenomorph/proc/remove_xeno_shield()
-	for (var/datum/xeno_shield/curr_shield as anything in xeno_shields)
+	for(var/datum/xeno_shield/curr_shield as anything in xeno_shields)
 		qdel(curr_shield)

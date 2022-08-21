@@ -19,7 +19,7 @@
 
 /datum/xeno_mutator/healer/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if (. == 0)
+	if(. == 0)
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno

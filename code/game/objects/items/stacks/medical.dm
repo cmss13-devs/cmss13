@@ -58,7 +58,7 @@
 	if(..())
 		return 1
 
-	if (istype(M, /mob/living/carbon/human))
+	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
@@ -104,7 +104,7 @@
 	if(..())
 		return 1
 
-	if (istype(M, /mob/living/carbon/human))
+	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
@@ -148,7 +148,7 @@
 	if(..())
 		return 1
 
-	if (istype(M, /mob/living/carbon/human))
+	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)

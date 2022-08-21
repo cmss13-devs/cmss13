@@ -117,13 +117,13 @@
 	*/
 
 	var/dat = "<TT><B>Infrared Laser</B>\n<B>Status</B>: "
-	if (on)
+	if(on)
 		dat += "<A href='?src=\ref[src];state=0'>On</A>"
 	else
 		dat += "<A href='?src=\ref[src];state=1'>Off</A>"
 	dat += "<BR>\n<B>Visibility</B>: "
 
-	if (visible)
+	if(visible)
 		dat += "<A href='?src=\ref[src];visible=0'>Visible</A>"
 	else
 		dat += "<A href='?src=\ref[src];visible=1'>Invisible</A>"

@@ -19,21 +19,21 @@
 
 
 /datum/effects/prae_acid_stacks/validate_atom(mob/living/carbon/human/H)
-	if (H.stat == DEAD)
+	if(H.stat == DEAD)
 		return FALSE
 
 	return ..()
 
 /datum/effects/prae_acid_stacks/process_mob()
 	. = ..()
-	if (!istype(affected_atom, /mob/living/carbon/human))
+	if(!istype(affected_atom, /mob/living/carbon/human))
 		return
 
-	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
+	if(last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--
 		last_decrement_time = world.time
 
-		if (stack_count <= 0)
+		if(stack_count <= 0)
 			qdel(src)
 			return
 
@@ -42,7 +42,7 @@
 
 
 /datum/effects/prae_acid_stacks/Destroy()
-	if (!ishuman(affected_atom))
+	if(!ishuman(affected_atom))
 		return ..()
 
 	var/mob/living/carbon/human/H = affected_atom
@@ -53,7 +53,7 @@
 /datum/effects/prae_acid_stacks/proc/increment_stack_count(var/increment_number = 1)
 	stack_count = min(max_stacks, stack_count + increment_number)
 
-	if (!istype(affected_atom, /mob/living/carbon/human))
+	if(!istype(affected_atom, /mob/living/carbon/human))
 		return
 
 	var/mob/living/carbon/human/H = affected_atom
@@ -61,12 +61,12 @@
 
 	last_increment_time = world.time
 
-	if (stack_count == max_stacks)
+	if(stack_count == max_stacks)
 		on_proc()
 
 // What do to on proc
 /datum/effects/prae_acid_stacks/proc/on_proc()
-	if (!ishuman(affected_atom))
+	if(!ishuman(affected_atom))
 		return
 
 	var/mob/living/carbon/human/H = affected_atom

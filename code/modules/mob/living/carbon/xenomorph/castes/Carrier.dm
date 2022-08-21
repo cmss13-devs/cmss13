@@ -76,7 +76,7 @@
 	if(.)
 		var/chance = 75
 
-		while (eggs_cur > 0)
+		while(eggs_cur > 0)
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--

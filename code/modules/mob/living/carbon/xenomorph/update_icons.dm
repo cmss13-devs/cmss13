@@ -134,7 +134,7 @@
 		offset_x = -7
 		offset_y = -10
 
-	if (color)
+	if(color)
 		screech_image = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
 	else

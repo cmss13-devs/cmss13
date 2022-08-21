@@ -82,7 +82,7 @@
 
 /obj/item/device/assembly/timer/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, "Timer", "Timer Assembly")
 		ui.open()
 		ui.set_autoupdate(timing)

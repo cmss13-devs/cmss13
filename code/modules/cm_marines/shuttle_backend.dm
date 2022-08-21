@@ -432,7 +432,7 @@ qdel(src)
 	ship_section += " "
 
 	// then fore/mid/aftship
-	if (x <= ALMAYER_FORE_BOUNDARY)
+	if(x <= ALMAYER_FORE_BOUNDARY)
 		ship_section += FORESHIP
 	else if(x >= ALMAYER_AFT_BOUNDARY)
 		ship_section += AFTSHIP
@@ -538,14 +538,14 @@ qdel(src)
 	var/area/departure_area = get_area(source[shuttle.sound_target])
 	var/area/landing_area
 	departure_area.base_muffle = 0
-	if (deg)
+	if(deg)
 		source = rotate_shuttle_turfs(source, deg)
 
 	var/list/mob/living/knocked_down_mobs = list()
 	var/datum/coords/C = null
 
 	var/list/targets = list()
-	for (var/turf/T in source)
+	for(var/turf/T in source)
 		C = source[T]
 		var/turf/target = locate(reference.x + C.x_pos, reference.y + C.y_pos, reference.z)
 		landing_area = target.loc
@@ -553,12 +553,12 @@ qdel(src)
 			landing_area.base_muffle = shuttle.ambience_muffle
 
 		// Delete objects and gib living things in the destination
-		for (var/atom/A in target)
-			if (isobj(A) && A.loc == target)
+		for(var/atom/A in target)
+			if(isobj(A) && A.loc == target)
 				qdel(A)
 				continue
 
-			if (isliving(A))
+			if(isliving(A))
 				var/mob/living/L = A
 				L.last_damage_data = create_cause_data("dropship flattening")
 				L.gib()
@@ -583,15 +583,15 @@ qdel(src)
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
-		for (var/atom/movable/A in T)
+		for(var/atom/movable/A in T)
 			// fix for multitile stuff like vehicles drifting on jump
 			if(A.loc != T)
 				continue
 
-			if (isobj(A))
+			if(isobj(A))
 				A.forceMove(target)
 
-			if (ismob(A))
+			if(ismob(A))
 				A.forceMove(target)
 				if(iscarbon(A))
 					var/mob/living/carbon/M = A
@@ -599,7 +599,7 @@ qdel(src)
 						if(M.buckled && !iselevator)
 							to_chat(M, SPAN_WARNING("Sudden acceleration presses you into [M.buckled]!"))
 							shake_camera(M, 3, 1)
-						else if (!M.buckled)
+						else if(!M.buckled)
 							to_chat(M, SPAN_WARNING("The floor lurches beneath you!"))
 							shake_camera(M, iselevator ? 2 : 10, 1)
 
@@ -616,7 +616,7 @@ qdel(src)
 	shuttle.move_scheduled = 0
 	shuttle.already_moving = 0
 	// Do this after because it's expensive.
-	for (var/mob/living/L in knocked_down_mobs)
+	for(var/mob/living/L in knocked_down_mobs)
 		L.KnockDown(3)
 
 	/*

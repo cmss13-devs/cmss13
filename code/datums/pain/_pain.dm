@@ -134,13 +134,13 @@
 		new_level = PAIN_LEVEL_HORRIBLE
 	else if(pain_percentage >= threshold_severe && !isnull(threshold_severe))
 		new_level = PAIN_LEVEL_SEVERE
-	else if (pain_percentage >= threshold_distressing && !isnull(threshold_distressing))
+	else if(pain_percentage >= threshold_distressing && !isnull(threshold_distressing))
 		new_level = PAIN_LEVEL_DISTRESSING
-	else if (pain_percentage >= threshold_moderate && !isnull(threshold_moderate))
+	else if(pain_percentage >= threshold_moderate && !isnull(threshold_moderate))
 		new_level = PAIN_LEVEL_MODERATE
-	else if (pain_percentage >= threshold_discomforting && !isnull(threshold_discomforting))
+	else if(pain_percentage >= threshold_discomforting && !isnull(threshold_discomforting))
 		new_level = PAIN_LEVEL_DISCOMFORTING
-	else if (pain_percentage >= threshold_mild && !isnull(threshold_mild))
+	else if(pain_percentage >= threshold_mild && !isnull(threshold_mild))
 		new_level = PAIN_LEVEL_MILD
 
 	if(!check_active_pain(new_level))

@@ -18,7 +18,7 @@
 
 
 	attackby(obj/item/W as obj, mob/user as mob)
-		if (istype(W, /obj/item/card/id))
+		if(istype(W, /obj/item/card/id))
 			if(src.broken)
 				to_chat(user, SPAN_DANGER("It appears to be broken."))
 				return

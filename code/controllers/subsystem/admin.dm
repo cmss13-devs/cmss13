@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(admin)
 	return ..()
 
 /datum/controller/subsystem/admin/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = unansweredAhelps.Copy()
 
 	if(!currentrun.len)
@@ -20,16 +20,16 @@ SUBSYSTEM_DEF(admin)
 
 	var/msg = "<font color='#009900'><b>Unheard Ahelps (Repeated [times_repeated] times):</b></font>"
 
-	while (currentrun.len)
+	while(currentrun.len)
 		var/ahelp_msg = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!ahelp_msg)
+		if(!ahelp_msg)
 			continue
 
 		msg += unansweredAhelps[ahelp_msg] + "\n"
 
-		if (MC_TICK_CHECK)
+		if(MC_TICK_CHECK)
 			return
 
 	for(var/client/C in GLOB.admins)

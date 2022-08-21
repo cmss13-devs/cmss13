@@ -13,9 +13,9 @@
 	var/flagIndex = 1
 	//I think it's easier to read this way, also doesn't rely on the random number generator to land on a new wire.
 	var/list/colorIndexList = list(BORG_WIRE_LAWCHECK, BORG_WIRE_MAIN_POWER1, BORG_WIRE_MAIN_POWER2, BORG_WIRE_AI_CONTROL, BORG_WIRE_CAMERA)
-	for (var/flag=1, flag<=16, flag+=flag)
+	for(var/flag=1, flag<=16, flag+=flag)
 		var/colorIndex = pick(colorIndexList)
-		if (Borgwires[colorIndex]==0)
+		if(Borgwires[colorIndex]==0)
 			Borgwires[colorIndex] = flag
 			BorgIndexToFlag[flagIndex] = flag
 			BorgIndexToWireColor[flagIndex] = colorIndex
@@ -39,13 +39,13 @@
 	borgwires &= ~wireFlag
 	switch(wireIndex)
 		if(BORG_WIRE_LAWCHECK) //Cut the law wire, and the borg will no longer receive law updates from its AI
-			if (src.lawupdate == 1)
+			if(src.lawupdate == 1)
 				to_chat(src, "LawSync protocol engaged.")
 				src.show_laws()
-		if (BORG_WIRE_AI_CONTROL) //Cut the AI wire to reset AI control
-			if (src.connected_ai)
+		if(BORG_WIRE_AI_CONTROL) //Cut the AI wire to reset AI control
+			if(src.connected_ai)
 				src.connected_ai = null
-		if (BORG_WIRE_CAMERA)
+		if(BORG_WIRE_CAMERA)
 			if(camera && camera.status && !scrambledcodes)
 				camera.toggle_cam_status(usr, TRUE) // Will kick anyone who is watching the Cyborg's camera.
 
@@ -57,7 +57,7 @@
 	borgwires |= wireFlag
 	switch(wireIndex)
 		if(BORG_WIRE_LAWCHECK) //turns law updates back on assuming the borg hasn't been emagged
-			if (src.lawupdate == 0)
+			if(src.lawupdate == 0)
 				src.lawupdate = 1
 		if(BORG_WIRE_CAMERA)
 			if(camera && !camera.status && !scrambledcodes)
@@ -70,13 +70,13 @@
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(BORG_WIRE_LAWCHECK)	//Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
-			if (src.lawupdate)
+			if(src.lawupdate)
 				src.photosync()
 
-		if (BORG_WIRE_AI_CONTROL) //pulse the AI wire to make the borg reselect an AI
+		if(BORG_WIRE_AI_CONTROL) //pulse the AI wire to make the borg reselect an AI
 			src.connected_ai = select_active_ai()
 
-		if (BORG_WIRE_CAMERA)
+		if(BORG_WIRE_CAMERA)
 			if(camera && camera.status && !scrambledcodes)
 				camera.toggle_cam_status(src, TRUE) // Kick anyone watching the Cyborg's camera, doesn't display you disconnecting the camera.
 				to_chat(usr, "[src]'s camera lens focuses loudly.")
@@ -112,30 +112,30 @@
 
 /mob/living/silicon/robot/Topic(href, href_list)
 	..()
-	if (((in_range(src, usr) && istype(src.loc, /turf))) && !isRemoteControlling(usr))
+	if(((in_range(src, usr) && istype(src.loc, /turf))) && !isRemoteControlling(usr))
 		usr.set_interaction(src)
-		if (href_list["borgwires"])
+		if(href_list["borgwires"])
 			var/t1 = text2num(href_list["borgwires"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(usr, "You need wirecutters!")
 				return
-			if (src.isWireColorCut(t1))
+			if(src.isWireColorCut(t1))
 				src.mend(t1)
 			else
 				src.cut(t1)
-		else if (href_list["pulse"])
+		else if(href_list["pulse"])
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+			if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return
-			if (src.isWireColorCut(t1))
+			if(src.isWireColorCut(t1))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return
 			else
 				src.pulse(t1)
-		else if (href_list["close2"])
+		else if(href_list["close2"])
 			close_browser(usr, "borgwires")
 			usr.unset_interaction()
 			return

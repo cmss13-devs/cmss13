@@ -66,7 +66,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	update_icon()
 
 /obj/item/stack/Destroy()
-	if (usr && usr.interactee == src)
+	if(usr && usr.interactee == src)
 		close_browser(src, "stack")
 	return ..()
 
@@ -125,8 +125,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5, 10, 25)
-				for (var/n in multipliers)
-					if (max_multiplier>=n)
+				for(var/n in multipliers)
+					if(max_multiplier>=n)
 						t1 += " <A href='?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
 				if(!(max_multiplier in multipliers))
 					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
@@ -223,7 +223,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			for(var/obj/item/stack/F in usr.loc)
 				if(S.stack_id == F.stack_id && S != F)
 					var/diff = F.max_amount - F.amount
-					if (S.amount < diff)
+					if(S.amount < diff)
 						F.amount += S.amount
 						qdel(S)
 					else
@@ -235,7 +235,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 		//BubbleWrap - so newly formed boxes are empty
 		if(isstorage(O))
-			for (var/obj/item/I in O)
+			for(var/obj/item/I in O)
 				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
@@ -284,12 +284,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/proc/add_to_stacks(mob/user)
 	var/obj/item/stack/oldsrc = src
 	src = null
-	for (var/obj/item/stack/item in user.loc)
-		if (item==oldsrc)
+	for(var/obj/item/stack/item in user.loc)
+		if(item==oldsrc)
 			continue
-		if (!istype(item, oldsrc.type))
+		if(!istype(item, oldsrc.type))
 			continue
-		if (item.amount>=item.max_amount)
+		if(item.amount>=item.max_amount)
 			continue
 		oldsrc.attackby(item, user)
 		to_chat(user, "You add new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.")
@@ -297,28 +297,28 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
+	if(user.get_inactive_hand() == src)
 		var/obj/item/stack/F = new src.type(user, 1)
 		transfer_fingerprints_to(F)
 		user.put_in_hands(F)
 		src.add_fingerprint(user)
 		F.add_fingerprint(user)
 		use(1)
-		if (src && usr.interactee==src)
+		if(src && usr.interactee==src)
 			INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
 	else
 		..()
 	return
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack))
+	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
-			if (S.amount >= max_amount)
+			if(S.amount >= max_amount)
 				to_chat(user, SPAN_NOTICE("The stack is full!"))
 				return 1
 			var/to_transfer
-			if (user.get_inactive_hand()==src)
+			if(user.get_inactive_hand()==src)
 				var/desired = input(user, "How much would you like to transfer from this stack?", "How much?", 1) as null|num
 				if(!desired)
 					return
@@ -329,10 +329,10 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			S.add(to_transfer)
-			if (S && usr.interactee==S)
+			if(S && usr.interactee==S)
 				INVOKE_ASYNC(S, /obj/item/stack/.proc/interact, usr)
 			src.use(to_transfer)
-			if (src && usr.interactee==src)
+			if(src && usr.interactee==src)
 				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
 			user.next_move = world.time + 0.3 SECONDS
 			return TRUE

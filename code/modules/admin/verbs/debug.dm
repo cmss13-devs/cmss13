@@ -151,7 +151,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	while(argnum--)
 		var/named_arg = input("Leave blank for positional argument. Positional arguments will be considered as if they were added first.", "Named argument") as text|null
 		var/value = usr.client.vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
-		if (!value["class"])
+		if(!value["class"])
 			return
 		if(named_arg)
 			named_args[named_arg] = value["value"]
@@ -203,7 +203,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				else
 					return
 
-	if (targetselected)
+	if(targetselected)
 		if(QDELETED(target))
 			return
 		if(istype(target) && target.is_datum_protected())
@@ -304,7 +304,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		return
 	var/turf/T = mob.loc
 
-	if (!( istype(T, /turf) ))
+	if(!( istype(T, /turf) ))
 		return
 
 	var/list/air_info = T.return_air()
@@ -386,7 +386,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!SSticker.mode)
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
-	if (round_should_check_for_win)
+	if(round_should_check_for_win)
 		message_staff("[key_name(src)] enabled checking for round-end.")
 	else
 		message_staff("[key_name(src)] disabled checking for round-end.")
@@ -440,12 +440,12 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
-	if (!SSticker.mode)
+	if(!SSticker.mode)
 		alert("Wait until the game starts")
 		return
-	if (istype(M, /mob/living/carbon/human))
+	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if (H.wear_id)
+		if(H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
 			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()

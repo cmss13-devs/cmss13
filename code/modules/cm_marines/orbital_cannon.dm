@@ -20,8 +20,13 @@ var/list/ob_type_fuel_requirements
 	var/chambered_tray = FALSE
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
-	var/last_orbital_firing = 0 //stores the last time it was fired to check when we can fire again
 	var/is_disabled = FALSE
+
+	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
+	var/fire_cooldown_time = 500 SECONDS
+
+	COOLDOWN_DECLARE(ob_chambering_cooldown) //cooldown for chambering the gun
+	var/chamber_cooldown_time = 250 SECONDS
 
 /obj/structure/orbital_cannon/New()
 	..()
@@ -111,7 +116,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(chambered_tray)
-		to_chat(user, "Tray cannot be unloaded after its chambered, fire the gun first.")
+		to_chat(user, "The tray cannot be unloaded after it has been chambered, fire the gun first.")
 		return
 
 	if(!loaded_tray)
@@ -135,10 +140,6 @@ var/list/ob_type_fuel_requirements
 
 	update_icon()
 
-
-
-
-
 /obj/structure/orbital_cannon/proc/chamber_payload(mob/user)
 	set waitfor = 0
 
@@ -155,20 +156,18 @@ var/list/ob_type_fuel_requirements
 		return
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, SPAN_WARNING("no warhead in the tray, cancelling chambering operation."))
+			to_chat(user, SPAN_WARNING("No warhead in the tray, cancelling chambering operation."))
 		return
 
 	if(tray.fuel_amt < 1)
 		if(user)
-			to_chat(user, SPAN_WARNING("no solid fuel in the tray, cancelling chambering operation."))
+			to_chat(user, SPAN_WARNING("No solid fuel in the tray, cancelling chambering operation."))
 		return
 
-	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 2500) - world.time
-		if(cooldown_left > 0)
-			if(user)
-				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
-			return
+	if(!COOLDOWN_FINISHED(src, ob_chambering_cooldown)) //fired at least once
+		if(user)
+			to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [COOLDOWN_TIMELEFT(src, ob_chambering_cooldown)/10] more seconds."))
+		return
 
 	flick("OBC_chambering",src)
 
@@ -197,7 +196,8 @@ var/list/ob_type_fuel_requirements
 
 	ob_cannon_busy = TRUE
 
-	last_orbital_firing = world.time
+	COOLDOWN_START(src, ob_firing_cooldown, fire_cooldown_time)
+	COOLDOWN_START(src, ob_chambering_cooldown, chamber_cooldown_time)
 
 	playsound(loc, 'sound/weapons/vehicles/smokelauncher_fire.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/pred_plasma_shot.ogg', 70, 1)
@@ -540,7 +540,6 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_console"
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
-	var/orbital_window_page = 0
 
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -553,6 +552,75 @@ var/list/ob_type_fuel_requirements
 /obj/structure/machinery/computer/orbital_cannon_console/bullet_act()
 	return
 
+// TGUI SHIT \\
+
+/obj/structure/machinery/computer/orbital_cannon_console/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
+		ui.open()
+
+
+/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["hefuel"] = ob_type_fuel_requirements[1]
+	data["incfuel"] = ob_type_fuel_requirements[2]
+	data["clusterfuel"] = ob_type_fuel_requirements[3]
+
+	data["linkedcannon"] = almayer_orbital_cannon
+	data["linkedtray"] = almayer_orbital_cannon.tray
+
+	return data
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_data(mob/user)
+	var/list/data = list()
+
+	data["loadedtray"] = almayer_orbital_cannon.loaded_tray
+	data["chamberedtray"] = almayer_orbital_cannon.chambered_tray
+
+	var/warhead_name = null
+	if(almayer_orbital_cannon.tray.warhead)
+		warhead_name = almayer_orbital_cannon.tray.warhead.name
+
+	data["warhead"] = warhead_name
+	data["fuel"] = almayer_orbital_cannon.tray.fuel_amt
+
+	data["worldtime"] = world.time
+	data["nextchambertime"] = almayer_orbital_cannon.ob_chambering_cooldown
+	data["chamber_cooldown"] = almayer_orbital_cannon.chamber_cooldown_time
+
+	data["disabled"] = almayer_orbital_cannon.is_disabled
+
+	return data
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("load_tray")
+			almayer_orbital_cannon.load_tray(usr)
+			. = TRUE
+
+		if("unload_tray")
+			almayer_orbital_cannon.unload_tray(usr)
+			. = TRUE
+
+		if("chamber_tray")
+			almayer_orbital_cannon.chamber_payload(usr)
+			. = TRUE
+
+	add_fingerprint(usr)
 
 /obj/structure/machinery/computer/orbital_cannon_console/attack_hand(mob/user)
 	if(..())
@@ -560,7 +628,11 @@ var/list/ob_type_fuel_requirements
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
-		return 1
+		return TRUE
+
+	tgui_interact(user)
+
+	/*
 
 	user.set_interaction(src)
 
@@ -626,3 +698,5 @@ var/list/ob_type_fuel_requirements
 	add_fingerprint(usr)
 //	updateUsrDialog()
 	attack_hand(usr)
+
+*/

@@ -356,7 +356,7 @@
 		dat += "No squad selected!"
 	else
 		dat += "<B>Current Cannon Status:</B> "
-		var/cooldown_left = (almayer_orbital_cannon.last_orbital_firing + 5000) - world.time
+		var/cooldown_left = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
 		if(almayer_orbital_cannon.is_disabled)
 			dat += "Cannon is disabled!<br>"
 		else if(cooldown_left > 0)
@@ -592,8 +592,8 @@
 		if("dropbomb")
 			if(almayer_orbital_cannon.is_disabled)
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again!")]")
+			else if(!COOLDOWN_FINISHED(almayer_orbital_cannon, ob_firing_cooldown))
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(usr)
 		if("back")

@@ -91,11 +91,6 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.giver_rank += null
 		recipient_award.giver_name += null
 
-	// Recipient: Add the medal to the player's stats
-	if(recipient_ckey)
-		var/datum/entity/player_entity/recipient_player = setup_player_entity(recipient_ckey)
-		if(recipient_player)
-			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, usr)
 
 	// Create an actual medal item
 	if(medal_location)
@@ -117,6 +112,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.medal_items += medal
 	else
 		recipient_award.medal_items += null
+
+	// Recipient: Add the medal to the player's stats
+	if(recipient_ckey)
+		var/datum/entity/player_entity/recipient_player = setup_player_entity(recipient_ckey)
+		if(recipient_player)
+			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, usr)
 
 	// Inform staff of success
 	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=[MEDALS_PANEL_USCM]'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")

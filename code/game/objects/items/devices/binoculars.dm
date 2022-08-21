@@ -381,6 +381,9 @@
 
 /datum/action/item_action/specialist/spotter_target/can_use_action()
 	var/mob/living/carbon/human/H = owner
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in H.traits))
+		to_chat(H, SPAN_WARNING("You have no idea how to use this!"))
+		return FALSE
 	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && (holder_item == H.r_hand || holder_item || H.l_hand))
 		return TRUE
 

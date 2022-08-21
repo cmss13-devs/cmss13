@@ -658,6 +658,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			lying = FALSE
 
 	canmove = !(stunned || frozen)
+	if(!can_crawl && lying)
+		canmove = FALSE
 
 	if(lying_prev != lying)
 		if(lying)
@@ -863,14 +865,14 @@ mob/proc/yank_out_object()
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down()
-	if(knocked_down && client)
+/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out()
-	if(knocked_out && client)
+/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out

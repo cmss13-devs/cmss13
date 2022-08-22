@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		return
 
 	if(give_medal_award(get_turf(printer)))
-		printer.visible_message(SPAN_NOTICE("[printer] prints a medal."))
+		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 
 /proc/give_jelly_award(var/datum/hive_status/hive, var/as_admin = FALSE)
 	if(!hive)

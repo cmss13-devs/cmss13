@@ -59,7 +59,7 @@ export const MedalsPanel = (props, context) => {
 
 const USCMPage = (props, context) => {
   const { act, data } = useBackend(context);
-  const { uscm_awards } = data;
+  const { uscm_awards, uscm_award_ckeys } = data;
 
   return (
     <Section title="Medal Awards" buttons={(
@@ -82,7 +82,9 @@ const USCMPage = (props, context) => {
       <Flex direction="column">
         {Object.keys(uscm_awards)
           .map((recipient_name, recipient_index) => (
-            <Section title={recipient_name} key={recipient_index} m={1}>
+            <Section
+              title={recipient_name + uscm_award_ckeys[recipient_name]}
+              key={recipient_index} m={1}>
               {Object(uscm_awards[recipient_name])
                 .map((medal, medalIndex) => (
                   <Flex direction="row" key={medalIndex} backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
@@ -115,7 +117,7 @@ const USCMPage = (props, context) => {
   
 const HivePage = (props, context) => {
   const { act, data } = useBackend(context);
-  const { xeno_awards } = data;
+  const { xeno_awards, xeno_award_ckeys } = data;
   
   return (
     <Section title="Royal Jellies" buttons={(
@@ -138,7 +140,9 @@ const HivePage = (props, context) => {
       <Flex direction="column">
         {Object.keys(xeno_awards)
           .map((recipient_name, recipient_index) => (
-            <Section title={recipient_name} key={recipient_index} m={1}>
+            <Section
+              title={recipient_name + xeno_award_ckeys[recipient_name]}
+              key={recipient_index} m={1}>
               {Object(xeno_awards[recipient_name])
                 .map((medal, medalIndex) => (
                   <Flex direction="row" key={medalIndex} backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>

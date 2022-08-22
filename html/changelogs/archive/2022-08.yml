@@ -402,3 +402,6 @@
   theflyingflail:
   - rscadd: Added ert medical pouch to ert corpses
   - tweak: Swapped PMC mask for heat coif in black market crate and pmc corpses
+2022-08-22:
+  Geevies:
+  - bugfix: Xenos no longer lose their age/name when rejoining the game.

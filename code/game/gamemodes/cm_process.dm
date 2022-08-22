@@ -100,7 +100,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		for(var/recipient in GLOB.jelly_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient]
 			for(var/i in 1 to recipient_award.medal_names.len)
-				dat += "<br><b>[recipient][recipient_award.recipient_ckey ? " \[[recipient_award.recipient_ckey]\]" : ""]</b> is awarded a [recipient_award.posthumous[i] ? "posthumously " : ""]<span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " [recipient_award.giver_name[i]]" : ""]."
+				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]<span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " \[[recipient_award.giver_name[i]]\]" : ""]."
 		to_world(dat)
 
 /datum/game_mode/proc/declare_random_fact()

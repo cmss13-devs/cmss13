@@ -37,7 +37,7 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 		xeno_awards[recipient_name] = list()
 		xeno_award_ckeys[recipient_name] = recipient_award.recipient_ckey ? " \[[recipient_award.recipient_ckey]\]" : ""
 		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
-			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i]] [recipient_award.giver_name[i]]"
+			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i]] \[[recipient_award.giver_name[i]]\]"
 	
 	data["uscm_awards"] = uscm_awards
 	data["xeno_awards"] = xeno_awards

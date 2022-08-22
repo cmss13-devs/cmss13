@@ -1,3 +1,19 @@
+//
+// Specific momentum based damage defines
+
+#define CHARGER_DESTROY CCA.momentum * 40
+#define CHARGER_DAMAGE_CADE CCA.momentum * 22
+#define CHARGER_DAMAGE_SENTRY CCA.momentum * 9
+#define CHARGER_DAMAGE_MG CCA.momentum * 15
+
+
+// Momentum loss defines. 8 is maximum momentum
+#define CCA_MOMENTUM_LOSS_HALF 		4
+#define CCA_MOMENTUM_LOSS_THIRD 	3
+#define CCA_MOMENTUM_LOSS_QUARTER 	2
+#define CCA_MOMENTUM_LOSS_MIN 		1
+
+
 /datum/xeno_mutator/charger
 	name = "STRAIN: Crusher - Charger"
 	description = "Your charge is now momentum based, the further you go, the more damage and speed you will get until you achieve max momentum when you roar. Your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. Your shield is also removed. In return you gain more health, gain an ability to tumble to avoid enemies, and gain an ability to forcefully move enemies via ramming. Finally, you trade being able to resist slowdowns from tall autospitters for being unaffected by frenzy pheros."
@@ -85,11 +101,11 @@
 		CCA.stop_momentum()
 		return
 
-	health -= CCA.momentum * 40 //Usually knocks it down.
+	health -= CHARGER_DESTROY //Usually knocks it down.
 	healthcheck()
 
 	if(QDELETED(src))
-		CCA.lose_momentum(2) //Lose two turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER) //Lose two turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -105,11 +121,11 @@
 		CCA.stop_momentum()
 		return
 
-	health -= CCA.momentum * 40 //Usually knocks it down.
+	health -= CHARGER_DESTROY //Usually knocks it down.
 	healthcheck()
 
 	if(QDELETED(src))
-		CCA.lose_momentum(1) //Lose one turf worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turf worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -124,7 +140,7 @@
 	// Need at least 4 momentum to destroy a full health door
 	take_damage(CCA.momentum * damage_cap * 0.25, X)
 	if(QDELETED(src))
-		CCA.lose_momentum(2) //Lose two turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER) //Lose two turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -153,14 +169,14 @@
 // Barine Vending machines
 
 /obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
-	if(CCA.momentum >= 3)
+	if(CCA.momentum >= CCA_MOMENTUM_LOSS_THIRD)
 		X.visible_message(
-			SPAN_DANGER("[X] smashes straight into [src]!"),
-			SPAN_XENODANGER("You smash straight into [src]!")
+			SPAN_DANGER("[X] smashes straight into \the [src]!"),
+			SPAN_XENODANGER("You smash straight into \the [src]!")
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()
-		CCA.lose_momentum(2)
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -174,7 +190,7 @@
 
 	playsound(loc, "punch", 25, TRUE)
 	Dismantle(TRUE)
-	CCA.lose_momentum(2)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 	return XENO_CHARGE_TRY_MOVE
 
 // Tables & shelves, etc
@@ -188,8 +204,8 @@
 /obj/structure/barricade/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
 	if(CCA.momentum)
 		visible_message(
-			SPAN_DANGER("[X] rams into [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
+			SPAN_DANGER("[X] rams into \the [src] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into \the [src] and skid to a halt!")
 		)
 		take_damage(CCA.momentum * 22)
 		playsound(src, barricade_hitsound, 25, TRUE)
@@ -201,9 +217,9 @@
 /obj/structure/window_frame/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
 	if(CCA.momentum)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
-		take_damage(CCA.momentum * 100)
+		take_damage(CHARGER_DESTROY*2)
 		if(QDELETED(src))
-			CCA.lose_momentum(2)
+			CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 			return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -211,14 +227,14 @@
 // Doors
 
 /obj/structure/machinery/door/poddoor/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
-	if(CCA.momentum < 4)
+	if(CCA.momentum < CCA_MOMENTUM_LOSS_HALF)
 		CCA.stop_momentum()
 		return
 
 	if(!indestructible && !unacidable)
 		qdel(src)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, TRUE)
-		CCA.lose_momentum(3)
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -230,9 +246,9 @@
 		CCA.stop_momentum()
 		return
 
-	take_damage(CCA.momentum * 50)
+	take_damage(CHARGER_DESTROY)
 	if(QDELETED(src))
-		CCA.lose_momentum(2)
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -242,11 +258,11 @@
 	if(!CCA.momentum)
 		CCA.stop_momentum()
 		return
-	update_health(CCA.momentum * 20)
+	update_health(CHARGER_DAMAGE_CADE)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	if(QDELETED(src))
 		if(prob(50))
-			CCA.lose_momentum(1)
+			CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -265,7 +281,7 @@
 
 	qdel(src)
 	playsound(src, 'sound/effects/woodhit.ogg', 25, TRUE)
-	CCA.lose_momentum(1)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
 
 // Cargo containers
@@ -276,7 +292,7 @@
 		return
 
 	qdel(src)
-	CCA.lose_momentum(2)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_HALF)
 	return XENO_CHARGE_TRY_MOVE
 
 // Girders
@@ -287,9 +303,9 @@
 		return
 
 	playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
-	take_damage(CCA.momentum * 100)
+	take_damage(CHARGER_DESTROY)
 	if(QDELETED(src))
-		CCA.lose_momentum(2)
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_HALF)
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -297,7 +313,7 @@
 // General Machinery
 
 /obj/structure/machinery/disposal/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
-	if(CCA.momentum < 2)
+	if(CCA.momentum < CCA_MOMENTUM_LOSS_QUARTER)
 		CCA.stop_momentum()
 		return
 	var/obj/structure/disposalconstruct/C = new(loc)
@@ -306,14 +322,14 @@
 	C.update()
 	step_away(C, X, 2)
 	qdel(src)
-	CCA.lose_momentum(2)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 	return XENO_CHARGE_TRY_MOVE
 
 // Disposals
 
 /obj/structure/disposalconstruct/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
 	step_away(src, X, 2)
-	CCA.lose_momentum(1)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
 
 // Humans
@@ -346,7 +362,7 @@
 	if(LinkBlocked(src, cur_turf, target_turf))
 		ram_dir = REVERSE_DIR(ram_dir)
 	step(src, ram_dir, CCA.momentum * 0.5)
-	CCA.lose_momentum(1)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
 
 // Fellow xenos
@@ -381,7 +397,7 @@
 			KnockDown(1) // brief flicker stun
 			src.throw_atom(src.loc,1,3,X,TRUE)
 		step(src, ram_dir, CCA.momentum * 0.5)
-		CCA.lose_momentum(2)
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 		return XENO_CHARGE_TRY_MOVE
 	CCA.stop_momentum()
 
@@ -414,7 +430,7 @@
 	if(LinkBlocked(src, cur_turf, target_turf))
 		ram_dir = REVERSE_DIR(ram_dir)
 	step(src, ram_dir, CCA.momentum * 0.5)
-	CCA.lose_momentum(1)
+	CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
 
 /*
@@ -441,7 +457,8 @@ bell immunity [d]
 	if(CCA.momentum)
 		if(istype(src, /turf/closed/wall/resin))
 			ex_act(CCA.momentum * 5, null, create_cause_data(initial(X.caste_type), X)) // Half damage for xeno walls?
-		ex_act(CCA.momentum * 13, null, create_cause_data(initial(X.caste_type), X))
+		else
+			ex_act(CCA.momentum * 13, null, create_cause_data(initial(X.caste_type), X))
 
 	CCA.stop_momentum()
 
@@ -453,7 +470,7 @@ bell immunity [d]
 		return
 	explode()
 	if(QDELETED(src))
-		CCA.lose_momentum(1) //Lose one turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -470,14 +487,14 @@ bell immunity [d]
 		SPAN_DANGER("[X] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")
 	)
-	if(health <= CCA.momentum * 9)
+	if(health <= CHARGER_DAMAGE_SENTRY)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
-	update_health(CCA.momentum * 9)
+	update_health(CHARGER_DAMAGE_SENTRY)
 	s.start()
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 
 	if(QDELETED(src))
-		CCA.lose_momentum(2) //Lose two turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER) //Lose two turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -485,7 +502,7 @@ bell immunity [d]
 // Marine MGs
 
 /obj/structure/machinery/m56d_hmg/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)
-	if(CCA.momentum > 1)
+	if(CCA.momentum > CCA_MOMENTUM_LOSS_MIN)
 		CrusherImpact()
 		var/datum/effect_system/spark_spread/s = new
 		update_health(CCA.momentum * 15)
@@ -515,7 +532,7 @@ bell immunity [d]
 			HMG.update_icon()
 			qdel(src) //Now we clean up the constructed gun.
 	if(QDELETED(src))
-		CCA.lose_momentum(1) //Lose one turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 	CCA.stop_momentum()
 
@@ -525,7 +542,7 @@ bell immunity [d]
 	if(!CCA.momentum)
 		CCA.stop_momentum()
 		return
-	if(CCA.momentum > 2)
+	if(CCA.momentum > CCA_MOMENTUM_LOSS_QUARTER)
 		Destroy()
 		CCA.stop_momentum()
 	CCA.stop_momentum()
@@ -554,7 +571,7 @@ bell immunity [d]
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	Destroy()
 	if(QDELETED(src))
-		CCA.lose_momentum(1) //Lose one turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()
@@ -574,7 +591,7 @@ bell immunity [d]
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
 	if(QDELETED(src))
-		CCA.lose_momentum(1) //Lose one turfs worth of speed
+		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
 
 	CCA.stop_momentum()

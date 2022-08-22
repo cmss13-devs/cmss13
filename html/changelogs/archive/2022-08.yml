@@ -405,3 +405,8 @@
 2022-08-22:
   Geevies:
   - bugfix: Xenos no longer lose their age/name when rejoining the game.
+  Jeser:
+  - balance: Vehicles now can receive damage from various environmental acidic sources
+      like toxin rivers in addition to acid spray. Colony Vans receive wheels damage
+      when driving through toxins river on Trijent Dam now.
+  - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.

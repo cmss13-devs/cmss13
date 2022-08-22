@@ -19,6 +19,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/list/medal_items
 	var/list/posthumous
 	var/recipient_rank
+	var/recipient_ckey
 	var/mob/recipient_mob
 	var/list/giver_name // Actually key for xenos
 	var/list/giver_rank // Actually name for xenos
@@ -110,6 +111,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		GLOB.medal_awards[chosen_recipient] = new /datum/recipient_awards()
 	var/datum/recipient_awards/recipient_award = GLOB.medal_awards[chosen_recipient]
 	recipient_award.recipient_rank = recipient_rank
+	recipient_award.recipient_ckey = recipient_ckey
 	recipient_award.recipient_mob = recipient_mob
 	recipient_award.giver_mob += giver_mob
 	recipient_award.medal_names += medal_type
@@ -243,6 +245,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		GLOB.jelly_awards[chosen_recipient] = new /datum/recipient_awards()
 	var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[chosen_recipient]
 	recipient_award.recipient_rank = recipient_caste // Currently not used in xeno award message
+	recipient_award.recipient_ckey = recipient_ckey
 	recipient_award.recipient_mob = recipient_mob
 	recipient_award.giver_mob += giver_mob
 	recipient_award.medal_names += medal_type

@@ -107,6 +107,11 @@
 		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
+	
+/obj/item/explosive/grenade/prime(var/force = FALSE)
+	..()
+	if(!QDELETED(src))
+		w_class = initial(w_class)
 
 /obj/item/explosive/grenade/update_icon()
 	if(active && dangerous)

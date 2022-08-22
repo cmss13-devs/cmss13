@@ -308,7 +308,10 @@
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
-	give_jelly_award(X.hive)
+	if(!X.check_plasma(plasma_cost))
+		return
+	if(give_jelly_award(X.hive))
+		X.use_plasma(plasma_cost)
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"

@@ -312,6 +312,15 @@ var/list/global/item_storage_box_cache = list()
 					return TRUE
 	return FALSE
 
+/obj/item/storage/Entered(atom/movable/AM, oldloc)
+	. = ..()
+	AM.layer = ABOVE_HUD_LAYER
+	AM.plane = ABOVE_HUD_PLANE
+
+/obj/item/storage/Exited(atom/movable/AM, newloc)
+	. = ..()
+	AM.layer = initial(AM.layer)
+	AM.plane = initial(AM.plane)
 
 /datum/numbered_display
 	var/obj/item/sample_object
@@ -486,11 +495,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	if(new_location)
 		if(ismob(new_location))
-			W.layer = ABOVE_HUD_LAYER
-			W.plane = ABOVE_HUD_PLANE
 			W.pickup(new_location)
-		else
-			W.layer = initial(W.layer)
 		W.forceMove(new_location)
 	else
 		var/turf/T = get_turf(src)

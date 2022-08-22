@@ -31,7 +31,7 @@
 	if(lying)
 		to_chat(giver, SPAN_WARNING("[src] can't hold that while lying down."))
 		return
-	if(r_hand != null || l_hand != null)
+	if(r_hand && l_hand)
 		to_chat(giver, SPAN_WARNING("[src]'s hands are full."))
 		return
 	giver.mob_flags |= GIVING
@@ -51,7 +51,7 @@
 			to_chat(src, SPAN_WARNING("You can't hold that while lying down."))
 			to_chat(giver, SPAN_WARNING("[src] can't hold that while lying down."))
 			return
-		if(r_hand != null && l_hand != null)
+		if(r_hand && l_hand)
 			to_chat(src, SPAN_WARNING("Your hands are full."))
 			to_chat(giver, SPAN_WARNING("[src]'s hands are full."))
 			return

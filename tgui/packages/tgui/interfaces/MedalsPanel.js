@@ -87,7 +87,9 @@ const USCMPage = (props, context) => {
               key={recipient_index} m={1}>
               {Object(uscm_awards[recipient_name])
                 .map((medal, medalIndex) => (
-                  <Flex direction="row" key={medalIndex} backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
+                  <Flex direction="row"
+                    key={medalIndex}
+                    backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
                     <Flex.Item grow={1} align="center" ml={0.5}>
                       A {medal}
                     </Flex.Item>
@@ -145,7 +147,9 @@ const HivePage = (props, context) => {
               key={recipient_index} m={1}>
               {Object(xeno_awards[recipient_name])
                 .map((medal, medalIndex) => (
-                  <Flex direction="row" key={medalIndex} backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
+                  <Flex direction="row"
+                    key={medalIndex}
+                    backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
                     <Flex.Item grow={1} align="center" ml={0.5}>
                       A {medal}
                     </Flex.Item>

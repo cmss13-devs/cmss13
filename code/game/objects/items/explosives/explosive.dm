@@ -184,6 +184,7 @@
 			break
 
 	if(!has_reagents)
+		w_class = initial(w_class)
 		update_icon()
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 1)
 		return

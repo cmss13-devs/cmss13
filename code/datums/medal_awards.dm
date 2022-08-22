@@ -94,6 +94,16 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 				recipient_ckey = mob.persistent_ckey
 				recipient_mob = mob
 				break
+
+	// Admin: Offer a medal_location if missing
+	if(as_admin && !medal_location)
+		var/medal_override = tgui_input_list(usr, "Spawn a medal? Press cancel for no item.", "Medal Location", list("On Recipient", "On Me"))
+		if(medal_override == "On Recipient")
+			medal_location = get_turf(recipient_mob)
+			playsound(recipient_mob, 'sound/items/trayhit1.ogg', 15, FALSE)
+			recipient_mob.visible_message(SPAN_DANGER("[recipient_mob] has been hit in the head by the [medal_type]."), null, null, 5)
+		else if(medal_override == "On Me")
+			medal_location = get_turf(usr)
 	
 	// Create the recipient_award
 	if(!GLOB.medal_awards[chosen_recipient])

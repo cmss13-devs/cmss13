@@ -122,8 +122,8 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_award.giver_rank += recipient_ranks[usr.real_name] // Currently not used in marine award message
 		recipient_award.giver_name += usr.real_name // Currently not used in marine award message
 	else
-		recipient_award.giver_rank += usr.ckey + " (Staff)" // Just because it'll be displayed in the panel
-		recipient_award.giver_name += null // If not null, rescinding it will stats take away from a mob named this
+		recipient_award.giver_rank += "([usr.ckey])" // Just because it'll be displayed in the panel
+		recipient_award.giver_name += null
 
 	// Create an actual medal item
 	if(medal_location)

@@ -419,3 +419,4 @@
   stanalbatross:
   - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
       carbine
+  - qol: added a keybind for LOOC

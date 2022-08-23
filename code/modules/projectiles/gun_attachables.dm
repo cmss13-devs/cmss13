@@ -1796,8 +1796,6 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(loc, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
-		for(var/datum/action/A as anything in gun.actions)
-			A.update_button_icon()
 
 /obj/item/attachable/attached_gun/grenade/proc/pump(var/mob/user) //for want of a better proc name
 	if(breech_open) // if it was ALREADY open

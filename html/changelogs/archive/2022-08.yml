@@ -410,3 +410,7 @@
       like toxin rivers in addition to acid spray. Colony Vans receive wheels damage
       when driving through toxins river on Trijent Dam now.
   - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
+2022-08-23:
+  stanalbatross:
+  - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
+      carbine

@@ -411,6 +411,9 @@
       when driving through toxins river on Trijent Dam now.
   - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
 2022-08-23:
+  Morrow:
+  - rscadd: Dropship droppable sentries can now be seen on dropship cameras.
+  - bugfix: Dropship droppable sentries have working lights when dropped.
   Segrain:
   - bugfix: Giving items no longer requires recipient to have both hands empty.
   stanalbatross:

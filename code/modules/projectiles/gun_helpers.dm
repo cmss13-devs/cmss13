@@ -124,7 +124,11 @@ DEFINES in setup.dm, referenced here.
 	var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
 
 	if(in_hand == src && (flags_item & TWOHANDED))
+		if(active_attachable)
+			active_attachable.unload_attachment(user)
+			return
 		unload(user)//It has to be held if it's a two hander.
+		return
 	else
 		..()
 
@@ -756,7 +760,16 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(!G)
 		return
 	src = G
+	if(G.active_attachable)
+		// unload the attachment
+		var/drop_to_ground = TRUE
+		if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+			drop_to_ground = FALSE
+			unwield(user)
+		G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground)
+		return
 
+	//unloading a regular gun
 	var/drop_to_ground = TRUE
 	if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 		drop_to_ground = FALSE

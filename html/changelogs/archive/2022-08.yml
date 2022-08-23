@@ -420,3 +420,5 @@
   - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
       carbine
   - qol: added a keybind for LOOC
+  - balance: the cluster OB now has 1/6th stronger explosions and fires 25% more explosives
+      in the same time

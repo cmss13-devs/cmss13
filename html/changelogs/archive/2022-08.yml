@@ -424,3 +424,7 @@
   - qol: added a keybind for LOOC
   - balance: the cluster OB now has 1/6th stronger explosions and fires 25% more explosives
       in the same time
+  - bugfix: fixed not being able to open an airlock's wires UI if the airlock had
+      no power
+  - bugfix: fixed APCs not automatically reopening their UI if one was already open
+      when their covers were closed/opened

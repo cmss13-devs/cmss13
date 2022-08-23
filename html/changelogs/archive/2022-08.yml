@@ -411,6 +411,8 @@
       when driving through toxins river on Trijent Dam now.
   - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
 2022-08-23:
+  Segrain:
+  - bugfix: Giving items no longer requires recipient to have both hands empty.
   stanalbatross:
   - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
       carbine

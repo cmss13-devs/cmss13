@@ -636,6 +636,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			update_icon()
+			if(SStgui.close_uis(src)) //if you had UIs open before from this APC...
+				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))

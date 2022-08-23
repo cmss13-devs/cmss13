@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox, Dimmer, Icon } from '../components';
+import { Button, Section, NoticeBox, Dimmer, Icon, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const NuclearBomb = (_props, context) => {
@@ -11,20 +11,21 @@ export const NuclearBomb = (_props, context) => {
 
   return (
     <Window
+      theme="retro"
       width={350}
-      height={170}>
+      height={200}>
       <Window.Content scrollable>
         <Section>
-          <Flex height="100%" direction="column">
-            <Flex.Item>
+          <Stack height="100%" direction="column">
+            <Stack.Item>
               <NoticeBox danger textAlign="center">
                 {data.timing
                   ? `Time until detonation :
                   ${data.timeleft}`
                   : 'Not currently active.'}
               </NoticeBox>
-            </Flex.Item>
-            <Flex.Item>
+            </Stack.Item>
+            <Stack.Item>
               {!data.safety && (
                 <Button
                   fluid={1}
@@ -40,8 +41,8 @@ export const NuclearBomb = (_props, context) => {
                   onClick={() => act('toggleSafety')}
                 />
               )}
-            </Flex.Item>
-            <Flex.Item>
+            </Stack.Item>
+            <Stack.Item>
               {!data.command_lockout && (
                 <Button
                   fluid={1}
@@ -57,8 +58,8 @@ export const NuclearBomb = (_props, context) => {
                   onClick={() => act('toggleCommandLockout')}
                 />
               )}
-            </Flex.Item>
-            <Flex.Item>
+            </Stack.Item>
+            <Stack.Item>
               {!data.anchor && (
                 <Button
                   fluid={1}
@@ -74,8 +75,8 @@ export const NuclearBomb = (_props, context) => {
                   onClick={() => act('toggleAnchor')}
                 />
               )}
-            </Flex.Item>
-            <Flex.Item>
+            </Stack.Item>
+            <Stack.Item>
               {!data.timing && (
                 <Button.Confirm
                   fluid={1}
@@ -93,8 +94,8 @@ export const NuclearBomb = (_props, context) => {
                   onClick={() => act('toggleNuke')}
                 />
               )}
-            </Flex.Item>
-          </Flex>
+            </Stack.Item>
+          </Stack>
           {!data.allowed && (
             <Dimmer fontSize="32px">
               <Icon name="exclamation-triangle" />

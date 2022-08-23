@@ -769,12 +769,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/verb/use_unique_action()
 	set category = "Weapons"
 	set name = "Unique Action"
-	set desc = "Use anything unique your firearm is capable of. Includes pumping a shotgun or spinning a revolver."
+	set desc = "Use anything unique your firearm is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active attachment, this will activate on the attachment instead."
 	set src = usr.contents
 
 	var/obj/item/weapon/gun/G = get_active_firearm(usr)
 	if(!G) return
-	src = G
+	if(G.active_attachable)
+		src = G.active_attachable
+	else
+		src = G
 
 	unique_action(usr)
 

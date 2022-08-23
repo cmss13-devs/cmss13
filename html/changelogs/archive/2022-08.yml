@@ -416,6 +416,8 @@
   - bugfix: Dropship droppable sentries have working lights when dropped.
   Segrain:
   - bugfix: Giving items no longer requires recipient to have both hands empty.
+  - bugfix: Feeding pills to somebody while lagging and clicking a lot no longer leaves
+      ghost pills on the floor.
   stanalbatross:
   - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
       carbine

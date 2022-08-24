@@ -15,11 +15,10 @@
 	var/base_icon_state = ""
 	var/base_name = "airlock"
 	var/obj/item/circuitboard/airlock/electronics = null
-	var/airlock_type = "" //the type path of the airlock once completed
+	var/airlock_type = "generic" //the type path of the airlock once completed
 	var/glass_type = "/glass"
 	var/glass = 0 // 0 = glass can be installed. -1 = glass can't be installed. 1 = glass is already installed. Text = mineral plating is installed instead.
 	var/created_name = null
-
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
 
@@ -171,14 +170,15 @@
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 				var/path
 				if(istext(glass))
-					path = text2path("/obj/structure/machinery/door/airlock/[glass]")
+					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else if (glass == 1)
-					path = text2path("/obj/structure/machinery/door/airlock[glass_type]")
+					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
-					path = text2path("/obj/structure/machinery/door/airlock[airlock_type]")
+					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]")
 				var/obj/structure/machinery/door/airlock/door = new path(loc)
 				door.assembly_type = type
 				door.electronics = electronics
+				door.dir = dir
 				if(electronics.one_access)
 					door.req_access = null
 					door.req_one_access = electronics.conf_access

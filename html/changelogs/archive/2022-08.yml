@@ -435,6 +435,10 @@
   - code_imp: Changed Airlock Assembly code to spawn cm airlocks instead of legacy
       and support directional construction.
   - imageadd: replaced some legacy SS13 airlock assembly sprites for new sprites.
+  Segrain:
+  - bugfix: Items dumped out of containers no longer appear on top of mobs.
+  - bugfix: Spawn pools and egg morphers no longer get blocked by documents and other
+      indestructible items from melted bodies.
   stanalbatross:
   - ui: converted the supply drop console to TGUI
   - bugfix: mortar interface numberinputs now work properly

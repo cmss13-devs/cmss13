@@ -5,13 +5,13 @@ import { Window } from '../layouts';
 const PAGES = [
   {
     title: 'USCM',
-    component: () => USCMPage,
+    component: () => MedalsPage,
     color: "blue",
     icon: "medal",
   },
   {
     title: 'Hive',
-    component: () => HivePage,
+    component: () => MedalsPage,
     color: "purple",
     icon: "star",
   },
@@ -19,7 +19,13 @@ const PAGES = [
 
 export const MedalsPanel = (props, context) => {
   const { data } = useBackend(context);
-  const { startingPage } = data;
+  const {
+    uscm_awards, 
+    uscm_award_ckeys, 
+    xeno_awards, 
+    xeno_award_ckeys, 
+    startingPage,
+  } = data;
   
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', startingPage);
   
@@ -51,18 +57,22 @@ export const MedalsPanel = (props, context) => {
             );
           })}
         </Tabs>
-        <PageComponent />
+        <PageComponent
+          awards={pageIndex === 0 ? uscm_awards : xeno_awards}
+          award_ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
+          isMarineMedal={pageIndex === 0}
+        />
       </Window.Content>
     </Window>
   );
 };
 
-const USCMPage = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { uscm_awards, uscm_award_ckeys } = data;
+const MedalsPage = (props, context) => {
+  const { act } = useBackend(context);
+  const { awards, award_ckeys, isMarineMedal } = props;
 
   return (
-    <Section title="Medal Awards" buttons={(
+    <Section title={isMarineMedal ? "Medal Awards" : "Royal Jellies"} buttons={(
       <Fragment>
         <Button
           icon="clock"
@@ -72,20 +82,20 @@ const USCMPage = (props, context) => {
         <Button
           icon="plus"
           color="green"
-          content="Add a medal"
+          content={isMarineMedal ? "Add a medal" : "Add a jelly"}
           align="center"
           width={8.5}
           ml={0.5}
-          onClick={() => act("add_medal")} />
+          onClick={() => act(isMarineMedal ? "add_medal" : "add_jelly")} />
       </Fragment>
     )}>
       <Flex direction="column">
-        {Object.keys(uscm_awards)
+        {Object.keys(awards)
           .map((recipient_name, recipient_index) => (
             <Section
-              title={recipient_name + uscm_award_ckeys[recipient_name]}
+              title={recipient_name + award_ckeys[recipient_name]}
               key={recipient_index} m={1}>
-              {Object(uscm_awards[recipient_name])
+              {Object(awards[recipient_name])
                 .map((medal, medalIndex) => (
                   <Flex direction="row"
                     key={medalIndex}
@@ -102,67 +112,7 @@ const USCMPage = (props, context) => {
                         width={6.5}
                         textAlign="center"
                         verticalAlignContent="bottom"
-                        onClick={() => act("delete_medal", {
-                          recipient: recipient_name,
-                          index: medalIndex,
-                        })}
-                      />
-                    </Flex.Item>
-                  </Flex>
-                ))}
-            </Section>
-          ))}
-      </Flex>
-    </Section>
-  );
-};
-  
-const HivePage = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { xeno_awards, xeno_award_ckeys } = data;
-  
-  return (
-    <Section title="Royal Jellies" buttons={(
-      <Fragment>
-        <Button
-          icon="clock"
-          content="Refresh"
-          ml={0.5}
-          onClick={() => act("refresh")} />
-        <Button
-          icon="plus"
-          color="green"
-          content="Add a jelly"
-          align="center"
-          width={8.5}
-          ml={0.5}
-          onClick={() => act("add_jelly")} />
-      </Fragment>
-    )}>
-      <Flex direction="column">
-        {Object.keys(xeno_awards)
-          .map((recipient_name, recipient_index) => (
-            <Section
-              title={recipient_name + xeno_award_ckeys[recipient_name]}
-              key={recipient_index} m={1}>
-              {Object(xeno_awards[recipient_name])
-                .map((medal, medalIndex) => (
-                  <Flex direction="row"
-                    key={medalIndex}
-                    backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
-                    <Flex.Item grow={1} align="center" ml={0.5}>
-                      A {medal}
-                    </Flex.Item>
-                    <Flex.Item grow={0} basis="content" m={0.5}>
-                      <Button.Confirm
-                        icon="trash"
-                        color="white"
-                        content="Rescind"
-                        confirmColor="bad"
-                        width={6.5}
-                        textAlign="center"
-                        verticalAlignContent="bottom"
-                        onClick={() => act("delete_jelly", {
+                        onClick={() => act(isMarineMedal ? "delete_medal" : "delete_jelly", {
                           recipient: recipient_name,
                           index: medalIndex,
                         })}

@@ -305,13 +305,13 @@
 	plasma_cost = 500
 
 /datum/action/xeno_action/onclick/queen_award/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	if(!xeno.check_state())
 		return
-	if(!X.check_plasma(plasma_cost))
+	if(!xeno.check_plasma(plasma_cost))
 		return
-	if(give_jelly_award(X.hive))
-		X.use_plasma(plasma_cost)
+	if(give_jelly_award(xeno.hive))
+		xeno.use_plasma(plasma_cost)
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"

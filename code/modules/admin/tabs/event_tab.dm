@@ -376,7 +376,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	give_medal_award(null, TRUE)
+	give_medal_award(as_admin=TRUE)
 
 /client/proc/award_jelly()
 	if(!check_rights(R_ADMIN))
@@ -403,7 +403,7 @@
 			return
 		last_hive_checked = GLOB.hive_datum[hives[faction]]
 
-	give_jelly_award(last_hive_checked, TRUE)
+	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE

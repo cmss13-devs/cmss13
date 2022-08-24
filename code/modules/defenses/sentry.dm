@@ -438,7 +438,6 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
-	damage_mult = 0.7
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()

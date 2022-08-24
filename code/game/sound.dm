@@ -310,11 +310,11 @@
 	set desc = "stress test this bich"
 	set category = "Debug"
 
-	var/ammount = input(usr, "How many sounds to queue?") as num
-	var/range = input(usr, "Range") as num
-	var/x = input(usr, "Center X") as num
-	var/y = input(usr, "Center Y") as num
-	var/z = input(usr, "Z level") as num
+	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
+	var/range = tgui_input_number(usr, "Range")
+	var/x = tgui_input_number(usr, "Center X")
+	var/y = tgui_input_number(usr, "Center Y")
+	var/z = tgui_input_number(usr, "Z level")
 	var/datum/sound_template/S
 	for(var/i = 1, i <= ammount, i++)
 		S = new

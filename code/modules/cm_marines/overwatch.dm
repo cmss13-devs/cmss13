@@ -520,19 +520,19 @@
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set to '[input]'.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s secondary objective to '[input]'.")
 		if("supply_x")
-			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			var/input = tgui_input_number(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [input].")]")
 			x_supply = input
 		if("supply_y")
-			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			var/input = tgui_input_number(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
 			y_supply = input
 		if("bomb_x")
-			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			var/input = tgui_input_number(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [input].")]")
 			x_bomb = input
 		if("bomb_y")
-			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			var/input = tgui_input_number(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0)
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
 			y_bomb = input
 		if("refresh")

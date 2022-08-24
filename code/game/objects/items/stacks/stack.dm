@@ -319,7 +319,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				return 1
 			var/to_transfer
 			if (user.get_inactive_hand()==src)
-				var/desired = input(user, "How much would you like to transfer from this stack?", "How much?", 1) as null|num
+				var/desired = tgui_input_number(user, "How much would you like to transfer from this stack?", "How much?", 1, S.amount-1, 1)
 				if(!desired)
 					return
 				to_transfer = Clamp(desired, 0, min(amount, S.max_amount-S.amount))

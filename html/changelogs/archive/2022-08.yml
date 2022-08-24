@@ -432,3 +432,4 @@
   stanalbatross:
   - ui: converted the supply drop console to TGUI
   - bugfix: mortar interface numberinputs now work properly
+  - ui: the nuclear fission explosive now uses tgui

@@ -203,7 +203,7 @@
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You finish the airlock!"))
 				var/path
-				else if (glass == AIRLOCK_GLASSIN)
+				if (glass == AIRLOCK_GLASSIN)
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]/glass")
 				else
 					path = text2path("/obj/structure/machinery/door/airlock/almayer/[airlock_type]")

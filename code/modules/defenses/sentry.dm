@@ -438,7 +438,6 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
-	damage_mult = 0.7
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -527,16 +526,16 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/Initialize()
 	. = ..()
 	sentry_number = sentry_count
 	sentry_count++
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/Destroy()
 	QDEL_NULL(linked_cam)
 	. = ..()
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/power_on_action()
 	. = ..()
 	linked_cam = new(loc, "[name] [sentry_number] at [get_area(src)] ([obfuscate_x(x)], [obfuscate_y(y)])")
@@ -544,7 +543,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/launchable/power_off_action()
 	. = ..()
 	QDEL_NULL(linked_cam)
-	
+
 
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
 	return TRUE // We want to be able to turn it on / off while keeping it immobile

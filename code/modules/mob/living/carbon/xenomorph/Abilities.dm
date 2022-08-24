@@ -304,7 +304,7 @@
 	action_icon_state = "queen_award"
 	plasma_cost = 500
 
-/datum/action/xeno_action/onclick/queen_award/use_ability(atom/A)
+/datum/action/xeno_action/onclick/queen_award/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	if(!xeno.check_state())
 		return

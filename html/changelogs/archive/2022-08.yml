@@ -429,6 +429,12 @@
   - bugfix: fixed APCs not automatically reopening their UI if one was already open
       when their covers were closed/opened
 2022-08-24:
+  Diegoflores31:
+  - qol: MTs can now craft normal almayer doors (personal and glass) instead of legacy
+      SS13 doors
+  - code_imp: Changed Airlock Assembly code to spawn cm airlocks instead of legacy
+      and support directional construction.
+  - imageadd: replaced some legacy SS13 airlock assembly sprites for new sprites.
   stanalbatross:
   - ui: converted the supply drop console to TGUI
   - bugfix: mortar interface numberinputs now work properly

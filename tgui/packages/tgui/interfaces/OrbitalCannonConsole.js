@@ -125,25 +125,15 @@ export const OrbitalCannonConsole = (_props, context) => {
               onClick={() => act('chamber_tray')}
             />
           )}
-          {!!data.disabled && (
-            <Dimmer fontSize="32px">
-              <Icon name="exclamation-triangle" />
-              {' Cannon disabled!'}
-            </Dimmer>
-          )}
-          {!data.linkedcannon && (
-            <Dimmer fontSize="32px">
-              <Icon name="exclamation-triangle" />
-              {' No cannon linked to console!'}
-            </Dimmer>
-          )}
-          {!data.linkedtray && (
-            <Dimmer fontSize="32px">
-              <Icon name="exclamation-triangle" />
-              {' No tray linked to console!'}
-            </Dimmer>
-          )}
         </Section>
+        {(!data.linkedtray || !data.linkedcannon || !!data.disabled) && (
+          <Dimmer fontSize="32px">
+            <Icon name="exclamation-triangle" />
+            {(!data.linkedtray) && (' No tray linked to console!')}
+            {(!data.linkedcannon) && (' No cannon linked to console!')}
+            {(!!data.disabled) && ('  Cannon disabled!')}
+          </Dimmer>
+        )}
       </Window.Content>
     </Window>
   );

@@ -137,8 +137,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["medals_panel"])
-		var/starting_page = href_list["medals_panel"]
-		GLOB.medals_panel.tgui_interact(mob, selected_panel=text2num(starting_page))
+		GLOB.medals_panel.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])

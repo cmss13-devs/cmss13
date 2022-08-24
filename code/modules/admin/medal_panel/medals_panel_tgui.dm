@@ -2,12 +2,8 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 
 /datum/medals_panel_tgui
 	var/name = "Medals Panel"
-	var/starting_page = MEDALS_PANEL_XENO
 
-/datum/medals_panel_tgui/tgui_interact(mob/user, datum/tgui/ui, var/selected_panel = MEDALS_PANEL_XENO)
-	if(selected_panel == MEDALS_PANEL_USCM || selected_panel == MEDALS_PANEL_XENO)
-		starting_page = selected_panel
-
+/datum/medals_panel_tgui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MedalsPanel", "Medals Panel")
@@ -43,11 +39,6 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 	data["xeno_awards"] = xeno_awards
 	data["uscm_award_ckeys"] = uscm_award_ckeys
 	data["xeno_award_ckeys"] = xeno_award_ckeys
-	return data
-
-/datum/medals_panel_tgui/ui_static_data(mob/user)
-	var/list/data = list()
-	data["startingPage"] = starting_page
 	return data
 
 /datum/medals_panel_tgui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

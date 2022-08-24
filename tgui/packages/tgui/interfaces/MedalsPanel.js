@@ -24,10 +24,9 @@ export const MedalsPanel = (props, context) => {
     uscm_award_ckeys, 
     xeno_awards, 
     xeno_award_ckeys, 
-    startingPage,
   } = data;
   
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', startingPage);
+  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
   
   const PageComponent = PAGES[pageIndex].component();
   
@@ -72,29 +71,31 @@ const MedalsPage = (props, context) => {
   const { awards, award_ckeys, isMarineMedal } = props;
 
   return (
-    <Section title={isMarineMedal ? "Medal Awards" : "Royal Jellies"} buttons={(
-      <Fragment>
-        <Button
-          icon="clock"
-          content="Refresh"
-          ml={0.5}
-          onClick={() => act("refresh")} />
-        <Button
-          icon="plus"
-          color="green"
-          content={isMarineMedal ? "Add a medal" : "Add a jelly"}
-          align="center"
-          width={8.5}
-          ml={0.5}
-          onClick={() => act(isMarineMedal ? "add_medal" : "add_jelly")} />
-      </Fragment>
-    )}>
+    <Section title={isMarineMedal ? "Medal Awards" : "Royal Jellies"}
+      buttons={(
+        <Fragment>
+          <Button
+            icon="clock"
+            content="Refresh"
+            ml={0.5}
+            onClick={() => act("refresh")} />
+          <Button
+            icon="plus"
+            color="green"
+            content={isMarineMedal ? "Add a medal" : "Add a jelly"}
+            align="center"
+            width={8.5}
+            ml={0.5}
+            onClick={() => act(isMarineMedal ? "add_medal" : "add_jelly")} />
+        </Fragment>
+      )}>
       <Flex direction="column">
         {Object.keys(awards)
           .map((recipient_name, recipient_index) => (
             <Section
               title={recipient_name + award_ckeys[recipient_name]}
-              key={recipient_index} m={1}>
+              key={recipient_index}
+              m={1}>
               {Object(awards[recipient_name])
                 .map((medal, medalIndex) => (
                   <Flex direction="row"

@@ -119,6 +119,11 @@ var/bomb_set = FALSE
 		return UI_CLOSE
 	return GLOB.not_incapacitated_and_adjacent_state
 
+/obj/structure/machinery/nuclearbomb/ui_status(mob/user)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
 /obj/structure/machinery/nuclearbomb/ui_data(mob/user)
 	var/list/data = list()
 

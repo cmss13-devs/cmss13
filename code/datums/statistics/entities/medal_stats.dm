@@ -91,16 +91,6 @@
 
 	if(!check_rights(R_MOD))
 		return FALSE
-	
-	// Get the medal from the db (left the dbview should it be needed later)
-	// Getting the actual ref via DB_ENTITY would require creating the entity with an ID (even though it has one in the view)
-	// var/list/datum/view_record/medal_view/medals = DB_VIEW(/datum/view_record/medal_view,
-	// 	DB_AND(
-	// 		DB_COMP("round_id", DB_EQUALS, SSperf_logging.round.id),
-	// 		DB_COMP("recipient_name", DB_EQUALS, recipient.real_name),
-	// 		DB_COMP("medal_type", DB_EQUALS, medal_type),
-	// 		DB_COMP("citation", DB_EQUALS, citation)
-	// 	))
 
 	// Remove the stats for the job/caste, individual, and the stat's list of medals
 	var/round_id = SSperf_logging.round.id

@@ -16,10 +16,10 @@
 
 	//"Name" = list(location, matter, metal, time, isorganic)
 	var/list/products = list(
-		"synthetic left arm (125 - Metal)" =  list(/obj/item/robot_parts/l_arm,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
-		"synthetic right arm (125 - Metal)" = list(/obj/item/robot_parts/r_arm,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
-		"synthetic left leg (125 - Metal)" =  list(/obj/item/robot_parts/l_leg,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
-		"synthetic right leg (125 - Metal)" = list(/obj/item/robot_parts/r_leg,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME)
+		"synthetic left arm (125 - Metal)" =  list(/obj/item/robot_parts/arm/l_arm,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
+		"synthetic right arm (125 - Metal)" = list(/obj/item/robot_parts/arm/r_arm,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
+		"synthetic left leg (125 - Metal)" =  list(/obj/item/robot_parts/leg/l_leg,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME),
+		"synthetic right leg (125 - Metal)" = list(/obj/item/robot_parts/leg/r_leg,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME)
 		)
 
 /obj/structure/machinery/bioprinter/attack_hand(mob/user)

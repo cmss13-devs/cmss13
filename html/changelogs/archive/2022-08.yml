@@ -443,3 +443,6 @@
   - ui: converted the supply drop console to TGUI
   - bugfix: mortar interface numberinputs now work properly
   - ui: the nuclear fission explosive now uses tgui
+2022-08-25:
+  Morrow:
+  - bugfix: Fixes size oversight for ordnance tech custom grenades.

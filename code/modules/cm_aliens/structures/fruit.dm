@@ -1,5 +1,4 @@
 #define CAN_CONSUME_AT_FULL_HEALTH 1<<0
-#define FRUIT_TYPE_WEAVE 5
 
 /obj/effect/alien/resin/fruit
 	name = XENO_FRUIT_LESSER
@@ -335,7 +334,7 @@
 //Weave
 /obj/effect/alien/resin/fruit/weave
 	desc = "A fluctuating node of fey energies. It pulses with an aura of uncertainty..."
-	name = "flux node"
+	name = XENO_FRUIT_WEAVE
 	time_to_mature = 60 SECONDS
 	heal_amount = 150
 	regeneration_amount_total = 200
@@ -530,3 +529,11 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
 	reagents.add_reagent("fruit_resin", 4)
 	reagents.add_reagent(PLASMA_PURPLE, 12)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/weave
+	name = XENO_FRUIT_WEAVE
+	icon_state = "fruit_weave_item"
+	fruit_type = /obj/effect/alien/resin/fruit/weave
+
+/obj/item/reagent_container/food/snacks/resin_fruit/weave/add_juice()
+	reagents.add_reagent(PLASMA_WEAVE, 6)

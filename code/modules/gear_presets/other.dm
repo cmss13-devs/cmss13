@@ -831,7 +831,7 @@
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult/xeno)
 
 	if(istype(H.wear_suit, /obj/item/clothing/suit/cultist_hoodie) || istype(H.head, /obj/item/clothing/head/cultist_hood))
-		actions_to_add -= /datum/action/human_action/activable/cult/obtain_equipment
+		actions_to_add -= /datum/action/human_action/activable/cult/xeno/obtain_equipment
 
 	for(var/action_to_add in actions_to_add)
 		give_action(H, action_to_add)

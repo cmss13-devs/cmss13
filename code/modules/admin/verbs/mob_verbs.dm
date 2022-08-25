@@ -20,10 +20,6 @@
 	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
-	var/mob/living/carbon/Xenomorph/XNO = M
-	if(istype(XNO))
-		XNO.generate_name()
-		XNO.set_lighting_alpha_from_prefs(M.client)
 	M.client?.change_view(world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)

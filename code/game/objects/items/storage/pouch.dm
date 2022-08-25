@@ -157,15 +157,16 @@
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
 	desc = "It can carry flashlights, a pill, a crowbar, metal sheets, and some bandages."
-	icon_state = "survival"
-	storage_slots = 5
+	icon_state = "tools"
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/sheet/metal
+		/obj/item/device/radio,
+		/obj/item/attachable/bayonet
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -173,20 +174,23 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/sheet/metal/large_stack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
 
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."
-	icon_state = "survival"
-	storage_slots = 5
+	icon_state = "tools"
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/weldingtool,
 		/obj/item/stack/cable_coil,
-		/obj/item/stack/sheet/metal
+		/obj/item/stack/sheet/metal,
+		/obj/item/device/radio,
+		/obj/item/attachable/bayonet
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
@@ -195,6 +199,8 @@
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/sheet/metal/large_stack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"

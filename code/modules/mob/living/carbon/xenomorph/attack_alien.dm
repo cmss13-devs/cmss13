@@ -811,8 +811,9 @@
 		set_broken()
 		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
 	else if(wiresexposed)
-		for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-			cut(wire, M)
+		for(var/wire = 1; wire <= length(get_wire_descriptions()); wire++) // Cut all the wires because xenos don't know any better
+			if(!isWireCut(wire)) // Xenos don't need to mend the wires either
+				cut(wire, M, FALSE) // This is XOR so it toggles; FALSE just because we don't want the messages
 		update_icon()
 		beenhit = XENO_HITS_TO_CUT_WIRES
 		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)
@@ -889,10 +890,14 @@
 /obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!unacidable)
 		M.animation_attack_on(src)
-		if(!opened && prob(70))
-			break_open()
-			M.visible_message(SPAN_DANGER("[M] smashes [src] open!"), \
-			SPAN_DANGER("You smash [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!opened)
+			var/difficulty = 70	//if its just closed we can smash open quite easily
+			if(welded)
+				difficulty = 30 // if its welded shut it should be harder to smash open
+			if(prob(difficulty))
+				break_open()
+				M.visible_message(SPAN_DANGER("[M] smashes \the [src] open!"), \
+				SPAN_DANGER("You smash \the [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		else
 			M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
 			SPAN_DANGER("You smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

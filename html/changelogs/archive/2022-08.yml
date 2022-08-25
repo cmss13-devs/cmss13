@@ -273,6 +273,8 @@
       it completely if it happens
   - bugfix: Corrected some weird spelling of human in the scalping code
   - soundadd: added three new pain screams for preds
+  Nanu:
+  - bugfix: Fixes a minor issue with MDB. Remember case sensitive stuff.
   SpartanBobby:
   - balance: VP78 Now costs 15 points in PFC vendor
   - balance: VP78 Now has the lore accurate 18 magazine capacity instead of 14
@@ -291,3 +293,106 @@
   - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"
   - rscadd: shooting bottles will now cause them to break
   - rscadd: gave glasses the same shattering mechanics as bottles
+  - bugfix: BEs will now actually fire bullets again
+2022-08-15:
+  Geevies:
+  - rscadd: You can now crawl if you try moving while lying down, crawling takes three
+      seconds.
+  - bugfix: Xenos now always update their name and default vision mode when a client
+      transfers into them.
+  Jeser:
+  - rscadd: Specialist kit (the one that allows you to select a specialization and
+      receive a respecting equipment box) now supports specifying what roles are able
+      to activate it or removing restrictions at all by admins for events.
+  - qol: Specialist kit shows what roles exactly can use it upon examination now.
+  - bugfix: Fixed a couple of bugs and exploits related to specialist kit.
+  - imageadd: Specialist kit has it's own sprite now!
+  stanalbatross:
+  - bugfix: fixes incorrectly named corpse spawners, incorrectly parsed to, and unused
+      variable
+  theflyingflail:
+  - rscadd: Added New Weapon Pool for PMC Survivors
+  - rscadd: Prisoner survivors now have a chance to spawn with a helmet or weapon
+  - rscadd: FP9000 and MP5 have been added to the survivor spawn pool to help combat
+      shotgun meta while adding variety to weapon loadouts
+  - rscdel: Removed old things
+  - qol: Reduced amount of lines required for survivors to spawn with essential gear
+  - qol: Survival pouches now include radios and knives
+  - qol: Unique survivor spawn weapons now include ammo belts to help free up space
+  - tweak: PMC survivors now draw from a separate weapons pool dedicated to PMC survivors
+  - tweak: PMC survivors no longer spawn with pmc mask
+  - tweak: Survivors no longer spawn with pistol belts or any belts
+  - tweak: Survivors doctors have updated medical loot spawn due to loss of belts
+  - tweak: Moved the large stack of metal from survivor pouches to the survivor's
+      satchel
+  - tweak: tweaked various survivor skills and load-outs at the request of devs
+  - balance: CMB Shotguns have been reduced to 50% spawn chance as opposed to 75%
+  - bugfix: Various bugs related to winter gear not spawning and CL loot
+  - bugfix: Research survivors now can do surgery again
+  - bugfix: Fixed chaplain survivor being unable to store a weapon in robes
+  - bugfix: Fixed issue were survivors didn't spawn with winter gear
+2022-08-16:
+  Jeser:
+  - bugfix: Fixed specialist dogtags specialization assignment.
+  stanalbatross:
+  - bugfix: hotfixed the colonial marshal corpse spawner breaking
+2022-08-17:
+  Segrain:
+  - refactor: Corpse spawning landmarks should now actually spawn their supposed corpses
+      correctly in every case.
+  - bugfix: WO Honour Guard specialists once again can properly select their kits.
+  - bugfix: Requisitions' cryo storage console works once again.
+  TheBoondock:
+  - bugfix: fixes on fire dead xenomorph being eternal light source even when extinguished
+  stanalbatross:
+  - ui: made the NtOS error message weyland-yutani themed
+  - balance: hardy weeds can no longer be planted in unweedable areas. They will still
+      spread into not normally weedable areas, but cannot be planted there.
+2022-08-18:
+  50RemAndCounting:
+  - rscdel: Removed the wrongfully added surgical webbing vest crate as a purchasable
+      option in the req console.
+  TheBoondock:
+  - bugfix: fixed a xeno being able to smash open welded lockers just as easily as
+      normal closed lockers
+  stanalbatross:
+  - bugfix: xenos can no longer damage dead bodies with acid
+2022-08-19:
+  50RemAndCounting:
+  - bugfix: fixed the service (and some other) uniforms' sleeves and trousers being
+      one pixel too short when viewed from certain directions
+  Kaga:
+  - bugfix: OOC Country Flags should now retry failed people after a minute, as well
+      as be less likely to runtime.
+  Morrow:
+  - admin: Adds fingerprints for built walls
+  Segrain:
+  - bugfix: IO objectives tied to items no longer bluescreen due to said items getting
+      exploded.
+2022-08-20:
+  Drulikar:
+  - bugfix: Fixed power APCs being unbreakable (atleast not by small/med xenos) after
+      basic repairs have been made (mending wires and closing panel)
+  - bugfix: Xenos now cut all power APC wires, not just all - 1 because of an off-by-one
+      error
+  - bugfix: If a power APC's wires are exposed some reason, now they can just immediately
+      be slashed
+  - code_imp: Power APC cut proc now can take a boolean argument to hide messages
+      (And xeno slashing now doesn't produce the redundant messages)
+  Kaga:
+  - rscadd: Added in a new type of embedded shrapnel, unexploded ordnance. Currently
+      only the event-related AT Rockets can rarely (5%) cause it when hitting unintended
+      soft targets (human mobs) directly. Moving with one embedded has a small chance
+      to detonate it with each step, but it can be yanked out as with other embedded
+      objects.
+  - rscadd: Unexploded Anti-Tank Rockets can be manually detonated in various ways
+      as a makeshift weapon or tool. While significantly weaker than proper rockets,
+      they detonate in a contained direction when used. Despite the potential uses,
+      they are highly unstable and prone to accidental detonations with each interaction.
+      Exercise caution when handling them!
+  Nanu:
+  - balance: Nerfs the AGMF from 400+dmg on avg with a maxcap of 750 down to around
+      200 dmg on avg with a maxcap of 400dmg via turning the shrapnel count down to
+      16 from 30.
+  theflyingflail:
+  - bugfix: fixed trijent dam cl survivor not spawning with survivor equipment

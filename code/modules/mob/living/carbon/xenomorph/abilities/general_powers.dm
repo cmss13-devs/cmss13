@@ -644,7 +644,7 @@
 		return FALSE
 
 	var/obj/effect/alien/weeds/weeds = locate() in T
-	if(weeds?.block_special_structures)
+	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
 		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE

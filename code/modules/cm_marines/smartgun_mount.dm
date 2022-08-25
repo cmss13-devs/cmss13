@@ -27,7 +27,7 @@
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 700
-	default_ammo = /datum/ammo/bullet/machinegun/auto
+	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
 
 
@@ -973,7 +973,7 @@
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
-	default_ammo = /datum/ammo/bullet/machinegun
+	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 //STORAGE BOX FOR THE MACHINEGUN

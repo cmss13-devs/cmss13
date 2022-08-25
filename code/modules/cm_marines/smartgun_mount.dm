@@ -27,7 +27,7 @@
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 700
-	default_ammo = /datum/ammo/bullet/machinegun
+	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 

@@ -973,7 +973,7 @@
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
 
 //STORAGE BOX FOR THE MACHINEGUN

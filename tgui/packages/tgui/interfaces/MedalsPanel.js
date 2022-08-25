@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Flex, Button, Fragment } from '../components';
+import { Tabs, Section, Button, Fragment, Stack, Flex } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -38,29 +38,38 @@ export const MedalsPanel = (props, context) => {
       resizable
     >
       <Window.Content scrollable>
-        <Tabs>
-          {PAGES.map((page, i) => {
-            if (page.canAccess && !page.canAccess(data)) {
-              return;
-            }
+        <Stack direction="column" fill>
+          <Stack.Item basis="content" grow={0} pb={1}>
+            <Tabs>
+              {PAGES.map((page, i) => {
+                if (page.canAccess && !page.canAccess(data)) {
+                  return;
+                }
   
-            return (
-              <Tabs.Tab
-                key={i}
-                color={page.color}
-                selected={i === pageIndex}
-                icon={page.icon}
-                onClick={() => setPageIndex(i)}>
-                {page.title}
-              </Tabs.Tab>
-            );
-          })}
-        </Tabs>
-        <PageComponent
-          awards={pageIndex === 0 ? uscm_awards : xeno_awards}
-          award_ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
-          isMarineMedal={pageIndex === 0}
-        />
+                return (
+                  <Tabs.Tab
+                    key={i}
+                    color={page.color}
+                    selected={i === pageIndex}
+                    icon={page.icon}
+                    onClick={() => setPageIndex(i)}>
+                    {page.title}
+                  </Tabs.Tab>
+                );
+              })}
+            </Tabs>
+          </Stack.Item>
+          <Stack.Item mx={0}>
+            <PageComponent
+              awards={pageIndex === 0 ? uscm_awards : xeno_awards}
+              ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
+              isMarineMedal={pageIndex === 0}
+            />
+          </Stack.Item>
+          <Stack.Item grow={1} mx={0} fill>
+            <Section fill />
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
@@ -68,10 +77,11 @@ export const MedalsPanel = (props, context) => {
 
 const MedalsPage = (props, context) => {
   const { act } = useBackend(context);
-  const { awards, award_ckeys, isMarineMedal } = props;
+  const { awards, ckeys, isMarineMedal } = props;
 
   return (
     <Section title={isMarineMedal ? "Medal Awards" : "Royal Jellies"}
+      fill
       buttons={(
         <Fragment>
           <Button
@@ -89,11 +99,11 @@ const MedalsPage = (props, context) => {
             onClick={() => act(isMarineMedal ? "add_medal" : "add_jelly")} />
         </Fragment>
       )}>
-      <Flex direction="column">
+      <Fragment>
         {Object.keys(awards)
           .map((recipient_name, recipient_index) => (
             <Section
-              title={recipient_name + award_ckeys[recipient_name]}
+              title={recipient_name + ckeys[recipient_name]}
               key={recipient_index}
               m={1}>
               {Object(awards[recipient_name])
@@ -123,7 +133,7 @@ const MedalsPage = (props, context) => {
                 ))}
             </Section>
           ))}
-      </Flex>
+      </Fragment>
     </Section>
   );
 };

@@ -47,7 +47,7 @@
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs."))
 		return FALSE
 
-	var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos)
+	var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 	if(!xeno_candidate)
 		return FALSE

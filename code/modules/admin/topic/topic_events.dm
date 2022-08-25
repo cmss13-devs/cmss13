@@ -22,6 +22,8 @@
 			add_req_points()
 		if("medal")
 			owner.award_medal()
+		if("jelly")
+			owner.award_jelly()
 		if("pmcguns")
 			owner.toggle_gun_restrictions()
 		if("monkify")

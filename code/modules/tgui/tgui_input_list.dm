@@ -26,8 +26,9 @@
  * * title - The title of the list input, shown on the top of the TGUI window.
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * timeout - The timeout of the alert, after which the list input will close and qdel itself. Set to zero for no timeout.
+ * * theme - The ui theme to use for the TGUI window.
  */
-/proc/tgui_input_list(mob/user, message, title, list/buttons, timeout = 0)
+/proc/tgui_input_list(mob/user, message, title, list/buttons, timeout = 0, theme = null)
 	if (!user)
 		user = usr
 	if(!length(buttons))
@@ -38,7 +39,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout)
+	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout, theme)
 	input.tgui_interact(user)
 	input.wait()
 	if (input)
@@ -56,8 +57,9 @@
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * theme - The ui theme to use for the TGUI window.
  */
-/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS)
+/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS, theme = null)
 	if (!user)
 		user = usr
 	if(!length(buttons))
@@ -68,7 +70,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout)
+	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout, theme)
 	input.tgui_interact(user)
 
 /**
@@ -94,12 +96,15 @@
 	var/timeout
 	/// Boolean field describing if the tgui_modal was closed by the user.
 	var/closed
+	/// String field for the theme to use
+	var/ui_theme
 
-/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout)
+/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout, theme = null)
 	src.title = title
 	src.message = message
 	src.buttons = list()
 	src.buttons_map = list()
+	src.ui_theme = theme
 
 	// Gets rid of illegal characters
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"})
@@ -145,7 +150,8 @@
 	. = list(
 		"title" = title,
 		"message" = message,
-		"buttons" = buttons
+		"buttons" = buttons,
+		"theme" = ui_theme
 	)
 
 /datum/tgui_list_input/ui_data(mob/user)
@@ -178,8 +184,8 @@
 	/// The callback to be invoked by the tgui_modal upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout)
-	..(user, title, message, buttons, timeout)
+/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout, theme = null)
+	..(user, title, message, buttons, timeout, theme)
 	src.callback = callback
 
 /datum/tgui_list_input/async/Destroy(force, ...)

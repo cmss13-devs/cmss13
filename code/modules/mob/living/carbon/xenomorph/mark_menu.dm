@@ -176,7 +176,7 @@
 				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)

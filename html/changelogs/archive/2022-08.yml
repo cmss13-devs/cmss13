@@ -470,5 +470,8 @@
       overrideable giver attribution for xenos or overrideable medal location for
       marines).
   - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
+  Git-Nivrak:
+  - bugfix: Fixed a bug which would make you have increased movement delay after stopping
+      to pull a mob for one tile
   Morrow:
   - bugfix: Fixes size oversight for ordnance tech custom grenades.

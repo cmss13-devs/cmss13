@@ -444,5 +444,31 @@
   - bugfix: mortar interface numberinputs now work properly
   - ui: the nuclear fission explosive now uses tgui
 2022-08-25:
+  Drathek:
+  - rscadd: Added Give Royal Jelly ability (costs 500 plasma) to select a current
+      or previous xeno and grant an award to be displayed at round end just like a
+      marine award.
+  - imageadd: Added dev art for Queen Award depicting purple jelly above a xeno head.
+  - code_imp: Added totalDeadXenos list to hive_status to track any xenos that aren't
+      hard removed (changed hives).
+  - code_imp: Added view_record/medal_view to support queries to the DB for medal
+      information.
+  - code_imp: Added an optional theme argument to constructors for tgui_input_list
+      and applied hive_status theme to various xenomorph input list choices.
+  - refactor: Improved variable readability, commented most medal code, and moved
+      award names to defines.
+  - bugfix: Fixed Medals Given niche stat sometimes not getting granted if recipient
+      mob found before giver mob.
+  - bugfix: Fixed niche stats not getting displayed in panel_stats global tab for
+      xeno castes.
+  - bugfix: Command tablet not finding any mobs visible for its print medal message.
+      It should also print the medals faster since it is prior to a database call.
+  - admin: Added "Award a royal jelly" to admin Events Panel that picks a hive, and
+      awards a royal jelly (with overrideable giver attribution).
+  - admin: Added tgui Medals Panel to view marine and xeno medals/jelly, rescind medals
+      from that round (actually deleting the items too), and add medals/jelly (with
+      overrideable giver attribution for xenos or overrideable medal location for
+      marines).
+  - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
   Morrow:
   - bugfix: Fixes size oversight for ordnance tech custom grenades.

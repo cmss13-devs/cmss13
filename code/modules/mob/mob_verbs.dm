@@ -226,8 +226,6 @@
 		pulling = null
 
 		grab_level = 0
-
-
 		if(client)
 			client.recalculate_move_delay()
 			// When you stop pulling a mob after you move a tile with it your next movement will still include

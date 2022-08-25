@@ -597,8 +597,6 @@
 		moblist.Add(M)
 	for(var/mob/living/carbon/human/monkey/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/hellhound/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
 	return moblist
@@ -1026,8 +1024,6 @@ var/global/image/action_purple_power_up
 
 	var/cur_user_zone_sel = L.zone_selected
 	var/cur_target_zone_sel
-	if(has_target && istype(T))
-		cur_target_zone_sel = T.zone_selected
 	var/delayfraction = Ceiling(delay/numticks)
 	var/user_orig_loc = L.loc
 	var/user_orig_turf = get_turf(L)
@@ -1038,10 +1034,15 @@ var/global/image/action_purple_power_up
 		target_orig_turf = get_turf(target)
 	var/obj/user_holding = L.get_active_hand()
 	var/obj/target_holding
-	if(has_target && istype(T))
-		target_holding = T.get_active_hand()
+	var/cur_user_lying = L.lying
+	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
+
+	if(has_target && istype(T))
+		cur_target_zone_sel = T.zone_selected
+		target_holding = T.get_active_hand()
+		cur_target_lying = T.lying
 
 	. = TRUE
 	for(var/i in 1 to numticks)
@@ -1137,6 +1138,11 @@ var/global/image/action_purple_power_up
 			break
 		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
 			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		)
+			. = FALSE
+			break
+		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
 		)
 			. = FALSE
 			break
@@ -1899,6 +1905,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 				name += " \[dead\]"
 		pois[name] = M
 
+	pois.Add(get_multi_vehicles())
+
 	return pois
 
 //takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
@@ -1912,3 +1920,14 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	else
 		used_key_list[input_key] = 1
 	return input_key
+
+//Returns the atom sitting on the turf.
+//For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
+//Optional arg 'type' to stop once it reaches a specific type instead of a turf.
+/proc/get_atom_on_turf(atom/movable/M, stop_type)
+	var/atom/turf_to_check = M
+	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
+		turf_to_check = turf_to_check.loc
+		if(stop_type && istype(turf_to_check, stop_type))
+			break
+	return turf_to_check

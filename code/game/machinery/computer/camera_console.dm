@@ -60,6 +60,11 @@
 		user.set_interaction(src)
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
+
 /obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -118,10 +123,11 @@
 		var/list/cameras = get_available_cameras()
 		var/obj/structure/machinery/camera/selected_camera
 		selected_camera = cameras[c_tag]
-		// Cause Unicode breaks c_tags
+		// Unicode breaks c_tags
+		// Currently the only issues with character names comes from the improper or proper tags and so we strip and recheck if not found.
 		if(!selected_camera)
 			for(var/I in cameras)
-				if(copytext_char(I, 3) == c_tag)
+				if(strip_improper(I) == c_tag)
 					selected_camera = cameras[I]
 					break
 		current = selected_camera

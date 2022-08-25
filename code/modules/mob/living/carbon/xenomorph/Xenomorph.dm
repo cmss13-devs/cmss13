@@ -65,11 +65,17 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
+	var/speaking_key = "x"
+	var/speaking_noise = "alien_talk"
+	var/slash_verb = "slash"
+	var/slashes_verb = "slashes"
+	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
 	var/crit_health = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	can_crawl = FALSE
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	var/melee_vehicle_damage = 10
@@ -618,8 +624,10 @@
 			if(1 to 24)
 				to_chat(user, "It is heavily injured and limping badly.")
 
-	if(hivenumber != XENO_HIVE_NORMAL)
-		to_chat(user, "It appears to belong to [hive ? "the [hive.prefix]" : "a different "]hive.")
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/xeno = user
+		if(hivenumber != xeno.hivenumber)
+			to_chat(user, "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive.")
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -1017,3 +1025,6 @@
 	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
 		return
 	return ..()
+
+/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)

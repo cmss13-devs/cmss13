@@ -27,6 +27,8 @@
 	total_health = 150 //more health than regular humans, makes up for hardcrit reintroduction
 	timed_hug = FALSE
 
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000

@@ -101,6 +101,9 @@
 /obj/structure/blocker/forcefield/vehicles
 	types = list(/obj/vehicle/)
 
+/obj/structure/blocker/forcefield/multitile_vehicles
+	types = list(/obj/vehicle/multitile/)
+
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)
 	icon_state = "purple_line"

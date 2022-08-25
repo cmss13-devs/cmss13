@@ -1374,7 +1374,7 @@
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
+				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
 		show_browser(usr, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice == "Cancel")

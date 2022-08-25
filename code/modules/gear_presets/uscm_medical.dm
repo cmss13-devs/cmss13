@@ -1,7 +1,6 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 	name = "USCM Chief Medical Officer (CMO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver
 	access = list(

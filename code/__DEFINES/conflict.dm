@@ -61,6 +61,7 @@
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
 #define GUN_BURST_ONLY			(1<<20)
+#define GUN_FULL_AUTO_ONLY		(1<<21)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

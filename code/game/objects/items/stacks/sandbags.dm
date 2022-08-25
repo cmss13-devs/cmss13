@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_stack"
 	item_state = "sandbag_stack"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
@@ -71,6 +71,9 @@
 
 /obj/item/stack/sandbags/large_stack
 	amount = 25
+
+/obj/item/stack/sandbags/small_stack
+	amount = 5
 
 /obj/item/stack/sandbags/attack_self(mob/living/user)
 	..()

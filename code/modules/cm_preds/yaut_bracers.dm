@@ -404,9 +404,11 @@
 	var/atom/areaLoc = null
 	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
 		var/atom/loc = get_true_location(I)
+		if(I.anchored)
+			continue
 		if(is_honorable_carrier(recursive_holder_check(I)))
 			continue
-		if(istype(get_area(src), /area/yautja))
+		if(istype(get_area(I), /area/yautja))
 			continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
@@ -423,7 +425,7 @@
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD)
 			continue
-		if(istype(get_area(src), /area/yautja))
+		if(istype(get_area(Y), /area/yautja))
 			continue
 		if(is_loworbit_level(Y.z))
 			dead_low_orbit++
@@ -608,7 +610,7 @@
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)
-			victim.gib_animation() // Gibs them but does not drop the limbs so the equipment isn't dropped
+			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
 		if(explosion_type == 0 && is_ground_level(T.z))

@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct stystem.")
+	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -376,7 +376,34 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	give_medal_award()
+	give_medal_award(as_admin=TRUE)
+
+/client/proc/award_jelly()
+	if(!check_rights(R_ADMIN))
+		return
+
+	// Mostly replicated code from observer.dm.hive_status()
+	var/list/hives = list()
+	var/datum/hive_status/last_hive_checked
+
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len > 0 || hive.totalDeadXenos.len > 0)
+			hives += list("[hive.name]" = hive.hivenumber)
+			last_hive_checked = hive
+
+	if(!length(hives))
+		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
+		return
+	else if(length(hives) > 1) // More than one hive, display an input menu for that
+		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
+		if(!faction)
+			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		last_hive_checked = GLOB.hive_datum[hives[faction]]
+
+	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
@@ -670,6 +697,7 @@
 		<BR>
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>

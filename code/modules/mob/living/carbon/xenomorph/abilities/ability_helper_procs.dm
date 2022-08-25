@@ -31,17 +31,16 @@
 	if(isobj(O))
 		I = O
 
-		if(I.unacidable || istype(I, /obj/structure/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
-			to_chat(src, SPAN_WARNING("You cannot dissolve [I].")) // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
-			return
-		if(istype(O, /obj/structure/window_frame))
-			var/obj/structure/window_frame/WF = O
+		if(istype(I, /obj/structure/window_frame))
+			var/obj/structure/window_frame/WF = I
 			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
 				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
 				return
 
-		if(O.density || istype(O, /obj/structure))
-			wait_time = 40 //dense objects are big, so takes longer to melt.
+		wait_time = I.get_applying_acid_time()
+		if(wait_time == -1)
+			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))
+			return
 
 	//TURF CHECK
 	else if(isturf(O))
@@ -136,7 +135,7 @@
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
-		R.take_damage_type((1 / A.acid_strength) * 20, "acid", src)
+		R.take_damage_type((1 / A.acid_strength) * 40, "acid", src)
 		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)

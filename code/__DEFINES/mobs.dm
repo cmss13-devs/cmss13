@@ -131,8 +131,9 @@
 #define XENO_HIVE_TAMED "xeno_hive_tamed"
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
+#define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA)
 
 //=================================================
 
@@ -340,7 +341,6 @@
 
 // Warrior strain flags
 #define WARRIOR_NORMAL		"Normal"
-#define WARRIOR_BOXER		"Boxer"
 
 // Crusher strain flags
 #define CRUSHER_NORMAL		"Normal"
@@ -352,6 +352,9 @@
 #define PRAETORIAN_DANCER	  "Dancer"
 #define PRAETORIAN_WARDEN 	  "Warden"
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
+
+// Hellhound strain flags
+#define HELLHOUND_NORMAL	"Normal"
 
 var/list/default_onmob_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',

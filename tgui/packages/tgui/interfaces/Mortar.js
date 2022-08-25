@@ -8,7 +8,7 @@ export const Mortar = (props, context) => {
 
   const [target_x, setTargetX]
     = useLocalState(context, "target_x", data_target_x);
-  
+
   const [target_y, setTargetY]
     = useLocalState(context, "target_y", data_target_y);
 
@@ -30,7 +30,8 @@ export const Mortar = (props, context) => {
               <NumberInput
                 width="4em"
                 step={1}
-                stepPixelSize={10}
+                minValue={-1000}
+                maxValue={1000}
                 value={target_x}
                 onChange={(_, value) => setTargetX(value)}
               />
@@ -39,7 +40,8 @@ export const Mortar = (props, context) => {
               <NumberInput
                 width="4em"
                 step={1}
-                stepPixelSize={10}
+                minValue={-1000}
+                maxValue={1000}
                 value={target_y}
                 onChange={(_, value) => setTargetY(value)}
               />
@@ -55,7 +57,7 @@ export const Mortar = (props, context) => {
             onClick={() => act('set_target', {
               target_x: target_x,
               target_y: target_y,
-            })} 
+            })}
           />
           <Button
             content="View Camera"
@@ -82,8 +84,8 @@ export const Mortar = (props, context) => {
                 width="4em"
                 step={1}
                 stepPixelSize={10}
-                minValue="-10"
-                maxValue="10"
+                minValue={-10}
+                maxValue={10}
                 value={dial_x}
                 onChange={(_, value) => setDialX(value)}
               />
@@ -93,8 +95,8 @@ export const Mortar = (props, context) => {
                 width="4em"
                 step={1}
                 stepPixelSize={10}
-                minValue="-10"
-                maxValue="10"
+                minValue={-10}
+                maxValue={10}
                 value={dial_y}
                 onChange={(_, value) => setDialY(value)}
               />

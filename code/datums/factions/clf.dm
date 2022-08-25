@@ -24,7 +24,7 @@
 		if(JOB_CLF_COMMANDER)
 			hud_icon_state = "cellcom"
 	if(hud_icon_state)
-		holder.icon_state = "clf_[hud_icon_state]"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "clf_[hud_icon_state]")
 
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(
@@ -36,8 +36,8 @@
 		list("M16 Rifle", 30, /obj/item/weapon/gun/rifle/m16, null, VENDOR_ITEM_REGULAR),
 		list("MAR-30 Battle Carbine", 30, /obj/item/weapon/gun/rifle/mar40/carbine, null, VENDOR_ITEM_REGULAR),
 		list("MAR-40 Battle Rifle", 30, /obj/item/weapon/gun/rifle/mar40, null, VENDOR_ITEM_REGULAR),
-		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/uzi, null, VENDOR_ITEM_REGULAR),
-		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp7, null, VENDOR_ITEM_REGULAR),
+		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/mac15, null, VENDOR_ITEM_REGULAR),
+		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, null, VENDOR_ITEM_REGULAR),
 		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/cmb, null, VENDOR_ITEM_REGULAR),
 
@@ -49,10 +49,10 @@
 		list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
 		list("M16 AP Magazine (5.56x45mm)", 15, /obj/item/ammo_magazine/rifle/m16/ap, null, VENDOR_ITEM_REGULAR),
 		list("M16 Magazine (5.56x45mm)", 5, /obj/item/ammo_magazine/rifle/m16, null, VENDOR_ITEM_REGULAR),
-		list("MAC-15 Magazine (9mm)", 5, /obj/item/ammo_magazine/smg/uzi, null, VENDOR_ITEM_REGULAR),
+		list("MAC-15 Magazine (9mm)", 5, /obj/item/ammo_magazine/smg/mac15, null, VENDOR_ITEM_REGULAR),
 		list("MAR Magazine (7.62x39mm)", 5, /obj/item/ammo_magazine/rifle/mar40, null, VENDOR_ITEM_REGULAR),
 		list("MAR Extended Magazine (7.62x39mm)", 15, /obj/item/ammo_magazine/rifle/mar40/extended, null, VENDOR_ITEM_REGULAR),
-		list("MP27 Magazine (4.6x30mm)", 5, /obj/item/ammo_magazine/smg/mp7, null, VENDOR_ITEM_REGULAR),
+		list("MP27 Magazine (4.6x30mm)", 5, /obj/item/ammo_magazine/smg/mp27, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Magazine (9mm)", 5, /obj/item/ammo_magazine/smg/mp5, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
@@ -66,7 +66,7 @@
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/b92fs, null, VENDOR_ITEM_REGULAR),
-		list("KT-42 Magazine (.44)", 5, /obj/item/ammo_magazine/pistol/automatic, null, VENDOR_ITEM_REGULAR),
+		list("KT-42 Magazine (.44)", 5, /obj/item/ammo_magazine/pistol/kt42, null, VENDOR_ITEM_REGULAR),
 		list("Spearhead Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/cmb, null, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/small, null, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 5, /obj/item/ammo_magazine/pistol/holdout, null, VENDOR_ITEM_REGULAR),
@@ -99,10 +99,10 @@
 		list("Double Barrel Shotgun", 20, /obj/item/weapon/gun/shotgun/double, VENDOR_ITEM_REGULAR),
 		list("HG 37-12 Pump Shotgun", 20, /obj/item/weapon/gun/shotgun/double/sawn, VENDOR_ITEM_REGULAR),
 		list("M16 Rifle", 20, /obj/item/weapon/gun/rifle/m16, VENDOR_ITEM_REGULAR),
-		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/uzi, VENDOR_ITEM_REGULAR),
+		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/mac15, VENDOR_ITEM_REGULAR),
 		list("MAR-30 Battle Carbine", 20, /obj/item/weapon/gun/rifle/mar40/carbine, VENDOR_ITEM_REGULAR),
 		list("MAR-40 Battle Rifle", 20, /obj/item/weapon/gun/rifle/mar40, VENDOR_ITEM_REGULAR),
-		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp7, VENDOR_ITEM_REGULAR),
+		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, VENDOR_ITEM_REGULAR),
 		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/cmb, VENDOR_ITEM_REGULAR),
 
@@ -114,10 +114,10 @@
 		list("CZ-81 Magazine (.32ACP)", 60, /obj/item/ammo_magazine/pistol/skorpion, VENDOR_ITEM_REGULAR),
 		list("M16 AP Magazine (5.56x45mm)", 10, /obj/item/ammo_magazine/rifle/m16/ap, VENDOR_ITEM_REGULAR),
 		list("M16 Magazine (5.56x45mm)", 60, /obj/item/ammo_magazine/rifle/m16, VENDOR_ITEM_REGULAR),
-		list("MAC-15 Magazine (9mm)", 60, /obj/item/ammo_magazine/smg/uzi, VENDOR_ITEM_REGULAR),
+		list("MAC-15 Magazine (9mm)", 60, /obj/item/ammo_magazine/smg/mac15, VENDOR_ITEM_REGULAR),
 		list("MAR Magazine (7.62x39mm)", 60, /obj/item/ammo_magazine/rifle/mar40, VENDOR_ITEM_REGULAR),
 		list("MAR Extended Magazine (7.62x39mm)", 10, /obj/item/ammo_magazine/rifle/mar40/extended, VENDOR_ITEM_REGULAR),
-		list("MP27 Magazine (4.6x30mm)", 60, /obj/item/ammo_magazine/smg/mp7, VENDOR_ITEM_REGULAR),
+		list("MP27 Magazine (4.6x30mm)", 60, /obj/item/ammo_magazine/smg/mp27, VENDOR_ITEM_REGULAR),
 		list("MP5 Magazine (9mm)", 60, /obj/item/ammo_magazine/smg/mp5, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
@@ -131,7 +131,7 @@
 		list("SIDEARM AMMUNITION", -1, null, null),
 		list("88M4 AP Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/b92fs, VENDOR_ITEM_REGULAR),
-		list("KT-42 Magazine (.44)", 40, /obj/item/ammo_magazine/pistol/automatic, VENDOR_ITEM_REGULAR),
+		list("KT-42 Magazine (.44)", 40, /obj/item/ammo_magazine/pistol/kt42, VENDOR_ITEM_REGULAR),
 		list("Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/small, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 40, /obj/item/ammo_magazine/pistol/holdout, VENDOR_ITEM_REGULAR),

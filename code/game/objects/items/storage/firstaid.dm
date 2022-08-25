@@ -82,6 +82,21 @@
 /obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/robust
+	icon_state = "firstaid"
+
+/obj/item/storage/firstaid/robust/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/firstaid/robust/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/toxin
 	name = "toxin first-aid kit"
 	desc = "Used to treat when you have a high amount of toxins in your body."
@@ -541,7 +556,7 @@
 	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
 	req_access = list(ACCESS_WY_CORPORATE)
-	var/req_role = "Corporate Liaison"
+	var/req_role = JOB_CORPORATE_LIAISON
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
@@ -585,6 +600,36 @@
 	idlock = 0
 	display_maptext = TRUE
 	maptext_label = "Uz"
+
+/obj/item/storage/pill_bottle/mystery
+	name = "\improper Weird-looking pill bottle"
+	desc = "You can't seem to identify this."
+	skilllock = SKILL_MEDICAL_MEDIC
+
+/obj/item/storage/pill_bottle/mystery/Initialize()
+	icon_state = "pill_canister[rand(1, 12)]"
+	maptext_label = "??"
+	. = ..()
+
+/obj/item/storage/pill_bottle/mystery/fill_preset_inventory()
+	var/list/cool_pills = subtypesof(/obj/item/reagent_container/pill)
+	for(var/i=1 to max_storage_space)
+		var/pill_to_fill = pick(cool_pills)
+		var/obj/item/reagent_container/pill/P = new pill_to_fill(src)
+		P.identificable = FALSE
+
+/obj/item/storage/pill_bottle/mystery/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
+/obj/item/storage/pill_bottle/stimulant
+	name = "\improper Stimulant pill bottle"
+	icon_state = "pill_canister12"
+	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
+	skilllock = SKILL_MEDICAL_MEDIC
+	maptext_label = "ST"
+
+/obj/item/storage/pill_bottle/stimulant/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 //---------PILL PACKETS---------
 obj/item/storage/pill_bottle/packet

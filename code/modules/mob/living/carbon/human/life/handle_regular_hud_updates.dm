@@ -155,7 +155,7 @@
 						else
 							hud_used.bodytemp_icon.icon_state = "temp0"
 
-		if(interactee)
+		if(interactee && isatom(interactee))
 			interactee.check_eye(src)
 	return TRUE
 

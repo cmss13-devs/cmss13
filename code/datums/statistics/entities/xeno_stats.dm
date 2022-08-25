@@ -2,6 +2,7 @@
 	var/total_hits = 0
 	var/datum/entity/player_stats/caste/top_caste = null // reference to /datum/entity/player_stats/caste (i.e. ravager)
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
+	var/list/datum/entity/statistic/medal/medal_list = list() // list of all royal jelly earned
 
 /datum/entity/player_stats/xeno/get_playtime(var/type)
 	if(!type || type == FACTION_XENOMORPH)

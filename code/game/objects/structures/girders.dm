@@ -250,6 +250,7 @@
 			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
 			if(weeds_in_tile)
 				qdel(weeds_in_tile)
+			T.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 	return FALSE
@@ -294,6 +295,7 @@
 			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
 			if(weeds_in_tile)
 				qdel(weeds_in_tile)
+			T.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 

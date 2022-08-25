@@ -298,7 +298,7 @@
 	name = "\improper Hyperdyne firearm crate"
 	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
 					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
-					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/automatic,
+					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,
 					/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
@@ -319,8 +319,9 @@
 					/obj/item/weapon/gun/shotgun/pump/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
+					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
+					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
@@ -328,6 +329,7 @@
 					/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 					/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
@@ -344,7 +346,7 @@
 			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
 			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/clothing/mask/gas/PMC(src)
+			new /obj/item/clothing/mask/rebreather/scarf(src)
 		if(2) //dutch's
 			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
 			new /obj/item/clothing/under/marine/veteran/dutch(src)
@@ -378,9 +380,9 @@
 					/obj/item/ammo_magazine/revolver/small,
 					/obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/ammo_magazine/smg/mp7,
+					/obj/item/ammo_magazine/smg/mp27,
 					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/uzi,
+					/obj/item/ammo_magazine/smg/mac15,
 					/obj/item/ammo_magazine/m60,
 					/obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/ammo_magazine/smg/ppsh,
@@ -520,9 +522,9 @@
 		new /obj/item/ammo_magazine/smg/m39(src)
 		new /obj/item/ammo_magazine/smg/m39(src)
 	else
-		new /obj/item/weapon/gun/smg/uzi(src)
-		new /obj/item/ammo_magazine/smg/uzi(src)
-		new /obj/item/ammo_magazine/smg/uzi(src)
+		new /obj/item/weapon/gun/smg/mac15(src)
+		new /obj/item/ammo_magazine/smg/mac15(src)
+		new /obj/item/ammo_magazine/smg/mac15(src)
 	new /obj/item/weapon/gun/shotgun/pump/cmb(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
@@ -576,8 +578,8 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/smg/m39(src)
 	new /obj/item/ammo_magazine/smg/m39(src)
-	new /obj/item/ammo_magazine/smg/uzi(src)
-	new /obj/item/ammo_magazine/smg/uzi(src)
+	new /obj/item/ammo_magazine/smg/mac15(src)
+	new /obj/item/ammo_magazine/smg/mac15(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/revolver(src)

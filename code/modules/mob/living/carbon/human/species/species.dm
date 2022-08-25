@@ -40,6 +40,7 @@
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/remains_type = /obj/effect/decal/remains/xeno
+	var/bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 
@@ -392,3 +393,7 @@
 	// call this for each species so each has their own unique scream options when burning alive
 	// heebie-jebies made me do all this effort, I HATE YOU
 	return
+
+/datum/species/proc/handle_blood_splatter(var/mob/living/carbon/human/human, var/splatter_dir)
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
+	return bloodsplatter

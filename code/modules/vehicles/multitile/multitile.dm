@@ -5,8 +5,6 @@
 	This applies to for example interior entrances and hardpoint origins
 */
 
-GLOBAL_LIST_EMPTY(all_multi_vehicles)
-
 /obj/vehicle/multitile
 	name = "multitile vehicle"
 	desc = "Get inside to operate the vehicle."
@@ -35,7 +33,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 
-	move_delay = VEHICLE_SPEED_SLOW
+	move_delay = VEHICLE_SPEED_STATIC
 	// The next world.time when the vehicle can move
 	var/next_move = 0
 	// How much momentum the vehicle has. Increases by 1 each move
@@ -393,7 +391,6 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	if(desc)
 		V.desc = desc
 
-
 //Dealing enough damage to destroy the vehicle
 /obj/effect/vehicle_spawner/proc/load_damage(var/obj/vehicle/multitile/V)
 	V.take_damage_type(1e8, "abstract")
@@ -409,3 +406,11 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		if(NORTH)
 			M.try_rotate(90)
 			M.try_rotate(90)
+
+/obj/vehicle/multitile/get_applying_acid_time()
+	return 3 SECONDS
+
+//handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
+/obj/vehicle/multitile/proc/handle_acidic_environment(var/atom/A)
+	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+		Loco.handle_acid_damage(A)

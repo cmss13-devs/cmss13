@@ -31,6 +31,11 @@
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
 		return
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in T
+	if(resin_trap)
+		to_chat(X, SPAN_WARNING("You can't weed on top of a trap!"))
+		return
+
 	var/list/to_convert
 	if(N)
 		to_convert = N.children.Copy()
@@ -99,7 +104,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	..()
 	return
 
@@ -198,7 +203,7 @@
 			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
 			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
+			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
@@ -269,7 +274,7 @@
 		for(var/i=1, i<=length(X.hive.resin_marks))
 			Goober = X.hive.resin_marks[i]
 			if(Goober.createdby == X.nicknumber)
-				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist)
+				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
 				break
 			i++
 		if(promptuser == "No")
@@ -316,7 +321,7 @@
 				to_chat(src, SPAN_XENOWARNING("You do not have enough plasma!"))
 				return
 			if(client.prefs && client.prefs.no_radials_preference)
-				pheromone = tgui_input_list(src, "Choose a pheromone", "Pheromone Menu", caste.aura_allowed + "help" + "cancel")
+				pheromone = tgui_input_list(src, "Choose a pheromone", "Pheromone Menu", caste.aura_allowed + "help" + "cancel", theme="hive_status")
 				if(pheromone == "help")
 					to_chat(src, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 					return
@@ -512,13 +517,16 @@
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
-
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
+		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
 		return
 
 	if(!X.check_alien_construction(T))
@@ -572,7 +580,7 @@
 		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
 		return FALSE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
-		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
+		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help", theme="hive_status")
 		if(!choice)
 			return
 		if(choice == "help")
@@ -633,7 +641,7 @@
 		return FALSE
 
 	var/obj/effect/alien/weeds/weeds = locate() in T
-	if(weeds?.block_special_structures)
+	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
 		to_chat(X, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE

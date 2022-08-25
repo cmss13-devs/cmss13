@@ -1004,7 +1004,10 @@
 	for(var/obj/item/W in embedded_items)
 		var/obj/limb/organ = W.embedded_organ
 		// Check if shrapnel
-		if(istype(W, /obj/item/shard/shrapnel))
+		if(istype(W, /obj/item/large_shrapnel))
+			var/obj/item/large_shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
@@ -1062,6 +1065,39 @@
 	var/dat = GLOB.data_core.get_manifest()
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+
+/mob/living/carbon/human/verb/view_objective_memory()
+    set name = "View objectives"
+    set category = "IC"
+
+    if(!mind)
+        to_chat(src, "The game appears to have misplaced your mind datum.")
+        return
+
+    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+        return
+
+    mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/purge_objective_memory()
+	set name = "Reset view objectives"
+	set category = "OOC.Fix"
+
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
+
+	if(tgui_alert(src, "Remove the faulty entry?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+		for(var/datum/cm_objective/retrieve_data/disk/Objective in src.mind.objective_memory.disks)
+			if(!Objective.disk.disk_color || !Objective.disk.display_color)
+				src.mind.objective_memory.disks -= Objective
+	else
+		return
+
+	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
+		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
+			src.mind.objective_memory.disks -= Objective
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)

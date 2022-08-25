@@ -656,7 +656,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		else
 			lying = FALSE
 
-	canmove =  !(stunned || frozen || laid_down)
+	canmove = !(stunned || frozen)
 
 	if(lying_prev != lying)
 		if(lying)

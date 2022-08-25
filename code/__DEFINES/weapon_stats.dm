@@ -77,6 +77,7 @@ var/accuracy_mult_unwielded
 #define SCATTER_AMOUNT_TIER_8 3
 #define SCATTER_AMOUNT_TIER_9 2
 #define SCATTER_AMOUNT_TIER_10 1
+#define SCATTER_AMOUNT_NONE 0
 
 /*
 ////FULL AUTO SCATTER PEAK////
@@ -145,6 +146,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_8 	3
 #define FIRE_DELAY_TIER_9 	2
 #define FIRE_DELAY_TIER_10 	1
+#define FIRE_DELAY_TIER_SG 	1.5
 #define FIRE_DELAY_TIER_SMG	1.3
 
 /*

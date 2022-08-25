@@ -110,6 +110,32 @@
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
+	var/turf/T = get_turf(usr)
+	var/fail = FALSE
+	if(T.density)
+		fail = TRUE
+	else
+		for(var/obj/X in T.contents - src)
+			if(X.density && !(X.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(istype(X, /obj/structure/machinery/defenses))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/window))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/windoor_assembly))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/machinery/door))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(usr, SPAN_WARNING("You can't deploy \the [src] here, something is in the way."))
+		return
+
+
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
@@ -120,7 +146,7 @@
 	M.anchored = TRUE
 	M.update_icon()
 	M.set_name_label(name_label)
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
 
@@ -165,7 +191,32 @@
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	var/turf/T = get_turf(user)
+	var/fail = FALSE
+	if(T.density)
+		fail = TRUE
+	else
+		for(var/obj/X in T.contents)
+			if(X.density && !(X.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(istype(X, /obj/structure/machinery/defenses))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/window))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/windoor_assembly))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/machinery/door))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 	M.set_name_label(name_label)
 	qdel(src)
@@ -238,8 +289,11 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
-		if(anchored)
-			to_chat(user, SPAN_WARNING("[src] can't be folded while screwed to the floor. Unscrew it first."))
+		if(anchored && gun_mounted)
+			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
+			return
+		else if(anchored)
+			to_chat(user, SPAN_WARNING("\The [src] can't be folded while screwed to the floor. Unscrew it first."))
 			return
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
 		var/obj/item/device/m56d_post/P = new(loc)
@@ -299,6 +353,15 @@
 					fail = TRUE
 					break
 				if(istype(X, /obj/structure/machinery/defenses))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/window))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/windoor_assembly))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/machinery/door))
 					fail = TRUE
 					break
 		if(fail)
@@ -452,7 +515,7 @@
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("[user] rotates the [src].","You rotate the [src].")
+			user.visible_message("[user] rotates \the [src].","You rotate \the [src].")
 			setDir(turn(dir, -90))
 			if(operator)
 				update_pixels(operator)
@@ -677,7 +740,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
+		to_chat(usr, SPAN_WARNING("You need a free hand to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -777,7 +840,7 @@
 				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
+				to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
 
 			if(!user.allow_gun_usage)
 				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -965,6 +1028,9 @@
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
 	if(!ishuman(user))
 		return FALSE
+	if(broken_gun)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+		return FALSE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
@@ -974,12 +1040,25 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
-	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
-		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
+	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR) || (locate(/obj/structure/window) in ACR) || (locate(/obj/structure/windoor_assembly) in ACR))
+		to_chat(user, SPAN_WARNING("There are barriers nearby, you can't set up \the [src] here!"))
 		return FALSE
-	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+	var/fail = FALSE
+	for(var/obj/X in OT.contents - src)
+		if(istype(X, /obj/structure/machinery/defenses))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/door))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/m56d_hmg))
+			fail = TRUE
+			break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 		return FALSE
+
+
 	if(!(user.alpha > 60))
 		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
 		return FALSE
@@ -1006,7 +1085,7 @@
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
 	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
 	M.rounds = rounds
@@ -1141,7 +1220,12 @@
 /obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/AM, target_dir)
 	if(istype(AM, /obj/structure/barricade))
 		return BLOCKED_MOVEMENT
-
+	else if(istype(AM, /obj/structure/window))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/windoor_assembly))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/machinery/door))
+		return BLOCKED_MOVEMENT
 	return ..()
 
 /obj/structure/blocker/anti_cade/Destroy()
@@ -1217,8 +1301,8 @@
 			return
 
 		if(WT.remove_fuel(2, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on [src]."), \
-				SPAN_NOTICE("You begin repairing the damage on the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
+				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				return

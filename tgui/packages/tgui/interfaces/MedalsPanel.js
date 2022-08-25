@@ -66,7 +66,7 @@ export const MedalsPanel = (props, context) => {
               isMarineMedal={pageIndex === 0}
             />
           </Stack.Item>
-          <Stack.Item grow={1} mx={0} fill>
+          <Stack.Item grow={1} mx={0}>
             <Section fill />
           </Stack.Item>
         </Stack>
@@ -81,7 +81,6 @@ const MedalsPage = (props, context) => {
 
   return (
     <Section title={isMarineMedal ? "Medal Awards" : "Royal Jellies"}
-      fill
       buttons={(
         <Fragment>
           <Button
@@ -111,10 +110,10 @@ const MedalsPage = (props, context) => {
                   <Flex direction="row"
                     key={medalIndex}
                     backgroundColor={medalIndex % 2 === 1 ? "rgba(255,255,255,0.1)" : ""}>
-                    <Flex.Item grow={1} align="center" ml={0.5}>
+                    <Flex.Item grow={1} align="center" m={1} p={0.2}>
                       A {medal}
                     </Flex.Item>
-                    <Flex.Item grow={0} basis="content" m={0.5}>
+                    <Flex.Item grow={0} basis="content" mr={0.5} mt={0.5}>
                       <Button.Confirm
                         icon="trash"
                         color="white"

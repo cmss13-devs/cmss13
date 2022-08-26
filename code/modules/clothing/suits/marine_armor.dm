@@ -597,7 +597,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	storage_slots = 2
+	storage_slots = 4
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 
 //===========================//SPECIALIST\\================================\\

@@ -29,7 +29,7 @@
 		/obj/item/clothing/suit/storage/marine/light,
 		/obj/item/clothing/suit/storage/marine/light
 	)
-	cost = RO_PRICE_WORTHLESS
+	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "M3 Pattern Light Armor Crate"
 	group = "Armor"

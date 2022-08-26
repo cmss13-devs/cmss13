@@ -475,3 +475,6 @@
       to pull a mob for one tile
   Morrow:
   - bugfix: Fixes size oversight for ordnance tech custom grenades.
+2022-08-26:
+  stanalbatross:
+  - admin: fixed not being able to remove notes

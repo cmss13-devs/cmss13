@@ -197,7 +197,7 @@
 				if(!M_turf)
 					continue
 				if(A)
-					area_name = sanitize(A.name)
+					area_name = sanitize(A.name, list("\n"=" ","\t"=" "))
 
 				switch(z_hidden)
 					if(HIDE_ALMAYER)

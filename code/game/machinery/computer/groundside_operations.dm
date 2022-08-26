@@ -126,7 +126,7 @@
 				var/area/A = get_area(H)
 				var/turf/M_turf = get_turf(H)
 				if(A)
-					area_name = sanitize(A.name)
+					area_name = sanitize(A.name, list("\n"=" ","\t"=" "))
 
 				if(H.job)
 					role = H.job

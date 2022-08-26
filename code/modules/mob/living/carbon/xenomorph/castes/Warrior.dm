@@ -23,7 +23,7 @@
 	tackle_min = 2
 	tackle_max = 4
 
-	agility_speed_increase = -0.9
+	agility_speed_increase = -0.4
 
 	heal_resting = 1.4
 

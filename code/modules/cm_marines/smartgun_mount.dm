@@ -556,7 +556,7 @@
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
 			D.current_rounds = rounds
-		rounds = min(rounds + M.current_rounds, rounds_max)
+		rounds = M.current_rounds
 		update_icon()
 		user.temp_drop_inv_item(O)
 		qdel(O)

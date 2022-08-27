@@ -478,3 +478,7 @@
 2022-08-26:
   stanalbatross:
   - admin: fixed not being able to remove notes
+2022-08-27:
+  nauticall:
+  - bugfix: Fixed M56D infinite ammo bug caused by swapping drum magazines on an M56D
+      emplacement.

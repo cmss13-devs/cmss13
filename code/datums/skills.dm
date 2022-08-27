@@ -823,14 +823,15 @@ United States Colonial Marines
 	name = "Squad Leader"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
+	var/fireman_carry_speed = 3 SECONDS
 
 /datum/skills/SL/New(mob/skillset_owner)
 	..()
@@ -841,6 +842,8 @@ United States Colonial Marines
 	return ..()
 
 /datum/skills/SL/proc/handle_fireman_carry(mob/living/M, list/carrydata)
+	SIGNAL_HANDLER
+	carrydata["carry_delay"] = min(carrydata["carry_delay"], fireman_carry_speed)
 	return COMPONENT_CARRY_ALLOW
 
 /datum/skills/intel

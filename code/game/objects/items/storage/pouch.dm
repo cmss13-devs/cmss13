@@ -815,38 +815,19 @@
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
+	var/injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty
+	var/list/canister_reagents
 	matter = list("plastic" = 3000)
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
-	inner = new /obj/item/reagent_container/glass/pressurized_canister()
+	inner = new /obj/item/reagent_container/glass/pressurized_canister(null, canister_reagents)
+	new injector_type(src)
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
-	. = ..()
-	inner.reagents.add_reagent("bicaridine", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
-	update_icon()
-
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
-	. = ..()
-	inner.reagents.add_reagent("kelotane", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
-	update_icon()
-
-/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
-	. = ..()
-	inner.reagents.add_reagent("oxycodone", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
-	update_icon()
-
-/obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
-	. = ..()
-	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/2.5)
-	inner.reagents.add_reagent("peridaxon", inner.volume/5)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
-	update_icon()
+/obj/item/storage/pouch/pressurized_reagent_canister/Destroy()
+	QDEL_NULL(inner)
+	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
@@ -975,6 +956,26 @@
 		if(inner)
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
+	canister_reagents = list("bicaridine" = 480)
+	injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
+
+/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
+	canister_reagents = list("kelotane" = 480)
+	injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
+
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
+	canister_reagents = list("oxycodone" = 480)
+	injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival
+	canister_reagents = list("adrenaline" = 192, "inaprovaline" = 192, "peridaxon" = 96)
+	injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
+
+/obj/item/storage/pouch/pressurized_reagent_canister/triage
+	canister_reagents = list("tricordrazine" = 192, "inaprovaline" = 192, "peridaxon" = 96)
+	injector_type = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

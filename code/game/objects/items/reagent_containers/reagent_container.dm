@@ -8,6 +8,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	attack_speed = 3
+	var/list/starts_with_reagent
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
 	var/volume = 30
@@ -62,6 +63,8 @@
 	if (!possible_transfer_amounts)
 		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
 	create_reagents(volume)
+	for(var/reagent in starts_with_reagent)
+		reagents.add_reagent(reagent, starts_with_reagent[reagent])
 
 /obj/item/reagent_container/Destroy()
 	possible_transfer_amounts = null

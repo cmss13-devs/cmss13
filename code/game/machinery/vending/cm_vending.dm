@@ -564,7 +564,7 @@ IN_USE						used for vending/denying
 							vend_fail()
 							return
 					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
+					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 					available_specialist_sets -= p_name
 
 
@@ -606,6 +606,7 @@ IN_USE						used for vending/denying
 	if(stat & IN_USE)
 		return
 
+	var/obj/vended_product
 	stat |= IN_USE
 	if(LAZYLEN(L))	//making sure it's not empty
 		if(vend_delay)
@@ -615,8 +616,8 @@ IN_USE						used for vending/denying
 				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
 			sleep(vend_delay)
 		var/prod_type = L[3]
-		var/obj/our_item = new prod_type(T)
-		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
+		vended_product = new prod_type(T)
+		H.put_in_any_hand_if_possible(vended_product, disable_warning = TRUE)
 		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
@@ -624,7 +625,7 @@ IN_USE						used for vending/denying
 
 	stat &= ~IN_USE
 	update_icon()
-	return
+	return vended_product
 
 //------------CLOTHING VENDORS---------------
 //clothing vendors automatically put item on user. QoL at it's finest.

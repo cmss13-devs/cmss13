@@ -78,6 +78,8 @@
 		if(isliving(A) && M.a_intent == INTENT_HARM)
 			if(isYautja(A))
 				return 0
+			if(isXeno(A))
+				return 0
 			if (ishuman(A))
 				var/mob/living/carbon/human/L = A
 				var/boxing_icon = pick("boxing_up","boxing_down","boxing_left","boxing_right")

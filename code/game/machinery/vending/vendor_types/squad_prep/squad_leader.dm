@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		to_chat(buyer, SPAN_BOLDNOTICE("Your [english_list(skill_boosts)] skill[skill_list_length > 1 ? "s have" : " has"] been increased!"))
 	var/obj/item/card/id/ID = buyer.wear_id
 	if(ID)
-		ID.set_assignment(buyer.assigned_squad.name + JOB_SQUAD_LEADER + " ([specialization])")
+		ID.set_assignment((buyer.assigned_squad ? (buyer.assigned_squad.name + " ") : "") + JOB_SQUAD_LEADER + " ([specialization])")
 		GLOB.data_core.manifest_modify(buyer.real_name, WEAKREF(buyer), JOB_SQUAD_LEADER + " ([specialization])")
 
 /obj/effect/essentials_set/leader/pyrotechnic

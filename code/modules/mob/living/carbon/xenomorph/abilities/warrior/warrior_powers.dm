@@ -182,19 +182,3 @@
 
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
-
-	// Check actions list for a warrior punch and reset it's cooldown if it's there
-	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null
-	for (var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
-		punch_action = P
-		break
-
-	if (punch_action && !punch_action.action_cooldown_check())
-		if(isXeno(H))
-			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
-		else
-			punch_action.end_cooldown()
-
-	H.Daze(3)
-	H.Slow(5)
-	apply_cooldown()

@@ -124,6 +124,9 @@
 	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
+	if (!X.check_state())
+		return
+
 	var/distance = get_dist(X, A)
 
 	if (distance > 2)

@@ -71,9 +71,6 @@
 	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!X.check_state() || X.agility)
-		return
-
 	if (!X.Adjacent(A))
 		return
 
@@ -122,9 +119,6 @@
 		return
 
 	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		return
-
-	if (!X.check_state() || X.agility)
 		return
 
 	var/distance = get_dist(X, A)

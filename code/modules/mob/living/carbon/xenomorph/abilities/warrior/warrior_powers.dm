@@ -134,6 +134,9 @@
 
 	var/mob/living/carbon/H = A
 
+	if (!X.Adjacent(H))
+		return
+
 	if(H.stat == DEAD) return
 	if(HAS_TRAIT(H, TRAIT_NESTED)) return
 

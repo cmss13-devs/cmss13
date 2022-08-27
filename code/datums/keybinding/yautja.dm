@@ -4,8 +4,8 @@
 
 /datum/keybinding/yautja/can_use(client/user)
 	if(!ishuman(user.mob))
-		return
-
+		return FALSE
+	return TRUE
 
 // mob \\
 

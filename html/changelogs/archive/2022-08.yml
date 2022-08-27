@@ -484,3 +484,5 @@
   nauticall:
   - bugfix: Fixed M56D infinite ammo bug caused by swapping drum magazines on an M56D
       emplacement.
+  stanalbatross:
+  - qol: added keybinds for basically every yautja verb

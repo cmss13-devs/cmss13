@@ -652,7 +652,7 @@ var/list/rebel_rifles = list(
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
-	var/random_gear = rand(0,10)
+	var/random_gear = rand(0,13)
 	switch(random_gear)
 		if(0) // The Classic Joe
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
@@ -774,6 +774,49 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/toxin(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
+		if(11) //PMC support synth
+			H.equip_to_slot_or_del(new /obj/item/card/id/pmc(H), WEAR_ID)
+			H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full, WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+			faction = FACTION_PMC
+			faction_group = FACTION_LIST_WY
+		if(12) // UA synthetic carrying spare ammo supplies and dogtags
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mac15(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40(H), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(H), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(H), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion(H), WEAR_IN_BELT)
+			idtype = /obj/item/card/id/dogtag_synth
+			faction = FACTION_SURVIVOR
+			faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+		if(13) //Firefighter synth
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/red(H), WEAR_HEAD)
+			H.equip_to_slot_or_del(new /obj/item/clothing/suit/fire/firefighter(H), WEAR_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/tool/extinguisher(H), WEAR_IN_J_STORE)
+			idtype = /obj/item/card/id/lanyard
+
 
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)

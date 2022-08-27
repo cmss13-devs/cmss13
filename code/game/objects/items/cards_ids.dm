@@ -352,6 +352,18 @@
 	if(ishuman(user))
 		to_chat(user, SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\""))
 
+/obj/item/card/id/dogtag_synth //not a subtype because synths cannot "die", prevents unintended behaviour with info tag removal.
+	name = "synthetic dog tag"
+	desc = "A military synthetic dog tag. Lacks a standard information tag."
+	icon_state = "dogtag"
+	item_state = "dogtag"
+	pinned_on_uniform = FALSE
+
+/obj/item/card/id/dogtag_synth/examine(mob/user)
+	..()
+	if(ishuman(user))
+		to_chat(user, SPAN_NOTICE("It reads \"[registered_name] - [assignment]\""))
+
 
 /obj/item/dogtag
 	name = "information dog tag"

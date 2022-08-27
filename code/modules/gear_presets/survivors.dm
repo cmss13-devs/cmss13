@@ -105,11 +105,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/scientist/florina
-	name = "Survivor - Florina Researcher"
-	assignment = "Florina Researcher"
+/datum/equipment_preset/survivor/scientist/fiorina
+	name = "Survivor - Fiorina Researcher"
+	assignment = "Fiorina Researcher"
 
-/datum/equipment_preset/survivor/scientist/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/scientist/fiorina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/purple(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/purple(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/science(H), WEAR_JACKET)
@@ -207,11 +207,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/doctor/florina
-	name = "Survivor - Florina Doctor"
-	assignment = "Florina Doctor"
+/datum/equipment_preset/survivor/doctor/fiorina
+	name = "Survivor - Fiorina Doctor"
+	assignment = "Fiorina Doctor"
 
-/datum/equipment_preset/survivor/doctor/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/doctor/fiorina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
 
@@ -393,11 +393,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/security/florina
-	name = "Survivor - Florina Prison Guard"
-	assignment = "Florina Prison Guard"
+/datum/equipment_preset/survivor/security/fiorina
+	name = "Survivor - Fiorina Prison Guard"
+	assignment = "Fiorina Prison Guard"
 
-/datum/equipment_preset/survivor/security/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/security/fiorina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
@@ -652,7 +652,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-		
+
 	..()
 
 
@@ -737,11 +737,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/engineer/florina
-	name = "Survivor - Florina Engineer"
-	assignment = "Florina Engineer"
+/datum/equipment_preset/survivor/engineer/fiorina
+	name = "Survivor - Fiorina Engineer"
+	assignment = "Fiorina Engineer"
 
-/datum/equipment_preset/survivor/engineer/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/engineer/fiorina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
@@ -927,11 +927,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/colonial_marshal/florina
+/datum/equipment_preset/survivor/colonial_marshal/fiorina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
 
-/datum/equipment_preset/survivor/colonial_marshal/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/fiorina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot(H), WEAR_JACKET)

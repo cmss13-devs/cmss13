@@ -14,6 +14,9 @@
 		to_chat(X, SPAN_XENOWARNING("You can't lunge from here!"))
 		return
 
+	if (!X.check_state() || X.agility)
+		return
+
 	if(X.can_not_harm(A) || !ismob(A))
 		apply_cooldown_override(click_miss_cooldown)
 		return
@@ -66,6 +69,9 @@
 		return
 
 	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+		return
+
+	if (!X.check_state() || X.agility)
 		return
 
 	if (!X.Adjacent(A))

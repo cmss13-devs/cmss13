@@ -853,7 +853,7 @@
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_combi()
-	set name = "Yank Combi-stick"
+	set name = "Yank combi-stick"
 	set category = "Yautja.Weapons"
 	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	set src in usr

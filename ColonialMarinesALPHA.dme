@@ -446,6 +446,7 @@
 #include "code\datums\keybinding\mob.dm"
 #include "code\datums\keybinding\movement.dm"
 #include "code\datums\keybinding\xenomorph.dm"
+#include "code\datums\keybinding\yautja.dm"
 #include "code\datums\langchat\langchat.dm"
 #include "code\datums\pain\_pain.dm"
 #include "code\datums\pain\pain_human.dm"

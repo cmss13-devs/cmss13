@@ -67,8 +67,8 @@
 	var/total_amount = 8
 	var/instant_amount = 3
 
-/obj/item/mortar_shell/cluster/detonate(var/turf/T)
-	start_cluster(T)
+/obj/item/mortar_shell/cluster/detonate(var/turf/target)
+	start_cluster(target)
 
 /obj/item/mortar_shell/cluster/proc/start_cluster(turf/target)
 	set waitfor = 0
@@ -76,10 +76,10 @@
 	var/range_num = 7
 	var/list/turf_list = list()
 
-	for(var/turf/T in RANGE_TURFS(range_num, target))
-		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+	for(var/turf/possible_turfs in RANGE_TURFS(range_num, target))
+		if(protected_by_pylon(TURF_PROTECTION_MORTAR, possible_turfs))
 			continue
-		turf_list += T
+		turf_list += possible_turfs
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)

@@ -445,7 +445,10 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && chair_state == DROPSHIP_CHAIR_BROKEN)
 		to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 		return
-	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
+	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
@@ -483,7 +486,10 @@
 			if(DROPSHIP_CHAIR_BROKEN)
 				to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 				return
-	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
+	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)

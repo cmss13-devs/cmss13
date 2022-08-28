@@ -190,6 +190,9 @@
 
 		if(STATE_SCREWDRIVER)
 			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = W
 				if(!WT.remove_fuel(5, user))
 					return

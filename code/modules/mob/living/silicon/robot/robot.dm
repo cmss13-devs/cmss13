@@ -449,7 +449,10 @@ var/list/robot_verbs_default = list(
 
 				return
 
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if (src == user)
 			to_chat(user, SPAN_WARNING("You lack the reach to be able to repair yourself."))
 			return

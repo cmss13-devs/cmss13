@@ -505,3 +505,7 @@
   - qol: you can now unload the UGL as you would with a normal gun, while it is activated
   - soundadd: added new sounds for opening and closing the UGL + reloading grenades
       into the UGL
+  - rscdel: blowtorches no longer always protect you from eye damage
+  - rscadd: added "old blowtorches", which have a weaker flame that only lets them
+      weld vents and doors. However, this makes their welding screens effective and
+      as such they do not hurt your eyes.

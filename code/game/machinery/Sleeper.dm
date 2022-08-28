@@ -57,6 +57,9 @@
 /obj/structure/machinery/sleep_console/attack_remote(mob/living/user)
 	return attack_hand(user)
 
+
+
+
 /obj/structure/machinery/sleep_console/attack_hand(mob/living/user)
 	if(..())
 		return

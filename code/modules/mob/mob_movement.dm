@@ -171,6 +171,19 @@
 		moving = TRUE
 		mob.move_intentionally = TRUE
 		if(mob.lying)
+			//check for them not being a limbless blob (only humans have limbs)
+			if(ishuman(mob))
+				var/mob/living/carbon/human/human = mob
+				var/list/extremities = list("l_hand", "r_hand", "l_foot", "r_foot", "l_arm", "r_arm", "l_leg", "r_leg")
+				for(var/zone in extremities)
+					if(!(human.get_limb(zone)))
+						extremities.Remove(zone)
+				if(extremities.len < 4)
+					next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+					mob.move_intentionally = FALSE
+					moving = FALSE
+					return
+			//now crawl
 			mob.crawling = TRUE
 			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
 				mob.crawling = FALSE

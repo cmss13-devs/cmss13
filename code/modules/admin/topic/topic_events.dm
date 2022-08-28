@@ -81,7 +81,7 @@
 			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")
 			chemical_data.clearance_level = level
 		if("give_research_credits")
-			var/amount = tgui_input_number(usr, "How many credits to add?")
+			var/amount = tgui_input_real_number(usr, "How many credits to add?")
 			if(amount != 0) //can add negative numbers too!
 				message_staff("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)

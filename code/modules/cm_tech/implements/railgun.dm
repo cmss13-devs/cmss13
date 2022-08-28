@@ -203,8 +203,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	#define INPUT_COORD "Input Co-ordinates"
 	if(tgui_alert(H, "View a specific co-ordinate, or continue without inputting a co-ordinate?", \
 		"Railgun Computer", list(INPUT_COORD, "Continue without inputting a co-ordinate")) == INPUT_COORD)
-		var/x_coord = tgui_input_number(H, "Longitude")
-		var/y_coord = tgui_input_number(H, "Latitude")
+		var/x_coord = tgui_input_real_number(H, "Longitude")
+		var/y_coord = tgui_input_real_number(H, "Latitude")
 
 		if(!x_coord || !y_coord)
 			return

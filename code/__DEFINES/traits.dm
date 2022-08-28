@@ -129,6 +129,8 @@
 // HIVE TRAITS
  /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// If the hive or xeno can use objects.
+#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 
 // MISC MOB TRAITS
  /// If the mob is nested.

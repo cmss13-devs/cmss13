@@ -34,7 +34,7 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 
-	if(harmful && !user.allow_gun_usage)
+	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
 
@@ -107,7 +107,7 @@
 		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
-	
+
 /obj/item/explosive/grenade/prime(var/force = FALSE)
 	..()
 	if(!QDELETED(src))

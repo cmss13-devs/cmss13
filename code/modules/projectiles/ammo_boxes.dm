@@ -761,7 +761,7 @@
 			to_chat(usr, SPAN_DANGER("It's on fire and might explode!"))
 			return
 
-		if(!ishuman(usr))
+		if(!ishuman(usr) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 			return
 		visible_message(SPAN_NOTICE("[usr] picks up the [name]."))
 

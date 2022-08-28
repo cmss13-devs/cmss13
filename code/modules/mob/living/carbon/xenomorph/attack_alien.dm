@@ -294,10 +294,15 @@
 	else
 		return FALSE // leave the dead alone
 
-//This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
-//Note that this is overriden by every proc concerning a child of obj unless inherited
+/**This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
+Note that this is overriden by every proc concerning a child of obj unless inherited
+There is a trait that permits them to handle items.**/
 /obj/item/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(M)
+		return XENO_NONCOMBAT_ACTION
 	return
+
 
 /obj/vehicle/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == INTENT_HARM)
@@ -368,6 +373,12 @@
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
+/obj/structure/magazine_box/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(M)
+		return XENO_NONCOMBAT_ACTION
+	else
+		. = ..()
 
 //Beds, nests and chairs - unbuckling
 /obj/structure/bed/attack_alien(mob/living/carbon/Xenomorph/M)

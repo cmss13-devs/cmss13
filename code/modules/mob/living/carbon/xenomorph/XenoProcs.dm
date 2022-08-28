@@ -682,3 +682,7 @@
 		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 	tracked_marker.xenos_tracking -= src
 	tracked_marker = null
+
+	///This permits xenos with thumbs to fire guns and arm grenades. God help us all.
+/mob/living/carbon/Xenomorph/IsAdvancedToolUser()
+	return HAS_TRAIT(src, TRAIT_OPPOSABLE_THUMBS)

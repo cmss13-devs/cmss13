@@ -480,7 +480,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
-	if(!ishuman(usr)) return
+	if(!ishuman(usr) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
@@ -811,7 +812,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(usr.is_mob_incapacitated() || !usr.loc || !isturf(usr.loc))

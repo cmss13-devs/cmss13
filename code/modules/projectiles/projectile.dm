@@ -956,7 +956,7 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
-	if(isXeno(P.firer))
+	if(isXeno(P.firer) && ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
 		var/mob/living/carbon/Xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)

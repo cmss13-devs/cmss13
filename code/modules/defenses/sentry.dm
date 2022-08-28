@@ -251,12 +251,9 @@
 	SetLuminosity(SENTRY_MUZZLELUM)
 	addtimer(CALLBACK(src, /atom.proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
 
-	var/image_layer = layer + 0.1
-	var/offset = 13
-
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, "muzzle_flash", layer + 0.1)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	rotate.Translate(0, 13)
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(src, 3)
@@ -527,16 +524,16 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/Initialize()
 	. = ..()
 	sentry_number = sentry_count
 	sentry_count++
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/Destroy()
 	QDEL_NULL(linked_cam)
 	. = ..()
-	
+
 /obj/structure/machinery/defenses/sentry/launchable/power_on_action()
 	. = ..()
 	linked_cam = new(loc, "[name] [sentry_number] at [get_area(src)] ([obfuscate_x(x)], [obfuscate_y(y)])")
@@ -544,7 +541,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/launchable/power_off_action()
 	. = ..()
 	QDEL_NULL(linked_cam)
-	
+
 
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
 	return TRUE // We want to be able to turn it on / off while keeping it immobile

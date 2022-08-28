@@ -50,6 +50,8 @@
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
 	icon_size = 48
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -342,6 +344,7 @@
 	mutators.xeno = src
 
 	update_icon_source()
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]

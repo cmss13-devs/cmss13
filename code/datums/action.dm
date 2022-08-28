@@ -166,7 +166,7 @@
 		I.ui_action_click(owner, holder_item)
 
 /datum/action/item_action/can_use_action()
-	if(ishuman(owner) && !owner.is_mob_incapacitated() && !owner.lying)
+	if((ishuman(owner) || HAS_TRAIT(owner, TRAIT_OPPOSABLE_THUMBS)) && !owner.is_mob_incapacitated() && !owner.lying)
 		return TRUE
 
 /datum/action/item_action/update_button_icon()

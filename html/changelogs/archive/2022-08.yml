@@ -515,3 +515,5 @@
   - rscadd: added pushups, you can do pushups with a verb in the IC tab
   - bugfix: you can no longer crawl without enough limbs to do so
   - ui: number input now uses tgui
+  - bugfix: when making pills from a chemmaster the creation number will now default
+      to 16, not 10

@@ -320,7 +320,7 @@
 
 /obj/structure/girder/proc/take_damage(damage)
 	health = max(health - damage, 0)
-	if(health == 0)
+	if(health <= 0)
 		update_state()
 
 

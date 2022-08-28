@@ -144,6 +144,7 @@
 	var/mob/living/to_apply = target
 	if(HAS_TRAIT(to_apply, TRAIT_CHARGING))
 		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
+		return
 	if(istype(to_apply))
 		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))

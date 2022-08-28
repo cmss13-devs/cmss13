@@ -194,23 +194,23 @@
 
 /datum/species/proc/attempt_rock_paper_scissors(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("You have no hands!"))
+		to_chat(H, SPAN_WARNING("You have no hands!"))
 		return
 
 	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("They have no hands!"))
+		to_chat(H, SPAN_WARNING("They have no hands!"))
 		return
 
 	//Responding to a raised hand
 	if(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_ROCK_PAPER_SCISSORS))
 		if(!(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)) //Additional check for if the target moved or was already high fived.
-			to_chat(H, SPAN_NOTICE("Too slow!"))
+			to_chat(H, SPAN_WARNING("Too slow!"))
 			return
 		target.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 		var/static/list/game_quips = list("Rock...", "Paper...", "Scissors...", "Shoot!")
 		for(var/quip in game_quips)
 			if(!H.Adjacent(target))
-				to_chat(list(H, target), SPAN_WARNING("You need to be adjacent to eachother to play!"))
+				to_chat(list(H, target), SPAN_WARNING("You need to be standing next to each other to play!"))
 				return
 			to_chat(list(H, target), SPAN_NOTICE(quip))
 			sleep(5)

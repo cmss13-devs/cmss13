@@ -493,6 +493,9 @@
       of being green glasses
   - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
       be monacles
+  Shad0vvs:
+  - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
+      them daze on punch.
   stanalbatross:
   - bugfix: the British flag will now, once more, display properly in chat
   - bugfix: you can no longer infinitely add glass to airlock assemblies, you can

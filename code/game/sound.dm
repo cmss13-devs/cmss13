@@ -312,9 +312,9 @@
 
 	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
 	var/range = tgui_input_number(usr, "Range")
-	var/x = tgui_input_number(usr, "Center X")
-	var/y = tgui_input_number(usr, "Center Y")
-	var/z = tgui_input_number(usr, "Z level")
+	var/x = tgui_input_number(usr, "Center X", 0, 1000, -1000)
+	var/y = tgui_input_number(usr, "Center Y", 0, 1000, -1000)
+	var/z = tgui_input_number(usr, "Z level", 0, 1000, -1000)
 	var/datum/sound_template/S
 	for(var/i = 1, i <= ammount, i++)
 		S = new

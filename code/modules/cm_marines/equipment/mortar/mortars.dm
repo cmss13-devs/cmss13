@@ -148,8 +148,8 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
 	if(manual)
-		temp_targ_x = tgui_input_number(user, "Input the longitude of the target.")
-		temp_targ_y = tgui_input_number(user, "Input the latitude of the target.")
+		temp_targ_x = tgui_input_number(user, "Input the longitude of the target.", 0, 1000, -1000)
+		temp_targ_y = tgui_input_number(user, "Input the latitude of the target.", 0, 1000, -1000)
 
 	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
 		return

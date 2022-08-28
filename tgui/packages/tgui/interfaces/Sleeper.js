@@ -176,54 +176,22 @@ const SleeperDialysis = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     hasOccupant,
-    isBeakerLoaded,
-    beakerMaxSpace,
-    beakerFreeSpace,
     dialysis,
   } = data;
-  const canDialysis = dialysis && beakerFreeSpace > 0;
+  const canDialysis = dialysis;
   return (
     <Section
       title="Dialysis"
       buttons={
-        <Fragment>
-          <Button
-            disabled={!isBeakerLoaded || beakerFreeSpace <= 0 || !hasOccupant}
-            selected={canDialysis}
-            icon={canDialysis ? 'toggle-on' : 'toggle-off'}
-            content={canDialysis ? 'Active' : 'Inactive'}
-            onClick={() => act('togglefilter')}
-          />
-          <Button
-            disabled={!isBeakerLoaded}
-            icon="eject"
-            content="Eject"
-            onClick={() => act('removebeaker')}
-          />
-        </Fragment>
+        <Button
+          disabled={!hasOccupant}
+          selected={canDialysis}
+          icon={canDialysis ? 'toggle-on' : 'toggle-off'}
+          content={canDialysis ? 'Active' : 'Inactive'}
+          onClick={() => act('togglefilter')}
+        />
       }
-    >
-      {isBeakerLoaded ? (
-        <LabeledList>
-          <LabeledList.Item label="Remaining Space">
-            <ProgressBar
-              min="0"
-              max={beakerMaxSpace}
-              value={beakerFreeSpace / beakerMaxSpace}
-              ranges={{
-                good: [0.5, Infinity],
-                average: [0.25, 0.5],
-                bad: [-Infinity, 0.25],
-              }}
-            >
-              {beakerFreeSpace}u
-            </ProgressBar>
-          </LabeledList.Item>
-        </LabeledList>
-      ) : (
-        <Box color="label">No beaker loaded.</Box>
-      )}
-    </Section>
+    />
   );
 };
 

@@ -496,6 +496,7 @@
   Segrain:
   - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
       coordinates).
+  - bugfix: Wrench once again can be properly used in fixing vehicles' hulls.
   Shad0vvs:
   - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
       them daze on punch.

@@ -495,3 +495,6 @@
       be monacles
   stanalbatross:
   - bugfix: the British flag will now, once more, display properly in chat
+  - bugfix: you can no longer infinitely add glass to airlock assemblies, you can
+      now also take glass out of them.
+  - bugfix: updated the construction text for airlocks

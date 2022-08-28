@@ -149,7 +149,10 @@ obj/structure/windoor_assembly/Destroy()
 						src.name = "Anchored Windoor Assembly"
 
 			//Adding airlock electronics for access. Step 6 complete.
-			else if(istype(W, /obj/item/circuitboard/airlock) && W:icon_state != "door_electronics_smoked")
+			else if(istype(W, /obj/item/circuitboard/airlock))
+				var/obj/item/circuitboard/airlock/board = W
+				if(board.fried)
+					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 

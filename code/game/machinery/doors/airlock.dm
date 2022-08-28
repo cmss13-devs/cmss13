@@ -670,7 +670,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					electronics = null
 					ae.forceMove(loc)
 				if(operating == -1)
-					ae.icon_state = "door_electronics_smoked"
+					ae.fried = TRUE
+					ae.update_icon()
 					operating = 0
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")

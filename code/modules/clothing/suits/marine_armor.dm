@@ -125,7 +125,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 
-	//speciality does NOTHING if you have NO_NAME_OVERRIDE
+	// storage
+	storage_bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+	)
+	storage_max_storage_space = 8
 
 /obj/item/clothing/suit/storage/marine/Initialize()
 	. = ..()
@@ -142,13 +148,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
-	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
-	pockets.bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/sniper,
-	)
-	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
@@ -584,7 +583,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-H pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability."
+	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates and an integrated drop pouch. It sacrifices speed for storage and durability."
 	specialty = "\improper M3-H pattern heavy"
 	icon_state = "H1"
 	armor_variation = 6
@@ -597,8 +596,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	storage_slots = 2
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	// drop pouch level storage
+	storage_slots = null
+	storage_max_w_class = SIZE_MEDIUM
+	storage_max_storage_space = 6
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\

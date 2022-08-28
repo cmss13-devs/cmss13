@@ -1,13 +1,18 @@
 /obj/item/clothing/suit/storage
 	var/obj/item/storage/internal/pockets
 	var/storage_slots = 2
+	var/storage_max_w_class = SIZE_SMALL
+	var/storage_max_storage_space = 4
+	var/storage_bypass_w_limit
 
 /obj/item/clothing/suit/storage/Initialize()
 	. = ..()
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = storage_slots
-	pockets.max_w_class = SIZE_SMALL		//fit only small items
-	pockets.max_storage_space = 4
+	pockets.max_w_class = storage_max_w_class
+	pockets.max_storage_space = storage_max_storage_space
+	if(storage_bypass_w_limit)
+		pockets.bypass_w_limit = storage_bypass_w_limit
 	flags_atom |= USES_HEARING
 
 /obj/item/clothing/suit/storage/get_pockets()

@@ -21,6 +21,10 @@
 	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
 
+/obj/item/clothing/shoes/marine/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
+
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)
 		icon_state = "[initial(icon_state)]-1"

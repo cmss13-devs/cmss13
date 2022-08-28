@@ -292,7 +292,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var/points_to_add = tgui_input_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(points_to_add == 0)
 		return
 	else if((supply_controller.points + points_to_add) < 0)

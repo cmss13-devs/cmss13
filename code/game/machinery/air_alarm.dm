@@ -842,7 +842,7 @@ table tr:first-child th:first-child { border: none;}
 					var/threshold = text2num(href_list["var"])
 					var/list/selected = TLV[env]
 					var/list/thresholds = list("lower bound", "low warning", "high warning", "upper bound")
-					var/newval = tgui_input_number(usr, "Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold])
+					var/newval = tgui_input_real_number(usr, "Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold])
 					if (isnull(newval) || ..() || (locked && !isRemoteControlling(usr)))
 						return
 					if (newval<0)

@@ -169,7 +169,6 @@
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(new_xeno.client)
-			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
 			if(new_xeno.client?.prefs.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
 

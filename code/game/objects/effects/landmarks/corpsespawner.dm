@@ -64,13 +64,13 @@
 	name = "Security"
 	equip_path = /datum/equipment_preset/corpse/security
 
-/obj/effect/landmark/corpsespawner/security/cmb
-	name = "Marshal"
+/obj/effect/landmark/corpsespawner/security/marshal
+	name = "Colonial Marshal"
 	equip_path = /datum/equipment_preset/corpse/security/marshal
 
-/obj/effect/landmark/corpsespawner/security/lawyer
-	name = "Lawyer"
-	equip_path = /datum/equipment_preset/corpse/security/lawyer
+/obj/effect/landmark/corpsespawner/security/liaison
+	name = "Corporate Liaison"
+	equip_path = /datum/equipment_preset/corpse/security/liaison
 
 /obj/effect/landmark/corpsespawner/prison_security
 	name = "Prison Guard"
@@ -90,9 +90,9 @@
 	name = "Commanding Officer"
 	equip_path = /datum/equipment_preset/corpse/commander
 
-/obj/effect/landmark/corpsespawner/PMC
-	name = "Private Security Officer"
-	equip_path = /datum/equipment_preset/corpse/PMC
+/obj/effect/landmark/corpsespawner/wysec
+	name = "Weyland-Yutani Corporate Security Guard"
+	equip_path = /datum/equipment_preset/corpse/wysec
 
 ///CM specific jobs///
 
@@ -104,6 +104,22 @@
 	name = "Burst Colonist"
 	equip_path = /datum/equipment_preset/corpse/colonist/burst
 
+/obj/effect/landmark/corpsespawner/colonist/kutjevo
+	name = "Colonist Kutjevo"
+	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo
+
+/obj/effect/landmark/corpsespawner/colonist/kutjevo/burst
+	name = "Burst Colonist Kutjevo"
+	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo/burst
+
+/obj/effect/landmark/corpsespawner/colonist/random
+	name = "Colonist Random"
+	equip_path = /datum/equipment_preset/corpse/colonist/random
+
+/obj/effect/landmark/corpsespawner/colonist/random/burst
+	name = "Burst Colonist Random"
+	equip_path = /datum/equipment_preset/corpse/colonist/random/burst
+
 /obj/effect/landmark/corpsespawner/ua_riot
 	name = "UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot
@@ -111,3 +127,72 @@
 /obj/effect/landmark/corpsespawner/ua_riot/burst
 	name = "Burst UA Officer"
 	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
+/obj/effect/landmark/corpsespawner/wy/manager
+	name = "Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/wy/manager
+
+/obj/effect/landmark/corpsespawner/wy/manager/burst
+	name = "Burst Corporate Supervisor"
+	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+
+
+///////////Faction Specific Corpses//////////////////////
+
+/obj/effect/landmark/corpsespawner/clf
+	name = "Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf
+
+/obj/effect/landmark/corpsespawner/clf/burst
+	name = "Burst Colonial Liberation Front Soldier"
+	equip_path = /datum/equipment_preset/corpse/clf/burst
+
+/obj/effect/landmark/corpsespawner/upp
+	name = "Union of Progressive Peoples Soldier"
+	equip_path = /datum/equipment_preset/corpse/upp
+
+/obj/effect/landmark/corpsespawner/upp/burst
+	name = "Burst Union of Progressive Peoples Soldier"
+	equip_path = /datum/equipment_preset/corpse/upp/burst
+
+/obj/effect/landmark/corpsespawner/pmc
+	name = "Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/pmc
+
+/obj/effect/landmark/corpsespawner/pmc/burst
+	name = "Burst Weyland-Yutani PMC (Standard)"
+	equip_path = /datum/equipment_preset/corpse/pmc/burst
+
+/obj/effect/landmark/corpsespawner/freelancer
+	name = "Freelancer Mercenary"
+	equip_path = /datum/equipment_preset/corpse/freelancer
+
+/obj/effect/landmark/corpsespawner/freelancer/burst
+	name = "Burst Freelancer Mercenary"
+	equip_path = /datum/equipment_preset/corpse/freelancer/burst
+
+// Fun Faction Corpse
+
+/obj/effect/landmark/corpsespawner/dutchrifle
+	name = "Dutch Dozen Rifleman"
+	equip_path = /datum/equipment_preset/corpse/dutchrifle
+
+/obj/effect/landmark/corpsespawner/dutchrifle/burst
+	name = "Burst Dutch Dozen Rifleman"
+	equip_path = /datum/equipment_preset/corpse/dutchrifle/burst
+
+/obj/effect/landmark/corpsespawner/pizza
+	name = "Pizza Deliverer"
+	equip_path = /datum/equipment_preset/corpse/pizza
+
+/obj/effect/landmark/corpsespawner/pizza/burst
+	name = "Burst Pizza Deliverer"
+	equip_path = /datum/equipment_preset/corpse/pizza/burst
+
+/obj/effect/landmark/corpsespawner/gladiator
+	name = "Gladiator"
+	equip_path = /datum/equipment_preset/corpse/gladiator
+
+/obj/effect/landmark/corpsespawner/gladiator/burst
+	name = "Burst Gladiator"
+	equip_path = /datum/equipment_preset/corpse/gladiator/burst

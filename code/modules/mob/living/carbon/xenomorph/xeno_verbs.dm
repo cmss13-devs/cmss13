@@ -49,7 +49,7 @@
 		var/atom/A = i
 		options[initial(A.name)] = i
 
-	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options)
+	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options, theme="hive_status")
 
 	if(!input)
 		return

@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(inoperable())
 		return
 
-	if(z_restricted && !is_mainship_level(src))
+	if(z_restricted && !is_mainship_level(z))
 		to_chat(user, SPAN_WARNING("\The [src] cannot connect to the cryo bay system off the [MAIN_SHIP_NAME]!"))
 		return
 

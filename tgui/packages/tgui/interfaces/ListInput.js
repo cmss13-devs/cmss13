@@ -24,6 +24,7 @@ export const ListInput = (props, context) => {
     message,
     buttons,
     timeout,
+    theme,
   } = data;
 
   // Search
@@ -107,7 +108,8 @@ export const ListInput = (props, context) => {
     <Window
       title={title}
       width={325}
-      height={325}>
+      height={325}
+      theme={theme}>
       {timeout !== undefined && <Loader value={timeout} />}
       <Window.Content>
         <Stack fill vertical>

@@ -373,3 +373,22 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 
 // Timelock
 GLOBAL_LIST_EMPTY(timelocks)
+
+
+//the global list of specialist kits that haven't been claimed yet.
+var/global/list/available_specialist_sets = list(
+			"Scout Set",
+			"Sniper Set",
+			"Demolitionist Set",
+			"Heavy Grenadier Set",
+			"Pyro Set"
+			)
+
+//Similar thing, but used in /obj/item/spec_kit
+var/global/list/available_specialist_kit_boxes = list(
+			"Pyro" = 2,
+			"Grenadier" = 2,
+			"Sniper" = 2,
+			"Scout" = 2,
+			"Demo" = 2,
+			)

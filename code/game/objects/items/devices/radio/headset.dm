@@ -64,7 +64,7 @@
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
-	if (channel == "special")
+	if (channel == RADIO_CHANNEL_SPECIAL)
 		if (translate_binary)
 			var/datum/language/binary = GLOB.all_languages[LANGUAGE_BINARY]
 			binary.broadcast(M, message)

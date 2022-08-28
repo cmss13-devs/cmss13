@@ -49,12 +49,12 @@
 	for(var/obj/structure/machinery/power/smes/colony_smes in power_objects)
 		if(colony_smes.charge <= 0)
 			continue
-		if(!colony_smes.online)
+		if(!colony_smes.outputting)
 			continue
-		if(colony_smes.output <= 0)
+		if(colony_smes.output_level <= 0)
 			continue
-		if(colony_smes.charging == 2 && colony_smes.chargelevel >= colony_smes.output)
-			total_power_output += colony_smes.output
+		if(colony_smes.inputting == 2 && colony_smes.input_level >= colony_smes.output_level)
+			total_power_output += colony_smes.output_level
 	last_power_output = total_power_output
 	if(total_power_output >= minimum_power_required)
 		complete()

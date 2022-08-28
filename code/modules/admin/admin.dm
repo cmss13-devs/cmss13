@@ -109,7 +109,7 @@
 
 			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
-			dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"
 	dat += "</body></html>"

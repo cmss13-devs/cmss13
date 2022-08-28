@@ -340,7 +340,7 @@
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list("Yautja" = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = 1)
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/backpack/yautja
@@ -498,7 +498,7 @@
 	overlays += blood_overlay
 
 	if(!scalpee) //Presumably spawned as map decoration.
-		true_desc = "This is the scalp of an irrelevant hooman."
+		true_desc = "This is the scalp of an irrelevant human."
 		color = list(null, null, null, null, rgb(rand(0,255), rand(0,255), rand(0,255)))
 		return
 
@@ -552,28 +552,28 @@
 	switch(scalpee.life_kills_total)
 		if(0)
 			if(dishonourable)
-				true_desc += " hooman who was even more shameful than usual."
+				true_desc += " human who was even more shameful than usual."
 				worth = -1
 			else if(honourable) //They weren't marked as killing anyone but otherwise distinguished themselves.
-				true_desc += " hooman."
+				true_desc += " human."
 			else
-				true_desc += "n irrelevant hooman."
+				true_desc += "n irrelevant human."
 				worth = 0
 
 		if(1 to 4)
 			if(dishonourable)
-				true_desc += " hooman who could have been worthy, had [they] not insisted on disgracing [themselves]."
+				true_desc += " human who could have been worthy, had [they] not insisted on disgracing [themselves]."
 				worth = -1
 			else
-				true_desc += " respectable hooman with blood on [their] hands."
+				true_desc += " respectable human with blood on [their] hands."
 
 		if(5 to 9)
-			true_desc += "n uncommonly destructive hooman."
+			true_desc += "n uncommonly destructive human."
 			if(!dishonourable)
 				worth = 2 //Even if they did do something dishonourable, this person is worth at least grudging respect.
 
 		if(10 to INFINITY)
-			true_desc += " truly worthy hooman, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
+			true_desc += " truly worthy human, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
 			worth = 2
 
 	if(length(biography))

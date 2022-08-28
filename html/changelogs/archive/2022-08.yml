@@ -493,6 +493,9 @@
       of being green glasses
   - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
       be monacles
+  Segrain:
+  - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
+      coordinates).
   Shad0vvs:
   - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
       them daze on punch.

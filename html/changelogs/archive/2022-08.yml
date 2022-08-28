@@ -486,3 +486,10 @@
       emplacement.
   stanalbatross:
   - qol: added keybinds for basically every yautja verb
+2022-08-28:
+  Nanotrasen-Spy:
+  - rscadd: Ballistic goggles can now be flipped up and down on helmets and hats.
+      Ballistic goggle sprites changed to look like they have 1 piece lenses instead
+      of being green glasses
+  - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
+      be monacles

@@ -97,27 +97,14 @@
 	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/mp
-	name = "military police jumpsuit"
-	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "MP_jumpsuit"
-	worn_state = "MP_jumpsuit"
+/obj/item/clothing/under/marine/ship_marine
+	name = "ship marine jumpsuit"
+	desc = "Standard-issue Ship Marine uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "SM_jumpsuit"
+	worn_state = "SM_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	specialty = "military police"
-	flags_atom = NO_SNOW_TYPE
-
-/obj/item/clothing/under/marine/mp/cadet
-	name = "MP cadet jumpsuit"
-
-/obj/item/clothing/under/marine/warden
-	name = "military warden jumpsuit"
-	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	specialty = "military warden"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
+	specialty = "ship marine"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
@@ -138,15 +125,15 @@
 	worn_state = "io"
 	specialty = "marine intelligence officer"
 
-/obj/item/clothing/under/marine/officer/warrant
-	name = "\improper chief MP uniform"
-	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
-	icon_state = "WO_jumpsuit"
-	item_state = "WO_jumpsuit"
-	worn_state = "WO_jumpsuit"
+/obj/item/clothing/under/marine/officer/master_at_arms
+	name = "\improper master-at-arms uniform"
+	desc = "A uniform typically worn by Master-at-Arms of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
+	icon_state = "MAT_jumpsuit"
+	item_state = "MAT_jumpsuit"
+	worn_state = "MAT_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	specialty = "chief MP"
+	specialty = "master-at-arms"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/technical
@@ -321,7 +308,7 @@
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
 
-/obj/item/clothing/under/marine/mp/provost
+/obj/item/clothing/under/marine/ship_marine/provost
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
@@ -338,6 +325,8 @@
 		/obj/item/clothing/suit/storage/jacket/marine/provost
 	)
 
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -348,39 +337,39 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-/obj/item/clothing/under/marine/mp/provost/enforcer
+/obj/item/clothing/under/marine/ship_marine/provost/enforcer
 	name = "\improper Provost Enforcer Uniform"
 	desc = "The crisp uniform of a Provost Enforcer."
 
-/obj/item/clothing/under/marine/mp/provost/tml
+/obj/item/clothing/under/marine/ship_marine/provost/tml
 	name = "\improper Provost Team Leader Uniform"
 	desc = "The crisp uniform of a Provost Team Leader."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/advisor
+/obj/item/clothing/under/marine/ship_marine/provost/advisor
 	name = "\improper Provost Advisor Uniform"
 	desc = "The crisp uniform of a Provost Advisor."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/inspector
+/obj/item/clothing/under/marine/ship_marine/provost/inspector
 	name = "\improper Provost Inspector Uniform"
 	desc = "The crisp uniform of a Provost Inspector."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshal
+/obj/item/clothing/under/marine/ship_marine/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
 	icon_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshal/sector
+/obj/item/clothing/under/marine/ship_marine/provost/marshal/sector
 	name = "\improper Provost Sector Marshal Uniform"
 	desc = "The crisp uniform of a Provost Sector Marshal."
 
-/obj/item/clothing/under/marine/mp/provost/marshal/chief
+/obj/item/clothing/under/marine/ship_marine/provost/marshal/chief
 	name = "\improper Provost Chief Marshal Uniform"
 	desc = "The crisp uniform of the Provost Chief Marshal."
 

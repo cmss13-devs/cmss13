@@ -636,7 +636,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/grenade/m81/riot/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(!skillcheck(user, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 

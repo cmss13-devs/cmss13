@@ -54,7 +54,7 @@
 	assignment = "Colonial Security"
 
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH)
-	skills = /datum/skills/MP
+	skills = /datum/skills/ship_marine
 
 /datum/equipment_preset/colonist/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)

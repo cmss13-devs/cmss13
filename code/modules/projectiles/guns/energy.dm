@@ -159,7 +159,7 @@
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
 	var/precision = TRUE
-	var/skilllock = SKILL_POLICE_SKILLED
+	var/skilllock = SKILL_SECURITY_SKILLED
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
@@ -174,7 +174,7 @@
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(skilllock && !skillcheck(user, SKILL_POLICE, skilllock))
+		if(skilllock && !skillcheck(user, SKILL_SECURITY, skilllock))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 

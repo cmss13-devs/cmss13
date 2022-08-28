@@ -6470,7 +6470,7 @@
 /area/almayer/engineering/upper_engineering)
 "arI" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine/mp,
+/obj/item/clothing/under/marine/ship_marine,
 /obj/item/device/flash,
 /turf/open/floor/almayer{
 	icon_state = "plate";

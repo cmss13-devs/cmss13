@@ -427,7 +427,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				return DURATION_MULTIPLIER_TIER_1
 		//if(SKILL_RESEARCH)
 		//if(SKILL_PILOT)
-		//if(SKILL_POLICE)
+		//if(SKILL_SECURITY)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
 		if(SKILL_DOMESTIC)

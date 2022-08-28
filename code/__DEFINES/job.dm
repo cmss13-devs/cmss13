@@ -53,12 +53,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CREWMAN						"Vehicle Crewman"
 #define JOB_INTEL						"Intelligence Officer"
 
-#define JOB_POLICE_CADET				"MP Cadet"
-#define JOB_POLICE						"Military Police"
-#define JOB_WARDEN						"Military Warden"
-#define JOB_CHIEF_POLICE				"Chief MP"
-#define JOB_POLICE_ROLES                /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_SHIP_MARINE					"Ship Marine"
+#define JOB_SHIP_MASTER_AT_ARMS			"Master-at-Arms"
+#define JOB_SHIP_MARINE_ROLES           /datum/timelock/ship_marine
+#define JOB_SHIP_MARINE_ROLES_LIST      list(JOB_SHIP_MARINE, JOB_SHIP_MASTER_AT_ARMS)
 
 #define JOB_SEA							"Senior Enlisted Advisor"
 

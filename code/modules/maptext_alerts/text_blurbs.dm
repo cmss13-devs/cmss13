@@ -25,7 +25,7 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 
 	var/list/post_text = list("combat" = "\n[unit]",
 							"po" = "\nFlight Crew, [base]",
-							"mp" = "\nSecurity, [base]",
+							"shp_m" = "\nSecurity, [base]",
 							"eng" = "\nEngineering, [base]",
 							"med" = "\nMedical, [base]",
 							"req" = "\nLogistics, [base]",
@@ -35,7 +35,7 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 	//We'll save processing by showing the same message object to each marine in a category.
 	var/list/mobarray = list("combat" = list(),
 							"po" = list(),
-							"mp" = list(),
+							"shp_m" = list(),
 							"eng" = list(),
 							"med" = list(),
 							"req" = list(),
@@ -50,8 +50,8 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 				mobarray["combat"] += H
 			if(BLURB_USCM_FLIGHT)
 				mobarray["po"] += H
-			if(BLURB_USCM_MP)
-				mobarray["mp"] += H
+			if(BLURB_USCM_SHIP_MARINE)
+				mobarray["shp_m"] += H
 			if(BLURB_USCM_ENGI)
 				mobarray["eng"] += H
 			if(BLURB_USCM_MEDICAL)

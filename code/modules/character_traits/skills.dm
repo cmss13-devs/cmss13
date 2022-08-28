@@ -98,7 +98,7 @@
 /datum/character_trait/skills/police
 	trait_name = "Police Training"
 	trait_desc = "Boosts the policing skill by 1. Crewmember received training in use of security equipment."
-	skill = SKILL_POLICE
+	skill = SKILL_SECURITY
 
 /datum/character_trait/skills/surgery
 	trait_name = "Surgery Training"

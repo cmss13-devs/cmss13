@@ -18,7 +18,7 @@
 /proc/engi_slot_formula(var/playercount)
 	return job_slot_formula(playercount,50,1,2,4)
 
-/proc/mp_slot_formula(var/playercount)
+/proc/ship_marine_slot_formula(var/playercount)
 	return job_slot_formula(playercount,25,2,4,8)
 
 /proc/so_slot_formula(var/playercount)

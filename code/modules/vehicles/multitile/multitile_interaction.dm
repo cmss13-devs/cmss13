@@ -34,7 +34,7 @@
 			to_chat(user, SPAN_WARNING("You can attach clamp to vehicles of your faction only."))
 			return
 
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(!skillcheck(user, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't know how to use \the [O.name]."))
 			return
 
@@ -52,7 +52,7 @@
 			return
 
 		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
-		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(skillcheck(user, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return

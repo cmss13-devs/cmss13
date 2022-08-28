@@ -118,7 +118,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			dept_flags |= FLAG_SHOW_MISC
 			LAZYSET(misc[real_rank], name, rank)
 		else if(real_rank in ROLES_POLICE)
-			dept_flags |= FLAG_SHOW_POLICE
+			dept_flags |= FLAG_SHOW_SECURITY
 			LAZYSET(mp[real_rank], name, rank)
 		else if(real_rank in ROLES_ENGINEERING)
 			dept_flags |= FLAG_SHOW_ENGINEERING
@@ -161,8 +161,8 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 				for(name in marines_by_squad[squad_name][real_rank])
 					dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[marines_by_squad[squad_name][real_rank][name]]</td><td>[isactive[name]]</td></tr>"
 					even = !even
-	if(dept_flags & FLAG_SHOW_POLICE)
-		dat += "<tr><th colspan=3>Military Police</th></tr>"
+	if(dept_flags & FLAG_SHOW_SECURITY)
+		dat += "<tr><th colspan=3>Ship Security</th></tr>"
 		for(real_rank in mp)
 			for(name in mp[real_rank])
 				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mp[real_rank][name]]</td><td>[isactive[name]]</td></tr>"

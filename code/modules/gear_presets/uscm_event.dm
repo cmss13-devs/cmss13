@@ -220,7 +220,7 @@
 
 /datum/equipment_preset/uscm_event/provost/tml
 	name = "Provost Team Leader (PvE9)"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/master_at_arms
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
@@ -264,7 +264,7 @@
 
 /datum/equipment_preset/uscm_event/provost/advisor
 	name = "Provost Advisor (PvE9)"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/master_at_arms
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
@@ -298,7 +298,7 @@
 
 /datum/equipment_preset/uscm_event/provost/inspector
 	name = "Provost Inspector (PvI)"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/master_at_arms
 
 	assignment = JOB_PROVOST_INSPECTOR
 	rank = "Provost Inspector"
@@ -357,7 +357,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshal(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ship_marine/provost/marshal(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)
@@ -389,7 +389,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshal(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ship_marine/provost/marshal(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)
@@ -421,7 +421,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshal(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ship_marine/provost/marshal(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)

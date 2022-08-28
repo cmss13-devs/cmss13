@@ -822,7 +822,7 @@
 	. = ..()
 	var/template = {"\[center\]\[logo\]\[/center\]
 		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
-		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
+		\[small\]FOR USE BY SM'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
 	info = parsepencode(template, null, null, FALSE)
 	update_icon()

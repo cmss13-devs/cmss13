@@ -92,7 +92,7 @@
 //police skill, hidden
 #define SKILL_SECURITY_DEFAULT 0
 #define SKILL_SECURITY_FLASH 1 //flash use (CE, CMO, any officer starting with a flash)
-#define SKILL_SECURITY_SKILLED 2 //all police gear use, can strip someone's clothes simultaneously (MP)
+#define SKILL_SECURITY_SKILLED 2 //all police gear use, can strip someone's clothes simultaneously (SM)
 #define SKILL_SECURITY_MAX 2
 
 
@@ -101,7 +101,7 @@
 //slight increase in punch damage.
 #define SKILL_CQC_DEFAULT 0
 #define SKILL_CQC_TRAINED 1
-#define SKILL_CQC_SKILLED 2 //no risk of accidental weapon discharge upon disarming (MP)
+#define SKILL_CQC_SKILLED 2 //no risk of accidental weapon discharge upon disarming (SM)
 #define SKILL_CQC_EXPERT 3
 #define SKILL_CQC_MASTER 5
 #define SKILL_CQC_MAX 5

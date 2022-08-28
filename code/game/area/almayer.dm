@@ -247,7 +247,7 @@
 	icon_state = "brigcells"
 
 /area/almayer/shipboard/brig/chief_mp_office
-	name = "\improper Brig Chief MP Office"
+	name = "\improper Brig Master-at-Arms Office"
 	icon_state = "chiefmpoffice"
 
 /area/almayer/shipboard/sea_office

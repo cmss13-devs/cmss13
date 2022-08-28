@@ -369,7 +369,7 @@ var/list/alldepartments = list()
 	dpt = "USCM Provost Office"
 
 /obj/structure/machinery/faxmachine/uscm/brig/chief
-	department = "Chief MP"
+	department = "Master-at-Arms"
 
 /obj/structure/machinery/faxmachine/uscm/brig/provost
 	department = "USCM Provost Office"

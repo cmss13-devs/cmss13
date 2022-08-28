@@ -537,8 +537,8 @@ COMMAND STAFF
 		SKILL_INTEL = SKILL_INTEL_TRAINED
 	)
 
-/datum/skills/CMP
-	name = "Chief MP"
+/datum/skills/master_at_arms
+	name = "Master-at-Arms"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_SECURITY = SKILL_SECURITY_SKILLED,
@@ -630,7 +630,7 @@ MILITARY NONCOMBATANT
 	)
 
 /datum/skills/ship_marine
-	name = "Military Police"
+	name = "Ship Marine"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_SECURITY = SKILL_SECURITY_SKILLED,

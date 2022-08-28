@@ -22,7 +22,7 @@
 
 
 
-//------------ CHIEF MP ---------------
+//------------ Master-at-Arms ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_master_at_arms, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_master_at_arms, list(
 		list("Ship Marine M2 Pattern Padless Armor", 0, /obj/item/clothing/suit/storage/marine/ship_marine/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Ship Marine M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/ship_marine, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (TAKE ALL)", 0, null, null, null),
@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/ship_marine/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/ship_marine/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("WELDING PROTECTION (CHOOSE 1)", 0, null, null, null),
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/ship_marine/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/ship_marine/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/ship_marine/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/ship_marine/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/ship_marine/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/ship_marine/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 

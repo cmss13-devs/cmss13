@@ -245,7 +245,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hg
-	name = "WO Honor Guard" //MP
+	name = "WO Honor Guard" // SM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)

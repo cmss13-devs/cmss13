@@ -276,7 +276,7 @@
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Military Police and peacekeepers, though it can hold some light munitions."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Ship Marines and peacekeepers, though it can hold some light munitions."
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
 	item_state_slots = list(

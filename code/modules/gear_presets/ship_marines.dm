@@ -27,7 +27,7 @@
 	)
 	assignment = JOB_SHIP_MARINE
 	rank = JOB_SHIP_MARINE
-	paygrade = "ME5"
+	paygrade = "ME2"
 	role_comm_title = "SM"
 	skills = /datum/skills/ship_marine
 
@@ -51,8 +51,8 @@
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/eyepiece(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ship_marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
@@ -60,7 +60,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/ship_marine/master_at_arms
-	name = "USCM Chief MP (CMP)"
+	name = "USCM Master-at-Arms (MAT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
@@ -86,8 +86,8 @@
 	assignment = JOB_SHIP_MASTER_AT_ARMS
 	rank = JOB_SHIP_MASTER_AT_ARMS
 	paygrade = "MO2"
-	role_comm_title = "CMP"
-	skills = /datum/skills/CMP
+	role_comm_title = "MAT"
+	skills = /datum/skills/master_at_arms
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/master_at_arms)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
@@ -110,7 +110,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ship_marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -127,7 +127,7 @@
 	rank = "Riot"
 	paygrade = "ME5"
 	role_comm_title = "RMP"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/master_at_arms
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/master_at_arms)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
@@ -175,4 +175,4 @@
 	rank = "CRMP"
 	paygrade = "MO1"
 	role_comm_title = "CRMP"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/master_at_arms

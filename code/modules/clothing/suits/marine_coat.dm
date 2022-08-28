@@ -74,7 +74,7 @@
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
 
-//Marine service jacket and MP themed variants
+//Marine service jacket
 /obj/item/clothing/suit/storage/jacket/marine/service
 	name = "marine service jacket"
 	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

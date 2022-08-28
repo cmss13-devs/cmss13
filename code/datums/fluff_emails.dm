@@ -108,7 +108,7 @@
 					Cryosleep is killing me, man. Inside and outside. I mean really, they expect us to sit in that tube for god only knows how long, and when we wake up? It's all 'grab a crappy protein bar and grab your gear, you're going to war, Marine!' Bullshit.
 					<br>
 					<br>
-					Anywho, I've been thinking how to make the whole thing more bearable. Tried to take a plush from the bunks with me inside. That dickwad MP took it away from me though, said it was against Operating Procedure. Like I care. Can't do anything fun around here, right?
+					Anywho, I've been thinking how to make the whole thing more bearable. Tried to take a plush from the bunks with me inside. That dickwad SM took it away from me though, said it was against Operating Procedure. Like I care. Can't do anything fun around here, right?
 					My new idea, though, is a Walkman. I'm hoping that I might at least have a sounder sleep with good tunes to go along with it. Now, I know it might sound dumb, but I'm figuratively grasping at straws here, man. Bear with me.
 					I don't usually use these things, and frankly that vendor near Medbay has waaay too many cassettes to choose from. Not that I know most songs on them anywho.
 					<br>

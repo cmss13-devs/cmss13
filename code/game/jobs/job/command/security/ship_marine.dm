@@ -7,7 +7,7 @@
 	selection_class = "job_shp_m"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/ship_marine/standard
-	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='"+URL_WIKI_LAW+"'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
+	entry_message_body = "You are a ship marine, just another set of hands for the corps. Your duty is to protect and maintain the security of your assigned vessel, repel boarders, put down mutinies, and defend the landing zone during operations. Ooh-rah-to-ashes private."
 
 /datum/job/command/ship_marine/set_spawn_positions(var/count)
 	spawn_positions = ship_marine_slot_formula(count)

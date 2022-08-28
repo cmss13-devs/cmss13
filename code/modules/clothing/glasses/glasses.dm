@@ -500,7 +500,7 @@
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"
-	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
+	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among ship marines, though other models exist."
 	icon_state = "securityhud"
 	item_state = "securityhud"
 	eye_protection = 1

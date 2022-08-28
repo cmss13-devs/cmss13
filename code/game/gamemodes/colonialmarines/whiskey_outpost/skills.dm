@@ -1,7 +1,7 @@
 //Skills
 
 /datum/skills/honor_guard
-	name = "Honor Guard" //MP
+	name = "Honor Guard" // SM
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

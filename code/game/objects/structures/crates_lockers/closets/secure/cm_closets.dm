@@ -71,8 +71,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/Initialize()
 	. = ..()
-	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
-	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
+	new /obj/item/clothing/head/helmet/marine/ship_marine/SO(src)
+	new /obj/item/clothing/head/helmet/marine/ship_marine/SO(src)
 	new /obj/item/clothing/suit/storage/marine/ship_marine/SO(src)
 	new /obj/item/clothing/suit/storage/marine/ship_marine/SO(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 //**********************Military Police Gear**************************/
 /obj/structure/closet/secure_closet/military_police
-	name = "military police's locker"
+	name = "ship marine's locker"
 	req_access = list(ACCESS_MARINE_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_unlocked_police"
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 		new /obj/item/storage/backpack/satchel/sec(src)
 
 /obj/structure/closet/secure_closet/warrant_officer
-	name = "chief MP's locker"
+	name = "master-at-arms' locker"
 	req_access = list(ACCESS_MARINE_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"

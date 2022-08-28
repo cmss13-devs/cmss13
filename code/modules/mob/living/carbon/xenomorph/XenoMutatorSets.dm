@@ -29,7 +29,7 @@
 	var/mob/living/carbon/Xenomorph/Xeno = usr
 	if(mutators_for_purchase.len == 0)
 		to_chat(usr, "There are no available strains.")
-	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase)
+	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase, theme="hive_status")
 	if(!pick)
 		return FALSE
 	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return

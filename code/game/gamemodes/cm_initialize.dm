@@ -366,7 +366,7 @@ Additional game mode variables.
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
-		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos)
+		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
@@ -506,7 +506,7 @@ Additional game mode variables.
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT)
+	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI

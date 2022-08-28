@@ -485,10 +485,11 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 60
-	var/instant_amount = 3
-	var/explosion_power = 300
+	var/total_amount = 75 // how many times will the shell fire?
+	var/instant_amount = 3 // how many explosions per time it fires?
+	var/explosion_power = 350
 	var/explosion_falloff = 150
+	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -513,7 +514,7 @@ var/list/ob_type_fuel_requirements
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
 			fire_in_a_hole(U)
-		sleep(5)
+		sleep(delay_between_clusters)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)

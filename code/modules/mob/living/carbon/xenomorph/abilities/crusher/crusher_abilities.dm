@@ -247,11 +247,18 @@
 	plasma_cost = 25
 	xeno_cooldown = 10 SECONDS
 
+/datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
+	var/mob/living/carbon/Xenomorph/Xeno = owner
+	Xeno.flags_atom &= ~DIRLOCK
+	if(start_charging)
+		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
+
+
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
 	var/mob/living/carbon/Xenomorph/Xeno = owner
 	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("You knock over [Mob] as you sweep to the side!"))
-	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	var/turf/target_turf = get_turf(Mob)
+	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	Mob.apply_damage(15,BRUTE)
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
@@ -261,10 +268,4 @@
 		Mob.KnockDown(1)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
-
-/datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	Xeno.flags_atom &= ~DIRLOCK
-	if(start_charging)
-		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
 

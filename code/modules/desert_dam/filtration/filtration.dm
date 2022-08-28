@@ -125,34 +125,40 @@ var/global/east_riverstart = 0
 
 
 
-/obj/effect/blocker/toxic_water/Crossed(mob/living/M as mob)
+/obj/effect/blocker/toxic_water/Crossed(var/atom/A)
 	if(toxic == 0)
 		return
 
-	if(!istype(M))
-		return
-
-	// Inside a xeno for example
-	if(!istype(M.loc, /turf))
-		return
-
-	if(istype(src.loc, /turf/open/gm/river/desert))
-		var/turf/open/gm/river/desert/R = src.loc
+	if(istype(loc, /turf/open/gm/river/desert))
+		var/turf/open/gm/river/desert/R = loc
 		if(R.covered)
 			return
 	else
 		return
 
-	for(var/turf/open/floor/F in range(0, src))
+	if(ismob(A))
+		var/mob/living/M = A
+
+		// Inside a xeno for example
+		if(!istype(M.loc, /turf))
+			return
+
+		if(isXeno(M))
+			if(M.pulling)
+				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
+				M.stop_pulling()
+
+		cause_damage(M)
+		START_PROCESSING(SSobj, src)
 		return
+	else if(isVehicleMultitile(A))
+		var/obj/vehicle/multitile/V = A
 
-	if(isXeno(M))
-		if(M.pulling)
-			to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
-			M.stop_pulling()
-
-	cause_damage(M)
-	START_PROCESSING(SSobj, src)
+		//various colony vehicles and trucks take damage from toxic water. Military-grade armored vehicles don't
+		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+			V.handle_acidic_environment(src)
+			START_PROCESSING(SSobj, src)
+		return
 
 
 /obj/effect/blocker/toxic_water/process()
@@ -162,17 +168,22 @@ var/global/east_riverstart = 0
 		return
 
 	if(istype(src.loc, /turf/open/gm/river/desert))
-		var/turf/open/gm/river/desert/R = src.loc
+		var/turf/open/gm/river/desert/R = loc
 		if(R.covered)
 			return
 	else
 		return
 
-	var/mobs_present = 0
+	var/targets_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
-		mobs_present++
+		targets_present++
 		cause_damage(M)
-	if(mobs_present < 1)
+	for(var/obj/vehicle/multitile/V in range(0, src))
+		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+			targets_present++
+			V.handle_acidic_environment(src)
+
+	if(targets_present < 1)
 		STOP_PROCESSING(SSobj, src)
 
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)

@@ -34,6 +34,7 @@ Used in: /code/datums/statistics/entities/player_entity.dm
             {{:helper.link('Medals', null, {'dataMenu' : 5}, data.dataMenu == 5 ? 'selected' : null)}}
         {{else data.subMenu == 1}}
             {{:helper.link('Castes', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
+            {{:helper.link('Jellies', null, {'dataMenu' : 5}, data.dataMenu == 5 ? 'selected' : null)}}
         {{/if}}
     </div>
 {{/if}}
@@ -944,6 +945,21 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     </div>
                                 </fieldset>
                             {{/if}}
+                        </fieldset>
+                    {{/props}}
+                {{else data.dataMenu == 5}}
+                    {{props data.xeno.medal_list :medal_value:medal_index}}
+                        <fieldset class="fieldContainerSpaced">
+                            <div class="itemLabelClearBoth">
+                                <b>{{:medal_value.medal_type}}</b>
+                            </div>
+                            <div class="itemLabelClearBoth">
+                                <b>{{:medal_value.recipient}}</b>
+                            </div>
+							<hr>
+                            <div class="itemContent">
+                                {{:medal_value.citation}}
+                            </div>
                         </fieldset>
                     {{/props}}
                 {{/if}}

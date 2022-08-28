@@ -402,3 +402,76 @@
   theflyingflail:
   - rscadd: Added ert medical pouch to ert corpses
   - tweak: Swapped PMC mask for heat coif in black market crate and pmc corpses
+2022-08-22:
+  Geevies:
+  - bugfix: Xenos no longer lose their age/name when rejoining the game.
+  Jeser:
+  - balance: Vehicles now can receive damage from various environmental acidic sources
+      like toxin rivers in addition to acid spray. Colony Vans receive wheels damage
+      when driving through toxins river on Trijent Dam now.
+  - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
+2022-08-23:
+  Morrow:
+  - rscadd: Dropship droppable sentries can now be seen on dropship cameras.
+  - bugfix: Dropship droppable sentries have working lights when dropped.
+  Segrain:
+  - bugfix: Giving items no longer requires recipient to have both hands empty.
+  - bugfix: Feeding pills to somebody while lagging and clicking a lot no longer leaves
+      ghost pills on the floor.
+  stanalbatross:
+  - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
+      carbine
+  - qol: added a keybind for LOOC
+  - balance: the cluster OB now has 1/6th stronger explosions and fires 25% more explosives
+      in the same time
+  - bugfix: fixed not being able to open an airlock's wires UI if the airlock had
+      no power
+  - bugfix: fixed APCs not automatically reopening their UI if one was already open
+      when their covers were closed/opened
+2022-08-24:
+  Diegoflores31:
+  - qol: MTs can now craft normal almayer doors (personal and glass) instead of legacy
+      SS13 doors
+  - code_imp: Changed Airlock Assembly code to spawn cm airlocks instead of legacy
+      and support directional construction.
+  - imageadd: replaced some legacy SS13 airlock assembly sprites for new sprites.
+  Segrain:
+  - bugfix: Items dumped out of containers no longer appear on top of mobs.
+  - bugfix: Spawn pools and egg morphers no longer get blocked by documents and other
+      indestructible items from melted bodies.
+  stanalbatross:
+  - ui: converted the supply drop console to TGUI
+  - bugfix: mortar interface numberinputs now work properly
+  - ui: the nuclear fission explosive now uses tgui
+2022-08-25:
+  Drathek:
+  - rscadd: Added Give Royal Jelly ability (costs 500 plasma) to select a current
+      or previous xeno and grant an award to be displayed at round end just like a
+      marine award.
+  - imageadd: Added dev art for Queen Award depicting purple jelly above a xeno head.
+  - code_imp: Added totalDeadXenos list to hive_status to track any xenos that aren't
+      hard removed (changed hives).
+  - code_imp: Added view_record/medal_view to support queries to the DB for medal
+      information.
+  - code_imp: Added an optional theme argument to constructors for tgui_input_list
+      and applied hive_status theme to various xenomorph input list choices.
+  - refactor: Improved variable readability, commented most medal code, and moved
+      award names to defines.
+  - bugfix: Fixed Medals Given niche stat sometimes not getting granted if recipient
+      mob found before giver mob.
+  - bugfix: Fixed niche stats not getting displayed in panel_stats global tab for
+      xeno castes.
+  - bugfix: Command tablet not finding any mobs visible for its print medal message.
+      It should also print the medals faster since it is prior to a database call.
+  - admin: Added "Award a royal jelly" to admin Events Panel that picks a hive, and
+      awards a royal jelly (with overrideable giver attribution).
+  - admin: Added tgui Medals Panel to view marine and xeno medals/jelly, rescind medals
+      from that round (actually deleting the items too), and add medals/jelly (with
+      overrideable giver attribution for xenos or overrideable medal location for
+      marines).
+  - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
+  Git-Nivrak:
+  - bugfix: Fixed a bug which would make you have increased movement delay after stopping
+      to pull a mob for one tile
+  Morrow:
+  - bugfix: Fixes size oversight for ordnance tech custom grenades.

@@ -19,7 +19,7 @@
 	var/x_bomb = 0
 	var/y_bomb = 0
 	var/living_marines_sorting = FALSE
-	var/busy = 0 //The overwatch computer is busy launching an OB/SB, lock controls
+	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
 	var/z_hidden = 0 //which z level is ignored when showing marines.
 	var/marine_filter = list() // individual marine hiding control - list of string references
@@ -329,7 +329,7 @@
 		dat += "No squad selected!"
 	else
 		dat += "<B>Current Supply Drop Status:</B> "
-		var/cooldown_left = (current_squad.supply_cooldown + 5000) - world.time
+		var/cooldown_left = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 		if(cooldown_left > 0)
 			dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
 		else
@@ -585,7 +585,7 @@
 			transfer_squad()
 		if("dropsupply")
 			if(current_squad)
-				if((current_squad.supply_cooldown + 5000) > world.time)
+				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
 					handle_supplydrop()
@@ -914,7 +914,7 @@
 
 
 	//All set, let's do this.
-	busy = 1
+	busy = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
 	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/alert_ob, T), 2 SECONDS)
@@ -980,7 +980,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = 1
+	busy = TRUE
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
 	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
@@ -994,7 +994,7 @@
 		if(C) C.anchored = FALSE
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
 		return
-	S.supply_cooldown = world.time
+	COOLDOWN_START(S, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)

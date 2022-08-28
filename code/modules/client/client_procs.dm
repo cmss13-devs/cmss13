@@ -136,6 +136,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
+	else if(href_list["medals_panel"])
+		GLOB.medals_panel.tgui_interact(mob)
+
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
 		var/key = href_list["add_merit_info"]
@@ -626,6 +629,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if("OOC")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if("LOOC")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Me")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")

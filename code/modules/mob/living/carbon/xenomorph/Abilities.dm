@@ -182,7 +182,7 @@
 		if(possible_target == X || !possible_target.client) continue
 		target_list += possible_target
 
-	var/mob/living/M = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list)
+	var/mob/living/M = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
 	if(!M) return
 
 	if(!X.check_state(TRUE))
@@ -270,6 +270,7 @@
 	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+
 /datum/action/xeno_action/onclick/queen_order
 	name = "Give Order (100)"
 	action_icon_state = "queen_order"
@@ -297,6 +298,20 @@
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
+
+/datum/action/xeno_action/onclick/queen_award
+	name = "Give Royal Jelly (500)"
+	action_icon_state = "queen_award"
+	plasma_cost = 500
+
+/datum/action/xeno_action/onclick/queen_award/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	if(!xeno.check_state())
+		return
+	if(!xeno.check_plasma(plasma_cost))
+		return
+	if(give_jelly_award(xeno.hive))
+		xeno.use_plasma(plasma_cost)
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
@@ -350,7 +365,7 @@
 		if(length(T.caste.deevolves_to) == 1)
 			newcaste = T.caste.deevolves_to[1]
 		else if(length(T.caste.deevolves_to) > 1)
-			newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to)
+			newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to, theme="hive_status")
 
 		if(!newcaste)
 			return

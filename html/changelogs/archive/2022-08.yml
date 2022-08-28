@@ -498,3 +498,10 @@
   - bugfix: you can no longer infinitely add glass to airlock assemblies, you can
       now also take glass out of them.
   - bugfix: updated the construction text for airlocks
+  - balance: the underbarrel grenade launcher is now pump-action! you must pump it
+      TWICE to fire it (open and close the breech, this cocks it). To reload it you
+      must open the breech. You open/close the breech (and thus pump it) via UNIQUE-ACTION
+      while the attachment is activated
+  - qol: you can now unload the UGL as you would with a normal gun, while it is activated
+  - soundadd: added new sounds for opening and closing the UGL + reloading grenades
+      into the UGL

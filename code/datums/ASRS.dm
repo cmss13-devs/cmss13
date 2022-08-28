@@ -125,15 +125,19 @@
 //===================================
 // Mortar ammo
 /datum/supply_packs/ammo_mortar_he/asrs
-	buyable = 0
+	buyable = FALSE
 	group = "Munition"
 
 /datum/supply_packs/ammo_mortar_incend/asrs
-	buyable = 0
+	buyable = FALSE
 	group = "Munition"
 
 /datum/supply_packs/ammo_mortar_flare/asrs
-	buyable = 0
+	buyable = FALSE
+	group = "Munition"
+
+/datum/supply_packs/ammo_mortar_cluster/asrs
+	buyable = FALSE
 	group = "Munition"
 
 //===================================

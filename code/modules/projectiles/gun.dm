@@ -1751,7 +1751,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 
-	if(total_recoil > 0 && ishuman(user))
+	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)
 			shake_camera(user, total_recoil * 0.5, total_recoil)
 		else
@@ -1763,7 +1763,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user)
 	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle))
 		return //We have to check for null angle here, as 0 can also be an angle.
-	if(!istype(user) || !istype(user.loc,/turf))
+	if(!istype(user) || !isturf(user.loc))
 		return
 
 	var/prev_light = light_range
@@ -1772,12 +1772,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_light_on(TRUE)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
-	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-	var/offset = 5
-
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',user,muzzle_flash,image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	if(isCarbonSizeXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		I.pixel_x = X.xeno_inhand_item_offset //To center it on the xeno sprite without being thrown off by rotation.
+	rotate.Translate(0, 5) //Y offset to push the flash overlay outwards.
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)

@@ -51,6 +51,8 @@
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
 	icon_size = 48
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
@@ -372,6 +374,8 @@
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				layer = XENO_HIDING_LAYER
 				hide.button.icon_state = "template_active"
+	update_icon_source()
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 
 		//If we're holding things drop them
 		for(var/obj/item/item in old_xeno.contents) //Drop stuff

@@ -334,12 +334,16 @@
 	if(isnull(angle))
 		return
 
+	SetLuminosity(SENTRY_MUZZLELUM)
+	addtimer(CALLBACK(src, /atom.proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
+
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, "muzzle_flash", layer + 0.1)
 	var/image_layer = layer + 0.1
 	var/offset = 13
 
 	var/image/flash = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	rotate.Translate(0, 13)
 	rotate.Turn(angle)
 	flash.transform = rotate
 	flash.flick_overlay(src, 3)
@@ -663,6 +667,9 @@
 	. = ..()
 	QDEL_NULL(linked_cam)
 
+
+/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
+	return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()

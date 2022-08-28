@@ -511,3 +511,4 @@
       as such they do not hurt your eyes.
   - rscadd: added pushups, you can do pushups with a verb in the IC tab
   - bugfix: you can no longer crawl without enough limbs to do so
+  - ui: number input now uses tgui

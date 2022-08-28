@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	var/list/cic = ROLES_CIC.Copy()
 	var/list/auxil = ROLES_AUXIL_SUPPORT.Copy()
 	var/list/misc = ROLES_MISC.Copy()
-	var/list/mp = ROLES_POLICE.Copy()
+	var/list/mp = ROLES_SECURITY.Copy()
 	var/list/eng = ROLES_ENGINEERING.Copy()
 	var/list/req = ROLES_REQUISITION.Copy()
 	var/list/med = ROLES_MEDICAL.Copy()
@@ -117,7 +117,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		else if(real_rank in ROLES_MISC)
 			dept_flags |= FLAG_SHOW_MISC
 			LAZYSET(misc[real_rank], name, rank)
-		else if(real_rank in ROLES_POLICE)
+		else if(real_rank in ROLES_SECURITY)
 			dept_flags |= FLAG_SHOW_SECURITY
 			LAZYSET(mp[real_rank], name, rank)
 		else if(real_rank in ROLES_ENGINEERING)
@@ -203,7 +203,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
+		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_SECURITY + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
 		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 			if(is_admin_level(H.z))
 				continue

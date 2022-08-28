@@ -369,7 +369,7 @@
 		jobs += generate_job_ban_list(M, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
 		jobs += "<br>"
 	// MPs
-		jobs += generate_job_ban_list(M, ROLES_POLICE, "Police", "ffdddd")
+		jobs += generate_job_ban_list(M, ROLES_SECURITY, "Police", "ffdddd")
 		jobs += "<br>"
 	//Engineering (Yellow)
 		jobs += generate_job_ban_list(M, ROLES_ENGINEERING, "Engineering", "fff5cc")
@@ -446,7 +446,7 @@
 			if("Supportdept")
 				joblist += get_job_titles_from_list(ROLES_AUXIL_SUPPORT)
 			if("Policedept")
-				joblist += get_job_titles_from_list(ROLES_POLICE)
+				joblist += get_job_titles_from_list(ROLES_SECURITY)
 			if("Engineeringdept")
 				joblist += get_job_titles_from_list(ROLES_ENGINEERING)
 			if("Requisitiondept")

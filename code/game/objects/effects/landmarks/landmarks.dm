@@ -275,9 +275,6 @@
 /obj/effect/landmark/start/whiskey/police
 	job = /datum/job/command/police/whiskey
 
-/obj/effect/landmark/start/whiskey/warden
-	job = /datum/job/command/warden //Need to create a WO variant in the future
-
 //****************************************** CIC - COMMAND ************************************************/
 
 /obj/effect/landmark/start/whiskey/commander
@@ -301,9 +298,6 @@
 
 /obj/effect/landmark/start/whiskey/tank_crew
 	job = /datum/job/command/tank_crew/whiskey
-
-/obj/effect/landmark/start/whiskey/intel
-	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's dont exist in code anymore?
 
 /obj/effect/landmark/start/whiskey/chef
 	job = /datum/job/civilian/chef //Need to create a WO variant in the future

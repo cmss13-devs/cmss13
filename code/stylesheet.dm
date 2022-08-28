@@ -40,7 +40,7 @@ em						{font-style: normal;	font-weight: bold;}
 .centradio				{color: #5C5C8A;}
 .airadio				{color: #FF00FF;}
 
-.secradio				{color: #A30000;}
+.secradio				{color: #8DCAA4;}
 .engradio				{color: #A66300;}
 .medradio				{color: #008160;}
 .sciradio				{color: #993399;}

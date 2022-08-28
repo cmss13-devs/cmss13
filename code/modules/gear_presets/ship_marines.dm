@@ -35,7 +35,7 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service)
 
 /datum/equipment_preset/uscm_ship/ship_marine/standard/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -93,7 +93,7 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service)
 
 /datum/equipment_preset/uscm_ship/ship_marine/master_at_arms/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec

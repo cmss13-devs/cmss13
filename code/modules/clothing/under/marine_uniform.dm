@@ -102,7 +102,7 @@
 	desc = "Standard-issue Ship Marine uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "SM_jumpsuit"
 	worn_state = "SM_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "ship marine"
 	flags_atom = NO_SNOW_TYPE

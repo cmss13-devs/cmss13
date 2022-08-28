@@ -150,7 +150,7 @@
 /obj/item/tool/weldingtool
 	name = "blowtorch"
 	icon = 'icons/obj/items/items.dmi'
-	icon_state = "welder"
+	icon_state = "blowtorch"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
@@ -323,7 +323,7 @@
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
-			icon_state = "welder1"
+			icon_state = "[initial(icon_state)]1"
 			w_class = SIZE_LARGE
 			heat_source = 3800
 			START_PROCESSING(SSobj, src)
@@ -335,7 +335,7 @@
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
 		force = 3
 		damtype = "brute"
-		icon_state = "welder"
+		icon_state = initial(icon_state)
 		welding = 0
 		w_class = initial(w_class)
 		heat_source = 0
@@ -441,8 +441,9 @@
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full sized technician's blowtorch."
+	icon_state = "welder"
 	max_fuel = 5
-	color = "#cc0000"
+	color = "#f2aeae"
 	has_welding_screen = TRUE
 	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 

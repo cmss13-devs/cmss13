@@ -79,23 +79,23 @@
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_COMMAND = 0, RADIO_CHANNEL_ENGI = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0)
 
-/obj/item/device/encryptionkey/mmpo
+/obj/item/device/encryptionkey/ship_marine
 	name = "\improper Military Police Radio Encryption Key"
 	icon_state = "sec_key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1,)
 
 //MARINE ENCRYPTION KEYS
 
-/obj/item/device/encryptionkey/cmpcom
+/obj/item/device/encryptionkey/master_at_arms
 	name = "\improper Marine Chief MP Radio Encryption Key"
 	icon_state = "cmp_key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0)
 
-/obj/item/device/encryptionkey/cmpcom/cdrcom
+/obj/item/device/encryptionkey/master_at_arms/cdrcom
 	name = "\improper Marine Senior Command Radio Encryption Key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 
-/obj/item/device/encryptionkey/cmpcom/synth
+/obj/item/device/encryptionkey/master_at_arms/synth
 	name = "\improper Marine Synth Radio Encryption Key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 

@@ -368,17 +368,17 @@
 	volume = RADIO_VOLUME_CRITICAL
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
-/obj/item/device/radio/headset/almayer/mmpo
-	name = "marine military police radio headset"
-	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+/obj/item/device/radio/headset/almayer/ship_marine
+	name = "ship marine police radio headset"
+	desc = "This is used by ship marines. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	initial_keys = list(/obj/item/device/encryptionkey/ship_marine)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
 	name = "marine honor guard radio headset"
-	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	initial_keys = list(/obj/item/device/encryptionkey/ship_marine)
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
@@ -392,11 +392,11 @@
 			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the CO's tracking beacon."))
 			locate_setting = TRACKER_CO
 
-/obj/item/device/radio/headset/almayer/cmpcom
-	name = "marine chief MP radio headset"
-	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+/obj/item/device/radio/headset/almayer/master_at_arms
+	name = "marine master-at-arms radio headset"
+	desc = "For discussing vessel defense and marine de-drunkening protocols. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom
@@ -409,9 +409,9 @@
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
-	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "mcom_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms)
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
@@ -439,16 +439,16 @@
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine senior command headset"
-	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "mco_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
-	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "ms_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth)
+	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms/synth)
 	volume = RADIO_VOLUME_CRITICAL
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
@@ -795,7 +795,7 @@
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
-	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
+	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
 	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL

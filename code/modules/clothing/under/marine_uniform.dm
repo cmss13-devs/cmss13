@@ -131,7 +131,7 @@
 	icon_state = "MAT_jumpsuit"
 	item_state = "MAT_jumpsuit"
 	worn_state = "MAT_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "master-at-arms"
 	flags_atom = NO_SNOW_TYPE
@@ -320,7 +320,7 @@
 	specialty = "provost"
 
 	suit_restricted = list(
-		/obj/item/clothing/suit/storage/marine/MP,
+		/obj/item/clothing/suit/storage/marine/ship_marine,
 		/obj/item/clothing/suit/armor/riot/marine,
 		/obj/item/clothing/suit/storage/jacket/marine/provost
 	)

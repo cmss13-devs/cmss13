@@ -475,3 +475,43 @@
       to pull a mob for one tile
   Morrow:
   - bugfix: Fixes size oversight for ordnance tech custom grenades.
+2022-08-26:
+  stanalbatross:
+  - admin: fixed not being able to remove notes
+2022-08-27:
+  TheBoondock:
+  - refactor: refactored radio channels into using defines
+  nauticall:
+  - bugfix: Fixed M56D infinite ammo bug caused by swapping drum magazines on an M56D
+      emplacement.
+  stanalbatross:
+  - qol: added keybinds for basically every yautja verb
+2022-08-28:
+  Nanotrasen-Spy:
+  - rscadd: Ballistic goggles can now be flipped up and down on helmets and hats.
+      Ballistic goggle sprites changed to look like they have 1 piece lenses instead
+      of being green glasses
+  - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
+      be monacles
+  Shad0vvs:
+  - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
+      them daze on punch.
+  stanalbatross:
+  - bugfix: the British flag will now, once more, display properly in chat
+  - bugfix: you can no longer infinitely add glass to airlock assemblies, you can
+      now also take glass out of them.
+  - bugfix: updated the construction text for airlocks
+  - balance: the underbarrel grenade launcher is now pump-action! you must pump it
+      TWICE to fire it (open and close the breech, this cocks it). To reload it you
+      must open the breech. You open/close the breech (and thus pump it) via UNIQUE-ACTION
+      while the attachment is activated
+  - qol: you can now unload the UGL as you would with a normal gun, while it is activated
+  - soundadd: added new sounds for opening and closing the UGL + reloading grenades
+      into the UGL
+  - rscdel: blowtorches no longer always protect you from eye damage
+  - rscadd: added "old blowtorches", which have a weaker flame that only lets them
+      weld vents and doors. However, this makes their welding screens effective and
+      as such they do not hurt your eyes.
+  - rscadd: added pushups, you can do pushups with a verb in the IC tab
+  - bugfix: you can no longer crawl without enough limbs to do so
+  - ui: number input now uses tgui

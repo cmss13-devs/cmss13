@@ -92,11 +92,11 @@
 		if("Big Bomb")
 			explosion(epicenter, 3, 5, 7, 5, , , , cause_data)
 		if("Custom Bomb")
-			var/power = input(src, "Power?", "Power?") as num
+			var/power = tgui_input_number(src, "Power?", "Power?")
 			if(!power)
 				return
 
-			var/falloff = input(src, "Falloff?", "Falloff?") as num
+			var/falloff = tgui_input_number(src, "Falloff?", "Falloff?")
 			if(!falloff)
 				return
 
@@ -292,7 +292,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var/points_to_add = input(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0) as num
+	var/points_to_add = tgui_input_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(points_to_add == 0)
 		return
 	else if((supply_controller.points + points_to_add) < 0)
@@ -829,17 +829,17 @@
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = input("How much explosive power should the wall clear blast have?", "Set clear power", 1200) as num|null
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
 			if(isnull(OBShell.clear_power)) return
-			OBShell.clear_falloff = input("How much falloff should the wall clear blast have?", "Set clear falloff", 400) as num|null
+			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff)) return
-			OBShell.standard_power = input("How much explosive power should the main blasts have?", "Set blast power", 600) as num|null
+			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600)
 			if(isnull(OBShell.standard_power)) return
-			OBShell.standard_falloff = input("How much falloff should the main blasts have?", "Set blast falloff", 30) as num|null
+			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
 			if(isnull(OBShell.standard_falloff)) return
-			OBShell.clear_delay = input("How much delay should the clear blast have?", "Set clear delay", 3) as num|null
+			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay)) return
-			OBShell.double_explosion_delay = input("How much delay should the clear blast have?", "Set clear delay", 6) as num|null
+			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
 			if(isnull(OBShell.double_explosion_delay)) return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
@@ -848,15 +848,15 @@
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.total_amount = input("How many salvos should be fired?", "Set cluster number", 60) as num|null
+			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
 			if(isnull(OBShell.total_amount)) return
-			OBShell.instant_amount = input("How many shots per salvo? (Max 10)", "Set shot count", 3) as num|null
+			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
 			if(isnull(OBShell.instant_amount)) return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
-			OBShell.explosion_power = input("How much explosive power should the blasts have?", "Set blast power", 300) as num|null
+			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300)
 			if(isnull(OBShell.explosion_power)) return
-			OBShell.explosion_falloff = input("How much falloff should the blasts have?", "Set blast falloff", 150) as num|null
+			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
 			if(isnull(OBShell.explosion_falloff)) return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
@@ -865,19 +865,19 @@
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = input("How much explosive power should the wall clear blast have?", "Set clear power", 1200) as num|null
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
 			if(isnull(OBShell.clear_power)) return
-			OBShell.clear_falloff = input("How much falloff should the wall clear blast have?", "Set clear falloff", 400) as num|null
+			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff)) return
-			OBShell.clear_delay = input("How much delay should the clear blast have?", "Set clear delay", 3) as num|null
+			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay)) return
-			OBShell.distance = input("How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18) as num|null
+			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18)
 			if(isnull(OBShell.distance)) return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
-			OBShell.fire_level = input("How long should the fire last?", "Set fire duration", 70) as num|null
+			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
 			if(isnull(OBShell.fire_level)) return
-			OBShell.burn_level = input("How damaging should the fire be?", "Set fire strength", 80) as num|null
+			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
 			if(isnull(OBShell.burn_level)) return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)

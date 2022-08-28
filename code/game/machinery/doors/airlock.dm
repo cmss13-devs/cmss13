@@ -569,8 +569,11 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 		return
 
-	if((istype(C, /obj/item/tool/weldingtool) && !operating && density))
+	if((iswelder(C) && !operating && density))
 		var/obj/item/tool/weldingtool/W = C
+		var/weldtime = 50
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			weldtime = 70
 
 		if(not_weldable)
 			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than \the [W] to weld!"))
@@ -583,7 +586,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			SPAN_NOTICE("You start working on \the [src] with \the [W]."), \
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
+			if(do_after(user, weldtime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
 				if(!welded)
 					welded = 1
 				else
@@ -670,7 +673,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					electronics = null
 					ae.forceMove(loc)
 				if(operating == -1)
-					ae.icon_state = "door_electronics_smoked"
+					ae.fried = TRUE
+					ae.update_icon()
 					operating = 0
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")

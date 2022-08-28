@@ -104,7 +104,7 @@
 		return
 
 	var/freq = 1
-	var/vol = input(src, "What volume would you like the sound to play at?",, 100) as null|num
+	var/vol = tgui_input_number(src, "What volume would you like the sound to play at?", "Volume", 1, 100, 1)
 	if(!vol)
 		return
 	vol = clamp(vol, 1, 100)

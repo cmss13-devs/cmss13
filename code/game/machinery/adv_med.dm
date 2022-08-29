@@ -332,6 +332,7 @@
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
 		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
+		"max_blood" = H.max_blood,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
 		"lung_ruptured" = H.is_lung_ruptured(),

@@ -7,6 +7,7 @@ import {
   Flex,
   Icon,
   LabeledList,
+  NoticeBox,
   ProgressBar,
   Section,
 } from '../components';
@@ -44,11 +45,11 @@ export const Sleeper = (props, context) => {
   const { act, data } = useBackend(context);
   const { hasOccupant } = data;
   const body = hasOccupant ? <SleeperMain /> : <SleeperEmpty />;
+  const windowHeight = hasOccupant ? 850 : 150;
   return (
-    <Window resizable>
+    <Window resizable width={500} height={windowHeight}>
       <Window.Content className="Layout__content--flexColumn">
         {body}
-        <SleeperDialysis />
       </Window.Content>
     </Window>
   );
@@ -59,6 +60,7 @@ const SleeperMain = (props, context) => {
   const { occupant } = data;
   return (
     <Fragment>
+      <SleeperDialysis />
       <SleeperOccupant />
       <SleeperDamage />
       <SleeperChemicals />
@@ -73,8 +75,8 @@ const SleeperOccupant = (props, context) => {
     <Section
       title="Occupant"
       buttons={
-        <Fragment>
-          <Box color="label" display="inline">
+        <>
+          <Box color="label" inline>
             Auto-eject if dead:&nbsp;
           </Box>
           <Button
@@ -89,7 +91,7 @@ const SleeperOccupant = (props, context) => {
             content="Eject"
             onClick={() => act('ejectify')}
           />
-        </Fragment>
+        </>
       }
     >
       <LabeledList>
@@ -177,21 +179,43 @@ const SleeperDialysis = (props, context) => {
   const {
     hasOccupant,
     dialysis,
+    occupant,
   } = data;
   const canDialysis = dialysis;
+  const dialysisDisabled = !hasOccupant || !occupant.totalreagents;
   return (
     <Section
       title="Dialysis"
       buttons={
         <Button
-          disabled={!hasOccupant}
+          disabled={dialysisDisabled}
           selected={canDialysis}
           icon={canDialysis ? 'toggle-on' : 'toggle-off'}
           content={canDialysis ? 'Active' : 'Inactive'}
           onClick={() => act('togglefilter')}
         />
       }
-    />
+    >
+      {!occupant.totalreagents && (
+        <NoticeBox danger>
+          Occupant has no chemicals to remove!
+        </NoticeBox>
+      )}
+      {canDialysis && (
+        <ProgressBar
+          min="0"
+          max={occupant.reagentswhenstarted}
+          value={occupant.totalreagents/occupant.reagentswhenstarted}
+          title="Reagents left/Reagents when dialysis was started"
+        >
+          {occupant.totalreagents}/{occupant.reagentswhenstarted}
+        </ProgressBar>
+      ) || !dialysisDisabled && (
+        <NoticeBox info>
+          Dialysis inactive!
+        </NoticeBox>
+      )}
+    </Section>
   );
 };
 

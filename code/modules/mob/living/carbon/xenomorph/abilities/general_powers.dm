@@ -95,23 +95,6 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state(1))
 		return
-	for(var/i in 1 to X.spit_types.len)
-		if(X.ammo == GLOB.ammo_list[X.spit_types[i]])
-			if(i == X.spit_types.len)
-				X.ammo = GLOB.ammo_list[X.spit_types[1]]
-			else
-				X.ammo = GLOB.ammo_list[X.spit_types[i+1]]
-			break
-	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
-	..()
-	return
-
-/datum/action/xeno_action/onclick/shift_spits_strain/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
-		return
 	for(var/i in 1 to X.caste.spit_types.len)
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
 			if(i == X.caste.spit_types.len)
@@ -121,7 +104,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	..()
 	return
 
@@ -701,6 +684,10 @@
 	if(!X.check_state())
 		return
 
+	if(spitting)
+		to_chat(src, SPAN_WARNING("You are already preparing a spit!"))
+		return
+
 	if(!isturf(X.loc))
 		to_chat(src, SPAN_WARNING("You can't spit from here!"))
 		return
@@ -721,8 +708,11 @@
 
 	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
 	if(X.ammo.spit_windup)
+		spitting = TRUE
+		to_chat(src, SPAN_WARNING("You begin to prepare a large spit!"))
 		if (!do_after(X, X.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You decide to cancel your spit."))
+			spitting = FALSE
 			return FALSE
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 	SPAN_XENOWARNING("You spit at [A]!") )
@@ -734,7 +724,7 @@
 	P.permutated += X
 	P.def_zone = X.get_limbzone_target()
 	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
-
+	spitting = FALSE
 	apply_cooldown()
 	..()
 

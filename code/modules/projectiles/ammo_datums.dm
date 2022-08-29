@@ -2303,7 +2303,7 @@
 	flags_ammo_behavior = AMMO_XENO_ACID
 	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
 	var/spit_cost
-
+	var/spit_windup = FALSE
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
 
@@ -2611,13 +2611,15 @@
 			PAS.increment_stack_count() */
 
 /datum/ammo/xeno/boiler_gas
-	name = "glob of gas"
-	icon_state = "boiler_gas2"
+	name = "glob of neuro gas"
+	icon_state = "neuro_glob"
 	ping = "ping_x"
 	debilitate = list(19,21,0,0,11,12,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 	var/datum/effect_system/smoke_spread/smoke_system
 
+	added_spit_delay = 6 SECONDS
+	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 32
 
@@ -2662,6 +2664,19 @@
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+
+/datum/ammo/xeno/boiler_gas/acid
+	name = "glob of acid gas"
+	icon_state = "acid_glob"
+	ping = "ping_x"
+
+	added_spit_delay = 6 SECONDS
+	spit_windup = 5 SECONDS
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
+	max_range = 32
+
+/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/P)
+	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

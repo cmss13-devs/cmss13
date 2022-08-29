@@ -29,6 +29,13 @@
 	var/max_stacks = 5
 	var/movespeed_nerf_applied = 0
 	var/activated_once = FALSE
+/datum/action/xeno_action/activable/xeno_spit/bombard
+	name = "Bombard"
+	ability_name = "Bombard"
+	action_icon_state = "bombard"
+	plasma_cost = 100 // TENTATIVE
+	xeno_cooldown = 10 // TENTATIVE
+	cooldown_message = "Your belly fills with another gas glob. You can bombard again."
 
 /datum/action/xeno_action/onclick/dump_acid
 	name = "Dump Acid"

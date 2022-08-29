@@ -367,7 +367,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
+	cooldown_message = "You feel your spit glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
 
 /datum/action/xeno_action/activable/bombard

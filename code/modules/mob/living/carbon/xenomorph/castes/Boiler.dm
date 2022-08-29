@@ -21,6 +21,7 @@
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
+	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 
 	tackle_min = 2
 	tackle_max = 6
@@ -41,6 +42,7 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 3
 	gib_chance = 100
+	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 	drag_delay = 6 //pulling a big dead xeno is hard
 	mutation_type = BOILER_NORMAL
 
@@ -57,8 +59,8 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/bombard, //1st macro
-		/datum/action/xeno_action/activable/acid_lance, //2nd macro
+		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
+		/datum/action/xeno_action/onclick/shift_spits, //2nd macro
 		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 	)
@@ -70,6 +72,7 @@
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
 	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas]
+	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 
 	update_icon_source()
 

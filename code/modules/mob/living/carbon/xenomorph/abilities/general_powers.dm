@@ -95,6 +95,23 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state(1))
 		return
+	for(var/i in 1 to X.spit_types.len)
+		if(X.ammo == GLOB.ammo_list[X.spit_types[i]])
+			if(i == X.spit_types.len)
+				X.ammo = GLOB.ammo_list[X.spit_types[1]]
+			else
+				X.ammo = GLOB.ammo_list[X.spit_types[i+1]]
+			break
+	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	..()
+	return
+
+/datum/action/xeno_action/onclick/shift_spits_strain/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state(1))
+		return
 	for(var/i in 1 to X.caste.spit_types.len)
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
 			if(i == X.caste.spit_types.len)
@@ -104,7 +121,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	..()
 	return
 
@@ -703,7 +720,10 @@
 		return
 
 	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
-
+	if(X.ammo.spit_windup)
+		if (!do_after(X, X.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(X, SPAN_XENODANGER("You decide to cancel your spit."))
+			return FALSE
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 	SPAN_XENOWARNING("You spit at [A]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'

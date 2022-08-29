@@ -224,6 +224,9 @@
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/ignores_pheromones = FALSE // title
 	var/is_zoomed = FALSE
+	var/list/spit_types
+	var/spit_windup = 0
+	var/spit_delay = 0
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos

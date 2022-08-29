@@ -108,7 +108,7 @@
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
 		occupantData["fireLoss"] = occupant.getFireLoss()
-		occupantData["paralysis"] = occupant.AmountParalyzed()
+		occupantData["paralysis"] = occupant.getHalLoss()
 		occupantData["hasBlood"] = 0
 		occupantData["bodyTemperature"] = occupant.bodytemperature
 		occupantData["maxTemp"] = 1000 // If you get a burning vox armalis into the sleeper, congratulations
@@ -148,8 +148,8 @@
 		// Runtime is aptly named, isn't she?
 		if(ishuman(occupant))
 			var/mob/living/carbon/human/human_occupant = occupant
-			if(!(NO_BLOOD in occupant.species.flags))
-				occupantData["pulse"] = occupant.pulse
+			if(!(NO_BLOOD in human_occupant.species.flags))
+				occupantData["pulse"] = human_occupant.pulse
 				occupantData["hasBlood"] = 1
 				occupantData["bloodLevel"] = round(occupant.blood_volume)
 				occupantData["bloodMax"] = occupant.max_blood
@@ -162,8 +162,8 @@
 	data["auto_eject_dead"] = connected.auto_eject_dead
 
 	var/chemicals[0]
-	for(var/re in connected.possible_chems)
-		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
+	for(var/re in connected.available_chemicals)
+		var/datum/reagent/temp = chemical_reagents_list[re]
 		if(temp)
 			var/reagent_amount = 0
 			var/pretty_amount

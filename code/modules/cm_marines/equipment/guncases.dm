@@ -162,23 +162,29 @@
 	name = "\improper M41A pulse rifle MK2 case"
 	desc = "A gun case containing the M41A pulse rifle MK2."
 	storage_slots = 5
-	can_hold = list(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1)
+	can_hold = list(/obj/item/weapon/gun/rifle/m41a, /obj/item/ammo_magazine/rifle)
 
 /obj/item/storage/box/guncase/m41a/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/m41a(src)
-	new /obj/item/ammo_magazine/rifle(src)
-	new /obj/item/ammo_magazine/rifle(src)
-	new /obj/item/ammo_magazine/rifle(src)
-	new /obj/item/ammo_magazine/rifle(src)
+	for(var/i = 1 to 4)
+		new /obj/item/ammo_magazine/rifle(src)
+	
 	
 //------------
 /obj/item/storage/box/guncase/pumpshotgun
 	name = "\improper M37A2 Pump Shotgun case"
 	desc = "A gun case containing the M37A2 Pump Shotgun."
-	storage_slots = 3
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot)
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
 
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	for(var/i = 1 to 3)
+		var/random_pick = pick(1, 3)
+		switch(random_pick)
+			if(1)
+				new /obj/item/ammo_magazine/shotgun/buckshot(src)
+			if(2)
+				new /obj/item/ammo_magazine/shotgun/flechette(src)
+			if(3)
+				new /obj/item/ammo_magazine/shotgun/slugs(src)

@@ -180,7 +180,7 @@
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
 	for(var/i = 1 to 3)
-		var/random_pick = pick(1, 2, 3)
+		var/random_pick = rand(1, 3)
 		switch(random_pick)
 			if(1)
 				new /obj/item/ammo_magazine/shotgun/buckshot(src)

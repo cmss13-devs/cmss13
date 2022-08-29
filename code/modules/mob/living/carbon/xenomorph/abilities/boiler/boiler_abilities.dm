@@ -36,6 +36,7 @@
 	plasma_cost = 100 // TENTATIVE
 	xeno_cooldown = 10 // TENTATIVE
 	cooldown_message = "Your belly fills with another gas glob. You can bombard again."
+	sound_to_play = 'sound/effects/bombattack.ogg'
 
 /datum/action/xeno_action/onclick/dump_acid
 	name = "Dump Acid"

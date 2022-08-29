@@ -521,3 +521,7 @@
   - ui: number input now uses tgui
   - bugfix: when making pills from a chemmaster the creation number will now default
       to 16, not 10
+2022-08-29:
+  Morrow:
+  - rscadd: More options to chief engineer vendor as well as an extended section for
+      deployment gear.

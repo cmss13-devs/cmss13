@@ -41,9 +41,9 @@
 	var/output = html_encode(sanitize_simple(input, repl_chars))
 	return readd_quotes(output)
 
-//Runs byond's sanitization proc along-side sanitize_simple without the Specials unicode check
-/proc/sanitize_area(var/input, var/list/repl_chars = list("\n"=" ","\t"=" "))
-	var/output = html_encode(sanitize_simple(input, repl_chars))
+//Runs byond's sanitization proc along-side strip_improper
+/proc/sanitize_area(var/input)
+	var/output = html_encode(strip_improper(input))
 	return readd_quotes(output)
 
 //Removes control chars like "\n"

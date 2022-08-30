@@ -525,3 +525,7 @@
   Morrow:
   - rscadd: More options to chief engineer vendor as well as an extended section for
       deployment gear.
+2022-08-30:
+  Geevies:
+  - rscadd: AI xenos have been tweaked to function a bit more like normal xenos (no
+      ability use).

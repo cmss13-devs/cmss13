@@ -968,6 +968,7 @@
 /obj/item/ammo_magazine/m2c
 	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	caliber = "10x28mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "m56de"

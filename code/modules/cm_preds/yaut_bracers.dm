@@ -129,7 +129,7 @@
 		return TRUE
 
 	var/workingProbability = 20
-	var/randomProbability = 10
+	var/randomProbability = 20
 	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
 		workingProbability = 40
 		randomProbability = 4
@@ -273,14 +273,23 @@
 		//Non-Yautja have a chance to get stunned with each power drain
 		if(!isYautja(H))
 			if(prob(15))
-				shock_user(H)
 				decloak(loc)
+				shock_user(H)
 		return
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
+	if(cloaked)
+		decloak(user)
 	..()
+
+/obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(cloaked)
+			decloak(H)
+	. = ..()
 
 //We use this to activate random verbs for non-Yautja
 /obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(var/mob/caller)

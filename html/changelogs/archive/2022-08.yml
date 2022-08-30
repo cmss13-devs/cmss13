@@ -529,3 +529,5 @@
   Geevies:
   - rscadd: AI xenos have been tweaked to function a bit more like normal xenos (no
       ability use).
+  Mister-moon1:
+  - Fix: Ammo type of M2C changed to be the correct ammo

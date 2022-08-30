@@ -95,7 +95,13 @@
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
 		if(prob(15))
+			if(istype(src, /obj/item/clothing/gloves/yautja/hunter))
+				var/obj/item/clothing/gloves/yautja/hunter/huntergloves = src
+				if(huntergloves.cloaked)
+					huntergloves.decloak(M)
+					huntergloves.cloak_timer = world.time + 5 SECONDS
 			shock_user(M)
+			return FALSE
 
 	return TRUE
 
@@ -129,7 +135,7 @@
 		return TRUE
 
 	var/workingProbability = 20
-	var/randomProbability = 20
+	var/randomProbability = 10
 	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
 		workingProbability = 40
 		randomProbability = 4
@@ -273,7 +279,7 @@
 		//Non-Yautja have a chance to get stunned with each power drain
 		if(!isYautja(H))
 			if(prob(15))
-				decloak(loc)
+				decloak(H)
 				shock_user(H)
 		return
 	return ..()

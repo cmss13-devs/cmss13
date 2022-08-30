@@ -317,7 +317,7 @@
 		return
 
 	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
-	if(isXenoQueen(xeno) && living_xeno_queen == xeno)
+	if(living_xeno_queen == xeno)
 		var/mob/living/carbon/Xenomorph/Queen/next_queen
 		for(var/mob/living/carbon/Xenomorph/Queen/queen in totalXenos)
 			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))

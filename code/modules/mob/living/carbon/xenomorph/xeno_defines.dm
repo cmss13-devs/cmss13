@@ -308,53 +308,53 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE, light_mode = FALSE)
-	if(!X || !istype(X))
+/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/xeno, var/hard = FALSE, light_mode = FALSE)
+	if(!xeno || !istype(xeno))
 		return
 
 	// Make sure the xeno was in the hive in the first place
-	if(!(X in totalXenos))
+	if(!(xeno in totalXenos))
 		return
 
-	if(isXenoQueen(X))
-		if(living_xeno_queen == X)
-			var/mob/living/carbon/Xenomorph/Queen/next_queen
-			for(var/mob/living/carbon/Xenomorph/Queen/Q in totalXenos)
-				if(!is_admin_level(Q.z))
-					next_queen = Q
-					break
+	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
+	if(isXenoQueen(xeno) && living_xeno_queen == xeno)
+		var/mob/living/carbon/Xenomorph/Queen/next_queen
+		for(var/mob/living/carbon/Xenomorph/Queen/queen in totalXenos)
+			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+				next_queen = queen
+				break
 
-			set_living_xeno_queen(next_queen) // either null or a queen
+		set_living_xeno_queen(next_queen) // either null or a queen
 
 	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
 	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
 	if(hard)
-		X.hivenumber = 0
-		X.hive = null
+		xeno.hivenumber = 0
+		xeno.hive = null
 	else
-		totalDeadXenos += X
+		totalDeadXenos += xeno
 
-	totalXenos -= X
-	if(X.tier == 2)
-		tier_2_xenos -= X
-	else if(X.tier == 3)
-		tier_3_xenos -= X
+	totalXenos -= xeno
+	if(xeno.tier == 2)
+		tier_2_xenos -= xeno
+	else if(xeno.tier == 3)
+		tier_3_xenos -= xeno
 
 	if(!light_mode)
 		hive_ui.update_xeno_counts()
-		hive_ui.xeno_removed(X)
+		hive_ui.xeno_removed(xeno)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
-	if(M == null)
+/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/queen)
+	if(queen == null)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 		SShive_status.wait = 10 SECONDS
 	else
-		SStracking.set_leader("hive_[hivenumber]", M)
+		SStracking.set_leader("hive_[hivenumber]", queen)
 		SShive_status.wait = 2 SECONDS
 
-	living_xeno_queen = M
+	living_xeno_queen = queen
 
 	recalculate_hive()
 

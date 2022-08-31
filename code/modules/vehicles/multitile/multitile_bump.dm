@@ -151,7 +151,7 @@
 /obj/structure/dropship_equipment/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		var/last_moved = V.l_move_time	//in case VC moves before answering
-		if(alert("Are you sure you want to crush \the [name]?",,"Yes","No") == "Yes")
+		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -399,7 +399,7 @@
 /obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		var/last_moved = V.l_move_time	//in case VC moves before answering
-		if(alert("Are you sure you want to crush \the [name]?",,"Yes","No") == "Yes")
+		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)

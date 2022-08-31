@@ -66,7 +66,8 @@
 	icon_xenonid = 'icons/mob/xenonids/weave.dmi'
 
 	max_placeable = 1
-	available_placeable = list("Flux Node")
+	available_fruits = list(/obj/effect/alien/resin/fruit/weave)
+	selected_fruit = /obj/effect/alien/resin/fruit/weave
 
 /mob/living/carbon/Xenomorph/Weaveling/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

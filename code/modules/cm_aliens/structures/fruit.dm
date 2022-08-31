@@ -342,7 +342,8 @@
 	icon_state = "fruit_weave_immature"
 	mature_icon_state = "fruit_weave"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/weave
-
+	glow_color = "#287A90"
+	consumed_icon_state = "fruit_spent_2"
 
 /obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/Xenomorph/recipient)
 	if(!mature)

@@ -532,6 +532,9 @@
   Mister-moon1:
   - Fix: Ammo type of M2C changed to be the correct ammo
 2022-08-31:
+  Geevies:
+  - rscadd: Adds rock paper scissors, you can play it by help intenting someone's
+      head. Your intent influences your play.
   Nanotrasen-Spy:
   - bugfix: Fixed missing icons for ballistic goggles in certain cases
   stanalbatross:

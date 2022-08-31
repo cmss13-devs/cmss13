@@ -46,17 +46,17 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE
-	
+
 	// Pick a medal
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
 	if(!medal_type)
 		return FALSE
-	
+
 	// Write a citation
 	var/citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation)
 		return FALSE
-	
+
 	// Get mob information
 	var/recipient_rank = recipient_ranks[chosen_recipient]
 	var/posthumous = TRUE
@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 			recipient_mob.visible_message(SPAN_DANGER("[recipient_mob] has been hit in the head by the [medal_type]."), null, null, 5)
 		else if(medal_override == "On Me")
 			medal_location = get_turf(usr)
-	
+
 	// Create the recipient_award
 	if(!GLOB.medal_awards[chosen_recipient])
 		GLOB.medal_awards[chosen_recipient] = new /datum/recipient_awards()
@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 
 /proc/print_medal(mob/living/carbon/human/user, var/obj/printer)
 	var/obj/item/card/id/card = user.wear_id
-	if(!card)
+	if(!card || user.real_name != card.registered_name)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
@@ -205,12 +205,12 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
 	if(!chosen_recipient)
 		return FALSE
-	
+
 	// Pick a jelly
 	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL), theme="hive_status")
 	if(!medal_type)
 		return FALSE
-	
+
 	// Write the pheromone
 	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation)
@@ -257,7 +257,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	else
 		recipient_award.giver_rank += admin_attribution
 		recipient_award.giver_name += null // If not null, rescinding it will take stats away from a mob with this key
-	
+
 	recipient_award.medal_items += null // TODO: Xeno award item?
 
 	// Recipient: Add the medal to the player's stats
@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		var/datum/entity/player_entity/recipient_player = setup_player_entity(recipient_ckey)
 		if(recipient_player)
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
-	
+
 	// Inform staff of success
 	message_staff("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 
 	// Because the DB is slow, give an early message so there aren't two jumping on it
 	message_staff("[key_name_admin(usr)] is deleting one of [recipient_name]'s medals...")
-	
+
 	// Find the award in the glob list
 	var/datum/recipient_awards/recipient_award
 	if(is_marine_medal)

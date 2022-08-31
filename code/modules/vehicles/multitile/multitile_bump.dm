@@ -238,7 +238,7 @@
 
 /obj/structure/bed/chair/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
-	if(stacked_size > 0)
+	if(stacked_size)
 		stack_collapse()
 	else
 		qdel(src)

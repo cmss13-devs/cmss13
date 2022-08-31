@@ -245,8 +245,9 @@
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
 	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
-	var/color = null
+	var/color = null //Color given to xenos/weeds
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
+	var/xeno_colors = TRUE // Apply the color var to xenos or not
 	var/prefix = ""
 	var/queen_leader_limit = 2
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
@@ -287,7 +288,7 @@
 
 	var/allow_no_queen_actions = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
+	var/allow_queen_evolve = TRUE // Set to false if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 
 	var/list/hive_inherant_traits
@@ -1137,7 +1138,9 @@
 	hivenumber = XENO_HIVE_WEAVE
 	prefix = "Weave "
 	allow_no_queen_actions = TRUE
-
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+	xeno_colors = FALSE
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

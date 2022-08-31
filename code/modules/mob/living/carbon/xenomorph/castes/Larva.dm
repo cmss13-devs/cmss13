@@ -107,7 +107,8 @@
 
 	if(hive)
 		name_prefix = hive.prefix
-		color = hive.color
+		if(hive.xeno_colors)
+			color = hive.color
 
 	if(evolution_stored >= evolution_threshold)
 		progress = "Mature "

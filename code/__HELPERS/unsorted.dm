@@ -890,6 +890,10 @@ var/global/image/emote_indicator_highfive
 var/global/image/emote_indicator_fistbump
 var/global/image/emote_indicator_headbutt
 var/global/image/emote_indicator_tailswipe
+var/global/image/emote_indicator_rock_paper_scissors
+var/global/image/emote_indicator_rock
+var/global/image/emote_indicator_paper
+var/global/image/emote_indicator_scissors
 var/global/image/action_red_power_up
 var/global/image/action_green_power_up
 var/global/image/action_blue_power_up
@@ -931,6 +935,26 @@ var/global/image/action_purple_power_up
 			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
 			emote_indicator_fistbump.layer = FLY_LAYER
 		return emote_indicator_fistbump
+	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
+		if(!emote_indicator_rock_paper_scissors)
+			emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
+			emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+		return emote_indicator_rock_paper_scissors
+	else if(busy_type == EMOTE_ICON_ROCK)
+		if(!emote_indicator_rock)
+			emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
+			emote_indicator_rock.layer = FLY_LAYER
+		return emote_indicator_rock
+	else if(busy_type == EMOTE_ICON_PAPER)
+		if(!emote_indicator_paper)
+			emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
+			emote_indicator_paper.layer = FLY_LAYER
+		return emote_indicator_paper
+	else if(busy_type == EMOTE_ICON_SCISSORS)
+		if(!emote_indicator_scissors)
+			emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
+			emote_indicator_scissors.layer = FLY_LAYER
+		return emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!emote_indicator_headbutt)
 			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)

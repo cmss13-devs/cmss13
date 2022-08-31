@@ -652,7 +652,10 @@ var/list/rebel_rifles = list(
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
-	var/random_gear = rand(0,13)
+	var/random_gear = rand(0,14)
+	faction = initial (faction)
+	faction_group = list(initial(faction_group))
+	idtype = initial(idtype)
 	switch(random_gear)
 		if(0) // The Classic Joe
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
@@ -775,7 +778,8 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/toxin(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
 		if(11) //PMC support synth
-			H.equip_to_slot_or_del(new /obj/item/card/id/pmc(H), WEAR_ID)
+			idtype = /obj/item/card/id/pmc
+			//H.equip_to_slot_or_del(new /obj/item/card/id/pmc(H), WEAR_ID)
 			H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
@@ -803,8 +807,7 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(H), WEAR_IN_BELT)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion(H), WEAR_IN_BELT)
 			idtype = /obj/item/card/id/dogtag_synth
-			faction = FACTION_SURVIVOR
-			faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+			faction = FACTION_MARINE
 		if(13) //Firefighter synth
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
@@ -815,7 +818,15 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/red(H), WEAR_HEAD)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/fire/firefighter(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/tool/extinguisher(H), WEAR_IN_J_STORE)
-			idtype = /obj/item/card/id/lanyard
+		if(14) //Bishop from Aliens - steal his look! (wristwatch not included) - LV-522 exclusive
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(H), WEAR_ACCESSORY)
+			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_R_HAND)
+			idtype = /obj/item/card/id/dogtag_synth
+			faction = FACTION_MARINE
 
 
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens

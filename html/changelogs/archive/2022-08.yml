@@ -531,3 +531,7 @@
       ability use).
   Mister-moon1:
   - Fix: Ammo type of M2C changed to be the correct ammo
+2022-08-31:
+  stanalbatross:
+  - admin: 'fixed the following broken hrefs : game panel'
+  - bugfix: properly fixed stack transfer amounts

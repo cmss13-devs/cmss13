@@ -398,10 +398,10 @@
 				if(EVACUATION_STATUS_COMPLETE) dat += 		"COMPLETE"
 			dat += "<br>"
 
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=init_evac'>Initiate Evacuation</a><br>"
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
-			if(check_rights(R_ADMIN, 0)) dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
+			if(check_rights(R_ADMIN, 0)) dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
 		if(check_rights(R_ADMIN, 0))
 			dat += "<b>Self Destruct:</b> "
@@ -412,12 +412,12 @@
 				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += 		"FINISHED"
 			dat += "<br>"
 
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=init_dest'>Unlock Self Destruct control panel for humans</a><br>"
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=cancel_dest'>Lock Self Destruct control panel for humans</a><br>"
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</a><br>"
-			dat += "<a href='?src=\ref[src];[HrefToken()];[HrefToken()];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_dest'>Unlock Self Destruct control panel for humans</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_dest'>Lock Self Destruct control panel for humans</A><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</A><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</A><br>"
 
-		dat += "<br><a href='?src=\ref[src];[HrefToken()];[HrefToken()];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
+		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else

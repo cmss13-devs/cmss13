@@ -154,14 +154,14 @@
 	var/final_lifesteal = lifesteal_percent
 	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 
-	for(var/mob/M as anything in mobs_in_range)
+	for(var/mob/mob as anything in mobs_in_range)
 		if(final_lifesteal >= max_lifesteal)
 			break
 
-		if(M.stat == DEAD || HAS_TRAIT(M, TRAIT_NESTED))
+		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
 			continue
 
-		if(bound_xeno.can_not_harm(M))
+		if(bound_xeno.can_not_harm(mob))
 			continue
 
 		final_lifesteal++

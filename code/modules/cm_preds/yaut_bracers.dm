@@ -77,6 +77,9 @@
 	var/perc_charge = (charge / charge_max * 100)
 	H.update_power_display(perc_charge)
 
+/// handles decloaking only on HUNTER gloves
+/obj/item/clothing/gloves/yautja/proc/decloak()
+	return
 
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
@@ -92,16 +95,14 @@
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	M.update_power_display(perc)
+	human.update_power_display(perc)
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
 		if(prob(15))
-			if(istype(src, /obj/item/clothing/gloves/yautja/hunter))
-				var/obj/item/clothing/gloves/yautja/hunter/huntergloves = src
-				if(huntergloves.cloaked)
-					huntergloves.decloak(human)
-					huntergloves.cloak_timer = world.time + 5 SECONDS
+			if(cloaked)
+				decloak(human)
+				cloak_timer = world.time + 5 SECONDS
 			shock_user(human)
 			return FALSE
 
@@ -546,7 +547,7 @@
 
 	decloak(wearer, TRUE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(var/mob/user, forced)
 	if(!user)
 		return
 

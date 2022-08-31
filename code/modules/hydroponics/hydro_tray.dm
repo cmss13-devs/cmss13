@@ -52,7 +52,7 @@
 		"carbon" =         -1,
 		"silicon" =        -0.5,
 		"chlorine" =        1.5,
-		"sacid" =           1.5,
+		"sulphuric acid" =           1.5,
 		"fuel" =            2,
 		"toxin" =           2,
 		"radium" =          2,
@@ -84,7 +84,7 @@
 		"pacid" =          -4,
 		"fluorine" =       -4,
 		"chlorine" =       -3,
-		"sacid" =          -2,
+		"sulphuric acid" =          -2,
 		"phosphorus" =     -2,
 		"sugar" =           2
 		)
@@ -113,7 +113,7 @@
 		"chlorine" =       list( -1,    0,   0   ),
 		"phosphorus" =     list( -0.75, 0,   0   ),
 		"sodawater" =      list(  0.1,  0,   0   ),
-		"sacid" =          list( -1,    0,   0   ),
+		"sulphuric acid" =          list( -1,    0,   0   ),
 		"pacid" =          list( -2,    0,   0   ),
 		"plantbgone" =     list( -2,    0,   0.2 ),
 		"dinitroaniline" = list( -0.5,  0,   0.1 ),

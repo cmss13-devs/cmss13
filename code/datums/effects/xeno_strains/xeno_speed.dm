@@ -30,10 +30,11 @@
 	..()
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(HAS_TRAIT(affected_mob, TRAIT_CHARGING))
-		to_chat(affected_mob, SPAN_XENOWARNING("Your bowels are evacuated as you charge!"))
+		to_chat(affected_mob, SPAN_XENOWARNING("The speed boast wanes as you charge!"))
 		qdel(src)
 		return FALSE
 	return ..()
+
 /datum/effects/xeno_speed/Destroy()
 	if(added_effect)
 		var/mob/living/carbon/Xenomorph/xeno = affected_atom

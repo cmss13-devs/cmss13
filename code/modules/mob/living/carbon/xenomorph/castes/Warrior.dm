@@ -169,7 +169,7 @@
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)
 			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1))
-			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name]'s glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as your heal even more from your injuries!"))
+			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
 			addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 17, 40))

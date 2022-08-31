@@ -164,6 +164,10 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+		to_chat(user, SPAN_WARNING("You don't seem to know how the award system works."))
+		return
+		
 	if(give_medal_award(get_turf(printer)))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))
 

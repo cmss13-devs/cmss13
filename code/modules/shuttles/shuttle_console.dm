@@ -490,7 +490,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			if(!dropship.automated_launch) //If we're toggling it on...
 				var/auto_delay
 				auto_delay = tgui_input_number(usr, "Set the delay for automated departure after recharging", "Automated Departure Settings", DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY, DROPSHIP_MIN_AUTO_DELAY)
-				dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+				dropship.automated_launch_delay = Clamp(auto_delay, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 			dropship.set_automated_launch(!dropship.automated_launch)
 
 	ui_interact(usr)

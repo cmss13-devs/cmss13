@@ -259,7 +259,7 @@
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 
-		thermite -= 1
+		thermite--
 		take_damage(100, user)
 
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))

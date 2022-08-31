@@ -91,7 +91,7 @@
 
 		// Map stats
 		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name)
-		new_map.total_rounds += 1
+		new_map.total_rounds++
 		new_map.save()
 
 		// Connect map to round
@@ -110,7 +110,7 @@
 	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = job_key
-	new_stat.total_rounds_played += 1
+	new_stat.total_rounds_played++
 	job_stats_list["[job_key]"] = new_stat
 	return new_stat
 
@@ -143,7 +143,7 @@
 	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = caste_key
-	new_stat.total_rounds_played += 1
+	new_stat.total_rounds_played++
 	caste_stats_list["[caste_key]"] = new_stat
 	return new_stat
 
@@ -239,7 +239,7 @@
 	save()
 
 	if(current_map)
-		current_map.total_hijacks += 1
+		current_map.total_hijacks++
 		current_map.save()
 
 /datum/entity/statistic/round/proc/track_dead_participant(var/faction, var/amount = 1)

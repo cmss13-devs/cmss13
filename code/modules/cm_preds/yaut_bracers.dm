@@ -78,14 +78,16 @@
 	H.update_power_display(perc_charge)
 
 
-//This is the main proc for checking AND draining the bracer energy. It must have M passed as an argument.
-//It can take a negative value in amount to restore energy.
-//Also instantly updates the yautja power HUD display.
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/M, var/amount)
-	if(!M)
+/*
+*This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
+*It can take a negative value in amount to restore energy.
+*Also instantly updates the yautja power HUD display.
+*/
+/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/human, var/amount)
+	if(!human)
 		return FALSE
 	if(charge < amount)
-		to_chat(M, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
+		to_chat(human, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
 		return FALSE
 
 	charge -= amount
@@ -93,14 +95,14 @@
 	M.update_power_display(perc)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
+	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
 		if(prob(15))
 			if(istype(src, /obj/item/clothing/gloves/yautja/hunter))
 				var/obj/item/clothing/gloves/yautja/hunter/huntergloves = src
 				if(huntergloves.cloaked)
-					huntergloves.decloak(M)
+					huntergloves.decloak(human)
 					huntergloves.cloak_timer = world.time + 5 SECONDS
-			shock_user(M)
+			shock_user(human)
 			return FALSE
 
 	return TRUE
@@ -270,17 +272,17 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/mob/living/carbon/human/H = loc
+	var/mob/living/carbon/human/human = loc
 
 	if(cloaked)
 		charge = max(charge - 10, 0)
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(H))
+		if(!isYautja(human))
 			if(prob(15))
-				decloak(H)
-				shock_user(H)
+				decloak(human)
+				shock_user(human)
 		return
 	return ..()
 
@@ -292,9 +294,9 @@
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
+		var/mob/living/carbon/human/human = loc
 		if(cloaked)
-			decloak(H)
+			decloak(human)
 	. = ..()
 
 //We use this to activate random verbs for non-Yautja

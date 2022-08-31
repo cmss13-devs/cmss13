@@ -540,3 +540,4 @@
   stanalbatross:
   - admin: 'fixed the following broken hrefs : game panel'
   - bugfix: properly fixed stack transfer amounts
+  - code_imp: changed several instances of += 1 and -= 1 to ++ and --

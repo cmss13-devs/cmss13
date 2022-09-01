@@ -1,0 +1,554 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"b" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/landmark/good_item,
+/turf/open/floor/wood,
+/area/template_noop)
+"c" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/largecrate/lisa,
+/turf/open/floor/wood,
+/area/template_noop)
+"d" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/effect/spawner/random/gun/special/highchance,
+/obj/item/spacecash/c1000,
+/obj/item/moneybag,
+/obj/item/toy/deck/uno,
+/turf/open/floor/carpet,
+/area/template_noop)
+"e" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Secure Vault APC";
+	pixel_y = 30;
+	start_charge = 200
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/clothing/head/beret/centcom/captain,
+/obj/item/clothing/suit/storage/bomber,
+/obj/item/clothing/shoes/dress,
+/obj/item/clothing/under/det/slob,
+/turf/open/floor/carpet,
+/area/template_noop)
+"f" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/obj/effect/landmark/corpsespawner/realpirate,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/heavy,
+/turf/open/floor/carpet,
+/area/template_noop)
+"g" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/wood,
+/area/template_noop)
+"h" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
+/turf/open/floor/greengrid,
+/area/template_noop)
+"i" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/wood,
+/area/template_noop)
+"j" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/template_noop)
+"k" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "secure_blast";
+	layer = 3.3;
+	name = "\improper Secure Armory Blast Door";
+	unacidable = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/template_noop)
+"l" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/template_noop)
+"m" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/template_noop)
+"n" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/template_noop)
+"o" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/wood,
+/area/template_noop)
+"p" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/carpet,
+/area/template_noop)
+"q" = (
+/turf/closed/wall,
+/area/template_noop)
+"r" = (
+/obj/structure/computerframe{
+	anchored = 1
+	},
+/turf/open/floor/greengrid,
+/area/template_noop)
+"s" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/wood,
+/area/template_noop)
+"t" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/template_noop)
+"u" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"v" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 28
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"w" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/template_noop)
+"x" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet,
+/area/template_noop)
+"y" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/template_noop)
+"z" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/computer/security/wooden_tv/prop,
+/turf/open/floor/carpet,
+/area/template_noop)
+"A" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/gm/grass,
+/area/template_noop)
+"B" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/poster/blacklight{
+	pixel_y = 30
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
+"C" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random/case/double,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/template_noop)
+"D" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
+"E" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass,
+/area/template_noop)
+"F" = (
+/turf/open/floor/wood,
+/area/template_noop)
+"G" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/template_noop)
+"H" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/grass,
+/area/template_noop)
+"I" = (
+/obj/structure/machinery/cryopod,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"J" = (
+/obj/structure/machinery/door_control{
+	id = "secure_blast";
+	name = "Dome Access";
+	pixel_x = 25
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"K" = (
+/turf/open/floor/greengrid,
+/area/template_noop)
+"L" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
+"M" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 28
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"N" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/landmark/good_item,
+/turf/open/floor/wood,
+/area/template_noop)
+"O" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/wood,
+/area/template_noop)
+"P" = (
+/obj/structure/largecrate/supply/weapons/pistols,
+/turf/open/floor/wood,
+/area/template_noop)
+"Q" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/template_noop)
+"R" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/wood,
+/area/template_noop)
+"S" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/template_noop)
+"T" = (
+/obj/structure/surface/rack,
+/turf/open/floor/wood,
+/area/template_noop)
+"U" = (
+/obj/structure/curtain/red,
+/turf/open/floor/wood,
+/area/template_noop)
+"V" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/template_noop)
+"W" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/wood,
+/area/template_noop)
+"X" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
+"Y" = (
+/turf/open/gm/grass,
+/area/template_noop)
+"Z" = (
+/turf/open/floor/carpet,
+/area/template_noop)
+
+(1,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+a
+a
+a
+a
+a
+E
+Y
+Y
+t
+Y
+"}
+(2,1,1) = {"
+Y
+u
+u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Y
+t
+l
+"}
+(3,1,1) = {"
+u
+u
+a
+a
+a
+a
+M
+O
+I
+a
+a
+a
+a
+A
+G
+"}
+(4,1,1) = {"
+Y
+a
+a
+a
+b
+s
+o
+o
+g
+Q
+i
+a
+a
+a
+S
+"}
+(5,1,1) = {"
+Y
+a
+a
+q
+q
+T
+F
+F
+F
+o
+o
+n
+a
+a
+l
+"}
+(6,1,1) = {"
+a
+a
+a
+e
+q
+j
+F
+F
+F
+o
+Q
+o
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+f
+x
+q
+j
+Z
+L
+Z
+F
+F
+F
+W
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+B
+Z
+q
+v
+p
+d
+X
+F
+F
+F
+R
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+z
+Z
+U
+F
+Z
+D
+Z
+F
+F
+F
+P
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+q
+q
+v
+F
+F
+F
+F
+N
+W
+a
+a
+a
+"}
+(11,1,1) = {"
+m
+a
+a
+c
+s
+F
+F
+F
+F
+F
+W
+C
+a
+a
+A
+"}
+(12,1,1) = {"
+Y
+a
+a
+a
+s
+J
+F
+F
+F
+F
+w
+a
+a
+a
+Y
+"}
+(13,1,1) = {"
+Y
+u
+a
+a
+a
+a
+h
+h
+h
+a
+a
+a
+a
+Y
+y
+"}
+(14,1,1) = {"
+Y
+Y
+Y
+a
+a
+r
+K
+K
+K
+a
+a
+a
+E
+Y
+Y
+"}
+(15,1,1) = {"
+Y
+H
+Y
+Y
+a
+a
+k
+k
+k
+a
+Y
+Y
+Y
+V
+l
+"}

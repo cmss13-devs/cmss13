@@ -1,0 +1,739 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bu" = (
+/obj/structure/surface/rack,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/item/tank/emergency_oxygen/engi,
+/turf/open/floor/plating,
+/area/template_noop)
+"bJ" = (
+/obj/structure/reagent_dispensers/ammoniatank,
+/turf/open/floor/plating,
+/area/template_noop)
+"cF" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/template_noop)
+"ek" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/plating,
+/area/template_noop)
+"ew" = (
+/obj/structure/closet/cabinet,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/plating,
+/area/template_noop)
+"hs" = (
+/obj/item/trash/burger,
+/turf/open/floor/plating,
+/area/template_noop)
+"hY" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/spawner/random/sentry/highchance,
+/turf/open/floor/plating,
+/area/template_noop)
+"ia" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating,
+/area/template_noop)
+"iA" = (
+/obj/structure/sink{
+	pixel_y = -8;
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"iG" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/goggles/highchance,
+/turf/open/floor/plating,
+/area/template_noop)
+"kw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"kZ" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/plating,
+/area/template_noop)
+"lo" = (
+/obj/item/trash/waffles,
+/turf/open/floor/plating,
+/area/template_noop)
+"lv" = (
+/obj/item/trash/barcardine,
+/turf/open/floor/plating,
+/area/template_noop)
+"mk" = (
+/obj/item/trash/chunk,
+/turf/open/floor/plating,
+/area/template_noop)
+"nj" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/pills/highchance,
+/turf/open/floor/plating,
+/area/template_noop)
+"nE" = (
+/obj/item/trash/wy_chips_pepper,
+/turf/open/floor/plating,
+/area/template_noop)
+"oZ" = (
+/obj/structure/toilet,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/template_noop)
+"qi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/template_noop)
+"rK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/sign/poster/ad{
+	pixel_y = 62
+	},
+/obj/item/reagent_container/food/drinks/cans/souto,
+/turf/open/floor/plating,
+/area/template_noop)
+"sq" = (
+/turf/closed/wall,
+/area/template_noop)
+"tI" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/plating,
+/area/template_noop)
+"tT" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/template_noop)
+"uc" = (
+/obj/structure/curtain/shower,
+/turf/open/floor/plating,
+/area/template_noop)
+"ux" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/template_noop)
+"uz" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/radiation,
+/obj/item/clothing/head/radiation,
+/obj/item/clothing/head/radiation,
+/turf/open/floor/plating,
+/area/template_noop)
+"vj" = (
+/obj/structure/reagent_dispensers/oxygentank,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/template_noop)
+"wh" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/firstaid/toxin,
+/obj/effect/spawner/random/pills/highchance,
+/turf/open/floor/plating,
+/area/template_noop)
+"wS" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist,
+/turf/open/floor/plating,
+/area/template_noop)
+"wX" = (
+/obj/structure/curtain/red,
+/turf/open/floor/plating,
+/area/template_noop)
+"xd" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-skylight"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"xK" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/radiation{
+	pixel_y = -4;
+	pixel_x = -1
+	},
+/obj/item/clothing/suit/radiation{
+	pixel_y = -4;
+	pixel_x = -1
+	},
+/obj/item/clothing/suit/radiation{
+	pixel_y = -4;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"yh" = (
+/obj/structure/sign/poster/pinup{
+	pixel_y = 61
+	},
+/obj/item/reagent_container/food/drinks/cans/souto,
+/turf/open/floor/plating,
+/area/template_noop)
+"yy" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 28
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"yH" = (
+/obj/item/trash/boonie,
+/turf/open/floor/plating,
+/area/template_noop)
+"yL" = (
+/obj/item/trash/crushed_cup,
+/turf/open/floor/plating,
+/area/template_noop)
+"yX" = (
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor/plating,
+/area/template_noop)
+"Aq" = (
+/obj/structure/reagent_dispensers/pacidtank,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 26
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"Cx" = (
+/obj/structure/barricade/metal/wired,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/template_noop)
+"DA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/template_noop)
+"EF" = (
+/turf/open/floor/plating,
+/area/template_noop)
+"EG" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/floor/plating,
+/area/template_noop)
+"EN" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/plating,
+/area/template_noop)
+"FF" = (
+/obj/item/reagent_container/food/drinks/cans/souto,
+/turf/open/floor/plating,
+/area/template_noop)
+"FH" = (
+/obj/structure/machinery/shower,
+/obj/item/defenses/handheld/sentry,
+/turf/open/floor/plating,
+/area/template_noop)
+"Gn" = (
+/turf/closed/wall/rock/brown,
+/area/template_noop)
+"GK" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/item/weapon/gun/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/template_noop)
+"GR" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating,
+/area/template_noop)
+"GS" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/gloves,
+/obj/structure/sign/poster/music{
+	pixel_y = 31
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"HB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/template_noop)
+"IJ" = (
+/obj/structure/reagent_dispensers/ammoniatank,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 26
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"JX" = (
+/obj/item/trash/eat,
+/turf/open/floor/plating,
+/area/template_noop)
+"Lp" = (
+/obj/structure/sink{
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"LA" = (
+/obj/structure/reagent_dispensers/pacidtank,
+/turf/open/floor/plating,
+/area/template_noop)
+"LD" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/plating,
+/area/template_noop)
+"Mj" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/beakers,
+/turf/open/floor/plating,
+/area/template_noop)
+"MV" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/fancy/cigarettes/lucky_strikes{
+	pixel_x = 7
+	},
+/obj/item/tool/lighter/zippo{
+	pixel_x = -3
+	},
+/obj/item/ashtray/glass{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"NV" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/gun/special/highchance,
+/turf/open/floor/plating,
+/area/template_noop)
+"Ok" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/plating,
+/area/template_noop)
+"PG" = (
+/obj/structure/reagent_dispensers/oxygentank,
+/turf/open/floor/plating,
+/area/template_noop)
+"PK" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating,
+/area/template_noop)
+"Qn" = (
+/obj/structure/bed,
+/obj/item/bedsheet/yellow,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/template_noop)
+"QB" = (
+/obj/structure/barricade/metal/wired,
+/obj/structure/sign/poster/clf{
+	pixel_y = 31
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"QD" = (
+/obj/structure/machinery/chem_master,
+/turf/open/floor/plating,
+/area/template_noop)
+"QK" = (
+/obj/structure/machinery/chem_dispenser,
+/turf/open/floor/plating,
+/area/template_noop)
+"QL" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/turf/open/floor/plating,
+/area/template_noop)
+"Sj" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"Sp" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/plating,
+/area/template_noop)
+"TS" = (
+/obj/structure/reagent_dispensers/ethanoltank,
+/turf/open/floor/plating,
+/area/template_noop)
+"WB" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/plating,
+/area/template_noop)
+"Xc" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/template_noop)
+"Xi" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/plating,
+/area/template_noop)
+"Xr" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_box/magazine/M16,
+/turf/open/floor/plating,
+/area/template_noop)
+"Ya" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/head/bowlerhat{
+	pixel_y = 6;
+	desc = "We HAVE to cook."
+	},
+/obj/item/clothing/glasses/regular/hipster,
+/turf/open/floor/plating,
+/area/template_noop)
+"ZO" = (
+/obj/item/trash/snack_bowl,
+/turf/open/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+Gn
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+Sj
+xd
+"}
+(2,1,1) = {"
+Gn
+sq
+EG
+WB
+Xi
+WB
+hY
+sq
+Sj
+Sj
+"}
+(3,1,1) = {"
+Gn
+sq
+WB
+WB
+WB
+WB
+WB
+sq
+Sj
+Sj
+"}
+(4,1,1) = {"
+Gn
+sq
+WB
+WB
+WB
+WB
+LD
+sq
+Sj
+Sj
+"}
+(5,1,1) = {"
+Gn
+sq
+wS
+rK
+WB
+WB
+WB
+sq
+sq
+sq
+"}
+(6,1,1) = {"
+Gn
+sq
+wS
+qi
+DA
+yL
+EF
+sq
+EF
+sq
+"}
+(7,1,1) = {"
+Gn
+sq
+sq
+sq
+sq
+sq
+wX
+sq
+QB
+ux
+"}
+(8,1,1) = {"
+sq
+sq
+uz
+xK
+Ok
+bu
+Xc
+yL
+ia
+ux
+"}
+(9,1,1) = {"
+sq
+wh
+yH
+Xc
+EF
+EF
+hs
+EF
+ia
+ux
+"}
+(10,1,1) = {"
+sq
+GS
+EF
+FF
+Sp
+NV
+EF
+mk
+EF
+sq
+"}
+(11,1,1) = {"
+sq
+Mj
+tT
+EF
+QL
+nj
+EF
+Xc
+PK
+wX
+"}
+(12,1,1) = {"
+sq
+Lp
+Xc
+EF
+QK
+iG
+EF
+EF
+EF
+sq
+"}
+(13,1,1) = {"
+sq
+Ya
+ZO
+EF
+QD
+tI
+nE
+FF
+ia
+ux
+"}
+(14,1,1) = {"
+sq
+nj
+EF
+EF
+EN
+ek
+EF
+EF
+ia
+ux
+"}
+(15,1,1) = {"
+sq
+MV
+EF
+hs
+yX
+Xr
+EF
+JX
+ia
+ux
+"}
+(16,1,1) = {"
+sq
+IJ
+bJ
+Xc
+yL
+EF
+EF
+EF
+EF
+sq
+"}
+(17,1,1) = {"
+sq
+TS
+TS
+lv
+GK
+GR
+kZ
+EF
+EF
+sq
+"}
+(18,1,1) = {"
+sq
+yy
+cF
+EF
+GR
+GR
+GR
+Xc
+ia
+ux
+"}
+(19,1,1) = {"
+sq
+vj
+PG
+Xc
+GR
+GR
+GK
+lo
+ia
+ux
+"}
+(20,1,1) = {"
+sq
+Aq
+LA
+EF
+EF
+EF
+EF
+EF
+Cx
+ux
+"}
+(21,1,1) = {"
+sq
+sq
+sq
+sq
+wX
+sq
+wX
+sq
+sq
+sq
+"}
+(22,1,1) = {"
+Gn
+sq
+FH
+uc
+EF
+sq
+Xc
+EF
+Cx
+ux
+"}
+(23,1,1) = {"
+Gn
+sq
+sq
+sq
+Xc
+sq
+Qn
+FF
+ia
+ux
+"}
+(24,1,1) = {"
+Gn
+sq
+Xc
+yh
+iA
+sq
+ew
+EF
+ia
+ux
+"}
+(25,1,1) = {"
+Gn
+sq
+oZ
+kw
+kw
+wX
+kw
+HB
+ia
+ux
+"}
+(26,1,1) = {"
+Gn
+sq
+sq
+ux
+ux
+sq
+ux
+ux
+sq
+sq
+"}

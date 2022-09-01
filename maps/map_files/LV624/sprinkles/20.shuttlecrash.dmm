@@ -1,0 +1,896 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"br" = (
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"bG" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/template_noop)
+"ch" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"cm" = (
+/obj/structure/surface/table,
+/obj/item/tool/surgery/scalpel{
+	pixel_y = 12
+	},
+/obj/structure/machinery/light,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"cr" = (
+/obj/structure/shuttle/window,
+/turf/open/shuttle,
+/area/template_noop)
+"cz" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"cP" = (
+/obj/structure/girder/displaced,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"cV" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"dC" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "science_blast";
+	layer = 3.3;
+	name = "\improper Science Wing Blast Door"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"dM" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "science_blast";
+	layer = 3.3;
+	name = "\improper Science Wing Blast Door"
+	},
+/obj/structure/machinery/door/airlock/almayer/research{
+	locked = 1;
+	name = "\improper Research Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/template_noop)
+"dY" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"dZ" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/good_item,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"ee" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/dirt,
+/area/template_noop)
+"eE" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/good_item,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"eS" = (
+/obj/structure/machinery/chem_dispenser,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"ff" = (
+/obj/structure/machinery/door/unpowered/shuttle,
+/turf/open/shuttle,
+/area/template_noop)
+"fI" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/template_noop)
+"hA" = (
+/obj/structure/shuttle/diagonal{
+	dir = 6
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"jm" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"jy" = (
+/obj/effect/decal/remains/human,
+/obj/structure/shuttle/engine/propulsion,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"kr" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "";
+	name = "\improper Forced Blast Door"
+	},
+/obj/structure/machinery/door/airlock/almayer/research{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Research Dome";
+	opacity = 0;
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"kX" = (
+/turf/open/gm/grass,
+/area/template_noop)
+"ln" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"lp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/closed/shuttle,
+/area/template_noop)
+"ls" = (
+/obj/structure/surface/table,
+/obj/item/tool/crowbar,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"lz" = (
+/obj/effect/decal/remains/human,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"ot" = (
+/turf/open/gm/dirt,
+/area/template_noop)
+"pA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"pR" = (
+/obj/structure/girder/displaced,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"qc" = (
+/obj/structure/lamarr{
+	density = 0;
+	destroyed = 1;
+	icon_state = "labcageb0";
+	occupied = 0
+	},
+/obj/item/shard,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"rB" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/template_noop)
+"rC" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"sj" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/turf/open/shuttle,
+/area/template_noop)
+"sp" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/template_noop)
+"tp" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"tC" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"tK" = (
+/obj/structure/machinery/light,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"ur" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"ux" = (
+/obj/structure/shuttle/diagonal,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"wh" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/girder/reinforced,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"wk" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Research APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"wO" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/template_noop)
+"xS" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/shuttle,
+/area/template_noop)
+"yf" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"yq" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/xenoautopsy/tank/broken,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"yt" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"yA" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "science_blast";
+	layer = 3.3;
+	name = "\improper Science Wing Blast Door"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"zF" = (
+/obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
+/turf/open/shuttle,
+/area/template_noop)
+"zK" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "science_blast";
+	layer = 3.3;
+	name = "\improper Science Wing Blast Door"
+	},
+/obj/structure/machinery/door/airlock/almayer/research{
+	dir = 1;
+	locked = 1;
+	name = "\improper Research Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/template_noop)
+"AN" = (
+/obj/structure/shuttle/diagonal{
+	dir = 4
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"AT" = (
+/obj/structure/xenoautopsy/jar_shelf,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"AZ" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass,
+/area/template_noop)
+"Bv" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"By" = (
+/obj/structure/surface/table/holotable,
+/obj/structure/machinery/computer/objective{
+	dir = 5
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"BD" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/turf/open/shuttle,
+/area/template_noop)
+"Cm" = (
+/obj/structure/xenoautopsy/tank/broken,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"Df" = (
+/turf/open/floor/plating,
+/area/template_noop)
+"Eu" = (
+/obj/structure/surface/table,
+/obj/item/folder,
+/obj/effect/landmark/good_item,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"EA" = (
+/obj/structure/surface/table,
+/obj/effect/decal/remains/human,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"FX" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Ge" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "";
+	name = "\improper Forced Blast Door"
+	},
+/obj/structure/machinery/door/airlock/almayer/research{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Research Dome";
+	opacity = 0;
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"Gl" = (
+/obj/structure/xenoautopsy/tank/broken,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"GH" = (
+/obj/structure/shuttle/engine/propulsion/burst/left{
+	dir = 1
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Hw" = (
+/obj/structure/surface/table,
+/obj/item/alien_embryo{
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"IU" = (
+/obj/structure/lamarr{
+	density = 0;
+	destroyed = 1;
+	icon_state = "labcageb0";
+	occupied = 0
+	},
+/obj/item/shard,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"Jd" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/shuttle/diagonal{
+	dir = 8
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Jn" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Jw" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"JG" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass,
+/area/template_noop)
+"JK" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass,
+/area/template_noop)
+"JV" = (
+/obj/effect/landmark/corpsespawner/ua_riot/burst,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Ku" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"KU" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/template_noop)
+"MW" = (
+/obj/structure/shuttle/diagonal{
+	dir = 8
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"NG" = (
+/obj/structure/machinery/door/airlock/almayer/research{
+	dir = 1;
+	locked = 1;
+	name = "\improper Research Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"Ok" = (
+/turf/open/shuttle,
+/area/template_noop)
+"Qr" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "science_blast";
+	layer = 3.3;
+	name = "\improper Science Wing Blast Door"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"RI" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/obj/effect/landmark/corpsespawner/ua_riot/burst,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"RJ" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass,
+/area/template_noop)
+"Tp" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/machinery/door_control{
+	id = "science_blast";
+	name = "Science Wing Lockdown";
+	pixel_x = 25
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Tu" = (
+/turf/open/shuttle/plating,
+/area/template_noop)
+"UG" = (
+/obj/structure/surface/table,
+/obj/item/book/manual/research_and_development,
+/obj/item/cell/hyper,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Vw" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"VL" = (
+/obj/item/bananapeel,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"VX" = (
+/obj/structure/girder/reinforced,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"Wg" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf{
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>","<span class='notice'>You ARE aware of the xenomorph threat.</span>","<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>");
+	story_text = "You are a soldier of Colonial Liberation Front. You  "
+	},
+/turf/open/shuttle,
+/area/template_noop)
+"WN" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"WO" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/shuttle/plating,
+/area/template_noop)
+"WS" = (
+/turf/closed/shuttle/transit/vertical,
+/area/template_noop)
+"Ze" = (
+/obj/structure/shuttle/engine/propulsion/burst/right{
+	dir = 4
+	},
+/turf/open/shuttle/plating,
+/area/template_noop)
+"ZL" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+kX
+wO
+kX
+kX
+kX
+br
+dC
+dM
+dC
+br
+kX
+kX
+kX
+JG
+kX
+"}
+(2,1,1) = {"
+fI
+br
+dC
+dC
+dC
+br
+eE
+Tu
+WN
+br
+dC
+dC
+dC
+br
+kX
+"}
+(3,1,1) = {"
+JK
+Qr
+Hw
+tp
+cm
+Tu
+EA
+tC
+Jw
+cP
+dZ
+VL
+Cm
+bG
+kX
+"}
+(4,1,1) = {"
+kX
+Qr
+IU
+ag
+WN
+cP
+Tu
+FX
+Tu
+NG
+Tu
+lz
+ZL
+bG
+kX
+"}
+(5,1,1) = {"
+kX
+Qr
+qc
+Vw
+Cm
+Tu
+WN
+pA
+Tu
+VX
+MW
+ux
+RI
+Df
+AZ
+"}
+(6,1,1) = {"
+br
+Tu
+Jd
+WS
+WS
+WS
+jm
+Tu
+Tu
+WS
+WS
+WS
+pA
+GH
+jm
+"}
+(7,1,1) = {"
+yA
+yf
+WS
+Ok
+Ok
+BD
+Tu
+Tu
+cV
+BD
+Ok
+ff
+pA
+pA
+yt
+"}
+(8,1,1) = {"
+zK
+cr
+zF
+sj
+Ok
+Ok
+Tu
+ur
+dY
+BD
+Ok
+lp
+jy
+pA
+rC
+"}
+(9,1,1) = {"
+bG
+cz
+WS
+Ok
+Ok
+xS
+Tp
+Tu
+Tu
+Wg
+Ok
+Ok
+pA
+FX
+Df
+"}
+(10,1,1) = {"
+br
+br
+hA
+WS
+WS
+WS
+Tu
+Tu
+pA
+WS
+WS
+WS
+Tu
+Ze
+pA
+"}
+(11,1,1) = {"
+ot
+Qr
+AT
+dY
+WN
+wh
+Bv
+Tu
+WN
+VX
+hA
+AN
+Tu
+WN
+kX
+"}
+(12,1,1) = {"
+ot
+Qr
+Gl
+ch
+WN
+pR
+Tu
+Jn
+cP
+NG
+pA
+WO
+Eu
+bG
+RJ
+"}
+(13,1,1) = {"
+ot
+yA
+By
+JV
+eS
+br
+wk
+KU
+yq
+br
+UG
+ln
+Ku
+yA
+kX
+"}
+(14,1,1) = {"
+ee
+br
+dC
+dC
+dC
+br
+ls
+rB
+tK
+br
+dC
+dC
+bG
+br
+kX
+"}
+(15,1,1) = {"
+ot
+sp
+kX
+kX
+kX
+br
+br
+kr
+Ge
+br
+kX
+AZ
+kX
+kX
+wO
+"}

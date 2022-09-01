@@ -1,3 +1,11 @@
 2022-09-01:
   c4xmaniac:
   - rscadd: Added two Weymed Plus vendors to Sorokyne Strata's medbay.
+  stanalbatross:
+  - bugfix: pred bracers will now decloak you when you drop them
+  - bugfix: pred bracers will now decloak you when you put them into bags
+  - bugfix: pred bracers will now properly decloak you before shocking you if they
+      run out of charge
+  - bugfix: if you get shocked while trying to activate something with a pred bracer,
+      it won't do the action you were trying to do
+  - bugfix: also fixed dropship autolaunch delay having a broken input

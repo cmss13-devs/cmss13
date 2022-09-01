@@ -367,22 +367,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"aH" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/device/healthanalyzer/alien,
-/obj/item/device/healthanalyzer/alien,
-/obj/item/device/healthanalyzer/alien,
-/obj/item/device/healthanalyzer/alien,
-/obj/item/device/healthanalyzer/alien,
-/obj/item/device/healthanalyzer/alien,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "aI" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
@@ -460,26 +444,6 @@
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
-	},
-/area/yautja)
-"aU" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/obj/item/tool/surgery/synthgraft,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
 	},
 /area/yautja)
 "aV" = (
@@ -704,18 +668,17 @@
 	},
 /area/yautja)
 "bz" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1076,46 +1039,6 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
-"cp" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1965,24 +1888,6 @@
 	icon_state = "grass1"
 	},
 /area/yautja)
-"hg" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "hI" = (
 /obj/structure/shuttle/window{
 	color = "#6b675e"
@@ -2272,6 +2177,16 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"rt" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/medicomp/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2889,20 +2804,14 @@
 	},
 /area/yautja)
 "HN" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
-/obj/item/tool/surgery/surgical_line,
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 80;
+	pixel_y = 16
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -4683,7 +4592,7 @@ bL
 jR
 bL
 cx
-ZM
+rt
 bj
 cU
 cP
@@ -4755,7 +4664,7 @@ cP
 cP
 cP
 cP
-ZM
+rt
 bj
 cV
 cP
@@ -5257,7 +5166,7 @@ aa
 aa
 aa
 bj
-aU
+wQ
 cP
 cP
 cP
@@ -5329,7 +5238,7 @@ bj
 bj
 bj
 bj
-hg
+wQ
 cP
 cP
 bz
@@ -5401,10 +5310,10 @@ av
 ZM
 bO
 bj
-hg
+wQ
 cP
 cP
-bz
+wQ
 bj
 bj
 bj
@@ -5473,10 +5382,10 @@ bL
 SB
 bL
 bj
-cp
+wQ
 cP
 bL
-aH
+wQ
 rH
 bd
 rH
@@ -5545,7 +5454,7 @@ bL
 cP
 bL
 bj
-bL
+wQ
 bL
 JH
 JH

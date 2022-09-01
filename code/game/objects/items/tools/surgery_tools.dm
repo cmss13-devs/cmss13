@@ -303,6 +303,72 @@ t. optimisticdude
 	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON
 
+/*
+ * MEDICOMP TOOLS
+ */
+
+/obj/item/tool/surgery/stabilizer_gel
+	name = "stabilizer gel vial"
+	icon_state = "stabilizer_gel"
+	desc = "Used for stabilizing wounds for treatment."
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+
+/obj/item/tool/surgery/healing_gun
+	name = "healing gun"
+	icon_state = "healing_gun"
+	desc = "Used for mending stabilized wounds."
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+	var/loaded  = TRUE
+
+/obj/item/tool/surgery/healing_gun/update_icon()
+	if(loaded)
+		icon_state = "healing_gun"
+	else
+		icon_state = "healing_gun_empty"
+
+/obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea how to put this [O] into \the [src]!"))
+		return
+	if(istype(O, /obj/item/tool/surgery/healing_gel))
+		if(loaded)
+			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
+			return
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O]"),SPAN_NOTICE(" You load \the [src] with \a [O]"))
+		playsound(loc, 'sound/items/air_release.ogg',25)
+		loaded = TRUE
+		update_icon()
+		qdel(O)
+		return
+
+/obj/item/tool/surgery/healing_gel
+	name = "healing gel capsule"
+	icon_state = "healing_gel"
+	desc = "Used for reloding the healing gun."
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+
+/obj/item/tool/surgery/wound_clamp
+	name = "wound clamp"
+	icon_state = "wound_clamp"
+	desc = "Used for clamping wounds after treatment."
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+
+
 //XENO AUTOPSY TOOL
 
 /obj/item/tool/surgery/WYautopsy

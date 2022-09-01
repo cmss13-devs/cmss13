@@ -3,12 +3,12 @@
 #define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
-#define SQUAD_MARINE_1					"Alpha"
-#define SQUAD_MARINE_2					"Bravo"
-#define SQUAD_MARINE_3					"Charlie"
-#define SQUAD_MARINE_4					"Delta"
-#define SQUAD_MARINE_5					"Echo"
-#define SQUAD_MARINE_CRYO				"Reserves"
+#define SQUAD_MARINE_1					":a Alpha"
+#define SQUAD_MARINE_2					":b Bravo"
+#define SQUAD_MARINE_3					":c Charlie"
+#define SQUAD_MARINE_4					":d Delta"
+#define SQUAD_MARINE_5					":e Echo"
+#define SQUAD_MARINE_CRYO				":f Reserves"
 #define SQUAD_MARSOC					"MARSOC"
 
 // Job name defines

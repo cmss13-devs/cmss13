@@ -185,7 +185,7 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
-    name: 'Common',
+    name: ':h Common',
     freq: 1461,
     color: '#1ecc43',
   },

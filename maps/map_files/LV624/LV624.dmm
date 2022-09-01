@@ -15352,6 +15352,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
+"fFa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "securesmuggler"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/south_west_jungle)
 "fFA" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
@@ -16953,6 +16959,9 @@
 "jHd" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-science"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "shuttlecrash"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -23261,6 +23270,9 @@
 "xJG" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-skylight"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "methlab"
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_central_caves)
@@ -30110,7 +30122,7 @@ cWm
 aXh
 aXh
 hUs
-aXh
+fFa
 aKb
 aKb
 aKb

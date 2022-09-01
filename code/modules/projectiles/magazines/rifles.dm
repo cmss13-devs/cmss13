@@ -290,6 +290,17 @@
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
+
+/obj/item/ammo_magazine/rifle/l42a/half
+	name = "\improper L42A half-size magazine (10x24mm)"
+	desc = "A small 10mm battle rifle 10 round magazine allowing the rifle to be comfortably shouldered for drill, ceremony and execution."
+	max_rounds = 10
+
+
+/obj/item/ammo_magazine/rifle/l42a/half/blank
+	name = "\improper L42A blank magazine (10x24mm)"
+	desc = "A magazine loaded with blank rounds intended for the ceremonies, most notably being the centuries old tradition of the 21 gun salute. Despite a clear white strip to prevent confusion with normal rounds, there is always that one private that somehow manages to bring these to the frontline every now and then."
+	default_ammo = /datum/ammo/bullet/rifle/blank
 //-------------------------------------------------------
 ////NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 

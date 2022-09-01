@@ -1243,9 +1243,35 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
-
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
+
+
+// Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
+/obj/item/weapon/gun/rifle/l42a/drill
+	name = "\improper L42 Ceremonial Rifle"
+	desc = "An L42 battle rifle with an authentic polished wood furniture for ceremonial useage. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
+	icon_state = "l42mk1"
+	item_state = "l42mk1"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
+	attachable_allowed = list(
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02
+						)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+	wield_delay = WIELD_DELAY_FAST
+
+/obj/item/weapon/gun/rifle/l42a/drill/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9 // Polished parts
+	accuracy_mult_unwielded = 0
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
 
 //-------------------------------------------------------
 //-------------------------------------------------------

@@ -903,6 +903,18 @@
 	. = ..()
 	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
+/datum/ammo/bullet/rifle/blank
+	name = "blank rifle bullet"
+	icon_state = "blank"
+	damage = 50  //Blanks can fuck you up at point blank range due to black powder.
+	penetration = 0
+	effective_range_max = 1 // effectively PB only
+	max_range = 2
+	accuracy = HIT_ACCURACY_TIER_1
+	damage_falloff = DAMAGE_FALLOFF_BLANK*2 //not much, though (comparatively)
+	shell_speed = AMMO_SPEED_TIER_5
+	handful_state = "training_lever_action_bullet"
+
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 

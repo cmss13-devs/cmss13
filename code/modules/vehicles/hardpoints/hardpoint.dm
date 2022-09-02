@@ -122,7 +122,7 @@
 		return
 
 	health = max(0, health - severity / 2)
-	if(health < 0)
+	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		qdel(src)
 

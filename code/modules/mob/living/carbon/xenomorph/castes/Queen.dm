@@ -441,8 +441,15 @@
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
+
 	if(hive && hive.living_xeno_queen == src)
-		hive.set_living_xeno_queen(null)
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
+		for(var/mob/living/carbon/Xenomorph/Queen/queen in hive.totalXenos)
+			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+				next_queen = queen
+				break
+		hive.set_living_xeno_queen(next_queen) // either null or a queen
+
 	return ..()
 
 /mob/living/carbon/Xenomorph/Queen/Life(delta_time)

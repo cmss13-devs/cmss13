@@ -20,10 +20,10 @@ const stats = [
 ];
 
 const damages = [
-  ['Resp.', 'oxyLoss'],
-  ['Toxin', 'toxLoss'],
   ['Brute', 'bruteLoss'],
   ['Burn', 'fireLoss'],
+  ['Toxin', 'toxLoss'],
+  ['Oxygen', 'oxyLoss'],
 ];
 
 const damageRange = {

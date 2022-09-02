@@ -518,18 +518,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return FALSE
 
 	if(slot == w_uniform)
-		for(var/obj/item/storage/internal/accessory/holster/T in w_uniform.accessories)
-			if(T.current_gun)
+		for(var/obj/item/storage/internal/accessory/holster/cycled_holster in w_uniform.accessories)
+			if(cycled_holster.current_gun)
 				return w_uniform
-		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
-			var/obj/item/storage/internal/accessory/holster/HS = H.hold
-			if(HS.current_gun)
-				return HS.current_gun
+		for(var/obj/item/clothing/accessory/storage/holster/cycled_holster in w_uniform.accessories)
+			var/obj/item/storage/internal/accessory/holster/holster = cycled_holster.hold
+			if(holster.current_gun)
+				return holster.current_gun
 		return FALSE
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
-		for(var/obj/wep in slot.return_inv())
-			if(isweapon(wep))
+		for(var/obj/cycled_weapon in slot.return_inv())
+			if(isweapon(cycled_weapon))
 				return slot
 
 	if(isweapon(slot)) //then check for weapons
@@ -570,15 +570,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else //empty hand, start checking slots and holsters
 		
 		//default order: suit, belt, back, pockets, uniform, shoes
-		var/list/slot_order = list(
-		"s_store",
-		"belt",
-		"back",
-		"l_store",
-		"r_store",
-		"w_uniform",
-		"shoes",
-		)
+		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
 		
 		var/obj/item/slot_selected
 

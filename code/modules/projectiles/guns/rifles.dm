@@ -1251,11 +1251,8 @@
 /obj/item/weapon/gun/rifle/l42a/drill
 	name = "\improper L42 Ceremonial Rifle"
 	desc = "An L42 battle rifle with an authentic polished wood furniture for ceremonial useage. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
-	icon_state = "l42mk1"
-	item_state = "l42mk1"
-	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
-	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	icon_state = "l42wood"
+	item_state = "l42wood"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -1264,6 +1261,8 @@
 						)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	wield_delay = WIELD_DELAY_FAST
+	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/drill)
+	map_specific_decoration = FALSE
 
 /obj/item/weapon/gun/rifle/l42a/drill/set_gun_config_values()
 	..()

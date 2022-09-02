@@ -352,6 +352,21 @@
 /obj/item/ammo_box/magazine/explosive/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/blank
+	name = "magazine box (BLANK M41A x 10)"
+	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_45_training"
+	overlay_content = "_training"
+	magazine_type = /obj/item/ammo_magazine/rifle/blank
+
+/obj/item/ammo_box/magazine/blank/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/blank/sus
+	name = "odd magazine box (WP M41A x 10)"
+	desc = "A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
+
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39
@@ -453,6 +468,25 @@
 
 /obj/item/ammo_box/magazine/l42a/incen/empty
 	empty = TRUE
+
+/obj/item/ammo_box/magazine/l42a/half
+	name = "magazine box (HALF-SIZE L42A x 32)"
+	num_of_magazines = 32
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half
+
+/obj/item/ammo_box/magazine/l42a/half/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l42a/half/blank
+	name = "magazine box (BLANK L42A x 32)"
+	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
+	overlay_ammo_type = "_45_training"
+	overlay_content = "_training"
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half/blank
+
+/obj/item/ammo_box/magazine/l42a/blank/empty
+	empty = TRUE
+
 
 //-----------------------M16 Rifle Mag Box-----------------------
 

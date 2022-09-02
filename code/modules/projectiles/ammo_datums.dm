@@ -905,15 +905,15 @@
 
 /datum/ammo/bullet/rifle/blank
 	name = "blank rifle bullet"
-	icon_state = "blank"
-	damage = 50  //Blanks can fuck you up at point blank range due to black powder.
+	icon_state = "shrapnel_bright2"
+	damage = 50  //Full power blanks that create big muzzleflash can fuck you up.
 	penetration = 0
 	effective_range_max = 1 // effectively PB only
 	max_range = 2
 	accuracy = HIT_ACCURACY_TIER_1
-	damage_falloff = DAMAGE_FALLOFF_BLANK*2 //not much, though (comparatively)
+	damage_falloff = DAMAGE_FALLOFF_BLANK*2 // insane falloff
 	shell_speed = AMMO_SPEED_TIER_5
-	handful_state = "training_lever_action_bullet"
+	handful_state = "blank_bullet"
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"

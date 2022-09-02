@@ -441,7 +441,7 @@
 		overwatch(observed_xeno, TRUE)
 
 	if(hive && hive.living_xeno_queen == src)
-		var/mob/living/carbon/Xenomorph/Queen/next_queen
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
 		for(var/mob/living/carbon/Xenomorph/Queen/queen in hive.totalXenos)
 			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
 				next_queen = queen

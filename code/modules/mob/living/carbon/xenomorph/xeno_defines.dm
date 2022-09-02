@@ -318,7 +318,7 @@
 
 	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
 	if(living_xeno_queen == xeno)
-		var/mob/living/carbon/Xenomorph/Queen/next_queen
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
 		for(var/mob/living/carbon/Xenomorph/Queen/queen in totalXenos)
 			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
 				next_queen = queen
@@ -345,7 +345,7 @@
 		hive_ui.xeno_removed(xeno)
 
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/queen)
-	if(queen == null)
+	if(!queen)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)

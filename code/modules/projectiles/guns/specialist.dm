@@ -1035,7 +1035,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	update_attachables()
 
 
-/obj/item/weapon/gun/flare/rocket/set_gun_attachment_offsets()
+/obj/item/weapon/gun/flare/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
@@ -1073,5 +1073,28 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			current_mag.current_rounds++
 			qdel(I)
 			update_icon()
-		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
-	else to_chat(user, SPAN_WARNING("That's not a flare!"))
+		else 
+			to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
+	else 
+		to_chat(user, SPAN_WARNING("That's not a flare!"))
+		
+/obj/item/weapon/gun/flare/unload(mob/user)
+	unload_flare(user)
+	
+/obj/item/weapon/gun/flare/proc/unload_flare(mob/user)
+	if(!current_mag)
+		return
+	if(current_mag.current_rounds)
+		var/obj/item/device/flashlight/flare/unloaded_flare
+		if(istype(ammo, /datum/ammo/flare/signal))
+			var/obj/item/device/flashlight/flare/signal/temp_flare = new(get_turf(src))
+			unloaded_flare = temp_flare
+		else
+			var/obj/item/device/flashlight/flare/temp_flare = new(get_turf(src))
+			unloaded_flare = temp_flare
+		playsound(user, reload_sound, 25, TRUE)
+		current_mag.current_rounds--
+		if(user)
+			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from [src]."))
+			user.put_in_hands(unloaded_flare)
+		update_icon()

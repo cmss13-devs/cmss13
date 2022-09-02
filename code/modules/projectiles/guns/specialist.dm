@@ -1085,13 +1085,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	if(!current_mag)
 		return
 	if(current_mag.current_rounds)
-		var/obj/item/device/flashlight/flare/unloaded_flare
-		if(istype(ammo, /datum/ammo/flare/signal))
-			var/obj/item/device/flashlight/flare/signal/temp_flare = new(get_turf(src))
-			unloaded_flare = temp_flare
-		else
-			var/obj/item/device/flashlight/flare/temp_flare = new(get_turf(src))
-			unloaded_flare = temp_flare
+		var/obj/item/device/flashlight/flare/unloaded_flare = new ammo.handful_type(get_turf(src))
 		playsound(user, reload_sound, 25, TRUE)
 		current_mag.current_rounds--
 		if(user)

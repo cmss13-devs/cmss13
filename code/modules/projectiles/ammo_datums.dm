@@ -2988,6 +2988,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+	handful_type = /obj/item/device/flashlight/flare
 
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
@@ -3018,6 +3019,7 @@
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
+	handful_type = /obj/item/device/flashlight/flare/signal
 
 /datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/G = ..()

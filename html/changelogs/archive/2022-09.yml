@@ -9,3 +9,7 @@
   - bugfix: if you get shocked while trying to activate something with a pred bracer,
       it won't do the action you were trying to do
   - bugfix: also fixed dropship autolaunch delay having a broken input
+2022-09-02:
+  Drathek:
+  - bugfix: Fixes transformation of a queen breaking hive status and hivemind
+  - refactor: Improves some variable readability

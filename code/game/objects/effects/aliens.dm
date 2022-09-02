@@ -446,6 +446,9 @@
 /obj/effect/xenomorph/xeno_telegraph/brown
 	icon_state = "xeno_telegraph_brown"
 
+/obj/effect/xenomorph/xeno_telegraph/green
+	icon_state = "xeno_telegraph_green"
+
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook"
 

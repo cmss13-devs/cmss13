@@ -20,9 +20,6 @@
 
 	// Are we trying to repair the frame?
 	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
 		handle_repairs(O, user)
 		return
 

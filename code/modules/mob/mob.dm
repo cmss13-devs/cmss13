@@ -378,7 +378,6 @@
 		else
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
-
 /mob/Topic(href, href_list)
 	. = ..()
 	if(.)
@@ -658,6 +657,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			lying = FALSE
 
 	canmove = !(stunned || frozen)
+	if(!can_crawl && lying)
+		canmove = FALSE
 
 	if(lying_prev != lying)
 		if(lying)
@@ -704,9 +705,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/set_face_dir(var/newdir)
+	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
+		facedir(newdir)
+		return
+
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if(facedir(newdir))
+	else if (facedir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -863,14 +868,14 @@ mob/proc/yank_out_object()
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down()
-	if(knocked_down && client)
+/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out()
-	if(knocked_out && client)
+/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out

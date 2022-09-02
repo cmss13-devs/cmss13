@@ -236,7 +236,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				lst[i] = input("Enter new text:","Text",null) as text
 
 			if("num")
-				lst[i] = tgui_input_number(usr, "Enter new number:","Num",0)
+				lst[i] = tgui_input_real_number(usr, "Enter new number:","Num",0)
 
 			if("type")
 				lst[i] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))

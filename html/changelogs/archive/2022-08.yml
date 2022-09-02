@@ -493,6 +493,10 @@
       of being green glasses
   - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
       be monacles
+  Segrain:
+  - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
+      coordinates).
+  - bugfix: Wrench once again can be properly used in fixing vehicles' hulls.
   Shad0vvs:
   - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
       them daze on punch.
@@ -515,3 +519,52 @@
   - rscadd: added pushups, you can do pushups with a verb in the IC tab
   - bugfix: you can no longer crawl without enough limbs to do so
   - ui: number input now uses tgui
+  - bugfix: when making pills from a chemmaster the creation number will now default
+      to 16, not 10
+2022-08-29:
+  Morrow:
+  - rscadd: More options to chief engineer vendor as well as an extended section for
+      deployment gear.
+2022-08-30:
+  Geevies:
+  - rscadd: AI xenos have been tweaked to function a bit more like normal xenos (no
+      ability use).
+  Mister-moon1:
+  - Fix: Ammo type of M2C changed to be the correct ammo
+2022-08-31:
+  Geevies:
+  - rscadd: Adds rock paper scissors, you can play it by help intenting someone's
+      head. Your intent influences your play.
+  Nanotrasen-Spy:
+  - bugfix: Fixed missing icons for ballistic goggles in certain cases
+  TotalEpicness, TheDonkified and Lumdor:
+  - rscadd: Added charger strain for crusher.
+  - experiment: Charger functions very similarly to old crusher. Hold movement key
+      and after a while you gain momentum to ram humans and certain objects. Behavior
+      upon collision with different things are subject to change.
+  - Passive: Directional armor. Charger has 50 frontal armor, 35 side armor, and 25
+      rear armor. Because of this ability, charger crusher is unable to direction
+      lock itself.
+  - experiment: 'Active 1: Toggle Charging. Use this ability to toggle charging on
+      and off.'
+  - experiment: 'Active 2: Tumble. Clicking to the side of where the crusher is facing
+      will launch it 2 tiles to the side in the clicked direction. Hitting a human
+      will knock them over. This ability can be used while charge to quickly offset
+      yourself. However, it will reset your momentum to 0.'
+  - rscadd: Tumble now has cool sound effects and a spin.
+  - imageadd: Added tumble ability sprites
+  - tweak: Charger now takes 3 full hits to destroy a normal wall instead of destroying
+      it in pretty much one. Xeno walls take half damage
+  - experiment: 'Active 3: Charger stomp. Unlike the base crusher, it does not stun,
+      but does heavy damage to any human unfortunate enough to be under the charger,
+      it also applies a mild screen shake to any humans in view and can be used to
+      help escape.'
+  - experiment: 'Active 4: Ram. A simple offensive ability that flings mobs without
+      stun. Much like warrior fling.'
+  - rscadd: Xenos blocking a charger's path when charger get pushed to the side, if
+      no clear path to move to exists, they get flicker stunned so that charger may
+      charge.
+  stanalbatross:
+  - admin: 'fixed the following broken hrefs : game panel'
+  - bugfix: properly fixed stack transfer amounts
+  - code_imp: changed several instances of += 1 and -= 1 to ++ and --

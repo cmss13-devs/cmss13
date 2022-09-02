@@ -161,7 +161,7 @@ display round(lastgen) and phorontank amount
 	if(sheets)
 		var/fail_safe = 0
 		while(sheets > 0 && fail_safe < 100)
-			fail_safe += 1
+			fail_safe++
 			var/obj/item/stack/sheet/S = new sheet_path(loc)
 			var/amount = min(sheets, S.max_amount)
 			S.amount = amount

@@ -35,10 +35,10 @@
 			owner.jumptocoord(targ_x, targ_y, targ_z)
 
 		if("jump_to_offset_coord")
-			var/targ_x = tgui_input_number(owner, "Jump to X coordinate.")
+			var/targ_x = tgui_input_real_number(owner, "Jump to X coordinate.")
 			if(!targ_x)
 				return
-			var/targ_y = tgui_input_number(owner, "Jump to Y coordinate.")
+			var/targ_y = tgui_input_real_number(owner, "Jump to Y coordinate.")
 			if(!targ_y)
 				return
 

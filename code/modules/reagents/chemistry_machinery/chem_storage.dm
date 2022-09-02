@@ -42,7 +42,7 @@
 		recharge()
 		recharge_cooldown = initial(recharge_cooldown)
 	else
-		recharge_cooldown -= 1
+		recharge_cooldown--
 
 /obj/structure/machinery/chem_storage/proc/recharge()
 	if(inoperable())

@@ -6,11 +6,11 @@
 		if(!is_mainship_level(S.z))
 			continue
 		S.last_charge = S.charge
-		S.last_output = S.output
-		S.last_online = S.online
+		S.last_output = S.output_level
+		S.last_outputting = S.outputting
 		S.charge = 0
-		S.output = 0
-		S.online = 0
+		S.output_level = 0
+		S.outputting = 0
 		S.updateicon()
 		S.power_change()
 
@@ -29,8 +29,8 @@
 		if(!is_mainship_level(S.z))
 			continue
 		S.charge = S.capacity
-		S.output = S.output_level_max
-		S.online = 1
+		S.output_level = S.output_level_max
+		S.outputting = 1
 		S.updateicon()
 		S.power_change()
 
@@ -48,8 +48,8 @@
 		if(!is_mainship_level(S.z)) // Ship only
 			continue
 		S.charge = S.capacity
-		S.output = S.output_level_max
-		S.online = 1
+		S.output_level = S.output_level_max
+		S.outputting = 1
 		S.updateicon()
 		S.power_change()
 
@@ -61,8 +61,8 @@
 
 	for(var/obj/structure/machinery/power/smes/S in machines)
 		S.charge = S.capacity
-		S.output = S.output_level_max
-		S.online = 1
+		S.output_level = S.output_level_max
+		S.outputting = 1
 		S.updateicon()
 		S.power_change()
 

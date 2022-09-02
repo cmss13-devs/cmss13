@@ -448,6 +448,8 @@
 	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
+	if((ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX)) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+		return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
 
@@ -924,6 +926,9 @@
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
+			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			if(istype(large_embed))
+				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
 				var/found_one = FALSE
 				for(var/obj/item/shard/shrapnel/S in embedded_items)

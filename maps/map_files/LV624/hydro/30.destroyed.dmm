@@ -177,7 +177,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 3;
 	dir = 1;
@@ -185,19 +185,27 @@
 	icon_state = "folding_3"
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "vm" = (
-/obj/item/weapon/gun/rifle/nsg23,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
 "xa" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -235,7 +243,6 @@
 /area/lv624/lazarus/hydroponics)
 "zj" = (
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/nsg23,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
@@ -252,6 +259,8 @@
 "zX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -310,13 +319,18 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ha" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 1;
 	dir = 1;
 	health = 245;
 	icon_state = "folding_1"
 	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -466,6 +480,8 @@
 "Qd" = (
 /obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (
@@ -491,13 +507,14 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ul" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
 	dir = 8;
 	health = 140;
 	icon_state = "folding_2"
 	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -527,6 +544,8 @@
 "YJ" = (
 /obj/item/storage/firstaid,
 /obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"

@@ -200,6 +200,7 @@
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 	fullscreen_vision = null
+	actions_types = null
 
 /obj/item/clothing/glasses/night/cultist
 	name = "\improper unusual thermal imaging goggles"

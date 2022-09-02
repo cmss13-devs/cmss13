@@ -446,7 +446,7 @@
 		var/turf/open/snow/S = loc
 
 		if (S.bleed_layer > 0)
-			S.bleed_layer -= 1
+			S.bleed_layer--
 			S.update_icon(1, 0)
 
 	if (istype(loc, /turf/open/auto_turf/snow))
@@ -694,7 +694,7 @@
 
 		switch(spread_direction)
 			if(NORTH,SOUTH,EAST,WEST)
-				spread_power -= 1
+				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
 
@@ -724,7 +724,7 @@
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)
-				spread_power -= 1
+				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)

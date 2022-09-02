@@ -141,11 +141,11 @@
 	if(user.stat || user.is_mob_restrained())
 		return
 	if(href_list["inject_amount"])
-		acid_core.inject_amount = input("Set inject amount:","[src]") as num
+		acid_core.inject_amount = tgui_input_number(usr, "Set inject amount:","[src]")
 		if(acid_core.inject_amount < 1)
 			acid_core.inject_amount = 1
 	else if(href_list["inject_damage_threshold"])
-		acid_core.inject_damage_threshold = input("Set damage threshold:","[src]") as num
+		acid_core.inject_damage_threshold = tgui_input_number(usr, "Set damage threshold:","[src]")
 	else if(href_list["inject_logic"])
 		if(acid_core.inject_logic == ACID_LOGIC_OR)
 			acid_core.inject_logic = ACID_LOGIC_AND

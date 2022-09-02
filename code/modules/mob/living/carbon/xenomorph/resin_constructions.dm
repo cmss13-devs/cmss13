@@ -41,6 +41,10 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
 
+	if(alien_weeds?.block_structures >= BLOCK_ALL_STRUCTURES)
+		to_chat(X, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
+		return FALSE
+
 	var/obj/vehicle/V = locate() in T
 	if(V)
 		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))

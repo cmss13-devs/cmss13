@@ -1,3 +1,7 @@
+#define BLOCK_NOTHING 				0
+#define BLOCK_SPECIAL_STRUCTURES	1
+#define BLOCK_ALL_STRUCTURES		2
+
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
@@ -17,7 +21,7 @@
 
 	var/fruit_growth_multiplier = 1
 	var/spread_on_semiweedable = FALSE
-	var/block_special_structures = FALSE
+	var/block_structures = BLOCK_NOTHING
 
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -41,7 +45,7 @@
 		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
-		block_special_structures = node.block_special_structures
+		block_structures = node.block_structures
 		fruit_growth_multiplier = node.fruit_growth_multiplier
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]

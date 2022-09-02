@@ -111,7 +111,7 @@
 	if(!x)
 		return
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', "mark_[x.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
 
 /datum/action/xeno_action/activable/info_marker/queen
 	max_markers = 5

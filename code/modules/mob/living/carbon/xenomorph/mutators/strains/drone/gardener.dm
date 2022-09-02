@@ -339,13 +339,11 @@
 	xeno_cooldown = 2 MINUTES
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-
-	plant_on_semiweedable = TRUE
 	node_type = /obj/effect/alien/weeds/node/gardener
 
 /obj/effect/alien/weeds/node/gardener
 	spread_on_semiweedable = TRUE
-	block_special_structures = TRUE
+	block_structures = BLOCK_SPECIAL_STRUCTURES
 	fruit_growth_multiplier = 0.8
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()

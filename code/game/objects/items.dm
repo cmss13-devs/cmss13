@@ -439,10 +439,16 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_L_HAND)
 				if(H.l_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(H.r_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_FACE)
 				if(H.wear_mask)

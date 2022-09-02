@@ -1619,7 +1619,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	else
 		total_recoil += recoil_unwielded
 		if(flags_gun_features & GUN_BURST_FIRING)
-			total_recoil += 1
+			total_recoil++
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms

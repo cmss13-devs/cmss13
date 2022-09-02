@@ -84,22 +84,25 @@
 			return
 
 		user.affected_message(M,
-			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] a pill."),
+			SPAN_HELPFUL("You <b>start feeding</b> [M] a pill."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you a pill."),
-			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] a pill."))
+			SPAN_NOTICE("[user] starts feeding [M] a pill."))
 
 		var/ingestion_time = 30
 		if(user.skills)
 			ingestion_time = max(10, 30 - 10*user.skills.get_skill_level(SKILL_MEDICAL))
 
-		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			return
+		if(QDELETED(src))
+			return
 
 		user.drop_inv_item_on_ground(src) //icon update
 
 		user.affected_message(M,
-			SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
+			SPAN_HELPFUL("You <b>fed</b> [M] a pill."),
 			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
-			SPAN_NOTICE("[user] [user == M ? "swallowed" : "fed [M]"] a pill."))
+			SPAN_NOTICE("[user] fed [M] a pill."))
 		user.count_niche_stat(STATISTICS_NICHE_PILLS)
 
 		var/rgt_list_text = get_reagent_list_text()

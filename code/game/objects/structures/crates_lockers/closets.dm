@@ -154,6 +154,15 @@
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
+
+/obj/structure/closet/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health <= 0)
+		for(var/atom/movable/A as anything in src)
+			A.forceMove(src.loc)
+		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+		qdel(src)
+
 // this should probably use dump_contents()
 /obj/structure/closet/ex_act(severity)
 	switch(severity)
@@ -182,16 +191,11 @@
 	open()
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
-	health -= round(Proj.damage*0.3)
-	if(prob(30)) playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-	if(health <= 0)
-		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.loc)
-		spawn(1)
-			playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-			qdel(src)
+	take_damage(Proj.damage*0.3)
+	if(prob(30))
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 
-	return 1
+	return TRUE
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
@@ -210,7 +214,10 @@
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
-		if(istype(W, /obj/item/tool/weldingtool))
+		if(iswelder(W))
+			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			var/obj/item/tool/weldingtool/WT = W
 			if(!WT.isOn())
 				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
@@ -232,7 +239,10 @@
 
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))

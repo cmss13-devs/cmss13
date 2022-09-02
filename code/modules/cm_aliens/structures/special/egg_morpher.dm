@@ -119,7 +119,7 @@
 		return
 	last_spawned = world.time
 	if(huggers_to_grow > 0)
-		huggers_to_grow -= 1
+		huggers_to_grow--
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 		if(huggers_to_grow <= 0)
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))

@@ -11,10 +11,6 @@
 #define STATE_DESTROY 11
 #define STATE_DEFCONLIST 12
 
-#define COOLDOWN_COMM_MESSAGE 1 MINUTES
-#define COOLDOWN_COMM_REQUEST 5 MINUTES
-#define COOLDOWN_COMM_CENTRAL 30 SECONDS
-
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
 // The communications computer
@@ -133,11 +129,11 @@
 
 		if("announce")
 			if(authenticated == 2)
-				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
-					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
+					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
 				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src)))
+				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in view(1,src)))
 					return FALSE
 
 				marine_announcement(input)
@@ -501,6 +497,3 @@
 #undef STATE_STATUSDISPLAY
 #undef STATE_ALERT_LEVEL
 #undef STATE_CONFIRM_LEVEL
-#undef COOLDOWN_COMM_MESSAGE
-#undef COOLDOWN_COMM_REQUEST
-#undef COOLDOWN_COMM_CENTRAL

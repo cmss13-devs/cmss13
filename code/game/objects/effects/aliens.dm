@@ -107,6 +107,8 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
+			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
+				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
@@ -119,9 +121,7 @@
 
 		if(isVehicleMultitile(atm))
 			var/obj/vehicle/multitile/V = atm
-			for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
-				Loco.handle_acid_spray(src)
-				break
+			V.handle_acidic_environment(src)
 			continue
 
 	START_PROCESSING(SSobj, src)
@@ -155,9 +155,7 @@
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
-		for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
-			Loco.handle_acid_spray(src)
-			break
+		V.handle_acidic_environment(src)
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)

@@ -94,7 +94,8 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
+	if(stun_power)
+		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	H.apply_effect(weaken_power, WEAKEN)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
@@ -134,9 +135,6 @@
 
 	var/mob/living/carbon/H = A
 
-	if (distance > 1 && X.mutation_type == WARRIOR_BOXER)
-		step_towards(X, H, 1)
-
 	if (!X.Adjacent(H))
 		return
 
@@ -158,12 +156,7 @@
 	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
-
-	if (X.mutation_type != WARRIOR_BOXER)
-		do_base_warrior_punch(H, L)
-	else
-		do_boxer_punch(H,L)
-
+	do_base_warrior_punch(H, L)
 	apply_cooldown()
 	..()
 
@@ -190,180 +183,3 @@
 
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
-
-/datum/action/xeno_action/activable/warrior_punch/proc/do_boxer_punch(mob/living/carbon/H, obj/limb/L)
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	var/damage = rand(boxer_punch_damage, boxer_punch_damage + damage_variance)
-
-	if(ishuman(H))
-		if(isYautja(H))
-			damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
-		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
-
-	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-
-	step_away(H, X)
-	if(prob(25)) // 25% chance to fly 2 tiles
-		step_away(H, X)
-	var/datum/behavior_delegate/boxer/BD = X.behavior_delegate
-	if(istype(BD))
-		BD.melee_attack_additional_effects_target(H, 1)
-
-	var/datum/action/xeno_action/activable/jab/JA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/jab)
-	if (istype(JA) && !JA.action_cooldown_check())
-		if(isXeno(H))
-			JA.reduce_cooldown(JA.xeno_cooldown / 2)
-		else
-			JA.end_cooldown()
-
-/datum/action/xeno_action/activable/jab/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	if (!X.check_state())
-		return
-
-	var/distance = get_dist(X, A)
-
-	if (distance > 3)
-		return
-
-	var/mob/living/carbon/H = A
-	if(H.stat == DEAD) return
-	if(HAS_TRAIT(H, TRAIT_NESTED)) return
-
-	if (!check_and_use_plasma_owner())
-		return
-
-	if (distance > 2)
-		step_towards(X, H, 1)
-
-	if (distance > 1)
-		step_towards(X, H, 1)
-
-	if (!X.Adjacent(H))
-		return
-
-	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
-	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] with a powerful jab!"), \
-	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
-
-	// Check actions list for a warrior punch and reset it's cooldown if it's there
-	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null
-	for (var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
-		punch_action = P
-		break
-
-	if (punch_action && !punch_action.action_cooldown_check())
-		if(isXeno(H))
-			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
-		else
-			punch_action.end_cooldown()
-
-	H.Daze(3)
-	H.Slow(5)
-	var/datum/behavior_delegate/boxer/BD = X.behavior_delegate
-	if(istype(BD))
-		BD.melee_attack_additional_effects_target(H, 1)
-	apply_cooldown()
-	..()
-
-
-/datum/action/xeno_action/activable/uppercut/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	if (!X.check_state())
-		return
-
-	var/datum/behavior_delegate/boxer/BD = X.behavior_delegate
-	if(!istype(BD))
-		return
-
-	if(!BD.punching_bag)
-		return
-
-	if(BD.punching_bag != A)
-		return
-
-	var/mob/living/carbon/H = BD.punching_bag
-	if(H.stat == DEAD)
-		return
-	if(HAS_TRAIT(H, TRAIT_NESTED))
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
-
-	if (!X.Adjacent(H))
-		return
-
-	if(H.mob_size >= MOB_SIZE_BIG)
-		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to uppercut!"))
-		return
-
-	var/datum/action/xeno_action/activable/jab/JA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/jab)
-	if (istype(JA))
-		JA.apply_cooldown_override(JA.xeno_cooldown)
-
-	var/datum/action/xeno_action/activable/warrior_punch/WP = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/warrior_punch)
-	if (istype(WP))
-		WP.apply_cooldown_override(WP.xeno_cooldown)
-
-	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
-
-	var/ko_counter = BD.ko_counter
-
-	var/damage = ko_counter >= 1
-	var/knockback = ko_counter >= 3
-	var/knockdown = ko_counter >= 6
-	var/knockout = ko_counter >= 9
-
-	var/message = (!damage) ? "weak" : (!knockback) ? "good" : (!knockdown) ? "powerful" : (!knockout) ? "gigantic" : "titanic"
-
-	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] with a [message] uppercut!"), \
-	SPAN_XENOWARNING("You hit [H] with a [message] uppercut!"))
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
-
-	if(BD.ko_reset_timer != TIMER_ID_NULL)
-		deltimer(BD.ko_reset_timer)
-	BD.remove_ko()
-
-	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
-
-	if(damage)
-		H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage * ko_counter), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-
-	if(knockout)
-		H.KnockOut(knockout_power)
-		BD.display_ko_message(H)
-		playsound(H,'sound/effects/dingding.ogg', 75, 1)
-
-	if(knockback)
-		H.explosion_throw(base_knockback * ko_counter, get_dir(X, H))
-
-	if(knockdown)
-		H.KnockDown(base_knockdown * ko_counter)
-
-	var/mob_multiplier = 1
-	if(isXeno(H))
-		mob_multiplier = XVX_WARRIOR_HEALMULT
-
-	if(ko_counter > 0)
-		X.gain_health(mob_multiplier * ko_counter * base_healthgain * X.maxHealth / 100)
-
-	apply_cooldown()
-	..()

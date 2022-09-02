@@ -617,7 +617,7 @@
 /area/lv624/ground/caves/west_caves)
 "acT" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -682,7 +682,7 @@
 	},
 /area/lv624/ground/caves/west_caves)
 "adf" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -13595,7 +13595,7 @@
 /area/lv624/ground/caves/sand_temple)
 "bJz" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "bLs" = (
@@ -13709,7 +13709,7 @@
 "bXd" = (
 /obj/item/device/flashlight/on,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -15068,7 +15068,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "eZD" = (
@@ -19037,7 +19037,7 @@
 	},
 /area/lv624/ground/jungle/north_east_jungle)
 "ocG" = (
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "white"
@@ -20535,7 +20535,7 @@
 "rwx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
@@ -20783,7 +20783,7 @@
 "sbt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21575,7 +21575,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
-/obj/item/clothing/mask/gas/yautja{
+/obj/item/clothing/mask/gas/yautja/damaged{
 	anchored = 1
 	},
 /turf/open/gm/dirt,
@@ -21847,7 +21847,7 @@
 "upQ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "urR" = (
@@ -21881,7 +21881,7 @@
 /area/lv624/ground/colony/west_nexus_road)
 "uxq" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security/lawyer,
+/obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "uxT" = (

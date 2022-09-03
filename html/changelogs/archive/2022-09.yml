@@ -14,6 +14,13 @@
   - bugfix: Fixes transformation of a queen breaking hive status and hivemind
   - refactor: Improves some variable readability
 2022-09-03:
+  Alardunx:
+  - balance: 'Reduced AGM-F cone from 60 degree to 40 degree. Along with the shrapnel
+      count reduction from a previous change, this has essentially two effects: The
+      situation which caused targets to take all Shrapnels can now at most do ~133%
+      expected damage (down from 250%) and the side-hits are even weaker than they
+      were before. Directly in front of the target still deals damage similar to what
+      it used to be (~8-13 shrapnels)'
   ChainsawMullet:
   - balance: Changed the HPR to no longer be granted IFF when deploying a bipod.
   Morrow:

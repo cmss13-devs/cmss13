@@ -657,9 +657,9 @@ var/list/rebel_rifles = list(
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
-	var/random_gear = rand(0, 14)
-	faction = initial(faction)
-	idtype = initial(idtype)
+	var/random_gear = rand(0, 13)
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM)
+		random_gear=99
 	switch(random_gear)
 		if(0) // The Classic Joe
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
@@ -822,7 +822,7 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/red(H), WEAR_HEAD)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/fire/firefighter(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/tool/extinguisher(H), WEAR_IN_J_STORE)
-		if(14) //Bishop from Aliens - steal his look! (wristwatch not included) - LV-522 exclusive
+		if(99) //Bishop from Aliens - steal his look! (wristwatch not included) - LV-522 exclusive
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(H), WEAR_FEET)

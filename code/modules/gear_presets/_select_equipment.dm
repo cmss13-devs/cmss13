@@ -658,8 +658,8 @@ var/list/rebel_rifles = list(
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
 	var/random_gear = rand(0, 13)
-	if(SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM)
-		random_gear=99
+	//if(SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM) //Uncomment these once !797 is merged!
+	//	random_gear=99
 	switch(random_gear)
 		if(0) // The Classic Joe
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)

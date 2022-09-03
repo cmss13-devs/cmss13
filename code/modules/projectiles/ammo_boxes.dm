@@ -365,7 +365,7 @@
 
 /obj/item/ammo_box/magazine/blank/sus
 	name = "odd magazine box (WP M41A x 10)"
-	desc = "A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
+	desc = "An old beat up ammuniton. A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
 
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
@@ -484,7 +484,7 @@
 	overlay_content = "_training"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half/blank
 
-/obj/item/ammo_box/magazine/l42a/blank/empty
+/obj/item/ammo_box/magazine/l42a/half/blank/empty
 	empty = TRUE
 
 

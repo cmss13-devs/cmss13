@@ -56,17 +56,6 @@ export const HiveLeaders = (props, context) => {
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>
-            ))(queens)}
-
-            <Table.Row className="xenoListRow">
-              <Table.Cell width="250px">Leaders</Table.Cell>
-            </Table.Row>
-
-            {map((entry, i) => (
-              <Table.Row key={i} >
-                <Table.Cell>{entry.designation}</Table.Cell>
-                <Table.Cell>{entry.caste_type}</Table.Cell>
-              </Table.Row>
             ))(leaders)}
           </Table>
         </Section>

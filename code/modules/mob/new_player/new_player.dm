@@ -407,8 +407,9 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
 
 /mob/new_player/proc/ViewHiveLeaders()
-	var/datum/hive_leaders/ui = new(src)
-	ui.tgui_interact(src)
+	if(!GLOB.hive_leaders_tgui)
+		GLOB.hive_leaders_tgui = new /datum/hive_leaders()
+	GLOB.hive_leaders_tgui.tgui_interact(src)
 
 /datum/hive_leaders/Destroy(force, ...)
 	SStgui.close_uis(src)
@@ -423,17 +424,18 @@
 
 // Player panel
 /datum/hive_leaders/ui_data(mob/user)
-	. = list()
+	var/list/data = list()
 
 	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	var/list/queens = list()
 	if(main_hive.living_xeno_queen)
 		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
-	.["queens"] = queens
+	data["queens"] = queens
 	var/list/leaders = list()
 	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
 		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
-	.["leaders"] = leaders
+	data["leaders"] = leaders
+	return data
 
 
 /datum/hive_leaders/ui_state(mob/user)

@@ -23,6 +23,9 @@
       it used to be (~8-13 shrapnels)'
   ChainsawMullet:
   - balance: Changed the HPR to no longer be granted IFF when deploying a bipod.
+  Drathek:
+  - bugfix: Fixed strings of area names (e.g. "ombat Information Center") by using
+      strip_improper instead.
   Morrow:
   - qol: Adds fourth unholster keybind option
   - refactor: Makes the unholster code better.

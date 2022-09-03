@@ -359,13 +359,13 @@
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
-			if(istype(S) && S.pockets.storage_slots)
+			if(istype(S) && S.pockets)
 				S.pockets.attempt_item_insertion(W, FALSE, src)
 				wear_suit.update_icon()
 
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
-			if(istype(HM) && HM.pockets.storage_slots)
+			if(istype(HM) && HM.pockets)
 				HM.pockets.attempt_item_insertion(W, FALSE, src)
 				HM.update_icon()
 

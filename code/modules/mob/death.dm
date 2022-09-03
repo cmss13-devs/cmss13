@@ -77,7 +77,7 @@
 		hud_used.healths.icon_state = "health7"
 
 	if(hud_used && hud_used.pulse_line)
-		hud_used.pulse_line.icon_state = "pulse_dead"
+		hud_used.pulse_line.icon_state = "pulse_asystoly"
 
 	timeofdeath = world.time
 	life_time_total = world.time - life_time_start

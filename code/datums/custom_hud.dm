@@ -144,7 +144,7 @@
 
 	element.pulse_line = new /obj/screen()
 	element.pulse_line.icon = ui_frame_icon
-	element.pulse_line.icon_state = "pulse_good"
+	element.pulse_line.icon_state = "pulse_blank"
 	element.pulse_line.screen_loc = UI_FRAME_LOC
 	element.pulse_line.layer = ABOVE_HUD_LAYER
 	element.pulse_line.mouse_opacity = 0

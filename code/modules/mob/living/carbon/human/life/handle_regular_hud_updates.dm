@@ -5,6 +5,41 @@
 	if(!client || QDELETED(client))
 		return FALSE
 
+	var/obj/item/clothing/head/helmet/marine/H = head
+	if(istype(H) && hud_used.pulse_line)
+		var/datum/internal_organ/heart/heart = islist(internal_organs_by_name) ? internal_organs_by_name["heart"] : null
+		var/health_percentage = round(health*100/species.total_health, 10)
+
+		if(stat == DEAD)
+			if(is_revivable() && world.time < timeofdeath + revive_grace_period)
+				if(world.time < timeofdeath + revive_grace_period - 1 MINUTES)
+					hud_used.pulse_line.icon_state = "pulse_VT"
+				else if(world.time < timeofdeath + revive_grace_period)
+					hud_used.pulse_line.icon_state = "pulse_VF"
+			else if(heart.is_broken() && world.time < timeofdeath + revive_grace_period)
+				hud_used.pulse_line.icon_state = "pulse_PEA"
+			else
+				hud_used.pulse_line.icon_state = "pulse_asystole"
+		else if (heart.is_broken())
+			hud_used.pulse_line.icon_state = "pulse_QIM"
+		else if (heart.is_bruised())
+			hud_used.pulse_line.icon_state = "pulse_MI"
+		else
+			hud_used.pulse_line.icon_state = "pulse_normal"
+
+		switch(health_percentage)
+			if(70 to 100)
+				hud_used.pulse_line.color = "green"
+			if(30 to 70)
+				hud_used.pulse_line.color = "yellow"
+			if(-90 to 30)
+				hud_used.pulse_line.color = "red"
+			else
+				hud_used.pulse_line.color = rgb(142, 126, 126)
+	else
+		hud_used.pulse_line.icon_state = "pulse_blank"
+
+
 	if(stat != DEAD) //the dead get zero fullscreens
 
 		if(stat == UNCONSCIOUS)
@@ -102,16 +137,6 @@
 				else									hud_used.oxygen_icon.icon_state = "oxy0"
 
 			check_status_effects()
-
-			if(hud_used.pulse_line)
-				var/pain_percentage = pain.get_pain_percentage()
-				switch(pain_percentage)
-					if(70 to INFINITY)
-						hud_used.pulse_line.icon_state = "pulse_dying"
-					if(20 to 70)
-						hud_used.pulse_line.icon_state = "pulse_hurt"
-					else
-						hud_used.pulse_line.icon_state = "pulse_good"
 
 			if(hud_used.bodytemp_icon)
 				if (!species)

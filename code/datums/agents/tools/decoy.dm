@@ -15,7 +15,7 @@
     playsound(get_turf(loc), 'sound/effects/explosionfar.ogg', 100, 1, decoy_strength)
     playsound(get_turf(loc), "explosion", 75, 1, max(decoy_strength, 7))
 
-    uses -= 1
+    uses--
 
     if(!uses)
         qdel(src)

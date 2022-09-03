@@ -1092,7 +1092,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "ael" = (
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -4599,7 +4599,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "aAg" = (
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -10094,7 +10094,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
 "eoG" = (
-/obj/effect/landmark/corpsespawner/security/cmb,
+/obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "green"
@@ -12617,7 +12617,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "hmI" = (
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -13591,7 +13591,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "iji" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)

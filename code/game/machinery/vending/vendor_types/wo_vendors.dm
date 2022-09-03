@@ -25,6 +25,7 @@
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
+		list("First Responder Pouch", round(scale * 2), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 3), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
@@ -129,6 +130,7 @@
 		list("88 Mod 4 AP Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("L42A AP Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", round(scale * 5), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 AP Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle/m41aMK1/ap, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 AP Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
@@ -250,6 +252,7 @@
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
+		list("First Responder Pouch", round(scale * 2), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", round(scale * 4), /obj/item/storage/pouch/flamertank, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),

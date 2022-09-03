@@ -65,10 +65,10 @@
 	if (usr.stat || !(ishuman(usr)))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, SPAN_NOTICE(" <B>Subject cannot have abiotic items on.</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
 		return
 	go_in_bodyscanner(usr)
 	add_fingerprint(usr)
@@ -78,6 +78,9 @@
 	if(isXeno(M))
 		return
 	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		if(occupant)
+			to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
+			return
 		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
 		M.forceMove(src)
 		occupant = M
@@ -329,6 +332,7 @@
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
 		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
+		"max_blood" = H.max_blood,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
 		"lung_ruptured" = H.is_lung_ruptured(),
@@ -383,7 +387,7 @@
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
-	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / 560]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
+	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / occ["max_blood"]]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
 
 	dat += "[SET_CLASS("Inaprovaline:", INTERFACE_HEADER_COLOR)] [occ["inaprovaline_amount"]] units<BR>"
 

@@ -29370,6 +29370,18 @@
 	tag = "icon-wall9"
 	},
 /area/almayer/evacuation/pod12)
+"bUb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
+	},
+/obj/structure/bed/chair/comfy/bravo{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull"
+	},
+/area/almayer/living/briefing)
 "bUc" = (
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
@@ -54413,6 +54425,7 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/storage/surg_vest,
+/obj/item/tool/portadialysis,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -67766,6 +67779,14 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
+"rwv" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair/comfy/bravo,
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/almayer/living/briefing)
 "rwS" = (
 /obj/structure/machinery/light/small,
 /obj/structure/largecrate/random/case/double,
@@ -71885,7 +71906,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/metal{
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/Semiotic_Standard.dmi';
+	icon = 'icons/obj/structures/props/semiotic_standard.dmi';
 	icon_state = "coffee";
 	name = "coffee semiotic";
 	pixel_x = 20;
@@ -119886,12 +119907,12 @@ aLG
 bdg
 bqZ
 aXc
-dqD
-dqD
+rwv
+rwv
 dRT
 dqD
 dqD
-dRT
+bUb
 dRT
 eWp
 eWp

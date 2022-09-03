@@ -194,7 +194,11 @@ var/global/list/breach_burn_descriptors = list(
 			repair_breaches(BURN, ( istype(P,/obj/item/stack/sheet/mineral/plastic) ? 3 : 5), user)
 		return
 
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 
 		if(istype(src.loc,/mob/living))
 			to_chat(user, SPAN_DANGER("How do you intend to patch a hardsuit while someone is wearing it?"))

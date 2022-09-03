@@ -107,7 +107,7 @@
 	var/L
 	if(lit)
 		return
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
 			L = 1

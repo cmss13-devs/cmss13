@@ -174,9 +174,6 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 			var/mob/living/carbon/Xenomorph/X = target
 			newXeno.set_hive_and_update(X.hivenumber)
 
-		newXeno.generate_name()
-		newXeno.set_lighting_alpha_from_prefs(user)
-
 
 	QDEL_IN(target, 0.3 SECONDS)
 	addtimer(CALLBACK(M.mob_panel, /datum.proc/tgui_interact, user.mob), 1 SECONDS)

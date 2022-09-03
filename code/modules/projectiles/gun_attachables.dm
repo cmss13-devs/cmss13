@@ -211,6 +211,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/reload_attachment(obj/item/I, mob/user)
 	return
 
+/obj/item/attachable/proc/unique_action(mob/user)
+	return
+
+/obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
+	return
+
 /obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
@@ -1230,7 +1236,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M41A solid stock"
 	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
 	slot = "stock"
-	melee_mod = 5
+	melee_mod = 10
 	size_mod = 1
 	icon_state = "riflestock"
 	attach_icon = "riflestock_a"
@@ -1242,16 +1248,81 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/rifle/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_7
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
+/obj/item/attachable/stock/rifle/collapsible
+	name = "\improper M41A folding stock"
+	desc = "The standard back end of any gun starting with \"M41\". Compatible with the M41A series, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m41_folding"
+	attach_icon = "m41_folding_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/rifle/collapsible/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/rifle/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		icon_state = "m41_folding_on"
+		attach_icon = "m41_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "m41_folding"
+		attach_icon = "m41_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/m16
 	name = "\improper M16 bump stock"
@@ -1623,6 +1694,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
+	var/unload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to the projectiles of the attached gun
@@ -1681,6 +1753,10 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
+	var/breech_open = FALSE // is the UGL open for loading?
+	var/cocked = TRUE		// has the UGL been cocked via opening and closing the breech?
+	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
+	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
 
 /obj/item/attachable/attached_gun/grenade/Initialize()
 	. = ..()
@@ -1696,11 +1772,52 @@ Defined in conflicts.dm of the #defines folder.
 	if(current_rounds) 	to_chat(user, "It has [current_rounds] grenade\s left.")
 	else 				to_chat(user, "It's empty.")
 
+/obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
+	if(!ishuman(usr))
+		return
+	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
+		to_chat(user, SPAN_WARNING("Not right now."))
+		return
 
+	var/obj/item/weapon/gun/G = user.get_held_item()
+	if(!istype(G))
+		G = user.get_inactive_hand()
+	if(!istype(G) && G != null)
+		G = user.get_active_hand()
+	if(!G)
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that"))
+		return
 
+	pump(user)
 
+/obj/item/attachable/attached_gun/grenade/update_icon()
+	. = ..()
+	attach_icon = initial(attach_icon)
+	icon_state = initial(icon_state)
+	if(breech_open)
+		attach_icon += "-open"
+		icon_state += "-open"
+	if(istype(loc, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/gun = loc
+		gun.update_attachable(slot)
+
+/obj/item/attachable/attached_gun/grenade/proc/pump(var/mob/user) //for want of a better proc name
+	if(breech_open) // if it was ALREADY open
+		breech_open = FALSE
+		cocked = TRUE // by closing the gun we have cocked it and readied it to fire
+		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
+		playsound(src, close_sound, 15, 1)
+	else
+		breech_open = TRUE
+		cocked = FALSE
+		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
+		playsound(src, open_sound, 15, 1)
+	update_icon()
 
 /obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/G, mob/user)
+	if(!breech_open)
+		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
+		return
 	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
 		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 		return
@@ -1711,16 +1828,45 @@ Defined in conflicts.dm of the #defines folder.
 		if(current_rounds >= max_rounds)
 			to_chat(user, SPAN_WARNING("[src] is full."))
 		else
-			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
+			playsound(user, 'sound/weapons/grenade_insert.wav', 25, 1)
 			current_rounds++
 			loaded_grenades += G
-			to_chat(user, SPAN_NOTICE("You load [G] in [src]."))
+			to_chat(user, SPAN_NOTICE("You load \the [G] into \the [src]."))
 			user.drop_inv_item_to_loc(G, src)
+
+/obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
+	if(!breech_open)
+		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
+		return
+	if(!current_rounds)
+		to_chat(user, SPAN_WARNING("It's empty!"))
+		return
+
+	var/obj/item/explosive/grenade/nade = loaded_grenades[length(loaded_grenades)] //Grab the last-inserted one. Or the only one, as the case may be.
+	loaded_grenades.Remove(nade)
+	current_rounds--
+
+	if(drop_override || !user)
+		nade.forceMove(get_turf(src))
+	else
+		user.put_in_hands(nade)
+
+	user.visible_message(SPAN_NOTICE("[user] unloads \a [nade] from \the [src]."),
+	SPAN_NOTICE("You unload \a [nade] from \the [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
+	playsound(user, unload_sound, 30, 1)
 
 /obj/item/attachable/attached_gun/grenade/fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	if(!(gun.flags_item & WIELDED))
 		if(user)
-			to_chat(user, SPAN_WARNING("You must hold [gun] with two hands to use [src]."))
+			to_chat(user, SPAN_WARNING("You must hold [gun] with two hands to use \the [src]."))
+		return
+	if(breech_open)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must close the breech to fire \the [src]!"))
+		return
+	if(!cocked)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
 		return
 	if(get_dist(user,target) > max_range)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
@@ -1750,11 +1896,12 @@ Defined in conflicts.dm of the #defines folder.
 	G.forceMove(get_turf(gun))
 	G.throw_atom(target, max_range, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	current_rounds--
+	cocked = FALSE // we have fired so uncock the gun
 	loaded_grenades.Cut(1,2)
 
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
-	name = "MK1 underslung grenade launcher"
+	name = "\improper MK1 underslung grenade launcher"
 	desc = "An older version of the classic underslung grenade launcher. Can store five grenades, but fires them slower."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"

@@ -538,14 +538,10 @@ IN_USE						used for vending/denying
 						to_chat(H, SPAN_WARNING("That set is already taken."))
 						vend_fail()
 						return
-					if(!istype(H.wear_id, /obj/item/card/id))
-						to_chat(H, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
-						return
 					var/obj/item/card/id/ID = H.wear_id
-					if(ID.registered_ref != WEAKREF(H))
-						to_chat(H, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+					if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+						to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 						return
-					var/squad = H.assigned_squad.name
 					var/specialist_assignment
 					switch(p_name)
 						if("Scout Set")
@@ -567,7 +563,7 @@ IN_USE						used for vending/denying
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-					ID.set_assignment("[squad] " + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 
@@ -722,15 +718,7 @@ IN_USE						used for vending/denying
 						H.marine_points -= cost
 
 			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-						if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-						else
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-					else
-						H.marine_buy_flags &= ~L[4]
-				else
+				if(!handle_vend(L, H))
 					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 					vend_fail()
 					return
@@ -739,6 +727,26 @@ IN_USE						used for vending/denying
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
+		
+/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	if(!(vending_human.marine_buy_flags & listed_products[4]))
+		return FALSE
+	
+	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+		return TRUE
+	if(listed_products[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+		return TRUE
+		
+	vending_human.marine_buy_flags &= ~listed_products[4]
+	return TRUE
 
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -1238,7 +1246,7 @@ IN_USE						used for vending/denying
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
+				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(var/wire)
@@ -1251,7 +1259,7 @@ IN_USE						used for vending/denying
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = 0
+			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(var/wire)

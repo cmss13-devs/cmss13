@@ -41,6 +41,9 @@
 
 		hive.tunnels += src
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
+	if(resin_trap) 
+		qdel(resin_trap)
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -111,7 +114,7 @@
 				continue
 
 			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 

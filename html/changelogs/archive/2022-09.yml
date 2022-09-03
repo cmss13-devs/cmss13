@@ -1,0 +1,21 @@
+2022-09-01:
+  c4xmaniac:
+  - rscadd: Added two Weymed Plus vendors to Sorokyne Strata's medbay.
+  stanalbatross:
+  - bugfix: pred bracers will now decloak you when you drop them
+  - bugfix: pred bracers will now decloak you when you put them into bags
+  - bugfix: pred bracers will now properly decloak you before shocking you if they
+      run out of charge
+  - bugfix: if you get shocked while trying to activate something with a pred bracer,
+      it won't do the action you were trying to do
+  - bugfix: also fixed dropship autolaunch delay having a broken input
+2022-09-02:
+  Drathek:
+  - bugfix: Fixes transformation of a queen breaking hive status and hivemind
+  - refactor: Improves some variable readability
+2022-09-03:
+  stanalbatross:
+  - ui: converted the OB console to tgui
+  - ui: sleepers now use tgui
+  - rscadd: sleepers now can auto-eject if their occupant is dead, and also have access
+      to a wider range of chemicals when their occupant is near death

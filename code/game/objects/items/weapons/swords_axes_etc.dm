@@ -37,7 +37,7 @@
 //Telescopic baton
 /obj/item/weapon/melee/telebaton
 	name = "telescopic baton"
-	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
+	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded. It will knock down humans when not on harm intent."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "telebaton_0"
 	item_state = "telebaton_0"
@@ -45,24 +45,32 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
+	var/stunforce = 60
 
+/obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
+	if(!istype(target) || !on)
+		return ..()
+	if(user.a_intent == INTENT_HARM || isSpeciesYautja(target) || user == target)
+		return ..()
+	else
+		stun(target, user)
 
 /obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
 	..()
 
 	on = !on
 	if(on)
-		user.visible_message(SPAN_DANGER("With a flick of their wrist, [user] extends their telescopic baton."),\
-		SPAN_DANGER("You extend the baton."),\
+		user.visible_message(SPAN_DANGER("With a flick of the wrist, [user] extends \his [src]."),\
+		SPAN_DANGER("You extend \the [src]."),\
 		"You hear an ominous click.")
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
 		force = MELEE_FORCE_VERY_STRONG
-		attack_verb = list("smacked", "struck", "slapped")
+		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else
-		user.visible_message(SPAN_NOTICE("[user] collapses their telescopic baton."),\
-		SPAN_NOTICE("You collapse the baton."),\
+		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),\
+		SPAN_NOTICE("You collapse \the [src]."),\
 		"You hear a click.")
 		icon_state = "telebaton_0"
 		item_state = "telebaton_0"
@@ -75,7 +83,7 @@
 		H.update_inv_l_hand(0)
 		H.update_inv_r_hand()
 
-	playsound(src.loc, 'sound/weapons/gun_empty.ogg', 15, 1)
+	playsound(user, 'sound/weapons/gun_empty.ogg', 25, sound_range = 5)
 	add_fingerprint(user)
 
 	if(blood_overlay && blood_color)
@@ -83,6 +91,24 @@
 		add_blood(blood_color)
 	return
 
+/obj/item/weapon/melee/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
+	if(target.check_shields(src, 0, "[user]'s [name]"))
+		return FALSE
+	// Visuals and sound
+	playsound(target, 'sound/weapons/baton.ogg', 50, TRUE, 7)
+	user.animation_attack_on(target)
+	user.flick_attack_overlay(target, "punch")
+	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
+	// Hit 'em
+	var/target_zone = check_zone(user.zone_selected)
+	target.apply_stamina_damage(stunforce, target_zone, ARMOR_MELEE)
+	if(target.stamina.current_stamina <= 0)
+		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),\
+							SPAN_WARNING("You knock down [target] with \the [src]!"))
+	else
+		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),\
+							SPAN_WARNING("You beat [target] with \the [src]!"))
+	return TRUE
 
 /*
  * Energy Shield

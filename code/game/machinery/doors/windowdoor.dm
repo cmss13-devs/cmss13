@@ -112,7 +112,8 @@
 			electronics = null
 			ae.forceMove(src.loc)
 		if(operating == -1)
-			ae.icon_state = "door_electronics_smoked"
+			ae.fried = TRUE
+			ae.update_icon()
 			operating = 0
 		src.density = 0
 		qdel(src)
@@ -194,7 +195,8 @@
 				ae = electronics
 				electronics = null
 				ae.forceMove(src.loc)
-			ae.icon_state = "door_electronics_smoked"
+			ae.fried = TRUE
+			ae.update_icon()
 
 			operating = 0
 			qdel(src)

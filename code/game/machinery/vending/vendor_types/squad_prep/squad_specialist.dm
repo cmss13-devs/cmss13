@@ -1,6 +1,4 @@
 //------------GEAR VENDOR---------------
-//the global list of specialist sets that haven't been claimed yet.
-var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolitionist Set", "Heavy Grenadier Set", "Pyro Set")
 
 GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("WEAPONS SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
@@ -31,6 +29,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("M40 HPDP White Phosphorus Grenades x6", 15, /obj/effect/essentials_set/hpdp_6_pack, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-F Fragmentation Grenades x6", 15, /obj/effect/essentials_set/agmf_6_pack, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-I Incendiary Grenades x6", 15, /obj/effect/essentials_set/agmi_6_pack, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Smoke Grenades x6", 10, /obj/effect/essentials_set/agms_6_pack, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA FLAMETHROWER TANKS", 0, null, null, null),
 		list("Large Incinerator Tank", 15, /obj/item/ammo_magazine/flamer_tank/large, null, VENDOR_ITEM_REGULAR),
@@ -47,7 +46,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Sling Pouch", 10, /obj/item/storage/pouch/sling, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector Pouch (Full)", 15, /obj/item/storage/pouch/autoinjector/full, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 10, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", 15, /obj/item/storage/large_holster/macheteB/full, null, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 15, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("JTAC Pamphlet", 15, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", 15, /obj/item/pamphlet/skill/engineer, null, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 45, /obj/item/pamphlet/skill/powerloader, null, VENDOR_ITEM_REGULAR),
@@ -211,4 +210,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		/obj/item/explosive/grenade/incendiary/airburst,
 		/obj/item/explosive/grenade/incendiary/airburst,
 		/obj/item/explosive/grenade/incendiary/airburst,
+	)
+
+/obj/effect/essentials_set/agms_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/smokebomb/airburst,
 	)

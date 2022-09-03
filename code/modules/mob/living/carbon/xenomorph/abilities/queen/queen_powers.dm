@@ -40,7 +40,7 @@
 	if(length(T.caste.deevolves_to) == 1)
 		newcaste = T.caste.deevolves_to[1]
 	else if(length(T.caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to)
+		newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to, theme="hive_status")
 
 	if(!newcaste)
 		return
@@ -121,9 +121,9 @@
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
-	
+
 	T.transfer_observers_to(new_xeno)
-	
+
 	qdel(T)
 	..()
 	return
@@ -233,7 +233,7 @@
 			possible_xenos += T
 
 		if(possible_xenos.len > 1)
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph leader?", possible_xenos)
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.overwatch(selected_xeno)
@@ -292,7 +292,7 @@
 	if(!X.check_state())
 		return
 
-	var/choice = tgui_input_list(X, "Choose a xenomorph to banish:", "Banish", X.hive.totalXenos)
+	var/choice = tgui_input_list(X, "Choose a xenomorph to banish:", "Banish", X.hive.totalXenos, theme="hive_status")
 
 	if(!choice)
 		return
@@ -357,7 +357,7 @@
 		return
 
 
-	var/choice = tgui_input_list(X, "Choose a xenomorph to readmit:", "Re-admit", X.hive.banished_ckeys)
+	var/choice = tgui_input_list(X, "Choose a xenomorph to readmit:", "Re-admit", X.hive.banished_ckeys, theme="hive_status")
 
 	if(!choice)
 		return
@@ -414,6 +414,11 @@
 	if(get_dist(A, HS.hive_location) > 35)
 		// Apply the normal cooldown if not building near the hive
 		apply_cooldown_override(initial(xeno_cooldown))
+
+/datum/action/xeno_action/onclick/eye
+	name = "Enter Eye Form"
+	action_icon_state = "queen_eye"
+	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()

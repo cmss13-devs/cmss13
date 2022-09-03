@@ -1,6 +1,11 @@
-#define FRIDGE_WIRE_SHOCK 1
-#define FRIDGE_WIRE_SHOOT_INV 2
-#define FRIDGE_WIRE_IDSCAN 3
+#define FRIDGE_WIRE_SHOCK		1
+#define FRIDGE_WIRE_SHOOT_INV	2
+#define FRIDGE_WIRE_IDSCAN		3
+
+#define FRIDGE_LOCK_COMPLETE	1
+#define FRIDGE_LOCK_ID			2
+#define FRIDGE_LOCK_NOLOCK		3
+
 /* SmartFridge.  Much todo
 */
 /obj/structure/machinery/smartfridge
@@ -19,13 +24,12 @@
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
 	var/item_quants = list()
-	var/ispowered = 1 //starts powered
-	var/isbroken = 0
-	var/is_secure_fridge = 0
+	var/ispowered = TRUE //starts powered
+	var/is_secure_fridge = FALSE
 	var/seconds_electrified = 0;
-	var/shoot_inventory = 0
-	var/locked = 0
-	var/panel_open = 0 //Hacking a smartfridge
+	var/shoot_inventory = FALSE
+	var/locked = FRIDGE_LOCK_ID
+	var/panel_open = FALSE //Hacking a smartfridge
 	var/wires = 7
 	var/networked = FALSE
 	var/transfer_mode = FALSE
@@ -46,14 +50,12 @@
 /obj/structure/machinery/smartfridge/power_change()
 	..()
 	if( !(stat & NOPOWER) )
-		src.ispowered = 1
-		if(!isbroken)
-			icon_state = icon_on
+		src.ispowered = TRUE
+		icon_state = icon_on
 	else
 		spawn(rand(0, 15))
-			src.ispowered = 0
-			if(!isbroken)
-				icon_state = icon_off
+			src.ispowered = FALSE
+			icon_state = icon_off
 
 //*******************
 //*   Item Adding
@@ -215,7 +217,10 @@
 
 	if (href_list["toggletransfer"])
 		if(is_secure_fridge)
-			if(!allowed(usr) && locked != -1)
+			if(locked == FRIDGE_LOCK_COMPLETE)
+				to_chat(usr, SPAN_DANGER("Access denied."))
+				return FALSE
+			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
 				to_chat(usr, SPAN_DANGER("Access denied."))
 				return FALSE
 		if(is_in_network() && !transfer_mode)
@@ -231,7 +236,10 @@
 		if (!in_range(src, usr))
 			return FALSE
 		if(is_secure_fridge)
-			if(!allowed(usr) && locked != -1)
+			if(locked == FRIDGE_LOCK_COMPLETE)
+				to_chat(usr, SPAN_DANGER("Access denied."))
+				return FALSE
+			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
 				to_chat(usr, SPAN_DANGER("Access denied."))
 				return FALSE
 		var/index = text2num(href_list["vend"])
@@ -268,11 +276,11 @@
 					if(O.name == K)
 						if(from_network)
 							contents.Add(O)
-							item_quants[K] += 1
+							item_quants[K]++
 							source.Remove(O)
 						else
 							chemical_data.shared_item_storage.Add(O)
-							chemical_data.shared_item_quantity[K] += 1
+							chemical_data.shared_item_quantity[K]++
 							source.Remove(O)
 						i--
 						if(i <= 0)
@@ -330,10 +338,10 @@
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (FRIDGE_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
-				shoot_inventory = 1
+				shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 		if(FRIDGE_WIRE_IDSCAN)
-			locked = 1
+			locked = FRIDGE_LOCK_COMPLETE //totally lock it down
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
 /obj/structure/machinery/smartfridge/proc/mend(var/wire)
@@ -342,10 +350,10 @@
 		if(FRIDGE_WIRE_SHOCK)
 			seconds_electrified = 0
 		if (FRIDGE_WIRE_SHOOT_INV)
-			shoot_inventory = 0
+			shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 		if(FRIDGE_WIRE_IDSCAN)
-			locked = 0
+			locked = FRIDGE_LOCK_ID //back to normal
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
 /obj/structure/machinery/smartfridge/proc/pulse(var/wire)
@@ -360,7 +368,7 @@
 			else
 				visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 		if(FRIDGE_WIRE_IDSCAN)
-			locked = -1
+			locked = FRIDGE_LOCK_NOLOCK //open sesame
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
 /obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)

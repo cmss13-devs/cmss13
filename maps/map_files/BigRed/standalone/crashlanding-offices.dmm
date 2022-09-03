@@ -1228,7 +1228,8 @@
 /area/bigredv2/outside/office_complex)
 "dH" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -1236,6 +1237,11 @@
 /area/bigredv2/outside/office_complex)
 "dI" = (
 /obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1473,19 +1479,24 @@
 	},
 /area/bigredv2/outside/office_complex)
 "qX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/bigredv2/outside/office_complex)
-"rF" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"rF" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
 "yS" = (
@@ -1493,6 +1504,18 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"AB" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1817,7 +1840,7 @@ ao
 by
 aN
 bk
-cu
+AB
 bk
 aV
 bv
@@ -1852,7 +1875,7 @@ bc
 bc
 bc
 bc
-rF
+qX
 dF
 bk
 cu
@@ -2033,7 +2056,7 @@ dX
 dY
 aN
 bp
-dA
+rF
 bp
 aV
 dM

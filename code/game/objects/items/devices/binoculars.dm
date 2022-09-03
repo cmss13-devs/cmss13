@@ -337,11 +337,11 @@
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"
-	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition."
 
 	var/spotting_time = 10 SECONDS
-	var/spotting_cooldown
 	var/spotting_cooldown_delay = 5 SECONDS
+	COOLDOWN_DECLARE(spotting_cooldown)
 
 /obj/item/device/binoculars/range/designator/spotter/Initialize()
 	LAZYADD(actions_types, /datum/action/item_action/specialist/spotter_target)
@@ -359,7 +359,7 @@
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "spotter_target")
 	button.overlays += IMG
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
-	designator.spotting_cooldown = world.time
+	COOLDOWN_START(designator, spotting_cooldown, 0)
 
 /datum/action/item_action/specialist/spotter_target/action_activate()
 	if(!ishuman(owner))
@@ -398,13 +398,13 @@
 		return
 
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
-	if(world.time < designator.spotting_cooldown)
+	if(!COOLDOWN_FINISHED(designator, spotting_cooldown))
 		return
 
 	if(!check_can_use(M))
 		return
 
-	designator.spotting_cooldown = world.time + designator.spotting_cooldown_delay
+	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
 	var/distance = round(get_dist(M, H) * 0.5)

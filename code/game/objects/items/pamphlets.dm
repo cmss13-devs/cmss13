@@ -77,7 +77,7 @@ obj/item/pamphlet/Initialize()
 		return FALSE
 
 	if(user.job != JOB_SQUAD_MARINE)
-		to_chat(user, SPAN_WARNING("Only squad marines can use this."))
+		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
 		return
 
 	var/obj/item/card/id/ID = user.wear_id

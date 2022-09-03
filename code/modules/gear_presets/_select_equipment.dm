@@ -20,6 +20,7 @@
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
+	var/list/override_faction_group
 
 	//Uniform data
 	var/utility_under = null
@@ -121,7 +122,11 @@
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	H.faction = faction
-	H.faction_group = faction_group.Copy()
+	if(length(override_faction_group))
+		H.faction_group = override_faction_group.Copy()
+		override_faction_group = null
+	else
+		H.faction_group = faction_group.Copy()
 	if(H.mind)
 		H.mind.name = H.real_name
 		if(H.mind.initial_account)
@@ -652,9 +657,8 @@ var/list/rebel_rifles = list(
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
-	var/random_gear = rand(0,14)
-	faction = initial (faction)
-	faction_group = list(initial(faction_group))
+	var/random_gear = rand(0, 14)
+	faction = initial(faction)
 	idtype = initial(idtype)
 	switch(random_gear)
 		if(0) // The Classic Joe
@@ -779,7 +783,6 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
 		if(11) //PMC support synth
 			idtype = /obj/item/card/id/pmc
-			//H.equip_to_slot_or_del(new /obj/item/card/id/pmc(H), WEAR_ID)
 			H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
@@ -791,7 +794,8 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full, WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 			faction = FACTION_PMC
-			faction_group = FACTION_LIST_WY
+			var/list/wy_factions = FACTION_LIST_WY
+			override_faction_group = wy_factions.Copy()
 		if(12) // UA synthetic carrying spare ammo supplies and dogtags
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)

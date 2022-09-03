@@ -1079,6 +1079,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		to_chat(user, SPAN_WARNING("That's not a flare!"))
 		
 /obj/item/weapon/gun/flare/unload(mob/user)
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 	unload_flare(user)
 	
 /obj/item/weapon/gun/flare/proc/unload_flare(mob/user)
@@ -1089,6 +1091,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		playsound(user, reload_sound, 25, TRUE)
 		current_mag.current_rounds--
 		if(user)
-			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from [src]."))
+			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
 			user.put_in_hands(unloaded_flare)
 		update_icon()

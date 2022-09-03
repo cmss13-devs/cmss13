@@ -52,13 +52,16 @@ proc/random_name(gender, species = "Human")
 	else				return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
 proc/has_species(var/mob/M, var/species)
-	if(!M || !istype(M,/mob/living/carbon/human)) return 0
+	if(!M || !istype(M,/mob/living/carbon/human))
+		return FALSE
 	var/mob/living/carbon/human/H = M
 
-	if(!H.species) return 0
-	if(H.species.name != species) return 0
+	if(!H.species)
+		return FALSE
+	if(H.species.name != species)
+		return FALSE
 
-	return 1
+	return TRUE
 
 // We change real name, so we change the voice too if we are humans
 // It also ensures our mind's name gets changed

@@ -28,3 +28,11 @@
   - ui: sleepers now use tgui
   - rscadd: sleepers now can auto-eject if their occupant is dead, and also have access
       to a wider range of chemicals when their occupant is near death
+  - rscdel: removed the ability of wardens to shield other xenos
+  - rscadd: 'added a new ability to wardens : "retrieve". Works like an oppressor
+      hook but for allies - it can hook and pull an ally to you with a short windup.
+      It costs 100 internal health reserves, and can pull any size xeno while they
+      are resting, but big xenos cannot be pulled while they are standing. The pulled
+      xeno will go through mobs, and will land on the tile behind you if it is not
+      dense.'
+  - rscadd: added "xeno primary action five" and support for it as a macro

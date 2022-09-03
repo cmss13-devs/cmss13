@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if (minute != topiclimiter[CURRENT_MINUTE])
 			topiclimiter[CURRENT_MINUTE] = minute
 			topiclimiter[MINUTE_COUNT] = 0
-		topiclimiter[MINUTE_COUNT] += 1
+		topiclimiter[MINUTE_COUNT]++
 		if (topiclimiter[MINUTE_COUNT] > mtl)
 			var/msg = "Your previous action was ignored because you've done too many in a minute."
 			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if (second != topiclimiter[CURRENT_SECOND])
 			topiclimiter[CURRENT_SECOND] = second
 			topiclimiter[SECOND_COUNT] = 0
-		topiclimiter[SECOND_COUNT] += 1
+		topiclimiter[SECOND_COUNT]++
 		if (topiclimiter[SECOND_COUNT] > stl)
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
@@ -135,6 +135,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["FaxView"])
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+	else if(href_list["medals_panel"])
+		GLOB.medals_panel.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -626,6 +629,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if("OOC")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if("LOOC")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Me")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")

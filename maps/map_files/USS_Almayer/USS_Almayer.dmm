@@ -71906,7 +71906,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/metal{
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/Semiotic_Standard.dmi';
+	icon = 'icons/obj/structures/props/semiotic_standard.dmi';
 	icon_state = "coffee";
 	name = "coffee semiotic";
 	pixel_x = 20;

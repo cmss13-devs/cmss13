@@ -41,13 +41,12 @@
 // state intrinsic to all Xenos.
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
-/datum/action/xeno_action/proc/use_ability(atom/A)
+/datum/action/xeno_action/proc/use_ability(atom/target)
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
-	for(var/X in owner.actions)
-		var/datum/action/act = X
-		act.update_button_icon()
+	for(var/datum/action/action in owner.actions)
+		action.update_button_icon()
 	return TRUE
 
 // Track statistics for this ability

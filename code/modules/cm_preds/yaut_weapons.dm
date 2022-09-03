@@ -991,6 +991,7 @@
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
+	indestructible = TRUE
 
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.

@@ -13,7 +13,7 @@
 	if (!evolve_checks())
 		return
 
-	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
+	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to, theme="hive_status")
 	if(!castepick) //Changed my mind
 		return
 
@@ -246,7 +246,7 @@
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to)
+		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, theme="hive_status")
 
 	if(!newcaste)
 		return

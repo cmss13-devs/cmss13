@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_stack"
 	item_state = "sandbag_stack"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
@@ -19,7 +19,7 @@
 	if (istype(W, /obj/item/tool/shovel))
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
-			ET.dirt_amt -= 1
+			ET.dirt_amt--
 			ET.update_icon()
 			var/obj/item/stack/sandbags/new_bags = new(user.loc)
 			new_bags.add_to_stacks(user)

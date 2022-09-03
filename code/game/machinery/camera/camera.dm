@@ -120,6 +120,9 @@
 		interact(user)
 
 	else if(iswelder(W) && canDeconstruct())
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(weld(W, user))
 			if(assembly)
 				assembly.forceMove(loc)

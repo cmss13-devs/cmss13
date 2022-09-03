@@ -22,7 +22,7 @@
 		check_reactions(get_step(src, get_dir(src, A)))
 	else
 		check_reactions()
-	tiles_left -= 1
+	tiles_left--
 	if(tiles_left)
 		addtimer(CALLBACK(src, .proc/move_towards, A, move_delay, tiles_left), move_delay)
 	else

@@ -142,7 +142,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 
 /datum/admins/proc/get_callproc_args()
-	var/argnum = input("Number of arguments", "Number:", 0) as num|null
+	var/argnum = tgui_input_number(usr, "Number of arguments", "Number:", 0)
 	if(isnull(argnum))
 		return
 
@@ -214,7 +214,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!procname)
 		return
 
-	var/argnum = input("Number of arguments","Number:",0) as num|null
+	var/argnum = tgui_input_number(usr, "Number of arguments","Number:",0)
 	if(!argnum && (argnum!=0))
 		return
 
@@ -236,7 +236,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				lst[i] = input("Enter new text:","Text",null) as text
 
 			if("num")
-				lst[i] = input("Enter new number:","Num",0) as num
+				lst[i] = tgui_input_real_number(usr, "Enter new number:","Num",0)
 
 			if("type")
 				lst[i] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))

@@ -13,7 +13,7 @@ var/global/runtime_hashes = list()
 	// Runtime was already reported once
 	var/hash = md5("[E.name]@[E.file]@[E.line]")
 	if(hash in runtime_hashes)
-		runtime_hashes[hash] += 1
+		runtime_hashes[hash]++
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
 			GLOB.STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)<br>")

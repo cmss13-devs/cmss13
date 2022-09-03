@@ -207,6 +207,9 @@
 			return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = O
 		if(health < 0)
 			to_chat(user, SPAN_WARNING("[src]'s internal circuitry is ruined, there's no way you can salvage this on the go."))

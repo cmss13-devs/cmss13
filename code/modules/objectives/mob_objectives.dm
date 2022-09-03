@@ -32,7 +32,7 @@
 		if(spawnpoint)
 			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
 			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, "Corpse - [spawner.name]", TRUE, FALSE)
+			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
 		objective_spawn_corpse.Remove(spawner)
 
 /datum/cm_objective/recover_corpses/post_round_start()

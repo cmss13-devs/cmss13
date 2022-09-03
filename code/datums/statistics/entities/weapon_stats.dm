@@ -19,7 +19,7 @@
 		N.name = job_name
 		humans_killed["[job_name]"] = N
 	var/datum/entity/statistic/S = humans_killed["[job_name]"]
-	S.value += 1
+	S.value++
 
 /datum/entity/weapon_stats/proc/count_xeno_kill(var/caste)
 	if(!caste)
@@ -29,7 +29,7 @@
 		N.name = caste
 		xenos_killed["[caste]"] = N
 	var/datum/entity/statistic/S = xenos_killed["[caste]"]
-	S.value += 1
+	S.value++
 
 /datum/entity/weapon_stats/proc/count_niche_stat(var/niche_name, var/amount = 1)
 	if(!niche_name)

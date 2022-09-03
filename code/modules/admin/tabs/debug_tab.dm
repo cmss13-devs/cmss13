@@ -69,7 +69,7 @@
 
 	var/datum/techtree/tree = trees[value]
 
-	var/number_to_set = input(src, "How many points should this tech tree be at?", "", tree.points) as null|num
+	var/number_to_set = tgui_input_number(src, "How many points should this tech tree be at?", "", tree.points)
 
 	if(number_to_set == null)
 		return
@@ -115,7 +115,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
-	var/newtick = input("Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag) as num|null
+	var/newtick = tgui_input_number(src, "Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag)
 	//I've used ticks of 2 before to help with serious singulo lags
 	if(newtick && newtick <= 2 && newtick > 0)
 		message_staff("[key_name(src)] has modified world.tick_lag to [newtick]")

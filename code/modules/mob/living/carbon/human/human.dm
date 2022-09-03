@@ -1004,7 +1004,10 @@
 	for(var/obj/item/W in embedded_items)
 		var/obj/limb/organ = W.embedded_organ
 		// Check if shrapnel
-		if(istype(W, /obj/item/shard/shrapnel))
+		if(istype(W, /obj/item/large_shrapnel))
+			var/obj/item/large_shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
@@ -1435,7 +1438,7 @@
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
-						amount_removed += 1
+						amount_removed++
 						l.status &= ~LIMB_SPLINTED
 						pain.recalculate_pain()
 						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE)

@@ -617,7 +617,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
-		index += 1
+		index++
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
 				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
@@ -804,7 +804,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					SetChoices(user)
 				if("random")
 					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_MARINE || alternate_option == RETURN_TO_LOBBY)
-						alternate_option += 1
+						alternate_option++
 					else if(alternate_option == BE_XENOMORPH)
 						alternate_option = 0
 					else
@@ -1018,7 +1018,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("xeno_vision_level_pref")
 					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG)
-					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices)
+					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices, theme="hive_status")
 					if(!choice)
 						return
 					xeno_vision_level_pref = choice
@@ -1047,7 +1047,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_gender")
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
-					var/new_predator_age = input(user, "Choose your Predator's age(20 to 10000):", "Character Preference") as num|null
+					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
 					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
@@ -1055,13 +1055,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_translator_type = new_translator_type
 				if("pred_mask_type")
-					var/new_predator_mask_type = input(user, "Choose your mask type:\n(1-12)", "Mask Selection") as num|null
+					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
 					if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
 				if("pred_armor_type")
-					var/new_predator_armor_type = input(user, "Choose your armor type:\n(1-7)", "Armor Selection") as num|null
+					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
 					if(new_predator_armor_type) predator_armor_type = round(text2num(new_predator_armor_type))
 				if("pred_boot_type")
-					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
+					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
 					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
@@ -1263,7 +1263,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
 
 				if("age")
-					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
+					var/new_age = tgui_input_number(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
@@ -1509,7 +1509,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					UI_style_color = UI_style_color_new
 
 				if("UIalpha")
-					var/UI_style_alpha_new = input(user, "Select a new alpha (transparency) parametr for your UI, between 50 and 255") as num
+					var/UI_style_alpha_new = tgui_input_number(user, "Select a new alpha (transparency) parameter for your UI, between 50 and 255", "Select alpha", 255, 255, 50)
 					if(!UI_style_alpha_new || !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50))
 						return
 					UI_style_alpha = UI_style_alpha_new

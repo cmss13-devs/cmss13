@@ -243,7 +243,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			update()
 
-		else if(istype(I, /obj/item/tool/weldingtool))
+		else if(iswelder(I))
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			if(anchored)
 				var/obj/item/tool/weldingtool/W = I
 				if(W.remove_fuel(0,user))

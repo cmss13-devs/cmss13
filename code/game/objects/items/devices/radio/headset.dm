@@ -188,6 +188,12 @@
 		if(key.syndie)
 			syndie = TRUE
 
+	var/list/tracking_stuff = list()
+	for(var/thing in tracking_options)
+		tracking_stuff += tracking_options[thing]
+	if(!(locate_setting in tracking_stuff))
+		locate_setting = tracking_stuff[1]
+
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)

@@ -45,6 +45,7 @@
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
 #define COMSIG_KB_HUMAN_SECONDARY_DOWN "keybinding_human_secondary_down"
 #define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
+#define COMSIG_KB_HUMAN_QUATERNARY_DOWN "keybinding_human_quaternary_down"
 #define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
 
 #define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"

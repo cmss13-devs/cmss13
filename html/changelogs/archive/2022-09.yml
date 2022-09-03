@@ -13,3 +13,6 @@
   Drathek:
   - bugfix: Fixes transformation of a queen breaking hive status and hivemind
   - refactor: Improves some variable readability
+2022-09-03:
+  stanalbatross:
+  - ui: converted the OB console to tgui

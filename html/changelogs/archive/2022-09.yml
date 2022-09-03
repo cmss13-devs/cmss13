@@ -17,6 +17,8 @@
   Morrow:
   - qol: Adds fourth unholster keybind option
   - refactor: Makes the unholster code better.
+  joookschad:
+  - balance: Added 5 AP to buckshot, and made it 65 damage from 60.
   stanalbatross:
   - ui: converted the OB console to tgui
   - ui: sleepers now use tgui

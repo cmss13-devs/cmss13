@@ -21,6 +21,8 @@
   - refactor: Makes the unholster code better.
   joookschad:
   - balance: Added 5 AP to buckshot, and made it 65 damage from 60.
+  sose96:
+  - balance: Removed 30% damage reduction from DS mounted sentries.
   stanalbatross:
   - ui: converted the OB console to tgui
   - ui: sleepers now use tgui

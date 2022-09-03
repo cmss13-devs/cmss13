@@ -14,6 +14,8 @@
   - bugfix: Fixes transformation of a queen breaking hive status and hivemind
   - refactor: Improves some variable readability
 2022-09-03:
+  ChainsawMullet:
+  - balance: Changed the HPR to no longer be granted IFF when deploying a bipod.
   Morrow:
   - qol: Adds fourth unholster keybind option
   - refactor: Makes the unholster code better.

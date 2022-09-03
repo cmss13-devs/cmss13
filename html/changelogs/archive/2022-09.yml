@@ -16,3 +16,6 @@
 2022-09-03:
   stanalbatross:
   - ui: converted the OB console to tgui
+  - ui: sleepers now use tgui
+  - rscadd: sleepers now can auto-eject if their occupant is dead, and also have access
+      to a wider range of chemicals when their occupant is near death

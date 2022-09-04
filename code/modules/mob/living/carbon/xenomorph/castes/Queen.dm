@@ -758,29 +758,32 @@
 				choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/immobile_abilities = list(
+		// These already have their placement locked in:
 		/datum/action/xeno_action/onclick/regurgitate,
-		/datum/action/xeno_action/activable/screech, //custom macro, Screech
-		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/place_construction/queen_macro,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/set_xeno_lead,
-		/datum/action/xeno_action/activable/queen_heal, //first macro
-		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
-		/datum/action/xeno_action/onclick/queen_order,
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
-		/datum/action/xeno_action/activable/expand_weeds, //third macro
-		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
-		/datum/action/xeno_action/activable/place_construction/queen_macro,
-		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/activable/info_marker/queen,
+		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
+		/datum/action/xeno_action/activable/screech, //custom macro, Screech
+		// These are new and their arrangement matters:
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/activable/queen_heal, //first macro
+		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
+		/datum/action/xeno_action/onclick/deevolve,
+		/datum/action/xeno_action/onclick/queen_order,
+		/datum/action/xeno_action/activable/expand_weeds, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
 		/datum/action/xeno_action/onclick/queen_tacmap,
 		/datum/action/xeno_action/onclick/eye,
-		/datum/action/xeno_action/activable/info_marker/queen
 	)
 
 	for(var/path in immobile_abilities)

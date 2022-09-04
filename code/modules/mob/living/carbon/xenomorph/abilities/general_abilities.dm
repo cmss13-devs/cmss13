@@ -89,7 +89,7 @@
 	return X.selected_resin
 
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
@@ -360,6 +360,9 @@
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
 
+/datum/action/xeno_action/activable/place_construction/queen_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/activable/xeno_spit
 	name = "Xeno Spit"
 	action_icon_state = "xeno_spit"
@@ -369,6 +372,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
+
+/datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

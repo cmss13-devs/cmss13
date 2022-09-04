@@ -62,7 +62,7 @@
 	ability_name = "projected resin"
 	plasma_cost = 100
 	xeno_cooldown = 2 SECONDS
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
 	build_speed_mod = 1

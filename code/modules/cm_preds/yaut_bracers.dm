@@ -802,7 +802,7 @@
 		return FALSE
 
 	if(healing_capsule_timer)
-		to_chat(usr, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
+		to_chat(usr, SPAN_WARNING("You recently made a healing capsule"))
 		return FALSE
 
 	if(!drain_power(caller, 1500))
@@ -819,7 +819,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_ready()
 	if(ismob(loc))
-		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new stabilising crystal is ready to be created."))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
 	inject_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disk()

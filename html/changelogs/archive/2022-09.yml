@@ -52,3 +52,11 @@
   - rscadd: Latejoiners now get a self defense kit if the ship is in red alert or
       higher, or when evac has been called.
   - rscadd: Marines can now latejoin for up to three minutes after hijack.
+  Geevies:
+  - balance: The sniper ghillie now required either the sniper spec skill, or spotter
+      skill to be able to camouflage.
+  - code_imp: Aimed shot is now tied to the sniper rifle, not the ghillie suit.
+  - balance: Added spotter equipment to the sniper box, which comes with a ghillie
+      suit, the helmet, a smock, a spotter's laser designator, and a spotter instructional
+      pamphlet.
+  - balance: You no longer need to prepare position before using aimed shot as sniper.

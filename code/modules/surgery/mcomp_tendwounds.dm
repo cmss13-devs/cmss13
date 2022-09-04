@@ -119,20 +119,10 @@
 		return
 	var/obj/item/tool/surgery/healing_gun/gun = tool
 	gun.loaded = FALSE
-<<<<<<< HEAD
-=======
 
 /datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")
 	return FALSE
-
->>>>>>> 469ec2f1aa (Grammar fixes and less time)
-
-/datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")
-	return FALSE
-
-
 /datum/surgery_step/cauterize/mclamp_wound
 	name = "clamp wounds"
 	desc = "clamp the wounds"

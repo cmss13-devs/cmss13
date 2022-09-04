@@ -332,6 +332,7 @@
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
 		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
+		"max_blood" = H.max_blood,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
 		"lung_ruptured" = H.is_lung_ruptured(),
@@ -386,7 +387,7 @@
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
-	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / 560]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
+	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / occ["max_blood"]]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
 
 	dat += "[SET_CLASS("Inaprovaline:", INTERFACE_HEADER_COLOR)] [occ["inaprovaline_amount"]] units<BR>"
 

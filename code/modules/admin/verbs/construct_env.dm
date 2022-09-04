@@ -61,13 +61,13 @@
 			y = usr.y
 			z = usr.z
 		if("Custom")
-			var/usr_x = input(usr, "Enter X position", "Map Position") as num|null
+			var/usr_x = tgui_input_number(usr, "Enter X position", "Map Position", 0, world.maxx, 0)
 			if(!usr_x)
 				return
-			var/usr_y = input(usr, "Enter Y position", "Map Position") as num|null
+			var/usr_y = tgui_input_number(usr, "Enter Y position", "Map Position", 0, world.maxy, 0)
 			if(!usr_y)
 				return
-			var/usr_z = input(usr, "Enter Z position. Set to 0 to put on a new zlevel", "Map Position") as num|null
+			var/usr_z = tgui_input_number(usr, "Enter Z position. Set to 0 to put on a new zlevel", "Map Position", 0, world.maxz, 0)
 
 			x = usr_x
 			y = usr_y
@@ -229,13 +229,13 @@
 			env.y = usr.y
 			env.z = usr.z
 		if("Custom")
-			var/x = input(usr, "Enter X position", "Environment Position") as num|null
+			var/x = tgui_input_number(usr, "Enter X position", "Environment Position", 0, world.maxx, 0)
 			if(!x)
 				return
-			var/y = input(usr, "Enter Y position", "Environment Position") as num|null
+			var/y = tgui_input_number(usr, "Enter Y position", "Environment Position", 0, world.maxy, 0)
 			if(!y)
 				return
-			var/z = input(usr, "Enter Z position", "Environment Position") as num|null
+			var/z = tgui_input_number(usr, "Enter Z position", "Environment Position", 0, world.maxz, 0)
 			if(!z)
 				return
 			env.x = x

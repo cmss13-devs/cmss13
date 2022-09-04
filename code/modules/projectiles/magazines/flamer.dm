@@ -169,7 +169,7 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	var/set_pressure = Clamp(input("Change fuel pressure to: (max: [max_pressure])", 10, fuel_pressure) as num|null,1,max_pressure)
+	var/set_pressure = Clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else

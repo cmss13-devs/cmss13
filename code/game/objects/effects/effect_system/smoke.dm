@@ -156,7 +156,7 @@
 		return 0
 
 	M.drop_held_item()
-	M:sleeping += 1
+	M:sleeping++
 	if(M.coughedtime != 1)
 		M.coughedtime = 1
 		if(ishuman(M)) //Humans only to avoid issues

@@ -18,7 +18,7 @@
 					origin?.country = geodata["regionName"]
 					return geodata["regionName"]
 				else
-					origin?.country = geodata["countryName"]
+					origin?.country = geodata["countryCode"]
 					return geodata["countryCode"]
 			else
 				origin?.country = geodata["countryCode"]

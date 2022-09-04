@@ -47,6 +47,7 @@
 #define XENO_PRIMARY_ACTION_2 1          // Second primary action
 #define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
 #define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
+#define XENO_PRIMARY_ACTION_5 4          // ability creep is real
 
 #define XENO_CORROSIVE_ACID 4 //Macro for covering things in acid, universal ability
 #define XENO_TECH_SECRETE_RESIN 5 //Macro for T1 build distrib secreting macro
@@ -627,6 +628,8 @@
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
+
+#define XENO_CHARGE_TRY_MOVE 0
 
 //preferences-related defines
 

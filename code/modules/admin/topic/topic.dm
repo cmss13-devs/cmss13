@@ -315,7 +315,7 @@
 		var/mins = 0
 		if(minutes > CMinutes)
 			mins = minutes - CMinutes
-		mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
+		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
 		if(!mins)	return
 		mins = min(525599,mins)
 		minutes = CMinutes + mins
@@ -535,7 +535,7 @@
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 		var/mob_key = M.ckey
-		var/mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
+		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
 		if(!mins)
 			return
 		if(mins >= 525600) mins = 525599
@@ -670,7 +670,7 @@
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];[HrefToken()];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
+			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"Now: [master_mode]"}
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
@@ -683,8 +683,8 @@
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];[HrefToken()];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];[HrefToken()];f_secret2=secret'>Random (default)</A><br>"}
+			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
+		dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=secret'>Random (default)</A><br>"}
 		dat += {"Now: [secret_force_mode]"}
 		show_browser(usr, dat, "Change Secret Gamemode", "f_secret")
 

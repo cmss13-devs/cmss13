@@ -143,10 +143,14 @@
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
  /// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
+ /// If the mob is currently charging (xeno only)
+#define TRAIT_CHARGING "t_charging"
  /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+ /// If the mob is being lazed by a sniper spotter
+#define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them
@@ -161,6 +165,9 @@
 #define TRAIT_TOOL_WIRECUTTERS "t_tool_wirecutters"
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
+
+#define TRAIT_TOOL_BLOWTORCH "t_tool_blowtorch"
+#define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
@@ -208,3 +215,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
  ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+ ///Status trait forced by the xeno action charge
+#define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"

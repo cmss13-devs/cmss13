@@ -548,7 +548,7 @@
 			shake_camera(M, 10, 1)
 			M.KnockDown(3)
 
-	enter_allowed = 0 //No joining after dropship crash
+	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>
 
@@ -594,6 +594,9 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+
+/datum/shuttle/ferry/marine/proc/disable_latejoin()
+	enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()

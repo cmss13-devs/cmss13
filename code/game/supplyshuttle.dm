@@ -410,7 +410,7 @@ var/datum/controller/supply/supply_controller = new()
 				points += points_per_process
 				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
 					add_random_crates()
-					crate_iteration += 1
+					crate_iteration++
 			sleep(processing_interval)
 
 //This adds function adds the amount of crates that calculate_crate_amount returns

@@ -110,7 +110,7 @@
 		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
 
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
-	hive.hive_structures_limit[XENO_STRUCTURE_NEST] += 1
+	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)

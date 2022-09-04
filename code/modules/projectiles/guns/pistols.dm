@@ -336,6 +336,12 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
+
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/m43pistol
@@ -444,6 +450,13 @@
 
 /obj/item/weapon/gun/pistol/mod88/training
 	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
+
+
+/obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.

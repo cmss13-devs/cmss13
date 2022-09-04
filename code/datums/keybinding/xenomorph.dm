@@ -147,3 +147,18 @@
 	var/mob/living/carbon/Xenomorph/X = user.mob
 	X.tech_secrete_resin()
 	return TRUE
+
+/datum/keybinding/xenomorph/screech
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "screech"
+	full_name = "Screech"
+	keybind_signal = COMSIG_KB_XENO_SCREECH
+
+/datum/keybinding/xenomorph/screech/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.xeno_screech_action()
+	return TRUE

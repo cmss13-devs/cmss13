@@ -162,3 +162,19 @@
 		if (XA.ability_primacy == XENO_TECH_SECRETE_RESIN)
 			handle_xeno_macro_datum(src, XA)
 			break
+
+/mob/living/carbon/Xenomorph/verb/xeno_screech_action()
+	set category = "Alien"
+	set name = "Screech"
+	set hidden = TRUE
+	var/mob/living/carbon/Xenomorph/X = src
+	if (!istype(X))
+		return
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
+			continue
+		if(XA.hidden)
+			continue
+		if(XA.ability_primacy == XENO_SCREECH)
+			handle_xeno_macro_datum(src, XA)
+			break

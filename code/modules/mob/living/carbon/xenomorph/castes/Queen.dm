@@ -759,8 +759,8 @@
 
 	var/list/immobile_abilities = list(
 		/datum/action/xeno_action/onclick/regurgitate,
-		/datum/action/xeno_action/onclick/remove_eggsac,
 		/datum/action/xeno_action/activable/screech, //custom macro, Screech
+		/datum/action/xeno_action/onclick/remove_eggsac,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,

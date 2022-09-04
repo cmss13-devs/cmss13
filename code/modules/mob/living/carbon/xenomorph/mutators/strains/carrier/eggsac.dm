@@ -41,6 +41,7 @@
 	cooldown_message = "You are ready to form another egg."
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = XENO_PLASMA_TIER_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/generate_egg/can_use_action()
 	if(!owner)

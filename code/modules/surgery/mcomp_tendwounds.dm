@@ -44,7 +44,7 @@
 	log_interact(user, target, "[key_name(user)] began to stabilizing wounds on [key_name(target)] with \the [tool], starting [surgery].")
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(25,25)
+	target.heal_overall_damage(50,50)
 	playsound('sound/misc/wound_stabilize.ogg',25)
 
 	if(isSpeciesYautja(target))
@@ -119,6 +119,14 @@
 		return
 	var/obj/item/tool/surgery/healing_gun/gun = tool
 	gun.loaded = FALSE
+<<<<<<< HEAD
+=======
+
+/datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")
+	return FALSE
+
+>>>>>>> 469ec2f1aa (Grammar fixes and less time)
 
 /datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")
@@ -143,7 +151,7 @@
 		SPAN_NOTICE("[user] begins to clamp [target]'s wounds with \the [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(150,150) //makes sure that all damage is healed
+	target.heal_overall_damage(60,60) //makes sure that all damage is healed
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
 		user.affected_message(target,

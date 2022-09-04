@@ -805,11 +805,11 @@
 		to_chat(usr, SPAN_WARNING("You recently made a healing capsule"))
 		return FALSE
 
-	if(!drain_power(caller, 1500))
+	if(!drain_power(caller, 800))
 		return FALSE
 
 	healing_capsule_timer = TRUE
-	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 10 MINUTES)
+	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel your bracer chern as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)

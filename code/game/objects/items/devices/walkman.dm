@@ -227,7 +227,7 @@
 
 	if(usr.is_mob_incapacitated() || !current_song) return
 
-	var/tmp = input(usr,"Change the volume (0 - 100)","Volume") as num|null
+	var/tmp = tgui_input_number(usr,"Change the volume (0 - 100)","Volume", volume, 100, 0)
 	if(tmp == null) return
 	if(tmp > 100) tmp = 100
 	if(tmp < 0) tmp = 0

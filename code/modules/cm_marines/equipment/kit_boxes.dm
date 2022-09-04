@@ -463,6 +463,22 @@
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 
+/obj/item/storage/box/kit/cryo_self_defense
+	name = "\improper Cryo Self Defense Kit"
+	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
+	icon_state = "cryo_defense_kit"
+	storage_slots = 2
+
+/obj/item/storage/box/kit/cryo_self_defense/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_e"
+
+/obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
+	new /obj/item/attachable/bayonet(src)
+	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"

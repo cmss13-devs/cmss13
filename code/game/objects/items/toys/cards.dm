@@ -133,7 +133,7 @@
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	var/num_cards = input(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing") as null|num
+	var/num_cards = tgui_input_number(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing", 1, cards_length, 1)
 	cards_length = length(cards)
 	if(!cards_length)
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))

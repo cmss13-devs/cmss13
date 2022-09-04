@@ -158,7 +158,7 @@
 	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)
-		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize(current_area_name)]!", 3, hivenumber)
+		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
 
 /mob/living/carbon/Xenomorph/proc/make_marker(turf/target_turf)
 	if(!target_turf)
@@ -194,6 +194,6 @@
 		var/current_area_name = get_area_name(target_turf)
 
 		for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
-			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
+			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE

@@ -720,7 +720,8 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/new_skill_level = input("Select a new level for the [selected_skill] skill ","New Skill Level") as null|num
+		var/new_skill_level = tgui_input_number(usr, "Select a new level for the [selected_skill] skill ","New Skill Level")
+
 		if(isnull(new_skill_level))
 			return
 
@@ -1000,7 +1001,7 @@ body
 
 		var/Text = href_list["adjustDamage"]
 
-		var/amount =  input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num
+		var/amount = tgui_input_real_number(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
 
 		if(!L)
 			to_chat(usr, "Mob doesn't exist anymore")

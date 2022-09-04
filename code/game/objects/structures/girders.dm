@@ -106,6 +106,9 @@
 		if(change_state(W, user))
 			return
 	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
@@ -231,6 +234,9 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
@@ -278,6 +284,9 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
@@ -312,10 +321,17 @@
 		dmg = round(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
+		take_damage(dmg)
 		bullet_ping(P)
 	if(health <= 0)
 		update_state()
 	return TRUE
+
+/obj/structure/girder/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health <= 0)
+		update_state()
+
 
 /obj/structure/girder/proc/dismantle()
 	health = 0

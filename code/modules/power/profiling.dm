@@ -13,12 +13,12 @@ var/global/list/power_update_requests_by_area = list()
 
 	var/machine_type = "[M.type]"
 	if (machine_type in power_update_requests_by_machine)
-		power_update_requests_by_machine[machine_type] += 1
+		power_update_requests_by_machine[machine_type]++
 	else
 		power_update_requests_by_machine[machine_type] = 1
 
 	if (A.name in power_update_requests_by_area)
-		power_update_requests_by_area[A.name] += 1
+		power_update_requests_by_area[A.name]++
 	else
 		power_update_requests_by_area[A.name] = 1
 

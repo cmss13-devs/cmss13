@@ -144,7 +144,7 @@
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
 	var/direct_hit_shrapnel = 5
-	var/dispersion_angle = 60
+	var/dispersion_angle = 40
 
 /obj/item/explosive/grenade/HE/airburst/prime()
 // We don't prime, we use launch_impact.

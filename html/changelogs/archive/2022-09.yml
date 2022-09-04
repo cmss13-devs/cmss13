@@ -1,0 +1,54 @@
+2022-09-01:
+  c4xmaniac:
+  - rscadd: Added two Weymed Plus vendors to Sorokyne Strata's medbay.
+  stanalbatross:
+  - bugfix: pred bracers will now decloak you when you drop them
+  - bugfix: pred bracers will now decloak you when you put them into bags
+  - bugfix: pred bracers will now properly decloak you before shocking you if they
+      run out of charge
+  - bugfix: if you get shocked while trying to activate something with a pred bracer,
+      it won't do the action you were trying to do
+  - bugfix: also fixed dropship autolaunch delay having a broken input
+2022-09-02:
+  Drathek:
+  - bugfix: Fixes transformation of a queen breaking hive status and hivemind
+  - refactor: Improves some variable readability
+2022-09-03:
+  Alardunx:
+  - balance: 'Reduced AGM-F cone from 60 degree to 40 degree. Along with the shrapnel
+      count reduction from a previous change, this has essentially two effects: The
+      situation which caused targets to take all Shrapnels can now at most do ~133%
+      expected damage (down from 250%) and the side-hits are even weaker than they
+      were before. Directly in front of the target still deals damage similar to what
+      it used to be (~8-13 shrapnels)'
+  ChainsawMullet:
+  - balance: Changed the HPR to no longer be granted IFF when deploying a bipod.
+  Drathek:
+  - bugfix: Fixed strings of area names (e.g. "ombat Information Center") by using
+      strip_improper instead.
+  Morrow:
+  - qol: Adds fourth unholster keybind option
+  - refactor: Makes the unholster code better.
+  - rscadd: Added shoulder holsters to armament squad prep vendor.
+  joookschad:
+  - balance: Added 5 AP to buckshot, and made it 65 damage from 60.
+  sose96:
+  - balance: Removed 30% damage reduction from DS mounted sentries.
+  stanalbatross:
+  - ui: converted the OB console to tgui
+  - ui: sleepers now use tgui
+  - rscadd: sleepers now can auto-eject if their occupant is dead, and also have access
+      to a wider range of chemicals when their occupant is near death
+  - rscdel: removed the ability of wardens to shield other xenos
+  - rscadd: 'added a new ability to wardens : "retrieve". Works like an oppressor
+      hook but for allies - it can hook and pull an ally to you with a short windup.
+      It costs 100 internal health reserves, and can pull any size xeno while they
+      are resting, but big xenos cannot be pulled while they are standing. The pulled
+      xeno will go through mobs, and will land on the tile behind you if it is not
+      dense.'
+  - rscadd: added "xeno primary action five" and support for it as a macro
+2022-09-04:
+  Geeves, QuickLoad:
+  - rscadd: Latejoiners now get a self defense kit if the ship is in red alert or
+      higher, or when evac has been called.
+  - rscadd: Marines can now latejoin for up to three minutes after hijack.

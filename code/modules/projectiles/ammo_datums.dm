@@ -1180,10 +1180,10 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
 	accurate_range = 4
 	max_range = 4
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration	= 0
+	penetration	= ARMOR_PENETRATION_TIER_1
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -1219,7 +1219,7 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 4
 	max_range = 6
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -1913,6 +1913,8 @@
 	name = "anti-tank rocket"
 	damage = 100
 	var/vehicle_slowdown_time = 5 SECONDS
+	shrapnel_chance = 5
+	shrapnel_type = /obj/item/large_shrapnel/at_rocket_dud
 
 /datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/vehicle/multitile))
@@ -2169,7 +2171,7 @@
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			stun_time += 1
+			stun_time++
 			H.KnockDown(stun_time)
 		else
 			M.KnockDown(stun_time, 1)
@@ -2986,6 +2988,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+	handful_type = /obj/item/device/flashlight/flare
 
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
@@ -3016,6 +3019,7 @@
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
+	handful_type = /obj/item/device/flashlight/flare/signal
 
 /datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/G = ..()

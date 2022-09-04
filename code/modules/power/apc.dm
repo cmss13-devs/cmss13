@@ -533,7 +533,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(last_update_state == update_state && last_update_overlay == update_overlay)
 		return 0
 	if(last_update_state != update_state)
-		results += 1
+		results++
 	if(last_update_overlay != update_overlay && update_overlay != 0)
 		results += 2
 	return results
@@ -631,10 +631,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 		else
 			wiresexposed = !wiresexposed
+			beenhit = wiresexposed ? XENO_HITS_TO_EXPOSE_WIRES_MIN : 0
 			user.visible_message(SPAN_NOTICE("[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring."),
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			update_icon()
+			if(SStgui.close_uis(src)) //if you had UIs open before from this APC...
+				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -724,6 +727,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
 	else if(iswelder(W) && opened && has_electronics == 0 && !terminal)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
@@ -845,7 +851,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 			else
-				beenhit += 1
+				beenhit++
 			return
 
 
@@ -890,22 +896,22 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(wire, mob/user)
+/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/with_message = TRUE)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
 			shock(usr, 50)
 			shorted = 1
-			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+			if(with_message)
+				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
-			visible_message(SPAN_NOTICE("\The [src] emits a click."))
-	if(isXeno(usr)) //So aliens don't see this when they cut all of the wires.
-		return
+			if(with_message)
+				visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
 /obj/structure/machinery/power/apc/proc/mend(var/wire)
 	apcwires |= getWireFlag(wire)
@@ -1103,7 +1109,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
 		if(charging && longtermpower < 10)
-			longtermpower += 1
+			longtermpower++
 		else if(longtermpower > -10)
 			longtermpower -= 2
 

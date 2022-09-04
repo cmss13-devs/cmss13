@@ -155,7 +155,7 @@
 		W.weapon = used_weapon
 		autopsy_data[used_weapon] = W
 
-	W.hits += 1
+	W.hits++
 	W.damage += damage
 	W.time_inflicted = world.time
 

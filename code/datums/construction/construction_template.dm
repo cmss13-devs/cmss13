@@ -109,7 +109,7 @@
             to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))
             return
         user.temp_drop_inv_item(I)
-        extras_required[I.type] -= 1
+        extras_required[I.type]--
         qdel(I)
     else
         to_chat(user, SPAN_WARNING("\The [name] does not require [I.name]."))

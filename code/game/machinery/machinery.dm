@@ -293,8 +293,3 @@ Class Procs:
 
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
-
-/obj/structure/machinery/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(inoperable())
-		return UI_DISABLED

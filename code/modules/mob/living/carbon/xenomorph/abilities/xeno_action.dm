@@ -166,7 +166,7 @@
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(X, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
-			stop_charging_ability()
+			start_charging_ability()
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
 	..()

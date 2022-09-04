@@ -149,6 +149,8 @@
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+ /// If the mob is being lazed by a sniper spotter
+#define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them

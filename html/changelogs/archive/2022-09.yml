@@ -47,3 +47,8 @@
       xeno will go through mobs, and will land on the tile behind you if it is not
       dense.'
   - rscadd: added "xeno primary action five" and support for it as a macro
+2022-09-04:
+  Geeves, QuickLoad:
+  - rscadd: Latejoiners now get a self defense kit if the ship is in red alert or
+      higher, or when evac has been called.
+  - rscadd: Marines can now latejoin for up to three minutes after hijack.

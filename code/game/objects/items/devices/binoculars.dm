@@ -364,79 +364,79 @@
 /datum/action/item_action/specialist/spotter_target/action_activate()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+	var/mob/living/carbon/human/human = owner
+	if(human.selected_ability == src)
+		to_chat(human, "You will no longer use [name] with \
+			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		human.selected_ability = null
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		if(H.selected_ability)
-			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+		to_chat(human, "You will now use [name] with \
+			[human.client && human.client.prefs && human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(human.selected_ability)
+			human.selected_ability.button.icon_state = "template"
+			human.selected_ability = null
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		human.selected_ability = src
 
 /datum/action/item_action/specialist/spotter_target/can_use_action()
-	var/mob/living/carbon/human/H = owner
-	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in H.traits))
-		to_chat(H, SPAN_WARNING("You have no idea how to use this!"))
+	var/mob/living/carbon/human/human = owner
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in human.traits))
+		to_chat(human, SPAN_WARNING("You have no idea how to use this!"))
 		return FALSE
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && (holder_item == H.r_hand || holder_item || H.l_hand))
+	if(istype(human) && !human.is_mob_incapacitated() && !human.lying && (holder_item == human.r_hand || holder_item || human.l_hand))
 		return TRUE
 
-/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/A)
-	var/mob/living/carbon/human/H = owner
-	if(!istype(A, /mob/living))
+/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/human/human = owner
+	if(!istype(targetted_atom, /mob/living))
 		return
 
-	var/mob/living/M = A
+	var/mob/living/target = targetted_atom
 
-	if(M.stat == DEAD || M == H)
+	if(target.stat == DEAD || target == human)
 		return
 
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
 	if(!COOLDOWN_FINISHED(designator, spotting_cooldown))
 		return
 
-	if(!check_can_use(M))
+	if(!check_can_use(target))
 		return
 
 	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(M, H) * 0.5)
+	var/distance = round(get_dist(target, human) * 0.5)
 	var/f_spotting_time = designator.spotting_time + distance
 
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spotter", dir = get_cardinal_dir(M, H))
-	M.overlays += I
-	ADD_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
-	if(H.client)
-		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
-	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spotter", dir = get_cardinal_dir(target, human))
+	target.overlays += I
+	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+	if(human.client)
+		playsound_client(human.client, 'sound/weapons/TargetOn.ogg', human, 50)
+	playsound(target, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
 
-	if(!do_after(H, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
-		M.overlays -= I
-		REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+	if(!do_after(human, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		target.overlays -= I
+		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 		return
-	M.overlays -= I
-	REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
+	target.overlays -= I
+	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 
-/datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/M, var/cover_lose_focus)
-	var/mob/living/carbon/human/H = owner
+/datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/target, var/cover_lose_focus)
+	var/mob/living/carbon/human/human = owner
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
 
 	if(!can_use_action())
 		return FALSE
 
-	if(designator != H.r_hand && designator != H.l_hand)
-		to_chat(H, SPAN_WARNING("How do you expect to do this without your laser designator?"))
+	if(designator != human.r_hand && designator != human.l_hand)
+		to_chat(human, SPAN_WARNING("How do you expect to do this without your laser designator?"))
 		return FALSE
 
-	if(get_dist(H, M) < minimum_laze_distance)
-		to_chat(H, SPAN_WARNING("\The [M] is too close to laze!"))
+	if(get_dist(human, target) < minimum_laze_distance)
+		to_chat(human, SPAN_WARNING("\The [target] is too close to laze!"))
 		return FALSE
 
 	return TRUE

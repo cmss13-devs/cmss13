@@ -60,3 +60,9 @@
       suit, the helmet, a smock, a spotter's laser designator, and a spotter instructional
       pamphlet.
   - balance: You no longer need to prepare position before using aimed shot as sniper.
+  - rscadd: Headset tracking HUDs now bring up a list of options rather than cycling
+      through them.
+  - rscadd: The WY encryption key now enables you to track the CL using the SL tracker.
+      Non-HvH PMC headsets automatically track the CL.
+  - balance: You can now only track someone wearing a uniform with their sensors set
+      to Location/Maximum.

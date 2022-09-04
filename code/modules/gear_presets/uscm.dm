@@ -400,6 +400,10 @@
 	minimum_age = 27
 	skills = /datum/skills/SL
 
+/datum/equipment_preset/uscm/leader/New()
+	. = ..()
+	marine_points = MARINE_TOTAL_BUY_POINTS - 5
+
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))

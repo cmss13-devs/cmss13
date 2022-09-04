@@ -21,6 +21,11 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
+	// vending variables
+	var/marine_points = MARINE_TOTAL_BUY_POINTS
+	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	var/marine_buy_flags = MARINE_CAN_BUY_ALL
+
 	//Uniform data
 	var/utility_under = null
 	var/utility_over = null
@@ -152,9 +157,9 @@
 
 	H.regenerate_icons()
 
-	H.marine_points = MARINE_TOTAL_BUY_POINTS		//resetting buy points
-	H.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	H.marine_buy_flags = MARINE_CAN_BUY_ALL
+	H.marine_points = marine_points
+	H.marine_snowflake_points = marine_snowflake_points
+	H.marine_buy_flags = marine_buy_flags
 
 	H.hud_set_squad()
 	H.add_to_all_mob_huds()

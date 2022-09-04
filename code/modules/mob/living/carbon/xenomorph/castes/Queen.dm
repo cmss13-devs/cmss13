@@ -280,6 +280,7 @@
 		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,

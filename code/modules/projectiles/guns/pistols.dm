@@ -333,9 +333,9 @@
 
 /obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/flashlight/S = new(src)
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
@@ -449,9 +449,9 @@
 
 /obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/flashlight/S = new(src)
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.

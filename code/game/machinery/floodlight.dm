@@ -133,4 +133,4 @@
 
 /obj/structure/machinery/floodlight/landing/floor
 	icon_state = "floor_flood01"
-	density = 0
+	density = FALSE

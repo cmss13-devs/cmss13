@@ -198,17 +198,22 @@
 			var/selected_type = text2path(params["type"])
 			if(!(selected_type in X.resin_build_order))
 				return
-
-			var/datum/resin_construction/RC = GLOB.resin_constructions_list[selected_type]
-			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
-			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
+			update_button_icon(selected_type, to_chat=TRUE)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
 			. = TRUE
 
+/datum/action/xeno_action/onclick/choose_resin/update_button_icon(var/selected_type, var/to_chat = FALSE)
+	. = ..()
+	if(!selected_type)
+		return
+	var/datum/resin_construction/resin_construction = GLOB.resin_constructions_list[selected_type]
+	if(to_chat)
+		to_chat(usr, SPAN_NOTICE("You will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)

@@ -129,8 +129,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
-	X.m_corrosive_acid()
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.m_corrosive_acid()
 	return TRUE
 
 /datum/keybinding/xenomorph/tech_secrete_resin
@@ -144,8 +144,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
-	X.tech_secrete_resin()
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.tech_secrete_resin()
 	return TRUE
 
 /datum/keybinding/xenomorph/screech

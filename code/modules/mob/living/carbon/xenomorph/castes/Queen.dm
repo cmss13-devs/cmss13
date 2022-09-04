@@ -377,6 +377,12 @@
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	set_resin_build_order(GLOB.resin_build_order_drone)
+	for(var/datum/action/xeno_action/action in actions)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -421,6 +427,11 @@
 
 	for(var/datum/action/xeno_action/A in actions)
 		A.hide_from(src)
+		// Also update the choose_resin icon since it resets
+		if(istype(A, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = A
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/abilities_to_give = mobile_abilities.Copy()
 
@@ -737,8 +748,14 @@
 		return //sanity check
 	ovipositor = TRUE
 
-	for(var/datum/action/xeno_action/A in actions)
-		A.hide_from(src)
+	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
+	for(var/datum/action/xeno_action/action in actions)
+		action.hide_from(src)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/immobile_abilities = list(
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -766,7 +783,6 @@
 		/datum/action/xeno_action/activable/info_marker/queen
 	)
 
-
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
@@ -775,15 +791,14 @@
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
-	set_resin_build_order(GLOB.resin_build_order_ovipositor)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
 	update_icons()
 
-	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-		L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/Xenomorph/leader in hive.xeno_leader_list)
+		leader.handle_xeno_leader_pheromones()
 
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
 
@@ -812,6 +827,7 @@
 		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
+	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	give_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
@@ -822,7 +838,6 @@
 	recalculate_actions()
 
 	egg_amount = 0
-	set_resin_build_order(GLOB.resin_build_order_drone)
 	extra_build_dist = initial(extra_build_dist)
 	ovipositor_cooldown = world.time + 5 MINUTES //5 minutes
 	anchored = FALSE

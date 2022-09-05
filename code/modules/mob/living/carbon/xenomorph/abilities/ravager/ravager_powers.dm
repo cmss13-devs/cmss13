@@ -221,66 +221,51 @@
 /datum/action/xeno_action/activable/apprehend/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
+	if (!istype(X))
+		return
+
 	if (!action_cooldown_check())
-		return
-
-	if (!X.check_state() || X.action_busy)
-		return
-
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
-		return
-
-	if (get_dist(A, X) > max_distance)
-		to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
-		return
-
-	var/mob/living/carbon/H = A
-
-	if (H.stat == DEAD)
-		to_chat(X, SPAN_XENOWARNING("[H] is dead, you can't pull yourself to it!"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
+	var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
+	if (istype(BD))
+		BD.next_slash_buffed = TRUE
 
+	to_chat(X, SPAN_XENODANGER("Your next slash will slow!"))
+
+	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
+
+	X.speed_modifier -= speed_buff
+	X.recalculate_speed()
+
+	addtimer(CALLBACK(src, .proc/apprehend_off), 55, TIMER_UNIQUE)
 
 	apply_cooldown()
-
-	to_chat(H, SPAN_XENOHIGHDANGER("You feel [X] fire bone spurs that dig into your skin! You have [windup_duration/10] seconds to move away or it will pull itself to you!"))
-	to_chat(X, SPAN_XENOHIGHDANGER("Stay close to [H] to be pulled to it!"))
-
-	H.targeted_by = X
-	H.target_locked = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "locking")
-	new /datum/effects/xeno_slow(H, X, null, null, get_xeno_stun_duration(H, 20))
-	H.update_targeted()
-
-	if (!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-		H.targeted_by = null
-		H.target_locked = null
-		H.update_targeted()
-		to_chat(X, SPAN_XENODANGER("The target moved out of range or you were incapacitated!"))
-		return
-
-	// Needs to occur AFTER the do_after resolves.
-	if (get_dist(A, X) > max_distance)
-		H.targeted_by = null
-		H.target_locked = null
-		H.update_targeted()
-		to_chat(X, SPAN_XENODANGER("The target moved out of range or you were incapacitated!"))
-		return
-
-	H.targeted_by = null
-	H.target_locked = null
-	H.update_targeted()
-
-	to_chat(X, SPAN_XENOHIGHDANGER("You attempt to pull yourself to [H]!"))
-	to_chat(H, SPAN_XENOHIGHDANGER("[X] pulls itself towards you!"))
-	X.throw_atom(get_step_towards(A, X), max_distance, SPEED_FAST, X)
-
 	..()
 	return
+
+/datum/action/xeno_action/activable/apprehend/proc/apprehend_off()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (istype(X))
+		X.speed_modifier += speed_buff
+		X.recalculate_speed()
+		to_chat(X, SPAN_XENOHIGHDANGER("You feel your speed buff end!"))
+
+/datum/action/xeno_action/activable/apprehend/proc/unbuff_slash()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (!istype(X))
+		return
+	var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
+	if (istype(BD))
+		// In case slash has already landed
+		if (!BD.next_slash_buffed)
+			return
+		BD.next_slash_buffed = FALSE
+
+	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/A)
@@ -333,6 +318,8 @@
 
 	// Heal
 	X.gain_health(heal_amount)
+	X.gain_health((Clamp(heal_per_rage / 100 * (X.maxHealth - X.health), 100, 100)))
+
 
 	// Fling
 	var/facing = get_dir(X, H)
@@ -367,6 +354,9 @@
 	var/damage = base_damage
 	var/range = 1
 	var/windup_reduction = 0
+	var/lifesteal_percent = 7
+	var/max_lifesteal = 10
+	var/lifesteal_range =  1
 
 	if (X.mutation_type == RAVAGER_BERSERKER)
 		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
@@ -413,6 +403,24 @@
 				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+
+	var/final_lifesteal = lifesteal_percent
+	var/list/mobs_in_range = oviewers(lifesteal_range, X)
+
+	for(var/mob/mob as anything in mobs_in_range)
+		if(final_lifesteal >= max_lifesteal)
+			break
+
+		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+			continue
+
+		if(X.can_not_harm(mob))
+			continue
+
+		final_lifesteal++
+
+// This is the heal
+		X.gain_health(Clamp(final_lifesteal / 160 * (X.maxHealth - X.health), 80, 120))
 
 	X.frozen = 0
 	X.anchored = 0

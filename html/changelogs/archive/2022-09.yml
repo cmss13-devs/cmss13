@@ -66,3 +66,9 @@
       Non-HvH PMC headsets automatically track the CL.
   - balance: You can now only track someone wearing a uniform with their sensors set
       to Location/Maximum.
+2022-09-05:
+  stanalbatross:
+  - bugfix: if a normal limb with a robot hand/foot on the end of it is cut off, the
+      robot hand/foot will also be cut off with it and exist as an item, not vanish
+      into nothingness
+  - bugfix: the robot limb item sprites now more closely mirror their onmob sprites

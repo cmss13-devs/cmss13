@@ -324,10 +324,12 @@
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
+	xeno_cooldown = 10 SECONDS
 
-/datum/action/xeno_action/onclick/queen_word/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.hive_message()
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
+	xeno.hive_message() 
 
 /datum/action/xeno_action/onclick/queen_tacmap
 	name = "View Xeno Tacmap"

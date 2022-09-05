@@ -543,19 +543,32 @@
 	set desc = "Send a message to all aliens in the hive that is big and visible"
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
-		return 0
+		return FALSE
 	if(!check_plasma(50))
-		return
+		return FALSE
+	
+	// Get a reference to the ability to utuilize cooldowns
+	var/datum/action/xeno_action/onclick/queen_word/word_ability
+	for(var/datum/action/xeno_action/action in actions)
+		if(istype(action, /datum/action/xeno_action/onclick/queen_word))
+			word_ability = action
+			if(!word_ability.action_cooldown_check())
+				return FALSE
+			break
+	
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
-		return
+		return FALSE
+
 	plasma_stored -= 50
+	if(word_ability)
+		word_ability.apply_cooldown()
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
 	log_and_message_staff("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
-
+	return TRUE
 
 /mob/living/carbon/Xenomorph/proc/claw_toggle()
 	set name = "Permit/Disallow Slashing"

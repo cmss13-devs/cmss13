@@ -125,6 +125,10 @@
 
 	target_xeno.transfer_observers_to(new_xeno)
 
+	if(round_statistics && !new_xeno.statistic_exempt)
+		round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+	SSround_recording.recorder.stop_tracking(target_xeno)
+	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
 	..()
 	return

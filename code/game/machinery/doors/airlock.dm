@@ -602,6 +602,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		panel_open = !panel_open
 		to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
+		return
 
 	else if(HAS_TRAIT(C, TRAIT_TOOL_WIRECUTTERS))
 		return attack_hand(user)

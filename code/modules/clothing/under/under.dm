@@ -237,7 +237,7 @@
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/verb/removejacket()
-	set name = "Remove Jacket"
+	set name = "Toggle Jacket"
 	set category = "Object"
 	set src in usr
 	if(!isliving(usr))

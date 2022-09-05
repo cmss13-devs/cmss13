@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/deevolve
-	name = "De-Evolve a Xenomorph"
+	name = "De-Evolve a Xenomorph (500)"
 	action_icon_state = "xeno_deevolve"
 	plasma_cost = 500
 
@@ -32,7 +32,7 @@
 	xeno_cooldown = 8 SECONDS
 
 /datum/action/xeno_action/activable/expand_weeds
-	name = "Expand Weeds"
+	name = "Expand Weeds (50)"
 	action_icon_state = "plant_weeds"
 	ability_name = "weed expansion"
 	plasma_cost = 50
@@ -46,13 +46,13 @@
 	var/turf_build_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/onclick/banish
-	name = "Banish a Xenomorph"
+	name = "Banish a Xenomorph (500)"
 	action_icon_state = "xeno_banish"
 	plasma_cost = 500
 
 
 /datum/action/xeno_action/onclick/readmit
-	name = "Readmit a Xenomorph"
+	name = "Readmit a Xenomorph (100)"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
 

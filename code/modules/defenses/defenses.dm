@@ -160,6 +160,10 @@
 
 		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
+		
+		if(health < health_max * 0.25) //repeat check
+			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
+			return
 
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
 

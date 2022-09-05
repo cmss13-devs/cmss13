@@ -163,10 +163,16 @@
 	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 15 MINUTES
+	plasma_cost = 200
+	cooldown_message = "You feel your anger return. You are ready to gut again."
 
-/datum/action/xeno_action/activable/gut/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.queen_gut(A)
+/datum/action/xeno_action/activable/gut/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	if(!action_cooldown_check())
+		return
+	if(xeno.queen_gut(Atom))
+		apply_cooldown()
 	..()
 
 /datum/action/xeno_action/onclick/psychic_whisper

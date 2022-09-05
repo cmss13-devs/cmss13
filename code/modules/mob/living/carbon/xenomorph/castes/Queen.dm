@@ -535,18 +535,18 @@
 	else
 		hive.hive_orders = ""
 
-	last_special = world.time + 150
+	last_special = world.time + 15 SECONDS
 
 /mob/living/carbon/Xenomorph/Queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
-	if(!check_plasma(50))
-		return
-	plasma_stored -= 50
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
 		return 0
+	if(!check_plasma(50))
+		return
+	plasma_stored -= 50
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
 		return
@@ -666,65 +666,60 @@
 		var/datum/action/A = Z
 		A.update_button_icon()
 
-/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
+/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/Atom)
+	if(!iscarbon(Atom))
+		return FALSE
 
-	if(!iscarbon(A))
-		return
-
-	var/mob/living/carbon/victim = A
+	var/mob/living/carbon/victim = Atom
 
 	if(get_dist(src, victim) > 1)
-		return
+		return FALSE
 
 	if(!check_state())
-		return
-
-	if(last_special > world.time)
-		return
+		return FALSE
 
 	if(isSynth(victim))
 		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
-			return
+			return FALSE
 
 	if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-		var/mob/living/carbon/human/H = victim
-		if(H.status_flags & XENO_HOST)
+		var/mob/living/carbon/human/human_victim = victim
+		if(human_victim.status_flags & XENO_HOST)
 			if(victim.stat != DEAD) //Not dead yet.
 				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-				return
-			else if(istype(H) && ( world.time <= H.timeofdeath + H.revive_grace_period )) //Dead, but the host can still hatch, possibly.
+				return FALSE
+			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
 				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return
+				return FALSE
 
 	if(isXeno(victim))
 		var/mob/living/carbon/Xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
-			return
+			return FALSE
 
 	var/turf/cur_loc = victim.loc
 	if(!istype(cur_loc))
-		return
+		return FALSE
 
 	if(action_busy)
-		return
+		return FALSE
 
 	if(!check_plasma(200))
-		return
+		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
-			return
+			return FALSE
 		if(victim.loc != cur_loc)
-			return
+			return FALSE
 		if(!check_plasma(200))
-			return
+			return FALSE
 
 		use_plasma(200)
-		last_special = world.time + 15 MINUTES
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
@@ -735,6 +730,7 @@
 		victim.gib(initial(name)) //Splut
 
 		stop_pulling()
+		return TRUE
 
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
 	if(hive.living_xeno_queen == src)

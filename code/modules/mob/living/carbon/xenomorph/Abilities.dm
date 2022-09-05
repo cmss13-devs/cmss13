@@ -87,18 +87,18 @@
 	X.tunnel_delay = 0
 
 //Queen Abilities
-/datum/action/xeno_action/activable/screech
+/datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
 	action_icon_state = "screech"
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
 	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
 	ability_primacy = XENO_SCREECH
 
-/datum/action/xeno_action/activable/screech/use_ability(atom/A)
+/datum/action/xeno_action/onclick/screech/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 
 	if (!istype(X))

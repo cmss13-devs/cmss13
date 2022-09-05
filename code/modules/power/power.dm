@@ -302,47 +302,57 @@
 	if(istype(power_source,/obj/structure/cable))
 		var/obj/structure/cable/Cable = power_source
 		power_source = Cable.powernet
-
-	var/datum/powernet/PN
-	var/obj/item/cell/cell
-
-	if(istype(power_source,/datum/powernet))
-		PN = power_source
-	else if(istype(power_source,/obj/item/cell))
-		cell = power_source
-	else if(istype(power_source,/obj/structure/machinery/power/apc))
-		var/obj/structure/machinery/power/apc/apc = power_source
-		cell = apc.cell
-		if (apc.terminal)
-			PN = apc.terminal.powernet
-	else if (!power_source)
-		return 0
-	else
-		log_admin("ERROR: /proc/electrocute_mob([M], [power_source], [source]): wrong power_source")
-		return 0
-	if (!cell && !PN)
-		return 0
-	var/PN_damage = 0
-	var/cell_damage = 0
-	if (PN)
-		PN_damage = PN.get_electrocute_damage()
-	if (cell)
-		cell_damage = cell.get_electrocute_damage()
+		
 	var/shock_damage = 0
-	if (PN_damage>=cell_damage)
-		power_source = PN
-		shock_damage = PN_damage
-	else
-		power_source = cell
-		shock_damage = cell_damage
-	var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
-	var/drained_energy = drained_hp*20
 
-	if (source_area)
-		source_area.use_power(drained_energy)
-	else if (istype(power_source,/datum/powernet))
-		//var/drained_power = drained_energy/CELLRATE //convert from "joules" to "watts"  <<< NO. THIS IS WRONG. CELLRATE DOES NOT CONVERT TO OR FROM JOULES.
-		PN.draw_power(drained_energy)
-	else if (istype(power_source, /obj/item/cell))
-		cell.use(drained_energy*CELLRATE) //convert to units of charge.
-	return drained_energy
+	if(!power_source && source_area && (!source_area.requires_power || source_area.unlimited_power))
+		shock_damage = min(rand(25, 75),rand(25, 75))
+		M.electrocute_act(shock_damage, source, siemens_coeff)
+	else
+		var/datum/powernet/PN
+		var/obj/item/cell/cell
+
+		if(istype(power_source,/datum/powernet))
+			PN = power_source
+		else if(istype(power_source,/obj/item/cell))
+			cell = power_source
+		else if(istype(power_source,/obj/structure/machinery/power/apc))
+			var/obj/structure/machinery/power/apc/apc = power_source
+			cell = apc.cell
+			if (apc.terminal)
+				PN = apc.terminal.powernet
+		else if (!power_source)
+			return 0
+		else
+			log_admin("ERROR: /proc/electrocute_mob([M], [power_source], [source]): wrong power_source")
+			return 0
+			
+		if (!cell && !PN)
+			return 0
+			
+		var/PN_damage = 0
+		var/cell_damage = 0
+		
+		if (PN)
+			PN_damage = PN.get_electrocute_damage()
+		if (cell)
+			cell_damage = cell.get_electrocute_damage()
+			
+		if (PN_damage>=cell_damage)
+			power_source = PN
+			shock_damage = PN_damage
+		else
+			power_source = cell
+			shock_damage = cell_damage
+	
+		var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
+		var/drained_energy = drained_hp*20
+
+		if (source_area)
+			source_area.use_power(drained_energy)
+		else if (istype(power_source,/datum/powernet))
+			//var/drained_power = drained_energy/CELLRATE //convert from "joules" to "watts"  <<< NO. THIS IS WRONG. CELLRATE DOES NOT CONVERT TO OR FROM JOULES.
+			PN.draw_power(drained_energy)
+		else if (istype(power_source, /obj/item/cell))
+			cell.use(drained_energy*CELLRATE) //convert to units of charge.
+		return drained_energy

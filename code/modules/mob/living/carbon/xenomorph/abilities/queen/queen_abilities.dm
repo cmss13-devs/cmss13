@@ -8,18 +8,19 @@
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 0
 
-
 /datum/action/xeno_action/onclick/grow_ovipositor
 	name = "Grow Ovipositor (500)"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
+	xeno_cooldown = 5 MINUTES
+	cooldown_message = "You are ready to grow an ovipositor again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
 	name = "Choose/Follow Xenomorph Leaders"
 	action_icon_state = "xeno_lead"
 	plasma_cost = 0
 	xeno_cooldown = 3 SECONDS
-
 
 /datum/action/xeno_action/activable/queen_heal
 	name = "Heal Xenomorph (600)"
@@ -42,14 +43,12 @@
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
-
 	var/turf_build_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/onclick/banish
 	name = "Banish a Xenomorph (500)"
 	action_icon_state = "xeno_banish"
 	plasma_cost = 500
-
 
 /datum/action/xeno_action/onclick/readmit
 	name = "Readmit a Xenomorph (100)"

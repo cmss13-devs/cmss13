@@ -96,6 +96,7 @@
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
 	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
 /datum/action/xeno_action/onclick/screech/use_ability(atom/A)
@@ -336,9 +337,9 @@
 	action_icon_state = "toggle_queen_zoom"
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.xeno_tacmap()
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	xeno.xeno_tacmap()
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

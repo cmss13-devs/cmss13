@@ -261,7 +261,6 @@
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
-	var/ovipositor_cooldown = 0
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
@@ -383,6 +382,7 @@
 			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
 			if(choose_resin_ability)
 				choose_resin_ability.update_button_icon(selected_resin)
+				break // Don't need to keep looking
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -851,7 +851,11 @@
 
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
-	ovipositor_cooldown = world.time + 5 MINUTES //5 minutes
+	for(var/datum/action/xeno_action/action in actions)
+		if(istype(action, /datum/action/xeno_action/onclick/grow_ovipositor))
+			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = action
+			ovi_ability.apply_cooldown()
+			break
 	anchored = FALSE
 	update_canmove()
 

@@ -156,53 +156,53 @@
 	X.dismount_ovipositor()
 
 
-/datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	var/turf/current_turf = get_turf(X)
+	var/turf/current_turf = get_turf(xeno)
 	if(!current_turf || !istype(current_turf))
 		return
 
-	if(X.ovipositor_cooldown > world.time)
-		to_chat(X, SPAN_XENOWARNING("You're still recovering from detaching your old ovipositor. Wait [round((X.ovipositor_cooldown-world.time)*0.1)] seconds"))
+	if(!action_cooldown_check())
+		to_chat(xeno, SPAN_XENOWARNING("You're still recovering from detaching your old ovipositor. Wait [DisplayTimeText(timeleft(cooldown_timer_id))]."))
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
 
 	if(!alien_weeds)
-		to_chat(X, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
+		to_chat(xeno, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
 		return
 
-	if(GLOB.interior_manager.interior_z == X.z)
-		to_chat(X, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
+	if(GLOB.interior_manager.interior_z == xeno.z)
+		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
 		return
 
-	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
-		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
+	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
+		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
 		return
 
-	if(!X.check_alien_construction(current_turf))
+	if(!xeno.check_alien_construction(current_turf))
 		return
 
-	if(X.action_busy)
+	if(xeno.action_busy)
 		return
 
-	if(!X.check_plasma(plasma_cost))
+	if(!xeno.check_plasma(plasma_cost))
 		return
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] starts to grow an ovipositor."), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."), \
 	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
-	if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && X.check_plasma(plasma_cost))
+	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
-	if(!X.check_state()) return
+	if(!xeno.check_state()) return
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
-	X.use_plasma(plasma_cost)
-	X.visible_message(SPAN_XENOWARNING("\The [X] has grown an ovipositor!"), \
+	xeno.use_plasma(plasma_cost)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
-	X.mount_ovipositor()
+	xeno.mount_ovipositor()
 
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)

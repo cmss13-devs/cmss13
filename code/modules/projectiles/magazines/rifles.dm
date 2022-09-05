@@ -299,10 +299,10 @@
 
 /obj/item/ammo_magazine/rifle/l42a/half
 	name = "\improper L42A half-size magazine (10x24mm)"
-	desc = "A half size 10mm battle rifle 10 round magazine allowing the rifle to be comfortably shouldered for drill, ceremony and execution."
+	desc = "A half size 10mm battle rifle 12 round magazine allowing the rifle to be comfortably shouldered for drill, ceremony and execution."
 	icon_state = "l42mk1_half"
 	gun_type = /obj/item/weapon/gun/rifle/l42a
-	max_rounds = 10
+	max_rounds = 12
 
 
 /obj/item/ammo_magazine/rifle/l42a/half/blank

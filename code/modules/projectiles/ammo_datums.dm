@@ -905,7 +905,7 @@
 
 /datum/ammo/bullet/rifle/blank
 	name = "blank rifle bullet"
-	icon_state = "shrapnel_bright2"
+	icon_state = "blank"
 	damage = 50  //Full power blanks that create big muzzleflash can fuck you up.
 	penetration = 0
 	effective_range_max = 1 // effectively PB only

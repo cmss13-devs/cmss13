@@ -86,9 +86,10 @@
 
 	return ..()
 
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.lay_down()
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	xeno.lay_down()
+	button.icon_state = xeno.resting ? "template_active" : "template"
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
@@ -484,18 +485,19 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/xenohide/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+/datum/action/xeno_action/onclick/xenohide/use_ability(atom/Atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!xeno.check_state(1))
 		return
-	if(X.layer != XENO_HIDING_LAYER)
-		X.layer = XENO_HIDING_LAYER
-		to_chat(X, SPAN_NOTICE("You are now hiding."))
+	if(xeno.layer != XENO_HIDING_LAYER)
+		xeno.layer = XENO_HIDING_LAYER
+		to_chat(xeno, SPAN_NOTICE("You are now hiding."))
+		button.icon_state = "template_active"
 	else
-		X.layer = initial(X.layer)
-		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
-	X.update_wounds()
-
+		xeno.layer = initial(xeno.layer)
+		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
+		button.icon_state = "template"
+	xeno.update_wounds()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

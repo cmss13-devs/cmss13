@@ -435,6 +435,7 @@
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
+					hide.button.icon_state = "template_active"
 
 		for(var/obj/item/W in oldXeno.contents) //Drop stuff
 			oldXeno.drop_inv_item_on_ground(W)

@@ -13,6 +13,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_speed/can_use_action()
-	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled && (X.weedwalking_activated || X.plasma_stored >= plasma_cost))
+	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled && (xeno.weedwalking_activated || xeno.plasma_stored >= plasma_cost))
 		return TRUE
+
+/datum/action/xeno_action/onclick/toggle_speed/give_to(mob/living/living_mob)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	if(xeno.weedwalking_activated)
+		button.icon_state = "template_active"

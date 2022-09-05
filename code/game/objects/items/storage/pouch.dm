@@ -843,7 +843,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/4)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()

@@ -7,6 +7,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
 
 /datum/action/xeno_action/watch_xeno/can_use_action()
+	if(!owner)
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!istype(X))
 		return FALSE

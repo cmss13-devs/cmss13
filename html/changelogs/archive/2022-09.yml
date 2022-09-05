@@ -67,6 +67,8 @@
   - balance: You can now only track someone wearing a uniform with their sensors set
       to Location/Maximum.
 2022-09-05:
+  Morrow:
+  - bugfix: Mechanical lock against unauthorized people giving medals.
   nauticall:
   - imageadd: 'Resprited the following items: Mounted flash, APC terminal, cell charger,
       hydroponics machines.'

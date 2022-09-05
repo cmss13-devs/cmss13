@@ -276,7 +276,6 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
-		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
@@ -286,6 +285,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
@@ -307,23 +307,23 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
-		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
-		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -547,7 +547,7 @@
 	if(!check_plasma(50))
 		return FALSE
 	
-	// Get a reference to the ability to utuilize cooldowns
+	// Get a reference to the ability to utilize cooldowns
 	var/datum/action/xeno_action/onclick/queen_word/word_ability
 	for(var/datum/action/xeno_action/action in actions)
 		if(istype(action, /datum/action/xeno_action/onclick/queen_word))

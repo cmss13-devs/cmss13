@@ -1250,7 +1250,7 @@
 // Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
 /obj/item/weapon/gun/rifle/l42a/abr40/drill
 	name = "\improper ABR-40 Ceremonial Rifle"
-	desc = "An ABR-40 battle rifle, the L42A's predessesor, with an authentic polished wood furniture for ceremonial useage. It's frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
+	desc = "An ABR-40 battle rifle, the L42A's predessesor, with an authentic polished wood furniture for ceremonial usage. Its frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,

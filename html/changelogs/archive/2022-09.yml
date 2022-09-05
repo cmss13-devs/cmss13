@@ -67,6 +67,10 @@
   - balance: You can now only track someone wearing a uniform with their sensors set
       to Location/Maximum.
 2022-09-05:
+  FoxyStalin:
+  - rscadd: Added Large Shotgun Shell Pouches to vendors for Drop-ship Pilots, DCCs,
+      Vehicle Crewmen, and Senior Enlisted Advisors.
+  - rscdel: Removes Duplicate Large Pistol Mag Pouch from SEA vendors
   Morrow:
   - bugfix: Mechanical lock against unauthorized people giving medals.
   Shad0vvs:

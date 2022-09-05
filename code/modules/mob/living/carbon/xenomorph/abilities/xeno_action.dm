@@ -62,6 +62,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 

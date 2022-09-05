@@ -73,6 +73,7 @@
   - rscdel: Removes Duplicate Large Pistol Mag Pouch from SEA vendors
   Morrow:
   - bugfix: Mechanical lock against unauthorized people giving medals.
+  - rscdel: Removed MP timelocks from Staff Officer.
   Shad0vvs:
   - bugfix: Fixed being able to pick up damaged turrets in some cases.
   - bugfix: Fixed attachments being allowed on the QH-4 Shoulder-Mounted Anti-Tank

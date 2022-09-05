@@ -71,6 +71,8 @@
   - bugfix: Mechanical lock against unauthorized people giving medals.
   Shad0vvs:
   - bugfix: Fixed being able to pick up damaged turrets in some cases.
+  - bugfix: Fixed attachments being allowed on the QH-4 Shoulder-Mounted Anti-Tank
+      RPG.
   Tisx:
   - bugfix: Changed the max rendering range of rifle bullets so that they don't magically
       disappear when using a S8 scope.

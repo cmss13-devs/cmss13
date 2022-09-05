@@ -252,7 +252,7 @@
 	if (istype(X))
 		X.speed_modifier += speed_buff
 		X.recalculate_speed()
-		to_chat(X, SPAN_XENOHIGHDANGER("You feel your speed buff end!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("You feel your speed wane!"))
 
 /datum/action/xeno_action/activable/apprehend/proc/unbuff_slash()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -265,7 +265,7 @@
 			return
 		BD.next_slash_buffed = FALSE
 
-	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))
+	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer slow enemies!"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/A)

@@ -163,7 +163,10 @@
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
@@ -556,13 +559,16 @@
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
 			D.current_rounds = rounds
-		rounds = min(rounds + M.current_rounds, rounds_max)
+		rounds = M.current_rounds
 		update_icon()
 		user.temp_drop_inv_item(O)
 		qdel(O)
 		return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -968,12 +974,13 @@
 /obj/item/ammo_magazine/m2c
 	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	caliber = "10x28mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 //STORAGE BOX FOR THE MACHINEGUN
@@ -1099,6 +1106,10 @@
 		return
 
 	if(!iswelder(O) || user.action_busy)
+		return
+
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return
 
 	if(!broken_gun)
@@ -1291,6 +1302,9 @@
 
 	// WELDER REPAIR
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 

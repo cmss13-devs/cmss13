@@ -725,7 +725,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/engineerpack/attackby(obj/item/W, mob/living/user)
 	if(reagents.total_volume)
-		if(istype(W, /obj/item/tool/weldingtool))
+		if(iswelder(W))
 			var/obj/item/tool/weldingtool/T = W
 			if(T.welding)
 				to_chat(user, SPAN_WARNING("That was close! However, you realized you had the welder on and prevented disaster."))

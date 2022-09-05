@@ -69,7 +69,7 @@
 	set name = "Set FPS"
 	set desc = "Set client FPS. 20 is the default"
 	set category = "Preferences"
-	var/fps = input(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS") as num
+	var/fps = tgui_input_number(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS", 0, MAX_FPS, MIN_FPS)
 	if(world.byond_version >= 511 && byond_version >= 511 && fps >= MIN_FPS && fps <= MAX_FPS)
 		vars["fps"] = fps
 		prefs.fps = fps

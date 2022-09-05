@@ -43,7 +43,7 @@
 
     remove_stun(M)
 
-    uses -= 1
+    uses--
 
 /obj/item/weapon/melee/chloroform/proc/grab_stun(var/mob/living/M, var/mob/living/user)
     M.anchored = TRUE

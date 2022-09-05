@@ -822,7 +822,7 @@
 		update_icon()
 		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)
 	else
-		beenhit += 1
+		beenhit++
 	return XENO_ATTACK_ACTION
 
 /obj/structure/ladder/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -878,7 +878,7 @@
 
 	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
 	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-	bleed_layer -= 1
+	bleed_layer--
 	update_icon(1, 0)
 	return XENO_NO_DELAY_ACTION
 

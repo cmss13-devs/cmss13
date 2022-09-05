@@ -77,25 +77,34 @@
 	var/perc_charge = (charge / charge_max * 100)
 	H.update_power_display(perc_charge)
 
+/// handles decloaking only on HUNTER gloves
+/obj/item/clothing/gloves/yautja/proc/decloak()
+	return
 
-//This is the main proc for checking AND draining the bracer energy. It must have M passed as an argument.
-//It can take a negative value in amount to restore energy.
-//Also instantly updates the yautja power HUD display.
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/M, var/amount)
-	if(!M)
+/*
+*This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
+*It can take a negative value in amount to restore energy.
+*Also instantly updates the yautja power HUD display.
+*/
+/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/human, var/amount)
+	if(!human)
 		return FALSE
 	if(charge < amount)
-		to_chat(M, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
+		to_chat(human, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
 		return FALSE
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	M.update_power_display(perc)
+	human.update_power_display(perc)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
+	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
 		if(prob(15))
-			shock_user(M)
+			if(cloaked)
+				decloak(human)
+				cloak_timer = world.time + 5 SECONDS
+			shock_user(human)
+			return FALSE
 
 	return TRUE
 
@@ -264,23 +273,32 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/mob/living/carbon/human/H = loc
+	var/mob/living/carbon/human/human = loc
 
 	if(cloaked)
 		charge = max(charge - 10, 0)
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(H))
+		if(!isYautja(human))
 			if(prob(15))
-				shock_user(H)
-				decloak(loc)
+				decloak(human)
+				shock_user(human)
 		return
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
+	if(cloaked)
+		decloak(user)
 	..()
+
+/obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/human = loc
+		if(cloaked)
+			decloak(human)
+	. = ..()
 
 //We use this to activate random verbs for non-Yautja
 /obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(var/mob/caller)
@@ -529,7 +547,7 @@
 
 	decloak(wearer, TRUE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(var/mob/user, forced)
 	if(!user)
 		return
 
@@ -853,7 +871,7 @@
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_combi()
-	set name = "Yank Combi-stick"
+	set name = "Yank combi-stick"
 	set category = "Yautja.Weapons"
 	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	set src in usr

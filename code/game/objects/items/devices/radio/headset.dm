@@ -19,6 +19,13 @@
 	var/list/keys //Actual objects.
 	maxf = 1489
 
+	var/list/inbuilt_tracking_options = list(
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL,
+		"Landing Zone" = TRACKER_LZ
+	)
+	var/list/tracking_options = list()
+
 	var/list/volume_settings
 
 	var/last_multi_broadcast = -999
@@ -64,7 +71,7 @@
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
-	if (channel == "special")
+	if (channel == RADIO_CHANNEL_SPECIAL)
 		if (translate_binary)
 			var/datum/language/binary = GLOB.all_languages[LANGUAGE_BINARY]
 			binary.broadcast(M, message)
@@ -164,6 +171,7 @@
 	translate_hive = FALSE
 	syndie = FALSE
 
+	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i
 		for(var/ch_name in key.channels)
@@ -171,12 +179,23 @@
 				continue
 			channels += ch_name
 			channels[ch_name] = key.channels[ch_name]
+		for(var/tracking_option in key.tracking_options)
+			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_binary)
 			translate_binary = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
 		if(key.syndie)
 			syndie = TRUE
+
+	if(length(tracking_options))
+		var/list/tracking_stuff = list()
+		for(var/tracking_fluff in tracking_options)
+			tracking_stuff += tracking_options[tracking_fluff]
+		if(!(locate_setting in tracking_stuff))
+			locate_setting = tracking_stuff[1]
+	else
+		locate_setting = initial(locate_setting)
 
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
@@ -262,18 +281,12 @@
 
 	handle_switching_tracker_target(usr)
 
-/obj/item/device/radio/headset/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
-	//Cycles through SL > LZ > FTL
-	if(locate_setting == TRACKER_SL)
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
-		locate_setting = TRACKER_LZ
+/obj/item/device/radio/headset/proc/handle_switching_tracker_target(mob/living/carbon/human/user)
+	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", tracking_options)
+	if(!new_track)
 		return
-	if(locate_setting == TRACKER_LZ && user.assigned_fireteam) //Only set it to FTL if they have a fireteam
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
-		locate_setting = TRACKER_FTL
-		return
-	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
-	locate_setting = TRACKER_SL
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
+	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)
@@ -383,14 +396,10 @@
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
 
-/obj/item/device/radio/headset/almayer/marine/mp_honor/handle_switching_tracker_target(mob/living/carbon/human/user)
-	switch(locate_setting)
-		if(TRACKER_CO)
-			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the XO's tracking beacon."))
-			locate_setting = TRACKER_XO
-		if(TRACKER_XO)
-			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the CO's tracking beacon."))
-			locate_setting = TRACKER_CO
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO
+	)
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
@@ -453,8 +462,7 @@
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
 
-/obj/item/device/radio/headset/almayer/mcom/synth/handle_switching_tracker_target(mob/living/carbon/human/user)
-	var/list/tracking_options = list(
+	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
 		"Landing Zone" = TRACKER_LZ,
@@ -464,11 +472,6 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL
 	)
-	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", tracking_options)
-	if(!new_track)
-		return
-	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
-	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
@@ -746,9 +749,16 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_PMC
 
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CL
+	inbuilt_tracking_options = list(
+		"Corporate Liaison" = TRACKER_CL
+	)
+
 /obj/item/device/radio/headset/distress/PMC/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public."
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/PMC/hvh/cct
 	name = "PMC-CCT headset"

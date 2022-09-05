@@ -82,7 +82,7 @@ var/datum/test_manager/test_executor = new
 	var/list/result_counts = list(0, 0, 0)
 	for(var/datum/test_case/case in test_sets[test_set])
 		var/result = run_individual_test(case, verbose)
-		result_counts[result] += 1
+		result_counts[result]++
 
 	if(verbose)
 		LOG_TEST("Finished test set: [test_set]")

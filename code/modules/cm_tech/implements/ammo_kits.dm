@@ -38,7 +38,7 @@
 	QDEL_NULL(M)
 	M = new type_to_convert_to(get_turf(user))
 	user.put_in_any_hand_if_possible(M)
-	uses -= 1
+	uses--
 	playsound(get_turf(user), "sound/machines/fax.ogg", 5)
 
 	if(uses <= 0)

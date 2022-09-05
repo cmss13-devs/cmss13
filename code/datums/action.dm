@@ -87,11 +87,14 @@
 			return
 		remove_from(owner)
 	SEND_SIGNAL(src, COMSIG_ACTION_GIVEN, L)
+	L.handle_add_action(src)
 	owner = L
-	LAZYADD(L.actions, src)
-	if(L.client)
-		L.client.screen += button
-	L.update_action_buttons()
+
+/mob/proc/handle_add_action(var/datum/action/action)
+	LAZYADD(actions, action)
+	if(client)
+		client.screen += action.button
+	update_action_buttons()
 
 /proc/remove_action(mob/L, action_path)
 	for(var/a in L.actions)
@@ -103,11 +106,19 @@
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
-	L.actions?.Remove(src)
-	if(L.client)
-		L.client.screen -= button
+	L.handle_remove_action(src)
 	owner = null
-	L.update_action_buttons()
+
+/mob/proc/handle_remove_action(var/datum/action/action)
+	actions?.Remove(action)
+	if(client)
+		client.screen -= action.button
+	update_action_buttons()
+
+/mob/living/carbon/human/handle_remove_action(var/datum/action/action)
+	if(selected_ability == action)
+		action.action_activate()
+	return ..()
 
 /proc/hide_action(mob/L, action_path)
 	for(var/a in L.actions)

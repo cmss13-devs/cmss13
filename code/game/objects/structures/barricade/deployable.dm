@@ -26,6 +26,9 @@
 /obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
 
 	if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -204,6 +207,9 @@
 		return
 
 	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(src != user.get_inactive_hand())
 			to_chat(user, SPAN_WARNING("You need to hold [src.singular_name] in hand or deploy to repair it."))
 			return

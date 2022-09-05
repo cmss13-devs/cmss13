@@ -125,10 +125,10 @@
 		if("Location")
 			mode = 1
 
-			var/locationx = input(usr, "Please input the x coordinate to search for.", "Location?" , "") as num
+			var/locationx = tgui_input_real_number(usr, "Please input the x coordinate to search for.", "Location?")
 			if(!locationx || !(usr in view(1,src)))
 				return
-			var/locationy = input(usr, "Please input the y coordinate to search for.", "Location?" , "") as num
+			var/locationy = tgui_input_real_number(usr, "Please input the y coordinate to search for.", "Location?")
 			if(!locationy || !(usr in view(1,src)))
 				return
 

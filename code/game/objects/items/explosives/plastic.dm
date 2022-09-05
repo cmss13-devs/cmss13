@@ -52,7 +52,7 @@
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
 			detonator.attack_self(user)
 		return
-	var/new_time = input(usr, "Please set the timer.", "Timer", min_timer) as num
+	var/new_time = tgui_input_number(usr, "Please set the timer.", "Timer", min_timer, 60, min_timer)
 	if(new_time < min_timer)
 		new_time = min_timer
 	else if(new_time > 60)

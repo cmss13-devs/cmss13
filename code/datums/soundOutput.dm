@@ -127,7 +127,7 @@
 		sound_to(owner, S)
 
 /client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
-	volume_preferences[volume_key]	= (input(prompt, "Volume", volume_preferences[volume_key]*100) as num) / 100
+	volume_preferences[volume_key]	= (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
 	if(volume_preferences[volume_key] > 1)
 		volume_preferences[volume_key] = 1
 	if(volume_preferences[volume_key] < 0)

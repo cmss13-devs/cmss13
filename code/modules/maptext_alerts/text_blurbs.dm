@@ -29,7 +29,7 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 							"eng" = "\nEngineering, [base]",
 							"med" = "\nMedical, [base]",
 							"req" = "\nLogistics, [base]",
-							"cl" = "\nLiason, [base]",
+							"cl" = "\nLiaison, [base]",
 							"misc" = "\nCrew, [base]")
 
 	//We'll save processing by showing the same message object to each marine in a category.

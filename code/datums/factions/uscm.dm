@@ -40,6 +40,7 @@
 
 		H.langchat_color = squad_colors_chat[H.assigned_squad.color]
 
+		if(!marine_rk) marine_rk = H.rank_fallback
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			if(squad_clr)

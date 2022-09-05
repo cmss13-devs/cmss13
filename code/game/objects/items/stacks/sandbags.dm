@@ -19,7 +19,7 @@
 	if (istype(W, /obj/item/tool/shovel))
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
-			ET.dirt_amt -= 1
+			ET.dirt_amt--
 			ET.update_icon()
 			var/obj/item/stack/sandbags/new_bags = new(user.loc)
 			new_bags.add_to_stacks(user)

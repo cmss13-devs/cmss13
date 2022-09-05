@@ -67,6 +67,10 @@
   - balance: You can now only track someone wearing a uniform with their sensors set
       to Location/Maximum.
 2022-09-05:
+  nauticall:
+  - imageadd: 'Resprited the following items: Mounted flash, APC terminal, cell charger,
+      hydroponics machines.'
+  - imageadd: '- Depowered button; will now be gray instead of blue to be less confusing.'
   stanalbatross:
   - bugfix: if a normal limb with a robot hand/foot on the end of it is cut off, the
       robot hand/foot will also be cut off with it and exist as an item, not vanish

@@ -546,10 +546,10 @@
 		return 0
 	if(!check_plasma(50))
 		return
-	plasma_stored -= 50
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
 		return
+	plasma_stored -= 50
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 

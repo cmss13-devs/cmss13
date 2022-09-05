@@ -72,3 +72,4 @@
       robot hand/foot will also be cut off with it and exist as an item, not vanish
       into nothingness
   - bugfix: the robot limb item sprites now more closely mirror their onmob sprites
+  - balance: increased the scatter and decreased the accuracy of dual wielding

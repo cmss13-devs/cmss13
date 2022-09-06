@@ -46,8 +46,6 @@
 	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
 	. = ..()
 
-
-
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"

@@ -885,15 +885,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/current_camo = FULL_CAMOUFLAGE_ALPHA
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
-	var/aiming_time = 1.25 SECONDS
 	var/can_camo = TRUE
 
-	var/aimed_shot_cooldown
-	var/aimed_shot_cooldown_delay = 2.5 SECONDS
-
-	actions_types = list(/datum/action/item_action/toggle, \
-	 					 /datum/action/item_action/specialist/prepare_position, \
-						 /datum/action/item_action/specialist/aimed_shot)
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !isSynth(user))
@@ -912,10 +906,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!ishuman(usr) || hide_in_progress || !can_camo)
 		return
 	var/mob/living/carbon/human/H = usr
-	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER && !(GLOB.character_traits[/datum/character_trait/skills/spotter] in H.traits))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-
 	if(H.wear_suit != src)
 		to_chat(H, SPAN_WARNING("You must be wearing the ghillie suit to activate it!"))
 		return
@@ -1018,9 +1011,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/aimed_shot
-	ability_primacy = SPEC_PRIMARY_ACTION_2
-
 /datum/action/item_action/specialist/prepare_position/New(var/mob/living/user, var/obj/item/holder)
 	..()
 	name = "Prepare Position"
@@ -1037,155 +1027,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position/action_activate()
 	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
 	GS.camouflage()
-
-/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
-	..()
-	name = "Aimed Shot"
-	button.name = name
-	button.overlays.Cut()
-	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_aim")
-	button.overlays += IMG
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-	GS.aimed_shot_cooldown = world.time
-
-
-/datum/action/item_action/specialist/aimed_shot/action_activate()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		button.icon_state = "template"
-		H.selected_ability = null
-	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		if(H.selected_ability)
-			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
-		button.icon_state = "template_on"
-		H.selected_ability = src
-
-/datum/action/item_action/specialist/aimed_shot/can_use_action()
-	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
-
-		return TRUE
-
-/datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
-	var/mob/living/carbon/human/H = owner
-	if(!istype(A, /mob/living))
-		return
-
-	var/mob/living/M = A
-
-	if(M.stat == DEAD || M == H)
-		return
-
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-
-	if(world.time < GS.aimed_shot_cooldown)
-		return
-
-	if(!check_can_use(M))
-		return
-
-	GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay
-
-	 ///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(M, H) * 0.5)
-	var/f_aiming_time = GS.aiming_time + distance
-
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
-	M.overlays += I
-	if(H.client)
-		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
-	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
-
-	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
-		M.overlays -= I
-		return
-
-	M.overlays -= I
-
-	if(!check_can_use(M, TRUE))
-		return
-
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
-	var/obj/item/projectile/P = G.in_chamber
-	P.homing_target = M
-	P.projectile_override_flags |= AMMO_HOMING
-	G.Fire(M, H)
-
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
-	var/mob/living/carbon/human/H = owner
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-
-	if(!can_use_action())
-		return FALSE
-
-	if(H.alpha == initial(H.alpha))
-		to_chat(H, SPAN_WARNING("You are not in a proper position to aim your shot accurately."))
-		return FALSE
-
-	if(H.alpha > FULL_CAMOUFLAGE_ALPHA)
-		to_chat(H, SPAN_WARNING("The smoke from your last gunshot is still obscuring your vision. Wait a little bit to get a clear shot."))
-		return FALSE
-
-	if(!H.l_hand && !H.r_hand)
-		to_chat(H, SPAN_WARNING("How do you expect to do this without your Sniper Rifle?"))
-		return FALSE
-
-	if(!istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) && !istype(H.r_hand, /obj/item/weapon/gun/rifle/sniper))
-		to_chat(H, SPAN_WARNING("Your weapon isn't accurate enough for this. Use the M42A Sniper Rifle!"))
-		return FALSE
-
-	if(!istype(H.l_hand, /obj/item/weapon/melee/twohanded/offhand) && !istype(H.r_hand, /obj/item/weapon/melee/twohanded/offhand))
-		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
-		return FALSE
-
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
-	if(!G.in_chamber)
-		to_chat(H, SPAN_WARNING("[G] is unloaded!"))
-		return FALSE
-
-	if(get_dist(H, M) < 2)
-		to_chat(H, SPAN_WARNING("[M] is too close to get a proper shot!"))
-		return FALSE
-
-	var/obj/item/projectile/P = G.in_chamber
-	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
-	if(check_shot_is_blocked(H, M, P))
-		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
-		if(cover_lose_focus)
-			to_chat(H, SPAN_WARNING("You lose focus."))
-			GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay * 0.5
-		return FALSE
-
-	return TRUE
-
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
-	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
-	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
-		return TRUE
-
-	var/blocked = FALSE
-	for(var/turf/T in path)
-		if(T.density || T.opacity)
-			blocked = TRUE
-			break
-
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				blocked = TRUE
-				break
-
-		for(var/obj/effect/particle_effect/smoke/S in T)
-			blocked = TRUE
-			break
-
-	return blocked
 
 #undef FULL_CAMOUFLAGE_ALPHA
 

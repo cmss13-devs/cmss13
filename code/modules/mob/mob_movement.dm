@@ -113,13 +113,13 @@
 	if(mob.noclip)
 		switch(direct)
 			if(NORTH)
-				mob.y += 1
+				mob.y++
 			if(SOUTH)
-				mob.y -= 1
+				mob.y--
 			if(EAST)
-				mob.x += 1
+				mob.x++
 			if(WEST)
-				mob.x -= 1
+				mob.x--
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
@@ -201,7 +201,7 @@
 				mob.tile_contents = list()
 		if(.)
 			mob.track_steps_walked()
-			mob.life_steps_total += 1
+			mob.life_steps_total++
 			if(mob.clone != null)
 				mob.update_clone()
 		mob.move_intentionally = FALSE

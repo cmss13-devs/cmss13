@@ -45,6 +45,7 @@
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
 #define COMSIG_KB_HUMAN_SECONDARY_DOWN "keybinding_human_secondary_down"
 #define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
+#define COMSIG_KB_HUMAN_QUATERNARY_DOWN "keybinding_human_quaternary_down"
 #define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
 
 #define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"
@@ -123,6 +124,7 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+#define COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE "keybinding_xeno_primary_attack_five"
 
 #define COMSIG_KB_XENO_EMIT_PHEROMONES "keybinding_xeno_emit_pheromones"
 #define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybinding_xeno_emit_pheromones_frenzy"

@@ -61,7 +61,7 @@
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
 			return
 
-		larva_amount += 1
+		larva_amount++
 	if(isXeno(M))
 		if(!linked_hive || M.stat != DEAD)
 			return
@@ -131,9 +131,9 @@
 	if(!melting_body)
 		return
 
-	melting_body.pixel_y -= 1
+	melting_body.pixel_y--
 	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
-	iterations -= 1
+	iterations--
 	if(!iterations)
 		vis_contents.Cut()
 

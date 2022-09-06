@@ -111,7 +111,7 @@
 	uses = min(max(uses + amount, 0), max_uses)
 
 /obj/item/device/lightreplacer/proc/Charge(var/mob/user)
-	charge += 1
+	charge++
 	if(charge > 7)
 		AddUses(1)
 		charge = 1

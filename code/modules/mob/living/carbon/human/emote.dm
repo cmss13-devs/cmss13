@@ -663,7 +663,7 @@
 					playsound(src.loc, pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg'), 60, 0, 18)
 					for(var/mob/M as anything in get_mobs_in_z_level_range(get_turf(src), 18) - src)
 						var/relative_dir = get_dir(M, src)
-						to_chat(M, SPAN_NOTICE("You hear a loud roar from the [dir2text(relative_dir)]!"))
+						to_chat(M, SPAN_HIGHDANGER("You hear a loud roar coming from the [dir2text(relative_dir)]!"))
 					if(player_caused)
 						start_audio_emote_cooldown(120 SECONDS)
 				else

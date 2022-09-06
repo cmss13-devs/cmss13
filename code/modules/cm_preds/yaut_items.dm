@@ -893,8 +893,6 @@
 					/obj/item/tool/surgery/healing_gel
 					)
 
-	var/obj/item/clothing/gloves/yautja/source = null
-
 /obj/item/storage/medicomp/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/stabilizer_gel(src)
 	new /obj/item/tool/surgery/healing_gun(src)
@@ -906,7 +904,6 @@
 	new	/obj/item/tool/surgery/healing_gel/(src)
 	new	/obj/item/tool/surgery/healing_gel/(src)
 	new	/obj/item/tool/surgery/healing_gel/(src)
-
 
 /obj/item/storage/medicomp/update_icon()
 	if(!contents.len)

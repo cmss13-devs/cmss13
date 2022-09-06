@@ -309,8 +309,8 @@ t. optimisticdude
 
 /obj/item/tool/surgery/stabilizer_gel
 	name = "stabilizer gel vial"
-	icon_state = "stabilizer_gel"
 	desc = "Used for stabilizing wounds for treatment."
+	icon_state = "stabilizer_gel"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
@@ -318,8 +318,8 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun
 	name = "healing gun"
-	icon_state = "healing_gun"
 	desc = "Used for mending stabilized wounds."
+	icon_state = "healing_gun"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
@@ -333,7 +333,6 @@ t. optimisticdude
 		icon_state = "healing_gun_empty"
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
-	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how to put this [O] into \the [src]!"))
 		return
@@ -349,11 +348,12 @@ t. optimisticdude
 		update_icon()
 		qdel(O)
 		return
+	return ..()
 
 /obj/item/tool/surgery/healing_gel
 	name = "healing gel capsule"
-	icon_state = "healing_gel"
 	desc = "Used for reloding the healing gun."
+	icon_state = "healing_gel"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
@@ -361,8 +361,8 @@ t. optimisticdude
 
 /obj/item/tool/surgery/wound_clamp
 	name = "wound clamp"
-	icon_state = "wound_clamp"
 	desc = "Used for clamping wounds after treatment."
+	icon_state = "wound_clamp"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL

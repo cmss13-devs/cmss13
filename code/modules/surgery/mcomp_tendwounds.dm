@@ -34,18 +34,18 @@
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
 
-/datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("[user] begin to stabilize [target]'s wounds with \the [tool]."),
-		SPAN_NOTICE("[user] begins to stabilize your wounds with \the [tool]."),
-		SPAN_NOTICE("[user] begins to stabilize [target]'s wounds with \the [tool]."))
-
-	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
-	log_interact(user, target, "[key_name(user)] began to stabilizing wounds on [key_name(target)] with \the [tool], starting [surgery].")
+/datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	if(user == target)
+        user.visible_message(SPAN_NOTICE("[user] begins to stabilize the wounds on their body with \the [tool]."),
+            SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]"))
+    else
+        user.affected_message(target,
+            SPAN_HELPFUL("You begin to stabilize the wounds on [target]'s body with \the [tool]."),
+            SPAN_HELPFUL("[user] begins to stabilize the wounds on your body with \the [tool]."),
+            SPAN_NOTICE("[user] begisn to stabilize the wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(50,50)
-	playsound('sound/misc/wound_stabilize.ogg',25)
 
 	if(isSpeciesYautja(target))
 		target.emote("click2")
@@ -53,17 +53,14 @@
 		target.emote("pain")
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
-		user.affected_message(target,
-			SPAN_NOTICE("[user] finish stabilizing [target]'s wounds."),
-			SPAN_NOTICE("[user] finishes stabilizing your wounds."),
-			SPAN_NOTICE("[user] finishes stabilizing the [target]'s wounds."))
-
-		log_interact(user, target, "[key_name(user)] finished stabilizing [key_name(target)]'s wounds with \the [tool], ending [surgery].")
+		if(user == target)
+			user.visible_message(SPAN_NOTICE("[user] finshes to stabilizing the wounds on their body with \the [tool]."),
+			SPAN_HELPFUL("You finished to stabilize your wounds with \the [tool]"))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You finish stabilizing [target]'s injuries."),
-			SPAN_NOTICE("[user] finishes stabilizing some of your injuries on [target]."),
-			SPAN_NOTICE("[user] finishes stabilizing some of [target]'s injuries."))
+			SPAN_HELPFUL("You finish stabilizing [target]'s wounds with \the [tool]."),
+			SPAN_HELPFUL("[user] finished stabilizing your wounds with \the [tool]."),
+			SPAN_NOTICE("[user] finished treating [target]'s wounds with \the [tool]."))
 
 		log_interact(user, target, "[key_name(user)] stabilized some of [key_name(target)]'s wounds with \the [tool].")
 
@@ -85,11 +82,16 @@
 	return TRUE
 
 /datum/surgery_step/mtend_wounds/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("[user] begins to tend [target]'s stabilized wounds with \the [tool]."),
-		SPAN_NOTICE("[user] begins to tend your stabilized wounds with \the [tool]."),
-		SPAN_NOTICE("[user] begins to suture and tend [target]'s stabilized wounds with \the [tool]."))
-	playsound(target,'sound/misc/heal_gun.ogg',25)
+	if(user == target)
+		user.visible_message(SPAN_NOTICE("[user] begins to treat the stabilized wounds on their  body with \the [tool]."),
+			SPAN_HELPFUL("You <b>begin to treat your stabilized wounds with \the [tool]"))
+		playsound(target,'sound/misc/heal_gun.ogg',25)
+	else
+		user.affected_message(target,
+			SPAN_HELPFUL("You begin to treat the stabilized wounds on [target]'s body with \the [tool]."),
+			SPAN_HELPFUL("[user] begins to treat your stabilized wounds on your body with \the [tool]."),
+			SPAN_NOTICE("[user] begisn to treat the stabilized wounds on [target]'s body with \the [tool]."))
+		playsound(target,'sound/misc/heal_gun.ogg',25)
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
 	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with \the [tool], starting [surgery].")
@@ -103,17 +105,14 @@
 		target.emote("pain")
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
-		user.affected_message(target,
-			SPAN_NOTICE("[user] finishes treating [target]'s stabilized wounds."),
-			SPAN_NOTICE("[user] finishes treating your stabilized wounds."),
-			SPAN_NOTICE("[user] finishes treating the [target]'s stabilized wounds."))
-
-		log_interact(user, target, "[key_name(user)] finished tending [key_name(target)]'s wounds with \the [tool], ending [surgery].")
+		if(user == target)
+			user.visible_message(SPAN_NOTICE("[user] finshes treating the stabilized wounds on their  body with \the [tool]."),
+			SPAN_HELPFUL("You finish treating the stabilized wounds on your body with \the [tool]"))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("[user] finishes treating [target]'s stabilized Wounds."),
-			SPAN_NOTICE("[user] finishes treating your stabilized Wounds."),
-			SPAN_NOTICE("[user] finishes treating [target]'s stabilized Wounds."))
+			SPAN_HELPFUL("You finish treating [target]'s stabilized wounds with \the [tool]."),
+			SPAN_HELPFUL("[user] finished treating your stabilized wounds with \the [tool]."),
+			SPAN_NOTICE("[user] finished treating [target]'s stabilized wounds with \the [tool]."))
 
 	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
 		return
@@ -123,6 +122,7 @@
 /datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")
 	return FALSE
+
 /datum/surgery_step/cauterize/mclamp_wound
 	name = "clamp wounds"
 	desc = "clamp the wounds"
@@ -135,19 +135,27 @@
 		return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("[user] begins clamping [target]'s wounds with \the [tool]s."),
-		SPAN_NOTICE("[user] begins to clamp your wounds with \the [tool]."),
-		SPAN_NOTICE("[user] begins to clamp [target]'s wounds with \the [tool]."))
+	if(user == target)
+		user.visible_message(SPAN_NOTICE("[user] begins to clamp the treated wounds on their body with \the [tool] ."),
+			SPAN_HELPFUL("You begin to clamp your treated wounds with \the [tool]"))
+	else
+		user.affected_message(target,
+			SPAN_HELPFUL("You begin to clamp the treated wounds on [target]'s body with \the [tool]."),
+			SPAN_HELPFUL("[user] begins to clamp your treated wounds on your body with \the [tool]."),
+			SPAN_NOTICE("[user] begisn to clamp the treated wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(60,60) //makes sure that all damage is healed
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
+		if(user == target)
+			user.visible_message(SPAN_NOTICE("[user] finshes clamp the treated wounds on their  body with \the [tool]."),
+			SPAN_HELPFUL("You finish clamping the treated wounds on your body with \the [tool]"))
+	else
 		user.affected_message(target,
-		SPAN_NOTICE("[user] finish clamping [target]'s wounds with \the [tool] ."),
-		SPAN_NOTICE("[user] clamps your wounds with \the [tool]."),
-		SPAN_NOTICE("[user] clamps the [target]'s wounds with \the [tool]."))
+			SPAN_HELPFUL("You finish clamping [target]'s treated wounds with \the [tool]."),
+			SPAN_HELPFUL("[user] finished treating your treated wounds with \the [tool]."),
+			SPAN_NOTICE("[user] finished stabalizing [target]'s treated wounds with \the [tool]."))
 
 	if(isYautja(target))
 		target.emote("loudroar")

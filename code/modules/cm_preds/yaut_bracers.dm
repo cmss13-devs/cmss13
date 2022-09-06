@@ -820,7 +820,7 @@
 /obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_ready()
 	if(ismob(loc))
 		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
-	inject_timer = FALSE
+	healing_capsule_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disk()
 	set name = "Call Smart-Disc"

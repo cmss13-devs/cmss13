@@ -357,7 +357,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/eviscerate/use_ability(atom/Atom)
+/datum/action/xeno_action/activable/eviscerate/use_ability(atom/Atom)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 
 	if(!action_cooldown_check() || xeno.action_busy)

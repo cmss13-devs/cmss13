@@ -13,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
-		/datum/action/xeno_action/onclick/eviscerate
+		/datum/action/xeno_action/activable/eviscerate
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker

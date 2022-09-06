@@ -87,7 +87,7 @@
 	var/fling_dist_base = 4
 	var/daze_amount = 2
 
-/datum/action/xeno_action/onclick/eviscerate
+/datum/action/xeno_action/activable/eviscerate
 	name = "Eviscerate"
 	action_icon_state = "rav_eviscerate"
 	ability_name = "eviscerate"

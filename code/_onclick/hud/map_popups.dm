@@ -13,7 +13,7 @@
  */
 /atom/movable/screen
 	name = ""
-	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon = 'icons/mob/hud/screen1.dmi'
 	plane = HUD_PLANE
 	animate_movement = SLIDE_STEPS
 //	speech_span = SPAN_ROBOT

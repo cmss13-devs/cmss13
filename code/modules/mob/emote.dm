@@ -23,16 +23,16 @@
 		return
 
 
-	if (message)
+	if(message)
 		if(!nolog)
 			log_emote("[name]/[key] : [message]")
 
  //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.
 		for(var/mob/M in GLOB.player_list)
-			if (!M.client)
+			if(!M.client)
 				continue //skip monkeys and leavers
-			if (istype(M, /mob/new_player))
+			if(istype(M, /mob/new_player))
 				continue
 			if(findtext(message," snores.")) //Because we have so many sleeping people.
 				break
@@ -41,36 +41,46 @@
 
 
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
-		if (m_type & 1)
+		if(m_type & 1)
+			var/list/viewers = get_mobs_in_view(7, src)
 			for (var/mob/O in viewers(src, null))
-
 				if(O.status_flags & PASSEMOTES)
-
 					for(var/obj/item/holder/H in O.contents)
 						H.show_message(message, m_type)
-
+						viewers.Add(H)
 					for(var/mob/living/M in O.contents)
 						M.show_message(message, m_type)
-
+						viewers.Add(M)
 				O.show_message(message, m_type)
+				var/toggles_langchat = O.client?.prefs.toggles_langchat
+				if(toggles_langchat)
+					if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
+						viewers.Remove(O)
+			langchat_speech(input, viewers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+
+
 
 		// Type 2 (Audible) emotes are sent to anyone in hear range
 		// of the *LOCATION* -- this is important for pAIs to be heard
-		else if (m_type & 2)
+		else if(m_type & 2)
+			var/list/hearers = get_mobs_in_view(7, src)
+			hearers.Add(src)
 			for (var/mob/O in hearers(get_turf(src), null))
-
 				if(O.z != z)	//cases like interior vehicles, for example
 					continue
-
 				if(O.status_flags & PASSEMOTES)
-
 					for(var/obj/item/holder/H in O.contents)
 						H.show_message(message, m_type)
-
+						hearers.Add(H)
 					for(var/mob/living/M in O.contents)
 						M.show_message(message, m_type)
-
+						hearers.Add(M)
 				O.show_message(message, m_type)
+				var/toggles_langchat = O.client?.prefs.toggles_langchat
+				if(toggles_langchat)
+					if(!(toggles_langchat & LANGCHAT_SEE_EMOTES))
+						hearers.Remove(O)
+			langchat_speech(input, hearers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
 /mob/proc/emote_dead(var/message)
 	if(client.prefs.muted & MUTE_DEADCHAT)

@@ -1,18 +1,18 @@
 
 /obj/vehicle/multitile/apc/medical
 	name = "M577-MED Armored Personnel Carrier"
-	desc = "A medical modification of the M577 Armored Personnel Carrier. An armored transport with four big wheels. Has compact surgery theater set up inside and stores a significant amount of medical supplies. Entrances on the sides."
+	desc = "A medical modification of the M577 Armored Personnel Carrier. An armored transport with four big wheels. Designed as a reliable mobile triage that stores a significant amount of medical supplies for in-field resupplying of medics. Entrances on the sides."
 
 	icon_state = "apc_base_med"
 
 	interior_map = "apc_med"
 
-	//increased 4->6, because having only 4 passenger slots is not nearly enough, especially if you have also a medic/nurse/synth inside helping with triage
-	passengers_slots = 6
-	//MED APC can store additional 4 dead revivable bodies for the triage
+
+	passengers_slots = 8
+	//MED APC can store additional 6 dead revivable bodies for the triage
 	//but interior won't allow more revivable dead if passengers_taken_slots >= passengers_slots + revivable_dead_slots
 	//to prevent infinitely growing the marine force inside of the vehicle
-	revivable_dead_slots = 4
+	revivable_dead_slots = 6
 
 	entrances = list(
 		"left" = list(2, 0),
@@ -38,7 +38,7 @@
 
 	RRS = new
 	RRS.category_name = "Medical Support"
-	RRS.roles = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SYNTH, JOB_WO_SYNTH)
+	RRS.roles = JOB_MEDIC_ROLES_LIST + list(JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SYNTH, JOB_WO_SYNTH)
 	RRS.total = 1
 	role_reserved_slots += RRS
 
@@ -95,25 +95,52 @@
 			camera_int.c_tag = camera.c_tag + " interior"
 
 /*
-** PRESETS
+** PRESETS SPAWNERS
 */
+/obj/effect/vehicle_spawner/apc_med
+	name = "APC MED Spawner"
+	icon = 'icons/obj/vehicles/apc.dmi'
+	icon_state = "apc_base_med"
+	pixel_x = -48
+	pixel_y = -48
 
-/obj/vehicle/multitile/apc/medical/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+/obj/effect/vehicle_spawner/apc_med/Initialize()
+	. = ..()
+	spawn_vehicle()
+	qdel(src)
 
-/obj/vehicle/multitile/apc/medical/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract")
-	take_damage_type(1e8, "abstract")
-	healthcheck()
+//PRESET: no hardpoints
+/obj/effect/vehicle_spawner/apc_med/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
 
-/obj/vehicle/multitile/apc/medical/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	load_misc(APC)
+	load_hardpoints(APC)
+	handle_direction(APC)
+	APC.update_icon()
 
-/obj/vehicle/multitile/apc/medical/plain/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+//PRESET: only wheels installed
+/obj/effect/vehicle_spawner/apc_med/plain/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+//PRESET: default hardpoints, destroyed
+/obj/effect/vehicle_spawner/apc_med/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
+
+	load_misc(APC)
+	load_hardpoints(APC)
+	handle_direction(APC)
+	load_damage(APC)
+	APC.update_icon()
+
+/obj/effect/vehicle_spawner/apc_med/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+//PRESET: default hardpoints
+/obj/effect/vehicle_spawner/apc_med/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

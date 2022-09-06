@@ -239,8 +239,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 
 	///// EYEWEAR
-	/obj/item/clothing/glasses/mgoggles = "goggles-h",
-	/obj/item/clothing/glasses/mgoggles/prescription = "goggles-h",
+	/obj/item/clothing/glasses/mgoggles = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/clothing/glasses/mgoggles/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/sunglasses = "sunglasses",
 	/obj/item/clothing/glasses/sunglasses/prescription = "sunglasses",
 	/obj/item/clothing/glasses/sunglasses/aviator = "aviator",
@@ -279,7 +279,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
 	/obj/item/prop/helmetgarb/trimmed_wire = "trimmed_wire",
 	/obj/item/prop/helmetgarb/helmet_nvg = HELMET_GARB_RELAY_ICON_STATE,
-	/obj/item/prop/helmetgarb/helmet_nvg/functional = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/helmet_gasmask = "helmet_gasmask",
 	/obj/item/prop/helmetgarb/flair_initech = "flair_initech",
 	/obj/item/prop/helmetgarb/flair_io = "flair_io",
@@ -467,7 +468,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 				F.activate_attachment(src, mob, TRUE)
 	..()
 
-
+/obj/item/clothing/head/helmet/marine/has_garb_overlay()
+	return flags_marine_helmet & HELMET_GARB_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
 	if(flags_marine_helmet & HELMET_DAMAGE_OVERLAY && !(flags_marine_helmet & HELMET_IS_DAMAGED))
@@ -568,6 +570,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	specialty = "M12 pattern"
 
+/obj/item/clothing/head/helmet/marine/intel
+	name = "\improper XM12 pattern intelligence helmet"
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	icon_state = "io"
+	item_state = "io"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	specialty = "XM12 pattern intel"
+
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
@@ -658,7 +674,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tanker
 	name = "\improper M50 tanker helmet"
-	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle."
+	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."
 	icon_state = "tanker_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -671,6 +687,55 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
+
+	var/protection_on = FALSE
+	///To remember the helmet's map variant-adjusted icon state
+	var/base_icon_state
+
+	actions_types = list(/datum/action/item_action/toggle)
+	vision_impair = VISION_IMPAIR_NONE
+
+/obj/item/clothing/head/helmet/marine/tanker/Initialize()
+	. = ..()
+	base_icon_state = icon_state
+
+/obj/item/clothing/head/helmet/marine/tanker/attack_self(mob/user)
+	..()
+	toggle()
+
+/obj/item/clothing/head/helmet/marine/tanker/verb/toggle()
+	set category = "Object"
+	set name = "Toggle Tanker Helmet"
+	set src in usr
+
+	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+		if(protection_on)
+			vision_impair = VISION_IMPAIR_NONE
+			flags_inventory &= ~(COVEREYES|COVERMOUTH)
+			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
+			icon_state = base_icon_state
+			eye_protection = 0
+			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
+		else
+			vision_impair = VISION_IMPAIR_MAX
+			flags_inventory |= COVEREYES|COVERMOUTH
+			flags_inv_hide |= HIDEEYES|HIDEFACE
+			icon_state = "[base_icon_state]_on"
+			eye_protection = 2
+			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
+
+		protection_on = !protection_on
+
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			if(H.head == src)
+				H.update_tint()
+
+		update_clothing_icon()	//so our mob-overlays update
+
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
@@ -793,7 +858,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC/gunner

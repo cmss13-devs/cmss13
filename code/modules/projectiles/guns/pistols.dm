@@ -277,7 +277,7 @@
 	icon_state = "kt42"
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/automatic
+	current_mag = /obj/item/ammo_magazine/pistol/kt42
 
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_attachment_offsets()
@@ -330,6 +330,12 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
+
+/obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
@@ -440,6 +446,13 @@
 /obj/item/weapon/gun/pistol/mod88/training
 	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
 
+
+/obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
+
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.
 
@@ -465,6 +478,13 @@
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel)
 
+/obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/lasersight/VP = new(src)
+	VP.flags_attach_features &= ~ATTACH_REMOVABLE
+	VP.hidden = FALSE
+	VP.Attach(src)
+	update_attachable(VP.slot)
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)

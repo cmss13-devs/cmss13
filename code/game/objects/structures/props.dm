@@ -107,7 +107,7 @@
 	var/L
 	if(lit)
 		return
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
 			L = 1
@@ -739,6 +739,21 @@
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
 
+
+/obj/structure/prop/static_tank
+	name = "liquid tank"
+	desc = "Warning, contents under pressure!"
+	icon = 'icons/obj/structures/props/generic_props.dmi'
+	icon_state = "tank"
+	density = 1
+
+/obj/structure/prop/static_tank/fuel
+	desc = "It contains Decatuxole-Hypospaldirol. A non volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	icon_state = "weldtank_old"
+
+/obj/structure/prop/static_tank/water
+	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
+	icon_state = "watertank_old"
 
 //INVULNERABLE PROPS
 

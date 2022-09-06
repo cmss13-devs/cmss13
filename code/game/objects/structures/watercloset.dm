@@ -291,12 +291,12 @@
 	..()
 	wash(O)
 	if(ismob(O))
-		mobpresent += 1
+		mobpresent++
 		check_heat(O)
 
 /obj/structure/machinery/shower/Uncrossed(atom/movable/O)
 	if(ismob(O))
-		mobpresent -= 1
+		mobpresent--
 	..()
 
 //Yes, showers are super powerful as far as washing goes.
@@ -434,7 +434,7 @@
 	icon_state = "sink_emptied_animation"
 	desc = "A sink used for washing one's hands and face."
 	anchored = 1
-	var/busy = 0 	//Something's being washed at the moment
+	var/busy = FALSE 	//Something's being washed at the moment
 
 /obj/structure/sink/Initialize()
 	..()
@@ -470,9 +470,9 @@
 	addtimer(CALLBACK(src, .proc/stop_flow), 6 SECONDS)
 	playsound(loc, 'sound/effects/sinkrunning.ogg', 25, TRUE)
 
-	busy = 1
+	busy = TRUE
 	sleep(40)
-	busy = 0
+	busy = FALSE
 
 	if(!Adjacent(user)) return		//Person has moved away from the sink
 
@@ -520,9 +520,9 @@
 
 	to_chat(usr, SPAN_NOTICE(" You start washing \the [I]."))
 
-	busy = 1
+	busy = TRUE
 	sleep(40)
-	busy = 0
+	busy = FALSE
 
 	if(user.loc != location) return				//User has moved
 	if(!I) return 								//Item's been destroyed while washing

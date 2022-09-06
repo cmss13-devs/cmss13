@@ -11,10 +11,6 @@
 #define STATE_DESTROY 11
 #define STATE_DEFCONLIST 12
 
-#define COOLDOWN_COMM_MESSAGE 1 MINUTES
-#define COOLDOWN_COMM_REQUEST 5 MINUTES
-#define COOLDOWN_COMM_CENTRAL 30 SECONDS
-
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
 // The communications computer
@@ -133,11 +129,11 @@
 
 		if("announce")
 			if(authenticated == 2)
-				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
-					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
+					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
 				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src)))
+				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in view(1,src)))
 					return FALSE
 
 				marine_announcement(input)
@@ -214,7 +210,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 				cooldown_request = world.time
@@ -248,7 +244,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_staff("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A self destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				return TRUE
@@ -501,6 +497,3 @@
 #undef STATE_STATUSDISPLAY
 #undef STATE_ALERT_LEVEL
 #undef STATE_CONFIRM_LEVEL
-#undef COOLDOWN_COMM_MESSAGE
-#undef COOLDOWN_COMM_REQUEST
-#undef COOLDOWN_COMM_CENTRAL

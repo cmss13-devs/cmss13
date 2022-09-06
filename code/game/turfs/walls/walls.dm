@@ -259,7 +259,7 @@
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 
-		thermite -= 1
+		thermite--
 		take_damage(100, user)
 
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))
@@ -312,7 +312,7 @@
 			if(hull)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 			else
-				if(istype(W, /obj/item/tool/weldingtool))
+				if(iswelder(W))
 					var/obj/item/tool/weldingtool/WT = W
 					WT.remove_fuel(0,user)
 				thermitemelt(user)
@@ -381,17 +381,11 @@
 	switch(d_state)
 		if(WALL_STATE_WELD)
 			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = W
-				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
-				SPAN_NOTICE("You begin slicing through the outer plating."))
-				if(!WT || !WT.isOn())
-					return
-				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				d_state = WALL_STATE_SCREW
-				user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
-				return
+				try_weldingtool_deconstruction(WT, user)
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -441,7 +435,7 @@
 	return attack_hand(user)
 
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
-	if(!damage || !istype(W, /obj/item/tool/weldingtool))
+	if(!damage || !iswelder(W))
 		return FALSE
 
 	var/obj/item/tool/weldingtool/WT = W
@@ -457,6 +451,25 @@
 		to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 
 	return TRUE
+
+/turf/closed/wall/proc/try_weldingtool_deconstruction(obj/item/tool/weldingtool/WT, mob/user)
+	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		return
+	if(!(WT.remove_fuel(0, user)))
+		to_chat(user, SPAN_WARNING("You need more welding fuel!"))
+		return
+
+	playsound(src, 'sound/items/Welder.ogg', 25, 1)
+	user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
+	SPAN_NOTICE("You begin slicing through the outer plating."))
+	if(!WT || !WT.isOn())
+		return
+	if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return
+	d_state = WALL_STATE_SCREW
+	user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
+	return
 
 /turf/closed/wall/proc/try_nailgun_usage(obj/item/W, mob/user)
 	if((!damage && !acided_hole) || !istype(W, /obj/item/weapon/gun/smg/nailgun))

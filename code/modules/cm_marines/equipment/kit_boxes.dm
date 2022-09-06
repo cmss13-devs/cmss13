@@ -46,10 +46,11 @@
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
-	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "sniper"
 
 /obj/item/storage/box/spec/sniper/fill_preset_inventory()
+	// sniper
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
@@ -64,7 +65,8 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/sniper/M42A(src)
 	new /obj/item/facepaint/sniper(src)
-
+	// spotter
+	new /obj/item/storage/box/kit/spotter(src)
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
@@ -148,52 +150,74 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
-var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "Demo" = 2)
+ //-----------------SPEC KIT BOX------------------
+ //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
-/obj/item/spec_kit //For events/WO, allowing the user to choose a specalist kit
+/obj/item/spec_kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "deliverycrate"
+	icon_state = "spec_kit"
+	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
-/obj/item/spec_kit/attack_self(mob/user)
-	..()
-
-	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
-		return
-	if(select_and_spawn(user))
-		qdel(src)
-
+//this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
 /obj/item/spec_kit/asrs
-	desc = "A paper box. Open it and get a specialist kit. Works only for squad riflemen."
+	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/asrs/attack_self(mob/user)
-	..()
+/obj/item/spec_kit/examine(var/mob/user)
+	. = ..()
+	if(!ishuman(user) && !isobserver(user))
+		return
 
-	if(user.job == JOB_SQUAD_MARINE)
-		if(select_and_spawn(user))
-			qdel(src)
+	var/allowed_roles
+	if(length(allowed_roles_list))
+		allowed_roles = ""
+		for(var/role in allowed_roles_list)
+			if(length(allowed_roles))
+				allowed_roles += ", "
+			allowed_roles += SPAN_HELPFUL("[role]")
 	else
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad rifleman!"))
+		allowed_roles = SPAN_HELPFUL("anyone")
+	to_chat(user, SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet."))
 
-/obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
-	if(!istype(user))
+/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
+	..()
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
 		return
 
-	var/selection = tgui_input_list(user, "Pick your equipment", "Specialist Kit Selection", kits)
-	if(!selection)
+	if(can_use(user))
+		if(select_and_spawn(user))
+			qdel(src)
+			return
+	else
+		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
+	return
+
+/obj/item/spec_kit/proc/can_use(var/mob/living/carbon/human/user)
+	if(!length(allowed_roles_list))
+		return TRUE
+
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				return FALSE
+			return TRUE
+
+/obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
+	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
+	if(!selection || QDELETED(src))
 		return FALSE
-	if(!kits[selection] || kits[selection] <= 0)
-		to_chat(user, SPAN_NOTICE("No more kits of this type may be chosen!!"))
-		return FALSE
-	if(!istype(user.wear_id, /obj/item/card/id))
-		to_chat(user, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
+	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
+		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
+		return FALSE
 	var/obj/item/card/id/ID = user.wear_id
-	if(ID.registered_ref != WEAKREF(user))
-		to_chat(user, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+	if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
 		return
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/spec_box
@@ -215,15 +239,19 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 			spec_box = new /obj/item/storage/box/spec/scout(T)
 			specialist_assignment = "Scout"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			//this is to be able to use C4s that are coming with the kit
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 		if("Demo")
 			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
 			specialist_assignment = "Demo"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			//this is to be able to use C4s that are coming with the kit
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE
@@ -381,7 +409,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
 	new /obj/item/pamphlet/skill/medical(src)
-	new /obj/item/storage/pouch/medical/full(src)
+	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/clothing/glasses/hud/sensor(src)
 	new /obj/item/roller(src)
@@ -407,7 +435,10 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
-	new /obj/item/device/encryptionkey/tactics(src)
+	new /obj/item/device/encryptionkey/intel(src)
+	new /obj/item/pamphlet/skill/intel(src)
+	new /obj/item/device/motiondetector/intel(src)
+	new /obj/item/storage/pouch/document/small(src)
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
@@ -432,6 +463,22 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 
+/obj/item/storage/box/kit/cryo_self_defense
+	name = "\improper Cryo Self Defense Kit"
+	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
+	icon_state = "cryo_defense_kit"
+	storage_slots = 2
+
+/obj/item/storage/box/kit/cryo_self_defense/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_e"
+
+/obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
+	new /obj/item/attachable/bayonet(src)
+	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
@@ -461,3 +508,15 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+
+/obj/item/storage/box/kit/spotter
+	name = "\improper Spotter Kit"
+	pro_case_overlay = "spotter"
+
+/obj/item/storage/box/kit/spotter/fill_preset_inventory()
+	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/suit/storage/marine/ghillie(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	new /obj/item/device/binoculars/range/designator/spotter(src)
+	new /obj/item/pamphlet/skill/spotter(src)

@@ -54,7 +54,7 @@
 
 
 		if (VV_NUM)
-			.["value"] = input("Enter new number:", "Num", current_value) as null|num
+			.["value"] = tgui_input_real_number(usr, "Enter new number:", "Num", current_value)
 			if (.["value"] == null)
 				.["class"] = null
 				return

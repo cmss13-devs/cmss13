@@ -108,7 +108,7 @@
 /obj/structure/machinery/defenses/sentry/examine(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] rounds loaded."))
+		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded."))
 	else
 		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
 
@@ -437,6 +437,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
+	omni_directional = TRUE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -519,10 +520,30 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine.  Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
-	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE
 	static = TRUE
+	var/obj/structure/machinery/camera/cas/linked_cam
+	var/static/sentry_count = 1
+	var/sentry_number
+
+/obj/structure/machinery/defenses/sentry/launchable/Initialize()
+	. = ..()
+	sentry_number = sentry_count
+	sentry_count++
+
+/obj/structure/machinery/defenses/sentry/launchable/Destroy()
+	QDEL_NULL(linked_cam)
+	. = ..()
+
+/obj/structure/machinery/defenses/sentry/launchable/power_on_action()
+	. = ..()
+	linked_cam = new(loc, "[name] [sentry_number] at [get_area(src)] ([obfuscate_x(x)], [obfuscate_y(y)])")
+
+/obj/structure/machinery/defenses/sentry/launchable/power_off_action()
+	. = ..()
+	QDEL_NULL(linked_cam)
+
 
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
 	return TRUE // We want to be able to turn it on / off while keeping it immobile

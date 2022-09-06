@@ -7,15 +7,15 @@
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
-	max_heavies = 4
+	max_engineers = 4
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
 
 /datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc)
-	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	leaders = echo_squad.num_leaders
+	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
+	leaders = cryo_squad.num_leaders
 	return ..()
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/M, var/turf/override_spawn_loc)
@@ -30,25 +30,25 @@
 	M.transfer_to(H, TRUE)
 
 	sleep(5)
-	var/datum/squad/echo/echo_squad = RoleAuthority.squads_by_type[/datum/squad/echo]
-	if(leaders < echo_squad.max_leaders)
+	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
+	if(leaders < cryo_squad.max_leaders && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		leaders++
-		arm_equipment(H, /datum/equipment_preset/uscm/leader/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/leader/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (medics < max_medics)
+	else if (medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		arm_equipment(H, /datum/equipment_preset/uscm/medic/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/medic/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
-	else if (heavies < max_heavies)
-		heavies++
-		arm_equipment(H, /datum/equipment_preset/uscm/engineer/echo, TRUE, TRUE)
+	else if (engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		arm_equipment(H, /datum/equipment_preset/uscm/engineer/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm/pfc/echo, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/pfc/cryo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
@@ -60,7 +60,7 @@
 	mob_min = 8
 	mob_max = 30
 	probability = 0
-	max_heavies = 8
+	max_engineers = 8
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"

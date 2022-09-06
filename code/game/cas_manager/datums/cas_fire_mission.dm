@@ -100,30 +100,36 @@
 
 	var/relative_dir
 	for(var/mob/M in range(15, initial_turf))
-		relative_dir = get_dir(M, initial_turf)
+		if(get_turf(M) == initial_turf)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FLIES TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 
 	// Xenos have time to react to the first message
 	sleep(0.5 SECONDS)
 
 	for(var/mob/M in range(10, initial_turf))
-		relative_dir = get_dir(M, initial_turf)
+		if(get_turf(M) == initial_turf)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FIRES TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_HIGHDANGER("A [ds_identifier] FIRES TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 
 	var/turf/current_turf = initial_turf

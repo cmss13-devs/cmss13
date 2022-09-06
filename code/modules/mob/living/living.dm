@@ -318,6 +318,9 @@
 		launch_impact(AM)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_COLLIDE, AM) & COMPONENT_LIVING_COLLIDE_HANDLED)
+		return
+
 	if(!isliving(AM))
 		..()
 		return
@@ -452,7 +455,7 @@
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
-		return 1
+		return TRUE
 
 /mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE)
 	if(do_checks)

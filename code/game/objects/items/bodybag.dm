@@ -43,21 +43,15 @@
 		used = CB.used
 
 /obj/item/storage/box/bodybags
-	name = "body bags"
+	name = "body bags box"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
+	can_hold = list(/obj/item/bodybag)
 
-/obj/item/storage/box/bodybags/New()
-	..()
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-
+/obj/item/storage/box/bodybags/fill_preset_inventory()
+	for(var/i = 1 to 7)
+		new /obj/item/bodybag(src)
 
 /obj/structure/closet/bodybag
 	name = "body bag"

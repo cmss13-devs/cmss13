@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()
@@ -131,7 +131,6 @@
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/H)
 	add_random_synth_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/marine(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_L_HAND)

@@ -19,10 +19,14 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
-/datum/equipment_preset/survivor/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/load_gear(mob/living/carbon/human/H) // Essentially where you will put the most essential piece of kit you want survivors to spawn with.
 	add_random_survivor_equipment(H)
 	add_survivor_weapon(H)
 	add_survivor_weapon_pistol(H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform
@@ -45,25 +49,16 @@
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/virologist(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/green(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/chem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/green(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(H), WEAR_IN_JACKET)
 
@@ -79,7 +74,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/tox(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor(H), WEAR_JACKET)
 
@@ -95,7 +89,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple(H), WEAR_JACKET)
 
@@ -106,7 +99,6 @@
 	assignment = "CORSAT Researcher"
 
 /datum/equipment_preset/survivor/scientist/corsat/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
@@ -120,7 +112,6 @@
 /datum/equipment_preset/survivor/scientist/florina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/purple(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/purple(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/science(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
@@ -137,7 +128,6 @@
 /datum/equipment_preset/survivor/scientist/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(H), WEAR_EYES)
@@ -153,7 +143,6 @@
 /datum/equipment_preset/survivor/scientist/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/virologist(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/green(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
@@ -174,21 +163,16 @@
 
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic(H), WEAR_JACKET)
 	add_random_survivor_medical_gear(H)
 
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -238,7 +222,10 @@
 	assignment = "Kutjevo Doctor"
 
 /datum/equipment_preset/survivor/doctor/kutjevo/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	add_random_kutjevo_survivor_uniform(H)
 	add_random_kutjevo_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -302,21 +289,13 @@
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	add_random_cl_survivor_loot(H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	add_random_cl_survivor_loot(H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
 
 	..()
 
@@ -354,18 +333,17 @@
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -390,18 +368,11 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
 
 	..()
 
@@ -414,8 +385,10 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
 	..()
@@ -491,7 +464,7 @@
 
 	..()
 
-// ----- Prisioner Survivor
+// ----- Prisioner Survivors
 
 /datum/equipment_preset/survivor/prisoner
 	name = "Survivor - Prisoner"
@@ -502,18 +475,30 @@
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H.back), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	..()
+
+/datum/equipment_preset/survivor/gangleader
+	name = "Survivor - Gang Leader"
+	assignment = "Gang Leader"
+	skills = /datum/skills/civilian/survivor/gangleader
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/datum/equipment_preset/survivor/gangleader/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
+	if(prob(50)) H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H.back), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
 	..()
 
@@ -527,20 +512,12 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/civilian/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
 	..()
 
@@ -554,21 +531,13 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/chef(H), WEAR_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/chef(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/kitchen/rollingpin(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -587,21 +556,13 @@
 	)
 
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/hyd(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/apron(H), WEAR_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/hyd(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/apron(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/hatchet(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -615,22 +576,13 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/bible/booze(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -693,24 +645,14 @@
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+		
 	..()
 
 
@@ -833,35 +775,6 @@
 
 	..()
 
-// ----- Gang Leader Survivor
-
-/datum/equipment_preset/survivor/gangleader
-	name = "Survivor - Gang Leader"
-	assignment = "Gang Leader"
-	skills = /datum/skills/civilian/survivor/gangleader
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-
-/datum/equipment_preset/survivor/gangleader/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-
-
-
-	..()
-
 // ----- Miner Survivor
 
 /datum/equipment_preset/survivor/miner
@@ -872,21 +785,13 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/pickaxe(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -901,21 +806,12 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88(H), WEAR_WAIST)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	add_random_cl_survivor_loot(H)
 	..()
 
 // ---- Trucker Survivor
@@ -932,19 +828,14 @@
 		)
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -954,10 +845,8 @@
 
 /datum/equipment_preset/survivor/trucker/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargo(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 
@@ -983,7 +872,6 @@
 
 /datum/equipment_preset/survivor/trucker/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/worker_overalls(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big(H), WEAR_EYES)
@@ -998,7 +886,6 @@
 
 /datum/equipment_preset/survivor/trucker/trijent/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat(H), WEAR_HEAD)
@@ -1026,18 +913,17 @@
 	)
 
 /datum/equipment_preset/survivor/colonial_marshal/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -1122,17 +1008,16 @@
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	add_random_cl_survivor_loot(H)
+
+	..()
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat
 	name = "Survivor - Interstellar Commerce Commission Liaison CORSAT"
@@ -1148,8 +1033,8 @@
 
 // ----- Roughneck Survivor
 
-/datum/equipment_preset/survivor/roughneck/rifle
-	name = "Survivor - Roughneck Rifle"
+/datum/equipment_preset/survivor/roughneck
+	name = "Survivor - Roughneck"
 	assignment = "Roughneck"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -1157,53 +1042,16 @@
 		ACCESS_CIVILIAN_PUBLIC
 		)
 
-/datum/equipment_preset/survivor/roughneck/rifle/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-
-	..()
-
-/datum/equipment_preset/survivor/roughneck/rifle/m16
-	name = "Survivor - Roughneck M16"
-	assignment = "Roughneck"
-
-/datum/equipment_preset/survivor/roughneck/rifle/m16/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -1222,17 +1070,14 @@
 		)
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	add_random_cl_survivor_loot(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -1270,16 +1115,13 @@
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	add_pmc_survivor_weapon(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	..()
 
@@ -1297,7 +1139,6 @@
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
@@ -1310,18 +1151,16 @@
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-
-	add_survivor_weapon(H)
+	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(H), WEAR_IN_JACKET)
+	add_random_cl_survivor_loot(H)
 
 	..()
 
@@ -1342,7 +1181,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 
 	..()
 
@@ -1362,11 +1200,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
-
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 
 	..()
 
@@ -1392,8 +1227,5 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 
 	..()

@@ -8,6 +8,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6
+	melee_vehicle_damage = XENO_DAMAGE_TIER_9	//Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_10
@@ -29,6 +30,8 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	can_be_revived = FALSE
+
+	behavior_delegate_type = /datum/behavior_delegate/queen
 
 	spit_delay = 25
 
@@ -59,7 +62,7 @@
 
 /mob/hologram/queen
 	name = "Queen Eye"
-	action_icon_state = "queen_eye"
+	action_icon_state = "queen_exit"
 
 	color = "#a800a8"
 
@@ -285,6 +288,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
+		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
 	)
 
@@ -318,6 +322,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
+		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
 	)
 
@@ -436,8 +441,15 @@
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
+
 	if(hive && hive.living_xeno_queen == src)
-		hive.set_living_xeno_queen(null)
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
+		for(var/mob/living/carbon/Xenomorph/Queen/queen in hive.totalXenos)
+			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+				next_queen = queen
+				break
+		hive.set_living_xeno_queen(next_queen) // either null or a queen
+
 	return ..()
 
 /mob/living/carbon/Xenomorph/Queen/Life(delta_time)
@@ -503,8 +515,9 @@
 	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 
 	if(txt)
-		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
-		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
+		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
+		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
+		xeno_maptext(txt, "Hive Orders Updated", hivenumber)
 		hive.hive_orders = txt
 		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else
@@ -552,7 +565,7 @@
 	pslash_delay = TRUE
 	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph.proc/do_claw_toggle_cooldown), 30 SECONDS)
 
-	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"))
+	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"), theme="hive_status")
 
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
@@ -575,7 +588,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	var/choice = tgui_input_list(usr, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"))
+	var/choice = tgui_input_list(usr, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
@@ -599,7 +612,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	var/choice = tgui_input_list(usr, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"))
+	var/choice = tgui_input_list(usr, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
@@ -714,6 +727,7 @@
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
+		hive.banished_ckeys   = list() // Reset the banished ckey list
 	return ..()
 
 
@@ -745,8 +759,9 @@
 		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/eye,
+		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/onclick/queen_tacmap,
+		/datum/action/xeno_action/onclick/eye,
 		/datum/action/xeno_action/activable/info_marker/queen
 	)
 
@@ -828,25 +843,6 @@
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Queen/update_icons()
-	icon = queen_standing_icon
-	if(stat == DEAD)
-		icon_state = "[mutation_type] Queen Dead"
-	else if(ovipositor)
-		icon = queen_ovipositor_icon
-		icon_state = "[mutation_type] Queen Ovipositor"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Queen Sleeping"
-		else
-			icon_state = "[mutation_type] Queen Knocked Down"
-	else
-		icon_state = "[mutation_type] Queen Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
-
 /mob/living/carbon/Xenomorph/Queen/handle_special_state()
 	if(ovipositor)
 		return TRUE
@@ -864,3 +860,19 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1)
+
+/datum/behavior_delegate/queen
+	name = "Queen Behavior Delegate"
+
+/datum/behavior_delegate/queen/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	var/mob/living/carbon/Xenomorph/Queen/Queen = bound_xeno
+	if(Queen.ovipositor)
+		Queen.icon = Queen.queen_ovipositor_icon
+		Queen.icon_state = "[Queen.mutation_type] Queen Ovipositor"
+		return TRUE
+
+	// Switch icon back and then let normal icon behavior happen
+	Queen.icon = Queen.queen_standing_icon

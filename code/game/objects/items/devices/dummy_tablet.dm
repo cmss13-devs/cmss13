@@ -103,7 +103,7 @@
             if (!istype(organ))
                 return
             var/amount = 0
-            amount = input(usr, "Amount?") as num|null
+            amount = tgui_input_real_number(usr, "Amount?")
             if (amount==0)
                 return
             organ.take_damage(amount)
@@ -117,7 +117,7 @@
             if(limb.status & LIMB_DESTROYED)
                 return
             var/amount = 0
-            amount = input(usr, "Amount?") as num|null
+            amount = tgui_input_real_number(usr, "Amount?")
             if (amount==0)
                 return
             limb.take_damage(amount, 0)
@@ -131,13 +131,13 @@
             if(limb.status & LIMB_DESTROYED)
                 return
             var/amount = 0
-            amount = input(usr, "Amount?") as num|null
+            amount = tgui_input_real_number(usr, "Amount?")
             if (amount==0)
                 return
             limb.take_damage(0, amount)
         if ("toxin")
             var/amount = 0
-            amount = input(usr, "Amount?") as num|null
+            amount = tgui_input_real_number(usr, "Amount?")
             if (amount==0)
                 return
             linked_dummy.reagents.add_reagent("toxin", amount)
@@ -153,7 +153,7 @@
             limb.fracture(100)
         if ("blood_loss")
             var/amount = 0
-            amount = input(usr, "Amount?") as num|null
+            amount = tgui_input_real_number(usr, "Amount?")
             if (amount==0)
                 return
             linked_dummy.drip(amount)
@@ -191,7 +191,7 @@
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
-            limb.droplimb(1, 0, "tablet")
+            limb.droplimb(TRUE, TRUE, "tablet")
             playsound(loc, 'sound/weapons/slice.ogg', 25)
         if("reset")
             linked_dummy.revive()

@@ -156,60 +156,60 @@
 	},
 /area/bigredv2/outside/telecomm)
 "y" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "z" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "A" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "B" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "C" = (
 /turf/open/mars_cave,
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "D" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/garage_workshop)
 "E" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave,
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "F" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "G" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
 	tag = "icon-mars_cave_23"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 "U" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
 	tag = "icon-mars_cave_5"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/lz1_telecomm_cas)
 
 (1,1,1) = {"
 a

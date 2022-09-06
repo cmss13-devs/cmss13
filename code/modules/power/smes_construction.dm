@@ -73,7 +73,7 @@
 		if(G.siemens_coefficient == 0)
 			user_protected = 1
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
-	message_staff("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
+	message_staff("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
 
 
 	switch (intensity)
@@ -194,7 +194,7 @@
 			to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
 			return
 
-		if (online || chargemode)
+		if (outputting || input_attempt)
 			to_chat(user, SPAN_WARNING("Turn off the [src] first!"))
 			return
 

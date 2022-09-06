@@ -720,19 +720,20 @@
 
 // This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
-	name = "Napthal Gel"
+	name = "Napalm B-Gel"
 	id = "napalmgel"
-	description = "Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot."
+	description = "Unlike its liquid contemporaries, this gellied variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/gel/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_INSTANT,
+		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
 		PROPERTY_RADIUS 	= 7
 	)
 	. = ..()
@@ -759,12 +760,13 @@
 /datum/reagent/napalm/green
 	name = "Napalm B"
 	id = "napalmb"
-	description = "A wide-spreading sticky combustable liquid chemical that burns slowly with a low temperature."
+	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
 	flameshape = FLAMESHAPE_TRIANGLE
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/green/New()
 	properties = list(
@@ -959,7 +961,7 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC))
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable)
 			volume = 0
 			return
 		if(volume < overdose_critical)

@@ -44,6 +44,13 @@
 /mob/living/carbon/Xenomorph/update_icons()
 	if(!caste)
 		return
+
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
+
+	if(behavior_delegate?.on_update_icons())
+		return
+
 	if(stat == DEAD)
 		icon_state = "[mutation_type] [caste.caste_type] Dead"
 	else if(lying)
@@ -53,9 +60,6 @@
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
 	else
 		icon_state = "[mutation_type] [caste.caste_type] Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()

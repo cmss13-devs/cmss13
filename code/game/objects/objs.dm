@@ -148,7 +148,7 @@
 	return
 
 
-/obj/proc/hear_talk(mob/M, text)
+/obj/proc/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
 	return
 
 /obj/attack_hand(mob/user)
@@ -257,7 +257,6 @@
 			M.Turn(90)
 			L.Turn(270)
 			target.apply_transform(M)
-			target.langchat_image.transform = L
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
@@ -368,3 +367,13 @@
 
 /obj/proc/extinguish()
 	return
+
+//returns time or -1 if unmeltable
+/obj/proc/get_applying_acid_time()
+	if(unacidable)
+		return -1
+
+	if(density)//dense objects are big, so takes longer to melt.
+		return 4 SECONDS
+
+	return 1 SECONDS

@@ -49,7 +49,7 @@
 		var/atom/A = i
 		options[initial(A.name)] = i
 
-	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options)
+	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options, theme="hive_status")
 
 	if(!input)
 		return
@@ -58,7 +58,7 @@
 
 	var/cleared_amount = 0
 	for(var/i in built_structures[type])
-		cleared_amount += 1
+		cleared_amount++
 		if(isturf(i))
 			var/turf/T = i
 			T.ScrapeAway()
@@ -131,12 +131,10 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
-/*
-/mob/living/carbon/Xenomorph/verb/enter_tree()
-	set name = "Enter Techtree"
-	set desc = "Enter the Xenomorph techtree"
-	set category = "Alien.Techtree"
+// /mob/living/carbon/Xenomorph/verb/enter_tree()
+// 	set name = "Enter Techtree"
+// 	set desc = "Enter the Xenomorph techtree"
+// 	set category = "Alien.Techtree"
 
-	var/datum/techtree/T = GET_TREE(TREE_XENO)
-	T.enter_mob(src)
-*/
+// 	var/datum/techtree/T = GET_TREE(TREE_XENO)
+// 	T.enter_mob(src)

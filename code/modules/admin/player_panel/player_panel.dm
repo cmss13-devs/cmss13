@@ -60,15 +60,15 @@
 					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b></font>"
 					body += "</td><td align='center'>";
 
-					body += "<a href='?src=\ref[src];ahelp=adminplayeropts;extra="+ref+"'>PP</a> - "
-					body += "<a href='?src=\ref[src];playerpanelextended="+ref+"'>PPE</a> - "
-					body += "<a href='?src=\ref[src];notes=show;mob="+ref+"'>N</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];playerpanelextended="+ref+"'>PPE</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];notes=show;mob="+ref+"'>N</a> - "
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
-					body += "<a href='?src=\ref[src];traitor="+ref+"'>TP</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];traitor="+ref+"'>TP</a> - "
 					body += "<a href='?src=\ref[usr];priv_msg="+key+"'>PM</a> - "
-					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
-					body += "<a href='?src=\ref[src];adminplayerobservejump="+ref+"'>JMP</a><br>"
-					body += "<a href='?src=\ref[src];adminalert="+ref+"'>ALERT</a>"
+					body += "<a href='?src=\ref[src];[HrefToken()];subtlemessage="+ref+"'>SM</a> - "
+					body += "<a href='?src=\ref[src];[HrefToken()];adminplayerobservejump="+ref+"'>JMP</a><br>"
+					body += "<a href='?src=\ref[src];[HrefToken()];adminalert="+ref+"'>ALERT</a>"
 					body += "</td></tr></table>";
 
 					span.innerHTML = body
@@ -166,7 +166,7 @@
 			<tr id='title_tr'>
 				<td align='center'>
 					<font size='5'><b>Player panel</b></font><br>
-					Hover over a line to see more information - <a href='?src=\ref[src];check_antagonist=1'>Check antagonists</a>
+					Hover over a line to see more information - <a href='?src=\ref[src];[HrefToken()];check_antagonist=1'>Check antagonists</a>
 					<p>
 				</td>
 			</tr>
@@ -306,11 +306,11 @@
 			dat += "<td>Unknown</td>"
 
 
-		dat += {"<td align=center><a HREF='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>X</a></td>
+		dat += {"<td align=center><a HREF='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>X</a></td>
 		<td>[M.computer_id]</td>
 		<td>[M.lastKnownIP]</td>
-		<td><a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a></td>
-		<td><a href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</a></td>
+		<td><a href='?src=\ref[src];[HrefToken()];adminplayerobservejump=\ref[M]'>JMP</a></td>
+		<td><a href='?src=\ref[src];[HrefToken()];notes=show;mob=\ref[M]'>Notes</a></td>
 		"}
 
 
@@ -338,7 +338,7 @@
 				dat += "<td>[location]</td>"
 				dat += "<td>[H.faction]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[H]'>F</a></td>"
-				dat += "<td><a href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[H]'>PP</a></td>"
+				dat += "<td><a href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[H]'>PP</a></td>"
 		dat += "</table>"
 
 	if(SSticker.mode.survivors.len)
@@ -350,7 +350,7 @@
 				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+				dat += "<td><A href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
 	if(SSticker.mode.xenomorphs.len)
@@ -362,7 +362,7 @@
 				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+				dat += "<td><A href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
 	if(SSticker.mode.survivors.len)
@@ -374,7 +374,7 @@
 				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+				dat += "<td><A href='?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
 	dat += "</body></html>"
@@ -398,10 +398,10 @@
 				if(EVACUATION_STATUS_COMPLETE) dat += 		"COMPLETE"
 			dat += "<br>"
 
-			dat += "<a href='?src=\ref[src];evac_authority=init_evac'>Initiate Evacuation</a><br>"
-			dat += "<a href='?src=\ref[src];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
-			dat += "<a href='?src=\ref[src];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
-			if(check_rights(R_ADMIN, 0)) dat += "<a href='?src=\ref[src];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
+			if(check_rights(R_ADMIN, 0)) dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
 		if(check_rights(R_ADMIN, 0))
 			dat += "<b>Self Destruct:</b> "
@@ -412,12 +412,12 @@
 				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += 		"FINISHED"
 			dat += "<br>"
 
-			dat += "<a href='?src=\ref[src];evac_authority=init_dest'>Unlock Self Destruct control panel for humans</a><br>"
-			dat += "<a href='?src=\ref[src];evac_authority=cancel_dest'>Lock Self Destruct control panel for humans</a><br>"
-			dat += "<a href='?src=\ref[src];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</a><br>"
-			dat += "<a href='?src=\ref[src];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_dest'>Unlock Self Destruct control panel for humans</a><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_dest'>Lock Self Destruct control panel for humans</A><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</A><br>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</A><br>"
 
-		dat += "<br><a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
+		dat += "<br><A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else
@@ -437,7 +437,7 @@
 	var/txt = {"
 		<tr>
 			<td>
-				<a href='?src=\ref[admins];ahelp=adminplayeropts;extra=\ref[M]'>[M.real_name]</a>
+				<a href='?src=\ref[admins];adminplayeropts=\ref[M]'>[M.real_name]</a>
 				[M.client ? "" : " <i>(logged out)</i>"]
 				[M.is_dead() ? " <b><font color='red'>(DEAD)</font></b>" : ""]
 			</td>

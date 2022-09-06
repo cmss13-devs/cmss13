@@ -180,7 +180,7 @@ var/savefile/Banlist
 				expiry = "Removal Pending"
 		else
 			expiry = "Permaban"
-		var/unban_link = "<A href='?src=\ref[src];unbanf=[ban.ckey]'>(U)</A>"
+		var/unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(U)</A>"
 
 		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Reason: [ban.reason])</td></tr>"
 
@@ -237,7 +237,7 @@ var/savefile/Banlist
 		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 		return
 	var/mob_key = M.ckey
-	var/mins = input(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time",1440) as num|null
+	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 43800, 1)
 	if(!mins)
 		return
 	if(mins >= 525600) mins = 525599

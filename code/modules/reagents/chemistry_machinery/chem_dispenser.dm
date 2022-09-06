@@ -37,7 +37,7 @@
 		nanomanager.update_uis(src) // update all UIs attached to src
 		ui_check = 15
 	else
-		ui_check -= 1
+		ui_check--
 
 /obj/structure/machinery/chem_dispenser/Initialize()
 	. = ..()

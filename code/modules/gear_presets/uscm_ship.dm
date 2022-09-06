@@ -12,7 +12,7 @@
 	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)
 
@@ -27,7 +27,6 @@
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -107,7 +106,6 @@
 /datum/equipment_preset/uscm_ship/chief_engineer
 	name = "USCM Chief Engineer (CE)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -218,7 +216,6 @@
 /datum/equipment_preset/uscm_ship/ro
 	name = "USCM Requisitions Officer (RO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -291,14 +288,13 @@
 /datum/equipment_preset/uscm_ship/commander
 	name = "USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //All languages.
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
 	rank = JOB_CO
 	paygrade = "MO4"
 	role_comm_title = "CO"
-	minimum_age = 40
+	minimum_age = 30
 	skills = /datum/skills/commander
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
@@ -367,7 +363,7 @@
 	rank = JOB_CO
 	paygrade = "MO5"
 	role_comm_title = "CO"
-	minimum_age = 45
+	minimum_age = 35
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
@@ -376,7 +372,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commanding Officer (CO++)"
-	idtype = /obj/item/card/id/admiral
+	idtype = /obj/item/card/id/general
 	paygrade = "MO5"
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
@@ -388,7 +384,6 @@
 /datum/equipment_preset/uscm_ship/xo
 	name = "USCM Executive Officer (XO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH) //All languages.
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
@@ -607,7 +602,7 @@
 	name = "USCM Officer (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	idtype = /obj/item/card/id/admiral
+	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"

@@ -40,7 +40,7 @@
 	if(length(T.caste.deevolves_to) == 1)
 		newcaste = T.caste.deevolves_to[1]
 	else if(length(T.caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to)
+		newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to, theme="hive_status")
 
 	if(!newcaste)
 		return
@@ -121,6 +121,9 @@
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+
+	T.transfer_observers_to(new_xeno)
+
 	qdel(T)
 	..()
 	return
@@ -230,7 +233,7 @@
 			possible_xenos += T
 
 		if(possible_xenos.len > 1)
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph leader?", possible_xenos)
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.overwatch(selected_xeno)
@@ -288,46 +291,63 @@
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
-	if(X.observed_xeno)
-		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
 
-		if(T.banished)
-			to_chat(X, SPAN_XENOWARNING("This xenomorph is already banished!"))
-			return
+	var/choice = tgui_input_list(X, "Choose a xenomorph to banish:", "Banish", X.hive.totalXenos, theme="hive_status")
 
-		if(T.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
-			return
+	if(!choice)
+		return
 
-		// No banishing critted xenos
-		if(T.health < 0)
-			to_chat(X, SPAN_XENOWARNING("What's the point? They're already about to die."))
-			return
+	var/mob/living/carbon/Xenomorph/T
 
-		var/confirm = alert(X, "Are you sure you want to banish [T] from the hive? This should only be done with good reason.", , "Yes", "No")
-		if(confirm == "No")
-			return
+	for(var/mob/living/carbon/Xenomorph/xeno in X.hive.totalXenos)
+		if(html_encode(xeno.name) == html_encode(choice))
+			T = xeno
+			break
 
-		var/reason = stripped_input(X, "Provide a reason for banishing [T]. This will be announced to the entire hive!")
-		if(isnull(reason))
-			to_chat(X, SPAN_XENOWARNING("You must provide a reason for banishing [T]."))
-			return
+	if(T == X)
+		to_chat(X, SPAN_XENOWARNING("You cannot banish yourself."))
+		return
 
-		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T || T.health < 0)
-			return
+	if(T.banished)
+		to_chat(X, SPAN_XENOWARNING("This xenomorph is already banished!"))
+		return
 
-		// Let everyone know they were banished
-		xeno_announcement("By [X]'s will, [T] has been banished from the hive!\n\n[reason]", X.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
-		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
+	if(T.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
+		return
 
-		T.banished = TRUE
-		T.hud_update_banished()
-		T.lock_evolve = TRUE
+	// No banishing critted xenos
+	if(T.health < 0)
+		to_chat(X, SPAN_XENOWARNING("What's the point? They're already about to die."))
+		return
 
-		message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
+	var/confirm = alert(X, "Are you sure you want to banish [T] from the hive? This should only be done with good reason. (Note this prevents them from rejoining the hive after dying for 30 minutes as well unless readmitted)", , "Yes", "No")
+	if(confirm == "No")
+		return
 
-	else
-		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to banish."))
+	var/reason = stripped_input(X, "Provide a reason for banishing [T]. This will be announced to the entire hive!")
+	if(isnull(reason))
+		to_chat(X, SPAN_XENOWARNING("You must provide a reason for banishing [T]."))
+		return
+
+	if(!X.check_state() || !X.check_plasma(plasma_cost) || T.health < 0)
+		return
+
+	// Let everyone know they were banished
+	xeno_announcement("By [X]'s will, [T] has been banished from the hive!\n\n[reason]", X.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
+	to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
+
+	T.banished = TRUE
+	T.hud_update_banished()
+	T.lock_evolve = TRUE
+	X.hive.banished_ckeys[T.name] = T.ckey
+	addtimer(CALLBACK(src, .proc/remove_banish, X.hive, T.name), 30 MINUTES)
+
+	message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
+
+/datum/action/xeno_action/onclick/banish/proc/remove_banish(var/datum/hive_status/hive, var/name)
+	hive.banished_ckeys.Remove(name)
+
 
 // Readmission = un-banish
 
@@ -336,9 +356,31 @@
 	if(!X.check_state())
 		return
 
-	if(X.observed_xeno)
-		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
 
+	var/choice = tgui_input_list(X, "Choose a xenomorph to readmit:", "Re-admit", X.hive.banished_ckeys, theme="hive_status")
+
+	if(!choice)
+		return
+
+	var/banished_ckey
+	var/banished_name
+
+	for(var/mob_name in X.hive.banished_ckeys)
+		if(X.hive.banished_ckeys[mob_name] == X.hive.banished_ckeys[choice])
+			banished_ckey = X.hive.banished_ckeys[mob_name]
+			banished_name = mob_name
+			break
+
+	var/banished_living = FALSE
+	var/mob/living/carbon/Xenomorph/T
+
+	for(var/mob/living/carbon/Xenomorph/xeno in X.hive.totalXenos)
+		if(xeno.ckey == banished_ckey)
+			T = xeno
+			banished_living = TRUE
+			break
+
+	if(banished_living)
 		if(!T.banished)
 			to_chat(X, SPAN_XENOWARNING("This xenomorph isn't banished!"))
 			return
@@ -347,15 +389,15 @@
 		if(confirm == "No")
 			return
 
-		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T)
+		if(!X.check_state() || !X.check_plasma(plasma_cost))
 			return
 
 		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has readmitted you into the hive.")))
 		T.banished = FALSE
 		T.hud_update_banished()
 		T.lock_evolve = FALSE
-	else
-		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))
+
+	X.hive.banished_ckeys.Remove(banished_name)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
 	. = ..()
@@ -372,6 +414,11 @@
 	if(get_dist(A, HS.hive_location) > 35)
 		// Apply the normal cooldown if not building near the hive
 		apply_cooldown_override(initial(xeno_cooldown))
+
+/datum/action/xeno_action/onclick/eye
+	name = "Enter Eye Form"
+	action_icon_state = "queen_eye"
+	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()
@@ -402,7 +449,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
+	if(!T || T.is_weedable() < FULLY_WEEDABLE || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 

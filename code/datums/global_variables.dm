@@ -375,7 +375,7 @@
 			global.vars[variable] = var_new
 
 		if("num")
-			var/var_new =  input("Enter new number:","Num",global.vars[variable]) as null|num
+			var/var_new = tgui_input_real_number(usr, "Enter new number:", "Num", global.vars[variable])
 			if(var_new==null) return
 			global.vars[variable] = var_new
 

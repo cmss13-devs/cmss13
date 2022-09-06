@@ -20,8 +20,13 @@ var/list/ob_type_fuel_requirements
 	var/chambered_tray = FALSE
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
-	var/last_orbital_firing = 0 //stores the last time it was fired to check when we can fire again
 	var/is_disabled = FALSE
+
+	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
+	var/fire_cooldown_time = 500 SECONDS
+
+	COOLDOWN_DECLARE(ob_chambering_cooldown) //cooldown for chambering the gun
+	var/chamber_cooldown_time = 250 SECONDS
 
 /obj/structure/orbital_cannon/New()
 	..()
@@ -41,15 +46,11 @@ var/list/ob_type_fuel_requirements
 	tray = O
 	tray.linked_ob = src
 
-
-
 /obj/structure/orbital_cannon/ex_act()
 	return
 
 /obj/structure/orbital_cannon/bullet_act()
 	return
-
-
 
 /obj/structure/orbital_cannon/update_icon()
 	if(chambered_tray)
@@ -101,9 +102,6 @@ var/list/ob_type_fuel_requirements
 
 	update_icon()
 
-
-
-
 /obj/structure/orbital_cannon/proc/unload_tray(mob/user)
 	set waitfor = 0
 
@@ -111,7 +109,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(chambered_tray)
-		to_chat(user, "Tray cannot be unloaded after its chambered, fire the gun first.")
+		to_chat(user, "The tray cannot be unloaded after it has been chambered, fire the gun first.")
 		return
 
 	if(!loaded_tray)
@@ -135,10 +133,6 @@ var/list/ob_type_fuel_requirements
 
 	update_icon()
 
-
-
-
-
 /obj/structure/orbital_cannon/proc/chamber_payload(mob/user)
 	set waitfor = 0
 
@@ -155,20 +149,18 @@ var/list/ob_type_fuel_requirements
 		return
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, SPAN_WARNING("no warhead in the tray, cancelling chambering operation."))
+			to_chat(user, SPAN_WARNING("No warhead in the tray, cancelling chambering operation."))
 		return
 
 	if(tray.fuel_amt < 1)
 		if(user)
-			to_chat(user, SPAN_WARNING("no solid fuel in the tray, cancelling chambering operation."))
+			to_chat(user, SPAN_WARNING("No solid fuel in the tray, cancelling chambering operation."))
 		return
 
-	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 2500) - world.time
-		if(cooldown_left > 0)
-			if(user)
-				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
-			return
+	if(!COOLDOWN_FINISHED(src, ob_chambering_cooldown)) //fired at least once
+		if(user)
+			to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [COOLDOWN_TIMELEFT(src, ob_chambering_cooldown)/10] more seconds."))
+		return
 
 	flick("OBC_chambering",src)
 
@@ -184,7 +176,6 @@ var/list/ob_type_fuel_requirements
 
 	update_icon()
 
-
 /var/global/list/orbital_cannon_cancellation = new
 
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user)
@@ -197,7 +188,8 @@ var/list/ob_type_fuel_requirements
 
 	ob_cannon_busy = TRUE
 
-	last_orbital_firing = world.time
+	COOLDOWN_START(src, ob_firing_cooldown, fire_cooldown_time)
+	COOLDOWN_START(src, ob_chambering_cooldown, chamber_cooldown_time)
 
 	playsound(loc, 'sound/weapons/vehicles/smokelauncher_fire.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/pred_plasma_shot.ogg', 70, 1)
@@ -229,9 +221,6 @@ var/list/ob_type_fuel_requirements
 
 	update_icon()
 
-
-
-
 /obj/structure/orbital_tray
 	name = "loading tray"
 	desc = "The orbital cannon's loading tray."
@@ -251,7 +240,6 @@ var/list/ob_type_fuel_requirements
 	var/obj/structure/orbital_cannon/linked_ob
 	var/fuel_amt = 0
 
-
 /obj/structure/orbital_tray/Destroy()
 	QDEL_NULL(warhead)
 	if(linked_ob)
@@ -259,13 +247,11 @@ var/list/ob_type_fuel_requirements
 		linked_ob = null
 	. = ..()
 
-
 /obj/structure/orbital_tray/ex_act()
 	return
 
 /obj/structure/orbital_tray/bullet_act()
 	return
-
 
 /obj/structure/orbital_tray/update_icon()
 	overlays.Cut()
@@ -275,61 +261,57 @@ var/list/ob_type_fuel_requirements
 	if(fuel_amt)
 		overlays += image("cannon_tray_[fuel_amt]")
 
-
 /obj/structure/orbital_tray/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(PC.loaded)
-				if(istype(PC.loaded, /obj/structure/ob_ammo))
-					var/obj/structure/ob_ammo/OA = PC.loaded
-					if(OA.is_solid_fuel)
-						if(fuel_amt >= 6)
-							to_chat(user, SPAN_WARNING("[src] can't accept more solid fuel."))
-						else if(!warhead)
-							to_chat(user, SPAN_WARNING("A warhead must be placed in [src] first."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							fuel_amt++
-							PC.loaded = null
-							PC.update_icon()
-							qdel(OA)
-							update_icon()
-					else
-						if(warhead)
-							to_chat(user, SPAN_WARNING("[src] already has a warhead."))
-						else
-							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
-							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-							warhead = OA
-							OA.forceMove(src)
-							PC.loaded = null
-							PC.update_icon()
-							update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
 
-			else
+		if(PC.loaded)
+			if(!istype(PC.loaded, /obj/structure/ob_ammo))
+				to_chat(user, SPAN_WARNING("There is no way you can put \the [PC.loaded] into \the [src]!"))
+				return TRUE
 
-				if(fuel_amt)
-					var/obj/structure/ob_ammo/ob_fuel/OF = new (PC.linked_powerloader)
-					PC.loaded = OF
-					fuel_amt--
-				else if(warhead)
-					warhead.forceMove(PC.linked_powerloader)
-					PC.loaded = warhead
-					warhead = null
-				else
+			var/obj/structure/ob_ammo/OA = PC.loaded
+			if(OA.is_solid_fuel)
+				if(fuel_amt >= 6)
+					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
 					return TRUE
-				PC.update_icon()
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
-		return TRUE
+				if(!warhead)
+					to_chat(user, SPAN_WARNING("A warhead must be placed in \the [src] first."))
+					return TRUE
+				to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+				fuel_amt++
+				qdel(OA)
+			else
+				if(warhead)
+					to_chat(user, SPAN_WARNING("\The [src] already has \the [warhead] loaded."))
+					return TRUE
+				else
+					to_chat(user, SPAN_NOTICE("You load \the [OA] into \the [src]."))
+					warhead = OA
+					OA.forceMove(src)
+
+			playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
+			PC.loaded = null
+			update_icon()
+			PC.update_icon()
+
+		else
+			if(fuel_amt)
+				var/obj/structure/ob_ammo/ob_fuel/OF = new (src)
+				fuel_amt--
+				PC.grab_object(OF, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+			else if(warhead)
+				PC.grab_object(warhead, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+				warhead = null
+
+			to_chat(user, SPAN_NOTICE("You retrieve \the [PC.loaded] from \the [src]."))
+			update_icon()
+			return TRUE
 	else
 		. = ..()
-
-
-
 
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
@@ -344,14 +326,20 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(!PC.loaded)
-				forceMove(PC.linked_powerloader)
-				PC.loaded = src
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				PC.update_icon()
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+
+		if(PC.loaded)
+			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
+			return TRUE
+
+		if(is_solid_fuel)
+			PC.grab_object(src, "ob_fuel", 'sound/machines/hydraulics_2.ogg')
+		else
+			PC.grab_object(src, "ob_warhead", 'sound/machines/hydraulics_2.ogg')
+		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		update_icon()
 		return TRUE
 	else
 		. = ..()
@@ -360,11 +348,9 @@ var/list/ob_type_fuel_requirements
 	..()
 	to_chat(user, "Moving this will require some sort of lifter.")
 
-
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
-
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
 	// make damn sure everyone hears it
@@ -372,27 +358,32 @@ var/list/ob_type_fuel_requirements
 
 	var/cancellation_token = rand(0,32000)
 	orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
 	for(var/mob/M in range(30, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
+			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(25, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
-			SPAN_HIGHDANGER("The sound becomes louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
+			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
+			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(15, target))
-		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
 			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
@@ -404,7 +395,6 @@ var/list/ob_type_fuel_requirements
 		orbital_cannon_cancellation["[cancellation_token]"] = null
 		return TRUE
 	return FALSE
-
 
 /obj/structure/ob_ammo/warhead/explosive
 	name = "\improper HE orbital warhead"
@@ -468,15 +458,15 @@ var/list/ob_type_fuel_requirements
 	sleep(clear_delay)
 	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, fire_type, TURF_PROTECTION_OB)
 
-
 /obj/structure/ob_ammo/warhead/cluster
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 60
-	var/instant_amount = 3
-	var/explosion_power = 300
+	var/total_amount = 75 // how many times will the shell fire?
+	var/instant_amount = 3 // how many explosions per time it fires?
+	var/explosion_power = 350
 	var/explosion_falloff = 150
+	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -501,12 +491,11 @@ var/list/ob_type_fuel_requirements
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
 			fire_in_a_hole(U)
-		sleep(5)
+		sleep(delay_between_clusters)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
-
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"
@@ -518,17 +507,12 @@ var/list/ob_type_fuel_requirements
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
-
-
-
-
 /obj/structure/machinery/computer/orbital_cannon_console
 	name = "\improper Orbital Cannon Console"
 	desc = "The console controlling the orbital cannon loading systems."
 	icon_state = "ob_console"
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
-	var/orbital_window_page = 0
 
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -541,6 +525,74 @@ var/list/ob_type_fuel_requirements
 /obj/structure/machinery/computer/orbital_cannon_console/bullet_act()
 	return
 
+// TGUI SHIT \\
+
+/obj/structure/machinery/computer/orbital_cannon_console/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
+		ui.open()
+
+/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["hefuel"] = ob_type_fuel_requirements[1]
+	data["incfuel"] = ob_type_fuel_requirements[2]
+	data["clusterfuel"] = ob_type_fuel_requirements[3]
+
+	data["linkedcannon"] = almayer_orbital_cannon
+	data["linkedtray"] = almayer_orbital_cannon.tray
+
+	return data
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_data(mob/user)
+	var/list/data = list()
+
+	data["loadedtray"] = almayer_orbital_cannon.loaded_tray
+	data["chamberedtray"] = almayer_orbital_cannon.chambered_tray
+
+	var/warhead_name = null
+	if(almayer_orbital_cannon.tray.warhead)
+		warhead_name = almayer_orbital_cannon.tray.warhead.name
+
+	data["warhead"] = warhead_name
+	data["fuel"] = almayer_orbital_cannon.tray.fuel_amt
+
+	data["worldtime"] = world.time
+	data["nextchambertime"] = almayer_orbital_cannon.ob_chambering_cooldown
+	data["chamber_cooldown"] = almayer_orbital_cannon.chamber_cooldown_time
+
+	data["disabled"] = almayer_orbital_cannon.is_disabled
+
+	return data
+
+/obj/structure/machinery/computer/orbital_cannon_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("load_tray")
+			almayer_orbital_cannon.load_tray(usr)
+			. = TRUE
+
+		if("unload_tray")
+			almayer_orbital_cannon.unload_tray(usr)
+			. = TRUE
+
+		if("chamber_tray")
+			almayer_orbital_cannon.chamber_payload(usr)
+			. = TRUE
+
+	add_fingerprint(usr)
 
 /obj/structure/machinery/computer/orbital_cannon_console/attack_hand(mob/user)
 	if(..())
@@ -548,69 +600,6 @@ var/list/ob_type_fuel_requirements
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
-		return 1
+		return TRUE
 
-	user.set_interaction(src)
-
-	var/dat
-	if(!almayer_orbital_cannon)
-		dat += "No Orbital Cannon System Detected!<BR>"
-	else if(!almayer_orbital_cannon.tray)
-		dat += "Orbital Cannon System Tray is missing!<BR>"
-	else
-		if(orbital_window_page == 1)
-			dat += "<font size=3>Warhead Fuel Requirements:</font><BR>"
-			dat += "- HE Orbital Warhead: <b>[ob_type_fuel_requirements[1]] Solid Fuel blocks.</b><BR>"
-			dat += "- Incendiary Orbital Warhead: <b>[ob_type_fuel_requirements[2]] Solid Fuel blocks.</b><BR>"
-			dat += "- Cluster Orbital Warhead: <b>[ob_type_fuel_requirements[3]] Solid Fuel blocks.</b><BR>"
-
-			dat += "<BR><BR><A href='?src=\ref[src];back=1'><font size=3>Back</font></A><BR>"
-		else
-			var/tray_status = "unloaded"
-			if(almayer_orbital_cannon.chambered_tray)
-				tray_status = "chambered"
-			else if(almayer_orbital_cannon.loaded_tray)
-				tray_status = "loaded"
-			dat += "Orbital Cannon Tray is <b>[tray_status]</b><BR>"
-			if(almayer_orbital_cannon.tray.warhead)
-				dat += "[almayer_orbital_cannon.tray.warhead.name] Detected<BR>"
-			else
-				dat += "No Warhead Detected<BR>"
-			dat += "[almayer_orbital_cannon.tray.fuel_amt] Solid Fuel Block\s Detected<BR><HR>"
-
-			dat += "<A href='?src=\ref[src];load_tray=1'><font size=3>Load Tray</font></A><BR>"
-			dat += "<A href='?src=\ref[src];unload_tray=1'><font size=3>Unload Tray</font></A><BR>"
-			dat += "<A href='?src=\ref[src];chamber_tray=1'><font size=3>Chamber Tray Payload</font></A><BR>"
-			dat += "<BR><A href='?src=\ref[src];check_req=1'><font size=3>Check Fuel Requirements</font></A><BR>"
-
-		dat += "<HR><BR><A href='?src=\ref[src];close=1'><font size=3>Close</font></A><BR>"
-
-	show_browser(user, dat, "Orbital Cannon System Control Console", "orbital_console", "size=500x350")
-
-
-/obj/structure/machinery/computer/orbital_cannon_console/Topic(href, href_list)
-	if(..())
-		return
-
-	if(href_list["load_tray"])
-		almayer_orbital_cannon.load_tray(usr)
-
-	else if(href_list["unload_tray"])
-		almayer_orbital_cannon.unload_tray(usr)
-
-	else if(href_list["chamber_tray"])
-		almayer_orbital_cannon.chamber_payload(usr)
-
-	else if(href_list["check_req"])
-		orbital_window_page = 1
-
-	else if(href_list["back"])
-		orbital_window_page = 0
-
-	else if(href_list["close"])
-		close_browser(usr, "orbital_console")
-		usr.unset_interaction()
-
-	add_fingerprint(usr)
-//	updateUsrDialog()
-	attack_hand(usr)
+	tgui_interact(user)

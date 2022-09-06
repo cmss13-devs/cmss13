@@ -483,6 +483,7 @@
 	req_access = list(ACCESS_MARINE_LOGISTICS)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/squad_changer/verb/eject_id()
 	set category = "Object"
@@ -583,7 +584,7 @@
 	var/list/data = list()
 	var/list/squads = list()
 	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.usable)
+		if(S.name != "Root" && !S.locked && S.active && S.faction == faction)
 			var/list/squad = list(list(
 				"name" = S.name,
 				"color" = S.color-1
@@ -787,7 +788,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || faction != C.sensor_faction)
+		if(!C.has_sensor || !C.sensor_mode || faction != H.faction)
 			continue
 
 		// Check if z-level is correct
@@ -830,7 +831,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
 			var/area/A = get_area(H)
-			entry["area"] = sanitize(A.name)
+			entry["area"] = sanitize_area(A.name)
 
 		// Trackability
 		entry["can_track"] = H.detectable_by_ai()
@@ -937,15 +938,15 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_STOWAWAY = 999,
 
 				// 200-229: Centcom
-				JOB_ADMIRAL = 200,
-				JOB_B_GENERAL = 200,
 				JOB_GENERAL = 200,
-				JOB_MARSOC = 201,
-				JOB_PMC_LEADER = 210,
-				JOB_PMC_ELITE = 211,
-				JOB_PMC_GUNNER = 212,
-				JOB_PMC_SNIPER = 213,
-				JOB_PMC = 214,
+				JOB_MARSOC_CMD = 210,
+				JOB_MARSOC_SL = 210,
+				JOB_MARSOC = 211,
+				JOB_PMC_LEADER = 220,
+				JOB_PMC_ELITE = 221,
+				JOB_PMC_GUNNER = 222,
+				JOB_PMC_SNIPER = 223,
+				JOB_PMC = 224,
 			)
 			var/squad_number = 60
 			for(var/squad_name in ROLES_SQUAD_ALL + "")

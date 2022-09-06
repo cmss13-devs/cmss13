@@ -50,7 +50,6 @@
 /area/lv624/lazarus/research)
 "aj" = (
 /obj/structure/surface/table,
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
@@ -87,7 +86,7 @@
 "ap" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -100,7 +99,7 @@
 /obj/item/tool/surgery/hemostat/predatorhemostat,
 /obj/item/tool/surgery/retractor/predatorretractor,
 /obj/item/tool/surgery/scalpel/predatorscalpel,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -110,10 +109,9 @@
 /turf/closed/wall,
 /area/lv624/lazarus/research)
 "as" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
+/obj/structure/surface/table,
+/obj/item/storage/fancy/vials/random,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -123,7 +121,6 @@
 /obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/item/paper/research_notes,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -158,7 +155,6 @@
 /area/lv624/lazarus/research)
 "ay" = (
 /obj/structure/machinery/door/airlock/almayer/research{
-	dir = 4;
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -185,8 +181,7 @@
 /area/lv624/lazarus/research)
 "aC" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
@@ -199,7 +194,6 @@
 	layer = 2.5
 	},
 /obj/item/clothing/glasses/regular,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -242,8 +236,7 @@
 /area/lv624/lazarus/research)
 "aJ" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/structure/surface/table,
 /obj/item/storage/box/disks{
@@ -258,7 +251,7 @@
 	name = "????";
 	stat = 2
 	},
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -285,7 +278,6 @@
 	},
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -295,7 +287,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -309,7 +301,6 @@
 	name = "\improper Science Wing Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research{
-	dir = 4;
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -327,7 +318,6 @@
 /area/lv624/lazarus/research)
 "aP" = (
 /obj/structure/machinery/door/airlock/almayer/research{
-	dir = 4;
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -337,6 +327,7 @@
 /area/lv624/lazarus/research)
 "aQ" = (
 /obj/item/clothing/glasses/regular,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -355,10 +346,8 @@
 /area/lv624/lazarus/research)
 "aT" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
@@ -366,7 +355,7 @@
 /area/lv624/lazarus/research)
 "aW" = (
 /obj/structure/surface/table,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -381,8 +370,7 @@
 	pixel_y = 16
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -408,7 +396,7 @@
 /obj/structure/surface/table,
 /obj/item/weapon/melee/yautja/scythe,
 /obj/item/weapon/melee/yautja/combistick,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -425,10 +413,8 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -438,7 +424,6 @@
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
 /obj/structure/sign/safety/biohazard,
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
@@ -454,7 +439,7 @@
 "bi" = (
 /obj/structure/surface/table,
 /obj/item/weapon/melee/yautja/knife,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -464,7 +449,6 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -474,14 +458,13 @@
 /obj/structure/surface/table,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "ec" = (
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
@@ -489,7 +472,6 @@
 	},
 /area/lv624/lazarus/research)
 "gd" = (
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
@@ -498,7 +480,6 @@
 "gM" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
@@ -508,16 +489,15 @@
 "rg" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "vn" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "freezerfloor"
 	},
 /area/lv624/lazarus/research)
 "zm" = (
@@ -535,7 +515,6 @@
 	},
 /area/lv624/lazarus/research)
 "FO" = (
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -549,7 +528,9 @@
 	},
 /area/lv624/lazarus/research)
 "LE" = (
+/obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -565,7 +546,6 @@
 "Zw" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
-
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -596,9 +576,9 @@ ao
 ao
 ao
 ab
-Zw
+as
 ak
-LE
+ec
 ab
 ao
 ao
@@ -631,12 +611,12 @@ ax
 al
 aG
 al
-vn
+gd
 al
 aG
 aX
 aX
-aX
+vn
 ac
 aa
 "}
@@ -676,8 +656,8 @@ ab
 "}
 (7,1,1) = {"
 ac
-aj
-Zw
+LE
+as
 ec
 al
 ar
@@ -710,8 +690,8 @@ ad
 "}
 (9,1,1) = {"
 ac
-LE
-as
+ec
+ba
 al
 al
 ar
@@ -720,7 +700,7 @@ ak
 aT
 ar
 ba
-LE
+ec
 al
 al
 ac

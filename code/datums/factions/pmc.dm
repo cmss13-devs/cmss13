@@ -13,13 +13,13 @@
 	switch(_role)
 		if(JOB_PMC_DIRECTOR)
 			hud_icon_state = "sd"
-		if(JOB_PMC_LEADER)
+		if(JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
 			hud_icon_state = "ld"
 		if(JOB_PMC_DOCTOR)
 			hud_icon_state = "td"
 		if(JOB_PMC_ENGINEER)
 			hud_icon_state = "ct"
-		if(JOB_PMC_MEDIC)
+		if(JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR)
 			hud_icon_state = "md"
 	if(hud_icon_state)
-		holder.icon_state = "pmc_[hud_icon_state]"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "pmc_[hud_icon_state]")

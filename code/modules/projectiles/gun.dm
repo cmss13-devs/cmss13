@@ -696,8 +696,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item ^= WIELDED
+	name += " (Wielded)"
 	item_state += "_w"
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
@@ -1197,7 +1197,7 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return TRUE
 
-		var/ffl = " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+		var/ffl = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
@@ -1515,8 +1515,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-		gun_scatter += SCATTER_AMOUNT_TIER_4
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
+		gun_scatter += SCATTER_AMOUNT_TIER_3
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
@@ -1631,7 +1631,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	else
 		total_recoil += recoil_unwielded
 		if(flags_gun_features & GUN_BURST_FIRING)
-			total_recoil += 1
+			total_recoil++
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
@@ -1667,3 +1667,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)
+
+/obj/item/weapon/gun/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	..()
+	var/slashed_light = FALSE
+	for(var/slot in attachments)
+		if(istype(attachments[slot], /obj/item/attachable/flashlight))
+			var/obj/item/attachable/flashlight/flashlight = attachments[slot]
+			if(flashlight.activate_attachment(src, xeno, TRUE))
+				slashed_light = TRUE
+	if(slashed_light)
+		playsound(loc, "alien_claw_metal", 25, 1)
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("You slash the lights on \the [src]!"))
+	return XENO_ATTACK_ACTION

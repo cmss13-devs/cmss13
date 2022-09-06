@@ -24,19 +24,21 @@
 #define CHARLIE		3
 #define DELTA		4
 #define ECHO		5
-#define NOSQUAD 	6
+#define CRYO		6
+#define MARSOC		7
+#define NOSQUAD 	8
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
 var/list/helmetmarkings = list()
 var/list/helmetmarkings_sql = list()
 var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146))
+var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
+var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(133, 115, 75), rgb(64, 0, 0))
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<6, i++)
+	for(i=1, i<(length(squad_colors) + 1), i++)
 		var/image/armor
 		var/image/helmet
 		var/image/glove
@@ -130,7 +132,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
 		else
 			name += " armor"
 	if(armor_variation)
@@ -285,6 +287,22 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	brightness_on = 7 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/intel
+	icon_state = "io"
+	name = "\improper XM4 pattern intelligence officer armor"
+	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 4
+	brightness_on = 7 //slightly higher
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/officer/intel)
+	specialty = "XM4 pattern intel"
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -322,10 +340,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/padless
-	name = "M2 pattern padless MP armor"
+	name = "\improper M2 pattern padless MP armor"
 	icon_state = "mp_2"
 	specialty = "M2 pattern padless MP"
 	item_state_slots = list(WEAR_JACKET = "mp_2")
+
+/obj/item/clothing/suit/storage/marine/MP/jacket
+	name = "\improper MP service jacket over M2 pattern MP armor"
+	desc = "A standard Colonial Marines M2 Pattern Chestplate with an MP service jacket worn on top. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Arresting Marines for breaking windows has never felt so stylish."
+	icon_state = "mp_jacket"
+	specialty = "service jacket over M2 pattern MP"
+	item_state_slots = list(WEAR_JACKET = "mp_jacket")
 
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
@@ -345,10 +370,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/warden/padless
-	name = "M3 pattern padless warden MP armor"
+	name = "\improper M3 pattern padless warden MP armor"
 	icon_state = "warden_2"
 	specialty = "M3 pattern padless warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden_2")
+
+/obj/item/clothing/suit/storage/marine/MP/warden/jacket
+	name = "\improper warden service jacket over M3 pattern warden MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens, with a Warden service jacket worn on top. Look your best while you're escorting prisoners to their execution."
+	icon_state = "warden_jacket"
+	specialty = "warden service jacket over M3 pattern warden MP"
+	item_state_slots = list(WEAR_JACKET = "warden_jacket")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
@@ -368,14 +400,21 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 
 /obj/item/clothing/suit/storage/marine/MP/WO/padless
-	name = "M3 pattern padless chief MP armor"
+	name = "\improper M3 pattern padless chief MP armor"
 	icon_state = "warrant_officer_2"
 	specialty = "M3 pattern padless chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer_2")
 
-/obj/item/clothing/suit/storage/marine/MP/admiral
-	icon_state = "admiral"
-	name = "\improper M3 pattern admiral armor"
+/obj/item/clothing/suit/storage/marine/MP/WO/jacket
+	name = "\improper CMP service jacket over M3 pattern chief MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs, with a CMP service jacket on top. Resonates with the strength of a thousand arguments with and arrests of superior officers."
+	icon_state = "warrant_officer_jacket"
+	specialty = "CMP service jacket over M3 pattern chief MP"
+	item_state_slots = list(WEAR_JACKET = "warrant_officer_jacket")
+
+/obj/item/clothing/suit/storage/marine/MP/general
+	icon_state = "general"
+	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
 	w_class = SIZE_MEDIUM
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -387,9 +426,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
-	specialty = "M3 pattern admiral"
-	item_state_slots = list(WEAR_JACKET = "admiral")
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
+	specialty = "M3 pattern general"
+	item_state_slots = list(WEAR_JACKET = "general")
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	icon_state = "officer"
@@ -408,13 +447,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co_officer"
 	item_state = "co_officer"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
+	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/ro_suit)
 	flags_atom = NO_SNOW_TYPE
 	flags_inventory = SMARTGUN_HARNESS
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	storage_slots = 3
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"
@@ -845,14 +885,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/current_camo = FULL_CAMOUFLAGE_ALPHA
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
-	var/aiming_time = 1.25 SECONDS
+	var/can_camo = TRUE
 
-	var/aimed_shot_cooldown
-	var/aimed_shot_cooldown_delay = 2.5 SECONDS
-
-	actions_types = list(/datum/action/item_action/toggle, \
-	 					 /datum/action/item_action/specialist/prepare_position, \
-						 /datum/action/item_action/specialist/aimed_shot)
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !isSynth(user))
@@ -868,13 +903,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 
-	if(!ishuman(usr) || hide_in_progress)
+	if(!ishuman(usr) || hide_in_progress || !can_camo)
 		return
 	var/mob/living/carbon/human/H = usr
-	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER && !(GLOB.character_traits[/datum/character_trait/skills/spotter] in H.traits))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-
 	if(H.wear_suit != src)
 		to_chat(H, SPAN_WARNING("You must be wearing the ghillie suit to activate it!"))
 		return
@@ -977,9 +1011,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/aimed_shot
-	ability_primacy = SPEC_PRIMARY_ACTION_2
-
 /datum/action/item_action/specialist/prepare_position/New(var/mob/living/user, var/obj/item/holder)
 	..()
 	name = "Prepare Position"
@@ -996,155 +1027,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position/action_activate()
 	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
 	GS.camouflage()
-
-/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
-	..()
-	name = "Aimed Shot"
-	button.name = name
-	button.overlays.Cut()
-	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_aim")
-	button.overlays += IMG
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-	GS.aimed_shot_cooldown = world.time
-
-
-/datum/action/item_action/specialist/aimed_shot/action_activate()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		button.icon_state = "template"
-		H.selected_ability = null
-	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		if(H.selected_ability)
-			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
-		button.icon_state = "template_on"
-		H.selected_ability = src
-
-/datum/action/item_action/specialist/aimed_shot/can_use_action()
-	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
-
-		return TRUE
-
-/datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
-	var/mob/living/carbon/human/H = owner
-	if(!istype(A, /mob/living))
-		return
-
-	var/mob/living/M = A
-
-	if(M.stat == DEAD || M == H)
-		return
-
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-
-	if(world.time < GS.aimed_shot_cooldown)
-		return
-
-	if(!check_can_use(M))
-		return
-
-	GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay
-
-	 ///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(M, H) * 0.5)
-	var/f_aiming_time = GS.aiming_time + distance
-
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
-	M.overlays += I
-	if(H.client)
-		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
-	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
-
-	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
-		M.overlays -= I
-		return
-
-	M.overlays -= I
-
-	if(!check_can_use(M, TRUE))
-		return
-
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
-	var/obj/item/projectile/P = G.in_chamber
-	P.homing_target = M
-	P.projectile_override_flags |= AMMO_HOMING
-	G.Fire(M, H)
-
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
-	var/mob/living/carbon/human/H = owner
-	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
-
-	if(!can_use_action())
-		return FALSE
-
-	if(H.alpha == initial(H.alpha))
-		to_chat(H, SPAN_WARNING("You are not in a proper position to aim your shot accurately."))
-		return FALSE
-
-	if(H.alpha > FULL_CAMOUFLAGE_ALPHA)
-		to_chat(H, SPAN_WARNING("The smoke from your last gunshot is still obscuring your vision. Wait a little bit to get a clear shot."))
-		return FALSE
-
-	if(!H.l_hand && !H.r_hand)
-		to_chat(H, SPAN_WARNING("How do you expect to do this without your Sniper Rifle?"))
-		return FALSE
-
-	if(!istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) && !istype(H.r_hand, /obj/item/weapon/gun/rifle/sniper))
-		to_chat(H, SPAN_WARNING("Your weapon isn't accurate enough for this. Use the M42A Sniper Rifle!"))
-		return FALSE
-
-	if(!istype(H.l_hand, /obj/item/weapon/melee/twohanded/offhand) && !istype(H.r_hand, /obj/item/weapon/melee/twohanded/offhand))
-		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
-		return FALSE
-
-	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper) ? H.l_hand : H.r_hand
-	if(!G.in_chamber)
-		to_chat(H, SPAN_WARNING("[G] is unloaded!"))
-		return FALSE
-
-	if(get_dist(H, M) < 2)
-		to_chat(H, SPAN_WARNING("[M] is too close to get a proper shot!"))
-		return FALSE
-
-	var/obj/item/projectile/P = G.in_chamber
-	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
-	if(check_shot_is_blocked(H, M, P))
-		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
-		if(cover_lose_focus)
-			to_chat(H, SPAN_WARNING("You lose focus."))
-			GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay * 0.5
-		return FALSE
-
-	return TRUE
-
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
-	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
-	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
-		return TRUE
-
-	var/blocked = FALSE
-	for(var/turf/T in path)
-		if(T.density || T.opacity)
-			blocked = TRUE
-			break
-
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				blocked = TRUE
-				break
-
-		for(var/obj/effect/particle_effect/smoke/S in T)
-			blocked = TRUE
-			break
-
-	return blocked
 
 #undef FULL_CAMOUFLAGE_ALPHA
 

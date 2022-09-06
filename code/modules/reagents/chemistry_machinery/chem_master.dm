@@ -157,8 +157,13 @@
 
 		else if(href_list["addcustom"])
 			var/id = href_list["addcustom"]
-			useramount = input("Select the amount to transfer.", 30, useramount) as num
+			useramount = tgui_input_number(usr, "Select the amount to transfer.", "Transfer amount", useramount)
 			transfer_chemicals(src, beaker, useramount, id)
+
+		else if(href_list["addall"])
+			for(var/datum/reagent/R in beaker.reagents.reagent_list)
+				var/amount = beaker.volume
+				transfer_chemicals(src, beaker, amount, R.id)
 
 		else if(href_list["remove"])
 			if(href_list["amount"])
@@ -172,11 +177,19 @@
 
 		else if(href_list["removecustom"])
 			var/id = href_list["removecustom"]
-			useramount = input("Select the amount to transfer.", 30, useramount) as num
+			useramount = tgui_input_number(usr, "Select the amount to transfer.", "Transfer amount", useramount)
 			if(mode)
 				transfer_chemicals(beaker, src, useramount, id)
 			else
 				transfer_chemicals(null, src, useramount, id)
+
+		else if(href_list["removeall"])
+			for(var/datum/reagent/R in src.reagents.reagent_list)
+				var/amount = src.reagents.total_volume
+				if(mode)
+					transfer_chemicals(beaker, src, amount, R.id)
+				else
+					transfer_chemicals(null, src, amount, R.id)
 
 		else if(href_list["toggle"])
 			mode = !mode
@@ -202,7 +215,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(input("Select the number of pills to make. (max: [max_pill_count])", 10, pillamount) as num|null,0,max_pill_count)
+				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 
@@ -365,6 +378,7 @@
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=60'>60</A> "
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=[G.volume]'>All</A> "
 				dat += "<A href='?src=\ref[src];addcustom=[G.id]'>Custom</A><BR>"
+			dat += "<A href='?src=\ref[src];addall=[beaker]'>All reagents</A><BR>"
 
 		dat += "<HR>Transfer to <A href='?src=\ref[src];toggle=1'>[(!mode ? "disposal" : "beaker")]:</A><BR>"
 		if(reagents.total_volume)
@@ -377,6 +391,7 @@
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=60'>60</A> "
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=[N.volume]'>All</A> "
 				dat += "<A href='?src=\ref[src];removecustom=[N.id]'>Custom</A><BR>"
+			dat += "<A href='?src=\ref[src];removeall=[src]'>All reagents</A><BR>"
 		else
 			dat += "Empty<BR>"
 		if(!condi)

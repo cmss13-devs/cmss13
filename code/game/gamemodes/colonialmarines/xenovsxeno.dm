@@ -99,7 +99,7 @@
 
 	..()
 
-/datum/game_mode/xenovs/initialize_post_xenomorph_list(var/list/hive_spawns = GLOB.xeno_spawns)
+/datum/game_mode/xenovs/proc/initialize_post_xenomorph_list(var/list/hive_spawns = GLOB.xeno_spawns)
 	var/list/hive_spots = list()
 	for(var/hive in hives)
 		var/turf/spot = get_turf(pick(hive_spawns))
@@ -124,6 +124,34 @@
 		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
+
+/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL, var/should_spawn_nest = TRUE)
+	if(should_spawn_nest)
+		var/mob/living/carbon/human/original = ghost_mind.current
+
+		original.first_xeno = TRUE
+		original.stat = 1
+		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
+		original.apply_damage(50, BRUTE)
+		original.spawned_corpse = TRUE
+
+		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
+		original.statistic_exempt = TRUE
+		original.buckled = start_nest
+		original.setDir(start_nest.dir)
+		original.update_canmove()
+		start_nest.buckled_mob = original
+		start_nest.afterbuckle(original)
+
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
+		embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
+		embryo.hivenumber = hivenumber
+
+		if(original && !original.first_xeno)
+			qdel(original)
+	else
+		var/mob/living/carbon/Xenomorph/Larva/L = new(xeno_turf, null, hivenumber)
+		ghost_mind.transfer_to(L)
 
 /datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
@@ -151,7 +179,7 @@
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(world.time > round_time_larva_interval)
 				for(var/hive in hives)
-					GLOB.hive_datum[hive].stored_larva += 1
+					GLOB.hive_datum[hive].stored_larva++
 					GLOB.hive_datum[hive].hive_ui.update_pooled_larva()
 
 				round_time_larva_interval = world.time + hive_larva_interval_gain

@@ -77,6 +77,15 @@
 	prefs.save_preferences()
 	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
 
+/client/verb/togglechatemotes()
+	set name = "Toggle Abovehead Chat Emotes"
+	set category = "Preferences.Chat"
+	set desc = "Toggles seeing emotes in abovehead chat"
+
+	prefs.toggles_langchat ^= LANGCHAT_SEE_EMOTES
+	prefs.save_preferences()
+	to_chat(src,SPAN_BOLDNOTICE( "You will [(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
+
 /client/verb/toggle_permission_errors()
 	set name = "Toggle Permission Errors"
 	set category = "Preferences.Chat"
@@ -112,7 +121,7 @@
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
 		to_chat(src,SPAN_BOLDNOTICE( "You will now hear ambient sounds."))
 		if(soundOutput)
-			soundOutput.update_ambience(null, TRUE)
+			soundOutput.update_ambience(null, null, TRUE)
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "You will no longer hear ambient sounds."))
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
@@ -165,6 +174,19 @@
 		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
+
+/client/verb/toggle_newlarva_flash()
+	set name = "Toggle Larva Unpool Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get spawned in as a xeno larva from the spawn pool."
+
+	prefs.toggles_flashing ^= FLASH_POOLSPAWN
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a pooled larva."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a pooled larva."))
+
 
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
@@ -326,6 +348,11 @@
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
 	prefs.save_preferences()
 
+/client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
+	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
+	prefs.save_preferences()
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.
@@ -442,6 +469,27 @@
 		else
 			remove_verb(usr, /mob/dead/observer/proc/scan_health)
 
+GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GHOST_ORBIT_SQUARE, GHOST_ORBIT_HEXAGON, GHOST_ORBIT_PENTAGON))
+
+/client/proc/pick_ghost_orbit()
+	set name = "Pick Ghost Orbit Shape"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle in what manner you orbit mobs while a ghost"
+	var/new_orbit = tgui_input_list(src, "Choose your ghostly orbit:", "Ghost Customization", GLOB.ghost_orbits)
+	if(!new_orbit)
+		return
+
+	prefs.ghost_orbit = new_orbit
+	prefs.save_preferences()
+
+	to_chat(src, SPAN_NOTICE("You will now orbit in a [new_orbit] shape as a ghost."))
+
+	if(!isobserver(mob))
+		return
+
+	var/mob/dead/observer/O = mob
+	O.ghost_orbit = new_orbit
+
 //------------ COMBAT CHAT MESSAGES PREFERENCES ---------------------
 
 //Made all chat combat-related logs added by Neth and several others to be hidden by default and shown when clicked respected verb. Reason: too cluttered preferences.
@@ -526,4 +574,5 @@ var/list/ghost_prefs_verbs = list(
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,
 	/client/proc/toggle_ghost_health_scan,
+	/client/proc/pick_ghost_orbit,
 	/client/proc/hide_ghost_preferences)

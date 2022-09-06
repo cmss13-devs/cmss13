@@ -256,7 +256,8 @@
 //This is an UNSAFE proc. It handles situations of timed equips.
 /mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc)
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(src, "You stop putting on \the [W]")
+		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
+		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP
@@ -376,7 +377,6 @@
 			return SPAN_NOTICE("[msg]")
 		else
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
-
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -656,7 +656,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 		else
 			lying = FALSE
 
-	canmove =  !(stunned || frozen || laid_down)
+	canmove = !(stunned || frozen)
+	if(!can_crawl && lying)
+		canmove = FALSE
 
 	if(lying_prev != lying)
 		if(lying)
@@ -703,9 +705,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/set_face_dir(var/newdir)
+	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
+		facedir(newdir)
+		return
+
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if(facedir(newdir))
+	else if (facedir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -862,14 +868,14 @@ mob/proc/yank_out_object()
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down()
-	if(knocked_down && client)
+/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out()
-	if(knocked_out && client)
+/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out
@@ -1040,3 +1046,35 @@ mob/proc/yank_out_object()
 		if(client)
 			client.prefs.process_link(src, href_list)
 		return TRUE
+
+/mob/proc/reset_perspective(atom/A)
+	if(!client)
+		return
+
+	if(A)
+		if(ismovableatom(A))
+			//Set the the thing unless it's us
+			if(A != src)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = A
+			else
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+		else if(isturf(A))
+			//Set to the turf unless it's our current turf
+			if(A != loc)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = A
+			else
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+	else
+		//Reset to common defaults: mob if on turf, otherwise current loc
+		if(isturf(loc))
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
+		else
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = loc
+
+	return TRUE

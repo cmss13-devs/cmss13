@@ -11,7 +11,7 @@
 	var/image/pipe_vision_img = null
 	var/global/datum/pipe_icon_manager/icon_manager
 
-	var/ventcrawl_message_busy = 0 //Prevent spamming
+	var/ventcrawl_message_busy = FALSE //Prevent spamming
 
 /obj/structure/pipes/Initialize(mapload, ...)
 	. = ..()

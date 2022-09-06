@@ -134,15 +134,15 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
-			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("\The [M] [slashes_verb] [src]!"), \
+			SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			last_damage_data = create_cause_data(initial(M.name), M)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
-			log_attack("[key_name(M)] slashed [key_name(src)]")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(M)]</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
+			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
 
 			M.flick_attack_overlay(src, "slash")
-			playsound(loc, "alien_claw_flesh", 25, 1)
+			playsound(loc, slash_sound, 25, 1)
 			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
 			if(M.behavior_delegate)

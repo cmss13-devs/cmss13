@@ -5,6 +5,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_3
+	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_6
@@ -19,6 +20,8 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
+
+	behavior_delegate_type = /datum/behavior_delegate/burrower_base
 
 	tackle_min = 3
 	tackle_max = 5
@@ -96,18 +99,13 @@
 	if(burrow)
 		return 0
 
-/mob/living/carbon/Xenomorph/Burrower/update_icons()
-	if (stat == DEAD)
-		icon_state = "[mutation_type] Burrower Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Burrower Sleeping"
-		else
-			icon_state = "[mutation_type] Burrower Knocked Down"
-	else if (burrow)
-		icon_state = "[mutation_type] Burrower Burrowed"
-	else
-		icon_state = "[mutation_type] Burrower Running"
+/datum/behavior_delegate/burrower_base
+	name = "Base Burrower Behavior Delegate"
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
+/datum/behavior_delegate/burrower_base/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	if(bound_xeno.burrow)
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Burrower Burrowed"
+		return TRUE

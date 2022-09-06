@@ -52,11 +52,11 @@
 	attacktext = "attacks"
 	attack_sound = null
 	friendly = "nuzzles" //If the mob does no damage with it's attack
+	can_crawl = FALSE
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
-	remove_verb(src, /mob/verb/observe)
 
 /mob/living/simple_animal/Destroy()
 	SSmob.living_misc_mobs -= src
@@ -92,8 +92,9 @@
 		health = maxHealth
 
 	handle_stunned()
-	handle_knocked_down()
-	handle_knocked_out()
+	handle_knocked_down(TRUE)
+	handle_knocked_out(TRUE)
+	update_canmove()
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
@@ -101,7 +102,9 @@
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
-					Move(get_step(src,pick(cardinal)))
+					var/move_dir = pick(cardinal)
+					Move(get_step(src, move_dir ))
+					setDir(move_dir)
 					turns_since_move = 0
 
 	//Speaking
@@ -369,3 +372,16 @@
 	message = capitalize(trim_left(message))
 
 	..(message, null, verb, nolog = !ckey)	//if the animal has a ckey then it will log the message
+
+/mob/living/simple_animal/update_canmove()
+	. = ..()
+	if(!canmove)
+		stop_moving()
+
+/mob/living/simple_animal/proc/stop_moving()
+	walk_to(src, 0) // stops us dead in our tracks
+
+/mob/living/simple_animal/can_inject(var/mob/user, var/error_msg)
+	if(user && error_msg)
+		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
+	return FALSE

@@ -67,6 +67,10 @@
 		client.buildmode.object_click(src, mods, A)
 		return
 
+	if(istype(A, /obj/effect/statclick))
+		A.clicked(src, mods)
+		return
+
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
 	if (click(A, mods) | A.clicked(src, mods, location, params))
 		return
@@ -298,6 +302,8 @@
 
 
 /client/proc/change_view(new_size, var/atom/source)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
+		return TRUE
 	view = mob.check_view_change(new_size, source)
 	apply_clickcatcher()
 	mob.reload_fullscreens()

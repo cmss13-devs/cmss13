@@ -6,8 +6,8 @@
 		C.reagents.add_reagent(target, volume)
 
 		if(alert(usr, "Do you want to set the explosive capabilities on your fueltank? (This will disallow transferring to and from the tank)", "", "Yes", "No") == "Yes")
-			var/explosive_power = input(usr,"Power") as num
-			var/falloff = input(usr, "Base Falloff") as num
+			var/explosive_power = tgui_input_number(usr,"Power")
+			var/falloff = tgui_input_number(usr, "Base Falloff")
 
 			if(explosive_power && falloff)
 
@@ -80,7 +80,7 @@
 			if(!chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
 				return
-			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
+			var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
 			if(volume <= 0)
 				return
 
@@ -102,7 +102,7 @@
 			if(chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
-			var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
+			var/tier = tgui_input_number(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.", "Generation tier", 1, 10)
 			if(tier <= 0)
 				return
 			if(tier > 10)
@@ -157,7 +157,7 @@
 			//See what we want to do last
 			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") == "No")
 				return
-			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
+			var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
 			if(volume <= 0)
 				return
 		//For creating a custom reagent
@@ -195,19 +195,19 @@
 							to_chat(usr,SPAN_WARNING("Property not found, did you spell it right?"))
 							response = "Specific property"
 						else
-							var/level = input(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)") as num
+							var/level = tgui_input_number(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)", "strengthmod", 1)
 							R.insert_property(P.name,level)
 							response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
 					if("Select")
 						var/list/pool = chemical_properties_list
 						pool = sortAssoc(pool)
 						var/P = tgui_input_list(usr,"Which property do you want?", "Property selection", pool)
-						var/level = input(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)") as num
+						var/level = tgui_input_number(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)", "strengthmod", 1)
 						R.insert_property(P,level)
 						response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
 					if("Specific number")
-						var/number = input(usr,"How many properties?") as num
-						R.gen_tier = input(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-5.") as num
+						var/number = tgui_input_number(usr,"How many properties?")
+						R.gen_tier = tgui_input_number(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-5.", "generation tier", 1, 5, 1)
 						if(number > 10) number = 10
 						for(var/i=1,i<=number,i++)
 							R.add_property()
@@ -227,7 +227,7 @@
 			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No, show me the reagent","No, I'm all done")
 			switch(response)
 				if("Yes")
-					var/volume = input(usr,"How much? An appropriate container will be selected.") as num
+					var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
 					if(volume <= 0)
 						return
 
@@ -279,7 +279,7 @@
 							continue
 						response = "Add"
 					if("Add")
-						modifier = input("How much is required per reaction?") as num
+						modifier = tgui_input_number(usr, "How much is required per reaction?")
 						R.add_component(component,modifier,catalyst)
 						response = "Back"
 					if("Back")

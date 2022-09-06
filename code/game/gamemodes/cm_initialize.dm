@@ -326,16 +326,6 @@ Additional game mode variables.
 	new_xeno.roundstart_picked = TRUE
 	new_xeno.setup_xeno_stats()
 
-
-/datum/game_mode/proc/initialize_post_xenomorph_list(list/hive_spawns = GLOB.xeno_spawns)
-	for(var/datum/hive_status/hive in xenomorphs) //Build and move the xenos.
-		for(var/datum/mind/ghost_mind in xenomorphs[hive])
-			transform_xeno(ghost_mind, get_turf(pick(hive_spawns)), hive.hivenumber)
-
-	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
-	for(var/datum/hive_status/hive in picked_queens)
-		INVOKE_ASYNC(src, .proc/pick_queen_spawn, picked_queens[hive], hive.hivenumber)
-
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
@@ -376,7 +366,7 @@ Additional game mode variables.
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
-		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos)
+		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
@@ -391,6 +381,11 @@ Additional game mode variables.
 						to_chat(xeno_candidate, message)
 						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
 						return FALSE
+
+				for(var/mob_name in SP.linked_hive.banished_ckeys)
+					if(SP.linked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+						return
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
 					N.close_spawn_windows()
@@ -438,6 +433,10 @@ Additional game mode variables.
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/N = xeno_candidate
 			N.close_spawn_windows()
+		for(var/mob_name in new_xeno.hive.banished_ckeys)
+			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				return
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return 1
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
@@ -507,7 +506,7 @@ Additional game mode variables.
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT)
+	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
@@ -548,93 +547,14 @@ Additional game mode variables.
 	//new_queen.crystal_stored = XENO_STARTING_CRYSTAL
 	new_queen.update_icons()
 
-/datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL, var/should_spawn_nest = TRUE)
-	if(should_spawn_nest)
-		var/mob/living/carbon/human/original = ghost_mind.current
-
-		original.first_xeno = TRUE
-		original.stat = 1
-		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
-		original.apply_damage(50, BRUTE)
-		original.spawned_corpse = TRUE
-
-		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
-		original.statistic_exempt = TRUE
-		original.buckled = start_nest
-		original.setDir(start_nest.dir)
-		original.update_canmove()
-		start_nest.buckled_mob = original
-		start_nest.afterbuckle(original)
-
-		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
-		embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
-		embryo.hivenumber = hivenumber
-
-		if(original && !original.first_xeno)
-			qdel(original)
-	else
-		var/mob/living/carbon/Xenomorph/Larva/L = new(xeno_turf, null, hivenumber)
-		ghost_mind.transfer_to(L)
-
 //===================================================\\
 
 			//SURVIVOR INITIATLIZE\\
 
 //===================================================\\
 
-//We don't actually need survivors to play, so long as aliens are present.
-/datum/game_mode/proc/initialize_starting_survivor_list()
-	var/list/datum/mind/possible_human_survivors = get_players_for_role(JOB_SURVIVOR)
-	var/list/datum/mind/possible_synth_survivors = get_players_for_role(JOB_SYNTH_SURVIVOR)
 
-	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
-
-	for(var/datum/mind/A in possible_synth_survivors)
-		if(A.roundstart_picked)
-			possible_synth_survivors -= A
-			continue
-
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
-			if(A in possible_survivors)
-				continue //they are already applying to be a survivor
-			else
-				possible_survivors += A
-				continue
-
-		possible_synth_survivors -= A
-
-	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
-	if(possible_survivors.len) //We have some, it looks like.
-		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
-			if(A.roundstart_picked)
-				possible_survivors -= A
-
-		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
-			var/i = surv_starting_num
-			var/datum/mind/new_survivor
-			while(i > 0)
-				if(!possible_survivors.len)
-					break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
-				new_survivor = pick(possible_survivors)
-				if(!new_survivor)
-					break  //We ran out of survivors!
-				if(!synth_survivor && (new_survivor in possible_synth_survivors))
-					new_survivor.roundstart_picked = TRUE
-					synth_survivor = new_survivor
-				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
-					new_survivor.roundstart_picked = TRUE
-					survivors += new_survivor
-					i--
-				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
-
-/datum/game_mode/proc/initialize_post_survivor_list()
-	if(synth_survivor)
-		transform_survivor(synth_survivor, TRUE)
-	for(var/datum/mind/survivor in survivors)
-		if(transform_survivor(survivor) == 1)
-			survivors -= survivor
-	tell_survivor_story()
-
+// Used by XvX and Infection
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
 /datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE, var/turf/xeno_turf)

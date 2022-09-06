@@ -4,6 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_TIER_10
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
@@ -198,23 +199,6 @@
 	if (!.)
 		update_icons()
 
-/mob/living/carbon/Xenomorph/Crusher/update_icons()
-	if(stat == DEAD)
-		icon_state = "[mutation_type] Crusher Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Crusher Sleeping"
-		else
-			icon_state = "[mutation_type] Crusher Knocked Down"
-	else
-		if(throwing) //Let it build up a bit so we're not changing icons every single turf
-			icon_state = "[mutation_type] Crusher Charging"
-		else
-			icon_state = "[mutation_type] Crusher Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base
 	name = "Base Crusher Behavior Delegate"
@@ -280,3 +264,8 @@
 			shield_total += XS.amount
 
 	. += "Shield: [shield_total]"
+
+/datum/behavior_delegate/crusher_base/on_update_icons()
+	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Crusher Charging"
+		return TRUE

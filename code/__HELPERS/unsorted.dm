@@ -597,8 +597,6 @@
 		moblist.Add(M)
 	for(var/mob/living/carbon/human/monkey/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/hellhound/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
 	return moblist
@@ -857,6 +855,12 @@
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
+	var/has_nightvision = FALSE
+	if(ismob(source))
+		var/mob/M = source
+		has_nightvision = M.see_in_dark >= 12
+	if(!has_nightvision && target_turf.lighting_lumcount == 0)
+		return FALSE
 
 	while(current != target_turf)
 		if(steps > length) return FALSE
@@ -886,6 +890,10 @@ var/global/image/emote_indicator_highfive
 var/global/image/emote_indicator_fistbump
 var/global/image/emote_indicator_headbutt
 var/global/image/emote_indicator_tailswipe
+var/global/image/emote_indicator_rock_paper_scissors
+var/global/image/emote_indicator_rock
+var/global/image/emote_indicator_paper
+var/global/image/emote_indicator_scissors
 var/global/image/action_red_power_up
 var/global/image/action_green_power_up
 var/global/image/action_blue_power_up
@@ -927,6 +935,26 @@ var/global/image/action_purple_power_up
 			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
 			emote_indicator_fistbump.layer = FLY_LAYER
 		return emote_indicator_fistbump
+	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
+		if(!emote_indicator_rock_paper_scissors)
+			emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
+			emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+		return emote_indicator_rock_paper_scissors
+	else if(busy_type == EMOTE_ICON_ROCK)
+		if(!emote_indicator_rock)
+			emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
+			emote_indicator_rock.layer = FLY_LAYER
+		return emote_indicator_rock
+	else if(busy_type == EMOTE_ICON_PAPER)
+		if(!emote_indicator_paper)
+			emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
+			emote_indicator_paper.layer = FLY_LAYER
+		return emote_indicator_paper
+	else if(busy_type == EMOTE_ICON_SCISSORS)
+		if(!emote_indicator_scissors)
+			emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
+			emote_indicator_scissors.layer = FLY_LAYER
+		return emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!emote_indicator_headbutt)
 			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
@@ -1020,8 +1048,6 @@ var/global/image/action_purple_power_up
 
 	var/cur_user_zone_sel = L.zone_selected
 	var/cur_target_zone_sel
-	if(has_target && istype(T))
-		cur_target_zone_sel = T.zone_selected
 	var/delayfraction = Ceiling(delay/numticks)
 	var/user_orig_loc = L.loc
 	var/user_orig_turf = get_turf(L)
@@ -1032,10 +1058,15 @@ var/global/image/action_purple_power_up
 		target_orig_turf = get_turf(target)
 	var/obj/user_holding = L.get_active_hand()
 	var/obj/target_holding
-	if(has_target && istype(T))
-		target_holding = T.get_active_hand()
+	var/cur_user_lying = L.lying
+	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
+
+	if(has_target && istype(T))
+		cur_target_zone_sel = T.zone_selected
+		target_holding = T.get_active_hand()
+		cur_target_lying = T.lying
 
 	. = TRUE
 	for(var/i in 1 to numticks)
@@ -1131,6 +1162,11 @@ var/global/image/action_purple_power_up
 			break
 		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
 			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		)
+			. = FALSE
+			break
+		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
 		)
 			. = FALSE
 			break
@@ -1350,11 +1386,13 @@ var/global/image/action_purple_power_up
 
 
 //Returns the 2 dirs perpendicular to the arg
-proc/get_perpen_dir(var/dir)
-	if(dir & (dir-1)) return 0 //diagonals
-	if(dir in list(EAST, WEST))
+/proc/get_perpen_dir(var/dir)
+	if(dir & (dir-1))
+		return 0 //diagonals
+	if(dir & (EAST|WEST))
 		return list(SOUTH, NORTH)
-	else return list(EAST, WEST)
+	else
+		return list(EAST, WEST)
 
 
 /proc/parse_zone(zone)
@@ -1868,3 +1906,52 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	json_file = file2text(json_file)
 	json_file = json_decode(json_file)
 	return json_file
+
+///Returns a list of all items of interest with their name
+/proc/getpois(mobs_only = FALSE, skip_mindless = FALSE, specify_dead_role = TRUE)
+	var/list/mobs = sortmobs()
+	var/list/namecounts = list()
+	var/list/pois = list()
+	for(var/mob/M as anything in mobs)
+		if(skip_mindless && (!M.mind && !M.ckey))
+			continue
+		if(M.client?.admin_holder)
+			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+				continue
+		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+
+		if(M.real_name && M.real_name != M.name)
+			name += " \[[M.real_name]\]"
+		if(M.stat == DEAD && specify_dead_role)
+			if(isobserver(M))
+				name += " \[ghost\]"
+			else
+				name += " \[dead\]"
+		pois[name] = M
+
+	pois.Add(get_multi_vehicles())
+
+	return pois
+
+//takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
+//use this for lists of things that might have the same name, like mobs or objects, that you plan on giving to a player as input
+/proc/avoid_assoc_duplicate_keys(input_key, list/used_key_list)
+	if(!input_key || !istype(used_key_list))
+		return
+	if(used_key_list[input_key])
+		used_key_list[input_key]++
+		input_key = "[input_key] ([used_key_list[input_key]])"
+	else
+		used_key_list[input_key] = 1
+	return input_key
+
+//Returns the atom sitting on the turf.
+//For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
+//Optional arg 'type' to stop once it reaches a specific type instead of a turf.
+/proc/get_atom_on_turf(atom/movable/M, stop_type)
+	var/atom/turf_to_check = M
+	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
+		turf_to_check = turf_to_check.loc
+		if(stop_type && istype(turf_to_check, stop_type))
+			break
+	return turf_to_check

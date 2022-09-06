@@ -56,26 +56,24 @@
 				if("r_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
-						spawn(0)
-							if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-								to_chat(user, SPAN_NOTICE("You stop taking off \the [master_item]."))
-							else
-								user.drop_inv_item_on_ground(master_item)
-								user.put_in_r_hand(master_item)
-							return
+						if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+							to_chat(user, SPAN_WARNING("You stop taking off \the [master_item]!"))
+						else
+							user.drop_inv_item_on_ground(master_item)
+							user.put_in_r_hand(master_item)
+						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
 				if("l_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
-						spawn(0)
-							if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-								to_chat(user, SPAN_NOTICE("You stop taking off \the [master_item]."))
-							else
-								user.drop_inv_item_on_ground(master_item)
-								user.put_in_l_hand(master_item)
-							return
+						if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+							to_chat(user, SPAN_WARNING("You stop taking off \the [master_item]!"))
+						else
+							user.drop_inv_item_on_ground(master_item)
+							user.put_in_l_hand(master_item)
+						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)

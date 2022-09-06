@@ -10,6 +10,7 @@
 	icon_state = "0"
 	can_bloody = FALSE
 	layer = UNDER_TURF_LAYER
+	supports_surgery = FALSE
 
 /turf/open/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader

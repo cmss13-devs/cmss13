@@ -135,6 +135,9 @@
 
 /obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
@@ -203,7 +206,7 @@
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = 0
 	anchored = 1
-	var/ispowered = 0
+	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = 1
 	unslashable = TRUE
@@ -243,11 +246,11 @@
 	if((stat & NOPOWER))
 		if(ispowered && turned_on)
 			toggle_lights()
-		ispowered = 0
+		ispowered = FALSE
 		turned_on = 0
 		update_icon()
 	else
-		ispowered = 1
+		ispowered = TRUE
 		update_icon()
 
 /obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
@@ -372,6 +375,9 @@
 			return TRUE
 
 		else if(iswelder(I))
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			var/obj/item/tool/weldingtool/WT = I
 
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))

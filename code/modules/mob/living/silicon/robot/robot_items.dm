@@ -18,7 +18,7 @@
 	switch(choice)
 		if("Colour")
 			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
-			if(newcolour) colour = newcolour
+			if(newcolour) pen_colour = newcolour
 		if("Mode")
 			if (mode == 1)
 				mode = 2

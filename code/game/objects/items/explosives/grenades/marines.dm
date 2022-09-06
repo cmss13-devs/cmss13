@@ -138,13 +138,13 @@
 	item_state = "grenade_m74_airburst_f_active"
 	explosion_power = 0
 	explosion_falloff = 25
-	shrapnel_count = 30
+	shrapnel_count = 16
 	det_time = 0 // Unused, because we don't use prime.
 	hand_throwable = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
 	var/direct_hit_shrapnel = 5
-	var/dispersion_angle = 60
+	var/dispersion_angle = 40
 
 /obj/item/explosive/grenade/HE/airburst/prime()
 // We don't prime, we use launch_impact.
@@ -198,24 +198,28 @@
 
 /obj/item/explosive/grenade/incendiary
 	name = "\improper M40 HIDP incendiary grenade"
-	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade. It is set to detonate in 4 seconds."
+	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
 	icon_state = "grenade_fire"
 	det_time = 40
 	item_state = "grenade_fire"
 	flags_equip_slot = SLOT_WAIST
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/flame_level = 20
-	var/burn_level = 15
+	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
+	var/burn_level = BURN_LEVEL_TIER_2
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 2
+	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
+/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 20, var/burn_level = 30, var/flameshape = FLAMESHAPE_DEFAULT, var/target, var/fire_type = FIRE_VARIANT_DEFAULT)
+	//This proc is used to generate automatically-colored fires from manually adjusted item variables.
+	//It parses them as parameters and sets color automatically based on Intensity, then sends an edited reagent to the standard flame code.
+	//By default, this generates a napalm fire with a radius of 1, flame_level of 20 per UT (prev 14 as greenfire), burn_level of 30 per UT (prev 15 as greenfire), in a diamond shape.
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
@@ -228,7 +232,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target)
+	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target, , , fire_type)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"
@@ -237,6 +241,7 @@
 	item_state = "molotov"
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
+	fire_type = FIRE_VARIANT_DEFAULT
 
 /obj/item/explosive/grenade/incendiary/molotov/New(loc, custom_burn_level)
 	det_time = rand(10,40) //Adds some risk to using this thing.
@@ -309,6 +314,7 @@
 	harmful = FALSE
 	antigrief_protection = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
+	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/smokebomb/New()
 	..()
@@ -317,7 +323,7 @@
 
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(3, 0, get_turf(src), null, 6)
+	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
 	smoke.start()
 	qdel(src)
 
@@ -331,6 +337,7 @@
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
 	dangerous = 1
 	harmful = TRUE
+	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/phosphorus/weak
 	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
@@ -347,7 +354,7 @@
 
 /obj/item/explosive/grenade/phosphorus/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(3, 0, get_turf(src))
+	smoke.set_up(smoke_radius, 0, get_turf(src))
 	smoke.start()
 	qdel(src)
 
@@ -360,8 +367,48 @@
 /obj/item/explosive/grenade/phosphorus/clf
 	name = "\improper improvised phosphorus bomb"
 	desc = "An improvised version of gas grenade designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
-	icon_state = "grenade_clf_wp"
-	item_state = "grenade_clf_wp"
+	icon_state = "grenade_phos_clf"
+	item_state = "grenade_phos_clf"
+
+/*
+//================================================
+			Airburst Smoke Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/smokebomb/airburst
+	name = "\improper M74 AGM-S 40mm Grenade"
+	desc = "M74 - Airburst Grenade Munition - Smoke. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. Upon detonation, instantly combines multiple chemicals inside its casing to form a smoke cloud."
+	icon_state = "grenade_m74_airburst_s"
+	item_state = "grenade_m74_airburst_s_active"
+	det_time = 0 // Unused, because we don't use prime.
+	hand_throwable = FALSE
+	smoke_radius = 2
+
+/obj/item/explosive/grenade/smokebomb/airburst/New()
+	..()
+	smoke = new /datum/effect_system/smoke_spread/bad
+	smoke.attach(src)
+
+
+/obj/item/explosive/grenade/smokebomb/airburst/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/smokebomb/airburst/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+		smoke.set_up(radius = smoke_radius, c = 0, loca = get_turf(src), direct = null, smoke_time = 6)
+		smoke.start()
+		qdel(src)
 
 /*
 //================================================

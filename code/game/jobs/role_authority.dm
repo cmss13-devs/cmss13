@@ -317,20 +317,6 @@ var/global/players_preassigned = 0
 		return assigned
 	return roles_left
 
-/datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
-	var/datum/mind/P = M.mind
-	var/datum/game_mode/G = SSticker.mode
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	// if we don't have at least one thing - abort
-	if(!P || !G || !hive)
-		return
-
-	if(hive.stored_larva)
-		hive.stored_larva--
-		G.transform_xeno(P)
-
-	return
-
 /datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
 	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
@@ -583,7 +569,7 @@ var/global/players_preassigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -638,7 +624,7 @@ var/global/players_preassigned = 0
 	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	//Deal with non-standards first.
@@ -783,7 +769,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Boiler
 		if(XENO_CASTE_PREDALIEN)
 			M =	/mob/living/carbon/Xenomorph/Predalien
-
+		if(XENO_CASTE_HELLHOUND)
+			M =	/mob/living/carbon/Xenomorph/Hellhound
 	return M
 
 

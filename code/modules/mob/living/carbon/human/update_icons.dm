@@ -109,10 +109,8 @@ There are several things that need to be remembered:
 				L.Turn(90)
 			M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
-		langchat_image.transform = L
 	else
 		apply_transform(M)
-		langchat_image.transform = L
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)
@@ -138,7 +136,6 @@ There are several things that need to be remembered:
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body()
 	appearance_flags |= KEEP_TOGETHER // sanity
-	var/g = get_gender_name(gender)
 	vis_contents.Cut()
 	for(var/obj/limb/part in limbs)
 		vis_contents += part
@@ -149,16 +146,17 @@ There are several things that need to be remembered:
 		remove_overlay(UNDERSHIRT_LAYER)
 		remove_overlay(UNDERWEAR_LAYER)
 
-		var/image/underwear_icon = new /image('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
+		var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
+		var/image/underwear_icon = underwear_datum.get_image(gender)
 		underwear_icon.layer = -UNDERWEAR_LAYER
 		overlays_standing[UNDERWEAR_LAYER] = underwear_icon
 		apply_overlay(UNDERWEAR_LAYER)
 
-		if(undershirt>0 && undershirt < 5)
-			var/image/undershirt_icon = new /image('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s")
-			undershirt_icon.layer = -UNDERSHIRT_LAYER
-			overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
-			apply_overlay(UNDERSHIRT_LAYER)
+		var/datum/sprite_accessory/underwear/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
+		var/image/undershirt_icon = undershirt_datum.get_image(gender)
+		undershirt_icon.layer = -UNDERSHIRT_LAYER
+		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
+		apply_overlay(UNDERSHIRT_LAYER)
 
 /mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
 	remove_overlay(UNDERSHIRT_LAYER)

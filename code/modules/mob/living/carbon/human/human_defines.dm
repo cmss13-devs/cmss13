@@ -29,8 +29,8 @@
 	var/age = 30		//Player's age (pure fluff)
 	var/b_type = "A+"	//Player's bloodtype
 
-	var/underwear = "Briefs"	//Which underwear the player wants
-	var/undershirt = 0	//Which undershirt the player wants.
+	var/underwear = "Boxers (Camo Conforming)"	//Which underwear the player wants
+	var/undershirt = "Undershirt"	//Which undershirt the player wants.
 	var/backbag = 2		//Which backpack type the player has chosen. Satchel or Backpack.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().
@@ -108,6 +108,9 @@
 
 	var/temporary_slowdown = 0 //Stacking slowdown caused from effects, currently used by neurotoxin gas
 	var/shield_slowdown = 0 // Slowdown from readying shields
+
+	var/datum/equipment_preset/assigned_equipment_preset
+	var/rank_fallback
 
 	var/datum/squad/assigned_squad	//the squad this human is assigned to
 	var/assigned_fireteam = 0		//the fireteam this human is assigned to

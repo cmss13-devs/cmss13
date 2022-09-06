@@ -216,7 +216,7 @@
 	},
 /area/yautja)
 "at" = (
-/obj/structure/machinery/cryo_cell/cryo_cell,
+/obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap/hidden{
 	dir = 1
 	},

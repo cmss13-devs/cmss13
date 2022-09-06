@@ -87,9 +87,10 @@
 			walk_to(src,movement_target,0,3)
 
 /mob/living/simple_animal/cat/MouseDrop(atom/over_object)
-
+	if(!CAN_PICKUP(usr, src))
+		return ..()
 	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H)) return ..()
+	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
 
 	if(H.a_intent == INTENT_HELP)
 		get_scooped(H)

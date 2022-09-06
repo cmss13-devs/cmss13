@@ -66,6 +66,7 @@
 	if (.)
 		Moved(oldloc, direct)
 
+/// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)
 		launch_impact(A)
@@ -73,14 +74,13 @@
 	if (A && !QDELETED(A))
 		A.last_bumped = world.time
 		A.Collided(src)
-	return
 
+/// Called when an atom has been hit by a movable atom via movement
 /atom/movable/Collided(atom/movable/AM)
 	if(isliving(AM) && !anchored)
 		var/target_dir = get_dir(AM, src)
 		var/turf/target_turf = get_step(loc, target_dir)
 		Move(target_turf)
-	return
 
 /atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, direction, Forced)
@@ -151,3 +151,8 @@
 			if(old_area)
 				old_area.Exited(src, null)
 		loc = null
+
+// resets our langchat position if we get forcemoved out of a locker or something
+/mob/doMove(atom/destination)
+	. = ..()
+	langchat_image?.loc = src

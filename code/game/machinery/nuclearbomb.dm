@@ -75,7 +75,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
-		user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
+		user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
@@ -87,87 +87,67 @@ var/bomb_set = FALSE
 		return
 
 	if(isYautja(user))
-		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave hunting grounds before it detonates."))
+		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
-	user.set_interaction(src)
 	if(deployable)
-		if (!ishuman(user) && !isXenoQueen(user))
+		if(!ishuman(user) && !isXenoQueen(user))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
-		if (isXenoQueen(user))
+		if(isXenoQueen(user))
 			if(timing && bomb_set)
-				user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
+				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
-		ui_interact(user)
+		tgui_interact(user)
 
 	else
 		make_deployable()
 
-/obj/structure/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isRemoteControlling(user) || being_used)
-		return
 
-	var/timer = duration2text_sec(timeleft)
+// TGUI \\
 
-	var/data[0]
-	data = list(
-		"anchor" = anchored,
-		"safety" = safety,
-		"timing" = timing,
-		"timeleft" = timer,
-		"command_lockout" = command_lockout,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "nuclear_bomb.tmpl","Nuclear Fission Explosives Control Panel", 500, 250)
-		ui.set_initial_data(data)
+/obj/structure/machinery/nuclearbomb/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "NuclearBomb", "[src.name]")
 		ui.open()
-		ui.set_auto_update(1)
 
-/obj/structure/machinery/nuclearbomb/verb/make_deployable()
-	set category = "Object"
-	set name = "Make Deployable"
-	set src in oview(1)
+/obj/structure/machinery/nuclearbomb/ui_state(mob/user)
+	if(being_used)
+		return UI_CLOSE
+	return GLOB.not_incapacitated_and_adjacent_state
 
-	if (!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
-		return
+/obj/structure/machinery/nuclearbomb/ui_status(mob/user)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
 
-	if (!ishuman(usr))
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+/obj/structure/machinery/nuclearbomb/ui_data(mob/user)
+	var/list/data = list()
+
+	var/allowed = allowed(user)
+
+	data["anchor"] = anchored
+	data["safety"] = safety
+	data["timing"] = timing
+	data["timeleft"] = duration2text_sec(timeleft)
+	data["command_lockout"] = command_lockout
+	data["allowed"] = allowed
+	data["being_used"] = being_used
+
+	return data
+
+/obj/structure/machinery/nuclearbomb/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
 		return
 
 	var/area/A = get_area(src)
-	if (!A.can_build_special)
-		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
-		return
-
-	usr.visible_message(SPAN_WARNING("[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."), SPAN_WARNING("You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."))
-	being_used = TRUE
-	if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		if (deployable)
-			deployable = FALSE
-			anchored = FALSE
-		else
-			deployable = TRUE
-			anchored = TRUE
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
-	being_used = FALSE
-	update_icon()
-
-/obj/structure/machinery/nuclearbomb/Topic(href, href_list)
-	..()
-	if (!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || !in_range(src, usr))
-		return
-	usr.set_interaction(src)
-	var/area/A = get_area(src)
-	switch(href_list["command"])
-		if ("toggleNuke")
-			if (timing == -1)
+	switch(action)
+		if("toggleNuke")
+			if(timing == -1)
 				return
 
 			if(!ishuman(usr))
@@ -177,20 +157,24 @@ var/bomb_set = FALSE
 				to_chat(usr, SPAN_DANGER("Access denied!"))
 				return
 
-			if (!anchored)
+			if(!anchored)
 				to_chat(usr, SPAN_DANGER("Engage anchors first!"))
 				return
 
-			if (safety)
+			if(safety)
 				to_chat(usr, SPAN_DANGER("The safety is still on."))
 				return
 
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
+				return
+
+			if(usr.action_busy)
 				return
 
 			usr.visible_message(SPAN_WARNING("[usr] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
 			being_used = TRUE
+			ui = SStgui.try_update_ui(usr, src, ui)
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
 				if(timing)
@@ -199,27 +183,31 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
+			. = TRUE
 
-		if ("toggleSafety")
+		if("toggleSafety")
 			if(!allowed(usr))
 				to_chat(usr, SPAN_DANGER("Access denied!"))
 				return
-			if (timing)
+			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
+				return
+			if(usr.action_busy)
 				return
 			usr.visible_message(SPAN_WARNING("[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
 			being_used = TRUE
+			ui = SStgui.try_update_ui(usr, src, ui)
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				safety = !safety
 				playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
@@ -227,8 +215,9 @@ var/bomb_set = FALSE
 			if(safety)
 				timing = FALSE
 				bomb_set = FALSE
+			. = TRUE
 
-		if ("toggleCommandLockout")
+		if("toggleCommandLockout")
 			if(!ishuman(usr))
 				return
 			if(!allowed(usr))
@@ -253,15 +242,19 @@ var/bomb_set = FALSE
 				command_lockout = TRUE
 				req_one_access = list(ACCESS_MARINE_BRIDGE)
 				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
+			. = TRUE
 
-		if ("toggleAnchor")
-			if (timing)
+		if("toggleAnchor")
+			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_build_special)
+			if(!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
+			if(usr.action_busy)
+				return
 			being_used = TRUE
+			ui = SStgui.try_update_ui(usr, src, ui)
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(!anchored)
 					visible_message(SPAN_DANGER("With a steely snap, bolts slide out of [src] and anchor it to the flooring."))
@@ -270,12 +263,40 @@ var/bomb_set = FALSE
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
 				anchored = !anchored
 			being_used = FALSE
+			. = TRUE
 
 	update_icon()
 	add_fingerprint(usr)
-	for(var/mob/M in viewers(1, src))
-		if ((M.client && M.interactee == src))
-			attack_hand(M)
+
+/obj/structure/machinery/nuclearbomb/verb/make_deployable()
+	set category = "Object"
+	set name = "Make Deployable"
+	set src in oview(1)
+
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || timing)
+		return
+
+	if(!ishuman(usr))
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+
+	var/area/A = get_area(src)
+	if(!A.can_build_special)
+		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
+		return
+
+	usr.visible_message(SPAN_WARNING("[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."), SPAN_WARNING("You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."))
+	being_used = TRUE
+	if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(deployable)
+			deployable = FALSE
+			anchored = FALSE
+		else
+			deployable = TRUE
+			anchored = TRUE
+		playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
+	being_used = FALSE
+	update_icon()
 
 //unified all announcements to one proc
 /obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
@@ -376,7 +397,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Destroy()
 	if(timing != -1)
-		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	..()

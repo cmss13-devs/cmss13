@@ -112,9 +112,11 @@ var/list/admin_verbs_debug = list(
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
-	/client/proc/bulk_fetcher,
 	/client/proc/debug_game_history,
 	/client/proc/construct_env_dmm,
+	/client/proc/enter_tree,
+	/client/proc/set_tree_points,
+	/client/proc/purge_data_tab
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -247,7 +249,6 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
-	/datum/admins/proc/viewUnheardAhelps,
 	/client/proc/view_faxes,
 	/client/proc/create_custom_paper,
 	/client/proc/cmd_admin_change_their_name,
@@ -262,7 +263,8 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions
-	/client/proc/cmd_admin_world_narrate	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
 )
 
 var/list/roundstart_mod_verbs = list(

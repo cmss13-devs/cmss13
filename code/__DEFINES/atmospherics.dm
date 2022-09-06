@@ -18,6 +18,7 @@
 #define TCMB 2.7					// -270.3degC
 #define ICE_COLONY_TEMPERATURE	223	//-50degC
 #define SOROKYNE_TEMPERATURE 	223 // Same as Ice for now
+#define TROPICAL_TEMP			303.7 //27degC, 81degF
 
 #define GAS_TYPE_AIR		"air"
 #define GAS_TYPE_OXYGEN		"oxygen"

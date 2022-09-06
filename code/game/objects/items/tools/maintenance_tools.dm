@@ -164,10 +164,13 @@
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
 
+	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
+
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
+	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -353,7 +356,8 @@
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
 /obj/item/tool/weldingtool/proc/eyecheck(mob/user)
-	if(!iscarbon(user))	return 1
+	if(has_welding_screen || !iscarbon(user))
+		return TRUE
 	var/safety = user.get_eye_protection()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -434,6 +438,14 @@
 	if(reagents > max_fuel)
 		reagents = max_fuel
 
+/obj/item/tool/weldingtool/simple
+	name = "\improper ME3 hand welder"
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full sized technician's blowtorch."
+	max_fuel = 5
+	color = "#cc0000"
+	has_welding_screen = TRUE
+	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+
 /*
  * Crowbar
  */
@@ -489,7 +501,7 @@
 	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/T = W
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")

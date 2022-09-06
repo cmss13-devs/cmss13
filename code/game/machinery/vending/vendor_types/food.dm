@@ -62,6 +62,16 @@
 			list("Uncle Git's Special Reserve", 5, /obj/item/reagent_container/food/drinks/bottle/whiskey, VENDOR_ITEM_REGULAR),
 			list("Weyland-Yutani Aspen Beer", 20, /obj/item/reagent_container/food/drinks/cans/aspen, VENDOR_ITEM_REGULAR),
 
+			list("CRAFT BEERS", -1, null, null),
+			list("Pendleton's Triple Star", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft, VENDOR_ITEM_REGULAR),
+			list("Tuxedo Premium", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo, VENDOR_ITEM_REGULAR),
+			list("Ganucci's Genuine Light", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci, VENDOR_ITEM_REGULAR),
+			list("Blue Malt", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt, VENDOR_ITEM_REGULAR),
+			list("Party Popper Ale", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/partypopper, VENDOR_ITEM_REGULAR),
+			list("Tazhushka's Turquoise Beer", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/tazhushka, VENDOR_ITEM_REGULAR),
+			list("Reaper Red", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper, VENDOR_ITEM_REGULAR),
+			list("Mono Lager", 5, /obj/item/reagent_container/food/drinks/bottle/beer/craft/mono, VENDOR_ITEM_REGULAR),
+
 			list("NON-ALCOHOL", -1, null, null),
 			list("Duke Purple Tea", 10, /obj/item/reagent_container/food/drinks/tea, VENDOR_ITEM_REGULAR),
 			list("Fruit-Beer", 8, /obj/item/reagent_container/food/drinks/cans/cola, VENDOR_ITEM_REGULAR),

@@ -63,6 +63,9 @@
 	for(var/mob/living/M in oview(tesla_range, src))
 		if(M.stat == DEAD || isrobot(M))
 			continue
+		if(HAS_TRAIT(M, TRAIT_CHARGING))
+			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
+			continue
 
 		if(M.get_target_lock(faction_group))
 			continue
@@ -99,7 +102,7 @@
 		S.start()
 		qdel(S)
 
-		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
+		beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
 		track_shot()
 
 	targets = null
@@ -124,6 +127,10 @@
 			if(S.opacity)
 				blocked = TRUE
 				break
+			if(S.layer >= DOOR_CLOSED_LAYER || istype(S, /obj/structure/window))
+				if(S.density)
+					blocked = TRUE
+					break
 
 		for(var/obj/effect/particle_effect/smoke/S in T)
 			blocked = TRUE

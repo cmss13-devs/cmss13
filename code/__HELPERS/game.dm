@@ -89,10 +89,8 @@
 /proc/recursive_holder_check(var/obj/item/held_item, var/recursion_limit = 3)
 	if(recursion_limit <= 0)
 		return held_item
-	if(isturf(held_item.loc))
+	if(!held_item.loc || isturf(held_item.loc))
 		return held_item
-	if(isturf(held_item.loc.loc))
-		return held_item.loc
 	recursion_limit--
 	return recursive_holder_check(held_item.loc, recursion_limit)
 
@@ -131,7 +129,6 @@
 				if (M.client)
 					hear += M
 	return hear
-
 
 /proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
 
@@ -305,3 +302,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	for(var/client/C as anything in GLOB.clients)
 		if(C.prefs?.toggles_flashing & FLASH_ROUNDSTART)
 			window_flash(C)
+
+/// Removes an image from a client's `.images`. Useful as a callback.
+/proc/remove_image_from_client(image/image, client/remove_from)
+	remove_from?.images -= image

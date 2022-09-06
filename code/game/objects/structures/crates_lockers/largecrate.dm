@@ -33,6 +33,13 @@
 	else
 		return attack_hand(user)
 
+/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
+	M.animation_attack_on(src)
+	unpack()
+	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
+					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/largecrate/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
@@ -273,8 +280,8 @@
 					/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39
 				)
 
-/obj/structure/largecrate/guns/New()
-	..()
+/obj/structure/largecrate/guns/Initialize()
+	. = ..()
 	var/gun_type
 	var/i = 0
 	while(++i <= num_guns)
@@ -291,7 +298,7 @@
 	name = "\improper Hyperdyne firearm crate"
 	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
 					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
-					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/automatic,
+					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,
 					/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
@@ -311,8 +318,10 @@
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/pump/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
+					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
+					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
+					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
@@ -320,7 +329,7 @@
 					/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 					/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-					/obj/item/weapon/gun/shotgun/type23 = /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
@@ -328,8 +337,8 @@
 /obj/structure/largecrate/merc/clothing
 	name = "\improper Black market clothing crate"
 
-/obj/structure/largecrate/merc/clothing/New()
-	..()
+/obj/structure/largecrate/merc/clothing/Initialize()
+	. = ..()
 	var/i = pick(1,5)
 	switch(i)
 		if(1) //pmc
@@ -337,7 +346,7 @@
 			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
 			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/clothing/mask/gas/PMC(src)
+			new /obj/item/clothing/mask/rebreather/scarf(src)
 		if(2) //dutch's
 			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
 			new /obj/item/clothing/under/marine/veteran/dutch(src)
@@ -371,9 +380,9 @@
 					/obj/item/ammo_magazine/revolver/small,
 					/obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/ammo_magazine/smg/mp7,
+					/obj/item/ammo_magazine/smg/mp27,
 					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/uzi,
+					/obj/item/ammo_magazine/smg/mac15,
 					/obj/item/ammo_magazine/m60,
 					/obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/ammo_magazine/smg/ppsh,
@@ -388,8 +397,8 @@
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"
 
-/obj/structure/largecrate/hunter_games_construction/New()
-	..()
+/obj/structure/largecrate/hunter_games_construction/Initialize()
+	. = ..()
 	new /obj/item/stack/sheet/metal(src, 50)
 	new /obj/item/stack/sheet/glass(src, 50)
 	new /obj/item/stack/sheet/plasteel(src, 50)
@@ -413,8 +422,8 @@
 /obj/structure/largecrate/hunter_games_medical
 	name = "medical crate"
 
-/obj/structure/largecrate/hunter_games_medical/New()
-	..()
+/obj/structure/largecrate/hunter_games_medical/Initialize()
+	. = ..()
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/device/healthanalyzer(src)
@@ -436,8 +445,8 @@
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"
 
-/obj/structure/largecrate/hunter_games_surgery/New()
-	..()
+/obj/structure/largecrate/hunter_games_surgery/Initialize()
+	. = ..()
 	new /obj/item/tool/surgery/cautery(src)
 	new /obj/item/tool/surgery/surgicaldrill(src)
 	new /obj/item/clothing/mask/breath/medical(src)
@@ -456,8 +465,8 @@
 /obj/structure/largecrate/hunter_games_supplies
 	name = "supplies crate"
 
-/obj/structure/largecrate/hunter_games_supplies/New()
-	..()
+/obj/structure/largecrate/hunter_games_supplies/Initialize()
+	. = ..()
 	new /obj/item/storage/box/m94(src)
 	new /obj/item/storage/box/m94(src)
 	new /obj/item/storage/pouch/general/medium(src)
@@ -488,23 +497,23 @@
 /obj/structure/largecrate/hunter_games_guns
 	name = "weapons crate"
 
-/obj/structure/largecrate/hunter_games_guns/mediocre/New()
-	..()
+/obj/structure/largecrate/hunter_games_guns/mediocre/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 	new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
-	new /obj/item/weapon/gun/shotgun/double(src)
+	new /obj/item/weapon/gun/shotgun/double/with_stock(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/weapon/gun/revolver/small(src)
 	new /obj/item/ammo_magazine/revolver/small(src)
 	new /obj/item/ammo_magazine/revolver/small(src)
 
 
-/obj/structure/largecrate/hunter_games_guns/decent/New()
-	..()
+/obj/structure/largecrate/hunter_games_guns/decent/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
@@ -513,9 +522,9 @@
 		new /obj/item/ammo_magazine/smg/m39(src)
 		new /obj/item/ammo_magazine/smg/m39(src)
 	else
-		new /obj/item/weapon/gun/smg/uzi(src)
-		new /obj/item/ammo_magazine/smg/uzi(src)
-		new /obj/item/ammo_magazine/smg/uzi(src)
+		new /obj/item/weapon/gun/smg/mac15(src)
+		new /obj/item/ammo_magazine/smg/mac15(src)
+		new /obj/item/ammo_magazine/smg/mac15(src)
 	new /obj/item/weapon/gun/shotgun/pump/cmb(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
@@ -527,8 +536,8 @@
 	new /obj/item/ammo_magazine/rifle/m16(src)
 
 
-/obj/structure/largecrate/hunter_games_guns/good/New()
-	..()
+/obj/structure/largecrate/hunter_games_guns/good/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/pistol/highpower(src)
 	new /obj/item/ammo_magazine/pistol/highpower(src)
 	new /obj/item/ammo_magazine/pistol/highpower(src)
@@ -551,8 +560,8 @@
 /obj/structure/largecrate/hunter_games_ammo
 	name = "ammo crate"
 
-/obj/structure/largecrate/hunter_games_ammo/mediocre/New()
-	..()
+/obj/structure/largecrate/hunter_games_ammo/mediocre/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 	new /obj/item/ammo_magazine/pistol/holdout(src)
@@ -563,14 +572,14 @@
 	new /obj/item/ammo_magazine/revolver/small(src)
 	new /obj/item/ammo_magazine/revolver/small(src)
 
-/obj/structure/largecrate/hunter_games_ammo/decent/New()
-	..()
+/obj/structure/largecrate/hunter_games_ammo/decent/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/smg/m39(src)
 	new /obj/item/ammo_magazine/smg/m39(src)
-	new /obj/item/ammo_magazine/smg/uzi(src)
-	new /obj/item/ammo_magazine/smg/uzi(src)
+	new /obj/item/ammo_magazine/smg/mac15(src)
+	new /obj/item/ammo_magazine/smg/mac15(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/revolver(src)
@@ -578,8 +587,8 @@
 	new /obj/item/ammo_magazine/rifle/m16(src)
 	new /obj/item/ammo_magazine/rifle/m16(src)
 
-/obj/structure/largecrate/hunter_games_ammo/good/New()
-	..()
+/obj/structure/largecrate/hunter_games_ammo/good/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/pistol/highpower(src)
 	new /obj/item/ammo_magazine/pistol/highpower(src)
 	new /obj/item/ammo_magazine/rifle(src)
@@ -598,8 +607,8 @@
 /obj/structure/largecrate/hunter_games_armors
 	name = "armors crate"
 
-/obj/structure/largecrate/hunter_games_armors/New()
-	..()
+/obj/structure/largecrate/hunter_games_armors/Initialize()
+	. = ..()
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/gloves/marine(src)

@@ -609,7 +609,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
+		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makerobot"])
 		if(!check_rights(R_SPAWN))
@@ -624,7 +624,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"]))
+		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))
@@ -639,7 +639,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makealien"=href_list["makealien"]))
+		admin_holder.Topic(href, list("makealien"=href_list["makealien"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))
@@ -650,7 +650,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"]))
+		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))
@@ -665,7 +665,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
+		admin_holder.Topic(href, list("makeai"=href_list["makeai"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["selectequipment"])
 		if(!check_rights(R_SPAWN))
@@ -720,7 +720,8 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/new_skill_level = input("Select a new level for the [selected_skill] skill ","New Skill Level") as null|num
+		var/new_skill_level = tgui_input_number(usr, "Select a new level for the [selected_skill] skill ","New Skill Level")
+
 		if(isnull(new_skill_level))
 			return
 
@@ -1000,7 +1001,7 @@ body
 
 		var/Text = href_list["adjustDamage"]
 
-		var/amount =  input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num
+		var/amount = tgui_input_real_number(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
 
 		if(!L)
 			to_chat(usr, "Mob doesn't exist anymore")

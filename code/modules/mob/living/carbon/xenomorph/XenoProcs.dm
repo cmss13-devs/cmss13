@@ -21,6 +21,17 @@
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
+//Sends a maptext alert to our currently selected squad. Does not make sound.
+/proc/xeno_maptext(var/text = "", var/title_text = "", var/hivenumber = XENO_HIVE_NORMAL)
+	if(text == "" || !hivenumber)
+		return //Logic
+
+	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+		for(var/datum/mind/L in SSticker.mode.xenomorphs)
+			var/mob/living/carbon/M = L.current
+			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, "#b491c8")
+
 /proc/xeno_message_all(var/message = null, var/size = 3)
 	xeno_message(message, size)
 
@@ -34,7 +45,7 @@
 	. += ""
 
 	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]"
+	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
 	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
@@ -655,7 +666,7 @@
 
 /mob/living/carbon/Xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)
-		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!."))
+		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!"))
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target

@@ -80,6 +80,10 @@
 	splatter_type = "csplatter"
 	color = "#a8180d"
 
+/obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound
+	splatter_type = "csplatter"
+	color = "#a80d3b"
+
 /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
 	splatter_type = "csplatter"
 	color = "#5A934A"

@@ -373,7 +373,7 @@
 
 /obj/item/clothing/suit/armor/tactical
 	name = "tactical armor"
-	desc = "A suit of armor most often used by Special Weapons and Tactics squads. Includes padded vest with pockets along with shoulder and kneeguards."
+	desc = "A suit of armor most often used by Special Weapons and Intel squads. Includes padded vest with pockets along with shoulder and kneeguards."
 	icon_state = "swatarmor"
 	item_state = "armor"
 	var/obj/item/weapon/gun/holstered = null

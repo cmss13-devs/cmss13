@@ -20,10 +20,6 @@
 	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
-	var/mob/living/carbon/Xenomorph/XNO = M
-	if(istype(XNO))
-		XNO.generate_name()
-		XNO.set_lighting_alpha_from_prefs(M.client)
 	M.client?.change_view(world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
@@ -160,7 +156,9 @@
 				return
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
-	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	var/message = WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]).")
+	message_staff(message, M.x, M.y, M.z)
+	admin_ticket_log(M, message)
 
 /client/proc/cmd_admin_alert_message(var/mob/M)
 	set name = "Alert Message"
@@ -303,7 +301,7 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		hives += list("[hive.name]" = hive.hivenumber)
 
-	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives)
+	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
 		to_chat(usr, "This mob no longer exists")

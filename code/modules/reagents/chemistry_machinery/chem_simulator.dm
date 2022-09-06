@@ -444,7 +444,7 @@
 			if(CHEM_CLASS_COMMON)
 				creation_cost += 4
 			if(CHEM_CLASS_UNCOMMON)
-				creation_cost += 1
+				creation_cost++
 			if(CHEM_CLASS_RARE)
 				creation_cost -= 5
 	creation_cost = max(creation_cost, min_creation_cost) //checks against minimum cost
@@ -568,7 +568,7 @@
 	report.name = "Simulation result for [D.name]"
 	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
 	report.generate(D)
-	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
+	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	if(is_new)
 		chemical_data.save_document(report, "Synthesis Simulations", report.name)

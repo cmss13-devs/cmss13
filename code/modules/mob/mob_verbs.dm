@@ -98,7 +98,7 @@
 			mind.store_memory(msg)
 		else
 			src.sleeping = 9999999
-			message_staff("[key_name(usr)] auto-slept for attempting to exceed mob memory limit. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			message_staff("[key_name(usr)] auto-slept for attempting to exceed mob memory limit. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
@@ -158,82 +158,17 @@
 //	M.Login()	//wat
 	return
 
-
-/mob/verb/observe()
+/*/mob/dead/observer/verb/observe()
 	set name = "Observe"
-	set category = "OOC"
-	var/is_admin = 0
+	set category = "Ghost"
 
-	if(!client)
-		return FALSE
+	reset_perspective(null)
 
-	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
-		is_admin = 1
-	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, SPAN_NOTICE("You must be observing to use this!"))
+	var/mob/target = tgui_input_list(usr, "Please select a human mob:", "Observe", GLOB.human_mob_list)
+	if(!target)
 		return
 
-	if(is_admin && stat == DEAD)
-		is_admin = 0
-
-	var/list/names = list()
-	var/list/namecounts = list()
-	var/list/creatures = list()
-
-	for(var/obj/O in GLOB.object_list)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
-		if(!O.loc)
-			continue
-		if(istype(O, /obj/item/disk/nuclear))
-			var/name = "Nuclear Disk"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-
-		if(istype(O, /obj/structure/machinery/bot))
-			var/name = "BOT: [O.name]"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-
-
-	for(var/mob/M in sortAtom(GLOB.mob_list))
-		var/name = M.name
-		if (names.Find(name))
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-
-		creatures[name] = M
-
-
-	client.perspective = EYE_PERSPECTIVE
-
-	var/eye_name = null
-
-	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
-	eye_name = tgui_input_list(usr, "Please, select a player!", ok, creatures)
-
-	if (!eye_name)
-		return
-
-	var/mob/mob_eye = creatures[eye_name]
-
-	if(client && mob_eye)
-		client.eye = mob_eye
-		if (is_admin)
-			client.adminobs = 1
-			if(mob_eye == client.mob || client.eye == client.mob)
-				client.adminobs = 0
+	do_observe(target) */ //disabled thanks to le exploiterinos
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
@@ -293,6 +228,9 @@
 		grab_level = 0
 		if(client)
 			client.recalculate_move_delay()
+			// When you stop pulling a mob after you move a tile with it your next movement will still include
+			// the grab delay so we have to fix it here (we love code)
+			client.next_movement = world.time + client.move_delay
 		if(hud_used && hud_used.pull_icon)
 			hud_used.pull_icon.icon_state = "pull0"
 		if(istype(r_hand, /obj/item/grab))

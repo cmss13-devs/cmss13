@@ -3,6 +3,8 @@
 #define HUD_BRONZE "bronze"
 #define HUD_GLASS "glass"
 #define HUD_GREEN "green"
+#define HUD_GREY "grey"
+#define HUD_HOLO "holographic"
 #define HUD_OLD "old"
 #define HUD_ORANGE "orange"
 #define HUD_RED "red"

@@ -23,7 +23,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || !T.is_weedable())
+	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return FALSE
 
@@ -39,6 +39,15 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+
+	if(alien_weeds?.block_structures >= BLOCK_ALL_STRUCTURES)
+		to_chat(X, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
+		return FALSE
+
+	var/obj/vehicle/V = locate() in T
+	if(V)
+		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)

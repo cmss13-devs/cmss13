@@ -65,6 +65,8 @@
 			qdel(L)
 		limbs = null
 
+	assigned_equipment_preset = null
+
 	remove_from_all_mob_huds()
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
@@ -494,7 +496,7 @@
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
 			if(QDELETED(U))
-				to_chat(usr, "You're not wearing a uniform!.")
+				to_chat(usr, "You're not wearing a uniform!")
 			else if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 				to_chat(usr, "The controls are locked.")
 			else
@@ -1002,7 +1004,10 @@
 	for(var/obj/item/W in embedded_items)
 		var/obj/limb/organ = W.embedded_organ
 		// Check if shrapnel
-		if(istype(W, /obj/item/shard/shrapnel))
+		if(istype(W, /obj/item/large_shrapnel))
+			var/obj/item/large_shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
@@ -1060,6 +1065,39 @@
 	var/dat = GLOB.data_core.get_manifest()
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+
+/mob/living/carbon/human/verb/view_objective_memory()
+    set name = "View objectives"
+    set category = "IC"
+
+    if(!mind)
+        to_chat(src, "The game appears to have misplaced your mind datum.")
+        return
+
+    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+        return
+
+    mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/purge_objective_memory()
+	set name = "Reset view objectives"
+	set category = "OOC.Fix"
+
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
+
+	if(tgui_alert(src, "Remove the faulty entry?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+		for(var/datum/cm_objective/retrieve_data/disk/Objective in src.mind.objective_memory.disks)
+			if(!Objective.disk.disk_color || !Objective.disk.display_color)
+				src.mind.objective_memory.disks -= Objective
+	else
+		return
+
+	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
+		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
+			src.mind.objective_memory.disks -= Objective
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)
@@ -1191,11 +1229,11 @@
 	hud_used.locate_leader.icon_state = "trackoff"
 
 	var/static/list/squad_leader_trackers = list(
-		TRACKER_ASL = /datum/squad/alpha,
-		TRACKER_BSL = /datum/squad/bravo,
-		TRACKER_CSL = /datum/squad/charlie,
-		TRACKER_DSL = /datum/squad/delta,
-		TRACKER_ESL = /datum/squad/echo
+		TRACKER_ASL = /datum/squad/marine/alpha,
+		TRACKER_BSL = /datum/squad/marine/bravo,
+		TRACKER_CSL = /datum/squad/marine/charlie,
+		TRACKER_DSL = /datum/squad/marine/delta,
+		TRACKER_ESL = /datum/squad/marine/echo
 	)
 	switch(tracker_setting)
 		if(TRACKER_SL)
@@ -1222,13 +1260,18 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		if(TRACKER_CL)
+			var/datum/job/civilian/liaison/liaison_job = RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
+			if(liaison_job?.active_liaison)
+				H = liaison_job.active_liaison
+			tracking_suffix = "_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
 				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
 				tracking_suffix = tracker_setting
 
-	if(!H)
+	if(!H || H.w_uniform?.sensor_mode != SENSOR_MODE_LOCATION)
 		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
@@ -1395,7 +1438,7 @@
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
-						amount_removed += 1
+						amount_removed++
 						l.status &= ~LIMB_SPLINTED
 						pain.recalculate_pain()
 						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE)
@@ -1578,4 +1621,4 @@
 	. += "<option value='?_src_=vars;edit_skill=\ref[src]'>Edit Skills</option>"
 	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
-	. += "<option value='?_src_=admin_holder;adminspawncookie=\ref[src]'>Give Cookie</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"

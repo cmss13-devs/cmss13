@@ -2,6 +2,8 @@
 	var/mob/living/carbon/owner
 	var/name = "Hunter Data"
 
+	var/claimed_equipment = FALSE
+
 	//vars for Hunters targeting prey.
 	var/hunted = FALSE
 	var/mob/living/carbon/hunter //Target has their hunter variable linked to the Hunter.

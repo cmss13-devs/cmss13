@@ -24,41 +24,42 @@
 			index = findtext(t, char)
 	return t
 
-/// Removes characters incompatible with file names.
-#define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
-
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+/proc/sanitize_simple(var/text, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
-	return t
+		text = replacetext(text, char, repl_chars[char])
+	return text
 
-/proc/readd_quotes(var/t)
+/proc/readd_quotes(var/text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
-	return t
+		text = replacetext(text, char, repl_chars[char])
+	return text
 
 //Runs byond's sanitization proc along-side sanitize_simple
-/proc/sanitize(var/t,var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
-	var/msg = html_encode(sanitize_simple(t, repl_chars))
-	return readd_quotes(msg)
+/proc/sanitize(var/input, var/list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
+	var/output = html_encode(sanitize_simple(input, repl_chars))
+	return readd_quotes(output)
+
+//Runs byond's sanitization proc along-side strip_improper
+/proc/sanitize_area(var/input)
+	var/output = html_encode(strip_improper(input))
+	return readd_quotes(output)
 
 //Removes control chars like "\n"
-/proc/sanitize_control_chars(var/stuff)
+/proc/sanitize_control_chars(var/text)
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"}, "g")
-	return whitelistedWords.Replace(stuff, "")
+	return whitelistedWords.Replace(text, "")
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
-/proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
-	return copytext((sanitize(strip_html_simple(t))),1,limit)
+/proc/strip_html(var/text, var/limit=MAX_MESSAGE_LEN)
+	return copytext((sanitize(strip_html_simple(text))), 1, limit)
 
 //Runs byond's sanitization proc along-side strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
-/proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
-	return copytext((html_encode(strip_html_simple(t))),1,limit)
-
+/proc/adminscrub(var/text, var/limit=MAX_MESSAGE_LEN)
+	return copytext((html_encode(strip_html_simple(text))), 1, limit)
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(var/text, var/max_length=512)

@@ -17,6 +17,9 @@
 	xeno_cooldown = 10
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
+	var/plant_on_semiweedable = FALSE
+	var/node_type = /obj/effect/alien/weeds/node
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
@@ -108,7 +111,7 @@
 	if(!x)
 		return
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', "mark_[x.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
 
 /datum/action/xeno_action/activable/info_marker/queen
 	max_markers = 5
@@ -244,7 +247,8 @@
 
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
 /datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	name = "Toggle Long Range Sight"

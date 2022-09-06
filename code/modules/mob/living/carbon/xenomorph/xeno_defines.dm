@@ -9,6 +9,7 @@
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
+	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -193,6 +194,7 @@
 	var/list/tier_2_xenos = list()//list of living tier2 xenos
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
 	var/list/totalXenos	= list()  //list of living xenos
+	var/list/totalDeadXenos = list()//list of previously living xenos
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
@@ -254,12 +256,19 @@
 
 	var/list/resin_marks = list()
 
+	var/list/banished_ckeys = list()
+
+	var/hivecore_cooldown = FALSE
+
+	var/need_round_end_check = FALSE
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	internal_faction = name
+	if(!internal_faction)
+		internal_faction = name
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
@@ -299,51 +308,53 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE, light_mode = FALSE)
-	if(!X || !istype(X))
+/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/xeno, var/hard = FALSE, light_mode = FALSE)
+	if(!xeno || !istype(xeno))
 		return
 
 	// Make sure the xeno was in the hive in the first place
-	if(!(X in totalXenos))
+	if(!(xeno in totalXenos))
 		return
 
-	if(isXenoQueen(X))
-		if(living_xeno_queen == X)
-			var/mob/living/carbon/Xenomorph/Queen/next_queen
-			for(var/mob/living/carbon/Xenomorph/Queen/Q in totalXenos)
-				if(!is_admin_level(Q.z))
-					next_queen = Q
-					break
+	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
+	if(living_xeno_queen == xeno)
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
+		for(var/mob/living/carbon/Xenomorph/Queen/queen in totalXenos)
+			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+				next_queen = queen
+				break
 
-			set_living_xeno_queen(next_queen) // either null or a queen
+		set_living_xeno_queen(next_queen) // either null or a queen
 
 	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
 	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
 	if(hard)
-		X.hivenumber = 0
-		X.hive = null
+		xeno.hivenumber = 0
+		xeno.hive = null
+	else
+		totalDeadXenos += xeno
 
-	totalXenos -= X
-	if(X.tier == 2)
-		tier_2_xenos -= X
-	else if(X.tier == 3)
-		tier_3_xenos -= X
+	totalXenos -= xeno
+	if(xeno.tier == 2)
+		tier_2_xenos -= xeno
+	else if(xeno.tier == 3)
+		tier_3_xenos -= xeno
 
 	if(!light_mode)
 		hive_ui.update_xeno_counts()
-		hive_ui.xeno_removed(X)
+		hive_ui.xeno_removed(xeno)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
-	if(M == null)
+/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/queen)
+	if(!queen)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 		SShive_status.wait = 10 SECONDS
 	else
-		SStracking.set_leader("hive_[hivenumber]", M)
+		SStracking.set_leader("hive_[hivenumber]", queen)
 		SShive_status.wait = 2 SECONDS
 
-	living_xeno_queen = M
+	living_xeno_queen = queen
 
 	recalculate_hive()
 
@@ -772,6 +783,8 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_pooled_surge = TRUE
+	hivecore_cooldown = FALSE
+	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++
@@ -797,11 +810,16 @@
 
 	return faction_is_ally(C.faction)
 
-/datum/hive_status/proc/faction_is_ally(var/faction)
-	if(!living_xeno_queen)
+/datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
+	if(faction == internal_faction)
+		return TRUE
+	if(!ignore_queen_check && !living_xeno_queen)
 		return FALSE
 
 	return allies[faction]
+
+/datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return TRUE
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
@@ -810,6 +828,8 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 
+	need_round_end_check = TRUE
+
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	X.add_language(LANGUAGE_ENGLISH)
@@ -817,6 +837,11 @@
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
 	X.remove_language(LANGUAGE_ENGLISH)
+
+/datum/hive_status/corrupted/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	if(!faction_is_ally(FACTION_MARINE, TRUE))
+		return TRUE
+	return FALSE
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"
@@ -878,6 +903,26 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+
+	need_round_end_check = TRUE
+
+/datum/hive_status/forsaken/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/yautja
+	name = "Yautja Hive"
+	hivenumber = XENO_HIVE_YAUTJA
+	internal_faction = FACTION_YAUTJA
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+
+	need_round_end_check = TRUE
+
+/datum/hive_status/yautja/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	return FALSE
 
 /datum/hive_status/mutated
 	name = "Mutated Hive"

@@ -78,6 +78,8 @@ IN_USE						used for vending/denying
 		apply_transform(A)
 
 /obj/structure/machinery/cm_vending/ex_act(severity)
+	if(indestructible)
+		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -153,7 +155,7 @@ IN_USE						used for vending/denying
 	var/possessive = include_name ? "[src]'s" : "Its"
 	var/nominative = include_name ? "[src]" : "It"
 
-	if(stat & (BROKEN|MAINT))
+	if(stat & MAINT)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
 		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
@@ -169,7 +171,7 @@ IN_USE						used for vending/denying
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(stat & TIPPED_OVER)
+	if(stat & TIPPED_OVER || indestructible)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
@@ -270,7 +272,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
-			stat &= ~(MAINT|BROKEN)
+			stat &= ~MAINT
 			stat |= REPAIR_STEP_ONE
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
@@ -279,7 +281,7 @@ IN_USE						used for vending/denying
 				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
 				return FALSE
 			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
-			stat &= ~(REPAIR_STEP_FOUR|MAINT)
+			stat &= ~(REPAIR_STEP_FOUR|MAINT|BROKEN)
 			stat |= WORKING
 			update_icon()
 			return TRUE
@@ -536,14 +538,10 @@ IN_USE						used for vending/denying
 						to_chat(H, SPAN_WARNING("That set is already taken."))
 						vend_fail()
 						return
-					if(!istype(H.wear_id, /obj/item/card/id))
-						to_chat(H, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
-						return
 					var/obj/item/card/id/ID = H.wear_id
-					if(ID.registered_ref != WEAKREF(H))
-						to_chat(H, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+					if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+						to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 						return
-					var/squad = H.assigned_squad.name
 					var/specialist_assignment
 					switch(p_name)
 						if("Scout Set")
@@ -565,7 +563,7 @@ IN_USE						used for vending/denying
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-					ID.set_assignment("[squad] " + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 
@@ -720,15 +718,7 @@ IN_USE						used for vending/denying
 						H.marine_points -= cost
 
 			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-						if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-						else
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-					else
-						H.marine_buy_flags &= ~L[4]
-				else
+				if(!handle_vend(L, H))
 					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 					vend_fail()
 					return
@@ -737,6 +727,26 @@ IN_USE						used for vending/denying
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
+		
+/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	if(!(vending_human.marine_buy_flags & listed_products[4]))
+		return FALSE
+	
+	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+		return TRUE
+	if(listed_products[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+		return TRUE
+		
+	vending_human.marine_buy_flags &= ~listed_products[4]
+	return TRUE
 
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -796,6 +806,97 @@ IN_USE						used for vending/denying
 	desc = "This is pure vendor without points system."
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
+
+	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
+	var/list/corresponding_types_list = list(
+		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
+		/obj/item/ammo_box/magazine/m4a3/empty = /obj/item/ammo_box/magazine/m4a3,
+		/obj/item/ammo_box/magazine/m4a3/ap/empty = /obj/item/ammo_box/magazine/m4a3/ap,
+		/obj/item/ammo_box/magazine/m4a3/hp/empty = /obj/item/ammo_box/magazine/m4a3/hp,
+		/obj/item/ammo_box/magazine/su6/empty = /obj/item/ammo_box/magazine/su6,
+		/obj/item/ammo_box/magazine/vp78/empty = /obj/item/ammo_box/magazine/vp78,
+
+		/obj/item/ammo_box/magazine/m44/empty = /obj/item/ammo_box/magazine/m44,
+		/obj/item/ammo_box/magazine/m44/heavy/empty = /obj/item/ammo_box/magazine/m44/heavy,
+		/obj/item/ammo_box/magazine/m44/marksman/empty = /obj/item/ammo_box/magazine/m44/marksman,
+
+		/obj/item/ammo_box/magazine/m39/empty = /obj/item/ammo_box/magazine/m39,
+		/obj/item/ammo_box/magazine/m39/ext/empty = /obj/item/ammo_box/magazine/m39/ext,
+		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
+		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
+		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
+		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,
+		/obj/item/ammo_box/magazine/l42a/ext/empty = /obj/item/ammo_box/magazine/l42a/ext,
+		/obj/item/ammo_box/magazine/l42a/incen/empty = /obj/item/ammo_box/magazine/l42a/incen,
+		/obj/item/ammo_box/magazine/l42a/le/empty = /obj/item/ammo_box/magazine/l42a/le,
+
+		/obj/item/ammo_box/magazine/empty = /obj/item/ammo_box/magazine,
+		/obj/item/ammo_box/magazine/ap/empty = /obj/item/ammo_box/magazine/ap,
+		/obj/item/ammo_box/magazine/explosive/empty = /obj/item/ammo_box/magazine/explosive,
+		/obj/item/ammo_box/magazine/ext/empty = /obj/item/ammo_box/magazine/ext,
+		/obj/item/ammo_box/magazine/incen/empty = /obj/item/ammo_box/magazine/incen,
+		/obj/item/ammo_box/magazine/le/empty = /obj/item/ammo_box/magazine/le,
+
+		/obj/item/ammo_box/magazine/shotgun/beanbag/empty = /obj/item/ammo_box/magazine/shotgun/beanbag,
+		/obj/item/ammo_box/magazine/shotgun/buckshot/empty = /obj/item/ammo_box/magazine/shotgun/buckshot,
+		/obj/item/ammo_box/magazine/shotgun/flechette/empty = /obj/item/ammo_box/magazine/shotgun/flechette,
+		/obj/item/ammo_box/magazine/shotgun/incendiary/empty = /obj/item/ammo_box/magazine/shotgun/incendiary,
+		/obj/item/ammo_box/magazine/shotgun/empty = /obj/item/ammo_box/magazine/shotgun,
+
+		/obj/item/ammo_box/magazine/lever_action/empty = /obj/item/ammo_box/magazine/lever_action,
+		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
+		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
+		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+
+		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
+		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
+		/obj/item/ammo_box/rounds/smg/incen/empty = /obj/item/ammo_box/rounds/smg/incen,
+		/obj/item/ammo_box/rounds/smg/le/empty = /obj/item/ammo_box/rounds/smg/le,
+
+		/obj/item/ammo_box/rounds/empty = /obj/item/ammo_box/rounds,
+		/obj/item/ammo_box/rounds/ap/empty = /obj/item/ammo_box/rounds/ap,
+		/obj/item/ammo_box/rounds/incen/empty = /obj/item/ammo_box/rounds/incen,
+		/obj/item/ammo_box/rounds/le/empty = /obj/item/ammo_box/rounds/le,
+
+		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
+		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
+
+		/obj/item/ammo_box/magazine/misc/mre/empty = /obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/ammo_box/magazine/misc/flares/empty = /obj/item/ammo_box/magazine/misc/flares,
+
+		/obj/item/stack/folding_barricade = /obj/item/stack/folding_barricade/three,
+
+		/obj/item/stack/sheet/cardboard = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/medium_stack = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/full_stack = /obj/item/stack/sheet/cardboard/small_stack,
+
+		/obj/item/stack/barbed_wire = /obj/item/stack/barbed_wire/small_stack,
+		/obj/item/stack/barbed_wire/full_stack = /obj/item/stack/barbed_wire/small_stack,
+
+		/obj/item/stack/sheet/metal = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_small_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/medium_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_large_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/large_stack = /obj/item/stack/sheet/metal/small_stack,
+
+		/obj/item/stack/sheet/plasteel = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_small_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+
+		/obj/item/stack/sandbags_empty = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/half = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/full = /obj/item/stack/sandbags_empty/small_stack,
+
+		/obj/item/stack/sandbags = /obj/item/stack/sandbags/small_stack,
+		/obj/item/stack/sandbags/large_stack = /obj/item/stack/sandbags/small_stack,
+
+		/obj/item/storage/large_holster/machete = /obj/item/storage/large_holster/machete/full,
+
+	)
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -952,6 +1053,21 @@ IN_USE						used for vending/denying
 	for(R in (stock_listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
 
+			if(istype(item_to_stock, /obj/item/device/defibrillator))
+				var/obj/item/device/defibrillator/D = item_to_stock
+				if(!D.dcell)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+					return
+				if(D.dcell.charge < D.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
+			if(istype(item_to_stock, /obj/item/cell))
+				var/obj/item/cell/C = item_to_stock
+				if(C.charge < C.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
 					item_to_stock.unwield(user)
@@ -967,6 +1083,14 @@ IN_USE						used for vending/denying
 			R[2]++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
+
+//sending an /empty ammo box type path here will return corresponding regular (full) type of this box
+//if there is one set in corresponding_box_types or will return FALSE otherwise
+/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_type(var/unusual_path)
+	if(corresponding_types_list.Find(unusual_path))
+		return corresponding_types_list[unusual_path]
+	return
+
 
 //------------GEAR VENDORS---------------
 //For vendors with their own points available
@@ -1122,7 +1246,7 @@ IN_USE						used for vending/denying
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
+				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(var/wire)
@@ -1135,7 +1259,7 @@ IN_USE						used for vending/denying
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = 0
+			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(var/wire)

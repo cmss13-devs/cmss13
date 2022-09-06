@@ -92,9 +92,15 @@
 	icon_state = "brutedamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
 
+/obj/screen/fullscreen/brute/nvg
+	color = COLOR_BLACK
+
 /obj/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
+
+/obj/screen/fullscreen/flash/noise/nvg
+	alpha = 27.5
 
 /obj/screen/fullscreen/crit
 	icon_state = "passage"

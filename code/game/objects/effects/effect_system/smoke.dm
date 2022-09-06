@@ -156,7 +156,7 @@
 		return 0
 
 	M.drop_held_item()
-	M:sleeping += 1
+	M:sleeping++
 	if(M.coughedtime != 1)
 		M.coughedtime = 1
 		if(ishuman(M)) //Humans only to avoid issues
@@ -280,7 +280,7 @@
 		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
 
 	for(var/obj/vehicle/multitile/R in T)
-		R.take_damage_type(20, "acid")
+		R.take_damage_type(15, "acid")
 
 	for(var/obj/structure/machinery/m56d_hmg/auto/H in T)
 		H.update_health(XENO_ACID_HMG_DAMAGE)

@@ -176,7 +176,7 @@
 		if(M)
 			multiplier = M
 	else if(href_list["setcycle"])
-		var/L = input("Set cycle limit:","[src]") as num
+		var/L = tgui_input_number(usr, "Set cycle limit:","[src]")
 		if(L)
 			cycle_limit = L
 	else if(href_list["toggleauto"])

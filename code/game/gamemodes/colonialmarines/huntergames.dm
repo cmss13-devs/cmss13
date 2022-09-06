@@ -5,7 +5,7 @@
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
 								50; list(/obj/item/clothing/under/marine/veteran/PMC/commando, /obj/item/clothing/suit/storage/marine/veteran/PMC/commando, /obj/item/clothing/gloves/marine/veteran/PMC/commando, /obj/item/clothing/shoes/veteran/PMC/commando, /obj/item/clothing/head/helmet/marine/veteran/PMC/commando), \
 								125; list(/obj/item/weapon/melee/yautja/chain, /obj/item/weapon/melee/yautja/knife, /obj/item/weapon/melee/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
-								75; list(/obj/item/weapon/gun/revolver/mateba/admiral, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
+								75; list(/obj/item/weapon/gun/revolver/mateba/general, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
 								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
 								)
 
@@ -108,7 +108,7 @@ var/waiting_for_drop_votes = 0
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
-/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/hellhound/H)
+/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/Xenomorph/Hellhound/H)
 	if(istype(H)) H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()

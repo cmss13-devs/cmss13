@@ -44,7 +44,7 @@
 	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
-		if(evolution_stored >= evolution_threshold - 1)
+		if(evolution_stored > evolution_threshold - 1)
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
@@ -100,7 +100,7 @@
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/Xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -148,24 +148,7 @@
 
 	updatehealth()
 
-	if(health <= crit_health - warding_aura * 20) //dead
-		if(prob(gib_chance + 0.5*(crit_health - health)))
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			death(last_damage_data)
-		return
-
-	else if(health <= 0) //in crit
-		if(hardcore)
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			stat = UNCONSCIOUS
-			blinded = 1
-			see_in_dark = 5
-			if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-				layer = MOB_LAYER
-
-	else						//alive and not in crit! Turn on their vision.
+	if(health > 0 && stat != DEAD)	//alive and not in crit! Turn on their vision.
 		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
@@ -470,9 +453,39 @@ updatehealth()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
-	recalculate_move_delay = TRUE
-
+	if(stat != DEAD && !gibbing)
+		if(health <= crit_health - warding_aura * 20) //dead
+			if(prob(gib_chance + 0.5*(crit_health - health)))
+				async_gib(last_damage_data)
+			else
+				death(last_damage_data)
+			return
+		else if(health <= 0) //in crit
+			if(hardcore)
+				async_gib(last_damage_data)
+			else if(world.time > next_grace_time && stat == CONSCIOUS)
+				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
+				if(grace_time)
+					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+					addtimer(CALLBACK(src, .proc/handle_crit), grace_time)
+				else
+					handle_crit()
+				next_grace_time = world.time + grace_time
 	med_hud_set_health()
+
+/mob/living/carbon/Xenomorph/proc/handle_crit()
+	if(stat == DEAD || gibbing)
+		return
+
+	sound_environment_override = SOUND_ENVIRONMENT_NONE
+	stat = UNCONSCIOUS
+	blinded = 1
+	see_in_dark = 5
+	if(layer != initial(layer)) //Unhide
+		layer = initial(layer)
+	recalculate_move_delay = TRUE
+	if(!lying)
+		update_canmove()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

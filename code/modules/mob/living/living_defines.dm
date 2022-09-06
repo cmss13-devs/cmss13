@@ -75,6 +75,7 @@
 	)
 	//blood.dm
 	var/blood_volume = 0 //how much blood the mob has
+	var/max_blood = BLOOD_VOLUME_NORMAL  // how much they should have
 
 	var/datum/pain/pain	//Pain datum for the mob, set on New()
 	var/datum/stamina/stamina

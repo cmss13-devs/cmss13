@@ -1,3 +1,8 @@
+#define QUICK_EQUIP_PRIMARY 1
+#define QUICK_EQUIP_SECONDARY 2
+#define QUICK_EQUIP_TERTIARY 3
+#define QUICK_EQUIP_QUATERNARY 4
+
 /datum/keybinding/human
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
@@ -18,7 +23,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("none")
+	H.holster_verb(QUICK_EQUIP_PRIMARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_secondary
@@ -34,7 +39,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("shift")
+	H.holster_verb(QUICK_EQUIP_SECONDARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_tertiary
@@ -50,7 +55,23 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("ctrl")
+	H.holster_verb(QUICK_EQUIP_TERTIARY)
+	return TRUE
+	
+/datum/keybinding/human/quick_equip_quaternary
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "quick_equip_quaternary"
+	full_name = "Unholster quaternary"
+	description = "Take out your quaternary item."
+	keybind_signal = COMSIG_KB_HUMAN_QUATERNARY_DOWN
+
+/datum/keybinding/human/quick_equip_quaternary/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.holster_verb(QUICK_EQUIP_QUATERNARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_inventory
@@ -106,3 +127,38 @@
 	description = "Increased gun accuracy and effective range."
 	keybind_signal = COMSIG_KB_HUMAN_ISSUE_ORDER_FOCUS
 	order = COMMAND_ORDER_FOCUS
+
+/datum/keybinding/human/specialist_one
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "specialist_activation_one"
+	full_name = "Specialist Activation One"
+	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE
+
+/datum/keybinding/human/specialist_one/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.spec_activation_one()
+	return TRUE
+
+/datum/keybinding/human/specialist_two
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "specialist_activation_two"
+	full_name = "Specialist Activation Two"
+	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO
+
+/datum/keybinding/human/specialist_two/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.spec_activation_two()
+	return TRUE
+	
+#undef QUICK_EQUIP_PRIMARY
+#undef QUICK_EQUIP_SECONDARY
+#undef QUICK_EQUIP_TERTIARY
+#undef QUICK_EQUIP_QUATERNARY

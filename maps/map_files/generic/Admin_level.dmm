@@ -757,28 +757,24 @@
 "fz" = (
 /obj/structure/machinery/telecomms/receiver/preset_cent,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fA" = (
 /obj/structure/machinery/telecomms/bus/preset_cent,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fB" = (
 /obj/structure/machinery/telecomms/processor/preset_cent,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fC" = (
 /obj/structure/machinery/telecomms/server/presets/centcomm,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -787,7 +783,6 @@
 	name = "CentComm Accounts database"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -843,13 +838,11 @@
 "fQ" = (
 /obj/structure/machinery/telecomms/relay/preset/centcom,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fR" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -870,21 +863,18 @@
 "gd" = (
 /obj/structure/machinery/telecomms/allinone/interceptor,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "ge" = (
 /obj/structure/machinery/telecomms/broadcaster/preset_cent,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "gf" = (
 /obj/structure/machinery/telecomms/hub/preset_cent,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -893,14 +883,12 @@
 	name = "Master R&amp;D Server Controller"
 	},
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "gh" = (
 /obj/structure/machinery/r_n_d/server/centcom,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -2466,7 +2454,6 @@
 	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -2490,7 +2477,6 @@
 	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -2518,7 +2504,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -2606,7 +2591,6 @@
 /area/shuttle/distress/start_big)
 "lT" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -2745,7 +2729,6 @@
 	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -2767,7 +2750,6 @@
 	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
@@ -4034,7 +4016,6 @@
 	},
 /obj/effect/landmark/ert_spawns/distress_pizza,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_small)
@@ -4098,7 +4079,6 @@
 /area/adminlevel/ert_station/shuttle_dispatch)
 "DV" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/tdome)
@@ -4191,7 +4171,6 @@
 	network = list("Military", "Almayer")
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_small)
@@ -4228,7 +4207,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station)
@@ -4552,7 +4530,6 @@
 	no_panel = 1
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station)
@@ -4972,7 +4949,6 @@
 "QA" = (
 /obj/structure/machinery/chem_storage/misc,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
@@ -4985,7 +4961,6 @@
 "QL" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/tdome/tdomeobserve)
@@ -5098,7 +5073,6 @@
 	shuttle_tag = "Distress_Small"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_small)
@@ -5395,7 +5369,6 @@
 "WH" = (
 /obj/structure/machinery/chem_storage,
 /turf/open/floor/almayer{
-	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)

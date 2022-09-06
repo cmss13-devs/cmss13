@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
 
 //Main cryopod console.
 
@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	unacidable = TRUE
 	var/cryotype = "REQ"
 	var/mode = null
+	var/z_restricted = TRUE
 
 /obj/structure/machinery/computer/cryopod/medical
 	cryotype = "Med"
@@ -34,25 +35,30 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	cryotype = "Eng"
 
 /obj/structure/machinery/computer/cryopod/alpha
-	cryotype = SQUAD_NAME_1
+	cryotype = SQUAD_MARINE_1
 
 /obj/structure/machinery/computer/cryopod/bravo
-	cryotype = SQUAD_NAME_2
+	cryotype = SQUAD_MARINE_2
 
 /obj/structure/machinery/computer/cryopod/charlie
-	cryotype = SQUAD_NAME_3
+	cryotype = SQUAD_MARINE_3
 
 /obj/structure/machinery/computer/cryopod/delta
-	cryotype = SQUAD_NAME_4
+	cryotype = SQUAD_MARINE_4
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	z_restricted = FALSE
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
 
 /obj/structure/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(inoperable())
+		return
+
+	if(z_restricted && !is_mainship_level(z))
+		to_chat(user, SPAN_WARNING("\The [src] cannot connect to the cryo bay system off the [MAIN_SHIP_NAME]!"))
 		return
 
 	user.set_interaction(src)
@@ -318,7 +324,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
-			if(GET_MAPPED_ROLE(H.job) == JOB_SQUAD_SPECIALIST)
+			S.forget_marine_in_squad(H)
+			var/datum/job/J = GET_MAPPED_ROLE(H.job)
+			if(istype(J, /datum/job/marine/specialist))
 				//we make the set this specialist took if any available again
 				if(H.skills)
 					var/set_name
@@ -336,7 +344,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
-			S.forget_marine_in_squad(H)
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 

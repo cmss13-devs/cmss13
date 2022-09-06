@@ -102,7 +102,7 @@
 	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
@@ -115,7 +115,7 @@
 	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
@@ -130,13 +130,21 @@
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
 
+/obj/item/clothing/under/marine/officer/intel
+	name = "\improper marine intelligence officer sweatsuit"
+	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of intelligence officers, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."
+	icon_state = "io"
+	item_state = "io"
+	worn_state = "io"
+	specialty = "marine intelligence officer"
+
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"
 	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
@@ -201,12 +209,12 @@
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
 
-/obj/item/clothing/under/marine/officer/admiral
-	name = "admiral uniform"
-	desc = "A uniform worn by a fleet admiral. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
-	item_state = "admiral_jumpsuit"
-	worn_state = "admiral_jumpsuit"
-	specialty = "admiral"
+/obj/item/clothing/under/marine/officer/general
+	name = "general uniform"
+	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
+	item_state = "general_jumpsuit"
+	worn_state = "general_jumpsuit"
+	specialty = "general"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/ce
@@ -729,7 +737,7 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/ro_suit
-	name = "requisition officer suit."
+	name = "requisition officer suit"
 	desc = "A nicely-fitting military suit for a requisition officer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"

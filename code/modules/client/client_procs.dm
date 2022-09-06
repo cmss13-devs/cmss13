@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if (minute != topiclimiter[CURRENT_MINUTE])
 			topiclimiter[CURRENT_MINUTE] = minute
 			topiclimiter[MINUTE_COUNT] = 0
-		topiclimiter[MINUTE_COUNT] += 1
+		topiclimiter[MINUTE_COUNT]++
 		if (topiclimiter[MINUTE_COUNT] > mtl)
 			var/msg = "Your previous action was ignored because you've done too many in a minute."
 			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if (second != topiclimiter[CURRENT_SECOND])
 			topiclimiter[CURRENT_SECOND] = second
 			topiclimiter[SECOND_COUNT] = 0
-		topiclimiter[SECOND_COUNT] += 1
+		topiclimiter[SECOND_COUNT]++
 		if (topiclimiter[SECOND_COUNT] > stl)
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
@@ -135,6 +135,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["FaxView"])
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+	else if(href_list["medals_panel"])
+		GLOB.medals_panel.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -295,7 +298,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	notify_login()
 
 	add_pref_verbs()
-	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
+	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
@@ -626,6 +629,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if("OOC")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if("LOOC")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Me")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")
@@ -637,3 +642,27 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else
 		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
 	winset(src, "mainwindow", "is-maximized=true")
+
+/// Attempts to make the client orbit the given object, for administrative purposes.
+/// If they are not an observer, will try to aghost them.
+/client/proc/admin_follow(atom/movable/target)
+	var/can_ghost = TRUE
+
+	if (!isobserver(mob))
+		can_ghost = admin_ghost()
+
+	if(!can_ghost)
+		return FALSE
+
+	var/mob/dead/observer/observer = mob
+	observer.ManualFollow(target)
+
+/client/proc/check_timelock(var/list/roles, var/hours)
+	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
+	if(!GLOB.timelocks[timelock_name])
+		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
+	var/datum/timelock/timelock = GLOB.timelocks[timelock_name]
+	if(timelock.can_play(src))
+		return TRUE
+	return FALSE
+

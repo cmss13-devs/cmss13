@@ -325,6 +325,12 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
 
+/obj/item/storage/backpack/marine/satchel/intel
+	name = "\improper USCM lightweight expedition pack"
+	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "marinebigsatch"
+	max_storage_space = 20
+
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
@@ -360,6 +366,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rto_backpack"
 	item_state = "rto_backpack"
 	has_gamemode_skin = FALSE
+	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
 
@@ -367,6 +374,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/obj/structure/transmitter/internal/internal_transmitter
 
 	var/base_icon
+
+/datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Use Phone"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/misc.dmi', button, "rpb_phone")
+	button.overlays += IMG
+
+/datum/action/item_action/rto_pack/use_phone/action_activate()
+	if(!istype(owner, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/user = owner
+	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
+		var/obj/item/storage/backpack/marine/satchel/rto/R = user.back
+		R.use_phone(user)
 
 /obj/item/storage/backpack/marine/satchel/rto/post_skin_selection()
 	base_icon = icon_state
@@ -439,15 +462,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.phone_id = "[src]"
 	internal_transmitter.enabled = FALSE
 
-/obj/item/storage/backpack/marine/satchel/rto/attack_hand(mob/user)
+/obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
 	if(user.back == src)
 		internal_transmitter.attack_hand(user)
 	else if(internal_transmitter.get_calling_phone())
-		if(internal_transmitter.attached_to && internal_transmitter.attached_to.loc != internal_transmitter)
-			return . = ..()
 		internal_transmitter.attack_hand(user)
-	else
-		. = ..()
+
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
 	if(internal_transmitter && internal_transmitter.attached_to == W)
@@ -705,7 +725,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/engineerpack/attackby(obj/item/W, mob/living/user)
 	if(reagents.total_volume)
-		if(istype(W, /obj/item/tool/weldingtool))
+		if(iswelder(W))
 			var/obj/item/tool/weldingtool/T = W
 			if(T.welding)
 				to_chat(user, SPAN_WARNING("That was close! However, you realized you had the welder on and prevented disaster."))

@@ -135,6 +135,8 @@
 		return
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
+		if(xeno.deselect_timer > world.time)
+			return // We clicked the same ability in a very short time
 		to_chat(xeno, "You will no longer use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
@@ -146,6 +148,7 @@
 			xeno.selected_ability.action_deselect()
 		button.icon_state = "template_on"
 		xeno.selected_ability = src
+		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 

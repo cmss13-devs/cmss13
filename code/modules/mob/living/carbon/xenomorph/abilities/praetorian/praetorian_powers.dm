@@ -572,6 +572,7 @@
 		return
 
 	BD.dodge_activated = TRUE
+	button.icon_state = "template_active"
 	to_chat(X, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
 	X.speed_modifier -= speed_buff_amount
 	X.add_temp_pass_flags(PASS_MOB_THRU)
@@ -598,6 +599,7 @@
 
 	if (BD.dodge_activated)
 		BD.dodge_activated = FALSE
+		button.icon_state = "template"
 		X.speed_modifier += speed_buff_amount
 		X.remove_temp_pass_flags(PASS_MOB_THRU)
 		X.recalculate_speed()

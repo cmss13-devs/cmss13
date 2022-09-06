@@ -88,7 +88,7 @@
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return ..()
 	if(loc != usr) //Makes sure that the sprayer backpack is equipped, so that we can't drag it into our hand from miles away.
 		return ..()
@@ -160,7 +160,7 @@
 		return
 
 	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
-	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /obj/screen))
+	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /atom/movable/screen))
 		return
 
 	if(A == user) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
@@ -311,7 +311,7 @@
 		to_chat(user, SPAN_WARNING("You have no idea how use \the [src]!"))
 		return
 	if(nozzle_mode == EXTINGUISHER)
-		if(istype(target, /obj/screen)) //so we don't end up wasting water when clicking
+		if(istype(target, /atom/movable/screen)) //so we don't end up wasting water when clicking
 			return
 		if(tank.reagents.has_reagent("water", extinguisher_cost))
 			tank.reagents.remove_reagent("water", extinguisher_cost)
@@ -321,7 +321,7 @@
 			return
 	var/Adj = user.Adjacent(target)
 	if(nozzle_mode == METAL_LAUNCHER)
-		if(Adj || istype(target, /obj/screen))
+		if(Adj || istype(target, /atom/movable/screen))
 			return //Safety check so you don't blast yourself trying to refill your tank
 		for(var/S in target)
 			if(istype(S, /obj/effect/particle_effect/foam) || istype(S, /obj/structure/foamed_metal))
@@ -347,7 +347,7 @@
 			return
 
 	if(nozzle_mode == METAL_FOAM)
-		if(!Adj || !isturf(target) || istype(target, /obj/screen))
+		if(!Adj || !isturf(target) || istype(target, /atom/movable/screen))
 			return
 		//check for the foamer - is there already foam on the tile?
 		for(var/S in target)

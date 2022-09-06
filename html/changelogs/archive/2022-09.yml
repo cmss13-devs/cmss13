@@ -67,8 +67,30 @@
   - balance: You can now only track someone wearing a uniform with their sensors set
       to Location/Maximum.
 2022-09-05:
+  FoxyStalin:
+  - rscadd: Added Large Shotgun Shell Pouches to vendors for Drop-ship Pilots, DCCs,
+      Vehicle Crewmen, and Senior Enlisted Advisors.
+  - rscdel: Removes Duplicate Large Pistol Mag Pouch from SEA vendors
+  Morrow:
+  - bugfix: Mechanical lock against unauthorized people giving medals.
+  - rscdel: Removed MP timelocks from Staff Officer.
+  Shad0vvs:
+  - bugfix: Fixed being able to pick up damaged turrets in some cases.
+  - bugfix: Fixed attachments being allowed on the QH-4 Shoulder-Mounted Anti-Tank
+      RPG.
+  Tisx:
+  - bugfix: Changed the max rendering range of rifle bullets so that they don't magically
+      disappear when using a S8 scope.
+  nauticall:
+  - imageadd: 'Resprited the following items: Mounted flash, APC terminal, cell charger,
+      hydroponics machines.'
+  - imageadd: '- Depowered button; will now be gray instead of blue to be less confusing.'
   stanalbatross:
   - bugfix: if a normal limb with a robot hand/foot on the end of it is cut off, the
       robot hand/foot will also be cut off with it and exist as an item, not vanish
       into nothingness
   - bugfix: the robot limb item sprites now more closely mirror their onmob sprites
+  - balance: increased the scatter and decreased the accuracy of dual wielding
+2022-09-06:
+  Morrow:
+  - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"

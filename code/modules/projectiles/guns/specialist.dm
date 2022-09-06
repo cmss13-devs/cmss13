@@ -1069,7 +1069,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 	current_mag = /obj/item/ammo_magazine/rocket/anti_tank
 
-	attachable_allowed = null
+	attachable_allowed = list()
 
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 

@@ -907,11 +907,26 @@ IN_USE						used for vending/denying
 	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+	tgui_interact(user)
+	return
 
-	if(!ishuman(user))
+/obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
 		return
-	var/list/display_list = list()
+	switch(action)
+		if("vend")
+			var target_vend = params["prod_index"]
+			handle_topic(usr, null, list("vend" = target_vend))
+			return FALSE
+	return
 
+/obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
+	var/list/data = list()
+	data["vendor_name"] = name
+	data["theme"] = vendor_theme
+
+	var/list/display_list = list()
 	var/list/ui_listed_products = get_listed_products(user)
 	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
 		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
@@ -933,19 +948,17 @@ IN_USE						used for vending/denying
 		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
 
 
-	var/list/data = list(
-		"vendor_name" = name,
-		"theme" = vendor_theme,
-		"displayed_records" = display_list,
-	)
+	data["displayed_records"] = display_list
+	return data
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)
+	if(!ishuman(user))
+		return
 
+	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, ui_key, "cm_vending_sorted.tmpl", name , 600, 700)
-		ui.set_initial_data(data)
+		ui = new(user, src, "VendingSorted", name)
 		ui.open()
-		ui.set_auto_update(0)		//here we need autoupdate because items can be vended by others and are limited
 
 /obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
 	. = ..()

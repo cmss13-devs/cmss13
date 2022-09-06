@@ -1,13 +1,6 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox, Table } from '../components';
-import { Loader } from './common/Loader';
+import { Button, Section, Flex } from '../components';
 import { Window } from '../layouts';
-import { logger } from '../logging';
-import { TableCell, TableRow } from '../components/Table';
-
-type VendingProps = {
-
-}
 
 type VendingRecord = {
   prod_index: number,
@@ -28,9 +21,24 @@ type VenableItem = {
 }
 
 const VendableItem = (props: VenableItem, context) => {
-  return <Flex.Item direction="row">
+  const { act } = useBackend(context);
+  const { record } = props;
+  const available = record.prod_available > 0
 
-  </Flex.Item>
+  return (
+    <Flex align="stretch" justify="space-between">
+      <Flex.Item grow={1}>
+        {record.prod_name}
+      </Flex.Item>
+      <Flex.Item>
+        <Button
+          fluid={1}
+          onClick={() => act('vend', record)}
+          disabled={!available}>
+          {available ? "vend" : "sold out"}
+        </Button>
+      </Flex.Item>
+    </Flex>)
 }
 
 type VendingCategory = {
@@ -38,9 +46,8 @@ type VendingCategory = {
   records: VendingRecord[]
 }
 
-export const VendingSorted = (props: VendingProps, context) => {
-  logger.info("render")
-  const { act, data } = useBackend<VendingData>(context);
+export const VendingSorted = (_, context) => {
+  const { data } = useBackend<VendingData>(context);
   const vendingmap = new Array<VendingCategory>();
   let currentCategory:VendingCategory|null = null;
 
@@ -64,29 +71,21 @@ export const VendingSorted = (props: VendingProps, context) => {
     }
 
     currentCategory.records.push(i)
-    //logger.info(currentCategory.records)
   }
 
-  return <Window>
+  return (<Window width={500} height={700}>
     <Window.Content scrollable>
-      {vendingmap.map(x => <Section title={x.category}>
-        <Table>
-          {x.records.map(record =>
-            <TableRow>
-              <TableCell>
-                {record.prod_name}
-              </TableCell>
-              <TableCell>
-                <Button
-                  onClick={() => act('vend', record)}
-                  disabled={record.prod_available === 0}>
-                  vend
-                </Button>
-              </TableCell>
-            </TableRow>
-          )}
-        </Table>
-        </Section>)}
+        {vendingmap.map((x, i) => (
+          <Section title={x.category} key={i}>
+            <Flex direction="column">
+              {x.records.map(record => (
+                <Flex.Item mb={1} key={record.prod_index}>
+                  <VendableItem record={record}/>
+                </Flex.Item>)
+              )}
+            </Flex>
+          </Section>
+        ))}
     </Window.Content>
-  </Window>
+  </Window>)
 }

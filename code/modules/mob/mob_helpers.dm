@@ -496,3 +496,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/handle_blood_splatter(var/splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+
+/proc/get_mobs_in_z_level_range(var/z_level, var/range_center, var/range)
+	var/list/mobs_in_range = list()
+	for(var/mob/mob as anything in GLOB.mob_list)
+		if(mob.z != z_level)
+			continue
+		if(range && get_dist(range_center, mob) > range)
+			continue
+		mobs_in_range += mob
+	return mobs_in_range

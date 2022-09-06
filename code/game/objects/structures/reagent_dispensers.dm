@@ -1,4 +1,3 @@
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -9,7 +8,7 @@
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
-	var/slashable = FALSE
+	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
@@ -64,6 +63,7 @@
 /obj/structure/reagent_dispensers/proc/healthcheck()
 	if(health <= 0)
 		Destroy()
+		qdel(src)
 
 /obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
@@ -75,11 +75,13 @@
 	return TRUE
 
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
 	user.animation_attack_on(src)
 	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
-	SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
+	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	healthcheck()
 	return XENO_ATTACK_ACTION
 

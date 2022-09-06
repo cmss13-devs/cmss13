@@ -96,7 +96,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/mp
 	name = "\improper ColMarTech Military Police Armory Rack"
-	desc = "An automated rack that stores various military police weapons and equipment for use in emergencies."
+	desc = "A neatly organized rack that stores various lethal weapons and equipment for use in emergencies."
+	icon_state = "guns"
+	req_one_access = list( ACCESS_MARINE_ARMORY, ACCESS_MARINE_BRIG)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/mp/populate_product_list(var/scale)
 	listed_products = list(
@@ -123,23 +125,24 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", round(scale * 5), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
-		list("M94 Marking Flare Pack", round(scale * 2), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
+		list("M94 Marking Flare Pack", round(scale * 2), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/riot
 	name = "\improper ColMarTech Military Police Riot Vendor"
-	desc = "An automated rack that stores riot equipment."
+	desc = "A well-used rack that stores riot gear and non lethal weaponry."
+	icon_state = "req_ammo"
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/mp/populate_product_list(var/scale)
 	listed_products = list(
 		list("LESS THAN LETHAL", -1, null, null),
 		list("MK221 Riot Shotgun (20g)", 1, /obj/item/weapon/gun/shotgun/combat/riot, VENDOR_ITEM_REGULAR),
-		list("M81 Grenade Launcher", 1, /obj/item/weapon/gun/launcher/grenade/m81/riot, VENDOR_ITEM_REGULAR),
+		list("M81 Riot Grenade Launcher", 1, /obj/item/weapon/gun/launcher/grenade/m81/riot, VENDOR_ITEM_REGULAR),
 
 		list("LESS LETHAL AMMO", -1, null, null),
 		list("Box of Beanbag shells (20g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/beanbag/riot, VENDOR_ITEM_REGULAR),
-		list("Baton Slug Packet", 2, /obj/item/storage/box/packet/baton_slug, VENDOR_ITEM_REGULAR),
+		list("HIRR Baton Slug Packet", 2, /obj/item/storage/box/packet/baton_slug, VENDOR_ITEM_REGULAR),
 
 		list("RIOT ARMOR", -1, null, null),
 		list("Riot armor", 1, /obj/item/clothing/suit/armor/riot/marine, VENDOR_ITEM_RECOMMENDED),

@@ -519,13 +519,13 @@
 
 	if(!check_state())
 		return
-	if(!check_plasma(50))
-		return
 	if(last_special > world.time)
 		return
-	plasma_stored -= 50
-	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
+	if(!check_plasma(50))
+		return
+	use_plasma(50)
 
+	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 	if(txt)
 		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
@@ -560,7 +560,7 @@
 	if(!input)
 		return FALSE
 
-	plasma_stored -= 50
+	use_plasma(50)
 	if(word_ability)
 		word_ability.apply_cooldown()
 

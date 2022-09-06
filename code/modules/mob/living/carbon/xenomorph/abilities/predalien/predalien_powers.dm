@@ -1,4 +1,4 @@
-/datum/action/xeno_action/activable/predalien_roar/use_ability(atom/A)
+/datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/A)
     var/mob/living/carbon/Xenomorph/X = owner
 
     if (!action_cooldown_check())
@@ -41,7 +41,7 @@
     . = ..()
     return
 
-/datum/action/xeno_action/activable/smash/use_ability(atom/A)
+/datum/action/xeno_action/onclick/smash/use_ability(atom/A)
     var/mob/living/carbon/Xenomorph/X = owner
 
     if (!action_cooldown_check())

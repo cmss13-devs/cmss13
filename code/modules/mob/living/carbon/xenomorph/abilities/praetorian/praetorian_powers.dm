@@ -552,7 +552,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/use_ability(atom/A)
+/datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
@@ -583,7 +583,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/proc/remove_effects()
+/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!istype(X))

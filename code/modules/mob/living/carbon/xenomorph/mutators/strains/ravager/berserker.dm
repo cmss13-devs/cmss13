@@ -6,14 +6,14 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RAVAGER)
 	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
-		/datum/action/xeno_action/activable/eviscerate
+		/datum/action/xeno_action/onclick/eviscerate
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker

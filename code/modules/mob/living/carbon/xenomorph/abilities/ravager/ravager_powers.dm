@@ -1,7 +1,7 @@
 
 ////////// BASE RAV POWERS
 
-/datum/action/xeno_action/activable/empower/use_ability(atom/A)
+/datum/action/xeno_action/onclick/empower/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
@@ -25,7 +25,7 @@
 	else
 		actual_empower(X)
 
-/datum/action/xeno_action/activable/empower/proc/actual_empower(var/mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/onclick/empower/proc/actual_empower(var/mob/living/carbon/Xenomorph/X)
 	var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
 
 	activated_once = FALSE
@@ -60,7 +60,7 @@
 	if(empower_targets >= BD.super_empower_threshold) //you go in deep you reap the rewards
 		super_empower(X, empower_targets, BD)
 
-/datum/action/xeno_action/activable/empower/proc/super_empower(var/mob/living/carbon/Xenomorph/X, var/empower_targets, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/onclick/empower/proc/super_empower(var/mob/living/carbon/Xenomorph/X, var/empower_targets, var/datum/behavior_delegate/ravager_base/BD)
 	X.visible_message(SPAN_DANGER("[X] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
 	X.emote("roar")
 
@@ -74,7 +74,7 @@
 
 	addtimer(CALLBACK(src, .proc/weaken_superbuff, X, BD), 3.5 SECONDS)
 
-/datum/action/xeno_action/activable/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
 
 	X.remove_filter("empower_rage")
 	var/color = "#FF0000"
@@ -84,13 +84,13 @@
 
 	addtimer(CALLBACK(src, .proc/remove_superbuff, X, BD), 1.5 SECONDS)
 
-/datum/action/xeno_action/activable/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
+/datum/action/xeno_action/onclick/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
 	BD.empower_targets = 0
 
 	X.visible_message(SPAN_DANGER("[X]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Your glow fades away, the power leaving your body!"))
 	X.remove_filter("empower_rage")
 
-/datum/action/xeno_action/activable/empower/proc/get_inital_shield()
+/datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if(!activated_once)
@@ -99,14 +99,14 @@
 	X.add_xeno_shield(initial_activation_shield, XENO_SHIELD_SOURCE_RAVAGER)
 	X.overlay_shields()
 
-/datum/action/xeno_action/activable/empower/proc/timeout()
+/datum/action/xeno_action/onclick/empower/proc/timeout()
 	if(!activated_once)
 		return
 
 	var/mob/living/carbon/Xenomorph/X = owner
 	actual_empower(X)
 
-/datum/action/xeno_action/activable/empower/action_cooldown_check()
+/datum/action/xeno_action/onclick/empower/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		return TRUE
 	else if (activated_once)
@@ -355,7 +355,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
+/datum/action/xeno_action/onclick/eviscerate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if(!action_cooldown_check() || X.action_busy)
@@ -424,7 +424,7 @@
 
 ////////// HEDGEHOG POWERS
 
-/datum/action/xeno_action/activable/spike_shield/use_ability(atom/A)
+/datum/action/xeno_action/onclick/spike_shield/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
@@ -457,7 +457,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/spike_shield/action_cooldown_check()
+/datum/action/xeno_action/onclick/spike_shield/action_cooldown_check()
 	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
 		return FALSE
 	else if (cooldown_timer_id == TIMER_ID_NULL)
@@ -468,7 +468,7 @@
 		return TRUE
 	return FALSE
 
-/datum/action/xeno_action/activable/spike_shield/proc/remove_shield()
+/datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!shield_active)
@@ -529,7 +529,7 @@
 	else
 		return FALSE
 
-/datum/action/xeno_action/activable/spike_shed/use_ability(atom/A)
+/datum/action/xeno_action/onclick/spike_shed/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
@@ -555,7 +555,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/spike_shed/action_cooldown_check()
+/datum/action/xeno_action/onclick/spike_shed/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
 		if (X.mutation_type == RAVAGER_HEDGEHOG)

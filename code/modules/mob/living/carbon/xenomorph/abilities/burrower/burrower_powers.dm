@@ -170,7 +170,7 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/datum/action/xeno_action/activable/tremor/action_cooldown_check()
+/datum/action/xeno_action/onclick/tremor/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_tremor
 

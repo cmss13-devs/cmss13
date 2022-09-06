@@ -91,3 +91,6 @@
       into nothingness
   - bugfix: the robot limb item sprites now more closely mirror their onmob sprites
   - balance: increased the scatter and decreased the accuracy of dual wielding
+2022-09-06:
+  Morrow:
+  - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"

@@ -1,4 +1,4 @@
-/datum/action/xeno_action/onclick/toggle_speed/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/toggle_speed/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
 	if(!xeno.check_state())
 		return

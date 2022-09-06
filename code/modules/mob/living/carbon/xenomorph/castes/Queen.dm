@@ -679,11 +679,11 @@
 		var/datum/action/A = Z
 		A.update_button_icon()
 
-/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/Atom)
-	if(!iscarbon(Atom))
+/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/target)
+	if(!iscarbon(target))
 		return FALSE
 
-	var/mob/living/carbon/victim = Atom
+	var/mob/living/carbon/victim = target
 
 	if(get_dist(src, victim) > 1)
 		return FALSE

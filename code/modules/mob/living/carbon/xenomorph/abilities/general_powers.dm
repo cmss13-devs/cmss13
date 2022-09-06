@@ -86,7 +86,7 @@
 
 	return ..()
 
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	xeno.lay_down()
 	button.icon_state = xeno.resting ? "template_active" : "template"
@@ -485,7 +485,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/xenohide/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(!xeno.check_state(1))
 		return

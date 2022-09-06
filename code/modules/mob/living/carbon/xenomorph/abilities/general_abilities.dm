@@ -277,7 +277,7 @@
 	if(xeno.is_zoomed)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will also handle icon_state

@@ -99,60 +99,60 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
-/datum/action/xeno_action/onclick/screech/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/onclick/screech/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
 	//screech is so powerful it kills huggers in our hands
-	if(istype(X.r_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = X.r_hand
-		if(FH.stat != DEAD)
-			FH.die()
+	if(istype(xeno.r_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.r_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
 
-	if(istype(X.l_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = X.l_hand
-		if(FH.stat != DEAD)
-			FH.die()
+	if(istype(xeno.l_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.l_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
 
-	playsound(X.loc, X.screech_sound_effect, 75, 0, status = 0)
-	X.visible_message(SPAN_XENOHIGHDANGER("[X] emits an ear-splitting guttural roar!"))
-	X.create_shriekwave() //Adds the visual effect. Wom wom wom
+	playsound(xeno.loc, xeno.screech_sound_effect, 75, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
+	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 
-	for(var/mob/M in view())
-		if(M && M.client)
-			if(isXeno(M))
-				shake_camera(M, 10, 1)
+	for(var/mob/mob in view())
+		if(mob && mob.client)
+			if(isXeno(mob))
+				shake_camera(mob, 10, 1)
 			else
-				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
-	for(var/mob/living/carbon/M in oview(7, X))
-		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, X) & COMPONENT_SCREECH_ACT_CANCEL)
+	for(var/mob/living/carbon/mob in oview(7, xeno))
+		if(SEND_SIGNAL(mob, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
 
-		M.scream_stun_timeout = 20 SECONDS
-		var/dist = get_dist(X, M)
+		mob.scream_stun_timeout = 20 SECONDS
+		var/dist = get_dist(xeno, mob)
 		if(dist <= 4)
-			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(4)
-			M.KnockDown(4)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(5) //Deafens them temporarily
+			to_chat(mob, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
+			mob.AdjustStunned(4)
+			mob.KnockDown(4)
+			if(!mob.ear_deaf)
+				mob.AdjustEarDeafness(5) //Deafens them temporarily
 		else if(dist >= 5 && dist < 7)
-			M.AdjustStunned(3)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(2)
-			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+			mob.AdjustStunned(3)
+			if(!mob.ear_deaf)
+				mob.AdjustEarDeafness(2)
+			to_chat(mob, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 
 	apply_cooldown()
 
@@ -168,11 +168,11 @@
 	plasma_cost = 200
 	cooldown_message = "You feel your anger return. You are ready to gut again."
 
-/datum/action/xeno_action/activable/gut/use_ability(atom/Atom)
+/datum/action/xeno_action/activable/gut/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	if(!action_cooldown_check())
 		return
-	if(xeno.queen_gut(Atom))
+	if(xeno.queen_gut(target))
 		apply_cooldown()
 	..()
 
@@ -327,7 +327,7 @@
 	plasma_cost = 50
 	xeno_cooldown = 10 SECONDS
 
-/datum/action/xeno_action/onclick/queen_word/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message() 
@@ -337,7 +337,7 @@
 	action_icon_state = "toggle_queen_zoom"
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	xeno.xeno_tacmap()
 

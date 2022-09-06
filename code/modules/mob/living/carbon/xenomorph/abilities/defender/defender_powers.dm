@@ -1,4 +1,4 @@
-/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -149,7 +149,7 @@
 	return
 
 // Defender Fortify
-/datum/action/xeno_action/activable/fortify/use_ability(atom/A)
+/datum/action/xeno_action/activable/fortify/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if (!istype(xeno))
 		return

@@ -149,7 +149,7 @@
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
 		if(user == target)
-			user.visible_message(SPAN_NOTICE("[user] finshes clamp the treated wounds on their  body with \the [tool]."),
+			user.visible_message(SPAN_NOTICE("[user] finishes clamping the treated wounds on their body with \the [tool]."),
 			SPAN_HELPFUL("You finish clamping the treated wounds on your body with \the [tool]."))
 	else
 		user.affected_message(target,

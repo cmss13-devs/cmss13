@@ -597,7 +597,7 @@
 		return TRUE
 	xeno.visible_message(SPAN_DANGER("[xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
 	broken() //Smashola!
-	return 0.1
+	return TAILSTRIKE_COOLDOWN_VERY_LOW
 
 // the light item
 // can be tube or bulb subtypes

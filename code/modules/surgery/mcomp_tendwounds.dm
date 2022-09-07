@@ -136,11 +136,11 @@
 
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to clamp the treated wounds on their body with \the [tool] ."),
-			SPAN_HELPFUL("You begin to clamp your treated wounds with \the [tool]"))
+		user.visible_message(SPAN_NOTICE("[user] begins to close the treated wounds on their body with \the [tool] ."),
+			SPAN_HELPFUL("You begin to close your treated wounds with \the [tool]"))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You begin to clamp the treated wounds on [target]'s body with \the [tool]."),
+			SPAN_HELPFUL("You begin to close the treated wounds on [target]'s body with \the [tool]."),
 			SPAN_HELPFUL("[user] begins to clamp your treated wounds on your body with \the [tool]."),
 			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with \the [tool]."))
 
@@ -149,13 +149,13 @@
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
 		if(user == target)
-			user.visible_message(SPAN_NOTICE("[user] finshes clamp the treated wounds on their  body with \the [tool]."),
-			SPAN_HELPFUL("You finish clamping the treated wounds on your body with \the [tool]"))
+			user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their  body with \the [tool]."),
+			SPAN_HELPFUL("You finish closing the treated wounds on your body with \the [tool]"))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You finish clamping [target]'s treated wounds with \the [tool]."),
-			SPAN_HELPFUL("[user] finished treating your treated wounds with \the [tool]."),
-			SPAN_NOTICE("[user] finished stabalizing [target]'s treated wounds with \the [tool]."))
+			SPAN_HELPFUL("You finish closing [target]'s treated wounds with \the [tool]."),
+			SPAN_HELPFUL("[user] finished closing your treated wounds with \the [tool]."),
+			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with \the [tool]."))
 
 	if(isYautja(target))
 		target.emote("loudroar")

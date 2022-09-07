@@ -94,3 +94,6 @@
 2022-09-06:
   Morrow:
   - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"
+2022-09-07:
+  Morrow:
+  - bugfix: Screwdrivers don't open airlocks again

@@ -97,6 +97,8 @@
 2022-09-07:
   Morrow:
   - bugfix: Screwdrivers don't open airlocks again
+  - bugfix: Area soundscapes will now properly exit. No more looping medbay songs
+      forever.
   stanalbatross:
   - bugfix: you can no longer stack do_afters when unanchoring/anchoring structures
   - bugfix: fixed some runtimes at round start

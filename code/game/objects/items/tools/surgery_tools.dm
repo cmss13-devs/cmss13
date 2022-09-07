@@ -340,8 +340,6 @@ t. optimisticdude
 		if(loaded)
 			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
 			return
-		if(user.action_busy)
-			return
 		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
@@ -352,7 +350,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gel
 	name = "healing gel capsule"
-	desc = "Used for reloding the healing gun."
+	desc = "Used for reloading the healing gun."
 	icon_state = "healing_gel"
 	force = 0
 	throwforce = 1.0

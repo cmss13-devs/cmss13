@@ -761,7 +761,7 @@
 		return FALSE
 
 	if(inject_timer)
-		to_chat(usr, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
+		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
 	if(!drain_power(caller, 1000))

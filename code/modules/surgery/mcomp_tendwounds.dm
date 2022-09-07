@@ -36,7 +36,7 @@
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their  body with \the [tool]."),
+		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their body with \the [tool]."),
 		SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]"))
 	else
 		user.affected_message(target,

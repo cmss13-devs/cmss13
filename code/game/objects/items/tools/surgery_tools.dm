@@ -334,7 +334,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put this [O] into \the [src]!"))
+		to_chat(user, SPAN_WARNING("You have no idea how to put \the [O] into \the [src]!"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
 		if(loaded)
@@ -342,7 +342,7 @@ t. optimisticdude
 			return
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O]"),SPAN_NOTICE(" You load \the [src] with \a [O]"))
+		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()

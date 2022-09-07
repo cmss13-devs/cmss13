@@ -36,7 +36,7 @@
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their  body with \the [tool]."),
+		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their body with \the [tool]."),
 		SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]"))
 	else
 		user.affected_message(target,
@@ -124,7 +124,7 @@
 	return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound
-	name = "clamp wounds"
+	name = "Clamp Wounds"
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
@@ -149,8 +149,13 @@
 
 	if(!target.getBruteLoss() && !target.getFireLoss())
 		if(user == target)
+<<<<<<< HEAD
 			user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their  body with \the [tool]."),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with \the [tool]"))
+=======
+			user.visible_message(SPAN_NOTICE("[user] finishes closing the treated wounds on their body with \the [tool]."),
+			SPAN_HELPFUL("You finish clamping the treated wounds on your body with \the [tool]."))
+>>>>>>> 9760909825d6bee4be2a8562ab649824cb7181f8
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish closing [target]'s treated wounds with \the [tool]."),
@@ -164,7 +169,7 @@
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.pain.recalculate_pain()
-	log_interact(user, target, "[key_name(user)] clamed a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+	log_interact(user, target, "[key_name(user)] clamped a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
 /datum/surgery_step/cauterize/mclamp_wound/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")

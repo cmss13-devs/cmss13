@@ -802,7 +802,7 @@
 		return FALSE
 
 	if(healing_capsule_timer)
-		to_chat(usr, SPAN_WARNING("You recently made a healing capsule"))
+		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
 	if(!drain_power(caller, 800))
@@ -811,7 +811,7 @@
 	healing_capsule_timer = TRUE
 	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
 
-	to_chat(caller, SPAN_NOTICE("You feel your bracer chern as it pops out a healing capsule."))
+	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)
 	caller.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)

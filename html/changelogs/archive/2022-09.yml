@@ -97,3 +97,5 @@
 2022-09-07:
   Morrow:
   - bugfix: Screwdrivers don't open airlocks again
+  stanalbatross:
+  - bugfix: you can no longer stack do_afters when unanchoring/anchoring structures

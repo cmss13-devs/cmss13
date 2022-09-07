@@ -1,12 +1,14 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex } from '../components';
+import { Button, Section, Flex, ProgressBar } from '../components';
 import { Window } from '../layouts';
+import { logger } from '../logging';
 
 type VendingRecord = {
   prod_index: number,
   prod_name: string,
   prod_amount: number,
   prod_available: number,
+  prod_initial: number,
   prod_color?: number
 }
 
@@ -24,18 +26,31 @@ const VendableItem = (props: VenableItem, context) => {
   const { act } = useBackend(context);
   const { record } = props;
   const available = record.prod_available > 0
-
+  let progress = 0;
+  if (record.prod_initial > 0) {
+    progress = record.prod_amount / record.prod_initial
+  }
   return (
-    <Flex align="stretch" justify="space-between">
-      <Flex.Item grow={1}>
+    <Flex align="stretch" justify="space-between" align-items="stretch" spacing={2}>
+      <Flex.Item grow={2}>
         {record.prod_name}
       </Flex.Item>
-      <Flex.Item>
+
+      <Flex.Item style={{'text-align': 'center'}} grow={1}>
+        {record.prod_amount}
+      </Flex.Item>
+
+      <Flex.Item grow={1}>
+        <ProgressBar value={progress}/>
+      </Flex.Item>
+
+      <Flex.Item grow={1} justify="right">
         <Button
-          fluid={1}
+          style={{'text-align': 'center'}}
           onClick={() => act('vend', record)}
-          disabled={!available}>
-          {available ? "vend" : "sold out"}
+          disabled={!available}
+          width="80px">
+          {available ? "vend" : "SOLD OUT"}
         </Button>
       </Flex.Item>
     </Flex>)
@@ -73,7 +88,7 @@ export const VendingSorted = (_, context) => {
     currentCategory.records.push(i)
   }
 
-  return (<Window width={500} height={700}>
+  return (<Window width={600} height={700}>
     <Window.Content scrollable>
         {vendingmap.map((x, i) => (
           <Section title={x.category} key={i}>

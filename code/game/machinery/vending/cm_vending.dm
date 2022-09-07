@@ -807,6 +807,8 @@ IN_USE						used for vending/denying
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 
+	var/initial_product_count = list()
+
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list = list(
 		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
@@ -902,6 +904,11 @@ IN_USE						used for vending/denying
 	. = ..()
 	populate_product_list(1.2)
 
+	for (var/i in 1 to length(listed_products))
+		var/item_name = listed_products[i][1]
+		var/initial_count = listed_products[i][2]
+		initial_product_count[item_name] = initial_count
+
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
@@ -937,15 +944,20 @@ IN_USE						used for vending/denying
 
 		var/p_name = myprod[1]					//taking it's name
 		var/p_amount = myprod[2]				//amount left
-		var/prod_available = FALSE				//checking if it's available
-		if(p_amount > 0)						//checking availability
-			p_name += ": [p_amount]"			//and adding amount to product name so it will appear in "button" in UI
-			prod_available = TRUE
-		else if(p_amount == 0)
-			p_name += ": SOLD OUT"				//Negative numbers (-1) used for categories.
+		var/prod_available = p_amount > 0		//checking if it's available
+		var/list/initial_vals = initial_product_count
 
+		var/initial_amount = initial_vals[p_name]
 		//forming new list with index, name, amount, available or not, color and add it to display_list
-		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
+		display_list += list(list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_amount" = p_amount,
+			"prod_available" = prod_available,
+			"prod_color" = myprod[4],
+			"prod_initial" = initial_amount
+			)
+		)
 
 
 	data["displayed_records"] = display_list

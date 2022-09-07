@@ -164,7 +164,7 @@
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.pain.recalculate_pain()
-	log_interact(user, target, "[key_name(user)] clamed a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+	log_interact(user, target, "[key_name(user)] clamped a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
 /datum/surgery_step/cauterize/mclamp_wound/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with \the [tool], possibly ending [surgery].")

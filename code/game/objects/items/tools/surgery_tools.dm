@@ -334,7 +334,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put this [O] into \the [src]!"))
+		to_chat(user, SPAN_WARNING("You have no idea how to put \the [O] into \the [src]!"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
 		if(loaded)

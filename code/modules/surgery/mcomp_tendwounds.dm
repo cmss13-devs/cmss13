@@ -36,13 +36,13 @@
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-        user.visible_message(SPAN_NOTICE("[user] begins to stabilize the wounds on their body with \the [tool]."),
-            SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]"))
-    else
-        user.affected_message(target,
-            SPAN_HELPFUL("You begin to stabilize the wounds on [target]'s body with \the [tool]."),
-            SPAN_HELPFUL("[user] begins to stabilize the wounds on your body with \the [tool]."),
-            SPAN_NOTICE("[user] begisn to stabilize the wounds on [target]'s body with \the [tool]."))
+		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their  body with \the [tool]."),
+		SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]"))
+	else
+		user.affected_message(target,
+		SPAN_HELPFUL("You begin to stabilize the wounds on [target]'s body with \the [tool]."),
+		SPAN_HELPFUL("[user] begins to stabilize the wounds on your body with \the [tool]."),
+		SPAN_NOTICE("[user] begins to stabilize the wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(50,50)
@@ -84,13 +84,13 @@
 /datum/surgery_step/mtend_wounds/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] begins to treat the stabilized wounds on their  body with \the [tool]."),
-			SPAN_HELPFUL("You <b>begin to treat your stabilized wounds with \the [tool]"))
+		SPAN_HELPFUL("You <b>begin to treat your stabilized wounds with \the [tool]"))
 		playsound(target,'sound/misc/heal_gun.ogg',25)
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to treat the stabilized wounds on [target]'s body with \the [tool]."),
 			SPAN_HELPFUL("[user] begins to treat your stabilized wounds on your body with \the [tool]."),
-			SPAN_NOTICE("[user] begisn to treat the stabilized wounds on [target]'s body with \the [tool]."))
+			SPAN_NOTICE("[user] begins to treat the stabilized wounds on [target]'s body with \the [tool]."))
 		playsound(target,'sound/misc/heal_gun.ogg',25)
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
@@ -142,7 +142,7 @@
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to clamp the treated wounds on [target]'s body with \the [tool]."),
 			SPAN_HELPFUL("[user] begins to clamp your treated wounds on your body with \the [tool]."),
-			SPAN_NOTICE("[user] begisn to clamp the treated wounds on [target]'s body with \the [tool]."))
+			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(60,60) //makes sure that all damage is healed

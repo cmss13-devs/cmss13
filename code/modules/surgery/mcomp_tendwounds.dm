@@ -124,7 +124,7 @@
 	return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound
-	name = "clamp wounds"
+	name = "Clamp Wounds"
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS

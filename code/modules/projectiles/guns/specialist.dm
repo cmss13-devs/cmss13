@@ -1249,7 +1249,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		update_icon()
 
 /obj/item/weapon/gun/flare/unique_action(mob/user)
-	if(!user || !istype(user.loc, /turf/) || !current_mag || !current_mag.current_rounds)
+	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
 		return
 		
 	var/turf/flare_turf = user.loc
@@ -1258,11 +1258,11 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	if(flare_area.ceiling > CEILING_GLASS)
 		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
 		return
-	
-	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		
+	if(user.action_busy)
 		return
 	
-	if(!current_mag.current_rounds) //they fired! Nice try!
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	
 	current_mag.current_rounds--
@@ -1270,7 +1270,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	flare_turf.ceiling_debris()
 		
 	if(!istype(ammo, /datum/ammo/flare))
-		to_chat(user, SPAN_NOTICE("The [src] jams as it is somehow loaded with incorrect ammo!"))
+		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
 		return
 		
 	var/datum/ammo/flare/explicit_ammo = ammo
@@ -1281,10 +1281,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	playsound(user.loc, fire_sound, 50, 1)
 	
-	if(istype(fired_flare, /obj/item/device/flashlight/flare/signal))
-		var/obj/item/device/flashlight/flare/signal/signal_flare = fired_flare
-		signal_flare.activate_signal(user)
-		last_signal_flare_name = signal_flare.name
+	if(fired_flare.activate_signal(user))
+		last_signal_flare_name = fired_flare.name
 	
 	update_icon()
 	

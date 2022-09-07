@@ -1170,6 +1170,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
+	
+	var/last_signal_flare_name
 
 
 /obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
@@ -1245,3 +1247,48 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
 			user.put_in_hands(unloaded_flare)
 		update_icon()
+
+/obj/item/weapon/gun/flare/unique_action(mob/user)
+	if(!user || !istype(user.loc, /turf/) || !current_mag || !current_mag.current_rounds)
+		return
+		
+	var/turf/flare_turf = user.loc
+	var/area/flare_area = flare_turf.loc
+	
+	if(flare_area.ceiling > CEILING_GLASS)
+		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
+		return
+	
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+	
+	if(!current_mag.current_rounds) //they fired! Nice try!
+		return
+	
+	current_mag.current_rounds--
+	
+	flare_turf.ceiling_debris()
+		
+	if(!istype(ammo, /datum/ammo/flare))
+		to_chat(user, SPAN_NOTICE("The [src] jams as it is somehow loaded with incorrect ammo!"))
+		return
+		
+	var/datum/ammo/flare/explicit_ammo = ammo
+		
+	var/obj/item/device/flashlight/flare/fired_flare = new explicit_ammo.flare_type(get_turf(src))
+	to_chat(user, SPAN_NOTICE("You fire \the [fired_flare] into the air!"))
+	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
+	fired_flare.invisibility = INVISIBILITY_MAXIMUM
+	playsound(user.loc, fire_sound, 50, 1)
+	
+	if(istype(fired_flare, /obj/item/device/flashlight/flare/signal))
+		var/obj/item/device/flashlight/flare/signal/signal_flare = fired_flare
+		signal_flare.activate_signal(user)
+		last_signal_flare_name = signal_flare.name
+	
+	update_icon()
+	
+/obj/item/weapon/gun/flare/examine(mob/user)
+	..()
+	if(last_signal_flare_name)
+		to_chat(user, SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]"))

@@ -95,6 +95,10 @@
   Morrow:
   - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"
 2022-09-07:
+  Geevies:
+  - balance: Unnesting someone by hand now takes eight seconds, cutting them free
+      with something sharp like a knife takes three seconds, and using a blowtorch
+      to cut through takes one second.
   Morrow:
   - bugfix: Screwdrivers don't open airlocks again
   - bugfix: Area soundscapes will now properly exit. No more looping medbay songs

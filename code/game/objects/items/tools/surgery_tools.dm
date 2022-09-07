@@ -342,7 +342,7 @@ t. optimisticdude
 			return
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O]"),SPAN_NOTICE(" You load \the [src] with \a [O]"))
+		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()

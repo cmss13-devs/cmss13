@@ -802,7 +802,7 @@
 		return FALSE
 
 	if(healing_capsule_timer)
-		to_chat(usr, SPAN_WARNING("You recently made a healing capsule"))
+		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
 		return FALSE
 
 	if(!drain_power(caller, 800))

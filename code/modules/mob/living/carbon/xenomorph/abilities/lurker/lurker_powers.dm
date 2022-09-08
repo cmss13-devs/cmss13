@@ -12,6 +12,7 @@
 
 	animate(X, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 	X.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
+	button.icon_state = "template_active"
 
 	X.speed_modifier -= speed_buff
 	X.recalculate_speed()
@@ -40,6 +41,7 @@
 	if (istype(X))
 		animate(X, alpha = initial(X.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
+		button.icon_state = "template"
 
 		X.update_icons()
 
@@ -75,6 +77,7 @@
 		BD.next_slash_buffed = TRUE
 
 	to_chat(X, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
+	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
 	X.next_move = world.time + 1 // Autoattack reset
@@ -97,3 +100,4 @@
 	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))
 
 
+	button.icon_state = "template"

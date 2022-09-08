@@ -85,6 +85,7 @@
 		BD.next_slash_buffed = TRUE
 
 	to_chat(X, SPAN_XENOHIGHDANGER("Your next slash will apply neurotoxin!"))
+	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
 
@@ -104,3 +105,4 @@
 		BD.next_slash_buffed = FALSE
 
 	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer apply neurotoxin!"))
+	button.icon_state = "template"

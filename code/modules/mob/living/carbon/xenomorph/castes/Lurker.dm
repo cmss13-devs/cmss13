@@ -81,6 +81,9 @@
 		original_damage *= buffed_slash_damage_ratio
 		H.SetSuperslowed(get_xeno_stun_duration(H, 3))
 		next_slash_buffed = FALSE
+		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
+		if (ability && istype(ability))
+			ability.button.icon_state = "template"
 
 	return original_damage
 

@@ -88,6 +88,10 @@
 		C.Daze(4)
 		addtimer(CALLBACK(src, .proc/paralyzing_slash, C), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
+	if(!next_slash_buffed)
+		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
+		if (ability && istype(ability))
+			ability.button.icon_state = "template"
 	return original_damage
 
 #undef NEURO_TOUCH_DELAY

@@ -5,33 +5,27 @@ import {
   Flex,
   Icon,
   Section,
-  Box,
   NoticeBox,
+  Stack,
+  Box,
 } from '../components';
 import { Window } from '../layouts';
 
 export const FaxMachine = (_props, context) => {
   const { act, data } = useBackend(context);
   const {
-    department,
-    network,
     idcard,
-    paper,
-    authenticated,
-    target_department,
-    worldtime,
-    nextfaxtime,
-    faxcooldown,
   } = data;
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
-  const windowHeight = idcard ? 500 : 150;
+  const windowWidth = idcard ? 600 : 400;
+  const windowHeight = idcard ? 270 : 215;
 
   return (
     <Window
-      width={600}
+      width={windowWidth}
       height={windowHeight}
       theme="weyland">
-      <Window.Content scrollable>
+      <Window.Content>
         {body}
       </Window.Content>
     </Window>
@@ -39,23 +33,10 @@ export const FaxMachine = (_props, context) => {
 };
 
 const FaxMain = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    department,
-    network,
-    idcard,
-    paper,
-    authenticated,
-    target_department,
-    worldtime,
-    nextfaxtime,
-    faxcooldown,
-  } = data;
   return (
     <>
       <FaxId />
-      {authenticated ? <FaxPaper /> : null}
-      {authenticated ? <FaxSelect /> : null}
+      <FaxSelect />
     </>
   );
 };
@@ -66,40 +47,35 @@ const FaxId = (props, context) => {
     department,
     network,
     idcard,
-    paper,
     authenticated,
-    target_department,
-    worldtime,
-    nextfaxtime,
-    faxcooldown,
   } = data;
   return (
     <Section title="Authentication">
       <NoticeBox color="grey" textAlign="center">
         This machine is currently operating on the {network}
         <br />
-        and is sending from {department}
+        and is sending from the {department} department.
       </NoticeBox>
-      <Flex direction={"row"}>
-        <Flex.Item>
+      <Stack>
+        <Stack.Item>
           <Button
             icon="eject"
-            fluid
+            mb="0"
             content={idcard}
-            onClick={() => act('eject')}
+            onClick={() => act('ejectid')}
           />
-        </Flex.Item>
-        <Flex.Item>
+        </Stack.Item>
+        <Stack.Item grow>
           <Button
             icon="sign-in-alt"
             fluid
-            content={authenticated ? "log out" : "log in"}
+            content={authenticated ? "Log Out" : "Log In"}
             selected={authenticated}
             onClick={() =>
               act(authenticated ? 'logout' : 'auth')}
           />
-        </Flex.Item>
-      </Flex>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
@@ -107,10 +83,8 @@ const FaxId = (props, context) => {
 const FaxSelect = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    department,
-    network,
-    idcard,
     paper,
+    paper_name,
     authenticated,
     target_department,
     worldtime,
@@ -119,68 +93,83 @@ const FaxSelect = (props, context) => {
   } = data;
 
   const timeLeft = (nextfaxtime - worldtime);
-  const timeLeftPct = timeLeft / faxcooldown;
-
 
   return (
     <Section title="Department selection">
-      <Button
-        icon="eject"
-        content="select department to send to"
-        onClick={() => act('select')}
-      />
-      Currently sending to {target_department ? target_department : "nobody"}
-      <Box>
-        <Button
-          icon="eject"
-          content={paper ? (timeLeft > 0 ? "Transmitters realigning " + (timeLeft / 10) + " seconds left" :"send") : "No paper loaded!"}
-          onClick={() => act('send')}
-          disabled={timeLeft > 0 || !paper}
-        />
-      </Box>
-    </Section>
-  );
-};
-
-const FaxPaper = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    department,
-    network,
-    idcard,
-    paper,
-    authenticated,
-    target_department,
-    worldtime,
-    nextfaxtime,
-    faxcooldown,
-  } = data;
-
-  return (
-    <Section title="Paper">
-      <Box>
-        {paper
-          ? "Currently sending :" + { paper }
-          : "No paper loaded"}
-        <Button
-          icon="eject"
-          content={paper ? "Eject" : "No paper loaded!"}
-          onClick={() => act('ejectpaper')}
-          disabled={!paper}
-        />
-      </Box>
+      <Stack>
+        <Stack.Item>
+          <Button
+            icon="list"
+            content="Select department to send to"
+            disabled={!authenticated}
+            onClick={() => act('select')}
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Button
+            icon="building"
+            fluid
+            disabled={!authenticated}
+            content={"Currently sending to : " + target_department + "."}
+          />
+        </Stack.Item>
+      </Stack>
+      <Box width="600px" height="5px" />
+      <Stack>
+        <Stack.Item>
+          <Button
+            icon="eject"
+            fluid
+            content={paper ? "Currently sending : " + paper_name : "No paper loaded!"}
+            onClick={() => act(paper ? 'ejectpaper' : 'insertpaper')}
+            color={paper ? "default" : "grey"}
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          {timeLeft < 0 && (
+            <Button
+              icon="paper-plane"
+              fluid
+              content={paper ? "Send" : "No paper loaded!"}
+              onClick={() => act('send')}
+              disabled={timeLeft > 0 || !paper || !authenticated}
+            />
+          ) || (
+            <Button
+              icon="window-close"
+              fluid
+              content={"Transmitters realigning, " + (timeLeft / 10) + " seconds left."}
+              disabled={1}
+            />
+          )}
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
 
 const FaxEmpty = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    paper,
+    paper_name,
+  } = data;
   return (
-    <Section textAlign="center" flexGrow="1">
+    <Section textAlign="center" flexGrow="1" fill>
       <Flex height="100%">
-        <Flex.Item grow="1" align="center" color="label">
+        <Flex.Item grow="1" align="center" color="red">
           <Icon name="times-circle" mb="0.5rem" size="5" color="red" />
           <br />
           No ID card detected.
+          <br />
+          {paper && (
+            <Button
+              icon="eject"
+              content={"Eject " + paper_name + "."}
+              onClick={() => act('ejectpaper')}
+              disabled={!paper}
+            />
+          )}
         </Flex.Item>
       </Flex>
     </Section>

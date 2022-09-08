@@ -81,6 +81,8 @@ var/list/alldepartments = list()
 		if(!scan)
 			user.drop_inv_item_to_loc(idcard, src)
 			scan = idcard
+			to_chat(usr, SPAN_NOTICE("You put \the [scan] into \the [src]."))
+			playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -97,6 +99,7 @@ var/list/alldepartments = list()
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
+		playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
 		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
@@ -135,6 +138,8 @@ var/list/alldepartments = list()
 
 	data["idcard"] = scan
 	data["paper"] = tofax
+	if(tofax)
+		data["paper_name"] = tofax.name
 
 	data["authenticated"] = authenticated
 	data["target_department"] = target_department
@@ -172,7 +177,6 @@ var/list/alldepartments = list()
 				COOLDOWN_START(src, send_cooldown, fax_cooldown)
 				SendFax(tofax.info, tofax.name, usr, target_department, network, src)
 				to_chat(usr, "Message transmitted successfully.")
-
 				. = TRUE
 
 		if("ejectpaper")
@@ -182,11 +186,19 @@ var/list/alldepartments = list()
 				else
 					tofax.forceMove(usr.loc)
 					usr.put_in_hands(tofax)
-					to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
+					to_chat(usr, SPAN_NOTICE("You take \the [tofax] out of \the [src]."))
 					tofax = null
 				. = TRUE
 
-		if("eject")
+		if("insertpaper")
+			var/obj/item/I = usr.get_active_hand()
+			if(istype(I, /obj/item/paper))
+				usr.drop_inv_item_to_loc(I, src)
+				tofax = I
+				to_chat(usr, SPAN_NOTICE("You put \the [tofax] into \the [src]."))
+			. = TRUE
+
+		if("ejectid")
 			if(scan)
 				if(ishuman(usr))
 					scan.forceMove(usr.loc)
@@ -196,13 +208,10 @@ var/list/alldepartments = list()
 				else
 					scan.forceMove(src.loc)
 					scan = null
-			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id))
-					usr.drop_inv_item_to_loc(I, src)
-					scan = I
-			authenticated = FALSE
-			. = TRUE
+				to_chat(usr, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+				authenticated = FALSE
+				playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
+				. = TRUE
 
 		if("select")
 			var/last_target_department = target_department
@@ -214,6 +223,7 @@ var/list/alldepartments = list()
 			if ( (!( authenticated ) && (scan)) )
 				if (check_access(scan))
 					authenticated = TRUE
+					playsound(src, 'sound/machines/terminal_on.ogg', 20, FALSE)
 				. = TRUE
 
 		if("logout")
@@ -221,130 +231,6 @@ var/list/alldepartments = list()
 			. = TRUE
 
 	add_fingerprint(usr)
-
-/*
-
-/obj/structure/machinery/faxmachine/attack_hand(mob/user as mob)
-	user.set_interaction(src)
-
-	var/dat
-
-	var/scan_name
-	if(scan)
-		scan_name = scan.name
-	else
-		scan_name = "--------"
-
-	dat += "Confirm Identity: <a href='byond://?src=\ref[src];scan=1'>[scan_name]</a><br>"
-
-	if(authenticated)
-		dat += "<a href='byond://?src=\ref[src];logout=1'>Log Out</a>"
-	else
-		dat += "<a href='byond://?src=\ref[src];auth=1'>Log In</a>"
-
-	dat += "<hr>"
-
-	if(authenticated)
-		dat += "<b>Logged in to:</b> [network]<br><br>"
-
-		if(tofax)
-			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Paper</a><br><br>"
-
-			if(sendcooldown)
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-
-			else
-				dat += "<a href='byond://?src=\ref[src];send=1'>Send</a><br>"
-				dat += "<b>Currently sending:</b> [tofax.name]<br>"
-				dat += "<b>Sending to:</b> <a href='byond://?src=\ref[src];dept=1'>[target_department]</a><br>"
-
-		else
-			if(sendcooldown)
-				dat += "Please insert paper to send via secure connection.<br><br>"
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-			else
-				dat += "Please insert paper to send via secure connection.<br><br>"
-
-	else
-		dat += "Proper authentication is required to use this device.<br><br>"
-
-		if(tofax)
-			dat += "<a href ='byond://?src=\ref[src];remove=1'>Remove Paper</a><br>"
-
-	show_browser(user, dat, "Fax Machine", "fax")
-	return
-
-/obj/structure/machinery/faxmachine/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(href_list["send"])
-		if(tofax)
-
-			if(target_department == DEPARTMENT_HC)
-				highcom_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-
-			else if(target_department == DEPARTMENT_PROVOST)
-				provost_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-
-			else if(target_department == DEPARTMENT_WY)
-				company_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-			else
-				general_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 300
-
-			SendFax(tofax.info, tofax.name, usr, target_department, network, src)
-			to_chat(usr, "Message transmitted successfully.")
-
-			spawn(sendcooldown) // cooldown time
-				sendcooldown = 0
-
-	if(href_list["remove"])
-		if(tofax)
-			if(!ishuman(usr))
-				to_chat(usr, SPAN_WARNING("You can't do it."))
-			else
-				tofax.forceMove(usr.loc)
-				usr.put_in_hands(tofax)
-				to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
-				tofax = null
-
-	if(href_list["scan"])
-		if (scan)
-			if(ishuman(usr))
-				scan.forceMove(usr.loc)
-				if(!usr.get_active_hand())
-					usr.put_in_hands(scan)
-				scan = null
-			else
-				scan.forceMove(src.loc)
-				scan = null
-		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id))
-				usr.drop_inv_item_to_loc(I, src)
-				scan = I
-		authenticated = FALSE
-
-	if(href_list["dept"])
-		var/last_target_department = target_department
-		target_department = tgui_input_list(usr, "Which department?", "Choose a department", alldepartments)
-		if(!target_department) target_department = last+target_department
-
-	if(href_list["auth"])
-		if ( (!( authenticated ) && (scan)) )
-			if (check_access(scan))
-				authenticated = TRUE
-
-	if(href_list["logout"])
-		authenticated = FALSE
-
-	updateUsrDialog()
-
-*/
 
 /obj/structure/machinery/faxmachine/get_vv_options()
 	. = ..()

@@ -153,7 +153,7 @@
 
 /datum/action/xeno_action/onclick/dump_acid/remove_from(mob/L)
 	remove_speed_buff()
-	. = ..()
+	..()
 
 /////////////////////////////// Trapper boiler powers
 

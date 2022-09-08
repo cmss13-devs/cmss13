@@ -6,6 +6,7 @@ import {
   Icon,
   Section,
   Box,
+  NoticeBox,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -27,8 +28,9 @@ export const FaxMachine = (_props, context) => {
 
   return (
     <Window
-      width={500}
-      height={windowHeight}>
+      width={600}
+      height={windowHeight}
+      theme="weyland">
       <Window.Content scrollable>
         {body}
       </Window.Content>
@@ -73,6 +75,11 @@ const FaxId = (props, context) => {
   } = data;
   return (
     <Section title="Authentication">
+      <NoticeBox color="grey" textAlign="center">
+        This machine is currently operating on the {network}
+        <br />
+        and is sending from {department}
+      </NoticeBox>
       <Flex direction={"row"}>
         <Flex.Item>
           <Button
@@ -93,10 +100,6 @@ const FaxId = (props, context) => {
           />
         </Flex.Item>
       </Flex>
-      <Box>
-        Machine is currently operating on {network} network
-        , sending from {department} department
-      </Box>
     </Section>
   );
 };
@@ -114,6 +117,11 @@ const FaxSelect = (props, context) => {
     nextfaxtime,
     faxcooldown,
   } = data;
+
+  const timeLeft = (nextfaxtime - worldtime);
+  const timeLeftPct = timeLeft / faxcooldown;
+
+
   return (
     <Section title="Department selection">
       <Button
@@ -122,6 +130,14 @@ const FaxSelect = (props, context) => {
         onClick={() => act('select')}
       />
       Currently sending to {target_department ? target_department : "nobody"}
+      <Box>
+        <Button
+          icon="eject"
+          content={paper ? (timeLeft > 0 ? "Transmitters realigning " + (timeLeft / 10) + " seconds left" :"send") : "No paper loaded!"}
+          onClick={() => act('send')}
+          disabled={timeLeft > 0 || !paper}
+        />
+      </Box>
     </Section>
   );
 };
@@ -139,6 +155,7 @@ const FaxPaper = (props, context) => {
     nextfaxtime,
     faxcooldown,
   } = data;
+
   return (
     <Section title="Paper">
       <Box>
@@ -147,15 +164,11 @@ const FaxPaper = (props, context) => {
           : "No paper loaded"}
         <Button
           icon="eject"
-          content="eject"
+          content={paper ? "Eject" : "No paper loaded!"}
           onClick={() => act('ejectpaper')}
+          disabled={!paper}
         />
       </Box>
-      <Button
-        icon="eject"
-        content="send"
-        onClick={() => act('send')}
-      />
     </Section>
   );
 };
